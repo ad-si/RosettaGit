@@ -55,7 +55,6 @@ fn main() {
 ## [JavaScript](/languages/javascript)
 
 ```javascript
-const fs = require('fs');
-const content = fs.readFileSync('input.txt');
-fs.writeFileSync('output.txt', content);
+const fs = require("fs");
+fs.createReadStream("input.txt").pipe(fs.createWriteStream("output.txt"));
 ```
