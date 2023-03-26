@@ -32,6 +32,7 @@ Feel free to update and add to it.
 - [CodeCodex](http://www.codecodex.com/wiki/Main_Page) - most similar
   site to RC when RC went live
 - [Code golf](http://golf.shinh.org/) in 104 languages
+- [Literate Programs](http://en.literateprograms.org/LiteratePrograms:Welcome) —  a collection of code samples , Donald Knuth's concept of literate programming
 - [Hyperpolyglot](http://hyperpolyglot.org/)
 - [Learn X in Y minutes](http://learnxinyminutes.com/) Take a
   whirlwind tour of your next favorite language.
@@ -130,9 +131,6 @@ move it back to the live section.
 - [CrossWise](http://cw.tactileint.com/)
 - [eqcode, the equivalent code
   wiki](http://eqcode.com/wiki/index.php/Main_Page)
-- [Literate
-  Programs](http://en.literateprograms.org/LiteratePrograms:Welcome) —
-  domain for sale
 - [Mathematica, Maple, Matlab,
   IDL](http://amath.colorado.edu/computing/mmm/) — Page doesn't exist
   any more at amath.colorado.edu. Most recent version at the Wayback
