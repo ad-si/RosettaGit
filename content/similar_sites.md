@@ -105,6 +105,7 @@ Feel free to update and add to it.
     or How to Determine Which Programming Language You're Using
 - [You have two
   cows](http://uncyclopedia.co/wiki/You_have_two_cows/18)
+- [YourLanguageSucks](https://wiki.theory.org/YourLanguageSucks)
 
 
 # Archive
