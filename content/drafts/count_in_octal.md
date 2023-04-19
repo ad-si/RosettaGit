@@ -1902,7 +1902,7 @@ min has no support for octal or base conversion (it is a minimalistic language, 
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>ИП0	П1	1	0	/	[x]	П1	Вx	{x}	1
 0	*	7	-	x=0	21	ИП1	x#0	28	БП
 02	ИП0	1	+	П0	С/П	БП	00	ИП0	lg

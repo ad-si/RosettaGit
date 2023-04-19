@@ -16,7 +16,7 @@ __TOC__
 (The author's webpage, the last URL reference from this task's preamble, re-shown below:)
 
 
-(a URL reference): 
+(a URL reference):
 :*   author's  website:        [http://www.shyamsundergupta.com/rare.htm rare numbers]    by Shyam Sunder Gupta.     (lots of hints and some observations).
 
 
@@ -26,7 +26,7 @@ I was considering adding checks   (to the REXX program)   to assert that for:
 ::*   when the number of digits in a rare number is   ''odd'',    the   '''difference'''   must be divisible by   '''9'''.
 ::
 
-n-r is divisible by 9 for all Rare numbers. n-r is also divisible by 99 when the number of digits is odd. (see [[Talk:Rare_numbers#30_mins_not_30_years]])--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 13:48, 21 September 2019 (UTC) 
+n-r is divisible by 9 for all Rare numbers. n-r is also divisible by 99 when the number of digits is odd. (see [[Talk:Rare_numbers#30_mins_not_30_years]])--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 13:48, 21 September 2019 (UTC)
 
 ### 30 mins not 30 years
 
@@ -56,7 +56,7 @@ For each of these candidate ng I must determine if ng+gn is a perfect square.
 56+65 121 y
 45+54  99 n
 34+43  77 n
-23+32  55 n  
+23+32  55 n
 12+21  33 n
 01+10  11 n
 
@@ -136,8 +136,8 @@ Pretty simple,   but slow as molasses in January.
 Not ready for prime time.
 
 == the 2<sup>nd</sup> REXX version ==
-This is the 2<sup>nd</sup> REXX version,   after all of the hints   (properties 
-of   ''rare''   numbers)   within Shyam Sunder Gupta's 
+This is the 2<sup>nd</sup> REXX version,   after all of the hints   (properties
+of   ''rare''   numbers)   within Shyam Sunder Gupta's
 
 [http://www.shyamsundergupta.com/rare.htm <u>webpage</u>]   have been incorporated in this REXX program.
 
@@ -257,14 +257,14 @@ Still pretty sluggish,   like molasses in March.
 
 The above REXX program was modified to generate a group of numbers which were   '''AB'''   (two digit) numbers
 
-concatenated with   '''PQ'''   (two digit)   numbers to yield a list of four digit numbers. 
+concatenated with   '''PQ'''   (two digit)   numbers to yield a list of four digit numbers.
 
 '''AB'''   are the 1<sup>st</sup> two digits of a   ''rare''   number,   and   '''PQ'''   are the   last two digits.
 
 
 This list was sorted and the duplicates removed,   and it formed a list of   (left 2 digits abutted with the right 2 digits)
 
-numbers that every   ''rare''   number must have   (except for the first   ''rare''   number   ('''65'''),   which is found the  ''hard'' 
+numbers that every   ''rare''   number must have   (except for the first   ''rare''   number   ('''65'''),   which is found the  ''hard''
 
 (slow)   way.
 
@@ -274,24 +274,24 @@ Kudos to '''Nigel Galloway''' for the F# version.  I don't know the language wel
 
 ```txt
 nth        Rare Number    elapsed  completed
- 1                  65      97 ms 
+ 1                  65      97 ms
                            120 ms    2
                            126 ms    3
                            127 ms    4
                            140 ms    5
- 2             621,770     148 ms 
+ 2             621,770     148 ms
                            148 ms    6
                            151 ms    7
                            253 ms    8
- 3         281,089,082     261 ms 
+ 3         281,089,082     261 ms
                            283 ms    9
- 4       2,022,652,202     606 ms 
- 5       2,042,832,002    1162 ms 
+ 4       2,022,652,202     606 ms
+ 5       2,042,832,002    1162 ms
                           2528 ms   10
                           3423 ms   11
- 6     872,546,974,178   16583 ms 
- 7     872,568,754,178   17427 ms 
- 8     868,591,084,757   28471 ms 
+ 6     872,546,974,178   16583 ms
+ 7     872,568,754,178   17427 ms
+ 8     868,591,084,757   28471 ms
                          37612 ms   12
 
 ```
@@ -299,7 +299,7 @@ Of course, it can't get too far in the 60 second timeout window.  Sometimes it d
 
 ```txt
 nth        Rare Number    elapsed  completed
- 1   6,979,302,951,885   21129 ms 
+ 1   6,979,302,951,885   21129 ms
                          27470 ms   13
 
 ```
@@ -439,26 +439,26 @@ Tio.run  [https://tio.run/##dVRtb@M2DP6eX8EFaCEnts5276VJagPDvRQHeN3hcsA@BMGgxowj
 
 ```txt
 nth              Rare Number   total time   digs  (et per dig)
- 1                        65       156 ms 
+ 1                        65       156 ms
                                    190 ms    2    (    147 ms)
                                    199 ms    3    (      0 ms)
                                    200 ms    4    (      1 ms)
                                    201 ms    5    (      0 ms)
- 2                   621,770       209 ms 
+ 2                   621,770       209 ms
                                    210 ms    6    (      9 ms)
                                    217 ms    7    (      6 ms)
                                    326 ms    8    (    109 ms)
- 3               281,089,082       335 ms 
+ 3               281,089,082       335 ms
                                    386 ms    9    (     59 ms)
- 4             2,022,652,202       512 ms 
- 5             2,042,832,002       740 ms 
+ 4             2,022,652,202       512 ms
+ 5             2,042,832,002       740 ms
                                   1970 ms   10    (   1583 ms)
                                   3055 ms   11    (   1085 ms)
- 6           872,546,974,178      6688 ms 
- 7           872,568,754,178      6938 ms 
- 8           868,591,084,757     13531 ms 
+ 6           872,546,974,178      6688 ms
+ 7           872,568,754,178      6938 ms
+ 8           868,591,084,757     13531 ms
                                  28013 ms   12    (  24957 ms)
- 9         6,979,302,951,885     34793 ms 
+ 9         6,979,302,951,885     34793 ms
                                  48838 ms   13    (  20825 ms)
 
 ```
@@ -545,7 +545,7 @@ It can't get past 13 digits on Tio.run, due to memory requirement.  Execution ti
 
 :Thanks for trying to do something here.
 
-:Curiously, it's slower than before when I run it several times on my core i7. The range to get to 15 digits is between 46 and 49 seconds whereas the previous version is steady at around 42 seconds. I've recently upgraded from Go version 1.12.9 to 1.13.1 (the latest as I post this) but I doubt whether it would affect this particular program. 
+:Curiously, it's slower than before when I run it several times on my core i7. The range to get to 15 digits is between 46 and 49 seconds whereas the previous version is steady at around 42 seconds. I've recently upgraded from Go version 1.12.9 to 1.13.1 (the latest as I post this) but I doubt whether it would affect this particular program.
 
 :As you're getting 38 seconds for your 'tweaked' version, then your core i7 is probably faster than mine though presumably that time was faster than the original version on the same machine so I'm not sure what to make of it.
 
@@ -581,9 +581,9 @@ P.S. 5 found so far:
 ```txt
 
 Time (hours)  rare number
-       6      219,518,549,668,074,815,912 
+       6      219,518,549,668,074,815,912
       10 1/2  837,982,875,780,054,779,738
-      11 1/2  208,393,425,242,000,083,802 
+      11 1/2  208,393,425,242,000,083,802
       12 1/3  286,694,688,797,362,186,682
       13 2/3  257,661,195,832,219,326,752
 ```

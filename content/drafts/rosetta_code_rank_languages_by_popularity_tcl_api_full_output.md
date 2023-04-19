@@ -135,7 +135,7 @@ Last updated:  --[[User:Aspectcl|Aspectcl]] ([[User talk:Aspectcl|talk]]) 10:34,
            rank: 117               (87 entries)  Frink
            rank: 118               (84 entries)  AutoIt
            rank: 119               (82 entries)  Mercury
-           rank: 120               (81 entries)  МК-61/52
+           rank: 120               (81 entries)  MK-61/52
            rank: 121  [tied]       (79 entries)  Oberon-2
            rank: 121  [tied]       (79 entries)  ZX Spectrum Basic
            rank: 123               (78 entries)  Bc

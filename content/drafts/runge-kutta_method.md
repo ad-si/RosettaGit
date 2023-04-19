@@ -2198,7 +2198,7 @@ for i from 1 step 10 thru 101 do print(x[i], " ", y[i], " ", y[i] - s[i]);
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 ```txt
 ПП	38	П1	ПП	30	П2	ПП	35	П3	2

@@ -516,9 +516,9 @@ ValidPage := WebRequest.ResponseText
 
 ; Replace special characters
 StringReplace, MembsPage, MembsPage, ΜC++, µC++, All
-StringReplace, MembsPage, MembsPage, МК-61/52, MK-61/52, All
+StringReplace, MembsPage, MembsPage, MK-61/52, MK-61/52, All
 StringReplace, ValidPage, ValidPage, ΜC++, µC++, All
-StringReplace, ValidPage, ValidPage, МК-61/52, MK-61/52, All
+StringReplace, ValidPage, ValidPage, MK-61/52, MK-61/52, All
 
 ValidREx := "s)href=""([^""]+)"" title=""Category:([^""]+)"">(?=.*</table>)"
 MembsREx := "title=""Category:(.+?)"">.+?\((\d+) members?\)"
@@ -5206,8 +5206,8 @@ The mechanism is to use a (sparse) stemmed array which holds only the names of l
 
 Programming note:   (REXX doesn't handle Unicode characters)   some special cases that are translated:
 :::*   '''╬£C++'''                                   translated into   '''µC++'''          [Greek micro]
-:::*   '''╨£╨Ü-61/52'''                                                       translated into   '''MK-61/52'''   [Cyrillic   '''МК-61/52'''])
-:::*   '''??-61/52'''                                          translated into   '''MK-61/52'''   [Cyrillic   '''МК-61/52'''])
+:::*   '''╨£╨Ü-61/52'''                                                       translated into   '''MK-61/52'''   [Cyrillic   '''MK-61/52'''])
+:::*   '''??-61/52'''                                          translated into   '''MK-61/52'''   [Cyrillic   '''MK-61/52'''])
 :::*   '''D├⌐j├á Vu'''                                                   translated into   '''Déjà Vu'''
 :::*   '''Cach├⌐'''                                            translated into   '''Caché'''
 :::*   '''F┼ìrmul├ª'''                                                   translated into   '''Fôrmulæ'''

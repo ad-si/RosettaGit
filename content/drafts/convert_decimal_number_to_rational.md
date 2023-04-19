@@ -1698,9 +1698,9 @@ Output:
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
-{{improve|МК-61/52|This example is not clear, please improve it or delete it!}}
+{{improve|MK-61/52|This example is not clear, please improve it or delete it!}}
 
 <lang>П0	П1	ИП1	{x}	x#0	14	КИП4	ИП1	1	0
 *	П1	БП	02	ИП4	10^x	П0	ПA	ИП1	ПB

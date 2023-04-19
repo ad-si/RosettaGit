@@ -5251,7 +5251,7 @@ Alone, the code <tt>3 +</tt> does not mean anything; but once the condition is e
 
 There are no other kind of conditional structures, but the great flexibility of Metafont allows for sure to create "new syntaxes" similar to <tt>switches</tt> or whatever needed.
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 Conditional jumps are done by four instructions, comparing the register X with zero:
 
 <lang>x=0	XX

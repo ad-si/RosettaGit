@@ -2833,7 +2833,7 @@ function var int:multiply(a: var int,b: var int) =
 
 ```
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 ```txt
 

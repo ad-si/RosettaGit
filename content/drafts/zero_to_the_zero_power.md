@@ -1279,7 +1279,7 @@ The result of zero to the zero power is 1
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>Сx	^	x^y	С/П
 ```
 

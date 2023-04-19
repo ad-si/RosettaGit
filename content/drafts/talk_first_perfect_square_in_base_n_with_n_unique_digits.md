@@ -12,16 +12,16 @@ tags = []
 
 ==Leading zeros ?==
 
-Perhaps the 'First perfect square in base 2 with 2 unique digits' is arguably '01' ? 
+Perhaps the 'First perfect square in base 2 with 2 unique digits' is arguably '01' ?
 [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 23:53, 20 May 2019 (UTC)
 
 : Ok, kind of weaselly but fair point. Reworded; First perfect square in base 2 with 2 '''significant''' unique digits. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 01:17, 21 May 2019 (UTC)
 ==Proof==
 The task conjectures that the sum from n=0 to some n of 2n+1 has at least one value of n for every base for which the sum is a number containing all digits in the base. Can you prove this conjecture?--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 21:34, 22 May 2019 (UTC)
 
-:Prove? No. Or, at least, '''I''' can't. Though it is pretty easy to ''find'' perfect squares in bases 2 through 36 that contain 2 through 36 unique digits respectively. I have no reason to not believe that the same holds true for higher bases. Note that there is no constraint that the square in base N has '''only''' N digits; only that each digit from 0 to N-1 appears at least once. The challenge is in finding the '''smallest''' such number. 
+:Prove? No. Or, at least, '''I''' can't. Though it is pretty easy to ''find'' perfect squares in bases 2 through 36 that contain 2 through 36 unique digits respectively. I have no reason to not believe that the same holds true for higher bases. Note that there is no constraint that the square in base N has '''only''' N digits; only that each digit from 0 to N-1 appears at least once. The challenge is in finding the '''smallest''' such number.
 
-:I ran this in the Perl 6 version for bases 17 through 36 searching arbitrarily large squares. Took less than 1/4 second to complete.   
+:I ran this in the Perl 6 version for bases 17 through 36 searching arbitrarily large squares. Took less than 1/4 second to complete.
 
 ```txt
 Base 17:                       5GFF91A47EFG754GBDEC9DB68GGG² == 21G3G8551E554G6B342BGF4018G54650E0GD189C01G6740EAE1CE7F4
@@ -49,7 +49,7 @@ Base 36:    2KJVULABXHKEQZQGYBM5INOYJ5OKGMNXF53URVDRT6EF5KW² == 6LXXRR9OJDK9NUE
 
 :Interesting in the abstract but not very useful. (I suppose the smallest such numbers aren't very useful either but... <shrug>) --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:36, 22 May 2019 (UTC)
 
-::Actually, after a tiny bit of thought, I think I '''can''' prove it. 
+::Actually, after a tiny bit of thought, I think I '''can''' prove it.
 
 ::Base 2: Proof by demonstration. 10² == 100
 
@@ -64,29 +64,29 @@ Squaring a number is easy by continiously doubling the number in base and add, i
 
 ```txt
 
-sq= 00 , n2 = 0C|12dec , bit0 = 0 
-sq= 00 , n2 = 1B|24dec , bit1 = 0 
-sq= 00 , n2 = 39|48dec , bit2 = 1 
+sq= 00 , n2 = 0C|12dec , bit0 = 0
+sq= 00 , n2 = 1B|24dec , bit1 = 0
+sq= 00 , n2 = 39|48dec , bit2 = 1
 +   39
-sq= 39 , n2 = 75|48dec , bit3 = 1 
+sq= 39 , n2 = 75|48dec , bit3 = 1
 +   75
 sq= B1 -> 11*13+1 = 144 == 12*12
 
 ```
 
-Obviously 2n+1 -> 2(n+1)+1  = (2n+1)+2<BR> 
+Obviously 2n+1 -> 2(n+1)+1  = (2n+1)+2<BR>
 Its a pitty that "carry := 0;if num >= base then num := num-base;Carry=1; " are not optimized to cmove in freepascal, like C or freebasic do.
 But the addition has mainly halve the lenght of base conversion.<BR>
 I hardcoded startvalues for base 22 ( glaciel ) that runs in <b>35.529s</b> on TryItOnline
 
 ```txt
 
-start value first 
+start value first
 sqrnum above 1023456789ABCDEFGHIJKL
-start  value 1023456789AF71694A3533  // 15588232346256352156349976289‬dec 
-N  = sqrt(startvalue)     4F942523JK5  //124852842764017dec 
+start  value 1023456789AF71694A3533  // 15588232346256352156349976289‬dec
+N  = sqrt(startvalue)     4F942523JK5  //124852842764017dec
 results in
-n =    4F94788GJ0F  //124.853.426.667.963dec 
+n =    4F94788GJ0F  //124.853.426.667.963dec
 -> sqr ->
 102369FBGDEJ48CHI7LKA5 //15588378150732414428650569369dec
     26.508s
@@ -101,10 +101,10 @@ It takes 583.903.946 long and short additions
 
     $FEFF
    +$0002
-    $FF01 
+    $FF01
 ```
- 
-:Now check which digit overflows.If one digit overflows, its highest bit is not set anymore, so the digit 0 aka $F6 must be added 
+
+:Now check which digit overflows.If one digit overflows, its highest bit is not set anymore, so the digit 0 aka $F6 must be added
 
 ```txt
 
@@ -113,10 +113,10 @@ XOR $8080 (= Overflow-MASK )
 =   $0080 ( now shr by 7 Bits )
 =   $0001 ( Multiply by $F6 -> zero Offset )
 *     $F6 ( = zero offset mask )
-=   $00F6 
+=   $00F6
 +   $FF01 (now ADD pre-result )
 =   $FFF7 ( if one like convert back subtract "zero"
--   $F6F6 
+-   $F6F6
 =   $0901 -> 91
 ```
 
@@ -125,7 +125,7 @@ XOR $8080 (= Overflow-MASK )
 :: think of base 10 and the square of the last 2-digits. of a number.If the last 2 digits of the square are the same you need not to test the complete number.
 
 ```txt
-  0 10 12 20 30 38 40 50 60 62 70 80 88 90 
+  0 10 12 20 30 38 40 50 60 62 70 80 88 90
 86 of 100 are left over not that impressive
 ```
 
@@ -135,8 +135,8 @@ XOR $8080 (= Overflow-MASK )
 ==Space compression and proof ?==
 
 Not sure whether there is a provably reducible pattern here which might yield some more compression of the search space, but there is a literature on the necessary cyclicality of the repeated digit sums of perfect squares, and if there also turned out to be a pattern to the squared digit sum of *these* particular squares, it might be possible to divide the search space by the length of the digit sum cycle for a given base.
-For professional pattern searchers, the output of this problem is adorned for each base below with: 
-# the repeated digit sum for each root and square, 
+For professional pattern searchers, the output of this problem is adorned for each base below with:
+# the repeated digit sum for each root and square,
 # a sample of the cycle of repeated digit sums for squares represented in that base (first 20 perfect squares)
 
 ```txt
@@ -191,7 +191,7 @@ Base      Root    Square
 
 
 A Python sketch FWIW, of a function from a given base and number to a repeated digit sum as an integer.
-(For bases above 10 course, you will also need a `digit` function from the sum to a digit character) 
+(For bases above 10 course, you will also need a `digit` function from the sum to a digit character)
 
 
 ```python
@@ -247,7 +247,7 @@ Any conjectures ?  [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 17:40, 23 May 20
 :: Good !  Someone with a bit of mathematical culture. I wish I had some :-)  [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 21:07, 23 May 2019 (UTC)
 
 :: I have tentatively identified a candidate for the smallest base 17 number. (Still have not completed an exhaustive search of 17 digit numbers.) It would be interesting to see if the below fits in with your conjecture. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:19, 23 May 2019 (UTC)
- 
+
    Base 17:  423F82GA9² == 101246A89CGFB357ED
 :::The residuals base 16 are 1 4 9 16
 0+1+...+15+16 -> 80 -> 8 therefore no 17 digit perfect square made from digits 0..g in base 17 so searching for one is pointless.
@@ -256,12 +256,12 @@ smallest possible number made repeating 1 is 10123456789abcdefg so you only need
 ::::Note that adding a zero to a number doesn't change it's digital root so the repeated digit can not be zero so 10123456789abcdefg must be the smallest candidate--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:45, 25 May 2019 (UTC)
 ::::: Many thanks for confirming that Nigel. I had in fact realized it was true when submitting my original Go entry but omitted to explain the reasoning and so, as Thundergnat rightly pointed out, it looked like I was using a 'magic number'. You're also right that it's not really acceptable to assume an extra digit for bases 13 and 17 without further explanation so in my latest Go submission I'm justifying this from first principles. --[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 17:08, 25 May 2019 (UTC)
 
-:::So digital root 9, I think, drawn from the dual-symmetry base 17 cycle for perfect squares of 
-::: 
+:::So digital root 9, I think, drawn from the dual-symmetry base 17 cycle for perfect squares of
+:::
 ```txt
            [ '1', 'g', '1', '4', '9', 'g', '9', '4', '1', 'g', '1']
 ```
-    
+
 ::: base 13 (digital root 1 for the first match),  also has a dual-symmetry cycle.
 ::: Conceivable that there is some kind of congruence there ?:
 
@@ -403,7 +403,7 @@ Minimum start value: 10234566789ABCDEFGHIJK
 I've just tried to run a variation of my Go program using this approach up to base 21. However, I'm getting a lower value than your Perl 6 program for base 21 itself even though I'm starting from 10234566789ABCDEFGHIJK as you are, viz:
 
 Base 21: 4C9HE5FE27F² == 1023457DG9HI8J6B6KCEAF
- 
+
 compared to your:
 
 Base 21: 4C9HE8175DA² == 1023467JKAIEHB5DF9A8CG
@@ -418,7 +418,7 @@ This has certainly been an interesting task which has taught me a lot so thankyo
 
 I don't know whether any substantial optimizations are still possible, though I'm continuing to think about it as it would be nice to get the run time down for the higher bases. --[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 15:42, 26 May 2019 (UTC)
 
-:Argh. Made faulty assumptions about how square root of big integers are handled in Perl 6. It was only in the display code, not the calculations, so I got the right ''square'' but then displayed an incorrect square root. Will fix that. Thanks. 
+:Argh. Made faulty assumptions about how square root of big integers are handled in Perl 6. It was only in the display code, not the calculations, so I got the right ''square'' but then displayed an incorrect square root. Will fix that. Thanks.
 
 :This turned out to be a more interesting task than I initially anticipated. I learned quite a bit more about number theory than I knew before. We have an interesting cross-section of talented people on here. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 16:41, 26 May 2019 (UTC)
 
@@ -449,7 +449,7 @@ A minor optimization has occurred to me namely that N cannot end with '0', for a
 However, this is impossible because:
 
 * if N² has 'base' digits, it can't then be pandigital; or
-* if N² has 'base+1' digits then the repeated digit would be zero and so the digital root would be unchanged. 
+* if N² has 'base+1' digits then the repeated digit would be zero and so the digital root would be unchanged.
 
 
 As checking for this is very cheap, it may knock about 4 or 5% from the run time for bases >= 20.
@@ -458,12 +458,12 @@ As checking for this is very cheap, it may knock about 4 or 5% from the run time
 Let me do this in base 10 to maintain sanity. As discussed (Space compression and proof) the Digital Root n Base10 for n from 1 to 20 gives 1 4 9 7 7 9 4 1 9 1 4 9 7 7 9 4 1 9 1 4. Digital Root 1023456789 Base10 is 9. So every third square is a possible solution. As discussed (analytically determine minimum start value) start from 31992**2. First find the first value whose Digital Root Base10 is 9. In this case it is 31992. It should then only be necessary to try every third value to find the solution.
 
 ```txt
- 
-> [31992..3..999999] |> List.map(fun n->n*n) |> List.find(fun n->n=1026753849);;  
+
+> [31992..3..999999] |> List.map(fun n->n*n) |> List.find(fun n->n=1026753849);;
 Real: 00:00:00.068, CPU: 00:00:00.110, GC gen0: 5, gen1: 1
 val it : int = 1026753849
 
-> [31992..999999] |> List.map(fun n->n*n) |> List.find(fun n->n=1026753849);;   
+> [31992..999999] |> List.map(fun n->n*n) |> List.find(fun n->n=1026753849);;
 Real: 00:00:00.204, CPU: 00:00:00.300, GC gen0: 14, gen1: 2
 val it : int = 1026753849
 
@@ -471,7 +471,7 @@ val it : int = 1026753849
 
 which seems to save the expected two thirds time. This is a little trickier when an extra digit is required because you would have to check each extra digit separately (they would have different Digital Roots).
 The sequence 1 4 9 7 7 9 4 1 9 1 4 9 7 7 9 4 1 9 1 4 can be produced as (n*n)%9 -> 1 4 0 7 7 0 4 1 0 1 4 0 7 7 0 4 1 0 1 4 for n = 1 to 10 with the usual 0 means 9.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 22:03, 27 May 2019 (UTC)
-: //after watering the garden 
+: //after watering the garden
 
 the digital root of the square of start value n ( pandigital:all digits of [0..Base-1] ) is for even numbers always Base-1.<BR>
 base 10: 0123456789 -> 09 18 27 36 45 -> 0 -> 9  <BR>
@@ -479,7 +479,7 @@ For odd numbers Base % 2 ( casting out 9 aka Base-1 the Base % 2 is left over)<B
 base 9: 012345678 -> 08 17 26 35 4 -> 4 <BR>
 Now you only use such n , that there dgt-root**2 is the dgt-root of a pandigital number. Aha!
 
-for base 9:  dgt root of the square [0..8] = 0  1  4  1  0  1  4  1  0 .. 1  4  1  0 
+for base 9:  dgt root of the square [0..8] = 0  1  4  1  0  1  4  1  0 .. 1  4  1  0
 
 So you only use numbers with digit root  2 and 6
 
@@ -491,9 +491,9 @@ dgt root of the square:  0  1  4  9  2 11  8  7  8 11  2  9  4  1 .. 0
 So one has only to check every 14.th value.<b>Bravo</b>!
 
 
-:Simple but brilliant, Nigel :) 
+:Simple but brilliant, Nigel :)
 
-:Even on my old machine, this has cut the time needed (in Go) to reach base 25 from 60 to under 4 minutes and bases 26 and 27 are now dispatched in under 16 and 30 minutes respectively.  
+:Even on my old machine, this has cut the time needed (in Go) to reach base 25 from 60 to under 4 minutes and bases 26 and 27 are now dispatched in under 16 and 30 minutes respectively.
 
 :I wouldn't spend too much time on optimizing for the cases where an additional digit is required as they take very little time to process anyway as a result of previous optimizations. --[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 10:58, 29 May 2019 (UTC)
 ::@PureFox your calculation of digital root is to much work [[wp:Digital_root#Congruence_formula|Digital_root]] is only one ( n MOD (Base-1) ) calculation.All numbers are >> 1 no need to check for one digit.Similary to this
@@ -510,12 +510,12 @@ func sumDigits(n, base *big.Int) *big.Int {
 :::Thanks for pointing out that I could use the congruence formula to simplify (and possibly quicken up) the calculation of the digital root which is used to help establish the optimum starting value for each base. Unfortunately, I haven't been able to use it as I wasn't able to obtain consistently faster times than before. Although it was marginally faster up to base 25, it then started to diverge and by the time base 28 was reached it was 48 seconds slower than before. This may be due to the vagaries of big.Int arithmetic in Go but thanks anyway for continuing to think about this task which has been a real team effort :) --[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 19:50, 2 June 2019 (UTC)
 
 ==Minimum start for Pascal version==
-I spotted a bug in the output of the extended Pascal version, for the value of base 17.  The values should be 
+I spotted a bug in the output of the extended Pascal version, for the value of base 17.  The values should be
 
 ```txt
 423F82GA9             101246A89CGFB357ED
 ```
- rather than 
+ rather than
 ```txt
 4261CBG65             102369EB54FD9G7CA8
 
@@ -561,7 +561,7 @@ var
       result := StringReplace(Copy(chars, 1, base), IntToStr(n - 1), IntToStr(n - 1) + IntToStr(n), []);
       result := chars[2] + chars[1] + Copy(result, 3, base);
     end;
- 
+
 var
   sdr: array[0..61] of NativeInt;  // sdr - square digital roots, 61 = max
   i, bdr, ad: NativeInt; // bdr - base digital root, ad - added digit
@@ -604,7 +604,7 @@ end.
 ```txt
 BB6GLLFX5V75RA3RRL   102345679JICE8KP5LXA8L3QUPUWFPE4P
 ```
- for Base 34, as there are a number of duplicated digits in the square.  But by considering the ''testcount'' value, I came up with the following result: 
+ for Base 34, as there are a number of duplicated digits in the square.  But by considering the ''testcount'' value, I came up with the following result:
 ```txt
 5SEMXRII42NG8AKSL   102345679JIESRPA8BLCVKDNMHUFTGOQWX
 ```
@@ -613,12 +613,12 @@ which has only one of every digit.  Or, the actual minimum square for base 34 is
 ```txt
 Testcount : 205094427126  5SEMXRII42NG8AKSL 102345679JIESRPA8BLCVKDNMHUFTGOQWX 28900.032 seconds
 ```
- i have changed the program and checked, if the last digit of the number squared leads to the last digit of the squared number, and it does so 
+ i have changed the program and checked, if the last digit of the number squared leads to the last digit of the squared number, and it does so
 ```pascal
     //check last digit sqr(num) mod base must be last digit of sqrnumber
     if (sqr(Num.ntb_dgt[0]) mod Num.ntb_bas) <> sqr2B.ntb_dgt[0] then
 ```
-i stopped Base 36 at 
+i stopped Base 36 at
 ```txt
 3,044,863 Mio tests about 1.1 e12 / day
 ```
@@ -634,24 +634,24 @@ Result : Num 5BAEFC62RGS0KJF  sqr 102234586REOSIGJD9PCF7HBLKANQM
 
 ```
 
-The runtime is really slow by checking every number.I try to find the distances.  
-I checked all solutions for the possibly inserted digits.This makes only sense, if the inserted digit ist "small" , so that one will find a solution, before this inserted digit is reached by sqr(num) 
+The runtime is really slow by checking every number.I try to find the distances.
+I checked all solutions for the possibly inserted digits.This makes only sense, if the inserted digit ist "small" , so that one will find a solution, before this inserted digit is reached by sqr(num)
 
 ```txt
 
  Base 17 -> base-1 = 16 -> (base-1) / 2 = 8
 insert 1 this is the relevant digit -> smallest startvalue.
 dgt/count: digital roots of 3,5,11,13 lead to possible solution
-   1  4 :  3  5 11 13 //distances = +2 = diff1 =(8-2*k) +6= (8-diff1) 
+   1  4 :  3  5 11 13 //distances = +2 = diff1 =(8-2*k) +6= (8-diff1)
          0+3,8-3,8+3,16-3, 16+3,24-3,    n*((Base-1)/2) +/- k (= first found value ) k = 3
-   8  4 :  4  8 12 16 //distances = +4 +4 +4 +4  
-         0+4,8-4,8+4,16-4, 16+4,24-4,   
+   8  4 :  4  8 12 16 //distances = +4 +4 +4 +4
+         0+4,8-4,8+4,16-4, 16+4,24-4,
    9  4 :  1  7  9 15 //distances = +6 +2 +6 +2
-         0+1,8-1,8+1,16-1, 16+1,24-1,   
+         0+1,8-1,8+1,16-1, 16+1,24-1,
 
  Base 21 -> base-1 = 20  -> 10
 insert 6
-   6  4 :  4  6 14 16 // +2 +8 +2 +8  
+   6  4 :  4  6 14 16 // +2 +8 +2 +8
 Ed:       0+4,10-4,10+4,20-4,  20+4...
  Base 29 -> base-1 = 28 -> 14
 insert 2

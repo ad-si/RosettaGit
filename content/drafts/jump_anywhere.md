@@ -1869,7 +1869,7 @@ There is Goto[Label] function in Mathematica. This allows "jumps" to arbitrary l
 ```MBS>goto mylabel;</lang
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 <lang>БП	XX
 ```

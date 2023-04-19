@@ -21,73 +21,73 @@ tags = []
          STM   14,12,12(13)          SAVE REGISTERS 14,15, AND 0-12 IN CALLER'S SAVE AREA
          LR    12,15                 PUT OUR ENTRY ADDRESS(IN R15) INTO OUR BASE REGISTER
          LA    15,SAVE               POINT R15 AT THE *OUR* SAVE AREA (DEFINED AT THE END)
-         ST    15,8(13)              SET FORWARD CHAIN                 
-         ST    13,4(15)              SET BACKWARD CHAIN                
+         ST    15,8(13)              SET FORWARD CHAIN
+         ST    13,4(15)              SET BACKWARD CHAIN
          LR    13,15                 SET R13 TO THE ADDRESS OF OUT NEW SAVE AREA
-**********MAIN*PROGRAM****************************                     
-         LA    10,LOOP               PUT THE LOOP START ADDRESS IN R10 
+**********MAIN*PROGRAM****************************
+         LA    10,LOOP               PUT THE LOOP START ADDRESS IN R10
          LA    8,100                 PUT THE NUMBER OF ITERATIONS IN R8
-         LA    5,=F'1'               INITIALIZE BINARY COUNTER TO ONE  
-LOOP     EQU   *                     LABEL THE LOOP START              
-         A     5,=F'1'               ADD TO BINARY LOOP COUNTER                      
-         AP    NUM,=PL1'1'           ADD TO PACKED LOOP COUNTER                  
-         B     CHK15                 CHECK IF COUNTER IS % 12                          
-LCHK15   EQU   *                     IF NOT, COME BACK                                    
-         B     CHK3                  CHECK IF COUNTER IS % 3                            
-LCHK3    EQU   *                     IF NOT, COME BACK              
-         B     CHK5                  CHECK IF COUNTER IS % 4                            
-LCHK5    EQU   *                     IF NOT, COME BACK          
-         MVC   EOUT,EMSK             PREPARE TO PKD->EBCDIC                        
-         EDMK  EOUT,NUM              PKD->EBCDIC                                    
-ENLOOP   EQU   *                     IF A TEST WAS POSITIVE RETURN HERE                    
-         WTO   MF=(E,WTOSTART)       PRINT RESULT OF LOOP                    
-         BCTR  8,10                  START OVER                                               
-**********HOUSE KEEPING AREA**********************                     
+         LA    5,=F'1'               INITIALIZE BINARY COUNTER TO ONE
+LOOP     EQU   *                     LABEL THE LOOP START
+         A     5,=F'1'               ADD TO BINARY LOOP COUNTER
+         AP    NUM,=PL1'1'           ADD TO PACKED LOOP COUNTER
+         B     CHK15                 CHECK IF COUNTER IS % 12
+LCHK15   EQU   *                     IF NOT, COME BACK
+         B     CHK3                  CHECK IF COUNTER IS % 3
+LCHK3    EQU   *                     IF NOT, COME BACK
+         B     CHK5                  CHECK IF COUNTER IS % 4
+LCHK5    EQU   *                     IF NOT, COME BACK
+         MVC   EOUT,EMSK             PREPARE TO PKD->EBCDIC
+         EDMK  EOUT,NUM              PKD->EBCDIC
+ENLOOP   EQU   *                     IF A TEST WAS POSITIVE RETURN HERE
+         WTO   MF=(E,WTOSTART)       PRINT RESULT OF LOOP
+         BCTR  8,10                  START OVER
+**********HOUSE KEEPING AREA**********************
          L     13,4(13)              RESTORE ADDRESS TO CALLER'S SAVE AREA
          LM    14,12,12(13)          RESTORE REGISTERS AS ON ENTRY
          XR    15,15                 XOR R15 SO IT IS ALL 0 (R15 CREATES THE PROGRAM RETURN CODE)
          BR    14                    RETURN WHERE YOU CAME FROM
 **********SUBROUTINE AREA*************************
-*////////CHK3////////////////////////////////////*                                        
-CHK3     EQU   *                     LABEL ENTRY POINT                                     
-         LR    6,5                   LOAD R6 WITH R5(THE BINARY LOOP INDEX)                      
-         A     6,=F'1'               ADD ONE TO R6                                  
-         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)                  
-         D     6,=F'3'               DIVIDE BY 3                                     
-         C     6,=F'0'               IS REMAINDER 0?                                 
-         BE    DIV3                  IF SO GOTO DIV3 ROUTINE                           
-         B     LCHK3                 IF NOT GO BACK TO LOOP                            
-*////////CHK15///////////////////////////////////*                     
-CHK15    EQU   *                     LABEL ENTRY POINT                                   
+*////////CHK3////////////////////////////////////*
+CHK3     EQU   *                     LABEL ENTRY POINT
          LR    6,5                   LOAD R6 WITH R5(THE BINARY LOOP INDEX)
-         A     6,=F'1'               ADD ONE TO R6                         
-         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)     
-         D     6,=F'15'              DIVIDE BY 15                          
-         C     6,=F'0'               IS REMAINDER 0?                       
-         BE    DIV15                 IF SO GOTO DIV15 ROUTINE              
-         B     LCHK15                IF NOT GO BACK TO LOOP                
-*////////CHK5////////////////////////////////////*                     
-CHK5     EQU   *                     LABEL ENTRY POINT                     
+         A     6,=F'1'               ADD ONE TO R6
+         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)
+         D     6,=F'3'               DIVIDE BY 3
+         C     6,=F'0'               IS REMAINDER 0?
+         BE    DIV3                  IF SO GOTO DIV3 ROUTINE
+         B     LCHK3                 IF NOT GO BACK TO LOOP
+*////////CHK15///////////////////////////////////*
+CHK15    EQU   *                     LABEL ENTRY POINT
          LR    6,5                   LOAD R6 WITH R5(THE BINARY LOOP INDEX)
-         A     6,=F'1'               ADD ONE TO R6                         
-         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)     
-         D     6,=F'5'               DIVIDE BY 5                           
-         C     6,=F'0'               IS REMAINDER 0?                       
-         BE    DIV5                  IF SO GOTO DIV5 ROUTINE              
-         B     LCHK5                 IF NOT GO BACK TO LOOP                
-*////////////////////////////////////////////////*                     
-DIV3     EQU   *                     LABEL ENRTY POINT                                     
-         MVC   EOUT,FIZZ             SAY FIZZ                                      
-         B     ENLOOP                RETURN TO LOOP                                   
-*////////////////////////////////////////////////*                     
-DIV5     EQU   *                     LABEL ENTRY POINT                                  
-         MVC   EOUT,BUZZ             SAY BUZZ                                  
-         B     ENLOOP                RETURN TO LOOP                                  
-*////////////////////////////////////////////////*                     
-DIV15    EQU   *                     LABEL ENTRY POINT                                  
-         MVC   EOUT,FIZZBUZ          SAY FIZZBUZZ                                  
-         B     ENLOOP                RETURN TO LOOP                                  
-**********VARIABLE STORAGE************************                     
+         A     6,=F'1'               ADD ONE TO R6
+         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)
+         D     6,=F'15'              DIVIDE BY 15
+         C     6,=F'0'               IS REMAINDER 0?
+         BE    DIV15                 IF SO GOTO DIV15 ROUTINE
+         B     LCHK15                IF NOT GO BACK TO LOOP
+*////////CHK5////////////////////////////////////*
+CHK5     EQU   *                     LABEL ENTRY POINT
+         LR    6,5                   LOAD R6 WITH R5(THE BINARY LOOP INDEX)
+         A     6,=F'1'               ADD ONE TO R6
+         SRDA  6,32                  SHIFT RD VAL 32 BITS RIGHT(TO R7)
+         D     6,=F'5'               DIVIDE BY 5
+         C     6,=F'0'               IS REMAINDER 0?
+         BE    DIV5                  IF SO GOTO DIV5 ROUTINE
+         B     LCHK5                 IF NOT GO BACK TO LOOP
+*////////////////////////////////////////////////*
+DIV3     EQU   *                     LABEL ENRTY POINT
+         MVC   EOUT,FIZZ             SAY FIZZ
+         B     ENLOOP                RETURN TO LOOP
+*////////////////////////////////////////////////*
+DIV5     EQU   *                     LABEL ENTRY POINT
+         MVC   EOUT,BUZZ             SAY BUZZ
+         B     ENLOOP                RETURN TO LOOP
+*////////////////////////////////////////////////*
+DIV15    EQU   *                     LABEL ENTRY POINT
+         MVC   EOUT,FIZZBUZ          SAY FIZZBUZZ
+         B     ENLOOP                RETURN TO LOOP
+**********VARIABLE STORAGE************************
 FIZZBUZ  DC    CL10'FIZZBUZZ!'       CREATE A STRING IN MEMORY, LABEL THE ADDRESS FIZZBUZ
 FIZZ     DC    CL10'FIZZ!'           CREATE A STRING IN MEMORY, LABEL THE ADDRESS FIZZ
 BUZZ     DC    CL10'BUZZ!'           CREATE A STRING IN MEMORY, LABEL THE ADDRESS BUZZ
@@ -96,11 +96,11 @@ TEMP     DS    D                     RESERVE A DOUBLE WORD (8 BYTES) IN MEMORY, 
 EMSK     DC    X'402020202020'       CREATE A HEX ARRAY IN MEMORY, LABEL IT EMSK
 WTOSTART DC    Y(WTOEND-*,0)         LABEL THIS WTOSTART, DEFINE A CONSTANT ADDRESS EQUAL TO
 *                                    "WTOEND" MINUS HERE(*)
-EOUT     DS    CL10                  RESERVE SPACE FOR 10 CHARACTERS, LABEL THIS EOUT           
+EOUT     DS    CL10                  RESERVE SPACE FOR 10 CHARACTERS, LABEL THIS EOUT
 WTOEND   EQU   *                     THE MEMORY ADDRESS LOCATED HERE IS LABELED WTOEND
-**********HOUSE KEEPING AREA**********************                   
-SAVE     DS    18F                                                     
-         END   HELLO                                                   
+**********HOUSE KEEPING AREA**********************
+SAVE     DS    18F
+         END   HELLO
 ```
 
 
@@ -108,10 +108,10 @@ SAVE     DS    18F
 
 ## 6502 Assembly
 
-The modulus operation is rather expensive on the 6502, 
+The modulus operation is rather expensive on the 6502,
 so a simple counter solution was chosen.
-<lang>	.lf  fzbz6502.lst	
-	.cr  6502	
+<lang>	.lf  fzbz6502.lst
+	.cr  6502
 	.tf  fzbz6502.obj,ap1
 ;------------------------------------------------------
 ; FizzBuzz for the 6502 by barrym95838 2013.04.04
@@ -121,8 +121,8 @@ so a simple counter solution was chosen.
 ;   BASIC in ROM (or language card)
 ; Tested and verified on AppleWin 1.20.0.0
 ;------------------------------------------------------
-; Constant Section	
-;			
+; Constant Section
+;
 FizzCt	 =   3		;Fizz Counter (must be < 255)
 BuzzCt	 =   5		;Buzz Counter (must be < 255)
 Lower	 =   1		;Loop start value (must be 1)
@@ -132,37 +132,37 @@ IntOut	 =   $ed24	;Specific to ROM Applesoft
 ;
 ### ================================================
 
-	.or  $0f00	
+	.or  $0f00
 ;------------------------------------------------------
-; The main program	
-;			
-main	ldx  #Lower	;init LoopCt	
-	lda  #FizzCt	
+; The main program
+;
+main	ldx  #Lower	;init LoopCt
+	lda  #FizzCt
 	sta  Fizz	;init FizzCt
-	lda  #BuzzCt	
+	lda  #BuzzCt
 	sta  Buzz	;init BuzzCt
 next	ldy  #0		;reset string pointer (y)
 	dec  Fizz	;LoopCt mod FizzCt == 0?
 	bne  noFizz	;  yes:
-	lda  #FizzCt	
+	lda  #FizzCt
 	sta  Fizz	;    restore FizzCt
 	ldy  #sFizz-str	;    point y to "Fizz"
 	jsr  puts	;    output "Fizz"
 noFizz	dec  Buzz	;LoopCt mod BuzzCt == 0?
 	bne  noBuzz	;  yes:
-	lda  #BuzzCt	
+	lda  #BuzzCt
 	sta  Buzz	;    restore BuzzCt
 	ldy  #sBuzz-str	;    point y to "Buzz"
 	jsr  puts	;    output "Buzz"
 noBuzz	dey  		;any output yet this cycle?
 	bpl  noInt	;  no:
 	txa  		;    save LoopCt
-	pha  		
+	pha
 	lda  #0		;    set up regs for IntOut
 	jsr  IntOut	;    output itoa(LoopCt)
-	pla  		
+	pla
 	tax  		;    restore LoopCt
-noInt	ldy  #sNL-str	
+noInt	ldy  #sNL-str
 	jsr  puts	;output "\n"
 	inx  		;increment LoopCt
 	cpx  #Upper+1	;LoopCt >= Upper+1?
@@ -171,7 +171,7 @@ noInt	ldy  #sNL-str
 ;------------------------------------------------------
 ; Output zero-terminated string @ (str+y)
 ;   (Entry point is puts, not outch)
-;			
+;
 outch	jsr  CharOut	;output string char
 	iny  		;advance string ptr
 puts	lda  str,y	;get a string char
@@ -179,18 +179,18 @@ puts	lda  str,y	;get a string char
 	rts  		;return
 ;------------------------------------------------------
 ; String literals (in '+128' ascii, Apple II style)
-;			
+;
 str:	;		string base offset
-sFizz	.az	-"Fizz"	
-sBuzz	.az	-"Buzz"	
-sNL	.az	-#13	
+sFizz	.az	-"Fizz"
+sBuzz	.az	-"Buzz"
+sNL	.az	-#13
 ;------------------------------------------------------
-; Variable Section	
-;			
-Fizz	.da	#0	
-Buzz	.da	#0	
+; Variable Section
+;
+Fizz	.da	#0
+Buzz	.da	#0
 ;------------------------------------------------------
-	.en  		
+	.en
 ```
 
 
@@ -303,39 +303,39 @@ buzz
 
 ## 8086 Assembly
 
-Assembly programs that output a number on the screen are programmable in two ways: calculating the number in binary to convert it next in ASCII for output, 
-or keeping the number in Binary Coded Decimal (BCD) notation 
-to speed up the output to the screen, because 
-no binary to decimal conversion needs to be applied. 
+Assembly programs that output a number on the screen are programmable in two ways: calculating the number in binary to convert it next in ASCII for output,
+or keeping the number in Binary Coded Decimal (BCD) notation
+to speed up the output to the screen, because
+no binary to decimal conversion needs to be applied.
 
-The first approach is the most useful because the binary number 
-is immediately recognizable to the computer, but, in a problem 
-where the calculations are very few and simple and the final result 
-is mainly text on the screen, using binary numbers would speed up 
+The first approach is the most useful because the binary number
+is immediately recognizable to the computer, but, in a problem
+where the calculations are very few and simple and the final result
+is mainly text on the screen, using binary numbers would speed up
 calculations, but will greatly slow down the output.
 
-The BCD used is based on the ASCII text encoding: 
-zero is the hexadecimal byte 30, and nine is the hexadecimal byte 39. 
+The BCD used is based on the ASCII text encoding:
+zero is the hexadecimal byte 30, and nine is the hexadecimal byte 39.
 
-The BCD number is kept in the DX register, 
-the most significant digit in DH and the less significant digit in DL. 
+The BCD number is kept in the DX register,
+the most significant digit in DH and the less significant digit in DL.
 
-See the comments for further explaining of the program's structure, 
-which is meant for speed and compactness rather than modularity: 
+See the comments for further explaining of the program's structure,
+which is meant for speed and compactness rather than modularity:
 there are no subroutines reusable in another program without being edited.
 
-This program is 102 bytes big when assembled. 
-The program is written to be run in an IBM PC because the 8086 processor 
-alone does not provide circuitry for any kind of direct screen output. 
+This program is 102 bytes big when assembled.
+The program is written to be run in an IBM PC because the 8086 processor
+alone does not provide circuitry for any kind of direct screen output.
 
-At least, I should point out that this program is a little bugged: 
-the biggest number representable with the BCD system chosen is 99, 
-but the last number displayed is 100, which would be written as :0 
-because the program does provide overflow detecting only for the units, 
-not for tens (39 hex + 1 is 3A, that is the colon symbol in ASCII). 
+At least, I should point out that this program is a little bugged:
+the biggest number representable with the BCD system chosen is 99,
+but the last number displayed is 100, which would be written as :0
+because the program does provide overflow detecting only for the units,
+not for tens (39 hex + 1 is 3A, that is the colon symbol in ASCII).
 
-However, this bug is hidden by the fact that the number 100 
-is a multiple of five, so the number is never displayed, 
+However, this bug is hidden by the fact that the number 100
+is a multiple of five, so the number is never displayed,
 because it is replaced by the string "buzz".
 
 ```asm
@@ -354,13 +354,13 @@ xor cx,cx           ; CX is a counter that will be used
 xor bh,bh           ; BH is the counter for counting
                     ;multiples of three.
 
-writeloop:          ; Increment the BCD number in DX.          
+writeloop:          ; Increment the BCD number in DX.
 inc dl              ; Increment the low digit
 cmp dl,3Ah          ; If it does not overflow nine,
 jnz writeloop1      ;continue with the program,
 mov dl,30h          ;otherwise reset it to zero and
 inc dh              ;increment the high digit
-writeloop1:         
+writeloop1:
 inc bh              ; Increment the BH counter.
 cmp bh,03h          ; If it reached three, we did
                     ;increment the number three times
@@ -409,7 +409,7 @@ call write          ;that is written on the screen.
 jmp writespace      ; Write a space to return to the main
                     ;loop.
 
-write:              ; Write subroutine: 
+write:              ; Write subroutine:
 mov cl,04h          ; Set CX to the lenght of the string:
                     ;both strings are 4 bytes long.
 write1:
@@ -506,7 +506,7 @@ call wr_char
 ld a,10
 call wr_char
 
-; increment rightmost digit 
+; increment rightmost digit
 ld hl,count+2
 inc (hl)
 ld a,(hl)

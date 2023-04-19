@@ -880,7 +880,7 @@ Hello, world!
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 <lang>1	П4
 

@@ -1645,7 +1645,7 @@ Output:
 ```
 
 
-## [F#](/languages/f_sharp)
+## [F#](/languages/fsharp)
 
 ### The Function
 

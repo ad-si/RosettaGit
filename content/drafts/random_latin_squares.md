@@ -30,7 +30,7 @@ A randomised Latin square generates random configurations of the symbols for any
 # Create a function/routine/procedure/method/... that given <code>n</code> generates a randomised Latin square of size <code>n</code>.
 # Use the function to generate ''and show here'', two randomly generated squares of size 5.
 
-;Note: 
+;Note:
 Strict ''Uniformity'' in the random generation is a hard problem and '''not''' a requirement of the task.
 
 ;Reference:
@@ -262,7 +262,7 @@ Sample run:
 
 ### Latin Squares in Reduced Form method
 
-Unlike the "Restarting Row" method, this method does produce uniformly random Latin squares for n <= 6 (see Talk page) but is more involved and therefore slower. It reuses some (suitably adjusted) code from the [https://rosettacode.org/wiki/Latin_Squares_in_reduced_form#Go Latin Squares in Reduced Form] and [https://rosettacode.org/wiki/Permutations#non-recursive.2C_lexicographical_order Permutations] tasks. 
+Unlike the "Restarting Row" method, this method does produce uniformly random Latin squares for n <= 6 (see Talk page) but is more involved and therefore slower. It reuses some (suitably adjusted) code from the [https://rosettacode.org/wiki/Latin_Squares_in_reduced_form#Go Latin Squares in Reduced Form] and [https://rosettacode.org/wiki/Permutations#non-recursive.2C_lexicographical_order Permutations] tasks.
 
 ```go
 package main
@@ -433,7 +433,7 @@ func pList(n int) matrix {
     return perms
 }
 
-func generateLatinSquares(n, tests, echo int) {   
+func generateLatinSquares(n, tests, echo int) {
     rls := reducedLatinSquares(n)
     perms := pList(n)
     perms2 := pList(n - 1)
@@ -528,19 +528,19 @@ Sample run:
 
 Two randomly generated latin squares of order 5 are:
 
-2 1 3 4 0 
-4 3 0 1 2 
-1 0 2 3 4 
-0 4 1 2 3 
-3 2 4 0 1 
+2 1 3 4 0
+4 3 0 1 2
+1 0 2 3 4
+0 4 1 2 3
+3 2 4 0 1
 
-1 2 3 4 0 
-0 3 4 2 1 
-2 4 0 1 3 
-4 0 1 3 2 
-3 1 2 0 4 
+1 2 3 4 0
+0 3 4 2 1
+2 4 0 1 3
+4 0 1 3 2
+3 1 2 0 4
 
-Out of 1,000,000 randomly generated latin squares of order 4, 
+Out of 1,000,000 randomly generated latin squares of order 4,
 of which there are 576 instances ( => expected 1736 per instance),
 the following squares occurred the number of times shown:
 
@@ -551,12 +551,12 @@ the following squares occurred the number of times shown:
 
 A randomly generated latin square of order 6 is:
 
-3 5 1 0 4 2 
-2 0 5 4 1 3 
-0 4 2 5 3 1 
-1 3 4 2 0 5 
-5 1 0 3 2 4 
-4 2 3 1 5 0 
+3 5 1 0 4 2
+2 0 5 4 1 3
+0 4 2 5 3 1
+1 3 4 2 0 5
+5 1 0 3 2 4
+4 2 3 1 5 0
 
 ```
 
@@ -631,7 +631,7 @@ new Latin(5);
 1 2 3 5 4
 5 1 2 4 3
 2 4 5 3 1
- 
+
 4 5 1 3 2
 3 1 4 2 5
 5 4 2 1 3
@@ -805,10 +805,10 @@ Module LatinSquare (n, z=1, f$="latin.dat", NewFile As Boolean=False) {
 		For i=1 To n
 			Print line(i)
 			Print #f, line(i)#Fold$(ArrayToString)
-		Next 
+		Next
 		Print TimeCount
 		Refresh
-	Next 
+	Next
 	close #f
 	Flush  ' empty stack again
 	End
@@ -846,7 +846,7 @@ Module LatinSquare (n, z=1, f$="latin.dat", NewFile As Boolean=False) {
 			Next
 		Until k=0
 		For i=1 To n
-			a=line(i) 
+			a=line(i)
 			Append a, (Stackitem(i),)
 		Next
 	End Sub
@@ -939,48 +939,48 @@ display random latin-square, :size($_) for 12, 2, 1;
 {{out|Sample output}}
 
 ```txt
- V   Z   M   J   U 
- Z   M   U   V   J 
- U   J   V   M   Z 
- J   V   Z   U   M 
- M   U   J   Z   V 
-   
- B   H   K   U   D 
- H   D   U   B   K 
- K   U   H   D   B 
- U   B   D   K   H 
- D   K   B   H   U 
-   
- I   P   Y 
- P   Y   I 
- Y   I   P 
-   
- Y   J   K   E   Z   B   I   W   H 
- E   Y   B   W   K   H   J   Z   I 
- B   K   Y   H   J   E   Z   I   W 
- I   H   W   J   E   Z   B   Y   K 
- J   I   Z   Y   W   K   H   E   B 
- W   E   H   Z   B   I   Y   K   J 
- H   B   E   I   Y   W   K   J   Z 
- K   Z   J   B   I   Y   W   H   E 
- Z   W   I   K   H   J   E   B   Y 
-   
- L   Q   E   M   A   T   Z   C   N   Y   R   D 
- Q   R   Y   L   N   D   C   E   M   T   A   Z 
- E   Y   M   C   D   Q   A   N   Z   L   T   R 
- M   L   C   N   R   Y   D   Z   A   E   Q   T 
- N   M   Z   A   Q   E   T   D   R   C   L   Y 
- T   D   Q   Y   C   A   M   L   E   R   Z   N 
- R   A   T   Q   M   Z   E   Y   L   D   N   C 
- D   Z   R   T   E   N   L   Q   Y   A   C   M 
- Y   T   L   E   Z   R   N   M   C   Q   D   A 
- A   N   D   R   L   C   Y   T   Q   Z   M   E 
- Z   C   A   D   Y   M   Q   R   T   N   E   L 
- C   E   N   Z   T   L   R   A   D   M   Y   Q 
-   
- Y   G 
- G   Y 
-   
+ V   Z   M   J   U
+ Z   M   U   V   J
+ U   J   V   M   Z
+ J   V   Z   U   M
+ M   U   J   Z   V
+
+ B   H   K   U   D
+ H   D   U   B   K
+ K   U   H   D   B
+ U   B   D   K   H
+ D   K   B   H   U
+
+ I   P   Y
+ P   Y   I
+ Y   I   P
+
+ Y   J   K   E   Z   B   I   W   H
+ E   Y   B   W   K   H   J   Z   I
+ B   K   Y   H   J   E   Z   I   W
+ I   H   W   J   E   Z   B   Y   K
+ J   I   Z   Y   W   K   H   E   B
+ W   E   H   Z   B   I   Y   K   J
+ H   B   E   I   Y   W   K   J   Z
+ K   Z   J   B   I   Y   W   H   E
+ Z   W   I   K   H   J   E   B   Y
+
+ L   Q   E   M   A   T   Z   C   N   Y   R   D
+ Q   R   Y   L   N   D   C   E   M   T   A   Z
+ E   Y   M   C   D   Q   A   N   Z   L   T   R
+ M   L   C   N   R   Y   D   Z   A   E   Q   T
+ N   M   Z   A   Q   E   T   D   R   C   L   Y
+ T   D   Q   Y   C   A   M   L   E   R   Z   N
+ R   A   T   Q   M   Z   E   Y   L   D   N   C
+ D   Z   R   T   E   N   L   Q   Y   A   C   M
+ Y   T   L   E   Z   R   N   M   C   Q   D   A
+ A   N   D   R   L   C   Y   T   Q   Z   M   E
+ Z   C   A   D   Y   M   Q   R   T   N   E   L
+ C   E   N   Z   T   L   R   A   D   M   Y   Q
+
+ Y   G
+ G   Y
+
  I
 ```
 

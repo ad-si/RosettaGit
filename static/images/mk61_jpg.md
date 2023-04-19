@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-МК-61.
+MK-61.

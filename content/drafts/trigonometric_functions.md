@@ -2756,7 +2756,7 @@ arctan 0.5 in degrees = 26.565051
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 ```txt
 

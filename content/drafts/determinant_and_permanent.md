@@ -1655,7 +1655,7 @@ det:    18      permanent:      10
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 
 ```txt
 

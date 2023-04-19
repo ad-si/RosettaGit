@@ -3446,7 +3446,7 @@ show max("hello", "world", "Hello World");
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>П0	С/П	x=0	07	ИП0	x<0	00	max	БП	00
 ```
 

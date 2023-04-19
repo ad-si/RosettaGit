@@ -810,7 +810,7 @@ Total bare <lang> for language uBasic/4tH: 72
 Total bare <lang> for language x86 Assembly: 1
 Total bare <lang> for language zkl: 2
 Total bare <lang> for language zonnon: 1
-Total bare <lang> for language МК-61/52: 62
+Total bare <lang> for language MK-61/52: 62
 
 Draft programming tasks:
 Total bare tags: 30.
@@ -825,7 +825,7 @@ Total bare <lang> for language M2000 Interpreter: 1
 Total bare <lang> for language Mathematica: 1
 Total bare <lang> for language Racket: 1
 Total bare <lang> for language uBasic/4tH: 1
-Total bare <lang> for language МК-61/52: 2
+Total bare <lang> for language MK-61/52: 2
 
 ```
 
@@ -921,7 +921,7 @@ There are 35 bare lang tags in uBasic/4tH
 There are 1 bare lang tags in Ursa
 There are 3 bare lang tags in PicoLisp
 There are 15 bare lang tags in CoffeeScript
-There are 29 bare lang tags in МК-61/52
+There are 29 bare lang tags in MK-61/52
 There are 2 bare lang tags in APL
 There are 10 bare lang tags in ERRE
 There are 4 bare lang tags in Excel
@@ -1064,7 +1064,7 @@ This the output on May 21, 2015.
 
 1 in 360 Assembly ([[FizzBuzz]])
 1 in 4DOS Batch ([[100 doors]])
-71 in МК-61/52 ([[Arithmetic-geometric mean]], [[Arithmetic-geometric mean/Calculate Pi]], [[Arithmetic/Complex]], [[Arithmetic/Integer]], [[Averages/Arithmetic mean]], [[Averages/Root mean square]], [[Balanced ternary]], [[Circles of given radius through two points]], [[Combinations and permutations]], [[Conditional structures]], [[Convert decimal number to rational]], [[Count in octal]], [[Day of the week]], [[Dot product]], [[Empty program]], [[Ethiopian multiplication]], [[Euler method]], [[Evaluate binomial coefficients]], [[Even or odd]], [[Execute a Markov algorithm]], [[Exponentiation operator]], [[Fibonacci sequence]], [[Find limit of recursion]], [[Greatest element of a list]], [[Haversine formula]], [[Higher-order functions]], [[Holidays related to Easter]], [[Horizontal sundial calculations]], [[Horner's rule for polynomial evaluation]], [[Integer comparison]], [[Integer sequence]], [[Jump anywhere]], [[Leap year]], [[Least common multiple]], [[Loops/Break]], [[Loops/Do-while]], [[Loops/Downward for]], [[Loops/For with a specified step]], [[Loops/Infinite]], [[Loops/While]], [[Main step of GOST 28147-89]], [[Middle three digits]], [[Modular inverse]], [[Monte Carlo methods]], [[Multifactorial]], [[Multiplication tables]], [[Nth root]], [[Pick random element]], [[Polynomial regression]], [[Primality by trial division]], [[Program termination]], [[Random numbers]], [[Real constants and functions]], [[Roots of a quadratic function]], [[Roots of unity]], [[Sequence of non-squares]], [[Standard deviation]], [[Sum and product of an array]], [[Sum digits of an integer]], [[Sum multiples of 3 and 5]], [[Sum of squares]], [[Ternary logic]], [[Towers of Hanoi]], [[Vector products]], [[Voronoi diagram]], [[Zero to the zero power]])
+71 in MK-61/52 ([[Arithmetic-geometric mean]], [[Arithmetic-geometric mean/Calculate Pi]], [[Arithmetic/Complex]], [[Arithmetic/Integer]], [[Averages/Arithmetic mean]], [[Averages/Root mean square]], [[Balanced ternary]], [[Circles of given radius through two points]], [[Combinations and permutations]], [[Conditional structures]], [[Convert decimal number to rational]], [[Count in octal]], [[Day of the week]], [[Dot product]], [[Empty program]], [[Ethiopian multiplication]], [[Euler method]], [[Evaluate binomial coefficients]], [[Even or odd]], [[Execute a Markov algorithm]], [[Exponentiation operator]], [[Fibonacci sequence]], [[Find limit of recursion]], [[Greatest element of a list]], [[Haversine formula]], [[Higher-order functions]], [[Holidays related to Easter]], [[Horizontal sundial calculations]], [[Horner's rule for polynomial evaluation]], [[Integer comparison]], [[Integer sequence]], [[Jump anywhere]], [[Leap year]], [[Least common multiple]], [[Loops/Break]], [[Loops/Do-while]], [[Loops/Downward for]], [[Loops/For with a specified step]], [[Loops/Infinite]], [[Loops/While]], [[Main step of GOST 28147-89]], [[Middle three digits]], [[Modular inverse]], [[Monte Carlo methods]], [[Multifactorial]], [[Multiplication tables]], [[Nth root]], [[Pick random element]], [[Polynomial regression]], [[Primality by trial division]], [[Program termination]], [[Random numbers]], [[Real constants and functions]], [[Roots of a quadratic function]], [[Roots of unity]], [[Sequence of non-squares]], [[Standard deviation]], [[Sum and product of an array]], [[Sum digits of an integer]], [[Sum multiples of 3 and 5]], [[Sum of squares]], [[Ternary logic]], [[Towers of Hanoi]], [[Vector products]], [[Voronoi diagram]], [[Zero to the zero power]])
 2 in 6502 Assembly ([[FizzBuzz]], [[String case]])
 2 in 6800 Assembly ([[Hello world/Text]], [[Loops/Infinite]])
 1 in ABAP ([[FizzBuzz]])
@@ -1665,7 +1665,7 @@ processing Greatest_subsequential_sum
 2 in Euler Math Toolbox (["Greatest_common_divisor", "Greatest_element_of_a_list"])
 1 in gnuplot (["Greatest_common_divisor"])
 1 in Bracmat (["Greatest_element_of_a_list"])
-2 in МК-61/52 (["Greatest_element_of_a_list", "Greatest_element_of_a_list"])
+2 in MK-61/52 (["Greatest_element_of_a_list", "Greatest_element_of_a_list"])
 1 in ooRexx (["Greatest_element_of_a_list"])
 2 in Mathprog (["Greatest_subsequential_sum", "Greatest_subsequential_sum"])
 1 in PHP (["Greatest_subsequential_sum"])
@@ -1761,7 +1761,7 @@ println(format(bare) mkString "\n")
 10 bare language tags in 3 tasks:
 2 in Mathprog (Greatest_subsequential_sum)
 1 in gnuplot (Greatest_common_divisor)
-2 in МК-61/52 (Greatest_element_of_a_list)
+2 in MK-61/52 (Greatest_element_of_a_list)
 1 in Bracmat (Greatest_element_of_a_list)
 1 in PHP (Greatest_subsequential_sum)
 2 in Euler Math Toolbox (Greatest_common_divisor,Greatest_element_of_a_list)
@@ -1945,7 +1945,7 @@ processing Greatest_subsequential_sum
 1 in gnuplot: Greatest_common_divisor
 1 in ooRexx: Greatest_element_of_a_list
 2 in uBasic/4tH: Greatest_common_divisor,Greatest_element_of_a_list
-2 in МК-61/52: Greatest_element_of_a_list,Greatest_element_of_a_list
+2 in MK-61/52: Greatest_element_of_a_list,Greatest_element_of_a_list
 
 ```
 

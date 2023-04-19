@@ -23,7 +23,7 @@ Let's work base 3 by hand:
 The task is to reconstruct as much, and possibly more, of the table in [https://oeis.org/A103443 the OEIS] as you are able.
 
 Related Tasks:
-* [[Miller-Rabin primality test]]
+* [Miller-Rabin primality test](./miller-rabin_primality_test)
 
 
 
@@ -1999,12 +1999,13 @@ There are   75 left-truncatable primes in base 11, where largest is 2276005673
 ```
 
 
-
 ## Swift
 
 {{trans|Python}}
 {{libheader|Attaswift BigInt}}
-<lang>import BigInt
+
+```swift
+import BigInt
 
 func largestLeftTruncatablePrime(_ base: Int) -> BigInt {
   var radix = 0

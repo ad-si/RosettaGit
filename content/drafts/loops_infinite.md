@@ -1867,7 +1867,7 @@ Goto loopStart
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>1	2	3	4	С/П	БП	00
 ```
 

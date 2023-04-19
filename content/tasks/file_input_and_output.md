@@ -10,8 +10,14 @@ task = """
 [taxonomies]
 categories = ["task"]
 tags = ["basic", "cli"]
-languages = ["haskell", "rust"]
+languages = [
+  "haskell",
+  "javascript",
+  "python",
+  "rust",
+]
 +++
+
 
 ## [Haskell](/languages/haskell)
 
@@ -33,7 +39,6 @@ o.write(i.read())
 ```
 
 
-
 ## [Rust](/languages/rust)
 
 **Note:**
@@ -51,6 +56,7 @@ fn main() {
   file.write_all(&data).unwrap();
 }
 ```
+
 
 ## [JavaScript](/languages/javascript)
 

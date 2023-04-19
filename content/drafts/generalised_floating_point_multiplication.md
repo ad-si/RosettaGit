@@ -28,7 +28,7 @@ For this task, implement balanced ternary representation of real numbers with th
 # The Template should successfully handle these multiplications in other bases.  In particular  [[wp:Septemvigesimal|Septemvigesimal]] and "Balanced base-27".
 
 Optionally:
-* For faster ''long'' multiplication use [[wp:Karatsuba_algorithm|Karatsuba algorithm]]. 
+* For faster ''long'' multiplication use [[wp:Karatsuba_algorithm|Karatsuba algorithm]].
 * Using the Karatsuba algorithm, spread the computation across multiple CPUs.
 
 '''Test case 1''' - With balanced ternaries ''a'' from string "+-0++0+.+-0++0+", ''b'' from native real -436.436, ''c'' "+-++-.+-++-":
@@ -46,7 +46,7 @@ If it is not possible to implement code in syntax of the specific language then:
 <!--
 '''Test case:'''
 
-Use the Template to define [[wp:Arbitrary-precision arithmetic|Arbitrary precision multiplication]] on numbers stored in Balanced Ternary. 
+Use the Template to define [[wp:Arbitrary-precision arithmetic|Arbitrary precision multiplication]] on numbers stored in Balanced Ternary.
 
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Calculate the terms for -7 to 21 in this sequence of calculations
@@ -141,9 +141,9 @@ PR READ "Template.Big_float_BCD.Base.a68" PR # [[rc:Generalised floating point a
 # First: define the attributes of the arithmetic we are using. #
 ################################################################
 arithmetic := (
-  # balanced = # TRUE, 
-  # carry = # TRUE, 
-  # base = # 3, # width = # 1, # places = # 81, # order = # -1, 
+  # balanced = # TRUE,
+  # carry = # TRUE,
+  # base = # 3, # width = # 1, # places = # 81, # order = # -1,
   # repr = # USTRING("-","0","+")[@-1]
 );
 
@@ -939,11 +939,11 @@ Q |   +00- |  +-0-+ |  +00-0 |  ++0-- | +---++ | +-0-+0 | +-+-+- | +0--0+ | +00-
 
 ## Phix
 
-Note regarding requirement #5: While this meets my definition of "reasonably efficient", 
-it should not shock anyone that this kind of "string maths" which works digit-by-digit 
-and uses repeated addition (eg *999 performs 27 additions) could easily be 10,000 times 
+Note regarding requirement #5: While this meets my definition of "reasonably efficient",
+it should not shock anyone that this kind of "string maths" which works digit-by-digit
+and uses repeated addition (eg *999 performs 27 additions) could easily be 10,000 times
 slower than raw hardware or a carefully optimised library such as gmp. However this does
-offer perfect accuracy in any given base, whereas gmp, for all it's brilliance, can hold 
+offer perfect accuracy in any given base, whereas gmp, for all it's brilliance, can hold
 0.1 accurate to several million decimal places, but just never quite exact.
 
 
@@ -966,9 +966,9 @@ constant binary = "01",
 --Note: I have seen some schemes where balanced-base-27 uses
 --====  the same character set as septemvigesimal, with 'D'
 --      representing 0, and wonky_donkey_27 with 'M'==0(!).
---      These routines do not support that directly, except 
+--      These routines do not support that directly, except
 --      (perhaps) via a simple mapping on all inputs/outputs.
---      It may be possible to add a defaulted parameter such 
+--      It may be possible to add a defaulted parameter such
 --      as zero='0' - left as an exercise for the reader.
 --      Admittedly that balanced_base27 is entirely my own
 --      invention, just for this specific task.
@@ -1023,7 +1023,7 @@ function negate(string b, alphabet)
     end if
     return b
 end function
- 
+
 function b_trim(string b)
 -- (common code)
     -- trim trailing ".000"
@@ -1059,7 +1059,7 @@ end function
 
 function b2b(string n, alphabet, alphabet2)
 --
--- convert a string from alphabet to alphabet2, 
+-- convert a string from alphabet to alphabet2,
 --  eg b2b("8",decimal,balancedternary) yields "+0-",
 --   & b2b("+0-",balancedternary,decimal) yields "8",
 --
@@ -1131,7 +1131,7 @@ function b2b(string n, alphabet, alphabet2)
                     --
                     -- this is a digit-by-digit multiply loop
                     -- eg for [.]"1415" decimal->decimal we
-                    -- would repeatedly multiply by 10, giving 
+                    -- would repeatedly multiply by 10, giving
                     -- 1 and "4150", then 4 and "1500", then
                     -- 1 and "5000", then 5 and "0000". We
                     -- strip zeroes between each output digit
@@ -1163,16 +1163,16 @@ function atm2b(atom d, string alphabet)
 -- convert d to a string in the specified base,
 --   eg atm2b(65535,hexadecimal) => "FFFF"
 --
--- As a standard feature of phix, you can actually specify 
+-- As a standard feature of phix, you can actually specify
 -- d in any number base between 2 and 36, eg 0(13)168 is
 -- equivalent to 255 (see test\t37misc.exw for more), but
 -- not (yet) in balanced number bases, or with fractions,
 -- except (of course) for normal decimal fractions.
 --
--- Note that eg b2b("-436.436",decimal,balancedternary) is 
+-- Note that eg b2b("-436.436",decimal,balancedternary) is
 -- more acccurate that atm2b(-436.436,balancedternary) due
 -- to standard IEEE 754 floating point limitations.
--- For integers, discrepancies only creep in for values 
+-- For integers, discrepancies only creep in for values
 -- outside the range +/-9,007,199,254,740,992 (on 32-bit).
 -- However, this is much simpler and faster than b2b().
 --
@@ -1217,7 +1217,7 @@ function atm2b(atom d, string alphabet)
     return res
 end function
 
--- negative numbers in addition and subtraction 
+-- negative numbers in addition and subtraction
 -- (esp. non-balanced) are treated as follows:
 -- for -ve a:   (-a)+b == b-a;      (-a)-b == -(a+b)
 -- for -ve b:   a+(-b) == a-b;      a-(-b) == a+b
@@ -1263,7 +1263,7 @@ function b_add(string a, b, alphabet)
         a[i] = alphabet[digit-carry*base]
         if i<-length(b) and carry=0 then exit end if
     end for
-    if carry then 
+    if carry then
         a = alphabet[carry+zdx]&a
     end if
     if adt then
@@ -1327,7 +1327,7 @@ function b_sub(string a, b, alphabet)
         a[i] = alphabet[digit+carry*base]
         if i<-length(b) and carry=0 then exit end if
     end for
-    if carry then 
+    if carry then
         ?9/0    -- should have set bNegate above...
     end if
     if adt then
@@ -1360,7 +1360,7 @@ function b_mul(string a, b, alphabet)
             end while
             pos &= '0'
             neg &= '0'
-        end for 
+        end for
     else
         -- non-balanced (normal) number systems
         bool negative = false
@@ -1412,7 +1412,7 @@ test("hexadecimal", hexadecimal)
 test("septemvigesimal", septemvigesimal)
 ```
 
-The printed decimal output is inherently limited to IEEE 754 precision, hence I 
+The printed decimal output is inherently limited to IEEE 754 precision, hence I
 deliberately limited output (%.16g) because it is silly to try and go any higher,
 whereas the output from b_mul() is actually perfectly accurate, see [note 1] above.
 {{out}}
@@ -1484,7 +1484,7 @@ a*(b-c) = -262510.9026799813  -D92G.OA1C42LM0N8N30HDAFKJNEIFEOB0BHP1DM6ILA9P797K
 
 
 
-###  multiplication table 
+###  multiplication table
 
 Without e notation, with hexadecimal across, septemvigesimal down, and balanced ternary contents!
 

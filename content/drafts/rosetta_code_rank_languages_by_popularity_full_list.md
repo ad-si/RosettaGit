@@ -1141,7 +1141,7 @@ Categories
 |87
 |- style="background-color: #fff;"
 |160
-|[[:Category:МК-61/52|МК-61/52]]
+|[[:Category:MK-61/52|MK-61/52]]
 |81
 |6.75 %
 |0

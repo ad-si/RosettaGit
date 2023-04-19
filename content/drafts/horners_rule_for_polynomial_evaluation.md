@@ -1507,7 +1507,7 @@ horner(X, Cs) = list.foldr((func(C, Acc) = Acc * X + C), Cs, 0).
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>ИП0	1	+	П0
 ИПE	ИПD	*	КИП0	+	ПE
 ИП0	1	-	x=0	04

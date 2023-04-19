@@ -50,11 +50,11 @@ ZX Spectrum Basic
 ΜC++
 
 М
-МК-61/52
+MK-61/52
 
 ```
 
- 
+
 What could (some)one do so that these languages appear under the capital M? --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 13:35, 22 November 2013 (UTC)
 
 -----

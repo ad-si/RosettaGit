@@ -12,6 +12,30 @@ task = """
 [taxonomies]
 categories = []
 tags = ["game", "puzzle"]
+languages = [
+  "asciidots",
+  "bloop",
+  "c",
+  "c++",
+  "crystal",
+  "factor",
+  "go",
+  "javascript",
+  "julia",
+  "lisp",
+  "lua",
+  "nim",
+  "perl",
+  "perl6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "smalltalk",
+]
 +++
 
 Nim is a simple game where the second player -

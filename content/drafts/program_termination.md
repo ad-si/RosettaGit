@@ -1495,7 +1495,7 @@ block([ans], loop, if (ans: read("Really quit ? (y, n)")) = 'y
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>ИП0	x=0	04	С/П	...
 ```
 

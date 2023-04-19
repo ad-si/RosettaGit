@@ -16,7 +16,7 @@ Is an example of the transformation of several variables that are linearly. The 
 
 See [https://en.wikipedia.org/wiki/Obsolete_Russian_units_of_measurement#Length Old Russian measure of length]
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>П7	1	0	0	*	П8	1	ВП	5	/
 П9	ИП7	1	0	6	7	/	П0	5	0
 0	*	ПC	3	*	ПA	1	6	*	ПB
@@ -114,7 +114,7 @@ centimeter 746760.
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 oldrussian
 @% = &90E
 PROColdrus(1, "meter")
@@ -179,7 +179,7 @@ ENDPROC
 
 ## C
 
-Accepts length and unit as input, prints out length in all other units. Usage printed on incorrect invocation. 
+Accepts length and unit as input, prints out length in all other units. Usage printed on incorrect invocation.
 
 ```C
 
@@ -195,13 +195,13 @@ int main(int argC,char* argV[])
 	int i,reference;
 	char *units[UNITS_LENGTH] = {"kilometer","meter","centimeter","tochka","liniya","diuym","vershok","piad","fut","arshin","sazhen","versta","milia"};
     double factor, values[UNITS_LENGTH] = {1000.0,1.0,0.01,0.000254,0.00254,0.0254,0.04445,0.1778,0.3048,0.7112,2.1336,1066.8,7467.6};
-	
+
 	if(argC!=3)
 		printf("Usage : %s followed by length as <value> <unit>");
 	else{
 		for(i=0;argV[2][i]!=00;i++)
 			argV[2][i] = tolower(argV[2][i]);
-		
+
 		for(i=0;i<UNITS_LENGTH;i++){
 			if(strstr(argV[2],units[i])!=NULL){
 				reference = i;
@@ -209,15 +209,15 @@ int main(int argC,char* argV[])
 				break;
 			}
 		}
-		
+
 		printf("%s %s is equal in length to : \n",argV[1],argV[2]);
-		
+
 		for(i=0;i<UNITS_LENGTH;i++){
 			if(i!=reference)
 				printf("\n%lf %s",factor/values[i],units[i]);
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -609,42 +609,42 @@ END PROGRAM RUS
 {{out}}
 
 ```txt
-m       mm      km      cm      arshin  fut     piad    vershok dyuim   liniya  tochka  ladon   lokot   sazhen  versta  milya   
+m       mm      km      cm      arshin  fut     piad    vershok dyuim   liniya  tochka  ladon   lokot   sazhen  versta  milya
 value unit -> 1 m
-            1000.000 mm     
-               0.001 km     
-             100.000 cm     
-               1.406 arshin 
-               3.281 fut    
-               5.624 piad   
+            1000.000 mm
+               0.001 km
+             100.000 cm
+               1.406 arshin
+               3.281 fut
+               5.624 piad
               22.497 vershok
-              39.370 dyuim  
-             393.701 liniya 
-            3937.008 tochka 
-              13.333 ladon  
-               2.222 lokot  
-               0.469 sazhen 
-               0.001 versta 
-               0.000 milya  
-               1.000 m 
+              39.370 dyuim
+             393.701 liniya
+            3937.008 tochka
+              13.333 ladon
+               2.222 lokot
+               0.469 sazhen
+               0.001 versta
+               0.000 milya
+               1.000 m
 
-m       mm      km      cm      arshin  fut     piad    vershok dyuim   liniya  tochka  ladon   lokot   sazhen  versta  milya   
+m       mm      km      cm      arshin  fut     piad    vershok dyuim   liniya  tochka  ladon   lokot   sazhen  versta  milya
 value unit -> 10 arshin
-              23.333 fut    
-              40.000 piad   
+              23.333 fut
+              40.000 piad
              160.000 vershok
-             280.000 dyuim  
-            2800.000 liniya 
-           28000.002 tochka 
-              94.827 ladon  
-              15.804 lokot  
-               3.333 sazhen 
-               0.007 versta 
-               0.001 milya  
-               7.112 m      
-            7112.000 mm     
-               0.007 km     
-             711.200 cm     
+             280.000 dyuim
+            2800.000 liniya
+           28000.002 tochka
+              94.827 ladon
+              15.804 lokot
+               3.333 sazhen
+               0.007 versta
+               0.001 milya
+               7.112 m
+            7112.000 mm
+               0.007 km
+             711.200 cm
               10.000 arshin
 ```
 
@@ -670,7 +670,7 @@ Dim yn As String
 
 Do
   Shell("cls")
-  Print 
+  Print
   For i As Integer = 1 To 13
     Print Using "##"; i;
     Print " "; units(i)
@@ -678,11 +678,11 @@ Do
   Print
   Do
     Input "Please choose a unit 1 to 13 : "; unit
-  Loop Until unit >= 1 AndAlso unit <= 13  
+  Loop Until unit >= 1 AndAlso unit <= 13
   Print
   Do
     Input "Now enter a value in that unit : "; value
-  Loop Until value >= 0 
+  Loop Until value >= 0
   Print
   Print "The equivalent in the remaining units is : "
   Print
@@ -696,7 +696,7 @@ Do
     yn = LCase(yn)
   Loop Until yn = "y" OrElse yn = "n"
 Loop Until yn = "n"
-     
+
 End
 ```
 
@@ -1021,7 +1021,7 @@ $ /usr/local/j64-801/bin/jconsole j.ijs 8 meter
 ├──────────┼──────────┤
 │versta    │0.00749906│
 └──────────┴──────────┘
-$ 
+$
 
 ```
 
@@ -1069,7 +1069,7 @@ public class OldRussianMeasures {
 
 
 ```txt
-1 meter to: 
+1 meter to:
 
     tochka: 3937,01
     liniya: 393,701
@@ -1085,7 +1085,7 @@ centimeter: 100,000
     versta: 0,000937383
      milia: 0,000133912
 
-1 milia to: 
+1 milia to:
 
     tochka: 2,94000e+07
     liniya: 2,94000e+06
@@ -1173,8 +1173,8 @@ fun main(args: Array<String>) {
     val units = listOf("tochka", "liniya", "dyuim", "vershok", "piad", "fut",
                        "arshin", "sazhen", "versta", "milia",
                        "centimeter", "meter", "kilometer")
-    val convs = arrayOf(0.0254f, 0.254f, 2.54f, 4.445f, 17.78f, 30.48f, 
-                        71.12f, 213.36f, 10668.0f, 74676.0f, 
+    val convs = arrayOf(0.0254f, 0.254f, 2.54f, 4.445f, 17.78f, 30.48f,
+                        71.12f, 213.36f, 10668.0f, 74676.0f,
                         1.0f, 100.0f, 10000.0f)
     var unit: Int
     var value: Float
@@ -1197,7 +1197,7 @@ fun main(args: Array<String>) {
         while (value < 0.0f)
         println("\nThe equivalent in the remaining units is:\n")
         for (i in 0 until units.size) {
-            if (i == unit) continue            
+            if (i == unit) continue
             println(" ${units[i].padEnd(10)} : ${value * convs[unit] / convs[i]}")
         }
         println()
@@ -1205,7 +1205,7 @@ fun main(args: Array<String>) {
             print("Do another one y/n : ")
             yn = readLine()!!.toLowerCase()
         }
-        while (yn != "y" && yn != "n")            
+        while (yn != "y" && yn != "n")
     }
     while (yn == "y")
 }
@@ -1352,7 +1352,7 @@ say '*' x 40, "\n";
 convert(1, 'milia');
 
 sub convert (Real $magnitude, $unit) {
-     my %factor = 
+     my %factor =
         tochka     => 0.000254,
         liniya     => 0.00254,
         diuym      => 0.0254,
@@ -1522,13 +1522,13 @@ Run as:
 
 ```python
 from sys import argv
- 
+
 unit2mult = {"arshin": 0.7112, "centimeter": 0.01,     "diuym":   0.0254,
              "fut":    0.3048, "kilometer":  1000.0,   "liniya":  0.00254,
              "meter":  1.0,    "milia":      7467.6,   "piad":    0.1778,
              "sazhen": 2.1336, "tochka":     0.000254, "vershok": 0.04445,
              "versta": 1066.8}
- 
+
 if __name__ == '__main__':
     assert len(argv) == 3, 'ERROR. Need two arguments - number then units'
     try:
@@ -1537,7 +1537,7 @@ if __name__ == '__main__':
         print('ERROR. First argument must be a (float) number')
         raise
     unit = argv[2]
-    assert unit in unit2mult, ( 'ERROR. Only know the following units: ' 
+    assert unit in unit2mult, ( 'ERROR. Only know the following units: '
                                 + ' '.join(unit2mult.keys()) )
 
     print("%g %s to:" % (value, unit))
@@ -1651,13 +1651,13 @@ Follows the Perl 6 solution, produces similar output.
 ## REXX
 
 Program features:
-::*   shows all   ''other''   units of measurements when any unit is specified. 
+::*   shows all   ''other''   units of measurements when any unit is specified.
 ::*   accepts abbreviations of the length units
 ::*   does rounding so results are more meaningful and recognizable
 ::*   does error checking on the user input
 ::*   added other old Russian units of measurements
 ::*   uses the correct length unit names when not plural
-::*   columnarized the output   (instead of a horizontal stream). 
+::*   columnarized the output   (instead of a horizontal stream).
 
 ```rexx
 /*REXX program converts a   metric  or  old Russian length   to various other lengths.  */
@@ -1728,7 +1728,7 @@ s:     if arg(1)=1  then return arg(3);     return word(arg(2) 's',1)         /*
 tell:  parse arg $;  numeric digits 8;  $=$/1;  say right($, 40) arg(2)s($);       return
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
@@ -1809,14 +1809,14 @@ The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZ
 # Project : Old Russian measure of length
 
 decimals(7)
-units = ["tochka", "liniya", "dyuim", "vershok", "piad", "fut", 
-             "arshin", "sazhen", "versta", "milia", 
+units = ["tochka", "liniya", "dyuim", "vershok", "piad", "fut",
+             "arshin", "sazhen", "versta", "milia",
              "centimeter", "meter", "kilometer"]
- 
-convs = [0.0254, 0.254, 2.54, 4.445, 17.78, 30.48, 
-             71.12, 213.36, 10668, 74676, 
+
+convs = [0.0254, 0.254, 2.54, 4.445, 17.78, 30.48,
+             71.12, 213.36, 10668, 74676,
              1, 100, 10000]
- 
+
 yn = "y"
 unit = 1
 p = 1
@@ -1844,7 +1844,7 @@ while yn != "n"
               see "do another one y/n : "
               give yn
               yn = lower(yn)
-      end 
+      end
 end
 
 ```
@@ -1871,7 +1871,7 @@ please choose a unit 1 to 13 : 13
 
 now enter a value in that unit : 1
 
-the equivalent in the remaining units is : 
+the equivalent in the remaining units is :
 tochka : 393700.7874016
 liniya : 39370.0787402
 dyuim : 3937.0078740

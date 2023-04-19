@@ -453,11 +453,11 @@ languages = [
 
 Related tasks:
 
-- [Hello world Graphical]()
-- [Hello world Line Printer]()
-- [Hello world Newline omission]()
-- [Hello world Standard error]()
-- [Hello world Web server]()
+- [Hello world Graphical](./hello_world_graphical)
+- [Hello world Line Printer](./hello_world_line_printer)
+- [Hello world Newline omission](./hello_world_newline_omission)
+- [Hello world Standard error](./hello_world_standard_error)
+- [Hello world Web server](./hello_world_web_server)
 
 
 ## 0815
@@ -2518,7 +2518,6 @@ END PROGRAM
 ```
 
 
-
 ## Ezhil
 
 
@@ -2527,7 +2526,8 @@ END PROGRAM
 <span style="color:#FF0000">பதிப்பி</span><span style="color:#CD5C5C">"******* வணக்கம்! மீண்டும் சந்திப்போம் *******"</span><br />
 <span style="color:#8B0000">exit()</span>
 
-## F_Sharp|F#
+
+## F#
 
 ```fsharp
 printfn "%s" "Hello world!"

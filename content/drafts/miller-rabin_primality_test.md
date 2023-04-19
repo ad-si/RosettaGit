@@ -37,12 +37,7 @@ The pseudocode, from [[wp:Miller-Rabin primality test#Algorithm_and_running_time
 * Deterministic variants of the test exist and can be implemented as extra (not mandatory to complete the task)
 
 
-
-
-
 ## Ada
-
-
 
 ### ordinary integers
 

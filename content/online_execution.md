@@ -26,7 +26,7 @@ Site                 | Languages | Notes
 [The Go Playground]  | Go        | The official Golang playground.
 [Groovy Playground]  | Groovy    | Load save via GitHub/Gist.
 [Groovy web console] | Groovy    | Save and share. Runs on Google Cloud Engine.
-[Repl.it]            | Basic, C, C++, Java, JavaScript, PHP, Ruby, … |
+[Replit]             | Basic, C, C++, Java, JavaScript, PHP, Ruby, … |
 [Ideone]             | Bash, C, C++, Go, Haskell, Java, Pascal, Rust, … |
 [Gambas Playground]  | Gambas    | CLI only.
 [ScalaFiddle]        | Scala.js  | Transpiler for Scala to JavaScript.
@@ -39,7 +39,7 @@ Site                 | Languages | Notes
 [The Go Playground]: https://play.golang.org/
 [Groovy Playground]: https://groovy-playground.appspot.com/
 [Groovy web console]: https://groovyconsole.appspot.com/
-[Repl.it]: https://repl.it/
+[Replit]: https://replit.com/
 [Ideone]: https://ideone.com/
 [Gambas Playground]: https://gambas.one/playground/
 [ScalaFiddle]: https://scalafiddle.io/sf/gKgxQY0/1

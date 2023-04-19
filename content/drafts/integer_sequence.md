@@ -1975,7 +1975,7 @@ min's integers are 64-bit signed. This will eventually overflow.
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>1	П4	ИП4	С/П	КИП4	БП	02
 ```
 

@@ -29,15 +29,15 @@ some of the options are:
 ::*   allowing other characters to be used for blanks
 ::*   repeating a text
 ::*   allows remarks in the text
-::*   writes the message, waits for a confirmation to proceed 
-::*   delaying (waiting) after the text is displayed 
+::*   writes the message, waits for a confirmation to proceed
+::*   delaying (waiting) after the text is displayed
 ::*   showing a scale and/or a ruler above/below the text message(s)
 ::*   supports hex/dec/bit strings
 ::*   changing the case of the text
 ::*   reverses the text
 ::*   inverts the bits for certain characters
 ::*   sounds alarm (beeps) after the text is displayed     (if supported)
-::*   displays the text in reverse video (if supported) 
+::*   displays the text in reverse video (if supported)
 ::*   displays the text in (big) block letters
 ::*   clear the screen after or before the displaying of text
 ::*   allows user-define option character, the default is   '''.'''     (period)
@@ -47,34 +47,34 @@ some of the options are:
 The help for the   '''$T'''   REXX program is included here   ──►   [[$T.HEL]].
 
 
-The   '''$T'''   REXX program makes use of   '''$ERR'''   REXX program which is used to display error messages (via   '''$T'''). 
+The   '''$T'''   REXX program makes use of   '''$ERR'''   REXX program which is used to display error messages (via   '''$T''').
 
 The   '''$ERR'''   REXX program is included here   ──►   [[$ERR.REX]].
 
 
-The   '''$T'''   REXX program makes use of   '''$BLOCK'''   REXX program which is used to generate text to display text in (big) blocked letters (via   '''$T'''). 
+The   '''$T'''   REXX program makes use of   '''$BLOCK'''   REXX program which is used to generate text to display text in (big) blocked letters (via   '''$T''').
 
 The   '''$BLOCK'''   REXX program is included here   ──►   [[$BLOCK.REX]].
 
 
-The   '''$T'''   REXX program makes use of   '''LINESIZE'''   BIF   which returns the terminals width (linesize). 
+The   '''$T'''   REXX program makes use of   '''LINESIZE'''   BIF   which returns the terminals width (linesize).
 
-Some REXXes don't have a   '''LINESIZE'''   BIF, so one is included here   ──►   [[LINESIZE.HEL]]. 
-
-
-The    '''$T'''   REXX program makes use of   '''SCRSIZE'''   BIF which returns the terminals width (linesize) and depth. 
-
-Some REXXes don't have a   '''SCRSIZE'''   BIF, so one is included here   ──►   [[SCRSIZE.HEL]]. 
+Some REXXes don't have a   '''LINESIZE'''   BIF, so one is included here   ──►   [[LINESIZE.HEL]].
 
 
-The   '''$T'''   REXX program makes use of   '''DELAY'''   BIF which delays (sleeps) for a specified amount of seconds. 
+The    '''$T'''   REXX program makes use of   '''SCRSIZE'''   BIF which returns the terminals width (linesize) and depth.
 
-Some REXXes don't have a   '''DELAY'''   BIF, so one is included here   ──►   [[DELAY.REX]]. 
+Some REXXes don't have a   '''SCRSIZE'''   BIF, so one is included here   ──►   [[SCRSIZE.HEL]].
 
 
-The   '''$T'''   REXX program makes use of   '''SOUND'''   BIF which produces sounds via the PC speaker. 
+The   '''$T'''   REXX program makes use of   '''DELAY'''   BIF which delays (sleeps) for a specified amount of seconds.
 
-Some REXXes don't have a   '''SOUND'''   BIF, so one is included here   ──►   [[SOUND.REX]]. 
+Some REXXes don't have a   '''DELAY'''   BIF, so one is included here   ──►   [[DELAY.REX]].
+
+
+The   '''$T'''   REXX program makes use of   '''SOUND'''   BIF which produces sounds via the PC speaker.
+
+Some REXXes don't have a   '''SOUND'''   BIF, so one is included here   ──►   [[SOUND.REX]].
 
 
 REXX programs not included are   '''$H'''   which shows '''help''' and other documentation.

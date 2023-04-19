@@ -1564,7 +1564,7 @@ An empty MAXScript file returns "OK" on execution
 ```MiniScript></lang
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>С/П
 ```
 

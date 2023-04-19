@@ -3310,7 +3310,7 @@ imagpart(z1);
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 ''Instrustion:''
 
 Z<sub>1</sub> = a + ib; Z<sub>2</sub> = c + id;

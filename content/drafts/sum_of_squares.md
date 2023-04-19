@@ -2237,7 +2237,7 @@ print sumOfSquares([])
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>x^2	+	С/П	БП	00
 ```
 

@@ -3354,8 +3354,10 @@ CONFUSE: TRUE
 ```
 
 
-=={{header|F_Sharp|F#}}==
-<p>This solution does not depend on the order of the blocks, neither on the symmetry of blocks we see in the example block set. (Symmetry: if AB is a block, an A comes only with another AB|BA)</p>
+## F#
+
+This solution does not depend on the order of the blocks, neither on the symmetry of blocks we see in the example block set.
+(Symmetry: if AB is a block, an A comes only with another AB|BA)
 
 ```fsharp
 let rec spell_word_with blocks w =

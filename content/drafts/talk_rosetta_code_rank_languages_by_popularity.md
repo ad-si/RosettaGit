@@ -38,13 +38,13 @@ Would it be a good idea to show the last 10 languages, too? Then it would become
 
 The sample output (as part of the task description) is incorrect  (as shown on March 31<sup>st</sup>, 2013).
 
-It shows that the 6<sup>th</sup> and 7<sup>th</sup> entries as having the same number of entries (i.e., are tied), but one is ranked 6<sup>th</sup>, the other is ranked 7<sup>th</sup>.   There shouldn't be a 7<sup>th</sup> (place) entry, instead there should be two 6<sup>th</sup> place entries, and both should be marked as ''tied'' or somesuch indicator.  
+It shows that the 6<sup>th</sup> and 7<sup>th</sup> entries as having the same number of entries (i.e., are tied), but one is ranked 6<sup>th</sup>, the other is ranked 7<sup>th</sup>.   There shouldn't be a 7<sup>th</sup> (place) entry, instead there should be two 6<sup>th</sup> place entries, and both should be marked as ''tied'' or somesuch indicator.
 
 
 Similarly, all examples from the various languages (except one) are also incorrect in this regard.
 
 
-This is exactly like a foot race, where there are two (tied) 1<sup>st</sup>-place winners (gold), and no 2<sup>nd</sup>-place winner (silver).   First place is shared.    Next to cross the finish line is 3<sup>rd</sup> place (bronze).  
+This is exactly like a foot race, where there are two (tied) 1<sup>st</sup>-place winners (gold), and no 2<sup>nd</sup>-place winner (silver).   First place is shared.    Next to cross the finish line is 3<sup>rd</sup> place (bronze).
 
  -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:53, 1 April 2013 (UTC)
 
@@ -70,10 +70,10 @@ TypeError: 'start' is an invalid keyword argument for this function
 :You need Python 2.6. "Not working" examples are only grabbing 500 categories, programming languages like Tcl or Visual Basic don't get in top 10. --[[User:Guga360|Guga360]] 16:48, 2 August 2009 (UTC)
 :Actually, the Python implementation isn't correct, either. It omits, for example, AutoHotkey and LotusScript. Compare it with the Perl output. —[[User:Underscore|Underscore]] 16:16, 30 October 2009 (UTC)
 ::I tried the following:
-::AutoHotkey is working.  
+::AutoHotkey is working.
 ::Python is not working
 ::Ruby is not working
-::TCL webscraping is working   
+::TCL webscraping is working
 ::perl wikipedia api has a lot of dependencies, I couldn't get URI to build on my macbook  --[[User:Tinku99|Tinku99]] 21:01, 16 May 2010 (UTC)
 
 -----
@@ -100,36 +100,36 @@ Guga360  08:24, 19 April 2009
 
 Hi Guya360,
 
-This ALGOL 68 implementation is an interpretor, and it would require the library being 
+This ALGOL 68 implementation is an interpretor, and it would require the library being
 linked into the a68g.exe binary.  Hence the .exe you have definitely does not have
 "http content" linked in.
 
-I ran it on Fedora9 OK.  I just checked a68g-manual.pdf and it says: 
+I ran it on Fedora9 OK.  I just checked a68g-manual.pdf and it says:
 
 Mark 8, July 2005
 # Adds procedure ''http content'' for fetching web page contents (UNIX)
 # Adds procedure ''tcp request'' for sending requests via TCP (UNIX)
 # Adds procedure ''grep in string'' for matching regular expressions in a string (UNIX)
 
-The key point being the (UNIX) at the end of the line.  I am guessing that the tcp library 
+The key point being the (UNIX) at the end of the line.  I am guessing that the tcp library
 for windows was enough different from the tcp library for Linux/Unix that the "''http content''"
 routine remains both un-ported and broken.
 
-Now I have not tried Algol68g on Ubuntu.  I hack around on Fedora.  So you MAY be able 
-to use the pre-compiled algol68g RPM for ubuntu (Does Ubuntu support RPMs?)  
+Now I have not tried Algol68g on Ubuntu.  I hack around on Fedora.  So you MAY be able
+to use the pre-compiled algol68g RPM for ubuntu (Does Ubuntu support RPMs?)
 
-BUT the algol68g '''source''' tar ball will definitely work on ubuntu.  (Maybe not on a 
-64bit Ubuntu as the libraries have moved to /lib64 - if so let me know and I'll 
+BUT the algol68g '''source''' tar ball will definitely work on ubuntu.  (Maybe not on a
+64bit Ubuntu as the libraries have moved to /lib64 - if so let me know and I'll
 sort/hack you up a 64bit update)
 
-The compile should be as easy as installing gcc and configure (and if you need them 
+The compile should be as easy as installing gcc and configure (and if you need them
 then install postgres or curses or ... ) then:
 
 ```txt
 
 tar -xvf /tmp/download/algol68g-mk16.tgz
 ./configure --threads
-make 
+make
 # as root
 make install
 # as user
@@ -138,10 +138,10 @@ a68g Sort_most_popular_programming_languages.a68
 ```
 
 
-BTW: you are the first person to feed back on running the ALGOL 68 
+BTW: you are the first person to feed back on running the ALGOL 68
 rosettacode code snippets... I am rather impressed.  ThanX - (blush)
 
-Is this snippet the first ALGOL 68 that you have tried?  
+Is this snippet the first ALGOL 68 that you have tried?
 
 [[User:NevilleDNZ|NevilleDNZ]] 08:40, 19 April 2009 (UTC)
 :Yes, it's my first try.
@@ -152,15 +152,15 @@ Is this snippet the first ALGOL 68 that you have tried?
 :But i runned that example, and nothing happened. It's just "loading".
 :Any suggestions? --[[User:Guga360|Guga360]] 16:08, 19 April 2009 (UTC)
 
-I am guessing that you program is running, just really slow, give it 2 minutes to run.  
-Basically the routine ''re split'' used to parse the HTML is really slow.   ''re split'''s 
+I am guessing that you program is running, just really slow, give it 2 minutes to run.
+Basically the routine ''re split'' used to parse the HTML is really slow.   ''re split'''s
 performance is the order of O<sup>2</sup>.
 
 I just recoded the ALGOL 68 version to use a linked list, it is a huge improvement:
 
 ```txt
 
-[nevilled@november rosettacode]$ time  a68g Sort_most_popular_programming_languages_slow.a68 
+[nevilled@november rosettacode]$ time  a68g Sort_most_popular_programming_languages_slow.a68
 1. 233 - Python
 2. 222 - Ada
 3. 204 - C
@@ -176,7 +176,7 @@ real	0m47.950s
 user	0m44.363s
 sys	0m0.080s
 
-[nevilled@november rosettacode]$ time  a68g Sort_most_popular_programming_languages.a68 
+[nevilled@november rosettacode]$ time  a68g Sort_most_popular_programming_languages.a68
 1. 233 - Python
 2. 222 - Ada
 3. 204 - C
@@ -227,9 +227,9 @@ http content (reply, "www.rosettacode.org", "http://www.rosettacode.org/w/index.
 ```
 
 
-The limit needs to be much larger (probably 5000 would work at the moment). I'm not sure the "manually maintained" list of things to filter out the non-programming languages entries is sufficient. Other web-scrapping examples filter them out using a second query to find the categories that are programming languages. 
+The limit needs to be much larger (probably 5000 would work at the moment). I'm not sure the "manually maintained" list of things to filter out the non-programming languages entries is sufficient. Other web-scrapping examples filter them out using a second query to find the categories that are programming languages.
 
---[[User:Tigerofdarkness|Tigerofdarkness]] 
+--[[User:Tigerofdarkness|Tigerofdarkness]]
 
 
 ### =Note: ALGOL 68 for Ubuntu now available=
@@ -260,11 +260,11 @@ I updated the Ruby solution today when I noticed there were more than 500 catego
 == Ruby example question ==
 
 I'm trying to run the Ruby example on Ruby 1.8.6 and it says that the "each_slice" method isn't defined. Is that part of 1.8.7? --[[User:Mwn3d|Mwn3d]] 19:29, 26 June 2009 (UTC)
-:I don't know, probably it's for Ruby 1.9, but you can try replace 
+:I don't know, probably it's for Ruby 1.9, but you can try replace
 ```ruby
 langs.each_slice(50) do
 ```
- with 
+ with
 ```ruby
 langs[0..50].each do
 ```
@@ -331,7 +331,7 @@ I'll try to update it once a month or so. -- [[User:Gerard Schildberger|Gerard S
 
 If somebody else creates a more complete ranking, better filtering program, or an automated version (or more timely), I'll reduce the number of Rosetta Code languages ranked in the REXX '''output''' section. -- [[User:Gerard Schildberger|Gerard Schildberger]] 00:11, 23 July 2012 (UTC)
 
-Currently, the REXX example reports on all   <strike>'''471'''</strike>   (see below)   programming languages, but there is code to support the skipping of languages that have less than a certain (specified) number of examples. 
+Currently, the REXX example reports on all   <strike>'''471'''</strike>   (see below)   programming languages, but there is code to support the skipping of languages that have less than a certain (specified) number of examples.
 
 However, listing them all enabled me to find some languages that are "misspelled" as far as case goes (inconsistent upper/lower/mixed spellings, use of different glyphs, etc.). -- [[User:Gerard Schildberger|Gerard Schildberger]] 04:51, 5 September 2012 (UTC)
 
@@ -360,9 +360,9 @@ Now, there're '''505''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''510''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 02:18, 28 January 2014 (UTC)
 
-Now, there're '''511''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:52, 4 February 2014 (UTC) 
+Now, there're '''511''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:52, 4 February 2014 (UTC)
 
-Now, there're '''515''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:59, 1 March 2014 (UTC) 
+Now, there're '''515''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:59, 1 March 2014 (UTC)
 
 Now, there're '''516''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:05, 12 March 2014 (UTC)
 
@@ -374,7 +374,7 @@ Now, there're '''521''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''523''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:58, 1 June 2014 (UTC)
 
-Now, there're '''527''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:17, 1 July 2014 (UTC) 
+Now, there're '''527''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:17, 1 July 2014 (UTC)
 
 Now, there're '''528''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:26, 21 July 2014 (UTC)
 
@@ -390,7 +390,7 @@ Now, there're '''548''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''549''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:46, 28 February 2015 (UTC)
 
-Now, there're '''555''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:10, 4 May 2015 (UTC) 
+Now, there're '''555''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:10, 4 May 2015 (UTC)
 
 Now, there're '''556''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 01:32, 22 May 2015 (UTC)
 
@@ -402,7 +402,7 @@ Now, there're '''569''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''570''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 04:42, 13 September 2015 (UTC)
 
-Now, there're '''571''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:18, 13 September 2015 (UTC) 
+Now, there're '''571''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:18, 13 September 2015 (UTC)
 
 Now, there're '''573''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:48, 12 October 2015 (UTC)
 
@@ -414,7 +414,7 @@ Now, there're '''576''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''577''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 05:04, 1 January 2016 (UTC)
 
-Now, there're '''580''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:15, 31 January 2016 (UTC) 
+Now, there're '''580''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:15, 31 January 2016 (UTC)
 
 Now, there're '''581''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 08:21, 13 February 2016 (UTC)
 
@@ -426,7 +426,7 @@ Now, there're '''598''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''599''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:05, 11 May 2016 (UTC)
 
-Now, there're '''601''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 15:15, 22 June 2016 (UTC) 
+Now, there're '''601''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 15:15, 22 June 2016 (UTC)
 
 Now, there're '''602''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:03, 21 July 2016 (UTC)
 
@@ -452,9 +452,9 @@ Now, there're '''646''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''649''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:06, 28 September 2017 (UTC)
 
-Now, there're '''650''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 04:53, 29 October 2017 (UTC) 
+Now, there're '''650''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 04:53, 29 October 2017 (UTC)
 
-Now, there're '''651''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:49, 17 November 2017 (UTC) 
+Now, there're '''651''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:49, 17 November 2017 (UTC)
 
 Now, there're '''652''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:16, 10 December 2017 (UTC)
 
@@ -466,7 +466,7 @@ Now, there're '''658''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''663''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:50, 15 May 2018 (UTC)
 
-Now, there're '''677''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:51, 8 August 2018 (UTC) 
+Now, there're '''677''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:51, 8 August 2018 (UTC)
 
 Now, there're '''679''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 05:02, 16 August 2018 (UTC)
 
@@ -474,7 +474,7 @@ Now, there're '''680''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''681''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 05:40, 4 September 2018 (UTC)
 
-Now, there're '''682''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:12, 25 September 2018 (UTC) 
+Now, there're '''682''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:12, 25 September 2018 (UTC)
 
 Now, there're '''683''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 16:57, 15 October 2018 (UTC)
 
@@ -484,11 +484,11 @@ Now, there're '''686''' programming languages. -- [[User:Gerard Schildberger|Ger
 
 Now, there're '''687''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:23, 6 December 2018 (UTC)
 
-Now, there're '''686''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:14, 31 December 2018 (UTC) 
+Now, there're '''686''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:14, 31 December 2018 (UTC)
 
-Now, there're '''687''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:17, 2 January 2019 (UTC) 
+Now, there're '''687''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 23:17, 2 January 2019 (UTC)
 
-Now, there're '''690''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:21, 6 January 2019 (UTC) 
+Now, there're '''690''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:21, 6 January 2019 (UTC)
 
 Now, there're '''692''' programming languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:52, 15 February 2019 (UTC)
 
@@ -564,7 +564,7 @@ The apparent decrease in the number of programming languages (at one point) was 
 :::*   <big> ''' UC++  ''' </big>
 :::*   <big> ''' µC++  ''' </big>
 :::*   <big> ''' ╬£C++ ''' </big>     (unicode version)
-languages into one:   '''µC++'''.   -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:45, 26 January 2013 (UTC) 
+languages into one:   '''µC++'''.   -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:45, 26 January 2013 (UTC)
 </strike>
 
 (The above was struck as it no longer applies.) -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 05:28, 1 September 2014 (UTC)
@@ -574,11 +574,11 @@ languages into one:   '''µC++'''.   -- [[User:Gerard Schildberger|Gerard Schild
 -----
 
 
- 
+
 Hi Gerard - I noticed your recent update to this page didn't agree with my count (from the Tcl API example, which currently counts 582 languages).  I'm not sure exactly where our discrepancy comes from, but looking at the data:
 
   * Absolute difference:  Tcl 582 - REXX 563 = 19
-  * Counted by Tcl but not REXX (25): <tt>AngelScript {Caché ObjectScript} Ceylon {Déjà Vu} EhBASIC Epigram FLORA-2 Florid Forth Golo Haxe LLP Lolli Lygon ObjectIcon RPGIV Reduce Rubylog Star {True BASIC} UC++ X10 XS ΜC++ МК-61/52</tt>
+  * Counted by Tcl but not REXX (25): <tt>AngelScript {Caché ObjectScript} Ceylon {Déjà Vu} EhBASIC Epigram FLORA-2 Florid Forth Golo Haxe LLP Lolli Lygon ObjectIcon RPGIV Reduce Rubylog Star {True BASIC} UC++ X10 XS ΜC++ MK-61/52</tt>
   * Counted by REXX but not by Tcl (6):  <tt>{Dëjá Vu} FORTH HaXe MK-61/52 {MK-61/52 ObjectScript} µC++</tt>
 
 All of the differences can be accounted for by Unicode - I see that the REXX script tries to bitbang non-ASCII entities into place, while Tcl is generally quite good with encodings, so this is to be expected.  The entries found by Tcl but not by REXX are less clear to me .. the ones I've examined look like legitimate languages.  Is this a bug in the REXX?
@@ -592,29 +592,29 @@ If it helps, I can give you a (Tcl) script to perform the comparison above, for 
 
 
 
-First, regarding the Unicode characters:   there are several Unicode versions (or entries) of the same(?) language (all spelled different and/or use different glyphs), and it was somewhat obvious to me that they all referred to a common language, albeit spelled differently.   I chose to combine them as I thought they referred to the same language.   There are probably other languages that have multiple spellings that I haven't observed.   This was   ''one''   of the reasons that I include a complete list of all languages (as REXX finds them in the categories file), which are specified/verified in the languages file. 
+First, regarding the Unicode characters:   there are several Unicode versions (or entries) of the same(?) language (all spelled different and/or use different glyphs), and it was somewhat obvious to me that they all referred to a common language, albeit spelled differently.   I chose to combine them as I thought they referred to the same language.   There are probably other languages that have multiple spellings that I haven't observed.   This was   ''one''   of the reasons that I include a complete list of all languages (as REXX finds them in the categories file), which are specified/verified in the languages file.
 
 :::*   <big> ''' UC++  ''' </big>
 :::*   <big> ''' µC++  ''' </big>
 :::*   <big> ''' ╬£C++ ''' </big>     (unicode version)
-(to my eyes) appear to be referring to the same language.   Note that REXX doesn't support Unicode, so I see two bytes (characters) of what appears to be gibberish, and, as you put it, I bit-banged the gibberish bytes into something that is recognizable (at least, by my eyes).  
+(to my eyes) appear to be referring to the same language.   Note that REXX doesn't support Unicode, so I see two bytes (characters) of what appears to be gibberish, and, as you put it, I bit-banged the gibberish bytes into something that is recognizable (at least, by my eyes).
 
-REXX did find the   '''Déjà Vu'''   language, but the various entries were entered (via my translations) as   '''Dëjá Vu''',   one of it's alternate spellings.   You can find it ranked 
+REXX did find the   '''Déjà Vu'''   language, but the various entries were entered (via my translations) as   '''Dëjá Vu''',   one of it's alternate spellings.   You can find it ranked
 102<sup>nd</sup> with 105 entries.   I had to choose a primary (version) spelling, and the one that REXX uses is the one I chose.   If there is a preferred glyph, I'll change the REXX program to list all the entries under the preferred (or correct) spelling.   I'll let somebody else be the spelling police.
 
 REXX did find the '''UC++''' language, but it's translated to (spelled as) '''µC++''', and it's ranked 346<sup>th</sup> (tied) with 6 entries.
 
-REXX did find the '''MK-61/52 ObjectScript''' language, but it's translated to (spelled as) '''MK-61/52 ObjectScript''', and it's ranked 191<sup>st</sup> (tied) with 31 entries. 
- 
+REXX did find the '''MK-61/52 ObjectScript''' language, but it's translated to (spelled as) '''MK-61/52 ObjectScript''', and it's ranked 191<sup>st</sup> (tied) with 31 entries.
+
 Since REXX doesn't do Unicodes, I chose to have REXX use a Latin (Roman) letter <big><big>'''K'''</big></big> instead of the Cyrillic <big><big>'''К'''</big></big> glyph.   You may have to squint (or enlarge your font) to see the difference.   Oy veh!
 
 REXX did find the '''Forth''' language, but it's spelled '''FORTH''', and it's ranked
-44<sup>th</sup> (tied) with 31 entries. 
+44<sup>th</sup> (tied) with 31 entries.
 
 REXX did find the '''Haxe''' language, but it's spelled '''HaXe''', and it's ranked
 209<sup>th</sup> (tied) with 25 entries.
 
-Note that the REXX program ignores the case (upper/lower/mixed) for computer programming languages.   All pertinent comparisons in the REXX program are case insensitive (caseless), so '''Haxe''' compares equal (the same) as '''HaXe'''.   The REXX program uses the first encounter of a language's spelling as the preferred spelling;   added a popularity count for the various spellings would place a large (but not difficult) burden on the REXX program and detract from its purpose and make it harder to follow it's logic   (well, even more so). 
+Note that the REXX program ignores the case (upper/lower/mixed) for computer programming languages.   All pertinent comparisons in the REXX program are case insensitive (caseless), so '''Haxe''' compares equal (the same) as '''HaXe'''.   The REXX program uses the first encounter of a language's spelling as the preferred spelling;   added a popularity count for the various spellings would place a large (but not difficult) burden on the REXX program and detract from its purpose and make it harder to follow it's logic   (well, even more so).
 
 Quite a few computer programming languages have similar problems:
 ::::*   PL/I   or   PL/1
@@ -622,9 +622,9 @@ Quite a few computer programming languages have similar problems:
 
 just to mention a couple of the simple ones.
 
-I took a look at the raw file (which the REXX program uses), the category file.   There is no entry for '''AngelScript''' in that file, but there is an entry for that language in the (raw) language file.   The REXX program uses the category file to find entries, and when it finds an entry, it verifies that the language exists (that is, it is indeed a language instead of just a special category), it only then recognizes it as a language.   Languages which have no entries in the category file aren't counted.   However, the category file does have an entry for '''AngelScript User''' (1 member), so noting that '''AngelScript User''' is not a language, it is just a special category. 
+I took a look at the raw file (which the REXX program uses), the category file.   There is no entry for '''AngelScript''' in that file, but there is an entry for that language in the (raw) language file.   The REXX program uses the category file to find entries, and when it finds an entry, it verifies that the language exists (that is, it is indeed a language instead of just a special category), it only then recognizes it as a language.   Languages which have no entries in the category file aren't counted.   However, the category file does have an entry for '''AngelScript User''' (1 member), so noting that '''AngelScript User''' is not a language, it is just a special category.
 
-Stated another way, entries in the languages file, but have an entry in the category file aren't counted as being a language that has a computer programming language on Rosetta Code. 
+Stated another way, entries in the languages file, but have an entry in the category file aren't counted as being a language that has a computer programming language on Rosetta Code.
 
 ::I took this Rosetta Code task's requirement quite literally:
 
@@ -632,9 +632,9 @@ Stated another way, entries in the languages file, but have an entry in the cate
 
 :::: (Bold highlighting added by me.)
 
-So what the REXX program did was use the category file as its reference file (or base), and used the language file to verify that entries in the category file are indeed languages (and not just a special category entry). 
+So what the REXX program did was use the category file as its reference file (or base), and used the language file to verify that entries in the category file are indeed languages (and not just a special category entry).
 
-If the REXX program did the reading/verification the other way 'round, then it would list that language, but with 0 (zero) members.   Or more precisely, '''null''' entries.   When I tried to do a Rosetta Code search on that language, it doesn't find an entry. 
+If the REXX program did the reading/verification the other way 'round, then it would list that language, but with 0 (zero) members.   Or more precisely, '''null''' entries.   When I tried to do a Rosetta Code search on that language, it doesn't find an entry.
 
 Now, as it is, I can't/don't see what Tcl's (program language example/entry) count is for the '''AngleScript''' language, is it one, zero, or what?
 
@@ -666,7 +666,7 @@ In the complete list [http://rosettacode.org/wiki/Category:A%2B A+] is ranked 43
 
 : The way identically ranked languages (identical in the sense that they have the same number of entries) is sorted in the order in which they appear first in the Rosetta Code list.   Thus, some languages aren't ranked fairly because of a (weak) sorting artifact of having the same number (of entries).   Strictly speaking, if the following were true:
 :::* hog   97
-:::* dog   72 
+:::* dog   72
 :::* auk   72
 :::* ape     4
 :::* cow   72
@@ -678,7 +678,7 @@ The ranking should be:
 :::* 2 (tied)   cow
 :::* 2 (tied)   gnu
 :::* 6           ape
-with all 2<sup>nd</sup> place names marked as ''tied'' for 2<sup>nd</sup>, and nothing marked as 3<sup>rd</sup>, 4<sup>th</sup> or 5<sup>th</sup>. 
+with all 2<sup>nd</sup> place names marked as ''tied'' for 2<sup>nd</sup>, and nothing marked as 3<sup>rd</sup>, 4<sup>th</sup> or 5<sup>th</sup>.
 
 These duplicates (tied for placement) would make a good addition to this task (to rank languages ''correctly'') -- or lacking that, a good Rosetta Code task that can stand by itself.
 
@@ -799,21 +799,21 @@ By the way, as the above get fixed/corrected (even partially), I'll whittle down
 
 I've since changed the way the REXX program handles the above problems (concerning mixed case).   The REXX program now ignores the case of the language name, and now uses the first encounter as the name of the language as it appears in the REXX program's output.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 07:46, 4 December 2017 (UTC)
 
-==unicode characters in languages== 
+==unicode characters in languages==
 
 The REXX program translates the unicode   '''µC++'''   into the ASCII-8   '''µC++'''.
 
 
-Along with that, the REXX program also translates   '''UC++'''   into ASCII-8   '''µC++'''   to be consistant. 
+Along with that, the REXX program also translates   '''UC++'''   into ASCII-8   '''µC++'''   to be consistant.
 
 
-This reduces the language count by one. 
+This reduces the language count by one.
 
 
 Previously, the REXX program was displaying the unicode   '''µC++'''   as   '''╬£'''. -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:42, 24 January 2013 (UTC)
 
 
-Also added the unicode translation of   '''╨£╨Ü-61/52'''   (Cyrillic   '''МК-61/52)'''   into   '''MK-61/52'''. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:24, 15 February 2013 (UTC)
+Also added the unicode translation of   '''╨£╨Ü-61/52'''   (Cyrillic   '''MK-61/52)'''   into   '''MK-61/52'''. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:24, 15 February 2013 (UTC)
 
 
 REXX code for other unicode versions of programming languages have been added since then. -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:45, 30 March 2013 (UTC)

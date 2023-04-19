@@ -829,21 +829,21 @@ do
     for s=1 to ms
         x=sx(s)
         y=sy(s)
-        
+
         letter(0,255,0)
         y=y-1
-        
+
         letter(0,200,0)
         y=y-1
-        
+
         letter(0,150,0)
         y=y-1
-        
+
         color 0,0,0
         fill rect x*12.8-1,y*12.8+4 to x*12.8+12,y*12.8-10
         letter(0,70,0)
         y=y-24
-        
+
         color 0,0,0
         fill rect x*12.8-1,y*12.8+4 to x*12.8+12,y*12.8-10
     next s
@@ -880,7 +880,7 @@ var [const] codes=Walker.chain(  // a bunch of UTF non ascii chars
     c=L("\e[38;2;255;255;255m",[255..30,-15].apply("\e[38;2;0;%d;0m".fmt),
         (250).pump(List,T(Void,"\e[38;2;0;25;0m"))).flatten(),
     csz=c.len(); // 267, c is ANSI escape code fg colors: 38;2;<r;g;b>m
- 
+
 // query the ANSI terminal
 rows,cols := System.popen("stty size","r").readln().split().apply("toInt");
 
@@ -914,5 +914,5 @@ fcn buildScreen(rows,cols){    // build a row major array as list
 
 Offsite Image: [http://www.zenkinetic.com/Images/RosettaCode/matrixRainDance.jpg Matrix rain dance]
 
-[[Category:Ncurses]] 
+[[Category:Ncurses]]
 [[Category:Curses]]

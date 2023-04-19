@@ -62,7 +62,7 @@ FORMATF  CNOP   0,4                ***WRITE Y,X FORMAT(F13.n)**********
          LCR    R9,R9              Negate the absolute value
 @FMTFIP  B      @FMTFDN            Sign OK
 @FMTFOV  MVC    @FMTFDF,=30C'*'
-         B      @FMTFRT 
+         B      @FMTFRT
 @FMTFDN  ST     R9,@FMTFBI
          CVD    R9,@FMTFPA         to fixed(15)
          MVC    @FMTFMA,@FMTFMO
@@ -87,7 +87,7 @@ FORMATF  CNOP   0,4                ***WRITE Y,X FORMAT(F13.n)**********
          EX     R1,@FMTFM2         MVC 0(0,R2),0(R3) on @FMTFNC
          B      @FMTFRT
 @FMTFM1  MVC    @FMTFDF(0),@FMTFDE len=13-N
-@FMTFM2  MVC    0(0,R2),0(R3)      len=N 
+@FMTFM2  MVC    0(0,R2),0(R3)      len=N
 @FMTFRT  LM     R14,R12,@FMTF0F
 		 LA     R1,@FMTFDF
          BR     R14
@@ -108,7 +108,7 @@ FORMATF  CNOP   0,4                ***WRITE Y,X FORMAT(F13.n)**********
 @FMTFTS  DS     X
 @FMTFMO  DC     X'40',11X'20',X'60' CL13
 @FMTFMA  DS     CL13
-@FMTFDE  DS     CL13               pic'B###99999999S' 
+@FMTFDE  DS     CL13               pic'B###99999999S'
 @FMTFDF  DS     CL13               pic'S###9V.9999999'
 @FMTFPA  DS     PL8                dec fixed(15)
 @FMTF0F  DS     15F                save regs

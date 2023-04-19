@@ -1,66 +1,88 @@
 +++
 title = "4-rings or 4-squares puzzle"
 description = ""
-date = 2019-08-24T00:22:36Z
+date = "2019-08-24T00:22:36Z"
 aliases = []
+
 [extra]
 id = 21262
-[taxonomies]
-categories = []
-tags = []
-+++
-
-[[Category:Games]]
-[[Category:Puzzles]]
-
-{{task}}
-<!--  Squares were chosen as it's much easier to display squares instead of rings.  !-->
-
-;Task:
-Replace       '''a, b, c, d, e, f,'''   and
-  '''g '''       with the decimal
-digits   LOW   ───►   HIGH
-
-such that the sum of the letters inside of each of the four large squares add up to
-the same sum.
-
+task = """
+Replace `a`, `b`, `c`, `d`, `e`, `f` and `g` with the decimal digits
+LOW ─► HIGH such that the sum of the letters
+inside of each of the four large squares add up to the same sum.
 
 ```txt
-
-            ╔══════════════╗      ╔══════════════╗
-            ║              ║      ║              ║
-            ║      a       ║      ║      e       ║
-            ║              ║      ║              ║
-            ║          ┌───╫──────╫───┐      ┌───╫─────────┐
-            ║          │   ║      ║   │      │   ║         │
-            ║          │ b ║      ║ d │      │ f ║         │
-            ║          │   ║      ║   │      │   ║         │
-            ║          │   ║      ║   │      │   ║         │
-            ╚══════════╪═══╝      ╚═══╪══════╪═══╝         │
-                       │       c      │      │      g      │
-                       │              │      │             │
-                       │              │      │             │
-                       └──────────────┘      └─────────────┘
-
+╔═══════╗   ╔═══════════╗
+║ a     ║   ║     e     ║
+║   ┌───╫───╫───┐   ┌───╫───┐
+║   │ b ║   ║ d │   │ f ║   │
+╚═══╪═══╝   ╚═══╪═══╪═══╝   │
+    │     c     │   │     g │
+    └───────────┘   └───────┘
 ```
 
+- Show all solutions for each letter being unique with LOW=1 HIGH=7
+- Show all solutions for each letter being unique with LOW=3 HIGH=9
+- Show only the  number of solutions when each letter can be non-unique
+    LOW=0 HIGH=9
+"""
 
-Show all output here.
+[taxonomies]
+categories = ["games", "puzzles"]
+tags = ["game", "puzzle"]
+languages = [
+  "algol_68",
+  "applescript",
+  "arm_assembly",
+  "asm",
+  "awk",
+  "befunge",
+  "c",
+  "clojure",
+  "cpp",
+  "d",
+  "fsharp",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "lisp",
+  "lua",
+  "modula-2",
+  "nim",
+  "pascal",
+  "perl_6",
+  "perl",
+  "phix",
+  "picat",
+  "prolog",
+  "python",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "simula",
+  "sql_pl",
+  "stata",
+  "tcl",
+  "visual_basic_.net",
+  "visual_basic",
+  "yabasic",
+  "zkl",
+]
++++
 
+Related task:
+- [Solve the no connection puzzle](/)
 
-:*   Show all solutions for each letter being unique with
-         LOW=1     HIGH=7
-:*   Show all solutions for each letter being unique with
-         LOW=3     HIGH=9
-:*   Show only the   ''number''   of solutions when each letter can be non-unique
-         LOW=0     HIGH=9
-
-
-;Related task:
-* [[Solve the no connection puzzle]]
-
-
-
+---
 
 
 ## ALGOL 68
@@ -153,10 +175,9 @@ BEGIN
 END
 ```
 
-{{out}}
+Output:
 
 ```txt
-
  3 7 2 1 5 4 6
  4 5 3 1 6 2 7
  4 7 1 3 2 6 5
@@ -174,16 +195,14 @@ END
 4 unique solutions in 3 to 9
 
 2860 non-unique solutions in 0 to 9
-
 ```
 
 
 
 ## AppleScript
 
-{{Trans|JavaScript}}
-{{Trans|Haskell}}
-(Structured search example)
+Translated from JavaScript
+Translated from Haskell (Structured search example)
 
 ```applescript
 use framework "Foundation" -- for basic NSArray sort
@@ -495,7 +514,7 @@ on unlines(xs)
 end unlines
 ```
 
-{{Out}}
+Output:
 
 ```txt
 rings(true, enumFromTo(1, 7))
@@ -525,11 +544,9 @@ length(rings(false, enumFromTo(0, 9)))
 
 ## ARM Assembly
 
-{{works with|as|Raspberry Pi}}
+Works with Raspberry Pi.
 
-```ARM Assembly
-
-
+```ARM-Assembly
 /* ARM assembly Raspberry PI  */
 /*  program square4.s   */
 
@@ -966,15 +983,12 @@ divisionpar10U:
     pop {r2,r3,r4,lr}
     bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
-
-
 ```
 
-{{out}}
+Output:
 
 
 ```txt
-
 a=3          b=7          c=2          d=1
 e=5          f=4          g=6
 ************************
@@ -1016,16 +1030,12 @@ e=3          f=8          g=7
 Number of solutions :4
 
 Number of solutions :2860
-
-
 ```
 
 
 ## AWK
 
-
 ```AWK
-
 # syntax: GAWK -f 4-RINGS_OR_4-SQUARES_PUZZLE.AWK
 # converted from C
 BEGIN {
@@ -1092,13 +1102,11 @@ function ge() {
       }
     }
 }
-
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 A B C D E F G  sum  A+B B+C+D D+E+F F+G
 -------------  ---  -------------------
 4 5 3 1 6 2 7    9  4+5 5+3+1 1+6+2 2+7
@@ -1124,16 +1132,16 @@ A B C D E F G  sum  A+B B+C+D D+E+F F+G
 0-6: 4 unique solutions
 
 2-8: 8 unique solutions
-
 ```
-
 
 
 ## Befunge
 
-
-This is loosely based on the [[4-rings_or_4-squares_puzzle#C|C]] algorithm, although many of the conditions have been combined to minimize branching. There is no option to choose whether the results are displayed or not - unique solutions are always displayed, and non-unique solutions just return the solution count.
-
+This is loosely based on the [[4-rings_or_4-squares_puzzle#C|C]] algorithm,
+although many of the conditions have been combined to minimize branching.
+There is no option to choose whether the results are displayed or not -
+unique solutions are always displayed,
+and non-unique solutions just return the solution count.
 
 ```befunge
 550" :woL">:#,_&>00p" :hgiH">:#,_&>1+10p" :)n/y( euqinU">:#,_>~>:4v
@@ -1146,9 +1154,7 @@ v!`\g00::p07:+g04p06:<^<`\g01:+1g06$<_v#!\g00*!*g02++!-g05<  v"so"<
 >>10g\`*\:::::30g-!\40g-!+\50g-!+\60g-!+\70g-!+\80g-!+80g::::30g^^>
 ```
 
-
-{{out}}
-
+Output:
 
 ```txt
 Low: 1
@@ -1167,8 +1173,6 @@ Unique (y/n): y
 8 solutions
 ```
 
-
-
 ```txt
 Low: 3
 High: 9
@@ -1182,8 +1186,6 @@ Unique (y/n): y
 4 solutions
 ```
 
-
-
 ```txt
 Low: 0
 High: 9
@@ -1194,12 +1196,9 @@ Unique (y/n): n
 ```
 
 
-
 ## C
 
-
 ```C
-
 #include <stdio.h>
 
 #define TRUE 1
@@ -1210,8 +1209,7 @@ int lo,hi,unique,show;
 int solutions;
 
 void
-bf()
-{
+bf() {
     for (f = lo;f <= hi; f++)
         if ((!unique) ||
            ((f != a) && (f != c) && (f != d) && (f != g) && (f != e)))
@@ -1230,8 +1228,7 @@ bf()
 
 
 void
-ge()
-{
+ge() {
     for (e = lo;e <= hi; e++)
         if ((!unique) || ((e != a) && (e != c) && (e != d)))
             {
@@ -1244,8 +1241,7 @@ ge()
 }
 
 void
-acd()
-{
+acd() {
     for (c = lo;c <= hi; c++)
         for (d = lo;d <= hi; d++)
             if ((!unique) || (c != d))
@@ -1259,8 +1255,7 @@ acd()
 
 
 void
-foursquares(int plo,int phi, int punique,int pshow)
-{
+foursquares(int plo,int phi, int punique,int pshow) {
     lo = plo;
     hi = phi;
     unique = punique;
@@ -1277,20 +1272,16 @@ foursquares(int plo,int phi, int punique,int pshow)
         printf("\n%d non-unique solutions in %d to %d\n",solutions,lo,hi);
 }
 
-main()
-{
+main() {
     foursquares(1,7,TRUE,TRUE);
     foursquares(3,9,TRUE,TRUE);
     foursquares(0,9,FALSE,FALSE);
 }
-
 ```
 
 Output
 
 ```txt
-
-
 4 7 1 3 2 6 5
 6 4 1 5 2 3 7
 3 7 2 1 5 4 6
@@ -1311,16 +1302,12 @@ Output
 
 
 2860 non-unique solutions in 0 to 9
-
 ```
-
 
 
 ## C++
 
-
 ```cpp
-
 //C++14/17
 #include <algorithm>//std::for_each
 #include <iostream> //std::cout
@@ -1414,13 +1401,11 @@ int main()
 
     return 0;
 }
-
 ```
 
 Output
 
 ```txt
-
 Unique-numbers combinations in range 1-7:
 [3 7 2 1 5 4 6]
 [4 5 3 1 6 2 7]
@@ -1438,13 +1423,12 @@ Unique-numbers combinations in range 3-9:
 [9 6 5 4 3 8 7]
 
 Number of combinations in range 0-9: 2860.
-
-
 ```
 
 
 ## C#
-{{trans|Java}}
+
+Translated from Java
 
 ```c#
 using System;
@@ -1511,7 +1495,7 @@ namespace Four_Squares_Puzzle {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -1534,9 +1518,7 @@ There are 2860 non-unique solutions in [0, 9]
 ```
 
 
-
 ## Clojure
-
 
 ```clojure
 (use '[clojure.math.combinatorics]
@@ -1549,14 +1531,11 @@ There are 2860 non-unique solutions in [0, 9]
 (defn four-rings [low high & {:keys [unique] :or {unique true}}]
   (for [[a b c d e f g] (rings (range low (inc high)) :unique unique)
     :when (= (+ a b) (+ b c d) (+ d e f) (+ f g))] [a b c d e f g]))
-
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 => (pprint (four-rings 1 7))
 ([3 7 2 1 5 4 6]
  [4 5 3 1 6 2 7]
@@ -1574,16 +1553,13 @@ nil
 
 => (count (four-rings 0 9 :unique false))
 2860
-
 ```
 
 
 
 ## Common Lisp
 
-
 ```lisp
-
 (defpackage four-rings
   (:use common-lisp)
   (:export display-solutions))
@@ -1619,13 +1595,11 @@ nil
             (append letters (four-rings-solutions 3 9 t)))
     (format t "Number of solutions for Low 0, High 9 non-unique:~%~A~%"
             (length (four-rings-solutions 0 9 nil)))))
-
 ```
 
 Output:
 
 ```txt
-
 CL-USER> (four-rings:display-solutions)
 Low 1, High 7, unique letters:
 A  B  C  D  E  F  G
@@ -1648,14 +1622,12 @@ A  B  C  D  E  F  G
 Number of solutions for Low 0, High 9 non-unique:
 2860
 NIL
-
 ```
-
 
 
 ## Crystal
 
-{{trans|Ruby}}
+Translated from Ruby
 
 ```ruby
 def check(list)
@@ -1688,9 +1660,7 @@ four_squares(0, 9, false)
 ```
 
 
-
 ## D
-
 
 ```D
 import std.stdio;
@@ -1758,8 +1728,7 @@ bool valid(bool unique, int needle, int[] haystack ...) {
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -1782,10 +1751,9 @@ There are 2860 non-unique solutions in [0,9]
 ```
 
 
-=={{header|F_Sharp|F#}}==
+## F#
 
 ```fsharp
-
 (* A simple function to generate the sequence
    Nigel Galloway: January 31st., 2017 *)
 type G = {d:int;x:int;b:int;f:int}
@@ -1794,27 +1762,16 @@ let N n g =
   seq{for a in n .. g do for b in n .. g do if (a+b) = x then for c in n .. g do if (b+c+d) = x then yield b} |> Seq.collect(fun b ->
   seq{for f in n .. g do for G in n .. g do if (f+G) = x then for e in n .. g do if (f+e+d) = x then yield f} |> Seq.map(fun f -> {d=d;x=x;b=b;f=f}))))
 
-```
-
-Then:
-
-```fsharp
-
 printfn "%d" (Seq.length (N 0 9))
-
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 2860
-
 ```
 
-
 ```fsharp
-
 (* A simple function to generate the sequence with unique values
    Nigel Galloway: January 31st., 2017 *)
 type G = {d:int;x:int;b:int;f:int}
@@ -1823,20 +1780,13 @@ let N n g =
   seq{for a in n .. g do if a <> d then for b in n .. g do if (a+b) = x && b <> a && b <> d then for c in n .. g do if (b+c+d) = x && c <> d && c <> a && c <> b then yield b} |> Seq.collect(fun b ->
   seq{for f in n .. g do if f <> d && f <> b && f <> (x-b) && f <> (x-d-b) then for G in n .. g do if (f+G) = x && G <> d && G <> b && G <> f && G <> (x-b) && G <> (x-d-b) then for e in n .. g do if (f+e+d) = x && e <> d && e <> b && e <> f && e <> G && e <> (x-b) && e <> (x-d-b) then yield f} |> Seq.map(fun f -> {d=d;x=x;b=b;f=f}))))
 
+for n in N 1 7 do
+    printfn "%d,%d,%d,%d,%d,%d,%d" (n.x-n.b) n.b (n.x-n.d-n.b) n.d (n.x-n.d-n.f) n.f (n.x-n.f)
 ```
 
-Then:
-
-```fsharp
-
-for n in N 1 7 do printfn "%d,%d,%d,%d,%d,%d,%d" (n.x-n.b) n.b (n.x-n.d-n.b) n.d (n.x-n.d-n.f) n.f (n.x-n.f)
-
-```
-
-{{out}}
+Output:
 
 ```txt
-
 4,5,3,1,6,2,7
 7,2,6,1,3,5,4
 3,7,2,1,5,4,6
@@ -1845,35 +1795,40 @@ for n in N 1 7 do printfn "%d,%d,%d,%d,%d,%d,%d" (n.x-n.b) n.b (n.x-n.d-n.b) n.d
 5,6,2,3,1,7,4
 6,4,1,5,2,3,7
 7,3,2,5,1,4,6
-
 ```
 
 and:
 
 ```fsharp
-
-for n in N 3 9 do printfn "%d,%d,%d,%d,%d,%d,%d" (n.x-n.b) n.b (n.x-n.d-n.b) n.d (n.x-n.d-n.f) n.f (n.x-n.f)
-
+for n in N 3 9 do
+    printfn "%d,%d,%d,%d,%d,%d,%d" (n.x-n.b) n.b (n.x-n.d-n.b) n.d (n.x-n.d-n.f) n.f (n.x-n.f)
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 7,8,3,4,5,6,9
 9,6,5,4,3,8,7
 8,7,3,5,4,6,9
 9,6,4,5,3,7,8
-
 ```
-
 
 
 ## Factor
 
-This solution uses the <code>backtrack</code> vocabulary — Factor's implementation of John McCarthy's ''[http://www.rosettacode.org/wiki/Amb ambiguous operator]''. In short, we define 7 integers that can take up any value within the range that we give it, such as [3,9], and assign them names a-g. We then test whether the four sums from the puzzle are equal, and if applicable, whether a-g are unique. We send this boolean value to <code>must-be-true</code> and if it's false, then the other possibilities will be explored through the power of continuations.
+This solution uses the `backtrack` vocabulary —
+Factor's implementation of John McCarthy's [http://www.rosettacode.org/wiki/Amb ambiguous operator](/).
+In short, we define 7 integers that can take up any value
+within the range that we give it, such as [3,9], and assign them names a-g.
+We then test whether the four sums from the puzzle are equal,
+and if applicable, whether a-g are unique.
+We send this boolean value to `must-be-true` and if it's false,
+then the other possibilities will be explored through the power of continuations.
 
-<code>bag-of</code> is a combinator (higher-order function) that yields <i>every</i> solution in a collection. If we had written <code>4-rings</code> without using <code>bag-of</code>, it would have returned only the first solution it found.
+`bag-of` is a combinator (higher-order function)
+that yields _every_ solution in a collection.
+If we had written `4-rings` without using `bag-of`,
+it would have returned only the first solution it found.
 
 ```factor
 USING: arrays backtrack formatting grouping kernel locals math
@@ -1903,10 +1858,9 @@ IN: rosetta-code.4-rings
 0 9 f report
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 V{
     { 3 7 2 1 5 4 6 }
     { 4 5 3 1 6 2 7 }
@@ -1926,24 +1880,35 @@ V{
 }
 In [3, 9] there are 4 unique solutions.
 In [0, 9] there are 2860 non-unique solutions.
-
 ```
-
 
 
 ## Fortran
 
-This uses the facility standardised in F90 whereby DO-loops can have text labels attached (not in the usual label area) so that the END DO statement can have the corresponding label, and any CYCLE statements can use it also. Similarly, the subroutine's END statement bears the name of the subroutine. This is just syntactic decoration. Rather more useful is extended syntax for dealing with arrays and especially the function ANY for making multiple tests without having to enumerate them in the code. To gain this convenience, the EQUIVALENCE statement makes variables A, B, C, D, E, F, and G occupy the same storage as <code>INTEGER V(7)</code>, an array.
+This uses the facility standardised in F90 whereby DO-loops can have text labels attached (not in the usual label area) so that the END DO statement can have the corresponding label, and any CYCLE statements can use it also.
+Similarly, the subroutine's END statement bears the name of the subroutine.
+This is just syntactic decoration.
+Rather more useful is extended syntax for dealing with arrays and especially the function ANY for making multiple tests without having to enumerate them in the code.
+To gain this convenience, the EQUIVALENCE statement makes variables A, B, C, D, E, F, and G occupy the same storage as <code>INTEGER V(7)</code>, an array.
 
-One could abandon the use of the named variables in favour of manipulating the array equivalent, and indeed develop code which performs the nested loops via messing with the array, but for simplicity, the individual variables are used. However, tempting though it is to write a systematic sequence of seven nested DO-loops, the variables are not in fact all independent: some are fixed once others are chosen. Just cycling through all the notional possibilities when one only is in fact possible is a bit too much brute-force-and-ignorance, though other problems with other constraints, may encourage such exhaustive stepping. As a result, the code is more tightly bound to the specific features of the problem.
+One could abandon the use of the named variables in favour of manipulating the array equivalent, and indeed develop code which performs the nested loops via messing with the array, but for simplicity, the individual variables are used.
+However, tempting though it is to write a systematic sequence of seven nested DO-loops, the variables are not in fact all independent: some are fixed once others are chosen.
+Just cycling through all the notional possibilities when one only is in fact possible is a bit too much brute-force-and-ignorance, though other problems with other constraints, may encourage such exhaustive stepping.
+As a result, the code is more tightly bound to the specific features of the problem.
 
-Also standardised in F90 is the $ format code, which specifies that the output line is not to end with the WRITE statement. The problem here is that Fortran does not offer an IF ...FI bracketing construction inside an expression, that would allow something like
+Also standardised in F90 is the $ format code, which specifies that the output line is not to end with the WRITE statement.
+The problem here is that Fortran does not offer an IF ...FI bracketing construction inside an expression, that would allow something like
 ```Fortran
 WRITE(...) FIRST,LAST,IF (UNIQUE) THEN "Distinct values only" ELSE "Repeated values allowed" FI // "."
 ```
- so that the correct alternative will be selected. Further, an array (that would hold those two texts) can't be indexed by a LOGICAL variable, and playing with EQUIVALENCE won't help, because the numerical values revealed thereby for .TRUE. and .FALSE. may not be 1 and 0. And anyway, parameters are not allowed to be accessed via EQUIVALENCE to another variable.
+so that the correct alternative will be selected.
+Further, an array (that would hold those two texts) can't be indexed by a LOGICAL variable, and playing with EQUIVALENCE won't help, because the numerical values revealed thereby for .TRUE.
+and .FALSE.
+may not be 1 and 0.
+And anyway, parameters are not allowed to be accessed via EQUIVALENCE to another variable.
 
 So, a two-part output, and to reduce the blather, two IF-statements.
+
 ```Fortran
       SUBROUTINE FOURSHOW(FIRST,LAST,UNIQUE)	!The "Four Rings" or "Four Squares" puzzle.
 Choose values such that A+B = B+C+D = D+E+F = F+G, all being integers in FIRST:LAST...
@@ -1995,10 +1960,10 @@ Choose values such that A+B = B+C+D = D+E+F = F+G, all being integers in FIRST:L
       END
 ```
 
-Output: not in a neat order because the first variable is not determined first.
+Output:
+(Not in a neat order because the first variable is not determined first.)
 
 ```txt
-
 The Four Rings puzzle, over 1 to 7. Distinct values only.
   7  2  6  1  3  5  4
   7  3  2  5  1  4  6
@@ -2019,14 +1984,19 @@ The Four Rings puzzle, over 3 to 9. Distinct values only.
 
 The Four Rings puzzle, over 0 to 9. Repeated values allowed.
      2860 found.
-
 ```
 
 
-One might hope that the ANY function will quit as soon as possible and that it will not be invoked if UNIQUE is false, but the modernisers have rejected reliance on [[Talk:Short-circuit_evaluation#Compiler_optimisations.3F|short-circuit evaluation]] and the "help" is quite general on the workings of the ANY function, as also is modern. Here is a sample of the code produced by the Compaq 6.6a Visual Fortran F90/95 compiler, in its normal "debugging" condition and array bound checking of course active...
+One might hope that the ANY function will quit as soon as possible
+and that it will not be invoked if UNIQUE is false,
+but the modernisers have rejected reliance on
+[[Talk:Short-circuit_evaluation#Compiler_optimisations.3F|short-circuit evaluation]]
+and the "help" is quite general on the workings of the ANY function,
+as also is modern. Here is a sample of the code produced
+by the Compaq 6.6a Visual Fortran F90/95 compiler,
+in its normal "debugging" condition and array bound checking of course active...
 
 ```txt
-
 31:                    IF (UNIQUE .AND. ANY(V(1:6).EQ.G)) CYCLE EE    !And, if required, unique?
 00401496   mov         edi,dword ptr [UNIQUE]
 00401499   mov         edi,dword ptr [edi]
@@ -2072,14 +2042,12 @@ One might hope that the ANY function will quit as soon as possible and that it w
 0040150E   add         esi,1
 00401511   mov         dword ptr [N (0047035c)],esi
 33:                    IF (UNIQUE) WRITE (6,"(7I3)") V    !Show its values.
-
 ```
 
 I'd rather say nothing at all.
 
 
 ## FreeBASIC
-
 
 ```freebasic
 ' version 18-03-2017
@@ -2175,7 +2143,7 @@ Sleep
 End
 ```
 
-{{out}}
+Output:
 
 ```txt
  a b c d e f g
@@ -2211,9 +2179,7 @@ End
 ```
 
 
-
 ## Go
-
 
 ```go
 package main
@@ -2272,26 +2238,31 @@ func validComb(a,b,c,d,e,f,g int) bool{
 	square4 := f + g
 	return square1 == square2 && square2 == square3 && square3 == square4
 }
-
 ```
 
-{{Out}}
+Output:
 
 ```txt
-
 8 unique solutions in 1 to 7
-[[3 7 2 1 5 4 6] [4 5 3 1 6 2 7] [4 7 1 3 2 6 5] [5 6 2 3 1 7 4] [6 4 1 5 2 3 7] [6 4 5 1 2 7 3] [7 2 6 1 3 5 4] [7 3 2 5 1 4 6]]
+[
+    [3 7 2 1 5 4 6]
+    [4 5 3 1 6 2 7]
+    [4 7 1 3 2 6 5]
+    [5 6 2 3 1 7 4]
+    [6 4 1 5 2 3 7]
+    [6 4 5 1 2 7 3]
+    [7 2 6 1 3 5 4]
+    [7 3 2 5 1 4 6]
+]
 4 unique solutions in 3 to 9
 [[7 8 3 4 5 6 9] [8 7 3 5 4 6 9] [9 6 4 5 3 7 8] [9 6 5 4 3 8 7]]
 2860 non-unique solutions in 0 to 9
-
 ```
-
 
 
 ## Groovy
 
-{{trans|Java}}
+Translated from Java
 
 ```groovy
 class FourRings {
@@ -2352,7 +2323,7 @@ class FourRings {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -2375,12 +2346,9 @@ There are 2860 non-unique solutions in [0, 9]
 ```
 
 
-
 ## Haskell
 
-
-### =By exhaustive search=
-
+### By exhaustive search
 
 ```haskell
 import Data.List
@@ -2427,10 +2395,9 @@ main = do
 ```
 
 
-{{out}}
+Output:
 
 ```txt
-
 [3,7,2,1,5,4,6]
 [4,5,3,1,6,2,7]
 [4,7,1,3,2,6,5]
@@ -2452,17 +2419,26 @@ main = do
 
 
 
-### =By structured search=
+### By structured search
 
-For a faster solution (under a third of a second, vs over 25 seconds on this system for the brute force approach above), we can nest a series of smaller and more focused searches from the central digit outwards.
+For a faster solution (under a third of a second,
+vs over 25 seconds on this system for the brute force approach above),
+we can nest a series of smaller and more focused searches
+from the central digit outwards.
 
 Two things to notice:
-# If we call the central digit the Queen, then in any solution the Queen plus its left neighbour (left Bishop) must sum to the value of the left Rook (leftmost digit). Symmetrically, the right Rook must be the sum of the Queen and right Bishop.
-# The difference between the left Rook and the right Rook must be (minus) the difference between the left Knight (between bishop and rook) and the right Knight.
+1. If we call the central digit the Queen,
+    then in any solution the Queen plus its left neighbour
+    (left Bishop) must sum to the value of the left Rook (leftmost digit).
+    Symmetrically, the right Rook must be the sum of the Queen and right Bishop.
+2. The difference between the left Rook and the right Rook must be
+    (minus) the difference between the left Knight (between bishop and rook)
+    and the right Knight.
 
-
-Nesting four bind operators (>>=), we can then build the set of solutions in the order: queens, left bishops and rooks, right bishops and rooks, knights.
-Probably less readable, but already fast, and could be further optimised.
+Nesting four bind operators (>>=),
+we can then build the set of solutions in the order:
+queens, left bishops and rooks, right bishops and rooks, knights.
+Probably less readable, but already fast, and could be further optimized.
 
 ```haskell
 import Data.List (delete, sortBy, (\\))
@@ -2518,7 +2494,7 @@ main = do
   f ("length (rings False [0 .. 9])", [length (rings False [0 .. 9])])
 ```
 
-{{Out}}
+Output:
 
 ```txt
 rings True [1 .. 7]
@@ -2545,12 +2521,9 @@ length (rings False [0 .. 9])
 ```
 
 
-
 ## J
 
-
 Implementation for the unique version of the puzzle:
-
 
 ```J
 fspuz=:dyad define
@@ -2574,9 +2547,7 @@ fspuz=:dyad define
 )
 ```
 
-
 Implementation for the non-unique version of the puzzle:
-
 
 ```J
 fspuz2=:dyad define
@@ -2598,9 +2569,7 @@ fspuz2=:dyad define
 )
 ```
 
-
 Task examples:
-
 
 ```J
    1 fspuz 7
@@ -2620,7 +2589,6 @@ Task examples:
    #0 fspuz2 9
 2860
 ```
-
 
 
 ## Java
@@ -2666,7 +2634,10 @@ public class FourSquares {
 
                                     ++count;
                                     if (print) {
-                                        System.out.printf("%d %d %d %d %d %d %d%n", a, b, c, d, e, f, g);
+                                        System.out.printf(
+                                            "%d %d %d %d %d %d %d%n",
+                                            a, b, c, d, e, f, g
+                                        );
                                     }
                                 }
                             }
@@ -2676,9 +2647,15 @@ public class FourSquares {
             }
         }
         if (unique) {
-            System.out.printf("There are %d unique solutions in [%d, %d]%n", count, low, high);
+            System.out.printf(
+                "There are %d unique solutions in [%d, %d]%n",
+                count, low, high
+            );
         } else {
-            System.out.printf("There are %d non-unique solutions in [%d, %d]%n", count, low, high);
+            System.out.printf(
+                "There are %d non-unique solutions in [%d, %d]%n",
+                count, low, high
+            );
         }
     }
 
@@ -2688,7 +2665,7 @@ public class FourSquares {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -2711,13 +2688,11 @@ There are 2860 non-unique solutions in [0, 9]
 ```
 
 
-
 ## JavaScript
-
 
 ### ES6
 
-{{Trans|Haskell}} (Structured search version)
+Translated from Haskell}} (Structured search versio
 
 ```javascript
 (() => {
@@ -2859,7 +2834,7 @@ There are 2860 non-unique solutions in [0, 9]
 })();
 ```
 
-{{Out}}
+Output:
 
 ```txt
 rings(true, enumFromTo(1,7))
@@ -2886,13 +2861,11 @@ length(rings(false, enumFromTo(0, 9)))
 ```
 
 
-
 ## Julia
 
-{{Trans|Python}}
+Translated from Python
 
 ```julia
-
 using Combinatorics
 
 function foursquares(low, high, onlyunique=true, showsolutions=true)
@@ -2915,13 +2888,11 @@ end
 foursquares(1, 7, true, true)
 foursquares(3, 9, true, true)
 foursquares(0, 9, false, false)
-
 ```
 
-{{output}}
+Output:
 
 ```txt
-
 [3, 7, 2, 1, 5, 4, 6] is a solution for the list [1, 2, 3, 4, 5, 6, 7]
 [4, 5, 3, 1, 6, 2, 7] is a solution for the list [1, 2, 3, 4, 5, 6, 7]
 [4, 7, 1, 3, 2, 6, 5] is a solution for the list [1, 2, 3, 4, 5, 6, 7]
@@ -2937,14 +2908,12 @@ Total unique solutions for HIGH 7, LOW 1: 8
 [9, 6, 5, 4, 3, 8, 7] is a solution for the list [3, 4, 5, 6, 7, 8, 9]
 Total unique solutions for HIGH 9, LOW 3: 4
 Total solutions for HIGH 9, LOW 0: 2860
-
 ```
-
 
 
 ## Kotlin
 
-{{trans|C}}
+Translated from C
 
 ```scala
 // version 1.1.2
@@ -3022,11 +2991,9 @@ fun main(args: Array<String>) {
 }
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 a b c d e f g
 -------------
 4 7 1 3 2 6 5
@@ -3051,14 +3018,13 @@ a b c d e f g
 
 
 2860 non-unique solutions in 0 to 9
-
 ```
 
 
 
 ## Lua
 
-{{trans|D}}
+Translated from D
 
 ```lua
 function valid(unique,needle,haystack)
@@ -3120,7 +3086,7 @@ fourSquare(3,9,true,true)
 fourSquare(0,9,false,false)
 ```
 
-{{out}}
+Output:
 
 ```txt
 a       b       c       d       e       f       g
@@ -3143,7 +3109,7 @@ There are 2860 non-unique solutions in [0, 9]
 ```
 
 
-=={{header|Modula-2}}==
+## Modula-2
 
 ```modula2
 MODULE FourSquare;
@@ -3243,7 +3209,6 @@ END FourSquare.
 ```
 
 
-
 ## Nim
 
 Adapted from Rust version.
@@ -3289,7 +3254,7 @@ when isMainModule:
   printFourSquares(0, 9, unique = false)
 ```
 
-{{out}}
+Output:
 
 ```txt
 [3, 7, 2, 1, 5, 4, 6]
@@ -3312,11 +3277,11 @@ when isMainModule:
 ```
 
 
-
 ## Pascal
 
 {{works with|Free Pascal}}
-There are so few solutions of 7 consecutive numbers, so I used a modified version, to get all the expected solutions at once.
+There are so few solutions of 7 consecutive numbers,
+so I used a modified version, to get all the expected solutions at once.
 
 ```pascal
 program square4;
@@ -3436,10 +3401,9 @@ Begin
 end.
 ```
 
-{{Out}}
+Output:
 
 ```txt
-
   0 ...  6
   4  2  3  1  5  0  6
   5  1  3  2  4  0  6
@@ -3477,10 +3441,12 @@ unique solution count for 0 to 9 = 192
 ```
 
 
-
 ## Perl
 
-Relying on the modules <code>ntheory</code> and <code>Set::CrossProduct</code> to generate the tuples needed. Both are supply results via iterators, particularly important in the latter case, to avoid gobbling too much memory.
+Relying on the modules `ntheory` and `Set::CrossProduct` to generate the tuples needed.
+Both are supply results via iterators, particularly important in the latter case,
+to avoid gobbling too much memory.
+
 {{libheader|ntheory}}
 
 ```perl
@@ -3532,7 +3498,7 @@ display four_sq_permute( [8, 9, 11, 12, 17, 18, 20, 21] );
 four_sq_cartesian( [0..9] );
 ```
 
-{{out}}
+Output:
 
 ```txt
 8 unique solutions found using: 1, 2, 3, 4, 5, 6, 7
@@ -3568,11 +3534,9 @@ four_sq_cartesian( [0..9] );
 ```
 
 
-
 ## Perl 6
 
-{{works with|Rakudo|2016.12}}
-
+Works with Rakudo 2016.12.
 
 ```perl6
 sub four-squares ( @list, :$unique=1, :$show=1 ) {
@@ -3605,9 +3569,7 @@ four-squares( [8, 9, 11, 12, 17, 18, 20, 21] );
 four-squares( [0..9], :unique(0), :show(0) );
 ```
 
-
-{{out}}
-
+Output:
 
 ```txt
 8 unique solutions found using 1, 2, 3, 4, 5, 6, 7.
@@ -3646,12 +3608,10 @@ a b c d e f g
 
 
 2860 non-unique solutions found using 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
-
 ```
 
 
 ## Picat
-
 
 ```Picat
 import cp.
@@ -3709,15 +3669,10 @@ Picat> main
 [9,6,5,4,3,8,7]
 
 len = 2860
-
-
 ```
 
 
-
-
 ## Phix
-
 
 ```Phix
 integer solutions
@@ -3764,10 +3719,9 @@ foursquares(3,9,True,True)
 foursquares(0,9,False,False)
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 {6,4,5,1,2,7,3}
 {3,7,2,1,5,4,6}
 {6,4,1,5,2,3,7}
@@ -3783,9 +3737,7 @@ foursquares(0,9,False,False)
 {9,6,5,4,3,8,7}
 4 solutions
 2860 solutions
-
 ```
-
 
 
 ## PL/SQL
@@ -3793,7 +3745,6 @@ foursquares(0,9,False,False)
 {{works with|Oracle}}
 
 ```plsql
-
 create table allints (v number);
 create table results
 (
@@ -3925,13 +3876,11 @@ begin
 
 end;
 /
-
 ```
 
 Output
 
 ```txt
-
 SQL> execute foursquares(1,7,TRUE,TRUE);
 3  7  2  1  5  4  6
 4  5  3  1  6  2  7
@@ -3958,9 +3907,7 @@ SQL> execute foursquares(0,9,FALSE,FALSE);
 2860 non-unique solutions in 0 to 9
 
 PL/SQL procedure successfully completed.
-
 ```
-
 
 
 ## Prolog
@@ -3968,7 +3915,6 @@ PL/SQL procedure successfully completed.
 Works with SWI-Prolog 7.5.8
 
 ```Prolog
-
 :- use_module(library(clpfd)).
 
 % main predicate
@@ -3992,13 +3938,11 @@ my_sum_1(Min, Max) :-
 my_sum_2(Min, Max, Len) :-
     my_sum(Min, Max, 1, LL),
     length(LL, Len).
-
 ```
 
 Output
 
 ```txt
-
  ?- my_sum_1(1,7).
 [3,7,2,1,5,4,6]
 [4,5,3,1,6,2,7]
@@ -4019,18 +3963,14 @@ true.
 
  ?- my_sum_2(0,9,N).
 N = 2860.
-
 ```
 
 
 ## Python
 
-
 ### Procedural
 
-
-### =Itertools=
-
+#### Itertools
 
 ```Python
 import itertools
@@ -4086,8 +4026,7 @@ foursquares(0,9,False,False)
 ```
 
 
-
-### =Generators=
+#### Generators
 
 Faster solution without itertools
 
@@ -4160,9 +4099,9 @@ def foursquares(lo,hi,unique,show):
     print
 ```
 
-Output
-```txt
+Output:
 
+```txt
 foursquares(1,7,True,True)
 4, 7, 1, 3, 2, 6, 5
 6, 4, 1, 5, 2, 3, 7
@@ -4188,12 +4127,11 @@ foursquares(0,9,False,False)
 ```
 
 
-
 ### Functional
 
-{{Trans|Haskell}}
-{{Trans|JavaScript}}
-{{Works with|Python|3.7}}
+Translated from Haskell.
+Translated from JavaScript.
+Works with Python 3.7.
 
 ```python
 '''4-rings or 4-squares puzzle'''
@@ -4344,7 +4282,7 @@ if __name__ == '__main__':
     main()
 ```
 
-{{Out}}
+Output:
 
 ```txt
 Testing unique digits [1..7], [3..9] and unrestricted digits:
@@ -4374,15 +4312,12 @@ len(rings(False, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])):
 ```
 
 
-
 ## REXX
-
 
 ### fast version
 
-This REXX version is faster than the more idiomatic version, but is longer (statement-wise) and
-
-a bit easier to read (visualize).
+This REXX version is faster than the more idiomatic version,
+but is longer (statement-wise) and a bit easier to read (visualize).
 
 ```rexx
 /*REXX pgm solves the 4-rings puzzle,  where letters represent unique (or not) digits). */
@@ -4473,13 +4408,11 @@ align: parse arg a1,a2,a3,a4,a5,a6,a7
            7   3   2   5   1   4   6
 
 8  unique  solutions found.
-
 ```
 
 {{out|output|text=  when using the input of:   <tt>   3   9 </tt>}}
 
 ```txt
-
            a   b   c   d   e   f   g
           ═══ ═══ ═══ ═══ ═══ ═══ ═══
            7   8   3   4   5   6   9
@@ -4488,25 +4421,23 @@ align: parse arg a1,a2,a3,a4,a5,a6,a7
            9   6   5   4   3   8   7
 
 4  unique  solutions found.
-
 ```
 
 {{out|output|text=  when using the input of:   <tt>   0   9   non-unique   noshow </tt>}}
 
 ```txt
-
 2860  non-unique solutions found.
-
 ```
-
 
 
 ### idiomatic version
 
-This REXX version is slower than the faster version   (because of the multiple   <big> '''if''' </big>   clauses.
+This REXX version is slower than the faster version
+(because of the multiple <big> '''if''' </big> clauses.
 
-Note that the REXX language doesn't have short-circuits   (when executing multiple clauses
-in   <big> '''if''' </big>   (and other)   statements.
+Note that the REXX language doesn't have short-circuits
+(when executing multiple clauses in <big> '''if''' </big>
+(and other) statements.
 
 ```rexx
 /*REXX pgm solves the 4-rings puzzle,  where letters represent unique (or not) digits). */
@@ -4553,13 +4484,12 @@ align: parse arg a1,a2,a3,a4,a5,a6,a7
        return
 ```
 
-{{out|output|text=  is identical to the faster REXX version.}}
+Output:
 
-
+_identical to the faster REXX version_
 
 
 ## Ruby
-
 
 ```ruby
 def four_squares(low, high, unique=true, show=unique)
@@ -4585,11 +4515,9 @@ end
 four_squares(0, 9, false)
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
  a  b  c  d  e  f  g
 [3, 7, 2, 1, 5, 4, 6]
 [4, 5, 3, 1, 6, 2, 7]
@@ -4609,16 +4537,12 @@ four_squares(0, 9, false)
 4 unique solutions in 3 to 9
 
 2860 non-unique solutions in 0 to 9
-
 ```
-
 
 
 ## Rust
 
-
 ```rust
-
 #![feature(inclusive_range_syntax)]
 
 fn is_unique(a: u8, b: u8, c: u8, d: u8, e: u8, f: u8, g: u8) -> bool {
@@ -4693,13 +4617,11 @@ fn main() {
     println!();
     nonuniques(0, 9);
 }
-
 ```
 
-{{Out}}
+Output:
 
 ```txt
-
 [3, 7, 2, 1, 5, 4, 6]
 [4, 5, 3, 1, 6, 2, 7]
 [4, 7, 1, 3, 2, 6, 5]
@@ -4717,14 +4639,12 @@ fn main() {
 4 unique solutions in 3 to 9 range
 
 2860 non-unique solutions in 0 to 9 range
-
 ```
-
 
 
 ## Scala
 
-{{trans|Java}}
+Translated from Java
 
 ```scala
 object FourRings {
@@ -4768,7 +4688,7 @@ object FourRings {
 }
 ```
 
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -4791,13 +4711,9 @@ There are 2860 non-unique solutions in [0, 9]
 ```
 
 
-
 ## Scheme
 
-
-
 ```scheme
-
 (import (scheme base)
         (scheme write)
         (srfi 1))
@@ -4845,28 +4761,32 @@ There are 2860 non-unique solutions in [0, 9]
 (display "Solution count: LOW=0 HIGH=9 non-unique\n")
 (display (count (lambda (combination) (apply solution? combination))
                 (combinations 7 (iota 10 0) #f))) (newline)
-
 ```
 
-
-{{out}}
+Output:
 
 ```txt
-
 Solutions: LOW=1 HIGH=7
-((4 5 3 1 6 2 7) (6 4 1 5 2 3 7) (3 7 2 1 5 4 6) (7 3 2 5 1 4 6) (4 7 1 3 2 6 5) (7 2 6 1 3 5 4) (5 6 2 3 1 7 4) (6 4 5 1 2 7 3))
+(
+    (4 5 3 1 6 2 7)
+    (6 4 1 5 2 3 7)
+    (3 7 2 1 5 4 6)
+    (7 3 2 5 1 4 6)
+    (4 7 1 3 2 6 5)
+    (7 2 6 1 3 5 4)
+    (5 6 2 3 1 7 4)
+    (6 4 5 1 2 7 3)
+)
 Solutions: LOW=3 HIGH=9
 ((7 8 3 4 5 6 9) (8 7 3 5 4 6 9) (9 6 4 5 3 7 8) (9 6 5 4 3 8 7))
 Solution count: LOW=0 HIGH=9 non-unique
 2860
-
 ```
-
 
 
 ## Sidef
 
-{{trans|Perl 6}}
+Translated from Perl 6
 
 ```ruby
 func four_squares (list, unique=true, show=true) {
@@ -4914,10 +4834,9 @@ four_squares([8, 9, 11, 12, 17, 18, 20, 21])
 four_squares(@(0..9), unique: false, show: false)
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 8 unique solutions found using 1, 2, 3, 4, 5, 6, 7.
 
  a b c d e f g
@@ -4951,13 +4870,10 @@ four_squares(@(0..9), unique: false, show: false)
  21 17 12  9 11 18 20
 
 2860 non-unique solutions found using 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
-
 ```
 
 
-
 ## Simula
-
 
 ```simula
 BEGIN
@@ -5074,10 +4990,9 @@ BEGIN
     END;
 
 END.
-
 ```
 
-{{out}}
+Output:
 
 ```txt
 8 UNIQUE SOLUTIONS IN 1 TO 7
@@ -5095,17 +5010,16 @@ END.
 [ 9 6 4 5 3 7 8 ]
 [ 9 6 5 4 3 8 7 ]
 2860 SOLUTIONS IN 0 TO 9
-
 ```
-
 
 
 ## SQL PL
 
-{{works with|Db2 LUW}} version 9.7 or higher.
+Works with Db2 LUW version 9.7 or higher.
+
 With SQL PL:
 
-```sql pl
+```sql_pl
 
 --#SET TERMINATOR @
 
@@ -5222,13 +5136,11 @@ CREATE OR REPLACE PROCEDURE FOUR_SQUARES(
 CALL FOUR_SQUARES(1, 7, 0, 0)@
 CALL FOUR_SQUARES(3, 9, 0, 0)@
 CALL FOUR_SQUARES(0, 9, 1, 1)@
-
 ```
 
 Output:
 
 ```txt
-
 db2 -td@
 db2 => CREATE TABLE ALL_INTS ( V INTEGER )
 DB20000I  The SQL command completed successfully.
@@ -5270,15 +5182,14 @@ CALL FOUR_SQUARES(0, 9, 1, 1)
   Return Status = 0
 
 2860 non-unique solutions in 0 TO 9
-
 ```
-
 
 
 ## Stata
 
-Use the program '''perm''' in the [[Permutations]] task for the first two questions, as it's fast enough. Use '''joinby''' for the third.
-
+Use the program '''perm''' in the [[Permutations]] task
+for the first two questions, as it's fast enough.
+Use '''joinby''' for the third.
 
 ```stata
 perm 7
@@ -5336,15 +5247,20 @@ count
 ```
 
 
-
 ## Tcl
 
-This task is a good opportunity to practice metaprogramming in Tcl.  The procedure <tt>compile_4rings</tt> builds a lambda expression which takes values for <tt>{a b c d e f g}</tt> as parameters and returns <tt>true</tt> if those values satisfy the specified expressions (<tt>$exprs</tt>).  This approach lets the bytecode compiler optimise our code.
+This task is a good opportunity to practice metaprogramming in Tcl.
+The procedure <tt>compile_4rings</tt> builds a lambda expression
+which takes values for <tt>{a b c d e f g}</tt> as parameters and returns
+<tt>true</tt> if those values satisfy the specified expressions (<tt>$exprs</tt>).
+This approach lets the bytecode compiler optimise our code.
 
-For the final challenge, we vary the code generation a bit in <tt>compile_4rings_hard</tt>: instead of a lambda taking parameters, this generates a nested loop that searches exhaustively through the possible values for each variable.
+For the final challenge, we vary the code generation a bit in <tt>compile_4rings_hard</tt>:
+instead of a lambda taking parameters,
+this generates a nested loop that searches exhaustively through the possible values for each variable.
 
-The puzzle can be varied freely by changing the values of <tt>$vars</tt> and <tt>$exprs</tt> specified at the top of the script.
-
+The puzzle can be varied freely by changing the values of <tt>$vars</tt>
+and <tt>$exprs</tt> specified at the top of the script.
 
 ```Tcl
 set vars {a b c d e f g}
@@ -5424,8 +5340,7 @@ puts "# Number of solutions, free over 0..9:"
 puts [solve_4rings_hard $vars $exprs [range 0 9]]
 ```
 
-
-{{out}}
+Output:
 
 ```txt
 # Combinations of 1..7:
@@ -5447,15 +5362,494 @@ puts [solve_4rings_hard $vars $exprs [range 0 9]]
 ```
 
 
-
 ## X86 Assembly
 
-See [[4-rings_or_4-squares_puzzle/X86 Assembly]]
+Works with NASM.
+Works with Linux.
+
+64 bit
+
+```asm
+; Based on C version http://rosettacode.org/wiki/4-rings_or_4-squares_puzzle#C
+
+%define TRUE 1
+%define FALSE 0
+
+global main,foursquares,acd,ge,bf,print_output
+extern printf
+
+segment .data
+
+a dq 0
+b dq 0
+c dq 0
+d dq 0
+e dq 0
+f dq 0
+g dq 0
+
+lo dq 0
+hi dq 0
+unique dq 0
+show dq 0
+solutions dq 0
+
+output_fmt db `%ld %ld %ld %ld %ld %ld %ld\n`,0
+
+segment .text
+
+main:
+    push rbp
+    mov rbp,rsp
+
+    mov rdi,1
+    mov rsi,7
+    mov rdx,TRUE
+    mov rcx,TRUE
+    call foursquares
+
+    mov rdi,3
+    mov rsi,9
+    mov rdx,TRUE
+    mov rcx,TRUE
+    call foursquares
+
+    mov rdi,0
+    mov rsi,9
+    mov rdx,FALSE
+    mov rcx,FALSE
+    call foursquares
+
+    xor rax,rax
+    leave
+    ret
+
+segment .data
+
+newlinefmt db `\n`,0
+uniquefmt db `\n%ld unique solutions in %ld to %ld\n`,0
+nonuniquefmt db `\n%ld non-unique solutions in %ld to %ld\n`,0
+
+segment .text
+
+foursquares:
+    push rbp
+    mov rbp,rsp
+
+    mov qword [lo],rdi
+    mov qword [hi],rsi
+    mov qword [unique],rdx
+    mov qword [show],rcx
+    mov qword [solutions],0
+
+    lea rdi,[newlinefmt]
+    xor rax,rax
+    call printf
+
+    call acd
+
+    mov rax,qword [unique]
+    mov rbx,TRUE
+    cmp rax,rbx
+    je .isunique
+
+    lea rdi,[nonuniquefmt]
+    mov rsi,qword [solutions]
+    mov rdx,qword [lo]
+    mov rcx,qword [hi]
+    xor rax,rax
+    call printf
+    jmp .done
+
+.isunique:
+    lea rdi,[uniquefmt]
+    mov rsi,qword [solutions]
+    mov rdx,qword [lo]
+    mov rcx,qword [hi]
+    xor rax,rax
+    call printf
+
+.done:
+    xor rax,rax
+    leave
+    ret
+
+segment .text
+
+acd:
+    push rbp
+    mov rbp,rsp
+
+    mov rax,qword [lo] ; c = lo
+    mov qword [c],rax
+
+.nextouterfor:
+    mov rax,qword [c]  ; c <= hi
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .doneouterfor
+
+    mov rax,qword [lo] ; d = lo
+    mov qword [d],rax
+
+.nextinnerfor:
+    mov rax,qword [d]  ; d <= hi
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .doneinnerfor
+
+    mov rax,qword [unique]
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .inif
+
+    mov rax,qword [c]
+    mov rcx,qword [d]
+    cmp rax,rcx
+    jne .inif
+    jmp .iffails
+
+.inif:
+    mov rax,qword [c]
+    mov rcx,qword [d]
+    add rax,rcx
+    mov qword [a],rax
+
+; ((a >= lo) &&
+;  (a <= hi) &&
+;  ((!unique) ||
+;   ((c != 0) &&
+;    (d != 0)
+;   )
+;  )
+; )
+    mov rax,qword [a]  ;(a >= lo)
+    mov rcx,qword [lo]
+    cmp rax,rcx
+    jl .iffails
+
+    mov rax,qword [a]  ;(a <= hi)
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .iffails
+
+    mov rax,qword [unique] ;(!unique)
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .ifsucceeds
+
+    mov rax,qword [c]  ;(c != 0)
+    mov rcx,0
+    cmp rax,rcx
+    je .iffails
+
+    mov rax,qword [d]  ;(d != 0)
+    mov rcx,0
+    cmp rax,rcx
+    je .iffails
+
+.ifsucceeds:
+
+    call ge
+
+.iffails:
+    mov rax,qword [d] ; d++
+    inc rax
+    mov qword [d],rax
+    jmp .nextinnerfor
+
+.doneinnerfor:
+    mov rax,qword [c] ; c++
+    inc rax
+    mov qword [c],rax
+    jmp .nextouterfor
+
+.doneouterfor:
+    xor rax,rax
+    leave
+    ret
+
+ge:
+    push rbp
+    mov rbp,rsp
+
+    mov rax,qword [lo] ; e = lo
+    mov qword [e],rax
+
+.nextfor:
+    mov rax,qword [e]  ; e <= hi
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .donefor
+
+    mov rax,qword [unique]
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .inif
+
+; ((e != a) && (e != c) && (e != d))
+
+    mov rax,qword [e]
+
+    mov rcx,qword [a] ; (e != a)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [c] ; (e != c)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [d] ; (e != d)
+    cmp rax,rcx
+    je .skipif
+
+.inif:
+    mov rax,qword [d] ; g = d + e
+    mov rcx,qword [e]
+    add rax,rcx
+    mov qword [g],rax
+
+; ((g >= lo) &&
+;  (g <= hi) &&
+;  ((!unique) ||
+;   ((g != a) &&
+;    (g != c) &&
+;    (g != d) &&
+;    (g != e)
+;   )
+;  )
+; )
+
+    mov rax,qword [g]  ;(g >= lo)
+    mov rcx,qword [lo]
+    cmp rax,rcx
+    jl .skipif
+
+    mov rax,qword [g]  ;(g <= hi)
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .skipif
+
+    mov rax,qword [unique] ;(!unique)
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .innerifsucceeds
+
+    mov rax,qword [g]  ;(g != a)
+    mov rcx,qword [a]
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [c]  ;(g != c)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [d]  ;(g != d)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [e]  ;(g != e)
+    cmp rax,rcx
+    je .skipif
+
+.innerifsucceeds:
+    call bf
+
+.skipif:
+    mov rax,qword [e] ; e++
+    inc rax
+    mov qword [e],rax
+    jmp .nextfor
+
+.donefor:
+    xor rax,rax
+    leave
+    ret
+
+segment .text
+
+bf:
+    push rbp
+    mov rbp,rsp
+
+    mov rax,qword [lo] ; f = lo
+    mov qword [f],rax
+
+.nextfor:
+    mov rax,qword [f]  ; f <= hi
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .donefor
+
+    mov rax,qword [unique]
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .inif
+
+; ((f != a) && (f != c) && (f != d) && (f != g) && (f != e))
+
+    mov rax,qword [f]
+
+    mov rcx,qword [a] ; (f != a)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [c] ; (f != c)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [d] ; (f != d)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [g] ; (f != g)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [e] ; (f != e)
+    cmp rax,rcx
+    je .skipif
+
+.inif:
+    mov rax,qword [e] ; b = e + f - c;
+    mov rcx,qword [f]
+    add rax,rcx
+    mov rcx,qword [c]
+    sub rax,rcx
+    mov qword [b],rax
+
+; ((b >= lo) &&
+;  (b <= hi) &&
+;  ((!unique) ||
+;   ((b != a) &&
+;    (b != c) &&
+;    (b != d) &&
+;    (b != g) &&
+;    (b != e) &&
+;    (b != f)
+;   )
+;  )
+; )
+
+    mov rax,qword [b]  ;(b >= lo)
+    mov rcx,qword [lo]
+    cmp rax,rcx
+    jl .skipif
+
+    mov rax,qword [b]  ;(b <= hi)
+    mov rcx,qword [hi]
+    cmp rax,rcx
+    jg .skipif
+
+    mov rax,qword [unique] ;(!unique)
+    mov rcx,FALSE
+    cmp rax,rcx
+    je .innerifsucceeds
+
+    mov rax,qword [b]  ;(b != a)
+    mov rcx,qword [a]
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [c]  ;(b != c)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [d]  ;(b != d)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [g]  ;(b != g)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [e]  ;(b != e)
+    cmp rax,rcx
+    je .skipif
+
+    mov rcx,qword [f]  ;(b != f)
+    cmp rax,rcx
+    je .skipif
+
+.innerifsucceeds:
+    mov rax,qword [solutions] ; solutions++
+    inc rax
+    mov qword [solutions],rax
+
+    mov rax,qword [show]
+    cmp rax,TRUE
+    jne .skipif
+
+    call print_output
+
+.skipif:
+    mov rax,qword [f] ; f++
+    inc rax
+    mov qword [f],rax
+    jmp .nextfor
+
+.donefor:
+    xor rax,rax
+    leave
+    ret
+
+print_output:
+    push rbp
+    mov rbp,rsp
+
+
+; printf("%d %d %d %d %d %d %d\n",a,b,c,d,e,f,g);
+
+    lea rdi,[output_fmt]
+    mov rsi,qword [a]
+    mov rdx,qword [b]
+    mov rcx,qword [c]
+    mov r8,qword [d]
+    mov r9,qword [e]
+    mov rax,qword [g]
+    push rax
+    mov rax,qword [f]
+    push rax
+    xor rax,rax
+    call printf
+
+    xor rax,rax
+    leave
+    ret
+
+```
+
+Output
+
+```txt
+
+
+4 7 1 3 2 6 5
+6 4 1 5 2 3 7
+3 7 2 1 5 4 6
+5 6 2 3 1 7 4
+7 3 2 5 1 4 6
+4 5 3 1 6 2 7
+6 4 5 1 2 7 3
+7 2 6 1 3 5 4
+
+8 unique solutions in 1 to 7
+
+7 8 3 4 5 6 9
+8 7 3 5 4 6 9
+9 6 4 5 3 7 8
+9 6 5 4 3 8 7
+
+4 unique solutions in 3 to 9
+
+
+2860 non-unique solutions in 0 to 9
+```
 
 
 ## VBA
 
-{{trans|C}}
+Translated from C
 
 ```vb
 Dim a As Integer, b As Integer, c As Integer, d As Integer
@@ -5524,10 +5918,9 @@ End Sub
 
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 4  7  1  3  2  6  5
 6  4  1  5  2  3  7
 3  7  2  1  5  4  6
@@ -5547,13 +5940,15 @@ End Sub
 4  unique solutions in 3 to 9
 
 2860  non-unique solutions in 0 to 9
-
 ```
 
 
 ## Visual Basic .NET
 
-Similar to the other brute-force algorithims, but with a couple of enhancements.  A "used" list is maintained to simplify checking of the nested variables overlap.  Also the ''d'', ''f'' and ''g'' '''For Each''' loops are constrained by the other variables instead of blindly going through all combinations.
+Similar to the other brute-force algorithims, but with a couple of enhancements.
+A "used" list is maintained to simplify checking of the nested variables overlap.
+Also the ''d'', ''f'' and ''g'' '''For Each''' loops are constrained
+by the other variables instead of blindly going through all combinations.
 
 ```vbnet
 Module Module1
@@ -5604,8 +5999,9 @@ Module Module1
 End Module
 ```
 
-{{out}}
-Added the zkl example for [5,12]
+Output:
+(Added the zkl example for [5,12])
+
 ```txt
 a b c d e f g
 -------------
@@ -5639,10 +6035,9 @@ C 9 7 5 6 A B
 ```
 
 
-
 ## Yabasic
 
-{{trans|D}}
+Translated from D
 
 ```Yabasic
 fourSquare(1,7,true,true)
@@ -5711,7 +6106,7 @@ sub valid(unique, needle, n1, n2, n3, n4, n5, n6)
 end sub
 ```
 
-{{out}}
+Output:
 
 ```txt
 a b c d e f g
@@ -5734,9 +6129,7 @@ There are 2860 non-unique solutions in [0,9]
 ```
 
 
-
 ## zkl
-
 
 ```zkl
     // unique: No repeated numbers in solution
@@ -5761,7 +6154,6 @@ fcn fourSquaresPuzzle(lo=1,hi=7,unique=True){  //-->list of solutions
 }
 ```
 
-
 ```zkl
 fcn show(solutions,msg){
    if(not solutions){ println("No solutions for",msg); return(); }
@@ -5780,10 +6172,9 @@ println(fourSquaresPuzzle(0,9,False).len(),	// 10^7 possibilities
    " non-unique (0-9) solutions found.");
 ```
 
-{{out}}
+Output:
 
 ```txt
-
 8 unique (1-7) solutions found:
  a b c d e f g
 ---------------
@@ -5813,6 +6204,4 @@ println(fourSquaresPuzzle(0,9,False).len(),	// 10^7 possibilities
  12  9  7  5  6 10 11
 
 2860 non-unique (0-9) solutions found.
-
 ```
-

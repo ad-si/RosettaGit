@@ -216,7 +216,7 @@ Can we get GeSHi updated? Also I created a Modula-3 language file for GeSHi and 
 
 ::I can't seem to get the Modula-3 highlighting to work? I tried <nowiki>
 ```modula3></nowiki
- and even <source lang="modula3">. --[[User:Mbishop|Mbishop]]
+ and even <source lang="modula-3">. --[[User:Mbishop|Mbishop]]
 
 ::: <nowiki>
 ```modula3></nowiki

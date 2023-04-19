@@ -166,8 +166,8 @@ int main {}
 
 ```txt
 
-  
-   
+
+
 
 ```
 
@@ -207,7 +207,7 @@ It seems like it would be nice to have the lang tag work like the pre tag, but i
 ::
 :: The 1.0.x GeSHi branch is no longer under active development, and I don't know how painful the transition to the 1.1.x branch is going to be.  1.1.x was supposed to be released in August when I last had the time to talk to the other members of that project, and I don't know why it's still in alpha.
 ::
-:: Opticron has made significant headway on the ISB replacement, but has slammed into a problem that may require filing a ticket with the MW folks.  I just finished getting my home server running again.  Once I've got my home server pulling daily site backups again, I should finally be able to turn my attention toward the syntax highlighting again. 
+:: Opticron has made significant headway on the ISB replacement, but has slammed into a problem that may require filing a ticket with the MW folks.  I just finished getting my home server running again.  Once I've got my home server pulling daily site backups again, I should finally be able to turn my attention toward the syntax highlighting again.
 ::
 :: As an aside, I don't think anything changed in the server software between when newlines were highlighted and when they weren't.  It may also be a bug brought on by a shift in browser usage. --[[User:Short Circuit|Michael Mol]] 01:31, 12 October 2009 (UTC)
 ::: I think that it's not a browser problem. Inspecting the generated HTML shows there's no span created around the line breaks.
@@ -347,7 +347,7 @@ Map < String, Integer >
 
 * there is a problem with strings containing double quotes as we can see here [[JSON#OCaml]]
 * a similar problem occurs with a double quote inside single quotes (the char '"'): [http://rosettacode.org/mw/index.php?title=S-Expressions&oldid=123055#OCaml S-Expressions#OCaml]
-* the same problem affects Pike, but it doesn't affect Python. 
+* the same problem affects Pike, but it doesn't affect Python.
 ```ocaml
 '"' ocaml
 ```
@@ -504,16 +504,16 @@ function a68_vars(){
     $pre='(?<![0-9a-z_\.])';
     $post='?(?![0-9a-z]|\.(?:[eE][+\-]?)?\d)';
     $post=""; # assuming the RegEx is greedy #
-    
+
     $_="\s*";
-    
+
     $srad="Rr";        $rrad="[".$srad."]";  # either one digit, OR opt-space in digits #
     $sbin="0-1";       $rbin="[".$sbin."]";  $_bin=$rbin."(?:[".$sbin."\s]*".$rbin."|)";
     $snib="0-3";       $rnib="[".$snib."]";  $_nib=$rnib."(?:[".$snib."\s]*".$rnib."|)";
     $soct="0-7";       $roct="[".$soct."]";  $_oct=$roct."(?:[".$soct."\s]*".$roct."|)";
     $sdec="0-9";       $rdec="[".$sdec."]";  $_dec=$rdec."(?:[".$sdec."\s]*".$rdec."|)";
     $shex="0-9A-Fa-f"; $rhex="[".$shex."]";  $_hex=$rhex."(?:[".$shex."\s]*".$rhex."|)";
-    
+
     # Define BITS: #
     $prebits=$pre; $postbits=$post;
     $bl="2".$_.$rrad.$_.$_bin;
@@ -522,49 +522,49 @@ function a68_vars(){
     $bl=$bl."|"."8".$_.$rrad.$_.$_oct;
     $bl=$bl."|"."1".$_."0".$_.$rrad.$_.$_dec;
     $bl=$bl."|"."1".$_."6".$_.$rrad.$_.$_hex;
-    
+
     # Define INT: #
     $preint=$pre; $postint=$post;
     # for some reason ".0 e - 2" is not recognised, but ".0 e + 2" IS!
     # work around: remove spaces between sign and digits! Maybe because
     # of the Unary '-' Operator
     $sign_="(?:-|\-|[-]|[\-]|\+|)";  # attempts #
-    
+
     $sign_="(?:-\s*|\+\s*|)"; # n.b. sign is followed by white space #
-    
+
     $_int=$sign_.$_dec;
     $il=          $_int;                      # +_9           #
-    
+
     $GESHI_NUMBER_INT_BASIC='(?:(?<![0-9a-z_\.%])|(?<=\.\.))(?<![\d\.]e[+\-])([1-9]\d*?|0)(?![0-9a-z]|\.(?:[eE][+\-]?)?\d)';
-    
+
     # Define REAL: #
     $prereal=$pre; $postreal=$post;
     $sexp="Ee\\\\";   $_exp="(?:⏨|[".$sexp."])".$_.$_int;
     $_decimal="[.]".$_.$_dec;
-    
+
     # Add permitted permutations of various parts #
     $rl=        $_int.$_.$_decimal.$_.$_exp; # +_9_._9_e_+_9 #
     $rl=$rl."|".$_int.$_."[.]".$_.$_exp;     # +_9_.___e_+_9 #
     $rl=$rl."|".$_int.$_.$_exp;              # +_9_____e_+_9 #
     $rl=$rl."|".$sign_.$_decimal.$_.$_exp;   # +___._9_e_+_9 #
-    
+
     $rl=$rl."|".$_int.$_.$_decimal;          # +_9_._9       #
     $rl=$rl."|".$sign_.$_decimal;            # +___._9       #
-    
+
     # The following line damaged formatting...
     #$rl=$rl."|".$_int;                       # +_9           #
-    
+
     # Apparently Algol68 does not support '2.', c.f. Algol 68G
     #$rl=$rl."|".$_int.$_."[.]";             # +_9_.         #
-    
+
     # Literal prefixes are overridden by KEYWORDS :-(
     $LONGS="(?:(?:(LONG\s+)*|(SHORT\s+))*|)";
-    
+
     return array(
         "BITS" => $prebits.$LONGS."(?:".$bl.")".$postbits,
         "INT" => $preint.$LONGS."(?:".$il.")".$postint,
         "REAL" => $prereal.$LONGS."(?:".$rl.")".$postreal,
-    
+
         "BOLD" => 'color: #b1b100; font-weight: bold;',
         "ITALIC" => 'color: #b1b100;', # procedures traditionally italic #
         "NONSTD" => 'color: #FF0000; font-weight: bold;', # RED #
@@ -798,7 +798,7 @@ LOL - pinch me... I forgot I was posting to rosettacode.org. ;-)
 
 Maybe we could/should start a page: [[GeSHi#ALGOL_68]] etc (with the php for GeSHi, and a specimen of [[GeSHi#ALGOL 68 - specimen]] unittest code to for checking the result.  Ideally any changers would be tested enough for importing directly/live into GeSHi...
 
-BTW: The operators: '&amp;#8804;' and '&amp;#8805;' can be done in html as '&amp;le;' and '&amp;ge;' eg '&le;' and '&ge;'; 
+BTW: The operators: '&amp;#8804;' and '&amp;#8805;' can be done in html as '&amp;le;' and '&amp;ge;' eg '&le;' and '&ge;';
 
 There are a few of others: ne: &ne;, cent: &cent; pound: &pound; deg: &deg;, and: &and;, or: &or;, not: &not;, lceil: &lceil;, lfloor: &lfloor;, times: &times;, divide: &divide; larr: &larr;, rarr: &rarr;, uarr: &uarr;, darr: &darr;, and perp: &perp;  <!-- The Algol 68 Report used alefsym: &alefsym;, "&#x226E;", "&#x226F;" and &#x2112; http://en.wikipedia.org/wiki/Van_Wijngaarden_grammar -->. But no HTML entities for □, ○, ⎩, ⎧ (Unicode 5.1) and "⏨" (decimal exponentiation - Unicode 5.2).
 
@@ -833,7 +833,7 @@ At the moment, all apostrophes are interpreted as starting a character. See for 
 
 Maybe a work-around could be: Ignore apostrophes except
 * if followed by exactly one arbitrary character and an additional apostrophe, like 'A'
-* or if followed by a backslash, like the other types of char literals 
+* or if followed by a backslash, like the other types of char literals
 [[User:Wmeyer|Wmeyer]] 18:51, 27 August 2010 (UTC)
 
 =PL/I, AutoGeSHi=
@@ -868,7 +868,7 @@ Any advice would be appreciated.  I'd prefer to have this fixed before sending i
  * --------
  * Author: Charles R Greathouse IV (----)
  * Copyright: 2011 Charles R Greathouse IV (http://math.crg4.com/)
- * Release Version: 
+ * Release Version:
  * Date Started: 2011/05/11
  *
  * PARI/GP language file for GeSHi.
@@ -1064,7 +1064,7 @@ echo "$(foo "$(bar "asdf\"")")"
 Why is the last closing parenthesis green? WTF?
 :Because GeSHi doesn't implement recursive matching of strings with nested shell commands (as this would cause quite some trouble with other places. IF you write up some proper PCRE that properly matches such strings, just provide it to me and I'm happy to include it. --[[User:BenBE|BenBE]] 02:38, 28 January 2012 (UTC)
 
-Type that same example above into Vim and it's handled perfectly by Vim's recursive, hierarchical language of syntax highlighting regions. 
+Type that same example above into Vim and it's handled perfectly by Vim's recursive, hierarchical language of syntax highlighting regions.
 
 Also, what about this:
 
@@ -1090,12 +1090,12 @@ HEREDOC
 
 :and everything is fine. But if you can provide me with a more complete list of allowed characters in the definition of a HEREDOC spec, I'll try to add it. --[[User:BenBE|BenBE]] 01:12, 28 January 2012 (UTC)
 
-Keywords are being highlighted inside a  here document, which is verbatim text. Shell expressions can occur in a here document, but only as command substitutions $(...). 
+Keywords are being highlighted inside a  here document, which is verbatim text. Shell expressions can occur in a here document, but only as command substitutions $(...).
 :GeSHi as used at RC is a mostly context-free parser. If you want something that's context-aware use GeSHi 1.1.X. But unfortunately you can't mix both versions in one script easily. And since GeSHi 1.0.X has a much broader language support, RC is using the stable 1.0.X version. --[[User:BenBE|BenBE]] 01:12, 28 January 2012 (UTC)
 
 Sorry, this is not a usable syntax coloring system.
 :Write a better one and come back then. --[[User:BenBE|BenBE]] 01:12, 28 January 2012 (UTC)
-:: If I write a better one, will Rosetta switch to it? I have absolutely no use for GeShi (and therefore not for any replacement for GeShi, either) except that it's the only system supported in Rosetta. Why would I waste my spare time hacking on this when I can, like, put my spare time programming cycles into something better, like my own project.  If we could use some HTML tags, the problem would be solved. Vim does the syntax highlighting perfectly, and can put out HTML that you can cut and paste into a web page or wiki. Say, maybe the HTML put out by Vim can be machine translated into colorized Wikimedia markup [http://en.wikipedia.org/wiki/Help:Wiki_markup#Coloring_text]. This may be the key to a GeShi-free solution, worth looking into.[[Special:Contributions/192.139.122.42|192.139.122.42]] 01:51, 28 January 2012 (UTC) 
+:: If I write a better one, will Rosetta switch to it? I have absolutely no use for GeShi (and therefore not for any replacement for GeShi, either) except that it's the only system supported in Rosetta. Why would I waste my spare time hacking on this when I can, like, put my spare time programming cycles into something better, like my own project.  If we could use some HTML tags, the problem would be solved. Vim does the syntax highlighting perfectly, and can put out HTML that you can cut and paste into a web page or wiki. Say, maybe the HTML put out by Vim can be machine translated into colorized Wikimedia markup [http://en.wikipedia.org/wiki/Help:Wiki_markup#Coloring_text]. This may be the key to a GeShi-free solution, worth looking into.[[Special:Contributions/192.139.122.42|192.139.122.42]] 01:51, 28 January 2012 (UTC)
 ::: Well, let me thing about this for a moment ... No, you don't really want this. No. You don't! --[[User:BenBE|BenBE]] 02:25, 28 January 2012 (UTC)
 ::::: Proof of concept:
 <div class="text highlighted_source" style="border:1pt dashed black;white-space:pre;overflow:auto;background:white;color:black;padding:1em;border:1px dashed #2f6fab;color:black;background-color:#f9f9f9;line-height:1.3em"><code><span style="color: #800090; background-color: #f0f0f0">#include </span><span style="color: #077807; background-color: #f0f0f0">&lt;stdio.h&gt;</span>
@@ -1163,13 +1163,13 @@ Then when one takes a closer look at the HTML source to the code specimen one fi
 ```
 
 
-So it looks like there is a missing style sheet for class="python highlighted_source" & others. 
+So it looks like there is a missing style sheet for class="python highlighted_source" & others.
 
 Here is the HTML for ALGOL_68:
 
 ```html
 <pre class="algol68 highlighted_source">main<span class="sy1">:</span> <span class="br0">(</span>
-  
+
 <span class="kw22">printf</span><span class="br0">(</span>$<span class="st0">"Goodbye, World!"</span>l$<span class="br0">)
 </span>
 <span class="br0">)</span><
@@ -1192,7 +1192,7 @@ I note that the wikipedia color schemes are different from rosettacode GeShi col
 
 [[User:NevilleDNZ|NevilleDNZ]] 07:03, 22 March 2013 (UTC)
 
-= Highlighting for МК-61 =
+= Highlighting for MK-61 =
 I propose to install a syntax highlighting of MK-61/52: [http://pastebin.com/BNByHpac file]. [[User:Русский|Русский]] ([[User talk:Русский|talk]]) 16:02, 11 March 2014 (UTC)
 : Or think the highlighting for it is not necessary and the code is clear so? [[User:Русский|Русский]] ([[User talk:Русский|talk]]) 16:09, 12 March 2014 (UTC)
 : Do not present the technical opportunities to add new lighting? 19:18, 20 April 2014 (UTC)
@@ -1201,5 +1201,5 @@ I propose to install a syntax highlighting of MK-61/52: [http://pastebin.com/BNB
 * [https://github.com/GeSHi/geshi-1.0/blob/master/src/geshi/mk-61.php]
 *: Is there still someone alive here? When is the update? 14:20, 13 May 2017 (UTC)
 
-= AppleScript Comments = 
+= AppleScript Comments =
 AppleScript '#' comments do not get properly highlighted, nor do nested comments

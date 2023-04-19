@@ -1177,7 +1177,7 @@ random_element(l):= part(l, 1+random(length(l)));
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>0 П0 1 П1 2 П2 3 П3 4 П4 5
 
 ^ СЧ * [x] ПE КИПE С/П

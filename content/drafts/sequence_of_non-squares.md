@@ -1748,7 +1748,7 @@ Squares for n below one million:
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>1	П4	ИП4	0	,	5	ИП4	КвКор	+	[x]
 +	С/П	КИП4	БП	02
 ```

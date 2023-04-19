@@ -17,7 +17,7 @@ A Voronoi diagram is a diagram consisting of a number of sites.
 Each Voronoi site "s"
 also has a Voronoi cell consisting of all points closest to "s".
 
-See algorithm [K-means++ clustering]().
+See algorithm [K-means++ clustering](./k-means___clustering).
 
 ---
 
@@ -1300,7 +1300,7 @@ DiagramPlot[{{4.4, 14}, {6.7, 15.25}, {6.9, 12.8}, {2.1, 11.1}, {9.5, 14.9}, {13
 ![](mma.png)
 
 
-## МК-61/52
+## MK-61/52
 
 ```mk-61/52
 0  П4
@@ -1883,15 +1883,15 @@ minkowski_3(X1, Y1, X2, Y2, D) :-
 ```
 
 ![](prolog_manhattan.png)
-![](prolog_euclide.png‎)
-![](prolog_minkowski.png‎)
+![](prolog_euclide.png)
+![](prolog_minkowski.png)
 
 
 ## PureBasic
 
 ### Euclidean
 
-![](purebasic.png‎)
+![](purebasic.png)
 
 ```PureBasic
 Structure VCoo
@@ -1969,7 +1969,7 @@ EndIf
 
 ### Taxicab
 
-![](purebasic_taxicab.png‎)
+![](purebasic_taxicab.png)
 
 ```PureBasic
 Structure VCoo
@@ -3093,7 +3093,7 @@ generate_voronoi_diagram(width, height, 25)
 
 ## zkl
 
-Uses the PPM class from [Bresenham's line algorithm#zkl]()
+Uses the PPM class from [Bresenham's line algorithm#zkl](bitmap_bresenhams_line_algorithm)
 
 Translated from Python.
 

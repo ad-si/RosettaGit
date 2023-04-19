@@ -3456,8 +3456,8 @@ end for
 
 See [99 Bottles of Beer/EsoLang](esolang)
 
-## F_Sharp|F#
 
+## F#
 
 ```fsharp
 #light

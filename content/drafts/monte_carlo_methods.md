@@ -2123,7 +2123,7 @@ fn monteCarlo iterations =
 ```
 
 
-=={{header|МК-61/52}}==
+=={{header|MK-61/52}}==
 <lang>П0	П1	0	П4	СЧ	x^2	^	СЧ	x^2	+
 1	-	x<0	15	КИП4	L0	04	ИП4	4	*
 ИП1	/	С/П
