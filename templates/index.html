@@ -196,7 +196,8 @@
           <div class="task-listing-container">
             <h3>Tasks</h3>
             <ul>
-              {% for page in taskSection.pages %}
+              {% set pgsSorted = taskSection.pages | sort(attribute="title") %}
+              {% for page in pgsSorted %}
                 <li class="{% if current_path == page.path %}active{% endif %}">
                   <a href="{{page.permalink}}">{{page.title}}</a>
                 </li>

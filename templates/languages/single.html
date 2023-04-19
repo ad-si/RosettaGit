@@ -35,12 +35,13 @@
     {{ language.content | safe }}
   </section>
 
-  {% if term.pages%}
+  {% if term.pages %}
     <section>
       <h3>Tasks</h3>
 
       <ul>
-        {% for taskPage in term.pages %}
+        {% set pgsSorted = term.pages | sort(attribute="title") %}
+        {% for taskPage in pgsSorted %}
           <li>
             <a href="{{taskPage.permalink}}#{{term.slug}}">
               {{taskPage.title}}

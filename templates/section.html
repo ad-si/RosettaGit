@@ -15,12 +15,21 @@
 <div id="section-{{section.title | slugify}}" class="section-container">
   <h2>{{section.title}}</h2>
 
-  <div>
-    {{section.content | safe}}
-  </div>
+  {% if section.content %}
+    <div>
+      {{section.content | safe}}
+    </div>
+  {% endif %}
 
   <ul>
-    {% for page in section.pages %}
+    {% if section.title == "Tasks" %}
+      {# This will cause an error on other section pages for unknown reasons #}
+      {% set pagesSorted = section.pages | sort(attribute="title") %}
+    {% else %}
+      {% set pagesSorted = section.pages %}
+    {% endif %}
+
+    {% for page in pagesSorted %}
       <li>
         <a href="{{ page.permalink }}">{{page.title}}</a>
         {% if page.taxonomies.tags %}
@@ -31,5 +40,5 @@
       </li>
     {% endfor %}
   </ul>
-  {% endblock content %}
 </div>
+{% endblock content %}
