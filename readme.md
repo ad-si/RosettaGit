@@ -19,3 +19,7 @@ for install commands on other operating systems.
 ## Development
 
 Check out the [makefile](./makefile) for all relevant tasks.
+
+Tip:
+Move drafts out of the `content` directory
+to avoid building them during development.

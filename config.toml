@@ -1,15 +1,16 @@
 base_url = "https://rosettagit.org"
 compile_sass = true
-highlight_code = true
 build_search_index = false
-# theme = "dinkleberg"
-highlight_theme = "monokai"
 
 taxonomies = [
   {name = "categories"},
   {name = "languages"},
   {name = "tags"},
 ]
+
+[markdown]
+highlight_code = true
+highlight_theme = "monokai"
 
 [extra]
 author = "Adrian Sieber"
