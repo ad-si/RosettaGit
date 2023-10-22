@@ -4280,7 +4280,8 @@ RomanNumbers
 
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 MMMCMXCIX=3999
 LXXIIX=invalid
 MMXVII=2017
@@ -4304,8 +4305,7 @@ XLIX=49
 XCIX=99
 XCIV=94
 XLVIII=48
-
-</pre >
+```
 
 
 ## Maple
@@ -4319,11 +4319,9 @@ seq(printf("%a\n", f(i)), i in [MCMXC, MMVIII, MDCLXVI]);
 {{out}}
 
 ```txt
-
 1990
 2008
 1666
-
 ```
 
 
