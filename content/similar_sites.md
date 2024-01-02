@@ -29,11 +29,9 @@ Feel free to update and add to it.
     [CookBook](http://www.rawbw.com/~rem/HelloPlus/CookBook/CookTop.html)
 - [CategoryInManyProgrammingLanguages](http://c2.com/cgi/wiki?CategoryInManyProgrammingLanguages)
     on the [original wiki](http://c2.com/cgi/wiki)
-- [CodeCodex](http://www.codecodex.com/wiki/Main_Page) - most similar
-  site to RC when RC went live
 - [Code golf](http://golf.shinh.org/) in 104 languages
-- [Literate Programs](http://en.literateprograms.org/LiteratePrograms:Welcome) -  a collection of code samples ,based on Donald Knuth's concept of literate programming
-- [Hyperpolyglot](http://hyperpolyglot.org/) - commonly used features in a side-by-side format
+- [Literate Programs](https://literateprograms.org) - Collection of literate programming code samples
+- [Hyperpolyglot](https://hyperpolyglot.org) - Commonly used features in a side-by-side format
 - [Learn X in Y minutes](http://learnxinyminutes.com/) Take a
   whirlwind tour of your next favorite language.
 - [Informatyka Wroc Computer Science
@@ -95,8 +93,7 @@ Feel free to update and add to it.
 ## Humorous
 
 - [99 Bottles of Beer](http://99-bottles-of-beer.net/)
-- [Consumers Guide to Programming
-  Languages](http://cse.csusb.edu/dick/cs320/consumers.html)
+- [Consumers Guide to Programming Languages](http://cse.csusb.edu/dick/cs320/consumers.html)
 - [Esolangs Wiki](http://esolangs.org/)
 - [Evolution of a
   Programmer](http://www.ariel.com.au/jokes/The_Evolution_of_a_Programmer.html)
@@ -104,8 +101,7 @@ Feel free to update and add to it.
 - [Shooting Yourself in the Foot
   (PDF)](http://www.thecorememory.com/How_to_Determine_Which_Programming_Language_You.pdf)
     or How to Determine Which Programming Language You're Using
-- [You have two
-  cows](http://uncyclopedia.co/wiki/You_have_two_cows/18)
+- [You have two cows](http://uncyclopedia.co/wiki/You_have_two_cows/18)
 - [YourLanguageSucks](https://wiki.theory.org/YourLanguageSucks)
 
 
