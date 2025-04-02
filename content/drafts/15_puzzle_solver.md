@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Games}}
-Your task is to write a program that finds a solution in the fewest moves possible single moves to a random [[wp:15_puzzle|Fifteen Puzzle Game]].<br />
+Your task is to write a program that finds a solution in the fewest moves possible single moves to a random [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle).<br />
 For this task you will be using the following puzzle:<br />
 
 ```txt
@@ -40,7 +40,7 @@ rrrulddluuuldrurdddrullulurrrddldluurddlulurruldrdrd
 
 rrruldluuldrurdddluulurrrdlddruldluurddlulurruldrrdd
 
-see: [http://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution Pretty Print of Optimal Solution]
+see: [Pretty Print of Optimal Solution](http://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution)
 
 Finding either one, or both is an acceptable result.
 
@@ -60,8 +60,8 @@ Solve the following problem:
 
 
 ;Related Task:
-* [[15_Puzzle_Game|15 puzzle game]]
-* [[A* search algorithm]]
+* [15 puzzle game](/tasks/15_Puzzle_Game)
+* [A* search algorithm](/tasks/A* search algorithm)
 
 
 
@@ -69,7 +69,7 @@ Solve the following problem:
 
 ## C++
 
-[http://www.rosettacode.org/wiki/15_puzzle_solver/20_Random see] for an analysis of 20 randomly generated 15 puzzles solved with this solver.
+[see](http://www.rosettacode.org/wiki/15_puzzle_solver/20_Random) for an analysis of 20 randomly generated 15 puzzles solved with this solver.
 
 ### =The Solver=
 
@@ -97,17 +97,17 @@ class fifteenSolver{
     const int           g = (11-N0[n])*4;
     const unsigned long a = N2[n]&((unsigned long)15<<g);
     N0[n+1]=N0[n]+4; N2[n+1]=N2[n]-a+(a<<16); N3[n+1]='d'; N4[n+1]=N4[n]+(Nr[a>>g]<=N0[n]/4?0:1);
-  } 
+  }
   void fG(){
     const int           g = (19-N0[n])*4;
     const unsigned long a = N2[n]&((unsigned long)15<<g);
     N0[n+1]=N0[n]-4; N2[n+1]=N2[n]-a+(a>>16); N3[n+1]='u'; N4[n+1]=N4[n]+(Nr[a>>g]>=N0[n]/4?0:1);
-  } 
+  }
   void fE(){
     const int           g = (14-N0[n])*4;
     const unsigned long a = N2[n]&((unsigned long)15<<g);
     N0[n+1]=N0[n]+1; N2[n+1]=N2[n]-a+(a<<4); N3[n+1]='r'; N4[n+1]=N4[n]+(Nc[a>>g]<=N0[n]%4?0:1);
-  } 
+  }
   void fL(){
     const int           g = (16-N0[n])*4;
     const unsigned long a = N2[n]&((unsigned long)15<<g);
@@ -133,7 +133,7 @@ int main (){
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -146,7 +146,7 @@ sys     0m0.000s
 ```
 
 
-=={{header|F_Sharp|F#}}==
+## F_Sharp|F#
 
 ### The Function
 
@@ -155,7 +155,7 @@ sys     0m0.000s
 
 // A Naive 15 puzzle solver using no memory. Nigel Galloway: October 6th., 2017
 let Nr,Nc = [|3;0;0;0;0;1;1;1;1;2;2;2;2;3;3;3|],[|3;0;1;2;3;0;1;2;3;0;1;2;3;0;1;2|]
-type G= |N |I |G |E |L 
+type G= |N |I |G |E |L
 type N={i:uint64;g:G list;e:int;l:int}
 let fN     n=let g=(11-n.e)*4 in let a=n.i&&&(15UL<<<g)
              {i=n.i-a+(a<<<16);g=N::n.g;e=n.e+4;l=n.l+(if Nr.[int(a>>>g)]<=n.e/4 then 0 else 1)}
@@ -191,7 +191,7 @@ test 0xfe169b4c0a73d852UL 8
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -212,7 +212,7 @@ One could imagine an array FROM whose value for a given position identifies the 
 
 Since there are only 16! possible board layouts, only about a millionth of the array would be in use (16!/16<sup>16</sup> = 0·0000011342267) which is rather a stiff price to pay for a convenient relationship between a board layout and the corresponding location in the array. Actually, calculating a sixteen-dimensional location in an array is not so trivial and earlier compilers would not allow so many dimensions anyway. An alternative calculation might serve. This is the method of "hash tables", whereby, given a key (here, the values of the tiles in the sixteen places of the board), calculate a number, H, by some expedient and use that to index into a table. Entries are added sequentially to the table of positions but the hash number for a position is arbitrary so an array is used: INDEX(H) for the first position stored is one, and for the second position with its value of H, INDEX(H) is two, and so on, Two different positions may well yield the same hash number in a variant of the "birthday paradox", so the value of INDEX(H) is really a pointer to the start of a linked-list of table entries for different positions that all have the same hash number. The length of such chains is expected to be short because the hash number selects within a large INDEX array. Searching should be swift as for a given position, either INDEX(H) will be zero (meaning that the position is unknown), or, there will be one or two entries to probe to see if their position matches.
 
-Because a board position involves sixteen numbers, each in the range of zero to fifteen, it is irresistible to have the board layout described by <code>INTEGER*1 BOARD(16)</code> since eight-bit integers can be defined, though not four-bit integers, alas. Further, an EQUIVALENCE statement can make this storage area the same place that an array <code>INTEGER*4 BORED(4)</code> occupies: no data transfer operations are needed for four 32-bit integers to hold the contenet of sixteen 8-bit integers. Next, the calculations <code>BRD(1) = BORED(1)*16 + BORED(2)</code> and <code>BRD(2) = BORED(3)*16 + BORED(4)</code> will squeeze two four-bit fields into one eight-bit pair, and moreover, do so four pairs at a time in parallel. Thus, array BRD in two 32-bit integers describes a position. A 64-bit integer could be involved instead of two 32-bit integers, but the hash calculation uses BRD(1)*BRD(2) to encourage a good mix. In ''The Art of Computer Programming'', Prof. Knuth advises that the wild hash number be reduced to the range 0:M - 1 by taking the remainder, modulo M, where M is a (large) prime number. The index array then is a fixed size, <code>INDEX(0:M - 1)</code> The output shows these calculations for two entries; notably the ordering of the bytes is peculiar, this being a "little-endian" cpu.
+Because a board position involves sixteen numbers, each in the range of zero to fifteen, it is irresistible to have the board layout described by <code>INTEGER*1 BOARD(16)</code> since eight-bit integers can be defined, though not four-bit integers, alas. Further, an EQUIVALENCE statement can make this storage area the same place that an array <code>INTEGER*4 BORED(4)</code> occupies: no data transfer operations are needed for four 32-bit integers to hold the contenet of sixteen 8-bit integers. Next, the calculations <code>BRD(1) = BORED(1)*16 + BORED(2)</code> and <code>BRD(2) = BORED(3)*16 + BORED(4)</code> will squeeze two four-bit fields into one eight-bit pair, and moreover, do so four pairs at a time in parallel. Thus, array BRD in two 32-bit integers describes a position. A 64-bit integer could be involved instead of two 32-bit integers, but the hash calculation uses BRD(1)*BRD(2) to encourage a good mix. In *The Art of Computer Programming*, Prof. Knuth advises that the wild hash number be reduced to the range 0:M - 1 by taking the remainder, modulo M, where M is a (large) prime number. The index array then is a fixed size, <code>INDEX(0:M - 1)</code> The output shows these calculations for two entries; notably the ordering of the bytes is peculiar, this being a "little-endian" cpu.
 
 Accordingly, a table entry is defined by <code>TYPE AREC</code> with a NEXT (to link to the next table entry in a chain) and a BRD array to describe the board layout the entry is for. The payload for this problem consists of a PREV which identifies the entry from which this position was reached, and MOVE which identifies the move that had been made to do so.
 
@@ -220,7 +220,7 @@ The initial idea was to work from the given starting position, ascertaining all 
 
 Starting a Red Tide from the "solved" or ZERO position has the advantage that if the table is retained, a new run for a different start position would take advantage of the previous effort. A table based around moves from one start position would be of little use when given a different start position.
 
-Alas, the Red Tide ran into too much dry sand. A sixteen-dimensional volume has a ''lot'' of space in which it can possess a surface. The revised plan was to spread a Red Tide from the ZERO position and at the same time spread a Blue Tide from the specified start position, hoping that they would meet rather sooner. In ''Numerical Methods that Work (Usually)'', F. S. Acton remarks upon "Perverse Formulations", such as "... who insists on solving a boundary-value problem in ordinary differential equations via initial-value techniques may get away with it for a while, but ..." One can easily imagine pouring red paint onto the floor in one place, and blue paint in another place: most of the extension of the puddles is in directions that will not meet. With a single puddle, very little of the expansion is towards the target. Details are shown in the results.
+Alas, the Red Tide ran into too much dry sand. A sixteen-dimensional volume has a *lot* of space in which it can possess a surface. The revised plan was to spread a Red Tide from the ZERO position and at the same time spread a Blue Tide from the specified start position, hoping that they would meet rather sooner. In *Numerical Methods that Work (Usually)*, F. S. Acton remarks upon "Perverse Formulations", such as "... who insists on solving a boundary-value problem in ordinary differential equations via initial-value techniques may get away with it for a while, but ..." One can easily imagine pouring red paint onto the floor in one place, and blue paint in another place: most of the extension of the puddles is in directions that will not meet. With a single puddle, very little of the expansion is towards the target. Details are shown in the results.
 
 A great deal of computer effort could be avoided if the spread could be given good guidance. For instance, a function that for any given position, gives the minimum number of moves needed to reach the ZERO position from it. Thus, from the start position, evaluate the function for each of the positions that can be reached via the available moves (at most, four), and select that one with the smallest value; repeat until at ZERO. Such a function certainly exists, though our ingenuity may not bring it forth. Perhaps some thought may do so. Perhaps not any time soon. But in any case, there is a definite procedure for generating such a function, and it is simple. Analyse all the board positions (they are finite in number) as in the Red Tide process, for each entry retaining the number of moves needed to reach that position from ZERO. Clearly, this is computable by a Turing Machine and so the function is computable, and so exists.
 
@@ -228,7 +228,7 @@ Such a guide function is rather like a "distance" function, so along these lines
 
 As an experiment, when the Red Tide was poured to completion for a board of three rows and four columns, every position in the stash was presented to ZDIST and the result written out. The filesystem presented difficulties: reading the stash file as a sequential file failed! So, a slog through reading specified record numbers, one after the other, taking half an hour. By contrast, the B6700 filesystem of the 1970s employed a feature called "diagonal I/O" whereby the style of the previous I/O for a file was retained and compared to the style of the new I/O operation: for matching styles, conclusions could be drawn. The first and last few ZDIST values are  0, 105, 1, 328449, 609, 632, 4, 3271809, 3312009, ... 287247191, 446727869, 287039663. That last is entry 23950800 which is 12!/2: every possible attainable position has been tested and stored in the stash (once each), since a parity condition means that half the layout combinations have one parity and half the other, the possible moves being unable to change the parity. Alas, the ZDIST figures do not show anything so simple as odd/even for this. Every value should be unique, but in the past it has suspiciously often been easy to find a proof of a desired situation, so a test: sort the values and check. UltraEdit ran for a long time, then reported that there was insufficient memory to maintain an "undo" list. Very well. And then it wiped the file! Fortunately, the stash was still intact. On restarting in Linux the "sort" utility was available, and after some impressive running of all six cpus at 100% in cyclic bursts, I was looking at a file in a mad order: 0, 1, 10, 100, 1000, 10000, ... Apparently some sort of "word" order, even though the text file used leading spaces so that the numbers were all aligned right. As usual, the "man"ual information was brief and vague, but option "g" for "general number" looked likely, and so it proved. In sorted order: 0, 1, 4, 8, 9, 11, 12, 13, ... 479001589, 479001590, 479001593, 479001594, 479001597, 479001598. And 12! = 479001600. All values were unique.
 
-The ZDIST function would be a candidate for a hash function, as it looks to give a good spray. But it requires rather more computation. It is always possible to calculate a "perfect" hash function, one that not only gives a distinct integer value for every possible key but also produces no gaps, so if there are N keys, there are N hash values in the range 1:N (or 0:N - 1) and the mapping is one to one. There even exist "hyper perfect" hash functions, that possess useful ordering properties: an example is the conversion of dates to a [[Calendar#Fortran|day number]], which is one-to-one, without gaps, and ordered by date. However, the calculation of such perfection may be lengthy, so a fast hash is preferable, except for special cases.
+The ZDIST function would be a candidate for a hash function, as it looks to give a good spray. But it requires rather more computation. It is always possible to calculate a "perfect" hash function, one that not only gives a distinct integer value for every possible key but also produces no gaps, so if there are N keys, there are N hash values in the range 1:N (or 0:N - 1) and the mapping is one to one. There even exist "hyper perfect" hash functions, that possess useful ordering properties: an example is the conversion of dates to a [day number](/tasks/Calendar#Fortran), which is one-to-one, without gaps, and ordered by date. However, the calculation of such perfection may be lengthy, so a fast hash is preferable, except for special cases.
 
 In the event, when running, TaskInfo showed that almost all of the time was spent in the filesystem's I/O procedures, no "user time" was visible. The hash calculation indeed was fast, but the I/O was slow. Probably because the disc file was scattered in blocks across the disc device (actually a solid-state drive) and finding the appropriate block took a lot of messing about. In the past, a large disc file would be in one or very few pieces on the actual disc, with a straightforward direct calculation between a record number and a disc's corresponding cylinder, surface, track and sector. These days, the operating system uses "spare" memory to hold the content of recently-used disc blocks, but alas, each index file is 781MB, and the stash files are over 3,000MB. Some systems have many gigabytes of memory, but this one has 4GB.
 
@@ -297,7 +297,7 @@ Whereas by writing out the product,
 
 (The source below has the ABS outside the MOD: I don't care [[Talk:Carmichael_3_strong_pseudoprimes|what sort of mod]] is used here, just that negative numbers be as scrambled as positive) In both cases the array indexing is checkable by the compiler at compile time so that there need be no run-time checking on that. Such bound checking may be not as strict as might be expected when EQUIVALENCE tricks are involved. In tests with a variant board size of 3x4, the board position array was declared BOARD(N) where N = 12, but was still equivalenced to BORED(4) and so still allowed room for sixteen elements in BOARD. Subroutine UNPACK was not written to deal with anything other than a 4x4 board and so accessed elements 13, 14, 15, and 16 of BOARD that were outside its declared upper bound of 12, but no run-time objection was made. Similarly with a 3x3 board.
 
-Granted a flexible pre-processor scheme (as in pl/i, say) one could imagine a menu of tricks being selected from according to the board shape specified, but without such a facility, the constants are merely named rather than literal. Any change, such as to a 3x4 board, can be made by adjusting the appropriate PARAMETER and many usages will adjust accordingly. Others will require adjustment by the diligent programmer for good results. In the absence of a pre-processor one could present the various possible code sequences surrounded by tests as in 
+Granted a flexible pre-processor scheme (as in pl/i, say) one could imagine a menu of tricks being selected from according to the board shape specified, but without such a facility, the constants are merely named rather than literal. Any change, such as to a 3x4 board, can be made by adjusting the appropriate PARAMETER and many usages will adjust accordingly. Others will require adjustment by the diligent programmer for good results. In the absence of a pre-processor one could present the various possible code sequences surrounded by tests as in
 ```Fortran
 IF (NR.EQ.4) THEN
  code specialised for NR = 4
@@ -306,11 +306,11 @@ ELSE IF (NR.EQ.3) THEN
 END IF
 ```
 
-and hope that the compiler would carry forward the actual value of <code>NR</code> into the IF-statement's conditional expression, recognise that the result is also constant (for the current compilation with a particular value of <code>NR</code>) and so generate code only for the case that the expression came out as ''true'', without any test to select this being employed in the compiled code. This soon becomes a tangle of combinations, and has not been attempted. And there could be difficulties too. One wonders if, say, with NR = 3, the specialised code for the NR = 4 case could contain a mention of element 4 of an array which is actually of size NR. Would the compiler regard this as an error, given that it will be discarding this code anyway? Even if one used NR rather than a literal such as 4 there could still be problems, such as code calling for a division by (NR - 3).
+and hope that the compiler would carry forward the actual value of <code>NR</code> into the IF-statement's conditional expression, recognise that the result is also constant (for the current compilation with a particular value of <code>NR</code>) and so generate code only for the case that the expression came out as *true*, without any test to select this being employed in the compiled code. This soon becomes a tangle of combinations, and has not been attempted. And there could be difficulties too. One wonders if, say, with NR = 3, the specialised code for the NR = 4 case could contain a mention of element 4 of an array which is actually of size NR. Would the compiler regard this as an error, given that it will be discarding this code anyway? Even if one used NR rather than a literal such as 4 there could still be problems, such as code calling for a division by (NR - 3).
 
-Implementing the plan had its problems. Since the INDEX array is accessed randomly it should be in memory, but alas if it is large (and now there are two of them) the Compaq Visual Fortran 6.6 F90/95 compiler complains "total image size exceeds max (268435456): image may not run" - but if it is not so large, when many entries are made the hash separation will be heavily overloaded and the chains of entries with equal hash codes will not be short. One could possibly mess about with allocatable arrays as a different storage scheme is used for them, but instead, a disc file for the index array as well as a stash file for the entries. This also would mean that the stash and its index could survive for another run, otherwise if the index data were in memory only, some scheme would be needed to save the index, or to redevelop the index from the stash file on a restart. Both the stash and index files require random access, but the stash file grows sequentially. The index file however has to start full-sized, with all values zero. The obvious ploy of writing zero values to the file as a sequential file works well enough, but on re-opening the index file for random access, there are complaints about accessing a non-existing record. By initialising the file via random access, writing a zero to record one, two, three, etc. sequentially, no such complaint appeared and everything worked. But the initialisation was ''very'' slow, taking many minutes. Oddly, writing a zero to the ''last'' record without doing anything to intervening records not only worked but did so rapidly. It appeared that the intervening records were not prepared by the I/O subsystem at all, as very little I/O action took place. At a guess, only if a filesystem's allocation block was written to was that block made into a proper file piece with all zero values.
+Implementing the plan had its problems. Since the INDEX array is accessed randomly it should be in memory, but alas if it is large (and now there are two of them) the Compaq Visual Fortran 6.6 F90/95 compiler complains "total image size exceeds max (268435456): image may not run" - but if it is not so large, when many entries are made the hash separation will be heavily overloaded and the chains of entries with equal hash codes will not be short. One could possibly mess about with allocatable arrays as a different storage scheme is used for them, but instead, a disc file for the index array as well as a stash file for the entries. This also would mean that the stash and its index could survive for another run, otherwise if the index data were in memory only, some scheme would be needed to save the index, or to redevelop the index from the stash file on a restart. Both the stash and index files require random access, but the stash file grows sequentially. The index file however has to start full-sized, with all values zero. The obvious ploy of writing zero values to the file as a sequential file works well enough, but on re-opening the index file for random access, there are complaints about accessing a non-existing record. By initialising the file via random access, writing a zero to record one, two, three, etc. sequentially, no such complaint appeared and everything worked. But the initialisation was *very* slow, taking many minutes. Oddly, writing a zero to the *last* record without doing anything to intervening records not only worked but did so rapidly. It appeared that the intervening records were not prepared by the I/O subsystem at all, as very little I/O action took place. At a guess, only if a filesystem's allocation block was written to was that block made into a proper file piece with all zero values.
 
-During these developments, a mistype produced an odd result. With F90, many array operations became possible, and accidentally, I typed <code>WRITE (WRK,REC = array) ''etc''</code> but omitted to specify which element of the array was to be used, as in <code>WRITE (WRK,REC = array(1)) ''etc''</code> A positive interpretation of this construction would be to hope that the I/O list (the ''etc'') would be written to multiple records of I/O unit WRK, to array(1), array(2), and so on without re-evaluation of the I/O list. Alas, a file containing 19MB of zeroes resulted. Obviously some mistake. Similarly, one could hope that <code>WRITE (OUT,66) stuff</code> where OUT(1) = 6 (for standard output), and OUT(2) = 10 (a disc file, logging what has been written) would save on repeating WRITE statements, but alas, compatibility with older Fortran requires that such a statement places its output into the storage occupied by array OUT. This might be avoided by a variant form, <code>WRITE (UNIT = OUT,66) stuff</code> to signify that I/O unit numbers are being given, but alas, the compiler doesn't agree.
+During these developments, a mistype produced an odd result. With F90, many array operations became possible, and accidentally, I typed <code>WRITE (WRK,REC = array) *etc*</code> but omitted to specify which element of the array was to be used, as in <code>WRITE (WRK,REC = array(1)) *etc*</code> A positive interpretation of this construction would be to hope that the I/O list (the *etc*) would be written to multiple records of I/O unit WRK, to array(1), array(2), and so on without re-evaluation of the I/O list. Alas, a file containing 19MB of zeroes resulted. Obviously some mistake. Similarly, one could hope that <code>WRITE (OUT,66) stuff</code> where OUT(1) = 6 (for standard output), and OUT(2) = 10 (a disc file, logging what has been written) would save on repeating WRITE statements, but alas, compatibility with older Fortran requires that such a statement places its output into the storage occupied by array OUT. This might be avoided by a variant form, <code>WRITE (UNIT = OUT,66) stuff</code> to signify that I/O unit numbers are being given, but alas, the compiler doesn't agree.
 
 
 ### Source
@@ -856,7 +856,7 @@ An important feature of the stash file is that its sequential growth makes it ea
 
 If an index value is non-zero, then the candidate position's layout must be compared to the layout of each of the positions that have been linked together as having that hash number. Each comparison is a probe of the stash (the disc record must be read) and hopefully, the average number of probes remains a small number, such as one. Perhaps a match will be found early in the chain, but hopefully, most chains are short. Thus the columns headed Max.L and Avg.L report on this. Only after the last linked entry is checked will it be known that the candidate position's layout is not in the stash, and if so, a new entry to hold it is made.
 
-If a position is declared new and added to the primary stash (be it Red or Blue) as a new border element, a secondary search is made of the ''other'' stash (respectively, Blue or Red) to seek a match, and the same statistics are presented. No entries are added to the alternate stash: instead a match means that the two tides have met at this position, and so a step sequence is discovered!
+If a position is declared new and added to the primary stash (be it Red or Blue) as a new border element, a secondary search is made of the *other* stash (respectively, Blue or Red) to seek a match, and the same statistics are presented. No entries are added to the alternate stash: instead a match means that the two tides have met at this position, and so a step sequence is discovered!
 
 The step sequence is shown along with a board layout, followed by various methods of calculating a position's distance from ZERO, the solved state. All are such that Dist(ZERO) = 0, but, they do not show an obvious direction to follow. Some steps along the path to ZERO raise the distance to ZERO.
 
@@ -1082,7 +1082,7 @@ The two paths deviate on the seventh move, from entry 126 Blue either R to 265 B
 
 ### =Another Example=
 
-Taking the first example from [[15_puzzle_solver/20_Random]] shows that with the red tide expansion in hand, only the new blue tide is poured into the maze:
+Taking the first example from [15_puzzle_solver/20_Random](/tasks/15_puzzle_solver/20_Random) shows that with the red tide expansion in hand, only the new blue tide is poured into the maze:
 
 ```txt
 
@@ -1866,7 +1866,7 @@ func main() {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2097,7 +2097,7 @@ run() = (N0[1] = 8; _n[1] = 1; N2[1] = 0xfe169b4c0a73d852; solve(0))
 run()
 
 ```
- {{output}} 
+ ### Output
 ```txt
 
  next iteration, _n[1] will be 2...
@@ -2196,7 +2196,7 @@ end.
 
 ### The Task
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2209,7 +2209,7 @@ rrruldluuldrurdddluulurrrdlddruldluurddlulurruldrrdd
 
 ### Extra Credit
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2237,7 +2237,7 @@ if STM and MTM then ?9/0 end if -- both prohibited
 --  0       1   -- optimal in MTM (slowest by far)
 
 --Note: The fast method uses an inadmissible heuristic - see "not STM" in iddfs().
---      It explores mtm-style using the higher stm heuristic and may therefore 
+--      It explores mtm-style using the higher stm heuristic and may therefore
 --      fail badly in some cases.
 
 constant SIZE = 4
@@ -2249,10 +2249,10 @@ constant goal = { 1, 2, 3, 4,
 
 --
 -- multi-tile-metric walking distance heuristic lookup (mmwd).
--- 
+--
 ### ====================================================
 
--- Uses patterns of counts of tiles in/from row/col, eg the solved state 
+-- Uses patterns of counts of tiles in/from row/col, eg the solved state
 --  (ie goal above) could be represented by the following:
 --      {{4,0,0,0},
 --       {0,4,0,0},
@@ -2263,7 +2263,7 @@ constant goal = { 1, 2, 3, 4,
 --  add them together. There are up to 24964 possible patterns. The
 --  blank space is not counted. Note that a vertical move cannot change
 --  a vertical pattern, ditto horizontal, and basic symmetry means that
---  row/col and col/row patterns will match (at least, that is, if they 
+--  row/col and col/row patterns will match (at least, that is, if they
 --  are calculated sympathetically), halving the setup cost.
 -- The data is just the number of moves made before this pattern was
 --  first encountered, in a breadth-first search, backwards from the
@@ -2323,7 +2323,7 @@ end if
 end procedure
 
 procedure generate_mmwd()
--- Perform a breadth-first search begining with the solved puzzle state 
+-- Perform a breadth-first search begining with the solved puzzle state
 --  and exploring from there until no more new patterns emerge.
 integer walking_distance = 0, space = 4
 
@@ -2399,7 +2399,7 @@ function iddfs(integer step, lim, space, prevmv)
             and ok[mv][space] then
                 integer nspace = space+{-1,-4,+4,+1}[mv]
                 integer tile = puzzle[nspace]
-                if puzzle[space]!=0 then ?9/0 end if    -- sanity check     
+                if puzzle[space]!=0 then ?9/0 end if    -- sanity check
                 puzzle[space] = tile
                 puzzle[nspace] = 0
                 if iddfs(step+iff(MTM or not STM?(prevmv!=mv):1),lim,nspace,mv) then
@@ -2462,12 +2462,12 @@ sequence positions = repeat(0,n)
     for i=1 to n do
         positions[board[i]] = i
     end for
-      
+
     -- check whether this is an even or odd state
     integer row = floor((positions[16]-1)/4),
             col = (positions[16]-1)-row*4
     bool even_state = (positions[16]==16) or (mod(row,2)==mod(col,2))
-      
+
     -- count the even cycles
     integer even_count = 0
     sequence visited = repeat(false,16)
@@ -2489,9 +2489,9 @@ end function
 
 procedure main()
 
-    puzzle = {15,14, 1, 6, 
+    puzzle = {15,14, 1, 6,
                9,11, 4,12,
-               0,10, 7, 3, 
+               0,10, 7, 3,
               13, 8, 5, 2}
 
     if not solvable(puzzle) then
@@ -2523,7 +2523,7 @@ end procedure
 main()
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2538,7 +2538,7 @@ mtm-optimal solution of 31(60) moves found in 2 hours, 38 minutes and 28s: u2r2d
 
 ## Python
 
-===Iterative Depth A*===
+### Iterative Depth A*
 From https://codegolf.stackexchange.com/questions/6884/solve-the-15-puzzle-the-tile-sliding-puzzle
 
 Solution titled "PyPy, 195 moves, ~12 seconds computation"
@@ -2757,7 +2757,7 @@ Right, Right, Right, Up, Left, Down, Left, Up, Up, Left, Down, Right, Up, Right,
 ```
 
 
-===A* with good heuristic===
+### A* with good heuristic
 ;File - astar.py
 
 ```Python
@@ -2791,30 +2791,30 @@ class Position(object):
         """
         Takes a tuple of tuples representing the tiles on a 4x4 puzzle board
         numbering 1-15 with 0 representing an empty square. For example:
-        
+
         (( 1,  2,  3,  4),
          ( 5,  6,  7,  8),
          ( 9, 10, 11, 12),
          (13, 14, 15,  0))
-         
+
         Converts list of lists representation into tuple of tuples.
         """
         if type(tiles) == type(list()):
             t = tiles
             self.tiles = ((t[0][0], t[0][1], t[0][2], t[0][3]),
-                          (t[1][0], t[1][1], t[1][2], t[1][3]),        
-                          (t[2][0], t[2][1], t[2][2], t[2][3]),        
+                          (t[1][0], t[1][1], t[1][2], t[1][3]),
+                          (t[2][0], t[2][1], t[2][2], t[2][3]),
                           (t[3][0], t[3][1], t[3][2], t[3][3]))
         else:
             self.tiles = tiles
-            
+
         # fields for A* algorithm
-        
+
         self.fscore = integer_infinity
         self.gscore = integer_infinity
-        
+
         self.cameFrom = None
-                                    
+
     def copy_tiles(self):
         """ returns list of lists version """
         t = self.tiles
@@ -2831,19 +2831,19 @@ class Position(object):
         returns a list position objects with their
         directiontomoveto set to the direction that the
         empty square moved.
-        
+
         tiles is 4x4 tuple of tuples with
         0,0 as top left.
-    
+
         tiles[y][x]
 
         """
-        
+
         # find 0 - blank square
-        
+
         x0 = None
         y0 = None
-        
+
         for i in range(4):
             for j in range(4):
                 if self.tiles[i][j] == 0:
@@ -2852,9 +2852,9 @@ class Position(object):
 
         if x0 == None or y0 == None:
             return []
-            
+
         neighbor_list = []
-            
+
         # move 0 to the right
         if x0 < 3:
             new_tiles = self.copy_tiles()
@@ -2887,12 +2887,12 @@ class Position(object):
             new_tiles[y0][x0] = temp
             new_pos = new_position(new_tiles)
             neighbor_list.append(new_pos)
-            
+
         return neighbor_list
-        
+
     def __repr__(self):
         # printable version of self
-        
+
         return str(self.tiles[0])+'\n'+str(self.tiles[1])+'\n'+str(self.tiles[2])+'\n'+str(self.tiles[3])+'\n'
 
 # takes tuple of tuples tiles as key, Position object for that tiles as value
@@ -2905,21 +2905,21 @@ def new_position(tiles):
     if type(tiles) == type(list()):
         t = tiles
         tuptiles =   ((t[0][0], t[0][1], t[0][2], t[0][3]),
-                      (t[1][0], t[1][1], t[1][2], t[1][3]),        
-                      (t[2][0], t[2][1], t[2][2], t[2][3]),        
+                      (t[1][0], t[1][1], t[1][2], t[1][3]),
+                      (t[2][0], t[2][1], t[2][2], t[2][3]),
                       (t[3][0], t[3][1], t[3][2], t[3][3]))
     else:
         tuptiles = tiles
-        
+
     if tuptiles in all_positions:
         return 	all_positions[tuptiles]
     else:
         new_pos = Position(tiles)
         all_positions[tuptiles] = new_pos
         return new_pos
-                
+
 def reconstruct_path(current):
-    """ 
+    """
     Uses the cameFrom members to follow the chain of moves backwards
     and then reverses the list to get the path in the correct order.
     """
@@ -2928,11 +2928,11 @@ def reconstruct_path(current):
     while current.cameFrom != None:
         current = current.cameFrom
         total_path.append(current)
-        
+
     total_path.reverse()
-    
+
     return total_path
-        
+
 class PriorityQueue(object):
     """
     Priority queue using heapq.
@@ -2942,7 +2942,7 @@ class PriorityQueue(object):
     """
 
     def __init__(self, object_list):
-        """ 
+        """
         Save a list in a heapq.
         Assume that each object only appears once
         in the list.
@@ -2953,12 +2953,12 @@ class PriorityQueue(object):
             self.qheap.append((e.fscore,e.tiles))
             self.queue_length += 1
         heapq.heapify(self.qheap)
-        
+
     def push(self, new_object):
         """ save object in heapq """
         heapq.heappush(self.qheap,(new_object.fscore,new_object.tiles))
         self.queue_length += 1
-        
+
     def pop(self):
         """ remove object from heap and return """
         if self.queue_length < 1:
@@ -2971,29 +2971,29 @@ class PriorityQueue(object):
             return pos
         else:
             return self.pop()
-                
+
     def __repr__(self):
         # printable version of self
         strrep = ""
         for e in self.qheap:
           fscore, tiles = e
           strrep += str(fscore)+":"+str(tiles)+"\n"
-        
+
         return strrep
-        
+
 conflict_table = None
 
 def build_conflict_table():
     global conflict_table
     conflict_table = dict()
-    
-    # assumes goal tuple has up to 
+
+    # assumes goal tuple has up to
     # for the given pattern it the start position
     # how much to add for linear conflicts
     # 2 per conflict - max of 6
-    
+
     # goal tuple is ('g0', 'g1', 'g2', 'g3')
-    
+
     conflict_table[('g0', 'g1', 'g2', 'g3')] = 0
     conflict_table[('g0', 'g1', 'g2', 'x')] = 0
     conflict_table[('g0', 'g1', 'g3', 'g2')] = 2
@@ -3008,7 +3008,7 @@ def build_conflict_table():
     conflict_table[('g0', 'g2', 'x', 'g1')] = 2
     conflict_table[('g0', 'g2', 'x', 'g3')] = 0
     conflict_table[('g0', 'g2', 'x', 'x')] = 0
-    conflict_table[('g0', 'g3', 'g1', 'g2')] = 4 
+    conflict_table[('g0', 'g3', 'g1', 'g2')] = 4
     conflict_table[('g0', 'g3', 'g1', 'x')] = 2
     conflict_table[('g0', 'g3', 'g2', 'g1')] = 4
     conflict_table[('g0', 'g3', 'g2', 'x')] = 2
@@ -3029,21 +3029,21 @@ def build_conflict_table():
     conflict_table[('g0', 'x', 'x', 'g3')] = 0
     conflict_table[('g1', 'g0', 'g2', 'g3')] = 2
     conflict_table[('g1', 'g0', 'g2', 'x')] = 2
-    conflict_table[('g1', 'g0', 'g3', 'g2')] = 4 
+    conflict_table[('g1', 'g0', 'g3', 'g2')] = 4
     conflict_table[('g1', 'g0', 'g3', 'x')] = 2
     conflict_table[('g1', 'g0', 'x', 'g2')] = 2
     conflict_table[('g1', 'g0', 'x', 'g3')] = 2
     conflict_table[('g1', 'g0', 'x', 'x')] = 2
-    conflict_table[('g1', 'g2', 'g0', 'g3')] = 4 
+    conflict_table[('g1', 'g2', 'g0', 'g3')] = 4
     conflict_table[('g1', 'g2', 'g0', 'x')] = 4
-    conflict_table[('g1', 'g2', 'g3', 'g0')] = 6 
+    conflict_table[('g1', 'g2', 'g3', 'g0')] = 6
     conflict_table[('g1', 'g2', 'g3', 'x')] = 0
     conflict_table[('g1', 'g2', 'x', 'g0')] = 4
     conflict_table[('g1', 'g2', 'x', 'g3')] = 0
     conflict_table[('g1', 'g2', 'x', 'x')] = 0
-    conflict_table[('g1', 'g3', 'g0', 'g2')] = 4 
+    conflict_table[('g1', 'g3', 'g0', 'g2')] = 4
     conflict_table[('g1', 'g3', 'g0', 'x')] = 4
-    conflict_table[('g1', 'g3', 'g2', 'g0')] = 6 
+    conflict_table[('g1', 'g3', 'g2', 'g0')] = 6
     conflict_table[('g1', 'g3', 'g2', 'x')] = 0
     conflict_table[('g1', 'g3', 'x', 'g0')] = 4
     conflict_table[('g1', 'g3', 'x', 'g2')] = 2
@@ -3186,7 +3186,7 @@ def build_conflict_table():
     conflict_table[('x', 'x', 'g3', 'g0')] = 2
     conflict_table[('x', 'x', 'g3', 'g1')] = 2
     conflict_table[('x', 'x', 'g3', 'g2')] = 2
-        
+
 def linear_conflicts(start_list,goal_list):
     """
     calculates number of moves to add to the estimate of
@@ -3195,45 +3195,45 @@ def linear_conflicts(start_list,goal_list):
     represents the current location and goal_list represnts
     the final goal.
     """
-    
+
     # Find which of the tiles in start_list have their goals on this line
     # build a pattern to use in a lookup table of this form:
     # g0, g1, g3, g3 fill in x where there is no goal for this line
-    
+
     # all 'x' until we file a tile whose goal is in this line
-    
+
     goal_pattern = ['x', 'x', 'x', 'x']
-    
+
     for g in range(4):
         for s in range(4):
             start_tile_num = start_list[s]
             if start_tile_num == goal_list[g] and start_tile_num != 0:
                 goal_pattern[s] = 'g' + str(g) # i.e. g0
-                                
+
     global conflict_table
-    
+
     tup_goal_pattern = tuple(goal_pattern)
-    
+
     if tup_goal_pattern in conflict_table:
         return conflict_table[tuple(goal_pattern)]
     else:
         return 0
-    
+
 class lcmap(dict):
-    """ 
+    """
     Lets you return 0 if you look for an object that
-    is not in the dictionary. 
+    is not in the dictionary.
     """
     def __missing__(self, key):
         return 0
 
 def listconflicts(goal_list):
-    """ 
+    """
     list all possible start lists that will have at least
     one linear conflict.
-    
+
     Possible goal tile configurations
-    
+
     g g g g
     g g g x
     g g x g
@@ -3245,21 +3245,21 @@ def listconflicts(goal_list):
     x g g x
     x g x g
     x x g g
-        
+
     """
-    
+
     all_tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    
+
     non_goal_tiles = []
-    
+
     for t in all_tiles:
         if t not in goal_list:
-            non_goal_tiles.append(t) 
-            
+            non_goal_tiles.append(t)
+
     combinations = lcmap()
 
     # g g g g
-    
+
     for i in goal_list:
         tile_list2 = goal_list[:]
         tile_list2.remove(i)
@@ -3273,10 +3273,10 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd    
-    
+                        combinations[start_list]=conflictadd
+
     # g g g x
-    
+
     for i in goal_list:
         tile_list2 = goal_list[:]
         tile_list2.remove(i)
@@ -3288,10 +3288,10 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd  
+                        combinations[start_list]=conflictadd
 
     # g g x g
-    
+
     for i in goal_list:
         tile_list2 = goal_list[:]
         tile_list2.remove(i)
@@ -3305,7 +3305,7 @@ def listconflicts(goal_list):
                     if conflictadd > 0:
                         combinations[start_list]=conflictadd
     # g x g g
-    
+
     for i in goal_list:
         tile_list2 = goal_list[:]
         tile_list2.remove(i)
@@ -3320,7 +3320,7 @@ def listconflicts(goal_list):
                         combinations[start_list]=conflictadd
 
     # x g g g
-    
+
     for i in non_goal_tiles:
         for j in goal_list:
             tile_list2 = goal_list[:]
@@ -3349,8 +3349,8 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd 
-                        
+                        combinations[start_list]=conflictadd
+
     # g x g x
 
     for i in goal_list:
@@ -3364,8 +3364,8 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd    
-                        
+                        combinations[start_list]=conflictadd
+
     # g x x g
 
     for i in goal_list:
@@ -3379,8 +3379,8 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd     
-    
+                        combinations[start_list]=conflictadd
+
     # x g g x
 
     for i in non_goal_tiles:
@@ -3394,10 +3394,10 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd      
-    
+                        combinations[start_list]=conflictadd
+
     # x g x g
-    
+
     for i in non_goal_tiles:
         tile_list2 = non_goal_tiles[:]
         tile_list2.remove(i)
@@ -3409,10 +3409,10 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd      
-      
+                        combinations[start_list]=conflictadd
+
     # x x g g
-    
+
     for i in non_goal_tiles:
         tile_list2 = non_goal_tiles[:]
         tile_list2.remove(i)
@@ -3424,8 +3424,8 @@ def listconflicts(goal_list):
                     start_list = (i, j, k, l)
                     conflictadd = linear_conflicts(start_list,goal_list)
                     if conflictadd > 0:
-                        combinations[start_list]=conflictadd      
-      
+                        combinations[start_list]=conflictadd
+
     return combinations
 
 
@@ -3437,33 +3437,33 @@ class HeuristicObj(object):
         Preprocess goal position to setup internal data structures
         that can be used to speed up heuristic.
         """
-        
+
         build_conflict_table()
-        
+
         self.goal_map = []
         for i in range(16):
-            self.goal_map.append(i)    
-        
+            self.goal_map.append(i)
+
         self.goal_lists = goal.tiles
-        
+
         # preprocess for manhattan distance
-        
+
         for row in range(4):
             for col in range(4):
                 self.goal_map[goal.tiles[row][col]] = (row, col)
-                
+
         # make access faster by changing to a tuple
-        
+
         self.goal_map = tuple(self.goal_map)
-                
+
         # preprocess for linear conflicts
-        
+
         self.row_conflicts = []
         for row in range(4):
             t = goal.tiles[row]
             conf_dict = listconflicts([t[0],t[1],t[2],t[3]])
             self.row_conflicts.append(conf_dict)
-            
+
         self.col_conflicts = []
         for col in range(4):
             col_list =[]
@@ -3473,71 +3473,71 @@ class HeuristicObj(object):
             self.col_conflicts.append(conf_dict)
 
     def heuristic(self, start):
-        """ 
-        
+        """
+
         Estimates the number of moves from start to goal.
         The goal was preprocessed in __init__.
-        
+
         """
-        
+
         distance = 0
-        
+
         # local variables for instance variables
-        
+
         t = start.tiles
         g = self.goal_map
         rc = self.row_conflicts
         cc = self.col_conflicts
-        
+
         # calculate manhattan distance
-        
+
         for row in range(4):
             for col in range(4):
                 start_tilenum = t[row][col]
                 if start_tilenum != 0:
                     (grow, gcol) = g[start_tilenum]
                     distance += abs(row - grow) + abs(col - gcol)
-                                        
-        # add linear conflicts 
-        
+
+        # add linear conflicts
+
         for row in range(4):
             curr_row = t[row]
             distance += rc[row][curr_row]
-       
+
         for col in range(4):
             col_tuple = (t[0][col], t[1][col], t[2][col], t[3][col])
             distance += cc[col][col_tuple]
-          
+
         return distance
-        
+
 # global variable for heuristic object
 
 hob = None
-        
+
 def a_star(start_tiles, goal_tiles):
     """ Based on https://en.wikipedia.org/wiki/A*_search_algorithm """
-    
+
     start = new_position(start_tiles)
     goal = new_position(goal_tiles)
-    
+
     # Process goal position for use in heuristic
-    
+
     global hob
     hob = HeuristicObj(goal)
-    
+
     # The set of currently discovered nodes that are not evaluated yet.
     # Initially, only the start node is known.
     # For the first node, the fscore is completely heuristic.
-    
+
     start.fscore = hob.heuristic(start)
     openSet = PriorityQueue([start])
- 
+
     # The cost of going from start to start is zero.
-    
+
     start.gscore = 0
-    
+
     num_popped = 0
-    
+
     while openSet.queue_length > 0:
         current = openSet.pop()
         if current == None: # tried to pop but only found old fscore values
@@ -3545,26 +3545,26 @@ def a_star(start_tiles, goal_tiles):
         num_popped += 1
         if num_popped % 100000 == 0:
             print(str(num_popped)+" positions examined")
-        
+
         if current == goal:
             return reconstruct_path(current)
-            
+
         for neighbor in current.neighbors():
 
             # The distance from start to a neighbor
             # All nodes are 1 move from their neighbors
-            
+
             tentative_gScore = current.gscore + 1
-            
+
             # update gscore and fscore if this is shorter path
             # to the neighbor node
 
-            if tentative_gScore < neighbor.gscore: 
+            if tentative_gScore < neighbor.gscore:
                 neighbor.cameFrom = current
                 neighbor.gscore = tentative_gScore
                 neighbor.fscore = neighbor.gscore + hob.heuristic(neighbor)
                 openSet.push(neighbor) # add to open set every time
-                
+
 
 def find_zero(tiles):
     """ file the 0 tile """
@@ -3576,8 +3576,8 @@ def find_zero(tiles):
 def path_as_0_moves(path):
     """
     Takes the path which is a list of Position
-    objects and outputs it as a string of rlud 
-    directions to match output desired by 
+    objects and outputs it as a string of rlud
+    directions to match output desired by
     Rosetta Code task.
     """
     strpath = ""
@@ -3601,7 +3601,7 @@ def path_as_0_moves(path):
         p_row = c_row
         p_col = c_col
     return strpath
-        
+
 
 ```
 
@@ -3613,7 +3613,7 @@ def path_as_0_moves(path):
 
 """
 
-Runs one test of the solver passing a 
+Runs one test of the solver passing a
 start and goal position.
 
 """
@@ -3633,7 +3633,7 @@ goal_tiles =        [[ 1,  2,  3,  4],
                      [ 5,  6,  7,  8],
                      [ 9, 10, 11, 12],
                      [13, 14, 15,  0]]
-                 
+
 
 before = time.perf_counter()
 
@@ -3755,7 +3755,7 @@ Run time in seconds: 56.601139201
   (define (posn-diff p0 p1)
     (posn (- (posn-row p1) (posn-row p0))
           (- (posn-col p1) (posn-col p0))))
-  
+
   ;; describe a single movement with a symbol (r, l, u d).
   (define (find-out-movement prev-st st)
     (let ([prev-empty-slot (state-empty-slot prev-st)]
@@ -3766,7 +3766,7 @@ Run time in seconds: 56.601139201
              [(posn  0  1) 'l]
              [(posn  0 -1) 'r]
              [#f 'invalid])))
-  
+
   (define (iter n path)
     (if (or (not n) (not (node-prev n)))
         path
@@ -3863,7 +3863,7 @@ Run time in seconds: 56.601139201
 (define (row-conflicts row st0 st1)
   (define m0 (state-matrix st0))
   (define m1 (state-matrix st1))
-  
+
   (define values-in-correct-row
     (for/fold
       ([lst '()])
@@ -3874,7 +3874,7 @@ Run time in seconds: 56.601139201
                            #:when (= val0 (matrix-ref m1 row col1)))
                           #t)])
         (if in-goal-row? (cons val0 lst) lst))))
-  
+
   (min 6 (out-of-order-values
            ; 0 doesn't lead to a linear conflict
            (filter positive? values-in-correct-row))))
@@ -3886,7 +3886,7 @@ Run time in seconds: 56.601139201
 (define (col-conflicts col st0 st1)
   (define m0 (state-matrix st0))
   (define m1 (state-matrix st1))
-  
+
   (define values-in-correct-col
     (for/fold
       ([lst '()])
@@ -3944,21 +3944,21 @@ Run time in seconds: 56.601139201
   (define initial-st-cost (state-heuristics initial-st))
   (heap-add! open-lst (node initial-st #f 0 (state-heuristics initial-st)))
   (define closed-set (mutable-set))
-  
+
   (define (pick-next-node!)
     (define next-node (heap-min open-lst))
     (heap-remove-min! open-lst)
     next-node)
-  
+
   (define (sort-lst lst)
     (sort lst
           (lambda (n0 n1)
             (< (node-f-value n0) (node-f-value n1)))))
-  
+
   (define (expand-node n)
-    
+
     (define n-cost (node-cost n))
-    
+
     (define (iter lst)
       (if (empty? lst)
           '()
@@ -3968,7 +3968,7 @@ Run time in seconds: 56.601139201
                [succ-cost (+ 1 n-cost)])
           (if (set-member? closed-set succ-st)
               (iter (cdr lst))
-            
+
             (begin    (heap-add! open-lst
                                  (node succ-st
                                        n
@@ -3976,10 +3976,10 @@ Run time in seconds: 56.601139201
                                        (+ (state-heuristics succ-st)
                                           succ-cost)))
                    (iter (cdr lst)))))))
-    
+
     (let ([successors (next-state-dir-pairs n)])
       (iter successors)))
-  
+
   (define counter 0)
   (define (loop)
     (define current-node (pick-next-node!))
@@ -3990,7 +3990,7 @@ Run time in seconds: 56.601139201
                 (heap-count open-lst)
                 (node-cost current-node))
       (void))
-    
+
     (cond [(target-state? current-state)
            (let ([path (reconstruct-movements current-node)])
              (cons path (length path)))]
@@ -4219,7 +4219,7 @@ fn main() {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Solution found in 52 moves: rrrulddluuuldrurdddrullulurrrddldluurddlulurruldrdrd

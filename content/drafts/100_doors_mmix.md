@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{collection|100 doors}}
+*Part of: [100 doors](/tasks/100 doors)*
 
-*'''not optimized'''
+***not optimized**
 
 ```mmix
 N	IS	100		% predefined number of doors
@@ -72,7 +72,7 @@ Blank	BYTE	" ",0
 ```
 
 
-*'''optimized'''
+***optimized**
 
 ```mmix
 % Rosetta Code 100 Doors optimized

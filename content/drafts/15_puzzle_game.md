@@ -6,33 +6,31 @@ aliases = []
 [extra]
 id = 20030
 [taxonomies]
-categories = []
+categories = ["Games", "Puzzles"]
 tags = []
 +++
 
-{{task}}
+## Description
 [[File:15_puzzle.png|300px|thumb|right]]
-[[Category:Puzzles]]
-[[Category:Games]]
 
 
-;Task:
-Implement the [[wp:15_puzzle|Fifteen Puzzle Game]].
+## Task:
+Implement the [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle).
 
 
-The   '''15-puzzle'''   is also known as:
-:::*   '''Fifteen Puzzle'''
-:::*   '''Gem Puzzle'''
-:::*   '''Boss Puzzle'''
-:::*   '''Game of Fifteen'''
-:::*   '''Mystic Square'''
-:::*   '''14-15 Puzzle'''
+The   **15-puzzle**   is also known as:
+:::*   **Fifteen Puzzle**
+:::*   **Gem Puzzle**
+:::*   **Boss Puzzle**
+:::*   **Game of Fifteen**
+:::*   **Mystic Square**
+:::*   **14-15 Puzzle**
 :::*   and many others.
 
 
 ;Related Tasks:
-:*   [[15_puzzle_solver|15 Puzzle Solver]]
-:*   [[16 Puzzle Game]]
+:*   [15 Puzzle Solver](/tasks/15_puzzle_solver)
+:*   [16 Puzzle Game](/tasks/16 Puzzle Game)
 
 
 
@@ -207,7 +205,7 @@ end Puzzle_15;
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 >./puzzle_15 4
@@ -259,7 +257,7 @@ For other puzzles, one must just the single line with the package instantiation.
 
 ## APL
 
-{{works with|Dyalog APL|16.0}}
+*Works with: Dyalog APL 16.0*
 
 ```APL
 fpg←{⎕IO←0
@@ -289,7 +287,7 @@ fpg←{⎕IO←0
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
       fpg 10
@@ -341,7 +339,7 @@ win
 
 ## ARM Assembly
 
-{{works with|as|Raspberry Pi}}
+*Works with: as Raspberry Pi*
 
 ```ARM Assembly
 
@@ -1322,7 +1320,7 @@ Move(deltaRow, deltaCol){
 
 ## C
 
-===C89, 22 lines version===
+### C89, 22 lines version
 The task, as you can see, can be resolved in 22 lines of no more than 80 characters. Of course, the source code in C is not very readable. The second example works exactly the same way, but it was written in much more human readable way. The program also works correctly for non-standard number of rows and/or columns.
 
 ```C
@@ -1351,7 +1349,7 @@ do setup();while(isEnd());show();while(!isEnd()){update(get());show();}disp(
 ```
 
 
-===C89, short version, TTY mode===
+### C89, short version, TTY mode
 
 ```C
 /*
@@ -1514,7 +1512,7 @@ enter u/d/l/r :
 ```
 
 
-===C89, long version, TTY/Winapi/ncurses modes===
+### C89, long version, TTY/Winapi/ncurses modes
 
 ```C
 /**
@@ -1834,9 +1832,9 @@ int main(void) {
 
 ## C#
 
-{{libheader|System.Windows.Forms}}
-{{libheader|System.Drawing}}
-{{works with|C sharp|6}}
+*Library: System.Windows.Forms*
+*Library: System.Drawing*
+*Works with: C sharp 6*
 
 ```c#
 using System;
@@ -2284,7 +2282,7 @@ end program fifteen.
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 prompt$ cobc -xj fifteen.cbl
@@ -2522,7 +2520,7 @@ call init
 
 
 {{trans|C}}
-{{works with|gforth|0.7.3}}
+*Works with: gforth 0.7.3*
 
 Modified to use ANSI escape sequences and Vim's h/j/k/l for input. Caps lock isn't interfering in this version. Also added <tt>q</tt> for quit.
 
@@ -2683,9 +2681,9 @@ PLAY BYE
 
 ## Fortran
 
-The initial version had me so enamoured by the notion of consecutive cells for the solution having the number of their index as their value (as in CELL(0) = 0 (the blank square), CELL(1) = 1, ... CELL(15) = 15) and the prospect of the check for this being simple, that I failed to perceive that the nice big diagram of the board shown at the head of the article in fact clearly shows the solution state having the blank cell at the ''end'', not the start. Once again it is demonstrated that what you see is ... influenced ... by what you would like to see. After that diversion, the cells shall now be numbered one to sixteen, not zero to fifteen, and so there is no need for the ability introduced by F90 whereby arrays can have a lower bound other than one.
+The initial version had me so enamoured by the notion of consecutive cells for the solution having the number of their index as their value (as in CELL(0) = 0 (the blank square), CELL(1) = 1, ... CELL(15) = 15) and the prospect of the check for this being simple, that I failed to perceive that the nice big diagram of the board shown at the head of the article in fact clearly shows the solution state having the blank cell at the *end*, not the start. Once again it is demonstrated that what you see is ... influenced ... by what you would like to see. After that diversion, the cells shall now be numbered one to sixteen, not zero to fifteen, and so there is no need for the ability introduced by F90 whereby arrays can have a lower bound other than one.
 
-The plan is to use parameters for the board size, which need not be square. As often with Fortran, messing with arrays is the key, though not without opportunities for confusion. Because Fortran stores arrays in column-major order, the arrays are accessed as BOARD(column,row) even though the arrangement is treated as rows down the page and columns across as is usual. By this means, consecutive elements in storage of array BOARD(c,r) are such that the same storage accessed via array BORED(i) thanks to <code>EQUIVALENCE(BOARD,BORED)</code> indexes them as consecutive elements, and so the test that the values are in consecutive order becomes delightfully simple, though alas there is no equivalent of the ''iota'' function of APL whereby the test could be <code>ALL(BORED(1:N - 1) .EQ. IOTA(N - 1))</code>
+The plan is to use parameters for the board size, which need not be square. As often with Fortran, messing with arrays is the key, though not without opportunities for confusion. Because Fortran stores arrays in column-major order, the arrays are accessed as BOARD(column,row) even though the arrangement is treated as rows down the page and columns across as is usual. By this means, consecutive elements in storage of array BOARD(c,r) are such that the same storage accessed via array BORED(i) thanks to <code>EQUIVALENCE(BOARD,BORED)</code> indexes them as consecutive elements, and so the test that the values are in consecutive order becomes delightfully simple, though alas there is no equivalent of the *iota* function of APL whereby the test could be <code>ALL(BORED(1:N - 1) .EQ. IOTA(N - 1))</code>
 
 Column-major ordering also applies to array WAY, which lists the offsets needed to locate squares deemed adjacent to a given location, such as that of the blank square, located by LOCI = LOCZ + WAY(i). Adjacent LOCI are checked for being in range, and if so, added to the list in array LOCM with the moveable piece identified in array MOVE.
 
@@ -3161,7 +3159,7 @@ End
 ```
 
 
-[http://www.cogier.com/gambas/Copuzzle.png Click here for image of game in play]
+[Click here for image of game in play](http://www.cogier.com/gambas/Copuzzle.png)
 
 
 ## Go
@@ -3752,8 +3750,8 @@ You win.
 ```
 
 
-== {{header|Java}}==
-{{works with|Java|8}}
+##  ## Java
+*Works with: Java 8*
 
 ```java
 package fifteenpuzzle;
@@ -3976,7 +3974,7 @@ class FifteenPuzzle extends JPanel {
 
 ## Javascript
 
-Play it [http://paulo-jorente.de/webgames/15p/ here]
+Play it [here](http://paulo-jorente.de/webgames/15p/)
 
 ```javascript
 
@@ -4237,7 +4235,7 @@ end
 puzzle15play()
 
 ```
-{{output}}
+### Output
 ```txt
 
 This puzzle is solvable.
@@ -4421,7 +4419,7 @@ fun main(args: Array<String>) {
 ## Liberty BASIC
 
 {{trans|Commodore BASIC}}
-{{works with|Just BASIC}}
+*Works with: Just BASIC*
 
 ```lb
 
@@ -4746,7 +4744,7 @@ beginGame()
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -5228,7 +5226,7 @@ when isMainModule:
   echo "Puzzle solved"
 ```
 
-{{out}}
+### Output
 
 ```txt
 +--+--+--+--+
@@ -5302,7 +5300,7 @@ let play () =
 
 To move, input the number to slide into the blank. If you accidentally make an impossible move you can undo it by repeating the last input. A nice self-checked puzzle, the same as if you were physically moving the pieces around.
 
-{{out}}
+### Output
 
 ```txt
 # play ();;
@@ -5656,11 +5654,11 @@ end.
 
 ### Tk version
 
-{{libheader|Tk}}
-{{libheader|Perl/Tk}}
+*Library: Tk*
+*Library: Perl/Tk*
 This Tk 15 puzzle implementation also shows the solvability of the current puzzle and the relative difficulty of it.
 On verbosity shows how the solvability is calculated. The program has some extra feature like font size and color scheme but also the possibility to set the intial board disposition.
-This program was originally posted by me at [http://www.perlmonks.org/?node_id=1192660 perlmonks]
+This program was originally posted by me at [perlmonks](http://www.perlmonks.org/?node_id=1192660)
 
 ```perl
 
@@ -5921,7 +5919,7 @@ sub extreme_perl {
 
 ### console version
 
-This short console program just poses solvable puzzles: it achieves this shuffling a solved board n times, where n defaults to 1000 but can be passed as first argument of the program in the command line. It was originally posted by me at [http://www.perlmonks.org/?node_id=1192865 perlmonks] but here a little modification was inserted to prevent wrong numbers to make the board messy.
+This short console program just poses solvable puzzles: it achieves this shuffling a solved board n times, where n defaults to 1000 but can be passed as first argument of the program in the command line. It was originally posted by me at [perlmonks](http://www.perlmonks.org/?node_id=1192865) but here a little modification was inserted to prevent wrong numbers to make the board messy.
 
 ```perl
 
@@ -5963,8 +5961,8 @@ sub ad{
 
 ## Perl 6
 
-{{works with|Rakudo|2018.06}}
-Most of this is interface code. Reused substantial portions from the [[2048#Perl_6|2048]] task. Use the arrow keys to slide tiles, press 'q' to quit or 'n' for a new puzzle. Requires a POSIX termios aware terminal. Ensures that the puzzle is solvable by shuffling the board with an even number of swaps, then checking for even taxicab parity for the empty space.
+*Works with: Rakudo 2018.06*
+Most of this is interface code. Reused substantial portions from the [2048](/tasks/2048#Perl_6) task. Use the arrow keys to slide tiles, press 'q' to quit or 'n' for a new puzzle. Requires a POSIX termios aware terminal. Ensures that the puzzle is solvable by shuffling the board with an even number of swaps, then checking for even taxicab parity for the empty space.
 
 ```perl6
 use Term::termios;
@@ -6146,7 +6144,7 @@ end while
 puts(1,"solved!\n")
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -6277,12 +6275,12 @@ Your Choice Up :u, Down :d, Left :l Or Right :r
 
 ## Python
 
-{{works with|Python|3.X}}
-'''unoptimized'''
+*Works with: Python 3.X*
+**unoptimized**
 
 ```python
 
-''' Structural Game for 15 - Puzzle with different difficulty levels'''
+** Structural Game for 15 - Puzzle with different difficulty levels**
 from random import randint
 
 
@@ -6684,7 +6682,7 @@ Move:a
 
 
 This is a GUI game; and there are difficulties getting screen shots onto RC.
-Use the arrow keys to slide the ''blank'' square.
+Use the arrow keys to slide the *blank* square.
 
 It uses the <code>2htdp/universe</code> package.
 
@@ -6759,7 +6757,7 @@ rebol []  random/seed now  g: [style t box red [
 
 ## REXX
 
-This REXX version allows the user to specify the size of the puzzle   ('''N''',   where   '''NxN'''   is the size of the puzzle).
+This REXX version allows the user to specify the size of the puzzle   (**N**,   where   **NxN**   is the size of the puzzle).
 
 With some more complexity, the REXX computer program could be changed to allow multiple-tile moves   (so that, for instance, three tiles could be slid to the right).
 
@@ -6832,7 +6830,7 @@ showGrid: parse arg show;       !.=;                      x= x/1;       #= 0;   
           if show  then say pad bot;                  return
 ```
 
-{{out|output|text=  when using the default input:}}
+### output|text=  when using the default input:
 
 ```txt
 
@@ -6883,7 +6881,7 @@ quit                         ◄■■■■■■■■■■ user input.
 ## Ring
 
 
-CalmoSoft [[wp:15_puzzle|Fifteen Puzzle Game]] written in Ring Programming Language (http://ring-lang.net)
+CalmoSoft [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle) written in Ring Programming Language (http://ring-lang.net)
 
 Video:
 [https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0J6sL9df0JcV2TY&sa=D&sntz=1&usg=AFQjCNEFaWD8AqElMZK3KGnRKDhKxCO1Sw CalmoSoft Fifteen Puzzle Game Video]
@@ -7758,7 +7756,7 @@ Board.new
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -7859,7 +7857,7 @@ Output:
 
 ## Rust
 
-{{libheader|rand}}
+*Library: rand*
 
 ```rust
 extern crate rand;
@@ -8251,7 +8249,7 @@ object FifteenPuzzle {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -8375,7 +8373,7 @@ disp("Solved in "+string(n_moves)+" moves.");
 ```
 
 
-{{out}}
+### Output
 
 This test was run while making <code>init_pos=[1 2 3 4 5 6 7 8 9 14 10 11 13 0 15 12]</code>.
 
@@ -8668,7 +8666,7 @@ BEGIN
 END.
 ```
 
-{{out}}
+### Output
 
 ```txt
 INPUT RANDOM SEED:
@@ -8713,8 +8711,8 @@ YOUR MOVE:    4  14   9
 
 ## Standard ML
 
-{{works with|SML/NJ}}
-{{works with|Moscow ML}}
+*Works with: SML/NJ*
+*Works with: Moscow ML*
 
 ```sml
 
@@ -8980,7 +8978,7 @@ The dimensions of the board (eg. 4x4) and the number of shuffles should be enter
 
 ## Tcl
 
-{{libheader|Tk}}
+*Library: Tk*
 Works with Tcl/Tk 8.5
 
 This program uses Tk, the graphical counterpart to Tcl.
@@ -9473,7 +9471,7 @@ Enter number to move into empty tile
 ```
 
 
-=={{header|X86_64 Assembly}}==
+## X86_64 Assembly
 
 ```assembly
         ; Puzzle15 by grosged (march 2019)

@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{collection|100 doors}}
+*Part of: [100 doors](/tasks/100 doors)*
 
-'''not optimized'''
+**not optimized**
 
 This example is 51 bytes big when assembled, it is fully commented, and it isn't optimized. The doors are represented in RAM by 100 bytes, which can have value 00 if the door is closed, FF is the door is opened. This example is designed to be run on any 8086 based computer, and it requires to be loaded in RAM, with 100 bytes available to it after the code, to be used for door storing. See the program comments for further explaining.
 
@@ -104,7 +104,7 @@ doors:                  ; Pointer to the end of the program,
                         ;100 doors bytes.
 ```
 
-'''optimized'''
+**optimized**
 
 This example is 42 bytes big when assembled, it is fully commented, and it is optimized. See the unoptimized program's notes and the program comments for further explaining.
 

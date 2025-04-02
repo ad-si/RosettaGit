@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{task}}
-This task is a variation of the [[wp:The Nine Billion Names of God#Plot_summary|short story by Arthur C. Clarke]].
+## Description
+This task is a variation of the [short story by Arthur C. Clarke](https://en.wikipedia.org/wiki/The Nine Billion Names of God#Plot_summary).
 
 (Solvers should be aware of the consequences of completing this task.)
 
@@ -23,7 +23,7 @@ In detail, to specify what is meant by a   “name”:
 :The integer 5 has 7 names   “1+1+1+1+1”,   “2+1+1+1”,   “2+2+1”,   “3+1+1”,   “3+2”,   “4+1”,   “5”.
 
 
-;Task
+## Task
 Display the first 25 rows of a number triangle which begins:
 
 ```txt
@@ -44,7 +44,7 @@ A function   <math>G(n)</math>   should return the sum of the   <math>n</math>-t
 
 Demonstrate this function by displaying:   <math>G(23)</math>,   <math>G(123)</math>,   <math>G(1234)</math>,   and   <math>G(12345)</math>.
 
-Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [http://mathworld.wolfram.com/PartitionFunctionP.html   integer partition function].
+Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [integer partition function](http://mathworld.wolfram.com/PartitionFunctionP.html).
 
 Demonstrate this is equivalent to   <math>G(n)</math>   by displaying:   <math>P(23)</math>,   <math>P(123)</math>,   <math>P(1234)</math>,   and   <math>P(12345)</math>.
 
@@ -121,7 +121,7 @@ Loop
 ~Esc::ExitApp
 ```
 
-{{out}}
+### Output
 If user inputs 25, the result shall be:
 
 ```txt
@@ -158,7 +158,7 @@ If user inputs 25, the result shall be:
 
 ## C
 
-{{libheader|GMP}}
+*Library: GMP*
 
 If we forgo the rows and only want to calculate <math>P(n)</math>, using the recurrence relation <math>P_n = \sum_{k=1}^n (-1)^{k+1} \Big(P_{n-k(3k-1)/2} + P_{n-k(3k+1)/2}\Big)</math> is a better way.  This requires <math>O(n^2)</math> storage for caching instead the <math>O(n^3)</math>-ish for storing all the rows.
 
@@ -205,7 +205,7 @@ int main(void)
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -325,7 +325,7 @@ namespace NamesOfGod
 
 ```
 
-{{out}}
+### Output
 
 ```txt
                                      1
@@ -372,7 +372,7 @@ namespace NamesOfGod
 
 ### The Code
 
-see [[http://rosettacode.org/wiki/Talk:9_billion_names_of_God_the_integer#The_Green_Triangle The Green Triangle]].
+see [[The Green Triangle](http://rosettacode.org/wiki/Talk:9_billion_names_of_God_the_integer#The_Green_Triangle)].
 
 ```cpp
 
@@ -388,7 +388,7 @@ void G_hyp(const int n){for(int i=0;i<N-2*n-1;i++) n==1?hyp[n-1+i]=1+G(i+n+1,n+1
 ```
 
 
-===The Alpha and Omega, Beauty===
+### The Alpha and Omega, Beauty
 Before displaying the triangle the following code displays hyp as it is transformed by consequtive calls of G_hyp.
 
 ```cpp
@@ -406,7 +406,7 @@ int main(){
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -431,7 +431,7 @@ int main(){
 
 This must be the most beautiful thing on rosettacode!!! Note that the algorithm requires only this data, and requires only N/2 iterations with the nth iteration performing N-3-2*n calculations.
 
-===The One True Triangle, OTT===
+### The One True Triangle, OTT
 The following will display OTT(25).
 
 ```cpp
@@ -463,7 +463,7 @@ int main(){
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -517,7 +517,7 @@ int main(){
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -601,7 +601,7 @@ end
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -672,7 +672,7 @@ void main() {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 Rows:
@@ -754,7 +754,7 @@ void main() {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
     23: 1255
@@ -763,7 +763,7 @@ void main() {
  12345: 69420357953926116819562977205209384460667673094671463620270321700806074195845953959951425306140971942519870679768681736
 ```
 
-{{out}} for a larger input, with newlines:
+### Output for a larger input, with newlines:
 
 ```txt
 123456:
@@ -782,7 +782,7 @@ Runtime up to 123456: about 56 seconds (about 50 with ldc2) because currently st
 ## Dart
 
 
-{{works with|Dart|2}}
+*Works with: Dart 2*
 
 {{trans|Python}}
 
@@ -837,7 +837,7 @@ main(List<String> arguments) {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
  Rows:
@@ -957,7 +957,7 @@ end)
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -994,7 +994,7 @@ end)
 ## Erlang
 
 
-Step 1: Print the pyramid for a smallish number of names. The P function is implement as described on [http://mathworld.wolfram.com/PartitionFunctionP.html partition function], (see 59 on that page). This is slow for N > 100, but works fine for the example: 10.
+Step 1: Print the pyramid for a smallish number of names. The P function is implement as described on [partition function](http://mathworld.wolfram.com/PartitionFunctionP.html), (see 59 on that page). This is slow for N > 100, but works fine for the example: 10.
 
 ```Erlang
 
@@ -1023,7 +1023,7 @@ formula(A1,B1)->
 ```
 
 
-{{out}}
+### Output
 If user inputs 25, the result shall be:
 
 ```txt
@@ -1092,7 +1092,7 @@ N GARRAY p
 ```
 
 
-{{out}}
+### Output
 
 
 ```txt
@@ -1112,7 +1112,7 @@ FORTH> .god
 
 ## FreeBASIC
 
-{{libheader|GMP}}
+*Library: GMP*
 
 ```freebasic
 ' version 03-11-2016
@@ -1206,7 +1206,7 @@ Sleep
 End
 ```
 
-{{out}}
+### Output
 
 ```txt
                                                    1
@@ -1348,7 +1348,7 @@ testRow[12345]
 ```
 
 
-== {{header|GAP}} ==
+##  ## GAP
 The partition function is built-in.
 
 ```gap
@@ -1446,7 +1446,7 @@ func main() {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1521,7 +1521,7 @@ for( i in 1..25 )
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1583,7 +1583,7 @@ main = do
     mapM_ (print.sums) [23, 123, 1234, 12345]
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1605,7 +1605,7 @@ main = do
 ```
 
 
-==Icon and {{header|Unicon}}==
+## Icon and ## Unicon
 
 This is a Unicon-specific solution.
 {{trans|Python}}
@@ -1640,7 +1640,7 @@ end
 ```
 
 
-{{out}} (terminated without waiting for output of cumu(12345)):
+### Output (terminated without waiting for output of cumu(12345)):
 
 ```txt
 
@@ -1680,7 +1680,7 @@ Calculation of the triangle:
 rows=: <@(#~0<])@({: T ])\@i.
 ```
 
-'''Show triangle''':
+**Show triangle**:
 
 ```j
    ({.~1+1 i:~ '1'=])"1 ":> }.rows 1+10
@@ -1697,7 +1697,7 @@ rows=: <@(#~0<])@({: T ])\@i.
 ```
 
 
-Note that we've gone to extra work, here, in this '''show triangle''' example, to keep columns aligned when we have multi-digit values. But then we limited the result to one digit values because that is prettier.
+Note that we've gone to extra work, here, in this **show triangle** example, to keep columns aligned when we have multi-digit values. But then we limited the result to one digit values because that is prettier.
 
 Calculate row sums:
 
@@ -1715,7 +1715,7 @@ rowSums=: 3 :0"0
 )
 ```
 
-{{out}}
+### Output
 
 ```txt
    ({ [: rowSums >./) 3 23 123 1234
@@ -1726,8 +1726,8 @@ rowSums=: 3 :0"0
 
 ## Java
 
-Translation of [[9_billion_names_of_God_the_integer#Python|Python]] via [[9_billion_names_of_God_the_integer#D|D]]
-{{works with|Java|8}}
+Translation of [Python](/tasks/9_billion_names_of_God_the_integer#Python) via [D](/tasks/9_billion_names_of_God_the_integer#D)
+*Works with: Java 8*
 
 ```java
 import java.math.BigInteger;
@@ -1910,7 +1910,7 @@ end
 
 
 ```
- {{output}}
+ ### Output
 ```txt
 
                                                  [1]
@@ -2076,7 +2076,7 @@ with x in array(23, 123, 1234) do => {^
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 rows:
@@ -2130,7 +2130,7 @@ Triangle := proc(m)
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Triangle(7);
@@ -2145,13 +2145,13 @@ Triangle(7);
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}==
+## Mathematica / ## Wolfram Language
 
 ```mathematica
 Table[Last /@ Reverse@Tally[First /@ IntegerPartitions[n]], {n, 10}] // Grid
 ```
 
-{{out}}
+### Output
 
 ```txt
 1
@@ -2173,7 +2173,7 @@ Here I use the bulit-in function PartitionsP to calculate <math>P(n)</math>.
 PartitionsP /@ {23, 123, 1234, 12345}
 ```
 
-{{out}}
+### Output
 
 ```txt
 {1255, 2552338241, 156978797223733228787865722354959930, 69420357953926116819562977205209384460667673094671463620270321700806074195845953959951425306140971942519870679768681736}
@@ -2221,7 +2221,7 @@ for x in [23, 123, 1234, 12345]:
   echo x, " ", c[c.high]
 ```
 
-{{out}}
+### Output
 
 ```txt
 @[1]
@@ -2281,7 +2281,7 @@ for i in 1 .. max(ns):
     echo i,": ",p
 ```
 
-{{out}}
+### Output
 
 ```txt
 23: 1255
@@ -2378,7 +2378,7 @@ let () =
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2435,11 +2435,11 @@ let () =
 row(n)=my(v=vector(n)); forpart(i=n,v[i[#i]]++); v;
 show(n)=for(k=1,n,print(row(k)));
 show(25)
-apply(numbpart, [23,123,1234,12345])
+apply(numbpart, [23,123,1234","12345"])
 plot(x=1,999.9, numbpart(x\1))
 ```
 
-{{out}}
+### Output
 
 ```txt
 [1]
@@ -2501,7 +2501,7 @@ Using <code>ploth</code> in place of <code>plot</code> yields a nice image which
 
 ## Perl
 
-{{libheader|ntheory}}
+*Library: ntheory*
 
 ```perl
 use ntheory qw/:all/;
@@ -2518,7 +2518,7 @@ print "\n";
 say "P($_) = ", partitions($_) for (23, 123, 1234, 12345);
 ```
 
-{{out}}
+### Output
 [rows are the same as below]
 
 ```txt
@@ -2576,7 +2576,7 @@ for (23, 123, 1234, 12345) {
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2655,7 +2655,7 @@ for 23, 123, 1234, 12345 {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 rows:
@@ -2717,7 +2717,7 @@ for i=1 to 25 do
 end for
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2753,7 +2753,7 @@ end for
 ###  Part 2
 
 {{trans|C}}
-{{libheader|mpfr}}
+*Library: mpfr*
 
 ```Phix
 include mpfr.e
@@ -2801,8 +2801,8 @@ sums:
 ```
 
 
-=== Third and last, a simple plot ===
-{{libheader|pGUI}}
+###  Third and last, a simple plot
+*Library: pGUI*
 
 ```Phix
 include pGUI.e
@@ -2899,7 +2899,7 @@ IupClose()
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 (1)
@@ -3012,7 +3012,7 @@ Input()
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3076,7 +3076,7 @@ print "\nsums:"
 for x in [23, 123, 1234, 12345]: print x, cumu(x)[-1]
 ```
 
-{{out}} (I didn't actually wait long enough to see what the sum for 12345 is)
+### Output (I didn't actually wait long enough to see what the sum for 12345 is)
 
 ```txt
 
@@ -3168,7 +3168,7 @@ def main():
 main()
 ```
 
-{{out}}
+### Output
 
 ```txt
     23: 1255
@@ -3210,7 +3210,7 @@ main()
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3262,9 +3262,9 @@ the triangle and also previous calculated partitions.
 
 The right half of the triangle isn't calculated but rather the value is taken from a previous row and column.
 
-Also, the left two columns of the triangle are computed directly   [either   '''1'''   or   '''row%2'''   (integer divide)]
+Also, the left two columns of the triangle are computed directly   [either   **1**   or   **row%2**   (integer divide)]
 
-as well as the rightmost three columns   (either   '''1'''   or   '''2''').
+as well as the rightmost three columns   (either   **1**   or   **2**).
 
 The formula used is:
 <big>
@@ -3329,7 +3329,7 @@ partitions: procedure expose @.; parse arg n; if @.n\==0 then return @.n  /* ◄
             @.n=$;              return $                 /*use memoization;   return #. */
 ```
 
-'''output'''   when using the default input   (of 25 rows):
+**output**   when using the default input   (of 25 rows):
 
 ```txt
 
@@ -3363,7 +3363,7 @@ partitions(25): 1958
 
 ```
 
-'''output'''   when using the input:   <tt> -23 </tt>
+**output**   when using the input:   <tt> -23 </tt>
 
 ```txt
 
@@ -3372,7 +3372,7 @@ partitions(23): 1255
 
 ```
 
-'''output'''   when using the input:   <tt> -123 </tt>
+**output**   when using the input:   <tt> -123 </tt>
 
 ```txt
 
@@ -3381,7 +3381,7 @@ partitions(123): 2552338241
 
 ```
 
-'''output'''   when using the input:   <tt> -1234 </tt>
+**output**   when using the input:   <tt> -1234 </tt>
 
 ```txt
 
@@ -3390,7 +3390,7 @@ partitions(1234): 156978797223733228787865722354959930
 
 ```
 
-'''output'''   when using the input:   <tt> -12345 </tt>
+**output**   when using the input:   <tt> -12345 </tt>
 
 ```txt
 
@@ -3399,7 +3399,7 @@ partitions(12345): 6942035795392611681956297720520938446066767309467146362027032
 
 ```
 
-'''output'''   when using the input:   <tt> +123456 </tt>
+**output**   when using the input:   <tt> +123456 </tt>
 
 ```txt
 
@@ -3409,7 +3409,7 @@ partitions(123456): 308176595785364966785453171465339808552966132745071392176087
 
 (For the extra credit part)   to view a horizontal histogram (plot) for the values for the number of partitions of   1 ──► 999   here at:
 
-:::::: [[9 billion names of God the integer (REXX) histogram]].
+:::::: [9 billion names of God the integer (REXX) histogram](/tasks/9 billion names of God the integer (REXX) histogram).
 
 
 ## Ruby
@@ -3433,7 +3433,7 @@ end
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3505,7 +3505,7 @@ puts "G(12345) = #{n}"
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3570,7 +3570,7 @@ fn main() {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 rows:
@@ -3656,7 +3656,7 @@ object Main {
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3757,7 +3757,7 @@ println(quickPartitions(1234))
 println(quickPartitions(12345))
 ```
 
-{{out}}
+### Output
 
 ```txt
    1
@@ -3818,7 +3818,7 @@ println(quickPartitions(12345))
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3886,7 +3886,7 @@ for i in [23, 123, 1234, 12345] {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3961,7 +3961,7 @@ g(n)=
 .
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -4017,9 +4017,9 @@ end
 ```
 
 
-The result is shown for n=10 to keep it small. Due to computations being done in floating point, the result is exact up to n=299, and suffers rounding for larger values of n. Compare the array with [http://oeis.org/A008284 OEIS A008284] and row sums with [http://oeis.org/A000041 OEIS A000041].
+The result is shown for n=10 to keep it small. Due to computations being done in floating point, the result is exact up to n=299, and suffers rounding for larger values of n. Compare the array with [OEIS A008284](http://oeis.org/A008284) and row sums with [OEIS A000041](http://oeis.org/A000041).
 
-'''Output'''
+**Output**
 
 
 ```txt
@@ -4089,7 +4089,7 @@ for x in [23, 123, 1234, 12345] {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -4167,7 +4167,7 @@ foreach x {23 123 1234 12345} {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -4215,7 +4215,7 @@ Public Sub nine_billion_names()
     Next i
 End Sub
 ```
-{{out}}
+### Output
 
 ```txt
                                                    1
@@ -4308,7 +4308,7 @@ foreach i in (idx){
 ```
 
 The .fp/.fp1 methods create a closure, fixing the first or second parameter.
-{{out}}
+### Output
 
 ```txt
 

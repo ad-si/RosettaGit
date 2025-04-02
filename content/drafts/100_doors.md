@@ -76,27 +76,27 @@ languages = [
 ]
 +++
 
-{{task}}
+## Description
 
 There are 100 doors in a row that are all initially closed.
 
-You make 100 [[task feature::Rosetta Code:multiple passes|passes]] by the doors.
+You make 100 passes by the doors.
 
-The first time through, visit every door and  ''toggle''  the door  (if the door is closed,  open it;   if it is open,  close it).
+The first time through, visit every door and  *toggle*  the door  (if the door is closed,  open it;   if it is open,  close it).
 
 The second time, only visit every 2<sup>nd</sup> door   (door #2, #4, #6, ...),   and toggle it.
 
 The third time, visit every 3<sup>rd</sup> door   (door #3, #6, #9, ...), etc,   until you only visit the 100<sup>th</sup> door.
 
 
-;Task:
+## Task:
 Answer the question:   what state are the doors in after the last pass?   Which are open, which are closed?
 
 
-'''[[task feature::Rosetta Code:extra credit|Alternate]]:'''
+**Alternate:**
 As noted in this page's   [[Talk:100 doors|discussion page]],   the only doors that remain open are those whose numbers are perfect squares.
 
-Opening only those doors is an   [[task feature::Rosetta Code:optimization|optimization]]   that may also be expressed;
+Opening only those doors is an   optimization   that may also be expressed;
 however, as should be obvious, this defeats the intent of comparing implementations across programming languages.
 
 
@@ -161,7 +161,7 @@ XDEC     DS     CL12
          END    HUNDOOR
 ```
 
-{{out}}
+### Output
 
 ```txt
    1   4   9  16  25  36  49  64  81 100
@@ -200,8 +200,8 @@ Here @IF is used to toggle between C and O.
 
 ## 6502 Assembly
 
-{{works with|http://www.6502asm.com/beta/index.html www.6502asm.com|beta}}
-'''unoptimized'''
+*Works with: http://www.6502asm.com/beta/index.html www.6502asm.com beta*
+**unoptimized**
 Based on BASIC QB64 unoptimized version
 
 ```6502asm
@@ -258,8 +258,8 @@ C_LOOP:
 48. bytes of code; the specified emulator does not report cycles.
 
 
-{{works with|http://www.6502asm.com/ 6502asm.com|1.2}}
-'''optimized'''
+*Works with: http://www.6502asm.com/ 6502asm.com 1.2*
+**optimized**
 Largely inspired by the optimized C implementation -  makes use of the fact that finally only the doors whose numbers are squares of integers are open, as well as the fact that
  <math>n^2 = 1 + 3 + 5 + \ldots + (2n-1)</math>.
 
@@ -288,7 +288,7 @@ openloop: inc $200,X    ;open X'th door
 
 ## 68000 Assembly
 
-{{works with|http://www.easy68k.com/ EASy68K v5.13.00}}
+*Works with: http://www.easy68k.com/ EASy68K v5.13.00*
 Some of the macro code is derived from the examples included with EASy68K.
 
 ```68000devpac
@@ -410,7 +410,7 @@ DoorMsgO DC.B   'open',CR,LF,0
 
 ## 8086 Assembly
 
-See [[100 doors/8086 Assembly]]
+See [100 doors/8086 Assembly](/tasks/100 doors/8086 Assembly)
 
 ## 8th
 
@@ -451,13 +451,13 @@ See [[100 doors/8086 Assembly]]
 
 ```
 
-{{out}}
+### Output
 1 4 9 16 25 36 49 64 81 100
 
 
 ## ABAP
 
-'''unoptimized'''
+**unoptimized**
 
 ```ABAP
 form open_doors_unopt.
@@ -493,7 +493,7 @@ endform.
 ```
 
 
-'''unoptimized / functional'''
+**unoptimized / functional**
 
 ```ABAP
 
@@ -511,7 +511,7 @@ cl_demo_output=>display( REDUCE stringtab( INIT list TYPE stringtab
 ```
 
 
-'''optimized'''
+**optimized**
 
 Using <math>\sum_{i=1}^n (2i-1) = n^2</math>
 
@@ -534,7 +534,7 @@ endform.
 
 
 
-'''ultra-optimized / imperative'''
+**ultra-optimized / imperative**
 
 ```ABAP
 
@@ -546,7 +546,7 @@ ENDDO.
 ```
 
 
-'''ultra-optimized / functional'''
+**ultra-optimized / functional**
 
 ```ABAP
 
@@ -590,8 +590,8 @@ cl_demo_output=>display( REDUCE stringtab( INIT list TYPE stringtab
 
 ## ActionScript
 
-{{works with|ActionScript|3.0}}
-'''unoptimized'''
+*Works with: ActionScript 3.0*
+**unoptimized**
 
 ```actionscript
 package {
@@ -670,7 +670,7 @@ ENDDO
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -781,7 +781,7 @@ Door:  100  State: OPEN
 
 ## Ada
 
-'''unoptimized'''
+**unoptimized**
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
@@ -809,7 +809,7 @@ with Ada.Text_Io; use Ada.Text_Io;
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
@@ -886,7 +886,7 @@ foreach door doors {
 
 ## ALGOL 68
 
-'''unoptimized'''
+**unoptimized**
 
 ```algol68
 # declare some constants #
@@ -916,7 +916,7 @@ PROC doors = VOID:
 doors;
 ```
 
-'''optimized'''
+**optimized**
 
 ```algol68
 PROC doors optimised = ( INT limit )VOID:
@@ -968,7 +968,7 @@ begin
 end.
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1002,7 +1002,7 @@ ENDPROC
 
 ## APL
 
-{{works with|GNU APL}}
+*Works with: GNU APL*
 
 
 ```APL
@@ -1010,7 +1010,7 @@ doors←{100⍴((⍵-1)⍴0),1}
 ≠⌿⊃doors¨ ⍳100
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1021,7 +1021,7 @@ doors←{100⍴((⍵-1)⍴0),1}
 ```
 
 
-'''optimized'''
+**optimized**
 Note that &#9109;IO = 1
 
 ```txt
@@ -1233,7 +1233,7 @@ end zip
 ### Odd numbers of integer factors
 
 
-The question of which doors are flipped an odd number of times reduces to the question of which numbers in the range have an odd number of integer factors (for an AppleScript implementation of integerFactors(n) see Factors of An Integer). Using '''map''' from the functional composition example above:
+The question of which doors are flipped an odd number of times reduces to the question of which numbers in the range have an odd number of integer factors (for an AppleScript implementation of integerFactors(n) see Factors of An Integer). Using **map** from the functional composition example above:
 
 
 ```AppleScript
@@ -1245,7 +1245,7 @@ end factorCountMod2
 ```
 
 
-This, on inspection, and further reflection, then collapses to the even simpler question of which numbers are perfect squares, since all other numbers have an even number of integer factors (n factors below the square root, plus n paired cofactors above the square root). Using '''map''' and '''enumFromTo''' from the functional composition example above:
+This, on inspection, and further reflection, then collapses to the even simpler question of which numbers are perfect squares, since all other numbers have an even number of integer factors (n factors below the square root, plus n paired cofactors above the square root). Using **map** and **enumFromTo** from the functional composition example above:
 
 
 ```AppleScript
@@ -1328,9 +1328,9 @@ for each door from 1 to 100
 
 ## ARM Assembly
 
-{{works with|as|Raspberry Pi}}
+*Works with: as Raspberry Pi*
 
-'''unoptimized'''
+**unoptimized**
 
 ```ARM Assembly
 
@@ -1492,7 +1492,7 @@ iMagicNumber:            .int 0xCCCCCCCD
 
 ```
 
-'''optimized'''
+**optimized**
 
 ```ARM Assembly
 
@@ -1817,7 +1817,7 @@ Optimized:
 
 ## AWK
 
-'''unoptimized'''
+**unoptimized**
 
 ```awk
 BEGIN {
@@ -1839,7 +1839,7 @@ BEGIN {
 }
 ```
 
-'''optimized'''
+**optimized**
 
 ```awk
 BEGIN {
@@ -1862,7 +1862,7 @@ BEGIN {
 
 ## B
 
-{{works with|The Amsterdam Compiler Kit - B|V6.1pre1}}
+*Works with: The Amsterdam Compiler Kit - B V6.1pre1*
 
 ```B
 main()
@@ -1921,7 +1921,7 @@ Based on the Sinclair ZX81 BASIC implementation.
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1990,7 +1990,7 @@ Based on the Sinclair ZX81 BASIC implementation.
 ```
 
 
-==={{header|IS-BASIC}}===
+### IS-BASIC
 <lang IS-BASIC>100 PROGRAM "100doors.bas"
 110 NUMERIC D(1 TO 100)
 120 FOR I=1 TO 100
@@ -2019,9 +2019,9 @@ Optimized:
 
 ### QBASIC
 
-{{works with|QBASIC, QB64}}
+*Works with: QBASIC, QB64*
 
-'''unoptimized'''
+**unoptimized**
 
 ```qbasic
 REM "100 Doors" program for QB64 BASIC (http://www.qb64.net/), a QuickBASIC-like compiler.
@@ -2049,9 +2049,9 @@ END
 ```
 
 
-{{works with|QuickBasic|4.5}}
+*Works with: QuickBasic 4.5*
 
-'''unoptimized'''
+**unoptimized**
 
 ```qbasic
 DIM doors(0 TO 99)
@@ -2072,7 +2072,7 @@ FOR i = 0 TO 99
 NEXT i
 ```
 
-'''optimized'''
+**optimized**
 
 ```qbasic
 DIM doors(0 TO 99)
@@ -2089,7 +2089,7 @@ FOR i = 0 TO 99
 NEXT i
 ```
 
-'''optimized'''
+**optimized**
 
 ```qbasic
 
@@ -2147,7 +2147,7 @@ NEXT
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2169,7 +2169,7 @@ NEXT
 ## Batch File
 
 
-'''unoptimized'''
+**unoptimized**
 
 ```dos
 
@@ -2187,7 +2187,7 @@ for /l %%d in (1 1 100) do if !door%%d!==1 (
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```dos
 
@@ -2247,7 +2247,7 @@ for (i = 0; i < 100; i++) {
 ## Befunge
 
 
-===Befunge-93===
+### Befunge-93
 
 ### =Unoptimized=
 
@@ -2271,8 +2271,8 @@ Just calculates the first 10 perfect squares.
 ```
 
 
-===Befunge-98===
-{{works with|CCBI|2.1}}
+### Befunge-98
+*Works with: CCBI 2.1*
 
 ```befunge>108p0>:18p;;
 :9g!18g9p08g]
@@ -2285,9 +2285,9 @@ Just calculates the first 10 perfect squares.
 
 ## BlitzMax
 
-{{works with|BlitzMax|1.37}}
+*Works with: BlitzMax 1.37*
 
-'''optimized'''
+**optimized**
 
 ```BlitzMax
 Graphics 640,480
@@ -2395,7 +2395,7 @@ DOORS[100];
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2687,9 +2687,9 @@ int main()
 
 ## C++
 
-{{works with|GCC|4.1.2 20061115 (prerelease) (SUSE Linux)}}
+*Works with: GCC 4.1.2 20061115 (prerelease) (SUSE Linux)*
 
-'''unoptimized '''
+**unoptimized **
 
 ```cpp
 #include <iostream>
@@ -2711,7 +2711,7 @@ int main()
 ```
 
 
-'''optimized '''
+**optimized **
 This optimized version makes use of the fact that finally only the doors with square index are open, as well as the fact that <math>(n+1)^2 = 1 + 3 + 5 + \ldots + (2n+1)</math>.
 
 
@@ -3086,7 +3086,7 @@ object closed extends Door("closed") { toggle() => opened; }
 ```
 
 
-'''Output:'''
+**Output:**
 
 ```txt
 Open doors (naive):     { 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 }
@@ -3103,7 +3103,7 @@ Open doors (optimized): { 1, 4, 9, 16, 25, 36, 49, 64, 81, 100 }
 ```
 
 
-=={{header|Caché ObjectScript}}==
+## Caché ObjectScript
 <lang>
  for i=1:1:100 {
 	 set doors(i) = 0
@@ -3187,7 +3187,7 @@ ResultWindow            window('Result'),at(,,133,291),center,double,auto
 ## Clio
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 
 ```clio
@@ -3209,7 +3209,7 @@ fn visit-doors doors step:
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 
 ```clio
@@ -3226,7 +3226,7 @@ fn visit-doors doors step:
 ## CLIPS
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 
 ```clips
@@ -3297,7 +3297,7 @@ fn visit-doors doors step:
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 
 ```clips
@@ -3327,7 +3327,7 @@ fn visit-doors doors step:
 
 ## Clojure
 
-'''Unoptimized / mutable array'''
+**Unoptimized / mutable array**
 
 ```clojure
 (defn doors []
@@ -3346,7 +3346,7 @@ fn visit-doors doors step:
 ```
 
 
-'''Unoptimized / functional '''
+**Unoptimized / functional **
 
 ```clojure
 (defn doors []
@@ -3365,7 +3365,7 @@ fn visit-doors doors step:
 ```
 
 
-'''Alternative Unoptimized / functional '''
+**Alternative Unoptimized / functional **
 
 ```clojure
 (defn open-doors []
@@ -3382,7 +3382,7 @@ fn visit-doors doors step:
 ```
 
 
-'''Optimized / functional'''
+**Optimized / functional**
 
 ```clojure
 (defn doors []
@@ -3400,7 +3400,7 @@ fn visit-doors doors step:
 
 
 
-'''Alternative Optimized / functional'''
+**Alternative Optimized / functional**
 
 ```clojure
 (defn open-doors [] (->> (iterate inc 1) (map #(* % %)) (take-while #(<= % 100))))
@@ -3475,7 +3475,7 @@ for i til doors.length
 
 ## CoffeeScript
 
-'''unoptimized''':
+**unoptimized**:
 
 ```coffeescript
 doors = []
@@ -3492,7 +3492,7 @@ console.log doors.map (open) -> +open
 ```
 
 
-'''optimized''':
+**optimized**:
 
 
 ```coffeescript
@@ -3502,7 +3502,7 @@ console.log door for door in [1..100] when isInteger Math.sqrt door
 ```
 
 
-'''ultra-optimized''':
+**ultra-optimized**:
 
 ```coffeescript
 console.log Math.pow(i,2) for i in [1..10]
@@ -3512,7 +3512,7 @@ console.log Math.pow(i,2) for i in [1..10]
 
 ## ColdFusion
 
-'''Basic Solution: Returns List of 100 values: 1=open 0=closed'''
+**Basic Solution: Returns List of 100 values: 1=open 0=closed**
 
 ```coldfusion
 
@@ -3545,7 +3545,7 @@ console.log Math.pow(i,2) for i in [1..10]
 ```
 
 
-'''Squares of Integers Solution: Returns List of 100 values: 1=open 0=closed'''
+**Squares of Integers Solution: Returns List of 100 values: 1=open 0=closed**
 
 ```coldfusion
 
@@ -3564,7 +3564,7 @@ console.log Math.pow(i,2) for i in [1..10]
 ```
 
 
-'''Display only'''
+**Display only**
 
 ```cfm
 // Display all doors
@@ -3581,7 +3581,7 @@ console.log Math.pow(i,2) for i in [1..10]
 ```
 
 
-'''Another Route'''
+**Another Route**
 
 ```cfm
 <Cfparam name="doorlist" default="">
@@ -3623,7 +3623,7 @@ console.log Math.pow(i,2) for i in [1..10]
 ## Common Lisp
 
 
-'''Unoptimized / functional '''
+**Unoptimized / functional **
 This is a very unoptimized version of the problem,
 using recursion and quite considerable list-copying.
 It emphasizes the functional way of solving this problem.
@@ -3671,7 +3671,7 @@ It emphasizes the functional way of solving this problem.
 ```
 
 
-'''Unoptimized, imperative '''
+**Unoptimized, imperative **
 This is a version that closely follows the problem description and is still quite short.  Of all the presented solutions it might be closest to "idiomatic Common Lisp".
 
 
@@ -3688,7 +3688,7 @@ This is a version that closely follows the problem description and is still quit
 ```
 
 
-'''Unoptimized, ''' n-doors.
+**Unoptimized, ** n-doors.
 
 ```lisp
 (defun doors (z &optional (w (make-list z)) (n 1))
@@ -3707,7 +3707,7 @@ This is a version that closely follows the problem description and is still quit
 ```
 
 
-'''Optimized, ''' n-doors.
+**Optimized, ** n-doors.
 
 ```lisp
 (defun doors (n)
@@ -3723,7 +3723,7 @@ This is a version that closely follows the problem description and is still quit
 ```
 
 
-'''Optimized '''
+**Optimized **
 This is an optimized version, using the perfect square algorithm.
 
 
@@ -3737,7 +3737,7 @@ This is an optimized version, using the perfect square algorithm.
 ```
 
 
-'''Optimized 2'''
+**Optimized 2**
 Another optimized version, with finer granular separation of functionality (might be a bit excessive).
 
 
@@ -3768,7 +3768,7 @@ Another optimized version, with finer granular separation of functionality (migh
 ```
 
 
-'''Optimized (2) '''
+**Optimized (2) **
 This version displays a much more functional solution through the use of MAPCAR.
 
 
@@ -3819,7 +3819,7 @@ END Doors100.
 ```
 
 Execute: ^Q Doors100.Do<br/>
-{{out}}
+### Output
 
 ```txt
 
@@ -3961,7 +3961,7 @@ void main() {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
@@ -4065,7 +4065,7 @@ method Main ()
 
 ## Dart
 
-'''unoptimized'''
+**unoptimized**
 
 ```dart
 main() {
@@ -4078,7 +4078,7 @@ main() {
 ```
 
 
-'''optimized version''' (including generating squares without multiplication)
+**optimized version** (including generating squares without multiplication)
 
 ```dart
 main() {
@@ -4088,7 +4088,7 @@ main() {
 ```
 
 
-'''comprehensible (not "code golf") version for a pedestrian language'''
+**comprehensible (not "code golf") version for a pedestrian language**
 
 ```dart
 import 'dart:io';
@@ -4228,7 +4228,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## DCL
 
-'''Adapted from optimized Batch example'''
+**Adapted from optimized Batch example**
 
 ```DCL
 
@@ -4255,9 +4255,9 @@ $       IF (count2 .LT. 100) THEN GOTO LOOP2
 
 ## Delphi
 
-:''See [[#Pascal|Pascal]]''
+:*See [Pascal](/tasks/#Pascal)*
 
-=={{header|Déjà Vu}}==
+## Déjà Vu
 
 ```dejavu
 local :open-doors [ rep 101 false ]
@@ -4274,7 +4274,7 @@ for i range 1 100:
 		!print\( to-str i " " )
 ```
 
-{{out}}
+### Output
 
 ```txt
 Open doors: 1 4 9 16 25 36 49 64 81 100
@@ -4321,12 +4321,12 @@ Result:
 ```
 
 
-Compare this solution to the [http://rosettacode.org/wiki/100_doors#FALSE FALSE] solution of this problem.
+Compare this solution to the [FALSE](http://rosettacode.org/wiki/100_doors#FALSE) solution of this problem.
 
 
 ## DWScript
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```delphi
 var doors : array [1..100] of Boolean;
@@ -4366,7 +4366,7 @@ for d in doors.indices() when doors[d] {
 ```
 
 
-{{out}}
+### Output
 
 
 ```txt
@@ -4386,7 +4386,7 @@ Door 100: Open
 
 ## Dylan
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```dylan
 define method doors()
@@ -4408,8 +4408,8 @@ end
 
 ## E
 
-'''Graphical'''
-{{works with|E-on-Java}}
+**Graphical**
+*Works with: E-on-Java*
 
 This version animates the changes of the doors (as checkboxes).
 
@@ -4517,7 +4517,7 @@ The result is obviously the same in we run the process backwards. So, we check t
 
 ## ECL
 
-'''optimized version'''
+**optimized version**
 
 
 ```ECL
@@ -4541,7 +4541,7 @@ OpenDoors;
 ```
 
 
-'''unoptimized version - demonstrating LOOP'''
+**unoptimized version - demonstrating LOOP**
 
 
 ```ECL
@@ -4581,7 +4581,7 @@ OUTPUT(g1);
 ```
 
 
-'''unoptimized version - using ITERATE'''
+**unoptimized version - using ITERATE**
 This is a bit more efficient than the LOOP version
 
 
@@ -4745,7 +4745,7 @@ The value of a door is 0 if open, negative if closed.]
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -4882,7 +4882,7 @@ The replacement code below took the original code and has made improvements in s
 
 ... as well as other Eiffel-ism's and some coding standards/best-practices.
 
-'''file: application.e'''
+**file: application.e**
 
 ```eiffel
 note
@@ -4980,7 +4980,7 @@ end
 ```
 
 
-'''file: door.e'''
+**file: door.e**
 
 ```eiffel
 note
@@ -5066,7 +5066,7 @@ end
 
 ## Ela
 
-'''Standard Approach'''
+**Standard Approach**
 
 
 ```ela
@@ -5084,7 +5084,7 @@ run n = gate [1..n] [& k*k \\ k <- [1..]]
 ```
 
 
-'''Alternate Approach'''
+**Alternate Approach**
 
 ```ela
 open list
@@ -5160,7 +5160,7 @@ IO.puts "All doors are closed except these: #{inspect open_doors}"
 ```
 
 
-{{out}}
+### Output
 
 
 ```txt
@@ -5198,7 +5198,7 @@ main =
 
 ## Emacs Lisp
 
-'''Unoptimized'''
+**Unoptimized**
 
 
 ```lisp
@@ -5291,7 +5291,7 @@ a row of doors.
 
 ## Erlang
 
-'''non-optimized'''
+**non-optimized**
 
 ```erlang
 
@@ -5316,7 +5316,7 @@ go([H|T], L, N, I) ->
 
 
 
-'''optimized'''
+**optimized**
 
 ```erlang
 doors() ->
@@ -5461,7 +5461,7 @@ Cell D2:
 
 The last column (column CX, labelled "100") shows a "1" for each door (labelled by the rows in column A) that is open after the 100th pass. It shows a "1" for the following doors: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.
 
-=={{header|F_Sharp|F#}}==
+## F_Sharp|F#
 Requires #light in versions of F# prior to 2010 beta.
 
 ```fsharp
@@ -5475,7 +5475,7 @@ let answerDoors =
 
 ```
 
-'''Unoptimized / functional'''
+**Unoptimized / functional**
 
 ```fsharp
 
@@ -5500,7 +5500,7 @@ answerDoors initDoors |> printfn "%A"                               //print answ
 
 ```
 
-'''Tail-Recursive Optimized/Functional'''
+**Tail-Recursive Optimized/Functional**
 
 ```fsharp
 
@@ -5540,7 +5540,7 @@ Simple single line solution using nothing but List
 
 ## Factor
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```Factor
 USING: bit-arrays formatting fry kernel math math.ranges
@@ -5571,7 +5571,7 @@ main
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```Factor
 
@@ -5590,7 +5590,7 @@ IN: rosetta-doors2
 
 ## Falcon
 
-'''Unoptimized code'''
+**Unoptimized code**
 
 ```falcon
 doors = arrayBuffer( 101, false )
@@ -5607,7 +5607,7 @@ end
 
 ```
 
-'''Optimized code'''
+**Optimized code**
 
 ```falcon
 
@@ -5651,12 +5651,12 @@ Result:
 ```
 
 
-Compare this solution to the [http://rosettacode.org/wiki/100_doors#DUP DUP] solution of this problem.
+Compare this solution to the [DUP](http://rosettacode.org/wiki/100_doors#DUP) solution of this problem.
 
 
 ## Fantom
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```fantom
 
@@ -5668,7 +5668,7 @@ Compare this solution to the [http://rosettacode.org/wiki/100_doors#DUP DUP] sol
 
 ```
 
-'''Optimized'''
+**Optimized**
 
 ```fantom
 
@@ -5680,7 +5680,7 @@ Compare this solution to the [http://rosettacode.org/wiki/100_doors#DUP DUP] sol
 
 ## FBSL
 
-'''Unoptimised'''
+**Unoptimised**
 
 ```qbasic
 #AppType Console
@@ -5700,7 +5700,7 @@ Next
 Pause
 ```
 
-'''Optimised''' (by ML)
+**Optimised** (by ML)
 
 ```qbasic
 #APPTYPE CONSOLE
@@ -5722,7 +5722,7 @@ PAUSE
 ## Fish
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```fish
 1001-p01.
@@ -5742,7 +5742,7 @@ PAUSE
 ## friendly interactive shell
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```fishshell
 # Set doors to empty list
@@ -5775,7 +5775,7 @@ end
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```fishshell
 # Set doors to empty list
@@ -5797,7 +5797,7 @@ end
 ## Forth
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```forth
 : toggle ( c-addr -- )  \ toggle the byte at c-addr
@@ -5821,7 +5821,7 @@ init run display
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```forth
 : squared ( n -- n' )  dup * ;
@@ -5833,20 +5833,20 @@ init run display
 ```
 
 
-=={{header|Fōrmulæ}}==
+## Fōrmulæ
 
-In [http://wiki.formulae.org/100_doors this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/100_doors) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
 
 ## Fortran
 
-{{works with|Fortran 90}}
+*Works with: Fortran 90*
 
-'''unoptimized'''
+**unoptimized**
 
 
 ```fortran
@@ -5868,7 +5868,7 @@ end program
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```fortran
@@ -5937,7 +5937,7 @@ Sleep
 End
 ```
 
-{{out}}
+### Output
 
 ```txt
 doors that are open nr: 1 4 9 16 25 36 49 64 81 100
@@ -6279,7 +6279,7 @@ END
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=10f109e90581b04b9cbc30fdaf49892b Click this link to run this code]'''
+**[https://gambas-playground.proko.eu/?gist=10f109e90581b04b9cbc30fdaf49892b Click this link to run this code]**
 
 ```gambas
 Public Sub Main()
@@ -6431,7 +6431,7 @@ game_end();
 
 ## Go
 
-'''unoptimized'''
+**unoptimized**
 
 ```go
 package main
@@ -6483,7 +6483,7 @@ Output:
 
 ```
 
-'''optimized'''
+**optimized**
 
 ```go
 package main
@@ -6521,7 +6521,7 @@ c,{.c,>\)%{.d<\.d=1^\)d>++:d;}/}/
 ```
 
 
-'''optimized with sqrt'''
+**optimized with sqrt**
 (Original version of GolfScript has no sqrt operator, but it can be
 added easily; the code was tested using a work-in-progress C interpreter
 for a language compatible enough with Golfscript)
@@ -6533,7 +6533,7 @@ for a language compatible enough with Golfscript)
 ```
 
 
-'''optimized without sqrt'''
+**optimized without sqrt**
 
 ```golfscript
 [{"close"}100*]:d;
@@ -6546,7 +6546,7 @@ for a language compatible enough with Golfscript)
 
 ## Gosu
 
-'''unoptimized'''
+**unoptimized**
 
 ```scala
 
@@ -6571,7 +6571,7 @@ for( door in doors index i ) {
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```scala
 
@@ -6594,7 +6594,7 @@ for( i in 1..100 ) {
 
 ## Groovy
 
-'''unoptimized'''
+**unoptimized**
 
 ```groovy
 doors = [false] * 100
@@ -6609,7 +6609,7 @@ doors = [false] * 100
 ```
 
 
-'''optimized a'''
+**optimized a**
 Using square roots
 
 
@@ -6620,7 +6620,7 @@ Using square roots
 ```
 
 
-'''optimized b'''
+**optimized b**
 Without using square roots
 
 ```groovy
@@ -6632,7 +6632,7 @@ doors = ['closed'] * 100
 ```
 
 
-=={{header|GW-BASIC}}==
+## GW-BASIC
 
 ```qbasic
 10 DIM A(100)
@@ -6648,7 +6648,7 @@ doors = ['closed'] * 100
 ```
 
 
-'''Output''':
+**Output**:
  1
  4
  9
@@ -6664,7 +6664,7 @@ doors = ['closed'] * 100
 ## Harbour
 
 
-'''Unoptimized code:'''
+**Unoptimized code:**
 
 ```visualfoxpro
 #define ARRAY_ELEMENTS 100
@@ -6683,7 +6683,7 @@ PROCEDURE Main()
 ```
 
 
-'''Optimized code'''
+**Optimized code**
 
 ```visualfoxpro
 #define ARRAY_ELEMENTS 100
@@ -6696,7 +6696,7 @@ PROCEDURE Main()
    RETURN
 ```
 
-'''Output:'''
+**Output:**
   1 is *open*|  2 is closed|  3 is closed|  4 is *open*|  5 is closed|
   6 is closed|  7 is closed|  8 is closed|  9 is *open*| 10 is closed|
  11 is closed| 12 is closed| 13 is closed| 14 is closed| 15 is closed|
@@ -6721,7 +6721,7 @@ PROCEDURE Main()
 
 ## Haskell
 
-'''unoptimized'''
+**unoptimized**
 
 ```haskell
 data Door
@@ -6755,7 +6755,7 @@ main = print $ filter ((== Open) . snd) $ zip [1 ..] (run 100)
 
 
 
-'''optimized'''
+**optimized**
 (without using square roots)
 
 ```haskell>gate :: Eq a =
@@ -6935,10 +6935,10 @@ software {
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
+## Icon and Unicon
 Icon and Unicon don't have a boolean type because most often, logic is expressed in terms of success or failure, which affects flow at run time.
 
-'''Unoptimized solution.'''
+**Unoptimized solution.**
 
 ```icon
 
@@ -6953,7 +6953,7 @@ end
 ```
 
 
-'''Optimized solution.'''
+**Optimized solution.**
 
 ```icon
 
@@ -7022,8 +7022,8 @@ main = print $ map (\n => S (finToNat n)) solveDoors
 
 ## Inform 7
 
-{{works with|Z-machine|8}}
-{{works with|Glulx virtual machine}}
+*Works with: Z-machine 8*
+*Works with: Glulx virtual machine*
 
 ```inform7
 Hallway is a room.
@@ -7128,7 +7128,7 @@ Door 100 is open.
 
 ## Ioke
 
-'''Unoptimized Object Oriented solution.'''
+**Unoptimized Object Oriented solution.**
 
 ```ioke
 NDoors = Origin mimic
@@ -7158,7 +7158,7 @@ x show
 
 ## J
 
-'''unoptimized'''
+**unoptimized**
 
 ```j
    ~:/ (100 $ - {. 1:)"0 >:i.100
@@ -7167,7 +7167,7 @@ x show
 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 ...
 ```
 
-'''optimized'''
+**optimized**
 
 ```j
    (e. *:) 1+i.100
@@ -7177,7 +7177,7 @@ x show
 ```
 
 
-'''with formatting'''
+**with formatting**
 
 ```j
    'these doors are open' ; >: I. (>:i.100) e. *: i.11
@@ -7215,7 +7215,7 @@ class HundredDoors {
 ```
 
 
-'''If only printing the result is required.'''
+**If only printing the result is required.**
 
 ```java
 class HundredDoors {
@@ -7243,7 +7243,7 @@ Door 100 is open.
 ```
 
 
-'''If only printing the result is required, using streams.'''
+**If only printing the result is required, using streams.**
 
 ```java
 import java.util.stream.Collectors;
@@ -7385,14 +7385,14 @@ Naive search
 ```
 
 
-{{out}}
+### Output
 
 ```JavaScript
 [{"door":1, "open":true}, {"door":4, "open":true}, {"door":9, "open":true}, {"door":16, "open":true}, {"door":25, "open":true}, {"door":36, "open":true}, {"door":49, "open":true}, {"door":64, "open":true}, {"door":81, "open":true}, {"door":100, "open":true}]
 ```
 
 
-==== Optimized ( iterative )====
+####  Optimized ( iterative )
 
 ```javascript
 for (var door = 1; door <= 100; door++) {
@@ -7414,7 +7414,7 @@ for(var door=1;i<10/*Math.sqrt(100)*/;i++){
 ```
 
 
-==== Optimized ( functional ) ====
+####  Optimized ( functional )
 
 The question of which doors are flipped an odd number of times reduces to the question of which numbers have an odd number of integer factors.
 
@@ -7613,7 +7613,7 @@ Or using a more general function for listing perfect squares:
 
 jq arrays have 0 as their index origin, but in the following, the 100 doors are numbered from 1 to 100.
 
-'''Solution by simulation'''
+**Solution by simulation**
 ```jq
 # Solution for n doors:
 def doors(n):
@@ -7632,7 +7632,7 @@ def doors(n):
 
 ```
 
-'''Analytical solution'''
+**Analytical solution**
 ```jq
 # Solution for 100 doors:
 def solution:
@@ -7644,7 +7644,7 @@ def solution:
 
 ## Julia
 
-'''Simple''':
+**Simple**:
 * falses(100) creates a 100-element Bool array filled with false values,
 * 'b in a:a:100' translates to 'start:step:end',
 * string concatenation by '*'.
@@ -7662,7 +7662,7 @@ end
 ```
 
 
-'''Gimmicky-optimized''':
+**Gimmicky-optimized**:
 
 ```julia
 for i in 1:10 println("Door $(i^2) is open.") end
@@ -7672,14 +7672,14 @@ for i in 1:10 println("Door $(i^2) is open.") end
 
 ## K
 
-'''unoptimized''' / converted from Q .
+**unoptimized** / converted from Q .
 
 ```k
  `closed `open ![ ; 2 ] @ #:' 1 _ = ,/ &:' 0 = t !\:/: t : ! 101
 ```
 
 
-'''optimized'''  / 1 origin indices
+**optimized**  / 1 origin indices
 
 ```k
  ( 1 + ! 10 ) ^ 2
@@ -7775,7 +7775,7 @@ loop(100) => {^
 ^}
 ```
 
-{{out}}
+### Output
 
 ```txt
 Door 1: open
@@ -7898,7 +7898,7 @@ doors.each_index{|i|
 print($"Open doors: ^(open_doors)")
 ```
 
-{{out}}
+### Output
 
 ```txt
 Open doors: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
@@ -8119,7 +8119,7 @@ Alternatively,
 
 ## Mathematica
 
-'''unoptimized 1'''
+**unoptimized 1**
 
 ```mathematica
 n=100;
@@ -8129,7 +8129,7 @@ Do[Print["door ",i," is ",If[tmp[[i]]==-1,"closed","open"]],{i,1,Length[tmp]}]
 ```
 
 
-'''unoptimized 2'''
+**unoptimized 2**
 
 ```mathematica
 f[n_] = "Closed";
@@ -8138,7 +8138,7 @@ Table[f[n], {n, 1, 100}]
 ```
 
 
-'''unoptimized 3'''
+**unoptimized 3**
 
 Mathematica also supports immutable data paradigms, like so:
 
@@ -8154,14 +8154,14 @@ Fold[
 
 
 
-'''optimized 1'''
+**optimized 1**
 
 ```mathematica
 Do[Print["door ",i," is ",If[IntegerQ[Sqrt[i]],"open","closed"]],{i,100}]
 ```
 
 
-'''optimized 2'''
+**optimized 2**
 
 ```mathematica
 n=100;
@@ -8170,7 +8170,7 @@ Do[Print["door ",i," is ",If[MemberQ[a,i],"open","closed"]],{i,100}]
 ```
 
 
-'''optimized 3'''
+**optimized 3**
 
 ```mathematica
 n=100
@@ -8189,26 +8189,26 @@ For[i=1,i<=n,i++,
 
 
 These will only give the indices for the open doors:
-'''unoptimized 2'''
+**unoptimized 2**
 
 ```mathematica
 Pick[Range[100], Xor@@@Array[Divisible[#1,#2]&, {100,100}]]
 ```
 
 
-'''optimized 4'''
+**optimized 4**
 
 ```mathematica
 Range[Sqrt[100]]^2
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}==
+## MATLAB / ## Octave
 
 
 ### Iterative Method
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```MATLAB
 a = false(1,100);
@@ -8221,7 +8221,7 @@ a
 
 ```
 
-'''Optimized'''
+**Optimized**
 
 ```MATLAB
 
@@ -8234,7 +8234,7 @@ a
 
 ```
 
-'''More Optimized'''
+**More Optimized**
 
 ```MATLAB
 
@@ -8270,7 +8270,7 @@ end
 ```
 
 
-===Known-Result Method===
+### Known-Result Method
 
 ```MATLAB
 
@@ -8304,7 +8304,7 @@ doors(100);
 
 ## MAXScript
 
-'''unoptimized'''
+**unoptimized**
 
 ```maxscript
 doorsOpen = for i in 1 to 100 collect false
@@ -8323,7 +8323,7 @@ for i in 1 to doorsOpen.count do
 )
 ```
 
-'''optimized'''
+**optimized**
 
 ```maxscript
 for i in 1 to 100 do
@@ -8422,7 +8422,7 @@ EndFor
 ```
 
 
-'''Output''':
+**Output**:
  1
  4
  9
@@ -8524,7 +8524,7 @@ print d.indexes.sort
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
@@ -8679,10 +8679,10 @@ DOORS
 
 ## MMIX
 
-See [[100 doors/MMIX]]
+See [100 doors/MMIX](/tasks/100 doors/MMIX)
 
-=={{header|Modula-2}}==
-'''unoptimized'''
+## Modula-2
+**unoptimized**
 
 ```modula2
 MODULE Doors;
@@ -8724,7 +8724,7 @@ END Doors.
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```modula2
 MODULE DoorsOpt;
@@ -8756,8 +8756,8 @@ END DoorsOpt.
 ```
 
 
-=={{header|Modula-3}}==
-'''unoptimized'''
+## Modula-3
+**unoptimized**
 
 ```modula3
 MODULE Doors EXPORTS Main;
@@ -8794,7 +8794,7 @@ END Doors.
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```modula3
@@ -8950,7 +8950,7 @@ const main = {
 
 ```
 
-{{out}}
+### Output
 
 
 ```txt
@@ -9017,7 +9017,7 @@ CALL one_hundred_doors(100);
 ```
 
 
-{{out}}
+### Output
 
 
 ```txt
@@ -9044,7 +9044,7 @@ CALL one_hundred_doors(100);
 
 ## NetRexx
 
-'''unoptimized'''
+**unoptimized**
 
 ```netrexx
 /* NetRexx */
@@ -9070,7 +9070,7 @@ loop d_ = 1 to 100
 ```
 
 
-'''optimized''' (Based on the Java 'optimized' version)
+**optimized** (Based on the Java 'optimized' version)
 {{trans|Java}}
 
 ```netrexx
@@ -9095,7 +9095,7 @@ loop i_ = 0 to 99
 ```
 
 
-'''optimized 2''' (Based on the Java 'optimized 2' version)
+**optimized 2** (Based on the Java 'optimized 2' version)
 {{trans|Java}}
 
 ```netrexx
@@ -9112,7 +9112,7 @@ say resultstring
 ```
 
 
-'''optimized 3'''
+**optimized 3**
 
 ```netrexx
 /* NetRexx */
@@ -9252,7 +9252,7 @@ for i in countup(1, 100):
 
 ## Oberon
 
-[http://oberon07.com/ Oberon-07], by [http://people.inf.ethz.ch/wirth/index.html Niklaus Wirth].
+[Oberon-07](http://oberon07.com/), by [Niklaus Wirth](http://people.inf.ethz.ch/wirth/index.html).
 
 ```oberon
 MODULE Doors;
@@ -9285,7 +9285,7 @@ END Doors.
 ```
 
 Execute: Doors.Do<br/>
-{{out}}
+### Output
 
 ```txt
 
@@ -9307,7 +9307,7 @@ Execute: Doors.Do<br/>
 
 ## Objeck
 
-'''optimized'''
+**optimized**
 
 ```objeck
 
@@ -9337,8 +9337,8 @@ bundle Default {
 
 
 
-=={{header|Objective-C}}==
-'''A basic implementation in Objective-C:'''
+## Objective-C
+**A basic implementation in Objective-C:**
 
 This is a very basic Objective-C sample that shows the usage of standard types and classes such as NSInteger and NSMutableArray.
 
@@ -9375,7 +9375,7 @@ int main(int argc, const char * argv[]) {
 
 ```
 
-'''A more typical implementation in Objective-C:'''
+**A more typical implementation in Objective-C:**
 
 This example is more along the lines of what typical Objective-C program would look like.
 
@@ -9463,7 +9463,7 @@ int main(int argc, const char * argv[]) {
 
 ## OCaml
 
-'''unoptimized'''
+**unoptimized**
 
 ```ocaml
 let max_doors = 100
@@ -9488,7 +9488,7 @@ let () =
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```ocaml
 let optimised_flip_doors doors =
@@ -9502,7 +9502,7 @@ let () =
 ```
 
 
-This variant is more '''functional style''' (loops are recursions), unoptimized, and we do rather 100 passes on first element, then 100 * second, to avoid mutable data structures and many intermediate lists.
+This variant is more **functional style** (loops are recursions), unoptimized, and we do rather 100 passes on first element, then 100 * second, to avoid mutable data structures and many intermediate lists.
 
 ```ocaml
 type door = Open | Closed    (* human readable code *)
@@ -9623,7 +9623,7 @@ Run 1 1 100 {ShowDoor} for
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Door no. 1 is open.
@@ -9902,7 +9902,7 @@ Door 100 is open.
 
 ## PARI/GP
 
-'''Unoptimized version.'''
+**Unoptimized version.**
 
 ```parigp
 
@@ -9912,14 +9912,14 @@ for(i=1,d,if(v[i],print("Door ",i," is open.")))
 
 ```
 
-'''Optimized version.'''
+**Optimized version.**
 
 ```parigp
 for(n=1,sqrt(100),print("Door ",n^2," is open."))
 ```
 
 
-'''Unoptimized version.'''
+**Unoptimized version.**
 
 ```pari/gp
 
@@ -9970,7 +9970,7 @@ end.
 ```
 
 
-'''Optimized version.'''
+**Optimized version.**
 
 
 ```pascal
@@ -10004,8 +10004,8 @@ end.
 
 ## Perl
 
-'''unoptimized'''
-{{works with|Perl|5.x}}
+**unoptimized**
+*Works with: Perl 5.x*
 
 ```perl
 my @doors;
@@ -10021,8 +10021,8 @@ print "Door $_ is ", $doors[$_] ? "open" : "closed", "\n" for 1 .. 100;
 ```
 
 
-'''semi-optimized'''
-{{works with|Perl|5.x}}
+**semi-optimized**
+*Works with: Perl 5.x*
 This version flips doors, but doesn't visit (iterate over) doors that aren't toggled.  Note: I represent open doors as 0 and closed as 1 just for preference.  (When I print it as a bit vector, 0 looks more like an open door to me.)
 
 ```perl
@@ -10041,8 +10041,8 @@ print "The rest are closed\n";
 ```
 
 
-'''optimized'''
-{{works with|Perl|5.x}}
+**optimized**
+*Works with: Perl 5.x*
 
 ```perl
 print "Door $_ is open\n" for map $_**2, 1 .. 10;
@@ -10165,7 +10165,7 @@ $doors->print_open();
 
 ### unoptimized
 
-{{works with|Rakudo|2015.09"}}
+*Works with: Rakudo 2015.09"*
 
 ```perl6
 my @doors = False xx 101;
@@ -10186,7 +10186,7 @@ say "Door $_ is open" for map {$^n ** 2}, 1..10;
 ```
 
 
-===Here's a version using the cross meta-operator instead of a map:===
+### Here's a version using the cross meta-operator instead of a map:
 
 
 ```perl6
@@ -10202,8 +10202,8 @@ say "Door $_ is ", <closed open>[.sqrt == .sqrt.floor] for 1..100;
 ```
 
 
-===verbose version, but uses ordinary components===
-{{works with|Rakudo|2016.07   Tom Legrady}}
+### verbose version, but uses ordinary components
+*Works with: Rakudo 2016.07   Tom Legrady*
 
 
 ```perl6
@@ -10237,7 +10237,7 @@ sub MAIN ( Int :$doors = 100 ) {
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -10270,7 +10270,7 @@ for i=1 to 100 do
 end for
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -10308,7 +10308,7 @@ end function
 ?doors(100)
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -10392,8 +10392,8 @@ extern printf;
 
 ## PHP
 
-See: [http://www.thomporter.com/100doors.php Demo]
-'''optimized'''
+See: [Demo](http://www.thomporter.com/100doors.php)
+**optimized**
 
 ```php
 <?php
@@ -10406,7 +10406,7 @@ for ($i = 1; $i <= 100; $i++) {
 ```
 
 
-'''unoptimized'''
+**unoptimized**
 
 ```php
 <?php
@@ -10526,7 +10526,7 @@ Output:
 
 ## Piet
 
-[http://www.toothycat.net/~sham/piet/100doors.png image]
+[image](http://www.toothycat.net/~sham/piet/100doors.png)
 
 
 ## Pike
@@ -10602,7 +10602,7 @@ end;
 
 ## PL/SQL
 
-'''Unoptimized'''
+**Unoptimized**
 
 
 ```plsql
@@ -10645,7 +10645,7 @@ END;
 ## Pony
 
 
-'''Combined Optimized and Unoptimized'''
+**Combined Optimized and Unoptimized**
 
 Probably also rather pointless in its use of actors, but, after all, they're cheap.
 
@@ -10772,7 +10772,7 @@ actor Main
 
 ## Pop11
 
-'''unoptimized'''
+**unoptimized**
 
 ```pop11
 lvars i;
@@ -10790,7 +10790,7 @@ endfor;
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```pop11
 for i to 100 do
@@ -10920,7 +10920,7 @@ $visited = 1..100
 
 ```
 
-===unoptimized Pipeline 3 (dynamically build pipeline)===
+### unoptimized Pipeline 3 (dynamically build pipeline)
 
 ```powershell
 1..100|foreach-object {$pipe += "toggle $_ |"} -begin {$pipe=""}
@@ -11114,7 +11114,7 @@ doors_optimized(N) :-
 
 ## Processing
 
-===Unoptimized, Brute Force===
+### Unoptimized, Brute Force
 
 ```processing
 boolean[] doors = new boolean[100];
@@ -11139,7 +11139,7 @@ void setup() {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Open:
@@ -11187,7 +11187,7 @@ showResult = do (puts.status) final when
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -11205,7 +11205,7 @@ showResult = do (puts.status) final when
 
 ## PureBasic
 
-'''unoptimized'''
+**unoptimized**
 
 ```purebasic
 Dim doors.i(100)
@@ -11229,7 +11229,7 @@ Input()
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```PureBasic
 OpenConsole()
@@ -11425,8 +11425,8 @@ run(100)
 
 ## Python
 
-{{works with|Python|2.5+}}
-'''unoptimized'''
+*Works with: Python 2.5+*
+**unoptimized**
 
 ```python
 
@@ -11439,7 +11439,7 @@ for i in range(100):
 ```
 
 
-'''optimized'''
+**optimized**
 
 A version that only visits each door once:
 
@@ -11467,7 +11467,7 @@ print '\n'.join('Door %s is %s' % (i, 'closed' if i**0.5 % 1 else 'open') for i 
 ```
 
 
-{{works with|Python|3.x}}
+*Works with: Python 3.x*
 
 ```python
 
@@ -11481,7 +11481,7 @@ for i in range(1, 101):
 ```
 
 
-'''ultra-optimized''': ported from Julia version
+**ultra-optimized**: ported from Julia version
 
 
 ```python
@@ -11492,14 +11492,14 @@ for i in range(1,11): print("Door %s is open" % i**2)
 
 ## Q
 
-'''unoptimized'''
+**unoptimized**
 
 ```q
 `closed`open mod[;2]count each 1 _ group raze where each 0=t mod\:/:t:til 101
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```q
 `closed`open (1+til 100) in `int$xexp[;2] 1+til 10
@@ -11509,7 +11509,7 @@ for i in range(1,11): print("Door %s is open" % i**2)
 
 ## R
 
-'''Using a loop'''
+**Using a loop**
 
 ```r
 doors_puzzle <- function(ndoors=100,passes=100) {
@@ -11526,7 +11526,7 @@ doors_puzzle()
 
 
 
-'''optimized'''
+**optimized**
 
 ```r
 x <- rep(1, 100)
@@ -11537,7 +11537,7 @@ which(!x)
 ```
 
 
-'''Using a **ply function'''
+**Using a **ply function**
 
 ```r
 doors_puzzle <- function(ndoors=100,passes=100) {
@@ -11561,7 +11561,7 @@ which(Reduce(function(d,n) xor(replace(f,seq(n,H,n),T),d), 1:H, f))
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -11665,7 +11665,7 @@ end
 
 ```
 
-'''Output'''
+**Output**
 
 ```txt
 
@@ -11781,7 +11781,7 @@ say
                 end    /*k*/                     /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  when using the default input:}}
+### output|text=  when using the default input:
 
 ```txt
 
@@ -11825,7 +11825,7 @@ say
 ## Ring
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```ring
 doors = list(100)
@@ -11848,7 +11848,7 @@ Next
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```ring
 doors = list(100)
@@ -11890,7 +11890,7 @@ Output:
 Open doors 1 4 9 16 25 36 49 64 81 100
 ```
 
-'''unoptimized; Ruby-way'''
+**unoptimized; Ruby-way**
 
 
 ```ruby
@@ -11937,7 +11937,7 @@ doors.each_with_index { |door, i| puts "Door #{i+1} is #{door}." }
 ```
 
 
-'''unoptimized'''
+**unoptimized**
 
 
 ```ruby
@@ -11962,7 +11962,7 @@ end
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```ruby
@@ -11973,7 +11973,7 @@ end
 ```
 
 
-'''generic true/false, with another way of handling the inner loop demonstrating Range#step'''
+**generic true/false, with another way of handling the inner loop demonstrating Range#step**
 
 
 ```ruby
@@ -11987,7 +11987,7 @@ puts doors.map.with_index(1){|d,i| "Door #{i} is #{d ? 'open' : 'closed'}."}
 ```
 
 
-{{out}}
+### Output
 <pre style="height:30ex;overflow:scroll">
 Door 1 is open
 Door 2 is closed
@@ -12181,7 +12181,7 @@ fn main() {
 ```
 
 
-=={{header|S-lang}}==
+## S-lang
 <lang s-lang>variable door,
     isOpen = Char_Type [101],
     pass;
@@ -12350,7 +12350,7 @@ end;
 
 ## Scheme
 
-'''unoptimized'''
+**unoptimized**
 
 ```scheme
 (define *max-doors* 100)
@@ -12382,7 +12382,7 @@ end;
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```scheme
 (define (optimised-flip-doors doors)
@@ -12397,7 +12397,7 @@ end;
 ```
 
 
-'''the 3rd version'''
+**the 3rd version**
 
 ```scheme
 (define (N_doors N)
@@ -12450,7 +12450,7 @@ for i = 1:100
 end
 ```
 
-{{out}}
+### Output
 
 ```txt
 1 open
@@ -12572,7 +12572,7 @@ Output: 100 indications that "Door ___ is _____," where doors with perfect squar
 
 ## Seed7
 
-'''unoptimized'''
+**unoptimized**
 
 ```seed7
 $ include "seed7_05.s7i";
@@ -12601,7 +12601,7 @@ const proc: main is func
 ```
 
 
-'''optimized'''
+**optimized**
 
 ```seed7
 $ include "seed7_05.s7i";
@@ -12654,7 +12654,7 @@ Output of both programs:
 
 ## SequenceL
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```sequencel
 
@@ -12676,7 +12676,7 @@ flipDoors(doors(1), count) :=
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```sequencel
 
@@ -12691,7 +12691,7 @@ flipDoors(openDoors(1), i) :=
 
 ## SETL
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```setl
 program hundred_doors;
@@ -12716,7 +12716,7 @@ end program;
 
 If 'open' weren't a reserved word, we could omit the single quotes around it.
 
-'''Optimized'''
+**Optimized**
 Exploits the fact that squares are separated by successive odd numbers.  Use array replication to insert the correct number of closed doors in between the open ones.
 
 ```setl
@@ -12736,7 +12736,7 @@ end program;
 ## Sidef
 
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```ruby
 var doors = []
@@ -12755,7 +12755,7 @@ var doors = []
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```ruby
 { |i|
@@ -12787,7 +12787,7 @@ BEGIN
 END.
 ```
 
-{{out}}
+### Output
 
 ```txt
 All doors closed but 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
@@ -12797,7 +12797,7 @@ All doors closed but 1, 4, 9, 16, 25, 36, 49, 64, 81, 100
 
 ## Slate
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```slate
 define: #a -> (Array newSize: 100).
@@ -12812,7 +12812,7 @@ a keysAndValuesDo: [| :door :isOpen |
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```slate
 define: #a -> (Array newSize: 100).
@@ -12827,8 +12827,8 @@ a keysAndValuesDo: [| :door :isOpen |
 
 ## Smalltalk
 
-{{works with|GNU Smalltalk}}
-'''Unoptimized'''
+*Works with: GNU Smalltalk*
+**Unoptimized**
 
 ```smalltalk
 |a|
@@ -12848,7 +12848,7 @@ a := Array new: 100 .
 ]
 ```
 
-'''Optimized'''
+**Optimized**
 
 
 ```smalltalk
@@ -12864,8 +12864,8 @@ a := (1 to: 100) collect: [ :x | false ].
 ```
 
 
-{{works with|Squeak Smalltalk}}
-'''Unoptimized, using Morphs'''
+*Works with: Squeak Smalltalk*
+**Unoptimized, using Morphs**
 
 ```smalltalk
 
@@ -12923,7 +12923,7 @@ END
 ## SNOBOL4
 
 
-'''unoptimized'''
+**unoptimized**
 
 ```snobol4
 
@@ -12972,7 +12972,7 @@ Normal termination at level 0
 
 (There are command flags to remove the header and the summary, but these have been left in to keep the original SNOBOL4 experience intact.)
 
-'''optimized'''
+**optimized**
 
 ```snobol4
 
@@ -12998,7 +12998,7 @@ The output of this version is almost identical to the above.
 ## Sparkling
 
 
-'''unoptimized'''
+**unoptimized**
 
 
 ```Sparkling
@@ -13026,7 +13026,7 @@ for door = 0; door < 100; door++ {
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```Sparkling
@@ -13049,10 +13049,10 @@ for door = 0; door < 100; door++ {
 
 ## Spin
 
-{{works with|BST/BSTC}}
-{{works with|FastSpin/FlexSpin}}
-{{works with|HomeSpun}}
-{{works with|OpenSpin}}
+*Works with: BST/BSTC*
+*Works with: FastSpin/FlexSpin*
+*Works with: HomeSpun*
+*Works with: OpenSpin*
 
 ```Spin
 con
@@ -13091,7 +13091,7 @@ pri doors | i,j
   ser.str(string(13,10))
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -13103,7 +13103,7 @@ Open doors: 1 4 9 16 25 36 49 64 81 100
 
 ## SQL
 
-'''optimized'''
+**optimized**
 
 ```SQL
 
@@ -13137,7 +13137,7 @@ END
 
 ## SQL PL
 
-{{works with|Db2 LUW}}
+*Works with: Db2 LUW*
 With SQL only:
 
 ```sql pl
@@ -13332,7 +13332,7 @@ fun opened_doors n = List.mapPartiali (fn (k, Closed) => NONE | (k, Opened) => S
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -13390,7 +13390,7 @@ doors.selectIndices { |open| open }; // all are closed except [ 0, 1, 4, 9, 16, 
 ## Swift
 
 
-'''unoptimized'''
+**unoptimized**
 
 
 ```Swift
@@ -13418,7 +13418,7 @@ for (index, item) in enumerate(doorsStateList) {
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```Swift
@@ -13465,7 +13465,7 @@ end hundredDoors
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -13478,7 +13478,7 @@ Open doors: 1 4 9 16 25 36 49 64 81 100
 ## Tcl
 
 
-'''unoptimized'''
+**unoptimized**
 
 
 ```tcl
@@ -13496,7 +13496,7 @@ for {set i 1} {$i <= $n} {incr i} {
 ```
 
 
-'''optimized'''
+**optimized**
 
 
 ```tcl
@@ -13511,9 +13511,9 @@ for {set i 1} {$i <= $n} {incr i} {
 ```
 
 
-'''graphical'''
+**graphical**
 
-{{libheader|Tk}}
+*Library: Tk*
 Inspired by the E solution, here's a visual representation
 
 ```tcl
@@ -13566,7 +13566,7 @@ proc go {} {
 ```
 
 
-=={{header|TI-83 BASIC}}==
+## TI-83 BASIC
 
 ### Naive
 
@@ -13581,7 +13581,7 @@ proc go {} {
 
  Pause not(fPart(√(seq(X,X,1,100
 
-=={{header|TI-89 BASIC}}==
+## TI-89 BASIC
 
 ```ti89b
 Define doors(fast) = Func
@@ -13915,8 +13915,8 @@ NEXT d
 
 ## Uniface
 
-'''unoptimized'''
-{{works with|Uniface 9.6}}
+**unoptimized**
+*Works with: Uniface 9.6*
 
 
 ```Uniface
@@ -13978,7 +13978,7 @@ end ; LP_DO_IT
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -14001,7 +14001,7 @@ Door 100 is finally Open
 
 ## UNIX Shell
 
-{{works with|Bourne Again SHell}}
+*Works with: Bourne Again SHell*
 
 ```bash
 #! /bin/bash
@@ -14152,7 +14152,7 @@ http://rosettacode.org/wiki/100_doors
 
 ## Vala
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```vala
 int main() {
@@ -14184,7 +14184,7 @@ Output:
 ...
 ```
 
-'''Optimized'''
+**Optimized**
 
 ```vala
 int main() {
@@ -14318,8 +14318,8 @@ End Sub
 ## VBScript
 
 
-{{works with|Windows Script Host|5.7}}
-'''Unoptimized'''
+*Works with: Windows Script Host 5.7*
+**Unoptimized**
 
 ```VBScript
 Dim doorIsOpen(100), pass, currentDoor, text
@@ -14349,7 +14349,7 @@ Next
 
 ## Vedit macro language
 
-'''Unoptimized'''
+**Unoptimized**
 This implementation uses a free edit buffer as data array and for displaying the results.
 
 A closed door is represented by a character <tt>'-'</tt> and an open door by character <tt>'O'</tt>.
@@ -14366,7 +14366,7 @@ for (#1 = 1; #1 <= 100; #1++) {
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```vedit
 Buf_Switch(Buf_Free)
@@ -14390,7 +14390,7 @@ O--O----O------O--------O----------O------------O--------------O----------------
 
 ## VHDL
 
-'''unoptimized'''
+**unoptimized**
 
 ```vhdl
 library IEEE;
@@ -14425,7 +14425,7 @@ end Behavioral;
 ```
 
 
-'''unoptimized and synthesizable'''
+**unoptimized and synthesizable**
 
 ```VHDL
 LIBRARY ieee;
@@ -14514,8 +14514,8 @@ The following doors are open:
 
 ## Visual Basic .NET
 
-{{works with|Visual Basic .NET|9.0+}}
-'''unoptimized'''
+*Works with: Visual Basic .NET 9.0+*
+**unoptimized**
 
 ```vbnet
 Module Module1
@@ -14539,7 +14539,7 @@ Module Module1
 End Module
 ```
 
-'''optimized'''
+**optimized**
 
 ```vbnet
 Module Module1
@@ -14643,7 +14643,7 @@ Not the most efficient code, to say the least. This has a few more allocations t
 
 ## Wrapl
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```wrapl
 MOD Doors;
@@ -14663,7 +14663,7 @@ Out:write('Doors {door @ String.T}.');
 END Doors.
 ```
 
-'''Optimized'''
+**Optimized**
 
 ```wrapl
 MOD Doors;
@@ -14683,7 +14683,7 @@ END Doors.
 
 ## Wren
 
-'''Unoptimized'''
+**Unoptimized**
 
 ```wren
 
@@ -14703,7 +14703,7 @@ for (i in 0...100) {
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```wren
 
@@ -14718,7 +14718,7 @@ while(door <= 100) {
 ```
 
 
-=={{header|X86_64 Assembly}}==
+## X86_64 Assembly
 <lang X86_64 Assembly>
 ; linux x86_64
 
@@ -14912,7 +14912,7 @@ With input document ...
 ```
 
 
-Also see: [[100 doors/XSLT]]
+Also see: [100 doors/XSLT](/tasks/100 doors/XSLT)
 
 
 ## XSLT 2.0
@@ -14968,7 +14968,7 @@ next
 ## Yorick
 
 
-'''Unoptimized, iterative'''
+**Unoptimized, iterative**
 
 ```yorick
 doors = array(0, 100);
@@ -14979,7 +14979,7 @@ print, where(doors);
 ```
 
 
-'''Unoptimized, vectorized'''
+**Unoptimized, vectorized**
 
 ```yorick
 doors = array(0, 100);
@@ -14989,7 +14989,7 @@ print, where(doors);
 ```
 
 
-'''Optimized'''
+**Optimized**
 
 ```yorick
 print, indgen(1:long(sqrt(100)))^2
@@ -15017,7 +15017,7 @@ doors.filterNs().apply('+(1)).println();
 ```
 
 The filterNs method returns the index of each item that passes the filter.
-{{out}}
+### Output
 ```txt
 L(1,4,9,16,25,36,49,64,81,100)
 ```

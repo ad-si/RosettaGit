@@ -6,30 +6,28 @@ aliases = []
 [extra]
 id = 21960
 [taxonomies]
-categories = []
+categories = ["Games", "Puzzles"]
 tags = []
 +++
 
-[[Category:Puzzles]]
-[[Category:Games]]
 {{draft task}}
 
-'''21'''   is a two player game,   the game is played by choosing a 
-number   ('''1''',   '''2''',   or   '''3''')   to be added to the   ''running total''.
+**21**   is a two player game,   the game is played by choosing a 
+number   (**1**,   **2**,   or   **3**)   to be added to the   *running total*.
 
-The game is won by the player whose chosen number causes the   ''running total''   to reach   ''exactly''   '''21'''.
+The game is won by the player whose chosen number causes the   *running total*   to reach   *exactly*   **21**.
 
-The   ''running total''   starts at zero.
+The   *running total*   starts at zero.
 
-One player will be the computer.    Players alternate supplying a number to be added to the   ''running total''. 
+One player will be the computer.    Players alternate supplying a number to be added to the   *running total*. 
 
 
-;Task:
+## Task:
 Write a computer program that will:
 ::*   do the prompting   (or provide a button menu), 
 ::*   check for errors and display appropriate error messages, 
-::*   do the additions   (add a chosen number to the   ''running total''), 
-::*   display the   ''running total'', 
+::*   do the additions   (add a chosen number to the   *running total*), 
+::*   display the   *running total*, 
 ::*   provide a mechanism for the player to    quit/exit/halt/stop/close   the program,
 ::*   issue a notification when there is a winner,   and
 ::*   determine who goes first   (possibly a random choice, or it can be specified when the game begins). 
@@ -148,7 +146,7 @@ func main() {
 ```
 
 
-{{out}}
+### Output
 A sample game where the human player manages to win even though the computer (chosen randomly) goes first.
 
 ```txt
@@ -395,7 +393,7 @@ sub insult {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 The 21 game. Each player chooses to add 1, 2, or 3 to a running total.
@@ -421,7 +419,7 @@ Human wins.
 
 ## Perl 6
 
-{{works with|Rakudo|2018.09}}
+*Works with: Rakudo 2018.09*
 Since there is no requirement that the computer play sensibly, it always plays a random guess so the player has some chance to win.
 
 ```perl6
@@ -458,7 +456,7 @@ sub insult ($g) {
 }
 ```
 
-{{out|Sample game}}
+### Sample game
 
 ```txt
 The 21 game. Each player chooses to add 1, 2, or 3 to a running total.
@@ -563,7 +561,7 @@ while 1 do
 end while
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -638,7 +636,7 @@ Enter q to quit.\n\n" limit max-resp limit)
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -734,7 +732,7 @@ ser: if bad  then return;  bad=1;  say;  say;  say sep '***error***' arg(1);  sa
 tot: arg q,who; $=$+q; say sep 'The game total is now' sep2 $ sep2; return /*add; show $*/
 ```
 
-{{out|output}}
+### output
 
 ```txt
 
@@ -899,4 +897,4 @@ func msgBox(text) {
 
 Output:
 
-[http://kepkezelo.com/images/1hyutakip6vo1t1rpypy.jpg 21 Game]
+[21 Game](http://kepkezelo.com/images/1hyutakip6vo1t1rpypy.jpg)

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-The following table shows the result of solving 20 [http://www.rosettacode.org/wiki/15_Puzzle_Game#C.23 randomly generated 15 puzzles] using the C++ imperative solver.
+The following table shows the result of solving 20 [randomly generated 15 puzzles](http://www.rosettacode.org/wiki/15_Puzzle_Game#C.23) using the C++ imperative solver.
 
 
 The average number of moves to solve the puzzle is 53, max 61 min 45.
@@ -46,7 +46,7 @@ The average time to solve the puzzle is 2.9524 seconds. With one outlier at 29 s
 
 ```
 
-==Phix solutions:==
+## Phix solutions:
 First, non-optimal - the following table shows the result of solving the same puzzles using the Phix solver, with MTM=0 and STM=0. 
 
 Move counts are listed below as mtm (stm) [stm-optimal from elsewhere (ie above)].

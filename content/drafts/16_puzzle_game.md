@@ -6,27 +6,25 @@ aliases = []
 [extra]
 id = 21790
 [taxonomies]
-categories = []
+categories = ["Games", "Puzzles"]
 tags = []
 +++
 
 {{draft task}}
-[[Category:Puzzles]]
-[[Category:Games]]
 
 
-;Task:
+## Task:
 Create 16 Puzzle Game. 
 
 
-See details: [http://www.bsswebsite.me.uk/Puzzlewebsite/Fifteenpuzzle/sixteen.htm 16 Puzzle Game]
+See details: [16 Puzzle Game](http://www.bsswebsite.me.uk/Puzzlewebsite/Fifteenpuzzle/sixteen.htm)
 
 
 Video: [https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0bsohQX8b5_dc5G&sa=D&sntz=1&usg=AFQjCNH_eKBfk_1m88kte3Wo7MIii8hn1A 16 Puzzle Game]
 
 
 ;Related task:
-:*   [[15_Puzzle_Game|15 Puzzle Game]]
+:*   [15 Puzzle Game](/tasks/15_Puzzle_Game)
 
 
 
@@ -217,7 +215,7 @@ outer:
 ```
 
 
-{{out}}
+### Output
 Sample game:
 
 ```txt
@@ -294,7 +292,7 @@ Congratulations, you have won the game in 3 moves!!
 
 ## Javascript
 
-Try it [http://paulo-jorente.de/webgames/repos/16Puzzle/ here].
+Try it [here](http://paulo-jorente.de/webgames/repos/16Puzzle/).
 
 You'll also need a html file:
 
@@ -746,7 +744,7 @@ while 1 do
 end while
 ```
 
-{{out}}
+### Output
 (a level 2 game)
 
 ```txt
@@ -781,7 +779,7 @@ Solved!
 
 ## REXX
 
-This REXX version allows the user to choose the grid size for the   '''16'''   game (puzzle),   as
+This REXX version allows the user to choose the grid size for the   **16**   game (puzzle),   as
 well as the difficulty of the puzzle.
 
 The user's responses may have optional whitespace in the answer, 
@@ -879,7 +877,7 @@ show: top= '╔'copies( copies("═", 2)'╦', N);           top= left( top, len
       return
 ```
 
-{{out|output|text=  when using the default inputs:}}
+### output|text=  when using the default inputs:
 
 ```txt
 

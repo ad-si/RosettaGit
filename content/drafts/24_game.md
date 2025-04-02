@@ -10,39 +10,37 @@ categories = []
 tags = []
 +++
 
-{{task}}
-
-[[Category:Puzzles]]
-[[Category:Games]]
-
-The [[wp:24 Game|24 Game]] tests one's mental arithmetic.
+## Description
 
 
-;Task
-Write a program that [[task feature::Rosetta Code:randomness|randomly]] chooses and [[task feature::Rosetta Code:user output|displays]] four digits, each from 1 ──► 9 (inclusive) with repetitions allowed.
+The [24 Game](https://en.wikipedia.org/wiki/24 Game) tests one's mental arithmetic.
 
-The program should prompt for the player to enter an arithmetic expression using ''just'' those, and ''all'' of those four digits, used exactly ''once'' each. The program should ''check'' then [[task feature::Rosetta Code:parsing|evaluate the expression]].
 
-The goal is for the player to [[task feature::Rosetta Code:user input|enter]] an expression that (numerically) evaluates to '''24'''.
+## Task
+Write a program that randomly chooses and displays four digits, each from 1 ──► 9 (inclusive) with repetitions allowed.
+
+The program should prompt for the player to enter an arithmetic expression using *just* those, and *all* of those four digits, used exactly *once* each. The program should *check* then evaluate the expression.
+
+The goal is for the player to enter an expression that (numerically) evaluates to **24**.
 *  Only the following operators/functions are allowed: multiplication, division, addition, subtraction
 *  Division should use floating point or rational arithmetic, etc, to preserve remainders.
 *  Brackets are allowed, if using an infix expression evaluator.
-*  Forming multiple digit numbers from the supplied digits is ''disallowed''. (So an answer of 12+12 when given 1, 2, 2, and 1 is wrong).
+*  Forming multiple digit numbers from the supplied digits is *disallowed*. (So an answer of 12+12 when given 1, 2, 2, and 1 is wrong).
 *  The order of the digits when given does not have to be preserved.
 
 
 
-;Notes
-* The type of expression evaluator used is not mandated. An [[wp:Reverse Polish notation|RPN]] evaluator is equally acceptable for example.
+## Notes
+* The type of expression evaluator used is not mandated. An [RPN](https://en.wikipedia.org/wiki/Reverse Polish notation) evaluator is equally acceptable for example.
 * The task is not for the program to generate the expression, or test whether an expression is even possible.
 
 
-;Related tasks
-* [[24 game/Solve]]
+## Related tasks
+* [24 game/Solve](/tasks/24 game/Solve)
 
 
-;Reference
-* [http://www.bbc.co.uk/dna/h2g2/A933121 The 24 Game] on h2g2.
+## Reference
+* [The 24 Game](http://www.bbc.co.uk/dna/h2g2/A933121) on h2g2.
 
 
 
@@ -170,7 +168,7 @@ start
 
 ## ABAP
 
-See [[24 game/ABAP]]
+See [24 game/ABAP](/tasks/24 game/ABAP)
 
 
 ## Ada
@@ -264,7 +262,7 @@ end Game_24;
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 24 Game
@@ -286,7 +284,7 @@ Value 30 is not 24!
 
 ## APL
 
-{{works with|Dyalog APL}}
+*Works with: Dyalog APL*
 
 ```APL
 tfgame←{⎕IO←1
@@ -299,7 +297,7 @@ tfgame←{⎕IO←1
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
       tfgame 4
@@ -318,7 +316,7 @@ nope
 
 ## Argile
 
-{{works with|Argile|1.0.0}}
+*Works with: Argile 1.0.0*
 
 ```Argile
 use std, array, list
@@ -757,7 +755,7 @@ Example:
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -1189,7 +1187,7 @@ int main()
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 Available digits are: 5 2 3 9. Type an expression and I'll check it for you, or make new numbers.
@@ -1212,17 +1210,17 @@ Your choice? [Expr/n/q] q
 Bye
 ```
 
-See [[24 game/C]]
+See [24 game/C](/tasks/24 game/C)
 
 
 ## C#
 
-See [[24 game/CSharp]]
+See [24 game/CSharp](/tasks/24 game/CSharp)
 
 
 ## C++
 
-{{works with|C++11}}
+*Works with: C++11*
 
 This uses the C++11 standard to simplify several parts of the code. Input is given in RPN format.
 
@@ -1329,7 +1327,7 @@ int main()
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -2500,7 +2498,7 @@ end program twentyfour.
 
 ## CoffeeScript
 
-{{works with|node.js}}
+*Works with: node.js*
 
 ```coffeescript
 tty = require 'tty'
@@ -2604,9 +2602,9 @@ process.stdin.resume()
 ```
 
 
-'''Verbose Implementation'''
+**Verbose Implementation**
 
-{{works with|clisp|2.47}}
+*Works with: clisp 2.47*
 
 ```lisp
 
@@ -2843,7 +2841,7 @@ Good job!
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3080,7 +3078,7 @@ public program()
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3155,7 +3153,7 @@ Game24.main
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -3282,7 +3280,7 @@ Your digits     [7,4,8,1]
 ```
 
 
-=={{header|F_Sharp|F#}}==
+## F_Sharp|F#
 
 ```fsharp
 open System
@@ -3393,7 +3391,7 @@ let gameLoop() =
 gameLoop()
 ```
 
-{{out}}
+### Output
 
 ```txt
 Compute 24 from the following 4 numbers: 3 3 3 5
@@ -3562,7 +3560,7 @@ end
 ### Clever implementation
 
 Indicate operator precedence by parentheses; e.g. (3+(5*6))-9. No whitespace is admissible.
-The program uses [[Insertion_sort#Fortran|Insertion_sort in Fortran]].
+The program uses [Insertion_sort in Fortran](/tasks/Insertion_sort#Fortran).
 
 ```Fortran
 program game_24
@@ -4011,7 +4009,7 @@ $
 
 ## FreeBASIC
 
-Solución en '''RPN''':
+Solución en **RPN**:
 
 ```freebasic
 
@@ -4128,7 +4126,7 @@ End
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -4157,7 +4155,7 @@ Correcto!
 
 ## GAP
 
-Solution in '''RPN''':
+Solution in **RPN**:
 
 ```gap
 Play24 := function()
@@ -4733,8 +4731,8 @@ main() {
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
-This plays the game of 24 using a simplified version of the code from the [[Arithmetic_evaluation#Icon_and_Unicon|Arithmetic evaluation]] task.
+## Icon and ## Unicon
+This plays the game of 24 using a simplified version of the code from the [Arithmetic evaluation](/tasks/Arithmetic_evaluation#Icon_and_Unicon) task.
 
 ```Icon
 invocable all
@@ -4798,10 +4796,10 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec and sortc]
+*Library: Icon Programming Library*
+[strings.icn provides deletec and sortc](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
-{{out}}
+### Output
 
 ```txt
 Welcome to 24
@@ -4848,19 +4846,19 @@ game24=: (respond input)@deal@rules
 
 Example use:
 
-    '''<nowiki>game24 ''</nowiki>'''
+    '*<nowiki>game24 *</nowiki>'''
  see <nowiki>http://en.wikipedia.org/wiki/24_Game</nowiki>
- enter 24 expression using 6 5 9 4: '''6+5+9+4'''
+ enter 24 expression using 6 5 9 4: **6+5+9+4**
  yes
-    '''<nowiki>game24 ''</nowiki>'''
+    '*<nowiki>game24 *</nowiki>'''
  see <nowiki>http://en.wikipedia.org/wiki/24_Game</nowiki>
- enter 24 expression using 3 3 3 3: '''3+3+3+3+3+3+3+3'''
+ enter 24 expression using 3 3 3 3: **3+3+3+3+3+3+3+3**
  no
 
 
 ## Java
 
-{{works with|Java|7}}
+*Works with: Java 7*
 
 ```java
 import java.util.*;
@@ -4928,7 +4926,7 @@ public class Game24 {
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Make 24 using these digits: [1, 2, 4, 8]
@@ -5035,7 +5033,7 @@ function twentyfour()
 end
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -5418,7 +5416,7 @@ Note: The program needs a writable disk in the active disk drive.
 
 ## Logo
 
-{{works with|UCB_Logo|5.5}}
+*Works with: UCB_Logo 5.5*
 
 ```logo
 ; useful constants
@@ -5497,7 +5495,7 @@ until [done] [
 bye
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -5678,7 +5676,7 @@ twentyfour()
 
 ## Maple
 
-Click [http://maplecloud.maplesoft.com/application.jsp?appId=5764927761416192  here] to try this game online.
+Click [here](http://maplecloud.maplesoft.com/application.jsp?appId=5764927761416192) to try this game online.
 
 ```maple
 play24 := module()
@@ -5767,7 +5765,7 @@ end module:
 play24();
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -5787,11 +5785,11 @@ GAME OVER
 
 ## Mathematica
 
-{{works with|Mathematica|6}}
+*Works with: Mathematica 6*
 
-Since Mathematica hasn't historically had good custom I/O support (the command-line allowed ''all'' operations, not very good for UI-generation), I had to roll some custom GUI (with a text box), which requires Mathematica 6.
+Since Mathematica hasn't historically had good custom I/O support (the command-line allowed *all* operations, not very good for UI-generation), I had to roll some custom GUI (with a text box), which requires Mathematica 6.
 
-Most of the job is already done by Mathematica (the expression conversion); in fact, it is ''too'' good&mdash;it automatically converts ex. 3/4 to Times[3, Power[4, -1]], which we have to specifically test for so that real powers don't get through.
+Most of the job is already done by Mathematica (the expression conversion); in fact, it is *too* good&mdash;it automatically converts ex. 3/4 to Times[3, Power[4, -1]], which we have to specifically test for so that real powers don't get through.
 
 
 ```Mathematica
@@ -5813,7 +5811,7 @@ Grid[{{Button[
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}==
+## MATLAB / ## Octave
 
 
 ```Matlab
@@ -5922,7 +5920,7 @@ print "Great job!"
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 Using only the digits [5, 5, 2, 7],
@@ -5982,8 +5980,8 @@ on *:DIALOG:24-Game:sclick:*: {
 ```
 
 
-=={{header|Modula-2}}==
-{{libheader|Ulm's Modula-2 Library}}
+## Modula-2
+*Library: Ulm's Modula-2 Library*
 
 ```modula2
 MODULE TwentyFour;
@@ -6725,9 +6723,9 @@ import: mapping
 
 ## ooRexx
 
-While the solution shown within this page at [[#rexx_version2|Rexx version 2]] was created for Classic Rexx it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
+While the solution shown within this page at [Rexx version 2](/tasks/#rexx_version2) was created for Classic Rexx it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
 
-Incompatibilities(*) that were originally in [[#rexx_version1|Rexx version 1]] were meanwhile "fixed", so it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
+Incompatibilities(*) that were originally in [Rexx version 1](/tasks/#rexx_version1) were meanwhile "fixed", so it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
 
 (*) Classic Rexx accepts assignment without an expression (x=;), ooRexx does not.
 
@@ -6918,7 +6916,7 @@ while (1) {
 ## Perl 6
 
 
-{{works with|Rakudo|2015.12}}
+*Works with: Rakudo 2015.12*
 
 ```perl6
 use MONKEY-SEE-NO-EVAL;
@@ -7282,7 +7280,7 @@ function play($numbers, $expression) {
    (prinl) )
 ```
 
-{{out}}
+### Output
 
 ```txt
 Please enter a Lisp expression using (, ), +, -, *, / and 1, 3, 3, 5
@@ -7504,7 +7502,7 @@ while (true):
 
 The "isNumeric" function was taken from the "Determine_if_a_string_is_numeric" task.
 
-todo: add a validation that all given digits were used. Right now the validation is that 4 digits should be used in the expression, but not exactly the ones given. (example: if you are given the digits 2, 2, 6, 9 this program accepts the following solution: 6 * '''4''' * 2 / 2)
+todo: add a validation that all given digits were used. Right now the validation is that 4 digits should be used in the expression, but not exactly the ones given. (example: if you are given the digits 2, 2, 6, 9 this program accepts the following solution: 6 * **4** * 2 / 2)
 
 
 ```powershell
@@ -7606,7 +7604,7 @@ if -b- /hasvalue y goto :a else exitcurrentprogram
 ```
 
 
-=={{Header|Prolog}}==
+## Prolog
 {{Works with|GNU Prolog}}
 
 ```prolog
@@ -7837,7 +7835,7 @@ If OpenConsole()
 EndIf
 ```
 
-{{out}}
+### Output
 
 ```txt
 The 24 Game
@@ -7861,7 +7859,7 @@ success:1 failure:1 total:2
 
 ## Python
 
-===Python: Original, with output===
+### Python: Original, with output
 Uses eval, the built-in expression evaluator of infix expressions.
 
 ```python
@@ -7936,7 +7934,7 @@ if __name__ == '__main__': main()
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -8537,9 +8535,9 @@ validate: parse arg y;      errCode= 0;         _v= verify(y, digs)
           return \errCode
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF,   so one is included here   ──►   [[CHANGESTR.REX]].
+Some older REXXes don't have a   **changestr**   BIF,   so one is included here   ──►   [CHANGESTR.REX](/tasks/CHANGESTR.REX).
 
-{{out|output|text=  of a sample execution:}}
+### output|text=  of a sample execution:
 
 ```txt
 
@@ -8569,7 +8567,7 @@ and version 1 (Gerard's) of the 24 game works,
 if translated that way and otherwise unchanged, on TSO. TSO supports the A=;
 For the sake of my 80 column CLIST PDS I had to split the few lines that are longer than that.
 
-'''Result:'''
+**Result:**
 
 ```txt
 
@@ -8763,7 +8761,7 @@ The solution below converts the infix notation to RPN and then calculates the re
 
 I am still new to Rust so i am certain it could be written in a shorter way.
 So if there is someone better than me please feel free to improve.
-{{libheader|rand}}
+*Library: rand*
 
 ```rust
 use std::io::{self,BufRead};
@@ -9038,7 +9036,7 @@ object TwentyFourGame {
 ```
 </div>
 
-{{out}}
+### Output
 
 ```txt
 
@@ -9074,7 +9072,7 @@ Thank you and goodbye!
 ## Scheme
 
 
-{{works with|PLT Scheme|4}}
+*Works with: PLT Scheme 4*
 
 This uses read to read in a scheme expression, and eval to evaluate it, so in that sense it's not ideal (eval is evil etc.) but any expression that is valid should be safe and terminate in a timely manner.
 
@@ -9147,7 +9145,7 @@ Please try again")
 ```
 
 
-{{out}}
+### Output
 
 ```txt
 
@@ -9224,7 +9222,7 @@ loop {
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -9542,7 +9540,7 @@ END.
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -9558,7 +9556,7 @@ ENTER RANDOM SEED:
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -9574,7 +9572,7 @@ MAKE 24 USING THESE DIGITS:  6 7 3 9
 
 ```
 
-{{out}}
+### Output
 
 ```txt
 
@@ -10011,7 +10009,7 @@ DO game
 
 ```
 
-{{out}}
+### Output
 <pre style='height:30ex;overflow:scroll'>
 Your numbers 2 8 9 9
 Use only these operators * / + - ( )
@@ -10456,7 +10454,7 @@ while(1){
 }
 ```
 
-{{out}}
+### Output
 
 ```txt
 
