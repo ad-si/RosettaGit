@@ -258,11 +258,11 @@ end
 
 class FoodBox(T)
   def initialize(@data : Array(T))
-    {% if T.union? %}
-    {% raise "All items should be eatable" unless T.union_types.all? &.has_method?(:eat) %}
-    {% else %}
-    {% raise "Items should be eatable" unless T.has_method?(:eat) %}
-    {% end %}
+    &lbrace;% if T.union? %}
+    &lbrace;% raise "All items should be eatable" unless T.union_types.all? &.has_method?(:eat) %}
+    &lbrace;% else %}
+    &lbrace;% raise "Items should be eatable" unless T.has_method?(:eat) %}
+    &lbrace;% end %}
   end
 end
 

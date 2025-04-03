@@ -7,6 +7,10 @@ public: static templates content config.toml
 	zola build
 
 
+.PHONY: build
+build: public
+
+
 .PHONY: serve  # Start the Zola development server
 serve:
 	zola serve
