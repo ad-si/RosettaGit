@@ -9,8 +9,6 @@ id = 11143
 categories = []
 tags = []
 +++
-
-{{language}}
 GNU MathProg is a modeling language intended for describing linear mathematical programming models.
 
 Model descriptions written in the GNU MathProg language consist of a set of

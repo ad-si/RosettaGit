@@ -10,6 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|PL/pgSQL
-|site=http://www.postgresql.org/docs/current/static/plpgsql.html}}
-PL/pgSQL (Procedural Language/PostgreSQL Structured Query Language) is a full featured procedural language supported by the PostgreSQL ORDBMS. It closely resembles Oracle's [[PL/SQL]] language.
+
+PL/pgSQL (Procedural Language/PostgreSQL Structured Query Language) is a full featured procedural language supported by the PostgreSQL ORDBMS. It closely resembles Oracle's [PL/SQL](https://rosettacode.org/wiki/PL/SQL) language.

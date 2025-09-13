@@ -10,8 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|Aquarius BASIC
-          |exec=interpreted
-          |tags=basic,aquariusbasic
-          }}
-{{Implementation|BASIC}}'''Aquarius BASIC''' refers to the more or less stripped-down releases of Microsoft BASIC for the Mattel/Radofin Aquarius.  The built-in ROM BASIC was seriously restricted since the system only included 4K of RAM by default; the optionally available Extended Microsoft BASIC that came on ROM cartridge was somewhat more generous.
+'''Aquarius BASIC''' refers to the more or less stripped-down releases of Microsoft BASIC for the Mattel/Radofin Aquarius.  The built-in ROM BASIC was seriously restricted since the system only included 4K of RAM by default; the optionally available Extended Microsoft BASIC that came on ROM cartridge was somewhat more generous.

@@ -10,18 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|zkl
-|site=http://www.zenkinetic.com/zkl.html
-|exec=bytecode
-|gc=yes
-|strength=strong
-|safety=safe
-|checking=dynamic
-|express=implicit
-|parampass=reference
-|hopl=no
-|tags=zkl
-}}
 zkl is a general purpose object oriented programming language.
 It is imperative but borrows concepts from many programming paradigms, including functional and prototype based.
 It is curly-bracketed, dynamic, reflective, and threaded.
@@ -34,8 +22,7 @@ The VM is written in C, it compiles with clang, GCC or VisualStudio (makefiles, 
 Running it is old school: command line or REPL, no IDE or GUI.
 Will work with emacs or vi! I use c mode.
 
-== External Links and References ==
-
+## External Links and References
 ###  Web Pages
 
 * [http://www.zenkinetic.com/zkl.html zkl home page]
@@ -46,5 +33,5 @@ Will work with emacs or vi! I use c mode.
 
 * [http://www.zenkinetic.com/Documents/zklManual.pdf The zkl programming language and reference manual (PDF)]
 
-==Todo==
-[[Reports:Tasks_not_implemented_in_Zkl]]
+## Todo
+[Reports:Tasks_not_implemented_in_Zkl](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Zkl)

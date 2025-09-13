@@ -9,7 +9,3 @@ id = 16463
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://maude.cs.uiuc.edu/}}

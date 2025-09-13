@@ -9,8 +9,6 @@ id = 11648
 categories = []
 tags = []
 +++
-
-{{language}}
 '''XPL0''' is essentially a cross between Pascal and C. It looks somewhat like Pascal but works more like C. It was originally created in 1976
 by Peter J. R. Boyle, who designed it to run on a 6502 microprocessor as
 an alternative to BASIC, which was the dominant language for personal

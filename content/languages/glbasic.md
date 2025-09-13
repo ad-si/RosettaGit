@@ -9,7 +9,3 @@ id = 11408
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.glbasic.com}}

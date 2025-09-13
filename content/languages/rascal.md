@@ -10,21 +10,11 @@ categories = []
 tags = []
 +++
 
-{{language|Rascal
-|site=http://www.rascal-mpl.org/
-|exec=interpreted
-|strength=strong
-|safety=safe
-|express=partially implicit
-|checking=dynamic
-|parampass=value
-|gc=yes
-}}
 
 Rascal is a [http://www.rascal-mpl.org/Rascal/RascalDomain domain specific] language for source code analysis and manipulation a.k.a. meta-programming. It is currently being developed and tested at [http://www.cwi.nl/ CWI]. No formal release has been made yet, but alpha quality "previews" are available on the [http://www.rascal-mpl.org/Rascal/Download Download] page.<ref name="The Rascal Project Website">http://www.rascal-mpl.org/</ref>
 [[Image:RascalLogo.png|200px|thumb|right|The Rascal logo]]
 
-==Why Rascal?==
+## Why Rascal?
 Rascal is a new language for ''meta-programming'', this is the activity of writing meta-programs<ref name="The Rascal Project Motivation">http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Motivation/Motivation.html</ref>. Using Rascal you create programs that read, analyse, transform, generate and/or visualize other programs.
 Meta-programs are programs that analyze, transform or generate other programs. Ordinary programs work on data; meta-programs work on programs.
 
@@ -70,7 +60,7 @@ Since representation of information is central to the approach, Rascal provides 
 #Rascal programs are not yet highly optimized so execution maybe slow for some programs.
 #At the time of writing, this checking is done during execution, but we are working on this.
 
-==Facts==
+## Facts
 Here's a list of facts<ref name="The Rascal Project Website Facts">http://www.rascal-mpl.org/Rascal/Facts</ref> about Rascal that you might find interesting:
 
 # Rascal is the successor of the [http://www.meta-environment.org/ ASF+SDF Meta-Environment].
@@ -82,5 +72,5 @@ Here's a list of facts<ref name="The Rascal Project Website Facts">http://www.ra
 # PDB.values was inspired (mostly) by the [http://www.meta-environment.org/Meta-Environment/ATerms ATerm library] and [http://www.meta-environment.org/twiki/login/Meta-Environment/RScript?origurl=%2FMeta-Environment%2FRScript RScript].
 # We used Rascal itself to transform its Java-based interpreter from the Visitor design pattern to the Interpreter design pattern automagically.
 
-==References==
+## References
 <references/>

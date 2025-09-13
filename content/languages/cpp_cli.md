@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language}}{{stub}}
+
 C++/CLI is a language created by Microsoft which extends C++ (similar to how C++ extends C) to support the CLI (.NET) framework.

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Nanoquery|exec=interpreted|site=http://cygnus-x.net/design/nq|strength=weak|gc=yes}}
 
-==See Also==
+
+## See Also
 * [http://cygnus-x.net/design/nq Nanoquery homepage]

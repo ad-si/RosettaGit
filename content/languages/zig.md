@@ -10,24 +10,12 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=https://ziglang.org/
-|exec=machine
-|gc=no
-|safety=unsafe
-|parampass=value
-|checking=static
-|compat=nominative
-|express=explicit
-|strength=strong
-|tags=zig
-}}{{language programming paradigm|Imperative}}
 
 '''Zig''' is an open-source programming language designed for robustness, optimality, and clarity.
 
 Zig is under active development at its [https://github.com/ziglang/zig Github repository]. Solutions for RosettaCode tasks can also be found in the [https://github.com/tiehuis/zig-rosetta zig-rosetta] repository.
 
-== Features ==
+## Features
 From the official website:
 
 * Manual memory management. Memory allocation failure is handled correctly. Edge cases matter!

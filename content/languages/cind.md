@@ -10,10 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Cind}}
-{{language
-|exec=machine
-}}{{language programming paradigm|Imperative}}
+
 Cind is a powerful programming language designed for concurrent programming.
 
 The language is quite advanced but semantics is very simple,

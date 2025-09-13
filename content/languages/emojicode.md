@@ -10,7 +10,3 @@ categories = []
 tags = []
 +++
 
-{{language|Emojicode
-|site=http://www.emojicode.org
-|exec=bytecode
-|tags=emojicode}}

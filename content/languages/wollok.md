@@ -9,9 +9,6 @@ id = 19167
 categories = []
 tags = []
 +++
-
-{{language}}
-
 Wollok is a programming language and environment for teaching OOP.
 It is currently under active development.
 

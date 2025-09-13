@@ -10,10 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|JudoScript
-|site=http://judoscript.org/judo.html}}
-[[runs on vm::java virtual machine| ]]
-'''JudoScript''' is a scripting language based atop of [[Java]].
+[](https://rosettacode.org/wiki/runs_on_vm::java_virtual_machine)
+'''JudoScript''' is a scripting language based atop of [Java](https://rosettacode.org/wiki/Java).
 
 From the website:
 

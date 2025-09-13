@@ -9,9 +9,4 @@ id = 17870
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.hacklang.org/}}
-
 '''Hack''' is a programming language developed by Facebook and can communicate seamlessly with PHP.

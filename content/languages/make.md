@@ -9,21 +9,19 @@ id = 2947
 categories = []
 tags = []
 +++
-
-{{language}}
-'''Make''' is one of the mini-languages of [[UNIX]].
+'''Make''' is one of the mini-languages of [UNIX](https://rosettacode.org/wiki/UNIX).
 
 It is Turing complete if recursive invocation is allowed.
 
-[[wp:Make (software)|Make]] is normally used to automate
+[Make](https://en.wikipedia.org/wiki/Make_(software)) is normally used to automate
 the process of building software-projects,
 
 i.e. the steps to compile, link, etc.
 
 ;Similar programs:
-* [[:Category:Apache Ant]]
-* [[:Category:CMake]]
+* [:Category:Apache Ant](https://rosettacode.org/wiki/:Category:Apache_Ant)
+* [:Category:CMake](https://rosettacode.org/wiki/:Category:CMake)
 * SCons
 
 
-[[Category:Utility]]
+[Category:Utility](https://rosettacode.org/wiki/Category:Utility)

@@ -9,10 +9,4 @@ id = 19768
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|
-site=http://vault.digitalmzx.net/index.php
-}}
-
-Robotic is a [[programming language]] for the game creation system titled [[wp:MegaZeux|MegaZeux]]. It is a simple language that is used for Robots placed within a MegaZeux world. Some of the few features for this language include the use of subroutines, arithmetic expressions, strings, counters (variables), etc.
+Robotic is a [programming language](https://rosettacode.org/wiki/programming_language) for the game creation system titled [MegaZeux](https://en.wikipedia.org/wiki/MegaZeux). It is a simple language that is used for Robots placed within a MegaZeux world. Some of the few features for this language include the use of subroutines, arithmetic expressions, strings, counters (variables), etc.

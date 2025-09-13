@@ -10,13 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|site=http://ezhillang.org/
-|parampass=value
-|strength=strong
-|checking=dynamic}}
-'''Ezhil''' is a Tamil programming language with a syntax similar to [[BASIC]]. It is designed to help Tamil-speaking people learn programming.
+'''Ezhil''' is a Tamil programming language with a syntax similar to [BASIC](https://rosettacode.org/wiki/BASIC). It is designed to help Tamil-speaking people learn programming.
 
-==See also==
-[[wp:Ezhil programming language|Wikipedia article]]
+## See also
+[Wikipedia article](https://en.wikipedia.org/wiki/Ezhil_programming_language)

@@ -10,15 +10,12 @@ categories = []
 tags = []
 +++
 
-{{language|Brainfuck|bnf=http://ninh.nl/blog/2008/10/25/brainfck-birds-of-a-feather-session-take-2/}}
-Also known as '''Brainfuck''', but identified as '''Brainfuck''' for reasons described [[Rosetta Code:Brainfuck|here]].
-
 Created by Urban Müller in 1993 in an attempt to create the world's smallest Turing-complete compiler.
-It is noted as an [[:Category:Esoteric_Languages|esoteric programming language]],
+It is noted as an [esoteric programming language](https://rosettacode.org/wiki/:Category:Esoteric_Languages),
 as it is not ordinarily used for applications development,
 but it also noted as being a minimalist language.
 
-The construction of the language is similar to a [[wp:Turing Machine|Turing Machine]].
+The construction of the language is similar to a [Turing Machine](https://en.wikipedia.org/wiki/Turing_Machine).
 
 As with the Turing Machine, Brainfuck is built from a finite state machine and an infinite tape of cells.
 Each cell can be any size, including unbounded, but is frequently an eight bit byte.
@@ -75,16 +72,61 @@ Due to this minimal instruction set, Brainfuck is used as an introduction to com
 BUT due to vehement opposition to the name [http://esolangs.org/wiki/Cupid various] [http://esolangs.org/wiki/Category:Brainfuck_equivalents equivalents] are frequently used.
 
 
-==See also==
-* [[Rosetta Code:Brainfuck]]  ( why some people call it BF :)
-* [[RCBF]] - BF interpreters as a Rosetta Code task
+## See also
+* [Rosetta Code:Brainfuck](https://rosettacode.org/wiki/Rosetta_Code:Brainfuck)  ( why some people call it BF :)
+* [RCBF](https://rosettacode.org/wiki/RCBF) - BF interpreters as a Rosetta Code task
 
-==Citations==
-
-* [[eso:Brainfuck|Esoteric languages wiki entry]]
-*[[wp:Brainfuck|Wikipedia entry on Brainfuck]]
+## Citations
+* [Esoteric languages wiki entry](https://rosettacode.org/wiki/eso:Brainfuck)
+*[Wikipedia entry on Brainfuck](https://en.wikipedia.org/wiki/Brainfuck)
 * [http://dmoz.org/Computers/Programming/Languages/Brainfuck/ DMOZ Brainfuck category]
 * [http://www.iwriteiam.nl/Ha_BF.html Brainfuck tutorial]
 
 
-[[Category:Esoteric_Languages]]
+[Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)
+
+
+## Merged content
+'''Dbfi''' is a [brainfuck](https://rosettacode.org/wiki/brainfuck) self-interpreter written by [Daniel B. Cristofani](https://rosettacode.org/wiki/Daniel_B._Cristofani) [http://www.hevanet.com/cristofd/dbfi.b] and described in detail in [http://arxiv.org/abs/cs/0311032v1]. This is the shortest known brainfuck self-interpreter and possibly the shortest self-interpreter amongst all imperative languages. Note that a big part of dbfi code is devoted to ASCII decoding, comment handling, and avoiding undefined behaviour. Removing this would reduce the size to nearly half.
+ >>>+[[-]>>[-]++>+>+++++++[<++++>>++<-]++>>+>+>+++++[>++>++++++<<-]+>>>,<++[[>[
+ ->>]<[>>]<<-]<[<]<+>>[>]>[<+>-[[<+>-]>]<[[[-]<]++<-[<+++++++++>[<->-]>>]>>]]<<
+ ]<]<[[<]>[[>]>>[>>]+[<<]<[<]<+>>-]>[>]+[->>]<<<<[[<<]<[<]+<<[+>+<<-[>-->+<<-[>
+ +<[>>+<<-]]]>[<+>-]<]++>>-->[>]>>[>>]]<<[>>+<[[<]<]>[[<<]<[<]+[-<+>>-[<<+>++>-
+ [<->[<<+>>-]]]<[>+<-]>]>[>]>]>[>>]>>]<<[>>+>>+>>]<<[->>>>>>>>]<<[>.>>>>>>>]<<[
+ >->>>>>]<<[>,>>>]<<[>+>]<<[+<<]<]
+
+Dbfi inspired Clive Gifford to write the fastest Brainfuck self-interpreter (since dbfi is the shortest, but not the fastest) [http://eigenratios.blogspot.com/2006/12/very-fast-brainfck-self-interpreter.html]. Its compressed version is
+ >>>>>+[->>++>+>+++++++[<++++>>++<-]++>>+>+>+++++[>++>++++++<<-]+>>>,<++[[>[->>
+ ]<[>>]<<-]<[<]<+>>[>]>[<+>-[[<+>-]>]<[[[-]<]++<-[<+++++++++>[<->-]>>]>>]]<<]>[
+ -]+<<[--[[-]>>->+<<<]>>[-<<<<[>+<-]>>>>>>+<]<<]>>[-]<<>>>[<<<+>>>-]<<<]>>>+<<<
+ <[<<]>>[[<+>>+<-]+<-[-[-[-[-[-[-[->->>[>>]>>[>>]<+<[<<]<<[<<]<]>[->>[>>]>>[>>]
+ <,<[<<]<<[<<]]<]>[->>[>>]>>[>>]<-<[<<]<<[<<]]<]>[->>[>>]>>[>>]<.<[<<]<<[<<]]<]
+ >[->>[>>]>>[>>]<<-<<[<<]<<[<<]]<]>[->>[>>]>>[>>]+[<<]<<[<<]]<]>[->>[>>]>>[>>]<
+ [>+>>+<<<-]>[<+>-]>>[<<+>>[-]]+<<[>>-<<-]>>[<<+>>>>+<<-]>>[<<+>>-]<<[>>+<<-]+>
+ >[<<->>-]<<<<[-<<[<<]<<[<<]<<<<<++>>]>>[-<<<<<<[<<]<<[<<]<]>]<]>[->>[>>]>>[>>]
+ <[>+>>+<<<-]>[[<+>-]>>[-]+<<]>>[<<+>>>>+<<-]>>[<<+>>-]<<[>>+<<-]+>>[<<->>-]<<<
+ <[-<<[<<]<<[<<]<<<<<+>>]>>[-<<<<<<[<<]<<[<<]<]>]>[<+>-]<<<<<<[>>+<<-[->>->>+[>
+ >>[-<+>>+<]+<-[-[[-]>[-]<]>[-1<<<+>>>]<]>[-<<<->>>]>[-<+>]<<<<[>>+<<-]>>]<<<<<
+ <]>>[-<<+[>>>[-<+>>+<]+<-[-[[-]>[-]<]>[-1<<<->>>]<]>[-<<<+>>>]>[-<+>]<<<<[<<+>
+ >-]<<]]]>>>>>>>]
+Below is relative comparison of time to run a simple program with a stack of two self-interpreters.
+{| class="wikitable"
+|-
+| '''Lower SI''' || '''Upper SI''' || '''Time'''
+|-
+| cgbfi || cgbfi || 9.1
+|-
+| cgbfi || dbfi || 7.0
+|-
+| dbfi || cgbfi || 35.0
+|-
+| dbfi || dbfi || 21.3
+|-
+|}
+Here cgbfi stands for Clive Gifford Brainfuck Interpreter. Time is given in seconds, which does not matter, because only relative values are important.
+
+The second line shows faster result because DBFI is shorter than CGBSI, and this outweighs the speed benefit of the faster self-interpreter used in the second level in the stack of interpreters. The short program used for the comparison is
+ >+>+>+>+>++<[>[<+++>-]<<]> [>+>+<<-]>[-]>.!
+and the interpreter [http://mazonka.com/brainf/bff4.c bff4.c].
+
+Content is available under [http://creativecommons.org/publicdomain/zero/1.0/ CC0 public domain dedication] via [http://esolangs.org/wiki/Dbfi the esolang wiki].

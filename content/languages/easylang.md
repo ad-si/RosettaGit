@@ -10,14 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|site=https://easyprog.online
-|safety=safe
-|express=explicit
-|strength=strong
-|tags=Beginner, Online
-|gc=no}}
 
 '''[https://easylang.online/ easylang.online]''' is a (beginners) programming language with a simple syntax and built-in commands for graphics output.
 

@@ -9,15 +9,7 @@ id = 2828
 categories = []
 tags = []
 +++
+'''V''' is a simple, stack-based (concatenative), dynamic language. It is similar to [Joy](https://rosettacode.org/wiki/Joy) and [PostScript](https://rosettacode.org/wiki/PostScript).
 
-{{language|V
-|strength=strong
-|safety=safe
-|checking=dynamic
-|site=http://code.google.com/p/v-language/
-|LCT=yes}}
-{{language programming paradigm|concatenative}}
-'''V''' is a simple, stack-based (concatenative), dynamic language. It is similar to [[Joy]] and [[PostScript]].
-
-==References==
-* [[wp:V_(programming_language)|Wikipedia:V]]
+## References
+* [Wikipedia:V](https://en.wikipedia.org/wiki/V_(programming_language))

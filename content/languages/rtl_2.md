@@ -11,26 +11,16 @@ tags = []
 +++
 
 <!-- page extracted from wikipedia: http://en.wikipedia.org/wiki/RTL/2 -->
-{{wikipedia|RTL/2}}
-{{language|ALGOL 68
-|parampass=both
-|strength=weak
-|safety=safe
-|express=explicit
-|compat=structural
-|checking=both
-|LCT=yes}}
+RTL/2 was a high-level programming language developed at [Imperial Chemical Industries Ltd](https://en.wikipedia.org/wiki/Imperial_Chemical_Industries) by [J.G.P. Barnes](https://en.wikipedia.org/wiki/John_Barnes_(computer_scientist)). It was originally used internally within ICI but was distributed by SPL International in 1974<ref>Barnes J.G.P., The Standardisation of RTL/2, Software Practice and Experience, Volume 10 Issue 9, pp 707 - 719, Wyley, September 1980</ref>
+It was designed for use in real-time computing (hence the acronym RTL = real-time language). Based on concepts from [Algol 68](https://rosettacode.org/wiki/Algol_68), it was intended to be a small, simple language.<ref>RTL/2 Language Specification</ref><ref>http://hopl.murdoch.edu.au/showlanguage2.prx?exp=596#_jmp0_</ref> RTL/2 was standardised in 1980 by the [British Standards Institution](https://en.wikipedia.org/wiki/British_Standards_Institution)<ref>http://shop.bsigroup.com/en/ProductDetail/?pid=000000000000133906</ref>.
 
-RTL/2 was a high-level programming language developed at [[wp:Imperial Chemical Industries|Imperial Chemical Industries Ltd]] by [[wp:John Barnes (computer scientist)|J.G.P. Barnes]]. It was originally used internally within ICI but was distributed by SPL International in 1974<ref>Barnes J.G.P., The Standardisation of RTL/2, Software Practice and Experience, Volume 10 Issue 9, pp 707 - 719, Wyley, September 1980</ref>
-It was designed for use in real-time computing (hence the acronym RTL = real-time language). Based on concepts from [[Algol 68]], it was intended to be a small, simple language.<ref>RTL/2 Language Specification</ref><ref>http://hopl.murdoch.edu.au/showlanguage2.prx?exp=596#_jmp0_</ref> RTL/2 was standardised in 1980 by the [[wp:British Standards Institution|British Standards Institution]]<ref>http://shop.bsigroup.com/en/ProductDetail/?pid=000000000000133906</ref>.
-
-RTL/2 was a [[wp:Weakly-typed programming language|weakly typed language]] with separate compilation. The [[wp:compilation unit|compilation units]] contained one or more items known as "bricks", i.e.:
+RTL/2 was a [weakly typed language](https://en.wikipedia.org/wiki/Weakly-typed_programming_language) with separate compilation. The [compilation units](https://en.wikipedia.org/wiki/compilation_unit) contained one or more items known as "bricks", i.e.:
 
 * procedure bricks,
 * data bricks,
 * stack bricks.
 
-A procedure brick was a procedure, which may or may not return a (scalar) value, have (scalar) parameters, or have local (scalar) variables. The entry mechanism and implementation of local variables was [[wp:Reentrant_(subroutine)|re-entrant]]. Non-scalar data could only be accessed via reference (so-called REF variables were considered scalar).
+A procedure brick was a procedure, which may or may not return a (scalar) value, have (scalar) parameters, or have local (scalar) variables. The entry mechanism and implementation of local variables was [re-entrant](https://en.wikipedia.org/wiki/Reentrant_(subroutine)). Non-scalar data could only be accessed via reference (so-called REF variables were considered scalar).
 
 A data brick was a named static collection of scalars, arrays and records. Programmers had to implement memory management themselves (there was no heap or garbage collection).
 
@@ -38,8 +28,7 @@ A stack brick was an area of storage reserved for running all the procedures of 
 
 Access to the host environment of an RTL/2 program was provided via special procedure and data bricks called SVC procedures and SVC data. These were accessible in RTL/2 but implemented in some other language in the host environment.
 
-== Dropping into Assembler ==
-
+## Dropping into Assembler
 RTL/2 compiles to assembly language and provides the CODE statement to permit assembly language to be inserted directly into RTL/2 programs. This is only available when compiled with a systems programming option (CN:F)
 
 The Code statement takes two operands: the number of bytes used by the code insert and the number of bytes of stack used.
@@ -47,7 +36,7 @@ The Code statement takes two operands: the number of bytes used by the code inse
 Within code statements two trip characters are used to access RTL/2 variables. These vary from operating system to operating system.
 On PDP-11 and VAX/VMS the trip characters are '*' and '/'
 
-While the specifics varied by operating system the following is an example of a code insert on [[wp:VAX/VMS|VAX/VMS]]:
+While the specifics varied by operating system the following is an example of a code insert on [VAX/VMS](https://en.wikipedia.org/wiki/VAX/VMS):
 
 :<tt>CODE    6,0;</tt>
 :<tt>JMP CODE_ENT ; This code insert can be set to a fixed length as it jumps to a new psect.</tt>
@@ -64,7 +53,7 @@ While the specifics varied by operating system the following is an example of a 
 
 This code insert moves the value of a variable passed into the RTL/2 procedure into a variable called COUNTER in a data brick called MYDATA.
 
-== Reserved Words ==
+## Reserved Words
 ABS
 AND
 ARRAY
@@ -122,8 +111,7 @@ TO
 VAL
 WHILE
 
-== References==
-
+## References
 ###  SPL Documentation
 
 
@@ -139,8 +127,4 @@ SPL published a range of documentation for RTL/2. Each of these documents had a 
  RTL/2 Ref 63 - User Manual for the PDP-11 under RSX-11M
  RTL/2 Ref 107- VAX/VMS RTL/2 User Manual
  RTL/2 REF 130- The RTL/2 32 bit run time environment on the VAX
-{{Reflist}}
-
-== Code Specimen ==
-{{language programming paradigm|Imperative}}
-{{stub}}
+## Code Specimen

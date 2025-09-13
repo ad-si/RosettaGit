@@ -10,11 +10,9 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|min}}
+
 min is a minimalistic, concatenative, functional stack language.
 
-==Links==
+## Links
 *[https://min-lang.org/ min website]
 *[https://min-lang.org/learn/ Learn min]
-
-{{Language programming paradigm|Concatenative}}

@@ -10,14 +10,8 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Curry
-|site=http://www-ps.informatik.uni-kiel.de/currywiki/
-}}
-{{language programming paradigm|Declarative}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|Logic_Programming}}
 
 Curry is a functional logic programming language, based on the Haskell language.
 
-==See Also==
-*[[wp:Curry_(programming_language)|Wikipedia:Curry (programming language)]]
+## See Also
+*[Wikipedia:Curry (programming language)](https://en.wikipedia.org/wiki/Curry_(programming_language))

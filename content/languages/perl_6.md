@@ -9,24 +9,7 @@ id = 4503
 categories = []
 tags = []
 +++
-
-{{language|Perl 6
-|site=http://perl6.org/
-|checking=both
-|gc=yes
-|strength=gradual
-|safety=both
-|compat=Nominative, Duck
-|parampass=both
-|tags=perl6}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|imperative}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|reflective}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|generic}}
-{{infobox_begin}}Can't install Perl 6 locally?
+Can't install Perl 6 locally?
 Try Perl 6 on-line!
 
 [https://perl6.github.io/6pad/ Try Perl 6 on 6pad].
@@ -34,9 +17,8 @@ Try Perl 6 on-line!
 [https://tio.run/#perl6 Try Perl 6 on tio.run].
 
 [https://glot.io/new/perl6 Try Perl 6 on glot.io].
-{{infobox_end}}
 Perl 6 is the up-and-coming little sister to Perl 5.
-Though it resembles previous versions of [[Perl]] to no small degree, Perl 6 is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
+Though it resembles previous versions of [Perl](https://rosettacode.org/wiki/Perl) to no small degree, Perl 6 is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
 The first official release was at Christmas of 2015.
 
 Damian Conway described the basic philosophy of Perl 6 as follows:

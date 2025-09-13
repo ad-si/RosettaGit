@@ -10,28 +10,12 @@ categories = []
 tags = []
 +++
 
-{{language|M2000 Interpreter
-|exec=interpreted
-|site=https://georgekarras.blogspot.com/}
-|strength=both
-|checking=dynamic
-|parampass=both
-|express=both
-|compat=duck
-|gc=allowed
-}}
-M2000 is an interpreter running on its own Environment written in Visual Basic 6, as an open source project and can be found in GitHub[https://github.com/M2000Interpreter/Version9]. Current version is 9.8, revision 29. See [[M2000 Interpreter Implementation]]
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|Object-oriented}}
-{{Language programming paradigm|Event-driven}}
-{{language programming paradigm|Functional}}
-{{Language programming paradigm|Concurrent}}
-
+M2000 is an interpreter running on its own Environment written in Visual Basic 6, as an open source project and can be found in GitHub[https://github.com/M2000Interpreter/Version9]. Current version is 9.8, revision 29. See [M2000 Interpreter Implementation](https://rosettacode.org/wiki/M2000_Interpreter_Implementation)
 M2000 has two set of vocabularies, one with English identifiers and one with Greek identifiers. We can mix languages, but not if some identifiers are part of a statement in non matching language.
 
 
 M2000 start as an experimental interpreted language, using a Module in Module idea (like a Procedure in Procedure) where each inner Module is closed for modification, but open for expansion, by replacing code at run time. Code executed in one pass. There is a low range pass to determine the major type of an expression, a number or a string. Look this paradigm: We call inner Beta in two stages. At the second stage we change inner Theta with Theta2. This is the decoration of Beta with Theta as Theta2. This is a temporary decoration because Beta after execution erase any new identifier including Theta. So each time we call Beta, statement Module Theta make this module unless a decoration stop it.
-==English Vocabulary==
+## English Vocabulary
 <lang >Module Beta {
       Module Theta (x){
             Print "This is Theta, we get x=";x
@@ -45,7 +29,7 @@ Module Theta2 (x) {
 Beta ; Theta as Theta2
 ```
 
-==Greek Vocabulary==
+## Greek Vocabulary
 <lang >Τμήμα Βήτα {
       Τμήμα Θήτα (χ){
             Τύπωσε "Αυτό είναι το Θήτα, θα πάρουμε το χ=";χ

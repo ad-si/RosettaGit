@@ -9,30 +9,16 @@ id = 1860
 categories = []
 tags = []
 +++
-
-{{language|Smalltalk
-|exec=bytecode
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|parampass=value
-|gc=yes
-|LCT=yes
-|bnf=http://github.com/aquasync/ruby-ometa/blob/60deea23abe7eb07d200233dde4213d74041b81f/smalltalk.syntax}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|reflective}}
-{{language programming paradigm|Dynamic}}
-'''Smalltalk-80''' is an [[object-oriented programming|object-oriented]], dynamically typed, [[reflective programming]] language. It was designed and created in part for educational use, more so for Constructivist teaching, at Xerox PARC by Alan Kay, Dan Ingalls, Ted Kaehler, Adele Goldberg, and others during the 1970s, influenced by Sketchpad and Simula.
+'''Smalltalk-80''' is an [object-oriented](https://rosettacode.org/wiki/object-oriented_programming), dynamically typed, [reflective programming](https://rosettacode.org/wiki/reflective_programming) language. It was designed and created in part for educational use, more so for Constructivist teaching, at Xerox PARC by Alan Kay, Dan Ingalls, Ted Kaehler, Adele Goldberg, and others during the 1970s, influenced by Sketchpad and Simula.
 
 The language was generally released as Smalltalk-80 and has been widely used since. Smalltalk-like languages are in continuing active development, and has gathered a loyal community of users around it.
 
 '''Smalltalk-80''' is a fully reflective system, implemented in itself. Smalltalk-80 provides both structural and computational reflection. Smalltalk is a structurally reflective system whose structure is defined by Smalltalk-80 objects. The classes and methods that define the system are themselves objects and fully part of the system that they help define. The Smalltalk compiler compiles textual source code into method objects, typically instances of <code>CompiledMethod</code>. These get added to classes by storing them in a class's method dictionary. The part of the class hierarchy that defines classes can add new classes to the system. The system is extended by running Smalltalk-80 code that creates or redefines classes and methods. In this way a Smalltalk-80 system is a "living" system, carrying around the ability to extend itself at run-time.
 
-==Implementations==
+## Implementations
 Over time, various implementations ("dialects") of Smalltalk have appeared, some of which target different audiences and/or focus on particular applications. Their internal implementation (evaluation mechanism) may also differ radically, from bytecode interpretation, just-in-time compilation, dynamic optimizing recompilation to cross-language translators (Smalltalk-to-C, Smalltalk-to-JavaScript, Smalltalk-to-Java).
 
-==Spirit==
+## Spirit
 Smalltalk consist of both the programming language and a more or less standardized library of classes. Most Smalltalks also include a sophisticated IDE, which supports editing, compiling, refactoring, debugging, tools, source code revisioning and packaging/deployment. With a few exceptions, working in a traditional editor (vi, emacs) or general purpose IDE (eclipse) is usually not recommended, as these cannot make use of all the reflective and dynamic coding features and will make the programmer less productive. For example, typical Smalltalk debuggers allow for code to be changed while the program is running (or halted at a breakpoint), allowing for a "programming in the debugger" style of coding. Code is usually developed and tested incrementally, with breakpoints on unimplemented parts, which are filled as encountered. This makes Smalltalk a perfect environment for rapid prototyping and experimental development.
 
 Smalltalk environments are open - almost every aspect of the language and IDE can be changed, enhanced and customized. This includes object representation, metaclass and reflection facilities, language syntax, exception handling and the IDE itself. For this reason, Smalltalk has traditionally been a testbed for new language features, mechanisms and patterns.
@@ -41,7 +27,7 @@ Smalltalk is a very high level language, which almost completely hides any under
 
 Smalltalk is a very late bound language. Object types, classes, references etc. are resolved at execution time, and can be dynamically changed.
 
-==Language Syntax==
+## Language Syntax
 Smalltalk has a very simple and highly orthogonal syntax, which is based exclusively on message sending (aka pure virtual function calling in C-parlance). The language syntax and semantic only consists of literal (compile-time) constants, variable bindings, message sends and block closures (lambda expression objects). Control flow, loop constructs, exception handling etc. are defined as messages to booleans, blocks or by passing blocks as arguments. This makes it trivial and common practice to add new control constructs.
 
 
@@ -49,9 +35,7 @@ Smalltalk has a very simple and highly orthogonal syntax, which is based exclusi
 
 ... to be added ... (for now follow the link at the right...)
 
-== Language Semantic ==
-
-
+## Language Semantic
 ###  Variables and Scope
 
 Variables are used to name objects. Actually they are bindings of a name to an object. Objects can only be passed and used by reference, and access to an object's internals is not possible from outside the object's own method implementation, although most classes inherit from Object, which provides some reflection protocol to access instance variables or to query for the class. However, such inherited reflection mechanisms could be overwritten in a class or a class could not inherit from Object, to prevent even access from debuggers and inspectors.
@@ -128,7 +112,7 @@ In contrast to most other exception handling systems, Smalltalk exceptions are b
 
 The exception framework is implemented as part of the class library, and open for change and enhancement.
 
-== Examples ==
+## Examples
 As smalltalk code seems to be hard to read for programmers with a C background, some examples are provided below.
 
 ###  Literals
@@ -175,8 +159,7 @@ $a "character constant"
 ```
 
 
-===Special "builtin" Pseudo Veriables===
-
+### Special "builtin" Pseudo Veriables
 ```smalltalk
 
 self "refers to the current receiver"
@@ -356,7 +339,7 @@ They are named "Process" and created with "fork" in Smalltalk for historic reaso
 
 The scheduling behavior is not standard among dialects/implementations. Some only manual switch by explicit yield, most provide sctrict priority based scheduling, and some even provide preemtive timeslicing, and dynamic priorities. The details may also depend on the underlying operating system.
 
-== Implementation ==
+## Implementation
 Most Smalltalk implementations are based on a bytecode execution engine. Bytecode is emitted and stored in method objects by a compiler which is part of both the development and runtime environment (in contrast to external tools, like javac). Thus new methods can be generated and installed dynamically by reading scripts or a generator. Bytecodes are operations for a virtual stack based machine, which is either interpreted by an interpreter (part of the runtime system), or dynamically compiled to machine code (JITTER). Bytecode is not standardized and usually not compatible among dialects.
 
 Some implementations support source-to-source compilation to C, JavaScript or Java. These may or may not show some limitations in the support for dynamic changes at execution time. Typically, the full dynamic bytecode is used for development, followed by a compilation phase for deployment/packaging.
@@ -366,7 +349,7 @@ All Smalltalks use and depend on garbage collection for automatic reclamation of
 As message send performance is critical in Smalltalk, highly tuned cache mechanisms have been invented and are used: inline caches, polymorph inline caches, dynamic recompilation based on receiver and/or argument types etc.
 Also block (aka lambda) creation and evaluation, especially the treatment of closed over variables has been in the focus of implementors. Algorithms similar to those found in sophisticated Lisp systems such as lambda lifting, inlining, stack allocation and heap migration etc. are also used in Smalltalk.
 
-== Influences ==
+## Influences
 Smalltalk syntax is meant to be read like english sentences.
 
 The syntax is very compact and almost every semantic feature is implemented via a messsage send to some receiver object, instead of being a syntactic language feature of the compiler. As such, changes, fixes and enhancements of such features can be made easily. It has and is therefore often used as a testbed for research,
@@ -385,8 +368,7 @@ Newspeak generalizes the scoping to include nested classes, namespace instantiat
 
 JavaScript's functions are a syntactic different but semantically equal to Smalltalk's blocks, including scoping rules (but lack the capability of returning from their containing function).
 
-==Implementations==
-
+## Implementations
 * Amber Smalltalk
 * Dolphin Smalltalk; open source
 * GemStone/S; object-oriented Smalltalk database, free for private and commercial use
@@ -399,5 +381,5 @@ JavaScript's functions are a syntactic different but semantically equal to Small
 * VisualAge Smalltalk (Instantiations; formerly known as IBM Smalltalk); free for private use
 * VisualWorks (Cincom) Smalltalk; free for private use
 
-==Citations==
-* [[wp:SmallTalk|Wikipedia:Smalltalk]]
+## Citations
+* [Wikipedia:Smalltalk](https://en.wikipedia.org/wiki/SmallTalk)

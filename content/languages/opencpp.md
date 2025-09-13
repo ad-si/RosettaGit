@@ -9,15 +9,9 @@ id = 6797
 categories = []
 tags = []
 +++
+OpenC++ is a version of [C++](https://rosettacode.org/wiki/C++) with a Metaobject Protocol. In other words, it is a tool of source-code translation for [C++](https://rosettacode.org/wiki/C++). Programmers can easily implement various kinds of translation so that they can define new syntax, new annotation, and new object behavior.
 
-{{stub}}
-{{language|OpenC++
-|site=http://opencxx.sourceforge.net/
-}}
-
-OpenC++ is a version of [[C++]] with a Metaobject Protocol. In other words, it is a tool of source-code translation for [[C++]]. Programmers can easily implement various kinds of translation so that they can define new syntax, new annotation, and new object behavior.
-
-==See Also==
+## See Also
 *[http://www.csg.is.titech.ac.jp/~chiba/openc++.html Chiba's OpenC++ Page]
-*[[wp:OpenC%2B%2B|Wikipedia: OpenC++]]
+*[Wikipedia: OpenC++](https://en.wikipedia.org/wiki/OpenC%2B%2B)
 *[http://www.codeproject.com/KB/library/opencxx.aspx OpenC++ - A C++ Metacompiler and Introspection Library at The Code Project]

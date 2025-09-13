@@ -9,18 +9,13 @@ id = 21605
 categories = []
 tags = []
 +++
-
-{{language|Lamdatalk}}
-
-
 The {lambda way} project is a web application built on two engines:
 
 1)  {lambda tank}, a tiny wiki built as a thin overlay on top of any web browser,
 
 2)  {lambda talk}, a purely functional language unifying authoring, styling and scripting in a single and coherent s-expression based syntax.
 
-=={lambda talk} in a few words==
-
+## {lambda talk} in a few words
 1) Expressions are written in a prefix notation using curly braces.
 
 2) Away from curly braces words are just words.
@@ -37,12 +32,10 @@ The {lambda way} project is a web application built on two engines:
   {foo 2 3}
   -> 2+3 is equal to 5
 
-==more about {lambda talk}==
-
+## more about {lambda talk}
 {lambda talk} is freely inspired by the '''λ-calculus'''. At the lowest level a {lambda talk} expression is exclusively made of words, abstractions and applications:
 
-===structure & evaluation===
-
+### structure & evaluation
   expression is [word|abstraction|application]*
     where
   1) word        is [^\s{}]*                      -> word
@@ -159,8 +152,7 @@ Upon these foundations, after '''Alonzo Church''', we could define the set of na
       }} :g :n}} :n}} FIVE}}
   -> 120
 
-=={lambda talk} full==
-
+## {lambda talk} full
 In fact, {lambda talk} takes benefit from the extraordinary power of modern web browsers and simply adds a coherent and unique language on existing tools.
 
 In its complete state, {lambda talk} comes with a more complete set of special forms, [lambda, def, if, let, quote, macro, require, script, style], and a dictionary containing about 200 primitive functions built on the Javascript Math Object, HTML tags, CSS rules, SVG, the DOM and more, pairs, lists, arrays, light-show, spreadsheet, splines, turtle graphics, big numbers, ... and some other specific to the wiki context. Example:

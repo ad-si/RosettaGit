@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 PL/M (Programming Language for Microcomputers) is (as the name suggests) a language designed for microcomputer software, particularly system software.
 
@@ -61,6 +61,6 @@ Compilers were available for a number of microprocessors including the 8080 Z80.
 
 
 
-==See Also==
-* [[wp:PL/M|Wikipedia page on PL/M]]: [https://en.wikipedia.org/wiki/PL/M]
-* [[PL/1]]
+## See Also
+* [Wikipedia page on PL/M](https://en.wikipedia.org/wiki/PL/M): [https://en.wikipedia.org/wiki/PL/M]
+* [PL/1](https://rosettacode.org/wiki/PL/1)

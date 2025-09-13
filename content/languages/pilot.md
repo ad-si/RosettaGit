@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|PILOT}}
+
 'Programmed Instruction, Learning Or Teaching' is an imperative educational language developed in the 1960s by John A. Starkweather at the University of California, San Francisco. It is designed to make it very easy to write interactive classroom tests or quizzes:
 
 ```pilot

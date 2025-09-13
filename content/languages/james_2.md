@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language}}Implemented as part of the [[JAMES II]] framework.{{stub}}
+Implemented as part of the [JAMES II](https://rosettacode.org/wiki/JAMES_II) framework.

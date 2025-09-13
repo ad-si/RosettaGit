@@ -9,25 +9,7 @@ id = 16927
 categories = []
 tags = []
 +++
-
-{{language
-|exec=interpreted
-|strength=weak
-|express=implicit
-|checking=dynamic
-|compat=duck
-|parampass=reference
-|gc=yes
-|site=http://github.com/trizen/sidef
-|tags=ruby
-|LCT=yes}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|Functional}}
-{{language programming paradigm|Generic}}
-
-Sidef is a modern, dynamic, object-oriented programming language, focusing on simplicity, readability and elegance, taking the best from languages like [[derived from::Ruby]], [[derived from::Go]], [[derived from::Perl 6]] and [[derived from::Julia]].
+Sidef is a modern, dynamic, object-oriented programming language, focusing on simplicity, readability and elegance, taking the best from languages like [derived from::Ruby](https://rosettacode.org/wiki/derived_from::Ruby), [derived from::Go](https://rosettacode.org/wiki/derived_from::Go), [derived from::Perl 6](https://rosettacode.org/wiki/derived_from::Perl_6) and [derived from::Julia](https://rosettacode.org/wiki/derived_from::Julia).
 
 The language is mostly used as a research programming language.
 

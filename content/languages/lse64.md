@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|LSE64}}LSE64 is a simple, easy to use environment for laboratory data acquisition, based on Bob Goeke's LSE, a stripped-down [[Forth]] dialect inspired by Jon Sachs' STOIC. It lacks the miserable complexities of Standard Forth. Download a GNU tar file of the software [http://www.noqsi.com/images/lse64-0.3.zip here].
+LSE64 is a simple, easy to use environment for laboratory data acquisition, based on Bob Goeke's LSE, a stripped-down [Forth](https://rosettacode.org/wiki/Forth) dialect inspired by Jon Sachs' STOIC. It lacks the miserable complexities of Standard Forth. Download a GNU tar file of the software [http://www.noqsi.com/images/lse64-0.3.zip here].

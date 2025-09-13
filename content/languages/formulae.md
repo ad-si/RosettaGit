@@ -9,21 +9,7 @@ id = 21980
 categories = []
 tags = []
 +++
-
-{{language|Fōrmulæ
-|exec=interpreted
-|gc=yes
-|parampass=value
-|untyped=yes
-|site=http://formulae.org
-}}
-
-{{language programming paradigm|Declarative}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Functional}}
-
-=== What is Fōrmulæ ? ===
-
+### What is Fōrmulæ ?
 Fōrmulæ is a [https://en.wikipedia.org/wiki/Application_framework framework] to do [https://en.wikipedia.org/wiki/Computer_algebra symbolic computation].
 
 Symbolic computation works by the repeatedly application of rules of transformation &mdash;also called [https://en.wikipedia.org/wiki/Rewriting rewriting rules] &mdash; on symbolic expressions, until no rule can be applied.
@@ -48,8 +34,7 @@ Traditional symbolic software, such as [https://en.wikipedia.org/wiki/Wolfram_Ma
 
 The Fōrmulæ project works in a different way. We do not only create rewriting rules, It provides an specification with which anybody can write &mdash;in a regular programming language&mdash; rewriting rules that can be also published. It converts the process of creating rewriting rules to a colaborative one.
 
-=== Fōrmulæ wiki ===
-
+### Fōrmulæ wiki
 As you can see, the number of rules are always increasing and they need to be documented. The [http://wiki.formulae.org Fōrmulæ wiki] is the official mean to do it.
 
 The wiki is organized on ''expression tags''. An expression tag is a unique name given to a kind of symbolic expression, i.e. the mathematical addition operation receives the expression tag '''Math.Arithmetic.Addition'''. The [http://wiki.formulae.org/Math.Arithmetic.Addition Math.Arithmetic.Addition] wiki entry enumerates and describes every known rule applied to this expression tag.
@@ -76,8 +61,7 @@ The Fōrmulæ framework also defines a specification to edit (create or modify) 
 
 Entries in the wiki also describe the known edition rules for a specific expression tag.
 
-=== Fōrmulæ packages ===
-
+### Fōrmulæ packages
 A package is a combination of zero or more rewriting rules, zero or more visualization rules and zero or more edition rules, packed as a single file, ready to be published. These rules are generally related to the same field.
 
 There are several packages developed by the Fōrmulæ team, called the standard packages, but anyone can pack rules he/she creates.
@@ -130,8 +114,7 @@ There are standard packages that are being developed, and they will be available
 | Quantum programming (simulated) || Qbit definition, quantum logic gates, reversibility, measurement
 |}
 
-=== Fōrmulæ front-ends ===
-
+### Fōrmulæ front-ends
 [[File:FormulaeDesktopExample.png|thumb|link=http://wiki.formulae.org/mediawiki/images/1/19/DesktopExample.png|A typical Fōrmulæ desktop front-end session. Click/tap to enlarge]]
 
 There must be a program where symbolic expressions are created, visualized, edited and where to apply the rewriting rules. It is a front-end. Anyone can write such a program, according to the Fōrmulæ specification.
@@ -147,8 +130,7 @@ There is, however a standard program, called the Desktop. It has the following f
 * It supports cut/copy/paste operations between expressions and subexpressions.
 * It supports undo/redo operations.
 
-=== Fōrmulæ as a programming language ===
-
+### Fōrmulæ as a programming language
 There are rewriting rules to do what can be done with traditional programming languages, so it can be used as a programming language too. It is called the ''Fōrmulæ programming language'' and it is [https://en.wikipedia.org/wiki/Turing_completeness Turing-complete], so it can compute everything that is computable.
 
 Given that rewriting rules, visualization rules and edition rules are continuously created or improved, it produces radical consecuences never seen before in traditional programming languages:
@@ -161,8 +143,7 @@ The term "dynamically defined programming language" is defined here as a languag
 
 Traditionally, programming languages are first fully designed. A grammar is created in order to construct tools, such as compilers. Once it is done, it is very hard or impossible to make changes on the language structure. Adding features to a language usually leads in a new and different language, i.e. the [https://en.wikipedia.org/wiki/C_(programming_language) C] and the [https://en.wikipedia.org/wiki/C%2B%2B C++] languages.
 
-==== Non-unique visualization of programs ====
-
+#### Non-unique visualization of programs
 Because there can be multiple ways symbolic expressions look, there are several forms of visualization for the same program.
 
 The next example shows the definition of a function that generates a [https://en.wikipedia.org/wiki/Farey_sequence Farey sequence] of a given order, using different visualization rules &mdash;for some of its subexpressions&mdash;.
@@ -185,4 +166,4 @@ The next example shows the definition of a function that generates a [https://en
 | [http://wiki.formulae.org wiki.formulae.org] || Reference of expressions and implementations
 |}
 
-[[Category:Mathematical programming languages]]
+[Category:Mathematical programming languages](https://rosettacode.org/wiki/Category:Mathematical_programming_languages)

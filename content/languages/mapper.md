@@ -10,15 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|MAPPER
-|site=http://www.unisys.com/unisys/product/productdetail.jsp?id=1120000160000010000&pid=1120000970018210161&sid=2800008
-|parampass=both
-|strength=weak
-|safety=weak
-|gc=no
-|checking=dynamic
-|LCT=no
-|exec=interpreted}}
 
 
 MAPPER (also more recently known as BIS) was originally a product of the Sperry Corporation and was a mainframe product implemented on the Sperry 1100 systems. It was designed by Louis Schlueter in 1968. It was the first spread sheet with 150 user functions to process data. The run script language was created in the early 70's as the first Macros. In the 80's it was called a 4GL and was also the first major programming language that was easy to learn. Many of the manual function users became Run Designers and developed their own applications. This eliminates the need for the Data Processing (Programmers) Department.
@@ -26,11 +17,11 @@ MAPPER (also more recently known as BIS) was originally a product of the Sperry 
 After the merger of Sperry and Burroughs to create the Unisys Corporation, MAPPER was implemented on additional platforms, and is today available on
 
 #Unisys 2200 mainframe
-#[[Windows]] Server
-#[[Sun]] [[Solaris]]
-#[[Linux]]
+#[Windows](https://rosettacode.org/wiki/Windows) Server
+#[Sun](https://rosettacode.org/wiki/Sun) [Solaris](https://rosettacode.org/wiki/Solaris)
+#[Linux](https://rosettacode.org/wiki/Linux)
 
-At various times MAPPER has been available on a number of Unix implementations, including [[IBM]] AIX, and on the Unisys A-Series mainframes.
+At various times MAPPER has been available on a number of Unix implementations, including [IBM](https://rosettacode.org/wiki/IBM) AIX, and on the Unisys A-Series mainframes.
 
 MAPPER was initially created for the Sperry engineers' internal use.
 The first commercial customer was the Aitcheson, Topeka and Santa Fe Railroad Company.

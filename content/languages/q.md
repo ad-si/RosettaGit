@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language}}Q is another vector language (in the family of [[APL]] [[J]] [[K]] and [[Nial]])
+Q is another vector language (in the family of [APL](https://rosettacode.org/wiki/APL) [J](https://rosettacode.org/wiki/J) [K](https://rosettacode.org/wiki/K) and [Nial](https://rosettacode.org/wiki/Nial))
 
 There is a totally unrelated language called Q [http://q-lang.sourceforge.net/ here]. (It is an equational programming language)
 

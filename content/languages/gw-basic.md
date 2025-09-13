@@ -9,13 +9,8 @@ id = 10332
 categories = []
 tags = []
 +++
+GW-BASIC is a dialect of the programming language BASIC that was supplied with some versions of MSDOS. It replaced [BASICA](https://rosettacode.org/wiki/BASICA) and was in turn replaced by [QBasic](https://rosettacode.org/wiki/QBasic).
 
-{{language|GW-BASIC
-|LCT=yes}}
-{{implementation|BASIC}}
-{{language programming paradigm|Imperative}}
-GW-BASIC is a dialect of the programming language BASIC that was supplied with some versions of MSDOS. It replaced [[BASICA]] and was in turn replaced by [[QBasic]].
-
-==See also==
-* [[wp:GW-BASIC|GW-BASIC on Wikipedia]]
+## See also
+* [GW-BASIC on Wikipedia](https://en.wikipedia.org/wiki/GW-BASIC)
 * [http://www.chebucto.ns.ca/~af380/GW-BASIC-tokens.html Discussion of GW-BASIC's tokenised program format]

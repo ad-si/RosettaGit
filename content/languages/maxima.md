@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Maxima
-|site=http://maxima.sourceforge.net/}}
 Maxima is the language used in the computer algebra system of the same name.
 
-[[Category:Mathematical programming languages]]
+[Category:Mathematical programming languages](https://rosettacode.org/wiki/Category:Mathematical_programming_languages)

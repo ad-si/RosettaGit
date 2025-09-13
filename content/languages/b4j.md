@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.basic4ppc.com/android/b4j.html}}
 B4J is a 100% free development tool, similar to Basic4android that generates cross platform, desktop, server and web applications.
 B4J follows the same concepts of Basic4android, providing a simple and powerful development tool.
 

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language}}{{assembler language}}
+
 The 6800 was the central processing unit of a family of integrated circuits and development boards designed by Motorola in the early 1970s, and marketed heavily beginning in 1975.  Like its contemporary, the Intel 8080, it was a microprocessor with an 8-bit data bus and a 16-bit address bus, offered in a 40-pin DIP.
 
 It has been stated that the design team loosely based the assembly language of the 6800 on the DEC PDP-11, although cost concerns necessitated that it be a subset of the much larger and more expensive DEC design.

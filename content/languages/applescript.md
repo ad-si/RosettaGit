@@ -9,10 +9,7 @@ id = 1716
 categories = []
 tags = []
 +++
-
-{{language|AppleScript}}
-
-This is a scripting language created by [[Apple, Inc]]. It provides a [[Mac]] user the ability to easily transfer data between applications and process the data to their needs.
+This is a scripting language created by [Apple, Inc](https://rosettacode.org/wiki/Apple,_Inc). It provides a [Mac](https://rosettacode.org/wiki/Mac) user the ability to easily transfer data between applications and process the data to their needs.
 
 AppleScript is a trademark of Apple, Inc.
 * [https://duckduckgo.com/?q=AppleScript Duck AppleScript]

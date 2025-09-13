@@ -10,15 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Lhogho
-|site=http://lhogho.sourceforge.net/
-|strength=strong
-|safety=safe
-|express=implicit
-|compat=structural
-|checking=dynamic
-|gc=yes
-|LCT=yes}}
 Lhogho is one of the hundreds implementations of the Logo language. However, unlike most other Logos, Lhogho is a compiler.
 
 We wanted a name which sounds like Logo, but is written in a way which noone else has ever seen before. We did search "Lhogho" in the major search machines (back in 2005) and we got 0 hits.

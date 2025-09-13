@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|TransFORTH}}
+
 TransFORTH (or TransFORTH ][) is a compiled language and interactive programming environment for the Apple II computer, developed by Paul Lutus and released in 1981. It may be regarded either as a somewhat divergent dialect of Forth or as a separate language with clear Forth ancestry.

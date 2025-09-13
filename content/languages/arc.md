@@ -9,8 +9,4 @@ id = 17714
 categories = []
 tags = []
 +++
-
-{{language}}
-{{implementation|Lisp}}
-
 http://arclanguage.org

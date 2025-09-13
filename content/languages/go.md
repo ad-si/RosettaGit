@@ -10,28 +10,15 @@ categories = []
 tags = []
 +++
 
-{{language|Go
-|exec=machine
-|safety=safe
-|strength=strong
-|compat=nominative
-|express=explicit
-|checking=static
-|parampass=value
-|gc=yes
-|tags=go
-|hopl=no
-|LCT=yes
-|site=http://golang.org/}}
-{{provides|Concurrency}}{{provides|File access}}{{provides|File system access}}{{provides|First class functions}}{{provides|Network access}}{{provides|Objects}}{{provides|Signal handling}}{{language programming paradigm|concurrent}}{{language programming paradigm|Imperative}}
-'''Go''' is an open source project developed by a team at [[wp:Google|Google]] (including [[wp:Robert Griesemer|Robert Griesemer]], [[wp:Rob Pike|Rob Pike]] and [[wp:Ken Thompson|Ken Thompson]]) as well as many [http://golang.org/CONTRIBUTORS contributors] from the open source community.
+
+'''Go''' is an open source project developed by a team at [Google](https://en.wikipedia.org/wiki/Google) (including [Robert Griesemer](https://en.wikipedia.org/wiki/Robert_Griesemer), [Rob Pike](https://en.wikipedia.org/wiki/Rob_Pike) and [Ken Thompson](https://en.wikipedia.org/wiki/Ken_Thompson)) as well as many [http://golang.org/CONTRIBUTORS contributors] from the open source community.
 
 Go is distributed under a [http://golang.org/LICENSE BSD-style license].
 
-Not to be confused with [[:Category:Go!|Go!]]
+Not to be confused with [Go!](https://rosettacode.org/wiki/:Category:Go!)
 
-==Links==
-* [[wp:Go (programming language)|Go in Wikipedia]]
+## Links
+* [Go in Wikipedia](https://en.wikipedia.org/wiki/Go_(programming_language))
 * [http://tour.golang.org/ Go Tour and Tutorial]
 * [http://golang.org/ref/spec Go language specification]
 * [http://golang.org/pkg/ Go standard library documentation]

@@ -9,12 +9,3 @@ id = 17222
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|CHR
-|exec=both
-|site=http://dtai.cs.kuleuven.be/CHR/
-|gc=yes
-|safety=safe
-|checking=both
-}}

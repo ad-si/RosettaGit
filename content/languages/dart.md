@@ -10,5 +10,4 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|site=http://www.dartlang.org/}}
+

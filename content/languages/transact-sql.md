@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|Transact-SQL}}{{implementation|SQL}}'''Transact-SQL''' ('''T-SQL''') is [[Microsoft]]'s and [[Sybase]]'s proprietary extension to [[SQL]].
+'''Transact-SQL''' ('''T-SQL''') is [Microsoft](https://rosettacode.org/wiki/Microsoft)'s and [Sybase](https://rosettacode.org/wiki/Sybase)'s proprietary extension to [SQL](https://rosettacode.org/wiki/SQL).

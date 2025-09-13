@@ -9,10 +9,4 @@ id = 7739
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://algae.sourceforge.net/
-}}
-
 Algae is an interpreted language for numerical analysis.

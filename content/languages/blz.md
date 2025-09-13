@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|blz}}
+
 blz is a procedural programming language.
 
 It has one implementation as an interpreter in java [https://github.com/blazingkin/blz-ospl].

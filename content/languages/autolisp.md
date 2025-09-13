@@ -10,10 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|gc=yes
-|checking=dynamic
-}}
 
-'''AutoLISP''' is a dialect of the [[Lisp]] programming language, and is built specifically for use within AutoCAD.
+'''AutoLISP''' is a dialect of the [Lisp](https://rosettacode.org/wiki/Lisp) programming language, and is built specifically for use within AutoCAD.

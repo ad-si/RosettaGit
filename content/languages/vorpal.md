@@ -10,10 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Vorpal
-|exec=interpreted
-|site=http://code.google.com/p/vorpalcode/
-}}
 
 Vorpal is a small scripting language written in C++.  Its major features are as follows:
 * Pervasive, prototype object system

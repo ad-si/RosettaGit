@@ -9,10 +9,7 @@ id = 21152
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|Set lang}}
-[[Category:Esoteric_Languages]]
+[Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)
 
 [https://www.reddit.com/r/esolangs/comments/54b0b1/set_an_language_with_1_command/ Original reddit post] by the user [https://www.reddit.com/user/qwertyu63 qwertyu63], with the original specifications on how the language works.
 

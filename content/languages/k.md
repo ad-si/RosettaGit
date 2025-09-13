@@ -10,15 +10,12 @@ categories = []
 tags = []
 +++
 
-{{language|K
-|site=http://www.kx.com/index.php
-}}
 
-K is a proprietary array processing language developed by Arthur Whitney and commercialized by Kx Systems. The language serves as the foundation for kdb, an in-memory, column-based database, and other related financial products. The language, originally developed in 1993, is a variant of [[APL]] and contains elements of [[Scheme]]. Advocates of the language emphasize its speed, facility in handling arrays and its expressive syntax.[[#Citations|[1]]]
+K is a proprietary array processing language developed by Arthur Whitney and commercialized by Kx Systems. The language serves as the foundation for kdb, an in-memory, column-based database, and other related financial products. The language, originally developed in 1993, is a variant of [APL](https://rosettacode.org/wiki/APL) and contains elements of [Scheme](https://rosettacode.org/wiki/Scheme). Advocates of the language emphasize its speed, facility in handling arrays and its expressive syntax.[[1](https://rosettacode.org/wiki/#Citations)]
 
-==Citations==
-#[[wp:K_(programming_language)|Wikipedia K Programming Language]]
+## Citations
+#[Wikipedia K Programming Language](https://en.wikipedia.org/wiki/K_(programming_language))
 
-==See Also==
+## See Also
 *[http://vrabi.web.elte.hu/k/ K Programming Language]
 *[https://github.com/kevinlawler/kona Kona an open source implementation of K]

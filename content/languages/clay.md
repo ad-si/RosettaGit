@@ -9,11 +9,6 @@ id = 7834
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://claylabs.com/clay/
-}}
 Clay is a systems programming language with whole program type propagation designed to support Generic programming.
 It supports Multiple dispatch and compile time meta-programming. It does not have garbage collection
 

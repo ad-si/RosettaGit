@@ -11,4 +11,4 @@ tags = []
 +++
 
 Plan was the assemble language used on the old 1900 ICL mainframe machines. This can be used by Emulation software now
-{{stub}}{{language|Plan}}
+

@@ -10,8 +10,4 @@ categories = []
 tags = []
 +++
 
-{{Language
-|site=https://github.com/apricot-lang
-|hopl=no}}
 Clojure-like Lisp on Rubinius
-{{stub}}

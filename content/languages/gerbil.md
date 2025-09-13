@@ -10,8 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language|Gerbil
-|site=https://cons.io/
-}}
 
 Gerbil is a meta-dialect of Scheme with post-modern features.

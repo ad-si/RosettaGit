@@ -9,14 +9,8 @@ id = 7856
 categories = []
 tags = []
 +++
+'''BBC BASIC''' is a version of the [BASIC](https://rosettacode.org/wiki/BASIC) programming language. It is notable for being one of the few modern dialects that makes no attempt to be compatible to any great degree with [Microsoft](https://rosettacode.org/wiki/Microsoft) BASICs.
 
-{{language|BBC BASIC
-|site=http://www.bbcbasic.co.uk/bbcbasic.html
-|tags=bbcbasic}}
-{{implementation|BASIC}}
+BBC BASIC was originally written for the [BBC Microcomputer](https://en.wikipedia.org/wiki/BBC_Micro) as part of the '''BBC Computer Literacy Project''' under the direction of the [British Broadcasting Corporation](https://en.wikipedia.org/wiki/BBC) (thus the name), but now runs on most modern, popular operating systems (and several older and/or less-popular ones).
 
-'''BBC BASIC''' is a version of the [[BASIC]] programming language. It is notable for being one of the few modern dialects that makes no attempt to be compatible to any great degree with [[Microsoft]] BASICs.
-
-BBC BASIC was originally written for the [[wp:BBC Micro|BBC Microcomputer]] as part of the '''BBC Computer Literacy Project''' under the direction of the [[wp:BBC|British Broadcasting Corporation]] (thus the name), but now runs on most modern, popular operating systems (and several older and/or less-popular ones).
-
-Wikipedia has [[wp:BBC BASIC|an article about BBC BASIC]], but the best source of information is probably [http://www.bbcbasic.co.uk/bbcbasic.html the BBC BASIC homepage].
+Wikipedia has [an article about BBC BASIC](https://en.wikipedia.org/wiki/BBC_BASIC), but the best source of information is probably [http://www.bbcbasic.co.uk/bbcbasic.html the BBC BASIC homepage].

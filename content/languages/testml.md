@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|TestML
-|site=http://testml.org}}
 [http://testml.org TestML] is an [http://acmeism.org Acmeist], data-driven, unit test language/framework. This means that you can write the same software (since it passes the same tests) in multiple programming languages.
 
 The primary purpose of TestML is to write one set of tests, for libraries (think CPAN, RubyGems, PyPI, NPM) that are intended to be ported to (or generated in) more than one programming language.

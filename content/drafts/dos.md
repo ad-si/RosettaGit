@@ -1,14 +1,10 @@
 +++
 title = "DOS"
-description = ""
-date = 2017-09-10T22:41:22Z
-aliases = []
-[extra]
-id = 4694
-[taxonomies]
-categories = []
-tags = []
 +++
+
+
+## Merged content
+
 
 [[Category:Operating Systems]]
 '''DOS''' ('''D'''isk '''O'''perating '''S'''ystem) is a generic name for a variety of 16-bit text-mode [[:Category:Operating Systems|operating systems]]. (Note that "DOS" is pronounced ''dahss'' or ''doss'' but not ''dose''.) The archetypal example is '''[[wp:MS-DOS|MS-DOS]]''', [[Microsoft|Microsoft's]] long-running OS that was also sold by IBM as [[wp:PC-DOS|PC-DOS]]. MS-DOS (and PC-DOS) originated as [[wp:86-DOS|86-DOS]] (eventually renamed QDOS) from Seattle Computer Products, which was intended to be a [[wp:CP/M|CP/M]] clone. Other (modern) examples include [[wp:DR-DOS|DR-DOS]] and [[wp:FreeDOS|FreeDOS]].

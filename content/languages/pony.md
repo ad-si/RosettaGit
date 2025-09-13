@@ -10,14 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|
-|exec=machine
-|strength=strong
-|safety=safe
-|checking=static
-|gc=yes
-|site=http://ponylang.org/
-}}
 
 
 '''Pony''' is an object-oriented, actor-model, capabilities-secure, high performance programming language.

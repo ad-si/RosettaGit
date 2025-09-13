@@ -10,10 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://cm.bell-labs.com/cm/cs/who/dmr/kbman.html
-|hopl id=492
-}}
 B is a computer language intended for recursive, primarily non-numeric applications typified by system programming. B has a small, unrestrictive syntax that is easy to compile. Because of the unusual freedom of expression and a rich set of operators, B programs are often quite compact.
 
-B takes many features from [[derived from::BCPL]]. B is the ancestor of [[C]].
+B takes many features from [derived from::BCPL](https://rosettacode.org/wiki/derived_from::BCPL). B is the ancestor of [C](https://rosettacode.org/wiki/C).

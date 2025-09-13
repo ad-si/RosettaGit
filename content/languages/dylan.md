@@ -9,19 +9,6 @@ id = 7132
 categories = []
 tags = []
 +++
-
-{{language|
-|exec=machine
-|strength=strong
-|safety=safe
-|checking=both
-|gc=yes
-|LCT=yes
-|site=http://opendylan.org/}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|imperative}}
-{{Language programming paradigm|Object-oriented}}
-Dylan is an [[:Category:Programming paradigm/Imperative|imperative]], [[:Category:Programming paradigm/Functional|functional]] programming language highly inspired by various [[Lisp]]s. Although original prototypes kept Lisp's s-expr based syntax, modern Dylan is written in a somewhat [[Pascal]]/[[C]]-inspired syntax. It's object system is notable for being CLOS-style (oriented around generic methods) rather than [[Smalltalk]] message-passing style. It allows for a mix of static and dynamic typing.
-==Citations==
-* [[wp:Dylan|Wikipedia:Dylan]]
+Dylan is an [imperative](https://rosettacode.org/wiki/:Category:Programming_paradigm/Imperative), [functional](https://rosettacode.org/wiki/:Category:Programming_paradigm/Functional) programming language highly inspired by various [Lisp](https://rosettacode.org/wiki/Lisp)s. Although original prototypes kept Lisp's s-expr based syntax, modern Dylan is written in a somewhat [Pascal](https://rosettacode.org/wiki/Pascal)/[C](https://rosettacode.org/wiki/C)-inspired syntax. It's object system is notable for being CLOS-style (oriented around generic methods) rather than [Smalltalk](https://rosettacode.org/wiki/Smalltalk) message-passing style. It allows for a mix of static and dynamic typing.
+## Citations
+* [Wikipedia:Dylan](https://en.wikipedia.org/wiki/Dylan)

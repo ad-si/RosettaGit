@@ -9,7 +9,4 @@ id = 21870
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|SuperTalk}}
 SuperTalk is the scripting language used in SuperCard. SuperTalk is a descendant of HyperTalk.

@@ -10,10 +10,9 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Ayrch}}
 
-== The Egel Language ==
 
+## The Egel Language
 Egel is a small functional language based on untyped eager combinator rewriting. The operational semantics is founded upon graph rewrite machinery where the underlying graph is acyclic. The interpreter makes use of that fact to implement this machinery in C++ employing native smart pointers.
 
 It's a small versatile language show-casing some features of untyped rewriting.

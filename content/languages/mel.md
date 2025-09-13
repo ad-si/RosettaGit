@@ -9,12 +9,3 @@ id = 11165
 categories = []
 tags = []
 +++
-
-{{language|Melscript
-|strength=strong
-|safety=safe
-|checking=static
-|parampass=value}}'''MEL''' is a built-in scripting language used by Autodesk Maya.
-
-==Citations==
-* [[wp:Maya_Embedded_Language|Wikipedia:MEL]]

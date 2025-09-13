@@ -9,25 +9,18 @@ id = 3232
 categories = []
 tags = []
 +++
+[Category:Utility](https://rosettacode.org/wiki/Category:Utility)
 
-{{language
-|exec=interpreted
-|checking=dynamic
-|hopl id=1957
-}}
-{{language programming paradigm|concatenative}}
-[[Category:Utility]]
-
-[[wp:dc (computer program)|dc]] is the unix '''d'''esktop '''c'''alculator.
+[dc](https://en.wikipedia.org/wiki/dc_(computer_program)) is the unix '''d'''esktop '''c'''alculator.
 
 It uses a reverse polish notation and is turing complete.
 
 ;See also
-* [[:Category:Bc|bc]] - '''b'''asic '''c'''alculator
+* [bc](https://rosettacode.org/wiki/:Category:Bc) - '''b'''asic '''c'''alculator
 
 
-== Quick reference ==
-Commands in [[AT&T dc]]
+## Quick reference
+Commands in [AT&T dc](https://rosettacode.org/wiki/AT&T_dc)
  number      : push a number (0-9A-F digits, _ negative, . radix point)
  [...]       : push a string
  + - * / % ^ : arithmetic operations: add sub mul div mod pow
@@ -61,17 +54,17 @@ Commands in [[AT&T dc]]
  ?           : read and execute one line of input
  Y           : debug information
 
-Extensions in both [[GNU dc]] and [[OpenBSD dc]]
+Extensions in both [GNU dc](https://rosettacode.org/wiki/GNU_dc) and [OpenBSD dc](https://rosettacode.org/wiki/OpenBSD_dc)
  a           : print ASCII character
  n           : print value without a newline
  ~           : divmod: division and remainder
  r           : reverse (swap) the top two elements
  #           : comment
 
-Extension in [[GNU dc]]
+Extension in [GNU dc](https://rosettacode.org/wiki/GNU_dc)
  |           : arithmetic - modular exponentiation
 
-Extensions in [[OpenBSD dc]]
+Extensions in [OpenBSD dc](https://rosettacode.org/wiki/OpenBSD_dc)
  3 J         : break 3 execution levels, then jump to next M
  M           : mark for the J command
  R           : pop and discard top of the stack

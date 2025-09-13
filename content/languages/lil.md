@@ -10,17 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|LIL
-|gc=no
-|parampass=value
-|express=implicit
-|checking=dynamic
-|safety=safe
-|strength=weak
-|site=http://runtimelegend.com/tech/lil/
-}}
 
-LIL is the '''L'''ittle '''I'''nterpreted '''L'''anguage, a [[Tcl]] like
+LIL is the '''L'''ittle '''I'''nterpreted '''L'''anguage, a [Tcl](https://rosettacode.org/wiki/Tcl) like
 scripting language.  LIL is written by Kostas Michalopoulos, first released
 in 2010.
 
@@ -40,8 +31,7 @@ C. The reference REPL interactive shell is implemented in just 200 lines
 of code (which includes registering a few new commands for things like
 '''system''' access from the shell).
 
-==hello.lil==
-
+## hello.lil
 ```tcl
 #
 # Hello world in lil
@@ -67,7 +57,7 @@ in this historical language you can read about it here:
     http://www.ultimate.com/phil/lil/
 </blockquote>
 
-==Reflective==
+## Reflective
 LIL is reflective. There is a '''reflect''' command that accepts a wide range
 of subcommands.  These are useful both for exploring the language in the shell
 as well as providing a nice level of sophisticated script programming potentials.
@@ -155,7 +145,7 @@ commands registered in the reference LIL shell.
 ```
 
 
-==Catcher==
+## Catcher
 LIL includes '''catcher''' blocks which can be used to provided lazy loading of
 Domain Specific Language commands, as well as high level error trapping. There
 is also a '''try''' command for more localized exception handling.
@@ -280,11 +270,11 @@ And this will never be executed
 ```
 
 
-==Callbacks==
+## Callbacks
 Many of the lower level operations in LIL can be extended in an application via
 hooks provided by ''LIL_CALLBACK_xxxx'' routines.
 
-==Substitutions==
+## Substitutions
 Based on Tcl style command handling, LIL supports substitutions for strings and command evaluations.
 
 The dollar-prefix variable substitutions normally seen in Tcl and other
@@ -320,10 +310,6 @@ print "New dollar prefix:     '[reflect dollar-prefix]'"
 # Try using the new dollar prefix
 print $foo
 ```
-
-
-{{out}}
-
 ```txt
 prompt$ ./lil dollar.lil
 bar

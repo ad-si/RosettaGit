@@ -9,10 +9,4 @@ id = 9726
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|FPI
-|site=
-|tags=fpi}}
-
 FPI is the scripting language used by First Person Shooter Creator.

@@ -9,21 +9,6 @@ id = 2625
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|PL/I
-|exec=machine
-|strength=strong
-|safety=safe
-|compat=nominative
-|express=explicit
-|checking=static
-|parampass=both
-|gc=no
-|LCT=yes
-|tags=pli}}
-{{language programming paradigm|Imperative}}
-
 PL/I is a general purpose programming language suitable for commercial, scientific, non-scientific, and system programming.
 
 

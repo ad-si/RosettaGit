@@ -9,14 +9,3 @@ id = 1823
 categories = []
 tags = []
 +++
-
-{{language|MAXScript
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|parampass=both
-|LCT=yes}}'''MAXScript''' is a built-in scripting language, and is used for a myriad of functions in 3D Studio Max. Plugin modules can be created entirely in MAXScript.
-
-==Citations==
-* [[wp:Maxscript|Wikipedia:3ds Max]]

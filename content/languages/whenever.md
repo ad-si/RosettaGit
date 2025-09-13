@@ -9,13 +9,6 @@ id = 7819
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.dangermouse.net/esoteric/whenever.html
-|LCT=no
-|exec=interpreted
-}}
 Whenever is a programming language which has no sense of urgency. It does things whenever it feels like it, not in any sequence specified by the programmer.
 
-[[Category:Esoteric Languages]]
+[Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

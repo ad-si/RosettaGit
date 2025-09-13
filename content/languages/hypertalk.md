@@ -9,9 +9,7 @@ id = 5416
 categories = []
 tags = []
 +++
-
-{{language}}
-[[ppr:HyperTalk|HyperTalk]] was the proprietary scripting language from Apple's [[ppr:HyperCard|HyperCard]]. This language is the ancestor of [[AppleScript]].
+[HyperTalk](https://rosettacode.org/wiki/ppr:HyperTalk) was the proprietary scripting language from Apple's [HyperCard](https://rosettacode.org/wiki/ppr:HyperCard). This language is the ancestor of [AppleScript](https://rosettacode.org/wiki/AppleScript).
 
 HyperCard and HyperTalk come from the era of the black-and-white Macintosh. HyperTalk scripts are plain text, but embedded inside some stack. A ''HyperCard stack'' is the user interface to a HyperTalk program. Each stack appears in a window and displays one card from the stack. A card might include text, images, hyperlinks to other cards, and interactive buttons. These stacks look obsolete because of the small size of each card, and the black and white graphics.
 

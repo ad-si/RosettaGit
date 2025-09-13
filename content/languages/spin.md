@@ -9,9 +9,6 @@ id = 21128
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|exec=bytecode|Spin}}
 Spin is the primary high level language for programming the Parallax P8X32A microcontroller.
 
 Typically a Spin compiler runs on a PC and produces Spin bytecode for the bytecode interpreter each P8X32A chip contains.
@@ -22,7 +19,7 @@ Atypical:
 
 [http://www.sphinxcompiler.com/ Sphinxcompiler] and [http://forums.parallax.com/discussion/123795/spinix/p1 Spinc] are executed on operating systems running on the P8X32A.
 
-==Implementations==
+## Implementations
 * [https://www.parallax.com/downloads/propeller-tool-software-windows The Propeller Tool] - Parallax's original Spin IDE.
 * [http://www.fnarfbargle.com/ Brad's Spin Tool]
 ** BST - IDE (monolithic binary including compiler)
@@ -33,7 +30,7 @@ Atypical:
 * [https://github.com/parallaxinc/OpenSpin OpenSpin]
 * [http://forums.parallax.com/discussion/164101/fastspin-an-lmm-compiler-for-spin FastSpin/FlexSpin]
 
-==Links==
+## Links
 * https://www.parallax.com/sites/default/files/downloads/P8X32A-Web-PropellerManual-v1.2.pdf
 * https://lamestation.atlassian.net/wiki/display/SPIN
 * https://github.com/rosco-pc/propeller-wiki

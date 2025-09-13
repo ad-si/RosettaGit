@@ -9,26 +9,7 @@ id = 6678
 categories = []
 tags = []
 +++
-
-{{language|Unicon
-|site=http://unicon.org/
-|exec=bytecode
-|parampass=value
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|gc=yes
-|LCT=yes
-}}
-{{virtual machine}}
-{{language programming paradigm|Procedural}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Logic_Programming}}
-{{Language programming paradigm|Concurrent}}
-
-Unicon is a unification of several extended dialects of the [[derived from::Icon]] language, featuring Icon plus classes, POSIX system facilities, GDBM and ODBC-based (SQL) database access, packages, 3D graphics and more, all provided at a very high semantic level.
+Unicon is a unification of several extended dialects of the [derived from::Icon](https://rosettacode.org/wiki/derived_from::Icon) language, featuring Icon plus classes, POSIX system facilities, GDBM and ODBC-based (SQL) database access, packages, 3D graphics and more, all provided at a very high semantic level.
 
 In addition to Icon, Unicon draws from:
 * IDOL an object-oriented Icon preprocessor
@@ -36,17 +17,16 @@ In addition to Icon, Unicon draws from:
 
 While Unicon is mostly a super-set of Icon there are some differences and incompatibilities.
 
-Icon itself is an evolution of the line of languages [[wp:COMIT|COMIT]], SNOBOL, [[:Category:SNOBOL4|SNOBOL4]], and SL5.
+Icon itself is an evolution of the line of languages [COMIT](https://en.wikipedia.org/wiki/COMIT), SNOBOL, [SNOBOL4](https://rosettacode.org/wiki/:Category:SNOBOL4), and SL5.
 
-== Introduction to Icon and Unicon ==
-If you want to learn more about these languages please see [[Icon%2BUnicon/Intro|An introduction to Icon and Unicon for Rosetta Code]].
+## Introduction to Icon and Unicon
+If you want to learn more about these languages please see [An introduction to Icon and Unicon for Rosetta Code](https://rosettacode.org/wiki/Icon%2BUnicon/Intro).
 
 The following are related:
-* [[:Category:Icon_Programming_Library|The Icon Programming Library]]
-* [[:Category:Unicon_Code_Library|The Unicon Code Library]]
+* [The Icon Programming Library](https://rosettacode.org/wiki/:Category:Icon_Programming_Library)
+* [The Unicon Code Library](https://rosettacode.org/wiki/:Category:Unicon_Code_Library)
 
-== External Links and References ==
-
+## External Links and References
 ###  Home Pages
 
 * [http://unicon.org/ Unicon home page on Sourceforge]
@@ -90,20 +70,20 @@ The following are related:
 
 ###  Other
 
-* [[wp:Unicon_(programming_language)|Wikipedia: Unicon]]
-* [[wp:Icon_%28programming_language%29|Wikipedia: Icon]]
+* [Wikipedia: Unicon](https://en.wikipedia.org/wiki/Unicon_(programming_language))
+* [Wikipedia: Icon](https://en.wikipedia.org/wiki/Icon_%28programming_language%29)
 * [http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf Presentation: Fundamentals of Icon Programming]
 * [http://www.pclosmag.com/html/Issues/201101/page17.html PC Linux OS Magazine, Volume 48, Computer Languages From A to Z: Unicon]
 
 ### Related/Variants
 
-* [[Jcon]]
-* [[ObjectIcon]]
+* [Jcon](https://rosettacode.org/wiki/Jcon)
+* [ObjectIcon](https://rosettacode.org/wiki/ObjectIcon)
 
-== Other RosettaCode Wiki Links ==
-* [[:Category_talk:Unicon|The Discussion Tab for this page]] Lots of notes about things to do, help wanted, ideas, and guidance on formatting and markup
-* [[Reports:Tasks_not_implemented_in_Unicon|Tasks not yet implemented]] Tasks that need to be coded
-**  [[Icon%2BUnicon/Analysis_of_UnimplementedTasks]] for an analysis of the groupings of these tasks (taken at a point in time)
-* [[:Category:Unicon/Omit|Unimplementable tasks]] Tasks that cannot be implemented in the language
-* [[:Category:Unicon_examples_needing_attention|Tasks requiring attention]] Tasks that could be improved
-* [[Special:MostLinkedCategories|Most Linked Categories]] shows how many pages various languages (and other categories) have.
+## Other RosettaCode Wiki Links
+* [The Discussion Tab for this page](https://rosettacode.org/wiki/:Category_talk:Unicon) Lots of notes about things to do, help wanted, ideas, and guidance on formatting and markup
+* [Tasks not yet implemented](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Unicon) Tasks that need to be coded
+**  [Icon%2BUnicon/Analysis_of_UnimplementedTasks](https://rosettacode.org/wiki/Icon%2BUnicon/Analysis_of_UnimplementedTasks) for an analysis of the groupings of these tasks (taken at a point in time)
+* [Unimplementable tasks](https://rosettacode.org/wiki/:Category:Unicon/Omit) Tasks that cannot be implemented in the language
+* [Tasks requiring attention](https://rosettacode.org/wiki/:Category:Unicon_examples_needing_attention) Tasks that could be improved
+* [Most Linked Categories](https://rosettacode.org/wiki/Special:MostLinkedCategories) shows how many pages various languages (and other categories) have.

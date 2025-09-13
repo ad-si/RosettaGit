@@ -13,4 +13,4 @@ tags = []
 [http://ostracodfiles.com/decimal/guide.pdf]
 [http://ostracodfiles.com/decimal/emulator.html]
 
-{{stub}}{{language}}
+

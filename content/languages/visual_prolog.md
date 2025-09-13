@@ -10,23 +10,14 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=machine
-|gc=yes
-|parampass=value
-|checking=static
-|safety=safe
-|strength=strong
-|express=partially implicit
-|site=http://www.visual-prolog.com/}}
 Visual Prolog is a multi-paradigm language with origin in Prolog.
 
 See also
-* [[wp:Visual Prolog|Visual Prolog]] in Wikipedia
+* [Visual Prolog](https://en.wikipedia.org/wiki/Visual_Prolog) in Wikipedia
 * [http://wiki.visual-prolog.com Visual Prolog wiki]
 
-[[Category:Programming paradigm/Functional]]
-[[Category:Programming paradigm/Generic]]
-[[Category:Programming paradigm/Imperative]]
-[[Category:Programming paradigm/Logic Programming]]
-[[Category:Programming paradigm/Object-oriented]]
+[Category:Programming paradigm/Functional](https://rosettacode.org/wiki/Category:Programming_paradigm/Functional)
+[Category:Programming paradigm/Generic](https://rosettacode.org/wiki/Category:Programming_paradigm/Generic)
+[Category:Programming paradigm/Imperative](https://rosettacode.org/wiki/Category:Programming_paradigm/Imperative)
+[Category:Programming paradigm/Logic Programming](https://rosettacode.org/wiki/Category:Programming_paradigm/Logic_Programming)
+[Category:Programming paradigm/Object-oriented](https://rosettacode.org/wiki/Category:Programming_paradigm/Object-oriented)

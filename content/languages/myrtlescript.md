@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|MyrtleScript}}
+
 
 MyrtleScript is a language developed by Finn Thomas in 2015.
 The language is interpreted and statically typed.
 
-== Syntax ==
+## Syntax
 Program structure:
 
 ```MyrtleScript

@@ -9,16 +9,7 @@ id = 10531
 categories = []
 tags = []
 +++
-
-{{language
-|site=http://www.nongnu.org/txr/}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|imperative}}
-{{language programming paradigm|declarative}}
-
-TXR is a new language implemented in [[C]], running on POSIX platforms such as [[Linux]], [[Mac OS X]] and [[Solaris]] as well as on [[Microsoft Windows]]. It is a dynamic, high level language originally intended for "data munging" tasks in Unix-like environments, particularly tasks requiring accurate, robust text scraping from loosely structured documents.
+TXR is a new language implemented in [C](https://rosettacode.org/wiki/C), running on POSIX platforms such as [Linux](https://rosettacode.org/wiki/Linux), [Mac OS X](https://rosettacode.org/wiki/Mac_OS_X) and [Solaris](https://rosettacode.org/wiki/Solaris) as well as on [Microsoft Windows](https://rosettacode.org/wiki/Microsoft_Windows). It is a dynamic, high level language originally intended for "data munging" tasks in Unix-like environments, particularly tasks requiring accurate, robust text scraping from loosely structured documents.
 
 The Rosetta Code TXR solutions can be viewed in color, and all on one page with a convenient navigation pane [http://www.nongnu.org/txr/rosetta-solutions.html here].
 

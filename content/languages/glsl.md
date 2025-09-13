@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 http://en.wikipedia.org/wiki/OpenGL_Shading_Language

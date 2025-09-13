@@ -10,9 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Cilk++
-|site=http://software.intel.com/en-us/articles/intel-cilk/
-}}
 
 Cilk++ is an extension to C++ that offers a quick, easy and reliable way to improve the performance of C++ programs on multi-core processors.
 

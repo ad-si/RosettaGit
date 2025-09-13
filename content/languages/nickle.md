@@ -10,13 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://nickle.org/
-|gc=yes
-|parampass=value
-|express=implicit
-|checking=dynamic
-}}
 
 Nickle is a numerically oriented prototyping and scripting environment, with a syntax resembling C.
 
@@ -55,10 +48,6 @@ for (int i = 0; i < dim(p); i++) {
 }
 printf("\n");
 ```
-
-
-{{out}}
-
 ```txt
 prompt$ nickle sampler.5c
 [

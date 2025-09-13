@@ -10,17 +10,16 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Ursa|exec=interpreted|site=http://cygnus-x.net/geekstuff/projects/ursa|strength=strong|gc=no}}
 
-==About==
-Ursa is a simple programming language that [[user:whinson|I've]] been working on for awhile now. Its syntax is (at times) similar to Lisp, but instead of being list-based, it is "stream-based." Most in-built statements operate on types of data called streams. Streams are are variable-length arrays of data of a certain type.
+
+## About
+Ursa is a simple programming language that [I've](https://rosettacode.org/wiki/user:whinson) been working on for awhile now. Its syntax is (at times) similar to Lisp, but instead of being list-based, it is "stream-based." Most in-built statements operate on types of data called streams. Streams are are variable-length arrays of data of a certain type.
 
 The basic premise of ursa is to function as a very high-level abstraction layer between streams and "I/O devices." I/O devices are objects that represent locations that can be read and written using data streams; namely, the console, files, and network ports. Ursa greatly simplifies the implementation of programs that transfer data between these devices.
 
 Ursa uses reverse polish notation for math and functions are simply seperated from their arguments by space characters. This makes implentation of Standard Ursa interpreters since this syntax is easier to write a parser for.
 
-==Example Code==
-
+## Example Code
 ### Raw File Transfer
 
 This Ursa code opens a port on a remote server, then outputs the specified file to the port.
@@ -43,8 +42,7 @@ p.close
 ```
 
 
-===Single-User Echo Server===
-
+### Single-User Echo Server
 ```ursa
 # declare a serverport and a port to attach new connections to
 declare serverport sp
@@ -74,5 +72,5 @@ end while
 ```
 
 
-==See Also==
+## See Also
 * [http://cygnus-x.net/geekstuff/projects/ursa Ursa homepage]

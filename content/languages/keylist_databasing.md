@@ -9,10 +9,8 @@ id = 10162
 categories = []
 tags = []
 +++
-
-{{language}}
 '''KeyList Databasing''' is the language used by the BrailleNote (a computer for the blind) to create databases. The BrailleNote is a multipurpose mobile computer (it is commonly classified as a notetaker) with audio and refreshable Braille output. In the BrailleNote, there are databases installed in it, with .klt file extensions. When a .klt database program (written in the KeyList Databasing language) is selected with the "select KeyList file" option in the "KeyList" settings menu in the KeyList menu. (KeyList is an address-list and database program for the BrailleNote). For more info on BrailleNotes, see the company's website, humanware.com.
-==Examples==
+## Examples
 The following KeyList Databasing program is a perfect example of how the language works. What the commands mean is described below the code. A program like this would be created on a BrailleNote using a klt file-extension, for example, "phonebook.klt". It doesn't work if you just add a .klt file extension, (unlike most files such as .htm). When you are creating the document (in KeySoft 6.2), you would tab over to "create a KeyList Definition File" and type in ''Phonebook''. In the KeyWord word processor in KeySoft, you would type (as code):
 
 ```keylist
@@ -55,7 +53,7 @@ just allows the user to type computer-Braille commands. There is also:
 
 As you may have guessed, password, G0, replaces the typed letters with asterisks (for security). The password is stored in the .cdb (or .csv) file unsecured, but when the .klt is running, (or the .csv gets installed back into the .klt), it's secured.
 
-==Miscellaneous commands==
+## Miscellaneous commands
 There are other commands in KeyList Databasing you just might want to know about:
 The boolean command returns a yes or no value, similar to other, more widely-known programming schemes where boolean objects return "true or false" or "1 or 0". Here is an example of a KeyList Databasing boolean object:
 

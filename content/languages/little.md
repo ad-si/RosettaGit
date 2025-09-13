@@ -11,7 +11,7 @@ tags = []
 +++
 
 Little is a compiled-to-byte-code language
-that draws heavily from [[C]] and [[Perl]].
+that draws heavily from [C](https://rosettacode.org/wiki/C) and [Perl](https://rosettacode.org/wiki/Perl).
 From C, Little gets C syntax, simple types (int, float, string),
 and complex types (arrays, structs).
 From Perl, Little gets associative arrays and regular expressions (PCRE).
@@ -28,7 +28,7 @@ Little provides a set of built-in functions,
 drawn from Perl and the standard C library.
 
 Little is built on top of the Tcl/TK system.
-The Little compiler generates [[Tcl]] byte codes
+The Little compiler generates [Tcl](https://rosettacode.org/wiki/Tcl) byte codes
 and uses the Tcl calling convention.
 This means that L and Tcl code may be intermixed.
 More importantly, it means that Little may use all of the Tcl API

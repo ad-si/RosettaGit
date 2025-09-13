@@ -10,12 +10,9 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=bytecode
-}}{{implementation|Lisp}}{{provides|Windowing UI}}{{provides|First class functions}}{{provides|File access}}{{provides|File system access}}{{provides|Database access}}
-Emacs Lisp (often abbreviated to elisp) is the [[Lisp]] implementation used by the [[Emacs]] text editor. It doesn't provide all features of [[Common Lisp]] (e.g. its optional arguments always default to nil), but it contains special types which are specific for the use in the editor, like buffers (which is where you actually edit the text), windows, events etc.
+Emacs Lisp (often abbreviated to elisp) is the [Lisp](https://rosettacode.org/wiki/Lisp) implementation used by the [Emacs](https://rosettacode.org/wiki/Emacs) text editor. It doesn't provide all features of [Common Lisp](https://rosettacode.org/wiki/Common_Lisp) (e.g. its optional arguments always default to nil), but it contains special types which are specific for the use in the editor, like buffers (which is where you actually edit the text), windows, events etc.
 
-[[Lisp]] expressions can be executed directly from within Emacs editor buffers, or loaded from files which optionally can be compiled into bytecode.
+[Lisp](https://rosettacode.org/wiki/Lisp) expressions can be executed directly from within Emacs editor buffers, or loaded from files which optionally can be compiled into bytecode.
 
 Emacs configuration files actually are Emacs Lisp source files.
 

@@ -9,10 +9,3 @@ id = 19046
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|exec=bytecode
-|site=http://nand2tetris.org/
-|gc=no
-}}

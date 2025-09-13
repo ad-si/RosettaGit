@@ -10,24 +10,9 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Apex}}
-{{language
-|exec=bytecode
-|site=http://developer.salesforce.com
-|gc=yes
-|parampass=value
-|safety=safe
-|express=explicit
-|compat=nominative
-|checking=static
-|strength=strong
-|tags=Apex, Salesforce, Visualforce
-|LCT=yes}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|generic}}
-{{language programming paradigm|reflective}}[[runs on force.com| ]]
-The '''Apex''' programming language, developed by [[Salesforce.com]], is a the world's first on-demand programming language that provides a complete set of features for building business applications – including data models and objects to manage data, a workflow engine for managing collaboration of that data between users, a user interface model to handle forms and other interactions, and wide variety of API's for programmatic access and integration.
+
+[](https://rosettacode.org/wiki/runs_on_force.com)
+The '''Apex''' programming language, developed by [Salesforce.com](https://rosettacode.org/wiki/Salesforce.com), is a the world's first on-demand programming language that provides a complete set of features for building business applications – including data models and objects to manage data, a workflow engine for managing collaboration of that data between users, a user interface model to handle forms and other interactions, and wide variety of API's for programmatic access and integration.
 
 Apex Code extends the powerful and proven success of the Force.com platform by introducing the ability to write code that runs on salesforce.com servers. The language enables a new class of applications and features to be developed and deployed entirely on demand. These applications make existing Force.com apps “smarter” by providing the ability to capture business logic and rules – such as data validation – and make entirely new kinds of apps possible on demand – such as complex inventory checking and order fulfillment.
 Among the concepts behind Apex Code, two provide an especially good introduction to the language’s potential and implementation.

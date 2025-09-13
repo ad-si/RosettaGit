@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}QuakeC was developed as the game logic language for id Software's first-person shooter, Quake. Its various implementations are not necessarily compatible.
+QuakeC was developed as the game logic language for id Software's first-person shooter, Quake. Its various implementations are not necessarily compatible.

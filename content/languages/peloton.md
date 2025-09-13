@@ -9,11 +9,7 @@ id = 20772
 categories = []
 tags = []
 +++
-
-{{Stub}}
-{{language|Peloton
-}}
 Peloton is a universal, symbolic programming language system, based on a systematic a priori analysis of the tasks required for computation.
 
-== See Also ==
+## See Also
 * [http://lambda-the-ultimate.org/node/2586 Discussion of Protium on "Lambda the Ultimate"]

@@ -9,8 +9,4 @@ id = 21400
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|NASL}}
-
 NASL(Nessus Attack Scripting Language), a scripting language for the Nessus Vulnerability Scanner.

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|AArch64 Assembly}}
 
-[[Category:Assembler language]]
-[[Category:Assembly]]
+
+[Category:Assembler language](https://rosettacode.org/wiki/Category:Assembler_language)
+[Category:Assembly](https://rosettacode.org/wiki/Category:Assembly)

@@ -10,5 +10,4 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|DIV Games Studio}}
-{{unimpl_Page|DIV Games Studio}}
+

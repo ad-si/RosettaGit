@@ -10,15 +10,15 @@ categories = []
 tags = []
 +++
 
-{{language}}'''Uniface''' is a development and deployment platform for enterprise applications that can run in a large range of runtime environments, including mobile, mainframe, web, [[Service-oriented architecture]] (SOA), [[Microsoft Windows|Windows]], [[Java Platform, Enterprise Edition|Java EE]] and [[Microsoft .NET|.NET]].  Uniface is a model-driven, Rapid Application Development(RAD)environment used to create mission-critical applications.
+'''Uniface''' is a development and deployment platform for enterprise applications that can run in a large range of runtime environments, including mobile, mainframe, web, [Service-oriented architecture](https://rosettacode.org/wiki/Service-oriented_architecture) (SOA), [Windows](https://rosettacode.org/wiki/Microsoft_Windows), [Java EE](https://rosettacode.org/wiki/Java_Platform,_Enterprise_Edition) and [.NET](https://rosettacode.org/wiki/Microsoft_.NET).  Uniface is a model-driven, Rapid Application Development(RAD)environment used to create mission-critical applications.
 
-Uniface applications are database- and platform-independent. Uniface provides an integration framework that enables Uniface applications to integrate with all major DBMS products such as [[Oracle]], [[Microsoft SQL Server]], [[MySQL]] and [[IBM DB2]]. In addition, Uniface also supports file systems such as RMS (HP OpenVMS), Sequential files, operating system text files  and a wide range of other technologies, such as mainframe-based products ([[CICS]], [[IBM Information Management System|IMS]]), [[web service]]s, [[Simple Mail Transfer Protocol|SMTP]] and [[Post Office Protocol|POP]] email, [[LDAP]] directories, [[Microsoft .NET|.NET]], [[ActiveX]], [[Component Object Model]] (COM), [[C (programming language)|C(++)]] programs, and [[Java (programming language)|Java]]. Uniface operates under [[Microsoft Windows]], [[Windows Mobile]], various flavors of [[Unix]] and [[Linux]], [[OpenVMS|VMS]], IBM [[IBM System i|iSeries]], and  [[z/OS]].
+Uniface applications are database- and platform-independent. Uniface provides an integration framework that enables Uniface applications to integrate with all major DBMS products such as [Oracle](https://rosettacode.org/wiki/Oracle), [Microsoft SQL Server](https://rosettacode.org/wiki/Microsoft_SQL_Server), [MySQL](https://rosettacode.org/wiki/MySQL) and [IBM DB2](https://rosettacode.org/wiki/IBM_DB2). In addition, Uniface also supports file systems such as RMS (HP OpenVMS), Sequential files, operating system text files  and a wide range of other technologies, such as mainframe-based products ([CICS](https://rosettacode.org/wiki/CICS), [IMS](https://rosettacode.org/wiki/IBM_Information_Management_System)), [web service](https://rosettacode.org/wiki/web_service)s, [SMTP](https://rosettacode.org/wiki/Simple_Mail_Transfer_Protocol) and [POP](https://rosettacode.org/wiki/Post_Office_Protocol) email, [LDAP](https://rosettacode.org/wiki/LDAP) directories, [.NET](https://rosettacode.org/wiki/Microsoft_.NET), [ActiveX](https://rosettacode.org/wiki/ActiveX), [Component Object Model](https://rosettacode.org/wiki/Component_Object_Model) (COM), [C(++)](https://rosettacode.org/wiki/C_(programming_language)) programs, and [Java](https://rosettacode.org/wiki/Java_(programming_language)). Uniface operates under [Microsoft Windows](https://rosettacode.org/wiki/Microsoft_Windows), [Windows Mobile](https://rosettacode.org/wiki/Windows_Mobile), various flavors of [Unix](https://rosettacode.org/wiki/Unix) and [Linux](https://rosettacode.org/wiki/Linux), [VMS](https://rosettacode.org/wiki/OpenVMS), IBM [iSeries](https://rosettacode.org/wiki/IBM_System_i), and  [z/OS](https://rosettacode.org/wiki/z/OS).
 
 Uniface can be used in complex systems that maintain critical enterprise data supporting mission-critical business processes such as point-of sale and web-based online shopping, financial transactions, salary administration, and inventory control. It is currently used by thousands of companies in more than 30 countries, with an effective installed base of millions of end-users. Uniface applications range from client/server to web, and from data entry to workflow, as well as portals that are accessed locally, via intranets and the internet.
 
-Originally developed in the Netherlands by Inside Automation, later Uniface B.V., the product and company were acquired by Detroit-based [[Compuware]] Corp in 1994, and in 2014 was acquired by Marlin Equity Partners and is now an independent company. Uniface B.V. global headquarters are based in [[Amsterdam]].
+Originally developed in the Netherlands by Inside Automation, later Uniface B.V., the product and company were acquired by Detroit-based [Compuware](https://rosettacode.org/wiki/Compuware) Corp in 1994, and in 2014 was acquired by Marlin Equity Partners and is now an independent company. Uniface B.V. global headquarters are based in [Amsterdam](https://rosettacode.org/wiki/Amsterdam).
 
-== Uniface Products ==
+## Uniface Products
 Uniface Development Environment—an integrated collection of tools for modeling, implementing, compiling, debugging, and distributing applications.
 
 
@@ -26,7 +26,7 @@ Uniface applications, including the above, use a common runtime infrastructure, 
 * Uniface Runtime Engine—a platform-specific process that interprets and executes compiled application components and libraries.
 * Uniface Router—a multi-threaded process responsible for interprocess communication in Uniface applications. It starts and stops Uniface Server processes, performs load balancing, and passing messages between various Uniface processes.
 * Uniface Server—a server-based process that enables Uniface clients to access remote resources or to execute remote components. It acts as an application server, a data server, and a file server.
-*Uniface Repository—an [[SQL]]-capable DBMS used to store definitions and properties of development objects, process and organization models, and portal definitions.
+*Uniface Repository—an [SQL](https://rosettacode.org/wiki/SQL)-capable DBMS used to store definitions and properties of development objects, process and organization models, and portal definitions.
 *Web server—Uniface bundles the Apache Tomcat Server for developing and testing web applications, but any web server can be used in a production environment.
 *Servlets—Java servlets that broker communication between a web server and the Uniface Server for Uniface web applications and web services.
 *Database connectors—drivers that handle the connection between Uniface and a variety of databases.
@@ -36,7 +36,7 @@ In addition, the Uniface JTi (Java Thin Client Interface) can deliver client/ser
 
 Uniface has a proprietary procedural language called Proc that is used to code application behavior. Uniface automates most input/output operations through its kernel and default code, so much fundamental behavior does not need to be coded.
 
-== Uniface Applications ==
+## Uniface Applications
 Uniface applications are component-based, infrastructure-independent software programs that can create or use data stored in one or more databases or file-systems. They can be composite applications that include non-Uniface components created using other development tools, and they can be deployed in distributed client/server and web environments, as mobile applications or web services, and in mainframe environments.
 
 Uniface has a variety of component types that are intended for use in different layers of a multi-tier application architecture.
@@ -55,8 +55,8 @@ The data access tier contains physical database structures captured in the Unifa
 
 The runtime engine executes the application components. It displays presentation components using the appropriate user interface connector (either GUI or character-based), and sends and receives data via a DBMS connector.
 
-== Application Development ==
-Uniface applications are developed on with the Uniface Development Environment. Originally, it was possible to develop on [[Apple Inc.|Apple]] and [[Digital Equipment|DEC]] platforms; now, [[Microsoft Windows|Windows]] is the supported platform for development.
+## Application Development
+Uniface applications are developed on with the Uniface Development Environment. Originally, it was possible to develop on [Apple](https://rosettacode.org/wiki/Apple_Inc.) and [DEC](https://rosettacode.org/wiki/Digital_Equipment) platforms; now, [Windows](https://rosettacode.org/wiki/Microsoft_Windows) is the supported platform for development.
 
 Uniface applications development is model-driven and component-based. The data structure, business rules, and default behavior of the application are captured in the Application Model. Model definitions can be reused and inherited by components, which can override inherited definitions and provide component-specific behavior and characteristics. Templates improve productivity and enforce consistency when defining models.
 
@@ -86,37 +86,34 @@ The properties and triggers defined in the application model are inherited by be
 
 Uniface maintains a database of its own metadata for the purposes of reuse—application models, component definitions, component layouts, procedural code, and so on. The repository is proprietary and intended for access via the Uniface Development Environment, to ensure repository integrity. However, the repository structure is documented, making it possible (though not recommended) to interface directly with it for, for example, reporting.
 
-By using a centralized repository, application development can be shared over teams of software developers.  Uniface can integrate with any [[version control system]] (VCS) that supports the Microsoft Common Source Code Control Interface Specification.  The VCS functionality available within Uniface depends on the VCS used, because software vendors have interpreted and implemented the MS CSCC API differently.
+By using a centralized repository, application development can be shared over teams of software developers.  Uniface can integrate with any [version control system](https://rosettacode.org/wiki/version_control_system) (VCS) that supports the Microsoft Common Source Code Control Interface Specification.  The VCS functionality available within Uniface depends on the VCS used, because software vendors have interpreted and implemented the MS CSCC API differently.
 
-== Application Deployment ==
+## Application Deployment
 Uniface applications can be deployed on platforms from mainframe through mobile, without changing the code. The components (and other objects such as startup shells, menus, toolbars (panels), glyphs, global and included Proc entries) are compiled into runtime objects that can be packaged into zip files and deployed onto any platform. The runtime objects are executed using a virtual machine and a platform-specific interpreter. (Java later followed Uniface in this respect). Components can be compiled on one machine and executed on another, providing the Uniface Virtual Machine is present.
 
 The Uniface Router and Uniface Server make Uniface scalable, balanceable and make is possible to run processes asynchronously.
 
-== Database Connectivity ==
+## Database Connectivity
+Uniface accesses the many databases and file systems it supports by means of database connectors (or drivers). DBMS connectors map and convert Uniface data types to the most suitable format of the particular storage medium. At runtime, it is possible to pass parameters to invoke (or disable) database-specific extensions.  Provided the database connector is licensed, it is possible to convert between different data sources. Uniface also provides an API, the Database Connector Interface, which can be used to create proprietary connectors for any [SQL](https://rosettacode.org/wiki/SQL)-based database.
 
-Uniface accesses the many databases and file systems it supports by means of database connectors (or drivers). DBMS connectors map and convert Uniface data types to the most suitable format of the particular storage medium. At runtime, it is possible to pass parameters to invoke (or disable) database-specific extensions.  Provided the database connector is licensed, it is possible to convert between different data sources. Uniface also provides an API, the Database Connector Interface, which can be used to create proprietary connectors for any [[SQL]]-based database.
-
-== Licensing ==
-
+## Licensing
 Licensing is managed through the Compuware Distributed License Manager (DLM), a server based system of distributing licenses to clients on request, precluding the need for them to be held locally.
 
-== History of Uniface ==
+## History of Uniface
 Originally called UNIS, the product was created in The Netherlands in 1984 by Inside Automation, a company that was headed by Bodo Douqué, with Frits Kress as Technical Director. By 1986, both the product and the company had changed their name to Uniface. (An early logo for the product included a red capital A which reflected the red capital A in the Inside Automation logo.)
 
-Uniface was developed on the principles of the American National Standards Institute, (ANSI), [[Three_schema_approach|3-schema architecture]].  First proposed in 1975, this was a standard approach to the building of database management systems consisting of 3 schema (or metamodels):
+Uniface was developed on the principles of the American National Standards Institute, (ANSI), [3-schema architecture](https://rosettacode.org/wiki/Three_schema_approach).  First proposed in 1975, this was a standard approach to the building of database management systems consisting of 3 schema (or metamodels):
 *Conceptual schema—definition of all the data items and relationships between them. There is only one conceptual schema per database. Uniface implements the conceptual schema as the Application Model (in various Uniface versions known as the Business Object Model and the Application Object Model).
 *External schema—different external (user) views of the data. There can be many external schemas for a database. Uniface implements external schemas as components. During Uniface's evolution, the External Schema became forms; hidden forms, which ran in the background without displaying to the user, became services; services split into session services for objects of the business tier and entity services that may be either business or data tier. Forms that were printed instead of being displayed became report components. The server page (USP) was introduced for web development, and later the dynamic server page was introduced to support Web 2.0 functionality.
 *Internal schema—definition of the physical representation of the stored data. Uniface leaves the internal schema to the many relational database systems to which it could be connected, enabling it to be database-independent.
 
-Uniface was developed on the [[Digital Equipment Corporation|DEC]] [[VAX]] machine, using the native VAX file-management system [[Record Management Services|RMS]].  A vestige of this is still seen in today’s product by its continued use of a [[Gold key (DEC)|“GOLD” key]] to change modes ([[VT100|DEC VT terminals]] actually had a gold or yellow key on the keyboard. Today the “GOLD” is simply mapped to the numeric keyboard + key, or a function key).
+Uniface was developed on the [DEC](https://rosettacode.org/wiki/Digital_Equipment_Corporation) [VAX](https://rosettacode.org/wiki/VAX) machine, using the native VAX file-management system [RMS](https://rosettacode.org/wiki/Record_Management_Services).  A vestige of this is still seen in today’s product by its continued use of a [“GOLD” key](https://rosettacode.org/wiki/Gold_key_(DEC)) to change modes ([DEC VT terminals](https://rosettacode.org/wiki/VT100) actually had a gold or yellow key on the keyboard. Today the “GOLD” is simply mapped to the numeric keyboard + key, or a function key).
 
 Early versions of the product were bundled with the Sybase RDBMS under the name FastBuild, although it was not limited to accessing only that database.
 
 Uniface has continuously evolved to handle new technologies and application architectures. This has been critical to its success, because applications built with Uniface can be migrated, updated and modernized without losing the original development investment.
 
-== Uniface Versions ==
-
+## Uniface Versions
 '''Uniface Version 3''' (1986):
 Uniface 3 was the first public release. It featured support for multiple databases (RMS, Oracle, C_ISAM, Ingres, and RDB); virtual machine interpretation; the Structure Editor, the Uniface text and command editor.
 
@@ -163,7 +160,7 @@ The Uniface Business Unit has been very transparent to the customer base that Un
 
 There is the intention to continue to provide minor enhancements to Uniface 9.6 until 2017.
 
-==External links==
+## External links
 *[http://www.uniface.com Uniface product page] The Uniface Corporate Site
 *[http://www.nextcomcz.eu/index.php?kategorie=en.php Nextcom] Czech company developing in Uniface
 *[http://www.udev.info www.udev.info] building better web applications with Uniface (Tutorials und HowTo's)

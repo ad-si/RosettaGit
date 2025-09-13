@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|hexiscript|site=https://github.com/Rion96/hexiscript|tags=hexiscript|exec=interpreted|checking=dynamic|express=implicit}}
-hexiscript is a dynamically typed scripting language written in [[OCaml]].
+
+hexiscript is a dynamically typed scripting language written in [OCaml](https://rosettacode.org/wiki/OCaml).
 The interpreter is available [https://github.com/Rion96/hexiscript here].

@@ -10,11 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Burlesque
-|exec=interpreted
-|site=http://mroman.ch/burlesque
-|checking=dynamic
-}}
 
 'The Burlesque Programming Language' as a stack-based, dynamic typed, concatenative, lazy and esoteric programming language developed by
 Roman Müntener since 2012. It was designed to write short and compact code for simple problems. The language specification does not specify
@@ -37,8 +32,5 @@ is turing-complete. A brainfuck interpreter:
 
 
 
-You might also want to read the article on [[eso:Burlesque|esowiki]].
-
-{{language programming paradigm|concatenative}}
-
-[[Category:Esoteric Languages]]
+You might also want to read the article on [esowiki](https://rosettacode.org/wiki/eso:Burlesque).
+[Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Sage
-|site=http://www.sagemath.org/}}
 
 
 

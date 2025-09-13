@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|MathCortex}}
+
 
 MathCortex is a simple lightweight programming language that is designed for doing numerical calculation on web browsers.
 

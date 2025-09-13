@@ -10,8 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|XProc
-|site=http://www.w3.org/TR/xproc
-|LCT=no
-}}
 XProc is a pipeline language

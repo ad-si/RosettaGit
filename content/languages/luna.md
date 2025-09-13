@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Luna}}
+
 
 http://www.luna-lang.org/

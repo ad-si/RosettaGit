@@ -10,13 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://compsoc.dur.ac.uk/whitespace/
-|exec=interpreted
-|tags=whitespace
-|hopl=no
-|LCT=no
-}}
 Whitespace is a language in which non whitespace characters are ignored; only spaces, tabs and newlines are considered syntax.
 
-[[Category:Esoteric_Languages]]
+[Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

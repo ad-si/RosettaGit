@@ -9,14 +9,9 @@ id = 6248
 categories = []
 tags = []
 +++
-
-{{language
-|untyped=yes}}
-{{language programming paradigm|procedural}}
-
 <p>Visit the Google group <b>comp.lang.mumps</b> for discussions about this language.</p>
 
-<p>Visit [[wp:MUMPS|Wikipedia]] for a general description.</p>
+<p>Visit [Wikipedia](https://en.wikipedia.org/wiki/MUMPS) for a general description.</p>
 
 <p>See http://71.174.62.16/Demo/AnnoStd for details about the language.</p>
 

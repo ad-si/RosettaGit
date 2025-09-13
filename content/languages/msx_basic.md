@@ -10,17 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|MSX Basic}}
-
-
-{{language|MSX Basic
-|exec=interpreted
-|site=https://www.webmsx.org/
-|parampass=both
-|tags=MSXBasic}}
-{{language programming paradigm|procedural}}
-{{implementation|BASIC}}
-
 
 MSX Basic is the BASIC built into the ROM of the MSX compatible computers.
 

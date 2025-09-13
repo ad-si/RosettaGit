@@ -10,11 +10,9 @@ categories = []
 tags = []
 +++
 
-{{language|Raven
-|site=http://aerosuidae.net/raven.html}}
-Raven is an eclectic language with features derived from [[derived from::Python]], [[derived from::Forth]], and [[derived from::Perl]]. It was developed independently by [[User:Mythago|Sean Pringle]]. Raven is available from [http://aerosuidae.net aerosuidae.net] under the GNU General Public License. It is currently only available for the [[runs on::Linux]] platform.
+Raven is an eclectic language with features derived from [derived from::Python](https://rosettacode.org/wiki/derived_from::Python), [derived from::Forth](https://rosettacode.org/wiki/derived_from::Forth), and [derived from::Perl](https://rosettacode.org/wiki/derived_from::Perl). It was developed independently by [Sean Pringle](https://rosettacode.org/wiki/User:Mythago). Raven is available from [http://aerosuidae.net aerosuidae.net] under the GNU General Public License. It is currently only available for the [runs on::Linux](https://rosettacode.org/wiki/runs_on::Linux) platform.
 
-==Features==
+## Features
 Its described feature set includes:
 
 
@@ -35,7 +33,7 @@ Its described feature set includes:
 
 
 * Lists and Hash tables.
-* [[Regular_expression_matching|Regular Expressions]].
+* [Regular Expressions](https://rosettacode.org/wiki/Regular_expression_matching).
 
 
 ### Other design goals
@@ -43,13 +41,13 @@ Its described feature set includes:
 
 * Use clear and concise syntax.
 * Be fast to write and fast to run.
-* Use [[closures]] as a simple object model.
+* Use [closures](https://rosettacode.org/wiki/closures) as a simple object model.
 * Have minimal restrictions on variable and function names.
 * Rely on best practices guidelines rather than imposing rules for everything.
-* Interface to [[MySQL]] and SQLite.
+* Interface to [MySQL](https://rosettacode.org/wiki/MySQL) and SQLite.
 * Support multithreading.
 
 Source: [http://aerosuidae.net/raven.html The Raven home page]
 
-==Other Resources==
+## Other Resources
 * [http://aerosuidae.net/raven.html Raven Manual]

@@ -9,6 +9,4 @@ id = 22364
 categories = []
 tags = []
 +++
-
-{{language|G-fu}}
 g-fu [https://github.com/codr7/g-fu] is a pragmatic Lisp [https://xkcd.com/297/] developed and embedded in Go.

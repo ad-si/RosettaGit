@@ -9,7 +9,5 @@ id = 21412
 categories = []
 tags = []
 +++
-
-{{language|Action!}}
 Action! is a language written by Clinton Parker and published by Optimized Sytems Software (OSS) for the Atari 8-bit line of home computers.
 It is related to ALGOL and optimized for single-pass compilation to 6502 code.

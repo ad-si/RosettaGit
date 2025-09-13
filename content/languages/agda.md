@@ -10,6 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|Agda
-|site=http://wiki.portal.chalmers.se/agda/pmwiki.php}}{{implementation|Agda}}{{stub}}
 Agda is a dependently typed functional programming language.

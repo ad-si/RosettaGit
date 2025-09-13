@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 Biferno is a new generation, Cross Platform Web Scripting Language that allows developers the rapid implementation of dynamic Web applications and of Web sites that offer a high degree of user interactivity.
 

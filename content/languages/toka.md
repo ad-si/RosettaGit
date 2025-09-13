@@ -10,11 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Toka
-|site=http://code.google.com/p/toka/
-|gc= yes
-|LCT=no
-}}
-{{compiler}}Toka is a concatenative programming language with similarities to [[:Category:Forth|Forth]]. It has two accessible [[Stack|stacks]] for passing data, a dictionary which maps names to functions, an [[interpreter]], a [[compiler]] (generating threaded code), a form of [[garbage collection]], and various functions to aid in debugging and inspecting compiled code. Toka also has a set of optional libraries that extend the core language in many ways.
+Toka is a concatenative programming language with similarities to [Forth](https://rosettacode.org/wiki/:Category:Forth). It has two accessible [stacks](https://rosettacode.org/wiki/Stack) for passing data, a dictionary which maps names to functions, an [interpreter](https://rosettacode.org/wiki/interpreter), a [compiler](https://rosettacode.org/wiki/compiler) (generating threaded code), a form of [garbage collection](https://rosettacode.org/wiki/garbage_collection), and various functions to aid in debugging and inspecting compiled code. Toka also has a set of optional libraries that extend the core language in many ways.
 
-Toka is distributed under an [[open source|open-source]] license.
+Toka is distributed under an [open-source](https://rosettacode.org/wiki/open_source) license.

@@ -10,10 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.snobol4.org/
-|gc=yes}}
-SNOBOL4 (StriNg Oriented and symBOlic Language) is a language for text processing, pattern matching, and much more, first designed and implemented at [[Bell Labs|Bell Telephone Laboratories, Inc.]] (BTL) in the 1970's.
+SNOBOL4 (StriNg Oriented and symBOlic Language) is a language for text processing, pattern matching, and much more, first designed and implemented at [Bell Telephone Laboratories, Inc.](https://rosettacode.org/wiki/Bell_Labs) (BTL) in the 1970's.
 
 SNOBOL4, while known primarily as a string language excels at any task involving symbolic manipulations. It provides run time typing, garbage collection, user data types, on the fly compilation. The language has a simple and highly orthogonal syntax, making it easy to learn.
 

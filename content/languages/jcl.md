@@ -9,9 +9,7 @@ id = 12405
 categories = []
 tags = []
 +++
-
-{{language}}
-[[Category:JCL]]
+[Category:JCL](https://rosettacode.org/wiki/Category:JCL)
 IBM Job Control Language
 
 Job Control Language, commonly named JCL, refers to certain scripting languages, particularly IBM mainframe operating systems, whose role is to run a batch job.
@@ -27,10 +25,10 @@ In the JCL, the unit is the job, which consists of one or more steps. Each step 
 
 It is possible to create JCL scripts that can be called in other JCL scripts by passing parameters if necessary. Such scripts are called procedures.
 
-==DOS JCL==
+## DOS JCL
 DOS JCL parameters are positional, which makes them harder to read and write, but easier for the system to parse.
 
-==OS JCL==
+## OS JCL
 In general, the OS JCL is more flexible and easier to use than the DOS JCL.
 
 
@@ -45,8 +43,8 @@ The OS JCL has only three basic cards:
 
 In the following examples JCL refers only to IBM OS JCL.
 
-==Wikipedia article==
+## Wikipedia article
 https://en.wikipedia.org/wiki/Job_Control_Language
 
-==See also==
+## See also
 https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zjcl/zjclc_basicjclconcepts.htm

@@ -9,13 +9,11 @@ id = 19651
 categories = []
 tags = []
 +++
-
-{{language|xEec}}
-'''xEec''' is an esoteric programming language designed and implemented in October 2015 by [[Paulo Jorente]].
+'''xEec''' is an esoteric programming language designed and implemented in October 2015 by [Paulo Jorente](https://rosettacode.org/wiki/Paulo_Jorente).
 
 
-==See also==
+## See also
 * [http://esolangs.org/wiki/xEec xEec Esolangs] &ndash; xEec on Esolangs
 * [http://paulo-jorente.de/poncho/esolang/xEec xEec page] &ndash; features specs, programs and an interpreter.
 
-[[Category:Esoteric_Languages]]
+[Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

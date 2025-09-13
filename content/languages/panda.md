@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|gc=yes|checking=static|hopl=no|site=http://pandalang.org}}
+
 
 Panda is a new interactive functional typed dataflow event based programming language. It reminds people of jquery, or unix pipes.
 

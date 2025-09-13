@@ -10,19 +10,9 @@ categories = []
 tags = []
 +++
 
-{{language|Retro
-|exec=machine
-|site=http://retroforth.org
-|gc=no
-|parampass=reference
-|untyped=yes
-|tags=retro
-}}
 
-Retro is a stack-based, concatenative programming language with roots in [[Forth]].
+Retro is a stack-based, concatenative programming language with roots in [Forth](https://rosettacode.org/wiki/Forth).
 
-==Links==
+## Links
 *[http://forthworks.com/retro Main Site]
 *[http://forth.works/book.html Documentation]
-
-{{Language programming paradigm|Concatenative}}

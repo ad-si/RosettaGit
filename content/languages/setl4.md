@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Setl4}}
+
 
 SETL4 is a new implementation of Setl that brings the raw power and speed of SPITBOL to non-numeric computation using set-theoretic constructs
 

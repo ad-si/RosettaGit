@@ -10,7 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
-68000 assembly is the assembly language used for the Motorola 68000, or commonly known as the 68K. It should not be confused with the 6800 (which predates it). It was used in many computers such as the Amiga or the Canon Cat.
 
-{{merge language | M680x0 }}
+68000 assembly is the assembly language used for the Motorola 68000, or commonly known as the 68K. It should not be confused with the 6800 (which predates it). It was used in many computers such as the Amiga or the Canon Cat.

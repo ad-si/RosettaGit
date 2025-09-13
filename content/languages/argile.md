@@ -10,23 +10,21 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.nongnu.org/argile/}}
-Argile is an experimental, [[C]]-based, compiled programming language, that produces C code. It is not intended for beginners, but for experienced programmers with a good knowledge of C.
+Argile is an experimental, [C](https://rosettacode.org/wiki/C)-based, compiled programming language, that produces C code. It is not intended for beginners, but for experienced programmers with a good knowledge of C.
 Its main features are:
 * Variable syntax
 * Polymorphism-oriented
 * Call guessing
 * Keyword-less
-* [[UTF-8]] based
+* [UTF-8](https://rosettacode.org/wiki/UTF-8) based
 * Access to low level programming
 * Extensible through a module system
 * Parametered types
-* [[Object-oriented]] classes available
+* [Object-oriented](https://rosettacode.org/wiki/Object-oriented) classes available
 * Implicit type casters can be defined
 * Definitions can be made after they are used
 * Subfunctions and anonymous functions
 * Both indentation-style and braces-style can be used
 
-==See also==
+## See also
 * [https://savannah.nongnu.org/projects/argile/ Argile project page on Savannah]

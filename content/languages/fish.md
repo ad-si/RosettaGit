@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language}}Fish is an Funge-like esoteric language, consisting of the traditional Funge one-character commands.
-A complete specification with a list of implementations can be found at [[eso:Fish|esolangs]].
+Fish is an Funge-like esoteric language, consisting of the traditional Funge one-character commands.
+A complete specification with a list of implementations can be found at [esolangs](https://rosettacode.org/wiki/eso:Fish).
 
-[[Category:Esoteric_Languages]]
+[Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

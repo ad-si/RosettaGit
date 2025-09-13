@@ -9,19 +9,10 @@ id = 20053
 categories = []
 tags = []
 +++
-
-{{language|FUZE BASIC
-|exec=interpreted
-|site=https://www.fuze.co.uk/
-|parampass=both
-|tags=fuze}}
-{{language programming paradigm|procedural}}
-{{implementation|BASIC}}
-
 [[Image:Logo.png]]         [[Image:FUZE.png]][[File:Pi.jpg|250px]]
 
 
-'''FUZE BASIC''' is included, pre-configured and ready-to-run on the FUZE, a computer based on the [[Raspberry Pi]], but can also be installed, [https://www.fuze.co.uk/getfuzebasic/ free of charge] on a standard [[Raspberry Pi]] with some minor limitations due to a lack of on-board sensors which are added to the FUZE hardware.
+'''FUZE BASIC''' is included, pre-configured and ready-to-run on the FUZE, a computer based on the [Raspberry Pi](https://rosettacode.org/wiki/Raspberry_Pi), but can also be installed, [https://www.fuze.co.uk/getfuzebasic/ free of charge] on a standard [Raspberry Pi](https://rosettacode.org/wiki/Raspberry_Pi) with some minor limitations due to a lack of on-board sensors which are added to the FUZE hardware.
 
 <blockquote>
 Quotes from the official website (https://www.fuze.co.uk/):

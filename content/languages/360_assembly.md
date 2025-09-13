@@ -9,9 +9,7 @@ id = 12427
 categories = []
 tags = []
 +++
-
-{{language}}
-[[Category:Assembly]]
+[Category:Assembly](https://rosettacode.org/wiki/Category:Assembly)
 IBM 360 assembly language.
 
 From Wikipedia, the free encyclopedia.
@@ -27,11 +25,10 @@ However, the full name and the initialism "BAL" almost immediately attached
 themselves in popular use to all assembly-language dialects on the System/360 and
 its descendants. The 360 assembly was introduced with the System/360 in 1964.
 
-==Wikipedia article==
-[[wp:IBM_Basic_assembly_language_and_successors|IBM Basic assembly language and successors]]
+## Wikipedia article
+[IBM Basic assembly language and successors](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors)
 
-==See also==
-
+## See also
 WikiBooks Article: https://en.wikibooks.org/wiki/360_Assembly/360_Instructions
 
 IBM manuals:

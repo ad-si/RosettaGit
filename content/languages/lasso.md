@@ -10,11 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|Lasso
-|site=http://www.LassoSoft.com
-}}
 Lasso is an application server and server management interface used for developing internet applications as well as a general-purpose, high-level programming language. Born as a web datasource connection tool for Filemaker and later included in Apple Computer's FileMaker 4.0 and Claris Homepage as CDML, it has since evolved into a complex language used to develop and serve large-scale internet applications and web pages.
 
-==See also==
-* [[wp:Lasso_(programming_language)|Lasso on Wikipedia]]
+## See also
+* [Lasso on Wikipedia](https://en.wikipedia.org/wiki/Lasso_(programming_language))
 * [http://www.LassoGuide.com The Lasso Programming Guide]

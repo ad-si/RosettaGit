@@ -10,14 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|Swift
-|exec=machine
-|strength=strong
-|checking=both
-|parampass=both
-|gc=reference counting
-|safety=safe
-|compat=nominative
-|site=http://developer.apple.com/swift/
-|LCT=yes}}{{language programming paradigm|Object-oriented}}
-[[wp:Swift (Apple programming language)|Swift]] is a general purpose, multi-paradigm, systems programming language developed by Apple Inc. originally for Apple platforms. Linux support was added when open source Swift was released. It runs on the Objective-C runtime on Darwin and is mainly used with the Cocoa API. It was announced at WWDC 2014.
+[Swift](https://en.wikipedia.org/wiki/Swift_(Apple_programming_language)) is a general purpose, multi-paradigm, systems programming language developed by Apple Inc. originally for Apple platforms. Linux support was added when open source Swift was released. It runs on the Objective-C runtime on Darwin and is mainly used with the Cocoa API. It was announced at WWDC 2014.

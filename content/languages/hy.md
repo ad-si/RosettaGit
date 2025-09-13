@@ -9,10 +9,6 @@ id = 17717
 categories = []
 tags = []
 +++
-
-{{language}}
-{{implementation|Lisp}}
-
-A Lispy syntax for [[Python]]. The implementation generates Python abstract syntax trees (AST), not just bytecode, so you can use Hy with, e.g., PyPy just as well as CPython.
+A Lispy syntax for [Python](https://rosettacode.org/wiki/Python). The implementation generates Python abstract syntax trees (AST), not just bytecode, so you can use Hy with, e.g., PyPy just as well as CPython.
 
 Website: http://hylang.org

@@ -9,18 +9,6 @@ id = 17123
 categories = []
 tags = []
 +++
-
-{{language|Egison
-|strength=strong
-|safety=safe
-|checking=dynamic
-|gc=yes
-|LCT=yes
-|site=http://www.egison.org}}
-{{language programming paradigm|Pattern-matching oriented}}
-{{language programming paradigm|functional}}
-{{implementation|Lisp}}
-
 '''Egison''' is a programming language that realizes non-linear pattern-matching against unfree data types.
 We can directly represent pattern-matching against a wide range of data types such as lists, multisets, sets, trees and graphs.
 Egison makes programming dramatically simple!

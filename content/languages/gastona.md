@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Gastona
-|site=https://github.com/wakeupthecat/gastona github.com/wakeupthecat/gastona}}
 
 '''Gastona''' is an interpreted language which main goal is to build applications with or
 without Graphical User Interface with the less programming effort possible. Although it has variables, loops,

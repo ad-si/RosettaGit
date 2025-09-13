@@ -9,7 +9,3 @@ id = 13346
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://livescript.net/}}

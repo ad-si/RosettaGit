@@ -10,10 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|bnf=http://cui.unige.ch/db-research/Enseignement/analyseinfo/Modula2/BNFindex.html
-|site=http://www.modula2.net/
-|tags=modula2}}
+
 Modula-2 was designed by Niklaus Wirth at ETH Zurich as a systems implementation language for the operating system of the Lilith workstation, a project inspired by the Alto which Wirth had used during his sabbatical year at Xerox PARC in 1976. Modula-2 is a strongly typed language of the Pascal family and its predecessors are Mesa and Pascal. In Modula-2, Wirth had addressed most of the criticisms against Pascal. The most important concepts introduced were modularity and information hiding but also system access and concurrent programming. There are two main variants of Modula-2, the language described in Wirth's book "Programming in Modula-2" also known as PIM or classical Modula-2 and the revised and extended version produced by the ISO standards committee, known as ISO Modula-2.
 
 

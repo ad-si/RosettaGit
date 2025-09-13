@@ -10,13 +10,10 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|XBase
-|LCT=no
-}}
-{{Wikipedia}}
+
 XBase is the generic term for all programming languages that derive from the original dBASE (Ashton-Tate) programming language and database formats. These are sometimes informally known as dBASE "clones". While there was a non-commercial predecessor to the Ashton-Tate product (Vulcan written by Wayne Ratliff), most clones are based on Ashton-Tate's 1986 dBASE III+ release — scripts written in the dBASE III+ dialect are most likely to run on all the clones.
 
-== Implementations ==
+## Implementations
 * [http://www.vistasoftware.com/ Apollo database engine] for managing CA-Clipper and FoxPro from Vista Software
 * Clipper, Visual Objects (Windows 32) and Vulcan.NET from [http://www.grafxsoft.com/ GrafxSoft]
 * [http://dbase.com/ dBase Inc]'s dBASE

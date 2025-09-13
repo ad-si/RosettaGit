@@ -10,6 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|Rhope
-|site=http://rhope.retrodev.com/}}
-{{language programming paradigm|concurrent}}'''Rhope''' is a general purpose, multi-[[:Category:Programming Paradigms|paradigm]] language designed by Michael Pavone. It uses a combination of the dataflow paradigm and a transaction mechanism to make [[concurrent programming]] easier.
+'''Rhope''' is a general purpose, multi-[paradigm](https://rosettacode.org/wiki/:Category:Programming_Paradigms) language designed by Michael Pavone. It uses a combination of the dataflow paradigm and a transaction mechanism to make [concurrent programming](https://rosettacode.org/wiki/concurrent_programming) easier.

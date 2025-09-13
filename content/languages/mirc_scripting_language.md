@@ -9,11 +9,9 @@ id = 1824
 categories = []
 tags = []
 +++
-
-{{language|MIRC Scripting Language}}
 ''The real name is mIRC Scripting Language. Due to technical limitations, the first letter is capitalized''
 
-The '''mIRC Scripting Language''' is a [[programming language]] interpreted by the well known '''mIRC''' IRC client for [[Microsoft]] [[Windows]].
+The '''mIRC Scripting Language''' is a [programming language](https://rosettacode.org/wiki/programming_language) interpreted by the well known '''mIRC''' IRC client for [Microsoft](https://rosettacode.org/wiki/Microsoft) [Windows](https://rosettacode.org/wiki/Windows).
 
 * Official Website: http://www.mirc.com/
 * Plugins Website: http://www.mircscripts.org/

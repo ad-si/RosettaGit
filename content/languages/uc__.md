@@ -10,7 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|UC++
-|site=http://www.russel.org.uk/KC++/index.html}}
 
-UC++ is an extension of [[C++]], incorporating in an integral way active objects, which allows the language to be used for building parallel systems.
+
+UC++ is an extension of [C++](https://rosettacode.org/wiki/C++), incorporating in an integral way active objects, which allows the language to be used for building parallel systems.

@@ -9,14 +9,11 @@ id = 12198
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language}}
-Vim Script is the language for scripting the popular [http://www.vim.org/ Vim text editor] ( a [[Vi|Vi-clone]] ).
+Vim Script is the language for scripting the popular [http://www.vim.org/ Vim text editor] ( a [Vi-clone](https://rosettacode.org/wiki/Vi) ).
 
 It is also sometimes called VimL.
 
-== External Links ==
+## External Links
 * [http://www.vim.org vim.org] - official site
 * [http://www.vim.org/scripts/ Vim's script repository]
 * [http://vimdoc.sourceforge.net/htmldoc/usr_41.html "Write a Vim Script"] - intro to Vim Script in the Vim documentation

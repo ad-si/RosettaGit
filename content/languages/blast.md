@@ -10,7 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Blast
-|site=http://www.opencomm.co.uk/}}
+
 
 '''Blast''' is a cross platorm communication scripting language that can be used to perform data transfers between two hosts.

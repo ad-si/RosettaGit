@@ -9,22 +9,9 @@ id = 21052
 categories = []
 tags = []
 +++
+FutureBasic began life as Zbasic, a commercial variant of [BASIC](https://rosettacode.org/wiki/BASIC) for the early Macintoshes, but has grown far beyond that into a mature freeware IDE that, through its FBtoC translator, can be used to compile C and Objective-C [object-oriented](https://rosettacode.org/wiki/object-oriented) code using the clang compiler included with an Xcode installation. It is excellent as a educational tool and for fast prototyping -- especially in Objective-C (Cocoa) by those who prefer programmatic code over the overhead of Xcode. Among its enthusiasts are commercial developers, engineers, professors, doctors, musicians, writers and a host of amateurs who program with FB for the sheer joy of it.
 
-{{language|FutureBasic
-|exec=interpreted
-|strength=strong
-|safety=safe
-|parampass=both
-|exec=machine
-|gc=no
-|site=http://4toc.com/fb/index.htm
-|tags=futurebasic}}
-{{language programming paradigm|procedural}}
-{{implementation|BASIC}}
-
-FutureBasic began life as Zbasic, a commercial variant of [[BASIC]] for the early Macintoshes, but has grown far beyond that into a mature freeware IDE that, through its FBtoC translator, can be used to compile C and Objective-C [[object-oriented]] code using the clang compiler included with an Xcode installation. It is excellent as a educational tool and for fast prototyping -- especially in Objective-C (Cocoa) by those who prefer programmatic code over the overhead of Xcode. Among its enthusiasts are commercial developers, engineers, professors, doctors, musicians, writers and a host of amateurs who program with FB for the sheer joy of it.
-
-== FutureBasic Home Page & Download ==
+## FutureBasic Home Page & Download
 http://4toc.com/fb/index.htm
 
 Here is where you can download your freeware copy of the FutureBasic IDE for Macintosh OS X 10.4 and newer, along with detailed installation instructions (FB requires installation of Xcode and QuickDraw headers); programming examples; and other information.
@@ -50,18 +37,17 @@ fn PrintSomething( "Hello, World!" )
 ```
 
 
-== FutureBasic List ==
+## FutureBasic List
 http://freegroups.net/groups/futurebasic/
 
 The FutureBasic mailing list is a free service to the FB programming community, courtesy of associate.com. The list is available by online, and/or by email subscription to anyone interested FB programming on the Macintosh. List members include raw beginners through published commercial software authors. The FB development team and some long-time enthusiasts are knowledgeable and friendly and are very quick to respond to questions posted on the list. In addition, demonstration program code is frequently posted here.
 
-== Wikipedia ==
+## Wikipedia
 https://en.wikipedia.org/wiki/FutureBASIC
 
 Discusses the history of FutureBasic and its predecessor, ZBasic, from the early days of the Macintosh when it was a commercial product, until its morph into today's robust front end to the clang compiler. Information on this page can be outdated, to a better source of the most current information about FB can be found at the web sites above.
 
-== Why FutureBasic? ==
-
+## Why FutureBasic?
 Considering the contempt some programmers have for the BASIC language -- "BASIC ruins programmers" -- it's almost a shame FB has the word "Basic" in its official name. Not only can FB handle BASIC source code, but since it is a front end to clang, it can translate C, Apple's Core Foundation, Objective-C (Cocoa), HTML, XML, SOAP, UNIX Shell, Open GL, etc. This makes it an excellent tool for prototyping -- especially for programmatic Objective-C when the overhead of Xcode is not needed.
 
 According to Wikipedia, FutureBasic began life at the dawn of Apple's Macintosh in the mid-1980s as ZBasic, an implementation of '''BASIC''' -- the ''Beginner's All-purpose Symbolic Instruction Code'' -- which had been around since the language was invented by John G. Kemeny and Thomas E. Kurtz at Dartmouth College during 1963 and 1964.

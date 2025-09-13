@@ -10,21 +10,13 @@ categories = []
 tags = []
 +++
 
-{{language|Visual Basic .NET
-|exec=bytecode
-|strength=strong
-|checking=static
-|parampass=both
-|site=http://msdn.microsoft.com/en-us/vbasic/default.aspx
-|gc=yes
-|LCT=yes}}[[runs on vm::common language runtime| ]]{{language programming paradigm|Object-oriented}}{{collection|Visual Studio}}
-From the [http://msdn.microsoft.com/en-us/vbasic/ Visual Basic Developer Center] website: "With Visual Basic, you can create applications for Windows, the Web, mobile devices, and Office on the .NET Framework". Visual Basic .NET makes it easy to create [[Windows]] form applications quickly and efficiently. The language is [[object-oriented]] and has unique features to speed development and deployment.
+From the [http://msdn.microsoft.com/en-us/vbasic/ Visual Basic Developer Center] website: "With Visual Basic, you can create applications for Windows, the Web, mobile devices, and Office on the .NET Framework". Visual Basic .NET makes it easy to create [Windows](https://rosettacode.org/wiki/Windows) form applications quickly and efficiently. The language is [object-oriented](https://rosettacode.org/wiki/object-oriented) and has unique features to speed development and deployment.
 
-Visual Basic .NET, like [[C sharp|C#]] and other .NET languages, runs on the Microsoft [[runs on vm::Common Language Runtime|Common Language Runtime]] VM.
+Visual Basic .NET, like [C#](https://rosettacode.org/wiki/C_sharp) and other .NET languages, runs on the Microsoft [Common Language Runtime](https://rosettacode.org/wiki/runs_on_vm::Common_Language_Runtime) VM.
 
-Not to be confused with [[:Category:Visual Basic|Visual Basic]], the original pre-.NET, implementation, which has only a passing resemblance to VB.NET.
+Not to be confused with [Visual Basic](https://rosettacode.org/wiki/:Category:Visual_Basic), the original pre-.NET, implementation, which has only a passing resemblance to VB.NET.
 
-==See Also==
-* [[wp:Visual Basic .NET|Wikipedia: Visual Basic .NET]]
+## See Also
+* [Wikipedia: Visual Basic .NET](https://en.wikipedia.org/wiki/Visual_Basic_.NET)
 * [http://msdn.microsoft.com/en-us/vbasic/ The Visual Basic Developer Center]
 * [http://www.mono-project.com/VisualBasic.NET_support Mono: VisualBasic.NET support] — running VB.NET on platforms other than Windows.

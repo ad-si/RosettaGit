@@ -9,11 +9,7 @@ id = 17639
 categories = []
 tags = []
 +++
-
-{{language|L++}}
 L++ is a programming language that transcompiles to C++. It uses Lisp-like syntax.
 
-==See also==
+## See also
 * [https://bitbucket.org/ktg/l L++ website]
-
-{{language programming paradigm|Imperative}}

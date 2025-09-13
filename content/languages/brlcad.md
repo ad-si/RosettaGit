@@ -10,10 +10,9 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|BRL-CAD
-|site=http://www.brlcad.org/}}
+
 
 The brlcad language is the scripting language used by the mged geometry editor shell.
 
 
-[[Category:Constructive Solid Geometry]]
+[Category:Constructive Solid Geometry](https://rosettacode.org/wiki/Category:Constructive_Solid_Geometry)

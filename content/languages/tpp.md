@@ -10,7 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|tpp
-|site=http://www.ngolde.de/tpp.html}}
+
 
 This is the markup language used by Nico Golde's text presentation program.

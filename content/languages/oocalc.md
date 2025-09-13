@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 This is the macro language used in the Calc spreadsheet software, which is distributed as part of the OpenOffice.org and LibreOffice suites.

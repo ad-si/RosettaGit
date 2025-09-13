@@ -10,9 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.caustic.com/
-}}
 RLSL is the shading language that is supported by the Open Ray Tracing Library.
 
-[[Category:Raytracing]]
+[Category:Raytracing](https://rosettacode.org/wiki/Category:Raytracing)

@@ -13,9 +13,6 @@ tags = []
 
 ## SPL
 
-{{language|SPL
-|site=http://kibernetik.pro/spl/
-}}
 
 SPL (Smart Programming Language) is an easy to use programming language. SPL suits very well for everyday programming tasks and for hobbyist programming. SPL does not require hard learning or high user qualification to use.
 

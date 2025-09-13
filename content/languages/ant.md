@@ -9,12 +9,7 @@ id = 8120
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://ant.berlios.de/
-}}
-ANT (ant is not TeX) is a typesetting system inspired by [[TeX]]. In addition to all major features of TeX, ANT provides:
+ANT (ant is not TeX) is a typesetting system inspired by [TeX](https://rosettacode.org/wiki/TeX). In addition to all major features of TeX, ANT provides:
 * an improved macro language
 * a builtin high-level scripting language
 * UNICODE support

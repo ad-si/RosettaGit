@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{Stub}}{{language}}{{assembler language}}[[Category:Assembly]]8086 Assembly is the assembly language used by the Intel 8086 processor. This processor was used for the first time in the IBM PC, and in its various clones. The 8086 gave birth, starting with the 80186 processor, to the X86 family, that nowadays is the most used processor family in desktop computers. All the 32 and 64 bit processors from this family are able to operate in a 8086 compatibility mode, for backward compatibility with legacy software and running very low-level code (like the BIOS). For the evolution of this assembly implementation to 32 bits, see [[X86 assembly]].
+[Category:Assembly](https://rosettacode.org/wiki/Category:Assembly)8086 Assembly is the assembly language used by the Intel 8086 processor. This processor was used for the first time in the IBM PC, and in its various clones. The 8086 gave birth, starting with the 80186 processor, to the X86 family, that nowadays is the most used processor family in desktop computers. All the 32 and 64 bit processors from this family are able to operate in a 8086 compatibility mode, for backward compatibility with legacy software and running very low-level code (like the BIOS). For the evolution of this assembly implementation to 32 bits, see [X86 assembly](https://rosettacode.org/wiki/X86_assembly).
 
-[[category: x86 Assembly]]
+[category: x86 Assembly](https://rosettacode.org/wiki/category:_x86_Assembly)

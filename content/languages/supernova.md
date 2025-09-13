@@ -10,9 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|Supernova
-|site=http://supernova.sourceforge.net/
-}}
+
 
 The Supernova Programming language is a modern scripting language which presents the concept of programming with direct Fiction Description using Clear subset of pure Human Language (Arabic or English).

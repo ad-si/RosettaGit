@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|symsyn}}
+
 
 Symsyn is a simple programming language and realtime multitasking operating environment.  A Symsyn program consists of one or more instructions.  Each instruction maps directly to a Pascal procedure which resides in the runtime emulator.  It can accomodate a virtually unlimited number of new instructions.  There are three data types: 64 bit word, 8 bit character, and Ansi strings.
 

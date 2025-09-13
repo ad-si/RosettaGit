@@ -10,20 +10,11 @@ categories = []
 tags = []
 +++
 
-{{language|eC
-|strength=weak
-|safety=unsafe
-|express=explicit
-|compat=nominative
-|checking=both
-|parampass=both
-|gc=no
-|LCT=yes}}
-eC (Ecere C) is an [[object-oriented]] language derived from and compatible with [[derived from::compatible with::C]] designed and developed by Ecere Corporation. It aims at being fast, light and easy to write.
+eC (Ecere C) is an [object-oriented](https://rosettacode.org/wiki/object-oriented) language derived from and compatible with [derived from::compatible with::C](https://rosettacode.org/wiki/derived_from::compatible_with::C) designed and developed by Ecere Corporation. It aims at being fast, light and easy to write.
 
-It is supported by a cross-[[platform]] runtime [[Ecere|library]] including its own [[GUI]] toolkit, 2D/3D graphics engine as well as networking support.
+It is supported by a cross-[platform](https://rosettacode.org/wiki/platform) runtime [library](https://rosettacode.org/wiki/Ecere) including its own [GUI](https://rosettacode.org/wiki/GUI) toolkit, 2D/3D graphics engine as well as networking support.
 
-The Ecere SDK is completely free and includes a full-featured [[Ecere IDE|Integrated Development Environment]] as well as a compiling tools for the eC language.
+The Ecere SDK is completely free and includes a full-featured [Integrated Development Environment](https://rosettacode.org/wiki/Ecere_IDE) as well as a compiling tools for the eC language.
 
 ''Some of eC Features''
 
@@ -36,7 +27,7 @@ The Ecere SDK is completely free and includes a full-featured [[Ecere IDE|Integr
 * Context sensitive enumerations
 * Component object model enabling dynamic lookup of classes, methods, objects serialization and broking, runtime code class aggregation
 
-== Sample Code ==
+## Sample Code
 ''Properties & Conversions in eC''
 
  '''class''' Pen
@@ -61,7 +52,7 @@ The Ecere SDK is completely free and includes a full-featured [[Ecere IDE|Integr
  pen.color = ColorLab { 53, 79, 66 };
  pen.color = ColorCMYK { 0, 100, 100, 0 };
 
-==External links==
+## External links
 *[http://ec-lang.org/overview Description of eC language on official web site]
 *[http://ecere.ca/ Ecere Corporation's web site]
 *[http://freshmeat.net/projects/ecere/ Ecere SDK project on FreshMeat]

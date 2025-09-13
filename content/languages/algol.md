@@ -10,13 +10,13 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
-==See Also==
-* [[ALGOL 60]]
-* [[ALGOL 68]]
-* [[ALGOL-M]]
-* [[ALGOL W]]
+
+## See Also
+* [ALGOL 60](https://rosettacode.org/wiki/ALGOL_60)
+* [ALGOL 68](https://rosettacode.org/wiki/ALGOL_68)
+* [ALGOL-M](https://rosettacode.org/wiki/ALGOL-M)
+* [ALGOL W](https://rosettacode.org/wiki/ALGOL_W)
 
 
-* [[JOVIAL]]
-* [[Simula]]
+* [JOVIAL](https://rosettacode.org/wiki/JOVIAL)
+* [Simula](https://rosettacode.org/wiki/Simula)

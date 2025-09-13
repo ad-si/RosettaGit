@@ -9,8 +9,3 @@ id = 11239
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://ccl.northwestern.edu/netlogo/
-}}

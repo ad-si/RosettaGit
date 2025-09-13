@@ -9,17 +9,6 @@ id = 19986
 categories = []
 tags = []
 +++
-
-{{language|Leon
-|strength=strong
-|checking=static
-|gc=yes
-|site=http://leon.epfl.ch
-|parampass=value
-|tags=leon}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|generic}}
 The Leon system aims to help developers build verified Scala software. It encourages using a small set of core Scala features, but provides unique automation functionality. In particular, Leon can
 
 * verify statically that your program confirms to a given specification and that it cannot crash at run-time

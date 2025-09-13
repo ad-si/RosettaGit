@@ -9,24 +9,7 @@ id = 22589
 categories = []
 tags = []
 +++
-
-{{language|Raku
-|site=http://raku.org/
-|checking=both
-|gc=yes
-|strength=gradual
-|safety=both
-|compat=Nominative, Duck
-|parampass=both
-|tags=raku,perl6}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|imperative}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|reflective}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|generic}}
-{{infobox_begin}}Can't install Raku locally?
+Can't install Raku locally?
 Try Raku on-line!
 
 [https://perl6.github.io/6pad/ Try Raku on 6pad].
@@ -34,9 +17,8 @@ Try Raku on-line!
 [https://tio.run/#perl6 Try Raku on tio.run].
 
 [https://glot.io/new/perl6 Try Raku on glot.io].
-{{infobox_end}}
 Raku is the up-and-coming little sister to Perl 5.
-Though it resembles previous versions of [[Perl]] to no small degree, Raku is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
+Though it resembles previous versions of [Perl](https://rosettacode.org/wiki/Perl) to no small degree, Raku is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
 The first official release was at Christmas of 2015.
 
 Damian Conway described the basic philosophy of Raku as follows:

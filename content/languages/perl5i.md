@@ -9,9 +9,6 @@ id = 13305
 categories = []
 tags = []
 +++
-
-{{language}}
-
 While the Perl examples on Rosetta Code are correct, some of them reflect an older style of using the language. After all, Perl has been around since the 80s; Perl5 was released in 1994. Things that were barely manageable on a 386 running at 16 MHz with 4MB of RAM are a breeze, now.
 
 Object-Oriented Perl has been transformed by the development of Moose and its lightweight cousins, Mouse, Moo, etc.

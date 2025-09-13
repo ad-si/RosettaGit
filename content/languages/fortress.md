@@ -10,14 +10,11 @@ categories = []
 tags = []
 +++
 
-{{language|Fortress
-|site=http://projectfortress.sun.com/Projects/Community
-}}
 
-Fortress is a new programming language designed for high-performance computing (HPC) with high programmability. The name "Fortress" is intended to connote a secure Fortran, i.e., "a language for high-performance computation that provides abstraction and type safety on par with modern programming language principles."[[#Citation|[1]]] Fortress is designed to be both highly parallel and have rich functionality contained within libraries, drawing from Java but taken to a higher degree.
+Fortress is a new programming language designed for high-performance computing (HPC) with high programmability. The name "Fortress" is intended to connote a secure Fortran, i.e., "a language for high-performance computation that provides abstraction and type safety on par with modern programming language principles."[[1](https://rosettacode.org/wiki/#Citation)] Fortress is designed to be both highly parallel and have rich functionality contained within libraries, drawing from Java but taken to a higher degree.
 
-==Citation==
+## Citation
 #[http://research.sun.com/projects/plrg/Publications/fortress.1.0.pdf The Fortress Language Specification]
 
-==See Also==
-* [[wp:Fortress_(programming_language)|Wikipedia: Fortress]]
+## See Also
+* [Wikipedia: Fortress](https://en.wikipedia.org/wiki/Fortress_(programming_language))

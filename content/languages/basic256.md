@@ -9,16 +9,11 @@ id = 11863
 categories = []
 tags = []
 +++
-
-{{language|BASIC256
-|site=http://www.basic256.org
-|tags=BASIC256}}
-{{implementation|BASIC}}
-'''BASIC-256''' is an easy to use version of [[BASIC]] designed to teach anybody (especially middle and high-school students) the basics of computer programming. It uses traditional control structures like gosub, for/next, and goto, which helps kids easily see how program flow-control works. It has a built-in graphics mode which lets them draw pictures on screen in minutes, and a set of detailed, easy-to-follow tutorials that introduce programming concepts through fun exercises.
+'''BASIC-256''' is an easy to use version of [BASIC](https://rosettacode.org/wiki/BASIC) designed to teach anybody (especially middle and high-school students) the basics of computer programming. It uses traditional control structures like gosub, for/next, and goto, which helps kids easily see how program flow-control works. It has a built-in graphics mode which lets them draw pictures on screen in minutes, and a set of detailed, easy-to-follow tutorials that introduce programming concepts through fun exercises.
 
 ; Features
 * fast graphics suitable for animation
-* native [[speech synthesis]]
+* native [speech synthesis](https://rosettacode.org/wiki/speech_synthesis)
 * mouse and keyboard events
 * graphic files manipulation (saving, retrieving)
 * playing sounds from WAV files
@@ -32,6 +27,6 @@ tags = []
 ; Disadvantages
 * BASIC-256 does not support three- and N-dimensional arrays in general (N>2)
 <br/>
-BASIC256 is open source and available for [[Linux]], [[Windows]] and [[Mac]].
+BASIC256 is open source and available for [Linux](https://rosettacode.org/wiki/Linux), [Windows](https://rosettacode.org/wiki/Windows) and [Mac](https://rosettacode.org/wiki/Mac).
 
 For more information see [http://www.basic256.org basic256.org] or to download and install [http://sourceforge.net/projects/kidbasic/ sourceforge].

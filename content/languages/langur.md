@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|langur}}
+
 
 Langur is an open-source imperative/functional scripting language written by Anthony Davis. Its principles of design are sensibility to humans, accuracy in calculation, and a clean, expressive syntax.
 

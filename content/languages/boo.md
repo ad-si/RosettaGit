@@ -9,17 +9,4 @@ id = 8586
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|
-|exec=bytecode
-|strength=strong
-|safety=safe
-|express=both
-|checking=both
-|gc=yes
-|site=http://boo.codehaus.org/
-|LCT=yes}}
-{{language programming paradigm|Object-oriented}}
-
 Boo is a new object oriented statically typed programming language for the Common Language Infrastructure with a python inspired syntax and a special focus on language and compiler extensibility.

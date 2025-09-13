@@ -10,11 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language|SIMPOL
-|site=http://www.simpol.com
-|LCT=no
-}}
-SIMPOL is an [[object-oriented]], [[reflective programming]], and [[functional programming]] language that can be used for both general purpose and database-oriented programming.
+SIMPOL is an [object-oriented](https://rosettacode.org/wiki/object-oriented), [reflective programming](https://rosettacode.org/wiki/reflective_programming), and [functional programming](https://rosettacode.org/wiki/functional_programming) language that can be used for both general purpose and database-oriented programming.
 
 It comes as a core library with various loaders for console, CGI, and GUI-style programs. It is component-based, so only the required components need be shipped with a program.
 

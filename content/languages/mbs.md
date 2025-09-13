@@ -10,8 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.varkon.org/
-}}
 
 MBS is a general purpose programming language that supports generic parametric constructs for design and product modelling.

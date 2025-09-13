@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|MontiLang}}
+
 
 MontiLang is a stack-oriented imperative programming language.
 

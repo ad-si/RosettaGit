@@ -12,14 +12,6 @@ tags = []
 
 
 ## smart BASIC
-
-{{language|smart BASIC
-|exec=interpreted/compiled
-|site=https://itunes.apple.com/us/app/smart-basic-programming-language/id541447413?mt=8
-|parampass=both}}
-{{language programming paradigm|procedural}}
-{{implementation|BASIC}}
-
 smart BASIC is an extension of the very popular BASIC programming language originally developed by Dartmouth College way back in 1964. With Smart BASIC you can write BASIC programs directly on iOS devices.
 
 Using Apple's Xcode platform along with the freely provided smart BASIC SDK, you can actually program in BASIC within Xcode, test your code in iOS simulators or your own iOS device, and even build stand-alone apps for submission to the App Store to sell, with no royalty issues. All for just $4.99!

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|S-BASIC}}
+
 S-BASIC (the S stands for "structured") was a native-code
 compiler for an ALGOL-like dialect of the BASIC programming
 language, and ran on 8-bit microcomputers using the Z80 CPU and

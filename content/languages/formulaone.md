@@ -9,20 +9,6 @@ id = 18944
 categories = []
 tags = []
 +++
-
-{{language
-|site=http://www.f1compiler.com/
-|exec=bytecode
-|strength=weak
-|express=implicit
-|checking=both
-|parampass=reference
-|gc=no
-|tags=FormulaOne}}
-{{language programming paradigm|imperative}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|functional}}
-{{language programming paradigm|generic}}
 '''FormulaOne''' is the name of the language, implementation, and environment.
 
 FormulaOne integrates procedural, declarative and database programming into one highly efficient language. Procedural programming shows weakness when faced with problems concerning logic reasoning. FormulaOne, being a declarative language as well, has the tools built into its inference engine, which organizes information and then, when queried, finds a way to logically interpret and process that information.

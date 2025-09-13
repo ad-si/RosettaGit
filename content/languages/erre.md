@@ -9,10 +9,6 @@ id = 18210
 categories = []
 tags = []
 +++
-
-{{language|ERRE
-|site=http://claudiolarini.altervista.org/erre.htm}}
-{{language programming paradigm|Imperative}}
 ERRE was born as a university project (Politecnico di Milano - Italy) in the 80's on a C-64 computer.
 The language was ported to IBM PC and revised various times.
 
@@ -26,7 +22,7 @@ There also a reduced version for VIC-20 ('''V 1.3''') and a more recent version 
 
 ----
 
-ERRE is a [[imperative programming|imperative]] programming language: it's compiled in R-Code and then executed with an interpreter.
+ERRE is a [imperative](https://rosettacode.org/wiki/imperative_programming) programming language: it's compiled in R-Code and then executed with an interpreter.
 
 Web site: '''ERRE PROJECT'''''[http://www.claudiolarini.altervista.org/erre.htm]''
 

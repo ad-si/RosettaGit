@@ -10,12 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|ScriptBasic
-|exec=interpreted
-|site=http://www.scriptbasic.org/}}
-{{implementation|BASIC}}'''ScriptBasic''' is an interpreted basic suitable for general purpose terminal mode application programming and [[CGI|common gateway interface]] scripting.
+'''ScriptBasic''' is an interpreted basic suitable for general purpose terminal mode application programming and [common gateway interface](https://rosettacode.org/wiki/CGI) scripting.
 
-==Features==
-
-{{language programming paradigm|procedural}}
-{{language programming paradigm|imperative}}
+## Features

@@ -9,17 +9,10 @@ id = 6799
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|exec=interpreted
-|site=http://www.povray.org
-|
-}}
 '''POV-Ray''' is a raytracer where images are specified in a description language. This description language also has programming constructs, making it a full-fledged programming language.
 
-==Citation==
-*[[wp:POV-Ray|Wikipedia: POV-Ray]]
+## Citation
+*[Wikipedia: POV-Ray](https://en.wikipedia.org/wiki/POV-Ray)
 
-[[Category:Constructive Solid Geometry]]
-[[Category:Raytracing]]
+[Category:Constructive Solid Geometry](https://rosettacode.org/wiki/Category:Constructive_Solid_Geometry)
+[Category:Raytracing](https://rosettacode.org/wiki/Category:Raytracing)

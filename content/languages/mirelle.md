@@ -9,15 +9,8 @@ id = 9600
 categories = []
 tags = []
 +++
+Mirelle is a programming / scripting language for the [.NET](https://rosettacode.org/wiki/.NET) platform. It is designed to be strongly statically typed, imperative, object-oriented and keyboard-friendly.
 
-{{language
-|strength=strong
-|checking=static
-|site=http://mirelle.codeplex.com
-}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|imperative}}Mirelle is a programming / scripting language for the [[.NET]] platform. It is designed to be strongly statically typed, imperative, object-oriented and keyboard-friendly.
-
-It features a lightweight and clear syntax, inspired by [[Python]] and [[Ruby]], built-in abilities for graph plotting, matrix handling, and discrete-event simulation modelling.
+It features a lightweight and clear syntax, inspired by [Python](https://rosettacode.org/wiki/Python) and [Ruby](https://rosettacode.org/wiki/Ruby), built-in abilities for graph plotting, matrix handling, and discrete-event simulation modelling.
 
 Mirelle is implemented as a compiler which emits .exe files in the format of .NET assemblies. While not being very powerful yet, it can be extended by other .NET-compliant code.

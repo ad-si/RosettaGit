@@ -10,16 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=machine
-|gc=yes
-|safety=unsafe
-|parampass=value
-|checking=static
-|compat=nominative
-|express=explicit
-|strength=weak
-|tags=luck
-|LCT=yes
-}}{{language programming paradigm|Imperative}}{{Codepad}}
-'''Luck''' is a general-purpose, [[functional programming|functional]], [[imperative programming|imperative]] computer programming language developed in 2013 by Andrew Johnson at [[Subarctic Limited|Subarctic Limited]] for use with the [[UNIX]] operating system. Luck was influenced by several languages, [[derived from::Standard ML]], [[derived from::C]].
+'''Luck''' is a general-purpose, [functional](https://rosettacode.org/wiki/functional_programming), [imperative](https://rosettacode.org/wiki/imperative_programming) computer programming language developed in 2013 by Andrew Johnson at [Subarctic Limited](https://rosettacode.org/wiki/Subarctic_Limited) for use with the [UNIX](https://rosettacode.org/wiki/UNIX) operating system. Luck was influenced by several languages, [derived from::Standard ML](https://rosettacode.org/wiki/derived_from::Standard_ML), [derived from::C](https://rosettacode.org/wiki/derived_from::C).

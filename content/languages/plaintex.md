@@ -9,11 +9,9 @@ id = 3333
 categories = []
 tags = []
 +++
+ is the name used to refer to the default set of ''macros'' which are always present on all [](https://rosettacode.org/wiki/TeX) systems
+(and it is the default preloaded format for <tt>tex</tt> executable). They were written by Knuth himself, and provide the basic to start using [](https://rosettacode.org/wiki/TeX) (since "raw" [](https://rosettacode.org/wiki/TeX) is not ready-to-use for documents creation). Often when one says simply " document", s/he means s/he is using the  macros, even though nowadays the success of the complex feature-full [](https://rosettacode.org/wiki/LaTeX) macros package creates a little bit of confusion and a lot of people, ignoring that  is just one of possible macro packages for , think that  is  and viceversa.
 
-{{language|plainTeX}}
-{{PlainTeX}} is the name used to refer to the default set of ''macros'' which are always present on all [[TeX|{{TeX}}]] systems
-(and it is the default preloaded format for <tt>tex</tt> executable). They were written by Knuth himself, and provide the basic to start using [[TeX|{{TeX}}]] (since "raw" [[TeX|{{TeX}}]] is not ready-to-use for documents creation). Often when one says simply "{{TeX}} document", s/he means s/he is using the {{PlainTeX}} macros, even though nowadays the success of the complex feature-full [[LaTeX|{{LaTeX}}]] macros package creates a little bit of confusion and a lot of people, ignoring that {{LaTeX}} is just one of possible macro packages for {{TeX}}, think that {{LaTeX}} is {{TeX}} and viceversa.
+Extension to the  exists, like eplain().
 
-Extension to the {{PlainTeX}} exists, like eplain({{TeX}}).
-
-Even though [[LaTeX|{{LaTeX}}]] is nowadays almost a typesetting "standard" when using a [[TeX|{{TeX}}]] system, {{PlainTeX}} is still usable and used.
+Even though [](https://rosettacode.org/wiki/LaTeX) is nowadays almost a typesetting "standard" when using a [](https://rosettacode.org/wiki/TeX) system,  is still usable and used.

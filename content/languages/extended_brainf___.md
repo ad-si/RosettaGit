@@ -9,9 +9,7 @@ id = 18278
 categories = []
 tags = []
 +++
-
-{{language|Extended Brainfuck}}
-'''Extended Brainfuck''' is an extension of [[Brainfuck]],
+'''Extended Brainfuck''' is an extension of [Brainfuck](https://rosettacode.org/wiki/Brainfuck),
 that aims to make it easier to use.
 
 There are several more opcodes, e.g.:

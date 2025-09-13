@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{Stub}}{{language}}This is the language used to create macros in Lotus 123.
+This is the language used to create macros in Lotus 123.

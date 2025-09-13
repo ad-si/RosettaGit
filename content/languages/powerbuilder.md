@@ -9,7 +9,3 @@ id = 8046
 categories = []
 tags = []
 +++
-
-{{Language
-|site=http://www.sybase.com/powerbuilder}}
-{{stub}}

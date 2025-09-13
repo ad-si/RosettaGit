@@ -9,14 +9,8 @@ id = 10917
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|hopl id=1729
-}}
-{{implementation|UNIX Shell}}
 es - extensible shell by Paul Haahr and Byron Rakitzis
 
-== Links ==
+## Links
 * [http://192.220.96.201/es/es-usenix-winter93.html Es: A shell with higher-order functions] (Usenix paper with errata)
 * [ftp://ftp.sys.utoronto.ca/pub/es/ FTP site]

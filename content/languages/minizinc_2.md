@@ -9,7 +9,4 @@ id = 22263
 categories = []
 tags = []
 +++
-
-{{language|MiniZinc}}
-{{stub}}
 [https://www.minizinc.org/ MiniZinc] is a constraint modeling language.

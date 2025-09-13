@@ -9,18 +9,6 @@ id = 18787
 categories = []
 tags = []
 +++
-
-{{language|8th
-|site=https://8th-dev.com
-|untyped=no
-|exec=both
-|gc=yes
-|parampass=reference
-|strength=strong
-|checking=dynamic
-}}
-{{language programming paradigm|concatenative}}
-{{language programming paradigm|imperative}}
 8th™ is a cross-platform, secure, robust, cost-effective, extensible, and modern programming language and development environment.
 
 Some of its features include:

@@ -9,7 +9,4 @@ id = 22360
 categories = []
 tags = []
 +++
-
-{{language|GB BASIC}}
-
 GB BASIC is a BASIC interpreter for the Game Boy.

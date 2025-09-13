@@ -9,10 +9,8 @@ id = 17923
 categories = []
 tags = []
 +++
-
-{{language}}
-[[Category:Assembly]]
-'''8051 Assembly''' is the [[Assembly|assembly language]] used by the [[wp:Intel_MCS-51|Intel 8051 (MCS-51)]] microcontroller, and its many derivatives. This 8-bit microcontroller is very popular because of its Boolean processor that operates on any of 32 bit-addressable bytes (16 in RAM, 16 SFRs). The 8051 has the ability to directly read, write and branch based on these individual bits.
+[Category:Assembly](https://rosettacode.org/wiki/Category:Assembly)
+'''8051 Assembly''' is the [assembly language](https://rosettacode.org/wiki/Assembly) used by the [Intel 8051 (MCS-51)](https://en.wikipedia.org/wiki/Intel_MCS-51) microcontroller, and its many derivatives. This 8-bit microcontroller is very popular because of its Boolean processor that operates on any of 32 bit-addressable bytes (16 in RAM, 16 SFRs). The 8051 has the ability to directly read, write and branch based on these individual bits.
 
 Many chip makers, with the exception of Intel, continue to develop 8051 derivatives. All derivatives are compatible with the original instruction set, but most add new features. For this reason it is important to note whether the original 8051 or a derivative is used.
 
@@ -26,12 +24,12 @@ Original 8051 features:
 * Two 16-bit timers
 * Two-level priority interrupt
 * Six interrupt sources
-* Full-duplex [[wp:Universal_asynchronous_receiver/transmitter|UART]]
-* No [[wp:Watchdog_timer|watchdog]]
+* Full-duplex [UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter)
+* No [watchdog](https://en.wikipedia.org/wiki/Watchdog_timer)
 
 Derivatives exist that alter many or all features listed above.
 
-==Useful links==
+## Useful links
 * [http://www.keil.com/dd/docs/datashts/intel/ism51.pdf Instruction set]
 * [http://www.8052.com/tutintro.phtml Basic tutorial]
 * [http://plit.de/asem-51/ Freeware assembler]

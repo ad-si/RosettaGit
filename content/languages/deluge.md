@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 Deluge (or ''Data Enriched Language for the Universal Grid Environment'') is an online scripting language integrated with [http://creator.zoho.com Zoho Creator]. It enables users of Zoho to add logic to the application in order to extend it. The entire database layer is abstracted; a user will only speak in terms of forms and fields when scripting in Deluge.
 

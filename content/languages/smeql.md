@@ -10,12 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|SMEQL
-|site=http://www.c2.com/cgi/wiki?TqlRoadmap
-|LCT=no
-}}
 
-SMEQL is a draft query language that is meant to solve the shortcomings and annoyances of [[SQL]]. SMEQL stands for "structured meta-enabled query language" (pronounced "smeegle").
+SMEQL is a draft query language that is meant to solve the shortcomings and annoyances of [SQL](https://rosettacode.org/wiki/SQL). SMEQL stands for "structured meta-enabled query language" (pronounced "smeegle").
 
 It is influenced by IBM's "Business-System 12" (BS-12) relational query language. BS-12 predated SQL, but was rejected over SQL because IBM felt it was too "mathy", potentially harming sales. However, it's math-like nature is also what makes it more powerful than SQL. It's designed to please nerds, not managers. (It uses "functional programming" to be more specific.)
 

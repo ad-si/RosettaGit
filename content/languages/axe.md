@@ -11,8 +11,8 @@ tags = ["compiled"]
 +++
 
 Axe is a compiled programming language for the TI-83 and TI-84 series calculators.
-It has a syntax similar to (but far more powerful than) [[TI-83 BASIC]],
-but it compiles to a no-stub [[Z80 Assembly]] executable
+It has a syntax similar to (but far more powerful than) [TI-83 BASIC](https://rosettacode.org/wiki/TI-83_BASIC),
+but it compiles to a no-stub [Z80 Assembly](https://rosettacode.org/wiki/Z80_Assembly) executable
 rather than being interpreted like BASIC.
 Many of the language features are designed to ease writing games,
 but it can be used to write any kind of program.

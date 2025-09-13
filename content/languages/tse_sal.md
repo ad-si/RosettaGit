@@ -9,12 +9,6 @@ id = 11112
 categories = []
 tags = []
 +++
-
-{{language|TSE SAL
-|site=http://www.semware.com
-|tags=tse sal}}
-{{implementation|TSE SAL}}
-
 '''TSE SAL''' (SemWare Application Language) is the programming language used in The Semware Editor (TSE) text editor.
 
-[[wp:The_SemWare_Editor|TSE SAL on Wikipedia]]
+[TSE SAL on Wikipedia](https://en.wikipedia.org/wiki/The_SemWare_Editor)

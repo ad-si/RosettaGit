@@ -10,18 +10,13 @@ categories = []
 tags = []
 +++
 
-{{language
-|name=ArnoldC
-|exec=interpreted
-|site=http://lhartikk.github.io/ArnoldC/
-}}
 
-ArnoldC is an [[esoteric programming language]] created with Scala by Lauri Hartikka. The source is available [https://github.com/lhartikk/ArnoldC here], along with tutorials and example programs.
+ArnoldC is an [esoteric programming language](https://rosettacode.org/wiki/esoteric_programming_language) created with Scala by Lauri Hartikka. The source is available [https://github.com/lhartikk/ArnoldC here], along with tutorials and example programs.
 
 :''This articles is being improved. Help us out by adding more information.''
 
 
-==Language overview==
+## Language overview
 ArnoldC runs on famous quotations by Arnold Schwarzenegger. Most of the quotes can be found in [https://www.youtube.com/watch?v=ybJWKZB0Erk&feature=youtu.be&t=6m59s this video].
 The commands are:
 
@@ -129,14 +124,13 @@ The commands are:
 |ParseError
 |}
 
-==Online interpreters==
-
+## Online interpreters
 The few online interpreters available for ArnoldC include:
 * [http://mapmeld.com/ArnoldC/ ArnoldC cyber simulator], a simple online compiler.
 * [http://mapmeld.com/ArnoldC/?v=2 ArnoldC cyber simulator v2], the less buggy version of ArnoldC cyber simulator.
 * [https://tio.run/#arnoldc Try It Online]'s ArnoldC compiler, which is by far the most functional.
 
-==Conventions==
+## Conventions
 The following summarises the conventions for coding in ArnoldC.
 
 
@@ -154,7 +148,6 @@ HERE IS MY INVITATION y KNOCK KNOCK z
 ENOUGH TALK</code>
 
 
-==External resources==
-
+## External resources
 * [https://github.com/lhartikk/ArnoldC Lauri Hartikka's GitHub source] contains instructions and files needed in order to use ArnoldC.
 * [https://github.com/lhartikk/ArnoldC/wiki/ArnoldC ArnoldC wiki] includes the complete set of instructions for coding in ArnoldC.

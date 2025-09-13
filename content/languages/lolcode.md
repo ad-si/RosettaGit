@@ -9,8 +9,4 @@ id = 13078
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|
-site=http://lolcode.org/}}
-[[Category:Esoteric Languages]]
+[Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

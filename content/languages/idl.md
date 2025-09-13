@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language|IDL}}{{stub}}
-IDL (Interactive Data Language) is an [[array]] programming language designed by David Stern.
-[[wp:IDL_%28programming_language%29|Wikipedia article]]
+
+IDL (Interactive Data Language) is an [array](https://rosettacode.org/wiki/array) programming language designed by David Stern.
+[Wikipedia article](https://en.wikipedia.org/wiki/IDL_%28programming_language%29)
 (free implementation: GDL - GNU Data Language http://gnudatalanguage.sourceforge.net)

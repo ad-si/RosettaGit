@@ -10,19 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://live.gnome.org/Vala
-|exec=machine
-|gc=no
-|safety=safe
-|parampass=both
-|checking=static
-|compat=nominative
-|express=explicit
-|strength=strong
-|tags=vala
-|LCT=no
-}}
-'''Vala''' is a programming language created with the goal of bringing modern language features to [[C]], with no added runtime requirements and with little overhead, by targeting the GObject object system. It is being developed by Jürg Billeter and Raffaele Sandrini. The syntax borrows heavily from [[C#]]. Rather than being compiled directly to assembler or other intermediate representation, Vala is compiled to C source, which is then compiled with a platform's standard C compiler.
+'''Vala''' is a programming language created with the goal of bringing modern language features to [C](https://rosettacode.org/wiki/C), with no added runtime requirements and with little overhead, by targeting the GObject object system. It is being developed by Jürg Billeter and Raffaele Sandrini. The syntax borrows heavily from [C#](https://rosettacode.org/wiki/C#). Rather than being compiled directly to assembler or other intermediate representation, Vala is compiled to C source, which is then compiled with a platform's standard C compiler.
 
-The '''valac''' compiler also supports a language dialect called [[Genie]], that more closely resembles [[Python]] syntax.  '''Genie''' syntax requires indentation based code structure blocking.  The '''Genie''' dialect is also compiled to C on way to native executable by '''valac'''.
+The '''valac''' compiler also supports a language dialect called [Genie](https://rosettacode.org/wiki/Genie), that more closely resembles [Python](https://rosettacode.org/wiki/Python) syntax.  '''Genie''' syntax requires indentation based code structure blocking.  The '''Genie''' dialect is also compiled to C on way to native executable by '''valac'''.

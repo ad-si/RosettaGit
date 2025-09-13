@@ -9,9 +9,4 @@ id = 21399
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|OASYS Assembler
-|tags=oasys)oaa}}
-
 OASYS is an old system for text adventure games. OASYS VM actually has two different programming languages, OAC (OASYS C; the original one) and OAA (OASYS Assembler)

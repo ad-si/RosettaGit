@@ -9,11 +9,6 @@ id = 21955
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|PL/B
-|tags=plb}}
-
 PL/B is a dialect of the DATABUS language  created by the Datapoint Corporation in the early 1970's.  PL/B stands for Programming Language for Business and is designed to be easy to write, robust and scaleable.  DATABUS was approved as "ANSI Standard X3.238-1994." and reconfirmed in 1998.
 
 The language still has a small but active following providing unashamedly commercial products to the business world.

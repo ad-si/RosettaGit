@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{implementation|XBasic}}
-'''Windows XBasic''' is the version of [[:Category:XBasic|XBasic]] working on the Windows.
+
+'''Windows XBasic''' is the version of [XBasic](https://rosettacode.org/wiki/:Category:XBasic) working on the Windows.

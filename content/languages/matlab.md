@@ -10,14 +10,12 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|site=http://www.mathworks.com/products/matlab/
-|checking=dynamic}}
 
-From [[wp:MATLAB]]:
+
+From [wp:MATLAB](https://en.wikipedia.org/wiki/MATLAB):
 :MATLAB ('''mat'''rix '''lab'''oratory) is a multi-paradigm
 :numerical computing environment and fourth-generation programming language,
 :developed by MathWorks.
 Not to be confused with MATHLAB.
 
-[[Category:Mathematical programming languages]]
+[Category:Mathematical programming languages](https://rosettacode.org/wiki/Category:Mathematical_programming_languages)

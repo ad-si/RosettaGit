@@ -10,14 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Verbexx
-|exec=interpreted
-|site=https://github.com/dufferprog/verbexx
-|gc=no
-|parampass=value
-|safety=unsafe
-|untyped=yes
-|hopl=no}}
 
 Verbexx.exe is an interpreter for a simple scripting language called verbexx.  Verbexx.exe runs  from the Windows 10 command line, and reads text files containing verbexx source code.  The filetype can be anything, but .txt seems to work well.
 

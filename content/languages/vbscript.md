@@ -10,10 +10,4 @@ categories = []
 tags = []
 +++
 
-{{language|VBScript
-|exec=interpreted
-|LCT=no
-|site=http://msdn.microsoft.com/en-us/library/t0aew7h6.aspx
-}}
-VBScript is a programming language from [[Microsoft]] for [[Windows]] and [[wp:Active Server Pages|Active Server Pages]] (and web page scripting on the Internet, to a much lesser degree). VBScript is similar to [[Visual Basic]], and was originally based on VB, but there are many differences between the two. In general, VBScript is not able to run most non-trivial VB programs without significant changes, while ''most'' VBScript programs can be run in VB with trivial changes.
-{{stub}}
+VBScript is a programming language from [Microsoft](https://rosettacode.org/wiki/Microsoft) for [Windows](https://rosettacode.org/wiki/Windows) and [Active Server Pages](https://en.wikipedia.org/wiki/Active_Server_Pages) (and web page scripting on the Internet, to a much lesser degree). VBScript is similar to [Visual Basic](https://rosettacode.org/wiki/Visual_Basic), and was originally based on VB, but there are many differences between the two. In general, VBScript is not able to run most non-trivial VB programs without significant changes, while ''most'' VBScript programs can be run in VB with trivial changes.

@@ -9,18 +9,8 @@ id = 19522
 categories = []
 tags = []
 +++
-
-{{language|Xojo
-|exec=machine
-|strength=strong
-|checking=both
-|parampass=both
-|gc=reference counting
-|safety=safe
-|site=http://docs.xojo.com}}
-{{language programming paradigm|Object-oriented}}
-[[wp:Xojo|Xojo]] is an object-oriented, multi-platform language made by Xojo, Inc. Xojo uses its own IDE and has the ability to create native desktop apps for Windows, OS X and Linux; web apps (HTML5/JavaScript) and native iOS apps.
+[Xojo](https://en.wikipedia.org/wiki/Xojo) is an object-oriented, multi-platform language made by Xojo, Inc. Xojo uses its own IDE and has the ability to create native desktop apps for Windows, OS X and Linux; web apps (HTML5/JavaScript) and native iOS apps.
 
 Prior to 2013, it was known as Real Studio and Realbasic.
 
-[[wp:Xojo|The Wikipedia article]] has lots of information about Xojo's history, capabilities, and features.
+[The Wikipedia article](https://en.wikipedia.org/wiki/Xojo) has lots of information about Xojo's history, capabilities, and features.

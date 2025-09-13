@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|bnf=http://www.masswerk.at/algol60/syntax.txt}}
-==See also==
-*[[wp:ALGOL|ALGOL 60 on Wikipedia]]
-*[[ALGOL 68]]
-*[[ALGOL W]]
+
+## See also
+*[ALGOL 60 on Wikipedia](https://en.wikipedia.org/wiki/ALGOL)
+*[ALGOL 68](https://rosettacode.org/wiki/ALGOL_68)
+*[ALGOL W](https://rosettacode.org/wiki/ALGOL_W)

@@ -9,25 +9,7 @@ id = 11070
 categories = []
 tags = []
 +++
-
-{{Stub}}
-{{language|ObjectIcon
-|site=http://code.google.com/p/objecticon/
-|exec=bytecode
-|parampass=value
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|gc=yes
-|LCT=yes
-}}
-{{virtual machine}}
-{{language programming paradigm|Procedural}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Logic_Programming}}
-ObjectIcon is an object oriented variant of [[Icon]] based on an early fork of the [[Unicon]] Project developed by Robert Parlett (one of the co-authors of the Unicon book).
+ObjectIcon is an object oriented variant of [Icon](https://rosettacode.org/wiki/Icon) based on an early fork of the [Unicon](https://rosettacode.org/wiki/Unicon) Project developed by Robert Parlett (one of the co-authors of the Unicon book).
 Some of the distinguishing characteristics are:
 * a richer set of object oriented keywords
 * support for unicode characters
@@ -36,7 +18,7 @@ Some of the distinguishing characteristics are:
 
 For more information refer to the wiki off the main site [http://code.google.com/p/objecticon/wiki/Introduction ObjectIcon Wiki]
 
-== Related ==
-* [[Icon]]
-* [[Jcon]]
-* [[Unicon]]
+## Related
+* [Icon](https://rosettacode.org/wiki/Icon)
+* [Jcon](https://rosettacode.org/wiki/Jcon)
+* [Unicon](https://rosettacode.org/wiki/Unicon)

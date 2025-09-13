@@ -9,11 +9,6 @@ id = 8150
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.sp4gl.com/
-}}
 SheerPower 4GL is a Fourth-generation programming language developed by Touch Technologies, Inc.
 
 SheerPower 4GL has several key features:
@@ -27,5 +22,5 @@ SheerPower 4GL has several key features:
 #SheerPower Internet Services (SPINS) Webserver also comes bundled with SheerPower 4GL. The SPINS Webserver comes bundled with SheerPower and was developed for simplicity in use and high-speed for performance. On a modern multi-core system, the SPINS web server can perform over 1,000 page hits per second -- given enough bandwidth of course.
 #There is also a Common Gateway Interface (CGI) interface built into SheerPower, along with many other built-in functions designed for high-performance and increased programmer productivity.
 
-== See Also ==
-[[wp:SheerPower4GL|Wikipedia:SheerPower4GL]]
+## See Also
+[Wikipedia:SheerPower4GL](https://en.wikipedia.org/wiki/SheerPower4GL)

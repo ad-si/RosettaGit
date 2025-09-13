@@ -12,8 +12,8 @@ tags = ["assembly"]
 
 Z80 Assembly is an assembly language for the Zilog Z80 processor,
 which was introduced in 1976 and used in 1980s home computers
-such as the [[wp:ZX Spectrum|Sinclair ZX Spectrum]]
-and the [[wp:Amstrad CPC|Amstrad CPC]] series.
+such as the [Sinclair ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum)
+and the [Amstrad CPC](https://en.wikipedia.org/wiki/Amstrad_CPC) series.
 In the late 1990s,
 some TI graphing calculators (e.g. the TI-83 series) were also Z80-based.
 

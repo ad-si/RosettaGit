@@ -10,14 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|Arbre
-|gc=yes
-|untyped=yes
-|tags=arbre
-|site=http://code.google.com/p/arbrelang
-}}
 
 Arbre is a tree-oriented parallel programming language.
 
-==Citations==
+## Citations
 * [http://code.google.com/p/arbrelang/source/browse/#svn%2Ftrunk%2Fjs Source]

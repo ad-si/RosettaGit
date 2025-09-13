@@ -9,64 +9,40 @@ id = 1729
 categories = []
 tags = []
 +++
-
-{{language|Tcl
-|site=http://www.tcl.tk/
-|exec=bytecode
-|express=implicit
-|compat=duck
-|checking=dynamic
-|parampass=value
-|safety=safe
-|strength=weak
-|gc=yes
-|tags=tcl
-|LCT=yes
-|bnf=http://rosettacode.org/wiki/Category:Tcl#Grammar}}
-{{language programming paradigm|Concurrent}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Event-driven}}
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Procedural}}
-{{language programming paradigm|Reflective}}
-{{Codepad}}
-
 '''Tcl''' (short for '''T'''ool '''C'''ommand '''L'''anguage)
 is a scripting language with very simple syntax, dynamic typing,
-automatic storage allocation and [[garbage collection]]
+automatic storage allocation and [garbage collection](https://rosettacode.org/wiki/garbage_collection)
 and native Unicode support.
 
-'''Tcl''' is often combined with the [[Tk]] library,
+'''Tcl''' is often combined with the [Tk](https://rosettacode.org/wiki/Tk) library,
 which provides support for graphics and GUI.
 
 As a result, it is often referred to as '''Tcl/Tk'''.
 
 Tcl is known to be supported under a variety of popular operating systems,
-including [[UNIX]], [[Linux]], [[BSD]], [[Windows]], [[WinCE]], [[PocketPC]],
-[[Mac OS X]] and [[BeOS]].
+including [UNIX](https://rosettacode.org/wiki/UNIX), [Linux](https://rosettacode.org/wiki/Linux), [BSD](https://rosettacode.org/wiki/BSD), [Windows](https://rosettacode.org/wiki/Windows), [WinCE](https://rosettacode.org/wiki/WinCE), [PocketPC](https://rosettacode.org/wiki/PocketPC),
+[Mac OS X](https://rosettacode.org/wiki/Mac_OS_X) and [BeOS](https://rosettacode.org/wiki/BeOS).
 
-Tcl is distributed under the [[wp:BSD licenses|BSD License]].
+Tcl is distributed under the [BSD License](https://en.wikipedia.org/wiki/BSD_licenses).
 
 ;Current version: Tcl/Tk 8.6.9 (Nov 16, 2018)
 
 The Tcl language has been implemented in multiple lower-level languages.
-The most common one is '''[[libtcl]]''', written in [[C]], which is
-the engine used to power [[tclsh]] and [[wish]], but others exist.
-Notably, these include [[Jacl]] and [[Eagle]], which implement
-Tcl in [[Java]] and [[C sharp|C#]] respectively.
+The most common one is '''[libtcl](https://rosettacode.org/wiki/libtcl)''', written in [C](https://rosettacode.org/wiki/C), which is
+the engine used to power [tclsh](https://rosettacode.org/wiki/tclsh) and [wish](https://rosettacode.org/wiki/wish), but others exist.
+Notably, these include [Jacl](https://rosettacode.org/wiki/Jacl) and [Eagle](https://rosettacode.org/wiki/Eagle), which implement
+Tcl in [Java](https://rosettacode.org/wiki/Java) and [C#](https://rosettacode.org/wiki/C_sharp) respectively.
 
 Its creator, John Ousterhout, wrote about it:
 :''“I got the idea for Tcl while on sabbatical leave at DEC's Western Research Laboratory in the fall of 1987. I started actually implementing it when I got back to Berkeley in the spring of 1988; by summer of that year it was in use in some internal applications of ours, but there was no Tk. The first external releases of Tcl were in 1989, I believe. I started implementing Tk in 1989, and the first release of Tk was in 1991.”''
 
-The principal pre-built distributions of Tcl are all based on [[libtcl]];
-the main ones are - besides those in the repositories of Linux and BSD Unices, which are usually current -  [[ActiveTcl]] from ActiveState (for several platforms including Windows), BAWT http://www.bawt.tcl3d.org/ (for several platforms including Windows and Mac), Magicsplat http://www.magicsplat.com/tcl-installer/index.html (Windows),
-and [[tclkit]] from Equi4 Software ''et al''.
+The principal pre-built distributions of Tcl are all based on [libtcl](https://rosettacode.org/wiki/libtcl);
+the main ones are - besides those in the repositories of Linux and BSD Unices, which are usually current -  [ActiveTcl](https://rosettacode.org/wiki/ActiveTcl) from ActiveState (for several platforms including Windows), BAWT http://www.bawt.tcl3d.org/ (for several platforms including Windows and Mac), Magicsplat http://www.magicsplat.com/tcl-installer/index.html (Windows),
+and [tclkit](https://rosettacode.org/wiki/tclkit) from Equi4 Software ''et al''.
 
 Older versions of the language (8.5) are distributed as part of Apple's OS X.
 
-==Language Syntax==
-
+## Language Syntax
 ### Grammar
 
 Note that this is a simplified language grammar, and it is normal
@@ -115,7 +91,7 @@ The following commands are simply normal commands, and can be renamed, deleted, 
 '''while''' ''expr script''
 :While the expression evaluates to true, evaluate the ''script''.
 '''for''' ''init expr incr script''
-:Evaluate the ''init'' script, and then while the expression evaluates to true, evaluate the ''script'', evaluating the ''incr'' script after each iteration. This is very similar to [[C]]'s <code>for</code> keyword.
+:Evaluate the ''init'' script, and then while the expression evaluates to true, evaluate the ''script'', evaluating the ''incr'' script after each iteration. This is very similar to [C](https://rosettacode.org/wiki/C)'s <code>for</code> keyword.
 '''foreach''' ''varName list script''
 
 '''foreach''' ''varNameList list'' ?''varNameList list'' ...? ''script''
@@ -159,18 +135,17 @@ The following commands are simply normal commands, and can be renamed, deleted, 
 '''oo::class create''' ''name body''
 :Creates a class called ''name'' with definition ''body''. Instances of ''name'' are created with “''name'' '''new''' ''arg…''” and “''name'' '''create''' ''instanceName arg…''”. (Note that the syntax for '''oo::class''' is a consequence of this.)
 
-==Language Semantics==
-
+## Language Semantics
 ### Value Model
 
 Tcl's value model operates on two levels.
-* Classically, it is defined purely on unmodifiable strings over a language of unencoded [[UNICODE]] characters.
-* Practically, values are polymorphic and hold a cache of the last type-interpretation that they were used with, together with an optional [[UTF-8]] string representation. They are reference-counted and are not modifiable (unless the code in question holds the only reference, which is a significant efficiency gain; if the value is shared, it is shallow-copied upon modification). Although only reference-counted, they are effectively garbage-collected since circular data structures cannot be constructed (performing such construction requires holding two references to the same object, which forces a copy to be taken and breaks the reference loop). The net effect of this is just like the UNICODE string classical model, except much faster.
+* Classically, it is defined purely on unmodifiable strings over a language of unencoded [UNICODE](https://rosettacode.org/wiki/UNICODE) characters.
+* Practically, values are polymorphic and hold a cache of the last type-interpretation that they were used with, together with an optional [UTF-8](https://rosettacode.org/wiki/UTF-8) string representation. They are reference-counted and are not modifiable (unless the code in question holds the only reference, which is a significant efficiency gain; if the value is shared, it is shallow-copied upon modification). Although only reference-counted, they are effectively garbage-collected since circular data structures cannot be constructed (performing such construction requires holding two references to the same object, which forces a copy to be taken and breaks the reference loop). The net effect of this is just like the UNICODE string classical model, except much faster.
 The language supports the following basic types, together with many defined by extension packages:
 * Unicode strings
 * Binary strings
 * Integers of unbounded width
-* Double-precision [[IEEE]] floats
+* Double-precision [IEEE](https://rosettacode.org/wiki/IEEE) floats
 * Booleans
 * Lists of values
 * Dictionaries mapping values to values
@@ -182,11 +157,76 @@ The language supports the following basic types, together with many defined by e
 ** etc.
 Note that all variables can hold values of ''any'' type; the language does not impose type constraints on variables at all. However, it is possible to use variable traces to enforce a type constraint if so desired.
 
-==External Links==
+## External Links
 *[http://www.tcl-lang.org/man/ Tcl Documentation]
 *[http://wiki.tcl-lang.org Tcl Wiki]
 *[http://en.wikipedia.org/wiki/Tcl Wikipedia article]
 *[http://en.wikibooks.org/wiki/Programming:Tcl Wikibook]
 
-==Todo==
-[[Reports:Tasks_not_implemented_in_Tcl]]
+## Todo
+[Reports:Tasks_not_implemented_in_Tcl](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Tcl)
+
+
+## Merged content
+
+
+[](https://rosettacode.org/wiki/implementation_of_task::RCBF)
+This [Tcl](https://rosettacode.org/wiki/Tcl) [Brainfuck](https://rosettacode.org/wiki/Brainfuck) interpreter is derived from code on [http://wiki.tcl.tk/9490 The Tcler's Wiki], and is written to be short but not particularly clear.
+
+To use it, save it to a file (e.g., called “bf.tcl”) and run that against <tt>tclsh</tt> with either the name of the file containing the BF program or just input the program on stdin; the program will only begin execution after you do end-of-file (however that's done on your OS). For example:
+  tclsh8.5 bf.tcl helloWorld.bf
+<br clear=all>
+## Interpreter Implementation
+```tcl
+package require Tcl 8.5
+fconfigure stdout -buffering none
+fconfigure stdin -buffering none
+if {![llength $argv]} {
+    set p [split [read stdin] {}]
+} else {
+    set fd [open [lindex $argv 0]]
+    set p [split [read $fd] {}]
+    close $fd
+}
+set d [lrepeat 30000 0]
+set dc 0
+for {set pc 0} {$pc < [llength $p]} {incr pc} {
+    switch [lindex $p $pc] {
+	">" {
+	    incr dc
+	}
+	"<" {
+	    incr dc -1
+	}
+	"+" {
+	    lset d $dc [expr {[lindex $d $dc] + 1}]
+	}
+	"-" {
+	    lset d $dc [expr {[lindex $d $dc] - 1}]
+	}
+	"." {
+	    puts -nonewline [format "%c" [lindex $d $dc]]
+	}
+	"," {
+	    lset d $dc [scan [read stdin 1] "%c"]
+	}
+	"\[" {
+	    if {![lindex $d $dc]} {
+		incr pc
+		for {set n 0} {$n || [lindex $p $pc] ne "\]"} {incr pc} {
+		    switch -- [lindex $p $pc] "\[" {incr n} "\]" {incr n -1}
+		}
+	    }
+	}
+	"\]" {
+	    if {[lindex $d $dc]} {
+		incr pc -1
+		for {set n 0} {$n || [lindex $p $pc] ne "\["} {incr pc -1} {
+		    switch -- [lindex $p $pc] "\[" {incr n -1} "\]" {incr n}
+		}
+	    }
+	}
+    }
+}
+```
+

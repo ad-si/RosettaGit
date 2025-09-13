@@ -11,15 +11,7 @@ tags = []
 +++
 
 [[File:Algol68.png|64px|left|alt=Language|link=http://sourceforge.net/projects/algol68]]
-{{language|ALGOL 68
-|parampass=both
-|strength=soft, weak, meek, firm and strong - depending on context.
-|safety=safe
-|express=explicit
-|compat=structural
-|checking=both
-|LCT=yes}}
-ALGOL 68 (short for ALGOrithmic Language 1968) is an [[imperative programming|imperative]] computer programming language that was conceived as a successor to the ALGOL 60 programming language, designed with the goal of a much wider scope of application and more rigorously defined syntax and semantics.
+ALGOL 68 (short for ALGOrithmic Language 1968) is an [imperative](https://rosettacode.org/wiki/imperative_programming) computer programming language that was conceived as a successor to the ALGOL 60 programming language, designed with the goal of a much wider scope of application and more rigorously defined syntax and semantics.
 
 The main aims and principles of design of ALGOL 68:
 #Completeness and clarity of design,
@@ -32,15 +24,15 @@ The main aims and principles of design of ALGOL 68:
 #* Loop optimization,
 #* Representations - in minimal & larger character sets.
 
-==Execute an ALGOL 68 program online==
+## Execute an ALGOL 68 program online
 * http://www.compileonline.com/execute_algol_online.php
-==Grammar==
-The grammar for ALGOL 68 is officially in the two level, [[wp:Van Wijngaarden grammar|Van Wijngaarden grammar]] but a subset has been done in the one level [[wp:Backus–Naur Form|Backus–Naur Form]]:
-* [[wp:Van Wijngaarden grammar|Van Wijngaarden grammar]]: [http://www.fh-jena.de/~kleine/history/languages/Algol68-ReportAttachement.pdf]
-* [[wp:Backus–Naur Form|Backus–Naur Form]]/[[wp:Yacc|Yacc]]: [http://wwwmathlabo.univ-poitiers.fr/~maavl/algol68/syntax68]
+## Grammar
+The grammar for ALGOL 68 is officially in the two level, [Van Wijngaarden grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar) but a subset has been done in the one level [Backus–Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form):
+* [Van Wijngaarden grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar): [http://www.fh-jena.de/~kleine/history/languages/Algol68-ReportAttachement.pdf]
+* [Backus–Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form)/[Yacc](https://en.wikipedia.org/wiki/Yacc): [http://wwwmathlabo.univ-poitiers.fr/~maavl/algol68/syntax68]
 * [http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised-SyntaxOnly.pdf/view Syntax Chart (Size 516.6 kB - File type application/pdf)]
 
-==Resources==
+## Resources
 * ALGOL BULLETIN - March 1959 to August 1988, in 52 issues[http://archive.computerhistory.org/resources/text/algol/algol_bulletin]
 * Algol68 mailinglist - December 2008 - algol68-user AT lists.sourceforge.net[https://lists.sourceforge.net/lists/listinfo/algol68-user]
 * Algol68 group at linked: [http://www.linkedin.com/groups/Algol68-2333923] - includes various famous compiler composers.
@@ -60,23 +52,23 @@ Editor modes:
 * [http://www.vim.org/scripts/script.php?script_id=1927 Vim script] providing support for syntax highlighting.
 * '''NEW:''' [http://qbnz.com/highlighter/demo.php GeSHi syntax highlighting]
 
-==Status==
+## Status
 * 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [http://en.wikipedia.org/wiki/UNESCO UNESCO's] [http://en.wikipedia.org/wiki/IFIP IFIP] working group 2.1 in Munich.
-* 20th December 2008 - [[Zig_Zag#ALGOL 68|Zig Zag]] - the 100th '''ALGOL 68''' code contribution on rosettacode.org!
+* 20th December 2008 - [Zig Zag](https://rosettacode.org/wiki/Zig_Zag#ALGOL_68) - the 100th '''ALGOL 68''' code contribution on rosettacode.org!
 ** Happy 40th Birthday '''ALGOL 68''',
 ** AND 50th Birthday '''ALGOL 58'''.
 * 23rd August 2009 - [http://sourceforge.net/projects/algol68/files/ algol68g-1.18.0-9h] released
-* 20th December 2009 - Happy 51st/41st Birthdays with [[Hamming_numbers#ALGOL_68|Hamming numbers]] - the 200th '''ALGOL 68''' code contribution on rosettacode.org!
-** This time code was by [[User:Algol68g|Marcel van der Veer]], author of [http://www.xs4all.nl/~jmvdveer/algol.html Algol 68 Genie]
-* 25th October 2011 - [[User:Jejones3141|Jejones3141]] added [[Soundex#ALGOL_68|Soundex]] - the 300th '''ALGOL 68''' code specimen.
+* 20th December 2009 - Happy 51st/41st Birthdays with [Hamming numbers](https://rosettacode.org/wiki/Hamming_numbers#ALGOL_68) - the 200th '''ALGOL 68''' code contribution on rosettacode.org!
+** This time code was by [Marcel van der Veer](https://rosettacode.org/wiki/User:Algol68g), author of [http://www.xs4all.nl/~jmvdveer/algol.html Algol 68 Genie]
+* 25th October 2011 - [Jejones3141](https://rosettacode.org/wiki/User:Jejones3141) added [Soundex](https://rosettacode.org/wiki/Soundex#ALGOL_68) - the 300th '''ALGOL 68''' code specimen.
 
-== Revisions ==
+## Revisions
 *Mar. 1968: Draft Report on the Algorithmic Language ALGOL 68 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
 *Oct. 1968: Penultimate Draft Report on the Algorithmic Language ALGOL 68 - Chapters 1-9 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
 *Dec. 1968: Report on the Algorithmic Language ALGOL 68 - Offprint from Numerische Mathematik, 14, 79-218 (1969); Springer-Verlag. - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck and C.H.A. Koster.
 *Sep 1973: Revised Report on the Algorithmic Language Algol 68 - Springer-Verlag 1976 - Edited by: A. van Wijngaarden, B.J. Mailloux, J.E.L. Peck, C.H.A. Koster, M. Sintzoff, C.H. Lindsey, L.G.L.T. Meertens and R.G. Fisker.
-==Code samples==
-Most of the code samples provided here have a leading <code>main:(</code> and a matching <code>)</code> at the end. These are not actually required in the language, but are included so as to highlight that the code sample is complete, and works with (at least) [[ALGOL 68G]] unmodified.
+## Code samples
+Most of the code samples provided here have a leading <code>main:(</code> and a matching <code>)</code> at the end. These are not actually required in the language, but are included so as to highlight that the code sample is complete, and works with (at least) [ALGOL 68G](https://rosettacode.org/wiki/ALGOL_68G) unmodified.
 
 On some compilers, it may be necessary to include appropriate "job cards"
 or precludes in order for the programs to compile successfully. Hopefully
@@ -176,7 +168,7 @@ Example:
  OD
 |}
 
-== Coercion (casting) ==
+## Coercion (casting)
 ALGOL 68 has a hierarchy of contexts which determine which kind of
 coercions are available at a particular point in the program. These contexts are:
 {|class="wikitable"
@@ -361,10 +353,100 @@ t
 |}
 For more details about Primaries and Secondaries refer to [[Operator_precedence#ALGOL_68|Operator precedence]].
 
-==See also==
+## See also
 *[[Web 68]]
 *[[ALGOL 60]]
 *[[ALGOL W]]
-== Code Specimen ==
-{{language programming paradigm|Concurrent}}
-{{language programming paradigm|Imperative}}
+## Code Specimen
+## Merged content
+
+
+
+
+An implementation of BF in [[ALGOL 68]] for Rosetta Code.
+
+```algol68
+MODE BYTE = SHORT SHORT SHORT INT;
+
+ MODE CADDR = BYTE; # code address #
+ MODE OPCODE = BYTE;
+ OPCODE nop = 0;
+
+ MODE DADDR = BYTE; # data address #
+ MODE DATA = BYTE;
+ DATA zero = 0;
+
+ PROC run = ([] OPCODE code list)VOID:(
+   [-255:255]DATA data list;  # finite data space #
+   FOR i FROM LWB data list TO UPB data list DO data list[i] := zero OD;
+
+   DADDR data addr := ( UPB data list + LWB data list ) OVER 2;
+   CADDR code addr := LWB code list;
+
+   [0:127]OPCODE assembler; # 7 bit ascii only #
+
+   STRING op code list="><+-.,[]";
+   []PROC VOID op list= []PROC VOID(
+     # ? # VOID: SKIP, # NOP #
+     # > # VOID: data addr +:= 1,
+     # < # VOID: data addr -:= 1,
+     # + # VOID: data list[data addr] +:= 1,
+     # - # VOID: data list[data addr] -:= 1,
+     # . # VOID: print(REPR data list[data addr]),
+     # , # VOID: data list[data addr]:=ABS read char,
+     # [ # VOID:
+             IF data list[data addr] = zero THEN
+               # skip to the end of the loop, allowing for nested loops #
+               INT br level := 0;
+               WHILE
+                 IF   code list[code addr] = ABS "["
+                 THEN
+                   br level +:= 1;
+                 ELIF code list[code addr] = ABS "]"
+                 THEN
+                   br level -:= 1
+                 FI;
+                 IF br level > 0
+                 THEN
+                   code addr +:= 1;
+                   TRUE
+                 ELSE
+                   FALSE
+                 FI
+               DO SKIP OD
+             FI,
+     # ] # VOID:
+             IF data list[data addr] /= zero THEN
+               # skip to the start of the loop, allowing for nested loops #
+               INT br level := 0;
+               WHILE
+                 IF   code list[code addr] = ABS "["
+                 THEN
+                   br level +:= 1
+                 ELIF code list[code addr] = ABS "]"
+                 THEN
+                   br level -:= 1
+                 FI;
+                 code addr -:= 1;
+                 br level < 0
+               DO SKIP OD
+             FI
+   )[:@0];
+
+   FOR op TO UPB assembler DO assembler[op] := nop OD; # insert NOP #
+   FOR op TO UPB op code list DO assembler[ABS op code list[op]] := op OD;
+
+   WHILE code addr <= UPB code list DO
+     op list[ABS assembler[ABS code list[code addr]]];
+     code addr +:= 1
+   OD
+ );
+
+ STRING code list := "++++++[>+++++++++++<-]>-."; # print the ascii letter A #
+
+ [UPB code list]BYTE byte code list; # convert to bytes #
+ FOR i TO UPB code list DO byte code list[i] := ABS code list[i] OD;
+
+ run(byte code list)
+```
+

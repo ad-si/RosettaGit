@@ -10,15 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=machine
-|gc=yes
-|parampass=both
-|express=both
-|strength=strong
-|checking=static
-|compat=duck
-|site=http://crystal-lang.org}}
 Crystal is a programming language with the following goals:
 * Have the same syntax as Ruby, or at least as similar as possible.
 * Never have to specify the type of a variable or method argument.

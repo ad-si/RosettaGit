@@ -9,23 +9,18 @@ id = 17501
 categories = []
 tags = []
 +++
-
-{{language}}
-
 = Battlestar =
 
 A different take on assembly, with the goal of creating tiny executables.
 
-== Battlestar is ==
-
+## Battlestar is
 * A work in progress.
 * Created for fun and for the educational process.
 * A programming language specifically for 64-bit x86 Linux, 32-bit x86 Linux, 32-bit x86 OS X and 16-bit x86 DOS.
 * Subset of assembly with different syntax and support for inline C.
 * The indended purpose is for writing 4k and 64k demoscene demos.
 
-== Features ==
-
+## Features
 * The resulting executables are tiny!
 * "hello world" is only 129 bytes on 32-bit Linux (when using sstrip from elfkickers).
 * It's possible to write an operating system with only one source file.
@@ -37,6 +32,5 @@ A different take on assembly, with the goal of creating tiny executables.
 * Also supports 16-bit x86 with DosBox.
 * The intermediate assembly is fully commented.
 
-== Project page ==
-
+## Project page
 https://github.com/xyproto/battlestar

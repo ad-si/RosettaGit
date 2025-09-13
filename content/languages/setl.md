@@ -9,11 +9,3 @@ id = 2898
 categories = []
 tags = []
 +++
-
-{{language|SETL
-|site=http://setl.org/setl/
-}}'''SETL''' (SET Language)  developed by [[Jack Schwartz]] at the New York University Courant Institute of Mathematical Sciences in the 1969.
-
-SETL is the ancestor of [[ABC]].
-
-The first [[Ada]] compiler was written in SETL.

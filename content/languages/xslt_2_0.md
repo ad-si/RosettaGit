@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
 
-==References==
+
+## References
 * [http://www.w3.org/TR/xslt20 XSLT 2.0 Spec]
 * [http://www.w3.org/TR/xpath-datamodel XQuery and XPath Data Model]
 * [http://www.w3.org/TR/xpath-functions XPath Functions]

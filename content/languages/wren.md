@@ -10,14 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language|Wren
-|exec=interpreted
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|gc=yes
-|site=https://munificent.github.io/wren
-}}{{language programming paradigm|Object-oriented}}
 
-Wren is a lightweight, [[object-oriented]] [[programming language]] designed to be an easily-embeddable scripting language.
+Wren is a lightweight, [object-oriented](https://rosettacode.org/wiki/object-oriented) [programming language](https://rosettacode.org/wiki/programming_language) designed to be an easily-embeddable scripting language.

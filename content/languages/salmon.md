@@ -10,10 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Salmon
-|site=http://salmonpl.net/
-|LCT=no
-}}
 
 Salmon is a general-purpose, multi-paradigm language that supports imperative, object-oriented, and functional programming styles, among others.  It supports writing code at either a high level or a low level, and intermixing the two.  Salmon is designed to support the full range of programming tasks, from quick and simple scripts to large, multi-developer software projects, with strong support for modularity.  It is designed to support interpretation or compilation, with the ability to specify low-level details where needed to optimize compiled code.  Readability and maintainability of code are a priority with Salmon.
 

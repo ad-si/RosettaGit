@@ -10,8 +10,5 @@ categories = []
 tags = []
 +++
 
-{{language|diesel
-|site=http://wasp.cs.washington.edu/wasp_diesel.html
-}}
 
-Diesel is an advanced object-oriented programming language. It is a successor to the [[Cecil]] language, which included multiply dispatched methods, a flexible classless object model, and a constraint-based polymorphic static type system. Diesel adds a module system and simplifies the object model.
+Diesel is an advanced object-oriented programming language. It is a successor to the [Cecil](https://rosettacode.org/wiki/Cecil) language, which included multiply dispatched methods, a flexible classless object model, and a constraint-based polymorphic static type system. Diesel adds a module system and simplifies the object model.

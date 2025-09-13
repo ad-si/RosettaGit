@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language}}{{assembler language}}{{stub}}
 
-[[category: x86 Assembly]]
+
+[category: x86 Assembly](https://rosettacode.org/wiki/category:_x86_Assembly)

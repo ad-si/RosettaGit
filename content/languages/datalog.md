@@ -10,9 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language
-}}
-Datalog is a query and rule language for deductive databases that syntactically is a subset of [[Prolog]].
+Datalog is a query and rule language for deductive databases that syntactically is a subset of [Prolog](https://rosettacode.org/wiki/Prolog).
 
 In contrast to Prolog:
 * it disallows complex terms as arguments of predicates, e.g. p(1, 2) is admissible but not p(f1(1), 2),
@@ -21,8 +19,8 @@ In contrast to Prolog:
 
 These rules make the set of all possible proofs finite, with the consequence that all datalog programs terminate (unlike Prolog programs). As a consequence, statements and predicates of a program can be stated in any order (unlike Prolog).
 
-== See Also ==
-* [[wp:Datalog|Wikipedia:Datalog]]
+## See Also
+* [Wikipedia:Datalog](https://en.wikipedia.org/wiki/Datalog)
 * [https://bitbucket.org/pcarbonn/pydatalog pyDatalog]
 * [http://www.ccs.neu.edu/home/ramsdell/tools/datalog/ Datalog]
 * [http://www.ccs.neu.edu/home/ramsdell/tools/datalog/datalog.html Datalog User Manual]

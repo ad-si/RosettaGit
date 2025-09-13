@@ -9,9 +9,4 @@ id = 7655
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.ampl.com/
-}}
 AMPL is a comprehensive and powerful algebraic modeling language for linear and nonlinear optimization problems, in discrete or continuous variables. One particular advantage of AMPL is the similarity of its syntax to the mathematical notation of optimization problems.

@@ -9,8 +9,6 @@ id = 20922
 categories = []
 tags = []
 +++
-
-{{language|SSEM}}
 The Manchester Small-Scale Experimental Machine (SSEM or "Manchester Baby"), constructed in 1948, was the world's first stored-program electronic computer. Although its storage space (32 words of 32 bits each) was too limited for it to be a really practical general-purpose machine, the SSEM is of considerable historical interest.
 
 The machine could only be programmed in pure binary machine code from the front panel. No assembly language was ever specified for it, but there was a more or less standardized mnemonic notation used when drafting programs on a piece of paper before entering them into the machine.

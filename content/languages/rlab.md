@@ -10,11 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://rlabplus.sourceforge.net/
-}}
 
-RLaB is an interactive, interpreted scientific programming environment which provides fast prototyping and program development. RLaB is not a clone of languages such as those used by tools like [[MATLAB]] or Matrix-X/Xmath. However, as RLaB focuses on creating a good experimental environment (or laboratory) in which to do matrix math, it can be called "Matlab-like"; since the programming language possesses similar operators and concepts.
+RLaB is an interactive, interpreted scientific programming environment which provides fast prototyping and program development. RLaB is not a clone of languages such as those used by tools like [MATLAB](https://rosettacode.org/wiki/MATLAB) or Matrix-X/Xmath. However, as RLaB focuses on creating a good experimental environment (or laboratory) in which to do matrix math, it can be called "Matlab-like"; since the programming language possesses similar operators and concepts.
 RLaB does not try to be a Matlab clone. Instead, it borrows what might be the best features of the Matlab language and provides improved language syntax and semantics. The syntax has been improved to allow users more expression and reduce ambiguities. The variable scoping rules have been improved to facilitate creation of larger programs and program libraries.
 
 The project ''rlabplus'' is its successor for 32- and 64-bit linux operating systems.

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 http://aerosuidae.net/shiny.html

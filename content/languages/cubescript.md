@@ -9,8 +9,4 @@ id = 21873
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|Cubescript}}
-
 CubeScript is the scripting language of the [http://cubeengine.com/ Cube 2 game engine].

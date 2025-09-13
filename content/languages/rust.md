@@ -9,26 +9,11 @@ id = 11295
 categories = []
 tags = []
 +++
-
-{{implementation|Rust}}
-{{language
-|site=http://www.rust-lang.org
-|exec=machine
-|gc=allowed
-|safety=safe
-|strength=strong
-|compat=structural
-|express=implicit
-|checking=static
-|tags=rust
-|hopl id=1558
-}}
-
 Rust is a general purpose, multi-paradigm, systems programming language sponsored by Mozilla. Its goal is to provide a fast, practical, concurrent language with zero-cost abstractions and strong memory safety. It employs a unique model of ownership to eliminate data races.
 
 Solutions to RosettaCode tasks are mirrored on GitHub at [http://github.com/Hoverbear/rust-rosetta Hoverbear/rust-rosetta]. If you implement a solution here, please open a pull request!
 
-== Features ==
+## Features
 From the official website:
 * zero-cost abstractions
 * move semantics
@@ -39,8 +24,3 @@ From the official website:
 * type inference
 * minimal runtime
 * efficient C bindings
-
-{{language programming paradigm|functional}}
-{{language programming paradigm|imperative}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Generic}}

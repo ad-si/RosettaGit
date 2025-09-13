@@ -10,9 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|site=http://www.lambdassociates.org/
-|express=explicit}}
-{{implementation|Lisp}}
 
-* [[wp:Qi (programming language)]]
+* [wp:Qi (programming language)](https://en.wikipedia.org/wiki/Qi_(programming_language))

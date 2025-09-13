@@ -10,6 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Lolli
-|site=http://www.lix.polytechnique.fr/~dale/lolli/}}
+
 Lolli is a logic programming language based on a fragment of linear logic.

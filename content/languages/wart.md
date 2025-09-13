@@ -9,21 +9,6 @@ id = 16381
 categories = []
 tags = []
 +++
-
-{{language|Wart
-|exec=interpreted
-|site=https://github.com/akkartik/wart
-|gc=yes
-|parampass=value
-|strength=strong
-|checking=dynamic
-|hopl=no
-|LCT=no
-|tags=lisp, c
-}}
-{{language programming paradigm|Dynamic}}
-{{language programming paradigm|Functional}}
-{{language programming paradigm|Procedural}}
 [http://github.com/akkartik/wart#readme Wart] is an experimental, dynamic, [http://plus.google.com/110981030061712822816/posts/KaSKeg4vQtz batshit-liberal] language designed to eventually be used by small teams of [http://en.wikipedia.org/wiki/Motivation#Intrinsic_and_extrinsic_motivation intrinsically-motivated] programmers. Wart is based on [http://paulgraham.com/lispfaq1.html Lisp], but with a cleaner syntax and more powerful primitives to help non-lispers appreciate the power of Lisp. Wart was designed with several questions in mind:
 
 * How far can we change the syntax of Lisp without compromising the power of Lisp macros? Wart has several features to help make codebases more pleasurable to read and easier to ramp up on.

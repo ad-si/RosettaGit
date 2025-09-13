@@ -9,10 +9,6 @@ id = 17763
 categories = []
 tags = []
 +++
-
-{{language
-|site=http://stedolan.github.io/jq}}
-{{language programming paradigm|Functional}}
-jq is a [[functional programming]] language that is oriented towards processing text files or [[JSON]]. jq is also the name of a portable executable that compiles and runs jq programs.
+jq is a [functional programming](https://rosettacode.org/wiki/functional_programming) language that is oriented towards processing text files or [JSON](https://rosettacode.org/wiki/JSON). jq is also the name of a portable executable that compiles and runs jq programs.
 
 jq was originally designed and developed by Stephen Dolan.

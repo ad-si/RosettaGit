@@ -10,16 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|ActionScript
-|site=http://www.adobe.com/devnet/actionscript.html
-|gc=yes
-|strength=strong
-|safety=safe
-|checking=static
-|LCT=yes}}
 
-{{Language programming paradigm|Distributed}}
-{{Language programming paradigm|Imperative}}
-{{Language programming paradigm|Event-driven}}
-
-ActionScript is the language that drives [[wp:Adobe Flash|Flash]] behind the scenes. It is based on [[wp:ECMAScript|ECMAscript]], which is also the basis for [[JavaScript]].
+ActionScript is the language that drives [Flash](https://en.wikipedia.org/wiki/Adobe_Flash) behind the scenes. It is based on [ECMAscript](https://en.wikipedia.org/wiki/ECMAScript), which is also the basis for [JavaScript](https://rosettacode.org/wiki/JavaScript).

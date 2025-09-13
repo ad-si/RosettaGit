@@ -9,11 +9,3 @@ id = 2974
 categories = []
 tags = []
 +++
-
-{{language|Io
-|strength=strong
-|checking=dynamic
-|gc=yes
-|site=http://iolanguage.com/
-|LCT=yes}}Io is an embeddable, prototype-based, scripting language. Its syntax is simple and expressive. It is executed by a small virtual machine.
-<br clear="all"/>

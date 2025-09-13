@@ -9,11 +9,6 @@ id = 8940
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.openscad.org/}}
-
 The openscad language is the scripting language used by the openscad geometry compiler.
 
-[[Category:Constructive Solid Geometry]]
+[Category:Constructive Solid Geometry](https://rosettacode.org/wiki/Category:Constructive_Solid_Geometry)

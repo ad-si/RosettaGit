@@ -9,15 +9,6 @@ id = 18495
 categories = []
 tags = []
 +++
-
-{{language
-|site=http://www.oforth.com/
-|gc=yes
-}}
-
-{{language programming paradigm|concatenative}}
-{{language programming paradigm|imperative}}
-
 Oforth is for Object + Forth : while based on Forth philosophy (data stack, one pass compilation, ...), it implements a full object metamodel.
 
 Features include :

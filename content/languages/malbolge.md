@@ -9,9 +9,4 @@ id = 17869
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|exec=interpreted}}
-
 '''Malbolge''' is an esoteric programming language invented by Ben Olmstead in 1998 and named after the eighth circle of hell in Dante's Inferno, named Malebolge.

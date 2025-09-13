@@ -10,7 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Xanadu
-|site=http://www.cs.bu.edu/~hwxi/Xanadu/Xanadu.html
-}}
+
 Xanadu is a dependently typed imperative programming language.

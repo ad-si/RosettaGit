@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|site=http://www.sdn.sap.com/irj/sdn/abap}}
+
 ABAP (Advanced Business Application Programming) is a programming language developed by the german software vendor SAP. It is mainly used to build high performance business applications.

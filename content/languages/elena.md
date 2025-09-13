@@ -10,16 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language|Elena
-|site=http://elenalang.sourceforge.net
-|exec=bytecode
-|strength=strong
-|safety=safe
-|express=implicit
-|checking=dynamic
-|gc=yes
-|LCT=yes}}
-{{language programming paradigm|Object-oriented}}{{language programming paradigm|dynamic}}
+
 
 ELENA is a general-purpose, object-oriented, polymorphic language with late binding. It features message dispatching/manipulation, dynamic object mutation, a script engine / interpreter and mix-ins.
 

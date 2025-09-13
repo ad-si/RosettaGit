@@ -9,11 +9,3 @@ id = 9787
 categories = []
 tags = []
 +++
-
-{{language|Thistle
-|site=http://alycesrestaurant.com/thistle/
-|hopl=no
-|LCT=no
-}}
-
-{{stub}}

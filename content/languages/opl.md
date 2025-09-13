@@ -9,7 +9,3 @@ id = 10759
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://opl-dev.sourceforge.net/}}

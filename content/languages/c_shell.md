@@ -10,14 +10,9 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|tags=csh
-|hopl id=1936
-}}{{implementation|UNIX Shell}}
-'''csh''' was the shell that William Joy wrote for [[BSD]]. '''csh''' accepted the same [[Unix]] commands as other shells, but had a very different syntax (for variable assignments, control flow, and such). '''csh''' is not compatible with the [[Bourne Shell]].
+'''csh''' was the shell that William Joy wrote for [BSD](https://rosettacode.org/wiki/BSD). '''csh''' accepted the same [Unix](https://rosettacode.org/wiki/Unix) commands as other shells, but had a very different syntax (for variable assignments, control flow, and such). '''csh''' is not compatible with the [Bourne Shell](https://rosettacode.org/wiki/Bourne_Shell).
 
-BSD keeps the C Shell at <code>/bin/csh</code>. [[Hashbang]] lines should use the -f option:
+BSD keeps the C Shell at <code>/bin/csh</code>. [Hashbang](https://rosettacode.org/wiki/Hashbang) lines should use the -f option:
 
 
 ```csh
@@ -25,17 +20,17 @@ BSD keeps the C Shell at <code>/bin/csh</code>. [[Hashbang]] lines should use th
 ```
 
 
-== Reputation ==
+## Reputation
 C Shell is obsolete. Most scriptwriters prefer a Bourne-compatible shell, and few users want to learn two flavors of shells. C Shell introduced tilde expansion (<code>ls ~</code>), job control, command history, and aliases, but POSIX shells now have all of those.
 
 [http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/ Csh Programming Considered Harmful] and [http://www.grymoire.com/Unix/CshTop10.txt Top Ten Reasons not to use the C shell] give multiple reasons to avoid C Shell.
 
 tcsh is a later version that fixed many of the problems with csh. It is still actively, if intermittently, maintained and has a following such as on Solaris.
 
-== Syntax ==
-[http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html The manual for csh(1)] claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [[Java]] and [[Pike]], and Unix utilities [[AWK]] and [[bc]]. C Shell is less like [[C]] than those other languages.
+## Syntax
+[http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html The manual for csh(1)] claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [Java](https://rosettacode.org/wiki/Java) and [Pike](https://rosettacode.org/wiki/Pike), and Unix utilities [AWK](https://rosettacode.org/wiki/AWK) and [bc](https://rosettacode.org/wiki/bc). C Shell is less like [C](https://rosettacode.org/wiki/C) than those other languages.
 
-This example prints a [[Hailstone sequence]] from 13.
+This example prints a [Hailstone sequence](https://rosettacode.org/wiki/Hailstone_sequence) from 13.
 
 {| class="wikitable"
 ! C
@@ -93,7 +88,7 @@ end
 
 C Shell has no braces {} to group the commands. Strange keywords are <code>then</code>, <code>endif</code> and <code>end</code>. Expressions have <code>$n</code> instead of <code>n</code>. Assignments use <code>@ n</code>.
 
-C Shell has "a C-like syntax" because C Shell is more like C than [[Bourne Shell]].
+C Shell has "a C-like syntax" because C Shell is more like C than [Bourne Shell](https://rosettacode.org/wiki/Bourne_Shell).
 
 {| class="wikitable"
 ! Bourne Shell
@@ -142,5 +137,5 @@ Bourne Shell requires <code>test</code> or <code>expr</code> to evaluate express
 ```
 
 
-== Links ==
-* [[OpenBSD]] has [http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html csh(1) manual] and [http://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/ source code].
+## Links
+* [OpenBSD](https://rosettacode.org/wiki/OpenBSD) has [http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html csh(1) manual] and [http://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/ source code].

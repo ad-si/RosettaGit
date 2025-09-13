@@ -9,8 +9,6 @@ id = 22373
 categories = []
 tags = []
 +++
-
-{{language|Nyquist}}
 Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax "SAL", and a powerful integrated development environment.
 
 Nyquist was created by Roger B. Dannenberg at Carnegie Mellon University as an extension of XLISP by David Betz.

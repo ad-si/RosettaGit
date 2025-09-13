@@ -10,20 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|TypeScript
-|exec=JavaScript
-|strength=weak
-|express=implicit
-|checking=dynamic, static
-|gc=yes
-|parampass=value
-|LCT=yes|{{language programming paradigm|Object-oriented}}{{language programming paradigm|functional}}{{language programming paradigm|structured}}{{language programming paradigm|generic}}{{language programming paradigm|imperative}}{{language programming paradigm|scripting}}}}
 
-'''TypeScript''' is a free and open source programming language developed and maintained by Microsoft. It is a strict superset of [[JavaScript]], and adds optional static typing and class-based [[object-oriented language|object-oriented programming language]] programming to the language. Anders Hejlsberg, lead architect of [[C sharp|C#]] and creator of [[Delphi]] and [[Turbo Pascal]], has worked on the development of TypeScript.
+'''TypeScript''' is a free and open source programming language developed and maintained by Microsoft. It is a strict superset of [JavaScript](https://rosettacode.org/wiki/JavaScript), and adds optional static typing and class-based [object-oriented programming language](https://rosettacode.org/wiki/object-oriented_language) programming to the language. Anders Hejlsberg, lead architect of [C#](https://rosettacode.org/wiki/C_sharp) and creator of [Delphi](https://rosettacode.org/wiki/Delphi) and [Turbo Pascal](https://rosettacode.org/wiki/Turbo_Pascal), has worked on the development of TypeScript.
 
-==Citations==
-*[[wp:TypeScript|Wikipedia:TypeScript]]
-
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Generic}}
+## Citations
+*[Wikipedia:TypeScript](https://en.wikipedia.org/wiki/TypeScript)

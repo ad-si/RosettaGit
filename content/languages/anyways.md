@@ -9,10 +9,4 @@ id = 21871
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|Anyways}}
-
 Anyways is an interpreted esoteric programming language designed to read like a joke routine.
-
-{{Category:Esoteric_Languages}}

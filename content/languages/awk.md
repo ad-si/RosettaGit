@@ -10,11 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|tag=awk
-}}{{CompileOnline}}
-AWK is a small but powerful programming language that can process and convert text files. AWK is part of every [[Unix]]-derived system.
+AWK is a small but powerful programming language that can process and convert text files. AWK is part of every [Unix](https://rosettacode.org/wiki/Unix)-derived system.
 
 Each AWK program consists of pattern-action statements.
 The program reads each input line, checks lines against patterns, and runs matching actions.
@@ -37,16 +33,16 @@ $ awk '{ cnt += length($0) } END { print cnt / NR }' /etc/rc
 
 
 The name "AWK" comes from the initials of Alfred Aho, Peter Weinberger and Brian Kernighan: they invented AWK during the 1970s.
-A few decades later, Kernighan continues to maintain the [[nawk|reference implementation]] of AWK.
+A few decades later, Kernighan continues to maintain the [reference implementation](https://rosettacode.org/wiki/nawk) of AWK.
 
-==Links==
+## Links
 *[http://leaf.dragonflybsd.org/cgi/web-man?command=awk&section=1 awk(1) manual page], short and brief
 *[https://www.gnu.org/software/gawk/ gawk] GNU awk [https://www.gnu.org/software/gawk/manual/ manual]
-*[[wp:AWK (programming language)|AWK in Wikipedia]]
+*[AWK in Wikipedia](https://en.wikipedia.org/wiki/AWK_(programming_language))
 *[http://awk.info AWK Community Portal]
 
-==Online-Execution==
+## Online-Execution
 * [http://ideone.com ideone.com] - gawk, mawk (both are kept up to date)
 
-==Todo==
-[[Reports:Tasks_not_implemented_in_AWK]]
+## Todo
+[Reports:Tasks_not_implemented_in_AWK](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_AWK)

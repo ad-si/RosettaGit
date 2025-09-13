@@ -9,22 +9,4 @@ id = 14032
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.kaivos.org/doc/phl/phl.html
-|exec=machine
-|gc=yes
-|safety=unsafe
-|parampass=value
-|express=implicit
-|checking=static
-|strength=strong
-|tags=phl
-}}
-
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|generic}}
-
 '''Proceed High Language''' is an general purpose object-oriented language.

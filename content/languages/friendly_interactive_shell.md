@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
-'''friendly interactive shell''' is an user-friendly UNIX shell, incompatible by design with [[Bourne Shell]]. It's mostly used interactively, but it's possible to write scripts in it too.
+
+'''friendly interactive shell''' is an user-friendly UNIX shell, incompatible by design with [Bourne Shell](https://rosettacode.org/wiki/Bourne_Shell). It's mostly used interactively, but it's possible to write scripts in it too.

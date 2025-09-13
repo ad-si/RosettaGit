@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|KQL}}
+
 
 Kusto Query Language (KQL) is a query language developed by Microsoft for querying log data. It is used in Azure Data Explorer and in Azure Monitor.

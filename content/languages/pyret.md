@@ -10,13 +10,9 @@ categories = []
 tags = []
 +++
 
-{{language|Pyret
-|site=https://www.pyret.org/
-|hopl=no
-}}
 '''Pyret''' is a programming language designed to serve as an outstanding choice for programming education. It supports functional programming, optional type annotations, recursive data definitions, and including tests with function definitions. It is under active development.
 
 
-==External Links==
+## External Links
 * [https://www.pyret.org/ Pyret site]
 * [http://papl.cs.brown.edu/2015/ Programming and Programming Languages book]

@@ -9,21 +9,7 @@ id = 10884
 categories = []
 tags = []
 +++
+'''Squirrel''' is a language designed to be embedded, and extended, having a minimal footprint. It has been featured in some [games and applications](https://en.wikipedia.org/wiki/Squirrel_(programming_language))
 
-{{stub}}
-{{language
-|exec=interpreted
-|site=http://www.squirrel-lang.org/
-|strength=weak
-|checking=dynamic
-|parampass=both
-|gc=yes
-|LCT=yes
-}}
-{{language programming paradigm|Object-oriented}}
-{{language programming paradigm|imperative}}
-
-'''Squirrel''' is a language designed to be embedded, and extended, having a minimal footprint. It has been featured in some [[wp:Squirrel_(programming_language)|games and applications]]
-
-==Citations==
-* [[wp:Squirrel_(programming_language)]]
+## Citations
+* [wp:Squirrel_(programming_language)](https://en.wikipedia.org/wiki/Squirrel_(programming_language))

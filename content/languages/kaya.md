@@ -10,11 +10,4 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language
-|exec=machine
-|site=http://kayalang.org/
-|gc=yes
-|safety=safe
-|strength=strong
-|checking=static
-}}
+

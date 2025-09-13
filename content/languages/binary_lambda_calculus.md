@@ -9,14 +9,7 @@ id = 20926
 categories = []
 tags = []
 +++
-
-{{language|Binary lambda calculus
-|exec=interpreted
-|site=http://tromp.github.io/cl/cl.html
-|LCT=no
-}}
-{{language programming paradigm|functional}}
-'''Binary Lambda Calculus''' is a minimal, pure, functional, esoteric language based on lambda calculus. [[provides::Capability:First class functions| ]]
-==External links==
-* [[eso:Binary_lambda_calculus|Esoteric languages wiki page]]
-[[Category:Esoteric Languages]]
+'''Binary Lambda Calculus''' is a minimal, pure, functional, esoteric language based on lambda calculus. [](https://rosettacode.org/wiki/provides::Capability:First_class_functions)
+## External links
+* [Esoteric languages wiki page](https://rosettacode.org/wiki/eso:Binary_lambda_calculus)
+[Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

@@ -9,23 +9,18 @@ id = 6670
 categories = []
 tags = []
 +++
-
-{{language
-|untyped=yes
-|site=http://www.ppl-lang.com}}
-{{language programming paradigm|object-oriented}}
-ArianeSoft PPL is a fast and easy-to-learn programming language that is fully [[object-oriented]]. PPL runs on [[Windows]] (XP and up) and Windows Mobile phones. Programs written for one system are 100% compatible with each supported platforms. PPL comes with a complete development environment on Windows.
+ArianeSoft PPL is a fast and easy-to-learn programming language that is fully [object-oriented](https://rosettacode.org/wiki/object-oriented). PPL runs on [Windows](https://rosettacode.org/wiki/Windows) (XP and up) and Windows Mobile phones. Programs written for one system are 100% compatible with each supported platforms. PPL comes with a complete development environment on Windows.
 
 PPL has been in active development for more than six years now. It has been used by thousands of people all over the world. PPL has proven to be very stable, many projects have been developed with it.
 
 
 '''PPL 2 (Pocket Programming Language version 2)''' is an object-oriented programming language designed from the ground-up for Windows and Windows Mobile phones. It features:
 
-The PPL language syntax is a mixture of [[C]], [[Pascal]] and [[Basic]]. There are no variable types in PPL. Everything is fully transparent, from string to char to integer or double. Multi-dimensional arrays and multi-level matrices are supported while structures can be defined with specific fields sizes. Pointers can be used the same way the C language handles them. String manipulation is done transparently and allocated dynamically just like in Pascal or Basic. Linked-lists are an integral part of the variable system in PPL. You can easily create linked-list variables with arrays of different size or different structures in each element. Windows [[API]] functions are easy to access. Simply define the function, the number of input and output parameters and the interpreter will do all the necessary work including WideChar conversions.
+The PPL language syntax is a mixture of [C](https://rosettacode.org/wiki/C), [Pascal](https://rosettacode.org/wiki/Pascal) and [Basic](https://rosettacode.org/wiki/Basic). There are no variable types in PPL. Everything is fully transparent, from string to char to integer or double. Multi-dimensional arrays and multi-level matrices are supported while structures can be defined with specific fields sizes. Pointers can be used the same way the C language handles them. String manipulation is done transparently and allocated dynamically just like in Pascal or Basic. Linked-lists are an integral part of the variable system in PPL. You can easily create linked-list variables with arrays of different size or different structures in each element. Windows [API](https://rosettacode.org/wiki/API) functions are easy to access. Simply define the function, the number of input and output parameters and the interpreter will do all the necessary work including WideChar conversions.
 
 *Object Oriented framework
 *Temporary object creation and method calling (ex: PDialog("Hello World!").Message)
-*Syntax borrows the best from commonly used languages like C, [[C Sharp|C#]], Pascal and BASIC, so it's easy for all levels of developer to understand
+*Syntax borrows the best from commonly used languages like C, [C#](https://rosettacode.org/wiki/C_Sharp), Pascal and BASIC, so it's easy for all levels of developer to understand
 *Implements advanced constructs like Arrays, Linked Lists and Matrices
 *100% compatible with PPL v1.x procedural's syntax
 *Regular expressions
@@ -93,7 +88,7 @@ Have you ever waste valuable minutes trying to remember what was the name of tha
 
 '''The PPL Control Library:'''
 
-*All standard [[Microsoft]] controls are bundled in easy to use object oriented libraries
+*All standard [Microsoft](https://rosettacode.org/wiki/Microsoft) controls are bundled in easy to use object oriented libraries
 *Easily create your own controls using PCL (PPL Control Library) which provides an excellent framework to develop your applications.
 *Package your components, help files and project templates in an easy to distribute format.
 *Download and purchase components or component packages from our PPL Store.
@@ -102,7 +97,7 @@ Have you ever waste valuable minutes trying to remember what was the name of tha
 
 '''The Database library:'''
 
-*[[SQLite]] v2 and v3 support (read here http://blog.gobansaor.com/2009/03/14/sqlite-as-the-mp3-of-data why we chose SQLite)
+*[SQLite](https://rosettacode.org/wiki/SQLite) v2 and v3 support (read here http://blog.gobansaor.com/2009/03/14/sqlite-as-the-mp3-of-data why we chose SQLite)
 *Visual data grid and data controls
 *Orion database engine
 *Secure SSL encryption package

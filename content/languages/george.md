@@ -9,8 +9,6 @@ id = 16608
 categories = []
 tags = []
 +++
-
-{{language}}
 GEORGE is a high-level language invented by Charles Leonard Hamblin in 1957.
 
 It makes use of a push-down pop-up Accumulator.

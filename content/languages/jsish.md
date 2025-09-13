@@ -10,14 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Jsish
-|gc=yes
-|parampass=value
-|express=implicit
-|checking=dynamic
-|strength=weak (assistive)
-|site=https://jsish.org
-}}
 
 '''Jsish''' is a scripting language based on ECMAScript syntax, influenced by Tcl internals, extended for Web development, and designed for embedded use. Developed by Peter MacDonald, the creator of the first stand alone GNU/Linux distribution, SLS, Softlanding Linux System (circa 1992).
 
@@ -86,10 +78,6 @@ abc
 !=EXPECTEND=!
 */
 ```
-
-
-{{out}}
-
 ```txt
 
 prompt$ jsish sampler.jsi

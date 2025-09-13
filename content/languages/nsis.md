@@ -10,17 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|NSIS
-|exec=machine
-|site=http://nsis.sourceforge.net
-|gc=no
-|untyped=yes
-|tags=NSIS, nsis
-|LCT=no}}
 
-'''NSIS''' is a full-featured [[Windows]] installation creator based on an eponymous [[procedural programming|procedural]] language developed by [[wp:Nullsoft|Nullsoft]]. The original version of NSIS was used to install [[wp:Winamp|Winamp]] and its plugins.
+'''NSIS''' is a full-featured [Windows](https://rosettacode.org/wiki/Windows) installation creator based on an eponymous [procedural](https://rosettacode.org/wiki/procedural_programming) language developed by [Nullsoft](https://en.wikipedia.org/wiki/Nullsoft). The original version of NSIS was used to install [Winamp](https://en.wikipedia.org/wiki/Winamp) and its plugins.
 
-==Citations==
-*[[wp:Nullsoft Scriptable Install System|NSIS on Wikipedia]]
-
-{{language programming paradigm|Procedural}}
+## Citations
+*[NSIS on Wikipedia](https://en.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System)

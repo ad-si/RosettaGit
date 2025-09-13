@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|PASM|site=http://www.parrot.org/dev/examples/pasm}}
-PASM is the low level assembly language used by the [[runs on vm::Parrot]] virtual machine.
+
+PASM is the low level assembly language used by the [runs on vm::Parrot](https://rosettacode.org/wiki/runs_on_vm::Parrot) virtual machine.

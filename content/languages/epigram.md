@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Epigram}}
+
 Epigram 2 is an experimental dependently typed functional programming language.

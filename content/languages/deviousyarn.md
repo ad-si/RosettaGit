@@ -9,7 +9,4 @@ id = 21872
 categories = []
 tags = []
 +++
-
-{{language|DeviousYarn}}
-
 DeviousYarn is a computer language developed by Landon Powell for the purpose of String Manipulation. The DeviousYarn interpreter lies somewhere on the line between line editor and programming language interpreter.

@@ -10,24 +10,8 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
 
-{{language|Ceylon
-|site=http://ceylon-lang.org/
-|gc=yes
-|strength=strong
-|safety=safe
-|express=both
-|compat=nominative
-|tags=ceylon
-|checking=both}}
-{{language programming paradigm|Imperative}}
-{{language programming paradigm|procedural}}
-{{language programming paradigm|object-oriented}}
-{{language programming paradigm|Functional}}
-{{language programming paradigm|generic}}
+The '''Ceylon''' is a high-level, statically and strong-typed programming language and SDK, created by [Red Hat](https://en.wikipedia.org/wiki/Red_Hat). It is based on the [Java programming language](https://rosettacode.org/wiki/Java).  Ceylon programs run on the [Java Virtual Machine](https://rosettacode.org/wiki/Java_Virtual_Machine) and JavaScript Virtual Machines.
 
-The '''Ceylon''' is a high-level, statically and strong-typed programming language and SDK, created by [[wp:Red Hat|Red Hat]]. It is based on the [[Java|Java programming language]].  Ceylon programs run on the [[Java Virtual Machine]] and JavaScript Virtual Machines.
-
-==Citations==
-* [[wp:Ceylon (programming language)|Wikipedia:Ceylon (programming language)]]
+## Citations
+* [Wikipedia:Ceylon (programming language)](https://en.wikipedia.org/wiki/Ceylon_(programming_language))

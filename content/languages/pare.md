@@ -9,11 +9,4 @@ id = 17684
 categories = []
 tags = []
 +++
-
-{{language|Pare
-|site=http://parelang.bitbucket.org/
-}}
-
-
-{{implementation|Lisp}}
 Pare is a scripting language and a compiler.

@@ -9,8 +9,5 @@ id = 22389
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language|Vlang}}
-<span style="font-size:3em;strong;">NOTE: Vlang is not [[:Category:V|V]].
-[[:Category:V|V]] has its own language page.</span>
+<span style="font-size:3em;strong;">NOTE: Vlang is not [V](https://rosettacode.org/wiki/:Category:V).
+[V](https://rosettacode.org/wiki/:Category:V) has its own language page.</span>

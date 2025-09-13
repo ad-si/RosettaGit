@@ -10,12 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=Interpreted
-|site=https://mercerenies.github.io/latitude/
-|gc=yes
-|parampass=reference
-|checking=dynamic}}
 
 Latitude is a prototype-oriented dynamically-typed programming language which supports continuations and first-class scoping objects. Latitude is primarily designed with runtime reflection in mind, allowing the programmer to control the language itself at runtime.
 

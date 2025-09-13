@@ -10,9 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Opa
-|site=http://opalang.org/
-}}
+
 Opa is an open source, simple and unified platform
 for writing web applications:
 

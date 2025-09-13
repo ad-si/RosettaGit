@@ -10,17 +10,12 @@ categories = []
 tags = []
 +++
 
-{{language
-|exec=interpreted
-|site=http://www.cmake.org/
-|hopl=no
-|tags=cmake}}
-[[Category:Utility]]
+[Category:Utility](https://rosettacode.org/wiki/Category:Utility)
 
-CMake is a cross-platform make system, for compiling [[C]], [[C++]] or [[Fortran]] programs.
+CMake is a cross-platform make system, for compiling [C](https://rosettacode.org/wiki/C), [C++](https://rosettacode.org/wiki/C++) or [Fortran](https://rosettacode.org/wiki/Fortran) programs.
 CMake uses a configuration file (CMakeLists.txt) to run configure tests,
 find libraries, create targets, and generate a build system for
-[[make|Unix make]] or another build tool.
+[Unix make](https://rosettacode.org/wiki/make) or another build tool.
 
 This configuration file runs commands in CMake's own scripting language.
 
@@ -32,7 +27,7 @@ Many examples use features from 2.6, especially function().
 In <code>cmake -P</code> mode, CMake runs the script but never creates a project.
 So there are no configure tests and no targets.
 
-==Simple project==
+## Simple project
 This example builds a small C program after checking if #include <sys/time.h> provides clock_gettime() or gettimeofday().
 
 

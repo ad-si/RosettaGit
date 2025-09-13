@@ -10,8 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|JOVIAL
-|hopl id=83}}
-JOVIAL is an [[ALGOL]]-based language used for avionics and air traffic control systems.
+JOVIAL is an [ALGOL](https://rosettacode.org/wiki/ALGOL)-based language used for avionics and air traffic control systems.
 
-[[wp:JOVIAL|Wikipedia page]]
+[Wikipedia page](https://en.wikipedia.org/wiki/JOVIAL)

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Rockstar}}
+
 
 Rockstar was created by a rockin' dude named Dylan Beattie.
 

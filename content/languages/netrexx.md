@@ -10,25 +10,15 @@ categories = []
 tags = []
 +++
 
-{{language
-|NetRexx
-|exec=both
-|site=http://www.netrexx.org
-|gc=yes
-|parampass=value
-|safety=safe
-|tags=netrexx, rexx, java
-}}
-== Introduction ==
-
-'''NetRexx''' is a general-purpose programming language inspired by two very different programming languages, [[REXX|Rexx]] and [[Java]]<sup><small>TM</small></sup>.
+## Introduction
+'''NetRexx''' is a general-purpose programming language inspired by two very different programming languages, [Rexx](https://rosettacode.org/wiki/REXX) and [Java](https://rosettacode.org/wiki/Java)<sup><small>TM</small></sup>.
 It is designed for people, not computers. In this respect it follows Rexx closely, with many of the concepts and most of the syntax
-taken directly from Rexx or its object-oriented version, [[ooRexx|Open Object Rexx]].
+taken directly from Rexx or its object-oriented version, [Open Object Rexx](https://rosettacode.org/wiki/ooRexx).
 From Java it derives static typing, binary arithmetic, the object model, and exception handling.
 The resulting language not only provides the scripting capabilities and decimal arithmetic of Rexx, but also seamlessly
 extends to large application development with fast binary arithmetic.
 
-The reference implementation of NetRexx produces classes for the [[runs on vm::Java Virtual Machine]], and in so doing demonstrates the value of that concrete
+The reference implementation of NetRexx produces classes for the [runs on vm::Java Virtual Machine](https://rosettacode.org/wiki/runs_on_vm::Java_Virtual_Machine), and in so doing demonstrates the value of that concrete
 interface between language and machine: NetRexx classes and Java classes are entirely equivalent – NetRexx can use any Java class
 (and vice versa) and inherits the portability and robustness of the Java environment.
 

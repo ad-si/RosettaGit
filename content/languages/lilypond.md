@@ -10,9 +10,8 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|lilypond
-|site=http://www.lilypond.org/}}
+
 
 The lilypond language is used by the lilypond score production software for describing the layout of musical score sheets.
 
-[[Category:Musical Notation]]
+[Category:Musical Notation](https://rosettacode.org/wiki/Category:Musical_Notation)

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}
+
 
 Monte is a dynamic language inspired by Python and E, and is currently under active development.
 

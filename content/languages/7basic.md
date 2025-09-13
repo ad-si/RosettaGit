@@ -10,15 +10,13 @@ categories = []
 tags = []
 +++
 
-{{implementation|BASIC}}{{Compiler}}
-'''7Basic''' is both a programming language and the cross-platform compiler that generates x86 assembly code from 7Basic source files. The language is heavily based on other BASIC-derivatives like [[QuickBASIC]] while also providing classes and pointers, although the spec. for the language is in constant flux at the moment.
 
-==Compiler==
+'''7Basic''' is both a programming language and the cross-platform compiler that generates x86 assembly code from 7Basic source files. The language is heavily based on other BASIC-derivatives like [QuickBASIC](https://rosettacode.org/wiki/QuickBASIC) while also providing classes and pointers, although the spec. for the language is in constant flux at the moment.
 
+## Compiler
 The compiler currently is capable of generating x86 assembly code (with x87 FPU instructions) that target the Linux operating system. Plans are underway to have the compiler generate native x86 machine code not only for Linux but for other operating systems as well. The language currently supports simple constructs such as PRINT, INPUT, WHILE, and variable declarations. Nearly all math and logic operators have been implemented.
 
-==Sample==
-
+## Sample
 The following example can be compiled by supplying it as a parameter to the compiler:
 
 
@@ -38,6 +36,5 @@ PRINT age+5
 ```
 
 
-==Links==
-
+## Links
 * Project page: https://launchpad.net/7basic

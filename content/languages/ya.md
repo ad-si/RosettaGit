@@ -10,35 +10,20 @@ categories = []
 tags = []
 +++
 
-{{language|Ya
-|exec=machine
-|safety=both
-|gc=no
-|parampass=both
-|checking=both
-|express=explicit
-|strength=strong
-|compat=both
-|tags=Ya
-|site=http://Ya-Lang.com
-| operating_system = Only [[Windows]] for now
-| file_ext = .ya
-| paradigm = [[multi-paradigm programming language|multi-paradigm]]: [[object-oriented programming|object-oriented]], [[structured programming|structured]], [[imperative programming|imperative]], [[generic programming|generic]], [[metaprogramming]]
-| year = {{Start date|2012}}
-| designer = [[Pavel Senatorov]]
-| developer = [[Pavel Senatorov]]
+| designer = [Pavel Senatorov](https://rosettacode.org/wiki/Pavel_Senatorov)
+| developer = [Pavel Senatorov](https://rosettacode.org/wiki/Pavel_Senatorov)
 | latest_test_version = Ya Trial Compiler 0.0
-| latest_test_date = {{Start date and age|2013|08|05}}
+| latest_test_date = 
 | turing-complete = Yes
-| typing = [[type system|Static, strong, safe]]
-| influenced_by = [[C++]], [[Ceylon (programming language)|Ceylon]]
+| typing = [Static, strong, safe](https://rosettacode.org/wiki/type_system)
+| influenced_by = [C++](https://rosettacode.org/wiki/C++), [Ceylon](https://rosettacode.org/wiki/Ceylon_(programming_language))
 }}
 
-'''Ya''' (pronounced /jˈʌ/) is based on '''[[C++]]''' and gets most of '''C++''' as is. Yet there is no compatibility with '''C++''', '''C++''' program is not a '''Ya''' program and cannot be compiled as is.
+'''Ya''' (pronounced /jˈʌ/) is based on '''[C++](https://rosettacode.org/wiki/C++)''' and gets most of '''C++''' as is. Yet there is no compatibility with '''C++''', '''C++''' program is not a '''Ya''' program and cannot be compiled as is.
 
-'''Ya''' adds to '''C++''' extensible syntax, extensible lexical tokens, possibility to execute parts of compiling program during it's compilation ('''[[metaprogramming]]'''), support for '''SQL'''-like operations for processing databases and database-like internal data, and many small improvements over '''C++'''.
+'''Ya''' adds to '''C++''' extensible syntax, extensible lexical tokens, possibility to execute parts of compiling program during it's compilation ('''[metaprogramming](https://rosettacode.org/wiki/metaprogramming)'''), support for '''SQL'''-like operations for processing databases and database-like internal data, and many small improvements over '''C++'''.
 
-== Example: Hello World ==
+## Example: Hello World
 <code>
 @HelloWorld.Ya;
 using <stdio.h>;
@@ -47,22 +32,20 @@ $int($char[][] args) main
 	return 0;
 </code>
 
-== Basics of Ya ==
-
-
+## Basics of Ya
 ###  Block structure is described by tabs at start of lines
 
-Tabs at start of line are counted and used for specifying code blocks '''<code>{...}</code>''', like in [[Python]]. But blocks made in '''single''' line with '''<code>{</code>''' and '''<code>}</code>''' are also supported. Typical Ya program has near to no one '''<code>{</code>''' and '''<code>}</code>'''.
+Tabs at start of line are counted and used for specifying code blocks '''<code>{...}</code>''', like in [Python](https://rosettacode.org/wiki/Python). But blocks made in '''single''' line with '''<code>{</code>''' and '''<code>}</code>''' are also supported. Typical Ya program has near to no one '''<code>{</code>''' and '''<code>}</code>'''.
 
-=== Modules, ala #define and no project file ===
+### Modules, ala #define and no project file
 * Named modules: '''<code>@FileName;</code>''' at the start of each compiled file. Modules are always named starting by '''<code>@</code>''' and module name is module's file name. Example: '''<code>@C:/S/Ya/YaParser.Ya;</code>'''
 * Header files are not used. Instead it is the statement '''<code>using @module, @module;</code>''' so separate header and implementation for a module does not used, because '''<code>using @module;</code>''' gets interface of module into work but not implementation details.
 * In Ya there are no project files. Each Ya project has '''main''' or '''starting''' source that is specified for compiler on command line to compile. Main source includes '''<code>using @module, @module;</code>''' so that all required modules will be included and compiled. As a result a separate project file is not required.
 
-=== Double compilation aka [[Metaprogramming]] ===
+### Double compilation aka [Metaprogramming](https://rosettacode.org/wiki/Metaprogramming)
 * While compiler compiles, parts of the compiling program could be executed.
 * It's required for extending Ya syntax, lexical tokens and to perform optimizations, with optimizer being written in the program being compiled.
-* This feature is named [[metaprogramming]] in theory of languages.
+* This feature is named [metaprogramming](https://rosettacode.org/wiki/metaprogramming) in theory of languages.
 
 
 ###  Extensible syntax
@@ -77,12 +60,12 @@ Tabs at start of line are counted and used for specifying code blocks '''<code>{
 ** For sortings it's required comparison result of lesser or equal or bigger and it's possible to add new operator, let's name it '''<code><=></code>''', which makes such kind of comparison.
 ** Let's '''<code><-></code>''' will notify exchange of values of variables (swap). Usage: '''<code>$int i,j; i <-> j;</code>'''
 * Possibility to make other new constants
-** For example time is typically written like '''<code>10:53:17</code>''' - addition of a new kind of constant is described as '''[[regex|regular expression]]''' and the code for transforming of text of new constant into required type the programmer writes on Ya. Note that this code will be executed at compile time, not run time. So this feature requires what they name '''[[metaprogramming|double compilation]]'''. Making new constants not yet ready.
+** For example time is typically written like '''<code>10:53:17</code>''' - addition of a new kind of constant is described as '''[regular expression](https://rosettacode.org/wiki/regex)''' and the code for transforming of text of new constant into required type the programmer writes on Ya. Note that this code will be executed at compile time, not run time. So this feature requires what they name '''[double compilation](https://rosettacode.org/wiki/metaprogramming)'''. Making new constants not yet ready.
 
 
 ###  Support for databases and internal structures like databases
 
-It will probably be done as library. It will be possible to write expression that works with a number of tables, which are sets (f.e. arrays, lists) of fielded type (of class), and perform '''<code>join where sortby</code>''' of SQL. In C# it is named '''[[Language Integrated Query]]'''.
+It will probably be done as library. It will be possible to write expression that works with a number of tables, which are sets (f.e. arrays, lists) of fielded type (of class), and perform '''<code>join where sortby</code>''' of SQL. In C# it is named '''[Language Integrated Query](https://rosettacode.org/wiki/Language_Integrated_Query)'''.
 
 
 ###  Multiple names for any entity
@@ -107,7 +90,7 @@ Variables, functions, types and template argument requirements all may be named 
 
 * Work with pointers is simple, no need to dereference or getting address, all this is automatically inserted. Example: '''<code>$int** ptrptr; $int i = ptrptr;</code>''' - here in '''<code>i = ptrptr;</code>''' is automatic double dereferencing a pointer.
 * Specification of new or old operators for some type is made simple, for example '''<code>$T* $T* a = $T* b;</code>''' specifies assignment for type '''<code>$T</code>'''. Both args and return type are specified as pointers - this is because there are no references and because working with pointers is simple, no need to dereference or getting address, all this is automatically inserted.
-* Specification of requirements for template args are added, like a not included feature of '''[[C++11]]'''. This specifications are named '''<code>!SomeName</code>''', for example '''<code>!any</code>''' in type definitions above means that specified type has no requirements. Example of requirements definition: '''<code>#template != { $* $* a = $* b; }</code>''' specifies that '''<code>!=</code>''' types must have assignment operator '''<code>$* $* a = $* b;</code>'''
+* Specification of requirements for template args are added, like a not included feature of '''[C++11](https://rosettacode.org/wiki/C++11)'''. This specifications are named '''<code>!SomeName</code>''', for example '''<code>!any</code>''' in type definitions above means that specified type has no requirements. Example of requirements definition: '''<code>#template != { $* $* a = $* b; }</code>''' specifies that '''<code>!=</code>''' types must have assignment operator '''<code>$* $* a = $* b;</code>'''
 * '''<code>for</code>''' statement: '''<code>for InitExprOrVarDef; ConditionExpr; IncExpr { BodyOfLoop }</code>''' - so 1.parenceses not used, 2.body of loop is always in {} - typically it means that body of loop is on next lines and is 1 tab right shifted. All other is the same as in C++. '''<code>if  while  do while  switch</code>''' are all the same - everywhere no '''()''' and body of statement is block.
 * '''<code>switch</code>''' statement example:
 <source lang="c">

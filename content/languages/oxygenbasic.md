@@ -10,14 +10,11 @@ categories = []
 tags = []
 +++
 
-{{language
-|express=both
-|site=http://www.oxygenbasic.org/}}
-OxygenBasic is a compilable language in the [[BASIC]] genre supporting [[object-oriented programming]], and containing features of [[C]]. Its earliest origins was as a macro [[Assembly]] code language in 2009, but subsequently acquired all the features of a high-level language.
+OxygenBasic is a compilable language in the [BASIC](https://rosettacode.org/wiki/BASIC) genre supporting [object-oriented programming](https://rosettacode.org/wiki/object-oriented_programming), and containing features of [C](https://rosettacode.org/wiki/C). Its earliest origins was as a macro [Assembly](https://rosettacode.org/wiki/Assembly) code language in 2009, but subsequently acquired all the features of a high-level language.
 
 The philosophy underlying OxygenBasic is to facilitate clean coding, with low syntax noise and few coding restrictions. The core language and compiler size are kept to a minimum.
 
-== Examples ==
+## Examples
 '''Hello World:'''
 
 ```txt
@@ -95,7 +92,7 @@ print b.find "ships"
 ```
 
 
-== Current Status ==
+## Current Status
 The current implementation is available for Microsoft Windows and includes an x86 assembler. It can compile directly to memory, or to 32 bit and 64 bit binaries. Development is currently in Alpha phase. The compiler is a single DLL, and suitable for embedding in other Applications. It has been deployed as a module in thinBasic to support Assembly code and dynamic compiling.
 
 The latest versions can be obtained here, including an IDE and numerous examples:

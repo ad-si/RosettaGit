@@ -9,11 +9,3 @@ id = 7223
 categories = []
 tags = []
 +++
-
-{{language|AspectJ
-|site=http://www.eclipse.org/aspectj/
-}}[[runs on vm::java virtual machine| ]]
-AspectJ is an aspect-oriented extension of [[derived from::Java]]. AspectJ has become the de-facto standard for [[Aspect Oriented Programming]] (AOP).
-
-==See Also==
-* [[wp:AspectJ| Wikipedia: AspectJ]]

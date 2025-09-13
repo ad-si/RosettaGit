@@ -10,8 +10,7 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|Jacquard Loom|exec=mechanical
-|site=http://en.wikipedia.org/wiki/Jacquard_loom}}
+
 
 The Jacquard loom is a mechanical loom, invented by Joseph Marie Jacquard, that simplifies the process of manufacturing patterned textiles by using punched cards to control the patterning sequence.
 

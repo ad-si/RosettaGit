@@ -10,9 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language|DUP
-|site=http://strlen.com/false-language}}
-'''DUP''' is a [[Forth]]-like esoteric programming language invented by Ian Osgood. DUP is a variant/enhancement of Wouter van Oortmerssen’s FALSE language.
+'''DUP''' is a [Forth](https://rosettacode.org/wiki/Forth)-like esoteric programming language invented by Ian Osgood. DUP is a variant/enhancement of Wouter van Oortmerssen’s FALSE language.
 
 Changes from FALSE include:
 
@@ -23,7 +21,7 @@ Changes from FALSE include:
 
 
 
-* [[eso:DUP|DUP on Esolangs]]
+* [DUP on Esolangs](https://rosettacode.org/wiki/eso:DUP)
 * [http://www.quirkster.com/iano/js/dup.html| Osgood’s online Javascript DUP interpreter]
 
-[[Category:Esoteric Languages]]
+[Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

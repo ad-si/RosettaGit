@@ -9,9 +9,7 @@ id = 10824
 categories = []
 tags = []
 +++
-
-{{language}}
-ProDOS is an open-source command-based programming language created by Riley Houlahan. It is the first language of its kind to be created entirely in Windows 7 Batch (see [[:Category:Batch File|Batch File]]). It is currently in developmental form and is expected to be released in version 1.0 by early next year (2012).
+ProDOS is an open-source command-based programming language created by Riley Houlahan. It is the first language of its kind to be created entirely in Windows 7 Batch (see [Batch File](https://rosettacode.org/wiki/:Category:Batch_File)). It is currently in developmental form and is expected to be released in version 1.0 by early next year (2012).
 
 
 ### Overview

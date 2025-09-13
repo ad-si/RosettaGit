@@ -9,8 +9,6 @@ id = 22271
 categories = []
 tags = []
 +++
-
-{{language|BlooP}}
 BlooP and it's sister language Floop are 'theoretical' languages with several implementations, created by Douglas Hofstadter in his book   ''Gödel, Escher, Bach'', to demonstrate the halting problem.
 
 The name BlooP is short for Bounded Loop, the primary structure of the language. FlooP is identical to BlooP in every way except that it also sorts unbounded loops. FlooP is Turing complete, where BlooP is not. There is also a third, impossible language called GlooP, which can solve the halting problem.
@@ -27,7 +25,7 @@ The operators that exist in BlooP and FlooP are:
 
 Note that subtraction and division are conspicuously missing, as are modulus and exponentiation. These can and must be defined in terms of loops and the provided operators.
 
-==Example Code==
+## Example Code
 The best way to explain BlooP is really just to look at some examples, so here are a few:
 
 
@@ -169,10 +167,6 @@ BLOCK 0: END.
 PLAY_GAME [2,1,1];
 
 ```
-
-
-{{out}}
-
 ```txt
 
 > PLAYER TAKES 2 TOKENS.

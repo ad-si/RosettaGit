@@ -9,8 +9,4 @@ id = 22542
 categories = []
 tags = []
 +++
-
-{{language
-|site=https://docs.mulesoft.com/mule-runtime/4.2/dataweave}}
-{{language programming paradigm|Functional}}
-DataWeave is a [[functional programming]] language that allows to read and write any kind of format (XML, CSV, JSON, Pojos, Maps, etc)
+DataWeave is a [functional programming](https://rosettacode.org/wiki/functional_programming) language that allows to read and write any kind of format (XML, CSV, JSON, Pojos, Maps, etc)

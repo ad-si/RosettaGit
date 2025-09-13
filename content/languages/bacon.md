@@ -9,22 +9,7 @@ id = 21311
 categories = []
 tags = []
 +++
-
-{{language|BaCon
-|site=http://basic-converter.org/
-|exec=machine
-|gc=yes
-|parampass=both
-|express=both
-|checking=both
-|strength=weak
-|safety=unsafe
-|compat=structural
-|hopl=no
-|tags=bacon}}
-{{implementation|BASIC}}
-
-'''BaCon''', the [[BASIC]] Converter, by Peter van Eerten.
+'''BaCon''', the [BASIC](https://rosettacode.org/wiki/BASIC) Converter, by Peter van Eerten.
 
 BaCon is a free BASIC to C translator for Unix-based systems, which runs on most Unix/Linux/BSD platforms, including MacOSX. It intends to be a programming aid in creating tools which can be compiled on different platforms (including 64bit environments), while trying to revive the days of the good old BASIC.
 
@@ -34,6 +19,6 @@ The shell script implementation can convert and compile the BaCon version of BaC
 
 Code converted by BaCon can be compiled by GCC, the Compaq C Compiler, TCC, the clang/LLVM compiler (and possibly by other C compilers), but also by C++ compilers like g++ or clang++.
 
-==See Also==
+## See Also
 * http://basic-converter.org/
 * http://basic-converter.proboards.com

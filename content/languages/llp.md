@@ -10,7 +10,6 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language|LLP
-|site=http://bach.istc.kobe-u.ac.jp/llp/}}
-{{language programming paradigm|Declarative}}{{language programming paradigm|Logic_Programming}}
-LLP is a logic programming language based on intuitionistic linear logic. LLP is a superset of [[Prolog]] and a subset of [[Lolli]] developed by Josh Hodas and Dale Miller.
+
+
+LLP is a logic programming language based on intuitionistic linear logic. LLP is a superset of [Prolog](https://rosettacode.org/wiki/Prolog) and a subset of [Lolli](https://rosettacode.org/wiki/Lolli) developed by Josh Hodas and Dale Miller.

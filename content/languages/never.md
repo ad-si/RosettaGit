@@ -10,15 +10,6 @@ categories = []
 tags = []
 +++
 
-{{language|Never
-|gc=yes
-|parampass=value
-|express=implicit
-|checking=dynamic
-|safety=safe
-|strength=strong
-|site=https://never-lang.github.io/never/
-}}
 
 '''Never''' is a simple functional programming language. Technically it may be classified as syntactically scoped, strongly typed, call by value, functional programming language.
 

@@ -9,7 +9,4 @@ id = 21957
 categories = []
 tags = []
 +++
-
-{{language}}
-
 QBasic is a BASIC that was written by Microsoft and normally executes under Windows.

@@ -9,12 +9,6 @@ id = 7558
 categories = []
 tags = []
 +++
-
-{{stub}}
-{{language
-|site=http://www.jedsoft.org/slang/
-|checking=dynamic
-}}
 S-Lang is a multi-platform programmer's library designed to allow a developer to create robust multi-platform software. It provides facilities required by interactive applications such as display/screen management, keyboard input, keymaps, and so on. The most exciting feature of the library is the slang interpreter that may be easily embedded into a program to make it extensible. While the emphasis has always been on the embedded nature of the interpreter, it may also be used in a stand-alone fashion through the use of slsh, which is part of the S-Lang distribution.
 
 Unlike many interpreters, the S-Lang interpreter supports all of the native C integer types (signed and unsigned versions of char, short, int, long, and long long), and both single and double precision types, as well as a double precision complex type. Other data types supported by the interpreter include strings, lists, associative arrays (hashes), user-defined structures, and multi-dimensional arrays of any data-type.
@@ -58,5 +52,5 @@ output functions include:
     error(s)        like message(), but in error-color, then cancel cmd
     verror(f, d..)  error(sprintf(f, d..)) equivalent
 
-== See Also ==
-[[wp:S-Lang_(programming_language)|Wikipedia:S-Lang(programming language)]]
+## See Also
+[Wikipedia:S-Lang(programming language)](https://en.wikipedia.org/wiki/S-Lang_(programming_language))

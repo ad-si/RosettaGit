@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{stub}}{{language}}{{assembler language}}[[Category:Assembly]]
-[[wp:MIPS_architecture|MIPS architecture]]
+[Category:Assembly](https://rosettacode.org/wiki/Category:Assembly)
+[MIPS architecture](https://en.wikipedia.org/wiki/MIPS_architecture)

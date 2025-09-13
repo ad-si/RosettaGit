@@ -9,10 +9,7 @@ id = 21148
 categories = []
 tags = []
 +++
-
-{{language|Red}}
-
-Red is a paradigm-neutral [http://en.wikipedia.org/wiki/Homoiconicity homoiconic] language, strongly inspired by [[Rebol]].
+Red is a paradigm-neutral [http://en.wikipedia.org/wiki/Homoiconicity homoiconic] language, strongly inspired by [Rebol](https://rosettacode.org/wiki/Rebol).
 
 Like Rebol, Red has a low memory footprint, is garbage collected, and has a [http://www.red-lang.org/p/download.html low disk footprint (< 1MB)].  But while Rebol is an interpreted language written in ANSI-C, Red seeks to be a "full-stack" language whose methodology is independent of any other toolchain.  It compiles that which can be known ahead of time, JIT-compiles that which cannot, and embeds a small interpreter into its executables to handle constructions which are not amenable to any compilation.
 

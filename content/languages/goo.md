@@ -10,11 +10,8 @@ categories = []
 tags = []
 +++
 
-{{language|Goo
-|site=http://people.csail.mit.edu/jrb/goo/
-}}
 
 GOO is a new type-based prefix syntaxed language that is simple, powerful and extensible. GOO is an acronym for Generic Object Orientator.
 
-==See Also==
-* [[wp:Goo_(programming_language)|Wikipedea: Goo]]
+## See Also
+* [Wikipedea: Goo](https://en.wikipedia.org/wiki/Goo_(programming_language))

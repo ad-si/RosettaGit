@@ -10,11 +10,7 @@ categories = []
 tags = []
 +++
 
-{{language
-|site=http://www.cl.cam.ac.uk/users/mr10
-|hopl id=374
-}}
-BCPL is a typeless ancestor of [[C]].
+BCPL is a typeless ancestor of [C](https://rosettacode.org/wiki/C).
 
 BCPL was first implemented at MIT by Martin Richards early in 1967. It was strongly influenced by CPL which was a general purpose language developed jointly at Cambridge and London Universities between 1962 and 1966.
 

@@ -9,9 +9,4 @@ id = 4422
 categories = []
 tags = []
 +++
-
-{{language|Ursala
-|LCT=no
-}}
-{{language programming paradigm|Functional}}
 Ursala is an interpreted functional language with some experimental features, intended mainly for text and numerical applications.

@@ -9,13 +9,6 @@ id = 21749
 categories = []
 tags = []
 +++
-
-{{language
-|site=https://github.com/psmitt/UTFool
-|tags=utf, utf8
-|bnf=https://rawgit.com/psmitt/metalanguage/master/examples/UTFool%20Syntactic%20Grammar.xml}}
-{{language programming paradigm|object-oriented}}
-
 '''UTFool''' /pron. as <s>b</s>eautiful/ stays for '''UTF'''-based '''o'''bject-'''o'''riented '''l'''anguage.
 
 Find more on the '''[https://github.com/psmitt/UTFool UTFool Homepage]'''.
