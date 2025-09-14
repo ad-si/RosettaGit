@@ -8,6 +8,22 @@ id = 21070
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "formulae",
+  "gml",
+  "go",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "sidef",
+  "smart_basic",
+  "zkl",
+]
 +++
 
 ## Task

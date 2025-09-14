@@ -8,6 +8,30 @@ id = 21046
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_w",
+  "awk",
+  "c",
+  "c_sharp",
+  "cobol",
+  "common_lisp",
+  "euphoria",
+  "flex",
+  "forth",
+  "free_basic",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "m2000_interpreter",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "scheme",
+]
 +++
 
 ## Task
@@ -6932,4 +6956,3 @@ Output shown for "hello.c" example.  Tested against all programs in [[Compiler/S
 5	1	End_of_input
 
 ```
-

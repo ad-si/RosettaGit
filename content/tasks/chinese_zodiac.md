@@ -8,6 +8,27 @@ id = 21289
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "applescript",
+  "awk",
+  "basic256",
+  "f_sharp",
+  "factor",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "tbas",
+  "tcl",
+  "utfool",
+  "vbscript",
+  "visual_basic_net",
+  "zkl",
+]
 +++
 
 ## Task
@@ -3162,4 +3183,3 @@ foreach ce_year in (T(1935,1938,1968,1972,1976,Time.Clock.UTC[0])){
 2017: 丁酉 (dīng-yŏu, Fire Rooster; yin)
 
 ```
-

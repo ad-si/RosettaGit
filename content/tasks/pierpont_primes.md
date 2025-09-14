@@ -8,6 +8,19 @@ id = 22476
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+    "factor",
+    "go",
+    "julia",
+    "kotlin",
+    "perl",
+    "perl6",
+    "phix",
+    "python",
+    "rexx",
+    "sidef",
+    "zkl",
+]
 +++
 
 A Pierpont prime is a prime number of the form: <big>'''2<sup>''u''</sup>3<sup>''v''</sup> + 1'''</big> for some non-negative integers <big>''' ''u'' '''</big> and <big>''' ''v'' '''</big>.
@@ -60,7 +73,7 @@ math.primes prettyprint sequences sorting ;
 [let
     [ + ] [ - ] [ [ 120 80 ] dip pierpont ] bi@
     :> ( first second )
-    
+
     "First 50 Pierpont primes of the first kind:" print
     first .fifty
 
@@ -108,7 +121,7 @@ Despite being inherently inefficient, this still works very quickly (less than 0
 
 A GMP wrapper, rather than Go's math/big package, has been used for extra speed (about 3.5 times quicker).
 
-However, in order to be sure that the first 250 Pierpont primes will be generated, it is necessary to choose the loop sizes to produce somewhat more than this and then sort them into order. 
+However, in order to be sure that the first 250 Pierpont primes will be generated, it is necessary to choose the loop sizes to produce somewhat more than this and then sort them into order.
 
 ```go
 package main
@@ -128,7 +141,7 @@ var (
 func pierpont(ulim, vlim int, first bool) []*big.Int {
     p := new(big.Int)
     p2 := new(big.Int).Set(one)
-    p3 := new(big.Int).Set(one)   
+    p3 := new(big.Int).Set(one)
     var pp []*big.Int
     for v := 0; v < vlim; v++ {
         for u := 0; u < ulim; u++ {
@@ -179,18 +192,18 @@ func main() {
 ```txt
 
 First 50 Pierpont primes of the first kind:
-       2        3        5        7       13       17       19       37       73       97 
-     109      163      193      257      433      487      577      769     1153     1297 
-    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367 
-   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433 
-  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057 
+       2        3        5        7       13       17       19       37       73       97
+     109      163      193      257      433      487      577      769     1153     1297
+    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367
+   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433
+  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057
 
 First 50 Pierpont primes of the second kind:
-       2        3        5        7       11       17       23       31       47       53 
-      71      107      127      191      383      431      647      863      971     1151 
-    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647 
-   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663 
-  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087 
+       2        3        5        7       11       17       23       31       47       53
+      71      107      127      191      383      431      647      863      971     1151
+    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647
+   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663
+  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087
 
 250th Pierpont prime of the first kind: 62518864539857068333550694039553
 
@@ -293,13 +306,13 @@ func main() {
 
     fmt.Println("\n250th Pierpont prime of the first kind:", p[0][249])
     fmt.Println("\n250th Pierpont prime of the second kind:", p[1][249])
-    
+
     fmt.Println("\n1000th Pierpont prime of the first kind:", p[0][999])
     fmt.Println("\n1000th Pierpont prime of the second kind:", p[1][999])
-    
+
     fmt.Println("\n2000th Pierpont prime of the first kind:", p[0][1999])
     fmt.Println("\n2000th Pierpont prime of the second kind:", p[1][1999])
-    
+
     elapsed := time.Now().Sub(start)
     fmt.Printf("\nTook %s\n", elapsed)
 }
@@ -309,18 +322,18 @@ func main() {
 ```txt
 
 First 50 Pierpont primes of the first kind:
-       2        3        5        7       13       17       19       37       73       97 
-     109      163      193      257      433      487      577      769     1153     1297 
-    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367 
-   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433 
-  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057 
+       2        3        5        7       13       17       19       37       73       97
+     109      163      193      257      433      487      577      769     1153     1297
+    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367
+   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433
+  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057
 
 First 50 Pierpont primes of the second kind:
-       2        3        5        7       11       17       23       31       47       53 
-      71      107      127      191      383      431      647      863      971     1151 
-    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647 
-   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663 
-  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087 
+       2        3        5        7       11       17       23       31       47       53
+      71      107      127      191      383      431      647      863      971     1151
+    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647
+   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663
+  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087
 
 250th Pierpont prime of the first kind: 62518864539857068333550694039553
 
@@ -361,7 +374,7 @@ function pierponts(N, firstkind = true)
     end
     throw("Failed to find $(N * 2) primes")
 end
-        
+
 println("The first 50 Pierpont primes (first kind) are: ", pierponts(50))
 
 println("\nThe first 50 Pierpont primes (second kind) are: ", pierponts(50, false))
@@ -486,18 +499,18 @@ fun main() {
 
 ```txt
 First 50 Pierpont primes of the first kind:
-       2        3        5        7       13       17       19       37       73       97 
-     109      163      193      257      433      487      577      769     1153     1297 
-    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367 
-   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433 
-  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057 
+       2        3        5        7       13       17       19       37       73       97
+     109      163      193      257      433      487      577      769     1153     1297
+    1459     2593     2917     3457     3889    10369    12289    17497    18433    39367
+   52489    65537   139969   147457   209953   331777   472393   629857   746497   786433
+  839809   995329  1179649  1492993  1769473  1990657  2654209  5038849  5308417  8503057
 
 First 50 Pierpont primes of the second kind:
-       2        3        5        7       11       17       23       31       47       53 
-      71      107      127      191      383      431      647      863      971     1151 
-    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647 
-   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663 
-  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087 
+       2        3        5        7       11       17       23       31       47       53
+      71      107      127      191      383      431      647      863      971     1151
+    2591     4373     6143     6911     8191     8747    13121    15551    23327    27647
+   62207    73727   131071   139967   165887   294911   314927   442367   472391   497663
+  524287   786431   995327  1062881  2519423 10616831 17915903 18874367 25509167 30233087
 
 250th Pierpont prime of the first kind: 62518864539857068333550694039553
 
@@ -717,52 +730,52 @@ for   'OEIS: A092506 - 2 + Fermat primes:',        (2),        1,  6,
 
 
 ```txt
-OEIS: A092506 - 2 + Fermat primes: smooth {2} + 1 
+OEIS: A092506 - 2 + Fermat primes: smooth {2} + 1
 2 3 5 17 257 65537
 
-OEIS: A000668 - Mersenne primes: smooth {2} - 1 
+OEIS: A000668 - Mersenne primes: smooth {2} - 1
 3 7 31 127 8191 131071 524287 2147483647 2305843009213693951 618970019642690137449562111
 
-OEIS: A005109 - Pierpont primes 1st: smooth {2 3} + 1 
+OEIS: A005109 - Pierpont primes 1st: smooth {2 3} + 1
 2 3 5 7 13 17 19 37 73 97 109 163 193 257 433 487 577 769 1153 1297
 
-OEIS: A005105 - Pierpont primes 2nd: smooth {2 3} - 1 
+OEIS: A005105 - Pierpont primes 2nd: smooth {2 3} - 1
 2 3 5 7 11 17 23 31 47 53 71 107 127 191 383 431 647 863 971 1151
 
-OEIS: A077497: smooth {2 5} + 1 
+OEIS: A077497: smooth {2 5} + 1
 2 3 5 11 17 41 101 251 257 401 641 1601 4001 16001 25601 40961 62501 65537 160001 163841
 
-OEIS: A077313: smooth {2 5} - 1 
+OEIS: A077313: smooth {2 5} - 1
 3 7 19 31 79 127 199 499 1249 1279 1999 4999 5119 8191 12799 20479 31249 49999 51199 79999
 
-OEIS: A002200 - ("Hamming" primes 1st): smooth {2 3 5} + 1 
+OEIS: A002200 - ("Hamming" primes 1st): smooth {2 3 5} + 1
 2 3 5 7 11 13 17 19 31 37 41 61 73 97 101 109 151 163 181 193
 
-OEIS: A293194 - ("Hamming" primes 2nd): smooth {2 3 5} - 1 
+OEIS: A293194 - ("Hamming" primes 2nd): smooth {2 3 5} - 1
 2 3 5 7 11 17 19 23 29 31 47 53 59 71 79 89 107 127 149 179
 
-OEIS: A077498: smooth {2 7} + 1 
+OEIS: A077498: smooth {2 7} + 1
 2 3 5 17 29 113 197 257 449 1373 3137 50177 65537 114689 268913 470597 614657 1075649 3294173 7340033
 
-OEIS: A077314: smooth {2 7} - 1 
+OEIS: A077314: smooth {2 7} - 1
 3 7 13 31 97 127 223 1567 3583 4801 6271 8191 19207 25087 33613 76831 131071 401407 524287 917503
 
-OEIS: A174144 - ("Humble" primes 1st): smooth {2 3 5 7} + 1 
+OEIS: A174144 - ("Humble" primes 1st): smooth {2 3 5 7} + 1
 2 3 5 7 11 13 17 19 29 31 37 41 43 61 71 73 97 101 109 113
 
-OEIS: A299171 - ("Humble" primes 2nd): smooth {2 3 5 7} - 1 
+OEIS: A299171 - ("Humble" primes 2nd): smooth {2 3 5 7} - 1
 2 3 5 7 11 13 17 19 23 29 31 41 47 53 59 71 79 83 89 97
 
-OEIS: A077499: smooth {2 11} + 1 
+OEIS: A077499: smooth {2 11} + 1
 2 3 5 17 23 89 257 353 1409 2663 30977 65537 170369 495617 5767169 23068673 59969537 82458113 453519617 3429742097
 
-OEIS: A077315: smooth {2 11} - 1 
+OEIS: A077315: smooth {2 11} - 1
 3 7 31 43 127 241 967 5323 8191 117127 131071 524287 7496191 10307263 77948683 253755391 428717761 738197503 1714871047 2147483647
 
-OEIS: A173236: smooth {2 13} + 1 
+OEIS: A173236: smooth {2 13} + 1
 2 3 5 17 53 257 677 3329 13313 35153 65537 2768897 13631489 2303721473 3489660929 4942652417 11341398017 10859007357953 1594691292233729 31403151600910337
 
-OEIS: A173062: smooth {2 13} - 1 
+OEIS: A173062: smooth {2 13} - 1
 3 7 31 103 127 337 1663 5407 8191 131071 346111 524287 2970343 3655807 22151167 109051903 617831551 1631461441 2007952543 2147483647
 ```
 
@@ -775,7 +788,7 @@ I also tried using a priority queue, popping the smallest (and any duplicates of
 ```Phix
 -- demo/rosetta/Pierpont_primes.exw
 include mpfr.e
- 
+
 function pierpont(integer n)
     sequence p = {{mpz_init(2)},{}},
              s = {mpz_init(1)}
@@ -812,7 +825,7 @@ function pierpont(integer n)
     end while
     return p
 end function
- 
+
 constant limit = 2000           -- 2 mins
 --constant limit = 1000         -- 8.1s
 --constant limit = 250          -- 0.1s
@@ -828,7 +841,7 @@ for i=1 to length(fs) do
     end for
     printf(1,"\n")
 end for
- 
+
 constant t = {250,1000,2000}
 for i=1 to length(t) do
     integer ti = t[i]
@@ -871,13 +884,13 @@ Took 2 minutes and 01s
 
 ```
 
-Note that shorten() has recently been added as a builtin, in honour of this and the several other dozen rc 
+Note that shorten() has recently been added as a builtin, in honour of this and the several other dozen rc
 tasks that previously all re-implemented some variation of it. Should you not yet have it, just use this:
 
 ```Phix
 function shorten(string s, what="digits", integer ml=20)
     integer l = length(s)
-    string ls = sprintf(" (%d %s)",{l,what}) 
+    string ls = sprintf(" (%d %s)",{l,what})
     if l>ml*2+3+length(ls) then
         s[ml..-ml] = "..."
         s &= ls
@@ -923,9 +936,9 @@ def is_Prime(n):
         for i in range(s):
             if pow(a, 2**i * d, n) == n-1:
                 return False
-        return True  
+        return True
 
-    for i in range(8):#number of trials 
+    for i in range(8):#number of trials
         a = random.randrange(2, n)
         if trial_composite(a):
             return False
@@ -1096,10 +1109,10 @@ for n in (250, 500, 1000) {
 
 ```txt
 
-First 50 Pierpont primes of the 1st kind: 
+First 50 Pierpont primes of the 1st kind:
 2 3 5 7 13 17 19 37 73 97 109 163 193 257 433 487 577 769 1153 1297 1459 2593 2917 3457 3889 10369 12289 17497 18433 39367 52489 65537 139969 147457 209953 331777 472393 629857 746497 786433 839809 995329 1179649 1492993 1769473 1990657 2654209 5038849 5308417 8503057
 
-First 50 Pierpont primes of the 2nd kind: 
+First 50 Pierpont primes of the 2nd kind:
 2 3 5 7 11 17 23 31 47 53 71 107 127 191 383 431 647 863 971 1151 2591 4373 6143 6911 8191 8747 13121 15551 23327 27647 62207 73727 131071 139967 165887 294911 314927 442367 472391 497663 524287 786431 995327 1062881 2519423 10616831 17915903 18874367 25509167 30233087
 
 250th Pierpont prime of the 1st kind: 62518864539857068333550694039553

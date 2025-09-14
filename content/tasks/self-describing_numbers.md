@@ -8,6 +8,66 @@ id = 9565
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "awk",
+  "basic",
+  "bbc_basic",
+  "befunge",
+  "c",
+  "c_plus_plus",
+  "common_lisp",
+  "d",
+  "elixir",
+  "erlang",
+  "factor",
+  "forth",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "k",
+  "kotlin",
+  "logo",
+  "lua",
+  "mathematica",
+  "miniscript",
+  "nim",
+  "oorexx",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "powershell",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "red",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "vbscript",
+  "xpl0",
+  "yabasic",
+  "zkl",
+]
 +++
 
 There are several so-called "self-describing" or "[[wp:Self-descriptive number|self-descriptive]]" integers.
@@ -3090,4 +3150,3 @@ A future is a thread returning a [delayed] result, future.filter/future.noop wil
 L(L(1210,2020,21200),L(3211000),L(42101000))
 
 ```
-

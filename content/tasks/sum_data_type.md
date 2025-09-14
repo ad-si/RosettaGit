@@ -8,6 +8,23 @@ id = 22393
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "delphi",
+  "factor",
+  "free_pascal",
+  "go",
+  "julia",
+  "ocaml",
+  "pascal",
+  "perl_6",
+  "phix",
+  "rexx",
+  "rust",
+  "scala",
+  "zkl",
+]
 +++
 
 ## Task
@@ -480,4 +497,3 @@ Addr(127,0,0,1);	// TypeError : Invalid type
 Addr(List("abc"));	// doesn't fail, would need more error checking
 ip.ip=L(192,168,1,1);	// this doesn't type check either
 ```
-

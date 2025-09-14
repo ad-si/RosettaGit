@@ -8,6 +8,71 @@ id = 3326
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []
+languages = [
+  "ada",
+  "aime",
+  "algol_68",
+  "algol_w",
+  "auto_hotkey",
+  "awk",
+  "bbc_basic",
+  "bc",
+  "c",
+  "c_sharp",
+  "c_plus_plus",
+  "clojure",
+  "common_lisp",
+  "d",
+  "e",
+  "elixir",
+  "erlang",
+  "euphoria",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "gema",
+  "go",
+  "haskell",
+  "hic_est",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "locomotive_basic",
+  "lua",
+  "mathematica",
+  "net_rexx",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "pico_lisp",
+  "pl_i",
+  "power_shell",
+  "pure_basic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "smalltalk",
+  "standard_ml",
+  "tcl",
+  "xpl0",
+  "yabasic",
+  "zkl",
+]
 +++
 
 Programming languages often have built-in routines to convert a non-negative integer for printing in different number bases. Such common number bases might include binary, [[Octal]] and [[Hexadecimal]].
@@ -2250,6 +2315,5 @@ For binary, decimal and hex, you can also have [fixed, sorry Europe] separators:
 "%,d".fmt(1234567)   //-->"1,234,567"
 "%,x".fmt(1234567)   //-->"12|d6|87"
 ```
-
 
 

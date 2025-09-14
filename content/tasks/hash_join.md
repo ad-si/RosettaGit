@@ -8,6 +8,54 @@ id = 16752
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+   "apple_script",
+   "awk",
+   "bracmat",
+   "c_plus_plus",
+   "c_sharp",
+   "clojure",
+   "common_lisp",
+   "d",
+   "go",
+   "ecl",
+   "elixir",
+   "erlang",
+   "forth",
+   "groovy",
+   "haskell",
+   "j",
+   "java",
+   "javascript",
+   "jq",
+   "julia",
+   "kotlin",
+   "lfe",
+   "ocaml",
+   "perl",
+   "perl_6",
+   "phix",
+   "php",
+   "pico_lisp",
+   "prolog",
+   "purebasic",
+   "python",
+   "racket",
+   "rexx",
+   "ring",
+   "ruby",
+   "run_basic",
+   "rust",
+   "scala",
+   "scheme",
+   "sidef",
+   "sql",
+   "tcl",
+   "txr",
+   "vbscript",
+   "visual_foxpro",
+   "zkl"
+]
 +++
 
 An [[wp:Join_(SQL)#Inner_join|inner join]] is an operation that combines two data tables into one table, based on matching column values. The simplest way of implementing this operation is the [[wp:Nested loop join|nested loop join]] algorithm, but a more scalable alternative is the [[wp:hash join|hash join]] algorithm.
@@ -3624,5 +3672,3 @@ Glory:Buffy
 Jonah:Whales,Spiders
 
 ```
-
-

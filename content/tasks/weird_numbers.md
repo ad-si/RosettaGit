@@ -8,6 +8,24 @@ id = 22228
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "c",
+  "c_plus_plus",
+  "d",
+  "go",
+  "haskell",
+  "javascript",
+  "es6",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "rexx",
+  "sidef",
+  "visual_basic_net"
+]
 +++
 
 In number theory, a [[wp:weird number|weird number]] is a natural number that is abundant but not semiperfect.
@@ -1858,4 +1876,3 @@ Tail-end of a longer session:
 6981310 6983108 6983270 6983690 6985090 6985510 6986630 6987190 6987610 6988030 6988310 6988730 6990130 6990970 6991390 6991468 6991670 6992930 6993070 6993490 6994610 6995030 6996484 6997270 6997970 6998110 6999230 6999370 7000210 7001330 7003010 7003172 7003430 7003990 7004830 7007210 7007630 7008890 7009030
 Computation time was 17m 9.0062776s for the first 10742 weird numbers.
 ```
-

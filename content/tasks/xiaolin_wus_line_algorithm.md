@@ -8,6 +8,36 @@ id = 3998
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []
+languages = [
+  "arm_assembly",
+  "auto_hotkey",
+  "bbc_basic",
+  "c",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "rexx",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "yabasic",
+]
 +++
 
 ## Task
@@ -3619,5 +3649,3 @@ draw_line(w, 0, 200, 200)
 draw_line(0, h, 200, 200)
 draw_line(w, h, 200, 200)
 ```
-
-

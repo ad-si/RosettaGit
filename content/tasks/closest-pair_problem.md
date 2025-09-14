@@ -7,7 +7,67 @@ aliases = []
 id = 4142
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
-tags = []
+languages = [
+  "elixir",
+  "fantom",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "ada",
+  "jq",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "maple",
+  "matlab",
+  "microsoft_small_basic",
+  "ocaml",
+  "oz",
+  "pari_gp",
+  "pascal",
+  "awk",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "basic256",
+  "prolog",
+  "purebasic",
+  "python",
+  "bbc_basic",
+  "r",
+  "racket",
+  "c",
+  "rexx",
+  "c_plus_plus",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "seed7",
+  "sidef",
+  "smalltalk",
+  "swift",
+  "tcl",
+  "ursala",
+  "vba",
+  "visual_foxpro",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+  "clojure",
+  "common_lisp",
+  "c_sharp",
+  "360_assembly",
+  "crystal",
+  "d"
+]
 +++
 
 ## Task
@@ -5452,5 +5512,4 @@ L(Point(0.925092,0.81822),Point(0.891663,0.888594),0.0779102)
 220 DATA 0.293786,0.691701
 230 DATA 0.839186,0.728260
 ```
-
 

@@ -8,6 +8,21 @@ id = 22133
 [taxonomies]
 categories = ["Mayan numerals", "task"]
 tags = []
+languages = [
+  "applescript",
+  "factor",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "rust",
+  "zkl",
+]
 +++
 
 ## Task

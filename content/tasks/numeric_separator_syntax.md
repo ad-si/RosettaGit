@@ -8,6 +8,11 @@ id = 22498
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "factor",
+]
 +++
 
 Several programming languages allow separators in numerals in order to group digits together. 
@@ -504,4 +509,3 @@ For printing, the String.fmt method will add separators for %d (interger: ","),
 Each objects toString method has optional parameters to specify a separator 
 and "column width". This method is called (by fmt) for the above tags.
 ```
-

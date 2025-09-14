@@ -8,6 +8,44 @@ id = 17027
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "bracmat",
+  "c",
+  "c_plus_plus",
+  "cobol",
+  "clojure",
+  "crystal",
+  "d",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "ml",
+  "pari_gp",
+  "pl_i",
+  "perl",
+  "phix",
+  "python",
+  "rexx",
+  "racket",
+  "ring",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "jq",
+  "mlite",
+  "zkl",
+  "wolfram_language"
+]
 +++
 
 The following function, due to D Hickerson, is said to generate "Almost integers" by the [http://mathworld.wolfram.com/AlmostInteger.html "Almost Integer" page of Wolfram Mathworld]. (December 31 2013).
@@ -2472,4 +2510,3 @@ h(17)=130370767029135900.4 almost integer: False
 h(18)=3385534663256845326.3 almost integer: False
 
 ```
-

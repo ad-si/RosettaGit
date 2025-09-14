@@ -8,39 +8,46 @@ id = 21960
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "ring"
+]
 +++
 
 ## Task
 
-**21**   is a two player game,   the game is played by choosing a 
-number   (**1**,   **2**,   or   **3**)   to be added to the   *running total*.
+**21** is a two player game, the game is played by choosing a
+number (**1**, **2**, or **3**) to be added to the *running total*.
 
-The game is won by the player whose chosen number causes the   *running total*   to reach   *exactly*   **21**.
+The game is won by the player whose chosen number
+causes the *running total* to reach *exactly* **21**.
 
-The   *running total*   starts at zero.
+The *running total* starts at zero.
 
-One player will be the computer.    Players alternate supplying a number to be added to the   *running total*. 
+One player will be the computer.
+Players alternate supplying a number to be added to the *running total*.
 
-
-### Task:
 Write a computer program that will:
-::*   do the prompting   (or provide a button menu), 
-::*   check for errors and display appropriate error messages, 
-::*   do the additions   (add a chosen number to the   *running total*), 
-::*   display the   *running total*, 
+::*   do the prompting   (or provide a button menu),
+::*   check for errors and display appropriate error messages,
+::*   do the additions   (add a chosen number to the   *running total*),
+::*   display the   *running total*,
 ::*   provide a mechanism for the player to    quit/exit/halt/stop/close   the program,
 ::*   issue a notification when there is a winner,   and
-::*   determine who goes first   (possibly a random choice, or it can be specified when the game begins). 
-
-
-
-
-__TOC__    <!--      to be removed later when there is at least four computer programming languages.    !-->  
+::*   determine who goes first   (possibly a random choice, or it can be specified when the game begins).
 
 
 ## Go
 
-To give the human player a reasonable chance whoever goes first, the computer always chooses randomly when the running total is below 18 but otherwise chooses the exact number needed to win the game.
+To give the human player a reasonable chance whoever goes first,
+the computer always chooses randomly when the running total is below 18
+but otherwise chooses the exact number needed to win the game.
 
 ```go
 package main
@@ -259,7 +266,7 @@ So, commiserations, the computer has won!
 
 ## Julia
 
-The computer or player can always win if they go first and choose a number that brings the total to one of the following: 1, 5, 9, 13, or 17. To make things vary more, there is a choice of computer play level at the start. The computer will randomly respond with level 1 and choose a random response 1/4 of the time at level 2. 
+The computer or player can always win if they go first and choose a number that brings the total to one of the following: 1, 5, 9, 13, or 17. To make things vary more, there is a choice of computer play level at the start. The computer will randomly respond with level 1 and choose a random response 1/4 of the time at level 2.
 
 ```julia
 
@@ -528,7 +535,7 @@ puts(1,"\n21 game\n\n")
 puts(1,"Press escape or q to quit the game, c to concede and start a new game from 0\n\n")
 
 if computer_first then
-    printf(1,"Total is %d.\n",{total})  
+    printf(1,"Total is %d.\n",{total})
     computer_play()
 elsif show_spoiler then
     -- The secret to winning!
@@ -770,7 +777,7 @@ tot: arg q,who; $=$+q; say sep 'The game total is now' sep2 $ sep2; return /*add
 ──────── The game total is now  ════════  18  ════════
 
 ──────── Please enter a number from  1 ───► 3               (or Quit):
-3                                                                          ◄■■■■■■■■■■ user input 
+3                                                                          ◄■■■■■■■■■■ user input
 ──────── The game total is now  ════════  21  ════════
 
 ──────── Congratulations!   You have won the  21  game.
@@ -794,7 +801,7 @@ button = list(limit)
 mynum = list(3)
 yournum = list(3)
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("21 Game")

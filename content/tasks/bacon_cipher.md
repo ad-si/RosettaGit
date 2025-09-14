@@ -8,6 +8,32 @@ id = 19556
 [taxonomies]
 categories = ["Encryption", "task"]
 tags = []
+languages = [
+  "agena",
+  "algol_68",
+  "bacon",
+  "c",
+  "cpp",
+  "c_sharp",
+  "d",
+  "formulae",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "miniscript",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "visual_basic_dot_net",
+  "zkl",
+]
 +++
 
 ## Task
@@ -2380,4 +2406,3 @@ DECRYPTED =
 rosetta code bacon cipher example secret phrase to encode in the capitalization of peter pan
 
 ```
-

@@ -7,6 +7,30 @@ aliases = []
 id = 13900
 [taxonomies]
 categories = ["Probability and statistics", "task"]
+languages = [
+  "ada",
+  "algol_68",
+  "c",
+  "d",
+  "go",
+  "hy",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lasso",
+  "pari_gp",
+  "pl_i",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "sql",
+  "tcl",
+  "zkl",
+]
 tags = []
 +++
 
@@ -2047,4 +2071,3 @@ Average of 4 people in a populatation of 186.849 share birthdays
 Average of 5 people in a populatation of 312.399 share birthdays
 
 ```
-

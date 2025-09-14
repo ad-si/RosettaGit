@@ -8,6 +8,44 @@ id = 21226
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "awk",
+  "basic",
+  "sinclair_zx81_basic",
+  "c",
+  "c_sharp",
+  "c_plus_plus",
+  "d",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "es6",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "matlab",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "visual_basic",
+  "visual_basic_dot_net",
+  "zkl",
+]
 +++
 
 {{task}}Finding the intersection of two lines that are in the same plane is an important topic in collision detection.<ref>[http://mathworld.wolfram.com/Line-LineIntersection.html]</ref>

@@ -7,6 +7,28 @@ aliases = []
 id = 20583
 [taxonomies]
 categories = ["task"]
+languages = [
+  "befunge",
+  "c",
+  "c_plus_plus",
+  "d",
+  "elixir",
+  "free_basic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "ruby",
+  "rust",
+  "zkl"
+]
 tags = []
 +++
 

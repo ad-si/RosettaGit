@@ -8,6 +8,12 @@ id = 20050
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "c",
+  "cpp",
+  "c_sharp",
+]
 +++
 
 ## Task
@@ -2636,4 +2642,3 @@ cycleDetection(fcn(x){ (x*x + 1)%255 }, 3).println(" == cycle length, start inde
 L(6,2) == cycle length, start index
 
 ```
-

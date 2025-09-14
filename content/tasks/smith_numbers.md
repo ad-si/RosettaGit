@@ -8,6 +8,41 @@ id = 20737
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "awk",
+  "c",
+  "cpp",
+  "c_sharp",
+  "clojure",
+  "d",
+  "elixir",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "mathematica",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "picolisp",
+  "purebasic",
+  "python",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "zkl"
+]
 +++
 
 [[wp:Smith numbers|Smith numbers]] are numbers such that the [[Sum_digits_of_an_integer|sum of the decimal digits of the integers]] that make up that number is the same as the sum of the decimal digits of its prime factors excluding 1.
@@ -3658,4 +3693,3 @@ L(4,22,27,58,85,94,121,166,202,265,274,319,346,355,378,382,391, ...
 9942,9968,9975,9985) 376 numbers
 
 ```
-

@@ -8,6 +8,25 @@ id = 21019
 [taxonomies]
 categories = ["task", "Reflection"]
 tags = []
+languages = [
+  "clojure",
+  "factor",
+  "freebasic",
+  "go",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ring",
+  "ruby",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task
@@ -589,4 +608,3 @@ $ zkl foo
 Src file is "foo.zkl" and has 2 lines
 
 ```
-

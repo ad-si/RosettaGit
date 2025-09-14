@@ -8,6 +8,57 @@ id = 3015
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "algol_w",
+  "apl",
+  "autohotkey",
+  "awk",
+  "basic",
+  "bbc_basic",
+  "bc",
+  "burlesque",
+  "c",
+  "c_sharp",
+  "c_plus_plus",
+  "clojure",
+  "coffee_script",
+  "common_lisp",
+  "d",
+  "echolisp",
+  "eiffel",
+  "elixir",
+  "erlang",
+  "euphoria",
+  "factor",
+  "fantom",
+  "forth",
+  "fortran",
+  "freebasic",
+  "gap",
+  "go",
+  "groovy",
+  "haskell",
+  "hicest",
+  "idl",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "k",
+  "kotlin",
+  "liberty_basic",
+  "logo",
+  "lua",
+  "mathematica",
+  "matlab",
+  "maxima",
+  "min",
+  "mmix",
+  "nim",
+]
 +++
 
 ## Task
@@ -3032,4 +3083,3 @@ L(2,3,5,6,7,8,10,11,12,13,14,15,17,18,19,20,21,22,23,24,26,27)
 L()
 
 ```
-

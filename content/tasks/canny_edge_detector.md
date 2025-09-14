@@ -7,6 +7,17 @@ aliases = []
 id = 11471
 [taxonomies]
 categories = ["Image processing", "Computer vision", "task"]
+languages = [
+  "c",
+  "d",
+  "go",
+  "j",
+  "julia",
+  "mathematica",
+  "matlab",
+  "python",
+  "tcl",
+]
 tags = []
 +++
 
@@ -1055,4 +1066,3 @@ proc cannyFilterFile {{inputFile "lena.pgm"} {outputFile "lena_canny.pgm"}} {
 }
 cannyFilterFile {*}$argv
 ```
-

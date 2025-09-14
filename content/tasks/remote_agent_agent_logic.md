@@ -7,6 +7,10 @@ aliases = []
 id = 6052
 [taxonomies]
 categories = ["task"]
+languages = [
+  "c",
+  "go",
+]
 tags = []
 +++
 
@@ -271,4 +275,3 @@ oo::class create Agent {
 Agent new "localhost" 12345
 vwait wonGame
 ```
-

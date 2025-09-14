@@ -8,6 +8,13 @@ id = 9404
 [taxonomies]
 categories = ["task", "Constructive Solid Geometry"]
 tags = []
+languages = [
+  "auto_hotkey",
+  "brlcad",
+  "c",
+  "d",
+  "dw_script",
+]
 +++
 
 [[File:Deathstar-tcl.gif|400px|thumb]]
@@ -2154,4 +2161,3 @@ while(true)
 wend
 
 ```
-

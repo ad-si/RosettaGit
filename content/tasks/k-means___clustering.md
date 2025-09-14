@@ -8,6 +8,30 @@ id = 9798
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "euler_math_toolbox",
+  "fortran",
+  "go",
+  "haskell",
+  "huginn",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rust",
+  "scheme",
+  "sequence_l",
+  "tcl",
+  "xpl0",
+]
 +++
 
 ## Task
@@ -4323,4 +4347,3 @@ I:= ChIn(1);                    \wait for keystroke
 SetVid($03);                    \restore normal text screen
 ]
 ```
-

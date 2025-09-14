@@ -8,6 +8,19 @@ id = 11982
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "go",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "racket",
+  "python",
+  "php",
+  "swift",
+]
 +++
 
 Calculate the password requested by ethernet gateways from the Legrand / Bticino MyHome OpenWebNet home automation system when the user's ip address is not in the gateway's whitelist
@@ -257,8 +270,8 @@ func main() {
 
 ```txt
 
-PASS 12345  603356072  25280520    25280520  
-PASS 12345  410501656  119537670   119537670 
+PASS 12345  603356072  25280520    25280520
+PASS 12345  410501656  119537670   119537670
 PASS 12345  630292165  4269684735  4269684735
 
 ```
@@ -273,7 +286,7 @@ function calcPass (pass, nonce) {
 	var num1 = 0x0;
 	var num2 = 0x0;
 	var password = parseInt(pass, 10);
-	
+
 	for (var c in nonce) {
 		c = nonce[c];
 		if (c!='0') {
@@ -627,7 +640,7 @@ function unsigned(atom n)
     n = peek4u(m4)
     free(m4)
     return n
-end function 
+end function
 
 function ownCalcPass(atom pwd, string nonce)
     bool start = true
@@ -669,13 +682,13 @@ function ownCalcPass(atom pwd, string nonce)
     end for
     return unsigned(num1)
 end function
- 
+
 procedure testPasswordCalc(atom pwd, string nonce, atom expected)
     atom res := ownCalcPass(pwd, nonce)
     string pf = iff(res=expected?"PASS":"FAIL")
     printf(1,"%s  %d  %s  %-10d  %-10d\n", {pf, pwd, nonce, res, expected})
 end procedure
- 
+
 testPasswordCalc(12345, "603356072", 25280520)
 testPasswordCalc(12345, "410501656", 119537670)
 testPasswordCalc(12345, "630292165", 4269684735)
@@ -697,7 +710,7 @@ PASS  12345  523781130  537331200   537331200
 ```python
 
 def ownCalcPass (password, nonce, test=False) :
-    start = True    
+    start = True
     num1 = 0
     num2 = 0
     password = int(password)
@@ -918,7 +931,7 @@ function ownCalcPass($password, $nonce) {
               ((c (in-string nonce)))
       (let* ((num-1 (32-bit-truncate num-1))
              (num-2 (if flag (string->number password-string) num-1)))
-        
+
         (define (and-right-left-add mask right left)
           (values (+ (arithmetic-shift (bitwise-and num-2 mask) (- right))
                      (arithmetic-shift num-2 left))
@@ -963,7 +976,7 @@ function ownCalcPass($password, $nonce) {
            (msg (format "~a ~a ~a ~a" passwd nonce res expected)))
       (string-append (if (= res expected) "PASS" "FAIL") " " msg)))
 
-  
+
   (own-test-calc-pass "12345" "603356072" 25280520)
   (own-test-calc-pass "12345" "410501656" 119537670))
 ```
@@ -1027,4 +1040,3 @@ func openAuthenticationResponse(_password: String, operations: String) -> String
 }
 
 ```
-

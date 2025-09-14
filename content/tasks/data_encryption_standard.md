@@ -8,6 +8,23 @@ id = 21396
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "d",
+  "freebasic",
+  "go",
+  "java",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "scala",
+  "symsyn",
+  "visual_basic_net",
+]
 +++
 
 Demonstrate the [[wp:Data_Encryption_Standard|Data Encryption Standard]]. For a complete description of the algorithm see: [http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm The DES Algorithm Illustrated]
@@ -4726,4 +4743,3 @@ End Module
 Encoded: 0000000000000000A913F4CB0BD30F97
 Decoded: 8787878787878787
 ```
-

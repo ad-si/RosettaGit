@@ -8,6 +8,31 @@ id = 19672
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "echo_lisp",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "maple",
+  "mathematica",
+  "oo_rexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "sidef",
+  "stata",
+  "zkl",
+]
 +++
 
 A [[wp:superellipse|superellipse]] is a geometric figure defined as the set of all points (x, y) with 
@@ -1323,4 +1348,3 @@ foreach n in ([2.0..10, 1.4]) { superEllipse(plot,n, 0xff0000) }// 2+:  red
 
 plot.writeJPGFile("superEllipse.jpg");
 ```
-

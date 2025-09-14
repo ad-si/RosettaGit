@@ -8,6 +8,65 @@ id = 9349
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "actionscript",
+  "ada",
+  "autohotkey",
+  "awk",
+  "bbc_basic",
+  "bc",
+  "c",
+  "c#",
+  "c++",
+  "clojure",
+  "common_lisp",
+  "d",
+  "ela",
+  "elixir",
+  "erlang",
+  "erre",
+  "euphoria",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "maxima",
+  "pari_gp",
+  "pascal",
+  "perl_6",
+  "perl",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "stata",
+  "swift",
+  "tcl",
+  "vba",
+  "vbscript",
+  "visual_basic_.net",
+  "xpl0",
+  "zkl",
+]
 +++
 
 ## Description
@@ -480,7 +539,9 @@ quit
 Some of the calculations are not exact, because bc performs calculations using base 10. So the program prints a result like <tt>.202222221</tt> (base 3) when the exact result would be <tt>.21</tt> (base 3).
 
 {{out}}
-<pre style="overflow: auto; height: 15em;">base 2
+
+```txt
+base 2
   0.00000000000000
   .10000000000000
   .01000000000000
@@ -568,7 +629,6 @@ base 5:  0  1/5  2/5  3/5  4/5  1/25  6/25  11/25  16/25  21/25
 ```
 
 
-
 ## C++
 
 {{trans|Perl 6}}
@@ -621,9 +681,7 @@ Base 5
 ```
 
 
-
 ## C#
-
 
 This is based on the C version.<br/>
 It uses LINQ and enumeration over a collection
@@ -761,10 +819,7 @@ namespace VanDerCorput
         }
     }
 }
-
-
 ```
-
 
 {{out}}
 
@@ -778,9 +833,7 @@ Type return to continue...
 ```
 
 
-
 ## Clojure
-
 
 ```clojure
 (defn van-der-corput
@@ -823,10 +876,7 @@ Type return to continue...
 ```
 
 
-
-
 ## Common Lisp
-
 
 ```lisp
 (defun van-der-Corput (n base)
@@ -852,9 +902,7 @@ Base 5: 0     1/5   2/5   3/5   4/5   1/25  6/25  11/25 16/25 21/25 2/25
 ```
 
 
-
 ## D
-
 
 ```d
 double vdc(int n, in double base=2.0) pure nothrow @safe @nogc {
@@ -888,9 +936,7 @@ Base 5: [0, 0.2, 0.4, 0.6, 0.8, 0.04, 0.24, 0.44, 0.64, 0.84]
 ```
 
 
-
 ## Ela
-
 
 ```ela
 open random number list
@@ -914,13 +960,11 @@ Test (with base 2.0, using non-strict map function on infinite list):
 take 10 <| map' (vdc 2.0) [1..]
 ```
 
-
 {{out}}
 
 ```txt
 [0.5,0.25,0.75,0.125,0.625,0.375,0.875,0.0625,0.5625,0.3125]
 ```
-
 
 
 ## Elixir
@@ -2340,7 +2384,9 @@ Decimal 5: 0 0.2 0.4 0.6 0.8 0.04 0.24 0.44 0.64 0.84
 ```
 
 {{out}}
-<pre style="height:20em;overflow:scroll">Base: 2
+
+```txt
+Base: 2
 0: 0.0000
 1: 0.5000
 2: 0.2500

@@ -8,6 +8,33 @@ id = 12341
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "common_lisp",
+  "crystal",
+  "d",
+  "go",
+  "haskell",
+  "jsish",
+  "julia",
+  "kotlin",
+  "nemerle",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "pike",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 ## Task
@@ -559,4 +586,3 @@ $ cat bbb.zkl | zkl bbb
 False
 
 ```
-

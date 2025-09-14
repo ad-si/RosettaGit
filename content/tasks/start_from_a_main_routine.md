@@ -8,6 +8,45 @@ id = 10077
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "awk",
+  "c",
+  "clojure",
+  "component_pascal",
+  "erlang",
+  "forth",
+  "freebasic",
+  "gambas",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "logtalk",
+  "mathematica",
+  "oforth",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "purebasic",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sed",
+  "seed7",
+  "tcl",
+  "visual_basic",
+  "visual_basic_dot_net",
+  "zx_spectrum_basic",
+  "zkl",
+]
 +++
 
 Some languages (like Gambas and Visual Basic) support two startup modes.   Applications written in these languages start with an open window that waits for events, and it is necessary to do some trickery to cause a main procedure to run instead.   Data driven or event driven languages may also require similar trickery to force a startup procedure to run.
@@ -765,5 +804,4 @@ On the ZX Spectrum, there is no main function as such. However a saved program c
 ```zxbasic
 SAVE "MYPROG" LINE 500: REM For a program with main code starting at line 500
 ```
-
 

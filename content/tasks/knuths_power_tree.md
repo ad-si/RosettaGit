@@ -8,6 +8,12 @@ id = 19210
 [taxonomies]
 categories = ["task", "Knuth's power tree"]
 tags = []
+languages = [
+  "echo_lisp",
+  "scheme",
+  "go",
+  "plain_text",
+]
 +++
 
 ## Task
@@ -1820,4 +1826,3 @@ show_pow(BN(3),191);
 3^191 = 13494588674281093803728157396523884917402502294030101914066705367021922008906273586058258347
 
 ```
-

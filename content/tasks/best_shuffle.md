@@ -8,6 +8,59 @@ id = 8971
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "auto_hotkey",
+  "awk",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "elena",
+  "erlang",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "nim",
+  "ocaml",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "pico_lisp",
+  "pl_i",
+  "powershell",
+  "prolog",
+  "pure_basic",
+  "python",
+  "racket",
+  "rascal",
+  "rexx",
+  "ring",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "tcl",
+  "ursala",
+  "vba",
+  "vbscript",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task
@@ -4664,5 +4717,4 @@ grrrrrr rgrrrrr 5
 up pu 0
 a a 1
 ```
-
 

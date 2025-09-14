@@ -8,6 +8,26 @@ id = 21701
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "apple_script",
+  "c_sharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "rexx",
+  "ring",
+  "scala",
+  "sidef",
+  "zkl",
+]
 +++
 
 Mersenne primes:
@@ -1218,4 +1238,3 @@ fcn mprimes{
 ...
 
 ```
-

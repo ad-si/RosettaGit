@@ -8,6 +8,24 @@ id = 22417
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "c_sharp",
+  "d",
+  "f_sharp",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "visual_basic_net",
+  "zkl",
+]
 +++
 
 ## Task
@@ -1372,4 +1390,3 @@ bellTriangleW(BI(1)).drop(50).value.println();
 The fiftieth Bell number: 10726137154573358400342215518590002633917247281
 
 ```
-

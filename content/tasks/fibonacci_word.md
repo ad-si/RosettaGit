@@ -7,6 +7,57 @@ aliases = []
 id = 15207
 [taxonomies]
 categories = ["task"]
+languages = [
+  "ada",
+  "aime",
+  "algol_68",
+  "apl",
+  "autohotkey",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "objeck",
+  "oforth",
+  "oorexx",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "scilab",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl",
+  "zx_spectrum_basic",
+]
 tags = []
 +++
 
@@ -4709,4 +4760,3 @@ foreach n in ([1..37]){
 1080 NEXT j
 1090 RETURN
 ```
-

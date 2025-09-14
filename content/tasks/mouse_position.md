@@ -8,6 +8,12 @@ id = 4261
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []
+languages = [
+  "actionscript3",
+  "ada",
+  "applescript",
+  "autohotkey",
+]
 +++
 
 ## Task
@@ -1713,4 +1719,3 @@ else [ShowMouse(true);
 320,96
 
 ```
-

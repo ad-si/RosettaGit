@@ -8,6 +8,18 @@ id = 22475
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 In mathematics, a Fermat number, ''named after Pierre de Fermat who first studied them,'' is a positive integer of the form  <big>'''F<sub>n</sub> = 2<sup>''2''<sup>''n''</sup></sup> + 1'''</big> where '''n''' is a non-negative integer.
@@ -953,4 +965,3 @@ Factors of F5: 641 6700417
 Factors of F6: 274177 67280421310721
 
 ```
-

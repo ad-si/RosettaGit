@@ -8,6 +8,27 @@ id = 12635
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "echo_lisp",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "sage",
+  "sidef",
+  "tcl"
+]
 +++
 
 [[wp:Elliptic curve|Elliptic curve]]s   are sometimes used in   [[wp:cryptography|cryptography]]   as a way to perform   [[wp:digital signature|digital signature]]s.
@@ -1680,5 +1701,4 @@ a + b + d = Zero
 a * 12345 = (10.759, 35.387)
 
 ```
-
 

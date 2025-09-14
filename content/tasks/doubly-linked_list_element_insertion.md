@@ -8,6 +8,49 @@ id = 2090
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "axe",
+  "bbc_basic",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "e",
+  "erlang",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "nim",
+  "objeck",
+  "ocaml",
+  "oforth",
+  "oz",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "pop11",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "tcl",
+  "visual_basic_net",
+  "zkl"
+]
 +++
 
 ## Task

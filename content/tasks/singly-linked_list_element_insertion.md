@@ -7,6 +7,67 @@ aliases = []
 id = 2007
 [taxonomies]
 categories = ["task", "Data Structures"]
+languages = [
+  "360_assembly",
+  "acl2",
+  "algol_68",
+  "algol_w",
+  "arm_assembly",
+  "actionscript",
+  "ada",
+  "auto_hotkey",
+  "axe",
+  "bbc_basic",
+  "c",
+  "c_sharp",
+  "c_plus_plus",
+  "clojure",
+  "common_lisp",
+  "d",
+  "delphi",
+  "e",
+  "echo_lisp",
+  "elena",
+  "erlang",
+  "factor",
+  "forth",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "icon",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "logo",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "oforth",
+  "pl_i",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "pop11",
+  "purebasic",
+  "python",
+  "rexx",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "sidef",
+  "stata",
+  "tcl",
+  "x86_assembly",
+  "oo_rexx",
+  "zkl",
+]
 tags = []
 +++
 
@@ -2216,4 +2277,3 @@ Create a new list:
 a:=ROList("a","b","c");
 n:=a.index("b"); a[0,n].append("foo").extend(a[n,*]) //-->ROList("a","foo","b","c")
 ```
-

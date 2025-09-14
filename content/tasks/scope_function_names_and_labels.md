@@ -8,6 +8,42 @@ id = 12940
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []
+languages = [
+  "algol_68",
+  "algol_w",
+  "awk",
+  "axe",
+  "basic",
+  "bc",
+  "c",
+  "eiffel",
+  "erlang",
+  "go",
+  "haskell",
+  "icon",
+  "unicon",
+  "j",
+  "jq",
+  "julia",
+  "kotlin",
+  "oforth",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 {{task|Basic language learning}}[[Category:Scope]]
@@ -1209,5 +1245,4 @@ Functions are visible as soon as they are entered, even if the program is not ru
 PRINT FN s(5): REM This will work immediately
 GO TO 50: REM This will work immediately
 ```
-
 

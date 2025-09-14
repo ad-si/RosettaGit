@@ -8,6 +8,14 @@ id = 22424
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c_sharp",
+  "d",
+  "f_sharp",
+  "go",
+  "kotlin",
+  "mini_zinc",
+]
 +++
 
 A Latin Square is in its reduced form if the first row and first column contain items in their natural order. The order n is the number of items. For any given n there is a set of reduced Latin Squares whose size increases rapidly with n. g is a number which identifies a unique element within the set of reduced Latin Squares of order n. The objective of this task is to construct the set of all Latin Squares of a given order and to provide a means which given suitable values for g any element within the set may be obtained.
@@ -1269,4 +1277,3 @@ Order 4: Size 4    x 4! x 3! => Total 576
 Order 5: Size 56   x 5! x 4! => Total 161280
 Order 6: Size 9408 x 6! x 5! => Total 812851200
 ```
-

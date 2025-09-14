@@ -7,6 +7,20 @@ aliases = []
 id = 21906
 [taxonomies]
 categories = ["task"]
+languages = [
+  "c",
+  "easy_lang",
+  "factor",
+  "go",
+  "j",
+  "javascript",
+  "julia",
+  "objeck",
+  "perl",
+  "python",
+  "racket",
+  "ring",
+]
 tags = []
 +++
 

@@ -7,6 +7,38 @@ aliases = []
 id = 21939
 [taxonomies]
 categories = ["task"]
+languages = [
+  "algol_w",
+  "apple_script",
+  "awk",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "microsoft_small_basic",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "python",
+  "r",
+  "rexx",
+  "scala",
+  "sidef",
+  "vbscript",
+  "visual_basic_dot_net",
+  "zkl"
+]
 tags = []
 +++
 
@@ -2357,4 +2389,3 @@ First duplicate number in series is: a(24) = 42
 Range 0..1000 is covered by terms up to a(328,002)
 
 ```
-

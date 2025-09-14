@@ -8,6 +8,56 @@ id = 4679
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "e",
+  "elixir",
+  "erlang",
+  "factor",
+  "forth",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "r",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "vba",
+  "vbscript",
+  "verilog",
+  "zkl"
+]
 +++
 
 ## Task
@@ -2430,4 +2480,3 @@ Looking for 14.2857%
 L("0.00%","14.28%","14.36%","14.22%","14.26%","14.34%","14.33%","14.21%","0.00%","0.00%")
 
 ```
-

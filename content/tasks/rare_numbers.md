@@ -8,6 +8,13 @@ id = 22520
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "c_sharp",
+  "go",
+  "julia",
+  "rexx",
+  "visual_basic_net",
+]
 +++
 
 ;Definitions and restrictions:
@@ -1151,4 +1158,3 @@ The 25 rare numbers with up to 15 digits are:
 24:        441,054,594,034,340
 25:        816,984,566,129,618
 ```
-

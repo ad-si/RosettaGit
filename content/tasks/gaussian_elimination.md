@@ -8,6 +8,45 @@ id = 11391
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "algol_68",
+  "c",
+  "common_lisp",
+  "c_sharp",
+  "d",
+  "delphi",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "klong",
+  "kotlin",
+  "m2000_interpreter",
+  "matlab",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "rust",
+  "stata",
+  "tcl",
+  "vba",
+  "vbscript",
+  "zkl",
+]
 +++
 
 {{task}}[[Category:Matrices]]
@@ -4754,4 +4793,3 @@ gaussEliminate(a,b).println();
 ```txt
 L(-0.01,1.60279,-1.6132,1.24549,-0.49099,0.0657607)
 ```
-

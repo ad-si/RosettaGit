@@ -7,6 +7,68 @@ aliases = []
 id = 8230
 [taxonomies]
 categories = ["task", "Probability and statistics"]
+languages = [
+  "11l",
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "basic",
+  "bbc_basic",
+  "free_basic",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "cobol",
+  "coffeescript",
+  "common_lisp",
+  "d",
+  "echo_lisp",
+  "elixir",
+  "euphoria",
+  "falcon",
+  "fortran",
+  "gnuplot",
+  "go",
+  "haskell",
+  "hy",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "locomotive_basic",
+  "maple",
+  "matlab",
+  "maxima",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "powershell",
+  "prolog",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "rust",
+  "scala",
+  "sidef",
+  "systemverilog",
+  "tcl",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+]
 tags = []
 +++
 
@@ -4223,4 +4285,3 @@ foreach n in ([0..30]){ array[n*N,30].concat().println(); }
 50 IF (r>=10) AND (r<=15) THEN PLOT 127+x*2,88+y*2
 60 NEXT i
 ```
-

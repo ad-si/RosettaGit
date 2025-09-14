@@ -8,6 +8,64 @@ id = 10088
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "awk",
+  "basic",
+  "c",
+  "c_sharp",
+  "c_plus_plus",
+  "clojure",
+  "common_lisp",
+  "d",
+  "ecl",
+  "elixir",
+  "erlang",
+  "fortran",
+  "freebasic",
+  "frink",
+  "gambas",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lua",
+  "mathematica",
+  "newlisp",
+  "ocaml",
+  "oforth",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "powerbasic",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "stata",
+  "tcl",
+  "tuscript",
+  "unix_shell",
+  "vba",
+  "vbscript",
+  "run_basic",
+  "zkl",
+]
 +++
 
 {{task}}[[Category:File handling]]
@@ -3431,6 +3489,4 @@ fcn deleteLinesL(fname, start,num){
 deleteLinesL("nn.zkl", 2,5);
 
 ```
-
-
 

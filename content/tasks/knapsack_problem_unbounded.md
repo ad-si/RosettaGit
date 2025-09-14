@@ -8,6 +8,62 @@ id = 3196
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bracmat",
+  "c",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "e",
+  "echo_lisp",
+  "eiffel",
+  "elixir",
+  "factor",
+  "forth",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "hic_est",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m4",
+  "lua",
+  "mathematica",
+  "mathprog",
+  "ocaml",
+  "oo_calc",
+  "oz",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "powershell",
+  "prolog",
+  "pure_basic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "sas",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "ursala",
+  "visual_basic",
+  "zkl",
+]
 +++
 
 A traveler gets diverted and has to make an unscheduled stop in what turns out to be Shangri La.   Opting to leave, he is allowed to take as much as he likes of the following items, so long as it will fit in his knapsack, and he can carry it.
@@ -4434,5 +4490,3 @@ This is achieved by carrying (one solution):  9 panacea, 0 ichor and 11 gold
 The weight to carry is 24.7 and the volume used is 0.247
 
 ```
-
-

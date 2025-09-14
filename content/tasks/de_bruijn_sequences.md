@@ -8,6 +8,20 @@ id = 22500
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c_sharp",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "visual_basic_dot_net",
+  "zkl"
+]
 +++
 
 The sequences are named after the Dutch mathematician   Nicolaas Govert de Bruijn.
@@ -1311,4 +1325,3 @@ Missing 4 digit PINs in the reversed sequence:
 Setting the 4444th digit and reruning checks: 1459 4591 5814 8145
 
 ```
-

@@ -8,6 +8,26 @@ id = 17325
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c_plus_plus",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "python",
+  "rexx",
+  "ring",
+  "ruby",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 <small>Note that in the following explanation list indices are assumed to start at ''one''.</small>
@@ -2311,4 +2331,3 @@ $ zkl lucky 4 2
 args: j | j , [even]lucky | j k [even]lucky | j -k [even]lucky
 
 ```
-

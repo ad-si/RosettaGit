@@ -8,6 +8,10 @@ id = 10876
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "phix",
+]
 +++
 
 {{difficulty}}{{draft task}}<!--{{Wikipedia|Polynomial}}-->
@@ -847,5 +851,4 @@ uni_frac = true (linux only, unless you have managed to find and install a decen
 38:                x⁵ - 2x⁴ + 42x³ + 40x + 1   ok
 
 ```
-
 

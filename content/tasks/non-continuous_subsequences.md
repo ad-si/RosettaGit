@@ -8,6 +8,55 @@ id = 2778
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "coffeescript",
+  "common_lisp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "oz",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "pop11",
+  "powershell",
+  "prolog",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "standard_ml",
+  "tcl",
+  "ursala",
+  "zkl",
+]
 +++
 
 ## Task
@@ -3076,4 +3125,3 @@ L(L(1,3),L(1,4),L(2,4),L(1,2,4),L(1,3,4))
 L("13","14","24","124","134")
 
 ```
-

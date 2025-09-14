@@ -7,6 +7,71 @@ aliases = []
 id = 18389
 [taxonomies]
 categories = ["task"]
+languages = [
+  "ada",
+  "algol_68",
+  "ansi_standard_basic",
+  "apple_script",
+  "ats",
+  "awk",
+  "befunge",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "common_lisp",
+  "crystal",
+  "d",
+  "echo_lisp",
+  "ela",
+  "elena",
+  "elixir",
+  "erlang",
+  "erre",
+  "f_sharp",
+  "factor",
+  "fortran",
+  "frink",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "k",
+  "kotlin",
+  "lua",
+  "maple",
+  "matlab",
+  "nim",
+  "oforth",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "pl_i",
+  "powershell",
+  "prolog",
+  "purebasic",
+  "python",
+  "ruby",
+  "run_basic",
+  "rust",
+  "scala",
+  "scheme",
+  "sidef",
+  "swift",
+  "tbas",
+  "tcl",
+  "vba",
+  "vbscript",
+  "yabasic",
+  "zkl",
+  "zx_spectrum_basic",
+  "11l"
+]
 tags = []
 +++
 
@@ -5328,4 +5393,3 @@ Amicable pairs < 20000
 12285 14595
 17296 18416
 ```
-

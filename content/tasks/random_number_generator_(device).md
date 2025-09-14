@@ -8,6 +8,56 @@ id = 9143
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aarch64_assembly",
+  "ada",
+  "arm_assembly",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "c_sharp",
+  "common_lisp",
+  "d",
+  "echo_lisp",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "haskell",
+  "kotlin",
+  "lasso",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "power_shell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "wee_basic",
+  "x86_assembly",
+  "xpl0",
+  "zkl"
+]
 +++
 
 ## Task
@@ -1714,5 +1764,4 @@ println(buf.toBigEndian(0,4));  // 4 bytes @ offset 0
 2152746403
 
 ```
-
 

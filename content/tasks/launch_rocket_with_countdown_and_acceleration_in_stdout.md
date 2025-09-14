@@ -8,6 +8,15 @@ id = 22451
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+]
 +++
 
 ;Task Description
@@ -555,4 +564,3 @@ T minus: 5 4 3 2 1     Liftoff !
     **
 
 ```
-

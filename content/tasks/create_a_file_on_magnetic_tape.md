@@ -8,6 +8,35 @@ id = 12431
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "c",
+  "c_plus_plus",
+  "clojure",
+  "cobol",
+  "d",
+  "fortran",
+  "go",
+  "haskell",
+  "java",
+  "jcl",
+  "julia",
+  "kotlin",
+  "lua",
+  "nim",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "rust",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "zx_spectrum_basic"
+]
 +++
 
 ## Task
@@ -546,4 +575,3 @@ Here we dump the contents of the screen:
 ```zxbasic
 SAVE "TAPEFILE" CODE 16384,6912
 ```
-

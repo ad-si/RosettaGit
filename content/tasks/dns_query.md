@@ -8,6 +8,52 @@ id = 9683
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []
+languages = [
+  "ada",
+  "arm_assembly",
+  "auto_hotkey",
+  "batch_file",
+  "bbc_basic",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "coffeescript",
+  "common_lisp",
+  "crystal",
+  "d",
+  "delphi",
+  "erlang",
+  "factor",
+  "go",
+  "groovy",
+  "j",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lua",
+  "neko",
+  "nim",
+  "objeck",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "pike",
+  "powershell",
+  "r",
+  "racket",
+  "rexx",
+  "rust",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "tcl",
+  "vbscript",
+  "zkl",
+]
 +++
 
 ## Task
@@ -1936,6 +1982,5 @@ The addrInfo method is just a front end to POSIX getaddrinfo.
 zkl: Network.TCPClientSocket.addrInfo("www.kame.net")
 L("orange.kame.net",L("203.178.141.194","2001:200:dff:fff1:216:3eff:feb1:44d7"))
 ```
-
 
 

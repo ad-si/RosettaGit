@@ -8,6 +8,12 @@ id = 21783
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "algol_68",
+  "algol_w",
+  "apple_script"
+]
 +++
 
 ## Task
@@ -2845,4 +2851,3 @@ lines.pump(Console.println,"concat");
 █ █   █ █         █ █   █ █                           █ █   █ █         █ █   █ █
 
 ```
-

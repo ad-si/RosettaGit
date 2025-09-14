@@ -8,6 +8,29 @@ id = 21596
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "haskell",
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "vba",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task
@@ -1271,4 +1294,3 @@ testText.split().apply('wrap(word){
 RIGHT REPEAT *error* PUT MOVE RESTORE *error* *error* *error* POWERINPUT
 
 ```
-

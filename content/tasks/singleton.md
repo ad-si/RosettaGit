@@ -8,6 +8,57 @@ id = 2501
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []
+languages = [
+  "action_script",
+  "ada",
+  "auto_hotkey",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "common_lisp",
+  "d",
+  "e",
+  "eiffel",
+  "elena",
+  "erlang",
+  "factor",
+  "forth",
+  "go",
+  "groovy",
+  "io",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lingo",
+  "logtalk",
+  "net_rexx",
+  "nim",
+  "objeck",
+  "oforth",
+  "oo_rexx",
+  "oxygen_basic",
+  "oz",
+  "perl",
+  "perl_6",
+  "php",
+  "picolisp",
+  "python",
+  "purebasic",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "slate",
+  "smalltalk",
+  "swift",
+  "tcl",
+  "tern",
+  "vala",
+  "zkl",
+]
 +++
 
 ## Task
@@ -2544,5 +2595,4 @@ b1 := Borg; b2 := Borg();
 b1 == b2 //--> True
 b1.v=123; b2.v.println(); //--> 123
 ```
-
 

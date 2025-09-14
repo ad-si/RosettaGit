@@ -8,6 +8,21 @@ id = 2429
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "acl2",
+  "agda",
+  "coq",
+  "haskell",
+  "idris",
+  "j",
+  "ocaml",
+  "omega",
+  "phix",
+  "racket",
+  "tcl",
+  "twelf",
+  "salmon"
+]
 +++
 
 {{Omit From|Ruby}} <!-- same reason as Tcl -->
@@ -1159,4 +1174,3 @@ ses : sum-evens
 %total D (sum-evens D _ _ _).
 
 ```
-

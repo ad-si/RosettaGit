@@ -8,6 +8,65 @@ id = 9875
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "awk",
+  "basic",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "erlang",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "gambas",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "javascript",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "lua",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "pascal",
+  "peloton",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pike",
+  "pl_i",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "txr",
+  "vbscript",
+  "xpl0",
+  "zkl",
+]
 +++
 
 The task is to strip control codes and extended characters from a string. The solution should demonstrate how to achieve each of the following results:
@@ -2507,6 +2566,5 @@ string of , control characters(and other ilk.<< no extended chars
 string of , control characters() and other ilk.<< text
 
 ```
-
 
 

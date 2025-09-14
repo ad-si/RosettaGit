@@ -8,6 +8,91 @@ id = 8846
 [taxonomies]
 categories = ["Recursion", "task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "auto_hotkey",
+  "auto_it",
+  "axiom",
+  "bbc_basic",
+  "bracmat",
+  "c_plus_plus",
+  "c_sharp",
+  "c",
+  "clio",
+  "clojure",
+  "coffee_script",
+  "common_lisp",
+  "d",
+  "dylan",
+  "echo_lisp",
+  "ela",
+  "elena",
+  "elixir",
+  "erlang",
+  "falcon",
+  "fbs_l",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "haskell",
+  "io",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "k",
+  "klong",
+  "kotlin",
+  "lambdatalk",
+  "lingo",
+  "lolcode",
+  "m2000_interpreter",
+  "maple",
+  "nemerle",
+  "nim",
+  "ocaml",
+  "ol",
+  "oxygenbasic",
+  "pari_gp",
+  "perl",
+  "php",
+  "pico_lisp",
+  "postscript",
+  "prolog",
+  "python",
+  "qi",
+  "r",
+  "racket",
+  "rebol",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "sparkling",
+  "standard_ml",
+  "swift",
+  "tcl",
+  "txr",
+  "unix_shell",
+  "ursala",
+  "utfool",
+  "vba",
+  "wart",
+  "wdte",
+  "wren",
+  "xpl0",
+  "yabasic",
+  "zkl",
+  "zxspectrum_basic"
+]
 +++
 
 ## Task
@@ -29,9 +114,6 @@ Anonymous recursion can also be accomplished using the   [[Y combinator]].
 
 ;Task:
 If possible, demonstrate this by writing the recursive version of the fibonacci function   (see [[Fibonacci sequence]])   which checks for a negative argument before doing the actual recursion.
-
-
-
 
 
 ## 11l

@@ -8,6 +8,64 @@ id = 11445
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "ada",
+  "algol_68",
+  "ats",
+  "autohotkey",
+  "axiom",
+  "bbc_basic",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "cobol",
+  "coffeescript",
+  "common_lisp",
+  "chapel",
+  "d",
+  "erlang",
+  "factor",
+  "felix",
+  "forth",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "klong",
+  "kotlin",
+  "maple",
+  "maxima",
+  "netrexx",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "sidef",
+  "tcl",
+  "vba",
+  "visual_basic_net",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task
@@ -3610,4 +3668,3 @@ pi:=cf((6.0).noop,fcn(n){ n=2*n-1; (n*n).toFloat() },3.0);
 1040 PRINT a0+b1/VAL (e$+"1"+p$)
 1050 RETURN
 ```
-

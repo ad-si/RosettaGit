@@ -8,6 +8,31 @@ id = 11018
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "auto_hotkey",
+  "c",
+  "d",
+  "fortran",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl"
+]
 +++
 
 ''Clarification: This task is asking for the position of two bits in the binary representation of a positive integer.  Some parts of this task assume that this is the native representation in the language you are working in.  Any part of this task which makes assumptions about native representation should be treated as a recommendation which is only relevant in some contexts.  A bit is defined as the exponent in a binary polynomial -- an exponent corresponding to a power of 2 which has a non-zero multiplier in the summation sequence of powers of two which yields the desired positive integer, where the only allowed coefficients are 0 and 1.''
@@ -1828,5 +1853,4 @@ foreach p in (200){
 42^11 = 717368321110468608(x9f49aaff0e86800): MSB(59) LSB(11)
 
 ```
-
 

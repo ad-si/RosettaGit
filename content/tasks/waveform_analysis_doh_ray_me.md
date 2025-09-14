@@ -8,6 +8,9 @@ id = 10078
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go"
+]
 +++
 
 Analyse a given section of monophonic audio waveform, for average pitch and output one of the sol-fa trigraphs (like [[wp:Tonic_sol-fa|these]], except each has three letters) corresponding to average pitch level: Doh, Ray, Mee, Fah, Soh, Lah, Tee, doh.
@@ -120,5 +123,4 @@ Bytes examined : 20 per sample
 Computed average frequency = 387.1 Hz (Soh-)
 Actual average frequency   = 385.4 Hz (Soh-)
 ```
-
 

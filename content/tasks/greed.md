@@ -8,6 +8,15 @@ id = 20780
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c_plus_plus",
+  "go",
+  "kotlin",
+  "java",
+  "julia",
+  "phix",
+  "rexx"
+]
 +++
 
 This task is about making a clone of the game "GREED" by Matthew Day.
@@ -1157,4 +1166,3 @@ quit                    ◄■■■■■■■■■■■■■ user input
 ──────── quitting. 
 
 ```
-

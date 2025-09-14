@@ -8,6 +8,39 @@ id = 17065
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "algol_w",
+  "awk",
+  "batch_file",
+  "c",
+  "d",
+  "freebasic",
+  "free_pascal",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "objeck",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "prolog",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "ursa",
+  "zkl",
+]
 +++
 
 ## Task

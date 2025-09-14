@@ -8,6 +8,25 @@ id = 22161
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "algol_68",
+  "c_sharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "sidef",
+  "visual_basic_net",
+  "zkl",
+]
 +++
 
 ## Task
@@ -925,4 +944,3 @@ x^2 - 181*y^2 = 1 for x = 2469645423824185801   and y = 183567298683461940
 x^2 - 277*y^2 = 1 for x = 159150073798980475849 and y = 9562401173878027020
 
 ```
-

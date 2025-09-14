@@ -8,6 +8,25 @@ id = 15846
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []
+languages = [
+  "c",
+  "c_plus_plus",
+  "d",
+  "echo_lisp",
+  "factor",
+  "fortran",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "tcl",
+  "zkl",
+]
 +++
 
 Let <math>v</math> be a vector of <math>n</math> values of either <tt>1</tt> or <tt>0</tt> where the probability of any
@@ -1583,4 +1602,3 @@ Running 1000 tests each:
 0.9	100000	0.0900	0.0900	-0.0000 (-0.00%)
 
 ```
-

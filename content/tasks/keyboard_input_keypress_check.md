@@ -8,6 +8,55 @@ id = 8434
 [taxonomies]
 categories = ["task", "Keyboard input"]
 tags = []
+languages = [
+  "ada",
+  "arm_assembly",
+  "auto_hotkey",
+  "axe",
+  "basic",
+  "bacom",
+  "applesoft_basic",
+  "zx_spectrum_basic",
+  "bbc_basic",
+  "c",
+  "c_sharp",
+  "clojure",
+  "d",
+  "delphi",
+  "elena",
+  "erre",
+  "euphoria",
+  "forth",
+  "freebasic",
+  "gambas",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "livecode",
+  "logo",
+  "m2000_interpreter",
+  "oforth",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "purebasic",
+  "racket",
+  "rexx",
+  "ring",
+  "robotic",
+  "ruby",
+  "scala",
+  "seed7",
+  "tcl",
+  "wee_basic",
+  "xpl0",
+]
 +++
 
 ## Task
@@ -1571,5 +1620,4 @@ repeat  K:= KeyHit;     \counts up until a key is pressed
 until   K;
 ]
 ```
-
 

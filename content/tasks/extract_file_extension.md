@@ -7,6 +7,55 @@ aliases = []
 id = 19093
 [taxonomies]
 categories = ["task"]
+languages = [
+  "algol_68",
+  "algol_w",
+  "arturo",
+  "awk",
+  "batch_file",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "emacs_lisp",
+  "d",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "gambas",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "jsish",
+  "julia",
+  "kotlin",
+  "lua",
+  "objeck",
+  "ocaml",
+  "oforth",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sed",
+  "sidef",
+  "tcl",
+  "tuscript",
+  "vbscript",
+  "visual_basic",
+  "zkl",
+]
 tags = []
 +++
 
@@ -2622,4 +2671,3 @@ Note: on Unix, .desktop is a hidden file, not an extension.
                    /etc/pam.d/login :
 
 ```
-

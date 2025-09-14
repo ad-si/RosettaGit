@@ -8,6 +8,13 @@ id = 6050
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "julia",
+  "pico_lisp",
+  "tcl"
+]
 +++
 
 {{draft task}}As described in [[Remote agent]], generate a map, accept and respond to commands from an agent using an unbuffered stream.
@@ -735,4 +742,3 @@ Example call (with the server restricted to only serving on 127.0.0.1):
 ```txt
 tclsh8.5 agent.world.tcl 54545 8 8 -myaddr localhost
 ```
-

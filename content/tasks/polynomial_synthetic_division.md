@@ -7,6 +7,13 @@ aliases = []
 id = 19225
 [taxonomies]
 categories = ["task"]
+languages = [
+  "c_sharp",
+  "go",
+  "j",
+  "java",
+  "kotlin"
+]
 tags = []
 +++
 

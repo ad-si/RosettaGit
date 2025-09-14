@@ -8,6 +8,16 @@ id = 12966
 [taxonomies]
 categories = ["Electronics", "Sciences", "Sound", "Temporal media", "task"]
 tags = []
+languages = [
+  "axe",
+  "go",
+  "perl",
+  "phix",
+  "pure_data",
+  "ring",
+  "tcl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task
@@ -786,4 +796,3 @@ There is no volume control on the Spectrum.
 80 BEEP 0.1,n: REM beep for 0.1 second at n semitones relative to middle C
 90 GO TO 40
 ```
-

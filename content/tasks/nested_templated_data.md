@@ -8,6 +8,22 @@ id = 21855
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "bracmat",
+  "crystal",
+  "factor",
+  "go",
+  "julia",
+  "m2000_interpreter",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "vba",
+  "zkl",
+]
 +++
 
 A template for data is an arbitrarily nested tree of integer indices.

@@ -8,6 +8,27 @@ id = 21963
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "apple_script",
+  "c_sharp",
+  "formulae",
+  "f_sharp",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "lambdatalk",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "rust",
+  "swift",
+  "zkl",
+]
 +++
 
 ## Task
@@ -1428,4 +1449,3 @@ T(c3,c4,churchAdd(c3,c4),churchMul(c3,c4),churchPow(c4,c3),churchPow(c3,c4))
 L(3,4,7,12,64,81)
 
 ```
-

@@ -8,6 +8,24 @@ id = 11474
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "common_lisp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 A k-d tree (short for ''k''-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space. k-d trees are a useful data structure for several applications, such as searches involving a multidimensional search key (e.g. range searches and nearest neighbor searches). 
@@ -2740,4 +2758,3 @@ Distance:        3.91942e-06
 Nodes visited:   16
 
 ```
-

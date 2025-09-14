@@ -8,6 +8,30 @@ id = 18509
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "eleven_l",
+  "c",
+  "d",
+  "factor",
+  "gambas",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl"
+]
 +++
 
 Two players have a set of dice each. The first player has nine dice with four faces each, with numbers one to four. The second player has six normal dice with six faces each, each face has the usual numbers from one to six.
@@ -2175,4 +2199,3 @@ L(0.573144,0.0707662,0.35609)
 L(0.642789,0.044496,0.312715)
 
 ```
-

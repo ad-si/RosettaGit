@@ -8,6 +8,58 @@ id = 17215
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "awk",
+  "bracmat",
+  "c",
+  "c_plus_plus",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "dcl",
+  "echo_lisp",
+  "elixir",
+  "erlang",
+  "erre",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "lua",
+  "maple",
+  "mathematica",
+  "mini_script",
+  "nim",
+  "objeck",
+  "oforth",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pico_lisp",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task
@@ -2841,4 +2893,3 @@ fcn semiprime(n){
 L(1678,1679,1681)
 
 ```
-

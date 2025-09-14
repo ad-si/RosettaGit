@@ -7,6 +7,71 @@ aliases = []
 id = 10008
 [taxonomies]
 categories = ["task", "Unicode"]
+languages = [
+  "ada",
+  "algol_68",
+  "auto_hotkey",
+  "ba_con",
+  "bracmat",
+  "c",
+  "c_sharp",
+  "clojure",
+  "common_lisp",
+  "d",
+  "delphi",
+  "dwscript",
+  "echolisp",
+  "elena",
+  "emacs_lisp",
+  "factor",
+  "forth",
+  "freebasic",
+  "frink",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lingo",
+  "livecode",
+  "lily",
+  "lolcode",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "nemerle",
+  "netr_exx",
+  "nim",
+  "objeck",
+  "pari_gp",
+  "peloton",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "powershell",
+  "prolog",
+  "python",
+  "r",
+  "racket",
+  "retro",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "stata",
+  "swift",
+  "tcl",
+  "vala",
+  "zkl",
+]
 tags = []
 +++
 
@@ -1376,5 +1441,4 @@ L(L("Δ",Ref))
 2
 
 ```
-
 
