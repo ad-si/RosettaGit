@@ -21,6 +21,7 @@
             bash
             coreutils
             gnumake
+            netlify-cli
             zola
           ];
         };
