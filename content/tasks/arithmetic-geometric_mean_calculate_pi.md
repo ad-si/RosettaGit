@@ -22,7 +22,7 @@ languages = [
   "julia",
   "kotlin",
   "mathematica",
-  "mk_61_52",
+  "mk-61_52",
   "ocaml",
   "pari_gp",
   "perl",
@@ -37,7 +37,7 @@ languages = [
   "scala",
   "sidef",
   "tcl",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
 ]
 +++
 

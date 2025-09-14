@@ -146,7 +146,7 @@ languages = [
   "vedit_macro_language",
   "vim_script",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_foxpro",
   "whitespace",
   "wortel",

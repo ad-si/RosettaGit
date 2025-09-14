@@ -58,7 +58,7 @@ languages = [
   "tcl",
   "ubasic_4th",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
   "zx_spectrum_basic",
 ]

@@ -149,7 +149,7 @@ languages = [
   "vba",
   "vbscript",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "vorpal",
   "wart",
   "wdte",

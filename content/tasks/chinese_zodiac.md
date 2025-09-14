@@ -13,7 +13,7 @@ languages = [
   "applescript",
   "awk",
   "basic256",
-  "f_sharp",
+  "fsharp",
   "factor",
   "python",
   "racket",

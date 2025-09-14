@@ -12,7 +12,6 @@ languages = [
   "autohotkey",
   "c",
   "cpp",
-  "create_fibonacci_word_order_n",
   "d",
   "elixir",
   "executing",

@@ -83,7 +83,7 @@ languages = [
   "vba",
   "vedit_macro_language",
   "wren",
-  "xemacs_lisp",
+  "emacs_lisp",
   "yabasic",
   "zkl",
 ]

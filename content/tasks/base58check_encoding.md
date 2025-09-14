@@ -28,7 +28,7 @@ languages = [
   "scala",
   "seed7",
   "sidef",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

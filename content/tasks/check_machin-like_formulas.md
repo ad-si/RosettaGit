@@ -36,7 +36,7 @@ languages = [
   "seed7",
   "sidef",
   "tcl",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
 ]
 +++

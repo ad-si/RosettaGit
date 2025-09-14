@@ -182,7 +182,7 @@ languages = [
   "vbscript",
   "verbexx",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "vorpal",
   "wrapl",
   "x86_assembly",

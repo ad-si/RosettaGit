@@ -93,7 +93,7 @@ languages = [
   "v",
   "vba",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_foxpro",
   "wren",
   "zkl",

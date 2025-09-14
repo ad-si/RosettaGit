@@ -214,7 +214,7 @@ languages = [
   "vhdl",
   "vim_script",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "wdte",
   "wee_basic",

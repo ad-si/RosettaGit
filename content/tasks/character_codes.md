@@ -151,7 +151,7 @@ languages = [
   "vba",
   "vbscript",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "xpl0",
   "zkl",

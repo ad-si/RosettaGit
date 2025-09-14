@@ -45,7 +45,7 @@ languages = [
   "racket",
   "c",
   "rexx",
-  "c_plus_plus",
+  "cpp",
   "ring",
   "ruby",
   "run_basic",
@@ -63,7 +63,7 @@ languages = [
   "zx_spectrum_basic",
   "clojure",
   "common_lisp",
-  "c_sharp",
+  "csharp",
   "360_assembly",
   "crystal",
   "d"

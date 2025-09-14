@@ -9,7 +9,7 @@ id = 22500
 categories = ["task"]
 tags = []
 languages = [
-  "c_sharp",
+  "csharp",
   "go",
   "julia",
   "kotlin",

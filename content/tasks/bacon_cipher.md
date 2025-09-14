@@ -14,7 +14,7 @@ languages = [
   "bacon",
   "c",
   "cpp",
-  "c_sharp",
+  "csharp",
   "d",
   "formulae",
   "go",

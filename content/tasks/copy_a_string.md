@@ -162,7 +162,7 @@ languages = [
   "v",
   "vba",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "zkl",
   "zonnon",

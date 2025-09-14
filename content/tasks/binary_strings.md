@@ -11,31 +11,19 @@ tags = []
 languages = [
   "ada",
   "algol_68",
-  "another_sequence_of_bytes_presented_as_an_array_a",
-  "append_a_byte_b",
-  "append_a_byte_to_a_string",
   "applesoft_basic",
-  "assignment",
   "awk",
   "basic",
   "bbc_basic",
   "c",
-  "check_if_a_string_is_empty",
-  "check_if_an_entity_represents_the_empty_binary_string",
-  "cloning_and_copying",
   "common_lisp",
   "component_pascal",
-  "concatenation",
-  "copy_a_string",
-  "creation_of_an_entity_representing_an_empty_binary_string",
   "csharp",
   "d",
   "display_an_integer_array_in_a_tablular_format",
   "e",
   "elixir",
   "erlang",
-  "extract_a_substring_from_a_string",
-  "extract_and_display_substring_from_a_string",
   "factor",
   "forth",
   "go",
@@ -43,7 +31,6 @@ languages = [
   "j",
   "java",
   "javascript",
-  "join_strings",
   "jq",
   "julia",
   "kotlin",
@@ -51,9 +38,7 @@ languages = [
   "lingo",
   "lua",
   "nim",
-  "now_reassign_the_variable",
   "ocaml",
-  "of_byte_valued_integers",
   "pari_gp",
   "pascal",
   "perl",
@@ -67,8 +52,6 @@ languages = [
   "python",
   "racket",
   "red",
-  "replace_every_occurrence_of_a_byte_or_a_string_in_a_string_with_another_string",
-  "replace_every_occurrence_of_one_byte_x_with",
   "rexx",
   "ring",
   "ruby",
@@ -76,8 +59,6 @@ languages = [
   "rust",
   "seed7",
   "smalltalk",
-  "string_creation_which_is_string_assignment",
-  "string_or_any_variable_destruction",
   "tcl",
   "vba",
   "zkl",
@@ -91,7 +72,6 @@ Many languages have powerful and useful ('''binary safe''') [[wp:String (compute
 This task is about creating functions to handle ''binary'' strings (strings made of arbitrary bytes, i.e. ''byte strings'' according to Wikipedia) for those languages that don't have built-in support for them. If your language of choice does have this built-in support, show a possible alternative implementation for the ''functions'' or ''abilities'' already provided by the language.
 In particular the functions you need to create are:
 * String creation and destruction (when needed and if there's no [[garbage collection]] or similar mechanism)
-* String assignment
 * String comparison
 * String cloning and copying
 * Check if a string is empty
@@ -171,7 +151,6 @@ BEGIN
   ~
 END; # local variable "lb" has LOC stack space recovered at END #
 
-# String assignment #
 c := "a"+REPR 0+"b";
 print (("string length c:", UPB c, new line));# ==> 3 #
 
@@ -404,7 +383,6 @@ J$ = A$ + STR$(42) + " PUDDLES " + B$ + CHR$(255) : REM USE +
 
 
 ```bbcbasic
-      A$ = CHR$(0) + CHR$(1) + CHR$(254) + CHR$(255) : REM assignment
       B$ = A$                                        : REM clone / copy
       IF A$ = B$ THEN PRINT "Strings are equal"      : REM comparison
       IF A$ = "" THEN PRINT "String is empty"        : REM Check if empty
@@ -583,7 +561,6 @@ class Program
         //# mark string for garbage collection
         x = null;
 
-        //# string assignment with a null byte
         x = "ab\0";
         Console.WriteLine(x);
         Console.WriteLine(x.Length); // 3
@@ -653,7 +630,6 @@ using the string as an atom and casting a character list to a string
 ```
 
 
-String assignment
 
 ```lisp
 
@@ -816,7 +792,6 @@ void main() /*@safe*/ {
     // the garbage collector).
     ubyte[] str1;
 
-    // String assignments.
     str1 = "blah".dup.representation;
     // Hex string, same as "\x00\xFB\xCD\x32\xFD\x0A"
     // whitespace and newlines are ignored.
@@ -908,7 +883,6 @@ To work with binary strings we must first have a byte type; this is a place wher
 ```
 
 As E is a memory-safe garbage-collected language there is no explicit destruction. It is good practice to work with immutable ConstLists when reasonable, however; especially when passing strings around.
-</li><li>There is no specific assignment between FlexLists; a reference may be passed in the usual manner, or the contents of one could be copied to another as shown below.
 </li><li>There is no comparison operation between FlexLists (since it would not be a stable ordering <!-- XXX cite? -->), but there is between ConstLists.
 
 ```e
@@ -975,7 +949,6 @@ x = "hello world"
 # String destruction
 x = nil
 
-# String assignment with a null byte
 x = "a\0b"
 IO.inspect x                  #=> <<97, 0, 98>>
 IO.puts String.length(x)      #=> 3
@@ -1205,7 +1178,6 @@ Adding the 256 byte buffer it takes only 560 bytes; useable in small embedded en
 : string:   CREATE    maxlen ALLOT ;      \ simple string variable constructor
 
 
-: ="      ( string -- )                   \ String variable assignment operator (compile time only)
           [char] " PARSE  ROT  PLACE ;
 
 : =""     ( string -- )  0 swap c! ;      \ empty a string, set count to zero
@@ -1277,9 +1249,7 @@ ok
 
 DECIMAL  ok
 
-\ 2. String assignment
 
-\ create string constants with assignments(static, counted strings)  ok
      create string1  ," Now is the time for all good men to come to the aid"
      create string2  ," Right now!"  ok
 
@@ -1290,7 +1260,6 @@ DECIMAL  ok
 \ or use S" and PLACE
      S" The rain in Spain..." buffer2 PLACE ok
 
-\ Test the assignments
      string2 writestr Right now!
  ok
      string1 writestr Now is the time for all good men to come to the aid
@@ -1407,7 +1376,6 @@ func main() {
     fmt.Println(b) // output shows numeric form of bytes.
     // Go is garbage collected.  There are no destruction operations.
 
-    // Task point: String assignment.
     // t = s assigns strings.  Since strings are immutable, it is irrelevant
     // whether the string is copied or not.
     // With byte slices, the same works,
@@ -1425,7 +1393,6 @@ func main() {
     // Task point: String cloning and copying.
     // The immutable property of Go strings makes cloning and copying
     // meaningless for strings.
-    // With byte slices though, it is relevant.  The assignment c = b shown
     // above does a reference copy, leaving both c and b based on the same
     // underlying data.  To clone or copy the underlying data,
     d := make([]byte, len(b)) // allocate new space
@@ -1466,7 +1433,6 @@ func main() {
     // Task point: Join strings.
     // Using slicing syntax again, with strings,
     // rem := s[:1] + s[3:] leaves rem == "bary".
-    // Only the concatenation of the parts is different with byte slices,
     rem := append(append([]byte{}, b[:1]...), b[3:]...)
     fmt.Println(string(rem))
 }
@@ -1545,7 +1511,6 @@ strIsEmpty x =
 ```haskell
 {- This is the most obvious way to
 append strings, using the built-in
-(++) concatenation operator
 Note the same would work to join
 any two strings (as 'variables' or
 as typed strings -}
@@ -1589,17 +1554,14 @@ Icon and Unicon strings strings are variable length and unrestricted. See [[Logi
 s := "\x00" # strings can contain any value, even nulls
 s := "abc"             # create a string
 s := &null             # destroy a string (garbage collect value of s; set new value to &null)
-v := s                 # assignment
 s == t                 # expression s equals t
 s << t                 # expression s less than t
 s <<= t                # expression s less than or equal to t
 v := s                 # strings are immutable, no copying or cloning are needed
 s == ""                # equal empty string
 *s = 0                 # string length is zero
-s ||:= "a"             # append a byte "a" to s via concatenation
 t := s[2+:3]           # t is set to position 2 for 3 characters
 s := replace(s,s2,s3)  # IPL replace function
-s := s1 || s2          # concatenation (joining) of strings
 ```
 
 
@@ -1642,7 +1604,6 @@ J's literal data type supports arbitrary binary data (strings are binary strings
 ```j>   name=: 0</lang
 
 
-* Example binary string assignment
 
 ```j
    name=: 'value'
@@ -1923,7 +1884,6 @@ var str='';
 str2=new String();
 
 
-//String assignment
 str="Hello";
 //or
 str2=', Hey there'; //can use " or '
@@ -2003,14 +1963,10 @@ Examples
 
 ## Assignment
 
-# Unless a check is appropriate, assignment can be done in the
 # usual ways, for example:
 
-[0] as $x    # assignment to a variable, $x
 
-s as $x      # assignment of s to a variable
 
-.key = s     # assignment to a key in a JSON object
 
 # If s must be checked, these become:
 
@@ -2038,7 +1994,6 @@ str+str2
 
 # The result is [0] because the expression "$s[0] = 1"
 # evaluates to [1] but does not alter $s.  The value of
-# $s can be changed by assignment, e.g.
 
 [0] as $s | $s[0] = 1 | . as $s
 
@@ -2076,7 +2031,6 @@ reduce .[] as $byte ([];
 
 ```julia
 
-# String assignment. Creation and garbage collection are automatic.
 a = "123\x00 abc "  # strings can contain bytes that are not printable in the local font
 b = "456" * '\x09'
 c = "789"
@@ -2317,7 +2271,6 @@ s$ = "Good" + "bye" + " for now."
 
 ```Lingo
 -- String creation and destruction
-foo = "Hello world!" -- created by assignment; destruction via garbage collection
 
 -- Strings are binary safe
 put numtochar(0) into char 6 of foo
@@ -2422,7 +2375,6 @@ str = foo .. bar -- Strings concatenate with .. operator
 
 ```Mathematica
 (* String creation and destruction *)  BinaryString = {}; BinaryString = . ;
-(* String assignment *)   BinaryString1 = {12,56,82,65} ,  BinaryString2 = {83,12,56,65}
 -> {12,56,82,65}
 -> {83,12,56,65}
 (* String comparison *)   BinaryString1 === BinaryString2
@@ -2518,7 +2470,6 @@ var # creation
 
 if x == z: echo "x is z" # comparison
 
-z = "now this is another string too" # assignment
 
 y = z # copying
 
@@ -2555,7 +2506,6 @@ No destruction, OCaml features a garbage collector.
 
 OCaml strings can contain any of the 256 possible bytes included the null character '\000'.
 
-* String assignment
 
 ```ocaml
 # let str = "some text" ;;
@@ -2604,7 +2554,6 @@ val string_is_empty : string -> bool = <fun>
 
 it is not possible to append a byte to a string,
 in the sens modifying the length of a given string,
-but we can use the concatenation operator to append
 a byte and return the result as a new string
 
 
@@ -2615,7 +2564,6 @@ a byte and return the result as a new string
 
 
 But OCaml has a module named Buffer for string buffers.
-This module implements string buffers that automatically expand as necessary. It provides accumulative concatenation of strings in quasi-linear time (instead of quadratic time when strings are concatenated pairwise).
 
 
 ```ocaml
@@ -2796,7 +2744,6 @@ multi infix:<~>  (ByteStr $x, ByteStr $y) { ByteStr.new(:bytes(|$x.bytes, |$y.by
 my ByteStr $b0 = ByteStr.new;
 my ByteStr $b1 = ByteStr.new(:bytes( |'foo'.ords, 0, 10, |'bar'.ords ));
 
-# assignment ($b1 and $b2 contain the same ByteStr object afterwards):
 my ByteStr $b2 = $b1;
 
 # comparing:
@@ -2944,7 +2891,6 @@ To read part of that file, an external tool like 'dd' might be used:
 
 Now such byte lists can be assigned the normal way ('let', 'setq' etc.), they
 can be compared with '=', '>', '>=' etc, and manipulated with all internal map-,
-filter-, concatenation-, reversal-, pattern matching, and other functions.
 
 If desired, a string containing meaningful values can also be converted to
 a transient symbol, e.g. the example above
@@ -2963,7 +2909,6 @@ a transient symbol, e.g. the example above
 
 /* PL/I has immediate facilities for all those operations except for */
 /* replace. */
-s = t;                     /* assignment */
 s = t || u;                /* catenation - append one or more bytes. */
 if length(s) = 0 then ...  /* test for an empty string.              */
 if s = t then ...          /* compare strings.                       */
@@ -2995,8 +2940,6 @@ end replace;
 
 Clear-Host
 
-## String creation (which is string assignment):
-Write-Host "`nString creation (which is string assignment):" -ForegroundColor Cyan
 Write-Host '[string]$s = "Hello cruel world"' -ForegroundColor Yellow
 [string]$s = "Hello cruel world"
 
@@ -3065,7 +3008,6 @@ Write-Host '1..12 | Format-Wide {$_.ToString().PadLeft(2)}-Column 3 -Force' -NoN
 
 ```txt
 
-String creation (which is string assignment):
 [string]$s = "Hello cruel world"
 
 String (or any variable) destruction:
@@ -3136,7 +3078,6 @@ More string madness... display an integer array in a tablular format:
 ?- X = "a test string".
 X = "a test string".
 
-% String assignment, there is no assignment but you can unify between variables, also 'String cloning and copying'
 ?- X = "a test string", X = Y.
 X = Y, Y = "a test string".
 
@@ -3241,9 +3182,7 @@ s3 = """This text
 ```
 
 
-* String assignment
 
-There is nothing special about assignments:
 
 
 ```python
@@ -3414,7 +3353,6 @@ bytes([97, 98, 99]) # evaluates to b'abc'
 (define b1 (make-bytes 5 65))  ; b1 -> #"AAAAA"
 (define b2 #"BBBBB")           ; b2 -> #"BBBBB"
 
-;; String assignment. Note that b2 cannot be
 ;; mutated since literal byte strings are immutable.
 
 (bytes-set! b1 0 66)           ; b1 -> #"BAAAA"
@@ -3499,8 +3437,6 @@ s: "hello world !"
 
 ```REXX
 /*REXX program demonstrates methods (code examples)  to use and express  binary strings.*/
-dingsta= '11110101'b                             /*four versions, bit string assignment.*/
-dingsta= "11110101"b                             /*this is the same assignment as above.*/
 dingsta= '11110101'B                             /*  "   "  "    "      "       "   "   */
 dingsta= '1111 0101'B                            /*  "   "  "    "      "       "       */
 
@@ -3537,7 +3473,6 @@ x = "hello world"
 # string destruction
 x = NULL
 
-# string assignment with a null byte
 x = "a"+char(0)+"b"
 see len(x)  # ==> 3
 
@@ -3590,7 +3525,6 @@ x = "hello world"
 # string destruction
 x = nil
 
-# string assignment with a null byte
 x = "a\0b"
 x.length  # ==> 3
 
@@ -3739,13 +3673,11 @@ fn main() {
     let str1 = "Hi";
     let str2 = " There";
     let fin_str = str1.to_string() + str2;
-    assert_eq!(fin_str, "Hi There", "Error in concatenation");
 
     // Joining strings requires a `String` and an &str or two `Strings`s, one of which needs an & for coercion
     let str1 = "Hi";
     let str2 = " There";
     let fin_str = str1.to_string() + str2;
-    assert_eq!(fin_str, "Hi There", "Error in concatenation");
 
     // Splits -- note Rust supports passing patterns to splits
     let f_str = "Pooja and Sundar are up in Tumkur";
@@ -3770,7 +3702,6 @@ const string: stri is "jkl";  # constant declaration
 ```
 
 
-String assignment
 
 ```txt
 
@@ -3794,7 +3725,6 @@ compare(stri1, stri2)  # return -1, 0 or 1, depending on the comparison.
 ```
 
 
-String copying (same as assignment)
 
 ```txt
 
@@ -3865,7 +3795,6 @@ Smalltalk strings are variable length and unrestricted. They are builtin and no 
 s := "abc"             # create a string (immutable if its a literal constant in the program)
 s := #[16r01 16r02 16r00 16r03] asString # strings can contain any value, even nulls
 s := String new:3.     # a mutable string
-v := s                 # assignment
 s = t                  # same contents
 s < t                  # less
 s <= t                 # less or equal
@@ -3879,7 +3808,6 @@ s replaceFrom:2 to:3 with:'**'           # inplace replace (must be mutable)
 s replaceAll:$x with:$y                  # destructive replace of characters
 s copyReplaceAll:$x with:$y              # non-destructive replace
 s replaceString:s1 withString:s2         # substring replace
-s3 := s1 , s2          # concatenation of strings
 s2 := s1 , $x          # append a character
 s2 := s1 , 123 asCharacter # append an arbitrary byte
 s := 'Hello / 今日は'   # they support unicode (at least up to 16rFFFF, some more)
@@ -3900,7 +3828,6 @@ set x "hello world"
 # string destruction
 unset x
 
-# string assignment with a null byte
 set x a\0b
 string length $x ;# ==> 3
 
@@ -3965,14 +3892,12 @@ Dim myString As String
 End Sub '==> Here the string is destructed !
 ```
 
-String assignment :
 
 ```vb
 Sub String_Assignment()
 Dim myString$
     'Here, myString is created and equal ""
 
-    'assignments :
     myString = vbNullString     'return : ""
     myString = "Hello World"    'return : "Hello World"
     myString = String(12, "A")  'return : "AAAAAAAAAAAA"

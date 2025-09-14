@@ -77,7 +77,7 @@ languages = [
   "ubasic_4th",
   "unix_shell",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "yabasic",
   "zkl",
   "zx_spectrum_basic",

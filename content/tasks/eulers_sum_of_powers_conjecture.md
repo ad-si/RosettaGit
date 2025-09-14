@@ -65,7 +65,7 @@ languages = [
   "sidef",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
   "zx_spectrum_basic",
 ]

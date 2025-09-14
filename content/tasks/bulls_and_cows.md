@@ -97,7 +97,7 @@ languages = [
   "unix_shell",
   "vba",
   "vedit_macro_language",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
   "zx_spectrum_basic",
 ]

@@ -14,7 +14,7 @@ languages = [
   "aikido",
   "algol_68",
   "c",
-  "c_sharp",
+  "csharp",
   "cpp",
   "clojure",
   "coffeescript",

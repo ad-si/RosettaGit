@@ -139,7 +139,7 @@ languages = [
   "vba",
   "vbscript",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wee_basic",
   "xlisp",
   "xpl0",

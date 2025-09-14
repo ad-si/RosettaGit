@@ -25,7 +25,7 @@ languages = [
   "python",
   "rexx",
   "tailspin",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "yabasic",
   "zkl",
 ]

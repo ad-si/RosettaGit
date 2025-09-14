@@ -10,8 +10,8 @@ categories = ["task"]
 tags = []
 languages = [
   "c",
-  "c_plus_plus",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "d",
   "freebasic",
   "go",

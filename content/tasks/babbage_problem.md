@@ -106,7 +106,7 @@ languages = [
   "vax_assembly",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "x86_assembly",
   "xlisp",
   "zkl",

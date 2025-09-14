@@ -97,7 +97,7 @@ languages = [
   "ursala",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wortel",
   "xlisp",
   "xpl0",

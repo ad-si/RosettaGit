@@ -244,7 +244,7 @@ languages = [
   "vhdl",
   "vim_script",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_objects",
   "vorpal",
   "wart",

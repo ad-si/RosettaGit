@@ -28,7 +28,6 @@ languages = [
   "julia",
   "kotlin",
   "lua",
-  "page_amb_void",
   "perl_6",
   "phix",
   "picolisp",

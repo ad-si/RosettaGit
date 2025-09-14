@@ -73,7 +73,6 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "run_basic",
@@ -91,7 +90,7 @@ languages = [
   "txr",
   "ursa",
   "ursala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

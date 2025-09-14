@@ -50,7 +50,7 @@ languages = [
   "prolog",
   "purebasic",
   "python",
-  "quick_basic",
+  "qbasic",
   "r",
   "racket",
   "rebol",

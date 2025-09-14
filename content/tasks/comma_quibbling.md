@@ -93,7 +93,7 @@ languages = [
   "unix_shell",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "xpl0",
   "zkl",

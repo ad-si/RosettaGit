@@ -69,7 +69,7 @@ languages = [
   "ubasic_4th",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xbasic",
   "yabasic",
   "zkl",

@@ -25,14 +25,15 @@ languages = [
   "elixir",
   "erre",
   "euler_math_toolbox",
-  "f_sharp_f",
+  "fsharp",
   "factor",
   "fortran",
   "gap",
   "go",
   "gosu",
   "haskell",
-  "icon_and_unicon",
+  "icon",
+  "unicon",
   "j",
   "java",
   "javascript",
@@ -41,7 +42,8 @@ languages = [
   "kotlin",
   "liberty_basic",
   "lua",
-  "mathematica_wolfram_language",
+  "mathematica",
+  "wolfram_language",
   "nim",
   "ocaml",
   "perl",
@@ -62,7 +64,7 @@ languages = [
   "sidef",
   "simula",
   "swift",
-  "task",
+
   "tcl",
   "ursala",
   "yabasic",
@@ -294,7 +296,8 @@ endform.
 
 
 Sample Runs:
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 Evaluating 24 with the following input:  1 1 2 7
 ( 1 + 2 ) * ( 1 + 7 )
 ( 1 + 2 ) * ( 7 + 1 )
@@ -580,9 +583,7 @@ Evaluating 24 with the following input:  5 6 7 8
 ( 8 - 6 ) * ( 7 + 5 )
 ( 8 / ( 7 - 5 ) ) * 6
 8 / ( ( 7 - 5 ) / 6 )
-
 ```
-
 
 
 ## Argile
@@ -2832,7 +2833,8 @@ $endfunction
 ```
 
 
-## F_Sharp|F#
+## F#
+
 The program wants to give all solutions for a given set of 4 digits.
 It eliminates all duplicate solutions which result from transposing equal digits.
 The basic solution is an adaption of the OCaml program.
@@ -6955,8 +6957,9 @@ Some older REXXes don't have a   '''changestr'''   BIF, so one is included here 
 
 
 
-### output|text=  when using the input of:     <tt> 1156-1162 </tt>
-<pre style="height:95ex">
+Output when using the input of `1156-1162`:
+
+```txt
                                a solution for 1156: 24= [1*5-1]*6
                                a solution for 1156: 24= [[1*5-1]*6]
                                a solution for 1156: 24= 1*[5-1]*6
@@ -7060,7 +7063,6 @@ No solutions found for 1161
                                a solution for 1162: 24= 6*[[2+1]+1]
 
 30 solutions found for 1162
-
 ```
 
 
@@ -8117,8 +8119,11 @@ if value != 24 {
 ```
 
 
-### OutputThe program in action:
-<pre style="height:30ex;overflow:scroll">
+### Output
+
+The program in action:
+
+```txt
 24 Game
 Generating 4 digits...
 Make 24 using these digits : 2 4 1 9
@@ -8157,9 +8162,7 @@ Make 24 using these digits : 6 7 8 9
 
 The value of the provided expression is 30.0 instead of 24!
 Anyway, there was no known solution to this one.
-
 ```
-
 
 
 ## Tcl

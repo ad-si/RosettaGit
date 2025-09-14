@@ -70,7 +70,7 @@ languages = [
   "tcl",
   "toka",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "x86_assembly",
   "xlisp",

@@ -112,7 +112,7 @@ languages = [
   "unix_shell",
   "vala",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_foxpro",
   "xlisp",
   "zkl",

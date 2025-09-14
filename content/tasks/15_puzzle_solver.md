@@ -10,7 +10,7 @@ categories = ["Games", "task"]
 tags = []
 languages = [
   "cpp",
-  "f_sharp_f",
+  "fsharp",
   "fortran",
   "go",
   "julia",
@@ -158,7 +158,7 @@ sys     0m0.000s
 ```
 
 
-## F_Sharp|F#
+## F#
 
 ### The Function
 
@@ -2830,13 +2830,13 @@ class Position(object):
     def copy_tiles(self):
         """ returns list of lists version """
         t = self.tiles
-        
-        return [[t[0][0], t[0][1], t[0][2], t[0][3]],
-                [t[1][0], t[1][1], t[1][2], t[1][3]],        
-                [t[2][0], t[2][1], t[2][2], t[2][3]],        
-                [t[3][0], t[3][1], t[3][2], t[3][3]]]        
 
-        
+        return [[t[0][0], t[0][1], t[0][2], t[0][3]],
+                [t[1][0], t[1][1], t[1][2], t[1][3]],
+                [t[2][0], t[2][1], t[2][2], t[2][3]],
+                [t[3][0], t[3][1], t[3][2], t[3][3]]]
+
+
     def neighbors(self):
         """
         returns a list of neighbors

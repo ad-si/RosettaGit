@@ -84,7 +84,7 @@ languages = [
   "swift",
   "tcl",
   "ursala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_foxpro",
   "zkl",
   "zx_spectrum_basic",

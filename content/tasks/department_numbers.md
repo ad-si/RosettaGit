@@ -54,7 +54,7 @@ languages = [
   "sinclair_zx81_basic",
   "swift",
   "tcl",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

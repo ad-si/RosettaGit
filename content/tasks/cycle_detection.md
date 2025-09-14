@@ -12,7 +12,7 @@ languages = [
   "11l",
   "c",
   "cpp",
-  "c_sharp",
+  "csharp",
 ]
 +++
 

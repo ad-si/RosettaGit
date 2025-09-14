@@ -113,7 +113,7 @@ languages = [
   "ursala",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "x86_assembly",
   "xpl0",
   "ya",

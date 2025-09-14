@@ -84,7 +84,7 @@ languages = [
   "tex",
   "vedit_macro_language",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "x86_assembly",
   "xfractint",
   "xpl0",

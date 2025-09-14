@@ -122,7 +122,7 @@ languages = [
   "vax_assembly",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "yorick",
   "zkl",

@@ -12,7 +12,6 @@ languages = [
   "7_27_16_aev",
   "algol_68",
   "applesoft_basic",
-  "barnsley_fern_fractal_2_17_17_aev",
   "bbc_basic",
   "c",
   "common_lisp",

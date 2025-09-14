@@ -9,7 +9,6 @@ id = 21789
 categories = ["Puzzles and games", "task"]
 tags = []
 languages = [
-  "project_15_puzzle_game_in_3d",
   "ring",
 ]
 +++

@@ -195,7 +195,7 @@ languages = [
   "vba",
   "vhdl",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wee_basic",
   "wren",
   "x86_assembly",

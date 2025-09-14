@@ -11,7 +11,6 @@ tags = []
 languages = [
   "11l",
   "ada",
-  "add_a_column_sum_and_its_value_to_each_object_in_the_array",
   "aime",
   "algol_68",
   "autohotkey",
@@ -20,7 +19,6 @@ languages = [
   "clojure",
   "common_lisp",
   "cpp",
-  "create_a_csv_file",
   "csharp",
   "d",
   "display_the_object_in_tabular_form",

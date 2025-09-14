@@ -11,7 +11,7 @@ tags = []
 languages = [
   "applesoft_basic",
   "c",
-  "c_plus_plus",
+  "cpp",
   "clojure",
   "cobol",
   "d",

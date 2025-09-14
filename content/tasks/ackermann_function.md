@@ -160,7 +160,7 @@ languages = [
   "purebasic",
   "purity",
   "python",
-  "quickbasic",
+  "qbasic",
   "r",
   "racket",
   "rebol",

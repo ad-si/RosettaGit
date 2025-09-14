@@ -19,7 +19,7 @@ languages = [
   "bracmat",
   "c",
   "cpp",
-  "c_sharp",
+  "csharp",
   "common_lisp",
   "d",
   "delphi",

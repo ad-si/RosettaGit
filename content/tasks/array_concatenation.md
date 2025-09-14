@@ -170,7 +170,7 @@ languages = [
   "vala",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "wren",
   "yabasic",
@@ -178,7 +178,7 @@ languages = [
   "yorick",
   "zkl",
   "zonnon",
-  "zsh",
+  "unix_shell",
   "zx_spectrum_basic",
 ]
 +++

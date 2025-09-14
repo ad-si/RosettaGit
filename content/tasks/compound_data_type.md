@@ -112,7 +112,7 @@ languages = [
   "ursala",
   "vba",
   "vim_script",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xslt",
   "zkl",
   "zonnon",

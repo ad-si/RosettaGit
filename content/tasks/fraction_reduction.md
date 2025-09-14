@@ -9,7 +9,7 @@ id = 22506
 categories = ["task"]
 tags = []
 languages = [
-  "c_sharp",
+  "csharp",
   "plain_text",
   "html",
 ]

@@ -32,7 +32,7 @@ languages = [
   "elena",
   "elixir",
   "erlang",
-  "f_sharp_f",
+  "fsharp",
   "factor",
   "falcon",
   "fortran",
@@ -44,7 +44,8 @@ languages = [
   "haskell",
   "hicest",
   "huginn",
-  "icon_and_unicon",
+  "icon",
+  "unicon",
   "j",
   "java",
   "javascript",
@@ -58,7 +59,8 @@ languages = [
   "lua",
   "maple",
   "mathematica",
-  "matlab_octave",
+  "matlab",
+  "octave",
   "miniscript",
   "mirc_scripting_language",
   "modula_2",
@@ -86,8 +88,6 @@ languages = [
   "r",
   "racket",
   "red",
-  "reference",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -3378,7 +3378,7 @@ Your digits     [7,4,8,1]
 ```
 
 
-## F_Sharp|F#
+## F#
 
 ```fsharp
 open System

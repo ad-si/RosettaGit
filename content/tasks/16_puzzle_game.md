@@ -15,7 +15,6 @@ languages = [
   "phix",
   "rexx",
   "ring",
-  "task",
 ]
 +++
 

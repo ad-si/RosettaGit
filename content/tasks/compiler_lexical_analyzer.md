@@ -12,7 +12,7 @@ languages = [
   "algol_w",
   "awk",
   "c",
-  "c_sharp",
+  "csharp",
   "cobol",
   "common_lisp",
   "euphoria",

@@ -17,7 +17,7 @@ languages = [
   "auto_hotkey",
   "awk",
   "c",
-  "c_plus_plus",
+  "cpp",
   "clojure",
   "coffeescript",
   "common_lisp",

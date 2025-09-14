@@ -56,7 +56,7 @@ languages = [
   "sidef",
   "tcl",
   "ursala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "xpl0",
   "zkl",

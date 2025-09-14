@@ -51,7 +51,6 @@ languages = [
   "r",
   "racket",
   "rebol",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -62,12 +61,12 @@ languages = [
   "scilab",
   "simula",
   "standard_ml",
-  "task",
+
   "tcl",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wolfram_language",
-  "x86_64_assembly",
+  "x86_assembly",
   "yabasic",
 ]
 +++

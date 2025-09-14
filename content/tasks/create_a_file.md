@@ -126,7 +126,7 @@ languages = [
   "vba",
   "vbscript",
   "vedit_macro_language",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_objects",
   "x86_assembly",
   "zkl",
