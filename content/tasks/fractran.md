@@ -8,6 +8,48 @@ id = 17107
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bash",
+  "batch_file",
+  "befunge",
+  "bracmat",
+  "c",
+  "common_lisp",
+  "cpp",
+  "d",
+  "elixir",
+  "erlang",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 '''[[wp:FRACTRAN|FRACTRAN]]''' is a Turing-complete esoteric programming language invented by the mathematician [[wp:John Horton Conway|John Horton Conway]].

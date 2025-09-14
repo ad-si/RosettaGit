@@ -8,6 +8,34 @@ id = 10974
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "pike",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "seed7",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[File:Paraffins.isopentane.png|450px||right]]

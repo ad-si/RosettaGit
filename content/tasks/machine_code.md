@@ -8,6 +8,30 @@ id = 17023
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "cobol",
+  "common_lisp",
+  "d",
+  "go",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "nim",
+  "pari_gp",
+  "pascal",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rust",
+  "scala",
+  "swift",
+  "tcl",
+]
 +++
 
 The task requires poking machine code directly into memory and executing it.

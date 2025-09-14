@@ -8,6 +8,37 @@ id = 17074
 [taxonomies]
 categories = ["task"]
 tags = ["geometry"]
+languages = [
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "d",
+  "erlang",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "mk_61_52",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+]
 +++
 
 

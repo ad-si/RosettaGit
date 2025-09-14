@@ -8,6 +8,20 @@ id = 22066
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aime",
+  "algol_68",
+  "cpp",
+  "d",
+  "go",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "r",
+  "zkl",
+]
 +++
 
 Create an executable file that copies stdin to stdout, or else a script that does so through the invocation of an interpreter at the command line.

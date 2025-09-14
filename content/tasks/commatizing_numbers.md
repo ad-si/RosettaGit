@@ -8,6 +8,25 @@ id = 17481
 [taxonomies]
 categories = ["Arithmetic operations", "String manipulation", "task"]
 tags = []
+languages = [
+  "algol_68",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "swift",
+  "vba",
+]
 +++
 
 ## Task

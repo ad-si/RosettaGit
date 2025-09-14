@@ -8,6 +8,26 @@ id = 22088
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "algol_68",
+  "csharp",
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "lua",
+  "maple",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "zkl",
+]
 +++
 
 ;Definitions   (as per number theory):

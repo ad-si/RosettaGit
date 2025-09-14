@@ -8,6 +8,30 @@ id = 10841
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "awk",
+  "common_lisp",
+  "elixir",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "lasso",
+  "locomotive_basic",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pike",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "vba",
+]
 +++
 
 Before writing to a file it is often advisable to make a backup of the original. 

@@ -8,6 +8,28 @@ id = 17428
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "factor",
+  "go",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "ol",
+  "oorexx",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 Idiomatically determine all the characters that can be used for ''symbols''.

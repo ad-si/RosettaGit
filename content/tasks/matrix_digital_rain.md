@@ -8,6 +8,17 @@ id = 22107
 [taxonomies]
 categories = ["Graphics", "Animation", "User interface", "task"]
 tags = []
+languages = [
+  "batch_file",
+  "common_lisp",
+  "go",
+  "perl",
+  "perl_6",
+  "racket",
+  "rexx",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task

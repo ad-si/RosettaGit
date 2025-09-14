@@ -8,6 +8,27 @@ id = 17657
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "tcl",
+  "zkl",
+]
 +++
 
 Hopido puzzles are similar to [[Solve a Hidato puzzle | Hidato]]. The most important difference is that the only moves allowed are:  hop over one tile diagonally; and over two tiles horizontally and vertically. It should be possible to start anywhere in the path, the end point isn't indicated and there are no intermediate clues. [http://gamesandinnovation.com/2010/02/10/hopido-design-post-mortem/ Hopido Design Post Mortem] contains the following:

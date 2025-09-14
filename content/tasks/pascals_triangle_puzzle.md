@@ -8,6 +8,42 @@ id = 2770
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "csharp",
+  "curry",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "oz",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "systemverilog",
+  "tcl",
+  "zkl",
+]
 +++
 
 This puzzle involves a [http://xunor.free.fr/en/riddles/auto/pyramidnb.php Pascals Triangle], also known as a [http://xunor.free.fr/en/riddles/auto/pyramidnb.php Pyramid of Numbers].

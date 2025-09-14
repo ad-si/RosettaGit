@@ -8,6 +8,46 @@ id = 10507
 [taxonomies]
 categories = ["File handling", "task"]
 tags = []
+languages = [
+  "awk",
+  "batch_file",
+  "c",
+  "cobol",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rapidq",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "ursa",
+  "visual_basic_dotnet",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task

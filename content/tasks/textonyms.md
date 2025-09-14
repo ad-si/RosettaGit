@@ -8,6 +8,33 @@ id = 18632
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "clojure",
+  "cpp",
+  "d",
+  "go",
+  "haskell",
+  "io",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+  "vbscript",
+  "zkl",
+]
 +++
 
 When entering text on a phone's digital pad it is possible that a particular combination of digits corresponds to more than one word. Such are called textonyms.

@@ -8,6 +8,19 @@ id = 22349
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "go",
+  "julia",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "related_tasks",
+  "sidef",
+  "zkl",
+]
 +++
 
 In 1939, Jack Chernick proved that, for '''n ≥ 3''' and '''m ≥ 1''':

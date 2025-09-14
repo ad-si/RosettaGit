@@ -8,6 +8,37 @@ id = 9552
 [taxonomies]
 categories = ["task", "Animation"]
 tags = []
+languages = [
+  "autohotkey",
+  "basic256",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "d",
+  "elm",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "tcl",
+  "xpl0",
+  "yabasic",
+  "zig",
+]
 +++
 
 ## Task

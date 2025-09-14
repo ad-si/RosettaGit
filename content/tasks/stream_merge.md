@@ -8,6 +8,31 @@ id = 20956
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "algol_68",
+  "ats",
+  "awk",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "fortran",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+]
 +++
 
 ; 2-stream merge

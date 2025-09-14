@@ -8,6 +8,40 @@ id = 19985
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "factor",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 {{task|Mathematics}} In [[wp:linear algebra|linear algebra]], [[wp:Cramer's rule|Cramer's rule]] is an explicit formula for the solution of a [[wp:system of linear equations|system of linear equations]] with as many equations as unknowns, valid whenever the system has a unique solution. It expresses the solution in terms of the determinants of the (square) coefficient matrix and of matrices obtained from it by replacing one column by the vector of right hand sides of the equations.

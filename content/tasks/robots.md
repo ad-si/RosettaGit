@@ -8,6 +8,14 @@ id = 20796
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "go",
+  "java",
+  "kotlin",
+  "perl_6",
+  "phix",
+]
 +++
 
 The task is to implement a clone of Ken Arnold's turn-based game [[wp:Robots_(1984_video_game)|Robots]].

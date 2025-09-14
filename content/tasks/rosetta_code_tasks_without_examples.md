@@ -8,6 +8,14 @@ id = 19035
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "perl",
+  "perl_6",
+  "phix",
+  "vbscript",
+  "zkl",
+]
 +++
 
 {{draft task}}A RosettaCode contributor is going on a long journey. To ease the boredom of a long flight he takes his favourite programming language manual and a list of RosettaCode tasks, but there's a catch: the tasks have to be description only and not include all the solutions already supplied by other programmers.

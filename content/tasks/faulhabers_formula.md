@@ -8,6 +8,32 @@ id = 19860
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "factor",
+  "gap",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "maxima",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "related_tasks",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 In mathematics,   Faulhaber's formula,   named after Johann Faulhaber,   expresses the sum of the ''p''-th powers of the first ''n'' positive integers as a ''(p + 1)''th-degree polynomial function of n,   the coefficients involving [[Bernoulli numbers]].

@@ -8,6 +8,26 @@ id = 19463
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "microsoft_small_basic",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "scala",
+  "sidef",
+  "vbscript",
+  "zkl",
+]
 +++
 
 <p>Chebyshev coefficients are the basis of polynomial approximations of functions.  Write a program to generate Chebyshev coefficients.</p>

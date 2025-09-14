@@ -8,6 +8,34 @@ id = 19649
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "fortran",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 Substitution Cipher Implementation - File Encryption/Decryption

@@ -8,6 +8,42 @@ id = 19083
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "bc",
+  "befunge",
+  "bracmat",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "forth",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "ubasic_4th",
+  "vba",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task

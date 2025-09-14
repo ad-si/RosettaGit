@@ -8,6 +8,42 @@ id = 10734
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "basic256",
+  "c",
+  "cpp",
+  "easylang",
+  "executing",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "ord_order_depth_fn_file_name_ttl_plot_title",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "plotting_pythagoras_tree_aev_3_27_17",
+  "processing",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "recursive_pt_plotting",
+  "related_tasks",
+  "ring",
+  "scala",
+  "scilab",
+  "sidef",
+  "x1_y1_x2_y2_starting_position",
+  "yabasic",
+  "zkl",
+]
 +++
 
 [[File:Pythagoras_tree_java.png|600px||right]]

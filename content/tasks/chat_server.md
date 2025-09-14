@@ -8,6 +8,33 @@ id = 8970
 [taxonomies]
 categories = ["Networking and Web Interaction", "task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "coffeescript",
+  "csharp",
+  "d",
+  "erlang",
+  "go",
+  "groovy",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "nim",
+  "objeck",
+  "perl",
+  "perl_6",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "ruby",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,16 @@ id = 21109
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "bbc_basic",
+  "freebasic",
+  "go",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "sidef",
+]
 +++
 
 Write a program to convert dates between the [[wp:Gregorian calendar|Gregorian calendar]] and the [[wp:French Republican Calendar|French Republican calendar]].

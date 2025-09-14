@@ -8,6 +8,23 @@ id = 16746
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+]
 +++
 
 {{task}} [[Category:Puzzles]]

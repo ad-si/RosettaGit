@@ -8,6 +8,21 @@ id = 20698
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "basic",
+  "cpp",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "sidef",
+  "zx_spectrum_basic",
+]
 +++
 
 [[wp:Snake_(video_game)|Snake]] is a game where the player maneuvers a line which grows in length every time the snake reaches a food source.

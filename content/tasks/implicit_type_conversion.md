@@ -8,6 +8,34 @@ id = 13350
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "csharp",
+  "d",
+  "go",
+  "idris",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "oforth",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 Some programming languages have [[wp:Type conversion#Implicit type conversion|implicit type conversion]].  Type conversion is  also known as ''coercion''.

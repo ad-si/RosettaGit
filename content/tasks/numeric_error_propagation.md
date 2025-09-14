@@ -8,6 +8,35 @@ id = 10185
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "c",
+  "common_lisp",
+  "cpp",
+  "d",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+]
 +++
 
 If   '''f''',   '''a''',   and   '''b'''   are values with uncertainties   σ<sub>f</sub>,   σ<sub>a</sub>,   and   σ<sub>b</sub>,   and   '''c'''   is a constant;

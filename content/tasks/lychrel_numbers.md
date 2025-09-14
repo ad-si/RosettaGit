@@ -8,6 +8,32 @@ id = 19542
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "basic",
+  "clojure",
+  "common_lisp",
+  "d",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "perl_6",
+  "phix",
+  "powershell",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 # Take an integer n, greater than zero.

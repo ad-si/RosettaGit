@@ -8,6 +8,47 @@ id = 9526
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "clojure",
+  "cmake",
+  "common_lisp",
+  "cpp",
+  "d",
+  "elixir",
+  "euphoria",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "maxscript",
+  "netrexx",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "pl_i",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "tcl",
+  "ursala",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,36 @@ id = 9380
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "bbc_basic",
+  "befunge",
+  "c",
+  "common_lisp",
+  "emacs_lisp",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "xpl0",
+  "z80_assembly",
+  "zkl",
+]
 +++
 
 [[Terminal Control::task| ]]

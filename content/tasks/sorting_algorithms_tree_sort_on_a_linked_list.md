@@ -8,6 +8,16 @@ id = 17468
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "j",
+  "kotlin",
+  "ol",
+  "phix",
+  "racket",
+  "scheme",
+  "zkl",
+]
 +++
 
 A '''tree sort''' is a [[wp:sort algorithm|sort algorithm]] that builds a [[wp:binary search tree|binary search tree]] from the keys to be sorted, and then traverses the tree ([[wp:Tree traversal|in-order]]) so that the keys come out in sorted order. Its typical use is when sorting the elements of a stream from a file. Several other sorts would have to load the elements to a temporary data structure, whereas in a tree sort the act of loading the input into a data structure is sorting it.

@@ -8,6 +8,17 @@ id = 19505
 [taxonomies]
 categories = ["Data structures", "Tree structures", "task"]
 tags = []
+languages = [
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "python",
+  "racket",
+]
 +++
 
 ## Task

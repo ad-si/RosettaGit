@@ -8,6 +8,36 @@ id = 10052
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "arm_assembly",
+  "autohotkey",
+  "axe",
+  "basic",
+  "bbc_basic",
+  "befunge",
+  "c",
+  "csharp",
+  "forth",
+  "go",
+  "julia",
+  "kotlin",
+  "lasso",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

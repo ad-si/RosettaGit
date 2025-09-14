@@ -8,6 +8,37 @@ id = 16497
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "cpp",
+  "d",
+  "elena",
+  "elixir",
+  "fortran",
+  "freebasic",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+  "vba",
+]
 +++
 
 This is an algorithm used to thin a black and white i.e. one bit per pixel images.

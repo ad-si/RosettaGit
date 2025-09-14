@@ -8,6 +8,34 @@ id = 4028
 [taxonomies]
 categories = ["Encyclopedia", "task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "cpp",
+  "erlang",
+  "fortran",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "oforth",
+  "oorexx",
+  "oxygenbasic",
+  "pari_gp",
+  "pascal",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "rust",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

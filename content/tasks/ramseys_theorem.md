@@ -8,6 +8,33 @@ id = 11157
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "awk",
+  "c",
+  "d",
+  "elixir",
+  "erlang",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "kotlin",
+  "mathematica",
+  "mathprog",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

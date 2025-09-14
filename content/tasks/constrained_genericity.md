@@ -8,6 +8,41 @@ id = 3211
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []
+languages = [
+  "ada",
+  "common_lisp",
+  "cpp",
+  "crystal",
+  "csharp",
+  "d",
+  "e",
+  "eiffel",
+  "forth",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "morfa",
+  "nemerle",
+  "nim",
+  "objeck",
+  "ocaml",
+  "oorexx",
+  "oxygenbasic",
+  "perl_6",
+  "picolisp",
+  "racket",
+  "ruby",
+  "rust",
+  "sather",
+  "scala",
+  "sidef",
+  "swift",
+  "zkl",
+]
 +++
 
 ## Task

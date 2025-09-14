@@ -8,6 +8,23 @@ id = 21587
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "clojure",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 '''Ordinal numbers'''   (as used in this Rosetta Code task),   are numbers that describe the   ''position''   of something in a list.

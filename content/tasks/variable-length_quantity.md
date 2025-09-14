@@ -8,6 +8,43 @@ id = 8488
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []
+languages = [
+  "ada",
+  "ansi_standard_basic",
+  "bracmat",
+  "c",
+  "csharp",
+  "d",
+  "erlang",
+  "euphoria",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "livecode",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "txr",
+  "zkl",
+]
 +++
 
 Implement some operations on [[wp:Variable-length quantity|variable-length quantities]], at least including conversions from a normal number in the language to the binary representation of the variable-length quantity for that number, and ''vice versa''. Any variants are acceptable.

@@ -8,6 +8,15 @@ id = 9748
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "bbc_basic",
+  "go",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "tcl",
+]
 +++
 
 The task is to create 1 point wide colour vertical pinstripes with a sufficient number of pinstripes to span the entire width of the colour graphics printer. The pinstripes should alternate between each individual cartridge ink and ink pair and black and white pinstripes should be included. A typical pinstripe sequence woud be black, red, green, blue, magenta, cyan, yellow, white.

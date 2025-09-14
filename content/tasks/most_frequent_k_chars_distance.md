@@ -8,6 +8,22 @@ id = 17441
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ring",
+  "sidef",
+  "tcl",
+]
 +++
 
 In [[wp:information theory|information theory]], the '''MostFreqKDistance''' is a [[wp:String metric|string metric]] for quickly estimating how [[wp:Similarity measure|similar]] two [[wp:Order theory|ordered sets]] or [[wp:String (computer science)|strings]] are. The scheme was invented by Sadi Evren SEKER,<ref name="mfkc"/> and initially used in [[wp:text mining|text mining]] applications like [[wp:author recognition|author recognition]].<ref name="mfkc">{{citation

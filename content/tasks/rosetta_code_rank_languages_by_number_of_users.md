@@ -8,6 +8,15 @@ id = 21688
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "stata",
+  "zkl",
+]
 +++
 
 {{draft task}}[[Category:Text processing]][[Category:Networking and Web Interaction]][[Category:Sorting]][[Category:Rosetta Code related]]

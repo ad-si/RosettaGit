@@ -8,6 +8,15 @@ id = 21792
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "kotlin",
+  "phix",
+  "rexx",
+  "ring",
+  "zkl",
+]
 +++
 
 Create Spoof game. See details: [https://en.wikipedia.org/wiki/Spoof_(game) Spoof game]

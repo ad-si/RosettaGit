@@ -8,6 +8,12 @@ id = 18440
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "java",
+  "javascript",
+  "python",
+]
 +++
 
 To:

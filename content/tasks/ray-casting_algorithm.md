@@ -8,6 +8,44 @@ id = 4235
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []
+languages = [
+  "ada",
+  "ansi_standard_basic",
+  "autohotkey",
+  "c",
+  "coffeescript",
+  "common_lisp",
+  "cpp",
+  "d",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "rust",
+  "scala",
+  "smalltalk",
+  "tcl",
+  "ursala",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

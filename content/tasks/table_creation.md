@@ -8,6 +8,35 @@ id = 1553
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "funl",
+  "go",
+  "j",
+  "julia",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "oracle",
+  "oz",
+  "pari_gp",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "postgresql",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "sql_pl",
+  "tcl",
+]
 +++
 
 ## Task

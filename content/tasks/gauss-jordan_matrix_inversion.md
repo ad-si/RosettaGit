@@ -8,6 +8,22 @@ id = 21753
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "racket",
+  "rexx",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 Gauss-Jordan matrix inversion

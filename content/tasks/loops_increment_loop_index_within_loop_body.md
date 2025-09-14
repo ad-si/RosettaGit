@@ -8,6 +8,42 @@ id = 21733
 [taxonomies]
 categories = ["task", "iterations"]
 tags = []
+languages = [
+  "360_assembly",
+  "algol_68",
+  "arm_assembly",
+  "arturo",
+  "c",
+  "cpp",
+  "csharp",
+  "dyalect",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "maple",
+  "microsoft_small_basic",
+  "newlisp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "scala",
+  "seed7",
+  "tcl",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Sometimes, one may need   (or want)   a loop which

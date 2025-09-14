@@ -8,6 +8,34 @@ id = 18481
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "algol_w",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "fortran",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lingo",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "tcl",
+]
 +++
 
 For the purposes of this task, the actual memory layout or access method of this data structure is not mandated. It is enough to:

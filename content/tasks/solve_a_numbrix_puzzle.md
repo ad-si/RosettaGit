@@ -8,6 +8,28 @@ id = 17656
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "systemverilog",
+  "tcl",
+  "zkl",
+]
 +++
 
 Numbrix puzzles are similar to [[Solve a Hidato puzzle|Hidato]].

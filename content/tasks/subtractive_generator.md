@@ -8,6 +8,46 @@ id = 10198
 [taxonomies]
 categories = ["task", "Randomness"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "dc",
+  "elixir",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "ocaml",
+  "oorexx",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "seed7",
+  "sidef",
+  "tcl",
+  "ubasic_4th",
+  "zkl",
+]
 +++
 
 ## Task

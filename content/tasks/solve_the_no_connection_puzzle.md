@@ -8,6 +8,40 @@ id = 18017
 [taxonomies]
 categories = ["task", "Puzzles"]
 tags = []
+languages = [
+  "ada",
+  "apl",
+  "arm_assembly",
+  "autohotkey",
+  "chapel",
+  "d",
+  "elixir",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picat",
+  "prolog",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "xpl0",
+  "zkl",
+]
 +++
 
 You are given a box with eight holes labelled   A-<small>to</small>-H,   connected by fifteen straight lines in the pattern as shown below:

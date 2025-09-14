@@ -8,6 +8,44 @@ id = 2209
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "ceylon",
+  "clean",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "dart",
+  "e",
+  "fortran",
+  "go",
+  "go_2",
+  "groovy",
+  "haskell",
+  "inform_7",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mercury",
+  "nim",
+  "ocaml",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "racket",
+  "rexx",
+  "rust",
+  "scala",
+  "seed7",
+  "standard_ml",
+  "swift",
+  "ursala",
+  "visual_basic_dotnet",
+  "visual_prolog",
+]
 +++
 
 [[wp:Parametric Polymorphism|Parametric Polymorphism]] is a way to define types or functions that are generic over other types. The genericity can be expressed by using ''type variables'' for the parameter type, and by a mechanism to explicitly or implicitly replace the type variables with concrete types when necessary.

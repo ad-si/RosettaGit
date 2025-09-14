@@ -8,6 +8,17 @@ id = 22048
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "julia",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "zkl",
+]
 +++
 
 This task is about expressing numbers with an attached (abutted) suffix multiplier(s),   the suffix(es) could be:

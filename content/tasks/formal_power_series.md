@@ -8,6 +8,35 @@ id = 2783
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "clojure",
+  "common_lisp",
+  "d",
+  "echolisp",
+  "elisa",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "maxima",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "scheme",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

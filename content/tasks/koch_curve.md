@@ -8,6 +8,28 @@ id = 21785
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "basic256",
+  "c",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "qbasic",
+  "racket",
+  "ring",
+  "sidef",
+  "zkl",
+]
 +++
 
 Draw a Koch curve. See details: [https://en.wikipedia.org/wiki/Koch_snowflake Koch curve]

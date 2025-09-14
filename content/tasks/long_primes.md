@@ -8,6 +8,27 @@ id = 21940
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "factor",
+  "freebasic",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 A   '''long prime'''   (the definition that will be used

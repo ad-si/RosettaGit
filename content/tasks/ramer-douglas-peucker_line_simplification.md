@@ -8,6 +8,28 @@ id = 21223
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "yabasic",
+  "zkl",
+]
 +++
 
 The   '''Ramer–Douglas–Peucker'''   algorithm is a line simplification algorithm for reducing the number of points used to define its shape.

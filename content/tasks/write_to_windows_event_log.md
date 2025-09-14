@@ -8,6 +8,36 @@ id = 7181
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "awk",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "cpp",
+  "csharp",
+  "d",
+  "delphi",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "perl",
+  "phix",
+  "picolisp",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "vbscript",
+  "zkl",
+]
 +++
 
 ## Task

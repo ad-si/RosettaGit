@@ -8,6 +8,33 @@ id = 10410
 [taxonomies]
 categories = ["task", "Puzzles"]
 tags = []
+languages = [
+  "bracmat",
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "livecode",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

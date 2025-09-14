@@ -8,6 +8,21 @@ id = 22446
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "factor",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "lychen",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "zkl",
+]
 +++
 
 On a set of coasters we have, there's a picture of a teacup. On the rim of the teacup the word "TEA" appears a number of times separated by bullet characters. It occurred to me that if the bullet were removed and the words run together, you could start at any letter and still end up with a meaningful three-letter word. So start at the "T" and read "TEA". Start at the "E" and read "EAT", or start at the "A" and read "ATE".

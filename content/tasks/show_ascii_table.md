@@ -8,6 +8,46 @@ id = 21946
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "algol_w",
+  "applescript",
+  "awk",
+  "c",
+  "common_lisp",
+  "csharp",
+  "factor",
+  "forth",
+  "free_pascal",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "jsish",
+  "julia",
+  "kotlin",
+  "langur",
+  "lua",
+  "miniscript",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "seed7",
+  "spin",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

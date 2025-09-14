@@ -8,6 +8,48 @@ id = 17594
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "befunge",
+  "c",
+  "clojure",
+  "cpp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "objeck",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 '''[[wp:Chess960|Chess960]]''' is a variant of chess created by world champion [[wp:Bobby Fischer|Bobby Fischer]].  Unlike other variants of the game, Chess960 does not require a different material, but instead relies on a random initial position, with a few constraints:

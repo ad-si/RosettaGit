@@ -8,6 +8,42 @@ id = 10705
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "coffeescript",
+  "common_lisp",
+  "cpp",
+  "d",
+  "elena",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 This is a method of randomly sampling n items from a set of M items, with equal probability; where M >= n and M, the number of items is unknown until the end.

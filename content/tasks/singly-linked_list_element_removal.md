@@ -8,6 +8,20 @@ id = 21176
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "algol_w",
+  "c",
+  "csharp",
+  "fortran",
+  "go",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "racket",
+  "visual_basic_dotnet",
+]
 +++
 
 ## Task

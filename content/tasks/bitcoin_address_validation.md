@@ -8,6 +8,37 @@ id = 12631
 [taxonomies]
 categories = ["Checksums", "task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "csharp",
+  "d",
+  "delphi",
+  "erlang",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "tcl",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 ## Task

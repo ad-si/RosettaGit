@@ -8,6 +8,40 @@ id = 21875
 [taxonomies]
 categories = ["task", "Spinning rod animation/Text"]
 tags = []
+languages = [
+  "awk",
+  "bash",
+  "c",
+  "c_shell",
+  "emacs_lisp",
+  "factor",
+  "forth",
+  "freebasic",
+  "glovepie",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "microsoft_small_basic",
+  "miniscript",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "wee_basic",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

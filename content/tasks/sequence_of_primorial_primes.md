@@ -8,6 +8,31 @@ id = 19255
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "clojure",
+  "echolisp",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "ring",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 The sequence of primorial primes is given as the increasing values of n where [[Primorial numbers|primorial]](n) ± 1 is prime.

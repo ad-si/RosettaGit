@@ -8,6 +8,46 @@ id = 17509
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "11l",
+  "ada",
+  "algol_68",
+  "algol_w",
+  "awk",
+  "bracmat",
+  "c",
+  "common_lisp",
+  "component_pascal",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "nim",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The [[wp:Multiplicative digital root|multiplicative digital root]] (MDR) and multiplicative persistence (MP) of a number, <math>n</math>, is calculated rather like the [[Digital root]] except digits are multiplied instead of being added:

@@ -8,6 +8,38 @@ id = 10250
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "awk",
+  "bracmat",
+  "c",
+  "clojure",
+  "d",
+  "elixir",
+  "freebasic",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "standard_ml",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[Command-line arguments]] can be quite complicated, as in:

@@ -8,6 +8,21 @@ id = 21308
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+  "sidef",
+]
 +++
 
 Imaginary base numbers are a non-standard positional numeral system which uses an imaginary number as its radix. The most common is quater-imaginary with radix 2i.

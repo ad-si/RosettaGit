@@ -8,6 +8,36 @@ id = 21272
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "bacon",
+  "c",
+  "common_lisp",
+  "csharp",
+  "free_pascal",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 Every connected device around the world comes with a unique Media Access Control address, or a  [https://en.wikipedia.org/wiki/MAC_address MAC address]. A common task a network administrator may come across is being able to identify a network device's manufacturer when given only a MAC address.

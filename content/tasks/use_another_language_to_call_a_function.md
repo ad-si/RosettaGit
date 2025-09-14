@@ -8,6 +8,36 @@ id = 4712
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "cobol",
+  "cpp",
+  "d",
+  "delphi",
+  "go",
+  "haskell",
+  "haxe",
+  "j",
+  "java",
+  "kotlin",
+  "lisaac",
+  "mercury",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "pascal",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "tcl",
+  "txr",
+  "zkl",
+]
 +++
 
 ## Task

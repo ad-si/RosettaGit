@@ -8,6 +8,31 @@ id = 19182
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "fortran",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "octave",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "racket",
+  "ruby",
+  "sas",
+  "scala",
+  "scilab",
+  "sidef",
+  "stata",
+  "tcl",
+  "zkl",
+]
 +++
 
 Given two lists of data, calculate the [[wp:p-value|p-value]] used for [[wp:Welch's_t_test|Welch's t-test]]. This is meant to translate R's <code>t.test(vector1, vector2, alternative="two.sided", var.equal=FALSE)</code> for calculation of the p-value.

@@ -8,6 +8,38 @@ id = 21332
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "common_lisp",
+  "d",
+  "elena",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "racket",
+  "scala",
+  "seed7",
+  "sidef",
+  "swift",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 As described in [[UTF-8]] and in [[wp:UTF-8|Wikipedia]], UTF-8 is a popular encoding of (multi-byte) [[Unicode]] code-points into eight-bit octets.

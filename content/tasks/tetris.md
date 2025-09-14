@@ -8,6 +8,16 @@ id = 19734
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ansi94_forth",
+  "applesoft_basic",
+  "bash",
+  "java",
+  "javascript",
+  "julia",
+  "mathematica",
+  "microsoft_small_basic",
+]
 +++
 
 ## Task

@@ -8,6 +8,31 @@ id = 22038
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "scala",
+  "sidef",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Albert and Bernard just became friends with Cheryl, and they want to know when her birthday is.

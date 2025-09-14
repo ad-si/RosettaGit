@@ -8,6 +8,30 @@ id = 19207
 [taxonomies]
 categories = ["task", "geometry"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "rust",
+  "scala",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

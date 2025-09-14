@@ -8,6 +8,9 @@ id = 18764
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+]
 +++
 
 Suffix Trees are very useful in numerous string processing and computational biology problems.

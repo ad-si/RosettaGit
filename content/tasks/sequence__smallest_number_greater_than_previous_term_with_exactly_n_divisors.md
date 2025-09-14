@@ -8,6 +8,29 @@ id = 22259
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "cpp",
+  "dyalect",
+  "factor",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 <!--  This Rosetta Code task previously was named   Anti-prime Plus

@@ -8,6 +8,20 @@ id = 20022
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "echolisp",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "jsish",
+  "julia",
+  "kotlin",
+  "zkl",
+]
 +++
 
 The Writer monad is a programming design pattern which makes it possible to compose functions which return their result values paired with a log string. The final result of a composed function yields both a value, and a concatenation of the logs from each component function application.

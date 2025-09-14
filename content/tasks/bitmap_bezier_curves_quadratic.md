@@ -8,6 +8,35 @@ id = 3213
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "d",
+  "factor",
+  "fbsl",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "matlab",
+  "ocaml",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "ruby",
+  "tcl",
+  "vedit_macro_language",
+  "xpl0",
+  "zkl",
+]
 +++
 
 ## Task

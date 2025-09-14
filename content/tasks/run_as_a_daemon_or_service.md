@@ -8,6 +8,17 @@ id = 10877
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "pari_gp",
+  "perl_6",
+  "picolisp",
+  "pike",
+  "racket",
+  "sidef",
+  "tcl",
+]
 +++
 
 A [[wp:Daemon_(computing)|daemon]] is a service that runs in the background independent of a users login session.

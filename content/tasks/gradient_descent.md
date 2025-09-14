@@ -8,6 +8,13 @@ id = 22397
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "phix",
+  "racket",
+  "typescript",
+]
 +++
 
 Gradient descent (also known as steepest descent) is a first-order iterative optimization algorithm for finding the minimum of a function which is described in [https://en.wikipedia.org/wiki/Gradient_descent this Wikipedia article].

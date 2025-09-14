@@ -8,6 +8,43 @@ id = 20208
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "basic",
+  "c",
+  "cobol",
+  "cpp",
+  "crystal",
+  "csharp",
+  "easylang",
+  "elixir",
+  "fsharp",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "processing",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "sinclair_zx81_basic",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

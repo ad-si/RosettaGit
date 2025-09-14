@@ -8,6 +8,30 @@ id = 20432
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "ceylon",
+  "common_lisp",
+  "cpp",
+  "freebasic",
+  "go",
+  "gosu",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "ol",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ring",
+  "scala",
+  "sidef",
+]
 +++
 
 The [[wp:Plasma_effect|plasma effect]] is a visual effect created by applying various functions, notably sine and cosine, to the color values of screen pixels. When animated (not a task requirement) the effect may give the impression of a colorful flowing liquid.

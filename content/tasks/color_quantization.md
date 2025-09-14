@@ -8,6 +8,25 @@ id = 10293
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []
+languages = [
+  "c",
+  "common_lisp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "racket",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

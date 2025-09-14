@@ -8,6 +8,17 @@ id = 20682
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "phix",
+  "related_tasks",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 A [[wp:Pentomino|pentomino]] is a polyomino that consists of 5 squares. There are 12 pentomino shapes,

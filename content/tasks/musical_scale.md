@@ -8,6 +8,41 @@ id = 13149
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "basic256",
+  "befunge",
+  "c",
+  "clojure",
+  "cpp",
+  "easylang",
+  "forth",
+  "go",
+  "j",
+  "kotlin",
+  "lilypond",
+  "locomotive_basic",
+  "m2000_interpreter",
+  "mathematica",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "pure_data",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "sparkling",
+  "tcl",
+  "ursa",
+  "vba",
+  "xpl0",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

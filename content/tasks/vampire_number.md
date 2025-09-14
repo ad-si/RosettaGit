@@ -8,6 +8,43 @@ id = 13146
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "autohotkey",
+  "bracmat",
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "eiffel",
+  "elixir",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 A [[wp:Vampire_number|vampire number]] is a natural number with an even number of digits, that can be factored into two integers. These two factors are called the ''fangs'', and must have the following properties:

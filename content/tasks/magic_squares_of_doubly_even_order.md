@@ -8,6 +8,43 @@ id = 20582
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "applescript",
+  "awk",
+  "befunge",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elena",
+  "elixir",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "vbscript",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 A [[wp:Magic_square|magic square]] is an '''NxN''' square matrix whose numbers consist of consecutive numbers arranged so that the sum of each row and column, ''and'' both diagonals are equal to the same sum (which is called the ''magic number'' or ''magic constant'').

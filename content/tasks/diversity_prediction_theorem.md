@@ -8,6 +8,26 @@ id = 21206
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "c",
+  "clojure",
+  "cpp",
+  "csharp",
+  "go",
+  "javascript",
+  "jsish",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "typescript",
+  "zkl",
+]
 +++
 
 The wisdom of the crowd is the collective opinion of a group of individuals rather than that of a single expert.

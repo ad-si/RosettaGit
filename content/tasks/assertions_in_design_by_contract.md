@@ -8,6 +8,25 @@ id = 17864
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_w",
+  "d",
+  "eiffel",
+  "fortran",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 According to   [[wp:Assertion_(software_development)#Assertions_in_design_by_contract|Wikipedia]];   assertions can function as a form of documentation:   they can describe the state the code expects to find before it runs (its preconditions), and the state the code expects to result in when it is finished running (postconditions);   they can also specify invariants of a class.

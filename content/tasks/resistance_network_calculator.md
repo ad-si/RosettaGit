@@ -8,6 +8,15 @@ id = 22235
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "zkl",
+]
 +++
 
 ;Introduction

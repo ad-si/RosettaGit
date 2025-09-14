@@ -8,6 +8,19 @@ id = 22496
 [taxonomies]
 categories = ["task", "Prime numbers"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "julia",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "related_tasks",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 '''n-smooth'''   numbers are positive integers which have no prime factors <big> &gt; </big> '''n'''.

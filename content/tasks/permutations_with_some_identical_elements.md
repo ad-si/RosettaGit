@@ -8,6 +8,21 @@ id = 22435
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "dart",
+  "factor",
+  "go",
+  "julia",
+  "minizinc",
+  "perl",
+  "perl_6",
+  "phix",
+  "related_tasks",
+  "rexx",
+  "sidef",
+  "tailspin",
+  "zkl",
+]
 +++
 
 Sometimes you want to find all permutations of elements where some elements are repeated, e.g. you have 3 red balls, 2 blue balls and one black ball. 

@@ -8,6 +8,30 @@ id = 21230
 [taxonomies]
 categories = ["Digital signal processing", "task"]
 tags = []
+languages = [
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "matlab",
+  "objeck",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "rust",
+  "scala",
+  "sidef",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task

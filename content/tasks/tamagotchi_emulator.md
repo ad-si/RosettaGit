@@ -8,6 +8,11 @@ id = 19799
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "echolisp",
+  "forth",
+  "objeck",
+]
 +++
 
 If you don't know what Tamagotchi is, take a look at the [[wp:Tamagotchi|Wikipedia]] page about it.

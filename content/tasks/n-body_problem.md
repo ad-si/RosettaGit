@@ -8,6 +8,27 @@ id = 17519
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "fortran",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "k",
+  "kotlin",
+  "octave",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "swift",
+  "tcl",
+]
 +++
 
 The [[wp:N-body problem|<math>N</math>-body problem]] is an inherent feature of a physical description of mechanical system of <math>N</math> interacting objects.

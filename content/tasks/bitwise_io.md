@@ -8,6 +8,42 @@ id = 3266
 [taxonomies]
 categories = ["Bitwise operations", "task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "csharp",
+  "d",
+  "erlang",
+  "forth",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "lingo",
+  "mips_assembly",
+  "nibble_in_nibble_void",
+  "nibble_nibble_void",
+  "nim",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "seed7",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

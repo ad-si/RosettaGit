@@ -8,6 +8,14 @@ id = 22586
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "change_from_a_nest_tree_datastructure_to_an_indent_one",
+  "change_from_an_indent_tree_datastructure_to_a_nest_one",
+  "go",
+  "perl_6",
+  "python",
+  "zkl",
+]
 +++
 
 The following shows a tree of data with nesting denoted by visual levels of indentation:

@@ -8,6 +8,27 @@ id = 19668
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "matlab",
+  "perl",
+  "perl_6",
+  "python",
+  "racket",
+  "scala",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 Produce a graphical or ASCII-art representation of a [[wp:N-flake#Pentaflake|Sierpinski pentagon]] (aka a Pentaflake) of order 5. Your code should also be able to correctly generate representations of lower orders: 1 to 4.

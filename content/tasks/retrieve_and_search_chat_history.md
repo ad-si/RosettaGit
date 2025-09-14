@@ -8,6 +8,21 @@ id = 21365
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "c",
+  "elixir",
+  "go",
+  "julia",
+  "mathematica",
+  "perl_6",
+  "phix",
+  "racket",
+  "ruby",
+  "scala",
+  "smalltalk",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

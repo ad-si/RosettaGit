@@ -8,6 +8,36 @@ id = 22212
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "cpp",
+  "d",
+  "dyalect",
+  "easylang",
+  "factor",
+  "freebasic",
+  "go",
+  "groovy",
+  "j",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powerbasic",
+  "python",
+  "related_tasks",
+  "rexx",
+  "scala",
+  "visual_basic",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Chowla numbers are also known as:

@@ -8,6 +8,15 @@ id = 9890
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "j",
+  "java",
+  "phix",
+  "racket",
+  "rexx",
+]
 +++
 
 '''Task Requirements'''

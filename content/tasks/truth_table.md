@@ -8,6 +8,37 @@ id = 10744
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "mathematica",
+  "maxima",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+]
 +++
 
 A [[wp:Truth table|truth table]] is a display of the inputs to, and the output of a Boolean function organized as a table where each row gives one combination of input values and the corresponding value of the function.

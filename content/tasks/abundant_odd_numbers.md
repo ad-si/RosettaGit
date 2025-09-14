@@ -8,6 +8,40 @@ id = 22324
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "basic256",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,46 @@ id = 20435
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "2_no_title_in_this_version",
+  "3_primarily_range_is_changed",
+  "animation_for_nice_figures_ps8_ps14",
+  "animation_for_polyspirals_ps0_ps6",
+  "c",
+  "ceylon",
+  "continue_plotting_starting_with_a_range_rng_110_to_400_step_10_to_discover_new_figures",
+  "cpp",
+  "csharp",
+  "direction_d_1_clockwise_1_counter_clockwise",
+  "end",
+  "gnuplot",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "no_ttl_title_in_this_version",
+  "pari_gp",
+  "perl_6",
+  "phix",
+  "plotpoly_gp_1_10_17_aev",
+  "plotpolya_gp_1_19_17_aev",
+  "plotting_a_polyspiral_and_writing_to_the_png_file",
+  "plotting_a_polyspiral_and_writing_to_the_png_file_simple_plot_for_animation",
+  "plotting_many_polyspiral_and_other_pictures_for_animation",
+  "plotting_many_polyspiral_pictures",
+  "pspirals4a_gp_1_19_17_aev",
+  "pspirals_gp_1_10_17_aev",
+  "python",
+  "racket",
+  "ring",
+  "scala",
+  "spl",
+  "zkl",
+]
 +++
 
 A [http://www.otherwise.com/Jurtle/screenshots_win/assets/DisplayWindow_Full.png Polyspiral] is a spiral made of multiple line segments, whereby each segment is larger (or smaller) than the previous one by a given amount. Each segment also changes direction at a given angle.

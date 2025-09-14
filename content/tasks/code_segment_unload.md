@@ -8,6 +8,24 @@ id = 12959
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "basic",
+  "cobol",
+  "io",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "smalltalk",
+  "tcl",
+]
 +++
 
 {{draft task}}[[Category:Initialization]][[Category:Memory management]]

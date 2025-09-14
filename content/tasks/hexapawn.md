@@ -8,6 +8,13 @@ id = 19227
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "javascript",
+  "julia",
+  "pascal",
+  "phix",
+]
 +++
 
 {{draft task|Games}}Implement Martin Gardner’s game [http://en.wikipedia.org/wiki/Hexapawn Hexapawn] so that one can play against the computer.

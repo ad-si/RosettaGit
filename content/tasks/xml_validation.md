@@ -8,6 +8,20 @@ id = 18190
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "go",
+  "groovy",
+  "java",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "python",
+  "scala",
+  "sidef",
+  "visual_basic_dotnet",
+]
 +++
 
 Given an XML document and an XSD schema definition validate that the document follows the schema described.

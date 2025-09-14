@@ -8,6 +8,15 @@ id = 18243
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "racket",
+  "tcl",
+]
 +++
 
 {{draft task}} [[Category:Encryption]] [[Category:File_handling]]

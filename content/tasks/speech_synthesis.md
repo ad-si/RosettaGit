@@ -8,6 +8,46 @@ id = 9468
 [taxonomies]
 categories = ["task", "Temporal media"]
 tags = []
+languages = [
+  "autohotkey",
+  "autoit",
+  "basic256",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "csharp",
+  "glovepie",
+  "go",
+  "groovy",
+  "haskell",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "locomotive_basic",
+  "m2000_interpreter",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "unix_shell",
+  "vbscript",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

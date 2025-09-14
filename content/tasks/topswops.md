@@ -8,6 +8,45 @@ id = 12627
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "autohotkey",
+  "c",
+  "cpp",
+  "d",
+  "eiffel",
+  "elixir",
+  "erlang",
+  "factor",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "potion",
+  "python",
+  "r",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "xpl0",
+  "zkl",
+]
 +++
 
 Topswops is a card game created by John Conway in the 1970's.

@@ -8,6 +8,41 @@ id = 15108
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "clojure",
+  "cpp",
+  "d",
+  "elixir",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "matlab",
+  "miniscript",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "python",
+  "qb64",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "swift",
+  "tcl",
+]
 +++
 
 ;The game:

@@ -8,6 +8,21 @@ id = 2438
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []
+languages = [
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "d",
+  "erlang",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "phix",
+  "python",
+  "ruby",
+  "tcl",
+]
 +++
 
 ## Task

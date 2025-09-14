@@ -8,6 +8,41 @@ id = 1931
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "bbc_basic",
+  "c",
+  "csharp",
+  "d",
+  "e",
+  "echolisp",
+  "erlang",
+  "euphoria",
+  "go",
+  "groovy",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "logtalk",
+  "oforth",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "raven",
+  "ruby",
+  "scala",
+  "tcl",
+  "unixpipes",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

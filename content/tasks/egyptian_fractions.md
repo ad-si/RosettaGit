@@ -8,6 +8,34 @@ id = 17475
 [taxonomies]
 categories = ["Mathematics", "Fractions", "Ancient mathematics", "task"]
 tags = []
+languages = [
+  "common_lisp",
+  "csharp",
+  "d",
+  "erlang",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "microsoft_small_basic",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

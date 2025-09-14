@@ -8,6 +8,18 @@ id = 22055
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "vba",
+  "zkl",
+]
 +++
 
 '''Suffixation''':   a letter or a group of letters added to the end of a word to change its meaning.

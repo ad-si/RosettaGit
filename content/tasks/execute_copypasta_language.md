@@ -8,6 +8,10 @@ id = 22561
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "zkl",
+]
 +++
 
 ## Task

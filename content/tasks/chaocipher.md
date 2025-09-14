@@ -8,6 +8,28 @@ id = 21806
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "arc",
+  "c",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "kotlin",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "ruby",
+  "rust",
+  "tailspin",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 '''Description'''

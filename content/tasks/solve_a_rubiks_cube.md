@@ -8,6 +8,11 @@ id = 21285
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "kotlin",
+  "phix",
+]
 +++
 
 Create a program that is capable of solving a Rubik's Cube as efficiently as possible.

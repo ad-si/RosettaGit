@@ -8,6 +8,23 @@ id = 15850
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "echolisp",
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "tcl",
+  "zkl",
+]
 +++
 
 Let <math>c</math> be a 2D boolean square matrix of <math>n \times n</math> values of either <tt>1</tt> or <tt>0</tt> where the

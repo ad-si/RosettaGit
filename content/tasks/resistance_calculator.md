@@ -8,6 +8,16 @@ id = 22219
 [taxonomies]
 categories = ["Electronics", "Physics", "Calculators", "task"]
 tags = []
+languages = [
+  "coffeescript",
+  "go",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,29 @@ id = 9054
 [taxonomies]
 categories = ["task", "Sound"]
 tags = []
+languages = [
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "chuck",
+  "common_lisp",
+  "cpp",
+  "go",
+  "guiss",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "livecode",
+  "mathematica",
+  "nim",
+  "ocaml",
+  "picolisp",
+  "python",
+  "racket",
+  "scala",
+  "tcl",
+  "wee_basic",
+]
 +++
 
 ## Task

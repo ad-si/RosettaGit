@@ -8,6 +8,48 @@ id = 20019
 [taxonomies]
 categories = ["String metrics", "String manipulation", "task"]
 tags = []
+languages = [
+  "arm_assembly",
+  "awk",
+  "c",
+  "clojure",
+  "cobol",
+  "coffeescript",
+  "cpp",
+  "crystal",
+  "d",
+  "elixir",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "haxe",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "objeck",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "stata",
+  "swift",
+  "tcl",
+  "vba",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

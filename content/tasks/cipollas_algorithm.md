@@ -8,6 +8,28 @@ id = 20672
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "d",
+  "echolisp",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "sage",
+  "scala",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 '''Cipolla's algorithm'''

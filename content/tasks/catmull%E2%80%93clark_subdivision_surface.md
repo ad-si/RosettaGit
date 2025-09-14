@@ -8,6 +8,23 @@ id = 5279
 [taxonomies]
 categories = ["task", "3D"]
 tags = []
+languages = [
+  "c",
+  "calculate_the_average_between_these_points_on_the_hole_boundary_and_the_old_coordinates_also_on_the_hole_boundary",
+  "go",
+  "haskell",
+  "how_many_faces_a_point_belongs_to_tt_n_tt_then_use_this_formula",
+  "in_all_the_edges_the_point_belongs_to_only_take_in_account_the_middles_of_the_edges_that_are_on_the_border_of_the_hole",
+  "j",
+  "julia",
+  "mathematica",
+  "ocaml",
+  "python",
+  "tcl",
+  "the_average_of_the_centers_of_edges_the_point_belongs_to_tt_avg_mid_edges_tt",
+  "the_average_of_the_face_points_of_the_faces_the_point_belongs_to_tt_avg_face_points_tt",
+  "the_old_coordinates_tt_old_coords_tt",
+]
 +++
 
 ## Task

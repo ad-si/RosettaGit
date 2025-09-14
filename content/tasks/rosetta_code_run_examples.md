@@ -8,6 +8,17 @@ id = 10925
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "figure_out_which_tasks_to_run",
+  "initialization",
+  "liberty_basic",
+  "main_loop",
+  "perl_6",
+  "run_basic",
+  "subroutines",
+  "tcl",
+  "unix_shell",
+]
 +++
 
 This task is based on an idea hatched from this [[C1R Implementation]].

@@ -8,6 +8,30 @@ id = 21990
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []
+languages = [
+  "algol_60",
+  "algol_68",
+  "algol_w",
+  "c",
+  "factor",
+  "go",
+  "groovy",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "purebasic",
+  "python",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Some languages allow multiple '''loop''' ranges, such as the '''PL/I''' example (snippet) below.

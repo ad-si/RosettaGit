@@ -8,6 +8,42 @@ id = 16816
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "ursa",
+  "zkl",
+]
 +++
 
 From lines of input starting with a line containing the numbers of pairs to follows, followed by that number of pairs of integers separated by a space on separate lines from STDIN, output the sum of each pair to STDOUT.

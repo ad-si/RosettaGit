@@ -8,6 +8,23 @@ id = 9763
 [taxonomies]
 categories = ["task", "Joystick"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "autohotkey",
+  "bbc_basic",
+  "go",
+  "guiss",
+  "haskell",
+  "julia",
+  "liberty_basic",
+  "locomotive_basic",
+  "mathematica",
+  "ocaml",
+  "picolisp",
+  "purebasic",
+  "python",
+  "tcl",
+]
 +++
 
 ## Task

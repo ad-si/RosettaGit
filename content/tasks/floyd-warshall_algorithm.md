@@ -8,6 +8,39 @@ id = 19642
 [taxonomies]
 categories = ["task", "Routing algorithms"]
 tags = []
+languages = [
+  "360_assembly",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "elixir",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sequencel",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 The [[wp:Floyd–Warshall_algorithm|Floyd–Warshall algorithm]] is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights.

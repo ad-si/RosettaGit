@@ -8,6 +8,12 @@ id = 12909
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "kotlin",
+  "perl_6",
+  "phix",
+]
 +++
 
 Create a routine to obtain data entry using a specific place on the terminal screen. Data entry fields should be restricted to a specific length, and it should not be possible for the cursor to move beyond the input length.

@@ -8,6 +8,21 @@ id = 21137
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_w",
+  "awk",
+  "c",
+  "cobol",
+  "forth",
+  "go",
+  "java",
+  "julia",
+  "m2000_interpreter",
+  "perl",
+  "phix",
+  "python",
+  "scheme",
+]
 +++
 
 ## Task

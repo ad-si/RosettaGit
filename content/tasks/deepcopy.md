@@ -8,6 +8,38 @@ id = 10109
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aime",
+  "autohotkey",
+  "babel",
+  "c",
+  "common_lisp",
+  "csharp",
+  "e",
+  "erlang",
+  "go",
+  "j",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lingo",
+  "lua",
+  "nim",
+  "ocaml",
+  "pari_gp",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scheme",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

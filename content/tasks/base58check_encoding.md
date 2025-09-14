@@ -8,6 +8,29 @@ id = 21517
 [taxonomies]
 categories = ["Encodings", "Checksums", "task"]
 tags = []
+languages = [
+  "csharp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

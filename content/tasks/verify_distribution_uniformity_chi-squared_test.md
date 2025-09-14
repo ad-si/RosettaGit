@@ -8,6 +8,35 @@ id = 4688
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "d",
+  "elixir",
+  "fortran",
+  "go",
+  "hy",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,19 @@ id = 22469
 [taxonomies]
 categories = ["Mathematics", "Number theory", "Divisors", "task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 ## Task

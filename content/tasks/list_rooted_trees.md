@@ -8,6 +8,24 @@ id = 19103
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "sidef",
+  "zkl",
+]
 +++
 
 You came back from grocery shopping.    After putting away all the goods, you are left with a pile of plastic bags, which you want to save for later use, so you take one bag and stuff all the others into it, and throw it under the sink.   In doing so, you realize that there are various ways of nesting the bags, with all bags viewed as identical.

@@ -8,6 +8,24 @@ id = 13411
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The [[Levenshtein distance]] algorithm returns the number of atomic operations (insertion, deletion or edition) that must be performed on a string in order to obtain an other one, but it does not say anything about the actual operations used or their order.

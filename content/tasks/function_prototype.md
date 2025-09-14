@@ -8,6 +8,42 @@ id = 10110
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "aime",
+  "algol_68",
+  "c",
+  "clojure",
+  "cobol",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "luck",
+  "m2000_interpreter",
+  "nim",
+  "ocaml",
+  "oforth",
+  "ol",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "purebasic",
+  "racket",
+  "rexx",
+  "snobol4",
+  "zkl",
+]
 +++
 
 Some languages provide the facility to declare functions and subroutines through the use of [[wp:Function prototype|function prototyping]].

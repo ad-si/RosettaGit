@@ -8,6 +8,45 @@ id = 8366
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "coffeescript",
+  "common_lisp",
+  "csharp",
+  "d",
+  "freebasic",
+  "fsharp",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "lingo",
+  "mathematica",
+  "nim",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "rpg",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "swift",
+  "tcl",
+  "x86_assembly",
+]
 +++
 
 ## Task

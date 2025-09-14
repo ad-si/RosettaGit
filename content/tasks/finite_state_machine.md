@@ -8,6 +8,25 @@ id = 21572
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "basic",
+  "c",
+  "cpp",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl_6",
+  "phix",
+  "prolog",
+  "racket",
+  "rexx",
+  "sinclair_zx81_basic",
+  "vba",
+  "zkl",
+]
 +++
 
 A [[wp:Finite state machine|Finite state machine]] (FSM) is computational abstraction which maps a finite number of states to other states within the same set, via transitions. An FSM can only be in one state at any given moment. Transitions can either be explicit or implicit; explicit transitions are triggered by an input signal and implicit transitions by the internal state of the system (that is, the current state). Implicit transitions thus represent "automatic" or sequenced states that are generally processed between explicit transitions (although they can also be used to provide an optional path when no valid transition exists for a given input signal).

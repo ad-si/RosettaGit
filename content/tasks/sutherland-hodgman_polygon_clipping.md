@@ -8,6 +8,38 @@ id = 6634
 [taxonomies]
 categories = ["task", "Graphics algorithms"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "ocaml",
+  "phix",
+  "php",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 The   [[wp:Sutherland-Hodgman clipping algorithm|Sutherland-Hodgman clipping algorithm]]   finds the polygon that is the intersection between an arbitrary polygon (the “subject polygon”) and a convex polygon (the “clip polygon”).

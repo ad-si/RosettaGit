@@ -8,6 +8,35 @@ id = 15995
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []
+languages = [
+  "c",
+  "clojure",
+  "cpp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "standard_ml",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

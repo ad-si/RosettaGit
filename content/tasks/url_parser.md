@@ -8,6 +8,36 @@ id = 19432
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "arturo",
+  "csharp",
+  "elixir",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "nim",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "r",
+  "racket",
+  "ruby",
+  "scala",
+  "tcl",
+  "vbscript",
+]
 +++
 
 URLs are strings with a simple syntax:

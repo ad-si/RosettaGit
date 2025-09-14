@@ -8,6 +8,19 @@ id = 22427
 [taxonomies]
 categories = ["geometry", "task"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "factor",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "zkl",
+]
 +++
 
 ## Task

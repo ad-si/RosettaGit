@@ -8,6 +8,48 @@ id = 11690
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "aime",
+  "bracmat",
+  "c",
+  "common_lisp",
+  "csharp",
+  "d",
+  "echolisp",
+  "egison",
+  "ela",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "ocaml",
+  "oorexx",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "txr",
+  "vba",
+  "vbscript",
+  "zkl",
+]
 +++
 
 Given two sets of items then if any item is common to any set then the result of applying ''consolidation'' to those sets is a set of sets whose contents is:

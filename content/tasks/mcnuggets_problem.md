@@ -8,6 +8,44 @@ id = 22042
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "applescript",
+  "awk",
+  "c",
+  "clojure",
+  "dart",
+  "dyalect",
+  "elixir",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "locomotive_basic",
+  "mathematica",
+  "minizinc",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "swift",
+  "tailspin",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 {{task}} From [https://en.wikipedia.org/wiki/Coin_problem#McNugget_numbers Wikipedia]:

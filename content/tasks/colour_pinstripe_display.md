@@ -8,6 +8,39 @@ id = 9749
 [taxonomies]
 categories = ["task", "Test card"]
 tags = []
+languages = [
+  "actionscript",
+  "autohotkey",
+  "bbc_basic",
+  "befunge",
+  "c",
+  "common_lisp",
+  "cpp",
+  "freebasic",
+  "gambas",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "maple",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "ring",
+  "scala",
+  "sidef",
+  "smilebasic",
+  "tcl",
+  "visual_basic_dotnet",
+  "xpl0",
+]
 +++
 
 ## Task

@@ -8,6 +8,23 @@ id = 20016
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "clojure",
+  "echolisp",
+  "factor",
+  "go",
+  "haskell",
+  "hoon",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "racket",
+  "ruby",
+  "zkl",
+]
 +++
 
 Demonstrate in your programming language the following:

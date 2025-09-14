@@ -8,6 +8,42 @@ id = 10505
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "awk",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "common_lisp",
+  "elixir",
+  "funl",
+  "go",
+  "haskell",
+  "jq",
+  "jsish",
+  "julia",
+  "kotlin",
+  "lasso",
+  "m2000_interpreter",
+  "mathematica",
+  "mercury",
+  "nemerle",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "unix_shell",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 The task is to check that the terminal supports Unicode output, before outputting a Unicode character. If the terminal supports Unicode, then the terminal should output a Unicode delta (U+25b3). If the terminal does not support Unicode, then an appropriate error should be raised.

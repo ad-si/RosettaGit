@@ -8,6 +8,47 @@ id = 10707
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "awk",
+  "bbc_basic",
+  "c",
+  "coffeescript",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "euler_math_toolbox",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "nim",
+  "oforth",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "ubasic_4th",
+  "vba",
+  "vbscript",
+  "zkl",
+]
 +++
 
 These two sequences of positive integers are defined as:

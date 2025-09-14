@@ -8,6 +8,21 @@ id = 22565
 [taxonomies]
 categories = ["Data structures", "Mathematics", "task"]
 tags = []
+languages = [
+  "algol_68",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "perl",
+  "perl_6",
+  "python",
+  "rexx",
+  "zkl",
+]
 +++
 
 ## Task

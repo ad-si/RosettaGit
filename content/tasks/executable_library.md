@@ -8,6 +8,36 @@ id = 9371
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "factor",
+  "go",
+  "io",
+  "j",
+  "julia",
+  "limbo",
+  "mathematica",
+  "netrexx",
+  "nim",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pike",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The general idea behind an executable library is to create a library

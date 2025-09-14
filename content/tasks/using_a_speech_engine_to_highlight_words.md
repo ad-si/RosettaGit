@@ -8,6 +8,16 @@ id = 9415
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "go",
+  "m2000_interpreter",
+  "mathematica",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "tcl",
+]
 +++
 
 {{draft task}}[[Category:Speech synthesis]][[Category:Temporal media]]

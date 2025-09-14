@@ -8,6 +8,9 @@ id = 12279
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "perl_6",
+]
 +++
 
 {{draft task}}In this task, the goal is to compile an authorship list for task descriptions. A pseudocode example (in imperative style) that should accomplish this is as follows:

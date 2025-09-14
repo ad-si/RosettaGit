@@ -8,6 +8,23 @@ id = 22334
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "go",
+  "javascript",
+  "julia",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Find the first perfect square in a given base '''N''' that has at least '''N''' digits and

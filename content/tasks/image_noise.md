@@ -8,6 +8,48 @@ id = 8370
 [taxonomies]
 categories = ["task", "Graphics"]
 tags = []
+languages = [
+  "ada",
+  "axe",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "euler_math_toolbox",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "maple",
+  "maxscript",
+  "nim",
+  "ocaml",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "processing",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "run_basic",
+  "scala",
+  "tcl",
+  "visual_basic_dotnet",
+  "xpl0",
+]
 +++
 
 ## Task

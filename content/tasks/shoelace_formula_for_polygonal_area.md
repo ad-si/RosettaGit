@@ -8,6 +8,46 @@ id = 21557
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_60",
+  "algol_68",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "min",
+  "miniscript",
+  "perl",
+  "perl_6",
+  "phix",
+  "powerbasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "vba",
+  "vbscript",
+  "visual_basic",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Given the <code>n + 1</code> vertices <code>x[0], y[0] .. x[N], y[N]</code> of a simple polygon described in a clockwise direction, then the polygon's area can be calculated by:

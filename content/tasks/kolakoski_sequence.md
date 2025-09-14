@@ -8,6 +8,28 @@ id = 21846
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "20_members_of_the_series_generated_from_1_2_is",
+  "20_members_of_the_series_generated_from_2_1_is",
+  "30_members_of_the_series_generated_from_1_3_1_2_is",
+  "30_members_of_the_series_generated_from_1_3_2_1_is",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "ruby",
+  "zkl",
+]
 +++
 
 The [[wp:Kolakoski sequence|Kolakoski sequence]] is an infinite sequence of [[wp:Natural number|natural numbers]], (excluding zero); with the property that:

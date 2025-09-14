@@ -8,6 +8,16 @@ id = 20664
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "echolisp",
+  "go",
+  "j",
+  "julia",
+  "nim",
+  "phix",
+  "sidef",
+  "zkl",
+]
 +++
 
 Quoted from the [https://en.wikipedia.org/wiki/Simulated_annealing Wikipedia page] : '''Simulated annealing (SA)''' is a probabilistic technique for approximating the global optimum of a given function. Simulated annealing interprets slow cooling as a slow decrease in the probability of temporarily accepting worse solutions as it explores the solution space.

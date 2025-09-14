@@ -8,6 +8,25 @@ id = 21185
 [taxonomies]
 categories = ["Puzzles", "Games", "task"]
 tags = []
+languages = [
+  "ada",
+  "cpp",
+  "easylang",
+  "go",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "rexx",
+  "ring",
+  "rust",
+  "zkl",
+]
 +++
 
 ## Task

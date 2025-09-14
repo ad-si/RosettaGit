@@ -8,6 +8,9 @@ id = 9547
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "tcl",
+]
 +++
 
 {{draft task}} Create an IRC Gateway capable of connecting an IRC server with another IRC server or [[Chat server]]

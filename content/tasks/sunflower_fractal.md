@@ -8,6 +8,23 @@ id = 21914
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "freebasic",
+  "go",
+  "javascript",
+  "julia",
+  "microsoft_small_basic",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "r",
+  "racket",
+  "ring",
+  "sidef",
+  "zkl",
+]
 +++
 
 Draw a [https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH Sunflower fractal]

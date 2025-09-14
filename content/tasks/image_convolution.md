@@ -8,6 +8,32 @@ id = 3228
 [taxonomies]
 categories = ["task", "Image processing"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "maple",
+  "matlab",
+  "ocaml",
+  "octave",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "tcl",
+]
 +++
 
 ## Task

@@ -8,6 +8,29 @@ id = 12274
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []
+languages = [
+  "bbc_basic",
+  "c",
+  "cpp",
+  "d",
+  "glagol",
+  "go",
+  "javascript",
+  "julia",
+  "kotlin",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "rust",
+  "tcl",
+  "x86_assembly",
+  "zkl",
+]
 +++
 
 [[wp:GOST (block cipher)|GOST 28147-89]] is a standard symmetric encryption based on a [[wp:Feistel cipher|Feistel network]].

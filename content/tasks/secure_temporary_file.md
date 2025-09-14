@@ -8,6 +8,47 @@ id = 2178
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "csharp",
+  "d",
+  "emacs_lisp",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "hicest",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "netrexx",
+  "ocaml",
+  "octave",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "standard_ml",
+  "tcl",
+  "tuscript",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,18 @@ id = 22172
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "go",
+  "jsish",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "rust",
+]
 +++
 
 Demonstrate any interactive (or command line) help offered by the language implementation.

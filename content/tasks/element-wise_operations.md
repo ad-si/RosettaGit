@@ -8,6 +8,47 @@ id = 9896
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "common_lisp",
+  "csharp",
+  "d",
+  "factor",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "k",
+  "kotlin",
+  "maple",
+  "matlab",
+  "maxima",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "sidef",
+  "standard_ml",
+  "stata",
+  "tcl",
+  "zkl",
+]
 +++
 
 This task is similar to:

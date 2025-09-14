@@ -8,6 +8,35 @@ id = 21327
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "vbscript",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

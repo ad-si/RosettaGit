@@ -8,6 +8,27 @@ id = 17411
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scheme",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[wp:Rule 30|Rule 30]] is considered to be chaotic enough to generate good pseudo-random numbers.  As a matter of fact, rule 30 is used by the [[wp:Mathematica|Mathematica]] software for its default random number generator.

@@ -8,6 +8,11 @@ id = 5265
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "phix",
+  "tcl",
+]
 +++
 
 In order to represent evolutions of contents over time, the [http://www.w3.org/TR/SMIL/ SMIL] standard provides a solution to record the animation of data. Smil animations can be added to any kind of contents formated in XML.

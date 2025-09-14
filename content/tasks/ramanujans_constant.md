@@ -8,6 +8,15 @@ id = 22293
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "rexx",
+  "sidef",
+]
 +++
 
 Calculate Ramanujan's constant (as described on the [http://oeis.org/wiki/Ramanujan%27s_constant OEIS site]) with at least

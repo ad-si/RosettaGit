@@ -8,6 +8,32 @@ id = 21022
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "clojure",
+  "csharp",
+  "d",
+  "elena",
+  "factor",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "python",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
  [[Category:Programming Tasks]] [[Category:Object oriented]]

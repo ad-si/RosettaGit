@@ -8,6 +8,25 @@ id = 12812
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "dc",
+  "go",
+  "j",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 Sometimes it is useful to run code with inputs from untrusted users, untrusted code, etc. Explain and demonstrate the features your language uses for dealing with untrusted input and untrusted code. Explain possible compromises, weaknesses and exploits that may be available through the language (for example forcing execution of something outside of the application) as a result of using untrusted data sources.

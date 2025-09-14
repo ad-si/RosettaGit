@@ -8,6 +8,18 @@ id = 9174
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "kotlin",
+  "oorexx",
+  "phix",
+  "racket",
+  "rexx",
+  "scala",
+]
 +++
 
 [[Category:Encyclopedia]]{{draft task|Data Structures}}{{data structure}}[[Category:Classic CS problems and programs]]

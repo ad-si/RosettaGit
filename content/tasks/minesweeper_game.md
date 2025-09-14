@@ -8,6 +8,41 @@ id = 7718
 [taxonomies]
 categories = ["task", "games"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "basic256",
+  "c",
+  "ceylon",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "easylang",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "locomotive_basic",
+  "m2000_interpreter",
+  "mathematica",
+  "matlab",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "tcl",
+  "vba",
+]
 +++
 
 ## Task

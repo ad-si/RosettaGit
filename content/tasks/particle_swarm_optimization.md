@@ -8,6 +8,22 @@ id = 19448
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "oorexx",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+]
 +++
 
 <p>

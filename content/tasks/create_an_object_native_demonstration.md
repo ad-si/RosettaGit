@@ -8,6 +8,26 @@ id = 8372
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "go",
+  "j",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 Create a Hash/Associative Array/Dictionary-like object, initialized with some default key/value pairs using the languages native method of object creation. The object should behave like a native Hash/Associative Array/Dictionary of the language, if any, but with the following differences:

@@ -8,6 +8,30 @@ id = 12310
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "echolisp",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 [[File:total_circles_area_full.png|300px|thumb|right|Example circles]]

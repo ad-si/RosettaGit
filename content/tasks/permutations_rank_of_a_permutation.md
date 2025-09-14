@@ -8,6 +8,30 @@ id = 12454
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 A particular ranking of a permutation associates an integer with a particular ordering of all the permutations of a set of distinct items.

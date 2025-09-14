@@ -8,6 +8,42 @@ id = 18731
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aime",
+  "applescript",
+  "autohotkey",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "dyalect",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "maple",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "vbscript",
+  "zkl",
+]
 +++
 
 Write a function that returns the longest common substring of two strings. Use it within a program that demonstrates sample output from the function, which will consist of the longest common substring between "thisisatest" and "testing123testing". Note that substrings are consecutive characters within a string. This distinguishes them from subsequences, which is any sequence of characters within a string, even if there are extraneous characters in between them. Hence, the [[longest common subsequence]] between "thisisatest" and "testing123testing" is "tsitest", whereas the longest common sub''string'' is just "test".

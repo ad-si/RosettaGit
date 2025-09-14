@@ -8,6 +8,23 @@ id = 18777
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "sidef",
+  "simula",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

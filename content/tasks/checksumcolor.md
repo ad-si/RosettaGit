@@ -8,6 +8,16 @@ id = 22287
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "sidef",
+  "zkl",
+]
 +++
 
 '''Context:''' In December 2013 [https://lists.gnu.org/archive/html/coreutils/2013-12/msg00152.html a patch was proposed to the coreutils list] to add a --color option to the commands md5sum and shaXsum to display the checksums in color to make it easier to visually identify similarities in a list of printed checksums. The patch was not accepted for inclusion and instead it was suggested to create a command line utility which can be used to pipe the output of the md5sum and shaXsum commands similar to the utility colordiff.

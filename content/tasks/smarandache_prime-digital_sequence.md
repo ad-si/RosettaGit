@@ -8,6 +8,21 @@ id = 22344
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "awk",
+  "factor",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 The Smarandache prime-digital sequence (SPDS for brevity) is the sequence of primes whose digits are themselves prime.

@@ -8,6 +8,46 @@ id = 14267
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "apl",
+  "applescript",
+  "autohotkey",
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "d",
+  "elixir",
+  "false",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "livecode",
+  "m2000_interpreter",
+  "mathematica",
+  "netrexx",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 A [[wp:Sparkline|sparkline]] is a graph of successive values laid out horizontally 

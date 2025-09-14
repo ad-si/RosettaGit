@@ -8,6 +8,28 @@ id = 9801
 [taxonomies]
 categories = ["Games", "Puzzles", "AI", "task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ring",
+  "ruby",
+  "tcl",
+]
 +++
 
 ## Task

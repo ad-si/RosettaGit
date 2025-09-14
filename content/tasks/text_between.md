@@ -8,6 +8,45 @@ id = 21703
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "awk",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "maple",
+  "miniscript",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "powerbasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "unix_shell",
+  "vba",
+  "visual_basic",
+  "zkl",
+]
 +++
 
 ## Task

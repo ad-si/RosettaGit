@@ -8,6 +8,17 @@ id = 12970
 [taxonomies]
 categories = ["Classic CS problems", "Algorithms", "Operating systems", "task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "phix",
+  "racket",
+  "rust",
+]
 +++
 
 ## Task

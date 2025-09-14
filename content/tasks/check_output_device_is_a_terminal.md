@@ -8,6 +8,38 @@ id = 13194
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "common_lisp",
+  "cpp",
+  "crystal",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "javascript_nodejs",
+  "julia",
+  "kotlin",
+  "nemerle",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "php",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

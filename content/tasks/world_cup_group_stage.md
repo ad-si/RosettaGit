@@ -8,6 +8,30 @@ id = 17721
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "common_lisp",
+  "csharp",
+  "d",
+  "elena",
+  "elixir",
+  "erlang",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ## Task

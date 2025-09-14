@@ -8,6 +8,27 @@ id = 20964
 [taxonomies]
 categories = ["Text processing", "Randomness", "Algorithms", "task"]
 tags = []
+languages = [
+  "cpp",
+  "crystal",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "rust",
+  "sidef",
+  "swift",
+]
 +++
 
 ## Task

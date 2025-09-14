@@ -8,6 +8,21 @@ id = 22011
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Lychee (1969)'s Modified [[wp:Adaptive_Simpson's_method|Adaptive Simpson's method]] (doi:10.1145/321526.321537) is a numerical quadrature method that recursively bisects the interval until the precision is high enough.

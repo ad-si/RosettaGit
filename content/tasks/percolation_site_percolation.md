@@ -8,6 +8,26 @@ id = 15836
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "factor",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "sidef",
+  "tcl",
+  "vvvvvv",
+  "zkl",
+]
 +++
 
 ## Task

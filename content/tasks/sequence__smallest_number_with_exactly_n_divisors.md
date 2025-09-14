@@ -8,6 +8,26 @@ id = 22267
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "cpp",
+  "factor",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 Calculate the sequence where each term <strong>a<sub>n</sub></strong> is the '''smallest natural number''' that has exactly '''n''' divisors.

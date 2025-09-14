@@ -8,6 +8,24 @@ id = 22028
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cobol",
+  "delphi",
+  "free_pascal",
+  "go",
+  "j",
+  "jq",
+  "julia",
+  "m2000_interpreter",
+  "neko",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "zkl",
+]
 +++
 
 {{task}}Fixed length read/write

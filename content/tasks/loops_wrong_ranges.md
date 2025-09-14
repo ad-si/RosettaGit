@@ -8,6 +8,29 @@ id = 21994
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []
+languages = [
+  "algol_w",
+  "c",
+  "csharp",
+  "factor",
+  "go",
+  "huginn",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "seed7",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

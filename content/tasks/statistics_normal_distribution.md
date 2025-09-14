@@ -8,6 +8,43 @@ id = 10159
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lasso",
+  "liberty_basic",
+  "lua",
+  "maple",
+  "mathematica",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "run_basic",
+  "sas",
+  "sidef",
+  "stata",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 The [[wp:Normal distribution|Normal]] (or Gaussian) distribution is a frequently used distribution in statistics. While most programming languages provide a uniformly distributed random number generator, one can [[wp:Normal distribution#Generating_values_from_normal_distribution|derive]] normally distributed random numbers from a uniform generator.

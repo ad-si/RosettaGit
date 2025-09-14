@@ -8,6 +8,26 @@ id = 14064
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "scala",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 [[wp:Bilinear interpolation|Bilinear interpolation]] is linear interpolation in 2 dimensions, and is typically used for image scaling and for 2D finite element analysis.

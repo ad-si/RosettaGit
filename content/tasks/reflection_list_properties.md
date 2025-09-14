@@ -8,6 +8,33 @@ id = 21023
 [taxonomies]
 categories = ["task", "Reflection"]
 tags = []
+languages = [
+  "csharp",
+  "elena",
+  "factor",
+  "fortran",
+  "go",
+  "groovy",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "php",
+  "pl_i",
+  "powershell",
+  "python",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 {{task|Reflection}} [[Category:Programming Tasks]] [[Category:Object oriented]]

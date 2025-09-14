@@ -8,6 +8,23 @@ id = 8426
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "extract_names_grouped_by_their_dependency_chain_length",
+  "go",
+  "j",
+  "java",
+  "kotlin",
+  "only_consider_names_and_dependencies_we_want_to_keep",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "tcl",
+]
 +++
 
 Given a mapping between items, and items they depend on, a [[wp:Topological sorting|topological sort]] orders items so that no item precedes an item it depends upon. 

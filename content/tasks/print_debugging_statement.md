@@ -8,6 +8,18 @@ id = 22494
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "mercury",
+  "perl",
+  "perl_6",
+  "phix",
+  "pyret",
+  "racket",
+  "rexx",
+  "zkl",
+]
 +++
 
 From [https://en.wikipedia.org/wiki/Debugging#Techniques Wikipedia]:

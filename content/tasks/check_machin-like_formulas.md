@@ -8,6 +8,37 @@ id = 12552
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "1_false",
+  "1_true",
+  "clojure",
+  "d",
+  "echolisp",
+  "factor",
+  "freebasic",
+  "gap",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "maxima",
+  "ocaml",
+  "oorexx",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "seed7",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "xpl0",
+]
 +++
 
 [[wp:Machin-like_formula|Machin-like formulas]]   are useful for efficiently computing numerical approximations for <big><big><math>\pi</math></big></big>

@@ -8,6 +8,26 @@ id = 16108
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "free_pascal",
+  "go",
+  "j",
+  "jq",
+  "julia",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "swift",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 ﻿{{draft task|Basic language learning}} [[Category:Programming environment operations]]

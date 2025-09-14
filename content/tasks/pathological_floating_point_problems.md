@@ -8,6 +8,39 @@ id = 20044
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "algol_68",
+  "awk",
+  "c",
+  "clojure",
+  "csharp",
+  "excel",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "stata",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Most programmers are familiar with the inexactness of floating point calculations in a binary processor.

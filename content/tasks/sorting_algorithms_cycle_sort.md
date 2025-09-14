@@ -8,6 +8,34 @@ id = 17705
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "c",
+  "cpp",
+  "d",
+  "elixir",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "netrexx",
+  "nim",
+  "objeck",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+]
 +++
 
 {{draft task|Sorting Algorithms}}<!--Add this back when it gets promoted, also add a link to this page to the n^2 sorts in the template{{Sorting Algorithm}}-->

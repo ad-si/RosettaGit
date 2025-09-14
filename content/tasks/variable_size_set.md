@@ -8,6 +8,47 @@ id = 1986
 [taxonomies]
 categories = ["task", "Type System"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "autohotkey",
+  "basic",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "d",
+  "erlang",
+  "erre",
+  "fortran",
+  "free_pascal",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "oorexx",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "tcl",
+  "txr",
+  "ursala",
+  "xpl0",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

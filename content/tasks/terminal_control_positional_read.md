@@ -8,6 +8,24 @@ id = 8418
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "autohotkey",
+  "basic",
+  "bbc_basic",
+  "c",
+  "go",
+  "julia",
+  "kotlin",
+  "locomotive_basic",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "txr",
+  "xpl0",
+]
 +++
 
 ## Task

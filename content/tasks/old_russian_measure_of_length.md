@@ -8,6 +8,32 @@ id = 12759
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "d",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "sidef",
+  "tcl",
+]
 +++
 
 The program should make the conversion of the old Russian measures of length in the metric and vice versa.

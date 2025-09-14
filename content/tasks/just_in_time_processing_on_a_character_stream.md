@@ -8,6 +8,24 @@ id = 16903
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "tcl",
+  "zkl",
+]
 +++
 
 Given a stream of characters, presumably (simulated) from a keyboard, that contain the separators "formfeed", "linefeed", "tab" and "space" characters. Print out the i<sup>th</sup> character of the i<sup>th</sup> tab-field of the i<sup>th</sup> line of the i<sup>th</sup> page to reveal a secret password.

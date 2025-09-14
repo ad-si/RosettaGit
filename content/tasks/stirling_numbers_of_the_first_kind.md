@@ -8,6 +8,18 @@ id = 22465
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "factor",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Stirling numbers of the first kind, or Stirling cycle numbers, count permutations according to their number

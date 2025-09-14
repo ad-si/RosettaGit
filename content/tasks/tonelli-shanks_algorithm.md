@@ -8,6 +8,29 @@ id = 20692
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "clojure",
+  "csharp",
+  "d",
+  "echolisp",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 '''Tonelli–Shanks algorithm'''

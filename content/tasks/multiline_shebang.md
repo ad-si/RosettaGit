@@ -8,6 +8,40 @@ id = 10246
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "clojure",
+  "common_lisp",
+  "e",
+  "emacs_lisp",
+  "erlang",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "julia",
+  "matlab",
+  "ocaml",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "picolisp",
+  "pike",
+  "postgresql",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "scheme",
+  "sidef",
+  "smalltalk",
+  "sql_pl",
+  "tcl",
+  "txr",
+  "zkl",
+]
 +++
 
 Simple shebangs can help with scripting, e.g., <code>#!/usr/bin/env python</code> at the top of a Python script will allow it to be run in a terminal as "<code>./script.py</code>".

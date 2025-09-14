@@ -8,6 +8,33 @@ id = 21222
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "seed7",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 Negative base numbers are an alternate way to encode numbers without the need for a minus sign. Various negative bases may be used including negadecimal (base -10), negabinary (-2) and negaternary (-3).<ref>[http://mathworld.wolfram.com/Negabinary.html Negabinary on Wolfram Mathworld]</ref><ref>[https://en.wikipedia.org/wiki/Negative_base Negative base] on Wikipedia</ref>

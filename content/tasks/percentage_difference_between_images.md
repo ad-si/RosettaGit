@@ -8,6 +8,47 @@ id = 3112
 [taxonomies]
 categories = ["Image processing", "task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "e",
+  "forth",
+  "fortran",
+  "frink",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "mathematica",
+  "matlab",
+  "maxscript",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rebol",
+  "ruby",
+  "rust",
+  "sidef",
+  "swift",
+  "tcl",
+  "vedit_macro_language",
+  "zkl",
+]
 +++
 
 Compute the percentage of difference between 2 JPEG images of the same size. Alternatively, compare two bitmaps as defined in basic bitmap storage.

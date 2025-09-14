@@ -8,6 +8,16 @@ id = 22187
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "jsish",
+  "julia",
+  "perl_6",
+  "racket",
+  "rexx",
+  "scala",
+  "zkl",
+]
 +++
 
 Demonstrate any support for Unit testing built into the language implementation.

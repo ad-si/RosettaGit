@@ -8,6 +8,43 @@ id = 7088
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "coffeescript",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "erlang",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "tuscript",
+  "unix_shell",
+]
 +++
 
 {{task|Classic CS problems and programs}}[[Category:Search]]

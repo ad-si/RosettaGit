@@ -8,6 +8,47 @@ id = 9631
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "360_assembly",
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "clojure",
+  "csharp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "freebasic",
+  "gap",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "supercollider",
+  "tcl",
+  "zkl",
+]
 +++
 
 A [http://mathworld.wolfram.com/Derangement.html derangement] is a permutation of the order of distinct items in which ''no item appears in its original place''.

@@ -8,6 +8,29 @@ id = 13412
 [taxonomies]
 categories = ["Data Structures", "task"]
 tags = []
+languages = [
+  "agda",
+  "beed",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "java",
+  "kotlin",
+  "lua",
+  "objeck",
+  "phix",
+  "python",
+  "rust",
+  "scala",
+  "sidef",
+  "simula",
+  "tcl",
+  "typescript",
+]
 +++
 
 ## Task

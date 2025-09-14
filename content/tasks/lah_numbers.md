@@ -8,6 +8,19 @@ id = 22467
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Lah numbers, sometimes referred to as Stirling numbers of the third kind, are coefficients of polynomial expansions expressing rising factorials in terms of falling factorials.

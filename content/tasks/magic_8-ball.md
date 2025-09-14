@@ -8,6 +8,34 @@ id = 21805
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "awk",
+  "c",
+  "clojure",
+  "cpp",
+  "factor",
+  "forth",
+  "go",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "miniscript",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "rust",
+  "zkl",
+]
 +++
 
 Create Magic 8-Ball. See details: [https://en.wikipedia.org/wiki/Magic_8-Ball Magic 8-Ball]

@@ -8,6 +8,44 @@ id = 17751
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "awk",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "dense_ranking_in_file_ranking_d_awk",
+  "elixir",
+  "factor",
+  "fractional_ranking_in_file_ranking_f_awk",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "modified_competition_ranking_in_file_ranking_mc_awk",
+  "ordinal_ranking_in_file_ranking_o_awk",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "standard_competition_ranking_in_file_ranking_sc_awk",
+  "tcl",
+  "visual_foxpro",
+  "zkl",
+]
 +++
 
 The numerical rank of competitors in a competition shows if one is better than, equal to, or worse than another based on their results in a competition.

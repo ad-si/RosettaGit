@@ -8,6 +8,21 @@ id = 20673
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "phix",
+  "python",
+  "racket",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 A [[wp:Word_search|word search]] puzzle typically consists of a grid of letters in which words are hidden.

@@ -8,6 +8,42 @@ id = 2774
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "clojure",
+  "common_lisp",
+  "csharp",
+  "d",
+  "e",
+  "egison",
+  "ela",
+  "elena",
+  "erre",
+  "factor",
+  "go",
+  "haxe",
+  "j",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "page_amb_void",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "purebasic",
+  "racket",
+  "rexx",
+  "ring",
+  "rust",
+  "tcl",
+  "tuscript",
+  "txr",
+  "vbscript",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,33 @@ id = 2983
 [taxonomies]
 categories = ["Programming environment operations", "task"]
 tags = []
+languages = [
+  "autohotkey",
+  "autoit",
+  "c",
+  "coldfusion",
+  "csharp",
+  "d",
+  "erlang",
+  "go",
+  "haskell",
+  "java",
+  "kotlin",
+  "netrexx",
+  "perl",
+  "perl_6",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "run_basic",
+  "rust",
+  "scala",
+  "smart_basic",
+  "tcl",
+  "vbscript",
+]
 +++
 
 ## Task

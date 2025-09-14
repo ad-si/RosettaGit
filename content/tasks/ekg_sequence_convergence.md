@@ -8,6 +8,21 @@ id = 21942
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 The sequence is from the natural numbers and is defined by:

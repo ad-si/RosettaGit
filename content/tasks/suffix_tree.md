@@ -8,6 +8,20 @@ id = 13459
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "sidef",
+]
 +++
 
 A [[wp:suffix tree|suffix tree]] is a data structure commonly used in [[wp:string algorithms|string algorithms]].

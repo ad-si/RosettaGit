@@ -8,6 +8,21 @@ id = 21778
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "fortran",
+  "go",
+  "haskell",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "rust",
+  "vba",
+  "zkl",
+]
 +++
 
 ;Problem

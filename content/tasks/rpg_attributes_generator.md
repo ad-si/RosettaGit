@@ -8,6 +8,39 @@ id = 21909
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "arm_assembly",
+  "c",
+  "cpp",
+  "crystal",
+  "csharp",
+  "dyalect",
+  "easylang",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "miniscript",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 You're running a tabletop RPG, and your players are creating characters.

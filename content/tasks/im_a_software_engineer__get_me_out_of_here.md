@@ -8,6 +8,11 @@ id = 21941
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "phix",
+]
 +++
 
 Your latest contract has hit a snag. You came to update the army payroll system, but awoke this morning to the sound of mortars landing not far away and panicked generals banging on you door. The President has loaded his gold on trucks and needs to find the shortest route to safety.  You are given the following map. The top left hand corner is (0,0). You and The President are located at HQ in the centre of the country (11,11). Cells marked 0 indicate safety. Numbers other than 0 indicate the number of cells that his party will travel in a day in any direction up, down, left, right, or diagonally. 

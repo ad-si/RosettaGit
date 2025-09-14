@@ -8,6 +8,29 @@ id = 21374
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aime",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "zkl",
+]
 +++
 
 ; Task:Given an input string and a dictionary of words, segment the input string into a space-separated sequence of dictionary words if possible. 

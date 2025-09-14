@@ -8,6 +8,18 @@ id = 20837
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "scala",
+  "sidef",
+]
 +++
 
 A [[wp:Penrose_tiling|Penrose tiling]] can cover an entire plane without creating a pattern that periodically repeats.

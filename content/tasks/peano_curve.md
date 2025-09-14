@@ -8,6 +8,19 @@ id = 21908
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "sidef",
+  "vba",
+  "yabasic",
+  "zkl",
+]
 +++
 
 <br/>

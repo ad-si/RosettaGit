@@ -8,6 +8,25 @@ id = 22230
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_w",
+  "coffeescript",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Given a molecule's chemical formula, calculate the   [https://en.wikipedia.org/wiki/Molar_mass <u>molar mass</u>].

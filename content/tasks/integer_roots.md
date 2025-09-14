@@ -8,6 +8,37 @@ id = 20906
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "arturo",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "fsharp",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "scheme",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

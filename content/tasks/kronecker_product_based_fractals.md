@@ -8,6 +8,35 @@ id = 21345
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []
+languages = [
+  "c",
+  "dflg_writing_dump_file_flag_0_1_psz_picture_size",
+  "factor",
+  "generate_and_plot_kronecker_product_based_fractals_aev_8_12_16",
+  "gnuplot",
+  "go",
+  "gpkronfractal_m_n_pf_clr_ttl_dflg_0_psz_600",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "kpf_gp_4_8_17_aev",
+  "lua",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "pf_plot_file_name_without_extension_clr_color_ttl_plot_title",
+  "phix",
+  "plotting_3_kpf_pictures",
+  "python",
+  "r",
+  "rexx",
+  "sidef",
+  "where_m_initial_matrix_filled_with_0_1_n_order_of_the_fractal",
+  "zkl",
+]
 +++
 
 This task is based on   [[Kronecker product| Kronecker product]]   of two matrices. 

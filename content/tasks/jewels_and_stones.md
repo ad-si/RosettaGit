@@ -8,6 +8,43 @@ id = 21809
 [taxonomies]
 categories = ["Puzzles", "String manipulation", "task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "autohotkey",
+  "awk",
+  "basic256",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

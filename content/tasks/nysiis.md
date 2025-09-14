@@ -8,6 +8,22 @@ id = 13128
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "tcl",
+  "zkl",
+]
 +++
 
 The [[wp:New York State Identification and Intelligence System|New York State Identification and Intelligence System phonetic code]], commonly known as NYSIIS, is a phonetic algorithm for creating indices for words based on their pronunciation. The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling.

@@ -8,6 +8,28 @@ id = 17323
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "common_lisp",
+  "d",
+  "factor",
+  "glsl",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The   '''[[wp:Perlin noise|Perlin noise]]'''   is a kind of   [[wp:gradient noise|gradient noise]]   invented by   [[wp:Ken Perlin|Ken Perlin]]   around the end of the twentieth century and still currently heavily used in   [[wp:computer graphics|computer graphics]],   most notably to procedurally generate textures or heightmaps. 

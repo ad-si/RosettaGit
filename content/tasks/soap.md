@@ -8,6 +8,27 @@ id = 1678
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []
+languages = [
+  "actionscript",
+  "autohotkey",
+  "c",
+  "clojure",
+  "coldfusion",
+  "go",
+  "kotlin",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "php",
+  "purebasic",
+  "python",
+  "ruby",
+  "smalltalk",
+  "tcl",
+  "uniface",
+  "vbscript",
+  "visual_objects",
+]
 +++
 
 ## Task

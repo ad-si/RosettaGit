@@ -8,6 +8,23 @@ id = 22013
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "sidef",
+  "zkl",
+]
 +++
 
 In mathematics, '''sexy primes''' are prime numbers that differ from each other by six.

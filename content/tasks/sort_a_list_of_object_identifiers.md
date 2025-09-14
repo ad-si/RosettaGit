@@ -8,6 +8,37 @@ id = 20993
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []
+languages = [
+  "ada",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "elixir",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "sidef",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[wp:Object identifier|Object identifiers (OID)]] are strings used to identify objects in network data.

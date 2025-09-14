@@ -8,6 +8,36 @@ id = 11330
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "common_lisp",
+  "d",
+  "factor",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "jq",
+  "julia",
+  "kotlin",
+  "maple",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "sparkling",
+  "tcl",
+]
 +++
 
 Suppose that a [[matrix]] <big><math>M</math></big> contains [[Arithmetic/Complex|complex numbers]]. Then the [[wp:conjugate transpose|conjugate transpose]] of <math>M</math> is a matrix <math>M^H</math> containing the [[complex conjugate]]s of the [[matrix transposition]] of <math>M</math>.

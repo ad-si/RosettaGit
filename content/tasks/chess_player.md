@@ -8,6 +8,12 @@ id = 11656
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "phix",
+  "picolisp",
+  "python",
+]
 +++
 
 In the early times, chess used to be the prime example of artificial intelligence. Nowadays, some chess programs can beat a human master, and simple implementations can be written in a few pages of code.

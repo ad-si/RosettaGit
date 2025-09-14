@@ -8,6 +8,13 @@ id = 10399
 [taxonomies]
 categories = ["Logic", "task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "phix",
+  "racket",
+  "tcl",
+]
 +++
 
 ## Task

@@ -8,6 +8,45 @@ id = 5222
 [taxonomies]
 categories = ["task", "Compilers and Interpreters"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "common_lisp",
+  "cpp",
+  "d",
+  "echolisp",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "scheme",
+  "sequencel",
+  "snobol4",
+  "swift",
+  "tcl",
+  "vbscript",
+  "zkl",
+]
 +++
 
 ## Task

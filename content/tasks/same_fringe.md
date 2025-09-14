@@ -8,6 +8,32 @@ id = 12228
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "bracmat",
+  "c",
+  "clojure",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "scheme",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 Write a routine that will compare the leaves ("fringe") of two binary trees to determine whether they are the same list of leaves when visited left-to-right.  The structure or balance of the trees does not matter; only the number, order, and value of the leaves is important.

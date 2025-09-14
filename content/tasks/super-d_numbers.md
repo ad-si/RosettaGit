@@ -8,6 +8,14 @@ id = 22580
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "perl",
+  "perl_6",
+  "rexx",
+  "zkl",
+]
 +++
 
 A super-d number is a positive, decimal (base ten) integer '''n''' such that '''d × n^d''' has at least '''d''' consecutive digits '''d'''

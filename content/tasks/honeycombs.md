@@ -8,6 +8,30 @@ id = 9782
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "actionscript",
+  "bbc_basic",
+  "c",
+  "csharp",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "matlab",
+  "perl",
+  "phix",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "xpl0",
+]
 +++
 
 ## Task

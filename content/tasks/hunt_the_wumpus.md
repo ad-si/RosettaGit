@@ -8,6 +8,22 @@ id = 19106
 [taxonomies]
 categories = ["task", "Games"]
 tags = []
+languages = [
+  "autohotkey",
+  "csharp",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "m2000_interpreter",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+]
 +++
 
 ## Task

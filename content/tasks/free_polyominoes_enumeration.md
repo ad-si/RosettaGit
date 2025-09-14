@@ -8,6 +8,23 @@ id = 18165
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+]
 +++
 
 A [[wp:Polyomino|Polyomino]] is a plane geometric figure formed by joining one or more equal squares edge to edge. Free polyominoes are distinct when none is a translation, rotation, reflection or glide reflection of another polyomino.

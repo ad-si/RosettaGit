@@ -8,6 +8,35 @@ id = 6107
 [taxonomies]
 categories = ["task", "Mathematical operations"]
 tags = []
+languages = [
+  "11l",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "d",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "matlab",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "scala",
+  "tcl",
+  "ursala",
+  "zkl",
+]
 +++
 
 ## Task

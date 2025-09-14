@@ -8,6 +8,24 @@ id = 19924
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "ruby",
+  "scala",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 {{draft task}} [[wp:Arithmetic coding|Arithmetic coding]] is a form of entropy encoding used in lossless data compression. Normally, a string of characters such as the words "hello there" is represented using a fixed number of bits per character, as in the ASCII code. When a string is converted to arithmetic encoding, frequently used characters will be stored with fewer bits and not-so-frequently occurring characters will be stored with more bits, resulting in fewer bits used in total. Arithmetic coding differs from other forms of entropy encoding, such as [[Huffman coding]], in that rather than separating the input into component symbols and replacing each with a code, arithmetic coding encodes the entire message into a single number.

@@ -8,6 +8,43 @@ id = 8843
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "axe",
+  "bbc_basic",
+  "c",
+  "creative_basic",
+  "csharp",
+  "egl",
+  "fbsl",
+  "freebasic",
+  "gambas",
+  "go",
+  "groovy",
+  "haskell",
+  "iwbasic",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "m2000_interpreter",
+  "nim",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "ring",
+  "run_basic",
+  "scala",
+  "sidef",
+  "tcl",
+  "visual_basic_dotnet",
+]
 +++
 
 ## Task

@@ -8,6 +8,32 @@ id = 22192
 [taxonomies]
 categories = ["Mathematics", "Sequences", "task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "csharp",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

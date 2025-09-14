@@ -8,6 +8,31 @@ id = 19626
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "cpp",
+  "crystal",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "racket",
+  "rexx",
+  "ring",
+  "rust",
+  "scala",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 This draft task needs a purpose, a description and some way to tell whether examples satisfy or do not satisfy it.

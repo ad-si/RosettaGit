@@ -8,6 +8,35 @@ id = 12953
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "autohotkey",
+  "awk",
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "seed7",
+  "tcl",
+]
 +++
 
 [[File:ship'sBell.jpg|650px||right]]

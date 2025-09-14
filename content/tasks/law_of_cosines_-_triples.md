@@ -8,6 +8,25 @@ id = 22003
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "zkl",
+]
 +++
 
 The [https://en.wikipedia.org/wiki/Law_of_cosines Law of cosines] states that for an angle γ, (gamma) of any triangle, if the sides adjacent to the angle are A and B and the side opposite is C; then the lengths of the sides are related by this formula:

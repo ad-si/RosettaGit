@@ -8,6 +8,19 @@ id = 19663
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "d",
+  "echolisp",
+  "go",
+  "j",
+  "javascript",
+  "jsish",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+]
 +++
 
 '''Geometric algebra''' is an other name for [[wp:Clifford algebra|Clifford algebra]]s and it's basically an algebra containing a vector space <math>\mathcal{V}</math> and obeying the following axioms:

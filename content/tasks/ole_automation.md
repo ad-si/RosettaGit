@@ -8,6 +8,12 @@ id = 10147
 [taxonomies]
 categories = ["task", "OLE Automation Client and Server"]
 tags = []
+languages = [
+  "autohotkey",
+  "go",
+  "m2000_interpreter",
+  "python",
+]
 +++
 
 ## Task

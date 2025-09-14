@@ -8,6 +8,34 @@ id = 21734
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "sas",
+  "scala",
+  "sidef",
+  "stata",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 '''Many big data or scientific programs use boxplots to show distributions of data.   In addition, sometimes saving large arrays for boxplots can be impractical and use extreme amounts of RAM.   It can be useful to save large arrays as arrays with five numbers to save memory.

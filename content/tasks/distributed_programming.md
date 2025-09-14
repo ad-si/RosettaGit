@@ -8,6 +8,32 @@ id = 2102
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "csharp",
+  "d",
+  "e",
+  "erlang",
+  "factor",
+  "go",
+  "haskell",
+  "javascript",
+  "julia",
+  "lfe",
+  "nim",
+  "ocaml",
+  "oz",
+  "perl",
+  "perl_6",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "tcl",
+  "unixpipes",
+]
 +++
 
 ## Task

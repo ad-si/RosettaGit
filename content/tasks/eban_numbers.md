@@ -8,6 +8,27 @@ id = 22189
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "csharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "tailspin",
+  "visual_basic_dotnet",
+  "yabasic",
+  "zkl",
+]
 +++
 
 ;Definition:

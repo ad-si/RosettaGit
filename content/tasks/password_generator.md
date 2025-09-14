@@ -8,6 +8,47 @@ id = 20851
 [taxonomies]
 categories = ["Security", "Randomness", "String manipulation", "task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "ceylon",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "crystal",
+  "csharp",
+  "elixir",
+  "gambas",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "ocaml",
+  "oorexx",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "seed7",
+  "swift",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,28 @@ id = 13455
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "kotlin",
+  "netrexx",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "sidef",
+  "sql",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 {{draft task}} [[Category:Encryption]]

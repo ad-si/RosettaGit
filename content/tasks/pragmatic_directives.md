@@ -8,6 +8,33 @@ id = 10639
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "basic",
+  "c",
+  "common_lisp",
+  "d",
+  "erlang",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "netrexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "tcl",
+  "unix_shell",
+]
 +++
 
 Pragmatic directives cause the language to operate in a specific manner,   allowing support for operational variances within the program code   (possibly by the loading of specific or alternative modules).

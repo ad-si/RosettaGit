@@ -8,6 +8,38 @@ id = 20623
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 A recent discovery, quoted from   [https://www.quantamagazine.org/20160313-mathematicians-discover-prime-conspiracy/ Quantamagazine]   (March 13, 2016):

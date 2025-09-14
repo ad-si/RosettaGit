@@ -8,6 +8,43 @@ id = 9939
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []
+languages = [
+  "ada",
+  "axiom",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "futhark",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "maple",
+  "mathematica",
+  "maxima",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "r",
+  "racket",
+  "rascal",
+  "sas",
+  "scala",
+  "sequencel",
+  "spad",
+  "standard_ml",
+  "stata",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

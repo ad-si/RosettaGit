@@ -8,6 +8,29 @@ id = 10768
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "acl2",
+  "awk",
+  "bbc_basic",
+  "c",
+  "common_lisp",
+  "erlang",
+  "factor",
+  "forth",
+  "go",
+  "j",
+  "julia",
+  "livecode",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

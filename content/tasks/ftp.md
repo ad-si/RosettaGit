@@ -8,6 +8,34 @@ id = 17673
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "batch_file",
+  "c",
+  "common_lisp",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lingo",
+  "livecode",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rebol",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 {{task|Programming environment operations}}[[Category:Networking and Web Interaction]]

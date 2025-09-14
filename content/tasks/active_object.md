@@ -8,6 +8,48 @@ id = 3099
 [taxonomies]
 categories = ["Object oriented", "Concurrency", "task"]
 tags = []
+languages = [
+  "ada",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "cpp",
+  "csharp",
+  "d",
+  "e",
+  "echolisp",
+  "erlang",
+  "factor",
+  "fbsl",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "mathematica",
+  "oorexx",
+  "oxygenbasic",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rust",
+  "scala",
+  "smalltalk",
+  "supercollider",
+  "swift",
+  "tcl",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

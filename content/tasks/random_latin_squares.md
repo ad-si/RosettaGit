@@ -8,6 +8,19 @@ id = 22365
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "javascript",
+  "julia",
+  "m2000_interpreter",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "zkl",
+]
 +++
 
 A Latin square of size <code>n</code> is an arrangement of <code>n</code> symbols  in an <code>n-by-n</code> square in such a way that each row and column has each symbol appearing exactly once.

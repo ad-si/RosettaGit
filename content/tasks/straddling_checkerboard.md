@@ -8,6 +8,37 @@ id = 9882
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []
+languages = [
+  "algol_68",
+  "autohotkey",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "vbscript",
+  "zkl",
+]
 +++
 
 ## Task

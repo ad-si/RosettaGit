@@ -8,6 +8,29 @@ id = 21408
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Named after [https://en.wikipedia.org/wiki/Johann_Faulhaber Johann Faulhaber], the rows of Faulhaber's triangle are the coefficients of polynomials that represent sums of integer powers, which are extracted from Faulhaber's formula:

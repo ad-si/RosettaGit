@@ -8,6 +8,43 @@ id = 21552
 [taxonomies]
 categories = ["Mathematics", "Arithmetic", "Ancient mathematics", "task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "applescript",
+  "autohotkey",
+  "bacon",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "erlang",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,47 @@ id = 12276
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "ada",
+  "algol_68",
+  "applescript",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "common_lisp",
+  "d",
+  "elena",
+  "erlang",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lingo",
+  "maple",
+  "mathematica",
+  "maxima",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "sidef",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 A tree structure   (i.e. a rooted, connected acyclic graph)   is often used in programming.

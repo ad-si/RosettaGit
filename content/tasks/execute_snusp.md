@@ -8,6 +8,35 @@ id = 2843
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "11l",
+  "ada",
+  "autohotkey",
+  "c",
+  "cobol",
+  "cpp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "seed7",
+  "tcl",
+]
 +++
 
 ## Task

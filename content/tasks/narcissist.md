@@ -8,6 +8,46 @@ id = 8341
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "befunge",
+  "c",
+  "common_lisp",
+  "csharp",
+  "d",
+  "forth",
+  "go",
+  "haskell",
+  "huginn",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "txr",
+  "unix_shell",
+  "vba",
+  "zkl",
+]
 +++
 
 Quoting from the [http://esolangs.org/wiki/Narcissist Esolangs wiki page]:

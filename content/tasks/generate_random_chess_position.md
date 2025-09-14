@@ -8,6 +8,29 @@ id = 19820
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "crystal",
+  "factor",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "yabasic",
+  "zkl",
+]
 +++
 
 The purpose of this task is to generate a random chess position in [[wp:Forsyth–Edwards Notation|FEN format]].  The position does not have to be realistic or even balanced, but it must comply to the following rules:

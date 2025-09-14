@@ -8,6 +8,15 @@ id = 22053
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "j",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "zkl",
+]
 +++
 
 Draw a curve that touches 3 points (1 starting point, 2 medium, 3 final point)

@@ -8,6 +8,26 @@ id = 12961
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "elixir",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The   '''[[wp:shortest common supersequence|shortest common supersequence]]'''   is a problem closely related to the   [[longest common subsequence]],   which you can use as an external function for this task.

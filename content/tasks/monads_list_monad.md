@@ -8,6 +8,24 @@ id = 20014
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "clojure",
+  "echolisp",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "racket",
+  "ring",
+  "ruby",
+  "zkl",
+]
 +++
 
 A [[wp:Monad_(functional_programming)|Monad]] is a combination of a data-type with two helper functions written for that type. 

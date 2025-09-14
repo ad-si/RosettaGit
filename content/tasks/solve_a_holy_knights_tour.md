@@ -8,6 +8,32 @@ id = 17663
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "bracmat",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "tcl",
+]
 +++
 
 [[File:chess_white_knight.jpg|200px||right]]

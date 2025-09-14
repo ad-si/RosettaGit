@@ -8,6 +8,45 @@ id = 10366
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "aime",
+  "autohotkey",
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "clojure",
+  "coffeescript",
+  "common_lisp",
+  "cpp",
+  "d",
+  "echolisp",
+  "eiffel",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+  "txr",
+  "zkl",
+]
 +++
 
 There are several ways to generate a self-referential sequence. One very common one (the [[Look-and-say sequence]]) is to start with a positive integer, then generate the next term by concatenating enumerated groups of adjacent alike digits:

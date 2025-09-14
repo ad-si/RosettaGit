@@ -8,6 +8,33 @@ id = 2074
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "clojure",
+  "csharp",
+  "delphi",
+  "go",
+  "haskell",
+  "julia",
+  "kotlin",
+  "lasso",
+  "livecode",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "run_basic",
+  "scala",
+  "sidef",
+  "tcl",
+  "visual_basic",
+  "zkl",
+]
 +++
 
 ## Task

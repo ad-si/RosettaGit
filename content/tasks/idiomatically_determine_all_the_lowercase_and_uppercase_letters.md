@@ -8,6 +8,33 @@ id = 17424
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "cobol",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "miniscript",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "zx_spectrum_basic",
+]
 +++
 
 [[File:AbcxyzABCXYZ.jpg|100px||right]]

@@ -8,6 +8,15 @@ id = 10589
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "picolisp",
+  "racket",
+  "ruby",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[wp:Named pipe|Named pipe]], or FIFO, is a way of providing inter-process communications (IPC). The task is to demonstrate how it works, create two pipes, say, "in" and "out" (choose suitable names for your system), and write a program that works the two pipes such that:

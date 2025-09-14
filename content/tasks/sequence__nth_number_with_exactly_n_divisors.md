@@ -8,6 +8,21 @@ id = 22268
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "related_tasks",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Calculate the sequence where each term <strong>a<sub>n</sub></strong> is the <strong>n<sup>th</sup></strong> that has '''n''' divisors.

@@ -8,6 +8,17 @@ id = 17934
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "ruby",
+  "zkl",
+]
 +++
 
 [[Iterated digits squaring]] introduces RC the Project Euler Task #92. [[Combinations with repetitions]] introduce RC to the concept of generating all the combinations with repetitions of n types of things taken k at a time.

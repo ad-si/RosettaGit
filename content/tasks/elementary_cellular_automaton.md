@@ -8,6 +8,43 @@ id = 17291
 [taxonomies]
 categories = ["Cellular automata", "Simulation", "task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "ceylon",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "gfa_basic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "matlab",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

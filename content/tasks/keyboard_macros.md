@@ -8,6 +8,36 @@ id = 4263
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []
+languages = [
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "echolisp",
+  "go",
+  "hicest",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "rebol",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "tcl",
+  "vedit_macro_language",
+]
 +++
 
 ## Task

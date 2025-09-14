@@ -8,6 +8,28 @@ id = 22295
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "csharp",
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "scala",
+  "sets_of_2_successive_primes_1_000_000_with_successive_differences_of_1",
+  "sets_of_2_successive_primes_1_000_000_with_successive_differences_of_2",
+  "sets_of_3_successive_primes_1_000_000_with_successive_differences_of_2_2",
+  "sets_of_3_successive_primes_1_000_000_with_successive_differences_of_2_4",
+  "sets_of_3_successive_primes_1_000_000_with_successive_differences_of_4_2",
+  "sets_of_4_successive_primes_1_000_000_with_successive_differences_of_6_4_2",
+  "sidef",
+  "zkl",
+]
 +++
 
 The series of increasing prime numbers begins: <code>2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ...</code>

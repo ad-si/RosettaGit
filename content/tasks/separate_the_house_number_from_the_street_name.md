@@ -8,6 +8,23 @@ id = 17696
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "echolisp",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "scala",
+  "sidef",
+  "tcl",
+  "tuscript",
+]
 +++
 
 {{Draft task}} [[Category:Web]]

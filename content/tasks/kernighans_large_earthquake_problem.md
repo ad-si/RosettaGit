@@ -8,6 +8,38 @@ id = 21787
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "c",
+  "cixl",
+  "cpp",
+  "csharp",
+  "d",
+  "emacs_lisp",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "lua",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "swift",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 [https://en.wikipedia.org/wiki/Brian_Kernighan Brian Kernighan], in a [https://www.youtube.com/watch?v=Sg4U4r_AgJU lecture] at the University of Nottingham, described a [https://youtu.be/Sg4U4r_AgJU?t=50s problem] on which this task is based.

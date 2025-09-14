@@ -8,6 +8,27 @@ id = 21248
 [taxonomies]
 categories = ["Routing algorithms", "task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "d",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "ol",
+  "phix",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "sequencel",
+  "sidef",
+  "unix_shell",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,47 @@ id = 3562
 [taxonomies]
 categories = ["Raster graphics operations", "Graphics algorithms", "task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "e",
+  "erre",
+  "euler_math_toolbox",
+  "fbsl",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "hicest",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "lingo",
+  "perl",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "standard_ml",
+  "tcl",
+  "xpl0",
+  "zkl",
+]
 +++
 
 ## Task

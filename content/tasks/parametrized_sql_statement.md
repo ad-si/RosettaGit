@@ -8,6 +8,39 @@ id = 4878
 [taxonomies]
 categories = ["task", "Database operations"]
 tags = []
+languages = [
+  "8th",
+  "ada",
+  "c",
+  "clojure",
+  "csharp",
+  "go",
+  "haskell",
+  "huginn",
+  "java",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "netrexx",
+  "objeck",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "run_basic",
+  "scala",
+  "seed7",
+  "sql",
+  "sql_pl",
+  "tcl",
+]
 +++
 
 ## Task

@@ -8,6 +8,42 @@ id = 8986
 [taxonomies]
 categories = ["task", "Control Structures"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "erlang",
+  "factor",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "oforth",
+  "oorexx",
+  "oxygenbasic",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "sequencel",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

@@ -8,6 +8,10 @@ id = 22450
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "phix",
+]
 +++
 
 Section 3.3 of [[https://pdfs.semanticscholar.org/4a7c/d245f6f6a4ef933c6cf697832607f71a39c1.pdf Generalised 2-designs with Block Size 3(Andy L. Drizen)]] describes a method of generating Latin Squares of order n attributed to Jacobson and Matthews. The purpose of this task is to produce a function which given a valid Latin Square transforms it to another using this method.

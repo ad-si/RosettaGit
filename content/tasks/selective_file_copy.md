@@ -8,6 +8,25 @@ id = 19065
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "awk",
+  "cobol",
+  "fortran",
+  "go",
+  "java",
+  "kotlin",
+  "netrexx",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "racket",
+  "rexx",
+  "zkl",
+]
 +++
 
 Copy part of input records to an output file.

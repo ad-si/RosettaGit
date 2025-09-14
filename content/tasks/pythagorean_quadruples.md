@@ -8,6 +8,44 @@ id = 21516
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "awk",
+  "c",
+  "cpp",
+  "crystal",
+  "csharp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "nim",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "swift",
+  "vba",
+  "zkl",
+]
 +++
 
 One form of   '''Pythagorean quadruples'''   is   (for positive integers   '''a''',   '''b''',   '''c''',   and   '''d'''):

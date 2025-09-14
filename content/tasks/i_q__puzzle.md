@@ -8,6 +8,24 @@ id = 18092
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "elixir",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "ruby",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 An   IQ Puzzle   is a triangle of 15 golf tee's. 

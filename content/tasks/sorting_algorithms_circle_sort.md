@@ -8,6 +8,40 @@ id = 18460
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "coffeescript",
+  "cpp",
+  "d",
+  "elixir",
+  "forth",
+  "fortran",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "nim",
+  "objeck",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "ubasic_4th",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 Sort an array of integers (of any convenient size) into ascending order using Circlesort.

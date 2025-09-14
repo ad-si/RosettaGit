@@ -8,6 +8,29 @@ id = 12356
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "arturo",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "miniscript",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "sidef",
+  "tcl",
+]
 +++
 
 The task is to create a function that reverses the gender of the text of a string. The function should take one arguments being a string to undergo the sex change. The returned string should contain this initial string, with all references to gender switched.

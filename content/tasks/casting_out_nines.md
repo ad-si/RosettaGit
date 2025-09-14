@@ -8,6 +8,39 @@ id = 11905
 [taxonomies]
 categories = ["Checksums", "task"]
 tags = []
+languages = [
+  "360_assembly",
+  "common_lisp",
+  "cpp",
+  "d",
+  "free_pascal",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "nim",
+  "objeck",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

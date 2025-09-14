@@ -8,6 +8,32 @@ id = 22093
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "maple",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "zkl",
+]
 +++
 
 Generate and show here, the first twenty [https://en.wikipedia.org/wiki/Perfect_totient_number Perfect totient numbers].

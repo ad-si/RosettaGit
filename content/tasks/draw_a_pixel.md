@@ -8,6 +8,40 @@ id = 21825
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []
+languages = [
+  "arm_assembly",
+  "basic256",
+  "bbc_basic",
+  "c",
+  "commodore_basic",
+  "factor",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "nim",
+  "oberon",
+  "objeck",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "processing",
+  "purebasic",
+  "python",
+  "qbasic",
+  "racket",
+  "ring",
+  "robotic",
+  "rust",
+  "scala",
+  "smilebasic",
+  "vba",
+  "wee_basic",
+  "zx_spectrum_basic",
+]
 +++
 
 {{task|GUI}}[[Category:Basic language learning]]{{requires|Graphics}} [[Category:Simple]]

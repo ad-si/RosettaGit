@@ -8,6 +8,9 @@ id = 13504
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "perl",
+]
 +++
 
 In 1964, Daniel G. Bobrow created the STUDENT AI program in order to solve the types of word problems found in high school algebra books. You can read Bobrow's 1964 Ph.D. thesis, ''[http://dspace.mit.edu/handle/1721.1/6903 Natural Language Input for a Computer Problem Solving System]''. The program consists of 3 main pieces:

@@ -8,6 +8,14 @@ id = 10722
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "kotlin",
+  "ol",
+  "racket",
+  "tcl",
+]
 +++
 
 Using the triangle geometry from [[OpenGL]].  But instead of using a mechanism such as glColor3d, use a [[wp:Pixel Shader|pixel shader]] for each pixel in the triangle.  The pixel shader should pick a random RGB color for each pixel.  Most pixels should have colors which are different from that of most other pixels.

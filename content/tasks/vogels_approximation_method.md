@@ -8,6 +8,24 @@ id = 16103
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "sidef",
+  "tcl",
+  "yabasic",
+  "zkl",
+]
 +++
 
 [http://mcajournal.cbu.edu.tr/articleinpress/articleinpress_955.pdf Vogel's Approximation Method (VAM)] is a technique for finding a good initial feasible solution to an allocation problem.

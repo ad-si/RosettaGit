@@ -8,6 +8,15 @@ id = 19923
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "echolisp",
+  "go",
+  "java",
+  "kotlin",
+  "phix",
+  "racket",
+  "zkl",
+]
 +++
 
 '''Railway circuit'''

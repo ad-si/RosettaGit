@@ -8,6 +8,39 @@ id = 17975
 [taxonomies]
 categories = ["Games", "Probability", "Randomness", "task"]
 tags = []
+languages = [
+  "basic",
+  "batch_file",
+  "bbc_basic",
+  "c",
+  "clojure",
+  "cpp",
+  "csharp",
+  "d",
+  "elixir",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "miniscript",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "r",
+  "racket",
+  "rexx",
+  "sinclair_zx81_basic",
+  "tcl",
+  "unix_shell",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

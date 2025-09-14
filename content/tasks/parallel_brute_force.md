@@ -8,6 +8,27 @@ id = 21299
 [taxonomies]
 categories = ["task", "Parallel Brute Force"]
 tags = []
+languages = [
+  "bacon",
+  "c",
+  "clojure",
+  "common_lisp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rust",
+  "scala",
+  "zkl",
+]
 +++
 
 ## Task

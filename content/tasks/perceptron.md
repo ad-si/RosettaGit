@@ -8,6 +8,24 @@ id = 20857
 [taxonomies]
 categories = ["Machine learning", "Neural networks", "AI", "task"]
 tags = []
+languages = [
+  "forth",
+  "go",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "pascal",
+  "phix",
+  "racket",
+  "rexx",
+  "scala",
+  "scheme",
+  "smalltalk",
+  "xlisp",
+  "zkl",
+]
 +++
 
 ## Task

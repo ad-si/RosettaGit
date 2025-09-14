@@ -8,6 +8,46 @@ id = 8432
 [taxonomies]
 categories = ["task", "Keyboard input"]
 tags = []
+languages = [
+  "ada",
+  "applesoft_basic",
+  "axe",
+  "basic",
+  "bbc_basic",
+  "c",
+  "d",
+  "dcl",
+  "erre",
+  "euphoria",
+  "freebasic",
+  "go",
+  "haskell",
+  "i",
+  "julia",
+  "kotlin",
+  "locomotive_basic",
+  "m2000_interpreter",
+  "nim",
+  "oforth",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "seed7",
+  "sidef",
+  "tcl",
+  "vedit_macro_language",
+  "xpl0",
+  "zx_spectrum_basic",
+]
 +++
 
 ## Task

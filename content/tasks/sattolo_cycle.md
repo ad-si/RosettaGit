@@ -8,6 +8,48 @@ id = 21083
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "arm_assembly",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "free_pascal",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jsish",
+  "julia",
+  "kotlin",
+  "lua",
+  "nim",
+  "objeck",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "run_basic",
+  "scala",
+  "sequencel",
+  "sidef",
+  "smalltalk",
+  "swift",
+  "typescript",
+  "vba",
+  "yabasic",
+  "zkl",
+]
 +++
 
 The   [[wp:Sattolo's algorithm|Sattolo cycle]]   is an algorithm for randomly shuffling an array in such a way that each element ends up in a new position.

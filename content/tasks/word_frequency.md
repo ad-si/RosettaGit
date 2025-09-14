@@ -8,6 +8,45 @@ id = 21560
 [taxonomies]
 categories = ["Text processing", "String manipulation", "task"]
 tags = []
+languages = [
+  "autohotkey",
+  "batch_file",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "f_sharp",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "objeck",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "simula",
+  "unix_shell",
+  "vba",
+  "zkl",
+]
 +++
 
 ## Task

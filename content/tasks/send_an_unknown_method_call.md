@@ -8,6 +8,48 @@ id = 10406
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []
+languages = [
+  "autohotkey",
+  "bracmat",
+  "common_lisp",
+  "csharp",
+  "e",
+  "elena",
+  "factor",
+  "forth",
+  "go",
+  "groovy",
+  "io",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lingo",
+  "logtalk",
+  "lua",
+  "mathematica",
+  "oforth",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "pike",
+  "powershell",
+  "python",
+  "qi",
+  "racket",
+  "related_tasks",
+  "ruby",
+  "scala",
+  "sidef",
+  "smalltalk",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

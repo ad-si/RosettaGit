@@ -8,6 +8,15 @@ id = 17949
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "go",
+  "perl_6",
+  "picolisp",
+  "racket",
+  "tcl",
+  "zkl",
+]
 +++
 
 A Time-based One-time Password Algorithm (TOTP) is an algorithm that computes a one-time password from a shared secret key and the current time.  It is the cornerstone of [[wp:Initiative_For_Open_Authentication|Initiative For Open Authentication (OATH)]] and is used in a number of two factor authentication systems.  Essentially, both the server and the client compute the time-limited token, then the server checks if the token supplied by the client matches the locally generated token.

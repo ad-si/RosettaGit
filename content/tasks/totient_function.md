@@ -8,6 +8,36 @@ id = 22091
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "csharp",
+  "dyalect",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "lua",
+  "nim",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "vba",
+  "zkl",
+]
 +++
 
 The   '''totient'''   function is also known as:

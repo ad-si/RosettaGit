@@ -8,6 +8,25 @@ id = 12633
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "julia",
+  "nim",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "seed7",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[wp:Bitcoin|Bitcoin]] uses a specific encoding format to encode the digest of an [[wp:elliptic curve|elliptic curve]] public point into a short ASCII string.  The purpose of this task is to perform such a conversion.

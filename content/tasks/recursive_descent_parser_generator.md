@@ -8,6 +8,10 @@ id = 17472
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "j",
+]
 +++
 
 Write a recursive descent parser generator that takes a description of a grammar as input and outputs the source code for a parser in the same language as the generator. (So a generator written in C++ would output C++ source code for the parser.) You can assume that all of the rules have been preprocessed into a form suitable for the construction of a recursive descent parser. Check the following links for more details.

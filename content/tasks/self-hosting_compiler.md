@@ -8,6 +8,23 @@ id = 17596
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "bacon",
+  "csharp",
+  "go",
+  "j",
+  "kotlin",
+  "lingo",
+  "perl_6",
+  "phix",
+  "python",
+  "rust",
+  "scala",
+  "visual_basic_dotnet",
+  "zed",
+  "zkl",
+]
 +++
 
 Implement a self-hosting compiler for your language i.e. create a compiler that is implemented in the language it is supposed to compile. Extra credit for any solution that can compile in an online compiler such as Ideone. If this is not feasible due to language complexity, link to external projects that achieve this task.

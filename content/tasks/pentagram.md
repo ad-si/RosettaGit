@@ -8,6 +8,34 @@ id = 19037
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "easylang",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "maple",
+  "mathematica",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "postscript",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "scala",
+  "sidef",
+  "spl",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 [[File:Pentagram Java.png|300px||right]]

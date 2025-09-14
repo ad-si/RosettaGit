@@ -8,6 +8,36 @@ id = 2193
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []
+languages = [
+  "bracmat",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "echolisp",
+  "elixir",
+  "emacs_lisp",
+  "erlang",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "racket",
+  "rascal",
+  "rexx",
+  "rust",
+  "scala",
+  "standard_ml",
+  "swift",
+  "tcl",
+]
 +++
 
 Some languages offer direct support for [[wp:Algebraic_data_type|algebraic data types]] and pattern matching on them. While this of course can always be simulated with manual tagging and conditionals, it allows for terse code which is easy to read, and can represent the algorithm directly.

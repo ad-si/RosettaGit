@@ -8,6 +8,25 @@ id = 21218
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "zkl",
+]
 +++
 
 An '''eertree''' is a data structure designed for efficient processing of certain palindrome tasks, for instance counting the number of sub-palindromes in an input string.

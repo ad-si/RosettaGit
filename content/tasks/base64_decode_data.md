@@ -8,6 +8,34 @@ id = 22103
 [taxonomies]
 categories = ["Encodings", "Data processing", "task"]
 tags = []
+languages = [
+  "arturo",
+  "c",
+  "cpp",
+  "d",
+  "factor",
+  "fsharp",
+  "go",
+  "haskell",
+  "jsish",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "python",
+  "ruby",
+  "rust",
+  "scala",
+  "seed7",
+  "sidef",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 ## Task

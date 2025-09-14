@@ -8,6 +8,13 @@ id = 21508
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "go",
+  "kotlin",
+  "phix",
+  "python",
+]
 +++
 
 ## Task

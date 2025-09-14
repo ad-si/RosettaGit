@@ -8,6 +8,37 @@ id = 2400
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "c",
+  "clojure",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "maple",
+  "mathematica",
+  "maxima",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "seed7",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The '''multiplicative order''' of ''a'' relative to ''m'' is the least positive integer ''n'' such that ''a^n'' is 1 (modulo ''m'').

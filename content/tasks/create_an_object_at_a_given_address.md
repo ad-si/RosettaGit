@@ -8,6 +8,30 @@ id = 4347
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []
+languages = [
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "cobol",
+  "cpp",
+  "d",
+  "forth",
+  "freebasic",
+  "go",
+  "julia",
+  "kotlin",
+  "m2000_interpreter",
+  "nim",
+  "pascal",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "racket",
+  "rust",
+  "scala",
+  "tcl",
+]
 +++
 
 In systems programing it is sometimes required to place language objects at specific memory locations, like I/O registers, hardware interrupt vectors etc.

@@ -8,6 +8,42 @@ id = 17599
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "aime",
+  "applescript",
+  "autohotkey",
+  "bracmat",
+  "common_lisp",
+  "cpp",
+  "d",
+  "echolisp",
+  "elixir",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 Given   <code>M</code>   as a list of items and another list   <code>N</code>   of items chosen from   <code>M</code>,   create   <code>M'</code>   as a list with the ''first'' occurrences of items from   N   sorted to be in one of the set of indices of their original occurrence in   <code>M</code>   but in the order given by their order in    <code>N</code>. 

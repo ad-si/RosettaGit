@@ -8,6 +8,39 @@ id = 12844
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applescript",
+  "axe",
+  "clojure",
+  "erlang",
+  "forth",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "oforth",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "standard_ml",
+  "unix_shell",
+  "vba",
+  "zkl",
+]
 +++
 
 Several programming languages offer syntax shortcuts to deal with the notion of "current" or "topic" variable.  A topic variable is a [[Special variables|special variable]] with a very short name which can also often be omitted.

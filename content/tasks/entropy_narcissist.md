@@ -8,6 +8,36 @@ id = 12977
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "autohotkey",
+  "c",
+  "crystal",
+  "d",
+  "elixir",
+  "emacs_lisp",
+  "erlang",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "lua",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[File:ENTROPY.JPG|800px||right]]

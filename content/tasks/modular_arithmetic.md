@@ -8,6 +8,33 @@ id = 12952
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 {{draft task}} [[Category:Mathematics]]

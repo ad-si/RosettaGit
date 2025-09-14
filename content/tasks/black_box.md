@@ -8,6 +8,10 @@ id = 21511
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "javascript",
+]
 +++
 
 Implement a version of the [https://en.wikipedia.org/wiki/Black_Box_(game) Black Box game] beginners configuration: 4 Atoms in an 8 x 8 grid.

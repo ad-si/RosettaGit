@@ -8,6 +8,29 @@ id = 22237
 [taxonomies]
 categories = ["Chess", "Games", "Puzzles", "task"]
 tags = []
+languages = [
+  "1_black_and_1_white_queens_on_a_3_by_3_board",
+  "1_black_and_1_white_queens_on_a_4_by_4_board",
+  "1_black_and_1_white_queens_on_a_5_by_5_board",
+  "1_black_and_1_white_queens_on_a_6_by_6_board",
+  "2_black_and_2_white_queens_on_a_4_by_4_board",
+  "2_black_and_2_white_queens_on_a_5_by_5_board",
+  "2_black_and_2_white_queens_on_a_6_by_6_board",
+  "3_black_and_3_white_queens_on_a_5_by_5_board",
+  "3_black_and_3_white_queens_on_a_6_by_6_board",
+  "4_black_and_4_white_queens_on_a_5_by_5_board",
+  "4_black_and_4_white_queens_on_a_6_by_6_board",
+  "5_black_and_5_white_queens_on_a_6_by_6_board",
+  "5_black_and_5_white_queens_on_a_7_by_7_board",
+  "d",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "phix",
+  "python",
+  "zkl",
+]
 +++
 
 ## Task

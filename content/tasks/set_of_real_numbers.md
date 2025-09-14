@@ -8,6 +8,34 @@ id = 10590
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "echolisp",
+  "elena",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "tcl",
+  "zkl",
+]
 +++
 
 All real numbers form the uncountable set ℝ.  Among its subsets, relatively simple are the convex sets, each expressed as a range between two real numbers ''a'' and ''b'' where ''a'' ≤ ''b''.  There are actually four cases for the meaning of "between", depending on open or closed boundary:

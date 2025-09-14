@@ -8,6 +8,39 @@ id = 11608
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "clojure",
+  "common_lisp",
+  "csharp",
+  "d",
+  "factor",
+  "freebasic",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "lasso",
+  "lua",
+  "m2000_interpreter",
+  "mathematica",
+  "nim",
+  "objeck",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "ruby",
+  "scala",
+  "seed7",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

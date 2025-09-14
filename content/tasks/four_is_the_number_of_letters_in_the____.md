@@ -8,6 +8,17 @@ id = 21590
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "related_tasks",
+  "rexx",
+  "zkl",
+]
 +++
 
 The     <big> '''Four is ...''' </big>     sequence is based on the counting of the number of

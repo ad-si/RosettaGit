@@ -8,6 +8,26 @@ id = 14060
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[wp:W. Edwards Deming|W Edwards Deming]] was an American statistician and management guru who used physical demonstrations to illuminate his teachings.  In one demonstration Deming repeatedly dropped marbles through a funnel at a target, marking where they landed, and observing the resulting pattern.  He applied a sequence of "rules" to try to improve performance.  In each case the experiment begins with the funnel positioned directly over the target.

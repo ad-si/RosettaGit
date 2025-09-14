@@ -8,6 +8,14 @@ id = 19861
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "go",
+  "j",
+  "kotlin",
+  "ol",
+  "phix",
+]
 +++
 
 This is way to render classic Utah Teapot using OpenGL library.

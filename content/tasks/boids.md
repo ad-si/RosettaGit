@@ -8,6 +8,12 @@ id = 12755
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "java",
+  "julia",
+  "phix",
+]
 +++
 
 A [[wp:Boids|Boids]] algorithm simulates the flocking behavior of birds. This task requires the creation of a graphical or purely textual simulation of a flock of birds navigating the cave with obstacles depicted below.

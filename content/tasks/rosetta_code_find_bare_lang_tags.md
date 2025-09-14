@@ -8,6 +8,24 @@ id = 10059
 [taxonomies]
 categories = ["task", "Rosetta Code related"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "erlang",
+  "go",
+  "haskell",
+  "julia",
+  "maple",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "ruby",
+  "scala",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

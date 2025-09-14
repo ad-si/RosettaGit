@@ -8,6 +8,12 @@ id = 22032
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "freebasic",
+  "go",
+  "phix",
+]
 +++
 
 ;Elliptic curves.

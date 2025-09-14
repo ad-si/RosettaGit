@@ -8,6 +8,33 @@ id = 21761
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "awk",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "factor",
+  "go",
+  "haskell",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "m2000_interpreter",
+  "min",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "scala",
+  "vba",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Write a program that accepts a name as input and outputs the lyrics to the Shirley Ellis song "The Name Game"

@@ -8,6 +8,24 @@ id = 21652
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "r",
+  "sas",
+  "stata",
+  "zkl",
+]
 +++
 
 Given a list of [[wp:p-value|p-values]], adjust the p-values for multiple comparisons. This is done in order to control the false positive, or Type 1 error rate.

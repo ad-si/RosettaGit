@@ -8,6 +8,34 @@ id = 9996
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []
+languages = [
+  "bbc_basic",
+  "bracmat",
+  "c",
+  "d",
+  "echolisp",
+  "erlang",
+  "go",
+  "haskell",
+  "j",
+  "jq",
+  "julia",
+  "kotlin",
+  "lua",
+  "order",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

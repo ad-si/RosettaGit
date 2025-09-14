@@ -8,6 +8,42 @@ id = 10679
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "c",
+  "ceylon",
+  "coffeescript",
+  "common_lisp",
+  "csharp",
+  "d",
+  "echolisp",
+  "factor",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "nim",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pike",
+  "potion",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scheme",
+  "sidef",
+  "tcl",
+  "txr",
+]
 +++
 
 [[wp:S-Expression|S-Expressions]]   are one convenient way to parse and store data.

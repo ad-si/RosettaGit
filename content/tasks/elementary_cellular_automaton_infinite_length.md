@@ -8,6 +8,25 @@ id = 17421
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 The purpose of this task is to create a version of an [[Elementary cellular automaton]] whose number of cells is only limited by the memory size of the computer.

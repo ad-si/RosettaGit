@@ -8,6 +8,29 @@ id = 18234
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "c",
+  "d",
+  "elixir",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "objeck",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "zkl",
+]
 +++
 
 A superpermutation of N different characters is a string consisting of an arrangement of multiple copies of those N different characters in which every permutation of those characters can be found as a substring.

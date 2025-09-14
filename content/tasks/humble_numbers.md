@@ -8,6 +8,21 @@ id = 22492
 [taxonomies]
 categories = ["task", "Prime numbers"]
 tags = []
+languages = [
+  "cpp",
+  "factor",
+  "go",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Humble numbers are positive integers which have   no   prime factors <big>&gt;</big> '''7'''.

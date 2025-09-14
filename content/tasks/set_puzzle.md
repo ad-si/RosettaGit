@@ -8,6 +8,37 @@ id = 12906
 [taxonomies]
 categories = ["task", "Cards"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "ceylon",
+  "cpp",
+  "d",
+  "echolisp",
+  "elixir",
+  "erlang",
+  "factor",
+  "functions",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "major_constants",
+  "mathematica",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "tcl",
+  "zkl",
+]
 +++
 
 {{task|Cards}} [[Category:Puzzles]]

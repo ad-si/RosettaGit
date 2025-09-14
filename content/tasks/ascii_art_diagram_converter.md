@@ -8,6 +8,17 @@ id = 16505
 [taxonomies]
 categories = ["String manipulation", "ASCII art", "task"]
 tags = []
+languages = [
+  "d",
+  "go",
+  "j",
+  "julia",
+  "perl_6",
+  "phix",
+  "racket",
+  "rexx",
+  "tcl",
+]
 +++
 
 ## Task

@@ -8,6 +8,44 @@ id = 13370
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "applescript",
+  "autohotkey",
+  "c",
+  "cpp",
+  "d",
+  "echolisp",
+  "elixir",
+  "erlang",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "k",
+  "kotlin",
+  "m2000_interpreter",
+  "mathematica",
+  "maxima",
+  "pascal",
+  "perl",
+  "perl_6",
+  "permelemlist_candidate_void",
+  "phix",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

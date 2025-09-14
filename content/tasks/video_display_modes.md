@@ -8,6 +8,27 @@ id = 9889
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "applesoft_basic",
+  "bbc_basic",
+  "erre",
+  "go",
+  "groovy",
+  "julia",
+  "kotlin",
+  "locomotive_basic",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "qbasic",
+  "rexx",
+  "ring",
+  "scala",
+  "smart_basic",
+  "unix_shell",
+  "xpl0",
+]
 +++
 
 ## Task

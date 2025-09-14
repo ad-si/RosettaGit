@@ -8,6 +8,25 @@ id = 10767
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "pike",
+  "racket",
+  "rexx",
+  "ruby",
+  "sidef",
+]
 +++
 
 A readline interface is a line editing facility that provides auto completion facilities and the ability to recall previously typed lines. Build a simple application that accepts at least two commands and uses a readline style interface.

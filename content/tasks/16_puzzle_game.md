@@ -8,6 +8,15 @@ id = 21790
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []
+languages = [
+  "go",
+  "javascript",
+  "julia",
+  "phix",
+  "rexx",
+  "ring",
+  "task",
+]
 +++
 
 ## Task

@@ -8,6 +8,15 @@ id = 9746
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "bbc_basic",
+  "go",
+  "liberty_basic",
+  "phix",
+  "picolisp",
+  "racket",
+  "tcl",
+]
 +++
 
 ## Task

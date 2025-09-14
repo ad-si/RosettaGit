@@ -8,6 +8,45 @@ id = 17373
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []
+languages = [
+  "befunge",
+  "c",
+  "clojure",
+  "csharp",
+  "d",
+  "dcl",
+  "echolisp",
+  "elixir",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "sidef",
+  "tcl",
+  "vba",
+  "zkl",
+  "zx_spectrum_basic",
+]
 +++
 
 [[File:taxi1729.png|600px||right]]

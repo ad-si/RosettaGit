@@ -8,6 +8,9 @@ id = 22595
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "javascript",
+]
 +++
 
 {| class="wikitable" style="text-align: center;"

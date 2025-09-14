@@ -8,6 +8,25 @@ id = 1912
 [taxonomies]
 categories = ["task", "Database operations"]
 tags = []
+languages = [
+  "c",
+  "csharp",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "objeck",
+  "perl",
+  "perl_6",
+  "php",
+  "python",
+  "racket",
+  "raven",
+  "ruby",
+  "sidef",
+  "tcl",
+]
 +++
 
 ## Task

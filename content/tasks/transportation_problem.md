@@ -8,6 +8,22 @@ id = 13633
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "1c",
+  "d",
+  "glagol",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl_6",
+  "phix",
+  "racket",
+  "related_tasks",
+  "sas",
+]
 +++
 
 The '''[[wp:Transportation_theory_%28mathematics%29|transportation problem]]''' in linear programming is to find the optimal transportation plan for certain volumes of resources from suppliers to consumers, taking into account the cost of transportation. The plan is a table (matrix), whose rows and columns correspond to the suppliers and consumers, the cells are placed in cargo volume.

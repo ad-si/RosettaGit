@@ -8,6 +8,45 @@ id = 9169
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "easylang",
+  "eiffel",
+  "elixir",
+  "fortran",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "mathematica",
+  "netrexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "qb64",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "tailspin",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

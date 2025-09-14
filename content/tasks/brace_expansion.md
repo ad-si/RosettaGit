@@ -8,6 +8,38 @@ id = 17127
 [taxonomies]
 categories = ["String manipulation", "task"]
 tags = []
+languages = [
+  "11l",
+  "autohotkey",
+  "common_lisp",
+  "cpp",
+  "d",
+  "elixir",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "scheme",
+  "seed7",
+  "sidef",
+  "simula",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

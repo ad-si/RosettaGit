@@ -8,6 +8,23 @@ id = 22162
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "csharp",
+  "dyalect",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "yabasic",
+  "zkl",
+]
 +++
 
 Define a range of numbers <code>R</code>, with bounds <code>b0</code> and <code>b1</code> covering all numbers ''between and including both bounds''. That range can be shown as:

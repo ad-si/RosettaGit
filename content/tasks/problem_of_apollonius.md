@@ -8,6 +8,46 @@ id = 7941
 [taxonomies]
 categories = ["task", "arithmetic operations"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "coffeescript",
+  "csharp",
+  "d",
+  "elixir",
+  "fortran",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "jq",
+  "julia",
+  "kotlin",
+  "lasso",
+  "liberty_basic",
+  "mathematica",
+  "mumps",
+  "nim",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "pl_i",
+  "powershell",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "swift",
+  "tcl",
+  "vba",
+  "zkl",
+]
 +++
 
 [[File:Apollonius.png|400px|Two solutions to the problem of Apollonius|right]]

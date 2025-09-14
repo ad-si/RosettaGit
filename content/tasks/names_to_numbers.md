@@ -8,6 +8,23 @@ id = 13501
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "common_lisp",
+  "d",
+  "go",
+  "haskell",
+  "j",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ruby",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 Translate the spelled-out English name of a number to a number. You can use a preexisting implementation or roll your own, but you should support inputs up to at least one million (or the maximum value of your language's default bounded integer type, if that's less).

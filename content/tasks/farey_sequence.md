@@ -8,6 +8,48 @@ id = 17470
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "apl",
+  "awk",
+  "c",
+  "common_lisp",
+  "crystal",
+  "csharp",
+  "d",
+  "echolisp",
+  "factor",
+  "freebasic",
+  "funl",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "maple",
+  "mathematica",
+  "nim",
+  "pari_gp",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "prolog",
+  "purebasic",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "scala",
+  "scheme",
+  "sidef",
+  "stata",
+  "swift",
+  "tcl",
+  "zkl",
+]
 +++
 
 The   [[wp:Farey sequence|Farey sequence]]   ''' ''F''<sub>n</sub>'''   of order   '''n'''   is the sequence of completely reduced fractions between   '''0'''   and   '''1'''   which, when in lowest terms, have denominators less than or equal to   '''n''',   arranged in order of increasing size.

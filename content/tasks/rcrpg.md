@@ -8,6 +8,31 @@ id = 3042
 [taxonomies]
 categories = ["task", "Games"]
 tags = []
+languages = [
+  "c",
+  "clojure",
+  "common_lisp",
+  "cpp",
+  "d",
+  "erlang",
+  "go",
+  "haskell",
+  "inform_7",
+  "java",
+  "javascript",
+  "julia",
+  "miniscript",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "purebasic",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "tcl",
+]
 +++
 
 ## Task

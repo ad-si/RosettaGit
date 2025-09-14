@@ -8,6 +8,24 @@ id = 11084
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 Implement the [[wp:Montgomery reduction|Montgomery reduction]] algorithm, as explained in "Handbook of Applied Cryptography, Section 14.3.2, page 600. Montgomery reduction calculates <math>T R^{-1} \mathrm{mod}  m</math>, without having to divide by <math>m</math>.

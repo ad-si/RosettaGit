@@ -8,6 +8,9 @@ id = 10491
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+]
 +++
 
 The task is to crop a given audio waveform file, removing any leading or trailing silence from the wave file, leaving just the audible sound.

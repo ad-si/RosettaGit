@@ -8,6 +8,25 @@ id = 20992
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "kotlin",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "scala",
+  "sidef",
+  "swift",
+  "zkl",
+]
 +++
 
 When neglecting the influence of other objects, two celestial bodies orbit one another along a [[wp:conic section|conic]] trajectory.  In the orbital plane, the radial equation is thus:

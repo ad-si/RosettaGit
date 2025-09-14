@@ -8,6 +8,46 @@ id = 8059
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "bbc_basic",
+  "c",
+  "cpp",
+  "csharp",
+  "delphi",
+  "fantom",
+  "freebasic",
+  "gambas",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "liberty_basic",
+  "livecode",
+  "m2000_interpreter",
+  "maple",
+  "mathematica",
+  "newlisp",
+  "nim",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "prolog",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "ring",
+  "ruby",
+  "scala",
+  "smalltalk",
+  "tcl",
+  "vala",
+  "value_stores_a_string",
+  "visual_basic",
+]
 +++
 
 In addition to fundamental [[GUI component interaction]], an application should

@@ -8,6 +8,35 @@ id = 9733
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []
+languages = [
+  "autohotkey",
+  "basic",
+  "c",
+  "d",
+  "erlang",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "lasso",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "powershell",
+  "python",
+  "racket",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "tcl",
+  "txr",
+  "vbscript",
+]
 +++
 
 ## Task

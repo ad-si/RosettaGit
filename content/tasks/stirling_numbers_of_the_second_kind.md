@@ -8,6 +8,18 @@ id = 22466
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "factor",
+  "go",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "rexx",
+  "sidef",
+  "zkl",
+]
 +++
 
 Stirling numbers of the second kind, or Stirling partition numbers, are the

@@ -8,6 +8,41 @@ id = 1995
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "e",
+  "echolisp",
+  "erlang",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "neko",
+  "objeck",
+  "ocaml",
+  "ol",
+  "oz",
+  "perl",
+  "perl_6",
+  "phix",
+  "php",
+  "picolisp",
+  "python",
+  "racket",
+  "ruby",
+  "rust",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

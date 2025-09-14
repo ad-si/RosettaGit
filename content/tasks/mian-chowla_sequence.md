@@ -8,6 +8,30 @@ id = 22215
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "awk",
+  "c",
+  "cpp",
+  "go",
+  "haskell",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "rexx",
+  "ruby",
+  "sidef",
+  "swift",
+  "vbscript",
+  "visual_basic_dotnet",
+]
 +++
 
 The [[wp:Mian–Chowla sequence|Mian–Chowla sequence]] is an integer sequence defined recursively.

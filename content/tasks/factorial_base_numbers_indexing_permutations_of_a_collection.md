@@ -8,6 +8,17 @@ id = 22098
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "factor",
+  "go",
+  "j",
+  "julia",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "zkl",
+]
 +++
 
 You need a random arrangement of a deck of cards, you are sick of lame ways of doing this. This task is a super-cool way of doing this using factorial base numbers.

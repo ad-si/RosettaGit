@@ -8,6 +8,39 @@ id = 10750
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []
+languages = [
+  "bracmat",
+  "c",
+  "cobol",
+  "common_lisp",
+  "csharp",
+  "d",
+  "erlang",
+  "forth",
+  "go",
+  "haskell",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pike",
+  "powershell",
+  "python",
+  "racket",
+  "rebol",
+  "related_tasks",
+  "rexx",
+  "ruby",
+  "run_basic",
+  "scala",
+  "tcl",
+  "toffeescript",
+  "unix_shell",
+]
 +++
 
 ## Task

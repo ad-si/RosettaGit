@@ -8,6 +8,25 @@ id = 17613
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "d",
+  "go",
+  "j",
+  "java",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 It is known that the set of finite lists of positive integers is   [[wp:countable| <u>countable</u>]].  

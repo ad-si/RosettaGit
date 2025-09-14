@@ -8,6 +8,42 @@ id = 15306
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "autohotkey",
+  "c",
+  "cpp",
+  "create_fibonacci_word_order_n",
+  "d",
+  "elixir",
+  "executing",
+  "factor",
+  "fibonacci_word_fractal_2_20_17_aev",
+  "freebasic",
+  "go",
+  "j",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "logo",
+  "lua",
+  "n_word_order_w_width_h_height_d_segment_size_clr_color",
+  "pari_gp",
+  "perl",
+  "perl_6",
+  "phix",
+  "plot_fibonacci_word_fractal",
+  "python",
+  "r",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "scilab",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 [[File:Fib_word_fractal.gif|613px||right]]

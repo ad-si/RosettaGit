@@ -8,6 +8,16 @@ id = 7506
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "go",
+  "haskell",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "ruby",
+  "tcl",
+]
 +++
 
 {{clarified-review}}{{draft task}}[[Category:Recursion]]

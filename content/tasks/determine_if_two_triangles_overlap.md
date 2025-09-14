@@ -8,6 +8,29 @@ id = 21228
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "c",
+  "cpp",
+  "csharp",
+  "d",
+  "go",
+  "java",
+  "julia",
+  "kotlin",
+  "lua",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "qb64",
+  "racket",
+  "rexx",
+  "scala",
+  "visual_basic_dotnet",
+  "zkl",
+]
 +++
 
 Determining if two triangles in the same plane overlap is an important topic in collision detection.

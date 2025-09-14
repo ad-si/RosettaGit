@@ -115,7 +115,7 @@ languages = [
   "zx_spectrum_basic",
   "oorexx",
   "zkl"
-)
+]
 +++
 
 ## Task

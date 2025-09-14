@@ -8,6 +8,22 @@ id = 3559
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "c",
+  "d",
+  "erlang",
+  "go",
+  "julia",
+  "oz",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "racket",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

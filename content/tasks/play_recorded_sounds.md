@@ -8,6 +8,30 @@ id = 4366
 [taxonomies]
 categories = ["task", "Temporal media"]
 tags = []
+languages = [
+  "autohotkey",
+  "batch_file",
+  "bbc_basic",
+  "csharp",
+  "delphi",
+  "go",
+  "guiss",
+  "liberty_basic",
+  "mathematica",
+  "phix",
+  "picolisp",
+  "purebasic",
+  "python",
+  "r",
+  "racket",
+  "ring",
+  "ruby",
+  "swift",
+  "tcl",
+  "tuscript",
+  "unix_shell",
+  "vba",
+]
 +++
 
 ## Task

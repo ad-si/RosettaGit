@@ -8,6 +8,34 @@ id = 1991
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "algol_68",
+  "d",
+  "forth",
+  "fortran",
+  "free_pascal",
+  "freebasic",
+  "go",
+  "j",
+  "julia",
+  "kotlin",
+  "mercury",
+  "nim",
+  "ocaml",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "pl_i",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "tcl",
+]
 +++
 
 It is often useful to control the memory layout of fields in a data structure to match an interface control definition, or to interface with hardware. Define a data structure matching the RS-232 Plug Definition. Use the 9-pin definition for brevity.

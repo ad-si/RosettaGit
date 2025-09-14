@@ -8,6 +8,30 @@ id = 9184
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "ada",
+  "autohotkey",
+  "awk",
+  "c",
+  "cobol",
+  "d",
+  "go",
+  "j",
+  "javascript",
+  "julia",
+  "kotlin",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "ring",
+  "ruby",
+  "sidef",
+  "tcl",
+]
 +++
 
 [[wp:Decision_table|Decision Tables]] are a precise yet compact way to model complicated logic.

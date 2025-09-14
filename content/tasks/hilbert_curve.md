@@ -8,6 +8,34 @@ id = 21807
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "csharp",
+  "d",
+  "freebasic",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "lua",
+  "mathematica",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "ring",
+  "scala",
+  "seed7",
+  "sidef",
+  "vala",
+  "visual_basic_dotnet",
+  "yabasic",
+  "zkl",
+]
 +++
 
 <br/>

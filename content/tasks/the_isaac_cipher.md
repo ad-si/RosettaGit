@@ -8,6 +8,32 @@ id = 17790
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []
+languages = [
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "d",
+  "delphi",
+  "ecmascript",
+  "freebasic",
+  "go",
+  "haskell",
+  "haxe",
+  "java",
+  "julia",
+  "kotlin",
+  "pascal",
+  "perl",
+  "perl_6",
+  "phix",
+  "picolisp",
+  "python",
+  "racket",
+  "rexx",
+  "sidef",
+  "tcl",
+]
 +++
 
 ISAAC is a cryptographically secure pseudo-random number generator (CSPRNG) and stream cipher. It was developed by Bob Jenkins from 1993 (http://burtleburtle.net/bob/rand/isaac.html) and placed in the Public Domain. ISAAC is fast - especially when optimised - and portable to most architectures in nearly all programming and scripting languages.

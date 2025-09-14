@@ -8,6 +8,32 @@ id = 19053
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "awk",
+  "common_lisp",
+  "csharp",
+  "d",
+  "elixir",
+  "factor",
+  "go",
+  "haskell",
+  "java",
+  "javascript",
+  "julia",
+  "kotlin",
+  "oorexx",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "scheme",
+  "sidef",
+  "zkl",
+]
 +++
 
 Solve the "<i>Impossible Puzzle</i>":

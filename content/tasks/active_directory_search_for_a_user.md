@@ -8,6 +8,27 @@ id = 2973
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []
+languages = [
+  "c",
+  "d",
+  "eiffel",
+  "go",
+  "haskell",
+  "java",
+  "netrexx",
+  "oorexx",
+  "perl_6",
+  "php",
+  "picolisp",
+  "python",
+  "rexx",
+  "ruby",
+  "run_basic",
+  "scala",
+  "tcl",
+  "unix_shell",
+  "vbscript",
+]
 +++
 
 ## Task

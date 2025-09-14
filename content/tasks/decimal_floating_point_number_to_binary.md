@@ -8,6 +8,36 @@ id = 17162
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "bc",
+  "d",
+  "dc",
+  "elixir",
+  "factor",
+  "fortran",
+  "freebasic",
+  "go",
+  "haskell",
+  "j",
+  "julia",
+  "kotlin",
+  "livecode",
+  "m2000_interpreter",
+  "maple",
+  "mathematica",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "scala",
+  "sidef",
+  "tcl",
+  "zkl",
+]
 +++
 
 ## Task

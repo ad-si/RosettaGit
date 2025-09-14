@@ -8,6 +8,33 @@ id = 21791
 [taxonomies]
 categories = ["task"]
 tags = []
+languages = [
+  "algol_68",
+  "c",
+  "common_lisp",
+  "cpp",
+  "csharp",
+  "factor",
+  "go",
+  "groovy",
+  "haskell",
+  "j",
+  "jq",
+  "julia",
+  "kotlin",
+  "ocaml",
+  "perl",
+  "perl_6",
+  "phix",
+  "python",
+  "racket",
+  "rexx",
+  "ruby",
+  "rust",
+  "scala",
+  "sidef",
+  "zkl",
+]
 +++
 
 In mathematics,   ''Euler's identity''   (also known as   ''Euler's equation'')   is the equality:
