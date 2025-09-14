@@ -3,6 +3,7 @@ title = "Cilk++"
 description = ""
 date = 2011-03-02T02:14:31Z
 aliases = []
+slug = "cilk-plus"
 [extra]
 id = 9308
 [taxonomies]

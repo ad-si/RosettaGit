@@ -1,11 +1,11 @@
 $font-core: 'Open Sans', sans-serif;
 $font-alt: 'Source Code Pro', monospace;
 
-$color-black:        rgba(0, 0, 0, 0.84);
-$color-gray:         rgba(0, 0, 0, 0.54);
-$color-gray-light:   rgba(0, 0, 0, 0.20);
-$color-gray-muted:   rgba(0, 0, 0, 0.10);
-$color-link:         hsl(210, 70%, 40%);
+$color-black: rgba(0, 0, 0, 0.84);
+$color-gray: rgba(0, 0, 0, 0.54);
+$color-gray-light: rgba(0, 0, 0, 0.20);
+$color-gray-muted: rgba(0, 0, 0, 0.10);
+$color-link: hsl(210, 70%, 40%);
 $color-link-visited: hsl(280, 70%, 40%);
 
 $color-task: hsl(150, 50%, 80%);
@@ -58,13 +58,33 @@ small {
   font-size: 0.85em;
 }
 
-h1 { font-size: 3.0rem; margin: 1.5rem 0 1.8rem 0; }
-h2 { font-size: 2.0rem; margin: 1.0rem 0 1.3rem 0; }
-h3 { font-size: 1.5rem; margin: 0.5rem 0 0.8rem 0; }
-h4 { font-size: 1.2rem; margin: 0.2rem 0 0.5rem 0; }
+h1 {
+  font-size: 3.0rem;
+  margin: 1.5rem 0 1.8rem 0;
+}
 
-h1,h2,h3,h4 {
-  a { text-decoration: none }
+h2 {
+  font-size: 2.0rem;
+  margin: 1.0rem 0 1.3rem 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0.8rem 0;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0.2rem 0 0.5rem 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  a {
+    text-decoration: none
+  }
 }
 
 section {
@@ -78,7 +98,7 @@ pre {
   overflow-x: scroll;
 }
 
-p > code {
+p>code {
   color: #e74c3c;
   border: 1px solid #ecf0f1;
   padding: 5px;
@@ -117,7 +137,8 @@ blockquote {
   padding: 0.4em 0.8em;
   margin-bottom: 1em;
   width: 80%;
-  & > p {
+
+  &>p {
     margin-bottom: 0;
   }
 }
@@ -216,7 +237,10 @@ header {
     a {
       text-decoration: none;
       color: inherit;
-      &:hover { text-decoration: underline; }
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -235,15 +259,23 @@ main {
 // Paddings to enable full width pre tag
 
 article {
-  > div {
+  >div {
     margin-left: 1rem;
     margin-right: 1rem;
   }
 }
 
 article {
-  > p, > ul, > ol,
-  > h1, > h2, > h3, > h4, > h5, > h6 {
+
+  >p,
+  >ul,
+  >ol,
+  >h1,
+  >h2,
+  >h3,
+  >h4,
+  >h5,
+  >h6 {
     padding-right: 0;
     padding-left: 0;
   }
@@ -281,6 +313,7 @@ article {
   li {
     a {
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
@@ -342,18 +375,19 @@ aside {
   margin-bottom: 15px;
   text-align: center;
 
-  & > span, & > a {
+  &>span,
+  &>a {
     color: $color-gray-light;
     font-size: 12px;
   }
 
-  & > .pages {
+  &>.pages {
     color: $color-gray;
     font-size: 15px;
     margin: 0 10px;
   }
 
-  & > a {
+  &>a {
     color: $color-link;
     text-decoration: none;
   }
@@ -393,15 +427,23 @@ footer {
   // Reset margins & paddings
 
   article {
-    > div {
+    >div {
       margin-left: 0;
       margin-right: 0;
     }
   }
 
   article {
-    > p, > ul, > ol,
-    > h1, > h2, > h3, > h4, > h5, > h6 {
+
+    >p,
+    >ul,
+    >ol,
+    >h1,
+    >h2,
+    >h3,
+    >h4,
+    >h5,
+    >h6 {
       padding-right: 0;
       padding-left: 0;
     }
@@ -418,8 +460,11 @@ footer {
     padding-left: 0;
   }
 
-
   #languages-content {
+    column-count: 1;
+  }
+
+  #languages-content ul {
     column-count: 3;
   }
 

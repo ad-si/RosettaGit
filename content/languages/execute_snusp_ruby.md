@@ -11,8 +11,12 @@ tags = []
 +++
 
 
-These [Ruby](https://rosettacode.org/wiki/Ruby) implementations of SNUSP profiles are partially derived from [RCSNUSP/Tcl](https://rosettacode.org/wiki/RCSNUSP/Tcl).
+These [Ruby](https://rosettacode.org/wiki/Ruby) implementations of SNUSP profiles
+are partially derived from [RCSNUSP/Tcl](https://rosettacode.org/wiki/RCSNUSP/Tcl).
+
+
 ## Core SNUSP
+
 ```ruby
 $stdout.sync = true
 $stdin.sync = true
@@ -216,6 +220,7 @@ done
 
 
 ## Modular SNUSP
+
 ```ruby
 require 'rc_coresnusp.rb'
 
@@ -330,6 +335,7 @@ done
 
 
 ## Bloated SNUSP
+
 User input is still line-oriented -- must press Enter before Ruby sees input.
 
 
@@ -530,7 +536,7 @@ end
 
 
 Output:
-<div style="width:full;overflow:scroll">
+
 ```txt
 $ ruby rc_bloatedsnusp.rb
 Bloated: random
@@ -543,4 +549,3 @@ Bloated: randout
 2done
 
 ```
-</div>

@@ -9,6 +9,7 @@ id = 1729
 categories = []
 tags = []
 +++
+
 '''Tcl''' (short for '''T'''ool '''C'''ommand '''L'''anguage)
 is a scripting language with very simple syntax, dynamic typing,
 automatic storage allocation and [garbage collection](https://rosettacode.org/wiki/garbage_collection)
@@ -42,7 +43,9 @@ and [tclkit](https://rosettacode.org/wiki/tclkit) from Equi4 Software ''et al''.
 
 Older versions of the language (8.5) are distributed as part of Apple's OS X.
 
+
 ## Language Syntax
+
 ### Grammar
 
 Note that this is a simplified language grammar, and it is normal
@@ -64,6 +67,7 @@ to think of the language at a higher level where these differences don't show.
 
 The syntax of the language is defined more exactly in the [http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm Tcl(n)] manual page.
 
+
 ### Conceptual Command Syntax
 
 Though formally not part of the language syntax, the syntactic style of the language's standard commands mostly follow a few basic syntactic principles:
@@ -74,6 +78,7 @@ Though formally not part of the language syntax, the syntactic style of the lang
 ** During-execution callback scripts are evaluated in the context of their caller.
 ** After-execution callback scripts are evaluated in the global scope.
 * Commands cannot discover how their arguments were quoted.
+
 
 ### Key Commands
 
@@ -117,12 +122,14 @@ The following commands are simply normal commands, and can be renamed, deleted, 
 '''uplevel''' ?''level''? ''arg''...
 :Concatenate the arguments and evaluate them as a script in the stack frame given by ''level'' (or the stack frame that called the current procedure if that is omitted). Due to syntactic ambiguities, it is recommended that the ''level'' always be specified explicitly.
 
+
 ### = From Tcl 8.5 =
 
 '''apply''' ''lambdaTerm arg…''
 :Applies a lambda term to zero or more arguments. Lambda terms are two- or three-element tuples, the first element being the formal parameter description, the second being the script that implements the lambda (just as with '''proc''') and the optional third being the context namespace (with the default being the global namespace).
 '''dict''' ''subcommand'' …
 :Manipulates dictionaries, values that describe a (sparse) mapping from arbitrary keys to arbitrary values (well, so long as both are themselves values).
+
 
 ### = From Tcl 8.6 =
 
@@ -135,7 +142,9 @@ The following commands are simply normal commands, and can be renamed, deleted, 
 '''oo::class create''' ''name body''
 :Creates a class called ''name'' with definition ''body''. Instances of ''name'' are created with “''name'' '''new''' ''arg…''” and “''name'' '''create''' ''instanceName arg…''”. (Note that the syntax for '''oo::class''' is a consequence of this.)
 
+
 ## Language Semantics
+
 ### Value Model
 
 Tcl's value model operates on two levels.
@@ -157,76 +166,10 @@ The language supports the following basic types, together with many defined by e
 ** etc.
 Note that all variables can hold values of ''any'' type; the language does not impose type constraints on variables at all. However, it is possible to use variable traces to enforce a type constraint if so desired.
 
+
 ## External Links
-*[http://www.tcl-lang.org/man/ Tcl Documentation]
-*[http://wiki.tcl-lang.org Tcl Wiki]
-*[http://en.wikipedia.org/wiki/Tcl Wikipedia article]
-*[http://en.wikibooks.org/wiki/Programming:Tcl Wikibook]
 
-## Todo
-[Reports:Tasks_not_implemented_in_Tcl](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Tcl)
-
-
-## Merged content
-
-
-[](https://rosettacode.org/wiki/implementation_of_task::RCBF)
-This [Tcl](https://rosettacode.org/wiki/Tcl) [Brainfuck](https://rosettacode.org/wiki/Brainfuck) interpreter is derived from code on [http://wiki.tcl.tk/9490 The Tcler's Wiki], and is written to be short but not particularly clear.
-
-To use it, save it to a file (e.g., called “bf.tcl”) and run that against <tt>tclsh</tt> with either the name of the file containing the BF program or just input the program on stdin; the program will only begin execution after you do end-of-file (however that's done on your OS). For example:
-  tclsh8.5 bf.tcl helloWorld.bf
-<br clear=all>
-## Interpreter Implementation
-```tcl
-package require Tcl 8.5
-fconfigure stdout -buffering none
-fconfigure stdin -buffering none
-if {![llength $argv]} {
-    set p [split [read stdin] {}]
-} else {
-    set fd [open [lindex $argv 0]]
-    set p [split [read $fd] {}]
-    close $fd
-}
-set d [lrepeat 30000 0]
-set dc 0
-for {set pc 0} {$pc < [llength $p]} {incr pc} {
-    switch [lindex $p $pc] {
-	">" {
-	    incr dc
-	}
-	"<" {
-	    incr dc -1
-	}
-	"+" {
-	    lset d $dc [expr {[lindex $d $dc] + 1}]
-	}
-	"-" {
-	    lset d $dc [expr {[lindex $d $dc] - 1}]
-	}
-	"." {
-	    puts -nonewline [format "%c" [lindex $d $dc]]
-	}
-	"," {
-	    lset d $dc [scan [read stdin 1] "%c"]
-	}
-	"\[" {
-	    if {![lindex $d $dc]} {
-		incr pc
-		for {set n 0} {$n || [lindex $p $pc] ne "\]"} {incr pc} {
-		    switch -- [lindex $p $pc] "\[" {incr n} "\]" {incr n -1}
-		}
-	    }
-	}
-	"\]" {
-	    if {[lindex $d $dc]} {
-		incr pc -1
-		for {set n 0} {$n || [lindex $p $pc] ne "\["} {incr pc -1} {
-		    switch -- [lindex $p $pc] "\[" {incr n -1} "\]" {incr n}
-		}
-	    }
-	}
-    }
-}
-```
-
+* [Tcl Documentation](http://www.tcl-lang.org/man/)
+* [Tcl Wiki](http://wiki.tcl-lang.org)
+* [Wikipedia article](http://en.wikipedia.org/wiki/Tcl)
+* [Tcl Wikibook](http://en.wikibooks.org/wiki/Programming:Tcl Wikibook)

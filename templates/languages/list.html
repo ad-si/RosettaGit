@@ -20,7 +20,7 @@
           %}
           <li>
             <a href="{{ category.permalink }}"
-              >{{ singleton[0] | get(key="title") }}</a>
+              >{% if singleton %}{{ singleton[0] | get(key="title") }}{% else %}{{ category.name }}{% endif %}</a>
             <small>
               ({{ category.pages | length }})
             </small>

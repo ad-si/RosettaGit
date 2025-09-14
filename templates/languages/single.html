@@ -7,7 +7,7 @@
     {% set singleton = langsSection.pages |
         filter(attribute="slug", value=term.slug)
     %}
-    {% set termTitle = singleton[0] | get(key="title") %}
+    {% set termTitle = singleton | length > 0 and singleton[0] | get(key="title") or term.name %}
 
     <h2>
       {% if term.name %} {{termTitle}}
