@@ -9,7 +9,7 @@ taxonomies = [
 ]
 
 [markdown]
-highlight_code = true
+highlight_code = false # TODO: Re-enable
 highlight_theme = "monokai"
 
 [extra]
