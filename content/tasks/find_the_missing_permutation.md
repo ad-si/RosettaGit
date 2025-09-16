@@ -2369,7 +2369,8 @@ end %fingMissingPerms
 ```
 
 
-```MATLAB>>
+```matlab
+>
  list = ['ABCD';
 'CABD';
 'ACDB';
@@ -3079,7 +3080,8 @@ print missing_permutation(given)
 Uses the same method as explained directly above,
 but calculated in a more functional manner:
 
-```python>>>
+```python
+>>
  from collections import Counter
 >>> given = '''ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA
            CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB'''.split()
@@ -3097,7 +3099,8 @@ and that at the end of the list
 created by the call to <code>most_common()</code>
 is the least common character.
 
-```python>>>
+```python
+>>
  from pprint import pprint as pp
 >>> pp(list(zip(*given)), width=120)
 [('A', 'C', 'A', 'D', 'B', 'A', 'A', 'C', 'D', 'B', 'C', 'C', 'C', 'A', 'A', 'B', 'D', 'B', 'B', 'B', 'C', 'D', 'D'),

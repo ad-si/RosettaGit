@@ -28,8 +28,10 @@ next state.  Thus verb go's guts are
 ```
 
 
-Instruct   
-```J>go fish</lang
+Instruct
+```j
+go fish
+```
    to play.
 
 
@@ -51,24 +53,24 @@ book: remove books from hand and update score.
 fill: optionally draw a card into empty hand.
 end: no more fish in pond.
 
-book -> fill -> 
+book -> fill ->
               end
              draw -> BOOK     Chose to not draw a card into an empty hand before asking; silly but valid.
-              ask -> RESPOND ->           
+              ask -> RESPOND ->
                                 FISH -> draw -> BOOK
                               SUPPLY -> book
-BOOK -> FILL -> 
+BOOK -> FILL ->
               end
-              ASK -> respond ->           
+              ASK -> respond ->
                                 fish -> DRAW -> book
                               supply -> dumb -> BOOK
 
           state
-number  name     transition to  
+number  name     transition to
 
 0b0     book     0b1
 0b1     fill     0b2 0b3 0b5
-0b2     end      
+0b2     end
 0b3     draw     0b4
 0b4     BOOK     0b9
 0b5     ask      0b6

@@ -1941,7 +1941,8 @@ class Example {
 
 =={{header|Objective-C}}==
 Classic Objective-C
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface Delegator : NSObject {
@@ -2022,7 +2023,8 @@ int main() {
 
 
 Objective-C 2.0, modern runtime, Automatic Reference Counting, Autosynthesize (LLVM 4.0+)
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 // Formal protocol for the delegate

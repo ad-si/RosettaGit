@@ -143,7 +143,8 @@ L(c) input_csv
 print("</td></tr>\n</table>")
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -206,7 +207,8 @@ end Csv2Html;
 
 table.tmplt:
 
-```html5><table
+```html5
+<table
 
 @@TABLE@@
    <tr>
@@ -218,7 +220,8 @@ table.tmplt:
 ```
 
 
-```html5><table
+```html5
+<table
 
    <tr>
       <td>Character</td>
@@ -322,7 +325,8 @@ html;
 lmth
 ```
 
-```html5><HTML
+```html5
+<HTML
 
 <HEAD>
 <TITLE>CSV to HTML translation - Extra Credit</TITLE>
@@ -524,7 +528,8 @@ $ awk -f csv2html.awk input.csv
 ```
 
 
-```html5><table
+```html5
+<table
 
         <tr>
                 <td>Character</td>
@@ -562,7 +567,8 @@ $ awk -v header=1 -f csv2html.awk input.csv
 ```
 
 
-```html5><table
+```html5
+<table
 
         <tr>
                 <th>Character</th>
@@ -631,7 +637,8 @@ for /f "delims=" %%A in ('findstr "^:::" "%~f0"') do (
 echo ^</table^>
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -757,7 +764,8 @@ The multitude,Behold his mother! Behold his mother!
 
 Output:
 
-```html><table><thead><tr><th>Character</th><th>Speech</th></tr></thead
+```html
+<table><thead><tr><th>Character</th><th>Speech</th></tr></thead
 
 <tbody><tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
 <tr><td>Brians mother</td><td>&lt;angry&gt;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&lt;/angry&gt;</td></tr>
@@ -887,7 +895,8 @@ $    > \#v_$0";tl&"v v"</t"<0 > : |
 ^_>#!,#:<>#<0#<\#<<< >:#,_$#^_v@ $<
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -944,7 +953,8 @@ $ ./csv
 
 
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -1128,7 +1138,8 @@ The multitude,Behold his mother! Behold his mother!";
 ```
 
 
-```html5><table
+```html5
+<table
 
 	<tr>
 		<th>Character</th>
@@ -1360,7 +1371,8 @@ CL-USER> (csv->html *csv*)
 ```
 
 
-```html5><table
+```html5
+<table
 
 	<tr><th>Character</th><th>Speech</th></tr>
 	<tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -1415,7 +1427,8 @@ void main() {
 }
 ```
 
-```html5><html
+```html5
+<html
 
 <head><meta charset="utf-8"></head>
 <body>
@@ -1817,7 +1830,8 @@ puts(1,"</td></tr>\n</table>")
 ```
 
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -1980,7 +1994,8 @@ The multitude,Behold his mother! Behold his mother!"
 input escape-chars string>csv csv>table print
 ```
 
-```html5><table
+```html5
+<table
 
   <tr><td>Character</td><td>Speech</td></tr>
   <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -2022,7 +2037,8 @@ CSV2HTML BYE
 ```
 
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -2275,7 +2291,8 @@ const (
 
 Extra credit version with -h
 
-```html><table
+```html
+<table
 
    <thead>
       <tr><th>Character</th><th>Speech</th></tr>
@@ -2292,7 +2309,8 @@ Extra credit version with -h
 
 Basic version, or extra credit version without -h
 
-```html><table
+```html
+<table
 
     <tr><td>Character</td><td>Speech</td></tr>
     <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -2379,7 +2397,8 @@ println '-----------------------------------------'
 
 
 <div style="height:30ex;overflow:scroll;">
-```html5><html
+```html5
+<html
 
 <head>
 <title>Basic</title>
@@ -2405,7 +2424,8 @@ thead td {background-color:#ddffdd; text-align:center; }
 Appearance as rendered in Google Chrome.
 
 <div style="height:30ex;overflow:scroll;">
-```html5><html
+```html5
+<html
 
 <head>
 <title>Extra Credit</title>
@@ -2477,7 +2497,8 @@ def formatPage = { titleString, csv, header=false ->
 The interface is the same for both solutions, so we just reuse the same test as before.
 
 <div style="height:30ex;overflow:scroll;">
-```html5><html
+```html5
+<html
 
   <head>
     <title>Basic</title>
@@ -2522,7 +2543,8 @@ The HTML for this solution looks superficially different than that from the GStr
 
 '''Extra Credit output:'''
 <div style="height:30ex;overflow:scroll;">
-```html5><html
+```html5
+<html
 
   <head>
     <title>Extra Credit</title>
@@ -2623,7 +2645,8 @@ main = interact (\csv -> "<table>\n" ++
 
 ;Output:
 <div style="height:30ex;overflow:scroll;">
-```html5><table
+```html5
+<table
 
 <tr>
   <td>Character</td>
@@ -2684,7 +2707,8 @@ end
 ```
 
 
-```html5><TABLE
+```html5
+<TABLE
 
    <THEAD>
        <TR><TD>Character</TD><TD>Speech</TD></TR>
@@ -2753,7 +2777,8 @@ The multitude,Behold his mother! Behold his mother!
    1 makeHTMLtablefromCSV CSVstrng
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><th>Character</th><th>Speech</th></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -2939,7 +2964,8 @@ console.log('<table>\n\t<thead>\n'      + lines[0] +
 
 
 
-```html5><table
+```html5
+<table
 
   <thead>
     <tr><td>Character</td><td>Speech</td></tr>
@@ -2955,7 +2981,8 @@ console.log('<table>\n\t<thead>\n'      + lines[0] +
 ```
 
 
-```html5><table
+```html5
+<table
 
 	<thead>
 		<tr><td>Character</td><td>Speech</td></tr>
@@ -3010,7 +3037,8 @@ csv2html | .[]
 ### Output
 
 
-```html5><table
+```html5
+<table
 
   <thead> <tr>
     <th>Character</th>
@@ -3169,7 +3197,8 @@ end
 print(csv2html("input.csv", header=true))
 
 ```
-```html5><html
+```html5
+<html
 
 
 <head>
@@ -3300,7 +3329,8 @@ fun main(args: Array<String>) {
 ```
 
 
-```html5><table
+```html5
+<table
 
    <tr>
       <td>Character</td>
@@ -3472,7 +3502,8 @@ end
 
 
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -4370,7 +4401,8 @@ let () =
 
  {{Out|Sample html output}}
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -4435,7 +4467,8 @@ let () =
 ```
 
 
-```html5><html
+```html5
+<html
 
   <head>
     <style type="text/css">
@@ -4512,7 +4545,8 @@ MESSAGE
 VIEW-AS ALERT-BOX.
 ```
 
-```html><html
+```html
+<html
 
 	<table>
 		<tr>
@@ -4570,7 +4604,8 @@ print "</table>\n";
 ```
 
 
-```html5><table
+```html5
+<table
 
 <tr><th>Character</th><th>Speech</th></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -4662,7 +4697,8 @@ end for
 puts(1,"</td></tr>\n</table>")
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -4778,7 +4814,8 @@ Import-Csv -Path .\csv_html_test.csv | ConvertTo-Html -Fragment | Out-File .\csv
 
 ```
 
-```html5><table
+```html5
+<table
 
 <colgroup>
 <col/>
@@ -4903,7 +4940,8 @@ csv_td_in([H|T], S) -->
 
 ```
 
-```html5><TABLE
+```html5
+<TABLE
 
 <TR>
 <TD>Character</TD><TD>Speech</TD>
@@ -5025,7 +5063,8 @@ csv_body_td_in([H|T], S) -->
 
 ```
 
-```html5><TABLE
+```html5
+<TABLE
 
 <THEAD>
 <TR>
@@ -5282,7 +5321,8 @@ Uses X-exprs:
 '''Sample HTML output:'''
 
 
-```html5><table><thead><tr><td>Character</td><td>Speech</td
+```html5
+<table><thead><tr><td>Character</td><td>Speech</td
 
 </tr></thead><tbody><tr><td>The multitude</td><td>The messiah! Show us the messiah!</td>
 </tr><tr><td>Brians mother</td><td>&lt;angry&gt;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&lt;/angry&gt;</td>
@@ -5394,7 +5434,8 @@ CSV displayHTML
 ```
 
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -5679,7 +5720,8 @@ fn main() {
 
 ```
 
-```html5><table
+```html5
+<table
 
 <tr><td>Character</td><td>Speech</td></tr>
 <tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
@@ -5739,7 +5781,8 @@ object CsvToHTML extends App {
   println(csv2html(csv, true))
 }
 ```
-```html><html
+```html
+<html
 
       <head>
     <title>CsvToHTML</title>
@@ -5819,7 +5862,8 @@ $ sed -f csv2html.sed input.csv
 
 
 
-```html5><table
+```html5
+<table
 
  <tr>
   <td>Character</td>
@@ -6165,7 +6209,8 @@ $ txr csv.txr  csv.txt
 
 
 
-```html5><table
+```html5
+<table
 
   <tr>
      <td>Character</td>
@@ -6328,7 +6373,8 @@ echo "$html"
 ```
 
 
-```html5><table
+```html5
+<table
 
 <thead>
 <tr><th>Character</th><th>Speech</th></tr>
@@ -6377,7 +6423,8 @@ Public Sub CSV_TO_HTML()
     Debug.Print "</td></tr>" & vbCrLf & "</table>"
 End Sub
 ```
-```html5><table
+```html5
+<table
 
 <tr><td>
 Character</td><td>Speech</td></tr>
@@ -6474,7 +6521,8 @@ BB(Clear)
 ```
 
 
-```html5><table
+```html5
+<table
 
     <tr><td>Character</td><td>Speech </td></tr>
     <tr><td>The multitude</td><td>The messiah! Show us the messiah! </td></tr>
@@ -6712,7 +6760,8 @@ html.println();
 ```
 
 The pump method writes or appends to a sink, in this case a string (eg "<table/>"). The fpM method is function/partial application and takes a string (ones and zeros) to indicate the positional input parameters. So String.fpM("101","a","c")("B") creates a new string "aBc".
-```html5><table
+```html5
+<table
 
 <tr>
   <td>Character</td>

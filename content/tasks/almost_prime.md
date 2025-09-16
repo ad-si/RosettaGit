@@ -586,7 +586,8 @@ function kprime(n,k,  f,p) {
 The extra spaces are to ensure it's readable on buggy interpreters that don't include a space after numeric output.
 
 
-```befunge>1
+```befunge
+1
 ::48*"= k",,,,02p.":",01v
 |^ v0!`\*:g40:<p402p300:+1<
 K| >2g03g`*#v_ 1`03g+02g->|
@@ -1613,7 +1614,8 @@ k =  5 :  32  48  72  80 108 112 120 162 168 176
 ## Haskell
 
 
-```Haskell>isPrime :: Integral a =
+```haskell
+isPrime :: Integral a =
  a -> Bool
 isPrime n = not $ any ((0 ==) . (mod n)) [2..(truncate $ sqrt $ fromIntegral n)]
 
@@ -3709,7 +3711,8 @@ for (k <- 1 to 5) {
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl
 ;
 import <Utilities/Sequence.sl>;
 

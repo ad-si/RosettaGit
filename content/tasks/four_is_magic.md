@@ -33,11 +33,11 @@ languages = [
 
 Write a subroutine, function, whatever it may be called in your language, that takes an integer number and returns an English text sequence starting with the English cardinal representation of that integer, the word 'is' and then the English cardinal representation of the count of characters that made up the first word, followed by a comma.
 
-Continue the sequence by using the previous count word as the first word of the next phrase, append 'is' and the cardinal count of the letters in ''that'' word. 
+Continue the sequence by using the previous count word as the first word of the next phrase, append 'is' and the cardinal count of the letters in ''that'' word.
 
 Continue until you reach four. Since four has four characters, finish by adding the words 'four is magic' and a period. All integers will eventually wind up at four.
 
-For instance, suppose your are given the integer '''3'''. Convert '''3''' to '''Three''', add ''' is ''', then the cardinal character count of three, or '''five''', with a comma to separate if from the next phrase. Continue the sequence '''five is four,''' (five has four letters), and finally, '''four is magic.''' 
+For instance, suppose your are given the integer '''3'''. Convert '''3''' to '''Three''', add ''' is ''', then the cardinal character count of three, or '''five''', with a comma to separate if from the next phrase. Continue the sequence '''five is four,''' (five has four letters), and finally, '''four is magic.'''
 
       '''Three is five, five is four, four is magic.'''
 
@@ -70,7 +70,7 @@ For reference, here are outputs for 0 through 9.
 :* Show the output here for a small representative sample of values, at least 5 but no more than 25. You are free to choose which which numbers to use for output demonstration.
 
 
-You can choose to use a library, (module, external routine, whatever) to do the cardinal conversions as long as the code is easily and freely available to the public.  
+You can choose to use a library, (module, external routine, whatever) to do the cardinal conversions as long as the code is easily and freely available to the public.
 
 If you roll your own, make the routine accept at minimum any integer from 0 up to 999999. If you use a pre-made library, support at least up to unsigned 64 bit integers. (or the largest integer supported in your language if it is less.)
 
@@ -315,10 +315,10 @@ IN: rosetta-code.four-is-magic
 ! e.g. 4 -> "four is magic."
 : phrase ( n -- str )
     dup 4 = [ drop "four is magic." ] [ non-four ] if ;
-    
+
 : say-magic ( n -- )
     len-chain [ phrase ] map concat capitalize print ;
-    
+
 { 1 4 -11 100 112719908181724 -612312 } [ say-magic ] each
 ```
 
@@ -370,7 +370,7 @@ func fourIsMagic(n int64) string {
 	t += " is magic."
 	return t
 }
- 
+
 // Following is from https://rosettacode.org/wiki/Number_names#Go
 
 var small = [...]string{"zero", "one", "two", "three", "four", "five", "six",
@@ -474,7 +474,7 @@ NB. stringify numbers in range 1 to 999999
 stringify =: s123d ` s456d @. (>&999)
 
 NB. takes an int and returns an int of the length of the string of the input
-lengthify =: {: @ $ @ stringify 
+lengthify =: {: @ $ @ stringify
 
 NB. determines the string that should go after ' is '
 what =: ((stringify @ lengthify), (', '"_)) ` ('magic'"_) @. (=&4)
@@ -485,7 +485,7 @@ run =: runonce, ((run @ lengthify) ` (''"_) @. (=&4))
 
 doall =: run"0
 
-inputs =: 4 8 16 25 89 365 2586 25865 369854 
+inputs =: 4 8 16 25 89 365 2586 25865 369854
 
 doall inputs
 
@@ -495,24 +495,24 @@ doall inputs
 ```txt
 
 
-four is magic     
-                                                                                                                                                       
-eight is five, five is four, four is magic         
-                                                                                                                      
-sixteen is seven, seven is five, five is four, four is magic      
-                                                                                                       
-twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic        
-                                                                   
-eighty nine is eleven, eleven is six, six is three, three is five, five is four, four is magic         
-                                                                  
-three hundred sixty five is twenty four, twenty four is eleven, eleven is six, six is three, three is five, five is four, four is magic      
-                            
-two thousand five hundred eighty six is thirty six, thirty six is ten, ten is three, three is five, five is four, four is magic           
-                               
-twenty five thousand eight hundred sixty five is forty five, forty five is ten, ten is three, three is five, five is four, four is magic         
-                        
+four is magic
+
+eight is five, five is four, four is magic
+
+sixteen is seven, seven is five, five is four, four is magic
+
+twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic
+
+eighty nine is eleven, eleven is six, six is three, three is five, five is four, four is magic
+
+three hundred sixty five is twenty four, twenty four is eleven, eleven is six, six is three, three is five, five is four, four is magic
+
+two thousand five hundred eighty six is thirty six, thirty six is ten, ten is three, three is five, five is four, four is magic
+
+twenty five thousand eight hundred sixty five is forty five, forty five is ten, ten is three, three is five, five is four, four is magic
+
 three hundred sixty nine thousand eight hundred fifty four is fifty eight, fifty eight is eleven, eleven is six, six is three, three is five, five is four, four is magic
-   
+
 
 ```
 
@@ -538,14 +538,14 @@ const ordstext = ["million", "billion", "trillion",
                   "tredecillion", "quattuordecillion", "quindecillion",
                   "sexdecillion", "septendecillion", "octodecillion",
                   "novemdecillion", "vigintillion"]
- 
+
 function normalize_digits!(a)
     while  0 < length(a) && a[end] == 0
         pop!(a)
     end
     return length(a)
 end
- 
+
 function digits2text!(d, use_short_scale=true)
     ndig = normalize_digits!(d)
     0 < ndig || return ""
@@ -594,7 +594,7 @@ function digits2text!(d, use_short_scale=true)
     0 < length(s) || return t
     return t*" "*s
 end
- 
+
 function num2text(n, use_short_scale=true)
     -1 < n || return "minus "*num2text(-n, use_short_scale)
     0 < n || return "zero"
@@ -602,8 +602,8 @@ function num2text(n, use_short_scale=true)
     n < toobig || return "too big to say"
     return digits2text!(digits(n, base=10), use_short_scale)
 end
-  
- 
+
+
 function magic(n)
     str = uppercasefirst(num2text(n))
     n = length(str)
@@ -619,13 +619,13 @@ function magic(n)
     println(str[1:7] == "Four is" ? "Four is magic." : "$str, four is magic.")
 end
 
- 
+
 for n in [0, 4, 6, 11, 13, 75, 337, -164, 9_876_543_209]
     magic(n)
 end
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 Zero is four, four is magic.
@@ -855,7 +855,8 @@ sub magic (Int $int is copy) {
 .&magic.say for 0, 4, 6, 11, 13, 75, 337, -164, 9876543209, 2**256;
 ```
 
-<pre style="width:98%;overflow:wrap;">Zero is four, four is magic.
+```txt
+Zero is four, four is magic.
 
 Four is magic.
 
@@ -887,7 +888,7 @@ Note that on 32-bit Phix integers/atoms are only accurate to 9,007,199,254,740,9
 constant twenties = {"zero","one","two","three","four","five","six","seven","eight","nine","ten",
     "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"},
          decades = {"twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"}
- 
+
 function hundred(integer n)
     if n<20 then
         return twenties[mod(n,20)+1]
@@ -896,7 +897,7 @@ function hundred(integer n)
     end if
     return decades[mod(floor(n/10),10)-1] & '-' & twenties[mod(n,10)+1]
 end function
- 
+
 function thousand(integer n)
     if n<100 then
         return hundred(n)
@@ -905,12 +906,12 @@ function thousand(integer n)
     end if
     return twenties[mod(floor(n/100),20)+1] & " hundred " & hundred(mod(n,100))
 end function
- 
+
 constant orders = {{power(10,12),"trillion"},
                    {power(10,9),"billion"},
                    {power(10,6),"million"},
                    {power(10,3),"thousand"}}
- 
+
 function triplet(integer n)
 atom order, high, low
 string name, res = ""
@@ -932,7 +933,7 @@ string name, res = ""
     end if
     return res
 end function
- 
+
 function spell(integer n)
 string res = ""
     if n<0 then
@@ -1156,27 +1157,27 @@ if __name__ == '__main__':
         print(j, ':\n', magic(j), '\n')
 ```
 
-
-<pre style="width:98%;overflow:wrap;">475 :
- Four hundred seventy five is twenty five, twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic. 
+```txt
+475 :
+ Four hundred seventy five is twenty five, twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic.
 
 968 :
- Nine hundred sixty eight is twenty four, twenty four is eleven, eleven is six, six is three, three is five, five is four, four is magic. 
+ Nine hundred sixty eight is twenty four, twenty four is eleven, eleven is six, six is three, three is five, five is four, four is magic.
 
 304 :
- Three hundred four is eighteen, eighteen is eight, eight is five, five is four, four is magic. 
+ Three hundred four is eighteen, eighteen is eight, eight is five, five is four, four is magic.
 
 544 :
- Five hundred forty four is twenty three, twenty three is twelve, twelve is six, six is three, three is five, five is four, four is magic. 
+ Five hundred forty four is twenty three, twenty three is twelve, twelve is six, six is three, three is five, five is four, four is magic.
 
 394 :
- Three hundred ninety four is twenty five, twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic. 
+ Three hundred ninety four is twenty five, twenty five is eleven, eleven is six, six is three, three is five, five is four, four is magic.
 
 -49587779907680717664396 :
- Negative forty nine sextillion five hundred eighty seven quintillion seven hundred seventy nine quadrillion nine hundred seven trillion six hundred eighty billion seven hundred seventeen million six hundred sixty four thousand three hundred ninety six is two hundred fifty one, two hundred fifty one is twenty one, twenty one is ten, ten is three, three is five, five is four, four is magic. 
+ Negative forty nine sextillion five hundred eighty seven quintillion seven hundred seventy nine quadrillion nine hundred seven trillion six hundred eighty billion seven hundred seventeen million six hundred sixty four thousand three hundred ninety six is two hundred fifty one, two hundred fifty one is twenty one, twenty one is ten, ten is three, three is five, five is four, four is magic.
 
 874143425855745733896030 :
- Eight hundred seventy four sextillion one hundred forty three quintillion four hundred twenty five quadrillion eight hundred fifty five trillion seven hundred forty five billion seven hundred thirty three million eight hundred ninety six thousand thirty is two hundred fifty three, two hundred fifty three is twenty three, twenty three is twelve, twelve is six, six is three, three is five, five is four, four is magic. 
+ Eight hundred seventy four sextillion one hundred forty three quintillion four hundred twenty five quadrillion eight hundred fifty five trillion seven hundred forty five billion seven hundred thirty three million eight hundred ninety six thousand thirty is two hundred fifty three, two hundred fifty three is twenty three, twenty three is twelve, twelve is six, six is three, three is five, five is four, four is magic.
 ```
 
 
@@ -1194,18 +1195,18 @@ if __name__ == '__main__':
   (map symbol->string
        '(zero one two three four five six seven eight nine ten eleven twelve
          thirteen fourteen fifteen sixteen seventeen eighteen nineteen)))
- 
+
 (define tens
   (map symbol->string
        '(zero ten twenty thirty forty fifty sixty seventy eighty ninety)))
- 
+
 (define larges
   (map symbol->string
        '(thousand million billion trillion quadrillion quintillion sextillion
          septillion octillion nonillion decillion undecillion duodecillion
          tredecillion quattuordecillion quindecillion sexdecillion
          septendecillion octodecillion novemdecillion vigintillion)))
- 
+
 (define (number->words n)
   (define (step div suffix separator [subformat number->words])
     (define-values [q r] (quotient/remainder n div))
@@ -1220,10 +1221,10 @@ if __name__ == '__main__':
                        (error 'number->words "number too big: ~e" n)]
                       [(< n N) (step D (car unit) " ")]
                       [else (loop (* 1000 N) (* 1000 D) (cdr unit))]))]))
- 
+
 (define (first-cap s)
   (~a (string-upcase (substring s 0 1)) (substring s 1)))
- 
+
 (define (magic word [acc null])
   (if (equal? word "four")
       (string-join (reverse (cons "four is magic." acc)) ", \n")
@@ -1232,9 +1233,9 @@ if __name__ == '__main__':
         (magic words
                (cons (string-append word " is " words) acc)))))
 
-(define (number-magic n) 
+(define (number-magic n)
   (first-cap (magic (number->words n))))
- 
+
 (for ([n (append (range 11)
                  '(-10 23 172 20140 100 130 999999 876000000
                        874143425855745733896030))])
@@ -1248,134 +1249,134 @@ if __name__ == '__main__':
 ```txt
 
 0
-Zero is four, 
+Zero is four,
 four is magic.
 
 1
-One is three, 
-three is five, 
-five is four, 
+One is three,
+three is five,
+five is four,
 four is magic.
 
 2
-Two is three, 
-three is five, 
-five is four, 
+Two is three,
+three is five,
+five is four,
 four is magic.
 
 3
-Three is five, 
-five is four, 
+Three is five,
+five is four,
 four is magic.
 
 4
 Four is magic.
 
 5
-Five is four, 
+Five is four,
 four is magic.
 
 6
-Six is three, 
-three is five, 
-five is four, 
+Six is three,
+three is five,
+five is four,
 four is magic.
 
 7
-Seven is five, 
-five is four, 
+Seven is five,
+five is four,
 four is magic.
 
 8
-Eight is five, 
-five is four, 
+Eight is five,
+five is four,
 four is magic.
 
 9
-Nine is four, 
+Nine is four,
 four is magic.
 
 10
-Ten is three, 
-three is five, 
-five is four, 
+Ten is three,
+three is five,
+five is four,
 four is magic.
 
 -10
-Negative ten is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+Negative ten is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 23
-Twenty-three is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+Twenty-three is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 172
-One hundred seventy-two is twenty-three, 
-twenty-three is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+One hundred seventy-two is twenty-three,
+twenty-three is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 20140
-Twenty thousand one hundred forty is thirty-three, 
-thirty-three is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+Twenty thousand one hundred forty is thirty-three,
+thirty-three is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 100
-One hundred is eleven, 
-eleven is six, 
-six is three, 
-three is five, 
-five is four, 
+One hundred is eleven,
+eleven is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 130
-One hundred thirty is eighteen, 
-eighteen is eight, 
-eight is five, 
-five is four, 
+One hundred thirty is eighteen,
+eighteen is eight,
+eight is five,
+five is four,
 four is magic.
 
 999999
-Nine hundred ninety-nine thousand nine hundred ninety-nine is fifty-eight, 
-fifty-eight is eleven, 
-eleven is six, 
-six is three, 
-three is five, 
-five is four, 
+Nine hundred ninety-nine thousand nine hundred ninety-nine is fifty-eight,
+fifty-eight is eleven,
+eleven is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 876000000
-Eight hundred seventy-six million is thirty-three, 
-thirty-three is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+Eight hundred seventy-six million is thirty-three,
+thirty-three is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 874143425855745733896030
-Eight hundred seventy-four sextillion one hundred forty-three quintillion four hundred twenty-five quadrillion eight hundred fifty-five trillion seven hundred forty-five billion seven hundred thirty-three million eight hundred ninety-six thousand thirty is two hundred fifty-three, 
-two hundred fifty-three is twenty-three, 
-twenty-three is twelve, 
-twelve is six, 
-six is three, 
-three is five, 
-five is four, 
+Eight hundred seventy-four sextillion one hundred forty-three quintillion four hundred twenty-five quadrillion eight hundred fifty-five trillion seven hundred forty-five billion seven hundred thirty-three million eight hundred ninety-six thousand thirty is two hundred fifty-three,
+two hundred fifty-three is twenty-three,
+twenty-three is twelve,
+twelve is six,
+six is three,
+three is five,
+five is four,
 four is magic.
 
 ```
@@ -1413,7 +1414,7 @@ exit                                             /*stick a fork in it,  we're al
        return first || other                     /*return the sentence to the invoker.  */
 ```
 
-The   '''$SPELL#.REX'''   routine can be found here   ───►   [[$SPELL.REX|$SPELL#.REX]]. 
+The   '''$SPELL#.REX'''   routine can be found here   ───►   [[$SPELL.REX|$SPELL#.REX]].
 
 
 
@@ -1457,17 +1458,17 @@ next
 
 /* The functions */
 
-Func CheckMagic numb 
+Func CheckMagic numb
 	CardinalN = ""
 	Result = ""
 	if isnumber(numb) = false or numb < 0 or numb > 999_999_999_999_999
 		Return "ERROR: Number entered is incorrect"
 	ok
-	if numb = 4 
+	if numb = 4
 		Result = "Four is magic."
 	else
 		While True
-			if CardinalN = "four" 
+			if CardinalN = "four"
 				Result += "four is magic"
 				exit
 			ok
@@ -1484,17 +1485,17 @@ Func CheckMagic numb
 
 Func StringNumber cnumb
 
-	NumStr = [:n0 = "zero", :n1 = "one", :n2 = "two", :n3 = "three", :n4 = "four", :n5 = "five", 
-		:n6 = "six", :n7 = "seven", :n8 = "eight", :n9 = "nine", :n10 = "ten", 
-		:n11 = "eleven", :n12 = "twelve", :n13 = "thirteen", :n14 = "fourteen", :n15 = "fifteen", 
-		:n16 = "sixteen", :n17 = "seventeen", :n18 = "eighteen", :n19 = "nineteen", 
+	NumStr = [:n0 = "zero", :n1 = "one", :n2 = "two", :n3 = "three", :n4 = "four", :n5 = "five",
+		:n6 = "six", :n7 = "seven", :n8 = "eight", :n9 = "nine", :n10 = "ten",
+		:n11 = "eleven", :n12 = "twelve", :n13 = "thirteen", :n14 = "fourteen", :n15 = "fifteen",
+		:n16 = "sixteen", :n17 = "seventeen", :n18 = "eighteen", :n19 = "nineteen",
 		:n20 = "twenty", :n30 = "thirty", :n40 = "fourty", :n50 = "fifty", :n60 = "sixty", :n70 = "seventy", :n80 = "eighty", :n90 = "ninety"]
 
 	numLev = [:l1 = "", :l2 = "thousand", :l3 = "million", :l4 = "billion", :l5 = "trillion"]
 
 	Result = ""
 
-	if cnumb > 0 
+	if cnumb > 0
 		decimals(0)
 		snumb = string((cnumb))
 		lnumb = [""]
@@ -1545,7 +1546,7 @@ Func StringNumber cnumb
 					ok
 				next
 				Result = Result + bResult
-				if  l > 1 
+				if  l > 1
 					if number(bnumb) > 1
 						eval("Result = Result + numLev[:l" + l + "] + 's ' ")
 					else
@@ -1557,7 +1558,7 @@ Func StringNumber cnumb
 	else
 		Result = Result + NumStr[:n0]
 	ok
-	
+
 Return trim(Result)
 
 ```

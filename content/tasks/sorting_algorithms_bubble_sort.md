@@ -2671,7 +2671,8 @@ println bubbleSort([88,18,31,44,4,0,8,81,14,78,20,76,84,33,73,75,82,5,62,70,12,7
 
 This version checks for changes in a separate step for simplicity, because Haskell has no variables to track them with.
 
-```haskell>bsort :: Ord a =
+```haskell
+bsort :: Ord a =>
  [a] -> [a]
 bsort s = case _bsort s of
                t | t == s    -> t
@@ -2878,7 +2879,8 @@ For the most part, bubble sort works against J's strengths.  However, once a sin
 
 Bubble sorting (ascending) an array of any <tt>Comparable</tt> type:
 
-```java>public static <E extends Comparable<? super E>
+```java
+public static <E extends Comparable<? super E>>
  void bubbleSort(E[] comparable) {
     boolean changed = false;
     do {
@@ -6297,7 +6299,8 @@ end
 ## Swift
 
 
-```Swift>func bubbleSort<T:Comparable
+```swift
+func bubbleSort<T:Comparable>
 (inout list:[T]) {
     var done = false
     while !done {

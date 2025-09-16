@@ -831,7 +831,8 @@ Unknown methods are handled by the inclusion of the special "_unknownTag" method
 
 If this is not included in the type, an error will result that may terminate processing unless otherwise handled.
 
-```Lasso>define exampletype =
+```lasso
+define exampletype =>
  type {
 	public foo() => {
 		return 'this is foo\r'

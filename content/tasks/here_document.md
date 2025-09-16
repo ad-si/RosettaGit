@@ -1632,7 +1632,8 @@ freewheelin;
 Both q and qq are specialised forms of [http://design.perl6.org/S02.html#Q_forms Q] which comes with many adverbs. Here a heredoc that only interpolates @-sigils.
 
 
-```perl6>my @a = <1 2 3 4
+```perl6
+my @a = <1 2 3 4>
 ;
 say Q :array :to 'EOH';
     123 \n '"`

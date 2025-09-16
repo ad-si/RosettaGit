@@ -704,7 +704,8 @@ You'd then loop over the range of indices required to access those arrays, and u
 For arrays of differing lengths, you'd need to manually check for an out-of-range index and deal with it appropriately.
 
 
-```befunge>0
+```befunge
+0>
 :2g,:3g,:4gv
 @_^#`2:+1,+55,<
 abc
@@ -3289,7 +3290,8 @@ ends.
 
 ## Perl 6
 
-```perl6>for <a b c> Z <A B C
+```perl6
+for <a b c> Z <A B C>
  Z 1, 2, 3 -> ($x, $y, $z) {
    say $x, $y, $z;
 }
@@ -3307,7 +3309,8 @@ Since <code>Z</code> will return a list of lists (in this example, the first lis
 Note that we can also factor out the concatenation by making the <tt>Z</tt> metaoperator apply the <tt>~</tt> concatenation operator across each triple:
 
 
-```perl6>.say for <a b c
+```perl6
+.say for <a b c>
  Z~ <A B C> Z~ 1, 2, 3;
 ```
 
@@ -3335,7 +3338,8 @@ for ^Inf Z <a b c d> -> ($i, $letter) { ... }
 or by using the <code>.kv</code> (key and value) method on the list (and dropping the parentheses because the list returned by <code>.kv</code> is a flattened list):
 
 
-```perl6>for <a b c d
+```perl6
+for <a b c d>
 .kv -> $i, $letter { ... }
 ```
 
@@ -3599,7 +3603,8 @@ array size new memory has to be allocated.
 
 Using <tt>zip()</tt>:
 
-```python>>>
+```python
+>>>
  print ( '\n'.join(''.join(x) for x in
 zip('abc', 'ABC', '123')) )
 aA1
@@ -3613,7 +3618,8 @@ the shortest one.
 
 Using <tt>map()</tt>:
 
-```python>>>
+```python
+>>>
  print(*map(''.join, zip('abc', 'ABC', '123')), sep='\n')
 aA1
 bB2
@@ -3642,7 +3648,8 @@ Python 3.X has <tt>zip_longest</tt> which fills shorter iterables with its
 fillvalue argument which defaults to <tt>None</tt> (similar to the behavior of
 ''map()'' in Python 2.x):
 
-```python>>>
+```python
+>>>
  from itertools import zip_longest
 >>> print ( '\n'.join(''.join(x) for x in zip_longest('abc',
 'ABCD', '12345', fillvalue='#')) )
@@ -3731,7 +3738,8 @@ and exposes the count value to the block! being executed.
 When a variable is used in a path notation, we put a colon in front of it.   :counter
 
 
-```Red>>
+```Red
+>>
 blk: [["a" "b" "c"] ["A" "B" "C"] [1 2 3]]
 == [["a" "b" "c"] ["A" "B" "C"] [1 2 3]]
 
@@ -4673,7 +4681,8 @@ end
 
 Looping over multiple arrays in an interactive session:
 
-```ursa>> decl string<
+```ursa
+> decl string<>
  a b c
 > append (split "abc" "") a
 > append (split "ABC" "") b

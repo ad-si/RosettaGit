@@ -2129,7 +2129,8 @@ end
 
 Sample Output:
 
-```MATLAB>>
+```MATLAB
+>>
  nthRoot(2,2)
 
 ans =

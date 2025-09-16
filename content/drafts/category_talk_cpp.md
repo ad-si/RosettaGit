@@ -13,7 +13,9 @@ tags = []
 ==std namespace==
 Is there some reason none of the code examples include the line:
 
-```C++>using namespace std;</lang
+```C++
+using namespace std;>
+```
 
 
 It'd make things a lot shorter and more readable. [[User:MagiMaster|MagiMaster]] 22:53, 24 May 2011 (UTC)

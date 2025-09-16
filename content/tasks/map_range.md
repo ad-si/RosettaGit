@@ -2982,7 +2982,8 @@ EndIf
 ## Python
 
 
-```python>>>
+```python
+>>>
  def maprange( a, b, s):
 	(a1, a2), (b1, b2) = a, b
 	return  b1 + ((s - a1) * (b2 - b1) / (a2 - a1))
@@ -3007,7 +3008,8 @@ EndIf
 
 Because of Pythons  strict, dynamic, typing rules for numbers the same function can give answers as fractions:
 
-```python>>>
+```python
+>>>
  from fractions import Fraction
 >>> for s in range(11):
 	print("%2g maps to %s" % (s, maprange( (0, 10), (-1, 0), Fraction(s))))
@@ -3663,7 +3665,8 @@ An even more idiomatic way is to use the standard library function <code>plin</c
 ## WDTE
 
 
-```WDTE>let mapRange r1 r2 s =
+```wdte
+let mapRange r1 r2 s =>
 
     +
         (at r2 0)

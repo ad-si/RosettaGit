@@ -370,7 +370,8 @@ user=> @s
 Hello World!
 ```
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 PROGRAM-ID. prepend.
 
@@ -413,7 +414,8 @@ Hello World!
 ###  Script Based CFML
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
 	who = "World!";
 	greeting = "Hello " & who;

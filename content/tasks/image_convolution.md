@@ -1768,7 +1768,8 @@ Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/b
 ## Perl 6
 
 
-```perl6>use PDL:from<Perl5
+```perl6
+use PDL:from<Perl5>
 ;
 use PDL::Image2D:from<Perl5>;
 

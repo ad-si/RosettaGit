@@ -479,7 +479,8 @@ minizinc --all-solutions produces:
 
 ## Perl
 
-```perl>use ntheory qw<formultiperm
+```perl
+use ntheory qw<formultiperm>
 ;
 
 formultiperm { print join('',@_) . ' ' } [<1 1 2>];           print "\n\n";

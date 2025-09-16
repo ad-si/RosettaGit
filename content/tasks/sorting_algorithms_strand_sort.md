@@ -1359,7 +1359,8 @@ say "After  @a";
 
 ## Perl 6
 
-```perl6>sub infix:<M
+```perl6
+sub infix:<M>
  (@x-in, @y-in) {
     my @x = | @x-in;
     my @y = | @y-in;

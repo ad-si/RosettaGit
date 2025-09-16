@@ -696,7 +696,8 @@ mississippi: miss is sip pi
 This implementation does not necessarily find ''every'' combination, it returns the one with the longest matching tokens.
 
 
-```perl6>my @words = <a bc abc cd b
+```perl6
+my @words = <a bc abc cd b>
 ;
 my $regex = @words.join('|');
 

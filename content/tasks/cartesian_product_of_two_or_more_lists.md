@@ -3296,7 +3296,8 @@ p [1, 2, 3].product([], [500, 100])
 ## Rust
 
 
-```rust>type List = Vec<Vec<u32>
+```rust
+type List = Vec<Vec<u32>
 ;
 
 fn cartesian_product(lists: &List) -> List {
@@ -3900,7 +3901,8 @@ This command works also if the varaibles have different numbers of nonmissing el
 {{trans|Scala}}
 
 
-```swift>func + <T
+```swift
+func + <T
 (el: T, arr: [T]) -> [T] {
   var ret = arr
 

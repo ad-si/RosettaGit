@@ -847,7 +847,8 @@ D174AB98D277D9F5A5611C2C9F419D9F
 
 {{trans|Java}} (with modifications)
 
-```e>def makeMessageDigest := <import:java.security.makeMessageDigest
+```e
+def makeMessageDigest := <import:java.security.makeMessageDigest>
 
 def sprintf := <import:java.lang.makeString>.format
 
@@ -907,7 +908,8 @@ md5(S) ->
 
 Testing it:
 
-```erlang>1
+```erlang
+1>
  c(tests).
 {ok,tests}
 2> tests:md5("The quick brown fox jumped over the lazy dog's back").
@@ -1294,7 +1296,8 @@ e38ca1d920c4b8b8d3946b2c72f01680
 ## Io
 
 
-```io>Io
+```io
+Io>
  MD5
 ==>  MD5_0x97663e0:
   appendSeq        = MD5_appendSeq()
@@ -2135,7 +2138,9 @@ Example:
 
 gives back:
 
-```Mathematica> e38ca1d920c4b8b8d3946b2c72f01680</lang
+```mathematica
+ e38ca1d920c4b8b8d3946b2c72f01680>
+```
 
 
 
@@ -2266,7 +2271,8 @@ end %md5
 
 Sample Usage:
 
-```MATLAB>octave:14
+```MATLAB
+octave:14>
  md5('Rosetta Code')
 ans = CCA1BF66B09554E10F837838C3D3EFB1
 ```
@@ -2546,7 +2552,8 @@ NSLog(@"%@", [digest hexadecimalRepresentation]);
 ```
 
 
-```objc>#import <CommonCrypto/CommonDigest.h
+```objc
+#import <CommonCrypto/CommonDigest.h>
 
 
 NSString *myString = @"The quick brown fox jumped over the lazy dog's back";
@@ -2649,7 +2656,8 @@ OK
 
 Build a MD5 plugin using Linux system library and PARI's function interface. (Linux solution)
 
-```C>#include <pari/pari.h
+```C
+#include <pari/pari.h>
 
 #include <openssl/md5.h>
 
@@ -2844,7 +2852,8 @@ Using builtin libraries:
 
 ;Python 3.x, 2.5 and later 2.x versions:
 
-```python>>>
+```python
+>>>
  import hashlib
 >>> # RFC 1321    test suite:
 >>> tests = (
@@ -2863,7 +2872,8 @@ Using builtin libraries:
 
 ;Python 2.5 and later:
 
-```python>>>
+```python
+>>>
  import hashlib
 >>> print hashlib.md5("The quick brown fox jumped over the lazy dog's back").hexdigest()
 e38ca1d920c4b8b8d3946b2c72f01680
@@ -2872,7 +2882,8 @@ e38ca1d920c4b8b8d3946b2c72f01680
 
 ;Pre-2.5; removed in 3.x:
 
-```python>>>
+```python
+>>>
  import md5
 >>> print md5.md5("The quick brown fox jumped over the lazy dog's back").hexdigest()
 e38ca1d920c4b8b8d3946b2c72f01680
@@ -2930,7 +2941,8 @@ Output:
 ## REBOL
 
 
-```rebol>>
+```rebol
+>>
  checksum/method "The quick brown fox jumped over the lazy dog" 'md5
 == #{08A008A01D498C404B0C30852B39D3B8}
 ```
@@ -3095,7 +3107,8 @@ for given string vector ''ss'' and new-line delimiter ''nl''. The last is here s
 calculated in RLaB is the same as the hash of the same string vector written to a file.
 
 
-```RLaB>>
+```RLaB
+>>
  x = "The quick brown fox jumped over the lazy dog's back"
 The quick brown fox jumped over the lazy dog's back
 

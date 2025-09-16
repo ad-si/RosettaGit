@@ -2470,7 +2470,8 @@ function exceptionsCatchNestedCall()
 end
 ```
 
-```MATLAB>>
+```matlab
+>
  exceptionsCatchNestedCall()
        message: [1x177 char]
     identifier: 'BAZ:U0'

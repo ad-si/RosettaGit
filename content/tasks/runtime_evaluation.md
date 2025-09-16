@@ -577,7 +577,8 @@ The lexical environment is provided as a parameter and cannot be omitted. The ev
 Eval from a string may be done by invoking the parser.
 
 
-```e>? def prog := <elang:syntax.makeEParser
+```e
+? def prog := <elang:syntax.makeEParser>
 .run("1 + 1")
 # value: e`1.add(1)`
 
@@ -643,7 +644,8 @@ iex(3)> Code.eval_string("a = a + b", [a: 1, b: 2])
 
 Erlang eval is a bit complex/verbose and requires the interaction of 3 modules: <tt>erl_scan</tt> (tokenizes), <tt>erl_parse</tt> (returns an abstract form) and <tt>erl_eval</tt> (variable binding, evaluate abstract form, etc).
 
-```erlang>1
+```erlang
+1>
  {ok, Tokens, _} = erl_scan:string("X + 4 * lists:sum([1,2,3,4]).").
 ...
 2> {ok, [Form]} = erl_parse:parse_exprs(Tokens).
@@ -1865,7 +1867,8 @@ Since the [scriptblock] type is an anonymous function, the Begin {}, Process {} 
 The [http://docs.python.org/reference/simple_stmts.html#exec exec statement] allows the optional passing in of global and local names via mappings (See the link for full syntax). The example below shows exec being used to parse and execute a string containing two statements:
 
 
-```python>>>
+```python
+>>>
  exec '''
 x = sum([1,2,3,4])
 print x
@@ -1877,7 +1880,8 @@ print x
 Note that in Python 3.x [http://docs.python.org/py3k/library/functions.html#exec exec] is a function:
 
 
-```python>>>
+```python
+>>>
  exec('''
 x = sum([1,2,3,4])
 print(x)

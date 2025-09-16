@@ -1639,7 +1639,8 @@ some-languages kill-association
 ```
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 everything in SOME-LANGUAGES ordered forward:
 Ada       invented by: Ichiah, Jean
 C         invented by: Ritchie, Dennis
@@ -3683,7 +3684,8 @@ R lacks a native representation of key-value pairs, but different structures all
 
 
 
-```r>
+```r
+
  env <- new.env()
 > env[["x"]] <- 123
 > env[["x"]]
@@ -3695,7 +3697,8 @@ R lacks a native representation of key-value pairs, but different structures all
 ```
 
 
-```r>
+```r
+
  index <- "1"
 > env[[index]] <- "rainfed hay"
 > for (name in ls(env)) {
@@ -3715,7 +3718,8 @@ index=x, value=123
 
 
 
-```r>
+```r
+
  x <- c(hello=1, world=2, "!"=3)
 > print(x["!"])
 ```
@@ -3727,7 +3731,8 @@ index=x, value=123
 ```
 
 
-```r>
+```r
+
  print(unname(x["!"]))
 ```
 
@@ -3742,7 +3747,8 @@ index=x, value=123
 
 
 
-```R>
+```r
+
  a <- list(a=1, b=2, c=3.14, d="xyz")
 > print(a$a)
 ```
@@ -3753,7 +3759,8 @@ index=x, value=123
 ```
 
 
-```R>
+```r
+
  print(a$d)
 ```
 

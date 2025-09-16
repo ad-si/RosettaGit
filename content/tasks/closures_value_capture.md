@@ -1003,7 +1003,8 @@ Sleep
 
 Nearly identical to OCaml
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint
 ]
 let main argv =
     let fs = List.init 10 (fun i -> fun () -> i*i)
@@ -1014,7 +1015,8 @@ let main argv =
 
 With List.map
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint
 ]
 let main argv =
     let fs = List.map (fun i -> fun () -> i*i) [0..9]
@@ -1025,7 +1027,8 @@ let main argv =
 
 With List.mapi
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint
 ]
 let main argv =
     let fs = List.mapi (fun i x -> fun () -> i*i) (List.replicate 10 None)
@@ -1036,7 +1039,8 @@ let main argv =
 
 With an infinite sequence
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint
 ]
 let main argv =
     let fs = Seq.initInfinite (fun i -> fun () -> i*i)
@@ -1169,7 +1173,9 @@ xt-array 5 cells + @ execute .
 ```
 
 
-```forth>25</lang
+```forth
+25
+```
 
 
 
@@ -1258,7 +1264,8 @@ fs = take 10 coFs where coFs = [const $ i * i | i <- [1 ..]]
 Testing:
 
 
-```haskell>
+```haskell
+
  :t fs
 fs :: [b -> Integer]
 > map ($ ()) fs
@@ -1832,7 +1839,8 @@ Stack Beta {
 ## Maple
 
 
-```Maple>
+```maple
+
  L := map( i -> (() -> i^2), [seq](1..10) ):
 > seq( L[i](),i=1..10);
                   1, 4, 9, 16, 25, 36, 49, 64, 81, 100

@@ -41,7 +41,9 @@ languages = [
 Some programming languages have [[wp:Type conversion#Implicit type conversion|implicit type conversion]].  Type conversion is  also known as ''coercion''.
 
 For example:
-```algol68>COMPL z := 1;</lang
+```algol68
+COMPL z := 1;
+```
 Here the assignment "''':='''" implicitly converts the '''integer''' 1, to the '''complex''' number <math>1+0i</math> in the programming language [[ALGOL 68]].
 
 The alternative would be to ''explicitly'' convert a value from one type to another, using a ''function'' or some other mechanism (e.g. an explicit cast).
@@ -463,7 +465,8 @@ A ComplexDouble can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.
 The only implicit conversion currently permitted is boolean to number:
 
 
-```dejavu><1:1
+```dejavu
+<1:1>
  #interactive session
 <2:1> !. + 3 true #boolean true is equal to 1
 4
@@ -1454,7 +1457,8 @@ See the section [https://docs.scala-lang.org/tour/implicit-conversions.html Tour
 
 Since version 3.00, all the number types (int, rat, float and complex) are unified in the ''Number'' class and all the needed conversions are done implicitly. Methods from other classes also make implicit conversions where possible.
 
-```ruby>
+```ruby
+
  1+"2"            #=> 3
 > "1"+2            #=> 12
 > sqrt(-4)         #=> 2i

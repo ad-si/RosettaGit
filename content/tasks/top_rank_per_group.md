@@ -982,7 +982,8 @@ Department: D202
 
 Example
 
-```lisp>
+```lisp
+>
  (defparameter *employee-data*
   '(("Tyler Bennett" E10297 32000 D101)
     ("John Rappl" E21437 47000 D050)

@@ -1304,7 +1304,8 @@ Sieve(n) { ; Sieve of Eratosthenes => string of 0|1 chars, 1 at position k: k is
 
 =={{Header|AutoIt}}==
 
-```autoit>#include <Array.au3
+```autoit
+#include <Array.au3>
 
 $M = InputBox("Integer", "Enter biggest Integer")
 Global $a[$M], $r[$M], $c = 1
@@ -3435,7 +3436,8 @@ The above code is somewhat faster at about 1.5 thousand CPU cycles per prime her
 The following code will have about O(n log (log n)) performance due to a hash table having O(1) average performance and is only somewhat slow due to the constant overhead of processing hashes:
 
 
-```dart>Iterable<int
+```dart
+Iterable<int>
  primesMap() {
     Iterable<int> oddprms() sync* {
       yield(3); yield(5); // need at least 2 for initialization
@@ -4920,7 +4922,8 @@ The above code is over four times faster than the "BirdOdds" version (at least 1
 
 In order to investigate Priority Queue Sieves as espoused by O'Neill in the referenced article, one must find an equivalent implementation of a Min Heap Priority Queue as used by her.  There is such an purely functional implementation [http://rosettacode.org/wiki/Priority_queue#Functional in RosettaCode translated from the Haskell code she used], from which the essential parts are duplicated here (Note that the key value is given an integer type in order to avoid the inefficiency of F# in generic comparison):
 
-```fsharp>[<RequireQualifiedAccess
+```fsharp
+[<RequireQualifiedAccess>
 ]
 module MinHeap =
 
@@ -6806,7 +6809,8 @@ fix ( (2:) . concat
 
 An illustration:
 
-```haskell>
+```haskell
+>
  mapM_ (print . take 15) $ take 10 $ scanl1 (zipWith(+)) $ repeat [2..]
 [  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16]
 [  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32]
@@ -8508,7 +8512,8 @@ to output the correct answer of the following in about 270 milliseconds for my I
 
 Following is a Kotlin implementation of the Tree Folding Incremental Sieve of Eratosthenes from an adaptation of the algorithm by Richard Bird.  It is based on lazy lists, but in fact the memoization (and cost in execution time) of a lazy list is not required and the following code uses a "roll-your-own" implementation of a Co-Inductive Stream CIS).  The final output is as a Sequence for convenience in using it.  The code is written as purely function in that no mutation is used:
 
-```kotlin>data class CIS<T
+```kotlin
+data class CIS<T>
 (val head: T, val tailf: () -> CIS<T>) {
   fun toSequence() = generateSequence(this) { it.tailf() } .map { it.head }
 }
@@ -11981,7 +11986,8 @@ def iprimes_upto(limit):
     for i in xrange(limit + 1):
         if is_prime[i]: yield i
 ```
-```python>>>
+```python
+>>>
  list(iprimes_upto(15))
 [2, 3, 5, 7, 11, 13]
 ```
@@ -12118,7 +12124,8 @@ def primes_upto3(limit, smallprimes=(2,3,5,7,11)):
 
 Examples:
 
-```python>>>
+```python
+>>>
  primes_upto3(10**6, smallprimes=(2,3)) # Wall time: 0.17
 array([     2,      3,      5, ..., 999961, 999979, 999983])
 >>> primes_upto3(10**7, smallprimes=(2,3))            # Wall time: '''2.13'''
@@ -15764,7 +15771,8 @@ For a = 2 To p
     End If
  Next a
 
-End Sub </lang >
+End Sub
+``` >
 
 
 ## Visual Basic

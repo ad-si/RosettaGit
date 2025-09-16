@@ -1481,7 +1481,8 @@ second() -> hello.
 
 Testing it:
 
-```erlang>1
+```erlang
+1>
  c(tests).
 {ok, tests}
 2> tests:first(fun tests:second/0).
@@ -2121,7 +2122,8 @@ An example with anonymous functions and uses in the core library
 {{works with|Firefox|1.5}} for methods <code>filter</code> and <code>map</code>.
 
 
-```javascript>>>
+```javascript
+>>>
  var array = [2, 4, 5, 13, 18, 24, 34, 97];
 >>> array
 [2, 4, 5, 13, 18, 24, 34, 97]
@@ -2165,7 +2167,9 @@ DEFINE first == *.
 There will be a warning about overwriting builtin first.
 Define second as interpreting the passed quotation on the stack.
 
-```joy>DEFINE second == i.</lang
+```joy
+DEFINE second == i.
+```
 
 Pass first enclosed in quotes to second which applies it on the stack.
 
@@ -2285,7 +2289,8 @@ We then call <tt>g</tt> on the <tt>+</tt> function. Operators in Julia are just 
 
 In the following interactive session, we pass the function iseven to a few higher order functions. The function iseven returns true if its argument is an even integer, false if it is an odd integer, and throws an error otherwise. The second argument to the functions is a range of integers, specifically the five integers between 1 and 5 included.
 
-```julia>julia
+```julia
+julia>
  all(iseven, 1:5)              # not all integers between 1 and 5 are even.
 false
 
@@ -3893,7 +3898,8 @@ println(func1(func2)) // prints "func2 called with a string"
 
 Or, with an anonymous function:
 
-```swift>func func3<T
+```swift
+func func3<T>
 (f: (Int,Int)->T) -> T { return f(1, 2) }
 println(func3 {(x, y) in x + y}) // prints "3"
 ```

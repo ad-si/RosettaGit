@@ -173,34 +173,30 @@ languages = [
 
 Loop through and print each element in a collection in order.
 
-Use your language's "for each" loop if it has one, otherwise iterate through the collection in order with some other loop.
+Use your language's "for each" loop if it has one,
+otherwise iterate through the collection in order with some other loop.
 
 
 ## Related tasks
 
-*   [[Loop over multiple arrays simultaneously]]
-*   [[Loops/Break]]
-*   [[Loops/Continue]]
-*   [[Loops/Do-while]]
-*   [[Loops/Downward for]]
-*   [[Loops/For]]
-*   [[Loops/For with a specified step]]
-*   [[Loops/Foreach]]
-*   [[Loops/Increment loop index within loop body]]
-*   [[Loops/Infinite]]
-*   [[Loops/N plus one half]]
-*   [[Loops/Nested]]
-*   [[Loops/While]]
-*   [[Loops/with multiple ranges]]
-*   [[Loops/Wrong ranges]]
-
-
-
+- Loop over multiple arrays simultaneously
+- Loops/Break
+- Loops/Continue
+- Loops/Do-while
+- Loops/Downward for
+- Loops/For
+- Loops/For with a specified step
+- Loops/Foreach
+- Loops/Increment loop index within loop body
+- Loops/Infinite
+- Loops/N plus one half
+- Loops/Nested
+- Loops/While
+- Loops/with multiple ranges
+- Loops/Wrong ranges
 
 
 ## ACL2
-
-
 
 ```Lisp
 (defun print-list (xs)
@@ -210,10 +206,7 @@ Use your language's "for each" loop if it has one, otherwise iterate through the
                (print-list (rest xs)))))
 ```
 
-
-
 ```txt
-
 &gt; (print-list (list 1 "a" 1/2 (list 1 2) 'sym))
 1
 "a"
@@ -221,16 +214,12 @@ Use your language's "for each" loop if it has one, otherwise iterate through the
 (1 2)
 SYM
 NIL
-
 ```
-
 
 
 ## Ada
 
-
 ### arrays
-
 
 ```Ada
 with Ada.Integer_Text_IO;
@@ -249,16 +238,13 @@ begin
 end For_Each;
 ```
 
-
 Alternative solution (Ada 2012):
-
 
 ```Ada
    for Item of A loop
       Put( Item );
    end loop;
 ```
-
 
 
 ### doubly linked lists
@@ -2013,13 +1999,16 @@ every write(!L)
 ## J
 
 
-```J>smoutput each i.10</lang
+```j
+smoutput each i.10>
+```
 
 
 
 ## Java
 
-```java>Iterable<Type
+```java
+Iterable<Type>
  collect;
 ...
 for(Type i:collect){
@@ -2336,7 +2325,8 @@ with i in array(1,2,3) do { stdoutnl(#i) }
 ## Lang5
 
 
-```lang5>: >
+```lang5
+: >>
 say.(*) . ;
 5 iota >>say.
 ```
@@ -2812,7 +2802,9 @@ Array.iter
 
 But, apply can be used instead of a loop :
 
-```Oforth>#. Date.Months apply</lang
+```oforth
+#. Date.Months apply>
+```
 
 
 
@@ -2962,7 +2954,8 @@ for @collection { .say };
 
 Iteration can also be done with hyperoperators. In this case it's a candidate for autothreading and as such, execution order may vary. The resulting list will be in order.
 
-```per6>@collection>
+```per6
+@collection>>
 .say;
 @collection>>.=&infix:<+>(2); # increment each element by 2
 ```
@@ -3080,7 +3073,8 @@ The <code>forall</code> operator performs a loop over a collection (array, strin
 
 but dictionaries take a little more work since a key/value pair is pushed on the stack in each iteration:
 
-```postscript><</a 25 /b 42>
+```postscript
+<</a 25 /b 42>>
  {
   exch (Key: ) print
   =
@@ -3258,7 +3252,8 @@ Sorkday Gunday Bluesday Nedsday Thirstday Frightday Caturday
 ## Red
 
 
-```Red>>
+```Red
+>>
  blk: ["John" 23 "dave" 30 "bob" 20 "Jeff" 40]
 >> foreach item blk [print item]
 John
@@ -3866,7 +3861,8 @@ each x '(1 2 3)
 ## WDTE
 
 
-```WDTE>let a =
+```wdte
+let a =>
  import 'arrays';
 let s => import 'stream';
 

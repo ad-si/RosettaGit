@@ -1650,7 +1650,8 @@ next({sma,Pid},N) ->
 
 {{out}}
 
-```erlang>9
+```erlang
+9>
  sma:main().
 Added 1, sma(3) -> 1.000000, sma(5) -> 1.000000
 Added 2, sma(3) -> 1.500000, sma(5) -> 1.500000
@@ -2618,7 +2619,9 @@ console.log(g.simpleSMA(g.length));
 ## Julia
 
 
-```julia>using Statistics</lang
+```julia
+using Statistics
+```
 
 The function wants specified the type of the data in the buffer and, if you want, the limit of the buffer.
 
@@ -3156,7 +3159,8 @@ class RAvgSimpleMoving public
 ```
 
 {{out}}
-<pre style="height: 25ex; overflow: scroll">
+
+```txt
 Next number =   1.0, SMA =          1.000000000
 Next number =   2.0, SMA =          1.500000000
 Next number =   3.0, SMA =          2.000000000
@@ -3333,7 +3337,8 @@ Next number = 1.0, SMA = 3.0
 =={{header|Objective-C}}==
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface MovingAverage : NSObject {

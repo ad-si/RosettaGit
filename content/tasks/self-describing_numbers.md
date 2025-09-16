@@ -367,7 +367,8 @@ Although we simply list the conforming numbers - nothing more.
 Be aware, though, that even with a fast interpreter, it's going to be a very long time before you see the full set of results.
 
 
-```befunge>>1+9:0
+```befunge
+>1+9:0>
 \#06#:p#-:#1_$v
 ?v6:%+55:\+1\<<<\0:::<
 #>g1+\6p55+/:#^_001p\v
@@ -2345,7 +2346,8 @@ Search complete.
 ## Python
 
 
-```python>>>
+```python
+>>>
  def isSelfDescribing(n):
 	s = str(n)
 	return all(s.count(str(i)) == int(ch) for i, ch in enumerate(s))

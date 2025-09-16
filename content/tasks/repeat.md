@@ -1738,7 +1738,9 @@ repeat example 4
 
 However, the <code>time</code> command can be used as long as the return value (the report on the timing information) is ignored.
 
-```tcl>time example 4</lang
+```tcl
+time example 4>
+```
 
 It should be noted that the “command” can be an arbitrary script, not just a call to a procedure:
 

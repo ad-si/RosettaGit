@@ -441,7 +441,8 @@ COBOL supports up to 31 digits of decimal precision, so won't need any fancy cur
 
 During calculations the default ROUNDED MODE IS clause, when specified, is NEAREST-AWAY-FROM-ZERO. When ROUNDED is not specified, the default mode is TRUNCATION.  The term "banker's rounding" implies NEAREST-EVEN.
 
-```cobol>       >
+```cobol
+       >
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. currency-example.
@@ -1004,7 +1005,7 @@ Currency_Task
 
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 Item              price                 quantity                    value
 hamburger          5.50         4000000000000000     22000000000000000.00
 milkshake          2.86                        2                     5.72

@@ -1057,7 +1057,8 @@ public class DragonCurve : Form
 
 ## COBOL
 
-```cobol>         >
+```cobol
+         >
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 identification division.
@@ -5031,7 +5032,8 @@ solid fill ASCII character   (█   or   hexadecimal   '''db'''   in code page 4
 
 (Shown at   <sup>'''1'''</sup><big>/</big><sub>'''6'''</sub>   size)
 <b>
-<pre style="font-size:17%">
+
+```txt
                                           ███ ███         ███ ███                                         ███ ███         ███ ███
                                           █ █ █ █         █ █ █ █                                         █ █ █ █         █ █ █ █
                                         █████████       █████████                                       █████████       █████████
@@ -5408,7 +5410,8 @@ Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#dragon_curve
 '''Tail-Recursive SequenceL Code:'''
 
 
-```sequencel>import <Utilities/Math.sl
+```sequencel
+import <Utilities/Math.sl
 ;
 import <Utilities/Conversion.sl>;
 
@@ -6157,7 +6160,9 @@ Dragon3 {
 Put this in a file <code>dragon3.l</code> and run as follows.  <code>params=8</code> means an 8-order curve.
 
 
-```sh>xfractint type=lsystem lfile=dragon3.l lname=Dragon3 params=8</lang
+```sh
+xfractint type=lsystem lfile=dragon3.l lname=Dragon3 params=8
+```
 
 
 

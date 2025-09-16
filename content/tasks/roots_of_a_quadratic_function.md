@@ -532,7 +532,8 @@ int main()
 ```
 
 
-```clojure>user=
+```clojure
+user=>
  (quadratic 1.0 1.0 1.0)
 nil
 user=> (quadratic 1.0 2.0 1.0)

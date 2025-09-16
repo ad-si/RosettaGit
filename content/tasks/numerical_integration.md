@@ -2625,7 +2625,8 @@ Second, let's to generalize all integration methods into one scheme. The methods
 Now there are the closed formulas (which include the endpoints) and the open formulas (which exclude them). Let's do the open formulas first, because then the coefficients don't overlap:
 
 
-```haskell>integrateOpen :: Fractional a =
+```haskell
+integrateOpen :: Fractional a =>
  a -> [a] -> (a -> a) -> a -> a -> Int -> a
 integrateOpen v vs f a b n = approx f xs ws * h / v where
   m = fromIntegral (length vs) * n
@@ -2639,7 +2640,8 @@ integrateOpen v vs f a b n = approx f xs ws * h / v where
 Similarly for the closed formulas, but we need an additional function ''overlap'' which sums the coefficients overlapping at the interior interval boundaries:
 
 
-```haskell>integrateClosed :: Fractional a =
+```haskell
+integrateClosed :: Fractional a =>
  a -> [a] -> (a -> a) -> a -> a -> Int -> a
 integrateClosed v vs f a b n = approx f xs ws * h / v where
   m = fromIntegral (length vs - 1) * n
@@ -5123,7 +5125,8 @@ integral of #<Method: Math.sin> from 0 to 3.14159265358979 in 10 steps
 
 This is a partial solution and only implements trapezium integration.
 
-```rust>fn integral<F
+```rust
+fn integral<F>
 (f: F, range: std::ops::Range<f64>, n_steps: u32) -> f64
     where F: Fn(f64) -> f64
 {
@@ -5321,7 +5324,8 @@ tryem('x', { _ }, 0, 6_000, 6_000_000, 18_000_000);
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl>
 ;
 import <Utilities/Sequence.sl>;
 

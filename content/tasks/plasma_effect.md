@@ -79,23 +79,23 @@ int main()
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
     cols = info.srWindow.Right - info.srWindow.Left + 1;
     rows = info.srWindow.Bottom - info.srWindow.Top + 1;
-	
+
 	HANDLE console;
-	
+
 	console = GetStdHandle(STD_OUTPUT_HANDLE);
-	
+
 	system("@clear||cls");
-	
+
 	srand((unsigned)time(&t));
-	
+
 	for(i=0;i<rows;i++)
 		for(j=0;j<cols;j++){
 			SetConsoleTextAttribute(console,fabs(sin(pi*(rand()%254 + 1)/255.0))*254);
 			printf("%c",219);
 		}
-		
+
 	getchar();
-	
+
 	return 0;
 }
 
@@ -117,26 +117,26 @@ And here's the Graphics version, requires the [http://www.cs.colorado.edu/~main/
 #define pi M_PI
 
 void plasmaScreen(int width,int height){
-	
+
 	int x,y,sec;
 	double dx,dy,dv;
 	time_t t;
-	
+
 	initwindow(width,height,"WinBGIm Plasma");
-	
+
 	while(1){
 		time(&t);
 		sec = (localtime(&t))->tm_sec;
-		
+
 	for(x=0;x<width;x++)
 		for(y=0;y<height;y++){
 			dx = x + .5 * sin(sec/5.0);
 			dy = y + .5 * cos(sec/3.0);
-			
+
 			dv = sin(x*10 + sec) + sin(10*(x*sin(sec/2.0) + y*cos(sec/3.0)) + sec) + sin(sqrt(100*(dx*dx + dy*dy)+1) + sec);
-			
+
 			setcolor(COLOR(255*fabs(sin(dv*pi)),255*fabs(sin(dv*pi + 2*pi/3)),255*fabs(sin(dv*pi + 4*pi/3))));
-			
+
 			putpixel(x,y,getcolor());
 		}
 	delay(1000);
@@ -274,7 +274,7 @@ public:
         for( j = 0; j < BMP_SIZE * 2; j++ ) {
             for( i = 0; i < BMP_SIZE * 2; i++ ) {
                 plasma1[dst] = ( BYTE )( 128.0 + 127.0 * ( cos( ( double )hypot( BMP_SIZE - j, BMP_SIZE - i ) / 64.0 ) ) );
-                plasma2[dst] = ( BYTE )( ( sin( ( sqrt( 128.0 + ( BMP_SIZE - i ) * ( BMP_SIZE - i ) + 
+                plasma2[dst] = ( BYTE )( ( sin( ( sqrt( 128.0 + ( BMP_SIZE - i ) * ( BMP_SIZE - i ) +
                                ( BMP_SIZE - j ) * ( BMP_SIZE - j ) ) - 4.0 ) / 32.0 ) + 1 ) * 90.0 );
                 dst++;
             }
@@ -293,7 +293,7 @@ public:
             y3 = _WD + ( int )( ( _WD - 1 ) * cos( -currentTime / 108 ) );
 
         int src1 = y1 * _WV + x1, src2 = y2 * _WV + x2, src3 = y3 * _WV + x3;
-        
+
         DWORD* bits = _bmp.bits();
         for( int j = 0; j < BMP_SIZE; j++ ) {
             dst = j * BMP_SIZE;
@@ -701,10 +701,10 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    defer file.Close() 
+    defer file.Close()
     if err2 := gif.EncodeAll(file, &anim); err != nil {
         log.Fatal(err2)
-    }    
+    }
 }
 ```
 
@@ -730,19 +730,19 @@ function showPlasma() {
   frame.add(new Plasma(), BorderLayout.CENTER)
   frame.pack()
   frame.setLocationRelativeTo(null)
-  frame.Visible = true 
+  frame.Visible = true
 }
-  
+
 class Plasma extends JPanel  {
   var hueShift: float
   property get plasma: float[][] = createPlasma(size, size)
   property get img: BufferedImage = new BufferedImage(size, size, TYPE_INT_RGB)
-  
+
   construct() {
     PreferredSize = new Dimension(size, size)
     new Timer(50, \ e -> {hueShift+=0.02 repaint()}).start()
   }
-  
+
   private function createPlasma(w: int, h: int): float[][] {
     var buffer = new float[h][w]
     for(y in 0..|h)
@@ -785,7 +785,9 @@ plasma=: 3 :0
 
 
 
-```j>   viewmat plasma 256 256</lang
+```j
+   viewmat plasma 256 256
+```
 
 
 
@@ -992,7 +994,7 @@ public class PlasmaEffect extends JPanel {
                 drawBorder();
                 lastFrameTime = time;
             }
-            
+
             requestAnimationFrame(function () {
                 animate(lastFrameTime);
             });
@@ -1122,7 +1124,7 @@ function love.load()
     size = _.getWidth()
     currentTime, doub, half = 0, size * 2, size / 2
     local b1, b2
-  
+
     for j = 0, size * 2 do
         for i = 0, size * 2 do
             b1 = math.floor( 128 + 127 * ( math.cos( math.sqrt( hypotenuse( size - j , size - i ) ) / 64 ) ) )
@@ -1150,7 +1152,7 @@ function love.draw()
         end
         s1 = s1 + size; s2 = s2 + size; s3 = s3 + size
     end
-    _.points( points ) 
+    _.points( points )
 end
 
 ```
@@ -1393,7 +1395,7 @@ procedure drawPlasma(integer w, h)
             integer i = floor(hue * 6)
             atom t = 255,
                  f = (hue * 6 - i)*t,
-                 q = t - f, 
+                 q = t - f,
                  r, g, b
             switch mod(i,6) do
                 case 0: r = t; g = f; b = 0
@@ -1409,7 +1411,7 @@ procedure drawPlasma(integer w, h)
             cx += 1
         end for
     end for
-    cdCanvasPutImageRectRGB(cddbuffer, w, h, rgb3, 0, 0, 0, 0, 0, 0, 0, 0) 
+    cdCanvasPutImageRectRGB(cddbuffer, w, h, rgb3, 0, 0, 0, 0, 0, 0, 0, 0)
 end procedure
 
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
@@ -1461,7 +1463,7 @@ main()
 And here's a simple console ditty, similar I think to C's ASCII version for Windows, though this also works on Linux:
 
 ```Phix
-sequence s = video_config() 
+sequence s = video_config()
 for i=1 to s[VC_SCRNLINES]*s[VC_SCRNCOLS]-1 do
     bk_color(rand(16)-1)
     text_color(rand(16)-1)
@@ -1543,13 +1545,13 @@ func draw
                    begin(p1)
                    setpen(pen)
 
-                   w = 256 
+                   w = 256
                    h = 256
                    time = 0
 
                    for x = 0 to w -1
                          for y = 0 to h -1
-                               time = time + 0.99 
+                               time = time + 0.99
                                value = sin(dist(x + time, y, 128, 128) / 8) +
                                            sin(dist(x, y, 64, 64) / 8) +
                                            sin(dist(x, y + time / 7, 192, 64) / 7) +
@@ -1560,8 +1562,8 @@ func draw
                                b = 255-c
                                color2 = new qcolor()
                                color2.setrgb(r,g,b,255)
-                               pen.setcolor(color2) 
-                               setpen(pen)     
+                               pen.setcolor(color2)
+                               setpen(pen)
                                drawpoint(x,y)
                         next
                    next

@@ -564,7 +564,8 @@ congeal=: |.@|:@((*@[*>.)/\.)^:4^:_
 Example:
 
 
-```J>   M=:0.4
+```j
+   M=:0.4>
 ?6 6$0
    M
 1 0 0 0 0 0
@@ -639,7 +640,8 @@ Example use:
 So we can create a word that performs a simulation experiment, given a probability getting a 1 and the number of rows (and columns) of our square matrix M.
 
 
-```J>experiment=: K@ idclust@:
+```j
+experiment=: K@ idclust@:>
  0 ?@$~ ,~
 ```
 

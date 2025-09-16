@@ -1608,7 +1608,8 @@ return
 ```
 
 (Shown at   <big>'''<sup>1</sup>/<sub>2</sub>'''</big>   size.)
-<pre style="font-size:50%">
+
+```txt
                                     eeeee:::::::
                                 eeeeeeeee··············
                              ooeeeeeeeeee··················
@@ -1649,7 +1650,6 @@ eeeeeeeeeeeeeeooooooooooooºººººº!!!!!!:::::···············�
                     eeeeeeeeeeeeeeeeeeeeeoooooooooooooooooo
                         eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                eeeeeeeeeeeeeeeee
-
 ```
 
 

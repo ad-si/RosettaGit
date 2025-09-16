@@ -152,7 +152,9 @@ end Bell;
 ## Applescript
 
 
-```applescript>beep</lang
+```applescript
+beep>
+```
 
 
 
@@ -260,7 +262,9 @@ echo %bell%
 Assuming that the platform the program is running on rings the bell when CHR$7 is sent to the VDU driver:
 
 
-```bbcbasic>VDU 7</lang
+```bbcbasic
+VDU 7>
+```
 
 
 
@@ -296,7 +300,9 @@ _7}
 
 Run Bracmat in interactive mode (start Bracmat without command line arguments) and enter the following after the Bracmat prompt <code>{?}</code>:
 
-```bracmat>\a</lang
+```bracmat
+\a>
+```
 
 Alternatively, run Bracmat non-interactively. In DOS, you write
 
@@ -383,7 +389,9 @@ System.Console.Beep(440, 2000); // default "concert pitch" for 2 seconds
 
 Standard compliant:
 
-```cobol>DISPLAY SPACE WITH BELL</lang
+```cobol
+DISPLAY SPACE WITH BELL>
+```
 
 
 ```cobol
@@ -483,10 +491,14 @@ Console.Beep()
 ## Forth
 
 
-```forth>7 emit</lang
+```forth
+7 emit>
+```
 
 
-```forth>#bell emit</lang
+```forth
+#bell emit>
+```
 
 
 ```forth
@@ -633,7 +645,9 @@ stdoutnl('\a')
 ## Logo
 
 
-```logo>type char 7</lang
+```logo
+type char 7>
+```
 
 
 
@@ -895,7 +909,9 @@ print "\a";
 ## Perl 6
 
 
-```perl6>print 7.chr;</lang
+```perl6
+print 7.chr;>
+```
 
 
 
@@ -1014,7 +1030,9 @@ alarm()
 ## Retro
 
 
-```Retro>7 putc</lang
+```Retro
+7 putc>
+```
 
 
 

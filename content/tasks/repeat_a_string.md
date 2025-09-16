@@ -491,7 +491,8 @@ Repeat(String,Times)
 ## AutoIt
 
 
-```AutoIt>#include <String.au3
+```AutoIt
+#include <String.au3>
 
 
 ConsoleWrite(_StringRepeat("ha", 5) & @CRLF)
@@ -528,7 +529,9 @@ print_repeat!: { <- { dup << } -> times }
 
 Outputs:
 
-```babel>hahahahaha</lang
+```babel
+hahahahaha>
+```
 
 The '<<' operator prints, 'dup' duplicates the top-of-stack, 'times' does something x number of times. The arrows mean down (<-) and up (->) respectively - it would require a lengthy description to explain what this means, refer to the doc/babel_ref.txt file in the github repo linked from [[Babel]]
 
@@ -655,7 +658,8 @@ Program finished!
 ## Befunge
 
 
-```Befunge>v
+```Befunge
+v>
                 ">:#,_v
 >29*+00p>~:"0"-    #v_v $
  v      ^p0p00:-1g00< $            >
@@ -1121,7 +1125,9 @@ end;
 Built in RTL function:
 
 
-```Delphi>StrUtils.DupeString</lang
+```Delphi
+StrUtils.DupeString>
+```
 
 
 =={{header|Déjà Vu}}==
@@ -3038,7 +3044,8 @@ head insert/dup "" "ha" 5
 ## Red
 
 
-```Red>>
+```Red
+>>
  str: "Add duplicates to string"
 >> insert/dup str "ha" 3
 == "hahahaAdd duplicates to string"
@@ -3419,7 +3426,8 @@ end
 ## Sparkling
 
 
-```sparkling>spn:3
+```sparkling
+spn:3>
  repeat("na", 8) .. " Batman!"
 = nananananananana Batman!
 ```

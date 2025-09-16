@@ -2699,7 +2699,8 @@ There are two types of arrays in MATLAB: arrays and cell arrays. MATLAB includes
 Example:
 For both of these function the first argument is a function handle for the function we would like to apply to each element. The second argument is the array whose elements are modified by the function. The function can be any function, including user defined functions.
 
-```MATLAB>>
+```matlab
+>
  array = [1 2 3 4 5]
 
 array =
@@ -3003,7 +3004,9 @@ bundle Default {
 This function is part of the standard library:
 
 
-```ocaml>Array.map</lang
+```ocaml
+Array.map
+```
 
 
 Usage example:
@@ -3600,7 +3603,9 @@ print " ".join(map(str, map(square, range(10))))
 
 Result:
 
-```python>0 1 4 9 16 25 36 49 64 81</lang
+```python
+0 1 4 9 16 25 36 49 64 81
+```
 
 
 
@@ -4975,7 +4980,8 @@ map prn '(1 2 3 4 5)
 ## WDTE
 
 
-```WDTE>let a =
+```WDTE
+let a =
  import 'arrays';
 let s => import 'stream';
 

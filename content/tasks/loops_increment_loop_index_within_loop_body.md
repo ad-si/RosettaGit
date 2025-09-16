@@ -46,63 +46,54 @@ languages = [
 ]
 +++
 
-Sometimes, one may need   (or want)   a loop which
-its   ''iterator''   (the index
-variable)   is modified within the
+Sometimes, one may need (or want) a loop which
+its iterator (the index variable) is modified within the loop body
+in addition to the normal incrementation by the (`do`) loop structure index.
 
-loop body   '' in addition to the normal incrementation by the   ('''do''')   loop structure index''.
-
-
-;Goal:
 Demonstrate the best way to accomplish this.
 
-
-<!-- ··· with a nod to Douglas Adams  (42 being the ultimate answer to THE question). !-->
 
 ## Task
 
 Write a loop which:
-::*   starts the index (variable) at   '''42'''
-::*   (at iteration time)   increments the index by unity
-::*   if the index is prime:
-::::*   displays the count of primes found (so far) and the prime   (to the terminal)
-::::*   increments the index such that the new index is now the (old) index plus that prime
-::*   terminates the loop when   '''42'''   primes are shown
 
+- Starts the index (variable) at `42`
+- Increments the index by unity (at iteration time)
+- If the index is prime:
+    - Displays the count of primes found (so far)
+        and the prime (to the terminal)
+    - Increments the index such that the new index
+        is now the (old) index plus that prime
+- Terminates the loop when `42` primes are shown
 
-Extra credit:   because of the primes get rather large, use commas
+Extra credit:
+Because of the primes get rather large, use commas
 within the displayed primes to ease comprehension.
-
 
 Show all output here.
 
-
-;Note:
-Not all programming languages allow the modification of a
-loop's index.   If that is the case, then use whatever method that
-is appropriate or idiomatic for that language.   Please add a note
-if the loop's index isn't modifiable.
+> Not all programming languages allow the modification of a loop's index.
+> If that is the case, then use whatever method that
+> is appropriate or idiomatic for that language.
+> Please add a note if the loop's index isn't modifiable.
 
 
 ## Related tasks
 
-*   [[Loop over multiple arrays simultaneously]]
-*   [[Loops/Break]]
-*   [[Loops/Continue]]
-*   [[Loops/Do-while]]
-*   [[Loops/Downward for]]
-*   [[Loops/For]]
-*   [[Loops/For with a specified step]]
-*   [[Loops/Foreach]]
-*   [[Loops/Infinite]]
-*   [[Loops/N plus one half]]
-*   [[Loops/Nested]]
-*   [[Loops/While]]
-*   [[Loops/with multiple ranges]]
-*   [[Loops/Wrong ranges]]
-
-
-
+- Loop over multiple arrays simultaneously
+- Loops/Break
+- Loops/Continue
+- Loops/Do-while
+- Loops/Downward for
+- Loops/For
+- Loops/For with a specified step
+- Loops/Foreach
+- Loops/Infinite
+- Loops/N plus one half
+- Loops/Nested
+- Loops/While
+- Loops/with multiple ranges
+- Loops/Wrong ranges
 
 
 ## 360 Assembly
@@ -188,7 +179,7 @@ ZN       DS     CL20
          END    LOOPILWB
 ```
 
-<pre style="height:40ex">
+```txt
 i= 1 :                   43
 i= 2 :                   89
 i= 3 :                  179
@@ -322,9 +313,7 @@ n = 39       12438003537571
 n = 40       24876007075181
 n = 41       49752014150467
 n = 42       99504028301131
-
 ```
-
 
 
 ## ARM Assembly
@@ -827,10 +816,9 @@ divisionReg64U:
 100:                   @ end function
     pop {r4,r5,lr}     @ restaur registers
     bx lr              @ return
-
 ```
 
-<Pre>
+```txt
 pi@raspberrypi:~/asm/rosetta/ASS3 $ loopsinc96
 Index  : 1          Value  :                   43
 Index  : 2          Value  :                   89
@@ -1441,7 +1429,7 @@ Compilation failed.
       EndFunction
 ```
 
-<pre style="height:60ex">
+```txt
  1                   43
  2                   89
  3                  179
@@ -1528,7 +1516,7 @@ C LOOPS INCREMENT LOOP INDEX WITHIN LOOP BODY - 17/07/2018
       END
 ```
 
-<pre style="height:60ex">
+```txt
  1         43
  2         89
  3        179
@@ -1602,7 +1590,8 @@ Sleep
 End
 ```
 
-<pre style="height:40ex">n =  1                  43
+```txt
+n =  1                  43
 n =  2                  89
 n =  3                 179
 n =  4                 359
@@ -2062,7 +2051,8 @@ fun main(args: Array<String>) {
 }
 ```
 
-<pre style="height:35ex">n = 1                    43
+```txt
+n = 1                    43
 n = 2                    89
 n = 3                   179
 n = 4                   359
@@ -2331,7 +2321,7 @@ Sub format_n
 EndSub 'format_n
 ```
 
-<pre style="height:60ex">
+```txt
 i= 1 :                   43
 i= 2 :                   89
 i= 3 :                  179
@@ -2499,7 +2489,8 @@ sub commatize {
 }
 ```
 
-<pre  style="height:30ex"> 1                    43
+```txt
+ 1                    43
  2                    89
  3                   179
  4                   359
@@ -3219,7 +3210,7 @@ Visual Basic for Application (VBA) allows to modify the index inside the loop.
     End Function 'RightX
 ```
 
-<pre style="height:60ex">
+```txt
 i= 1 :                   43
 i= 2 :                   89
 i= 3 :                  179
@@ -3313,7 +3304,8 @@ Module LoopsIliwlb
 End Module
 ```
 
-<pre style="height:60ex">i= 1 :                   43
+```txt
+i= 1 :                   43
 i= 2 :                   89
 i= 3 :                  179
 i= 4 :                  359
@@ -3385,7 +3377,7 @@ foreach n in ([1..42]){
 }
 ```
 
-<pre style="height:35ex">
+```txt
 n =  1                   43
 n =  2                   89
 n =  3                  179
@@ -3428,6 +3420,4 @@ n = 39   12,438,003,537,571
 n = 40   24,876,007,075,181
 n = 41   49,752,014,150,467
 n = 42   99,504,028,301,131
-
 ```
-

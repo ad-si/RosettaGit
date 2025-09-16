@@ -421,7 +421,9 @@ stdout is a terminal
 
 There is no explicit way (ie <tt>isatty()</tt>)to do this; however, if we ''assume'' that standard out ''is'' a terminal, we can check if the output stream has been redirected (presumably to something other than a terminal).
 
-```Nemerle>def isTerm = System.Console.IsOutputRedirected;</lang
+```nemerle
+def isTerm = System.Console.IsOutputRedirected;
+```
 
 
 

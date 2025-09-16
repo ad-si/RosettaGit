@@ -390,7 +390,8 @@ Common Lisp allows the definition of documentation strings for functions, variab
 This documentation method will work perfectly with the built in object browser in Visual Studio. The object browser can then show detailed information for each component. To make documentation that can be parsed, a triple slash (///) must be used. Further information can be found in [http://aspalliance.com/696 this tutorial]. A list of available xml elements for use in documentation [http://aspalliance.com/696_Code_Documentation_in_NET.2 is here].
 
 
-```csharp>/// <summary
+```csharp
+/// <summary
 
 /// The XMLSystem class is here to help handle XML items in this site.
 /// </summary>
@@ -946,7 +947,9 @@ This is only a short greeting.
 Any literal braces in the text must be backslash escaped <code>\{</code>.  The text is shown by the online help system, similar to builtin commands.
 
 
-```Gri>help My Hello Message</lang
+```Gri
+help My Hello Message>
+```
 
 
 (See section "Simple New Command" in the GRI manual.)
@@ -1034,7 +1037,9 @@ procedure x1()    #: short description of procedure
 ## Unicon
 =
 
-```Unicon>XYZ</lang
+```Unicon
+XYZ>
+```
 
 TBD
 
@@ -1254,7 +1259,9 @@ The comments will be revealed. However, a test with Octave elicited only the com
  multi line comments.
 
 Special
-```html><doc> ... </doc></lang
+```html
+<doc> ... </doc>
+```
  tags can be used inside these documentation blocks and are parsed as XML nodes; and checked for valid XHTML.  Outside of the doc tags, the documentation parser can be used to create API documentation.
 
 The feature does not care what file type is used for input, and most C sources for Neko libraries include documentation blocks of this type.
@@ -1500,7 +1507,8 @@ class Doc(object):
 
 The built-in help() function uses the pydoc module to display docstring information at the command prompt of the Python interactive shell.
 
-```python>>>
+```python
+>>
  def somefunction():
 	"takes no args and returns None after doing not a lot"
 

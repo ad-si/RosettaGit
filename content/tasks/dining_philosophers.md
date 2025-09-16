@@ -430,7 +430,8 @@ WaitForFork(Philosopher, This, ByRef ThisFork, ByRef OtherFork, ByRef CurrentThi
 }
 ```
 
-<pre style="height:40ex;overflow:scroll">Aristotle is hungry.
+```txt
+Aristotle is hungry.
 Aristotle grabs left fork.
 Kant is hungry.
 Kant grabs left fork.
@@ -752,7 +753,8 @@ int main()
 
 This uses a modified version of the Python algorithm version below.  Uses POSIX threads.
 
-```C>#include <pthread.h
+```c
+#include <pthread.h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -4497,17 +4499,9 @@ So the thread code can be this:
 			end if
 		} as a interval time_to_appear#val(m^)
 		thread a execute static f=eval(m), think=true, forkL=NoFork, forkR=NoFork
-
 ```
 
-
-
-
-
-
-
-
-<pre style="height:30ex;overflow:scroll">
+```txt
 Dining Philosophers
 Sequential threads - to execute exclusive one threads code
         1257 - Kant thinking
@@ -4546,7 +4540,7 @@ Concurrent threads  - to execute a statement or a block of code
        60424 - Spinoza thinking
        61468 - Spinoza eating
        61974 - Russell thinking
-</pre >
+```
 
 =={{header|Modula-3}}==
 From this implementation's point of view, a "resource" is not a ''fork'', but rather a ''place at the table''. Rather than use one <code>MUTEX</code> for ''each'' fork, it uses one <code>MUTEX</code> for the entire table.

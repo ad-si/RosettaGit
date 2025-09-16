@@ -4682,7 +4682,8 @@ tree destroy
 ```
 
 {{out}}
-<pre style="overflow:auto;height:400px">
+
+```txt
 64 => @@@
  48 => 000
   40 => (((((

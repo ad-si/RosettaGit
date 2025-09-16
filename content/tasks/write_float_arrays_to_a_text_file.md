@@ -604,7 +604,8 @@ close(fn)
 
 =={{header|F Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main argv =
     let x = [ 1.; 2.; 3.; 1e11 ]
@@ -1746,7 +1747,8 @@ def writedat(filename, x, y, xprecision=3, yprecision=5):
 
 Example usage
 
-```python>>>
+```python
+>>>
  import math
 >>> x = [1, 2, 3, 1e11]
 >>> y = map(math.sqrt, x)

@@ -1120,7 +1120,8 @@ b=2
 
 When used as a script language the arguments is a list to the main/1 function. When compiled use init:get_arguments/0
 
-```erlang>3
+```erlang
+3>
  init:get_arguments().
 ```
 
@@ -1138,7 +1139,8 @@ result
 init:get_argument(name) can be used to fetch value of a particular flag
 
 
-```erlang>4
+```erlang
+4>
  init:get_argument(h).
 {ok,[["gamma"]]}
 5> init:get_argument(c).
@@ -1415,7 +1417,9 @@ func main() {
 
 Command-line arguments are accessible via the '''args''' list variable. The following is saved as the file "Echo.groovy":
 
-```groovy>println args</lang
+```groovy
+println args>
+```
 
 
 The existence of command-line arguments presupposes the existence of a command line interpreter. The following test runs were entered in a cygwin bash shell in a Microsoft Windows XP system:
@@ -1520,7 +1524,9 @@ System programArguments each(println)
 The global <code>ARGV</code> holds the command line arguments.  Thus, a program to display them:
 
 
-```J>   ARGV</lang
+```j
+   ARGV
+```
 
 
 
@@ -1920,7 +1926,9 @@ print_arg(Arg, ArgNum, ArgNum + 1, !IO) :-
 
 ## min
 
-```min>args</lang
+```min
+args>
+```
 
 
 
@@ -2244,7 +2252,9 @@ All arguments that begin with "--" are not included into this list.
 The first argument is the program name, so this list is never empty.
 
 
-```Oforth>System.Args println</lang
+```oforth
+System.Args println
+```
 
 
 
@@ -3007,7 +3017,9 @@ const proc: main is func
 
 Command line arguments are available in the ARGV array.
 
-```ruby>say ARGV;</lang
+```ruby
+say ARGV;
+```
 
 ```txt
 % myprog -c "alpha beta" -h "gamma"
@@ -3035,7 +3047,9 @@ StartupArguments do: [| :arg | inform: arg]
 ```
 
 
-```smalltalk>Smalltalk commandLineArguments printCR</lang
+```smalltalk
+Smalltalk commandLineArguments printCR
+```
 
 
 

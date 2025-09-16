@@ -1320,7 +1320,8 @@ Objective-C doesn't have the ability to add a variable to an instance at runtime
 You can put associative references on any object. You can put multiple ones on the same object. They are indexed by a pointer key (typically the address of some dummy variable). You use the functions <code>objc_getAssociatedObject()</code> and <code>objc_setAssociatedObject</code> to get and set them, respectively.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import <objc/runtime.h>
 
@@ -1346,7 +1347,8 @@ int main (int argc, const char *argv[]) {
 
 You can also use a selector as the key, since two selectors with the same content are guaranteed to be equal:
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import <objc/runtime.h>
 
@@ -1878,7 +1880,9 @@ e = empty()
 If the variable (attribute) name is known at "compile" time (hard-coded):
 
 
-```python>   e.foo = 1</lang
+```python
+   e.foo = 1
+```
 
 
 If the variable name is determined at runtime:
@@ -2077,7 +2081,8 @@ class A extends Dynamic {
 Sample output in the REPL:
 
 
-```scala>scala
+```scala
+scala
  val a = new A
 a: A = A@7b20f29d
 

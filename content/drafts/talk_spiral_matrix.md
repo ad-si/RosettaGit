@@ -308,7 +308,8 @@ For a fuller explanation, see [http://www.jsoftware.com/papers/play132.htm the o
 == Python array initialisation edit problem ==
 Hi Spoon, your edit to Spiral of substituting <python>array = [[None]*n]*n</python> for <python>array = [[None]*n for j in range(n)]</python> [[http://www.rosettacode.org/w/index.php?title=Spiral&curid=2967&diff=16906&oldid=16746 here]] doesn't work because of: 
 
-```python>>>
+```python
+>>>
  n=2
 >>> a = [[None]*n]*n
 >>> a

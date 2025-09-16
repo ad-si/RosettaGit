@@ -1483,7 +1483,8 @@ function Integrator(sampleIntervalMS) {
 Test program as a HTML fragment:
 
 
-```html4strict><p
+```html4strict
+<p>
 <span id="a">Test running...</span> <code id="b">-</code></p>
 
 <script type="text/javascript">
@@ -2864,7 +2865,9 @@ example
 
 running:
 
-```Smalltalk>Integrator example</lang
+```smalltalk
+Integrator example
+```
 
 
 output:

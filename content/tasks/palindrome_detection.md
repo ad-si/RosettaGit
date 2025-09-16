@@ -932,7 +932,8 @@ Note that this has some limits.:
 * The potential palindrome can be no longer than 76 characters (which beats the previous version's 11), and ''everything'' (spaces, punctuation, capitalization, etc.) is considered part of the palindrome. (Best to just use lower case letters and ''nothing else''.)
 
 
-```befunge>v
+```befunge
+v>
     "emordnilap a toN",,,,,,,,,,,,,,,,@,,,,,,,,,,,,,,,"Is a palindrome"     <
 2^ < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < < <
 4    ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v   ^_v
@@ -2186,7 +2187,9 @@ end function is_palindro2
 
 
 
-```fortran>end program palindro</lang
+```fortran
+end program palindro>
+```
 
 
 
@@ -2763,7 +2766,8 @@ console.log(isPalindrome("ingirumimusnocteetconsumimurigni"));
 
 ES6 implementation
 
-```javascript>var isPal = str =
+```javascript
+var isPal = str =>
  str === str.split("").reverse().join("");
 ```
 
@@ -3271,7 +3275,8 @@ end
 ```
 
 
-```MATLAB>>
+```MATLAB
+>>
  isPalindrome('In girum imus nocte et consumimur igni')
 
 ans =
@@ -3798,7 +3803,9 @@ and to make the test case insensitive, just use the function <tt>String.lowercas
 
 
 
-```Oforth>String method: isPalindrome  self reverse self == ;</lang
+```oforth
+String method: isPalindrome  self reverse self == ;>
+```
 
 
 
@@ -4799,7 +4806,8 @@ public bool palindrome(str text){
 
 Example:
 
-```rascal>rascal
+```rascal
+rascal>
 palindrome("In girum imus nocte et consumimur igni")
 bool: true
 ```
@@ -5306,7 +5314,8 @@ palindrome(replace("in girum imus nocte et consumimur igni", " ", ""))
 
 '''Using the Reverse Library Function'''
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl>
 ;
 
 isPalindrome(string(1)) := equalList(string, reverse(string));
@@ -5493,7 +5502,8 @@ String extend [
 ```
 
 
-```smalltalk>SequenceableCollection>
+```smalltalk
+SequenceableCollection>>
 isPalindrome
 	^self reverse = self
 

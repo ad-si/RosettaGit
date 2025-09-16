@@ -93,7 +93,7 @@ For a given   <math>Prime_1</math>
 ```11l
 F mod_(n, m)
    R ((n % m) + m) % m
- 
+
 F is_prime(n)
    I n C (2, 3)
       R 1B
@@ -107,7 +107,7 @@ F is_prime(n)
       div += inc
       inc = 6 - inc
    R 1B
- 
+
 L(p) 2 .< 62
    I !is_prime(p)
       L.continue
@@ -154,7 +154,7 @@ L(p) 2 .< 62
 ## Ada
 
 
-Uses the Miller_Rabin package from 
+Uses the Miller_Rabin package from
 [[Miller-Rabin primality test#ordinary integers]].
 
 ```Ada
@@ -228,7 +228,7 @@ Uses the Sieve of Eratosthenes code from the Smith Numbers task with an increase
 # sieve of Eratosthene: sets s[i] to TRUE if i is prime, FALSE otherwise #
 PROC sieve = ( REF[]BOOL s )VOID:
      BEGIN
-        # start with everything flagged as prime                             # 
+        # start with everything flagged as prime                             #
         FOR i TO UPB s DO s[ i ] := TRUE OD;
         # sieve out the non-primes                                           #
         s[ 1 ] := FALSE;
@@ -255,7 +255,7 @@ FOR prime1 FROM 2 TO 61 DO
                     INT prime2 = 1 + ( ( prime1 - 1 ) * ( h3 + prime1 ) OVER d );
                     IF is prime[ prime2 ] THEN
                         INT prime3 = 1 + ( prime1 * prime2 OVER h3 );
-                        IF is prime[ prime3 ] THEN 
+                        IF is prime[ prime3 ] THEN
                             IF ( prime2 * prime3 ) MOD ( prime1 - 1 ) = 1 THEN
                                 print( ( whole( prime1, 0 ), " ", whole( prime2, 0 ), " ", whole( prime3, 0 ), newline ) )
                             FI
@@ -1005,7 +1005,7 @@ This is F77 style, and directly translates the given calculation as per ''formul
 
 ### Source
 
-So, using the double MOD approach (see the ''Discussion'') - which gives the same result for either style of MOD... 
+So, using the double MOD approach (see the ''Discussion'') - which gives the same result for either style of MOD...
 ```Fortran
       LOGICAL FUNCTION ISPRIME(N)	!Ad-hoc, since N is not going to be big...
        INTEGER N			!Despite this intimidating allowance of 32 bits...
@@ -1144,8 +1144,8 @@ Carmichael numbers that are the product of three primes:
 #Define max_sieve 10000000 ' 10^7
 ReDim Shared As Byte isprime(max_sieve)
 
-' translated the pseudo code to FreeBASIC 
-Sub carmichael3(p1 As Integer) 
+' translated the pseudo code to FreeBASIC
+Sub carmichael3(p1 As Integer)
 
   If isprime(p1) = 0 Then Exit Sub
 
@@ -1319,7 +1319,7 @@ func carmichael(p1 int) {
 func main() {
     fmt.Println("The following are Carmichael munbers for p1 <= 61:\n")
     fmt.Println("p1     p2      p3     product")
-    fmt.Println("==     ==      ==     
+    fmt.Println("==     ==      ==
 ### =
 ")
 
@@ -1337,7 +1337,7 @@ func main() {
 The following are Carmichael munbers for p1 <= 61:
 
 p1     p2      p3     product
-==     ==      ==     
+==     ==      ==
 ### =
 
  3     11      17     561
@@ -1868,44 +1868,44 @@ Carmichael 3 (p×q×r) pseudoprimes, up to p = 61:
 
 
 p = 11
-  p× 29 × 107 = 34133  p× 37 × 59 = 24013  
+  p× 29 × 107 = 34133  p× 37 × 59 = 24013
 
 p = 17
-  p× 23 × 79 = 30889  p× 53 × 101 = 91001  
+  p× 23 × 79 = 30889  p× 53 × 101 = 91001
 
 p = 19
-  p× 59 × 113 = 126673  p× 139 × 661 = 1745701  p× 193 × 283 = 1037761  
+  p× 59 × 113 = 126673  p× 139 × 661 = 1745701  p× 193 × 283 = 1037761
 
 p = 23
-  p× 43 × 53 = 52417  p× 59 × 227 = 308039  p× 71 × 137 = 223721  p× 83 × 107 = 204263  
+  p× 43 × 53 = 52417  p× 59 × 227 = 308039  p× 71 × 137 = 223721  p× 83 × 107 = 204263
 
 p = 29
-  p× 41 × 109 = 129601  p× 89 × 173 = 446513  p× 97 × 149 = 419137  p× 149 × 541 = 2337661  
+  p× 41 × 109 = 129601  p× 89 × 173 = 446513  p× 97 × 149 = 419137  p× 149 × 541 = 2337661
 
 p = 31
-  p× 67 × 1039 = 2158003  p× 73 × 79 = 178777  p× 79 × 307 = 751843  p× 223 × 1153 = 7970689  
-  p× 313 × 463 = 4492489  
+  p× 67 × 1039 = 2158003  p× 73 × 79 = 178777  p× 79 × 307 = 751843  p× 223 × 1153 = 7970689
+  p× 313 × 463 = 4492489
 
 p = 41
-  p× 89 × 1217 = 4440833  p× 97 × 569 = 2262913  
+  p× 89 × 1217 = 4440833  p× 97 × 569 = 2262913
 
 p = 43
-  p× 67 × 241 = 694321  p× 107 × 461 = 2121061  p× 131 × 257 = 1447681  p× 139 × 1993 = 11912161  
-  p× 157 × 751 = 5070001  p× 199 × 373 = 3191761  
+  p× 67 × 241 = 694321  p× 107 × 461 = 2121061  p× 131 × 257 = 1447681  p× 139 × 1993 = 11912161
+  p× 157 × 751 = 5070001  p× 199 × 373 = 3191761
 
 p = 47
-  p× 53 × 499 = 1243009  p× 89 × 103 = 430849  p× 101 × 1583 = 7514501  p× 107 × 839 = 4219331  
-  p× 157 × 239 = 1763581  
+  p× 53 × 499 = 1243009  p× 89 × 103 = 430849  p× 101 × 1583 = 7514501  p× 107 × 839 = 4219331
+  p× 157 × 239 = 1763581
 
 p = 53
-  p× 113 × 1997 = 11960033  p× 197 × 233 = 2432753  p× 281 × 877 = 13061161  
+  p× 113 × 1997 = 11960033  p× 197 × 233 = 2432753  p× 281 × 877 = 13061161
 
 p = 59
-  p× 131 × 1289 = 9962681  p× 139 × 821 = 6733021  p× 149 × 587 = 5160317  p× 173 × 379 = 3868453  
-  p× 179 × 353 = 3728033  
+  p× 131 × 1289 = 9962681  p× 139 × 821 = 6733021  p× 149 × 587 = 5160317  p× 173 × 379 = 3868453
+  p× 179 × 353 = 3728033
 
 p = 61
-  p× 1009 × 2677 = 164766673  
+  p× 1009 × 2677 = 164766673
 
 42 results in total.
 ```
@@ -1962,12 +1962,12 @@ See D output.
 
 ```mathematica
 Cases[Cases[
-  Cases[Table[{p1, h3, d}, {p1, Array[Prime, PrimePi@61]}, {h3, 2, 
-     p1 - 1}, {d, 1, h3 + p1 - 1}], {p1_Integer, h3_, d_} /; 
-     PrimeQ[1 + (p1 - 1) (h3 + p1)/d] && 
-      Divisible[p1^2 + d, h3] :> {p1, 1 + (p1 - 1) (h3 + p1)/d, h3}, 
-   Infinity], {p1_, p2_, h3_} /; PrimeQ[1 + Floor[p1 p2/h3]] :> {p1, 
-    p2, 1 + Floor[p1 p2/h3]}], {p1_, p2_, p3_} /; 
+  Cases[Table[{p1, h3, d}, {p1, Array[Prime, PrimePi@61]}, {h3, 2,
+     p1 - 1}, {d, 1, h3 + p1 - 1}], {p1_Integer, h3_, d_} /;
+     PrimeQ[1 + (p1 - 1) (h3 + p1)/d] &&
+      Divisible[p1^2 + d, h3] :> {p1, 1 + (p1 - 1) (h3 + p1)/d, h3},
+   Infinity], {p1_, p2_, h3_} /; PrimeQ[1 + Floor[p1 p2/h3]] :> {p1,
+    p2, 1 + Floor[p1 p2/h3]}], {p1_, p2_, p3_} /;
    Mod[p2 p3, p1 - 1] == 1 :> Print[p1, "*", p2, "*", p3]]
 ```
 
@@ -2158,7 +2158,7 @@ for p1=1 to 61 do
                 and mod(-(p1*p1),h3) = mod(d,h3) then
                     atom p2 := 1 + floor(((p1-1)*h3p1)/d),
                          p3 := 1 +floor(p1*p2/h3)
-                    if is_prime(p2) 
+                    if is_prime(p2)
                     and is_prime(p3)
                     and mod(p2*p3,p1-1)=1 then
                         if count<5 or count>55 then
@@ -2199,7 +2199,7 @@ printf(1,"%d Carmichael numbers found\n",count)
 ```PicoLisp
 (de modulo (X Y)
    (% (+ Y (% X Y)) Y) )
- 
+
 (de prime? (N)
    (let D 0
       (or
@@ -2210,7 +2210,7 @@ printf(1,"%d Carmichael numbers found\n",count)
             (for (D 3  T  (+ D 2))
                (T (> D (sqrt N)) T)
                (T (=0 (% N D)) NIL) ) ) ) ) )
- 
+
 (for P1 61
    (when (prime? P1)
       (for (H3 2 (> P1 H3) (inc H3))
@@ -2235,7 +2235,7 @@ printf(1,"%d Carmichael numbers found\n",count)
                            (= 1 (modulo (* P2 P3) (dec P1))) )
                         (print (list P1 P2 P3)) ) ) ) ) ) ) ) )
 (prinl)
- 
+
 (bye)
 ```
 
@@ -2278,7 +2278,7 @@ Results:
 
 ```txt
 
-Carmichael numbers are: 
+Carmichael numbers are:
 3 x 11 x 17
 5 x 29 x 73
 5 x 17 x 29
@@ -2383,7 +2383,7 @@ Carmichael numbers are:
 class Isprime():
     '''
     Extensible sieve of Eratosthenes
-    
+
     >>> isprime.check(11)
     True
     >>> isprime.multiples
@@ -2398,12 +2398,12 @@ class Isprime():
     [2, 3, 5, 7, 11, 13, 17, 19]
     >>> isprime.nmax
     22
-    >>> 
+    >>>
     '''
     multiples = {2}
     primes = [2]
     nmax = 2
-    
+
     def __init__(self, nmax):
         if nmax > self.nmax:
             self.check(nmax)
@@ -2429,8 +2429,8 @@ class Isprime():
             return n not in multiples
 
     __call__ = check
-            
-        
+
+
 def carmichael(p1):
     ans = []
     if isprime(p1):
@@ -2446,9 +2446,9 @@ def carmichael(p1):
                                 #print('%i X %i X %i' % (p1, p2, p3))
                                 ans += [tuple(sorted((p1, p2, p3)))]
     return ans
-                
+
 isprime = Isprime(2)
- 
+
 ans = sorted(sum((carmichael(n) for n in range(62) if isprime(n)), []))
 print(',\n'.join(repr(ans[i:i+5])[1:-1] for i in range(0, len(ans)+1, 5)))
 ```
@@ -2571,7 +2571,7 @@ Output:
 
 ## REXX
 
-Note that REXX's version of   '''modulus'''    (<big><code>'''//'''</code></big>)   is really a   ''remainder''   function. 
+Note that REXX's version of   '''modulus'''    (<big><code>'''//'''</code></big>)   is really a   ''remainder''   function.
 
 The Carmichael numbers are shown in numerical order.
 
@@ -2679,7 +2679,7 @@ for p = 2 to 61
     carmichael3(p)
 next
 
-func carmichael3(p1) 
+func carmichael3(p1)
        if isprime(p1) = 0  return ok
        for h3 = 1 to p1 -1
             t1 = (h3 + p1) * (p1 -1)
@@ -2688,27 +2688,27 @@ func carmichael3(p1)
                t2 = t2 + h3
             ok
             for d = 1 to h3 + p1 -1
-                 if t1 % d = 0 and t2 = (d % h3) 
+                 if t1 % d = 0 and t2 = (d % h3)
                    p2 = 1 + (t1 / d)
                    if isprime(p2) = 0
                       loop
                    ok
                    p3 = 1 + floor((p1 * p2 / h3))
-                   if isprime(p3) = 0 or ((p2 * p3) % (p1 -1)) != 1 
+                   if isprime(p3) = 0 or ((p2 * p3) % (p1 -1)) != 1
                       loop
                    ok
                    see "" + p1 + "       " + p2 + "      " + p3 + "    " + p1*p2*p3 + nl
                 ok
-            next 
-     next 
-        
+            next
+     next
+
 func isprime(num)
        if (num <= 1) return 0 ok
        if (num % 2 = 0) and num != 2
           return 0
        ok
        for i = 3 to floor(num / 2) -1 step 2
-           if (num % i = 0) 
+           if (num % i = 0)
               return 0
            ok
        next
@@ -2722,7 +2722,7 @@ Output:
 
 The following are Carmichael munbers for p1 <= 61:
 p1     p2      p3     product
-==     ==      ==     
+==     ==      ==
 ### =
 
  3     11      17     561
@@ -2817,7 +2817,7 @@ Prime.each(61) do |p|
       next unless q.prime?
       r = 1 + (p * q / h3)
       next unless r.prime? and (q * r) % (p - 1) == 1
-      puts "#{p} x #{q} x #{r}" 
+      puts "#{p} x #{q} x #{r}"
     end
   end
   puts
@@ -2826,7 +2826,8 @@ end
 
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 3 x 11 x 17
 
 5 x 29 x 73
@@ -3003,7 +3004,7 @@ The function [http://seed7.sourceforge.net/algorith/math.htm#isPrime isPrime] be
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func boolean: isPrime (in integer: number) is func
   result
     var boolean: prime is FALSE;
@@ -3092,18 +3093,18 @@ const proc: main is func
 37 * 73 * 181 = 488881
 37 * 73 * 109 = 294409
 41 * 1721 * 35281 = 2489462641
-41 * 881 * 12041 = 434932961                                                                                                                                                 
-41 * 101 * 461 = 1909001                                                                                                                                                     
-41 * 241 * 761 = 7519441                                                                                                                                                     
-41 * 241 * 521 = 5148001                                                                                                                                                     
-41 * 73 * 137 = 410041                                                                                                                                                       
-41 * 61 * 101 = 252601                                                                                                                                                       
-43 * 631 * 13567 = 368113411                                                                                                                                                 
-43 * 271 * 5827 = 67902031                                                                                                                                                   
-43 * 127 * 2731 = 14913991                                                                                                                                                   
-43 * 127 * 1093 = 5968873                                                                                                                                                    
-43 * 211 * 757 = 6868261                                                                                                                                                     
-43 * 631 * 1597 = 43331401                                                                                                                                                   
+41 * 881 * 12041 = 434932961
+41 * 101 * 461 = 1909001
+41 * 241 * 761 = 7519441
+41 * 241 * 521 = 5148001
+41 * 73 * 137 = 410041
+41 * 61 * 101 = 252601
+43 * 631 * 13567 = 368113411
+43 * 271 * 5827 = 67902031
+43 * 127 * 2731 = 14913991
+43 * 127 * 1093 = 5968873
+43 * 211 * 757 = 6868261
+43 * 631 * 1597 = 43331401
 43 * 127 * 211 = 1152271
 43 * 211 * 337 = 3057601
 43 * 433 * 643 = 11972017
@@ -3364,12 +3365,12 @@ cs.pump(Console.println,fcn([(p1,p2,p3)]){
 180 NEXT d
 190 NEXT h
 200 NEXT p
-210 STOP 
-1000 IF n<4 THEN LET n=(n>1): RETURN 
-1010 IF (NOT FN m(n,2)) OR (NOT FN m(n,3)) THEN LET n=0: RETURN 
+210 STOP
+1000 IF n<4 THEN LET n=(n>1): RETURN
+1010 IF (NOT FN m(n,2)) OR (NOT FN m(n,3)) THEN LET n=0: RETURN
 1020 LET i=5
-1030 IF NOT ((i*i)<=n) THEN LET n=1: RETURN 
-1040 IF (NOT FN m(n,i)) OR NOT FN m(n,(i+2)) THEN LET n=0: RETURN 
+1030 IF NOT ((i*i)<=n) THEN LET n=1: RETURN
+1040 IF (NOT FN m(n,i)) OR NOT FN m(n,(i+2)) THEN LET n=0: RETURN
 1050 LET i=i+6
 1060 GO TO 1030
 2000 DEF FN m(a,b)=a-(INT (a/b)*b): REM Mod function

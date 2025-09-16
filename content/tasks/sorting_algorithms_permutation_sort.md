@@ -978,7 +978,9 @@ ps =:(1+])^:((-.@-:/:~)@A.~)^:_ 0:
 
 Of course, this can be calculated much more directly (and efficiently):
 
-```j>ps =: A.@:/:</lang
+```j
+ps =: A.@:/:
+```
 
 Either way:
 
@@ -1330,7 +1332,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  permutationSort([4 3 1 5 6 2])
 
 ans =

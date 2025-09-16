@@ -697,7 +697,8 @@ Number of primes between 7,700 and 8,000: 30
 A version based on a (hashed) Map:
 
 
-```dart>Iterable<int
+```dart
+Iterable<int
  primesMap() {
     Iterable<int> oddprms() sync* {
       yield(3); yield(5); // need at least 2 for initialization
@@ -2454,7 +2455,8 @@ fun primesHM(): Sequence<Int> = sequence {
         }.map { it.n })
     }
     yieldAll(oddprms())
-}</Lang>
+}
+```
 
 it is faster than the first example even though not using wheel factorization (other than odds-only) and rapidly pulls far ahead of it with increasing range such that it is usable to a range of 100 million in the order of 10 seconds.
 
@@ -2933,8 +2935,10 @@ prime(10000)
 
 
 =={{Header|Pascal}}==
+
 <b>there is something wrong </b>
-<pre >
+
+```txt
 http://www.primos.mat.br/Ate100G.html ->
 75. de 16639648367 a 16875026921
 76. de 16875026963 a 17110593779
@@ -2944,7 +2948,6 @@ my unit:
  750000000 16875026921
  760000000 17110593779
  770000000 17346251243 <----Wrong
-
 ```
 
 
@@ -2959,7 +2962,6 @@ Copyright (C) 2010 - 2018 Kim Walisch
 Seconds: 19.891 Primes: 4118057696
 
 ```pascal
-
 unit primsieve;
 //{$O+,R+}
 {$IFDEF FPC}

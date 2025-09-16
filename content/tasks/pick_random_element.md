@@ -605,7 +605,8 @@ where <code>coll</code> is some sequential collection. Equivalent to:
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. random-element.
@@ -1475,7 +1476,9 @@ However, the <tt>pick</tt> and <tt>roll</tt> methods (not to be confused
 with the pick-and-roll method in basketball) are more general
 insofar as they may be used on any enumerable type:
 
-```perl6>say Bool.pick;  # returns either True or False</lang
+```perl6
+say Bool.pick;  # returns either True or False>
+```
 
 
 
@@ -1629,7 +1632,8 @@ Random list:    One     Two     Seven   Nine    Ten     Seven   Three   Five    
 ## Python
 
 
-```python>>>
+```python
+>>>
  import random
 >>> random.choice(['foo', 'bar', 'baz'])
 'baz'
@@ -1737,7 +1741,8 @@ Say word(wl,random(1,words(wl)))
 ## Red
 
 
-```Red>>
+```Red
+>>
  random/only collect [repeat i 10 [keep i]]
 ```
 

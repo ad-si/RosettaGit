@@ -1306,7 +1306,8 @@ void main(string[] args) /*@safe*/ {
 While the task requirements specify not evaluating using the language's built-in eval, they don't say that you have to write your own ''parser''...
 
 
-```e>def eParser := <elang:syntax.makeEParser
+```e
+def eParser := <elang:syntax.makeEParser>
 
 def LiteralExpr := <elang:evm.makeLiteralExpr>.asType()
 def arithEvaluate(expr :String) {
@@ -2638,7 +2639,9 @@ try { testParse('/ 1 /') } catch (e) { println e }
 
 
 {{out}}
-<pre style="height:30ex;overflow:scroll;">Input: 1+1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+1/15)/14)/13)/12)/11)/10)/9)/8)/7)/6)/5)/4)/3)/2
+
+```txt
+Input: 1+1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+(1+1/15)/14)/13)/12)/11)/10)/9)/8)/7)/6)/5)/4)/3)/2
 AST:   (+ (+ 1 1) (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ (+ 1 (/ 1 15)) 14)) 13)) 12)) 11)) 10)) 9)) 8)) 7)) 6)) 5)) 4)) 3)) 2))
 value: 2.7182818284589946
 
@@ -3497,7 +3500,8 @@ evalArithmeticExp('2*-3--4+-0.25') ==> -2.25
 
 Julia's homoiconic nature and strong metaprogramming facilities make AST/Expression parsing and creation as accessible and programmatic as other language features
 
-```julia>julia
+```julia
+julia
  expr="2 * (3 -1) + 2 * 5"
 "2 * (3 -1) + 2 * 5"
 
@@ -5529,7 +5533,8 @@ print expr, '=',astTree.eval()
 
 Python comes with its own [http://docs.python.org/3.1/library/ast.html#module-ast ast] module as part of its standard libraries. The module compiles Python source into an AST tree that can in turn be compiled to bytecode then executed.
 
-```python>>>
+```python
+>>
  import ast
 >>>
 >>> expr="2 * (3 -1) + 2 * 5"

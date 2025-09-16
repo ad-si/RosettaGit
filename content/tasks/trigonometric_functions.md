@@ -1874,7 +1874,8 @@ atan(1) = 0.7853981633974483 == atan(1)° = 45.0°
 Trigonometric functions use radians; degrees require conversion.
 
 
-```haskell>fromDegrees :: Floating a =
+```haskell
+fromDegrees :: Floating a =>
  a -> a
 fromDegrees deg = deg * pi / 180
 
@@ -2594,7 +2595,8 @@ end
 ```
 
 
-```MATLAB>>
+```MATLAB
+>>
  trigExample(78)
 sin(1.361357)= 0.978148
 asin(0.978148)= 1.361357

@@ -1326,7 +1326,8 @@ ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 ## JavaScript
 
 
-```javascript><script
+```javascript
+<script>
 
 var alphabet=new Array("ESTONIA  R","BCDFGHJKLM","PQUVWXYZ./") // scramble alphabet as you wish
 var prefixes=new Array("",alphabet[0].indexOf(" "),alphabet[0].lastIndexOf(" "))

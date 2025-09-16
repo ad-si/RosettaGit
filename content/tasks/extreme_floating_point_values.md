@@ -1386,7 +1386,8 @@ in interpreting the printed values.
 
 For example, here are two expressions and the result of displaying their values:
 
-```jq>0/0    #=
+```jq
+0/0    #=
  null
 1e1000 #=> 1.7976931348623157e+308
 ```
@@ -2139,7 +2140,8 @@ Press ENTER to EXIT
 ## Python
 
 
-```python>>>
+```python
+>>
  # Extreme values from expressions
 >>> inf = 1e234 * 1e234
 >>> _inf = 1e234 * -1e234
@@ -2186,7 +2188,8 @@ nan
 
 
 
-```python>>>
+```python
+>>
  # But note!
 >>> 1 / -0.0
 

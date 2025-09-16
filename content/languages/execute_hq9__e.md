@@ -18,7 +18,8 @@ tags = []
 * The initial value of the accumulator is unspecified. This implementation has chosen 11472, which is of course the value such that executing the HQ9+ program "HQ9+" will result in the accumulator having a value equal to the length of the program's output.
 
 <br clear=all>
-```e>def makeSeqExpr := <elang:evm.makeSeqExpr
+```e
+def makeSeqExpr := <elang:evm.makeSeqExpr>
 
 def makeLiteralExpr := <elang:evm.makeLiteralExpr>
 def eParser := <elang:syntax.makeEParser>

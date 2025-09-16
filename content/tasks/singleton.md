@@ -974,7 +974,8 @@ loop(Value) ->
 Here is an example of how to use it (from the shell). It assumes singleton:start/0 was already called from the supervisor tree (as would be typical if you were using something like this).
 
 
-```Erlang>1
+```Erlang
+1>
  singleton:get().
 not_set
 2> singleton:set(apple).
@@ -2134,7 +2135,8 @@ In Python we use the [http://code.activestate.com/recipes/66531/ Borg pattern] t
 
 Every instance of the Borg class will share the same state:
 
-```python>>>
+```python
+>>>
  class Borg(object):
 	__state = {}
 	def __init__(self):

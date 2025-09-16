@@ -780,7 +780,8 @@ exit/b 0
 ## BBC BASIC
 =
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 compduration
 PRINT FN_convert(7259)
 PRINT FN_convert(86400)
@@ -836,7 +837,8 @@ NEXT
 
 
 
-```beeswax>#
+```beeswax
+#
 %f# #>%f#  #f%<##>%f#
 pq":X~7~ :X@~++8~8@:X:X@~-~4~.+~8@T_
     ##    ##        ####          #`K0[`}`D2[`}BF3<         <
@@ -3279,7 +3281,8 @@ EndIf
 ### Python: Procedural
 
 
-```python>>>
+```python
+>>
  def duration(seconds):
 	t= []
 	for dm in (60, 60, 24, 7):
@@ -3305,7 +3308,8 @@ EndIf
 ### Python: Functional
 
 
-```python>>>
+```python
+>>
  def duration(seconds, _maxweeks=99999999999):
     return ', '.join('%d %s' % (num, unit)
 		     for num, unit in zip([(seconds // d) % m

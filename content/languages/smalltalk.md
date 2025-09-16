@@ -66,24 +66,31 @@ In Smalltalk, every object is an instance of some class. Objects are only be ref
 
 Message sends are dynamically resolved, by letting the receiver of the message determine the method (aka code to run). The message consist of a selector (= name of the message) and optional arguments. The message syntax as:
 
-```smalltalk>receiver selector</lang
+```smalltalk
+receiver selector>
+```
 
 a unary message, without arguments.
 
 
-```smalltalk>receiver part1: arg1 part2: arg2 ... partN: argN</lang
+```smalltalk
+receiver part1: arg1 part2: arg2 ... partN: argN>
+```
 
 a keyword message; the selector consists of the concatenation of the keyword parts: 'part1:part2:...partN:'.
 
 
-```smalltalk>receiver op arg</lang
+```smalltalk
+receiver op arg>
+```
 
 a so called ''binary message''. The selector 'op' consists of one or more special characters, such as '+', -', '@' etc.
 These are actually syntactic sugar, especially to make arithmetic look more familiar (i.e. instead of "rcvr add: foo" we can write "rcvr + foo").
 
 The precedence rules are unary > binary > keyword, thus
 
-```smalltalk>a foo: b bar + c baz
+```smalltalk
+a foo: b bar + c baz>
 ```
  is equivalent to <lang smalltalk
 a foo:( (b bar) + (c baz) )

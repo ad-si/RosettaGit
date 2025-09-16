@@ -20,7 +20,8 @@ The memory is a 2048 byte array, the stack has a size of 512 and there is a maxi
 
 snusp.cob:
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. snusp-interpreter.

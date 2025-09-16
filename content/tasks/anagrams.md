@@ -6171,7 +6171,8 @@ caret, carte, cater, crate, trace
 
 Python 3.2 shell input (IDLE)
 
-```python>>>
+```python
+>>
  import urllib.request
 >>> from collections import defaultdict
 >>> words = urllib.request.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
@@ -6192,7 +6193,8 @@ Python 3.2 shell input (IDLE)
 
 Python 2.7 shell input (IDLE)
 
-```python>>>
+```python
+>>
  import urllib
 >>> from collections import defaultdict
 >>> words = urllib.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
@@ -6227,7 +6229,8 @@ Python 2.7 shell input (IDLE)
 {{trans|Haskell}}
 {{works with|Python|2.6}} sort and then group using groupby()
 
-```python>>>
+```python
+>>
  import urllib, itertools
 >>> words = urllib.urlopen('http://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
 >>> len(words)
@@ -8948,14 +8951,15 @@ End Module
 ```
 
 {{out}}
-<PRE>
+
+```txt
 [ABEL]  abel, able, bale, bela, elba
 [AEGLR] alger, glare, lager, large, regal
 [AEGLN] angel, angle, galen, glean, lange
 [ACERT] caret, carte, cater, crate, trace
 [AELN]  elan, lane, lean, lena, neal
 [EILV]  evil, levi, live, veil, vile
-</PRE>
+```
 
 
 ## Yabasic

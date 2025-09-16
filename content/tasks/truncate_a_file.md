@@ -433,7 +433,8 @@ When specifying a new file size larger than current value, the file will be exte
 ## C++
 
 
-```C++>#include <string
+```C++
+#include <string>
 
 #include <fstream>
 

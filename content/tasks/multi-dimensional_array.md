@@ -1834,7 +1834,8 @@ A common method of simulating multi-dimensional arrays is to use dicts with N-el
 
 Function <code>dict_as_mdarray</code> allows for the creation of an initialised multi-dimensional array of a given size. Note how indexing must use the round brackets of a tuple inside the square brackets of normal dict indexing:
 
-```python>>>
+```python
+>>>
  from pprint import pprint as pp   # Pretty printer
 >>> from itertools import product
 >>>
@@ -1900,7 +1901,8 @@ np.reshape(b, (4,), order="A")  # [1, 3, 2, 4]
 
 In Fortran, one would expect the result [1, 3, 2, 4].
 
-```python>>>
+```python
+>>>
  from numpy import *
 >>>
 >>> mdarray = zeros((2, 3, 4, 5), dtype=int8, order='F')
@@ -2005,7 +2007,9 @@ For instance, for a stemmed array named   '''antenna'''   with two dimensions,  
 element   '''2, 0'''   (and set that value to the variable   '''g'''),   one could code   (note
 the use of periods after the variable name and also between the indices to the array dimensions:
 
-```rexx>g = antenna.2.0</lang
+```rexx
+g = antenna.2.0
+```
 
 Memory allocation for stemmed arrays is not optimized, and the array elements are not contiguous.
 

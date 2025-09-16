@@ -560,7 +560,9 @@ on zipWith(f, xs, ys)
 end zipWith
 ```
 
-```AppleScript>3</lang
+```applescript
+3
+```
 
 
 
@@ -1666,7 +1668,8 @@ println dotProduct([1, 3, -5], [4, -2, -1])
 
 
 
-```haskell>dotp :: Num a =
+```haskell
+dotp :: Num a =
  [a] -> [a] -> a
 dotp a b | length a == length b = sum (zipWith (*) a b)
          | otherwise = error "Vector sizes must match"
@@ -1876,7 +1879,9 @@ Composing functional primitives into a '''dotProduct()''' which returns '''undef
 ```
 
 
-```JavaScript>3</lang
+```javascript
+3
+```
 
 
 
@@ -2478,7 +2483,8 @@ END DotProduct.
 
 =={{header|Objective-C}}==
 
-```objc>#import <stdio.h
+```objc
+#import <stdio.h
 
 #import <stdint.h>
 #import <stdlib.h>
@@ -3800,13 +3806,14 @@ sum({1,3,–5}*{4,–2,–1})
 
 =={{header|TI-89 BASIC}}==
 
-<!--lang ti89b--><pre style="font-family:'TI Uni'">dotP([1, 3, –5], [4, –2, –1])
+<!--lang ti89b-->
+
+```basic
+dotP([1, 3, –5], [4, –2, –1])
 ```
 
 ```txt
-
 3
-
 ```
 
 

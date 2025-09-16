@@ -1878,12 +1878,16 @@ fd:1_-':
 
 To compute the ''n''th forward difference, call as:
 
-```k4>n fd/</lang
+```k4
+n fd/>
+```
 
 
 In order to obtain all intermediate results, call as:
 
-```k4>n fd\</lang
+```k4
+n fd\>
+```
 
 
 ```txt
@@ -2058,7 +2062,8 @@ Forward_difference
 
 ```
 
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 Original:             90    47    58    29    22    32    55    5    55    73
 Difference 1:        -43    11   -29    -7    10    23   -50   50    18
 Difference 2:         54   -40    22    17    13   -73   100  -32
@@ -2693,7 +2698,8 @@ EndIf
 ## Python
 
 
-```python>>>
+```python
+>>
  dif = lambda s: [x-s[i] for i,x in enumerate(s[1:])]
 >>> # or, dif = lambda s: [x-y for x,y in zip(s[1:],s)]
 >>> difn = lambda s, n: difn(dif(s), n-1) if n else s
@@ -3407,7 +3413,8 @@ gen y=D${k}F${k}.x
 
 
 
-```swift>func forwardsDifference<T: SignedNumeric
+```swift
+func forwardsDifference<T: SignedNumeric
 (of arr: [T]) -> [T] {
   return zip(arr.dropFirst(), arr).map({ $0.0 - $0.1 })
 }

@@ -1601,7 +1601,8 @@ The sort is stable.
 
 Examples:
 
-```scala>scala
+```scala
+scala>
  val list = List((1, 'c'), (1, 'b'), (2, 'a'))
 list: List[(Int, Char)] = List((1,c), (1,b), (2,a))
 
@@ -1625,7 +1626,8 @@ res47: Seq[String] = ArrayBuffer(US  Birmingham, UK  Birmingham, UK  London, US 
 
 Besides that, there is the object <tt>scala.util.Sorting</tt>, which provides <tt>quickSort<tt> and <tt>stableSort</tt>. The former is only provided on <tt>Array</tt>, but the latter is provided over both <tt>Array</tt> and <tt>Seq</tt>. These sorts operate in-place, with the one over <tt>Seq</tt> returning a sorted <tt>Array</tt>. Here is one example:
 
-```scala>scala
+```scala
+scala>
  val cityArray = cities.toArray
 cityArray: Array[String] = Array(UK  London, US  New York, US  Birmingham, UK  Birmingham)
 

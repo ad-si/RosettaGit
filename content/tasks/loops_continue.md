@@ -775,7 +775,8 @@ Note: COBOL does have a <code>CONTINUE</code> verb, but this is a no-operation s
 
 Remove the leading space from the line break tag.
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   for( i = 1; i <= 10; i++ )
   {
@@ -2864,7 +2865,8 @@ pub main | i
 ## SPL
 
 
-```spl>
+```spl
+>
  n, 1..10
   s += n
   ? n%5, s += ", "

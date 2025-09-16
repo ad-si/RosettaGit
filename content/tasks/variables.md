@@ -238,7 +238,9 @@ end Name; -- End of the scope
 
 Local variables are generally called '''local''' variables in ALGOL 68. Variables must be declared before use. In traditional ALGOL 68, variables must be declared before any '''labels:''' in a '''compound-clause'''. The declaration of a variable, without assigning a value takes the form: <b><typename></b> <i><variablename>;</i>
 
-```algol68>int j;</lang
+```algol68
+int j;
+```
 
 Some common types are: '''char''', '''string''', '''short int''', '''int''', '''long int''', '''real''', '''long real''', '''bits''' and '''bytes'''  .
 
@@ -379,7 +381,9 @@ AClassName cls = new AClassName();
 
 Variables are untyped in AppleScript, but they must be instantiated before use.
 Example:
-```AppleScript>set x to 1</lang
+```AppleScript
+set x to 1>
+```
 
 Scope may be explicitly defined before instantiation using either the <code>global</code> or <code>local</code> declarations.
 ```AppleScript
@@ -412,7 +416,9 @@ end run
 
 Applescript also supports top-level entities known as <code>properties</code> that are global to that script.
 Example:
-```AppleScript>property x : 1</lang
+```AppleScript
+property x : 1>
+```
 Properties behave exactly as global variables except that they are persistent. Their most recent values are retained between script executions (or until the script is recompiled).
 
 
@@ -1026,7 +1032,9 @@ As in other languages, often used variables are: int, string, double etc.
 
 They are declared with the type first, as in C:
 
-```csharp>int j;</lang
+```csharp
+int j;
+```
 
 
 Multiple variables may be defined in a single line as follows:
@@ -1910,7 +1918,9 @@ endif
 
 While Go is statically typed, it provides a “short variable declaration” with no type explicitly stated, as in,
 
-```go>x := 3</lang
+```go
+x := 3
+```
 
 This is the equivalent of,
 
@@ -2126,7 +2136,9 @@ END
 
 Variables must be declared before use. The declaration of a variable, without assigning a value takes the form <i><typename> <variablename>;</i>
 
-```holyc>U8 i;</lang
+```holyc
+U8 i;>
+```
 
 
 Some common types are: <i>I8, I64, U8, U64, F64</i>.
@@ -2189,7 +2201,9 @@ This Icon solution works in Unicon.
 
 
 
-```j>val=. 0</lang
+```j
+val=. 0
+```
 
 
 J has two assignment operators.  The =. operator declares, initializes, assigns, etc. a local variable.  The =: operator does the same for a "global" variable.
@@ -2388,7 +2402,9 @@ The JOY stack can be initialized:
 
 Values can be pushed on the stack:
 
-```joy>42</lang
+```joy
+42
+```
 
 pushes the value 42 of type integer on top of the stack.
 
@@ -2396,7 +2412,9 @@ pushes the value 42 of type integer on top of the stack.
 
 Calling the stack by name pushes a copy of the stack on the stack. To continue the previous example:
 
-```joy>stack</lang
+```joy
+stack
+```
 
 pushes the list [42] on top of the stack. The stack now contains: [42] 42.
 
@@ -3083,7 +3101,9 @@ BlockRandom localize pseudorandom variables
 Variables within functions have local scope, except when they are declared as global
 
 
-```Matlab>   global b </lang
+```Matlab
+   global b>
+```
 
 
 
@@ -3330,14 +3350,18 @@ The default handlers for values in OCaml are not variables ''strictly speaking''
 
 The standard way to bind an identifier to a value is the '''let''' construct:
 
-```ocaml>let x = 28</lang
+```ocaml
+let x = 28
+```
 
 
 This stated, ocaml programmers most often use the word ''variable'' when they refer to bindings, because in the programming world we usually use this word for the default values handlers.
 
 Now to add confusion, real variables also exist in OCaml because it is an ''impure'' functional language. They are called references and are defined this way:
 
-```ocaml>let y = ref 28</lang
+```ocaml
+let y = ref 28
+```
 
 References can then be accessed and modified this way:
 
@@ -4356,7 +4380,9 @@ assign("c", runif(10), envir=globalenv()) #equivalent to c <<- runif(10)
 
 The effect of a variable declaration is to introduce a new variable Name and to assign the value of expression Exp to Name. A variable declaration has the form
 
-```rascal> Type Name = Exp;</lang
+```rascal
+ Type Name = Exp;
+```
 
 A mention of Name later on in the same scope will be replaced by this value, provided that Name’s value has not been changed by an intermediate assignment. When a variable is declared, it has as scope the nearest enclosing block, or the module when declared at the module level.
 
@@ -4364,7 +4390,9 @@ There are two rules you have to take into account. Double declarations in the sa
 
 As a convenience, also declarations without an initialization expression are permitted inside functions (but not at the module level) and have the form
 
-```rascal>Type Name;</lang
+```rascal
+Type Name;
+```
 
 and only introduce the variable Name.
 
@@ -4378,7 +4406,8 @@ Rascal provides local type inference, which allows the implicit declaration of v
 
 Two explicit variable declarations:
 
-```rascal>rascal
+```rascal
+rascal>
 int max = 100;
 int: 100
 rascal>min = 0;
@@ -4388,7 +4417,8 @@ int: 0
 
 An implicit variable declaration
 
-```rascal>rascal
+```rascal
+rascal>
 day = {<"mon", 1>, <"tue", 2>, <"wed",3>,
 >>>>>>>       <"thu", 4>, <"fri", 5>, <"sat",6>, <"sun",7>};
 rel[str, int]: {
@@ -4405,7 +4435,8 @@ rel[str, int]: {
 
 Variable declaration and assignment leading to type error
 
-```rascal>rascal
+```rascal
+rascal>
 int month = 12;
 int: 12
 rascal>month ="December";
@@ -4416,7 +4447,8 @@ rascal>month ="December";
 Pitfalls
 Local type inference for variables always uses the smallest possibe scope for a variable; this implies that a variable introduced in an inner scope is not available outside that scope. Here is how things can go wrong:
 
-```rascal>rascal
+```rascal
+rascal>
 if( 4 > 3){ x = "abc"; } else { x = "def";}
 str: "abc"
 rascal>x;
@@ -4971,7 +5003,9 @@ PRINT x; MyFunction.MyF2; MyFunction.MyF3
 
 Variables may also be made global using the DEF command:
 
-```qbasic>DEF num=123</lang
+```qbasic
+DEF num=123
+```
 
 
 
@@ -5003,13 +5037,17 @@ In SPL variables do not need and do not have declaration.
 In SPL variables are autodeclared according to their usage. For example, this one-line program is valid because it is evident what is expected:
 
 
-```spl>a += 1</lang
+```spl
+a += 1
+```
 
 
 In contrast, this one-line program raises an error because it is not evident what object "a" is:
 
 
-```spl>a = a+1</lang
+```spl
+a = a+1
+```
 
 
 '''Assignment.'''
@@ -5464,13 +5502,16 @@ out p endl console
 WDTE does not have variables, per se, but it does have several things that work similarly. The most obvious is function parameters:
 
 
-```WDTE>let example t => io.writeln io.stdout t;</lang
+```wdte
+let example t => io.writeln io.stdout t;>
+```
 
 
 The parameters are scoped to the inside of the function in which they're declared. There are also lambdas, which also have parameters:
 
 
-```WDTE>let example t =
+```wdte
+let example t =>
  3 -> (@ s n => * t n);
 ```
 
@@ -5480,7 +5521,8 @@ Lambdas are closures, so they have access to the parameters of the function that
 There are also 'slots' for chains. Chains are essentially a series of expressions that are all 'chained' together. They take advantage of the fact that everything in WDTE is a function. In a chain, the first is called, then the second, and then the return of the second is called with the return of the first as an argument, then the third is called, and then its return is called with the output of the previous segment, and so on. In each element of the chain, a 'slot' can be specified which serves as a named binding for accessing that element's return value later. For example:
 
 
-```WDTE>let writeToFile name data =
+```wdte
+let writeToFile name data =>
 
   file.open name : f
   -> str.format '{}' data
@@ -5495,7 +5537,8 @@ In this example, first <code>file.open name</code> is called. After this, the re
 Finally, an expression can also be bound to a name using a <code>let</code> expression, like in the function declarations shown above, as assigning a value to a function with no parameters is similar to creating a constant. When a <code>let</code> is encountered, all following expressions in the current block of code are run under a subscope of the current scope, which gives much the same effect as a variable assignment. For example:
 
 
-```WDTE>let a =
+```wdte
+let a =>
  3;
 io.writeln io.stdout a;
 ```
@@ -5698,7 +5741,9 @@ Dim twoDimensions(,) As Integer = {{0, 1, 2}, {10, 11, 12}}
 '''Assignment'''
 
 
-```vbnet>variable = expression</lang
+```vbnet
+variable = expression
+```
 
 
 ```vbnet
@@ -5708,7 +5753,9 @@ Dim twoDimensions(,) As Integer = {{0, 1, 2}, {10, 11, 12}}
 ```
 
 
-```vbnet>variable <operator>= expression2</lang
+```vbnet
+variable <operator>= expression2
+```
 
 
 ```vbnet

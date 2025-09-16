@@ -1720,7 +1720,8 @@ prompt$ jsish -u matrixExponentiation.jsi
 
 Matrix exponentiation is implemented by the built-in <code>^</code> operator.
 
-```Julia>julia
+```julia
+julia>
  [1 1 ; 1 0]^10
 2x2 Array{Int64,2}:
  89  55
@@ -2757,7 +2758,8 @@ Output:
 
 Using matrixMul from [[Matrix multiplication#Python]]
 
-```python>>>
+```python
+>>>
  from operator import mul
 >>> def matrixMul(m1, m2):
   return map(

@@ -27,17 +27,16 @@ I'd really like someone knowledgeable to look and make J solution more elegant. 
 
 :You could use this <code>dice5</code> and either <code>dice7a</code> or <code>dice7b</code> for the main bit:
 
-```j>dice5=: 
-:@:?@$&5
+```j
+dice5=: :@:?@$&5
 dice7a=: 0 8 -.~ 3 >.@%~ 5 #. [: <:@dice5 2 ,~ */
-dice7b=: [: (#~ 7&>:) 3 >.@%~ [: 5&#.&.:<:@dice5 */ , 2: 
+dice7b=: [: (#~ 7&>:) 3 >.@%~ [: 5&#.&.:<:@dice5 */ , 2:
 ```
 
 
 :Then it's just a question on ensuring that you've got enough rolls. You could use the following explicit:
 
 ```j
-
 dice7=: monad define
   res=. 0$0
   while. (*/y) > #res do.
@@ -45,7 +44,6 @@ dice7=: monad define
   end.
   y $ res
 )
-
 ```
 
 :...or you could create a tacit equivalent using the <code>^:</code> conjunction.--[[User:Tikkanz|Tikkanz]] 00:15, 14 September 2009 (UTC)

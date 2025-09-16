@@ -615,7 +615,8 @@ end Forest_Fire;
 ```
 
 Sample output:
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 ------------- 1 -------------
 Y  Y Y        Y YY   Y Y Y  Y        Y
 Y Y  YYY   YY  Y      Y  Y  Y     Y
@@ -987,8 +988,8 @@ PredictFire(p_x,p_y){
 ```
 
 Sample Output using the default settings:
-<pre style="height:35ex;overflow:scroll;">
 
+```txt
 ### ==Generation 1==
 
 OTTTOOTOOT
@@ -4079,8 +4080,7 @@ The configuration file controls the simulation.
  (tree . 0.5)) ;; initial probability of tree in a new world
 ```
 
-
-<pre style="height:35ex;overflow:scroll;">
+```txt
 * time 0
 .t...t..t.t.t...ttt...tttt..tt...t.t.t.t.t..t
 .t.t.t..t.ttt.tt.tttt.tt....t.t.tt.t.t.tt.ttt
@@ -7227,7 +7227,8 @@ end
 ```
 
 Sample Output:
-<pre style="height:64ex;overflow:scroll">
+
+```txt
 Generation : 1
  TT TTTT  TT    TT  T T  T TTT
  T TTT    T   TTT T  T T T  T
@@ -8294,7 +8295,7 @@ return ((#90 & 0xffff) * #91 / 0x10000)
 
 
 Sample output, 10th generation:
-<pre style="line-height:100%">
+```txt
 --------------------------------------------------------------
 |       ♠♠♠♠ ♠♠ ♠ ♠♠♠♠        ♠    ♠♠♠♠♠♠ ♠♠♠♠♠ ♠♠♠♠ ♠♠♠♠ ♠♠♠|
 |         ░♠♠♠ ♠   ♠♠          ♠  ░♠♠♠♠ ♠   ♠   ♠ ♠♠♠  ♠ ♠♠░♠|
@@ -8322,6 +8323,5 @@ Sample output, 10th generation:
 | ♠ ♠♠ ♠ ♠♠  ♠♠♠♠ ♠♠♠♠♠░          ░♠♠ ♠♠♠♠♠♠░     ♠      ♠♠  |
 |  ♠ ♠ ♠♠♠♠♠♠♠    ♠♠♠ ♠░░ ░░ ♠░ ░░░♠♠♠   ♠  ♠♠ ♠♠ ♠    ♠♠ ♠  |
 --------------------------------------------------------------
-
 ```
 

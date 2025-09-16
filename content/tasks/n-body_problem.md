@@ -2866,7 +2866,9 @@ rot2 ITER v GEN 3
 <h5>Dynamic equilibrium case. </h5>
 <p> Within a narrow range of initial velocities, the bodies orbit, maintaining symetry and swapping kinetic and potential energy back and forth.  The ideal system is stable, but an integrating solver will not be, due to numerical precision. </p>
 
-```J>maxn ITER z1 =: 0.6 GEN 3</lang
+```j
+maxn ITER z1 =: 0.6 GEN 3>
+```
 
 [<em>sinusoidal curves of varying amplitudes</em>  [https://commons.wikimedia.org/wiki/File:Nbody_j_1.jpg]]
 <h5>Perturbed case. </h5>

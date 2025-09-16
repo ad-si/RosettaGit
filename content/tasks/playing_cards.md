@@ -4481,7 +4481,8 @@ This creates a new deck, shuffles it, removes the top card, prints out that card
 
 ## Perl 6
 
-```perl6>enum Pip <A 2 3 4 5 6 7 8 9 10 J Q K
+```perl6
+enum Pip <A 2 3 4 5 6 7 8 9 10 J Q K>
 ;
 enum Suit <♦ ♣ ♥ ♠>;
 
@@ -6114,7 +6115,8 @@ Sample output:
 
 ## Sidef
 
-```ruby>define Pip = <A 2 3 4 5 6 7 8 9 10 J Q K
+```ruby
+define Pip = <A 2 3 4 5 6 7 8 9 10 J Q K>
 ;
 define Suit = <♦ ♣ ♥ ♠>;
 
@@ -6320,7 +6322,8 @@ The Card class should obviously be more intricate to fulfil the needs of a CardG
 
 Use example:
 
-```Smalltalk>st
+```Smalltalk
+st>
  myDeck := Deck of: Card
 a Deck
 st> myDeck displayNl

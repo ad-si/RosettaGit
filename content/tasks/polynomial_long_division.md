@@ -1026,7 +1026,8 @@ Polynomials are represented as lists of degree/coefficient pairs ordered by degr
 The [[wp:Polynomial_long_division#Example|wikipedia example]]:
 
 
-```lisp>
+```lisp
+>
  (divide '((3 . 1) (2 . -12) (0 . -42)) ; x^3 - 12x^2 - 42
           '((1 . 1) (0 . -3)))           ; x - 3
 ((2 . 1) (1 . -9) (0 . -27)) ; x^2 - 9x - 27

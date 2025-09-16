@@ -1786,7 +1786,8 @@ Here, selPrime discards non-prime numbers from a list, so seed is the list 2 3 5
 The largest truncatable primes less than a million can be obtained by adding five digits to the prime seeds, then finding the largest value from the result.
 
 
-```j>
+```j
+>
 ./ digits&step^:5 seed  NB. left truncatable
 998443
    >./ step&digits^:5 seed  NB. right truncatable

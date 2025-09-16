@@ -1445,7 +1445,8 @@ The substitution is the complex part of the program: two pairs of nested maps (t
 ## COBOL
 
 
-```cobol>        >
+```cobol
+        >
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 *> This is GNUCobol 2.0

@@ -993,7 +993,8 @@ deconv[f,g]
 The deconvolution function is built-in to MATLAB as the "deconv(a,b)" function, where "a" and "b" are vectors storing the convolved function values and the values of one of the deconvoluted vectors of "a".
 To test that this operates according to the task spec we can test the criteria above:
 
-```MATLAB>>
+```matlab
+>
  h = [-8,-9,-3,-1,-6,7];
 >> g = [24,75,71,-34,3,22,-45,23,245,25,52,25,-67,-96,96,31,55,36,29,-43,-7];
 >> f = [-3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1];

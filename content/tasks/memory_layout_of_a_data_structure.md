@@ -629,7 +629,8 @@ OFF
 Defining structs in MATLAB is kind of bulky, making a class definition might be cleaner for this purpose. If you need to enumerate each pin rather than set the state of the pin using the name of the pin, you can use struct2cell() on the rs232 struct, which will return a cell array whose entries are the value of each of the structs fields in the order in which they were defined.
 
 
-```MATLAB>>
+```MATLAB
+>>
  rs232 = struct('carrier_detect', logical(1),...
 'received_data' , logical(1), ...
 'transmitted_data', logical(1),...

@@ -373,7 +373,8 @@ end Test_HTML_Table;
 
 Each time you run the program, you get different random values for the table. {{out}}
 
-```html5><table
+```html5
+<table
 
   <thead align = "right">
     <tr><th></th><td>X</td><td>Y</td><td>Z</td></tr>
@@ -1136,7 +1137,8 @@ int main( ) {
       </table>
    </body>
 </html>
-</LANG>
+
+```
 
 ## C#
 
@@ -1385,7 +1387,8 @@ end.
 ```
 
 
-```html5><table
+```html5
+<table
 
   <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
   <tr><td>1</td><td>7371</td><td>2659</td><td>1393</td></tr>
@@ -1472,7 +1475,8 @@ IO.puts Table.create_table
 ```
 
 
-```html5><table border=1
+```html5
+<table border=1
 
 <th></th><th>X</th><th>Y</th><th>Z</th>
 <tr align=right><th>1</th><td>1362</td><td>1289</td><td>357</td></tr>
@@ -1544,7 +1548,8 @@ puts(1,"</table>")
 ```
 
 
-```html5><table
+```html5
+<table
 
   <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
   <tr><td>1</td><td>7978</td><td>7376</td><td>2382</td></tr>
@@ -2407,7 +2412,8 @@ func main() {
 }
 ```
 
-```html5><table
+```html5
+<table
 
     <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
     <tr><td>0</td><td>0</td><td>1</td><td>2</td></tr>
@@ -2524,7 +2530,8 @@ link printf
 
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
-```html5><table
+```html5
+<table
 
     <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
     <tr><td>1</td><td>3129</td><td>3294</td><td>7013</td></tr>
@@ -2614,7 +2621,9 @@ public class HTML {
 }
 ```
 
-```html5><table><th></th><th>X</th><th>Y</th><th>Z</th><tr><td>1</td><td>1</td><td>2</td><td>3</td></tr><tr><td>2</td><td>4</td><td>5</td><td>6</td></tr><tr><td>3</td><td>7</td><td>8</td><td>9</td></tr><tr><td>4</td><td>10</td><td>11</td><td>12</td></tr></table></lang
+```html5
+<table><th></th><th>X</th><th>Y</th><th>Z</th><tr><td>1</td><td>1</td><td>2</td><td>3</td></tr><tr><td>2</td><td>4</td><td>5</td><td>6</td></tr><tr><td>3</td><td>7</td><td>8</td><td>9</td></tr><tr><td>4</td><td>10</td><td>11</td><td>12</td></tr></table>
+```
 
 
 ## JavaScript
@@ -2623,7 +2632,8 @@ public class HTML {
 ### Iterative
 
 
-```JavaScript><html><head><title>Table maker</title
+```javascript
+<html><head><title>Table maker</title
 <script type="application/javascript">
 
 // normally, don't do this: at least name it something other than "a"
@@ -3112,7 +3122,8 @@ fun main(args: Array<String>) {
 
 Sample output:
 
-```HTML5><html
+```html5
+<html
 
 <head>
 <style>
@@ -3167,7 +3178,8 @@ Lambdatalk outputs standard HTML/CSS code sent to the web browser who does the j
 ## Lasso
 
 
-```Lasso>define rand4dig =
+```lasso
+define rand4dig =
  integer_random(9999, 1)
 
 local(
@@ -3434,7 +3446,8 @@ HtmlTable
 ```
 
 
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 <!DOCTYPE html>
 <html lang="en"><head></head>
 <body><table border=1 cellpadding=10 cellspacing=0><tr><th></th>
@@ -3930,16 +3943,15 @@ echo table(
 <table><tr><th></th><th>X</th><th>Y</th><th>Z</th></tr><tr><td style="font-weight: bold">1</td><td>5084</td><td>7059</td><td>8308</td></tr><tr><td style="font-weight: bold">2</td><td>6185</td><td>3549</td><td>8831</td></tr><tr><td style="font-weight: bold">3</td><td>8063</td><td>5561</td><td>1675</td></tr><tr><td style="font-weight: bold">4</td><td>2777</td><td>1769</td><td>6570</td></tr><tr><td style="font-weight: bold">5</td><td>5465</td><td>9508</td><td>4775</td></tr></table>
 
 Raw output:
-<pre html5><table><tr><th></th><th>X</th><th>Y</th><th>Z</th></tr><tr><td style="font-weight: bold">1</td><td>5084</td><td>7059</td><td>8308</td></tr><tr><td style="font-weight: bold">2</td><td>6185</td><td>3549</td><td>8831</td></tr><tr><td style="font-weight: bold">3</td><td>8063</td><td>5561</td><td>1675</td></tr><tr><td style="font-weight: bold">4</td><td>2777</td><td>1769</td><td>6570</td></tr><tr><td style="font-weight: bold">5</td><td>5465</td><td>9508</td><td>4775</td></tr></table>
-```
 
+```txt
+<table><tr><th></th><th>X</th><th>Y</th><th>Z</th></tr><tr><td style="font-weight: bold">1</td><td>5084</td><td>7059</td><td>8308</td></tr><tr><td style="font-weight: bold">2</td><td>6185</td><td>3549</td><td>8831</td></tr><tr><td style="font-weight: bold">3</td><td>8063</td><td>5561</td><td>1675</td></tr><tr><td style="font-weight: bold">4</td><td>2777</td><td>1769</td><td>6570</td></tr><tr><td style="font-weight: bold">5</td><td>5465</td><td>9508</td><td>4775</td></tr></table>
+```
 
 
 ## Objeck
 
-
 ```objeck
-
 ﻿class CreateTable {
   function : Main(args : String[]) ~ Nil {
     s := String->New();
@@ -4209,7 +4221,8 @@ See [[Create_an_HTML_table#Delphi | Delphi]]
 Opcodes of interest: SDC -- simple document; R!I -- ranged random integer
 
 
-```sgml><@ SDCLIT
+```sgml
+<@ SDCLIT>
 
 	<@ DTBLIT>
 		<@ DTRLITLIT>
@@ -4272,8 +4285,8 @@ The below example is kind of boring, and laughably simple. For more interesting/
 This is certainly not the only or best way to generate HTML tables using Perl 6; just an example of one possible method.
 
 
-```perl6>my @header =  <  X Y Z
-;
+```perl6
+my @header =  <  X Y Z >;
 my $rows = 5;
 
 sub tag ($tag, $string, $param?) { return "<$tag" ~ ($param ?? " $param" !! '') ~ ">$string" ~ "</$tag>" };
@@ -4322,7 +4335,8 @@ puts(1,"</table>")
 
 '''The raw HTML'''
 
-```html5><table border=2
+```html5
+<table border=2
 
 <table>
   <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
@@ -4582,7 +4596,8 @@ table :-
 
 
 
-```html5><table
+```html5
+<table
 
 <tr><th>X</th><th>Y</th><th>Z</th></tr>
 <tr><td>1</td><td>7055</td><td>5334</td><td>5795</td></tr>
@@ -4630,7 +4645,8 @@ if __name__ == '__main__':
 
 '''The raw HTML'''
 
-```html5><table
+```html5
+<table
 
 <tr><th></th><th>X</th><th>Y</th><th>Z</th></tr>
 <tr><td style="font-weight: bold;">1</td><td>6040</td><td>4697</td><td>7055</td></tr>
@@ -4968,13 +4984,15 @@ public str generateTable(int rows){
 This will result in a simple html file. For example:
 
 
-```rascal>rascal
+```rascal
+rascal>
 generateTable(10)
 str: "written"
 ```
 
 
-```html><html><title>Rosetta Code Table</title><body
+```html
+<html><title>Rosetta Code Table</title><body
 <table border="0"><tr><td></td><td>X</td><td>Y</td><td>Z</td></tr><tr><td>1</td><td>253</td><td>3988</td><td>3208</td></tr><tr><td>2</td><td>315</td><td>2014</td><td>47</td></tr><tr><td>3</td><td>749</td><td>3379</td><td>1076</td></tr><tr><td>4</td><td>241</td><td>3211</td><td>1848</td></tr><tr><td>5</td><td>1</td><td>1605</td><td>6469</td></tr><tr><td>6</td><td>599</td><td>1243</td><td>1189</td></tr><tr><td>7</td><td>741</td><td>4709</td><td>2854</td></tr><tr><td>8</td><td>918</td><td>482</td><td>7160</td></tr><tr><td>9</td><td>451</td><td>572</td><td>6229</td></tr><tr><td>10</td><td>955</td><td>7970</td><td>9684</td></tr></table border="0"></body></html>
 ```
 
@@ -5342,7 +5360,8 @@ formatter.write(xtable, $stdout)
 ```
 
 
-```html5><table
+```html5
+<table
 
   <tr>
     <td></td>
@@ -5457,7 +5476,8 @@ fn main() {
 ```
 
 
-```html5><table><thead><tr><th></th><td>X</td><td>Y</td><td>Z</td></tr></thead
+```html5
+<table><thead><tr><th></th><td>X</td><td>Y</td><td>Z</td></tr></thead
 
 <tr><th>0</th><td>7101</td><td>9111</td><td>3446</td></tr>
 <tr><th>1</th><td>426</td><td>9518</td><td>611</td></tr>
@@ -5868,7 +5888,7 @@ BROWSE $tablefile
 
 ```
 
-<pre style='height:30ex;overflow:scroll'>
+```html
 <!DOCTYPE html system>
 <html><head><title>create html table</title></head>
 <body><table><thead align='right'>
@@ -5882,7 +5902,6 @@ BROWSE $tablefile
 <tr><td>4</td><td>1304</td><td>9434</td><td>2208</td></tr>
 <tr><td>5</td><td>3547</td><td>4051</td><td>4859</td></tr>
 </tbody></table></body></html>
-
 ```
 
 

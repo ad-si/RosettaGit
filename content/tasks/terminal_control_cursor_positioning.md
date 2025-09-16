@@ -884,7 +884,8 @@ const proc: main is func
 ## Tcl
 
 
-```tcl>exec tput cup 5 2
+```tcl
+exec tput cup 5 2>
 /dev/tty
 puts "Hello"
 ```

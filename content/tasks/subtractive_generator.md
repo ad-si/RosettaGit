@@ -791,7 +791,8 @@ for _ <- 1..10, do: IO.puts Subtractive.rand
 =={{header|F_Sharp|F#}}==
 <p>Similar to Haskell, using lazy evaluation.</p>
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main argv =
     let m = 1000000000

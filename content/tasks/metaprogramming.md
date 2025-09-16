@@ -665,7 +665,8 @@ Perhaps the most obvious use of Metaprogramming in Forth is Forth itself. The Fo
 : AGAIN       ( -- )   1 ?PAIRS POSTPONE BRANCH BACK   ;  IMMEDIATE
 : UNTIL       ( ? -- ) 1 ?PAIRS POSTPONE ?BRANCH BACK  ;  IMMEDIATE
 : WHILE       ( ? -- ) POSTPONE IF  2+  ;                IMMEDIATE
-: REPEAT      ( -- )   2>R POSTPONE AGAIN  2R> 2- POSTPONE THEN ; IMMEDIATE</LANG>
+: REPEAT      ( -- )   2>R POSTPONE AGAIN  2R> 2- POSTPONE THEN ; IMMEDIATE
+```
 
 Simple Usage Examples
 
@@ -678,7 +679,8 @@ Simple Usage Examples
                 2DUP + 1- C@ BL =    \ test if last char = blank
              WHILE
                 1-                   \ dec. length
-             REPEAT ;</LANG>
+             REPEAT ;
+```
 
 
 ## FreeBASIC
@@ -2168,7 +2170,9 @@ Code generation is also possible. The easiest approach is to use the <code>list<
 
 Finally, the total lack of keywords is exemplified by this classic fragment of Tcl:
 
-```tcl>set set set</lang
+```tcl
+set set set>
+```
 
 In this, the first <code>set</code> is a command (that updates a variable), the second is the name of a variable in the current namespace, and the third is a string that will be placed in a variable.
 

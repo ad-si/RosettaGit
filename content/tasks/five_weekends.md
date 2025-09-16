@@ -292,7 +292,8 @@ end Five_Weekends;
 
 ```
 
-<pre style="height:30ex;overflow:scroll">
+
+```txt
  1901 3
  1902 8
  1903 5
@@ -1261,7 +1262,8 @@ int main( ) {
 }
 ```
 
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 Between 1900 and 2100 , there are 201 months with 5 complete weekends!
 Months with 5 complete weekends are:
 1901-Mar
@@ -2994,7 +2996,9 @@ fiveWeekendMonths.each { println (ym(it)) }
 ```
 
 
-<pre style="height:30ex;overflow:scroll;">Number of five weekend months: 201
+
+```txt
+Number of five weekend months: 201
 1901-03
 1902-08
 1903-05
@@ -3210,8 +3214,8 @@ println "\nNumber of years without a five weekend month: ${yearsWithout.size()}"
 yearsWithout.each { println it }
 ```
 
-
-<pre style="height:30ex;overflow:scroll;">Number of years without a five weekend month: 29
+```txt
+Number of years without a five weekend month: 29
 1900
 1906
 1917
@@ -3830,7 +3834,8 @@ public class FiveFSS {
 ```
 
 {{out}} (middle results cut out):
-<pre style="height:30ex;overflow:scroll"> There are 201 months with five weekends from 1900 through 2100:
+
+```txt There are 201 months with five weekends from 1900 through 2100:
 3-1901
 8-1902
 5-1903
@@ -6107,7 +6112,8 @@ s: if arg(1)==1  then return arg(3);      return word(arg(2) 's',1)        /*plu
 ```
 
 '''output'''   when using the default inputs:
-<pre style="height:98ex">
+
+```txt
 There are five weekends in 1901 March
 There are five weekends in 1902 August
 There are five weekends in 1903 May
@@ -7127,9 +7133,7 @@ There are 29 years without any five-weekend months
 
 ## TUSCRIPT
 
-
 ```tuscript
-
 $$ MODE TUSCRIPT
 LOOP year=1900,2100
  LOOP month="1'3'5'7'8'10'12"
@@ -7137,10 +7141,9 @@ LOOP year=1900,2100
  IF (dayofweek==5) PRINT year,"-",month
  ENDLOOP
 ENDLOOP
-
 ```
 
-<pre style='height:30ex;overflow:scroll'>
+```txt
 1901-3
 1902-8
 1903-5

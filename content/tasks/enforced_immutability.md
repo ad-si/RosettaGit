@@ -193,12 +193,16 @@ You could still use ''ObjInsert/ObjRemove'' functions, since they are designed t
 
 Many BASICs support the <code>CONST</code> keyword:
 
-```qbasic>CONST x = 1</lang
+```qbasic
+CONST x = 1
+```
 
 
 Some flavors of BASIC support other methods of declaring constants. For example, [[FreeBASIC]] supports C-style defines:
 
-```freebasic>#define x 1</lang
+```freebasic
+#define x 1>
+```
 
 
 
@@ -325,12 +329,16 @@ public:
 
 Fields can be made read-only (a runtime constant) with the '''readonly''' keyword.
 
-```csharp>readonly DateTime now = DateTime.Now;</lang
+```csharp
+readonly DateTime now = DateTime.Now;
+```
 
 When used on reference types, it just means the reference cannot be reassigned. It does not make the object itself immutable.<br/>
 Primitive types can be declared as a compile-time constant with the '''const''' keyword.
 
-```csharp>const int Max = 100;</lang
+```csharp
+const int Max = 100;
+```
 
 
 Parameters can be made readonly by preceding them with the '''in''' keyword. Again, when used on reference types, it just means the reference cannot be reassigned.
@@ -378,7 +386,8 @@ public readonly struct Point
 Everything in Clojure except for Java interop are immutable.
 
 
-```Clojure>user
+```clojure
+user
  (def d [1 2 3 4 5]) ; immutable vector
 #'user/d
 user> (assoc d 3 7)
@@ -580,13 +589,17 @@ r = ref 0
 Function mutate can be used to mutate a reference cell:
 
 
-```ela>mutate r 1</lang
+```ela
+mutate r 1>
+```
 
 
 In order to unwrap a value from a cell one can use a valueof function:
 
 
-```ela>valueof r</lang
+```ela
+valueof r>
+```
 
 
 
@@ -947,7 +960,9 @@ Tau = 2
 
 
 
-```mbs>CONSTANT INT foo=640;</lang
+```mbs
+CONSTANT INT foo=640;
+```
 
 
 
@@ -1092,7 +1107,8 @@ See [[Enforced_immutability#Delphi | Delphi]]
 
 The constant pragma allows you to create subroutines that always return the same value and that cannot be modified:
 
-```perl>use constant PI =
+```perl
+use constant PI =
  3.14159;
 use constant MSG => "Hello World";
 ```
@@ -1380,7 +1396,8 @@ Debug Str(*v2\Get()) ; = 24
 
 Some datatypes such as strings are immutable:
 
-```python>>>
+```python
+>>
  s = "Hello"
 >>> s[0] = "h"
 
@@ -1393,7 +1410,8 @@ TypeError: 'str' object does not support item assignment
 
 While classes are generally mutable, you can define immutability by overriding __setattr__:
 
-```python>>>
+```python
+>>
  class Immut(object):
 	def __setattr__(self, *args):
 		raise TypeError(
@@ -1584,7 +1602,9 @@ x += 2;
 You must declare a variable mutable explicitly:
 
 
-```rust>let mut x = 3;</lang
+```rust
+let mut x = 3;
+```
 
 Similarly, references are immutable by default e.g.
 
@@ -1652,7 +1672,9 @@ const string: unixDict is getHttp("www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 Types are also defined as constants (in other languages this is called a ''typedef''):
 
-```seed7>const type: blahtype is integer;</lang
+```seed7
+const type: blahtype is integer;>
+```
 
 Function definitions (see above for the definition of ''deg2rad'') have also the form of a <code>const</code> definition.
 

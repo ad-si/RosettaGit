@@ -1182,7 +1182,8 @@ iex(2)> to_string([code])
 
 In Erlang, lists and strings are the same, only the representation changes. Thus:
 
-```erlang>1
+```erlang
+1>
  F = fun([X]) -> X end.
 #Fun<erl_eval.6.13229925>
 2> F("a").
@@ -1191,7 +1192,8 @@ In Erlang, lists and strings are the same, only the representation changes. Thus
 
 If entered manually, one can also get ASCII codes by prefixing characters with <tt>$</tt>:
 
-```erlang>3
+```erlang
+3>
  $a.
 97
 ```
@@ -1251,7 +1253,8 @@ CHAR: katakana-letter-a .
 
 A character is represented in single quotes: the 'toInt' method returns the code for the character.  The 'toChar' method converts an integer into its respective character.
 
-```fantom>fansh
+```fantom
+fansh>
  97.toChar
 a
 fansh> 'a'.toInt
@@ -1804,7 +1807,8 @@ A
 
 In LFE/Erlang, lists and strings are the same, only the representation changes. For example:
 
-```lisp>
+```lisp
+>
  (list 68 111 110 39 116 32 80 97 110 105 99 46)
 "Don't Panic."
 ```
@@ -1812,7 +1816,8 @@ In LFE/Erlang, lists and strings are the same, only the representation changes. 
 
 As for this exercise, here's how you could print out the ASCII code for a letter, and a letter from the ASCII code:
 
-```lisp>
+```lisp
+>
  (: io format '"~w~n" '"a")
 97
 ok
@@ -1967,7 +1972,8 @@ Print Codes("abcd")
 
 There are two ways to do this in Maple.  First, there are procedures in StringTools for this purpose.
 
-```Maple>
+```maple
+
  use StringTools in Ord( "A" ); Char( 65 ) end;
                                    65
 
@@ -1977,7 +1983,8 @@ There are two ways to do this in Maple.  First, there are procedures in StringTo
 
 Second, the procedure convert handles conversions to and from byte values.
 
-```Maple>
+```maple
+
  convert( "A", bytes );
                                   [65]
 
@@ -2030,7 +2037,8 @@ asciiNumber = uint64(character)
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  char(87)
 
 ans =
@@ -2273,7 +2281,9 @@ method runSample(arg) private static
 ```
 
 {{Out}}
-<pre style="height:20ex; overflow:scroll">' abcde$¢£¤¥₠₡₢₣₤₥₦₧₨₩₪₫€₭₮₯₰₱₲₳₴₵'
+
+```txt
+' abcde$¢£¤¥₠₡₢₣₤₥₦₧₨₩₪₫€₭₮₯₰₱₲₳₴₵'
    | Chr    C2D  C2X D2C X2C
 ---+ --- ------ ---- --- ---
   1| ' '     32 0020 ' ' ' '
@@ -2837,7 +2847,8 @@ see char(97) + nl
 
 In Ruby 1.8 characters are usually represented directly as their integer character code. Ruby has a syntax for "character literal" which evaluates directly to the integer code: <tt>?a</tt> evaluates to the integer 97. Subscripting a string also gives just the integer code for the character.
 
-```ruby>
+```ruby
+
  ?a
 => 97
 > "a"[0]
@@ -2853,7 +2864,8 @@ In Ruby 1.8 characters are usually represented directly as their integer charact
 In Ruby 1.9 characters are represented as length-1 strings; same as in Python. The previous "character literal" syntax <tt>?a</tt> is now the same as <tt>"a"</tt>. Subscripting a string also gives a length-1 string. There is now an "ord" method of strings to convert a character into its integer code.
 
 
-```ruby>
+```ruby
+
  "a".ord
 => 97
 > 97.chr
@@ -2923,7 +2935,8 @@ Scala supports unicode characters, but each character is UTF-16, so there is not
 ### In a REPL session
 
 
-```scala>scala
+```scala
+scala
  'a' toInt
 res2: Int = 97
 
@@ -2989,7 +3002,8 @@ object CharacterCode extends App {
 ```
 
 {{Out}}
-<pre style="height:20ex; overflow:scroll">
+
+```txt
 Example string: ﻿́a$áabcde¢£¤¥©ÇßĲĳŁłʒλπक्तु•₠₡₢₣₤₥₦₧₨₩₪₫€₭₮₯₰₱₲₳₴₵℃←→⇒∙⌘☃☹☺☻ア字文𠀀𪚥
     | Chr C/C++/Java source  Code Point Hex      Dec Mn Name
 ----+ --- ------------------------- ------- -------- -- ---------------------------
@@ -3100,7 +3114,8 @@ SequenceL natively supports ASCII characters.
 
 '''SequenceL Interpreter Session:'''
 
-```sequencel>cmd:
+```sequencel
+cmd:
 asciiToInt('a')
 97
 cmd:>intToAscii(97)

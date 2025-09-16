@@ -4713,7 +4713,8 @@ Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#brownian_tre
 '''SequenceL Code:'''
 
 
-```sequencel>import <Utilities/Random.sl
+```sequencel
+import <Utilities/Random.sl
 ;
 import <Utilities/Sequence.sl>;
 

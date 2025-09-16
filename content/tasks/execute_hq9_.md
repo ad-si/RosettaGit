@@ -2749,7 +2749,9 @@ Requires <code>bottles.xsl</code> (below).
 Input to this sheet is given by placing the entire source as a single <code><nowiki><code/></nowiki></code> element. For example, to run the example program <code>qqqq</code>, use the sheet to transform the document
 
 
-```xml><code>qqqq</code></lang
+```xml
+<code>qqqq</code>>
+```
 
 
 Newlines are added in roughly the same places as in the C version. For example, the program <code>qqqq</code> results in four lines of output rather than one long line.
@@ -2888,13 +2890,16 @@ This sheet demonstrates the use of a tail-recursive template to simulate a narro
 Input to this sheet is given by placing one or more sources as <code><nowiki><code/></nowiki></code> elements. For example, to run the example program <code>qqqq</code>, use the sheet to transform the document
 
 
-```xml><code>qqqq</code></lang
+```xml
+<code>qqqq</code>>
+```
 
 
 or the programs <code>qqqq</code> and <code>++++</code> can be run in the same pass by transforming
 
 
-```xml><programs
+```xml
+<programs>
 
   <code>qqqq</code>
   <code>++++</code>
@@ -2905,7 +2910,8 @@ or the programs <code>qqqq</code> and <code>++++</code> can be run in the same p
 The output document is a <code><nowiki><results/></nowiki></code> element containing a <code><nowiki><result/></nowiki></code> element for each <code><nowiki><code/></nowiki></code> element processed from the input. If a <code>+</code> appeared in the program, the <code><nowiki><result/></nowiki></code> element will indicate the final value of the accumulator in its <code>accumulator</code> attribute. For example, the output for the latter example, would be
 
 
-```xml><results><result
+```xml
+<results><result>
 qqqq
 qqqq
 qqqq

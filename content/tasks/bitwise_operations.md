@@ -2105,7 +2105,9 @@ In Babel, we prefix the logic operators with a 'c' to denote that they are C-sty
 The cnot operator works on just one operand:
 
 
-```babel>9 cnot ;</lang
+```babel
+9 cnot ;
+```
 
 
 {{Out}}
@@ -2504,7 +2506,8 @@ The natural number range for beeswax is unsigned Int64, but it is easy to implem
 
 Arithmetic shift right is not originally implemented in beeswax because it does not make sense for unsigned integers, but for negative numbers, it can be realized easily with
 
-```beeswax>A>
+```beeswax
+A>
 B = NOT(NOT(A)>>>B)
 ```
 
@@ -2523,7 +2526,8 @@ A ROR B = A>>>(B%64)+A<<(64-B%64)
 ## Befunge
 
 
-```befunge>> v   MCR
+```befunge
+> v   MCR
 v
     1    2       3   4       5            6>61g-:|        8       9
   >&&\481p >88*61p371p >:61g\`!:68*+71g81gp|    7 >61g2/61p71g1+71pv
@@ -4375,7 +4379,9 @@ BitXor[3333, 5555, 7777, 9999]
 
 gives back:
 
-```Mathematica>8664</lang
+```mathematica
+8664
+```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
@@ -4397,7 +4403,8 @@ end
 
 Output:
 
-```MATLAB>>
+```matlab
+>
  bitwiseOps(255,2)
 255 and 2 = 2
 255 or 2 = 255
@@ -5636,7 +5643,8 @@ In RLaB the bitwise operations are available for ''integers'' type of numbers. F
 are integers then the result of the operation is an integer as well.
 
 
-```RLaB>>
+```RLaB
+>
  x = int(3);
 >> y = int(1);
 >> z = x && y; printf("0x%08x\n",z); // logical 'and'

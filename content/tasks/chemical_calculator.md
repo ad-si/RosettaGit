@@ -61,7 +61,8 @@ An older name for   ''Avogadro constant''   is   ''Avogadro number''.
 
 ;Atom masses
 A mapping between most recognized element names and atomic mass follows in comma separated value format:
-<pre style="overflow:scroll; height:345px;">
+
+```txt
 H,1.008
 He,4.002602
 Li,6.94

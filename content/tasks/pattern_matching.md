@@ -214,7 +214,8 @@ int main() {
 Although C++ has structured bindings and pattern matching through function overloading, it is not yet possible to use them together so we must match the structure of the tree being rebalanced separately from decomposing it into its elements. A further issue is that function overloads are not ordered, so to avoid ambiguity we must explicitly reject any (ill-formed) trees that would match more than one case during rebalance.
 
 
-```c++>#include <memory
+```c++
+#include <memory>
 
 #include <variant>
 
@@ -1482,7 +1483,8 @@ Done
 
 Perl 6 doesn't have algebraic data types (yet), but it does have pretty good pattern matching in multi signatures.
 
-```perl6>enum RedBlack <R B
+```perl6
+enum RedBlack <R B>
 ;
 
 multi balance(B,[R,[R,$a,$x,$b],$y,$c],$z,$d) { [R,[B,$a,$x,$b],$y,[B,$c,$z,$d]] }
@@ -1931,7 +1933,8 @@ public ColoredTree makeGreen(ColoredTree t){
 Regular expressions are noated between two slashes. Most normal regular expressions patterns are available, such as ., \n, \d, etc. Additionally, flags can be used to create case intensiveness.
 
 
-```rascal>rascal
+```rascal
+rascal>
 /XX/i := "some xx";
 bool: true
 rascal>/a.c/ := "abc";

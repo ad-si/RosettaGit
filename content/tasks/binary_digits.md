@@ -1761,7 +1761,9 @@ main() {
 ## dc
 
 
-```dc>2o 5p 50p 9000p</lang
+```dc
+2o 5p 50p 9000p>
+```
 
 
 {{out}}
@@ -3281,7 +3283,8 @@ Checkit
 ```
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 The decimal value          9 should produce an output of                             1001
 The decimal value         50 should produce an output of                           110010
 The decimal value       9000 should produce an output of                   10001100101000
@@ -3885,7 +3888,9 @@ bin(n:int)=concat(apply(s->Str(s),binary(n)))
 ## Panda
 
 
-```panda>0..15.radix:2 nl</lang
+```panda
+0..15.radix:2 nl>
+```
 
 {{out}}
 
@@ -4096,7 +4101,8 @@ end.
 ## Peloton
 
 
-```sgml><@ defbaslit>2</@
+```sgml
+<@ defbaslit>2</@>
 
 
 <@ saybaslit>0</@>
@@ -4523,7 +4529,8 @@ EndIf
 ===String.format() method===
 {{works with|Python|3.X and 2.6+}}
 
-```python>>>
+```python
+>>
  for i in range(16): print('{0:b}'.format(i))
 
 0
@@ -4548,7 +4555,8 @@ EndIf
 ===Built-in bin() function===
 {{works with|Python|3.X and 2.6+}}
 
-```python>>>
+```python
+>>
  for i in range(16): print(bin(i)[2:])
 
 0
@@ -4571,7 +4579,8 @@ EndIf
 
 Pre-Python 2.6:
 
-```python>>>
+```python
+>>
  oct2bin = {'0': '000', '1': '001', '2': '010', '3': '011', '4': '100', '5': '101', '6': '110', '7': '111'}
 >>> bin = lambda n: ''.join(oct2bin[octdigit] for octdigit in '%o' % n).lstrip('0') or '0'
 >>> for i in range(16): print(bin(i))
@@ -5206,7 +5215,8 @@ Outputs:
 
 Scala has an implicit conversion from <code>Int</code> to <code>RichInt</code> which has a method <code>toBinaryString</code>.
 
-```scala>scala
+```scala
+scala
  (5 toBinaryString)
 res0: String = 101
 

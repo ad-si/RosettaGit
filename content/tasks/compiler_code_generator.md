@@ -1793,7 +1793,8 @@ Datasize: 1 Strings: 2
 Code by Steve Williams. Tested with GnuCOBOL 2.2.
 
 
-```cobol>        >
+```cobol
+        >
 SOURCE FORMAT IS FREE
 identification division.
 *> this code is dedicated to the public domain
@@ -3823,7 +3824,7 @@ CodeGenerator {
 ```
 
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 Datasize: 1 Strings: 2
 "count is: "
 "\n"

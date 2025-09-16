@@ -807,7 +807,8 @@ for (i = 2; i <= 10; i += 2) {
 
 ## Befunge
 
-```befunge>1
+```befunge
+1>
 :.55+,v
 @_^#`9:+2<
 ```
@@ -1340,7 +1341,8 @@ If it is given an <code>integer</code>, or an <code>atom</code>
 
 Prints odd digits.
 
-```factor>1 10 2 <range
+```factor
+1 10 2 <range>
  [ . ] each
 ```
 
@@ -1889,7 +1891,8 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```lang5>: <range
+```lang5
+: <range>
   over iota swap * rot + tuck swap <= select ; : tuck  swap over ;
 : >>say.(*)  . ;
 1 10 2 <range> >>say.
@@ -3270,7 +3273,8 @@ pub main | n
 ## SPL
 
 
-```spl>
+```spl
+>
  n, 1..10,2
   #.output(n)
 <

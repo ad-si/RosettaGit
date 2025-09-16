@@ -2414,7 +2414,8 @@ KroneckerProduct[{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}},
 ## Octave
 
 
-```octave>>
+```octave
+>>
  kron([1 2; 3 4], [0 5; 6 7])
 ans =
 

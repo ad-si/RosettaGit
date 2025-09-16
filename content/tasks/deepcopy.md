@@ -140,7 +140,8 @@ Any pure Babel object, however complex, can be deep-copied with the cp operator.
 Here is an example of shallow-copy - modifying one object modifies both because they are really just references to one underlying object:
 
 
-```babel>babel
+```babel
+babel
  [1 2 3] dup dup 0 7 0 1 move sd !
 ---TOS---
 [val 0x7 0x2 0x3 ]
@@ -152,7 +153,8 @@ Here is an example of shallow-copy - modifying one object modifies both because 
 Deep-copy is proved by the ability to separately modify two objects:
 
 
-```babel>babel
+```babel
+babel
  clear [1 2 3] dup cp dup 0 7 0 1 move sd !
 ---TOS---
 [val 0x7 0x2 0x3 ]
@@ -164,7 +166,8 @@ Deep-copy is proved by the ability to separately modify two objects:
 You can deep-copy any pure-Babel object with cp. Here is a list-of-lists, we copy it using cp:
 
 
-```babel>babel
+```babel
+babel
  ((1 2) (3 4) (5 6)) cp
 babel> {lsnum !} each
 ( 1 2 )
@@ -176,7 +179,8 @@ babel> {lsnum !} each
 Here is a list-of-maps, we copy it using cp:
 
 
-```babel>babel
+```babel
+babel
  ([map "foo" 3 "bar" 17] [map "foo" 4 "bar" 18] [map "foo" 5 "bar" 19] [map "foo" 0 "bar" 20]) cp
 babel> 2 ith "bar" lumap ! itod say !
 19
@@ -186,7 +190,8 @@ babel> 2 ith "bar" lumap ! itod say !
 Here is Babel code, we copy it using cp:
 
 
-```babel>babel
+```babel
+babel
  { { 1 randlf 100 rem itod << " " << } 20 times } cp
 babel> eval
 86 51 50 43 82 76 13 78 33 45 11 35 84 25 80 36 33 81 43 24
@@ -519,7 +524,8 @@ push-to C 7
 In E, serialization is generalized to transforming object graphs from one representation to another. Deep copying, therefore, consists of transforming a live object graph into a live object graph, by connecting <code>deSubgraphKit</code>'s output to its input. No intermediate serialized form is needed.
 
 
-```e>def deSubgraphKit := <elib:serial.deSubgraphKit
+```e
+def deSubgraphKit := <elib:serial.deSubgraphKit>
 
 def deepcopy(x) {
   return deSubgraphKit.recognize(x, deSubgraphKit.makeBuilder())

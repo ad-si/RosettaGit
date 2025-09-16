@@ -1041,7 +1041,8 @@ Remove the leading space from the line break tag.
 
 With tags:
 
-```cfm><cfset i = 1024 /
+```cfm
+<cfset i = 1024 />
 <cfloop condition="i GT 0">  #i#< br />
   <cfset i /= 2 />
 </cfloop>
@@ -1049,7 +1050,8 @@ With tags:
 
 With script:
 
-```cfm><cfscript
+```cfm
+<cfscript>
   i = 1024;
   while( i > 0 )
   {
@@ -1468,7 +1470,8 @@ Even without the <code>floor()</code> the code will in fact end.  But it's FAR b
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>let rec loop n = if n
+```fsharp
+let rec loop n = if n>
  0 then printf "%d " n; loop (n / 2)
 loop 1024
 ```
@@ -1478,7 +1481,8 @@ loop 1024
 ## Factor
 
 
-```factor>1024 [ dup 0
+```factor
+1024 [ dup 0>
  ] [ dup . 2 /i ] while drop
 ```
 
@@ -2060,7 +2064,8 @@ DEFINE putln == put '\n putch.
 
 '''Using a filter'''
 
-```jq>def task: if .
+```jq
+def task: if .>
  0 then ., (./2 | floor | task) else empty end;
 1024|task
 ```
@@ -2376,7 +2381,8 @@ Module Online { A=1024&: While A>0 {Print A: A/=2}} : OnLine
 
 To avoid generating an infinite sequence (1/2, 1/4, 1/8, 1/16, etc.) of fractions after n takes the value 1, we use integer division (iquo) rather than the solidus operation (/).
 
-```Maple>> n := 1024: while n
+```Maple
+> n := 1024: while n>
  0 do print(n); n := iquo(n,2) end:
                                   1024
                                   512
@@ -2904,7 +2910,8 @@ main: func {
 
 Oz' for-loop can be used in a C-like manner:
 
-```oz>for I in 1024; I
+```oz
+for I in 1024; I>
 0; I div 2 do
    {Show I}
 end
@@ -4219,7 +4226,8 @@ main = %nP*=tK33 1024
 ## V
 
 
-```v>1024 [0
+```v
+1024 [0>
 ] [
    dup puts
    2 / >int

@@ -985,7 +985,8 @@ public class Greybars extends JFrame {
 
 Live Demo: http://jsfiddle.net/gcN9g/embedded/result/
 
-```JavaScript><html><body
+```javascript
+<html><body>
 
 <script type="text/javascript">
 var width = 640; var height = 400;

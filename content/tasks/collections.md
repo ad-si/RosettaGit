@@ -274,7 +274,9 @@ Both types of collections are heterogenous and resize dynamically.
 
 Declaring a list:
 
-```aime>list l;</lang
+```aime
+list l;>
+```
 
 Adding values to it:
 
@@ -299,7 +301,9 @@ l[3]
 
 Declaring a record:
 
-```aime>record r;</lang
+```aime
+record r;>
+```
 
 Adding values to it:
 
@@ -2906,7 +2910,8 @@ MATLAB cell-arrays perform this function. They are indexed like arrays, but are 
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  A = {2,'TPS Report'} %Declare cell-array and initialize
 
 A =
@@ -3140,7 +3145,8 @@ OpenStep (and ''derivates'' like GNUstep and Cocoa) has several collection class
 Arrays (indexed by an integer), which are also collections, are not shown here.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 void show_collection(id coll)
@@ -5247,7 +5253,9 @@ aDictionary printNl.
 
 
 Output:
-<pre style="overflow:scroll">OrderedCollection (1 5 3 )
+
+```txt
+OrderedCollection (1 5 3 )
 Bag(5:3 6:1 )
 Set (10 5 6 )
 SortedCollection (5 8 9 10 )

@@ -504,7 +504,8 @@ create=:3 :0
 
 ## Java
 
-```java>public class Node<T
+```java
+public class Node<T>
  {
    private T element;
    private Node<T> next, prev;
@@ -1269,7 +1270,8 @@ Doubly linked lists present a problem in Rust due to its ownership model. There 
 The standard library uses the (currently) unstable `Shared<T>` type which indicates that the ownership of its contained type has shared ownership. It is guaranteed not to be null, is variant over <code>T</code> (meaning that an <code>&Shared<&'static T></code> may be used where a <code>&Shared<&'a T></code> is expected, indicates to the compiler that it may own a <code>T</code>) and may be dereferenced to a mutable pointer (<code>*mut T</code>). All of the above may be accomplished in standard stable Rust, except for the non-null guarantee which allows the compiler to make a few extra optimizations.
 
 
-```rust>pub struct LinkedList<T
+```rust
+pub struct LinkedList<T
  {
     head: Option<Shared<Node<T>>>,
     tail: Option<Shared<Node<T>>>,

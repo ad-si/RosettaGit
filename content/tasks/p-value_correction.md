@@ -4946,7 +4946,9 @@ The '''[https://econpapers.repec.org/software/bocbocode/s457100.htm qqvalue]''' 
 First, install the package with:
 
 
-```stata>ssc install qqvalue</lang
+```stata
+ssc install qqvalue>
+```
 
 
 Given a dataset containing the p-values in a variable, the qqvalue command generates another variable with the adjusted p-values. Here is an example showing the result with all implemented methods:

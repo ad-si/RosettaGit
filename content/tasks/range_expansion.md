@@ -1074,7 +1074,8 @@ There is a split method in clojure.contrib, but I don't know if it is able to sk
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. expand-range.
@@ -1485,7 +1486,8 @@ sequences sequences.extras splitting ;
 ## Forth
 
 
-```forth>:
+```forth
+:>
 snumber ( str len -- 'str 'len n )
   0. 2swap
   over c@ [char] - = if
@@ -1835,7 +1837,8 @@ println (expandRanges(s))
 
 Given either of the below implementations of <code>expandRange</code>:
 
-```haskell>
+```haskell
+>
  expandRange "-6,-3--1,3-5,7-11,14,15,17-20"
 [-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20]
 ```

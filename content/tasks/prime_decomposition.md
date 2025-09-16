@@ -2356,7 +2356,9 @@ Sample Output showing factors of a large integer:
 ## J
 
 
-```j>q:</lang
+```j
+q:
+```
 
 
 ```j
@@ -2390,7 +2392,8 @@ public boolean prime(BigInteger i);
 
 You will need to import java.util.List, java.util.LinkedList, and java.math.BigInteger.
 
-```java>public static List<BigInteger
+```java
+public static List<BigInteger>
  primeFactorBig(BigInteger a){
     List<BigInteger> ans = new LinkedList<BigInteger>();
     //loop until we test the number itself or the number is 1
@@ -2498,7 +2501,8 @@ Simple but very inefficient method,
 because it will test divisibility of all numbers from 2 to max prime factor.
 When decomposing a large prime number this will take O(n) trial divisions instead of more common O(log n).
 
-```java>public static List<BigInteger
+```java
+public static List<BigInteger>
  primeFactorBig(BigInteger a){
     List<BigInteger> ans = new LinkedList<BigInteger>();
 
@@ -3045,7 +3049,9 @@ Example for small prime:
 
 gives:
 
-```Mathematica> 1337 = 7 191</lang
+```mathematica
+ 1337 = 7 191>
+```
 
 
 Examples for large primes:
@@ -5352,7 +5358,8 @@ function factor(n_) {
 Uses the sieve of Eratosthenes. This is generic on any type that conforms to BinaryInteger. So in theory any BigInteger library should work with it.
 
 
-```swift>func primeDecomposition<T: BinaryInteger
+```swift
+func primeDecomposition<T: BinaryInteger>
 (of n: T) -> [T] {
   guard n > 2 else { return [] }
 
@@ -5757,7 +5764,8 @@ Let's assume that in XSLT the application of a template is similar to the invoca
 
 is applied against the document
 
-```xml><numbers
+```xml
+<numbers>
 
     <number><value>1</value></number>
     <number><value>2</value></number>
@@ -5770,7 +5778,8 @@ is applied against the document
 
 then the output contains the prime decomposition of each number:
 
-```html><html
+```html
+<html>
 
 <body>
 <ul>

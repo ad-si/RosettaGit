@@ -679,7 +679,8 @@ especially in collections. C# generics are less flexible than C++ templates, but
 are more strongly typed and arguably easier to work with.
 
 
-```csharp>static void Swap<T
+```csharp
+static void Swap<T>
 (ref T a, ref T b)
 {
     T temp = a;
@@ -716,7 +717,9 @@ int b = 2;
 
 Chapel includes a swap operator:
 
-```chapel>a <=> b</lang
+```chapel
+a <=> b
+```
 
 and supports swapping directly via tuples and destructuring:
 
@@ -803,7 +806,8 @@ swap(x y)  # CMake Error... set given invalid arguments for CACHE mode.
 This is another standard swap.
 
 
-```cfm><cfset temp = a /
+```cfm
+<cfset temp = a />
 
 <cfset a = b />
 <cfset b = temp />
@@ -908,11 +912,15 @@ $ @generic_swap
 =={{header|Déjà Vu}}==
 To swap the two top-most items on the stack:
 
-```dejavu>swap</lang
+```dejavu
+swap>
+```
 
 To swap two variables without needing a third name, using the stack for temporary storage:
 
-```dejavu>set :a set :b @a @b</lang
+```dejavu
+set :a set :b @a @b>
+```
 
 
 
@@ -1192,7 +1200,9 @@ let swap (a,b) = (b,a)
 
 Depending on how you look at it: this task doesn't apply, or it's trivial:
 
-```factor>swap</lang
+```factor
+swap>
+```
 
 
 
@@ -1283,7 +1293,9 @@ END PROGRAM EXAMPLE
 Since the Forth stack can contain pointers to any data type all we need is...
 <!-- if this is deemed unworthy, then the Factor, Postscript, and Retro examples should also be removed -->
 
-```forth>swap</lang
+```forth
+swap>
+```
 
 
 
@@ -1816,7 +1828,8 @@ cat
 Java uses references, so it can't swap the values of two variables that don't belong to a class.
 
 
-```java>class Pair<T
+```java
+class Pair<T>
  {
     T first;
     T second;
@@ -1884,7 +1897,9 @@ swap('x', 'y');
 
 Provided that the stack contains at least two elements and/or aggregates:
 
-```joy>swap</lang
+```joy
+swap
+```
 
 changes the order of those elements and/or aggregates.
 
@@ -1899,7 +1914,9 @@ jq -n '1 as $a | 2 as $b | $a as $tmp | $b as $a | $tmp as $b | [$a,$b]'
 
 Here is a filter that will swap the elements of a two-element array:
 
-```jq>reverse</lang
+```jq
+reverse
+```
 
 
 And here is a filter that, if presented with an array, will in effect copy it and then swap the i-th and j-th items, it being understood that if a is an array and k < 0 or k >= (a|length), then a[k] will evaluate to null:
@@ -2371,7 +2388,8 @@ Numercial swaps are trivial operations. In fact, they are so natural to the lang
 
 Example:
 
-```MATLAB>>
+```MATLAB
+>>
  a = [30 40 50 60 70]
 
 a =
@@ -2439,7 +2457,9 @@ b; /* foo */
 ## MAXScript
 
 
-```maxscript>swap a b</lang
+```maxscript
+swap a b>
+```
 
 
 
@@ -2488,7 +2508,9 @@ show truth1, truth2;
 
 Like many other stack languages, this is trivial.
 
-```min>swap</lang
+```min
+swap>
+```
 
 
 
@@ -2717,7 +2739,9 @@ let swapref x y =
 
 
 
-```Oforth>swap</lang
+```oforth
+swap>
+```
 
 
 
@@ -3113,7 +3137,9 @@ Pop11 is dynamically typed, so the code above is "generic".
 ## PostScript
 
 Works with anything you can put on the operand stack:
-```PostScript>exch</lang
+```PostScript
+exch>
+```
 
 
 
@@ -3290,7 +3316,9 @@ The answer is Heart of Gold, the ship is 42.
 
 
 
-```Retro>swap</lang
+```Retro
+swap>
+```
 
 
 
@@ -3738,7 +3766,8 @@ Notice that swap only works with variables, not with indexed arrays. For instanc
 
 
 
-```swift>func swap<T
+```swift
+func swap<T>
 (inout a: T, inout b: T) {
   (a, b) = (b, a)
 }
@@ -3850,7 +3879,9 @@ y
 
 As with other stack-based languages (e.g. [[Factor]] and [[Joy]]), the solution to this task is a trivial matter of swapping the top two operands on the stack:
 
-```trith>swap</lang
+```trith
+swap>
+```
 
 
 

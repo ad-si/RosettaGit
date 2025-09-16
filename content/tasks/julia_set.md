@@ -857,7 +857,7 @@ Julia.set(c_real, c_imag)
 ```
 
 
-<pre style="font-size: 50%;">
+```txt
 -0.8, 0.156
 
 
@@ -2030,7 +2030,8 @@ The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.
 (Shown at   <sup>'''1'''</sup>/<sub>'''6'''</sub>   size.)
 
 '''output'''   when the defaults are used:
-<pre style="font-size:17%">
+
+```txt
                                                                                                                                                                                                                           ■■
                                                                                                                                                                                                                           ■ ■
                                                                                                                                                                                                                        ■■ ■■
@@ -2297,8 +2298,7 @@ end
 julia(-0.8, 0.156)
 ```
 
-
-<pre style="font-size: 50%;">
+```txt
 -0.8+0.156i
 
 
@@ -2525,7 +2525,8 @@ for y in ^h {
 }
 ```
 
-<pre style="font-size: 50%;">                                                                        ##
+```txt
+                                                                      ##
                                                                       ##
                                                                      #######
                                                                       ########

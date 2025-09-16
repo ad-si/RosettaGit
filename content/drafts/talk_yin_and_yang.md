@@ -18,7 +18,8 @@ Hi, Donald, I made the previous d demo (I made a new one :). If i didn't miss an
 
 : I cut and pasted the figure from my browser and printed the line number, the line length (including spaces), and the line length without leading and trailing spaces. in the last table we have 25 lines making up the outer circle so the longest line should be half way - at line 13, which is 25 non-blank characters long. From lines 1 to 13, I expect the non-blank line length to ''not'' decrease. From line 13 to 25 I expect the line length to ''not increase''. Lines 11 and 15 however are shorter than they should be having 23 characters when the lines around them have 24.
 :
-```python>>>
+```python
+>>>
  d = ''' 　　　　　　　　　　　　　．　　　　　　　　　　　　　
 　　　　　　　　　．．．．．．．．＃＃　　　　　　　　
  　　　　　　　．．．．．．．．．．．＃＃　　　　　　　
@@ -80,7 +81,8 @@ Hi, Donald, I made the previous d demo (I made a new one :). If i didn't miss an
 
 :I also looked at what different characters where being used and noticed the use of what may be none-ASCII characters:
 :
-```python>>>
+```python
+>>>
  # Types of characters in d
 >>> set(d)
 {'\n', ' ', '＃', '．', '\u3000'}

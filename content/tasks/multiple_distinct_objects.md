@@ -352,7 +352,9 @@ Loop, %n%
 The wrong way, which creates an array of ''n'' references to the same new ''foo'':
 
 
-```brat>n.of foo.new</lang
+```brat
+n.of foo.new>
+```
 
 
 The right way, which calls the block ''n'' times and creates an array of new ''foo''s:
@@ -466,7 +468,8 @@ List<Foo> foos = Enumerable.Range(1, n).Select(x => new Foo()).ToList();
 
 An example using pseudo-random numbers:
 
-```clojure>user
+```clojure
+user>
  (take 3 (repeat (rand))) ; repeating the same random number three times
 (0.2787011365537204 0.2787011365537204 0.2787011365537204)
 user> (take 3 (repeatedly rand)) ; creating three different random number
@@ -829,7 +832,9 @@ assert (here == there) == (i == j)
 
 Below, we are assuming that <tt>makeTheDistinctThing</tt> is a monadic expression (i.e. it has type <code>m a</code> where <code>m</code> is some monad, like <code>IO</code> or <code>ST</code>), and we are talking about distinctness in the context of the monad. Otherwise, this task is pretty meaningless in Haskell, because Haskell is referentially transparent (so two values that are equal to the same expression are necessarily not distinct) and all values are immutable.
 
-```haskell>replicateM n makeTheDistinctThing</lang
+```haskell
+replicateM n makeTheDistinctThing
+```
 
 in an appropriate do block. If it is distinguished by, say, a numeric label, one could write
 
@@ -879,7 +884,9 @@ A correct approach initialises each element separately:
 ## J
 
 
-```J>i.</lang
+```j
+i.>
+```
 
 
 Example use:
@@ -913,7 +920,8 @@ Arrays.fill(foos, new Foo());  // new Foo() only evaluated once
 
 simple list:
 
-```java5>List<Foo> foos = new ArrayList<Foo
+```java5
+List<Foo> foos = new ArrayList<Foo>
 ();
 for (int i = 0; i < n; i++)
     foos.add(new Foo());
@@ -927,7 +935,8 @@ Generic version for class given at runtime:
 
 It's not pretty but it gets the job done. The first method here is the one that does the work. The second method is a convenience method so that you can pass in a <tt>String</tt> of the class name. When using the second method, be sure to use the full class name (ex: "java.lang.String" for "String"). <tt>InstantiationException</tt>s will be thrown when instantiating classes that you would not normally be able to call <tt>new</tt> on (abstract classes, interfaces, etc.). Also, this only works on classes that have a no-argument constructor, since we are using <code>newInstance()</code>.
 
-```java5>public static <E> List<E
+```java5
+public static <E> List<E>
  getNNewObjects(int n, Class<? extends E> c){
 	List<E> ans = new LinkedList<E>();
 	try {

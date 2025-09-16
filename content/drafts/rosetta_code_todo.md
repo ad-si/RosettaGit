@@ -21,7 +21,10 @@ Here's a list of "Someone needs to..." items.  If you're looking for something t
 * Copy/modify code from [[Loop Structures]] to pages in [[:Category:Iteration]].
 * Change ''all'' code examples and creation guides to use <nowiki><lang></nowiKi> instead of '''tt''' or '''pre'''.  GeshiCodeTag will now quietly wrap those in HTML '''pre''' blocks.  Use a standardized language ID for each language.  I'll alias them to existing or newly supported language IDs as appropriate and possible.
 ** It would be nice to have the common mistake of <nowiki>
-```name>...</lang name></nowiki> either fail hard or silently be fixed to the proper form of <nowiki><lang name>...
+```name
+...>
+``` name
+</nowiki> either fail hard or silently be fixed to the proper form of <nowiki><lang name>...>
 ```
 </nowiki
 .  Otherwise, it hides all subsequent page content until it finds an correct <nowiki>

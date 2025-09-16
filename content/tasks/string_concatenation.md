@@ -1152,7 +1152,8 @@ critical literal
 
 Illustrating in <tt>fansh</tt>:
 
-```fantom>fansh
+```fantom
+fansh>
  a := "abc"
 abc
 fansh> b := a + "def"
@@ -1671,7 +1672,8 @@ str<>"Literal"
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-```MATLAB>>
+```MATLAB
+>>
  string1 = '1 Fish'
 
 string1 =
@@ -2017,7 +2019,8 @@ bundle Default {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()
@@ -2393,7 +2396,8 @@ print s1
 ## Red
 
 
-```Red>>
+```Red
+>>
 str1: "Hello"
 >>str2: append str1 " World"
 >> print str2

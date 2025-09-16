@@ -1770,7 +1770,8 @@ end
 
 Output:
 
-```MATLAB>>
+```MATLAB
+>>
  randNorm(1,.5, [1000,1])
 
 ans =
@@ -2528,7 +2529,8 @@ Next
 
 ;Using random.gauss:
 
-```python>>>
+```python
+>>>
  import random
 >>> values = [random.gauss(1, .5) for i in range(1000)]
 >>>
@@ -2537,7 +2539,8 @@ Next
 
 ;Quick check of distribution:
 
-```python>>>
+```python
+>>>
  def quick_check(numbers):
     count = len(numbers)
     mean = sum(numbers) / count
@@ -2554,7 +2557,8 @@ Note that the ''random'' module in the Python standard library supports a number
 
 ;Alternatively using random.normalvariate:
 
-```python>>>
+```python
+>>>
  values = [ random.normalvariate(1, 0.5) for i in range(1000)]
 >>> quick_check(values)
 (0.990099111944864, 0.5029847005836282)

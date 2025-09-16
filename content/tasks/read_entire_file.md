@@ -750,7 +750,8 @@ local :filecontents !decode!utf-8 !read "file.txt"
 
 
 
-```e><file:foo.txt
+```e
+<file:foo.txt>
 .getText()
 ```
 
@@ -1490,7 +1491,8 @@ By default, string objects, which are always Unicode, are created with the assum
 
 ```Lasso
 local(f) = file('foo.txt')
-#f->readString</lang >
+#f->readString
+``` >
 
 
 ## LFE
@@ -2086,7 +2088,9 @@ Since <code>readstr()</code> returns strings without newlines there's no way to 
 
 It returns a unicode string of type 'text'.
 
-```panda>file:readme.txt .text</lang
+```panda
+file:readme.txt .text>
+```
 
 
 

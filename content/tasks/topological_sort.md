@@ -1629,7 +1629,8 @@ in the topological ordering (i.e., the first value)."
 Provided example in which all items can be sorted:
 
 
-```lisp>
+```lisp
+>
  (defparameter *dependency-graph*
   '((des-system-lib   std synopsys std-cell-lib des-system-lib dw02 dw01 ramlib ieee)
     (dw01             ieee dw01 dware gtech)
@@ -1656,7 +1657,8 @@ NIL
 Provided example with <code>dw04</code> added to the dependencies of <code>dw01</code>.  Some vertices are ordered, but the second return is <code>nil</code>, indicating that not all vertices could be sorted.  The third return value is the hash table containing entries for the four vertices that couldn't be sorted.  (The variable <code>[http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm /]</code> stores the list of values produced by the last form, and <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm describe]</code> prints information about an object.)
 
 
-```lisp>
+```lisp
+>
  (defparameter *dependency-graph*
   '((des-system-lib   std synopsys std-cell-lib des-system-lib dw02 dw01 ramlib ieee)
     (dw01             ieee dw01 dw04 dware gtech)
@@ -1790,7 +1792,8 @@ topo.ArgumentException@topo.d(7): A cyclic dependency exists amongst:
 
 
 
-```e>def makeQueue := <elib:vat.makeQueue
+```e
+def makeQueue := <elib:vat.makeQueue>
 
 
 def topoSort(data :Map[any, Set[any]]) {
@@ -3207,7 +3210,8 @@ With the sample data set:
 We would get:
 
 
-```J>
+```j
+>
 dependencySort dependencies
  std
  ieee

@@ -2123,7 +2123,8 @@ int main() {
 
 
 
-```clojure>sudoku
+```clojure
+sudoku>
 (cl-format true "~{~{~a~^ ~}~%~}"
  (solve [[3 9 4 0 0 2 6 7 0]
          [0 0 0 3 0 0 4 0 0]
@@ -6897,7 +6898,8 @@ in
 
 Build plugin for PARI's function interface from C code: sudoku.c
 
-```C>#include <pari/pari.h
+```C
+#include <pari/pari.h>
 
 
 typedef int SUDOKU [9][9];

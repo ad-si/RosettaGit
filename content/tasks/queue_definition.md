@@ -1575,7 +1575,8 @@ namespace rosettacode
 
 Compatible with C# 3.0 specification, requires System library for exceptions (from either .Net or Mono). A FIFO class in C# using generics and nodes.
 
-```csharp>public class FIFO<T
+```csharp
+public class FIFO<T>
 
 {
   class Node
@@ -3066,7 +3067,8 @@ See also [[FIFO (usage)#J]]
 
 This task could be done using a LinkedList from java.util, but here is a user-defined version with generics:
 
-```java>public class Queue<E
+```java
+public class Queue<E>
 {
     Node<E> head = null, tail = null;
 
@@ -3342,7 +3344,8 @@ Can't pop elements from an empty queue
 
 Definition:
 
-```lasso>define myqueue =
+```lasso
+define myqueue =>
  type {
     data store = list
 
@@ -3564,7 +3567,8 @@ end
 
 Sample usage:
 
-```MATLAB>>
+```MATLAB
+>>
  myQueue = FIFOQueue({'hello'})
 
 myQueue =

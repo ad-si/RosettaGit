@@ -565,7 +565,8 @@ The following implements a sorting algorithm that takes a linked list, puts each
 ```
 
 Usage: 
-```Scheme> #;2
+```Scheme
+ #;2>
  (tree-sort '(5 3 7 9 1))
 (1 3 5 7 9)
 ```

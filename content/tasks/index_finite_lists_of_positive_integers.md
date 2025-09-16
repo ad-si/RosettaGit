@@ -29,9 +29,9 @@ languages = [
 ]
 +++
 
-It is known that the set of finite lists of positive integers is   [[wp:countable| <u>countable</u>]].  
+It is known that the set of finite lists of positive integers is   [[wp:countable| <u>countable</u>]].
 
-This means that there exists a subset of natural integers which can be mapped to the set of finite lists of positive integers.  
+This means that there exists a subset of natural integers which can be mapped to the set of finite lists of positive integers.
 
 
 ## Task
@@ -43,7 +43,7 @@ Implement such a mapping:
 
 Demonstrate your solution by:
 :*   picking a random-length list of random positive integers
-:*   turn it into an integer,   and 
+:*   turn it into an integer,   and
 :*   get the list back.
 
 
@@ -285,7 +285,7 @@ Rank: 1 unrank not bijective
 
 
 
-###  Explicit version 
+###  Explicit version
 
 
 Implementation:
@@ -325,7 +325,7 @@ Whether this is an efficient representation or not depends, of course, on the na
 
 
 
-###  Tacit versions 
+###  Tacit versions
 
 
 Base 11 encoding:
@@ -343,7 +343,7 @@ Example use:
 ```J
    rank 1 2 3 10 100 987654321 135792468107264516704251 7x
 187573177082615698496949025806128189691804770100426
-   
+
    unrank 187573177082615698496949025806128189691804770100426x
 1 2 3 10 100 987654321 135792468107264516704251 7
 ```
@@ -364,14 +364,14 @@ Example use:
 ```J
    rank 1 11 16 1 3 9 0 2 15 7 19 10
 6857998574998940803374702726455974765530187550029640884386375715876970128518999225074067307280381624132537960815429687500
-   
+
    unrank 6857998574998940803374702726455974765530187550029640884386375715876970128518999225074067307280381624132537960815429687500x
 1 11 16 1 3 9 0 2 15 7 19 10
 ```
 
 
 
-###  Bijective 
+###  Bijective
 
 
 Using the method of the Python version (shifted):
@@ -386,7 +386,8 @@ Using the method of the Python version (shifted):
 Example use:
 
 
-```J>   
+```j
+
 @:((] ; unrank ; rank@:unrank)&.>)@:i. 11
 ┌──┬───────┬──┐
 │0 │0      │0 │
@@ -411,7 +412,7 @@ Example use:
 ├──┼───────┼──┤
 │10│0 2    │10│
 └──┴───────┴──┘
-   
+
    (] ; rank ; unrank@:rank) 1 2 3 5 8
 ┌─────────┬────────┬─────────┐
 │1 2 3 5 8│14401278│1 2 3 5 8│
@@ -624,33 +625,31 @@ say unrank $n;
 1 11 16 1 3 9 0 2 15 7 19 10
 ```
 
-
 Here is a bijective solution that does not use string operations.
 
-
-```perl6>multi infix:<rad
- ()       { 0 }
+```perl6
+multi infix:<rad> ()       { 0 }
 multi infix:<rad> ($a)     { $a }
 multi infix:<rad> ($a, $b) { $a * $*RADIX + $b }
- 
+
 multi expand(Int $n is copy, 1) { $n }
 multi expand(Int $n is copy, Int $*RADIX) {
     my \RAD = $*RADIX;
- 
+
     my @reversed-digits = gather while $n > 0 {
 	take $n % RAD;
 	$n div= RAD;
     }
- 
+
     eager for ^RAD {
 	[rad] reverse @reversed-digits[$_, * + RAD ... *]
     }
 }
- 
+
 multi compress(@n where @n == 1) { @n[0] }
 multi compress(@n is copy) {
     my \RAD = my $*RADIX = @n.elems;
- 
+
     [rad] reverse gather while @n.any > 0 {
 	    (state $i = 0) %= RAD;
 	    take @n[$i] % RAD;
@@ -658,7 +657,7 @@ multi compress(@n is copy) {
 	    $i++;
 	}
 }
- 
+
 sub rank(@n) { compress (compress(@n), @n - 1)}
 sub unrank(Int $n) { my ($a, $b) = expand $n, 2; expand $a, $b + 1 }
 
@@ -696,14 +695,14 @@ for ^10 {
 
 ```Phix
 include mpfr.e
- 
+
 procedure rank(mpz r, sequence s)
     for i=1 to length(s) do
         s[i] = sprintf("%d",s[i])
     end for
     mpz_set_str(r,join(s,'a'),11)
 end procedure
- 
+
 function unrank(mpz i)
     sequence res = split(mpz_get_str(i,11),'a')
     for j=1 to length(res) do
@@ -711,7 +710,7 @@ function unrank(mpz i)
     end for
     return res
 end function
- 
+
 sequence l = {1, 2, 3, 10, 100, 987654321}
 mpz n = mpz_init()
 rank(n,l)
@@ -730,12 +729,12 @@ sequence u = unrank(n)
 ```Phix
 function unrank(atom n)
     sequence res = sprintf("%0b",n)
-    if res="1" then return {0} end if  
+    if res="1" then return {0} end if
     res = split(res[2..$],'0')
     for i=1 to length(res) do res[i] = length(res[i]) end for
     return res
 end function
- 
+
 function rank(sequence x)
     if x={} then return "0" end if
     for i=1 to length(x) do
@@ -749,7 +748,7 @@ for i=0 to 10 do
     sequence a = unrank(i)
     printf(1,"%3d : %-18v: %d\n",{i, a, rank(a)})
 end for
- 
+
 sequence x = {1, 2, 3, 5, 8}
 printf(1,"%v => %d => %v\n",{x,rank(x),unrank(rank(x))})
 ```
@@ -802,7 +801,7 @@ print l
 
 
 
-###  Bijection 
+###  Bijection
 
 Each number in the list is stored as a length of 1s, separated by 0s, and the resulting string is prefixed by '1', then taken as a binary number. Empty list is mapped to 0 as a special case. Don't use it on large numbers.
 
@@ -886,7 +885,7 @@ print x, rank(x), unrank(rank(x))
 
 This REXX version can handle zeros as well as any sized (decimal) positive integers.
 
-No checks are made that the numbers are non-negative integers or malformed integers. 
+No checks are made that the numbers are non-negative integers or malformed integers.
 
 ```rexx
 /*REXX program assigns an integer for a finite list of arbitrary non-negative integers. */
@@ -943,7 +942,7 @@ p l
 ```
 
 
-###  Bijection 
+###  Bijection
 
 ```ruby
 def unrank(n)

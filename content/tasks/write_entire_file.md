@@ -631,7 +631,9 @@ main = do
 ## J
 
 
-```J>   characters fwrite filename</lang
+```j
+   characters fwrite filename>
+```
 
 
 or,
@@ -834,7 +836,8 @@ end.
 In some environments, it is the caller’s sole responsibility to invoke the program properly.
 I. e., the program above could be invoked on a Bourne-again shell in this fashion:
 
-```bash>./overwriteFile
+```bash
+./overwriteFile>
 &- <&- 0>/tmp/foo # open file descriptor with index 0 for writing
 ```
 

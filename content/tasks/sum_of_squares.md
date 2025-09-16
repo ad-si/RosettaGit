@@ -1895,7 +1895,8 @@ demo(3) # 0^2 + 1^2 + 2^2
 
 There are several easy ways to do this in Julia:
 
-```julia>julia
+```julia
+julia>
  sum([1,2,3,4,5].^2)
 55
 

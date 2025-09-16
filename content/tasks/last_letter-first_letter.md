@@ -2387,7 +2387,8 @@ $R=: seqs pokenames
 With this data set, we have 1248 sequences of names which have the longest possible length, and those sequences are 23 names long.  Here's one of them:
 
 
-```j>
+```j
+>
 pokenames {~{.R
 machamp
 petilil

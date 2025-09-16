@@ -16,7 +16,8 @@ tags = []
 
 {{works with|Cocoa}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import <math.h>
 

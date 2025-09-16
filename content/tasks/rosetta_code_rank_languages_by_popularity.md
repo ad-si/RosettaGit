@@ -2838,7 +2838,8 @@ fun main(args: Array<String>) {
 ## Lasso
 
 
-```Lasso>
+```lasso
+>
 ```txt
 <code
 [

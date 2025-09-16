@@ -559,7 +559,8 @@ oranges, mangos
 ## C
 
 
-```C>#include<stdio.h
+```C
+#include<stdio.h>
 
 
 int main()
@@ -680,7 +681,8 @@ apples, pears
 ## Clojure
 
 
-```clojure>
+```clojure
+>
  (apply str (take-while #(not (#{\# \;} %)) "apples # comment"))
 "apples "
 ```
@@ -910,7 +912,8 @@ Tested with Swift Forth on OS/X
                1-                      \ reduce length by 1
              REPEAT  ;
 
-: COMMENT-STRIP ( addr len -- addr 'len)  -COMMENT  -TRAILING ;</LANG>
+: COMMENT-STRIP ( addr len -- addr 'len)  -COMMENT  -TRAILING ;
+```
 
 Tested at the Forth console
 

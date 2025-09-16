@@ -2236,7 +2236,8 @@ def makeQuaternion(a, b, c, d) {
 ## Eero
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 interface Quaternion : Number
@@ -4055,7 +4056,8 @@ abs(z::Quaternion) = sqrt(z.q0*z.q0 + z.q1*z.q1 + z.q2*z.q2 + z.q3*z.q3)
 
 Example usage and output:
 
-```julia>julia
+```julia
+julia>
  q = Quaternion(1,0,0,0)
 julia> q  = Quaternion (1, 2, 3, 4)
        q1 = Quaternion(2, 3, 4, 5)
@@ -6143,7 +6145,8 @@ r  = 7
 '''Continued shell session'''
 Run the above with the -i flag to python on the command line, or run with idle then continue in the shell as follows:
 
-```python>>>
+```python
+>>>
  q
 Quaternion(real=1.0, i=2.0, j=3.0, k=4.0)
 >>> q1

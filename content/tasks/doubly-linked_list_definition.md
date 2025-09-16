@@ -2906,7 +2906,8 @@ sy:      say;   say left('', 30) "───" arg(1) '───';              re
 ```
 
 '''output'''
-<pre style="height:30ex;overflow:scroll">
+
+```txt
                                ─── initializing the list. ───
 
                                ─── building list: Was it a cat I saw ───
@@ -2940,7 +2941,6 @@ Was it a black cat I saw there, in the shadows, stalking its prey (and next meal
 
                                ─── showing list ───
 Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal).
-
 ```
 
 
@@ -2949,7 +2949,6 @@ Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next 
 
 
 ```ring
-
 # Project : Doubly-linked list/Definition
 
 test = [1, 5, 7, 0, 3, 2]
@@ -2966,15 +2965,12 @@ func showarray(vect)
         next
         svect = left(svect, len(svect) - 1)
         see svect
-
 ```
 
 Output:
 
 ```txt
-
 9 1 5 7 6 0 3 2 4
-
 ```
 
 

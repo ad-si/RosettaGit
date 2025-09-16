@@ -1250,7 +1250,8 @@ sub chime {
 Perl 6 uses [[wp:Coordinated_Universal_Time|UTC]] (GMT) time internally and by default. This will display the current UTC time and on the half hour, display a graphical representation of the bell. If run in a terminal with the system bell enabled, will also chime the system alarm bell.
 
 
-```perl6>my @watch = <Middle Morning Forenoon Afternoon Dog First
+```perl6
+my @watch = <Middle Morning Forenoon Afternoon Dog First>
 ;
 my @ordinal = <One Two Three Four Five Six Seven Eight>;
  

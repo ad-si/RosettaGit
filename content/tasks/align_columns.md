@@ -562,7 +562,9 @@ endform.
 ```
 
 
-<pre style="height:15ex;overflow:scroll">Given      a          text       file       of         many       lines,     where      fields     within     a          line
+
+```txt
+Given      a          text       file       of         many       lines,     where      fields     within     a          line
 are        delineated by         a          single     'dollar'   character, write      a          program
 that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
 column     are        separated  by         at         least      one        space.
@@ -659,7 +661,9 @@ end Column_Aligner;
 ```
 
 Formatted file sample:
-<pre style="height:15ex;overflow:scroll">
+
+```txt
+
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
@@ -3351,7 +3355,9 @@ justified,$right$justified,$or$center$justified$within$its$column.'''
 
 
 {{out}}
-<pre style="height:25ex;overflow:scroll">Left Justified:
+
+```txt
+Left Justified:
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
@@ -4838,7 +4844,9 @@ Align_Columns
 
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
+
 Given      a          text       file       of         many       lines,     where      fields     within     a          line
 are        delineated by         a          single     'dollar'   character, write      a          program
 that       aligns     each       column     of         fields     by         ensuring   that       words      in         each
@@ -6986,7 +6994,9 @@ next
 ```
 
 {{out}}
-<pre style="height:20ex;overflow:scroll">TextLeft contains:
+
+```txt
+TextLeft contains:
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
@@ -7080,7 +7090,9 @@ foreach i [left centre right] [
 
 
 {{out}}
-<pre style="height:15ex;overflow:scroll">Align left ...
+
+```txt
+Align left ...
 
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
@@ -7520,7 +7532,9 @@ end function
 ```
 
 {{out}}
-<pre style="height:15ex;overflow:scroll">------------ align:left -- across:6 ------------
+
+```txt
+------------ align:left -- across:6 ------------
 |Given       |a           |text    |file        |of              |many      |
 |lines,      |where       |fields  |within      |a               |line      |
 |are         |delineated  |by      |a           |single          |'dollar'  |
@@ -7622,7 +7636,9 @@ justified,$right$justified,$or$center$justified$within$its$column."#;
 ```
 
 {{out}}
-<pre style="height:15ex;overflow:scroll">
+
+```txt
+
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
@@ -8415,7 +8431,9 @@ main = mat0 <.just_left,just_center,just_right> text
 ```
 
 {{out}}
-<pre style="height:17ex;overflow:scroll">
+
+```txt
+
 Given      a          text       file   of     many      lines,     where    fields  within  a      line
 are        delineated by         a      single 'dollar'  character, write    a       program
 that       aligns     each       column of     fields    by         ensuring that    words   in     each
@@ -8932,7 +8950,9 @@ format(text, 1).print();
 
 Blow apart the text into a list of words, find max len of any word, calc how many words will fit on a 80 col line, format all words into a bit bucket line at a time. Formatting is "%-ms" or "%ms" for left & right justify (m is field width), calculated for center. fmt is the string format method or center calc function, depending. Where string formatting can be used, it would be better to format all words in a line in one go but the code would be longer.
 {{out}}
-<pre  style="height:20ex;overflow:scroll">
+
+```txt
+
 Given      a          text       file       of         many       lines,
 where      fields     within     a          line       are        delineated
 by         a          single     'dollar'   character, write      a

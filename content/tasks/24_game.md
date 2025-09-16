@@ -811,7 +811,8 @@ EndFunc
 ## Befunge
 
 
-```befunge>v         > > >
+```befunge
+v         > > >
  v
 2           2                   1234
 4         ^1?3^4
@@ -1729,7 +1730,8 @@ shared void run() {
 ## COBOL
 
 
-```COBOL>        >
+```cobol
+        >
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 *> This is GNUCobol 2.0
@@ -8165,7 +8167,8 @@ check.call <- function(expr, operators, arguments) {
 
 Example Session
 
-```r>
+```r
+
  twenty.four()
 
 Make 24 out of the numbers 1, 6, 7, 5 and the operators +, -, *, /, ( .
@@ -10108,7 +10111,8 @@ DO game
 ```
 
 ### Output
-<pre style='height:30ex;overflow:scroll'>
+
+```txt
 Your numbers 2 8 9 9
 Use only these operators * / + - ( )
 Enter an expression that equates to 24

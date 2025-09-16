@@ -619,7 +619,8 @@ an overabundance. No need to rely on magic numbers. No need to sort them. It
 produces exactly what is needed, in order, on demand.
 
 
-```perl6>use ntheory:from<Perl5
+```perl6
+use ntheory:from<Perl5>
  <is_prime>;
 
 sub pierpont ($kind is copy = 1) {

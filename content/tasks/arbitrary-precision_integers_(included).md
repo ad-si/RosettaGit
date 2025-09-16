@@ -1454,7 +1454,8 @@ print left$( a$, 20); "......"; right$( a$, 20)
 Julia includes built-in support for arbitrary-precision arithmetic using the [http://gmplib.org/ GMP] (integer) and [http://www.mpfr.org/ GNU MPFR] (floating-point) libraries, wrapped by the built-in <code>BigInt</code> and <code>BigFloat</code> types, respectively.
 
 
-```julia>julia
+```julia
+julia
  @elapsed bigstr = string(BigInt(5)^4^3^2)
 0.017507363
 
@@ -1544,7 +1545,8 @@ Print[StringTake[s,20]<>"..."<>StringTake[s,-20]<>" ("<>ToString@StringLength@s<
 
 Using the [http://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic Variable Precision Integer] library this task is accomplished thusly:
 
-```MATLAB>>
+```matlab
+>
  answer = vpi(5)^(vpi(4)^(vpi(3)^vpi(2)));
 >> numDigits = order(answer) + 1
 
@@ -2201,7 +2203,8 @@ MessageRequester("Arbitrary-precision integers, PureBasic",out$)
 
 Python comes with built-in support for arbitrary precision integers. The type of arbitrary precision integers is <tt>[http://docs.python.org/library/stdtypes.html#typesnumeric long]</tt> in Python 2.x (overflowing operations on <tt>int</tt>'s are automatically converted into <tt>long</tt>'s), and <tt>[http://docs.python.org/3.1/library/stdtypes.html#typesnumeric int]</tt> in Python 3.x.
 
-```python>>>
+```python
+>>
  y = str( 5**4**3**2 )
 >>> print ("5**4**3**2 = %s...%s and has %i digits" % (y[:20], y[-20:], len(y)))
 5**4**3**2 = 62060698786608744707...92256259918212890625 and has 183231 digits
@@ -2442,7 +2445,8 @@ result is ok..
 
 Scala does not come with support for arbitrary precision integers powered to arbitrary precision integers, except if performed on a module. It can use arbitrary precision integers in other ways, including powering them to 32-bits integers.
 
-```scala>scala
+```scala
+scala
  BigInt(5) modPow (BigInt(4) pow (BigInt(3) pow 2).toInt, BigInt(10) pow 20)
 res21: scala.math.BigInt = 92256259918212890625
 

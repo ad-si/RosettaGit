@@ -77,7 +77,8 @@ Note that if ''a'' = ''b'', of the four only [''a'', ''a''] would be non-empty.
 
 Providing an implementation of lambdas would be better, but this should do for now.
 
-```C>#include <math.h
+```C
+#include <math.h>
 
 #include <stdbool.h>
 #include <stdio.h>

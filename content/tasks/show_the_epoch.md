@@ -1086,7 +1086,8 @@ Thu Jan  1 00:00:00 1970
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, const char *argv[]) {
@@ -1398,7 +1399,8 @@ Y = 1970  M = 01  D = 01, 00:00:00
 ## Python
 
 
-```python>>>
+```python
+>>>
  import time
 >>> time.asctime(time.gmtime(0))
 'Thu Jan  1 00:00:00 1970'

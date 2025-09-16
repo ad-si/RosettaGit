@@ -2040,7 +2040,8 @@ Output:
 =={{header|Objective-C}}==
 Sorts an array "wrapper" which represents a "view" into the disjoint sublist of the array.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface DisjointSublistView : NSMutableArray {
@@ -2493,7 +2494,8 @@ After sort:
 The function modifies the input data list in-place and follows the Python convention of returning None in such cases.
 
 
-```python>>>
+```python
+>>>
  def sort_disjoint_sublist(data, indices):
 	indices = sorted(indices)
 	values  = sorted(data[i] for i in indices)
@@ -2902,7 +2904,8 @@ val it = [|7,0,5,4,3,2,1,6|] : int array
 
 Sorts an array "wrapper" which represents a "view" into the disjoint sublist of the array.
 
-```swift>struct DisjointSublistView<T
+```swift
+struct DisjointSublistView<T>
  : MutableCollectionType {
   let array : UnsafeMutablePointer<T>
   let indexes : [Int]

@@ -1533,7 +1533,8 @@ end if
 ## Maple
 
 
-```Maple>
+```maple
+
  cfloor := define_external( floor, s::float[8], RETURN::float[8], LIB = "libm.so" ):
 > cfloor( 2.3 );
                                    2.
@@ -1943,7 +1944,8 @@ print user32_dll.GetDoubleClickTime()
 
 Or, to call printf out of the C standard library:
 
-```python>>>
+```python
+>>
  import ctypes
 >>> # libc = ctypes.cdll.msvcrt # Windows
 >>> # libc = ctypes.CDLL('libc.dylib') # Mac

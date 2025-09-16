@@ -2363,7 +2363,8 @@ pair     dist    path
 
 ## SequenceL
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl
 ;
 import <Utilities/Math.sl>;
 

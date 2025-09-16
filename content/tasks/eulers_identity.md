@@ -608,7 +608,8 @@ The actual result and two rounded versions (to prove the rounding is doing what 
 ## Python
 
 
-```python>>>
+```python
+>>
  import math
 >>> math.e ** (math.pi * 1j) + 1
 1.2246467991473532e-16j
@@ -754,7 +755,8 @@ pi= pi || 38095257201065485863278865936153381827968230301952
 ## Ruby
 
 
-```ruby>
+```ruby
+
  require 'complex'
 > Math::E ** (Math::PI * Complex::I) + 1
 => (0.0+0.0i)

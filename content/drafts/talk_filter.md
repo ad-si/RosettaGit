@@ -20,7 +20,8 @@ Does it really works?! It does not on GNUstep, and looking at Apple's doc, I dou
 The only way I get it working:
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface NSNumber ( ExtFunc )
@@ -46,7 +47,7 @@ int main()
 
   NSPredicate *isEven = [NSPredicate predicateWithFormat:@"modulo2 == 0"];
   NSArray *evens = [numbers filteredArrayUsingPredicate:isEven];
-  
+
   NSLog(@"%@", evens);
 
 

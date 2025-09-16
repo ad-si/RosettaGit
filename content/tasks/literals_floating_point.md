@@ -225,12 +225,9 @@ end.
 
 ## Applesoft BASIC
 
-
 All numeric literals are treated as floating point. (In the Apple II world, Applesoft was sometimes called "floating-point BASIC" to contrast it with [[Integer BASIC]].)
 
-
 ```txt
-
 0
 19
 -3
@@ -239,16 +236,14 @@ All numeric literals are treated as floating point. (In the Apple II world, Appl
 1E10
 1.9E+09
 -6.66E-32
-
 ```
-
 
 
 ## Arturo
 
-
-```arturo>pi 3.14159265</lang
-
+```arturo
+pi 3.14159265
+```
 
 
 ## AWK
@@ -896,7 +891,8 @@ Note that all the values in an array are the same type, thus the 0, 1 and 2 in t
 
 jq floating point literals are identical to JSON floating point literals.  However, when jq parses a floating point or integer literal, conversion to IEEE 754 numbers takes place, which may result in a loss of accuracy and/or an apparent change of type, as illustrated by the following sequence of input => output pairs:
 
-```sh>1.0 =
+```sh
+1.0 =>
  1
 1.2 => 1.2
 1e10 => 10000000000

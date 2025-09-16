@@ -149,7 +149,8 @@ v _v#!`*86:g0:<^!:-1$\$<
 
 As noted in the C implementation for the [[Sparkline in unicode]] task, unicode output is reliable only on Linux/Unix systems. This implementation thus has compiler directives to check whether the underlying system is Windows or Linux, if Windows, only letters are printed, otherwise Unicode output is displayed. 9 rows are displayed.
 
-```C>#include<stdlib.h
+```C
+#include<stdlib.h>
 
 #include<locale.h>
 #include<wchar.h>
@@ -1125,7 +1126,8 @@ generateposition() = ['♘', '♗', '♗', '♖', '♕', '♔', '♘', '♖']
 ## Kotlin
 
 
-```scala>object Chess960 : Iterable<String
+```scala
+object Chess960 : Iterable<String>
  {
     override fun iterator() = patterns.iterator()
 
@@ -1611,7 +1613,8 @@ Get-RandomChess960Start
 This uses indexing rather than regexps. Rooks and bishops are in upper and lower case to start with so they can be individually indexed to apply the constraints. This would lead to some duplication of start positions if not for the use of a set comprehension to uniquify the, (upper-cased), start positions.
 
 
-```python>>>
+```python
+>>>
  from itertools import permutations
 >>> pieces = 'KQRrBbNN'
 >>> starts = {''.join(p).upper() for p in permutations(pieces)
@@ -1631,7 +1634,8 @@ This uses indexing rather than regexps. Rooks and bishops are in upper and lower
 
 This uses regexps to filter permutations of the start position pieces rather than indexing.
 
-```python>>>
+```python
+>>>
  import re
 >>> pieces = 'KQRRBBNN'
 >>> bish = re.compile(r'B(|..|....|......)B').search

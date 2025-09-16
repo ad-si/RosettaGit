@@ -360,7 +360,8 @@ The output on Lenna is:
 
 based upon C version, using Qt 4.4
 
-```Cpp>#include <QImage
+```Cpp
+#include <QImage>
 
 #include <cstdlib>
 #include <QColor>

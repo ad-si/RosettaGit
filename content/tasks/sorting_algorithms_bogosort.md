@@ -1086,7 +1086,8 @@ feature {NONE}
 		end
 
 end
-</lang >
+
+``` >
 TEST:
 
 ```Eiffel

@@ -1323,7 +1323,8 @@ console.log arr.join "."
 ###  Script Based CFML
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   wordList = "Hello,How,Are,You,Today";
   splitList = replace( wordList, ",", ".", "all" );

@@ -2072,7 +2072,8 @@ You got it!
 ## JavaScript
 
 
-```html4strict><p>Pick a number between 1 and 100.</p
+```html4strict
+<p>Pick a number between 1 and 100.</p>
 
 <form id="guessNumber">
     <input type="text" name="guess">
@@ -2108,7 +2109,9 @@ document.getElementById('guessNumber').onsubmit = verify;
 ```
 
 
-```html4strict></script></lang
+```html4strict
+</script>>
+```
 
 
 

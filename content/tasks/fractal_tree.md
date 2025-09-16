@@ -1377,7 +1377,8 @@ public class FractalTree extends JFrame {
 
 Implementation using HTML5 canvas element to draw tree structure.
 
-```JavaScript><html
+```javascript
+<html
 
 <body>
 <canvas id="canvas" width="600" height="500"></canvas>

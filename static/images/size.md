@@ -465,7 +465,8 @@ Start world = fileSize "input.txt" world
 ## ColdFusion
 
 
-```ColdFusion><cfscript
+```ColdFusion
+<cfscript>
 
   localFile = getFileInfo(expandpath("input.txt"));
   rootFile = getFileInfo("/input.txt");
@@ -568,10 +569,8 @@ end.
 
 ## E
 
-
-
-```e>for file in [<file:input.txt
-, <file:///input.txt>] {
+```e
+for file in [<file:input.txt>, <file:///input.txt>] {
   println(`The size of $file is ${file.length()} bytes.`)
 }
 ```
@@ -1745,7 +1744,8 @@ size? http://rosettacode.org
 ## Red
 
 
-```Red>>
+```Red
+>>
  size? %input.txt
 == 39244
 >> size? %/c/input.txt

@@ -362,7 +362,9 @@ void main() {
 
 Assuming unicode support on the terminal
 
-```dc>49827 P</lang
+```dc
+49827 P>
+```
 
 
 
@@ -839,7 +841,9 @@ say 0xffe1.chr;
 
 Provided the system encoding has a “£” symbol in it, this works:
 
-```tcl>puts \u00a3</lang
+```tcl
+puts \u00a3>
+```
 
 Tcl can output all unicode characters in the BMP, but only if the consumer of the output (terminal, etc.) is able to understand those characters in its current encoding will the output actually make sense. Strictly, this is not a limitation of Tcl but of the environment in which it is placed.
 

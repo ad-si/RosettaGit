@@ -121,7 +121,9 @@ End
 =
 
 
-```locobasic>10 CLEAR INPUT</lang
+```locobasic
+10 CLEAR INPUT>
+```
 
 
 (Only available in BASIC 1.1 though, i.e. not on the CPC 464.)
@@ -671,7 +673,9 @@ Using <tt>stty</tt> to get the terminal into raw mode.
 
 This will work for Regina:
 
-```rexx>call dropbuf</lang
+```rexx
+call dropbuf
+```
 
 This will work for CMS REXX, PC/REXX, Personal REXX, and TSO REXX:
 

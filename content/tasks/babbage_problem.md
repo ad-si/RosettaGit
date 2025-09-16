@@ -4029,7 +4029,8 @@ babbage(current) :=
 
 
 {{out}}
-<pre style="height: 15ex; overflow: scroll">
+
+```txt
 cmd:> babbage.exe
 25264
 

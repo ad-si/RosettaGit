@@ -177,7 +177,8 @@ retq
 
 The 64-bit "wrapper code" used by the PicoLisp and Go implementations have the parameters <code>7</code> and <code>12</code> baked into it, so I opted for a pure 64-bit implementation rather than manipulating the 64-bit stack to support the 32-bit instructions.
 
-```COBOL>       >
+```COBOL
+       >>
 SOURCE FORMAT IS FIXED
        IDENTIFICATION DIVISION.
        PROGRAM-ID. MC.

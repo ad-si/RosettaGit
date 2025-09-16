@@ -1201,7 +1201,8 @@ var isOrderedSet = list.toSet().order().toList() == list
 ## Haskell
 
 
-```haskell>allEqual :: Eq a =
+```haskell
+allEqual :: Eq a =
  [a] -> Bool
 allEqual xs = and $ zipWith (==) xs (tail xs)
 

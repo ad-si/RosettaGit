@@ -1443,7 +1443,8 @@ shared void run() {
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. run-length-encoding.

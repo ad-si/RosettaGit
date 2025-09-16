@@ -1008,7 +1008,8 @@ Magic constant for n=5: 65
 
 The size, ''n'', is specified by the first value on the stack.
 
-```befunge>500p0
+```befunge
+500p0>
 :::00g%00g\-1-\00g/2*+1+00g%00g*\:00g%v
 @<$<_^#!-*:g00:,+9!%g00:+1.+1+%g00+1+*2/g00\<
 ```
@@ -2223,7 +2224,8 @@ ms=: i:@<.@-: |."0 1&|:^:2 >:@i.@,~
 
 In other words, generate a square of counting integers, like this:
 
-```J>
+```j
+>
 :@i.@,~ 3
 1 2 3
 4 5 6
@@ -3497,7 +3499,9 @@ magicSquare(7)
 
 See [[Magic_squares/Perl|Magic squares/Perl]] for a general magic square generator.
 
-```perl></lang
+```perl
+
+```
 
 
 
@@ -3720,7 +3724,8 @@ The magic number is: 369
 ### Procedural
 
 
-```python>>>
+```python
+>>>
  def magic(n):
     for row in range(1, n + 1):
         print(' '.join('%*i' % (len(str(n**2)), cell) for cell in

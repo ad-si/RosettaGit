@@ -34,7 +34,7 @@ tags = []
 
 ## Description
 
-A [[wp:Magic_square|magic square]] is an '''NxN''' square matrix whose numbers consist of consecutive numbers arranged so that the sum of each row and column, ''and'' both diagonals are equal to the same sum (which is called the ''magic number'' or ''magic constant''). 
+A [[wp:Magic_square|magic square]] is an '''NxN''' square matrix whose numbers consist of consecutive numbers arranged so that the sum of each row and column, ''and'' both diagonals are equal to the same sum (which is called the ''magic number'' or ''magic constant'').
 
 A  magic square of singly even order has a size that is a multiple of 4, plus 2 (e.g. 6, 10, 14). This means that the subsquares have an odd size, which plays a role in the construction.
 
@@ -66,7 +66,8 @@ Create a magic square of 6 x 6.
 The size, ''N'', is specified by the first value on the stack. In the example below it is set to 6, but adequate space has been left in the code to replace that with a larger value if desired.
 
 
-```befunge>6>>>>
+```befunge
+6>>>>>
 :00p:2/vv1:%g01p04:%g00::p03*2%g01/g00::-1_@
 \00g/10g/3*4vv>0g\-1-30g+1+10g%10g*\30g+1+10g%1+ +
 :%4+*2/g01g0<vv4*`\g02\!`\0:-!-g02/2g03g04-3*2\-\3
@@ -96,20 +97,20 @@ Takes number of rows from command line, prints out usage on incorrect invocation
    #include<stdlib.h>
    #include<ctype.h>
    #include<stdio.h>
-   
+
    int** oddMagicSquare(int n) {
         if (n < 3 || n % 2 == 0)
             return NULL;
- 
+
         int value = 0;
         int squareSize = n * n;
         int c = n / 2, r = 0,i;
- 
+
         int** result = (int**)malloc(n*sizeof(int*));
-		
+
 		for(i=0;i<n;i++)
 			result[i] = (int*)malloc(n*sizeof(int));
- 
+
         while (++value <= squareSize) {
             result[r][c] = value;
             if (r == 0) {
@@ -131,22 +132,22 @@ Takes number of rows from command line, prints out usage on incorrect invocation
         }
         return result;
     }
- 
+
     int** singlyEvenMagicSquare(int n) {
         if (n < 6 || (n - 2) % 4 != 0)
             return NULL;
- 
+
         int size = n * n;
         int halfN = n / 2;
         int subGridSize = size / 4, i;
- 
+
         int** subGrid = oddMagicSquare(halfN);
         int gridFactors[] = {0, 2, 3, 1};
         int** result = (int**)malloc(n*sizeof(int*));
-		
+
 		for(i=0;i<n;i++)
 			result[i] = (int*)malloc(n*sizeof(int));
- 
+
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < n; c++) {
                 int grid = (r / halfN) * 2 + (c / halfN);
@@ -154,41 +155,41 @@ Takes number of rows from command line, prints out usage on incorrect invocation
                 result[r][c] += gridFactors[grid] * subGridSize;
             }
         }
- 
+
         int nColsLeft = halfN / 2;
         int nColsRight = nColsLeft - 1;
- 
+
         for (int r = 0; r < halfN; r++)
             for (int c = 0; c < n; c++) {
                 if (c < nColsLeft || c >= n - nColsRight
                         || (c == nColsLeft && r == nColsLeft)) {
- 
+
                     if (c == 0 && r == nColsLeft)
                         continue;
- 
+
                     int tmp = result[r][c];
                     result[r][c] = result[r + halfN][c];
                     result[r + halfN][c] = tmp;
                 }
             }
- 
+
         return result;
     }
-	
+
 	int numDigits(int n){
 		int count = 1;
-		
+
 		while(n>=10){
 			n /= 10;
 			count++;
 		}
-		
+
 		return count;
 	}
-	
+
 	void printMagicSquare(int** square,int rows){
 		int i,j;
-		
+
 		for(i=0;i<rows;i++){
 			for(j=0;j<rows;j++){
 				printf("%*s%d",rows - numDigits(square[i][j]),"",square[i][j]);
@@ -197,11 +198,11 @@ Takes number of rows from command line, prints out usage on incorrect invocation
 		}
 		printf("\nMagic constant: %d ", (rows * rows + 1) * rows / 2);
 	}
-	
+
 	int main(int argC,char* argV[])
 	{
 		int n;
-		
+
 		if(argC!=2||isdigit(argV[1][0])==0)
 			printf("Usage : %s <integer specifying rows in magic square>",argV[0]);
 		else{
@@ -240,13 +241,13 @@ Magic constant: 111
 #include <sstream>
 #include <iomanip>
 using namespace std;
- 
+
 class magicSqr
 {
-public: 
+public:
     magicSqr() { sqr = 0; }
     ~magicSqr() { if( sqr ) delete [] sqr; }
- 
+
     void create( int d ) {
         if( sqr ) delete [] sqr;
         if( d & 1 ) d++;
@@ -261,7 +262,7 @@ public:
         cout << "It's Magic Sum is: " << magicNumber() << "\n\n";
         ostringstream cvr; cvr << sz * sz;
         int l = cvr.str().size();
- 
+
         for( int y = 0; y < sz; y++ ) {
             int yy = y * sz;
             for( int x = 0; x < sz; x++ ) {
@@ -302,23 +303,23 @@ private:
             int row = r * sz;
             for( int c = n; c < sz; c++ ) {
                 int m = sqr[c - n + row];
-                
+
                 sqr[c + row] = m + add1;
                 sqr[c + row + ns] = m + add3;
                 sqr[c - n + row + ns] = m + add2;
             }
         }
 
-        int lc = ( sz - 2 ) / 4, co = sz - ( lc - 1 ); 
+        int lc = ( sz - 2 ) / 4, co = sz - ( lc - 1 );
         for( int r = 0; r < n; r++ ) {
-            int row = r * sz;    
-            for( int c = co; c < sz; c++ ) {    
+            int row = r * sz;
+            for( int c = co; c < sz; c++ ) {
                 sqr[c + row] -= add3;
                 sqr[c + row + ns] += add3;
             }
         }
         for( int r = 0; r < n; r++ ) {
-            int row = r * sz;    
+            int row = r * sz;
             for( int c = 0; c < lc; c++ ) {
                 int cc = c;
                 if( r == lc ) cc++;
@@ -328,15 +329,15 @@ private:
         }
     }
     int magicNumber() { return sz * ( ( sz * sz ) + 1 ) / 2; }
- 
+
     void inc( int& a ) { if( ++a == sz ) a = 0; }
- 
+
     void dec( int& a ) { if( --a < 0 ) a = sz - 1; }
- 
+
     bool checkPos( int x, int y ) { return( isInside( x ) && isInside( y ) && !sqr[sz * y + x] ); }
- 
+
     bool isInside( int s ) { return ( s < sz && s > -1 ); }
- 
+
     int* sqr;
     int sz;
 };
@@ -448,7 +449,7 @@ int[][] magicSquareSinglyEven(const int n) {
                 if (c == 0 && r == nColsLeft) {
                     continue;
                 }
-                
+
                 int tmp = result[r][c];
                 result[r][c] = result[r + halfN][c];
                 result[r + halfN][c] = tmp;
@@ -470,7 +471,7 @@ int[][] magicSquareSinglyEven(const int n) {
 ```elixir
 defmodule Magic_square do
   @lux  %{ L: [4, 1, 2, 3], U: [1, 4, 2, 3], X: [1, 4, 3, 2] }
-  
+
   def singly_even(n) when rem(n-2,4)!=0, do: raise ArgumentError, "must be even, but not divisible by 4."
   def singly_even(2), do: raise ArgumentError, "2x2 magic square not possible."
   def singly_even(n) do
@@ -481,12 +482,12 @@ defmodule Magic_square do
     IO.puts to_string(n, square)
     square
   end
-  
+
   defp odd_magic_square(m) do       # zero beginning, it is 4 multiples.
     for i <- 0..m-1, j <- 0..m-1, into: %{},
         do: {{i,j}, (m*(rem(i+j+1+div(m,2),m)) + rem(i+2*j-5+2*m, m)) * 4}
   end
-  
+
   defp make_lux_matrix(m) do
     center = div(m, 2)
     lux = List.duplicate(:L, center+1) ++ [:U] ++ List.duplicate(:X, m-center-2)
@@ -494,7 +495,7 @@ defmodule Magic_square do
     |> Map.put({center,   center}, :U)
     |> Map.put({center+1, center}, :L)
   end
-  
+
   defp synthesis(m, oms, mat) do
     range = 0..m-1
     Enum.reduce(range, [], fn i,acc ->
@@ -506,7 +507,7 @@ defmodule Magic_square do
       [row0, row1 | acc]
     end)
   end
-  
+
   defp to_string(n, square) do
     format = String.duplicate("~#{length(to_char_list(n*n))}w ", n) <> "\n"
     Enum.map_join(square, fn row ->
@@ -645,7 +646,7 @@ Sub se_magicsq(n As UInteger, filename As String = "")
         Err_msg "Error: value <> magic_sum"
         Exit Sub
     End If
-    
+
     ' printing square's on screen bigger when
     ' n > 19 results in a wrapping of the line
     Print "Single even magic square size: "; n; "*"; n
@@ -817,12 +818,12 @@ func main() {
 
 ```txt
 
-35  1  6 26 19 24 
- 3 32  7 21 23 25 
-31  9  2 22 27 20 
- 8 28 33 17 10 15 
-30  5 34 12 14 16 
- 4 36 29 13 18 11 
+35  1  6 26 19 24
+ 3 32  7 21 23 25
+31  9  2 22 27 20
+ 8 28 33 17 10 15
+30  5 34 12 14 16
+ 4 36 29 13 18 11
 
 Magic constant: 111
 
@@ -999,7 +1000,7 @@ odd =: i:@<.@-: |."0 1&|:^:2 >:@i.@,~
 t =: ((*: * i.@4:) +"0 2 odd)@-:
 l =: (f=:$~ # , #)@((<. , >.)@%&4 # (1: , 0:))
 sh =: <:@-: * (bn=:-: # 2:) #: (2: ^ <.@%&4)
-lm =: sh |."0 1  l 
+lm =: sh |."0 1  l
 rm =: f@bn #: <:@(2: ^ <:@<.@%&4)
 a =: ((-.@lm * {.@t) + lm * {:@t)
 b =: ((-.@rm * 1&{@t) + rm * 2&{@t)
@@ -1140,12 +1141,12 @@ public class MagicSquareSinglyEven {
 
 
 ```txt
-35  1  6 26 19 24 
- 3 32  7 21 23 25 
-31  9  2 22 27 20 
- 8 28 33 17 10 15 
-30  5 34 12 14 16 
- 4 36 29 13 18 11 
+35  1  6 26 19 24
+ 3 32  7 21 23 25
+31  9  2 22 27 20
+ 8 28 33 17 10 15
+30  5 34 12 14 16
+ 4 36 29 13 18 11
 
 Magic constant: 111
 ```
@@ -1295,24 +1296,24 @@ fun magicSquareOdd(n: Int): Array<IntArray> {
                 r = n - 1
                 c++
             }
-        } 
+        }
         else if (c == n - 1) {
             r--
             c = 0
-        } 
+        }
         else if (result[r - 1][c + 1] == 0) {
             r--
             c++
-        } 
+        }
         else r++
     }
     return result
 }
- 
+
 fun magicSquareSinglyEven(n: Int): Array<IntArray> {
     if (n < 6 || (n - 2) % 4 != 0)
         throw IllegalArgumentException("Base must be a positive multiple of 4 plus 2")
-    
+
     val size = n * n
     val halfN = n / 2
     val subSquareSize = size / 4
@@ -1328,19 +1329,19 @@ fun magicSquareSinglyEven(n: Int): Array<IntArray> {
     val nColsLeft = halfN / 2
     val nColsRight = nColsLeft - 1
     for (r in 0 until halfN)
-        for (c in 0 until n) 
-            if (c < nColsLeft || c >= n - nColsRight || (c == nColsLeft && r == nColsLeft)) { 
+        for (c in 0 until n)
+            if (c < nColsLeft || c >= n - nColsRight || (c == nColsLeft && r == nColsLeft)) {
                 if (c == 0 && r == nColsLeft) continue
                 val tmp = result[r][c]
                 result[r][c] = result[r + halfN][c]
                 result[r + halfN][c] = tmp
-            } 
+            }
     return result
 }
 
 fun main(args: Array<String>) {
     val n = 6
-    for (ia in magicSquareSinglyEven(n)) { 
+    for (ia in magicSquareSinglyEven(n)) {
         for (i in ia) print("%2d  ".format(i))
         println()
     }
@@ -1377,7 +1378,9 @@ See [[Magic_squares/Lua]].
 
 See [[Magic_squares/Perl|Magic squares/Perl]] for a general magic square generator.
 
-```perl></lang
+```perl
+
+```
 
 
 
@@ -1435,11 +1438,11 @@ function swap(sequence s, integer x1, y1, x2, y2)
 end function
 
 function se_magicsq(integer n)
- 
+
     if n<6 or mod(n-2,4)!=0 then
         Abort(sprintf("illegal size (%d)",{n}))
     end if
- 
+
     sequence sq = repeat(repeat(0,n),n)
     integer magic_sum = n*(n*n+1)/2,
             sq_d_2 = n/2,
@@ -1448,7 +1451,7 @@ function se_magicsq(integer n)
             x1 = floor(sq_d_2/2)+1, x2,
             y1 = 1, y2,
             r = 1
- 
+
     -- fill pattern a c
     --              d b
     -- main loop for creating magic square in section a
@@ -1483,7 +1486,7 @@ function se_magicsq(integer n)
         end if
         if r>q2 then exit end if
     end while
- 
+
     -- swap left side
     for y1=1 to sq_d_2 do
         y2 = y1+sq_d_2
@@ -1499,7 +1502,7 @@ function se_magicsq(integer n)
     sq = swap(sq, x1,y1, x1,y2)
     x1 = l+1
     sq = swap(sq, x1,y1, x1,y2)
- 
+
     -- swap right side
     for y1=1 to sq_d_2 do
         y2 = y1+sq_d_2
@@ -1507,7 +1510,7 @@ function se_magicsq(integer n)
             sq = swap(sq, x1,y1, x1,y2)
         end for
     end for
- 
+
     -- check columms and rows
     for y1=1 to n do
         r = 0
@@ -1521,7 +1524,7 @@ function se_magicsq(integer n)
             Abort("error: value <> magic_sum")
         end if
     end for
- 
+
     -- check diagonals
     r = 0
     l = 0
@@ -1534,10 +1537,10 @@ function se_magicsq(integer n)
     or l<>magic_sum then
         Abort("error: value <> magic_sum")
     end if
- 
+
     return sq
 end function
- 
+
 pp(se_magicsq(6),{pp_Nest,1,pp_IntFmt,"%3d",pp_StrFmt,1,pp_Pause,0})
 ```
 
@@ -1648,18 +1651,18 @@ stdout.write("Singly Even Magic Square")
 display(build_sems(6))
 
 ```
- 
+
 {{out}}
 
 ```txt
 Singly Even Magic Square - 6 x 6
 
-35 01 06 26 19 24 
-03 32 07 21 23 25 
-31 09 02 22 27 20 
-08 28 33 17 10 15 
-30 05 34 12 14 16 
-04 36 29 13 18 11 
+35 01 06 26 19 24
+03 32 07 21 23 25
+31 09 02 22 27 20
+08 28 33 17 10 15
+30 05 34 12 14 16
+04 36 29 13 18 11
 Magic sum: 111
 ```
 
@@ -1674,7 +1677,7 @@ def odd_magic_square(n)
   n.times.map{|i| n.times.map{|j| n*((i+j+1+n/2)%n) + ((i+2*j-5)%n) + 1} }
 end
 
-def single_even_magic_square(n) 
+def single_even_magic_square(n)
   raise ArgumentError, "must be even, but not divisible by 4." unless (n-2) % 4 == 0
   raise ArgumentError, "2x2 magic square not possible." if n == 2
 
@@ -1735,7 +1738,7 @@ puts to_string(single_even_magic_square(6))
 class Magic_square
   attr_reader :square
   LUX = { L: [[4, 1], [2, 3]], U: [[1, 4], [2, 3]], X: [[1, 4], [3, 2]] }
-  
+
   def initialize(n)
     raise ArgumentError, "must be even, but not divisible by 4." unless (n-2) % 4 == 0
     raise ArgumentError, "2x2 magic square not possible." if n == 2
@@ -1745,11 +1748,11 @@ class Magic_square
     @square = synthesize(oms, mat)
     puts to_s
   end
-  
+
   def odd_magic_square(n)       # zero beginning, it is 4 multiples.
     n.times.map{|i| n.times.map{|j| (n*((i+j+1+n/2)%n) + ((i+2*j-5)%n)) * 4} }
   end
-  
+
   def make_lux_matrix(n)
     center = n / 2
     lux = [*[:L]*(center+1), :U, *[:X]*(n-center-2)]
@@ -1758,7 +1761,7 @@ class Magic_square
     matrix[center+1][center] = :L
     matrix
   end
-  
+
   def synthesize(oms, mat)
     range = 0...@n/2
     range.inject([]) do |matrix,i|
@@ -1770,7 +1773,7 @@ class Magic_square
       matrix << row[0].flatten << row[1].flatten
     end
   end
-  
+
   def to_s
     format = "%#{(@n*@n).to_s.size}d " * @n + "\n"
     @square.map{|row| format % row}.join
@@ -1785,12 +1788,12 @@ sq = Magic_square.new(6).square
 
 ```txt
 
-32 29  4  1 24 21 
-30 31  2  3 22 23 
-12  9 17 20 28 25 
-10 11 18 19 26 27 
-13 16 36 33  5  8 
-14 15 34 35  6  7 
+32 29  4  1 24 21
+30 31  2  3 22 23
+12  9 17 20 28 25
+10 11 18 19 26 27
+13 16 36 33  5  8
+14 15 34 35  6  7
 
 ```
 
@@ -1950,7 +1953,7 @@ class MagicSquareSinglyEven{
       if (n<3 or n%2==0) throw(Exception.ValueError("base must be odd and > 2"));
       value,gridSize,c,r:=0, n*n, n/2, 0;
       result:=n.pump(List(),n.pump(List(),0).copy);  // array[n,n] of zero
- 
+
       while((value+=1)<=gridSize){
 	 result[r][c]=value;
 	 if(r==0){
@@ -1979,7 +1982,7 @@ class MagicSquareSinglyEven{
       }
       nColsLeft,nColsRight:=halfN/2, nColsLeft-1;
       foreach r,c in (halfN,n){
-         if ( c<nColsLeft or c>=(n-nColsRight) or 
+         if ( c<nColsLeft or c>=(n-nColsRight) or
               (c==nColsLeft and r==nColsLeft) ){
 	    if(c==0 and r==nColsLeft) continue;
 	    tmp:=result[r][c];
@@ -1988,7 +1991,7 @@ class MagicSquareSinglyEven{
 	 }
       }
       result
-   }   
+   }
 }
 ```
 
@@ -2001,12 +2004,12 @@ MagicSquareSinglyEven(6).println();
 
 ```txt
 
-35  1  6 26 19 24 
- 3 32  7 21 23 25 
-31  9  2 22 27 20 
- 8 28 33 17 10 15 
-30  5 34 12 14 16 
- 4 36 29 13 18 11 
+35  1  6 26 19 24
+ 3 32  7 21 23 25
+31  9  2 22 27 20
+ 8 28 33 17 10 15
+30  5 34 12 14 16
+ 4 36 29 13 18 11
 
 Magic constant: 111
 

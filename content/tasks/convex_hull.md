@@ -53,7 +53,8 @@ For example, given the points (16,3),  (12,17), (0,6),   (-4,-6), (16,6),  (16,-
 
 ## C
 
-```C>#include <stdbool.h
+```c
+#include <stdbool.h
 
 #include <stdio.h>
 #include <stdlib.h>

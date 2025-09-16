@@ -1655,7 +1655,9 @@ And, to retrieve that value you might use <code>{</code>
 Finally, J manages storage for you, so to delete the array, you could either have the name refer to a new value
 
 
-```j>   array1=: 0</lang
+```j
+   array1=: 0
+```
 
 
 or you could remove the name itself:
@@ -1908,7 +1910,8 @@ CheckArray
 
 This hardly covers the richness and complexity of arrays in Maple, but here goes:
 
-```Maple>
+```maple
+
  a := Array( 1 .. 3, 1 .. 4 ): # initialised to 0s
 > a[1,1] := 1: # assign an element
 > a[2,3] := 4: # assign an element
@@ -2112,7 +2115,8 @@ Being Objective-C derivated from C, the [[Two-dimensional array (runtime)#C|C so
 
 The "OpenStep" frameworks (GNUstep, Cocoa) does not provide a class for multidimensional array; of course it can be implemented in several way (also as a ''wrapper'' for the plain C way of handling arrays). Here I show a straightforward use of the NSMutableArray class.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()

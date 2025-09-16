@@ -30,7 +30,8 @@ Possibilities:
 *  Extract just the task description and language segment
 *  Extract the date the language segment last changed
 :*  The bits between any <nowiki>
-```XYZ>...
+```XYZ
+...>
 ```
 </nowiki
  tags --[[User:Dgamey|Dgamey]] 17:30, 2 May 2011 (UTC)

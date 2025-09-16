@@ -476,7 +476,9 @@ Dictionary<TKey, TValue>
 ```
 
   most of the time, a single T is sufficient e.g.
-```csharp>IPrinter<T></lang
+```csharp
+IPrinter<T>
+```
 
 - postfix type names that inherit from EventArgs, Exception, Attribute and EventHandler e.g. MouseMoveEventArgs<br/>
 - postfix async method names with Async e.g. GetDataAsync()
@@ -859,10 +861,14 @@ Notoriously, the U.S.A.'s first Venus satellite probe was lost due to the differ
 
 ;Quirky response
 In Fortran 77 then
-```fortran>IMPLICIT NONE</lang
+```fortran
+IMPLICIT NONE>
+```
  was available to disable implicit typing and thus evoke "undeclared variable" messages. Prior to this the code could use
 
-```fortran>IMPLICIT LOGICAL</lang
+```fortran
+IMPLICIT LOGICAL>
+```
  in the hope that the compiler would detect an undeclared LOGICAL variable used in a numerical context, and hence report a semantic type error.
 
 
@@ -1637,7 +1643,9 @@ Microsoft was encouraging [https://en.wikipedia.org/wiki/Camel_case camelCase] i
 
 The variable name begins with a prefix and has one or more uppercase inside.
 
-```vb>Dim dblDistance as Double</lang
+```vb
+Dim dblDistance as Double>
+```
 
 '''Hungarian notation:'''
 

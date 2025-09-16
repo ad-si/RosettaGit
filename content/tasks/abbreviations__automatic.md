@@ -55,7 +55,7 @@ the minimum abbreviation length of that list could be automatically (programmati
 
 
 For this task, use the list (below) of the days-of-the-week names that are expressed in about a hundred languages   (note that there is a blank line in the list).
-<pre style="height:45ex">
+```txt
 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -231,7 +231,7 @@ function max(x,y) { return((x > y) ? x : y) }
 ```
 
 {{out}}
-<pre style="height:45ex">
+```txt
  2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -410,7 +410,7 @@ int main() {
 ```
 
 {{out}}
-<pre style="height:45ex"> 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
  2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -569,7 +569,7 @@ namespace Abbreviations {
 ```
 
 {{out}}
-<pre style="height:45ex"> 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djel‰ E_h‰n‰ E_mart‰ E_m‰rkur‰ E_enjte E_premte E_shtun‰
  2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -691,7 +691,7 @@ It uses the standard library split-sequence to split the string into words.
 
 
 {{out}}
-<pre style="height:45ex">2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
 2 Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -839,7 +839,7 @@ void main() {
 ```
 
 {{out}}
-<pre style="height:45ex"> 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
  2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -1089,7 +1089,7 @@ MAIN: abbreviations
 ```
 
 {{out}}
-<pre style="height:45ex">
+```txt
 Min.
 abbr                Days of the week
 
@@ -1446,7 +1446,7 @@ public class Abbreviations {
 ```
 
 {{out}}
-<pre style="height:45ex"> 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
  2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -1736,7 +1736,7 @@ fun main(args: Array<String>) {
 
 
 {{out}}
-<pre style="height:45ex">
+```txt
  2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -1899,7 +1899,7 @@ end
 ```
 
 {{out}}
-<pre style="height:45ex"> 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
  2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -2076,7 +2076,7 @@ class Abbreviations  {
 
 
 {{out}}
-<pre style="height:45ex">
+```txt
 2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -2231,7 +2231,9 @@ sub auto-abbreviate ( Str $string ) {
 ```
 
 {{out}}
-<pre style="height:40ex;overflow:scroll;">1) 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+
+```txt
+1) 2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 2) 2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 3) 4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
 4) 2  Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -2418,7 +2420,7 @@ automatic_abbreviations('daysOfWeek.txt', 7)
 
 
 {{out}}
-<pre style="height:45ex">
+```txt
  2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
  2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
  4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -2585,7 +2587,7 @@ if __name__ == '__main__':
 ```
 
 {{out}}
-<pre style="height:45ex">
+```txt
 2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -2879,7 +2881,7 @@ abb: procedure;  parse arg x;  #=words(x)        /*obtain list of words;  find h
 ```
 
 {{out|output|text=  when using the default input file containing the complete list of words:}}
-<pre style="height:45ex">
+```txt
 minimum
 abbrev                                 days of the week
 ══════ ════════════════════════════════════════════════════════════════════════════════
@@ -3100,7 +3102,7 @@ fn begins_with_num_same_chars(str_a: &str, str_b: &str) -> u32 {
 ```
 
 {{out}}
-<pre style="height:45ex">
+```txt
 2       ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 2       ["Sondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrydag", "Saterdag"]
 4       ["E_djelë", "E_hënë", "E_martë", "E_mërkurë", "E_enjte", "E_premte", "E_shtunë"]
@@ -3254,7 +3256,7 @@ object AbbreviationsAuto extends App {
 ```
 
 {{out}}
-<pre style="height:45ex">    ""
+```txt    ""
   2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
   2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
   4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
@@ -3447,7 +3449,7 @@ End Sub
 ```
 
 {{out}}
-<pre style="height:45ex">2   Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+```txt2   Sunday Monday Tuesday Wednesday Thursday Friday Saturday
 2   Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
 4   E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
 2   Ehud Segno Maksegno Erob Hamus Arbe Kedame
@@ -3766,7 +3768,7 @@ foreach n,s in (nds){ println("%3d  %s".fmt(n,s)); }
 ```
 
 {{out}}
-<pre style="height:45ex">
+```txt
   2  Sunday Monday Tuesday Wednesday Thursday Friday Saturday
   2  Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
   4  E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë

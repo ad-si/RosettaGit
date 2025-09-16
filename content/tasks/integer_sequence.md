@@ -1117,7 +1117,8 @@ while true {
 
 
 
-```e>for i in int
+```e
+for i in int
  0 { println(i) }
 ```
 
@@ -1294,7 +1295,9 @@ Seq.iter (printfn "%d") (integers 1)
 
 lazy sequence of int32 starting from 0
 
-```fsharp>let integers = Seq.initInfinite id</lang
+```fsharp
+let integers = Seq.initInfinite id
+```
 
 
 lazy sequence of int32 starting from n
@@ -1384,7 +1387,8 @@ You can use Java BigInteger via FFI
 
 Since there aren't really libraries in Fish and I wouldn't know how to program arbitarily large integers, so here's an example that just goes on until the interpreter's number limit:
 
-```Fish>0
+```Fish
+0>
 :n1+v
  ^o" "<
 ```
@@ -1791,7 +1795,9 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```lang5>0 do dup . 1 + loop</lang
+```lang5
+0 do dup . 1 + loop>
+```
 
 
 
@@ -2966,7 +2972,9 @@ while (true)
 ## Scala
 
 
-```scala>Stream from 1 foreach println</lang
+```scala
+Stream from 1 foreach println
+```
 
 
 
@@ -3276,7 +3284,8 @@ Terminated by keypress at 0 days, 0 hours, 30 minutes, 12.980 seconds
 ## WDTE
 
 
-```WDTE>let s =
+```WDTE
+let s =
  import 'stream';
 
 s.new 0 (+ 1)

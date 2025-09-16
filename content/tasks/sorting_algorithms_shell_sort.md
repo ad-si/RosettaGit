@@ -2230,7 +2230,8 @@ end %shellSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  shellSort([4 3 1 5 6 2])
 
 ans =
@@ -3249,7 +3250,8 @@ say a;
 
 ## Swift
 
-```swift>func shellsort<T where T : Comparable
+```swift
+func shellsort<T where T : Comparable>
 (inout seq: [T]) {
     var inc = seq.count / 2
     while inc > 0 {

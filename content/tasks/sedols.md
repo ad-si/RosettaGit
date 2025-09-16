@@ -829,7 +829,8 @@ USER>
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. sedol.

@@ -1342,7 +1342,9 @@ Sample runs:
 ## J
 
 '''Solution''':
-```j>    /</lang
+```j
+    /
+```
 
 '''Example''':
 ```j
@@ -1731,7 +1733,8 @@ Maximum             5
 
 The left fold operator in Maple is foldl, and foldr is the right fold operator.
 
-```Maple>
+```maple
+
  nums := seq( 1 .. 10 );
                           nums := 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
@@ -1744,7 +1747,8 @@ The left fold operator in Maple is foldl, and foldr is the right fold operator.
 
 Compute the horner form of a (sorted) polynomial:
 
-```Maple>
+```maple
+
  foldl( (a,b) ->a*T+b, op(map2(op,1,[op( 72*T^5+37*T^4-23*T^3+87*T^2+44*T+29 )])));
                     ((((72 T + 37) T - 23) T + 87) T + 44) T + 29
 ```
@@ -2260,7 +2264,8 @@ true.
 ## Python
 
 
-```python>>>
+```python
+>>
  # Python 2.X
 >>> from operator import add
 >>> listoflists = [['the', 'cat'], ['sat', 'on'], ['the', 'mat']]
@@ -2827,7 +2832,8 @@ End Sub
 Translated from the JavaScript ES6 example with a few modifications.
 
 
-```WDTE>let a =
+```WDTE
+let a =
  import 'arrays';
 let s => import 'stream';
 let str => import 'strings';

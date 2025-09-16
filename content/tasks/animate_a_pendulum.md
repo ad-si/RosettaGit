@@ -1299,7 +1299,8 @@ $endfunction
 ## FBSL
 
 
-```qbasic>#INCLUDE <Include\Windows.inc
+```qbasic
+#INCLUDE <Include\Windows.inc
 
 
 FBSLSETTEXT(ME, "Pendulum")
@@ -2426,7 +2427,8 @@ public class Pendulum extends JPanel implements Runnable {
 {{trans|E}} (plus gratuitous motion blur)
 
 
-```javascript><html><head
+```javascript
+<html><head
 
   <title>Pendulum</title>
 </head><body style="background: gray;">
@@ -2491,7 +2493,8 @@ public class Pendulum extends JPanel implements Runnable {
 ===With &lt;SVG&gt;===
 With some control elements to ease the usage.
 
-```javascript><html
+```javascript
+<html
 
 	<head>
 		<title>Swinging Pendulum Simulation</title>
@@ -4461,7 +4464,8 @@ clear i
 Using the [https://github.com/bethune-bryant/Easel Easel Engine for SequenceL]
 
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl
 ;
 import <Utilities/Conversion.sl>;
 import <Utilities/Math.sl>;

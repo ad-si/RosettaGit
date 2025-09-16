@@ -947,7 +947,8 @@ class FoodBox<T extends Eatable>
 
 Similarly a generic method can constrain its type parameters
 
-```java5>public <T extends Eatable
+```java5
+public <T extends Eatable
  void foo(T x) { }
 // although in this case this is no more useful than just "public void foo(Eatable x)"
 ```
@@ -962,7 +963,8 @@ public class Test{
 
 which has no indication of where <code>T</code> is coming from. This method could be called like this:
 
-```java5>test.<EatableClass
+```java5
+test.<EatableClass
 bar();
 ```
 
@@ -1282,7 +1284,8 @@ Types which are Eatable would have to implement the
 
 Type constraints in type parameters can be made via the <code>:</code> keyword, indicating in this case that the type argument must be a type that is a subtype of <code>id<Eatable></code>.
 
-```objc>@interface FoodBox<T : id<Eatable>
+```objc
+@interface FoodBox<T : id<Eatable>
  : NSObject
 @end
 ```
@@ -1872,7 +1875,8 @@ protocol Eatable {
 Type constraints in type parameters can be made via the <code>:</code> syntax, indicating in this case that the type argument must be a type that is
 a subtype of <code>Eatable</code>.
 
-```swift>struct FoodBox<T: Eatable
+```swift
+struct FoodBox<T: Eatable
  {
     var food: [T]
 }
@@ -1880,7 +1884,8 @@ a subtype of <code>Eatable</code>.
 
 Similarly a generic function or method can constrain its type parameters
 
-```swift>func foo<T: Eatable
+```swift
+func foo<T: Eatable
 (x: T) { }
 // although in this case this is no more useful than just "func foo(x: Eatable)"
 ```

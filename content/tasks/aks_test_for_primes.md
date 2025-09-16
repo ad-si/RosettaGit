@@ -2668,7 +2668,8 @@ end sub
 
 Maple handles algebraic manipulation of polynomials natively.
 
-```Maple>
+```maple
+
  for xpr in seq( expand( (x-1)^p ), p = 0 .. 7 ) do print( xpr ) end:
                                             1
 
@@ -2714,7 +2715,8 @@ prime? := (n::posint) -> n > 1 and {op}( map( modp, [coeffs]( expand( (x-1)^n - 
 
 This agrees with the built-in primality test <code>isprime</code>:
 
-```Maple>
+```maple
+
  evalb( seq( prime?(i), i = 1 .. 1000 ) = seq( isprime( i ), i = 1 .. 1000 ) );
                                           true
 
@@ -2722,7 +2724,8 @@ This agrees with the built-in primality test <code>isprime</code>:
 
 Use <code>prime?</code> with the built-in Maple <code>select</code> procedure to pick off the primes up to 50:
 
-```Maple>
+```maple
+
  select( prime?, [seq](1..50) );
                 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
@@ -4270,7 +4273,7 @@ isAKSp: if z==word(#,words(#))  then return ' is a prime.';  else return " isn't
 {{out|output|text=   for task requirement #2, showing thirty-one expressions using as input:   <tt> -31 </tt>}}
 
 (Shown at five-sixth size.)
-<pre style="font-size:84%">
+```txt
 (x-1)^ 0:  1
 (x-1)^ 1:  x -1
 (x-1)^ 2:  x^2 -2∙x +1
@@ -4346,7 +4349,7 @@ Found  15  primes and the largest coefficient has  15  decimal digits.
 {{out|output|text=   when using the input:   <tt> 500 </tt>}}
 
 (Shown at five-sixth size.)
-<pre style="font-size:84%">
+```txt
 primes:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499
 
 Found  95  primes and the largest coefficient has  150  decimal digits.

@@ -2932,7 +2932,8 @@ See http://www.jsoftware.com/jwiki/Essays/Odometer
 
 ## Java
 
-```java5>public static TreeSet<Long
+```java5
+public static TreeSet<Long
  factors(long n)
 {
  TreeSet<Long> factors = new TreeSet<Long>();
@@ -4615,7 +4616,8 @@ EndIf
 
 Naive and slow but simplest (check all numbers from 1 to n):
 
-```python>>>
+```python
+>>
  def factors(n):
       return [i for i in range(1, n + 1) if not n%i]
 ```
@@ -4623,7 +4625,8 @@ Naive and slow but simplest (check all numbers from 1 to n):
 
 Slightly better (realize that there are no factors between n/2 and n):
 
-```python>>>
+```python
+>>
  def factors(n):
       return [i for i in range(1, n//2 + 1) if not n%i] + [n]
 
@@ -4634,7 +4637,8 @@ Slightly better (realize that there are no factors between n/2 and n):
 
 Much better (realize that factors come in pairs, the smaller of which is no bigger than sqrt(n)):
 
-```python>>>
+```python
+>>
  from math import sqrt
 >>> def factor(n):
       factors = set()
@@ -4818,8 +4822,9 @@ if j*j==x  then  return  a j b                   /*Was  X  a square?   Then inse
                  return  a   b                   /*return the divisors of both lists.   */
 ```
 
-'''output'''   when the input used is:   <tt> -6   200 </tt>
-<pre style="height:65ex">
+Output when the input used is: `-6   200`
+
+```txt
   n    #divisors                           divisors
 ══════ ═════════ ════════════════════════════════════════════════════════════
   -6      [4]    ──►            1 2 3 6
@@ -5477,7 +5482,8 @@ order)."
 Copied from the Python example, but code added to the Integer built in class:
 
 
-```smalltalk>Integer>
+```smalltalk
+Integer>
 factors
 	| a |
 	a := OrderedCollection new.

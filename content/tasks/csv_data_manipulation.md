@@ -3143,7 +3143,8 @@ ExportMatrix("data_out.csv",M,target=csv);
 
 Running this script showing interactive results:
 
-```Maple>
+```maple
+
  M := ImportMatrix("data.csv",source=csv);
                                  ["C1"    "C2"    "C3"    "C4"    "C5"]
                                  [                                    ]
@@ -4284,7 +4285,8 @@ C1,C2,C3,C4,C5,SUM
 ## Red
 
 
-```Red>>
+```Red
+>>
 filein: read/lines %file.csv
 >>data: copy []
 >>foreach item filein [append/only data split item ","]
@@ -4293,7 +4295,8 @@ filein: read/lines %file.csv
 
 
 
-```Red>>
+```Red
+>>
 forall data [either (index? data) = 1[
 	append data/1 "SUM"
 ][
@@ -4303,7 +4306,8 @@ forall data [either (index? data) = 1[
 ```
 
 
-```Red>>
+```Red
+>>
 foreach item data [append item/6 "^/" repeat c 5 [append item/:c ","]]
 >> print data
 C1, C2, C3, C4, C5, SUM

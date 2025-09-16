@@ -2431,7 +2431,8 @@ alert(a(10, x(1), x(-1), x(-1), x(1), x(0)));
 
 Implemented using ES6 syntax
 
-```javascript>var x = n =
+```javascript
+var x = n =>
  () => n;
 
 var a = (k, x1, x2, x3, x4, x5) => {
@@ -2665,7 +2666,8 @@ echo a(10, () => 1, () => -1, () => -1, () => 1, () => 0)
 
 
 =={{header|Objective-C}}==
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef NSInteger (^IntegerBlock)(void);
@@ -2696,7 +2698,8 @@ int main (int argc, const char * argv[]) {
 
 Without ARC, the above should be:
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef NSInteger (^IntegerBlock)(void);
@@ -2727,7 +2730,8 @@ int main (int argc, const char * argv[]) {
 
 without Blocks or ARC:
 
-```objc>@protocol IntegerFun <NSObject
+```objc
+@protocol IntegerFun <NSObject>
 
 -(NSInteger)call;
 @end

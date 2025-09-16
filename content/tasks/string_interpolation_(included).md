@@ -1540,7 +1540,8 @@ Python has more than one inbuilt way of accomplishing the task. The methods have
 
 Using the % [http://docs.python.org/library/stdtypes.html#string-formatting-operations string interpolation operator]:
 
-```python>>>
+```python
+>>>
  original = 'Mary had a %s lamb.'
 >>> extra = 'little'
 >>> original % extra
@@ -1550,7 +1551,8 @@ Using the % [http://docs.python.org/library/stdtypes.html#string-formatting-oper
 
 Using the [http://docs.python.org/library/string.html#string-formatting .format method of strings]:
 
-```python>>>
+```python
+>>>
  original = 'Mary had a {extra} lamb.'
 >>> extra = 'little'
 >>> original.format(**locals())
@@ -1559,7 +1561,8 @@ Using the [http://docs.python.org/library/string.html#string-formatting .format 
 
 Using the format method, but replace by an expressions position as an argument to the format method call instead of by name:
 
-```python>>>
+```python
+>>>
  original = 'Mary had a {0} lamb.'
 >>> extra = 'little'
 >>> original.format(extra)
@@ -1569,7 +1572,8 @@ Using the format method, but replace by an expressions position as an argument t
 
 Using the [http://docs.python.org/library/string.html#template-strings Template] class of the string module:
 
-```python>>>
+```python
+>>>
  from string import Template
 >>> original = Template('Mary had a $extra lamb.')
 >>> extra = 'little'
@@ -1580,7 +1584,8 @@ Using the [http://docs.python.org/library/string.html#template-strings Template]
 
 Using the new [https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498 f-strings] string literal available from Python 3.6:
 
-```python>>>
+```python
+>>>
  extra = 'little'
 >>> f'Mary had a {extra} lamb.'
 'Mary had a little lamb.'

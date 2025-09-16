@@ -1986,7 +1986,8 @@ function init = cellularAutomaton(rule, init, n)
 
 {{out}}
 
-```MATLAB>>
+```matlab
+>
   char(cellularAutomaton(90, ~(-15:15), 15) * 10 + 32)
 ans =
                *

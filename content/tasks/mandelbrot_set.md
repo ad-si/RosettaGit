@@ -1444,7 +1444,8 @@ Using 14-bit fixed point arithmetic for simplicity and portability. It should wo
 X scale is (-2.0, 0.5); Y scale is (-1, 1); Max iterations 94 with the ASCII character set as the "palette".
 
 
-```Befunge>0
+```Befunge
+0>
 :00p58*`#@_0>:01p78vv$$<
 @^+1g00,+55_v# !`\+*9<>4v$
 @v30p20"?~^"< ^+1g10,+*8<$
@@ -1900,7 +1901,8 @@ Here is one file program. It directly creates ppm file.
         }
         fclose(fp);
         return 0;
- }</lang >
+ }
+``` >
 
 
 ### PPM Interactive
@@ -7940,7 +7942,8 @@ Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#mandelbr]
 '''SequenceL Code for Computing and Coloring:'''
 
 
-```sequencel>import <Utilities/Complex.sl
+```sequencel
+import <Utilities/Complex.sl>
 ;
 import <Utilities/Sequence.sl>;
 import <Utilities/Math.sl>;

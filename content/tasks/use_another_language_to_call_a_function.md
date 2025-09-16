@@ -1416,7 +1416,8 @@ Strchr(Vecsmall(apply(k->if(k>96&&k<123,(k-84)%26+97,if(k>64&&k<91,(k-52)%26+65,
 
 PARI's interface for Query()... query.c:
 
-```C>#include <pari/pari.h
+```C
+#include <pari/pari.h>
 
 
 #define PARI_SECRET     "s=\"Urer V nz\";Strchr(Vecsmall(apply(k->if(k>96&&k<123,(k-84)%26+97,if(k>64&&k<91,(k-52)%26+65,k)),Vec(Vecsmall(s)))))"

@@ -1582,7 +1582,8 @@ Bracket string []][][][[] is not OK.
 {{works with|befungee}}
 This code implements the second part of the task: it reads from standard input an arbitrary string of opening and closing brackets, and checks whether it's balanced or not.
 
-```Befunge>v
+```befunge
+v
  "KO TON" ,,,,,,   v
 > ~ : 25*- #v_ $ |                   > 25*, @
                  > "KO" ,,           ^
@@ -3504,7 +3505,9 @@ brackets.sort { a, b ->
 
 
 Output:
-<pre style="height:30ex;overflow:scroll;">balanced:
+
+```txt
+balanced:
 balanced:    []
 unbalanced:  ][
 balanced:    [[]]
@@ -5783,7 +5786,8 @@ Output sample
 ### Procedural
 
 
-```python>>>
+```python
+>>
  def gen(N):
 ...     txt = ['[', ']'] * N
 ...     random.shuffle( txt )
@@ -5821,7 +5825,8 @@ Output sample
 Rather than explicitly track the count, we can just write the per-element test and use stdlib functions to turn it into a whole-sequence test. It's straightforwardly declarative, and hard to get wrong, but whether it's actually easier to understand depends on how familiar the reader is with thinking in `itertools` style.
 
 
-```python>>>
+```python
+>>
  from itertools import accumulate
 >>> from random import shuffle
 >>> def gen(n):
@@ -5856,7 +5861,8 @@ Rather than explicitly track the count, we can just write the per-element test a
 The numpy library gives us a way to write just the elementwise tests and automatically turn them into whole-sequence tests, although it can be a bit clumsy to use for character rather than numeric operations. The simplicity of the final expression probably doesn't make up for all that extra clumsiness in this case.
 
 
-```python>>>
+```python
+>>
  import numpy as np
 >>> from random import shuffle
 >>> def gen(n):
@@ -6556,7 +6562,9 @@ object BalancedBrackets extends App {
 ```
 
 
-<pre style="height:30ex;overflow:scroll">arbitrary random order:
+
+```txt
+arbitrary random order:
 unbalanced: ][[[]][][[]]][][]]]][[]]]][[][]][[]]][[][]]][[[]][[][[]]][[]]]]][][]]][[][]]]][[][[][[][[][][][[][]][][[][[[][]]][[]]]][][]][[][]]][[][][[[][[[][[[[[][[]][[[[[[[][]][[]][]]][[[]][[][[]][][]]
 unbalanced: [[][][[[[][]]][][[][]][][[[]]]][]][]][]][][]][[]]]][[][[[]][][[][[[[[][[][][[]]][]]]
 unbalanced: [[]][][][[[[][][][[[[[[[][[[]]][[[[]]][[]]]][]][]]]][]][]]][]]]]][][][[]]][]][]][]]][[]][][]][]][[[[[[][[[[][[[]][[][[[][[]][]][[[][[][]]][]]][[[[][][[[]][][][[[[]]][]]][][]]]][][][][]][

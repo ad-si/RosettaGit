@@ -2279,7 +2279,8 @@ public class ReversalGame {
 Use <code>knuth_shuffle()</code> function from [[Knuth shuffle#JavaScript|here]].
 
 
-```html4strict><html
+```html4strict
+<html>
 
 <head>
     <title>Number Reversal Game</title>
@@ -2365,7 +2366,8 @@ playGame('start', 'progress', 'score');
 ```
 
 
-```html4strict></script
+```html4strict
+</script>
 
 </body>
 </html>

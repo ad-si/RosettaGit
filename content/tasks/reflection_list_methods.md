@@ -716,7 +716,8 @@ xpcall
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 #import <objc/runtime.h>
 

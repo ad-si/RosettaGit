@@ -420,7 +420,8 @@ Add 2 to 3 (curried): 5
 ## Eero
 
 
-```objc>#import <stdio.h
+```objc
+#import <stdio.h
 
 
 int main()
@@ -440,7 +441,8 @@ int main()
 
 Alternative implementation (there are a few ways to express blocks/lambdas):
 
-```objc>#import <stdio.h
+```objc
+#import <stdio.h
 
 
 int main()
@@ -604,7 +606,8 @@ let addN n = (+) n
 
 
 
-```fsharp>
+```fsharp
+
  let add2 = addN 2;;
 
 val add2 : (int -> int)
@@ -849,7 +852,9 @@ Likewise in Haskell, function type signatures show the currying-based structure 
 \ ->
 ```
 " is Haskell's syntax for anonymous functions, in which the sign
-```haskell>\</lang
+```haskell
+\
+```
  has been chosen for its resemblance to the Greek letter λ (lambda); it is followed by a list of space-separated arguments, and the arrow
 ```haskell
 ->
@@ -895,7 +900,8 @@ In fact, the Haskell definition
 ```
 
 
-```hy>=
+```hy
+=
  (setv add2 (addN 2))
 => (add2 7)
 9
@@ -1205,7 +1211,8 @@ Using a definition of currying that does not imply partial application, only con
 (a,b) => expr_using_a_and_b
 ```
 into a function that takes a series of as many function applications as that function took arguments, e.g.:
-```javascript>a => b =
+```javascript
+a => b =
  expr_using_a_and_b
 ```
 
@@ -1694,7 +1701,8 @@ This is a function that takes a function as a parameter and returns a function t
 
 
 
-```Oforth>2 #+ curry =
+```oforth
+2 #+ curry =
  2+
 5 2+ .
 7 ok
@@ -1879,7 +1887,8 @@ Since Python has had local functions with closures since around 1.0, it's always
 
 
 
-```python> >>
+```python
+ >>
  add2 = addN(2)
  >>> add2
  <function adder at 0x009F1E30>
@@ -1890,7 +1899,8 @@ Since Python has had local functions with closures since around 1.0, it's always
 
 But Python also comes with a function to build partial functions (with any number of positional or keyword arguments bound in) for you. This was originally in a third-party model called functional, but was added to the stdlib functools module in 2.5. Every year or so, someone suggests either moving it into builtins because it's so useful or removing it from the stdlib entirely because it's so easy to write yourself, but it's been in the functools module since 2.5 and will probably always be there.
 
-```python>>>
+```python
+>>
  from functools import partial
 >>> from operator import add
 >>> add2 = partial(add, 2)
@@ -1906,7 +1916,8 @@ functools.partial(<built-in function add>, 2)
 
 But for a true curried function that can take arguments one at a time via normal function calls, you have to do a bit of wrapper work to build a callable object that defers to partial until all of the arguments are available. Because of the Python's dynamic nature and flexible calling syntax, there's no way to do this in a way that works for every conceivable valid function, but there are a variety of ways that work for different large subsets. Or just use a third-party library like [https://toolz.readthedocs.io toolz] that's already done it for you:
 
-```python>>>
+```python
+>>
  from toolz import curry
 >>> import operator
 >>> add = curry(operator.add)

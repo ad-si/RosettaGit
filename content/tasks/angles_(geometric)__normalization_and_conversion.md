@@ -264,7 +264,9 @@ public static class Angles
 ```
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
+
 Angle       Normalized  Unit        Degrees     Gradians    Mils        Radians
 -2          -2          Degrees     -2          -2.2222     -35.5556    -0.0349
 -2          -2          Gradiens    -1.8        -2          -32         -0.0314
@@ -871,7 +873,8 @@ Alternately, implemented as a series of postfix operators:
 ''(Much of the complexity is due to the requirement that negative angles must normalize to a negative number.)''
 
 
-```perl6>sub postfix:<t
+```perl6
+sub postfix:<t
 ( $t ) { my $a = $t % 1 * τ;           $t >=0 ?? $a !! $a - τ }
 sub postfix:<d>( $d ) { my $a = $d % 360 * τ / 360;   $d >=0 ?? $a !! $a - τ }
 sub postfix:<g>( $g ) { my $a = $g % 400 * τ / 400;   $g >=0 ?? $a !! $a - τ }
@@ -1290,7 +1293,9 @@ foreach angle in (T(-2.0,-1, 0, 1, 2, tau, 16, 360.0/tau, 360-1, 400-1, 6400-1, 
 ```
 
 {{out}}
-<pre style="height:45ex">
+
+```txt
+
      Angle Unit         degrees    gradians       mills     radians
 
         -2 degrees            -2     -2.22222     -35.5556   -0.0349066

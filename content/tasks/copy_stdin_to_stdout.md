@@ -253,7 +253,9 @@ perl6 -pe'.lines'
 
 When invoked from a file: Lines are auto-chomped, so need to re-add newlines (hence .say rather than .print)
 
-```perl6>.say for lines</lang
+```perl6
+.say for lines
+```
 
 
 

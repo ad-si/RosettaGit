@@ -1305,7 +1305,9 @@ Some numeric literals are not implemented by the language
 Words consist of an alphabetic character (a-z or A-Z) followed by alphanumeric characters and optionally followed by a sequence of dots or colons.  Words which do not contain . or : can be given definitions by the user.  The special word NB. continues to the end of the line and is ignored (it's a comment) during execution. Words may also contain the underscore character (_) but if there's a trailing underscore, or if there's two adjacent underscores in a word, that has special significance in name lookup.
 
 
-```J>   example=: ARGV NB. example and ARGV are user definable words</lang
+```j
+   example=: ARGV NB. example and ARGV are user definable words>
+```
 
 
 Tokens consist of any other printable character optionally followed by a sequence of dots or colons.  (Tokens which begin with . or : must be preceded by a space character).
@@ -1385,7 +1387,9 @@ Be extremely careful with Unicode escapes. Unicode escapes are special and are s
 However, this leads to many problems:
 * <code>\u000A</code> will become a line return in the code, which will terminate line-end comments:
 
-```java>// hello \u000A this looks like a comment</lang
+```java
+// hello \u000A this looks like a comment
+```
 
 : is a syntax error, because the part after <code>\u000A</code> is on the next line and no longer in the comment
 * <code>\u0022</code> will become a double-quote in the code, which ends / begins a string literal:
@@ -3030,7 +3034,9 @@ Also Search for the alternate names given below.
 ## Scala
 
 The most of Java special characters are available in Scala. The big difference is they are not built in the compiler but defined in the appropriate library of classes. Because operators works on classes they are actual methods of that classes. Example:
-```Scala>val n = 1 + 2</lang
+```scala
+val n = 1 + 2>
+```
 This is interpreted as "1" is of class Int and use the method "+" with parameter "2". (Donn't worry, later this will be unboxed to e.g. native JVM primitives.)
 
 This flexible approach gives the possibility to define and redefine (overridden) operators. Sometimes new are invented but the recommendation is to use this with care.

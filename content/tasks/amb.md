@@ -3019,7 +3019,8 @@ sub test (Str $l, Str $r) {
 {{works with|niecza|2012-02-29}}
 {{broken|Perl 6}}
 
-```perl6>sub infix:<lf
+```perl6
+sub infix:<lf
  ($a,$b) {
     next unless try $a.substr(*-1,1) eq $b.substr(0,1);
     "$a $b";

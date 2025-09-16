@@ -889,7 +889,8 @@ XXXXXXXXX
 The order, N, is specified by the first number on the stack. The upper limit is implementation dependent and is determined by the interpreter's cell size.
 
 
-```befunge>311
+```befunge
+311>
 *#3\>#-:#1_$:00p00g-#@_010p0>:20p10g30v
 >p>40p"#"30g40g*!#v_$48*30g3%1-v^ >$55+,1v>
 0 ^p03/3g03/3g04$_v#!*!-1%3g04!<^_^#- g00 <

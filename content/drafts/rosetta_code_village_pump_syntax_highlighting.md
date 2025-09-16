@@ -287,11 +287,15 @@ Small task: For the C language file the section containing the standard function
 ==Java5 Highlighting==
 The java5 highlighting removes links to classes when generics are specified for them without a space between the class name and the <. Example:
 
-```java5>LinkedList<T></lang
+```java5
+LinkedList<T>
+```
 
 "LinkedList" should be a link. If you add a space the link shows up:
 
-```java5>LinkedList <T></lang
+```java5
+LinkedList <T>
+```
 
 I think a lot of people leave the space out so the highlighting should put a link in with or without the space. --[[User:Mwn3d|Mwn3d]] 12:35, 29 July 2009 (UTC)
 : Should be fixed now --[[User:BenBE|BenBE]] 13:03, 2 January 2010 (UTC)
@@ -308,7 +312,9 @@ The java5 (and java) highlighting doesn't highlight javadoc comments as multi-li
 ::Which style does it use for regular comments? I can copy that and change the color slightly to make sure it looks like there's a little bit of difference. --[[User:Mwn3d|Mwn3d]] 19:23, 7 January 2010 (UTC)
 It also doesn't highlight "import static" lines properly (this should only be in java5:
 
-```java5>import static SomeClass.someMethod;</lang
+```java5
+import static SomeClass.someMethod;
+```
 
 "import" and "static" should both be blue and bold and "SomeClass.someMethod" should be gray, bold, and italic. --[[User:Mwn3d|Mwn3d]] 13:34, 23 September 2009 (UTC)
 : Wasn't supported until now. Added support for import static. Should work now --[[User:BenBE|BenBE]] 13:03, 2 January 2010 (UTC)
@@ -1055,7 +1061,8 @@ $language_data = array(
 Look at this: no recogition of embedded command substitution syntax within the string:
 
 
-```bash># this is <lang bash
+```bash
+# this is <lang bash>
 
 echo "$(foo "$(bar "asdf\"")")"
 ```

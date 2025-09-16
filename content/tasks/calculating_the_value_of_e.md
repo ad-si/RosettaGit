@@ -601,7 +601,8 @@ partial: 2.71828182845904523536028747135266249775724709...0265879514825083711081
 
 {{trans|C}}
 
-```COBOL>       >
+```cobol
+       >
 SOURCE FORMAT IS FIXED
        IDENTIFICATION DIVISION.
        PROGRAM-ID. EULER.
@@ -2290,7 +2291,8 @@ Programming note:   the factorial of the   '''do'''   loop index is calculated b
 
 
 (Shown at three-quarter size.)
-<pre style="font-size:75%;height:55ex">
+
+```txt
       with   2 terms,   0 decimal digits were calculated for   e   (Napier's constant)
       with   3 terms,   1 decimal digits were calculated for   e   (Napier's constant)
       with   4 terms,   2 decimal digits were calculated for   e   (Napier's constant)

@@ -102,7 +102,9 @@ languages = [
 +++
 
 ## Task
-Comma quibbling is a task originally set by Eric Lippert in his [http://blogs.msdn.com/b/ericlippert/archive/2009/04/15/comma-quibbling.aspx blog].
+
+Comma quibbling is a task originally set by Eric Lippert in his
+[http://blogs.msdn.com/b/ericlippert/archive/2009/04/15/comma-quibbling.aspx blog].
 
 
 ### Requirements
@@ -116,21 +118,15 @@ Write a function to generate a string output which is the concatenation of input
 
 
 Test your function with the following series of inputs showing your output here on this page:
-* []                       # (No input words).
-* ["ABC"]
-* ["ABC", "DEF"]
-* ["ABC", "DEF", "G", "H"]
-
-
+- `[]`                       # (No input words).
+- `["ABC"]`
+- `["ABC", "DEF"]`
+- `["ABC", "DEF", "G", "H"]`
 
 Note: Assume words are non-empty strings of uppercase characters for this task.
 
 
-
-
-
 ## 11l
-
 
 ```11l
 F quibble(words)
@@ -151,7 +147,6 @@ print(quibble([‘ABC’, ‘DEF’, ‘G’, ‘H’]))
 {{out}}
 
 ```txt
-
 {}
 {ABC}
 {ABC and DEF}
@@ -1144,7 +1139,8 @@ int main(int argc, char** argv) {
 
 {{works with|OpenCOBOL|2.0}}
 
-```cobol>       >
+```cobol
+       >
 SOURCE FORMAT IS FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. comma-quibbling-test.
@@ -2877,12 +2873,13 @@ Checkit
 ```
 
 {{out}}
-<pre >
+
+```txt
 {}
 {ABC}
 {ABC, DEF}
 {ABC, DEF, G and H}
-</pre >
+```
 
 
 ## Maple
@@ -2906,7 +2903,8 @@ end proc:
 
 Check it on the required inputs:
 
-```Maple>
+```maple
+
  Quibble([]);
                                   "{}"
 
@@ -3409,9 +3407,11 @@ begin
 
 end.
 
-</Lang>
+
+```
 Output:
-<Pre>
+
+```txt
 {}
 {ABC}
 {ABC and DEF}
@@ -3420,7 +3420,7 @@ Output:
 {ABC}
 {ABC and DEF}
 {ABC, DEF, G and H}
-</Pre>
+```txt
 
 
 ## Perl
@@ -3873,7 +3873,8 @@ replace(..) can only replace the first X occurrences not the last
 hence the replace is done on the reverse of the intermediate string
 then reversed back.
 
-```python>>>
+```python
+>>
  def strcat(sequence):
     return '{%s}' % ', '.join(sequence)[::-1].replace(',', 'dna ', 1)[::-1]
 
@@ -3919,7 +3920,8 @@ Input: ['ABC', 'DEF', 'G', 'H'] -> Output: '{ABC, DEF, G and H}'
 ### Python: Functional
 
 
-```python>>>
+```python
+>>
  def quibble(s):
     return ('{' +
                 (', '.join(s[:-1]) + ' and ' if len(s) > 1 else '') +

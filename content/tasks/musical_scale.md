@@ -824,7 +824,8 @@ foreach($tone in $frequencies){
 
 (Windows)
 
-```python>>>
+```python
+>>>
  import winsound
 >>> for note in [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]:
 	winsound.Beep(int(note+.5), 500)	
@@ -1070,7 +1071,8 @@ foreach i {0 2 4 5 7 9 11 12 11 9 7 5 4 2 0} {
 
 ## Ursa
 
-```ursa>decl double<
+```ursa
+decl double<>
  notes
 append 261.63 293.66 329.63 349.23 392.00 440.00 493.88 523.25 notes
 

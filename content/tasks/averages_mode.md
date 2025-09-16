@@ -1100,7 +1100,8 @@ let mode (l:'a seq) =
 
 Example usage:
 
-```fsharp>
+```fsharp
+
  mode ["a"; "b"; "c"; "c"];;
 val it : string list = ["c"]
 > mode ["a"; "b"; "c"; "c";"a"];;
@@ -1862,7 +1863,8 @@ println(modes((1,1,2,4,4)))
 ## Kotlin
 
 
-```scala>fun <T
+```scala
+fun <T
  modeOf(a: Array<T>) {
     val sortedByFreq = a.groupBy { it }.entries.sortedByDescending { it.value.size }
     val maxFreq = sortedByFreq.first().value.size
@@ -2531,7 +2533,8 @@ class Mode {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface NSArray (Mode)
@@ -3019,7 +3022,8 @@ EndProcedure
 The following solutions require that the elements be ''hashable''.
 {{works with|Python|2.5+ and 3.x}}
 
-```python>>>
+```python
+>>
  from collections import defaultdict
 >>> def modes(values):
 	count = defaultdict(int)
@@ -3036,7 +3040,8 @@ The following solutions require that the elements be ''hashable''.
 
 {{works with|Python|2.7+ and 3.1+}}
 
-```python>>>
+```python
+>>
  from collections import Counter
 >>> def modes(values):
 	count = Counter(values)

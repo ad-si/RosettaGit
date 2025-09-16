@@ -2202,7 +2202,8 @@ CRC32 Cecksum [dec] = 1095738169
 [http://docs.python.org/library/zlib.html#zlib.crc32 <code>zlib.crc32</code>] and [http://docs.python.org/library/binascii.html#binascii.crc32 <code>binascii.crc32</code>] give identical results.
 
 
-```python>>>
+```python
+>>
  s = 'The quick brown fox jumps over the lazy dog'
 >>> import zlib
 >>> hex(zlib.crc32(s))

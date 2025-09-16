@@ -2253,7 +2253,8 @@ for (i = 0; i < 100; i++) {
 
 Requires an interpreter with working read-write memory support. Padding the code page with extra blank lines can sometimes help.
 
-```befunge>
+```befunge
+
 "d">:00p1-:>:::9%\9/9+g2%!\:9v
 $.v_^#!$::$_^#`"c":+g00p+9/9\%<
 ::<_@#`$:\*:+55:+1p27g1g+9/9\%9
@@ -2274,7 +2275,8 @@ Just calculates the first 10 perfect squares.
 ### Befunge-98
 *Works with: CCBI 2.1*
 
-```befunge>108p0>:18p;;
+```befunge
+108p0>:18p;;
 :9g!18g9p08g]
 *`!0\|+relet|-1`*aap81::+]
 ;::+1<r]!g9;>$08g1+:08paa[
@@ -3893,7 +3895,9 @@ Definition prisoo cells := prisoo' cells 1 0 nil.
 
 Unit test:
 
-```coq>Goal prison 100 = prisoo 100. compute. reflexivity. Qed.</lang
+```coq
+Goal prison 100 = prisoo 100. compute. reflexivity. Qed.
+```
 
 
 Full proof at [https://github.com/spanjel/rosetta github]:
@@ -4120,7 +4124,7 @@ main() {
 ```
 
 
-<pre style="font-size:80%">
+```txt
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX after initialization
 ☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐ after toggling with step = 1
 ☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X☐X after toggling with step = 2
@@ -6758,7 +6762,8 @@ main = print $ filter ((== Open) . snd) $ zip [1 ..] (run 100)
 **optimized**
 (without using square roots)
 
-```haskell>gate :: Eq a =
+```haskell
+gate :: Eq a =
  [a] -> [a] -> [Door]
 gate (x:xs) (y:ys) | x == y  =  Open   : gate xs ys
 gate (x:xs) ys               =  Closed : gate xs ys
@@ -11988,7 +11993,7 @@ puts doors.map.with_index(1){|d,i| "Door #{i} is #{d ? 'open' : 'closed'}."}
 
 
 ### Output
-<pre style="height:30ex;overflow:scroll">
+```txt
 Door 1 is open
 Door 2 is closed
 Door 3 is closed
@@ -13772,7 +13777,7 @@ DICT doors unload door,num,cnt,status
 ```
 
 Output (variable status):
-<pre style="height:30ex;overflow:scroll">
+```txt
  status       = *
            1 = open
            2 = closed
@@ -14584,7 +14589,8 @@ def (doors n)
 ## WDTE
 
 
-```WDTE>let a =
+```WDTE
+let a =
  import 'arrays';
 let s => import 'stream';
 let io => import 'io';
@@ -14859,7 +14865,8 @@ CrLf(0);
 With input document ...
 
 
-```xml><hallway
+```xml
+<hallway>
 
   <door number="1">closed</door>
   <door number="2">closed</door>

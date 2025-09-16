@@ -1560,7 +1560,9 @@ End Namespace
 ```
 
 If not using the latest version of the '''System.Linq''' namespace, you can implement the ''Enumerable.ToHashSet()'' method by adding
-```vbnet>Imports System.Runtime.CompilerServices</lang
+```vbnet
+Imports System.Runtime.CompilerServices
+```
  to the top and this module inside the '''safety''' namespace:
 ```vbnet
     Module Extensions

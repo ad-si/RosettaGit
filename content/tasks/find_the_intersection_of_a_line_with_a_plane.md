@@ -787,7 +787,8 @@ prod3 = prod1 / prod2;
 point = rayPoint - rayVector * prod3;
 ```
 
-```MATLAB>>
+```matlab
+>
  intersectPoint([0 -1 -1], [0 0 10], [0 0 1], [0 0 5])
 
 ans =

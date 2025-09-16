@@ -1140,7 +1140,8 @@ Almost direct copy of the [[Vigenère cipher#Befunge|Vigenère cipher]], althoug
 The text to encrypt is read from stdin, and the key is the first integer on the stack - 11 (<tt>65+</tt>) in the example below.
 
 
-```befunge>65+>>>>10p100p1>:v:+
+```befunge
+65+>>>>10p100p1>:v:+
 #*,#g1#0-#0:#!<<
 "`"::_@#!`\*84:<~<$<^+"A"%*2+9<v"{"\`
 **-"A"-::0\`\55*`+#^_\0g+"4"+4^>\`*48
@@ -1158,7 +1159,8 @@ ESPBFTNVMCZHYQZIUFXAPOZGPCESPWLKJOZRD
 The decrypter is essentially identical, except for a change of sign on the last line.
 
 
-```befunge>65+>>>>10p100p1>:v:+
+```befunge
+65+>>>>10p100p1>:v:+
 #*,#g1#0-#0:#!<<
 "`"::_@#!`\*84:<~<$<^+"A"%*2+9<v"{"\`
 **-"A"-::0\`\55*`+#^_\0g-"4"+4^>\`*48
@@ -1401,7 +1403,9 @@ Give to the program the key and the word to encrypt, each followed by a space.
 Input:
 <!-- Using whitespace syntax highlighting to show the spaces, used by the program to separate arguments -->
 
-```whitespace>10 abc </lang
+```whitespace
+10 abc>
+```
 
 Output:
 
@@ -1411,7 +1415,9 @@ klm
 
 Input:
 
-```whitespace>16 klm </lang
+```whitespace
+16 klm>
+```
 
 Output:
 
@@ -1797,7 +1803,8 @@ The quick brown fox jumped over the lazy dog.
 
 {{works with|OpenCOBOL|2.0}}
 
-```cobol>       >
+```cobol
+       >
 SOURCE FORMAT IS FREE
 PROGRAM-ID. caesar-cipher.
 
@@ -4644,7 +4651,8 @@ method isFalse public static returns boolean
 ```
 
 
-<pre style="height: 60ex; overflow: scroll;">
+
+```txt
 Caesar cipher, key:   1
 The five boxing wizards jump quickly
 Uif gjwf cpyjoh xjabset kvnq rvjdlmz
@@ -6301,7 +6309,8 @@ Decrypted: The five boxing wizards jump quickly
 
 You only have to write an encrypt and decrypt function for characters. The semantics of Normalize Transpose allow those functions to be applied to strings.
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl
 ;
 import <Utilities/Conversion.sl>;
 
@@ -6901,7 +6910,8 @@ test = ("n". <.enc"n",dec"n"+ enc"n"> plaintext)*= nrange/1 25
 ```
 
 {{out}}
-<pre style="overflow: auto; height: 6em;">
+
+```txt
 uif gjwf cpyjoh xjabset kvnq rvjdlmz UIF GJWF CPYJOH XJABSET KVNQ RVJDLMZ
 the five boxing wizards jump quickly THE FIVE BOXING WIZARDS JUMP QUICKLY
 vjg hkxg dqzkpi ykbctfu lwor swkemna VJG HKXG DQZKPI YKBCTFU LWOR SWKEMNA
@@ -6998,7 +7008,8 @@ void main() {
 
 
 {{out}}
-<pre style="overflow: auto; height: 6em;">
+
+```txt
 The quick brown fox jumped over the lazy dog
 Sgd pthbj aqnvm enw itlodc nudq sgd kvyx cnf
 The quick brown fox jumped over the lwzy dog

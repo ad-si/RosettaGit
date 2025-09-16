@@ -64,7 +64,8 @@ I had visited this problem around two weeks before and wrote a solution based on
 
 Today someone made an addition and I glanced through the AWK entry which mentioned swapping. That got me thinking of trying swapping  characters and the first result of note that I came up with was:
 
-```python>>>
+```python
+>>>
  def bs(w):
 	w2 = list(w)
 	rangew = range(len(w))
@@ -94,7 +95,8 @@ a ('a', 1)
 I then thought that for better results I needed to go through the swapping twice; then multiple times - but that might loop forever so I added n, the maximum times through the for loops.
 The condition on when to swap needed refinement too (- I never did check if this refinement would work without the need for the outer while loop?):
 
-```python>>>
+```python
+>>>
  def bs(w):
 	w2 = list(w)
 	w2old = []

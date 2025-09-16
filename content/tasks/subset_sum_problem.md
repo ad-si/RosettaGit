@@ -2078,7 +2078,8 @@ for (w,v) in words.iteritems():
 ### Brute force
 
 
-```python>>>
+```python
+>>>
  from itertools import combinations
 >>>
 >>> word2weight = {"alliance": -624, "archbishop": -915, "balm": 397, "bonnet": 452,

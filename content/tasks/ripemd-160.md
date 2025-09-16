@@ -779,7 +779,8 @@ B3BE159860842CEBAA7174C8FFF0AA9E50A5199F
 Build RIPEMD-160 plugin using Linux system library and PARI's function interface.
 
 
-```C>#include <pari/pari.h
+```C
+#include <pari/pari.h>
 
 #include <openssl/ripemd.h>
 

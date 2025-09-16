@@ -95,7 +95,8 @@ def combinations_with_replacement(iterable, r):
 
 We would need to '''change the page name''' to ''Combinations with replacement'', but I think the above Python does what the [[wp:Combination#Example of counting multicombinations|wp entry]] is trying to describe as:
 :
-```python>>>
+```python
+>>>
  from itertools import combinations_with_replacement
 >>> len(list(combinations_with_replacement('1234567890', 3)))
 220

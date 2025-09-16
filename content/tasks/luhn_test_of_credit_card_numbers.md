@@ -1164,7 +1164,8 @@ l(1234567812345670)
 
 
 
-```befunge>v  1
+```befunge
+v  1>
 $0 v   v                                    <
 >&:19+`|v  <            >v      5      6   7      8
 ^  \   <>09p19p>09g+09p:|>2*:19+%19g+19p19+/19g+19p:|
@@ -4463,7 +4464,8 @@ EndIf
 
 The [http://docs.python.org/py3k/library/functions.html#divmod divmod] in the function below conveniently splits a number into its two digits ready for summing:
 
-```python>>>
+```python
+>>>
  def luhn(n):
 	r = [int(ch) for ch in str(n)][::-1]
 	return (sum(r[0::2]) + sum(sum(divmod(d*2,10)) for d in r[1::2])) % 10 == 0
@@ -4483,7 +4485,8 @@ The [http://docs.python.org/py3k/library/functions.html#divmod divmod] in the fu
 or without sum() and divmod() functions:
 
 
-```python>>>
+```python
+>>>
  def vérifLuhn(ch):
   sum = 0
   chParity = len(ch) % 2

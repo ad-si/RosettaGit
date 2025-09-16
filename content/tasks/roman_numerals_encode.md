@@ -3326,7 +3326,9 @@ console.log(toRoman(1666));
 ```
 
 
-```JavaScript>MDCLXVI</lang
+```javascript
+MDCLXVI>
+```
 
 
 
@@ -3537,7 +3539,8 @@ fun Int.toRomanNumeral(): String {
 ## Lasso
 
 
-```Lasso>define br =
+```lasso
+define br =>
  '\r'
 // encode roman
 define encodeRoman(num::integer)::string => {
@@ -4545,7 +4548,8 @@ See [[Roman_numerals/Encode#Delphi | Delphi]]
 
 Roman numbers are built in to Peloton as a particular form of national number. However, for the sake of the task the _RO opcode has been defined.
 
-```sgml><@ DEFUDOLITLIT
+```sgml
+<@ DEFUDOLITLIT>
 _RO|__Transformer|<@ DEFKEYPAR>__NationalNumericID|2</@><@ LETRESCS%NNMPAR>...|1</@></@>
 
 <@ ENU$$DLSTLITLIT>1990,2008,1,2,64,124,1666,10001|,|
@@ -4556,7 +4560,8 @@ _RO|__Transformer|<@ DEFKEYPAR>__NationalNumericID|2</@><@ LETRESCS%NNMPAR>...|1
 
 Same code in padded-out, variable-length English dialect
 
-```sgml><# DEFINE USERDEFINEDOPCODE LITERAL LITERAL
+```sgml
+<# DEFINE USERDEFINEDOPCODE LITERAL LITERAL>
 _RO|__Transformer|<# DEFINE KEYWORD PARAMETER>__NationalNumericID|2</#><# LET RESULT CAST NATIONALNUMBER PARAMETER>...|1</#></#>
 
 <# ENUMERATION LAMBDASPECIFIEDDELMITER LIST LITERAL LITERAL>1990,2008,1,2,64,124,1666,10001|,|
@@ -6288,7 +6293,9 @@ YEAR 1666 => MDCLXVI
 
 in ST/X, integers already know how to print themselves as roman number:
 
-```smalltalk>2013 printRomanOn:Stdout naive:false</lang
+```smalltalk
+2013 printRomanOn:Stdout naive:false>
+```
 
 ```txt
 

@@ -1037,7 +1037,8 @@ sentence contains 3 occurrences of 'be'
 
 Case sensitive matching:
 
-```C>#include <string.h
+```C
+#include <string.h>
 
 #include <stdio.h>
 
@@ -1789,7 +1790,8 @@ end if
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main args =
 
@@ -2370,7 +2372,8 @@ All assertions pass, so there is no output.
 ## Haskell
 
 
-```haskell>
+```haskell
+>
  import Data.List
 > "abc" `isPrefixOf` "abcdefg"
 True

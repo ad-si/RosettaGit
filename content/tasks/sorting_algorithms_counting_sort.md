@@ -1752,7 +1752,8 @@ end %countingSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  countingSort([4 3 1 5 6 2])
 
 ans =
@@ -2508,7 +2509,8 @@ EndProcedure
 
 Follows the spirit of the counting sort but uses Pythons defaultdict(int) to initialize array accesses to zero, and list concatenation:
 
-```python>>>
+```python
+>>>
  from collections import defaultdict
 >>> def countingSort(array, mn, mx):
 	count = defaultdict(int)

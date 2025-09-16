@@ -1053,7 +1053,8 @@ foo"0 {:"1 list
 
 For Java.util.LinkedList<T>, use a for each loop (from [[Loop Structures]]):
 
-```java>LinkedList<Type> list = new LinkedList<Type
+```java
+LinkedList<Type> list = new LinkedList<Type>
 ();
 
 for(Type i: list){
@@ -1505,7 +1506,8 @@ See [[Singly-linked_list#Delphi | Delphi]]
 
 This makes a list of the Chinese Public Holiday and lists them first till last and then last till first.
 
-```sgml><@ LETCNSLSTLIT
+```sgml
+<@ LETCNSLSTLIT>
 public holidays|開國紀念日^和平紀念日^婦女節、兒童節合併假期^清明節^國慶日^春節^端午節^中秋節^農曆除夕</@>
 <@ OMT>From First to Last</@>
 <@ ITEFORSZELSTLIT>public holidays|

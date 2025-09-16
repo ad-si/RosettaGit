@@ -3246,8 +3246,7 @@ Dijkstra`s_algorithm
 
 ```
 
-
-<pre style="height:30ex;overflow:scroll">
+```txt
 Graph:
 a->b  7
 a->c  9
@@ -3296,12 +3295,10 @@ f to c     No Path
 f to d     No Path
 f to e     No Path
 f to f   0 f
-
-</pre >
+```
 
 
 ## Mathematica
-
 
 ```Mathematica
 bd = Graph[{"a" \[DirectedEdge] "b", "a" \[DirectedEdge] "c",
@@ -3321,7 +3318,6 @@ FindShortestPath[bd, "a", "e", Method -> "Dijkstra"]
 
 
 ## Maxima
-
 
 ```maxima
 load(graphs)$

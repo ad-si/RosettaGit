@@ -216,7 +216,9 @@ Suspended
 
 
 Some versions of basic allow line labels to be used. Here we jump to a label:
-```qbasic>GOTO mylabel</lang
+```qbasic
+GOTO mylabel
+```
 
 =
 ## Applesoft BASIC
@@ -1904,7 +1906,9 @@ There is Goto[Label] function in Mathematica. This allows "jumps" to arbitrary l
 
 
 
-```MBS>goto mylabel;</lang
+```mbs
+goto mylabel;
+```
 
 
 =={{header|MK-61/52}}==
@@ -2295,7 +2299,9 @@ A <code>goto</code> statement cannot transfer control:
 In structured programming, the only place where a <code>goto</code> can be is inside <code>on</code> units to handle exceptions without recursion.
 
 
-```pli>on conversion goto restart;</lang
+```pli
+on conversion goto restart;>
+```
 
 
 

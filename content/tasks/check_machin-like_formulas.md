@@ -48,13 +48,13 @@ languages = [
 
 Verify the following Machin-like formulas are correct by calculating the value of '''tan'''   (''right hand side)'' for each equation using exact arithmetic and showing they equal '''1''':
 
-: <math>{\pi\over4} = \arctan{1\over2} + \arctan{1\over3}</math> 
+: <math>{\pi\over4} = \arctan{1\over2} + \arctan{1\over3}</math>
 : <math>{\pi\over4} = 2 \arctan{1\over3} + \arctan{1\over7}</math>
 : <math>{\pi\over4} = 4 \arctan{1\over5} - \arctan{1\over239}</math>
 : <math>{\pi\over4} = 5 \arctan{1\over7} + 2 \arctan{3\over79}</math>
 : <math>{\pi\over4} = 5 \arctan{29\over278} + 7 \arctan{3\over79}</math>
-: <math>{\pi\over4} = \arctan{1\over2} + \arctan{1\over5} + \arctan{1\over8}</math> 
-: <math>{\pi\over4} = 4 \arctan{1\over5} - \arctan{1\over70} + \arctan{1\over99}</math> 
+: <math>{\pi\over4} = \arctan{1\over2} + \arctan{1\over5} + \arctan{1\over8}</math>
+: <math>{\pi\over4} = 4 \arctan{1\over5} - \arctan{1\over70} + \arctan{1\over99}</math>
 : <math>{\pi\over4} = 5 \arctan{1\over7} + 4 \arctan{1\over53} + 2 \arctan{1\over4443}</math>
 : <math>{\pi\over4} = 6 \arctan{1\over8} + 2 \arctan{1\over57} + \arctan{1\over239}</math>
 : <math>{\pi\over4} = 8 \arctan{1\over10} - \arctan{1\over239} - 4 \arctan{1\over515}</math>
@@ -278,10 +278,10 @@ ERROR: pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arctan
 
 (lib 'math)
 (lib 'match)
-(math-precision 1.e-10) 
+(math-precision 1.e-10)
 
 ;; formally derive (tan ..) expressions
-;; copied from Racket 
+;; copied from Racket
 ;; adapted and improved for performance
 
 (define (reduce e)
@@ -293,36 +293,36 @@ ERROR: pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arctan
     [('- (? number? a))               (- a)]
     [('* (? number? a) (? number? b)) (* a b)]
     [('/ (? number? a) (? number? b)) (/ a b)] ; patch
-    
+
     [( '+ a b)                         (reduce `(+ ,(reduce a) ,(reduce b)))]
     [( '- a b)                         (reduce `(- ,(reduce a) ,(reduce b)))]
     [( '- a)                           (reduce `(- ,(reduce a)))]
     [( '* a b)                         (reduce `(* ,(reduce a) ,(reduce b)))]
     [( '/ a b)                         (reduce `(/ ,(reduce a) ,(reduce b)))]
-    
+
     [( 'tan ('arctan a))           (reduce a)]
     [( 'tan ( '- a))               (reduce `(- (tan ,a)))]
 
     ;; x 100 # calls reduction : derive (tan ,a) only once
-    [( 'tan ( '+ a b))            
+    [( 'tan ( '+ a b))
           (let ((alpha (reduce  `(tan ,a))) (beta (reduce  `(tan ,b))))
     	  (reduce `(/ (+ ,alpha ,beta) (- 1 (* ,alpha ,beta)))))]
-                                                          
+
     [( 'tan ( '+ a b c ...))       (reduce `(tan (+ ,a (+ ,b ,@c))))]
-                                                           
-    [( 'tan ( '- a b))            
+
+    [( 'tan ( '- a b))
                 (let ((alpha (reduce  `(tan ,a))) (beta (reduce  `(tan ,b))))
     		(reduce `(/ (- ,alpha ,beta) (+ 1 (* ,alpha ,beta)))))]
 
     ;; add formula for (tan 2 (arctan a)) = 2 a / (1 - a^2))
-    [( 'tan ( '* 2 ('arctan a)))   (reduce `(/ (* 2 ,a) (- 1 (* ,a ,a))))] 
+    [( 'tan ( '* 2 ('arctan a)))   (reduce `(/ (* 2 ,a) (- 1 (* ,a ,a))))]
     [( 'tan ( '* 1 ('arctan a)))   (reduce a)] ; added
-   
+
     [( 'tan ( '* (? number? n) a))
      (cond [(< n 0) (reduce `(- (tan (* ,(- n) ,a))))]
            [(= n 0) 0]
            [(= n 1)    (reduce `(tan ,a))]
-           [(even? n)  
+           [(even? n)
               (let ((alpha (reduce  `(tan (* ,(/ n 2) ,a))))) ;; # calls reduction
     	      (reduce `(/ (* 2 ,alpha) (- 1 (* ,alpha ,alpha)))))]
            [else      (reduce `(tan (+ ,a  (* ,(- n 1) ,a))))])]
@@ -333,7 +333,7 @@ ERROR: pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arctan
 	(if (~= 1 (reduce f))
 		(writeln '👍 f  '⟾ 1 )
 		(writeln '❌ f '➽ (reduce f) ))))
-	
+
 
 ```
 
@@ -356,32 +356,32 @@ ERROR: pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arctan
     (tan (+ (* 22 (arctan 1/28)) (* 2 (arctan 1/443)) (* -5 (arctan 1/1393)) (* -10 (arctan 1/11018))))
     (tan (+ (* 22 (arctan 1/38)) (* 17 (arctan 7/601)) (* 10 (arctan 7/8149))))
     (tan (+ (* 44 (arctan 1/57)) (* 7 (arctan 1/239)) (* -12 (arctan 1/682)) (* 24 (arctan 1/12943))))
-    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
+    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
             (* 44 (arctan 1/5357)) (* 68 (arctan 1/12943))))
-    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
+    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
            (* 44 (arctan 1/5357)) (* 68 (arctan 1/12944))))))
 
 (task)
 
-👍     (tan (+ (arctan 1/2) (arctan 1/3)))     ⟾     1    
-👍     (tan (+ (* 2 (arctan 1/3)) (arctan 1/7)))     ⟾     1    
-👍     (tan (- (* 4 (arctan 1/5)) (arctan 1/239)))     ⟾     1    
-👍     (tan (+ (* 5 (arctan 1/7)) (* 2 (arctan 3/79))))     ⟾     1    
-👍     (tan (+ (* 5 (arctan 29/278)) (* 7 (arctan 3/79))))     ⟾     1    
-👍     (tan (+ (arctan 1/2) (arctan 1/5) (arctan 1/8)))     ⟾     1    
-👍     (tan (+ (* 4 (arctan 1/5)) (* -1 (arctan 1/70)) (arctan 1/99)))     ⟾     1    
-👍     (tan (+ (* 5 (arctan 1/7)) (* 4 (arctan 1/53)) (* 2 (arctan 1/4443))))     ⟾     1    
-👍     (tan (+ (* 6 (arctan 1/8)) (* 2 (arctan 1/57)) (arctan 1/239)))     ⟾     1    
-👍     (tan (+ (* 8 (arctan 1/10)) (* -1 (arctan 1/239)) (* -4 (arctan 1/515))))     ⟾     1    
-👍     (tan (+ (* 12 (arctan 1/18)) (* 8 (arctan 1/57)) (* -5 (arctan 1/239))))     ⟾     1    
-👍     (tan (+ (* 16 (arctan 1/21)) (* 3 (arctan 1/239)) (* 4 (arctan 3/1042))))     ⟾     1    
-👍     (tan (+ (* 22 (arctan 1/28)) (* 2 (arctan 1/443)) (* -5 (arctan 1/1393)) (* -10 (arctan 1/11018))))     ⟾     1    
-👍     (tan (+ (* 22 (arctan 1/38)) (* 17 (arctan 7/601)) (* 10 (arctan 7/8149))))     ⟾     1    
-👍     (tan (+ (* 44 (arctan 1/57)) (* 7 (arctan 1/239)) (* -12 (arctan 1/682)) (* 24 (arctan 1/12943))))     ⟾     1    
-👍     (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
-       (* 44 (arctan 1/5357)) (* 68 (arctan 1/12943))))     ⟾     1    
-❌     (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
-       (* 44 (arctan 1/5357)) (* 68 (arctan 1/12944))))     ➽     0.9999991882257442    
+👍     (tan (+ (arctan 1/2) (arctan 1/3)))     ⟾     1
+👍     (tan (+ (* 2 (arctan 1/3)) (arctan 1/7)))     ⟾     1
+👍     (tan (- (* 4 (arctan 1/5)) (arctan 1/239)))     ⟾     1
+👍     (tan (+ (* 5 (arctan 1/7)) (* 2 (arctan 3/79))))     ⟾     1
+👍     (tan (+ (* 5 (arctan 29/278)) (* 7 (arctan 3/79))))     ⟾     1
+👍     (tan (+ (arctan 1/2) (arctan 1/5) (arctan 1/8)))     ⟾     1
+👍     (tan (+ (* 4 (arctan 1/5)) (* -1 (arctan 1/70)) (arctan 1/99)))     ⟾     1
+👍     (tan (+ (* 5 (arctan 1/7)) (* 4 (arctan 1/53)) (* 2 (arctan 1/4443))))     ⟾     1
+👍     (tan (+ (* 6 (arctan 1/8)) (* 2 (arctan 1/57)) (arctan 1/239)))     ⟾     1
+👍     (tan (+ (* 8 (arctan 1/10)) (* -1 (arctan 1/239)) (* -4 (arctan 1/515))))     ⟾     1
+👍     (tan (+ (* 12 (arctan 1/18)) (* 8 (arctan 1/57)) (* -5 (arctan 1/239))))     ⟾     1
+👍     (tan (+ (* 16 (arctan 1/21)) (* 3 (arctan 1/239)) (* 4 (arctan 3/1042))))     ⟾     1
+👍     (tan (+ (* 22 (arctan 1/28)) (* 2 (arctan 1/443)) (* -5 (arctan 1/1393)) (* -10 (arctan 1/11018))))     ⟾     1
+👍     (tan (+ (* 22 (arctan 1/38)) (* 17 (arctan 7/601)) (* 10 (arctan 7/8149))))     ⟾     1
+👍     (tan (+ (* 44 (arctan 1/57)) (* 7 (arctan 1/239)) (* -12 (arctan 1/682)) (* 24 (arctan 1/12943))))     ⟾     1
+👍     (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
+       (* 44 (arctan 1/5357)) (* 68 (arctan 1/12943))))     ⟾     1
+❌     (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
+       (* 44 (arctan 1/5357)) (* 68 (arctan 1/12944))))     ➽     0.9999991882257442
 
 
 ```
@@ -695,7 +695,7 @@ ForAll([
     [[22, 1/38], [17, 7/601], [10, 7/8149]],
     [[44, 1/57], [7, 1/239], [-12, 1/682], [24, 1/12943]],
     [[88, 1/172], [51, 1/239], [32, 1/682], [44, 1/5357], [68, 1/12943]]], Check);
-    
+
 Check([[88, 1/172], [51, 1/239], [32, 1/682], [44, 1/5357], [68, 1/12944]]);
 ```
 
@@ -1003,7 +1003,7 @@ const testmats = Dict{Vector{Tuple{BigInt, Rational{BigInt}}}, Bool}([
     ([(12, 1//18), (8, 1//57), (-5, 1//239)], true),
     ([(88, 1//172), (51, 1//239), (32, 1//682), (44, 1//5357), (68, 1//12943)], true),
     ([(88, 1//172), (51, 1//239), (32, 1//682), (44, 1//5357), (68, 1//12944)], false)])
- 
+
 
 function runtestmats()
     println("Testing matrices:")
@@ -1016,7 +1016,7 @@ end
 runtestmats()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 Testing matrices:
@@ -1046,7 +1046,7 @@ class BigRational : Comparable<BigRational> {
 
     val num: BigInteger
     val denom: BigInteger
- 
+
     constructor(n: BigInteger, d: BigInteger) {
         require(d != bigZero)
         var nn = n
@@ -1057,7 +1057,7 @@ class BigRational : Comparable<BigRational> {
         else if (dd < bigZero) {
             nn = -nn
             dd = -dd
-        } 
+        }
         val g = nn.gcd(dd)
         if (g > bigOne) {
             nn /= g
@@ -1066,39 +1066,39 @@ class BigRational : Comparable<BigRational> {
         num = nn
         denom = dd
     }
- 
+
     constructor(n: Long, d: Long) : this(BigInteger.valueOf(n), BigInteger.valueOf(d))
- 
-    operator fun plus(other: BigRational) = 
+
+    operator fun plus(other: BigRational) =
         BigRational(num * other.denom + denom * other.num, other.denom * denom)
- 
+
     operator fun unaryMinus() = BigRational(-num, denom)
- 
+
     operator fun minus(other: BigRational) = this + (-other)
- 
+
     operator fun times(other: BigRational) = BigRational(this.num * other.num, this.denom * other.denom)
-  
+
     fun inverse(): BigRational {
         require(num != bigZero)
         return BigRational(denom, num)
     }
- 
+
     operator fun div(other: BigRational) = this * other.inverse()
- 
+
     override fun compareTo(other: BigRational): Int {
         val diff = this - other
         return when {
             diff.num < bigZero -> -1
             diff.num > bigZero -> +1
             else               ->  0
-        } 
+        }
     }
- 
+
     override fun equals(other: Any?): Boolean {
-       if (other == null || other !is BigRational) return false 
+       if (other == null || other !is BigRational) return false
        return this.compareTo(other) == 0
     }
-                         
+
     override fun toString() = if (denom == bigOne) "$num" else "$num/$denom"
 
     companion object {
@@ -1109,13 +1109,13 @@ class BigRational : Comparable<BigRational> {
 
 /** represents a term of the form: c * atan(n / d) */
 class Term(val c: Long, val n: Long, val d: Long) {
- 
+
     override fun toString() = when {
         c ==  1L   -> " + "
         c == -1L   -> " - "
         c <   0L   -> " - ${-c}*"
         else       -> " + $c*"
-    } + "atan($n/$d)"  
+    } + "atan($n/$d)"
 }
 
 val one = BigRational.ONE
@@ -1136,8 +1136,8 @@ fun tanEval(c: Long, f: BigRational): BigRational {
     val a = tanEval(ca, f)
     val b = tanEval(cb, f)
     return (a + b) / (one - (a * b))
-}    
-         
+}
+
 fun main(args: Array<String>) {
     val termsList = listOf(
         listOf(Term(1, 1, 2), Term(1, 1, 3)),
@@ -1164,7 +1164,7 @@ fun main(args: Array<String>) {
         print(f)
         print(terms[0].toString().drop(3))
         for (i in 1 until terms.size) print(terms[i])
-        println(")")     
+        println(")")
     }
 }
 ```
@@ -1206,14 +1206,14 @@ Tan[6 ArcTan[1/8] + 2 ArcTan[1/57] + ArcTan[1/239]] == 1
 Tan[8 ArcTan[1/10] - ArcTan[1/239] - 4 ArcTan[1/515]] == 1
 Tan[12 ArcTan[1/18] + 8 ArcTan[1/57] - 5 ArcTan[1/239]] == 1
 Tan[16 ArcTan[1/21] + 3 ArcTan[1/239] + 4 ArcTan[3/1042]] == 1
-Tan[22 ArcTan[1/28] + 2 ArcTan[1/443] - 5 ArcTan[1/1393] - 
+Tan[22 ArcTan[1/28] + 2 ArcTan[1/443] - 5 ArcTan[1/1393] -
    10 ArcTan[1/11018]] == 1
 Tan[22 ArcTan[1/38] + 17 ArcTan[7/601] + 10 ArcTan[7/8149]] == 1
-Tan[44 ArcTan[1/57] + 7 ArcTan[1/239] - 12 ArcTan[1/682] + 
+Tan[44 ArcTan[1/57] + 7 ArcTan[1/239] - 12 ArcTan[1/682] +
    24 ArcTan[1/12943]] == 1
-Tan[88 ArcTan[1/172] + 51 ArcTan[1/239] + 32 ArcTan[1/682] + 
+Tan[88 ArcTan[1/172] + 51 ArcTan[1/239] + 32 ArcTan[1/682] +
    44 ArcTan[1/5357] + 68 ArcTan[1/12943]] == 1
-Tan[88 ArcTan[1/172] + 51 ArcTan[1/239] + 32 ArcTan[1/682] + 
+Tan[88 ArcTan[1/172] + 51 ArcTan[1/239] + 32 ArcTan[1/682] +
    44 ArcTan[1/5357] + 68 ArcTan[1/12944]] == 1
 ```
 
@@ -1281,39 +1281,39 @@ is(tan(88*atan(1/172)+51*atan(1/239)+32*atan(1/682)+44*atan(1/5357)+68*atan(1/12
 ```
 
 ```txt
-(%i2) 
+(%i2)
 (%o2)                                true
-(%i3) 
+(%i3)
 (%o3)                                true
-(%i4) 
+(%i4)
 (%o4)                                true
-(%i5) 
+(%i5)
 (%o5)                                true
-(%i6) 
+(%i6)
 (%o6)                                true
-(%i7) 
+(%i7)
 (%o7)                                true
-(%i8) 
+(%i8)
 (%o8)                                true
-(%i9) 
+(%i9)
 (%o9)                                true
-(%i10) 
+(%i10)
 (%o10)                               true
-(%i11) 
+(%i11)
 (%o11)                               true
-(%i12) 
+(%i12)
 (%o12)                               true
-(%i13) 
+(%i13)
 (%o13)                               true
-(%i14) 
+(%i14)
 (%o14)                               true
-(%i15) 
+(%i15)
 (%o15)                               true
-(%i16) 
+(%i16)
 (%o16)                               true
-(%i17) 
+(%i17)
 (%o17)                               true
-(%i18) 
+(%i18)
 (%o18)                               false
 ```
 
@@ -1543,7 +1543,8 @@ Error: [[88, 1/172], [51, 1/239], [32, 1/682], [44, 1/5357], [68, 1/12944]]
 ## Perl
 
 
-```Perl>use Math::BigRat try=
+```perl
+use Math::BigRat try=
 "GMP";
 
 sub taneval {
@@ -1873,13 +1874,13 @@ from pprint import pprint as pp
 
 
 equationtext = '''\
-  pi/4 = arctan(1/2) + arctan(1/3) 
+  pi/4 = arctan(1/2) + arctan(1/3)
   pi/4 = 2*arctan(1/3) + arctan(1/7)
   pi/4 = 4*arctan(1/5) - arctan(1/239)
   pi/4 = 5*arctan(1/7) + 2*arctan(3/79)
   pi/4 = 5*arctan(29/278) + 7*arctan(3/79)
-  pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8) 
-  pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99) 
+  pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8)
+  pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99)
   pi/4 = 5*arctan(1/7) + 4*arctan(1/53) + 2*arctan(1/4443)
   pi/4 = 6*arctan(1/8) + 2*arctan(1/57) + arctan(1/239)
   pi/4 = 8*arctan(1/10) - arctan(1/239) - 4*arctan(1/515)
@@ -1896,8 +1897,8 @@ def parse_eqn(equationtext=equationtext):
     eqn_re = re.compile(r"""(?mx)
     (?P<lhs> ^ \s* pi/4 \s* = \s*)?             # LHS of equation
     (?:                                         # RHS
-        \s* (?P<sign> [+-])? \s* 
-        (?: (?P<mult> \d+) \s* \*)? 
+        \s* (?P<sign> [+-])? \s*
+        (?: (?P<mult> \d+) \s* \*)?
         \s* arctan\( (?P<numer> \d+) / (?P<denom> \d+)
     )""")
 
@@ -1942,13 +1943,13 @@ if __name__ == '__main__':
 
 
 ```txt
-   OK:   pi/4 = arctan(1/2) + arctan(1/3) 
+   OK:   pi/4 = arctan(1/2) + arctan(1/3)
    OK:   pi/4 = 2*arctan(1/3) + arctan(1/7)
    OK:   pi/4 = 4*arctan(1/5) - arctan(1/239)
    OK:   pi/4 = 5*arctan(1/7) + 2*arctan(3/79)
    OK:   pi/4 = 5*arctan(29/278) + 7*arctan(3/79)
-   OK:   pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8) 
-   OK:   pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99) 
+   OK:   pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8)
+   OK:   pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99)
    OK:   pi/4 = 5*arctan(1/7) + 4*arctan(1/53) + 2*arctan(1/4443)
    OK:   pi/4 = 6*arctan(1/8) + 2*arctan(1/57) + arctan(1/239)
    OK:   pi/4 = 8*arctan(1/10) - arctan(1/239) - 4*arctan(1/515)
@@ -2070,11 +2071,11 @@ tanident_1(88*atan(1/172)  + 51*atan(1/239) +  32*atan(1/682)  +  44*atan(1/5357
     (tan (+ (* 22 (arctan 1/28)) (* 2 (arctan 1/443)) (* -5 (arctan 1/1393)) (* -10 (arctan 1/11018))))
     (tan (+ (* 22 (arctan 1/38)) (* 17 (arctan 7/601)) (* 10 (arctan 7/8149))))
     (tan (+ (* 44 (arctan 1/57)) (* 7 (arctan 1/239)) (* -12 (arctan 1/682)) (* 24 (arctan 1/12943))))
-    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
+    (tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
             (* 44 (arctan 1/5357)) (* 68 (arctan 1/12943))))))
 
 (define wrong-formula
-  '(tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682)) 
+  '(tan (+ (* 88 (arctan 1/172)) (* 51 (arctan 1/239)) (* 32 (arctan 1/682))
            (* 44 (arctan 1/5357)) (* 68 (arctan 1/12944)))))
 
 (displayln "Do all correct formulas reduce to 1?")
@@ -2104,7 +2105,7 @@ Note:   REXX doesn't have many math functions,   so a few of them are included h
 
 Noticed:   the test arguments specified for this Rosetta Code task need only '''nine''' decimal digits for verification,   '''eight''' decimal digits is   ''not''   enough to catch the "bad" equation.   With this in mind, the REXX's   ''decimal digit precision''   was increased to the number of decimal digits specified for the variable   '''pi'''       (which, for these cases, is a bit of overkill, but the difference in execution times were barely noticeable).
 
-An extra formula was added to stress test the near exactness of a value. 
+An extra formula was added to stress test the near exactness of a value.
 
 ```rexx
 /*REXX program  evaluates  some  Machin─like  formulas  and  verifies  their veracity.  */
@@ -2708,13 +2709,13 @@ Text(0, if E=F then "Yes  " else "No   ");
 
 
 char S, SS;  int I;
-[S:= "pi/4 = arctan(1/2) + arctan(1/3) 
+[S:= "pi/4 = arctan(1/2) + arctan(1/3)
 pi/4 = 2*arctan(1/3) + arctan(1/7)
 pi/4 = 4*arctan(1/5) - arctan(1/239)
 pi/4 = 5*arctan(1/7) + 2*arctan(3/79)
 pi/4 = 5*arctan(29/278) + 7*arctan(3/79)
-pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8) 
-pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99) 
+pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8)
+pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99)
 pi/4 = 5*arctan(1/7) + 4*arctan(1/53) + 2*arctan(1/4443)
 pi/4 = 6*arctan(1/8) + 2*arctan(1/57) + arctan(1/239)
 pi/4 = 8*arctan(1/10) - arctan(1/239) - 4*arctan(1/515)
@@ -2738,13 +2739,13 @@ for I:= 1 to 17 do
 
 ```txt
 
-Yes  pi/4 = arctan(1/2) + arctan(1/3) 
+Yes  pi/4 = arctan(1/2) + arctan(1/3)
 Yes  pi/4 = 2*arctan(1/3) + arctan(1/7)
 Yes  pi/4 = 4*arctan(1/5) - arctan(1/239)
 Yes  pi/4 = 5*arctan(1/7) + 2*arctan(3/79)
 Yes  pi/4 = 5*arctan(29/278) + 7*arctan(3/79)
-Yes  pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8) 
-Yes  pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99) 
+Yes  pi/4 = arctan(1/2) + arctan(1/5) + arctan(1/8)
+Yes  pi/4 = 4*arctan(1/5) - arctan(1/70) + arctan(1/99)
 Yes  pi/4 = 5*arctan(1/7) + 4*arctan(1/53) + 2*arctan(1/4443)
 Yes  pi/4 = 6*arctan(1/8) + 2*arctan(1/57) + arctan(1/239)
 Yes  pi/4 = 8*arctan(1/10) - arctan(1/239) - 4*arctan(1/515)

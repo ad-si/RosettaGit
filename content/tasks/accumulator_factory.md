@@ -1953,7 +1953,8 @@ main = print foo
 
 '''Note''' The <code>accumulator</code> function could be written in applicative style:
 
-```haskell>accumulator = newSTRef >=
+```haskell
+accumulator = newSTRef >=
  return . factory
   where factory s n = modifySTRef s (+ n) >> readSTRef s
 ```
@@ -2156,7 +2157,8 @@ function (n) { return sum += n; }
 ### ES6
 
 
-```javascript>let accumulator = sum =
+```javascript
+let accumulator = sum =
  (n => sum += n);
 let x = accumulator(1);
 console.log(x(5));
@@ -2511,7 +2513,8 @@ end proc:
 
 Running this, we get:
 
-```Maple>
+```maple
+
  acc := AccumulatorFactory( 1 ):
 > acc( 5 );
                                      6
@@ -2930,7 +2933,8 @@ bundle Default {
 =={{header|Objective-C}}==
 {{works with|Mac OS X|10.6+}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 typedef double (^Accumulator)(double);
@@ -3542,7 +3546,8 @@ true.
 
 {{works with|Python|2.x/3.x}}
 
-```python>>>
+```python
+>>
  def accumulator(sum):
   def f(n):
     f.sum += n

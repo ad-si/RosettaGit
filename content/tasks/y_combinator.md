@@ -2316,7 +2316,8 @@ def fib := fn f { fn n { if (n == 0) {0} else if (n == 1) {1} else { f(n-1) + f(
 
 Translated from Objective-C example on this page.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef int (^Func)(int)
@@ -3603,7 +3604,8 @@ let
 A minimalist version:
 
 
-```javascript>var Y = f =
+```javascript
+var Y = f =>
  (x => x(x))(y => f(x => y(y)(x)));
 var fac = Y(f => n => n > 1 ? n * f(n-1) : 1);
 ```
@@ -4013,7 +4015,8 @@ factorial = Z (f using nil) -> (n) -> if n == 0 then 1 else n * f n - 1
 =={{header|Objective-C}}==
 {{works with|Mac OS X|10.6+}}{{works with|iOS|4.0+}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef int (^Func)(int);
@@ -4764,7 +4767,8 @@ true.
 ## Python
 
 
-```python>>>
+```python
+>>>
  Y = lambda f: (lambda x: x(x))(lambda y: f(lambda *args: y(y)(*args)))
 >>> fac = lambda f: lambda n: (1 if n<2 else n*f(n-1))
 >>> [ Y(fac)(i) for i in range(10) ]
@@ -5475,7 +5479,8 @@ g.(3)
 
 Using a recursive type:
 
-```swift>struct RecursiveFunc<F
+```swift
+struct RecursiveFunc<F>
  {
   let o : RecursiveFunc<F> -> F
 }
@@ -5906,7 +5911,9 @@ return (
 
 {{out}}
 
-```XQuery>720 8</lang
+```XQuery
+720 8>
+```
 
 
 

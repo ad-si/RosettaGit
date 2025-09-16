@@ -1513,7 +1513,8 @@ There are 5 perfect numbers <= 35,000,000
 
 '''Solution:'''
 
-```j>chowla=:
+```j
+chowla=:
 : -~ >:@#.~/.~&.q:     NB. sum of factors - (n + 1)
 
 intsbelow=: (2 }. i.)"0

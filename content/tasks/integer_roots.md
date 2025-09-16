@@ -1348,7 +1348,7 @@ End Module
 
 ```
 
-<pre style="height:64ex;overflow:scroll">
+```txt
 Integer Cube Root of 8:
 2
 Integer Cube Root of 9:

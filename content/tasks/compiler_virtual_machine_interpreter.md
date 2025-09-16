@@ -1116,7 +1116,8 @@ int main(int argc, char *argv[]) {
 Code by Steve Williams (with changes to work around code highlighting issues). Tested with GnuCOBOL 2.2.
 
 
-```cobol>        >
+```cobol
+        >
 SOURCE FORMAT IS FREE
 identification division.
 *> this code is dedicated to the public domain

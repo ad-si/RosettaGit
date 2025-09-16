@@ -1185,7 +1185,8 @@ let main argv =
 
 Output
 
-```dos>D:\Projects\Rosetta
+```dos
+D:\Projects\Rosetta>
 for /l %i in (1,1,5) do @echo %i >> foo
 
 D:\Projects\Rosetta>Remove_lines_from_a_file.exe foo 1 2
@@ -2044,7 +2045,9 @@ Input:
 
 Call:
 
-```Lasso>./removelines textfile.txt 2 2</lang
+```lasso
+./removelines textfile.txt 2 2>
+```
 
 Output:
 

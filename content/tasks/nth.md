@@ -591,7 +591,8 @@ Press any key to continue . . .
 The bottom section of code contains the "subroutine" that calculates the ordinal of a given number; the top section generates the list of values to test.
 
 
-```befunge>0
+```befunge
+0>
 55*:>1-\:0\`!v
 #v$#$<^:\+*8"}"_
  >35*:>1-\:0\`!v

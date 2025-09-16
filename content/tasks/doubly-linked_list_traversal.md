@@ -2344,7 +2344,8 @@ sy:      say; say left('',30) "───" arg(1) '───'; return
 ```
 
 '''output'''
-<pre style="height:30ex;overflow:scroll">
+
+```txt
                                ─── initializing the list. ───
 
                                ─── building list: Was it a cat I saw ───
@@ -2378,7 +2379,6 @@ Was it a black cat I saw there, in the shadows, stalking its prey (and next meal
 
                                ─── showing list ───
 Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next
-
 ```
 
 

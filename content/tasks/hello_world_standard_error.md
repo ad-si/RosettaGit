@@ -315,7 +315,8 @@ implement main0 () = fprint (stderr_ref, "Goodbye, World!\n")
 requires [http://github.com/tinku99/ahkdll/tree/master AutoHotkey_N]
 implementation.
 
-```autohotkey>; c:\>  autohotkey.exe stderr.ahk 2
+```autohotkey
+; c:\>  autohotkey.exe stderr.ahk 2>
  error.txt
 FileAppend, Goodbye`, World!, stderr   ; requires AutoHotkey_N
 ```
@@ -404,7 +405,8 @@ On the ZX Spectrum, standard error is on stream 1:
 ## Batch File
 
 
-```dos>1
+```dos
+1>
 &2 echo Goodbye, World!
 ```
 
@@ -1249,7 +1251,8 @@ In Objective-C one can use the standard C library and the stderr as in the C lan
 is an NSString object, and it also prepends a timestamp.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()

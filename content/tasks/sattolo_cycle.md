@@ -1231,7 +1231,8 @@ Output:
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSMutableArray (SattoloCycle)
@@ -1769,7 +1770,8 @@ like strings, will throw an exception.
 
 Use example:
 
-```Smalltalk>st
+```Smalltalk
+st>
  #() copy sattoloCycle
 ()
 st> #(10) copy sattoloCycle
@@ -1840,7 +1842,8 @@ for testCase in testCases {
 ## TypeScript
 
 
-```TypeScript>function sattoloCycle<T
+```TypeScript
+function sattoloCycle<T>
 (items: Array<T>): void {
     for (let i = items.length; i--> 1;) {
         const j = Math.floor(Math.random() * i);

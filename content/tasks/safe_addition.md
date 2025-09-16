@@ -1021,7 +1021,8 @@ the user), and division in combination with the remainder.
 Python doesn't include a module that returns an interval for safe addition, however, it does [http://docs.python.org/library/math.html#math.fsum include] a routine for performing additions of floating point numbers whilst preserving precision:
 
 
-```python>>>
+```python
+>>>
  sum([.1, .1, .1, .1, .1, .1, .1, .1, .1, .1])
 0.9999999999999999
 >>> from math import fsum

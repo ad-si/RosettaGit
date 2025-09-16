@@ -250,7 +250,9 @@ Indeed, the "1 .. 10" resp. "7 .. 16" are actually ''types'': they are integer s
 
 A Dynamic Array type in Delphi:
 
-```delphi> foo : array of integer ; // The base index is ZERO</lang
+```delphi
+ foo : array of integer ; // The base index is ZERO>
+```
 
 An "old school" dynamic array in the various flavors of pascal
 

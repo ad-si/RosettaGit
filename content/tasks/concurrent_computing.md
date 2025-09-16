@@ -683,9 +683,7 @@ exit()
 ```
 
 
-
 ## E
-
 
 ```e
 def base := timer.now()
@@ -694,11 +692,10 @@ for string in ["Enjoy", "Rosetta", "Code"] {
 }
 ```
 
-
 Nondeterminism from preemptive concurrency rather than a random number generator:
 
-
-```e>def seedVat := <import:org.erights.e.elang.interp.seedVatAuthor
+```e
+>def seedVat := <import:org.erights.e.elang.interp.seedVatAuthor
 (<unsafe>)
 for string in ["Enjoy", "Rosetta", "Code"] {
    seedVat <- (`
@@ -711,9 +708,7 @@ for string in ["Enjoy", "Rosetta", "Code"] {
 ```
 
 
-
 ## EchoLisp
-
 
 ```scheme
 
@@ -1862,8 +1857,8 @@ $_->join for map {
 
 ## Perl 6
 
-```perl6>my @words = <Enjoy Rosetta Code
-;
+```perl6
+my @words = <Enjoy Rosetta Code>;
 @words.race(:batch(1)).map: { sleep rand; say $_ };
 ```
 
@@ -2331,7 +2326,8 @@ List("Enjoy", "Rosetta", "Code").map { x =>
 
 A very basic threading support is provided by the '''Block.fork()''' method:
 
-```ruby>var a = <Enjoy Rosetta Code
+```ruby
+var a = <Enjoy Rosetta Code
 
 
 a.map{|str|

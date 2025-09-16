@@ -95,7 +95,8 @@ I wondered about the accuracy of results after it was queried above and ran the 
 
 I should explain that the first set of results are produced using the Python program from the page which works in double precision floating point, in the idle Python IDE. I then show the calculation of a result using rationals (the fractions module).
 
-```python>>>
+```python
+>>>
  
 ### ============================= RESTART =============================
 

@@ -483,7 +483,8 @@ The Image module contains a loadPPM6 function to load binary PPM images.
 
 
 
-```e>def chr := <import:java.lang.makeCharacter
+```e
+def chr := <import:java.lang.makeCharacter>
 .asChar
 
 def readPPM(inputStream) {

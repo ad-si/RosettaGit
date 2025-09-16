@@ -2349,7 +2349,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  variadicFunction(1,2,3,4,'cat')
      1
 
@@ -2989,7 +2990,8 @@ print_all(*args)
 Python also has keyword arguments were you can add arbitrary ''func('''''keyword1=value1, keyword2=value2 ...''''')'' keyword-value pairs when calling a function.
 This example shows both keyword arguments and positional arguments. The two calls to the function are equivalent. '''*alist''' spreads the members of the list to create positional arguments, and '''**adict''' does similar for the keyword/value pairs from the dictionary.
 
-```python>>>
+```python
+>>>
  def printargs(*positionalargs, **keywordargs):
 	print "POSITIONAL ARGS:\n  " + "\n  ".join(repr(x) for x in positionalargs)
 	print "KEYWORD ARGS:\n  " + '\n  '.join(
@@ -3438,7 +3440,8 @@ lobby printAll, 'Rosetta', 'Code', 'Is', 'Awesome!'.
 
 Using <tt>...</tt> after the type of argument will take in any number of arguments and put them all in one array of the given type with the given name.
 
-```swift>func printAll<T
+```swift
+func printAll<T>
 (things: T...) {
   // "things" is a [T]
   for i in things {

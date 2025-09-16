@@ -500,7 +500,8 @@ Works with 1k of RAM. The word <code>FAST</code> in line 10 shouldn't be taken <
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 munchausen
 FOR i% = 0 TO 5
   FOR j% = 0 TO 5

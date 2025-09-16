@@ -1725,7 +1725,9 @@ Similarly, the jq filter 1 (i.e. the filter that always returns 1) represents th
 
 The exponential power series, Σ (x^i)/i!, can be represented in jq by the filter:
 
-```jq>1/factorial</lang
+```jq
+1/factorial
+```
 
 
 assuming "factorial" is defined in the usual way:

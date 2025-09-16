@@ -670,14 +670,16 @@ Strictly speaking, variables in jq cannot be incremented (in fact, strictly spea
 The Julia documentation on
 [http://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names allowed variable names] explicitly describes the wide variety of Unicode codepoints that are allowed:
 
-```Julia>julia
+```julia
+julia>
  Δ = 1 ; Δ += 1 ; Δ
 2
 ```
 
 The allowed identifiers also include sub/superscripts and combining characters (e.g. accent marks):
 
-```julia>julia
+```julia
+julia>
  Δ̂₂ = Δ^2
 4
 ```
@@ -923,7 +925,8 @@ PARI supports Unicode variable names only insofar as [[#C|C]] does.
 
 2.
 
-```sgml><@ LETVARLIT
+```sgml
+<@ LETVARLIT>
 Δ|1</@>
 <@ ACTICRVAR>Δ</@>
 <@ SAYVAR>Δ</@>
@@ -931,7 +934,8 @@ PARI supports Unicode variable names only insofar as [[#C|C]] does.
 
 Using what Google Translate says is the Traditional Chinese for 'delta'
 
-```sgml><@ LETVARLIT
+```sgml
+<@ LETVARLIT>
 三角洲|1</@>
 <@ ACTICRVAR>三角洲</@>
 <@ SAYVAR>三角洲</@>
@@ -1144,7 +1148,8 @@ Python 3.0 introduces additional characters from outside the ASCII range (see [h
 
 Identifiers are unlimited in length. Case is significant.
 
-```python>>>
+```python
+>>>
  Δx = 1
 >>> Δx += 1
 >>> print(Δx)

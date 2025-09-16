@@ -1988,7 +1988,8 @@ end %gnomeSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  gnomeSort([4 3 1 5 6 2])
 
 ans =
@@ -2842,7 +2843,8 @@ EndProcedure
 ## Python
 
 
-```python>>>
+```python
+>>>
  def gnomesort(a):
 	i,j,size = 1,2,len(a)
 	while i < size:

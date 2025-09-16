@@ -193,7 +193,9 @@ Recursion depth on this system is 524091
 
 The depth of recursion in Algol 68 proper is unlimited.  Particular implementations will reach a limit, if only through exhaustion of storage and/or address space and/or time before power failure.  If not time limited, the depth reached depends very much on what the recursive routine needs to store on the stack, including local variables if any.  The simplest recursive Algol68 program is:
 
-```algol68>PROC recurse = VOID : recurse; recurse</lang
+```algol68
+PROC recurse = VOID : recurse; recurse
+```
 
 This one-liner running under Algol68 Genie and 64-bit Linux reaches a depth of 3535 with the shell's default stack size of 8Mbytes and 28672 when set to 64Mbytes,
 as shown by the following output.  From this we can deduce that Genie does not implement tail recursion.  The --trace option to a68g prints a stack trace when the program crashes; the first two commands indicate the format of the trace, the third counts the depth of recursion with the default stack size and the fourth shows the result of octupling the size of the stack.
@@ -670,7 +672,8 @@ In Befunge, the limit of recursion is essentially the depth of the stack. The pr
 Most interpreters allocate their stack on the global heap, so the size of the stack will depend on available memory, and on a modern system you're likely to run out of patience long before you run out of memory. That said, there have been some interpreters with a fixed stack depth - as low as 199 even - but that isn't a common implementation choice.
 
 
-```befunge>1
+```befunge
+1
 1#:+#.:_@
 ```
 
@@ -2276,7 +2279,8 @@ The recursion limit can be 'get' and 'set' using the "get" and "set" keywords.
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  get(0,'RecursionLimit')
 
 ans =

@@ -407,7 +407,8 @@ In order to get enough precision, the natural logarithm of 2 had to be entered m
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. hickerson-series.

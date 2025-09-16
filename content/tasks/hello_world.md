@@ -1404,7 +1404,8 @@ CRLF
 
 Uncommented:
 
-```bf>++++++++++[>+>+++>++++>+++++++>++++++++>+++++++++
+```bf
+++++++++++[>+>+++>++++>+++++++>++++++++>+++++++++>
 ++
 ++++++++>+++++++++++>++++++++++++<<<<<<<<<-]>>>>+.>>>
 >+..<.<++++++++.>>>+.<<+.<<<<++++.<++.>>>+++++++.>>>.+++.
@@ -1787,7 +1788,8 @@ print "Hello world!"
 ## ColdFusion
 
 
-```coldfusion><cfoutput
+```coldfusion
+<cfoutput>
 Hello world!</cfoutput>
 ```
 
@@ -2513,7 +2515,8 @@ END PROGRAM
 ## Extended Brainfuck
 
 
-```bf>[.
+```bf
+[.>
 ]@Hello world!
 ```
 
@@ -2835,7 +2838,8 @@ init
 ## Gentee
 
 
-```gentee>func hello <main
+```gentee
+func hello <main>
 
 {
    print("Hello world!")
@@ -4148,7 +4152,8 @@ Print["Hello world!"]
 ## MATLAB
 
 
-```MATLAB>>
+```MATLAB
+>>
  disp('Hello world!')
 ```
 
@@ -6837,7 +6842,8 @@ Text(0, "Hello world!
 
 ## XSLT
 
-```xml><xsl:text
+```xml
+<xsl:text>
 Hello world!
 </xsl:text>
 ```

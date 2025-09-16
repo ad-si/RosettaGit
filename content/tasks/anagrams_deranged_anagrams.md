@@ -2142,7 +2142,8 @@ main();
 
 Word file is saved locally because browser won't fetch it cross-site.  Tested on Gecko.
 
-```javascript><html><head><title>Intoxication</title></head
+```javascript
+<html><head><title>Intoxication</title></head
 
 <body><pre id='x'>
 ```
@@ -3487,7 +3488,8 @@ longest.deranged.anagram <- function(dict=puzzlers.dict) {
 {{out}}
 
 
-```R>
+```r
+
  longest.deranged.anagram()
            a          b
 3 excitation intoxicate

@@ -341,7 +341,8 @@ Hello, world!
 =={{Header|BBC BASIC}}==
 The BBC BASIC implementation reads the machine code program as a string from standard input and stores it in an array of signed 32-bit integers. The default size of the array is 256, but other values could easily be substituted. No attempt is made to handle errors arising from invalid Subleq programs.
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 subleq
 DIM memory%(255)
 counter% = 0

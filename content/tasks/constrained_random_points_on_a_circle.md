@@ -2052,7 +2052,8 @@ Output:
 
 JavaScript embedded in HTML, using canvas:
 
-```javascript><html><head><title>Circle</title></head
+```javascript
+<html><head><title>Circle</title></head
 
 <body>
 <canvas id="cv" width="320" height="320"></canvas>
@@ -2360,7 +2361,8 @@ end
 
 Output:
 
-```MATLAB>>
+```matlab
+>
  [x,y] = randomDisc(100);
 >> plot(x,y,'.')
 ```
@@ -3146,7 +3148,8 @@ Repeat: Until WaitWindowEvent()=#PB_Event_CloseWindow
 
 Note that the diagram shows the number of points at any given position (up to a maximum of 9 points).
 
-```python>>>
+```python
+>>
  from collections import defaultdict
 >>> from random import choice
 >>> world = defaultdict(int)
@@ -3195,7 +3198,8 @@ Note that the diagram shows the number of points at any given position (up to a 
 
 If the number of samples is increased to 1100:
 
-```python>>>
+```python
+>>
  for i in range(1000): world[choice(possiblepoints)] += 1
 
 >>> for x in range(-15,16):

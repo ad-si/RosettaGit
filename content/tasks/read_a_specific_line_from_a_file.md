@@ -1887,7 +1887,8 @@ either x [print x] [print "No seventh line"]
 ## Red
 
 
-```Red>>
+```Red
+>>
  x: pick read/lines %file.txt 7
 
 case [
@@ -2374,7 +2375,8 @@ get_nth_line filename 7
 ## Ursa
 
 
-```ursa>decl string<
+```ursa
+decl string<>
  lines
 decl file f
 f.open "filename.txt"

@@ -99,7 +99,8 @@ To demonstrate the calculation, compute the weights and nodes for an 5-point qua
 ## Axiom
 
 Axiom provides Legendre polynomials and related solvers.
-```Axiom>NNI ==
+```axiom
+NNI ==>
  NonNegativeInteger
 RECORD ==> Record(x : List Fraction Integer, w : List Fraction Integer)
 

@@ -1769,12 +1769,16 @@ my_obj#my_meth params
 
 When a method is called, the top of the stack is used as the object on which the method will be applyed :
 
-```Oforth>1.2 sqrt</lang
+```oforth
+1.2 sqrt
+```
 
 
 For class methods, the top of the stack must be a class (which is also an object of Class class) :
 
-```Oforth>Date now</lang
+```oforth
+Date now
+```
 
 
 

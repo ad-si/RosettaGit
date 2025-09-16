@@ -297,7 +297,8 @@ Test failure(s):
 
 
 
-```C>#include <assert.h
+```C
+#include <assert.h>
 
 int IsPalindrome(char *Str);
 
@@ -2572,7 +2573,9 @@ returnClass(tester);
 ```
 
 
-```zkl>zkl paliTest.zkl</lang
+```zkl
+zkl paliTest.zkl>
+```
 
 ```txt
 

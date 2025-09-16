@@ -3818,7 +3818,9 @@ Example:
 
 gives back:
 
-```Mathematica> 340282366920938463463374607431768211456</lang
+```mathematica
+ 340282366920938463463374607431768211456>
+```
 
 
 To check the speed difference between built-in multiplication (which is already arbitrary precision) we multiply two big numbers (2^8000 has '''2409''' digits!) and divide their timings:
@@ -4542,7 +4544,8 @@ if(lm('18446744073709551616','18446744073709551616') == '34028236692093846346337
     echo 'pass!';
   }; // 2^64 * 2^64
 
-</Lang>
+
+```
 
 
 ## PicoLisp

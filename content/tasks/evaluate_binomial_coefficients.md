@@ -961,7 +961,9 @@ void main()
 Demonstration:
 
 
-```dc>5 3lbxp</lang
+```dc
+5 3lbxp>
+```
 
 <tt>10</tt>
 
@@ -1424,7 +1426,8 @@ choose n k = product [k+1..n] `div` product [1..n-k]
 
 
 
-```haskell>
+```haskell
+
  5 `choose` 3
 10
 ```
@@ -1697,7 +1700,8 @@ console.log(binom(5, 3));
 ## jq
 
 
-```jq># nCk assuming n
+```jq
+# nCk assuming n
 = k
 def binomial(n; k):
   if k > n / 2 then binomial(n; n-k)
@@ -2002,7 +2006,8 @@ This is a built-in function in MATLAB called "nchoosek(n,k)". But, this will onl
 
 Solution:
 
-```MATLAB>>
+```matlab
+>
  nchoosek(5,3)
 ans =
     10
@@ -2066,7 +2071,8 @@ end %binomialCoeff
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  binomialCoeff((0:5),(0:5))
 
 ans =
@@ -2418,7 +2424,8 @@ say combinations(5, 3).elems;
 This method is efficient, as Perl 6 will not actually compute each element of the list, since it actually uses an iterator with a defined <tt>count-only</tt> method.  Such method performs computations in a way similar to the following infix operator:
 
 
-```perl6>sub infix:<choose
+```perl6
+sub infix:<choose
  { [*] ($^n ... 0) Z/ 1 .. $^p }
 say 5 choose 3;
 ```
@@ -2427,14 +2434,16 @@ say 5 choose 3;
 A possible optimization would use a symmetry property of the binomial coefficient:
 
 
-```perl6>sub infix:<choose
+```perl6
+sub infix:<choose
  { [*] ($^n ... 0) Z/ 1 .. min($n - $^p, $p) }
 ```
 
 
 One drawback of this method is that it returns a Rat, not an Int.  So we actually may want to enforce the conversion:
 
-```perl6>sub infix:<choose
+```perl6
+sub infix:<choose
  { ([*] ($^n ... 0) Z/ 1 .. min($n - $^p, $p)).Int }
 ```
 
@@ -3347,7 +3356,9 @@ puts "60_C_30 = [binom 60 30]"
 =={{header|TI-83 BASIC}}==
 Builtin operator nCr gives the number of combinations.
 
-```ti83b>10 nCr 4</lang
+```ti83b
+10 nCr 4>
+```
 
 ```txt
 

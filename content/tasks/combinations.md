@@ -313,7 +313,9 @@ end Test_Combinations;
 The solution is generic the formal parameter is the integer type to make combinations of. The type range determines ''n''.
 In the example it is
 
-```ada>type Five is range 0..4;</lang
+```ada
+type Five is range 0..4;
+```
 
 The parameter ''m'' is the object's constraint.
 When ''n'' < ''m'' the procedure First (selects the first combination) will propagate Constraint_Error.
@@ -2418,8 +2420,8 @@ println "Choose from ${csny}"
 (0..(csny.size())).each { i -> println "Choose ${i}:"; comb(i, csny).each { println it }; println() }
 ```
 
-
-<pre style="height:20ex;overflow:scroll;">Choose from [Crosby, Stills, Nash, Young]
+```txt
+Choose from [Crosby, Stills, Nash, Young]
 Choose 0:
 []
 
@@ -2462,8 +2464,8 @@ println "Choose out of 5 (zero-based):"
 (0..3).each { i -> println "Choose ${i}:"; comb0(i, 5).each { println it }; println() }
 ```
 
-
-<pre style="height:20ex;overflow:scroll;">Choose out of 5 (zero-based):
+```txt
+Choose out of 5 (zero-based):
 Choose 0:
 []
 
@@ -2514,8 +2516,8 @@ println "Choose out of 5 (one-based):"
 (0..3).each { i -> println "Choose ${i}:"; comb1(i, 5).each { println it }; println() }
 ```
 
-
-<pre style="height:20ex;overflow:scroll;">Choose out of 5 (one-based):
+```txt
+Choose out of 5 (one-based):
 Choose 0:
 []
 
@@ -3521,7 +3523,8 @@ comb(3,5)
 
 This is built-in in Maple:
 
-```Maple>
+```maple
+
  combinat:-choose( 5, 3 );
 [[1, 2, 3], [1, 2, 4], [1, 2, 5], [1, 3, 4], [1, 3, 5], [1, 4, 5], [2, 3, 4], [2, 3, 5],
 
@@ -3546,7 +3549,8 @@ This a built-in function in MATLAB called "nchoosek(n,k)". The argument "n" is a
 
 Task Solution:
 
-```MATLAB>>
+```matlab
+>
  nchoosek((0:4),3)
 
 ans =
@@ -4611,7 +4615,8 @@ display-3-comb-5-for-rosetta-code()
 
 Starting from Python 2.6 and 3.0 you have a pre-defined function that returns an iterator. Here we turn the result into a list for easy printing:
 
-```python>>>
+```python
+>>
  from itertools import combinations
 >>> list(combinations(range(5),3))
 [(0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 2, 3), (0, 2, 4), (0, 3, 4), (1, 2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4)]
@@ -4629,7 +4634,8 @@ def comb(m, lst):
 
 Example:
 
-```python>>>
+```python
+>>
  comb(3, range(5))
 [[0, 1, 2], [0, 1, 3], [0, 1, 4], [0, 2, 3], [0, 2, 4], [0, 3, 4], [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
 ```
@@ -5076,7 +5082,8 @@ res0: List[List[Int]] = List(List(0, 1, 2), List(0, 1, 3), List(0, 1, 4), List(0
 ### =Scala REPL=
 
 
-```scala>scala
+```scala
+scala
 (0 to 4).combinations(3).toList
 res0: List[scala.collection.immutable.IndexedSeq[Int]] = List(Vector(0, 1, 2), Vector(0, 1, 3), Vector(0, 1, 4), Vector(0, 2, 3), Vector(0, 2, 4), Vector(0, 3, 4), Vector(1, 2, 3), Vector(1, 2, 4), Vector(1, 3, 4), Vector(2, 3, 4))
 ```

@@ -1274,7 +1274,9 @@ So there is no way to 'null' the variable: 3
 ==={{header|Java History for "any class" using Generics}}===
 This implementation does not allow the History Variable to be "empty". It can be assigned one or multiple "nulls", but it can never have an undefined value (such as being created and not initialized).
 
-```java></lang
+```java
+
+```
 
 Test Program using a "String with History":
 
@@ -2010,7 +2012,8 @@ sin(Pi)
 ## Peloton
 
 
-```sgml>Turn history on <@ DEFHST
+```sgml
+Turn history on <@ DEFHST>
 __on</@>
 Notify Protium we are interested in the variable mv
 <@ DEFHST>mv</@>
@@ -2656,7 +2659,8 @@ class HVar[A](initialValue: A) extends Proxy {
 
 Usage:
 
-```scala>scala
+```scala
+scala>
  val h = new HVar(3)
 h: HVar[Int] = HVar(3)
 

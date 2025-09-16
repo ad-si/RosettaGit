@@ -852,7 +852,8 @@ Rosetta::Code
 
 The '''groovysh''' interpreter requires a command-line interpreter (terminal) environment in which to run. This example was run under the CMD command-line interpreter on Microsoft Windows XP.
 
-```groovy>C:\Apps\groovy
+```groovy
+C:\Apps\groovy>
 groovysh
 Groovy Shell (1.6.2, JVM: 1.6.0_13)
 Type 'help' or '\h' for help.
@@ -1172,21 +1173,23 @@ Command line has a some special commands (we need to use Set to send command to 
 
 We an use ? as a Print command. Any variable, array, module, function, group we make at command line is global.
 
-We can make  functions using edit, so edit f$() open editor and we write these
-<pre >
+We can make functions using edit,
+so edit f$() open editor and we write these
+
+```txt
 >edit f$()
-</pre >
+```
+
 (we see Function F$() at the header of editor)
 
 ```M2000 Interpreter
-
 Read name1$, name2$, sep$
 =name1$+sep$+sep$+name2$
-
 ```
 
 So now we press Esc and return to command line (editor open as a layer, so console has the last state). Using Clipboard we sen unicode string to clipboard
-<pre >
+
+```txt
 >? f$("Rosseta","Code",":")
 Rosseta::Code
 >clipboard f$("Rosseta","Code",":")
@@ -1206,8 +1209,7 @@ Rosseta::Code
 >B$=F$  ' lambda functions as variables.
 >? B$("Rosseta","Code",":")
 Rosseta::Code
-</pre >
-
+```
 
 
 ## M4
@@ -1437,7 +1439,8 @@ ok
 Alternatively you don't need the local variables
 
 
-```Oforth>
+```oforth
+
  : x   dup rot + + + ;
 ok
 > "Rosetta" "Code" ";" x .s
@@ -1756,7 +1759,8 @@ Save workspace image? [y/n/c]: n
 Much like Scheme, Racket features a full-featured REPL:
 
 
-```Racket>oiseau:/tmp
+```Racket
+oiseau:/tmp>
  racket
 Welcome to Racket v5.3.3.5.
 > (define (f string-1 string-2 separator)
@@ -1948,7 +1952,8 @@ One invokes the REPL by just typing "scala", which is either a shell script
 or a batch file depending on one's operating system:
 
 
-```scala>C:\
+```scala
+C:\
 scala
 Welcome to Scala version 2.8.0.r21356-b20100407020120 (Java HotSpot(TM) Client V
 M, Java 1.6.0_05).
@@ -1962,7 +1967,8 @@ res0: java.lang.String = rosetta
 Scala's REPL, starting with version 2.8, offers both auto-completion and alternatives when typing TAB. For instance, to check what methods are available on a String, one
 may do the following:
 
-```scala>scala
+```scala
+scala
  "rosetta".
 
 !=                    ##                    $asInstanceOf
@@ -1991,7 +1997,8 @@ One can use `object`, `class`, `trait`, `case object`,
 `case class`, `def`, `val` and `var` definitions at any point. However,
 `package` and `package object` definitions are not allowed.
 
-```scala>scala
+```scala
+scala
  val str1 = "rosetta"
 str1: java.lang.String = rosetta
 ```
@@ -1999,7 +2006,8 @@ str1: java.lang.String = rosetta
 Using these features, one can build the code for a method by testing it
 part of it individually:
 
-```scala>scala
+```scala
+scala
  val str2 = "code"
 str2: java.lang.String = code
 
@@ -2013,7 +2021,8 @@ res2: java.lang.String = rosetta:code
 If one makes a mistake, the REPL will print an error message, and display the
 point at which the mistake was made.
 
-```scala>scala
+```scala
+scala
  def (str1: String, str2: String, separator: String) =
 <console>:1: error: identifier expected but '(' found.
        def (str1: String, str2: String, separator: String) =
@@ -2024,7 +2033,8 @@ If a definition takes more than a line, the REPL will print an indented "|" sign
 wait for more input. If one wishes to abort a definition, just enter two consecutive
 empty lines.
 
-```scala>scala
+```scala
+scala
  def f(str1: String, str2: String, separator: String) =
      | str1 + separator + str2
 f: (str1: String,str2: String,separator: String)java.lang.String
@@ -2039,7 +2049,8 @@ res4: java.lang.String = code, rosetta
 Also starting with version 2.8, a line starting with a dot will be interpreted
 as a method call on the last result produced.
 
-```scala>scala
+```scala
+scala
  .length
 res5: Int = 13
 
@@ -2050,7 +2061,8 @@ The results are actually displayed with a special function, which pretty prints
 some results, and avoid eagerly evaluating others, where that could cause problems
 (such as infinite collections).
 
-```scala>scala
+```scala
+scala
  Array(1, 2, 3, 4)
 res8: Array[Int] = Array(1, 2, 3, 4)
 

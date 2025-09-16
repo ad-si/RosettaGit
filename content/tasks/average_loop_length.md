@@ -2305,7 +2305,8 @@ fmtD:  parse arg y,d;     d=word(d 4, 1);    y=format(y, , d);     parse var  y 
 ```
 
 {{out|output|text=  when using the default inputs:}}
-<pre style="height:90ex">
+
+```txt
                       40 runs
                  1000000 tests
                       48 digits

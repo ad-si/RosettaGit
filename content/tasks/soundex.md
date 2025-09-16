@@ -4486,7 +4486,8 @@ def soundex(word):
 
 {{out}}
 
-```Python>>>
+```Python
+>>>
 print soundex("soundex")
 S532
 >>>print soundex("example")

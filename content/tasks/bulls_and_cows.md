@@ -6152,7 +6152,8 @@ DEF score$(a$,b$)      ' calculate the numbers of bulls & cows.
   RETURN r$
 END DEF
 END
-</Lang>
+
+```
 
 
 ## Swift

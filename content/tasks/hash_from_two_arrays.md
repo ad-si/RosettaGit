@@ -615,7 +615,8 @@ object = new
 ## ColdFusion
 
 
-```ColdFusion><cfscript
+```ColdFusion
+<cfscript>
 
 function makeHash(keyArray, valueArray) {
   var x = 1;
@@ -1287,7 +1288,8 @@ loop(#array1 -> size) => {
 ## Lang5
 
 
-```lang5>:
+```lang5
+:>
 table  2 compress -1 transpose ;
 ['one 'two 'three 'four] [1 2 3 4] >table
 ```
@@ -1958,7 +1960,8 @@ my %hash = zip @keys, @vals;
 
 Using the "zipwith" meta-operator on the <tt>=></tt> pair composer:
 
-```perl6>my @keys = <a b c d e
+```perl6
+my @keys = <a b c d e>
 ;
 my @values = ^5;
 
@@ -2186,7 +2189,8 @@ for k,v in zip(keys, values):
 
 The original (Ruby) example uses a range of different types as keys. Here is similar in python (run at the shell):
 
-```python>>>
+```python
+>>>
  class Hashable(object):
 	def __hash__(self):
 		return id(self) ^ 0xBEEF
@@ -2723,7 +2727,8 @@ $ ./txr hash-from-two.tl
 Using a sorted file as an associative array (see Creating an associative array for usage.)
 
 
-```bash>cat <<VAL
+```bash
+cat <<VAL>
 p.values
 apple
 boy
@@ -2876,7 +2881,8 @@ Debug.Print dict.Item("Windows")
 ## WDTE
 
 
-```WDTE>let a =
+```wdte
+let a =>
  import 'arrays';
 let s => import 'stream';
 

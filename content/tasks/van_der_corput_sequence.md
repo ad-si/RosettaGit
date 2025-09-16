@@ -109,7 +109,8 @@ This sequence is also a superset of the numbers representable by the "fraction" 
 
 A ''hint'' at a way to generate members of the sequence is to modify a routine used to change the base of an integer:
 
-```python>>>
+```python
+>>>
  def base10change(n, base):
 	digits = []
 	while n:
@@ -2596,7 +2597,8 @@ def vdc(n, base=2):
 
 Base 2 and then 3:
 
-```python>>>
+```python
+>>>
  [vdc(i) for i in range(10)]
 [0, 0.5, 0.25, 0.75, 0.125, 0.625, 0.375, 0.875, 0.0625, 0.5625]
 >>> [vdc(i, 3) for i in range(10)]
@@ -2611,7 +2613,8 @@ Base 2 and then 3:
 We can get the output as rational numbers if we use the fraction module
 (and change its string representation to look like a fraction):
 
-```python>>>
+```python
+>>>
  from fractions import Fraction
 >>> Fraction.__repr__ = lambda x: '%i/%i' % (x.numerator, x.denominator)
 >>> [vdc(i, base=Fraction(2)) for i in range(10)]
@@ -2624,7 +2627,8 @@ We can get the output as rational numbers if we use the fraction module
 
 Sequences for different bases:
 
-```python>>>
+```python
+>>>
  for b in range(3,6):
 	print('\nBase', b)
 	print([vdc(i, base=Fraction(b)) for i in range(10)])

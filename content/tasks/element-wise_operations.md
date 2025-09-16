@@ -2227,7 +2227,8 @@ v = vector * vector;
 ## Python
 
 
-```python>>>
+```python
+>>
  import random
 >>> from operator import add, sub, mul, floordiv
 >>> from pprint import pprint as pp
@@ -2410,7 +2411,8 @@ showMat:  parse arg @, hdr; L=0;  say
 ```
 
 '''output'''
-<pre style="height:63ex">
+
+```txt
 ──M matrix──
  1 2 3
  4 5 6
@@ -2488,7 +2490,8 @@ showMat:  parse arg @, hdr;  say
 ```
 
 '''output'''
-<pre style="height:63ex">
+
+```txt
 ──M matrix──
  1 2 3
  4 5 6

@@ -400,7 +400,8 @@ Points are the same
 ## C
 
 
-```C>#include<stdio.h
+```c
+#include<stdio.h
 
 #include<math.h>
 

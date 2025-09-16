@@ -379,7 +379,9 @@ The original program - from which this is derived - was written by Richard Wendl
 ## Applesoft BASIC
 
 
-```Applesoft BASIC>10 LIST</lang
+```Applesoft BASIC
+10 LIST>
+```
 
 
 
@@ -510,7 +512,9 @@ babel>
 
 For dialects of BASIC that include the <code>LIST</code> command, Quines are trivial.
 
-```qbasic>10 LIST</lang
+```qbasic
+10 LIST
+```
 
 
 For dialects that include the <code>DATA</code> keyword, it is almost as easy.
@@ -1610,7 +1614,9 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 A large number of quine methods are listed [http://www.complang.tuwien.ac.at/forth/quines.html here], the simplest of which is:
 
-```forth>SOURCE TYPE</lang
+```forth
+SOURCE TYPE>
+```
 
 
 
@@ -1704,7 +1710,9 @@ c=char[34];e=d;print["d=$c$d$c\n"+(e=~%s/([a-z0-9]{2})/char[parseInt[$1,16]]/eg)
 
 A more concise quine is:
 
-```frink>1</lang
+```frink
+1>
+```
 
 
 
@@ -1779,7 +1787,9 @@ Also Groovy has a trivial solution of an empty (0 length) file even though that 
 
 =={{header|GW-BASIC}}==
 
-```qbasic>10 LIST</lang
+```qbasic
+10 LIST
+```
 
 
 
@@ -1855,7 +1865,9 @@ Two much shorter quines were created and tweeted from the @urbit_ twitter accoun
 
 Any program with a single “<tt>Q</tt>” is a quine. The simplest possible such program is just this:
 
-```hq9plus>Q</lang
+```hq9plus
+Q>
+```
 
 
 =={{header|HTML}} + CSS==
@@ -1934,7 +1946,9 @@ write("procedure main();x:=",image(x));write(x);end
 ## Io
 
 
-```io>thisMessage print</lang
+```io
+thisMessage print>
+```
 
 
 
@@ -1960,7 +1974,9 @@ Technically, the empty program in J is a quine, as it has an empty result. For e
 
 Also, many many numbers in J are quines. For example (result not shown, here, for clarity):
 
-```J>0 </lang
+```j
+0>
+```
 
 
 Note: this implementation assumes that J is being used interactively.  If J is being used in a command line script, having the script read and output itself would be a better approach. And it's not clear whether quines are a relevant concept in a none textual context (such as a windowing environment).
@@ -3102,7 +3118,9 @@ Unevaluated[1989 - 1989]
 or
 
 
-```Mathematica>x</lang
+```mathematica
+x>
+```
  :)
 
 =={{header|MATLAB}} / {{header|Octave}}==
@@ -3341,7 +3359,9 @@ return
 
 The empty program is a quine in Nim:
 
-```nim></lang
+```nim
+
+```
 
 
 Another quine:
@@ -3581,7 +3601,9 @@ open ME, $0 and print <ME>;
 ```
 
 
-```Perl>open 0; print <0>;</lang
+```perl
+open 0; print <0>;>
+```
 
 
 
@@ -5079,7 +5101,8 @@ End Module
 
 
 
-```WDTE>let str =
+```wdte
+let str =>
  import 'strings';
 let v => "let str => import 'strings';\nlet v => {q};\nstr.format v v -- io.writeln io.stdout;";
 str.format v v -- io.writeln io.stdout;

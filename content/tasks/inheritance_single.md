@@ -488,7 +488,8 @@ More useful:
 use:
 
 
-```Clojure>user
+```clojure
+user
  (isa? ::dog ::animal)
 true
 user> (isa? ::dog ::cat)
@@ -1542,7 +1543,8 @@ Casey is a collie
 ## Lasso
 
 
-```Lasso>define animal =
+```lasso
+define animal =
  type {
 	data public gender::string
 }

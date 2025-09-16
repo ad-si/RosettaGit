@@ -2288,7 +2288,8 @@ Reversed order:         reversal phrase code rosetta
 
 These examples use the [https://docs.python.org/2/whatsnew/2.3.html#extended-slices extended slicing] notation of <code>[::-1]</code> to reverse strings and lists of strings:
 
-```python>>>
+```python
+>>>
  phrase = "rosetta code phrase reversal"
 >>> phrase[::-1]					  # Reversed.
 'lasrever esarhp edoc attesor'

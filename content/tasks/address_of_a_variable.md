@@ -1159,7 +1159,8 @@ Julia provides a variety of ways to work with and manipulate raw address pointer
 Julia has both mutable and immutable objects.  Immutable objects are values, such as constants, bit-based values such as numeric 3, or immutable structs. Immutable objects may not have a single set location in memory, but instead might in some cases be created on demand by the compiled code. Mutable objects such as typical arrays and mutable structs, on the other hand, have addresses on the Julia heap that can be found with specific base Julia functions which use the <code>Ptr</code> type.
 
 To get the memory address of a Julia object, one can use <code>pointer_from_objref(object)</code>, and the reverse is accomplished by <code>unsafe_pointer_to_objref(ptr)</code>:
-```julia>julia
+```julia
+julia
  x = [1, 2, 3]
 julia> ptr = pointer_from_objref(x)
 Ptr{Void} @0x000000010282e4a0
@@ -1172,7 +1173,8 @@ julia> unsafe_pointer_to_objref(ptr)
   The latter is "unsafe" because it only works if <code>ptr</code> refers to a valid heap-allocated "boxed" Julia object, which can only be safely allocated by Julia itself.
 
 <p>Another common use of pointers is for arrays of values, which are typically passed in low-level C-like libraries via pointers to contiguous sets of values in memory.  This is accomplished in Julia by the <code>pointer(A)</code> function, which returns a pointer to the data stored in a high-level Julia array <code>A</code>.  Given a pointer <code>p</code> to values of a given type, the <code>i</code>-th value (numbered starting at 1 for the value pointed to by <code>p</code>) can be read or written by the low-level <code>unsafe_load(p, i)</code> and <code>unsafe_store!(p, val, i)</code> functions, or it can be converted back to a high-level Julia array type by the <code>pointer_to_array(p, dimensions)</code> function:
-```julia>julia
+```julia
+julia
  A = [1, 2.3, 4]
 3-element Array{Float64,1}:
  1.0
@@ -1201,7 +1203,8 @@ julia> pointer_to_array(p, (3,))
 
 
 Finally, an arbitrary integer can be converted to a pointer type with <code>convert</code>, which allows an arbitrary address to be converted into and viewed as an array of an arbitrary type and read or written (although this can easily result in a crash if an invalid address is used).   In the following example, we create a "new" length-two array <code>B</code> at an address offset by 8 bytes from the address of the data in <code>A</code> above, which will make it point to the second element of <code>A</code>:
-```julia>julia
+```julia
+julia
 
 julia> q = convert(Ptr{Float64}, 0x0000000113f70d68)
 Ptr{Float64} @0x0000000113f70d68
@@ -1253,7 +1256,8 @@ Value is 42, address is 0xc149f0
 
 To obtain the address of any expression in Maple, use the builtin function <code>addressof</code>.
 
-```Maple>
+```maple
+
  addressof( x );
                               18446884674469911422
 ```
@@ -1264,7 +1268,8 @@ The inverse operation is <code>pointto</code>:
                                        x
 ```
 This works for any expression, not just variables:
-```Maple>
+```maple
+
  addressof( sin( x )^2 + cos( x )^2 );
                               18446884674469972158
 
@@ -1948,7 +1953,8 @@ The Ruby <code>object_id</code> method returns an object ID that is unique among
 For classes that do not override the <code>to_s</code> method, the <code>to_s</code> method also shows the address.
 
 
-```ruby>>foo = Object.new  # => #<Object:0x10ae32000
+```ruby
+>foo = Object.new  # => #<Object:0x10ae32000
 
 >id = foo.object_id  # => 2238812160
 >"%x" % (id << 1)  # => "10ae32000"

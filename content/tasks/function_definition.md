@@ -582,7 +582,9 @@ Function names in Applesoft BASIC can be longer than two characters but only the
 
 
 
-```basic>47658</lang
+```basic
+47658>
+```
 
 
 
@@ -2990,7 +2992,9 @@ primarydef a mult b = a * b enddef;
 ```
 
 
-```metafont>t := 3 mult 5; show t; end</lang
+```metafont
+t := 3 mult 5; show t; end
+```
 
 The '''primarydef''' allows to build binary operators with the same priority as *. For a more generic macro, we can use instead
 
@@ -3711,7 +3715,9 @@ enddefine;
 
 Inbuilt:
 
-```postscript>3 4 mul</lang
+```postscript
+3 4 mul>
+```
 
 Function would be:
 
@@ -4064,7 +4070,8 @@ multiply: return arg(1) * arg(2) / 1    /*return with a normalized product of 2 
 
 In RLaB the functions can be built-in (compiled within RLaB, or part of the shared object library that is loaded per request of user), or user (written in RLaB script). Consider an example:
 
-```RLaB>>
+```RLaB
+>
  class(sin)
 function
 >> type(sin)
@@ -4090,7 +4097,8 @@ user
 
 2. function can be member of a list (associative array)
 
-```RLaB>somelist = <<>
+```RLaB
+somelist = <<>
 ;
 somelist.f = function(x, y)
 {
@@ -4306,7 +4314,8 @@ end
 
 For expediency, the function is adding three values, instead of multiplying two values. Another function, atoi (+48) is called before printing the result.
 
-```snusp>+1>++2=@\=
+```snusp
++1>++2=@\=
 +++3=@\==@\=.=#  prints '6'
         |        |   \=itoa=@@@+@+++++#
         \
@@ -4681,7 +4690,9 @@ Functions are declared with an equals sign like constants of any other type.
 They may be specified by lambda abstraction, with dummy variables in double quotes, or in point-free form, or any combination. The way multiplication is defined depends on the type of numbers being multiplied. For this example, numbers in standard IEEE double precision are assumed, and the multiply function is defined in terms of the system library function, called using the syntax <code>math..mul</code>.
 This is the definition in point free form,
 
-```Ursala>multiply = math..mul</lang
+```ursala
+multiply = math..mul
+```
 
 this is the definition using lambda abstraction
 

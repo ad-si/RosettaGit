@@ -1800,7 +1800,7 @@ foreach start,end,pr in (rgs){
 fcn magic(z){ z.isEven and z<=6 }
 ```
 
-<pre style="height:35ex">
+```txt
 eban numbers up to and including 1,000:
 2 4 6 30 32 34 36 40 42 44 46 50 52 54 56 60 62 64 66
 count = 19
@@ -1826,6 +1826,5 @@ count = 7,999
 
 eban numbers up to and including 1,000,000,000:
 count = 7,999
-
 ```
 

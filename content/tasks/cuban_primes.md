@@ -184,7 +184,8 @@ The 100,000 cuban prime is: 1,792,617,147,127
 
 ## C
 
-```C>#include <limits.h
+```c
+#include <limits.h
 
 #include <math.h>
 #include <stdbool.h>
@@ -1726,7 +1727,8 @@ here   ───►   [[LINESIZE.REX]].
 
 (Shown at three-quarter size.)
 
-<pre style="font-size:75%">
+
+```txt
            7           19           37           61          127          271          331          397          547          631          919
        1,657        1,801        1,951        2,269        2,437        2,791        3,169        3,571        4,219        4,447        5,167
        5,419        6,211        7,057        7,351        8,269        9,241       10,267       11,719       12,097       13,267       13,669
@@ -2191,7 +2193,8 @@ cubans.drop(100_000 - cubans.n).value :
    println("\nThe 100,000th cuban prime is: %,d".fmt(_));
 ```
 
-<pre style="font-size:83%">
+
+```txt
 First 200 cuban primes:
          7        19        37        61       127       271       331       397       547       631
        919     1,657     1,801     1,951     2,269     2,437     2,791     3,169     3,571     4,219

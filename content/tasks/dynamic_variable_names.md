@@ -299,8 +299,8 @@ Enter a variable name: THISISWEIRD
 
 In E, there are no global variables, and there is no modification of the local (lexical) environment. However, it is possible to construct a program which binds any given variable name.
 
-```e>def makeNounExpr := <elang:evm.makeNounExpr
-
+```e
+def makeNounExpr := <elang:evm.makeNounExpr>
 
 def dynVarName(name) {
     def variable := makeNounExpr(null, name, null)
@@ -1095,7 +1095,8 @@ block([name: read("name?"), x: read("value?")], name :: x);
 
 This is done in immediate mode so you can see the variable is created, although you will have to reference it through the indirection operator, "@".
 
-```mumps>USER
+```mumps
+USER>
 KILL ;Clean up workspace
 
 USER>WRITE ;show all variables and definitions
@@ -1328,7 +1329,8 @@ editvar /newvar /value=-a- /title=-b-
 
 ## Python
 
-```python>>>
+```python
+>>
  name = raw_input("Enter a variable name: ")
 Enter a variable name: X
 >>> globals()[name] = 42
@@ -1336,7 +1338,8 @@ Enter a variable name: X
 42
 ```
 
-```python>>>
+```python
+>>
  name = input("Enter a variable name: ")
 Enter a variable name: X
 >>> globals()[name] = 42
@@ -1464,7 +1467,8 @@ The newly assigned value (as per the VALUE bif)------ abc 45678.1
 
 In RLaB all the objects are located in a global list $$. To create a variable dynamically, one writes a new entry into the global list. Consider the following example:
 
-```RLaB>>
+```RLaB
+>
  s = "myusername"
 myusername
 >> $$.[s] = 10;
@@ -1514,7 +1518,8 @@ p "The value of #{x} is #{instance_variable_get x}"
 ## Scheme
 
 
-```scheme>=
+```scheme
+=
  (define (create-variable name initial-val)
      (eval `(define ,name ,initial-val) (interaction-environment)))
 

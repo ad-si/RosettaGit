@@ -3705,7 +3705,8 @@ Calculating: x = a(1) Or b(1)
 
 Pythons '''and''' and '''or''' binary, infix, boolean operators will not evaluate their right-hand expression if the outcome can be determined from the value of the left-hand expression.
 
-```python>>>
+```python
+>>>
  def a(answer):
 	print("  # Called function a(%r) -> %r" % (answer, answer))
 	return answer
@@ -3750,7 +3751,8 @@ Calculating: y = a(i) or  b(j)
 
 Pythons if ''expression'' can also be used to the same ends (but probably should not):
 
-```python>>>
+```python
+>>>
  for i in (False, True):
 	for j in (False, True):
 		print ("\nCalculating: x = a(i) and b(j) using x = b(j) if a(i) else False")

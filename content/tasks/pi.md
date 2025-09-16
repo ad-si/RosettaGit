@@ -3305,7 +3305,9 @@ For[i = -1, True, i--,
 =={{header|MATLAB}} / {{header|Octave}}==
 Matlab and Octave use double precision numbers per default, and pi is a builtin constant value. Arbitrary precision is only implemented in some additional toolboxes (e.g. symbolic toolbox).
 
-```MATLAB>pi</lang
+```MATLAB
+pi>
+```
 
 
 ```txt
@@ -3782,7 +3784,8 @@ sub pistream {
 
 As mentioned earlier, replacing "use bigint" with "use Math::GMP qw/:constant/" will result in many orders of magnitude faster performance.
 
-```perl>use bigint try=
+```perl
+use bigint try=>
 "GMP";
 sub stream {
     my ($next, $safe, $prod, $cons, $z, $x) = @_;
@@ -3835,7 +3838,8 @@ print $pi_stream->() while 1;
 Here is an original Perl 5 code, using Machin's formula.  Not the fastest program in the world.  As with the previous code, using either Math::GMP or Math::BigInt::GMP instead of the default bigint Calc backend will make it run thousands of times faster.
 
 
-```Perl>use bigint try=
+```perl
+use bigint try=>
 "GMP";
 
 # Pi/4 = 4 arctan 1/5 - arctan 1/239

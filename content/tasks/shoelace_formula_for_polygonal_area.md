@@ -1251,7 +1251,8 @@ END FUNCTION
 ## Python
 
 
-```python>>>
+```python
+>>>
  def area_by_shoelace(x, y):
     "Assumes x,y points go around the polygon in one direction"
     return abs( sum(i * j for i, j in zip(x,             y[1:] + y[:1]))

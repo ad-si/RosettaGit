@@ -844,7 +844,8 @@ With tags:
 
 With script:
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   while( true != false )
   {
@@ -2952,7 +2953,8 @@ end
 ## SNUSP
 
 
-```snusp>@\>@\>@\>@\
+```snusp
+@\>@\>@\>@\>
 ++++++++++===!/ < < < < \
  |  |  |  \M=@@@@+@+++++# \.>.>.>.>./
  |  |  \A=@@+@@@@+++#
@@ -3021,7 +3023,8 @@ pub main
 ## SPL
 
 
-```spl>
+```spl
+>
 
   #.output("SPAM")
 <
@@ -3253,7 +3256,9 @@ ENDLOOP
 
 Use any of these loops:
 
-```bash>while :; do echo SPAM; done</lang
+```bash
+while :; do echo SPAM; done>
+```
 
 
 
@@ -3297,7 +3302,9 @@ forever {echo SPAM}
 ## UnixPipes
 
 
-```bash>yes SPAM</lang
+```bash
+yes SPAM>
+```
 
 
 

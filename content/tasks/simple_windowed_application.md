@@ -1795,7 +1795,9 @@ end
 
 The window is opened with:
 
-```logo>clickwindow</lang
+```logo
+clickwindow>
+```
 
 
 

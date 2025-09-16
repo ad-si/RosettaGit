@@ -633,7 +633,8 @@ Press any key to continue . . .
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 josephus
 PRINT "Survivor is number "; FNjosephus(41, 3, 0)
 END
@@ -659,7 +660,8 @@ Survivor is number 30
 The number of prisoners and step size are read from stdin.
 
 
-```befunge>
+```befunge
+
 0" :srenosirP">:#,_&>>00p>>v
 v0p01<&_,#!>#:<"Step size: "<
 >1+:20p00g`!#v_0"  :rovivru"v
@@ -1482,7 +1484,9 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 ## Forth
 
 
-```forth>: josephus  0 1 begin dup 41 <= while  swap 3 + over mod swap  1+ repeat drop ;</lang
+```forth
+: josephus  0 1 begin dup 41 <= while  swap 3 + over mod swap  1+ repeat drop ;
+```
 
 
 ```txt
@@ -3109,7 +3113,8 @@ Josephus problem - input prisoners :
 ## Python
 
 
-```python>>>
+```python
+>>
  def j(n, k):
 	p, i, seq = list(range(n)), 0, []
 	while p:
@@ -3129,7 +3134,8 @@ Survivor: 30
 
 Faster way to solve in python, it does not show the killing order.
 
-```python>>>
+```python
+>>
 def josephus(n, k):
         r = 0
         for i in xrange(1, n+1):

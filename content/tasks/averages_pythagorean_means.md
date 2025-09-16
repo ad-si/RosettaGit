@@ -2220,7 +2220,8 @@ true
 ## Kotlin
 
 
-```scala>fun Collection<Double
+```scala
+fun Collection<Double
 .geometricMean() =
     if (isEmpty()) Double.NaN
     else Math.pow(reduce { n1, n2 -> n1 * n2 }, 1.0 / size)
@@ -2505,7 +2506,8 @@ end
 
 Solution:
 
-```MATLAB>>
+```matlab
+>
  [A,G,H]=pythagoreanMeans((1:10))
 
 A =

@@ -560,7 +560,8 @@ DECIMAL
 
 ( Define ANSI Forth names for these functions using our markup words)
 : AT-XY ( col row  -- ) SWAP <CUP> ;
-: PAGE  ( -- ) <ED>  1 1 <CUP> ;</LANG>
+: PAGE  ( -- ) <ED>  1 1 <CUP> ;
+```
 Rosetta Task
 
 ```forth
@@ -572,7 +573,8 @@ Rosetta Task
 ( move the cursor to the end of the line      ) 80 <CHA>
 ( move the cursor to the top left corner of the screen)  1 1 <CUP>
 ( move the cursor to the bottom right corner of the screen)  80 24 <CUP>
-</LANG>
+
+```
 
 
 ## Go

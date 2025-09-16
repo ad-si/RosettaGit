@@ -415,7 +415,9 @@ on gcd(x, y)
 end gcd
 ```
 
-```AppleScript>36</lang
+```AppleScript
+36>
+```
 
 
 
@@ -1936,7 +1938,9 @@ end
 Demo code:
 
 
-```logo>print lcm 38 46</lang
+```logo
+print lcm 38 46>
+```
 
 
 Output:
@@ -2283,7 +2287,9 @@ let () =
 
 lcm is already defined into Integer class :
 
-```Oforth>12 18 lcm</lang
+```oforth
+12 18 lcm>
+```
 
 
 
@@ -2340,7 +2346,9 @@ ORDER_PP( 8to_lit(8lcm(12, 18)) )   // 36
 
 Built-in function:
 
-```parigp>lcm</lang
+```parigp
+lcm>
+```
 
 
 
@@ -2633,7 +2641,8 @@ EndProcedure
 
 Using the fractions libraries [http://docs.python.org/library/fractions.html?highlight=fractions.gcd#fractions.gcd gcd] function:
 
-```python>>>
+```python
+>>>
  import fractions
 >>> def lcm(a,b): return abs(a * b) / fractions.gcd(a,b) if a and b else 0
 
@@ -2807,7 +2816,8 @@ if __name__ == '__main__':
 ### =Iteration over multiples=
 
 
-```python>>>
+```python
+>>>
  def lcm(*values):
 	values = set([abs(int(v)) for v in values])
 	if values and 0 not in values:
@@ -2833,7 +2843,8 @@ if __name__ == '__main__':
 
 ### =Repeated modulo=
 
-```python>>>
+```python
+>>>
  def lcm(p,q):
 	p, q = abs(p), abs(q)
 	m = p * q
@@ -3203,7 +3214,9 @@ say lcm(1001, 221)
 
 Smalltalk has a built-in <code>lcm</code> method on <code>SmallInteger</code>:
 
-```smalltalk>12 lcm: 18</lang
+```smalltalk
+12 lcm: 18>
+```
 
 
 
@@ -3296,7 +3309,8 @@ lcm(12,18
 ## TSE SAL
 
 
-```TSESAL>// library: math: get: least: common: multiple <description></description> <version control></version control> <version>1.0.0.0.2</version> <version control></version control
+```TSESAL
+// library: math: get: least: common: multiple <description></description> <version control></version control> <version>1.0.0.0.2</version> <version control></version control>
  (filenamemacro=getmacmu.s) [<Program>] [<Research>] [kn, ri, su, 20-01-2013 14:36:11]
 INTEGER PROC FNMathGetLeastCommonMultipleI( INTEGER x1I, INTEGER x2I )
  //
@@ -3564,7 +3578,9 @@ C:\>
 
 Operator
 
-```wortel>@lcm a b</lang
+```wortel
+@lcm a b>
+```
 
 Number expression
 

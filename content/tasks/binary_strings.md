@@ -862,7 +862,8 @@ In E, binary data is represented as ELists (implemented as arrays or ropes) of i
 To work with binary strings we must first have a byte type; this is a place where E shows its Java roots (to be fixed).
 
 
-```e>? def int8 := <type:java.lang.Byte
+```e
+? def int8 := <type:java.lang.Byte
 
 # value: int8
 ```
@@ -921,7 +922,8 @@ As E is a memory-safe garbage-collected language there is no explicit destructio
 
 </li><li>Replacing must be written as an explicit loop; there is no built-in operation (though there is for character strings).
 
-```e>? for i =
+```e
+? for i =
  byte ? (byte == 2) in bstr2 { bstr2[i] := -1 }
 ? bstr2
 # value: [-127, -1, 3].diverge()
@@ -1056,7 +1058,8 @@ replace(<<Keep,Rest/binary>>,Value,Replacement,Acc) ->
     replace(Rest,Value,Replacement,<< Acc/binary, Keep >>).
 ```
 
-```erlang>215
+```erlang
+215>
  binary_string:test().
 Creation: <<0,1,1,2,3,5,8,13>>
 Copy: <<0,1,1,2,3,5,8,13>>
@@ -1601,7 +1604,9 @@ J's literal data type supports arbitrary binary data (strings are binary strings
 
 * Example binary string deletion (removing all references to a string allows it to be deleted, in this case we give the name a numeric value to replace its prior string value):
 
-```j>   name=: 0</lang
+```j
+   name=: 0
+```
 
 
 
@@ -1629,7 +1634,9 @@ Though, technically, its the internal reference which is cloned, not the interna
 
 * Example check if a binary string is empty
 
-```j>   0=#string</lang
+```j
+   0=#string
+```
 
 
 * Example apppend a byte to a binary string

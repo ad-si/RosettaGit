@@ -39,7 +39,8 @@ Make sure you [[Connect to Active Directory]]
 ## C
 
 
-```C>#include <ldap.h
+```c
+#include <ldap.h
 
 
 char *name, *password;
@@ -98,7 +99,7 @@ void main() {
 
   // do something
   ...
-    
+
 }
 
 ```
@@ -166,14 +167,14 @@ func main() {
     }
     defer client.Close()
     err := client.Connect()
-    if err != nil { 
+    if err != nil {
         log.Fatalf("Failed to connect : %+v", err)
     }
     groups, err := client.GetGroupsOfUser("username")
     if err != nil {
         log.Fatalf("Error getting groups for user %s: %+v", "username", err)
     }
-    log.Printf("Groups: %+v", groups) 
+    log.Printf("Groups: %+v", groups)
 }
 ```
 
@@ -541,16 +542,16 @@ class RDirectorySearchLDAP public
 
 ```txt
 
-[16:51:37] INFO  [RDirectorySearchLDAP] - LDAP Connection to localhost on port 11389 
-[16:51:39] INFO  [RDirectorySearchLDAP] - Begin search 
-[16:51:39] INFO  [RDirectorySearchLDAP] -   search base distinguished name: ou=users,o=mojo 
-[16:51:39] INFO  [RDirectorySearchLDAP] -   search filter: (&(objectClass=person)(&(uid=*mil*))) 
-[16:51:39] INFO  [RDirectorySearchLDAP] -   search attributes: [dn, cn, sn, uid] 
-[16:51:39] INFO  [RDirectorySearchLDAP] - Search cursor entry count: 1 
-[16:51:39] INFO  [RDirectorySearchLDAP] - Entry 
-    dn: cn=John Milton,ou=users,o=mojo 
-    uid: jmilton 
-    sn: Milton 
+[16:51:37] INFO  [RDirectorySearchLDAP] - LDAP Connection to localhost on port 11389
+[16:51:39] INFO  [RDirectorySearchLDAP] - Begin search
+[16:51:39] INFO  [RDirectorySearchLDAP] -   search base distinguished name: ou=users,o=mojo
+[16:51:39] INFO  [RDirectorySearchLDAP] -   search filter: (&(objectClass=person)(&(uid=*mil*)))
+[16:51:39] INFO  [RDirectorySearchLDAP] -   search attributes: [dn, cn, sn, uid]
+[16:51:39] INFO  [RDirectorySearchLDAP] - Search cursor entry count: 1
+[16:51:39] INFO  [RDirectorySearchLDAP] - Entry
+    dn: cn=John Milton,ou=users,o=mojo
+    uid: jmilton
+    sn: Milton
     cn: John Milton
 
 ```
@@ -595,7 +596,7 @@ try:
     l.set_option(ldap.OPT_REFERRALS, 0)
 
     bind = l.simple_bind_s("me@example.com", "password")
-    
+
     base = "dc=example, dc=com"
     criteria = "(&(objectClass=user)(sAMAccountName=username))"
     attributes = ['displayName', 'company']
@@ -656,10 +657,10 @@ exit
 
 ```txt
 
-ldapsearch -s base -H ldap://localhost:11389 -LLL -x -v -s sub -D uid=admin,ou=system -w ******** -b ou=users,o=mojo "(&(objectClass=person)(&(uid=*mil*)))" "dn" "cn" "sn" "uid" 
+ldapsearch -s base -H ldap://localhost:11389 -LLL -x -v -s sub -D uid=admin,ou=system -w ******** -b ou=users,o=mojo "(&(objectClass=person)(&(uid=*mil*)))" "dn" "cn" "sn" "uid"
 ldap_initialize( ldap://localhost:11389/??base )
 filter: (&(objectClass=person)(&(uid=*mil*)))
-requesting: dn cn sn uid 
+requesting: dn cn sn uid
 dn: cn=John Milton,ou=users,o=mojo
 uid: jmilton
 sn: Milton
@@ -700,7 +701,7 @@ puts results[0][:sn]  # ==> "Jackman"
 This allows the client on the web to see their directory.
 The user can click on any file or directory and this will give them the following options:
  [upload] data from their computer to the server
- [delete] data from their directory 
+ [delete] data from their directory
  [rename] files
  [view]   image files
 ```
@@ -752,7 +753,7 @@ wait
 type$	= word$(EventKey$,1,"|")
 name$	= word$(EventKey$,2,"|")
 
-if type$ = "DIR" then 
+if type$ = "DIR" then
 	dirOf$ = name$;"\*.*"
 	goto [dirShell]
 end if
@@ -767,7 +768,7 @@ button #view, 	"View",	 [view]
 html "';</script>"
 wait
 
-[delete] 
+[delete]
  kill name$
  goto [dirShell]
 
@@ -904,7 +905,7 @@ Now do the actual search.
 set result [ldap::search $conn $Base $Filter $Attrs -scope subtree]
 ```
 
- 
+
 If we have only a single result its easy:
 
 ```tcl
@@ -976,7 +977,7 @@ ldapsearch \
 
 ldap_initialize( ldap://localhost:11389 )
 filter: (&(objectClass=person)(&(uid=*mil*)))
-requesting: dn cn sn uid 
+requesting: dn cn sn uid
 dn: cn=John Milton,ou=users,o=mojo
 uid: jmilton
 sn: Milton
@@ -1013,7 +1014,8 @@ End If
 
 Doing something with multiple results (this will output each returned users full DN)
 
-```vbscript>If objRS.RecordCount 
+```vbscript
+If objRS.RecordCount>
  0 Then
   For Each objUser in ObjRS
     WScript.Echo objRS.Fields("DistinguishedName")

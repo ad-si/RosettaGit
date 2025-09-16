@@ -1061,7 +1061,8 @@ Press Any Key to continue...
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main args =
     printfn "%A" (args.[0].TrimStart())
@@ -1648,7 +1649,8 @@ str.trim() ==> String with whitespace
 
 ## Julia
 
-```julia>julia
+```julia
+julia>
  s = " \t \r \n String with spaces  \t  \r  \n  "
 " \t \r \n String with spaces  \t  \r  \n  "
 
@@ -2198,7 +2200,8 @@ Output:
 ```
 
 =={{header|Objective-C}}==
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSString (RCExt)
@@ -2632,7 +2635,8 @@ EndIf
 ## Python
 
 
-```python>>>
+```python
+>>>
  s = ' \t \r \n String with spaces  \t  \r  \n  '
 >>> s
 ' \t \r \n String with spaces  \t  \r  \n  '
@@ -2687,7 +2691,8 @@ EndIf
 ## Red
 
 
-```Red>>
+```Red
+>>
  trim/head " remove leading white space "
 == "remove leading white space "
 >> trim/tail " remove trailing white space "

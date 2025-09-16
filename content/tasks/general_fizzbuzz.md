@@ -386,7 +386,8 @@ Press any key to continue . . .
 
 This implementation (unlike some of the ones given on this page...) fully obeys the specification, in that it prompts the user for the parameters at run time. It also allows users to specify as many factors as they want, rather than limiting them to three.
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 genfizzb
 INPUT "Maximum number: " max%
 INPUT "Number of factors: " n%

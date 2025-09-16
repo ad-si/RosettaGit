@@ -289,21 +289,27 @@ system("clear")
 ## Axe
 
 
-```axe>ClrHome</lang
+```axe
+ClrHome>
+```
 
 
 
 ## BASIC
 
 
-```qbasic>CLS</lang
+```qbasic
+CLS
+```
 
 
 =
 ## Applesoft BASIC
 =
 
-```ApplesoftBasic>HOME</lang
+```ApplesoftBasic
+HOME>
+```
 
 
 =
@@ -328,11 +334,15 @@ PRINT CHR$(125);
 ## BBC BASIC
 =
 
-```bbcbasic>      CLS</lang
+```bbcbasic
+      CLS>
+```
 
 or
 
-```bbcbasic>      VDU 12</lang
+```bbcbasic
+      VDU 12>
+```
 
 or
 
@@ -352,7 +362,9 @@ PRINT CHR$(147);
 
 ==={{header|GW-BASIC}}===
 
-```qbasic>10 CLS</lang
+```qbasic
+10 CLS
+```
 
 
 ==={{header|IS-BASIC}}===
@@ -375,7 +387,9 @@ ClearConsole()
 
 
 
-```command>CLS</lang
+```command
+CLS>
+```
 
 
 
@@ -405,7 +419,9 @@ Assuming a terminal with support for ANSI escape sequences.
 
 
 
-```blast>clear</lang
+```blast
+clear>
+```
 
 
 
@@ -479,7 +495,9 @@ Works on all .NET Core platforms. Throws an exception if output has been redirec
 ## Comal
 
 
-```Comal>PAGE</lang
+```Comal
+PAGE>
+```
 
 
 
@@ -552,7 +570,9 @@ A common way to clear the screen with a terminal (assuming XTerm here) control s
 could be to home the cursor ("ESC[H", "1B 5B 48") and then clear to the end of the
 screen ("ESC[J", "1B 5B 4A").
 
-```dc>16i 1B5B481B5B4A P</lang
+```dc
+16i 1B5B481B5B4A P>
+```
 
 
 
@@ -601,7 +621,9 @@ Console.Clear()
 ## Forth
 
 
-```forth>page</lang
+```forth
+page>
+```
 
 
 
@@ -1000,7 +1022,9 @@ stdout(#esc + '[2J')
 ## Logo
 
 
-```logo>cleartext</lang
+```logo
+cleartext>
+```
 
 There is a separate command to reset the turtle graphics window.
 
@@ -1090,7 +1114,9 @@ Run["clear"];
 ## Nanoquery
 
 
-```nanoquery>cls</lang
+```nanoquery
+cls>
+```
 
 
 
@@ -1160,7 +1186,9 @@ let () =
 ## Octave
 
 
-```Octave> system clear;</lang
+```octave
+ system clear;>
+```
 
 
 ```Octave
@@ -1173,7 +1201,9 @@ let () =
 
 
 
-```Pascal>clrscr;</lang
+```Pascal
+clrscr;>
+```
 
 
 
@@ -1248,7 +1278,9 @@ Clear-Host
 ## ProDOS
 
 
-```ProDOS>clearscurrentscreentext</lang
+```ProDOS
+clearscurrentscreentext>
+```
 
 
 
@@ -1334,7 +1366,9 @@ clear_console()
 ## Retro
 
 
-```Retro>clear</lang
+```Retro
+clear>
+```
 
 
 
@@ -1510,7 +1544,9 @@ print "\e[3J\e[H\e[2J";
 ## Smalltalk
 
 
-```smalltalk>Transcript clear.</lang
+```smalltalk
+Transcript clear.>
+```
 
 
 
@@ -1522,14 +1558,18 @@ SmileBASIC's text screen is mixed in with its graphics screen, background screen
 
 To clear just the text screen:
 
-```smilebasic>CLS</lang
+```smilebasic
+CLS>
+```
 
 
 ### All screens
 
 Clearing all of the screens, and resetting display options can be done with:
 
-```smilebasic>ACLS</lang
+```smilebasic
+ACLS>
+```
 
 
 

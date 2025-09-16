@@ -837,7 +837,8 @@ DECEMBER:  29
 
 Other solution, based on the Boost DateTime library:
 
-```C++>#include <iostream
+```C++
+#include <iostream>
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <cstdlib>
@@ -3929,7 +3930,8 @@ return date('weekday',_,"B") date(,_,'B')            /*return the answer*/
 ```
 
 {{out}} when using the default input (the current year, 2013):
-<pre style="overflow:scroll">
+
+```txt
 2013-01-27
 2013-02-24
 2013-03-31
@@ -3942,7 +3944,6 @@ return date('weekday',_,"B") date(,_,'B')            /*return the answer*/
 2013-10-27
 2013-11-24
 2013-12-29
-
 ```
 
 
@@ -3951,7 +3952,6 @@ return date('weekday',_,"B") date(,_,'B')            /*return the answer*/
 
 
 ```ring
-
 see "What year to calculate (yyyy) : "
 give year
 see "Last Sundays in " + year + " are on :" + nl

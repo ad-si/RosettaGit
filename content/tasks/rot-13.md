@@ -1296,7 +1296,8 @@ alias rot13 [
 
 Usage:
 
-```cubescript>>>
+```cubescript
+>>>
  rot13 "Hello World"
 > Uryyb Jbeyq
 >>> rot13 "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt!"
@@ -3074,7 +3075,8 @@ end
 
 Call it like this:
 
-```matlab>>
+```matlab
+>>
  rot13('Hello World!')
 
 ans =
@@ -3105,7 +3107,8 @@ end
 
 Sample Output:
 
-```MATLAB>>
+```MATLAB
+>>
  plainText = char((64:123))
 
 plainText =
@@ -4301,7 +4304,8 @@ EndProcedure
 ## Python
 
 Python 2.x (but not 3.x) has built-in rot13 encoding and decoding:
-```python>>>
+```python
+>>>
  u'foo'.encode('rot13')
 'sbb'
 >>> 'sbb'.decode('rot13')
@@ -4311,7 +4315,8 @@ u'foo'
 
 In both Python 2.x and 3.x one can use the standard library module <code>codecs</code> for rot13 encoding and decoding:
 
-```python>>>
+```python
+>>>
  import codecs
 >>> codecs.encode("The quick brown fox jumps over the lazy dog", "rot13")
 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'
@@ -4801,7 +4806,8 @@ else
 ## Scala
 
 
-```scala>scala
+```scala
+scala>
  def rot13(s: String) = s map {
      |   case c if 'a' <= c.toLower && c.toLower <= 'm' => c + 13 toChar
      |   case c if 'n' <= c.toLower && c.toLower <= 'z' => c - 13 toChar

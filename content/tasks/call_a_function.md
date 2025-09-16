@@ -851,7 +851,9 @@ PRINT SQR(2)
 
 The parentheses can often be omitted:
 
-```bbcbasic>PRINT SQR 2</lang
+```bbcbasic
+PRINT SQR 2>
+```
 
 The name of a <b>user-defined function</b> must begin with <tt>FN</tt>. A call to it is also an expression:
 
@@ -886,7 +888,9 @@ DEF PROC_foo(a$, RETURN b%, RETURN c)
 
 <b>Subroutines</b> are provided for compatibility with older, unstructured dialects of BASIC; otherwise they are never really used. They require statements to be numbered, and they can neither receive arguments nor return values: they can only manipulate global variables. The <tt>GOSUB</tt> and <tt>RETURN</tt> statements in fact mirror assembly language 'jump to subroutine' and 'return from subroutine' instructions quite closely.
 
-```bbcbasic>200 GOSUB 30050</lang
+```bbcbasic
+200 GOSUB 30050>
+```
 
 
 
@@ -1618,7 +1622,9 @@ var y = foo(x)
 Distinguishing built-in functions and user-defined functions:
 
 
-```Dyalect>//Not possible in Dyalect at the moment</lang
+```Dyalect
+//Not possible in Dyalect at the moment>
+```
 
 
 Distinguishing subroutines and functions:
@@ -1634,7 +1640,9 @@ func bar(x) { return x * 2 } //explicitely returns value (keyword "return" can b
 Stating whether arguments are passed by value or by reference:
 
 
-```Dyalect>//All arguments are passed by reference</lang
+```Dyalect
+//All arguments are passed by reference>
+```
 
 
 Is partial application possible and how:
@@ -1843,12 +1851,16 @@ let add2 = (+) 2
 
 * Calling a word with no arguments:
 
-```Factor>foo</lang
+```Factor
+foo>
+```
 
 
 * Calling a word with a fixed number of arguments. This will pull as many objects as it needs from the stack. If there are not enough, it will result in a stack underflow.
 
-```Factor>foo</lang
+```Factor
+foo>
+```
 
 
 * No special support for optional arguments.
@@ -1863,7 +1875,8 @@ let add2 = (+) 2
 
 * The named arguments idiom is to define a tuple, set its slots, and pass it to a word:
 
-```Factor><email
+```Factor
+<email>
 
     "jack@aol.com" >>from
     { "jill@aol.com" } >>to
@@ -1875,7 +1888,9 @@ send-email
 
 * First-class context: this pushes a word to the stack. Use execute to evaluate.
 
-```Factor>\ foo</lang
+```Factor
+\ foo>
+```
 
 Additionally, you can put words directly inside sequences and quotations for deferred execution:
 
@@ -1886,12 +1901,16 @@ Additionally, you can put words directly inside sequences and quotations for def
 
 * Obtaining the return value, which will be placed on the stack:
 
-```Factor>foo</lang
+```Factor
+foo>
+```
 
 
 * Returns true if the word is defined in the Factor VM as opposed to in a vocabulary. It should be noted that there are very few primitives.
 
-```Factor>\ foo primitive?</lang
+```Factor
+\ foo primitive?>
+```
 
 
 * Factor makes no distinction between subroutines and functions.
@@ -2560,7 +2579,9 @@ And a noun, in J, is an array.
 An argument list can be represented by an array.  Thus, when dealing with multiple arguments, a typical form is:
 
 
-```j>  function argumentList</lang
+```j
+  function argumentList
+```
 
 
 Here, <code>function</code> is a verb and <code>argumentList</code> is a noun.
@@ -2609,9 +2630,13 @@ f (<1),(<2),(<3),(<4),(<5)
 f (<1),(<2),(<3),(<4),<5
 ```
   Note also that J offers some syntactic sugar for this kind of list
-```j>f 1; 2; 3; 4; <5</lang
+```j
+f 1; 2; 3; 4; <5
+```
 .  Note also that if the last argument in a semicolon list is not boxed there is no need to explicitly box it, since that is unambiguous (it must be boxed so that it conforms with the other members of the list).
-```j>f 1; 2; 3; 4; 5</lang
+```j
+f 1; 2; 3; 4; 5
+```
 
 
 ''A function with named arguments'' can be accomplished by calling a function with the names of the arguments.
@@ -2648,7 +2673,9 @@ f ('george';1);('tom';2);<howard';3
 ''Using a function in command context'' is no different from using a function in any other context, in J.  ''Using a function in first class context within an expression'' is no different from using a function in any other context, in J.
 
 ''Obtaining the return value of a function'' is no different from using a function in j.  For example, here we add 1 to the result of a function:
-```j>1 + f 2</lang
+```j
+1 + f 2
+```
 
 
 The only ''differences that apply to calling builtin functions rather than user defined functions'' is spelling of the function names.
@@ -3816,7 +3843,8 @@ Obtaining the return value of a function:
 
 Distinguishing built-in functions and user-defined functions:
 
-```Maple>
+```maple
+
  type( op, 'builtin' );
                        true
 
@@ -4076,7 +4104,9 @@ f ()
 * Calling a function with a fixed number of arguments:
 
 
-```ocaml>f 1 2 3</lang
+```ocaml
+f 1 2 3
+```
 
 
 * Calling a function with optional arguments:
@@ -4183,7 +4213,9 @@ Oforth uses RPN notation. Arguments must be on the stack before calling a functi
 
 If f is a function and c b a ares objects :
 
-```Oforth>a b c f</lang
+```oforth
+a b c f
+```
 
 will push c then b then a on the stack then call f. Calling f does not describe if f will use 1, 2 or 3 arguments (or none).
 
@@ -4210,7 +4242,9 @@ are the same call to function f and the interpreter will translate all of them i
 Methods need a receiver (the object on which the method will apply and the object that will pushed on th stack when self is used into the method body).
 The receiver must be on the top of the stack before calling the method. If a, b, c and r are objects and m a method :
 
-```Oforth>a b c r m</lang
+```oforth
+a b c r m
+```
 
 will call m with r as its receiver.
 It is also possible to use the same "sugar" notation used by functions :
@@ -4405,7 +4439,9 @@ foo($arg1, $arg2);  # Call foo on $arg1 and $arg2
 Call foo() as a bareword. Only works after the function has been declared, which
 can be done normally or with the use subs pragma.
 
-```perl>foo;</lang
+```perl
+foo;
+```
 
 Call foo() with the current values of @_
 ```perl
@@ -5754,7 +5790,9 @@ say adder(3);                 #=>4
 
 Where f is a closure and arguments is an array of values for f to operate on.
 
-```smalltalk>f valueWithArguments: arguments.</lang
+```smalltalk
+f valueWithArguments: arguments.
+```
 
 
 
@@ -6014,7 +6052,8 @@ deprecated use              of parentheses
 ## WDTE
 
 
-```wdte>let noargs =
+```wdte
+let noargs =
  + 2 5;
 noargs -- print;
 

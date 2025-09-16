@@ -1611,7 +1611,8 @@ for line = lines
 ## Gema
 
 
-```gema>\L<G> <U
+```gema
+\L<G> <U>
 =@{$2} $1
 ```
 
@@ -4036,7 +4037,9 @@ puts [join [lmap line $lines {lreverse $line}] "\n"]
 
 Run from command line:
 
-```bash>txr reverse.txr verse.txt</lang
+```bash
+txr reverse.txr verse.txt>
+```
 
 '''Solution:'''
 

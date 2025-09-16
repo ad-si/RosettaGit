@@ -1532,7 +1532,8 @@ main =
 Even though list-based strings are not "the right" way of representing texts, the problem of counting subsequences in a list is generally useful.
 
 
-```Haskell>count :: Eq a =
+```haskell
+count :: Eq a =
  [a] -> [a] -> Int
 count []  = error "empty substring"
 count sub = go
@@ -2465,7 +2466,8 @@ countSubString("ababababab", "abab") println
 
 ```
 
-<pre style="height:10ex;overflow:scroll">
+
+```txt
 the three truths               th              found 3
 ababababab                     abab            found 2
 abABAbaBab                     abab            found 2
@@ -2762,7 +2764,8 @@ X = 2.
 ## Python
 
 
-```python>>>
+```python
+>>
  "the three truths".count("th")
 3
 >>> "ababababab".count("abab")
@@ -3068,7 +3071,8 @@ println(countSubstring("the three truths", "th"))
 
 ## Scheme
 
-```Scheme>gosh
+```scheme
+gosh
  (use gauche.lazy)
 #<undef>
 gosh> (length (lrxmatch "th" "the three truths"))

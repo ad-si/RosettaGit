@@ -191,13 +191,17 @@ MODE MYSTRUCT = STRUCT(INT i, j, k, REAL r, COMPL c);
 ### Stack
 
 
-```algol68>REF MYSTRUCT l = LOC MYSTRUCT;</lang
+```algol68
+REF MYSTRUCT l = LOC MYSTRUCT;
+```
 
 
 ### Heap
 
 
-```algol68>REF MYSTRUCT h = HEAP MYSTRUCT;</lang
+```algol68
+REF MYSTRUCT h = HEAP MYSTRUCT;
+```
 
 
 ### User pool
@@ -217,7 +221,9 @@ Without extensions it is not possible to access external memory.  However most i
 ### Implicit allocation
 
 
-```algol68>MYSTRUCT i;</lang
+```algol68
+MYSTRUCT i;
+```
 
 
 
@@ -827,7 +833,8 @@ Test destructor
 E is a memory-safe language and does not generally work with explicit deallocation. As in Python and Java, you can create arrays of specific data types which will, by any decent implementation, be compactly represented.
 
 
-```e>? <elib:tables.makeFlexList
+```e
+? <elib:tables.makeFlexList>
 .fromType(<type:java.lang.Byte>, 128)
 # value: [].diverge()
 ```
@@ -1077,7 +1084,9 @@ Here, 57139856 is the result of mema -- it refers to 1000 bytes of memory.
 To free it:
 
 
-```J>memf 57139856</lang
+```j
+memf 57139856>
+```
 
 
 
@@ -1721,7 +1730,8 @@ unsigned (long) integers.</p>
 
 '''Example'''
 
-```python>>>
+```python
+>>>
  from array import array
 >>> argslist = [('l', []), ('c', 'hello world'), ('u', u'hello \u2641'),
 	('l', [1, 2, 3, 4, 5]), ('d', [1.0, 2.0, 3.14])]
@@ -2003,7 +2013,9 @@ The example thus created can be updated using the field access functions also cr
 You don't need to explicitly de-allocate memory.  When you leave a function which has declared local variables, data stored in those local variables is released upon return.  You can also just store a null string into a variable, releasing the value that was stored in that variable previously:
 
 
-```snobol4>     newnode = </lang
+```snobol4
+     newnode =
+```
 
 
 SNOBOL4 automatically garbage collects released data items on an as-needed basis, and moves allocated items to consolidate all released space (so memory fragmentation is never a problem).  You can explicitly garbage collect if you really want to:

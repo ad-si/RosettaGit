@@ -167,7 +167,8 @@ g, HHH, 5, YY, ++, ///, \
 ## ANSI BASIC
 
 
-```ansibasic>REM
+```ansibasic
+REM>
 split
 DECLARE EXTERNAL FUNCTION FN_split$
 
@@ -517,7 +518,8 @@ g, HHH, 5, YY, ++, ///, \
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 split
 PRINT FN_split( "gHHH5YY++///\" )
 END

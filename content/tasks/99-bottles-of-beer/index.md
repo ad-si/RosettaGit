@@ -2675,7 +2675,8 @@ or another completely different one liner
 ###  Classic tag based CFML
 
 
-```cfm><cfoutput
+```cfm
+<cfoutput
 
   <cfloop index="x" from="99" to="0" step="-1">
     <cfset plur = iif(x is 1,"",DE("s"))>
@@ -2698,7 +2699,8 @@ or if you prefer:  (identical output, grammatically correct to the last stanza)
 ###  CFScript
 
 
-```cfm><cfscript
+```cfm
+<cfscript
 
   for (x=99; x gte 1; x--) {
     plur = iif(x==1,'',DE('s'));
@@ -6610,7 +6612,8 @@ tO8Mq5PINkjih-BTecQCa`qp>J~5XzW165eR,bO/L^m8[6j'D%UBdc>}`N^9x&vonF2qCSRmf>M*;J&8
 
 '''Short version''' (a just printing out the lyrics version made by Johannes E. Schindelin)''':'''
 
-```malbolge>DCBA@?
+```malbolge
+DCBA@?
 !}}{{yywwuussqqL-,+*)('&%$#c!a>v{z99wv5Ws3DpoA-lON*hg`_dc#a~_^Az>Z<;;uUN7
 R5nO2~L/JzHe@ED'`N$?\7<;:W87C54us1N`.-nm*GF43gU#dRx=_N)sK&vo4Vrqji.z,Odvh'&e7Fb"
 DlkAVhZS+Q9(7M_$o"110EhzgxFccbBNqLo\}}Y9z7gT4us1*/LKn87G(!&VeT/c?w|_M(xwY5XmVTjo
@@ -8119,7 +8122,8 @@ class Bottles {
 ## Objective-C
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()
@@ -10838,7 +10842,8 @@ const proc: main is func
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl
 ;
 import <Utilities/Sequence.sl>;
 

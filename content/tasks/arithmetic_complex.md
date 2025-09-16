@@ -1196,7 +1196,8 @@ do ->
 Complex numbers are a built-in numeric type in Common Lisp. The literal syntax for a complex number is <tt>#C(<var>real</var> <var>imaginary</var>)</tt>. The components of a complex number may be integers, ratios, or floating-point. Arithmetic operations automatically return complex (or real) numbers when appropriate:
 
 
-```lisp>
+```lisp
+>
  (sqrt -1)
 #C(0.0 1.0)
 
@@ -1208,7 +1209,8 @@ Complex numbers are a built-in numeric type in Common Lisp. The literal syntax f
 Here are some arithmetic operations on complex numbers:
 
 
-```lisp>
+```lisp
+>
  (+ #c(0 1) #c(1 0))
 #C(1 1)
 
@@ -1232,7 +1234,8 @@ Here are some arithmetic operations on complex numbers:
 Complex numbers can be constructed from real and imaginary parts using the <tt>complex</tt> function, and taken apart using the <tt>realpart</tt> and <tt>imagpart</tt> functions.
 
 
-```lisp>
+```lisp
+>
  (complex 64 (/ 3 4))
 #C(64 3/4)
 
@@ -2896,7 +2899,8 @@ $ jq -n -f complex.jq
 
 Julia has built-in support for complex arithmetic with arbitrary real types.
 
-```lb>julia
+```lb
+julia>
  z1 = 1.5 + 3im
 julia> z2 = 1.5 + 1.5im
 julia> z1 + z2
@@ -3292,7 +3296,8 @@ and many many more. The documentation states:
 Complex numbers are a primitive data type in MATLAB. All the typical complex operations can be performed. There are two keywords that specify a number as complex: "i" and "j".
 
 
-```MATLAB>>
+```matlab
+>
  a = 1+i
 
 a =
@@ -3816,7 +3821,8 @@ Float   method: >complex  self 0 Complex new ;
 Usage :
 
 
-```Oforth>3.2
+```oforth
+3.2
 complex I * 2 >complex + .cr
 2 3 Complex new  1.2 >complex + .cr
 2 3 Complex new  1.2 >complex * .cr
@@ -4805,7 +4811,8 @@ EndIf
 
 
 
-```python>>>
+```python
+>>
  z1 = 1.5 + 3j
 >>> z2 = 1.5 + 1.5j
 >>> z1 + z2
@@ -5067,7 +5074,8 @@ package ArithmeticComplex {
 Usage example:
 
 
-```scala>scala
+```scala
+scala
  import org.rosettacode.ArithmeticComplex._
 import org.rosettacode.ArithmeticComplex._
 
@@ -5566,7 +5574,9 @@ TI-89 BASIC has built-in complex number support; the normal arithmetic operators
 
 The choice of examples here is {{trans|Common Lisp}}.
 
-<!--lang ti89b--><pre style="font-family: 'TI Uni';">■ √(–1)                    
+<!--lang ti89b-->
+```txt
+■ √(–1)                    
 ■ ^2                     —1
 ■  + 1                1 + 
 ■ (1+) * 2          2 + 2*
@@ -5580,7 +5590,9 @@ The choice of examples here is {{trans|Common Lisp}}.
 
 Complex numbers can also be entered and displayed in polar form. (This example shows input in polar form while the complex display mode is rectangular and the angle mode is radians).
 
-<!--lang ti89b--><pre style="font-family: 'TI Uni';">■ (1∠π/4)
+<!--lang ti89b-->
+```txt
+■ (1∠π/4)
            √(2)/2 + √(2)/2*
 ```
 

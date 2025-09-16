@@ -2069,7 +2069,8 @@ msg.toLocaleLowerCase() ==> alphabeta
 ## Julia
 
 
-```julia>julia
+```julia
+julia>
  uppercase("alphaBETA")
 "ALPHABETA"
 
@@ -2275,7 +2276,8 @@ gives:
 ## MATLAB
 
 
-```MATLAB>>
+```MATLAB
+>>
  upper('alphaBETA')
 
 ans =
@@ -2786,7 +2788,8 @@ Iterating through the peerset
 
 Same code in padded-out, variable-length English dialect
 
-```sgml><# ENUMERATION LAMBDA LIST PEERSET LITERAL LITERAL
+```sgml
+<# ENUMERATION LAMBDA LIST PEERSET LITERAL LITERAL>
 UPP|
 [<# SAY ELEMENT LIST>...</#>] <# SAY HELP ELEMENT LIST>...</#><# DEFINE KEYWORD ELEMENT LIST>__SuperMacro|...</#>
 <# SAY SUPERMACRO LITERAL>alphaBETA</#>

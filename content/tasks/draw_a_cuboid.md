@@ -1765,7 +1765,9 @@ end
 
 Example call to achieve task:
 
-```logo>cuboid 50 100 150</lang
+```logo
+cuboid 50 100 150>
+```
 
 
 

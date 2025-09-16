@@ -1553,7 +1553,8 @@ end
 Here's a test:
 
 
-```j>replengths=:
+```j
+replengths=:>
 :@i.@<.@-:@#
 rep=: $@] $ $
 
@@ -2563,7 +2564,8 @@ foreach (qw(1001110011 1110111011 0010010010 1010101010 1111111111 0100101101 01
 ## Perl 6
 
 
-```perl6>for <1001110011 1110111011 0010010010 1010101010 1111111111 0100101101 0100100 101 11 00 1
+```perl6
+for <1001110011 1110111011 0010010010 1010101010 1111111111 0100101101 0100100 101 11 00 1>
  {
     if /^ (.+) $0+: (.*$) <?{ $0.substr(0,$1.chars) eq $1 }> / {
 	my $rep = $0.chars;
@@ -2958,7 +2960,8 @@ for line in matchstr.split():
 
 This returns all the possible repeated substrings
 
-```python>>>
+```python
+>>>
  def reps(text):
     return [text[:x] for x in range(1, 1 + len(text) // 2)
             if text.startswith(text[x:])]

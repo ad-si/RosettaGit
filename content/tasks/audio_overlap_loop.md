@@ -24,7 +24,7 @@ Optionally take parameters for delay between repetitions, and decay (fractional 
 
 ## Go
 
-As Go does not have any audio support in its standard library, this invokes the SoX utility's 'play' command with the appropriate parameters to achieve the 'echo chamber' effect. 
+As Go does not have any audio support in its standard library, this invokes the SoX utility's 'play' command with the appropriate parameters to achieve the 'echo chamber' effect.
 
 ```go
 package main
@@ -75,14 +75,14 @@ func main() {
     }
 
     args := []string{fileName, "echo", "0.8", "0.7"}
-    decay2 := 1.0    
+    decay2 := 1.0
     for i := 1; i <= reps; i++ {
         delayStr := strconv.Itoa(i * delay)
         decay2 *= decay
-        decayStr := strconv.FormatFloat(decay2, 'f', -1, 64)        
-        args = append(args, delayStr, decayStr)        
+        decayStr := strconv.FormatFloat(decay2, 'f', -1, 64)
+        args = append(args, delayStr, decayStr)
     }
-    cmd := exec.Command("play", args...)    
+    cmd := exec.Command("play", args...)
     err := cmd.Run()
     check(err)
 }
@@ -91,7 +91,8 @@ func main() {
 
 =={{header|JavaScript}}/{{header|HTML}}==
 
-```JavaScript><script
+```javascript
+<script
 
 var j = prompt("Enter the sound manipulation level you want", "");
 for(i=0; i<j; i++) {

@@ -1934,7 +1934,8 @@ sub radix {
 
 To test, add the following lines:
 
-```perl>use Test::More tests =
+```perl
+use Test::More tests =>
  1000;
 
 for (1 .. 1000) {

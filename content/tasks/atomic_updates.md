@@ -2429,7 +2429,8 @@ Current values: 9412276676 [941147294, 941232689, 941132597, 941330728, 94128170
 
 Lasso thread objects are thread-safe by design.
 
-```lasso>define atomic =
+```lasso
+define atomic =
  thread {
     data
         private buckets = staticarray_join(10, void),

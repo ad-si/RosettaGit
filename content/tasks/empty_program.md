@@ -269,7 +269,9 @@ jmp $
 ## 8086 Assembly
 
 
-```asm>end</lang
+```asm
+end>
+```
 
 
 However, if the program needs to exit with an exit code of zero:
@@ -330,7 +332,8 @@ end;
 
 Actually nothing is valid code, too.
 
-```agena></lang
+```agena>
+```
 
 
 
@@ -338,7 +341,8 @@ Actually nothing is valid code, too.
 
 The nil input is a valid program.
 
-```aime></lang
+```aime>
+```
 
 
 
@@ -365,7 +369,9 @@ The nil input is a valid program.
 ###  BOLD form
 
 
-```algol68>SKIP</lang
+```algol68
+SKIP
+```
 
 
 
@@ -393,7 +399,9 @@ ENDPROC
 
 An empty .scpt file is considered the smallest runnable code, but the following would also be acceptable.
 
-```applescript>return</lang
+```applescript
+return
+```
 
 
 
@@ -401,7 +409,8 @@ An empty .scpt file is considered the smallest runnable code, but the following 
 
 The empty string or file are valid and do nothing.
 
-```Argile></lang
+```Argile>
+```
 
 
 
@@ -432,7 +441,9 @@ YOU HAVE BEEN TERMINATED
 
 An empty script would be enough. Adding "#Persistent" makes it persistent.
 
-```AutoHotkey>#Persistent</lang
+```AutoHotkey
+#Persistent>
+```
 
 
 
@@ -440,7 +451,9 @@ An empty script would be enough. Adding "#Persistent" makes it persistent.
 
 A single comment can be considered a valid program that does nothing.
 
-```AutoIt>;nothing</lang
+```AutoIt
+;nothing>
+```
 
 
 
@@ -450,7 +463,9 @@ The empty string (or file) is recognised as valid program that does nothing.
 
 The program
 
-```awk>    1</lang
+```awk
+    1>
+```
 
 is the simplest useful program, equivalent to
 
@@ -479,11 +494,15 @@ Most Axe examples omit the executable name, but it is shown in this example for 
 
 An empty file is a correct program. It won't be near empty as an executable file, though.
 
-```qbasic></lang
+```qbasic
+
+```
 
 On the ZX Spectrum, we can have a completely empty program with no lines. Here we attempt to run the empty program:
 
-```basic>RUN</lang
+```basic
+RUN>
+```
 
  0 OK, 0:1
 
@@ -491,7 +510,8 @@ On the ZX Spectrum, we can have a completely empty program with no lines. Here w
 ## Applesoft BASIC
 =
 
-```ApplesoftBasic></lang
+```ApplesoftBasic>
+```
 
 
 
@@ -499,11 +519,14 @@ On the ZX Spectrum, we can have a completely empty program with no lines. Here w
 
 On Windows XP and older, an empty batch file is syntactically correct and does nothing.
 
-```dos></lang
+```dos>
+```
 
 But on Windows 7, an empty .bat file is not recognized and thus a character must exist in it. Some valid characters are <code>: @ %</code>
 
-```dos>:</lang
+```dos
+:>
+```
 
 
 
@@ -511,7 +534,8 @@ But on Windows 7, an empty .bat file is not recognized and thus a character must
 
 In BBC BASIC an empty program is syntactically correct.
 
-```bbcbasic></lang
+```bbcbasic>
+```
 
 
 
@@ -531,7 +555,9 @@ An empty file is a valid program.
 (create 6 bees moving in all 6 cardinal directions)
 or
 
-```beeswax>\</lang
+```beeswax
+\
+```
 
 (create 2 bees moving in “northwest” and “southeast” directions)
 or
@@ -543,7 +569,9 @@ _
 (create 2 bees moving left and right)
 or
 
-```beeswax>/</lang
+```beeswax
+/
+```
 
 (create 2 bees moving in “northeast” and “southwest” directions)
 
@@ -611,7 +639,9 @@ Empty program
 
 Pressing enter from the mged prompt, just returns another prompt, so I suppose that is the smallest possible program. However, before we can draw anything we at least need to open a database:
 
-```mged>opendb empty.g y</lang
+```mged
+opendb empty.g y>
+```
 
 
 
@@ -672,14 +702,17 @@ An empty file is the simplest valid Clojure program.
 
 ## COBOL
 
-```cobol></lang
+```cobol
+
+```
 
 
 
 ## CoffeeScript
 
 
-```coffeescript></lang
+```coffeescript>
+```
 
 
 
@@ -709,7 +742,9 @@ END Main.
 
 The smallest legal program is a single Stop instruction.
 
-```czasm>        STP</lang
+```czasm
+        STP>
+```
 
 
 
@@ -748,7 +783,8 @@ An empty file is a valid program.
 
 =={{header|Déjà Vu}}==
 
-```dejavu></lang
+```dejavu>
+```
 
 Shortest module that works with <code>!import</code>:
 
@@ -782,7 +818,9 @@ The shortest possible program:
 
 This is equivalent to:
 
-```e>null</lang
+```e
+null
+```
 
 
 
@@ -911,7 +949,9 @@ public program()
 ## Elixir
 
 
-```elixir></lang
+```elixir
+
+```
 
 
 
@@ -973,17 +1013,21 @@ END MODULE;
 ## Euphoria
 
 
-```Euphoria></lang
+```Euphoria>
+```
 
 
 =={{header|F_Sharp|F#}}==
 F# has an interactive mode and a compiled mode. The interactive interpreter will accept an empty file so the shortest valid program is an empty zero-length file with the .fsx extension.
 
-```fsharp></lang
+```fsharp
+
+```
 
 An empty compiled program is:
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint
 ]
 let main args = 0
 ```
@@ -993,7 +1037,8 @@ let main args = 0
 ## Factor
 
 
-```factor></lang
+```factor>
+```
 
 If you want to deploy a stand-alone application, that doesn't suffice though. Here's another version.
 
@@ -1025,7 +1070,8 @@ Prints nothing.
 ## FALSE
 
 
-```false></lang
+```false>
+```
 
 
 
@@ -1087,12 +1133,15 @@ END EVENTS</span>
 
 Actually the shortest valid program is a space (not empty file!), which is an infinite loop, though. (It keeps looping around)
 
-```Fish> </lang
+```Fish>
+```
 
 An empty program is invalid; the interpreter will give an error.<br/>
 The shortest program that will actually finish is a <tt>;</tt>, which will end the program immediately:
 
-```Fish>;</lang
+```Fish
+;>
+```
 
 
 =={{header|Fōrmulæ}}==
@@ -1107,25 +1156,33 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 ## Forth
 
 
-```forth></lang
+```forth
+
+```
 
 For a Forth script to be used from a shell, you usually want the last command to be BYE in order to exit the interpreter when finished.
 
-```forth>bye</lang
+```forth
+bye
+```
 
 
 
 ## Fortran
 
 
-```fortran>       end</lang
+```fortran
+       end
+```
 
 
 ## FreeBASIC
 
 A completely empty program compiles and runs fine:
 
-```freebasic></lang
+```freebasic
+>
+```
 
 
 
@@ -1133,7 +1190,8 @@ A completely empty program compiles and runs fine:
 
 Empty programs are valid, but are useless.
 
-```fishshell></lang
+```fishshell>
+```
 
 
 
@@ -1141,7 +1199,8 @@ Empty programs are valid, but are useless.
 
 Empty programs are valid.
 
-```frink></lang
+```frink>
+```
 
 
 
@@ -1149,7 +1208,8 @@ Empty programs are valid.
 
 An empty text file is a valid FunL program that does nothing.
 
-```funl></lang
+```funl>
+```
 
 
 
@@ -1183,7 +1243,8 @@ end
 
 Empty programs are valid.
 
-```gecho></lang
+```gecho>
+```
 
 
 
@@ -1191,7 +1252,8 @@ Empty programs are valid.
 
 An empty program will copy input stream to output stream unchanged.
 
-```gema></lang
+```gema>
+```
 
 
 
@@ -1227,7 +1289,8 @@ func main() { }
 ## Groovy
 
 
-```groovy></lang
+```groovy>
+```
 
 
 
@@ -1327,14 +1390,18 @@ end
 ## IDL
 
 
-```idl>end</lang
+```idl
+end
+```
 
 
 
 ## Inform 7
 
 
-```inform7>X is a room</lang
+```inform7
+X is a room>
+```
 
 Inform 7 is a language built for making interactive fiction, so a room needs to be defined for the player to start in.
 
@@ -1342,7 +1409,9 @@ Inform 7 is a language built for making interactive fiction, so a room needs to 
 ## Intercal
 
 
-```intercal>PLEASE GIVE UP</lang
+```intercal
+PLEASE GIVE UP>
+```
 
 
 
@@ -1435,7 +1504,9 @@ The empty file is a valid program.
 ## Joy
 
 
-```joy>.</lang
+```joy
+.
+```
 
 
 
@@ -1444,7 +1515,9 @@ The empty file is a valid program.
 The “empty” filter ignores its input and outputs nothing.
 
 
-```jq>empty</lang
+```jq
+empty
+```
 
 
 
@@ -1452,7 +1525,9 @@ The “empty” filter ignores its input and outputs nothing.
 
 Julia accepts an empty file as a program.
 
-```Julia></lang
+```julia
+
+```
 
 
 ```txt
@@ -1496,7 +1571,9 @@ fun main(a: Array<String>) {}
 ## Lang5
 
 
-```Lang5>exit</lang
+```Lang5
+exit>
+```
 
 
 
@@ -1509,10 +1586,14 @@ Lasso will parse any file thrown at it. It will ignore everything except what's 
 ```
 
 
-```Lasso><?lasso  ?></lang
+```lasso
+<?lasso  ?>
+```
 
 
-```Lasso><?=  ?></lang
+```lasso
+<?=  ?>
+```
 
 
 
@@ -1531,14 +1612,18 @@ Lasso will parse any file thrown at it. It will ignore everything except what's 
 
 The only thing you absolutely need is a directive telling the assembler to stop assembling code (which in this case it has not actually started doing).
 
-```lc3asm>        .END</lang
+```lc3asm
+        .END>
+```
 
 
 
 ## Liberty BASIC
 
 
-```lb>end</lang
+```lb
+end
+```
 
 
 
@@ -1581,7 +1666,8 @@ An input file should really have a basic structure as follows. The compiler auto
 
 "Program" doesn't really apply to Lingo. A Director projector (exe/app) doesn't have to contain any scripts/code. For scripts, the shortest possible code is:
 
-```lingo></lang
+```lingo>
+```
 
 
 
@@ -1589,14 +1675,17 @@ An input file should really have a basic structure as follows. The compiler auto
 
 Most Lisp dialects, including Common Lisp, will accept no text (no forms) as a valid program.
 
-```lisp></lang
+```lisp
+
+```
 
 
 
 ## Logo
 
 
-```logo></lang
+```logo>
+```
 
 or end a standalone script with "bye"
 
@@ -1617,7 +1706,8 @@ As with [[Forth]], an empty file is the shortest program. To exit the interprete
 ## Lua
 
 
-```Lua></lang
+```Lua>
+```
 
 
 
@@ -1686,19 +1776,24 @@ We can save it scrabbled text using Save "empty" @, A (not readable, but environ
 ## M4
 
 
-```M4></lang
+```M4>
+```
 
 
 
 ## Maple
 
 
-```Maple></lang
+```maple
+
+```
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
-```Mathematica></lang
+```mathematica
+
+```
 
 
 
@@ -1729,14 +1824,17 @@ An empty MAXScript file returns "OK" on execution
 ## Metafont
 
 
-```metafont>end</lang
+```metafont
+end
+```
 
 
 
 ## Microsoft Small Basic
 
 
-```smallbasic></lang
+```smallbasic>
+```
 
 ```txt
 
@@ -1746,14 +1844,16 @@ An empty MAXScript file returns "OK" on execution
 
 ## min
 
-```min></lang
+```min>
+```
 
 
 
 ## MiniScript
 
 
-```MiniScript></lang
+```MiniScript>
+```
 
 
 =={{header|MK-61/52}}==
@@ -1779,7 +1879,8 @@ main: 	li 	$v0, 10
 ## ML/I
 
 
-```ML/I></lang
+```ML/I>
+```
 
 
 
@@ -1826,12 +1927,15 @@ The empty file is a valid program.
 ## N/t/roff
 
 
-```N/t/roff></lang
+```N/t/roff>
+```
 
 
 An empty input file is valid, but if the output is Postscript or PDF, most PDF viewers will suffer.  However, that's the PDF viewer's fault; the typesetter is still okay with an empty file.  If one wants grace for the PDF viewers, import a macro that, at the very least, defines some proper margins and pagination as in the following code:
 
-```N/t/roff>.mso me.tmac</lang
+```N/t/roff
+.mso me.tmac>
+```
 
 
 
@@ -1839,7 +1943,9 @@ An empty input file is valid, but if the output is Postscript or PDF, most PDF v
 
 Compiles with warnings:
 
-```Nemerle>null</lang
+```nemerle
+null
+```
 
 Compiles without warnings (so, more correct):
 
@@ -1860,7 +1966,9 @@ The following two samples both generate valid programs.
 
 This minimal example requires that the file be named to match the class:
 
-```NetRexx>class empty</lang
+```NetRexx
+class empty>
+```
 
 
 This example will generate its class based on the file name:
@@ -1874,7 +1982,9 @@ method main(args = String[]) static
 ## NewLISP
 
 
-```NewLISP>; </lang
+```NewLISP
+;>
+```
 
 
 
@@ -1924,7 +2034,8 @@ int main(int argc, const char **argv) {
 
 The minimal ''empty'' Cocoa/OpenStep application, useful as life-support for many examples given at RosettaCode, is
 
-```objc>#import <Cocoa/Cocoa.h
+```objc
+#import <Cocoa/Cocoa.h
 
 
 int main( int argc, const char *argv[] )
@@ -1940,7 +2051,9 @@ int main( int argc, const char *argv[] )
 
 ## OCaml
 
-```ocaml>;;</lang
+```ocaml
+;;
+```
 
 
 Actually, the smallest possible correct program in OCaml is an empty source file.
@@ -1957,7 +2070,9 @@ An empty text file can be a valid empty program, but since Octave has the concep
 An empty file is a valid oforth file
 
 
-```Oforth>oforth empty.of</lang
+```oforth
+oforth empty.of
+```
 
 
 Without file, interpreter can just evaluate bye :
@@ -1972,7 +2087,8 @@ oforth --P"bye"
 
 The Compiler will accept an empty file:
 
-```ooc></lang
+```ooc>
+```
 
 
 
@@ -2011,7 +2127,9 @@ The smallest possible program is a single space character:
 
 The simplest 'program' that can be compiled is a file which contains a single expression.
 
-```oz>unit</lang
+```oz
+unit>
+```
 
 Such a 'program' cannot be executed, though.
 
@@ -2031,7 +2149,9 @@ end
 ## PARI/GP
 
 
-```parigp></lang
+```parigp
+
+```
 
 
 
@@ -2047,7 +2167,9 @@ end.
 
 The first line is not necessary in modern Pascal dialects. With today's most compilers, the empty program is just:
 
-```pascal>begin end.</lang
+```pascal
+begin end.>
+```
 
 
 
@@ -2057,7 +2179,9 @@ The first line is not necessary in modern Pascal dialects. With today's most com
 The empty program is valid and does nothing but return a successful exit code:
 
 
-```perl></lang
+```perl
+
+```
 
 
 Of course, this then requires you to specify the interpreter on the command line (i.e. <code>perl empty.pl</code>). So slightly more correct as a stand-alone program, is:
@@ -2076,17 +2200,23 @@ The smallest possible Perl one-liner is <code>perl -e0</code>.
 
 The empty program is valid and does nothing but return a successful exit code:
 
-```perl6></lang
+```perl6
+
+```
 
 
 It is also possible to just specify that the program is written in Perl6:
 
-```perl6>use v6;</lang
+```perl6
+use v6;
+```
 
 
 or even:
 
-```perl6>v6;</lang
+```perl6
+v6;
+```
 
 
 
@@ -2153,7 +2283,9 @@ END;
 ## plainTeX
 
 
-```tex>\bye</lang
+```tex
+\bye>
+```
 
 
 
@@ -2161,7 +2293,9 @@ END;
 
 Pop11 has two compilers, incremental and batch compiler.  For the incremental compiler one can use just empty program text (empty file), or a file containing nothing but a comment, e.g.
 
-```pop11>;;; This is a valid Pop11 program that does absolutely nothing.</lang
+```pop11
+;;; This is a valid Pop11 program that does absolutely nothing.>
+```
 
 The batch compiler generates an executable which starts at a given entry point, so one should provide an empty function. If one wants program that works the same both with incremental compiler and batch compiler the following may be useful:
 
@@ -2222,11 +2356,15 @@ An empty script block.  A script block is a nameless (lamda) function.
 
 This is an acceptable program:
 
-```ProDOS>IGNORELINE</lang
+```ProDOS
+IGNORELINE>
+```
 
 But also you could include a delimiter character recognized by the compiler/interpreter:
 
-```ProDOS>;</lang
+```ProDOS
+;>
+```
 
 
 
@@ -2246,7 +2384,8 @@ END
 
 An empty file is a correct PureBasic program that does nothing.
 
-```PureBasic></lang
+```PureBasic>
+```
 
 
 
@@ -2304,7 +2443,8 @@ REBOL []
 An empty file is the smallest valid program.
 
 
-```Retro></lang
+```Retro>
+```
 
 
 
@@ -2324,7 +2464,9 @@ other scripting languages are also considered an empty program.
 
 This program can be empty (no characters),   or a program with (only) one or more blanks.
 
-```rexx></lang
+```rexx
+
+```
 
 
 
@@ -2347,14 +2489,16 @@ REXX on MVS/TSO requires REXX to be within a REXX comment that begins on the fir
 ## Ring
 
 
-```ring></lang
+```ring>
+```
 
 
 
 ## Robotic
 
 
-```robotic></lang
+```robotic>
+```
 
 
 
@@ -2398,14 +2542,17 @@ object emptyProgram extends App {}
 ## Scheme
 
 
-```scheme></lang
+```scheme
+
+```
 
 
 
 ## Scilab
 
 
-```scilab></lang
+```scilab>
+```
 
 
 
@@ -2430,7 +2577,9 @@ const proc: main is noop;
 ## Sidef
 
 
-```ruby></lang
+```ruby
+
+```
 
 
 
@@ -2446,7 +2595,8 @@ END
 ## Slate
 
 
-```slate></lang
+```slate>
+```
 
 
 
@@ -2463,7 +2613,9 @@ END
 
 A valid program requires an '''end''' label. The shortest (virtually empty) program is then:
 
-```snobol>end</lang
+```snobol
+end>
+```
 
 
 
@@ -2476,7 +2628,9 @@ A valid program requires an '''end''' label. The shortest (virtually empty) prog
 ## Sparkling
 
 
-```Sparkling></lang
+```sparkling
+>
+```
 
 
 
@@ -2572,14 +2726,18 @@ and has the effect of putting the machine into an infinite loop.
 
 The smallest program that will terminate is:
 
-```ssem>00000000000001110000000000000000   0. Stop</lang
+```ssem
+00000000000001110000000000000000   0. Stop>
+```
 
 
 
 ## Standard ML
 
 
-```sml>;</lang
+```sml
+;
+```
 
 
 Actually, the smallest possible correct program in Standard ML is an empty source file.
@@ -2618,14 +2776,17 @@ function () { }
 ## Swift
 
 
-```Swift></lang
+```swift
+
+```
 
 
 
 ## Symsyn
 
 
-```Symsyn></lang
+```Symsyn>
+```
 
 
 
@@ -2633,7 +2794,9 @@ function () { }
 
 Nothing is mandatory in Tcl, so an empty file named <tt>nothing.tcl</tt> would be a valid "empty program".
 
-```tcl></lang
+```tcl
+
+```
 
 
 =={{header|TI-83 BASIC}}==
@@ -2681,7 +2844,8 @@ Again, to exit the listener, you will still need user input if this is not follo
 ## Trith
 
 
-```trith></lang
+```trith>
+```
 
 
 
@@ -2720,7 +2884,8 @@ $$ MODE TUSCRIPT
 
 The Cygnus/X Ursa interpreter has no problems with empty files, so the shortest program is an empty file.
 
-```ursa></lang
+```ursa>
+```
 
 
 
@@ -2748,7 +2913,8 @@ An empty .vbs file is considered the smallest runnable code, but the following (
 
 An empty file is the smallest valid script, but running it does nothing.
 
-```verbexx></lang
+```verbexx>
+```
 
 
 
@@ -2823,7 +2989,8 @@ An empty 'file' is a valid WDTE script. That being said, WDTE has no inherent co
 ## Wee Basic
 
 
-```Wee Basic></lang
+```Wee Basic>
+```
 
 
 
@@ -2865,7 +3032,9 @@ An empty file compiles and builds an EXE file with a single RET instruction, but
 ## XQuery
 
 
-```xquery>.</lang
+```xquery
+.>
+```
 
 The dot selects the current context node and returns it unchanged.
 

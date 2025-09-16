@@ -530,7 +530,8 @@ Works with 1k of RAM.
 
 {{trans|APL}}
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 entropy
 PRINT FNentropy("1223334444")
 END
@@ -2026,7 +2027,8 @@ end;
 
 {{out|Usage}}
 
-```MATLAB>
+```matlab
+
  entropy('1223334444')
 ans =  1.8464
 ```
@@ -2896,7 +2898,8 @@ Sym	hi	fi	Inf
 The <tt>Counter</tt> module is only available in Python >= 2.7.
 
 
-```python>>>
+```python
+>>
  import math
 >>> from collections import Counter
 >>>

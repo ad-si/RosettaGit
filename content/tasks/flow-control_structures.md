@@ -244,7 +244,8 @@ The return from interrupt instruction pops the flags off the stack, pops the ret
 ### goto
 
 
-```ada><<Top>
+```ada
+<<Top>
 
    Put_Line("Hello, World");
    goto Top;
@@ -1544,7 +1545,9 @@ on_ioerror, test
 
 
 
-```idl>break</lang
+```idl
+break
+```
 
 
 immediately terminates the innermost current loop (or <tt>if</tt> or <tt>case</tt> etc)
@@ -1554,7 +1557,9 @@ immediately terminates the innermost current loop (or <tt>if</tt> or <tt>case</t
 
 
 
-```idl>continue</lang
+```idl
+continue
+```
 
 
 immediately starts the next iteration of the current innermost loop
@@ -1845,7 +1850,9 @@ errcatch(..., error("Bad luck!"), ...);
 GOTO LABEL^ROUTINE
 ```
 . This does not affect the subroutine stack, only the program pointer.</p>
-```MUMPS>GOTO THERE</lang
+```MUMPS
+GOTO THERE>
+```
 
 
 
@@ -1868,7 +1875,9 @@ On the Cache variant of MUMPS, there is a $HALT special variable that can be set
 JOB LABEL^ROUTINE
 ```
 .
-```MUMPS>JOB THERE</lang
+```MUMPS
+JOB THERE>
+```
  This does not affect the subroutine stack, nor the program pointer in the current job. Since MUMPS is a multi-processing (rather than multi-threading) language, the new job is independent of the current job.</p>
 
 ```MUMPS
@@ -2057,17 +2066,23 @@ Oforth does not have goto statement.
 
 break allows to break the current loop :
 
-```Oforth>break</lang
+```oforth
+break
+```
 
 
 continue allows to immediately start a new iteration :
 
-```Oforth>continue</lang
+```oforth
+continue
+```
 
 
 perform is a method that transfer execution to the runnable on top of the stack, then returns :
 
-```Oforth>perform</lang
+```oforth
+perform
+```
 
 
 
@@ -2225,7 +2240,9 @@ Phasers are blocks that are transparent to the normal control flow but that are 
 ### goto
 
 
-```perl6>TOWN: goto TOWN;</lang
+```perl6
+TOWN: goto TOWN;
+```
 
 Labels that have not been defined yet must be enclosed in quotes.
 
@@ -2573,7 +2590,9 @@ return ends execution of current function. In simplest form
 it is just:
 
 
-```pop11>return;</lang
+```pop11
+return;>
+```
 
 
 but it is also possible to specify one or more return values:
@@ -3752,7 +3771,9 @@ no matter what other code might be running at the time (i.e. "<tt>after</tt>"; s
 The scheduled task can be removed from the scheduler for example with
 
 
-```tcl>after cancel myroutine</lang
+```tcl
+after cancel myroutine
+```
 
 
 (other ways are possible).

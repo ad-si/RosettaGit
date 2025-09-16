@@ -137,7 +137,9 @@ Demonstrate the language's ability to include source code from other files.
 
 The COPY instruction includes source statements from the SYSLIB library.
 
-```360asm>         COPY  member</lang
+```360asm
+         COPY  member>
+```
 
 
 
@@ -661,7 +663,9 @@ This is a parser-level construct and so must be a literal filename, not a variab
 
 This will cause the program called OTHER to be parsed as if it was contained in the source code instead of this line.
 
-```axe>prgmOTHER</lang
+```axe
+prgmOTHER>
+```
 
 
 
@@ -669,7 +673,9 @@ This will cause the program called OTHER to be parsed as if it was contained in 
 
 ''other.bac''
 
-```freebasic>other = 42</lang
+```freebasic
+other = 42>
+```
 
 ''including.bac''
 
@@ -820,7 +826,9 @@ COPY "another-copy.cpy" REPLACING foo BY bar
 
 D has a module system, so usually there is no need of a textual inclusion of a text file:
 
-```d>import std.stdio;</lang
+```d
+import std.stdio;>
+```
 
 
 To perform a textual inclusion:
@@ -957,7 +965,9 @@ USING: vocaba vocabb... ;
 ## Forth
 
 
-```forth>include matrix.fs</lang
+```forth
+include matrix.fs
+```
 
 
 Other Forth systems have a smarter word, which protects against multiple inclusion.  The name varies: '''USES''', '''REQUIRE''',  '''NEEDS'''.
@@ -1287,7 +1297,9 @@ Sorry: Your browser cannot show the included content.</iframe>
 There is an unofficial tag, but this will be ignored by most browsers:
 
 
-```html><include>foobar.html</include></lang
+```html
+<include>foobar.html</include>
+```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
@@ -1503,11 +1515,15 @@ or alternatively <code>include_string</code> executes code in a string as if it 
 
 Julia also has a module system:
 
-```Julia>import MyModule</lang
+```julia
+import MyModule
+```
 
 imports the content of the module <code>MyModule.jl</code> (which should be of the form <code>module MyModule ... end</code>, whose symbols can be accessed as <code>MyModule.variable</code>, or alternatively
 
-```Julia>using MyModule</lang
+```julia
+using MyModule
+```
 
 will import the module and all of its exported symbols
 
@@ -1759,7 +1775,9 @@ FROM Str IMPORT T
 
 To include classes, static methods etc. from other namespaces, include those namespaces with the <tt>using</tt> keyword
 
-```Nemerle>using System.Console;</lang
+```nemerle
+using System.Console;
+```
 
 <tt>using</tt> is for accessing code that has already been compiled into libraries. Nemerle also allows for creating
 <tt>partial</tt> classes (and structs), the source code of which may be split amongst several files as long as the class is
@@ -1836,7 +1854,9 @@ In order to load a file with name filename :
 
 In order to load a package with name pack :
 
-```Oforth>import: pack</lang
+```oforth
+import: pack
+```
 
 
 
@@ -1935,7 +1955,9 @@ expression evaluated.
 Perl 6 provides a module system that is based primarily on importation of symbols rather than
 on inclusion of textual code:
 
-```perl6>use MyModule;</lang
+```perl6
+use MyModule;
+```
 
 However, one can evaluate code from a file:
 
@@ -1961,7 +1983,9 @@ include('myfile.p6');
 ## Phix
 
 
-```Phix>include arwen.ew</lang
+```phix
+include arwen.ew
+```
 
 Phix also supports relative directory includes, for instance if you include "..\demo\arwen\arwen.ew" then anything that arwen.ew includes will be looked for in the appropriate directory.
 
@@ -2106,7 +2130,9 @@ IncludeBinary "Filename"
 Python supports the use of [http://docs.python.org/library/functions.html#execfile execfile] to allow code from arbitrary files to be executed from a program (without using its modules system).
 
 
-```Python>import mymodule</lang
+```python
+import mymodule
+```
 
 
 includes the content of mymodule.py
@@ -2114,7 +2140,9 @@ includes the content of mymodule.py
 Names in this module can be accessed as attributes:
 
 
-```Python>mymodule.variable</lang
+```python
+mymodule.variable
+```
 
 
 
@@ -2361,11 +2389,15 @@ include Some::Name;
 
 there is no such thing as source-file inclusion in Smalltalk. However, in a REPL or anywhere in code, source code can be loaded with:
 
-```smalltalk>aFilename asFilename readStream fileIn</lang
+```smalltalk
+aFilename asFilename readStream fileIn
+```
 
 or:
 
-```smalltalk>Smalltalk fileIn: aFilename</lang
+```smalltalk
+Smalltalk fileIn: aFilename
+```
 
 In Smalltalk/X, which supports binary code loading, aFilename may either be sourcecode or a dll containing a precompiled class library.
 
@@ -2405,7 +2437,9 @@ source "foobar.tcl"
 
 Note that it is more usually considered good practice to arrange code into ''packages'' that can be loaded in with more regular semantics (including version handling, only-once semantics, integration of code written in other languages such as [[C]], etc.)
 
-```tcl>package require foobar 1.3</lang
+```tcl
+package require foobar 1.3
+```
 
 In the case of packages that are implemented using Tcl code, these will actually be incorporated into the program using the <code>source</code> command, though this is formally an implementation detail of those packages.
 
@@ -2415,14 +2449,18 @@ In the case of packages that are implemented using Tcl code, these will actually
 
 With Bourne-compatible shells, the ''dot operator'' includes another file.
 
-```bash>. myfile.sh    # Include the contents of myfile.sh </lang
+```bash
+. myfile.sh    # Include the contents of myfile.sh>
+```
 
 
 =
 ## C Shell
 =
 
-```csh>source myfile.csh</lang
+```csh
+source myfile.csh>
+```
 
 
 =

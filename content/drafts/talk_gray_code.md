@@ -30,7 +30,8 @@ Someone has just modified the Python bin2int function to use intermediate 'strin
 
 I did time the two versions of bin2int and the new version (bintint2 below) is 3 times slower so there is a cost.
 
-```python>>>
+```python
+>>>
  Timer('for b in n: bin2int(b)', setup).repeat(1)
 [6.267737098708267]
 >>> setup = '''

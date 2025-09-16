@@ -1431,7 +1431,8 @@ io.write(chineseRemainder(n, a))
 
 This is a Maple built-in procedure, so it is trivial:
 
-```Maple>
+```maple
+
  chrem( [2, 3, 2], [3, 5, 7] );
                                            23
 
@@ -1456,7 +1457,8 @@ function f = chineseRemainder(r, m)
   f = s .* t * r';
 ```
 
-```MATLAB>>
+```matlab
+>
  chineseRemainder([2 3 2], [3 5 7])
  ans = 23
 ```

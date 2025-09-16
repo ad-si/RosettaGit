@@ -537,7 +537,8 @@ SplashTextOn, 100, 100, Rosetta Code, Goodbye, World!
 ## AutoIt
 
 
-```autoit>#include <GUIConstantsEx.au3
+```autoit
+#include <GUIConstantsEx.au3>
 
 
 $hGUI = GUICreate("Hello World") ; Create the main GUI
@@ -1239,7 +1240,8 @@ notify-user("hello world!", frame: make(<frame>));
 This is a complete application. If it were part of a larger application, the portions related to <code>interp</code> would be removed.
 
 
-```e>def <widget
+```e
+def <widget>
  := <swt:widgets.*>
 def SWT := <swt:makeSWT>
 
@@ -3921,7 +3923,8 @@ alert "Goodbye, World!"
 ## Red
 
 
-```Red>>
+```Red
+>>
  view [ text "Hello World !"]
 ```
 
@@ -4750,7 +4753,8 @@ The output is an SVG document. The idea is that it's straightforward to use XSLT
 Sample input:
 
 
-```xml><message
+```xml
+<message>
 Goodbye, World!</message>
 ```
 

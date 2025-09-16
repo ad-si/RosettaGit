@@ -355,7 +355,8 @@ end.
 
 To find the word size:
 
-```erlang>1
+```erlang
+1>
  erlang:system_info(wordsize).
 4
 ```
@@ -366,7 +367,8 @@ As such, there is no function to find endianness.
 However, one could write one by using bit syntax, setting endianness and then comparing to the native format:
 
 
-```erlang>1
+```erlang
+1>
  <<1:4/native-unit:8>>.
 <<1,0,0,0>>
 2> <<1:4/big-unit:8>>
@@ -1390,7 +1392,8 @@ EndIf
 ## Python
 
 
-```python>>>
+```python
+>>>
  import platform, sys, socket
 >>> platform.architecture()
 ('64bit', 'ELF')

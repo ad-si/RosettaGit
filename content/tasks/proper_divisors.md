@@ -4315,7 +4315,8 @@ The proper divisors of the following numbers are :
 
 A very literal interpretation
 
-```python>>>
+```python
+>>>
  def proper_divs2(n):
 ...     return {x for x in range(1, (n + 1) // 2 + 1) if n % x == 0 and n != x}
 ...

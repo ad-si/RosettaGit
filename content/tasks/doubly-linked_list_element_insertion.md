@@ -1384,7 +1384,8 @@ sy:      say; say left('',30) "───" arg(1) '───'; return
 ```
 
 '''output'''
-<pre style="height:50ex;overflow:scroll">
+
+```txt
                                ─── initializing the list. ───
 
                                ─── building list: Was it a cat I saw ───
@@ -1418,7 +1419,6 @@ Was it a black cat I saw there, in the shadows, stalking its prey (and next meal
 
                                ─── showing list ───
 Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal).
-
 ```
 
 
@@ -1469,7 +1469,8 @@ fn main() {
 This expands upon the implementation defined in [[Doubly-linked list/Element definition#The_behind-the-scenes_implementation]] and consists of the relevant lines from the LinkedList implementation in the Rust standard library.
 
 
-```rust>impl<T> Node<T
+```rust
+impl<T> Node<T
  {
     fn new(v: T) -> Node<T> {
         Node {value: v, next: None, prev: Rawlink::none()}

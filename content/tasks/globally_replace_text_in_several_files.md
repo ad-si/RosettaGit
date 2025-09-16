@@ -1445,7 +1445,8 @@ Editing file3... modified copy saved in place
 ## Red
 
 
-```Red>>
+```Red
+>>
  f: request-file
 >> str: read f
 >> replace/all str "Goodbye London!" "Hello New York!"

@@ -339,7 +339,8 @@ T7=01101001100101101001011001101001100101100110100101101001100101101001011001101
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 thuemorse
 tm$ = "0"
 PRINT tm$
@@ -467,7 +468,8 @@ int main(void) {
 
 ===C: By counting ones in binary representation of an iterator (w/User options)===
 
-```C> #include <stdio.h
+```C
+ #include <stdio.h>
 
 
 /**

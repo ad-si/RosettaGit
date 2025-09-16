@@ -2015,7 +2015,9 @@ loopBreak n k = do
 
 Use:
 
-```haskell>loopBreak 19 10</lang
+```haskell
+loopBreak 19 10
+```
 
 
 
@@ -2377,7 +2379,9 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```lang5>do 20 ? int dup . 10 == if break then 20 ? int . loop</lang
+```lang5
+do 20 ? int dup . 10 == if break then 20 ? int . loop>
+```
 
 
 
@@ -2400,7 +2404,8 @@ while(#x != 10) => {^
 
 The task specifies a "number".
 
-```lb>while num<
+```lb
+while num<>
 10
     num=rnd(1)*20
     print num
@@ -2411,7 +2416,8 @@ wend
 ```
 If "integer" was meant, this code fulfils that requirement.
 
-```lb>while num<
+```lb
+while num<>
 10
     num=int(rnd(1)*20)
     print num
@@ -3642,7 +3648,8 @@ end;
 ## Scala
 
 
-```scala>scala
+```scala
+scala>
  import util.control.Breaks.{breakable, break}
 import util.control.Breaks.{breakable, break}
 
@@ -3887,7 +3894,8 @@ pub main | r, s
 
 Direct approach:
 
-```spl>
+```spl
+>
 
   n = #.rnd(20)
   #.output(n)
@@ -3899,7 +3907,8 @@ Direct approach:
 
 With reusable code:
 
-```spl>
+```spl
+>
 
   :1
   n = #.rnd(20)

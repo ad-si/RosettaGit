@@ -1286,7 +1286,8 @@ Note that the decimal values of the task description are truncated in some cases
 
 The first map finds the simplest fractions within a given radius, because the floating-point representation is not exact. The second line shows that the numbers could be parsed into fractions at compile time if they are given the right type. The last converts the string representation of the given values directly to fractions.
 
-```haskell>Prelude
+```haskell
+Prelude
  map (\d -> Ratio.approxRational d 0.0001) [0.9054054, 0.518518, 0.75]
 [67 % 74,14 % 27,3 % 4]
 Prelude> [0.9054054, 0.518518, 0.75] :: [Rational]
@@ -2242,7 +2243,8 @@ Note that the decimal values of the task description are truncated in some cases
 
 The first loop limits the size of the denominator, because the floating-point representation is not exact. The second converts the string representation of the given values directly to fractions.
 
-```python>>>
+```python
+>>
  from fractions import Fraction
 >>> for d in (0.9054054, 0.518518, 0.75): print(d, Fraction.from_float(d).limit_denominator(100))
 
@@ -2738,7 +2740,8 @@ Note that the decimal values of the task description are truncated in some cases
 
 This converts the string representation of the given values directly to fractions.
 
-```ruby>
+```ruby
+
  '0.9054054 0.518518 0.75'.split.each { |d| puts "%s %s" % [d, Rational(d)] }
 0.9054054 4527027/5000000
 0.518518 259259/500000

@@ -17,7 +17,8 @@ tags = []
 The class <tt>RCRunLengthEncoder</tt> represents internally data with which it was feeded as pair character - repetition counter: it does not implement a binary representation of itself; it is left to another class, so that different input/output encodings are possible starting from the same class.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface RCRunLengthEncoder : NSObject
@@ -198,7 +199,7 @@ int main()
   @autoreleasepool {
 
     codecRLE *enc = [[codecRLE alloc]
-		      initWithData: [NSData dataWithBytes: s 
+		      initWithData: [NSData dataWithBytes: s
 					    length: strlen(s)] ];
 
     NSData *repr = [enc encode];

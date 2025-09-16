@@ -2518,7 +2518,8 @@ Debug CommonPath(t(),"/"))
 
 The Python os.path.commonprefix function is [http://nedbatchelder.com/blog/201003/whats_the_point_of_ospathcommonprefix.html broken] as it returns common characters that may not form a valid directory path:
 
-```python>>>
+```python
+>>
  import os
 >>> os.path.commonprefix(['/home/user1/tmp/coverage/test',
                           '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members'])
@@ -2528,7 +2529,8 @@ The Python os.path.commonprefix function is [http://nedbatchelder.com/blog/20100
 
 This result can be fixed:
 
-```python>>>
+```python
+>>
  def commonprefix(args, sep='/'):
 	return os.path.commonprefix(args).rpartition(sep)[0]
 
@@ -2540,7 +2542,8 @@ This result can be fixed:
 
 Even shorter:
 
-```python>>>
+```python
+>>
  paths = ['/home/user1/tmp/coverage/test', '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members']
 >>> os.path.dirname(os.path.commonprefix(paths))
 '/home/user1/tmp'
@@ -2549,7 +2552,8 @@ Even shorter:
 
 But it may be better to not rely on the faulty implementation at all:
 
-```python>>>
+```python
+>>
  from itertools import takewhile
 >>> def allnamesequal(name):
 	return all(n==name[0] for n in name[1:])

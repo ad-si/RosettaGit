@@ -1400,7 +1400,9 @@ def rms: length as $length
     end ;
 ```
 With this definition, the following program would compute the rms of each array in a file or stream of numeric arrays:
-```jq>rms</lang
+```jq
+rms
+```
 
 
 ## Julia
@@ -1596,7 +1598,8 @@ end
 
 Solution:
 
-```MATLAB>>
+```matlab
+>
  quadraticMean((1:10))
 
 ans =
@@ -2181,7 +2184,8 @@ EndIf
 
 ## Python
 
-```Python>>>
+```python
+>>
  from math import sqrt
 >>> def qmean(num):
 	return sqrt(sum(n*n for n in num)/len(num))
@@ -2246,7 +2250,8 @@ RMS = function(x){
 
 Usage:
 
-```R>
+```r
+
  RMS(1:10)
 [1] 6.204837
 ```

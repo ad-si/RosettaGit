@@ -215,7 +215,9 @@ WTOBUF   DC     CL80' '
 ```
 
 {{out}}
-<pre style="height:20ex">00000001
+
+```txt
+00000001
 00000002
 00000005
 00000014
@@ -460,7 +462,9 @@ pause
 ```
 
 {{Out}}
-<pre style="height:20ex">1
+
+```txt
+1
 2
 5
 14
@@ -1807,7 +1811,8 @@ end.
 
 {{trans|C++}}
 
-```Perl>use constant N =
+```perl
+use constant N =
  15;
 my @t = (0, 1);
 for(my $i = 1; $i <= N; $i++) {
@@ -2069,7 +2074,8 @@ EndProcedure
 
 {{trans|C++}}
 
-```python>>>
+```python
+>>
  n = 15
 >>> t = [0] * (n + 2)
 >>> t[1] = 1
@@ -2546,7 +2552,9 @@ end
 ```
 
 {{out}}
-<pre style="height:20ex">    1.
+
+```txt
+    1.
     2.
     5.
     14.
@@ -2775,7 +2783,8 @@ End Sub 'catalan
 ```
 
 {{Out}}
-<pre style="height:20ex">
+
+```txt
  1
  2
  5

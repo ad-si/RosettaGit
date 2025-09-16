@@ -462,37 +462,51 @@ Arguments to built-in functions may be placed in parentheses, but are not requir
 
 Base of the natural logarithm:
 
-```basic>EXP 1</lang
+```basic
+EXP 1>
+```
 
 
 <math>\pi</math>:
 
-```basic>PI</lang
+```basic
+PI>
+```
 
 
 Square root:
 
-```basic>SQR X</lang
+```basic
+SQR X>
+```
 
 
 Natural logarithm:
 
-```basic>LN X</lang
+```basic
+LN X>
+```
 
 
 Exponential:
 
-```basic>EXP X</lang
+```basic
+EXP X>
+```
 
 
 Absolute value:
 
-```basic>ABS X</lang
+```basic
+ABS X>
+```
 
 
 Floor:
 
-```basic>INT X</lang
+```basic
+INT X>
+```
 
 (NB. Although this function is called <code>INT</code>, it corresponds to <code>floor</code>: e.g. <code>INT -3.1</code> returns -4 not -3.)
 
@@ -3180,7 +3194,8 @@ see "sqrt(16) = " + sqrt(16) + nl
 
 RLaB has a number of mathematical constants built-in within the list ''const''. These facilities are provided through the Gnu Science Library [[http://www.gnu.org/software/gsl]].
 
-```RLaB>>
+```RLaB
+>>
  const
    e                    euler           ln10            ln2             lnpi
    log10e               log2e           pi              pihalf          piquarter
@@ -3195,7 +3210,8 @@ RLaB has a number of mathematical constants built-in within the list ''const''. 
 Another list of physical constants and unit conversion factors exists and is called ''mks''.
 Here the conversion goes between that particular unit and the equivalent unit in, one and only, metric system.
 
-```RLaB>>
+```RLaB
+>>
  mks
    F                    G               J               L               N
    Na                   R0              Ry              Tsp             V0
@@ -3227,7 +3243,8 @@ Here the conversion goes between that particular unit and the equivalent unit in
 ###  Elementary Functions
 
 
-```RLaB>>
+```RLaB
+>>
  x = rand()
 >> sqrt(x)
   2.23606798

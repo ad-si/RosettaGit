@@ -703,7 +703,8 @@ this is a test
 
 <code>subseq</code> will signal an error if you provide invalid start or end values.
 
-```lisp>
+```lisp
+>
  (defvar *str* "∀Ꮺ✤Л◒")
 *STR*
 > (subseq *str* 1) ; remove first character
@@ -768,7 +769,8 @@ end.
 ## Eero
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()
@@ -874,7 +876,8 @@ op and tai
 ## Erlang
 
 
-```erlang>1
+```erlang
+1>
  Str = "Hello".
 "Hello"
 2> string:sub_string(Str, 2).                   % To strip the string from the right by 1
@@ -912,7 +915,8 @@ puts(1, strip_both("brooms"))	-- strip both first and last characters
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main args =
     let s = "一二三四五六七八九十"
@@ -1283,7 +1287,8 @@ Recent versions of jq also have regular expression support, with named captures.
 ## Julia
 
 
-```julia>julia
+```julia
+julia>
  "My String"[2:end] # without first character
 "y String"
 

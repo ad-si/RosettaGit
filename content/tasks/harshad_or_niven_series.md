@@ -3042,7 +3042,8 @@ true.
 ### Python: Procedural
 
 
-```python>>>
+```python
+>>>
  import itertools
 >>> def harshad():
 	for n in itertools.count(1):
@@ -3068,7 +3069,8 @@ true.
 
 The for loop above [http://paddy3118.blogspot.co.uk/2013/03/itertoolsfirst.html could be changed] to the following to find the number > 1000; in fact the harshad generator function could become a generator expression creating this more functional version:
 
-```python>>>
+```python
+>>>
  from itertools import count, islice
 >>> harshad = (n for n in count(1) if n % sum(int(ch) for ch in str(n)) == 0)
 >>> list(islice(harshad, 0, 20))

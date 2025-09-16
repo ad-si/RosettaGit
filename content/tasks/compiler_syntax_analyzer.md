@@ -2023,7 +2023,8 @@ String         "\n"
 Code by Steve Williams. Tested with GnuCOBOL 2.2.
 
 
-```cobol>        >
+```cobol
+        >
 SOURCE FORMAT IS FREE
 identification division.
 *> this code is dedicated to the public domain
@@ -4428,8 +4429,7 @@ syntax_analyzer {
 
 ```
 
-
-<pre style="height:30ex;overflow:scroll">
+```txt
 Sequence
 ;
 Sequence

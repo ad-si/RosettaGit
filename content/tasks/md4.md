@@ -1354,7 +1354,8 @@ echo MD4("Rosetta Code")
 Build a MD4 plugin using Linux system library and PARI's function interface. (Linux solution)
 
 
-```C>#include <pari/pari.h
+```C
+#include <pari/pari.h>
 
 #include <openssl/md4.h>
 

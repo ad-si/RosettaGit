@@ -872,7 +872,8 @@ Largest non-McNugget number in the search space is 43
 Brute force solution: calculate all pure (just one kind of box) McNugget numbers which do not exceed 100, then compute all possible sums, and then remove those from the list of numbers up to 100 (which is obviously a McNugget number), then find the largest number remaining:
 
 
-```J>
+```j
+>
 ./(i.100)-.,+/&>{(* i.@>.@%~&101)&.>6 9 20
 43
 ```
@@ -1320,7 +1321,8 @@ Test versions against each other:
 
 It's a simple solution done on the command line:
 
-```python>>>
+```python
+>>>
  from itertools import product
 >>> nuggets = set(range(101))
 >>> for s, n, t in product(range(100//6+1), range(100//9+1), range(100//20+1)):
@@ -1335,7 +1337,8 @@ It's a simple solution done on the command line:
 
 Single expression version (expect to be slower, however no noticeable difference on a Celeron B820 and haven't benchmarked):
 
-```python>>>
+```python
+>>>
  from itertools import product
 >>> max(x for x in range(100+1) if x not in
 ...   (6*s + 9*n + 20*t for s, n, t in

@@ -2703,7 +2703,9 @@ if  "Ends with 'string'\n" print
 Replace once:
 
 
-```raven>str r/ a / another /  print</lang
+```raven
+str r/ a / another /  print>
+```
 
 
 ```raven
@@ -2722,13 +2724,17 @@ str r/ /_/g  print
 Replace case insensitive:
 
 
-```raven>str r/ A / another /i  print</lang
+```raven
+str r/ A / another /i  print>
+```
 
 
 Splitting:
 
 
-```raven>str s/ /</lang
+```raven
+str s/ />
+```
 
 
 

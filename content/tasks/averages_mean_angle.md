@@ -1390,7 +1390,8 @@ meandegrees(degrees) = radians2degrees(atan2(mean(sind(degrees)), mean(cosd(degr
 
 The output is:
 
-```julia>julia
+```julia
+julia
  meandegrees([350, 10])
 0.0
 
@@ -1567,7 +1568,8 @@ print(meanAngle({10, 20, 30}))
 
 The following procedure takes a list of numeric degrees (with attached units) such as
 
-```Maple>
+```maple
+
  [ 350, 10 ] *~ Unit(arcdeg);
                       [350 [arcdeg], 10 [arcdeg]]
 ```
@@ -1584,7 +1586,8 @@ end proc:
 
 Applying this to the given data sets, we obtain:
 
-```Maple>
+```maple
+
  MeanAngle( [ 350, 10 ] *~ Unit(arcdeg) );
                                    0.
 
@@ -2244,7 +2247,8 @@ function Get-MeanAngle ([double[]]$Angles)
 
 {{works with|Python|2.6+}}
 
-```python>>>
+```python
+>>
  from cmath import rect, phase
 >>> from math import radians, degrees
 >>> def mean_angle(deg):

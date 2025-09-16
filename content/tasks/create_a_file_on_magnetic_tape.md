@@ -48,7 +48,9 @@ The task is to create a new file called "TAPE.FILE" of any size on Magnetic Tape
 ## Applesoft BASIC
 
 
-```ApplesoftBasic>SAVE</lang
+```ApplesoftBasic
+SAVE>
+```
 
 
 
@@ -119,7 +121,8 @@ int main() {
 ## COBOL
 
 
-```COBOL>       >
+```cobol
+       >
 SOURCE FORMAT IS FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. MAKE-TAPE-FILE.
@@ -418,7 +421,8 @@ write_file(file_path,"Hello world!")
 ## Python
 
 
-```python>>>
+```python
+>>
  with open('/dev/tape', 'w') as t: t.write('Hi Tape!\n')
 ...
 >>>

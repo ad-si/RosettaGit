@@ -44,7 +44,8 @@ Test your program by converting the following dates both from Gregorian to Repub
 
 Computes leap years using the "continuous" method: a year in the Republican calendar is a leap year if and only if the number of the <i>following</i> year is divisible by 4 but not by 100 unless also by 400. No attempt is made to deal with ill-formed or invalid input dates.
 
-```bbcbasic>REM 
+```bbcbasic
+REM >
 frrepcal
 :
 DIM gregorian$(11)

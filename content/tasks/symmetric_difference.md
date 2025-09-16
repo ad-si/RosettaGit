@@ -208,7 +208,8 @@ Serena
 ## Apex
 
 
-```Java>Set<String> setA = new Set<String
+```java
+Set<String> setA = new Set<String>
 {'John', 'Bob', 'Mary', 'Serena'};
 Set<String> setB = new Set<String>{'Jim', 'Mary', 'John', 'Bob'};
 
@@ -552,7 +553,9 @@ SymmetricDifference$(john serena bob mary serena.jim mary john jim bob)
 
 Output:
 
-```bracmat>serena jim</lang
+```bracmat
+serena jim>
+```
 
 
 
@@ -2088,7 +2091,8 @@ Also, due to Mathematica's symbolic nature, these functions are automatically ap
 
 If you are using a vector of numbers as the sets of which you like to find the symmetric difference, then there are already utilities that operate on these types of sets built into MATLAB. This code will take the symmetric difference of two vectors:
 
-```MATLAB>>
+```MATLAB
+>>
  [setdiff([1 2 3],[2 3 4]) setdiff([2 3 4],[1 2 3])]
 
 ans =
@@ -2197,7 +2201,8 @@ end %symmetricDifference
 
 Solution Test:
 
-```MATLAB>>
+```MATLAB
+>>
  A = {'John','Bob','Mary','Serena'}
 
 A =
@@ -2290,7 +2295,8 @@ Output:
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, const char *argv[]) {
@@ -2526,7 +2532,8 @@ print "A\\B: @$a\nB\\A: @$b\nSymm: @$s\n";
 ## Perl 6
 
 
-```perl6>my \A = set <John Serena Bob Mary Serena
+```perl6
+my \A = set <John Serena Bob Mary Serena>
 ;
 my \B = set <Jim Mary John Jim Bob>;
 
@@ -2941,7 +2948,8 @@ Python's <code>set</code> type supports difference as well as symmetric differen
 '''Python 3.x''' and '''Python 2.7''' have syntax for set literals:
 
 
-```python>>>
+```python
+>>>
  setA = {"John", "Bob", "Mary", "Serena"}
 >>> setB = {"Jim", "Mary", "John", "Bob"}
 >>> setA ^ setB # symmetric difference of A and B
@@ -2962,7 +2970,8 @@ Note that the order of set elements is undefined.
 Earlier versions of Python:
 
 
-```python>>>
+```python
+>>>
  setA = set(["John", "Bob", "Mary", "Serena"])
 >>> setB = set(["Jim", "Mary", "John", "Bob"])
 >>> setA ^ setB # symmetric difference of A and B
@@ -2976,7 +2985,8 @@ set(['Serena'])
 There is also a method call interface for these operations. In contrast to the operators above, they accept any iterables as arguments not just sets.
 
 
-```python>>>
+```python
+>>>
  setA.symmetric_difference(setB)
 {'Jim', 'Serena'}
 >>> setA.difference(setB)
@@ -3281,7 +3291,8 @@ Jim,Serena
 ## Scala
 
 
-```Scala>scala
+```scala
+scala>
  val s1 = Set("John", "Serena", "Bob", "Mary", "Serena")
 s1: scala.collection.immutable.Set[java.lang.String] = Set(John, Serena, Bob, Mary)
 
@@ -3499,7 +3510,8 @@ Output:
 ## Swift
 
 Swift's <code>Set</code> type supports difference as well as symmetric difference operators.
-```swift>let setA : Set<String
+```swift
+let setA : Set<String>
  = ["John", "Bob", "Mary", "Serena"]
 let setB : Set<String> = ["Jim", "Mary", "John", "Bob"]
 println(setA.exclusiveOr(setB)) // symmetric difference of A and B

@@ -1092,7 +1092,8 @@ class ArrayData(val width: Int, val height: Int) {
 '''Tail-Recursive SequenceL Code:'''
 
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl>
 ;
 import <Utilities/Math.sl>;
 

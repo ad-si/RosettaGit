@@ -2742,7 +2742,8 @@ Semordnilap count: 158
 ### Idiomatic
 
 
-```python>>>
+```python
+>>>
  with open('unixdict.txt') as f:
 	wordset = set(f.read().strip().split())
 

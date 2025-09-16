@@ -852,7 +852,8 @@ Note: The total height of the triangle is 2 * parameter ''length''. It should be
 This is a version of the cellular automaton (''rule 90'') construction. The order, ''N'', is specified by the first number on the stack. It uses a single line of the playfield for the cell buffer, so the upper limit for ''N'' should be 5 on a standard Befunge-93 implementation. Interpreters with poor memory handling may not work with anything over 3, though, and a Befunge-98 interpreter should theoretically be unlimited.
 
 
-```befunge>41+2
+```befunge
+41+2>
 \#*1#2-#<:#\_$:1+v
 v:$_:#`0#\\#00#:p#->#1<
 >2/1\0p:2/\::>1-:>#v_1v

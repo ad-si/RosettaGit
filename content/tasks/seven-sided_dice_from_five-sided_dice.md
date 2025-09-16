@@ -1243,7 +1243,8 @@ uniform
 
 The first step is to create 7-sided dice rolls from 5-sided dice rolls (<code>rollD5</code>):
 
-```j>rollD5=: [:
+```j
+rollD5=: [:>
 : ] ?@$ 5:      NB. makes a y shape array of 5s, "rolls" the array and increments.
 roll2xD5=: [: rollD5 2 ,~ */ NB. rolls D5 twice for each desired D7 roll (y rows, 2 cols)
 toBase10=: 5 #. <:           NB. decrements and converts rows from base 5 to 10
@@ -1277,7 +1278,8 @@ rollD7x=: monad define
 
 Here's a tacit definition that does the same thing:
 
-```j>getNumRolls=: [:
+```j
+getNumRolls=: [:>
 . 0.75 * */@[       NB. calc approx 3/4 of the required rolls
 accumD7Rolls=: ] , getD7@getNumRolls  NB. accumulates getD7 rolls
 isNotEnough=: */@[ > #@]              NB. checks if enough D7 rolls accumulated

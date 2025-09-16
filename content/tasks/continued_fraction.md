@@ -1520,7 +1520,8 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ## Forth
 
-```forth>: fsqrt2 1 s>f 0> if 2 s
+```forth
+: fsqrt2 1 s>f 0> if 2 s
 f else fdup then ;
 : fnapier dup dup 1 > if 1- else drop 1 then s>f dup 1 < if drop 2 then s>f ;
 : fpi dup 2* 1- dup * s>f 0> if 6 else 3 then s>f ;
@@ -3382,7 +3383,8 @@ The following code relies on a library implementing SRFI 41 (lazy streams). Most
 
 Test:
 
-```scheme>
+```scheme
+
  (cf->real sqrt2)
 1.4142135623730951
 > (cf->real napier)

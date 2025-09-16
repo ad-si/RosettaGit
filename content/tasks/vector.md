@@ -2559,7 +2559,8 @@ End Module
 ## WDTE
 
 
-```WDTE>let a =
+```wdte
+let a =>
  import 'arrays';
 let s => import 'stream';
 

@@ -267,7 +267,8 @@ ExitApp
 
 BaCon allows embedding C code. This is an example with GLUT.
 
-```qbasic>PRAGMA INCLUDE <GL/gl.h> <GL/freeglut.h
+```qbasic
+PRAGMA INCLUDE <GL/gl.h> <GL/freeglut.h>
 
 PRAGMA LDFLAGS GL glut
 
@@ -656,7 +657,8 @@ The user may change the :type argument in draw-update to 'right, and re-evaluate
 
 ## eC
 
-```C>#include <GL/gl.h
+```C
+#include <GL/gl.h>
 
 import "ecere"
 

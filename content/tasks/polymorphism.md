@@ -3174,7 +3174,8 @@ bundle Default {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface RCPoint : NSObject {
@@ -4254,7 +4255,8 @@ Usage example:
 The task calls for the creation of mutable types i.e. that you are allowed to change the values of x, y, or r of a Point or Circle after they have been created.
 If this is not needed, then the Python namedtuple is a good way to create immutable classes with named fields such as these.
 
-```python>>>
+```python
+>>>
  from collections import namedtuple
 >>> class Point(namedtuple('Point', 'x y')):
 	def __new__( _cls, x=0, y=0 ):
@@ -4284,7 +4286,8 @@ AttributeError: can't set attribute
 
 And if you don't need default arguments, this becomes:
 
-```python>>>
+```python
+>>>
  Point = namedtuple('Point', 'x y')
 >>> Circle = namedtuple('Circle', 'x y r')
 >>> Point(3, 4)

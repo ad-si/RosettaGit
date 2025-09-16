@@ -1025,7 +1025,8 @@ Switching wins 0666604 times (66.66%).
 ## ColdFusion
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
     function runmontyhall(num_tests) {
 	// number of wins when player switches after original selection
@@ -2349,7 +2350,9 @@ pick=: {~ ?@#
 And, of course, we will be picking one door from three doors
 
 
-```j>DOORS=:1 2 3</lang
+```j
+DOORS=:1 2 3
+```
 
 
 But note that the simulation code should work just as well with more doors.
@@ -3105,7 +3108,8 @@ end
 
 Output:
 
-```MATLAB>>
+```MATLAB
+>>
  montyHall(3,100000)
 Switch win percentage: 66.705972%
 Stay win percentage: 33.420062%
@@ -3432,7 +3436,8 @@ print "Switch win ratio " . (100.0 * $switch/$trials) . "\n";
 This implementation is parametric over the number of doors. [[wp:Monty_Hall_problem#Increasing_the_number_of_doors|Increasing the number of doors in play makes the superiority of the switch strategy even more obvious]].
 
 
-```perl6>enum Prize <Car Goat
+```perl6
+enum Prize <Car Goat>
 ;
 enum Strategy <Stay Switch>;
 

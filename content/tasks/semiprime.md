@@ -2140,7 +2140,8 @@ def semiprime(n):
 
 From Idle:
 
-```python>>>
+```python
+>>>
  semiprime(1679)
 True
 >>> [n for n in range(1,101) if semiprime(n)]

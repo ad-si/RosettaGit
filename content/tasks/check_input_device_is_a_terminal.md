@@ -299,7 +299,9 @@ stdin is a terminal
 
 There is no explicit way (ie <tt>isatty()</tt>)to do this; however, if we ''assume'' that standard input ''is'' a terminal, we can check if the input stream has been redirected (presumably to something other than a terminal).
 
-```Nemerle>def isTerm = System.Console.IsInputRedirected;</lang
+```nemerle
+def isTerm = System.Console.IsInputRedirected;
+```
 
 
 

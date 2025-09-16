@@ -36,9 +36,9 @@ I think that maybe all example output should follow the task description format 
 
 ::: It seems easy enough to do, just indent:   '''Total Rows-Current Row'''.   -- [[User:Gerard Schildberger|Gerard Schildberger]] 22:12, 2 November 2012 (UTC)
 
-:::: (For further edification and clarification):   indent each displayed row with:     value('''totalRows   ''minus''   currentRow).     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:33, 18 July 2016 (UTC)  
+:::: (For further edification and clarification):   indent each displayed row with:     value('''totalRows   ''minus''   currentRow).     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:33, 18 July 2016 (UTC)
 
-::Need it or not, the Python~2 code as available strays from theory by virtue of the return statement. I submit that completeness and conformity trumps raw theory in the case of code examples and would serve an additional segment of the public with formatting applied. I further submit the following as alternative and addition to present code under the potential heading of "Traditionally Formatted, Python~3": 
+::Need it or not, the Python~2 code as available strays from theory by virtue of the return statement. I submit that completeness and conformity trumps raw theory in the case of code examples and would serve an additional segment of the public with formatting applied. I further submit the following as alternative and addition to present code under the potential heading of "Traditionally Formatted, Python~3":
 ::
 ```python
 def pascal(n):
@@ -91,7 +91,7 @@ That is, [[wp:Combination|C(n,k)]] for all <tt>n,k in [0 .. n)</tt>.  J's notati
 So, for example, the number of ways to choose a poker hand (5 cards from the deck of 52):
 
 ```j
-   5!52     
+   5!52
 2598960
 ```
 
@@ -103,10 +103,10 @@ But, formatting the thing takes a bit more effort:
 
 ```j
    (-@|. |."_1 [: ;:inv [: ":@-.&0&.>@|: !/~)@i. 5
-     1    
-    1 1   
-   1 2 1  
-  1 3 3 1 
+     1
+    1 1
+   1 2 1
+  1 3 3 1
  1 4 6 4 1
 ```
 
@@ -131,13 +131,19 @@ The "stuff" are (from right to left)
 ```
  transpose that array, and for each number remove it if it is zero, format it as a string and put it in a box
 
-```j>[:</lang
+```j
+[:
+```
  placeholder meaning "no verb here" the verb to the right does not get a left argument
 
-```j>;:inv</lang
+```j
+;:inv
+```
  combine the strings in rows of boxes as word (with spaces between them
 
-```j>[:</lang
+```j
+[:
+```
  placeholder meaning "no verb here" the verb to the right does not get a left argument
 
 ```j
@@ -204,16 +210,16 @@ Pascal's triangle is an arithmetic and geometric figure named, in most of the we
 
 :Why "in most of the western countries"? Are there countries where this is another Pascal? No. It's named after Blaise Pascal, period. That does not imply Pascal was the inventor, or that there are no other names. Likewise, the "triangolo di Tartaglia" is named after Niccolò Tartaglia, and no other Tartaglia (and not Pascal, obviously). [[User:Eoraptor|Eoraptor]] ([[User talk:Eoraptor|talk]]) 01:06, 23 February 2018 (UTC)
 
-::you are absolutely right [[User:Eoraptor|Eoraptor]] I just reported a 'neutral' sentence from [https://en.wikipedia.org/wiki/Pascal%27s_triangle wikipedia]: 
+::you are absolutely right [[User:Eoraptor|Eoraptor]] I just reported a 'neutral' sentence from [https://en.wikipedia.org/wiki/Pascal%27s_triangle wikipedia]:
 
 ```txt
 
 In much of the Western world, it is named after French mathematician Blaise Pascal, although other mathematicians studied it centuries before him in India,[1] Persia (Iran), China, Germany, and Italy.
 
 ```
- 
+
 
 ::I just mean with my sentence that there are also western country as Italy for example where it's called otherwise. The triangle has many names: Staircase of Mount Meru, Khayyam triangle, Yang Hui's triangle, Tartaglia's triangle and obviously Pascal's triangle.
- 
+
 ::I'm not able to reproduce a geographical distribution of different names: what i proposed was for sure an approximation but byfar better than the original, wrong, one. --[[User:LorenzoTa|LorenzoTa]] ([[User talk:LorenzoTa|talk]]) 08:20, 23 February 2018 (UTC)
 :::You are right, and I perfectly agree with the edit. [[User:Eoraptor|Eoraptor]] ([[User talk:Eoraptor|talk]]) 12:21, 24 February 2018 (UTC)

@@ -2742,7 +2742,7 @@ say ("\nAll free polyominoes of rank %d:" % n)
 rank(n).sort.each{|poly| say text_representation(poly).join("\n")+"\n" }
 ```
 
-<pre style="height:250px">
+```txt
 [1, 1, 1, 2, 5, 12, 35, 108]
 
 All free polyominoes of rank 5:

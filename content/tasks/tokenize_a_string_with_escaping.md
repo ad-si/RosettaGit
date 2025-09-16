@@ -327,7 +327,8 @@ function tokenize(str,sep,esc,  chr,escaping,field,i) {
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 tokenizer
 PROC_tokenize("one^|uno||three^^^^|four^^^|^cuatro|", "|", "^")
 END
@@ -626,7 +627,8 @@ public static class Extensions
 ## COBOL
 
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FORMAT FREE
 identification division.
 program-id. 'tokenizewithescaping'.

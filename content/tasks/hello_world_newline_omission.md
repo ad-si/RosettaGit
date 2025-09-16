@@ -467,7 +467,8 @@ put$"Goodbye, World!"
 =={{header|Brainfuck}}==
 One option was to copy the code from the regular Hello World version and omit the last period, but one of the nicer things about the language is that no matter how simple your program is, if it's more than a few characters long, it's probably unique. So here's yet another version of Goodbye, World in Brainfuck.
 
-```bf>>+++++[>++++>+>+>++++>>+++<<<+<+<++[>++>+++>+++>++++>+
+```bf
+>+++++[>++++>+>+>++++>>+++<<<+<+<++[>++>+++>+++>++++>+>
 +[<]>>-]<-]>>
 +.>>+..<.--.++>>+.<<+.>>>-.>++.[<]++++[>++++<-]>.>>.+++.------.<-.[>]<+.[-]
 [G   oo d  b     y   e    ,                     W  o   r      l  d     !]
@@ -654,7 +655,9 @@ void main() {
 ```
 
 
-```Dc>370913249815566165486152944077005857 P</lang
+```Dc
+370913249815566165486152944077005857 P>
+```
 
 
 =={{header|Déjà Vu}}==
@@ -857,7 +860,8 @@ print("Goodbye, World!")
 
 Or via "fast print":
 
-```falcon>>
+```falcon
+>>
  "Goodbye, World!"
 ```
 

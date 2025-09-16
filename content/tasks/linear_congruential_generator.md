@@ -3467,7 +3467,8 @@ function Microsoft_rand() {
 Output seen after seeding both generators with 0:
 
 
-```sparkling>spn:8
+```sparkling
+spn:8>
  Microsoft_seed(0);
 spn:9> Microsoft_rand()
 = 7875

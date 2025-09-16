@@ -4451,7 +4451,8 @@ Output:
 Another approach might be:
 
 
-```J>Blocks=:
+```j
+Blocks=:
 ;:'BO XK DQ CP NA GT RE TG QD FS JW HU VI AN OB ER FS LY PC ZM '
 ExampleWords=: ;: 'A BaRK BOoK tREaT COmMOn SqUAD CoNfuSE '
 
@@ -6501,7 +6502,8 @@ sub _can_make_word {
 
 <p>Testing:
 
-```perl>use Test::More tests =
+```perl
+use Test::More tests =
  8;
 
 my @blocks1 = qw(BO XK DQ CP NA GT RE TG QD FS JW HU VI AN OB ER FS LY PC ZM);
@@ -8572,7 +8574,6 @@ const proc: main is func
 Output:
 
 ```txt
-
           TRUE
 A         TRUE
 BARK      TRUE
@@ -8581,19 +8582,15 @@ TREAT     TRUE
 COMMON    FALSE
 SQUAD     TRUE
 Confuse   TRUE
-
 ```
-
 
 
 ## SequenceL
 
-
 ### Recursive Search Version
 
-
-```sequencel>import <Utilities/Conversion.sl
-;
+```sequencel
+import <Utilities/Conversion.sl;
 import <Utilities/Sequence.sl>;
 
 main(args(2)) :=
@@ -8645,7 +8642,8 @@ CONFUSE: true"
 ### RegEx Version
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl
 ;
 import <Utilities/Sequence.sl>;
 import <RegEx/RegEx.sl>;

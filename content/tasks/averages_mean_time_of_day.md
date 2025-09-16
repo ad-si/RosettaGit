@@ -238,7 +238,8 @@ Mean time is 23:47:43
 ## C
 
 
-```C>#include<stdlib.h
+```c
+#include<stdlib.h
 
 #include<math.h>
 #include<stdio.h>

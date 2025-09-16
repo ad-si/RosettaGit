@@ -616,7 +616,9 @@ printfn "There are %d anti-primes less than %A:-" (List.length fL) N; for (n,g) 
 ```
 
 {{out}}
-<pre style="height:35ex">
+
+```txt
+
 There are 245 anti-primes less than 200000000000000000000000000:-
 1 has 1 dividers
 2 has 2 dividers

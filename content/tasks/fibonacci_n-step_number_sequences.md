@@ -809,7 +809,8 @@ Lucas:
 
 
 
-```befunge>110p>
+```befunge
+110p>
 55+109"iccanaceD"22099v
 v9013"Tetranacci"9014"Lucas"<
 >"iccanobirT"2109"iccanobiF"v
@@ -3836,7 +3837,8 @@ n    0    1    2    3    4    5    6    7    8    9    10
 ### Python: function returning a function
 
 
-```python>>>
+```python
+>>
  def fiblike(start):
 	addnum = len(start)
 	memo = start[:]
@@ -3877,7 +3879,8 @@ n=10,  decanacci -> 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
 ### Python: Callable class
 
 
-```python>>>
+```python
+>>
  class Fiblike():
 	def __init__(self, start):
 		self.addnum = len(start)

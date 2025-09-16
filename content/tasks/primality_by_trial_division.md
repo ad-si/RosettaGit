@@ -848,7 +848,9 @@ Yes
 ## Burlesque
 
 
-```burlesque>fcL[2==</lang
+```burlesque
+fcL[2==
+```
 
 
 Implicit trial division is done by the ''fc'' function. It checks if the number has exactly two divisors.
@@ -2030,14 +2032,16 @@ Any increasing ''unbounded'' sequence of numbers that includes all primes (above
 
 A less efficient, more basic variant:
 
-```haskell>isPrime n = n
+```haskell
+isPrime n = n>
  1 && []==[i | i <- [2..n-1], rem n i == 0]
 ```
 
 
 The following is an attempt at improving it, resulting in absolutely worst performing prime testing code I've ever seen, ever. A curious oddity.
 
-```haskell>isPrime n = n
+```haskell
+isPrime n = n>
  1 && []==[i | i <- [2..n-1], isPrime i && rem n i == 0]
 ```
 
@@ -2275,7 +2279,8 @@ writeln where .isPrime, series 100
 
 Following the Perl 6 example, which states, "Integer $i is prime if it is greater than one and is divisible by none of 2, 3, up to the square root of $i" (plus an adjustment for the prime number 2).
 
-```Langur>val .isPrime = f .i == 2 or .i
+```langur
+val .isPrime = f .i == 2 or .i>
  2 and not any f(.x) .i rem .x == 0, pseries 2 to .i ^/ 2
 
 writeln where .isPrime, series 100
@@ -2550,7 +2555,8 @@ function isPrime = primalityByTrialDivision(n)
 end
 ```
 
-```MATLAB>>
+```MATLAB
+>>
  arrayfun(@primalityByTrialDivision,(1:14))
 
 ans =
@@ -3336,7 +3342,8 @@ Regular expression by "Abigail".
 
 (An explanation is given in "[http://paddy3118.blogspot.com/2009/08/story-of-regexp-and-primes.html The Story of the Regexp and the Primes]").
 
-```python>>>
+```python
+>>>
  import re
 >>> def isprime(n):
     return not re.match(r'^1?$|^(11+?)\1+$', '1' * n)

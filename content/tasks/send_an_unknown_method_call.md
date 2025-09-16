@@ -517,7 +517,8 @@ foo called
 ## Lasso
 
 
-```Lasso>define mytype =
+```lasso
+define mytype =>
  type {
 	public foo() => {
 		return 'foo was called'
@@ -630,7 +631,8 @@ Output: 0.0000926536
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface Example : NSObject

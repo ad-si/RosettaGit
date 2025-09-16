@@ -364,7 +364,8 @@ First 40 odd Zumkeller numbers not divisible by 5:
 
 ## Perl 6
 
-```perl6>use ntheory:from<Perl5
+```perl6
+use ntheory:from<Perl5>
  <factor is_prime>;
 
 sub zumkeller ($range)  {

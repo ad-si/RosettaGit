@@ -71,7 +71,7 @@ languages = [
 
 {{task|Basic language learning}}[[Category:Special variables]]
 
-Special variables have a predefined meaning within a computer programming language. 
+Special variables have a predefined meaning within a computer programming language.
 
 
 ## Task
@@ -93,7 +93,7 @@ The closest thing Ada has to special variables are attributes, which are of an o
 * For example, a 2 bit record (structure) X might be stored as a byte by default as a speed optimization, but X'Size := 2; would force it to be stored as two bits.
 
 There are far too many attributes to list here, but a standard informative list can be found in Annex K of the documentation if you have it installed.
-Or Here: [http://www2.adacore.com/gap-static/GNAT_Book/html/aarm/AA-K.html Annex K - Language-Defined Attributes]     
+Or Here: [http://www2.adacore.com/gap-static/GNAT_Book/html/aarm/AA-K.html Annex K - Language-Defined Attributes]
 
 
 ## AutoHotkey
@@ -222,7 +222,7 @@ printf(($g": [", g, "] & [",g,"]"l$,
   "  gauss", mksa gauss, cgs gauss,
   "  micron", mksa micron, cgs micron,
   "  hectare", mksa hectare, cgs hectare,
-  "  miles per hour", mksa miles per hour, cgs miles per hour, 
+  "  miles per hour", mksa miles per hour, cgs miles per hour,
   "  kilometers per hour", mksa kilometers per hour, cgs kilometers per hour,
   "Astronomy and astrophysics", "mksa","cgs",
   "  astronomical unit", mksa astronomical unit, cgs astronomical unit,
@@ -484,7 +484,7 @@ record    EXCEPTION( logical    XCPNOTED      - true if the exception has occurr
                                                 even if the program continues
                    ; string(64) XCPMSG        - message to describe the exception
                    )
- 
+
 if the relevant EXCEPTION variable is null, the exception is ignored,
 otherwise it is processed according to the settings of XCPLIMIT etc.
 %
@@ -522,33 +522,33 @@ The special (system) variables are as follows:
 
 ```txt
 
-@%        The number output format control variable 
-@cmd$     The command line of a 'compiled' program 
-@dir$     The directory (folder) from which the program was loaded 
-@flags%   An integer incorporating BBC BASIC's control flags 
-@hcsr%    The handle of the mouse pointer (cursor) 
-@haccel%  The handle of the keyboard accelerator, if used 
-@hevent%  The handle of the event used to prevent blocking in serial I/O 
-@hfile%() An array of file handles indexed by channel number 
-@hmdi%    The Multiple Document Interface window handle (if any) 
-@hwacc%   The window handle to which keyboard accelerator commands should be sent 
-@hwnd%    The 'window handle' for the main (output) window 
-@hwo%     The handle of the WAVEOUTPUT device 
-@hpal%    The handle for the colour palette 
-@ispal%   A Boolean which is non-zero if the display is paletted 
-@lib$     The directory (folder) containing the library files 
-@lparam%  The LPARAM value (for use with ON MOUSE, ON MOVE and ON SYS) 
+@%        The number output format control variable
+@cmd$     The command line of a 'compiled' program
+@dir$     The directory (folder) from which the program was loaded
+@flags%   An integer incorporating BBC BASIC's control flags
+@hcsr%    The handle of the mouse pointer (cursor)
+@haccel%  The handle of the keyboard accelerator, if used
+@hevent%  The handle of the event used to prevent blocking in serial I/O
+@hfile%() An array of file handles indexed by channel number
+@hmdi%    The Multiple Document Interface window handle (if any)
+@hwacc%   The window handle to which keyboard accelerator commands should be sent
+@hwnd%    The 'window handle' for the main (output) window
+@hwo%     The handle of the WAVEOUTPUT device
+@hpal%    The handle for the colour palette
+@ispal%   A Boolean which is non-zero if the display is paletted
+@lib$     The directory (folder) containing the library files
+@lparam%  The LPARAM value (for use with ON MOUSE, ON MOVE and ON SYS)
 @memhdc%  The 'device context' for the main (output) window
-@midi%    The MIDI device ID (non-zero if a MIDI file is playing) 
-@msg%     The MSG value (for use with ON MOUSE, ON MOVE and ON SYS) 
-@ox%      The horizontal offset (in pixels) between the output bitmap and the window contents 
-@oy%      The vertical offset (in pixels) between the output bitmap and the window contents 
-@prthdc%  The 'device context' for the current printer (if any) 
-@tmp$     The temporary directory (folder) 
-@usr$     The user's Documents directory (folder) 
-@vdu%     A pointer to the text and graphics parameters 
-@vdu{}    A structure containing the main text and graphics variables 
-@wparam%  The WPARAM value (for use with ON MOUSE, ON MOVE and ON SYS) 
+@midi%    The MIDI device ID (non-zero if a MIDI file is playing)
+@msg%     The MSG value (for use with ON MOUSE, ON MOVE and ON SYS)
+@ox%      The horizontal offset (in pixels) between the output bitmap and the window contents
+@oy%      The vertical offset (in pixels) between the output bitmap and the window contents
+@prthdc%  The 'device context' for the current printer (if any)
+@tmp$     The temporary directory (folder)
+@usr$     The user's Documents directory (folder)
+@vdu%     A pointer to the text and graphics parameters
+@vdu{}    A structure containing the main text and graphics variables
+@wparam%  The WPARAM value (for use with ON MOUSE, ON MOVE and ON SYS)
 
 ```
 
@@ -597,11 +597,11 @@ The GNU implementation adds another special variable, <code>last</code>, that co
 
 ## Bracmat
 
-Every function has a local variable <code>arg</code>. It is the function's actual argument. Pattern matching is used to dissect the argument, if needed. Functions in a pattern have an additional argument, <code>sjt</code>, which is bound to (part of) the subject of the pattern match operation. It is the part of the subject that the function, in the role of a pattern, attempts to match. These variables can be reassigned. 
+Every function has a local variable <code>arg</code>. It is the function's actual argument. Pattern matching is used to dissect the argument, if needed. Functions in a pattern have an additional argument, <code>sjt</code>, which is bound to (part of) the subject of the pattern match operation. It is the part of the subject that the function, in the role of a pattern, attempts to match. These variables can be reassigned.
 
 The names of the built-in functions <code>alc, arg, asc, chr, chu, clk, d2x, dbg, den, div, fil, flg, glf, fre, get, low, lst, mem, mod, new, pee, pok, put, ren, rev, rmv, sim, str, swi, sys, tbl, upp, utf, whl, x2d</code> can be used as variable names or names of user defined object member functions, but not as names of user defined functions. Conversely, the name <code>hash</code> can be used for user defined functions, but not for variables. Currentlty, <code>hash</code> is the only predefined object type.
 
-If Bracmat starts in interactive mode, a few more variables are predefined: <code>!v</code> evaluates to a string telling which version of Bracmat you are running. <code>!w</code> and <code>!c</code> evaluate to sections 11 and 12 of the GPL. More vital is the variable <code>main</code>, which is the interpreter's main loop. Setting it to another value changes the behaviour of the interpreter. When running in interactive mode, <code>!</code> or <code>!""</code> evaluates to the last answer, so the empty string is the name of yet another special variable. These variables can be reassigned. 
+If Bracmat starts in interactive mode, a few more variables are predefined: <code>!v</code> evaluates to a string telling which version of Bracmat you are running. <code>!w</code> and <code>!c</code> evaluate to sections 11 and 12 of the GPL. More vital is the variable <code>main</code>, which is the interpreter's main loop. Setting it to another value changes the behaviour of the interpreter. When running in interactive mode, <code>!</code> or <code>!""</code> evaluates to the last answer, so the empty string is the name of yet another special variable. These variables can be reassigned.
 
 
 ## C
@@ -846,7 +846,7 @@ Forth has a "hyper-static" name space.
 
 Fortran offers no special variables such as Pi, e, etc. as a part of the language, not even the modern special floating-point "values" such as NaN. Indeed, the syntax has no reserved words generally so that <code>GO TO</code> could be the name of a variable without damage to GO TO statements, though it is generally agreed that calling a variable END is provocative... It does have some ''numbers'' that are special: 5 is the input/output "unit number" for keyboard input and 6 for output to "standard output", the screen on desktop computers; in the past there have been other values that were associated to devices such as the card reader, card punch, lineprinter, paper tape reader, and so on at any given installation. But these constants are not given names as mnemonics for their special values, except by the programmer. There is no equivalent of SYSOUT as in WRITE(SYSOUT,''etc'' without definition by the programmer.
 
-Certain statements involve special names in what appear to be assignments of values to or from a special name that has a value just like a named variable does, but these are ''not'' proper variables at all. For instance, in 
+Certain statements involve special names in what appear to be assignments of values to or from a special name that has a value just like a named variable does, but these are ''not'' proper variables at all. For instance, in
 ```Fortran
            INQUIRE(FILE = FILENAME(1:L),EXIST = EXIST,	!Here we go. Does the file exist?
      1      ERR = 666,IOSTAT = IOSTAT) 		!Hopefully, named in good style, etc.
@@ -872,7 +872,7 @@ See also [[Topic variable#Go]] for an example of '.' of the template package.
 Like C, there are practically no special variables. The program entry point, main, is the one exception.
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon have special variables known as keywords which are syntactically are preceded by an &.   
+Icon and Unicon have special variables known as keywords which are syntactically are preceded by an &.
 
 ```Unicon
 
@@ -1001,155 +1001,155 @@ These names may be used as regular names, but that is bad practice except in the
 
 In J 602:  Names in locale z are in the path for all locales, including the default locale (base) -- these provide "language features":
 <pre style="height:30ex;overflow:scroll">   names_z_''
-ARGV           BINPATH        CR             CRLF           DEL            Debug          
-EAV            EMPTY          FF             FIXFONT        FIXFONTWH      IF64           
-IFCONSOLE      IFGTK          IFJ6           IFJAVA         IFJHS          IFUNIX         
-IFWIN          IFWIN32        IFWINCE        IFWINE         IFWINNT        JVERSION       
-LF             LF2            Note           PROFONT        SYSPPC         TAB            
-UNAME          adverb         apply          assert         bind           boxopen        
-boxxopen       break          bx             clear          coclass        cocreate       
-cocurrent      codestroy      coerase        cofullname     coinsert       coname         
-conames        conew          conjunction    conl           copath         coreset        
-cutopen        datatype       def            define         do             drop           
-dyad           each           edit           empty          erase          every          
-exit           expand         fetch          inv            inverse        items          
-jcwdpath       jhostpath      jpath          jpathsep       jsystemdefs    leaf           
-list           load           loadd          loadp          mbopen         mbsave         
-monad          nameclass      namelist       names          nc             nl             
-noun           on             open           pick           require        rows           
-script         scriptd        scripts        setbreak       sign           sminfo         
-smoutput       sort           split          startupconsole startupide     table          
-take           tmoutput       toCRLF         toHOST         toJ            tolower        
-toupper        type           ucp            ucpcount       utf8           uucp           
-verb           wcsize         wd             wdbox          wdcenter       wdclipread     
-wdclipwrite    wde            wdfit          wdforms        wdget          wdhandler      
-wdinfo         wdishandle     wdisparent     wdmove         wdpclose       wdqshow        
-wdquery        wdreset        wdselect       wdstatus       winpathsep                    
+ARGV           BINPATH        CR             CRLF           DEL            Debug
+EAV            EMPTY          FF             FIXFONT        FIXFONTWH      IF64
+IFCONSOLE      IFGTK          IFJ6           IFJAVA         IFJHS          IFUNIX
+IFWIN          IFWIN32        IFWINCE        IFWINE         IFWINNT        JVERSION
+LF             LF2            Note           PROFONT        SYSPPC         TAB
+UNAME          adverb         apply          assert         bind           boxopen
+boxxopen       break          bx             clear          coclass        cocreate
+cocurrent      codestroy      coerase        cofullname     coinsert       coname
+conames        conew          conjunction    conl           copath         coreset
+cutopen        datatype       def            define         do             drop
+dyad           each           edit           empty          erase          every
+exit           expand         fetch          inv            inverse        items
+jcwdpath       jhostpath      jpath          jpathsep       jsystemdefs    leaf
+list           load           loadd          loadp          mbopen         mbsave
+monad          nameclass      namelist       names          nc             nl
+noun           on             open           pick           require        rows
+script         scriptd        scripts        setbreak       sign           sminfo
+smoutput       sort           split          startupconsole startupide     table
+take           tmoutput       toCRLF         toHOST         toJ            tolower
+toupper        type           ucp            ucpcount       utf8           uucp
+verb           wcsize         wd             wdbox          wdcenter       wdclipread
+wdclipwrite    wde            wdfit          wdforms        wdget          wdhandler
+wdinfo         wdishandle     wdisparent     wdmove         wdpclose       wdqshow
+wdquery        wdreset        wdselect       wdstatus       winpathsep
 ```
 
 
 Names in the locales j and jijs are available by explicity referencing those locales and are used to provide "system features" and "ide features":
 <pre style="height:30ex;overflow:scroll">   names_j_''
-BOXES              BROWSER            CONFIRMCLOSE       DIRTREEX           DISPLAYLOAD        
-EPSREADER          FORMAT             FORMSIZES          GetSystemMetrics   IFJIJX             
-INPUTLOG           INPUTLOGFILE       LOADED             P2UPFONT           PATHJSEP           
-PATHSEP            PDFREADER          PRINTERFONT        PRINTOPT           PUBLIC             
-READONLY           SCRIPTS            SHOWSIP            SMPRINT            SM_CMONITORS       
-SM_CXVIRTUALSCREEN SM_CYVIRTUALSCREEN SM_XVIRTUALSCREEN  SM_YVIRTUALSCREEN  STARTUP            
-SYSTEMFOLDERS      TARGET             USERFOLDERS        WINPOS             XDIFF              
-addfname           boxdraw            buildpublic        classwizard        cleantable         
-config             cutnames           deb                debug              demos              
-dirmatch           dltb               edit               editfind           editinputlog       
-editinputprompt    exist              extijs             fexist             fif                
-filenewform        fileprint          fileprintsetup     filex              fixWINPOS          
-formedit           formeditrun        forms              fullname           getinputlog        
-getpath            getscripts         gettarget          gettargetlocale    globaldefs         
-gridwizard         help               htmlhelp           jpath              lab                
-lastactive         loadp              open               openfiles          origin             
-pacman             printfiles         prints             projectmanager     save               
-saveuserfolders    scriptmake         scripts            wpreset            wpsave             
-wpset                                                                                          
+BOXES              BROWSER            CONFIRMCLOSE       DIRTREEX           DISPLAYLOAD
+EPSREADER          FORMAT             FORMSIZES          GetSystemMetrics   IFJIJX
+INPUTLOG           INPUTLOGFILE       LOADED             P2UPFONT           PATHJSEP
+PATHSEP            PDFREADER          PRINTERFONT        PRINTOPT           PUBLIC
+READONLY           SCRIPTS            SHOWSIP            SMPRINT            SM_CMONITORS
+SM_CXVIRTUALSCREEN SM_CYVIRTUALSCREEN SM_XVIRTUALSCREEN  SM_YVIRTUALSCREEN  STARTUP
+SYSTEMFOLDERS      TARGET             USERFOLDERS        WINPOS             XDIFF
+addfname           boxdraw            buildpublic        classwizard        cleantable
+config             cutnames           deb                debug              demos
+dirmatch           dltb               edit               editfind           editinputlog
+editinputprompt    exist              extijs             fexist             fif
+filenewform        fileprint          fileprintsetup     filex              fixWINPOS
+formedit           formeditrun        forms              fullname           getinputlog
+getpath            getscripts         gettarget          gettargetlocale    globaldefs
+gridwizard         help               htmlhelp           jpath              lab
+lastactive         loadp              open               openfiles          origin
+pacman             printfiles         prints             projectmanager     save
+saveuserfolders    scriptmake         scripts            wpreset            wpsave
+wpset
    names_jijs_''
-EMPTY                      FIXFONTDEF                 FKEYS                      
-FTYPES                     IFIOX                      IFMAX                      
-IFREADONLY                 IFSAVED                    IFSHOW                     
-JIJS                       JIJSMAC                    JRECENT                    
-NEWUSER                    PPSCRIPT                   QFORMX                     
-RECENT                     RECENTFILE                 RECENTLOC                  
-RECENTMAX                  SCMP                       SMBLK                      
-SMDESK                     SMHWNDP                    SMINIT                     
-SMNAME                     SMPATH                     SMSEL                      
-SMSIZE                     SMSTYLE                    SMTEXT                     
-SMTORG                     aboutj                     boxfkeys                   
-boxskeys                   checkreadonly              cleartemp                  
-close                      closeijs                   closeijx                   
-closewindows               comparesvn                 create                     
-cutpara                    deb                        destroy                    
-exitijs                    filecase                   fkeycase                   
-fkeylist                   fkeyrun                    fkeyselect                 
-fkeyselect1                flerase                    flexist                    
-flopen                     flread                     flwrite                    
-foldpara                   foldtext                   getSMSEL                   
-getactsize                 getcascade                 getcascade1                
-getcascades                getfile                    getformx                   
-getline                    getsaveas                  getscrollpos               
-getselection               getskey                    id2loc                     
-id2name                    id2names                   id2type                    
-ide_maximize               ide_minimize               ide_restore                
-ifshiftkey                 iftempscript               info                       
-intn                       jijs_aboutj_button         jijs_actrl_fkey            
-jijs_bctrl_fkey            jijs_bctrlshift_fkey       jijs_cancel                
-jijs_close                 jijs_close_button          jijs_dctrl_fkey            
-jijs_default               jijs_demos_button          jijs_ectrl_fkey            
-jijs_ectrlshift_fkey       jijs_editconfigure_button  jijs_editcopy_button       
-jijs_editcut_button        jijs_editdirmatch_button   jijs_editexport_button     
-jijs_editfif_button        jijs_editfind_button       jijs_editformedit_button   
-jijs_editinputlog_button   jijs_editlint_button       jijs_editpaste_button      
-jijs_editreadonly_button   jijs_editredo_button       jijs_editselectall_button  
-jijs_editundo_button       jijs_f1_fkey               jijs_f1ctrl_fkey           
-jijs_f1shift_fkey          jijs_fctrl_fkey            jijs_fctrlshift_fkey       
-jijs_filecleartemp_button  jijs_fileexit_button       jijs_filenewclass_button   
-jijs_filenewijs_button     jijs_fileopen_button       jijs_fileopensystem_button 
-jijs_fileopenuser_button   jijs_fileprint_button      jijs_fileprintsetup_button 
-jijs_filerecent_button     jijs_fkeys_button          jijs_forms_button          
-jijs_gctrl_fkey            jijs_hctrl_fkey            jijs_helpconstants_button  
-jijs_helpcontext_button    jijs_helpcontrols_button   jijs_helpdictionary_button 
-jijs_helpforeigns_button   jijs_helpgeneral_button    jijs_helpgl2cmd_button     
-jijs_helphelp_button       jijs_helpindex_button      jijs_helpphrases_button    
-jijs_helpprimer_button     jijs_helprelease_button    jijs_helprelnotes_button   
-jijs_helpuser_button       jijs_helpvocab_button      jijs_helpwdcmd_button      
-jijs_helpwdover_button     jijs_ictrl_fkey            jijs_jctrl_fkey            
-jijs_kctrl_fkey            jijs_kctrlshift_fkey       jijs_labadvance_button     
-jijs_labauthor_button      jijs_labchapters_button    jijs_labs_button           
-jijs_lctrl_fkey            jijs_lctrlshift_fkey       jijs_max_button            
-jijs_mctrl_fkey            jijs_nctrl_fkey            jijs_nctrlshift_fkey       
-jijs_octrl_fkey            jijs_pctrl_fkey            jijs_qctrl_fkey            
-jijs_rctrl_fkey            jijs_rctrlshift_fkey       jijs_rundebug_button       
-jijs_runfile_button        jijs_runfiled_button       jijs_runline_button        
-jijs_runpacman_button      jijs_runprojman_button     jijs_runselection_button   
-jijs_runwindow_button      jijs_runwindowd_button     jijs_save_button           
-jijs_saveas_button         jijs_sctrl_fkey            jijs_sellower_button       
-jijs_selminus_button       jijs_selplus_button        jijs_selplusline1_button   
-jijs_selplusline2_button   jijs_selsort_button        jijs_seltoggle_button      
-jijs_selupper_button       jijs_selwrap_button        jijs_tctrl_fkey            
-jijs_tile_button           jijs_tileacross_button     jijs_tilecascade_button    
-jijs_togglebox_button      jijs_wctrl_fkey            jijs_wctrlshift_fkey       
-jrecent_cancel             jrecent_close              jrecent_enter              
-jrecent_lb_button          jrecent_open_button        jrecent_run                
-jrecent_run_button         jrecent_rund_button        jrecent_view_button        
-lint                       marksavedid                name2id                    
-new                        newijs                     newijx                     
-nounrep                    openijs                    parentname                 
-pathname                   pmovex                     qsmact                     
-qsmall                     qsmallforms                qsmallijs                  
-qsmlastijs                 qsmlastxs                  qsmout                     
-qsmsize                    query                      quote                      
-rdist                      readid                     readid16                   
-readonlydefault            recent_open                recent_put                 
-recent_read                recent_run                 recent_save                
-resizefont                 restorefont                roundint                   
-runcompare                 runexport                  runfile                    
-runimmx0                   runimmx1                   runline                    
-runselection               runwindow                  save                       
-saveas                     saveopenwindows            scmp_cancel                
-scmp_close                 scmp_close_button          scmp_current_button        
-scmp_original_button       scmp_revert_button         scmp_run                   
-scmp_show                  select_line                select_text                
-set_fkeys                  set_skey1                  set_skeys                  
-setfontall                 setpnall                   setreadonly                
-sh                         smappend                   smclose                    
-smfocus                    smfocusact                 smfocusout                 
-smgetsel                   smmove                     smopen                     
-smprompt                   smread                     smreplace                  
-smsave                     smscroll                   smsel                      
-smselact                   smselout                   smsetcmd                   
-smsetsaved                 smsetselect                smwrite                    
-sysmodifiers               tile                       tile2fit                   
-tile2fit1                  tileacross                 tilecascade                
-tileget                    todelim                    tofoldername               
-togglebox                  togglereadonly             togglexs                   
-tolist                     topara                     ucpboxdraw                 
-unboxfkeys                 unboxskeys                 winmax                     
+EMPTY                      FIXFONTDEF                 FKEYS
+FTYPES                     IFIOX                      IFMAX
+IFREADONLY                 IFSAVED                    IFSHOW
+JIJS                       JIJSMAC                    JRECENT
+NEWUSER                    PPSCRIPT                   QFORMX
+RECENT                     RECENTFILE                 RECENTLOC
+RECENTMAX                  SCMP                       SMBLK
+SMDESK                     SMHWNDP                    SMINIT
+SMNAME                     SMPATH                     SMSEL
+SMSIZE                     SMSTYLE                    SMTEXT
+SMTORG                     aboutj                     boxfkeys
+boxskeys                   checkreadonly              cleartemp
+close                      closeijs                   closeijx
+closewindows               comparesvn                 create
+cutpara                    deb                        destroy
+exitijs                    filecase                   fkeycase
+fkeylist                   fkeyrun                    fkeyselect
+fkeyselect1                flerase                    flexist
+flopen                     flread                     flwrite
+foldpara                   foldtext                   getSMSEL
+getactsize                 getcascade                 getcascade1
+getcascades                getfile                    getformx
+getline                    getsaveas                  getscrollpos
+getselection               getskey                    id2loc
+id2name                    id2names                   id2type
+ide_maximize               ide_minimize               ide_restore
+ifshiftkey                 iftempscript               info
+intn                       jijs_aboutj_button         jijs_actrl_fkey
+jijs_bctrl_fkey            jijs_bctrlshift_fkey       jijs_cancel
+jijs_close                 jijs_close_button          jijs_dctrl_fkey
+jijs_default               jijs_demos_button          jijs_ectrl_fkey
+jijs_ectrlshift_fkey       jijs_editconfigure_button  jijs_editcopy_button
+jijs_editcut_button        jijs_editdirmatch_button   jijs_editexport_button
+jijs_editfif_button        jijs_editfind_button       jijs_editformedit_button
+jijs_editinputlog_button   jijs_editlint_button       jijs_editpaste_button
+jijs_editreadonly_button   jijs_editredo_button       jijs_editselectall_button
+jijs_editundo_button       jijs_f1_fkey               jijs_f1ctrl_fkey
+jijs_f1shift_fkey          jijs_fctrl_fkey            jijs_fctrlshift_fkey
+jijs_filecleartemp_button  jijs_fileexit_button       jijs_filenewclass_button
+jijs_filenewijs_button     jijs_fileopen_button       jijs_fileopensystem_button
+jijs_fileopenuser_button   jijs_fileprint_button      jijs_fileprintsetup_button
+jijs_filerecent_button     jijs_fkeys_button          jijs_forms_button
+jijs_gctrl_fkey            jijs_hctrl_fkey            jijs_helpconstants_button
+jijs_helpcontext_button    jijs_helpcontrols_button   jijs_helpdictionary_button
+jijs_helpforeigns_button   jijs_helpgeneral_button    jijs_helpgl2cmd_button
+jijs_helphelp_button       jijs_helpindex_button      jijs_helpphrases_button
+jijs_helpprimer_button     jijs_helprelease_button    jijs_helprelnotes_button
+jijs_helpuser_button       jijs_helpvocab_button      jijs_helpwdcmd_button
+jijs_helpwdover_button     jijs_ictrl_fkey            jijs_jctrl_fkey
+jijs_kctrl_fkey            jijs_kctrlshift_fkey       jijs_labadvance_button
+jijs_labauthor_button      jijs_labchapters_button    jijs_labs_button
+jijs_lctrl_fkey            jijs_lctrlshift_fkey       jijs_max_button
+jijs_mctrl_fkey            jijs_nctrl_fkey            jijs_nctrlshift_fkey
+jijs_octrl_fkey            jijs_pctrl_fkey            jijs_qctrl_fkey
+jijs_rctrl_fkey            jijs_rctrlshift_fkey       jijs_rundebug_button
+jijs_runfile_button        jijs_runfiled_button       jijs_runline_button
+jijs_runpacman_button      jijs_runprojman_button     jijs_runselection_button
+jijs_runwindow_button      jijs_runwindowd_button     jijs_save_button
+jijs_saveas_button         jijs_sctrl_fkey            jijs_sellower_button
+jijs_selminus_button       jijs_selplus_button        jijs_selplusline1_button
+jijs_selplusline2_button   jijs_selsort_button        jijs_seltoggle_button
+jijs_selupper_button       jijs_selwrap_button        jijs_tctrl_fkey
+jijs_tile_button           jijs_tileacross_button     jijs_tilecascade_button
+jijs_togglebox_button      jijs_wctrl_fkey            jijs_wctrlshift_fkey
+jrecent_cancel             jrecent_close              jrecent_enter
+jrecent_lb_button          jrecent_open_button        jrecent_run
+jrecent_run_button         jrecent_rund_button        jrecent_view_button
+lint                       marksavedid                name2id
+new                        newijs                     newijx
+nounrep                    openijs                    parentname
+pathname                   pmovex                     qsmact
+qsmall                     qsmallforms                qsmallijs
+qsmlastijs                 qsmlastxs                  qsmout
+qsmsize                    query                      quote
+rdist                      readid                     readid16
+readonlydefault            recent_open                recent_put
+recent_read                recent_run                 recent_save
+resizefont                 restorefont                roundint
+runcompare                 runexport                  runfile
+runimmx0                   runimmx1                   runline
+runselection               runwindow                  save
+saveas                     saveopenwindows            scmp_cancel
+scmp_close                 scmp_close_button          scmp_current_button
+scmp_original_button       scmp_revert_button         scmp_run
+scmp_show                  select_line                select_text
+set_fkeys                  set_skey1                  set_skeys
+setfontall                 setpnall                   setreadonly
+sh                         smappend                   smclose
+smfocus                    smfocusact                 smfocusout
+smgetsel                   smmove                     smopen
+smprompt                   smread                     smreplace
+smsave                     smscroll                   smsel
+smselact                   smselout                   smsetcmd
+smsetsaved                 smsetselect                smwrite
+sysmodifiers               tile                       tile2fit
+tile2fit1                  tileacross                 tilecascade
+tileget                    todelim                    tofoldername
+togglebox                  togglereadonly             togglexs
+tolist                     topara                     ucpboxdraw
+unboxfkeys                 unboxskeys                 winmax
 ```
 
 
@@ -1189,8 +1189,8 @@ public class SpecialVariables {
         // the Java VM runs on, various paths like home direcoty of the user that runs the program, class (library) paths,
         System.out.println(System.getProperties());
 
-        //Runtime.getRuntime() returns a Runtime-Object that contains "changing" data about the running Java VM's 
-        // environment, like available processor cores or available RAM 
+        //Runtime.getRuntime() returns a Runtime-Object that contains "changing" data about the running Java VM's
+        // environment, like available processor cores or available RAM
         System.out.println(Runtime.getRuntime().availableProcessors());
 
     }
@@ -1238,7 +1238,7 @@ Variables in jq are identifiers preceded by the sigil "$", e.g. <code>$x</code>.
 
 For example:
 ```sh
-$ jq -n -M --arg x 1 '$x|type'   # (*)   
+$ jq -n -M --arg x 1 '$x|type'   # (*)
 "string"
 ```
 
@@ -1279,10 +1279,10 @@ class President(val name: String) {
         set(value) {
            if (value in 0..125) field = value  // assigning to backing field here
            else throw IllegalArgumentException("$name's age must be between 0 and 125")
-        }   
+        }
 }
 
-fun main(args: Array<String>) {   
+fun main(args: Array<String>) {
     val pres = President("Donald")
     pres.age = 69
     val pres2 = President("Jimmy")
@@ -1363,9 +1363,13 @@ The most important special variable is known as ''it''. The LC Dictionary says "
 
 Further to those, LiveCode comes with a plethora of built-in constants, which are readily listed with the following command:
 
-```LiveCode>put the constantNames</lang
-It also provides colours as built-ins, accessible through 
-```LiveCode>the colornames</lang
+```LiveCode
+put the constantNames>
+```
+It also provides colours as built-ins, accessible through
+```LiveCode
+the colornames>
+```
  You can search the dictionary in the IDE using text "names" to discover more such as the ''propertyNames'' & the ''commandNames'', though are not strictly pertinent to this task.
 
 
@@ -1401,7 +1405,7 @@ Module Checkit {
       \\ using a dot we tell to interpreter to skip internal identifiers,
       \\ and look for user variables
       Print .inkey$="hello", .dir$="Something Else"
-      
+
       Print dir$   ' return current path
       do
             Print "wait to press space"
@@ -1458,48 +1462,48 @@ width, x.twips, y.twips
 ```Mathematica
 Grid[Partition[Names["$*"],4]]
 ->
-$Aborted                       $ActivationGroupID             $ActivationKey                 $ActivationUserRegistered     
-$AddOnsDirectory               $AllowDataUpdates              $AllowDocumentationUpdates     $AllowInternet                
-$AssertFunction                $Assumptions                   $BaseDirectory                 $BatchInput                   
-$BatchOutput                   $BoxForms                      $ByteOrdering                  $Canceled                     
-$CharacterEncoding             $CharacterEncodings            $CommandLine                   $CompilationTarget            
-$ConditionHold                 $ConfiguredKernels             $Context                       $ContextPath                  
-$ControlActiveSetting          $CreationDate                  $CurrentLink                   $DateStringFormat             
-$DefaultFont                   $DefaultFrontEnd               $DefaultImagingDevice          $DefaultPath                  
-$Display                       $DisplayFunction               $DistributedContexts           $DynamicEvaluation            
-$Echo                          $Epilog                        $ExportFormats                 $Failed                       
-$FinancialDataSource           $FormatType                    $FrontEnd                      $FrontEndSession              
-$GeoLocation                   $HistoryLength                 $HomeDirectory                 $IgnoreEOF                    
-$ImagingDevices                $ImportFormats                 $InitialDirectory              $Input                        
-$InputFileName                 $Inspector                     $InstallationDate              $InstallationDirectory        
-$InstalledServices             $InterfaceEnvironment          $InternetProxyRules            $IterationLimit               
-$KernelCount                   $KernelID                      $Language                      $LaunchDirectory              
-$LibraryPath                   $LicenseExpirationDate         $LicenseID                     $LicenseProcesses             
-$LicenseServer                 $LicenseSubprocesses           $LicenseType                   $Line                         
-$Linked                        $LinkSupported                 $LoadedFiles                   $MachineAddresses             
-$MachineDomain                 $MachineDomains                $MachineEpsilon                $MachineID                    
-$MachineName                   $MachinePrecision              $MachineType                   $MaxExtraPrecision            
-$MaxLicenseProcesses           $MaxLicenseSubprocesses        $MaxMachineNumber              $MaxNumber                    
-$MaxPiecewiseCases             $MaxPrecision                  $MaxRootDegree                 $MessageGroups                
-$MessageList                   $MessagePrePrint               $Messages                      $MinMachineNumber             
-$MinNumber                     $MinorReleaseNumber            $MinPrecision                  $ModuleNumber                 
-$NetworkLicense                $NewMessage                    $NewSymbol                     $Notebooks                    
-$NumberMarks                   $Off                           $OperatingSystem               $Output                       
-$OutputForms                   $OutputSizeLimit               $Packages                      $PacletSite                   
-$ParentLink                    $ParentProcessID               $PasswordFile                  $PatchLevelID                 
-$Path                          $PathnameSeparator             $PerformanceGoal               $PipeSupported                
-$Post                          $Pre                           $PreferencesDirectory          $PrePrint                     
-$PreRead                       $PrintForms                    $PrintLiteral                  $PrintServiceRequest          
-$PrintServiceResponse          $PrintShortErrorMessages       $PrintWSDLDebug                $ProcessID                    
-$ProcessorCount                $ProcessorType                 $ProductInformation            $ProgramName                  
-$RandomState                   $RecursionLimit                $ReleaseNumber                 $RootDirectory                
-$ScheduledTask                 $ScriptCommandLine             $SessionID                     $SetParentLink                
-$SharedFunctions               $SharedVariables               $SoundDisplay                  $SoundDisplayFunction         
-$SuppressInputFormHeads        $SynchronousEvaluation         $SyntaxHandler                 $System                       
-$SystemCharacterEncoding       $SystemID                      $SystemWordLength              $TemporaryDirectory           
-$TemporaryPrefix               $TextStyle                     $TimedOut                      $TimeUnit                     
-$TimeZone                      $TopDirectory                  $TraceOff                      $TraceOn                      
-$TracePattern                  $TracePostAction               $TracePreAction                $Urgent                       
+$Aborted                       $ActivationGroupID             $ActivationKey                 $ActivationUserRegistered
+$AddOnsDirectory               $AllowDataUpdates              $AllowDocumentationUpdates     $AllowInternet
+$AssertFunction                $Assumptions                   $BaseDirectory                 $BatchInput
+$BatchOutput                   $BoxForms                      $ByteOrdering                  $Canceled
+$CharacterEncoding             $CharacterEncodings            $CommandLine                   $CompilationTarget
+$ConditionHold                 $ConfiguredKernels             $Context                       $ContextPath
+$ControlActiveSetting          $CreationDate                  $CurrentLink                   $DateStringFormat
+$DefaultFont                   $DefaultFrontEnd               $DefaultImagingDevice          $DefaultPath
+$Display                       $DisplayFunction               $DistributedContexts           $DynamicEvaluation
+$Echo                          $Epilog                        $ExportFormats                 $Failed
+$FinancialDataSource           $FormatType                    $FrontEnd                      $FrontEndSession
+$GeoLocation                   $HistoryLength                 $HomeDirectory                 $IgnoreEOF
+$ImagingDevices                $ImportFormats                 $InitialDirectory              $Input
+$InputFileName                 $Inspector                     $InstallationDate              $InstallationDirectory
+$InstalledServices             $InterfaceEnvironment          $InternetProxyRules            $IterationLimit
+$KernelCount                   $KernelID                      $Language                      $LaunchDirectory
+$LibraryPath                   $LicenseExpirationDate         $LicenseID                     $LicenseProcesses
+$LicenseServer                 $LicenseSubprocesses           $LicenseType                   $Line
+$Linked                        $LinkSupported                 $LoadedFiles                   $MachineAddresses
+$MachineDomain                 $MachineDomains                $MachineEpsilon                $MachineID
+$MachineName                   $MachinePrecision              $MachineType                   $MaxExtraPrecision
+$MaxLicenseProcesses           $MaxLicenseSubprocesses        $MaxMachineNumber              $MaxNumber
+$MaxPiecewiseCases             $MaxPrecision                  $MaxRootDegree                 $MessageGroups
+$MessageList                   $MessagePrePrint               $Messages                      $MinMachineNumber
+$MinNumber                     $MinorReleaseNumber            $MinPrecision                  $ModuleNumber
+$NetworkLicense                $NewMessage                    $NewSymbol                     $Notebooks
+$NumberMarks                   $Off                           $OperatingSystem               $Output
+$OutputForms                   $OutputSizeLimit               $Packages                      $PacletSite
+$ParentLink                    $ParentProcessID               $PasswordFile                  $PatchLevelID
+$Path                          $PathnameSeparator             $PerformanceGoal               $PipeSupported
+$Post                          $Pre                           $PreferencesDirectory          $PrePrint
+$PreRead                       $PrintForms                    $PrintLiteral                  $PrintServiceRequest
+$PrintServiceResponse          $PrintShortErrorMessages       $PrintWSDLDebug                $ProcessID
+$ProcessorCount                $ProcessorType                 $ProductInformation            $ProgramName
+$RandomState                   $RecursionLimit                $ReleaseNumber                 $RootDirectory
+$ScheduledTask                 $ScriptCommandLine             $SessionID                     $SetParentLink
+$SharedFunctions               $SharedVariables               $SoundDisplay                  $SoundDisplayFunction
+$SuppressInputFormHeads        $SynchronousEvaluation         $SyntaxHandler                 $System
+$SystemCharacterEncoding       $SystemID                      $SystemWordLength              $TemporaryDirectory
+$TemporaryPrefix               $TextStyle                     $TimedOut                      $TimeUnit
+$TimeZone                      $TopDirectory                  $TraceOff                      $TraceOn
+$TracePattern                  $TracePostAction               $TracePreAction                $Urgent
 $UserAddOnsDirectory           $UserBaseDirectory             $UserBasePacletsDirectory      $UserDocumentsDirectory
 ```
 
@@ -1746,7 +1750,7 @@ val epsilon_float : float
 ## Oforth
 
 
-Oforth special variables are read-only : 
+Oforth special variables are read-only :
 
 ```txt
 
@@ -1823,7 +1827,7 @@ $`     $PREMATCH                 # substring preceding last matched regular expr
 ## Perl 6
 
 
-It is probably useful to briefly explain normal variables in Perl 6 before tackling special variables. 
+It is probably useful to briefly explain normal variables in Perl 6 before tackling special variables.
 
 Variables in Perl 6 have a prefix sigil to distinguish them from named subroutines, functions, classes, and so on. There is a system of sigils to mark the fundamental structural type of the variable:
 
@@ -1870,7 +1874,7 @@ Perl 6 has deprecated most of the "line-noise" variables from Perl 5 in favor of
  ::?CLASS          # current class (as package or type name)
  $?CLASS           # current class
  @=COMMENT         # All the comment blocks in the file
- %?CONFIG          # configuration hash 
+ %?CONFIG          # configuration hash
  $*CWD             # current working directory
  $=DATA            # data block handle (=begin DATA ... =end)
  @=DATA            # Same as above, but array
@@ -1916,7 +1920,7 @@ Perl 6 has deprecated most of the "line-noise" variables from Perl 5 in favor of
 ```
 
 
-Also, not really a variable but... 
+Also, not really a variable but...
 
 ```perl6
  *  # A standalone term that has no fixed value, instead it captures the notion of "Whatever",
@@ -2105,7 +2109,7 @@ The REXX language has three special variables:
 :::*   '''RESULT'''     [the result '''RETURN'''ed from a subroutine or function]
 :::*   '''SIGL'''         [the source line number that did the transfer of control]
 
-Each of the above may be used as a regular REXX variable;   they aren't reserved keywords or reserved variable names.  
+Each of the above may be used as a regular REXX variable;   they aren't reserved keywords or reserved variable names.
 
 Because REXX may define (or re-define) any of these variables during execution of the REXX program, its recommended that they be not be used as regular REXX variables.
 
@@ -2113,16 +2117,16 @@ Initially, the above three special variables aren't defined   (until the appropr
 
 : If no commands have been issued to the host, then the   '''RC'''   special variable isn't defined.
 : If no subroutines have been invoked, then the   '''RESULT'''   special variable isn't defined.
-: If no SIGNAL or CALL (or subroutine invocation) has been used, then the   '''SIGL'''   special variable isn't defined. 
-:::: (This excludes the use of: 
-:::::::*   '''SIGNAL ON   ααα''' 
-:::::::*   '''SIGNAL OFF ααα''' 
+: If no SIGNAL or CALL (or subroutine invocation) has been used, then the   '''SIGL'''   special variable isn't defined.
+:::: (This excludes the use of:
+:::::::*   '''SIGNAL ON   ααα'''
+:::::::*   '''SIGNAL OFF ααα'''
 :::: which don't actually transfer control.)
 
 In each case, the three special variable names   ('''RC''',   '''RESULT''',   and   '''SIGL''')   may be in lower/upper/mixed case.
 
 
-The scope of the special variables is   LOCAL. 
+The scope of the special variables is   LOCAL.
 
 ```rexx
 /*REXX program demonstrates REXX special variables:  RC,  RESULT,  SIGL */
@@ -2156,7 +2160,7 @@ exit                                   /*stick a fork in it, we're done.*/
 halve: return arg(1) / 2               /*a simple halving function.     */
 ```
 
-'''output''' using: 
+'''output''' using:
 :::* Regina REXX
 
 ```txt
@@ -2185,11 +2189,11 @@ WINDOWS
 ```
 
 
-'''output''' using: 
+'''output''' using:
 :::* PC/REXX
 :::* Personal REXX
 :::* R4 REXX
-:::* ROO 
+:::* ROO
 
 ```txt
 
@@ -2257,7 +2261,7 @@ Return arg(1)**2
 
 Novalue:
 Say 'NOVALUE encountered in line' sigl':' sourceline(sigl)
-Exit 
+Exit
 ```
 
 ```txt
@@ -2281,7 +2285,7 @@ RESULT=25
 SIGL=6
 square was invoked from line 10: x2=square(3) /* just a simle example */
 3**2=9
-NOVALUE encountered in line 14: x=y   /* y was not yet assigned a value */ 
+NOVALUE encountered in line 14: x=y   /* y was not yet assigned a value */
 ```
 
 
@@ -2333,13 +2337,17 @@ The global default namespace is called "Smalltalk" and contains (beside bindings
 * false
 * nil
 Technically, these could be redefined, but the system would not work if any of them was. Therefore most compilers refuse code which obviously attempts to do so, and we can think of them as being reserved names as well.
-Global binding names are returned by 
-```smalltalk>Smalltalk keys</lang
-
-Things like the shell environment, command line argument, version numbers etc. are usually not exposed via globals, but instead held in private class variables (static variables), which can be accessed via getter messages (which, by the way, makes it easier to insert a dialect compatibility layer). An example for this would be: 
-```smalltalk>Float precision
+Global binding names are returned by
+```smalltalk
+Smalltalk keys>
 ```
- or <lang smalltalk>Smalltalk version</lang
+
+Things like the shell environment, command line argument, version numbers etc. are usually not exposed via globals, but instead held in private class variables (static variables), which can be accessed via getter messages (which, by the way, makes it easier to insert a dialect compatibility layer). An example for this would be:
+```smalltalk
+Float precision>
+```
+ or <lang smalltalk>Smalltalk version
+```
 
 
 Name conventions:
@@ -2432,30 +2440,30 @@ The following variables are reserved for special purposes within the Bourne shel
 
 * CDPATH 	Additional locations to be searched by the cd command
 * HOME 	The default working directory of the current user
-* HUSHLOGIN 	
+* HUSHLOGIN
 * IFS 	Internal field separator. This contains space,tab and newline characters
 * LANG 	Determines the default locale in the absence of other locale related environment variables
 * LC_ALL 	High precedence override for locale specific behaviour
 * LC_CTYPE 	Determines locale specific character classification
 * LOGNAME 	The login name of the user
-* LS_COLORS 	
+* LS_COLORS
 * MAIL 	The full pathname of the users mail file
 * MAILCHECK 	The time limit that the shell timer uses before checking for new mail
-* MAILPATH 	
-* OPTARG 	
-* OPTIND 	
+* MAILPATH
+* OPTARG
+* OPTIND
 * PATH 	The shell search path
-* PPID 	
+* PPID
 * PS1 	Primary system prompt
 * PS2 	Secondary system prompt
 * PS3 	Ternary system prompt
 * PS4 	Forth system prompt
 * PWD 	Current working directory
-* SHACCT 	
+* SHACCT
 * SHELL 	The name of the current shell
-* SHLVL 	
+* SHLVL
 * TERM 	The current terminal type
-* TIMEOUT 	
+* TIMEOUT
 * TZ 	The current timezone
 * USER 	The current username
 * underscore

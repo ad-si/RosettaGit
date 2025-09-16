@@ -504,7 +504,8 @@ prime list
 Based on the test in the [[Primality_by_trial_division#Befunge|Primality by trial division]] task, this list all primes between 2 and 1,000,000.
 
 
-```befunge>2
+```befunge
+2>
 :::"}"8*:*>`#@_48*:**2v
 v_v#`\*:%*:*84\/*:*84::+<
 v#>::48*:*/\48*:*%%!#v_1^

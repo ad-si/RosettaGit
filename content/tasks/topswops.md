@@ -2045,7 +2045,8 @@ Output follows that of Perl6 and Python, ~2.5x faster than perl5
 
 This solution uses cards numbered from 0..n-1 and variable p0 is introduced as a speed optimisation
 
-```python>>>
+```python
+>>>
  from itertools import permutations
 >>> def f1(p):
 	i = 0

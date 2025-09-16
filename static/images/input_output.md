@@ -755,11 +755,16 @@ This is only meant to copy a sequential text file. It is very unlikely that this
 ## Batch File
 
 
-```dos>copy input.txt output.txt</lang
+```dos
+copy input.txt output.txt>
+```
 
 or
 
-```dos>type input.txt > output.txt</lang
+```dos
+type input.txt >
+ output.txt>
+```
 
 or
 
@@ -1506,7 +1511,8 @@ end;
 
 {{works with|E-on-Java}}
 
-```e><file:output.txt
+```e
+<file:output.txt
 .setText(<file:input.txt>.getText())
 ```
 
@@ -1711,7 +1717,9 @@ Possibly cheating:
 Forth traditionally has not had any file handling capabilities, preferring instead to operate on a disk image block by block.  Most modern Forth systems however run under an existing operating system and provide methods for disk access.
 
 
-```forth>\ <to> <from
+```forth
+\ <to>
+ <from>
  copy-file
 : copy-file ( a1 n1 a2 n2 -- )
     r/o open-file throw >r
@@ -4075,7 +4083,9 @@ close $out
 
 Or the minimal version if we don't need any processing of the data at all:
 
-```tcl>file copy input.txt output.txt</lang
+```tcl
+file copy input.txt output.txt>
+```
 
 
 ### Other key file I/O operations

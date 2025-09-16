@@ -137,7 +137,8 @@ centimeter 746760.
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 oldrussian
 @% = &90E
 PROColdrus(1, "meter")

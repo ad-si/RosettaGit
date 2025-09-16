@@ -1415,7 +1415,9 @@ matrices | det
 ## Julia
 
 
-```Julia> using LinearAlgebra</lang
+```julia
+ using LinearAlgebra
+```
 
 The determinant of a matrix <code>A</code> can be computed by the built-in function
 
@@ -1437,7 +1439,8 @@ end
 
 Example output:
 
-```julia>julia
+```julia
+julia
  A = [2 9 4; 7 5 3; 6 1 8]
 julia> det(A), perm(A)
 (-360.0,900)

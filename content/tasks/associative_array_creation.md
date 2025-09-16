@@ -287,7 +287,9 @@ delete names["foo"]
 
 Aime records are heterogenous associative arrays.  No creation procedure is required, declaration is fine.
 
-```aime>record r;</lang
+```aime
+record r;>
+```
 
 
 ```aime
@@ -2689,7 +2691,8 @@ If Exist(A, "End") Then Print Eval(A)=5000
 
 Maple tables are hashed arrays.  A table can be constructed by using the table constructor.
 
-```Maple>
+```maple
+
  T := table( [ (2,3) = 4, "foo" = 1, sin(x) = cos(x) ] );
           T := table(["foo" = 1, sin(x) = cos(x), (2, 3) = 4])
 
@@ -2705,7 +2708,8 @@ Maple tables are hashed arrays.  A table can be constructed by using the table c
 
 New entries are added by assignment.
 
-```Maple>
+```maple
+
  T[ "bar" ] := 2;
                              T["bar"] := 2
 
@@ -2715,7 +2719,8 @@ New entries are added by assignment.
 
 Entries can be removed as follows.
 
-```Maple>
+```maple
+
  T[ "foo" ] := evaln( T[ "foo" ] );
                           T["foo"] := T["foo"]
 
@@ -3423,7 +3428,8 @@ In PARI the commands are <code>gtomap</code>, <code>mapput</code>, <code>mapget<
 
 Definition:
 
-```perl># using =
+```perl
+# using =
  key does not need to be quoted unless it contains special chars
 my %hash = (
   key1 => 'val1',
@@ -3943,7 +3949,8 @@ R lacks a native representation of key-value pairs, but different structures all
 
 
 
-```r>
+```r
+
  env <- new.env()
 > env[["x"]] <- 123
 > env[["x"]]
@@ -3955,7 +3962,8 @@ R lacks a native representation of key-value pairs, but different structures all
 ```
 
 
-```r>
+```r
+
  index <- "1"
 > env[[index]] <- "rainfed hay"
 > env[[index]]
@@ -3967,7 +3975,8 @@ R lacks a native representation of key-value pairs, but different structures all
 ```
 
 
-```r>
+```r
+
  env[["1"]]
 ```
 
@@ -3977,7 +3986,9 @@ R lacks a native representation of key-value pairs, but different structures all
 ```
 
 
-```r>> env</lang
+```r
+> env
+```
 
 
 ```txt
@@ -3985,7 +3996,8 @@ R lacks a native representation of key-value pairs, but different structures all
 ```
 
 
-```r>
+```r
+
  print(env)
 ```
 
@@ -4000,7 +4012,8 @@ R lacks a native representation of key-value pairs, but different structures all
 
 
 
-```r>
+```r
+
  x <- c(hello=1, world=2, "!"=3)
 > print(x)
 ```
@@ -4012,7 +4025,8 @@ hello world     !
 ```
 
 
-```r>
+```r
+
  print(names(x))
 ```
 
@@ -4037,7 +4051,8 @@ print(unname(x))
 
 
 
-```R>
+```r
+
  a <- list(a=1, b=2, c=3.14, d="xyz")
 > print(a)
 ```
@@ -4058,7 +4073,8 @@ $d
 ```
 
 
-```r>
+```r
+
  print(names(a))
 ```
 
@@ -4068,7 +4084,8 @@ $d
 ```
 
 
-```r>
+```r
+
  print(unname(a))
 ```
 

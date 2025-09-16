@@ -829,15 +829,21 @@ initLock mutex
 
 Locking:
 
-```nim>acquire mutex</lang
+```nim
+acquire mutex
+```
 
 Unlocking:
 
-```nim>release mutex</lang
+```nim
+release mutex
+```
 
 # Trying to lock (but do not wait if it can't)
 
-```nim>let success = tryAcquire mutex</lang
+```nim
+let success = tryAcquire mutex
+```
 
 
 =={{header|Objective-C}}==

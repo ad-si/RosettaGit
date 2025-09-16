@@ -825,7 +825,8 @@ VARIABLE X  VARIABLE Y   VARIABLE Z
 : ?SWAP     ( a b -- a b)   \ conditional swap
             2DUP < IF SWAP THEN ;
 
-: SORT3INTS ( a b c -- c b a)  ?SWAP >R  ?SWAP  R>  ?SWAP ;</LANG>
+: SORT3INTS ( a b c -- c b a)  ?SWAP >R  ?SWAP  R>  ?SWAP ;
+```
 
 Testing is done using the Forth console using '?' to view VARIABLE contents
 
@@ -869,7 +870,8 @@ S' lions, tigers, and'        Z PLACE
 
 \ non-destructive print 3 counted-strings from data stack
 : .STRS  ( caddr1 caddr2 caddr3 -- caddr1 caddr2 caddr3) \ order is dependant
-           3 0 DO ROT  DUP CR COUNT TYPE  LOOP ; </LANG>
+           3 0 DO ROT  DUP CR COUNT TYPE  LOOP ;
+```
 With these extensions we can do the same testing at the Forth console and
 examine the string order with '.STRS'.
 <PRE> ok

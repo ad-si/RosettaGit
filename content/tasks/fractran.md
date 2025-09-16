@@ -3397,7 +3397,7 @@ say terms   ' terms are being shown:'            /*display a kind of header/titl
     end       /*j*/                              /*stick a fork in it,  we're all done. */
 ```
 
-<pre style="height:63ex">
+```txt
 14 fractions: 17/91, 78/85, 19/51, 23/38, 29/33, 77/29, 95/23, 77/19, 1/17, 11/13, 13/11, 15/14, 15/2, 55/1
 N  is starting at  2
 100  terms are being shown:

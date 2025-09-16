@@ -630,7 +630,8 @@ func js(stones, jewels string) (n int) {
 ## Haskell
 
 
-```haskell>jewelCount :: Eq a =
+```haskell
+jewelCount :: Eq a =
  [a] -> [a] -> Int
 jewelCount jewels =
   foldr (\c -> if elem c jewels then succ else id) 0
@@ -657,7 +658,8 @@ main = mapM_ print $
 Or in terms of filter rather than foldr
 
 
-```haskell>jewelCount :: Eq a =
+```haskell
+jewelCount :: Eq a =
  [a] -> [a] -> Int
 jewelCount jewels =
   length . filter (flip elem jewels)

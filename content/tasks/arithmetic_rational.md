@@ -463,7 +463,8 @@ int main()
 
 Ratios are built in to Clojure and support math operations already.  They automatically reduce and become Integers if possible.
 
-```Clojure>user
+```clojure
+user
  22/7
 22/7
 user> 34/2
@@ -1768,7 +1769,9 @@ catch (Throwable t) { println t.message }
 ```
 
 {{out}}
-<pre style="height:30ex;overflow:scroll;">1//4
+
+```txt
+1//4
 3//4
 0//1
 -1
@@ -2114,7 +2117,8 @@ You can also coerce numbers directly to rational using x: (or to integer or floa
 Increment and decrement are also included in the language, but you could just as easily add or subtract 1:
 
 
-```J>
+```j
+
 : 3r4
 7r4
    <: 3r4

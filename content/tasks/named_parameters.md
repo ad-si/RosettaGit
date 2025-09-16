@@ -1817,7 +1817,8 @@ The more formal definition of a function call's syntax is
 ### =Examples=
 
 
-```python>>>
+```python
+>>>
  from __future__ import print_function
 >>>
 >>> def show_args(defparam1, defparam2 = 'default value', *posparam, **keyparam):

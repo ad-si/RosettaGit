@@ -81,7 +81,8 @@ __TOC__
 
 Console play with ncurses.  Length and touching rules can be changed at the begining of source code.  'q' key to quit, space key to toggle auto move, anykey for next move.  Play is random.  I got nowhere near the record 177 moves, but did approach the worst-possible (20) quite often.
 
-```C>#include <ncurses.h
+```C
+#include <ncurses.h>
 
 #include <stdlib.h>
 #include <unistd.h>

@@ -600,7 +600,8 @@ A
 To sort ASCII strings, use the strsort or lexsort utilities to sort alphabetically and lexicographically, respectively.
 
 
-```babel>babel
+```babel
+babel>
  ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") strsort ! lsstr !
 ( "Here" "are" "be" "sample" "some" "sorted" "strings" "to" )
 babel> ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") lexsort ! lsstr !
@@ -611,7 +612,8 @@ babel> ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") lexsort ! lss
 If you want to sort UTF-8 encoded Unicode strings, first convert to array-string form using the str2ar operator, then sort using the strcmp operator. To sort lexicographically, use the arcmp operator. The following examples illustrate each case:
 
 
-```babel>babel
+```babel
+babel>
  ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") {str2ar} over ! {strcmp 0 lt?} lssort ! {ar2str} over ! lsstr !
 ( "Here" "are" "be" "some" "sample" "sorted" "strings" "to" )
 babel>  ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") {str2ar} over ! {arcmp 0 lt?} lssort ! {ar2str} over ! lsstr !
@@ -622,7 +624,8 @@ babel>  ("Here" "are" "some" "sample" "strings" "to" "be" "sorted") {str2ar} ove
 You can sort a list of any kind of structure you like using the lssort utility. Use the lt? numerical comparison operator for sorting numerical lists:
 
 
-```babel>babel
+```babel
+babel>
  ( 5 6 8 4 5 3 9 9 4 9 ) {lt?} lssort ! lsnum !
 ( 3 4 4 5 5 6 8 9 9 9 )
 ```
@@ -631,7 +634,8 @@ You can sort a list of any kind of structure you like using the lssort utility. 
 You can even shuffle a list with lssort using the randlf operator (your results will probably differ):
 
 
-```babel>babel
+```babel
+babel>
  (1 2 3 4 5 6 7 8 9) {1 randlf 2 rem} lssort ! lsnum !
 ( 7 5 9 6 2 4 3 1 8 )
 ```
@@ -2649,7 +2653,8 @@ sorted: strings,sample,sorted,Here,some,are,be,to
 =={{header|Objective-C}}==
 Using blocks:
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 #define esign(X) (((X)>0)?1:(((X)<0)?-1:0))
@@ -2682,7 +2687,8 @@ int main()
 
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSString (CustomComp)
@@ -2723,7 +2729,8 @@ int main()
 
 
 This example can also be written using sort descriptors:
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()
@@ -2917,7 +2924,8 @@ my @sorted = map  { $_->[0] }
 ## Perl 6
 
 
-```perl6>my @strings = <Here are some sample strings to be sorted
+```perl6
+my @strings = <Here are some sample strings to be sorted>
 ;
 my @sorted_strings = sort { $^a.chars <=> $^b.chars or $^a.lc cmp $^b.lc }, @strings;
 .say for @sorted_strings;

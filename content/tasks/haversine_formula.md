@@ -1159,7 +1159,8 @@ END FUNCTION
 ## Forth
 
 
-```forth>: s>f s>d d
+```forth
+: s>f s>d d>
 f ;
 : deg>rad 174532925199433e-16 f* ;
 : difference f- deg>rad 2 s>f f/ fsin fdup f* ;

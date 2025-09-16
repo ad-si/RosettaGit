@@ -816,7 +816,8 @@ l.length; // 2
 Julia does not need or use function prototypes in general. Generic functions are further specialized as to argument type and return type during just-in-time compilation if required. However, when interacting with other languages such a C which use function prototypes, Julia can prototype its functions for passing its functions to external languages with the @cfunction macro:
 
 
-```julia>julia
+```julia
+julia
  function mycompare(a, b)::Cint
       (a < b) ? -1 : ((a > b) ? +1 : 0)
   end
@@ -828,7 +829,8 @@ mycompare (generic function with 1 method)
 Using @cfunction to create a prototype for passing this to C's quicksort:
 
 
-```julia>julia
+```julia
+julia
  mycompare_c = @cfunction(mycompare, Cint, (Ref{Cdouble}, Ref{Cdouble}))
 
 ```
@@ -1198,7 +1200,9 @@ val poly_arg : 'a -> unit
 
 Oforth can only forward declare methods (see Mutual Recursion task). A method can be declared without any class implementation :
 
-```Oforth>Method new: myMethod</lang
+```oforth
+Method new: myMethod
+```
 
 
 This creates a new method object with name myMethod (or does nothing if this object already exists). It says nothing about method implementations (number of parameters, return value, ...).

@@ -1999,7 +1999,7 @@ plainText2:=Chao.decode(cipherText);
 println("\nThe recovered plaintext is : ",plainText2);
 ```
 
-<pre style="height:45ex">
+```txt
 The original plaintext is : WELLDONEISBETTERTHANWELLSAID
 
 The left and right alphabets after each permutation during encryption are:

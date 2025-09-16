@@ -1921,7 +1921,8 @@ EndProcedure
 ===Iteration and error-handling===
 Implementation of this [http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2 pseudocode] with [https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse this].
 
-```python>>>
+```python
+>>>
  def extended_gcd(aa, bb):
     lastremainder, remainder = abs(aa), abs(bb)
     x, lastx, y, lasty = 0, 1, 1, 0

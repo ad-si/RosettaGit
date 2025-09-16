@@ -3239,7 +3239,8 @@ print( ' '.join("%5.3f" % abs(f)
 
 ===Python: Using module [http://numpy.scipy.org/ numpy]===
 
-```python>>>
+```python
+>>
  from numpy.fft import fft
 >>> from numpy import array
 >>> a = array([1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0])
@@ -3768,8 +3769,8 @@ fft:  0.000  0.000  0.000  8.000  0.000  0.000  0.000  0.000  0.000  0.000  0.00
 ## SequenceL
 
 
-```sequencel>import <Utilities/Complex.sl
-;
+```sequencel
+import <Utilities/Complex.sl;
 import <Utilities/Math.sl>;
 import <Utilities/Sequence.sl>;
 
@@ -3790,10 +3791,9 @@ fft(x(1)) :=
 ```
 
 
-<pre style="overflow: scroll">
+```txt
 cmd:>fft(makeComplex([1,1,1,1,0,0,0,0],0))
 [(Imaginary:0.00000000,Real:4.00000000),(Imaginary:-2.41421356,Real:1.00000000),(Imaginary:0.00000000,Real:0.00000000),(Imaginary:-0.41421356,Real:1.00000000),(Imaginary:0.00000000,Real:0.00000000),(Imaginary:0.41421356,Real:1.00000000),(Imaginary:0.00000000,Real:0.00000000),(Imaginary:2.41421356,Real:1.00000000)]
-
 ```
 
 

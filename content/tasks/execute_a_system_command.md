@@ -559,7 +559,9 @@ SYSTEM "ls"
 
 
 
-```batch>dir</lang
+```batch
+dir>
+```
 
 
 
@@ -837,10 +839,14 @@ std.process.system() is deprecated.
 ## DCL
 
 
-```DCL>Directory</lang
+```DCL
+Directory>
+```
 
 Or, shorter
-```DCL>dir</lang
+```DCL
+dir>
+```
 
 
 
@@ -1277,7 +1283,9 @@ HolyC is the official programming language for The Temple Operating System (Temp
 For example, to execute the <code>Dir</code> command:
 
 
-```holyc>Dir;</lang
+```holyc
+Dir;>
+```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
@@ -1567,7 +1575,9 @@ color_quantization.jl      README.md                  support
 
 Execute "ls"
 
-```K>    \ls</lang
+```K
+    \ls>
+```
 
 
 Execute "ls" and capture the output in the variable "r":
@@ -1737,7 +1747,9 @@ It's not strictly necessary to pass the graphics context to ls, but it is genera
 The Amstrad CPC464 uses a ROM based basic interpreter, so every statement within the program is a system command. If a command without a line number is typed, whilst the computer is in a ready state, the command gets executed immediately. There is no pause command, so in this example, we use the list command (which exhibits totally different behaviour to a pause command):
 
 
-```basic>LIST</lang
+```basic
+LIST>
+```
 
 
 
@@ -1829,7 +1841,8 @@ To execute system commands in MATLAB, use the "system" keyword.
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  system('PAUSE')
 
 Press any key to continue . . .
@@ -2044,7 +2057,8 @@ void runSystemCommand(NSString *cmd)
 Complete usage example:
 
 <!-- {{libheader|Cocoa}} -->
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 void runSystemCommand(NSString *cmd)
@@ -2385,7 +2399,9 @@ Get-ChildItem
 
 are all equivalent (the first two are aliases for the third) but they are PowerShell-native commands. If one really needs to execute <code>dir</code> (which is no program but rather a built-in command in <code>cmd.exe</code>) this can be achieved by
 
-```powershell>cmd /c dir</lang
+```powershell
+cmd /c dir>
+```
 
 
 
@@ -2860,13 +2876,17 @@ ENDIF
 
 UNIX shells are designed to run system commands as a default operation.
 
-```bash>ls</lang
+```bash
+ls>
+```
 
 
 If one wishes to replace the shell process with some other command (chain into some command with no return) one can use the '''''exec''''' shell built-in command.
 
 
-```bash>exec ls</lang
+```bash
+exec ls>
+```
 
 
 
@@ -2936,7 +2956,8 @@ echo "Line 2: $output[2]"
 ## Ursa
 
 
-```ursa>decl string<
+```ursa
+decl string<>
  arg
 decl string<> output
 decl iodevice iod
@@ -3144,7 +3165,9 @@ System.cmd(System.isWindows and "dir" or "ls")
 The ZX Spectrum uses a ROM based basic interpreter, so every statement within the program is a system command. If a command without a line number is typed, whilst the computer is in a ready state, the command gets executed immediately:
 
 
-```zxbasic>PAUSE 100</lang
+```zxbasic
+PAUSE 100>
+```
 
 
 {{omit from|TI-83 BASIC}} {{omit from|TI-89 BASIC}} <!-- Does not have an external OS/command processor. -->

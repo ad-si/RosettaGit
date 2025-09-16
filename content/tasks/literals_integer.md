@@ -526,7 +526,9 @@ divisionpar10:
 ## Arturo
 
 
-```arturo>num 18966</lang
+```arturo
+num 18966>
+```
 
 
 ## AWK
@@ -751,7 +753,9 @@ int b = 0x2a;
 
 Literals of either form can be suffixed with <code>U</code> and/or <code>L</code>. <code>U</code> will cause the literal to be interpreted as an unsigned type (necessary for numbers exceeding 2<sup>31</sup> or hex literals that have a first digit larger than <code>7</code>) and <code>L</code> signifies the use of a <code>long</code> type – using <code>UL</code> or <code>LU</code> as suffix will then use <code>ulong</code>. C# has no syntactic notion of expressing integer literals of smaller types than <code>Int32</code>; it is a compile-time error to have an assignment such as
 
-```csharp>byte x = 500;</lang
+```csharp
+byte x = 500;
+```
 
 '''Update'''<br/>
 As of C#7, integer literals can be written in binary with the prefix <code>0b</code>. Furthermore, underscores can be used as separators:
@@ -791,7 +795,8 @@ int main()
 Clojure uses the Java octal (0...) and hexadecimal (0x...) notation; for any other base, nR... is used, 2 <= n <= 36.
 
 
-```lisp>user=
+```lisp
+user=>
  2r1001
 9
 user=> 8r64
@@ -870,7 +875,8 @@ IF 37=%00100101 THEN PRINT "True"
 
 binary: #b, octal: #o, hexadecimal: #x, any base from 2 to 36: #Nr
 
-```lisp>
+```lisp
+>
 (= 727 #b1011010111)
 T
 >(= 727 #o1327)
@@ -1061,7 +1067,8 @@ Literals are by default interpreted as type INTEGER, where INTEGER is a synonym 
 ## Elixir
 
 
-```elixir>1234            #=
+```elixir
+1234            #=>
  1234
 1_000_000       #=> 1000000
 0010            #=> 10
@@ -1444,7 +1451,9 @@ Output:
 
 Hexademical integer literals are supported - the leading symbols must be 0x or 0X:
 
-```visualfoxpro>? 0x1f</lang
+```visualfoxpro
+? 0x1f>
+```
 
 Output:
 
@@ -1461,7 +1470,8 @@ Output:
 
 Oct(leading 0o or 0O), Hex(leading 0x or 0X)
 
-```haskell>Prelude
+```haskell
+Prelude>
  727 == 0o1327
 True
 Prelude> 727 == 0x2d7
@@ -1543,7 +1553,9 @@ Arbitrary base numbers begin with a base ten literal (which represents the base 
 This may be used to enter hexadecimal or octal or binary numbers.  However, note also that J's primitives support a variety of binary operations on numbers represented as sequences of 0s and 1s, like this:
 
 
-```j>0 1 0 0 0 1 0 0 0 1 1 1 1</lang
+```j
+0 1 0 0 0 1 0 0 0 1 1 1 1
+```
 
 
 
@@ -1626,7 +1638,8 @@ jq only supports JSON data types, and thus the only supported integer literals a
 
 Julia has binary, octal and hexadecimal literals. We check that they give the same value.
 
-```julia>julia
+```julia
+julia>
  0b1011010111 == 0o1327 == 0x2d7 == 727
 true
 ```
@@ -1711,7 +1724,9 @@ init(nil: ref Draw->Context, nil: list of string)
 LiveCode supports hexadecimal literals, and if "convertOctals" is set to true, then integer literals with leading zeroes are interpreted as octal and not base 10.
 
 Hex example
-```LiveCode>put 0x1 + 0xff</lang
+```LiveCode
+put 0x1 + 0xff>
+```
 
 
 
@@ -1848,7 +1863,8 @@ ans =  11
 
 Octave allows also a hexadecimal representation
 
-```Octave>
+```octave
+>
  0x11
 ans =  17
 ```
@@ -2428,7 +2444,8 @@ x = 'a'     ;129
 
 Python 3.0 brought in the binary literal and uses 0o or 0O exclusively for octal.
 
-```python>>>
+```python
+>>>
  # Bin(leading 0b or 0B), Oct(leading 0o or 0O), Dec, Hex(leading 0x or 0X), in order:
 >>> 0b1011010111 == 0o1327 == 727 == 0x2d7
 True
@@ -2437,14 +2454,16 @@ True
 
 Python 2.6 has the binary and new octal formats of 3.0, as well as keeping the earlier leading 0 octal format of previous 2.X versions for compatability.
 
-```python>>>
+```python
+>>>
  # Bin(leading 0b or 0B), Oct(leading 0o or 0O, or just 0), Dec, Hex(leading 0x or 0X), in order:
 >>> 0b1011010111 == 0o1327 == 01327 == 727 == 0x2d7
 True
 >>>
 ```
 
-```python>>>
+```python
+>>>
  # Oct(leading 0), Dec, Hex(leading 0x or 0X), in order:
 >>> 01327 == 727 == 0x2d7
 True
@@ -2504,7 +2523,9 @@ Output:
 ## REBOL
 
 
-```rebol>1</lang
+```rebol
+1>
+```
 
 
 
@@ -2631,7 +2652,8 @@ Binary literal = 1234
 
 
 
-```ruby>727 == 0b1011010111  # =
+```ruby
+727 == 0b1011010111  # =>
  true, binary
 727 == 0x2d7   # => true, hex
 727 == 0o1327  # => true, octal
@@ -2767,7 +2789,9 @@ say 0b1111_1111;
 
 
 
-```slate>2r1011010111 + 8r1327 + 10r727 + 16r2d7 / 4</lang
+```slate
+2r1011010111 + 8r1327 + 10r727 + 16r2d7 / 4>
+```
 
 
 
@@ -2775,7 +2799,9 @@ say 0b1111_1111;
 
 
 
-```smalltalk>2r1011010111 + 5r100 + 8r1327 + 10r727 + 16r2d7 / 4</lang
+```smalltalk
+2r1011010111 + 5r100 + 8r1327 + 10r727 + 16r2d7 / 4>
+```
 
 binary, base-5, octal, decimal, binary, decimal (default). The radix is any between 2 and 32 (although only 2, 8, 10 and 16 are typically needed).
 
@@ -2847,7 +2873,9 @@ let oct = 0o57 // Octal
 Binary, decimal, and hexadecimal are supported. The system base mode sets the default output base, but does not affect input; unmarked digits are always decimal.
 
 
-```ti89b>0b10000001 = 129 = 0h81</lang
+```ti89b
+0b10000001 = 129 = 0h81
+```
 
 
 
@@ -2919,7 +2947,9 @@ set i -456
 
 Natural numbers (i.e., unsigned integers) of any size are supported. Only decimal integer literals are recognized by the compiler, as in a declaration such as the following.
 
-```Ursala>n = 724</lang
+```ursala
+n = 724>
+```
 
 Signed integers are also recognized and are considered a separate type from natural numbers, but non-negative integers and natural numbers have compatible binary representations.
 

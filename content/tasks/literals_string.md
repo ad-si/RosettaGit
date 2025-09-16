@@ -707,7 +707,8 @@ In C++11, it is also possible to use so-called "Raw Strings":
 auto strA = R"(this is
 a newline-separated
 raw string)";
-</LANG>
+
+```
 
 ## C#
 
@@ -1132,7 +1133,8 @@ A character is an integer in current Emacs.  (In the past character
 was a separate type.)  <code>?</code> is the read syntax.
 
 
-```Lisp>?z    =
+```lisp
+?z    =>
  122
 ?\n   => 10
 ```
@@ -1174,7 +1176,9 @@ With the string syntax, characters can be escaped with \.
 
 A basic character:
 
-```factor>CHAR: a</lang
+```factor
+CHAR: a>
+```
 
 Characters are Unicode code points (integers in the range <tt>[0-2,097,152]</tt>).
 
@@ -2547,7 +2551,9 @@ and here we mention Bob again
 In Metafont there's no difference between a single character string and a single character. Moreover, the double quotes (which delimites a string) cannot be inserted directly into a string; for this reason, the basic Metafont macro set defines
 
 
-```metafont>string ditto; ditto = char 34;</lang
+```metafont
+string ditto; ditto = char 34;
+```
 
 
 i.e. a string which is the single character having ASCII code 34 ("). Macro or variables expansion inside a string block is inhibited.
@@ -3586,7 +3592,8 @@ Strings can use either double quotes, or three successive double quotes.
 The first allows special characters, the second doesn't:
 
 
-```scala>scala
+```scala
+scala>
  "newline and slash: \n and \\"
 res5: java.lang.String =
 newline and slash:
@@ -3601,7 +3608,8 @@ However, Unicode characters are expanded wherever they happen, even inside comme
 So, for instance:
 
 
-```scala>scala
+```scala
+scala>
  val uniquote = \u0022normal string"
 uniquote: java.lang.String = normal string
 
@@ -3614,7 +3622,8 @@ Finally, on version 2.7, the triple-double-quoted string ends at the third conse
 
 '''Scala 2.7'''
 
-```scala>scala
+```scala
+scala>
  val error = """can't finish with a quote: """"
 <console>:1: error: unterminated string
        val error = """can't finish with a quote: """"
@@ -3624,7 +3633,8 @@ Finally, on version 2.7, the triple-double-quoted string ends at the third conse
 
 '''Scala 2.8'''
 
-```scala>scala
+```scala
+scala>
  val success = """but it can on 2.8: """"
 success: java.lang.String = but it can on 2.8: "
 ```

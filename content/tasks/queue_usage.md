@@ -1150,7 +1150,8 @@ true
 
 All functions, from the shell:
 
-```Erlang>1
+```Erlang
+1>
  Q = fifo:new().
 {fifo,[],[]}
 2> fifo:empty(Q).
@@ -2412,7 +2413,8 @@ but there's also @list.pop which removes a item from the end,
 and @list.unshift which add a item on the start of the list.<br/>
 Example:
 
-```perl6>my @queue = < a
+```perl6
+my @queue = < a>
 ;
 
 @queue.push('b', 'c'); # [ a, b, c ]

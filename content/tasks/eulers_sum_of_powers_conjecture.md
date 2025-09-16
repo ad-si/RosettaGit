@@ -1988,7 +1988,9 @@ Euler's sum of powers conjecture – a counter-example in range [1 .. 249]:
 Explanation:
 
 
-```J>1+4 comb 248</lang
+```j
+1+4 comb 248
+```
  finds all the possibilities for our four arguments.
 
 Then,
@@ -3032,7 +3034,8 @@ real  0m1.091s {Uint64; Linux 32}real  0m0.761s {double; Linux 32}real  0m0.511s
 
 Brute Force:
 
-```perl>use constant MAX =
+```perl
+use constant MAX =
  250;
 my @p5 = (0,map { $_**5 } 1 .. MAX-1);
 my $s = 0;
@@ -3055,7 +3058,8 @@ for my $x0 (1..MAX-1) {
 
 
 Adding some optimizations makes it 5x faster with similar output, but obfuscates things.
-```perl>use constant MAX =
+```perl
+use constant MAX =
  250;
 my @p5 = (0,map { $_**5 } 1 .. MAX-1);
 my $rs = 5;

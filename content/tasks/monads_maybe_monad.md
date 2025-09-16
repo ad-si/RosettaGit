@@ -437,7 +437,8 @@ nothing >>= [ 2 * maybe-monad return ] swap call
 
 Or:
 
-```factor>3 <just
+```factor
+3 <just>
  [ 2 * <just> ] bind [ 1 + <just> ] bind .
 nothing [ 2 * <just> ] bind [ 1 + <just> ] bind .
 ```

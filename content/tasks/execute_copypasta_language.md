@@ -245,7 +245,8 @@ fcn next(w,wantInt=False){
 ```
 
 Input programs:
-<pre style="height:15ex">
+
+```txt
 //////////////prog.cp:
 Copy
 Rosetta Code
@@ -272,11 +273,9 @@ Pasta!
 
 //////////////pasta.txt:
 I'm the pasta.txt file.
-
 ```
 
 ```txt
-
 $ zkl copyPasta.zkl prog.cp
 Rosetta Code
 Rosetta Code
@@ -288,6 +287,5 @@ I'm the pasta.txt file.
 
 $ zkl copyPasta.zkl prog3.cp
 prog3.cp: 6: Unknown command: Goto
-
 ```
 

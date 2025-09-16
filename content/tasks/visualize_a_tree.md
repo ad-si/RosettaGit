@@ -3282,7 +3282,8 @@ Tree ((((1, 2), 3), 4), 5, 6, 7, 8) can be pprint'd as:
 
 pprint (and print), prints Pythons standard container types in a format that is valid python so Python could parse its output:
 
-```python>>>
+```python
+>>>
  tree = "a",("b0",("c1","c2",("d",("ef","gh")),"c3",("i1","i2","i3",("jj"),"i4",("kk","m"))),"b1",("C1","C2",("D1",("E"),"D2","D3"),"C3"))
 >>> pprint(tree, width=1)
 ('a',
@@ -3339,7 +3340,8 @@ True
 
 pprints width parameter allows it to fold some structure to better fit the page:
 
-```python>>>
+```python
+>>>
  pprint(tree, width=60)
 ('a',
  ('b0',
@@ -3356,7 +3358,8 @@ pprints width parameter allows it to fold some structure to better fit the page:
 
 pprint works with with a mix of nested container types. Here we create a tree from both lists and tuples:
 
-```python>>>
+```python
+>>>
  mixedtree = ['a', ('b0', ('c1', 'c2', ['d', ('ef', 'gh')], 'c3', ('i1', 'i2',
 ...              'i3', 'jj', 'i4', ['kk', 'm'])), 'b1', ('C1', 'C2', ('D1', 'E',
 ...              'D2', 'D3'), 'C3'))]

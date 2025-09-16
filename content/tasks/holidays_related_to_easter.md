@@ -3109,7 +3109,8 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 ## Perl 6
 
-```perl6>my @abbr = < Nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+```perl6
+my @abbr = < Nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec>
 ;
 
 my @holidays =

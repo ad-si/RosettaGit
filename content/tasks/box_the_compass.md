@@ -1212,7 +1212,8 @@ Output:
 ## Befunge
 
 
-```befunge>>
+```befunge
+>
 ::"}"9**\4+3%79*9*5-*79*9*5--+:5>>>06p:55+%68*+v
 ^_@#!`*84:+1<v*9"}"*+55,,,".",,,$$_^#!:-1g60/+55\<
 >_06g:v>55+,^>/5+55+/48*::::,,,,%:1+.9,:06p48*\-0v
@@ -4269,7 +4270,8 @@ CheckIt
 
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">
+
+```txt
  angle | box | compass point
 -------+-----+---------------------
   0.00°|   1 | North
@@ -4783,7 +4785,8 @@ method getCompassPoints() public returns Rexx
 
 
 ;Output
-<pre style="height: 60ex; overflow:scroll;">
+
+```txt
 Idx Abbr Compass Point        Low (Deg.) Mid (Deg.)  Hi (Deg.)
   1 N    North                   354.375      0.000      5.625
   2 NbE  North by East             5.625     11.250     16.875
@@ -5356,7 +5359,8 @@ Exit
 
 
 ;Output
-<pre style="height: 60ex; overflow:scroll;">
+
+```txt
   1 N    North                  354.375° (354°22′30″)     0.000° (  0°00′00″)     5.625° (  5°37′30″)
   2 NbE  North by East            5.625° (  5°37′30″)    11.250° ( 11°15′00″)    16.875° ( 16°52′30″)
   3 NNE  North-Northeast         16.875° ( 16°52′30″)    22.500° ( 22°30′00″)    28.125° ( 28°07′30″)
@@ -6654,7 +6658,9 @@ end
 
 
 {{output}}
-<pre style="height: 10em;"> 1        north           0.00
+
+```txt
+ 1        north           0.00
  2    north by east      16.87
  3   north-northeast     16.88
  4  northeast by north   33.75

@@ -261,7 +261,8 @@ It is decidedly so
 ## C++
 
 
-```Cpp>#include <array
+```Cpp
+#include <array>
 
 #include <cstdlib>
 #include <ctime>
@@ -415,7 +416,8 @@ CASE: MAGIC8BALL  20 VECTORS  ;CASE
        CR ." Please enter your question or a blank line to quit."
        BEGIN   CR ." ? :" PAD 80 ACCEPT 0>
        WHILE   CR 19 RANDOM MAGIC8BALL  CR
-       REPEAT ;</LANG>
+       REPEAT ;
+```
 Test at the console
 ```txt
  ok

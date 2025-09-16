@@ -1179,7 +1179,8 @@ int main()
 
 ## C#
 
-```csharp>public static void KnuthShuffle<T
+```csharp
+public static void KnuthShuffle<T>
 (T[] array)
 {
     System.Random random = new System.Random();
@@ -1606,7 +1607,8 @@ feature {NONE} -- Initialization
 
 end
 
-</lang >
+
+``` >
 ```txt
 
 Initial: 1 2 3 4 5 6 7
@@ -2517,7 +2519,8 @@ Note that we have the original data here, instead of indices to select all of it
 
 The resulting definition looks like this:
 
-```j>KS=: [:
+```j
+KS=: [:>
  (<@C. >)/@(|.@; ;&~./@(,. ?@>:)@i.@#)
 ```
 
@@ -3567,7 +3570,8 @@ echo x
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSMutableArray (KnuthShuffle)

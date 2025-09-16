@@ -1331,7 +1331,8 @@ Sample runs:
 
 '''Solution:'''
 
-```j>maxlen=: [:
+```j
+maxlen=: [:>
 ./ #&>
 maxnum=: (0 ". ;)@(\: maxlen $&> ])@(8!:0)
 ```

@@ -2660,7 +2660,8 @@ void main() {
 ## Dart
 
 
-```dart>List<int
+```dart
+List<int>
  hailstone(int n) {
   if(n<=0) {
     throw new IllegalArgumentException("start value must be >=1)");
@@ -6105,7 +6106,8 @@ function [n, maxLen] = longestHailstone(N)
   end
 ```
 
-```matlab>>
+```matlab
+>>
  [n, maxLen] = longestHailstone(1e5)
 n = 77031
 maxLen = 351
@@ -6140,7 +6142,8 @@ function [n, maxLen] = longestHailstone(N)
   end
 ```
 
-```matlab>>
+```matlab
+>>
  [n, maxLen] = longestHailstone(1e5)
 n = 77031
 maxLen = 351

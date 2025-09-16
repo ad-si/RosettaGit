@@ -334,7 +334,9 @@ this ’
 
 Note: syntax depends on the assembler software but use of a semicolon is fairly standard
 
-```6502 Assembly>          nop           ; comments begin with a semicolon</lang
+```6502 Assembly
+          nop           ; comments begin with a semicolon>
+```
 
 
 
@@ -482,7 +484,9 @@ are like C ... */
 ## AntLang
 
 
-```AntLang>2 + 2 /This is a comment</lang
+```AntLang
+2 + 2 /This is a comment>
+```
 
 
 
@@ -578,7 +582,9 @@ a 10 // another single-line comment
 ## Asymptote
 
 
-```Asymptote>// double slash to newline</lang
+```Asymptote
+// double slash to newline>
+```
 
 
 See [http://asymptote.sourceforge.net/doc/Programming.html programming introduction in the Asymptote manual].
@@ -863,7 +869,9 @@ Bracmat uses curly braces as comment delimiters. Curly braces inside comments mu
 
 =={{header|Brainfuck}}==
 
-```bf>This is a comment</lang
+```bf
+This is a comment>
+```
 
 
 Most ASCII characters may be used for comments; only the eight characters "+-<>[],." are Brainfuck commands. Extra care must be used when using punctuation, particularly the comma or period. These are I/O operators and are actually commands rather than comments, and are instead compiled into the program if used and may have to be "debugged" and removed if you forget this issue.
@@ -1155,7 +1163,8 @@ A D in the 7th column indicates a debugging line which is treated like a comment
 
 This indicates a debugging line like above, but if it is used in fixed format files, it must be in the 8th column or beyond. ''Not necessarily.''  GnuCOBOL also supports D as an indicator in column 7, the >>D format works (more by trickery than spec) if the angle brackets start in column 5, the D ending up in column 7.  The >>D debug marker can then be both fixed and free form compatible.
 
-```cobol>>
+```cobol
+>
 D DISPLAY "Debug"
 ```
 
@@ -1345,7 +1354,9 @@ There is no comment syntax in POSIX dc. The convention is to make a string on th
 
 GNU dc added the comment syntax of many other scripting languages.
 
-```dc># remainder of line is a comment</lang
+```dc
+# remainder of line is a comment>
+```
 
 
 
@@ -1355,7 +1366,9 @@ GNU dc added the comment syntax of many other scripting languages.
 Comments are only allowed in places such as "on load" scripts. You cannot put them in form or view definitions.
 
 
-```deluge>// single line comment</lang
+```deluge
+// single line comment>
+```
 
 
 
@@ -1365,7 +1378,9 @@ Comments are only allowed in places such as "on load" scripts. You cannot put th
 
 In addition to Pascal, Delphi also allows C++ style single line comments:
 
-```delphi>// single line comment</lang
+```delphi
+// single line comment>
+```
 
 
 =={{header|Déjà Vu}}==
@@ -1380,7 +1395,9 @@ In addition to Pascal, Delphi also allows C++ style single line comments:
 ## Dragon
 
 
-```dragon>// This is a comment </lang
+```dragon
+// This is a comment>
+```
 
 
 
@@ -1607,7 +1624,9 @@ Elixir does not have multiple line comments.
 
 A comment is started by <code>;</code> and reaches to the end of the line.
 
-```lisp>; This is a comment</lang
+```lisp
+; This is a comment
+```
 
 
 There are some coding conventions for <code>;;</code> align to indentation, <code>;;;</code> sections, etc,
@@ -2025,7 +2044,9 @@ foo(n) = (n+2
 ## Golfscript
 
 
-```golfscript># end of line comment</lang
+```golfscript
+# end of line comment>
+```
 
 
 
@@ -2219,7 +2240,9 @@ The two delimiters may be on the same or separate lines.
 This style comment may be used anywhere white space is permitted.
 ===C++ Style (inline)===
 
-```java>// This is a comment</lang
+```java
+// This is a comment
+```
 
 This ''C++-style'' comment starts with <tt>//</tt> and extends to the end of line.
 
@@ -2264,7 +2287,9 @@ public class JustComments {
 ## JavaScript
 
 
-```javascript>n = n + 1; // This is a comment</lang
+```javascript
+n = n + 1; // This is a comment
+```
 
 
 ```javascript
@@ -2466,7 +2491,9 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```Lang5># This is a comment.</lang
+```Lang5
+# This is a comment.>
+```
 
 
 
@@ -3022,7 +3049,9 @@ NetRexx supports nested comments (see [[#REXX|REXX]]).
 
 A comment is started by <code>;</code> and reaches to the end of the line.
 
-```lisp>; This is a comment</lang
+```lisp
+; This is a comment
+```
 
 
 
@@ -3120,7 +3149,9 @@ comment ~#
 Oforth has only single line comment (inside or outside definition)
 
 
-```Oforth>// This is a comment...</lang
+```oforth
+// This is a comment...
+```
 
 
 
@@ -3267,7 +3298,9 @@ OMT suppresses evaluation of everything contained. There are a variety of extra 
 Single line comment
 
 
-```perl># this is commented</lang
+```perl
+# this is commented
+```
 
 
 These may also be at the end of a line
@@ -3584,7 +3617,9 @@ Pop11 has two kinds of comments: endline and C-like. Endline comment
 begins with tree consecutive semicolons and ends at the end of line:
 
 
-```pop11>;;; This is a comment</lang
+```pop11
+;;; This is a comment>
+```
 
 
 C-like comments may be multiline:
@@ -3673,7 +3708,9 @@ because apostrophe starts an unterminated string.
 
 I don't know why this is even a task because it should be included in any decent programming language.
 
-```ProDOS>IGNORELINE your text here</lang
+```ProDOS
+IGNORELINE your text here>
+```
 
 
 
@@ -3770,7 +3807,9 @@ Python "docstrings" are used by a number of tools to automatically generate docu
 ## R
 
 
-```rsplus># end of line comment</lang
+```rsplus
+# end of line comment>
+```
 
 
 
@@ -3797,7 +3836,9 @@ Python "docstrings" are used by a number of tools to automatically generate docu
 
 
 
-```raven> # this is a comment</lang
+```raven
+ # this is a comment>
+```
 
 
 
@@ -4197,7 +4238,9 @@ i=i+1 // this is a comment
 ## sed
 
 
-```sed># a single line comment</lang
+```sed
+# a single line comment
+```
 
 
 
@@ -4239,13 +4282,15 @@ $ For nostalgic reasons, this is also a comment.
 
 Single line comment
 
-```ruby># this is commented</lang
-
+```ruby
+# this is commented
+```
 
 These may also be at the end of a line
 
-```ruby>var i = 1; # this is the comment part</lang
-
+```ruby
+var i = 1; # this is the comment part
+```
 
 Embedded comments
 
@@ -4464,7 +4509,9 @@ Comments work the same as in [[SQL]].
 
 The SSEM can only be programmed in pure binary, by setting front panel switches: the concepts of "text" and "source file" (both mentioned in the specification) are therefore not directly applicable to it. If binary numbers have any mnemonic or explanatory value for you, however, there is a way of including information in your program that the computer will ignore. This is a direct result of the machine's rather poor code density. Each 32-bit instruction word consists of (a) a five-bit address field giving the operand, (b) eight unused bits, (c) a three-bit instruction field giving the operation to be performed, and (d) sixteen more unused bits. If the instruction field is set to <tt>011 Test</tt> or <tt>111 Stop</tt>, even the address field is unused. In the case of a <tt>Sub.</tt> instruction, finally, the leftmost bit of the instruction field is disregarded: <tt>001</tt> and <tt>101</tt> both mean "subtract". We therefore have at least 24 and sometimes 25 or 29 bits in each instruction that we can, if we like, use for comments. The word
 
-```ssem>00101010010001000100100100001100</lang
+```ssem
+00101010010001000100100100001100>
+```
 
 will be understood by the machine as <tt>Add 20 to CI</tt>, a normal instruction. But it also fits four comment characters into the unused bits, employing a simple five-bit encoding where <tt>A</tt>=0 and <tt>Z</tt>=25. The instruction breaks down as follows:
 
@@ -4670,7 +4717,9 @@ Nothing following the end. will be evaluated by Toka.
 
 
 
-```TorqueScript>//This is a one line comment. There are no other commenting options in TorqueScript.</lang
+```torquescript
+//This is a one line comment. There are no other commenting options in TorqueScript.>
+```
 
 
 
@@ -5136,7 +5185,9 @@ NOTE This is a commen
 
 
 
-```vorpal># single line comment</lang
+```vorpal
+# single line comment>
+```
 
 
 
@@ -5153,7 +5204,9 @@ NOTE This is a commen
 ## XLISP
 
 
-```xlisp>; this is a comment</lang
+```xlisp
+; this is a comment>
+```
 
 
 

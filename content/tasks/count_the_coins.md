@@ -1896,7 +1896,8 @@ main = print (count 100 [1, 5, 10, 25])
 
 Much faster, probably harder to read, is to update results from bottom up:
 
-```haskell>count :: Integral a =
+```haskell
+count :: Integral a =
  [Int] -> [a]
 count = foldr addCoin (1 : repeat 0)
   where

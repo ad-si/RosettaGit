@@ -3085,7 +3085,8 @@ stripper:  procedure;  parse arg q               /*remove punctuation at the end
 ```
 
 '''output'''
-<pre style="height:50ex">
+
+```txt
 file 0, record: Rip a fender
 file 0, record: Off your Car
 file 0, record: Send it in

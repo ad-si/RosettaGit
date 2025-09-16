@@ -317,7 +317,8 @@ static class Program
 
 
 
-```ceylon>class BinaryTree<Data
+```ceylon
+class BinaryTree<Data>
 (shared Data data, shared BinaryTree<Data>? left = null, shared BinaryTree<Data>? right = null) {
 
 	shared BinaryTree<NewData> myMap<NewData>(NewData f(Data d)) =>
@@ -487,7 +488,8 @@ void main() { // Demo code.
 ## Dart
 
 
-```dart>class TreeNode<T
+```dart
+class TreeNode<T>
  {
 
   T value;
@@ -817,7 +819,8 @@ func (t *Tree(T)) ReplaceAll(rep T) {
 {{trans|Java}} (more or less)
 Solution:
 
-```groovy>class Tree<T
+```groovy
+class Tree<T>
  {
     T value
     Tree<T> left
@@ -950,7 +953,8 @@ Alternatively, J is statically typed in the sense that it supports only one data
 
 Following the C++ example:
 
-```java>public class Tree<T
+```java
+public class Tree<T>
 {
 	private T value;
 	private Tree<T> left;
@@ -1051,7 +1055,8 @@ type Tree[T] = ref object
 
 
 =={{header|Objective-C}}==
-```objc>@interface Tree<T
+```objc
+@interface Tree<T>
  : NSObject {
   T value;
   Tree<T> *left;
@@ -1398,7 +1403,8 @@ sayNodes: w=9;     do    j=0  to  nodes;   _=    /*ensure each of the nodes gets
 ## Rust
 
 
-```rust>struct TreeNode<T
+```rust
+struct TreeNode<T>
  {
     value: T,
     left: Option<Box<TreeNode<T>>>,
@@ -1633,7 +1639,8 @@ fun map_tree f Empty = Empty
 
 ## Swift
 
-```swift>class Tree<T
+```swift
+class Tree<T>
  {
   var value: T?
   var left: Tree<T>?
@@ -1649,7 +1656,8 @@ fun map_tree f Empty = Empty
 
 
 Another version based on Algebraic Data Types:
-```swift>enum Tree<T
+```swift
+enum Tree<T>
  {
   case Empty
   indirect case Node(T, Tree<T>, Tree<T>)

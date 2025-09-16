@@ -1574,7 +1574,8 @@ bcd
 ###  Script Based CFML
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
 	str="abcdefg";
 	n = 2;
@@ -1828,7 +1829,8 @@ OUTPUT(TheString[FindKnownSub..FindKnownSub+StrLength-1]);  //task5
 ## Eero
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()
@@ -1980,7 +1982,8 @@ puts(1,'\n')
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main args =
     let s = "一二三四五六七八九十"
@@ -2944,7 +2947,8 @@ By default, the type of the string is infered from its elements. In the example 
 <code>CharString("/'''\ʕ•ᴥ•ʔ/'''\"...)</code>. Without the CharString declaration, the string is interpreted as an UTF8 string with access through its byte representation.
 
 
-```julia>julia
+```julia
+julia>
  s = "abcdefg"
 "abcdefg"
 
@@ -4129,7 +4133,8 @@ true
 Python uses zero-based indexing, so the n'th character is at index n-1.
 
 
-```python>>>
+```python
+>>>
  s = 'abcdefgh'
 >>> n, m, char, chars = 2, 3, 'd', 'cd'
 >>> # starting from n=2 characters in and m=3 in length;

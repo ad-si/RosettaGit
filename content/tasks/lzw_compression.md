@@ -3641,7 +3641,8 @@ TOBEORNOTTOBEORTOBEORNOT
 The class for the LZW compression algorithm:
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 #import <stdio.h>
 

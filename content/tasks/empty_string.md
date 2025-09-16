@@ -188,7 +188,9 @@ Assign an empty string to a variable:
 
 Check that the string is empty:
 
-```Forth>str @ s:len 0 n:= if ... then</lang
+```forth
+str @ s:len 0 n:= if ... then
+```
 
 
 The check for a non-empty string is the same, but with "not" after the n:=
@@ -1493,7 +1495,8 @@ length(s) = 0
 
 Checking for a non-empty string:
 
-```pascal>s <
+```pascal
+s <>
  ''
 length(s) > 0
 longBool(length(s))

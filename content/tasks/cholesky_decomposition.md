@@ -1026,7 +1026,8 @@ do i=1,m
     print "(3(1X,F6.1))",L(i,:)
 end do
 
-End program Cholesky_decomp</lang >
+End program Cholesky_decomp
+``` >
 ```txt
 
    5.0   0.0   0.0
@@ -2097,7 +2098,8 @@ fun main(args: Array<String>) {
 
 The Cholesky decomposition is obtained by passing the `method = Cholesky' option to the LUDecomposition procedure in the LinearAlgebra pacakge.  This is illustrated below for the two requested examples.  The first is computed exactly; the second is also, but the subsequent application of `evalf' to the result produces a matrix with floating point entries which can be compared with the expected output in the problem statement.
 
-```Maple>
+```maple
+
  A := << 25, 15, -5; 15, 18, 0; -5, 0, 11 >>;
                               [25    15    -5]
                               [              ]

@@ -1913,7 +1913,8 @@ olleH
 
 ## C#
 Recursive Linq
-```csharp>public static IEnumerable<IEnumerable<T>> Permutations<T
+```csharp
+public static IEnumerable<IEnumerable<T>> Permutations<T>
 (this IEnumerable<T> values)
 {
      if (values.Count() == 1)
@@ -1930,7 +1931,8 @@ Enumerable.Range(0,5).Permutations()
 
 A recursive Iterator. Runs under C#2 (VS2005), i.e. no `var`, no lambdas,...
 
-```csharp>public class Permutations<T
+```csharp
+public class Permutations<T>
 
 {
     public static System.Collections.Generic.IEnumerable<T[]> AllFor(T[] array)
@@ -2147,7 +2149,8 @@ permute = (arr) ->
 ```
 
 This implementation utilises the fact that the permutations of an array could be defined recursively, with the fixed point being the permutations of an empty array.
-```coffeescript>coffee
+```coffeescript
+coffee>
  console.log (permute "123").join "\n"
 1,2,3
 1,3,2
@@ -3361,7 +3364,8 @@ GAP can handle permutations and groups. Here is a straightforward implementation
 compute the images of 1 .. n by p. As an alternative, List(SymmetricGroup(n)) would yield the permutations as GAP ''Permutation'' objects,
 which would probably be more manageable in later computations.
 
-```gap>gap
+```gap
+gap>
 List(SymmetricGroup(4), p -> Permuted([1 .. 4], p));
 perms(4);
 [ [ 1, 2, 3, 4 ], [ 4, 2, 3, 1 ], [ 2, 4, 3, 1 ], [ 3, 2, 4, 1 ], [ 1, 4, 3, 2 ], [ 4, 1, 3, 2 ], [ 2, 1, 3, 4 ],
@@ -3913,7 +3917,8 @@ public class Permutations {
 
 Copy the following as an HTML file and load in a browser.
 
-```javascript><html><head><title>Permutations</title></head
+```javascript
+<html><head><title>Permutations</title></head>
 
 <body><pre id="result">
 ```
@@ -6142,7 +6147,9 @@ study sleep party
 
 First, you can just use the built-in method on any list type.
 
-```Perl6>.say for <a b c>.permutations</lang
+```perl6
+.say for <a b c>.permutations>
+```
 
 ```txt
 a b c
@@ -7791,7 +7798,9 @@ Program to build a dataset containing all permutations of 1...n. Each permutatio
 For instance:
 
 
-```stata>perm 4</lang
+```stata
+perm 4>
+```
 
 
 '''Program'''
@@ -7846,7 +7855,8 @@ end
 ## Swift
 
 
-```swift>func perms<T
+```swift
+func perms<T>
 (var ar: [T]) -> [[T]] {
   return heaps(&ar, ar.count)
 }

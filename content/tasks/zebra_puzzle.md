@@ -3715,7 +3715,9 @@ houses=: ((<'Norwegian') 0}ehs);((<'blue') 3 }ehs);((<'milk') 2}ehs);ehs;<ehs
 
 Set of proposition variants:
 
-```j>constraints=: hcr;hcs;hlof;<hnext</lang
+```j
+constraints=: hcr;hcs;hlof;<hnext
+```
 
 The worker and its helper verbs
 
@@ -3735,7 +3737,8 @@ end.
 
 {{out}}
 
-```j>
+```j
+>
 "0 houses solve constraints
 ┌─────────┬─────┬──────┬──────┬──────────┐
 │Norwegian│cats │water │yellow│Dunhill   │

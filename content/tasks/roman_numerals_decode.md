@@ -2404,7 +2404,8 @@ DECIMAL
            SWAP DO            \ index the string from back to front
                   I C@ >VALUE ?NEGATE +
           -1 +LOOP ;
-</LANG>
+
+```
 
 Alternative Version Forth Console Test
 
@@ -3969,7 +3970,8 @@ MDCLXVI    = 1666
 ## Lasso
 
 
-```Lasso>define br =
+```lasso
+define br =>
  '\r'
 //decode roman
 define decodeRoman(roman::string)::integer => {

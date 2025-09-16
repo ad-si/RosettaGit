@@ -478,7 +478,8 @@ Solutions:
 ## COBOL
 
 
-```cobol>        >
+```cobol
+        >
  SOURCE FORMAT FREE
 identification division.
 program-id. 'decisiontable'.
@@ -996,7 +997,8 @@ For large numbers of rules and few actions, J's native support of sparse arrays 
 
 Since this is an interactive web page, results can't be listed. See http://jsfiddle.net/rGP6C/1/ for a live demo.
 
-```javascript><html
+```javascript
+<html
 
 <head></head>
 <body>
@@ -1878,7 +1880,8 @@ howTo = '(You can answer with a  Yes or No   [or  Quit])'
 
 '''output'''    (a screen scraping using a DOS prompt window for the possible responses)
 DECISION.REX  is the REXX program that produced this output.
-<pre style="height:50ex">
+
+```txt
 D:\►rexx decision
 
 ───────── (question 1 of 3)  Does the printer not print?
@@ -1967,7 +1970,6 @@ Ensure printer software is installed.
 Check/replace ink.
 
 D:\►
-
 ```
 
 

@@ -752,7 +752,8 @@ TestDomain(T : Join(Field,RadicalCategory)): Exports == Implementation where
       sqrt(obj.ssq / (obj.n::T) - mean*mean)
 ```
 This can be called using:
-```Axiom>T ==
+```axiom
+T ==
  Expression Integer
 D ==> TestDomain(T)
 items := [2,4,4,4,5,5,7,9+x] :: List T;
@@ -2532,7 +2533,8 @@ $ jq -s -f Dynamic_standard_deviation.jq observations.txt
 
 Recent versions of jq (after 1.4) support retention of state while processing a stream. This means that any generator (including generators that produce items indefinitely) can be used as the source of observations, without first having to capture all the observations, e.g. in a file or array.
 
-```jq># requires jq version
+```jq
+# requires jq version
  1.4
 def simulate(stream):
   foreach stream as $observation
@@ -2911,7 +2913,8 @@ bundle Default {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface SDAccum : NSObject
@@ -2973,7 +2976,8 @@ int main()
 
 ### Blocks
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 typedef double (^Func)(double); // a block that takes a double and returns a double
@@ -3674,7 +3678,8 @@ EndDataSection
 The program should work with Python 2.x and 3.x,
 although the output would not be a tuple in 3.x
 
-```python>>>
+```python
+>>
  from math import sqrt
 >>> def sd(x):
     sd.sum  += x
@@ -3704,7 +3709,8 @@ although the output would not be a tuple in 3.x
 ### Python: Using a class instance
 
 
-```python>>>
+```python
+>>
  class SD(object): # Plain () for python 3.x
 	def __init__(self):
 		self.sum, self.sum2, self.n = (0,0,0)
@@ -3729,7 +3735,8 @@ You could rename the method <code>sd</code> to <code>__call__</code> this would 
 
 ### Python: Using a Closure
 
-```python>>>
+```python
+>>
  from math import sqrt
 >>> def sdcreator():
 	sum = sum2 = n = 0
@@ -3761,7 +3768,8 @@ You could rename the method <code>sd</code> to <code>__call__</code> this would 
 
 ### Python: Using an extended generator
 
-```python>>>
+```python
+>>
  from math import sqrt
 >>> def sdcreator():
 	sum = sum2 = n = 0
@@ -3791,7 +3799,8 @@ You could rename the method <code>sd</code> to <code>__call__</code> this would 
 
 ===Python: In a couple of 'functional' lines===
 
-```python>>>
+```python
+>>
  myMean = lambda MyList : reduce(lambda x, y: x + y, MyList) / float(len(MyList))
 >>> myStd = lambda MyList : (reduce(lambda x,y : x + y , map(lambda x: (x-myMean(MyList))**2 , MyList)) / float(len(MyList)))**.5
 

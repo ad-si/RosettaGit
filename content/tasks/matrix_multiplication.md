@@ -1408,7 +1408,8 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) {
 ## Ceylon
 
 
-```ceylon>alias Matrix =
+```ceylon
+alias Matrix =>
  Integer[][];
 
 void printMatrix(Matrix m) {
@@ -2871,7 +2872,9 @@ Result:
 
 
 
-```idl>result = arr1 # arr2</lang
+```idl
+result = arr1 # arr2
+```
 
 
 
@@ -3221,7 +3224,8 @@ prompt$ jsish -u matrixMultiplication.jsi
 
 The multiplication is denoted by *
 
-```Julia>julia
+```julia
+julia>
  [1 2 3 ; 4 5 6] * [1 2 ; 3 4 ; 5 6]  # product of a 2x3 by a 3x2
 2x2 Array{Int64,2}:
  22  28
@@ -3796,7 +3800,8 @@ With the following output:
 Matlab contains two methods of multiplying matrices: by using the "mtimes(matrix,matrix)" function, or the "*" operator.
 
 
-```MATLAB>>
+```MATLAB
+>>
  A = [1 2;3 4]
 
 A =

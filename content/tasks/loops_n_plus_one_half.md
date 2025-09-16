@@ -743,13 +743,15 @@ while (1) {
 ## Befunge
 
 
-```befunge>1+
+```befunge
+1+>
 ::.9`#@_" ,",,
 ```
 
 This code is a good answer. However, most Befunge implementations print a " " after using . (output number), so this program prints "1 , 2 , 3 ..." with extra spaces. A bypass for this is possible, by adding 48 and printing the ascii character, but does not work with 10::
 
-```befunge>1+
+```befunge
+1+>
 ::68*+,8`#v_" ,",,
   @,,,,", 10"<
 ```
@@ -999,7 +1001,8 @@ With tags:
 
 With script:
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   for( i = 1; i <= 10; i++ ) //note: the ++ notation works only on version 8 up, otherwise use i=i+1
   {
@@ -2734,7 +2737,8 @@ end.
 ## Peloton
 
 
-```sgml><@ FORLITLIT
+```sgml
+<@ FORLITLIT>
 10|<@ SAYPOSFOR>...</@><@ ABF>,</@></@>
 ```
 
@@ -2932,7 +2936,8 @@ print ( ', '.join(str(i+1) for i in range(10)) )
 
 But the [http://academicearth.org/lectures/the-loop-and-half-problem named pattern] is shown by code such as the following:
 
-```python>>>
+```python
+>>>
  from sys import stdout
 >>> write = stdout.write
 >>> n, i = 10, 1
@@ -3338,7 +3343,8 @@ end
 ## SNUSP
 
 
-```snusp>@\>@\>@\
+```snusp
+@\>@\>@\>
 +++++++++<!/+.  >-?\#  digit and loop test
  |  |  \@@@+@+++++# \>>.<.<</    comma and space
  |  \@@+@@+++++#

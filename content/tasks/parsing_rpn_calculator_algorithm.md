@@ -2111,7 +2111,8 @@ Or even more general (requires <tt>FlexibleInstances</tt> and <tt>TypeFamilies</
 
 Some universal definitions:
 
-```haskell>class Monad m =
+```haskell
+class Monad m =>
  Logger m where
   write :: String -> m ()
 
@@ -2127,7 +2128,8 @@ verbose2 f x y = write (show x ++ " " ++
 
 The use case:
 
-```haskell>calcRPNM :: Logger m =
+```haskell
+calcRPNM :: Logger m =>
  String -> m [Double]
 calcRPNM = foldM (verbose interprete) [] . words
 ```

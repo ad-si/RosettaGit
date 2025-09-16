@@ -514,13 +514,15 @@ DECIMAL
 : ATTR   ( attribute ) ESC[ <##> ." m" ;  ( use:  BOLD ATTR       )
 : TEXT       ( color ) 30 + ATTR ;        ( use:  YELLOW TEXT     )
 : BACKGROUND ( color ) 40 + ATTR ;        ( use:  BLUE BACKGROUND )
-</LANG>
+
+```
 With the code loaded into Forth, color control is a part of the language
 
 ```forth
 WHITE TEXT BLUE BACKGROUND  ok
 BLUE TEXT  BOLD ATTR ok
-CYAN TEXT ok</LANG>
+CYAN TEXT ok
+```
 
 
 ## Fortran

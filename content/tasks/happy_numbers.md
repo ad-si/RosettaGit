@@ -3859,7 +3859,8 @@ IM IN YR LOOP UPPIN YR NUM WILE DIFFRINT KOUNT AN 8
       VISIBLE NUM
   OIC
 IM OUTTA YR LOOP
-KTHXBYE</lang >
+KTHXBYE
+``` >
 
 Output:
 ```txt
@@ -5570,7 +5571,8 @@ Sample output:
 ### Procedural
 
 
-```python>>>
+```python
+>>>
  def happy(n):
     past = set()
     while n != 1:
@@ -6284,7 +6286,8 @@ This Salmon program produces the following output:
 ## Scala
 
 
-```scala>scala
+```scala
+scala>
  def isHappy(n: Int) = {
      |   new Iterator[Int] {
      |   val seen = scala.collection.mutable.Set[Int]()
@@ -6502,7 +6505,8 @@ say 8.defs {|i|
 ## SequenceL
 
 
-```sequencel>import <Utilities/Math.sl
+```sequencel
+import <Utilities/Math.sl>
 ;
 import <Utilities/Conversion.sl>;
 

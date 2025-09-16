@@ -244,7 +244,7 @@ PG       DS     CL80               buffer
          END    COUNTFAC
 ```
 
-<pre style="height:20ex">
+```txt
            1=1
            2=2
            3=3
@@ -585,7 +585,8 @@ Output:
 Lists the first 100 entries in the sequence. If you wish to extend that, the upper limit is implementation dependent, but may be as low as 130 for an interpreter with signed 8 bit data cells (131 is the first prime outside that range).
 
 
-```befunge>1>>>
+```befunge
+1>>>
 :.48*"=",,::1-#v_.v
 $<<<^_@#-"e":+1,+55$2<<<
 v4_^#-1:/.:g00_00g1+>>0v
@@ -1917,7 +1918,8 @@ showFactors = ((++) . show) <*> ((" = " ++) . intercalate " * " . map show . fac
 
 isPrime n = n > 1 && noDivsBy primeNums n
 <small>
-```haskell>Main> print 1 >
+```haskell
+Main> print 1 >
  mapM_ (putStrLn . showFactors) [2..]
 1
 2 = 2
@@ -2062,7 +2064,9 @@ link factors
 ## J
 
 '''Solution''':Use J's factoring primitive,
-```j>q:</lang
+```j
+q:
+```
 
 '''Example''' (including formatting):
 ```j
@@ -2661,7 +2665,7 @@ method runSample(arg) private static
 
 ```
 
-<pre style="height: 30em;overflow: scroll; font-size: smaller;">
+```txt
 ------------------------------------------------------------
        1 to 11
 ------------------------------------------------------------

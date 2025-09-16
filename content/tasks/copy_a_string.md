@@ -541,7 +541,8 @@ Return
 To copy a string in Babel is the same as copying any other object. Use the cp operator to make a deep-copy.
 
 
-```babel>babel
+```babel
+babel
  "Hello, world\n" dup cp dup 0 "Y" 0 1 move8
 babel> << <<
 Yello, world
@@ -1321,7 +1322,9 @@ stringa count  stringb place
 
 
 
-```fortran>str2 = str1</lang
+```fortran
+str2 = str1
+```
 
 
 Because Fortran uses fixed length character strings if str1 is shorter than str2 then str2 is padded out with trailing spaces.
@@ -1799,7 +1802,8 @@ Contents of 'b': data assigned to a
 One can also use <code>set</code> to copy a sting when one is in the LFE REPL:
 
 
-```lisp>
+```lisp
+>
  (set a '"data")
 "data"
 > a
@@ -2321,14 +2325,18 @@ And of course, if a C string is needed, you can use standard functions like strc
 ## OCaml
 
 
-```ocaml>let dst = String.copy src</lang
+```ocaml
+let dst = String.copy src
+```
 
 
 
 ## Octave
 
 
-```octave>str2 = str1</lang
+```octave
+str2 = str1>
+```
 
 
 
@@ -2402,7 +2410,9 @@ s2~identityhash=17587366588032
 
 Assignment in GP always copies.
 
-```parigp>s1=s</lang
+```parigp
+s1=s
+```
 
 
 In PARI, strings can be copied and references can be made.
@@ -2707,7 +2717,8 @@ copy -a- from -b- to -c-
 Since strings are immutable, all copy operations return the same string. Probably the reference is increased.
 
 
-```python>>>
+```python
+>>
  src = "hello"
 >>> a = src
 >>> b = src[:]
@@ -2722,7 +2733,8 @@ True
 To actually copy a string:
 
 
-```python>>>
+```python
+>>
  a = 'hello'
 >>> b = ''.join(a)
 >>> a == b
@@ -2878,7 +2890,8 @@ dst = src
 ## RLaB
 
 
-```RLaB>>
+```RLaB
+>
  s1 = "A string"
 A string
 >> s2 = s1

@@ -1041,7 +1041,8 @@ The (vec ) function in the following solution is with respect to vector matrices
 
 ```
 
-```clojure>=
+```clojure
+=>
  (identity-matrix 5)
 [[1 0 0 0 0] [0 1 0 0 0] [0 0 1 0 0] [0 0 0 1 0] [0 0 0 0 1]]
 
@@ -3452,7 +3453,8 @@ idMatrix2:
 
 A dict of tuples of two ints (x, y) are used to represent the matrix.
 
-```python>>>
+```python
+>>>
  def identity(size):
 ...     return {(x, y):int(x == y) for x in range(size) for y in range(size)}
 ...

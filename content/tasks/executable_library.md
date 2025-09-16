@@ -155,7 +155,9 @@ To use the same procedure like a library function, we need a specification (file
 that essentially repeats the parameter profile. As our procedure is actually parameterless, this specification is more than trivial.
 
 
-```Ada>procedure Hailstone;</lang
+```ada
+procedure Hailstone;
+```
 
 
 Finally, we write another parameterless procedure (''hailstone_test.adb''), that will call the procedure Hailstone. Note that we '''must''' change the Parameter.X to a value > 0 before calling Hailstone, otherwise, Hailstone would act as if it where the main program.
@@ -1401,7 +1403,8 @@ Linux solution (i386 and x86_64).
 
 Library file hailstone.c:
 
-```C>#include <pari/pari.h
+```c
+#include <pari/pari.h
 
 
 #define HAILSTONE1      "n=1;print1(%d,\": \");apply(x->while(x!=1,if(x/2==x\\2,x/=2,x=x*3+1);n++;print1(x,\", \")),%d);print(\"(\",n,\")\n\")"

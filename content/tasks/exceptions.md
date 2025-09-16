@@ -1017,7 +1017,8 @@ try {
 
 otherwise:
 
-```cfm><cftry
+```cfm
+<cftry
 
 <cfcatch type="Database|...">
 </cfcatch>
@@ -1967,7 +1968,9 @@ Exceptions, as before, can be raised by the execution of an error statement: err
 
 The "try" clause takes the form:
 
-```jq>try FILTER catch CATCHER</lang
+```jq
+try FILTER catch CATCHER
+```
 
 where FILTER and CATCHER may be any jq expressions.
 
@@ -2090,7 +2093,8 @@ catch .e {
 ## Lasso
 
 
-```Lasso>protect =
+```lasso
+protect =
  {
    handle_error => {
         // do something else
@@ -2398,7 +2402,8 @@ Errors are thrown using the "error" keyword.
 
 Sample usage:
 
-```MATLAB>>
+```matlab
+>
  error 'Help'
 ??? Help
 ```
@@ -2600,7 +2605,9 @@ RExceptions$TakeException: I resent that!
 
 '''Defining exceptions'''
 
-```nim>type SillyError = object of Exception</lang
+```nim
+type SillyError = object of Exception
+```
 
 '''Throwing an exception'''
 

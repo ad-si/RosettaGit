@@ -1031,7 +1031,9 @@ toColor=: 3 & $"0
 Example:
 
 
-```j>viewRGB toColor toGray myimg</lang
+```j
+viewRGB toColor toGray myimg
+```
 
 
 

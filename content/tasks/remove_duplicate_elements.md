@@ -987,7 +987,8 @@ reduce [ "abc" , "def" , "abc" ] . -- Gives [ "def" , "abc" ]
 
 
 
-```lisp>user=
+```lisp
+user=>
  (distinct [1 3 2 9 1 2 3 8 8 1 0 2])
 (1 3 2 9 8 0)
 user=>
@@ -2640,7 +2641,8 @@ Union[{0, 2, 1, 4, 2, 0, 3, 1, 1, 1, 0, 3}]
 MATLAB has a built-in function, "unique(list)", which performs this task.
 <br \>Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  unique([1 2 6 3 6 4 5 6])
 
 ans =
@@ -3873,7 +3875,8 @@ print mold unique [1 $23.19 2 elbow 3 2 Bork 4 3 elbow 2 $23.19]
 ## Red
 
 
-```Red>>
+```Red
+>>
  items: [1 "a" "c" 1 3 4 5 "c" 3 4 5]
 >> unique items
 == [1 "a" "c" 3 4 5]
@@ -4484,7 +4487,8 @@ println(Array(Set([3,2,1,2,3,4])))
 
 
 Another solution (preserves order of first occurrence). Also requires elements to be hashable:
-```swift>func uniq<T: Hashable
+```swift
+func uniq<T: Hashable>
 (lst: [T]) -> [T] {
   var seen = Set<T>(minimumCapacity: lst.count)
   return lst.filter { x in
@@ -4504,7 +4508,8 @@ println(uniq([3,2,1,2,3,4]))
 
 Only requires elements to be equatable, but runs in O(n^2):
 
-```swift>func uniq<T: Equatable
+```swift
+func uniq<T: Equatable>
 (lst: [T]) -> [T] {
   var seen = [T]()
   return lst.filter { x in

@@ -630,7 +630,8 @@ Output is all 13s.
 
 Haskell's <tt>read</tt> can parse strings with the same prefix used for literals in Haskell (0x or 0X for hex, 0o or 0O for octal):
 
-```haskell>Prelude
+```haskell
+Prelude>
  read "123459" :: Integer
 123459
 Prelude> read "0xabcf123" :: Integer
@@ -1394,7 +1395,8 @@ Number String Base IsNumber InputString
 
 The [http://docs.python.org/library/functions.html#int int] function will interpret strings as numbers expressed to some base:
 
-```python>>>
+```python
+>>>
  text = '100'
 >>> for base in range(2,21):
     print ("String '%s' in base %i is  %i in base 10"

@@ -82,7 +82,8 @@ int main()
 :: When the <nowiki><lang></nowiki> tags are removed, [[Special:Version]] will not any more list all the languages in the tags section, right? Maybe there should be a (perhaps auto-generated) page listing all supported languages (or maybe it's even possible to include them in [[Special:Version]] as separate section). Or maybe there's already such a list somewhere, which I simply didn't notice? --[[User:Ce|Ce]] 08:18, 23 January 2009 (UTC)
 ::: We are now only using <nowiki></nowiki>
  tags, where "cpp" is replaced by the language ID in question.  Additionally, all language IDs are now case-insensitive, so <nowiki>
-```C></nowiki> works the same as <nowiki><lang c></nowiki
+```c
+</nowiki> works the same as <nowiki><lang c></nowiki
 .  This is a Good Thing, because the supported case was originally determined by the case of the language file name.  And those were all lower case... --[[User:Short Circuit|Short Circuit]] 08:11, 11 February 2009 (UTC)
 :::You mean [[Help:GeSHi#Supported_source_tags|this]]? --[[User:Mwn3d|Mwn3d]] 13:27, 23 January 2009 (UTC)
 ::: Another problem I just noticed: The old meaning of <nowiki><tt>text</tt></nowiki> is now changed (it now creates a div block instead of inline text). Those tags might have been used already in this wiki. Maybe it would have been a better idea to use a tag which didn't yet have a meaning (say, <nowiki><source></nowiki>). I'm not sure whether it's a good idea to change the GeSHi tag now, or to find and change all previous usages of <nowiki><code></nowiki> instead. --[[User:Ce|Ce]] 08:50, 23 January 2009 (UTC)
@@ -97,7 +98,8 @@ int main()
 
 
 Now I am using the <nowiki>
-```LANGNAME></nowiki
+```LANGNAME
+</nowiki>
  syntax for new examples, and when I've landed on the previous usage, <nowiki><LANGNAME></nowiki>, I've made here and there some fixes. '''But''' I've indeed fixed also the ''right'' html usage of the <nowiki><code></nowiki> code tag into text (changed to <nowiki><tt></nowiki>), since it raises a warning and ruins the output layout when used as ''normal'' html tag. Anyway now I stop fixing that, I suppose everything will go fine when the old code-style syntax-HL syntax will be abandoned completly. (Right?) --[[User:ShinTakezou|ShinTakezou]] 19:00, 1 February 2009 (UTC)
 : I know you already know this now, but I'm just mentioning this here because it's been talked about and resolved in a few places.  <nowiki><code></nowiki> is now safe to use anywhere where it's preferable to use the HTML tag of the same name; The Syntax highlighting engine doesn't care about it one whit. --[[User:Short Circuit|Short Circuit]] 19:17, 2 February 2009 (UTC)
 
@@ -107,7 +109,9 @@ I realize we just switched, but it has been pointed out that '''code''' is alrea
 Anyhow, you can now use &lt;lang c&gt;/* some C code */&lt;lang&gt; the same way you would have used &lt;code&gt;.  Like so:
 
 
-```perl>print scalar @ARGV</lang
+```perl
+print scalar @ARGV
+```
 
 
 Sorry for the inconvenience and the flip-flopping.  Had to do this soon, before the entire site managed to switch.  On the bright side, with the changes I made to GeSHiCodeTag, it will be very, very obvious which examples need to be switched.  I also noticed that Mediawiki reinterprets the output of code tags, so I may be able to insert category references automagically.  Need to look into this further... --[[User:Short Circuit|Short Circuit]] 21:03, 29 January 2009 (UTC)
@@ -145,13 +149,19 @@ Comments? --[[User:Dirkt|Dirkt]] 09:29, 8 July 2008 (UTC)
 ==Problem with Lisp==
 There is something wrong with the highlighting of certain keywords in Lisp, for example:
 
-```lisp>defun</lang
+```lisp
+defun
+```
 
 
-```lisp>list</lang
+```lisp
+list
+```
 
 
-```lisp>length</lang
+```lisp
+length
+```
 
 --[[User:Spoon!|Spoon!]] 09:03, 3 November 2008 (UTC)
 
@@ -215,19 +225,23 @@ Can we get GeSHi updated? Also I created a Modula-3 language file for GeSHi and 
 :I think if you do it right, languages you add to the syntax highlighting will show up in the "Parser extension tags" [[Special:Version|here]]. I'm not quite sure though. --[[User:Mwn3d|Mwn3d]] 13:48, 22 January 2009 (UTC)
 
 ::I can't seem to get the Modula-3 highlighting to work? I tried <nowiki>
-```modula3></nowiki
+```modula3
+</nowiki>
  and even <source lang="modula-3">. --[[User:Mbishop|Mbishop]]
 
 ::: <nowiki>
-```modula3></nowiki
+```modula3
+</nowiki>
  isn't listed in the parser extension tags on [[Special:Version]]. I guess something has to be inserted somewhere in the MediaWiki code, so it knows that <nowiki>
-```modula3></nowiki
+```modula3
+</nowiki>
  stuff has to be handed to GeSHi. --[[User:Ce|Ce]] 18:45, 22 January 2009 (UTC)
 
 :::: Perhaps, I know the language file works (tested it on my own apache), but I didn't test with mediawiki, not sure what needs to be done there. --[[User:Mbishop|Mbishop]] 19:52, 22 January 2009 (UTC)
 ::::: The Mediawiki extension I'm using may have a specific list of supported languages.  I'll check to see what exactly is going on... --[[User:Short Circuit|Short Circuit]] 23:42, 22 January 2009 (UTC)
 :::::: Indeed, that was the problem.  Changed. <nowiki>
-```modula3></nowiki
+```modula3
+</nowiki>
  should now work.  But now the namespace seems to have conflicts.  The contribution copyright warning seems to be being parsed as a language.  This is the kind of thing I was worried about with the namespace pollution.  Working on it... --[[User:Short Circuit|Short Circuit]] 00:04, 23 January 2009 (UTC)
 ::::::: Fixed.  Apparently, there's a language whose GeSHi tag would be &lt;div&gt;. --[[User:Short Circuit|Short Circuit]] 00:22, 23 January 2009 (UTC)
 
@@ -379,7 +393,9 @@ What this means is that virtually ''all'' code examples should now be wrapped in
 
 There's a problem with this fallback: if the language is recognized, then the content is treated literally (except for &lt;/lang>, of course), but if it is unrecognized, then it is treated as HTML. The following two examples are of &lt;lang foo&gt;abc &lt;fnord&gt; def&lt;/lang&gt; and &lt;lang c&gt;abc &lt;fnord&gt; def&lt;/lang&gt;:
 
-```foo>abc <fnord> def</lang
+```foo
+abc <fnord> def>
+```
 
 
 ```c
@@ -463,7 +479,9 @@ The comment regexp should (probably) be:
 ==Java5 messed up==
 Recently the highlighting for "java5" got messed up. For example:
 
-```java5>String</lang
+```java5
+String
+```
 
 It appears that some "span" tags got inserted in the middle of the URL for the link. --[[Special:Contributions/76.173.203.58|76.173.203.58]] 07:03, 14 June 2009 (UTC)
 : Upgraded GeSHi last night.  Will look to see what changed in the java5 language file. --[[User:Short Circuit|Short Circuit]] 19:34, 14 June 2009 (UTC)
@@ -481,7 +499,9 @@ It seems APL (APL2) in this page (and maybe more) is bad encoded: [[Mean#APL]]. 
 ==Groovy also not copacetic==
 Groovy highlighting is exhibiting a problem similar to the Java problem.
 
-```groovy>Binding</lang
+```groovy
+Binding>
+```
 
 Just for the record, so that future generations will know what the heck we were talking about even after the bug is fixed, the above looks something like this when rendered:
 <pre style="color:blue;">5.0%2Fdocs%2Fapi%2F">Binding
@@ -491,7 +511,9 @@ Maybe somebody has something against the JVM? (besides the usual, I mean) --[[Us
 : For some reason the updating of geshi seems to have messed up several languages; my current list has Java (fixed?), Smalltalk, Matlab, Groovy ... open eyes for more... --[[User:ShinTakezou|ShinTakezou]] 13:00, 17 June 2009 (UTC)
 ::Java isn't fixed. The tag "java" was never broken, but "java5" is the problem. Check it out:
 ::
-```java5>this is a test String</lang
+```java5
+this is a test String
+```
 
 ::Which (for future generations) renders as:
 ::

@@ -667,7 +667,8 @@ Hello
 ```
 
 
-```cmd>C:\Users\user
+```cmd
+C:\Users\user>
  groovysh -q "println 'Hello'"
 Hello
 ```
@@ -776,7 +777,8 @@ $ echo 'public class X{public static void main(String[]args){System.out.println(
 {{works with|MS-DOS}} Compatible Environments (such as [[wp:cmd.exe|cmd.exe]])
 Works with cmd.exe on Windows (tested on Microsoft Windows XP [Version 5.1.2600])
 
-```cmd>C:\
+```cmd
+C:\>
 echo public class X{public static void main(String[] args){System.out.println("Hello Java!");}}>X.java&&javac X.java&&java X
 Hello Java!
 ```
@@ -1022,7 +1024,8 @@ rexx -e "say 'Goodbye, world.'"
 
 This is difficult to do in Oz because the compiler/interpreter always wants the source code in a file and does not read from stdin. We can do somethings like this on Unix-like systems:
 
-```bash>echo
+```bash
+echo>
 tmp.oz "{System.show hello}"; ozc -l System -e tmp.oz
 hello
 ```
@@ -1369,7 +1372,8 @@ Note that print() is included w/slsh, but is not part of S-Lang itself.
 
 ## Scala
 
-```cmd>C:\
+```cmd
+C:\>
 scala -e "println(\"Hello\")"
 Hello
 ```

@@ -1055,7 +1055,8 @@ arbSeed(int seed);
 
 The last function can be used to redefine the arbitrary number generator. This function is also used in the getOneFrom() functions.
 
-```rascal>rascal
+```rascal
+rascal>
 import List;
 ok
 rascal>getOneFrom(["zebra", "elephant", "snake", "owl"]);
@@ -1255,7 +1256,9 @@ More explainations can be found in this [http://www.iro.umontreal.ca/~lecuyer/my
 
 Random function:
 
-```ti83b>rand</lang
+```ti83b
+rand>
+```
 
 
 

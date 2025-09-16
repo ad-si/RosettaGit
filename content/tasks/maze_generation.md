@@ -4342,7 +4342,8 @@ Variable meanings in function <code>display</code>:
 # <code>line</code> — characters of current line
 Note that this implementation relies on javascript arrays being treatable as infinite in size with false (null) values springing into existence as needed, to support referenced array locations.  (This significantly reduces the bulk of the necessary initialization code.)
 
-```html><html><head><title></title></head><body
+```html
+<html><head><title></title></head><body>
 <pre id="out">
 ```
 </body></html>
@@ -4417,7 +4418,8 @@ And this does indeed save a negligible bit of processing, but the maze algorithm
 
 Using HTML, CSS and table cells for maze.
 
-```html><html><head><title>Maze maker</title
+```html
+<html><head><title>Maze maker</title>
 
 <style type="text/css">
 table { border-collapse: collapse }

@@ -1025,7 +1025,8 @@ In older versions of the compiler, you can simply access a private field from ou
 One solution is to use Key-Value Coding. It treats properties and instance variables as "keys" that you can get and set using key-value coding methods.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface Example : NSObject {
@@ -1080,7 +1081,8 @@ Hello, I am Edith
 Another solution is to use a category to add methods to the class (you can have categories in your code modify any class, even classes compiled by someone else, including system classes). Since the new method is in the class, it can use the class's private instance variables with no problem.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface Example : NSObject {
@@ -1149,7 +1151,8 @@ Hello, I am Edith
 Finally, you can access the instance variable directly using runtime functions.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import <objc/runtime.h>
 
@@ -1453,7 +1456,8 @@ object(fragile)#1 (1) {
 
 Python isn't heavily into private class names. Although private class names can be defined by using a double underscore at the start of the name, such names are accessible as they are mangled into the original name preceded by the name of its class as shown in this example:
 
-```python>>>
+```python
+>>
  class MyClassName:
 	__private = 123
 	non_private = __private * 2

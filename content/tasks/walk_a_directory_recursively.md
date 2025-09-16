@@ -285,7 +285,8 @@ FOR /R C:\Windows\System32 %F IN (*.DLL) DO ECHO "%F"
 ## C
 
 ==={{libheader|POSIX}}===
-```C>#include <sys/types.h
+```C
+#include <sys/types.h>
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -1013,7 +1014,8 @@ Walk_directory.recursive
 ## Emacs Lisp
 
 
-```lisp>ELISP
+```lisp
+ELISP>
  (directory-files-recursively "/tmp/el" "\\.el$")
 ("/tmp/el/1/c.el" "/tmp/el/a.el" "/tmp/el/b.el")
 ```

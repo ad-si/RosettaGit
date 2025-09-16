@@ -532,7 +532,8 @@ INVALID GB82 TEST 1234 5698 7654 32
 
 
 
-```befunge>>
+```befunge
+>>
 " :NABI">:#,_>:~:"`"`48**-:55+-#v_$0::6g0>>8g-!\7g18g-!*!v>v>>
 <<_#v:#78#`8#+<^+!!*-*84\-9:g8:p8\<oo>1#$-#<0$>>>#v_"dilav" ^#<<
 >>^ >*-:20p9`9*1+55+**20g+"a"%10g1+00g%:4-!|^g6::_v#-*88:+1_vv>>
@@ -627,7 +628,8 @@ That number is invalid.
 ## C
 
 
-```C>#include <alloca.h
+```C
+#include <alloca.h>
 
 #include <ctype.h>
 #include <stdio.h>

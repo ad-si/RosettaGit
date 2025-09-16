@@ -3458,7 +3458,8 @@ Abundant  = 4953
 
 Importing [[Proper_divisors#Python:_From_prime_factors|Proper divisors from prime factors]]:
 
-```python>>>
+```python
+>>
  from proper_divisors import proper_divs
 >>> from collections import Counter
 >>>

@@ -1172,7 +1172,8 @@ x=15 y=304
 
 ## Perl 6
 
-```perl6>use java::awt::MouseInfo:from<java
+```perl6
+use java::awt::MouseInfo:from<java>
 ;
 
 given MouseInfo.getPointerInfo.getLocation {

@@ -789,7 +789,9 @@ ENDIF
 or on one single line:
 
 
-```amigae>IF condition THEN statement</lang
+```amigae
+IF condition THEN statement>
+```
 
 
 '''Ternary IF THEN ELSE'''
@@ -1160,7 +1162,8 @@ While (A_Index < 3) {
 
 ===If, ElseIf, Else===
 
-```AutoIt>If <expression
+```AutoIt
+If <expression>
  Then
     statements
     ...
@@ -1197,7 +1200,8 @@ EndSelect
 ### Switch Case
 
 
-```AutoIt>Switch <expression
+```AutoIt
+Switch <expression>
 
     Case <value> [To <value>] [,<value> [To <value>] ...]
         statement1
@@ -1395,7 +1399,8 @@ IF x < 0 THEN doSomething ELSE doOtherThing
 Multi-line IF:
 
 
-```qbasic>IF x
+```qbasic
+IF x
  0 AND x < 10 THEN
    'do stuff
 ELSE IF x = 0 THEN
@@ -1673,7 +1678,8 @@ Befunge only has two boolean commands, ''greater-than'' ( ` ) and ''not'' ( ! ).
 These snippets input a number and use the conditional operators to print a "0" if it is zero and an "X" otherwise.
 
 
-```befunge>v
+```befunge
+v
  "X",@ non-zero
 > & |
     > "0",@ zero
@@ -1901,7 +1907,9 @@ ifthenelse<INT_MAX == 32767, // 16 bit int?
 There are no ''then'' or ''else'' keyword in Clean.
 The second argument of <tt>if</tt> is the then-part, the third argument is the else-part.
 
-```clean>bool2int b = if b 1 0</lang
+```clean
+bool2int b = if b 1 0
+```
 
 
 ===case-of===
@@ -2207,7 +2215,8 @@ s = \
 ===if-elseif-else===
 '''Compiler:''' [[ColdFusion]] any version
 
-```cfm><cfif x eq 3
+```cfm
+<cfif x eq 3
 
  do something
 <cfelseif x eq 4>
@@ -2820,7 +2829,9 @@ run = fn () {
 ===if-then-else===
 
 
-```ela>if x < 0 then 0 else x</lang
+```ela
+if x < 0 then 0 else x>
+```
 
 
 
@@ -3184,7 +3195,8 @@ This method was used by the late Jim Kalihan and Dr. Julian Nobel
 CASE: SELECT ( n -- ) | FOO  | BAR | FIZZ | BUZZ  ;CASE
 
 \ Usage:  3 SELECT
-</LANG>
+
+```
 
 
 ## Fortran
@@ -3414,7 +3426,8 @@ if <condition> then <truebranch> else <falsebranch>
 
 === if-then-else ===
 
-```gap>if <condition
+```gap
+if <condition>
  then
     <statements>
 elif <condition> then
@@ -3763,7 +3776,8 @@ endelse]
 
 
 
-```idl>case <expression
+```idl
+case <expression>
  of
   (choice-1): <command-1>
   [(choice-2): <command-2> [...]]
@@ -3779,7 +3793,8 @@ endcase
 
 
 
-```idl>switch <expression
+```idl
+switch <expression>
  of
   (choice-1): <command-1>
   [(choice-2): <command-2> [...]]
@@ -4164,7 +4179,9 @@ The syntax of COND parameter of the EXEC statement is :
 
 It is a condition to bypass a job step, and it can be translateted into :
 
-```jcl>  if rcval relop step.rc then not execute the current step </lang
+```jcl
+  if rcval relop step.rc then not execute the current step>
+```
 
 Example:
 
@@ -4190,7 +4207,9 @@ The conditions can be multiple :
 
 Means:
 
-```jcl>  if rcval1 relop1 step1.rc or rcval2 relop2 step2.rc or ... then not execute the current step </lang
+```jcl
+  if rcval1 relop1 step1.rc or rcval2 relop2 step2.rc or ... then not execute the current step>
+```
 
 Example:
 
@@ -4214,7 +4233,9 @@ if  STEP1 is ok    and  STEP3 has only warnings then execute STEP6
 ## jq
 
 jq's main conditional construct is:
-```jq>if cond then f else g end</lang
+```jq
+if cond then f else g end
+```
 where cond, f, and g, are filters, and where cond may evaluate to anything at all, it being understood that:
 # all JSON values are truthy except for false and null;
 # if cond evaluates to nothing (i.e., produces an empty stream), then the entire if-then-else-end expression also produces an empty stream.
@@ -5192,7 +5213,8 @@ Maple offers both conditional statements and conditional functions.
 
 Example syntax for conditional statements:
 
-```Maple>if x
+```maple
+if x
  0 then
    res := x;
 else
@@ -5403,7 +5425,8 @@ fi;
 The particularity of <tt>if</tt> construct in Metafont is that it can be part of an expression, and the "do something" <cite>does not need to fit into the syntactic structure</cite>. E.g. we can write something like
 
 
-```metafont>b := if a
+```metafont
+b := if a
  5: 3 + else: 2 - fi c;
 ```
 
@@ -7146,7 +7169,8 @@ middle one can mix elseif with elseunless.
 Pop11 conditional is an expression:
 
 
-```pop11>if x
+```pop11
+if x>
  0 then 1 elseif x < 0 then -1 else 0 endif -> sign_x ;
 ```
 
@@ -7443,7 +7467,8 @@ true_value if condition else false_value
 
 Example:
 
-```python>>>
+```python
+>>
  secret='foo'
 >>> print 'got it' if secret=='foo' else 'try again'
 'got it'
@@ -7453,7 +7478,8 @@ Example:
 '''Note:''' this syntax is valid as an expression, the clauses cannot constain statements.  The foregoing example is equivalent to:
 
 
-```python>>>
+```python
+>>
  secret = 'foo'
 >>> result = 'got it' if secret=='foo' else 'try again'
 >>> print result
@@ -7584,7 +7610,8 @@ Racket has macros, which means that you can define whatever new conditional you 
 ===If-Either-Case-Switch===
 If the result is true, the block! will be evaluated. If false nothing happens.
 
-```Red>>> if 10
+```Red
+>> if 10>
  2 [print "ten is bigger"]
 ten is bigger
 ```
@@ -7595,7 +7622,8 @@ ten is bigger
 If the result is true the first block! will be evaluated.
 If false the second block! will be evaluated.
 
-```Red>>> either 3
+```Red
+>> either 3>
  2 [print "Three larger"][print "Nope!"]
 Three larger
 ```
@@ -8462,7 +8490,8 @@ The pattern for handling a multi-option switch is to create classes for the vari
 You can also use them as the ternary operator
 
 
-```smalltalk>abs := x
+```smalltalk
+abs := x
  0 ifTrue: [ x ] ifFalse: [ x negated ]
 ```
 
@@ -8836,7 +8865,9 @@ statement
 
 or in one line
 
-```ti83b>If condition : statement</lang
+```ti83b
+If condition : statement>
+```
 
 
 '''If-Then form'''
@@ -9846,7 +9877,8 @@ else{
 
 Conditionals in Wrapl are expressions. Either success or failure can be omitted from the expression.
 
-```wrapl>condition =
+```wrapl
+condition =
  success // failure
 condition => success
 condition // failure
@@ -10032,7 +10064,8 @@ The <xsl:if> element allows simple conditional processing.
 
 The <xsl:choose>, <xsl:when>, and <xsl:otherwise> elements allow more general conditional processing.
 
-```xml><xsl:choose
+```xml
+<xsl:choose>
 
   <xsl:when test="condition1">
     <!-- included if condition1 evaluates to true (like C `if`) -->

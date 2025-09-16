@@ -1426,7 +1426,8 @@ test.lsp
 scriptedmain.h:
 
 
-```objc>#import <objc/Object.h
+```objc
+#import <objc/Object.h>
 
 
 @interface ScriptedMain: Object {}
@@ -2284,7 +2285,8 @@ Test: The meaning of life is 42
 package.xml
 
 
-```xml><packages
+```xml
+<packages>
 
 <package>
 	<name>ScriptedMain</name>

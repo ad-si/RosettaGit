@@ -11,7 +11,8 @@ tags = []
 +++
 
 So this is a language? If so it needs a {{tmpl|language}} template at the start and it needs to be on the [[:Category:KeyList Databasing]] page. You may want to consider trimming down what you show here. Short examples and explanatory text are fine on the language pages, but I think it might be best to demonstrate this in tasks (plus I almost got knocked out of my chair when I opened this page and got hit with a [[wiktionary:wall of text|wall of text]]). Code samples should be enclosed in lang tags with an argument for the language they show (for this one I would go with <nowiki>
-```keylist>code code code
+```keylist
+code code code>
 ```
 </nowiki
 ). See [[Rosetta Code:Add a Language]] for other instructions for adding a language. --[[User:Mwn3d|Mwn3d]] 20:37, 26 July 2011 (UTC)

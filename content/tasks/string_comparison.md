@@ -785,7 +785,8 @@ Applesoft BASIC does not have a built in UPPER$ function.
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 strcomp
 shav$ = "Shaw, George Bernard"
 shakes$ = "Shakespeare, William"
@@ -1211,7 +1212,8 @@ X"00" > X"0000" *> True
 
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
 	function CompareString( String1, String2 ) {
 		VARIABLES.Result = "";
@@ -1246,7 +1248,8 @@ There are case-sensitive and case-insensitive comparison functions. All inequali
 
 Case-sensitive comparison functions:
 
-```lisp>
+```lisp
+>
 (string= "foo" "foo")
 T
 > (string= "foo" "FOO")
@@ -1270,7 +1273,8 @@ NIL
 
 Case-insensitive comparison functions:
 
-```lisp>
+```lisp
+>
  (string-equal "foo" "FOo")
 T
 > (string-not-equal "foo" "FOO")
@@ -1288,7 +1292,8 @@ NIL
 
 Numeric strings are always compared lexically:
 
-```lisp>
+```lisp
+>
  (string> "45" "12345")
 0
 > (string> "45" "9")

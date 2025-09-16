@@ -918,7 +918,8 @@ Assertion can be loaded from cl.el:
 
 Erlang doesn't have an assert statement. However, it is single assignment, and its assignment operator won't complain if you reassign the exact same value to an existing variable but will throw an exception otherwise.
 
-```erlang>1
+```erlang
+1>
  N = 42.
 42
 2> N = 43.
@@ -1200,7 +1201,9 @@ Changing the define to: <code>$define DEBUG &fail</code> turns off the assertion
 ## J
 
 
-```j>   assert n = 42</lang
+```j
+   assert n = 42
+```
 
 
 
@@ -1740,7 +1743,8 @@ Output:
 PARI can use any of the usual C methods for making assertions.  GP has no built-in assertions.
 {{trans|C}}
 
-```C>#include <assert.h
+```c
+#include <assert.h
 
 #include <pari/pari.h>
 
@@ -2389,13 +2393,17 @@ Assertions in Stata are limited to checking a property on the observations of a 
 For instance, if a dataset contains two variables x, y, z, one can check if x<y for all data lines for which z>0, with:
 
 
-```stata>assert x<y if z>0</lang
+```stata
+assert x<y if z>0>
+```
 
 
 There is another command, '''[http://www.stata.com/help.cgi?confirm confirm]''', that can be used to check existence and type of program arguments or files. For instance, to check that the file titanium.dta exists:
 
 
-```stata>confirm file titanium.dta</lang
+```stata
+confirm file titanium.dta>
+```
 
 
 If the file does not exist, an error is thrown with return code 601.
@@ -2547,7 +2555,9 @@ C:\foo\assert.vbs(3, 3) (null): There's got to be more to life than this!
 
 VB's <code>Assert</code> only fires when run from within the IDE. When compiled, all <code>Debug</code> lines are ignored.
 
-```vb>Debug.Assert i = 42</lang
+```vb
+Debug.Assert i = 42
+```
 
 
 

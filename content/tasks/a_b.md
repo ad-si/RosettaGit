@@ -358,7 +358,9 @@ PG       DS     CL24               record
 ## 8th
 
 
-```forth>gets dup . space eval n:+ . cr</lang
+```forth
+gets dup . space eval n:+ . cr
+```
 
 
 
@@ -1213,7 +1215,8 @@ read:
  &-#$-\
 .-#?-[+]
 .-#?--/
-</Lang>
+
+```
 
 
 ## ATS
@@ -1637,7 +1640,8 @@ DEFINE PROCEDURE ''ADD'' [A, B]:
 BLOCK 0: BEGIN
     OUTPUT <= A + B;
 BLOCK 0: END.
-</Lang>
+
+```
 
 
 ## Bracmat
@@ -1698,7 +1702,9 @@ p numbers[0] + numbers[1]  #Prints the sum of the input
 ## Burlesque
 
 
-```burlesque>ps++</lang
+```burlesque
+ps++
+```
 
 
 
@@ -1931,7 +1937,8 @@ or same as above, but without "let":
 
 {{trans|JavaScript}}
 
-```html4strict><html
+```html4strict
+<html>
 
 <script type="text/javascript" src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
 <script type="text/coffeescript">
@@ -2174,7 +2181,9 @@ void main() {
 ## dc
 
 
-```dc>? + psz</lang
+```dc
+? + psz>
+```
 
 
 The question mark ''?'' reads and executes a line of input. The user must enter a dc program that pushes two numbers to the stack, such as ''2 3'' or ''5 _1''. (The user must use underscore ''_'' for negative numbers.)
@@ -2739,7 +2748,9 @@ v                     >~01-0 >
 ## Forth
 
 
-```Forth>pad dup 80 accept evaluate + .</lang
+```forth
+pad dup 80 accept evaluate + .
+```
 
 
 
@@ -2839,7 +2850,8 @@ Using Graphical interface
 ## Gema
 
 
-```gema><D> <D
+```gema
+<D> <D>
 =@add{$1;$2}
 ```
 
@@ -3020,7 +3032,9 @@ Button:2,Button:[equals]
 ## Haskell
 
 
-```haskell>main =  print . sum . map read . words =<< getLine</lang
+```haskell
+main =  print . sum . map read . words =<< getLine
+```
 
 
 
@@ -3310,7 +3324,8 @@ Produces:
 Client side:
 
 
-```html4strict><html
+```html4strict
+<html>
 
 <body>
 <div id='input'></div>
@@ -3395,7 +3410,9 @@ WSH.echo(a, " + " , b , " = " , Number(a)+Number(b));
 ### Console
 
 
-```Joy>get get +.</lang
+```joy
+get get +.>
+```
 
 
 ### File
@@ -3503,7 +3520,8 @@ println(stdout, sum(input))
 
 In the next solution, an error is returned if the entry is not constituted from exactly two integers. Any number of spaces can follow an integer.
 
-```Julia>julia
+```julia
+julia
  println(parse(Int, readuntil(stdin, ' ')) + parse(Int, readuntil(stdin, '\n')))
 1 2
 3
@@ -4650,7 +4668,9 @@ say sum split /\s+/,  scalar <STDIN>;
 
 Short version with very little "line noise":
 
-```perl6>get.words.sum.say;</lang
+```perl6
+get.words.sum.say;
+```
 
 Reduction operator <code>[+]</code>, and <code>say</code> as a function:
 
@@ -4857,7 +4877,9 @@ filter add {
 
 Can be called in one line with
 
-```powershell>add 2 3</lang
+```powershell
+add 2 3>
+```
 
 
 
@@ -5134,7 +5156,9 @@ forever [x: load input  print x/1 + x/2]
 ## Red
 
 
-```Red>x: load input  print x/1 + x/2</lang
+```Red
+x: load input  print x/1 + x/2>
+```
 
 {{Out}}
 
@@ -5524,9 +5548,8 @@ const proc: main is func
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
-;
-
+```sequencel
+import <Utilities/Conversion.sl;
 main(args(2)) := stringToInt(args[1]) + stringToInt(args[2]);
 ```
 
@@ -5717,7 +5740,9 @@ task value: ( 'dataIn.txt' asFilename readStream) value:Transcript.
 
 or:
 
-```smalltalk>task value: Stdin value: Stdout.</lang
+```smalltalk
+task value: Stdin value: Stdout.
+```
 
 
 
@@ -5848,11 +5873,15 @@ Input two numbers, separated by space:
 ## SQL
 
 
-```sql>select A+B</lang
+```sql
+select A+B>
+```
 
 Example:
 
-```sql>select 2+3</lang
+```sql
+select 2+3>
+```
 
 This should produce a result set containing the value 5.
 

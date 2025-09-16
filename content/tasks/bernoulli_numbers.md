@@ -906,7 +906,9 @@ B(8) = -1 / 30
 ```
 
 Output with "126" entered on the command line:
-<pre style="height:64ex;overflow:scroll">...............................................................................................................................
+
+```txt
+...............................................................................................................................
 B(  0) =                                                                                                                      1 / 1
 B(  1) =                                                                                                                      1 / 2
 B(  2) =                                                                                                                      1 / 6
@@ -3037,7 +3039,8 @@ B(100)	= -9459803781912212529522743306949372187270284153306693613338569620431139
 
 
 And if you're a pure enough FP programmer to dislike destroying and reconstructing the array each time, here's the same algorithm without side effects.  We use zip with the pair constructor <tt>=></tt> to keep values associated with their indices. This provides sufficient local information that we can define our own binary operator "bop" to reduce between each two terms, using the "triangle" form (called "scan" in Haskell) to return the intermediate results that will be important to compute the next Bernoulli number.
-```perl6>sub infix:<bop
+```perl6
+sub infix:<bop
 (\prev, \this) {
     this.key => this.key * (this.value - prev.value)
 }

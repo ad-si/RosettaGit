@@ -1298,7 +1298,8 @@ false
 =={{header|F_Sharp|F#}}==
 The Collections.Set<'T> class implements "Immutable sets based on binary trees, where comparison is the F# structural comparison function, potentially using implementations of the IComparable interface on key values." (http://msdn.microsoft.com/en-us/library/ee353619.aspx)
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main args =
     // Create some sets (of int):
@@ -1963,7 +1964,8 @@ assert s1 == su                                        : 'added element 0 to s1'
 
 GHC offers a functional, persistent set data structure in its <code>Data.Set</code> module. It is implemented using a binary search tree. Elements must be of an orderable type (instance of <code>Ord</code>).
 
-```haskell>Prelude
+```haskell
+Prelude>
  import Data.Set
 Prelude Data.Set> empty :: Set Integer -- Empty set
 fromList []
@@ -2004,7 +2006,8 @@ fromList [1,2,4]
 
 Regular lists can also be used as sets. Haskell has some functions to help with using lists as sets. No requirement is made of element type. However, these are not very efficient because they require linear time to find an element.
 
-```haskell>Prelude
+```haskell
+Prelude>
  import Data.List
 Prelude Data.List> let s3 = nub [1,2,3,4,3] -- Remove duplicates from list
 Prelude Data.List> s3
@@ -3513,7 +3516,8 @@ s.excl(5) # remove 5 from set
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main (int argc, const char *argv[]) {
@@ -4827,7 +4831,8 @@ There is also <code>frozenset</code> which is an immutable version of <code>set<
 
 Language syntax for set literals is supported starting in Python 3.0 and 2.7.
 (For versions prior to 2.7, use <code>set([1, 2, 3, 4])</code> instead of <code>{1, 2, 3, 4}</code>. Even in Python 2.7+ and 3.0+, it is necessary to write <code>set()</code> to express the empty set.)
-```python>>>
+```python
+>>>
  s1, s2 = {1, 2, 3, 4}, {3, 4, 5, 6}
 >>> s1 | s2 # Union
 {1, 2, 3, 4, 5, 6}
@@ -5137,7 +5142,8 @@ Set A is not equal to set B
 
 Ruby's standard library contains a "set" package, which provides <code>Set</code> and <code>SortedSet</code> classes.
 
-```ruby>>
+```ruby
+>>
  require 'set'
 => true
 >> s1, s2 = Set[1, 2, 3, 4], [3, 4, 5, 6].to_set # different ways of creating a set
@@ -6095,7 +6101,8 @@ TRUE
 
 ## Swift
 
-```swift>var s1 : Set<Int
+```swift
+var s1 : Set<Int>
  = [1, 2, 3, 4]
 let s2 : Set<Int> = [3, 4, 5, 6]
 println(s1.union(s2)) // union; prints "[5, 6, 2, 3, 1, 4]"

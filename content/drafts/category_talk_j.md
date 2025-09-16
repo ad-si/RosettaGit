@@ -44,7 +44,7 @@ Since language categories do not automatically link to their "need work" pages, 
 == Regarding the HouseStyle corrections ==
 
 I don't think the straight / links work on pages that aren't in the main namespace (so they work on task pages, but not category pages). So I tried to set it up the way it looked like you wanted it. All the stuff I did is easily undoable if it's not what you want. It's a good idea though. Maybe we can work on standardizing {language}/HouseStyle pages so we can make a little template (for [http://www.mediawiki.org/wiki/Help:Templates#Usage substitution] instead of transclusion perhaps?). --[[User:Mwn3d|Mwn3d]] 15:22, 12 October 2009 (UTC)
-:Yeah, I had trouble making the / link work, and in the end just gave up.  But you got it just right.  Thank you.  Regarding {language}/HouseStyle, I also think it would help the project, but before we make any decisions I suggest we wait for my experiment to mature a little.  It may go nowhere.  Of course we could also try it ad-hoc for other selected languages to speed up the process (the ones with the largest extant populations on RC would be good candidates). --[[User:DanBron|DanBron]] 15:33, 12 October 2009 (UTC) 
+:Yeah, I had trouble making the / link work, and in the end just gave up.  But you got it just right.  Thank you.  Regarding {language}/HouseStyle, I also think it would help the project, but before we make any decisions I suggest we wait for my experiment to mature a little.  It may go nowhere.  Of course we could also try it ad-hoc for other selected languages to speed up the process (the ones with the largest extant populations on RC would be good candidates). --[[User:DanBron|DanBron]] 15:33, 12 October 2009 (UTC)
 ::PS: Does everyone else have to type the literal "<tt>--</tt>" before their four-tildes, or am I the only one whose signature lacks the dashes by default?  Or is this just a preference I haven't enabled? --[[User:DanBron|DanBron]] 15:33, 12 October 2009 (UTC)
 :::Yeah I have to type the dashes. There's probably a way to set it up automatically in your preferences, but it's not too much of a hassle. --[[User:Mwn3d|Mwn3d]] 15:41, 12 October 2009 (UTC)
 :::If you just click the signature button it should type the dashes for you. Requires JS. It's the second to last button on the toolbar. --[[User:Mwn3d|Mwn3d]] 17:25, 12 October 2009 (UTC)
@@ -54,20 +54,21 @@ I don't think the straight / links work on pages that aren't in the main namespa
 
 I've created a skeleton GeSHi template for J.
 Hopefully it should at least handle single line comments and control words, but not being able to test it makes it hard to know.
- 
+
 I've added all the J vocab as symbols rather than keywords, but don't define styles for them. I've not tried to include any regex sections. I understand that files should be sent to MikeMol when ready but wondered if anyone else wanted to have a look at it and tweak it first?
 --[[User:Tikkanz|Tikkanz]] 00:07, 10 November 2009 (UTC)
 
 The template has now been tested and emailed to [[ShortCircuit]]. Hopefully in the near future there will be basic syntax highlighting for J on Rosetta Code. However there are quite a lot of J entries that either don't yet use the <tt>lang</tt> tags, or incorrectly use an uppercase rather than a lowercase J. I've made a start checking through the current J tasks updating the syntax where needed, if you check any please note them below so we can coordinate our efforts.  The correct syntax for the <tt>lang</tt> tags is:
 
 <tt><nowiki>
-```j></nowiki> one or more lines of code here <nowiki>
+```j
+</nowiki> one or more lines of code here <nowiki>
 ```
 </nowiki></tt
 
 
 
-###  Progress updating lang tags 
+###  Progress updating lang tags
 
 J tasks checked and updated so far include:
 
@@ -86,7 +87,7 @@ I don't know J, but what's keeping you from testing your language definition? â€
 ```php
 <?php
 
-include_once 'geshi.php'; 
+include_once 'geshi.php';
 
 $source = 'some test code';
 

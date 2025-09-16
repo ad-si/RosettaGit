@@ -18,7 +18,7 @@ What's with the empty strings there? Is it saying that there are empty strings a
 
 The task description doesn't stand on its own at the moment. Do you mean to have arbitrary interpretation of what constitutes a match for example?
 
-I.e. given a text of 'X123Y' and separators '1', '12', '123', '23', and '3' then there are a multitude of possible answers which would fit the initial task description. This may lead to answers that are difficult to compare due to diverging interpretations of the spec. 
+I.e. given a text of 'X123Y' and separators '1', '12', '123', '23', and '3' then there are a multitude of possible answers which would fit the initial task description. This may lead to answers that are difficult to compare due to diverging interpretations of the spec.
 
 The output format seems to be Python specific. Do you mean it to be or could any ordered output of ''<code>sub<N>, sepnum<N>, seppos<N>, ...</code>'' work? --[[User:Paddy3118|Paddy3118]] 04:46, 27 February 2011 (UTC)
 
@@ -43,7 +43,7 @@ It seems to me that this task should be split up into the three or four actual t
 ==Correct result==
 How about a statement of the correct result.
 : For example the D example leaves separator characters unmatched, by my reading that wasn't intended.
-:: given “a!===b=!=c” and the separators “==”, “!=” and “=”. 
+:: given “a!===b=!=c” and the separators “==”, “!=” and “=”.
 :: yielded a! <==> =b= <!=> c <=> = <!> =d  (with <> demarcating separators)
 :: shouldn't that be a <!=> <==> b <=> <!=> c
 --[[User:Dgamey|Dgamey]] 11:00, 21 April 2011 (UTC)
@@ -52,12 +52,12 @@ Vincent> Double-check what a string analysed in D version.
 
 :It shouldn't match all possible separators. It should match them in the order that they are given. With that example, the first "==" in "a!===b" is matched and removed from later matching because "==" is the separator that it checks for first. If you change the order of the separators to "!=", "==", "=" then it will match like this: a <!=> <==> b <=> <!=> c. If you change the order to "=", "!=", "==" then it will match like this: a! <=> <=> <=> b <=> ! <=> c. --[[User:Mwn3d|Mwn3d]] 15:27, 21 April 2011 (UTC)
 
-::It is true that that is what the D program is doing, but apparently that is not what it is supposed to be doing.  The order in which the separators matters is supposed to only be relevant where there is ambiguity at a point.  That said, the task currently only implies a "left to right order".  But the part of the task description describing when to use the ordering of the separators (when there is ambiguity at a point) only makes sense in a context where something else determines when a point is relevant, or not.  --[[User:Rdm|Rdm]] 12:15, 26 April 2011 (UTC) 
+::It is true that that is what the D program is doing, but apparently that is not what it is supposed to be doing.  The order in which the separators matters is supposed to only be relevant where there is ambiguity at a point.  That said, the task currently only implies a "left to right order".  But the part of the task description describing when to use the ordering of the separators (when there is ambiguity at a point) only makes sense in a context where something else determines when a point is relevant, or not.  --[[User:Rdm|Rdm]] 12:15, 26 April 2011 (UTC)
 
 Vincent> Program does exactly what you describe, except your mistake: spearators doesn't reused once they are finished, so for “a!===b=!=c” ("!=", "==", "=") it produces “a <!=>  <==> b <=> !=c” - note that '!=' separator doesn't used AGAIN.
 
 
-###  String modified 
+###  String modified
 
 I noticed another present from the argument earlier.  "==d was added by anonymous and not caught making every answer wrong.  I will reset it. --[[User:Dgamey|Dgamey]] 01:19, 27 April 2011 (UTC)
 
@@ -77,7 +77,7 @@ Most of the examples don't even clearly show output, so it's difficult to tell w
 
 ::I believe the task should be required to clearly show output.  I did.  I also know you will think my code is incorrect based on your interpretation.  But until the author clarifies the task, they should both stand.
 
-::Your capitalized text is not quoted from the description and it is your interpretation. Please reread the task description carefully and I think you may see the other interpretation is also possible. 
+::Your capitalized text is not quoted from the description and it is your interpretation. Please reread the task description carefully and I think you may see the other interpretation is also possible.
 
 ::I had suggested showing more clear output as a requirement, to make it clear what each solution accomplished.  I strongly suspect that some of the other solutions would not produce the same results as the D solution.
 
@@ -199,7 +199,7 @@ Except we need to deal with multiple separators, and they can be differing lengt
 ```
 
 
-But now we need to tell I.@E. that it is not supposed to work on the boxes directly, instead it needs to work inside the boxes.  
+But now we need to tell I.@E. that it is not supposed to work on the boxes directly, instead it needs to work inside the boxes.
 
 
 ```j
@@ -324,7 +324,7 @@ r=.r,.(last}.x{.~next{begin);next{t
 ```
 
 
-This has three important parts:  
+This has three important parts:
 
 #  <code>r=.r,.</code>''value'' (the result builder).
 #  <code>last}.x{.~next{begin</code> (the substring extractor), and
@@ -334,10 +334,11 @@ The first time through the loop, <code>last</code> and <next> will be 0, and the
 
 Next, we save the value where this delimiter instance ends.  In other words <code>last</code> takes on the value 3.
 
-Finally, we use that ending location to find our next delimiter instance.  <code>begin>:last</code>, the first time through the loop, is equivalent to 
+Finally, we use that ending location to find our next delimiter instance.  <code>begin>:last</code>, the first time through the loop, is equivalent to
 
 
-```j>   1 2 2 3 3 4 6 7 8 
+```j
+   1 2 2 3 3 4 6 7 8
 : 3
 0 0 0 1 1 1 1 1 1
 ```
@@ -346,7 +347,8 @@ Finally, we use that ending location to find our next delimiter instance.  <code
 And, that would be enough, but I did not want an infinite loop if someone happened to use an empty delimiter, so I added an explicit test for that.  It's just a safety measure, and does not actually matter for the required test case. But next{begin is still 1, so:
 
 
-```j>   1 2 2 3 3 4 6 7 8 
+```j
+   1 2 2 3 3 4 6 7 8
  1
 0 1 1 1 1 1 1 1 1
 ```

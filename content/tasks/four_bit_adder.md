@@ -3488,7 +3488,8 @@ end %fourBitAdder
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  [S,V] = fourBitAdder([0 0 0 1],[1 1 1 1])
 
 S =
@@ -4898,7 +4899,8 @@ fullAdder: procedure expose c;   parse arg x,y,fc
 ```
 
 '''output'''   (most lines have been elided):
-<pre style="height:63ex">
+
+```txt
 aaaa + bbbb = c, sum     [c=carry]
 ════   ════   ══════
 0000 + 0000 = 0,0000

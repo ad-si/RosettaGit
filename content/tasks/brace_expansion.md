@@ -1565,7 +1565,8 @@ divide=:4 :0
 Examples:
 
 
-```J>
+```j
+
 expand t1
 ~/Downloads/*.jpg
 ~/Downloads/*.gif

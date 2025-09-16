@@ -3196,7 +3196,8 @@ fn main() {
 
 Defining a new control construct:
 
-```scala>scala
+```scala
+scala
  def if2[A](x: => Boolean)(y: => Boolean)(xyt: => A) = new {
      |   def else1(xt: => A) = new {
      |     def else2(yt: => A) = new {
@@ -3219,7 +3220,8 @@ if2: [A](x: => Boolean)(y: => Boolean)(xyt: => A)java.lang.Object{def else1(xt: 
 
 Usage:
 
-```scala>scala
+```scala
+scala
  if2(true)(true) {
      |   1
      | } else1 {

@@ -3938,7 +3938,8 @@ Miller(n)={
 ### Custom
 
 
-```perl>use bigint try =
+```perl
+use bigint try =>
  'GMP';
 
 sub is_prime {

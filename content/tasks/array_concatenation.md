@@ -444,7 +444,8 @@ end.
 ## AntLang
 
 
-```AntLang>a:<1; <2; 3>
+```AntLang
+a:<1; <2; 3>>
 
 b: <"Hello"; 42>
 c: a,b
@@ -467,7 +468,8 @@ c: a,b
 ## Apex
 
 
-```apex>List<String> listA = new List<String
+```apex
+List<String> listA = new List<String
  { 'apple' };
 List<String> listB = new List<String> { 'banana' };
 listA.addAll(listB);
@@ -1876,7 +1878,9 @@ Press any key to continue...
 ## Factor
 
 
-```factor>append</lang
+```factor
+append>
+```
 
 
 '''Example''':
@@ -2006,7 +2010,9 @@ The quick brown fox jumped over the lazy dog
 
 Since FPC (Free Pascal compiler) version 3.2.0., the dynamic array concatenation operator <code>+</code> is available, provided <code>{$modeSwitch arrayOperators+}</code> (which is enabled by default in <code>{$mode Delphi}</code>).
 
-```pascal>array0 + array1</lang
+```pascal
+array0 + array1>
+```
 
 
 
@@ -2304,7 +2310,9 @@ def list = [1, 2, 3] + ["Crosby", "Stills", "Nash", "Young"]
 
 Test:
 
-```groovy>println list</lang
+```groovy
+println list>
+```
 
 
 {{out}}
@@ -2350,7 +2358,8 @@ ENDDO
 ## Hy
 
 
-```hy>=
+```hy
+=
  (setv a [1 2 3])
 => a
 [1, 2, 3]
@@ -2497,7 +2506,8 @@ add B to A;
 ## Ioke
 
 
-```ioke>iik
+```ioke
+iik>
  [1,2,3] + [3,2,1]
 [1,2,3] + [3,2,1]
 +> [1, 2, 3, 3, 2, 1]
@@ -3094,7 +3104,8 @@ Join[{1,2,3}, {4,5,6}]
 =={{header|MATLAB}} / {{header|Octave}}==
 Two arrays are concatenated by placing the two arrays between a pair of square brackets. A space between the two array names will concatenate them horizontally, and a semi-colon between array names will concatenate vertically.
 
-```MATLAB>>
+```matlab
+>
  a = [1 2 3]
 
 a =
@@ -3124,7 +3135,8 @@ concat =
 
 For multi-dimensional arrays, there is also the function cat():
 
-```MATLAB>>
+```matlab
+>
  c = randn([3,4,5]);
 >> d = randn([3,4,7]);
 >> e = cat(3,c,d);
@@ -4140,7 +4152,8 @@ append/only a1 a3 ; -> [1 2 3 4 5 6 [7 8 9]]
 ## Red
 
 
-```Red>>
+```Red
+>>
  arr1: ["a" "b" "c"]
 >> arr2: ["d" "e" "f"]
 >> append arr1 arr2
@@ -4853,7 +4866,8 @@ Note that in the Tcl language, “arrays” are hash maps of strings to variable
 
 If <var>a</var> and <var>b</var> are lists, <code>augment(a, b)</code> concatenates them in the usual fashion. If <var>a</var> and <var>b</var> are matrices, then <code>augment(a, b)</code> produces a matrix whose columns are the columns of <var>a</var> followed by the columns of <var>b</var>, i.e. an [[wp:augmented matrix|augmented matrix]].
 
-<!--lang ti89b--><pre style="font-family: 'TI Uni';">
+<!--lang ti89b-->
+```txt
 ■ augment({1,2}, {3,4})
     {1,2,3,4}
 ■ augment([[1][2]], [[3][4]])
@@ -4872,7 +4886,8 @@ That last example as displayed in pretty-printing mode:
 
 Concatenation in the other direction may of course be done by transposition:
 
-<!--lang ti89b--><pre style="font-family: 'TI Uni';">
+<!--lang ti89b-->
+```txt
 ■ augment([[x][y]], [[z][w]])
     [[x][y][z][w]]
 ```
@@ -5260,18 +5275,14 @@ begin
 
 	WriteAry(Concat2(x,y));
 end Main.
-
 ```
 
 {{out}}
 
 ```txt
-
   1  2  3  4  6  7  8  9
   2  4  6  8  3  5  9 11
-
 ```
-
 
 
 ## Zsh
@@ -5287,15 +5298,15 @@ c=($a $b)
 
 Pushing a single element into an array.
 
-```zsh>a+=4</lang
+```zsh
+a += 4
+```
 
 Pushing another array into an array.
 
 ```zsh
-a+=($b)
+a += ($b)
 ```
-
-
 
 
 ## ZX Spectrum Basic

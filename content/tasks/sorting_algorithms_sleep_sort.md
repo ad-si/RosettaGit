@@ -1555,7 +1555,8 @@ bundle Default {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, char **argv)
@@ -1574,7 +1575,8 @@ int main(int argc, char **argv)
 
 Rather than having multiple operations that sleep, we could also dispatch the tasks after a delay:
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, char **argv)

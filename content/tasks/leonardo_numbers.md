@@ -575,7 +575,8 @@ Runs on the 1k RAM model with room to spare; hence the long(ish) variable names.
 
 It's a shame when fonts don't make much of a distinction between <tt>l</tt> lower-case L and <tt>1</tt> the number One.
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 leonardo
 :
 PRINT "Enter values of L0, L1, and ADD, separated by commas:"

@@ -438,7 +438,9 @@ end if
 
 === {{header|Applesoft BASIC}} ===
 
-```Applesoft BASIC>10  IF 1 THEN  STOP</lang
+```Applesoft BASIC
+10  IF 1 THEN  STOP>
+```
 
 
 =
@@ -446,7 +448,9 @@ end if
 =
 No special cleanup routines are compiled in by default, but any functions registered via POSIX ''atexit'' and/or ''on_exit'' will be honoured. END can include a status code to be passed back to the invoking process.
 
-```freebasic>IF TRUE THEN END 42</lang
+```freebasic
+IF TRUE THEN END 42>
+```
 
 
 =
@@ -463,7 +467,9 @@ if not more then end
 ## Locomotive Basic
 =
 
-```locobasic>10 IF 1 THEN END</lang
+```locobasic
+10 IF 1 THEN END>
+```
 
 
 === {{header|ZX Spectrum Basic}} ===
@@ -480,7 +486,9 @@ The ZX Spectrum has a STOP command, rather than an END command:
 ## Batch File
 
 
-```dos>if condition exit</lang
+```dos
+if condition exit>
+```
 
 In Windows batch files this doesn't need to exit the program but instead can also just exit a subroutine. <code>exit /b</code> can also be used alternatively if a return value if desired.
 
@@ -790,7 +798,9 @@ Called on dexit
 
 =={{header|Delphi}}/{{header|Pascal}}==
 
-```Delphi>System.Halt;</lang
+```Delphi
+System.Halt;>
+```
 
 or
 
@@ -1178,7 +1188,9 @@ panic: 10
 
 =={{header|GW-BASIC}}==
 
-```qbasic>10 IF 1 THEN STOP</lang
+```qbasic
+10 IF 1 THEN STOP
+```
 
 
 
@@ -1436,7 +1448,9 @@ The STOP statement is functionally identical to END and is interchangable. Also,
 
 The following is functional. Better practice is to instead jump to commands or subs to close known open files, windows etc, avoiding error messages as above.
 
-```lb>if 2 =2 then end</lang
+```lb
+if 2 =2 then end
+```
 
 
 
@@ -1883,11 +1897,15 @@ This ends the scope for any non-global variables defined in the script. No speci
 
 Terminate Prolog execution. Open files are closed. Exits the Interpreter.
 
-```prolog>halt.</lang
+```prolog
+halt.>
+```
 
 Terminate Prolog execution but don't exit the Interpreter.
 
-```prolog>abort.</lang
+```prolog
+abort.>
+```
 
 
 
@@ -2112,7 +2130,9 @@ Exits the process immediately. No exit handlers are run.
 ## Run BASIC
 
 
-```runbasic>if whatever then end</lang
+```runbasic
+if whatever then end>
+```
 
 
 
@@ -2398,7 +2418,9 @@ exit 0    # Program terminated normally
 
 Standard Ursa supports the stop function, which immediately halts program execution.
 
-```ursa>stop</lang
+```ursa
+stop>
+```
 
 
 

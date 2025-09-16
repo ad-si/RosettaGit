@@ -20,7 +20,9 @@ languages = [
 
 This code is called as a complete script, perhaps like this:
 
-```sh>./ircgateway.tcl irc://hostA.org/fishing bait irc://hostB.com:6667/haxors botfly</lang
+```sh
+./ircgateway.tcl irc://hostA.org/fishing bait irc://hostB.com:6667/haxors botfly
+```
 
 ```tcl
 #!/bin/env tclsh8.5

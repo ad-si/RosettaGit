@@ -2380,7 +2380,8 @@ Session:
 SequenceL compiles to parallel C++ without any input from the user regarding explicit parallelization. The number of threads to be executed on can be specified at runtime, or by default, the runtime detects the maximum number of logical cores and uses that many threads.
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl>
 ;
 import <Utilities/Math.sl>;
 import <Utilities/Sequence.sl>;

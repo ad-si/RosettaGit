@@ -2381,7 +2381,8 @@ axes.children.children.mark_foreground=13;
 '''Tail-Recursive SequenceL Code:'''
 
 
-```sequencel>import <Utilities/Math.sl
+```sequencel
+import <Utilities/Math.sl
 ;
 import <Utilities/Random.sl>;
 

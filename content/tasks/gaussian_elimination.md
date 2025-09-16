@@ -2059,7 +2059,9 @@ document.write(
 
 Using built-in LAPACK-based linear solver (which employs partial-pivoted Gaussian elimination):
 
-```julia>x = A \ b</lang
+```julia
+x = A \ b
+```
 
 
 

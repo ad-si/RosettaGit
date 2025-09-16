@@ -178,7 +178,8 @@ Here, the application will never access <code>padding</code> nor store anything;
 
 ## C++
 
-```Cpp>#include <boost/cstdint.hpp
+```Cpp
+#include <boost/cstdint.hpp>
 
 
 boost::int_least32_t foo;
@@ -580,7 +581,9 @@ default(precision, 1000)
 
 Alternately, in the gp interpreter,
 
-```parigp>\p 1000</lang
+```parigp
+\p 1000>
+```
 
 
 

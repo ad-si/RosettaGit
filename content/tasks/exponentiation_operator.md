@@ -3670,7 +3670,8 @@ end
 
 Defines generic function raise(_:to:) and operator ** that will work with all bases conforming to protocol Numeric, including Float and Int.
 
-```Swift>func raise<T: Numeric
+```swift
+func raise<T: Numeric
 (_ base: T, to exponent: Int) -> T {
     precondition(exponent >= 0, "Exponent has to be nonnegative")
     return Array(repeating: base, count: exponent).reduce(1, *)

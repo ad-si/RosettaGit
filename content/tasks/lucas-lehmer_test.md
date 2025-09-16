@@ -256,7 +256,9 @@ od;
 
 produces:
 
-```agena>M3 M5 M7 M13 M17 M19 M31</lang
+```agena
+M3 M5 M7 M13 M17 M19 M31>
+```
 
 
 

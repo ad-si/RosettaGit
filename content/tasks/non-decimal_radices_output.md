@@ -783,7 +783,8 @@ Decimal    Hex       Octal    Binary
 
 After decimal numbers in the input stream, add hexadecimal and octal of the same number in the output stream. Also after hexadecimal add decimal and octal, and after octal add decimal and hexadecimal.
 
-```gema>0x<A
+```gema
+0x<A>
 =$0 (@radix{16;10;$1}, 0@radix{16;8;$1})
 0<D>=$0 (@radix{8;10;$1}, 0x@radix{8;16;$1})
 <D>=$0 (0x@radix{10;16;$1}, 0@radix{10;8;$1})
@@ -1687,7 +1688,8 @@ Next
 
 Binary (b), Octal (o), Decimal (d), and Hexadecimal (X and x) are supported by the [http://www.python.org/dev/peps/pep-3101/ format]method of a string
 <div style="height:30ex;overflow:scroll">
-```python>>>
+```python
+>>>
  for n in range(34):
 	print " {0:6b} {1:3o} {2:2d} {3:2X}".format(n, n, n, n)
 	#The following would give the same output, and,

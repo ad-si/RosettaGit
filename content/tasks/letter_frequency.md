@@ -2534,7 +2534,8 @@ bundle Default {
 =={{header|Objective-C}}==
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main (int argc, const char *argv[]) {

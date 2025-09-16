@@ -494,7 +494,8 @@ test.eps written
 ## C++
 
 
-```C++>#include <iostream
+```C++
+#include <iostream>
 
 
 using namespace std;
@@ -2340,7 +2341,8 @@ function clippedPolygon = sutherlandHodgman(subjectPolygon,clipPolygon)
 end %sutherlandHodgman
 ```
 
-```MATLAB>>
+```MATLAB
+>>
  subject = [[50;200;350;350;250;200;150;100;100],[150;50;150;300;300;250;350;250;200]];
 >> clipPolygon = [[100;300;300;100],[100;100;300;300]];
 >> clippedSubject = sutherlandHodgman(subject,clipPolygon);

@@ -1074,7 +1074,8 @@ dict_find( {ok,	Values}, Key, Value ) -> [{X, {Key, Value}} || X <- Values].
 
 =={{header|F_Sharp|F#}}==
 
-```fsharp>[<EntryPoint
+```fsharp
+[<EntryPoint>
 ]
 let main argv =
     let table1 = [27, "Jonah";

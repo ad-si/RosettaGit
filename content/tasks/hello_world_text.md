@@ -1432,7 +1432,8 @@ CRLF
 
 Uncommented:
 
-```bf>++++++++++[>+>+++>++++>+++++++>++++++++>+++++++++
+```bf
+++++++++++[>+>+++>++++>+++++++>++++++++>+++++++++>
 ++
 ++++++++>+++++++++++>++++++++++++<<<<<<<<<-]>>>>+.>>>
 >+..<.<++++++++.>>>+.<<+.<<<<++++.<++.>>>+++++++.>>>.+++.
@@ -1808,7 +1809,8 @@ print "Hello world!"
 ## ColdFusion
 
 
-```coldfusion><cfoutput
+```coldfusion
+<cfoutput>
 Hello world!</cfoutput>
 ```
 
@@ -2024,7 +2026,9 @@ main() {
 
 ...or print a numerically represented string.
 
-```dc>5735816763073014741799356604682 P</lang
+```dc
+5735816763073014741799356604682 P>
+```
 
 
 
@@ -2545,7 +2549,8 @@ END PROGRAM
 =={{header|Extended Brainfuck}}==
 
 
-```bf>[.
+```bf
+[.>
 ]@Hello world!
 ```
 
@@ -2865,7 +2870,8 @@ init
 ## Gentee
 
 
-```gentee>func hello <main
+```gentee
+func hello <main>
 
 {
    print("Hello world!")
@@ -3114,7 +3120,9 @@ PRINT("Hello world!");
 
 ## HQ9+
 
-```hq9plus>H</lang
+```hq9plus
+H>
+```
 
 *Technically, HQ9+ can't print "Hello world!" text because of its specification.
 - H : Print 'Hello World!'
@@ -4182,7 +4190,8 @@ Print["Hello world!"]
 ## MATLAB
 
 
-```MATLAB>>
+```MATLAB
+>>
  disp('Hello world!')
 ```
 
@@ -6891,7 +6900,8 @@ Text(0, "Hello world!
 ## XSLT
 
 
-```xml><xsl:text
+```xml
+<xsl:text>
 Hello world!
 </xsl:text>
 ```

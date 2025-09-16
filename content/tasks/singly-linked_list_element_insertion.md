@@ -699,7 +699,8 @@ Uses the generic version of the node type located [[Singly-linked_list/Element_d
 
 Creates nodes and inserts them from the data passed.
 
-```csharp>static void InsertAfter<T
+```csharp
+static void InsertAfter<T>
 (LinkedListNode<T> prev, T value)
 {
     prev.Next = new Link() { Value = value, Next = prev.Next };
@@ -735,7 +736,8 @@ static void Main()
 
 And the test:
 
-```lisp>user=
+```lisp
+user=>
  (insert-after 'c 'a '(a b))
 (a c b)
 ```
@@ -2094,7 +2096,8 @@ list.insert_after(:a, :c)
 
 Extending [[Singly-Linked List (element)#Rust]]. Please see that page for the Linked List struct declarations.
 
-```rust>impl<T> List<T
+```rust
+impl<T> List<T>
  {
     pub fn new() -> Self {
         List { head: None }

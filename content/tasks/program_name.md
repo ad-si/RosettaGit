@@ -1858,7 +1858,8 @@ Program name: ./ProgramName
 scriptname.m:
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, char **argv) {
@@ -2839,7 +2840,9 @@ Output for program named "filename":
 
 VBA can retrieve the name of the program hosting the VBA code using the <code>Application</code> object:
 
-```vb>Debug.Print Application.Name</lang
+```vb
+Debug.Print Application.Name>
+```
 
 
 This is mostly useful for code that is shared between, say, [[wp:Microsoft Excel|Microsoft Excel]] and [[wp:Microsoft Word|Microsoft Word]], but has different requirements or actions depending on where it's running.

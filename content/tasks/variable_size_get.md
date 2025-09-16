@@ -631,7 +631,8 @@ Test at the GNU Forth (32bit) console
 .CELLSIZE
 4 Bytes ok
 -1 X !  ok
-HEX X @ U. FFFFFFFF  ok</Lang>
+HEX X @ U. FFFFFFFF  ok
+```
 
 
 ## Fortran
@@ -921,7 +922,8 @@ some_function =: +/ % #
 ## Julia
 
 
-```julia>julia
+```julia
+julia>
  sizeof(Int8)
 1
 
@@ -1337,7 +1339,8 @@ Debug  SizeOf(a)
 
 This information is only easily available for the array type:
 
-```python>>>
+```python
+>>>
  from array import array
 >>> argslist = [('l', []), ('c', 'hello world'), ('u', u'hello \u2641'),
 	('l', [1, 2, 3, 4, 5]), ('d', [1.0, 2.0, 3.14])]

@@ -1140,7 +1140,8 @@ quit
 ## Befunge
 
 
-```befunge>1
+```befunge
+1>
 :5`#@_:>"*",v
          | :-1<
  ^+1,+5+5<
@@ -1181,7 +1182,8 @@ end
 
 =={{header|Brainfuck}}==
 
-```bf>>>+++++++[>++++++[
+```bf
+>>+++++++[>++++++[>
 +<-]<-]       place * in cell 3
 +++++[>++[>>+<<-]<-]<<           place \n in cell 4
 +++++[                           set outer loop count
@@ -1384,7 +1386,8 @@ With tags:
 
 With script:
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   for( i = 1; i <= 5; i++ )
   {
@@ -4594,7 +4597,8 @@ pub main | m, n
 ## SPL
 
 
-```spl>
+```spl
+>
  i, 1..5
   > j, 1..i
     #.output("*",#.rs)

@@ -381,7 +381,8 @@ ViewportWidth: 1680
 
 In the graphics mode, Windows does it all automatically and displays a form that fills the entire area not obscured by the taskbar on your primary monitor:
 
-```qbasic>#INCLUDE <Include\Windows.inc
+```qbasic
+#INCLUDE <Include\Windows.inc>
 
 ShowWindow(ME, SW_MAXIMIZE)
 BEGIN EVENTS

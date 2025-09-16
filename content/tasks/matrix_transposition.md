@@ -2204,7 +2204,8 @@ print,transpose(m)
 ## Idris
 
 
-```idris>Idris
+```idris
+Idris>
  transpose [[1,2],[3,4],[5,6]]
 [[1, 3, 5], [2, 4, 6]] : List (List Integer)
 ```
@@ -2521,7 +2522,8 @@ prompt$ jsish -u matrixTranspose.jsi
 
 The transposition is obtained by quoting the matrix.
 
-```Julia>julia
+```julia
+julia>
  [1 2 3 ; 4 5 6]  # a 2x3 matrix
 2x3 Array{Int64,2}:
  1  2  3
@@ -2843,7 +2845,8 @@ transposedMatrix = Transpose[originalMatrix]
 
 Matlab contains two built-in methods of transposing a matrix: by using the <code>transpose()</code> function, or by using the <code>.'</code> operator. The <code>'</code> operator yields the [[conjugate transpose|complex conjugate transpose]].
 
-```Matlab>>
+```Matlab
+>>
  transpose([1 2;3 4])
 
 ans =
@@ -4218,7 +4221,8 @@ Output:
 ## RLaB
 
 
-```RLaB> >
+```RLaB
+ >>
  m = rand(3,5)
   0.41844289   0.476591435    0.75054022   0.226388925   0.963880314
   0.91267171   0.941762397   0.464227895   0.693482786   0.203839405
@@ -4449,7 +4453,8 @@ Transpose:
 ## Scala
 
 
-```scala>scala
+```scala
+scala>
  Array.tabulate(4)(i => Array.tabulate(4)(j => i*4 + j))
 res12: Array[Array[Int]] = Array(Array(0, 1, 2, 3), Array(4, 5, 6, 7), Array(8, 9, 10, 11), Array(12, 13, 14, 15))
 

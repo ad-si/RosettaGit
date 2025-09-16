@@ -1397,7 +1397,8 @@ end
 
 Sample Output:
 
-```MATLAB>>
+```MATLAB
+>>
  rootsOfUnity(3)
 
 ans =

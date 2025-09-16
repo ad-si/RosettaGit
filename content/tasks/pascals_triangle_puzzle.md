@@ -1561,7 +1561,9 @@ base=: [,11,+,4,]
 the height of the pyramid:
 
 
-```j>ord=:5</lang
+```j
+ord=:5
+```
 
 
 => 'chk', 'base' and 'ord' are the knowledge rules abstracted from the problem definition.

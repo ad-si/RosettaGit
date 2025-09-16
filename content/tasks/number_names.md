@@ -2569,10 +2569,14 @@ Sample output:
 
 ## Inform 7
 
-```inform7>say 32767 in words;</lang
+```inform7
+say 32767 in words;>
+```
 
 
-```inform7>say 2147483647 in words;</lang
+```inform7
+say 2147483647 in words;>
+```
 
 
 == {{header|J}} ==
@@ -2754,7 +2758,8 @@ public class NumberToWordsConverter { // works upto 9999999
 
 ## JavaScript
 
-```JavaScript>const divMod = y => x =
+```javascript
+const divMod = y => x =>
  [Math.floor(y/x), y % x];
 
 const sayNumber = value => {
@@ -3763,7 +3768,8 @@ zero
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main() {
@@ -5842,7 +5848,8 @@ const proc: main is func
 Works on all 32 bit signed integers.
 
 
-```sequencel>import <Utilities/Math.sl
+```sequencel
+import <Utilities/Math.sl>
 ;
 import <Utilities/Sequence.sl>;
 import <Utilities/Conversion.sl>;

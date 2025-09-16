@@ -1205,7 +1205,8 @@ public class HeapSortClass
 
 Example usage:
 
-```lisp>user
+```lisp
+user>
  (heapsort [1 2 4 6 2 3 6])
 [1 2 2 3 4 6 6]
 user> (heapsort [1 2 4 6 2 3 6] >)
@@ -1218,7 +1219,8 @@ user> (heapsort (list 1 2 4 6 2 3 6))
 
 ## COBOL
 
-```cobol>        >
+```cobol
+        >>
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 *> This is GNUCOBOL 2.0
@@ -3107,7 +3109,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  heapSort([4 3 1 5 6 2])
 
 ans =
@@ -4904,7 +4907,8 @@ function heapsort(a) {
 ## Swift
 
 
-```Swift>func heapsort<T:Comparable
+```swift
+func heapsort<T:Comparable>
 (inout list:[T]) {
     var count = list.count
 

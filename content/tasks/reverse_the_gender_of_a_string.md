@@ -90,22 +90,22 @@ End Function
 
 Function revGender(s As Const String) As String
   If s = "" Then Return ""
-  Dim t As String = s 
+  Dim t As String = s
   Dim word(1 To 10) As String = {"She", "she", "Her",  "her",  "hers", "He",   "he",   "His",  "his",  "him"}
   Dim repl(1 To 10) As String = {"He_", "he_", "His_", "his_" ,"his_", "She_", "she_", "Her_", "her_", "her_"}
-  Dim As Integer index, start, after 
+  Dim As Integer index, start, after
   For i As Integer = 1 To 10
     start = 1
-    While start <= Len(t) - Len(word(i)) + 1 
-      index = Instr(start, t, word(i))      
+    While start <= Len(t) - Len(word(i)) + 1
+      index = Instr(start, t, word(i))
       If index = 0 Then Exit While
       after = index + Len(word(i))
-      If index = 1 AndAlso after <= Len(t) AndAlso CInt(isWordChar(Mid(t, after, 1))) Then 
+      If index = 1 AndAlso after <= Len(t) AndAlso CInt(isWordChar(Mid(t, after, 1))) Then
         start = after
         Continue While
       End If
       If index > 1 AndAlso after <= Len(t) AndAlso _
-        (CInt(isWordChar(Mid(t, index - 1, 1))) OrElse CInt(isWordChar(Mid(t, after, 1)))) Then 
+        (CInt(isWordChar(Mid(t, index - 1, 1))) OrElse CInt(isWordChar(Mid(t, after, 1)))) Then
         start = after
         Continue While
       End If
@@ -118,7 +118,7 @@ Function revGender(s As Const String) As String
     If Mid(t, i, 1) = "_" Then
       t = Left(t, i - 1) + Mid(t, i + 1)
     End If
-  Next 
+  Next
   Return t
 End Function
 
@@ -188,7 +188,9 @@ We can optimise the time and space complexity of this computation by careful sel
 
 Sino-Tibetan dialects generally work well here. If we choose any standard transcription of Modern Standard Chinese (such as Pinyin or IPA) or more or less any written sample of pre 19c literary Chinese, we can reduce the entire computation down to a very pleasing intersection of fully optimized space and time performance with reasonably clear and succinct code:
 
-```haskell>id</lang
+```haskell
+id
+```
 
 
 
@@ -390,7 +392,7 @@ class ReallyLameTranslationOfJ {
     else if(s->Has("He")) {
       return s->ReplaceAll("He", "She");
     };
-    
+
     return s;
   }
 }
@@ -479,7 +481,7 @@ function reverse_gender(string s)
             if not wordch then
                 string this = lower(s[i+1..wordend])
                 integer k = find(this,words)
-                if k then 
+                if k then
                     string rep = words[iff(mod(k,2)?k+1:k-1)]
 --                  if s[i+2..wordend]=rep[2..$] then -- might be wanted here
 --                    -- (either skipping completely or all upper->all upper)
@@ -563,7 +565,7 @@ She was a soul stripper. She took my heart!
 ```Python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
- 
+
 import re
 male2female=u"""maleS femaleS, maleness femaleness,
 him her, himself herself, his her, his hers, he she,
@@ -571,28 +573,28 @@ Mr Mrs, Mister Missus, Ms Mr, Master Miss, Master Mistress,
 uncleS auntS, nephewS nieceS, sonS daughterS, grandsonS granddaughterS,
 brotherS sisterS, man woman, men women, boyS girlS, paternal maternal,
 grandfatherS grandmotherS, GodfatherS GodmotherS, GodsonS GoddaughterS,
-fiancéS fiancéeS, husband wife, husbands wives, fatherS motherS, 
+fiancéS fiancéeS, husband wife, husbands wives, fatherS motherS,
 bachelorS spinsterS, bridegroomS brideS, widowerS widowS,
 KnightS DameS, Sir DameS, KingS QueenS, DukeS DuchessES, PrinceS PrincessES,
 Lord Lady, Lords Ladies, MarquessES MarchionessES, EarlS CountessES, ViscountS ViscountessES,
 ladS lassES, sir madam, gentleman lady, gentlemen ladies, BaronS BaronessES,
 stallionS mareS, ramS eweS, coltS fillieS, billy nanny, billies nannies, bullS cowS,
 godS goddessES, heroS heroineS, shirtS blouseS, undies nickers, sweat glow,
-jackarooS jillarooS, gigoloS hookerS, landlord landlady, landlords landladies, 
-manservantS maidservantS, actorS actressES, CountS CountessES, EmperorS EmpressES, 
+jackarooS jillarooS, gigoloS hookerS, landlord landlady, landlords landladies,
+manservantS maidservantS, actorS actressES, CountS CountessES, EmperorS EmpressES,
 giantS giantessES, heirS heiressES, hostS hostessES, lionS lionessES, managerS manageressES,
 murdererS murderessES, priestS priestessES, poetS poetessES, shepherdS shepherdessES,
 stewardS stewardessES, tigerS tigressES, waiterS waitressES,
 cockS henS, dogS bitchES, drakeS henS, dogS vixenS,
-tomS tibS, boarS sowS, buckS roeS, peacockS peahenS, 
+tomS tibS, boarS sowS, buckS roeS, peacockS peahenS,
 gander goose, ganders geese, friarS nunS, monkS nunS, Adam Eve,
 Aaron Erin, Adrian Adriana, Aidrian Aidriana, Alan Alaina, Albert Alberta,
 Alex Alexa, Alex Alexis, Alexander Alaxandra, Alexander Alexandra,
 Alexander Alexis, Alexandra Alexander, Alexei Alexis, Alfred Alfreda,
 Andrew Andrea, Andrew Andrea, Angel Angelica, Anthony Antonia,
-Antoine Antoinette, Ariel Arielle, Ashleigh Ashley, 
-Barry Barrie, Benedict Benita, Benjamin Benjamine, Bert Bertha, 
-Brandon Brandi, Brendan Brenda, Briana Brian, Brian Rianne, 
+Antoine Antoinette, Ariel Arielle, Ashleigh Ashley,
+Barry Barrie, Benedict Benita, Benjamin Benjamine, Bert Bertha,
+Brandon Brandi, Brendan Brenda, Briana Brian, Brian Rianne,
 Caela Caesi, Caeleb Caeli, Carl Carla, Carl Carly, Carolus Caroline,
 Charles Caroline, Charles Charlotte, Christian Christa, Christian Christiana,
 Christian Christina, Christopher Christina, Christopher Christine,
@@ -608,9 +610,9 @@ George Georgina, Gerald Geraldine, Giovanni Giovanna, Glen Glenn,
 Harry Harriet, Harry Harriette, Heather Heath, Henry Henrietta, Horace Horatia,
 Ian Iana, Ilija Ilinka, Ivo Ivy, Ivan Ivy,
 Jack Jackelyn, Jack Jackie, Jack Jaclyn, Jack Jacqueline, Jacob Jacobine,
-James Jamesina, James Jamie, Jaun Jaunita, Jayda Jayden, Jesse Jessica, 
-Jesse Jessie, Joe Johanna, Joel Joelle, John Jean, John Joan, 
-John Johanna, Joleen Joseph, Jon Joane, Joseph Josephine, Joseph Josphine, 
+James Jamesina, James Jamie, Jaun Jaunita, Jayda Jayden, Jesse Jessica,
+Jesse Jessie, Joe Johanna, Joel Joelle, John Jean, John Joan,
+John Johanna, Joleen Joseph, Jon Joane, Joseph Josephine, Joseph Josphine,
 Julian Julia, Julian Juliana, Julian Julianna, Justin Justine,
 Karl Karly, Kendrick Kendra, Ken Kendra, Kian Kiana, Kyle Kylie,
 Laurence Laura, Laurence Lauren, Laurence Laurencia, Leigh Leigha,
@@ -632,43 +634,43 @@ Theodore Theordora, Thomas Thomasina, Tristan Tricia, Tristen Tricia,
 Ulric Ulrika, Valentin Valentina, Victor Victoria,
 William Wilhelmina, William Willa, William Willamina,
 Xavier Xaviera, Yarden Yardena, Zahi Zahira, Zion Ziona"""
- 
+
 re_nl=re.compile(r",[ \n]*")
 m2f=[ tok.split(" ") for tok in re_nl.split(male2female) ]
- 
+
 switch={}
 words=[]
- 
- 
+
+
 re_plural=re.compile("E*S$")
 re_ES=re.compile("ES$")
- 
+
 def gen_pluralize(m,f):
-# do plurals first 
+# do plurals first
   yield re_plural.sub("",m),re_plural.sub("",f)
   yield re_ES.sub("es",m),re_ES.sub("es",f)
   yield re_plural.sub("s",m),re_plural.sub("s",f)
- 
+
 def gen_capitalize_pluralize(m,f):
   for m,f in gen_pluralize(m,f):
     yield m.capitalize(), f.capitalize()
     yield m,f
- 
+
 def gen_switch_role_capitalize_pluralize(m,f):
   for m,f in gen_capitalize_pluralize(m,f):
     yield m,f
     yield f,m
- 
+
 for m,f in m2f:
   for xy,xx in gen_switch_role_capitalize_pluralize(m,f):
-    if xy not in switch: 
+    if xy not in switch:
       switch[xy]=xx
       words.append(xy)
- 
+
 words="|".join(words)
- 
+
 re_word=re.compile(ur"\b("+words+ur")\b")
- 
+
 text=u'''When a new-hatched savage running wild about his native
 woodlands in a grass clout, followed by the nibbling goats, as if
 he were a green sapling; even then, in Queequeg's ambitious soul,
@@ -678,12 +680,12 @@ his uncle a High Priest; and on the maternal side he boasted aunts
 who were the wives of unconquerable warriors. There was excellent
 blood in his veins-royal stuff; though sadly vitiated, I fear,
 by the cannibal propensity he nourished in his untutored youth.'''
- 
- 
+
+
 def rev_gender(text):
   text=re_word.split(text)
   return "".join([ word+switch[gen] for word,gen in zip(text[::2],text[1::2])])+text[-1]
- 
+
 print rev_gender(text)
 ```
 
@@ -1541,9 +1543,9 @@ tell:    procedure expose sw;   parse arg z;     z=space(z);   $=
          return
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
-The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
+The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
 ```txt
 
@@ -1616,7 +1618,7 @@ for p=1 to 4
     gstr = left(gstr, len(gstr) - 2)
     if right(gstr, 1) != "!"
        gstr = gstr + "!"
-    ok 
+    ok
     see gstr + nl + nl
 next
 
@@ -1624,17 +1626,17 @@ func repl(cStr)
      cStr = words(cStr) + nl
      for n=1 to len(cStr)
          flag = 0
-         for m=1 to len(word) 
+         for m=1 to len(word)
              if right(cStr[n],1) = ","
                 cStr[n] = left(cStr[n], len(cStr[n]) - 1)
                 flag = 1
-             ok 
+             ok
              if right(cStr[n],1) = "!"
                 cStr[n] = left(cStr[n], len(cStr[n]) - 1)
                 flag = 2
-             ok                         
+             ok
              if cStr[n] = word[m]
-                if flag = 0  
+                if flag = 0
                    cStr[n] = repl[m]
                 ok
                 if flag = 1
@@ -1654,7 +1656,7 @@ func words(cStr2)
      aList = str2list(cStr2)
      for x in aList
          x2 = substr(x," ",nl)
-         alist2 = str2list(x2) 
+         alist2 = str2list(x2)
      next
      return alist2
 

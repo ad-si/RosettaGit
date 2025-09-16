@@ -1646,7 +1646,8 @@ Output:
 Using built-in functions to convert integer into string, and vice versa, at any base up to 16:
 
 
-```haskell>Prelude
+```haskell
+Prelude>
  Numeric.showIntAtBase 16 Char.intToDigit 42 ""
 "2a"
 Prelude> fst $ head $ Numeric.readInt 16 Char.isHexDigit Char.digitToInt "2a"
@@ -1805,7 +1806,9 @@ SUBROUTINE DectoBase(decimal, string, base)
 ```
 
 
-```hicest>num=7836416410; txt=zzzzzzz; 7836416410;</lang
+```hicest
+num=7836416410; txt=zzzzzzz; 7836416410;>
+```
 
 
 =={{header|Icon}} and {{header|Unicon}}==

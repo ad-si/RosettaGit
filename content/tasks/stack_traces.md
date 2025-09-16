@@ -1182,7 +1182,8 @@ end
 
 
 
-```Unicon>#<p
+```Unicon
+#<p>
 
 #  Compute the current stack trace.  Starting at level <i>n</i> above
 #  the current procedure.  Here, <i>n</i> defaults to 0, which will
@@ -1431,7 +1432,8 @@ define trace => {
 ;Use Trace:
 
 
-```Lasso>define stackexample =
+```lasso
+define stackexample =>
  type {
     public oncreate => trace => { return self }
     public inner => trace => { }
@@ -2402,7 +2404,9 @@ continuing after the rescue...
 
 Thread has a backtrace method:
 
-```ruby>p Thread.current.backtrace</lang
+```ruby
+p Thread.current.backtrace
+```
 
 
 

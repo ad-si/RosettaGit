@@ -1789,7 +1789,8 @@ Output:
 ## Haskell
 
 
-```haskell>cube :: Floating a =
+```haskell
+cube :: Floating a =
  a -> a
 cube x = x ** 3.0
 
@@ -3054,7 +3055,8 @@ true.
 
 
 
-```python>>>
+```python
+>>
  # Some built in functions and their inverses
 >>> from math import sin, cos, acos, asin
 >>> # Add a user defined function and its inverse

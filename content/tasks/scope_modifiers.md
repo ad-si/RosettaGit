@@ -560,27 +560,37 @@ The stars around <code>*bug*</code> are not a special syntax. Rather, they are p
 ## Delphi
 
 
-```Delphi>private</lang
+```Delphi
+private>
+```
 
 Can only be seen inside declared class.
 
 
-```Delphi>protected</lang
+```Delphi
+protected>
+```
 
 Can be seen in descendent classes.
 
 
-```Delphi>public</lang
+```Delphi
+public>
+```
 
 Can be seen from outside the class.
 
 
-```Delphi>protected</lang
+```Delphi
+protected>
+```
 
 Same visibility as Public, but run time type information (RTTI) is generated, allowing these members to be viewed dynamically.  Members need to be published in order to be streamed or shown in the Object Inspector.
 
 
-```Delphi>automated</lang
+```Delphi
+automated>
+```
 
 Same visibility as Public, and used for Automation Objects.  This is currently only maintained for backward compatibility.
 
@@ -1563,7 +1573,8 @@ Without either keyword, a reference to a name must have the name defined in the 
 In the example below the name <code>x</code> is defined at various scopes and given a different value dependent on its scope. The innermost functions demonstrate how the scope modifiers give acccess to the name from different scopes:
 
 
-```python>>>
+```python
+>>>
  x="From global scope"
 >>> def outerfunc():
     x = "From scope at outerfunc"

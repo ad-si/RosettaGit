@@ -1794,7 +1794,8 @@ where the <code>;</code> in the argument list denotes the named-parameter varian
 
 Example output:
 
-```julia>julia
+```julia
+julia>
  data = {["a", "b", "c"], ["", "q", "z"], ["zap", "zip", "Zot"]}
 3-element Array{Any,1}:
  ["a","b","c"]
@@ -2470,7 +2471,8 @@ Output:
 
 Using a pretty-printer for the table
 
-```python>>>
+```python
+>>>
  def printtable(data):
     for row in data:
         print ' '.join('%-5s' % ('"%s"' % cell) for cell in row)

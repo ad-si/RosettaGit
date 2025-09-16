@@ -745,7 +745,8 @@ BEGIN {
 ## BBC BASIC
 =
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 midthree
 FOR i% = 1 TO 17
   READ test%
@@ -4818,7 +4819,8 @@ ERROR: Domain error: `at least 3 digits' expected, found `0'
 ### Procedural
 
 
-```python>>>
+```python
+>>>
  def middle_three_digits(i):
 	s = str(abs(i))
 	length = len(s)

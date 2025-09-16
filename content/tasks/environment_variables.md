@@ -542,7 +542,8 @@ end.
 
 ## E
 
-```e><unsafe:java.lang.System
+```e
+<unsafe:java.lang.System
 .getenv("HOME")
 ```
 
@@ -876,7 +877,9 @@ WScript.echo('SYSTEMROOT=' + env.item('SYSTEMROOT'));
 ## jq
 
 
-```jq>env.HOME</lang
+```jq
+env.HOME
+```
 If the environment variable name has spaces or special characters, the name must be given as a string, e.g. <tt>env."HOME"</tt>.
 
 
@@ -1945,7 +1948,9 @@ echo "$HOME"
 
 An ordinary variable can be marked as an environment variable with the <code>export</code> command:
 
-```bash>export VAR</lang
+```bash
+export VAR>
+```
 
 Now child processes launched by the shell will have an environment variable called <code>VAR</code>.
 

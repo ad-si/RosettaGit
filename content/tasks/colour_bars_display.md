@@ -490,7 +490,8 @@ Output
 530 CALL CHAR(I,SQUARE$)
 540 NEXT I
 590 RETURN
-</LANG>
+
+```
 
 =
 ## ZX Spectrum Basic
@@ -867,7 +868,8 @@ DECIMAL
 ;
 
 CR .( Done. Type BARS to run)
-</LANG>
+
+```
 
 
 ## FreeBASIC

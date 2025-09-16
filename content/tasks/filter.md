@@ -384,7 +384,8 @@ x:range[100]
 ## Apex
 
 
-```Apex>List<Integer> integers = new List<Integer
+```apex
+List<Integer> integers = new List<Integer
 {1,2,3,4,5};
 Set<Integer> evenIntegers = new Set<Integer>();
 for(Integer i : integers)
@@ -857,14 +858,16 @@ foreach( int i in evens )
        System.Console.WriteLine( i.ToString() );
 ```
 
-```csharp>List<int> array = new List<int
+```csharp
+List<int> array = new List<int
 ( new int[] { 1, 2, 3, 4, 5 } );
 List<int> evens = array.FindAll( delegate( int i ) { return (i%2)==0; } );
 foreach( int i in evens )
        System.Console.WriteLine( i.ToString() );
 ```
 
-```csharp>IEnumerable<int> array = new List<int
+```csharp
+IEnumerable<int> array = new List<int
 ( new int[] { 1, 2, 3, 4, 5 } );
 IEnumerable<int> evens = array.Where( delegate( int i ) { return (i%2)==0; } );
 foreach( int i in evens )
@@ -1249,7 +1252,8 @@ result
 
 
 
-```e>def makeSeries := <elang:control.makeSeries
+```e
+def makeSeries := <elang:control.makeSeries>
 
 makeSeries([1,2,3,4,5,6,7,8,9,10]).filter(fn x,_{x %% 2 <=> 0}).asList()
 ```
@@ -1422,7 +1426,8 @@ val it : int list = [2; 4; 6]
 This code uses ''filter'' on an array.
 
 
-```factor>10 <iota>
+```factor
+10 <iota>>
 array [ even? ] filter .
 ! prints { 0 2 4 6 8 }
 ```
@@ -1431,7 +1436,8 @@ array [ even? ] filter .
 ''10 <iota>'' is already a sequence, so we can skip the conversion to array.
 
 
-```factor>10 <iota
+```factor
+10 <iota>
  [ even? ] filter .
 ! prints V{ 0 2 4 5 8 }
 ```
@@ -1844,7 +1850,9 @@ evens = [x | x <- ary, even x]
 
 or
 
-```haskell>evens = filter even ary</lang
+```haskell
+evens = filter even ary
+```
 
 
 To do the same operation on an array, the simplest way it to convert it lazily into a list:
@@ -1939,7 +1947,9 @@ We might decide that we use this pattern so often that it is worthwhile creating
 Destructive example:
 
 
-```j>   v=: isEven select v</lang
+```j
+   v=: isEven select v
+```
 
 
 (That said, note that in a highly parallel computing environment the destruction either happens after the filtering or you have to repeatedly stall the filtering to ensure that some sort of partially filtered result has coherency.)
@@ -1962,7 +1972,8 @@ int[] evens = evensList.toArray(new int[0]);
 
 A Java 8 solution with stream and generic types:
 
-```java>public static <T
+```java
+public static <T>
  T[] filter(T[] input, Predicate<T> filterMethod) {
     return Arrays.stream(input)
         .filter(filterMethod)
@@ -2447,7 +2458,8 @@ end
 ```
 
 
-```MATLAB>>
+```matlab
+>
  selectEvenNumbers([0 1 2 3 4 5 6 7 8 9 10])
 
 ans =
@@ -2760,7 +2772,8 @@ NSArray *evens = [numbers filteredArrayUsingPredicate:isEven];
 ```
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface NSNumber ( ExtFunc )
@@ -2927,7 +2940,8 @@ The odd() function is a standard library function of pascal as is the function e
 
 Fixed length English dialect
 
-```sgml><@ LETCNWLSTLIT
+```sgml
+<@ LETCNWLSTLIT>
 numbers|1 2 3 4 5 6 7 8 9 10 11 12</@>
 <@ DEFLST>evens</@>
 <@ ENULSTLIT>numbers|
@@ -3457,7 +3471,9 @@ reduce(lambda a, x: a + [x] if even(x) else a, xs, []) -> [0, 2, 4, 6, 8, 10]
 ## Q
 
 
-```q>x where 0=x mod 2</lang
+```q
+x where 0=x mod 2
+```
 
 
 
@@ -3592,11 +3608,15 @@ new.=                                            /* "  NEW    "     "   "    "  
 
 Programming note:   the REXX statement
 
-```rexx>      if old.j//2 \== 0  then iterate</lang
+```rexx
+      if old.j//2 \== 0  then iterate
+```
 
 could've been replaced with
 
-```rexx>      if old.j//2        then iterate</lang
+```rexx
+      if old.j//2        then iterate
+```
 
 but that would've assumed the numbers are integers   (no matter what form they're expressed in).
 
@@ -3882,7 +3902,8 @@ end;
 
 In the interactive prompt:
 
-```scheme>
+```scheme
+
  (filter even? '(1 2 3 4 5 6 7 8 9 10))
 (2 4 6 8 10)
 ```
@@ -4254,7 +4275,8 @@ There are also suffixes corresponding to the <code>~|</code> operator.
 ## V
 
 
-```v>[even? dup 2 /
+```v
+[even? dup 2 />
 int 2 * - zero?].
 
 [1 2 3 4 5 6 7 8 9] [even?] filter
@@ -4477,7 +4499,8 @@ Orginal Array After Filtering:
 ## WDTE
 
 
-```WDTE>let a =
+```WDTE
+let a =
  import 'arrays';
 let s => import 'stream';
 

@@ -1088,7 +1088,9 @@ main  = do
 ```
 
 {{out}}
-<pre style="font-size:80%">"1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i" -> Valid
+
+```txt
+"1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i" -> Valid
 "1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9" -> Valid
 "1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62X" -> Invalid
 "1ANNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i" -> Invalid
@@ -1993,7 +1995,8 @@ Returns:
 :Yuuki-chan edit: Delete this help if it's not needed anymore
 :For those looking at examples here to try and work out what is required, the <code>n.to_bytes()</code> call is equivalent to this code which converts a (long) integer into individual bytes of a byte array in a particular order:
 :
-```python>>>
+```python
+>>
  n = 2491969579123783355964723219455906992268673266682165637887
 >>> length = 25
 >>> list( reversed(range(length)) )

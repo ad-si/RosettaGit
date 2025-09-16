@@ -5338,7 +5338,8 @@ A translation of my fast C# version. I was curious to see how much slower JavaSc
 --Mike Lorenz
 
 
-```javascript><html
+```javascript
+<html>
 
 <head></head>
 <body>

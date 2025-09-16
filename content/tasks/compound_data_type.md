@@ -1146,7 +1146,9 @@ Seq.iter (fun p -> printfn "%d,%d" p.x p.y) points
 ## Factor
 
 
-```factor>TUPLE: point x y ;</lang
+```factor
+TUPLE: point x y ;>
+```
 
 
 
@@ -1194,7 +1196,8 @@ Point 2 = (1, 2)
 There is no standard structure syntax in Forth, but it is easy to define words for creating and accessing data structures.
 
 
-```forth>: pt
+```forth
+: pt
 x ( point -- x ) ;
 : pt>y ( point -- y ) CELL+ ;
 : .pt ( point -- ) dup pt>x @ . pt>y @ . ;    \ or for this simple structure, 2@ . .
@@ -1703,7 +1706,8 @@ Point(x=3, y=4)
 
 In Lasso, a point could just be stored in the pair type. However, assuming we want to be able to access the points using the member methods [Point->x] and [Point->y], let's just create a type that inherits from the pair type:
 
-```lasso>define Point =
+```lasso
+define Point =
  type {
     parent pair
 
@@ -2026,7 +2030,9 @@ newPoint = myPoint x:3 y:4
 
 In practice however, you'd use MAX's built in Point2 type
 
-```maxscript>newPoint = Point2 3 4</lang
+```maxscript
+newPoint = Point2 3 4
+```
 
 
 =={{header|Modula-2}}==
@@ -2737,7 +2743,8 @@ pseudo_object = {'x': 1, 'y': 2}
 As of Python 2.6 one can use the ''collections.namedtuple'' factory to create classes which associate field names with elements of a tuple.  This allows one to perform all normal operations on the contained tuples (access by indices or slices, packing and unpacking) while also allowing elements to be accessed by name.
 
 
-```python>>>
+```python
+>>
  from collections import namedtuple
 >>> help(namedtuple)
 Help on function namedtuple in module collections:
@@ -2922,7 +2929,8 @@ fn main() {
 
 These are basically just named tuples.
 
-```rust>struct Point<T
+```rust
+struct Point<T
 (T, T);
 fn main() {
     let p = Point(1.0, 2.5);
@@ -3319,7 +3327,9 @@ echo ${point.x} ${point.y}
 
 A record type with two untyped fields named <code>x</code> and <code>y</code> can be declared like this.
 
-```Ursala>point :: x y</lang
+```ursala
+point :: x y
+```
 
 A constant instance of the record can be declared like this.
 
@@ -3447,7 +3457,8 @@ Attributes are often used for simple values. This is how a point might be repres
 
 More complex, multivariate, and nested data structures can be represented using child nodes.
 
-```xml><circle
+```xml
+<circle>
 
   <point>
     <x>20</x>

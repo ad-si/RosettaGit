@@ -1124,7 +1124,9 @@ In DM, all "classes" are part of the "object tree". Instance variables, procs (f
 Adding elements (procs, variables, classes) to this tree is done by defining the name and such.
 
 
-```DM>s</lang
+```DM
+s>
+```
 
 
 This declares a type "/s" at the root of the tree, which can now be instantiated.
@@ -1687,12 +1689,16 @@ Declare a class
 
 Allocate a static object
 
-```forth>MyClass newInstance</lang
+```forth
+MyClass newInstance
+```
 
 
 Allocate a dynamic object, saving its pointer in a global variable.
 
-```forth>New> MyClass  value newInstance</lang
+```forth
+New> MyClass  value newInstance
+```
 
 
 Call member functions
@@ -2981,7 +2987,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  myClass = GenericClass(3)
 3.000000
 >> myClass = setValue(myClass,pi)
@@ -3048,7 +3055,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  myClass = GenericClass2(3)
 3.000000
 >> setValue(myClass,pi)

@@ -350,7 +350,9 @@ STACKLEN EQU    *-STACK
 ```
 
 {{out}}
-<pre style="height:20ex">
+
+```txt
+
 Ackermann( 0, 0) =            1
 Ackermann( 0, 1) =            2
 Ackermann( 0, 2) =            3
@@ -3342,7 +3344,9 @@ DYNASM AckermannA(m AS INTEGER, n AS INTEGER) AS INTEGER
 
 ```
 
-```qbasic>END DYNASM</lang
+```qbasic
+END DYNASM
+```
 
 
 {{out}}
@@ -5005,7 +5009,9 @@ A(4,1)
 
 {{out}}
 
-```sh>65533</lang
+```sh
+65533
+```
 
 
 
@@ -5495,7 +5501,9 @@ end proc:
 ```
 
 In Maple, the keyword
-```Maple>thisproc</lang
+```maple
+thisproc
+```
  refers to the currently executing procedure (closure) and is used when writing recursive procedures.  (You could also use the name of the procedure, Ackermann in this case, but then a concurrently executing task or thread could re-assign that name while the recursive procedure is executing, resulting in an incorrect result.)
 
 To make this faster, you can use known expansions for small values of <math>m</math>. (See [[wp:Ackermann_function|Wikipedia:Ackermann function]])
@@ -7805,7 +7813,8 @@ Debug Ackermann(3,4)
 ## Purity
 
 
-```Purity>data Iter = f =
+```purity
+data Iter = f =
  FoldNat <const $f One, $f>
 data Ackermann = FoldNat <const Succ, Iter>
 ```
@@ -7839,7 +7848,8 @@ def ack2(M, N):
 
 {{out|Example of use}}
 
-```python>>>
+```python
+>>
  import sys
 >>> sys.setrecursionlimit(3000)
 >>> ack1(0,0)
@@ -7955,7 +7965,9 @@ ackermann: procedure expose calls                /*compute value of Ackermann fu
 ```
 
 '''output'''
-<pre style="height:60ex">
+
+```txt
+
 Ackermann(0, 0)=                       1              calls=                       1
 Ackermann(0, 1)=                       2              calls=                       1
 Ackermann(0, 2)=                       3              calls=                       1
@@ -8062,7 +8074,9 @@ ackermann: procedure expose calls                /*compute value of Ackermann fu
 ```
 
 '''output'''
-<pre style="height:60ex">
+
+```txt
+
 Ackermann(0, 0)=                       1              calls=         1
 Ackermann(0, 1)=                       2              calls=         1
 Ackermann(0, 2)=                       3              calls=         1
@@ -8192,7 +8206,9 @@ ackermann: procedure expose calls                /*compute value of Ackermann fu
 Output note:   none of the numbers shown below use recursion to compute.
 
 '''output'''
-<pre style="height:60ex">
+
+```txt
+
 Ackermann(0, 0)=                       1              calls=         1
 Ackermann(0, 1)=                       2              calls=         1
 Ackermann(0, 2)=                       3              calls=         1
@@ -8611,7 +8627,9 @@ end
 ```
 
 {{out}}
-<pre style="height:20ex">ackermann(0,0)=1  calls=1
+
+```txt
+ackermann(0,0)=1  calls=1
 ackermann(0,1)=2  calls=1
 ackermann(0,2)=3  calls=1
 ackermann(0,3)=4  calls=1
@@ -9163,8 +9181,8 @@ But even with all this, you still run into problems calculating <math>\mathit{ac
 
 ## TSE SAL
 
-
-```TSESAL>// library: math: get: ackermann: recursive <description></description> <version>1.0.0.0.5</version> <version control></version control
+```TSESAL
+// library: math: get: ackermann: recursive <description></description> <version>1.0.0.0.5</version> <version control></version control>
  (filenamemacro=getmaare.s) [kn, ri, tu, 27-12-2011 14:46:59]
 INTEGER PROC FNMathGetAckermannRecursiveI( INTEGER mI, INTEGER nI )
  IF ( mI == 0 )
@@ -9186,7 +9204,7 @@ END
 ```
 
 
-=={{header|TI-83 BASIC}}==
+## TI-83 BASIC
 
 This program assumes the variables N and M are the arguments of the function, and that the list L1 is empty. It stores the result in the system variable ANS. (Program names can be no longer than 8 characters, so I had to truncate the function's name.)
 
@@ -9550,7 +9568,9 @@ End Function 'ackermann
 ```
 
 {{Out}}
-<pre style="height:20ex">ackermann( 0 , 0 )= 1       calls= 1
+
+```txt
+ackermann( 0 , 0 )= 1       calls= 1
 ackermann( 0 , 1 )= 2       calls= 1
 ackermann( 0 , 2 )= 3       calls= 1
 ackermann( 0 , 3 )= 4       calls= 1
@@ -9633,7 +9653,8 @@ def (ackermann m n)
 ## WDTE
 
 
-```WDTE>let memo a m n =
+```WDTE
+let memo a m n =
  true {
 	== m 0 => + n 1;
 	== n 0 => a (- m 1) 1;

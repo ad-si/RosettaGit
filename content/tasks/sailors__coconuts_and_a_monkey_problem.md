@@ -186,7 +186,8 @@ sys     0m0.062s
 This is a translation of the second C solution. The output lists the number of sailors, the size of the original pile, and the final share each sailor receives the following morning.
 
 
-```befunge>>2+:01p9
+```befunge
+>2+:01p9>
 `#@_00v
 nvg10*g10:+>#1$<
 #>\:01g1-%#^_:0v

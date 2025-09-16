@@ -1063,7 +1063,7 @@ Rectangle.cut(3, 4) |> length |> IO.puts
 ```
 
 
-<pre style="height:64ex;overflow:scroll">
+```txt
 +---+---+
 |       |
 +---+---+
@@ -2872,7 +2872,7 @@ puts rec.cut.size
 ```
 
 
-<pre style="height:64ex;overflow:scroll">
+```txt
 +---+---+
 |   |   |
 +   +   +
@@ -2956,7 +2956,6 @@ puts rec.cut.size
 ## Rust
 
 ```rust
-
 fn cwalk(mut vis: &mut Vec<Vec<bool>>, count: &mut isize, w: usize, h: usize, y: usize, x: usize, d: usize) {
     if x == 0 || y == 0 || x == w || y == h {
         *count += 1;

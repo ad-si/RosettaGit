@@ -423,7 +423,9 @@ on mReturn(f)
 end mReturn
 ```
 
-```AppleScript>1.643934566682</lang
+```AppleScript
+1.643934566682>
+```
 
 
 
@@ -1504,7 +1506,9 @@ REAL :: a(1000)
 ```
 
 
-```hicest>1.643934566681561</lang
+```hicest
+1.643934566681561>
+```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
@@ -1656,7 +1660,9 @@ or, in a functional idiom:
 ```
 
 
-```JavaScript>1.6439345666815615</lang
+```javascript
+1.6439345666815615>
+```
 
 
 
@@ -1690,7 +1696,9 @@ or, in a functional idiom:
 })();
 ```
 
-```JavaScript>1.6439345666815615</lang
+```javascript
+1.6439345666815615>
+```
 
 
 
@@ -1758,7 +1766,8 @@ sum(1, 1000, function(x) { return 1/(x*x); } ) ==> 1.643934566681561
 Using a higher-order function:
 
 
-```Julia>julia
+```julia
+julia>
  sum(k -> 1/k^2, 1:1000)
 1.643934566681559
 
@@ -1771,7 +1780,8 @@ julia> pi^2/6
 A simple loop is more optimized:
 
 
-```Julia>julia
+```julia
+julia>
  function f(n)
     s = 0.0
     for k = 1:n
@@ -1979,7 +1989,8 @@ print(sum)
 ## Lucid
 
 
-```lucid>series = ssum asa  n
+```lucid
+series = ssum asa  n>
 = 1000
    where
          num = 1 fby num + 1;
@@ -3361,7 +3372,8 @@ run;
 ## Scala
 
 
-```scala>scala
+```scala
+scala>
  1 to 1000 map (x => 1.0 / (x * x)) sum
 res30: Double = 1.6439345666815615
 ```
@@ -3829,7 +3841,8 @@ End Sub
 ## WDTE
 
 
-```WDTE>let s =
+```wdte
+let s =>
  import 'stream';
 
 s.range 1 1001

@@ -2165,7 +2165,6 @@ int main( int argc, char* argv[] ) {
 
 
 ```txt
-
 +----+----+----+----+
 | 11 |  5 | 12 |  3 |
 +----+----+----+----+
@@ -2177,17 +2176,15 @@ int main( int argc, char* argv[] ) {
 +----+----+----+----+
 
 Possible moves: 2 13 14 7
-
 ```
-
 
 
 ## COBOL
 
 Tested with GnuCOBOL
 
-
-```cobol>         >
+```cobol
+         >
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 *> This is GNUCOBOL 2.0

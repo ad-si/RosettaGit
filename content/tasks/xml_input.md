@@ -90,7 +90,8 @@ languages = [
 Given the following XML fragment, extract the list of ''student names'' using whatever means desired. If the only viable method is to use XPath, refer the reader to the task [[XML and XPath]].
 
 
-```xml><Students
+```xml
+<Students>
 
   <Student Name="April" Gender="F" DateOfBirth="1989-01-02" />
   <Student Name="Bob" Gender="M"  DateOfBirth="1990-03-04" />
@@ -3154,7 +3155,8 @@ public void getNames(loc a){
 
 Output:
 
-```rascal>rascal
+```rascal
+rascal>
 getNames(|file:///Users/.../Desktop/xmlinput.xml|)
 April
 Bob
@@ -3660,7 +3662,8 @@ with very little code, which doesn't actually understand XML.
 The name Émily is properly converted from the HTML/XML escape syntax.
 
 
-```txr><Students
+```txr
+<Students>
 
 @(collect :vars (NAME GENDER YEAR MONTH DAY (PET_TYPE "none") (PET_NAME "")))
 @  (cases)
@@ -3792,7 +3795,8 @@ Dave
 ## Visual Basic .NET
 
 
-```vbnet>Dim xml = <Students
+```vbnet
+Dim xml = <Students>
 
               <Student Name="April"/>
               <Student Name="Bob"/>

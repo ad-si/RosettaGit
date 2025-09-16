@@ -1155,7 +1155,8 @@ Checkit
 ```
 
 
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 P3
 # Created using M2000 Interpreter
 10 10

@@ -64,13 +64,17 @@ languages = [
 In traditional syntax conditional expressions are usually shown before the action within a statement or code block:
 
 
-```pseudocode> IF raining=true THEN needumbrella=true </lang
+```pseudocode
+ IF raining=true THEN needumbrella=true
+```
 
 
 In inverted syntax, the action is listed before the conditional expression in the statement or code block:
 
 
-```pseudocode> needumbrella=true IF raining=true </lang
+```pseudocode
+ needumbrella=true IF raining=true
+```
 
 
 '''Inverted syntax with assignment'''
@@ -78,12 +82,16 @@ In inverted syntax, the action is listed before the conditional expression in th
 In traditional syntax, assignments are usually expressed with the variable appearing before the expression:
 
 
-```pseudocode> a = 6</lang
+```pseudocode
+ a = 6
+```
 
 
 In inverted syntax, the expression appears before the variable:
 
-```pseudocode> 6 = a</lang
+```pseudocode
+ 6 = a
+```
 
 
 '''Task'''
@@ -240,7 +248,7 @@ To make lint happy you need a /*FALLTHROUGH*/ before the case 0 (in the macro).
 
 ## C++
 
-Though rarely, if ever, used in practice, user-defined class types can have inverted syntax with assignment. 
+Though rarely, if ever, used in practice, user-defined class types can have inverted syntax with assignment.
 
 ```cpp
 class invertedAssign {
@@ -498,7 +506,7 @@ MACRO: pre ( quot -- quot ) reverse ;
 ```
 
 
-Of course, this isn't true prefix because <code>+</code> retains its arity of <tt>2</tt>:  
+Of course, this isn't true prefix because <code>+</code> retains its arity of <tt>2</tt>:
 
 
 ```factor
@@ -540,9 +548,9 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 Leaving aside those who think that Fortran is inherently backward, assignment in Fortran is firmly right-to-left in the form <code>''variable'' = ''expression''</code> where the ''expression'' is computed in accordance with the precedence rules and the resulting value is assigned to the ''variable''.
 
-However, assignment-style constructions appear inside the INQUIRE statement as in 
+However, assignment-style constructions appear inside the INQUIRE statement as in
 ```Fortran
-      INQUIRE(FILE = FILENAME(1:L), EXIST = MAYBE, ERR = 666, IOSTAT = RESULT) 
+      INQUIRE(FILE = FILENAME(1:L), EXIST = MAYBE, ERR = 666, IOSTAT = RESULT)
 ```
 
 Here, a logical variable MAYBE is to receive the value of whether or not the disc file named in FILENAME(1:L) exists, and integer variable RESULT contains an error code, zero if all went well - the file name may not be correctly formed, for example. Thus, FILE is receiving a value right-to-left on entry to the statement, while MAYBE and RESULT receive values left-to-right on exit from the statement. Despite appearances, <code>ERR = 666</code> is not an assignment statement; 666 is not an integer, it is a statement label to which execution will jump should an error arise. Similar arrangements apply for the file OPEN and CLOSE statements.
@@ -564,7 +572,7 @@ The nearest we can get is to define macros which reverse the order of the argume
 
 Dim As Boolean needUmbrella = False, raining = True
 ThenIf(needUmbrella = True, raining = True)
-Print "needUmbrella = "; needUmbrella 
+Print "needUmbrella = "; needUmbrella
 
 Dim As Integer b = 0, a = 3
 InvertAssign(a, b)
@@ -638,7 +646,8 @@ Because Haskell is an expression-based pure functional language, this cannot be 
 However, for the common case where you want to perform a certain action only when some condition holds, you can define a simple binary operator:
 
 
-```Haskell>when :: Monad m =
+```haskell
+when :: Monad m =
  m () -> Bool -> m ()
 action `when` condition = if condition then action else return ()
 
@@ -653,7 +662,7 @@ Example usage:
 Prelude> putStrLn "It's true." `when` False
 Prelude> putStrLn "It's true." `when` True
 It's true.
-Prelude> 
+Prelude>
 
 ```
 
@@ -704,7 +713,7 @@ Note also that simple, regular iteration without control structures is fundament
 
 ## Java
 
-The closest Java comes to placing an action before a condition is with 
+The closest Java comes to placing an action before a condition is with
 ```txt
 do ... while(condition);
 ```
@@ -719,7 +728,7 @@ jq's syntax for associating a value with a variable is "inverted": the expressio
 v as $x
 ```
 
-Note, however, that there is limited support for the conventional "target = value" syntax in the context of JSON objects and arrays, but the semantics is purely functional. 
+Note, however, that there is limited support for the conventional "target = value" syntax in the context of JSON objects and arrays, but the semantics is purely functional.
 
 For example, if o is {"a": 1}, then the expression:
 
@@ -749,7 +758,7 @@ end
 
 ## Kotlin
 
-Kotlin can get close to an inverted 'if' syntax by defining an infix function - 'iif' say. However, there doesn't appear to be a way to mimic inverted assignment. 
+Kotlin can get close to an inverted 'if' syntax by defining an infix function - 'iif' say. However, there doesn't appear to be a way to mimic inverted assignment.
 
 ```scala
 // version 1.0.6
@@ -826,7 +835,7 @@ Module ExecCond {
       if cond then call callback()
 }
 x=1
-\\ this aa() is a function but when we call it after transforming from Lazy$() 
+\\ this aa() is a function but when we call it after transforming from Lazy$()
 \\ act as part of module so we see x, and alter it
 Function aa {
       x++
@@ -841,7 +850,7 @@ Print x=2
 
 ## m4
 
-We [[extend your language|extend our language]] with a new macro, <code>thenif</code>, 
+We [[extend your language|extend our language]] with a new macro, <code>thenif</code>,
 to invert the arguments to the builtin macro, <code>ifelse</code>.
 
 
@@ -855,7 +864,7 @@ thenif(math is broken, eval(23 > 5), 0)
 ```
 
 
-This example outputs these four lines. 
+This example outputs these four lines.
 Math was not broken, so two lines are empty.
 
 
@@ -891,8 +900,8 @@ Inversion of syntax:
 
 ```txt
 Unprotect["="]; SetAttributes[Set2, HoldAll]; Set2[a_, b_] := Set[b, a]
-<< Notation`; Notation[ParsedBoxWrapper[RowBox[{"x_", "=","y_"}]] 
-\[DoubleLongLeftRightArrow] 
+<< Notation`; Notation[ParsedBoxWrapper[RowBox[{"x_", "=","y_"}]]
+\[DoubleLongLeftRightArrow]
 ParsedBoxWrapper[RowBox[{" ", RowBox[{"Set2", "[", RowBox[{"x_", ",", "y_"}], "]"}]}]]]
 
 2 = c
@@ -927,8 +936,8 @@ Therefore it can be done both ways.
 ## Mercury
 
 
-For Mercury, order rarely matters.  
-Just as programmers in most languages take care to order their function definitions or their method definitions for clarity and emphasis, while knowing that it's all the same to the compiler, Mercury programmers can do this also in the bodies of functions.  
+For Mercury, order rarely matters.
+Just as programmers in most languages take care to order their function definitions or their method definitions for clarity and emphasis, while knowing that it's all the same to the compiler, Mercury programmers can do this also in the bodies of functions.
 
 These two clauses are exactly the same:
 
@@ -974,8 +983,8 @@ main(!IO) :-
 ```
 
 
-The io.write_string/2's in the first example could be written in either order and the result would be the same, as the "world!\n" can't be written until the "Hello, " provides the IO1.  
-Order matters in the second example, however, as it uses [http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables state variables].  
+The io.write_string/2's in the first example could be written in either order and the result would be the same, as the "world!\n" can't be written until the "Hello, " provides the IO1.
+Order matters in the second example, however, as it uses [http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables state variables].
 The order is still enforced by a data dependency, so
 
 
@@ -1104,7 +1113,7 @@ print 'Huh! You Guessed Wrong!' unless $guess == 6;              # Inverted synt
 ```
 
 
-Inverted syntax can also be used with the ternary operator. 
+Inverted syntax can also be used with the ternary operator.
 However this may produce different results to the traditional syntax form because when inverted syntax is used, we are effectively making an assignment to a ternary expression. so in the following example code, instead of the assignment being made to variable a (as it is in the traditional syntax form), the inverted syntax form will cause assignment to be made to either b or c, depending on value of the ok variable:
 
 
@@ -1155,7 +1164,7 @@ for 1..10 { .say if $_ %% 2 }
 ```
 
 
-Perl 6 has a system of metaoperators that modify the characteristics of normal operators.  Among these is the <tt>R</tt> metaoperator, which is able to reverse the arguments of most infix operators (including user-defined ones).  
+Perl 6 has a system of metaoperators that modify the characteristics of normal operators.  Among these is the <tt>R</tt> metaoperator, which is able to reverse the arguments of most infix operators (including user-defined ones).
 So a reversed assignment is easy to write:
 
 ```perl6
@@ -1199,7 +1208,7 @@ repeat until my $answer ~~ 42 {
 }
 ```
 
-This would require a prior declaration (and two extra semicolons, horrors) 
+This would require a prior declaration (and two extra semicolons, horrors)
 if written in the non-inverted form with the conditional at the bottom:
 
 ```perl6
@@ -1218,15 +1227,15 @@ original... the got still you've as long as ,itself compile/run to used be can T
 
 ```Phix
 if end
-(&"test.exw"[1]cl)system    
+(&"test.exw"[1]cl)system
 then >2(cl)length if
 (&"\n"(pgm)mung,"test.exw")write_file = {}
 write_file.e include
 ([$]cl)get_text = pgm string
 ()command_line = cl sequence
 function end
-("\n",lines)join return    
-for end (nup,rip,((([i]lines)split)reverse)join)substitute_all = [i]lines do (lines)length to 1=i for    
+("\n",lines)join return
+for end (nup,rip,((([i]lines)split)reverse)join)substitute_all = [i]lines do (lines)length to 1=i for
 (("\r\n",(rip,pun,pgm)substitute_all)split)reverse=lines sequence
 (pgm string)mung function
 
@@ -1355,7 +1364,9 @@ true .
 ## Python
 
 
-```python>x = truevalue if condition else falsevalue</lang
+```python
+x = truevalue if condition else falsevalue
+```
 
 
 
@@ -1436,7 +1447,7 @@ print("Wow! Lucky Guess!") %if% (guess==6)
 ## Racket
 
 
-Normally, all syntactic forms and functions are in prefix notation. 
+Normally, all syntactic forms and functions are in prefix notation.
 However, two <tt>.</tt>s allow infix notation in some cases.
 
 
@@ -1493,9 +1504,9 @@ zz=444 / (7-a)
 
 ## Ruby
 
-Ruby takes, from Perl, the idea of a ''statement modifier''. 
-This looks like <code>''statement'' if ''condition''</code> and appends a condition to some statement. 
-This example shows how to invert <code>if</code>, <code>unless</code>, <code>while</code> and <code>until</code>. 
+Ruby takes, from Perl, the idea of a ''statement modifier''.
+This looks like <code>''statement'' if ''condition''</code> and appends a condition to some statement.
+This example shows how to invert <code>if</code>, <code>unless</code>, <code>while</code> and <code>until</code>.
 These always check the condition ''before'' running the statement.
 
 
@@ -1520,7 +1531,7 @@ puts ary.shift until ary.empty?
 
 One can also modify a compound statement, as in <code>(warn "cannot fork"; exit 1) unless Process.respond_to? :fork</code>.
 
-''Beware:'' The forms <code>begin ... end while ...</code> and <code>begin ... end until ...</code> have a different meaning to Ruby. 
+''Beware:'' The forms <code>begin ... end while ...</code> and <code>begin ... end until ...</code> have a different meaning to Ruby.
 These forms check the condition ''after'' each iteration, so they run the loop at least once. [[Loops/Do-while#Ruby]] has more information.
 
 
@@ -1618,7 +1629,7 @@ namespace eval ::control {
 
 	#
 	# Implements a "do body while|until test" loop
-	# 
+	#
 	# It is almost as fast as builtin "while" command for loops with
 	# more than just a few iterations.
 	#
@@ -1675,7 +1686,7 @@ namespace eval ::control {
 		-errorcode $::errorCode -code error $result
 	}
 	return -code $code $result
-	
+
     }
 }
 
@@ -1686,7 +1697,7 @@ control::do {set i 0; puts "hello world"; incr i} until {$i > 0}
 ```
 
 
-A more radical and probably ill-advised approach is to use the above 
+A more radical and probably ill-advised approach is to use the above
 and modify the default tcl unknown procedure along these lines:
 
 
@@ -1737,9 +1748,9 @@ The <code>~</code> operator reverse the arguments of the next operator.
 
 ## zkl
 
-zkl is a OO language so the preferred style is object.method().method()... 
-When a computation needs to be done first, the compose op (colon) can be used maintain the "noun/verb/verb" flow: f() : ... 
-It is also useful to "unwind" computations so they are easier to read 
+zkl is a OO language so the preferred style is object.method().method()...
+When a computation needs to be done first, the compose op (colon) can be used maintain the "noun/verb/verb" flow: f() : ...
+It is also useful to "unwind" computations so they are easier to read
 but not require any temp vars.
 
 ```zkl
@@ -1755,7 +1766,7 @@ a := 6
 
 
 ```zkl
-key.sort(fcn(kv,kv2){kv[0] < kv2[0]}) : listUnzip(_) : 
+key.sort(fcn(kv,kv2){kv[0] < kv2[0]}) : listUnzip(_) :
 D.SD((_).xplode()) : return(_);
 ```
 

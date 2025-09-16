@@ -128,7 +128,9 @@ Function names (which are also labels) are global in Axe. They can be accessed f
 
 Line numbers are used instead of labels. These are also immediately accessible as soon as the line is entered, even if the program is not run:
 
-```basic>GOTO 50: REM THIS WILL WORK IMMEDIATELY</lang
+```basic
+GOTO 50: REM THIS WILL WORK IMMEDIATELY>
+```
 
 The visibility of functions depends on the implementation. Most versions of basic will allow a function to be referenced from a point in the code prior to its definition. However, other implementations may require the function definition to be run, before it can be used:
 
@@ -147,21 +149,21 @@ The visibility of functions depends on the implementation. Most versions of basi
 
 ## bc
 
-Functions have global scope and must be defined before usage. 
-A defined function can be replaced with a newer definition later in the file. 
+Functions have global scope and must be defined before usage.
+A defined function can be replaced with a newer definition later in the file.
 Recursive calls are possible because function are considered as defined within their own body.
 
 There are no labels in bc.
 
 
 ```bc
-f(1)              /* First output line */ 
+f(1)              /* First output line */
 define f(x) {
     return(x)
 }
 f(3)              /* Second output line */
 
-define f(x) {       
+define f(x) {
     return(x - 1)
 }
 f(3)              /* Third output line */
@@ -202,7 +204,7 @@ int main(void)
 	printf("Enter a number: ");
 	if (scanf("%d", &x) != 1)
 		return 0;
-	
+
 	switch (x % 2) {
 	default:
 		printf("Case labels in switch statements have scope local to the switch block.\n");
@@ -215,11 +217,11 @@ int main(void)
 		goto sayhello;
 	jumpin:
 		printf("2 times %d is %d, which was computed by a function defined in this file. It has global scope within the translation unit.\n", x, twice(x));
-		printf("Since you jumped in, you will now be greeted, again!\n"); 
+		printf("Since you jumped in, you will now be greeted, again!\n");
 	sayhello:
 		greet;
 		if (x == -1)
-			goto scram;   
+			goto scram;
 		break;
 	}
 
@@ -227,7 +229,7 @@ int main(void)
 
 	if (x != -1) {
 		x = -1;   /* To break goto infinite loop. */
-	 	goto jumpin;  
+	 	goto jumpin;
 	}
 
 scram:
@@ -423,7 +425,7 @@ y:
 
 ## haskell
 
-Functions are considered global in haskell and can be referenced in the sections of code appearing before the function definition. The following code illustrates the same. add2 was declared after add3 and used in add3. The variables x,y and z are local to the function. 
+Functions are considered global in haskell and can be referenced in the sections of code appearing before the function definition. The following code illustrates the same. add2 was declared after add3 and used in add3. The variables x,y and z are local to the function.
 
 
 ```haskell
@@ -460,11 +462,11 @@ getSquaredSum x y = g x + h y
 ```
 
 ```txt
- 
+
 ghci> getSquaredSum 3 4
 25
 ghci>h 4
-<interactive>: 115:1:error: 
+<interactive>: 115:1:error:
 Variable not in scope: h :: Integer -> t
 
 ```
@@ -490,16 +492,20 @@ Specifically, J provides two scopes for user defined names:
 '''Local''' scope, names defined using =. will have local scope if a block scope exists.
 
 
-```j>   a=. 1</lang
+```j
+   a=. 1
+```
 
 
 '''Locale''' scope, names defined using =: will have locale scope (and the '''base''' locale is used by default).
 
 
-```j>   b=: 2</lang
+```j
+   b=: 2
+```
 
 
-Names may include a locale qualifier. A locative is a qualified name. Locale qualifiers contain two '''_''' characters, are a suffix on what would be the unqualified name. Locale qualifiers come in two forms: absolute and relative. Relative locale qualifiers use another name in the current locale to identify the target locale. Absolute locatives place the locale name between the two '''_''' characters, while relative locatives name the locale reference following the pair of '''_''' characters. 
+Names may include a locale qualifier. A locative is a qualified name. Locale qualifiers contain two '''_''' characters, are a suffix on what would be the unqualified name. Locale qualifiers come in two forms: absolute and relative. Relative locale qualifiers use another name in the current locale to identify the target locale. Absolute locatives place the locale name between the two '''_''' characters, while relative locatives name the locale reference following the pair of '''_''' characters.
 
 
 ```j
@@ -564,11 +570,11 @@ Labels are available in explicit definitions, and are names beginning with '''la
 
 ## jq
 
-jq is scoped lexically.  
+jq is scoped lexically.
 
 A function can only be called within its definition or following it, it being understood that functions can in effect be passed by name as parameters to other functions.
 
-A further restriction is that inner functions are invisible outside their enclosing function, an inner function being one which is defined within the body of another.  
+A further restriction is that inner functions are invisible outside their enclosing function, an inner function being one which is defined within the body of another.
 
 A function that is not defined within an inner function
 will be called a top-level function.  The lowest-level function in
@@ -576,7 +582,7 @@ which an inner function is defined will be called its enclosing
 function.
 
 If more than one outer function has the same name, then the last
-definition effectively overwrites the first, at least as far as subsequent invocations are concerned.  
+definition effectively overwrites the first, at least as far as subsequent invocations are concerned.
 
 A similar rule applies to two inner functions defined within the same enclosing function. Otherwise, inner functions of the same
 name can co-exist.  In particular, a function named NAME may define an inner function of the same name.  For example:
@@ -652,11 +658,11 @@ Functions declared within a class support four levels of visibility:
 
 2. internal - visible anywhere within the same module that its class is visible.
 
-3. protected - visible only inside its class or any sub-classes thereof. 
+3. protected - visible only inside its class or any sub-classes thereof.
 
 4. private - visible only inside its class.
 
-Functions declared within an object (i.e. a singleton class) support the same levels of visibility as a normal class except for 'protected'. 
+Functions declared within an object (i.e. a singleton class) support the same levels of visibility as a normal class except for 'protected'.
 
 Functions declared within an interface are usually public but can be private if they have a body.
 
@@ -665,7 +671,7 @@ Functions declared within another function do not have any visibility modifiers 
 
 In Kotlin any expression can be marked with a label (an identifier followed by an @ sign). Currently, they are used with the 'break', 'continue' or 'return' keywords - to break out of the labelled loop, to continue with the next iteration of the labelled loop or to return from a labelled lambda expression, respectively.
 
-Such labels are in scope from their point of declaration to the end of the corresponding block. 
+Such labels are in scope from their point of declaration to the end of the corresponding block.
 
 Labels can also be used with the 'this' keyword to distinguish between different outer scopes (classes or function receivers) where there is more than one to choose from.
 
@@ -684,7 +690,7 @@ object B {
 
 open class C {
     // class level function visible everywhere, by default
-    fun g() = println("calling g") 
+    fun g() = println("calling g")
 
     // class level function only visible within C
     private fun h() = println("calling h")
@@ -713,7 +719,7 @@ interface E {
         println("calling m")
     }
 }
-     
+
 fun main(args: Array<String>) {
     a()    // OK as a is internal
     B.f()  // OK as f is public
@@ -727,7 +733,7 @@ fun main(args: Array<String>) {
             for (j in 1..3) {
                 if (i == 3) break@outer    // jumps out of outer loop
                 if (j == 2) continue@outer // continues with next iteration of outer loop
-                println ("i = $i, j = $j") 
+                println ("i = $i, j = $j")
             }
             if (i > 1) println ("i = $i")  // never executed
         }
@@ -736,7 +742,7 @@ fun main(args: Array<String>) {
         println("n = $n")  // never executed
     }
     l()  // invokes lambda
-    println("Good-bye!")   // will be executed 
+    println("Good-bye!")   // will be executed
 }
 ```
 
@@ -790,7 +796,7 @@ logger('D');
 }
 
 logger('E');
-sub logger { 
+sub logger {
    print shift . ": This thought intentionally left blank.\n"      # routine for 'main' package
 };
 ```
@@ -811,13 +817,13 @@ First a little hand-wavey exposition. The lines are rather blurry in Perl 6 betw
 
 Methods don't have a separate scope from the object they are attached to. If the object is in scope, the method will be.
 
-A subroutine is really just another type of object. It has a code reference and has ROUTINE semantics attached to it. The same holds for operators. Operators are really just subroutines with a funny calling convention. That being the case, scoping for subroutines very closely follows scoping rules for any other Perl 6 variable type. 
+A subroutine is really just another type of object. It has a code reference and has ROUTINE semantics attached to it. The same holds for operators. Operators are really just subroutines with a funny calling convention. That being the case, scoping for subroutines very closely follows scoping rules for any other Perl 6 variable type.
 
-In general, subroutines are "my" variables by default (if you don't specify, the "my" is implicit), meaning scoping is lexical to the enclosing block and flows inward. A subroutine defined within a block will be visible to everything inside that block, even other blocks within that block. However, any inner block can define its own subroutine with the same name and that will be used in preference to the routine from an outer block. That implies you can easily override / redefine core functions from the Perl 6 setting. The setting is the collection of built in functions supplied by Perl 6, typically and somewhat incongruously referred to as "CORE" even though technically it is the outermost scope. ( SKIN? BARK? CRUST? ... oooo! EXOSKELETON! :-) ) 
+In general, subroutines are "my" variables by default (if you don't specify, the "my" is implicit), meaning scoping is lexical to the enclosing block and flows inward. A subroutine defined within a block will be visible to everything inside that block, even other blocks within that block. However, any inner block can define its own subroutine with the same name and that will be used in preference to the routine from an outer block. That implies you can easily override / redefine core functions from the Perl 6 setting. The setting is the collection of built in functions supplied by Perl 6, typically and somewhat incongruously referred to as "CORE" even though technically it is the outermost scope. ( SKIN? BARK? CRUST? ... oooo! EXOSKELETON! :-) )
 
 Alternately, subroutines may be declared as an "our" variable making it a package global, visible anywhere in the packages' namespace. That is somewhat discouraged though as it pollutes the namespace and reduces the granularity of control.
 
-There are several ways to modify the relative scope of a subroutine (any item in the symbol table really) by adding modifiers to the name.  
+There are several ways to modify the relative scope of a subroutine (any item in the symbol table really) by adding modifiers to the name.
 
 ```txt
 
@@ -836,26 +842,26 @@ PARENT    # Symbols in this package's parent package (or lexical scope)
 say log();              # prints: outer
 
 # define a subroutine that overrides a CORE function
-sub log { 'outer' }; 
+sub log { 'outer' };
 {
     # redefine the subroutine in this block
     sub log { 'inner' };
     {
         # redefine the subroutine yet again
         sub log { 'way down inside' };
-        
+
         # call it within this block
         say log();                 # prints: way down inside
-        
+
         # call it from the block one level out
         say &OUTER::log();         # prints: inner
-        
+
         # call it from the block two levels out
         say &OUTER::OUTER::log();  # prints: outer
-        
+
         # call it from the outermost block
         say &UNIT::log();          # prints: outer
-        
+
         # call a subroutine that is post declared in outermost scope
         outersub()
     }
@@ -867,21 +873,21 @@ sub log { 'outer' };
     }
     # call it within this block
     say log();          # prints: inner
-    
+
     # call it from the block one level out
     say &OUTER::log();  # prints: outer
 }
 
-sub outersub{ 
+sub outersub{
     # call subroutine within this block - gets outer sub
     say log();          # prints: outer
-    
+
     # call subroutine from the scope of the callers block
     say &CALLER::log(); # prints: way down inside
-    
+
     # call subroutine from the outer scope of the callers block
     say &CALLER::OUTER::log(); # prints: inner
-    
+
     # call the original overridden CORE routine
     say &CORE::log(e);  # prints: 1 ( natural log of e )
 }
@@ -915,11 +921,11 @@ in which case they are globally accessible.
 
 ## PowerShell
 
-A function exists in the scope in which it was created. 
+A function exists in the scope in which it was created.
 
-If a function is part of a script, the function is available to statements within that script. By default, a function in a script is not       available at the command prompt. 
+If a function is part of a script, the function is available to statements within that script. By default, a function in a script is not       available at the command prompt.
 
-You can specify the scope of a function. For example, the function is added to the global scope in the following example: 
+You can specify the scope of a function. For example, the function is added to the global scope in the following example:
 
 ```PowerShell
 
@@ -1011,7 +1017,7 @@ Multiple labels (with the same name) are not considered an error in the REXX lan
 
 REXX comments may be added anywhere blanks can be used.
 
-Multiple labels may be specified on the same line with: 
+Multiple labels may be specified on the same line with:
 ::::: (optional blanks)
 ::: a REXX symbol
 ::::: (optional blanks)
@@ -1056,7 +1062,7 @@ sum = 8
 # Project : Scope/Function names and labels
 
 see "What is your name?" + nl
-give name 
+give name
 welcome(name)
 
 func welcome(name)
@@ -1088,7 +1094,7 @@ end
 puts "What is your name?"
 $name = STDIN.gets
 welcome($name)
-return 
+return
 ```
 
 '''output'''

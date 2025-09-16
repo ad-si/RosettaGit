@@ -228,7 +228,8 @@ end Test_C_Interface;
 
 There are two ways to call a <em>native</em> function in Aikido.  The first is to write a wrapper function in C++ that is invoked from the Aikido interpreter.  In a C++ file:
 
-```aikido>#include <aikido.h
+```aikido
+#include <aikido.h>
 
 extern "C" {       // need C linkage
 
@@ -1687,7 +1688,8 @@ checkit
 
 We can call strdup, as requested, in the following way
 
-```Maple>
+```maple
+
  strdup := define_external( strdup, s::string, RETURN::string, LIB = "/lib/libc.so.6" ):
 > strdup( "foo" );
                                  "foo"
@@ -1696,7 +1698,8 @@ We can call strdup, as requested, in the following way
 
 However, this doesn't make a lot of sense in Maple, since there can be only one copy of any Maple string in memory.  Moreover, I don't see any easy way to free the memory allocated by strdup.  A more sensible example for Maple follows.  (It might be sensible if you wanted to compare your system library version of sin with the one built-in to Maple, for instance.)
 
-```Maple>
+```maple
+
  csin := define_external( sin, s::float[8], RETURN::float[8], LIB = "libm.so" );
 csin := proc(s::numeric)
 option call_external, define_external(sin, s::float[8],
@@ -2251,7 +2254,8 @@ See [[Call_a_foreign-language_function#Delphi | Delphi]]
 
 Perl code calls a C function <code>c_dup()</code> passing a string <code>'Hello'</code> as an argument, which gets transparently converted to a C string, the <code>c_dup()</code> function makes a copy of that string using <code>strdup()</code> function, stores pointer to the copy in the <code>copy</code> variable and returns it. The returned <code>char</code> pointer gets converted transparently to a Perl string value and gets returned to the calling Perl code which prints it. Then the Perl code calls a C function <code>c_free()</code> to free the allocated memory. Both of the C functions are defined inline in the Perl program and are automatically compiled (only once, unless they change) and linked at runtime. Here is the entire program:
 
-```perl>use Inline C =
+```perl
+use Inline C =
  q{
     char *copy;
     char * c_dup(char *orig) {
@@ -2268,7 +2272,8 @@ c_free();
 
 Another example, instead of returning the copy to Perl code it prints it using C printf:
 
-```perl>use Inline C =
+```perl
+use Inline C =
  q{
     void c_hello (char *text) {
         char *copy = strdup(text);

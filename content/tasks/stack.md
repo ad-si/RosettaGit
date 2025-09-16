@@ -2500,7 +2500,8 @@ Note that as Erlang doesn't have mutable data structure (destructive updates), p
 
 The module is tested this way:
 
-```erlang>1
+```erlang
+1>
  c(stack).
 {ok,stack}
 2> Stack = stack:new().
@@ -3339,7 +3340,8 @@ public class Stack{
 }
 ```
 
-```java5>public class Stack<T
+```java5
+public class Stack<T>
 {
     private Node first = null;
     public boolean isEmpty(){
@@ -3988,7 +3990,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  myLIFO = LIFOQueue(1,'fish',2,'fish','red fish','blue fish')
 
 myLIFO =
@@ -5288,7 +5291,9 @@ while not stack.empty():
 
 You can write:
 
-```python>while stack:</lang
+```python
+while stack:>
+```
 
 Quick testing show that deque is about 5 times faster then the wrapper linked list implementations. This may be important if your stack is used in tight loops.
 
@@ -5702,7 +5707,8 @@ end
 
 
 
-```ruby>p s = Stack.new                 # =
+```ruby
+p s = Stack.new                 # =>
  Stack[]
 p s.empty?                      # => true
 p s.size                        # => 0
@@ -5835,7 +5841,8 @@ fn main() {
 
 Simply uses a singly-linked list.
 
-```rust>type Link<T> = Option<Box<Frame<T>>
+```rust
+type Link<T> = Option<Box<Frame<T>>>
 ;
 
 pub struct Stack<T> {
@@ -6247,7 +6254,8 @@ end
 An implementation of the <code>STACK</code> signature, using immutable lists.
 
 
-```sml>structure Stack :
+```sml
+structure Stack :>
  STACK =
 struct
     type 'a stack = 'a list
@@ -6282,7 +6290,8 @@ See [[Singly-linked list/Element definition#Stata]].
 
 Generic stack.
 
-```Swift>struct Stack<T
+```swift
+struct Stack<T>
  {
     var items = [T]()
     var empty:Bool {

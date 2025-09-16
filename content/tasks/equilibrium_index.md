@@ -1522,7 +1522,9 @@ equilibrium indicies of [ -7 1 5 2 -4 3 0 ] = 4 7
 ## J
 
 
-```j>equilidx=: +/\ I.@:= +/\.</lang
+```j
+equilidx=: +/\ I.@:= +/\.
+```
 
 ```j
    equilidx _7 1 5 2 _4 3 0
@@ -1869,7 +1871,8 @@ function indicies = equilibriumIndex(list)
 end
 ```
 
-```MATLAB>>
+```matlab
+>
  equilibriumIndex([-7 1 5 2 -4 3 0])
 
 ans =

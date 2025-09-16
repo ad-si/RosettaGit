@@ -548,7 +548,8 @@ sorted by value: -2 0 1 2 3 4 5 6 7 8 9 10 12
 First, we construct a list-of-maps and assign it to variable baz. Next, we sort baz by key "foo" and assign it to variable bop. Finally, we lookup "foo" in each map in list bop and display the resulting list of numbers - they are in sorted order.
 
 
-```babel>babel
+```babel
+babel>
  baz ([map "foo" 3 "bar" 17] [map "foo" 4 "bar" 18] [map "foo" 5 "bar" 19] [map "foo" 0 "bar" 20]) <
 babel> bop baz { <- "foo" lumap ! -> "foo" lumap ! lt? } lssort ! <
 babel> bop {"foo" lumap !} over ! lsnum !
@@ -559,7 +560,8 @@ babel> bop {"foo" lumap !} over ! lsnum !
 The same technique works for any list of data-objects you may have. User-code can expect to have the top two elements of the stack set to be the two objects to be compared. Simply access the relevant field in each object, and then perform a comparison. For example, here is a list of pairs sorted by first element:
 
 
-```babel>babel
+```babel
+babel>
  20 lsrange ! {1 randlf 2 rem} lssort ! 2 group ! --> this creates a shuffled list of pairs
 babel> dup {lsnum !} ... --> display the shuffled list, pair-by-pair
 ( 11 10 )
@@ -590,7 +592,8 @@ babel> dup {lsnum !} ... --> display the sorted list, pair-by-pair
 The gpsort utility performs this kind of comparison "automagically" by leveraging the ordering of Babel's underlying data-structure. Using the shuffled list from the example above:
 
 
-```babel>babel
+```babel
+babel>
  gpsort !
 babel> dup {lsnum !} ...
 ( 0 2 )
@@ -609,7 +612,8 @@ babel> dup {lsnum !} ...
 Note that gpsort will not work for the case where you want to sort on the second element of a list of pairs. But it will work for performing a canonical sort on numbers, arrays of numbers, lists of numbers, lists of lists, lists of arrays, arrays of lists, and so on. You should not use gpsort with strings; use lexsort or strsort instead. Here's an example of sorting a mixture of pairs and triples using gpsort:
 
 
-```babel>babel
+```babel
+babel>
  dup {lsnum !} ... --> display the shuffled list of pairs and triples
 ( 7 2 )
 ( 6 4 )
@@ -1299,7 +1303,8 @@ Enum.sort_by(list, &(&1.value)) |> Enum.each(&IO.inspect &1)
 
 Any Erlang type can be compared to any Erlang type. As such, nothing special needs to be done:
 
-```Erlang>1
+```Erlang
+1>
  lists:sort([{{2006,2007},"Ducks"},
                {{2000,2001},"Avalanche"},
                {{2002,2003},"Devils"},
@@ -1325,7 +1330,8 @@ Any Erlang type can be compared to any Erlang type. As such, nothing special nee
 
 It is also possible to sort with custom functions, in this case by the team's name:
 
-```Erlang>2
+```Erlang
+2>
  F = fun({_,X},{_,Y}) -> X < Y end.
 #Fun<erl_eval.12.113037538>
 3> lists:usort(F, [{{2006,2007},"Ducks"},

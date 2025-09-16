@@ -1467,7 +1467,8 @@ end
 
 Output:
 
-```MATLAB>>
+```MATLAB
+>>
  hornersRule(3,[-19, 7, -4, 6])
 
 ans =
@@ -1477,7 +1478,8 @@ ans =
 
 Matlab also has a built-in function "polyval" which uses Horner's Method to evaluate polynomials. The list of coefficients is in descending order of power, where as to task spec specifies ascending order.
 
-```MATLAB>>
+```MATLAB
+>>
  polyval(fliplr([-19, 7, -4, 6]),3)
 
 ans =
@@ -1696,7 +1698,8 @@ END HornerRule.
 =={{header|Objective-C}}==
 {{works with|Mac OS X|10.6+}} Using blocks
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef double (^mfunc)(double, double);
@@ -2241,7 +2244,8 @@ Debug Horner(a(),3)
 ## Python
 
 
-```python>>>
+```python
+>>>
  def horner(coeffs, x):
 	acc = 0
 	for c in reversed(coeffs):
@@ -2257,7 +2261,8 @@ Debug Horner(a(),3)
 ### Functional version
 
 
-```python>>>
+```python
+>>>
  try: from functools import reduce
 except: pass
 
@@ -2271,7 +2276,8 @@ except: pass
 
 ==={{libheader|NumPy}}===
 
-```python>>>
+```python
+>>>
  import numpy
 >>> numpy.polynomial.polynomial.polyval(3, (-19, 7, -4, 6))
 128.0
@@ -2355,7 +2361,8 @@ public int horners_rule2(list[int] coefficients, int x) = (0 | it * x + c | c <-
 
 Output:
 
-```rascal>rascal
+```rascal
+rascal>
 horners_rule([-19, 7, -4, 6], 3)
 int: 128
 

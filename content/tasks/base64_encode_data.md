@@ -1449,7 +1449,8 @@ AAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 {{works with|Mac OS X|10.6+}}
 {{works with|iOS|4.0+}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main(int argc, const char *argv[]) {

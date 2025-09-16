@@ -1546,7 +1546,8 @@ tsitest
 The [[wp:Longest_common_subsequence#Solution_for_two_sequences|Wikipedia solution]] translates directly into Haskell, with the only difference that equal characters are added in front:
 
 
-```haskell>longest xs ys = if length xs
+```haskell
+longest xs ys = if length xs>
  length ys then xs else ys
 
 lcs [] _ = []
@@ -2268,7 +2269,9 @@ LongestCommonSequence[a, b]
 
 gives:
 
-```Mathematica>tsitest</lang
+```mathematica
+tsitest>
+```
 
 Note that Mathematica also has a built-in function called LongestCommonSubsequence[a,b]:
 
@@ -2348,7 +2351,8 @@ echo lcs("thisisatest", "testing123testing")
 
 from Haskell
 
-```ocaml>let longest xs ys = if List.length xs
+```ocaml
+let longest xs ys = if List.length xs>
  List.length ys then xs else ys
 
 let rec lcs a b = match a, b with
@@ -3582,7 +3586,8 @@ tsitest
 It is interesting to note that x and y are computed in parallel, dividing work across threads repeatedly down through the recursion.
 
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl>
 ;
 
 lcsBack(a(1), b(1)) :=

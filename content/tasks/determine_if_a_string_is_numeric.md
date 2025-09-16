@@ -150,7 +150,9 @@ Create a boolean function which takes in a string and tells whether it is a nume
 ## 8th
 
 
-```Forth>: number? >n >kind ns:n n:= ;</lang
+```forth
+: number? >n >kind ns:n n:= ;
+```
 
 
 ## ActionScript
@@ -1331,7 +1333,8 @@ console.log (isFinite(s) for s in [NaN, "fred", "###"]) # all false
 Adobe's ColdFusion
 
 
-```cfm><cfset TestValue=34
+```cfm
+<cfset TestValue=34
 
   TestValue: <cfoutput>#TestValue#</cfoutput>
 
@@ -2376,7 +2379,9 @@ if (isNumeric(value)) {
 ## jq
 
 In versions of jq that support try/catch, the simplest way to test if a string can be parsed as a number is:
-```jq>try tonumber catch false</lang
+```jq
+try tonumber catch false
+```
 
 The above expression will emit the corresponding number, or false if there is none.  Here then is a boolean filter which will also emit true for each input that is a number:
 
@@ -3913,7 +3918,8 @@ for s in tests:
 
 
 
-```R>
+```r
+
  strings <- c("152", "-3.1415926", "Foo123")
 > suppressWarnings(!is.na(as.numeric(strings)))
 [1]  TRUE  TRUE FALSE

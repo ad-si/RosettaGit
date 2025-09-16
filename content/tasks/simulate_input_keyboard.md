@@ -638,7 +638,8 @@ autopy.key.tap(autopy.key.Code.LEFT_ARROW)
 Target may be externally created.
 
 
-```Python>>>
+```Python
+>>>
  import pyautogui
 >>> pyautogui.typewrite('Hello world!')                 # prints out "Hello world!" instantly
 >>> pyautogui.typewrite('Hello world!', interval=0.25)  # prints out "Hello world!" with a quarter second delay after each character

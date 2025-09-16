@@ -1779,7 +1779,8 @@ println cocktailSort([ 33, 14 ])
 ## Haskell
 
 
-```haskell>cocktailSort :: Ord a =
+```haskell
+cocktailSort :: Ord a =>
  [a] -> [a]
 cocktailSort l
   | not swapped1 = l

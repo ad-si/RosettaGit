@@ -138,7 +138,8 @@ Note that there seems to be two definitions of the above series, the main differ
 ==[http://mathworld.wolfram.com/Fibonaccin-StepNumber.html Fibonacci n-Step Numbers]==
 The name is from MathWorld. I doodled the following:
 
-```python>>>
+```python
+>>>
  def fiblike(start):
 	addnum = len(start)
 	def fibber(n):

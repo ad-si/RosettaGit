@@ -377,7 +377,7 @@ public class FindPalindromicNumbers
 }
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 Decimal: 0
 Ternary: 0
 Binary: 0
@@ -401,9 +401,7 @@ Binary: 10100101010001010100101
 Decimal: 90396755477
 Ternary: 22122022220102222022122
 Binary: 1010100001100000100010000011000010101
-
 ```
-
 
 
 ## Common Lisp

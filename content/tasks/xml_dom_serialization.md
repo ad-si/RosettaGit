@@ -597,7 +597,8 @@ void main() {
 This makes use of XML libraries provided with Java.
 
 
-```e>def document := <unsafe:javax.xml.parsers.makeDocumentBuilderFactory
+```e
+def document := <unsafe:javax.xml.parsers.makeDocumentBuilderFactory>
  \
                   .newInstance() \
                   .newDocumentBuilder() \
@@ -752,7 +753,8 @@ func main() {
 }
 ```
 
-```xml><root
+```xml
+<root>
 
     <element>
         Some text here
@@ -1000,7 +1002,8 @@ var xmlString = new XMLSerializer().serializeToString( doc );
 E4X
 
 
-```javascript>var xml = <root
+```javascript
+var xml = <root>
 
   <element>Some text here</element>
 </root>;
@@ -1753,7 +1756,8 @@ public void main(){
 
 Output example:
 
-```rascal>rascal
+```rascal
+rascal>
 main()
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
@@ -1797,7 +1801,8 @@ produces
 ## Scala
 
 
-```scala>val xml = <root><element>Some text here</element></root
+```scala
+val xml = <root><element>Some text here</element></root>
 
 scala.xml.XML.save(filename="output.xml", node=xml, enc="UTF-8", xmlDecl=true, doctype=null)
 ```
@@ -1891,7 +1896,8 @@ Some text here
 
 In XQuery static element construction is like normal XML:
 
-```xquery><root
+```xquery
+<root>
 
   <element>
     Some text here

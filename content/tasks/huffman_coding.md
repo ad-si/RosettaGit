@@ -4141,7 +4141,8 @@ F: 1101
 =={{header|Objective-C}}==
 This is not purely Objective-C. It uses Apple's Core Foundation library for its binary heap, which admittedly is very ugly. Thus, this only builds on Mac OS X, not GNUstep.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 
@@ -6740,7 +6741,8 @@ end
 ## Swift
 
 Rather than a priority queue of subtrees, we use the strategy of two sorted lists, one for leaves and one for nodes, and "merge" them as we iterate through them, taking advantage of the fact that any new nodes we create are bigger than any previously created nodes, so go at the end of the nodes list.
-```swift>enum HuffmanTree<T
+```swift
+enum HuffmanTree<T>
  {
   case Leaf(T)
   indirect case Node(HuffmanTree<T>, HuffmanTree<T>)

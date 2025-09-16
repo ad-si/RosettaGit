@@ -491,7 +491,8 @@ apply(Strchr,v)
 ## Perl
 
 
-```perl># When not using the <code>use utf8</code
+```perl
+# When not using the <code>use utf8</code>
  pragma, any word character in the ASCII range is allowed.
 # the loop below returns: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz
 for $i (0..0x7f) {

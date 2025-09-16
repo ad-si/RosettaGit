@@ -267,13 +267,17 @@ int main()
 ## C#
 In C# it's important to see the difference between reference and value types. For reference types (class instances) there is <code>null</code> as a general undefined reference.
 
-```csharp>string foo = null;</lang
+```csharp
+string foo = null;
+```
 
 Dereferencing a null reference will throw a <code>NullReferenceException</code>.
 
 This can't be used normally for value types (<code>int</code>, <code>double</code>, <code>DateTime</code>, etc.) since they are no ''references,'' so the following is a compiler error:
 
-```csharp>int i = null;</lang
+```csharp
+int i = null;
+```
 
 With .NET 2.0 there is an additional <code>Nullable<T></code> structure which enables those semantics for value types as well:
 
@@ -288,7 +292,8 @@ There is a bit syntactic sugar involved here. The <code>?</code> after the type 
 
 But since value types still can't actually ''have'' a <code>null</code> value this gets converted into the following code by the compiler:
 
-```csharp>Nullable<int> answer = new Nullable<int
+```csharp
+Nullable<int> answer = new Nullable<int>
 ();
 if (!answer.HasValue) {
     answer = new Nullable<int>(42);
@@ -886,7 +891,9 @@ Given a JSON object, o, and a key, k, that is not present in that object, then o
 
 In an important sense, therefore, null in jq represents an undefined value.  However, it should be noted that in jq, 1/0 does not yield null:
 
-```jq>1/0 == null #=>false</lang
+```jq
+1/0 == null #=>false
+```
 
 
 It should also be noted that in jq, null can combine with other values to form non-null values. Specifically, for any JSON entity, e,
@@ -1162,7 +1169,9 @@ ValueQ[a]
 
 If a variable is generated without defing a value, e.g. with
 
-```Matlab>  global var; </lang
+```Matlab
+  global var;>
+```
 
 the variable is empty, and can be tested with
 

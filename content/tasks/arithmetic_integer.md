@@ -1960,7 +1960,8 @@ Arithmetic_Integer.task
 
 
 {{out}}
-<pre style="height: 80ex; overflow: scroll">
+
+```txt
 C:\Elixir>elixir Arithmetic_Integer.exs
 Enter your first integer: 7
 Enter your second integer: 3
@@ -3667,7 +3668,9 @@ Print["exponentiation: ", a^b];
 ```
 
 gives back for input 17 and 3:
-<preMathematica>You gave me 17 and 3
+
+```mathematica
+You gave me 17 and 3
 sum: 20
 difference: 14
 product: 51
@@ -4038,7 +4041,9 @@ return
 ```
 
 {{out}}
-<pre style="height: 15ex; overflow:scroll;">
+
+```txt
+
 enter 2 integer values separated by blanks
 17 -4
 17 + -4 = 13

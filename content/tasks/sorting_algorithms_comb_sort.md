@@ -1548,7 +1548,8 @@ Example use:
 
 This is copied from [[wp:Comb sort|the Wikipedia article]].
 
-```java>public static <E extends Comparable<? super E>
+```java
+public static <E extends Comparable<? super E>>
  void sort(E[] input) {
     int gap = input.length;
     boolean swapped = true;
@@ -1950,7 +1951,8 @@ end %combSort
 
 Sample Output:
 
-```MATLAB>>
+```MATLAB
+>>
  combSort([4 3 1 5 6 2])
 
 ans =
@@ -2648,7 +2650,8 @@ EndProcedure
 ## Python
 
 
-```python>>>
+```python
+>>>
  def combsort(input):
     gap = len(input)
     swaps = True

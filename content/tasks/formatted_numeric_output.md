@@ -1185,7 +1185,8 @@ If you wish to truncate the number, remove #s and 1- from the definition.
 Usage example:
 
 
-```forth>Type:    123 s
+```forth
+Type:    123 s
 d  8 ud.0
 Result:  00000123 ok
 Type:    -123 s>d 8 d.0
@@ -1806,7 +1807,8 @@ StringTake["000000" <> ToString[7.125], -9]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-```MATLAB>>
+```matlab
+>
  disp(sprintf('%09.3f',7.125))
 00007.125
 ```
@@ -2244,7 +2246,8 @@ e=1.9999e+01 f=19.9991   g=20       !
 [http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/base/html/sprintf.html sprintf] brings the printf goodness one expects:
 
 
-```R>
+```r
+
  sprintf("%f", pi)
 [1] "3.141593"
 > sprintf("%.3f", pi)
@@ -2461,7 +2464,8 @@ say 'u=' u
                                       /*stick a fork in it, we're done.*/
 ```
 
-<pre style="height:30ex">
+
+```txt
 a= 7.125
 b= 0000000007.125
 

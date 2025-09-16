@@ -2191,7 +2191,8 @@ Checking distance(edocattesor, drowsyhtesiar) == 8
 ## Haskell
 
 
-```haskell>levenshtein :: Eq a =
+```haskell
+levenshtein :: Eq a =>
  [a] -> [a] -> Int
 levenshtein s1 s2 = last $ foldl transform [0 .. length s1] s2
   where
@@ -4646,7 +4647,8 @@ True True True True False False False False
 
 (Uses [http://docs.python.org/dev/library/functools.html?highlight=functools.lru_cache#functools.lru_cache this] cache from the standard library).
 
-```python>>>
+```python
+>>>
  from functools import lru_cache
 >>> @lru_cache(maxsize=4095)
 def ld(s, t):
@@ -5696,7 +5698,8 @@ puts [levenshteinDistance "kitten" "sitting"];   # Prints 3
 ## TSE SAL
 
 
-```TSESAL>// library: math: get: damerau: levenshtein <description></description> <version>1.0.0.0.23</version> <version control></version control
+```TSESAL
+// library: math: get: damerau: levenshtein <description></description> <version>1.0.0.0.23</version> <version control></version control>
  (filenamemacro=getmadle.s) [kn, ri, th, 08-09-2011 23:04:55]
 INTEGER PROC FNMathGetDamerauLevenshteinDistanceI( STRING s1, STRING s2 )
  INTEGER L1 = Length( s1 )

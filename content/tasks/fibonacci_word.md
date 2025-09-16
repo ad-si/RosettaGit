@@ -3371,7 +3371,8 @@ Input()
 ## Python
 
 
-```python>>>
+```python
+>>
  import math
 >>> from collections import Counter
 >>>
@@ -3963,7 +3964,8 @@ end
 This is not implemented in any sort of generic way and is probably fairly inefficient.
 
 
-```rust>struct Fib<T
+```rust
+struct Fib<T
  {
     curr: T,
     next: T,

@@ -268,11 +268,12 @@ languages = [
 ]
 +++
 
-;Definitions:
-:*   The factorial of   '''0'''   (zero)   is [[wp:Factorial#Definition|defined]] as being   1   (unity).
-:*   The   '''Factorial Function'''   of a positive integer,   <big> ''n'', </big>   is defined as the product of the sequence:
-                 <big><big> ''n'',   ''n''-1,   ''n''-2,   ...   1 </big></big>
+Definitions:
 
+- The factorial of '''0''' (zero) is defined as being 1 (unity).
+- The '''Factorial Function''' of a positive integer, <big> ''n'', </big>
+    is defined as the product of the sequence:
+    <big><big> ''n'', ''n''-1, ''n''-2, ... 1 </big></big>
 
 ## Task
 
@@ -282,14 +283,9 @@ Solutions can be iterative or recursive.
 
 Support for trapping negative   <big> ''n'' </big>   errors is optional.
 
-
 ## Related tasks
 
-*   [[Primorial numbers]]
-
-
-
-
+- Primorial numbers
 
 ## 0815
 
@@ -310,7 +306,6 @@ This is an iterative solution which outputs the factorial of each number supplie
 ^:r:
 ```
 
-
 ```txt
 seq 6 | 0815 fac.0
 1
@@ -320,7 +315,6 @@ seq 6 | 0815 fac.0
 78
 2d0
 ```
-
 
 
 ## 360 Assembly
@@ -1793,7 +1787,8 @@ Examples:
 <code>i</code> indicates that the program expects the user to enter an integer.
 
 
-```julia>julia
+```julia
+julia
  beeswax("factorial.bswx")
 i0
 1
@@ -4973,7 +4968,9 @@ factorial n = product [1..n]
 
 Or, using composition and omitting the argument ([https://www.haskell.org/haskellwiki/Partial_application partial application]):
 
-```haskell>factorial = product . enumFromTo 1</lang
+```haskell
+factorial = product . enumFromTo 1
+```
 
 Or, written explicitly as a fold:
 
@@ -5209,7 +5206,9 @@ end
 
 Factorials are built-in to Io:
 
-```io>3 factorial</lang
+```io
+3 factorial
+```
 
 
 
@@ -5439,7 +5438,9 @@ function factorial(n) {
 ```
 
 
-```JavaScript>6402373705728000</lang
+```javascript
+6402373705728000
+```
 
 
 Or, assuming that we have some sort of integer range function, we can memoize using the accumulator of a fold/reduce:
@@ -5476,7 +5477,9 @@ Or, assuming that we have some sort of integer range function, we can memoize us
 ```
 
 
-```JavaScript>6402373705728000</lang
+```javascript
+6402373705728000
+```
 
 
 
@@ -5484,7 +5487,8 @@ Or, assuming that we have some sort of integer range function, we can memoize us
 ### =ES6=
 
 
-```javascript>var factorial = n =
+```javascript
+var factorial = n =
  (n < 2) ? 1 : n * factorial(n - 1);
 ```
 
@@ -6419,7 +6423,7 @@ Checkit
 
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
                 factorial(1)= 1
                 factorial(2)= 2
                 factorial(3)= 6
@@ -6447,7 +6451,7 @@ Checkit
                factorial(25)= 15,511,210,043,330,985,984,000,000
                factorial(26)= 403,291,461,126,605,635,584,000,000
                factorial(27)= 10,888,869,450,418,352,160,768,000,000
-</pre >
+```
 
 
 ## M4
@@ -7400,7 +7404,8 @@ proc factorial(x: int): int =
 ### Recursive
 
 
-```Niue>[ dup 1
+```Niue
+[ dup 1>
  [ dup 1 - factorial * ] when ] 'factorial ;
 
 ( test )
@@ -7873,11 +7878,14 @@ function factorial(n: integer): integer;
 
 Peloton has an opcode for factorial so there's not much point coding one.
 
-```sgml><@ SAYFCTLIT>5</@></lang
+```sgml
+<@ SAYFCTLIT>5</@>>
+```
 
 However, just to prove that it can be done, here's one possible implementation:
 
-```sgml><@ DEFUDOLITLIT
+```sgml
+<@ DEFUDOLITLIT>
 FAT|__Transformer|<@ LETSCPLIT>result|1</@><@ ITEFORPARLIT>1|<@ ACTMULSCPPOSFOR>result|...</@></@><@ LETRESSCP>...|result</@></@>
 <@ SAYFATLIT>123</@>
 ```
@@ -7967,8 +7975,12 @@ say length(  ifact(10000)  );
 
 ## Perl 6
 
-=== via User-defined Postfix Operator ===
-<tt>[*]</tt> is a reduction operator that multiplies all the following values together. Note that we don't need to start at 1, since the degenerate case of <tt>[*]()</tt> correctly returns 1, and multiplying by 1 to start off with is silly in any case.
+### Via User-defined Postfix Operator
+
+`[*]` is a reduction operator that multiplies all the following values together.
+Note that we don't need to start at 1, since the degenerate case of `[*]()` correctly returns 1,
+and multiplying by 1 to start off with is silly in any case.
+
 ```perl6
 sub postfix:<!> (Int $n) { [*] 2..$n }
 say 5!;
@@ -7979,10 +7991,14 @@ say 5!;
 ```
 
 
+### Via Memoized Constant Sequence
 
-###  via Memoized Constant Sequence
+This approach is much more efficient for repeated use, since it automatically caches.
+`[*]` is the so-called triangular version of [*].
+It returns the intermediate results as a list.
+Note that Perl 6 allows you to define constants lazily,
+which is rather helpful when your constant is of infinite size...
 
-This approach is much more efficient for repeated use, since it automatically caches.  <tt>[\*]</tt> is the so-called triangular version of [*].  It returns the intermediate results as a list.  Note that Perl 6 allows you to define constants lazily, which is rather helpful when your constant is of infinite size...
 ```perl6
 constant fact = 1, |[\*] 1..*;
 say fact[5]
@@ -7993,10 +8009,10 @@ say fact[5]
 ```
 
 
-
 ## Phix
 
-standard iterative factorial builtin, reproduced below. returns inf for 171 and above, and is not accurate above 22 on 32-bit, or 25 on 64-bit.
+Standard iterative factorial builtin, reproduced below.
+returns inf for 171 and above, and is not accurate above 22 on 32-bit, or 25 on 64-bit.
 
 ```Phix
 global function factorial(integer n)
@@ -8692,7 +8708,9 @@ f:(*)over 1+til@
 
 or
 
-```Q>f:prd 1+til@</lang
+```q
+f:prd 1+til@
+```
 
 
 ### =As a function=
@@ -9033,7 +9051,8 @@ for i 0 10 1 [print [i ":" factorial i  ifactorial i  mfactorial i]]
 
 A recursive implementation from the benchmarking code.
 
-```Retro>: <factorial
+```Retro
+: <factorial>
  dup 1 = if; dup 1- <factorial> * ;
 : factorial dup 0 = [ 1+ ] [ <factorial> ] if ;
 ```
@@ -9149,7 +9168,6 @@ er:    say;      say '***error!***';      say;       say arg(1);      say;      
 '''output'''   when the input is:   <tt> 1000 </tt>
 
 ```txt
-
 1000! is  [2568 digits]:
 
 4023872600770937735437024339230039857193748642107146325437999104299385123986290205920442084869694048004799886101971960586316668729948085589013238296699445909974245040870737599188236277271887325197795059509952761208749754624970436014182780946464962910563938874378864873371191810458257836478499770124766328898359557354325131853239584630755574091142624174743493475534286465766116677973966688202912073791438537195882498081268678383745597317461360853795345242215865932019280908782973084313928444032812315586110369768013573042161687476096758713483120254785893207671691324484262361314125087802080002616831510273418279777047846358681701643650241536
@@ -9211,17 +9229,16 @@ say !                                            /*display the factorial product
 '''output'''   when the input is:   <tt> 100 </tt>
 
 ```txt
-
 100!  is      [158  digits  with  24  trailing zeroes]:
 
 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
-
 ```
 
 '''output''' when the input is:    <tt> 10000 </tt>
 
 (Output is shown at   <big> '''<sup>4</sup>/<sub>5</sub>''' </big>   size.)
-<pre style="font-size:80%;height:80ex">
+
+```txt
 10000!  is      [35660  digits  with  2499  trailing zeroes]:
 
 284625968091705451890641321211986889014805140170279923079417999427441134000376444377299078675778477581588406214231752883004233994015351873905242116138271617481982419982759241828925978789812425312059465996259867065601615720360323979263287367170557419759620994797203461536981198970926112775004841988454104755446424421365733030767036288258035489674611170973695786036701910715127305872810411586405612811653853259684258259955846881464304255898366493170592517172042765974074461334000541940524623034368691540594040662278282483715120383221786446271838229238996389928272218797024593876938030946273322925705554596900278752822425443480211275590
@@ -9778,7 +9795,9 @@ Original source: [http://seed7.sourceforge.net/algorith/math.htm#fib]
 
 Built in:
 
-```self>n factorial</lang
+```self
+n factorial>
+```
 
 Iterative version:
 
@@ -10488,7 +10507,7 @@ PRINT "factorial of ",formatnum," = ",f
 ENDLOOP
 ```
 
-<pre style='height:30ex;overflow:scroll'>
+```txt
 -1 is negative number
 factorial of  0 = 1
 factorial of  1 = 1
@@ -10503,7 +10522,6 @@ factorial of  9 = 362880
 factorial of 10 = 3628800
 factorial of 11 = 39916800
 factorial of 12 = 479001600
-
 ```
 
 
@@ -10892,9 +10910,7 @@ End Function
 ```
 
 
-
 ## VHDL
-
 
 ```VHDL
 LIBRARY ieee;
@@ -10978,7 +10994,6 @@ END Behavior ;
 ## Visual Basic
 
 ```vb
-
 Option Explicit
 
 Sub Main()
@@ -11005,10 +11020,9 @@ Private Function FactIter(n As Variant)
     Next i
     FactIter = f
 End Function 'FactIter
-
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 Factorial(1)= , recursive : 1 - iterative : 1
 Factorial(2)= , recursive : 2 - iterative : 2
 Factorial(3)= , recursive : 6 - iterative : 6
@@ -11036,9 +11050,6 @@ Factorial(24)= , recursive : 620,448,401,733,239,439,360,000 - iterative : 620,4
 Factorial(25)= , recursive : 15,511,210,043,330,985,984,000,000 - iterative : 15,511,210,043,330,985,984,000,000
 Factorial(26)= , recursive : 403,291,461,126,605,635,584,000,000 - iterative : 403,291,461,126,605,635,584,000,000
 Factorial(27)= , recursive : 10,888,869,450,418,352,160,768,000,000 - iterative : 10,888,869,450,418,352,160,768,000,000
-
-
-
 ```
 
 
@@ -11260,7 +11271,8 @@ def (fact n)
 ### Recursive
 
 
-```WDTE>let max a b =
+```WDTE
+let max a b =
  a { < b => b };
 
 let ! n => n { > 1 => - n 1 -> ! -> * n } -> max 1;
@@ -11271,7 +11283,8 @@ let ! n => n { > 1 => - n 1 -> ! -> * n } -> max 1;
 ### Iterative
 
 
-```WDTE>let s =
+```WDTE
+let s =
  import 'stream';
 
 let ! n => s.range 1 (+ n 1) -> s.reduce 1 *;
@@ -11283,7 +11296,9 @@ let ! n => s.range 1 (+ n 1) -> s.reduce 1 *;
 
 Operator:
 
-```wortel>@fac 10</lang
+```wortel
+@fac 10>
+```
 
 Number expression:
 
@@ -11526,14 +11541,13 @@ factTail(BN(42)) : "%,d".fmt(_).println();  // built in as BN(42).factorial()
 
 ```
 
-The [..] notation understands int, float and string but not big int so fact(BN) doesn't work but tail recursion is just a loop so the two versions are pretty much the same.
+The `[..]` notation understands int, float and string but not big int
+so fact(BN) doesn't work but tail recursion is just a loop so the two versions are pretty much the same.
 
 
 ## ZX Spectrum Basic
 
-
 ### Iterative
-
 
 ```zxbasic
 10 LET x=5: GO SUB 1000: PRINT "5! = ";r
@@ -11548,11 +11562,8 @@ The [..] notation understands int, float and string but not big int so fact(BN) 
 ```
 
 ```txt
-
 5! = 120
-
 ```
-
 
 
 ### Recursive
@@ -11570,4 +11581,3 @@ Changing the order of the product gives naught:
 ```zxbasic
 DEF FN f(n) = VAL (("1" AND n<=0) + ("FN f(n-1)*n" AND n>0))
 ```
-

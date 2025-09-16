@@ -76,7 +76,8 @@ Based on above, but simplified and it stops :)
 
 Simple solution:
 
-```beeswax>
+```beeswax
+
      q
         >@F5~%"d@F{  >  @F     q
 _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
@@ -86,7 +87,8 @@ _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
 
 More clever solution, checking n%5 only on one path:
 
-```beeswax>
+```beeswax
+
 @?q
          >      q       >Ag'd@{?p
 _>"1F3~%'d`Fizz`f>@F5~%'d`Buzz`@p

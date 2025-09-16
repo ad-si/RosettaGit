@@ -1861,7 +1861,8 @@ bind . <Control-x><Control-c> {exit}
 ===Key-to-key mapping macros===
 A more direct macro-like facility (substituting one key sequence for another) would be:
 
-```tcl>bind . <F1
+```tcl
+bind . <F1>
  {
     foreach c [split "Macro demo!" {}] {
         event generate %W $c

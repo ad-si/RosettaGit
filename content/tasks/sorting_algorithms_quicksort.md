@@ -2519,7 +2519,8 @@ print data[]
 
 Translated from Objective-C example on this page.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 void quicksortInPlace(MutableArray array, const long first, const long last)
@@ -2562,7 +2563,8 @@ int main(int argc, const char * argv[])
 Alternative implementation (not necessarily as efficient, but very readable)
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 implementation Array (Quicksort)
@@ -2653,7 +2655,9 @@ int main()
 ## Eiffel
 
 The
-```eiffel>QUICKSORT</lang
+```eiffel
+QUICKSORT>
+```
  class:
 
 ```eiffel
@@ -3664,7 +3668,8 @@ for additional explanations and examples.
 
 ###  Imperative
 
-```java5>public static <E extends Comparable<? super E>> List<E
+```java5
+public static <E extends Comparable<? super E>> List<E>
  quickSort(List<E> arr) {
     if (arr.isEmpty())
         return arr;
@@ -3702,7 +3707,8 @@ for additional explanations and examples.
 
 ###  Functional
 
-```java5>public static <E extends Comparable<E>> List<E
+```java5
+public static <E extends Comparable<E>> List<E>
  sort(List<E> col) {
     if (col == null || col.isEmpty())
         return Collections.emptyList();
@@ -4122,7 +4128,8 @@ fun <T> quickSort(a: List<T>, c: Comparator<T>): ArrayList<T> {
 Another version of the code:
 
 
-```scala>fun <T : Comparable<T>
+```scala
+fun <T : Comparable<T>>
  quicksort(list: List<T>): List<T> {
     if (list.isEmpty()) return emptyList()
 
@@ -5374,7 +5381,8 @@ US  Washington
 
 
 
-```nial>quicksort is fork [
+```nial
+quicksort is fork [>
 = [1 first,tally],
   pass,
   link [
@@ -7367,7 +7375,8 @@ fun quicksort [] = []
 ## Swift
 
 
-```swift>func quicksort<T where T : Comparable
+```swift
+func quicksort<T where T : Comparable>
 (inout elements: [T], range: Range<Int>) {
   if (range.endIndex - range.startIndex > 1) {
     let pivotIndex = partition(&elements, range)

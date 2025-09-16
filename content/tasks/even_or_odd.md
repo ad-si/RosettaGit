@@ -1990,7 +1990,8 @@ Test:
 
 <code>even</code> and <code>odd</code> functions are already included in the standard Prelude.
 
-```haskell>Prelude
+```haskell
+Prelude
  even 5
 False
 Prelude> even 42
@@ -2568,27 +2569,28 @@ Variable a take the type of input. There is no reason here to write it as def Od
 Def used to define variables (an error occur if same variable exist), or to define one line local functions. If a function exist then replace code. This is the same for modules/functions, a newer definition alter an old definition with same name, in current module if they are local, or global if they defined as global, like this Function Global F(x) { code block here}.
 
 A function F(x) {} is same as
-<pre >
+
+```txt
 Function F {
       Read x
       code here
 }
-</pre >
+```
 
 The same hold for Def Odd(a)=binary.and(Abs(a), 1)=1
 Interpreter execute this:
-<pre >
+
+```txt
 Function Odd {
       Read a
       =binary.and(Abs(a), 1)=1
 }
-</pre >
+```
 
 So here is the task. Show an overflow from a decimal, then change function.
 
 
 ```M2000 Interpreter
-
 Module CheckOdd {
       Def Odd(a)= binary.and(Abs(a), 1)=1
       Print Odd(-5), Odd(6), Odd(11)
@@ -2602,7 +2604,6 @@ Module CheckOdd {
       Print Odd(-5), Odd(6), Odd(11)
 }
 CheckOdd
-
 ```
 
 
@@ -3406,7 +3407,8 @@ isEven = i % 2 ! 1    ;isEven is non-zero if i is even
 
 ===Python: Using the least-significant bit method===
 
-```python>>>
+```python
+>>
  def is_odd(i): return bool(i & 1)
 
 >>> def is_even(i): return not is_odd(i)
@@ -3423,7 +3425,8 @@ isEven = i % 2 ! 1    ;isEven is non-zero if i is even
 ### Python: Using modular congruences
 
 
-```python>>
+```python
+>
  def is_even(i):
         return (i % 2) == 0
 
@@ -3789,7 +3792,8 @@ isEven( 234.05003513013145 )    // Results in true
 
 <code>even?</code> and <code>odd?</code> functions are built-in (R<sup>4</sup>RS, R<sup>5</sup>RS, and R<sup>6</sup>RS):
 
-```scheme>
+```scheme
+
  (even? 5)
 #f
 > (even? 42)
@@ -3827,12 +3831,11 @@ odd(x) := x mod 2 = 1;
 ```
 
 
-<pre style="height: 25ex; overflow: scroll">
+```txt
 cmd:>even(1 ... 10)
 [false,true,false,true,false,true,false,true,false,true]
 cmd:>odd(1 ... 10)
 [true,false,true,false,true,false,true,false,true,false]
-
 ```
 
 
@@ -3924,7 +3927,8 @@ Using the built in methods on Number class:
 
 even is implemented as follows:
 
-```smalltalk>Number>
+```smalltalk
+Number>
 even
 	^((self digitAt: 1) bitAnd: 1) = 0
 
@@ -3974,7 +3978,8 @@ $====!/?\==even#
 ## SPL
 
 
-```spl>
+```spl
+>
  n, 0..9
   ? #.even(n), #.output(n," even")
   ? #.odd(n), #.output(n," odd")
@@ -4416,7 +4421,8 @@ End Module
 ## WDTE
 
 
-```WDTE>let s =
+```WDTE
+let s =
  import 'stream';
 let str => import 'strings';
 

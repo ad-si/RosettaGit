@@ -1054,7 +1054,9 @@ Dir.new(Dir.cwd, "path", "to", "dir").make_path;   # works cross-platform
 
 Tcl's built in <code>file mkdir</code> works exactly this way:
 
-```tcl>file mkdir ./path/to/dir</lang
+```tcl
+file mkdir ./path/to/dir>
+```
 
 If a directory cannot be made (e.g., because it would involve making a directory with the same name as an existing file) the command will throw a trappable error, as normal for Tcl commands.
 

@@ -1719,7 +1719,8 @@ For the list array example given, the result appears to be the same. The differe
 
 This might be a clearer concept with a few more examples. Here's an array with two dimensions:
 
-```j>
+```j
+
 'apple';'orange'
 apple
 orange
@@ -1831,7 +1832,9 @@ function last(list, defaultValue) {
 
 Output:
 
-```sh>2</lang
+```sh
+2
+```
 
 
 Note that the ''length'' filter is polymorphic, so for example the empty string (""), the empty list ([]), and ''null'' all have ''length'' 0.
@@ -2758,7 +2761,8 @@ EndIf
 ## Python
 
 
-```python>>>
+```python
+>>
  print(len(['apple', 'orange']))
 2
 >>>
@@ -3317,7 +3321,8 @@ End Module
 ## WDTE
 
 
-```wdte>let io =
+```wdte
+let io =
  import 'io';
 let a => ['apple'; 'orange'];
 len a -- io.writeln io.stdout;

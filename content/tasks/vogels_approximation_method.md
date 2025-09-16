@@ -253,7 +253,8 @@ Total cost = 3100
 
 If the program is changed to this (to accomodate the second Ruby example):
 
-```go>#include <stdio.h
+```go
+#include <stdio.h>
 
 #include <limits.h>
 

@@ -158,7 +158,9 @@ The 'drop' removes the result (true or false, indicating success or failure).  I
 ## Ada
 
 
-```ada>with Ada.Directories;  use Ada.Directories;</lang
+```ada
+with Ada.Directories;  use Ada.Directories;
+```
 
 and then
 
@@ -620,7 +622,8 @@ end;
 ## E
 
 
-```e><file:input.txt
+```e
+<file:input.txt
 .delete(null)
 <file:docs>.delete(null)
 <file:///input.txt>.delete(null)
@@ -1660,7 +1663,9 @@ Remove-Item -Recurse \docs
 
 Because input.txt is located inside of "docs" this will delete it when it deletes "docs"
 
-```ProDOS>deletedirectory docs</lang
+```ProDOS
+deletedirectory docs>
+```
 
 
 

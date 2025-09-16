@@ -450,7 +450,8 @@ let test = [
 ## AutoHotkey
 
 
-```AutoHotkey></lang
+```AutoHotkey>
+```
 
 Examples:
 ```AutoHotkey
@@ -1668,7 +1669,9 @@ console.log(arr);
 })();
 ```
 
-```JavaScript>1320</lang
+```javascript
+1320>
+```
 
 
 
@@ -1723,7 +1726,9 @@ let theTriangle = [
 console.log(maximumTrianglePathSum(theTriangle));
 ```
 
-```javascript>1320</lang
+```javascript
+1320
+```
 
 
 ### =Functional=

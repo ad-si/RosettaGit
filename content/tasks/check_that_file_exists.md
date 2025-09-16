@@ -1292,7 +1292,8 @@ end.
 ## E
 
 
-```e>for file in [<file:input.txt
+```e
+for file in [<file:input.txt
 ,
              <file:///input.txt>] {
   require(file.exists(),       fn { `$file is missing!` })

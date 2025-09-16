@@ -340,7 +340,8 @@ The boolean type is called logical in Algol W - the values are represented by th
 AppleScript has built-in boolean keywords <code>true</code> and <code>false</code>. Numbers do not work in place of boolean expressions, but they do coerce to and from.
 
 
-```AppleScript>1
+```applescript
+1
  2     --> false
 not false --> true
 
@@ -365,19 +366,25 @@ AppleScript also has constants <code>yes</code> and <code>no</code>, which coerc
 Finally, AppleScript also includes keywords <code>with</code> and <code>without</code>, used in declaring parameters for and sending parameters of boolean nature to handlers.  They are synonymous with <code>true</code> and <code>false</code>, respectively, and the compiler will sometimes perform the substitution at compile time.
 
 
-```AppleScript>sortItems from L given reversal : true</lang
+```applescript
+sortItems from L given reversal : true
+```
 
 
 gets compiled immediately to become:
 
 
-```AppleScript>sortItems from L with reversal</lang
+```applescript
+sortItems from L with reversal
+```
 
 
 However, the equivalent call to the handler utilising <code>yes</code>, whilst accepted readily in place of its boolean counterpart, is left alone by the compiler:
 
 
-```AppleScript>sortItems from L given reversal:yes</lang
+```applescript
+sortItems from L given reversal:yes
+```
 
 
 
@@ -953,7 +960,8 @@ Dyalect has a standard <code>Bool</code> type with two values: <code>true</code>
 ## Dylan
 
 
-```Dylan>#t // <boolean
+```Dylan
+#t // <boolean>
  true
 #f // <boolean> false
 ```
@@ -1163,7 +1171,8 @@ In an <code>if</code> and similar, <code>nil</code> is false and anything else i
 Erlang doesn't technically define boolean types. Instead, the atoms <tt>true</tt> and <tt>false</tt> are used. However, they are integrated well enough into the language there should be no problem with that as long as you don't expect false and true to mean anything but literal false and true.
 
 
-```erlang>1
+```erlang
+1>
  1 < 2.
 true
 2> 1 < 1.
@@ -1196,7 +1205,9 @@ Copy this until C4. Now as values are filled in from A1-A4 and B1-B4, C1-C4 gets
 =={{header|F_Sharp|F#}}==
 The type bool is an abbreviation for the .NET framework type <code>System.Boolean</code>.
 
-```fsharp>type bool = System.Boolean</lang
+```fsharp
+type bool = System.Boolean
+```
 
 Instances of this type have values of either <code>true</code> or <code>false</code>.
 
@@ -1441,7 +1452,8 @@ Icon and Unicon do not use Boolean values for flow control. Rather they use succ
 ## Idris
 
 
-```idris>Idris
+```idris
+Idris>
  :doc Bool
 Data type Prelude.Bool.Bool : Type
     Boolean Data Type
@@ -1467,7 +1479,9 @@ The Boolean type is called "truth state" and has the values "true" and "false".
 
 However, Inform 7 distinguishes between Boolean values and conditions. Comparison expressions do not return truth states, and truth state expressions cannot be used directly in conditional statements. There is a conversion from condition to truth state:
 
-```inform7>let B be whether or not 123 is greater than 100;</lang
+```inform7
+let B be whether or not 123 is greater than 100;>
+```
 
 And truth states can be used in conditions by adding an explicit comparison:
 
@@ -1542,7 +1556,8 @@ Julia has a built-in <code>Bool</code> type with values <code>true</code> and <c
 
 Other objects do not represent boolean values and cannot be used in conditional expressions, for example:
 
-```julia>julia
+```julia
+julia
  if 1
          println("true")
        end
@@ -1551,7 +1566,8 @@ ERROR: type: non-boolean (Int64) used in boolean context
 
 However, integers can be converted to boolean types with the <code>bool()</code> function (which treats nonzero values as <code>true</code>)
 
-```julia>julia
+```julia
+julia
  bool(-2:2)
 5-element Bool Array:
   true
@@ -1824,7 +1840,8 @@ To make a number or array of numbers a boolean use the logical() function. logic
 Sample Usage: (islogical() is a function that returns a boolean "1" if the input is a boolean, "0" otherwise)
 
 
-```MATLAB>>
+```matlab
+>
  islogical(true)
 
 ans =
@@ -2529,7 +2546,8 @@ In Python 2, a user-created class that defines a <tt>__nonzero__</tt> method to 
 
 '''Some examples:'''
 
-```python>>>
+```python
+>>
  True
 True
 >>> not True
@@ -2997,7 +3015,9 @@ true && echo "true" || echo "false"
 
 Ursa has the boolean data type which can be declared using the declare (or decl) function.
 
-```ursa>decl boolean bool</lang
+```ursa
+decl boolean bool>
+```
 
 Boolean values can be set to either true or false, or the result of an expression.
 
@@ -3110,7 +3130,8 @@ endif
 WDTE has a built-in boolean type, the two values of which are exposed by the <code>std</code> package's <code>true</code> and <code>false</code> functions. In general, however, built-in conditional functionality, such as <code>switch</code> expressions, considers any value that is not <code>true</code> to be <code>false</code>.
 
 
-```wdte>let io =
+```wdte
+let io =
  import 'io';
 let ex => switch 'this is irrelevant for this example' {
   false => 'This is, obviously, not returned.';

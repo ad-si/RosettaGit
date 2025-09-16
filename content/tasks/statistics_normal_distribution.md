@@ -2329,7 +2329,8 @@ span :   11.08994 Low    0.001521   high  11.091461
 
 ## Perl
 
-```perl>use constant pi =
+```perl
+use constant pi =>
  3.14159265;
 use List::Util qw(sum reduce min max);
 

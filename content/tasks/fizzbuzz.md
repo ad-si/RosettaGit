@@ -1112,7 +1112,8 @@ Next
 
 Output via console, logfile and/or messagebox:
 
-```AutoIt>#include <Constants.au3
+```AutoIt
+#include <Constants.au3>
 
 
 ; uncomment how you want to do the output
@@ -1383,7 +1384,8 @@ Also see on [[FizzBuzz/EsoLang]]
 “Ordinary” FizzBuzz solution:
 
 
-```beeswax>
+```beeswax
+
      q
         >@F5~%"d@F{  >  @F     q
 _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
@@ -1395,7 +1397,8 @@ _1>F3~%'d`Fizz`@F5~%'d >`Buzz`@FNp
 Example without double mod 5 check, using a flag instead, to check if Fizz already got printed (in this case the number n must not be printed if mod 5 is > 0):
 
 
-```beeswax>
+```beeswax
+
 @?q
          >      q       >Ag'd@{?p
 _>"1F3~%'d`Fizz`f>@F5~%'d`Buzz`@p
@@ -2700,7 +2703,8 @@ I think this shows clearly that it's resolving the problem and illuminating the 
 
 A solution that simply evaluates and adds.
 
-```cobol>         >
+```cobol
+         >
 SOURCE FORMAT FREE
 identification division.
 program-id. fizzbuzz.
@@ -2808,7 +2812,8 @@ for i in [1..100]
 
 cfscript version
 
-```cfm><cfscript
+```cfm
+<cfscript
 
 result = "";
   for(i=1;i<=100;i++){
@@ -3050,7 +3055,7 @@ end
 
 ## CSS
 
-<pre style="font-size:84%;height:75ex">
+```txt
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
@@ -3562,7 +3567,8 @@ OUTPUT(d);
 ## Eero
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()
@@ -5415,7 +5421,8 @@ Solution _1: Using agenda (@.) as a switch:
 
 Solution 0
 
-```j>
+```j
+
  }. (<'FizzBuzz') (I.0=15|n)} (<'Buzz') (I.0=5|n)} (<'Fizz') (I.0=3|n)} ":&.> n=: i.101
 ```
 
@@ -8066,7 +8073,8 @@ BUZZ
 
 Variable-length padded English dialect
 
-```sgml><# DEFINE USERDEFINEDROUTINE LITERAL
+```sgml
+<# DEFINE USERDEFINEDROUTINE LITERAL>
 __FizzBuzz|<# SUPPRESSAUTOMATICWHITESPACE>
 <# TEST ISITMODULUSZERO PARAMETER LITERAL>1|3</#>
 <# TEST ISITMODULUSZERO PARAMETER LITERAL>1|5</#>
@@ -8080,7 +8088,8 @@ __FizzBuzz|<# SUPPRESSAUTOMATICWHITESPACE>
 
 Fixed-length English dialect
 
-```sgml><@ DEFUDRLIT
+```sgml
+<@ DEFUDRLIT>
 __FizzBuzz|<@ SAW>
 <@ TSTMD0PARLIT>1|3</@>
 <@ TSTMD0PARLIT>1|5</@>
@@ -8750,8 +8759,7 @@ for (int i = 1; i <= 100; i++) {
 }
 ```
 
-
-<pre style="height:35ex">
+```txt
 1
 2
 Fizz
@@ -8872,8 +8880,7 @@ for(int i = 1; i <= 100; i++){
 }
 ```
 
-
-<pre style="height:35ex">
+```txt
 1
 2
 Fizz
@@ -9485,8 +9492,9 @@ This version's program logic closely mirrors the problem statement:
   end   /*j*/                                    /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''
-<pre style="height:40ex">
+Output:
+
+```txt
        1
        2
     Fizz
@@ -10408,7 +10416,8 @@ const proc: main is func
 
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl
 ;
 import <Utilities/Sequence.sl>;
 
@@ -11550,7 +11559,8 @@ for i 1 (i <= 100) ++i
 ## WDTE
 
 
-```WDTE>let io =
+```WDTE
+let io =
  import 'io';
 let s => import 'stream';
 

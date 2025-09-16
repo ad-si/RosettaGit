@@ -1888,7 +1888,8 @@ Difference between the operations: 1.1102230246252E-16
 ### Python: Decimal
 
 
-```python>>>
+```python
+>>>
  from decimal import *
 >>>
 >>> getcontext().prec = 6
@@ -1934,7 +1935,8 @@ Decimal('10005.85987')
 
 This was written as proof that the floating-point sub-task could work and is better off displayed, so...
 
-```python>>>
+```python
+>>>
  eps = 1.0
 >>> while 1.0 + eps != 1.0:
 	eps = eps / 2.0
@@ -1964,7 +1966,8 @@ Note also that the '''math.fsum''' function employs an even more precise algorit
 
 Some languages have a decimal type, but cannot alter its precision to six digits. This example mimmicks this case byusing the default Python decimal precision and a variant of epsilon finding that divides by ten instead of two.
 
-```python>>>
+```python
+>>>
  from decimal import localcontext, Decimal
 >>>
 >>> with localcontext() as ctx:

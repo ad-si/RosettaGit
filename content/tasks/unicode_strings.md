@@ -941,7 +941,8 @@ The jq command does have several options in support of flexibility when "communi
 
 Non-ASCII strings in Julia are UTF8-encoded by default, and Unicode identifiers are also supported:
 
-```Julia>julia
+```julia
+julia>
  四十二 = "voilà";
 julia> println(四十二)
 voilà
@@ -949,7 +950,8 @@ voilà
 
 And you can also specify unicode characters by ordinal:
 
-```Julia>julia
+```julia
+julia>
 println("\u2708")
 ✈
 ```
@@ -1271,7 +1273,9 @@ All methods on strings are UTF8 manipulations.
 ## Perl
 
 In Perl, "Unicode" means "UTF-8".  If you want to include utf8 characters in your source file, unless you have set <code>PERL_UNICODE</code> environment correctly, you should do
-```Perl>use utf8;</lang
+```perl
+use utf8;>
+```
  or you risk the parser treating the file as raw bytes.
 
 Inside the script, utf8 characters can be used both as identifiers and literal strings, and built-in string functions will respect it:

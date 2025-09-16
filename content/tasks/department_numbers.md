@@ -695,7 +695,8 @@ POLICE SANITATION FIRE
 =
 ## BBC BASIC
 =
-```bbcbasic>REM
+```bbcbasic
+REM>
 deptnums
 max_dept_num% = 7
 dept_sum% = 12

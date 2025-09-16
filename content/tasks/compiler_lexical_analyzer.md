@@ -1733,7 +1733,8 @@ namespace Rosetta {
 Using GnuCOBOL 2. By Steve Williams (with one change to get around a Rosetta Code code highlighter problem).
 
 
-```cobol>        >
+```cobol
+        >
 SOURCE FORMAT IS FREE
 *> this code is dedicated to the public domain
 *> (GnuCOBOL) 2.3-dev.0
@@ -4781,8 +4782,8 @@ lexical_analyzer
 
 ```
 
+```txt
 
-<pre style="height:30ex;overflow:scroll">
          5        16 Keyword_print
          5        40 Op_subtract
          6        16 Keyword_putc

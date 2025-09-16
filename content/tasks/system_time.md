@@ -327,7 +327,9 @@ PRINT HOUR(n), MINUTE(n), SECOND(n) FORMAT "%02d:%02d:%02d\n"
 
 This shows the system time in seconds since midnight.
 
-```qbasic>PRINT TIMER</lang
+```qbasic
+PRINT TIMER
+```
 
 
 This shows the time in human-readable format (using a 24-hour clock):
@@ -477,7 +479,8 @@ Console.WriteLine(DateTime.Now);
 ###  Script Based CFML
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   // Date Time
   currentTime = Now();
@@ -611,7 +614,8 @@ public program()
 ## Elixir
 
 
-```elixir>:os.timestamp                   # =
+```elixir
+:os.timestamp                   # =>
  {MegaSecs, Secs, MicroSecs}
 :erlang.time                    # => {Hour, Minute, Second}
 :erlang.date                    # => {Year, Month, Day}
@@ -646,13 +650,15 @@ It is also guaranteed that subsequent calls to this BIF returns continuously inc
 ## Erlang
 
 By default, Erlang timestamps are turned in the {megasecs, secs, microsecs} format.
-```erlang>1
+```erlang
+1>
  os:timestamp().
 {1250,222584,635452}
 ```
 
 These can be changed with the calendar module:
-```erlang>2
+```erlang
+2>
  calendar:now_to_datetime(os:timestamp()).
 3> calendar:now_to_universal_time(os:timestamp()).
 4> calendar:now_to_local_time(os:timestamp()).
@@ -725,7 +731,8 @@ April 10th, 2018 */
 <tt>DateTime.now</tt> returns the current time, which can then be formatted into different styles. For example, <tt>toJava</tt> returns the current time in milliseconds since 1 Jan 1970.
 
 <tt>DateTime.nowTicks</tt> returns the number of nanoseconds since 1 Jan 2000 UTC.
-```fantom>fansh
+```fantom
+fansh>
  DateTime.nowTicks
 351823905158000000
 fansh> DateTime.now
@@ -885,7 +892,9 @@ println 'Milliseconds since the start of the UNIX Epoch (Jan 1, 1970) == ' + now
 
 
 We can only show the clock, but this might not be set to system time:
-```guiss>Taskbar</lang
+```guiss
+Taskbar>
+```
 
 
 
@@ -951,7 +960,9 @@ Print("%04d-%02d-%02d %02d:%02d:%02d\n", ds.year, ds.mon, ds.day_of_mon, ds.hour
 The time of the current system event is made available on the subject in most contexts as <tt>now</tt>.
 
 
-```Hoon>now</lang
+```Hoon
+now>
+```
  ~2016.7.24..01.25.02..0f8e
 
 Absolute times have 64-bit subsecond precision, which is used to ensure that no two system events have the same timestamp.
@@ -987,7 +998,9 @@ The local time zone is ignored if the <tt>utc</tt> flag is used:
 ## Io
 
 
-```io>Date now println</lang
+```io
+Date now println>
+```
  2008-08-26 00:15:52 EDT
 
 =={{header|Icon}} and {{header|Unicon}}==
@@ -1252,7 +1265,9 @@ put _system.milliseconds
 ## LiveCode
 
 
-```LiveCode>put the system time</lang
+```LiveCode
+put the system time>
+```
 
 
 
@@ -1325,7 +1340,8 @@ ans =
 13-Aug-2010 12:59:56
 ```
 
-```MATLAB> clock
+```MATLAB
+ clock>
 ```
 <pre
 ans =
@@ -1714,7 +1730,9 @@ say $dt->year_with_secular_era();
 # etc.
 ```
 Unix epoch:
-```perl>print time;</lang
+```perl
+print time;
+```
  1280473609
 
 
@@ -1908,7 +1926,9 @@ print rejoin [now/year "-" now/month "-" now/day " " now/time]
 
 Displays the number of seconds since the Unix epoch:
 
-```Retro>time putn</lang
+```Retro
+time putn>
+```
 
 
 
@@ -2148,10 +2168,14 @@ say Time.micro_sec;          # => 1426770641.68409
 
 ## Smalltalk
 
-```smalltalk>DateTime now displayNl.</lang
+```smalltalk
+DateTime now displayNl.>
+```
  2011-08-10T00:43:36-0-7:00
 
-```smalltalk>DateAndTime now</lang
+```smalltalk
+DateAndTime now>
+```
  2011-08-16T19:40:37-03:00
 
 
@@ -2338,7 +2362,9 @@ Debug.Print Now()
 ## VBScript
 
 
-```vb>WScript.Echo Now</lang
+```vb
+WScript.Echo Now>
+```
 
 
 

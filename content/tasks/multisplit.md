@@ -1798,7 +1798,8 @@ Lst = [ax,'!=',==,b,=,'!=',c] .
 ### Using Regular expressions
 
 
-```python>>>
+```python
+>>>
  import re
 >>> def ms2(txt="a!===b=!=c", sep=["==", "!=", "="]):
 	if not txt or not sep:

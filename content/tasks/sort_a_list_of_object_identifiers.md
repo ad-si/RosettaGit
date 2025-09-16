@@ -640,7 +640,8 @@ In other words, for each line in that script, remove the spaces and put the rest
 Sorting:
 
 
-```J>
+```j
+>
 (/: __&".;._1&.('.'&,)&>) oids
 1.3.6.1.4.1.11.2.17.5.2.0.79
 1.3.6.1.4.1.11.2.17.19.3.4.0.1

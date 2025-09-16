@@ -1463,7 +1463,8 @@ fib n
 {{out}}
 Both functions provide the same output when run in GHCI.
 
-```haskell>ghci
+```haskell
+ghci
  map fib [-4..10]
 [Nothing,Nothing,Nothing,Nothing,Just 1,Just 1,Just 2,Just 3,Just 5,Just 8,Just 13,Just 21,Just 34,Just 55,Just 89]
 ```
@@ -2196,7 +2197,8 @@ Output:
 =={{header|Objective-C}}==
 This shows how a method (not regular function) can recursively call itself without explicitly putting its name in the code.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface AnonymousRecursion : NSObject { }
@@ -2235,7 +2237,8 @@ int main (int argc, const char *argv[]) {
 ;With internal named recursive block:
 {{works with|Mac OS X|10.6+}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int fib(int n) {
@@ -2267,7 +2270,8 @@ int main (int argc, const char *argv[]) {
 
 When ARC is disabled, the above should be:
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int fib(int n) {
@@ -2674,7 +2678,8 @@ fib(N, F) :-
 ## Python
 
 
-```python>>>
+```python
+>>
  Y = lambda f: (lambda x: x(x))(lambda y: f(lambda *args: y(y)(*args)))
 >>> fib = lambda f: lambda n: None if n < 0 else (0 if n == 0 else (1 if n == 1 else f(n-1) + f(n-2)))
 >>> [ Y(fib)(i) for i in range(-2, 10) ]
@@ -2684,7 +2689,8 @@ fib(N, F) :-
 
 Same thing as the above, but modified so that the function is uncurried:
 
-```python>>>
+```python
+>>
 from functools import partial
 >>> Y = lambda f: (lambda x: x(x))(lambda y: partial(f, lambda *args: y(y)(*args)))
 >>> fib = lambda f, n: None if n < 0 else (0 if n == 0 else (1 if n == 1 else f(n-1) + f(n-2)))
@@ -2695,7 +2701,8 @@ from functools import partial
 
 A different approach: the function always receives itself as the first argument, and when recursing, makes sure to pass the called function as the first argument also
 
-```python>>>
+```python
+>>
  from functools import partial
 >>> Y = lambda f: partial(f, f)
 >>> fib = lambda f, n: None if n < 0 else (0 if n == 0 else (1 if n == 1 else f(f, n-1) + f(f, n-2)))
@@ -3387,7 +3394,8 @@ function(n, f) {
 
 When typed into the REPL:
 
-```Sparkling>spn:1
+```sparkling
+spn:1>
  function(n, f) { return f(n, f); }(10, function(n, f) { return n < 2 ? 1 : f(n - 1, f) + f(n - 2, f); })
 = 89
 ```
@@ -3479,7 +3487,8 @@ println(fib(8))
 
 ;Using Y combinator:
 
-```swift>struct RecursiveFunc<F
+```swift
+struct RecursiveFunc<F
  {
   let o : RecursiveFunc<F> -> F
 }
@@ -3753,7 +3762,8 @@ def (fib n)
 ## WDTE
 
 
-```WDTE>let str =
+```WDTE
+let str =
  'strings';
 
 let fib n => switch n {

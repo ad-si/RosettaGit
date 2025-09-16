@@ -1599,14 +1599,16 @@ if bloop and math.abs then print(math.abs(bloop)) end
 
 The "version" kernel option returns a string similar to
 
-```Maple>
+```maple
+
  kernelopts( 'version' );
                  Maple 16.00, SUN SPARC SOLARIS, Mar 3 2012, Build ID 732982
 ```
 
 The following does the trick for the first bit.
 
-```Maple>
+```maple
+
  if sscanf( (StringTools:-Split(kernelopts(version))[2]), "%d.%d" )[1] < 300 then `quit`(1) end;
 ```
 
@@ -1614,7 +1616,8 @@ The following does the trick for the first bit.
 
 It doesn't really make sense to ask whether a variable "exists"; it springs into existence by uttering it in code.  So I'll interpret the problem as asking whether it is assigned some kind of numeric value to which abs() can be applied.
 
-```Maple>
+```maple
+
  if type( bloop, complex( extended_numeric ) ) and type( abs, mathfunc ) then print( abs( bloop ) ) end:
                                    1/2
                                  13
@@ -1622,7 +1625,8 @@ It doesn't really make sense to ask whether a variable "exists"; it springs into
 
 Note that it is not necessary to check that the name "bloop" is assigned (though it is possible to do so), since an unassigned name is a first-class value in Maple.  Another possible interpretation is that the symbolic expression
 
-```Maple>
+```maple
+
  abs( bloop );
                                | bloop |
 ```
@@ -1631,7 +1635,8 @@ is a perfectly good expression in Maple, so checking for the the "existence" of 
 
 Here are the number and sum of the assigned integer globals in my current (fresh) session.
 
-```Maple>
+```maple
+
  nops([anames](integer));
                                    3
 
@@ -2964,7 +2969,8 @@ EndPrgm
 Starting with Release 1.1, Toka allows for checking the version number:
 
 
-```toka>VERSION 101
+```toka
+VERSION 101>
  [ bye ] ifFalse
 ```
 
@@ -3104,7 +3110,9 @@ Under VBA (and most, if not all, variations of Visual Basic), accessing an undec
 To determine the version of the environment -- typically meaning which version of Microsoft Office is running -- the <code>Application</code> object has a <code>Version</code> property:
 
 
-```vb>If Application.Version < 15 Then Exit Sub</lang
+```vb
+If Application.Version < 15 Then Exit Sub
+```
 
 
 

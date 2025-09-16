@@ -30,10 +30,10 @@ n
 
 ==REXX example==
 In REXX
- if g>high then do                 
- call ser g 'is above the higher limit of' low                 
- iterate                 
- end 
+ if g>high then do
+ call ser g 'is above the higher limit of' low
+ iterate
+ end
 
 shouldn't this be high?
 
@@ -43,11 +43,12 @@ shouldn't this be high?
 
 Yes, corrected to:
 
-```rexx>  if g
+```rexx
+  if g
 high then do
                  call ser g 'is above the higher limit of' high
                  iterate
                  end
 ```
- 
+
 -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:30, 1 July 2012 (UTC)

@@ -511,7 +511,8 @@ ES5 Example: Using the list monad to express set comprehension
 Julia uses the function bind for binding a channel to a task, but this can be imported and overloaded. 
 The |> syntax in Julia can also be used to chain functions taking one argument.
 
-```julia>julia
+```julia
+julia>
  unit(v) = [v...]
 unit (generic function with 1 method)
 

@@ -3776,7 +3776,8 @@ END RangeExtraction.
 =={{header|Objective-C}}==
 We can use <code>NSIndexSet</code> to do this.
 However, it only works for non-negative integers.
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 NSString *extractRanges(NSArray *nums) {

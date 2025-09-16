@@ -630,7 +630,8 @@ The word list is read from stdin, so ideally requires an interpreter that can ac
 Memory usage isn't very efficient - the matching list is stored one word per line - so on a standard Befunge-93 interpreter there is an upper limit of 22 matches. This is not a problem for the unix dictionary, which only requires 16, but it's theoretically possible that other data sets could run out of space.
 
 
-```befunge>00p30p
+```befunge
+00p30p>
 _010p120p0>#v0~>>\$::48*\`\"~"`+!>>#v_$:#v_>30g:!#v_1-30p55+0>:30g3+g\1v
 >0#v _$^#::\p04:<^+>#1^#\p01:p02*g02!`\g01:<@$ _ ,#!>#:<$<^<!:g03$<_^#!`\g00:+<
 ^<o>\30g2+p40g1+^0p00p03+1*g03!-g00 < < < < < <:>#$:#$00g#<\#<`#<!#<2#$0g#<*#<_
@@ -2788,7 +2789,8 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```lang5>:
+```lang5
+:>
 string-index
     "" split
     "&'0123456789abcdefghijklmnopqrstuvwxyz" "" split

@@ -1186,7 +1186,9 @@ FUNCTION BYTE-LENGTH(str)
 
 
 Alternative, non-standard extensions:
-```cobol>LENGTH OF str</lang
+```cobol
+LENGTH OF str>
+```
 
 
 ```cobol
@@ -1733,7 +1735,9 @@ Here are two words to compute the byte length of strings. The first one doesn't 
 
 <code>length</code> works on any sequece, of which strings are one. Strings are UTF8 encoded.
 
-```factor>length</lang
+```factor
+length>
+```
 
 
 
@@ -2766,7 +2770,8 @@ StringByteCount["Hello world"]
 ### Character Length
 
 
-```MATLAB>>
+```MATLAB
+>>
  length('møøse')
 
 ans =
@@ -2779,7 +2784,8 @@ ans =
 
 MATLAB apparently encodes strings using UTF-16.
 
-```MATLAB>>
+```MATLAB
+>>
  numel(dec2hex('møøse'))
 
 ans =
@@ -4345,7 +4351,9 @@ var str = "J\x{332}o\x{332}s\x{332}e\x{301}\x{332}";
 
 UTF-8 byte length (default):
 
-```ruby>say str.bytes.len;       #=> 14</lang
+```ruby
+say str.bytes.len;       #=> 14
+```
 
 
 UTF-16 byte length:
@@ -4359,14 +4367,18 @@ say str.encode('UTF-16').bytes.len;      #=> 20
 ### Character Length
 
 
-```ruby>say str.chars.len;    #=> 9</lang
+```ruby
+say str.chars.len;    #=> 9
+```
 
 
 
 ### Grapheme Length
 
 
-```ruby>say str.graphs.len;   #=> 4</lang
+```ruby
+say str.graphs.len;   #=> 4
+```
 
 
 ## Simula
@@ -4581,7 +4593,8 @@ end
 ### Byte length
 
 
-```Sparkling>spn:1
+```sparkling
+spn:1>
  sizeof "Hello, wørld!"
 = 14
 ```

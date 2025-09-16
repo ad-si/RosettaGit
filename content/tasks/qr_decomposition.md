@@ -3178,7 +3178,8 @@ object QRDecomposition extends App {
 
 ## SequenceL
 
-```sequencel>import <Utilities/Math.sl
+```sequencel
+import <Utilities/Math.sl>
 ;
 import <Utilities/Sequence.sl>;
 import <Utilities/Conversion.sl>;

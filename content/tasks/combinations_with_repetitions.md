@@ -1684,7 +1684,8 @@ There are 220 possible combinations of 3 from 10
 Cartesian product, the monadic j verb { solves the problem.  The rest of the code handles the various data types, order, and quantity to choose, and makes a set from the result.
 
 
-```j>rcomb=:
+```j
+rcomb=:
 @~.@:(/:~&.>)@,@{@# <
 ```
 
@@ -1858,33 +1859,36 @@ The ways to choose 3 items from 10 with replacement = 220
 ### =Imperative=
 
 
-```javascript><html><head><title>Donuts</title></head
+```javascript
+<html>
+<head><title>Donuts</title></head>
+<body>
+  <pre id='x'></pre>
+  <script type="application/javascript">
+  function disp(x) {
+    var e = document.createTextNode(x + '\n');
+    document.getElementById('x').appendChild(e);
+  }
 
-<body><pre id='x'>
-```
-<script type="application/javascript">
-function disp(x) {
-	var e = document.createTextNode(x + '\n');
-	document.getElementById('x').appendChild(e);
-}
+  function pick(n, got, pos, from, show) {
+    var cnt = 0;
+    if (got.length == n) {
+      if (show) disp(got.join(' '));
+      return 1;
+    }
+    for (var i = pos; i < from.length; i++) {
+      got.push(from[i]);
+      cnt += pick(n, got, i, from, show);
+      got.pop();
+    }
+    return cnt;
+  }
 
-function pick(n, got, pos, from, show) {
-	var cnt = 0;
-	if (got.length == n) {
-		if (show) disp(got.join(' '));
-		return 1;
-	}
-	for (var i = pos; i < from.length; i++) {
-		got.push(from[i]);
-		cnt += pick(n, got, i, from, show);
-		got.pop();
-	}
-	return cnt;
-}
-
-disp(pick(2, [], 0, ["iced", "jam", "plain"], true) + " combos");
-disp("pick 3 out of 10: " + pick(3, [], 0, "a123456789".split(''), false) + " combos");
-</script></body></html>
+  disp(pick(2, [], 0, ["iced", "jam", "plain"], true) + " combos");
+  disp("pick 3 out of 10: " + pick(3, [], 0, "a123456789".split(''), false) + " combos");
+  </script>
+</body>
+</html>
 ```
 
 ```txt
@@ -2572,8 +2576,8 @@ print "There are $count ways to pick 7 out of 10\n";
 
 One could simply generate all [[Permutations_with_repetitions#Perl_6|permutations]], and then remove "duplicates":
 
-```perl6>my @S = <iced jam plain
-;
+```perl6
+my @S = <iced jam plain>;
 my $k = 2;
 
 .put for [X](@S xx $k).unique(as => *.sort.cache, with => &[eqv])
@@ -2931,7 +2935,8 @@ Ways to select 3 items from 10 types: 220
 ## Python
 
 
-```python>>>
+```python
+>>
  from itertools import combinations_with_replacement
 >>> n, k = 'iced jam plain'.split(), 2
 >>> list(combinations_with_replacement(n,k))
@@ -3643,7 +3648,8 @@ rows(a)
 ## Swift
 
 
-```Swift>func combosWithRep<T
+```swift
+func combosWithRep<T
 (var objects: [T], n: Int) -> [[T]] {
   if n == 0 { return [[]] } else {
     var combos = [[T]]()

@@ -2184,7 +2184,8 @@ def pascalsTriangle(n, out) {
 
 
 
-```e>def out := <file:triangle.html
+```e
+def out := <file:triangle.html>
 .textWriter()
 try {
     pascalsTriangle(15, out)
@@ -6608,7 +6609,9 @@ In edit mode insert:
 
 Then in command mode (basically don't put a number in front):
 
-```BASIC>RUN</lang
+```BASIC
+RUN>
+```
 
 ```txt
 

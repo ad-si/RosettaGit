@@ -2413,7 +2413,7 @@ Evolution.select("METHINKS IT IS LIKE A WEASEL")
 ```
 
 
-<pre style="height: 40ex; overflow: scroll">
+```txt
 Generation: 0, Offspring: AFOSPRRLTLF CQKYFIGUMEUVBLRN
 Generation: 1, Offspring: HFOMJRRESLL FQKYQRGUM UVBLRN
 Generation: 2, Offspring: HFOMCRLIDLL FDKYQRGNM UVBLIN
@@ -4274,7 +4274,7 @@ WeaselAlgorithm
 
 ```
 
-<pre style="height:30ex;overflow:scroll>
+```txt
 Fitness |Target: METHINKS IT IS LIKE A WEASEL |Total strings
     3,6%         ZZBZSVEOWPSQGJXNIXTFQCDQTJFE        30
     7,1%         ZZBZSVEOWPSQGJXNIXTFQCDQAJFE        60
@@ -4661,7 +4661,8 @@ end %classdef
 
 Sample Output: (Some evolutionary cycles omitted for brevity)
 
-```MATLAB>>
+```matlab
+>
  instance = EvolutionaryAlgorithm('METHINKS IT IS LIKE A WEASEL',.08,50,1000)
 Target: METHINKS IT IS LIKE A WEASEL
 Parent: UVEOCXXFBGDCSFNMJQNWTPJ PCVA
@@ -7401,7 +7402,8 @@ const proc: main is func
 '''SequenceL Code:'''
 
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl
 ;
 
 AllowedChars := " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -7485,7 +7487,7 @@ int main(int argc, char** argv)
 ```
 
 
-<pre style="height: 40ex; overflow: scroll">
+```txt
 Start:	"EDVSWRXSQWK VWUOGAWSTRJWY EW"
 #1:	"EDVSWRXSQIK VWUOGAWSTRJWY EW"
 #2:	"EDVSWRXSQIK VWUOGAESTRJWY EW"
@@ -7713,7 +7715,8 @@ String subclass: Mutant [
 
 Use example:
 
-```Smalltalk>st
+```smalltalk
+st
  Mutant run: 2500 rate: 0.1
 QJUUIQHYXEZORSXGJCAHEWACH KG
 QJUUIQHYXEZORSXGJCAHEWWCMSKG
@@ -8587,7 +8590,6 @@ gen:=0; do{  // mutate C copies of parent and pick the fittest
 ```
 
 ```txt
-
 Gen  1, dist=26: JNGUIMCMOLLEULERIFPCYYZA  JR
 Gen  2, dist=25: JNGUIMCMOLLEULERIFECYYZA  JR
 Gen  3, dist=24: JNGUIMVMOLLEILERIFECYYZA  JU

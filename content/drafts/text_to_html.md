@@ -19,7 +19,7 @@ The plain text has no formatting information.
 
 It may have centered headlines, numbered sections, paragraphs, lists, and URIs. It could even have tables.
 
-Simple converters restrict themselves at identifying paragraphs, but i believe more can be done if the text is analyzed. 
+Simple converters restrict themselves at identifying paragraphs, but i believe more can be done if the text is analyzed.
 
 You are not requested to copy the algorithm from the existing solutions but use whatever faculties available in your language to best solve the problem.
 
@@ -48,7 +48,7 @@ This is an example of converting plain text to HTML which demonstrates extractin
 
 * And this is its second line with a greater than sign (>)
 
-A 'normal' paragraph between the lists. 
+A 'normal' paragraph between the lists.
 
 1. This is a numbered list with an ampersand (&)
 
@@ -127,7 +127,8 @@ func main() {
 
 {{out}}
 
-```html><html
+```html
+<html
 
 <head><title>Sample Text</title></head>
 <body>
@@ -185,10 +186,10 @@ end function
 constant text = """
   This is
   a paragraph
- 
+
       a block of
       code
- 
+
   * A one-bullet list
     > With quoted text
     >
@@ -199,7 +200,7 @@ puts(1,text_to_html_page("my title",text))
 ```
 
 {{out}}
-The last line of text_to_html() (as commented out) was used to generate the 
+The last line of text_to_html() (as commented out) was used to generate the
 sanitised version of the output, as needed for inclusion on this page.
 
 ```txt
@@ -250,15 +251,15 @@ this implementation is still incomplete.
 ```Pike
 // function to calculate the average line length (not used yet below)
 int linelength(array lines)
-{ 
-    array sizes = sizeof(lines[*])-({0}); 
-    sizes = sort(sizes); 
+{
+    array sizes = sizeof(lines[*])-({0});
+    sizes = sort(sizes);
 
     // only consider the larger half of lines minus the top 5%
     array larger = sizes[sizeof(sizes)/2..sizeof(sizes)-sizeof(sizes)/20];
 
     int averagelarger = `+(@larger)/sizeof(larger);
-    return averagelarger; 
+    return averagelarger;
 }
 
 array mark_up(array lines)
@@ -282,7 +283,7 @@ array mark_up(array lines)
                 markup += ({ ({ "number", strippedline, pos }) });
             else if (pos > 0)
                 markup += ({ ({ "indent", strippedline, pos }) });
-            else            
+            else
                 markup += ({ ({ "regular", strippedline, pos }) });
         }
         else markup += ({ ({ "empty" }) });
@@ -315,7 +316,7 @@ array mark_up(array lines)
 
 object make_tree(array markup)
 {
-    object root = Parser.XML.Tree.SimpleRootNode(); 
+    object root = Parser.XML.Tree.SimpleRootNode();
     object newline = Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), "\n");
     array current = ({ Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_ELEMENT, "div", ([]), "") });
     root->add_child(current[-1]);
@@ -324,7 +325,7 @@ object make_tree(array markup)
     {
         switch(line[0])
         {
-            case "heading": 
+            case "heading":
                       current[-1]->add_child(newline);
                       object h = Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_ELEMENT, "h3", ([]), "");
                       h->add_child(Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), line[1]));
@@ -351,19 +352,19 @@ object make_tree(array markup)
                       current[-1]->add_child(newline);
             case "begin paragraph":
                       object p = Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_ELEMENT, "p", ([]), "");
-                      current[-1]->add_child(p); 
+                      current[-1]->add_child(p);
                       current = Array.push(current, p);
                  break;
             case "end paragraph":
                       current = Array.pop(current)[1];
                       current[-1]->add_child(newline);
                  break;
-            case "regular":           
+            case "regular":
                       current[-1]->add_child(Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), line[1]));
-            case "empty": 
+            case "empty":
                   break;
-        } 
-    }   
+        }
+    }
     return root;
 }
 ```
@@ -373,10 +374,10 @@ object make_tree(array markup)
 ## Racket
 
 
-This task seems like it's very under-defined, but the discussion seems to be headed towards a simple markdown specification.  
+This task seems like it's very under-defined, but the discussion seems to be headed towards a simple markdown specification.
 I therefore do this with a small interface to [https://github.com/jgm/cmark cmark] to render [http://commonmark.org/ commonmark] text.
 
-(Note that this is not some cooked code, it's coming from code that I'm using to render class notes, and hopefully it will be useful to have such an example here.  
+(Note that this is not some cooked code, it's coming from code that I'm using to render class notes, and hopefully it will be useful to have such an example here.
 It certainly seems to me as a useful thing compared to some half-baked not-really-markdown-or-anything implementation.)
 
 
@@ -545,7 +546,8 @@ puts [markupText "Sample" $sample]
 
 {{out}}
 
-```html><html><head><title>Sample</title
+```html
+<html><head><title>Sample</title
 
 </head><body><h1>Sample</h1>
 <p>This is an example of how a pseudo-markdown-ish formatting scheme could work. It's really much simpler than markdown, but does support a few things.</p>

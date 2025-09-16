@@ -417,7 +417,8 @@ Total price  = 349.378379
 The table of weights and prices are stored as strings to make them easier to edit. Two characters for the weight (with the decimal point dropped), two characters for the price, and then the name of the item. The total numbers of items (9) is specified by the first value on the stack.
 
 
-```befunge>9:02p
+```befunge
+9:02p>
 :5+::::::0\g68*-55+*\1\g68*-+\0\pv>2gg!*::!2v
 >\`!v|:-1p\3\0p\2\+-*86g\3\*+55-*86g\2<<1v*g21\*g2<
 nib@_>0022p6>12p:212gg48*:**012gg/\-:0`3^+>,,55+%6v

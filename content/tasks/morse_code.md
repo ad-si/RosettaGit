@@ -2479,7 +2479,8 @@ end %text2morse
 
 {{out}} This will play the audio automatically, because the playSound argument is "true".
 
-```MATLAB>>
+```MATLAB
+>>
  text2morse('Call me Ishmael.',true)
 
 ans =

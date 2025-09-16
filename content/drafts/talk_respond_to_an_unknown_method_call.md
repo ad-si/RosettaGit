@@ -33,14 +33,14 @@ Sorry, I don't get it. The examples *do* demonstrate how to respond to an unknow
 ::: BTW, note that under the premise that "the object responds to the method call" the Common Lisp solution is also wrong. The "object" by itself doesn't do anything. The CL solution defines a _default_handler_, which is effectively the same as taking a _default_action_ after calling 'try'. (Not to mention that the latter method is more flexible, the action can be also dynamic depending on the situation, while the default handler is static and immutable at that moment) --[[User:Abu|Abu]] 12:03, 7 November 2011 (UTC)
 :::: but writing a default handler is the point of this task as i understand it. ''check if a method exists and do something else otherwise'' is a different task. for that most solutions could be reduced to:
 
-```Pike
+```pike
 if (obj->foo)
     obj->foo();
 else
     write("sorry, obj doesn't do foo");
 ```
 
-:::: the task wants to find out how to preempt an unknown method call. how to write code that can handle any method call ''before it is known'' which method a user wants to call. 
+:::: the task wants to find out how to preempt an unknown method call. how to write code that can handle any method call ''before it is known'' which method a user wants to call.
 :::: the common lisp solution is within the limits of CLOS. objects/classes there don't have methods, but methods are written to handle certain objects. the difference is that the default handle actually receives the original message and can handle it. this is not the case in your solution. in your solution you are simply testing if a method exists when you send the message and do something else if not.
 :::: the handling of the unknown method should not happen on the sending side, but on the receiving side. in other words: <code>(send 'method1> Obj)</code> should not fail. using <code>(try)</code> looks more like a cautious way to send a method.
 :::: you could probably implement something similar to what common lisp has: a function <code>(no-applicable-method)</code> that is called if <code>(try)</code> fails, together with a new version of <code>(send)</code>:
@@ -63,7 +63,7 @@ else
 ::::the important part is that the name <code>message1></code> is received by <code>(no-applicable-method>)</code> so that it can react differently to different messages.
 :::: the difference is that <code>(no-applicable-method>)</code> and <code>(send*)</code> can be part of your library, while a user of the library only needs to do <code>(send* 'message1> Obj)</code>. this would be even more flexible than the common lisp solution where at least a generic function needs to exist before <code>(no-applicable-method)</code> can be called. but the generic function doesn't do much more than what <code>(send*)</code> would do in this example.--[[User:EMBee|eMBee]] 13:15, 7 November 2011 (UTC)
 ::::: Hmm, OK, though I'm not convinced. The task description doesn't say it this way. So I'll redefine 'send'. --[[User:Abu|Abu]] 14:01, 7 November 2011 (UTC)
-:::::: well, maybe i am missinterpreting the task, we'd have to ask the creator. 
+:::::: well, maybe i am missinterpreting the task, we'd have to ask the creator.
 :::::: i looked at the picoLisp docs and found that in difference to eg common lisps CLOS picoLisp classes actually do have member functions. now i am wondering, in your solution you define <code>(no-applicable-method>)</code> as a regular function and not as a class method. couldn't you also do this?
 
 ```lisp
@@ -85,7 +85,7 @@ else
 
 I'm hoping this satisfies the intent of the task.  It does not catch the unknown method at compile time, it does not throw an exception, it does not force the caller to check for the existance of the method nor force the caller to handle the absence of the exception.  The caller calls a method on an object, and then it is that method, a method of the receiving object, that handles the absense of the requested method.  Defining a CallMethod method seems much like what is done in some other languages when a handler is defined to handle unknown method calls.
 
-The remaining variance which might invalidate the solution is that the method isn't called directly.  Go has no syntax for, 
+The remaining variance which might invalidate the solution is that the method isn't called directly.  Go has no syntax for,
 ```txt
 object.<expression that evaluates to a method>()
 ```

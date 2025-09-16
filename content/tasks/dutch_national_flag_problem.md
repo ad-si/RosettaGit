@@ -1879,7 +1879,9 @@ i2b=: {&(;:'red white blue')
 
 and its inverse
 
-```J>b2i=: i2b inv</lang
+```j
+b2i=: i2b inv
+```
 
 Next, we need a random assortment of balls:
 
@@ -2473,7 +2475,8 @@ You can run it with no parameters, it sorts 10 balls in such a case. If you prov
 
 Here are five ways to do it, all one liners (apart from the test apparatus).
 
-```perl6>enum NL <red white blue
+```perl6
+enum NL <red white blue
 ;
 my @colors;
 

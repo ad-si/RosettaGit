@@ -1577,7 +1577,9 @@ trialfac 929
 ```
 
 
-```j>trialfac 44497</lang
+```j
+trialfac 44497
+```
 
 Empty output --> No factors found.
 
@@ -2941,7 +2943,8 @@ object FactorMersenne extends App {
 }
 ```
 
-<pre style="height:40ex;overflow:scroll">  M2 = 2^002 - 1 =                              3 is a Mersenne prime number.           (63 msec)
+```txt
+  M2 = 2^002 - 1 =                              3 is a Mersenne prime number.           (63 msec)
   M3 = 2^003 - 1 =                              7 is a Mersenne prime number.            (0 msec)
   M5 = 2^005 - 1 =                             31 is a Mersenne prime number.            (1 msec)
   M7 = 2^007 - 1 =                            127 is a Mersenne prime number.            (2 msec)

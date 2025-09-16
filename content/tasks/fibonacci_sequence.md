@@ -655,7 +655,8 @@ end Fib;
 ```
 
 
-===Iterative, build-in integers===
+### Iterative, build-in integers
+
 
 ```ada
 with Ada.Text_IO;  use Ada.Text_IO;
@@ -697,7 +698,8 @@ end Test_Fibonacci;
 ```
 
 
-===Iterative, long integers===
+### Iterative, long integers
+
 
 Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/].
 
@@ -971,7 +973,8 @@ main:(
 ```
 
 
-===Array (Table) Lookup===
+### Array (Table) Lookup
+
 This uses a pre-generated list, requiring much less run-time processor usage, but assumes that INT is only 31 bits wide.
 
 ```algol68
@@ -1017,7 +1020,7 @@ print(new line)
 =={{header|ALGOL-M}}==
 Note that the 21st Fibonacci number (= 10946) is the largest that can be calculated without overflowing ALGOL-M's integer data type.
 
-### =Iterative=
+### Iterative=
 
 
 ```algol
@@ -1038,7 +1041,7 @@ END;
 
 
 
-### =Naively recursive=
+### Naively recursive=
 
 
 ```algol
@@ -1175,7 +1178,7 @@ public static List<Integer> makeSeq(Integer len){
 =
 
 
-### =Naive Recursive=
+### Naive Recursive=
 
 
 
@@ -1194,7 +1197,7 @@ This naive solution requires Dyalog APL because GNU APL does not support this sy
 ## GNU APL/Dyalog APL
 =
 
-### =Array=
+### Array=
 
 
 Since APL is an array language we'll use the following identity:
@@ -1222,7 +1225,7 @@ At this point we're basically done, but we need to pick out only <math>F_n</math
 
 
 
-### =Analytic=
+### Analytic=
 
 An alternative approach, using Binet's formula (which was apparently known long before Binet):
 
@@ -1562,7 +1565,8 @@ end // end of [fibats]
 ```
 
 
-===Matrix-based===
+### Matrix-based
+
 
 ```ATS
 
@@ -1979,7 +1983,8 @@ Only works with quite small values of <math>n</math>.
 ```
 
 
-==={{header|IS-BASIC}}===
+### {{header|IS-BASIC}}
+
 <lang IS-BASIC>100 PROGRAM "Fibonac.bas"
 110 FOR I=0 TO 20
 120   PRINT "F";I,FIB(I)
@@ -1998,7 +2003,7 @@ Only works with quite small values of <math>n</math>.
 =
 ## QBasic
 =
-### =Iterative=
+### Iterative=
 
 
 ```qbasic
@@ -2076,7 +2081,7 @@ END FUNCTION
 
 
 
-### =Recursive=
+### Recursive=
 
 This example can't handle n < 0.
 
@@ -2092,7 +2097,8 @@ END FUNCTION
 ```
 
 
-====Array (Table) Lookup====
+### =Array (Table) Lookup
+=
 
 This uses a pre-generated list, requiring much less run-time processor usage. (Since the sequence never changes, this is probably the best way to do this in "the real world". The same applies to other sequences like prime numbers, and numbers like pi and e.)
 
@@ -2126,7 +2132,7 @@ PRINT
 ## Sinclair ZX81 BASIC
 =
 
-### =Analytic=
+### Analytic=
 
 
 ```basic
@@ -2136,7 +2142,7 @@ PRINT
 
 
 
-### =Iterative=
+### Iterative=
 
 
 ```basic
@@ -2153,7 +2159,7 @@ PRINT
 
 
 
-### =Tail recursive=
+### Tail recursive=
 
 
 ```basic
@@ -2343,7 +2349,8 @@ quit
 
 
 
-```beeswax>                        #
+```beeswax
+                        #
 '#{;
 _`Enter n: `TN`Fib(`{`)=`X~P~K#{;
                          #>~P~L#MM@>+@'q@{;
@@ -2356,7 +2363,8 @@ Example output:
 Notice the UInt64 wrap-around at <code>Fib(94)</code>!
 
 
-```julia>julia
+```julia
+julia
  beeswax("n-th Fibonacci number.bswx")
 Enter n: i0
 
@@ -2393,7 +2401,8 @@ Program finished!
 ## Befunge
 
 
-```befunge>00:.1:.
+```befunge
+00:.1:.
 :"@"8**++\1+:67+`#@_v
        ^ .:\/*8"@"\%*8"@":\ <
 ```
@@ -2981,7 +2990,8 @@ public static ulong Fib(uint n) {
 ```
 
 
-=== Tail-Recursive ===
+###  Tail-Recursive
+
 
 ```c#
 
@@ -3019,7 +3029,8 @@ public static ulong Fib(uint x) {
 ```
 
 
-=== Eager-Generative ===
+###  Eager-Generative
+
 
 ```c#
 
@@ -3041,7 +3052,8 @@ public static IEnumerable<long> Fibs(uint x) {
 ```
 
 
-=== Lazy-Generative ===
+###  Lazy-Generative
+
 
 ```c#
 
@@ -3075,7 +3087,6 @@ ulong Fib(uint n) {
 }
 
 ```
-
 
 
 ###  Matrix
@@ -3122,7 +3133,8 @@ private static void MatrixPow(double n){
 ```
 
 
-=== Array (Table) Lookup ===
+###  Array (Table) Lookup
+
 
 ```c#
 
@@ -3411,15 +3423,14 @@ A more elegant solution is inspired by the Haskell implementation of an infinite
 
 Then, to see the first ten,
 
-```Clojure>user
+```clojure
+user
  (take 10 fib)
 (0 1 1 2 3 5 8 13 21 34)
 ```
 
 
-
 ### Iterative
-
 
 Here's a simple interative process (using a recursive function) that carries state along with it (as args) until it reaches a solution:
 
@@ -3446,7 +3457,8 @@ Here's a simple interative process (using a recursive function) that carries sta
 
 "defn-" means that the function is private (for use only inside this library). The "N" suffixes on integers tell Clojure to use arbitrary precision ints for those.
 
-===Doubling Algorithm (Fast)===
+### Doubling Algorithm (Fast)
+
 Based upon the doubling algorithm which computes in O(log (n)) time as described here https://www.nayuki.io/page/fast-fibonacci-algorithms
 Implementation credit: https://stackoverflow.com/questions/27466311/how-to-implement-this-fast-doubling-fibonacci-algorithm-in-clojure/27466408#27466408
 
@@ -3578,7 +3590,8 @@ Procedure Division.
 
 ### Recursive
 
-```cobol>       >
+```cobol
+       >
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. fibonacci-main.
@@ -4354,7 +4367,8 @@ This program calculates the <i>n</i>th—by default the tenth—number in the Fi
 ```edsac
 [ Fibonacci sequence
 
-### ============
+###
+==
 
 
   A program for the EDSAC
@@ -4772,7 +4786,8 @@ FIB( 20 )= 6765
 
 ## Euphoria
 
-==='Recursive' version===
+### 'Recursive' version
+
 ```Euphoria
 
 function fibor(integer n)
@@ -4783,7 +4798,8 @@ end function
 ```
 
 
-==='Iterative' version===
+### 'Iterative' version
+
 ```Euphoria
 
 function fiboi(integer n)
@@ -4800,7 +4816,8 @@ end function
 ```
 
 
-==='Tail recursive' version===
+### 'Tail recursive' version
+
 ```Euphoria
 
 function fibot(integer n, integer u = 1, integer s = 0)
@@ -4817,7 +4834,8 @@ end function
 ```
 
 
-==='Paper tape' version===
+### 'Paper tape' version
+
 ```Euphoria
 
 include std/mathcons.e -- for PINF constant
@@ -4942,7 +4960,8 @@ end while
 ```
 
 
-===Tail-Recursive===
+### Tail-Recursive
+
 
 ```factor
 : fib2 ( x y n -- a )
@@ -5467,7 +5486,9 @@ Function  fibonacci(n As Integer) As String
 End Function
 
 '
-### ===========  EXAMPLE ============
+###
+=  EXAMPLE
+
 
 print "THE SEQUENCE TO 10:"
 print
@@ -5762,7 +5783,8 @@ def fib( n ) =
 ```
 
 
-=== Binet's Formula ===
+###  Binet's Formula
+
 
 ```funl
 import math.sqrt
@@ -6011,7 +6033,9 @@ Fibonacci(n);
 ## Gecho
 
 
-```gecho>0 1 dup wover + dup wover + dup wover + dup wover +</lang
+```gecho
+0 1 dup wover + dup wover + dup wover + dup wover +>
+```
 
 Prints the first several fibonacci numbers...
 
@@ -6406,7 +6430,7 @@ fib n = go n 0 1
 
 
 
-### = With lazy lists =
+###  With lazy lists =
 
 This is a standard example how to use lazy lists. Here's the (infinite) list of all Fibonacci numbers:
 
@@ -6439,7 +6463,7 @@ fib = 0 : scanl (+) 1 fib
 
 
 
-### = As a fold =
+###  As a fold =
 
 Accumulator holds last two members of the series:
 
@@ -6668,7 +6692,8 @@ dec f : num -> num;
 ```
 
 
-===Tail-recursive===
+### Tail-recursive
+
 
 ```hope
 dec fib : num -> num;
@@ -6975,7 +7000,8 @@ public static long anFibN(final long n)
 }
 ```
 
-===Tail-recursive===
+### Tail-recursive
+
 
 ```java
 public static long fibTailRec(final int n)
@@ -7024,7 +7050,7 @@ public class FibUtil {
 ### ES5
 
 
-### =Recursive=
+### Recursive=
 
 Basic recursive function:
 
@@ -7073,7 +7099,7 @@ function fib(n) {
 
 
 
-### =Memoization=
+### Memoization=
 
 
 With the keys of a dictionary,
@@ -7122,7 +7148,8 @@ with the indices of an array,
 ```
 
 
-====Y-Combinator====
+### =Y-Combinator
+=
 
 ```javascript
 function Y(dn) {
@@ -7136,7 +7163,9 @@ function Y(dn) {
 }
 var fib = Y(function(fn) {
     return function(n) {
-        if (n === 0 || n === 1) {
+        if (n
+         0 || n
+         1) {
             return n;
         }
         return fn(n - 1) + fn(n - 2);
@@ -7146,7 +7175,7 @@ var fib = Y(function(fn) {
 
 
 
-### =Generators=
+### Generators=
 
 
 ```javascript
@@ -7168,7 +7197,7 @@ var fib = fibonacciGenerator();
 
 
 
-### =Memoized=
+### Memoized=
 
 
 If we want access to the whole preceding series, as well as a memoized route to a particular member,
@@ -7326,7 +7355,8 @@ yields:
 ```
 
 
-===Binet's Formula===
+### Binet's Formula
+
 
 ```jq
 def fib_binet(n):
@@ -8883,7 +8913,8 @@ fibo(139)=50095301248058391139327916261
 
 ```
 
-===Binet's Formula===
+### Binet's Formula
+
 
 ```smallbasic
 ' Fibonacci sequence - Binet's Formula - 31/07/2018
@@ -9039,7 +9070,7 @@ Instruction: ''n'' В/О С/П, where ''n'' is serial number of the number of Fi
 ## Standard ML
 =
 
-### =Recursion=
+### Recursion=
 
 This version is tail recursive.
 
@@ -9057,7 +9088,7 @@ fun fib n =
 ## MLite
 =
 
-### =Recursion=
+### Recursion=
 
 Tail recursive.
 
@@ -9152,7 +9183,8 @@ PROCEDURE Fib(n: INTEGER): INTEGER =
 ```
 
 
-=== Iterative (with negatives) ===
+###  Iterative (with negatives)
+
 
 
 ```modula3
@@ -9559,7 +9591,8 @@ fibr is op n {fork [2>, +, + [fibr (-1 +), fibr (-2 +)]] n};
 ...or tacit version. More than twice as fast (?) but still slow:
 
 
-```nial>fibr2 is fork [2
+```nial
+fibr2 is fork [2
 , +, + [fibr2 (-1 +), fibr2 (-2 +)]];
 ```
 
@@ -9646,7 +9679,8 @@ proc Fibonacci(n: int): int64 =
 ```
 
 
-===Tail-recursive===
+### Tail-recursive
+
 
 ```nim
 proc Fibonacci(n: int, current: int64, next: int64): int64 =
@@ -9911,7 +9945,8 @@ $ ./fib -6
 ```
 
 
-=== O(log(n)) with arbitrary precision ===
+###  O(log(n)) with arbitrary precision
+
 This performs log2(N) matrix multiplys. Each multiplication is not constant-time but increases sub-linearly, about O(log(N)).
 
 ```ocaml
@@ -10131,7 +10166,8 @@ end
 ```
 
 
-===Tail-recursive===
+### Tail-recursive
+
 Using accumulators.
 
 ```oz
@@ -10149,7 +10185,8 @@ end
 ```
 
 
-===Lazy-recursive===
+### Lazy-recursive
+
 
 ```oz
 declare
@@ -10178,7 +10215,8 @@ in
 
 ## PARI/GP
 
-===Built-in===
+### Built-in
+
 
 ```parigp
 fibonocci(n)
@@ -10366,7 +10404,8 @@ fib(n)=abs(polchebyshev(n-1,2,I/2));
 ```
 
 
-===Anti-Hadamard matrix===
+### Anti-Hadamard matrix
+
 All n×n [https://en.wikipedia.org/wiki/Logical_matrix (0,1)] lower [https://en.wikipedia.org/wiki/Hessenberg_matrix Hessenberg matrices] have determinant at most F(n). The n×n anti-Hadamard matrix<ref>
 R. L. Graham and N. J. A. Sloane, [http://www.math.ucsd.edu/~ronspubs/84_03_anti_hadamard.pdf Anti-Hadamard matrices], Linear Algebra Appl. 62 (1984), 113–137.</ref> matches this upper bound, and hence can be used as an inefficient method for computing Fibonacci numbers of positive index. These matrices are the same as Matlab's type-3 "Dramadah" matrices, following a naming suggestion of C. L. Mallows according to Graham & Sloane.
 
@@ -10399,7 +10438,8 @@ fib(n)=
 ```
 
 
-===One-by-one===
+### One-by-one
+
 This code is purely for amusement and requires n > 1. It tests numbers in order to see if they are Fibonacci numbers, and waits until it has seen ''n'' of them.
 
 ```parigp
@@ -11448,7 +11488,8 @@ F = 102334155.
 
 As you can see, the calculation time goes up exponentially as N goes higher.
 
-===Poor man's memoization===
+### Poor man's memoization
+
 The performance problem can be readily fixed by the addition of two lines of code (the first and last in this version):
 
 ```prolog
@@ -11728,7 +11769,8 @@ EndProcedure
 ```
 
 
-===Recursive & optimized with a static hash table===
+### Recursive & optimized with a static hash table
+
 This will be much faster on larger n's, this as it uses a table to store known parts instead of recalculating them.
 On my machine the speedup compares to above code is
  Fib(n) Speedup
@@ -11936,7 +11978,8 @@ Output:
 
 
 
-===Better Recursive doesn't need Memoization===
+### Better Recursive doesn't need Memoization
+
 
 The recursive code as written two sections above is incredibly slow and inefficient due to the nested recursion calls.  Although the memoization above makes the code run faster, it is at the cost of extra memory use.  The below code is syntactically recursive but actually encodes the efficient iterative process, and thus doesn't require memoization:
 
@@ -11967,7 +12010,7 @@ def fibGen(n):
 ```
 
 
-### =Example use=
+### Example use=
 
 
 ```python
@@ -11979,7 +12022,8 @@ def fibGen(n):
 ```
 
 
-===Matrix-Based===
+### Matrix-Based
+
 Translation of the matrix-based approach used in F#.
 
 ```python
@@ -12098,7 +12142,7 @@ print(tuple(islice(fib(), 10)))
 ### As a scan or a fold
 
 
-### =itertools.accumulate=
+### itertools.accumulate=
 
 The Fibonacci series can be defined quite simply and efficiently as a scan or accumulation, in which the accumulator is a pair of the two last numbers.
 ```python
@@ -12142,7 +12186,7 @@ First twenty: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 15
 
 
 
-### =functools.reduce=
+### functools.reduce=
 
 
 A fold can be understood as an amnesic scan, and functools.reduce can provide a useful and efficient re-write of the scanning version above, if we only need the Nth term in the series:
@@ -12458,7 +12502,7 @@ fib:  procedure; parse arg n;        an= abs(n)  /*use  │n│   (the absolute 
                              return -$           /*Negative and odd? Return negative sum*/
 ```
 
-<pre style="height:63ex">
+```txt
 Fibonacci(-40) =  -102334155
 Fibonacci(-39) =    63245986
 Fibonacci(-38) =   -39088169
@@ -12559,7 +12603,8 @@ Fibonacci(10000) has a length of  2090  decimal digits
 
 ## Rockstar
 
-===Iterative (minimized)===
+### Iterative (minimized)
+
 
 ```Rockstar
 
@@ -12577,7 +12622,8 @@ Say Fibonacci taking 1000 (prints out highest number in Fibonacci sequence less 
 ```
 
 
-===Iterative (idiomatic)===
+### Iterative (idiomatic)
+
 
 ```Rockstar
 
@@ -12784,7 +12830,8 @@ irb(main):035:0> 9.times { puts fg.call}
 ```
 
 
-===Binet's Formula===
+### Binet's Formula
+
 
 ```ruby
 def fib
@@ -12876,7 +12923,8 @@ fn fibonacci(mut prev: usize, mut curr: usize) {
 ```
 
 
-===Recursive (with pattern matching)===
+### Recursive (with pattern matching)
+
 
 ```rust
 fn fib(n: u32) -> u32 {
@@ -12889,7 +12937,8 @@ fn fib(n: u32) -> u32 {
 ```
 
 
-===Tail recursive (with pattern matching)===
+### Tail recursive (with pattern matching)
+
 
 ```rust
 fn fib_tail_recursive(nth: usize) -> usize {
@@ -13514,7 +13563,8 @@ func fib_mem (n) is cached {
 ```
 
 
-===Closed-form===
+### Closed-form
+
 
 ```ruby
 func fib_closed(n) {
@@ -13525,7 +13575,8 @@ func fib_closed(n) {
 ```
 
 
-===Built-in===
+### Built-in
+
 
 ```ruby
 say fib(12)    #=> 144
@@ -13559,12 +13610,15 @@ END;
 ## SkookumScript
 
 
-===Built-in===
+### Built-in
+
 
 SkookumScript's <code>Integer</code> class has a fast built-in <code>fibonnaci()</code> method.
 
 
-```javascript>42.fibonacci</lang
+```javascript
+42.fibonacci
+```
 
 
 SkookumScript is designed to work in tandem with C++ and its strength is at the high-level stage-direction of things. So when confronted with [http://skookumscript.com/blog/2016/07-11-fibonacci/ benchmarking scripting systems] it is genrally better to make a built-in call. Though in most practical cases this isn't necessary.
@@ -13776,7 +13830,8 @@ end
 ```
 
 
-===Tail-recursive===
+### Tail-recursive
+
 
 ```SNOBOL4
         define('trfib(n,a,b)') :(trfib_end)
@@ -13858,18 +13913,20 @@ fib\==>>+<<?!/>!\      ?/\
 ### Recursive
 
 
-```snusp>             /
-### ==
+```snusp
+             /
+### =
 \    />
 +<<-\  />+<-\
 fib==!/?!\-?!\->+>+<<?/>>-@\
-### ==?/<@\
+### =?/<@\
 ?/<#
       |  #+==/     fib(n-2)|+fib(n-1)|
       \
-### ==recursion===
+### =recursion
+
 /!
-### ==
+### =
 /
 ```
 
@@ -14386,23 +14443,21 @@ end nthFibonacci
 
 ```
 
-===Iterative, mutable state===
+### Iterative, mutable state
+
 We could use the templates internal mutable state, still only positive N.
 
 ```tailspin
-
 templates nthFibonacci
   @: {n0: 0, n1: 1};
   1..$ -> @: {n0: $@.n1, n1: $@.n0 + $@.n1};
   $@.n0!
 end nthFibonacci
-
 ```
 
 To handle negatives, we can keep track of the sign and send it to the matchers.
 
 ```tailspin
-
 templates nthFibonacci
   @: {n0: 0, n1: 1};
   def sign: $ -> (<0..> 1! <> -1!);
@@ -14413,7 +14468,6 @@ templates nthFibonacci
   <-1>
     @: {n0: $@.n1 - $@.n0, n1: $@.n0};
 end nthFibonacci
-
 ```
 
 
@@ -14459,7 +14513,7 @@ end nthFibonacci
 
 These simple versions do not handle negative numbers -- they will return N for N < 2
 
-### =Iterative=
+### Iterative=
 
 ```tcl
 proc fibiter n {
@@ -14474,7 +14528,7 @@ proc fibiter n {
 ```
 
 
-### =Recursive=
+### Recursive=
 
 
 ```tcl
@@ -14512,7 +14566,8 @@ fib 7 ;# ==> 13
 ```
 
 
-====Tail-Recursive====
+### =Tail-Recursive
+=
 In Tcl 8.6 a ''tailcall'' function is available to permit writing tail-recursive functions in Tcl. This makes deeply recursive functions practical. The availability of large integers also means no truncation of larger numbers.
 
 ```tcl
@@ -14537,7 +14592,7 @@ proc fib-tailrec {n} {
 ### Handling Negative Numbers
 
 
-### =Iterative=
+### Iterative=
 
 
 ```tcl
@@ -14561,7 +14616,7 @@ fibiter -6 ;# ==> -8
 ```
 
 
-### =Recursive=
+### Recursive=
 
 
 ```tcl
@@ -15048,11 +15103,12 @@ With Long type, maximum value is fibo(46).
 
 ## VBScript
 
-===Non-recursive, object oriented, generator===
+### Non-recursive, object oriented, generator
+
 Defines a generator class, with a default Get property. Uses Currency for larger-than-Long values. Tests for overflow and switches to Double. Overflow information also available from class.
 
 
-### =Class Definition:=
+### Class Definition:=
 
 
 ```vb
@@ -15103,9 +15159,7 @@ end class
 ```
 
 
-
-### =Invocation:=
-
+### Invocation
 
 ```vb
 dim fib
@@ -15122,11 +15176,11 @@ next
 
 
 
-### =Output:=
+### Output
 
-
-```vbscript> 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165580141 267914296 433494437 701408733 1134903170 1836311903 2971215073 4807526976 7778742049 12586269025 20365011074 32951280099 53316291173 86267571272 139583862445 225851433717 365435296162 591286729879 956722026041 1548008755920 2504730781961 4052739537881 6557470319842 10610209857723 17167680177565 27777890035288 44945570212853 72723460248141 117669030460994 190392490709135 308061521170129 498454011879264 806515533049393</lang
-
+```vbscript
+1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040 1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986 102334155 165580141 267914296 433494437 701408733 1134903170 1836311903 2971215073 4807526976 7778742049 12586269025 20365011074 32951280099 53316291173 86267571272 139583862445 225851433717 365435296162 591286729879 956722026041 1548008755920 2504730781961 4052739537881 6557470319842 10610209857723 17167680177565 27777890035288 44945570212853 72723460248141 117669030460994 190392490709135 308061521170129 498454011879264 806515533049393
+```
 
 
 ## Vedit macro language
@@ -15253,7 +15307,8 @@ Within a minute, fibo(2000000) is a number with 417975 digits.
 ```
 
 
-===BigInteger, speedier method===
+### BigInteger, speedier method
+
 
 This method doesn't need to iterate the entire list, and is much faster.  The 2000000 (two millionth) Fibonacci number can be found in a fraction of a second.<br/>Algorithm from [http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html here, see section 3, ''Finding Fibonacci Numbers Fully''.]
 
@@ -15329,7 +15384,8 @@ partial: 53129491750764154305166065450382516...917994931089608251291887778034531
 ## Wart
 
 
-===Recursive, all at once===
+### Recursive, all at once
+
 
 ```python
 def (fib n)
@@ -15339,7 +15395,8 @@ def (fib n)
 ```
 
 
-===Recursive, using cases===
+### Recursive, using cases
+
 
 ```python
 def (fib n)
@@ -15350,7 +15407,8 @@ def (fib n) :case (n < 2)
 ```
 
 
-===Recursive, using memoization===
+### Recursive, using memoization
+
 
 ```python
 def (fib n saved)
@@ -15370,7 +15428,8 @@ def (fib n saved)
 ### Memoized Recursive
 
 
-```WDTE>let memo fib n =
+```WDTE
+let memo fib n =
  n { > 1 => + (fib (- n 1)) (fib (- n 2)) };
 ```
 
@@ -15379,7 +15438,8 @@ def (fib n saved)
 ### Iterative
 
 
-```WDTE>let s =
+```WDTE
+let s =
  import 'stream';
 let a => import 'arrays';
 
@@ -15747,7 +15807,7 @@ zkl: do(5){ fibShift().print(",") }
 ## ZX Spectrum Basic
 
 
-### =Iterative=
+### Iterative=
 
 
 ```zxbasic
@@ -15764,7 +15824,7 @@ zkl: do(5){ fibShift().print(",") }
 
 
 
-### =Analytic=
+### Analytic=
 
 
 ```zxbasic

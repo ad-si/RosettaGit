@@ -1664,7 +1664,8 @@ IDLE 2.6.1
 
 The Python solution to First-class functions for comparison:
 
-```python>>>
+```python
+>>
  # Some built in functions and their inverses
 >>> from math import sin, cos, acos, asin
 >>> # Add a user defined function and its inverse
@@ -1825,7 +1826,8 @@ This is very similar to the [[First-class functions#Rust|first-class functions]]
 ## Scala
 
 
-```scala>scala
+```scala
+scala
  val x = 2.0
 x: Double = 2.0
 

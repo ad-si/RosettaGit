@@ -155,7 +155,8 @@ L(directory) [‘/’, ‘./’]
 ## 4DOS Batch
 
 
-```4dos>echos
+```4dos
+echos>
  output.txt
 mkdir docs
 
@@ -1082,7 +1083,8 @@ create/directory [000000.docs]
 
 
 
-```e><file:output.txt
+```e
+<file:output.txt
 .setBytes([])
 <file:docs>.mkdir(null)
 <file:///output.txt>.setBytes([])

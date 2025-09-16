@@ -527,7 +527,8 @@ Magic constant: 260
 The size, ''N'', is specified by the first value on the stack. The algorithm is loosely based on the [[Magic_squares_of_doubly_even_order#Java|Java]] implementation.
 
 
-```befunge>8>>>v
+```befunge
+8>>>v>
 10p00g:*1-*\110g2*-*+1+.:00g%!9+,:#v_@
 p00:<^:!!-!%3//4g00%g00\!!%3/*:g00*4:::-1<*:
 ```
@@ -1855,7 +1856,9 @@ BTW: The bit field number 38505 = 9669h seems to come from hell to do the magic.
 
 See [[Magic_squares/Perl|Magic squares/Perl]] for a general magic square generator.
 
-```perl></lang
+```perl
+
+```
 
 
 

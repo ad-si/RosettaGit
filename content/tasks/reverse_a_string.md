@@ -1397,7 +1397,9 @@ end;
 
 You could also use this RTL function Introduced in Delphi 6:
 
-```Delphi>StrUtils.ReverseString</lang
+```Delphi
+StrUtils.ReverseString>
+```
 
 =={{header|Déjà Vu}}==
 
@@ -1654,7 +1656,8 @@ Link to live demo: http://dc25.github.io/reverseStringElm/
 ## Erlang
 
 
-```erlang>1
+```erlang
+1>
  lists:reverse("reverse!").
 "!esrever"
 ```
@@ -2295,13 +2298,15 @@ Reversed("abcdef");
 
 Reverse each line in the input stream. Using built in function:
 
-```gema>\L<U
+```gema
+\L<U>
 =@reverse{$1}
 ```
 
 Not using built in function (recursively apply substring to same rule):
 
-```gema>\L<U1><U
+```gema
+\L<U1><U>
 =@{$2}$1
 ```
 
@@ -2743,14 +2748,16 @@ neve ro ddo reveN
 ## Julia
 
 
-```julia>julia
+```julia
+julia>
  reverse("hey")
 "yeh"
 ```
 
 The <code>reverse</code> function reverses codepoints ([https://github.com/JuliaLang/julia/issues/6165 because this is the right behavior] for the main application of string reversal: reversed string processing by external C libraries).  However, [https://github.com/JuliaLang/julia/pull/9261 starting in Julia 0.4], you can also reverse the graphemes if you want (i.e. to reverse "visual order" including combining characters etc.) by:
 
-```julia>julia
+```julia
+julia>
  join(reverse(collect(graphemes("as⃝df̅"))))
 "f̅ds⃝a"
 ```
@@ -3208,7 +3215,8 @@ A built-in function, "fliplr(string)" handles reversing a string of ASCII charac
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  fliplr(['She told me that she spoke English and I said great. '...
 'Grabbed her hand out the club and I said let''s skate.'])
 
@@ -3748,7 +3756,8 @@ result := "asdf"->Reverse();
 =={{header|Objective-C}}==
 This extends the <code>NSString</code> object adding a <code>reverseString</code> class method.
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSString (Extended)
@@ -3792,7 +3801,8 @@ int main()
 
 Extra credit
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSString (Extended)
@@ -3903,7 +3913,9 @@ rev = s(length(s):-1:1)
 ## Oforth
 
 
-```Oforth>reverse</lang
+```oforth
+reverse>
+```
 
 
 
@@ -4234,7 +4246,8 @@ Reversing the Korean makes an untranslatable-by-Google mess of the sentence, viz
 
 The short-opcode version in English dialect is
 
-```sgml><@ SAYLETVARREVLIT
+```sgml
+<@ SAYLETVARREVLIT>
 集装箱|猫坐在垫子</@>
 ```
 
@@ -4768,7 +4781,8 @@ REBOL/View 2.7.6.3.1 14-Mar-2008 does not handle Unicode strings. This is planne
 ## Red
 
 
-```Red>>
+```Red
+>>
  reverse "asdf"
 == "fdsa"
 ```
@@ -4864,7 +4878,8 @@ say ' reversed string: '  string2
 ## RLaB
 
 
-```RLaB>>
+```RLaB
+>>
  x = "rosettacode"
 rosettacode
 
@@ -5218,7 +5233,8 @@ was I tac a ti saW
 
 There is a library function to reverse any Sequence. This works for strings since strings are Sequences of characters.
 
-```sequencel>import <Utilities/Sequence.sl
+```sequencel
+import <Utilities/Sequence.sl>
 ;
 
 main(args(2)) := Sequence::reverse(args[1]);
@@ -5229,7 +5245,8 @@ main(args(2)) := Sequence::reverse(args[1]);
 
 The following is the library implementation of the reverse function.
 
-```sequencel>reverse<T
+```sequencel
+reverse<T>
  : T(1) -> T(1);
 reverse(list(1))[i] :=
 	let

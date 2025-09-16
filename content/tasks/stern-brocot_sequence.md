@@ -3656,7 +3656,8 @@ In checking the gcd's, two iterators are tee'd off from the one stream with the 
 
 See the [[Talk:Stern-Brocot_sequence#deque_over_list.3F|talk page]] for how a deque was selected over the use of a straightforward list'
 
-```python>>>
+```python
+>>>
  from itertools import takewhile, tee, islice
 >>>  from collections import deque
 >>> from fractions import gcd

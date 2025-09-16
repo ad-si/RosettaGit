@@ -4164,7 +4164,8 @@ Then back to: '((data "quoted data" 123 4.5) (data (123 (4.5) "(more" "data)")))
 ;Simpler parser:
 Note that in the example above the parser also recognises and changes the type of some tokens as well as generating a nested list. If that functionality is not needed, or better done elsewhere, then the parse function can be achieved more simply by just applying the regexp:
 
-```python>>>
+```python
+>>>
  from pprint import pprint as pp
 >>> x = [[(t,v) for t,v in  termtypes.groupdict().items() if v][0] for termtypes in re.finditer(term_regex, sexp)]
 >>> pp(x)

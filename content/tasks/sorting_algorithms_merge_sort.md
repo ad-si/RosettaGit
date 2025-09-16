@@ -3542,7 +3542,8 @@ end %mergeSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  mergeSort([4 3 1 5 6 2])
 
 ans =

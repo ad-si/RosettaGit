@@ -583,7 +583,8 @@ f2: 1 ms, 966 μs, and 6 hnsecs
 ## E
 
 
-```e>def makeLamportSlot := <import:org.erights.e.elib.slot.makeLamportSlot
+```e
+def makeLamportSlot := <import:org.erights.e.elib.slot.makeLamportSlot>
 
 
 The rate counter:

@@ -1489,7 +1489,9 @@ for (@nums) { findBrauer $_, 12, 79 }
 ```
 
 {{out}}
-<pre style="height:35ex">N = 7
+
+```txt
+N = 7
 Minimum length of chains : L(7) = 4
 Number of minimum length Brauer chains : 5
 Brauer example : 1 2 3 4 7

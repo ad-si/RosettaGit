@@ -85,7 +85,8 @@ Show output of a game where the computer chooses first and a game where the user
 =
 Works with 1k of RAM.
 
-```basic> 10 IF RND
+```basic
+ 10 IF RND>
 =.5 THEN GOTO 100
  20 PRINT "YOU PICK FIRST."
  30 INPUT P$
@@ -289,7 +290,8 @@ I Win! Better Luck Next Time...
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 penney
 PRINT "*** Penney's Game ***"
 REPEAT
@@ -2448,7 +2450,8 @@ The computer wins!
 {{works with|Rakudo|2018.02}}
 
 
-```perl6>enum Coin <Heads Tails
+```perl6
+enum Coin <Heads Tails>
 ;
 enum Yay <Yay Good Super Hah Ooh Yipee Sweet Cool Yes Haha>;
 enum Boo <Drat Darn Crumb Oops Rats Bah Criminy Argh Shards>;

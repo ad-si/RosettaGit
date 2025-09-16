@@ -3837,7 +3837,8 @@ Time	      2     err(%)      5     err(%)    10      err(%)  Analytic
 ## Smalltalk
 
 
-```smalltalk>ODESolver>
+```smalltalk
+ODESolver>
 eulerOf: f init: y0 from: a to: b step: h
 	| t y |
 	t := a.

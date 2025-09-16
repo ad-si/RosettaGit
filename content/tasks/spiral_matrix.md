@@ -1942,7 +1942,8 @@ let Spiral n =
 ## GAP
 
 
-```gap># Spiral matrix with numbers 1 .. n<sup>2</sup
+```gap
+# Spiral matrix with numbers 1 .. n<sup>2</sup>
 , more natural in GAP
 SpiralMatrix := function(n)
   local i, j, k, di, dj, p, vi, vj, imin, imax, jmin, jmax;
@@ -3229,7 +3230,8 @@ end %reverseSpiral
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  reverseSpiral(5)
 
 ans =

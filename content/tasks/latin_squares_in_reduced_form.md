@@ -726,7 +726,8 @@ Order 6: Size 9408 * 6! * 5! = 812851200
 
 ## Kotlin
 
-```scala>typealias Matrix = MutableList<MutableList<Int>
+```scala
+typealias Matrix = MutableList<MutableList<Int>>
 
 
 fun dList(n: Int, sp: Int): Matrix {

@@ -2128,7 +2128,8 @@ Thanks for keeping score.
 
 =={{header|Objective-C}}==
 A clever solution that uses the built-in binary search functions with a virtual list.
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface GuessNumberFakeArray : NSArray {

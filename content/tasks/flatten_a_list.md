@@ -2359,7 +2359,8 @@ end
 ## Ioke
 
 
-```ioke>iik
+```ioke
+iik>
  [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []] flatten
 [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []] flatten
 +> [1, 2, 3, 4, 5, 6, 7, 8]
@@ -2372,7 +2373,9 @@ end
 
 '''Solution''':
 
-```j>flatten =: [: ; <S:0</lang
+```j
+flatten =: [: ; <S:0
+```
 
 
 '''Example''':
@@ -3220,7 +3223,8 @@ echo flatten(x)
 =={{header|Objective-C}}==
 {{works with|Cocoa}}
 
-```objc2>#import <Foundation/Foundation.h
+```objc2
+#import <Foundation/Foundation.h>
 
 
 @interface NSArray (FlattenExt)
@@ -3766,7 +3770,8 @@ Flatten: [1, 2, 4, 5, 6, 7, 8]
 
 
 
-```python>>>
+```python
+>>
  def flatten(lst):
 	return sum( ([x] if not isinstance(x, list) else flatten(x)
 		     for x in lst), [] )
@@ -3871,7 +3876,8 @@ Flatten a nested list:
 
 Function flat is iterative and flattens the list in-place. It follows the Python idiom of returning None when acting in-place:
 
-```python>>>
+```python
+>>
  def flat(lst):
     i=0
     while i<len(lst):
@@ -4001,7 +4007,8 @@ This method shows a solution using Python generators.
 In this case, the generator is converted back to a list before printing.
 
 
-```python>>>
+```python
+>>
  def flatten(lst):
      for x in lst:
          if isinstance(x, list):
@@ -4409,7 +4416,8 @@ res12: List[Any] = List(1, 2, 3, 4, 5, 6, 7, 8)
 ## Scheme
 
 
-```scheme>
+```scheme
+
  (define (flatten x)
     (cond ((null? x) '())
           ((not (pair? x)) (list x))
@@ -5025,7 +5033,8 @@ def (flatten seq acc)
 ## WDTE
 
 
-```WDTE>let a =
+```WDTE
+let a =
  import 'arrays';
 let s => import 'stream';
 

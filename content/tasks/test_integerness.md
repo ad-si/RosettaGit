@@ -2185,7 +2185,8 @@ Parameter was not a number.
 
 
 
-```python>>>
+```python
+>>>
  def isint(f):
     return complex(f).imag == 0 and complex(f).real.is_integer()
 
@@ -2788,7 +2789,8 @@ Note that 1.0000000000000001 will pass this integer test, because its difference
 compare Python:
 
 
-```Python>>>
+```Python
+>>>
  a = 1.0000000000000001
 >>> a
 1.0

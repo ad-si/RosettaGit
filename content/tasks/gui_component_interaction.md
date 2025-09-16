@@ -833,7 +833,9 @@ class RosettaInteractionForm : Form
 
 
 
-```Delphi>FILE: Unit1.pas</lang
+```Delphi
+FILE: Unit1.pas>
+```
 
 
 ```Delphi

@@ -71,7 +71,7 @@ CANCEL "foo"
 # Call anonymous block to do the initialization.
 
 block(
-    // Put initialization code here.        
+    // Put initialization code here.
     writeln("Initialization complete.")
 ) call()
 
@@ -97,11 +97,11 @@ The situation for Java is as described below in the entry for its sister JVM lan
 
 ## Julia
 
-Julia's functions are compiled and their code allocated memory "just in time" the first time their 
-code is run. Usually, memory used within a function can be dynamically garbage collected once that 
-data is out of scope. To also garbage collect the memory used by a function's code, it would be 
-necessary to define and run a new function with the same name and argument types, which would allow 
-the prior function's code memory to be reclaimed. In practice, this is seldom needed or done, 
+Julia's functions are compiled and their code allocated memory "just in time" the first time their
+code is run. Usually, memory used within a function can be dynamically garbage collected once that
+data is out of scope. To also garbage collect the memory used by a function's code, it would be
+necessary to define and run a new function with the same name and argument types, which would allow
+the prior function's code memory to be reclaimed. In practice, this is seldom needed or done,
 since most memory usage in Julia is for data, not code.
 
 
@@ -132,9 +132,9 @@ Within your program, by using <code>undef</code> and <code>delete</code>, you ca
 
 ## Perl 6
 
-In general, there is no specific mechanism to do a timely destruction of an object, be it code, data, variables, whatever. Perl 6 does automatic garbage collection on objects that are no longer being used. Unlike previous version of Perl, Perl 6 doesn't use reference counting to track when memory may be garbage collected as that tends to be very difficult to get correct and performant in multi-threaded applications. Rather it performs a "reachability analysis" to determine when objects can be evicted from memory and safely removed. 
+In general, there is no specific mechanism to do a timely destruction of an object, be it code, data, variables, whatever. Perl 6 does automatic garbage collection on objects that are no longer being used. Unlike previous version of Perl, Perl 6 doesn't use reference counting to track when memory may be garbage collected as that tends to be very difficult to get correct and performant in multi-threaded applications. Rather it performs a "reachability analysis" to determine when objects can be evicted from memory and safely removed.
 
-Perl 6 objects can provide a "DESTROY" method, but you cannot be sure when (if ever) it will be called. Perl 6 tends to not be very memory frugal. If there is lots of memory to be had, it will cheerfully use lots of it. It gets more aggressive about conserving if memory is tight, but usually will trade memory for performance. If and when garbage collection ''has'' run, the freed memory is then available to to the general OS pool for any process to claim. 
+Perl 6 objects can provide a "DESTROY" method, but you cannot be sure when (if ever) it will be called. Perl 6 tends to not be very memory frugal. If there is lots of memory to be had, it will cheerfully use lots of it. It gets more aggressive about conserving if memory is tight, but usually will trade memory for performance. If and when garbage collection ''has'' run, the freed memory is then available to to the general OS pool for any process to claim.
 
 There are some specific details that will allow some finer control of garbage collection in special circumstances, but the average Perl 6 programmer will not need to know about or deal with them.
 
@@ -173,7 +173,7 @@ Racket has a JIT compiler that translates functions to machine code whenever the
 
 When using REXX in the (VM) CMS environment, the use of   '''NUCXDROP'''   can be used to release memory (virtual storage) that a REXX program is using   (when previously loaded into virtual memory via   '''NUCXLOAD''').
 
-  
+
 
 
 ## Tcl
@@ -189,11 +189,15 @@ rename exampleCmd ""
 ;Releasing loaded extensions
 :The memory associated with a loaded extension can be released by using <code>unload</code>, provided the extension has registered a handler function (this is relatively uncommon). Once the handler function has run (which gives the extension an opportunity to destroy any commands and other callbacks it has created), the underlying library will be removed from memory with <code>dlclose()</code> (on Unix) or <code>FreeLibrary()</code> (on Windows). This ''completely'' removes the program code concerned, as well as returning the other ancillary memory to the general pool.
 :
-```tcl>unload theLibrary.dll</lang
+```tcl
+unload theLibrary.dll
+```
 
 ;Releasing an entire interpreter
 :Provided an interpreter is not the ''root'' interpreter in its thread, you can delete it from an ancestor interpreter, which releases all the memory associated with it back into the general memory pool.
 :
-```tcl>interp delete theChildInterpreter</lang
+```tcl
+interp delete theChildInterpreter
+```
 
 

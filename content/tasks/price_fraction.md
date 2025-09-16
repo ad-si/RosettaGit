@@ -3240,7 +3240,8 @@ EndIf
 Using the [http://docs.python.org/library/bisect.html bisect] standard module to reduce the comparisons with members of the cin array.
 
 
-```python>>>
+```python
+>>>
  import bisect
 >>> _cin  = [.06, .11, .16, .21, .26, .31, .36, .41, .46, .51, .56, .61, .66, .71, .76, .81, .86, .91, .96, 1.01]
 >>> _cout = [.10, .18, .26, .32, .38, .44, .50, .54, .58, .62, .66, .70, .74, .78, .82, .86, .90, .94, .98, 1.00]
@@ -3251,7 +3252,8 @@ Using the [http://docs.python.org/library/bisect.html bisect] standard module to
 
 When dealing with money it is good to think about possible loss of precision. If we change the units to be integer cents we could use the following exact routine:
 
-```python>>>
+```python
+>>>
  import bisect
 >>> _cin  = [ 6, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61, 66, 71, 76, 81, 86, 91, 96, 101]
 >>> _cout = [10, 18, 26, 32, 38, 44, 50, 54, 58, 62, 66, 70, 74, 78, 82, 86, 90, 94, 98, 100]

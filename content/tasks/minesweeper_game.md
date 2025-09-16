@@ -1569,7 +1569,8 @@ int main(int ac,char*av[],char*env[]) {
 
 Using ncurses and mouse input.  Compiled with <code>gcc -lncurses -Wall -std=c99</code>.  Run as <code>a.out [height] [width]</code>; your terminal needs to support mouse input, and at least 2*width + 2 columns wide.  Left button clears a cell, right button toggles mine mark, middle button on a cleared cell clears all neighboring cells (or blow up if there are unmarked mines).  When mine count drops to zero, click "claim victory" to win the game or blow up.
 
-```C>#include <ncurses.h
+```C
+#include <ncurses.h>
 
 #include <locale.h>
 #include <stdlib.h>
@@ -4956,7 +4957,9 @@ DynamicModule[{m = 6, n = 4, minecount, grid, win, reset, clear,
 ===Built-In Graphical Version===
 
 
-```MATLAB>xpbombs</lang
+```MATLAB
+xpbombs>
+```
 
 
 

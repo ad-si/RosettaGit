@@ -1019,7 +1019,8 @@ public class ChaosGame extends JPanel {
 
 Plots the fractal on an HTML <tt>canvas</tt> element.
 
-```javascript><html
+```javascript
+<html
 
 
 <head>
@@ -2015,7 +2016,8 @@ here   ───►   [[SCRSIZE.REX]].
 (Shown at   '''<sup>1</sup>/<sub>10</sub>   size on a   <big>426</big>&times;<big>201</big>   screen.)
 
 '''output'''   when using the following input:     <tt>   ,   █ </tt>
-<pre style="font-size:10%">
+
+```txt
                                                                                                                                                                                                                    █
                                                                                                                                                                                                                   ███
                                                                                                                                                                                                                  █████

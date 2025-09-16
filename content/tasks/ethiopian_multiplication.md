@@ -3786,7 +3786,8 @@ end.
 =={{header|Objective-C}}==
 Using class methods except for the generic useful function <tt>iseven</tt>.
 
-```objc>#import <stdio.h
+```objc
+#import <stdio.h
 
 
 BOOL iseven(int x)

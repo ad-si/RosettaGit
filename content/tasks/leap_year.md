@@ -3946,7 +3946,8 @@ End Module
 ## WDTE
 
 
-```WDTE>let str =
+```wdte
+let str =>
  import 'strings';
 
 let multiple of n => == (% n of) 0;

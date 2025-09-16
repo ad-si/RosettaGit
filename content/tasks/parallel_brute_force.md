@@ -47,7 +47,8 @@ Related task:  [[SHA-256]]
 ## BaCon
 
 
-```qbasic>PRAGMA INCLUDE <openssl/sha.h
+```qbasic
+PRAGMA INCLUDE <openssl/sha.h>
 
 PRAGMA LDFLAGS -lcrypto
 

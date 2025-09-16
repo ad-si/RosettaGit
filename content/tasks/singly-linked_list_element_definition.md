@@ -546,7 +546,8 @@ class LinkedListNode
 
 A generic version:
 
-```csharp>class LinkedListNode<T
+```csharp
+class LinkedListNode<T>
 
 {
     public T Value { get; set; }
@@ -983,7 +984,8 @@ With this constructor, new nodes can be initialized directly at allocation; e.g.
 However, Java also allows to make it generic on the data type. This will only work on reference types, not primitive types like int or float (wrapper classes like Integer and Float are available).
 
 
-```java>class Link<T
+```java
+class Link<T>
 
 {
   Link<T> next;
@@ -1210,7 +1212,8 @@ var c = newNode 14
 =={{header|Objective-C}}==
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface RCListElement<T> : NSObject
@@ -1783,7 +1786,8 @@ list = ListNode.from_array([1,2,3,4])
 
 Rust's <code>Option<T></code> type make the definition of a singly-linked list trivial. The use of <code>Box<T></code> (an owned pointer) is necessary because it has a known size, thus making sure the struct that contains it can have a finite size.
 
-```Rust> struct Node<T
+```rust
+ struct Node<T>
  {
     elem: T,
     next: Option<Box<Node<T>>>,
@@ -1794,7 +1798,8 @@ Rust's <code>Option<T></code> type make the definition of a singly-linked list t
 However, the above example would not be suitable for a library because, first and foremost, it is private by default but simply making it public would not allow for any encapsulation.
 
 
-```Rust>type Link<T> = Option<Box<Node<T>>
+```rust
+type Link<T> = Option<Box<Node<T>>>
 ; // Type alias
 pub struct List<T> { // User-facing interface for list
     head: Link<T>,
@@ -2323,7 +2328,8 @@ while (!list_empty(a)) {
 ## Swift
 
 
-```swift>class Node<T
+```swift
+class Node<T>
 {
     var data:T?=nil
     var next:Node?=nil

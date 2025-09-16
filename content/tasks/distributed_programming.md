@@ -1191,7 +1191,8 @@ The server ''vending'' the object with the name <tt>DistributedAction</tt>
 
 <tt>ActionObjectProtocol.h</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 // our protocol allows "sending" "strings", but we can implement
 // everything we could for a "local" object
@@ -1203,7 +1204,8 @@ The server ''vending'' the object with the name <tt>DistributedAction</tt>
 
 <tt>ActionObject.h</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import "ActionObjectProtocol.h"
 
@@ -1215,7 +1217,8 @@ The server ''vending'' the object with the name <tt>DistributedAction</tt>
 
 <tt>ActionObject.m</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import "ActionObject.h"
 
@@ -1231,7 +1234,8 @@ The server ''vending'' the object with the name <tt>DistributedAction</tt>
 
 <tt>server.m</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import "ActionObject.h"
 
@@ -1275,7 +1279,8 @@ int main (void)
 
 <tt>client.m</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 #import "ActionObjectProtocol.h"
 
@@ -2257,7 +2262,8 @@ Uses netcat and a buffer to cycle the server shell's stdout back to netcat's std
 
 ### Server
 
-```bash>:
+```bash
+:>
 /tmp/buffer
 tail -f /tmp/buffer | nc -l 127.0.0.1 1234 | sh >/tmp/buffer 2>&1
 ```
@@ -2272,7 +2278,9 @@ Limitations:
 ### Client
 
 
-```bash>nc 127.0.0.1 1234</lang
+```bash
+nc 127.0.0.1 1234>
+```
 
 
 Now you can enter commands in the client terminal and get the output back through the same connection.

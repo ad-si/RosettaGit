@@ -724,7 +724,8 @@ show_big(N, Limit) ->
 
 
 Output:
-<pre style="font-size:80%">
+
+```txt
 A sample of permutations from 1 to 12:
 perm(1, 0) = 1
 perm(2, 0) = 1
@@ -939,7 +940,9 @@ main = do
 
 ```
 
-<pre style="font-size:80%">A sample of permutations from 1 to 12:
+
+```txt
+A sample of permutations from 1 to 12:
 perm(1,0) = 1
 perm(2,0) = 1
 perm(3,1) = 3
@@ -2620,7 +2623,8 @@ function comb(byval x,byval y)
 end function 'comb
 ```
 
-<pre style="height:40ex">
+
+```txt
 -- Long Integer - Permutations - from 1 to 12
 P(1,1)=1
 P(2,1)=2  P(2,2)=2
@@ -2730,7 +2734,8 @@ Module CombPermRc
 End Module
 ```
 
-<pre style="height:40ex">
+
+```txt
 P(1,1)=1
 P(2,1)=2  P(2,2)=2
 P(3,1)=3  P(3,2)=6  P(3,3)=6

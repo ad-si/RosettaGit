@@ -2407,7 +2407,8 @@ A B B A | B A -> B A B A
 
 
 
-```swift>func disjointOrder<T: Hashable
+```swift
+func disjointOrder<T: Hashable>
 (m: [T], n: [T]) -> [T] {
   let replaceCounts = n.reduce(into: [T: Int](), { $0[$1, default: 0] += 1 })
   let reduced = m.reduce(into: ([T](), n, replaceCounts), {cur, el in

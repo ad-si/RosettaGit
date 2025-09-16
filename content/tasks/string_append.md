@@ -444,7 +444,8 @@ class Program
 
 Using global vars.
 
-```clojure>user=
+```clojure
+user=>
  (def s "app")
 #'user/s
 user=> s

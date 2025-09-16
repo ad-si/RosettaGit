@@ -59,9 +59,9 @@ AppleScript binds the name '''result''' to the value of the expression most rece
 ```applescript
 on run
     1 + 2
-    
+
     ap({square, squareRoot}, {result})
-    
+
     --> {9, 1.732050807569}
 end run
 
@@ -93,7 +93,7 @@ on ap(fs, xs)
     return lst
 end ap
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -121,10 +121,10 @@ on run
             mReturn(f)'s |λ|(3)
         end |λ|
     end script
-    
+
     -- Here, 'result' is bound to the script above
     map(result, {square, squareRoot})
-    
+
     --> {9, 1.732050807569}
 end run
 
@@ -154,7 +154,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -230,7 +230,9 @@ There are no global variables, so Erlang uses a function, v(N), to get old resul
 In a stack oriented language like Forth the definition of variables is minimized as much as possible. The closest thing to a topic variable is the use of '''R@'''. This gets the top item from the return stack, which by the way is also used for flow control. It is up to the programmer to keep the stack balanced. In some Forth dialects '''R@''' and '''I''' are identical. '''I''' is used as a loop index, e.g.
 
 
-```forth>: myloop 11 1 do i . loop cr ; myloop</lang
+```forth
+: myloop 11 1 do i . loop cr ; myloop>
+```
 
 
 Which will print all numbers from 1 to 10. A typical use of '''R@''' is illustrated here:
@@ -395,9 +397,9 @@ And if we were to insist on leaving out functions, it's not clear that there wou
 
 ## jq
 
-In jq, . (a period) generally refers to the "current input", which is always a JSON entity. For example, the jq program consisting of . alone is a filter, like "cat" in the Unix tradition. 
+In jq, . (a period) generally refers to the "current input", which is always a JSON entity. For example, the jq program consisting of . alone is a filter, like "cat" in the Unix tradition.
 
-The "." referring to the current input can often be omitted altogether, for example the expression ". | exp" for computing e<sup>x</sup> can always be written simply as "exp".  
+The "." referring to the current input can often be omitted altogether, for example the expression ". | exp" for computing e<sup>x</sup> can always be written simply as "exp".
 
 There are some special character combinations involving ".":
 * .[] is a filter which expects the input to be an array or a JSON object, and converts the input to be a stream of the constituent values;
@@ -410,7 +412,8 @@ Multiple references to the current input are allowed, e.g. [.,.] constructs an a
 
 Julia REPL has `ans` variable:
 
-```julia>julia
+```julia
+julia>
  3
 3
 julia> ans * ans, ans - 1
@@ -497,11 +500,13 @@ In it, it gets stuck in an infinite loop between In[1] and In[2], which evaluate
 
 Oforth does not have global variables, topic or not.
 
-The closest thing Oforth has to a topic variable definition is the top of its data stack which always holds the last result without the need to assign it to a (local) variable but I don't think it is the philosophy of this task. 
+The closest thing Oforth has to a topic variable definition is the top of its data stack which always holds the last result without the need to assign it to a (local) variable but I don't think it is the philosophy of this task.
 
-This will push 3 on the stack and compute sq and sqrt : 
+This will push 3 on the stack and compute sq and sqrt :
 
-```Oforth>3 dup sq swap sqrt</lang
+```oforth
+3 dup sq swap sqrt>
+```
 
 
 
@@ -680,8 +685,8 @@ Using <code>Format-Wide</code> to force an array into columns:
 
 ```txt
 
-65                                           66                                           67                                         
-68                                           69                                           70                                         
+65                                           66                                           67
+68                                           69                                           70
 
 ```
 
@@ -691,12 +696,13 @@ Using <code>Format-Wide</code> to force an array into columns:
 
 Pythons REPL has '''_'''.
 
-```python>>>
+```python
+>>>
  3
 3
 >>> _*_, _**0.5
 (9, 1.7320508075688772)
->>> 
+>>>
 ```
 
 
@@ -802,12 +808,12 @@ mysub:  return arg(1)**2               /*return the square of passed arg*/
 see "sum1 = " + sum1(1,2) + nl
 see "sum2 = " + sum2(2,3) + nl
 
-func sum1 (x, y) 
-     sum = x + y 
+func sum1 (x, y)
+     sum = x + y
      return sum
- 
-func sum2 (x, y) 
-     return x + y 
+
+func sum2 (x, y)
+     return x + y
 
 ```
 
@@ -893,7 +899,7 @@ say [9,16,25].map {.sqrt};   # prints: [3, 4, 5]
 
 The SML language itself does not define a topic variable, but interactive implementations may define their own.
 For example the SML/NJ REPL defines a topic variable named <tt>it</tt> which is bound any time the user types an
-expression in the REPL (as opposed to a declaration). 
+expression in the REPL (as opposed to a declaration).
 
 
 ```sml

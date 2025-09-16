@@ -615,7 +615,9 @@ var jortSort = function( array ) {
 ## jq
 
 
-```jq>def jortsort: . == sort;</lang
+```jq
+def jortsort: . == sort;
+```
 
 '''Example''':
 
@@ -625,7 +627,9 @@ var jortSort = function( array ) {
 
 {{Out}}
 
-```sh>true</lang
+```sh
+true
+```
 
 
 
@@ -879,7 +883,9 @@ let jortSortArray ary =
 
 
 
-```Oforth>: jortSort  dup sort == ;</lang
+```oforth
+: jortSort  dup sort == ;
+```
 
 
 {{out}}
@@ -1081,7 +1087,8 @@ Input()
 ## Python
 
 
-```python>>>
+```python
+>>
  def jortsort(sequence):
 	return list(sequence) == sorted(sequence)
 >>> for data in [(1,2,4,3), (14,6,8), ['a', 'c'], ['s', 'u', 'x'], 'CVGH', 'PQRST']:
@@ -1364,7 +1371,8 @@ There are a couple of limitations that make the program less useful than it woul
 ## Swift
 
 
-```Swift>func jortSort<T:Comparable
+```swift
+func jortSort<T:Comparable
 (array: [T]) -> Bool {
     return array == sorted(array)
 }
@@ -1373,7 +1381,8 @@ There are a couple of limitations that make the program less useful than it woul
 
 {{trans|JavaScript}}
 
-```Swift>func jortSort<T:Comparable
+```swift
+func jortSort<T:Comparable
 (inout array: [T]) -> Bool {
 
     // sort the array

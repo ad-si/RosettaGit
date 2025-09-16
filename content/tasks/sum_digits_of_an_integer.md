@@ -2039,7 +2039,8 @@ f0e     base 16 -> 29
 ## Lasso
 
 
-```Lasso>define br =
+```lasso
+define br =>
  '<br />\n'
 
 define sumdigits(int, base = 10) => {

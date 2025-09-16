@@ -17,7 +17,7 @@ Tools are available for simply building user applications into single file distr
 Note that unlike the [http://wiki.tcl.tk/10558 source for this material], this quick tutorial assumes that you already have things installed.
 
 
-###  Write your application 
+###  Write your application
 
 Save this into a file <tt>hello.tcl</tt>:
 
@@ -27,7 +27,7 @@ pack [button .b -text "Hello World!" -command bell]
 ```
 
 
-###  Wrap your application 
+###  Wrap your application
 
 At the shell command line, type this:
 
@@ -37,13 +37,15 @@ $(SDX) qwrap hello.tcl
 ```
 
 
-###  Test your application 
+###  Test your application
 
 
-```bash>tclkit hello.kit</lang
+```bash
+tclkit hello.kit>
+```
 
 
-###  Unwrap and rewrap with the full runtime attached 
+###  Unwrap and rewrap with the full runtime attached
 
 
 ```bash

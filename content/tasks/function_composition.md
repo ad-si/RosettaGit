@@ -598,7 +598,9 @@ void button1_onClick (Widget widget)
 
 {{out}} on Android phone:
 
-```bori>0.500000000</lang
+```bori
+0.500000000>
+```
 
 
 
@@ -907,7 +909,8 @@ Output is identical.
 
 Example use:
 
-```lisp>
+```lisp
+>
 (defun compose (f g) (lambda (x) (funcall f (funcall g x))))
 COMPOSE
 >(let ((sin-asin (compose #'sin #'asin)))
@@ -1242,7 +1245,8 @@ multicompose(Fs) ->
 
 Using them:
 
-```erlang>1
+```erlang
+1>
  (fn:compose(fun math:sin/1, fun math:asin/1))(0.5).
 0.5
 2> Sin_asin_plus1 = fn:multicompose([fun math:sin/1, fun math:asin/1, fun(X) -> X + 1 end]).
@@ -1259,7 +1263,8 @@ The ''reverse'' composition operator <code><<</code>, on the other hand, exactly
 
 We can implement composition manually like this (F# Interactive session):
 
-```fsharp>
+```fsharp
+
  let compose f g x = f (g x);;
 
 val compose : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
@@ -1267,7 +1272,8 @@ val compose : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
 
 Usage:
 
-```fsharp>
+```fsharp
+
  let sin_asin = compose sin asin;;
 
 val sin_asin : (float -> float)
@@ -1593,7 +1599,8 @@ compose f g x = f (g x)
 
 Example use:
 
-```haskell>Prelude
+```haskell
+Prelude
  let compose f g x = f (g x)
 Prelude> let sin_asin = compose sin asin
 Prelude> sin_asin 0.5
@@ -1702,12 +1709,16 @@ Q k=(integer,"sqrt",ord)-> 9
 
 '''Solution''':
 
-```j>compose =: @</lang
+```j
+compose =: @
+```
 
 
 '''Example''':
 
-```j>f compose g</lang
+```j
+f compose g
+```
 
 
 Of course, given that <code>@</code> is only one character long and is a built-in primitive, there is no need for the cover function <code>compose</code>.  And <code>@</code> is not the only composition primitive; composition is a very important concept in J.  For more details, see the [[Talk:Functional Composition#J|talk page]].
@@ -1715,7 +1726,8 @@ Of course, given that <code>@</code> is only one character long and is a built-i
 Tentative new example:
 
 
-```j>f=:
+```j
+f=:
 .@(1&o.)@%:
 g=: 1&+@|@(2&o.)
 h=: f@g
@@ -1942,7 +1954,9 @@ Recursion apart, multiple composition can be written in at least two general way
 
 Composition is the default operation in Joy. The composition of two functions is the concatenation of those functions, in the order in which they are to be applied.
 
-```joy>g f</lang
+```joy
+g f
+```
 
 
 
@@ -2536,7 +2550,9 @@ r(pi/3)
 
 Oforth uses RPN notation. Function composition of f and g is just calling :
 
-```Oforth>g f</lang
+```oforth
+g f
+```
 
 If a block is needed, a compose function can be implemented :
 
@@ -2870,7 +2886,8 @@ compose = lambda f, g: lambda x: f( g(x) )
 
 Example use:
 
-```python>>>
+```python
+>>
  compose = lambda f, g: lambda x: f( g(x) )
 >>> from math import sin, asin
 >>> sin_asin = compose(sin, asin)
@@ -3708,7 +3725,8 @@ inc(twice(p1))
 The simplest way is with a lambda:
 
 
-```WDTE>let compose f g =
+```WDTE
+let compose f g =
  (@ c x => g x -> f);
 ```
 
@@ -3716,7 +3734,8 @@ The simplest way is with a lambda:
 Alternatively, you can take advantage of partial function calls:
 
 
-```WDTE>let compose f g x =
+```WDTE
+let compose f g x =
  g x -> f;
 ```
 
@@ -3732,7 +3751,9 @@ Both can be used as follows:
 Output:
 
 
-```WDTE>false</lang
+```WDTE
+false
+```
 
 
 

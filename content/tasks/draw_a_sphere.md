@@ -3042,7 +3042,9 @@ Graphics3D[Sphere[{0,0,0},1]]
 
 To create the unit sphere:
 
-```MATLAB>figure; sphere</lang
+```matlab
+figure; sphere
+```
 
 
 
@@ -4686,7 +4688,7 @@ sqrt:  procedure; parse arg x;  if x=0  then return 0; d= digits(); numeric digi
 
 (Shown at   <big>'''<sup>1</sup>/<sub>2</sub>'''</big>   size.)
 
-<pre style="font-size:50%">
+```txt
                              eeeeeeeeee@@@@@@@
                        eoooooooooooooooeeeee@@@@@@@░
                    oo°°°!!!!!!!!°°°°°°ooooeeeee@@@@@@@░░
@@ -4756,7 +4758,8 @@ eeooo°°°!!!!!!!:::::::!!!!!!!!°°°°°°oooooeeeeee@@@@@@@@@@@░░░░�
 Shoes comes with this sample program.
 [[File:sphere.shoes.png|thumb|right]]
 
-```ruby>Shoes.app :width =
+```ruby
+Shoes.app :width =
  500, :height => 500, :resizable => false do
   image 400, 470, :top => 30, :left => 50 do
     nostroke

@@ -1463,7 +1463,8 @@ opnot f
 ## Erlang
 
 
-```Erlang>1
+```Erlang
+1>
  true and false.
 false
 2> false or true.
@@ -1770,11 +1771,15 @@ Logical(false, false);
 ## gecho
 
 
-```gecho>3 4 and</lang
+```gecho
+3 4 and>
+```
 
 3&&4
 
-```gecho>1 2 or</lang
+```gecho
+1 2 or>
+```
 
 1||2
 
@@ -1928,7 +1933,8 @@ Prelude> undefined || True
 
 (<=), (<), (>=) and (>) on the other hand are strict:
 
-```haskell>Prelude
+```haskell
+Prelude>
  False <= undefined
 *** Exception: Prelude.undefined
 Prelude> undefined <= True
@@ -4256,7 +4262,8 @@ This is an adaption of the code from the Forth example. Toka provides TRUE/FALSE
 that are the same as the well-formed flags in Forth.
 
 
-```toka>[ 0 <
+```toka
+[ 0 <>
  [ ." true" ] [ ." false"] ifTrueFalse ] is .bool
 [ ( a b -- )
   cr ." a = " over .bool ."   b = " dup .bool

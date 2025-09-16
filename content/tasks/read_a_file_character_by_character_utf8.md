@@ -257,7 +257,8 @@ Reading a file a character at a time is antithetical not only to the architectur
 First, we know that the first 8-bit value in a utf-8 sequence tells us the length of the sequence needed to represent that character. Specifically: we can convert that value to binary, and count the number of leading 1s to find the length of the character (except the length is always at least 1 character long).
 
 
-```J>u8len=: 1
+```j
+u8len=: 1>
 . 0 i.~ (8#2)#:a.&i.
 ```
 

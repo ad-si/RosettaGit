@@ -36,7 +36,8 @@ The example out of any task that generates ASCII graphs or ASCII art output, suc
 :: A good idea. The following works:
 :: <nowiki><pre style="height:30ex;overflow:scroll"></nowiki>
 :: Example:
-<pre style="height:30ex;overflow:scroll">
+
+```txt
 Test
 Another line
 Yet another line, this time one which clearly is much longer than the width of the browser window, at least assuming normal screen dimensions and font settings, and assuming the browser window is not wider than the screen (which would be impractical anyway).
@@ -61,7 +62,6 @@ Yet another line, this time one which clearly is much longer than the width of t
 19
 20
 21
-
 ```
 
 
@@ -74,7 +74,7 @@ Yippee! I just tried it on the Fortran & Python examples of [[Life in two dimens
 
 
 
-###  Template:Hidden 
+###  Template:Hidden
 
 
 The "overflow:scroll" is nice but I think that it could be usefull to also have foldable boxes like we can see on other mediawiki's. So I have tryed to import the "Template:Hidden" from Wikipedia ([http://en.wikipedia.org/wiki/Template:Hidden there]) to rosettacode ([http://rosettacode.org/wiki/Template:Hidden here]). Then I have just tryed to use it on [http://rosettacode.org/wiki/Ackermann_Function#Tail-Recursive this page] to provide a complete program, and instead of the foldable box appears a <nowiki>{{{2}}}</nowiki>. Maybe I have missed something? [[User:Blue Prawn|Blue Prawn]] 12:20, 30 December 2008 (UTC)

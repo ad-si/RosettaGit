@@ -2962,7 +2962,8 @@ Further we use a trick: guys list girls in a descending order of preference (the
 With these tools and notes we are ready to implement the Gale/Shapley algorithm and the stability test as they are given in a textbook:
 
 
-```Haskell>stableMatching :: Eq a =
+```haskell
+stableMatching :: Eq a =>
  State a -> [Couple a]
 stableMatching = getPairs . iterateUntil (null._freeGuys) step
   where

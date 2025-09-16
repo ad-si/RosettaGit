@@ -813,7 +813,8 @@ def makeArrival(time :int, what :any, position :int) {
 After defining our data types, we can prepare to serialize them.
 
 
-```e>def surgeon := <import:org.erights.e.elib.serial.makeSurgeon
+```e
+def surgeon := <import:org.erights.e.elib.serial.makeSurgeon>
 ().diverge()
 surgeon.addExit(makeEvent, "makeEvent")
 surgeon.addExit(makeArrival, "makeArrival")
@@ -1681,7 +1682,8 @@ About Cocoa, I can't test it, but I've used Apple's documentation to learn how t
 There exists also a way of serializing without the GNUstep/Cocoa framework, using the runtime of Objective-C (so it could be slightly implementation dependent, see [[wp:Serialization#Objective-C|Serialization on Wikipedia]]). (I will work on it and will put here a full working example compatible with the task).
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 // a fantasy two level hierarchy

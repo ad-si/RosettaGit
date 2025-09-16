@@ -164,7 +164,8 @@ end Test_Checkpoint;
 ```
 
 Sample output:
-<pre style="height: 200px;overflow:scroll">
+
+```txt
 A joins the team
 A is working
 B joins the team
@@ -1405,7 +1406,8 @@ main = do
 ```
 
 '''Output:'''
-<pre style="height: 200px;overflow:scroll">
+
+```txt
 main +RTS -N2
 
 Worker ThreadId 30 has joined the group.
@@ -1669,7 +1671,8 @@ public class CheckpointSync{
 ```
 
 Output:
-<pre style="height: 200px;overflow:scroll">
+
+```txt
 Enter number of workers to use: 5
 Enter number of tasks to complete:3
 Starting task number 1.
@@ -1760,7 +1763,8 @@ public class Sync {
 ```
 
 Output:
-<pre style="height: 200px;overflow:scroll">Starting task 1
+
+```txtStarting task 1
 Worker 0 will work for 959 msec.
 Worker 1 will work for 905 msec.
 Worker 3 will work for 622 msec.
@@ -1992,7 +1996,8 @@ fun main(args: Array<String>) {
 
 
 Sample session:
-<pre style="height: 200px;overflow:scroll">
+
+```txt
 Enter number of workers to use: 5
 Enter number of tasks to complete: 3
 
@@ -2409,7 +2414,8 @@ while workers>0 do
 end while
 ```
 
-<pre style="height: 200px;overflow:scroll">
+
+```txt
 worker A running
 worker A begins part
 worker B running
@@ -2654,7 +2660,8 @@ If OpenConsole()
 EndIf
 ```
 
-<pre style="height: 200px;overflow:scroll">Enter number of workers to use [2-2000]: 5
+
+```txtEnter number of workers to use [2-2000]: 5
 Work started, 5 workers has been called.
 A new Worker joined the force.
 A new Worker joined the force.

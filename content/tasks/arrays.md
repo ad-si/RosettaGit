@@ -576,7 +576,9 @@ var arr7 = arr1 & arr2   // intersection
 
 The aime ''list'' is a heterogeneous, dynamic sequence.  No special creation procedure, only declaration is needed:
 
-```aime>list l;</lang
+```aime
+list l;>
+```
 
 Values (numbers, strings, collections, functions, etc) can be added in a type generic fashion:
 
@@ -721,14 +723,20 @@ nth:arr[n]
 
 Arrays in APL are one dimensional matrices, defined by seperating variables with spaces. For example:
 
-```apl>+/ 1 2 3</lang
+```apl
++/ 1 2 3>
+```
 
 Is equivalent to
-```apl>1 + 2 + 3</lang
-We're folding function
-```apl>+
+```apl
+1 + 2 + 3>
 ```
- over the array <lang apl>1 2 3</lang
+We're folding function
+```apl
++>
+```
+ over the array <lang apl>1 2 3
+```
 
 
 
@@ -751,7 +759,8 @@ System.debug(array[0]); // Prints 42
 
 Dynamic arrays can be made using <code>List</code>s. <code>List</code>s and array can be used interchangeably in Apex, e.g. any method that accepts a <code>List<String></code> will also accept a <code>String[]</code>
 
-```apex>List <Integer> aList = new List <Integer
+```apex
+List <Integer> aList = new List <Integer
 (); // optionally add an initial size as an argument
 aList.add(5);// appends to the end of the list
 aList.add(1, 6);// assigns the element at index 1
@@ -2459,7 +2468,8 @@ Creating a one-dimensional Array:
 
 Creating a two-dimensional Array in CFScript:
 
-```cfm><cfscript
+```cfm
+<cfscript
 
   arr2 = ArrayNew(2);
 </cfscript>
@@ -3313,7 +3323,8 @@ end for
 =={{header|F Sharp|F#}}==
 '''Fixed-length arrays:'''
 
-```fsharp>
+```fsharp
+
  Array.create 6 'A';;
 val it : char [] = [|'A'; 'A'; 'A'; 'A'; 'A'; 'A'|]
 > Array.init 8 (fun i -> i * 10) ;;
@@ -3333,7 +3344,8 @@ val it : int [] = [|0; 1; 2; 3; 65; 5; 6|]
 
 If dynamic arrays are needed, it is possible to use the .NET class <code>System.Collections.Generic.List<'T></code> which is aliased as <code>Microsoft.FSharp.Collections.ResizeArray<'T></code>:
 
-```fsharp>> let arr = new ResizeArray<int
+```fsharp
+> let arr = new ResizeArray<int
 ();;
 val arr : ResizeArray<int>
 > arr.Add(42);;
@@ -3697,7 +3709,9 @@ a = reshape ((/(i * i, i = 1, 100)/), (/10, 10/))
 ```
 
 
-```fortran>a = 0</lang
+```fortran
+a = 0
+```
 
 Array section assignment:
 
@@ -4873,7 +4887,8 @@ System.out.println(array[3]);
 Dynamic arrays can be made using <code>List</code>s:
 
 
-```java5>List<Integer> list = new ArrayList<Integer
+```java5
+List<Integer> list = new ArrayList<Integer
 ();   // optionally add an initial size as an argument
 list.add(5);   // appends to the end of the list
 list.add(1, 6);   // inserts an element at index 1
@@ -5743,7 +5758,8 @@ Sin[1]
 Variables are not typed until they are initialized. So, if you want to create an array you simply assign a variable name the value of an array. Also, memory is managed by MATLAB so an array can be expanded, resized, and have elements deleted without the user dealing with memory. Array elements can be retrieved in two ways. The first way is to input the row and column indicies of the desired elements. The second way is to input the subscript of the array elements.
 
 
-```MATLAB>>
+```matlab
+>
  a = [1 2 35] %Declaring a vector (i.e. one-dimensional array)
 
 a =
@@ -7457,7 +7473,8 @@ The items in a vector! must all have the same type.
 The allowable item types are: integer! float! char! percent!
 Vectors of string! are not allowed.
 
-```Red>>
+```Red
+>>
  vec1: make vector! [ 20 30 70]
 == make vector! [20 30 70]
 >> vec1/2
@@ -8075,10 +8092,14 @@ Fixed size means that once created it is expensive (although not strictly imposs
 
 Creating simple vectors:
 
-```self>vector copySize: 100</lang
+```self
+vector copySize: 100>
+```
 
 
-```self>vector copySize: 100 FillingWith: anObject</lang
+```self
+vector copySize: 100 FillingWith: anObject>
+```
 
 
 A polymorphic vector:
@@ -9148,7 +9169,9 @@ unset alist[*]
 
 To delete the array itself (and all items in it, of course):
 
-```bash>unset alist</lang
+```bash
+unset alist>
+```
 
 
 =={{header|உயிர்/Uyir}}==

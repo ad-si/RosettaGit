@@ -533,7 +533,8 @@ procedure division.
 ###  Script Based CFML
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   zeroPower = 0^0;
   writeOutput( zeroPower );
@@ -1010,14 +1011,16 @@ System.out.println(Math.pow(0, 0));
 
 In interactive mode:
 
-```javascript>
+```javascript
+>
  Math.pow(0, 0);
 1
 ```
 
 ===exponentiation operator (**)===
 
-```javascript>
+```javascript
+>
  0**0
 1
 ```
@@ -1258,7 +1261,9 @@ TextWindow.WriteLine(Math.Power(0,0))
 
 ## min
 
-```min>0 0 pow puts</lang
+```min
+0 0 pow puts>
+```
 
 ```txt
 
@@ -1398,7 +1403,9 @@ In the interpreter:
 
 
 
-```Oforth>0 0 pow println</lang
+```oforth
+0 0 pow println>
+```
 
 
 ```txt

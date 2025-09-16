@@ -949,7 +949,8 @@ a = [2,  8, 0] as CList;       assert ! (a < b)
 
 The built-in comparison operators already do this:
 
-```haskell>Prelude
+```haskell
+Prelude>
   [1,2,1,3,2] < [1,2,0,4,4,0,0,0]
 False
 ```
@@ -1717,7 +1718,8 @@ foreach my $pair (
 
 There is already a built-in comparison operator.
 
-```perl6>my @a = <1 2 4
+```perl6
+my @a = <1 2 4>
 ;
 my @b = <1 2 4>;
 say @a," before ",@b," = ", @a before @b;
@@ -2010,7 +2012,8 @@ True
 
 The built-in comparison operators already do this:
 
-```python>>>
+```python
+>>>
  [1,2,1,3,2] < [1,2,0,4,4,0,0,0]
 False
 ```
@@ -2039,7 +2042,8 @@ False
 
 The built-in comparison operator already does this:
 
-```rascal>rascal
+```rascal
+rascal>
 [2,1,3] < [5,2,1,3]
 bool: true
 ```
@@ -2134,7 +2138,8 @@ list3=list4
 
 The built-in <code><=></code> operator already does this:
 
-```ruby>>
+```ruby
+>>
  ([1,2,1,3,2] <=> [1,2,0,4,4,0,0,0]) < 0
 => false
 ```

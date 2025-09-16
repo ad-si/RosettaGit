@@ -814,7 +814,8 @@ FR0000988040: valid
 
 ## COBOL
 
-```cobol>        >
+```cobol
+        >>
 SOURCE FORMAT FREE
 *>   this is gnucobol 2.0
 identification division.

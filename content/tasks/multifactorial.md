@@ -438,7 +438,8 @@ degree 5: 1 2 3 4 5 6 14 24 36 50
 ## BBC BASIC
 
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 multifact
 FOR i% = 1 TO 5
   PRINT "Degree "; i%; ":";
@@ -780,7 +781,8 @@ main() ->
                   end, Ds).
 ```
 
-```erlang>5
+```erlang
+5>
  multifac:main().
 Degree 1: [1,2,6,24,120,720,5040,40320,362880,3628800]
 Degree 2: [1,2,3,8,15,48,105,384,945,3840]
@@ -1886,7 +1888,8 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
 ### Python: Iterative
 
 
-```python>>>
+```python
+>>>
  from functools import reduce
 >>> from operator import mul
 >>> def mfac(n, m): return reduce(mul, range(n, 0, -m))
@@ -1911,7 +1914,8 @@ Degree 5: 1 2 3 4 5 6 14 24 36 50
 ### Python: Recursive
 
 
-```python>>>
+```python
+>>>
  def mfac2(n, m): return n if n <= (m + 1) else n * mfac2(n - m, m)
 
 >>> for m in range(1, 6): print("%2i: %r" % (m, [mfac2(n, m) for n in range(1, 11)]))

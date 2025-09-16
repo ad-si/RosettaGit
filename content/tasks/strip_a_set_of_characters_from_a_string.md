@@ -1289,7 +1289,9 @@ Sh ws  soul strppr. Sh took my hrt!
 ## Factor
 
 
-```factor>without</lang
+```factor
+without>
+```
 
 Example:
 
@@ -2265,7 +2267,8 @@ Sh ws  soul strppr. Sh took my hrt!
 
 ### Not using regular expressions
 
-```python>>>
+```python
+>>>
  def stripchars(s, chars):
 ...     return s.translate(None, chars)
 ...
@@ -2273,7 +2276,8 @@ Sh ws  soul strppr. Sh took my hrt!
 'Sh ws  soul strppr. Sh took my hrt!'
 ```
 
-```python>>>
+```python
+>>>
  import string
 >>> def stripchars(s, chars):
 ...     return s.translate(string.maketrans("", ""), chars)
@@ -2284,7 +2288,8 @@ Sh ws  soul strppr. Sh took my hrt!
 
 Implemented manually:
 
-```python>>>
+```python
+>>>
  def stripchars(s, chars):
 ...     return "".join(c for c in s if c not in chars)
 ...
@@ -2296,7 +2301,8 @@ Implemented manually:
 ### Using regular expressions
 
 
-```python>>>
+```python
+>>>
  import re
 >>> def stripchars(s, chars):
 	return re.sub('[%s]+' % re.escape(chars), '', s)

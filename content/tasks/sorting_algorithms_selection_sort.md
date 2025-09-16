@@ -711,7 +711,8 @@ int main() {
 This is a generic implementation that works with any type that implements the IComparable interface
 
 
-```csharp>class SelectionSort<T
+```csharp
+class SelectionSort<T>
  where T : IComparable {
     public T[] Sort(T[] list) {
         int k;
@@ -2135,7 +2136,8 @@ println("# unordered: $v\n -> ordered: ", selectionsort!(v))
 
 ## Kotlin
 
-```scala>fun <T : Comparable<T>> Array<T
+```scala
+fun <T : Comparable<T>> Array<T>
 .selection_sort() {
     for (i in 0..size - 2) {
         var k = i
@@ -2354,7 +2356,8 @@ end %selectionSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  selectionSort([4 3 1 5 6 2])
 
 ans =

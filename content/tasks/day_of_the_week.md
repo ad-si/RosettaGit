@@ -209,7 +209,8 @@ PG       DS     CL12               buffer
          END    DOW
 ```
 
-<pre style="height:16ex">        2011
+```txt
+        2011
         2016
         2022
         2033
@@ -261,7 +262,7 @@ enddo.
 
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 December 25 is a Sunday in:
 2011
 2016
@@ -280,13 +281,14 @@ December 25 is a Sunday in:
 2107
 2112
 2118
-
 ```
 
 
-=={{header|Action!}}==
+## Action!
+
 Action! does not have a standard library providing a day of week function, therefore an adaptation of [https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Sakamoto.27s_methods Sakamoto's method] to determine the day of week for a given date using integer arithmetic is used.
-<lang Action!>
+
+```Action!
 Byte FUNC DayOfWeek(BYTE day, month CARD year BYTE century)
 CARD weekday
 BYTE ARRAY index=[0 3 2 5 0 3 5 1 4 6 2 4]
@@ -316,10 +318,9 @@ PrintCE(y)
 FI
 OD
 RETURN
-
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 December 25 is a Sunday in:
 2011
 2016
@@ -338,7 +339,6 @@ December 25 is a Sunday in:
 2107
 2112
 2118
-
 ```
 
 
@@ -361,7 +361,7 @@ begin
 end Yuletide;
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 2011-12-25 00:00:00
 2016-12-25 00:00:00
 2022-12-25 00:00:00
@@ -379,7 +379,6 @@ end Yuletide;
 2107-12-25 00:00:00
 2112-12-25 00:00:00
 2118-12-25 00:00:00
-
 ```
 
 
@@ -658,7 +657,8 @@ MsgBox,% out
 ## AutoIt
 
 
-```AutoIt>#include <date.au3
+```AutoIt
+#include <date.au3>
 
 Const $iSunday = 1
 For $iYear = 2008 To 2121 Step 1
@@ -1045,7 +1045,8 @@ quit
 Befunge doesn't have any standard date-handling functionality, so we calculate the day of the week directly using a simple variation of the Zeller rule.
 
 
-```befunge>8
+```befunge
+8
 :"2("*+::::4/+\"d"/-\45v
 @_^#`"y": +1$<_v#%7+1+/*:*<
 >:#,_>$:.55+,^ >0" ,52 ceD"
@@ -1269,7 +1270,8 @@ class Program
 }
 ```
 
-<pre style="height:20ex;overflow:scroll">25 Dec 2011
+```txt
+25 Dec 2011
 25 Dec 2016
 25 Dec 2022
 25 Dec 2033
@@ -1345,7 +1347,7 @@ Using Date Intrinsic Functions
 
 ```
 
-<pre style="height:20ex;overflow:scroll">
+```txt
 2011
 2016
 2022
@@ -1443,7 +1445,7 @@ Without Date Intrinsic Functions
 
 ```
 
-<pre style="height:20ex;overflow:scroll">
+```txt
 year=2011
 year=2016
 year=2022
@@ -1481,7 +1483,7 @@ one-liner:
 console.log year for year in [2008...2121] when new Date(year, 11, 25).getDay() is 0
 ```
 
-<pre style="height:20ex;overflow:scroll">
+```txt
 2011
 2016
 2022
@@ -3646,7 +3648,8 @@ END DaysOfWeek.
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()
@@ -3883,7 +3886,8 @@ See [[Day_of_the_week#Delphi | Delphi]]
 ## Peloton
 
 
-```sgml><@ SAI
+```sgml
+<@ SAI>
 
 	<@ ITEFORLI3>2121|2008|
 		<@ LETVARCAP>Christmas Day|25-Dec-<@ SAYVALFOR>...</@></@>
@@ -3898,7 +3902,8 @@ See [[Day_of_the_week#Delphi | Delphi]]
 
 English dialect variable-length space-padded opcodes
 
-```html><# suppressimplicitoutput
+```html
+<# suppressimplicitoutput
 
 	<# iterate foriteration literalstring3>2121|2008|
 		<# let variable capture>Christmas Day|25-Dec-<# say value foriteration>...</#></#>

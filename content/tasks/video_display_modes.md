@@ -46,7 +46,7 @@ There are ten possible modes:
  HGR2, page 2, 280 x 192, 6 colors, full screen
  text, page 2, 40 x 24
  gr, page 1, 40 x 48, 16 colors, full screen
- gr, page 2, 40 x 40, 16 colors, mixed with four lines of text 
+ gr, page 2, 40 x 40, 16 colors, mixed with four lines of text
  gr, page 2, 40 x 48, 16 colors, full screen
  hgr, page 1, 280 x 192, 6 colors, full screen
  hgr, page 2, 280 x 160, 6 colors, mixed with four lines of text
@@ -80,7 +80,9 @@ There are ten possible modes:
 ## BBC BASIC
 
 
-```bbcbasic>10 MODE 1: REM 320x256 4 colour graphics</lang
+```bbcbasic
+10 MODE 1: REM 320x256 4 colour graphics>
+```
 
 
 =={{header|GW-BASIC}}==
@@ -104,7 +106,7 @@ ERRE language (for PC) supports these modes (accessible with SCREEN procedure of
 * SCREEN(2) => 640x200 2 colors
 * SCREEN(7) => 320x200 16 colors
 * SCREEN(8) => 640x200 16 colors
-* SCREEN(9) => 640x350 16 colors 
+* SCREEN(9) => 640x350 16 colors
 * SCREEN(10) => 640x350 for MDA monitors (if you have one .....)
 It's possible to activate all VGA and SVGA modes using DOS interrupts. On the distribution disk there is an example to activate 320x200 - 256 colors.
 
@@ -152,18 +154,18 @@ func main() {
 
 Screen 0: minimum 8 x 8, current 1366 x 768, maximum 32767 x 32767
 eDP1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 344mm x 193mm
-   1366x768      60.00*+  48.01  
-   1360x768      59.80    59.96  
-   1280x720      60.00  
-   1024x768      60.00  
-   1024x576      60.00  
-   960x540       60.00  
-   800x600       60.32    56.25  
-   864x486       60.00  
-   640x480       59.94  
-   720x405       60.00  
-   680x384       60.00  
-   640x360       60.00  
+   1366x768      60.00*+  48.01
+   1360x768      59.80    59.96
+   1280x720      60.00
+   1024x768      60.00
+   1024x576      60.00
+   960x540       60.00
+   800x600       60.32    56.25
+   864x486       60.00
+   640x480       59.94
+   720x405       60.00
+   680x384       60.00
+   640x360       60.00
 DP1 disconnected (normal left inverted right x axis y axis)
 DP2 disconnected (normal left inverted right x axis y axis)
 HDMI1 disconnected (normal left inverted right x axis y axis)
@@ -192,17 +194,17 @@ invoke("xrandr -s 1366x768")
 ```txt
 Screen 0: minimum 640 x 480, current 5080 x 1898, maximum 5080 x 1920
 default connected 5080x1898+0+0 0mm x 0mm
-   2880x1800     60.00  
-   1440x900      60.00  
-   2560x1600     60.00  
-   2048x1280     60.00  
-   1024x768      60.00  
-   800x600       60.00  
-   640x480       60.00  
-   1680x1050     60.00  
-   1280x800      60.00  
-   5080x1898      1.00* 
-   5080x1920      2.00  
+   2880x1800     60.00
+   1440x900      60.00
+   2560x1600     60.00
+   2048x1280     60.00
+   1024x768      60.00
+   800x600       60.00
+   640x480       60.00
+   1680x1050     60.00
+   1280x800      60.00
+   5080x1898      1.00*
+   5080x1920      2.00
 ```
 
 
@@ -230,23 +232,23 @@ Screen 0: minimum 8 x 8, current 3840 x 1200, maximum 8192 x 8192
 DVI-I-0 disconnected (normal left inverted right x axis y axis)
 VGA-0 connected 1920x1200+0+0 (normal left inverted right x axis y axis) 518mm x 324mm
    1920x1200      60.0*+
-   1600x1200      75.0     70.0     65.0     60.0  
-   1280x1024      75.0     60.0  
-   1280x960       60.0  
-   1152x864       75.0  
-   1024x768       75.0     70.1     60.0  
-   800x600        75.0     72.2     60.3     56.2  
-   640x480        75.0     72.8     59.9  
+   1600x1200      75.0     70.0     65.0     60.0
+   1280x1024      75.0     60.0
+   1280x960       60.0
+   1152x864       75.0
+   1024x768       75.0     70.1     60.0
+   800x600        75.0     72.2     60.3     56.2
+   640x480        75.0     72.8     59.9
 TV-0 disconnected (normal left inverted right x axis y axis)
 DVI-I-1 connected 1920x1200+1920+0 (normal left inverted right x axis y axis) 518mm x 324mm
    1920x1200      60.0*+
-   1680x1050      60.0  
-   1600x1200      60.0  
-   1280x1024      75.0     60.0  
-   1280x960       75.0  
-   1024x768       75.0     60.0  
-   800x600        75.0     60.3  
-   640x480        75.0     59.9  
+   1680x1050      60.0
+   1600x1200      60.0
+   1280x1024      75.0     60.0
+   1280x960       75.0
+   1024x768       75.0     60.0
+   800x600        75.0     60.3
+   640x480        75.0     59.9
 ->
 
 ```
@@ -288,7 +290,7 @@ fun runSystemCommand(command: String) {
 }
 
 fun main(args: Array<String>) {
-    // query supported display modes  
+    // query supported display modes
     runSystemCommand("xrandr -q")
     Thread.sleep(3000)
 
@@ -306,11 +308,11 @@ fun main(args: Array<String>) {
 
 Screen 0: minimum 320 x 200, current 1366 x 768, maximum 32767 x 32767
 eDP1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 344mm x 193mm
-   1366x768       60.0*+   48.0  
-   1360x768       59.8     60.0  
-   1024x768       60.0  
-   800x600        60.3     56.2  
-   640x480        59.9  
+   1366x768       60.0*+   48.0
+   1360x768       59.8     60.0
+   1024x768       60.0
+   800x600        60.3     56.2
+   640x480        59.9
 HDMI1 disconnected (normal left inverted right x axis y axis)
 DP1 disconnected (normal left inverted right x axis y axis)
 HDMI2 disconnected (normal left inverted right x axis y axis)
@@ -330,7 +332,9 @@ The Amstrad CPC464 supports three video modes:
 * Mode 2 - Graphics: 640x200    Text: 80x25    Colours: 2
 Note that text can be displayed using conventional means in all display modes.
 
-```locobasic>10 MODE 0: REM switch to mode 0</lang
+```locobasic
+10 MODE 0: REM switch to mode 0>
+```
 
 
 
@@ -437,7 +441,7 @@ win32api.ChangeDisplaySettings(devmode,0)
 
 ## REXX
 
-This method only works in ''DOS prompt'' either under (native) DOS or Microsoft WINDOWS. 
+This method only works in ''DOS prompt'' either under (native) DOS or Microsoft WINDOWS.
 
 DOS (under Microsoft Windows) will support:
 * columns   of   '''11 ──&gt; 32,766'''   (inclusive)
@@ -466,7 +470,7 @@ The prologue code (at the bottom of the program) is a collection of some general
 * what the fileName, fileType/fileExt, fileMode/path is of the REXX program
 * which command to use to clear the terminal screen
 * invokes $H to show general documentation (1st and only arg = ?)
-* invokes $H to show a flow diagram (1st and only arg = ?FLOW) 
+* invokes $H to show a flow diagram (1st and only arg = ?FLOW)
 * invokes $H to show sample uses (1st and only arg = ?SAMPLE)
 * invokes $H to show the author &amp; contact info (1st and only arg = ?AUTHOR)
 

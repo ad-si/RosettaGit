@@ -5672,7 +5672,8 @@ is_leap_year(Year) :-
 The Python [https://docs.python.org/3/library/calendar.html calendar].prcal function prints calendars with the following formatting options: optional parameters w, l, and c are for date column width, lines per week, and number of spaces between month columns, respectively.
 
 
-```python>>>
+```python
+>>
  import calendar
 >>> help(calendar.prcal)
 Help on method pryear in module calendar:
@@ -6739,7 +6740,9 @@ object CalendarPrint extends App {
 
 
 {{out}}
-<pre style="height:31ex;overflow:scroll">                               [Snoopy Picture]
+
+```txt
+                             [Snoopy Picture]
 
                                      1969
 
@@ -7370,7 +7373,9 @@ END;
 
 This implementation has been developed using '''Cuis Smalltalk''' [https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev] with '''Aconcagua''' loaded.
 To run it, evaluate:
-```smalltalk>CalendarPrinter printOnTranscriptForYearNumber: 1969</lang
+```smalltalk
+CalendarPrinter printOnTranscriptForYearNumber: 1969
+```
 
 
 ```Smalltalk
@@ -9289,7 +9294,8 @@ else oneYear().println();
 
 oneMonth produces a list of strings that make up a one month calender. Each day is three characters, the first line is padded with blanks to line it up with the 1st day of the week. The entire month is one long list of "days" that is then chunked into a list of weeks (one line per week). oneYear takes 3 months and builds the page line by line.
 {{out}}
-<pre style="height:45ex">
+
+```txt
                       3 Days of Peace & Music
                                  1969
 

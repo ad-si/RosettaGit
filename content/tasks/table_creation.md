@@ -728,7 +728,8 @@ CREATE TABLE account_note (
 
 The sqlite3 database is a part of the Python standard library. It does not associate type with table columns, any cell can be of any type.
 
-```python>>>
+```python
+>>>
  import sqlite3
 >>> conn = sqlite3.connect(':memory:')
 >>> c = conn.cursor()

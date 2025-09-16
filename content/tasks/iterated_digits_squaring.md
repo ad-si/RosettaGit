@@ -71,7 +71,8 @@ If you add the square of the digits of a Natural number (an integer bigger than 
 An example in Python:
 
 
-```python>>>
+```python
+>>
  step = lambda x: sum(int(d) ** 2 for d in str(x))
 >>> iterate = lambda x: x if x in [1, 89] else iterate(step(x))
 >>> [iterate(x) for x in xrange(1, 20)]
@@ -657,7 +658,9 @@ class Program {
 ```
 
 {{out}}
-<pre style="height:30ex;overflow:scroll">1->10^1  : 7
+
+```txt
+1->10^1  : 7
 1->10^2  : 80
 1->10^3  : 857
 1->10^4  : 8558
@@ -3117,7 +3120,8 @@ Time ~= 34.16 secs
 ### Python: Simple caching
 
 
-```python>>>
+```python
+>>
  from functools import lru_cache
 >>> @lru_cache(maxsize=1024)
 def ids(n):
@@ -3142,7 +3146,8 @@ This took a much longer time, in the order of hours.
 
 Notes that the order of digits in a number does not affect the final result so caches the digits of the number in sorted order for more hits.
 
-```python>>>
+```python
+>>
  from functools import lru_cache
 >>> @lru_cache(maxsize=1024)
 def _ids(nt):

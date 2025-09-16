@@ -968,7 +968,8 @@ task() ->
     io:format("Odious:~p~n",[odious(30)]).
 ```
 
-```erlang>61
+```erlang
+61>
  population_count:task().
 Powers of 3: [1,2,2,4,3,6,6,5,6,8,9,13,10,11,14,15,11,14,14,17,17,20,19,22,16,18,24,30,25,
  25]
@@ -2415,7 +2416,8 @@ odd pop_count: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 4
 ### Procedural
 
 
-```python>>>
+```python
+>>>
  def popcount(n): return bin(n).count("1")
 ...
 >>> [popcount(3**i) for i in range(30)]

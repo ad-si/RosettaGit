@@ -4788,7 +4788,8 @@ public str RPS(human){
 
 Sample output:
 
-```rascal>rascal
+```rascal
+rascal>
 RPS("Rock")
 str: "Computer played Rock. Nobody wins!"
 

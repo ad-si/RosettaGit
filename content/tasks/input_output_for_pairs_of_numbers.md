@@ -839,7 +839,8 @@ for x in range(0, t):
 
 Or without the function do_stuff() and that works for Python 3 and Python 2:
 
-```python>>>
+```python
+>>
  try: raw_input
 except NameError: raw_input = input
 
@@ -870,7 +871,8 @@ except NameError: raw_input = input
 
 More than is asked for by the task, but if working interactively then the following version adds prompts.
 
-```python>>>
+```python
+>>
  for i in range(int(raw_input('lines: '))):
 	print(sum(int(numberstring)
                   for numberstring in raw_input('two numbers: ').strip().split()))

@@ -152,7 +152,8 @@ Return the largest index to a needle that has multiple occurrences in the haysta
 
 ===Using the built-in Error class===
 
-```ActionScript>var list:Vector.<String> = Vector.<String
+```actionscript
+var list:Vector.<String> = Vector.<String>
 (["Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie", "Bush", "Boz", "Zag"]);
 function lowIndex(listToSearch:Vector.<String>, searchString:String):int
 {
@@ -2787,7 +2788,8 @@ end
 ```
 
 
-```MATLAB>>
+```MATLAB
+>>
  list = {'a','b','c','d','e','c','f','c'};
 >> searchCollection(list,'c','first')
 
@@ -3280,7 +3282,8 @@ Washington is not in haystack
 ## Perl 6
 
 
-```perl6>my @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo
+```perl6
+my @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo>
 ;
 
 for <Washington Bush> -> $needle {
@@ -3300,7 +3303,8 @@ Bush -- 4
 
 
 Or, including the "extra credit" task:
-```perl6>my Str @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo
+```perl6
+my Str @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo>
 ;
 
 for <Washingston Bush> -> $needle {
@@ -3336,7 +3340,8 @@ The <code>:end</code> adverb tells it to start searching from the end of the lis
 
 If you plan to do many searches on the same large list, you might want to build a search hash first for efficient look-up:
 
-```perl6>my @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo
+```perl6
+my @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo>
 ;
 
 my %index;
@@ -3771,7 +3776,8 @@ Note that in Python, the index method of a list already raises an exception.
 The following shows the default information given
 when the exception is not captured in the program:
 
-```python>>>
+```python
+>>>
  haystack=["Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo"]
 >>> haystack.index('Bush')
 4
@@ -3787,7 +3793,8 @@ ValueError: list.index(x): x not in list
 There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex rindex]).
 Instead we need to look for the index in the reversed list and adjust the result.
 
-```python>>>
+```python
+>>>
  def hi_index(needle, haystack):
 	return len(haystack)-1 - haystack[::-1].index(needle)
 
@@ -4668,7 +4675,8 @@ echo(findIn("Hello world, you are quite sunny today.","quite hello somethingelse
 returns:
 
 
-```TorqueScript>=
+```torquescript
+=>
  "quite_4 hello_0 somethingelse_-1"
 ```
 

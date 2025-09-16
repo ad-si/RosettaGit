@@ -1315,7 +1315,8 @@ Sample output:
 =={{header|Objective-C}}==
 Uses blocks
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 typedef NSArray *(^SOfN)(id);

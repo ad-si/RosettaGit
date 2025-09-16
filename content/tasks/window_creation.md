@@ -2433,7 +2433,8 @@ view layout [size 100x100]
 
 Empty Window with close [X] button
 
-```Red>>
+```Red
+>>
 view []
 
 ```
@@ -2615,7 +2616,9 @@ gtk2.main;
 
 ## Smalltalk
 
-```smalltalk>SystemWindow new openInWorld.</lang
+```smalltalk
+SystemWindow new openInWorld.>
+```
 
 
 ```smalltalk
@@ -2631,11 +2634,15 @@ top open
 
 Loading the [[Tk]] package is all that is required to get an initial window:
 
-```tcl>package require Tk</lang
+```tcl
+package require Tk>
+```
 
 If you need an additional window:
 
-```tcl>toplevel .top</lang
+```tcl
+toplevel .top>
+```
 
 If you are using the increasingly popular [http://www.equi4.com/tclkit.html tclkit] under MS Windows, all you have to do is associate the tclkit with the extension “<tt>.tcl</tt>” and then create an <i>empty</i> file with, e.g., with the name <tt>nothing.tcl</tt>. Double-clicking that will “open a window” (an empty one).
 

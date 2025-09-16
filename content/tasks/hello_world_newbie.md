@@ -763,13 +763,18 @@ end
 Where the following notes apply:
 
 *
-```eiffel>class APPLICATION ... end</lang
+```eiffel
+class APPLICATION ... end>
+```
  defines the simplest form of an Eiffel "class".
 *
-```eiffel>create make</lang
+```eiffel
+create make>
+```
  defines a "creation procedure" (i.e. constructor) for the class <b>{APPLICATION}</b>.
 *
-```eiffel>make do ... end
+```eiffel
+make do ... end>
 ```
  is the implementation of the constructor specified with the <b
 `create'</b> keyword (above).
@@ -778,7 +783,9 @@ Where the following notes apply:
 print ( ... )
 ```
  is a feature inherited from class <b>{ANY}</b>—a class from which all Eiffel classes inherit (e.g. like {APPLICATION}). In the example the
-```eiffel>inherit ANY</lang
+```eiffel
+inherit ANY>
+```
  has been left out as it is implied by default.
 
 
@@ -1567,9 +1574,13 @@ sayHello()
 Download MontiLang binaries for windows or linux from http://montilang.ml, or from the releases page of https://github.com/lduck11007/MontiLang. Alternatively, you can easily build from source for easy customization with the instructions on Github.
 
 To run MontiLang, open a shell by typing
-```MontiLang>monti</lang
+```MontiLang
+monti>
+```
  in the terminal, or run a program by specifying
-```MontiLang>monti file.mt</lang
+```MontiLang
+monti file.mt>
+```
  For documentation on the language, see file 'Documentation.mt' in /examples on github.
 
 Here is a simple Hello World program in MontiLang
@@ -1677,7 +1688,9 @@ ocamlc -o hello hello.ml
 
 
 Run as:
-```Shell>./hello</lang
+```Shell
+./hello>
+```
 
 
 
@@ -1702,7 +1715,9 @@ Type in file:
 
 
 Run as:
-```Shell>oforth hello.of</lang
+```Shell
+oforth hello.of>
+```
 
 
 Or you can use oforth command line directly :
@@ -1728,7 +1743,9 @@ Create file 'hello.l':
 
 
 Run:
-```Shell>perl pare hello.l</lang
+```Shell
+perl pare hello.l>
+```
 
 
 
@@ -2534,7 +2551,9 @@ print("Hello, world!");
 
 and run it
 
-```Bash>setl myscript.setl</lang
+```Bash
+setl myscript.setl>
+```
 
 
 Documentation on the setl command can be found [http://setl.org/doc/setl-user.html here] and a paper on the SETL language can be found [https://www.researchgate.net/publication/238739905_An_introduction_to_the_set_theoretical_language_SETL here].

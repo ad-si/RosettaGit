@@ -1387,7 +1387,8 @@ type Rectangle(width, height) =
 
 A type that leaves some or all members unimplemented, is an '''abstract class'''. It has to be marked with the <code>AbstractClass</code> attribute. Example:
 
-``` fsharp>[<AbstractClass
+``` fsharp
+[<AbstractClass>
 ]
 type Bird() =
   // an abstract (=virtual) method with default impl.
@@ -2574,7 +2575,9 @@ class virtual foo =
 
 In OCaml what we call an abstract type is not OO related, it is only a type defined without definition, for example:
 
-```ocaml>type t</lang
+```ocaml
+type t
+```
 
 it is used for example to hide an implementation from the interface of a module or for type algebra.
 

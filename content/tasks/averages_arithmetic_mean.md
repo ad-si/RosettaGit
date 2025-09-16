@@ -1879,7 +1879,8 @@ let mean_series list =
 
 Checking this:
 
-```fsharp>
+```fsharp
+
  mean_series [1; 8; 2; 8; 1; 7; 1; 8; 2; 7; 3; 6; 1; 8; 100] ;;
  val it : float = 10.86666667
  > mean_series [] ;;
@@ -2397,7 +2398,9 @@ function mean(a)
 
 {{Out}}
 
-```JavaScript>5</lang
+```javascript
+5
+```
 
 
 
@@ -2405,7 +2408,9 @@ function mean(a)
 
 The mean of an array of numbers can be computed by simply writing
 
-```jq>add/length</lang
+```jq
+add/length
+```
 
 
 This definition raises an error condition if the array is empty, so it may make sense to define '''mean''' as follows, '''null''' being jq's null value:
@@ -2422,7 +2427,8 @@ def mean: if length == 0 then null
 
 Julia's built-in mean function accepts AbstractArrays (vector, matrix, etc.)
 
-```julia>julia
+```julia
+julia
  using Statistics; mean([1,2,3])
 2.0
 julia> mean(1:10)
@@ -2498,7 +2504,8 @@ average(array(1,2,5,17,7.4)) //6.48
 
 Usage:
 
-```lisp>
+```lisp
+>
  (mean '(1 1))
 1.0
 > (mean '(1 2))
@@ -2525,7 +2532,8 @@ Functions in LFE (and Erlang) have set arity, but macros can be used to provide 
 Usage:
 
 
-```lisp>
+```lisp
+>
  (mean 42)
 42.0
 > (mean 18 66)
@@ -3933,13 +3941,16 @@ print avg([0,0,3,1,4,1,5,9,0,0])
 
 {{out}}
 
-```python>2.3</lang
+```python
+2.3
+```
 
 
 {{works with|Python|3.4}}
 Since 3.4, Python has a [[http://docs.python.org/3/library/statistics.html statistics] library in the stdlib, which takes care of these precision overflow issues in a way that works for all standard types, not just float, even with values way too big or small to fit in a float. (For Python 2.6-2.7, there's a backport available on PyPI.)
 
-```python>>>
+```python
+>>
  from statistics import mean
 >>> mean([1e20,-1e-20,3,1,4,1,5,9,-1e20,1e-20])
 2.3
@@ -4967,7 +4978,8 @@ mean '(1 2 3)
 ## WDTE
 
 
-```WDTE>let s =
+```WDTE
+let s =
  import 'stream';
 let a => import 'arrays';
 
@@ -5116,7 +5128,8 @@ sum($values) div count($values)
 Sample input:
 
 
-```xml><numbers
+```xml
+<numbers>
 
 	<!-- Average is 2.4 -->
 	<number>1</number>

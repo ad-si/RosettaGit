@@ -489,7 +489,9 @@ let main argv =
 ```
 
 <p>Since file upload to the Wiki is not possible, the raw output for F<sub>11</sub> is given:</p>
-<pre style="white-space:pre-wrap"><!DOCTYPE html>
+
+```html
+<!DOCTYPE html>
 <html><body><svg height="100%" width="100%" viewbox="0 0 36 24">
   <polyline points="0,0 0,2 2,2 4,2 4,0 6,0 8,0 8,2 8,4 6,4 6,6 6,8 8,8 8,10 8,12 6,12 4,12 4,10 2,10 0,10 0,12 0,14 2,14 2,16 2,18 0,18 0,20 0,22 2,22 4,22 4,20 6,20 8,20 8,22 10,22 12,22 12,20 12,18 10,18 10,16 10,14 12,14 14,14 14,16 16,16 18,16 18,14 20,14 22,14 22,16 22,18 20,18 20,20 20,22 22,22 24,22 24,20 26,20 28,20 28,22 30,22 32,22 32,20 32,18 30,18 30,16 30,14 32,14 32,12 32,10 30,10 28,10 28,12 26,12 24,12 24,10 24,8 26,8 26,6 26,4 24,4 24,2 24,0 26,0 28,0 28,2 30,2 32,2 32,0 34,0 " style="fill:white;stroke:red;stroke-width:1" transform="matrix(1,0,0,-1,1,23)"/>
   Sorry, your browser does not support inline SVG.
@@ -1813,8 +1815,8 @@ FibWord: procedure; parse arg x;  !.=0;   !.1=1  /*obtain the order of  Fibonacc
 
 
 (The output is shown <sup>1</sup>/<sub>2</sub> size.)
-<b>
-<pre style="font-size:50%">
+
+```txt
 ┌─┐ ┌─┐   ┌─┐ ┌─┐       ┌─┐ ┌─┐   ┌─┐ ┌─┐                 ┌─┐ ┌─┐   ┌─┐ ┌─┐       ┌─┐ ┌─┐   ┌─┐ ┌─┐
 │ └─┘ │   │ └─┘ │       │ └─┘ │   │ └─┘ │                 │ └─┘ │   │ └─┘ │       │ └─┘ │   │ └─┘ │
 └┐   ┌┘   └┐   ┌┘       └┐   ┌┘   └┐   ┌┘                 └┐   ┌┘   └┐   ┌┘       └┐   ┌┘   └┐   ┌┘
@@ -1967,8 +1969,7 @@ word = fibonacci_word(16)
 print_fractal(word)
 ```
 
-
-<pre style="height: 190ex; font-size: 50%;">
+```txt
 +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+
 |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |                                   |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |
 +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +

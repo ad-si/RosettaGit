@@ -452,7 +452,8 @@ n t
 
 Note: This specimen can only handle lists of length less than the number of bits in an '''int'''.
 
-```C>#include <assert.h
+```C
+#include <assert.h>
 
 #include <stdio.h>
 

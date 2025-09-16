@@ -1441,7 +1441,9 @@ Test program:
 
 
 Output:
-<pre style="height:15ex;overflow:scroll">3.0/2.0 divides by zero? false
+
+```txt
+3.0/2.0 divides by zero? false
 3.0/1.0 divides by zero? false
 3.0/0.0 divides by zero? true
 2.0/2.0 divides by zero? false
@@ -1866,7 +1868,9 @@ error==>divideby0.m4:1: m4: Divide by zero in eval: 2/0
 
 By default numeric exceptions raise errors which cannot be trapped by the usual <code>try...catch</code> mechanism. Instead numeric exceptions may be controlled by custom handling procedures.
 
-```Maple>1/0; # Here is the default behavior.</lang
+```maple
+1/0; # Here is the default behavior.
+```
 
 Output:
 
@@ -2497,7 +2501,8 @@ Bad parameters: $a = 1 and $b = 0
 Floating point division yields inf or nan values as appropriate (if the FPU supports IEEE 754):
 
 
-```pure>
+```pure
+
  1/0, -1/0, 0/0;
 inf,-inf,nan
 ```
@@ -2506,7 +2511,8 @@ inf,-inf,nan
 It's possible to check for these values as follows:
 
 
-```pure>
+```pure
+
  inf_or_nan x = infp x || nanp x;
 > map inf_or_nan [1/0, -1/0, 0/0];
 [1,1,1]
@@ -2516,7 +2522,8 @@ It's possible to check for these values as follows:
 In contrast, integer division by zero raises an exception which can be caught as follows:
 
 
-```pure>
+```pure
+
  divide n m = catch (\_ -> "divide by 0") (n div m);
 > divide 0 1;
 0

@@ -394,7 +394,7 @@ OP INITBIGREAL = (LONG REAL in real)BIGREAL: (
   INT base = base OF arithmetic,
       order = digit order OF arithmetic,
       lsd = digit places OF arithmetic; # Todo: can be optimised/reduced #
-  
+
   [MSD whole:lsd]DIGIT out; out[MSD whole:LSD whole] := whole[@1];
   FOR place FROM LSD whole - order TO 0 DO out[place] := INITDIGIT 0 OD; # pad #
 
@@ -530,7 +530,8 @@ test: (
 )
 ```
 '''Output:'''
-<pre style="height:15ex;overflow:scroll">
+
+```txt
 12345679e63 x 81 gives: 999999999e63, Plus 1e63 gives: 1e72 => Passed!
 12345679012345679e54 x 81 gives: 999999999999999999e54, Plus 1e54 gives: 1e72 => Passed!
 12345679012345679012345679e45 x 81 gives: 999999999999999999999999999e45, Plus 1e45 gives: 1e72 => Passed!
@@ -568,7 +569,7 @@ test: (
 
 ## Go
 
-Although the big.Float type already has a 'Mul' method, we re-implement it by repeated application of the 'Add' method. 
+Although the big.Float type already has a 'Mul' method, we re-implement it by repeated application of the 'Add' method.
 
 ```go
 package main
@@ -870,7 +871,7 @@ Note this is decimal-only, and that mpfr.e does not really cope because it canno
 
 ```Phix
 include bigatom.e
-{} = ba_scale(200) 
+{} = ba_scale(200)
 
 string s = "12345679",
        t = "123456790"
@@ -900,7 +901,7 @@ end for
 
 
 
-###  any base 
+###  any base
 
 Uses b_add() and b_mul() from [[Generalised_floating_point_multiplication#Phix]]
 
@@ -1066,7 +1067,7 @@ number in brackets is TOTAL number of digits
 │                                                                        │
 └─┐  The number of digits for the precision is automatically adjusted. ┌─┘
   └────────────────────────────────────────────────────────────────────┘*/
-maxW=linesize()-1                      /*max width allowed for displays.*/        
+maxW=linesize()-1                      /*max width allowed for displays.*/
                                        /*Not all REXXes have  LINESIZE. */
 _123=012345679;   reps=0;   mult=63    /*used to construct test cases.  */
 say ' # addend               uncompressed (zoned) BCD number'  /*header.*/
@@ -1106,7 +1107,7 @@ times=81                               /*the number of times to add it. */
 exit                                   /*stick a fork in it, we're done.*/
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here ──► [[LINESIZE.REX]].
 

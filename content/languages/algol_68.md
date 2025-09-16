@@ -348,7 +348,9 @@ t
 
 |colspan=6 bgcolor=aaaaff| Example:
 * deproceduring of:
-```algol68>PROC REAL random: e.g. random</lang
+```algol68
+PROC REAL random: e.g. random
+```
 
 |}
 For more details about Primaries and Secondaries refer to [[Operator_precedence#ALGOL_68|Operator precedence]].

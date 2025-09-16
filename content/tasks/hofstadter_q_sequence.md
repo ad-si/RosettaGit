@@ -1518,7 +1518,8 @@ _S f g x = f x (g x)
 ```
 
 
-```Haskell>Prelude Main
+```haskell
+Prelude Main>
  qSeqTest 1000 100000    -- reversals in 100,000
 ([1,1,2,3,3,4,5,5,6,6],502,49798)
 (0.09 secs, 18879708 bytes)

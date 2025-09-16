@@ -41,7 +41,9 @@ languages = [
 ## Task
 Dynamically allocated objects take their memory from a [[heap]]. The memory for an object is provided by an '''allocator''' which maintains the storage pool used for the [[heap]]. Often a call to allocator is denoted as
 
-```ada>P := new T</lang
+```ada
+P := new T
+```
 
 where T is the type of an allocated object and P is a [[reference]] to the object.
 

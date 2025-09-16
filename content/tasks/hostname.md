@@ -221,7 +221,9 @@ PRINT "Hostname: ", HOSTNAME$
 
 Since Windows 2000 :
 
-```dos>Hostname</lang
+```dos
+Hostname>
+```
 
 
 
@@ -349,7 +351,8 @@ Another way is to use the [[FFI]] to access POSIX' <code>gethostname(2)</code>:
 
 
 
-```lisp>BOA
+```lisp
+BOA>
  (get-hostname)
 "aurora"
 ```
@@ -359,7 +362,9 @@ Another way is to use the [[FFI]] to access POSIX' <code>gethostname(2)</code>:
 ## Crystal
 
 
-```crystal>hostname = System.hostname</lang
+```crystal
+hostname = System.hostname
+```
 
 
 
@@ -459,7 +464,9 @@ Host = net_adm:localhost().
 
 ## friendly interactive shell
 
-```fishshell>hostname</lang
+```fishshell
+hostname>
+```
 
 or
 
@@ -596,7 +603,9 @@ func main() {
 
 
 
-```groovy>println InetAddress.localHost.hostName</lang
+```groovy
+println InetAddress.localHost.hostName>
+```
 
 
 
@@ -931,7 +940,9 @@ end if
 ## LiveCode
 
 
-```LiveCode>answer the hostName</lang
+```LiveCode
+answer the hostName>
+```
 
 
 
@@ -1470,7 +1481,9 @@ Sys.getenv(env_var)
 ## REBOL
 
 
-```REBOL>print system/network/host</lang
+```REBOL
+print system/network/host>
+```
 
 
 
@@ -1651,7 +1664,9 @@ var host = `hostname`.chomp;
 ## Slate
 
 
-```slate>Platform current nodeName</lang
+```slate
+Platform current nodeName>
+```
 
 
 
@@ -1677,7 +1692,9 @@ NetHostDB.getHostName ()
 
 ## Smalltalk
 
-```Smalltalk>OperatingSystem getHostName</lang
+```Smalltalk
+OperatingSystem getHostName>
+```
 
 
 
@@ -1761,7 +1778,9 @@ host=HOST ()
 ## UNIX Shell
 
 
-```bash>hostname</lang
+```bash
+hostname>
+```
 
 or
 
@@ -1853,7 +1872,9 @@ End Sub
 ## zkl
 
 
-```zkl>System.hostname</lang
+```zkl
+System.hostname>
+```
 
 Or open a server socket, which contains the hostname.
 

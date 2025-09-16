@@ -46,7 +46,8 @@ The task is to establish a connection to an Active Directory or Lightweight Dire
 
 {{works with|AutoIt}}
 
-```AutoIt> #include <AD.au3
+```AutoIt
+ #include <AD.au3>
 
 _AD_Open()
 ```
@@ -70,7 +71,8 @@ objConn.Open()
 
 With OpenLDAP:
 
-```C>#include <ldap.h
+```c
+#include <ldap.h
 
 ...
 char *name, *password;

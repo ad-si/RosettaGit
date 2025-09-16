@@ -2284,7 +2284,8 @@ In other words, the power set of a 5 element set has 32 sets where the power set
 
 This implementation sorts each subset, but not the whole list of subsets (which would require a custom comparator). It also destroys the original set.
 
-```java5>public static ArrayList<String
+```java5
+public static ArrayList<String>
  getpowerset(int a[],int n,ArrayList<String> ps)
     {
         if(n<0)
@@ -2352,7 +2353,8 @@ public static <T> List<List<T>> powerset(Collection<T> list) {
 
 This implementation works on idea that each element in the original set can either be in the power set or not in it. With <tt>n</tt> elements in the original set, each combination can be represented by a binary string of length <tt>n</tt>. To get all possible combinations, all you need is a counter from 0 to 2<sup>n</sup> - 1. If the k<sup>th</sup> bit in the binary string is 1, the k<sup>th</sup> element of the original set is in this combination.
 
-```java5>public static <T extends Comparable<? super T>> LinkedList<LinkedList<T>
+```java5
+public static <T extends Comparable<? super T>> LinkedList<LinkedList<T>>
  BinPowSet(
 		LinkedList<T> A){
 	LinkedList<LinkedList<T>> ans= new LinkedList<LinkedList<T>>();
@@ -2925,7 +2927,8 @@ echo powerset(toSet([1,2,3,4]))
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 + (NSArray *)powerSetForArray:(NSArray *)array {
@@ -3351,7 +3354,9 @@ set(set(), set(a), set(b), set(c), set(d), set(a, b), set(a, c), set(a, d), set(
 
 If you don't care about the actual <tt>Set</tt> type, the <tt>.combinations</tt> method by itself may be good enough for you:
 
-```perl6>.say for <a b c d>.combinations</lang
+```perl6
+.say for <a b c d>.combinations>
+```
 
 ```txt
 
@@ -3954,7 +3959,8 @@ def p(l):
 Pythons [http://docs.python.org/3/library/itertools.html?highlight=powerset#itertools-recipes documentation] has a method that produces the groupings, but not as sets:
 
 
-```python>>>
+```python
+>>>
  from pprint import pprint as pp
 >>> from itertools import chain, combinations
 >>>
@@ -4828,7 +4834,8 @@ fun subsets xs = foldr (fn (x, rest) => rest @ map (fn ys => x::ys) rest) [[]] x
 
 ## Swift
 
-```Swift>func powersetFrom<T
+```swift
+func powersetFrom<T>
 (_ elements: Set<T>) -> Set<Set<T>> {
   guard elements.count > 0 else {
     return [[]]

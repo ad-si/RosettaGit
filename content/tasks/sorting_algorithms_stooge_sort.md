@@ -450,7 +450,8 @@ after:
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >>
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. stooge-sort-test.
@@ -1387,7 +1388,8 @@ function list = stoogeSort(list,i,j)
 end
 ```
 
-```MATLAB>>
+```MATLAB
+>>
  stoogeSort([1 -6 4 -9],1,4)
 
 ans =
@@ -2134,7 +2136,8 @@ EndDataSection
 ## Python
 
 
-```python>>>
+```python
+>>>
  data = [1, 4, 5, 3, -6, 3, 7, 10, -2, -5, 7, 5, 9, -3, 7]
 >>> def stoogesort(L, i=0, j=None):
 	if j is None:
@@ -2157,7 +2160,8 @@ This alternate solution uses a wrapper function
 to compute the initial value of ''j''
 rather than detecting the sentinel value ''None''.
 
-```python>>>
+```python
+>>>
  def stoogesort(L, i, j):
 	if L[j] < L[i]:
 		L[i], L[j] = L[j], L[i]
@@ -2385,7 +2389,8 @@ p [1,4,5,3,-6,3,7,10,-2,-5].stoogesort
 ## Rust
 
 
-```rust>fn stoogesort<E
+```rust
+fn stoogesort<E>
 (a: &mut [E])
     where E: PartialOrd
 {

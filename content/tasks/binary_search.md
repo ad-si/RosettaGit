@@ -1766,7 +1766,8 @@ writeln(binsearch([3, 4, 6, 9, 11], 9));
 
 COBOL's <code>SEARCH ALL</code> statement is implemented as a binary search on most implementations.
 
-```cobol>        >
+```cobol
+        >
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. binary-search.
@@ -3803,7 +3804,8 @@ bs:{[a;t]
 ## Kotlin
 
 
-```scala>fun <T : Comparable<T>> Array<T
+```scala
+fun <T : Comparable<T>> Array<T
 .iterativeBinarySearch(target: T): Int {
     var hi = size - 1
     var lo = 0
@@ -4217,7 +4219,8 @@ end proc:
 
 We can use either lists or Arrays (or Vectors) for the first argument for these.
 
-```Maple>
+```maple
+
  N := 10:
 > P := [seq]( ithprime( i ), i = 1 .. N ):
 > BinarySearch( P, 12, 1, N ); # recursive version
@@ -4300,7 +4303,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  binarySearchRec([1 2 3 4 5 6 6.5 7 8 9 11 18],6.5,1,numel([1 2 3 4 5 6 6.5 7 8 9 11 18]))
 
 ans =
@@ -4335,7 +4339,8 @@ end
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  binarySearchIter([1 2 3 4 5 6 6.5 7 8 9 11 18],6.5)
 
 ans =
@@ -4615,7 +4620,8 @@ bundle Default {
 =={{header|Objective-C}}==
 '''Iterative'''
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface NSArray (BinarySearch)
@@ -4661,7 +4667,8 @@ int main()
 
 '''Recursive'''
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 @interface NSArray (BinarySearchRecursive)
@@ -4705,7 +4712,8 @@ int main()
 '''Library'''
 {{works with|Mac OS X|10.6+}}
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()
@@ -4725,7 +4733,8 @@ int main()
 
 Using Core Foundation (part of Cocoa, all versions):
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 CFComparisonResult myComparator(const void *x, const void *y, void *context) {
@@ -7156,7 +7165,8 @@ val it = SOME (4,8) : (int * IntArray.elem) option
 
 '''Recursive'''
 
-```swift>func binarySearch<T: Comparable
+```swift
+func binarySearch<T: Comparable
 (xs: [T], x: T) -> Int? {
   var recurse: ((Int, Int) -> Int?)!
   recurse = {(low, high) in switch (low + high) / 2 {
@@ -7171,7 +7181,8 @@ val it = SOME (4,8) : (int * IntArray.elem) option
 
 '''Iterative'''
 
-```swift>func binarySearch<T: Comparable
+```swift
+func binarySearch<T: Comparable
 (xs: [T], x: T) -> Int? {
   var (low, high) = (0, xs.count - 1)
   while low <= high {

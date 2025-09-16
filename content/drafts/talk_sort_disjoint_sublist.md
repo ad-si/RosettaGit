@@ -29,7 +29,8 @@ I see that many languages take the indices as a general collection (or array) in
 
 ::::::Except, python's algorithm can be upset by repeated terms:
 ::::::
-```python>>>
+```python
+>>>
  def sort_disjoint_sublist(data, indices):
 ...     indices = sorted(indices)
 ...     values  = [data[i] for i in indices]

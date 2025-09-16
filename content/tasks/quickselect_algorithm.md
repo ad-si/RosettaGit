@@ -1989,7 +1989,8 @@ sub qselect
 
 ## Perl 6
 
-```perl6>my @v = <9 8 7 6 5 0 1 2 3 4
+```perl6
+my @v = <9 8 7 6 5 0 1 2 3 4>
 ;
 say map { select(@v, $_) }, 1 .. 10;
 
@@ -2739,7 +2740,8 @@ val it = [0,1,2,3,4,5,6,7,8,9] : int list
 ## Swift
 
 
-```swift>func select<T where T : Comparable
+```swift
+func select<T where T : Comparable>
 (var elements: [T], n: Int) -> T {
   var r = indices(elements)
   while true {

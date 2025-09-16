@@ -1611,7 +1611,8 @@ public class Sleep {
 Generally, JavaScript in a web browser is event-loop based and (except for alert()) non-blocking. So, the closest thing possible to the task description is to do something once the specified time has passed.
 
 
-```html><script
+```html
+<script>
 
 
   setTimeout(function () {
@@ -1991,7 +1992,8 @@ bundle Default {
 =={{header|Objective-C}}==
 Of course the same code of [[Sleep#C]] works for Objective-C. The following code uses a OpenStep derived framework (Cocoa, GNUstep...).
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main()
@@ -2128,7 +2130,8 @@ See [[Sleep#Delphi | Delphi]]
 
 Literate mode
 
-```sgml><@ SAYLIT>Number of seconds: </@><@ GETVAR>secs</@
+```sgml
+<@ SAYLIT>Number of seconds: </@><@ GETVAR>secs</@>
 
 <@ SAYLIT>Sleeping</@>
 <@ ACTPAUVAR>secs</@>

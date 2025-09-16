@@ -2339,7 +2339,9 @@ JSON is called ''JavaScript'' Object Notation, but JSON differs form JavaScript 
 
 
 JSON is jq's native data format, so nothing need be done to parse JSON input. For example, to "pretty print" a stream of JSON entities (including scalars), it would be sufficient to use the jq program:
-```jq> . </lang
+```jq
+ .
+```
 
 
 Here are the jq equivalents of the examples given in the section on Julia, assuming the file data.json holds the following JSON text:
@@ -2356,7 +2358,9 @@ produces:
 {"blue":[1,2],"ocean":"water"}
 
 
-```jq>jq tostring data.json</lang
+```jq
+jq tostring data.json
+```
 
 produces:
 "{\"blue\":[1,2],\"ocean\":\"water\"}"
@@ -2887,7 +2891,8 @@ A
 ## Maple
 
 
-```Maple>
+```maple
+
  JSON:-ParseString("[{\"tree\": \"maple\", \"count\": 21}]");
        [table(["tree" = "maple", "count" = 21])]
 > JSON:-ToString( [table(["tree" = "maple", "count" = 21])] );
@@ -2909,7 +2914,8 @@ ExportString[data, "JSON"]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-```matlab>>
+```matlab
+>
  jsondecode('{ "foo": 1, "bar": [10, "apples"] }')
 ans =
   struct with fields:
@@ -3411,7 +3417,8 @@ A String can be converted to Json object using #perform
 A Json object can be converted to a string using #asString
 
 
-```Oforth>
+```oforth
+
 {"parents":["Otmar Gutmann", "Silvio Mazzola"], "name":"Pingu", "born":1986} .s
 [1] (Json) {"parents" : ["Otmar Gutmann", "Silvio Mazzola"], "name" : "Pingu", "born" : 1986 }
 ok
@@ -3909,7 +3916,8 @@ Neil Hodgson
 
 ## Python
 
-```Python>>>
+```python
+>>
  import json
 >>> data = json.loads('{ "foo": 1, "bar": [10, "apples"] }')
 >>> sample = { "blue": [1,2], "ocean": "water" }
@@ -3925,7 +3933,8 @@ Neil Hodgson
 
 Because most of JSON is valid Python syntax (except "true", "false", and "null", and a few obscure escape sequences), it is also possible (but not recommended) to parse JSON using eval():
 
-```python>>>
+```python
+>>
  true = True; false = False; null = None
 >>> data = eval('{ "foo": 1, "bar": [10, "apples"] }')
 >>> data
@@ -4125,7 +4134,8 @@ fn main() {
 Using the builtin parsing lib (debatably slower than third-party libs such as lift-json from Liftweb).
 
 
-```scala>scala
+```scala
+scala
  import scala.util.parsing.json.{JSON, JSONObject}
 import scala.util.parsing.json.{JSON, JSONObject}
 

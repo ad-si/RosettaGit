@@ -897,7 +897,8 @@ end
 
 '''Solution (Tacit):'''
 
-```j>step         =: 0.6
+```j
+step         =: 0.6>
  ?@0:
 attemptClimb =: [: <:`>:@.step 0:
 isNotUpOne   =: -.@(+/@])
@@ -979,7 +980,9 @@ public void stepUp(){
 
 Since jq is a purely functional language, we need to keep track of time explicitly. This can be done using a clock that ticks the time:
 
-```jq>def tick: .+1;</lang
+```jq
+def tick: .+1;
+```
 
 To model the robot's success and failure, we shall assume a sufficiently large array of 0/1 values is available.
 To avoid problems with modeling infinite time, we will pad the array with 1s if necessary.
@@ -1983,7 +1986,8 @@ TI-83 BASIC doesn't have functions (only subroutines), so a variable must be use
 
 <code>prgmSTEP</code>:
 
-```ti83b>If rand
+```ti83b
+If rand>
 .5:Then
 0→C
 Disp "FALL"

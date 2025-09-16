@@ -655,7 +655,8 @@ prod = -793,618,560
 ## Perl
 
 
-```perl>use constant   one =
+```perl
+use constant   one =>
   1;
 use constant three =>  3;
 use constant seven =>  7;
@@ -1147,7 +1148,8 @@ End Module
 
 To improve the program's appearance, a ConcatRange method can be defined to combine the two method calls,
 
-```vbnet>    <Runtime.CompilerServices.Extension
+```vbnet
+    <Runtime.CompilerServices.Extension>
 
     Function ConcatRange(source As IEnumerable(Of Integer), start As Integer, [stop] As Integer, Optional [step] As Integer = 1) As IEnumerable(Of Integer)
         Return source.Concat(Range(start, [stop], [step]))

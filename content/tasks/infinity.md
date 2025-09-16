@@ -430,7 +430,9 @@ CoffeeScript compiles to JavaScript, and as such it inherits the properties of J
 
 JavaScript has a special global property called "Infinity":
 
-```coffeescript>Infinity</lang
+```coffeescript
+Infinity>
+```
 
 as well as constants in the Number class:
 
@@ -442,7 +444,9 @@ Number.NEGATIVE_INFINITY
 
 The global isFinite function tests for finiteness:
 
-```coffeescript>isFinite x</lang
+```coffeescript
+isFinite x>
+```
 
 
 
@@ -454,7 +458,8 @@ Common Lisp does not specify an infinity value.  Some implementations may have s
 {{works with|LispWorks}} 5.1.2, Intel, OS X, 32-bit
 
 
-```lisp>
+```lisp
+>
  (apropos "MOST-POSITIVE" :cl)
 MOST-POSITIVE-LONG-FLOAT, value: 1.7976931348623158D308
 MOST-POSITIVE-SHORT-FLOAT, value: 3.4028172S38
@@ -662,7 +667,9 @@ Infinity
 ## Factor
 
 
-```factor>1/0.</lang
+```factor
+1/0.>
+```
 
 
 
@@ -844,7 +851,8 @@ The Haskell 98 standard does not require full IEEE numbers, and the required ope
 Nevertheless, the following may come close to the task description:
 
 
-```haskell>maxRealFloat :: RealFloat a =
+```haskell
+maxRealFloat :: RealFloat a =
  a -> a
 maxRealFloat x = encodeFloat b (e-1) `asTypeOf` x where
   b     = floatRadix x - 1
@@ -869,7 +877,8 @@ Infinity
 
 Or you can simply use division by 0:
 
-```haskell>Prelude
+```haskell
+Prelude
  1 / 0 :: Float
 Infinity
 Prelude> 1 / 0 :: Double
@@ -879,7 +888,8 @@ Infinity
 
 Or use "read" to read the string representation:
 
-```haskell>Prelude
+```haskell
+Prelude
  read "Infinity" :: Float
 Infinity
 Prelude> read "Infinity" :: Double
@@ -909,13 +919,17 @@ print, !Values.D_infinity             ;; for doubles
 ## Io
 
 
-```io>inf := 1/0</lang
+```io
+inf := 1/0
+```
 
 
 or
 
 
-```io>Number constants inf</lang
+```io
+Number constants inf
+```
 
 
 =={{header|IS-BASIC}}==
@@ -983,7 +997,9 @@ Its value is (2-2<sup>-52</sup>)*2<sup>1023</sup> or 1.7976931348623157*10<sup>3
 
 JavaScript has a special global property called "Infinity":
 
-```javascript>Infinity</lang
+```javascript
+Infinity
+```
 
 as well as constants in the Number class:
 
@@ -1006,13 +1022,17 @@ isFinite(x)
 jq uses IEEE 754 64-bit floating-point arithmetic, and very large number literals, e.g. 1e1000, are evaluated as IEEE 754 infinity.  If your version of jq does not include `infinite` as a built-in, you could therefore define it as follows:
 
 
-```jq>def infinite: 1e1000;</lang
+```jq
+def infinite: 1e1000;
+```
 
 
 To test whether a JSON entity is equal to `infinite`, one can simply use `==` in the expected manner. Thus, assuming `infinite` has been defined, one could define a predicate, isinfinite, as follows:
 
 
-```jq>def isinfinite: . == infinite;</lang
+```jq
+def isinfinite: . == infinite;
+```
 
 
 Currently, the infinite value prints as though it were a very large floating point number.
@@ -1354,7 +1374,9 @@ is(x > minf);
 Metafont numbers are a little bit odd (it uses fixed binary arithmetic). For Metafont, the biggest number (and so the one which is also considered to be infinity) is 4095.99998. In fact, in the basic set of macros for Metafont, we can read
 
 
-```metafont>infinity := 4095.99998;</lang
+```metafont
+infinity := 4095.99998;
+```
 
 
 
@@ -1435,7 +1457,9 @@ def c = IsPositiveInfinity(posinf); // c = true
 ## Nim
 
 
-```nim>Inf</lang
+```nim
+Inf
+```
 
 is a predefined constant in Nim:
 
@@ -1462,7 +1486,9 @@ echo f
 ## OCaml
 
 
-```ocaml>infinity</lang
+```ocaml
+infinity
+```
 
 is already a pre-defined value in OCaml.
 
@@ -1483,7 +1509,9 @@ is already a pre-defined value in OCaml.
 
 
 
-```Oforth>10 1000.0 powf dup println dup neg println 1 swap / println</lang
+```oforth
+10 1000.0 powf dup println dup neg println 1 swap / println
+```
 
 
 ```txt
@@ -1606,7 +1634,9 @@ in
 
 ## PARI/GP
 
-```parigp>+oo</lang
+```parigp
++oo
+```
 
 
 ```parigp
@@ -1710,7 +1740,9 @@ inf
 
 This is how you get infinity:
 
-```php>INF</lang
+```php
+INF>
+```
 
 Unfortunately, "1.0 / 0.0" doesn't evaluate to infinity; but instead seems to evaluate to False, which is more like 0 than infinity.
 
@@ -1809,7 +1841,8 @@ EndIf
 
 This is how you get infinity:
 
-```python>>>
+```python
+>>
  float('infinity')
 inf
 ```
@@ -1820,7 +1853,8 @@ inf
 
 Floating-point division by 0 doesn't give you infinity, it raises an exception:
 
-```python>>>
+```python
+>>
  1.0 / 0.0
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -1882,7 +1916,8 @@ Limits on numbers are expressed as:  The REXX interpreter has to at '''least''' 
 
 
 So it's up to the writers of the REXX interpreter to decide what limits are to be implemented or enforced.
-<pre style="overflow:scroll">
+
+```txt
 For the default setting of
 
                NUMERIC DIGITS 9
@@ -1890,10 +1925,9 @@ For the default setting of
 the biggest number that can be used is  (for the Regina REXX  and  R4  REXX interpreters):
 
 .999999999e+999999999
-
 ```
 
-<pre style="overflow:scroll">
+```txt
 For a setting of
 
               NUMERIC DIGITS 100
@@ -1913,7 +1947,6 @@ the biggest number that can be used is:
 
 
 ... and so on with larger  NUMERIC DIGITS
-
 ```
 
 For most REXX interpreters, the maximum number of digits is only limited by virtual storage,
@@ -1923,13 +1956,9 @@ but the pratical limit would be a little less than half of available virtual sto
 which would (realistically) be around one billion digits. Other interpreters have a limitation of roughly 8 million digits.
 
 
-
-
 ## RLaB
 
-
 ```RLaB
-
 >> x = inf()
          inf
 >> isinf(x)
@@ -1938,17 +1967,15 @@ which would (realistically) be around one billion digits. Other interpreters hav
            1
 >> -inf() > 10
            0
-
 ```
-
-
 
 
 ## Ruby
 
 Infinity is a Float value
 
-```ruby>a = 1.0/0       # =
+```ruby
+a = 1.0/0       # =
  Infinity
 a.finite?       # => false
 a.infinite?     # => 1
@@ -1961,7 +1988,9 @@ a.finite?       # => true
 a.infinite?     # => nil
 ```
 
-```ruby>a = Float::INFINITY       # => Infinity</lang
+```ruby
+a = Float::INFINITY       # => Infinity
+```
 
 
 
@@ -1991,12 +2020,15 @@ inf.isInfinite; //true
 
 The largest possible number in Scala (without using the <tt>Big</tt> classes) is also in the <tt>Double</tt> class.
 
-```Scala>val biggestNumber = Double.MaxValue</lang
+```scala
+val biggestNumber = Double.MaxValue
+```
 
 
 REPL session:
 
-```scala>scala
+```scala
+scala
  1 / 0.
 res2: Double = Infinity
 
@@ -2029,7 +2061,9 @@ Seed7s floating-point type ([http://seed7.sourceforge.net/manual/types.htm#float
 The library [http://seed7.sourceforge.net/libraries/float.htm float.s7i] defines
 the constant [http://seed7.sourceforge.net/libraries/float.htm#Infinity Infinity] as:
 
-```seed7>const float: Infinity is 1.0 / 0.0;</lang
+```seed7
+const float: Infinity is 1.0 / 0.0;>
+```
 
 Checks for infinity can be done by comparing with this constant.
 
@@ -2057,7 +2091,9 @@ say (inf == -ninf)   # true
 
 
 
-```slate>PositiveInfinity</lang
+```slate
+PositiveInfinity>
+```
 
 
 
@@ -2099,7 +2135,9 @@ but we can simulate the other behavior with:
 ## Standard ML
 
 
-```sml>Real.posInf</lang
+```sml
+Real.posInf
+```
 
 
 
@@ -2287,7 +2325,9 @@ if str$(infinity) = "inf" print "Infinity"
 
 zkl doesn't like INF, NaN, etc but sorta knows about them:
 
-```zkl>1.5/0</lang
+```zkl
+1.5/0>
+```
 
 ```txt
 
@@ -2300,9 +2340,14 @@ Exception thrown: MathError(INF (number is infinite))
 ## ZX Spectrum Basic
 
 ZX Spectrum BASIC has no infinity handling;
-```zxbasic>PRINT 1/0
+
+```zxbasic
+PRINT 1/0
 ```
- will be met with <pre
+
+will be met with
+
+```txt
 6 Number too big, 0:1
 ```
 
@@ -2319,13 +2364,12 @@ A quick doubling loop will get you halfway to the maximum floating point value:
 Output will end with:
 
 ```txt
-
 4.2535296E+37
 8.5070592E+37
 
 6 Number too big, 30:1
-
 ```
 
-Precision has been lost by this stage through the loop, but one more manual double and subtract 1 will get you the true displayable maximum of 1.7014118E+38 (or 2^127-1).
-
+Precision has been lost by this stage through the loop,
+but one more manual double and subtract 1
+will get you the true displayable maximum of 1.7014118E+38 (or 2^127-1).

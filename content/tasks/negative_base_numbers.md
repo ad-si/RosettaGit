@@ -914,7 +914,8 @@ public class NegativeBaseNumbers {
 
 If your jq does not have `trunc/0` then use this:
 
-```jq>def trunc: if .
+```jq
+def trunc: if .>
 = 0 then floor else -(-(.)|trunc) end;
 ```
 

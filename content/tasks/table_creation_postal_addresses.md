@@ -1198,7 +1198,8 @@ Id LastName FirstName Address       City     State Zip
 
 
 =={{header|Python}}+SQLite==
-```python>>>
+```python
+>>>
  import sqlite3
 >>> conn = sqlite3.connect(':memory:')
 >>> conn.execute('''CREATE TABLE address (

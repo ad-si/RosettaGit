@@ -153,7 +153,8 @@ print( ( newline ) )
 
 
 
-```C>#include <math.h
+```c
+#include <math.h
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -1527,7 +1528,9 @@ cramersolve(A, b) = [2.0, -12.0, -4.0, 1.0]
 Note that it is entirely impractical to use Cramer's rule in this situation. It would be much better to use the built-in operator for solving linear systems. Assuming that the coefficient matrix and constant vector are defined as before, the solution vector is given by:
 
 
-```julia>@show A \ b</lang
+```julia
+@show A \ b
+```
 
 
 

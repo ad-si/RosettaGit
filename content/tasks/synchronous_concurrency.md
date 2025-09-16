@@ -1603,7 +1603,9 @@ output=: 3 :0
 Usage:
 
 
-```J>   output input</lang
+```j
+   output input>
+```
 
 
 Note that we are not using OS threads here, but instead - as specified by this task - are using two concurrent activities which share data synchronously.
@@ -2018,7 +2020,9 @@ joinThreads(reader_thread, printer_thread)
 
 We use the built-in Event module to provide communication channels between threads.
 
-```ocaml>open Event</lang
+```ocaml
+open Event
+```
 
 
 The reader is a simple loop. It starts by opening a file, then reads lines from that file until there is nothing left to read. After each line, it sends <tt>Some v</tt> on channel <tt>lines_dest</tt>, where <tt>v</tt> is the contents of the line. Once there are no lines anymore,

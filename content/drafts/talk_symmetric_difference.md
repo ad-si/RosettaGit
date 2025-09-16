@@ -43,7 +43,8 @@ If you think an example falls foul of this then maybe you could fix/flag them? T
 ::::When comparing languages you may be doing a disservice to those that have a set type which automatically works in a more general manner over its inputs.
 
 ::::Probably gratuitous example that won't help my case :-) 
-```python>>>
+```python
+>>>
  s0 =list('ABCCD')
 >>> # Lists as sets, not handling duplicates
 >>> s1 =list('AAEEC')

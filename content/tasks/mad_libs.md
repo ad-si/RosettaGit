@@ -1042,7 +1042,8 @@ This version can be called via either madlib:main() or madlib:main(File) to read
 It utilizes the re module to both collect and substitute the words to substitute.
 The dict module is used as a mapping between variables and the players desired replacement. dict acts as an immutable hash, dict:store/3 returns a new dictionary with a new or updated key.
 
-```erlang>68
+```erlang
+68>
  madlib:main("test.mad").
 Please name a <noun>: banana
 Please name a <name>: Jack

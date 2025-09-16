@@ -906,7 +906,8 @@ class Main
 ## Forth
 
 
-```forth>: u>f  0 d
+```forth
+: u>f  0 d>
 f ;
 : f>u  f>d drop ;
 
@@ -1182,7 +1183,8 @@ Test Program:
 ## Haskell
 
 
-```haskell>nonsqr :: Integral a =
+```haskell
+nonsqr :: Integral a =>
  a -> a
 nonsqr n = n + round (sqrt (fromIntegral n))
 ```
@@ -1687,7 +1689,8 @@ end
 
 Solution:
 
-```MATLAB>>
+```MATLAB
+>>
  nonSquares(1000000)
 2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27
 No square numbers were generated for n <= 1000000
@@ -2457,7 +2460,8 @@ Input()
 ## Python
 
 
-```python>>>
+```python
+>>>
  from math import floor, sqrt
 >>> def non_square(n):
         return n + floor(1/2 + sqrt(n))

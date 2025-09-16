@@ -1329,7 +1329,8 @@ endif()
 
 
 
-```cfm><cfscript
+```cfm
+<cfscript
 
 	function CompareInteger( Integer1, Integer2 ) {
 		VARIABLES.Result = "";
@@ -3763,7 +3764,8 @@ elsif $a == $b {
 With <code><=></code>:
 
 
-```perl6>say <Less Equal Greater
+```perl6
+say <Less Equal Greater
 [($a <=> $b) + 1];
 ```
 
@@ -4588,7 +4590,8 @@ end
 
 There are no built-in comparison operators, but you can (destructively) check which of two adjacent cells is most positive.
 
-```snusp>++++
+```snusp
+++++
 ++++ a b !/?\<?\#  a=b
                > -  \#  a>b
                - <

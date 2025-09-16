@@ -1721,7 +1721,8 @@ public class ImageNoise {
 [http://jsfiddle.net/bZJvr/ jsFiddle Demo]
 
 
-```javascript><body
+```javascript
+<body>
 
 <canvas id='c'></canvas>
 

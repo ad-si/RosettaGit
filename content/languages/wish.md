@@ -12,7 +12,9 @@ tags = []
 
 '''wish''' is an interface  for the [Tcl](https://rosettacode.org/wiki/Tcl) programming language interpreter that provides graphical user interface support that can be scripted with [libtcl](https://rosettacode.org/wiki/libtcl)[Category:libtcl](https://rosettacode.org/wiki/Category:libtcl).  Wish loads the [Tk](https://rosettacode.org/wiki/Tk) library by default; it is virtually identical to [tclsh](https://rosettacode.org/wiki/tclsh) after the execution of the command:
 
-```tcl>package require Tk</lang
+```tcl
+package require Tk
+```
 
 The minor differences have to do with how the program interacts with the user, especially on [[Windows]].
 

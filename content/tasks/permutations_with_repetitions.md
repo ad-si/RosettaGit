@@ -479,7 +479,8 @@ P(n,k="",opt=0,delim="",str="") { ; generate all n choose k permutations lexicog
 ## C
 
 
-```d>#include <stdio.h
+```d
+#include <stdio.h>
 
 #include <stdlib.h>
 
@@ -1713,7 +1714,8 @@ We can use the <tt>X</tt> operator ("cartesian product") to cross the list with 
 
 For <math>n=2</math>:
 
-```perl6>my @k = <a b c
+```perl6
+my @k = <a b c>
 ;
 
 .say for @k X @k;
@@ -1722,7 +1724,8 @@ For <math>n=2</math>:
 
 For arbitrary <math>n</math>:
 
-```perl6>my @k = <a b c
+```perl6
+my @k = <a b c>
 ;
 my $n = 2;
 
@@ -1745,7 +1748,8 @@ c c
 
 Here is an other approach, counting all <math>k^n</math> possibilities in base <math>k</math>:
 
-```perl6>my @k = <a b c
+```perl6
+my @k = <a b c>
 ;
 my $n = 2;
 

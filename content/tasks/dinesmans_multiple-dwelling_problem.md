@@ -65,7 +65,7 @@ languages = [
 
 ## Task
 
-Solve [https://web.archive.org/web/20170325033240/http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.2 Dinesman's multiple dwelling problem] but in a way that most naturally follows the problem statement given below.
+Solve [Dinesman's multiple dwelling problem](https://web.archive.org/web/20170325033240/http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.2) but in a way that most naturally follows the problem statement given below.
 
 Solutions are allowed (but not required) to parse and interpret the problem text, but should remain flexible and should state what changes to the problem text are allowed. Flexibility and ease of expression are valued.
 
@@ -86,10 +86,6 @@ Baker, Cooper, Fletcher, Miller, and Smith live on different floors of an apartm
 
 
 ''Where does everyone live?''
-
-
-
-
 
 
 ## Ada

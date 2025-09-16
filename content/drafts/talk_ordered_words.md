@@ -47,8 +47,8 @@ Generally, tasks which are about writing programs (not describing language featu
 A few output examples are useful in checking one's own work when adding implementations, but it seems silly to insist that every single program come with its output. I would like to understand the motivation here.
 —[[User:Kevin Reid|Kevin Reid]] 18:36, 1 February 2011 (UTC)
 
-:Hi Kevin, on other occasions, having output available has helped find and debug problems where output has been given and it was easier to spot something missing from the output and then look more closely at the implementation. I, and others do try and not insist on output if output will always be large. An easy case for insisting on output is something like [[Conway's Game of Life]] were output (of some sort) has been given. Come to think of it, it was [[Wireworld]] where odd output lead to fixing of an example. 
-:In other cases it aids consistency. If output is needed from one, to allow others to complete the task, then asking for output from all is consistent. The requst for output in this task should be straight-forward to do. 
+:Hi Kevin, on other occasions, having output available has helped find and debug problems where output has been given and it was easier to spot something missing from the output and then look more closely at the implementation. I, and others do try and not insist on output if output will always be large. An easy case for insisting on output is something like [[Conway's Game of Life]] were output (of some sort) has been given. Come to think of it, it was [[Wireworld]] where odd output lead to fixing of an example.
+:In other cases it aids consistency. If output is needed from one, to allow others to complete the task, then asking for output from all is consistent. The requst for output in this task should be straight-forward to do.
 
 :Different tasks get patrolled and "policed" to different degrees, but I'm sure their is no underlying malice to a request to add output. --[[User:Paddy3118|Paddy3118]] 19:03, 1 February 2011 (UTC)
 
@@ -84,7 +84,7 @@ And please add '' to i.= for compatibility.
 
 --[[User:Walterpachl|Walterpachl]] 18:26, 13 July 2012 (UTC)
 
-: Well, yes, you used the wrong index.  If I changed the code to what you want, the REXX program will no longer work correctly nor solve the task at hand. -- [[User:Gerard Schildberger|Gerard Schildberger]] 21:18, 13 July 2012 (UTC) 
+: Well, yes, you used the wrong index.  If I changed the code to what you want, the REXX program will no longer work correctly nor solve the task at hand. -- [[User:Gerard Schildberger|Gerard Schildberger]] 21:18, 13 July 2012 (UTC)
 : And also, these comments shouldn't be placed under the '''E and Factor''' section. -- [[User:Gerard Schildberger|Gerard Schildberger]] 21:18, 13 July 2012 (UTC)
 : Also, note that this program entry was entered for classic REXX, and is not meant for other object-oriented languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] 21:18, 13 July 2012 (UTC)
 
@@ -96,7 +96,7 @@ Please try your program with this test file:
 
 abcdef
 abcde
-abcd  
+abcd
 
 ```
 
@@ -129,14 +129,14 @@ I dare not change your program.
 Yes, I corrected ''then'' to ''than'' several updates ago.  You may have to do a '''RELOAD''' or '''REFRESH''' to see the updated version. -- [[User:Gerard Schildberger|Gerard Schildberger]] 07:57, 14 July 2012 (UTC)
 
 :I think you have missed this one:
-::In ASCII, A is less then a, while in EBCDIC, it's the other way around. 
+::In ASCII, A is less then a, while in EBCDIC, it's the other way around.
 --[[User:Walterpachl|Walterpachl]] 08:15, 14 July 2012 (UTC)
 
 ::: Hell's bells, I must've read that line a half dozen times, and I still missed it!  It's been corrected, finally. -- [[User:Gerard Schildberger|Gerard Schildberger]] 08:21, 14 July 2012 (UTC)
 
 And I'd appreciate i.='' instead of i= (as you adapted some other programs)
 
-:Second thoughts about the task description: your mentioning of uppercase versus lowercase and 
+:Second thoughts about the task description: your mentioning of uppercase versus lowercase and
 :letters of the English alphabet. Things get tricky with German Umlaute (äöüÄÖÜß) not to speak of Scandinavian alphabets
 : of which I know nothing except that they are different.
 
@@ -158,11 +158,11 @@ Parse Arg s
 a2z='abcdefghijklmnopqrstuvwxyz'
 r=translate(s,translate(a2z)'ÄÖÜ',a2z'äöü')
 r=changestr('ß',r,'SS')
-Return r 
+Return r
 
 ```
 
-I know that lowercase ain't that easy! 
+I know that lowercase ain't that easy!
 By the way, did the Romans have lowercase letters (you mention that in Roman Number decoding)?
 --[[User:Walterpachl|Walterpachl]] 19:01, 14 July 2012 (UTC)
 
@@ -179,7 +179,7 @@ Of course, if one wanted to break up the complex instruction, then a local (temp
 
 :::thanks for the Roman explanation
 :::not only could, but can as you did. But there's nothing wrong with Procedure.
-:::It makes it readable without comments, I think- 
+:::It makes it readable without comments, I think-
 :::other code pages: AWFUL (even on my DOS Window or command prompt.
 --[[User:Walterpachl|Walterpachl]] 03:58, 15 July 2012 (UTC)
 
@@ -191,7 +191,7 @@ uppercase: Procedure
 Parse Arg a
   a=translate(arg(1),'ÄÖÜ',"äöü")     /* translate lowercase umlaute */
   a=changestr("ß",a,'SS')             /* replace ß with SS           */
-  return translate(a)                 /* translate lowercase letters */   
+  return translate(a)                 /* translate lowercase letters */
 
 ```
 
@@ -238,8 +238,8 @@ As for me, I like to program for people (readingI with a limited line length.
 
 :: No, I was referring to dead '''code''', not whitespace.  The code that I was referring to was the '''Parse Arg a''' REXX statement, which I see is no longer present in the above example, but it is back in the benchmark program. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:53, 16 July 2012 (UTC)
 
-:: By the way, the above boxed REXX example for the '''uppercase''' subroutine/function is the best yet, a straight one-liner, albeit that it's really a two-liner. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:53, 16 July 2012 (UTC) 
- 
+:: By the way, the above boxed REXX example for the '''uppercase''' subroutine/function is the best yet, a straight one-liner, albeit that it's really a two-liner. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:53, 16 July 2012 (UTC)
+
 And finally, can you provide your benchmark results for the strict comparison case?
 ::--[[User:Walterpachl|Walterpachl]] 06:11, 16 July 2012 (UTC)
 
@@ -264,12 +264,12 @@ uppercase2: Procedure
 Parse Arg a
   a=translate(arg(1),'ÄÖÜ',"äöü")     /* translate lowercase umlaute */
   a=changestr("ß",a,'SS')             /* replace ß with SS           */
-  return translate(a)                 /* translate lowercase letters */     
+  return translate(a)                 /* translate lowercase letters */
 
 ```
- 
+
  oneliner:  10000001 11.731000
- Procedure: 10000001 16.029000   
+ Procedure: 10000001 16.029000
 :please post your benchmark
 --[[User:Walterpachl|Walterpachl]] 06:45, 16 July 2012 (UTC)
 
@@ -277,7 +277,7 @@ Parse Arg a
 
 I can't speak for ooRexx as I don't have a copy to test it.
 
-I don't like to use words like ''mere'' which preloads a judgement.  
+I don't like to use words like ''mere'' which preloads a judgement.
 30% of an 20 hour run is an extra   <sup>'''1</sup>/<sub>4'''</sub>   day (this would be in regards to that 82 million record "database").
 
 I took your program ''as is'' and ran it on my isolated computer (no internet connection, no active anti-virus protection programs running, etc, it's a 3.20 GHz box and is running all four processors with five 100%-CPU-bound unrelated programs on below-normal priority), and the results are:
@@ -291,7 +291,9 @@ I took your program ''as is'' and ran it on my isolated computer (no internet co
 
 Then, just to show what the REXX overhead is for processing a "normal" '''do''' loop, I replaced the
 
-```rexx>do i=1 to 10000000</lang
+```rexx
+do i=1 to 10000000
+```
 
 with
 
@@ -364,7 +366,7 @@ uppercase:
 
 /*──────────────────────────────────UPPERCASE2 subroutine────────────*/
 uppercase2: procedure
-parse arg a     /*<-------------------------------------- dead code. */      
+parse arg a     /*<-------------------------------------- dead code. */
   a=translate(arg(1),'ÄÖÜ',"äöü")     /* translate lowercase umlaute */
   a=changestr("ß",a,'SS')             /* replace ß with SS           */
   return translate(a)                 /* translate lowercase letters */
@@ -395,7 +397,7 @@ version: REXX-ooRexx_4.0.1(MT) 6.03 2 May 2010
 oneliner:  10000001 16.271000
 procedure: 10000001 18.751000
 oneliner:  10000001 15.881000
-procedure: 10000001 18.767000   
+procedure: 10000001 18.767000
 
 ```
 
@@ -407,12 +409,12 @@ At to ''mere'': I'd assume that the program does some other stuff in them 20 hou
 
 It's a moot point, as I '''cannot''' use ooRexx.  So, the question is, is the ''procedure'' version worth the four times the execution time in the REXX that I have to use?
 
-The answer to your question is: no, anything more than twenty hours is too long, the run takes long enough as it is.  
+The answer to your question is: no, anything more than twenty hours is too long, the run takes long enough as it is.
 
 ooRexx consumes too much virtual storage (which is just one of my concerns), and the big classic REXX program is always bumping into the 2G limit (this is for Regina REXX).  What I mean is that the program frequently exhausts virtual memory and the run (solution) has to be managed in another way, essentially breaking up the many runs into more multiple runs, which is a major pita.  What I remember from 15 years ago, (IBM's o-o REXX for a big program consummed too much CPU for the this type of program (long running, lots of I/O, very big stemmed arrays) that I use.  "It" is two main programs, 3825 + 330 REXX statements, plus it makes use of other classic REXX programs. I have no desire to install ooRexx and then spend many hours reworking a bunch of classic REXX programs to work with ooRexx.
 
 Another thing to compare would be a REXX program that runs under (say) Regina REXX, and compare it to running under ooRexx (on the same hardward and operating system, of course).  It would be an interesting comparison.  Since ooRexx was originally (I think) written (coded) by IBM, I assume it has pretty high standards.  I really don't know if IBM wrote the code or had it written elsewhere. -- [[User:Gerard Schildberger|Gerard Schildberger]] 05:58, 17 July 2012 (UTC)
- 
+
 -----
 
 It 'classic' IBM Rexx and ooRexx was written by IBM (people) and the key person(s) are still here (in RexxLA).
@@ -431,17 +433,17 @@ but I took the (above) existing code and ripped its guts out (er, disemboweled i
 
 simple benchmark test out of it.
 
-I soon discovered that the two versions of the '''if''' statement was being dwarfed by the 
+I soon discovered that the two versions of the '''if''' statement was being dwarfed by the
 
 overhead of the '''do''' loop, so I unrolled the '''if''' statements.
 
-Just for grins, I reversed the order of the compares on every other compare, and I was 
+Just for grins, I reversed the order of the compares on every other compare, and I was
 
 somewhat surprised that more CPU time was consumed.
 
 I left that modification in the benchmark program.
 
-I ran the REXX benchmark against the three classic REXX interpreters that I have 
+I ran the REXX benchmark against the three classic REXX interpreters that I have
 
 installed on my two computers, plus an o-o REXX interpreter:
 
@@ -496,7 +498,7 @@ j=0; k=0; x=0; y=0                    /*have REXX allocate variables*/
   end
 ```
 
-Using the benchmark program (shown above), for both computers (one is running 
+Using the benchmark program (shown above), for both computers (one is running
 
 Windows/XP pro, the other is running Windows 7), the results are:
 
@@ -510,7 +512,7 @@ Windows/XP pro, the other is running Windows 7), the results are:
 ```
 
 
-(In all of the above runs (about a half-dozen runs on each computer), I used the 
+(In all of the above runs (about a half-dozen runs on each computer), I used the
 
 lowest percentage found.)
 
@@ -557,7 +559,7 @@ Using the benchmark program (shown above) and using the same methodology, the re
 included the ranges as well.)
 
 
-Please note that these benchmark tests were of the "quick and dirty" type, and I didn't have the 
+Please note that these benchmark tests were of the "quick and dirty" type, and I didn't have the
 
 time to spend on it as I would have wished. I spent (probably) way too much time on this simple case.
 
@@ -565,14 +567,14 @@ This is to say, your mileage may vary.  I hope others will execute these two REX
 
 for other REXXes (or the same ones on other operating systems, other hardware).
 
-I tried to include the usual methodologies to minimize background noise and overhead interference. 
+I tried to include the usual methodologies to minimize background noise and overhead interference.
 
-As with most benchmarks, I often feel that I'm leading a horse to water ... 
+As with most benchmarks, I often feel that I'm leading a horse to water ...
 
  -- [[User:Gerard Schildberger|Gerard Schildberger]] 23:32, 16 July 2012 (UTC)
 
 
-P.S.:   I benchmarked the programs on an air-gap computer.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 07:02, 15 August 2018 (UTC) 
+P.S.:   I benchmarked the programs on an air-gap computer.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 07:02, 15 August 2018 (UTC)
 
 -----
 

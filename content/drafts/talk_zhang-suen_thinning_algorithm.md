@@ -92,7 +92,8 @@ If you think that is wrong then just give your argument please.
 The following is just a code dump of how I converted to ascii art for comparison using Python:
 
 
-```python>>>
+```python
+>>>
  print('''
 {
 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 

@@ -58,7 +58,7 @@ Some common language defined pragmas:
 * pragma Pack(type) attempts to minimize memory usage for the type, even if it means slower memory access. A representation clause specifying bit size is usually used instead of this.
 * pragma Suppress(identifier) and pragma Unsuppress(identifier) for enabling/disabling any of the many language checks.
 Some pragmas are also implementation defined, the commonly used GNAT provides many, such as:
-* pragma Unreferenced(name) suppresses warnings about unused entities, and raises warnings if they are in fact referenced. 
+* pragma Unreferenced(name) suppresses warnings about unused entities, and raises warnings if they are in fact referenced.
 There are far too many pragmas to list here, but a standard informative list can be found in Annex L of the documentation if you have it installed. Or found at:
 * [http://www.adaic.org/resources/add_content/standards/05rm/html/RM-L.html Annex L - Language-Defined Pragmas]
 * [http://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-Defined-Pragmas.html GNAT Implementation Defined Pragmas]
@@ -87,7 +87,7 @@ SKIP
 ```txt
 
 10    PROC (REAL)REAL s = sin();
-                             1  
+                             1
 a68g: warning: 1: generic-argument is an extension (detected in particular-program).
 
 ```
@@ -114,13 +114,13 @@ The C Preprocessor is well explained on the [https://gcc.gnu.org/onlinedocs/cpp/
 
 ```C
 
-/*Almost every C program has the below line, 
-the #include preprocessor directive is used to 
+/*Almost every C program has the below line,
+the #include preprocessor directive is used to
 instruct the compiler which files to load before compiling the program.
 
 All preprocessor commands begin with #
 */
-#include<stdio.h> 
+#include<stdio.h>
 
 /*The #define preprocessor directive is often used to create abbreviations for code segments*/
 #define Hi printf("Hi There.");
@@ -134,7 +134,7 @@ start
 
 Hi
 
-/*And here's the nice part, want your compiler to talk to you ? 
+/*And here's the nice part, want your compiler to talk to you ?
 Just use the #warning pragma if you are using a C99 compliant compiler
 like GCC*/
 #warning "Don't you have anything better to do ?"
@@ -175,10 +175,10 @@ This is a 32 bit Windows system.
 ## Common Lisp
 
 
-Common Lisp usually works with a runtime system which contains an incremental compiler and a file compiler. Various ways are possible to influence the runtime system and the compiler. 
+Common Lisp usually works with a runtime system which contains an incremental compiler and a file compiler. Various ways are possible to influence the runtime system and the compiler.
 
 
-###  Declarations 
+###  Declarations
 
 
 * a data allocation can be declared to be done on the stack (if the compiler supports that)
@@ -186,7 +186,7 @@ Common Lisp usually works with a runtime system which contains an incremental co
 * functions can be declared for inline compilation (if the compiler supports that)
 
 
-###  Feature Expressions 
+###  Feature Expressions
 
 
 Common Lisp provides a way for conditional reading or ignoring of expressions. A variable lists the available features of an implementation.
@@ -241,19 +241,25 @@ More module attributes at [http://www.erlang.org/doc/reference_manual/modules.ht
 Go has a feature called [http://golang.org/pkg/go/build/#overview build constraints] that work on the level of whole files.  A comment line reading
 
 
-```go>// +build <expression></lang
+```go
+// +build <expression>
+```
 
 
 will cause the entire file to be excluded from a build unless <expression> is true.  The elements, called tags, in the expression are typically things like the target operating system or hardware architecture.  For example
 
 
-```go>// +build linux</lang
+```go
+// +build linux
+```
 
 
 will include the file if the target OS is linux, but will exclude the file otherwise.  Arbitrary tags can be passed on the command line of the go command.  A file could begin
 
 
-```go>// +build Tuesday</lang
+```go
+// +build Tuesday
+```
 
 
 and the build command
@@ -292,7 +298,7 @@ Here's a list of the settings:
  9!:7 box drawing characters
  9!:9 error messages
  9!:11 print precision
- 9!:17 centering (or not) when box contents are smaller than boxes 
+ 9!:17 centering (or not) when box contents are smaller than boxes
  9!:19 comparison tolerance
  9!:21 memory limit
  9!:25 security level
@@ -305,7 +311,7 @@ Here's a list of the settings:
  9!:41 retain (or not) whitespace and comments in explicit definitions
  9!:43 which random number generator to use?
  9!:45 what is the current state of that rng?
- 9!:49 enable reserved words for argument names 
+ 9!:49 enable reserved words for argument names
 
 For example,
 
@@ -390,8 +396,8 @@ fun main(args: Array<String>) {
 ## Mathematica
 
 
-Mathematica makes no formal difference between any normal and "specific" operation of the language. 
-Any possible desired effect can be achieved by calling a function or setting a variable. 
+Mathematica makes no formal difference between any normal and "specific" operation of the language.
+Any possible desired effect can be achieved by calling a function or setting a variable.
 Function calls are traced using the Trace[] function.
 
 
@@ -400,7 +406,9 @@ Function calls are traced using the Trace[] function.
 NetRexx provides three pragma-like instructions: <tt>OPTIONS</tt>, <tt>NUMERIC</tt> and <tt>TRACE</tt>.
 * '''<tt>OPTIONS</tt>''' provides the ability to pass special requests to the language processor (i.e. a compiler or interpreter).
 :The syntax is:
-```NetRexx>options wordlist;</lang
+```NetRexx
+options wordlist;>
+```
 
 :where ''wordlist'' is one or more symbols separated by blanks. The individual words in ''wordlist'' might control optimizations, enforce standards, enable implementation-dependent features, etc.
 :The current default settings of <tt>OPTIONS</tt> is:
@@ -492,28 +500,28 @@ Unlike Perl 5, there is no <tt>use strict;</tt> pragma, however, since Perl 6 i
 
 ## Phix
 
-The following are taken directly from the Phix.syn (syntax colouring) file, which can be edited as needed (for errors or new compiler features): 
+The following are taken directly from the Phix.syn (syntax colouring) file, which can be edited as needed (for errors or new compiler features):
 
-Delimiters #$:.%\^ 
+Delimiters #$:.%\^
 
-Operators , = := == != < <= > >= @= @== @!= @< @<= @> @>= + - * / += -= *= /= @+= @-= @*= @/= .. & &= ? ; : | 
+Operators , = := == != < <= > >= @= @== @!= @< @<= @> @>= + - * / += -= *= /= @+= @-= @*= @/= .. & &= ? ; : |
 
-Braces ()[]{} 
+Braces ()[]{}
 
-BlockComment /* */ --/* --*/ 
+BlockComment /* */ --/* --*/
 
-LineComment -- 
+LineComment --
 
-TokenStart abcedfghijklmnopqrstuvwxyz 
+TokenStart abcedfghijklmnopqrstuvwxyz
 
-TokenStart ABCDEFGHIJKLMNOPQRSTUVWXYZ_ 
+TokenStart ABCDEFGHIJKLMNOPQRSTUVWXYZ_
 
-TokenChar 0123456789 
+TokenChar 0123456789
 
-Escapes \rnt\'"eE#x0buU 
+Escapes \rnt\'"eE#x0buU
 
 
-The last line means that escapes in string literals start with a backslash, and there are 14 of them: CR, LF, 
+The last line means that escapes in string literals start with a backslash, and there are 14 of them: CR, LF,
 TAB, backslash, single and double quotes, escape (#1B, e and E allowed), hex byte (# and x allowed), NUL,
 backspace, and 4 and 8-digit unicode characters.
 
@@ -525,11 +533,11 @@ specified file, returning to the next line when done.
 The #ilASM{} directive contains inline assembly, which can contain PE/ELF/32/64 guards to control the exact
 code emitted (mainly for low-level system routines, such as file I/O, which are usually in builtins\VM).
 
-The #isginfo{}, #isinit{}, and #istype{} directives instruct the compiler to perform various type-inference 
+The #isginfo{}, #isinit{}, and #istype{} directives instruct the compiler to perform various type-inference
 and legal value ranges checks. Primarily for compiler development use, not end user applications. No code
 is generated, but compilation will abort if they fail.
 
-The with/without directives control several run-time options: 
+The with/without directives control several run-time options:
 
 profile         -- produce an execution count listing when the program terminates
 
@@ -537,26 +545,26 @@ profile_time    -- produce an execution percentage listing when the program term
 
 type_check      -- turn user-defined type checking on or off (can make it noticeably faster, once testing is done)
 
-trace           -- allow or disallow debugging (source code line-by-line tracing) 
+trace           -- allow or disallow debugging (source code line-by-line tracing)
 
-debug           -- turn debugging info generation on or off 
+debug           -- turn debugging info generation on or off
 
 
 The last two are related: without debug completely removes all tracing and diagnostics for a specific file (primarily intended for use in well-tested system routines), whereas (under with debug, which is the default) with/without trace can make debugging less tedious by not stopping on every line of irrelevant (user-selected) code, although dumps still contain a full call stack.
 
 with/without console/gui still work but should now be replaced with a format directive:
 
-format PE32|PE64|ELF32|ELF64 - you can also specify gui/console, subsystem version, icons and manifest files. Ignored when interpreting. 
+format PE32|PE64|ELF32|ELF64 - you can also specify gui/console, subsystem version, icons and manifest files. Ignored when interpreting.
 
-The following are ignored by the compiler, but are respected by the source code reindent tool: 
+The following are ignored by the compiler, but are respected by the source code reindent tool:
 
---#without reformat 
+--#without reformat
 
---#with reformat 
+--#with reformat
 
---#withdef              (may be needed when reindenting OpenEuphoria code) 
+--#withdef              (may be needed when reindenting OpenEuphoria code)
 
---#withtype 
+--#withtype
 
 
 Lastly note that an abort() statement at the top level will make the compiler ignore the rest of the file.
@@ -573,14 +581,14 @@ PicoLisp makes no formal difference between any normal and "specific" operation 
 
 Disabled on-conditions can be seen as pragmatic directives.
 
-'''SubscriptRange''' (SubRg), '''StringRange''' (StRg), 
-'''StringSize''' (StRz), '''Size''' conditions 
+'''SubscriptRange''' (SubRg), '''StringRange''' (StRg),
+'''StringSize''' (StRz), '''Size''' conditions
 can be enabled for a '''procedure''' or a '''begin''' block.
 
-By default, for optimization reasons, 
+By default, for optimization reasons,
 SubscriptRange,StringRange,StringSize,Size are disabled.
 
-If enabled the '''SubscriptRange''' condition is raised for out-of-bound subscript of 
+If enabled the '''SubscriptRange''' condition is raised for out-of-bound subscript of
 an array.
 For example:
 
@@ -601,7 +609,7 @@ And :
  end;
 ```
 
-will issue the message : "The SubscriptRange condition was raised." at execution time. 
+will issue the message : "The SubscriptRange condition was raised." at execution time.
 
 Or, it can be handle by an on-unit.
 
@@ -616,34 +624,34 @@ Or, it can be handle by an on-unit.
 ```
 
 
-And the same way for a string,  
-the '''StringRange''' condition is raised when a substring reference is beyond 
+And the same way for a string,
+the '''StringRange''' condition is raised when a substring reference is beyond
 the span of the string.
 
-And finally: 
+And finally:
 
-The '''StringSize''' condition is raised when a string is shorten 
+The '''StringSize''' condition is raised when a string is shorten
 as a result of a convertion assigment.
 
-The '''Size''' condition is raised when a numerical value is shorten 
+The '''Size''' condition is raised when a numerical value is shorten
 as a result of a convertion assigment.
 
 
 ## PowerShell
 
-The #Requires statement prevents a script from running unless the Windows 
+The #Requires statement prevents a script from running unless the Windows
 PowerShell version, modules, snap-ins, and module and snap-in version
 prerequisites are met. If the prerequisites are not met, Windows PowerShell
-does not run the script. 
+does not run the script.
 
-You can use #Requires statements in any script. You cannot use them in 
-functions, cmdlets, or snap-ins. 
+You can use #Requires statements in any script. You cannot use them in
+functions, cmdlets, or snap-ins.
 
 ```PowerShell
 
-#Requires -Version <N>[.<n>] 
+#Requires -Version <N>[.<n>]
 #Requires –PSSnapin <PSSnapin-Name> [-Version <N>[.<n>]]
-#Requires -Modules { <Module-Name> | <Hashtable> } 
+#Requires -Modules { <Module-Name> | <Hashtable> }
 #Requires –ShellId <ShellId>
 #Requires -RunAsAdministrator
 
@@ -671,7 +679,7 @@ Type "copyright", "credits" or "license()" for more information.
 >>> import __future__
 >>> __future__.all_feature_names
 ['nested_scopes', 'generators', 'division', 'absolute_import', 'with_statement', 'print_function', 'unicode_literals', 'barry_as_FLUFL']
->>> 
+>>>
 ```
 
 
@@ -685,7 +693,7 @@ Type "copyright", "credits" or "license()" for more information.
 >>> import __future__
 >>> __future__.all_feature_names
 ['nested_scopes', 'generators', 'division', 'absolute_import', 'with_statement', 'print_function', 'unicode_literals']
->>> 
+>>>
 ```
 
 
@@ -734,9 +742,9 @@ The   '''NUMERIC FUZZ nnn'''   statement is used to specify to the REXX interpre
 
 decimal digits   (at full precision)   will be ignored while performing an arithmetic
 
-comparison. 
+comparison.
 
-'''nnn'''   can be an expression that evaluates to a non-negative integer. 
+'''nnn'''   can be an expression that evaluates to a non-negative integer.
 
 If   '''nnn'''   is omitted,   it defaults to   '''0'''.
 
@@ -779,7 +787,7 @@ If no   '''numeric form'''   statement is used,   the default for REXX programs 
 
 The   '''OPTIONS'''   statement is used to specify to the REXX interpreter on such matters on how to
 
-process the source (statements), possibly (for instance) whether or not   ''double byte character strings''  
+process the source (statements), possibly (for instance) whether or not   ''double byte character strings''
 
 are present, or possibly cause the REXX interpreter to force compliance to some particular rule or
 
@@ -793,7 +801,7 @@ option isn't supported (or recognized) by another REXX interpreter.
 
 Some options are global in nature, others can be enabled and disabled.
 
-Some REXX interpreters also have a way to specify certain options via the   ''command-line''  
+Some REXX interpreters also have a way to specify certain options via the   ''command-line''
 
 (also known as the   ''C.L.'').
 
@@ -874,7 +882,7 @@ the REXX program,   control branches to the label     '''error'''.   The label m
 
 ### signal off error; call off error
 
-This indicates to take the default action which means the special variable   '''RC'''   ('''R'''eturn '''C'''ode)  
+This indicates to take the default action which means the special variable   '''RC'''   ('''R'''eturn '''C'''ode)
 
 is quietly defined,   and execution continues of the REXX program.
 
@@ -888,7 +896,7 @@ program,   control branches to the label     '''failure'''.   The label may be i
 
 ### signal off failure; call off failure
 
-This indicates to take the default action which means the special variable   '''RC'''   ('''R'''eturn '''C'''ode)  
+This indicates to take the default action which means the special variable   '''RC'''   ('''R'''eturn '''C'''ode)
 
 is quietly defined,   and execution continues of the REXX program.
 
@@ -920,7 +928,7 @@ REXX interpreter),   control branches to the label     '''notready'''.   The lab
 
 This indicates to take the default action which is to quietly resume execution of the REXX program.
 
-Not all REXXes support this condition (option). 
+Not all REXXes support this condition (option).
 
 
 ### scope
@@ -929,11 +937,11 @@ The scope for the all the above statements   (except for '''options'''),   if is
 
 will be in effect for all internal routines (subroutines/functions/procedures).
 
-If the above statements are issued in an internal routine, upon return from that routine,   the 
+If the above statements are issued in an internal routine, upon return from that routine,   the
 
 original status is restored   (to just before the invoke of that routine).
 
-For external routines, the defaults are used. 
+For external routines, the defaults are used.
 
 
 

@@ -923,7 +923,8 @@ Forth is a fetch and store based virtual machine. If we create a safe version of
 : CLIP! ( n addr -- ) SWAP 1 10 CLIP SWAP  ! ;
 : SAFE!   ( n addr -- )
           OVER 1 10 BETWEEN 0= ABORT" out of range!"
-          ! ;</LANG>
+          ! ;
+```
 Testing
 <LANG>VARIABLE X
 7 X SAFE!  X ? 7  ok
@@ -935,7 +936,8 @@ Testing
 Backtrace:
 $7FAA2B0C throw
 $7FAD4698 c(abort")
-</LANG>
+
+```
 === Method 2: redefine standard "store" operator as DEFER word ===
 Using the code in Method 1, we can re-define the store (!) operator to be switchable.
 <LANG>DECIMAL
@@ -946,7 +948,8 @@ DEFER !
 \ commands to change the action of '!'
 : LIMITS-ON   ( -- ) ['] SAFE! IS ! ;
 : LIMITS-OFF  ( -- ) ['] FAST! IS ! ;
-: CLIPPING-ON ( -- ) ['] CLIP! IS ! ; </LANG>
+: CLIPPING-ON ( -- ) ['] CLIP! IS ! ;
+```
 
 Testing
 <LANG>VARIABLE Y
@@ -971,7 +974,8 @@ $7FAD4460 c(abort")
 Backtrace:
 $7FAA2B0C throw
 $7FAD4460 c(abort")
-</LANG>
+
+```
 
 ###  Method 3:  Create a safe VALUE assignment operator
 
@@ -985,7 +989,8 @@ We can create a word that assigns a number to a VALUE but tests for out of range
            STATE @
            IF   POSTPONE [']  POSTPONE (->) \ compiling action
            ELSE '  (->)                     \ interpret action
-           THEN ; IMMEDIATE</LANG>
+           THEN ; IMMEDIATE
+```
 
 Test
 <LANG>0 VALUE Z  ok
@@ -997,7 +1002,8 @@ Z . 99  ok
 Backtrace:
 $7FAA2B0C throw
 $7FAD4570 c(abort")
-$7FAD45DC (->)</LANG>
+$7FAD45DC (->)
+```
 
 
 ## Fortran
@@ -1672,7 +1678,8 @@ t2 - 1  = 2
 ## Lasso
 
 
-```Lasso>define dint =
+```lasso
+define dint =
  type {
    data private value
 
@@ -1906,7 +1913,8 @@ end %classdef
 
 Sample Usage:
 
-```MATLAB>>
+```matlab
+>
  RingInt(10) + 1
 
 ans =
@@ -2289,7 +2297,8 @@ value 15 is out of bounds [1,10]
 
 This doesn't really apply as Python names don't have a type, but something can be done:
 
-```python>>>
+```python
+>>
  class num(int):
     def __init__(self, b):
         if 1 <= b <= 10:

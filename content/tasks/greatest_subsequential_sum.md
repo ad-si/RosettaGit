@@ -952,7 +952,8 @@ Naive algorithm:
 ```
 
 
-```clojure>user
+```clojure
+user>
  (max-subseq-sum [-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1])
 [3 5 6 -2 -1 4]
 ```
@@ -1878,7 +1879,8 @@ Note: if we just want the sum of the maximum subsequence,
 and are not concerned with the subsequence itself, we can use:
 
 
-```j>maxs=: [:
+```j
+maxs=: [:>
 ./(0>.+)/\.
 ```
 

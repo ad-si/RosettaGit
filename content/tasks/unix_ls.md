@@ -1102,7 +1102,8 @@ Get-ChildItem | Sort-Object Name | ForEach-Object Name | Write-Output
 ## Python
 
 
-```python>>>
+```python
+>>>
  import os
 >>> print('\n'.join(sorted(os.listdir('.'))))
 DLLs

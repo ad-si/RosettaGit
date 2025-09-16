@@ -1430,7 +1430,8 @@ The arguments x and y are vectors which are parametrized by the index suck that 
 The output of this function is the coefficients of the polynomial which best fit these x,y value pairs.
 
 
-```MATLAB>>
+```MATLAB
+>>
  x = [0,  1,  2,  3,  4,  5,  6,   7,   8,   9,   10];
 >> y = [1,  6,  17, 34, 57, 86, 121, 162, 209, 262, 321];
 >> polyfit(x,y,2)
@@ -1993,7 +1994,8 @@ X^2 X constant
 ## Python
 
 
-```python>>>
+```python
+>>>
  x = [0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10]
 >>> y = [1,   6,  17,  34,  57,  86, 121, 162, 209, 262, 321]
 >>> coeffs = numpy.polyfit(x,y,deg=2)
@@ -2003,7 +2005,8 @@ array([ 3.,  2.,  1.])
 
 Substitute back received coefficients.
 
-```python>>>
+```python
+>>>
  yf = numpy.polyval(numpy.poly1d(coeffs), x)
 >>> yf
 array([   1.,    6.,   17.,   34.,   57.,   86.,  121.,  162.,  209., 262.,  321.])
@@ -2011,7 +2014,8 @@ array([   1.,    6.,   17.,   34.,   57.,   86.,  121.,  162.,  209., 262.,  321
 
 Find max absolute error:
 
-```python>>>
+```python
+>>>
  '%.1g' % max(y-yf)
 '1e-013'
 ```
@@ -2022,14 +2026,16 @@ Find max absolute error:
 
 For input arrays `x' and `y':
 
-```python>>>
+```python
+>>>
  x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> y = [2.7, 2.8, 31.4, 38.1, 58.0, 76.2, 100.5, 130.0, 149.3, 180.0]
 ```
 
 
 
-```python>>>
+```python
+>>>
  p = numpy.poly1d(numpy.polyfit(x, y, deg=2), variable='N')
 >>> print p
        2

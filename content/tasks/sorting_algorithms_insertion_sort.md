@@ -1645,7 +1645,8 @@ insert(X,[H|T]) -> [H|insert(X, T)].
 
 And the calls:
 
-```erlang>1
+```erlang
+1>
  c(sort).
 {ok,sort}
 2> sort:insertion([5,3,9,4,1,6,8,2,7]).
@@ -2277,7 +2278,8 @@ public static void insertSort(int[] A){
 
 
 Using some built-in algorithms (warning: not stable, due to the lack of an "upper bound" binary search function)
-```java5>public static <E extends Comparable<? super E>
+```java5
+public static <E extends Comparable<? super E>>
  void insertionSort(List<E> a) {
   for (int i = 1; i < a.size(); i++) {
     int j = Math.abs(Collections.binarySearch(a.subList(0, i), a.get(i)) + 1);
@@ -2602,7 +2604,8 @@ end %insertionSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  insertionSort([4 3 1 5 6 2])
 
 ans =
@@ -3674,7 +3677,8 @@ public list[int] insertionSort(a){
 }
 ```
 
-```rascal>rascal>rascal
+```rascal
+rascal>rascal>
 insertionSort([4, 65, 2, -31, 0, 99, 83, 782, 1])
 list[int]: [-31,0,1,2,4,65,83,99,782]
 ```
@@ -4147,7 +4151,8 @@ end
 
 Using generics.
 
-```Swift>func insertionSort<T:Comparable
+```swift
+func insertionSort<T:Comparable>
 (inout list:[T]) {
     for i in 1..<list.count {
         var j = i

@@ -373,7 +373,7 @@ public static class FareySequence
 }
 ```
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 F1: 0/1, 1/1
 F2: 0/1, 1/2, 1/1
 F3: 0/1, 1/3, 1/2, 2/3, 1/1
@@ -395,7 +395,6 @@ F700 has 149019 terms.
 F800 has 194751 terms.
 F900 has 246327 terms.
 F1000 has 304193 terms.
-
 ```
 
 

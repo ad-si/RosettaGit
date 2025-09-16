@@ -2048,7 +2048,8 @@ Note that there are a variety of other generalizations have cross products as a 
 
 An alternative definition for cross (based on finding the determinant of a 3 by 3 matrix where one row is unit vectors) could be:
 
-```j>cross=: [:
+```j
+cross=: [:>
  [: -&.>/ .(*&.>) (<"1=i.3) , ,:&:(<"0)
 ```
 

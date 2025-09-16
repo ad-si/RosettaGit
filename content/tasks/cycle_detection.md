@@ -1767,7 +1767,8 @@ def until(p):
 
 ''cycleLength'' refactored in terms of ''until'':
 
-```python># cycleLength :: Eq a =
+```python
+# cycleLength :: Eq a =
  [a] -> Maybe Int
 def cycleLength(xs):
     '''Just the length of the first cycle found,

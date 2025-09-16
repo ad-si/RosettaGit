@@ -577,7 +577,8 @@ Using <code>clojure.contrib.http.agent</code>:
 Tested with GnuCOBOL
 
 
-```cobol>COBOL  >
+```cobol
+COBOL  >>
 SOURCE FORMAT IS FIXED
        identification division.
        program-id. curl-rosetta.
@@ -2504,7 +2505,8 @@ class HttpTest {
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main (int argc, const char * argv[]) {

@@ -1229,7 +1229,8 @@ print a$
 ## Eero
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h
 
 
 int main()
@@ -1442,7 +1443,8 @@ This word causes the number whose string value is stored at the given location t
 The word ">string" takes and integer and returns the string representation of that integer. I factored it out of the definitions below to keep the example simpler.
 
 
-```forth>:
+```forth
+:
 string ( d -- addr n )
   dup >r dabs <# #s r> sign #> ;
 
@@ -2029,7 +2031,8 @@ When play begins:
 ## J
 
 
-```j>incrTextNum=:
+```j
+incrTextNum=:
 :&.".
 ```
 
@@ -3615,7 +3618,8 @@ s := str(succ(integer parse s));
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl
 ;
 
 increment(input(1)) := intToString(stringToInt(input) + 1);

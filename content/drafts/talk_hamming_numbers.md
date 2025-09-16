@@ -35,7 +35,8 @@ My only concern is whether I had an off-by-one error from counting indices from 
 
 Calculations using the Python implementation give:
 
-```python>>>
+```python
+>>>
  # Create a zero-based list of the Hamming numbers
 >>> h = list(islice(raymonds_hamming(), 1695))
 >>> # Show some of the vaules in one-based, (as well as zero based) indexing

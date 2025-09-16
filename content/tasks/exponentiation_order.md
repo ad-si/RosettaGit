@@ -74,15 +74,15 @@ If your language's exponentiation operator is not one of the usual ones, please 
 
 
 Using whatever operator or syntax your language supports (if any), show the results in three lines (with identification):
-<big>  
-::::*   5**3**2 
+<big>
+::::*   5**3**2
 ::::*   (5**3)**2
 ::::*   5**(3**2)
 </big>
 
 
 
-If there are other methods (or formats) of multiple exponentiations, show them as well. 
+If there are other methods (or formats) of multiple exponentiations, show them as well.
 
 
 ## See also
@@ -257,7 +257,7 @@ PRINT "5^(3^2) = "; 5^(3^2)
 
 C does not have an exponentiation operator. The caret operator '^' performs xor bitwise operation in C. The function pow in the standard C Math library takes 2 arguments.
 
-Expressions in C are evaluated by RPN. The RPNs of 5^3^2 and 5^(3^2) are the same and thus also their pow expressions.  
+Expressions in C are evaluated by RPN. The RPNs of 5^3^2 and 5^(3^2) are the same and thus also their pow expressions.
 
 ```C
 
@@ -269,7 +269,7 @@ int main()
 	printf("\n5 ^ 3 ^ 2   = %.0f",pow(5,pow(3,2))); /*.0f suppresses decimal output*/
 	printf("\n(5 ^ 3) ^ 2 = %.0f",pow(pow(5,3),2));
 	printf("\n5 ^ (3 ^ 2) = %.0f",pow(5,pow(3,2)));
-	
+
 	return 0;
 }
 
@@ -288,7 +288,7 @@ int main()
 
 ## Clojure
 
-Clojure uses prefix notation and expt only takes 2 arguments for exponentiation, so "5**3**2" isn't represented. 
+Clojure uses prefix notation and expt only takes 2 arguments for exponentiation, so "5**3**2" isn't represented.
 
 
 ```clojure
@@ -299,7 +299,7 @@ Clojure uses prefix notation and expt only takes 2 arguments for exponentiation,
 ;; 5**(3**2)
 (expt 5 (expt 3 2))      ; => 1953125
 
-;; (5**3)**2 alternative: use reduce 
+;; (5**3)**2 alternative: use reduce
 (reduce expt [5 3 2])  ; => 15625
 
 ;; 5**(3**2) alternative: evaluating right-to-left with reduce requires a small modification
@@ -525,7 +525,7 @@ True
 ```
 
 
-However natural chaining of (^^) operator is impossible: 
+However natural chaining of (^^) operator is impossible:
   5^^3^^2 = 5^^(3^^2)
 but (3^^2) is not Integral any longer, so evaluation leads to the type error. Left-assiciative chain is Ok:
 
@@ -554,7 +554,7 @@ Io> 5 **(3) **(2)
 ==> 15625
 Io> Number getSlot("**") == Number getSlot("pow")
 ==> true
-Io> 
+Io>
 ```
 
 Operators in Io are implemented as methods.  Here the <code>**</code> method is the same as the <code>pow</code> method.  Syntax sugar converts "normal" mathematical expressions to messages.
@@ -654,10 +654,10 @@ infix fun Int.ipow(exp: Int): Int = when {
         }
         ans
     }
-} 
+}
 
 fun main(args: Array<String>) {
-    println("5**3**2   = ${5 ipow 3 ipow 2}") 
+    println("5**3**2   = ${5 ipow 3 ipow 2}")
     println("(5**3)**2 = ${(5 ipow 3) ipow 2}")
     println("5**(3**2) = ${5 ipow (3 ipow 2)}")
 }
@@ -749,7 +749,7 @@ OCaml language has '**' as an exponentiation symbol for floating point integers
 ```txt
 
 - :   float = 1953125.
-- :     float = 1953125. 
+- :     float = 1953125.
 - :   float = 15625.
 
 
@@ -866,7 +866,8 @@ The PicoLisp '**' exponentiation function takes 2 arguments
 ## Python
 
 
-```python>>>
+```python
+>>
  5**3**2
 1953125
 >>> (5**3)**2
@@ -879,7 +880,7 @@ except: pass
 
 >>> reduce(pow, (5, 3, 2))
 15625
->>> 
+>>>
 ```
 
 
@@ -1134,9 +1135,9 @@ Public Sub exp()
 End Sub
 ```
 ```txt
-5^3^2          15625 
-(5^3)^2        15625 
-5^(3^2)        1953125 
+5^3^2          15625
+(5^3)^2        15625
+5^(3^2)        1953125
 
 ```
 
@@ -1169,12 +1170,12 @@ WScript.StdOut.WriteLine "5^(3^2) => " & 5^(3^2)
 ```verbexx
 // Exponentiation order example:
 
-@SAY "5**3**2   = " ( 5**3**2   ); 
+@SAY "5**3**2   = " ( 5**3**2   );
 @SAY "(5**3)**2 = " ( (5**3)**2 );
 @SAY "5**(3**2) = " ( 5**(3**2) );
 
 /] Output:
-  
+
     5**3**2   =  1953125
     (5**3)**2 =  15625
     5**(3**2) =  1953125

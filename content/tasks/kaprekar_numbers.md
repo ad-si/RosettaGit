@@ -4380,7 +4380,8 @@ Press ENTER to exit
 
 (Swap the commented return statement to return the split information).
 
-```python>>>
+```python
+>>>
  def k(n):
 	n2 = str(n**2)
 	for i in range(len(n2)):

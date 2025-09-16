@@ -524,7 +524,8 @@ fun main(args: Array<String>) {
 ## Perl
 
 
-```perl>use constant pi =
+```perl
+use constant pi =>
  2 * atan2(1, 0);
 
 # Generated with a P3 tile set using a Lindenmayer system.

@@ -1779,7 +1779,8 @@ As a low level language Forth provides efficient bit manipulation operators.
 These functions take input parameters from the stack and return the result on the stack.
 
 
-```forth>:
+```forth
+:>
 gray ( n -- n' ) dup 2/ xor ;   \ n' = n xor (n logically right shifted 1 time)
                                                \ 2/ is Forth divide by 2, ie: shift right 1
 : gray> ( n -- n )
@@ -2597,7 +2598,9 @@ Gray code to binary
 
 "Accumulated xor"
 
-```K>   g2b:xor\</lang
+```K
+   g2b:xor\>
+```
 
 
 An alternative is to find the inverse of the gray code by tracing until fixpoint.
@@ -4242,7 +4245,8 @@ This example works with lists of discrete binary digits.
 
 ;First some int<>bin conversion routines:
 
-```python>>>
+```python
+>>>
  def int2bin(n):
 	'From positive integer to list of binary bits, msb at index 0'
 	if n:
@@ -4266,7 +4270,8 @@ This example works with lists of discrete binary digits.
 ;Now the bin<>gray converters.
 These follow closely the methods in the animation seen here: [http://www.wisc-online.com/Objects/ViewObject.aspx?ID=IAU8307 Converting Between Gray and Binary Codes].
 
-```python>>>
+```python
+>>>
  def bin2gray(bits):
 	return bits[:1] + [i ^ ishift for i, ishift in zip(bits[:-1], bits[1:])]
 
@@ -4279,7 +4284,8 @@ These follow closely the methods in the animation seen here: [http://www.wisc-on
 
 ;Sample output
 
-```python>>>
+```python
+>>>
  for i in range(16):
 	print('int:%2i -> bin:%12r -> gray:%12r -> bin:%12r -> int:%2i' %
 	      ( i,

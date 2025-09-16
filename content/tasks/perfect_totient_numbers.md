@@ -109,7 +109,8 @@ The first 20 perfect totient numbers:
 
 Calculates as many perfect Totient numbers as entered on the command line.
 
-```C>#include<stdlib.h
+```C
+#include<stdlib.h>
 
 #include<stdio.h>
 

@@ -73,7 +73,8 @@ The specified weights look like they are meant to be percentages (all=100), but 
 
 :Here are some doodles around the weighted average calculation:
 :
-```python>>>
+```python
+>>>
  def wt_avg(wt, cov):
 ...     wts = sum(wt)
 ...     covs = sum(c * w for c, w in zip(cov, wt))

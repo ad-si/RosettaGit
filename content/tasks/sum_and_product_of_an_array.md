@@ -1364,7 +1364,8 @@ let product = numbers |> Array.reduce (*)
 ## Factor
 
 
-```factor>1 5 1 <range
+```factor
+1 5 1 <range>
  [ sum . ] [ product . ] bi
     15 120
 { 1 2 3 4 } [ sum ] [ product ] bi
@@ -2000,7 +2001,8 @@ Examples:
 ## Julia
 
 
-```julia>julia
+```julia
+julia>
  sum([4,6,8])
 18
 
@@ -2289,7 +2291,8 @@ These two function are built into MATLAB as the "sum(array)" and "prod(array)" f
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  array = [1 2 3;4 5 6;7 8 9]
 
 array =
@@ -3644,7 +3647,8 @@ Input
 ## Sparkling
 
 
-```Sparkling>spn:1
+```sparkling
+spn:1>
  reduce({ 1, 2, 3, 4, 5 }, 0, function(x, y) { return x + y; })
 = 15
 spn:2> reduce({ 1, 2, 3, 4, 5 }, 1, function(x, y) { return x * y; })
@@ -3891,7 +3895,8 @@ There is a race between <code>fold sum</code> and <code>fold prod</code>, which 
 
 Ursa doesn't have arrays in the traditional sense. Its equivalent is the stream. All math operators take streams as arguments, so sums and products of streams can be found like this.
 
-```ursa>declare int<
+```ursa
+declare int<>
  stream
 append 34 76 233 8 2 734 56 stream
 
@@ -4039,7 +4044,8 @@ def (sum_prod nums)
 ## WDTE
 
 
-```WDTE>let a =
+```wdte
+let a =>
  import 'arrays';
 let s => import 'stream';
 

@@ -13,7 +13,7 @@ tags = []
 The following is a (horizontal) histogram plot of a REXX program that shows the number of partitions of the numbers    1 ──► 999.
 
 The histogram is shown three-quarter sized.
-<pre style="font-size:67%">
+```txt
   1                                1│
   2                                2│
   3                                3│

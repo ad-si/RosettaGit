@@ -665,7 +665,8 @@ quit
 ## Befunge
 
 
-```befunge>55+
+```befunge
+55+>
 :.:v
 @  ^ -1_
 ```
@@ -829,7 +830,8 @@ With tags:
 
 With script:
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   for( i = 10; i <= 0; i-- )
   {
@@ -1222,7 +1224,8 @@ _ = countDown 0 10 ::: IO
 ## Factor
 
 
-```factor>11 iota <reversed
+```factor
+11 iota <reversed>
  [ . ] each
 ```
 
@@ -1451,7 +1454,8 @@ Output:
 ## Go
 
 
-```go>for i := 10; i
+```go
+for i := 10; i>
 = 0; i-- {
   fmt.Println(i)
 }
@@ -1508,7 +1512,8 @@ main = forM_ [10,9 .. 0] print
 ## hexiscript
 
 
-```hexiscript>for let i 10; i
+```hexiscript
+for let i 10; i>
 = 0; i--
   println i
 endfor
@@ -2059,7 +2064,9 @@ end
 The basic set of macros for Metafont defines <tt>downto</tt>, so that we can write
 
 
-```metafont>for i = 10 downto 0: show i; endfor end</lang
+```metafont
+for i = 10 downto 0: show i; endfor end
+```
 
 
 
@@ -2282,7 +2289,8 @@ for i := 10 downto 0 do
 
 English fixed-length opcodes
 
-```sgml><@ ITEFORLITLITLITLIT
+```sgml
+<@ ITEFORLITLITLITLIT>
 0|<@ SAYVALFOR>...</@>|10|-1</@>
 ```
 
@@ -2412,7 +2420,9 @@ for ($i = 10; $i -ge 0; $i--) {
 
 Alternatively, the range operator might be used as well which simply returns a contiguous range of integers:
 
-```powershell>10..0</lang
+```powershell
+10..0>
+```
 
 
 
@@ -2791,7 +2801,8 @@ END
 ## SNUSP
 
 
-```snusp>++++++++++
+```snusp
+++++++++++>
 ++++++++++!/- @!\=@\.@@@-@-----#   atoi
     \n      counter  #\?>.</  \ @@@+@+++++#   itoa
                        loop
@@ -2802,7 +2813,8 @@ END
 ## Sparkling
 
 
-```sparkling>for var i = 10; i
+```sparkling
+for var i = 10; i>
 = 0; i-- {
     print(i);
 }
@@ -2848,7 +2860,8 @@ pub main | n
 ## SPL
 
 
-```spl>
+```spl
+>
  i, 10..0,-1
   #.output(i)
 <
@@ -2932,7 +2945,8 @@ for i in reverse(0 ... 10) {
 
 Alternately (removed in Swift 3):
 
-```swift>for var i = 10; i
+```swift
+for var i = 10; i>
 = 0; i-- {
   println(i)
 }

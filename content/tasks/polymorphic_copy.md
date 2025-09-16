@@ -772,7 +772,8 @@ S
 In E, a generic copy for all objects can be built out of the serialization facility, by connecting an object recognizer to an object builder without even using any intermediate serialized form:
 
 
-```e>def deSubgraphKit := <elib:serial.deSubgraphKit
+```e
+def deSubgraphKit := <elib:serial.deSubgraphKit>
 
 
 def copy(object) {

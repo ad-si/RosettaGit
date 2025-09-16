@@ -135,7 +135,8 @@ Return
 Interactive program which takes the side lengths of the pentagram's core, it's arms and the colours for filling the background, drawing the figure and then filling it in. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
 
 
-```C>#include<graphics.h
+```C
+#include<graphics.h>
 
 #include<stdio.h>
 #include<math.h>

@@ -439,7 +439,8 @@ ead, of course!|
 
 This prints the lyrics from the Wikipedia page, more or less. I don't know anything about goats and donkeys and the like.
 
-```bbcbasic>REM
+```bbcbasic
+REM>
 oldlady
 DIM swallowings$(6, 1)
 swallowings$() = "fly", "+why", "spider", "That wriggled and wiggled and tickled inside her", "bird", ":How absurd", "cat", ":Fancy that", "dog", ":What a hog", "cow", "+how", "horse", "She's dead, of course"
@@ -3175,7 +3176,8 @@ done
 
 ## Ursa
 
-```ursa>decl string<
+```ursa
+decl string<>
  reason creatures comments
 append "She swallowed the " " to catch the " reason
 append "fly" "spider" "bird" "cat" "dog" "goat" "cow" "horse" creatures

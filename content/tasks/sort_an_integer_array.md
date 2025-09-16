@@ -481,7 +481,8 @@ SortD(L₁,5)
 Use the sortval operator to sort an array of integers (val-array in Babel terminology). The following code creates a list of random values, converts it to a val-array, sorts that val-array, then converts it back to a list for display using the lsnum utility.
 
 
-```babel>babel
+```babel
+babel>
  nil { zap {1 randlf 100 rem} 20 times collect ! } nest dup lsnum ! --> Create a list of random numbers
 ( 20 47 69 71 18 10 92 9 56 68 71 92 45 92 12 7 59 55 54 24 )
 babel> ls2lf                                                              --> Convert list to array for sorting
@@ -494,7 +495,8 @@ babel> ar2ls lsnum !                                                      --> Di
 In Babel, lists and arrays are distinct. If you want to sort a list, use the lssort utility:
 
 
-```babel>babel
+```babel
+babel>
  ( 68 73 63 83 54 67 46 53 88 86 49 75 89 83 28 9 34 21 20 90 )
 babel> {lt?} lssort ! lsnum !
 ( 9 20 21 28 34 46 49 53 54 63 67 68 73 75 83 83 86 88 89 90 )
@@ -504,7 +506,8 @@ babel> {lt?} lssort ! lsnum !
 To reverse the sort-order, use the 'gt?' predicate instead of the 'lt?' predicate:
 
 
-```babel>babel
+```babel
+babel>
  ( 68 73 63 83 54 67 46 53 88 86 49 75 89 83 28 9 34 21 20 90 ) {gt?} lssort ! lsnum !
 ( 90 89 88 86 83 83 75 73 68 67 63 54 53 49 46 34 28 21 20 9 )
 ```
@@ -1076,7 +1079,8 @@ CELL NEGATE CONSTANT -CELL
   2DUP < IF RECURSE ELSE 2DROP THEN ;
 
 : QUICKSORT ( array len -- )
-  DUP 2 < IF 2DROP EXIT THEN  1- CELLS OVER + QSORT ;</LANG>
+  DUP 2 < IF 2DROP EXIT THEN  1- CELLS OVER + QSORT ;
+```
 Test at the console
 
 ```forth
@@ -1509,7 +1513,8 @@ jq's builtin <code>sort</code> filter sorts the elements of an array in ascendin
 
 Julia has both out-of-place (<code>sort</code>) and in-place (<code>sort!</code>) sorting functions in its standard-library:
 
-```julia>julia
+```julia
+julia>
  a = [4,2,3,1]
 4-element Int32 Array:
  4
@@ -2070,7 +2075,8 @@ return
 ## Nial
 
 
-```nial>sort
+```nial
+sort>
 = 9 6 8 7 1 10
 = 10 9 8 7 6 1
 ```
@@ -2302,13 +2308,17 @@ Numbers sorted as numbers
 If <code>@a</code> contains only numbers:
 
 
-```perl6>my @sorted = sort @a;</lang
+```perl6
+my @sorted = sort @a;>
+```
 
 
 For an in-place sort:
 
 
-```perl6>@a .= sort;</lang
+```perl6
+@a .= sort;>
+```
 
 
 
@@ -2544,7 +2554,8 @@ sorted <- sort(nums)
 
 Rascal has a built-in sort function that sort the elements of a list. Additionally, one can give a LessThenOrEqual function to compare the elements (See [http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/Prelude/List/sort/sort.html documentation]).
 
-```rascal>rascal
+```rascal
+rascal>
 import List;
 ok
 
@@ -2583,7 +2594,8 @@ sort [2 4 3 1 2]
 ## Red
 
 
-```Red>>
+```Red
+>>
  nums: [3 2 6 4 1 9 0 5 7]
 == [3 2 6 4 1 9 0 5 7]
 >> sort nums
@@ -3161,7 +3173,8 @@ Users of [[bash]], [[ksh93]] and [[mksh]] can probably use the <tt>nums=(2 4 3 1
 ## Ursa
 
 
-```ursa>decl int<
+```ursa
+decl int<>
  nums
 append 2 4 3 1 2 nums
 sort nums
@@ -3193,7 +3206,8 @@ output:
 ## WDTE
 
 
-```WDTE>let a =
+```wdte
+let a =>
  import 'arrays';
 a.sort [39; 47; 40; 53; 14; 23; 88; 52; 78; 62; 41; 92; 88; 66; 5; 40] < -- io.writeln io.stdout;
 ```

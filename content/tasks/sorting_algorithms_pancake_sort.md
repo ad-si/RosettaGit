@@ -2076,7 +2076,8 @@ end %pancakeSort
 
 Sample Usage:
 
-```MATLAB>>
+```MATLAB
+>>
  pancakeSort([4 3 1 5 6 2])
 
 ans =

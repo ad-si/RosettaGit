@@ -1133,7 +1133,8 @@ BEGIN {
 The size, ''N'', is specified by the first value on the stack - 5 in the example below. The upper limit is constrained only by the range of the playfield cells used for variables, since we're using an algorithm that calculates the values on the fly rather than building them up in memory. On an 8 bit interpreter this means an upper limit of at least 127, but with an extended cell range the size of ''N'' can be almost unlimited.
 
 
-```befunge>>> 5 >>00p0010p:1:>20p030pv
+```befunge
+>> 5 >>00p0010p:1:>20p030pv>
 0g-:0`*:*-:00g:*1-55+/>\55+/:v  v:,*84<
 v:++!\**2p01:+1g01:g02$$_>>#^4#00#+p#1:#+1#g0#0g#3<^/+ 55\_$:>55+/\|
 >55+,20g!00g10g`>#^_$$$@^!`g03g00!g04++**2p03:+1g03!\*+1*2g01:g04.$<
@@ -1965,7 +1966,9 @@ let zz l a =
 
 ```
 
-```fsharp>zz 5 5</lang
+```fsharp
+zz 5 5>
+```
 
 
 ```txt
@@ -1979,7 +1982,9 @@ let zz l a =
 ```
 
 
-```fsharp>zz 8 8</lang
+```fsharp
+zz 8 8>
+```
 
 
 ```txt
@@ -1997,7 +2002,9 @@ let zz l a =
 
 Let's try something a little less square man
 
-```fsharp>zz 5 8</lang
+```fsharp
+zz 5 8>
+```
 
 
 ```txt
@@ -5616,7 +5623,8 @@ public void printzz(rel[cd, int] myarray){
 }
 ```
 
-```rascal>rascal
+```rascal
+rascal>
 printzz(zz(4))
 {0}	{1}	{3}	{6}	{10}
 {2}	{4}	{7}	{11}	{15}

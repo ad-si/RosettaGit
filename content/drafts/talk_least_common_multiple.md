@@ -18,7 +18,8 @@ From ''"Yet another way is to use rational arithmetic; if you add 1/m and 1/n an
 
 I did the following:
 
-```python>>>
+```python
+>>>
  def lcm(a, b): return (fractions.Fraction(1,a) + fractions.Fraction(1,b)).denominator if a and b else 0
 
 >>> lcm(12, 18)

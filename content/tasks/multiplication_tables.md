@@ -1249,7 +1249,8 @@ BBC BASIC automatically right-justifies numeric output.
 ## Befunge
 
 
-```befunge>0>51p0
+```befunge
+0>51p0>
 52p51g52g*:51g52g`!*\!51g52g+*+0\3>01p::55+%68*+\!28v
 w^p2<y|!`+66:+1,+*84*"\"!:g25$_,#!>#:<$$_^#!:-1g10/+55\-**<<
 "$9"^x>$55+,51g1+:66+`#@_055+68*\>\#<1#*-#9:#5_$"+---">:#,_$
@@ -4800,7 +4801,8 @@ Result:
 ## PicoLisp
 
 
-```PicoLi/th>sp
+```PicoLi/th
+sp>
 (de mulTable (N)
    (space 4)
    (for X N
@@ -4985,7 +4987,8 @@ Ouput similar to ALGOL 68
 ### Procedural
 
 
-```python>>>
+```python
+>>>
  size = 12
 >>> width = len(str(size**2))
 >>> for row in range(-1,size+1):

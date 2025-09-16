@@ -649,7 +649,9 @@ event generate .okBtn <ButtonRelease-1> -x 5 -y 5
 
 Note that many of Tk's windows also need appropriate <Enter> and <Leave> events in order to work correctly. For the process of actually simulating a click on a button, it is actually easier to work at the method-call level rather than the event generation level:
 
-```tcl>.okBtn invoke</lang
+```tcl
+.okBtn invoke>
+```
 
 
 {{omit from|Befunge}} <!-- No mouse support -->

@@ -2179,7 +2179,8 @@ Symmetric
 
 Julia has a built-in <code>binomial</code> function to compute the binomial coefficients, and we can construct the Pascal matrices with this function using list comprehensions:
 
-```Julia>julia
+```julia
+julia>
  [binomial(j,i) for i in 0:4, j in 0:4]
 5×5 Array{Int64,2}:
  1  1  1  1  1

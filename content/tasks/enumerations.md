@@ -347,7 +347,9 @@ So the task is taken to be:
 'Create a collection of constants that is a complete, ordered listing of all of the constants in that collection, with and without explicit values.'
 In Bracmat, each expression is a constant and can be used in situations where one would use an enum in other languages. All expressions have an ordering in sums and products. In the case of non-numeric strings the ordering is alphabetic. It is not possible in Bracmat to have a constant without an explicit value, because the constant is nothing but the value, so only half of the task can be solved.
 
-```bracmat>fruits=apple+banana+cherry;</lang
+```bracmat
+fruits=apple+banana+cherry;
+```
 
 
 
@@ -794,13 +796,17 @@ This word defines a new constant of the value specified and returns the next val
 It would be used like this:
 
 
-```forth>0 ENUM APPLE  ENUM BANANA  ENUM CHERRY  DROP</lang
+```forth
+0 ENUM APPLE  ENUM BANANA  ENUM CHERRY  DROP
+```
 
 
 Or you can use CONSTANT to capture the "end" value instead of dropping it:
 
 
-```forth>0 ENUM FIRST ENUM SECOND ...  CONSTANT LAST</lang
+```forth
+0 ENUM FIRST ENUM SECOND ...  CONSTANT LAST
+```
 
 
 A variation of this idea is the "stepped enumeration" that increases the value by more than 1, such as:
@@ -1572,7 +1578,9 @@ TYPE Fruit = {Apple, Banana, Cherry};
 
 The values are accessed by qualifying their names.
 
-```modula3>fruit := Fruit.Apple;</lang
+```modula3
+fruit := Fruit.Apple;
+```
 
 You can get an element's position in the enumeration by using <code>ORD</code> and get the element given the position by using <code>VAL</code>.
 
@@ -1745,7 +1753,8 @@ my %fruits = ( apple => 0, banana => 1, cherry => 2 );
 
 ## Perl 6
 
-```perl6>enum Fruit <Apple Banana Cherry
+```perl6
+enum Fruit <Apple Banana Cherry
 ; # Numbered 0 through 2.
 
 enum ClassicalElement (
@@ -1957,7 +1966,8 @@ EndEnumeration
 Note: [http://www.python.org/dev/peps/pep-0435/ enumerations have come to Python version 3.4].
 
 
-```python>>>
+```python
+>>
  from enum import Enum
 >>> Contact = Enum('Contact', 'FIRST_NAME, LAST_NAME, PHONE')
 >>> Contact.__members__

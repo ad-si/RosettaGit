@@ -3005,7 +3005,8 @@ public list[str] get_names(loc a){
 
 Example output:
 
-```rascal>rascal
+```rascal
+rascal>
 get_first_item(|file:///Users/.../Desktop/xmlpath.xml|)
 <?xml version="1.0" encoding="UTF-8"?>
 <item stock="12" upc="123456789">

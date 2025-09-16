@@ -855,7 +855,8 @@ R =    37.80
 The temperature to convert is read from stdin. Befunge has no support for real numbers, though, so reading and writing of decimal values is done with character I/O. For the same reason, the temperature calculations use integer arithmetic to emulate fixed point. The first two lines handle the input; the second line performs the conversion calculations; and the last three handle the output.
 
 
-```befunge>0000
+```befunge
+0000>
 0p~>"."-:!#v_2-::0\`\9`+!#v_$1>/\:3`#v_\>\:3 \`#v_v
 1#<<^0 /2++g001!<1 \+g00\+*+55\<   ^+55\-1<  ^*+55\+1<v_
 "K"\-+**"!Y]"9:\"C"\--\**"^CIT"/5*9:\"F"\/5*9:\"R"\0\0<v
@@ -1650,7 +1651,8 @@ R =  671.67
 
 {{works with|GNU Forth}} for the command line handling
 
-```forth>: k
+```forth
+: k>
 °C  ( F: kelvin  -- celsius )     273.15e0 f- ;
 : k>°R  ( F: kelvin  -- rankine )     1.8e0 f* ;
 : °R>°F ( F: rankine -- fahrenheit )  459.67e0 f- ;
@@ -2051,7 +2053,8 @@ R  37.80
 ### ES5
 
 
-```javascript>var k2c = k =
+```javascript
+var k2c = k =>
  k - 273.15
 var k2r = k => k * 1.8
 var k2f = k => k2r(k) - 459.67
@@ -3004,7 +3007,8 @@ R: 37.800
 
 =={{header|Objective-C}}==
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 int main(int argc, const char * argv[])
@@ -3783,7 +3787,8 @@ ESC = End.
 ## Python
 
 
-```python>>>
+```python
+>>>
  while True:
 	k = float(input('K ? '))
 	print("%g Kelvin = %g Celsius = %g Fahrenheit = %g Rankine degrees."
@@ -3803,7 +3808,8 @@ K ?
 
 This converts from any one of the units to all the others
 
-```python>>>
+```python
+>>>
  toK = {'C': (lambda c: c + 273.15),
            'F': (lambda f: (f + 459.67) / 1.8),
            'R': (lambda r: r / 1.8),

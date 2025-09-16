@@ -4696,7 +4696,8 @@ for i in range(maxgenerations):
 
 This example makes use of the observation that a cell is alive in the next generation if the sum with its current neighbours of alive cells is two.
 
-```python>>>
+```python
+>>>
  gen = [ch == '#' for ch in '_###_##_#_#_#_#__#__']
 >>> for n in range(10):
 	print(''.join('#' if cell else '_' for cell in gen))
@@ -5588,7 +5589,8 @@ __##________________
 ## SequenceL
 
 
-```sequencel>import <Utilities/Conversion.sl
+```sequencel
+import <Utilities/Conversion.sl>
 ;
 
 main(args(2)) :=

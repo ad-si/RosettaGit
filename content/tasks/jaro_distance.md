@@ -2921,7 +2921,9 @@ jaro("JELLYFISH", "SMELLYFISH") = 0.8962962963
 Here we use the [https://ideas.repec.org/c/boc/bocode/s457850a.html jarowinkler] package from SSC. To install the package, type
 
 
-```stata>ssc install jarowinkler</lang
+```stata
+ssc install jarowinkler>
+```
 
 
 Now the program for the task:

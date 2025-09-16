@@ -1779,7 +1779,8 @@ console.log(a.map(function (n) { return m(n); }).join(', '));
 
 ES6 implementation
 
-```JavaScript>var f = num =
+```javascript
+var f = num =>
  (num === 0) ? 1 : num - m(f(num - 1));
 var m = num => (num === 0) ? 0 : num - f(m(num - 1));
 
@@ -2388,7 +2389,8 @@ end
 ```
 
 
-```MATLAB>>
+```MATLAB
+>>
  n = (0:10);
 >> arrayfun(@female,n)
 
@@ -2612,7 +2614,8 @@ for i in 1 .. 10:
 Objective-C has prior declaration rules similar to those stated above for [[Mutual Recursion#C|C]], for C-like types. In this example we show the use of a two class method; this works since we need an <tt>interface</tt> block that is like declaration of functions in C code.
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface Hofstadter : NSObject
@@ -3926,7 +3929,8 @@ and m 0 = 0
 The <code>'''fun'''</code> construct creates recursive functions, and the <code>'''and'''</code> allows a group of functions to call each other. The above is just a shortcut for the following:
 
 
-```sml>val rec f = fn 0 =
+```sml
+val rec f = fn 0 =>
  1
              | n => n - m (f (n-1))
 and m = fn 0 => 0

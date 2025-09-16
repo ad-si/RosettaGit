@@ -297,7 +297,9 @@ This just reads lines from stdin and prints them until EOF is read.
 or, more idiomatic:
 
 
-```awk>1</lang
+```awk
+1>
+```
 
 
 
@@ -1635,7 +1637,9 @@ jq -r -R . FILENAME
 
 
 If the input file consists of well-formed JSON entities (including scalars), then the following invocation could be used to "pretty-print" the input:
-```jq>jq . FILENAME</lang
+```jq
+jq . FILENAME
+```
 
 
 Other options, e.g. to emit JSON in compact form, also exist.
@@ -2050,7 +2054,8 @@ while (%n <= $lines(input.txt)) {
 The very nature of ML/I is that its default behaviour
 is to copy from input to output until it reaches end of file.
 
-```ML/I></lang
+```ML/I>
+```
 
 
 =={{header|Modula-2}}==
@@ -2403,7 +2408,9 @@ close FH or die "can't close file: $!";
 
 Or you can get a list of all lines when you use it in list context:
 
-```perl>@lines = <FH>;</lang
+```perl
+@lines = <FH>;
+```
 
 
 Or a simpler program for lines of files entered as command line arguments or standard input:
@@ -3062,11 +3069,15 @@ done
 
 The following echoes standard input to standard output line-by-line until the end of the stream.
 
-```bash>cat < /dev/stdin > /dev/stdout</lang
+```bash
+cat < /dev/stdin > /dev/stdout>
+```
 
 Since <code>cat</code> defaults to reading from standard input and writing to standard output, this can be further simplified to the following.
 
-```bash>cat</lang
+```bash
+cat>
+```
 
 
 

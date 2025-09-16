@@ -12,7 +12,7 @@ tags = []
 
 = Introduction to Icon and Unicon =
 == Purpose ==
-The purpose of this page is to provide a Rosetta Code users with a enough supporting detail about Icon and Unicon to facilitate understanding and appreciation of these languages. It would be expected that the level of detail would be significantly smaller than any of the online books and reference materials listed on the [[Icon]] and [[Unicon]] pages.  
+The purpose of this page is to provide a Rosetta Code users with a enough supporting detail about Icon and Unicon to facilitate understanding and appreciation of these languages. It would be expected that the level of detail would be significantly smaller than any of the online books and reference materials listed on the [[Icon]] and [[Unicon]] pages.
 
 Some of the sections should be referenceable from code tasks.
 
@@ -28,7 +28,7 @@ These are general language references.
 ### == Unicon ==
 
 
-* [http://unicon.org/book/ub.pdf Book: Programming with Unicon 2nd edition; Jeffrey, Mohamed, Gharaibeh, Pereda, Parlett - note also documents details of the Icon Programming Library]  
+* [http://unicon.org/book/ub.pdf Book: Programming with Unicon 2nd edition; Jeffrey, Mohamed, Gharaibeh, Pereda, Parlett - note also documents details of the Icon Programming Library]
 * [http://unicon.org/utr/utr8.pdf Unicon Language Reference]
 
 
@@ -54,7 +54,7 @@ Excellent sources of programming insight.
 
 ==== Graphics, Network Messaging, Threads, Patterns, etc. ====
 These represent extensions that have been integrated into the core langauge(s).
-* [http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend] 
+* [http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend]
 * [http://unicon.org/utr/utr6b.pdf An IVIB Primer (Visual Interface Builder, UTR6b)]
 * [http://unicon.org/utr/utr9b.pdf Unicon 3D Graphics User's Guide and Reference Manual (UTR9b superseding UTR9a)]
 * [http://unicon.org/utr/utr10.pdf Debugging with UDB (UTR10)]
@@ -93,7 +93,7 @@ Declarations are optional and any undeclared variables are either (a) parameters
 
 Still, declarations are desirable for clarity and needed for a number of special cases:
 * local - variables local to a procedure
-* static - permanent variables that transcend individual calls of procedures.  While not visible outside of a procedure they are visible between different instances and across recursion of a procedure. 
+* static - permanent variables that transcend individual calls of procedures.  While not visible outside of a procedure they are visible between different instances and across recursion of a procedure.
 * global - variables with global visibility
 
 Additionally, the following declarations apply to non-variables:
@@ -107,7 +107,7 @@ Additionally, the following declarations apply to non-variables:
 Icon/Unicon data types are safe because they are implemented internally with descriptors which provide the data within a container.  All operations on data know not only the value of the data but the type of the data.  Programmers cannot incorrectly interpret the data as is possible in languages without type enforcement such as [[C]] or assemblers.  Similarly, programmers are not constrained as with languages like [[Pascal]] that have strong static typing.  Strong dynamic typing at run time results in Icon/Unicon because all operations on these self descriptive data types are consistent and correct.
 
 
-###  Mutable and Immutable Types 
+###  Mutable and Immutable Types
 
 
 Icon/Unicon has both mutable (changeable) and immutable (unchangeable) data types.  All operations deal with these consistently and it isn't possible to directly discern which are which (say by returning the address of a value).
@@ -137,11 +137,11 @@ There are operations which can create separate copies of types and distinguish b
 Furthermore even though strings are immutable, it is possible to construct the same string in different memory locations.  You just can't tell if they are different or not.
 
 
-###  Data Types 
+###  Data Types
 
 
 The following summarizes the data types of Icon and Unicon.  Each type is described and its characteristics are noted:
-* [[Icon%2BUnicon/Intro#Mutable and_Immutable Types|Mutable .vs. Immutable]] - changeable or not 
+* [[Icon%2BUnicon/Intro#Mutable and_Immutable Types|Mutable .vs. Immutable]] - changeable or not
 * coercible or not - coercion is implicit type conversion by operations
 * convertible or not - convertible through explicit type conversion
 
@@ -165,7 +165,7 @@ In Icon/Unicon &null is not coerced by operators and so:
 ```Icon
    write( 2 + &null )         # run time error 101
    write( "abc" || &null )    # run time error 103
-   write( "abc", &null)       # no error as write ignores &null 
+   write( "abc", &null)       # no error as write ignores &null
 ```
 
 
@@ -184,7 +184,7 @@ Reals (immutable,coercible,convertible) are available in one size (large).  Stri
 
 ### = string =
 
-Strings (immutable,coercible,convertible) are variable length and may contain any character value within the platform's character set including the NUL character.  String operations may coerce other data types such as integers or reals.  Also strings are coerced by operations on other types.  Syntactically, strings are delimited by double quotes (") and escape special characters using a back slash such as in this example "\"".  
+Strings (immutable,coercible,convertible) are variable length and may contain any character value within the platform's character set including the NUL character.  String operations may coerce other data types such as integers or reals.  Also strings are coerced by operations on other types.  Syntactically, strings are delimited by double quotes (") and escape special characters using a back slash such as in this example "\"".
 
 At the current time there is no support for Unicode.
 
@@ -204,7 +204,7 @@ Operations exists to work with lists as arrays and as queues, and stacks.
 
 ### = Records =
 
-Records (mutable) provide fixed size data groupings that are accessible through field names. 
+Records (mutable) provide fixed size data groupings that are accessible through field names.
 
 Dynamic records can be constructed in Unicon with the constructor procedure.  This is useful in conjunction with database access.
 
@@ -228,7 +228,7 @@ Please note that copies of mutable types are considered as distinct values.
 
 ### = Tables =
 
-Tables (mutable) are structures where values are indexed by unique keys.  Syntactically they look a lot like lists indexed by arbitrary values.  Tables are one of the most commonly used and powerful features of Icon/Unicon.  
+Tables (mutable) are structures where values are indexed by unique keys.  Syntactically they look a lot like lists indexed by arbitrary values.  Tables are one of the most commonly used and powerful features of Icon/Unicon.
 
 ```Icon
    T := table(0)           # table with default 0 values
@@ -238,7 +238,7 @@ Tables (mutable) are structures where values are indexed by unique keys.  Syntac
 
 ==== co–expressions ====
 
-Co-expressions are a way of encapsulating code and state outside of the bounds of the normal program flow and scope. They can be used to create co-routines.  Co-routines are created in a dormant state and can be passed around, copied and rewound, and invoked or activated anywhere within a program.  
+Co-expressions are a way of encapsulating code and state outside of the bounds of the normal program flow and scope. They can be used to create co-routines.  Co-routines are created in a dormant state and can be passed around, copied and rewound, and invoked or activated anywhere within a program.
 
 One of the most powerful aspects of co-expressions is the ability to use them to produce programmer defined control operations (PDCO).
 
@@ -270,7 +270,7 @@ Unicon allows for user defined class and method definitions. Individual instance
 Files and windows (mutable) allow Icon/Unicon to interface with the operating system.  Operations on files and windows have side effects and they are considered mutable. Sockets and pipes are also implemented as "files".
 
 
-###  Keywords 
+###  Keywords
 
 Icon and Unicon has a list of special variables known as keywords.  Syntactically, keywords are variable names preceded by an &.
 
@@ -278,7 +278,7 @@ Keywords can be used to inquire about the current state of the program, as const
 
 == Operators and Procedures ==
 
-###  Intuitive Generalizations 
+###  Intuitive Generalizations
 
 
 One of the strengths of Icon/Unicon is that for the most part operators work on intuitive level across types yielding results that make sense.  Examples, include:
@@ -291,7 +291,7 @@ One of the strengths of Icon/Unicon is that for the most part operators work on 
 This philosophy is continued in many of the built-in functions.
 
 
-###  Strong Typing through Operators 
+###  Strong Typing through Operators
 
 
 Icon/Unicon has variously been described as an untyped or strongly typed langauge depending upon the perspective of the observer.  Consider the following examples:
@@ -315,13 +315,13 @@ Icon/Unicon has variously been described as an untyped or strongly typed langaug
 Additionally, the strong typing is supported by safe data types.
 
 
-###  Coercion: Implicit Type Conversions 
+###  Coercion: Implicit Type Conversions
 
 
 Icon/Unicon performs implicit type conversions (called coercion) where it makes sense to do so.  At the same time dangerous coercions are disallowed.   Details of these coercions are covered under the topic of [[Icon+Unicon/Intro#DataTypes|Data Types]].  Where a coercion is not possible, a run-time error is generated.
 
 
-###  Lists of Operators 
+###  Lists of Operators
 
 
 In the lists below the following represent data by type:
@@ -329,7 +329,7 @@ In the lists below the following represent data by type:
 : s - string
 : n - numeric
 : i - integer
-: c - cset 
+: c - cset
 : S - set (or cset)
 : C - co-expression
 : v - variable
@@ -363,7 +363,7 @@ In the lists below the following represent data by type:
   /x           # null test
   \x           # non null test
   +n           # number (forces conversion)
-  -n           # negate number 
+  -n           # negate number
   =s           # tab(match(s))
   *x           # size
   .x           # dereference to value
@@ -386,14 +386,14 @@ In the lists below the following represent data by type:
   S ** S       # intersection
   S ++ S       # union
   S -- S       # difference
- 
+
   n = n        # equal
   n ~= n       # unequal
   n < n        # less than
   n <= n       # less than or equal
   n > n        # greater than
   n >= n       # greater than or equal
-  
+
   s == s       # equal
   s ~== s      # unequal
   s << s       # less than
@@ -450,10 +450,10 @@ Note that some documentation indicates x1 |:= x2 exists, but it isn't implemente
 At the core of the design of Icon/Unicon are a series of features that contribute to the power of the language.  These features set Icon/Unicon apart from many traditional procedural languages.
 
 
-###  Failure is an Option 
+###  Failure is an Option
 
 
-Expression failure is a signal that cannot be ignored and is used to control program flow whether with operators, control structures, or procedures.  Failure effectively short circuits the evaluation of the expression and forces processing into an alternate path if any exists. 
+Expression failure is a signal that cannot be ignored and is used to control program flow whether with operators, control structures, or procedures.  Failure effectively short circuits the evaluation of the expression and forces processing into an alternate path if any exists.
 
 This differs from the approach of many traditional procedural languages in which comparison operators return a true/false value. No value is associated with failure.  It also means that evaluation of an expression will be force you onto the correct logic path.
 
@@ -476,12 +476,12 @@ end
 
 === Everything Returns a Value Except when it Doesn't ===
 
-In Icon/Unicon just about everything expression returns a value (unless it fails).  
+In Icon/Unicon just about everything expression returns a value (unless it fails).
 
 For example:
 
-```Icon>   d := if a 
- b then a - b else b - a      # returns the positive difference of a and b
+```Icon
+   d := if a > b then a - b else b - a      # returns the positive difference of a and b
    d := a - (a > b) | b - a                 # is equivalent
 ```
 
@@ -491,7 +491,7 @@ In the above example the expression, a > b, either succeeds returning b or fails
 A second consequence of comparison operators returning values rather than a true/false is that you can write expressions like these:
 
 ```Icon
-  i < j < k      # succeeds returning k, if i < j < k 
+  i < j < k      # succeeds returning k, if i < j < k
   (i < j) < k    # shows more clearly how this works.  Note if i < j fails the expression fails and nothing further is evaluated
 ```
 
@@ -516,12 +516,12 @@ Icon and Unicon provide a variety of operators, control structures, and procedur
 Another way of looking at it is to understand that every expression can yield a ''result sequence'' and any code using this expression may choose to ask for more results, gather them into a container or aggregate, or choose to use one value and then move on without asking for all possible results.
 
 
-###  No Spaghetti 
+###  No Spaghetti
 
 The clue's in the title. There is no 'goto' in Icon/Unicon.
 
 
-###  Procedure Controls 
+###  Procedure Controls
 
 
 ### =procedure=
@@ -539,7 +539,7 @@ end
 
 ### =fail=
 
-Causes the the enclosing procedure to terminate without returning value. This is different from returning void or a null value that many other languages do when the code does not return an actual value. 
+Causes the the enclosing procedure to terminate without returning value. This is different from returning void or a null value that many other languages do when the code does not return an actual value.
 
 
 ```Icon
@@ -562,7 +562,7 @@ Suspend is semantically similar to 'return' with the exception that it sets up t
 A procedure can contain several uses of ''suspend'' and it's quite reasonable for the procedure to execute many of them in any chosen order.
 
 
-###  Selection Controls / Control Structures 
+###  Selection Controls / Control Structures
 
 All Icon and Unicon expressions, including control structures, yield results or signal failure. (Text from [[Conditional_structures#Icon_and_Unicon|Conditional Structures]]).
 
@@ -571,9 +571,9 @@ All Icon and Unicon expressions, including control structures, yield results or 
 Icon/Unicon has an if then else expressions.  Like many languages the else is optional.  The control structure evaluates expr1 if expr0 succeeds and expr2 if it fails.  Braces  are required if multiple expressions lines are needed.
 
 ```Icon
-if expr0 then 
+if expr0 then
    expr1
-else 
+else
    expr2
 ```
 
@@ -657,7 +657,7 @@ The alternate form of conjunction can be modified to produce a different result 
    expr0(expr1, expr2, expr3)
 ```
 
-For example: 
+For example:
 
 ```Icon
    2(expr1, expr2, expr3)
@@ -674,7 +674,7 @@ A more complicated example showing non-constant expressions:
 Note: if expr0 yields a value of type 'procedure' or 'string' the appropriate procedure (or operator) is invoked.
 
 
-###  Looping Controls 
+###  Looping Controls
 
 
 
@@ -711,19 +711,21 @@ Break is used to break out of or exit from one or more enclosing loops.  By defa
 ```Icon
    x := while expression1 do {
       ...
-      if expression2 then break "1" 
-      }    # x will be the string "1" 
+      if expression2 then break "1"
+      }    # x will be the string "1"
 ```
 
 
 Break can be used consecutively to break out of nested loops, such as in:
 
 
-```Icon>    break break next</lang
+```Icon
+break break next
+```
 
 
 
-###  Signals and Exceptions 
+###  Signals and Exceptions
 
 
 ### = stop =
@@ -766,7 +768,7 @@ Errors can be thrown like this:
 === Co-expression Flow ===
 Co-expressions are an extremely powerful mechanism for program flow control that provide parallel execution.  Consequently, co-expressions facilitate flows that can be radically different from what would normally be expected in procedural languages.  Understanding, really understanding at a gut level, how these works comes with experience.
 
-Among other uses, co-expressions can be used to implement: 
+Among other uses, co-expressions can be used to implement:
 * co-routines
 * programmer defined control objects (PDCOs)
 * result sequences
@@ -787,12 +789,12 @@ And while the original motivations for co-expressions was to facilitate co-routi
 
 ==== Co-Expression Articles and References ====
 
-Steve Wampler's "Fun With Co-Expressions" articles in The Generator 
+Steve Wampler's "Fun With Co-Expressions" articles in The Generator
 * [http://www.unicon.org/generator/TheGeneratorVol1No1Letter.pdf "Fun With Co-Expressions, part 1"]
 * [http://www.unicon.org/generator/v2n1.pdf "Fun With Co-Expressions, part 2"]
 * [http://www.unicon.org/generator/v2n2.pdf "Fun With Co-Expressions, part 3"]
 
-Other articles 
+Other articles
 * [http://www.drones.com/coexp/ Shamim Mohamed's article on co-expressions]
 
 
@@ -815,7 +817,7 @@ The following Unicon example is taken from the Rosetta Code task  [[Function_com
 
 procedure compose(fL[])   #: compose(f1,f2,...) returns the functional composition of f1,f2,... as a co-expression
     ...
-    fL := reverse(fL)                                    # reverse and isolate from mutable side-effects 
+    fL := reverse(fL)                                    # reverse and isolate from mutable side-effects
     cf := create {  saveSource := &source                # don't forget where we came from
                     repeat {
                         x := (x@saveSource)[1]           # return result and resume here
@@ -837,12 +839,12 @@ Explanation:
 * After completing the core of the procedure (apply) the co-expression cycles and waits for another value.  There is no obvious '''return''' or completion step.  This co-expression never terminates and never needs to be refreshed.
 
 == Contractions ==
-Icon/Unicon have a rich set of [[Icon%2BUnicon/Intro#Binary_.28and_Augmented.29|augmented operators]] operators which when combined with the fact that all successful expressions produce values makes possible contractions.  These appeal of these is somewhat a question of style and if taken to extremes there is also the possibility of being overtaken by one-liners.  Having said that Icon/Unicon contractions are hardly in the same league as those of [[APL]] or [[J]].  A number of examples are presented below. 
+Icon/Unicon have a rich set of [[Icon%2BUnicon/Intro#Binary_.28and_Augmented.29|augmented operators]] operators which when combined with the fact that all successful expressions produce values makes possible contractions.  These appeal of these is somewhat a question of style and if taken to extremes there is also the possibility of being overtaken by one-liners.  Having said that Icon/Unicon contractions are hardly in the same league as those of [[APL]] or [[J]].  A number of examples are presented below.
 
-These examples initializes sum and adding all the contents of arglist.  
+These examples initializes sum and adding all the contents of arglist.
 
 ```Icon
-sum := 0                                             # initial and                            
+sum := 0                                             # initial and
 every sum +:= !arglist do something()                #    loop in two statements
 
 sum := 0; every sum +:= !arglist do something()      # ; splice
@@ -865,7 +867,7 @@ Examples of using program control structures in expressions:
 ```Icon
    (if i > j then i else j) := 0     # sets the larger of i and j to 0
 
-   d := if a > b then a-b else b-a   # sets d to the positive difference of a and b 
+   d := if a > b then a-b else b-a   # sets d to the positive difference of a and b
 
    x := case expr of {
       1: "Text 1"
@@ -890,9 +892,8 @@ The following may vary well be the most common contraction used in Icon/Unicon, 
 
 The following contraction can be used to do work in a conditional control structure. It takes advantage of the fact that comparison operators return results or fail.   The only caveat is that the rest of the expression must not 'fail'.  Note also this will not work with 'every'.
 
-
-```Icon>while m 
- 0 do {  # separate condition and statement
+```Icon
+while m > 0 do {  # separate condition and statement
    x := m + b
    ...
    }
@@ -927,12 +928,12 @@ end
 This is probably only lovable by J programmers.
 
 
-###  An Ugly Example 
+###  An Ugly Example
 
 
 The following procedure "IsFilled" was taken from the [[Sierpinski_carpet#Icon_and_Unicon|Sierpinski Carpet task]]:
 ```Icon
-procedure IsFilled(x,y).  It has the benefit of being clear.  It makes use of only a few natural contractions, augmented division and chaining of comparison operators.  
+procedure IsFilled(x,y).  It has the benefit of being clear.  It makes use of only a few natural contractions, augmented division and chaining of comparison operators.
    while  x ~= 0 & y ~= 0 do {
       if x % 3 = y %3 = 1 then fail
       x /:= 3
@@ -948,7 +949,7 @@ We can transform this.  Even if this result isn't helpful, understanding what ca
 Firstly, we can rewrite the while condition in the following ways:
 ```Icon
 while  x ~= 0 & y ~= 0 do {                # original
-until not ( x ~= 0 & y ~= 0) do {          # inverted 
+until not ( x ~= 0 & y ~= 0) do {          # inverted
 every | (0 = (x|y) & break) | &null do {   # converted to an every loop (but incomplete)
 ```
 
@@ -967,16 +968,16 @@ The failing condition can also be converted as in these examples:
 The ''do'' part can be converted using conjunction.
 ```Icon
 
-      x /:= 3                              # original 
-      y /:=3                               # ... 
+      x /:= 3                              # original
+      y /:=3                               # ...
       ( x /:= 3 & y /:=3 )                 # contracted
 ```
 
 
 Putting these together and eliminating the trailing ''return'' in favor of the default fail at end, we get the rather odd looking:
 ```Icon
-procedure IsFilled(x,y)        
-   every | ( (0 = (x|y) & return) | &null, 
+procedure IsFilled(x,y)
+   every | ( (0 = (x|y) & return) | &null,
              (( x % 3 = y %3 = 1) & break ) | &null,
              ( x /:= 3 & y /:=3 ) )
 end
@@ -987,10 +988,10 @@ It's tempting to remove the ''| &null'' choices and convert the conjunction ''(e
 
 The alternations with &null can be eliminated by rewiring the path of alternatives with not expressions:
 ```Icon
-procedure IsFilled(x,y)        
-   every | (not (0 = (x|y), return)) & 
-           (not ( x % 3 = y %3 = 1, break )) & 
-           ( x /:= 3 & y /:=3 ) 
+procedure IsFilled(x,y)
+   every | (not (0 = (x|y), return)) &
+           (not ( x % 3 = y %3 = 1, break )) &
+           ( x /:= 3 & y /:=3 )
 end
 ```
 
@@ -1006,7 +1007,7 @@ The need for alternation with &null may require some explaining.  Repeated alter
 ```
 
 
-The additional alternations are required to prevent the expression from running out of results.  Part of this is due to the use of ''return'' and ''break'' to exit the loop preventing further results being generated.  
+The additional alternations are required to prevent the expression from running out of results.  Part of this is due to the use of ''return'' and ''break'' to exit the loop preventing further results being generated.
 
 The loop can be abstracted so:
 
@@ -1039,7 +1040,7 @@ Yet, in this example:
 
 ```Icon
 ...
-suspend &fail         # &fail fails and suspend fails 
+suspend &fail         # &fail fails and suspend fails
 write("Surprise!")    # this time this IS executed, and the procedure fails when it runs into the 'end' statement
 end
 ```
@@ -1058,15 +1059,15 @@ As one can see this is less about the behavior of &fail as it is about the behav
 
 ```Icon
 
-#  The outcome of a looping expression such as 
+#  The outcome of a looping expression such as
 
    while expr1 do expr2
 
-#  need not be failure. If a break expression in either expr1 or expr2 is evaluated, 
+#  need not be failure. If a break expression in either expr1 or expr2 is evaluated,
 #  the outcome of the looping expression is the outcome of the argument of the break expression.
 
-# It is common to omit the argument of a break expression. In this case, the argument defaults to a null value. 
-# Consequently, if the break expression in 
+# It is common to omit the argument of a break expression. In this case, the argument defaults to a null value.
+# Consequently, if the break expression in
 
    while expr1 do {
    . . .
@@ -1074,8 +1075,8 @@ As one can see this is less about the behavior of &fail as it is about the behav
    . . .
    }
 
-#  is evaluated, the outcome of the looping expression is the null value. 
-#  In fact, if this effect is not wanted, 
+#  is evaluated, the outcome of the looping expression is the null value.
+#  In fact, if this effect is not wanted,
 
    break &fail
 
@@ -1094,7 +1095,7 @@ Unicon and Icon don't require you insert semi-colons as line terminators like so
 ```Icon
    x := 1; y := 2; z:= -3    # 1st case
    s3 := s1 ||
-         s2                  #   2nd case - like this 
+         s2                  #   2nd case - like this
    s3 := s1
       || s2                  #   ...        not this
 ```
@@ -1139,9 +1140,9 @@ The defaults for [http://unicon.org/utr/utr7.html Unicon are documented in UTR7]
 
 Several keywords are available that provide information on memory allocations:
 * &allocated - total memory allocated (bytes) - - generating ( total, static, string region, block region )
-* &collections - number of times the garbage collector has reclaimed memory ( total, static region, string region, block region).  
-* &regions - current memory size- generating ( static, string region, block region ).  
-* &storage - current memory used - generating ( static, string region, block region ). 
+* &collections - number of times the garbage collector has reclaimed memory ( total, static region, string region, block region).
+* &regions - current memory size- generating ( static, string region, block region ).
+* &storage - current memory used - generating ( static, string region, block region ).
 
 Note: the value produced for static should always be 0 and is left for program compatibility. Sometimes you can see a non-zero number for static region collections (these are considered phantom collections - and this may have been fixed).
 
@@ -1149,9 +1150,9 @@ Note: the value produced for static should always be 0 and is left for program c
 
 The purpose of this section is to capture some of the langauge differences at a detailed level. '''Note: this is not a complete list'''
 
-== Major Differences == 
+== Major Differences ==
 
-###  Classes and Objects 
+###  Classes and Objects
 
 
 ```Unicon
@@ -1182,7 +1183,7 @@ end
 There are numerous minor differences between Icon and Unicon and they are not rigorously documented.  See [http://unicon.org/generator/ The Generator articles entitled: Under-documented Unicon] for more information or contribute below.
 
 === Co-expression Calling ===
-With co-expression ce,  the following pairs of activations are equivalent in Unicon: 
+With co-expression ce,  the following pairs of activations are equivalent in Unicon:
 
 ```Unicon
    []@ce          # sends a list to co-expression ce both Icon and Unicon
@@ -1193,7 +1194,7 @@ With co-expression ce,  the following pairs of activations are equivalent in Uni
 
 
 
-###  Procedure Parameter Type Casting 
+###  Procedure Parameter Type Casting
 
 Unicon procedure definitions allow for specification of type coercion functions and default values.  There are currently two cases:
 * for records and structures the type of the parameter is tested
@@ -1204,20 +1205,20 @@ procedure f1(i:integer:1,r:real,s:string,n:numeric,S:set,L:list,x:myrecordtype)
 ```
 
 
-=== Event monitoring and cross-co-expression introspection === 
+=== Event monitoring and cross-co-expression introspection ===
 Unicon extends a number of procedures with extra parameters that default to the current co-expression and the current call level.
 
 ```Unicon
    name(s)             # Icon - return variable name
-   name(s,C)           # Unicon 
-   variable(s)         # Icon - local/global variable may be read or set 
+   name(s,C)           # Unicon
+   variable(s)         # Icon - local/global variable may be read or set
    variable(s, C, i)   # Unicon - extended to access co-expression C and i levels up the call chain
 
 ```
 
 
 
-###  Procedures with Extended Domains 
+###  Procedures with Extended Domains
 
 Unicon extended the behavior of a number of procedures.
 
@@ -1226,7 +1227,7 @@ Unicon extended the behavior of a number of procedures.
 ```
 
 == The Unicon Pre-processor ==
-Unicon implements some of its functionality in the translator (icont) and the rest in the pre-processor (unicon).  The pre-processor is typically used for syntactic enhancements like objects and parameter type checking.  
+Unicon implements some of its functionality in the translator (icont) and the rest in the pre-processor (unicon).  The pre-processor is typically used for syntactic enhancements like objects and parameter type checking.
 
 If you are interested in seeing the code generated by the pre-processor, try the following command:
 

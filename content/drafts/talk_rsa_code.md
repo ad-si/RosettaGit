@@ -258,7 +258,8 @@ I may simply be naive, but it seems to me that the example doesn't code "hi ther
 :I should perhaps also note that I cannot get the python example to work.  It fails for me with the message <code>ImportError: No module named tkinter</code>.  But these work for me:
 
 :
-```python>>>
+```python
+>>>
  import _tkinter
 >>> import Tkinter
 >>> Tkinter._test()

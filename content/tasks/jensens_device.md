@@ -723,7 +723,8 @@ i 1 100 [ recip ] sum .
 This version passes i on the stack:
 
 
-```forth>: sum 0 s
+```forth
+: sum 0 s
 f 1+ swap ?do i over execute f+ loop drop ;
 :noname s>f 1 s>f fswap f/ ; 1 100 sum f.
 ```
@@ -1770,7 +1771,8 @@ public num Jenssen(int lo, int hi, num (int i) term){
 With as output:
 
 
-```rascal>rascal
+```rascal
+rascal>
 Jenssen(1, 100, num(int i){return 1.0/i;})
 num: 5.18737751763962026080511767565825315790897212670845165317653395662
 ```
@@ -1810,7 +1812,8 @@ using  100  decimal digits:
 ```
 
 (Shown at three-quarter size    and   with 200 characters per line.)
-<pre style="font-size:75%">
+
+```txt
 using  1000  decimal digits:
 
 5.187377517639620260805117675658253157908972126708451653176533956587219557532550496605687768923120413552951372900080959485764334902003859251284547479399606488677719356437701034351417501628003612133813

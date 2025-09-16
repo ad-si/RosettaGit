@@ -3531,7 +3531,8 @@ Despite the discussion, this task is still a bit ambiguous. I've taken it that
 What we end up with after processing rosetta.config are three VARs and a LST, named FAVOURITEFRUIT, FULLNAME, NEEDSPEELING and OTHERFAMILY respectively.
 
 
-```sgml><@ DEFUDRLIT
+```sgml
+<@ DEFUDRLIT>
 __ReadConfigurationFile|
 	<@ LETSCPPNTPARSRC>Data|1</@><@ OMT> read file into locally scope variable</@>
 	<@ LETCGDLSTLLOSCP>List|Data</@><@ OMT> split Data into a list of lines </@>

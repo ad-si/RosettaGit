@@ -13,7 +13,9 @@ tags = []
 {{stub}}Perl bindings for MediaWiki, as with all extensions to Perl, are provided as Perl modules, which are included using the '''use''' keyword, optionally followed by a list of symbols from the module that you might want to import into your local namespace.
 
 
-```perl>use MediaWiki::API;</lang
+```perl
+use MediaWiki::API;
+```
 
 
 There are at least two Perl bindings for interacting with MediaWiki, [[Rosetta Code:API/MediaWiki/Perl/MediaWiki::API|MediaWiki::API]] and [[Rosetta Code:API/MediaWiki/Perl/MediaWiki::Bot|MediaWiki::Bot]].  MediaWiki::Bot provides bot-specific abstractions to MediaWiki::API.  Both modules area available via [[CPAN]].

@@ -208,7 +208,7 @@ EM12     DC     X'40',9X'20',X'2120'  mask CL12 11num
          END    OCTAL
 ```
 
-<pre style="height:20ex">
+```txt
            0 00000000000
            1 00000000001
            2 00000000002
@@ -231,7 +231,6 @@ EM12     DC     X'40',9X'20',X'2120'  mask CL12 11num
   2147483645 17777777775
   2147483646 17777777776
   2147483647 17777777777
-
 ```
 
 
@@ -828,7 +827,8 @@ int main()
 
 ## COBOL
 
-```cobol>       >
+```cobol
+       >
 SOURCE FREE
 IDENTIFICATION DIVISION.
 PROGRAM-ID. count-in-octal.
@@ -2666,7 +2666,8 @@ w=length(sourceline())                 /*used for formatting width of #s*/
 ```
 
 '''output'''
-<pre style="height:30ex">
+
+```txt
            number in base ten =   0            number in octal =     0
            number in base ten =   1            number in octal =     1
            number in base ten =   2            number in octal =     2

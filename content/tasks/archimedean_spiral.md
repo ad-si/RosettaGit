@@ -1553,7 +1553,9 @@ sin:   procedure; parse arg x;  x= r2r(x);        numeric fuzz min(5, max(1, dig
 {{out|output|text=  when using the following inputs:   <tt>   13   ,   5   ,   db </tt>}}
 
 (Output is shown at   '''<sup>1</sup>/<sub>20</sub>'''   size.)
-<pre style="font-size:5%">
+
+```txt
+
                                                                                                 █ █ █ ██ █
                                                                                       █ █ █ █ █            █ █ █ █ █
                                                                                 █ █ █                                █ █

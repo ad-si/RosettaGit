@@ -815,7 +815,8 @@ Saturday, January 14, 2012
 ## ColdFusion
 
 
-```cfm><cfoutput
+```cfm
+<cfoutput
 
     #dateFormat(Now(), "YYYY-MM-DD")#<br />
     #dateFormat(Now(), "DDDD, MMMM DD, YYYY")#
@@ -1059,7 +1060,8 @@ Wednesday, September 26, 2012
 =={{header|F_Sharp|F#}}==
 "F# Interactive" session:
 
-```fsharp>
+```fsharp
+
  open System;;
 > Console.WriteLine( DateTime.Now.ToString("yyyy-MM-dd") );;
 2010-08-13
@@ -1227,14 +1229,16 @@ CREATE DAYS
 
 \ Rosetta Date Format 2
 : LONG.DATE ( d m y -- )
-    3DUP CDAY DOW ]DAY$. ',' -ROT ]MONTH$. SPACE ##.  ','  ####.  ;</LANG>
+    3DUP CDAY DOW ]DAY$. ',' -ROT ]MONTH$. SPACE ##.  ','  ####.  ;
+```
 
 
 Test at the Forth Console
 <LANG FORTH> 5 7 2018 Y-M-D. 2018-07-05 ok
   ok
 5 7 2018 LONG.DATE Thursday, July 05, 2018 ok
-</LANG>
+
+```
 
 
 ## Fortran
@@ -1768,7 +1772,8 @@ DateString[{"DayName", ", ", "MonthName", " ", "Day", ", ", "Year"}]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-```MATLAB>>
+```matlab
+>
  datestr(now,'yyyy-mm-dd')
 
 ans =
@@ -2547,7 +2552,9 @@ Tuesday, April  2, 2013
 ## Raven
 
 
-```raven>time int as today</lang
+```raven
+time int as today>
+```
 
 
 Short form:

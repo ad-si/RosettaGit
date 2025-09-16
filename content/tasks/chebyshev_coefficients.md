@@ -800,7 +800,8 @@ Approximations:
 
 ## Perl
 
-```perl>use constant PI =
+```perl
+use constant PI =
  3.141592653589793;
 
 sub chebft {

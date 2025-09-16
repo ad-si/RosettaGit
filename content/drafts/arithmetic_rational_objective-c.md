@@ -13,7 +13,8 @@ tags = []
 <noinclude>{{collection|Rational Arithmetic}}</noinclude>
 ;File <tt>frac.h</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface RCRationalNumber : NSObject
@@ -64,7 +65,8 @@ tags = []
 
 ;File <tt>frac.m</tt>
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 #import <math.h>
 #import "frac.h"
@@ -131,7 +133,7 @@ static int lcm(int a, int b)
 -(NSString *)description
 {
   [self simplify: [self autoSimplify]];
-  return [NSString stringWithFormat: @"%@%d/%d", [self isNegative] ? @"-" : 
+  return [NSString stringWithFormat: @"%@%d/%d", [self isNegative] ? @"-" :
 		     ( [self withSign] ? @"+" : @"" ),
 		   abs([self numerator]), [self denominator]];
 }
@@ -182,7 +184,7 @@ static int lcm(int a, int b)
 {
   return [self multiply: [rnum reciprocal]];
 }
- 
+
 -(id)add: (RCRationalNumber *)rnum
 {
   int common = lcm([self denominator], [rnum denominator]);
@@ -198,7 +200,7 @@ static int lcm(int a, int b)
 
 -(id)mod: (RCRationalNumber *)rnum
 {
-  return [[self divide: rnum] 
+  return [[self divide: rnum]
 	   sub: [RCRationalNumber valueWithInteger: [[self divide: rnum] integer]]];
 }
 
@@ -293,7 +295,8 @@ static int lcm(int a, int b)
 
 ;Testing
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 #import "frac.h"
 #import <math.h>

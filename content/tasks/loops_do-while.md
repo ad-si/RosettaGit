@@ -694,7 +694,8 @@ quit
 ## Befunge
 
 
-```befunge>0
+```befunge
+0>
 1+:.v
  |%6: <
  @
@@ -839,7 +840,8 @@ loop
 ## ColdFusion
 
 
-```cfm><cfscript
+```cfm
+<cfscript>
 
   value = 0;
   do
@@ -998,7 +1000,9 @@ And if the block is defined as a named function:
 Result:
 
 
-```DUP>1 2 3 4 5 6</lang
+```DUP
+1 2 3 4 5 6>
+```
 
 
 
@@ -2683,7 +2687,8 @@ until( mod(val, 6) == 0 )
 
 
 
-```Oforth>0 doWhile: [ 1+ dup . dup 6 rem 0 <
+```oforth
+0 doWhile: [ 1+ dup . dup 6 rem 0 <>
  ] drop
 ```
 

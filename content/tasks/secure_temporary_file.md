@@ -782,7 +782,8 @@ In both cases, the temporary file will be deleted automatically when the file is
 
 
 
-```python>>>
+```python
+>>>
  import tempfile
 >>> invisible = tempfile.TemporaryFile()
 >>> invisible.name

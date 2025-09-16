@@ -881,7 +881,9 @@ if x == nil {
 
 
 
-```e>object == null</lang
+```e
+object == null
+```
 
 
 
@@ -1747,7 +1749,9 @@ numelems(b);
 
 Mathematica can assign a Null value to a symbol, two examples:
 
-```Mathematica>x=Null;</lang
+```mathematica
+x=Null;>
+```
 
 
 ```Mathematica
@@ -1764,7 +1768,9 @@ SameQ[x,Null]
 
 Or equivalent:
 
-```Mathematica>x===Null</lang
+```mathematica
+x===Null>
+```
 
 will give back True if and only if x is assigned to be Null. If x is empty (nothing assigned) this will return False.
 To test if an object has something assigned (number, list, graphics, null, infinity, symbol, equation, pattern, whatever) one uses ValueQ:
@@ -1831,11 +1837,15 @@ In Modula-3, <code>NIL</code> is a value, and <code>NULL</code> is a type.  The 
 
 This can lead to errors, if for example you write:
 
-```modula3>VAR foo := NIL</lang
+```modula3
+VAR foo := NIL
+```
 
 This (most likely incorrectly) gives foo the type <code>NULL</code>, which can only have the value <code>NIL</code>, so trying to assign it anything else will not work.  To overcome this problem, you must specify the reference type when declaring foo:
 
-```modula3>VAR foo: REF INTEGER := NIL;</lang
+```modula3
+VAR foo: REF INTEGER := NIL;
+```
 
 
 ```modula3
@@ -2718,7 +2728,9 @@ say defined(null_obj);      # true
 
 
 
-```slate>Nil isNil = True.</lang
+```slate
+Nil isNil = True.>
+```
 
 
 
@@ -2761,7 +2773,8 @@ datatype 'a option = NONE | SOME of 'a
 ```
 
 
-```sml>case v of NONE =
+```sml
+case v of NONE =>
  "unbound value"
         | SOME _ => "bounded value"
 ```
@@ -2773,7 +2786,9 @@ datatype 'a option = NONE | SOME of 'a
 Swift has <code>Optional<T></code> type, where <code>nil</code> means a lack of value.
 <code>T?</code> is syntactic sugar for <code>Optional<T></code>.
 
-```swift>let maybeInt: Int? = nil</lang
+```swift
+let maybeInt: Int? = nil
+```
 
 To just check if variable is nil, you can use <code>==</code> operator.
 

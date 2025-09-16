@@ -98,7 +98,8 @@ Short & shrift
 
 Should produce the XML (but not necessarily with the indentation):
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
     <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
     <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>
@@ -288,7 +289,8 @@ print( ( generate character remarks document( ( "April", "Tam O'Shanter", "Emily
 
 ```
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 <Character name="April">Bubbly: I&apos;m &gt; Tam and &lt;= Emily</Character>
 <Character name="Tam O&apos;Shanter">Burns: &quot;When chapman billies leave the street ...</Character>
 <Character name="Emily">Short &amp; shrift</Character>
@@ -1384,7 +1386,8 @@ func main() {
 }
 ```
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
     <Character name="April">Bubbly: I&#39;m &gt; Tam and &lt;= Emily</Character>
     <Character name="Tam O&#39;Shanter">Burns: &#34;When chapman billies leave the street ...&#34;</Character>
@@ -1811,7 +1814,8 @@ fun main(args: Array<String>) {
 ```
 
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
     <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
     <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>
@@ -1900,7 +1904,8 @@ addNode(root, "Character", "name", "Emily", "Short & shrift")
 print(root)
 ```
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
   <Character name="April">Bubbly: I&apos;m &gt; Tam and &lt;= Emily</Character>
   <Character name="Tam O&apos;Shanter">Burns: &quot;When chapman billies leave the street ...&quot;</Character>
@@ -1915,7 +1920,8 @@ xmlStr = xml.str(root):gsub("&apos;", "'"):gsub("&quot;", '"')
 print(xmlStr)
 ```
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
   <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
   <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>
@@ -2434,7 +2440,8 @@ my @lines = map { :Character[:name(.[0]), .[1]] }, @students;
 say XML::Writer.serialize( CharacterRemarks => @lines );
 ```
 
-```XML><CharacterRemarks
+```XML
+<CharacterRemarks>
 <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
 <Character name="Tam O'Shanter">Burns: &quot;When chapman billies leave the street ...&quot;</Character>
 <Character name="Emily">Short &amp; shrift</Character></CharacterRemarks>
@@ -2603,7 +2610,8 @@ reet ..."</Character>
 
 Normal output is all one line of XML, the .replace(...) makes it more readable.
 
-```python>>>
+```python
+>>>
  from xml.etree import ElementTree as ET
 >>> from itertools import izip
 >>> def characterstoxml(names, remarks):
@@ -2622,7 +2630,8 @@ Normal output is all one line of XML, the .replace(...) makes it more readable.
 
 Gives the output:
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
 <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
 <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>
@@ -2734,7 +2743,8 @@ public void xmloutput(list[str] n,list[str] r){
 
 This gives an output:
 
-```rascal>rascal
+```rascal
+rascal>
 xmloutput(charnames, remarks)
 <?xml version="1.0" encoding="UTF-8"?>
 <CharacterRemarks>
@@ -3026,7 +3036,8 @@ characterRemarks(names, remarks)
 
 Result:
 
-```xml><CharacterRemarks
+```xml
+<CharacterRemarks>
 
   <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character><Character name="Tam O'Shanter">Burns:
 &quot;When chapman billies leave the street ...&quot;</Character><Character name="Emily">Short &amp; shrift</Character>

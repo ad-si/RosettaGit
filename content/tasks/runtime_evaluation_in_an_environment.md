@@ -1224,7 +1224,8 @@ Result: 100
 
 
 
-```python>>>
+```python
+>>>
  def eval_with_x(code, a, b):
 	return eval(code, {'x':b}) - eval(code, {'x':a})
 
@@ -1235,7 +1236,8 @@ Result: 100
 
 A slight change allows the evaluation to take multiple names:
 
-```python>>>
+```python
+>>>
  def eval_with_args(code, **kwordargs):
 	return eval(code, kwordargs)
 

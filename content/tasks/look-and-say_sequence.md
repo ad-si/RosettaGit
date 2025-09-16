@@ -715,7 +715,8 @@ No ugly int-to-string-and-back conversions.
        (mapcat (juxt count first)) join-digits))
 ```
 
-```clojure>user
+```clojure
+user>
  (take 8 (iterate look-and-say 1))
 (1 11 21 1211 111221 312211 13112221 1113213211)
 ```
@@ -2530,7 +2531,8 @@ LookAndSay()
 =={{header|Objective-C}}==
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 -(NSString*)lookAndSay:(NSString *)word{
@@ -2588,7 +2590,8 @@ let rec seeAndSay = function
 
 It can be used like this:
 
-```ocaml>
+```ocaml
+>
  let gen n =
     let xs = Array.create n [1] in
     for i=1 to n-1 do
@@ -3427,7 +3430,8 @@ for i in range(10):
 
 
 Functional
-```python>>>
+```python
+>>>
  from itertools import groupby
 >>> def lookandsay(number):
 	return ''.join( str(len(list(g))) + k
@@ -3457,7 +3461,8 @@ Functional
 '''As a generator'''
 
 
-```python>>>
+```python
+>>>
  from itertools import groupby, islice
 >>>
 >>> def lookandsay(number='1'):

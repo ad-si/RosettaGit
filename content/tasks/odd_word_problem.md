@@ -587,7 +587,8 @@ we,era,not,ni,kansas;yna,more.
 Examples:
 
 
-```clojure>user=
+```clojure
+user=>
  (odd-word "what,is,the;meaning,of:life.")
 what,si,the;gninaem,of:efil.
 nil

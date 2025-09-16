@@ -1617,7 +1617,8 @@ ASCII:    )z8i9aKNsFwas#bB}PT
 
 Peloton has a native instruction for removing control codes from a string, SAL, the Low ASCII Strip. From the manual:
 
-```sgml>Create variable with control characters: <@ SAYLETVARLIT
+```sgml
+Create variable with control characters: <@ SAYLETVARLIT>
 i|This string has control characters
 	-	-	-	-	-	-
 
@@ -1631,7 +1632,8 @@ Reflexive assign <@ ACTSALVAR>i</@> <@ SAYVAR>i</@>
 
 Peloton also has SAH, High ASCII Strip. Again, from the manual:
 
-```sgml>Create variable with high and low ANSI: <@ SAYLETVARLIT
+```sgml
+Create variable with high and low ANSI: <@ SAYLETVARLIT>
 i|This string has both low ansi and high ansi characters - il doit d'être prévenu</@>
 Strip high  ANSI <@ SAYSAHVAR>i</@>
 Assign infix <@ LETVARSAHVAR>j|i</@> <@ SAYVAR>j</@>

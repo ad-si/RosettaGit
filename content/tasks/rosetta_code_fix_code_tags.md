@@ -73,7 +73,8 @@ Change </code> to
 ## AutoHotkey
 
 
-```AutoHotkey>; usage:
+```AutoHotkey
+; usage:>
  fixtags.ahk input.txt ouput.txt
 FileRead, text, %1%
 langs = ada,awk,autohotkey,etc
@@ -141,11 +142,16 @@ void main() {
 
 ```txt
 lorem ipsum
-```c>some c code</lang
+```c
+some c code>
+```
 dolor sit amet,
-```csharp>some csharp code</lang
+```csharp
+some csharp code
+```
  consectetur adipisicing elit,
-```r> some r code
+```r
+ some r code>
 ```
 sed do eiusmod tempor incididunt</pre
 
@@ -209,17 +215,25 @@ Quo quis graecis vivendo te, <baz>posse nullam lobortis ex usu</code>. Eam volum
 constituto id, mea an omittam fierent vituperatoribus.
 % fix_code_tags.escript < fix_code_tags
 Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
  elaboraret ne quo, id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</lang
+```foo
+In sit inermis deleniti percipit>
+```
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
 altera electram. Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</lang
+```bar
+soluta appetere ut mel>
+```
 .
 Quo quis graecis vivendo te,
-```baz>posse nullam lobortis ex usu</lang
+```baz
+posse nullam lobortis ex usu>
+```
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
 
@@ -270,10 +284,13 @@ Output
 <code bar>...</code>
 ^Z
 
-```foo 2>...</lang
+```foo 2
+...>
+```
 
 
-```bar>...
+```bar
+...>
 ```
 </pre
 
@@ -422,17 +439,25 @@ constituto id, mea an omittam fierent vituperatoribus.
 
    fixCodeTags SampleText
 Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
  elaboraret ne quo, id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</lang
+```foo
+In sit inermis deleniti percipit>
+```
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
 altera electram. Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</lang
+```bar
+soluta appetere ut mel>
+```
 .
 Quo quis graecis vivendo te,
-```baz>posse nullam lobortis ex usu</lang
+```baz
+posse nullam lobortis ex usu>
+```
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
 ```
@@ -535,14 +560,18 @@ constituto id, mea an omittam fierent vituperatoribus.
 user@ubuntu:~$ java FixCodeTags fix.in fix.out
 user@ubuntu:~$ cat fix.out
 Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
  elaboraret ne quo, id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</foo
+```foo
+In sit inermis deleniti percipit</foo>
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
 altera electram. Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</bar
+```bar
+soluta appetere ut mel</bar>
 .
 Quo quis graecis vivendo te, <baz>posse nullam lobortis ex usu
 ```
@@ -655,7 +684,8 @@ end
 ## Maple
 
 
-```Maple>#Used <#/lang
+```Maple
+#Used <#/lang>
  to desensitize wiki
 txt := FileTools[Text][ReadFile]("C:/Users/username/Desktop/text.txt"):
 #langs should be a real list of programming languages
@@ -672,19 +702,29 @@ print(txt);
 ```txt
 
 "Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
  elaboraret ne quo, id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</lang
+```foo
+In sit inermis deleniti percipit>
+```
 ,
 ius ex tale civibus omittam.
-```barf>Vix ut doctus cetero invenire</lang
+```barf
+Vix ut doctus cetero invenire>
+```
 , his eu
 altera electram. Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</lang
+```bar
+soluta appetere ut mel>
+```
 .
 Quo quis graecis vivendo te,
-```baz>posse nullam lobortis ex usu</lang
+```baz
+posse nullam lobortis ex usu>
+```
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus. "
 
@@ -705,19 +745,29 @@ StringReplace[Import["wikisource.txt"],
 
 ->conversion of sample text
 Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
 elaboraret ne quo,id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</lang
+```foo
+In sit inermis deleniti percipit>
+```
 ,
 ius ex tale civibus omittam.
-```barf>Vix ut doctus cetero invenire</lang
+```barf
+Vix ut doctus cetero invenire>
+```
 ,
 his eualtera electram.Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</lang
+```bar
+soluta appetere ut mel>
+```
 .
 Quo quis graecis vivendo te,
-```baz>posse nullam lobortis ex usu</lang
+```baz
+posse nullam lobortis ex usu>
+```
 .
 Eam volumus perpetua constituto id,mea an omittam fierent vituperatoribus
 
@@ -767,7 +817,9 @@ let repl1 lang str =
 (* change </%s> to </la\ng> *)
 let repl2 lang str =
   let pat = "</" ^ lang ^ ">"
-  and tpl = "</lang"^">" in
+  and tpl = "
+```"^"
+" in>
   (repl pat tpl str)
 
 (* change <code %s> to <lang %s> *)
@@ -779,7 +831,9 @@ let repl3 lang str =
 (* change </code> to </la\ng> *)
 let repl4 lang str =
   let pat = "</code>"
-  and tpl = "</lang"^">" in
+  and tpl = "
+```"^"
+" in>
   (repl pat tpl str)
 
 
@@ -942,7 +996,9 @@ puts(1,fix_tags(test))
 ```txt
 
 lorem ipsum
-```c>some c code</lang
+```c
+some c code>
+```
 dolor sit amet,
 ```c#
 some
@@ -973,9 +1029,11 @@ sed do eiusmod tempor incididunt
             (cond
                ((pre? "code " S) (prin "<lang" (cddddr (chop S))))
                ((member S Lang) (prin "<lang " S))
-               ((= S "/code") (prin "</lang"))
+               ((= S "/code") (prin "
+```"))
                ((and (pre? "/" S) (member (pack (cdr (chop S))) Lang))
-                  (prin "</lang") )
+                  (prin "
+```") )
                (T (prin "<" S)) ) ) ) ) )
 (bye)
 ```
@@ -1199,17 +1257,25 @@ constituto id, mea an omittam fierent vituperatoribus.
 
 ```txt
 Lorem ipsum
-```foo>saepe audire</lang
+```foo
+saepe audire>
+```
  elaboraret ne quo, id equidem
 atomorum inciderint usu.
-```foo>In sit inermis deleniti percipit</lang
+```foo
+In sit inermis deleniti percipit>
+```
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
 altera electram. Tota adhuc altera te sea,
-```bar>soluta appetere ut mel</lang
+```bar
+soluta appetere ut mel>
+```
 .
 Quo quis graecis vivendo te,
-```baz>posse nullam lobortis ex usu</lang
+```baz
+posse nullam lobortis ex usu>
+```
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
 ```
@@ -1324,7 +1390,8 @@ set text [regexp -all "</(?:[join $langs |])>" $text "<$slang>"]
 
 This task does not require regular expressions at all:
 
-```tcl>set replacements [list </code
+```tcl
+set replacements [list </code>
  <$slang>]
 foreach lang $langs {
     lappend replacements "<$lang>" "<lang $lang>"

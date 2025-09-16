@@ -384,7 +384,8 @@ int main() {
 
 ## COBOL
 
-```COBOL>        >
+```COBOL
+        >>
 SOURCE FORMAT FREE
 *> This code is dedicated to the public domain
 *> This is GNUCOBOL 2.0
@@ -844,7 +845,8 @@ dist([], 0, Acc) ->
 
 Example;
 
-```erlang>1
+```erlang
+1>
  beadsort:sort([1,734,24,3,324,324,32,432,42,3,4,1,1]).
 [734,432,324,324,42,32,24,4,3,3,1,1,1]
 ```

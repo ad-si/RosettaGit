@@ -2068,7 +2068,8 @@ end
 ```
 
 
-```MATLAB>>
+```MATLAB
+>>
  monteCarloPi(7000000)
 
 ans =
@@ -2524,7 +2525,8 @@ IDLE 2.6rc2
 
 One use of the "sum" function is to count how many times something is true (because True = 1, False = 0):
 
-```python>>>
+```python
+>>>
  import random, math
 >>> throws = 1000
 >>> 4.0 * sum(math.hypot(*[random.random()*2-1

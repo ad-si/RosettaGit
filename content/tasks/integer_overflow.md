@@ -2040,7 +2040,9 @@ Phix has both 32 and 64 bit implementations. Integers are signed and limited to 
 Integer overflow is handled by automatic promotion to atom (an IEEE float, 64/80 bit for the 32/64 bit implementations respectively),
 which triggers a run-time type check if stored in a variable declared as integer, eg:
 
-```Phix>integer i = 1000000000 + 1000000000</lang
+```phix
+integer i = 1000000000 + 1000000000
+```
 
 ```txt
 
@@ -2292,7 +2294,8 @@ The Integer class  is the basis for two concrete classes that hold whole numbers
 Bignum objects are created automatically when integer calculations would otherwise overflow a Fixnum.
 When a calculation involving Bignum objects returns a result that will fit in a Fixnum, the result is automatically converted.
 
-```ruby>2.1.1 :001
+```ruby
+2.1.1 :001
  a = 2**62 -1
  => 4611686018427387903
 2.1.1 :002 > a.class
@@ -2765,7 +2768,9 @@ In Visual Basic .Net there is no specific UInteger constants as in C.
     'Additional information: Arithmetic operation resulted in an overflow.
   for:
 
-```vbnet>        i = 3000000000 : i = i + i </lang
+```vbnet
+i = 3000000000 : i = i + i
+```
 
 '''64-bit signed integer'''
 

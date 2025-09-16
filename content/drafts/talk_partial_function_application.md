@@ -197,7 +197,8 @@ I think I will have to mark this as incorrect. --[[User:Paddy3118|Paddy3118]] 23
 :: Hi Kernigh, if  fs were defined as taking 3 arguments and currying would still refer to fs(f1,_) and not fs(f1,_,_) then I would be inclined to accept it as the '_' would stand for "any other arguments" rather than "any one argument" and would retain most of the insensitivity to the number of arguments of the Haskel-type implementations.
 
 : 
-```scala>scala
+```scala
+scala>
  def rot(x: Int, y: Int, z: Int) = (y, z, x)
 rot: (x: Int,y: Int,z: Int)(Int, Int, Int)
 
@@ -219,7 +220,8 @@ I hope I have fixed this by clearly stating up front that Scala doesn't follow t
 : I've never written any Scala code and only seen a few samples, but this does look like partial application to me (quite similar to Perl 6's Whatever-Star). The fact that you have to mention a type signature might just be a limitation of Scala's type inferencer. The key question is: can you use this to pass an arity 3 function to map without using any intermediate definitions or lambda's? &mdash;''[[User:Ruud Koot|Ruud]]'' 07:05, 21 April 2011 (UTC)
 
 :: 
-```scala>scala
+```scala
+scala>
  def f(a: Int, x: Int, b: Int) = a * x + b
 f: (a: Int,x: Int,b: Int)Int
 

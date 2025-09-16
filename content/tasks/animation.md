@@ -894,7 +894,8 @@ class Animate
 
 
 
-```qbasic>#INCLUDE <Include\Windows.inc
+```qbasic
+#INCLUDE <Include\Windows.inc
 
 
 FBSLSETTEXT(ME, "Hello world! ")
@@ -1404,7 +1405,8 @@ public class Rotate {
 
 =={{header|JavaScript}} + {{header|HTML}}==
 
-```javascript><html> <head
+```javascript
+<html> <head
 
     <title>RC: Basic Animation</title>
     <script type="text/javascript">
@@ -3104,20 +3106,24 @@ IF flag THEN 'shift right
 ELSE 'shift left
   word$=RIGHT$(word$,LEN(word$)-1)&LEFT$(word$,1)
 ENDIF
-UNTIL 0</Lang>
+UNTIL 0
+```
 
 This program can be concatenated onto a single line using ! as the concatenator:
 
 <Lang smart BASIC>'by rbytes and Dutchman!word$="Hello World! "!'use button window with text!
-SET BUTTONS CUSTOM!SET BUTTONS FONT SIZE 40!DRAW COLOR 0,0,0!DO!'the button is redrawn each loop!BUTTON "anim" TEXT word$ AT 130,100!PAUSE .1!'touching the button reverses the scrolling!IF BUTTON_PRESSED("anim") THEN flag=1-flag!IF flag THEN!'shift right!word$=RIGHT$(word$,1)&LEFT$(word$,LEN(word$)-1)!ELSE!'shift left!word$=RIGHT$(word$,LEN(word$)-1)&LEFT$(word$,1)!ENDIF!UNTIL 0</Lang>
+SET BUTTONS CUSTOM!SET BUTTONS FONT SIZE 40!DRAW COLOR 0,0,0!DO!'the button is redrawn each loop!BUTTON "anim" TEXT word$ AT 130,100!PAUSE .1!'touching the button reverses the scrolling!IF BUTTON_PRESSED("anim") THEN flag=1-flag!IF flag THEN!'shift right!word$=RIGHT$(word$,1)&LEFT$(word$,LEN(word$)-1)!ELSE!'shift left!word$=RIGHT$(word$,LEN(word$)-1)&LEFT$(word$,1)!ENDIF!UNTIL 0
+```
 
 Mr. Kibernetik, the creator of smart Basic, offered this ultra-compact one-line version:
 
-<Lang smart BASIC>w$="Hello World! "!1 BUTTON 0 TEXT w$ AT 0,0!PAUSE .1!IF BUTTON_PRESSED("0") THEN f=1-f!IF f THEN w$=RIGHT$(w$,1)&LEFT$(w$,LEN(w$)-1) ELSE w$=RIGHT$(w$,LEN(w$)-1)&LEFT$(w$,1)!GOTO 1</Lang>
+<Lang smart BASIC>w$="Hello World! "!1 BUTTON 0 TEXT w$ AT 0,0!PAUSE .1!IF BUTTON_PRESSED("0") THEN f=1-f!IF f THEN w$=RIGHT$(w$,1)&LEFT$(w$,LEN(w$)-1) ELSE w$=RIGHT$(w$,LEN(w$)-1)&LEFT$(w$,1)!GOTO 1
+```
 
 and smart Basic Forum member sarossell found a way to shorten even that! See if you can spot what is changed.
 
-<Lang smart BASIC>w$="Hello World! "!1 BUTTON 0 TEXT w$ AT 0,0!PAUSE .1!IF BUTTON_PRESSED("0") THEN f=1-f!k=LEN(w$)-1!IF f THEN w$=RIGHT$(w$,1)&LEFT$(w$,k) ELSE w$=RIGHT$(w$,k)&LEFT$(w$,1)!GOTO 1</Lang>
+<Lang smart BASIC>w$="Hello World! "!1 BUTTON 0 TEXT w$ AT 0,0!PAUSE .1!IF BUTTON_PRESSED("0") THEN f=1-f!k=LEN(w$)-1!IF f THEN w$=RIGHT$(w$,1)&LEFT$(w$,k) ELSE w$=RIGHT$(w$,k)&LEFT$(w$,1)!GOTO 1
+```
 
 
 ## Suneido
@@ -3226,7 +3232,9 @@ animate
 
 The requirements contain "When the user clicks on the text…". The TI-89 does not have a graphical cursor, so just for the sake of overdoing it, and to have a little more complex animation (overlapping objects), this program implements one. Use the arrow keys and ENTER to control the cursor.
 
-<pre style="font-family:'TI Uni'">rcanimat()
+
+```txt
+rcanimat()
 Prgm
   Local leftward,s,i,k,x,y
 

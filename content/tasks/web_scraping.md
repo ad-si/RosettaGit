@@ -724,7 +724,8 @@ Jan. 09, 19:19:07 UTC
 {{libheader|DRAKMA}}
 
 
-```lisp>BOA
+```lisp
+BOA>
  (let* ((url "http://tycho.usno.navy.mil/cgi-bin/timer.pl")
             (regexp (load-time-value
                      (cl-ppcre:create-scanner "(?m)^.{4}(.+? UTC)")))
@@ -1959,7 +1960,8 @@ in
 
 English dialect, short form, using integrated Rexx pattern matcher:
 
-```html><@ DEFAREPRS>Rexx Parse</@
+```html
+<@ DEFAREPRS>Rexx Parse</@>
 
 <@ DEFPRSLIT>Rexx Parse|'<BR>' UTCtime 'UTC'</@>
 <@ LETVARURL>timer|http://tycho.usno.navy.mil/cgi-bin/timer.pl</@>
@@ -1970,7 +1972,8 @@ English dialect, short form, using integrated Rexx pattern matcher:
 
 English dialect, padded variable-length form:
 
-```html><# DEFINE WORKAREA PARSEVALUES>Rexx Parse</#
+```html
+<# DEFINE WORKAREA PARSEVALUES>Rexx Parse</#>
 
 <# DEFINE PARSEVALUES LITERAL>Rexx Parse|'<BR>' UTCtime 'UTC'</#>
 <# LET VARIABLE URLSOURCE>timer|http://tycho.usno.navy.mil/cgi-bin/timer.pl</#>
@@ -1981,7 +1984,8 @@ English dialect, padded variable-length form:
 
 English dialect, padded short form, using string functions AFT and BEF:
 
-```html><@ SAY AFT BEF URL LIT LIT LIT
+```html
+<@ SAY AFT BEF URL LIT LIT LIT>
 http://tycho.usno.navy.mil/cgi-bin/timer.pl| UTC|<BR></@>
 ```
 
@@ -2843,7 +2847,9 @@ xidel -s "https://tycho.usno.navy.mil/cgi-bin/timer.pl" -e 'extract(//h3,"([\d:]
 
 {{out}}
 
-```sh>20:43:05</lang
+```sh
+20:43:05
+```
 
 
 

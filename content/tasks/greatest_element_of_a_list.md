@@ -2715,10 +2715,13 @@ end
 ## J
 
 '''Solution''':
-```j>   >./</lang
+```j
+   >./
+```
 
 '''Example''':
-```J>
+```j
+>
 ./ 1 2 3 2 1
 3
    >./''  NB.  Maximum value of an empty list = identity element (or neutral) of max = -∞
@@ -3059,7 +3062,8 @@ reduce s as $x (null; if $x > . then $x else . end)
 
 Using the built-in <code>maximum</code> function:
 
-```julia>julia
+```julia
+julia>
  maximum([1,3,3,7])
 7
 
@@ -3164,7 +3168,8 @@ greatest(#x)
 
 Builtin. Using it from the LFE shell:
 
-```lisp>
+```lisp
+>
 (: lists max '[9 4 3 8 5])
 9
 ```
@@ -3969,7 +3974,8 @@ objects are not "NSNumber"), the the method return nil (the void object).
 
 
 
-```objc>#import <Foundation/Foundation.h
+```objc
+#import <Foundation/Foundation.h>
 
 
 @interface NSArray (WithMaximum)
@@ -4524,7 +4530,8 @@ If we truly were receiving a stream of data then in Python, such streams are usu
 
 max(), (and min()), can take iterables and a key argument which takes a function that can transform each item into a type that we can compare, for example, if the stream were returning string representations of integers, one to a line, you could do
 
-```python>>>
+```python
+>>>
  floatstrings = ['1\n', ' 2.3\n', '4.5e-1\n', '0.01e4\n', '-1.2']
 >>> max(floatstrings, key = float)
 '0.01e4\n'
@@ -4533,7 +4540,8 @@ max(), (and min()), can take iterables and a key argument which takes a function
 
 Normally we would want the converted form as the maximum and we could just as easily write:
 
-```python>>>
+```python
+>>>
  max(float(x) for x in floatstrings)
 100.0
 >>>
@@ -4541,7 +4549,8 @@ Normally we would want the converted form as the maximum and we could just as ea
 
 Or you can write your own functional version, of the maximum function, using reduce and lambda
 
-```python>>>
+```python
+>>>
  mylist = [47, 11, 42, 102, 13]
 >>> reduce(lambda a,b: a if (a > b) else b, mylist)
 102
@@ -4873,7 +4882,9 @@ see max(aList)
 
 <tt>max</tt> is a method of all Enumerables
 
-```ruby>values.max</lang
+```ruby
+values.max
+```
 
 
 
@@ -5006,7 +5017,9 @@ Or, since it's "built-in", you can simply do:
 
 ''max'' method returns the greatest element in a list. It works only if the array's elements have the same type (e.g.: strings, numbers).
 
-```ruby>values.max;</lang
+```ruby
+values.max;
+```
 
 
 
@@ -5490,7 +5503,8 @@ def (max ... args)
 ## WDTE
 
 
-```wdte>let s =
+```wdte
+let s =>
  import 'stream';
 let a => import 'arrays';
 
@@ -5589,7 +5603,8 @@ The desired value is the first in a sequence that has been sorted numerically in
 Sample input:
 
 
-```xml><numbers
+```xml
+<numbers>
 
 	<number>3</number>
 	<number>1</number>

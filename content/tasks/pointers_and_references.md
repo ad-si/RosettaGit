@@ -181,7 +181,9 @@ pointer := othervar;
 
 Change the pointer to not point to any object:
 
-```algol68>pointer := NIL; # 0 cannot be cast to NIL #</lang
+```algol68
+pointer := NIL; # 0 cannot be cast to NIL #
+```
 
 Get a pointer to the first element of an array:
 
@@ -196,7 +198,9 @@ There is no pointer arithmetic, eg no p +:=3
 
 The following code creates a constant reference to an INT variable, effectively an alias:
 
-```algol68>REF INT alias = var;</lang
+```algol68
+REF INT alias = var;
+```
 
 Access the integer variable through the reference:
 
@@ -636,7 +640,9 @@ Simple ''untyped'' pointer variable:
 Variable Declaration
 
 
-```delphi>pMyPointer : Pointer ;</lang
+```delphi
+pMyPointer : Pointer ;>
+```
 
 
 Simple pointer to a ''predefined'' type:
@@ -1615,7 +1621,9 @@ p = addr y
 
 Change the pointer to not point to any object:
 
-```nim>p = nil</lang
+```nim
+p = nil
+```
 
 
 
