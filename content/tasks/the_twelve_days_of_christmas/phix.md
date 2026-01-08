@@ -1,0 +1,40 @@
++++
+title = "Phix"
+description = ""
+date = 2019-10-18T20:29:35Z
+aliases = []
+[extra]
+id = 16950
+[taxonomies]
+categories = []
+tags = []
++++
+
+{{collection|The Twelve Days of Christmas}} [[implementation of task::The Twelve Days of Christmas| ]]
+[The Twelve Days of Christmas](../) done in Phix.
+
+
+## Phix
+
+```Phix
+constant days = {"first", "second", "third", "fourth", "fifth", "sixth",
+                 "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"},
+         gifts = {"A partridge in a pear tree.\n",
+                  "Two turtle doves, and\n",
+                  "Three French hens,\n",
+                  "Four calling birds,\n",
+                  "Five gold rings,\n",
+                  "Six geese a-laying,\n",
+                  "Seven swans a-swimming,\n",
+                  "Eight maids a-milking,\n",
+                  "Nine ladies dancing,\n",
+                  "Ten lords a-leaping,\n",
+                  "Eleven pipers piping,\n",
+                  "Twelve drummers drumming,\n"}
+for i=1 to 12 do
+    printf(1,"On the %s day of Christmas,\nmy true love gave to me:\n",{days[i]})
+    for j=i to 1 by -1 do
+        printf(1,gifts[j])
+    end for
+end for
+```
