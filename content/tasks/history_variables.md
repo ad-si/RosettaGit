@@ -26,7 +26,6 @@ languages = [
   "haskell",
   "j",
   "java",
-  "java_integer_with_history",
   "julia",
   "kotlin",
   "m2000_interpreter",

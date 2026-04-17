@@ -71,7 +71,7 @@ languages = [
   "matlab",
   "maxima",
   "maxscript",
-  "modula_3",
+  "modula-3",
   "mumps",
   "neko",
   "netrexx",

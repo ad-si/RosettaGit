@@ -81,7 +81,7 @@ languages = [
   "sidef",
   "tcl",
   "tuscript",
-  "toffee_script",
+  "toffeescript",
   "txr",
   "unix_shell",
   "ursala",

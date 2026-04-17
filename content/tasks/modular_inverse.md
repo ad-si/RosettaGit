@@ -63,7 +63,7 @@ languages = [
   "seed7",
   "sidef",
   "tcl",
-  "tsql",
+  "transact-sql",
   "ubasic_4th",
   "vba",
   "xpl0",

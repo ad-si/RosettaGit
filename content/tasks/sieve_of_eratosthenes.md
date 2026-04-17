@@ -96,7 +96,6 @@ languages = [
   "netrexx",
   "nial",
   "nim",
-  "nim_unbounded_versions",
   "niue",
   "ocaml",
   "oforth",

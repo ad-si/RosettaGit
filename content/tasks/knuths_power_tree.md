@@ -12,7 +12,6 @@ languages = [
   "echolisp",
   "scheme",
   "go",
-  "plain_text",
 ]
 +++
 

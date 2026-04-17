@@ -21,7 +21,7 @@ languages = [
   "basic256",
   "bbc_basic",
   "befunge",
-  "bourne_again_shell",
+  "bash",
   "brace",
   "c",
   "cixl",

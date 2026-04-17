@@ -71,7 +71,7 @@ languages = [
   "sparkling",
   "standard_ml",
   "swift",
-  "tsql",
+  "transact-sql",
   "txr",
 ]
 +++

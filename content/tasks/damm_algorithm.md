@@ -28,7 +28,7 @@ languages = [
   "julia",
   "kotlin",
   "lua",
-  "modula_2",
+  "modula-2",
   "objeck",
   "pascal",
   "perl",

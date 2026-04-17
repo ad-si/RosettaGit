@@ -25,7 +25,7 @@ languages = [
   "befunge",
   "bracmat",
   "c",
-  "cfm_cfscript",
+  "cfscript",
   "chapel",
   "clojure",
   "cobol",

@@ -63,7 +63,7 @@ languages = [
   "octave",
   "miniscript",
   "mirc_scripting_language",
-  "modula_2",
+  "modula-2",
   "mumps",
   "nim",
   "nit",

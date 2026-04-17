@@ -10,7 +10,6 @@ categories = ["task"]
 tags = []
 languages = [
   "csharp",
-  "plain_text",
   "html",
 ]
 +++

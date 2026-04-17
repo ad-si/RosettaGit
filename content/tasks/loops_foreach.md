@@ -106,7 +106,7 @@ languages = [
   "ocaml",
   "octave",
   "oforth",
-  "orexx",
+  "oorexx",
   "oz",
   "pari_gp",
   "pascal",

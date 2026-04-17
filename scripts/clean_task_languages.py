@@ -37,6 +37,14 @@ EXPLICIT_REMAP = {
     "visual_basic_for_applications_on_excel": "vba",
     "vba_excel": "vba",
     "ubasic": "ubasic_4th",
+    "modula_2": "modula-2",
+    "modula_3": "modula-3",
+    "tsql": "transact-sql",
+    "bourne_again_shell": "bash",
+    "orexx": "oorexx",
+    "toffee_script": "toffeescript",
+    "cfm_cfscript": "cfscript",
+    "mini_zinc": "minizinc",
 }
 
 EXPLICIT_REMOVE = {
@@ -155,6 +163,9 @@ EXPLICIT_REMOVE = {
     "100000_numbers",
     "1000000_numbers",
     "10000000_numbers",
+    "java_integer_with_history",
+    "nim_unbounded_versions",
+    "plain_text",
 }
 
 

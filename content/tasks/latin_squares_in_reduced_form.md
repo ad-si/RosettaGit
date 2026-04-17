@@ -14,7 +14,7 @@ languages = [
   "fsharp",
   "go",
   "kotlin",
-  "mini_zinc",
+  "minizinc",
 ]
 +++
 
