@@ -7,6 +7,11 @@ public: static templates content config.toml
 	zola build
 
 
+.PHONY: format
+format:
+	echo "TODO"
+
+
 .PHONY: build
 build: public
 
