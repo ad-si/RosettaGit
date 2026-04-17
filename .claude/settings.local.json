@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/dev/null)",
+      "Bash(do echo \"Missing: $lang\")",
+      "Bash(done)",
+      "Bash(find:*)",
+      "Bash(git-surgeon hunks *)",
+      "Bash(sed:*)",
+      "Bash(while read lang)",
+      "Bash(xxd)",
+      "Bash(zola --version)",
+      "Bash(zola build:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
