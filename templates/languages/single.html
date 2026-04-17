@@ -4,10 +4,17 @@
 <div id="section-language">
   <section>
     {% set langsSection = get_section(path="languages/_index.md") %}
-    {% set singleton = langsSection.pages |
-        filter(attribute="slug", value=term.slug)
-    %}
-    {% set termTitle = singleton | length > 0 and singleton[0] | get(key="title") or term.name %}
+    {% if term.name %}
+      {% set singleton = langsSection.pages |
+          filter(attribute="slug", value=term.slug)
+      %}
+      {% if singleton | length > 0 %}
+        {% set_global language = singleton[0] %}
+      {% endif %}
+      {% set termTitle = singleton | length > 0 and singleton[0] | get(key="title") or term.name %}
+    {% else %}
+      {% set_global language = page %}
+    {% endif %}
 
     <h2>
       {% if term.name %} {{termTitle}}
@@ -15,24 +22,20 @@
       {% endif %}
     </h2>
 
-    {% if term.name %}
-      {% set language = get_page(path="languages/" ~ term.name ~ ".md") %}
-    {% else %}
-      {% set language = page %}
+    {% if language %}
+      <div class="tags">
+        {% if language.taxonomies.tags %}
+          {% for tag in language.taxonomies.tags %}
+            <a
+              class="tag"
+              href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
+            >{{ tag }}</a>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      {{ language.content | safe }}
     {% endif %}
-
-    <div class="tags">
-      {% if language.taxonomies.tags %}
-        {% for tag in language.taxonomies.tags %}
-          <a
-            class="tag"
-            href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
-          >{{ tag }}</a>
-        {% endfor %}
-      {% endif %}
-    </div>
-
-    {{ language.content | safe }}
   </section>
 
   {% if term.pages %}
