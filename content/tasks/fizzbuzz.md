@@ -5,6 +5,14 @@ date = 2019-10-08T17:07:43Z
 aliases = []
 [extra]
 id = 2150
+task = """
+  Write a program that prints the integers from `1` to `100` (inclusive).
+
+  But:
+  - For multiples of 3, print `Fizz` (instead of the number)
+  - For multiples of 5, print `Buzz` (instead of the number)
+  - For multiples of both 3 and 5, print `FizzBuzz` (instead of the number)
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []
