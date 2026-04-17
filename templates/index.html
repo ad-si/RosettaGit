@@ -12,51 +12,12 @@
   <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
   {% block seo %}
-    <link rel="apple-touch-icon" sizes="57x57"
-      href="{{ get_url(path="apple-icon-57x57.png", trailing_slash=false) }}"
+    <link rel="icon" type="image/png"
+      href="{{ get_url(path="icon.png", trailing_slash=false) }}"
     >
-    <link rel="apple-touch-icon" sizes="60x60"
-      href="{{ get_url(path="/apple-icon-60x60.png", trailing_slash=false) }}"
+    <link rel="apple-touch-icon"
+      href="{{ get_url(path="icon.png", trailing_slash=false) }}"
     >
-    <link rel="apple-touch-icon" sizes="72x72"
-      href="{{ get_url(path="/apple-icon-72x72.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="76x76"
-      href="{{ get_url(path="/apple-icon-76x76.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="114x114"
-      href="{{ get_url(path="/apple-icon-114x114.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="120x120"
-      href="{{ get_url(path="/apple-icon-120x120.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="144x144"
-      href="{{ get_url(path="/apple-icon-144x144.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="152x152"
-      href="{{ get_url(path="/apple-icon-152x152.png", trailing_slash=false) }}"
-    >
-    <link rel="apple-touch-icon" sizes="180x180"
-      href="{{ get_url(path="/apple-icon-180x180.png", trailing_slash=false) }}"
-    >
-    <link rel="icon"
-      href="/favicon.ico" type="image/x-icon"
-    >
-    <link rel="icon" type="image/png" sizes="192x192"
-      href="{{ get_url(path="/android-icon-192x192.png", trailing_slash=false) }}"
-    >
-    <link rel="icon" type="image/png" sizes="32x32"
-      href="{{ get_url(path="/favicon-32x32.png", trailing_slash=false) }}"
-    >
-    <link rel="icon" type="image/png" sizes="96x96"
-      href="{{ get_url(path="/favicon-96x96.png", trailing_slash=false) }}"
-    >
-    <link rel="icon" type="image/png" sizes="16x16"
-      href="{{ get_url(path="/favicon-16x16.png", trailing_slash=false) }}"
-    >
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <meta name="description" itemprop="about" content="{{config.description}}">
     <meta name="keywords" itemprop="keywords" content="{{config.extra.keywords}}">
