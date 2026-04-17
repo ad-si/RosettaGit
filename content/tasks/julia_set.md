@@ -34,7 +34,6 @@ languages = [
   "processing",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

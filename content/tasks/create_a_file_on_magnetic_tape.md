@@ -26,7 +26,7 @@ languages = [
   "nim",
   "perl_6",
   "phix",
-  "pico_lisp",
+  "picolisp",
   "python",
   "racket",
   "rexx",
@@ -35,7 +35,7 @@ languages = [
   "scala",
   "tcl",
   "unix_shell",
-  "zx_spectrum_basic"
+  "zx_spectrum_basic",
 ]
 +++
 

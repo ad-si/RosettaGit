@@ -14,7 +14,6 @@ languages = [
   "c",
   "common_lisp",
   "d",
-  "demo",
   "go",
   "haskell",
   "j",

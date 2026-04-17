@@ -42,7 +42,6 @@ languages = [
   "python",
   "qi",
   "racket",
-  "related_tasks",
   "ruby",
   "scala",
   "sidef",

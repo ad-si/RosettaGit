@@ -75,7 +75,6 @@ languages = [
   "q",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

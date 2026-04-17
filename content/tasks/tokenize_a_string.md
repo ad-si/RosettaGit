@@ -136,7 +136,6 @@ languages = [
   "standard_ml",
   "swift",
   "tcl",
-  "tr",
   "tuscript",
   "txr",
   "unix_shell",

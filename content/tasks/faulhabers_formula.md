@@ -29,7 +29,6 @@ languages = [
   "perl_6",
   "phix",
   "racket",
-  "related_tasks",
   "sidef",
   "visual_basic_.net",
   "zkl",

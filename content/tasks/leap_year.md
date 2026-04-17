@@ -136,7 +136,7 @@ languages = [
   "vbscript",
   "vedit_macro_language",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wdte",
   "wortel",
   "x86_assembly",

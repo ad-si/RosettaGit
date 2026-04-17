@@ -32,7 +32,6 @@ languages = [
   "python",
   "racket",
   "rebol",
-  "related_tasks",
   "rexx",
   "ruby",
   "run_basic",

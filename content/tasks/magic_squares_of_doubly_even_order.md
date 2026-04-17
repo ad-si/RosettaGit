@@ -35,14 +35,13 @@ languages = [
   "phix",
   "purebasic",
   "python",
-  "related_tasks",
   "rexx",
   "ruby",
   "rust",
   "scala",
   "sidef",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -23,7 +23,7 @@ languages = [
   "d",
   "dart",
   "erre",
-  "f_sharp",
+  "fsharp",
   "fortran",
   "freebasic",
   "futurebasic",

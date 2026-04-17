@@ -54,7 +54,6 @@ languages = [
   "python",
   "racket",
   "realbasic",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -64,14 +63,10 @@ languages = [
   "scala",
   "sidef",
   "sinclair_zx81_basic",
-  "t_ttttttttttttttttttt",
   "tcl",
-  "tt_t_tttt",
-  "ttttttttttt_tt",
   "ubasic_4th",
   "vedit_macro_language",
   "visual_basic_.net",
-  "y_yy_y_y_yyy_y_yyy_y_y",
   "zx_spectrum_basic",
 ]
 +++

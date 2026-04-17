@@ -16,7 +16,7 @@ languages = [
   "cpp",
   "csharp",
   "d",
-  "f_sharp",
+  "fsharp",
   "factor",
   "go",
   "groovy",

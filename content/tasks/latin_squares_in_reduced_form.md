@@ -9,9 +9,9 @@ id = 22424
 categories = ["task"]
 tags = []
 languages = [
-  "c_sharp",
+  "csharp",
   "d",
-  "f_sharp",
+  "fsharp",
   "go",
   "kotlin",
   "mini_zinc",

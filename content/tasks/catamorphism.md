@@ -18,8 +18,8 @@ languages = [
   "bracmat",
   "bbc_basic",
   "c",
-  "c++",
-  "c#",
+  "cpp",
+  "csharp",
   "clojure",
   "common_lisp",
   "d",
@@ -80,7 +80,7 @@ languages = [
   "wdte",
   "wortel",
   "zkl",
-  "zx_spectrum_basic"
+  "zx_spectrum_basic",
 ]
 +++
 

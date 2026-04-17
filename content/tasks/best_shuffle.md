@@ -10,7 +10,7 @@ categories = ["task"]
 tags = []
 languages = [
   "ada",
-  "auto_hotkey",
+  "autohotkey",
   "awk",
   "bbc_basic",
   "bracmat",
@@ -39,11 +39,11 @@ languages = [
   "perl_6",
   "phix",
   "php",
-  "pico_lisp",
+  "picolisp",
   "pl_i",
   "powershell",
   "prolog",
-  "pure_basic",
+  "purebasic",
   "python",
   "racket",
   "rascal",

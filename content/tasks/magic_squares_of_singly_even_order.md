@@ -10,10 +10,10 @@ categories = ["task"]
 languages = [
   "befunge",
   "c",
-  "c_plus_plus",
+  "cpp",
   "d",
   "elixir",
-  "free_basic",
+  "freebasic",
   "go",
   "haskell",
   "j",
@@ -27,7 +27,7 @@ languages = [
   "python",
   "ruby",
   "rust",
-  "zkl"
+  "zkl",
 ]
 tags = []
 +++

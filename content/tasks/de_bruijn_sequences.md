@@ -19,8 +19,8 @@ languages = [
   "python",
   "racket",
   "rexx",
-  "visual_basic_dot_net",
-  "zkl"
+  "visual_basic_.net",
+  "zkl",
 ]
 +++
 

@@ -9,11 +9,6 @@ id = 21977
 categories = ["task"]
 tags = []
 languages = [
-  "1_cards",
-  "2_deal_from_the_randomised_pack_into_three_stacks",
-  "3_swap_the_same_random_number_of_cards_between_the_two_stacks",
-  "4_order_from_randomness",
-  "add_the_top_card_that_you_re_holding_to_the_discard_pile_you_might_optionally_show_these_discarded_cards_to_get_an_idea_of_the_randomness",
   "factor",
   "go",
   "haskell",
@@ -30,7 +25,6 @@ languages = [
   "rexx",
   "ruby",
   "rust",
-  "turn_up_the_top_card_and_hold_it_in_your_hand",
   "zkl",
 ]
 +++

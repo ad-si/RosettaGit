@@ -101,7 +101,6 @@ languages = [
   "racket",
   "raven",
   "rebol",
-  "related_tasks",
   "retro",
   "rexx",
   "ring",

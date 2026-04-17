@@ -77,7 +77,7 @@ languages = [
   "stata",
   "tcl",
   "trith",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "xpl0",
   "zkl",

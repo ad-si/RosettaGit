@@ -45,7 +45,6 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -55,7 +54,7 @@ languages = [
   "sidef",
   "sinclair_zx81_basic",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

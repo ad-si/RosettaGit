@@ -43,7 +43,7 @@ languages = [
   "standard_ml",
   "swift",
   "ursala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_prolog",
 ]
 +++

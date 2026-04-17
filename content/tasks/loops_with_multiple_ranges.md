@@ -25,11 +25,10 @@ languages = [
   "prolog",
   "purebasic",
   "python",
-  "related_tasks",
   "rexx",
   "ruby",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

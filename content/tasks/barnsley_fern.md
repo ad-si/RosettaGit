@@ -9,7 +9,6 @@ id = 20079
 categories = ["Fractals", "Graphics", "Mathematics", "task"]
 tags = []
 languages = [
-  "7_27_16_aev",
   "algol_68",
   "applesoft_basic",
   "bbc_basic",
@@ -19,7 +18,6 @@ languages = [
   "csharp",
   "delphi",
   "easylang",
-  "executing",
   "fortran",
   "freebasic",
   "gnuplot",
@@ -33,13 +31,11 @@ languages = [
   "lua",
   "nim",
   "pari_gp",
-  "pbarnsleyfern_fn_n_clr_ttl_psz_600_plot_barnsley_fern_fractal",
   "perl",
   "perl_6",
   "phix",
   "picolisp",
   "processing",
-  "psz_picture_size",
   "purebasic",
   "python",
   "r",
@@ -56,7 +52,6 @@ languages = [
   "spl",
   "swift",
   "vba",
-  "where_fn_file_name_n_number_of_dots_clr_color_ttl_plot_title",
   "yabasic",
   "zkl",
   "zx_spectrum_basic",

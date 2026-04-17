@@ -92,7 +92,7 @@ languages = [
   "seed7",
   "sidef",
   "sinclair_zx81_basic",
-  "sinclair_zx_spectrum_basic",
+  "zx_spectrum_basic",
   "smalltalk",
   "snobol4",
   "standard_ml",

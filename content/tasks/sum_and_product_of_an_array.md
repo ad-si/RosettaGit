@@ -30,13 +30,13 @@ languages = [
   "befunge",
   "bracmat",
   "c",
-  "c_sharp",
-  "c_plus_plus",
+  "csharp",
+  "cpp",
   "chef",
   "clean",
   "clojure",
   "cobol",
-  "coffee_script",
+  "coffeescript",
   "coldfusion",
   "common_lisp",
   "crystal",
@@ -144,13 +144,13 @@ languages = [
   "vala",
   "vba",
   "vbscript",
-  "visual_basic_net",
+  "visual_basic_.net",
   "wart",
   "wdte",
   "wortel",
   "xpl0",
   "xslt",
-  "zkl"
+  "zkl",
 ]
 +++
 

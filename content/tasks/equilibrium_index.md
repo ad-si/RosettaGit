@@ -34,7 +34,6 @@ languages = [
   "freebasic",
   "go",
   "haskell",
-  "int_index_void",
   "j",
   "java",
   "javascript",

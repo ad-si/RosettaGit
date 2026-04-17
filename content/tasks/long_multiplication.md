@@ -17,7 +17,7 @@ languages = [
   "autohotkey",
   "batch_file",
   "cpp",
-  "c_sharp",
+  "csharp",
   "coffeescript",
   "common_lisp",
   "d",
@@ -70,7 +70,7 @@ languages = [
   "ursala",
   "vedit_macro_language",
   "xpl0",
-  "zkl"
+  "zkl",
 ]
 +++
 

@@ -10,7 +10,6 @@ categories = ["task", "Compression"]
 tags = []
 languages = [
   "ada",
-  "add_the_new_node_to_the_queue",
   "bbc_basic",
   "bracmat",
   "c",
@@ -18,7 +17,6 @@ languages = [
   "coffeescript",
   "common_lisp",
   "cpp",
-  "create_a_new_internal_node_with_these_two_nodes_as_children_and_with_probability_equal_to_the_sum_of_the_two_nodes_probabilities",
   "csharp",
   "d",
   "eiffel",
@@ -49,7 +47,6 @@ languages = [
   "python",
   "racket",
   "red",
-  "remove_the_node_of_highest_priority_lowest_probability_twice_to_get_two_nodes",
   "rexx",
   "ruby",
   "rust",

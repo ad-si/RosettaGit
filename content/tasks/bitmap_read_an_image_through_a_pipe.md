@@ -9,7 +9,7 @@ id = 3246
 categories = ["task", "Raster graphics operations"]
 tags = []
 languages = [
-  "auto_hotkey",
+  "autohotkey",
   "c",
   "go",
   "julia",

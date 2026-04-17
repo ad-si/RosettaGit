@@ -23,7 +23,7 @@ languages = [
   "python",
   "rexx",
   "sidef",
-  "visual_basic_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -12,7 +12,6 @@ languages = [
   "360_assembly",
   "ada",
   "algol_68",
-  "alternative_implementation",
   "applesoft_basic",
   "ats",
   "autohotkey",

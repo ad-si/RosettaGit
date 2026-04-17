@@ -57,7 +57,7 @@ languages = [
   "tcl",
   "txr",
   "unixpipes",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

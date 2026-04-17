@@ -38,7 +38,7 @@ languages = [
   "ruby",
   "sidef",
   "stata",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -65,7 +65,6 @@ languages = [
   "prolog",
   "purebasic",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -79,7 +78,7 @@ languages = [
   "tcl",
   "vba",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "zkl",
 ]

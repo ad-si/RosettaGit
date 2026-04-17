@@ -20,7 +20,7 @@ languages = [
   "bbc_basic",
   "bc",
   "c",
-  "c_sharp",
+  "csharp",
   "clojure",
   "common_lisp",
   "d",

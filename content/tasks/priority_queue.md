@@ -25,7 +25,7 @@ languages = [
   "echolisp",
   "elixir",
   "erlang",
-  "f_sharp",
+  "fsharp",
   "factor",
   "fortran",
   "funl",

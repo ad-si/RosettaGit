@@ -77,7 +77,7 @@ languages = [
   "julia",
   "k",
   "kotlin",
-  "l",
+  "l__",
   "labview",
   "lang5",
   "lasso",

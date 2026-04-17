@@ -26,7 +26,6 @@ languages = [
   "postscript",
   "python",
   "racket",
-  "related_tasks",
   "scala",
   "tcl",
 ]

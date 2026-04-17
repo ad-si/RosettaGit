@@ -39,7 +39,6 @@ languages = [
   "picolisp",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "scala",

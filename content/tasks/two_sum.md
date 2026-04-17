@@ -56,7 +56,7 @@ languages = [
   "sidef",
   "stata",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

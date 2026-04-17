@@ -9,7 +9,6 @@ id = 18358
 categories = ["task"]
 tags = []
 languages = [
-  "12_19_16_aev",
   "360_assembly",
   "ada",
   "applescript",
@@ -45,17 +44,15 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
   "scala",
   "sidef",
-  "stern_brocot_sequence",
   "swift",
   "tcl",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -43,7 +43,6 @@ languages = [
   "php",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

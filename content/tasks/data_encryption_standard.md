@@ -23,7 +23,7 @@ languages = [
   "rexx",
   "scala",
   "symsyn",
-  "visual_basic_net",
+  "visual_basic_.net",
 ]
 +++
 

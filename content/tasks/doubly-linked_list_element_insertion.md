@@ -48,8 +48,8 @@ languages = [
   "ruby",
   "rust",
   "tcl",
-  "visual_basic_net",
-  "zkl"
+  "visual_basic_.net",
+  "zkl",
 ]
 +++
 

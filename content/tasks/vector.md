@@ -45,7 +45,7 @@ languages = [
   "sidef",
   "tcl",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wdte",
   "zkl",
 ]

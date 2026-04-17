@@ -17,7 +17,6 @@ languages = [
   "perl",
   "perl_6",
   "phix",
-  "related_tasks",
   "rexx",
   "sidef",
   "tailspin",

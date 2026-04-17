@@ -116,7 +116,6 @@ languages = [
   "raven",
   "rebol",
   "red",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

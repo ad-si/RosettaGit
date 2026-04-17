@@ -140,7 +140,7 @@ languages = [
   "unix_shell",
   "ursa",
   "vala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wdte",
   "xlisp",
   "xpl0",

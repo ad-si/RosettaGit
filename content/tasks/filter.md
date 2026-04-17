@@ -48,7 +48,7 @@ languages = [
   "fantom",
   "forth",
   "fortran",
-  "free_basic",
+  "freebasic",
   "frink",
   "futhark",
   "gambas",
@@ -127,7 +127,7 @@ languages = [
   "xquery",
   "xslt",
   "zkl",
-  "zx_spectrum_basic"
+  "zx_spectrum_basic",
 ]
 +++
 

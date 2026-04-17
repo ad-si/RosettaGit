@@ -30,7 +30,6 @@ languages = [
   "php",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "rust",

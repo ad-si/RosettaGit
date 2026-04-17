@@ -21,7 +21,7 @@ languages = [
   "python",
   "rust",
   "scala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zed",
   "zkl",
 ]

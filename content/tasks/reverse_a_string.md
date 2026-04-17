@@ -96,7 +96,7 @@ languages = [
   "julia",
   "k",
   "kotlin",
-  "l",
+  "l__",
   "labview",
   "lang5",
   "lasso",
@@ -198,15 +198,12 @@ languages = [
   "vbscript",
   "vedit_macro_language",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "wortel",
   "xpl0",
   "yorick",
   "zkl",
-  "இந_த_ந_ரல_தரப_பட_ம_சரம_ஒன_ற_த_தல_க_ழ_கத_த_ர_ப_ப_அச_ச_ட_ம",
-  "உத_ரணம_க_abc_என_ற_சரம_தரப_பட_ட_ல_அதன_த_த_ர_ப_ப_cba_என_அச_ச_ட_ம",
-  "எழ_ல_ம_ழ_ய_ன_ம_லம_இரண_ட_வக_கள_ல_இதன_ச_ச_ய_யல_ம_இரண_ட_உத_ரணங_கள_ம_இங_க_தரப_பட_ட_ள_ளன",
 ]
 +++
 

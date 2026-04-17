@@ -140,7 +140,7 @@ languages = [
   "vbscript",
   "verbexx",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_foxpro",
   "wart",
   "xpl0",

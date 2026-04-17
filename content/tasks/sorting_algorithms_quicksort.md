@@ -74,7 +74,6 @@ languages = [
   "mathematica",
   "matlab",
   "maxscript",
-  "mond",
   "mumps",
   "nemerle",
   "netrexx",

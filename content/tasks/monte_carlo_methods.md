@@ -28,7 +28,7 @@ languages = [
   "erlang",
   "erre",
   "euler_math_toolbox",
-  "f_sharp",
+  "fsharp",
   "factor",
   "fantom",
   "forth",

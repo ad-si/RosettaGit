@@ -45,7 +45,6 @@ languages = [
   "smalltalk",
   "tcl",
   "vala",
-  "value_stores_a_string",
   "visual_basic",
 ]
 +++

@@ -9,13 +9,6 @@ id = 10013
 categories = ["task", "Mathematics"]
 tags = []
 languages = [
-  "10000000_numbers",
-  "1000000_numbers",
-  "100000_numbers",
-  "10000_numbers",
-  "1000_numbers",
-  "100_numbers",
-  "10_numbers",
   "ada",
   "c",
   "coffeescript",

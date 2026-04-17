@@ -28,7 +28,7 @@ languages = [
   "racket",
   "rust",
   "scheme",
-  "sequence_l",
+  "sequencel",
   "tcl",
   "xpl0",
 ]

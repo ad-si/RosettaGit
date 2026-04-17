@@ -43,7 +43,7 @@ languages = [
   "sidef",
   "swift",
   "visual_basic",
-  "visual_basic_dot_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

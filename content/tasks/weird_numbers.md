@@ -11,7 +11,7 @@ tags = []
 languages = [
   "applescript",
   "c",
-  "c_plus_plus",
+  "cpp",
   "d",
   "go",
   "haskell",
@@ -24,7 +24,7 @@ languages = [
   "phix",
   "rexx",
   "sidef",
-  "visual_basic_net"
+  "visual_basic_.net",
 ]
 +++
 

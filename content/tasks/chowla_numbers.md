@@ -31,7 +31,6 @@ languages = [
   "picolisp",
   "powerbasic",
   "python",
-  "related_tasks",
   "rexx",
   "scala",
   "visual_basic",

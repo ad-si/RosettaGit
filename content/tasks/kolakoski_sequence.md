@@ -9,10 +9,6 @@ id = 21846
 categories = ["task"]
 tags = []
 languages = [
-  "20_members_of_the_series_generated_from_1_2_is",
-  "20_members_of_the_series_generated_from_2_1_is",
-  "30_members_of_the_series_generated_from_1_3_1_2_is",
-  "30_members_of_the_series_generated_from_1_3_2_1_is",
   "c",
   "cpp",
   "csharp",

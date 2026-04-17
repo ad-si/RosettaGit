@@ -20,7 +20,6 @@ languages = [
   "component_pascal",
   "csharp",
   "d",
-  "display_an_integer_array_in_a_tablular_format",
   "e",
   "elixir",
   "erlang",

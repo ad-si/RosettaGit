@@ -41,7 +41,7 @@ languages = [
   "ruby",
   "scala",
   "sidef",
-  "visual_basic_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

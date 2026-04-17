@@ -33,7 +33,6 @@ languages = [
   "prolog",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "sidef",

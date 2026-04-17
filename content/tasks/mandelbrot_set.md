@@ -115,7 +115,7 @@ languages = [
   "txr",
   "ubasic_4th",
   "vedit_macro_language",
-  "visual_basic_for_applications_on_excel",
+  "vba",
   "xpl0",
   "xslt",
   "yabasic",

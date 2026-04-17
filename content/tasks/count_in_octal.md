@@ -85,7 +85,6 @@ languages = [
   "purebasic",
   "python",
   "racket",
-  "related_tasks",
   "retro",
   "rexx",
   "ring",

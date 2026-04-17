@@ -11,7 +11,7 @@ tags = []
 languages = [
   "c",
   "d",
-  "echo_lisp",
+  "echolisp",
   "go",
   "haskell",
   "j",
@@ -27,7 +27,7 @@ languages = [
   "rexx",
   "sage",
   "sidef",
-  "tcl"
+  "tcl",
 ]
 +++
 

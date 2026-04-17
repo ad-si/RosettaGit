@@ -74,7 +74,6 @@ languages = [
   "racket",
   "rascal",
   "raven",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -91,7 +90,7 @@ languages = [
   "unix_shell",
   "unixpipes",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
   "zsh",
 ]

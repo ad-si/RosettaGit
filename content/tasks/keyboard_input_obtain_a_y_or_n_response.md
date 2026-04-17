@@ -35,7 +35,7 @@ languages = [
   "futurebasic",
   "glovepie",
   "go",
-  "gwbasic",
+  "gw-basic",
   "haskell",
   "inform_7",
   "javascript",

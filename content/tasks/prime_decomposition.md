@@ -54,7 +54,6 @@ languages = [
   "kotlin",
   "lfe",
   "lingo",
-  "lint_m_void",
   "logo",
   "lua",
   "m2000_interpreter",
@@ -81,7 +80,6 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -102,7 +100,6 @@ languages = [
   "vbscript",
   "xslt",
   "zkl",
-  "இந_த_ந_ரல_தரப_பட_ட_எண_ண_ன_பக_எண_க_ற_கள_க_கண_டற_ய_ம",
 ]
 +++
 

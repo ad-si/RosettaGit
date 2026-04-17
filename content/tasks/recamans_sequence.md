@@ -12,8 +12,8 @@ languages = [
   "apple_script",
   "awk",
   "c",
-  "c_plus_plus",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "d",
   "freebasic",
   "go",
@@ -36,8 +36,8 @@ languages = [
   "scala",
   "sidef",
   "vbscript",
-  "visual_basic_dot_net",
-  "zkl"
+  "visual_basic_.net",
+  "zkl",
 ]
 tags = []
 +++

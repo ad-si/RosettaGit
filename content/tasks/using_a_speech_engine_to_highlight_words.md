@@ -13,7 +13,6 @@ languages = [
   "go",
   "m2000_interpreter",
   "mathematica",
-  "related_tasks",
   "rexx",
   "ruby",
   "tcl",

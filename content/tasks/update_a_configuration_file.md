@@ -30,7 +30,6 @@ languages = [
   "powershell",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "tcl",

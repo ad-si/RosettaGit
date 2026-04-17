@@ -68,7 +68,7 @@ languages = [
   "tcl",
   "vbscript",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "zkl",
 ]

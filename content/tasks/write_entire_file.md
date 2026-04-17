@@ -66,7 +66,7 @@ languages = [
   "tuscript",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "xtend",
   "yabasic",

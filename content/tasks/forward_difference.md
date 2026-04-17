@@ -41,7 +41,6 @@ languages = [
   "javascript",
   "jq",
   "julia",
-  "k4",
   "kotlin",
   "lasso",
   "logo",

@@ -20,7 +20,7 @@ languages = [
   "perl_6",
   "phix",
   "racket",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
 ]
 +++
 

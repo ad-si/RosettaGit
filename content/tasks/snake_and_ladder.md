@@ -24,7 +24,7 @@ languages = [
   "racket",
   "rexx",
   "ruby",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
 ]
 +++
 

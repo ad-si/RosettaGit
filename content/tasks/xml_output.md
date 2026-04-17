@@ -65,7 +65,7 @@ languages = [
   "tuscript",
   "vbscript",
   "vedit_macro_language",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "xquery",
   "yabasic",

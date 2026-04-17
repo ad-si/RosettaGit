@@ -14,7 +14,7 @@ languages = [
   "ada",
   "aime",
   "algol_68",
-  "auto_hotkey",
+  "autohotkey",
   "awk",
   "c",
   "cpp",

@@ -51,8 +51,6 @@ languages = [
   "tailspin",
   "tcl",
   "vba",
-  "vertex_this_vertex_void",
-  "vertexroute_vertex_route_void",
   "zkl",
 ]
 +++

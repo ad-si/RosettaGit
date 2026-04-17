@@ -10,7 +10,7 @@ categories = ["task"]
 tags = []
 languages = [
   "apple_script",
-  "c_sharp",
+  "csharp",
   "d",
   "go",
   "java",

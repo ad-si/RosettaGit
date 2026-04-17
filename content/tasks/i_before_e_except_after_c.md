@@ -10,7 +10,6 @@ categories = ["task"]
 tags = []
 languages = [
   "algol_68",
-  "alternative_implementation",
   "autohotkey",
   "awk",
   "batch_file",
@@ -57,7 +56,7 @@ languages = [
   "tuscript",
   "unix_shell",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -9,11 +9,11 @@ id = 22520
 categories = ["task", "Mathematics"]
 tags = []
 languages = [
-  "c_sharp",
+  "csharp",
   "go",
   "julia",
   "rexx",
-  "visual_basic_net",
+  "visual_basic_.net",
 ]
 +++
 

@@ -10,9 +10,9 @@ categories = ["task", "Percolation Simulations"]
 tags = []
 languages = [
   "c",
-  "c_plus_plus",
+  "cpp",
   "d",
-  "echo_lisp",
+  "echolisp",
   "factor",
   "fortran",
   "go",

@@ -44,7 +44,6 @@ languages = [
   "pl_i",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

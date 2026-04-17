@@ -86,7 +86,6 @@ languages = [
   "r",
   "racket",
   "raven",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

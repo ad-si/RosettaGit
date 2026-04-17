@@ -44,7 +44,6 @@ languages = [
   "powershell",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

@@ -11,7 +11,7 @@ tags = []
 languages = [
   "ada",
   "arm_assembly",
-  "auto_hotkey",
+  "autohotkey",
   "batch_file",
   "bbc_basic",
   "cpp",

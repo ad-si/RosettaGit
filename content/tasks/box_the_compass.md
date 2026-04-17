@@ -72,7 +72,6 @@ languages = [
   "seed7",
   "sidef",
   "smart_basic",
-  "taskavast_me_hearties",
   "tcl",
   "ubasic_4th",
   "unix_shell",

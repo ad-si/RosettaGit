@@ -44,7 +44,6 @@ languages = [
   "pike",
   "python",
   "racket",
-  "related_tasks",
   "ruby",
   "scala",
   "sidef",

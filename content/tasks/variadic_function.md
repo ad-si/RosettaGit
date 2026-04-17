@@ -86,7 +86,6 @@ languages = [
   "rapidq",
   "realbasic",
   "rebol",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

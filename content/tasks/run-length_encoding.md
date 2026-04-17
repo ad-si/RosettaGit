@@ -23,7 +23,6 @@ languages = [
   "burlesque",
   "c",
   "ceylon",
-  "char_c_void",
   "clojure",
   "cobol",
   "coffeescript",

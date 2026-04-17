@@ -15,8 +15,7 @@ languages = [
   "julia",
   "kotlin",
   "phix",
-  "related_tasks",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

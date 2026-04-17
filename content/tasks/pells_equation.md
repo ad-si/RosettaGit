@@ -10,7 +10,7 @@ categories = ["task", "Mathematics"]
 tags = []
 languages = [
   "algol_68",
-  "c_sharp",
+  "csharp",
   "d",
   "factor",
   "freebasic",
@@ -24,7 +24,7 @@ languages = [
   "rexx",
   "ruby",
   "sidef",
-  "visual_basic_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

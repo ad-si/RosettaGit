@@ -21,7 +21,7 @@ languages = [
   "csharp",
   "d",
   "elixir",
-  "f_sharp",
+  "fsharp",
   "factor",
   "forth",
   "fortran",

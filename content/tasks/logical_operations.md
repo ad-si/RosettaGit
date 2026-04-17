@@ -149,7 +149,7 @@ languages = [
   "ubasic_4th",
   "v",
   "vala",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "xpl0",
   "xslt",

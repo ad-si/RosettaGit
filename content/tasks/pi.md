@@ -74,7 +74,7 @@ languages = [
   "tcl",
   "typescript",
   "visual_basic",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

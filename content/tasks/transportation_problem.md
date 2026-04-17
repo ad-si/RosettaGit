@@ -21,7 +21,6 @@ languages = [
   "perl_6",
   "phix",
   "racket",
-  "related_tasks",
   "sas",
 ]
 +++

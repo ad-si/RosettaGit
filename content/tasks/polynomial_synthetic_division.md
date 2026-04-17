@@ -8,11 +8,11 @@ id = 19225
 [taxonomies]
 categories = ["task"]
 languages = [
-  "c_sharp",
+  "csharp",
   "go",
   "j",
   "java",
-  "kotlin"
+  "kotlin",
 ]
 tags = []
 +++

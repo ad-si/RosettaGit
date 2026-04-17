@@ -63,7 +63,6 @@ languages = [
   "r",
   "racket",
   "rapidq",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

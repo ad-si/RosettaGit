@@ -23,12 +23,11 @@ languages = [
   "phix",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ruby",
   "seed7",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

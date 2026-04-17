@@ -15,7 +15,7 @@ languages = [
   "algol_68",
   "algol_w",
   "amigae",
-  "auto_hotkey",
+  "autohotkey",
   "arm_assembly",
   "arturo",
   "awk",
@@ -27,8 +27,8 @@ languages = [
   "befunge",
   "bracmat",
   "c",
-  "c_sharp",
-  "c_plus_plus",
+  "csharp",
+  "cpp",
   "clojure",
   "cobol",
   "comal",
@@ -36,7 +36,7 @@ languages = [
   "d",
   "dcl",
   "delphi",
-  "dw_script",
+  "dwscript",
   "dyalect",
   "dylan",
   "e",
@@ -79,7 +79,6 @@ languages = [
   "metafont",
   "neko",
   "nemerle",
-  "netrex",
   "nim",
   "objeck",
   "ocaml",
@@ -120,7 +119,7 @@ languages = [
   "ursala",
   "visual_basic",
   "xpl0",
-  "zkl"
+  "zkl",
 ]
 +++
 

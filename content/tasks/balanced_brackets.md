@@ -62,7 +62,7 @@ languages = [
   "julia",
   "k",
   "kotlin",
-  "l",
+  "l__",
   "lasso",
   "liberty_basic",
   "lua",

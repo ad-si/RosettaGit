@@ -60,7 +60,6 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",
@@ -72,7 +71,7 @@ languages = [
   "tbas",
   "tcl",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

@@ -22,8 +22,8 @@ languages = [
   "bbc_basic",
   "biferno",
   "c",
-  "c_plus_plus",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "clojure",
   "cobol",
   "coldfusion",
@@ -109,9 +109,9 @@ languages = [
   "unix_shell",
   "vbscript",
   "visual_basic",
-  "visual_basic_net",
+  "visual_basic_.net",
   "zkl",
-  "zsh"
+  "zsh",
 ]
 +++
 

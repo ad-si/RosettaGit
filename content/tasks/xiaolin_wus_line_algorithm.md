@@ -10,7 +10,7 @@ categories = ["task", "Raster graphics operations"]
 tags = []
 languages = [
   "arm_assembly",
-  "auto_hotkey",
+  "autohotkey",
   "bbc_basic",
   "c",
   "d",

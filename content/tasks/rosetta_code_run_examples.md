@@ -9,13 +9,9 @@ id = 10925
 categories = ["task"]
 tags = []
 languages = [
-  "figure_out_which_tasks_to_run",
-  "initialization",
   "liberty_basic",
-  "main_loop",
   "perl_6",
   "run_basic",
-  "subroutines",
   "tcl",
   "unix_shell",
 ]

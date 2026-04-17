@@ -14,8 +14,8 @@ languages = [
   "autohotkey",
   "bbc_basic",
   "c",
-  "c_plus_plus",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "clojure",
   "common_lisp",
   "d",
@@ -56,7 +56,7 @@ languages = [
   "vba",
   "vbscript",
   "verilog",
-  "zkl"
+  "zkl",
 ]
 +++
 

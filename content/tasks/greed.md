@@ -9,13 +9,13 @@ id = 20780
 categories = ["task"]
 tags = []
 languages = [
-  "c_plus_plus",
+  "cpp",
   "go",
   "kotlin",
   "java",
   "julia",
   "phix",
-  "rexx"
+  "rexx",
 ]
 +++
 

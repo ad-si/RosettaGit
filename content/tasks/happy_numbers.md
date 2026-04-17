@@ -118,7 +118,7 @@ languages = [
   "vala",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "zkl",
   "zx_spectrum_basic",

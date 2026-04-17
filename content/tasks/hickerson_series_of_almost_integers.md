@@ -13,7 +13,7 @@ languages = [
   "awk",
   "bracmat",
   "c",
-  "c_plus_plus",
+  "cpp",
   "cobol",
   "clojure",
   "crystal",
@@ -44,7 +44,7 @@ languages = [
   "jq",
   "mlite",
   "zkl",
-  "wolfram_language"
+  "wolfram_language",
 ]
 +++
 

@@ -163,7 +163,7 @@ languages = [
   "v",
   "vba",
   "vedit_macro_language",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wart",
   "xpl0",
   "zkl",

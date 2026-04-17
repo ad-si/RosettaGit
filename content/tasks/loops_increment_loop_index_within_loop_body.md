@@ -34,14 +34,13 @@ languages = [
   "phix",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "scala",
   "seed7",
   "tcl",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

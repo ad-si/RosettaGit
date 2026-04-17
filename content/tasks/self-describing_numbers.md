@@ -17,7 +17,7 @@ languages = [
   "bbc_basic",
   "befunge",
   "c",
-  "c_plus_plus",
+  "cpp",
   "common_lisp",
   "d",
   "elixir",

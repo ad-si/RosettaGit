@@ -26,8 +26,6 @@ languages = [
   "kotlin",
   "lingo",
   "mips_assembly",
-  "nibble_in_nibble_void",
-  "nibble_nibble_void",
   "nim",
   "ocaml",
   "perl",

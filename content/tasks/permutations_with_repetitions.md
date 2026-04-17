@@ -33,7 +33,6 @@ languages = [
   "pascal",
   "perl",
   "perl_6",
-  "permelemlist_candidate_void",
   "phix",
   "php",
   "picolisp",

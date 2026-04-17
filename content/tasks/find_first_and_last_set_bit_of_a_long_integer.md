@@ -10,7 +10,7 @@ categories = ["task"]
 tags = []
 languages = [
   "algol_68",
-  "auto_hotkey",
+  "autohotkey",
   "c",
   "d",
   "fortran",
@@ -23,7 +23,7 @@ languages = [
   "perl",
   "perl_6",
   "phix",
-  "pico_lisp",
+  "picolisp",
   "python",
   "racket",
   "rexx",
@@ -31,7 +31,7 @@ languages = [
   "seed7",
   "sidef",
   "tcl",
-  "zkl"
+  "zkl",
 ]
 +++
 

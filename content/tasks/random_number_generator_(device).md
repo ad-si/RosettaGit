@@ -15,10 +15,10 @@ languages = [
   "batch_file",
   "bbc_basic",
   "c",
-  "c_sharp",
+  "csharp",
   "common_lisp",
   "d",
-  "echo_lisp",
+  "echolisp",
   "factor",
   "forth",
   "fortran",
@@ -40,8 +40,8 @@ languages = [
   "perl",
   "perl_6",
   "phix",
-  "pico_lisp",
-  "power_shell",
+  "picolisp",
+  "powershell",
   "purebasic",
   "python",
   "racket",
@@ -56,7 +56,7 @@ languages = [
   "wee_basic",
   "x86_assembly",
   "xpl0",
-  "zkl"
+  "zkl",
 ]
 +++
 

@@ -30,7 +30,6 @@ languages = [
   "picolisp",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

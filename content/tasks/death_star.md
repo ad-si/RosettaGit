@@ -9,11 +9,11 @@ id = 9404
 categories = ["task", "Constructive Solid Geometry"]
 tags = []
 languages = [
-  "auto_hotkey",
+  "autohotkey",
   "brlcad",
   "c",
   "d",
-  "dw_script",
+  "dwscript",
 ]
 +++
 

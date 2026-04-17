@@ -9,7 +9,7 @@ id = 17325
 categories = ["task"]
 tags = []
 languages = [
-  "c_plus_plus",
+  "cpp",
   "d",
   "go",
   "haskell",
@@ -19,7 +19,7 @@ languages = [
   "perl",
   "perl_6",
   "phix",
-  "pico_lisp",
+  "picolisp",
   "python",
   "rexx",
   "ring",

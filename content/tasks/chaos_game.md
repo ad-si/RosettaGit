@@ -13,7 +13,6 @@ languages = [
   "basic",
   "basic256",
   "c",
-  "chaos_game_sierpinski_triangle_2_16_17_aev",
   "common_lisp",
   "cpp",
   "csharp",

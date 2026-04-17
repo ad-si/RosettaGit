@@ -94,9 +94,9 @@ languages = [
   "ursa",
   "ursala",
   "v",
-  "visual_basic_net",
+  "visual_basic_.net",
   "vba",
-  "zkl"
+  "zkl",
 ]
 tags = []
 +++

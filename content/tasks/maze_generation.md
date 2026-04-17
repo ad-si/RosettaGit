@@ -57,7 +57,6 @@ languages = [
   "python",
   "racket",
   "rascal",
-  "related_tasks",
   "rexx",
   "ruby",
   "rust",

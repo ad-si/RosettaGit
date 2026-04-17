@@ -47,7 +47,7 @@ languages = [
   "tcl",
   "unix_shell",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xojo",
   "zkl",
 ]

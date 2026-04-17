@@ -9,7 +9,7 @@ id = 4261
 categories = ["task", "GUI"]
 tags = []
 languages = [
-  "actionscript3",
+  "actionscript_3",
   "ada",
   "applescript",
   "autohotkey",

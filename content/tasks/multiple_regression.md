@@ -37,7 +37,6 @@ languages = [
   "stata",
   "tcl",
   "ursala",
-  "wikipedia_data",
   "zkl",
 ]
 +++

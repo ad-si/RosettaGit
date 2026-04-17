@@ -95,7 +95,6 @@ languages = [
   "vala",
   "vba",
   "vbscript",
-  "version_2",
   "xpl0",
   "yabasic",
   "zkl",

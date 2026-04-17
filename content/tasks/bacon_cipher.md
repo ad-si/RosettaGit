@@ -31,7 +31,7 @@ languages = [
   "python",
   "racket",
   "rexx",
-  "visual_basic_dot_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

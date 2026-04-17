@@ -16,7 +16,7 @@ languages = [
   "asciidots",
   "bloop",
   "c",
-  "c++",
+  "cpp",
   "crystal",
   "factor",
   "go",

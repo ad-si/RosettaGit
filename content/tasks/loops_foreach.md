@@ -114,7 +114,7 @@ languages = [
   "phix",
   "phl",
   "php",
-  "pico_lisp",
+  "picolisp",
   "pike",
   "pl_i",
   "pop11",
@@ -158,14 +158,14 @@ languages = [
   "vba",
   "vbscript",
   "vim_script",
-  "visual_basic_net",
+  "visual_basic_.net",
   "wart",
   "wdte",
   "xlisp",
   "xpl0",
   "xslt",
   "zig",
-  "zkl"
+  "zkl",
 ]
 +++
 

@@ -10,7 +10,7 @@ categories = ["task"]
 tags = []
 languages = [
   "c",
-  "echo_lisp",
+  "echolisp",
   "freebasic",
   "go",
   "haskell",
@@ -21,7 +21,7 @@ languages = [
   "kotlin",
   "maple",
   "mathematica",
-  "oo_rexx",
+  "oorexx",
   "perl",
   "perl_6",
   "phix",

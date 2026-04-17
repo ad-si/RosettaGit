@@ -9,7 +9,7 @@ id = 21906
 categories = ["task"]
 languages = [
   "c",
-  "easy_lang",
+  "easylang",
   "factor",
   "go",
   "j",

@@ -63,7 +63,6 @@ languages = [
   "pl_i",
   "plaintex",
   "powershell",
-  "progress",
   "purebasic",
   "python",
   "racket",

@@ -28,7 +28,6 @@ languages = [
   "postgresql",
   "python",
   "racket",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

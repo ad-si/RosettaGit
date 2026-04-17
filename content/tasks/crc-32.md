@@ -64,7 +64,6 @@ languages = [
   "rust",
   "scala",
   "seed7",
-  "shell",
   "smalltalk",
   "swift",
   "tcl",

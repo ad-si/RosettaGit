@@ -13,7 +13,7 @@ languages = [
   "algol_68",
   "c",
   "common_lisp",
-  "c_sharp",
+  "csharp",
   "d",
   "delphi",
   "fortran",

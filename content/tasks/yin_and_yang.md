@@ -65,7 +65,7 @@ languages = [
   "svg",
   "tcl",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xpl0",
   "yabasic",
   "zkl",

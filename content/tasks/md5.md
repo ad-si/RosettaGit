@@ -86,7 +86,7 @@ languages = [
   "suneido",
   "tcl",
   "unix_shell",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

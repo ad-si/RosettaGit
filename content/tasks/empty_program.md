@@ -93,7 +93,7 @@ languages = [
   "haxe",
   "hicest",
   "holyc",
-  "hq9",
+  "hq9+",
   "html",
   "huginn",
   "i",

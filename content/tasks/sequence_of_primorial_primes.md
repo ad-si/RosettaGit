@@ -27,7 +27,6 @@ languages = [
   "phix",
   "python",
   "racket",
-  "related_tasks",
   "ring",
   "ruby",
   "sidef",

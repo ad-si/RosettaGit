@@ -71,7 +71,7 @@ languages = [
   "stata",
   "supercollider",
   "tcl",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "visual_prolog",
   "wrapl",
   "zkl",

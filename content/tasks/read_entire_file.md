@@ -10,8 +10,8 @@ categories = ["task", "File handling"]
 tags = []
 languages = [
   "ada",
-  "auto_hotkey",
-  "auto_it",
+  "autohotkey",
+  "autoit",
   "algol_68",
   "apple_script",
   "arturo",
@@ -23,8 +23,8 @@ languages = [
   "bracmat",
   "brat",
   "c",
-  "c_plus_plus",
-  "c_sharp",
+  "cpp",
+  "csharp",
   "clojure",
   "cmake",
   "common_lisp",
@@ -79,7 +79,7 @@ languages = [
   "objeck",
   "ocaml",
   "oorexx",
-  "oxygen_basic",
+  "oxygenbasic",
   "oz",
   "pari_gp",
   "panda",
@@ -88,7 +88,7 @@ languages = [
   "perl_6",
   "phix",
   "php",
-  "pico_lisp",
+  "picolisp",
   "pike",
   "pl_i",
   "powershell",
@@ -104,7 +104,7 @@ languages = [
   "ring",
   "ruby",
   "run_basic",
-  "rust"
+  "rust",
 ]
 +++
 

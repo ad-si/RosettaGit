@@ -32,7 +32,7 @@ languages = [
   "perl",
   "perl_6",
   "phix",
-  "pico_lisp",
+  "picolisp",
   "purebasic",
   "racket",
   "rexx",
@@ -43,7 +43,7 @@ languages = [
   "seed7",
   "tcl",
   "visual_basic",
-  "visual_basic_dot_net",
+  "visual_basic_.net",
   "zx_spectrum_basic",
   "zkl",
 ]

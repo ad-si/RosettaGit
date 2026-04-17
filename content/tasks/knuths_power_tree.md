@@ -9,7 +9,7 @@ id = 19210
 categories = ["task", "Knuth's power tree"]
 tags = []
 languages = [
-  "echo_lisp",
+  "echolisp",
   "scheme",
   "go",
   "plain_text",

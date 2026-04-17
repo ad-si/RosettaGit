@@ -15,7 +15,7 @@ languages = [
   "awk",
   "bbc_basic",
   "c",
-  "c_sharp",
+  "csharp",
   "clojure",
   "common_lisp",
   "d",

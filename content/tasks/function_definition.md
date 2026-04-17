@@ -176,7 +176,6 @@ languages = [
   "raven",
   "realbasic",
   "rebol",
-  "related_tasks",
   "retro",
   "rexx",
   "ring",

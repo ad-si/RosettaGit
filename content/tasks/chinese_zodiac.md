@@ -26,7 +26,7 @@ languages = [
   "tcl",
   "utfool",
   "vbscript",
-  "visual_basic_net",
+  "visual_basic_.net",
   "zkl",
 ]
 +++

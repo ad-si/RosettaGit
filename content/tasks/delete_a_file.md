@@ -40,7 +40,7 @@ languages = [
   "forth",
   "fortran",
   "free_pascal",
-  "free_basic",
+  "freebasic",
   "gap",
   "gambas",
   "go",
@@ -80,7 +80,7 @@ languages = [
   "pike",
   "powershell",
   "prodos",
-  "pure_basic",
+  "purebasic",
   "python",
   "r",
   "rebol",
@@ -109,12 +109,12 @@ languages = [
   "vba",
   "vbscript",
   "vedit_macro_language",
-  "visual_basic_net",
+  "visual_basic_.net",
   "x86_assembly",
   "yorick",
   "zx_spectrum_basic",
   "oorexx",
-  "zkl"
+  "zkl",
 ]
 +++
 

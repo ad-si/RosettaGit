@@ -61,7 +61,7 @@ languages = [
   "sidef",
   "tcl",
   "vba",
-  "visual_basic_net",
+  "visual_basic_.net",
   "xpl0",
   "zkl",
   "zx_spectrum_basic",

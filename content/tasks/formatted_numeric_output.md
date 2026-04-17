@@ -29,7 +29,6 @@ languages = [
   "d",
   "dc",
   "delphi",
-  "detail",
   "eiffel",
   "elixir",
   "emacs_lisp",

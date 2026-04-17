@@ -95,7 +95,6 @@ languages = [
   "racket",
   "rebol",
   "red",
-  "related_task",
   "rexx",
   "ring",
   "ruby",

@@ -63,7 +63,7 @@ languages = [
   "tcl",
   "ursa",
   "vba",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "xlisp",
   "yabasic",
   "zkl",

@@ -21,7 +21,6 @@ languages = [
   "c",
   "clojure",
   "coffeescript",
-  "combdatalist_recombination_void",
   "common_lisp",
   "cpp",
   "crystal",

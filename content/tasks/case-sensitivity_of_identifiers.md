@@ -84,7 +84,6 @@ languages = [
   "python",
   "r",
   "racket",
-  "related_tasks",
   "retro",
   "rexx",
   "ring",

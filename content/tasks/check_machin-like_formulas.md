@@ -9,8 +9,6 @@ id = 12552
 categories = ["task"]
 tags = []
 languages = [
-  "1_false",
-  "1_true",
   "clojure",
   "d",
   "echolisp",

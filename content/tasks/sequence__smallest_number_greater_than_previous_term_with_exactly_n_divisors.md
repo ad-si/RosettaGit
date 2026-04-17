@@ -24,7 +24,6 @@ languages = [
   "perl_6",
   "phix",
   "python",
-  "related_tasks",
   "rexx",
   "ring",
   "ruby",

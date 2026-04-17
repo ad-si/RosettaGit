@@ -147,14 +147,12 @@ languages = [
   "vala",
   "vba",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "wdte",
   "wortel",
   "xpl0",
   "yorick",
   "zkl",
-  "இந_த_ந_ரல_ஒன_ற_ம_தல_தரப_பட_ட_எண_வர_1_எண_எண_எனக_கணக_க_ட_ட_க_க_ட_ட_வ_ட_தர_ம",
-  "இந_த_ந_ரல_த_டர_க_ட_டல_sum_of_series_என_ற_வக_ய_ச_ச_ர_ந_தத",
 ]
 +++
 

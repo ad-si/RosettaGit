@@ -25,7 +25,6 @@ languages = [
   "racket",
   "sidef",
   "tcl",
-  "vvvvvv",
   "zkl",
 ]
 +++

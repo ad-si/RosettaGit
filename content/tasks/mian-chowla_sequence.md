@@ -30,7 +30,7 @@ languages = [
   "sidef",
   "swift",
   "vbscript",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
 ]
 +++
 

@@ -12,8 +12,8 @@ languages = [
   "c",
   "go",
   "julia",
-  "pico_lisp",
-  "tcl"
+  "picolisp",
+  "tcl",
 ]
 +++
 

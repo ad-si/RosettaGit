@@ -89,7 +89,7 @@ languages = [
   "swift",
   "tcl",
   "txr",
-  "visual_basic_dotnet",
+  "visual_basic_.net",
   "vorpal",
   "xlisp",
   "zkl",
