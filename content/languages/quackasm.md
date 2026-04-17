@@ -4,5 +4,9 @@ description = ""
 aliases = []
 [taxonomies]
 categories = []
-tags = []
+tags = [
+  "assembly",
+]
 +++
+
+QuackASM is an assembler-style language used in the Quack programming ecosystem.

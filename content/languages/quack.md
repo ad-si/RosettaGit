@@ -6,3 +6,5 @@ aliases = []
 categories = []
 tags = []
 +++
+
+Quack is a small programming language.

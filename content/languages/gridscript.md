@@ -6,3 +6,5 @@ aliases = []
 categories = []
 tags = []
 +++
+
+GridScript is a scripting language.

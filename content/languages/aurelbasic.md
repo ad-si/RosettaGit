@@ -6,3 +6,5 @@ aliases = []
 categories = []
 tags = []
 +++
+
+AurelBasic is a small BASIC-like interpreter.
