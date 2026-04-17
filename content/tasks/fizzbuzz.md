@@ -297,26 +297,12 @@ languages = [
 ]
 +++
 
-## Task
+The "FizzBuzz" problem was presented
+as the lowest level of comprehension required to illustrate adequacy.
 
-Write a program that prints the integers from   '''1'''   to   '''100'''   (inclusive).
-
-
-But:
-:*   for multiples of three,   print   '''Fizz'''     (instead of the number)
-:*   for multiples of five,   print   '''Buzz'''     (instead of the number)
-:*   for multiples of both three and five,   print   '''FizzBuzz'''     (instead of the number)
-
-
-The   ''FizzBuzz''   problem was presented as the lowest level of comprehension required to illustrate adequacy.
-
-
-;Also see:
-*   (a blog)   [http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html dont-overthink-fizzbuzz]
-*   (a blog)   [http://blog.codinghorror.com/fizzbuzz-the-programmers-stairway-to-heaven/ fizzbuzz-the-programmers-stairway-to-heaven]
-
-
-
+Also see:
+- [Don't overthink FizzBuzz](http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html)
+- [FizzBuzz: The Programmer's Stairway to Heaven](https://blog.codinghorror.com/fizzbuzz-the-programmers-stairway-to-heaven/)
 
 
 ## 360 Assembly
@@ -3063,24 +3049,24 @@ end
 
 ## CSS
 
-```txt
+```html
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-<style>
-li {
-  list-style-position: inside;
-}
-li:nth-child(3n), li:nth-child(5n) {
-  list-style-type: none;
-}
-li:nth-child(3n)::before {
-  content:'Fizz';
-}
-li:nth-child(5n)::after {
-  content:'Buzz';
-}
-</style>
+  <style>
+    li {
+      list-style-position: inside;
+    }
+    li:nth-child(3n), li:nth-child(5n) {
+      list-style-type: none;
+    }
+    li:nth-child(3n)::before {
+      content:'Fizz';
+    }
+    li:nth-child(5n)::after {
+      content:'Buzz';
+    }
+  </style>
 </head>
 <body>
   <ol>
@@ -3187,14 +3173,14 @@ li:nth-child(5n)::after {
   </ol>
 </body>
 </html>
-
 ```
 
 
 
 ## Cubescript
 
-<lang>alias fizzbuzz [
+```cubescript
+alias fizzbuzz [
 	loop i 100 [
 		push i (+ $i 1) [
 			cond (! (mod $i 15)) [
@@ -3212,9 +3198,7 @@ li:nth-child(5n)::after {
 ```
 
 
-
 ## D
-
 
 ```d
 import std.stdio, std.algorithm, std.conv;
@@ -4889,7 +4873,8 @@ main :: IO ()
 main = putStr $ concatMap fizzbuzz [1 .. 100]
 ```
 
-Does not perform the mod 15 step, extesible to arbitrary addtional tests, ex: [bar| n `mod` 7 == 0].
+Does not perform the mod 15 step, extensible to arbitrary additional tests, ex:
+`[bar| n `mod` 7 == 0]`.
 
 ```haskell
 main = mapM_ (putStrLn . fizzbuzz) [1..100]
@@ -12040,7 +12025,6 @@ Walker.cycle(0,0,"Fizz",0,"Buzz","Fizz",0,0,"Fizz","Buzz",0,"Fizz",0,0,"FizzBuzz
 ```
 
 ```txt
-
 1
 2
 Fizz
@@ -12057,9 +12041,7 @@ Fizz
 14
 FizzBuzz
 ...
-
 ```
-
 
 
 ## ZX Spectrum Basic

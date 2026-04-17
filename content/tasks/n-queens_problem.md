@@ -118,28 +118,28 @@ languages = [
 ]
 +++
 
-[[File:chess_queen.jpg|400px||right]]
-
-[[File:N_queens_problem.png|400px||right]]
-
-Solve the [[WP:Eight_queens_puzzle|eight queens puzzle]].
 
 
-You can extend the problem to solve the puzzle with a board of size   <big>'''N'''x'''N'''</big>.
 
-For the number of solutions for small values of   '''N''',   see   [http://oeis.org/A000170 oeis.org sequence A170].
+
+Solve the [eight queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle).
+
+
+You can extend the problem to solve the puzzle with a board of size   **N**x**N**.
+
+For the number of solutions for small values of   **N**,   see   [oeis.org sequence A170](http://oeis.org/A000170).
 
 
 ## Related tasks
 
-* [[A* search algorithm]]
-* [[Solve a Hidato puzzle]]
-* [[Solve a Holy Knight's tour]]
-* [[Knight's tour]]
-* [[Peaceful chess queen armies]]
-* [[Solve a Hopido puzzle]]
-* [[Solve a Numbrix puzzle]]
-* [[Solve the no connection puzzle]]
+* [A* search algorithm](/tasks/a*_search_algorithm)
+* [Solve a Hidato puzzle](/tasks/solve_a_hidato_puzzle)
+* [Solve a Holy Knight's tour](/tasks/solve_a_holy_knights_tour)
+* [Knight's tour](/tasks/knights_tour)
+* [Peaceful chess queen armies](/tasks/peaceful_chess_queen_armies)
+* [Solve a Hopido puzzle](/tasks/solve_a_hopido_puzzle)
+* [Solve a Numbrix puzzle](/tasks/solve_a_numbrix_puzzle)
+* [Solve the no connection puzzle](/tasks/solve_the_no_connection_puzzle)
 
 
 
@@ -317,8 +317,8 @@ U        DC     (4*LL-2)H'0'       stack
 ```
 
 
-=={{header|PDP-11 Assembly}}==
-<lang PDP-11 Assembly>
+## PDP-11 Assembly
+```asm
 ; "eight queens problem" benchmark test
 
          .radix    16
@@ -1465,15 +1465,15 @@ GuiClose:
 ExitApp
 ```
 
-[[image:N-Queens_SolutionBrowserGUI.png]]
+
 
 
 ## BBC BASIC
 
 The total number of solutions is displayed in the title bar and one solution is displayed.  The code could be adapted to display a selected solution or multiple solutions.
-[[Image:queens8_bbc.gif|right]]
-[[Image:queens9_bbc.gif|right]]
-[[Image:queens10_bbc.gif|right]]
+
+
+
 
 ```bbcbasic
       Size% = 8
@@ -1830,7 +1830,7 @@ Size: 8
 );
 ```
 
-{{out}} (tail):
+Output (tail):
 
 ```txt
 
@@ -2245,7 +2245,7 @@ int main()
 
 ```
 
-{{out}}Output for N = 4:
+Output for N = 4:
 
 ```txt
   a  b  c  d
@@ -2525,7 +2525,7 @@ int main( int argc, char** argv )
 
 ```
 
-{{out}} for N=4:
+Output for N=4:
 
 ```txt
 
@@ -2686,7 +2686,7 @@ int main( int argc, char* argv[] )
 ```
 
 
-Version using Heuristics - explained here: [http://en.wikipedia.org/wiki/8_queens_puzzle#Solution_construction Solution_construction]
+Version using Heuristics - explained here: [Solution_construction](http://en.wikipedia.org/wiki/8_queens_puzzle#Solution_construction)
 
 ```cpp
 
@@ -2783,7 +2783,7 @@ int main( int argc, char* argv[] )
 
 
 ## C#
-=== Roger Hui (1981) Algorithm ===
+### Roger Hui (1981) Algorithm
 From Hui, Roger, The N Queens Problem, APL Quote-Quad, Volume 11, Number 3, 1981-03:-
 
 "In a solution, each possible row (column) index must appear exactly once: an index occurring more than once means that two queens are on the same row (column); and the absence of an index means that some other index must occur more than once. Hence, we can specify an arrangement as a permutation of ⍳n , which are the column indices, with the row indices understood to be ⍳n . With this, the number of possibilities is reduced from n!n×n to !n . It remains to eliminate arrangements having two queens on the same diagonal.
@@ -2897,7 +2897,7 @@ namespace N_Queens
 
 ###  Amb solution
 
-This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C# class] in the Amb challenge. Really that is not McCarthy's Amb (Ambiguous function) and here it is used just as a simple general interface by lambdas to a standalone backtrack algorithm. Due to the specification of the Amb challenge, this, ironically (given the notion of ambiguous functions), only produces one solution not 92. It is trivial to update Amb (might be better called a backtracker rather than Amb too) but here it is just used to show how easy it is to go from a generate and prune Linq solution to a backtrack solution. The Linq filters becoming "amb" requirements.
+This uses the second version of the [Amb C# class](https://rosettacode.org/wiki/Amb#C.23) in the Amb challenge. Really that is not McCarthy's Amb (Ambiguous function) and here it is used just as a simple general interface by lambdas to a standalone backtrack algorithm. Due to the specification of the Amb challenge, this, ironically (given the notion of ambiguous functions), only produces one solution not 92. It is trivial to update Amb (might be better called a backtracker rather than Amb too) but here it is just used to show how easy it is to go from a generate and prune Linq solution to a backtrack solution. The Linq filters becoming "amb" requirements.
 <!-- By Martin Freedman, 9/02/2018 -->
 
 ```c#
@@ -2936,7 +2936,7 @@ namespace N_Queens
 
 ## Clojure
 
-This produces all solutions by essentially a backtracking algorithm. The heart is the ''extends?'' function, which takes a partial solution for the first ''k<size'' columns and sees if the solution can be extended by adding a queen at row ''n'' of column ''k+1''. The ''extend'' function takes a list of all partial solutions for ''k'' columns and produces a list of all partial solutions for ''k+1'' columns. The final list ''solutions'' is calculated by starting with the list of 0-column solutions (obviously this is the list ''[ [] ]'', and iterates ''extend'' for ''size'' times.
+This produces all solutions by essentially a backtracking algorithm. The heart is the *extends?* function, which takes a partial solution for the first *k<size* columns and sees if the solution can be extended by adding a queen at row *n* of column *k+1*. The *extend* function takes a list of all partial solutions for *k* columns and produces a list of all partial solutions for *k+1* columns. The final list *solutions* is calculated by starting with the list of 0-column solutions (obviously this is the list *[ [] ]*, and iterates *extend* for *size* times.
 
 ```clojure
 (def size 8)
@@ -3207,7 +3207,7 @@ As in Fortran, the iterative function above is equivalent to the recursive funct
 
 ## Curry
 
-Three different ways of attacking the same problem. All copied from [http://web.cecs.pdx.edu/~antoy/flp/patterns/ A Catalog of Design Patterns in FLP]
+Three different ways of attacking the same problem. All copied from [A Catalog of Design Patterns in FLP](http://web.cecs.pdx.edu/~antoy/flp/patterns/)
 
 ```curry
 
@@ -3383,7 +3383,7 @@ main = extend []
 
 ```
 
-Mainly [http://www-ps.informatik.uni-kiel.de/~pakcs/webpakcs/main.cgi?queens webpakcs], uses constraint-solver.
+Mainly [webpakcs](http://www-ps.informatik.uni-kiel.de/~pakcs/webpakcs/main.cgi?queens), uses constraint-solver.
 
 ```curry
 import CLPFD
@@ -3723,7 +3723,8 @@ Q * * *
 ## EasyLang
 
 
-<lang>subr show_sol
+```
+subr show_sol
   print "Solution " & n_sol
   print ""
   for i range n
@@ -4035,7 +4036,7 @@ end)
 ```
 
 
-<pre style="height: 80ex; overflow: scroll">
+```txt
 +---+
 | Q |
 +---+
@@ -4286,7 +4287,7 @@ N = 8. One solution.
 
 ## ERRE
 
-<lang>
+```
 !------------------------------------------------
 ! QUEENS.R : solve queens problem on a NxN board
 !------------------------------------------------
@@ -4430,7 +4431,7 @@ printNumberOfSolutions()
 
 The output:
 
-<lang>
+```
 | | | |X| | | | | |
 | |X| | | | | | | |
 | | | | | | |X| | |
@@ -4490,11 +4491,11 @@ IN: queens
 ```
 
 
-=={{header|Fōrmulæ}}==
+## Fōrmulæ
 
-In [http://wiki.formulae.org/N-queens_problem this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/N-queens_problem) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation —i.e. XML, JSON— they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -4644,8 +4645,9 @@ end subroutine
 end program
 ```
 
-{{out}} for 8, 16 and 32 queens
-<pre style="height:40ex;overflow:scroll">n = 8
+Output for 8, 16 and 32 queens:
+```txt
+n = 8
 +---+---+---+---+---+---+---+---+
 | Q |###|   |###|   |###|   |###|
 +---+---+---+---+---+---+---+---+
@@ -4916,7 +4918,7 @@ The remaining is parallelized with OpenMP. The loop is done on the valid combina
 in the first two columns. The original algorithm is slightly changed to start backtracking from
 column three.
 
-If using GCC, compile with ''gfortran -O2 -fopenmp queens.f90''. With Absoft Pro Fortran, ''af90 -O2 -openmp queens.f90'', and with Intel Fortran, ''ifort /fast /openmp queens.f90''.
+If using GCC, compile with *gfortran -O2 -fopenmp queens.f90*. With Absoft Pro Fortran, *af90 -O2 -openmp queens.f90*, and with Intel Fortran, *ifort /fast /openmp queens.f90*.
 
 With some versions of GCC the function OMP_GET_WTIME is not known, which seems to be a bug. Then it's enough to comment out the two calls, and the program won't display timings.
 
@@ -5334,7 +5336,7 @@ PrintArray(PermutationMat(PermList(a[1]), 8));
 
 ## Go
 
-===Niklaus Wirth algorithm (Wikipedia)===
+### Niklaus Wirth algorithm (Wikipedia)
 
 ```go
 // A fairly literal translation of the example program on the referenced
@@ -5415,7 +5417,7 @@ func main() {
 ```
 
 
-=== Refactored Niklaus Wirth algorithm (clearer/Go friendly solution) ===
+### Refactored Niklaus Wirth algorithm (clearer/Go friendly solution)
 
 ```go
 /*
@@ -5563,10 +5565,9 @@ func main() {
 ### Dancing Links / Algorithm X
 
 Using Knuth's
-[[WP:Dancing_Links|dancing links]] technique to implement his
-[[WP:Algorithm_X|Knuth's Algorithm X]].
-The Go code for this technique is in the
-[[N-queens_problem/dlx_go|dlx packge]].
+[dancing links](https://en.wikipedia.org/wiki/Dancing_Links) technique to implement his
+[Knuth's Algorithm X](https://en.wikipedia.org/wiki/Algorithm_X).
+The Go code for this technique is in the dlx package.
 
 
 ```Go
@@ -5779,7 +5780,7 @@ def queensDistinctSolutions = { n ->
 
 ### Unique Solutions
 
-Unique solutions are equivalence classes of distinct solutions, factoring out all reflections and rotations of a given solution. See the [[WP:Eight_queens_puzzle|Wikipedia page]]  for more details.
+Unique solutions are equivalence classes of distinct solutions, factoring out all reflections and rotations of a given solution. See the [Wikipedia page](https://en.wikipedia.org/wiki/Eight_queens_puzzle)  for more details.
 
 ```groovy
 class Reflect {
@@ -5886,7 +5887,8 @@ In other words, this:
 
 
 Results:
-<pre  style="height:60ex;overflow:scroll;">[boardSize:1, number of distinct solutions:1, number of unique solutions:1]
+```txt
+[boardSize:1, number of distinct solutions:1, number of unique solutions:1]
 [0]
 
 [boardSize:2, number of distinct solutions:0, number of unique solutions:0]
@@ -6014,7 +6016,7 @@ main = print $ generate 8
 
 ### In terms of foldr
 
-A back-tracking variant using the Prelude's plain '''foldr''':
+A back-tracking variant using the Prelude's plain **foldr**:
 ```haskell
 import Data.List (transpose, intercalate)
 import Data.Bool (bool)
@@ -6094,7 +6096,7 @@ main = (putStrLn . unlines) $ showSolutions 10 7
 ```
 
 
-===Breadth-first search and Depth-first search===
+### Breadth-first search and Depth-first search
 
 ```haskell
 import Control.Monad
@@ -6272,8 +6274,8 @@ class Board {
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
-Here's a solution to the <tt>n = 8</tt> case:
+## Icon and Unicon
+Here's a solution to the `n = 8` case:
 
 ```icon
 procedure main()
@@ -6296,14 +6298,14 @@ end
 
 
 Notes:
-* Solution assumes attempting to place 8 queens on a standard chessboard, and is a simplification of a program in the [[:Category:Icon_Programming_Library|The Icon Programming Library (IPL)]] which is in the public domain.
+* Solution assumes attempting to place 8 queens on a standard chessboard, and is a simplification of a program in the [The Icon Programming Library (IPL)](/categories/icon_programming_library) which is in the public domain.
 * There are 15 left-side-down-diagonals and 15 left-side-up-diagonals represented in the lists. An unfilled row or diagonal has value 0, otherwise the row number is stored to indicate placement.
-* The numeric equality operator '''=''', like all the comparators in Icon, yields the right argument as its solution, or fails. The chain of 0 = A = B = C therefore tests each of A B and C for equality with 0; these semantics read very naturally.
-* '''every''' drives the chain of '''=''' tests to yield every possible result; the iterable component is the generator '''1 to 8''' which is progressively stored into '''r''' and will be backtracked if any of the equality tests fail. If all the placements are zero, the chain of equalities suceeds, and the suspend is invoked for that iteration.
-* '''&lt;-''' is the "reversible assignment" operator. It restores the original value and fails if it is resumed by backtracking. The suspend will use it to temporarily consume the placements and then it will yield the value of the chosen row '''r'''.
+* The numeric equality operator **=**, like all the comparators in Icon, yields the right argument as its solution, or fails. The chain of 0 = A = B = C therefore tests each of A B and C for equality with 0; these semantics read very naturally.
+* **every** drives the chain of **=** tests to yield every possible result; the iterable component is the generator **1 to 8** which is progressively stored into **r** and will be backtracked if any of the equality tests fail. If all the placements are zero, the chain of equalities suceeds, and the suspend is invoked for that iteration.
+* **<-** is the "reversible assignment" operator. It restores the original value and fails if it is resumed by backtracking. The suspend will use it to temporarily consume the placements and then it will yield the value of the chosen row **r**.
 * procedure q() attempts to place the c-th column queen into row 1 to 8 in turn, suspending only if that queen can be placed at [c,r]
 * As the calls to q() are evaluated in main, each one will suspend a possible row, thereby allowing the next q(n) in main to be evaluated. If any of the q() fails to yield a row for the nth queen (or runs out of solutions) the previous, suspended calls to q() are backtracked progressively. If the final q(8) yields a row, the write() will be called with the row positions of each queen. Note that even the final q(8) will be suspended along with the other 7 calls to q(). Unless the write() is driven to produce more solutions (see next point) the suspended procedures will be closed at the "end of statement" ie after the write has "succeeded".
-* If you want to derive all possible solutions, main() can be embellished with the '''every''' keyword:
+* If you want to derive all possible solutions, main() can be embellished with the **every** keyword:
 
 ```icon
 
@@ -6315,11 +6317,11 @@ end
 
 This drives the backtracking to find more solutions.
 
-The following is a general <tt>N</tt>-queens solution, adapted from
+The following is a general `N`-queens solution, adapted from
 a solution placed into the public domain by Peter A. Bigot in 1990.
-The program produces a solution for a specified value of <tt>N</tt>.
+The program produces a solution for a specified value of `N`.
 The comment explains how to modify the program to produce <i>all</i>
-solutions for a given <tt>N</tt>.
+solutions for a given `N`.
 
 ```icon
 global n, rw, dd, ud
@@ -6360,7 +6362,7 @@ end
 ```
 
 
-A sample run for <tt>N = 6</tt>:
+A sample run for `N = 6`:
 
 ```txt
 ->nq 6
@@ -6382,10 +6384,11 @@ solution: 1
 ->
 ```
 
-Two solutions are in the IPL [http://www.cs.arizona.edu/icon/library/progs/queens.htm queens] and [http://www.cs.arizona.edu/icon/library/progs/genqueen.htm genqueen].
+Two solutions are in the IPL [queens](http://www.cs.arizona.edu/icon/library/progs/queens.htm) and [genqueen](http://www.cs.arizona.edu/icon/library/progs/genqueen.htm).
 
-=={{header|IS-BASIC}}==
-<lang IS-BASIC>100 PROGRAM "NQueens.bas"
+## IS-BASIC
+```basic
+100 PROGRAM "NQueens.bas"
 110 TEXT 80
 120 DO
 130   INPUT PROMPT "Size of board (2-12): ":N$
@@ -6430,7 +6433,7 @@ Two solutions are in the IPL [http://www.cs.arizona.edu/icon/library/progs/queen
 ## J
 
 
-This is one of several J solutions shown and explained on this [[J:Essays/N%20Queens%20Problem|J wiki page]]
+This is one of several J solutions shown and explained on this [J wiki page](https://code.jsoftware.com/wiki/Essays/N_Queens_Problem).
 
 
 ```j
@@ -6441,7 +6444,7 @@ queenst=: comb2 (] #"1~ mask)&.|: perm
 ```
 
 
-Note that the Roger Hui's approach (used here) matches the description attributed to Raymond Hettinger (in the Python implementation).  (Both were posted years ago: 1981 for Hui's version which was  used here, and 2009 for Hettinger's.) However they do use different diagonal queen clash elimination approaches -see [http://rosettacode.org/wiki/N-queens_problem#Roger_Hui_.281981.29_Algorithm C# Roger Hui Algorithm] for a comparison of the two approaches.
+Note that the Roger Hui's approach (used here) matches the description attributed to Raymond Hettinger (in the Python implementation).  (Both were posted years ago: 1981 for Hui's version which was  used here, and 2009 for Hettinger's.) However they do use different diagonal queen clash elimination approaches -see [C# Roger Hui Algorithm](http://rosettacode.org/wiki/N-queens_problem#Roger_Hui_.281981.29_Algorithm) for a comparison of the two approaches.
 
 Example use:
 
@@ -6724,7 +6727,7 @@ Translating the ES5 version, and adding a function to display columns of solutio
 ### =Single Solution=
 
 This section presents a function for finding a single solution using
-the formulae for explicit solutions at [[WP:Eight_queens_puzzle|Eight Queens Puzzle]].
+the formulae for explicit solutions at [Eight Queens Puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle).
 
 ```jq
 def single_solution_queens(n):
@@ -6767,8 +6770,8 @@ $ jq -M -n -r -f n-queens-single-solution.jq
 ....♛...
 ```
 
-====Generate-and-test counter====
-'''Part 1: Generic functions'''
+#### Generate-and-test counter
+**Part 1: Generic functions**
 
 ```jq
 # permutations of 0 .. (n-1)
@@ -6786,7 +6789,7 @@ def permutations(n):
 def count(g): reduce g as $i (0; .+1);
 ```
 
-'''Part 2: n-queens'''
+**Part 2: n-queens**
 
 ```jq
 def queens(n):
@@ -6808,7 +6811,7 @@ def queens(n):
 
 ```
 
-'''Example''':
+**Example**:
 
 ```jq
 queens(8)
@@ -7234,8 +7237,8 @@ Uses the heuristic from the Wikipedia article to get one solution.
 ```
 
 
-[[File:Queens Puzzle, Locomotive Basic.png]]
-[[File:20 Queens, Locomotive Basic.png]]
+
+
 
 
 ## Logo
@@ -7967,7 +7970,7 @@ let _ =
   queens (int_of_string Sys.argv.(1));;
 ```
 
-===A stand-alone OCaml solution===
+### A stand-alone OCaml solution
 
 ```ocaml
 let solutions n =
@@ -8114,7 +8117,7 @@ in
 ```
 
 
-There is a more concise and much more efficient [http://www.mozart-oz.org/documentation/fdt/node25.html#section.scripts.queens solution] in the Mozart documentation.
+There is a more concise and much more efficient [solution](http://www.mozart-oz.org/documentation/fdt/node25.html#section.scripts.queens) in the Mozart documentation.
 
 
 
@@ -8827,7 +8830,7 @@ Picat> foreach(N in 1..15)  println(N=count_all(queens_cp(N,_))) end
 
 ## PicoLisp
 
-===Calling 'permute'===
+### Calling 'permute'
 
 ```PicoLisp
 (load "@lib/simul.l")  # for 'permute'
@@ -8869,7 +8872,7 @@ duplicates, instead of calling 'uniq' and 'length'. This is much faster.
       Cnt ) )
 ```
 
-{{out}} for both cases:
+Output for both cases:
 
 ```txt
 : (queens 8)
@@ -9283,7 +9286,7 @@ del(Item,[First|List],[First|List1]) :-
 ```
 
 
-[http://ideone.com/Y6olN Output]:
+[Output](http://ideone.com/Y6olN):
    ?- findall(S, solution(S), LS), length(LS,N), write(N).
    92
 
@@ -9311,7 +9314,7 @@ not_diag(Q, [Qh|Qs], D) :-
 main :- findall(Qs, (queens(8,Qs), write(Qs), nl), _), halt.
 ```
 
-[http://ideone.com/3bbIx0 Runs in: time: 0.02 memory: 68352]
+[Runs in: time: 0.02 memory: 68352](http://ideone.com/3bbIx0)
 
 
 ### Alternative Solution
@@ -9428,7 +9431,7 @@ prompt$ pure -i -q queens.pure
 
 ## PureBasic
 
-A recursive approach is taken.  A queen is placed in an unused column for each new row.  An array keeps track if a queen has already been placed in a given column so that no duplicate columns result.  That handles the Rook attacks.  Bishop attacks are handled by checking the diagonal alignments of each new placement against the previously placed queens and if an attack is possible the solution backtracks.  The solutions are kept track of in a global variable and the routine <tt>queens(n)</tt> is called with the required number of queens specified.
+A recursive approach is taken.  A queen is placed in an unused column for each new row.  An array keeps track if a queen has already been placed in a given column so that no duplicate columns result.  That handles the Rook attacks.  Bishop attacks are handled by checking the diagonal alignments of each new placement against the previously placed queens and if an attack is possible the solution backtracks.  The solutions are kept track of in a global variable and the routine `queens(n)` is called with the required number of queens specified.
 
 ```PureBasic
 Global solutions
@@ -9514,7 +9517,8 @@ EndIf
 ```
 
 Sample output showing the last solution (all are actually displayed) for 1 - 12 queens:
-<pre style="height:40ex;overflow:scroll"> Solution 1
+```txt
+ Solution 1
 |Q|
 
 1 solutions found for 1-queens. {Press ENTER}
@@ -9639,7 +9643,7 @@ Sample output showing the last solution (all are actually displayed) for 1 - 12 
 
 ### Python: Raymond Hettingers permutations based solution
 
-This solution, originally by [http://code.activestate.com/recipes/576647/ Raymond Hettinger] for demonstrating the power of the itertools module, generates all solutions.
+This solution, originally by [Raymond Hettinger](http://code.activestate.com/recipes/576647/) for demonstrating the power of the itertools module, generates all solutions.
 
 
 ```python
@@ -9725,7 +9729,7 @@ print(list(enumerate(first_answer, start=1)))
 ```
 
 
-===Python: Simple Backtracking Solution (functional style)===
+### Python: Simple Backtracking Solution (functional style)
 This simple version, which uses a generator function and lists, has an excellent performance with PyPy.
 
 ```python
@@ -9750,7 +9754,7 @@ Queens positions on a n x n board are encoded as permutations of [0, 1, ..., n].
 
 This is initially a translation of the Fortran 77 solution.
 
-The solutions are returned as a generator, using the "yield from" functionality of Python 3.3, described in [https://www.python.org/dev/peps/pep-0380/ PEP-380].
+The solutions are returned as a generator, using the "yield from" functionality of Python 3.3, described in [PEP-380](https://www.python.org/dev/peps/pep-0380/).
 
 
 ```python
@@ -9780,9 +9784,9 @@ sum(1 for p in queens(8))
 ```
 
 
-The preceding function does not enumerate solutions in lexicographic order, see [[Permutations#Recursive implementation]] for an explanation. The following does, but is almost 50% slower, because the exchange is always made (otherwise the loop to shift the array a by one place would not work).
+The preceding function does not enumerate solutions in lexicographic order, see [Permutations#Recursive implementation](/tasks/permutations#recursive_implementation) for an explanation. The following does, but is almost 50% slower, because the exchange is always made (otherwise the loop to shift the array a by one place would not work).
 
-However, it may be interesting to look at the first solution in lexicographic order: for growing n, and apart from a +1 offset, it gets closer and closer to the sequence [http://oeis.org/A065188 A065188] at OEIS. The first n for which the first solutions differ is n=26.
+However, it may be interesting to look at the first solution in lexicographic order: for growing n, and apart from a +1 offset, it gets closer and closer to the sequence [A065188](http://oeis.org/A065188) at OEIS. The first n for which the first solutions differ is n=26.
 
 
 ```python
@@ -10143,11 +10147,11 @@ Show result with "How to Design Programs" GUI.
 ```
 
 
-[[image:Racket-nqueens.png]]
+
 
 When hovering mouse, GUI also displays conflicts for potential additional queens.
 
-[[image:Racket-nqueens-conflict.png]]
+
 
 
 Lazy-style solution, ie, generate all solutions, then filter out invalid ones.
@@ -10526,7 +10530,8 @@ end
 ```
 
 
-<pre style="height:40ex;overflow:scroll">n=1
+```txt
+n=1
 Q
 
 n=2
@@ -10725,7 +10730,7 @@ end
 ```
 
 
-'''Example:'''
+**Example:**
 
 ```ruby
 (1..6).each do |n|
@@ -10740,7 +10745,7 @@ end
 ```
 
 
-<pre style="height: 80ex; overflow: scroll">
+```txt
 +---+
 | Q |
 +---+
@@ -11456,7 +11461,8 @@ Q.......
 ## Scilab
 
 Naive brute-force search.
-<lang>//Length of board side
+```
+//Length of board side
 Board_size = 8;
 
 function flag_out = no_attack(side, board, pos)
@@ -11921,7 +11927,7 @@ queens(2);
 
 ###  Iterative version
 
-Adapted from the Fortran 77 program, to illustrate the '''[http://www.stata.com/help.cgi?m2_goto goto]''' statement in Stata.
+Adapted from the Fortran 77 program, to illustrate the **[goto](http://www.stata.com/help.cgi?m2_goto)** statement in Stata.
 
 
 ```stata
@@ -12285,7 +12291,7 @@ A solution to the 3 queens problem is non-existent
 
 ## Tcl
 
-This solution is based on the [[C]] version on [[wp:Eight queens puzzle solutions#C|wikipedia]]. By default it solves the 8-queen case; to solve for any other number, pass ''N'' as an extra argument on the script's command line (see the example for the ''N''=6 case, which has anomalously few solutions).
+This solution is based on the [C](/tasks/c) version on [wikipedia](https://en.wikipedia.org/wiki/Eight_queens_puzzle#Solutions). By default it solves the 8-queen case; to solve for any other number, pass *N* as an extra argument on the script's command line (see the example for the *N*=6 case, which has anomalously few solutions).
 
 ```tcl
 package require Tcl 8.5
@@ -12963,7 +12969,7 @@ int main () {
 Below simple stylesheet does produce this output
 (either by XSLT processors saxon-6.5.5, xsltproc, xalan,
 or any of the big5 browsers):
-<lang>
+```
 15863724
 16837425
 ... 88 lines omitted ...
@@ -12973,23 +12979,23 @@ or any of the big5 browsers):
 ```
 
 
-You can view the results directly in your browser (Chrome/FF/IE/Opera/Safari) here: [[http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml]]
+You can view the results directly in your browser (Chrome/FF/IE/Opera/Safari) here: [http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
 
-This stylesheet is in category XSLT because it makes use or EXSLT [[http://exslt.org/]] exslt:node-set() extension function not available in XSLT 1.0
+This stylesheet is in category XSLT because it makes use or EXSLT [http://exslt.org/](http://exslt.org/) exslt:node-set() extension function not available in XSLT 1.0
 
-It is extracted from a bigger solution described in this blog posting: [[https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14]]
+It is extracted from a bigger solution described in this blog posting: [https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14](https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14)
 * determine all 500 n-queens solutions for 4<=n<=9
 * determine distict solutions and totals
 * display solutions graphically nicely
-* with references to external .gif images [[http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml]]
-* with internal "data:..." .gif images [[http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml]]
+* with references to external .gif images [http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml)
+* with internal "data:..." .gif images [http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml)
 
 This is the initial part of a screenshot from browser output:
 
-[[image:n-queens.4-6.gif]]
 
 
-Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having itself as input: [[http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml]]
+
+Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having itself as input: [http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
 
 ```xml
 
@@ -13130,7 +13136,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 
 ## XPL0
 
-[[File:NQueensXPL0.GIF|right]]
+
 
 ```XPL0
 def     N=8;    \board size (NxN)

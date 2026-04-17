@@ -14,12 +14,11 @@ languages = [
 ]
 +++
 
-{{difficulty}}{{draft task}}<!--{{Wikipedia|Polynomial}}-->
-The objective of this task is to parse in a difficult [[wp:polynomial|polynomial]], and generate a "pretty" representation of the polynomial in Unicode.
+The objective of this task is to parse in a difficult [polynomial](https://en.wikipedia.org/wiki/Polynomial), and generate a "pretty" representation of the polynomial in Unicode.
 
-In the target language define a "polynomial" object (or structure or record).  Using this object also define the routines for parsing a polynomial as input, and generating a normalised [[wp:Unicode|Unicode]] representation of the polynomial as output.
+In the target language define a "polynomial" object (or structure or record).  Using this object also define the routines for parsing a polynomial as input, and generating a normalised [Unicode](https://en.wikipedia.org/wiki/Unicode) representation of the polynomial as output.
 
-'''Task details:'''
+**Task details:**
 
 Given a string containing an untidy Unicode polynomial, e.g.
 
@@ -39,41 +38,24 @@ x⁵ - 2x⁴ + 42x³ + 40x + 1
 ```
 
 
-{|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
-|+ Specific examples of Unicode and polynomial texts to be parsed as test cases.
-|-
-!Description|| Input example test cases
-|-
-|"Zero" coefficients are removed||x⁵ - 2x⁴ + 42x³ + 0x² + 40x + 1
-|-
-|The "0" polynomial case||0e+0x⁰⁰⁷ + 00e-00x + 0x + .0x⁰⁵ - 0.x⁴ + 0×x³ + 0x⁻⁰ + 0/x + 0/x³ + 0x⁻⁵
-|-
-|"One" coefficients are normalised||1x⁵ - 2x⁴ + 42x³ + 40x + 1x⁰
-|-
-|Signs are normalised||+x⁺⁵ + -2x⁻⁻⁴ + 42x⁺⁺³ + +40x - -1
-|-
-|ASCII representations are parsed||x^5 - 2x**4 + 42x^3 + 40x + 1
-|-
-|Non-ASCII representations are parsed||x↑5 - 2.00·x⁴ + 42.00·x³ + 40.00·x + 1 (c.f. [[wp:Knuth's up-arrow notation|↑]] & [[wp:·#In_mathematics_and_science|·]])
-|-
-|Specifically permit non-polynomials where terms have negative exponents||x⁻⁵ - 2⁄x⁴ + 42x⁻³ + 40/x + 1x⁻⁰ (n.b. [[wp:Unicode_numerals#Fractions|Unicode Fraction]])
-|-
-|Spaces in numbers and between operators are ignored||x⁵ - 2x⁴ + 42.000 000x³ + 40x + 1
-|-
-|Single commas are ignored in numbers||x⁵ - 2x⁴ + 0,042x³ + 40.000,000x + 1
-|-
-|A coefficient may be duplicated, zero, or missing||0x⁷ + 10x + 10x + x⁵ - 2x⁴ + 42x³ + 20x + 1
-|-
-|Support [[wp:Scientific_notation#Examples_and_alternatives|Scientific notation]] and optionally<BR>support [http://unicode.org/charts/PDF/U2300.pdf Unicode Decimal Exponent Symbol] [http://mailcom.com/unicode/DecimalExponent.ttf U+23E8/⏨]
-||1E0x⁵ - 2,000,000.e-6x⁴ + 4.2⏨1x³ + .40e+2x + 1
-|-
-|Unicode characters that must be specifically supported are: ||⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁻ ⁺ · × ⁄ ↑ ⏨.
-Where · & × are multiplication, and ⁄ is Unicode Fraction.
-|- 
-|Support fractions for both input and output. || x⁵ - x⁴⁄2 + 405x³⁄4 + 403x⁄4 + 5⁄2<BR>On output round the decimal to appropriate fraction.
-|- 
-|Optionally support [[wp:Number Forms|Unicode Vulgar fractions]] for both input and output.<BR>¼ ½ ¾ ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ↉ || x⁵ - ½x⁴ + 101¼x³ + 100¾x + 2½<BR>On output round the decimal to appropriate fraction.
-|}
+Specific examples of Unicode and polynomial texts to be parsed as test cases.
+
+| Description | Input example test cases |
+| :--- | :--- |
+| "Zero" coefficients are removed | x⁵ - 2x⁴ + 42x³ + 0x² + 40x + 1 |
+| The "0" polynomial case | 0e+0x⁰⁰⁷ + 00e-00x + 0x + .0x⁰⁵ - 0.x⁴ + 0×x³ + 0x⁻⁰ + 0/x + 0/x³ + 0x⁻⁵ |
+| "One" coefficients are normalised | 1x⁵ - 2x⁴ + 42x³ + 40x + 1x⁰ |
+| Signs are normalised | +x⁺⁵ + -2x⁻⁻⁴ + 42x⁺⁺³ + +40x - -1 |
+| ASCII representations are parsed | x^5 - 2x**4 + 42x^3 + 40x + 1 |
+| Non-ASCII representations are parsed | x↑5 - 2.00·x⁴ + 42.00·x³ + 40.00·x + 1 (c.f. [↑](https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation) & [·](https://en.wikipedia.org/wiki/Interpunct#In_mathematics_and_science)) |
+| Specifically permit non-polynomials where terms have negative exponents | x⁻⁵ - 2⁄x⁴ + 42x⁻³ + 40/x + 1x⁻⁰ (n.b. [Unicode Fraction](https://en.wikipedia.org/wiki/Unicode_numerals#Fractions)) |
+| Spaces in numbers and between operators are ignored | x⁵ - 2x⁴ + 42.000 000x³ + 40x + 1 |
+| Single commas are ignored in numbers | x⁵ - 2x⁴ + 0,042x³ + 40.000,000x + 1 |
+| A coefficient may be duplicated, zero, or missing | 0x⁷ + 10x + 10x + x⁵ - 2x⁴ + 42x³ + 20x + 1 |
+| Support [Scientific notation](https://en.wikipedia.org/wiki/Scientific_notation#Examples_and_alternatives) and optionally<br>support [Unicode Decimal Exponent Symbol](http://unicode.org/charts/PDF/U2300.pdf) [U+23E8/⏨](http://mailcom.com/unicode/DecimalExponent.ttf) | 1E0x⁵ - 2,000,000.e-6x⁴ + 4.2⏨1x³ + .40e+2x + 1 |
+| Unicode characters that must be specifically supported are: | ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ⁻ ⁺ · × ⁄ ↑ ⏨.<br>Where · & × are multiplication, and ⁄ is Unicode Fraction. |
+| Support fractions for both input and output. | x⁵ - x⁴⁄2 + 405x³⁄4 + 403x⁄4 + 5⁄2<br>On output round the decimal to appropriate fraction. |
+| Optionally support [Unicode Vulgar fractions](https://en.wikipedia.org/wiki/Number_Forms) for both input and output.<br>¼ ½ ¾ ⅐ ⅑ ⅒ ⅓ ⅔ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅛ ⅜ ⅝ ⅞ ↉ | x⁵ - ½x⁴ + 101¼x³ + 100¾x + 2½<br>On output round the decimal to appropriate fraction. |
 
 There are (at least) three possible ways of achieving this task.
 * Using an external parsing library.
@@ -391,9 +373,6 @@ x⁻⁵ - 2⁄x⁴ + 42x⁻³ - 40/x
 
 ⅐x⁵ - ⅓x⁴ - ⅔x⁴ + 42⅕x³ + ⅑x - 40⅛ - ⅝
 => ⅐x⁵ - x⁴ + 42⅕x³ + ⅑x - 40¾
-
-
-```
 
 
 
@@ -851,4 +830,3 @@ uni_frac = true (linux only, unless you have managed to find and install a decen
 38:                x⁵ - 2x⁴ + 42x³ + 40x + 1   ok
 
 ```
-
