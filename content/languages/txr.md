@@ -11,7 +11,7 @@ tags = []
 +++
 TXR is a new language implemented in [C](https://rosettacode.org/wiki/C), running on POSIX platforms such as [Linux](https://rosettacode.org/wiki/Linux), [Mac OS X](https://rosettacode.org/wiki/Mac_OS_X) and [Solaris](https://rosettacode.org/wiki/Solaris) as well as on [Microsoft Windows](https://rosettacode.org/wiki/Microsoft_Windows). It is a dynamic, high level language originally intended for "data munging" tasks in Unix-like environments, particularly tasks requiring accurate, robust text scraping from loosely structured documents.
 
-The Rosetta Code TXR solutions can be viewed in color, and all on one page with a convenient navigation pane [http://www.nongnu.org/txr/rosetta-solutions.html here].
+The Rosetta Code TXR solutions can be viewed in color, and all on one page with a convenient navigation pane [here](http://www.nongnu.org/txr/rosetta-solutions.html).
 
 TXR started as a language for "reversing here-documents": evaluating a template of text containing variables, plus useful pattern matching directives, against some body of text and binding pieces of the text which matches variables. The variable bindings were output in POSIX shell variable assignment syntax, allowing for shell code like
 

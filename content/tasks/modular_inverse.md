@@ -71,7 +71,7 @@ languages = [
 ]
 +++
 
-From [http://en.wikipedia.org/wiki/Modular_multiplicative_inverse Wikipedia]:
+From [Wikipedia](http://en.wikipedia.org/wiki/Modular_multiplicative_inverse):
 
 In [[wp:modular arithmetic|modular arithmetic]],   the '''modular multiplicative inverse''' of an [[integer]]   <big> ''a'' </big>   [[wp:modular arithmetic|modulo]]   <big> ''m'' </big>   is an integer   <big> ''x'' </big>   such that
 
@@ -214,7 +214,7 @@ END
 
 ## AutoHotkey
 
-Translation of [http://rosettacode.org/wiki/Modular_inverse#C C].
+Translation of [C](http://rosettacode.org/wiki/Modular_inverse#C).
 
 ```AutoHotkey
 MsgBox, % ModInv(42, 2017)
@@ -1919,7 +1919,7 @@ EndProcedure
 
 
 ===Iteration and error-handling===
-Implementation of this [http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2 pseudocode] with [https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse this].
+Implementation of this [pseudocode](http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2) with [this](https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse).
 
 ```python
 >>>
@@ -2301,7 +2301,7 @@ fn main() {
 
 ## Scala
 
-Based on the ''Handbook of Applied Cryptography'', Chapter 2. See http://cacr.uwaterloo.ca/hac/ .
+Based on the ''Handbook of Applied Cryptography'', Chapter 2. See <http://cacr.uwaterloo.ca/hac/> .
 
 ```scala
 
@@ -2345,9 +2345,9 @@ res2: Option[Int] = Some(1976)
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/bigint.htm bigint.s7i]
-defines the [http://seed7.sourceforge.net/manual/types.htm#bigInteger bigInteger]
-function [http://seed7.sourceforge.net/libraries/bigint.htm#modInverse%28in_var_bigInteger,in_var_bigInteger%29 modInverse].
+The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm)
+defines the [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger)
+function [modInverse](http://seed7.sourceforge.net/libraries/bigint.htm#modInverse%28in_var_bigInteger,in_var_bigInteger%29).
 It returns the modular multiplicative inverse of a modulo b when a and b are coprime (gcd(a, b) = 1).
 If a and b are not coprime (gcd(a, b) <> 1) the exception RANGE_ERROR is raised.
 
@@ -2399,7 +2399,7 @@ const func bigInteger: modInverse (in var bigInteger: a,
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#modInverse]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#modInverse>
 
 
 ## Sidef

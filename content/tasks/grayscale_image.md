@@ -67,7 +67,7 @@ Extend the data storage type defined [[Basic_bitmap_storage|on this page]] to su
 
 Define two operations, one to convert a color image to a grayscale image and one for the backward conversion.
 
-To get luminance of a color use the formula recommended by [http://www.cie.co.at/index_ie.html CIE]:
+To get luminance of a color use the formula recommended by [CIE](http://www.cie.co.at/index_ie.html):
 
  <big> L  =  0.2126 &times; R   +   0.7152 &times; G   +   0.0722 &times; B </big>
 
@@ -696,9 +696,9 @@ FILEPUT(FILEOPEN(grayscale, BINARY_NEW), FILEGET): FILECLOSE(FILEOPEN) ' save bu
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Grayscale_image this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Grayscale_image) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1071,7 +1071,7 @@ void convertToGrayscale(final BufferedImage image){
 ## JavaScript
 
 HTML 5
-Demonstration: https://repl.it/repls/NiceFaroffRockrat
+Demonstration: <https://repl.it/repls/NiceFaroffRockrat>
 
 ```JavaScript
 
@@ -1147,7 +1147,7 @@ imwrite(imb, "grayscale_image_julia.png")
 ```
 
 
-I didn't find a colorful image that I was comfortable modifying and sharing, so I'm omitting the image files from my solution to this task.  Try out these [http://r0k.us/graphics/kodak/ images] for something to work with.  Although these images are intended for image processing testing and development and are said to be available for unrestricted use, I could find no clear and definitive statement of their usage rights.
+I didn't find a colorful image that I was comfortable modifying and sharing, so I'm omitting the image files from my solution to this task.  Try out these [images](http://r0k.us/graphics/kodak/) for something to work with.  Although these images are intended for image processing testing and development and are said to be available for unrestricted use, I could find no clear and definitive statement of their usage rights.
 
 The results of the two approaches (according to task, ''rc'', and idiomatic, ''julia'') are indistinguishable except perhaps by close examination.  The ''julia'' file is native grayscale, and the ''rc'' file is RGB that shows only grays.
 
@@ -1800,7 +1800,7 @@ plot(p3 <- as(p2, "pixmapRGB"))
 
 ## Racket
 
-This image shows the output:   http://imgur.com/e3Wi8RJ
+This image shows the output:   <http://imgur.com/e3Wi8RJ>
 
 I gave up on uploading to Rosetta Code.
 
@@ -2123,7 +2123,7 @@ Imports System.Drawing.Imaging
 
 ## Yabasic
 
-"image" is a library created by Hermang Mansilla for import and show .BMP files. http://www.oocities.org/sunsetstrip/palms/1624/yabasic/libs/IMAGE.TXT
+"image" is a library created by Hermang Mansilla for import and show .BMP files. <http://www.oocities.org/sunsetstrip/palms/1624/yabasic/libs/IMAGE.TXT>
 
 ```Yabasic
 import image
@@ -2156,7 +2156,7 @@ Does an in-place conversion from a color PPM image to a gray scale PPM image (ie
 but remains rgb vs one byte color). If you wish to write a bit map (or some other format), check out
 [[Bitmap/PPM conversion through a pipe#zkl]]
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 fcn toGrayScale(img){  // in-place conversion
    foreach x,y in (img.w,img.h){
@@ -2174,6 +2174,6 @@ toGrayScale(img);
 img.write(File("foo.ppm","wb"));
 ```
 
-http://www.zenkinetic.com/Images/RosettaCode/lenaGray.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/lenaGray.jpg>
 
 {{omit from|TI-83 BASIC}} {{omit from|TI-89 BASIC}} <!-- Doing only black-and-white images anyway. -->

@@ -216,7 +216,7 @@ end Greyscale;
 
 ## AutoHotkey
 
-Requires the GDI+ Standard Library by tic: http://www.autohotkey.com/forum/viewtopic.php?t=32238
+Requires the GDI+ Standard Library by tic: <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
 
 ```AHK
 h	:= A_ScreenHeight
@@ -574,7 +574,7 @@ END RosettaGreys.
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?bg=eee&code=n%20%3D%208%0Afor%20row%20range%204%0Asz%23%20%3D%20100%20/%20n%0Afor%20i%20range%20n%0Ac%23%20%3D%20i%20/%20%28n%20-%201%29%0Aif%20row%20mod%202%20%3D%201%0Ac%23%20%3D%201%20-%20c%23%0A.%0Acolor_red%20c%23%0Acolor_green%20c%23%0Acolor_blue%20c%23%0Amove%20sz%23%20%2A%20i%20row%20%2A%2025%0Arect%20sz%23%20%2B%201%2025%0A.%0An%20%3D%20n%20%2A%202%0A. Run it]
+[Run it](https://easylang.online/apps/run.html?bg=eee&code=n%20%3D%208%0Afor%20row%20range%204%0Asz%23%20%3D%20100%20/%20n%0Afor%20i%20range%20n%0Ac%23%20%3D%20i%20/%20%28n%20-%201%29%0Aif%20row%20mod%202%20%3D%201%0Ac%23%20%3D%201%20-%20c%23%0A.%0Acolor_red%20c%23%0Acolor_green%20c%23%0Acolor_blue%20c%23%0Amove%20sz%23%20%2A%20i%20row%20%2A%2025%0Arect%20sz%23%20%2B%201%2025%0A.%0An%20%3D%20n%20%2A%202%0A.)
 
 
 ```easyprog.online
@@ -737,7 +737,7 @@ End
 ```
 
 
-'''[http://www.cogier.com/gambas/GreyScale.png Click here for image of the output]'''
+'''[Click here for image of the output](http://www.cogier.com/gambas/GreyScale.png)'''
 
 
 ## Go
@@ -902,9 +902,9 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn supports graphics]
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf, etc.]
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides round]
+[graphics.icn supports graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides sprintf, etc.](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[numbers.icn provides round](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## J
@@ -983,7 +983,7 @@ public class Greybars extends JFrame {
 
 ## JavaScript
 
-Live Demo: http://jsfiddle.net/gcN9g/embedded/result/
+Live Demo: <http://jsfiddle.net/gcN9g/embedded/result/>
 
 ```javascript
 <html><body>
@@ -1184,7 +1184,7 @@ end
 
 ```
 
-Resulting [http://www.diga.me.uk/greyscale.gif GreyScale image] without the outlines.
+Resulting [GreyScale image](http://www.diga.me.uk/greyscale.gif) without the outlines.
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
@@ -1362,7 +1362,7 @@ print $pgm
     bars($h4,$w,6,1);
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/Greyscale-bars-perl5.png See Greyscale-bars-perl5] (offsite image)
+[See Greyscale-bars-perl5](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/Greyscale-bars-perl5.png) (offsite image)
 
 
 ## Perl 6
@@ -1406,7 +1406,7 @@ sub divvy($all, $div) {
 }
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/Greyscale-bars-perl6.png See Greyscale-bars-perl6] (offsite image)
+[See Greyscale-bars-perl6](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/Greyscale-bars-perl6.png) (offsite image)
 
 
 ## Phix
@@ -1771,7 +1771,7 @@ func draw
 ```
 
 Output:
-https://www.dropbox.com/s/01iywg04iwubf55/GreyscaleBars.jpg?dl=0
+<https://www.dropbox.com/s/01iywg04iwubf55/GreyscaleBars.jpg?dl=0>
 
 
 ## Run BASIC
@@ -1965,7 +1965,7 @@ next row
 ## zkl
 
 Draws to a PPM file, not the screen, assumes a 640/480 display.
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 img:=PPM(640,480);
@@ -1984,7 +1984,7 @@ img.write(File("foo.ppm","wb"));
 ```
 
 Same as the R image (but smaller):
-http://www.zenkinetic.com/Images/RosettaCode/grayscaleBars.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/grayscaleBars.jpg>
 
 
 ## ZX Spectrum Basic

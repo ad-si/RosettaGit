@@ -388,13 +388,13 @@ end
 
 ```
 
-Another dll has been posted to do the same job, at [http://basic.wikispaces.com/SpeechLibrary LB Community Wiki]
+Another dll has been posted to do the same job, at [LB Community Wiki](http://basic.wikispaces.com/SpeechLibrary)
 
 
 ## Locomotive Basic
 
 
-Both hardware and software-only speech synthesizers exist for the CPC. A software-only solution, [http://www.cpc-power.com/index.php?page=detail&num=4372 Speech 1.1] by Superior Software (1986), supplies three BASIC extension commands (RSXes), "|say", "|speak", and "|pitch":
+Both hardware and software-only speech synthesizers exist for the CPC. A software-only solution, [Speech 1.1](http://www.cpc-power.com/index.php?page=detail&num=4372) by Superior Software (1986), supplies three BASIC extension commands (RSXes), "|say", "|speak", and "|pitch":
 
 
 ```locobasic

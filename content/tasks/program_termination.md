@@ -1932,7 +1932,7 @@ if problem:
     sys.exit(1)
 ```
 
-The [http://docs.python.org/library/atexit.html atexit] module allows you to register functions to be run when the program exits.
+The [atexit](http://docs.python.org/library/atexit.html) module allows you to register functions to be run when the program exits.
 ;As soon as possible:
 (Signals the underlying OS to abort the program. No cleanup is performed)
 
@@ -2284,7 +2284,7 @@ if (problem) {
 IF terminallyIll THEN terminate_program;
 ```
 »The procedure "terminate_program" terminates program execution. It closes SYSIN and SYSOUT.
-  It is implementation-dependent with respect to whether or not other open files are also closed.« [[http://simula67.at.ifi.uio.no/Standard-86/chap_10.htm| Simula Standard 86]]
+  It is implementation-dependent with respect to whether or not other open files are also closed.« [Simula Standard 86](http://simula67.at.ifi.uio.no/Standard-86/chap_10.htm|)
 
 
 ## SNOBOL4

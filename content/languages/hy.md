@@ -11,4 +11,4 @@ tags = []
 +++
 A Lispy syntax for [Python](https://rosettacode.org/wiki/Python). The implementation generates Python abstract syntax trees (AST), not just bytecode, so you can use Hy with, e.g., PyPy just as well as CPython.
 
-Website: http://hylang.org
+Website: <http://hylang.org>

@@ -60,7 +60,7 @@ What if language normally compiles tail-recursion to not use stack at all? Do we
 == Hmm ... I wonder ==
 Regarding the COBOL example, I haven't found out yet how to 'catch' the error during a run. Is it possible?
 
-: First, if you could not trap the error you could satisfy the task i think by simply logging how far you have gotten each time you recurse.  But I expect cobol can do better than that?  (See http://www.emunix.emich.edu/info/cobol/books/prxept.htm 5.2.1 and 5.4.3)
+: First, if you could not trap the error you could satisfy the task i think by simply logging how far you have gotten each time you recurse.  But I expect cobol can do better than that?  (See <http://www.emunix.emich.edu/info/cobol/books/prxept.htm> 5.2.1 and 5.4.3)
 
 ==Algol68's tone==
 I've made one edit to the Algol68 entry but the overall tone of the author is wrong. The task - All the RC Tasks apply to multiple languages for the purposes of language ''comparison''. One should create language entries preferably with that in mind and not slag off task descriptions out of hand - especially when there are so many examples from other languages that manage to complete the task with a relatively minor set of issues on this discussion page. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 18:09, 10 August 2015 (UTC)

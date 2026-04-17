@@ -210,7 +210,7 @@ int error = pthread_mutex_trylock(&mutex);
 
 ### C++11
 
-[http://www.cplusplus.com/reference/mutex/mutex/ C++11 reference for mutexe related functionality in the standard library]
+[C++11 reference for mutexe related functionality in the standard library](http://www.cplusplus.com/reference/mutex/mutex/)
 
 
 ## D
@@ -234,7 +234,7 @@ private:
 
 
 Keep in mind that '''synchronized''' used as above works on a per-class-instance basis.
-This is described in [[http://digitalmars.com/d/1.0/class.html##synchronized-functions|documentation]].
+This is described in <http://digitalmars.com/d/1.0/class.html##synchronized-functions|documentation>.
 
 The following example tries to illustrate the problem:
 
@@ -579,7 +579,7 @@ takeMVar will attempt to fetch a value from the MVar, and will block while the M
 putMVar will attempt to put a value in a MVar, and will block while there already is a value in the MVar. This will leave the MVar full.
 The last two functions are non-blocking versions of takeMVar and putMVar, returning Nothing and False, respectively, if their blocking counterpart would have blocked.
 
-For more information see the [http://www.haskell.org/ghc/docs/latest/html/libraries/base/Control-Concurrent-MVar.html documentation].
+For more information see the [documentation](http://www.haskell.org/ghc/docs/latest/html/libraries/base/Control-Concurrent-MVar.html).
 
 ==Icon and {{header|Unicon}}==
 The following code uses features exclusive to Unicon.
@@ -677,7 +677,7 @@ public class Main {
 ```
 
 
-The "synchronized" keyword actually is a form of [[monitor]], which was a later-proposed solution to the same problems that mutexes and semaphores were designed to solve.  More about synchronization may be found on Sun's website - http://java.sun.com/docs/books/tutorial/essential/concurrency/sync.html , and more about monitors may be found in any decent operating systems textbook.
+The "synchronized" keyword actually is a form of [[monitor]], which was a later-proposed solution to the same problems that mutexes and semaphores were designed to solve.  More about synchronization may be found on Sun's website - <http://java.sun.com/docs/books/tutorial/essential/concurrency/sync.html> , and more about monitors may be found in any decent operating systems textbook.
 
 
 ## Logtalk
@@ -866,7 +866,7 @@ if ([m tryLock]) { // acquire a lock -- does not block if not acquired
 
 Reentrant mutex is provided by the <tt>NSRecursiveLock</tt> class.
 
-Objective-C also has [http://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocThreading.html#//apple_ref/doc/uid/TP30001163-CH19-BCIIGGHG @synchronized() blocks], like Java.
+Objective-C also has [@synchronized() blocks](http://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjectiveC/Articles/ocThreading.html#//apple_ref/doc/uid/TP30001163-CH19-BCIIGGHG), like Java.
 
 
 ## Objeck
@@ -890,7 +890,7 @@ critical(m) {
 ## OCaml
 
 
-OCaml provides a built-in [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html Mutex module]. <BR>
+OCaml provides a built-in [Mutex module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html). <BR>
 It is very simple, there are four functions:
 
 
@@ -1023,13 +1023,13 @@ Locks are reentrant.  You may explicitly lock and unlock them, but the syntax ab
 PicoLisp uses several mechanisms of interprocess communication, mainly within
 the same process family (children of the same parent process) for database
 synchronization (e.g.
-'[http://software-lab.de/doc/refL.html#lock lock]',
-'[http://software-lab.de/doc/refS.html#sync sync]' or
-'[http://software-lab.de/doc/refT.html#tell tell]'.
+'[lock](http://software-lab.de/doc/refL.html#lock)',
+'[sync](http://software-lab.de/doc/refS.html#sync)' or
+'[tell](http://software-lab.de/doc/refT.html#tell)'.
 
 For a simple synchronization of unrelated PicoLisp processes the
-'[http://software-lab.de/doc/refA.html#acquire acquire]' /
-'[http://software-lab.de/doc/refR.html#release release]' function pair
+'[acquire](http://software-lab.de/doc/refA.html#acquire)' /
+'[release](http://software-lab.de/doc/refR.html#release)' function pair
 can be used.
 
 
@@ -1217,7 +1217,7 @@ end
 
 ## Tcl
 
-Tcl's [http://tcl.cvs.sourceforge.net/*checkout*/tcl/thread/doc/html/thread.html#19 mutexes] have four functions.
+Tcl's [mutexes](http://tcl.cvs.sourceforge.net/*checkout*/tcl/thread/doc/html/thread.html#19) have four functions.
 
 ```tcl
 package require Thread

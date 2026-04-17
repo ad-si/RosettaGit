@@ -16,4 +16,4 @@ tags = []
 
 The programming environment consists of an optimizing compiler, command-line debugger and virtual machine with associated [garbage collector](https://rosettacode.org/wiki/Garbage_collection) and [JIT](https://rosettacode.org/wiki/JIT) compiler. The compiler emits binary [bytecode](https://rosettacode.org/wiki/bytecode) that is executed by the runtime system. The runtime system has the ability to translate the bytecode into AMD64 or IA-32 machine code on the fly.
 
-For more information check out the getting started [https://www.objeck.org/getting_started.html guide].
+For more information check out the getting started [guide](https://www.objeck.org/getting_started.html).

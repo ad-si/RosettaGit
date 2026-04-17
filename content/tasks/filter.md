@@ -1692,7 +1692,7 @@ fun main(as: []int): []int =
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=e73bc5db1e3bb56c598f89aa669a0825 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=e73bc5db1e3bb56c598f89aa669a0825)'''
 
 ```gambas
 sRandom As New String[]
@@ -2007,7 +2007,7 @@ def evens = array[n | n mod 2 == 0];
 
 ### ES5
 
-The standard way is to use the [https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/filter Array.prototype.filter] function ({{works with|JavaScript|1.6}}):
+The standard way is to use the [Array.prototype.filter](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/filter) function ({{works with|JavaScript|1.6}}):
 
 ```javascript
 var arr = [1,2,3,4,5];
@@ -3242,7 +3242,7 @@ E = [2, 4, 6, 8, 10]
 
 ### Anonymous functions
 
-Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 ?- use_module(library(lambda)).
@@ -3256,7 +3256,7 @@ L = [2,4,6,8].
 
 ### filter and anonymous functions
 
-Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```prolog
 :- use_module(lambda).

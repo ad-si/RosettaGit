@@ -2554,7 +2554,7 @@ Output:
 
 ## Go
 
-For fluff, the unicode overbar is recognized as a factor of 1000, [http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers as described in WP].
+For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
 
 If you see boxes in the code below, those are supposed to be the Unicode combining overline (U+0305) and look like {{overline|IVXLCDM}}.  Or, if you see overstruck combinations of letters, that's a different font rendering problem.  (If you need roman numerals > 3999 reliably, it might best to stick to chiseling them in stone...)
 
@@ -2903,7 +2903,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides roman] as seen below and is based upon a James Gimple SNOBOL4 function.
+[numbers.icn provides roman](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) as seen below and is based upon a James Gimple SNOBOL4 function.
 
 
 ```Icon
@@ -5470,7 +5470,7 @@ if __name__ == '__main__':
 
 ## R
 
-R has a built-in function, <code>[https://svn.r-project.org/R/trunk/src/library/utils/R/roman.R as.roman]</code>, for conversion to Roman numerals.  The implementation details are found in <code>utils:::.numeric2roman</code> (see previous link), and <code>utils:::.roman2numeric</code>, for conversion back to Arabic decimals.
+R has a built-in function, <code>[as.roman](https://svn.r-project.org/R/trunk/src/library/utils/R/roman.R)</code>, for conversion to Roman numerals.  The implementation details are found in <code>utils:::.numeric2roman</code> (see previous link), and <code>utils:::.roman2numeric</code>, for conversion back to Arabic decimals.
 
 ```R
 as.roman(1666)   # MDCLXVI
@@ -5862,7 +5862,7 @@ func toRoman val
 
 ## Ruby
 
-Roman numeral generation was used as an example for demonstrating [http://www.xpsd.org/cgi-bin/wiki?TestDrivenDevelopmentTutorialRomanNumerals Test Driven Development] in Ruby. The solution came to be:
+Roman numeral generation was used as an example for demonstrating [Test Driven Development](http://www.xpsd.org/cgi-bin/wiki?TestDrivenDevelopmentTutorialRomanNumerals) in Ruby. The solution came to be:
 
 ```ruby
 Symbols = { 1=>'I', 5=>'V', 10=>'X', 50=>'L', 100=>'C', 500=>'D', 1000=>'M' }
@@ -6145,8 +6145,8 @@ This is a general example using Chicken Scheme.
 ## Seed7
 
 The following program writes the numbers between 1 and 3999 as roman numerals.
-The [http://seed7.sourceforge.net/libraries/wrinum.htm wrinum.s7i] library contains the
-function [http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ROMAN,in_integer%29 str(ROMAN,)],
+The [wrinum.s7i](http://seed7.sourceforge.net/libraries/wrinum.htm) library contains the
+function [str(ROMAN,)](http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ROMAN,in_integer%29),
 which writes a roman numeral to a string.
 
 
@@ -6166,7 +6166,7 @@ const proc: main is func
 ```
 
 
-Original source [http://seed7.sourceforge.net/algorith/puzzles.htm#roman_numerals].
+Original source <http://seed7.sourceforge.net/algorith/puzzles.htm#roman_numerals>.
 
 
 ## SETL
@@ -6366,7 +6366,7 @@ printRomanOn:aStream naive:naive
 
 ## SNOBOL4
 
-Adapted from [http://burks.bton.ac.uk/burks/language/snobol/catspaw/tutorial/ch6.htm Catspaw SNOBOL Tutorial, Chapter 6]
+Adapted from [Catspaw SNOBOL Tutorial, Chapter 6](http://burks.bton.ac.uk/burks/language/snobol/catspaw/tutorial/ch6.htm)
 
 
 ```snobol4
@@ -6774,7 +6774,7 @@ done
 
 
 The algorithm is to implement the
-[http://www.en.wikipedia.org/wiki/Roman_Numerals#Subtractive_principle subtractive principle]
+[subtractive principle](http://www.en.wikipedia.org/wiki/Roman_Numerals#Subtractive_principle)
 by string substitution only after constucting the numeral from successive
 remainders. The order among the substitutions matters. For example,
 occurrences of DCCCC must be replaced by CM before any occurrences of

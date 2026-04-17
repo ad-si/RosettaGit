@@ -74,7 +74,7 @@ BTW, I think we should add expected output to all the examples. [[User:Fwend|Fwe
 
 == Universal Turing machine or just a Turing machine? ==
 
-From reading [https://en.wikipedia.org/wiki/Universal_Turing_machine#Example_of_universal-machine_coding Wikipedia] I get the impression that a true UTM would have static pre-defined action table and would read an encoding of a specific TM from tape (along with the input for that TM) and then using the static action table effectively execute that TM producing the required output.
+From reading [Wikipedia](https://en.wikipedia.org/wiki/Universal_Turing_machine#Example_of_universal-machine_coding) I get the impression that a true UTM would have static pre-defined action table and would read an encoding of a specific TM from tape (along with the input for that TM) and then using the static action table effectively execute that TM producing the required output.
 
 That's a much more difficult task that the one actually solved here which is just a general re-programable TM. (I'd also think a true UTM task wouldn't be appropriate here as it mostly involves writing a very complicated TM action table and then just inputting it to one of the general TM's specified here.)
 

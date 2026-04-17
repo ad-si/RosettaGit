@@ -17,6 +17,6 @@ The ZX81 has no moving parts and only four microchips: the 3.25MHz Z80 CPU, an 8
 
 The original machine's 1k of RAM was shared between the display, the system variables and stack, and the user's program and variables. An expansion pack from Sinclair increased the RAM to 16k; other sizes were available from third parties, allowing the ZX81 to be expanded to a theoretical maximum of 56k. The Timex-branded models marketed in North America came with either 2k or 16k, as did many of the clones. Most ZX81 BASIC programs on Rosetta Code will work with the 1k configuration, but unfortunately some of them do require more. The minimum RAM requirement is usually stated in a note to the program: where it is omitted, it can generally be assumed to be 1k.
 
-A PDF version of the manual, <cite>ZX81 BASIC Programming</cite> by Steve Vickers, is available [http://zxnext.narod.ru/manuals/ZX81_Manual.pdf here].
+A PDF version of the manual, <cite>ZX81 BASIC Programming</cite> by Steve Vickers, is available [here](http://zxnext.narod.ru/manuals/ZX81_Manual.pdf).
 
-If you do not have a ZX81 emulator installed on your computer, and your computer is not itself a ZX81 or ZX81 compatible, you can type any of these programs into the [http://www.zx81stuff.org.uk/zx81/jtyone.html JtyOne online ZX81 emulator] and see what they do.
+If you do not have a ZX81 emulator installed on your computer, and your computer is not itself a ZX81 or ZX81 compatible, you can type any of these programs into the [JtyOne online ZX81 emulator](http://www.zx81stuff.org.uk/zx81/jtyone.html) and see what they do.

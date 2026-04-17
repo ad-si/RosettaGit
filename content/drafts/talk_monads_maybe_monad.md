@@ -64,7 +64,7 @@ Bind assists the writer by discarding the envelope, and offering its contents to
 
 The data-type or context (the envelope or functor) is not itself the monad. The monad consists of the functor-specific pair of functions which abstract away the boiler-plate required for wrapping and unwrapping, (extraction from a context, and embedding in that context), to facilitate a chain of computations that are embedded in some enclosing context.
 
-A little more formally [https://en.wikipedia.org/wiki/Monad_(category_theory)#Formal_definition] (see definition 1.5 in Moggi, which refers in turn to MacLane) A monad over a category C is a triple (T, '''η''', '''μ''') where T:C -> C is the functor (for programming purposes, the context of the computation), '''η''' is the function which simply 'lifts' a raw value into that context (places a letter in an envelope), and '''μ''' is the function from the incoming envelope containing one message, to the outgoing envelope, which contains the new derived (responding) message. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 15:12, 3 October 2019 (UTC)
+A little more formally <https://en.wikipedia.org/wiki/Monad_(category_theory)#Formal_definition> (see definition 1.5 in Moggi, which refers in turn to MacLane) A monad over a category C is a triple (T, '''η''', '''μ''') where T:C -> C is the functor (for programming purposes, the context of the computation), '''η''' is the function which simply 'lifts' a raw value into that context (places a letter in an envelope), and '''μ''' is the function from the incoming envelope containing one message, to the outgoing envelope, which contains the new derived (responding) message. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 15:12, 3 October 2019 (UTC)
 
 
 ### Foundational references
@@ -72,6 +72,6 @@ A little more formally [https://en.wikipedia.org/wiki/Monad_(category_theory)#Fo
 
 S. MacLane. Categories for the Working Mathematician. Springer Verlag, 1971.
 
-[https://core.ac.uk/download/pdf/21173011.pdf | Moggi 1991, Notions of computation and monads]
+[| Moggi 1991, Notions of computation and monads](https://core.ac.uk/download/pdf/21173011.pdf)
 
-[https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf | Wadler 1992, Monads for functional programming]
+[| Wadler 1992, Monads for functional programming](https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf)

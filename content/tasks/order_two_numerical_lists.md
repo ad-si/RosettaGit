@@ -794,7 +794,7 @@ let before (s1 : seq<'a>) (s2 : seq<'a>) = (Seq.compareWith cmp s1 s2) < 0
 
 ## Factor
 
-All [[sequence]]s respond to words in the [http://docs.factorcode.org/content/vocab-math.order.html ''math.order''] vocabulary.
+All [[sequence]]s respond to words in the [''math.order''](http://docs.factorcode.org/content/vocab-math.order.html) vocabulary.
 
  IN: scratchpad '''{ 2 3 } { 2 5 } before? .'''
  t

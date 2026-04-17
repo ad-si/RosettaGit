@@ -13,7 +13,7 @@ Lisp 1.5 is an ancient dialect from around 1962. The first implementation appear
 
 The features of Lisp 1.5 include [garbage collection](https://rosettacode.org/wiki/garbage_collection) (of cons cells), [recursion](https://rosettacode.org/wiki/recursion), and [runtime evaluation](https://rosettacode.org/wiki/runtime_evaluation) (by an ''eval'' function).
 
-* [http://www.softwarepreservation.org/projects/LISP/lisp15_family/ LISP 1.5 family]
-* [http://www.frobenius.com/univac.htm LISP 1.5 for the Univac 1100]
-* [http://www.mentallandscape.com/Lisp.htm Lisp 1.5 interpreters (CDC 6600, DEC VAX 11/780)]
-* [http://c2.com/cgi/wiki?LispOnePointFive LispOnePointFive]
+* [LISP 1.5 family](http://www.softwarepreservation.org/projects/LISP/lisp15_family/)
+* [LISP 1.5 for the Univac 1100](http://www.frobenius.com/univac.htm)
+* [Lisp 1.5 interpreters (CDC 6600, DEC VAX 11/780)](http://www.mentallandscape.com/Lisp.htm)
+* [LispOnePointFive](http://c2.com/cgi/wiki?LispOnePointFive)

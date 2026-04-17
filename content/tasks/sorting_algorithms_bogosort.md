@@ -1365,7 +1365,7 @@ END PROGRAM BOGOSORT
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=b2b766f379d809cbf054c2d32d76c453 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=b2b766f379d809cbf054c2d32d76c453)'''
 
 ```gambas
 Public Sub Main()

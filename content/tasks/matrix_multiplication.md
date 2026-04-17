@@ -410,7 +410,7 @@ test:(
 
 ### Parallel processing
 
-Alternatively - for multicore CPUs - use the following parallel code... The next step might be to augment with [http://www.csse.monash.edu.au/~lloyd/tildeProgLang/Algol68/strassen.a68 Strassen's O(n^log2(7)) recursive matrix multiplication algorithm]:
+Alternatively - for multicore CPUs - use the following parallel code... The next step might be to augment with [Strassen's O(n^log2(7)) recursive matrix multiplication algorithm](http://www.csse.monash.edu.au/~lloyd/tildeProgLang/Algol68/strassen.a68):
  '''int''' default upb := 3;
  '''mode''' '''field''' = '''long''' '''real''';
  '''mode''' '''vector''' = [default upb]'''field''';
@@ -693,7 +693,7 @@ By contrast, A×B is for element-by-element multiplication of arrays of the same
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com/forum/topic44657-150.html discussion]
+ahk [discussion](http://www.autohotkey.com/forum/topic44657-150.html)
 
 ```autohotkey
 Matrix("b","  ; rows separated by ","
@@ -3377,7 +3377,7 @@ Usage example in the LFE REPL:
 
 ## Liberty BASIC
 
-There is no native matrix capability. A set of functions is available at http://www.diga.me.uk/RCMatrixFuncs.bas implementing matrices of arbitrary dimension in a string format.
+There is no native matrix capability. A set of functions is available at <http://www.diga.me.uk/RCMatrixFuncs.bas> implementing matrices of arbitrary dimension in a string format.
 
 ```lb
 
@@ -5036,7 +5036,7 @@ const func matrix: (in matrix: left) * (in matrix: right) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#mmult]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#mmult>
 
 
 ## SequenceL
@@ -5147,7 +5147,7 @@ for line in matrix_multi(a, b) {
 ```
 
 
-Domain:[http://fricas.github.io/api/Matrix.html?highlight=matrix Matrix(R)]
+Domain:[Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## SQL
@@ -5955,9 +5955,9 @@ With input document ...
 ```
 
 
-You may try in your browser: [[http://www.stamm-wilbrandt.de/en/blog/matmul.templ.xml]]
+You may try in your browser: <http://www.stamm-wilbrandt.de/en/blog/matmul.templ.xml>
 
-A slightly smaller version of above stylesheet making use of (Non-"XSLT 1.0") EXSLT functions can be founde here: [[https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/matrix_multiplication30]]
+A slightly smaller version of above stylesheet making use of (Non-"XSLT 1.0") EXSLT functions can be founde here: <https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/matrix_multiplication30>
 
 
 ## zkl

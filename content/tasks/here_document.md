@@ -420,7 +420,7 @@ in C#");
 
 There are no heredocs built in, but Clojure Strings themselves are multiline and whitespace/indentation is preserved.  If your text has many characters that have to be escaped, it may make more sense to store it as a resource file and read it in.
 
-For more information on the possibility of supporting a tripled-quoted syntax, see: [http://dev.clojure.org/display/design/Alternate+string+quote+syntaxes alternate string quote syntaxes].
+For more information on the possibility of supporting a tripled-quoted syntax, see: [alternate string quote syntaxes](http://dev.clojure.org/display/design/Alternate+string+quote+syntaxes).
 
 
 ## CoffeeScript
@@ -634,7 +634,7 @@ That said, as with other languages, F# has two string syntax variations which co
 <dt>tripple-quoted strings</dt>
 <dd>are delimited by <code>"""</code> on both ends and can contain any character other than the delimiter sequence of three double quote characters.</dd>
 </dl>
-Full information on F# strings can be found in [https://msdn.microsoft.com/visualfsharpdocs/conceptual/strings-%5bfsharp%5d MSDN].
+Full information on F# strings can be found in [MSDN](https://msdn.microsoft.com/visualfsharpdocs/conceptual/strings-%5bfsharp%5d).
 
 
 ## Factor
@@ -1371,7 +1371,7 @@ named and preserved inline file
 ## Common Lisp
 
 
-[https://github.com/e-user/cl-heredoc cl-heredoc] provide read-macro for heredoc:
+[cl-heredoc](https://github.com/e-user/cl-heredoc) provide read-macro for heredoc:
 
 
 ```lisp
@@ -1628,7 +1628,7 @@ freewheelin;
 ```
 
 
-Both q and qq are specialised forms of [http://design.perl6.org/S02.html#Q_forms Q] which comes with many adverbs. Here a heredoc that only interpolates @-sigils.
+Both q and qq are specialised forms of [Q](http://design.perl6.org/S02.html#Q_forms) which comes with many adverbs. Here a heredoc that only interpolates @-sigils.
 
 
 ```perl6
@@ -1745,7 +1745,7 @@ FOO;
 
 ## PicoLisp
 
-We can use the '[http://software-lab.de/doc/refH.html#here here]' function:
+We can use the '[here](http://software-lab.de/doc/refH.html#here)' function:
 
 
 ```PicoLisp
@@ -1806,7 +1806,7 @@ $XMLdata=@"
 ## Python
 
 Python does not have here-docs.
-It does however have [http://docs.python.org/py3k/tutorial/introduction.html#strings triple-quoted strings] which can be used similarly.
+It does however have [triple-quoted strings](http://docs.python.org/py3k/tutorial/introduction.html#strings) which can be used similarly.
 
 
 ```python
@@ -1846,7 +1846,7 @@ EOF
 
 ```
 
-In addition, Racket has "@-forms", which are a syntax for free text ([http://barzilay.org/misc/scribble-reader.pdf described here])
+In addition, Racket has "@-forms", which are a syntax for free text ([described here](http://barzilay.org/misc/scribble-reader.pdf))
 that works well with code:
 
 
@@ -2784,7 +2784,7 @@ marks (^") and any carets (^^) within the string must be escaped.")
 ## XSLT
 
 
-Being a dialect of XML, XSLT inherits [http://www.w3.org/TR/REC-xml/#sec-cdata-sect CDATA sections]. Not quite heredocs, these are more like raw triple quotes in Python (<code>r"""…"""</code>) or Scala (<code>"""…"""</code>) in that anything except the end delimiter is treated literally.
+Being a dialect of XML, XSLT inherits [CDATA sections](http://www.w3.org/TR/REC-xml/#sec-cdata-sect). Not quite heredocs, these are more like raw triple quotes in Python (<code>r"""…"""</code>) or Scala (<code>"""…"""</code>) in that anything except the end delimiter is treated literally.
 
 
 ```xml

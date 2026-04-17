@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{library}}Get OCaml-Xlib [http://www.linux-nantes.org/~fmonnier/OCaml/Xlib/ here].
+{{library}}Get OCaml-Xlib [here](http://www.linux-nantes.org/~fmonnier/OCaml/Xlib/).
 
 [[Category:Xlib]]

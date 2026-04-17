@@ -11,9 +11,9 @@ tags = []
 +++
 GFA Basic was a popular form of basic for the Atari ST computer.  It provided an integrated editor and interpreter, and the ability to compile code into standalone programs.  Full access was provided to the Atari operating system (TOS, VDI and AES).
 
-GFA Basic for the Atari ST can be used through an emulator, see [http://www.atari-wiki.com/index.php/Emulators#Atari_Computer_Emulation_Matrix Emulator list].  GFA Basic also runs on the Atari-compatible [http://firebee.org Firebee].
+GFA Basic for the Atari ST can be used through an emulator, see [Emulator list](http://www.atari-wiki.com/index.php/Emulators#Atari_Computer_Emulation_Matrix).  GFA Basic also runs on the Atari-compatible [Firebee](http://firebee.org).
 
 ## See also
-*[http://gfa.atari-users.net/atari/html/download.htm  Version 3.6 for Atari ST]
-*[http://gfa.atari-users.net/atari/ The Unofficial Home for GFA Basic (with ongoing support for the language)]
-*[http://www.atari-wiki.com/index.php/GFA_BASIC Information about GFA Basic on Atari wiki]
+*[Version 3.6 for Atari ST](http://gfa.atari-users.net/atari/html/download.htm)
+*[The Unofficial Home for GFA Basic (with ongoing support for the language)](http://gfa.atari-users.net/atari/)
+*[Information about GFA Basic on Atari wiki](http://www.atari-wiki.com/index.php/GFA_BASIC)

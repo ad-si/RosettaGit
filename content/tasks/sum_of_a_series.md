@@ -1167,9 +1167,9 @@ fansh> (1..1000).toList.reduce(0.0f) |Obj a, Int v -> Obj| { (Float)a + (1.0f/(v
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Sum_of_a_series this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Sum_of_a_series) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1463,7 +1463,7 @@ With higher-order functions:
 sum $ map (\x -> 1 / x ^ 2) [1..1000]
 ```
 
-In [http://haskell.org/haskellwiki/Pointfree point-free] style:
+In [point-free](http://haskell.org/haskellwiki/Pointfree) style:
 
 ```haskell
 (sum . map (1/) . map (^2)) [1..1000]

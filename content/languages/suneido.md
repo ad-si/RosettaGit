@@ -15,4 +15,4 @@ tags = []
 
 <p>Suneido currently runs on [Microsoft](https://rosettacode.org/wiki/Microsoft) [Windows](https://rosettacode.org/wiki/Windows) NT, 2000, 2003, XP, Vista, and Windows 7. </p></blockquote>
 
-— [http://www.suneido.com Suneido Home Page]
+— [Suneido Home Page](http://www.suneido.com)

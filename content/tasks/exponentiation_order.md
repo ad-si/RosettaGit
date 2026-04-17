@@ -86,7 +86,7 @@ If there are other methods (or formats) of multiple exponentiations, show them a
 
 ## See also
 
-* MathWorld entry:   [http://mathworld.wolfram.com/Exponentiation.html exponentiation]
+* MathWorld entry:   [exponentiation](http://mathworld.wolfram.com/Exponentiation.html)
 
 
 ## Related tasks

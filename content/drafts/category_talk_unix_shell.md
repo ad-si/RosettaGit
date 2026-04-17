@@ -28,7 +28,7 @@ I use &lt;lang bash&gt; for all Bourne-compatible examples, including [[pdksh]] 
 
 == When it works with Bourne Shell ==
 
-* ''Do not make [http://rosettacode.org/mw/index.php?title=Loops/Infinite&oldid=114610#UNIX_Shell a long list of Bourne-compatible shells] above each Bourne-compatible solution.'' A single <nowiki>{{works with|Bourne Shell}}</nowiki> is enough. Do not add works with Almquist Shell, works with Korn Shell, works with Bash, ...
-* ''Do not post two copies of the same script.'' There should not be [http://rosettacode.org/mw/index.php?title=User_input/Text&oldid=118994#UNIX_Shell an extra copy] that only has #!/bin/bash instead of #!/bin/sh, only because the script also works with Bash.
+* ''Do not make [a long list of Bourne-compatible shells](http://rosettacode.org/mw/index.php?title=Loops/Infinite&oldid=114610#UNIX_Shell) above each Bourne-compatible solution.'' A single <nowiki>{{works with|Bourne Shell}}</nowiki> is enough. Do not add works with Almquist Shell, works with Korn Shell, works with Bash, ...
+* ''Do not post two copies of the same script.'' There should not be [an extra copy](http://rosettacode.org/mw/index.php?title=User_input/Text&oldid=118994#UNIX_Shell) that only has #!/bin/bash instead of #!/bin/sh, only because the script also works with Bash.
 
 --[[User:Kernigh|Kernigh]] 02:42, 30 August 2011 (UTC)

@@ -1817,7 +1817,7 @@ Output:
 ## Factor
 
 This solution uses the `backtrack` vocabulary —
-Factor's implementation of John McCarthy's [http://www.rosettacode.org/wiki/Amb ambiguous operator](/).
+Factor's implementation of John McCarthy's [ambiguous operator](http://www.rosettacode.org/wiki/Amb)(/).
 In short, we define 7 integers that can take up any value
 within the range that we give it, such as [3,9], and assign them names a-g.
 We then test whether the four sums from the puzzle are equal,

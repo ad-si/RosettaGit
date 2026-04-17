@@ -11,7 +11,7 @@ tags = []
 +++
 
 
-[The original author of this example](https://rosettacode.org/wiki/User:Kevin_Reid) (written in [E](https://rosettacode.org/wiki/E)) would like to note the following deficiencies in [http://www.cliff.biffle.org/esoterica/hq9plus.html the HQ9+ specification]:
+[The original author of this example](https://rosettacode.org/wiki/User:Kevin_Reid) (written in [E](https://rosettacode.org/wiki/E)) would like to note the following deficiencies in [the HQ9+ specification](http://www.cliff.biffle.org/esoterica/hq9plus.html):
 
 * The treatment of unrecognized characters other than whitespace is unspecified. However, the only implementation provided, in [OCaml](https://rosettacode.org/wiki/OCaml), rejects them, so this implementation also does. Additionally, rejecting unknown characters ensures that the compiler will not incorrectly compile [HQ9+](https://rosettacode.org/wiki/HQ9+) programs using future extensions.
 * While the given "qqqq" example implies that whitespace (specifically, trailing newlines) is permissible and that operation codes are case-insensitive, neither of these are explicitly stated.

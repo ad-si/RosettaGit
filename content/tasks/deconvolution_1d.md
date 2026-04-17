@@ -113,7 +113,7 @@ g = A \; h
 For this task, implement a function (or method, procedure, subroutine, etc.) <code>deconv</code> to perform ''deconvolution'' (i.e., the ''inverse'' of convolution) by constructing and solving such a system of equations represented by the above matrix <math>A</math> for <math>\mathit{h}</math> given <math>\mathit{f}</math> and <math>\mathit{g}</math>.
 
 * The function should work for <math>\mathit{G}</math> of arbitrary length (i.e., not hard coded or constant) and <math>\mathit{F}</math> of any length up to that of <math>\mathit{G}</math>. Note that <math>|\mathit{H}|</math> will be given by <math>|\mathit{G}| - |\mathit{F}| + 1</math>.
-* There may be more equations than unknowns. If convenient, use a function from a [http://www.netlib.org/lapack/lug/node27.html library] that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
+* There may be more equations than unknowns. If convenient, use a function from a [library](http://www.netlib.org/lapack/lug/node27.html) that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
 * Test your solution on the following data. Be sure to verify both that <code>deconv</code><math>(g,f) = h</math> and <code>deconv</code><math>(g,h) = f</math> and display the results in a human readable form.
 <code>
 h = [-8,-9,-3,-1,-6,7]
@@ -1585,7 +1585,7 @@ array G: 24 75 71 -34 3 22 -45 23 245 25 52 25 -67 -96 96 31 55 36 29 -43 -7
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/ENWyl3Z/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/bFag8sS1Qr2Z062LN8dr6A Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/ENWyl3Z/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/bFag8sS1Qr2Z062LN8dr6A).
 
 ```Scala
 object Deconvolution1D extends App {
@@ -1756,7 +1756,7 @@ deconv(g,h) = f = [-3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1]
 
 The user defined function <code>band</code> constructs the required
 matrix as a list of lists given the pair of sequences to be
-deconvolved, and the [http://www.netlib.org/lapack/lug/node27.html <code>lapack..dgelsd</code>] function solves the system. Some other library functions used are <code>zipt</code> (zipping two unequal length
+deconvolved, and the [<code>lapack..dgelsd</code>](http://www.netlib.org/lapack/lug/node27.html) function solves the system. Some other library functions used are <code>zipt</code> (zipping two unequal length
 lists by truncating the longer one) <code>zipp0</code> (zipping unequal length lists by padding the
 shorter with zeros) and <code>pad0</code> (making a list of lists all
 the same length by appending zeros to the short ones).

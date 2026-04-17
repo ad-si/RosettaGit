@@ -13,7 +13,7 @@ S-Lang is a multi-platform programmer's library designed to allow a developer to
 
 Unlike many interpreters, the S-Lang interpreter supports all of the native C integer types (signed and unsigned versions of char, short, int, long, and long long), and both single and double precision types, as well as a double precision complex type. Other data types supported by the interpreter include strings, lists, associative arrays (hashes), user-defined structures, and multi-dimensional arrays of any data-type.
 
-The S-Lang interpreter has very strong support for array-based operations making it ideal for numerical applications. (from [http://www.jedsoft.org/slang/ the official web site]])
+The S-Lang interpreter has very strong support for array-based operations making it ideal for numerical applications. (from [the official web site](http://www.jedsoft.org/slang/)])
 
 <hr>
 Task Output Notes:
@@ -40,7 +40,7 @@ the string() function to convert-or-describe non-strings as strings:
 
     define print(foo) { () = printf("%S\n", foo); }
 S-Lang is the extension language for the lightweight Emacs-like
-[http://www.jedsoft.org/jed/ programmer's editor Jed].  There, the
+[programmer's editor Jed](http://www.jedsoft.org/jed/).  There, the
 output functions include:
 
     insert(s)       write string s into current buffer

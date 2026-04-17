@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://www.cs.arizona.edu/icon/library/ipl.htm The Icon Programming Library] is an extensive collection of programs and procedures distributed with both [[:Category:Icon]] and [[:Category:Unicon]].
+{{library}}[The Icon Programming Library](http://www.cs.arizona.edu/icon/library/ipl.htm) is an extensive collection of programs and procedures distributed with both [[:Category:Icon]] and [[:Category:Unicon]].
 
 See also:
-* [http://www.cs.arizona.edu/icon/library/pdx.htm The IPL permuted index of basic procedures]
-* [http://www.cs.arizona.edu/icon/library/gpdx.htm The IPL permuted index of graphic procedures]
+* [The IPL permuted index of basic procedures](http://www.cs.arizona.edu/icon/library/pdx.htm)
+* [The IPL permuted index of graphic procedures](http://www.cs.arizona.edu/icon/library/gpdx.htm)

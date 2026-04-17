@@ -37,7 +37,7 @@ languages = [
 
 {{task}}Lexical Analyzer
 
-Definition from [https://en.wikipedia.org/wiki/Lexical_analysis Wikipedia]:
+Definition from [Wikipedia](https://en.wikipedia.org/wiki/Lexical_analysis):
 
 : ''Lexical analysis is the process of converting a sequence of characters (such as in a computer program or web page) into a sequence of tokens (strings with an identified "meaning"). A program that performs lexical analysis may be called a lexer, tokenizer, or scanner (though "scanner" is also used to refer to the first stage of a lexer).''
 

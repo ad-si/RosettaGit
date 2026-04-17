@@ -24,4 +24,4 @@ Bit, character, and word manipulation.
 TCP/IP support.
 
 
-More info at :  http://symsyn.qsys.us
+More info at :  <http://symsyn.qsys.us>

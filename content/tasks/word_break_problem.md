@@ -494,7 +494,7 @@ No solutions for abcdd : No fitting matches found.
 
 ## Kotlin
 
-I've downloaded the free dictionary at http://www.puzzlers.org/pub/wordlists/unixdict.txt for this task. All single letters from 'a' to 'z' are considered to be words by this dictionary but 'bc' and 'cd' which I'd have expected to be present are not.
+I've downloaded the free dictionary at <http://www.puzzlers.org/pub/wordlists/unixdict.txt> for this task. All single letters from 'a' to 'z' are considered to be words by this dictionary but 'bc' and 'cd' which I'd have expected to be present are not.
 
 ```scala
 // version 1.1.3
@@ -1399,7 +1399,7 @@ abcdd has 0 solution(s):
 
 ### Combined solution
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/49YwsD5/1 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/L47OzgmjSkOnQ5wfrZ5snQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/49YwsD5/1) or [Scastie (remote JVM)](https://scastie.scala-lang.org/L47OzgmjSkOnQ5wfrZ5snQ).
 
 ```Scala
 object WordBreak extends App {

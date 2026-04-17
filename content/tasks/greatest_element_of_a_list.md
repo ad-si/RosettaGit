@@ -1237,7 +1237,7 @@ float max(unsigned int count, float values[]) {
 ```
 
 
-The following macro can be used with any number and type of arguments, provided that the arguments are ''simple'', i.e. must not contain subexpressions where commas appear (this is because of the way the arguments are counted; the macro can be modified so that it is up to the caller to count the number of arguments passed). <!-- You might wanna look at the macro from here which can count the number of arguments without parsing commas: http://groups.google.com/group/comp.std.c/browse_thread/thread/77ee8c8f92e4a3fb/346fc464319b1ee5 -->
+The following macro can be used with any number and type of arguments, provided that the arguments are ''simple'', i.e. must not contain subexpressions where commas appear (this is because of the way the arguments are counted; the macro can be modified so that it is up to the caller to count the number of arguments passed). <!-- You might wanna look at the macro from here which can count the number of arguments without parsing commas: <http://groups.google.com/group/comp.std.c/browse_thread/thread/77ee8c8f92e4a3fb/346fc464319b1ee5> -->
 
 ```c
 #include <stdarg.h>
@@ -1672,7 +1672,7 @@ var xs = [1..10]
 ## E
 
 
-This function works for any value which responds to <code>[http://wiki.erights.org/wiki/Category:Message_max/1 max/1]</code>:
+This function works for any value which responds to <code>[max/1](http://wiki.erights.org/wiki/Category:Message_max/1)</code>:
 
 
 ```e
@@ -2172,9 +2172,9 @@ class Greatest
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Greatest_element_of_a_list this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Greatest_element_of_a_list) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -5091,7 +5091,7 @@ fun max_of_ints [] = raise Empty
 ## Stata
 
 
-Use the '''[https://www.stata.com/help.cgi?summarize summarize]''' command to compute the maximum value of a variable:
+Use the '''[summarize](https://www.stata.com/help.cgi?summarize)''' command to compute the maximum value of a variable:
 
 
 ```stata
@@ -5100,7 +5100,7 @@ di r(max)
 ```
 
 
-Mata has also several [https://www.stata.com/help.cgi?mf_minmax functions] to compute minimum or maximum of a vactor or matrix:
+Mata has also several [functions](https://www.stata.com/help.cgi?mf_minmax) to compute minimum or maximum of a vactor or matrix:
 
 
 ```stata

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-==[http://www.reddit.com/r/programming/comments/1rpk3t/flipping_bits_game_is_it_original/ Reddit] joins in!==
+==[Reddit](http://www.reddit.com/r/programming/comments/1rpk3t/flipping_bits_game_is_it_original/) joins in!==
 I asked Reddit if the game was original and they managed to find some similar games. User Strilanc went further and seems to have found an easy algorithm for solving it too. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:43, 30 November 2013 (UTC)
 
 ==References?==
@@ -45,10 +45,10 @@ Oh, I am also looking for strategies to finish the game. --[[User:Paddy3118|Padd
 
 ::::Glad to help. I wish I could definitively prove a relationship between the starting and ending position that guarantees a solution. Alas, I don't think my proof skills are quite that good. I suspect that if the starting and ending positions share the same parity for each even-sized subgrid, there is a solution, but I'm not sure I could prove that. [[User:AnonymousJohn|AnonymousJohn]] ([[User talk:AnonymousJohn|talk]]) 01:50, 4 December 2013 (UTC)
 
-:This game is similar to the [https://en.wikipedia.org/wiki/Lights_Out_(game) "All-out"] game... --[[User:Simple9371|Simple9371]] ([[User talk:Simple9371|talk]]) 13:48, 16 June 2015 (UTC)
+:This game is similar to the ["All-out"](https://en.wikipedia.org/wiki/Lights_Out_(game)) game... --[[User:Simple9371|Simple9371]] ([[User talk:Simple9371|talk]]) 13:48, 16 June 2015 (UTC)
 
 ==Generating a Solvable Game==
-I am quite sure that this has been shown already by someone, but I will still share a 'method' of generating a solvable flipping bits game, with some proofs. Here it is: [https://pastebin.com/WZfMeeGw PasteBin]
+I am quite sure that this has been shown already by someone, but I will still share a 'method' of generating a solvable flipping bits game, with some proofs. Here it is: [PasteBin](https://pastebin.com/WZfMeeGw)
 
 If there is any error there, just reply.
 

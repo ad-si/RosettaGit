@@ -17,7 +17,7 @@ languages = [
 ]
 +++
 
-Gradient descent (also known as steepest descent) is a first-order iterative optimization algorithm for finding the minimum of a function which is described in [https://en.wikipedia.org/wiki/Gradient_descent this Wikipedia article].
+Gradient descent (also known as steepest descent) is a first-order iterative optimization algorithm for finding the minimum of a function which is described in [this Wikipedia article](https://en.wikipedia.org/wiki/Gradient_descent).
 
 ## Task
 
@@ -27,7 +27,7 @@ Use this algorithm to search for minimum values of the bi-variate function:
 
 around x = 0.1 and y = -1.
 
-[https://books.google.co.uk/books?id=dFHvBQAAQBAJ&pg=PA543&lpg=PA543&dq=c%23+steepest+descent+method+to+find+minima+of+two+variable+function&source=bl&ots=TCyD-ts9ui&sig=ACfU3U306Og2fOhTjRv2Ms-BW00IhomoBg&hl=en&sa=X&ved=2ahUKEwitzrmL3aXjAhWwVRUIHSEYCU8Q6AEwCXoECAgQAQ#v=onepage&q=c%23%20steepest%20descent%20method%20to%20find%20minima%20of%20two%20variable%20function&f=false This book excerpt] shows sample C# code for solving this task.
+[This book excerpt](https://books.google.co.uk/books?id=dFHvBQAAQBAJ&pg=PA543&lpg=PA543&dq=c%23+steepest+descent+method+to+find+minima+of+two+variable+function&source=bl&ots=TCyD-ts9ui&sig=ACfU3U306Og2fOhTjRv2Ms-BW00IhomoBg&hl=en&sa=X&ved=2ahUKEwitzrmL3aXjAhWwVRUIHSEYCU8Q6AEwCXoECAgQAQ#v=onepage&q=c%23%20steepest%20descent%20method%20to%20find%20minima%20of%20two%20variable%20function&f=false) shows sample C# code for solving this task.
 
 
 

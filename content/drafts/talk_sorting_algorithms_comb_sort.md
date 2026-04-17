@@ -13,7 +13,7 @@ tags = []
 
 ### Faulty Code
 
-After discussion on [http://www.autohotkey.com/forum/ AHK forum], and thoroughly checking the findings, I believe the published pseudocode is faulty, and so are the implementations that follow the pseudocode. I don't have the ability to check all languages, but these '''look suspicious''' to me: ActionScript, C#, Io, PL/I, PureBasic (2nd example), Python, Ruby, Tcl, TI-83 BASIC. I appologize for suspecting any code incorrectly, but I do have a point with python.
+After discussion on [AHK forum](http://www.autohotkey.com/forum/), and thoroughly checking the findings, I believe the published pseudocode is faulty, and so are the implementations that follow the pseudocode. I don't have the ability to check all languages, but these '''look suspicious''' to me: ActionScript, C#, Io, PL/I, PureBasic (2nd example), Python, Ruby, Tcl, TI-83 BASIC. I appologize for suspecting any code incorrectly, but I do have a point with python.
 
 This example for Python:
 ```txt
@@ -52,7 +52,7 @@ to this:
 
 --[[User:Wolf|Wolf]] 14:08, 16 May 2010 (UTC)
 
-:After a [[User_talk:Paddy3118#Hi_Paddy.2C_I.27m_Wolf|most polite request]] from Wolf, I had a look at what might be an "authoritative" comb sort site from the US [http://www.itl.nist.gov/div897/sqg/dads/HTML/combSort.html National Institute of Standards and Technology (NIST)] which links to [http://people.cs.ubc.ca/~harrison/Java/CombSort11Algorithm.java this java] example implementation, which does indeed ensure that the gaps minimum value is 1 with this section of its code:
+:After a [[User_talk:Paddy3118#Hi_Paddy.2C_I.27m_Wolf|most polite request]] from Wolf, I had a look at what might be an "authoritative" comb sort site from the US [National Institute of Standards and Technology (NIST)](http://www.itl.nist.gov/div897/sqg/dads/HTML/combSort.html) which links to [this java](http://people.cs.ubc.ca/~harrison/Java/CombSort11Algorithm.java) example implementation, which does indeed ensure that the gaps minimum value is 1 with this section of its code:
 ::
 ```java
             gap = (int) ((float) gap / SHRINKFACTOR);

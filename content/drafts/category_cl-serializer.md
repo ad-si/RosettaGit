@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}} ''cl-serializer'' is a [[Common Lisp]] serialization library. For more details, see its [http://common-lisp.net/project/cl-serializer/ home page]
+{{library}} ''cl-serializer'' is a [[Common Lisp]] serialization library. For more details, see its [home page](http://common-lisp.net/project/cl-serializer/)

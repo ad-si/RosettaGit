@@ -19,6 +19,6 @@ background-color:{{{bg2|transparent}}}; text-align:{{{ta2|left}}};
 
 <!--
 Template taken from:
-http://en.wikipedia.org/wiki/Template:Hidden
+<http://en.wikipedia.org/wiki/Template:Hidden>
 -->
 <noinclude>{{template}}</noinclude>

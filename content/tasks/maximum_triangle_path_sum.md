@@ -106,7 +106,7 @@ Find the maximum total in the triangle below:
 
 Such numbers can be included in the solution code, or read from a "triangle.txt" file.
 
-This task is derived from the [http://projecteuler.net/problem=18 Euler Problem #18].
+This task is derived from the [Euler Problem #18](http://projecteuler.net/problem=18).
 
 
 

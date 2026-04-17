@@ -106,7 +106,7 @@ for(i=0; i<j; i++) {
 ## Tcl
 
 
-Using the popular [http://www.speech.kth.se/snack/ snack] ([http://wiki.tcl.tk/2647 wiki]) extension for audio support, the following presents a GUI to control echo production.
+Using the popular [snack](http://www.speech.kth.se/snack/) ([wiki](http://wiki.tcl.tk/2647)) extension for audio support, the following presents a GUI to control echo production.
 
 This uses a couple of interesting Tcl features:
 

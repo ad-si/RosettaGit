@@ -19,4 +19,4 @@ Both ''Vala'' and ''Genie'' dialects are supported by the ''valac'' compiler. ''
 
 The Genie language was designed by Jamie McCracken.  First released in 2008, Genie is maintained as part of the [Vala](https://rosettacode.org/wiki/Vala) project.
 
-See https://wiki.gnome.org/Projects/Genie and https://wiki.gnome.org/Projects/Vala for more information.
+See <https://wiki.gnome.org/Projects/Genie> and <https://wiki.gnome.org/Projects/Vala> for more information.

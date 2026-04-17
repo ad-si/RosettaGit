@@ -16,4 +16,4 @@ It's currently providing SHA1, SHA256 and SHA512 hash functions.
 
 
 '''Homepage:'''
-https://github.com/vincenthz/ocaml-sha
+<https://github.com/vincenthz/ocaml-sha>

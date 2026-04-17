@@ -180,7 +180,7 @@ Runtime error (func=(main), adr=3): Function f not defined.
 
 ## C
 
-Demonstrating function scope as well as goto in a C program invariably leads to code like the one below. The [http://en.wikipedia.org/wiki/Scope_(computer_science)#C Wikipedia article] is a good starting point.
+Demonstrating function scope as well as goto in a C program invariably leads to code like the one below. The [Wikipedia article](http://en.wikipedia.org/wiki/Scope_(computer_science)#C) is a good starting point.
 
 
 ```C
@@ -960,9 +960,9 @@ Some (rather dry) rules are:
 # Names belong to the scope where they are assigned-to (or bound)
 
 ;Cf.:
-* Ka-Ping Yee has a tutorial on the above [http://www-inst.eecs.berkeley.edu/~selfpace/cs9honline/Q2/scope.html here].
-* This Python Enhancement Proposal: [http://www.python.org/dev/peps/pep-3104/ PEP 3104] introduces the non-local keyword of Python 3.
-* And of course, [http://www.youtube.com/watch?v=vt0Y39eMvpI this]!
+* Ka-Ping Yee has a tutorial on the above [here](http://www-inst.eecs.berkeley.edu/~selfpace/cs9honline/Q2/scope.html).
+* This Python Enhancement Proposal: [PEP 3104](http://www.python.org/dev/peps/pep-3104/) introduces the non-local keyword of Python 3.
+* And of course, [this](http://www.youtube.com/watch?v=vt0Y39eMvpI)!
 
 
 ## Racket

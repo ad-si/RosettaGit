@@ -12,10 +12,10 @@ tags = []
 
 These links represent places where the Rosetta Code community can be tied into, listend to and spoken with.
 
-* [http://rosettacode.org/planet Rosetta Code Planet]
-* [http://twitter.com/rosettacode Rosetta Code on Twitter]
-* [http://www.reddit.com/r/rosettacodeorg/ Rosetta Code on Reddit]
-* [http://www.facebook.com/pages/RosettaCodeorg/199439093012 Rosetta Code on Facebook]
+* [Rosetta Code Planet](http://rosettacode.org/planet)
+* [Rosetta Code on Twitter](http://twitter.com/rosettacode)
+* [Rosetta Code on Reddit](http://www.reddit.com/r/rosettacodeorg/)
+* [Rosetta Code on Facebook](http://www.facebook.com/pages/RosettaCodeorg/199439093012)
 * [[Rosetta Code:Village Pump|The Village Pump]]&mdash;Where general questions and announcements are sometimes posed to the community.
 * [[Special:WebChat|#rosettacode on FreeNode]]&mdash;Somewhat real-time chatting with some of Rosetta Code's members. (Responses can come within a few seconds or a few hours; be patient.)
 * [[Help:Similar Sites|Similar sites]]&mdash;Sites with similar aims and properties.

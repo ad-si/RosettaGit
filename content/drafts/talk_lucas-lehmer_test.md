@@ -58,7 +58,7 @@ The table below lists all known Mersenne primes:
 | align="right" | 8191
 | align="right" | 4
 | 1456
-| ''anonymous'' [http://primes.utm.edu/mersenne/]
+| ''anonymous'' <http://primes.utm.edu/mersenne/>
 |-
 | align="right" | 6
 | align="right" | 17
@@ -100,7 +100,7 @@ The table below lists all known Mersenne primes:
 | align="right" | 162259276…010288127
 | align="right" | 33
 | 1914
-| R. E. Powers|Powers[http://primes.utm.edu/notes/fauquem.html]
+| R. E. Powers|Powers<http://primes.utm.edu/notes/fauquem.html>
 |-
 | align="right" | 12
 | align="right" | 127
@@ -232,14 +232,14 @@ The table below lists all known Mersenne primes:
 | align="right" | 132,049
 | align="right" | 512740276…730061311
 | align="right" | 39,751
-| September 19 1983[http://www.isthe.com/chongo/tech/math/prime/mersenne.html#largest]
+| September 19 1983<http://www.isthe.com/chongo/tech/math/prime/mersenne.html#largest>
 | David Slowinski|Slowinski
 |-
 | align="right" | 31
 | align="right" | 216,091
 | align="right" | 746093103…815528447
 | align="right" | 65,050
-| September 1 1985[http://www.isthe.com/chongo/tech/math/prime/mersenne.html#largest]
+| September 1 1985<http://www.isthe.com/chongo/tech/math/prime/mersenne.html#largest>
 | David Slowinski|Slowinski
 |-
 | align="right" | 32
@@ -247,13 +247,13 @@ The table below lists all known Mersenne primes:
 | align="right" | 174135906…544677887
 | align="right" | 227,832
 | February 19 1992
-| David Slowinski|Slowinski & Paul Gage|Gage on Harwell Lab Cray-2 [http://primes.utm.edu/notes/756839.html]
+| David Slowinski|Slowinski & Paul Gage|Gage on Harwell Lab Cray-2 <http://primes.utm.edu/notes/756839.html>
 |-
 | align="right" | 33
 | align="right" | 859,433
 | align="right" | 129498125…500142591
 | align="right" | 258,716
-| January 4 1994 [http://www.math.unicaen.fr/~reyssat/largest.html]
+| January 4 1994 <http://www.math.unicaen.fr/~reyssat/largest.html>
 | David Slowinski|Slowinski & Paul Gage|Gage
 |-
 | align="right" | 34
@@ -261,84 +261,84 @@ The table below lists all known Mersenne primes:
 | align="right" | 412245773…089366527
 | align="right" | 378,632
 | September 3 1996
-| David Slowinski|Slowinski & Paul Gage|Gage [http://primes.utm.edu/notes/1257787.html]
+| David Slowinski|Slowinski & Paul Gage|Gage <http://primes.utm.edu/notes/1257787.html>
 |-
 | align="right" | 35
 | align="right" | 1,398,269
 | align="right" | 814717564…451315711
 | align="right" | 420,921
 | November 13 1996
-| Great Internet Mersenne Prime Search|GIMPS / Joel Armengaud [http://www.mersenne.org/1398269.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Joel Armengaud <http://www.mersenne.org/1398269.htm>
 |-
 | align="right" | 36
 | align="right" | 2,976,221
 | align="right" | 623340076…729201151
 | align="right" | 895,932
 | August 24 1997
-| Great Internet Mersenne Prime Search|GIMPS / Gordon Spence [http://www.mersenne.org/2976221.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Gordon Spence <http://www.mersenne.org/2976221.htm>
 |-
 | align="right" | 37
 | align="right" | 3,021,377
 | align="right" | 127411683…024694271
 | align="right" | 909,526
 | January 27 1998
-| Great Internet Mersenne Prime Search|GIMPS / Roland Clarkson [http://www.mersenne.org/3021377.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Roland Clarkson <http://www.mersenne.org/3021377.htm>
 |-
 | align="right" | 38
 | align="right" | 6,972,593
 | align="right" | 437075744…924193791
 | align="right" | 2,098,960
 | June 1 1999
-| Great Internet Mersenne Prime Search|GIMPS / Nayan Hajratwala [http://www.mersenne.org/6972593.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Nayan Hajratwala <http://www.mersenne.org/6972593.htm>
 |-
 | align="right" | 39
 | align="right" | 13,466,917
 | align="right" | 924947738…256259071
 | align="right" | 4,053,946
 | November 14 2001
-| Great Internet Mersenne Prime Search|GIMPS / Michael Cameron [http://www.mersenne.org/13466917.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Michael Cameron <http://www.mersenne.org/13466917.htm>
 |-
 | align="right" | 40<sup>*</sup>
 | align="right" | 20,996,011
 | align="right" | 125976895…855682047
 | align="right" | 6,320,430
 | November 17 2003
-| Great Internet Mersenne Prime Search|GIMPS / Michael Shafer [http://www.mersenne.org/20996011.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Michael Shafer <http://www.mersenne.org/20996011.htm>
 |-
 | align="right" | 41<sup>*</sup>
 | align="right" | 24,036,583
 | align="right" | 299410429…733969407
 | align="right" | 7,235,733
 | May 15 2004
-| Great Internet Mersenne Prime Search|GIMPS / Josh Findley [http://www.mersenne.org/24036583.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Josh Findley <http://www.mersenne.org/24036583.htm>
 |-
 | align="right" | 42<sup>*</sup>
 | align="right" | 25,964,951
 | align="right" | 122164630…577077247
 | align="right" | 7,816,230
 | February 18 2005
-| Great Internet Mersenne Prime Search|GIMPS / Martin Nowak [http://www.mersenne.org/25964951.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Martin Nowak <http://www.mersenne.org/25964951.htm>
 |-
 | align="right" | 43<sup>*</sup>
 | align="right" | 30,402,457
 | align="right" | 315416475…652943871
 | align="right" | 9,152,052
 | December 15 2005
-| Great Internet Mersenne Prime Search|GIMPS / Curtis Cooper (mathematician)|Curtis Cooper & Steven Boone [http://www.mersenne.org/30402457.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Curtis Cooper (mathematician)|Curtis Cooper & Steven Boone <http://www.mersenne.org/30402457.htm>
 |-
 | align="right" | 44<sup>*</sup>
 | align="right" | 32,582,657
 | align="right" | 124575026…053967871
 | align="right" | 9,808,358
 | September 4 2006
-| Great Internet Mersenne Prime Search|GIMPS / Curtis Cooper (mathematician)|Curtis Cooper & Steven Boone [http://www.mersenne.org/32582657.htm]
+| Great Internet Mersenne Prime Search|GIMPS / Curtis Cooper (mathematician)|Curtis Cooper & Steven Boone <http://www.mersenne.org/32582657.htm>
 |}
 
 
 :The 45th and 46th Mersenne primes have been discovered, is the intention to keep this table up to date? --[[User:Lupus|Lupus]] 17:24, 2 December 2008 (UTC)
 
 :: The above list seems to be copied   ''in toto''   from the updated   Wikipedia site: 
-                  <big> https://en.wikipedia.org/wiki/Mersenne_prime#List_of_known_Mersenne_primes </big>
+                  <big> <https://en.wikipedia.org/wiki/Mersenne_prime#List_of_known_Mersenne_primes> </big>
 :: The above Wikipedia site now has a list of   '''51'''   Mersenne primes.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:57, 7 May 2019 (UTC)
 
 == Java precision ==

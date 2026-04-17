@@ -22,4 +22,4 @@ Cocoa is derived from [[NextStep]], the Objective-C framework used by NeXT for t
 * [[wp:Cocoa_%28API%29|Wikipedia:Cocoa (API)]]
 
 ==See Also==
-* [http://developer.apple.com/referencelibrary/Cocoa/index.html Cocoa Documentation]
+* [Cocoa Documentation](http://developer.apple.com/referencelibrary/Cocoa/index.html)

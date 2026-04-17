@@ -50,7 +50,7 @@ Besides various problems above, why the requirement to trim whitespace?  In part
 
 ###  29 of 36 languages were incorrect? 
 
-At [http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409 2 September 2011], I verified that 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, all for not trimming whitespace by 29 March 2011 rules. I suspect that 21 more languages (Ada, ALGOL 68, AutoHotKey, Clojure, D, Delphi, F#, Fantom, Fortran, Go, Haskell, Icon and Unicon, Inform 7, Lua, OCaml, PicoLisp, PL/I, PureBasic, REXX, Scheme, TUSCRIPT) might be incorrect for the same reason.
+At [2 September 2011](http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409), I verified that 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, all for not trimming whitespace by 29 March 2011 rules. I suspect that 21 more languages (Ada, ALGOL 68, AutoHotKey, Clojure, D, Delphi, F#, Fantom, Fortran, Go, Haskell, Icon and Unicon, Inform 7, Lua, OCaml, PicoLisp, PL/I, PureBasic, REXX, Scheme, TUSCRIPT) might be incorrect for the same reason.
 
 :: You may suspect incorrectness all you want, but the REXX example does indeed trim whitespace.   It's better to ask before assuming errors.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:27, 15 July 2015 (UTC)
 

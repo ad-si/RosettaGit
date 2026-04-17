@@ -13,4 +13,4 @@ tags = []
 [[Category:Solutions by Library]]'''Path''' is a [[Python]] module which allows the walking of a filesystem path.
 
 =External Links=
-[https://github.com/jaraco/path.py Path home]
+[Path home](https://github.com/jaraco/path.py)

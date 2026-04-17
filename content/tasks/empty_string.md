@@ -1532,7 +1532,7 @@ if len(s) > 0 then print "String not empty."
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4d8a208f49364dc25361bf2042af1005 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4d8a208f49364dc25361bf2042af1005)'''
 
 ```gambas
 Public Sub Main()
@@ -2781,7 +2781,7 @@ if (strlen($str) != 0) { ... }
 
 ## PicoLisp
 
-The empty string is represented by '[http://software-lab.de/doc/ref.html#nilSym NIL]' in PicoLisp. During input, two subsequent double quotes '""' return the symbol NIL.
+The empty string is represented by '[NIL](http://software-lab.de/doc/ref.html#nilSym)' in PicoLisp. During input, two subsequent double quotes '""' return the symbol NIL.
 
 ```PicoLisp
 # To assign a variable an empty string:

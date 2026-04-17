@@ -43,5 +43,5 @@ Here is an example 'fizzbuzz' program written in MontiLang
     i 1 + VAR i .
     ENDFOR
 
-View montilang at https://lduck11007.github.io/MontiLang or https://github.com/lduck11007/MontiLang.
-Or contact the developer at http://whiteheadsoftware.dev
+View montilang at <https://lduck11007.github.io/MontiLang> or <https://github.com/lduck11007/MontiLang>.
+Or contact the developer at <http://whiteheadsoftware.dev>

@@ -16,7 +16,7 @@ This needs a task description and goal. While it may be a valuable addition to h
 
 == Taste ==
 
-In a 2016 TED talk, interview with Chris Anderson, Linus Torvalds provides an example of element removal in a singly-linked list while discussing good taste in coding. He got rid of the if ... then statement to handle a special case. See [https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux#t-933770 at 15'40" in the talk].
+In a 2016 TED talk, interview with Chris Anderson, Linus Torvalds provides an example of element removal in a singly-linked list while discussing good taste in coding. He got rid of the if ... then statement to handle a special case. See [at 15'40" in the talk](https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux#t-933770).
 
 ```C
 

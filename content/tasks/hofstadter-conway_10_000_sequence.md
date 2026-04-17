@@ -95,12 +95,12 @@ Interesting features of the sequence are that:
 [[File:Hofstadter conway 10K.gif|center|a(n) / n   for   n   in   1..256]]
 
 
-The sequence is so named because [[wp:John Horton Conway|John Conway]] [http://www.nytimes.com/1988/08/30/science/intellectual-duel-brash-challenge-swift-response.html offered a prize] of $10,000 to the first person who could
+The sequence is so named because [[wp:John Horton Conway|John Conway]] [offered a prize](http://www.nytimes.com/1988/08/30/science/intellectual-duel-brash-challenge-swift-response.html) of $10,000 to the first person who could
 find the first position,   p   in the sequence where
     │a(n)/n│ < 0.55  for all  n > p
 It was later found that [[wp:Douglas Hofstadter|Hofstadter]] had also done prior work on the sequence.
 
-The 'prize' was won quite quickly by [http://www.research.avayalabs.com/gcm/usa/en-us/people/all/mallows.htm Dr. Colin L. Mallows] who proved the properties of the sequence and allowed him to find the value of   n   (which is much smaller than the 3,173,375,556 quoted in the NYT article).
+The 'prize' was won quite quickly by [Dr. Colin L. Mallows](http://www.research.avayalabs.com/gcm/usa/en-us/people/all/mallows.htm) who proved the properties of the sequence and allowed him to find the value of   n   (which is much smaller than the 3,173,375,556 quoted in the NYT article).
 
 
 ## Task
@@ -113,8 +113,8 @@ The 'prize' was won quite quickly by [http://www.research.avayalabs.com/gcm/usa/
 
 
 ;Also see:
-*   [http://www.jstor.org/stable/2324028 Conways Challenge Sequence], Mallows' own account.
-*   [http://mathworld.wolfram.com/Hofstadter-Conway10000-DollarSequence.html Mathworld Article].
+*   [Conways Challenge Sequence](http://www.jstor.org/stable/2324028), Mallows' own account.
+*   [Mathworld Article](http://mathworld.wolfram.com/Hofstadter-Conway10000-DollarSequence.html).
 
 
 

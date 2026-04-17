@@ -34,11 +34,11 @@ JavaScript has first class functions. But so does Lua, Perl, Ruby, Python as of 
 
 What about parameter handling features? In C++ you can declare a parameter to be const to enforce const-correctness. In JavaScript you can't modify your parameters at all, they always come in as mutable variables. There is also no parameter types or default parameters. 
 
-Additionally, most functional programming languages have implicit return so that you don't have to write out a return statement. Although the Mozilla-specific extension [https://developer.mozilla.org/En/New_in_JavaScript_1.8 JavaScript 1.8] does have expression closures with implicit return.
+Additionally, most functional programming languages have implicit return so that you don't have to write out a return statement. Although the Mozilla-specific extension [JavaScript 1.8](https://developer.mozilla.org/En/New_in_JavaScript_1.8) does have expression closures with implicit return.
 
 '''How is JavaScript used?'''
 
-JavaScript puts everything into a single mutable global namespace. There is no way to export functions into your module, or other features which would make functional programming a sane choice. As such, most of the time programmers use prototypal programming and object systems like [http://code.google.com/p/joose-js/ Joose] and [http://jsclass.jcoglan.com/ JS.Class] for code re-use. As such JavaScript is mostly a prototypal programming language, or an OOP language, and not a functional programming language. 
+JavaScript puts everything into a single mutable global namespace. There is no way to export functions into your module, or other features which would make functional programming a sane choice. As such, most of the time programmers use prototypal programming and object systems like [Joose](http://code.google.com/p/joose-js/) and [JS.Class](http://jsclass.jcoglan.com/) for code re-use. As such JavaScript is mostly a prototypal programming language, or an OOP language, and not a functional programming language. 
 
 As for Scheme, I do not think it is comparable to JavaScript. It has homoiconicity, hygienic macros, and a decent effects system (side-effect causing functions are suffixed with !). These things together make it vastly different from JavaScript. –[[User:Jhuni|Jhuni]] 0:15, 1 January 2011 (UCT)
 
@@ -55,7 +55,7 @@ As for Scheme, I do not think it is comparable to JavaScript. It has homoiconici
 :::: However, it is like when you said "just naming features." Functional programming is the ''name'' of a  paradigm. Attach whatever meaning to it you want.
 :::: On the other hand, it is undeniable that JavaScript is completely side effect ridden and therefore non-declarative.
 :::: It just so happens that declarative programming is probably the most important part of ''effective'' FP. By telling the computer what to do rather then how to do it, you free up the compiler to optimize and parallelize at will. –[[User:Jhuni|Jhuni]] 01:42, 2 Janurary 2010 (UTC)
-:::: Since we aren't really talking about JavaScript anymore, and I have made basically all my points about the language itself, we may as well move this to [http://rosettacode.org/wiki/Category_talk:Programming_paradigm/Functional Talk:FP]. –[[User:Jhuni|Jhuni]] 01:49, 2 Janurary 2010 (UTC)
+:::: Since we aren't really talking about JavaScript anymore, and I have made basically all my points about the language itself, we may as well move this to [Talk:FP](http://rosettacode.org/wiki/Category_talk:Programming_paradigm/Functional). –[[User:Jhuni|Jhuni]] 01:49, 2 Janurary 2010 (UTC)
 ::::: Unless a paradigm is fundamentally impossible in a programming language (perhaps it's made so by some feature of the VM), a programmer can employ that paradigm, regardless of how convoluted or tricky it might be. What all this tells me is that templates and language-page modifications are the ''wrong'' way on Rosetta Code to associate langauges with paradigms, and that a "show me the code" approach is really what's necessary. To that end, tasks would be needed in order to provoke demonstrations of aspects of a given paradigm. --[[User:Short Circuit|Michael Mol]] 02:12, 2 January 2011 (UTC)
 :::::: I would like to see a "enforce immutability" task that shows what means languages have to enforce immutability on values, parameters, methods, and other things. –[[User:Jhuni|Jhuni]] 03:12, 2 January 2011 (UTC)
 ::::::: I see that you've been working on such a task. Cool! –[[User:Dkf|Donal Fellows]] 12:32, 2 January 2011 (UTC)

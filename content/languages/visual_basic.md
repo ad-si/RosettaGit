@@ -24,5 +24,5 @@ Visual Basic can be divided into a few broad categories: VBDOS, Classic VB, and 
 *'''[VB.Net](https://rosettacode.org/wiki/:Category:Visual_Basic_.NET)''' isn't really VB, as far as most classic VB programmers are concerned. It's got a VB-like syntax, but the differences are great enough that it's really a separate language.
 
 ## See also
-* [http://msdn.microsoft.com/en-us/vbasic/ms788229 Microsoft's VB6 Resource Center]
+* [Microsoft's VB6 Resource Center](http://msdn.microsoft.com/en-us/vbasic/ms788229)
 * [Visual Basic on Wikipedia](https://en.wikipedia.org/wiki/Visual_Basic)

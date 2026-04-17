@@ -34,9 +34,9 @@ The C code above may be translated into this task if one removes the outer loop.
 
 : Googling brings up a couple of other J & M implementations, the first in Java (albeit in bits) and the other in Javascript (possibly a translation of the first):
 
-: [http://sedici.unlp.edu.ar/bitstream/handle/10915/42155/Documento_completo.pdf?sequence=1 java]
+: [java](http://sedici.unlp.edu.ar/bitstream/handle/10915/42155/Documento_completo.pdf?sequence=1)
 
-: [https://github.com/RAMPKORV/jacobson-matthews-latin-square-js/blob/master/getRandomLatinSquare.js javascript]
+: [javascript](https://github.com/RAMPKORV/jacobson-matthews-latin-square-js/blob/master/getRandomLatinSquare.js)
 
 : They both seem to be looping n ^ 3 times so it may be that the brainwagon.org implementation has worked from these.
 

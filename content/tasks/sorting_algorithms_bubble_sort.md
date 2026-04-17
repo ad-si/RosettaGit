@@ -172,7 +172,7 @@ This can be expressed in pseudo-code as follows (assuming 1-based indexing):
 ## References
 
 * The article on [[wp:Bubble_sort|Wikipedia]].
-* Dance [http://www.youtube.com/watch?v=lyZQPjUT5B4&feature=youtu.be interpretation].
+* Dance [interpretation](http://www.youtube.com/watch?v=lyZQPjUT5B4&feature=youtu.be).
 
 
 
@@ -2470,7 +2470,7 @@ unsort   -7   3  -4  -6   4  -1  -2   2   7   0   5   1  -3  -5   6
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ba84832d633cb92bbe6c2f54704819c3 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ba84832d633cb92bbe6c2f54704819c3)'''
 
 ```gambas
 Public Sub Main()
@@ -3200,7 +3200,7 @@ end
 
 ## Lucid
 
-[http://i.csc.uvic.ca/home/hei/lup/06.html]
+<http://i.csc.uvic.ca/home/hei/lup/06.html>
 
 ```lucid
 bsort(a) = if iseod(first a) then a else
@@ -5598,7 +5598,7 @@ endfunction BubbleSort
 
 ## Scratch
 
-This solution is hosted at the [https://scratch.mit.edu/projects/65560042/ Scratch site], because it is difficult to document visual programming solutions directly here at Rosetta Code.  There you can see the solution results as well as examine the code.  This solution is intended to illustrate the Bubble sort algorithm rather than to maximize performance.  Scratch provides visual queues to indicate list access, and these are used to help show what is happening.
+This solution is hosted at the [Scratch site](https://scratch.mit.edu/projects/65560042/), because it is difficult to document visual programming solutions directly here at Rosetta Code.  There you can see the solution results as well as examine the code.  This solution is intended to illustrate the Bubble sort algorithm rather than to maximize performance.  Scratch provides visual queues to indicate list access, and these are used to help show what is happening.
 
 
 ## Seed7
@@ -5626,7 +5626,7 @@ const proc: bubbleSort (inout array elemType: arr) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#bubbleSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#bubbleSort>
 
 ## Shen
 
@@ -6901,7 +6901,7 @@ Text(0, Str);  CrLf(0);
 
 ```Yabasic
 // Animated sort.
-// Original idea by William Tang, obtained from MicroHobby 25 Years (https://microhobby.speccy.cz/zxsf/MH-25Years.pdf)
+// Original idea by William Tang, obtained from MicroHobby 25 Years (<https://microhobby.speccy.cz/zxsf/MH-25Years.pdf>)
 
 clear screen
 

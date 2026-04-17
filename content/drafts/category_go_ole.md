@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/go-ole/go-ole Go OLE] is a library which provides Go bindings for Windows COM objects.
+[Go OLE](https://github.com/go-ole/go-ole) is a library which provides Go bindings for Windows COM objects.
 
-It's use is subject to the [https://github.com/go-ole/go-ole/blob/master/LICENSE MIT] license.
+It's use is subject to the [MIT](https://github.com/go-ole/go-ole/blob/master/LICENSE) license.

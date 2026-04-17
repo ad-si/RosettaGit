@@ -21,7 +21,7 @@ Should this task be removed in favour of [[Hailstone sequence]] which I have tri
 
 Note that in addition to the Hailstone page, we also seem to have [[Hofstadter-Conway $10,000 sequence]]. --[[User:Rdm|Rdm]] 15:35, 10 June 2010 (UTC)
 : Aargh!!! I seem to have started both of these last two?!?!!? --[[User:Paddy3118|Paddy3118]] 16:24, 10 June 2010 (UTC)
-:: [http://lambda-the-ultimate.org/node/3977 Incidentally]... --[[User:Short Circuit|Michael Mol]] 22:55, 10 June 2010 (UTC)
+:: [Incidentally](http://lambda-the-ultimate.org/node/3977)... --[[User:Short Circuit|Michael Mol]] 22:55, 10 June 2010 (UTC)
 ::: Nice! I commented there that entrants might like to read the respective talk pages too. --[[User:Paddy3118|Paddy3118]] 06:08, 11 June 2010 (UTC)
 
 

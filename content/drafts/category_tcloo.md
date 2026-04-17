@@ -17,6 +17,6 @@ TclOO is a library for [[Tcl]] 8.5, which provides access to the same object-ori
 package require TclOO
 ```
 
-See the [http://wiki.tcl.tk/TclOO TclOO page] on the Tcler's Wiki for more information.
+See the [TclOO page](http://wiki.tcl.tk/TclOO) on the Tcler's Wiki for more information.
 
 {{works with|Tcl|8.5}}

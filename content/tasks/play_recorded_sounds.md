@@ -657,12 +657,12 @@ func mute2
 
 Output:
 
-[https://lh3.googleusercontent.com/-1BjBV-ugV6g/V1f47eTkj8I/AAAAAAAAAJc/kbCzqatjC3w-WWyS6teNwWXjEA1_kj0LQCLcB/s1600/CalmoSoftSounds.jpg CalmoSoftSounds]
+[CalmoSoftSounds](https://lh3.googleusercontent.com/-1BjBV-ugV6g/V1f47eTkj8I/AAAAAAAAAJc/kbCzqatjC3w-WWyS6teNwWXjEA1_kj0LQCLcB/s1600/CalmoSoftSounds.jpg)
 
 
 ## Ruby
 
-There aren't many mature sound libraries for Ruby.  The {{libheader|RubyGems}} package [http://rubyforge.org/projects/win32utils/ win32-sound] can play WAV files on the Windows platform only.
+There aren't many mature sound libraries for Ruby.  The {{libheader|RubyGems}} package [win32-sound](http://rubyforge.org/projects/win32utils/) can play WAV files on the Windows platform only.
 
 
 ```ruby
@@ -862,9 +862,9 @@ cat $1 >> /dev/audio # Write file $1 to the speaker's Character Special (/dev/au
 ## VBA
 
 Visual Basic for Applications can play sounds in the .WAV format by calling the multimedia library winmm.dll.
-See [http://support.microsoft.com/kb/158140/en-us http://support.microsoft.com/kb/158140/en-us]. The "Flags" parameter can be used e.g. to play a sound continuously (that is, until the function is called again to stop playing).
+See [http://support.microsoft.com/kb/158140/en-us](http://support.microsoft.com/kb/158140/en-us). The "Flags" parameter can be used e.g. to play a sound continuously (that is, until the function is called again to stop playing).
 
-Volume can be set using the function waveOutSetVolume, see [http://support.microsoft.com/kb/118377/en-us http://support.microsoft.com/kb/118377/en-us].
+Volume can be set using the function waveOutSetVolume, see [http://support.microsoft.com/kb/118377/en-us](http://support.microsoft.com/kb/118377/en-us).
 
 
 ```vb

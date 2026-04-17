@@ -157,5 +157,5 @@ The answers style seems to be for some ulterior motive as Python functions such 
 
 I wonder where the style originates? (Or if a comment on its derivation needs to be attached). [[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 13:30, 10 October 2018 (UTC)
 : It does use use '''all''', but nests it inside a more general version which takes a predicate as its first argument. The motive is rapid code composition and a high level of code reuse. Nothing 'ulterior' that I am aware of :-) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:33, 10 October 2018 (UTC)
-: More generally, on the multi-paradigm character of Python, and the benefits of functional composition, I find this is a useful reference: https://docs.python.org/3.7/howto/functional.html [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:43, 10 October 2018 (UTC)
-: On currying in Python, if that's what feels unheimlich to you, see, for example, https://www.python-course.eu/currying_in_python.php [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:52, 10 October 2018 (UTC)
+: More generally, on the multi-paradigm character of Python, and the benefits of functional composition, I find this is a useful reference: <https://docs.python.org/3.7/howto/functional.html> [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:43, 10 October 2018 (UTC)
+: On currying in Python, if that's what feels unheimlich to you, see, for example, <https://www.python-course.eu/currying_in_python.php> [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:52, 10 October 2018 (UTC)

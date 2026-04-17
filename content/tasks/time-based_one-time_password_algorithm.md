@@ -23,7 +23,7 @@ A Time-based One-time Password Algorithm (TOTP) is an algorithm that computes a 
 
 The task here is to implement this algorithm using 'HMAC-SHA1' and an optional step is to generate the random [[wp:Base32|Base-32]] string used as the secret key, but this is not a requirement.  A reference implementation, based on JavaScript, can be found at the following location:
 
-[http://blog.tinisles.com/2011/10/google-authenticator-one-time-password-algorithm-in-javascript http://blog.tinisles.com/2011/10/google-authenticator-one-time-password-algorithm-in-javascript]
+[http://blog.tinisles.com/2011/10/google-authenticator-one-time-password-algorithm-in-javascript](http://blog.tinisles.com/2011/10/google-authenticator-one-time-password-algorithm-in-javascript)
 
 According to RFC 6238, the reference implementation is as follows:
 * Generate a key, K, which is an arbitrary bytestring, and share it securely with the client.
@@ -33,9 +33,9 @@ According to RFC 6238, the reference implementation is as follows:
 
 Although RFC 6238 allows different parameters to be used, the Google implementation of the authenticator app does not support T0, TI values, hash methods and token lengths different from the default. It also expects the K secret key to be entered (or supplied in a QR code) in base-32 encoding according to RFC 3548.
 
-* [https://itunes.apple.com/gb/app/google-authenticator/id388497605 Google Authenticator App (Apple iOS)]
-* [https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2 Google Authenticator App (Google Android)]
-* [http://www.windowsphone.com/en-us/store/app/authenticator/e7994dbc-2336-4950-91ba-ca22d653759b Microsoft Authenticator App (Windows Phone)]
+* [Google Authenticator App (Apple iOS)](https://itunes.apple.com/gb/app/google-authenticator/id388497605)
+* [Google Authenticator App (Google Android)](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2)
+* [Microsoft Authenticator App (Windows Phone)](http://www.windowsphone.com/en-us/store/app/authenticator/e7994dbc-2336-4950-91ba-ca22d653759b)
 
 =={{header|Caché ObjectScript}}==
 
@@ -219,7 +219,7 @@ namespace RosettaTOTP
 
 ## Go
 
-A slightly [https://github.com/gwwfps/onetime/pull/1 fixed] version of a [https://github.com/gwwfps/onetime package by Zitao Zhang] (released under a [https://github.com/gwwfps/onetime/blob/master/LICENSE simplified BSD license]).
+A slightly [fixed](https://github.com/gwwfps/onetime/pull/1) version of a [package by Zitao Zhang](https://github.com/gwwfps/onetime) (released under a [simplified BSD license](https://github.com/gwwfps/onetime/blob/master/LICENSE)).
 
 ```go
 // Package onetime provides a library for one-time password generation,
@@ -298,7 +298,7 @@ func dt(hs []byte) []byte {
 }
 ```
 
-(in a format that gets put into the [https://godoc.org/github.com/dchapes/onetime generated documentation])
+(in a format that gets put into the [generated documentation](https://godoc.org/github.com/dchapes/onetime))
 
 ```go
 package onetime
@@ -631,7 +631,7 @@ oh dear... fall back one time-frame...
 ## Tcl
 
 
-This TOTP/HOTP module clocks in small by taking advantage of [https://core.tcl.tk/tcllib/doc/trunk/embedded/www/toc.html tcllib's] existing hashing and base32 modules.
+This TOTP/HOTP module clocks in small by taking advantage of [tcllib's](https://core.tcl.tk/tcllib/doc/trunk/embedded/www/toc.html) existing hashing and base32 modules.
 
 
 ```Tcl

@@ -12,7 +12,7 @@ tags = []
 
 
 
-[https://github.com/jonathancast/hsglobalscript3 Available here]; you will also need the language spec, [https://github.com/jonathancast/globalscript-spec here].
+[Available here](https://github.com/jonathancast/hsglobalscript3); you will also need the language spec, [here](https://github.com/jonathancast/globalscript-spec).
 
 This implementation is based on a translator for Global Script code embedded in a Haskell source file; to get a working program, you will need to add
 

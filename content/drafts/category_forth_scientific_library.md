@@ -12,5 +12,5 @@ tags = []
 
 {{library}}The '''Forth Scientific Library''' (FSL) is a compendium of reviewed portable [[Forth]] code for scientific and mathematical applications.
 
-* [http://www.taygeta.com/fsl/sciforth.html FSL project page]
+* [FSL project page](http://www.taygeta.com/fsl/sciforth.html)
 * [ftp://ccreweb.org/software/gforth/fsl/ FSL (ftp)] for [[GNU Forth]]

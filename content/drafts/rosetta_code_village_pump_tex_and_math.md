@@ -19,5 +19,5 @@ I could have sworn somebody asked for tex and MathML support, but I can't find i
 :It's at least partially broken at the moment. For example: <math>x^2 + y_z</math> —[[User:Dkf|Donal Fellows]] 15:37, 9 July 2009 (UTC)
 
 == mathjax? ==
-Are we using http://www.mathjax.org/?
+Are we using <http://www.mathjax.org/>?
 : No. MW allows browsers which support MathML to do their own rendering clientside, and uses texlive to rasterize serverside, where necessary. --[[User:Short Circuit|Michael Mol]] 20:11, 14 September 2011 (UTC)

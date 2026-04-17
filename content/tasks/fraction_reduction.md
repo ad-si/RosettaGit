@@ -75,14 +75,14 @@ Show all output here, on this page.
 
 
 ;Somewhat related task:
-:*   [https://rosettacode.org/wiki/Farey_sequence Farey sequence]       (It concerns fractions.)
+:*   [Farey sequence](https://rosettacode.org/wiki/Farey_sequence)       (It concerns fractions.)
 
 
 
 ## References
 
-:*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Fraction_(mathematics)#Proper_and_improper_fractions proper and improper fractions].
-:*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Anomalous_cancellation anomalous cancellation and/or accidental cancellation].
+:*   Wikipedia entry:   [proper and improper fractions](https://en.wikipedia.org/wiki/Fraction_(mathematics)#Proper_and_improper_fractions).
+:*   Wikipedia entry:   [anomalous cancellation and/or accidental cancellation](https://en.wikipedia.org/wiki/Anomalous_cancellation).
 
 
 

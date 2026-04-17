@@ -54,7 +54,7 @@ Assuming the digit keys are mapped to letters as follows:
 
 Write a program that finds textonyms in a list of words such as   
 [[Textonyms/wordlist]]   or   
-[http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt].
+[unixdict.txt](http://www.puzzlers.org/pub/wordlists/unixdict.txt).
 
 The task should produce a report:
 
@@ -941,7 +941,7 @@ Required example:
 
 ```J
    keys textonymrpt 'http://rosettacode.org/wiki/Textonyms/wordlist'
-There are 13085 words in http://rosettacode.org/wiki/Textonyms/wordlist which can be represented by the digit key mapping.
+There are 13085 words in <http://rosettacode.org/wiki/Textonyms/wordlist> which can be represented by the digit key mapping.
 They require 11932 digit combinations to represent them.
 661 digit combinations represent Textonyms.
 ```
@@ -971,7 +971,7 @@ Here's another example:
 
 ```J
    keys textonymrpt 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
-There are 24978 words in http://www.puzzlers.org/pub/wordlists/unixdict.txt which can be represnted by the digit key mapping.
+There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represnted by the digit key mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 ```
@@ -1529,7 +1529,7 @@ showReport(textonyms(http.request(dictFile)))
 ```
 
 ```txt
-There are 24983 words in http://www.puzzlers.org/pub/wordlists/unixdict.txt
+There are 24983 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
 which can be represented by the digit key mapping.
 They require 22908 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
@@ -1754,7 +1754,7 @@ Remove-Item -Path $file -Force -ErrorAction SilentlyContinue
 
 ```txt
 
-There are 24978 words in http://www.puzzlers.org/pub/wordlists/unixdict.txt which can be represented by the digit key mapping.
+There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 
@@ -1855,7 +1855,7 @@ They require {2} digit combinations to represent them.
 ```txt
 Read 25104 words from 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
 
-There are 24978 words in http://www.puzzlers.org/pub/wordlists/unixdict.txt which can be represented by the Textonyms mapping.
+There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the Textonyms mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 
@@ -2275,7 +2275,7 @@ set keymap {
     9 -> WXYZ  
 }
 
-set url http://www.puzzlers.org/pub/wordlists/unixdict.txt
+set url <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
 
 set report {
 There are %1$s words in %2$s which can be represented by the digit key mapping.
@@ -2337,7 +2337,7 @@ puts [main $keymap $url]
 
 ```txt
 
-There are 24978 words in http://www.puzzlers.org/pub/wordlists/unixdict.txt which can be represented by the digit key mapping.
+There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
 They require 22903 digit combinations to represent them.
 3548 digit combinations represent Textonyms.
 
@@ -2389,7 +2389,7 @@ foreach k,v in (wcnt.filter('wrap([(k,v)]){ v.len()==maxWordPerNum })){
 ```txt
 
 criticisms --> 2748424767
-Read 25104 words from http://www.puzzlers.org/pub/wordlists/unixdict.txt
+Read 25104 words from <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
 There are 22903 words which can be represented by the Textonyms mapping.
 There are 1473 overlaps.
 Max collisions: 9 words:

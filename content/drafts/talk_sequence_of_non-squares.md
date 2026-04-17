@@ -22,7 +22,7 @@ The formula need to be investigated for numeric stability. Calculation of sqrt i
 
 ::I have just noticed that there is a typo error in the task name: "sequance" instead of "sequence". --[[User:Dmitry-kazakov|Dmitry-kazakov]] 13:30, 24 August 2008 (UTC)
 
-:::Whoops! I have [http://www.rosettacode.org/wiki/User_talk:Spoon! asked]. --[[User:Paddy3118|Paddy3118]] 13:56, 24 August 2008 (UTC)
+:::Whoops! I have [asked](http://www.rosettacode.org/wiki/User_talk:Spoon!). --[[User:Paddy3118|Paddy3118]] 13:56, 24 August 2008 (UTC)
 
 : The best way to avoid numerical instability is of course to remain integer all the time. My thoughts to this:
 : Let's assume that k is the largest integer so that k^2 <= n. Then it's obvious that sqrt(n) = k + x, where 0 <= x < 1.
@@ -60,7 +60,7 @@ See GAP implementation for a way to use integers all the way. Of course, it will
 [[User:Toucan|Toucan]] 08:27, 15 June 2011 (UTC)
 
 == Zero ==
-I thought we were in the realm of Number Theory where [http://en.wikipedia.org/wiki/Natural_number#History_of_natural_numbers_and_the_status_of_zero Wikipedia states] they don't include zero as a natural number, so went with the term Natural Number, but the term Positive Integer ''might'' be more exact. --[[User:Paddy3118|Paddy3118]] 11:36, 24 August 2008 (UTC)
+I thought we were in the realm of Number Theory where [Wikipedia states](http://en.wikipedia.org/wiki/Natural_number#History_of_natural_numbers_and_the_status_of_zero) they don't include zero as a natural number, so went with the term Natural Number, but the term Positive Integer ''might'' be more exact. --[[User:Paddy3118|Paddy3118]] 11:36, 24 August 2008 (UTC)
 
 == OCaml: superfluous truncate?  ==
 In this function for OCaml:
@@ -82,7 +82,7 @@ Doesn't follow the task. Should print the given, limited range, then assert the 
 Is there a reason that the task states (and most people implement) <tt>floor(1/2 + ...)</tt> instead of simply <tt>round(...)</tt>?
 [[User:Sgeier|Sgeier]] 20:18, 28 September 2009 (UTC)
 
-In some programming languages round may give different results. E. g. in Scheme: "Round returns the closest integer to x, ''rounding to even when x is halfway between two integers''. Rationale: Round rounds to even for consistency with the default rounding mode speciﬁed by the IEEE ﬂoating point standard." But since we are only rounding the square roots of integers, in this case we would not run into problems like these. Maybe it's because [http://en.wikipedia.org/wiki/Floor_function floor] has been well-defined in mathematics and [http://en.wikipedia.org/wiki/Rounding round] hasn't. [[Special:Contributions/131.155.116.18|131.155.116.18]] 17:09, 30 November 2009 (UTC)
+In some programming languages round may give different results. E. g. in Scheme: "Round returns the closest integer to x, ''rounding to even when x is halfway between two integers''. Rationale: Round rounds to even for consistency with the default rounding mode speciﬁed by the IEEE ﬂoating point standard." But since we are only rounding the square roots of integers, in this case we would not run into problems like these. Maybe it's because [floor](http://en.wikipedia.org/wiki/Floor_function) has been well-defined in mathematics and [round](http://en.wikipedia.org/wiki/Rounding) hasn't. [[Special:Contributions/131.155.116.18|131.155.116.18]] 17:09, 30 November 2009 (UTC)
 
 
 == Ambiguity ==

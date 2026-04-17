@@ -1150,9 +1150,9 @@ fansh> (d+12hr).toTimeZone(TimeZone("London")) // the extra credit!
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Date_manipulation this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Date_manipulation) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1503,7 +1503,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime provides SecToDateLine, and DateLineToSec] these convert between Icon's &dateline format and seconds from a configurable base date (which defaults to the normal 1970 epoch).
+[datetime provides SecToDateLine, and DateLineToSec](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn) these convert between Icon's &dateline format and seconds from a configurable base date (which defaults to the normal 1970 epoch).
 
 ```txt
 input      = March 7 2009 7:30pm EST

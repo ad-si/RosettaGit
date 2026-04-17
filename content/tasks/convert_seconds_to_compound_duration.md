@@ -1591,9 +1591,9 @@ end)
 
 ## Erlang
 
-Function ''mapaccumr/3'' is adapted from  [http://lpaste.net/edit/47875 here].
+Function ''mapaccumr/3'' is adapted from  [here](http://lpaste.net/edit/47875).
 
-Function ''intercalate/2'' is copied from  [https://github.com/tim/erlang-oauth/blob/master/src/oauth.erl a Tim Fletcher's GitHub repository].
+Function ''intercalate/2'' is copied from  [a Tim Fletcher's GitHub repository](https://github.com/tim/erlang-oauth/blob/master/src/oauth.erl).
 
 
 ```erlang
@@ -1908,7 +1908,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d7f00b8a96a6f792f0164f622f0686df Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d7f00b8a96a6f792f0164f622f0686df)'''
 
 ```gambas
 Public Sub Main()

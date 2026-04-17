@@ -1506,7 +1506,7 @@ EndSub
 
 ## MiniScript
 
-Access to hardware like the keyboard is very dependent on the host app, but here's a version that works with [https://miniscript.org/MiniMicro/ MiniMicro], a standardized MiniScript virtual machine.
+Access to hardware like the keyboard is very dependent on the host app, but here's a version that works with [MiniMicro](https://miniscript.org/MiniMicro/), a standardized MiniScript virtual machine.
 
 
 ```MiniScript
@@ -2259,7 +2259,7 @@ yesno "Do you like programming?"
 ## TXR
 
 
-This works not only on Unix-like platforms, but also on Microsoft Windows, because TXR is ported to Windows using a [https://www.kylheku.com/cygnal/index.html modified version of Cygwin].
+This works not only on Unix-like platforms, but also on Microsoft Windows, because TXR is ported to Windows using a [modified version of Cygwin](https://www.kylheku.com/cygnal/index.html).
 
 
 ```txrlisp

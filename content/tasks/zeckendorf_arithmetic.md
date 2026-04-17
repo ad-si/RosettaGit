@@ -114,7 +114,7 @@ Lets try 1000101 divided by 101, so we can use the same table used for multiplic
 ```
 
 
-[http://arxiv.org/pdf/1207.4497.pdf Efficient algorithms for Zeckendorf arithmetic] is interesting. The sections on addition and subtraction are particularly relevant for this task.
+[Efficient algorithms for Zeckendorf arithmetic](http://arxiv.org/pdf/1207.4497.pdf) is interesting. The sections on addition and subtraction are particularly relevant for this task.
 
 
 ## C
@@ -2812,7 +2812,7 @@ Multiplication:
 
 ## Racket
 
-This implementation only handles natural (non-negative numbers).  The algorithms for addition and subtraction use the techniques explained in the paper "Efficient algorithms for Zeckendorf arithmetic" (http://arxiv.org/pdf/1207.4497.pdf).
+This implementation only handles natural (non-negative numbers).  The algorithms for addition and subtraction use the techniques explained in the paper "Efficient algorithms for Zeckendorf arithmetic" (<http://arxiv.org/pdf/1207.4497.pdf>).
 
 
 ```racket

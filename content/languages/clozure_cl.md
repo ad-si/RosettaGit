@@ -16,4 +16,4 @@ Clozure CL is a free Common Lisp implementation [...] Some distinguishing featur
 *precise, generational, compacting garbage collector
 *convenient foreign-function interface
 Clozure CL used to be called OpenMCL. It is also sometimes called CCL. You will see the three names being used interchangeably.</blockquote>
-— [http://trac.clozure.com/openmcl Clozure CL site]
+— [Clozure CL site](http://trac.clozure.com/openmcl)

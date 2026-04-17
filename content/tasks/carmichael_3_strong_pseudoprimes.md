@@ -52,7 +52,7 @@ A lot of composite numbers can be separated from primes by Fermat's Little Theor
 
 The   [[Miller-Rabin primality test|Miller Rabin Test]]   uses a combination of Fermat's Little Theorem and Chinese Division Theorem to overcome this.
 
-The purpose of this task is to investigate such numbers using a method based on   [[wp:Carmichael number|Carmichael numbers]],   as suggested in   [http://www.maths.lancs.ac.uk/~jameson/carfind.pdf Notes by G.J.O Jameson March 2010].
+The purpose of this task is to investigate such numbers using a method based on   [[wp:Carmichael number|Carmichael numbers]],   as suggested in   [Notes by G.J.O Jameson March 2010](http://www.maths.lancs.ac.uk/~jameson/carfind.pdf).
 
 
 ### Requirements
@@ -61,7 +61,7 @@ Find Carmichael numbers of the form:
 
 where   <big> (<i>Prime</i><sub>1</sub>   <   <i>Prime</i><sub>2</sub>   <   <i>Prime</i><sub>3</sub>) </big>   for all     <big> <i>Prime</i><sub>1</sub> </big>      up to   '''61'''.
 
-(See page 7 of   [http://www.maths.lancs.ac.uk/~jameson/carfind.pdf Notes by G.J.O Jameson March 2010]   for solutions.)
+(See page 7 of   [Notes by G.J.O Jameson March 2010](http://www.maths.lancs.ac.uk/~jameson/carfind.pdf)   for solutions.)
 
 
 ;Pseudocode:
@@ -795,7 +795,7 @@ void main() {
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2999,7 +2999,7 @@ fn main() {
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/algorith/math.htm#isPrime isPrime] below is borrowed from the [http://seed7.sourceforge.net/algorith Seed7 algorithm collection].
+The function [isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime) below is borrowed from the [Seed7 algorithm collection](http://seed7.sourceforge.net/algorith).
 
 
 ```seed7

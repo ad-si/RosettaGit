@@ -21,24 +21,24 @@ Public data was last brought fully up-to-date August 5th, 2011.
 
 =Definition=
 
-Rosetta Code is '''RosettaCode.org''', a DBA for me, [[User:Short Circuit|Michael Mol]]. ([https://www.miottawa.org/BusinessNames/search.do?type=Business&lastName=rosettacode.org&firstName= Business registration here].) Rosetta Code does ''not'' have 501(c)(3) non-profit status, or any other non-profit status.
+Rosetta Code is '''RosettaCode.org''', a DBA for me, [[User:Short Circuit|Michael Mol]]. ([Business registration here](https://www.miottawa.org/BusinessNames/search.do?type=Business&lastName=rosettacode.org&firstName=).) Rosetta Code does ''not'' have 501(c)(3) non-profit status, or any other non-profit status.
 
-You can see the present finances as I've calculated them at Google Docs: [http://spreadsheets.google.com/pub?key=ti-f-zxA1ga2QW_L1pQnwJg&output=html (HTML)] [https://spreadsheets.google.com/ccc?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&hl=en&authkey=CLOF6fQK (Google Docs interface)]
+You can see the present finances as I've calculated them at Google Docs: [(HTML)](http://spreadsheets.google.com/pub?key=ti-f-zxA1ga2QW_L1pQnwJg&output=html) [(Google Docs interface)](https://spreadsheets.google.com/ccc?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&hl=en&authkey=CLOF6fQK)
 
 =History=
 
 Since fall of 2008, server costs for the Rosetta Code website (yes, the website existed prior to the entity name) have been out of my pocket. I'm no longer in a position for this to be comfortable or, necessarily, maintainable.
 
-<big>[http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=0 Past expenses (Google Docs)]</big>
+<big>[Past expenses (Google Docs)](http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=0)</big>
 
 =Expenses=
-<big>[http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=6 Expenses (Google Docs)]</big>
+<big>[Expenses (Google Docs)](http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=6)</big>
 ==Recurring==
 Currently, Rosetta Code has two recurring expenses:
 * Every three months, a payment to prgmr.com to keep the primary VPS running.
 * Every month, a payment to Chase for the bank account.
 
-<big>[http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=4 Recurring payments (Google Docs)]</big>
+<big>[Recurring payments (Google Docs)](http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=4)</big>
 
 ==Fee oriented==
 * PayPal applies a transaction fee. (Too some transactions. I don't know which or why, specifically.)
@@ -46,7 +46,7 @@ Currently, Rosetta Code has two recurring expenses:
 
 =Income=
 
-<big>[http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=1 Income (Google Docs)]</big>
+<big>[Income (Google Docs)](http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=1)</big>
 
 ==Working==
 
@@ -95,7 +95,7 @@ Google Adsense produced less than $30 in income over six months. Not worth annoy
 <s>Purchases of Cafe Press swag earns Rosetta Code a small commission. Currently, this is configured to "Low tier". I'm more happy with people flashing the Rosetta Code swag around as living billboards than the slight increase in commission percentage I could get by increasing the markup. ;)</s>
 
 <s>Formerly using Cafe Press, now using Zazzle; Zazzle is much more flexible for a lower price. Commission rates range from 13% to 20%, as I try to keep item prices near round numbers. With this setup, a single sale through Zazzle would net four or five times as much as a sale through Cafe Press.
-* [http://www.zazzle.com/rosettacode http://www.zazzle.com/rosettacode]</s>
+* [http://www.zazzle.com/rosettacode](http://www.zazzle.com/rosettacode)</s>
 
 No longer doing any swag sales, currently; the print-on-demand services have too high a cost overhead to draw any notable margin while retaining a reasonable product price. I've got a local company I'm looking at, and may eventually do sales directly. 
 ===Text-Link Ads===
@@ -111,7 +111,7 @@ I'm working on an internal solution which would allow users with wiki accounts t
 
 =How income is planned to be used=
 
-<big>[http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=7 Goals (Google Docs)]</big>
+<big>[Goals (Google Docs)](http://spreadsheets.google.com/pub?key=0AhpHXHvv2XstdGktZi16eEExZ2EyUVdfTDFwUW53Smc&gid=7)</big>
 
 ==Emergency expenses and forced expansion==
 

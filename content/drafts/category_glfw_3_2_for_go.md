@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-As its name suggests, [https://github.com/go-gl/glfw GLFW 3.2 for Go] provides Go bindings for GLFW 3.2.
+As its name suggests, [GLFW 3.2 for Go](https://github.com/go-gl/glfw) provides Go bindings for GLFW 3.2.
 
-Its use is subject to the [https://github.com/go-gl/glfw/blob/master/LICENSE BSD 3-Clause licence].
+Its use is subject to the [BSD 3-Clause licence](https://github.com/go-gl/glfw/blob/master/LICENSE).

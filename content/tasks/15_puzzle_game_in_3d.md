@@ -17,9 +17,9 @@ languages = [
 
 Create a 15 Puzzle Game in 3D using computer graphics. The task involves implementing a sliding puzzle game where tiles are displayed as 3D cubes that can be arranged by moving them into the empty space.
 
-Video: [https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg08QfFw1EMomJax7&sa=D&sntz=1&usg=AFQjCNEPoUrKz3LEpuDMg_Xn0aq5yBUChA 15 Puzzle Game in 3D]
+Video: [15 Puzzle Game in 3D](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg08QfFw1EMomJax7&sa=D&sntz=1&usg=AFQjCNEPoUrKz3LEpuDMg_Xn0aq5yBUChA)
 
-Necessary files: [https://www.dropbox.com/s/8abbcbunkpcuvkl/fifteenpuzzle3d.zip?dl=0 Files for 15 Puzzle Game in 3D]
+Necessary files: [Files for 15 Puzzle Game in 3D](https://www.dropbox.com/s/8abbcbunkpcuvkl/fifteenpuzzle3d.zip?dl=0)
 
 
 ## Ring

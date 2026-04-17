@@ -27,7 +27,7 @@ languages = [
 
 Imaginary base numbers are a non-standard positional numeral system which uses an imaginary number as its radix. The most common is quater-imaginary with radix 2i.
 
-''The quater-imaginary numeral system was first proposed by [https://en.wikipedia.org/wiki/Donald_Knuth Donald Knuth] in 1955 as a submission for a high school science talent search. [http://www.fact-index.com/q/qu/quater_imaginary_base.html  [Ref.]]''
+''The quater-imaginary numeral system was first proposed by [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) in 1955 as a submission for a high school science talent search. [[Ref.](http://www.fact-index.com/q/qu/quater_imaginary_base.html)]''
 
 Other imaginary bases are possible too but are not as widely discussed and aren't specifically named.
 
@@ -39,7 +39,7 @@ For extra kudos, support positive or negative bases 2i through 6i (or higher).
 
 As a stretch goal, support converting non-integer numbers ( E.G. 227.65625+10.859375i ) to an imaginary base.
 
-See [https://en.wikipedia.org/wiki/Quater-imaginary_base Wikipedia: Quater-imaginary_base] for more details.
+See [Wikipedia: Quater-imaginary_base](https://en.wikipedia.org/wiki/Quater-imaginary_base) for more details.
 
 For reference, here are some some decimal and complex numbers converted to quater-imaginary.
 <table class="multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;">

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/lestrrat-go/libxml2 libxml2(Go)] is an interface to the libxml2 C library for use with the Go programming language.
+[libxml2(Go)](https://github.com/lestrrat-go/libxml2) is an interface to the libxml2 C library for use with the Go programming language.
 
-Its use is subject to the [https://github.com/lestrrat-go/libxml2/blob/master/LICENSE MIT license].
+Its use is subject to the [MIT license](https://github.com/lestrrat-go/libxml2/blob/master/LICENSE).

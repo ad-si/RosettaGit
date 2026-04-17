@@ -107,7 +107,7 @@ ps Sorry for the broken links.  Does RosettaCode want pages for IT pioneers etc 
 
 Add a link in [[Rosetta_Code:About]], and maybe include a link at the bottom of each page with  Privacy policy/About Rosetta Code/Disclaimers maybe.
 
-Re: copyright of the Man_or_boy algorithm and derivatives, I attributed the sources for the Non-GPL versions.  As far as the Donald Knuth and Charles H. Lindsey versions... I know there is a rule on fair usage, but I am not sure how far this goes.  The algorithm was published in the ALGOL bulletin Number 17 - July 1964 [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A17/P24.HTM].  I was very brief.  The Charles H. Lindsey - AB52 December 1988 versions [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM] embedded the Algol 68 version in a much larger document. 
+Re: copyright of the Man_or_boy algorithm and derivatives, I attributed the sources for the Non-GPL versions.  As far as the Donald Knuth and Charles H. Lindsey versions... I know there is a rule on fair usage, but I am not sure how far this goes.  The algorithm was published in the ALGOL bulletin Number 17 - July 1964 <http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A17/P24.HTM>.  I was very brief.  The Charles H. Lindsey - AB52 December 1988 versions <http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM> embedded the Algol 68 version in a much larger document. 
 
 Maybe the ALGOL Bulletin itself has a more exacting/generous license.  I am thinking that I will go back the wikipedia and get their thoughts.  And if necessary delete both extracts in both wikis.  Any thoughts?
 

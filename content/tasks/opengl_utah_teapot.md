@@ -20,12 +20,12 @@ languages = [
 
 This is way to render classic Utah Teapot using OpenGL library.
 
-See also: [https://en.wikipedia.org/wiki/Utah_teapot Utah Teapot wikipage].
+See also: [Utah Teapot wikipage](https://en.wikipedia.org/wiki/Utah_teapot).
 
 
 ## C
 
-As well explained on the Wikipedia page ( link above ), the teapot played such an important role in the development of Computer Graphics, that Mark Kilgard honoured it by giving it it's own [https://www.opengl.org/resources/libraries/glut/spec3/node89.html#SECTION000129000000000000000 primitive drawing functions]. [http://freeglut.sourceforge.net/ freeglut] did even better and implemented the rest of the tea set, yes, the API also provides a cup and a spoon.
+As well explained on the Wikipedia page ( link above ), the teapot played such an important role in the development of Computer Graphics, that Mark Kilgard honoured it by giving it it's own [primitive drawing functions](https://www.opengl.org/resources/libraries/glut/spec3/node89.html#SECTION000129000000000000000). [freeglut](http://freeglut.sourceforge.net/) did even better and implemented the rest of the tea set, yes, the API also provides a cup and a spoon.
 
 This implementation sticks to the task requirements and only shows the teapot, it's rotating, so you can enjoy it's magnificence from all possible viewpoints and perspectives.
 
@@ -504,4 +504,4 @@ end procedure
 main()
 ```
 
-To run this, you will need the freeglut package from [http://phix.x10.mx/pmwiki/pmwiki.php?n=Main.Freeglut-TheFreeOpenglUtilityToolkit PCAN]
+To run this, you will need the freeglut package from [PCAN](http://phix.x10.mx/pmwiki/pmwiki.php?n=Main.Freeglut-TheFreeOpenglUtilityToolkit)

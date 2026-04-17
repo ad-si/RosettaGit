@@ -127,14 +127,14 @@ Allied sequences can be generated where the initial values are changed:
 ## Related tasks
 
 *   [[Fibonacci sequence]]
-*   [http://mathworld.wolfram.com/Fibonaccin-StepNumber.html Wolfram Mathworld]
+*   [Wolfram Mathworld](http://mathworld.wolfram.com/Fibonaccin-StepNumber.html)
 *   [[Hofstadter Q sequence‎]]
 *   [[Leonardo numbers]]
 
 
 ;Also see:
-*   [https://www.youtube.com/watch?v=PeUbRXnbmms Lucas Numbers - Numberphile] (Video)
-*   [https://www.youtube.com/watch?v=fMJflV_GUpU Tribonacci Numbers (and the Rauzy Fractal) - Numberphile] (Video)
+*   [Lucas Numbers - Numberphile](https://www.youtube.com/watch?v=PeUbRXnbmms) (Video)
+*   [Tribonacci Numbers (and the Rauzy Fractal) - Numberphile](https://www.youtube.com/watch?v=fMJflV_GUpU) (Video)
 
 
 
@@ -1739,9 +1739,9 @@ lucas      {   2,   1,   3,   4,   7,  11,  18,  29,  47,  76 }
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Fibonacci_n-step_number_sequences this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Fibonacci_n-step_number_sequences) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2657,7 +2657,7 @@ main
 
 This solution provides a generalized Fibonacci iterator that is then made specific to particular sorts of series by setting its parameters.  <tt>NFib</tt> is the type that holds the series parameters.  <tt>FState</tt> contains the iteration state.  The methods <tt>start</tt>, <tt>end</tt> and <tt>next</tt>, provided for these new types, enable Julia's iteration mechanics upon them.
 
-This iterator is implemented using an n-element circular list that contains the previous values of the sequence that are needed to calculate the current value.  To do this without clumsy initialization logic, the "seed" sequence consists of the <math>n</math> values prior to <math>k=1</math> rather than the first <math>n</math> values.  For example the (2 step) Fibonacci sequence is <math>F_{k+1}=F_{k}+F_{k-1}</math> with <math>F_{-1}=1</math> and <math>F_{0}=0</math> rather than <math>F_{1}=1</math> and <math>F_{2}=1</math>.  See [https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html Primes in Fibonacci n-step and Lucas n-step Sequences] for further details.
+This iterator is implemented using an n-element circular list that contains the previous values of the sequence that are needed to calculate the current value.  To do this without clumsy initialization logic, the "seed" sequence consists of the <math>n</math> values prior to <math>k=1</math> rather than the first <math>n</math> values.  For example the (2 step) Fibonacci sequence is <math>F_{k+1}=F_{k}+F_{k-1}</math> with <math>F_{-1}=1</math> and <math>F_{0}=0</math> rather than <math>F_{1}=1</math> and <math>F_{2}=1</math>.  See [Primes in Fibonacci n-step and Lucas n-step Sequences](https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html) for further details.
 
 '''Generalized Fibonacci Iterator Definition'''
 
@@ -2718,7 +2718,7 @@ end
 
 '''Specification of the Rosetta Code n-step Lucas Iterator'''
 
-This iterator produces the task description's version of the Lucas Sequence ([https://oeis.org/A000032 OEIS A000032]) and its generalization to n-steps as was done by some of the other solutions to this task.  The seeding for this series of sequences is <math>F_{1-n} = 3</math>, <math>F_{2-n} = -1</math> and, for <math>n > 2</math>, <math>F_{3-n} \ldots F_{0}=0</math>.
+This iterator produces the task description's version of the Lucas Sequence ([OEIS A000032](https://oeis.org/A000032)) and its generalization to n-steps as was done by some of the other solutions to this task.  The seeding for this series of sequences is <math>F_{1-n} = 3</math>, <math>F_{2-n} = -1</math> and, for <math>n > 2</math>, <math>F_{3-n} \ldots F_{0}=0</math>.
 
 ```Julia
 
@@ -2738,7 +2738,7 @@ end
 
 '''Specification of the MathWorld n-step Lucas Iterator'''
 
-This iterator produces the Mathworld version of the Lucas Sequence ([http://mathworld.wolfram.com/LucasNumber.html Lucas Number] and [https://oeis.org/A000204 OEIS A000204]) and its generalization to n-steps according to Mathworld ([http://mathworld.wolfram.com/Lucasn-StepNumber.html Lucas n-Step Number] and [https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html Primes in Fibonacci n-step and Lucas n-step Sequences]).  The seeding for this series of sequences is <math>F_{0} = n</math> and <math>F_{1-n} \ldots F_{-1}=-1</math>.
+This iterator produces the Mathworld version of the Lucas Sequence ([Lucas Number](http://mathworld.wolfram.com/LucasNumber.html) and [OEIS A000204](https://oeis.org/A000204)) and its generalization to n-steps according to Mathworld ([Lucas n-Step Number](http://mathworld.wolfram.com/Lucasn-StepNumber.html) and [Primes in Fibonacci n-step and Lucas n-step Sequences](https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html)).  The seeding for this series of sequences is <math>F_{0} = n</math> and <math>F_{1-n} \ldots F_{-1}=-1</math>.
 
 ```Julia
 

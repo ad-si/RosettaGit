@@ -235,8 +235,8 @@ See [[Arithmetic Evaluator/Ada]].
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - A68RS has not implemented forward declarations}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - A68RS has not implemented forward declarations}}
 
 ```algol68
 INT base=10;
@@ -4706,7 +4706,7 @@ in
 
 
 To improve performance, the number of choice points should be limited, for example by reading numbers deterministically instead.
-For real parsing with possible large input, it is however recommended to use [http://www.mozart-oz.org/home/doc/gump/node5.html Gump], Mozart's parser generator.
+For real parsing with possible large input, it is however recommended to use [Gump](http://www.mozart-oz.org/home/doc/gump/node5.html), Mozart's parser generator.
 
 
 ## Pascal
@@ -5531,7 +5531,7 @@ print expr, '=',astTree.eval()
 
 ### ast standard library module
 
-Python comes with its own [http://docs.python.org/3.1/library/ast.html#module-ast ast] module as part of its standard libraries. The module compiles Python source into an AST tree that can in turn be compiled to bytecode then executed.
+Python comes with its own [ast](http://docs.python.org/3.1/library/ast.html#module-ast) module as part of its standard libraries. The module compiles Python source into an AST tree that can in turn be compiled to bytecode then executed.
 
 ```python
 >>
@@ -5761,7 +5761,7 @@ answer──► 1
 
 ## Ruby
 
-Function to convert infix arithmetic expression to binary tree. The resulting tree knows how to print and evaluate itself. Assumes expression is well-formed (matched parens, all operators have 2 operands). Algorithm: http://www.seas.gwu.edu/~csci131/fall96/exp_to_tree.html
+Function to convert infix arithmetic expression to binary tree. The resulting tree knows how to print and evaluate itself. Assumes expression is well-formed (matched parens, all operators have 2 operands). Algorithm: <http://www.seas.gwu.edu/~csci131/fall96/exp_to_tree.html>
 
 ```ruby
 $op_priority = {"+" => 0, "-" => 0, "*" => 1, "/" => 1}
@@ -6367,7 +6367,7 @@ for expr,res in [
 
 ## Standard ML
 
-This implementation uses a [https://en.wikipedia.org/wiki/Recursive_descent_parser recursive descent parser]. It first lexes the input. The parser builds a Abstract Syntax Tree (AST) and the evaluator evaluates it. The parser uses sub categories.
+This implementation uses a [recursive descent parser](https://en.wikipedia.org/wiki/Recursive_descent_parser). It first lexes the input. The parser builds a Abstract Syntax Tree (AST) and the evaluator evaluates it. The parser uses sub categories.
 The parsing is a little bit tricky because the grammar is left recursive.
 
 ```sml

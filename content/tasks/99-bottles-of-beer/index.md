@@ -4926,7 +4926,7 @@ End
 ```
 
 
-Since in IDL "FOR"-loops are the embodiment of pure evil (see http://www.idlcoyote.com/tips/forloops.html and http://www.idlcoyote.com/tips/forloops2.html) there is also a loop free IDL way:
+Since in IDL "FOR"-loops are the embodiment of pure evil (see <http://www.idlcoyote.com/tips/forloops.html> and <http://www.idlcoyote.com/tips/forloops2.html>) there is also a loop free IDL way:
 
 
 ```IDL
@@ -12455,7 +12455,7 @@ produce output identical to that for the XSLT 1 code provided.
 * xsl:iterate, more versatile than xsl:for-each [first available in XSLT 3.0]
 * reverse() function [first available in XPath 2.0 / XSLT 2]
 * "if ... then ... else" construction [ditto]
-* use of text value templates (using "{ XPath code }") [first available XSLT 3, see https://www.w3.org/TR/xslt-30/#text-value-templates]
+* use of text value templates (using "{ XPath code }") [first available XSLT 3, see <https://www.w3.org/TR/xslt-30/#text-value-templates>]
 
 
 ```xml

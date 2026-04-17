@@ -71,4 +71,4 @@ I interpret an 8-to-14 bit integer being sent as the first and second bytes bein
 
 i.e. the first byte/octet through would have its high bit set and the last octet would not. --[[User:Paddy3118|Paddy3118]] 17:17, 17 October 2010 (UTC)
 
-I agree with Paddy.  See also: http://en.wikipedia.org/wiki/File:Uintvar_coding.svg --[[User:Rdm|Rdm]] 23:07, 17 October 2010 (UTC)
+I agree with Paddy.  See also: <http://en.wikipedia.org/wiki/File:Uintvar_coding.svg> --[[User:Rdm|Rdm]] 23:07, 17 October 2010 (UTC)

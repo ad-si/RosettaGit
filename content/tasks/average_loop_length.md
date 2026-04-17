@@ -58,7 +58,7 @@ Write a program or a script that estimates, for each <code>N</code>, the average
 Also calculate this expected length using an analytical formula, and optionally compare the simulated result with the theoretical one.
 
 
-This problem comes from the end of Donald Knuth's [http://www.youtube.com/watch?v=cI6tt9QfRdo Christmas tree lecture 2011].
+This problem comes from the end of Donald Knuth's [Christmas tree lecture 2011](http://www.youtube.com/watch?v=cI6tt9QfRdo).
 
 Example of expected output:
 

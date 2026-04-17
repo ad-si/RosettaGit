@@ -182,7 +182,7 @@ This was developed when tape drives used half-inch tapes in lengths up to 2,400 
 ## Go
 
 Taking a cue from the [[Talk:Create_a_file_on_magnetic_tape|discussion page]], this creates
-an optionally compressed [https://en.wikipedia.org/wiki/Tar_%28computing%29 tar (tape archive)] file
+an optionally compressed [tar (tape archive)](https://en.wikipedia.org/wiki/Tar_%28computing%29) file
 on stdout
 (or written to a file or a device such as /dev/tape).
 The tar archive will contain a single file, called <tt>TAPE.FILE</tt> by default,

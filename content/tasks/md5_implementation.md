@@ -51,7 +51,7 @@ languages = [
 
 ## Task
 
-The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [http://www.ietf.org/rfc/rfc1321.txt MD5 definition in IETF RFC (1321)].
+The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [MD5 definition in IETF RFC (1321)](http://www.ietf.org/rfc/rfc1321.txt).
 
 * The implementation needs to implement the key functionality namely producing a correct message digest for an input string.  It is not necessary to mimic all of the calling modes such as adding to a digest one block at a time over subsequent calls.
 * In addition to coding and verifying your implementation, note any challenges your language presented implementing the solution, implementation choices made, or limitations of your solution.
@@ -525,7 +525,7 @@ MD5 ("12345678901234567890123456789012345678901234567890123456789012345678901234
 
 ## C#
 
-Handwritten implementation ([http://farazmahmood.wordpress.com/projects/md5-implementation-in-c/]):
+Handwritten implementation (<http://farazmahmood.wordpress.com/projects/md5-implementation-in-c/>):
 
 ```c#
 
@@ -993,7 +993,7 @@ md5 = do ->
 ```
 
 
-This implementation is more focused towards brevity rather than speed. Use a javascript MD5 implementation if speed is desired. Fork this code [https://gist.github.com/Higgs1/08ec61fbb250c1c92151 on github].
+This implementation is more focused towards brevity rather than speed. Use a javascript MD5 implementation if speed is desired. Fork this code [on github](https://gist.github.com/Higgs1/08ec61fbb250c1c92151).
 
 Note: this only works on byte strings. To use arbitrary Javascript strings, you must first encode as UTF-8.
 
@@ -1041,7 +1041,7 @@ d174ab98d277d9f5a5611c2c9f419d9f
 
 ## Common Lisp
 
-This code requires the [https://github.com/cl-babel/babel BABEL] package for converting a string to an octet buffer.
+This code requires the [BABEL](https://github.com/cl-babel/babel) package for converting a string to an octet buffer.
 
 
 ```lisp
@@ -1457,7 +1457,7 @@ As you see this asm is much faster than the D code compiled by dmd, but the D co
 
 ## F#
 
-Pure functional implementation (slower than library function) (Link to original blog [https://znprojects.blogspot.com/2017/04/md5-in-f-functionally.html]):
+Pure functional implementation (slower than library function) (Link to original blog <https://znprojects.blogspot.com/2017/04/md5-in-f-functionally.html>):
 
 ```F#
 let fxyz x y z : uint32 = (x &&& y) ||| (~~~x &&& z)
@@ -2229,7 +2229,7 @@ link unsigned                                       # string to unsigned integer
 ```
 
 
-The {{libheader|Icon Programming Library}} provides [http://www.cs.arizona.edu/icon/library/src/procs/unsigned.icn unsigned] and [http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt]
+The {{libheader|Icon Programming Library}} provides [unsigned](http://www.cs.arizona.edu/icon/library/src/procs/unsigned.icn) and [hexcvt](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 Sample Output (abridged):
 ```txt
@@ -2252,7 +2252,7 @@ Digest = CC175B9C0F1B6A831C399E269772661 matches reference hash
 ## J
 
 
-Note: the following code was extracted from http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs
+Note: the following code was extracted from <http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs>
 
 
 ```j
@@ -5361,7 +5361,7 @@ object MD5 extends App {
 
 ## Seed7
 
-The example below contains the implementation of the function [http://seed7.sourceforge.net/libraries/msgdigest.htm#md5%28in_var_string%29 md5] from the library [http://seed7.sourceforge.net/libraries/msgdigest.htm msgdigest.s7i].
+The example below contains the implementation of the function [md5](http://seed7.sourceforge.net/libraries/msgdigest.htm#md5%28in_var_string%29) from the library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm).
 
 
 ```seed7
@@ -5488,7 +5488,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/msgdigest.htm#md5]
+Original source: <http://seed7.sourceforge.net/algorith/msgdigest.htm#md5>
 
 ```txt
 

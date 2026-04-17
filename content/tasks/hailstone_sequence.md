@@ -113,7 +113,7 @@ This sequence is also known as the   ''Collatz sequence''.
 
 ## See also
 
-*   [http://xkcd.com/710 xkcd] (humourous).
+*   [xkcd](http://xkcd.com/710) (humourous).
 
 
 
@@ -3618,7 +3618,7 @@ The longest hailstone sequence under 100,000 is 77031 with 351 elements.
 
 ## Ezhil
 
-Ezhil is a Tamil programming language, see [http://en.wikipedia.org/wiki/Ezhil_%28programming_language%29 | Wikipedia] entry.
+Ezhil is a Tamil programming language, see [| Wikipedia](http://en.wikipedia.org/wiki/Ezhil_%28programming_language%29) entry.
 
 <lang src="Python">
 நிரல்பாகம்  hailstone ( எண் )
@@ -3712,9 +3712,9 @@ f;." has hailstone sequence length "m;.
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Hailstone_sequence this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Hailstone_sequence) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -6198,7 +6198,7 @@ hailstone(N, [N|S]) :-
 ```
 
 
-The mainline test driver (making use of [http://en.wikipedia.org/wiki/Unification_(computer_science) unification] for more succinct tests):
+The mainline test driver (making use of [unification](http://en.wikipedia.org/wiki/Unification_(computer_science)) for more succinct tests):
 
 ```mercury
 :- module test_hailstone.
@@ -6951,7 +6951,7 @@ and
 
 
 Different kind of PARI scripts for Collatz sequences you can find in OEIS, e.g.:
-[http://oeis.org/A070165 A070165]
+[A070165](http://oeis.org/A070165)
 
 
 ```parigp

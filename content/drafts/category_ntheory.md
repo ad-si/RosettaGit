@@ -12,7 +12,7 @@ tags = []
 
 {{library}}
 [[Category:Perl_modules]]
-ntheory is Perl module available on CPAN as [https://metacpan.org/pod/ntheory ntheory] or [https://metacpan.org/pod/Math::Prime::Util Math::Prime::Util].  It adds fast integer number theory functions using either GMP, C, or pure Perl.
+ntheory is Perl module available on CPAN as [ntheory](https://metacpan.org/pod/ntheory) or [Math::Prime::Util](https://metacpan.org/pod/Math::Prime::Util).  It adds fast integer number theory functions using either GMP, C, or pure Perl.
 
 Highlights include:
 

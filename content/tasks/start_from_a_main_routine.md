@@ -142,7 +142,7 @@ Hello World !
 
 ## Clojure
 
-Use [http://leiningen.org/ Leiningen].  It will allow you to describe many aspects of your project, including which namespace's -main function it should invoke at startup.  When you use the 'lein new app' template, it will generate and configure a -main function for you.  You can edit the <tt>project.clj</tt> to modify <tt>:main</tt> if you wish to start from some other point.  For more details, read the [http://leiningen.org/#docs documentation].
+Use [Leiningen](http://leiningen.org/).  It will allow you to describe many aspects of your project, including which namespace's -main function it should invoke at startup.  When you use the 'lein new app' template, it will generate and configure a -main function for you.  You can edit the <tt>project.clj</tt> to modify <tt>:main</tt> if you wish to start from some other point.  For more details, read the [documentation](http://leiningen.org/#docs).
 
 
 ## Component Pascal
@@ -321,7 +321,7 @@ If a file name is specified on the command line, that file is executed before dr
 
 Thus, if the script issues an exit command, that will happen before the event loop executes.
 
-If you want the script to exit even when it hits an error, you can use an [http://www.jsoftware.com/help/dictionary/dx009.htm#26 immex phrase], which will be the first thing executed by the event loop, before it prompts.
+If you want the script to exit even when it hits an error, you can use an [immex phrase](http://www.jsoftware.com/help/dictionary/dx009.htm#26), which will be the first thing executed by the event loop, before it prompts.
 
 
 ## Julia
@@ -550,7 +550,7 @@ Hello World!
 ## Ruby
 
 Every Ruby source file can declare blocks of code to be run as the file is being loaded (the BEGIN blocks) and after the program has finished executing (the END blocks).
-[http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UA BEGIN and END Blocks]
+[BEGIN and END Blocks](http://ruby-doc.com/docs/ProgrammingRuby/html/language.html#UA)
 
 ```ruby
 BEGIN {

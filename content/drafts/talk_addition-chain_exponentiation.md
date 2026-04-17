@@ -87,7 +87,7 @@ And the following two paragraphs at wikipedia also look relevant.
 
 --[[User:Rdm|Rdm]] 14:51, 27 August 2011 (UTC)
 
-: This appears to be a really hard problem.  Most relevant page on the web so far: [[http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html]], and in particular the paper [[http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz]].  I have doubts on the possibility of anyone implementing it on RC. --[[User:Ledrug|Ledrug]] 15:59, 27 August 2011 (UTC)
+: This appears to be a really hard problem.  Most relevant page on the web so far: <http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html>, and in particular the paper <http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz>.  I have doubts on the possibility of anyone implementing it on RC. --[[User:Ledrug|Ledrug]] 15:59, 27 August 2011 (UTC)
 : From the search tool on the page linked above:<lang>1 2 4 5 10 20 40 80 160 320 321 641 1282 1923 3846 7692 15384 15705 31410 31415 
 1 2 3 5 10 20 23 43 53 106 212 424 848 1696 3392 6784 13568 13591 27182
 ```
@@ -153,8 +153,8 @@ print chain(23)
  First column is the prime number, second column is sequence length, third column is the number of possibilities to compute that exponent in minimal length based on a minimal length chain.  I just do not see any good way of managing the complexity of this system. --[[User:Rdm|Rdm]] 22:43, 27 August 2011 (UTC)
 ::::::: I'm not sure why you think prime numbers are more troublesome than composites: if you are doing factorization, your method is doomed.  Check the output for 77, none of the sequences contains either 7 or 11. --[[User:Ledrug|Ledrug]] 23:27, 27 August 2011 (UTC)
 :::::::: Yes, 33 was enough to show that factorization can be worse than addition chain (length binary chain for 3 + 1 + length binary chain 11 is longer than binary chain for 33).  --[[User:Rdm|Rdm]] 02:32, 28 August 2011 (UTC)
-Knuth's programs: [[http://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w]] and [[http://www-cs-faculty.stanford.edu/~knuth/programs/achain-all.w]].  Pretty fast, but doesn't explain the algorithm very well, maybe because the algorithm only appears complicated to mere mortals.  --[[User:Ledrug|Ledrug]] 20:59, 31 August 2011 (UTC)
-:in [http://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w achain4] he asks people to first read [http://www-cs-faculty.stanford.edu/~knuth/programs/achain2.w achain2] and in achain2 he asks people to first read [http://www-cs-faculty.stanford.edu/~knuth/programs/achain1.w achain1] and in achain1 he asks people to first read [http://www-cs-faculty.stanford.edu/~knuth/programs/achain0.w achain0]. And these make frequent reference to Theorem 4.6.3C (which apparently is on page 469 of his Art of Computer Programming -- which I do not have access to right now).  --[[User:Rdm|Rdm]] 21:29, 31 August 2011 (UTC)
+Knuth's programs: <http://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w> and <http://www-cs-faculty.stanford.edu/~knuth/programs/achain-all.w>.  Pretty fast, but doesn't explain the algorithm very well, maybe because the algorithm only appears complicated to mere mortals.  --[[User:Ledrug|Ledrug]] 20:59, 31 August 2011 (UTC)
+:in [achain4](http://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w) he asks people to first read [achain2](http://www-cs-faculty.stanford.edu/~knuth/programs/achain2.w) and in achain2 he asks people to first read [achain1](http://www-cs-faculty.stanford.edu/~knuth/programs/achain1.w) and in achain1 he asks people to first read [achain0](http://www-cs-faculty.stanford.edu/~knuth/programs/achain0.w). And these make frequent reference to Theorem 4.6.3C (which apparently is on page 469 of his Art of Computer Programming -- which I do not have access to right now).  --[[User:Rdm|Rdm]] 21:29, 31 August 2011 (UTC)
 ==MATLAB non-solution==
 An assumption that a language solves the task is not a solution to the task.  &mdash;[[User:Sonia|Sonia]] 23:08, 13 February 2012 (UTC)
 :You're right. I marked the solution as wrong. It's not even an attempt to provide something (like binary exponentiation, at least, though not enough either). [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 09:25, 30 April 2015 (UTC)
@@ -195,14 +195,14 @@ The answer is thus wrong.
 ::The article does not say it's the smallest counterexample. For you, if a statement is not (yet) proved, it's considered to be true? Wrong. Either you have a proof that star chains produce optimal solutions for 31415 and 27182, either a program based on star chain is useless. When the task asks for optimal solution, that means provably optimal solution, not ''maybe optimal, maybe not''. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 21:56, 20 July 2015 (UTC)
 
 
-Quoting [http://strangelyconsistent.org/blog/t3-addition-chains this]: '''" A Brauer-based algorithm will fail the first time at N = 12509."''' (if this site is not enough for you, I'll try to give you the reference in Knuth's TAOCP then, as I'm sure to have read this in one of the volumes). It's far below the values of the task, which is a big problem for me. And the article linked in the Go program does not claim to give optimal solution, on the contrary: '''"Even though minimal-length cf-chains are not optimal, they have the nice property of being easy to compute [...]"'''.
+Quoting [this](http://strangelyconsistent.org/blog/t3-addition-chains): '''" A Brauer-based algorithm will fail the first time at N = 12509."''' (if this site is not enough for you, I'll try to give you the reference in Knuth's TAOCP then, as I'm sure to have read this in one of the volumes). It's far below the values of the task, which is a big problem for me. And the article linked in the Go program does not claim to give optimal solution, on the contrary: '''"Even though minimal-length cf-chains are not optimal, they have the nice property of being easy to compute [...]"'''.
 This should close the question on the (in)correctness of the Go program.
 
 [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 23:10, 20 July 2015 (UTC)
 
 == One more value to find ==
 
-I added 12509 to the values of the task, 31415 and 27182. Actually, 12509 is the [http://strangelyconsistent.org/blog/t3-addition-chains smallest] for which star chains fail to give an optimal answer, and since the optimality of star chains is questionnable for 31415 and 27182, it's better to clearly exclude this approach. The task insists in asking for an optimal solution, and not a suboptimal one, thus one has to comply with this: algorithms which are faster but suboptimal are perfectly acceptable from an engineering point of view, but do not qualify for an answer to this task. Here we need the guarantee that the answer is correct, that is, really optimal.
+I added 12509 to the values of the task, 31415 and 27182. Actually, 12509 is the [smallest](http://strangelyconsistent.org/blog/t3-addition-chains) for which star chains fail to give an optimal answer, and since the optimality of star chains is questionnable for 31415 and 27182, it's better to clearly exclude this approach. The task insists in asking for an optimal solution, and not a suboptimal one, thus one has to comply with this: algorithms which are faster but suboptimal are perfectly acceptable from an engineering point of view, but do not qualify for an answer to this task. Here we need the guarantee that the answer is correct, that is, really optimal.
 
 [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 23:30, 20 July 2015 (UTC)
 
@@ -248,6 +248,6 @@ There is indeed a fast algorithm, much faster than the straightforward backtrack
 Neill Michael Clift,
 ''"Calculating optimal addition chains"'', 
 '''Computing''', March 2011, Volume 91, Issue 3, pp 265–284, 
-[https://doi.org/10.1007/s00607-010-0118-8 DOI:10.1007/s00607-010-0118-8]
+[DOI:10.1007/s00607-010-0118-8](https://doi.org/10.1007/s00607-010-0118-8)
 
 [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 11:45, 29 August 2016 (UTC)

@@ -273,8 +273,8 @@ that's completely ignored by the compiler or interpreter.
 
 ## See also
 
-*   [https://en.wikipedia.org/wiki/Comment_(computer_programming) Wikipedia]
-*   [http://xkcd.com/156 xkcd] (Humor: hand gesture denoting <code>//</code> for "commenting out" people.)
+*   [Wikipedia](https://en.wikipedia.org/wiki/Comment_(computer_programming))
+*   [xkcd](http://xkcd.com/156) (Humor: hand gesture denoting <code>//</code> for "commenting out" people.)
 
 
 
@@ -442,7 +442,7 @@ comment text comment
 |}
 Notes:
 * The <tt># test #</tt> and <tt>¢ text ¢</tt> comment tends to be used for inline comments.  And the <tt>COMMENT text COMMENT</tt> style tends to be used to comment out entire blocks.
-* The script [http://www.vim.org/scripts//script.php?script_id=1927 '''algol68.vim'''] can be used to highlight commented blocks while editing source code.
+* The script ['''algol68.vim'''](http://www.vim.org/scripts//script.php?script_id=1927) can be used to highlight commented blocks while editing source code.
 
 
 ### With Extensions
@@ -586,9 +586,9 @@ a 10 // another single-line comment
 ```
 
 
-See [http://asymptote.sourceforge.net/doc/Programming.html programming introduction in the Asymptote manual].
+See [programming introduction in the Asymptote manual](http://asymptote.sourceforge.net/doc/Programming.html).
 
-When reading data files a comment character in them can be specified as <code>comment="#"</code> etc.  See [http://asymptote.sourceforge.net/doc/Files.html Files in the Asymptote manual].
+When reading data files a comment character in them can be specified as <code>comment="#"</code> etc.  See [Files in the Asymptote manual](http://asymptote.sourceforge.net/doc/Files.html).
 
 
 ## AutoHotkey
@@ -1241,7 +1241,7 @@ In script:
 
 ## Common Lisp
 
-Common Lisp provides [http://www.lispworks.com/documentation/HyperSpec/Body/02_dd.htm line comments (<tt>;</tt>)] and [http://www.lispworks.com/documentation/HyperSpec/Body/02_dhs.htm block comments (<tt>#|...|#</tt>)].
+Common Lisp provides [line comments (<tt>;</tt>)](http://www.lispworks.com/documentation/HyperSpec/Body/02_dd.htm) and [block comments (<tt>#|...|#</tt>)](http://www.lispworks.com/documentation/HyperSpec/Body/02_dhs.htm).
 
 Block comments can nest (<tt>#|...#|...|#...|#</tt>), unlike block comments in e.g. [[C]].
 
@@ -1630,7 +1630,7 @@ A comment is started by <code>;</code> and reaches to the end of the line.
 
 There are some coding conventions for <code>;;</code> align to indentation, <code>;;;</code> sections, etc,
 
-: [http://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html http://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html]
+: [http://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html](http://www.gnu.org/software/emacs/manual/html_node/elisp/Comment-Tips.html)
 
 Another way to add comments is to use strings at places where the result of an expression is ignored, since they simply evaluate to themselves without any effect. Note that strings can be multi-line:
 
@@ -2261,12 +2261,12 @@ This ''C++-style'' comment starts with <tt>//</tt> and extends to the end of lin
  */
 ```
 
-[http://en.wikipedia.org/wiki/Javadoc Javadoc] is a standardized documentation code for Java. Its comments begin with a forward slash and two stars. Javadoc comments have different tags that signify different things in the methods and classes that they precede.
+[Javadoc](http://en.wikipedia.org/wiki/Javadoc) is a standardized documentation code for Java. Its comments begin with a forward slash and two stars. Javadoc comments have different tags that signify different things in the methods and classes that they precede.
 
 
 ### Sneaky
 
-Your editor will probably colour this as great big comment, but it compiles and prints "Hello World!". Once you've figured out how this works, try this [http://stackoverflow.com/questions/4448180/why-does-java-permit-escaped-unicode-characters-in-the-source-code discussion on why it's allowed].
+Your editor will probably colour this as great big comment, but it compiles and prints "Hello World!". Once you've figured out how this works, try this [discussion on why it's allowed](http://stackoverflow.com/questions/4448180/why-does-java-permit-escaped-unicode-characters-in-the-source-code).
 
 ```java
 public class JustComments {
@@ -4609,7 +4609,7 @@ set var2 $value2 ; # comment that follows a line of code
 
 The reason for the need for a semi-colon on a trailing comment is this:
 
-"If a hash character (“#”) appears at a point where Tcl is expecting ''the first character of the first word of a command'', then the hash character and the characters that follow it, up through the next newline, are treated as a comment and ignored. '''The comment character only has significance when it appears at the beginning of a command.'''" (from the [http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm#M29 Tcl man page] -- emphasis [[User:Glennj|mine]])
+"If a hash character (“#”) appears at a point where Tcl is expecting ''the first character of the first word of a command'', then the hash character and the characters that follow it, up through the next newline, are treated as a comment and ignored. '''The comment character only has significance when it appears at the beginning of a command.'''" (from the [Tcl man page](http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm#M29) -- emphasis [[User:Glennj|mine]])
 
 The "#" symbol has no special meaning if it is not where a command would appear -- it's just data.  (Syntax highlighters often get this wrong.)
 

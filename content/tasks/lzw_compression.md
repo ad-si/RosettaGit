@@ -2079,11 +2079,11 @@ decoded str: TOBEORNOTTOBEORTOBEORNOT
 ## Go
 
 Go also has the
-<code>[https://golang.org/pkg/compress/lzw compress/lzw]</code>
+<code>[compress/lzw](https://golang.org/pkg/compress/lzw)</code>
 package in the standard library.
 This handles any series of bytes in the input string,
 not just ASCII or valid UTF8 encoding
-(tested with [https://github.com/dvyukov/go-fuzz go-fuzz]).
+(tested with [go-fuzz](https://github.com/dvyukov/go-fuzz)).
 
 ```go
 package main
@@ -2308,7 +2308,7 @@ True
 ```
 
 
-Other (elegant) code can be found at Haskell wiki [http://www.haskell.org/haskellwiki/Toy_compression_implementations Toy compression]
+Other (elegant) code can be found at Haskell wiki [Toy compression](http://www.haskell.org/haskellwiki/Toy_compression_implementations)
 
 
 ## J
@@ -5339,7 +5339,7 @@ TOBEORNOTTOBEORTOBEORNOT
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/string.htm#lzwCompress] and [http://seed7.sourceforge.net/algorith/string.htm#lzwDecompress]
+Original source: <http://seed7.sourceforge.net/algorith/string.htm#lzwCompress> and <http://seed7.sourceforge.net/algorith/string.htm#lzwDecompress>
 
 
 ## Sidef

@@ -59,7 +59,7 @@ tags = []
 
 ! {{anchor|Ada|[[Ada]]}}
 |[[concurrent programming|concurrent]], [[:Category:Programming paradigm/Distributed|distributed]], [[generic programming|generic]], [[imperative programming|imperative]], [[object-oriented]]
-|{{yes|Yes, [[ANSI]], [[ISO]], ANSI/MIL-STD-1815A-1983, [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=22983 ISO/IEC 8652], [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38828 ISO/IEC TR 24718], [http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27831-88.pdf GOST 27831-88]}}
+|{{yes|Yes, [[ANSI]], [[ISO]], ANSI/MIL-STD-1815A-1983, [ISO/IEC 8652](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=22983), [ISO/IEC TR 24718](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=38828), [GOST 27831-88](http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27831-88.pdf)}}
 |strong
 |safe
 |explicit
@@ -68,13 +68,13 @@ tags = []
 |by value, by reference (compiler chosen if not determined by the data type)
 |{{optional|GC is allowed, but not mandated}}
 |Embedded, [[real-time computing|real-time]], mission-critical, long-lived, and large scale systems
-|Reliability and maintenance, Programming as a human activity, Efficiency [http://www.adaic.com/standards/05rm/html/RM-0-3.html Language Reference Manual]
+|Reliability and maintenance, Programming as a human activity, Efficiency [Language Reference Manual](http://www.adaic.com/standards/05rm/html/RM-0-3.html)
 |-
 
 
 ! {{anchor|ALGOL_68|[[ALGOL 68]]}}
 |[[concurrent programming|concurrent]], [[imperative programming|imperative]] 
-|{{yes|Yes, [http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27974-88.pdf GOST 27974-88]}}
+|{{yes|Yes, [GOST 27974-88](http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27974-88.pdf)}}
 |soft, weak, meek, firm and strong - depending on context.
 |safe
 |explicit
@@ -209,7 +209,7 @@ tags = []
 
 ! {{anchor|Chapel|[[Chapel]]}}
 |[[concurrent]], [[generic programming|generic]], [[object-oriented]], [[imperative programming|imperative]], [[:Category:Programming paradigm/Distributed|distributed]], [[reflective programming|reflective]]
-|{{no|No, still under development, a [http://chapel.cray.com/spec/spec-0.93.pdf preliminary language specification] exists}}
+|{{no|No, still under development, a [preliminary language specification](http://chapel.cray.com/spec/spec-0.93.pdf) exists}}
 |strong
 |safe
 |explicit, partially inferred
@@ -387,7 +387,7 @@ tags = []
 
 ! {{anchor|Eiffel|[[Eiffel]]}}
 |[[imperative programming|imperative]], [[object-oriented]], [[generic programming|generic]] 
-|{{yes|Yes, [http://www.ecma-international.org/publications/standards/Ecma-367.htm ECMA-367], [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=42924 ISO/IEC 25436:2006]}}
+|{{yes|Yes, [ECMA-367](http://www.ecma-international.org/publications/standards/Ecma-367.htm), [ISO/IEC 25436:2006](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=42924)}}
 |strong
 |safe
 |
@@ -512,7 +512,7 @@ tags = []
 
 ! {{anchor|Fortran|[[Fortran]]}}
 |[[imperative programming|imperative]], [[procedural programming|procedural]], [[object-oriented]], (partially) [[generic programming|generic]], [[concurrent programming|concurrent]]
-|{{yes|Yes, [[ISO]], [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39691 ISO/IEC 1539-1:2004]}}
+|{{yes|Yes, [[ISO]], [ISO/IEC 1539-1:2004](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39691)}}
 |strong
 |safe
 |explicit, partially implicit
@@ -557,7 +557,7 @@ tags = []
 
 ! {{anchor|Go|[[Go]]}}
 |[[concurrent programming|concurrent]]
-|<!-- Std -->{{no}}, [http://golang.org/ref/spec language specification] available
+|<!-- Std -->{{no}}, [language specification](http://golang.org/ref/spec) available
 |<!-- Strength -->strong
 |<!-- Safety -->safe
 |<!-- Expr -->explicit, optionally inferred
@@ -602,7 +602,7 @@ tags = []
 
 ! {{anchor|Haskell|[[Haskell]]}}
 |[[functional programming|functional]], [[generic programming|generic]], [[lazy evaluation]] 
-|{{yes|Yes, [http://www.haskell.org/onlinereport/haskell2010/ Haskell 2010 Report], [http://www.haskell.org/onlinereport/ Haskell 98 Report]}}
+|{{yes|Yes, [Haskell 2010 Report](http://www.haskell.org/onlinereport/haskell2010/), [Haskell 98 Report](http://www.haskell.org/onlinereport/)}}
 |strong
 |safe
 |inferred, optional explicit annotations
@@ -611,12 +611,12 @@ tags = []
 |
 |{{yes}}
 |Application, Research
-|[[lazy evaluation]], Teaching and research, completely formally described [http://haskell.org/onlinereport/preface-jfp.html Report Preface]
+|[[lazy evaluation]], Teaching and research, completely formally described [Report Preface](http://haskell.org/onlinereport/preface-jfp.html)
 |-
 
 ! {{anchor|Huginn|[[Huginn]]}}
 |[[imperative programming|imperative]], [[object-oriented]], [[functional programming|functional]]
-|{{no|No, [http://huginn.org/referece language reference] included with each version's documentation}}
+|{{no|No, [language reference](http://huginn.org/referece) included with each version's documentation}}
 |strong
 |safe
 |implicit
@@ -675,7 +675,7 @@ tags = []
 
 ! {{anchor|Java|[[Java]]}}
 |[[imperative programming|imperative]], [[object-oriented]], [[generic programming|generic]], [[reflective programming|reflective]]
-|{{yes|Yes, [http://docs.oracle.com/javase/specs/index.html Java SE Specifications]}}
+|{{yes|Yes, [Java SE Specifications](http://docs.oracle.com/javase/specs/index.html)}}
 |strong
 |safe
 |explicit
@@ -751,7 +751,7 @@ tags = []
 
 ! {{anchor|LDPL|[[LDPL]]}}
 |[[imperative programming|imperative]]
-|{{yes|Yes, [https://ldpl.lartu.net/reference LDPL Standard 19]}}
+|{{yes|Yes, [LDPL Standard 19](https://ldpl.lartu.net/reference)}}
 |strong
 |safe
 |explicit
@@ -1021,7 +1021,7 @@ tags = []
 
 ! {{anchor|OCaml|[[OCaml]]}}
 |[[object-oriented]], [[functional programming|functional]], [[imperative programming|imperative]], [[generic programming|generic]]
-|{{no|No, [http://caml.inria.fr/pub/docs/manual-ocaml/index.html the manual] includes language specification}}
+|{{no|No, [the manual](http://caml.inria.fr/pub/docs/manual-ocaml/index.html) includes language specification}}
 |strong
 |safe
 |inferred, optional explicit annotations
@@ -1096,7 +1096,7 @@ tags = []
 
 ! {{anchor|Perl 6|[[Perl 6]]}}
 |[[imperative programming|imperative]], [[procedural programming|procedural]], [[reflective programming|reflective]], [[functional programming|functional]], [[object-oriented]], [[generic programming|generic]], [[lazy evaluation]], multiple dispatch, metaprogramming
-|{{yes|Yes, [http://perlcabal.org/syn/#doctable Perl 6 Synopses]}}
+|{{yes|Yes, [Perl 6 Synopses](http://perlcabal.org/syn/#doctable)}}
 |strong
 |safe, unsafe
 |optional explicit
@@ -1201,7 +1201,7 @@ tags = []
 
 ! {{anchor|Python|[[Python]]}}
 |[[imperative programming|imperative]], [[object-oriented]], [[functional programming|functional]], [[wp:Aspect-oriented_programming|aspect-oriented]], [[reflective programming|reflective]]
-|{{no|No, [http://docs.python.org/reference/index.html language reference] included with each version's documentation}}
+|{{no|No, [language reference](http://docs.python.org/reference/index.html) included with each version's documentation}}
 |strong
 |safe
 |implicit
@@ -1234,7 +1234,7 @@ tags = []
 |{{no}}
 |strong
 |safe
-|implicit or explicit (see [http://docs.racket-lang.org/ts-guide/index.html Typed Racket])
+|implicit or explicit (see [Typed Racket](http://docs.racket-lang.org/ts-guide/index.html))
 |
 |dynamic or static
 |by value
@@ -1320,7 +1320,7 @@ tags = []
 
 ! {{anchor|Scala|[[Scala]]}}
 |[[object-oriented]], [[functional programming|functional]], [[generic programming|generic]]
-|{{yes|Yes, [http://www.scala-lang.org/docu/files/ScalaReference.pdf The Scala Language Specification Version 2.9]}}
+|{{yes|Yes, [The Scala Language Specification Version 2.9](http://www.scala-lang.org/docu/files/ScalaReference.pdf)}}
 |strong
 |safe
 |partially implicit
@@ -1335,7 +1335,7 @@ tags = []
 
 ! {{anchor|Scheme|[[Scheme]]}}
 |[[functional programming|functional]]
-|{{yes|Yes, [http://www.schemers.org/Documents/Standards/R5RS/ R<sup>5</sup>RS], [http://www.r6rs.org/ R<sup>6</sup>RS]}}
+|{{yes|Yes, [R<sup>5</sup>RS](http://www.schemers.org/Documents/Standards/R5RS/), [R<sup>6</sup>RS](http://www.r6rs.org/)}}
 |strong
 |safe
 |implicit
@@ -1380,7 +1380,7 @@ tags = []
 
 ! {{anchor|SkookumScript|[[SkookumScript]]}}
 |[[concurrent programming|concurrent]], [[object-oriented]], [[functional programming|functional]], [[imperative programming|imperative]], [[generic programming|generic]]
-|{{no|No, [http://skookumscript.com/docs/v3.0/lang/syntax/ online syntax] includes EBNF language specification}}
+|{{no|No, [online syntax](http://skookumscript.com/docs/v3.0/lang/syntax/) includes EBNF language specification}}
 |strong
 |safe
 |inferred, optional explicit annotations
@@ -1410,7 +1410,7 @@ tags = []
 
 ! {{anchor|Smalltalk|[[Smalltalk]]}}
 |[[object-oriented]], [[concurrent programming|concurrent]], [[event-driven programming|event-driven]], [[imperative programming|imperative]], [[declarative programming|declarative]]
-|{{yes|Yes, [http://wiki.squeak.org/squeak/172 ANSI]}}
+|{{yes|Yes, [ANSI](http://wiki.squeak.org/squeak/172)}}
 |strong
 |safe
 |implicit
@@ -1425,7 +1425,7 @@ tags = []
 
 ! {{anchor|SPARK|[[SPARK]]}}
 |[[concurrent programming|concurrent]], [[imperative programming|imperative]], [[object-oriented]]
-|{{no|No, but [http://docs.adacore.com/spark2014-docs/html/lrm/ Language Reference Manual] available.}}
+|{{no|No, but [Language Reference Manual](http://docs.adacore.com/spark2014-docs/html/lrm/) available.}}
 |strong
 |safe
 |explicit
@@ -1440,7 +1440,7 @@ tags = []
 
 ! {{anchor|Standard ML|[[Standard ML]]}}
 |[[functional programming|functional]], [[imperative programming|imperative]], [[generic programming|generic]]
-|{{yes|Yes, [http://www.smlnj.org/sml97.html SML '97]}}
+|{{yes|Yes, [SML '97](http://www.smlnj.org/sml97.html)}}
 |strong
 |safe
 |inferred, optional explicit annotations
@@ -1469,7 +1469,7 @@ tags = []
 
 
 ! {{anchor|Tcl|[[Tcl]]}}
-|[[imperative programming|imperative]], [[procedural programming|procedural]], [[event-driven programming|event-driven]], [[object-oriented]] <small>(native from Tcl 8.6 or via [http://wiki.tcl.tk/970 extensions] before that)</small>
+|[[imperative programming|imperative]], [[procedural programming|procedural]], [[event-driven programming|event-driven]], [[object-oriented]] <small>(native from Tcl 8.6 or via [extensions](http://wiki.tcl.tk/970) before that)</small>
 |{{no}}
 |weak
 |safe
@@ -1479,7 +1479,7 @@ tags = []
 |by value (also by name and by reference through passing of variable names and <code>upvar</code> command)
 |{{optional|Only of unnamed entities, e.g., values}}
 |Embedded, Application, Scripting
-|[http://www.tcl.tk/about/history.html Extend, Embed and Integrate]
+|[Extend, Embed and Integrate](http://www.tcl.tk/about/history.html)
 |-
 
 
@@ -1494,7 +1494,7 @@ tags = []
 |by value
 |{{yes}}
 |Embedded, Application, Scripting, Education
-|Simplicity, Expressiveness, Terseness, [http://linkeddata.org/ Linked Data]
+|Simplicity, Expressiveness, Terseness, [Linked Data](http://linkeddata.org/)
 |-
 
 

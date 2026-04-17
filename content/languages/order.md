@@ -16,4 +16,4 @@ Order is based primarily on lambda calculus, and is vaguely similar in semantics
 Order requires some components from its sister project, Chaos (included in the download), to also be installed, although it is not primarily based on it. Order also requires a standard-conforming [C99](https://rosettacode.org/wiki/C99) preprocessor, and has absolutely no workarounds for non-conformance - currently, only [GCC](https://rosettacode.org/wiki/GCC) is confirmed to work with all examples.
 
 ## See Also
-* [http://chaos-pp.cvs.sourceforge.net/viewvc/chaos-pp/?view=tar Official download (Chaos, includes Order)]
+* [Official download (Chaos, includes Order)](http://chaos-pp.cvs.sourceforge.net/viewvc/chaos-pp/?view=tar)

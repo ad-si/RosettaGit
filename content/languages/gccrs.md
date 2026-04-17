@@ -9,4 +9,4 @@ id = 21571
 categories = []
 tags = []
 +++
-Gccrs[https://github.com/redbrain/gccrs] is a very early non-functional frontend of [Rust](https://rosettacode.org/wiki/Rust) for [GCC](https://rosettacode.org/wiki/GCC)
+Gccrs<https://github.com/redbrain/gccrs> is a very early non-functional frontend of [Rust](https://rosettacode.org/wiki/Rust) for [GCC](https://rosettacode.org/wiki/GCC)

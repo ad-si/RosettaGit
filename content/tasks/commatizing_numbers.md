@@ -113,7 +113,7 @@ where the penultimate string has three leading blanks   (real blanks are to be u
 
 
 ;Also see:
-* The Wiki entry:   [http://en.wikipedia.org/wiki/Eddington_number Arthur Eddington's number of protons in the universe].
+* The Wiki entry:   [Arthur Eddington's number of protons in the universe](http://en.wikipedia.org/wiki/Eddington_number).
 
 
 

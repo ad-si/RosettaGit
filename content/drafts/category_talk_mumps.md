@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-<p>I'm making the assumption that as a pedagogical site the examples should not be obfuscated. For example, from the http://rosettacode.org/wiki/A%2BB#MUMPS page, I would at work use:
+<p>I'm making the assumption that as a pedagogical site the examples should not be obfuscated. For example, from the <http://rosettacode.org/wiki/A%2BB#MUMPS> page, I would at work use:
 
 ```txt
 

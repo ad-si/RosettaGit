@@ -32,7 +32,7 @@ languages = [
 ]
 +++
 
-Draw a Koch curve. See details: [https://en.wikipedia.org/wiki/Koch_snowflake Koch curve]
+Draw a Koch curve. See details: [Koch curve](https://en.wikipedia.org/wiki/Koch_snowflake)
 
 
 ## BASIC256
@@ -96,7 +96,7 @@ end
 
 ## C
 
-Interactive program which takes the width, height (of the Graphics window) and recursion level of the Koch curve as inputs, prints out usage on incorrect invocation. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Interactive program which takes the width, height (of the Graphics window) and recursion level of the Koch curve as inputs, prints out usage on incorrect invocation. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -213,7 +213,7 @@ TUPLE: turtle
 MAIN: koch-curve
 ```
 
-[https://i.imgur.com/MVS8QiS.png]
+<https://i.imgur.com/MVS8QiS.png>
 
 
 ## FreeBASIC
@@ -561,7 +561,7 @@ Generates SVG. To view, save to a file with the extension '.svg', and open in a 
 
 ## Julia
 
-Multiple snowflake plots. Copied from https://www.juliabloggers.com/koch-snowflakes-for-the-holidays/.
+Multiple snowflake plots. Copied from <https://www.juliabloggers.com/koch-snowflakes-for-the-holidays/>.
 
 ```Julia
 using Plots
@@ -941,7 +941,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/koch_curve.svg Koch curve] (offsite image)
+[Koch curve](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/koch_curve.svg) (offsite image)
 
 
 ## Perl 6
@@ -983,7 +983,7 @@ say SVG.serialize(
 ```
 
 
-See: [https://github.com/thundergnat/rc/blob/master/img/koch1.svg Koch snowflake]
+See: [Koch snowflake](https://github.com/thundergnat/rc/blob/master/img/koch1.svg)
 
 Variation using 90° angles:
 
@@ -1020,7 +1020,7 @@ say SVG.serialize(
 );
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/koch2.svg Koch curve variant with 90° angles]
+See: [Koch curve variant with 90° angles](https://github.com/thundergnat/rc/blob/master/img/koch2.svg)
 
 
 ## Phix
@@ -1604,12 +1604,12 @@ func koch x1, y1, x2, y2, it
 
 Output image:
 
-[https://www.dropbox.com/s/33f46wigyc8xt3z/KochCurve.jpg?dl=0 Koch curve]
+[Koch curve](https://www.dropbox.com/s/33f46wigyc8xt3z/KochCurve.jpg?dl=0)
 
 
 ## Sidef
 
-Using the LSystem class defined at [https://rosettacode.org/wiki/Hilbert_curve#Sidef Hilbert curve].
+Using the LSystem class defined at [Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#Sidef).
 
 ```ruby
 var rules = Hash(
@@ -1632,13 +1632,13 @@ lsys.execute('F--F--F', 4, "koch_snowflake.png", rules)
 ```
 
 
-Output image: [https://github.com/trizen/rc/blob/master/img/koch-snowflake-sidef.png Koch snowflake]
+Output image: [Koch snowflake](https://github.com/trizen/rc/blob/master/img/koch-snowflake-sidef.png)
 
 
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var width=512, height=512, img=PPM(width,height,0xFfffFF);   // white canvas
@@ -1671,7 +1671,7 @@ koch(100.0,100.0, 400.0,400.0, 4);
 img.writeJPGFile("koch.zkl.jpg");
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/koch.zkl.jpg koch curve]
+Image at [koch curve](http://www.zenkinetic.com/Images/RosettaCode/koch.zkl.jpg)
 
 
 Using a Lindenmayer system and turtle graphics to draw a Koch snowflake:
@@ -1711,4 +1711,4 @@ fcn turtle(koch){
 }
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/kochSnowFlake.zkl.jpg Koch snow flake]
+Image at [Koch snow flake](http://www.zenkinetic.com/Images/RosettaCode/kochSnowFlake.zkl.jpg)

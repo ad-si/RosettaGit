@@ -18,6 +18,6 @@ It was designed and created by Dave Shields, the author of the first implementat
 
 Setl4 is written in SPITBOL, a very efficient implementation of Snobol4.
 
-Source and binaries can be found at http://github.com/setl4.
+Source and binaries can be found at <http://github.com/setl4>.
 
 Setl4 is licensed under the MIT License, SPITBOL under GPLv2 (or later)

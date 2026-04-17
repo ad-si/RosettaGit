@@ -254,7 +254,7 @@ After deleting all values, tree is:
 
 
 The following example implements an AVL tree ''without'' the need of calculating the height of the nodes (which can be quite time consuming if the tree gets large)!
-It is based on an example of AVL tree in C# (see [http://www.superstarcoders.com/blogs/posts/efficient-avl-tree-in-c-sharp.aspx]).
+It is based on an example of AVL tree in C# (see <http://www.superstarcoders.com/blogs/posts/efficient-avl-tree-in-c-sharp.aspx>).
 
 The example distinguish between the tree implementation itself (see below) and the data to be stored in the tree (see example below).
 

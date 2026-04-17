@@ -61,7 +61,7 @@ languages = [
 
 ## Task
 
-The dining philosophers problem illustrates non-composability of low-level synchronization primitives like [[semaphore]]s. It is a modification of a problem posed by [https://en.wikipedia.org/wiki/Edsger_W._Dijkstra Edsger Dijkstra.]
+The dining philosophers problem illustrates non-composability of low-level synchronization primitives like [[semaphore]]s. It is a modification of a problem posed by [Edsger Dijkstra.](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra)
 
 Five philosophers, Aristotle, Kant, Spinoza, Marx, and Russell (the [[task]]s) spend their time thinking and eating spaghetti. They eat at a round table with five individual seats. For eating each philosopher needs two forks (the resources). There are five forks on the table, one left and one right of each seat. When a philosopher cannot grab both forks it sits and waits. Eating takes random time, then the philosopher puts the forks down and leaves the dining room. After spending some random time thinking about the nature of the universe, he again becomes hungry, and the circle repeats itself.
 
@@ -1225,7 +1225,7 @@ int main()
 }
 ```
 
-Output: http://coliru.stacked-crooked.com/a/1b34c1fc36f5a30c
+Output: <http://coliru.stacked-crooked.com/a/1b34c1fc36f5a30c>
 <div style="height:10em; overflow:auto; border: 1px solid #AAA">
 Dinner started!
 
@@ -1660,7 +1660,7 @@ namespace Dining_Philosophers
 
 ## Clojure
 
-Clojure's STM allows us to avoid low-level synchronization primitives like semaphores.  In order to simulate the Dining Philosophers scenario, the forks are [http://clojure.org/refs references] to a boolean indicating whether or not it is available for use.  Each philosopher (also held in a ref) has a fixed amount of food he will try to eat, first by trying to acquire both forks, eating for some period of time, releasing both forks, then thinking for some period of time; if the forks cannot be acquired, the philosopher waits for a fixed amount of time and tries again.
+Clojure's STM allows us to avoid low-level synchronization primitives like semaphores.  In order to simulate the Dining Philosophers scenario, the forks are [references](http://clojure.org/refs) to a boolean indicating whether or not it is available for use.  Each philosopher (also held in a ref) has a fixed amount of food he will try to eat, first by trying to acquire both forks, eating for some period of time, releasing both forks, then thinking for some period of time; if the forks cannot be acquired, the philosopher waits for a fixed amount of time and tries again.
 
 ```clojure
 (defn make-fork []
@@ -1987,12 +1987,12 @@ Aristotle is full.
 ## E
 
 
-A classic article on solving a version of this problem in E is [http://www.erights.org/e/satan/index.html Satan Comes to Dinner in E].
+A classic article on solving a version of this problem in E is [Satan Comes to Dinner in E](http://www.erights.org/e/satan/index.html).
 
 
 ## EchoLisp
 
-We introduce a laquais who checks that no more than 4 philosophers are sitting at the same time. This prevents deadlocks. Reference : [http://greenteapress.com/semaphores/downey08semaphores.pdf The little book of semaphores].
+We introduce a laquais who checks that no more than 4 philosophers are sitting at the same time. This prevents deadlocks. Reference : [The little book of semaphores](http://greenteapress.com/semaphores/downey08semaphores.pdf).
 
 
 ```scheme
@@ -2162,7 +2162,7 @@ Russell     sitting
 
 ## Eiffel
 
-This solution for the dining philosophers is programmed in Eiffel using [http://docs.eiffel.com/book/solutions/concurrent-eiffel-scoop Simple Concurrent Object-Oriented Programming] (SCOOP). In SCOOP for Eiffel, the keyword <code lang="eiffel">separate</code> in a declaration designates that the associated object may be handled by a SCOOP processor other than (separate from) the one handling the current object. So, in this example, philosophers and forks are all declared as separate types.
+This solution for the dining philosophers is programmed in Eiffel using [Simple Concurrent Object-Oriented Programming](http://docs.eiffel.com/book/solutions/concurrent-eiffel-scoop) (SCOOP). In SCOOP for Eiffel, the keyword <code lang="eiffel">separate</code> in a declaration designates that the associated object may be handled by a SCOOP processor other than (separate from) the one handling the current object. So, in this example, philosophers and forks are all declared as separate types.
 
 The synchronization of access to the resources (the forks) occurs when the routine <code lang="eiffel">eat</code> is called. The two arguments are the two separate forks adjacent to the philosopher. The <code lang="eiffel">eat</code> routine will not proceed until exclusive access to all separate arguments is assured. The resources are released when the routine terminates.
 
@@ -3289,7 +3289,7 @@ J does not support concurrency; so, this is a discrete-event simulation (DES).  
 
 ### The simulation code
 
-The simulation is defined in terms of fixed tacit (stateless point-free) code (a Turing complete dialect of J; see, https://rosettacode.org/wiki/Universal_Turing_machine#J),
+The simulation is defined in terms of fixed tacit (stateless point-free) code (a Turing complete dialect of J; see, <https://rosettacode.org/wiki/Universal_Turing_machine#J>),
 
 
 ```j
@@ -3934,7 +3934,7 @@ philosopher Marx is eating
 ## Julia
 
 Pentagonal table with assigned seats. Aristotle, seated on the north side, takes his left fork
-first since he was left-handed, see historical note in http://time.com/3107557/top-10-lefties/
+first since he was left-handed, see historical note in <http://time.com/3107557/top-10-lefties/>
 and the others take the right fork first. The forks are represented by 5 channels.
 One lefty's taking left fork before right prevents deadlocks (see C solution).
 
@@ -4558,7 +4558,7 @@ From this implementation's point of view, a "resource" is not a ''fork'', but ra
 
 It is easy to modify this so that each philosopher does not rise from the table, but eats and thinks only at his assigned place. In fact, the original implementation did precisely that, but when I saw that some implementations allowed the philosophers to sit at any place with two available forks, I opted for that.
 
-While this implementation is not a translation of the [[#Eiffel|Eiffel]] solution, it still owes it a heads-up for the basic principle. Bertrand Meyer's ACM Webinar on [https://en.wikipedia.org/wiki/SCOOP_(software) SCOOP] directed my attention to this problem, and probably influenced the solution.
+While this implementation is not a translation of the [[#Eiffel|Eiffel]] solution, it still owes it a heads-up for the basic principle. Bertrand Meyer's ACM Webinar on [SCOOP](https://en.wikipedia.org/wiki/SCOOP_(software)) directed my attention to this problem, and probably influenced the solution.
 
 ```modula3
 MODULE DiningPhilosophers EXPORTS Main;
@@ -5752,12 +5752,12 @@ delete_cs(fork5)
 ## PicoLisp
 
 This following solution uses the built-in fininte state machine function
-'[http://software-lab.de/doc/refS.html#state state]'. Deadlocks are avoided, as
+'[state](http://software-lab.de/doc/refS.html#state)'. Deadlocks are avoided, as
 each philosopher releases the first fork if he doesn't succeed to obtain the
 second fork, and waits for a random time.
 
 Another solution, using the Chandy/Misra method, can be found
-[http://logand.com/sw/phil.l here].
+[here](http://logand.com/sw/phil.l).
 
 ```PicoLisp
 (de dining (Name State)

@@ -2605,7 +2605,7 @@ Rendered as a Wiki table because uploading images is not possible.
 
 |}
 
-Program explanation on my user page: [http://rosettacode.org/wiki/User:Albedo#Integer_Sequence]
+Program explanation on my user page: <http://rosettacode.org/wiki/User:Albedo#Integer_Sequence>
 
 
 ## PILOT

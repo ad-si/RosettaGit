@@ -20,6 +20,6 @@ There are actually several varieties of Pascal. The most important ones are:
 ## Grammar
 The [ISO 7185](https://en.wikipedia.org/wiki/ISO_7185) standard for Pascal uses [Extended Backus–Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_Form).
 Also [Van Wijngaarden's grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar) can be used to define
-[Pascal](https://rosettacode.org/wiki/Pascal)'s grammar[http://www-users.cs.york.ac.uk/~fisher/software/yoyovwg/exs/pascal.vwg].
+[Pascal](https://rosettacode.org/wiki/Pascal)'s grammar<http://www-users.cs.york.ac.uk/~fisher/software/yoyovwg/exs/pascal.vwg>.
 ## See also
 * [Pascal on Wikipedia](https://en.wikipedia.org/wiki/Pascal_(programming_language))

@@ -29,6 +29,6 @@ MSX BASIC is a dialect of the BASIC programming language. It is an extended vers
 ```
 
 
-<div style="text-align: right; direction: ltr; margin-left: 1em;"><small>'''MSX Basic''' initially introduced to Rosetta Code on July 10, 2016 by [http://rosettacode.org/wiki/User:Kaizen Paulo Almeida]</small>
+<div style="text-align: right; direction: ltr; margin-left: 1em;"><small>'''MSX Basic''' initially introduced to Rosetta Code on July 10, 2016 by [Paulo Almeida](http://rosettacode.org/wiki/User:Kaizen)</small>
 <sub>MSX Basic and the MSX logo are registered trademarks of  MSX Japan </sub>
 <sup>

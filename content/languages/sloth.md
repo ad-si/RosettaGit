@@ -12,4 +12,4 @@ tags = []
 
 
 
-[http://babel.ls.fi.upm.es/research/Sloth/ Sloth] is a compiler that translates Curry programs into [Prolog](https://rosettacode.org/wiki/Prolog).
+[Sloth](http://babel.ls.fi.upm.es/research/Sloth/) is a compiler that translates Curry programs into [Prolog](https://rosettacode.org/wiki/Prolog).

@@ -17,7 +17,7 @@ This task requires merging with [[Polynomial Fitting]] already representing leas
 
 OK, there's now implementations in two languages. It's not clear to me how this is different from the polynomial fitting task either, but I'm a completionist (for [[Tcl]]) and not a statistician... —[[User:Dkf|Donal Fellows]] 10:34, 9 July 2009 (UTC)
 
-An explanation from the Lapack documentation may be helpful. [http://www.netlib.org/lapack/lug/node27.html]
+An explanation from the Lapack documentation may be helpful. <http://www.netlib.org/lapack/lug/node27.html>
 The idea is that you want to model a set of empirical data
 
 <math>\{(x_1,F(x_1))\dots (x_m,F(x_m))\}</math> 

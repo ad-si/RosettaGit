@@ -14,7 +14,7 @@ tags = []
 
 There's a variety of ways of implementing linear combinations, and this particular task is requiring a representation which will not be executable in many languages. So it would be good to add some motivation to the task description. Why would someone want to do this? --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 16:15, 13 October 2015 (UTC)
 
-:I was working on my [https://github.com/grondilu/clifford Perl 6 Geometric Algebra library] and I needed some way of displaying a multivector.  By default I had an output like this one:
+:I was working on my [Perl 6 Geometric Algebra library](https://github.com/grondilu/clifford) and I needed some way of displaying a multivector.  By default I had an output like this one:
 
 
 ```txt
@@ -26,7 +26,7 @@ MultiVector.new(blades => (my Real %{UInt} = 0 => 1, 4 => 1, 10 => 3))
 
 :As a matter of fact soon after I created the task I realized I could get a simple solution by using string substitutions on the output, so I was actually able to write the first solution in Perl 6.
 
-:I still think it's a useful task, as it can be used for instance to display complex numbers or quaternions.  In perl 6 for instance the output for complex numbers is not perfect.  i is displayed as '0+1i;', which to me is acceptable but not so great. With [https://github.com/Util/Perl6-Math-Quaternion/ Math::Quaternions] it's much worse and arguably not acceptable.
+:I still think it's a useful task, as it can be used for instance to display complex numbers or quaternions.  In perl 6 for instance the output for complex numbers is not perfect.  i is displayed as '0+1i;', which to me is acceptable but not so great. With [Math::Quaternions](https://github.com/Util/Perl6-Math-Quaternion/) it's much worse and arguably not acceptable.
 
 :--[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 22:09, 13 October 2015 (UTC)
 

@@ -397,7 +397,7 @@ tags = []
                     |{{
                        #ifexpr: {{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }} | {{
                          #if: {{{PMC|}}}
-                         |  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}
+                         |  <http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}>
                        }}
                      }}
                   }}
@@ -407,7 +407,7 @@ tags = []
                  |{{{URL}}}
                  |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }} |{{
                        #if: {{{PMC|}}}
-                       |  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}
+                       |  <http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}>
                     }}
                  }}
                }}
@@ -483,7 +483,7 @@ tags = []
                      |{{{URL}}}
                      |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}|{{
                         #if: {{{PMC|}}}
-                        |  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}
+                        |  <http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}>
                       }}}}
                    }}
                 }}
@@ -492,7 +492,7 @@ tags = []
                   |{{{URL}}}
                                 |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}|{{
                      #if: {{{PMC|}}}
-                     |  http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}
+                     |  <http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pmcentrez&artid={{{PMC}}}>
                    }}}}
                 }}
              }}
@@ -680,7 +680,7 @@ tags = []
   |{{{Sep|,}}}&#32;"{{{quote}}}"
 }}{{{PS|}}}</span><!--
 
-=== This is a COinS tag (http://ocoins.info), which allows automated tools to parse the citation information: ===
+=== This is a COinS tag (<http://ocoins.info>), which allows automated tools to parse the citation information: ===
 
 --><span
     class="Z3988"

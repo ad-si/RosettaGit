@@ -20,7 +20,7 @@ Java libraries can be used from E code, and its REPL
 
 ## Trying E
 
-[http://www.erights.org/download/ The current recommended E implementation ("E-on-Java") may be downloaded from erights.org].
+[The current recommended E implementation ("E-on-Java") may be downloaded from erights.org](http://www.erights.org/download/).
 
 To run an E program:
 
@@ -46,7 +46,7 @@ While most of the examples on Rosetta Code are E expressions (programs), some ma
  ? ''expression''
  # value: ''print representation''
 
-This is both the format of a transcript at an E [REPL](https://rosettacode.org/wiki/REPL), and the format employed by [http://wiki.erights.org/wiki/Updoc Updoc], a test framework for E. “?” is a prompt for user input (“&gt;” indicates multi-line input) and “# foo:” indicates responses.
+This is both the format of a transcript at an E [REPL](https://rosettacode.org/wiki/REPL), and the format employed by [Updoc](http://wiki.erights.org/wiki/Updoc), a test framework for E. “?” is a prompt for user input (“&gt;” indicates multi-line input) and “# foo:” indicates responses.
 
 - `# value:` the return value of the ''expression'', printed
 - `# problem:` an exception thrown by evaluation of the ''expression''

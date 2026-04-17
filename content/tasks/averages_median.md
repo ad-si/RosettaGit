@@ -313,7 +313,7 @@ median←{v←⍵[⍋⍵] ⋄ 0.5×v[⌈0.5×⍴v]+v[⌊1+0.5×⍴v]}
 ```
 
 
-This code was tested with ngn/apl and Dyalog 12.1. You can try this function online with [http://ngn.github.io/apl/web/index.html#code=median%u2190%7Bv%u2190%u2375%5B%u234B%u2375%5D%u22C4.5%D7v%5B%u2308%AF1+.5%D7%u2374v%5D+v%5B%u230A.5%D7%u2374v%5D%7D ngn/apl]. Note that ngn/apl currently only supports index origin 0. Examples:
+This code was tested with ngn/apl and Dyalog 12.1. You can try this function online with [ngn/apl](http://ngn.github.io/apl/web/index.html#code=median%u2190%7Bv%u2190%u2375%5B%u234B%u2375%5D%u22C4.5%D7v%5B%u2308%AF1+.5%D7%u2374v%5D+v%5B%u230A.5%D7%u2374v%5D%7D). Note that ngn/apl currently only supports index origin 0. Examples:
 
 ```txt
 median 1 5 3 6 4 2
@@ -3394,7 +3394,7 @@ sub median {
 Notes:
 
 * The <tt>div</tt> operator does integer division. The <tt>/</tt> operator (rational number division) would work too, since the array subscript automatically coerces to <tt>Int</tt>, but using <tt>div</tt> is more explicit (i.e. clearer to readers) as well as faster, and thus recommended in cases like this.
-* The <tt>*</tt> inside the subscript stands for the array's length ([https://docs.perl6.org/language/subscripts.html#From_the_end see documentation]).
+* The <tt>*</tt> inside the subscript stands for the array's length ([see documentation](https://docs.perl6.org/language/subscripts.html#From_the_end)).
 
 
 
@@ -4033,7 +4033,7 @@ Using Rosetta Code's [[Bubble_Sort#Scheme|bubble-sort function]]
 ```
 
 
-Using [http://srfi.schemers.org/srfi-95/srfi-95.html SRFI-95]:
+Using [SRFI-95](http://srfi.schemers.org/srfi-95/srfi-95.html):
 
 ```Scheme
 (define (median l)
@@ -4152,7 +4152,7 @@ OrderedCollection extend [
 
 ## Stata
 
-Use '''[https://www.stata.com/help.cgi?summarize summarize]''' to compute the median of a variable (as well as other basic statistics).
+Use '''[summarize](https://www.stata.com/help.cgi?summarize)''' to compute the median of a variable (as well as other basic statistics).
 
 
 ```stata
@@ -4163,7 +4163,7 @@ display r(p50)
 ```
 
 
-Here is a straightforward implementation using '''[https://www.stata.com/help.cgi? sort]'''.
+Here is a straightforward implementation using '''[sort](https://www.stata.com/help.cgi?)'''.
 
 
 ```stata

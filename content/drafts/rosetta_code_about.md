@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Rosetta Code is a wiki that aspires to do for programming what the Rosetta Stone did for Egyptian hieroglyphics.  The concept was inspired by [http://en.wikibooks.org/wiki/List_of_hello_world_programs this list of "Hello, World" programs], and the realization that "Hello World", on its own, tells a new programmer very little about the language they're using.
+Rosetta Code is a wiki that aspires to do for programming what the Rosetta Stone did for Egyptian hieroglyphics.  The concept was inspired by [this list of "Hello, World" programs](http://en.wikibooks.org/wiki/List_of_hello_world_programs), and the realization that "Hello World", on its own, tells a new programmer very little about the language they're using.
 
 Rosetta Code was created in January 2007 by [[User:Short Circuit|Mike Mol]].
 [[Category:What Rosetta Code Is|About]]

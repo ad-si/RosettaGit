@@ -157,7 +157,7 @@ code + codecode + code
 
 ## AutoHotkey
 
-function [http://www.autohotkey.net/~HotKeyIt/AutoHotkey/addScript.htm addScript] can be used to dynamically add lines of code to a running script. 
+function [addScript](http://www.autohotkey.net/~HotKeyIt/AutoHotkey/addScript.htm) can be used to dynamically add lines of code to a running script. 
 
 ```AutoHotkey
 ; requires AutoHotkey_H or AutoHotkey.dll
@@ -472,7 +472,7 @@ In Common Lisp, programs are represented as trees (s-expressions). Therefore, it
 ```
 
 
-Or you can construct a function and then call it. (If the function is used more than once, it would be good to use <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm compile]</code> instead of <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm eval]</code>, which compiles the code before returning the function. <code>eval</code> is permitted to compile as well, but <code>compile</code> requires it.)
+Or you can construct a function and then call it. (If the function is used more than once, it would be good to use <code>[compile](http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm)</code> instead of <code>[eval](http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm)</code>, which compiles the code before returning the function. <code>eval</code> is permitted to compile as well, but <code>compile</code> requires it.)
 
 
 ```lisp
@@ -481,7 +481,7 @@ Or you can construct a function and then call it. (If the function is used more 
 ```
 
 
-If your program came from a file or user input, then you have it as a string, and [http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm <code>read</code>] or <code>read-from-string</code> will convert it to s-expression form:
+If your program came from a file or user input, then you have it as a string, and [<code>read</code>](http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm) or <code>read-from-string</code> will convert it to s-expression form:
 
 
 ```lisp
@@ -529,7 +529,7 @@ One way to simplify the validator is to use the package system to create a sandb
 
 ### Debugging Notes
 
-There are no standardized debugging facilities specific to the <code>eval</code> operation itself, but code evaluted may be affected by the current [http://www.lispworks.com/documentation/HyperSpec/Body/03_c.htm global declarations], particularly the [http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm <code>optimize</code> declaration]'s <code>debug</code> and <code>safety</code> qualities.
+There are no standardized debugging facilities specific to the <code>eval</code> operation itself, but code evaluted may be affected by the current [global declarations](http://www.lispworks.com/documentation/HyperSpec/Body/03_c.htm), particularly the [<code>optimize</code> declaration](http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm)'s <code>debug</code> and <code>safety</code> qualities.
 
 =={{header|Déjà Vu}}==
 
@@ -949,7 +949,7 @@ XEQ( string ) ! executes row 6 of my_file.txt
 
 ## J
 
-Use monadic [http://www.jsoftware.com/help/dictionary/d601.htm <code>".</code>] (''Do'') to execute a string.
+Use monadic [<code>".</code>](http://www.jsoftware.com/help/dictionary/d601.htm) (''Do'') to execute a string.
 
 
 ```j
@@ -959,7 +959,7 @@ Use monadic [http://www.jsoftware.com/help/dictionary/d601.htm <code>".</code>] 
 
 Only J expressions are allowed in strings used as as arguments for <code>".</code> (control words and blocks of expressions are not allowed).
 
-Alterntively, you can use the conjunction [http://www.jsoftware.com/help/dictionary/d310n.htm <code>:</code>] (''Explicit Definition'') to create various kinds of functions and evaluate them.  Arguments have names, such as "y", which are specified by the language definition.  For example:
+Alterntively, you can use the conjunction [<code>:</code>](http://www.jsoftware.com/help/dictionary/d310n.htm) (''Explicit Definition'') to create various kinds of functions and evaluate them.  Arguments have names, such as "y", which are specified by the language definition.  For example:
 
 
 ```j
@@ -969,7 +969,7 @@ monad :'+/y' 1 2 3
 
 Rules of scope for such functions match those described on the [[Scope modifiers]] page.  Also, control words (like if. or for. or while.) and blocks of expressions are allowed in strings which are evaluated in this fashion.
 
-The context for these evaluations will always be the current [http://wiki.jsoftware.com/help/primer/locale.htm locale] (which might typically be the current object [or class]).  If only expressions are allowed, then local variables will be local to the current explicit definition.  Otherwise a new local context will be created for the evaluation (and this will be discarded when evaluation has completed).  Local contexts are lexical while locales may also be manipulated programatically.
+The context for these evaluations will always be the current [locale](http://wiki.jsoftware.com/help/primer/locale.htm) (which might typically be the current object [or class]).  If only expressions are allowed, then local variables will be local to the current explicit definition.  Otherwise a new local context will be created for the evaluation (and this will be discarded when evaluation has completed).  Local contexts are lexical while locales may also be manipulated programatically.
 
 Debugging facilities [currently] require that the operation be given a name.
 
@@ -1698,7 +1698,7 @@ Unlike in Perl 5, <tt>eval</tt> in Perl 6 only compiles and executes the string,
 
 ## PHP
 
-The [http://www.php.net/eval eval construct] allow string evaluation as PHP code. Opening and closing tags are not required. Return statements immediatly terminates evaluation . Eval returns NULL, unless return is called in evalued code.
+The [eval construct](http://www.php.net/eval) allow string evaluation as PHP code. Opening and closing tags are not required. Return statements immediatly terminates evaluation . Eval returns NULL, unless return is called in evalued code.
 
 ```php
 
@@ -1729,20 +1729,20 @@ body of a function is a 'prg', the "true" branch of an 'if' call is an 'exe',
 while the "false" branch again is a 'prg'.
 
 For explicit execution, an 'exe' can be evaluated by passing it to the function
-'[http://software-lab.de/doc/refE.html#eval eval]', while a 'prg' can be handled
-by '[http://software-lab.de/doc/refR.html#run run]'.
+'[eval](http://software-lab.de/doc/refE.html#eval)', while a 'prg' can be handled
+by '[run](http://software-lab.de/doc/refR.html#run)'.
 
 As PicoLisp uses exclusively dynamic binding, any 'exe' or 'prg' can be executed
 in arbitrary contexts. The environmet can be controlled in any conceivable way,
 through implicit function parameter bindings, or explicitly with the aid of
-functions like '[http://software-lab.de/doc/refB.html#bind bind]',
-'[http://software-lab.de/doc/refL.html#let let]' or
-'[http://software-lab.de/doc/refJ.html#job job]'.
+functions like '[bind](http://software-lab.de/doc/refB.html#bind)',
+'[let](http://software-lab.de/doc/refL.html#let)' or
+'[job](http://software-lab.de/doc/refJ.html#job)'.
 
 
 ## Pike
 
-Pike provides [http://pike.ida.liu.se/doc/compile_string() <code>compile_string()</code>] and [http://pike.ida.liu.se/doc/compile_file() <code>compile_file()</code>] which can compile code into a class that can be instantiated:
+Pike provides [<code>compile_string()</code>](http://pike.ida.liu.se/doc/compile_string()) and [<code>compile_file()</code>](http://pike.ida.liu.se/doc/compile_file()) which can compile code into a class that can be instantiated:
 
 ```Pike
 program demo = compile_string(#"
@@ -1864,7 +1864,7 @@ Since the [scriptblock] type is an anonymous function, the Begin {}, Process {} 
 
 ## Python
 
-The [http://docs.python.org/reference/simple_stmts.html#exec exec statement] allows the optional passing in of global and local names via mappings (See the link for full syntax). The example below shows exec being used to parse and execute a string containing two statements:
+The [exec statement](http://docs.python.org/reference/simple_stmts.html#exec) allows the optional passing in of global and local names via mappings (See the link for full syntax). The example below shows exec being used to parse and execute a string containing two statements:
 
 
 ```python
@@ -1877,7 +1877,7 @@ print x
 ```
 
 
-Note that in Python 3.x [http://docs.python.org/py3k/library/functions.html#exec exec] is a function:
+Note that in Python 3.x [exec](http://docs.python.org/py3k/library/functions.html#exec) is a function:
 
 
 ```python
@@ -1963,7 +1963,7 @@ And, of course, both of these methods can use Racket's multilingual capabilities
 
 ## REBOL
 
-The [http://www.rebol.com/r3/docs/functions/do.html do] function evaluates a script file or a series of expressions and returns a result.
+The [do](http://www.rebol.com/r3/docs/functions/do.html) function evaluates a script file or a series of expressions and returns a result.
 
 It performs the fundamental interpretive action of the Rebol language and is used internally within many other functions such as <tt>if, case, while, loop, repeat, foreach</tt>, and others.
 

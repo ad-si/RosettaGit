@@ -333,7 +333,7 @@ load["script.ant"]
 
 ## Applesoft BASIC
 
-Chain PROGRAM TWO to PROGRAM ONE.  First create and save PROGRAM TWO.  Then, create PROGRAM ONE and run it.  PROGRAM ONE runs and then "includes" PROGRAM TWO which is loaded and run using the Binary program CHAIN from the DOS 3.3 System Master.  Variables from PROGRAM ONE are not cleared so they can be used in PROGRAM TWO.  User defined functions should be redefined in PROGRAM TWO.  See "Applesoft: CHAIN and user-defined functions Issues" http://support.apple.com/kb/TA41069
+Chain PROGRAM TWO to PROGRAM ONE.  First create and save PROGRAM TWO.  Then, create PROGRAM ONE and run it.  PROGRAM ONE runs and then "includes" PROGRAM TWO which is loaded and run using the Binary program CHAIN from the DOS 3.3 System Master.  Variables from PROGRAM ONE are not cleared so they can be used in PROGRAM TWO.  User defined functions should be redefined in PROGRAM TWO.  See "Applesoft: CHAIN and user-defined functions Issues" <http://support.apple.com/kb/TA41069>
 
 <lang ApplesoftBASIC}> 10  REMPROGRAM TWO
  20  DEF  FN A(X) = X * Y
@@ -656,7 +656,7 @@ GNU Awk has an <code>@include</code> which can include another awk source file a
 ```
 
 
-This is a parser-level construct and so must be a literal filename, not a variable or expression.  If the filename is not absolute then it's sought in an <code>$AWKPATH</code> list of directories.  See [http://www.gnu.org/software/gawk/manual/html_node/Include-Files.html the gawk manual] for more.
+This is a parser-level construct and so must be a literal filename, not a variable or expression.  If the filename is not absolute then it's sought in an <code>$AWKPATH</code> list of directories.  See [the gawk manual](http://www.gnu.org/software/gawk/manual/html_node/Include-Files.html) for more.
 
 
 ## Axe
@@ -797,7 +797,7 @@ Just as in Common Lisp:
 ```
 
 
-This would rarely be used for loading code though, since Clojure supports modularisation (like most modern languages) through [http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html namespaces] and code is typically located/loaded via related abstractions.  It's probably more often used to load data or used for quick-and-dirty experiments in the [https://en.wikipedia.org/wiki/Read–eval–print_loop REPL].
+This would rarely be used for loading code though, since Clojure supports modularisation (like most modern languages) through [namespaces](http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html) and code is typically located/loaded via related abstractions.  It's probably more often used to load data or used for quick-and-dirty experiments in the [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop).
 
 
 ## COBOL
@@ -982,7 +982,7 @@ include ''char-literal-constant''
 
 
 "The interpretation of char-literal-constant is processor dependent. An example of a possible valid interpretation is that char-literal-constant is the name of a file that contains the source text to be included."
-See section ''3.4 Including source text'' of the [http://www.j3-fortran.org/doc/year/04/04-007.pdf ISO standard working draft] (Fortran 2003).
+See section ''3.4 Including source text'' of the [ISO standard working draft](http://www.j3-fortran.org/doc/year/04/04-007.pdf) (Fortran 2003).
 
 Included content may itself involve further inclusions but should not start with any attempt at the continuation of a statement preceding the include line nor should there be any attempt at the line following the include being a continuation of whatever had been included. It is not considered to be a statement (and so should not have a statement label) in Fortran itself but something a Fortran compiler might recognise, however a trailing comment on that line may be accepted. The exact form (if supported at all) depends on the system and its file naming conventions, especially with regard to spaces in a file name. The file name might be completely specified, or, relative as in <code>INCLUDE "../Fortran/Library/InOutCom.for"</code> Further, Fortran allows text strings to be delimited by apostrophes as well as by quotes and there may be different behaviour for the two sorts, if recognised. For instance, the relative naming might be with reference to the initial file being compiled, or, with reference to the directory position of the file currently being compiled - it being the source of the current include line - as where file InOutCom.for contained an inclusion line specifying another file in the same library collection.
 
@@ -1414,7 +1414,7 @@ public class Class1
 
 ### Pure JavaScript in browsers with the DOM
 
-Following example, if loaded in an HTML file, loads the [http://jquery.com/ jQuery] library from a remote site
+Following example, if loaded in an HTML file, loads the [jQuery](http://jquery.com/) library from a remote site
 
 ```javascript
 var s = document.createElement('script');
@@ -1565,7 +1565,7 @@ f called
 
 ## LabVIEW
 
-In LabVIEW, any VI can be used as a "SubVI" by changing the icon and wiring the terminals to the front panel. This cannot be explained concisely in code; instead, see the [http://zone.ni.com/reference/en-XX/help/371361E-01/lvconcepts/creating_subvis/ documentation].
+In LabVIEW, any VI can be used as a "SubVI" by changing the icon and wiring the terminals to the front panel. This cannot be explained concisely in code; instead, see the [documentation](http://zone.ni.com/reference/en-XX/help/371361E-01/lvconcepts/creating_subvis/).
 
 
 ## LabVIEW
@@ -2020,7 +2020,7 @@ require_once("file.php")
 
 ## PicoLisp
 
-The function '[http://software-lab.de/doc/refL.html#load load]' is used for recursively executing the contents of files.
+The function '[load](http://software-lab.de/doc/refL.html#load)' is used for recursively executing the contents of files.
 
 ```PicoLisp
 (load "file1.l" "file2.l" "file3.l")
@@ -2117,7 +2117,7 @@ XIncludeFile "Filename"
 
 
 IncludeBinary will include a named file of any type at the current place in the code.
-IncludeBinary don't have to, but should preferably be done inside a [http://www.purebasic.com/documentation/reference/data.html data block].
+IncludeBinary don't have to, but should preferably be done inside a [data block](http://www.purebasic.com/documentation/reference/data.html).
 
 ```PureBasic
 IncludeBinary "Filename"
@@ -2127,7 +2127,7 @@ IncludeBinary "Filename"
 
 ## Python
 
-Python supports the use of [http://docs.python.org/library/functions.html#execfile execfile] to allow code from arbitrary files to be executed from a program (without using its modules system).
+Python supports the use of [execfile](http://docs.python.org/library/functions.html#execfile) to allow code from arbitrary files to be executed from a program (without using its modules system).
 
 
 ```python
@@ -2345,7 +2345,7 @@ fn main() {
 
 Some remarks are necessary here. Scala does not define how the source code is stored in files. The language rather talks about compilation units.
 
-In a Scala REPL[https://docs.scala-lang.org/overviews/repl/overview.html] it's possible to save and load source code.
+In a Scala REPL<https://docs.scala-lang.org/overviews/repl/overview.html> it's possible to save and load source code.
 
 ## Seed7
 
@@ -2358,8 +2358,8 @@ $ include "seed7_05.s7i";
 ```
 
 All following include directives don't need a $ to introduce them.
-The [http://seed7.sourceforge.net/libraries/float.htm float.s7i]
-[http://seed7.sourceforge.net/libraries library] can be included with:
+The [float.s7i](http://seed7.sourceforge.net/libraries/float.htm)
+[library](http://seed7.sourceforge.net/libraries) can be included with:
 
 ```seed7
   include "float.s7i";
@@ -2473,7 +2473,7 @@ source myfile.sh
 ```
 
 
-GNU Bash has both  <code>.</code> and the C-Shell style <code>source</code>.  See [http://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html#index-source Bash manual on <code>source</code>]
+GNU Bash has both  <code>.</code> and the C-Shell style <code>source</code>.  See [Bash manual on <code>source</code>](http://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html#index-source)
 
 
 ## Ursa

@@ -41,7 +41,7 @@ What do we want to do with chains of repeating sequences such as 0.333333333333?
 
 :I recommend allowing a second optional parameter to indicate number of repeating digits. dec2frac(0.1234,2) would mean 0.123434343434... (written as 0.1234 with a bar over the "34), and should convert to 611/4950, while dec2frac(0.1234) or dec2frac(0.1234, 0) would mean *exactly* 0.1234 (1234/10000), which should convert to 617/5000. --[[User:Util|Util]] 13:48, 12 June 2011 (UTC)
 
-:For an algorithm to handle such indicated repeating digits, see [http://en.wikipedia.org/wiki/Repeating_decimal#Converting_repeating_decimals_to_fractions] --[[User:Util|Util]] 15:15, 12 June 2011 (UTC)
+:For an algorithm to handle such indicated repeating digits, see <http://en.wikipedia.org/wiki/Repeating_decimal#Converting_repeating_decimals_to_fractions> --[[User:Util|Util]] 15:15, 12 June 2011 (UTC)
 
 ::It is certainly interesting, but I think it goes well beyond what is in the task description and given in the first, (canonical?), example in BASIC. I read it as needing a routine that can take the ''given'' decimal numbers and generate their rational approximations with no need to introduce repeating digit handling. --[[User:Paddy3118|Paddy3118]] 15:25, 12 June 2011 (UTC)
 

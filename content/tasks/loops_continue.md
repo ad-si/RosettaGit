@@ -1366,7 +1366,7 @@ This sort of scheme facilitates a compact way of printing a table with a heading
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=bf629ae9a09ffa1f5ecc95b89854b14b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=bf629ae9a09ffa1f5ecc95b89854b14b)'''
 
 ```gambas
 Public Sub Main()
@@ -2930,7 +2930,7 @@ DB20000I  The SQL command completed successfully.
 
 ## Stata
 
-See '''[https://www.stata.com/help.cgi?continue continue]''' in Stata help. Notice that the _continue option of '''[https://www.stata.com/help.cgi?display display]''' has another purpose: it suppresses the automatic newline at the end of the display command.
+See '''[continue](https://www.stata.com/help.cgi?continue)''' in Stata help. Notice that the _continue option of '''[display](https://www.stata.com/help.cgi?display)''' has another purpose: it suppresses the automatic newline at the end of the display command.
 
 
 ```stata

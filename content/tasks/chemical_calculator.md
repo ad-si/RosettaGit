@@ -29,7 +29,7 @@ languages = [
 ]
 +++
 
-Given a molecule's chemical formula, calculate the   [https://en.wikipedia.org/wiki/Molar_mass <u>molar mass</u>].
+Given a molecule's chemical formula, calculate the   [<u>molar mass</u>](https://en.wikipedia.org/wiki/Molar_mass).
 
 
 ;Introduction
@@ -51,7 +51,7 @@ Given a molecule's chemical formula, calculate the   [https://en.wikipedia.org/w
 * One mole is defined as exactly   6.02214076×10<sup>23</sup>   particles
 
 
-The above number is known as the   [https://en.wikipedia.org/wiki/Avogadro_constant Avogadro constant],   which is
+The above number is known as the   [Avogadro constant](https://en.wikipedia.org/wiki/Avogadro_constant),   which is
 named by the International Bureau of Weights and Measures (IBPM);
 
 the initials are taken from   ''Bureau International des Poids et Mesures'',   the official name of the bureau.
@@ -187,7 +187,7 @@ assert 315     == molar_mass('Uue')                # ununennium
 
 
 ;Reference:
-:*   Wikipedia article:   [https://en.wikipedia.org/wiki/Molecular_mass Molecular mass]
+:*   Wikipedia article:   [Molecular mass](https://en.wikipedia.org/wiki/Molecular_mass)
 
 
 
@@ -947,9 +947,9 @@ No assertion errors.
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Chemical_Calculator this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Chemical_Calculator) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

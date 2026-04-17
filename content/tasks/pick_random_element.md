@@ -239,7 +239,7 @@ Thursday
 
 App Inventor has the block '''pick a random item''' for selecting a random item from a list.
 
-[https://lh4.googleusercontent.com/-FaK4IeMmyI0/Uuv4G83dpYI/AAAAAAAAJ-E/3gzO5jUMwxE/s1600/Capture.PNG CLICK HERE TO VIEW THE BLOCKS AND ANDROID APP DISPLAY]
+[CLICK HERE TO VIEW THE BLOCKS AND ANDROID APP DISPLAY](https://lh4.googleusercontent.com/-FaK4IeMmyI0/Uuv4G83dpYI/AAAAAAAAJ-E/3gzO5jUMwxE/s1600/Capture.PNG)
 
 
 ## AppleScript
@@ -884,7 +884,7 @@ printfn "%s" list.[rand.Next(list.Length)]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/ You can run this code. Copy the code, click this link, paste it in and press 'Run !']'''
+'''[You can run this code. Copy the code, click this link, paste it in and press 'Run !'](https://gambas-playground.proko.eu/)'''
 
 ```gambas
 Public Sub Main()

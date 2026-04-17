@@ -14,7 +14,7 @@ tags = []
 |topic=Enable Mediawiki API Edit
 |summary=Request enabling of the edit API
 }}
-I'm trying to make bot that automagically applys [[Code Tag Fixer]] in all Tasks using Mediawiki API (http://www.rosettacode.org/w/api.php), but Mediawiki API "action=edit" is disabled, so i can't edit pages automagically with Mediawiki API, making a bot impossible.
+I'm trying to make bot that automagically applys [[Code Tag Fixer]] in all Tasks using Mediawiki API (<http://www.rosettacode.org/w/api.php>), but Mediawiki API "action=edit" is disabled, so i can't edit pages automagically with Mediawiki API, making a bot impossible.
 
 Can some admin enable this function? --[[User:Guga360|Guga360]] 18:09, 2 February 2009 (UTC)
 

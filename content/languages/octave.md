@@ -9,6 +9,6 @@ id = 4043
 categories = []
 tags = []
 +++
-[http://www.gnu.org/software/octave/ GNU Octave] is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments using a language that is mostly compatible with [MATLAB](https://rosettacode.org/wiki/MATLAB). (Text taken from the site)
+[GNU Octave](http://www.gnu.org/software/octave/) is a high-level language, primarily intended for numerical computations. It provides a convenient command line interface for solving linear and nonlinear problems numerically, and for performing other numerical experiments using a language that is mostly compatible with [MATLAB](https://rosettacode.org/wiki/MATLAB). (Text taken from the site)
 
-* [http://octave.sourceforge.net/ Octave-Forge]: <cite>Octave-Forge is a central location for the collaborative development of packages for [http://www.gnu.org/software/octave/ GNU Octave].</cite>
+* [Octave-Forge](http://octave.sourceforge.net/): <cite>Octave-Forge is a central location for the collaborative development of packages for [GNU Octave](http://www.gnu.org/software/octave/).</cite>

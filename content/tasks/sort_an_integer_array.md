@@ -1034,7 +1034,7 @@ test-data 5 cell-sort
 
 ### ANS/ISO Forth
 
-Uses quicksort http://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Forth
+Uses quicksort <http://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Forth>
 
 Standard Forth does not have a library sort
 
@@ -1243,7 +1243,7 @@ b;
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=1f1d244aa95c329eb87cb538f0d5fc4a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=1f1d244aa95c329eb87cb538f0d5fc4a)'''
 
 ```gambas
 Public Sub Main()
@@ -1403,7 +1403,7 @@ The verb<tt> /:~ </tt>sorts <i>anything</i> that J can represent.  For example:
 15 36 39 43 51 63 69 89 92 92
 ```
 
-Arrays of any rank are treated as lists of component arrays. Thus <tt>/:~</tt> sorts not only atoms within a list, but whole lists within a table, tables within a three-axis array, and so on. The level of structure at which sorting occurs may also be specified, so that <tt>/:~"1</tt> sorts the atoms within the finest-grained list within the array, regardless of the overall rank of the array. See the [https://code.jsoftware.com/wiki/Essays/The_TAO_of_J Total Array Ordering essay] on the JWiki for more details.
+Arrays of any rank are treated as lists of component arrays. Thus <tt>/:~</tt> sorts not only atoms within a list, but whole lists within a table, tables within a three-axis array, and so on. The level of structure at which sorting occurs may also be specified, so that <tt>/:~"1</tt> sorts the atoms within the finest-grained list within the array, regardless of the overall rank of the array. See the [Total Array Ordering essay](https://code.jsoftware.com/wiki/Essays/The_TAO_of_J) on the JWiki for more details.
 
 This code also applies to any data type.
 
@@ -2344,7 +2344,7 @@ sort($nums);
 
 ## PicoLisp
 
-The [http://software-lab.de/doc/refS.html#sort sort] function in PicoLisp
+The [sort](http://software-lab.de/doc/refS.html#sort) function in PicoLisp
 returns already by default an ascending list (of any type, not only integers):
 
 ```PicoLisp
@@ -2470,7 +2470,7 @@ ARRAY SORT x()
 ```
 
 
-Options are available to limit sorting to only part of the array, collate string arrays, sort multiple arrays together, etc. (Details [http://www.powerbasic.com/support/help/pbwin/html/ARRAY_SORT_statement.htm here].)
+Options are available to limit sorting to only part of the array, collate string arrays, sort multiple arrays together, etc. (Details [here](http://www.powerbasic.com/support/help/pbwin/html/ARRAY_SORT_statement.htm).)
 
 
 ## PowerShell
@@ -2490,7 +2490,7 @@ Options are available to limit sorting to only part of the array, collate string
 L = [1,3,3,5,10,13,85].
 ```
 
-Note that [http://www.swi-prolog.org/pldoc/man?predicate=sort/2 sort/2] removes duplicates.
+Note that [sort/2](http://www.swi-prolog.org/pldoc/man?predicate=sort/2) removes duplicates.
 
 
 ## PureBasic
@@ -2552,7 +2552,7 @@ sorted <- sort(nums)
 
 ## Rascal
 
-Rascal has a built-in sort function that sort the elements of a list. Additionally, one can give a LessThenOrEqual function to compare the elements (See [http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/Prelude/List/sort/sort.html documentation]).
+Rascal has a built-in sort function that sort the elements of a list. Additionally, one can give a LessThenOrEqual function to compare the elements (See [documentation](http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/Prelude/List/sort/sort.html)).
 
 ```rascal
 rascal>
@@ -2971,7 +2971,7 @@ val sorted = [1,2,2,3,4] : int list
 
 ###  Sort a Stata dataset
 
-See '''[https://www.stata.com/help.cgi?sort sort]''' in Stata help.
+See '''[sort](https://www.stata.com/help.cgi?sort)''' in Stata help.
 
 
 ```stata
@@ -3001,7 +3001,7 @@ See '''[https://www.stata.com/help.cgi?sort sort]''' in Stata help.
 
 ###  Sort a macro list
 
-See '''[https://www.stata.com/help.cgi?macrolists macrolists]''' in Stata help for other functions on lists stored in macros.
+See '''[macrolists](https://www.stata.com/help.cgi?macrolists)''' in Stata help for other functions on lists stored in macros.
 
 
 ```stata
@@ -3014,7 +3014,7 @@ See '''[https://www.stata.com/help.cgi?macrolists macrolists]''' in Stata help f
 
 ###  Mata
 
-See Mata's '''[http://www.stata.com/help.cgi?mf_sort sort]''' function.
+See Mata's '''[sort](http://www.stata.com/help.cgi?mf_sort)''' function.
 
 
 ```stata

@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-<noinclude>{{template}}</noinclude>This image is a [http://zone.ni.com/devzone/cda/tut/p/id/9330 VI Snippet], an executable image of [[LabVIEW]] code. The LabVIEW version is shown on the top-right hand corner. You can download it, then drag-and-drop it onto the LabVIEW block diagram from a file browser, and it will appear as runnable, editable code.
+<noinclude>{{template}}</noinclude>This image is a [VI Snippet](http://zone.ni.com/devzone/cda/tut/p/id/9330), an executable image of [[LabVIEW]] code. The LabVIEW version is shown on the top-right hand corner. You can download it, then drag-and-drop it onto the LabVIEW block diagram from a file browser, and it will appear as runnable, editable code.

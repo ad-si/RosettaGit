@@ -884,7 +884,7 @@ Total price after tax  : 23683000000000006.16
 
 ## M2000 Interpreter
 
-This task written in M2000 Environment running on Wine 3.6, in a Linux Ubuntu Studio. M2000 environment is an ActiveX object, written with VB6, which use many types from [https://en.wikipedia.org/wiki/Variant_type COM Variant Type].
+This task written in M2000 Environment running on Wine 3.6, in a Linux Ubuntu Studio. M2000 environment is an ActiveX object, written with VB6, which use many types from [COM Variant Type](https://en.wikipedia.org/wiki/Variant_type).
 
 ```M2000 Interpreter
 
@@ -1065,7 +1065,7 @@ printf("%.2f\n",totalprice);
 ## OCaml
 
 
-Using the [https://github.com/janestreet/bignum Bignum] library.
+Using the [Bignum](https://github.com/janestreet/bignum) library.
 
 
 ```ocaml

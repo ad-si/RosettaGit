@@ -110,7 +110,7 @@ Yes, char literal and char constants represent the same thing.
 Interestingly, when I was researching this I got the following doing a Google search for:
 ("string literal") OR ("string constant")
 
-https://en.wikipedia.org/wiki/String_literal
+<https://en.wikipedia.org/wiki/String_literal>
 <br/>
 ''A '''string literal''' or anonymous string is the representation of a string value within
 the source code ..... Among other things, it must be possible to encode the character that

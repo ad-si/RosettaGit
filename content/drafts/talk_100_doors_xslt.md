@@ -50,4 +50,4 @@ And I added a suffix:
 
 And I created an empty html document.  <code><html></html></code>
 
-And, I used unicorn's "[http://www.unicorn-enterprises.com/products_uxt.html standard edition]" xslt processor from cygwin with the empty html document as the first argument, the modified xsl file as the second and an arbitrary name as the third, and the resulting output file had 0 characters.
+And, I used unicorn's "[standard edition](http://www.unicorn-enterprises.com/products_uxt.html)" xslt processor from cygwin with the empty html document as the first argument, the modified xsl file as the second and an arbitrary name as the third, and the resulting output file had 0 characters.

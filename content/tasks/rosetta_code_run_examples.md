@@ -302,7 +302,7 @@ There are several command line options to control its actions. See the README in
 
 The complete implementation is too large and cumbersome to post in it's entirety here, only the main task retrieval and execution code is included.
 
-For the whole ball of wax see [https://github.com/thundergnat/rc-run the rc-run github repository].
+For the whole ball of wax see [the rc-run github repository](https://github.com/thundergnat/rc-run).
 
 Run with no parameters to run every implemented task on Rosetta Code. Feed it a task name to only download / run that task. Give it command line switches to adjust its behaviour.
 

@@ -302,16 +302,16 @@ Endianness: Little
 
 Common Lisp doesn't provide a native way to reliably determine this (though some unlike other languages, you rarely, if ever, need this information).
 
-The [http://www.lispworks.com/documentation/HyperSpec/Body/c_enviro.htm Environment] has some implementation-specific functions that might provide a good hint, e.g.,
+The [Environment](http://www.lispworks.com/documentation/HyperSpec/Body/c_enviro.htm) has some implementation-specific functions that might provide a good hint, e.g.,
 
 ```lisp
 (machine-type) ;; => "X86-64" on SBCL here
 ```
 
 
-The [http://www.cliki.net/features *features*] list also provides useful information, e.g., some compilers declare :LITTLE-ENDIAN there.
+The [*features*](http://www.cliki.net/features) list also provides useful information, e.g., some compilers declare :LITTLE-ENDIAN there.
 
-The [http://www.cliki.net/trivial-features cl-trivial-features] library standardizes this, so you will always get either :LITTLE-ENDIAN or :BIG-ENDIAN.  It also adds the CPU (:X86, :X86-64, :PPC, :PPC64, etc.), from which you can probably derive the word size, but it's not (yet) available as a separate flag.
+The [cl-trivial-features](http://www.cliki.net/trivial-features) library standardizes this, so you will always get either :LITTLE-ENDIAN or :BIG-ENDIAN.  It also adds the CPU (:X86, :X86-64, :PPC, :PPC64, etc.), from which you can probably derive the word size, but it's not (yet) available as a separate flag.
 
 
 ## D
@@ -1076,7 +1076,7 @@ Printf.printf "%s\n" (if Sys.big_endian then "big endian" else "little endian");
 
 
 On OCaml 3 and below, there are tricks to get endianness. For example in Linux or Unix variants,
-one may use the [http://unixhelp.ed.ac.uk/CGI/man-cgi?uname uname] shell command :
+one may use the [uname](http://unixhelp.ed.ac.uk/CGI/man-cgi?uname) shell command :
 
 
 ```ocaml
@@ -1511,7 +1511,7 @@ puts "Byte order: #{byte_order}"
 
 With [[MRI]], <code>ri Fixnum</code> states, "A Fixnum holds Integer values that can be represented in a native machine word (minus 1 bit)." This bases our claim that a Fixnum occupies one machine word.
 
-Some other implementations of Ruby are different. With [[JRuby]], a Fixnum is always 64 bits, because it is a Java <code>long</code> [http://www.jruby.org/git?p=jruby.git;a=blob;f=src/org/jruby/RubyFixnum.java;h=ba8d076d58d28c30ecd8e378e6e2482486dba22d;hb=HEAD#l91 (1)]. JRuby uses the correct native byte order by calling java.nio.ByteOrder.nativeOrder() [http://www.jruby.org/git?p=jruby.git;a=blob;f=src/org/jruby/platform/Platform.java;h=d84b0b55b1aca381b2101297185d3b7f872c8cfd;hb=HEAD#l110 (2)].
+Some other implementations of Ruby are different. With [[JRuby]], a Fixnum is always 64 bits, because it is a Java <code>long</code> [(1)](http://www.jruby.org/git?p=jruby.git;a=blob;f=src/org/jruby/RubyFixnum.java;h=ba8d076d58d28c30ecd8e378e6e2482486dba22d;hb=HEAD#l91). JRuby uses the correct native byte order by calling java.nio.ByteOrder.nativeOrder() [(2)](http://www.jruby.org/git?p=jruby.git;a=blob;f=src/org/jruby/platform/Platform.java;h=d84b0b55b1aca381b2101297185d3b7f872c8cfd;hb=HEAD#l110).
 
 
 ## Rust
@@ -1583,7 +1583,7 @@ object ShowByteOrder extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/cc_conf.htm cc_conf.s7i] provides values that describe C compiler and runtime library.
+The library [cc_conf.s7i](http://seed7.sourceforge.net/libraries/cc_conf.htm) provides values that describe C compiler and runtime library.
 The example below assumes that the word size is the size of a pointer.
 
 

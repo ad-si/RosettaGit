@@ -2883,7 +2883,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Sample output:
 ```txt
@@ -4191,7 +4191,7 @@ Tie. - (W:0 L:3 T:2)
 ```
 
 
-Here is example output from the same code only with a different %vs data structure implementing [http://en.wikipedia.org/wiki/Rock-paper-scissors-lizard-Spock Rock-Paper-Scissors-Lizard-Spock].
+Here is example output from the same code only with a different %vs data structure implementing [Rock-Paper-Scissors-Lizard-Spock](http://en.wikipedia.org/wiki/Rock-paper-scissors-lizard-Spock).
 
 
 ```perl6
@@ -5531,8 +5531,8 @@ Your move ('spock, 'rock, 'lizard, 'paper, 'scissors): spock
 ## Seed7
 
 The program reads the possible commands (1, 2, 3, q) as single keypresses from the
-[http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD KEYBOARD] with
-[http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29 getc].
+[KEYBOARD](http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD) with
+[getc](http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29).
 It is also possible to quit the program with q.
 
 {{incorrect|C|This example does not seem to use the weighted average AI from the task description.}}

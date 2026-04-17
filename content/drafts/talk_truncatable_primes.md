@@ -18,7 +18,7 @@ If allowed then 999907 is the largest left-truncatable prime less than 1000000.
 :Thanks Tikkanz. I've disallowed zero as this is done in part of the Mathworld article. It means disallowing '07' as being a prime for example, and seems reasonable. --[[User:Paddy3118|Paddy3118]] 03:27, 9 September 2010 (UTC)
 
 == OEIS ==
-For reference, a few of the related OEIS sequences are [http://oeis.org/A024770 A024770] (right) and [http://oeis.org/A024785 A024785] (left).
+For reference, a few of the related OEIS sequences are [A024770](http://oeis.org/A024770) (right) and [A024785](http://oeis.org/A024785) (left).
 
 ==Phantom Category==
 I was trying to test cleaning up some categories of tasks (see [[Rosetta_Code:Village_Pump/Grouping_tasks]]) and thought I'd start with Primes, Prime, and Prime Numbers.  So I added Category:Prime Numbers but low and behold I can't find where [[Truncatable_primes]] references ''Primes''.  In the html source there is a "wgCategories=[" inside a script and I can see at the bottom where a "Category:Primes (page does not exist)" is generated but I can't find where to fix this.   Help?  --[[User:Dgamey|Dgamey]] 10:29, 18 May 2011 (UTC)
@@ -86,4 +86,4 @@ I've written a handy-dandy, slicer-dicer, one-size-fits-all, all-in-one general 
 ::Paddy, be careful what you wish for. The largest truncatable prime in a given base can be estimated by probabalistic methods from the Zeta Function. Computing the largest truncatable prime in several bases and comparing them with the estimated values can be used to gain insight into the Zeta Function and maybe the Reimann Hypothosis.--[[User:Nigel Galloway|Nigel Galloway]] 12:01, 14 September 2012 (UTC)
 ::While claryfing this task you may wish to be clear if you consider 1 to be a prime number, you should not. From which it follows that 13 is a left reducable prime, but not a right reducable prime.--[[User:Nigel Galloway|Nigel Galloway]] 12:10, 14 September 2012 (UTC)
 
-:::Surely treating one as prime is not the ''[http://oeis.org/A000040 normal]'' thing to do. Both Sloane and Mathworld don't consider it so. If someone ios mentioning Truncatable primes in bases other than ten then what base you are considering is important. You may well be having conversations off-site that are clarified if the bases involved are stated, but the task description is right in itself. --[[User:Paddy3118|Paddy3118]] 17:36, 14 September 2012 (UTC)
+:::Surely treating one as prime is not the ''[normal](http://oeis.org/A000040)'' thing to do. Both Sloane and Mathworld don't consider it so. If someone ios mentioning Truncatable primes in bases other than ten then what base you are considering is important. You may well be having conversations off-site that are clarified if the bases involved are stated, but the task description is right in itself. --[[User:Paddy3118|Paddy3118]] 17:36, 14 September 2012 (UTC)

@@ -89,7 +89,7 @@ Possible contexts of use: compression algorithms (like [[LZW compression]]), L-s
 
 ## Ada
 
-Ada has native support for single dimensioned arrays, which provide all specified operations. String is a case of array. The array of bytes is predefined in Ada in the package System.Storage_Elements ([http://www.adaic.org/standards/05rm/html/RM-13-7-1.html LRM 13.7.1]). Storage_Element is substitute for byte.
+Ada has native support for single dimensioned arrays, which provide all specified operations. String is a case of array. The array of bytes is predefined in Ada in the package System.Storage_Elements ([LRM 13.7.1](http://www.adaic.org/standards/05rm/html/RM-13-7-1.html)). Storage_Element is substitute for byte.
 
 
 ```Ada
@@ -112,7 +112,7 @@ begin
 end; -- Data destructed
 ```
 
-Storage_Array is "binary string" used for memory representation. For stream-oriented I/O communication Ada provides alternative "binary string" called Stream_Element_Array ([http://www.adaic.org/standards/05rm/html/RM-13-13-1.html LRM 13.13.1]). When dealing with octets of bits, programmers are encouraged to provide a data type of their own to ensure that the byte is exactly 8 bits length. For example:
+Storage_Array is "binary string" used for memory representation. For stream-oriented I/O communication Ada provides alternative "binary string" called Stream_Element_Array ([LRM 13.13.1](http://www.adaic.org/standards/05rm/html/RM-13-13-1.html)). When dealing with octets of bits, programmers are encouraged to provide a data type of their own to ensure that the byte is exactly 8 bits length. For example:
 
 ```Ada
 type Octet is mod 2**8;
@@ -1567,7 +1567,7 @@ s := replace(s,s2,s3)  # IPL replace function
 ```
 
 
-The {{libheader|Icon Programming Library}} provides the procedure [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn replace in strings]
+The {{libheader|Icon Programming Library}} provides the procedure [replace in strings](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 ```Icon
 procedure replace(s1, s2, s3)		#: string replacement
@@ -3522,7 +3522,7 @@ See a + b + c
 
 ## Ruby
 
-A String object holds and manipulates an arbitrary sequence of bytes.  There are also the [http://www.ruby-doc.org/core/classes/Array.html#M002222 Array#pack] and [http://www.ruby-doc.org/core/classes/String.html#M000760 String#unpack] methods to convert data to binary strings.
+A String object holds and manipulates an arbitrary sequence of bytes.  There are also the [Array#pack](http://www.ruby-doc.org/core/classes/Array.html#M002222) and [String#unpack](http://www.ruby-doc.org/core/classes/String.html#M000760) methods to convert data to binary strings.
 
 ```ruby
 # string creation
@@ -3618,7 +3618,7 @@ print s$
 
 ## Rust
 
-For extra documentation, refer to [https://doc.rust-lang.org/std/string/struct.String.html] and [https://doc.rust-lang.org/book/strings.html].
+For extra documentation, refer to <https://doc.rust-lang.org/std/string/struct.String.html> and <https://doc.rust-lang.org/book/strings.html>.
 
 ```rust
 use std::str;
@@ -3788,7 +3788,7 @@ stri3 = stri1 & stri2;
 ```
 
 
-The [http://seed7.sourceforge.net/libraries/string.htm string.s7i] library contains
+The [string.s7i](http://seed7.sourceforge.net/libraries/string.htm) library contains
 more string functions.
 
 
@@ -3870,7 +3870,7 @@ set d $a$b$c
 ## VBA
 
 Before start, see this link :
-https://msdn.microsoft.com/fr-fr/VBA/Language-Reference-VBA/articles/option-compare-statement :
+<https://msdn.microsoft.com/fr-fr/VBA/Language-Reference-VBA/articles/option-compare-statement> :
 
 ```txt
 The Option Compare instruction is used at module level to declare the default comparison method to use when string data is compared.

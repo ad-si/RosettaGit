@@ -1713,7 +1713,7 @@ grayscale($b);
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/camelia.png camelia], and [https://github.com/thundergnat/rc/blob/master/img/camelia-gs.png camelia-gs] images. (converted to .png as .ppm format is not widely supported).
+See [camelia](https://github.com/thundergnat/rc/blob/master/img/camelia.png), and [camelia-gs](https://github.com/thundergnat/rc/blob/master/img/camelia-gs.png) images. (converted to .png as .ppm format is not widely supported).
 
 
 ## Phix

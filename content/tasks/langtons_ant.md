@@ -92,7 +92,7 @@ languages = [
 ]
 +++
 
-[[wp:Langton's ant|Langton's ant]] is a cellular automaton that models an [https://en.wikipedia.org/wiki/Ant ant] sitting on a plane of cells, all of which are white initially, the ant facing in one of four directions.
+[[wp:Langton's ant|Langton's ant]] is a cellular automaton that models an [ant](https://en.wikipedia.org/wiki/Ant) sitting on a plane of cells, all of which are white initially, the ant facing in one of four directions.
 
 Each cell can either be black or white.
 
@@ -118,7 +118,7 @@ The problem has received some analysis; for more details, please take a look at 
 
 ## See also
 
-*   Wikipedia:   [https://en.wikipedia.org/wiki/Langton%27s_ant Langton's ant].
+*   Wikipedia:   [Langton's ant](https://en.wikipedia.org/wiki/Langton%27s_ant).
 
 
 ## Related tasks
@@ -426,7 +426,7 @@ After 11655 moves. Showing rows 28 to 78 columns 1 to 79
 
 ## AutoHotkey
 
-ahk forum: [http://ahkscript.org/boards/viewtopic.php?f=17&t=1363 discussion]
+ahk forum: [discussion](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363)
 {{works with|AutoHotkey 1.1}} (Fixed by just me)
 
 ```AutoHotkey
@@ -485,7 +485,7 @@ CreateDIB(PixelArray, PAW, PAH, BMW := 0, BMH := 0, Gradient := 1) { ; SKAN, 01-
     if (!Gradient)
         HBM := DllCall("User32.dll\CopyImage", "Ptr", HBM, "UInt", 0, "Int", 0, "Int", 0, "Int", 8, "UPtr")
     return DllCall("User32.dll\CopyImage", "Ptr", HBM, "UInt", 0, "Int", BMW, "Int", BMH, "UInt", 0x200C, "UPtr")
-} ; http://ahkscript.org/boards/viewtopic.php?f=6&t=3203
+} ; <http://ahkscript.org/boards/viewtopic.php?f=6&t=3203>
 ```
 
 
@@ -574,7 +574,7 @@ EndFunc  ;==>_SetAnt
 
 ```
 
-[http://www.imgbox.de/users/BugFix/langtons_ant.png To see the GUI output, click here.]
+[To see the GUI output, click here.](http://www.imgbox.de/users/BugFix/langtons_ant.png)
 --[[User:BugFix|BugFix]] ([[User talk:BugFix|talk]]) 14:48, 16 November 2013 (UTC)
 
 
@@ -586,7 +586,7 @@ EndFunc  ;==>_SetAnt
 # usage: awk  -v debug=0  -f langton.awk
 
 # Simulates the cellular automaton "Langton's ant",
-# see http://en.wikipedia.org/wiki/Langton%27s_ant
+# see <http://en.wikipedia.org/wiki/Langton%27s_ant>
 
 function turnRight() {
 	dir++
@@ -2140,7 +2140,7 @@ Empty lines are omitted.
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=len%20f%5B%5D%20100%20%2A%20100%0Afunc%20show%20.%20.%0Afor%20y%20range%20100%0Afor%20x%20range%20100%0Aif%20f%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%0Amove%20x%20y%0Arect%201%201%0A.%0A.%0A.%0A.%0Afunc%20run%20x%20y%20dir%20.%20.%0Adx%5B%5D%20%3D%20%5B%200%201%200%20-1%20%5D%0Ady%5B%5D%20%3D%20%5B%20-1%200%201%200%20%5D%0Awhile%20x%20%3E%3D%200%20and%20x%20%3C%20100%20and%20y%20%3E%3D%200%20and%20y%20%3C%20100%0Av%20%3D%20f%5By%20%2A%20100%20%2B%20x%5D%0Af%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%20-%20v%0Adir%20%3D%20%28dir%20%2B%201%20%2B%202%20%2A%20v%29%20mod%204%0Ax%20%2B%3D%20dx%5Bdir%5D%0Ay%20%2B%3D%20dy%5Bdir%5D%0A.%0A.%0Acall%20run%2070%2040%200%0Acall%20show Run it]
+[Run it](https://easylang.online/apps/run.html?code=len%20f%5B%5D%20100%20%2A%20100%0Afunc%20show%20.%20.%0Afor%20y%20range%20100%0Afor%20x%20range%20100%0Aif%20f%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%0Amove%20x%20y%0Arect%201%201%0A.%0A.%0A.%0A.%0Afunc%20run%20x%20y%20dir%20.%20.%0Adx%5B%5D%20%3D%20%5B%200%201%200%20-1%20%5D%0Ady%5B%5D%20%3D%20%5B%20-1%200%201%200%20%5D%0Awhile%20x%20%3E%3D%200%20and%20x%20%3C%20100%20and%20y%20%3E%3D%200%20and%20y%20%3C%20100%0Av%20%3D%20f%5By%20%2A%20100%20%2B%20x%5D%0Af%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%20-%20v%0Adir%20%3D%20%28dir%20%2B%201%20%2B%202%20%2A%20v%29%20mod%204%0Ax%20%2B%3D%20dx%5Bdir%5D%0Ay%20%2B%3D%20dy%5Bdir%5D%0A.%0A.%0Acall%20run%2070%2040%200%0Acall%20show)
 
 <lang>len f[] 100 * 100
 func show . .
@@ -2172,7 +2172,7 @@ call show
 
 ## EchoLisp
 
-We implement multi-colored ants, as depicted in the article. An ant is described using L(eft)R(ight) patterns. LR is the basic black and white ant, other are  RRLLLRRL or  RRLLLRLLLRRR. See results for s [http://www.echolalie.org/echolisp/images/ant-1.png black-and-white] or [http://www.echolalie.org/echolisp/images/ant-2.png colored] ants.
+We implement multi-colored ants, as depicted in the article. An ant is described using L(eft)R(ight) patterns. LR is the basic black and white ant, other are  RRLLLRRL or  RRLLLRLLLRRR. See results for s [black-and-white](http://www.echolalie.org/echolisp/images/ant-1.png) or [colored](http://www.echolalie.org/echolisp/images/ant-2.png) ants.
 
 ```scheme
 
@@ -2650,7 +2650,7 @@ main =
 ```
 
 
-Link to live demo: https://dc25.github.io/langtonsAntElm/
+Link to live demo: <https://dc25.github.io/langtonsAntElm/>
 
 
 ## Erlang
@@ -3716,7 +3716,7 @@ End With
 End
 ```
 
-'''[http://www.cogier.com/gambas/Langton's%20ant.png Click here for an image of the result]'''
+'''[Click here for an image of the result](http://www.cogier.com/gambas/Langton's%20ant.png)'''
 
 
 ## GFA Basic
@@ -4038,8 +4038,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics support (WDone)]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics support (WDone)](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -4372,7 +4372,7 @@ langtonant({}, {
 ```
 
 
-[http://jsbin.com/ocuwal/1/edit Live Version]
+[Live Version](http://jsbin.com/ocuwal/1/edit)
 
 [[Image:Langtons Ant - JavaScript 1.png]]
 
@@ -4404,7 +4404,7 @@ langtonant([
 ```
 
 
-[http://jsbin.com/ahumuz/1/edit Live Version]
+[Live Version](http://jsbin.com/ahumuz/1/edit)
 
 [[Image:Langtons Ant - JavaScript 2.png]]
 
@@ -8183,7 +8183,7 @@ SetVid(3);                      \restore normal text mode
 ## zkl
 
 [[File:AntXPL0.gif|right]]
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 white:=0xff|ff|ff; black:=0;

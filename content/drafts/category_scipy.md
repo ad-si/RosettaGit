@@ -12,7 +12,7 @@ tags = []
 
 == SciPy for Python ==
 
-Website: http://www.scipy.org/ - https://pypi.python.org/pypi/scipy
+Website: <http://www.scipy.org/> - <https://pypi.python.org/pypi/scipy>
 
 SciPy is an Open Source Library of Scientific Tools for [[Python]],
 

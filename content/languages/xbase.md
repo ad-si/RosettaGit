@@ -14,19 +14,19 @@ tags = []
 XBase is the generic term for all programming languages that derive from the original dBASE (Ashton-Tate) programming language and database formats. These are sometimes informally known as dBASE "clones". While there was a non-commercial predecessor to the Ashton-Tate product (Vulcan written by Wayne Ratliff), most clones are based on Ashton-Tate's 1986 dBASE III+ release — scripts written in the dBASE III+ dialect are most likely to run on all the clones.
 
 ## Implementations
-* [http://www.vistasoftware.com/ Apollo database engine] for managing CA-Clipper and FoxPro from Vista Software
-* Clipper, Visual Objects (Windows 32) and Vulcan.NET from [http://www.grafxsoft.com/ GrafxSoft]
-* [http://dbase.com/ dBase Inc]'s dBASE
-* [http://www.dbfview.com/ DBFView], DBF editor/viewer/converter
-* FlagShip from [http://www.fship.com/ multisoft GmbH]
-* Recital from [http://www.recital.com/ Recital Corp.]
-* [http://msdn.microsoft.com/en-au/vfoxpro/default.aspx Visual FoxPro] is available from Microsoft
-* [http://www.govulcan.net/portal/ Vulcan.NET]
-* XBase++ from [http://www.alaska-software.com/products/xpp/xpp.shtm Alaska Software]
-* xHarbour Builder from [http://www.xharbour.com/ xHarbour.com Inc.]
-* [http://www.dbf2002.com/ DBF Viewer 2000]
-* DBF tools from [http://astersoft.com/ Astersoft Co. Ltd.]
-* [http://www.itk.ru/english/index.shtml CLIP]
-* the [http://www.harbour-project.org/ Harbour Project]
-* [http://www.xharbour.org/ xHarbour]
-* [http://www.xailer.com Xailer]
+* [Apollo database engine](http://www.vistasoftware.com/) for managing CA-Clipper and FoxPro from Vista Software
+* Clipper, Visual Objects (Windows 32) and Vulcan.NET from [GrafxSoft](http://www.grafxsoft.com/)
+* [dBase Inc](http://dbase.com/)'s dBASE
+* [DBFView](http://www.dbfview.com/), DBF editor/viewer/converter
+* FlagShip from [multisoft GmbH](http://www.fship.com/)
+* Recital from [Recital Corp.](http://www.recital.com/)
+* [Visual FoxPro](http://msdn.microsoft.com/en-au/vfoxpro/default.aspx) is available from Microsoft
+* [Vulcan.NET](http://www.govulcan.net/portal/)
+* XBase++ from [Alaska Software](http://www.alaska-software.com/products/xpp/xpp.shtm)
+* xHarbour Builder from [xHarbour.com Inc.](http://www.xharbour.com/)
+* [DBF Viewer 2000](http://www.dbf2002.com/)
+* DBF tools from [Astersoft Co. Ltd.](http://astersoft.com/)
+* [CLIP](http://www.itk.ru/english/index.shtml)
+* the [Harbour Project](http://www.harbour-project.org/)
+* [xHarbour](http://www.xharbour.org/)
+* [Xailer](http://www.xailer.com)

@@ -136,7 +136,7 @@ Reflected this would become <code>.1101</code> or <math>1\times 2^{-1} + 1\times
 
 
 ## See also
-* [http://www.puc-rio.br/marco.ind/quasi_mc.html#low_discrep The Basic Low Discrepancy Sequences]
+* [The Basic Low Discrepancy Sequences](http://www.puc-rio.br/marco.ind/quasi_mc.html#low_discrep)
 * [[Non-decimal radices/Convert]]
 * [[wp:Van der Corput sequence|Van der Corput sequence]]
 
@@ -3123,7 +3123,7 @@ base 5: 0 1/5 2/5 3/5 4/5 1/25 6/25 11/25 16/25 21/25
 
 ## Stata
 
-Stata has builtin functions in Mata to compute '''[https://en.wikipedia.org/wiki/Halton_sequence Halton sequences]''', which are generalizations of the Van der Corput sequence. See '''[https://www.stata.com/help.cgi?mf_halton halton]''' in Stata help, and two articles in the Stata Journal: '''[http://www.stata-journal.com/article.html?article=st0244 Scrambled Halton sequences in Mata]''' by Stanislav Kolenikov and '''[http://www.stata-journal.com/article.html?article=st0103 Generating Halton sequences using Mata]''' by David M. Drukker and Richard Gates.
+Stata has builtin functions in Mata to compute '''[Halton sequences](https://en.wikipedia.org/wiki/Halton_sequence)''', which are generalizations of the Van der Corput sequence. See '''[halton](https://www.stata.com/help.cgi?mf_halton)''' in Stata help, and two articles in the Stata Journal: '''[Scrambled Halton sequences in Mata](http://www.stata-journal.com/article.html?article=st0244)''' by Stanislav Kolenikov and '''[Generating Halton sequences using Mata](http://www.stata-journal.com/article.html?article=st0103)''' by David M. Drukker and Richard Gates.
 
 
 ```stata

@@ -149,13 +149,13 @@ Of course, this is a far cry from being able to instrument multiple functions fr
 ## Common Lisp
 
 
-A library was developed by Pascal Costanza called [[http://common-lisp.net/project/closer/aspectl.html AspectL]].
+A library was developed by Pascal Costanza called [AspectL](http://common-lisp.net/project/closer/aspectl.html).
 
-However, the claims that "[i]t turned out that the pointcut functionality of AspectL does not make a lot of sense in Common Lisp, and the support for dynamically scoped generic functions has been replaced with much better mechanisms in [[http://common-lisp.net/project/closer/contextl.html ContextL]]."
+However, the claims that "[i]t turned out that the pointcut functionality of AspectL does not make a lot of sense in Common Lisp, and the support for dynamically scoped generic functions has been replaced with much better mechanisms in [ContextL](http://common-lisp.net/project/closer/contextl.html)."
 
 =={{header|F_Sharp|F#}}==
 
-[http://eprints.bbk.ac.uk/20835/1/csci2017.pdf An Aspect-Oriented Framework for F#]
+[An Aspect-Oriented Framework for F#](http://eprints.bbk.ac.uk/20835/1/csci2017.pdf)
 
 
 ## Go
@@ -163,7 +163,7 @@ However, the claims that "[i]t turned out that the pointcut functionality of Asp
 
 Go does not have any specific support for AOP in either the language itself or its standard library and there appears to be little interest in adding any.
 
-Nevertheless, there are at least three third party libraries for adding AOP functionality to Go, including [https://github.com/gogap/aop this one] which includes a code example. However, none of them have progressed beyond 'alpha' status and, as there have been no recent commits, development may have stalled.
+Nevertheless, there are at least three third party libraries for adding AOP functionality to Go, including [this one](https://github.com/gogap/aop) which includes a code example. However, none of them have progressed beyond 'alpha' status and, as there have been no recent commits, development may have stalled.
 
 
 ## J
@@ -181,7 +181,7 @@ Java has an aspect oriented programming library called AspectJ.  Aspects can cre
 ## JavaScript
 
 
-Bemson's [https://github.com/bemson/Flow/wiki/ Flow library] introduces an aspect-like framework for JavaScript.
+Bemson's [Flow library](https://github.com/bemson/Flow/wiki/) introduces an aspect-like framework for JavaScript.
 
 
 
@@ -219,7 +219,7 @@ end
 
 ## Kotlin
 
-The most popular framework for aspect oriented programming in Kotlin JVM is probably [https://en.wikipedia.org/wiki/Spring_Framework#Aspect-oriented_programming_framework Spring AOP] which is simpler and seems to have less issues than AspectJ, described in the Java entry.
+The most popular framework for aspect oriented programming in Kotlin JVM is probably [Spring AOP](https://en.wikipedia.org/wiki/Spring_Framework#Aspect-oriented_programming_framework) which is simpler and seems to have less issues than AspectJ, described in the Java entry.
 
 However, one issue Spring AOP does have is that it expects all classes to be open to inheritance whereas in Kotlin the default is for classes to be closed to inheritance though this can be changed by use of the 'open' modifier. To deal with this, JetBrains provide an 'all open' compiler plug-in which makes all classes annotated with specific annotations (such as @Configuration or @Service) open without the need for the 'open' modifier.
 
@@ -313,12 +313,12 @@ and manually edit every single call, again so that any future (/temporary) chang
 
 ## Python
 
-Python has special syntax for [http://legacy.python.org/dev/peps/pep-0318/ decorators] acting on functions and methods, as well as [http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python metaclasses].
+Python has special syntax for [decorators](http://legacy.python.org/dev/peps/pep-0318/) acting on functions and methods, as well as [metaclasses](http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python).
 
 
 ## Scala
 
-Jones Bonér introduces AOP for Scala in [http://jonasboner.com/aop-style-mixin-composition-stacks-in-scala/ this blog].
+Jones Bonér introduces AOP for Scala in [this blog](http://jonasboner.com/aop-style-mixin-composition-stacks-in-scala/).
 
 ## Tcl
 

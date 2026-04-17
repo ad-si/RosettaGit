@@ -83,7 +83,7 @@ The task is to generate and show here a table of   <code> n </code>   vs   <code
 
 
 ;Note:
-[[oeis:A000375|Topswops]] is also known as   [http://www.haskell.org/haskellwiki/Shootout/Fannkuch Fannkuch]   from the German Pfannkuchen meaning   [http://youtu.be/3biN6nQYqZY pancake].
+[[oeis:A000375|Topswops]] is also known as   [Fannkuch](http://www.haskell.org/haskellwiki/Shootout/Fannkuch)   from the German Pfannkuchen meaning   [pancake](http://youtu.be/3biN6nQYqZY).
 
 
 ## Related tasks
@@ -242,7 +242,7 @@ ELOOPJ3  L      R1,P-4(R3)         swap p(j),p(jj)
 
 ## Ada
 
-This is a straightforward approach that counts the number of swaps for each permutation. To generate all permutations over 1 .. N, for each of N in 1 .. 10, the package Generic_Perm from the Permutations task is used [[http://rosettacode.org/wiki/Permutations#The_generic_package_Generic_Perm]].
+This is a straightforward approach that counts the number of swaps for each permutation. To generate all permutations over 1 .. N, for each of N in 1 .. 10, the package Generic_Perm from the Permutations task is used <http://rosettacode.org/wiki/Permutations#The_generic_package_Generic_Perm>.
 
 
 ```Ada
@@ -567,7 +567,7 @@ int main() {
 ## D
 
 Permutations generator from:
-http://rosettacode.org/wiki/Permutations#Faster_Lazy_Version
+<http://rosettacode.org/wiki/Permutations#Faster_Lazy_Version>
 ```d
 import std.stdio, std.algorithm, std.range, permutations2;
 

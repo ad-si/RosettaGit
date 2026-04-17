@@ -1530,9 +1530,9 @@ object KeypressCheck extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/keybd.htm keybd.s7i] defines
-the file [http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD KEYBOARD] and
-the function [http://seed7.sourceforge.net/libraries/keybd.htm#keypressed%28in_keyboard_file%29 keypressed],
+The library [keybd.s7i](http://seed7.sourceforge.net/libraries/keybd.htm) defines
+the file [KEYBOARD](http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD) and
+the function [keypressed](http://seed7.sourceforge.net/libraries/keybd.htm#keypressed%28in_keyboard_file%29),
 which can be used to determine if a key has been pressed.
 
 ```seed7
@@ -1576,7 +1576,7 @@ proc GetChar {} {
 vwait forever; # run the event loop if necessary
 ```
 
-Note that in both cases, if you want to get characters as users actually type them then you have to [http://wiki.tcl.tk/14693 put the terminal in raw mode]. That's formally independent of the actual reading of a character.
+Note that in both cases, if you want to get characters as users actually type them then you have to [put the terminal in raw mode](http://wiki.tcl.tk/14693). That's formally independent of the actual reading of a character.
 
 =={{header|TI-83 BASIC}}==
 TI-83 BASIC has a built in getKey function.

@@ -3209,7 +3209,7 @@ Total weight of packed objects is 396 ounces.
 
 ## Go
 
-From WP, "0-1 knapsack problem" under [http://en.wikipedia.org/wiki/Knapsack_problem#Dynamic_Programming_Algorithm|Solving The Knapsack Problem], although the solution here simply follows the recursive defintion and doesn't even use the array optimization.
+From WP, "0-1 knapsack problem" under [The Knapsack Problem](http://en.wikipedia.org/wiki/Knapsack_problem#Dynamic_Programming_Algorithm|Solving), although the solution here simply follows the recursive defintion and doesn't even use the array optimization.
 
 ```go
 package main
@@ -3586,7 +3586,7 @@ procedure get_wants()           #: setup list of wanted items
 end
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 ```txt
 
 Knapsack-0-1: with maximum weight allowed=400.
@@ -4034,7 +4034,7 @@ socks                   4   dag   (value = 50)
 
 ## JavaScript
 
-Also available at [https://gist.github.com/truher/4715551|this gist].
+Also available at [gist](https://gist.github.com/truher/4715551|this).
 
 ```javascript
 /*global portviz:false, _:false */
@@ -4320,7 +4320,7 @@ $jq -M -c -n -f knapsack.jq
 
 ## Julia
 
-This solution uses the [https://github.com/JuliaOpt/MathProgBase.jl MathProgBase] package (with the [https://github.com/JuliaOpt/Cbc.jl Cbc] solver package installed).  It is the <code>mixintprog</code> function from this package that does the heavy lifting of this solution.
+This solution uses the [MathProgBase](https://github.com/JuliaOpt/MathProgBase.jl) package (with the [Cbc](https://github.com/JuliaOpt/Cbc.jl) solver package installed).  It is the <code>mixintprog</code> function from this package that does the heavy lifting of this solution.
 
 <code>KPDSupply</code> has one more field than is needed, <code>quant</code>.  This field is may be useful in a solution to the bounded version of this task.
 
@@ -5525,7 +5525,7 @@ map, compass, water, sandwich, glucose, tin, banana, apple, cheese, beer, suntan
 <b>Chosen Items:</b>
 <table border cellspacing=0><tr><td>Item</td><td>Value</td><td>Weight</td></tr><tr><td>map</td><td>150</td><td>9</td></tr><tr><td>compass</td><td>35</td><td>13</td></tr><tr><td>water</td><td>200</td><td>153</td></tr><tr><td>sandwich</td><td>160</td><td>50</td></tr><tr><td>glucose</td><td>60</td><td>15</td></tr><tr><td>banana</td><td>60</td><td>27</td></tr><tr><td>suntan cream</td><td>70</td><td>11</td></tr><tr><td>waterproof trousers</td><td>70</td><td>42</td></tr><tr><td>waterproof overclothes</td><td>75</td><td>43</td></tr><tr><td>note-case</td><td>80</td><td>22</td></tr><tr><td>sunglasses</td><td>20</td><td>7</td></tr><tr><td>socks</td><td>50</td><td>4</td></tr><tr><td align=right><b>Totals</b></td><td>1030</td><td>396</td></tr></table><hr>
 </div>
-Minimal PHP Algorithm for totals only translated from Python version as discussed in the YouTube posted video at: http://www.youtube.com/watch?v=ZKBUu_ahSR4
+Minimal PHP Algorithm for totals only translated from Python version as discussed in the YouTube posted video at: <http://www.youtube.com/watch?v=ZKBUu_ahSR4>
 
 ```php
 #########################################################
@@ -6820,7 +6820,7 @@ items: map,compass,water,sandwich,glucose,banana,suntan cream,waterproof trouser
 
 ###  Dynamic Programming
 
-Translated from http://sites.google.com/site/mikescoderama/Home/0-1-knapsack-problem-in-p
+Translated from <http://sites.google.com/site/mikescoderama/Home/0-1-knapsack-problem-in-p>
 
 ```ruby
 KnapsackItem = Struct.new(:name, :weight, :value)
@@ -7583,7 +7583,7 @@ Best items:
 
 ## Ursala
 
-This solution follows a very similar approach to the one used in [[Knapsack problem/Bounded#Ursala]], which is to treat it as a mixed integer programming problem and solve it using an off-the-shelf library ([http://lpsolve.sourceforge.net lpsolve]).
+This solution follows a very similar approach to the one used in [[Knapsack problem/Bounded#Ursala]], which is to treat it as a mixed integer programming problem and solve it using an off-the-shelf library ([lpsolve](http://lpsolve.sourceforge.net)).
 
 ```Ursala
 #import std

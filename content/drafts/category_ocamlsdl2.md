@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}
 {{library}}
-[https://github.com/fccm/OCamlSDL2 OCamlSDL2] is an OCaml interface to the SDL2 library.
+[OCamlSDL2](https://github.com/fccm/OCamlSDL2) is an OCaml interface to the SDL2 library.

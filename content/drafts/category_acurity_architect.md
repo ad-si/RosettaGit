@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-Acurity Architect is a 4GL reporting, customisation and extension language for the Acurity finance administration system by Financial Synergy [http://www.financialsynergy.com.au/].
+Acurity Architect is a 4GL reporting, customisation and extension language for the Acurity finance administration system by Financial Synergy <http://www.financialsynergy.com.au/>.

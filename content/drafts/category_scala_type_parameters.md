@@ -12,5 +12,5 @@ tags = []
 
 This is the Scala Type parameters (Generic Classes) category.
 
-[http://docs.scala-lang.org/tour/generic-classes.html Generic Classes, Tour of Scala, Scala Documentation]
+[Generic Classes, Tour of Scala, Scala Documentation](http://docs.scala-lang.org/tour/generic-classes.html)
 [[Category:Scala]]

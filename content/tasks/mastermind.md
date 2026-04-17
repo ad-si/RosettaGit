@@ -31,7 +31,7 @@ languages = [
 
 ## Task
 
-Create a simple version of the board game: [https://en.wikipedia.org/wiki/Mastermind_(board_game) Mastermind].
+Create a simple version of the board game: [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
 
 It must be possible to:
 * choose the number of colors will be used in the game(2 - 20)
@@ -504,7 +504,7 @@ You found the code: HBDA
 ## EasyLang
 
 
-[https://easylang.online/apps/mastermind.html Run it]
+[Run it](https://easylang.online/apps/mastermind.html)
 
 <lang>col[] = [ 902 990 171 229 960 808 ]
 len code[] 4
@@ -890,7 +890,7 @@ You found the code in 5 guesses.
 
 ## Javascript
 
-You can try it [http://paulo-jorente.de/webgames/repos/mastermind/ here].
+You can try it [here](http://paulo-jorente.de/webgames/repos/mastermind/).
 
 
 ```javascript

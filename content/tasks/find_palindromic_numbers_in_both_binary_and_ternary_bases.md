@@ -2446,7 +2446,7 @@ end
 ## Scala
 
 ===Functional programmed, (tail) recursive===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/ZYCqm7p/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/WIL3oAwYSRy4Kl918u13CA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/ZYCqm7p/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/WIL3oAwYSRy4Kl918u13CA).
 
 ```Scala
 import scala.annotation.tailrec
@@ -2491,7 +2491,7 @@ object Palindrome23 extends App {
 
 
 ===Fastest and high yields (17) solution 😏===
-{{Out}}Best seen running in your browser either by [https://scastie.scala-lang.org/en0ZiqDETCuWO6avhTi9YQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [Scastie (remote JVM)](https://scastie.scala-lang.org/en0ZiqDETCuWO6avhTi9YQ).
 
 ```Scala
 import scala.io.Source

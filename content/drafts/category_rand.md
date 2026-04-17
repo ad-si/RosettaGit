@@ -12,6 +12,6 @@ tags = []
 
 {{library}}
 
-rand is a [[Rust]] library for random number generators and other randomness functionality. See the [https://docs.rs/rand/ rand documentation] on Docs.rs for more information.
+rand is a [[Rust]] library for random number generators and other randomness functionality. See the [rand documentation](https://docs.rs/rand/) on Docs.rs for more information.
 
 {{works with|Rust}}

@@ -568,7 +568,7 @@ main =
 ```
 
 
-Where Data.List.Split is available (https://hackage.haskell.org/package/split-0.2.3.1/docs/Data-List-Split.html)
+Where Data.List.Split is available (<https://hackage.haskell.org/package/split-0.2.3.1/docs/Data-List-Split.html>)
 we can alternatively write:
 
 
@@ -1738,7 +1738,7 @@ foreach oid_list $oid4_lists {
 
 ## zkl
 
-Translation of http://rosettacode.org/wiki/Natural_sorting#zkl
+Translation of <http://rosettacode.org/wiki/Natural_sorting#zkl>
 
 Basically, blow apart each line into a list of numbers and sort that.
 

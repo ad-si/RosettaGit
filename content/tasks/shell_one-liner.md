@@ -229,7 +229,7 @@ echo print "foo"|basic
 ```
 
 
-Also, some popular interpreters (including [http://www.moria.de/~michael/bas/ Michael Haardt's '''bas'''] and [[Chipmunk Basic]]) will include an extra prompt before exiting unless you include <code>exit</code> or <code>system</code> (depending on the specific interpreter's syntax). This sample output shows both with and without <code>system</code> in bas:
+Also, some popular interpreters (including [Michael Haardt's '''bas'''](http://www.moria.de/~michael/bas/) and [[Chipmunk Basic]]) will include an extra prompt before exiting unless you include <code>exit</code> or <code>system</code> (depending on the specific interpreter's syntax). This sample output shows both with and without <code>system</code> in bas:
  erik@satan:~$ echo 'print "foo"'|bas
  bas 2.2
  Copyright 1999-2009 Michael Haardt.
@@ -407,7 +407,7 @@ clisp.exe -q -x "(progn (format t \"Hello from CLISP\") (quit))"
 
 ## D
 
-requires [https://github.com/D-Programming-Language/tools/blob/master/rdmd.d rdmd]
+requires [rdmd](https://github.com/D-Programming-Language/tools/blob/master/rdmd.d)
 
 ```d
 rdmd --eval="writeln(q{Hello World!})"
@@ -614,7 +614,7 @@ Su Mo Tu We Th Fr Sa
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4385adf6a841435779a7afff3dadb58b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4385adf6a841435779a7afff3dadb58b)'''
 
 ```gambas
 Public Sub Main()
@@ -1057,7 +1057,7 @@ Hello
 ```
 
 
-More information about the many ways of invoking perl can be found in [http://perldoc.perl.org/perlrun.html perlrun].
+More information about the many ways of invoking perl can be found in [perlrun](http://perldoc.perl.org/perlrun.html).
 
 
 ## Perl 6

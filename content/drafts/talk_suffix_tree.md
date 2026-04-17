@@ -86,7 +86,7 @@ Anyways, can someone supply the missing part of the definition? --[[User:Rdm|Rdm
 
 ==Definition (take 3)==
 
-So the definition has been updated, both on Wikipedia and on RC.  I used http://www.cs.uoi.gr/~kblekas/courses/bioinformatics/Suffix_Trees1.pdf as a reference.--[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 17:37, 26 August 2013 (UTC)
+So the definition has been updated, both on Wikipedia and on RC.  I used <http://www.cs.uoi.gr/~kblekas/courses/bioinformatics/Suffix_Trees1.pdf> as a reference.--[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 17:37, 26 August 2013 (UTC)
 
 == Valid implementations? ==
 

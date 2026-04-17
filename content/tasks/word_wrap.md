@@ -85,7 +85,7 @@ Even today, with proportional fonts and complex layouts, there are still [[Templ
 ### Basic task
 The basic task is to wrap a paragraph of text in a simple way in your language.
 
-If there is a way to do this that is built-in, trivial, or provided in a standard library, show that.  Otherwise implement the [http://en.wikipedia.org/wiki/Word_wrap#Minimum_length minimum length greedy algorithm from Wikipedia.]
+If there is a way to do this that is built-in, trivial, or provided in a standard library, show that.  Otherwise implement the [minimum length greedy algorithm from Wikipedia.](http://en.wikipedia.org/wiki/Word_wrap#Minimum_length)
 
 Show your routine working on a sample of text at two different wrap columns.
 
@@ -2722,7 +2722,7 @@ $ jq -M -R -s -r -f Word_wrap.jq Russian.txt
 
 {{works with|Julia|0.6}}
 
-Using [https://github.com/carlobaldassi/TextWrap.jl TextWrap.jl] library.
+Using [TextWrap.jl](https://github.com/carlobaldassi/TextWrap.jl) library.
 
 
 ```julia
@@ -3382,7 +3382,7 @@ return
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
-   @see http://en.wikipedia.org/wiki/Word_wrap#Minimum_length
+   @see <http://en.wikipedia.org/wiki/Word_wrap#Minimum_length>
 
    SpaceLeft := LineWidth
    for each Word in Text
@@ -3923,7 +3923,7 @@ be together forever with you
 
 ## PicoLisp
 
-'[http://software-lab.de/doc/refW.html#wrap wrap]' is a built-in.
+'[wrap](http://software-lab.de/doc/refW.html#wrap)' is a built-in.
 
 ```PicoLisp
 : (prinl (wrap 12 (chop "The quick brown fox jumps over the lazy dog")))

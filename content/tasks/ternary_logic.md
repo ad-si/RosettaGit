@@ -1830,13 +1830,13 @@ Example use:
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Finite-valued_logic this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Finite-valued_logic) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
-The solution shown uses [https://en.wikipedia.org/wiki/Finite-valued_logic finite-valued logic], where the n-valued logic can be represented as n equally spaced values between 0 (pure false) and 1 (pure true). As an example, the traditional logic values are represented as 0 and 1, and ternary logic is represented with the values 0 (false), 1/2 (maybe) and 1 (true), and so on.
+The solution shown uses [finite-valued logic](https://en.wikipedia.org/wiki/Finite-valued_logic), where the n-valued logic can be represented as n equally spaced values between 0 (pure false) and 1 (pure true). As an example, the traditional logic values are represented as 0 and 1, and ternary logic is represented with the values 0 (false), 1/2 (maybe) and 1 (true), and so on.
 
 The solution also shows how to ''redefine'' the logic operations, and how to show the values and the operations using colors.
 
@@ -2528,7 +2528,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides support for the printf family of functions]
+[printf.icn provides support for the printf family of functions](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 unary function=not3:
@@ -5211,7 +5211,7 @@ We keep <code>!a</code>, <code>a & b</code> and so on for binary logic. We add <
 
 ```ruby
 # trit.rb - ternary logic
-# http://rosettacode.org/wiki/Ternary_logic
+# <http://rosettacode.org/wiki/Ternary_logic>
 
 require 'singleton'
 
@@ -5672,7 +5672,7 @@ TFalse : TFalse =>  TTrue
 
 ## Seed7
 
-The type [http://seed7.sourceforge.net/manual/types.htm#boolean boolean] does not define
+The type [boolean](http://seed7.sourceforge.net/manual/types.htm#boolean) does not define
 separate '''xor''', '''implies''' and '''equiv''' operators. But there are replacements for them:
 {| border="1"
 ! Instead of !! Use

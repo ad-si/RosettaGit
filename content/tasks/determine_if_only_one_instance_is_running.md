@@ -241,7 +241,7 @@ This solution opens a file with <tt>O_CREAT|O_EXCL</tt>. If the file already exi
 
 The program, when terminating, must be sure to ''unlink()'' the file. This example has ''unlink()'' at two places: at the end of ''main()'', and at a SIGINT handler. If you interrupt the program, it will probably delete <tt>/tmp/MyUniqueName</tt>, but not if SIGINT wins a race before the program installs its handler. If you terminate the program with a different signal, then you will get stuck, because <tt>/tmp/MyUniqueName</tt> will still exist, preventing another execution of the program. One might add code to catch some other signals, but there is no way to catch SIGKILL!
 
-This program uses a regular file, with ''open()'' and ''unlink()''. There is [http://rosettacode.org/mw/index.php?title=Determine_if_only_one_instance_is_running&oldid=97253 an older version that uses a semaphore], with ''sem_open()'' and ''sem_unlink()''. The switch from a semaphore to a regular file was easy, because the program never used the semaphore as a semaphore; it only checked the existence of a semaphore. If you get stuck, <tt>rm /tmp/MyUniqueName</tt> might be easier than deleting a semaphore.
+This program uses a regular file, with ''open()'' and ''unlink()''. There is [an older version that uses a semaphore](http://rosettacode.org/mw/index.php?title=Determine_if_only_one_instance_is_running&oldid=97253), with ''sem_open()'' and ''sem_unlink()''. The switch from a semaphore to a regular file was easy, because the program never used the semaphore as a semaphore; it only checked the existence of a semaphore. If you get stuck, <tt>rm /tmp/MyUniqueName</tt> might be easier than deleting a semaphore.
 
 ```c
 #include <fcntl.h>
@@ -302,7 +302,7 @@ You need a variable of type HANDLE with the same lifetime as your program.  Perh
 HANDLE mutex;
 ```
 
-At the earliest possible point in your program, you need to initialize it and perform your check. "MyApp" should be a string unique to your application.  See [http://msdn2.microsoft.com/en-us/library/ms682411.aspx here] for full details.
+At the earliest possible point in your program, you need to initialize it and perform your check. "MyApp" should be a string unique to your application.  See [here](http://msdn2.microsoft.com/en-us/library/ms682411.aspx) for full details.
 
 ```cpp
 mutex = CreateMutex( NULL, TRUE, "MyApp" );
@@ -492,7 +492,7 @@ Unix domain sockets support another addressing mode, via the so-called abstract 
 * We do not need to create a file for the socket at all. This obviates target directory existence, permissions checks, and reduces filesystem clutter. Also, it works in chrooted environments.
 
 All we need is to generate a unique name for our program and pass it as the address when calling bind(). The trick is that instead of specifying a file path as the address, we pass a null byte followed by the name of our choosing (e.g. "\0my-unique-name"). The initial null byte is what distinguishes abstract socket names from conventional Unix domain socket path names, which consist of a string of one or more non-null bytes terminated by a null byte.
-Read more here: [https://blog.petrzemek.net/2017/07/24/ensuring-that-a-linux-program-is-running-at-most-once-by-using-abstract-sockets/]
+Read more here: <https://blog.petrzemek.net/2017/07/24/ensuring-that-a-linux-program-is-running-at-most-once-by-using-abstract-sockets/>
 
 ```d
 import std.socket;
@@ -1031,7 +1031,7 @@ echo "Fin!"
 
 ## OCaml
 
-Replicates the '''C''' example, with the library [http://ocaml-sem.sourceforge.net/ ocaml-sem].
+Replicates the '''C''' example, with the library [ocaml-sem](http://ocaml-sem.sourceforge.net/).
 
 ```ocaml
 open Sem
@@ -1048,7 +1048,7 @@ let () =
 ```
 
 
-The standard library of OCaml also provides a [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html Mutex] module.
+The standard library of OCaml also provides a [Mutex](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html) module.
 
 
 ## Oz
@@ -1083,7 +1083,7 @@ end
 
 ## Perl
 
-The INIT block is runned just before the Perl runtime begins execution. See [http://perldoc.perl.org/perlmod.html perlmod]
+The INIT block is runned just before the Perl runtime begins execution. See [perlmod](http://perldoc.perl.org/perlmod.html)
 
 Then it tries to get a lock to its own file, from where the script was called.
 
@@ -1457,7 +1457,7 @@ fn main() {
 
 ### Java Interoperability
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/ja0sMzt5SGKHSu3w8qnlQQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/ja0sMzt5SGKHSu3w8qnlQQ).
 
 ```Scala
 import java.io.IOException

@@ -78,10 +78,10 @@ Taxicab numbers are also known as:
 
 ## See also
 
-* [http://oeis.org/A001235 A001235 taxicab numbers] on The On-Line Encyclopedia of Integer Sequences.
-* [http://mathworld.wolfram.com/Hardy-RamanujanNumber.html Hardy-Ramanujan Number] on MathWorld.
-* [http://mathworld.wolfram.com/TaxicabNumber.html taxicab number] on MathWorld.
-* [https://en.wikipedia.org/wiki/Taxicab_number taxicab number] on Wikipedia.
+* [A001235 taxicab numbers](http://oeis.org/A001235) on The On-Line Encyclopedia of Integer Sequences.
+* [Hardy-Ramanujan Number](http://mathworld.wolfram.com/Hardy-RamanujanNumber.html) on MathWorld.
+* [taxicab number](http://mathworld.wolfram.com/TaxicabNumber.html) on MathWorld.
+* [taxicab number](https://en.wikipedia.org/wiki/Taxicab_number) on Wikipedia.
 
 
 
@@ -2166,7 +2166,7 @@ Brute force: Create all combinations x³+ y³ | y < x one by on and test if ther
 Combinations to check = n*(n-1)/2.The mean distance of one Combination m is m/2 from m³+1³ to m³+(m-1)³.
 searchSameSum checks one half of this distance == m/4.So O(n) ~ n³ /8  checks are needed.
 searchSameSum takes most of the time (>95% ), sorting is neglectable.
-[[http://rosettacode.org/wiki/Taxicab_numbers#C]]C-Version is ~6 times faster aka 43 vs 247 ms for max = 1290^3.
+<http://rosettacode.org/wiki/Taxicab_numbers#C>C-Version is ~6 times faster aka 43 vs 247 ms for max = 1290^3.
 Here limit set to 1190 to just reach the goal of element 2006 ;-) so 200ms are possible.
 Its impressive, that over all one check takes ~3.5 cpu-cycles on i4330 3.5Ghz
 

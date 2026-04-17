@@ -20,4 +20,4 @@ Note that some versions of brexx are available under a [noncommercial](https://r
 ###  External Links 
 
 
-* [http://sourceforge.net/projects/brexx/ Brexx interpreter]
+* [Brexx interpreter](http://sourceforge.net/projects/brexx/)

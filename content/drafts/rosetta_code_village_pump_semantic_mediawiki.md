@@ -14,7 +14,7 @@ tags = []
 |topic=Semantic MediaWiki
 |summary=Advanced classification features of the MediaWiki software, and ways to leverage it to understand the content in this site.
 }}
-I've installed the [http://semantic-mediawiki.org/wiki/Help:Editing Semantic MediaWiki] extension. Play around with it. Figure out what can be accomplished. Get stuff better-organized around here. Things I expect will be possible
+I've installed the [Semantic MediaWiki](http://semantic-mediawiki.org/wiki/Help:Editing) extension. Play around with it. Figure out what can be accomplished. Get stuff better-organized around here. Things I expect will be possible
 * Turn Task pages into reports using SMW
 * SMW should be able to handle the kind of queries that power the "Unimplemented in X" pages
 * Be able to create pages for "examples of X in language Y"

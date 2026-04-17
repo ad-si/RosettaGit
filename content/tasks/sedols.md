@@ -411,7 +411,7 @@ B000300
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276683.html#276683 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276683.html#276683)
 
 
 ### Full
@@ -1645,7 +1645,7 @@ B000301 Illegal SEDOL: checksum digits do not match
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=905f91c785f1f15a360726717731862f Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=905f91c785f1f15a360726717731862f)'''
 
 ```gambas
 Public Sub Main()

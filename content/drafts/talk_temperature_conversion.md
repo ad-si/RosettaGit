@@ -89,7 +89,7 @@ von Dracs (DE), today, 22:10  Spam?  ...
 
 ::: No, that's not quite true.   Andres Celsius invented/created/defined   ''a''   temperature scale; it was called centigrade (and other names) for two centuries or so.   For various reasons, around 1948 the name ''centigrade'' was replaced with ''Celsius'' by some international standards.   I know I was taught to use centigrade in grade school (USA), but by the time I went to college, Celsius was in use. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:32, 13 August 2013 (UTC)
 
-Well, if the Oxford Dictionary [http://oxforddictionaries.com/spellcheck/english/?q=celcius says it's a common misspelling] then that is good enough for me and we should correct it in the task description and urge others to use the correct spelling. (It even goes so far as to check the spelling in other languages). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 14 August 2013 (UTC)
+Well, if the Oxford Dictionary [says it's a common misspelling](http://oxforddictionaries.com/spellcheck/english/?q=celcius) then that is good enough for me and we should correct it in the task description and urge others to use the correct spelling. (It even goes so far as to check the spelling in other languages). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 14 August 2013 (UTC)
 
 : Thanks Paddy. You mean 'computer languages' :-) and you know the answer to my wp question!?! (see above) --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 05:28, 14 August 2013 (UTC)
 
@@ -117,10 +117,10 @@ Another chain (?) of thought: Shouldn't -3K (and other out of range temperatures
 ```
 --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 09:09, 14 August 2013 (UTC)
 
-:: In a news article [[http://www.rdmag.com/news/2013/01/temperature-below-absolute-zero|An R&amp;D Magazine Webcast]], it's possible to have temperatures below absolute zero according to physicists at the Ludwig-Maximilians University Munich and the Max Planck Institute of Quantum Optics in Garching.   An interesting article concerning (among other things) the inversion of energy due to something called the Boltzmann distribution. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 14:58, 14 August 2013 (UTC)
+:: In a news article [R&amp;D Magazine Webcast](http://www.rdmag.com/news/2013/01/temperature-below-absolute-zero|An), it's possible to have temperatures below absolute zero according to physicists at the Ludwig-Maximilians University Munich and the Max Planck Institute of Quantum Optics in Garching.   An interesting article concerning (among other things) the inversion of energy due to something called the Boltzmann distribution. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 14:58, 14 August 2013 (UTC)
 
 ::: I opened the link you gave but couldn't find anything there.    
-::: I did find this link though (learning something every day) http://www.livescience.com/25959-atoms-colder-than-absolute-zero.html and a sentence therein: "The temperatures we achieved are negative nanokelvin," Schneider told LiveScience. Maybe they'll never reach minus 3 K --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 20:48, 14 August 2013 (UTC)
+::: I did find this link though (learning something every day) <http://www.livescience.com/25959-atoms-colder-than-absolute-zero.html> and a sentence therein: "The temperatures we achieved are negative nanokelvin," Schneider told LiveScience. Maybe they'll never reach minus 3 K --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 20:48, 14 August 2013 (UTC)
 
 
 Are there -xK temperatures?
@@ -153,4 +153,4 @@ The '''kelvin (K)''' temperature scale is an extension of the degree Celsius sca
 
 In light of this, perhaps the author of this Rosetta Code task (or anybody) would like to correct the spelling and/or capitalization of the task's wording. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 01:33, 3 December 2014 (UTC)
 
-: There seems to be a lot of disagreement about it: [http://physics.stackexchange.com/questions/114079/are-there-reasons-for-the-discrepancies-in-absolute-temp-units-kelvin-vs-kelv physics.stackexchange.com] [[User:Fwend|Fwend]] ([[User talk:Fwend|talk]]) 18:33, 9 April 2016 (UTC)
+: There seems to be a lot of disagreement about it: [physics.stackexchange.com](http://physics.stackexchange.com/questions/114079/are-there-reasons-for-the-discrepancies-in-absolute-temp-units-kelvin-vs-kelv) [[User:Fwend|Fwend]] ([[User talk:Fwend|talk]]) 18:33, 9 April 2016 (UTC)

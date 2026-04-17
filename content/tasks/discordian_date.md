@@ -796,7 +796,7 @@ Day 57 of Confusion, in the YOLD 3176
 ## C
 
 
-For the source code of <code>ddate</code> in util-linux package, see [[http://jubal.westnet.com/hyperdiscordia/ddate.html]].
+For the source code of <code>ddate</code> in util-linux package, see <http://jubal.westnet.com/hyperdiscordia/ddate.html>.
 
 
 ```cpp
@@ -2209,8 +2209,8 @@ console.log(discordianDate(new Date(Date.now())));
 ```
 
 
-look at [http://www.cs.cmu.edu/~tilt/principia/body.html#applecorps calendar];
-learn about [http://jubal.westnet.com/hyperdiscordia/discordian_holydays.html holydays]
+look at [calendar](http://www.cs.cmu.edu/~tilt/principia/body.html#applecorps);
+learn about [holydays](http://jubal.westnet.com/hyperdiscordia/discordian_holydays.html)
 
 
 ## JotaCode

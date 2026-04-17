@@ -12,4 +12,4 @@ tags = []
 
 
 '''MLton''' is a whole-program [optimizing compiler](https://rosettacode.org/wiki/optimizing_compiler) for [Standard ML](https://rosettacode.org/wiki/Standard_ML).
-* [http://mlton.org mlton.org]
+* [mlton.org](http://mlton.org)

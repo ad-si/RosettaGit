@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://www.autohotkey.com/forum/viewtopic.php?t=19225 COM.ahk] by Sean
+{{library}}[COM.ahk](http://www.autohotkey.com/forum/viewtopic.php?t=19225) by Sean

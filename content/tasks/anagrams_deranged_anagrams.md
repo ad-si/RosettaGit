@@ -83,7 +83,7 @@ By analogy with [[Permutations/Derangements|derangements]] we define a  ''derang
 
 {{task heading}}
 
-Use the word list at [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt unixdict] to find and display the longest deranged anagram.
+Use the word list at [unixdict](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt) to find and display the longest deranged anagram.
 
 {{task heading|Related tasks}}
 
@@ -1955,7 +1955,7 @@ excitation intoxicate
 
 ## J
 
-This assumes that [http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt] has been saved in the current directory.
+This assumes that [unixdict.txt](http://www.puzzlers.org/pub/wordlists/unixdict.txt) has been saved in the current directory.
 
 ```j
    #words=: 'b' freads 'unixdict.txt'

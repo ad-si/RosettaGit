@@ -28,13 +28,13 @@ Or have I completely misunderstood what you are trying to convey?
 
 :: Given two numbers which mark the beginning and end of a range of integers [LO,HI], and an integer base (BASE), return the integers which fall in that range where the remainder after dividing the number by BASE-1 is the same as the remainder after dividing the square of the number by BASE-1.
 
-::: That is the test, but I also want to keep the explanation of why we are doing this. Note that Ledrug has implemented the test as ((k*k) - k)%(Base - 1) at http://rosettacode.org/wiki/Kaprekar_numbers#C which is another variation. --[[User:Nigel Galloway|Nigel Galloway]] 13:03, 27 June 2012 (UTC)
+::: That is the test, but I also want to keep the explanation of why we are doing this. Note that Ledrug has implemented the test as ((k*k) - k)%(Base - 1) at <http://rosettacode.org/wiki/Kaprekar_numbers#C> which is another variation. --[[User:Nigel Galloway|Nigel Galloway]] 13:03, 27 June 2012 (UTC)
 
 : --[[User:Rdm|Rdm]] 14:02, 26 June 2012 (UTC)
 
 :::I'd like to see a different title for the task.  The current description states right up front that the task is not casting out nines.  &mdash;[[User:Sonia|Sonia]] 19:46, 26 June 2012 (UTC)
 
-::::OK, maybe you have misunderstood what I am trying to convey. Following Dr. Math at http://mathforum.org/library/drmath/view/55926.html describing casting out nines to the phrase "(You wouldn't normally get the same check digit for the result of the sum and the products; I just picked a weird example.)" I see that every Kaprekar is a "weird example". Using Dr. Maths "quick explanation of how to do it, without the big words" would be as slow as the String C++ Kaprekar solution. So we turn to http://mathworld.wolfram.com/CastingOutNines.html. What is said there is true for bases other than 10, therefore it is possible to develop a fast test. --[[User:Nigel Galloway|Nigel Galloway]] 12:47, 27 June 2012 (UTC)
+::::OK, maybe you have misunderstood what I am trying to convey. Following Dr. Math at <http://mathforum.org/library/drmath/view/55926.html> describing casting out nines to the phrase "(You wouldn't normally get the same check digit for the result of the sum and the products; I just picked a weird example.)" I see that every Kaprekar is a "weird example". Using Dr. Maths "quick explanation of how to do it, without the big words" would be as slow as the String C++ Kaprekar solution. So we turn to <http://mathworld.wolfram.com/CastingOutNines.html>. What is said there is true for bases other than 10, therefore it is possible to develop a fast test. --[[User:Nigel Galloway|Nigel Galloway]] 12:47, 27 June 2012 (UTC)
 
 :::(Comments moved from task page following Go solution.) I'm not seeing the connection. &mdash;[[User:Sonia]]
 
@@ -56,7 +56,7 @@ Or have I completely misunderstood what you are trying to convey?
 
 ::: Another possible direction is to make the leap that co9 implments a modular reduction, and make the task about showing this equivalence.  I think this would be enough for a task.  No checking of arithmetic, no Kaprekar numbers.
 
-::: Another possible direction would demonstrate optimization of Kaprekar number search in arbitrary bases.  Point out that modular arithmetic gives congruent results to arithmetic with larger numbers.  Reference http://en.wikipedia.org/wiki/Modular_arithmetic.  If you like, mention that this is the math behind the techniques of casting out nines.  That one little mention is all that is appropriate in this task.  No details, no applications, no history, just drop it.  Title the task "Modular optimization".  Make the observation that for all Kaprekar numbers, k%(base-1) == (k*k)%(base-1), and show some results in bases 10 and 17 that can be compared to results on the Kaprekar number task.
+::: Another possible direction would demonstrate optimization of Kaprekar number search in arbitrary bases.  Point out that modular arithmetic gives congruent results to arithmetic with larger numbers.  Reference <http://en.wikipedia.org/wiki/Modular_arithmetic>.  If you like, mention that this is the math behind the techniques of casting out nines.  That one little mention is all that is appropriate in this task.  No details, no applications, no history, just drop it.  Title the task "Modular optimization".  Make the observation that for all Kaprekar numbers, k%(base-1) == (k*k)%(base-1), and show some results in bases 10 and 17 that can be compared to results on the Kaprekar number task.
 
 ::: &mdash;[[User:Sonia|Sonia]] 19:37, 29 June 2012 (UTC)
 
@@ -66,9 +66,9 @@ Or have I completely misunderstood what you are trying to convey?
 
 ::::I do like your implementation of co9 both the origional and base10 and the now extended to bases 2 to 32.
 
-::::I have added another task http://rosettacode.org/wiki/Sum_digits_of_an_integer#C.2B.2B and shown how this can be used in http://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator.
+::::I have added another task <http://rosettacode.org/wiki/Sum_digits_of_an_integer#C.2B.2B> and shown how this can be used in <http://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator>.
 
-::::I have added task http://rosettacode.org/wiki/Digital_root which I think your implementaions of co9 would fit well. From the ref1 in digital roots see http://en.wikipedia.org/wiki/Digital_root#Congruence_formula which may clarify some of your points
+::::I have added task <http://rosettacode.org/wiki/Digital_root> which I think your implementaions of co9 would fit well. From the ref1 in digital roots see <http://en.wikipedia.org/wiki/Digital_root#Congruence_formula> which may clarify some of your points
 
 ::::--[[User:Nigel Galloway|Nigel Galloway]] 12:32, 20 July 2012 (UTC)  
 ----

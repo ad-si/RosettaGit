@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}{{stub}}[[Category:Arbitrary precision]]
-GMP is the [http://gmplib.org/ GNU Multiple Precision Arithmetic Library], that provides efficient arbitrary precision integer support for [[C]] (and other languages that can use the C function ABI, which is really quite common).
+GMP is the [GNU Multiple Precision Arithmetic Library](http://gmplib.org/), that provides efficient arbitrary precision integer support for [[C]] (and other languages that can use the C function ABI, which is really quite common).

@@ -73,7 +73,7 @@ numbers,   and check the distribution for at least one million calls using the f
 combinations are given, otherwise split the other 21 combinations
 into 7 groups of three, and return the group index from the rolls.
 
-<small>(Task adapted from an answer [http://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across here])</small>
+<small>(Task adapted from an answer [here](http://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across))</small>
 
 
 
@@ -2136,7 +2136,7 @@ distcheck(1_000_000) {d7}
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/3RNtNEC/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/Y5qSeW52QiC40l5vJCUMRA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/3RNtNEC/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/Y5qSeW52QiC40l5vJCUMRA).
 
 ```Scala
 import scala.util.Random
@@ -2218,7 +2218,7 @@ Checking:
 
 ## VBA
 
-The original StackOverflow page doesn't exist any longer. Luckily [https://web.archive.org/web/20100730055051/http://stackoverflow.com:80/questions/137783/given-a-function-which-produces-a-random-integer-in-the-range-1-to-5-write-a-fun archive.org] exists.
+The original StackOverflow page doesn't exist any longer. Luckily [archive.org](https://web.archive.org/web/20100730055051/http://stackoverflow.com:80/questions/137783/given-a-function-which-produces-a-random-integer-in-the-range-1-to-5-write-a-fun) exists.
 
 ```vb
 Private Function Test4DiscreteUniformDistribution(ObservationFrequencies() As Variant, Significance As Single) As Boolean

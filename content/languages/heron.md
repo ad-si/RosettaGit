@@ -18,4 +18,4 @@ Heron is effectively a combination of programming language and modeling language
 Heron has a syntax which resembles [Java](https://rosettacode.org/wiki/Java), [C#](https://rosettacode.org/wiki/C#), [ECMAScript](https://rosettacode.org/wiki/ECMAScript), and [Scala](https://rosettacode.org/wiki/Scala). Heron is primarily an object-oriented language, but borrows many ideas from functional languages, and even some from array-oriented languages.
 
 ## Citations
-# [http://www.artima.com/weblogs/viewpost.jsp?thread=284558 (Re-)Introducing the Heron Programming Language]
+# [(Re-)Introducing the Heron Programming Language](http://www.artima.com/weblogs/viewpost.jsp?thread=284558)

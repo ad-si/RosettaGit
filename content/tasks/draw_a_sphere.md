@@ -92,7 +92,7 @@ Either static or rotational projection is acceptable for this task.
 
 ## Ada
 
-Translation from the C code at http://cairographics.org/samples/gradient
+Translation from the C code at <http://cairographics.org/samples/gradient>
 Uses the Cairo component of GtkAda to create and save as png
 [[File:SphereAda.png|thumb|right]]
 
@@ -482,7 +482,7 @@ function split0(str,array,fs,  arr,i,n) { # same as split except indices start a
 =
 ## BASIC256
 =
-This is modeled after the [http://rosettacode.org/wiki/Draw_a_sphere#Tcl Tcl] implementation. Thus, the output of this is almost the same to the output of Tcl implementation below.
+This is modeled after the [Tcl](http://rosettacode.org/wiki/Draw_a_sphere#Tcl) implementation. Thus, the output of this is almost the same to the output of Tcl implementation below.
 
 ```basic256
 clg
@@ -1140,7 +1140,7 @@ render #g 		'show it
 =
 ## Sinclair ZX81 BASIC
 =
-Works with 1k of RAM. A screenshot of the output is [http://www.edmundgriffiths.com/zx81sphere.jpg here].
+Works with 1k of RAM. A screenshot of the output is [here](http://www.edmundgriffiths.com/zx81sphere.jpg).
 
 ```basic
 10 LET I=21
@@ -1720,7 +1720,7 @@ namespace Sphere {
 ```
 
 
-[http://i.imgur.com/fkzH5wM.png]
+<http://i.imgur.com/fkzH5wM.png>
 
 
 ## D
@@ -3017,7 +3017,7 @@ Checkit
 ```
 
 
-[[https://2.bp.blogspot.com/-ZWy2xDxXbzg/W98lAuNSY9I/AAAAAAAAHZ0/DFYluvWtz_cwwAUKfblujnW6mTC5XVs1QCLcBGAs/s1600/sphere.png]image]
+[<https://2.bp.blogspot.com/-ZWy2xDxXbzg/W98lAuNSY9I/AAAAAAAAHZ0/DFYluvWtz_cwwAUKfblujnW6mTC5XVs1QCLcBGAs/s1600/sphere.png>image]
 
 
 ## Maple
@@ -3336,7 +3336,7 @@ given Cairo::Image.create(Cairo::FORMAT_ARGB32, 256, 256) {
 }
 ```
 
-See [https://github.com/thundergnat/rc/blob/master/img/sphere2-perl6.png sphere2-perl6.png] (offsite .png image)
+See [sphere2-perl6.png](https://github.com/thundergnat/rc/blob/master/img/sphere2-perl6.png) (offsite .png image)
 
 
 ## Phix
@@ -4832,7 +4832,7 @@ object Sphere extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/uSm8bJ9/0 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/TtVHUp3aS0eDEB6YCW4gKg Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/uSm8bJ9/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/TtVHUp3aS0eDEB6YCW4gKg).
 
 
 ## Sidef
@@ -5218,7 +5218,7 @@ end sub
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Sphere.zkl.jpg|200px|thumb|right]]
 
 ```zkl
@@ -5245,7 +5245,7 @@ The radius of 100 is the max before the color calculation overflows 24 bits so f
 img[X+X0,Y+Y0]=C*140+C;
 ```
 
-Perhaps a more useful solution is to use GnuPlot (I grabbed the code from http://ayapin-film.sakura.ne.jp/Gnuplot/):
+Perhaps a more useful solution is to use GnuPlot (I grabbed the code from <http://ayapin-film.sakura.ne.jp/Gnuplot/>):
 [[File:GnuplotSphere.zkl.png|250px|thumb|right]]
 
 ```zkl

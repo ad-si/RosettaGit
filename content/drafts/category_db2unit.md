@@ -12,4 +12,4 @@ tags = []
 
 {{library}}db2uni is a testing framework for IBM DB2 [[SQL PL]] based on [[wp:jUnit|jUnit]].
 
-*[https://angoca.github.io/db2unit/ db2unit official website]
+*[db2unit official website](https://angoca.github.io/db2unit/)

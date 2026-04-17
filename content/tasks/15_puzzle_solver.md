@@ -2551,7 +2551,7 @@ mtm-optimal solution of 31(60) moves found in 2 hours, 38 minutes and 28s: u2r2d
 ## Python
 
 ### Iterative Depth A*
-From https://codegolf.stackexchange.com/questions/6884/solve-the-15-puzzle-the-tile-sliding-puzzle
+From <https://codegolf.stackexchange.com/questions/6884/solve-the-15-puzzle-the-tile-sliding-puzzle>
 
 Solution titled "PyPy, 195 moves, ~12 seconds computation"
 

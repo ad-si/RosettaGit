@@ -2677,9 +2677,9 @@ def isPernicious( v:Long ) : Boolean = BigInt(v.toBinaryString.toList.filter( _ 
 
 ## Seed7
 
-The function <code>popcount</code> below [http://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer) converts]
-the integer into a [http://seed7.sourceforge.net/libraries/bitset.htm bitset].
-The function [http://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset) card]
+The function <code>popcount</code> below [converts](http://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer))
+the integer into a [bitset](http://seed7.sourceforge.net/libraries/bitset.htm).
+The function [card](http://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset))
 is used to compute the population count of the bitset.
 
 

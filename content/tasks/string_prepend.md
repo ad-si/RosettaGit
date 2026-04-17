@@ -804,7 +804,7 @@ String prepend
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=cd5ab867c22e872d69ed81fd9da96707 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=cd5ab867c22e872d69ed81fd9da96707)'''
 
 ```gambas
 Public Sub Main()

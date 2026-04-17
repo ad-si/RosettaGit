@@ -86,9 +86,9 @@ It could also make a great task too.
 ### = Did it Already =
 
 
-I've been [http://nongnu.org/txr/rosetta-solutions.html doing this] for the TXR language for many years now. If you read the second paragraph in the navigation pane, you will notice that it links to the pair of scripts for generating the page.
+I've been [doing this](http://nongnu.org/txr/rosetta-solutions.html) for the TXR language for many years now. If you read the second paragraph in the navigation pane, you will notice that it links to the pair of scripts for generating the page.
 
-One script scrapes the examples over HTTP; it works by navigating edit links and getting the actual markup source code inside the examples. The generation script parses the markup, and implements a lot of the formatting. It extracts the TXR code and applies syntax coloring to it with the help of the Vim editor.  The [http://nongnu.org/txr/highlight.exp <code>highlight.exp</code>] expect script for invoking Vim noninteractively isn't linked to from the page, but here it is.
+One script scrapes the examples over HTTP; it works by navigating edit links and getting the actual markup source code inside the examples. The generation script parses the markup, and implements a lot of the formatting. It extracts the TXR code and applies syntax coloring to it with the help of the Vim editor.  The [<code>highlight.exp</code>](http://nongnu.org/txr/highlight.exp) expect script for invoking Vim noninteractively isn't linked to from the page, but here it is.
 
 From time to time (once in a blue moon) I run the fetching script. Then do a <code>diff</code> between the newly downloaded file and the previously downloaded one. If there are any changes, I replace the stable copy and run the second script to regenerate the page.
 
@@ -100,6 +100,6 @@ There is another reason why I follow this procedure. There are some race conditi
 ### = Python Library =
 
 
-I created [https://github.com/gerph/rosettacode a library] for my own use yesterday, which can extract the Category, Task, Language and CodeBlock (my names for those things - it's likely that they have other names on RC), from the site. I'm only using it so that I could extract C snippets to test against a compiler, but I thought it may be useful to others, so I've tidied it up and added a simple CLI tool to the front. It doesn't work well for some things, but it might be useful for this case or anyone else wanting to extract the code in a structured way.
+I created [a library](https://github.com/gerph/rosettacode) for my own use yesterday, which can extract the Category, Task, Language and CodeBlock (my names for those things - it's likely that they have other names on RC), from the site. I'm only using it so that I could extract C snippets to test against a compiler, but I thought it may be useful to others, so I've tidied it up and added a simple CLI tool to the front. It doesn't work well for some things, but it might be useful for this case or anyone else wanting to extract the code in a structured way.
 
 [[User:Gerph|Gerph]] ([[User talk:Gerph|talk]]) 21:21, 10 May 2019 (UTC)

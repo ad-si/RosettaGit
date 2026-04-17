@@ -62,7 +62,7 @@ One iteration of the overhand shuffle is defined as:
 
 ;Bonus
 Implement other methods described in the Wikipedia
-article:   [https://en.wikipedia.org/wiki/Shuffling#Shuffling_techniques card shuffling].
+article:   [card shuffling](https://en.wikipedia.org/wiki/Shuffling#Shuffling_techniques).
 
 Allow for "human errors" of imperfect cutting and interleaving.
 

@@ -52,7 +52,7 @@ languages = [
 
 ## Task
 
-Show   [http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg ASCII character set]   from values   '''32'''   to   '''127'''   (decimal)   in a table format.
+Show   [ASCII character set](http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg)   from values   '''32'''   to   '''127'''   (decimal)   in a table format.
 
 
 
@@ -3200,7 +3200,7 @@ chars.each_slice(chars.size/6).to_a.transpose.each{|s| puts s.join("  ")}
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/ouiyD9x/0 ScalaFiddle (your local ES aka JavaScript execution, non JVM)] or [https://scastie.scala-lang.org/OD7rBCSMQgKSyKKcGB24cg Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (your local ES aka JavaScript execution, non JVM)](https://scalafiddle.io/sf/ouiyD9x/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/OD7rBCSMQgKSyKKcGB24cg).
 ```Scala
 object AsciiTable extends App {
   val (strtCharVal, lastCharVal, nColumns) = (' '.toByte, '\u007F'.toByte, 6)
@@ -3392,7 +3392,7 @@ new qapp
 
 Output:
 
-[http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg Show Ascii table]
+[Show Ascii table](http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg)
 
 =={{Header|Rust}}==
 ```Rust

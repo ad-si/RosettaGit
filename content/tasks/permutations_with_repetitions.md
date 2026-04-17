@@ -435,7 +435,7 @@ Nicole Kidman; Keith Urban; Chris Ciaffa; Chris Ciaffa;  => Sunday + Faith as ex
 
 ## AutoHotkey
 
-Use the function from http://rosettacode.org/wiki/Permutations#Alternate_Version with opt=1
+Use the function from <http://rosettacode.org/wiki/Permutations#Alternate_Version> with opt=1
 
 ```ahk
 P(n,k="",opt=0,delim="",str="") { ; generate all n choose k permutations lexicographically

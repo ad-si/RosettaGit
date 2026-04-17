@@ -235,8 +235,8 @@ package  {
 
 ## AutoHotkey
 
-requires the GDI+ Library from http://www.autohotkey.com/forum/viewtopic.php?t=32238
-this code from http://www.autohotkey.com/forum/viewtopic.php?p=231836#231836
+requires the GDI+ Library from <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
+this code from <http://www.autohotkey.com/forum/viewtopic.php?p=231836#231836>
 draws a very nice clock with GDI+
 
 ```AHK
@@ -1197,7 +1197,7 @@ public class Clock : Form
 ## EasyLang
 
 
-[https://easylang.online/apps/analog-clock.html Run it]
+[Run it](https://easylang.online/apps/analog-clock.html)
 
 <lang>func draw hour min sec . .
   # dial
@@ -3009,7 +3009,7 @@ Because the Amstrad CPC does not have an RTC, we first have to ask the user for 
 ## Lua
 
 ==={{libheader|LÖVE}}===
-Several nice clocks in the [http://love2d.org/forums/viewtopic.php?f=5&t=77346 LÖVE-forum]
+Several nice clocks in the [LÖVE-forum](http://love2d.org/forums/viewtopic.php?f=5&t=77346)
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
@@ -3179,7 +3179,7 @@ while true:
 ## OCaml
 
 
-Using only the standard library of OCaml with its [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html Graphics] module:
+Using only the standard library of OCaml with its [Graphics](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html) module:
 
 
 ```ocaml
@@ -3258,7 +3258,7 @@ let () =
 ###  GTK + Cairo
 
 
-Using the libraries GTK2 and Cairo and their OCaml bindings [http://forge.ocamlcore.org/projects/lablgtk/ LablGTK] and [http://forge.ocamlcore.org/projects/cairo/ ocaml-cairo].
+Using the libraries GTK2 and Cairo and their OCaml bindings [LablGTK](http://forge.ocamlcore.org/projects/lablgtk/) and [ocaml-cairo](http://forge.ocamlcore.org/projects/cairo/).
 
  # compile with:
  ocamlopt -I +lablgtk2 -I +cairo -o gtkclock.opt \
@@ -3343,7 +3343,7 @@ let () =
 
 A screenshot of my clock can be seen on my dropbox:
 
-https://www.dropbox.com/sh/h0dycdshv04c5lz/5oHFfI3t14?n=132389230
+<https://www.dropbox.com/sh/h0dycdshv04c5lz/5oHFfI3t14?n=132389230>
 
 It runs nicely on Windows 7 with ooRexx installed.
 
@@ -3633,7 +3633,7 @@ It runs nicely on Windows 7 with ooRexx installed.
 ===version 2 runs under Windows, Linux, and MacOSX===
 A screenshot of this clock can be seen on my dropbox (clocka.jpg)
 
-https://www.dropbox.com/sh/h0dycdshv04c5lz/5oHFfI3t14?n=132389230
+<https://www.dropbox.com/sh/h0dycdshv04c5lz/5oHFfI3t14?n=132389230>
 
 ```oorexx
 /* REXX ---------------------------------------------------------------
@@ -4017,7 +4017,7 @@ The distribution also contains demo\tinEWGdemo\tindemo\clock.exw, which is a win
 
 ## PicoLisp
 
-This is an animated ASCII drawing of the "Berlin-Uhr", a clock built to display the time according to the principles of set theory, which is installed in Berlin since 1975. See [http://www.surveyor.in-berlin.de/berlin/uhr/indexe.html www.surveyor.in-berlin.de/berlin/uhr/indexe.html].
+This is an animated ASCII drawing of the "Berlin-Uhr", a clock built to display the time according to the principles of set theory, which is installed in Berlin since 1975. See [www.surveyor.in-berlin.de/berlin/uhr/indexe.html](http://www.surveyor.in-berlin.de/berlin/uhr/indexe.html).
 ```PicoLisp
 (de draw Lst
    (for L Lst
@@ -4180,7 +4180,7 @@ Until event = #PB_Event_CloseWindow
 
 ## Python
 
-[http://www.thinkgeek.com/gadgets/watches/6a17/ Think Geek Binary Clock]
+[Think Geek Binary Clock](http://www.thinkgeek.com/gadgets/watches/6a17/)
 ### Textmode
 
 
@@ -4222,7 +4222,7 @@ print secs(s)
 
 ==={{libheader|VPython}}===
 There is a 3D analog clock in the
-[http://www.vpython.org/contents/contributed/cxvp_clock.py VPython contributed section]
+[VPython contributed section](http://www.vpython.org/contents/contributed/cxvp_clock.py)
 
 
 ## Racket
@@ -4737,7 +4737,7 @@ object Clock extends App {
 
 ### Berliner Uhr
 
-See [[http://en.wikipedia.org/wiki/Mengenlehreuhr The Berlin set theory clock]]
+See [The Berlin set theory clock](http://en.wikipedia.org/wiki/Mengenlehreuhr)
 
 ```scala
 import java.time.LocalTime
@@ -4796,7 +4796,7 @@ class QDclock extends java.applet.Applet with Runnable {
 
 ## Scheme
 
-Translation of a Tcl example at http://wiki.tcl.tk/1011
+Translation of a Tcl example at <http://wiki.tcl.tk/1011>
 The program displays an analogue clock with three hands, updating once a second.
 
 
@@ -4868,7 +4868,7 @@ The program displays an analogue clock with three hands, updating once a second.
 
 ## Scratch
 
-One can view the Scratch solution to this task and inspect its code at the [https://scratch.mit.edu/projects/64809384/ Scratch Website].  (The code for visual programming languages is difficult to post directly here at Rosetta Code.)
+One can view the Scratch solution to this task and inspect its code at the [Scratch Website](https://scratch.mit.edu/projects/64809384/).  (The code for visual programming languages is difficult to post directly here at Rosetta Code.)
 
 True to the spirit of the task description, this is a very bare-bones clock.  It's a blank-faced analog clock having second (red), minute (green) and hour (blue) hands.  Each hand is a sprite, which has its own script to provide a movement.  When the program is started, all hands are positioned at the pivot and rotated to indicate the current (apparently local) time.  The second hand is then put into an infinite loop that provides the tick, moving it every second to the current second.  I found that a loop delay of 0.1 seconds resulted is smooth operation of the second hand.  When the second hand reaches 0, it broadcasts a <tt>set_minute</tt> signal.  Acting upon this signal, the minute hand advances to the current minute.  When the minute is 0 modulo 12, is broadcasts a <tt>set_hour</tt> signal.  The hour hand responds to this signal by advancing by a fifth of an hour (so that like the minute and second hands, it advances 60 times as it makes a complete circuit of the clock face).
 

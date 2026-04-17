@@ -12,4 +12,4 @@ tags = []
 This is a scripting language created by [Apple, Inc](https://rosettacode.org/wiki/Apple,_Inc). It provides a [Mac](https://rosettacode.org/wiki/Mac) user the ability to easily transfer data between applications and process the data to their needs.
 
 AppleScript is a trademark of Apple, Inc.
-* [https://duckduckgo.com/?q=AppleScript Duck AppleScript]
+* [Duck AppleScript](https://duckduckgo.com/?q=AppleScript)

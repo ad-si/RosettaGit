@@ -17,4 +17,4 @@ Bifernod is an IIS and Apache httpd module that enables the use of the advanced 
 Versions exist for Apache httpd and compatible HTTP Servers on Mac OSX, Linux and possibly other Unix variants.
 The Windows version supports both Apache httpd and the IIS ISAPI .
 
-http://www.tabasoft.it/biferno/
+<http://www.tabasoft.it/biferno/>

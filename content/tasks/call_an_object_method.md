@@ -653,7 +653,7 @@ main
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f

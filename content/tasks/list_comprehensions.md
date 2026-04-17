@@ -1472,7 +1472,7 @@ Output:
 
 ### ES6
 
-See [https://developer.mozilla.org/en/New_in_JavaScript_1.7#Array_comprehensions here] for more details
+See [here](https://developer.mozilla.org/en/New_in_JavaScript_1.7#Array_comprehensions) for more details
 
 
 ```javascript
@@ -2046,7 +2046,7 @@ Output:
 ## OCaml
 
 
-[http://batteries.forge.ocamlcore.org/ OCaml Batteries Included] has uniform comprehension syntax for lists, arrays, enumerations (like streams), lazy lists (like lists but evaluated on-demand), sets, hashtables, etc.
+[OCaml Batteries Included](http://batteries.forge.ocamlcore.org/) has uniform comprehension syntax for lists, arrays, enumerations (like streams), lazy lists (like lists but evaluated on-demand), sets, hashtables, etc.
 
 Comprehension are of the form
 <code>[? expression | x <- enumeration ; condition; condition ; ...]</code>
@@ -2093,7 +2093,7 @@ A standard OCaml distribution also includes a number of camlp4 extensions, inclu
 
 Oz does not have list comprehension.
 
-However, there is a list comprehension package available [http://oz-code.googlecode.com/files/ListComprehension.zip here]. It uses the <em>unofficial and deprecated</em> macro system. Usage example:
+However, there is a list comprehension package available [here](http://oz-code.googlecode.com/files/ListComprehension.zip). It uses the <em>unofficial and deprecated</em> macro system. Usage example:
 
 
 ```oz
@@ -2904,7 +2904,7 @@ res36: List[(Int, Int, Int)] = List((3,4,5), (5,12,13), (6,8,10), (8,15,17), (9,
 
 ## Scheme
 
-Scheme has no native list comprehensions, but SRFI-42 [http://srfi.schemers.org/srfi-42/srfi-42.html] provides them:
+Scheme has no native list comprehensions, but SRFI-42 <http://srfi.schemers.org/srfi-42/srfi-42.html> provides them:
 
 
 ```scheme
@@ -3048,7 +3048,7 @@ Tcl does not have list comprehensions built-in to the language, but they can be 
 ```tcl
 package require Tcl 8.5
 
-# from http://wiki.tcl.tk/12574
+# from <http://wiki.tcl.tk/12574>
 proc lcomp {expression args} {
     # Check the number of arguments.
     if {[llength $args] < 2} {

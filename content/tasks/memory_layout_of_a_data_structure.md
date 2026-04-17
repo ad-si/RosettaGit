@@ -849,7 +849,7 @@ Output:
 
 ## OCaml
 
-'''Library:''' [http://code.google.com/p/ocaml-extlib/ extlib]
+'''Library:''' [extlib](http://code.google.com/p/ocaml-extlib/)
 
 ```ocaml
 open ExtLib
@@ -979,10 +979,10 @@ Alternatively you could use bit-masks, or it may be possible to enhance builtins
 ## PicoLisp
 
 PicoLisp can handle bit fields or bit structures only as bignums. They can be
-manipulated with '[http://software-lab.de/doc/ref_.html#& &]',
-'[http://software-lab.de/doc/ref_.html#| |]' and
-'[http://software-lab.de/doc/refX.html#x| x|]',
-or tested with '[http://software-lab.de/doc/refB.html#bit? bit?]'.
+manipulated with '[&](http://software-lab.de/doc/ref_.html#&)',
+'[|](http://software-lab.de/doc/ref_.html#|)' and
+'[x|](http://software-lab.de/doc/refX.html#x|)',
+or tested with '[bit?](http://software-lab.de/doc/refB.html#bit?)'.
 
 ```PicoLisp
 # Define bit constants
@@ -1018,7 +1018,7 @@ declare 1 RS232_layout,
 
 ## Python
 
-The ctypes module allows for the creation of Structures that can map between the structures of C and python datatypes. Within Structures, [http://docs.python.org/library/ctypes.html#bit-fields-in-structures-and-unions bit fields] can be created.
+The ctypes module allows for the creation of Structures that can map between the structures of C and python datatypes. Within Structures, [bit fields](http://docs.python.org/library/ctypes.html#bit-fields-in-structures-and-unions) can be created.
 
 
 ```python
@@ -1321,7 +1321,7 @@ rs_232: arg ,x;    parse arg pins,ox             /*X  is  uppercased  when using
 
 ## Ruby
 
-Uses the [http://redshift.sourceforge.net/bit-struct/ BitStruct] module, which is handy but awkward to instantiate objects.
+Uses the [BitStruct](http://redshift.sourceforge.net/bit-struct/) module, which is handy but awkward to instantiate objects.
 
 ```ruby
 require 'bit-struct'

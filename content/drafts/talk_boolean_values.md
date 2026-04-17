@@ -22,9 +22,9 @@ This leaves out some important history and the full scope of what the word "Bool
 
 See, for example:
 
-http://sumon3get.hubpages.com/hub/Basic-Concept-And-History-Of-Boolean-Algebra
+<http://sumon3get.hubpages.com/hub/Basic-Concept-And-History-Of-Boolean-Algebra>
 
-http://mathworld.wolfram.com/BooleanAlgebra.html
+<http://mathworld.wolfram.com/BooleanAlgebra.html>
 
 Remedies might include:
 
@@ -78,7 +78,7 @@ Also, I cannot find any treatment of "logical not" in older treatments of boolea
 
 ::: Eh I didn't say anything about two-valued system.  Go through literatures and you'll see that LCM and GCD can make a Boolean algebra on ''some'' bounded sets like {1, 2, 3, 6} (all divisors of 6); on the set of all positive integers (or non-negative integers, or all integers) it doesn't work because you can't have a consistent complement/NOT operator, as I've shown above.  You can forgo the NOT operator and universal bounds, and call the rest "Rdm Algebra", or "Ledrug Algebra" if you don't like it, but it's not Boolean: Boole intended to formalize thought process and decision making, thus lacking a negation operation makes it singly useless in this regard.
 
-:::: The complement only exists in two-valued boolean algebras.  It is not a characteristic of all boolean algebras.  https://en.wikipedia.org/wiki/Boolean_ring#Notations --[[User:Rdm|Rdm]] 19:36, 1 May 2012 (UTC)
+:::: The complement only exists in two-valued boolean algebras.  It is not a characteristic of all boolean algebras.  <https://en.wikipedia.org/wiki/Boolean_ring#Notations> --[[User:Rdm|Rdm]] 19:36, 1 May 2012 (UTC)
 
 ::::: The complement is not required for Boolean lattice or Boolean ring, but it is required for Boolean ''Algebra'', see the same page you linked. It's besides the point anyway, the two value system is so well established that it's hard not to think of it when "boolean" is mentioned. --[[User:Ledrug|Ledrug]] 19:55, 1 May 2012 (UTC)
 

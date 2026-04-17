@@ -151,7 +151,7 @@ One can also find   ''lcm''   by merging the [[prime decomposition]]s of both   
 
 ## See also
 
-*   MathWorld entry:   [http://mathworld.wolfram.com/LeastCommonMultiple.html Least Common Multiple].
+*   MathWorld entry:   [Least Common Multiple](http://mathworld.wolfram.com/LeastCommonMultiple.html).
 *   Wikipedia entry:   [[wp:Least common multiple|Least common multiple]].
 
 
@@ -423,7 +423,7 @@ end gcd
 ## Arendelle
 
 
-For GCD function check out [http://rosettacode.org/wiki/Greatest_common_divisor#Arendelle here]
+For GCD function check out [here](http://rosettacode.org/wiki/Greatest_common_divisor#Arendelle)
 
 
 ```txt
@@ -1664,7 +1664,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides lcm and gcd] and looks like this:
+[numbers provides lcm and gcd](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) and looks like this:
 
 ```Icon
 procedure lcm(i, j)		#: least common multiple
@@ -2638,7 +2638,7 @@ EndProcedure
 
 ### =gcd=
 
-Using the fractions libraries [http://docs.python.org/library/fractions.html?highlight=fractions.gcd#fractions.gcd gcd] function:
+Using the fractions libraries [gcd](http://docs.python.org/library/fractions.html?highlight=fractions.gcd#fractions.gcd) function:
 
 ```python
 >>>
@@ -3174,7 +3174,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#lcm]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#lcm>
 
 
 ## Sidef

@@ -17,7 +17,7 @@ Is there an RC article for this? --[[User:Mcandre]]
 
 == C int2str ==
 
-I removed <tt>int2str</tt> in [http://rosettacode.org/mw/index.php?title=Increment_a_numerical_string&diff=83245&oldid=81783 a recent revision] because of "various bugs". For the record the issues I noticed are:
+I removed <tt>int2str</tt> in [a recent revision](http://rosettacode.org/mw/index.php?title=Increment_a_numerical_string&diff=83245&oldid=81783) because of "various bugs". For the record the issues I noticed are:
 
 # The integer input has to be greater than 0, otherwise the output is bogus.
 # The occasional use of a static char buffer inside this function is unnecessary and makes it non-threadsafe.

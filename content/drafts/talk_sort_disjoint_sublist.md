@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Adapted from a question/answer [http://stackoverflow.com/questions/4962343/how-to-sort-a-disjoint-sublist/4976580#4976580 here]. Note that the solution for languages with pointers might be different than the Python as you may be able to adapt a sort routine to sort via an extra level of indirection. --[[User:Paddy3118|Paddy3118]] 06:34, 12 February 2011 (UTC)
+Adapted from a question/answer [here](http://stackoverflow.com/questions/4962343/how-to-sort-a-disjoint-sublist/4976580#4976580). Note that the solution for languages with pointers might be different than the Python as you may be able to adapt a sort routine to sort via an extra level of indirection. --[[User:Paddy3118|Paddy3118]] 06:34, 12 February 2011 (UTC)
 
 :... Which has just been done by the Go example. Sweet! --[[User:Paddy3118|Paddy3118]] 06:02, 14 February 2011 (UTC)
 

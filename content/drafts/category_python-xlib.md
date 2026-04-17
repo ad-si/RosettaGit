@@ -16,5 +16,5 @@ Python-Versions: 1.5.2 &ndash; 2.6
 
 Package-Name: python-xlib
 
-Website: [http://python-xlib.sourceforge.net/ python-xlib.sf.net]
+Website: [python-xlib.sf.net](http://python-xlib.sourceforge.net/)
 [[Category:Xlib]]

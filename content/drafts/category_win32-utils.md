@@ -17,4 +17,4 @@ Win32Utils - [[Ruby]] Libraries for MS Windows
 
 These libraries are designed to help you interface with various MS Windows systems, ranging from the clipboard to services. 
 
-http://win32utils.rubyforge.org/
+<http://win32utils.rubyforge.org/>

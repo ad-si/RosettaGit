@@ -358,7 +358,7 @@ int main(int c, char **v)
 
 This uses modules of the [[Bitmap]] and [[Grayscale image]] Tasks.
 
-The implementation uses algorithm described in [http://nomis80.org/ctmf.html Median Filtering in Constant Time]
+The implementation uses algorithm described in [Median Filtering in Constant Time](http://nomis80.org/ctmf.html)
 paper with some slight differences, that shouldn't have impact on complexity.
 
 Currently this code works only on greyscale images.
@@ -447,7 +447,7 @@ Compile with -version=median_filter_main to run the demo.
 
 ## GDL
 
-GDL has no inbuilt median filter function, which is native in IDL. This example is based on pseudocode here: http://en.wikipedia.org/wiki/Median_filter#2D_median_filter_pseudo_code, however, it works with 1D arrays only. It does not process boundaries.
+GDL has no inbuilt median filter function, which is native in IDL. This example is based on pseudocode here: <http://en.wikipedia.org/wiki/Median_filter#2D_median_filter_pseudo_code>, however, it works with 1D arrays only. It does not process boundaries.
 
 ```GDL
 
@@ -881,8 +881,8 @@ my $smoothed = med2d $image, ones(3,3), {Boundary => Truncate};
 wpic $smoothed, 'plasma_median.png';
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma.png plasma.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma_median.png plasma_median.png]
+Compare offsite images: [plasma.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma.png) vs.
+[plasma_median.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma_median.png)
 
 ## Perl 6
 
@@ -898,8 +898,8 @@ my $smoothed = med2d($image, ones(3,3), {Boundary => 'Truncate'});
 wpic $smoothed, 'plasma_median.png';
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/plasma-perl6.png plasma.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/plasma_median.png plasma_median.png]
+Compare offsite images: [plasma.png](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/plasma-perl6.png) vs.
+[plasma_median.png](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/plasma_median.png)
 
 
 ## Phix
@@ -1183,7 +1183,7 @@ pack [label .dst.l -image [medianFilter teapot]]
 
 ## zkl
 
-Uses Image Magick and the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses Image Magick and the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 
 ```zkl
@@ -1209,6 +1209,6 @@ filtered:=medianFilter(PPM.readJPGFile("lena.jpg"));
 filtered.writeJPGFile("lenaMedianFiltered.zkl.jpg");
 ```
 
-See the [http://www.zenkinetic.com/Images/RosettaCode/lenaMedianFiltered.zkl.jpg filtered image]
-and the [http://www.zenkinetic.com/Images/RosettaCode/lena.jpg orginal].
+See the [filtered image](http://www.zenkinetic.com/Images/RosettaCode/lenaMedianFiltered.zkl.jpg)
+and the [orginal](http://www.zenkinetic.com/Images/RosettaCode/lena.jpg).
 

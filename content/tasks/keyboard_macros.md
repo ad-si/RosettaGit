@@ -44,7 +44,7 @@ languages = [
 
 Show how to link user defined methods to user defined keys.
 
-An example of this is the facility provided by emacs for [http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html key bindings].
+An example of this is the facility provided by emacs for [key bindings](http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html).
 
 These key bindings may be application-specific or system-wide; state which you have done.
 
@@ -83,7 +83,7 @@ resume()
 }
 ```
 
-See [http://www.autohotkey.com/forum/topic44290.html&highlight=vim ahk-viper-mode] for a context sensitive vi key bindings example.
+See [ahk-viper-mode](http://www.autohotkey.com/forum/topic44290.html&highlight=vim) for a context sensitive vi key bindings example.
 
 
 ## BBC BASIC
@@ -253,7 +253,7 @@ The '''(meta-key "key-value" "bound-string")''' function binds a modifier+key ke
 
 Note that 'cgo' does not support C unions as such - it expresses them as byte arrays. Consequently, the easiest way to access a field of a union (such as XEvent) is to write a C assessor function for it and then invoke that function from the Go side.
 
-Note also that if you pass 'nil' to the XOpenDisplay function, it defaults to the value of the DISPLAY environment variable which has to be in a certain format to enable a connection to the X server to be established - check [https://www.x.org/releases/X11R7.7/doc/libX11/libX11/libX11.html the documentation] for details.
+Note also that if you pass 'nil' to the XOpenDisplay function, it defaults to the value of the DISPLAY environment variable which has to be in a certain format to enable a connection to the X server to be established - check [the documentation](https://www.x.org/releases/X11R7.7/doc/libX11/libX11/libX11.html) for details.
 
 ```go
 package main
@@ -445,7 +445,7 @@ document.onkeydown = function(evt) {
 ```
 
 
-See [http://www.quirksmode.org/js/keys.html quirksmode] for more information about key detection in JavaScript.
+See [quirksmode](http://www.quirksmode.org/js/keys.html) for more information about key detection in JavaScript.
 
 
 ## Julia
@@ -930,7 +930,7 @@ Current value is 2
 ## PureBasic
 
 PureBasic has support for shortcut/macro creation in any window that supports events. This allows for creation of both single and combinations as shown in the code below.
-For full set of combinations on PC, Mac & Linux please see the official manual, [http://www.purebasic.com/documentation/window/addkeyboardshortcut.html here].
+For full set of combinations on PC, Mac & Linux please see the official manual, [here](http://www.purebasic.com/documentation/window/addkeyboardshortcut.html).
 
 ```PureBasic
 #Win   = 0

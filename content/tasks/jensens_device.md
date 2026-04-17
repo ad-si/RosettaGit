@@ -590,7 +590,7 @@ Output: 5.187...
 ## E
 
 
-In E, the distinct mutable locations behind assignable variables can be reified as [http://wiki.erights.org/wiki/Slot Slot] objects. The E language allows a variable name (''noun'') to be bound to a particular slot, and the slot of an already-bound noun to be extracted, using the <tt>&</tt> operator.
+In E, the distinct mutable locations behind assignable variables can be reified as [Slot](http://wiki.erights.org/wiki/Slot) objects. The E language allows a variable name (''noun'') to be bound to a particular slot, and the slot of an already-bound noun to be extracted, using the <tt>&</tt> operator.
 
 (The definition of the outer <var>i</var> has been moved down to emphasize that it is unrelated to the <var>i</var> inside of <var>sum</var>.)
 
@@ -1685,7 +1685,7 @@ Output: 5.18737751764
 
 R uses a [[wp:Evaluation_strategy#Call_by_need|call by need]] evaluation strategy where function inputs
 are evaluated on demand and then cached; functions can bypass the normal argument evaluation by using functions <tt>substitute</tt> and <tt>match.call</tt> to access the parse tree of the as-yet-unevaluated arguments, and using <tt>parent.frame</tt> to access the scope of the caller. There are some proposed
-[http://developer.r-project.org/nonstandard-eval.pdf conventions] to do this in a way that is less confusing to the user
+[conventions](http://developer.r-project.org/nonstandard-eval.pdf) to do this in a way that is less confusing to the user
 of a function; however, ignoring conventions we can come disturbingly close to the ALGOL call-by-name semantics.
 
 

@@ -145,7 +145,7 @@ The coder may define new '''[[wp:Operator (programming)|operators]]''' and ''bot
 ||→
 ||'''new''' (generator)
 |}
-These are technically not operators, rather they are considered "[http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rr52.html units associated with names]"
+These are technically not operators, rather they are considered "[units associated with names](http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rr52.html)"
 <!-- '''diag''', '''trnsp''', '''row''', '''col''' as per S. G. van der Meulen, M. Veldhorst. TORRIX - A programming language for operations on vectors and matrices over arbitrary ﬁelds and of variable size. Rijksuniversiteit Utrecht [1977]. -->
 
 
@@ -203,7 +203,7 @@ Note: Tertiaries include names '''nil''' and ○.
 
 ### =Assignation and identity relations etc=
 
-Again, these are technically not operators, rather they are considered "[http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rr52.html units associated with names]"
+Again, these are technically not operators, rather they are considered "[units associated with names](http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rr52.html)"
 {|class="wikitable"
 !bgcolor=#cccccc|'''prio'''rity
 (Quaternaries)
@@ -224,8 +224,8 @@ And (unlike C's comma operator) the ";" can be used to indicate statements are d
 Key: The super scripts indicate the following:
 * ALGOL 68<sup>Rev0</sup> indicates Algol 68 Final Report (Essentially Revision 0)
 * ALGOL 68<sup>Rev0&1</sup> indicates Algol 68 Revised Report (Essentially Revision 1)
-* ALGOL 68<sup>C</sup> indicates Cambridge University Algol 68[http://www.cantab.net/users/chris.cheney/Algol68C/].
-* ALGOL 68<sup>G</sup> indicates Algol 68 Genie[http://jmvdveer.home.xs4all.nl]
+* ALGOL 68<sup>C</sup> indicates Cambridge University Algol 68<http://www.cantab.net/users/chris.cheney/Algol68C/>.
+* ALGOL 68<sup>G</sup> indicates Algol 68 Genie<http://jmvdveer.home.xs4all.nl>
 
 
 ## ALGOL W
@@ -254,7 +254,7 @@ Key: The super scripts indicate the following:
 
 ## AWK
 
-See also: [https://www.gnu.org/software/gawk/manual/html_node/Precedence.html#Precedence gawk-Reference]
+See also: [gawk-Reference](https://www.gnu.org/software/gawk/manual/html_node/Precedence.html#Precedence)
 
 ```AWK
 
@@ -326,7 +326,7 @@ See also: [https://www.gnu.org/software/gawk/manual/html_node/Precedence.html#Pr
 
 ## bc
 
-From the [http://pubs.opengroup.org/onlinepubs/9699919799/utilities/bc.html POSIX Standard], ordered by decreasing precedence:
+From the [POSIX Standard](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/bc.html), ordered by decreasing precedence:
 {| class="wikitable"
 ! Precedence !! Operator(s) !! Description !! Associativity
 |-
@@ -436,7 +436,7 @@ If you are wondering what the discussed unary operators are for, see this table:
 
 ## C
 
-Same as [http://rosettacode.org/wiki/Operator_precedence#C.2B.2B|See C++].
+Same as [C++](http://rosettacode.org/wiki/Operator_precedence#C.2B.2B|See).
 
 
 ## C++
@@ -650,7 +650,7 @@ The following is a table that lists the [[wp:order of operations|precedence]] an
 | Left-to-right
 |}
 
-For quick reference, see also [http://cpp.operator-precedence.com this] equivalent, color-coded table.
+For quick reference, see also [this](http://cpp.operator-precedence.com) equivalent, color-coded table.
 
 
 =={{header|Caché ObjectScript}}==
@@ -670,12 +670,12 @@ SAMPLES>write 18 / (2 * 3) + 7
 
 As is the case with LISPs in general, there is no need to worry about operator precedence.  This is one of the benefits of S-Expressions and [[wp:Polish_notation#Computer_programming|prefix notation]].  All functions evaluate left to right and inside out.  The operators in Clojure are just functions, and everything is fully parenthesized.
 
-That being said, there is a macro expansion phase that precedes compilation, and with macros you have great power to change the rules.  A couple of the most common macros with respect to ordering are the [http://clojuredocs.org/clojure_core/clojure.core/-%3E thread-first macro] and the [http://clojuredocs.org/clojure_core/clojure.core/-%3E%3E thread-last macro].  These allow you to order expressions as a chain, which in many cases is preferable for readability.
+That being said, there is a macro expansion phase that precedes compilation, and with macros you have great power to change the rules.  A couple of the most common macros with respect to ordering are the [thread-first macro](http://clojuredocs.org/clojure_core/clojure.core/-%3E) and the [thread-last macro](http://clojuredocs.org/clojure_core/clojure.core/-%3E%3E).  These allow you to order expressions as a chain, which in many cases is preferable for readability.
 
 
 ## COBOL
 
-The following data was derived from [http://www.cobolstandard.info/j4/files/std.zip the 2009 draft COBOL 20XX Standard].
+The following data was derived from [the 2009 draft COBOL 20XX Standard](http://www.cobolstandard.info/j4/files/std.zip).
 
 
 ### Arithmetic Expressions
@@ -745,7 +745,7 @@ There is no need to worry about operator precedence in Common Lisp and Lisp's in
 ## D
 
 
-A [http://wiki.dlang.org/Operator_precedence copy from the D wiki].
+A [copy from the D wiki](http://wiki.dlang.org/Operator_precedence).
 
 {| class="wikitable"
 ! Priority || Description              || Operators   || Comments
@@ -795,7 +795,7 @@ A [http://wiki.dlang.org/Operator_precedence copy from the D wiki].
 ## Eiffel
 
 
-Official documentation: [[http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-367.pdf]], section 8.28.5
+Official documentation: <http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-367.pdf>, section 8.28.5
 {| class="wikitable"
 ! Priority || Operator || Description || Associativity
 |-
@@ -936,10 +936,10 @@ Refer to section 8.32.21 of the aforementioned link for more details.
 
 ## Erlang
 
-Official documentation table: [[http://erlang.org/doc/reference_manual/expressions.html]], see "Operator Precedence" towards the end.
+Official documentation table: <http://erlang.org/doc/reference_manual/expressions.html>, see "Operator Precedence" towards the end.
 
 =={{header|F_Sharp|F#}}==
-[https://msdn.microsoft.com/visualfsharpdocs/conceptual/symbol-and-operator-reference-%5bfsharp%5d#pperator-precedence MSDN documentation]
+[MSDN documentation](https://msdn.microsoft.com/visualfsharpdocs/conceptual/symbol-and-operator-reference-%5bfsharp%5d#pperator-precedence)
 
 
 ## Factor
@@ -955,8 +955,8 @@ the order is simply left to right, in the order of the source code. Even the bra
 
 ## Fortran
 
-* Fortran77 [http://www.fortran.com/F77_std/rjcnf0001-sh-6.html#sh-6.5.1 standard].
-* Fortran [http://www.starlink.rl.ac.uk/docs/sun190.htx/node115.html]
+* Fortran77 [standard](http://www.fortran.com/F77_std/rjcnf0001-sh-6.html#sh-6.5.1).
+* Fortran <http://www.starlink.rl.ac.uk/docs/sun190.htx/node115.html>
 {| class="wikitable"
 !Operators !! Details
 |-
@@ -1064,7 +1064,7 @@ Syntactic elements not in the list are not considered operators in Go; if they p
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Taken from http://www.cs.arizona.edu/icon/refernce/exprlist.htm#expressions
+Taken from <http://www.cs.arizona.edu/icon/refernce/exprlist.htm#expressions>
 (blank lines separate groups of operators with equal precedence):
 
 ```txt
@@ -1255,11 +1255,11 @@ Low Precedence Expressions
 | long right scope
 |}
 
-See http://www.jsoftware.com/help/dictionary/partsofspeech.htm for tokens in each grammatical class.
+See <http://www.jsoftware.com/help/dictionary/partsofspeech.htm> for tokens in each grammatical class.
 
 Note that other parts of speech do not have any precedence, because they are not "operators".
 
-Note that this is an imprecise statement of the grammatical rules.  For a complete treatment, see http://www.jsoftware.com/help/dictionary/dicte.htm
+Note that this is an imprecise statement of the grammatical rules.  For a complete treatment, see <http://www.jsoftware.com/help/dictionary/dicte.htm>
 
 Here's an informal treatment of the grammar:
 
@@ -1278,11 +1278,11 @@ The result of an adverb or a conjunction can have any one of these grammatical c
 
 ## Java
 
-This is well-documented [http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html on the Oracle website].
+This is well-documented [on the Oracle website](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html).
 
 ## JavaScript
 
-Mozilla Developer Network have a nice list of this at [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence JavaScript Reference:Expressions and operators:Operator Precedence]
+Mozilla Developer Network have a nice list of this at [JavaScript Reference:Expressions and operators:Operator Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 
 
 ## jq
@@ -1399,7 +1399,7 @@ left associative.
 
 ## Kotlin
 
-This is well-documented [https://kotlinlang.org/docs/reference/grammar.html on the Kotlin language website].
+This is well-documented [on the Kotlin language website](https://kotlinlang.org/docs/reference/grammar.html).
 
 
 ## LIL
@@ -1449,7 +1449,7 @@ From the LIL readme.txt documentation:
 
 ## Lua
 
-Table available [http://www.lua.org/manual/5.1/manual.html#2.5.6 here]. That table does not contain all operators, however.
+Table available [here](http://www.lua.org/manual/5.1/manual.html#2.5.6). That table does not contain all operators, however.
 {| class="wikitable"
 |-
 ! Precedence
@@ -1555,7 +1555,7 @@ Here is an outline:
 | Compound expression
 | ''e'';''e''
 |}
-There is a table of precedence of all operators on the page [http://reference.wolfram.com/language/tutorial/OperatorInputForms.html tutorial/OperatorInputForms] in Mathematica help.
+There is a table of precedence of all operators on the page [tutorial/OperatorInputForms](http://reference.wolfram.com/language/tutorial/OperatorInputForms.html) in Mathematica help.
 
 
 
@@ -1603,7 +1603,7 @@ Here is an outline:
 | Short-circuit OR ( <code><nowiki>||</nowiki></code>)
 |
 |}
-There is a table of precedence of all operators on the page [http://mathworks.com/help/matlab/matlab_prog/operator-precedence.html]
+There is a table of precedence of all operators on the page <http://mathworks.com/help/matlab/matlab_prog/operator-precedence.html>
 
 
 ## Nim
@@ -1659,7 +1659,7 @@ There is a table of precedence of all operators on the page [http://mathworks.co
 
 ## OCaml
 
-[http://caml.inria.fr/pub/docs/manual-ocaml/expr.html#@manual.kwd32 This table] contains the precedence and associativity of operators and other expression constructs in OCaml, including user-defined operators.
+[This table](http://caml.inria.fr/pub/docs/manual-ocaml/expr.html#@manual.kwd32) contains the precedence and associativity of operators and other expression constructs in OCaml, including user-defined operators.
 
 
 ## Oforth
@@ -1698,12 +1698,12 @@ we must code:
 
 ## Perl
 
-See [http://perldoc.perl.org/perlop.html#Operator-Precedence-and-Associativity the relevant documentation] for a table of Perl 5 operators ordered by precedence level.
+See [the relevant documentation](http://perldoc.perl.org/perlop.html#Operator-Precedence-and-Associativity) for a table of Perl 5 operators ordered by precedence level.
 
 
 ## Perl 6
 
-See [http://perlcabal.org/syn/S03.html#Operator_precedence this table] for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
+See [this table](http://perlcabal.org/syn/S03.html#Operator_precedence) for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
 
 
 ## Phix
@@ -1745,7 +1745,7 @@ Parenthesis is required to mix and/or/xor in an expression.
 
 ## PHP
 
-[http://www.php.net/manual/en/language.operators.precedence.php Operator Precedence]
+[Operator Precedence](http://www.php.net/manual/en/language.operators.precedence.php)
 
 
 ## PARI/GP
@@ -1818,7 +1818,7 @@ There are some exceptions to this standard order:
 * If the [[wp:Short-circuit evaluation|short-circuit operator]] `&&` is used and the left expression is [[Boolean values#PARI/GP|falsy]] (`0`, `[]`, etc.) then the right expression is not evaluated. Similarly, with `||` is the left is truthy then the right expression is not evaluated.
 * Assignment and all of the compound assignment operators need an lvalue on the left; if there is an expression where the rightmost part is an lvalue, assignment happens first. So `1 + n = 4 + 1` first adds 4 to 1, then assigns 5 to n, then adds 1 to 5.
 
-See the User's Guide to PARI/GP in the [http://pari.math.u-bordeaux.fr/doc.html documentation], section 2.4, "GP operators".
+See the User's Guide to PARI/GP in the [documentation](http://pari.math.u-bordeaux.fr/doc.html), section 2.4, "GP operators".
 
 
 ## PicoLisp
@@ -1888,7 +1888,7 @@ Arguments are passed by value.
 
 ## Python
 
-See [http://docs.python.org/py3k/reference/expressions.html?highlight=precedence#summary this table] and the whole page for details on Python version 3.x
+See [this table](http://docs.python.org/py3k/reference/expressions.html?highlight=precedence#summary) and the whole page for details on Python version 3.x
 An excerpt of which is this table:
 
 {| class="wikitable"
@@ -2213,7 +2213,7 @@ Ruby operators, by precedence (high to low), with arity (N), associativity (A), 
 
 ## Scala
 
-Operator precedence is well-documented on the official [https://docs.scala-lang.org/tour/operators.html Scala Documentation | Tour of Scala | Operators ] web page.
+Operator precedence is well-documented on the official [Scala Documentation | Tour of Scala | Operators](https://docs.scala-lang.org/tour/operators.html) web page.
 
 
 ## Scheme
@@ -2292,9 +2292,9 @@ Note: // is the Euclidean division
 ## Seed7
 
 
-Seed7 supports [http://seed7.sourceforge.net/examples/operator.htm user defined operators] with priority and associativity.
+Seed7 supports [user defined operators](http://seed7.sourceforge.net/examples/operator.htm) with priority and associativity.
 This includes user defined operator symbols. Priority and associativity are defined with
-the Seed7 Structured Syntax Description ([http://seed7.sourceforge.net/manual/syntax.htm S7SSD])
+the Seed7 Structured Syntax Description ([S7SSD](http://seed7.sourceforge.net/manual/syntax.htm))
 A S7SSD statement like
 
 ```seed7
@@ -2320,7 +2320,7 @@ The symbol <code>()</code> is a nonterminal symbol and <code>+</code> is a termi
 The S7SSD does not distinguish between different nonterminal symbols.
 Instead it only knows one nonterminal symbol: <code>()</code>.
 
-The include file [http://seed7.sourceforge.net/prg/syntax.htm syntax.s7i] contains the syntax of the predefined operators.
+The include file [syntax.s7i](http://seed7.sourceforge.net/prg/syntax.htm) contains the syntax of the predefined operators.
 The table below is extracted from syntax.s7i:
 
 {| class="wikitable"
@@ -2381,12 +2381,12 @@ For example:
 ```
 
 
-See also the [https://trizen.gitbooks.io/sidef-lang/content/syntax_and_semantics/operator_precedence.html documentation] on the precedence of operators.
+See also the [documentation](https://trizen.gitbooks.io/sidef-lang/content/syntax_and_semantics/operator_precedence.html) on the precedence of operators.
 
 
 ## Tcl
 
-Tcl only supports operators within an expression context (such as the [http://www.tcl.tk/man/tcl8.6/TclCmd/expr.htm#M6 <code>expr</code>] command, which lists the operators with more detail):
+Tcl only supports operators within an expression context (such as the [<code>expr</code>](http://www.tcl.tk/man/tcl8.6/TclCmd/expr.htm#M6) command, which lists the operators with more detail):
 
 {| class="wikitable"
 |-

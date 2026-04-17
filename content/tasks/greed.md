@@ -29,7 +29,7 @@ You may not make a move that places you off the grid or over a previously eaten 
 
 The game is over if there is no more valid moves.
 
-[https://www.youtube.com/watch?v=XQHq6tdxylk&list=PLdvB7n7RN2UDkjHAWCmbQ8okmgSrjWcvE Video on YouTube]
+[Video on YouTube](https://www.youtube.com/watch?v=XQHq6tdxylk&list=PLdvB7n7RN2UDkjHAWCmbQ8okmgSrjWcvE)
 
 
 
@@ -347,7 +347,7 @@ greed "gestures" f {
 MAIN: greed-window
 ```
 
-[https://i.imgur.com/3IEo8cC.png Screenshot of the game after a loss]
+[Screenshot of the game after a loss](https://i.imgur.com/3IEo8cC.png)
 
 
 ## Go

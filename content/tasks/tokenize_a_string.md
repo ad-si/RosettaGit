@@ -1344,7 +1344,7 @@ console.log arr.join "."
 ## Common Lisp
 
 
-There are libraries out there that handle splitting (e.g., [http://www.cliki.net/SPLIT-SEQUENCE SPLIT-SEQUENCE], and the more-general [http://weitz.de/cl-ppcre/ CL-PPCRE]), but this is a simple one-off, too.  When the words are written with write-with-periods, there is no final period after the last word.
+There are libraries out there that handle splitting (e.g., [SPLIT-SEQUENCE](http://www.cliki.net/SPLIT-SEQUENCE), and the more-general [CL-PPCRE](http://weitz.de/cl-ppcre/)), but this is a simple one-off, too.  When the words are written with write-with-periods, there is no final period after the last word.
 
 
 ```lisp
@@ -1722,7 +1722,7 @@ println[join[".", split[",", "Hello,How,Are,You,Today"]]]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=218e240236cdf1419a405abfed906ed3 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=218e240236cdf1419a405abfed906ed3)'''
 
 ```gambas
 Public Sub Main()

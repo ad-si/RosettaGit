@@ -17,8 +17,8 @@ tags = []
 <img src="timb.net/images/RC/Total-circles-area/TCA-all-circles.png" alt="All the circles"/><br/>
 <img src="timb.net/images/RC/Total-circles-area/TCA-split-circles.png" alt="Showing the path edge from split-circles"/>
 
-[[http://timb.net/images/RC/Total-circles-area/TCA-all-circles.png All the circles]]
-[[http://timb.net/images/RC/Total-circles-area/TCA-split-circles.png Showing the path edge from split-circles]]
+[All the circles](http://timb.net/images/RC/Total-circles-area/TCA-all-circles.png)
+[Showing the path edge from split-circles](http://timb.net/images/RC/Total-circles-area/TCA-split-circles.png)
 
 Below are an analytical solution in <code>TCA-analytical.rkt</code>, and a Monte-carlo solution in
 <code>TCA-monte-carlo.rkt</code>. Common code (notably types) is in <code>TCA-types.rkt</code>, and

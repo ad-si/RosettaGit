@@ -88,9 +88,9 @@ Choose one of the following devices:
 
 (Ideally, the program will generate well-formatted calendars for any page width from 20 characters up.)
 
-Kudos (κῦδος) for routines that also transition from [https://en.wikipedia.org/wiki/Julian_calendar Julian] to [https://en.wikipedia.org/wiki/Gregorian_calendar Gregorian calendar].
+Kudos (κῦδος) for routines that also transition from [Julian](https://en.wikipedia.org/wiki/Julian_calendar) to [Gregorian calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
-This task is inspired by [http://www.ee.ryerson.ca/~elf/hack/realmen.html Real Programmers Don't Use PASCAL] by Ed Post, Datamation, volume 29 number 7, July 1983.
+This task is inspired by [Real Programmers Don't Use PASCAL](http://www.ee.ryerson.ca/~elf/hack/realmen.html) by Ed Post, Datamation, volume 29 number 7, July 1983.
  THE REAL PROGRAMMER'S NATURAL HABITAT
  "Taped to the wall is a line-printer Snoopy calender for the year 1969."
 For further Kudos see task [[Calendar - for "real" programmers|CALENDAR]], where all code is to be in UPPERCASE.
@@ -648,8 +648,8 @@ To get a 132-character-wide output, you just have to replace "Init_80" by "Init_
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -3944,7 +3944,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian and IsLeapYear]
+[datetime.icn provides julian and IsLeapYear](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
 
 Output:
 ```txt
@@ -5669,7 +5669,7 @@ is_leap_year(Year) :-
 
 ## Python
 
-The Python [https://docs.python.org/3/library/calendar.html calendar].prcal function prints calendars with the following formatting options: optional parameters w, l, and c are for date column width, lines per week, and number of spaces between month columns, respectively.
+The Python [calendar](https://docs.python.org/3/library/calendar.html).prcal function prints calendars with the following formatting options: optional parameters w, l, and c are for date column width, lines per week, and number of spaces between month columns, respectively.
 
 
 ```python
@@ -6315,7 +6315,7 @@ func showdays(ind)
 
 Output image:
 
-[https://www.dropbox.com/s/sj37yypiq45o5cd/CalmoSoftCalendar.jpg?dl=0 Calendar]
+[Calendar](https://www.dropbox.com/s/sj37yypiq45o5cd/CalmoSoftCalendar.jpg?dl=0)
 
 
 ## Ruby
@@ -7022,7 +7022,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/date.htm#calendar]
+Original source: <http://seed7.sourceforge.net/algorith/date.htm#calendar>
 
 The output of this program is:
 
@@ -7371,7 +7371,7 @@ END;
 ## Smalltalk
 
 
-This implementation has been developed using '''Cuis Smalltalk''' [https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev] with '''Aconcagua''' loaded.
+This implementation has been developed using '''Cuis Smalltalk''' <https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev> with '''Aconcagua''' loaded.
 To run it, evaluate:
 ```smalltalk
 CalendarPrinter printOnTranscriptForYearNumber: 1969

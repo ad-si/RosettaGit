@@ -16,9 +16,9 @@ This task came from discussions [[Talk:Scripted Main|Here]]. I was nervous about
 ==We should merge Executable library's content back into Scripted main==
 Executable library is perhaps a better name, but the examples on it overshadow the point of having an executable library. Leave hailstones to another article and just show people how to do Python's if __name__=="__main__": main() in multiple languages (the point of Rosetta Stone).
 
-If you're having trouble understanding the point of Scripted main / Executable library, run these Perl programs (https://github.com/mcandre/scriptedmain/tree/master/perl) and look at their code. test.pl illustrates loading code from another Perl file. scriptedmain.pm doubles as both a library that can export code, and a self-contained executable in its own right.
+If you're having trouble understanding the point of Scripted main / Executable library, run these Perl programs (<https://github.com/mcandre/scriptedmain/tree/master/perl>) and look at their code. test.pl illustrates loading code from another Perl file. scriptedmain.pm doubles as both a library that can export code, and a self-contained executable in its own right.
 
-Another example is ios7crypt (https://github.com/mcandre/ios7crypt), a command line tool for encrypting and decrypting Cisco router passwords. You can either call 
+Another example is ios7crypt (<https://github.com/mcandre/ios7crypt>), a command line tool for encrypting and decrypting Cisco router passwords. You can either call 
 ```sh
  $ ./ios7crypt.scm -e monkey
 ```
@@ -54,11 +54,11 @@ Oh no, after all the confusion of [[Scripted main]] the Tcl example shows a desi
 
 Is there a way to build Shared Objects to make them valid executables? --[[User:Oenone|Oenone]] 08:41, 19 April 2011 (UTC)
 
-:Presumably you mean [http://www.friedenhq.org/index.php?option=com_content&view=article&id=46:shared-objects&catid=34:amigaos&Itemid=56 Shared Objects] and not [http://www.flashmagazine.com/tutorials/detail/breadcrumbs_shared_objects/ Shared Objects]? --[[User:Rdm|Rdm]] 12:19, 19 April 2011 (UTC)
+:Presumably you mean [Shared Objects](http://www.friedenhq.org/index.php?option=com_content&view=article&id=46:shared-objects&catid=34:amigaos&Itemid=56) and not [Shared Objects](http://www.flashmagazine.com/tutorials/detail/breadcrumbs_shared_objects/)? --[[User:Rdm|Rdm]] 12:19, 19 April 2011 (UTC)
 :: I know it's doable in the former case on Windows. I don't know enough about ELF to know if it's doable there. --[[User:Short Circuit|Michael Mol]] 12:24, 19 April 2011 (UTC)
 Yes, I was talking about ELF Shared Objects. I don't know any way to make it both, a shared object and an executable. So for Unix the task is not solvable. --[[User:Oenone|Oenone]] 12:35, 19 April 2011 (UTC)
-: ELF != Unix -- you just need a different file format (and, thus, a different "interpreter").  But the problem with elf is e_type where 2 is "executable file" and 3 is "shared object" http://linux.die.net/man/5/elf --[[User:Rdm|Rdm]] 13:07, 19 April 2011 (UTC)
-::: There are other problems with ELF shared objects. With systems like [[OpenBSD]], an executable needs some [http://www.openbsd.org/cgi-bin/cvsweb/src/lib/csu/amd64/crt0.c?rev=1.3 special code] to initialize certain variables (like <tt>environ</tt> and <tt>__progname</tt>), to call <tt>main()</tt> and to call <tt>exit()</tt> with the return value from main. A shared object misses this special code, so you cannot start a shared object as an executable. --[[User:Kernigh|Kernigh]] 17:11, 19 April 2011 (UTC)
+: ELF != Unix -- you just need a different file format (and, thus, a different "interpreter").  But the problem with elf is e_type where 2 is "executable file" and 3 is "shared object" <http://linux.die.net/man/5/elf> --[[User:Rdm|Rdm]] 13:07, 19 April 2011 (UTC)
+::: There are other problems with ELF shared objects. With systems like [[OpenBSD]], an executable needs some [special code](http://www.openbsd.org/cgi-bin/cvsweb/src/lib/csu/amd64/crt0.c?rev=1.3) to initialize certain variables (like <tt>environ</tt> and <tt>__progname</tt>), to call <tt>main()</tt> and to call <tt>exit()</tt> with the return value from main. A shared object misses this special code, so you cannot start a shared object as an executable. --[[User:Kernigh|Kernigh]] 17:11, 19 April 2011 (UTC)
 :::: I think I am missing something here.  Why can't an elf shared object be made to contain this code? --[[User:Rdm|Rdm]] 18:18, 19 April 2011 (UTC)
 ::::: I don't know know much of anything about ELF, but you mentioned e_type...I'm guessing that's a header field which identifies the role of the binary? Perhaps there's no spec for how to execute that glue code if e_type isn't 2? (It's arguable that not all of that glue code is strictly necessary, though; the task is satisfiable without referencing environment varss, so <tt>environ</tt> might not be necessary) --[[User:Short Circuit|Michael Mol]] 18:49, 19 April 2011 (UTC)
 :::::: Sure, ok... I suppose my point was that, if e_type had been defined as a bitfield instead of an enum, this kind of issue could have been solved already.  Not that I can see a use for a core dump which is also a shared object and and also an executable... And I suppose ELF could be extended to support a "shared object that is also an executable", though I am not sure who could get away with defining such an extension.  (On Linux it would be whoever owns /etc/ld-linux.so but for ELF as a whole it's probably some standards body that would take 10 years before they could get around to considering the issue.)  --[[User:Rdm|Rdm]] 19:03, 19 April 2011 (UTC)
@@ -93,7 +93,7 @@ My efforts so far:
 Now that I have the C code working for me, I am impressed yet again. --[[User:Paddy3118|Paddy3118]] 12:43, 16 June 2011 (UTC)
 
 ==Too complicated==
-This whole thing is getting too complicated. The purpose of ScriptedMain is to list code in as many languages as possible that does this: [http://docs.python.org/library/__main__.html http://docs.python.org/library/__main__.html] For lack of a better name, it can be called "scripted main". It reinforces the idea that such a function runs when the script is run on its own, not when the module is imported by other code. --[[User:Mcandre]]
+This whole thing is getting too complicated. The purpose of ScriptedMain is to list code in as many languages as possible that does this: [http://docs.python.org/library/__main__.html](http://docs.python.org/library/__main__.html) For lack of a better name, it can be called "scripted main". It reinforces the idea that such a function runs when the script is run on its own, not when the module is imported by other code. --[[User:Mcandre]]
 
 :Not quite. The point is more like you can have a useful library for other programs to access ''as well as'' a useful program in its own right ''from the same file''. 
 :Your suggested name isn't descriptive. It is hard to put a name on something using just two words, but I think "Executable library" has the advantage of being more descriptive.

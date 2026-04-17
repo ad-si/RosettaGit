@@ -24,7 +24,7 @@ I just removed some custom syntax highlighting from the Ada example in [[Exponen
 
 == web stuff ==
 
-These Tasks would best be implemented using [http://libre.adacore.com/libre/tools/aws AWS]:
+These Tasks would best be implemented using [AWS](http://libre.adacore.com/libre/tools/aws):
 * [[Active Directory/Connect]] (in reality it's just LDAP)
 * [[Active Directory/Search for a user]]
 * [[HTTPS]]

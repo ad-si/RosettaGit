@@ -1203,7 +1203,7 @@ n = 42  99504028301131
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -1805,7 +1805,7 @@ loop =: verb define@:x:
 ```
 
 By inspection the variable `i' doesn't contribute anything useful whatsoever.  The verb's argument, y, remains.
-Finally, implemented as an hook [http://www.jsoftware.com/help/dictionary/dictf.htm verb trains] with 'y' and `i' as left ([) and right (]) arguments the complete definitions for tacit_loop are
+Finally, implemented as an hook [verb trains](http://www.jsoftware.com/help/dictionary/dictf.htm) with 'y' and `i' as left ([) and right (]) arguments the complete definitions for tacit_loop are
 
 ```J
 
@@ -2966,7 +2966,7 @@ Like most other [[wp:en:Block_(programming)|Block structured languages]] (appare
 ### Demonstrate the best way to accomplish this.
 
 So instead we use tail recursion here which, with the use of immutable variables and no side effects, has no such restrictions, and we are save.
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/4HJPkBM/1 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/yzqldLOuRriR6ojqLKaYPQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/4HJPkBM/1) or [Scastie (remote JVM)](https://scastie.scala-lang.org/yzqldLOuRriR6ojqLKaYPQ).
 
 ```Scala
 import scala.annotation.tailrec

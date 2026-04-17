@@ -103,7 +103,7 @@ You don't have to replicate the implementation of this test here &ndash; you can
 (The comments are just informational. Your function should simply return a Boolean result. See [[#Perl_6]] for a reference solution.)
 
 Useful resources:
-* [https://www.isincodes.net/validate-isin/ Interactive online ISIN validator]
+* [Interactive online ISIN validator](https://www.isincodes.net/validate-isin/)
 * Wikipedia article: [[wp:International_Securities_Identification_Number|International Securities Identification Number]]
 
 
@@ -1063,7 +1063,7 @@ FR0000988040: valid
 
 ## D
 
-Code for the luhn test was taken from [[https://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#D]]
+Code for the luhn test was taken from <https://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#D>
 
 ```D
 import std.stdio;
@@ -2612,7 +2612,7 @@ run;
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/D9ax4Js/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/yOymYqoPSEeA7K7rjgn65g Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/D9ax4Js/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/yOymYqoPSEeA7K7rjgn65g).
 
 ```Scala
 object Isin extends App {

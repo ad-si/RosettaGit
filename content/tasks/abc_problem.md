@@ -4032,7 +4032,7 @@ CONFUSE       true
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ae860292d4588b3627d77c85bcc634ee Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ae860292d4588b3627d77c85bcc634ee)'''
 
 ```gambas
 Public Sub Main()
@@ -7347,7 +7347,7 @@ true.
 ###  Constraint Handling Rules
 
 
-An approach using [CHR https://dtai.cs.kuleuven.be/CHR/] via SWI-Prolog's [library(chr) http://www.swi-prolog.org/pldoc/man?section=chr] and a module I'm working on for composing predicates [https://github.com/aBathologist/protelog/blob/master/composer.pl composer]:
+An approach using [CHR <https://dtai.cs.kuleuven.be/CHR/>] via SWI-Prolog's [library(chr) <http://www.swi-prolog.org/pldoc/man?section=chr>] and a module I'm working on for composing predicates [composer](https://github.com/aBathologist/protelog/blob/master/composer.pl):
 
 Works with SWI Prolog 7}}
 
@@ -8945,7 +8945,7 @@ Example:=["a","bark","book","treat","common","squad","confuse"]
 ```
 
 
-Programming details:[http://fricas.github.io/book.pdf UserGuide]
+Programming details:[UserGuide](http://fricas.github.io/book.pdf)
 
 Output:
 

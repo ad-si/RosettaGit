@@ -12,4 +12,4 @@ tags = []
 
 Snabel is a fresh take on Forth in C++
 
-https://github.com/andreas-gone-wild/snackis/blob/master/snabel.md
+<https://github.com/andreas-gone-wild/snackis/blob/master/snabel.md>

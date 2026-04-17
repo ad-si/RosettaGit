@@ -12,4 +12,4 @@ tags = []
 
 
 
-The current implementation of AmbientTalk is an interactive interpreter, written in Java. It can be downloaded from [http://ambienttalk.googlecode.com the googlecode home page]. It also runs on the Android OS. It depends on a JVM v1.5 or later.
+The current implementation of AmbientTalk is an interactive interpreter, written in Java. It can be downloaded from [the googlecode home page](http://ambienttalk.googlecode.com). It also runs on the Android OS. It depends on a JVM v1.5 or later.

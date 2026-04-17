@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[https://github.com/mattn/go-gtk Go-gtk] is a package of [http://rosettacode.org/wiki/Category:Go Go] bindings for the C [http://rosettacode.org/wiki/Category:GTK GTK] library.
+[Go-gtk](https://github.com/mattn/go-gtk) is a package of [Go](http://rosettacode.org/wiki/Category:Go) bindings for the C [GTK](http://rosettacode.org/wiki/Category:GTK) library.

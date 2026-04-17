@@ -24,4 +24,4 @@ MathCortex is a simple lightweight programming language that is designed for doi
 
 ----
 
-* [http://mathcortex.com/ MathCortex] : Implementation from the creator.
+* [MathCortex](http://mathcortex.com/) : Implementation from the creator.

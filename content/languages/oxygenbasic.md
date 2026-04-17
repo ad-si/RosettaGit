@@ -97,4 +97,4 @@ The current implementation is available for Microsoft Windows and includes an x8
 
 The latest versions can be obtained here, including an IDE and numerous examples:
 
-* http://www.oxygenbasic.org
+* <http://www.oxygenbasic.org>

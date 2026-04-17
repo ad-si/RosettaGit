@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/Ernyoke/Imger Imger] is a library containing a collection of image processing algorithms written in pure Go.
+[Imger](https://github.com/Ernyoke/Imger) is a library containing a collection of image processing algorithms written in pure Go.
 
-Its use is subject to the [https://github.com/Ernyoke/Imger/blob/master/LICENSE MIT license].
+Its use is subject to the [MIT license](https://github.com/Ernyoke/Imger/blob/master/LICENSE).

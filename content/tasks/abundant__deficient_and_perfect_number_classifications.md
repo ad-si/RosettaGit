@@ -95,9 +95,9 @@ languages = [
 These define three classifications of positive integers based on their   [proper divisors](/tasks/proper_divisors).
 
 Let   P(n)   be the sum of the proper divisors of   '''n'''   where the proper divisors are all positive divisors of   '''n'''   other than   '''n'''   itself.
-    if   <code> P(n) <  n </code>   then  '''n'''  is classed as  '''deficient'''  ([https://oeis.org/A005100 OEIS A005100]).
-    if   <code> P(n) == n </code>   then  '''n'''  is classed as  '''perfect'''    ([https://oeis.org/A000396 OEIS A000396]).
-    if   <code> P(n) >  n </code>   then  '''n'''  is classed as  '''abundant'''   ([https://oeis.org/A005101 OEIS A005101]).
+    if   <code> P(n) <  n </code>   then  '''n'''  is classed as  '''deficient'''  ([OEIS A005100](https://oeis.org/A005100)).
+    if   <code> P(n) == n </code>   then  '''n'''  is classed as  '''perfect'''    ([OEIS A000396](https://oeis.org/A000396)).
+    if   <code> P(n) >  n </code>   then  '''n'''  is classed as  '''abundant'''   ([OEIS A005101](https://oeis.org/A005101)).
 
 
 ### Example:
@@ -235,7 +235,7 @@ deficient=15043 perfect=    4 abundant= 4953
 ## Ada
 
 This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
-[[http://rosettacode.org/wiki/Proper_divisors#Ada]].
+<http://rosettacode.org/wiki/Proper_divisors#Ada>.
 
 
 ```Ada
@@ -2693,7 +2693,7 @@ classify(20000)
 
 ## Pascal
 
-using the slightly modified http://rosettacode.org/wiki/Amicable_pairs#Alternative
+using the slightly modified <http://rosettacode.org/wiki/Amicable_pairs#Alternative>
 
 ```pascal
 program AmicablePairs;

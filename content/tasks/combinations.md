@@ -107,7 +107,7 @@ languages = [
 
 ## Task
 
-Given non-negative integers   <big> '''m''' </big>   and   <big> '''n'''</big>,   generate all size   <big> '''m''' </big>   [http://mathworld.wolfram.com/Combination.html combinations]   of the integers from   <big> '''0'''</big>   (zero)   to   <big> '''n-1''' </big>   in sorted order   (each combination is sorted and the entire table is sorted).
+Given non-negative integers   <big> '''m''' </big>   and   <big> '''n'''</big>,   generate all size   <big> '''m''' </big>   [combinations](http://mathworld.wolfram.com/Combination.html)   of the integers from   <big> '''0'''</big>   (zero)   to   <big> '''n-1''' </big>   in sorted order   (each combination is sorted and the entire table is sorted).
 
 
 ;Example:
@@ -599,7 +599,7 @@ end unwords
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276224.html#276224 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276224.html#276224)
 
 ```AutoHotkey
 MsgBox % Comb(1,1)
@@ -1470,7 +1470,7 @@ void main() {
 
 ### Lazy Lexicographical Combinations
 
-Includes an algorithm to find [http://msdn.microsoft.com/en-us/library/aa289166.aspx#mth_lexicograp_topic3 mth Lexicographical Element of a Combination].
+Includes an algorithm to find [mth Lexicographical Element of a Combination](http://msdn.microsoft.com/en-us/library/aa289166.aspx#mth_lexicograp_topic3).
 
 ```d
 module combinations4;
@@ -2656,7 +2656,7 @@ link lists
 ```
 
 
-The {{libheader|Icon Programming Library}} provides the core procedure [http://www.cs.arizona.edu/icon/library/src/procs/lists.icn lcomb in lists] written by Ralph E. Griswold and Richard L. Goerwitz.
+The {{libheader|Icon Programming Library}} provides the core procedure [lcomb in lists](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn) written by Ralph E. Griswold and Richard L. Goerwitz.
 
 ```Icon
 procedure lcomb(L,i)			#: list combinations
@@ -3861,7 +3861,7 @@ end.
 
 ## Perl
 
-The [https://metacpan.org/pod/ntheory ntheory] module has a combinations iterator that runs in lexicographic order.
+The [ntheory](https://metacpan.org/pod/ntheory) module has a combinations iterator that runs in lexicographic order.
 ```perl
 use ntheory qw/forcomb/;
 forcomb { print "@_\n" } 5,3
@@ -3883,7 +3883,7 @@ forcomb { print "@_\n" } 5,3
 ```
 
 
-[https://metacpan.org/pod/Algorithm::Combinatorics Algorithm::Combinatorics] also does lexicographic order and can return the whole array or an iterator:
+[Algorithm::Combinatorics](https://metacpan.org/pod/Algorithm::Combinatorics) also does lexicographic order and can return the whole array or an iterator:
 ```perl
 use Algorithm::Combinatorics qw/combinations/;
 my @c = combinations( [0..4], 3 );
@@ -3901,7 +3901,7 @@ while (my $c = $iter->next) {
 ```
 
 
-[https://metacpan.org/pod/Math::Combinatorics Math::Combinatorics] is another option but results will not be in lexicographic order as specified by the task.
+[Math::Combinatorics](https://metacpan.org/pod/Math::Combinatorics) is another option but results will not be in lexicographic order as specified by the task.
 
 
 ## Perl5i
@@ -4049,7 +4049,7 @@ comb(5,3)
 ## PHP
 
 ===non-recursive===
-Full non-recursive algorithm generating all combinations without repetions. Taken from here: [https://habrahabr.ru/post/311934/]
+Full non-recursive algorithm generating all combinations without repetions. Taken from here: <https://habrahabr.ru/post/311934/>
 
 Much slower than normal algorithm.
 
@@ -5090,7 +5090,7 @@ res0: List[scala.collection.immutable.IndexedSeq[Int]] = List(Vector(0, 1, 2), V
 
 ### =Other environments=
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/DH34cqq/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/bwADub2XR8eu6bVVDbQw7g Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/DH34cqq/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/bwADub2XR8eu6bVVDbQw7g).
 
 
 ## Scheme
@@ -5282,7 +5282,7 @@ forcomb({|c| say c }, 5, 3)
 ```
 
 
-[http://fricas.github.io/api/SymmetricGroupCombinatoricFunctions.html?highlight=choose SGCF]
+[SGCF](http://fricas.github.io/api/SymmetricGroupCombinatoricFunctions.html?highlight=choose)
 ==> SymmetricGroupCombinatoricFunctions
 
 
@@ -5444,7 +5444,7 @@ println(combosOfLength(5, 3))
 
 ## Tcl
 
-ref[http://wiki.tcl.tk/2553]
+ref<http://wiki.tcl.tk/2553>
 
 ```tcl
 proc comb {m n} {

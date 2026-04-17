@@ -135,8 +135,8 @@ Highest value   319804831 -> 1414236446719942480 <= nearly limit of Uint64
 
 
 EDIT found a good web site Tomás Oliveira e Silva
-[[http://sweet.ua.pt/tos/3x+1.html]] with a list of first occurences of highest value upto 2^58
-[[http://sweet.ua.pt/tos/3x+1/t1.txt.gz]]
+<http://sweet.ua.pt/tos/3x+1.html> with a list of first occurences of highest value upto 2^58
+<http://sweet.ua.pt/tos/3x+1/t1.txt.gz>
 I dont know, why his values or only * 0.5 instead of 27 ->9232 is listed with  4616, 319804831 -> 1414236446719942480 is listed with 707118223359971240.
 
 

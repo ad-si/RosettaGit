@@ -12,6 +12,6 @@ tags = []
 
 {{library}}
 
-JLine is a Java library for handling console input.  For more information checkout the [https://github.com/jline/jline2 JLine github].
+JLine is a Java library for handling console input.  For more information checkout the [JLine github](https://github.com/jline/jline2).
 
 [[Category:Terminal control]]

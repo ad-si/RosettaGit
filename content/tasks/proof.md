@@ -308,7 +308,7 @@ Qed.
 ## Haskell
 
 
-Using [http://www.haskell.org/haskellwiki/GADT GADTs] and [http://www.haskell.org/haskellwiki/GHC/Type_families type families] it is possible to write a partial adaptation of the Agda version:
+Using [GADTs](http://www.haskell.org/haskellwiki/GADT) and [type families](http://www.haskell.org/haskellwiki/GHC/Type_families) it is possible to write a partial adaptation of the Agda version:
 
 
 ```haskell

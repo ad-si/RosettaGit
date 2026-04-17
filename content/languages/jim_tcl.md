@@ -13,4 +13,4 @@ tags = []
 
 Jim Tcl is an implementation of [Tcl](https://rosettacode.org/wiki/Tcl) in [C](https://rosettacode.org/wiki/C) that is designed to be used particularly in embedded situations.
 ## Links
-* [http://jim.tcl.tk/ The Jim Tcl website]
+* [The Jim Tcl website](http://jim.tcl.tk/)

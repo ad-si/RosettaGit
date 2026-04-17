@@ -16,6 +16,6 @@ Python-Versions: 2.4 2.5 2.6 3.1
 
 Package-Name: python-qt4
 
-Website: [http://www.riverbankcomputing.com/ riverbankcomputing.com]
+Website: [riverbankcomputing.com](http://www.riverbankcomputing.com/)
 
 [[Category:Python]] [[Category:Qt]]

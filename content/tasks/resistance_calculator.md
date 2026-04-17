@@ -36,7 +36,7 @@ languages = [
 * Power = Current * Voltage
 
 ### Input
-[https://photos.app.goo.gl/58heQVm8UJYf8Ra29 Resistance Calculator]
+[Resistance Calculator](https://photos.app.goo.gl/58heQVm8UJYf8Ra29)
 
 * Infix:  ((((10 + 2) * 6 + 8) * 6 + 4) * 8 + 4) * 8 + 6
 * RPN:    10 2 + 6 * 8 + 6 * 4 + 8 * 4 + 8 * 6 +  

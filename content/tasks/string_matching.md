@@ -2212,7 +2212,7 @@ First string ends with second string   : true
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=07bb32f4e8e8f7d81898cf41d4431a2e Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=07bb32f4e8e8f7d81898cf41d4431a2e)'''
 
 ```gambas
 Public Sub Main()

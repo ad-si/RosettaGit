@@ -47,8 +47,8 @@ A simulation that doesn't contain obstacles but only shows flocking behavior is 
 
 ## See also
 
-* http://www.red3d.com/cwr/boids/
-* http://natureofcode.com/book/chapter-6-autonomous-agents/
+* <http://www.red3d.com/cwr/boids/>
+* <http://natureofcode.com/book/chapter-6-autonomous-agents/>
 
 
 
@@ -72,4 +72,4 @@ See [[Boids/Julia]]
 
 See [[Boids/Phix]]
 
-Screenshot: [http://phix.x10.mx/shots/boids.png http://phix.x10.mx/shots/boids.png]
+Screenshot: [http://phix.x10.mx/shots/boids.png](http://phix.x10.mx/shots/boids.png)

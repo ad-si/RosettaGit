@@ -1193,7 +1193,7 @@ object IntegerRoots extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/bVwlHfa/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/0T93IhLVRGiYfuKpW7DTUg Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/bVwlHfa/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/0T93IhLVRGiYfuKpW7DTUg).
 
 
 ## Scheme
@@ -1295,7 +1295,7 @@ puts [root [expr 2* (100**2000)] 2]
 
 ## Visual Basic .NET
 
-From the method described on [https://en.wikipedia.org/wiki/Nth_root_algorithm the Wikipedia page]. Included is an Integer Square Root function to compare results to the Integer Nth Square root function. One must choose the exponents carefully, otherwise one will obtain the digits of the nth root of 20, 200, 2000, etc..., instead of 2.  For example, 4008 was chosen because it works for both ''n = 2'' and ''n = 3'', whereas 4004 was chosen for ''n = 7''
+From the method described on [the Wikipedia page](https://en.wikipedia.org/wiki/Nth_root_algorithm). Included is an Integer Square Root function to compare results to the Integer Nth Square root function. One must choose the exponents carefully, otherwise one will obtain the digits of the nth root of 20, 200, 2000, etc..., instead of 2.  For example, 4008 was chosen because it works for both ''n = 2'' and ''n = 3'', whereas 4004 was chosen for ''n = 7''
 ```vbnet
 Imports System
 Imports System.Numerics

@@ -13,4 +13,4 @@ PL/B is a dialect of the DATABUS language  created by the Datapoint Corporation 
 
 The language still has a small but active following providing unashamedly commercial products to the business world.
 
-PL/B is a commercial language/development product provided by Sunbelt Computer Systems Inc whose company and product details can be be found at https://www.sunbelt-plb.com/index.php
+PL/B is a commercial language/development product provided by Sunbelt Computer Systems Inc whose company and product details can be be found at <https://www.sunbelt-plb.com/index.php>

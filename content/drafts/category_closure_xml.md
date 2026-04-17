@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}
-[http://common-lisp.net/project/cxml/ Closure XML] is a library for parsing and generating XML in [[Common Lisp]].
+[Closure XML](http://common-lisp.net/project/cxml/) is a library for parsing and generating XML in [[Common Lisp]].

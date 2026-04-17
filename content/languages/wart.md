@@ -9,7 +9,7 @@ id = 16381
 categories = []
 tags = []
 +++
-[http://github.com/akkartik/wart#readme Wart] is an experimental, dynamic, [http://plus.google.com/110981030061712822816/posts/KaSKeg4vQtz batshit-liberal] language designed to eventually be used by small teams of [http://en.wikipedia.org/wiki/Motivation#Intrinsic_and_extrinsic_motivation intrinsically-motivated] programmers. Wart is based on [http://paulgraham.com/lispfaq1.html Lisp], but with a cleaner syntax and more powerful primitives to help non-lispers appreciate the power of Lisp. Wart was designed with several questions in mind:
+[Wart](http://github.com/akkartik/wart#readme) is an experimental, dynamic, [batshit-liberal](http://plus.google.com/110981030061712822816/posts/KaSKeg4vQtz) language designed to eventually be used by small teams of [intrinsically-motivated](http://en.wikipedia.org/wiki/Motivation#Intrinsic_and_extrinsic_motivation) programmers. Wart is based on [Lisp](http://paulgraham.com/lispfaq1.html), but with a cleaner syntax and more powerful primitives to help non-lispers appreciate the power of Lisp. Wart was designed with several questions in mind:
 
 * How far can we change the syntax of Lisp without compromising the power of Lisp macros? Wart has several features to help make codebases more pleasurable to read and easier to ramp up on.
 *# While lispers can continue to write fully-parenthesized Lisp, Wart provides a whitespace-sensitive syntax that is easy to get used to and eliminates most parentheses for the convenience of non-lisp readers.<pre style='margin-left:3.5em'>if (odd 3) "odd"
@@ -32,17 +32,17 @@ subtract 3 :from 4
 ```
 
 
-* What would a language ecosystem be like without any backwards-compatibility guarantees, super easy to change and fork promiscuously? Wart has no version numbers, and new versions and forks are free to change all semantics to their hearts' desire. Instead of a spec or frozen interfaces, we rely on automated tests. Wart is thoroughly tested, and Wart programs are expected to be thoroughly tested as well, and to buy in to the investment of needing to make changes during upgrades. The hope is that upgrade effort might be higher than the best-case scenario in other languages, but the worst-case time will remain tightly bounded because clients of libraries will be more likely to understand how they're implemented, and so be more empowered. (More info: http://akkartik.name/blog/libraries2)
+* What would a language ecosystem be like without any backwards-compatibility guarantees, super easy to change and fork promiscuously? Wart has no version numbers, and new versions and forks are free to change all semantics to their hearts' desire. Instead of a spec or frozen interfaces, we rely on automated tests. Wart is thoroughly tested, and Wart programs are expected to be thoroughly tested as well, and to buy in to the investment of needing to make changes during upgrades. The hope is that upgrade effort might be higher than the best-case scenario in other languages, but the worst-case time will remain tightly bounded because clients of libraries will be more likely to understand how they're implemented, and so be more empowered. (More info: <http://akkartik.name/blog/libraries2>)
 
-* What would a language look like with an emphasis on a parsimonious and harmonious system of names? This is only possible if the language has no reserved words, and even primitives can be overloaded in arbitrary ways. So you never end up with constructions like 'my_if' or 'append2' or 'queue_length'. (More info: http://akkartik.name/blog/readable-bad)
+* What would a language look like with an emphasis on a parsimonious and harmonious system of names? This is only possible if the language has no reserved words, and even primitives can be overloaded in arbitrary ways. So you never end up with constructions like 'my_if' or 'append2' or 'queue_length'. (More info: <http://akkartik.name/blog/readable-bad>)
 
 * Can a language implementation remain intelligible to outsiders over time, especially under pressure to run fast? Wart is exploring experimental primitives in the core interpreter that will make partial evaluation as easy as passing code through eval multiple times.
 
-These are all hard open questions, not expected to be definitively answered anytime soon. Wart is an experiment, and looking for feedback from people unafraid to bounce between language and implementation. If that's you, check it out: http://github.com/akkartik/wart#readme
+These are all hard open questions, not expected to be definitively answered anytime soon. Wart is an experiment, and looking for feedback from people unafraid to bounce between language and implementation. If that's you, check it out: <http://github.com/akkartik/wart#readme>
 
 To run the following examples in most places (but not Windows):
 
- $ git clone http://github.com/akkartik/wart
+ $ git clone <http://github.com/akkartik/wart>
  $ cd wart
  $ ./wart
  ready! type in an expression, then hit enter twice. ctrl-d exits.

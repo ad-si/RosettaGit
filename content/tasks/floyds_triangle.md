@@ -1230,7 +1230,7 @@ Output for n = 14:
 =
 ## MasmBasic
 =
-'''[http://www.webalice.it/jj2006/Masm32_Tips_Tricks_and_Traps.htm Builds with Masm, UAsm or AsmC plus the MasmBasic library]'''
+'''[Builds with Masm, UAsm or AsmC plus the MasmBasic library](http://www.webalice.it/jj2006/Masm32_Tips_Tricks_and_Traps.htm)'''
 
 ```MasmBasic
 include \masm32\MasmBasic\MasmBasic.inc
@@ -2324,7 +2324,7 @@ output for 5             output for 14
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=57ab1f58785b7e07765881657e4589ab Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=57ab1f58785b7e07765881657e4589ab)'''
 
 ```gambas
 Public Sub Main()

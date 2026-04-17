@@ -9,7 +9,7 @@ id = 17282
 categories = []
 tags = []
 +++
-http://www.shenlanguage.org/
+<http://www.shenlanguage.org/>
 
 Shen is a portable functional programming language that offers
 

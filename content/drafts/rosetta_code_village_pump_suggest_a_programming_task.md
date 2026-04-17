@@ -37,7 +37,7 @@ Also, feel free to review the others that are already here; help sort them into 
 ** Calculate [first|second|third|fourth|last] [Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday] of month
 ** Calculate number of [Sundays|Mondays|Tuesdays|Wednesdays|Thursdays|Fridays|Saturdays] in a given month or year
 ** Display a date in various formats
-** Something with [http://terrancalendar.com the Terran Computational Calendar] (and contribute to [https://github.com/terrancalendar/terrancalendar their Github project])
+** Something with [the Terran Computational Calendar](http://terrancalendar.com) (and contribute to [their Github project](https://github.com/terrancalendar/terrancalendar))
 * Show creation, element insertion, element removal and enumeration of a "set" type that enforces constraints as described [[Talk:Symmetric difference#Set_type|here]]. (An invariant analog would be nice as well.)
 * The [[:Category:Object oriented|Object oriented category]] is missing a lot of the basics like [[calling a method]].
 * Explicit implementation of various [[wp:Category:Software design patterns|design patterns]]
@@ -59,7 +59,7 @@ Also, feel free to review the others that are already here; help sort them into 
 * Parallelized version of [[Lucas-Lehmer test]].
 * Comparison methods and operators
 :Could this be added to [[Comparing two integers]]? --[[User:Mwn3d|Mwn3d]] 07:28, 21 December 2007 (MST)
-* Type-variant variables in type-safe languages. (i.e. [http://msdn.microsoft.com/en-us/library/ms221258(VS.80).aspx Microsoft's VARIANT].)
+* Type-variant variables in type-safe languages. (i.e. [Microsoft's VARIANT](http://msdn.microsoft.com/en-us/library/ms221258(VS.80).aspx).)
 : ''Type-variant'' rather suggests dynamic polymorphism, i.e., when the specific type of the value (and the value itself) depends on the type tag of the object. MS VARIANT is rather a different thing. It is a union, a container type which content depends on the value of the constraint. This is also a form polymorphism, but different, a dynamically constrained type. The type of the object does '''not''' vary. A similar case represents unbounded array, which size depends on the actual bounds (the constraint). (Granted, MS VARIANT serves the purpose of dynamic polymorphism, but that is merely because MS wished to keep it conform to non-[[object-oriented|OO]] languages.) --[[User:Dmitry-kazakov|Dmitry-kazakov]] 13:24, 9 April 2009 (UTC)
 
 * I don't know where this should go, but it would be great to have a use comparison of regular expressions [[Special:Contributions/187.37.58.35|187.37.58.35]] 18:40, 3 November 2009 (UTC)
@@ -75,7 +75,7 @@ Also, feel free to review the others that are already here; help sort them into 
 
 * An example of lexical and dynamic variable binding in various languages.  For example, in lisp the let construct and also let with variables declared as special would be useful to see this in other languages, such as Tcl and Python.  [[User:WilliamKF|WilliamKF]] 18:03, 4 January 2010 (UTC)
 
-* [http://thedailywtf.com/Articles/Avoiding-the-Splice.aspx Avoiding the Splice]
+* [Avoiding the Splice](http://thedailywtf.com/Articles/Avoiding-the-Splice.aspx)
 
 * Modules. This basic syntax task would cover C's #include, Objective-C's #import, Python's import, Java's package/import, etc.  It would also cover symbol visibility control in compilation units (private/public, static/export, etc.).
 
@@ -83,11 +83,11 @@ Also, feel free to review the others that are already here; help sort them into 
 
 * cat & tee: copy input to output, copy input to multiple outputs. I'm not sure of the best name for these tasks ("IO/cat" & "IO/tee"? "copy input to output"?). [[Input loop]] has some solutions that implement the first, but it doesn't explicitly say what should be done with input, and some solutions to `cat` and `tee` may not use loops (which is what's interesting about these tasks).
 
-* We should maybe double check whether we are missing any tasks corresponding to algorithms listed at http://algo-visualizer.jasonpark.me/
+* We should maybe double check whether we are missing any tasks corresponding to algorithms listed at <http://algo-visualizer.jasonpark.me/>
 
 * Images: Reading, modifying, and writing either a .PNG/.JPG or other common image type.  (Currently, there's bitmap and PPM stuff, but this task is for somethign more practical.)
 
-* It would be good to have an implementation of the Nelder-Mead gradient descent algorithm. https://en.wikipedia.org/wiki/Nelder-Mead_method  This would be a good candidate for a generic driver (eg:c++ template class) accepting a function and returning the parameter(s) that map to the functions (apparent) minimum.  --[[User:Bitrat|Bitrat]] 14:10, 17 January 2019 (UTC)
+* It would be good to have an implementation of the Nelder-Mead gradient descent algorithm. <https://en.wikipedia.org/wiki/Nelder-Mead_method>  This would be a good candidate for a generic driver (eg:c++ template class) accepting a function and returning the parameter(s) that map to the functions (apparent) minimum.  --[[User:Bitrat|Bitrat]] 14:10, 17 January 2019 (UTC)
 
 ==Games==
 * Connect Four (or more) with variable and standard game board (6 rows, 7 columns)
@@ -103,10 +103,10 @@ Also, feel free to review the others that are already here; help sort them into 
 *[[wp:Rule 90]]
 * Perl6 [[chess grammar]], eventually with side effects for move validation and/or adjudication.
 * 9x9 sudoku, a program that generates a sudoku box as well as has an option to automatically solve it
-* Implement a pacman game in our language. Here is the Assembler-code of the original [http://cubeman.org/arcade-source/pacman.asm]
+* Implement a pacman game in our language. Here is the Assembler-code of the original <http://cubeman.org/arcade-source/pacman.asm>
 ::Note that that assembler code makes deep use of very specific hardware which is not present on most systems. Just reading it for comprehension would take days of work, for someone like me. --[[User:Rdm|Rdm]] 16:02, 17 December 2012 (UTC)
 ::And the size of any entry is likely to be too large. --[[User:Paddy3118|Paddy3118]] 16:15, 17 December 2012 (UTC)
-::::You are both right, here is a link to a java implementation of pacman [http://zetcode.com/tutorials/javagamestutorial/pacman/]
+::::You are both right, here is a link to a java implementation of pacman <http://zetcode.com/tutorials/javagamestutorial/pacman/>
 * Implement a program that generates a random [[wp:Chess960 starting position|Chess960 starting position]]--[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 23:56, 18 April 2014 (UTC)
 * What about the [[wp:Nim|Nim]] game and the variations found on its wiki page?
 :See [[User:DanBron/Game of Nim]] for history... --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:57, 22 May 2015 (UTC)
@@ -226,8 +226,8 @@ A much harder task would be, given a set of simple definition type clues and the
 
 ###  Data structures and algorithms 
 
-* Implement a finite state machine that verifies that a string contains a valid binary number. This is already done [https://sites.google.com/site/opensourceconstriubtions/ettl-martin-1/articles/how-to-determine-a-string-represents-a-binary-number-using-a-finite-state-machine here].
-* Implement [http://de.wikipedia.org/wiki/Duff%E2%80%99s_Device Duff's Device] in your programming language.
+* Implement a finite state machine that verifies that a string contains a valid binary number. This is already done [here](https://sites.google.com/site/opensourceconstriubtions/ettl-martin-1/articles/how-to-determine-a-string-represents-a-binary-number-using-a-finite-state-machine).
+* Implement [Duff's Device](http://de.wikipedia.org/wiki/Duff%E2%80%99s_Device) in your programming language.
 : It seems to be specific to C/C++ and would it be best practice or just some kind of optimisation? --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 17:54, 20 May 2014 (UTC)
 * canonical huffman code
 * Include-in : test wether a list is a part of another one, ie if each element of the first list is an element of the second one
@@ -248,17 +248,17 @@ A much harder task would be, given a set of simple definition type clues and the
 
 :::The Timsort algorithm description might only be its source! I suspect it may not be a good candidate for an RC task for that reason, but if someone knowledgable could break out a sub-algorithm, such as finding optimal runs of pre-sorted data then implementing that sub-algorithm might form a useful task. --[[User:Paddy3118|Paddy3118]] 10:51, 10 November 2011 (UTC) 
 
-:::Timsort is actually very well described - the Wikipedia page now has an algorithm description, and [http://hg.python.org/cpython/file/tip/Objects/listsort.txt this page] has a detailed description from the author. [[User:Gereeter|Gereeter]] 15:51, 17 March 2013 (UTC)
+:::Timsort is actually very well described - the Wikipedia page now has an algorithm description, and [this page](http://hg.python.org/cpython/file/tip/Objects/listsort.txt) has a detailed description from the author. [[User:Gereeter|Gereeter]] 15:51, 17 March 2013 (UTC)
 
 :: * [[wp:strand_sort|Strand sort]]
 :: * [[wp:smoothsort|Smooth sort]]
 :: * [[wp:Patience sort]]
 :: * [[wp:Tree sort]] - would demonstrate the use of binary search trees
-:: * *TimSort http://en.wikipedia.org/wiki/Tim_sort
+:: * *TimSort <http://en.wikipedia.org/wiki/Tim_sort>
 * [[wp:B-tree|B-Tree]]
 * [[wp:R-tree|R-Tree]]
 * [[wp:Red-black tree|Red-black tree]]
-* [http://www.davekoelle.com/alphanum.html The Alphanum Algorithm] People sort strings with numbers differently than software does. Most sorting algorithms compare ASCII values, which produces an ordering that is inconsistent with human logic. 
+* [The Alphanum Algorithm](http://www.davekoelle.com/alphanum.html) People sort strings with numbers differently than software does. Most sorting algorithms compare ASCII values, which produces an ordering that is inconsistent with human logic. 
 : Check out [[Natural sorting]]. It may be what you're after. --[[User:Paddy3118|Paddy3118]] 17:07, 21 September 2012 (UTC)
 
 * SAX. As well as DOM and XPath it would probably be useful to demonstrate parsing a simple XML document with SAX.
@@ -276,7 +276,7 @@ A much harder task would be, given a set of simple definition type clues and the
 :: Hmm; there's [[Associative array]] (and its associated tasks). Not quite as obvious as I hoped for. Maybe we need some more tasks in this area. –[[User:Dkf|Donal Fellows]] 09:26, 21 January 2011 (UTC)
 * Should we have "Stack/Usage" to go along with [[Stack]], similar to [[Queue]] and [[Queue/Usage]]? --[[Special:Contributions/76.21.41.59|76.21.41.59]] 06:26, 15 September 2011 (UTC)
 * [[wp:DBSCAN|DBSCAN]] (Density-Based Spatial Clustering of Applications with Noise)
-* The Java String [http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#hashCode%28%29 hashCode] function (notably used by [[wp:Minecraft]] for generating world seeds). --[[User:Stuart P. Bentley|STUART]] 21:13, 8 January 2012 (UTC)
+* The Java String [hashCode](http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#hashCode%28%29) function (notably used by [[wp:Minecraft]] for generating world seeds). --[[User:Stuart P. Bentley|STUART]] 21:13, 8 January 2012 (UTC)
 ::In Lua: 
 ```lua
 local function hashCode(str)
@@ -291,8 +291,8 @@ end
 ```
  --[[User:Stuart P. Bentley|STUART]] 21:18, 8 January 2012 (UTC)
 * B-Splines might be a good task (I'm having trouble coming up with good example B-Splines right now...).  --[[User:Rdm|Rdm]] 19:31, 24 June 2012 (UTC)
-* Cannot find [http://en.wikipedia.org/wiki/Selection_algorithm Linear general selection algorithm - Median of Medians algorithm] --[[User:Zmi007|Zmi007]] ([[User talk:Zmi007|talk]]) 23:34, 9 August 2013 (UTC)
-* A simple succinct data structure plus its benchmar: http://en.wikipedia.org/wiki/Succinct_data_structure#Succinct_dictionaries
+* Cannot find [Linear general selection algorithm - Median of Medians algorithm](http://en.wikipedia.org/wiki/Selection_algorithm) --[[User:Zmi007|Zmi007]] ([[User talk:Zmi007|talk]]) 23:34, 9 August 2013 (UTC)
+* A simple succinct data structure plus its benchmar: <http://en.wikipedia.org/wiki/Succinct_data_structure#Succinct_dictionaries>
 
 
 ### = Graph algorithms =
@@ -302,9 +302,9 @@ end
 * [[wp:Ford&ndash;Fulkerson algorithm|Ford&ndash;Fulkerson algorithm]] ([[wp:Edmonds&ndash;Karp|Edmonds&ndash;Karp]] variant): maximum-flow problem &mdash;''[[User:Ruud Koot|Ruud]]'' 22:37, 10 March 2011 (UTC)
 * List all (strict) [[wp:Dominator_ (graph_theory)|Dominators]] of a node in a graph 
 * List all (strict) Post-dominators of a node in a graph
-* [http://en.wikipedia.org/wiki/Cycle_detection Cycle detection] algorithms:
-** [http://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare Floyd's cycle-finding algorithm]/"Tortoise and Hare" - (e.g. [http://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare Python], [http://stackoverflow.com/questions/2663115/how-to-detect-a-loop-in-a-linked-list Java])
-** [http://en.wikipedia.org/wiki/Cycle_detection#Brent.27s_algorithm Brent's algorithm]
+* [Cycle detection](http://en.wikipedia.org/wiki/Cycle_detection) algorithms:
+** [Floyd's cycle-finding algorithm](http://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare)/"Tortoise and Hare" - (e.g. [Python](http://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare), [Java](http://stackoverflow.com/questions/2663115/how-to-detect-a-loop-in-a-linked-list))
+** [Brent's algorithm](http://en.wikipedia.org/wiki/Cycle_detection#Brent.27s_algorithm)
 * Minimum mean-weight cycle cancelling algorithm: minimum-cost maximum-flow problem &mdash;''[[User:Ruud Koot|Ruud]]'' 22:37, 10 March 2011 (UTC)
 * [[wp:A* search algorithm|A* search algorithm]], surprised this isn't here, I looked, if it is, [[A*]] and [[A star]] should probably redirect to it. I'm attempting to translate Wikipedia's pseudocode into Python right now. [[User:Keiji|Keiji]] 19:55, 6 April 2011 (UTC)
 ** Okay, [[User:Keiji/aystar.py|here's my attempt]]. I haven't tested it yet, namely because I can't think of a good way to come up with input data that would make for a good test. [[User:Keiji|Keiji]] 22:46, 6 April 2011 (UTC)
@@ -334,28 +334,28 @@ end
 * I do not fully believe that nobody did actually wrote abut the old ADDER yet!. ADDER Basically ADDS. For a coder simply     X=X+A     THIS will add A into X every time called and whatever A is..... (Originally placed elsewhere by user: 186.109.38.217)
 * [[wp:Church encoding|Church encoding]] and computation with Church numerals
 * Euler's method for approximating solutions to differential equations
-* Symbolic differentiation. [http://userweb.cs.utexas.edu/users/novak/asg-symdif.html] [http://www.codecodex.com/wiki/index.php?title=Derivative]
+* Symbolic differentiation. <http://userweb.cs.utexas.edu/users/novak/asg-symdif.html> <http://www.codecodex.com/wiki/index.php?title=Derivative>
 * Gauss-Algorithm
 ** do you mean [[wp:Gaussian elimination|Gaussian elimination]]? --[[User:ShinTakezou|ShinTakezou]] 13:12, 19 May 2010 (UTC)
 * What about symbolic antiderivatives or something like that? --[[User:Alegend|Alegend]] 17:13, 2 August 2010 (UTC)
 * [[wp:Shunting-yard_algorithm]]
 * [[wp:Reverse Polish notation]]
 * Fast Fourier transform (Cooley-Tukey) --[[User:Tarballs are good|Tarballs are good]] 22:26, 5 January 2011 (UTC)
-* Bankers Rounding (also known as [http://en.wikipedia.org/wiki/Rounding#Round_half_to_even 'round-to-even']), not just for the usual suspects, such as 
+* Bankers Rounding (also known as ['round-to-even'](http://en.wikipedia.org/wiki/Rounding#Round_half_to_even)), not just for the usual suspects, such as 
 ** 22.5 to 22.0, or
 ** -567.5 to -568.0
 ** but also for 
 ** 1.55 to 1.60, and 
 **-42.0000015 to -42.0000020 
 ** --[[User:Prino|Prino]] 23:41, 18 February 2011 (UTC)
-* [http://www2.stetson.edu/~efriedma/mathmagic/0511.html This] MathMagic entry. [[User:MagiMaster|MagiMaster]] 08:44, 30 May 2011 (UTC)
+* [This](http://www2.stetson.edu/~efriedma/mathmagic/0511.html) MathMagic entry. [[User:MagiMaster|MagiMaster]] 08:44, 30 May 2011 (UTC)
 * [[wp:Exponential moving average]]
-* [[Unit calculator/convertor]].  A bit like what Google can do:  https://www.google.com/search?q=10.5+cm+in+inches.  With all SI units plus others (days, months for time, W.hour for energy, etc)
-* Perform basic mathematical operations (+,*,/,-) for numbers represented as strings.[https://github.com/danmar/cppcheck/blob/master/lib/mathlib.h Here] is a sample implementation in C++.
-* Implement the longest increasing subsequence algorithm in your programming language. [http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence Here] is an implementation in C and C++.
-* [http://en.wikipedia.org/wiki/Fermat_primality_test Fermat primality test]
-* Implement a function in your programming language that prints numbers in [http://en.wikipedia.org/wiki/Engineering_notation Engineering_notation]. A C# implementation is already [http://stackoverflow.com/a/808295 available].
-* [http://en.wikipedia.org/wiki/Arithmetic_shift Arithmetic shift] - Many languages lack operators like C's << and >>. The goal for the task would be to build the function shift(n,s) where n and s are both signed integers; n is the number to be shifted and s is the number of positions (negative for left; positive for right). So shift(5,-2) would yield the same result as 5<<2.   --[[User:Mappo|Mappo]] 19 Nov. 2014
+* [[Unit calculator/convertor]].  A bit like what Google can do:  <https://www.google.com/search?q=10.5+cm+in+inches>.  With all SI units plus others (days, months for time, W.hour for energy, etc)
+* Perform basic mathematical operations (+,*,/,-) for numbers represented as strings.[Here](https://github.com/danmar/cppcheck/blob/master/lib/mathlib.h) is a sample implementation in C++.
+* Implement the longest increasing subsequence algorithm in your programming language. [Here](http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence) is an implementation in C and C++.
+* [Fermat primality test](http://en.wikipedia.org/wiki/Fermat_primality_test)
+* Implement a function in your programming language that prints numbers in [Engineering_notation](http://en.wikipedia.org/wiki/Engineering_notation). A C# implementation is already [available](http://stackoverflow.com/a/808295).
+* [Arithmetic shift](http://en.wikipedia.org/wiki/Arithmetic_shift) - Many languages lack operators like C's << and >>. The goal for the task would be to build the function shift(n,s) where n and s are both signed integers; n is the number to be shifted and s is the number of positions (negative for left; positive for right). So shift(5,-2) would yield the same result as 5<<2.   --[[User:Mappo|Mappo]] 19 Nov. 2014
 :: See [[Bitwise operations]]. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 17:40, 19 November 2014 (UTC)
 :::Looks like he wants it re-implemented even if the language already covers it. --[[User:Mwn3d|Mwn3d]] ([[User talk:Mwn3d|talk]]) 17:56, 19 November 2014 (UTC)
 
@@ -414,7 +414,7 @@ which can ultimately be assembled into the final project.
 ### Super Simple p2p network
 
 : Could be done with FIFOs for streams, and a constant number of clients. Needs to be more specific regarding what it does. --[[User:Short Circuit|Short Circuit]] 22:28, 6 December 2007 (MST)
-:: probably means some thing like this <nowiki>http://ansuz.sooke.bc.ca/software/molester/molester</nowiki>. To make it suitable for rc the restrictions need to be spelt out - i.e. fixing the protocol and discovery mechanisms [[User:Rahul|Rahul]] 20:24, 7 October 2008 (UTC)
+:: probably means some thing like this <nowiki><http://ansuz.sooke.bc.ca/software/molester/molester></nowiki>. To make it suitable for rc the restrictions need to be spelt out - i.e. fixing the protocol and discovery mechanisms [[User:Rahul|Rahul]] 20:24, 7 October 2008 (UTC)
 
 ===A table-based native code assembler===
 implement a table-based native code (macro?) assembler in various HLLs
@@ -448,7 +448,7 @@ Execute system commands, pipes, I/O redirection, command history, custom PATH va
 
 The [[wp:Prolog|Prolog's syntax]] looks incredibly simple, and I'm wondering how difficult it would be to write a prolog interpreter in various langauges. --[[User:Short Circuit|Michael Mol]] 08:21, 13 November 2009 (UTC)
 
-Interesting and relevant suggestion, Michael. Many such projects exist for reference, including Norvig's in [http://norvig.com/paip.html "Paradigms of Artificial Intelligence Programming,"] Paul Graham's in [http://www.paulgraham.com/onlisp.html  "On Lisp,"] the interpreter that is part of [http://www.j-paine.org/dobbs/poplog.html Poplog], and [http://codespeak.net/pypy/dist/pypy/doc/prolog-interpreter.html PyPy's]. [[User:qu1j0t3]]
+Interesting and relevant suggestion, Michael. Many such projects exist for reference, including Norvig's in ["Paradigms of Artificial Intelligence Programming,"](http://norvig.com/paip.html) Paul Graham's in ["On Lisp,"](http://www.paulgraham.com/onlisp.html) the interpreter that is part of [Poplog](http://www.j-paine.org/dobbs/poplog.html), and [PyPy's](http://codespeak.net/pypy/dist/pypy/doc/prolog-interpreter.html). [[User:qu1j0t3]]
 
 :Prolog's syntax seems relatively simple, when compared with some other languages, but I do not think it is "incredibly simple".  For example, it has three distinct syntaxes for function calls, three different kinds of operators (prefix, infix and postfix), operator precedence, various forms of control flow syntax, and so on... --[[User:Rdm|Rdm]] 02:16, 3 September 2010 (UTC)
 
@@ -464,7 +464,7 @@ Implement a [[wp:Whitespace_(programming_language)|whitespace]] interpreter such
 
 ### General 2D morphing
 
-I have an idea for a task but it might require original work, possibly on research level.  It's inspired from recent research about self-assembling robots:  http://phys.org/news/2013-10-surprisingly-simple-scheme-self-assembling-robots.html
+I have an idea for a task but it might require original work, possibly on research level.  It's inspired from recent research about self-assembling robots:  <http://phys.org/news/2013-10-surprisingly-simple-scheme-self-assembling-robots.html>
 
 What I have in mind is a simplified 2D model for an algorithm that would allow a set of square robots to take any arbitray shape.
 
@@ -503,7 +503,7 @@ Place new items here, if it's unclear where they belong.
 
 ###  Operators polymorphism 
 
-For many OO programming languages we need simple examples of [http://en.wikipedia.org/wiki/Operator_overloading operator overloading] and (if applicable to language) examples how to create new operators.--[[User:Zmi007|Zmi007]] ([[User talk:Zmi007|talk]]) 10:31, 16 April 2015 (UTC)
+For many OO programming languages we need simple examples of [operator overloading](http://en.wikipedia.org/wiki/Operator_overloading) and (if applicable to language) examples how to create new operators.--[[User:Zmi007|Zmi007]] ([[User talk:Zmi007|talk]]) 10:31, 16 April 2015 (UTC)
 
 Not only OO languages.  Algol68 allows operator overloading and creation of new operators.  For instance
 
@@ -562,7 +562,7 @@ When run backward it produces bits in reverse order.
 I suggest using a maximal period minimal cost linear hybrid cellular automaton utilizing rules 90 and 150. -[[User:Zelah|Zelah]] ([[User talk:Zelah|talk]]) 02:35, 7 May 2014 (UTC)
 
 === Duff's Device ===
-Implement [http://en.wikipedia.org/wiki/Duff%27s_device Duff's Device] or a near equivalent [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 03:27, 26 April 2014 (UTC)
+Implement [Duff's Device](http://en.wikipedia.org/wiki/Duff%27s_device) or a near equivalent [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 03:27, 26 April 2014 (UTC)
 
 
 ### Bank Routing Number Validator
@@ -588,7 +588,7 @@ A minimal global illumination renderer http://www.hxa.name/minilight/
 
 Select a random task or draft task from RC, filtering out the non-task pages
 **Possibly done as a variation on [[Rosetta Code/Find unimplemented tasks]]?
-:See [http://irclog.perlgeek.de/rosettacode/2011-11-21#i_4737091 this IRC discussion] for more information -- [[User:Eriksiers|Erik Siers]] 05:46, 21 November 2011 (UTC)
+:See [this IRC discussion](http://irclog.perlgeek.de/rosettacode/2011-11-21#i_4737091) for more information -- [[User:Eriksiers|Erik Siers]] 05:46, 21 November 2011 (UTC)
 
 
 ###  Noises 
@@ -610,8 +610,8 @@ Using mutexes or semaphores to conduct thread safe and robust read and writes fr
 
 ### Henderson Escher Picture Language
 
-[http://www.ecs.soton.ac.uk/%7Eph/funcgeo.pdf PDF] as made famous by [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4 SICP Section 2.2.4] [http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/ Video, Lecture 3a].  
-Here is an [http://www.frank-buss.de/lisp/functional.html implementation in Lisp] by Frank Buss. --[[User:Alanning|Alanning]] 04:00, 27 May 2011 (UTC)
+[PDF](http://www.ecs.soton.ac.uk/%7Eph/funcgeo.pdf) as made famous by [SICP Section 2.2.4](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4) [Video, Lecture 3a](http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/).  
+Here is an [implementation in Lisp](http://www.frank-buss.de/lisp/functional.html) by Frank Buss. --[[User:Alanning|Alanning]] 04:00, 27 May 2011 (UTC)
 
 
 ### Phonecode
@@ -619,7 +619,7 @@ Here is an [http://www.frank-buss.de/lisp/functional.html implementation in Lisp
 Given a list of words, and a telephone number, find all possible encodings of that telephone number by words. This task has already been used in a few comparative studies of language performance and productivity, for example [http://page.mi.fu-berlin.de/prechelt/Biblio/jccpprtTR.pdf]
 : Thanks so much for that link! I had read the paper some time ago but I probably have the link on an old hard drive somewhere...
 : You have to remember though, that the aims of RC are ''very'' different to the authors of that paper and any task would have to be written for RC. If anyone has the number to a cold-calling firm, we could find the most appropriate phrase for their number ;-) or maybe not. --[[User:Paddy3118|Paddy3118]] 08:15, 7 May 2011 (UTC)
-:: Here's an easy one. The phone number to the White House [http://www.whitehouse.gov/contact switch board]: 202-456-1414. Nothing specific or political intended here; it's just a published, public number. I do like the task idea, though. --[[User:Short Circuit|Michael Mol]] 13:15, 8 May 2011 (UTC)
+:: Here's an easy one. The phone number to the White House [switch board](http://www.whitehouse.gov/contact): 202-456-1414. Nothing specific or political intended here; it's just a published, public number. I do like the task idea, though. --[[User:Short Circuit|Michael Mol]] 13:15, 8 May 2011 (UTC)
 
 
 ### Weather Routing
@@ -640,7 +640,7 @@ Given the above information and a specific path, progress along path and therefo
 ### Project Euler problems
 
 
-* I suggest implementations of various maze generation algorithms, such as Recursive Division or Prim's Algorithm. A website that already does this for Python can be found here: [http://weblog.jamisbuck.org/search?q=maze+generation http://weblog.jamisbuck.org]--[[User:Intercoder|Intercoder]] 12:57, 7 March 2011 (UTC)
+* I suggest implementations of various maze generation algorithms, such as Recursive Division or Prim's Algorithm. A website that already does this for Python can be found here: [http://weblog.jamisbuck.org](http://weblog.jamisbuck.org/search?q=maze+generation)--[[User:Intercoder|Intercoder]] 12:57, 7 March 2011 (UTC)
 
 * My suggestion is for a unicode interpretation task.  Specifically, specifying the encode eg utf-8, the task should provide a small file of text (or the data to programmer could be bytes of data instead). The task should be to depict (interpret) the data in a number of forms, for instance text, binary,hex.  This would highlight features of some languages for handling Unicode and gain the user related xperience with parsing strings, string-numeric conversion, etc (I did see http://rosettacode.org/wiki/Character_codes)--[[User:Billymac00|Billymac00]] 02:21, 3 January 2011 (UTC)
 
@@ -649,7 +649,7 @@ Given the above information and a specific path, progress along path and therefo
 
 * Particle Swarm Optimization (PSO) implementation. A test case would be something like finding the global minimum of the banana function using PSO. An optional addition to the task would be to implement the algorithm using concurrency/parallelization techniques. The task is inherently parallel. --[[User:Treefall|Treefall]] 23:32, 30 August 2010 (UTC)
 
-* Financial functions. E.g. Future Value, Present Value, Nominal declining balance depreciation, Straight line depreciation, Uneven internal rate of return, Weibull analysis, T-Bill Discount ... and the list goes on. Examples: [http://finance-old.bi.no/~bernt/gcc_prog/recipes/recipes/node3.html the value of time] --[[User:Axtens|Axtens]] 14:29, 20 March 2010 (UTC)
+* Financial functions. E.g. Future Value, Present Value, Nominal declining balance depreciation, Straight line depreciation, Uneven internal rate of return, Weibull analysis, T-Bill Discount ... and the list goes on. Examples: [the value of time](http://finance-old.bi.no/~bernt/gcc_prog/recipes/recipes/node3.html) --[[User:Axtens|Axtens]] 14:29, 20 March 2010 (UTC)
  
 * Not sure where to put this, but could we prefix all the statistics-related tasks with "Statistics/"? All the average and means are bunched up together but poor old standard deviation is an outlier. --[[User:Axtens|Axtens]] 05:21, 24 February 2010 (UTC)
 ** There's already [[:Category:Probability and statistics]]. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 16:03, 4 April 2010 (UTC)
@@ -682,7 +682,7 @@ Given the above information and a specific path, progress along path and therefo
 *:I'd have created the task already but that all my code is still on paper. --[[User:Axtens|Axtens]] 14:21, 20 April 2010 (UTC)
 
 * [[wp:Gray code]]. Specifically, construct and ''n''-bit Gray Code that satisfies the restrictions for the Beckett-Gray code, or show that no such code exists (3-bit and 4-bit happen to fall under the "can't satisfy" set, for example). A task like this is interesting for it being Gray Code, and for the matching against the Beckett-Gray code being accelerable by languages with good support for concurrency, and more easily expressed by languages which express data set problems. (All the details required for solving this problem are on the WP page) --[[User:Short Circuit|Michael Mol]] 12:34, 19 May 2010 (UTC)
-: This sounds like it would be more appropriate for [http://projecteuler.net Project Euler] than Rosetta Code:  How many useful programming projects really need an implementation of a Becket-Gray search? And, how much would a typical programmer learn about translation by studying such implementations?  --[[User:Rdm|Rdm]] 14:11, 19 May 2010 (UTC)
+: This sounds like it would be more appropriate for [Project Euler](http://projecteuler.net) than Rosetta Code:  How many useful programming projects really need an implementation of a Becket-Gray search? And, how much would a typical programmer learn about translation by studying such implementations?  --[[User:Rdm|Rdm]] 14:11, 19 May 2010 (UTC)
 :: I never thought of RC as about studying translation. The closest to that is studying unfamiliar languages by seeing a task implemented in a familiar one. Project Euler focuses on implement before observation, where RC is geared more towards observation, and implementation if nobody's already provided it. Apart from being an interesting curiosity (you'd be surprised how many people who actually stick around and look at code came in on curiosity pages like Ethiopian Multiplication and Quine; come for the show, stick around and contribute code), the task I described allows code langauges to exercise dataset manipulation and idiomatic examples of concurrency, the latter of which, at least, doesn't have much presence on the site. --[[User:Short Circuit|Michael Mol]] 18:31, 19 May 2010 (UTC)
 ::: But a Beckett Gray search has only one interesting case (5 bits wide).  The 6 bit wide case takes 15+ hours which makes testing a 6 bit solution for accuracy problematic, the 0, 1 and 2 bit cases are trivial, and the 3 and 4 bit cases are not doable (and what does it mean to "show that no such code exists"?  Is reporting that the last value in the found sequence has 3 bits set sufficient?).  [And, if my implementation is correct that 5 bit case has 16 distinct valid results -- and each of them has 120 permutations all of which are valid for a total of 1920 different, valid 5 bit beckett gray codes.] --[[User:Rdm|Rdm]] 19:57, 19 May 2010 (UTC)
 :::: The 6-bit-wide case discussed on the WP page indicates that a full search of the data set takes 15 hours, but doesn't indicate the hardware, language or techniques used to find it. See [[Lucas-Lehmer test]] for another task that takes a while to run. When originally written, it specified to allow the program to run until it found M47, which wasn't even known at the time. [[User:NevilleDNZ|NevilleDNZ]] apparently has a sense of humor.
@@ -717,13 +717,13 @@ Given the above information and a specific path, progress along path and therefo
 :::I hope I havent stepped on anyones toes here but I've been trying to get the reddit community interested in the site. The more eyeballs, the more chances of good code and tasks (and donations wink wink). IO tasks could be done with blocks, bits, and implementing different database models. I dont know about the language of such a task (like implement SQL or something) but it would be interesting.--[[User:MichaelChrisco|MichaelChrisco]] 00:16, 29 August 2010 (UTC)
 :::: Hey, you're not stepping on anyone's toes there. I prefer word-of-mouth to any other form of advertisement I could get. :) --[[User:Short Circuit|Michael Mol]] 03:23, 29 August 2010 (UTC)
 * [[wp:Discrete cosine transform|Discrete cosine transform]]
-*[http://www.arcfn.com/2010/06/using-arc-to-decode-venters-secret-dna.html decode Venter's secret DNA watermark]
+*[decode Venter's secret DNA watermark](http://www.arcfn.com/2010/06/using-arc-to-decode-venters-secret-dna.html)
 
-*[http://code.google.com/p/webp/ WebP] container and conversion from JPEG (or whatever other format you'd like).
+*[WebP](http://code.google.com/p/webp/) container and conversion from JPEG (or whatever other format you'd like).
 
 * One or more tasks which illustrate the technique of [[wp:Dynamic programming]], in addition to the existing [[Knapsack problem]]; preferably solving problems of broader interest. —[[User:Kevin Reid|Kevin Reid]] 19:02, 16 February 2011 (UTC)
 : Try [[Longest common subsequence]] too. --[[User:Paddy3118|Paddy3118]] 22:32, 16 February 2011 (UTC)
-: Here is link to an implementation of [[Longest common subsequence]] in [http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence.c C] and [http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence.cpp C++]. 
+: Here is link to an implementation of [[Longest common subsequence]] in [C](http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence.c) and [C++](http://www.algorithmist.com/index.php/Longest_Increasing_Subsequence.cpp). 
 
 * Escape from Zurg: http://blog.jonhnnyweslley.net/2008/08/escape-from-zurg.html
 
@@ -736,7 +736,7 @@ Given the above information and a specific path, progress along path and therefo
 * Remove some elements from a mutable collection while iterating through it, based on some condition of the element. Related to [[Filter]], but modifying the existing collection rather than creating a new one. This is a challenging task, because removing the element you are currently iterating over, may affect the iteration itself (changes indexes / affects iterators). --[[Special:Contributions/208.80.119.67|208.80.119.67]] 19:32, 5 April 2011 (UTC)
 :This is an Anti-pattern. Why code it? --[[User:Paddy3118|Paddy3118]] 19:57, 5 April 2011 (UTC)
 :: Perhaps the original commenter overspecified. Make it less specific? Call it [[Set filter]]. --[[User:Short Circuit|Michael Mol]] 20:16, 5 April 2011 (UTC)
-::: Some languages provide this operation, exactly as the original commenter specified. Common Lisp has ''delete-if-not'', Factor has ''filter!'', and Ruby has ''Array#select!''. Java hackers might implement this with [http://download.oracle.com/javase/6/docs/api/java/util/Iterator.html#remove() java.util.Iterator.remove()] from [http://download.oracle.com/javase/6/docs/api/ Java API]. I added this task as an option to [[Filter]], along with code for Factor and Ruby. (The page already had Common Lisp.) --[[User:Kernigh|Kernigh]] 01:55, 6 April 2011 (UTC)
+::: Some languages provide this operation, exactly as the original commenter specified. Common Lisp has ''delete-if-not'', Factor has ''filter!'', and Ruby has ''Array#select!''. Java hackers might implement this with [java.util.Iterator.remove()](http://download.oracle.com/javase/6/docs/api/java/util/Iterator.html#remove()) from [Java API](http://download.oracle.com/javase/6/docs/api/). I added this task as an option to [[Filter]], along with code for Factor and Ruby. (The page already had Common Lisp.) --[[User:Kernigh|Kernigh]] 01:55, 6 April 2011 (UTC)
 
 * Create a program to reseed the Linux Kernel's pseudo random number generator through /dev/urandom with random bytes fetched from [http://www.random.org/] A PERL implementation can be found in the Ubuntu repositories in the package named reseed
 
@@ -786,22 +786,22 @@ if the input is 5 then the output will be
 9  16 21 24 24
 ```
 
-* Implement this new little algorithm: http://www.codeproject.com/KB/recipes/Goldbach.aspx
+* Implement this new little algorithm: <http://www.codeproject.com/KB/recipes/Goldbach.aspx>
 * Write a program to draw a Golden Spiral
 * Four ideas from Ruby Quiz site:
-** http://www.rubyquiz.com/quiz39.html
-** http://www.rubyquiz.com/quiz111.html
-** http://www.rubyquiz.com/quiz117.html
-** http://www.rubyquiz.com/quiz137.html
+** <http://www.rubyquiz.com/quiz39.html>
+** <http://www.rubyquiz.com/quiz111.html>
+** <http://www.rubyquiz.com/quiz117.html>
+** <http://www.rubyquiz.com/quiz137.html>
 * Ternary and quaternary search (binary search is already present).
 
 *Maximum Unchecked Problem: Place 8 queens on a chessboard so that as many squares as possible are not attacked by any queen. (Cells occupied by queens are counted as attacked.) Rouse Ball in "Mathematical Recreations and Essays" believes the answer to be 11, but was never able to prove it. [[User:Jon Rob|Jon Rob]] 14:41, 30 October 2012 (UTC)
 
 *Farmer across river problem: man, wolf, goat, cabbage and ship, everyone knows. Make the algorithm to find solution.
 
-* Seam Carving (or Context Aware Image Resizing) basic algorithm: http://nparashuram.com/seamcarving/  as test case use this image converted to grey scale: http://upload.wikimedia.org/wikipedia/commons/c/cb/Broadway_tower_edit.jpg
+* Seam Carving (or Context Aware Image Resizing) basic algorithm: <http://nparashuram.com/seamcarving/>  as test case use this image converted to grey scale: <http://upload.wikimedia.org/wikipedia/commons/c/cb/Broadway_tower_edit.jpg>
 
-* Draw a Pythagoras Tree ( http://fsharpnews.blogspot.it/2009/05/pythagoras-tree.html  http://en.wikipedia.org/wiki/Pythagoras_tree_%28fractal%29 )
+* Draw a Pythagoras Tree ( <http://fsharpnews.blogspot.it/2009/05/pythagoras-tree.html>  <http://en.wikipedia.org/wiki/Pythagoras_tree_%28fractal%29> )
 
 * Linear regression [[User:Wei2912|Wei2912]] ([[User talk:Wei2912|talk]]) 14:38, 6 June 2014 (UTC)
 
@@ -875,7 +875,7 @@ This request was just created today.
 
 See the Rosetta Code task:
 
-:*   [http://rosettacode.org/wiki/Partition_an_integer_X_into_N_primes '''Partition an integer X into N primes'''].
+:*   ['''Partition an integer X into N primes'''](http://rosettacode.org/wiki/Partition_an_integer_X_into_N_primes).
 
 
 -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 03:48, 3 March 2017 (UTC)
@@ -1030,8 +1030,8 @@ If a task has been completed, move the request to this category.  Add a link to 
 * JSON task(s)
 ** [[Serialize Data/JSON]]
 ** [[Deserialize Data/JSON]]
-: Serialization and deserialization are extremely common programming tasks, and there are a fair number of open formats for the purpose.  [[wp:Serialization|Serialization]] and deserialization should probably get their own category under [[:Category:Solutions by Programming Task]].  Additionally, json.org has [http://www.json.org/index.html a list of existing JSON implementations], sorted by language, to refer to.  This should be a very quick thing to implement for JSON.  Other formats that should be considered are XML and binary (packed) formats. --[[User:Short Circuit|Short Circuit]] 04:38, 20 June 2009 (UTC)
-* Parsing [http://tools.ietf.org/html/rfc4180 RFC 4180 compliant] CSV
+: Serialization and deserialization are extremely common programming tasks, and there are a fair number of open formats for the purpose.  [[wp:Serialization|Serialization]] and deserialization should probably get their own category under [[:Category:Solutions by Programming Task]].  Additionally, json.org has [a list of existing JSON implementations](http://www.json.org/index.html), sorted by language, to refer to.  This should be a very quick thing to implement for JSON.  Other formats that should be considered are XML and binary (packed) formats. --[[User:Short Circuit|Short Circuit]] 04:38, 20 June 2009 (UTC)
+* Parsing [RFC 4180 compliant](http://tools.ietf.org/html/rfc4180) CSV
 ** Should take into account escaping of commas, quotes and newline characters
 
 * Dynamic Object Oriented tasks

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/boltdb/bolt Bolt] is a pure Go key/value store which provides a simple, fast and reliable database for projects that don't require a full database server such as Postgres or MySQL.
+[Bolt](https://github.com/boltdb/bolt) is a pure Go key/value store which provides a simple, fast and reliable database for projects that don't require a full database server such as Postgres or MySQL.
 
-Its use is subject to the [https://github.com/boltdb/bolt/blob/master/LICENSE MIT License].
+Its use is subject to the [MIT License](https://github.com/boltdb/bolt/blob/master/LICENSE).

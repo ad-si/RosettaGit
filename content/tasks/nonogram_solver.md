@@ -95,7 +95,7 @@ E CB BAB AAA AAA AC BB ACC ACCA AGB AIA AJ AJ ACE AH BAF CAG DAG FAH FJ GJ ADK A
 
 
 
-This task is the problem n.98 of the "[https://sites.google.com/site/prologsite/prolog-problems 99 Prolog Problems]" by Werner Hett (also thanks to Paul Singleton for the idea and the examples).
+This task is the problem n.98 of the "[99 Prolog Problems](https://sites.google.com/site/prologsite/prolog-problems)" by Werner Hett (also thanks to Paul Singleton for the idea and the examples).
 
 
 
@@ -107,9 +107,9 @@ This task is the problem n.98 of the "[https://sites.google.com/site/prologsite/
 ## See also
 
 * [[wp:AC-3_algorithm|Arc Consistency Algorithm]]
-* http://www.haskell.org/haskellwiki/99_questions/Solutions/98 (Haskell)
-* http://twanvl.nl/blog/haskell/Nonograms (Haskell)
-* http://picolisp.com/5000/!wiki?99p98 (PicoLisp)
+* <http://www.haskell.org/haskellwiki/99_questions/Solutions/98> (Haskell)
+* <http://twanvl.nl/blog/haskell/Nonograms> (Haskell)
+* <http://picolisp.com/5000/!wiki?99p98> (PicoLisp)
 
 
 
@@ -312,7 +312,7 @@ E CB BAB AAA AAA AC BB ACC ACCA AGB AIA AJ AJ ACE AH BAF CAG DAG FAH FJ GJ ADK A
 
 ### Bonus GCHQ Xmas Puzzle
 
-[[https://www.gchq.gov.uk/news-article/christmas-card-cryptographic-twist-charity GCHQ Xmas Puzzle]] is a Nonogram. They say "We pre-shaded a few cells to help people get started. Without this, the puzzle would have been slightly ambiguous, though the error correction used in QR codes means that the URL would have been recovered anyway. As a small Easter egg, the pre-shaded cells spell out “GCHQ” in Morse code."
+[GCHQ Xmas Puzzle](https://www.gchq.gov.uk/news-article/christmas-card-cryptographic-twist-charity) is a Nonogram. They say "We pre-shaded a few cells to help people get started. Without this, the puzzle would have been slightly ambiguous, though the error correction used in QR codes means that the URL would have been recovered anyway. As a small Easter egg, the pre-shaded cells spell out “GCHQ” in Morse code."
 
 ```cpp
 

@@ -71,7 +71,7 @@ int main () {
 
 ### Judy
 
-Example using [http://judy.sourceforge.net/ Judy].
+Example using [Judy](http://judy.sourceforge.net/).
 
 {{libheader|Judy}}
 
@@ -164,7 +164,7 @@ These functions have some major limitations:
 * There is no way to delete an entry from the table!
 * There is no way to iterate all keys in the table!
 
-The Linux manual page [http://www.kernel.org/doc/man-pages/online/pages/man3/hsearch.3.html hsearch(3)] contains a short example.
+The Linux manual page [hsearch(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/hsearch.3.html) contains a short example.
 
 
 ### =To create the hash table=
@@ -467,9 +467,9 @@ Iterating the hash table:
 hdestroy() is almost impossible to use. With BSD libc, hdestroy() will call free() with each key in the table. With other systems, hdestroy() might leak memory, because the program has no way to iterate the keys to free them. Most programs keep the hash table and never call hdestroy().
 
 ===BSD dbopen()===
-[[BSD]] provides [http://www.openbsd.org/cgi-bin/man.cgi?query=dbopen&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html dbopen()] in <db.h>. This is Berkeley DB 1.85. Because dbopen() often puts a database on disk, one easily forgets that dbopen(NULL, ...) can put a small database in memory. When the type is DB_BTREE or DB_HASH, then the database is an associative array.
+[[BSD]] provides [dbopen()](http://www.openbsd.org/cgi-bin/man.cgi?query=dbopen&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html) in <db.h>. This is Berkeley DB 1.85. Because dbopen() often puts a database on disk, one easily forgets that dbopen(NULL, ...) can put a small database in memory. When the type is DB_BTREE or DB_HASH, then the database is an associative array.
 
-* Warning: some GNU/Linux systems have a dbopen(3) manual page without a real dbopen() function. See [http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=337581 Debian bug #337581].
+* Warning: some GNU/Linux systems have a dbopen(3) manual page without a real dbopen() function. See [Debian bug #337581](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=337581).
 
 Every key and value is a *void, needs a cast to the correct type. Because BSD also has <err.h>, I remove fail() and use err().
 

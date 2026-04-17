@@ -14,16 +14,16 @@ tags = []
 
 
 ==[[Cach&eacute;]]==
-See http://www.intersystems.com/
+See <http://www.intersystems.com/>
 
 ==[[GT.M]]==
-See http://en.wikipedia.org/wiki/GT.M
+See <http://en.wikipedia.org/wiki/GT.M>
 
 ==[[M21]]==
-See http://www.m21.uk.com/
+See <http://www.m21.uk.com/>
 
 ==[[MiniM]]==
-See http://www.minimdb.com/
+See <http://www.minimdb.com/>
 
 ==[[DSM]]==
 DIGITAL Standard MUMPS, bought by InterSystems and transformed to [[Cach&eacute;]].
@@ -35,4 +35,4 @@ DataTree MUMPS. MUMPS for MS-DOS, bought by InterSystems and transformed to [[Ca
 Micronetics Standard MUMPS, bought by InterSystems and transformed to [[Cach&eacute;]].
 
 ==[[MDH]]==
-Mumps MultiDimensional & Hierarchical Toolkit by Dr. Kevin o'Kane. See http://www.cs.uni.edu/~okane/mumps.html
+Mumps MultiDimensional & Hierarchical Toolkit by Dr. Kevin o'Kane. See <http://www.cs.uni.edu/~okane/mumps.html>

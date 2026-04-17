@@ -881,7 +881,7 @@ Tested with GnuCOBOL, and only on 64bit architecture, GNU/Linux.  Nods to the C 
 ## Common Lisp
 
 
-{{field attention|Common Lisp|X11|This example was written in near-total ignorance of X11 by consulting the [http://www.cliki.net/CLX%20Manual CLX manual] to find equivalents for the parts of the C example. It was also only tested with [[Mac OS X]] X11, which is not exactly normal. — (ps: Testing on Linux (Fedora 21/x86-64), it seems to display black-on-black, so the "Hello" is lost.). Testing new code changes (i.e. adding background and foreground) should fix the issue, it was tested on LinuxMint 17.1/x86-64.
+{{field attention|Common Lisp|X11|This example was written in near-total ignorance of X11 by consulting the [CLX manual](http://www.cliki.net/CLX%20Manual) to find equivalents for the parts of the C example. It was also only tested with [[Mac OS X]] X11, which is not exactly normal. — (ps: Testing on Linux (Fedora 21/x86-64), it seems to display black-on-black, so the "Hello" is lost.). Testing new code changes (i.e. adding background and foreground) should fix the issue, it was tested on LinuxMint 17.1/x86-64.
 Also tested on Debian; with a minor change on the text position it creates a pixel perfect replica of the C example. Could this warning be removed then?}}
 
 This example uses CLX, which is the de facto standard X11 library for Common Lisp. CLX is not a binding to Xlib; it is a Lisp library implementing the X11 protocol.
@@ -1060,14 +1060,14 @@ link graphics
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 Additionally, the '''WOpen''' procedure and Window.App methods are available.
 
 
 ## Haskell
 
-Using {{libheader|X11}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Using {{libheader|X11}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.X11.Xlib
@@ -1162,7 +1162,7 @@ public class WindowExample extends JApplet {
 
 ## Julia
 
-This was based on https://en.wikipedia.org/wiki/Xlib, and mostly quoted from from the XLib.jl test2() testing code function.
+This was based on <https://en.wikipedia.org/wiki/Xlib>, and mostly quoted from from the XLib.jl test2() testing code function.
 
 ```julia
 
@@ -1629,7 +1629,7 @@ any simpleWin(any ex) {
 
 ###  Xlib
 
-Download Python X library from http://sourceforge.net/projects/python-xlib/ .
+Download Python X library from <http://sourceforge.net/projects/python-xlib/> .
 python-xlib is a pure python library therefore the example should work anywhere where python does and where there is an X server.
 Run:
 * python xlib_hello_world.py
@@ -1766,7 +1766,7 @@ object WindowExample extends SimpleSwingApplication {
 
 ## Tcl
 
-Tcl does not come with a low-level connection to the X protocol, as it has long been distributed with [[Tk]] which offers a [[Simple Windowed Application|much higher-level interface]] (and which is portable to other platforms too). This means that the interface has to be crafted directly. This can be done with either [http://www.swig.org/ SWIG] or [[critcl]]. This example shows how to do it the latter way:
+Tcl does not come with a low-level connection to the X protocol, as it has long been distributed with [[Tk]] which offers a [[Simple Windowed Application|much higher-level interface]] (and which is portable to other platforms too). This means that the interface has to be crafted directly. This can be done with either [SWIG](http://www.swig.org/) or [[critcl]]. This example shows how to do it the latter way:
 
 
 ### Low level interface

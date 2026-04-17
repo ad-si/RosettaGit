@@ -33,7 +33,7 @@ Hi,
 
 I'm a 12 years old boy, and I'd like to contribute to this page, by adding the Scratch solution to this problem.
 
-The program is at: http://scratch.mit.edu/projects/26501854/
+The program is at: <http://scratch.mit.edu/projects/26501854/>
 
 I actually need help because I know very little about this site.
 

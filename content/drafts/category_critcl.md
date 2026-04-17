@@ -15,7 +15,7 @@ tags = []
 This library for [[Tcl]] is used to allow inline [[C]] code directly inside scripts as a foreign language. The library manages access to the compiler and caching the compiled code so that repeat runs are fast. The code that it builds is loaded into the Tcl interpreter as a dynamic library.
 
 ==Key Links==
-* [http://www.equi4.com/starkit/critcl.html Critcl Home Page]
-* [http://wiki.tcl.tk/2523 Critcl on the Tcler's Wiki]
-** [http://wiki.tcl.tk/2516 More wiki links]
+* [Critcl Home Page](http://www.equi4.com/starkit/critcl.html)
+* [Critcl on the Tcler's Wiki](http://wiki.tcl.tk/2523)
+** [More wiki links](http://wiki.tcl.tk/2516)
 [[Category:Tcl packages]]

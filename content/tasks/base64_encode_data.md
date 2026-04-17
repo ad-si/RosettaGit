@@ -54,7 +54,7 @@ languages = [
 +++
 
 ## Task
-Convert an array of bytes or binary string to the [[wp:Base64|base64-encoding]] of that string and output that value. Use [http://rosettacode.org/favicon.ico the icon for Rosetta Code] as the data to convert.
+Convert an array of bytes or binary string to the [[wp:Base64|base64-encoding]] of that string and output that value. Use [the icon for Rosetta Code](http://rosettacode.org/favicon.ico) as the data to convert.
 
 See also [[Base64 decode data]].
 
@@ -1023,7 +1023,7 @@ main = B.readFile "favicon.ico" >>= (B.putStrLn . Base64.encode)
 
 ## J
 
-'''Solution''' (''[http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/base64.ijs standard library]''):
+'''Solution''' (''[standard library](http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/base64.ijs)''):
 ```j
    load'convert/misc/base64'  NB. use 'tobase64'
 ```
@@ -1234,7 +1234,7 @@ AAABAAIAEBAAAAAAAABoBQ...QAAAAEAAAABAAAAAQAAAAE=
 Works with IE10 or higher.
 
 HTML5 saves the day! introducing two methods to the DOM!
-These are btoa and atob, see [http://dev.w3.org/html5/spec-LC/webappapis.html#atob spec]
+These are btoa and atob, see [spec](http://dev.w3.org/html5/spec-LC/webappapis.html#atob)
 
 ```JavaScript
 window.btoa("String to encode, etc..");//Will throw error if any unicode character is larger than 255 it's counterpart it's the window.atob
@@ -1271,7 +1271,7 @@ callback = function(response) {
 ## Jsish
 
 Using a contributed entry that is a small change of the Jsi ''lib/Jsi_Wget.jsi'' sources, to the ''httpGet.jsi'' module. Stored as an attachment at
-<nowiki>https://jsish.org/fossil/jsi/wiki/Wget</nowiki> and also listed at [[HTTP#Jsish]].
+<nowiki><https://jsish.org/fossil/jsi/wiki/Wget></nowiki> and also listed at [[HTTP#Jsish]].
 
 
 ```javascript
@@ -1772,7 +1772,7 @@ base64: procedure;  parse arg Q;   $=            /*obtain input string;  and nul
         return $ || copies('=', 2 * (L//6==2) + (L//6==4) )
 ```
 
-For the various outputs, several input texts from the Wikipedia article on   ''Base64''   [http://en.wikipedia.org/wiki/Base64]   were used to demonstrate how padding works.
+For the various outputs, several input texts from the Wikipedia article on   ''Base64''   <http://en.wikipedia.org/wiki/Base64>   were used to demonstrate how padding works.
 
 
 
@@ -1868,8 +1868,8 @@ object Base64S extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string) toBase64],
+The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [toBase64](http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)),
 which encodes a string with the Base64 encoding.
 
 

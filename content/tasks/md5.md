@@ -96,7 +96,7 @@ languages = [
 Encode a string using an MD5 algorithm.   The algorithm can be found on   [[wp:Md5#Algorithm|Wikipedia]].
 
 
-Optionally, validate your implementation by running all of the test values in   [http://tools.ietf.org/html/rfc1321 IETF RFC (1321)   for MD5].
+Optionally, validate your implementation by running all of the test values in   [IETF RFC (1321)   for MD5](http://tools.ietf.org/html/rfc1321).
 
 Additionally,   RFC 1321   provides more precise information on the algorithm than the Wikipedia article.
 
@@ -298,7 +298,7 @@ FI
 =={{Header|AutoHotkey}}==
 ### Regular version
 
-Source: [http://www.autohotkey.com/forum/post-275910.html#275910 AutoHotkey forum] by SKAN
+Source: [AutoHotkey forum](http://www.autohotkey.com/forum/post-275910.html#275910) by SKAN
 
 ```autohotkey
 data := "abc"
@@ -319,7 +319,7 @@ Return MD5
 
 ### Native implementation
 
-Source: [http://www.autohotkey.com/forum/topic17853.html AutoHotkey forum] by Laszlo
+Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic17853.html) by Laszlo
 
 ```autohotkey
 ; GLOBAL CONSTANTS r[64], k[64]
@@ -866,7 +866,7 @@ println()
 ## Emacs Lisp
 
 
-Emacs 23 and up includes <code>md5</code> giving the MD5 hash as a hexadecimal string.  (See [http://www.gnu.org/software/emacs/manual/html_node/elisp/Checksum_002fHash.html GNU Elisp manual on Checksum/Hash]).
+Emacs 23 and up includes <code>md5</code> giving the MD5 hash as a hexadecimal string.  (See [GNU Elisp manual on Checksum/Hash](http://www.gnu.org/software/emacs/manual/html_node/elisp/Checksum_002fHash.html)).
 
 
 ```Lisp
@@ -876,7 +876,7 @@ Emacs 23 and up includes <code>md5</code> giving the MD5 hash as a hexadecimal s
 ```
 
 
-This began in [http://git.chise.org/elisp/flim/ FLIM] and FLIM has an <code>md5.el</code> which creates an <code>md5</code> func if it doesn't already exist.
+This began in [FLIM](http://git.chise.org/elisp/flim/) and FLIM has an <code>md5.el</code> which creates an <code>md5</code> func if it doesn't already exist.
 
 <code>hmac-md5.el</code> also from FLIM and also included in recent Emacs has an <code>md5-binary</code> giving the checksum as 16 binary bytes.  <code>encode-hex-string</code> from <code>hex-util.el</code> can convert that to hex the same as the <code>md5</code> func gives.
 
@@ -920,7 +920,7 @@ Testing it:
 
 ## F#
 
-Using built-in System.Security.Cryptography.MD5 class (Link to original blog [https://znprojects.blogspot.com/2017/04/md5-in-f-functionally.html]).
+Using built-in System.Security.Cryptography.MD5 class (Link to original blog <https://znprojects.blogspot.com/2017/04/md5-in-f-functionally.html>).
 
 
 ```F#
@@ -975,7 +975,7 @@ md5+to-string type cr
 
 ### Intel Fortran on Windows
 
-Using Windows API. See [https://msdn.microsoft.com/en-us/library/aa379886.aspx CryptAcquireContext], [https://msdn.microsoft.com/en-us/library/aa379908.aspx CryptCreateHash], [https://msdn.microsoft.com/en-us/library/aa380202.aspx CryptHashData] and [https://msdn.microsoft.com/en-us/library/aa379947.aspx CryptGetHashParam] on MSDN.
+Using Windows API. See [CryptAcquireContext](https://msdn.microsoft.com/en-us/library/aa379886.aspx), [CryptCreateHash](https://msdn.microsoft.com/en-us/library/aa379908.aspx), [CryptHashData](https://msdn.microsoft.com/en-us/library/aa380202.aspx) and [CryptGetHashParam](https://msdn.microsoft.com/en-us/library/aa379947.aspx) on MSDN.
 
 
 ```fortran
@@ -1249,7 +1249,7 @@ assert 'The quick brown fox jumps over the lazy dog'.md5Checksum() == '9e107d9d3
 
 ## Haskell
 
-Use modules nano-MD5 and ByteString from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Use modules nano-MD5 and ByteString from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```Haskell
 import Data.Digest.OpenSSL.MD5 (md5sum)
@@ -1271,7 +1271,7 @@ e38ca1d920c4b8b8d3946b2c72f01680
 ```
 
 
-This version uses the [https://hackage.haskell.org/package/cryptonite Cryptonite] package:
+This version uses the [Cryptonite](https://hackage.haskell.org/package/cryptonite) package:
 ```haskell
 #!/usr/bin/env runhaskell
 
@@ -1341,7 +1341,7 @@ Digest = D41D8CD98F00B204E9800998ECF8427E matches reference hash
 
 ## J
 
-Using the <tt>[http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs md5]</tt> script from the <tt>convert/misc</tt> addon package:
+Using the <tt>[md5](http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs)</tt> script from the <tt>convert/misc</tt> addon package:
 
 ```j
    require 'convert/misc/md5'
@@ -2072,7 +2072,7 @@ ok	empty
 
 ## Lua
 
-Using the [http://www.keplerproject.org/md5/ Kepler MD5 library]:
+Using the [Kepler MD5 library](http://www.keplerproject.org/md5/):
 
 ```Lua
 require "md5"
@@ -2761,7 +2761,7 @@ print $md5->hexdigest, "\n";
 
 ## Perl 6
 
-Library [http://github.com/cosimo/perl6-digest-md5/ Digest::MD5]
+Library [Digest::MD5](http://github.com/cosimo/perl6-digest-md5/)
 
 ```perl6
 use Digest::MD5;
@@ -3132,7 +3132,7 @@ See MD5("my string!") + nl
 
 ## RPG
 
-Modified from [http://www.mysamplecode.com/2011/05/rpgle-generate-sha-1-hash-use.html]:
+Modified from <http://www.mysamplecode.com/2011/05/rpgle-generate-sha-1-hash-use.html>:
 
 ```rpg
 **FREE

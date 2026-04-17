@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Not how Wolfram defines Taxicab numbers ==
-In http://mathworld.wolfram.com/TaxicabNumber.html it says a Taxicab number has to be defined n ways, not just 2 ways.  So at minimum, this may be a bad title.  --[[User:TimToady|TimToady]] ([[User talk:TimToady|talk]]) 05:45, 14 March 2014 (UTC)
+In <http://mathworld.wolfram.com/TaxicabNumber.html> it says a Taxicab number has to be defined n ways, not just 2 ways.  So at minimum, this may be a bad title.  --[[User:TimToady|TimToady]] ([[User talk:TimToady|talk]]) 05:45, 14 March 2014 (UTC)
 
 : Yes, I'm aware that Wolfram's MathWorld (TM) defines taxicab numbers differently than OEIS does   (well, only in part).   OEIS also used this alternative definition   (which MathWorld uses)   as A11541.   OEIS entry A1235 is the one that is used for a model:   ''Taxi-cab numbers: sums of 2 cubes in more than 1 way''.   I specifically noted that this (more or less) is the definition used here in this task.   If OEIS defines it thusly, I saw no reason not to use that name --- albeit there are two different definitions, but that isn't unusual to have multiple (and/or conflicting) definitions.   The major difference is that the OEIS A1235 sequence definition omits the (non-)usage of negative numbers (for the cubes), but from the context, he (or they) only used positive integers when generating that OEIS list.   Using the OEIS A11541 definition would be beyond the scope of most programs or computers for most, I would think, the numbers almost look rarer than hen's teeth. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:46, 14 March 2014 (UTC)
 
@@ -81,4 +81,4 @@ I certainly don't want to start a tidying up war, when changes (drastic or other
 
 == Video talking about the story ==
 
-I just spotted a video explaining the story and the name: https://www.youtube.com/watch?v=bJDiZi9dqOg. Interesting stuff. --[[User:Mwn3d|Mwn3d]] ([[User talk:Mwn3d|talk]]) 01:26, 29 August 2015 (UTC)
+I just spotted a video explaining the story and the name: <https://www.youtube.com/watch?v=bJDiZi9dqOg>. Interesting stuff. --[[User:Mwn3d|Mwn3d]] ([[User talk:Mwn3d|talk]]) 01:26, 29 August 2015 (UTC)

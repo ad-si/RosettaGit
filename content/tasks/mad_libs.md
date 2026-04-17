@@ -1720,7 +1720,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides replace]
+[strings.icn provides replace](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 ```txt
 Please provide words for the following:

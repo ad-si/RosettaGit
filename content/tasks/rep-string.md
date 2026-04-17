@@ -3173,7 +3173,7 @@ checkit(matchstr)
 
 ### Python: find
 
-See [https://stackoverflow.com/questions/29481088/how-can-i-tell-if-a-string-repeats-itself-in-python/29489919#29489919 David Zhang's solution] to the same question posed on Stack Overflow.
+See [David Zhang's solution](https://stackoverflow.com/questions/29481088/how-can-i-tell-if-a-string-repeats-itself-in-python/29489919#29489919) to the same question posed on Stack Overflow.
 
 
 ## Racket

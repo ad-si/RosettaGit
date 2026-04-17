@@ -12,4 +12,4 @@ tags = []
 
 SFML provides a simple interface to the various components of your PC, to ease the development of games and multimedia applications. It is composed of five modules: system, window, graphics, audio and network.
 
-[https://www.sfml-dev.org Home Page]
+[Home Page](https://www.sfml-dev.org)

@@ -13,7 +13,7 @@ tags = []
 == “Where's my cow?” ==
 
 “I knew an old lady who swallowed a cow. I don't know how she swallowed the cow.” –[[User:Dkf|Donal Fellows]] 23:34, 15 August 2011 (UTC)
-: [http://www.rhymes.org.uk/there_was_an_old_lady.htm Here]--[[User:Dgamey|Dgamey]] 00:03, 16 August 2011 (UTC)
+: [Here](http://www.rhymes.org.uk/there_was_an_old_lady.htm)--[[User:Dgamey|Dgamey]] 00:03, 16 August 2011 (UTC)
 :: Go ahead and implement a correct version, and mark my PHP example incorrect. --[[User:Short Circuit|Michael Mol]] 00:52, 16 August 2011 (UTC)
 : Multiple versions [[wp:There_Was_an_Old_Lady_Who_Swallowed_a_Fly]] and goats and donkeys too it seems.  There are also alternate choruses. --[[User:Dgamey|Dgamey]] 12:12, 17 August 2011 (UTC)
 :Someone really should make a decision on which version to use before there are more solutions, or Paddy will have a heartattack later when he sees that every program produces a different output.  Maybe take a vote or something? --[[User:Ledrug|Ledrug]] 18:50, 17 August 2011 (UTC)
@@ -111,11 +111,11 @@ She's dead, of course!
 (comment remaining from an older version:)
 ::::Works for me. --[[User:Short Circuit|Michael Mol]] 12:54, 18 August 2011 (UTC)
 
-:::: I found some (traditional) lyrics online for this song http://www.timmyabell.com/music/lyrics/ol/oldlady.htm, and almost all of second lines of each verse have exclamation marks. Also, the explanation about the spider is repeated in each verse (which makes better singing). -- [[User:Gerard Schildberger|Gerard Schildberger]] 05:28, 30 October 2012 (UTC)
+:::: I found some (traditional) lyrics online for this song <http://www.timmyabell.com/music/lyrics/ol/oldlady.htm>, and almost all of second lines of each verse have exclamation marks. Also, the explanation about the spider is repeated in each verse (which makes better singing). -- [[User:Gerard Schildberger|Gerard Schildberger]] 05:28, 30 October 2012 (UTC)
 
 :::: Also, it's (sometimes) traditional for the lines of songs to be centered (but not universally, of course). -- [[User:Gerard Schildberger|Gerard Schildberger]] 05:28, 30 October 2012 (UTC)
 
-This section shares only a title with [http://www.amazon.co.uk/Wheres-My-Cow-Discworld-Picture/dp/038560937X this] book by an excellent author.
+This section shares only a title with [this](http://www.amazon.co.uk/Wheres-My-Cow-Discworld-Picture/dp/038560937X) book by an excellent author.
 
 ==Compression types==
 I wonder if the Tcl version is too much of a cheat. I just took the above text and compressed and encoded it, then wrapped a trivial decoder around it. Still, a fun little solution that obeys the challenge in a different way. –[[User:Dkf|Donal Fellows]] 19:12, 20 August 2011 (UTC)
@@ -145,7 +145,7 @@ Compression is the most obvious way to utilize repeatitions of strings, so it's 
 ::: That's true -- heeeey, but that's not what you argued for earlier.  In any event, it's a moot point, because using zip or bzip2 doesn't make a particularly interesting program. --[[User:Ledrug|Ledrug]] 20:56, 31 August 2011 (UTC)
 
 ==Copyright!==
-According to [http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=U1ARTU0002379 this] and [[wp:Alan_Mills_%28music%29|this]] and [[wp:There Was an Old Lady Who Swallowed a Fly|this]]  the song is not that old and has an author. I note that none of those quote the lyrics so I think we may be on shaky copyright grounds. --[[User:Paddy3118|Paddy3118]] 06:10, 16 August 2011 (UTC)
+According to [this](http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=U1ARTU0002379) and [[wp:Alan_Mills_%28music%29|this]] and [[wp:There Was an Old Lady Who Swallowed a Fly|this]]  the song is not that old and has an author. I note that none of those quote the lyrics so I think we may be on shaky copyright grounds. --[[User:Paddy3118|Paddy3118]] 06:10, 16 August 2011 (UTC)
 : If it was registered in 1951, it may have fallen out of copyright. All works published in the US prior to a date (somewhere in the 1930s?) will have fallen out of copyright, but some afterward will have as well, depending on whether they bothered to renew their registrations. I'm not an expert on the subject, though. Trying to identify how to look up registration history on a work. Otherwise, yeah, that stands to be a major problem. --[[User:Short Circuit|Michael Mol]] 13:25, 16 August 2011 (UTC)
 
 :We should also note that the recording industry is known to a bunch of litigious ''<insert your own appropriate word here>''. Which is another reason to err on the side of caution. --[[User:Paddy3118|Paddy3118]] 15:47, 16 August 2011 (UTC)
@@ -155,6 +155,6 @@ According to [http://www.thecanadianencyclopedia.com/index.cfm?PgNm=TCE&Params=U
 ==Lyrics Versions==
 The PHP example is tagged incorrect because its output does not match, but given that it seems that several versions of this song exist and that the result is not like a mathematical result, maybe we could avoid to care about this, what do you think?
 
-: I suspect that all solutions are incorrect, because their lyrics are not matching [http://lyrics.wikia.com/Peter,_Paul_%26_Mary:I_Know_an_Old_Lady_Who_Swallowed_a_Fly these lyrics from 1993]. The old lady never swallows a donkey. After she swallows a horse, "She's alive and well of course!" --[[User:Kernigh|Kernigh]] 23:52, 2 September 2011 (UTC)
+: I suspect that all solutions are incorrect, because their lyrics are not matching [these lyrics from 1993](http://lyrics.wikia.com/Peter,_Paul_%26_Mary:I_Know_an_Old_Lady_Who_Swallowed_a_Fly). The old lady never swallows a donkey. After she swallows a horse, "She's alive and well of course!" --[[User:Kernigh|Kernigh]] 23:52, 2 September 2011 (UTC)
 
 :: I think that those are lyrics.  I do not think that those are the only lyrics.  So if all solutions are wrong because they do not match those particular lyrics they would also be wrong if they matched those lyrics (because in matching those lyrics they would not match other lyrics that began the same way). --[[User:Rdm|Rdm]] 12:03, 3 September 2011 (UTC)

@@ -83,8 +83,8 @@ The solution for the above example would be the plan:
 
 ## See also
 
-* [http://orms.pef.czu.cz/text/transProblem.html The Transportation Problem]
-* [https://www.youtube.com/watch?v=BI1SsbDg0vQ&list=PLlCWmLrQuBh1yHhpDfULpRGoTuLgeDB4X| Transportation model - Concepts (youtube)]
+* [The Transportation Problem](http://orms.pef.czu.cz/text/transProblem.html)
+* [Transportation model - Concepts (youtube)](https://www.youtube.com/watch?v=BI1SsbDg0vQ&list=PLlCWmLrQuBh1yHhpDfULpRGoTuLgeDB4X|)
 
 
 
@@ -1954,7 +1954,7 @@ Total costs: 1000.0
 
 ## Julia
 
-Using [https://github.com/JuliaOpt/MathProgBase.jl MathProgBase.jl].
+Using [MathProgBase.jl](https://github.com/JuliaOpt/MathProgBase.jl).
 
 ```julia
 using MathProgBase, Clp

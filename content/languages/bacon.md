@@ -20,5 +20,5 @@ The shell script implementation can convert and compile the BaCon version of BaC
 Code converted by BaCon can be compiled by GCC, the Compaq C Compiler, TCC, the clang/LLVM compiler (and possibly by other C compilers), but also by C++ compilers like g++ or clang++.
 
 ## See Also
-* http://basic-converter.org/
-* http://basic-converter.proboards.com
+* <http://basic-converter.org/>
+* <http://basic-converter.proboards.com>

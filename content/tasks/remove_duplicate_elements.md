@@ -1561,7 +1561,7 @@ println[toArray[toSet[b]]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=1e2bb524d2278cd88bccdc21a1683296 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=1e2bb524d2278cd88bccdc21a1683296)'''
 
 ```gambas
 Public Sub Main()
@@ -2261,7 +2261,7 @@ Array.prototype.unique = function() {
 ```
 
 
-If, however, the array is homogenous, or we wish to interpret it as such by using JavaScript's Abstract Equality comparison (as in '==', see http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3) then it proves significantly faster to use a hash table.
+If, however, the array is homogenous, or we wish to interpret it as such by using JavaScript's Abstract Equality comparison (as in '==', see <http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3>) then it proves significantly faster to use a hash table.
 
 For example, in ES 5:
 
@@ -3635,7 +3635,7 @@ print(list(od.fromkeys([1, 2, 3, 'a', 'b', 'c', 2, 3, 4, 'b', 'c', 'd']).keys())
 ```
 
 
-See also http://www.peterbe.com/plog/uniqifiers-benchmark and http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52560
+See also <http://www.peterbe.com/plog/uniqifiers-benchmark> and <http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52560>
 
 
 We may also need to specify the particular type (or degree) of uniqueness and duplication that is at issue. Case-insensitive, with strings ? Unique with respect to a particular key in the case of dictionaries ?
@@ -4404,7 +4404,7 @@ function undupe(arr) {
 
 ### Duplicates in a dataset
 
-Stata can report duplicate lines, or remove them. See '''[http://www.stata.com/help.cgi?duplicates duplicates]''' in Stata help.
+Stata can report duplicate lines, or remove them. See '''[duplicates](http://www.stata.com/help.cgi?duplicates)''' in Stata help.
 
 
 ```stata
@@ -4440,7 +4440,7 @@ end
 ### Mata
 
 
-The '''[http://www.stata.com/help.cgi?mf_uniqrows uniqrows]''' function removes duplicate rows from a matrix.
+The '''[uniqrows](http://www.stata.com/help.cgi?mf_uniqrows)''' function removes duplicate rows from a matrix.
 
 
 ```stata

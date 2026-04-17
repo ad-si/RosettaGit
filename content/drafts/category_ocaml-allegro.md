@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}
 {{library}}
-[http://www.linux-nantes.org/~fmonnier/ocaml/Allegro/ ocaml-allegro] is a wrapper that binds [http://caml.inria.fr/ OCaml] and [http://alleg.sourceforge.net/ Allegro] together.
+[ocaml-allegro](http://www.linux-nantes.org/~fmonnier/ocaml/Allegro/) is a wrapper that binds [OCaml](http://caml.inria.fr/) and [Allegro](http://alleg.sourceforge.net/) together.

@@ -89,7 +89,7 @@ languages = [
 ]
 +++
 
-The [http://mathworld.wolfram.com/HarshadNumber.html Harshad] or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits.
+The [Harshad](http://mathworld.wolfram.com/HarshadNumber.html) or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits.
 
 For example,   '''42'''   is a [[oeis:A005349|Harshad number]] as   '''42'''   is divisible by   ('''4''' + '''2''')   without remainder.
 
@@ -1440,7 +1440,7 @@ println[i]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=9d814ce9936ed7fdce2a084004c437f4 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=9d814ce9936ed7fdce2a084004c437f4)'''
 
 ```gambas
 Public Sub Main()
@@ -2960,7 +2960,7 @@ Get-HarshadNumbers -Minimum 1001 -Count 1
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda.pl written by '''Ulrich Neumerkel''', it can be found there :  http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl.
+Works with SWI-Prolog and module lambda.pl written by '''Ulrich Neumerkel''', it can be found there :  <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
 ```Prolog
 :- use_module(library(lambda)).
@@ -3067,7 +3067,7 @@ true.
 
 ### Python: Functional
 
-The for loop above [http://paddy3118.blogspot.co.uk/2013/03/itertoolsfirst.html could be changed] to the following to find the number > 1000; in fact the harshad generator function could become a generator expression creating this more functional version:
+The for loop above [could be changed](http://paddy3118.blogspot.co.uk/2013/03/itertoolsfirst.html) to the following to find the number > 1000; in fact the harshad generator function could become a generator expression creating this more functional version:
 
 ```python
 >>>
@@ -4143,7 +4143,7 @@ First such number > 1000: 1002
 ```
 
 This solution was generated from the pseudo-Assembly below.
-A [http://ideone.com/AKxEMY live run] is available for the inquiring skeptic.
+A [live run](http://ideone.com/AKxEMY) is available for the inquiring skeptic.
 
 ```asm
 push 0 ; Harshad numbers found

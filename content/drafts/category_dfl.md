@@ -22,6 +22,6 @@ Selected Features of DFL:
 (Adapted from the DFL Wiki)
 
 ==See==
-* [http://www.dprogramming.com/dfl.php DFL Home]
-* [http://wiki.dprogramming.com/Dfl/HomePage DFL Wiki]
-* [https://github.com/Rayerd/dfl DFL Github (actively maintained version)]
+* [DFL Home](http://www.dprogramming.com/dfl.php)
+* [DFL Wiki](http://wiki.dprogramming.com/Dfl/HomePage)
+* [DFL Github (actively maintained version)](https://github.com/Rayerd/dfl)

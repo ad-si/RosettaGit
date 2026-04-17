@@ -642,7 +642,7 @@ Stdio.write_file(targetfile, "this task was solved at the pycon china 2011");
 
 ## Python
 
-Using [https://docs.python.org/library/os.html os library]
+Using [os library](https://docs.python.org/library/os.html)
 
 ```Python
 
@@ -655,7 +655,7 @@ f.close()
 
 ```
 
-Or using a newer [https://docs.python.org/library/pathlib.html pathlib library] (Python >= 3.4):
+Or using a newer [pathlib library](https://docs.python.org/library/pathlib.html) (Python >= 3.4):
 
 ```Python
 

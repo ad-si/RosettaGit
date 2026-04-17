@@ -66,7 +66,7 @@ languages = [
 
 ## Task
 
-Write a program that solves the [http://c2.com/cgi/wiki?OddWordProblem odd word problem] with the restrictions given below.
+Write a program that solves the [odd word problem](http://c2.com/cgi/wiki?OddWordProblem) with the restrictions given below.
 
 
 ;Description:

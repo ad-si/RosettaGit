@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}
-[http://common-lisp.net/project/trivial-shell/ trivial-shell] is a Common Lisp library to perform some common OS interfacing tasks, including accessing environment variables, executing shell commands, and getting process ids.
+[trivial-shell](http://common-lisp.net/project/trivial-shell/) is a Common Lisp library to perform some common OS interfacing tasks, including accessing environment variables, executing shell commands, and getting process ids.

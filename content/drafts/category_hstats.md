@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}
 {{library}}
-[http://hackage.haskell.org/package/hstats-0.3 hstats]
+[hstats](http://hackage.haskell.org/package/hstats-0.3)

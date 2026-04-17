@@ -17,7 +17,7 @@ I don't think this should be done here, as I am attempting to show how the shell
 
 == Error formula in C implementation ==
 
-What formula is being used for the error calculation in the [http://rosettacode.org/wiki/Monte_Carlo_methods#C C Implementation]?
+What formula is being used for the error calculation in the [C Implementation](http://rosettacode.org/wiki/Monte_Carlo_methods#C)?
 
 At first I thought it was the formula for standard deviation but the code is:
 
@@ -30,7 +30,7 @@ The factor 4 is explained because we are not interested in the ratio <math>\pi/4
 <math>\sigma = \mu \sqrt{\frac{1}{N} \mu(1 - \mu)}, {\rm \ \ where\ \ } \mu {\rm \ \ is \ \ the \ \ ratio \ \ } \pi/4 {\rm \ \ and\ \ } N {\rm \ \ is \ \ the \ \ number \ \ of \ \ samples \ \ }</math>
 
 
-But according to [http://en.wikipedia.org/wiki/Standard_deviation#Definition_of_population_values Wikipedia] the formula is this:
+But according to [Wikipedia](http://en.wikipedia.org/wiki/Standard_deviation#Definition_of_population_values) the formula is this:
  
 :<math>\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2}, {\rm \ \ where\ \ } \mu = \frac{1}{N} \sum_{i=1}^N x_i.</math>
 
@@ -147,8 +147,8 @@ Please if anyone with insight could explain this!
 
 Have you tested RDRAND and Monte Carlo methods? I have found some results on MASM32.com.
 Two links:
-http://masm32.com/board/index.php?topic=2441.0
-http://masm32.com/board/index.php?topic=2432.0
+<http://masm32.com/board/index.php?topic=2441.0>
+<http://masm32.com/board/index.php?topic=2432.0>
 The last is for 64 bit and the mc1.zip is OK.
 It looks good for Intel Ivy Bridge but not so good for AMD (slower and higher error).
 

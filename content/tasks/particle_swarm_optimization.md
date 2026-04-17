@@ -61,8 +61,8 @@ The goal of parameter selection is to ensure that the global minimum is discrimi
 <p>
   References:
   <ul>
-    <li>[Particle Swarm Optimization[https://en.wikipedia.org/wiki/Particle_swarm_optimization]]</li>
-    <li>[Virtual Library of Optimization Test Functions[http://www.sfu.ca/~ssurjano/optimization.html]]</li>
+    <li>[Particle Swarm Optimization<https://en.wikipedia.org/wiki/Particle_swarm_optimization>]</li>
+    <li>[Virtual Library of Optimization Test Functions<http://www.sfu.ca/~ssurjano/optimization.html>]</li>
   </ul>
 </p>
 
@@ -2274,7 +2274,7 @@ sin: procedure; arg x; x= r2r(x);  z= x;  xx=x*x;   do k=2  by 2  until p=z;  p=
 ```
 
 Output note:   the published global minimum (referenced above, as well as the function's arguments) can be found at:
-:::::   <u>[http://www.sfu.ca/~ssurjano/mccorm.html http://www.sfu.ca/~ssurjano/mccorm.html]</u>
+:::::   <u>[http://www.sfu.ca/~ssurjano/mccorm.html](http://www.sfu.ca/~ssurjano/mccorm.html)</u>
 
 
 

@@ -626,7 +626,7 @@ end (* end of [main0] *)
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147 discussion]
+ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147)
 
 ```autohotkey
 a = 1,a,--             ; elements separated by commas
@@ -1731,9 +1731,9 @@ HS{
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Power_set this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Power_set) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2241,7 +2241,7 @@ end
 ## J
 
 
-There are a [http://www.jsoftware.com/jwiki/Essays/Power_Set number of ways] to generate a power set in J.  Here's one:
+There are a [number of ways](http://www.jsoftware.com/jwiki/Essays/Power_Set) to generate a power set in J.  Here's one:
 
 ```j
 ps =: #~ 2 #:@i.@^ #
@@ -2384,7 +2384,7 @@ public static <T extends Comparable<? super T>> LinkedList<LinkedList<T>>
 
 ### =Iteration=
 
-Uses a JSON stringifier from http://www.json.org/js.html
+Uses a JSON stringifier from <http://www.json.org/js.html>
 
 ```javascript
 function powerset(ary) {
@@ -3087,7 +3087,7 @@ forsubset(#S,s,print1(vecextract(S,s)"  "))
 
 Perl does not have a built-in set data-type. However, you can...
 
-=== Module: [https://metacpan.org/pod/Algorithm::Combinatorics Algorithm::Combinatorics] ===
+=== Module: [Algorithm::Combinatorics](https://metacpan.org/pod/Algorithm::Combinatorics) ===
 
 This module has an iterator over the power set.  Note that it does not enforce that the input array is a set (no duplication).  If each subset is processed immediately, this has an advantage of very low memory use.
 
@@ -3107,7 +3107,7 @@ say join("  ",@PS);
 ```
 
 
-=== Module: [https://metacpan.org/pod/ntheory ntheory] ===
+=== Module: [ntheory](https://metacpan.org/pod/ntheory) ===
 The simplest solution is to use the one argument version of the combination iterator, which iterates over the power set.
 
 ```perl
@@ -3153,9 +3153,9 @@ say join("  ",@PS);
 ```
 
 
-=== Module: [https://metacpan.org/pod/Set::Object Set::Object] ===
+=== Module: [Set::Object](https://metacpan.org/pod/Set::Object) ===
 
-The CPAN module [https://metacpan.org/pod/Set::Object Set::Object] provides a set implementation for sets of arbitrary objects, for which a powerset function could be defined and used like so:
+The CPAN module [Set::Object](https://metacpan.org/pod/Set::Object) provides a set implementation for sets of arbitrary objects, for which a powerset function could be defined and used like so:
 
 
 ```perl
@@ -3197,7 +3197,7 @@ package Set {
 ```
 
 
-''(Note: For a ready-to-use module that uses this approach, and comes with all the standard set methods that you would expect, see the CPAN module [https://metacpan.org/pod/Set::Tiny Set::Tiny])''
+''(Note: For a ready-to-use module that uses this approach, and comes with all the standard set methods that you would expect, see the CPAN module [Set::Tiny](https://metacpan.org/pod/Set::Tiny))''
 
 The limitation of this approach is that only primitive strings/numbers are allowed as hash keys in Perl, so a Set of Set's cannot be represented, and the return value of our powerset function will thus have to be a ''list'' of sets rather than being a Set object itself.
 
@@ -3941,7 +3941,7 @@ def powerset(s):
 
 ###  Recursive Alternative
 
-This is an (inefficient) recursive version that almost reflects the recursive definition of a power set as explained in http://en.wikipedia.org/wiki/Power_set#Algorithms. It does not create a sorted output.
+This is an (inefficient) recursive version that almost reflects the recursive definition of a power set as explained in <http://en.wikipedia.org/wiki/Power_set#Algorithms>. It does not create a sorted output.
 
 
 ```python
@@ -3956,7 +3956,7 @@ def p(l):
 
 ### Python: Standard documentation
 
-Pythons [http://docs.python.org/3/library/itertools.html?highlight=powerset#itertools-recipes documentation] has a method that produces the groupings, but not as sets:
+Pythons [documentation](http://docs.python.org/3/library/itertools.html?highlight=powerset#itertools-recipes) has a method that produces the groupings, but not as sets:
 
 
 ```python
@@ -4796,7 +4796,7 @@ END.
 
 ## Smalltalk
 
-Code from [http://smalltalk.gnu.org/blog/bonzinip/fun-generators Bonzini's blog]
+Code from [Bonzini's blog](http://smalltalk.gnu.org/blog/bonzinip/fun-generators)
 
 
 ```smalltalk
@@ -5025,7 +5025,7 @@ c
 
 ## UNIX Shell
 
-From [http://www.catonmat.net/blog/set-operations-in-unix-shell/ here]
+From [here](http://www.catonmat.net/blog/set-operations-in-unix-shell/)
 
 ```bash
 p() { [ $# -eq 0 ] && echo || (shift; p "$@") | while read r ; do echo -e "$1 $r\n$r"; done }

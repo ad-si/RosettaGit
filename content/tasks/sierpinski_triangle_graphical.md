@@ -836,7 +836,7 @@ CONSTANT: size  $[ 2 8 ^ ]           ! edit 8 to change order
 MAIN: main
 ```
 
-[https://i.imgur.com/wjwCrvL.png]
+<https://i.imgur.com/wjwCrvL.png>
 
 
 ## FreeBASIC
@@ -948,7 +948,7 @@ func main() {
 
 ## Haskell
 
-This program uses the [http://hackage.haskell.org/package/diagrams diagrams] package to produce the Sierpinski triangle.  The package implements an embedded [http://en.wikipedia.org/wiki/EDSL#Usage_patterns DSL] for producing vector graphics.  Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
+This program uses the [diagrams](http://hackage.haskell.org/package/diagrams) package to produce the Sierpinski triangle.  The package implements an embedded [DSL](http://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.  Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
 
 For fun, we take advantage of Haskell's layout rules, and the operators provided by the diagrams package, to give the <tt>reduce</tt> function the shape of a triangle.  It could also be written as <tt>reduce t = t === (t ||| t)</tt>.
 
@@ -997,7 +997,7 @@ procedure main(A)
 end
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn Original source IPL Graphics/sier1.]
+[Original source IPL Graphics/sier1.](http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Triangle.bas"
@@ -1731,7 +1731,7 @@ fractal( $side/2, $height, $side*3/4, $height/2, $side/4, $height/2, $levels ),
 '</g></svg>';
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sierpinski_triangle.svg See sierpinski_triangle] (offsite .svg image)
+[See sierpinski_triangle](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sierpinski_triangle.svg) (offsite .svg image)
 
 
 ## Perl 6
@@ -2390,7 +2390,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#sierpinski]
+Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#sierpinski>
 
 
 ## Sidef
@@ -2512,7 +2512,7 @@ SetVid(3);                      \restore normal text display
 
 ## Yabasic
 
-[http://retrogamecoding.org/board/index.php?action=dlattach;topic=753.0;attach=1800;image Sierpinski Triangle 3D.png]
+[Sierpinski Triangle 3D.png](http://retrogamecoding.org/board/index.php?action=dlattach;topic=753.0;attach=1800;image)
 
 3D version.
 
@@ -2658,7 +2658,7 @@ SierpinskyTriangle(7, w*0.05, h*0.05, w*0.9, h*0.9)
 ## zkl
 
 [[File:SierpinskiTriangle.zkl.jpg|150px|thumb|right]]
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 const Order=8, Size=(1).shiftLeft(Order);
 img:=PPM(300,300);

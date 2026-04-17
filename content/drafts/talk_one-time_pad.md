@@ -38,7 +38,7 @@ And, of course, there's no way to guarantee that there are no eavesdroppers watc
 Because of these constraints, either the task or the implementations should specify the operational requirements for the code. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 06:13, 13 December 2014 (UTC)
 
 :Sure, /dev/random on Unix is easy to use, and accessible from all languages.
-:On Windows, e.g. there is the [http://msdn.microsoft.com/en-us/library/windows/desktop/aa379942%28v=vs.85%29.aspx CryptGenRandom_function], which MS claims "fills a buffer with cryptographically random bytes". --[[User:Hajo|Hajo]] ([[User talk:Hajo|talk]]) 12:45, 13 December 2014 (UTC)
+:On Windows, e.g. there is the [CryptGenRandom_function](http://msdn.microsoft.com/en-us/library/windows/desktop/aa379942%28v=vs.85%29.aspx), which MS claims "fills a buffer with cryptographically random bytes". --[[User:Hajo|Hajo]] ([[User talk:Hajo|talk]]) 12:45, 13 December 2014 (UTC)
 
 ::Looks like you are right - /dev/random is available on iPhone and android. I'm still a bit concerned about the underlying kernel implementation on some of those systems - the whole "entropy management" thing could be better in some cases. Even Solaris has /dev/random nowadays. So it's mostly stuff like Windows, forth machines, specialty hardware, and stuff like that which don't have /dev/random --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 13:35, 13 December 2014 (UTC)
 

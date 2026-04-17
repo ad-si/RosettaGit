@@ -180,7 +180,7 @@ The wikipedia page linked shows a chinese document dated 1303 and the text:
 
 
 
-here an excerpt from the introduction as can be found in my [https://github.com/LorenzoTa/Tartaglia-s-triangle program about the triangle]
+here an excerpt from the introduction as can be found in my [program about the triangle](https://github.com/LorenzoTa/Tartaglia-s-triangle)
 
 
 ```txt
@@ -210,7 +210,7 @@ Pascal's triangle is an arithmetic and geometric figure named, in most of the we
 
 :Why "in most of the western countries"? Are there countries where this is another Pascal? No. It's named after Blaise Pascal, period. That does not imply Pascal was the inventor, or that there are no other names. Likewise, the "triangolo di Tartaglia" is named after Niccolò Tartaglia, and no other Tartaglia (and not Pascal, obviously). [[User:Eoraptor|Eoraptor]] ([[User talk:Eoraptor|talk]]) 01:06, 23 February 2018 (UTC)
 
-::you are absolutely right [[User:Eoraptor|Eoraptor]] I just reported a 'neutral' sentence from [https://en.wikipedia.org/wiki/Pascal%27s_triangle wikipedia]:
+::you are absolutely right [[User:Eoraptor|Eoraptor]] I just reported a 'neutral' sentence from [wikipedia](https://en.wikipedia.org/wiki/Pascal%27s_triangle):
 
 ```txt
 

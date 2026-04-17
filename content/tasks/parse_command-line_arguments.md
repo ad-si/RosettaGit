@@ -187,12 +187,12 @@ usage:   printf ("Usage: %s [commands]\n"
 
 ## Clojure
 
-See [https://github.com/clojure-cookbook/clojure-cookbook/blob/master/03_general-computing/3-07_parse-command-line-arguments.asciidoc Parsing Command-Line Arguments] from O'Reilly's Clojure Cookbook github.
+See [Parsing Command-Line Arguments](https://github.com/clojure-cookbook/clojure-cookbook/blob/master/03_general-computing/3-07_parse-command-line-arguments.asciidoc) from O'Reilly's Clojure Cookbook github.
 
 
 ## D
 
-The [http://dlang.org/phobos/std_getopt.html getopt module] in D's standard library is inspired by Perl's Getopt::Long module. The syntax of Phobos getopt infers the expected parameter types from the static types of the passed-in pointers.
+The [getopt module](http://dlang.org/phobos/std_getopt.html) in D's standard library is inspired by Perl's Getopt::Long module. The syntax of Phobos getopt infers the expected parameter types from the static types of the passed-in pointers.
 
 ```d
 import std.stdio, std.getopt;
@@ -358,7 +358,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/options.icn options.icn supports getting command-line options]
+[options.icn supports getting command-line options](http://www.cs.arizona.edu/icon/library/src/procs/options.icn)
 
 
 ## J
@@ -395,7 +395,7 @@ Other concepts are also possible...
 
 ## Julia
 
-Example taken from the official documentation of [https://carlobaldassi.github.io/ArgParse.jl/stable/ ArgParse docs].
+Example taken from the official documentation of [ArgParse docs](https://carlobaldassi.github.io/ArgParse.jl/stable/).
 
 
 ```julia
@@ -797,12 +797,12 @@ has the effect that
 # (bye) is called, resulting in program termination
 Command line arguments like "-v", "-n" and "-z" can be implemented simply by defining three functions 'v', 'n' and 'z'.
 
-In addition to the above mechanism, the command line can also be handled "manually", by either processing the list of arguments returned by '[http://software-lab.de/doc/refA.html#argv argv]', or by fetching arguments individually with '[http://software-lab.de/doc/refO.html#opt opt]'.
+In addition to the above mechanism, the command line can also be handled "manually", by either processing the list of arguments returned by '[argv](http://software-lab.de/doc/refA.html#argv)', or by fetching arguments individually with '[opt](http://software-lab.de/doc/refO.html#opt)'.
 
 
 ## PowerShell
 
-Powershell functions and filters handle options organically, with advanced .NET support to handle complex and advanced options including aliases, ranges, sets, datatypes, and more. [https://msdn.microsoft.com/en-us/powershell/reference/5.0/microsoft.powershell.core/about/about_parsing See] [https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Functions more] [https://msdn.microsoft.com/en-us/powershell/reference/5.0/microsoft.powershell.core/about/about_functions_advanced here]. However, to parse options 'classically', you can write a custom parser. A slightly messy version (inspired by ruby optparse) that can only handle switches and relies on RegEx:
+Powershell functions and filters handle options organically, with advanced .NET support to handle complex and advanced options including aliases, ranges, sets, datatypes, and more. [See](https://msdn.microsoft.com/en-us/powershell/reference/5.0/microsoft.powershell.core/about/about_parsing) [more](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Functions) [here](https://msdn.microsoft.com/en-us/powershell/reference/5.0/microsoft.powershell.core/about/about_functions_advanced). However, to parse options 'classically', you can write a custom parser. A slightly messy version (inspired by ruby optparse) that can only handle switches and relies on RegEx:
 
 ```Powershell
 
@@ -1270,7 +1270,7 @@ Arguments: ["-arg"]
 ## Rust
 
 
-Using the [https://docs.rs/structopt StructOpt]:
+Using the [StructOpt](https://docs.rs/structopt):
 
 
 ```rust
@@ -1372,7 +1372,7 @@ val _ = Test.main (CommandLine.name(), CommandLine.arguments())
 
 ###  SML/NJ
 
-[[SML/NJ]] can compile source code to a "heap file", witch can than be executed by the interpreter with arguments given (see [http://stackoverflow.com/questions/5053149/sml-nj-how-to-compile-standalone-executable this entry on stackowerflow.com] for more information).
+[[SML/NJ]] can compile source code to a "heap file", witch can than be executed by the interpreter with arguments given (see [this entry on stackowerflow.com](http://stackoverflow.com/questions/5053149/sml-nj-how-to-compile-standalone-executable) for more information).
 The <code>source.cm</code> file should lock like this:
 <lang>Group
 is
@@ -1381,7 +1381,7 @@ is
 ```
 
 To compile the program, use <code>ml-build sources.cm</code>. This should create a "heap file" <code>sources.x86-linux</code>, depending on your architecture.
-The heap file can be executed with <code>sml @SMLload=sources.x86-linux ARGUMENTS</code>, or the script [http://www.smlnj.org/doc/heap2exec/index.html <code>heap2exec</code>] can be used to make a single executable.
+The heap file can be executed with <code>sml @SMLload=sources.x86-linux ARGUMENTS</code>, or the script [<code>heap2exec</code>](http://www.smlnj.org/doc/heap2exec/index.html) can be used to make a single executable.
 
 
 ###  MLton

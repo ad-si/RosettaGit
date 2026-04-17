@@ -121,7 +121,7 @@ Using the above method find a factor of  2<sup>929</sup>-1 (aka M929)
 
 ## See also
 
-*   [https://www.youtube.com/watch?v=SNwvJ7psoow Computers in 1948: 2¹²⁷-1]
+*   [Computers in 1948: 2¹²⁷-1](https://www.youtube.com/watch?v=SNwvJ7psoow)
 
 
 
@@ -385,7 +385,7 @@ M       +929 has a factor:      +13007
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=144 discussion]
+ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=144)
 
 ```autohotkey
 MsgBox % MFact(27)  ;-1: 27 is not prime
@@ -1478,7 +1478,7 @@ M929 has factor 13007
 ## Haskell
 
 
-Using David Amos module Primes [https://web.archive.org/web/20121130222921/http://www.polyomino.f2s.com/david/haskell/codeindex.html] for prime number testing:
+Using David Amos module Primes <https://web.archive.org/web/20121130222921/http://www.polyomino.f2s.com/david/haskell/codeindex.html> for prime number testing:
 
 
 ```haskell
@@ -3108,8 +3108,8 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#isPrime isPrime],
-[http://seed7.sourceforge.net/algorith/math.htm#modPow modPow] (modified to use integer instead of bigInteger).
+Original source: [isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime),
+[modPow](http://seed7.sourceforge.net/algorith/math.htm#modPow) (modified to use integer instead of bigInteger).
 
 ```txt
 

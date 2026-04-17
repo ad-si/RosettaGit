@@ -943,7 +943,7 @@ $*OUT.write: $b.P6;
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/Bezier-quadratic-perl6.png example image here], (converted to a .png as .ppm format is not widely supported).
+See [example image here](https://github.com/thundergnat/rc/blob/master/img/Bezier-quadratic-perl6.png), (converted to a .png as .ppm format is not widely supported).
 
 
 ## Phix
@@ -1220,7 +1220,7 @@ SetVid(3);              \restore normal text display
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Add this to the PPM class:
 

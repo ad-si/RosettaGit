@@ -12,4 +12,4 @@ tags = []
 
 {{library}}db2doc is a documentation framework for IBM DB2 [[SQL PL]]. Currently the framework is in design status.
 
-* [https://angoca.github.io/db2doc/ db2doc official website]
+* [db2doc official website](https://angoca.github.io/db2doc/)

@@ -49,7 +49,7 @@ Sokoban solutions are usually stored in the LURD format, where lowercase l, u, r
 
 Please state if you use some other format for either the input or output, and why.
 
-For more information, see [http://www.sokobano.de/wiki/index.php?title=Main_Page the Sokoban wiki].
+For more information, see [the Sokoban wiki](http://www.sokobano.de/wiki/index.php?title=Main_Page).
 
 
 ## C
@@ -4162,9 +4162,9 @@ func Click2 oGame,oSelf
 
 Output image:
 
-[https://www.mediafire.com/view/6dk3ai36vapua2a/SokobanGame.jpg/file Sokoban game (Level 1)]
+[Sokoban game (Level 1)](https://www.mediafire.com/view/6dk3ai36vapua2a/SokobanGame.jpg/file)
 
-[https://www.mediafire.com/view/go66tyi6ij6jtup/SokobanGame2.jpg/file Sokoban game (Level 2)]
+[Sokoban game (Level 2)](https://www.mediafire.com/view/go66tyi6ij6jtup/SokobanGame2.jpg/file)
 
 
 ## Ruby

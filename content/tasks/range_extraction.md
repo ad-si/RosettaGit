@@ -2235,7 +2235,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=49f362e3de9725fbf3c56f2381abf8a4 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=49f362e3de9725fbf3c56f2381abf8a4)'''
 
 ```gambas
 siInput As New Short[]
@@ -4690,7 +4690,7 @@ This shows the tuples yielded by generator function <code>range_extract</code>.
 
 ### =Python: For ordered iterables=
 
-A more general method that works on any sequential [https://docs.python.org/3/library/collections.abc.html?highlight=iterable#collections.abc.Iterable Iterable] of integers, not only [https://docs.python.org/3/library/collections.abc.html?highlight=iterable#collections.abc.Sequence Sequences]:
+A more general method that works on any sequential [Iterable](https://docs.python.org/3/library/collections.abc.html?highlight=iterable#collections.abc.Iterable) of integers, not only [Sequences](https://docs.python.org/3/library/collections.abc.html?highlight=iterable#collections.abc.Sequence):
 
 
 ```python

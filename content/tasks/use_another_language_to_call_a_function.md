@@ -126,7 +126,7 @@ Here am I
 
 ## AutoHotkey
 
-It is possible to register an autohotkey function as a callback and get a pointer to it using the builtin registercallback function.  Care should be taken that the external language code is running in the same thread as autohotkey.  This is not a problem when using dllcall to use the external language.  To run an autohotkey function from an external program running in a different thread, you can use [http://www.autohotkey.net/~HotKeyIt/AutoHotkey/ahkFunction.htm ahkFunction] in [http://www.autohotkey.net/~tinku99/ahkdll/ AutoHotkey.dll]
+It is possible to register an autohotkey function as a callback and get a pointer to it using the builtin registercallback function.  Care should be taken that the external language code is running in the same thread as autohotkey.  This is not a problem when using dllcall to use the external language.  To run an autohotkey function from an external program running in a different thread, you can use [ahkFunction](http://www.autohotkey.net/~HotKeyIt/AutoHotkey/ahkFunction.htm) in [AutoHotkey.dll](http://www.autohotkey.net/~tinku99/ahkdll/)
 From the documentation on registercallback:
 
 ```AutoHotkey
@@ -382,7 +382,7 @@ int main() {
 ```
 
 
-Then you can compile and link all with the [http://www.digitalmars.com/download/freecompiler.html DMC C compiler](on Linux you can use GCC):
+Then you can compile and link all with the [DMC C compiler](http://www.digitalmars.com/download/freecompiler.html)(on Linux you can use GCC):
 
 
 ```txt
@@ -1237,7 +1237,7 @@ clean:
 ## Mercury
 
 
-The code as written is horrible for Mercury, so some additional C is added as a shim that actually calls the Mercury predicate. Although no changes are required to the C code in this simple example, in a larger project, with modules that need initialization, there are [https://mercurylang.org/information/doc-latest/mercury_user_guide/Using-mmc.html some additional compilation steps] needed to get that initialization code in.
+The code as written is horrible for Mercury, so some additional C is added as a shim that actually calls the Mercury predicate. Although no changes are required to the C code in this simple example, in a larger project, with modules that need initialization, there are [some additional compilation steps](https://mercurylang.org/information/doc-latest/mercury_user_guide/Using-mmc.html) needed to get that initialization code in.
 
 
 ```Mercury
@@ -1660,7 +1660,7 @@ $
 ## Racket
 
 
-Since this problem is presented as the inverse to [[Call foreign language function]], I've focused on just demonstrating a callback from C into Racket, instead of showing how to [http://docs.racket-lang.org/inside/embedding.html embed the whole Racket runtime into C].
+Since this problem is presented as the inverse to [[Call foreign language function]], I've focused on just demonstrating a callback from C into Racket, instead of showing how to [embed the whole Racket runtime into C](http://docs.racket-lang.org/inside/embedding.html).
 
 Starting with the given C code, modify it so that <tt>Query</tt> is a variable instead of an external:
 

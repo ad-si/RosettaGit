@@ -13,4 +13,4 @@ GW-BASIC is a dialect of the programming language BASIC that was supplied with s
 
 ## See also
 * [GW-BASIC on Wikipedia](https://en.wikipedia.org/wiki/GW-BASIC)
-* [http://www.chebucto.ns.ca/~af380/GW-BASIC-tokens.html Discussion of GW-BASIC's tokenised program format]
+* [Discussion of GW-BASIC's tokenised program format](http://www.chebucto.ns.ca/~af380/GW-BASIC-tokens.html)

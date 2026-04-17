@@ -68,13 +68,13 @@ languages = [
 
 ## Task
 
-Create a [http://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence Thue-Morse sequence].
+Create a [Thue-Morse sequence](http://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).
 
 
 ## See also
 
-*   YouTube entry: [https://www.youtube.com/watch?v=prh72BLNjIk The Fairest Sharing Sequence Ever]
-*   YouTube entry: [https://www.youtube.com/watch?v=Tt5TTid6YXk Math and OCD - My story with the Thue-Morse sequence]
+*   YouTube entry: [The Fairest Sharing Sequence Ever](https://www.youtube.com/watch?v=prh72BLNjIk)
+*   YouTube entry: [Math and OCD - My story with the Thue-Morse sequence](https://www.youtube.com/watch?v=Tt5TTid6YXk)
 
 
 
@@ -1359,7 +1359,7 @@ let () =
 
 ## Pascal
 
-Like the C++ Version [[http://rosettacode.org/wiki/Thue-Morse#C.2B.2B]] the lenght of the sequence is given in advance.
+Like the C++ Version <http://rosettacode.org/wiki/Thue-Morse#C.2B.2B> the lenght of the sequence is given in advance.
 
 ```pascal
 Program ThueMorse;
@@ -1665,7 +1665,7 @@ for i in range(0,6):
 ```
 
 
-===Python: By [http://mathworld.wolfram.com/SubstitutionSystem.html substitution system]===
+===Python: By [substitution system](http://mathworld.wolfram.com/SubstitutionSystem.html)===
 
 ```Python
 
@@ -1928,7 +1928,7 @@ def thueMorse(n: Int): String = {
 (0 to 6).foreach(i => println(s"$i : ${thueMorse(i)}"))
 ```
 
-{{Out}} See it running in your browser by [https://scastie.scala-lang.org/rsF3Y5ABQoK0zZMMA3m6Ow Scastie (JVM)].
+{{Out}} See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/rsF3Y5ABQoK0zZMMA3m6Ow).
 
 ## Sidef
 

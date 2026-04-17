@@ -1556,7 +1556,7 @@ for x in 0 .. 6:
 ## OCaml
 
 
-OCaml does not provide built-in facilities to obtain a particular line from a file. It only provides a function to read one line from a file from the current position in the input channel [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALinput_line input_line]. We can use this function to get the seventh line from a file, for example as follows:
+OCaml does not provide built-in facilities to obtain a particular line from a file. It only provides a function to read one line from a file from the current position in the input channel [input_line](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALinput_line). We can use this function to get the seventh line from a file, for example as follows:
 
 
 ```ocaml
@@ -1776,7 +1776,7 @@ with open('xxx.txt') as f:
 ```
 
 
-Using the <code>islice</code> iterator function from the [https://docs.python.org/3/library/itertools.html#itertools.islice itertools] standard library module, which applies slicing to an iterator and thereby skips over the first six lines:
+Using the <code>islice</code> iterator function from the [itertools](https://docs.python.org/3/library/itertools.html#itertools.islice) standard library module, which applies slicing to an iterator and thereby skips over the first six lines:
 
 
 ```python
@@ -2148,8 +2148,8 @@ That is we remember (h) the line, if any, in hold space. At last line ($) we exc
 
 ## Seed7
 
-The function ''getLine'' skips lines with [http://seed7.sourceforge.net/libraries/file.htm#readln%28inout_file%29 readln]
-and reads the requested line with [http://seed7.sourceforge.net/libraries/file.htm#getln%28inout_file%29 getln] afterwards:
+The function ''getLine'' skips lines with [readln](http://seed7.sourceforge.net/libraries/file.htm#readln%28inout_file%29)
+and reads the requested line with [getln](http://seed7.sourceforge.net/libraries/file.htm#getln%28inout_file%29) afterwards:
 
 
 ```seed7
@@ -2236,7 +2236,7 @@ lines = #.readlines("test.txt")
 
 ## Stata
 
-See '''[http://www.stata.com/help.cgi?use use]''' in Stata help, to load a dataset or a part of it.
+See '''[use](http://www.stata.com/help.cgi?use)''' in Stata help, to load a dataset or a part of it.
 
 
 ```stata
@@ -2248,7 +2248,7 @@ See '''[http://www.stata.com/help.cgi?use use]''' in Stata help, to load a datas
 ```
 
 
-If there are not enough lines, an error message is print. It's possible to '''[http://www.stata.com/help.cgi?capture capture]''' the error and do something else:
+If there are not enough lines, an error message is print. It's possible to '''[capture](http://www.stata.com/help.cgi?capture)''' the error and do something else:
 
 
 ```stata

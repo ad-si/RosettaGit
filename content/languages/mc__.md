@@ -22,4 +22,4 @@ In μC++ both termination and resumption exception handling is supported, as wel
 
 ## See also
 *[Wikipedia : μC++](https://en.wikipedia.org/wiki/ΜC%2B%2B)
-*[http://www.drdobbs.com/cpp/184406431;jsessionid=0GFOGOA5REXLHQE1GHPSKHWATMY32JVN Examining uC++ at Dr. Dobbs]
+*[Examining uC++ at Dr. Dobbs](http://www.drdobbs.com/cpp/184406431;jsessionid=0GFOGOA5REXLHQE1GHPSKHWATMY32JVN)

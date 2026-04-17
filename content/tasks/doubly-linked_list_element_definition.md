@@ -415,7 +415,7 @@ type dlNode struct {
 }
 ```
 
-Or, using the [http://golang.org/pkg/container/list/#Element container/list] package:
+Or, using the [container/list](http://golang.org/pkg/container/list/#Element) package:
 
 ```go
 import "container/list"
@@ -1265,7 +1265,7 @@ fn main() {
 
 
 === The behind-the-scenes implementation ===
-Doubly linked lists present a problem in Rust due to its ownership model. There cannot be two mutable references to the same object, so what are we to do? Below are the relevant lines (with added comments) from the <code>std</code> implementation ([https://doc.rust-lang.org/std/collections/struct.LinkedList.html Documentation] [https://github.com/rust-lang/rust/blob/master/src/libcollections/linked_list.rs Source]).
+Doubly linked lists present a problem in Rust due to its ownership model. There cannot be two mutable references to the same object, so what are we to do? Below are the relevant lines (with added comments) from the <code>std</code> implementation ([Documentation](https://doc.rust-lang.org/std/collections/struct.LinkedList.html) [Source](https://github.com/rust-lang/rust/blob/master/src/libcollections/linked_list.rs)).
 
 The standard library uses the (currently) unstable `Shared<T>` type which indicates that the ownership of its contained type has shared ownership. It is guaranteed not to be null, is variant over <code>T</code> (meaning that an <code>&Shared<&'static T></code> may be used where a <code>&Shared<&'a T></code> is expected, indicates to the compiler that it may own a <code>T</code>) and may be dereferenced to a mutable pointer (<code>*mut T</code>). All of the above may be accomplished in standard stable Rust, except for the non-null guarantee which allows the compiler to make a few extra optimizations.
 

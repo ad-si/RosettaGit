@@ -13,4 +13,4 @@ tags = []
 ## techBASIC
 '''techBASIC''' is an implementation of [BASIC](https://rosettacode.org/wiki/:Category:BASIC) intended for development of [iOS](https://en.wikipedia.org/wiki/iOS) apps ([iPhone](https://en.wikipedia.org/wiki/iPhone) and [iPad](https://en.wikipedia.org/wiki/iPad)).
 
-The homepage is located [http://www.byteworks.us/Byte_Works/techBASIC.html here.]
+The homepage is located [here.](http://www.byteworks.us/Byte_Works/techBASIC.html)

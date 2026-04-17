@@ -138,7 +138,7 @@ We also have an option that contains multiple parameters. These may be stored in
 
 
 Uses package Config available at SourceForge:
-https://sourceforge.net/projects/ini-files/
+<https://sourceforge.net/projects/ini-files/>
 
 ```Ada
 with Config; use Config;
@@ -2423,7 +2423,7 @@ Note that <tt>seedsremoved</tt> doesn't exist.
 
 
 ## J
-http://rosettacode.org/mw/skins/common/images/button_nowiki.png
+<http://rosettacode.org/mw/skins/common/images/button_nowiki.png>
 
 
 ```j
@@ -3128,7 +3128,7 @@ R =
 ## OCaml
 
 
-Using the library [http://homepage.mac.com/letaris/ ocaml-inifiles]:
+Using the library [ocaml-inifiles](http://homepage.mac.com/letaris/):
 
 
 ```ocaml
@@ -4733,11 +4733,11 @@ otherfamily(2): Harry Barber
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/scanfile.htm scanfile.s7i],
-can be used to [http://seed7.sourceforge.net/manual/file.htm#Scanning_a_file scan a file]
-with functions like [http://seed7.sourceforge.net/libraries/scanfile.htm#getWord%28inout_file%29 getWord],
-[http://seed7.sourceforge.net/libraries/scanfile.htm#skipSpace%28inout_file%29 skipSpace]
-and [http://seed7.sourceforge.net/libraries/scanfile.htm#getLine%28inout_file%29 getLine].
+The Seed7 library [scanfile.s7i](http://seed7.sourceforge.net/libraries/scanfile.htm),
+can be used to [scan a file](http://seed7.sourceforge.net/manual/file.htm#Scanning_a_file)
+with functions like [getWord](http://seed7.sourceforge.net/libraries/scanfile.htm#getWord%28inout_file%29),
+[skipSpace](http://seed7.sourceforge.net/libraries/scanfile.htm#skipSpace%28inout_file%29)
+and [getLine](http://seed7.sourceforge.net/libraries/scanfile.htm#getLine%28inout_file%29).
 
 
 ```seed7

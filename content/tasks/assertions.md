@@ -167,7 +167,7 @@ ASSERT may be made available by a particular implementation, quote: "Pragmats ma
 ... convey to the implementation some piece of information affecting some aspect
 of the meaning of the program which is not defined by this Report,..."
 
-Example given[http://www.xs4all.nl/~jmvdveer/report_4.html#92]:
+Example given<http://www.xs4all.nl/~jmvdveer/report_4.html#92>:
  INT a, b; read((a, b)) PR ASSERT a >= 0 & b > 0 PR;
 
 This works with neither [[ELLA ALGOL 68]] nor [[ALGOL 68G]].
@@ -1075,7 +1075,7 @@ AssertionLevel();
 
 ## Go
 
-Assertions are a feature [http://golang.org/doc/go_faq.html#assertions consciously omitted] from Go.  For cases where you want feedback during development, the following code should provide a similar purpose.  While it is simply an if statement and a panic, the technique does have some properties typical of assertions.  For one, the predicate of an if statement in Go is required to be of boolean type.  Specifically, ints are not tacitly tested for zero, pointers are not tested for nil:  the expression must be boolean, as the WP article mentions is typical of assertions.  Also, it provides a good amount of information should the predicate evaluate to true.  First, a value of any type can be passed to the panic, and by default is displayed, followed by a stack trace which includes the location of the panic in the source code&mdash;function name, file name, and line number.
+Assertions are a feature [consciously omitted](http://golang.org/doc/go_faq.html#assertions) from Go.  For cases where you want feedback during development, the following code should provide a similar purpose.  While it is simply an if statement and a panic, the technique does have some properties typical of assertions.  For one, the predicate of an if statement in Go is required to be of boolean type.  Specifically, ints are not tacitly tested for zero, pointers are not tested for nil:  the expression must be boolean, as the WP article mentions is typical of assertions.  Also, it provides a good amount of information should the predicate evaluate to true.  First, a value of any type can be passed to the panic, and by default is displayed, followed by a stack trace which includes the location of the panic in the source code&mdash;function name, file name, and line number.
 
 ```go
 package main
@@ -1583,7 +1583,7 @@ class SampleClass
 ```
 
 The design by contract macros throw <tt>Nemerle.AssertionException</tt>'s unless another Exception is specified using the <tt>otherwise</tt> keyword after the <tt>requires/ensures</tt> statement.
-For further details on design by contract macros, see [http://nemerle.org/wiki/index.php?title=Design_by_contract_macros here].
+For further details on design by contract macros, see [here](http://nemerle.org/wiki/index.php?title=Design_by_contract_macros).
 
 
 ## Nim
@@ -1922,7 +1922,7 @@ assert($a == 42) # when $a is not 42, take appropriate actions,
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refA.html#assert assert]' function, in
+The '[assert](http://software-lab.de/doc/refA.html#assert)' function, in
 combination with the tilde read macro, generates code only in debug mode:
 
 ```PicoLisp
@@ -2219,7 +2219,7 @@ end;
 ```
 
 
-(The current GNU Sather compiler v1.2.3 I am using to test the code seems to ignore the assertion and no fatal error is raised, despite Sather should, see e.g. [http://www.gnu.org/software/sather/docs-1.2/tutorial/safety2208.html here]).
+(The current GNU Sather compiler v1.2.3 I am using to test the code seems to ignore the assertion and no fatal error is raised, despite Sather should, see e.g. [here](http://www.gnu.org/software/sather/docs-1.2/tutorial/safety2208.html)).
 
 
 ## Scala
@@ -2388,7 +2388,7 @@ which is an unprovable theorem that tells you that there is a guaranteed failure
 
 ## Stata
 
-Assertions in Stata are limited to checking a property on the observations of a dataset. See '''[http://www.stata.com/help.cgi?assert assert]''' in Stata help.
+Assertions in Stata are limited to checking a property on the observations of a dataset. See '''[assert](http://www.stata.com/help.cgi?assert)''' in Stata help.
 
 For instance, if a dataset contains two variables x, y, z, one can check if x<y for all data lines for which z>0, with:
 
@@ -2398,7 +2398,7 @@ assert x<y if z>0>
 ```
 
 
-There is another command, '''[http://www.stata.com/help.cgi?confirm confirm]''', that can be used to check existence and type of program arguments or files. For instance, to check that the file titanium.dta exists:
+There is another command, '''[confirm](http://www.stata.com/help.cgi?confirm)''', that can be used to check existence and type of program arguments or files. For instance, to check that the file titanium.dta exists:
 
 
 ```stata
@@ -2408,7 +2408,7 @@ confirm file titanium.dta>
 
 If the file does not exist, an error is thrown with return code 601.
 
-It's also possible to use '''[http://www.stata.com/help.cgi?error error]''' to throw an error if some condition is satisfied. However, this command can only print predefined error messages: it takes the error number as an argument. For instance:
+It's also possible to use '''[error](http://www.stata.com/help.cgi?error)''' to throw an error if some condition is satisfied. However, this command can only print predefined error messages: it takes the error number as an argument. For instance:
 
 
 ```stata
@@ -2428,7 +2428,7 @@ if (`n'==42) {
 ```
 
 
-Then, if '''[http://www.stata.com/help.cgi?capture capture]''' is used to trap the error, the return code (here 54) can be retrieved in '''[http://www.stata.com/help.cgi?_variables _rc]'''.
+Then, if '''[capture](http://www.stata.com/help.cgi?capture)''' is used to trap the error, the return code (here 54) can be retrieved in '''[_rc](http://www.stata.com/help.cgi?_variables)'''.
 
 
 ## Swift

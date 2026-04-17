@@ -2734,7 +2734,7 @@ Using  159  digit precision, the N-point Gauss─Legendre quadrature (GLQ) had a
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/rrvzhH1/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/yYqRqizfSZip2DhYbdfZ2w Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/rrvzhH1/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/yYqRqizfSZip2DhYbdfZ2w).
 
 ```Scala
 import scala.math.{Pi, cos, exp}

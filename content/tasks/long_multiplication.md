@@ -391,7 +391,7 @@ LL       EQU    94
 
 ===Using properly range-checked integers===
 
-(The source text for these examples can also be found on [https://bitbucket.org/ada_on_rosetta_code/solutions Bitbucket].)
+(The source text for these examples can also be found on [Bitbucket](https://bitbucket.org/ada_on_rosetta_code/solutions).)
 
 First we specify the required operations and declare our number type as an array of digits (in base 2^16):
 
@@ -1122,7 +1122,7 @@ end.
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=149 discussion]
+ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=149)
 
 ```autohotkey
 MsgBox % x := mul(256,256)
@@ -2929,7 +2929,7 @@ Or you could use the built-in language support for arbitrary precision multiplic
 1 2 3
 ```
 
-* <code>polymult</code> (multiplies polynomials): '''ref.''' [http://www.jsoftware.com/help/dictionary/samp23.htm]
+* <code>polymult</code> (multiplies polynomials): '''ref.''' <http://www.jsoftware.com/help/dictionary/samp23.htm>
 
 ```j
    1 2 3 (+//.@(*/)) 1 2 3
@@ -4976,7 +4976,7 @@ The result of 2^64 * 2^64 is 340282366920938463463374607431768211456
 
 {{works with|PureBasic|4.41}}
 
-Using [http://www.purebasic.fr/english/viewtopic.php?p=309763#p309763 Decimal.pbi] by Stargåte allows for calculation with long numbers, this is useful since version 4.41 of PureBasic mostly only supporter data types native to x86/x64/PPC etc processors.
+Using [Decimal.pbi](http://www.purebasic.fr/english/viewtopic.php?p=309763#p309763) by Stargåte allows for calculation with long numbers, this is useful since version 4.41 of PureBasic mostly only supporter data types native to x86/x64/PPC etc processors.
 
 ```PureBasic
 XIncludeFile "decimal.pbi"
@@ -5569,11 +5569,11 @@ Since Scheme already supports arbitrary precision arithmetic, build it out of ch
 ## Seed7
 
 Seed7 supports arbitrary-precision arithmetic.
-The library [http://seed7.sourceforge.net/libraries/bigint.htm bigint.s7i] defines
-the type [http://seed7.sourceforge.net/manual/types.htm#bigInteger bigInteger].
+The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm) defines
+the type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger).
 A bigInteger is a signed integer number of unlimited size.
 With library support the task can be solved by using the multiplication operator
-[http://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29*%28in_bigInteger%29 *]:
+[*](http://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29*%28in_bigInteger%29):
 
 
 ```seed7

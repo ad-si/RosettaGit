@@ -99,7 +99,7 @@ Given two points on a plane and a radius, usually two circles of given radius ca
 
 ## See also
 
-*   [http://mathforum.org/library/drmath/view/53027.html Finding the Center of a Circle from 2 Points and Radius] from Math forum @ Drexel
+*   [Finding the Center of a Circle from 2 Points and Radius](http://mathforum.org/library/drmath/view/53027.html) from Math forum @ Drexel
 
 
 
@@ -1851,7 +1851,7 @@ $ jq -n -c -r -f /Users/peter/jq/circle_centers.jq
 
 ## Julia
 
-This solution uses the package [https://github.com/timholy/AffineTransforms.jl AffineTransforms.jl] to introduce a coordinate system (u, v) centered on the midpoint between the two points and rotated so that these points are on the u-axis.  In this system, solving for the circles' centers is trivial.  The two points are cast as complex numbers to aid in determining the location of the midpoint and rotation angle.
+This solution uses the package [AffineTransforms.jl](https://github.com/timholy/AffineTransforms.jl) to introduce a coordinate system (u, v) centered on the midpoint between the two points and rotated so that these points are on the u-axis.  In this system, solving for the circles' centers is trivial.  The two points are cast as complex numbers to aid in determining the location of the midpoint and rotation angle.
 
 '''Types and Functions'''
 

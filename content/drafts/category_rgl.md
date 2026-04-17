@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}The rgl package, a visualization device system for R using OpenGL as the rendering backend, can be found on [http://rgl.neoscientists.org].
+{{library}}The rgl package, a visualization device system for R using OpenGL as the rendering backend, can be found on <http://rgl.neoscientists.org>.

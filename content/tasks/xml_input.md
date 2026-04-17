@@ -187,7 +187,7 @@ package
 
 ## Ada
 
-Uses [http://libre.adacore.com/libre/tools/xmlada/ XML/Ada] from AdaCore.
+Uses [XML/Ada](http://libre.adacore.com/libre/tools/xmlada/) from AdaCore.
 
 extract_students.adb:
 
@@ -322,7 +322,7 @@ output is the same.
 ###  Alternative version using Matreshka
 
 
-Uses [http://forge.ada-ru.org/matreshka Matreshka's SAX API for XML].
+Uses [Matreshka's SAX API for XML](http://forge.ada-ru.org/matreshka).
 
 main.adb:
 
@@ -846,7 +846,7 @@ END {
 }
 ```
 
-Using [http://awk.info/?getxml getXML.awk] written by Jan Weber, one could do this:
+Using [getXML.awk](http://awk.info/?getxml) written by Jan Weber, one could do this:
 
 ```awk
 awk -f getXML.awk sample.xml | awk '
@@ -855,7 +855,7 @@ awk -f getXML.awk sample.xml | awk '
 '
 ```
 
-Using [http://home.vrweb.de/~juergen.kahrs/gawk/XML/xmlgawk.html#Steve-Coile_0027s-xmlparse_002eawk-script xmlparser.awk] by Steve Coile, one can do this:
+Using [xmlparser.awk](http://home.vrweb.de/~juergen.kahrs/gawk/XML/xmlgawk.html#Steve-Coile_0027s-xmlparse_002eawk-script) by Steve Coile, one can do this:
 
 ```awk
 gawk -f xmlparser.awk sample.xml | awk '
@@ -1508,7 +1508,7 @@ xmlparse
 ###  tixi library
 
 
-Uses [https://github.com/DLR-SC/tixi tixi library]  (+ LibXML, curl as dependencies)
+Uses [tixi library](https://github.com/DLR-SC/tixi)  (+ LibXML, curl as dependencies)
 
 
 ```fortran
@@ -1574,7 +1574,7 @@ Output
 
 
 === Fortran XML library (FoX) ===
-Uses [https://github.com/andreww/fox FoX]
+Uses [FoX](https://github.com/andreww/fox)
 
 
 ```fortran
@@ -2517,7 +2517,7 @@ bundle Default {
 
 ## OCaml
 
-from the toplevel using the library [http://tech.motion-twin.com/xmllight.html xml-light]:
+from the toplevel using the library [xml-light](http://tech.motion-twin.com/xmllight.html):
 
 ```ocaml
 # #directory "+xml-light" (* or maybe "+site-lib/xml-light" *) ;;
@@ -2548,7 +2548,7 @@ Dave
 ```
 
 
-Another solution using the library [http://erratique.ch/software/xmlm xmlm]:
+Another solution using the library [xmlm](http://erratique.ch/software/xmlm):
 
 ```ocaml
 #directory "+xmlm"
@@ -2579,7 +2579,7 @@ let () =
 ```
 
 
-using the [http://www.xs4all.nl/~mmzeeman/ocaml/ ocaml expat wrapper]:
+using the [ocaml expat wrapper](http://www.xs4all.nl/~mmzeeman/ocaml/):
 
 
 ```ocaml
@@ -2960,7 +2960,7 @@ END.
 
 ## PureBasic
 
-Uses a PureBasic XML library (which is linked automatically) that is based on the library [http://expat.sourceforge.net/ expat XML parser] licensed under the MIT license.
+Uses a PureBasic XML library (which is linked automatically) that is based on the library [expat XML parser](http://expat.sourceforge.net/) licensed under the MIT license.
 
 ```PureBasic
 Define studentNames.String, src$
@@ -3554,7 +3554,7 @@ $parser parse $xml
 ```
 
 
-Using just pure-Tcl (originally on http://wiki.tcl.tk/3919):
+Using just pure-Tcl (originally on <http://wiki.tcl.tk/3919>):
 
 ```Tcl
 proc xml2list xml {

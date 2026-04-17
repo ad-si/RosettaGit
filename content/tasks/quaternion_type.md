@@ -140,7 +140,7 @@ If a language has built-in support for quaternions, then use it.
 
 ;C.f.:
 *   [[Vector products]]
-*   [http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/QLetter/QLetter.pdf On Quaternions];   or on a new System of Imaginaries in Algebra.   By Sir William Rowan Hamilton LL.D, P.R.I.A., F.R.A.S., Hon. M. R. Soc. Ed. and Dub., Hon. or Corr. M. of the Royal or Imperial Academies of St. Petersburgh, Berlin, Turin and Paris, Member of the American Academy of Arts and Sciences, and of other Scientific Societies at Home and Abroad, Andrews' Prof. of Astronomy in the University of Dublin, and Royal Astronomer of Ireland.
+*   [On Quaternions](http://www.maths.tcd.ie/pub/HistMath/People/Hamilton/QLetter/QLetter.pdf);   or on a new System of Imaginaries in Algebra.   By Sir William Rowan Hamilton LL.D, P.R.I.A., F.R.A.S., Hon. M. R. Soc. Ed. and Dub., Hon. or Corr. M. of the Royal or Imperial Academies of St. Petersburgh, Berlin, Turin and Paris, Member of the American Academy of Arts and Sciences, and of other Scientific Societies at Home and Abroad, Andrews' Prof. of Astronomy in the University of Dublin, and Royal Astronomer of Ireland.
 
 
 
@@ -288,7 +288,7 @@ q2 * q1 = -5.60000E+01 + 1.80000E+01i + 2.00000E+01j + 2.80000E+01k
 
 ## ALGOL 68
 
-{{trans|python}} Note: This specimen retains the original [http://rosettacode.org/mw/index.php?title=Simple_Quaternion_type_and_operations&diff=87324&oldid=87321 python] coding style.
+{{trans|python}} Note: This specimen retains the original [python](http://rosettacode.org/mw/index.php?title=Simple_Quaternion_type_and_operations&diff=87324&oldid=87321) coding style.
 
 '''File: prelude/Quaternion.a68'''
 ```algol68
@@ -3996,8 +3996,8 @@ times($q1; $q2) != times($q2; $q1) => true
 
 ## Julia
 
-https://github.com/andrioni/Quaternions.jl/blob/master/src/Quaternions.jl has a more complete implementation.
-This is derived from the [https://github.com/JuliaLang/julia/blob/release-0.2/examples/quaternion.jl quaternion example file] included with Julia 0.2, which implements a quaternion type complete with arithmetic, type conversions / promotion rules, polymorphism over arbitrary real numeric types, and pretty-printing.
+<https://github.com/andrioni/Quaternions.jl/blob/master/src/Quaternions.jl> has a more complete implementation.
+This is derived from the [quaternion example file](https://github.com/JuliaLang/julia/blob/release-0.2/examples/quaternion.jl) included with Julia 0.2, which implements a quaternion type complete with arithmetic, type conversions / promotion rules, polymorphism over arbitrary real numeric types, and pretty-printing.
 
 ```julia
 import Base: convert, promote_rule, show, conj, abs, +, -, *
@@ -4843,7 +4843,7 @@ val qstring : quaternion -> string = <fun>
 
 ## Octave
 
-There is an add-on package (toolbox) to Octave available from http://octave.sourceforge.net/quaternion/
+There is an add-on package (toolbox) to Octave available from <http://octave.sourceforge.net/quaternion/>
 
 Such a package can be install with the command:
 
@@ -6044,7 +6044,7 @@ Q1 * Q2 <> Q2 * Q1
 
 ## Python
 
-This example extends Pythons [http://docs.python.org/library/collections.html?highlight=namedtuple#collections.namedtuple namedtuples] to add extra functionality.
+This example extends Pythons [namedtuples](http://docs.python.org/library/collections.html?highlight=namedtuple#collections.namedtuple) to add extra functionality.
 
 ```python
 from collections import namedtuple

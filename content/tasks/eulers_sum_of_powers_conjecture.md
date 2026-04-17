@@ -70,7 +70,7 @@ languages = [
 ]
 +++
 
-There is a conjecture in mathematics that held for over two hundred years before it was disproved by the finding of a counterexample in 1966 by [http://www.ams.org/journals/mcom/1967-21-097/S0025-5718-1967-0220669-3/S0025-5718-1967-0220669-3.pdf Lander and Parkin].
+There is a conjecture in mathematics that held for over two hundred years before it was disproved by the finding of a counterexample in 1966 by [Lander and Parkin](http://www.ams.org/journals/mcom/1967-21-097/S0025-5718-1967-0220669-3/S0025-5718-1967-0220669-3.pdf).
 
 
 ;Euler's (disproved) sum of powers   [[wp:Euler's sum of powers conjecture|conjecture]]:

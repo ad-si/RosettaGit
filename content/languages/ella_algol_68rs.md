@@ -28,8 +28,8 @@ FINISH
 
 ## See Also
 * Ports of the ELLA A68ToC compiler:
-# Download for [http://www.poenikatu.co.uk/src/algol68toc_1.19_i386.deb debian] - version 1.19
-# Download for [https://sourceforge.net/project/showfiles.php?group_id=114223&package_id=301885&release_id=645539# Fedora 9] (SourceForge) - version 1.8.8d.
+# Download for [debian](http://www.poenikatu.co.uk/src/algol68toc_1.19_i386.deb) - version 1.19
+# Download for [Fedora 9](https://sourceforge.net/project/showfiles.php?group_id=114223&package_id=301885&release_id=645539#) (SourceForge) - version 1.8.8d.
 The SourceForge download includes the PDFs of two books:
 #Programming Algol 68 Made Easy - by Sian Mountbatten - 610 pages (also in the algol68toc package).
 #The RS Compiler for ALGOL 68 - Published 1978 - Defence Research Agency, Malvern, UK - 86 pages.

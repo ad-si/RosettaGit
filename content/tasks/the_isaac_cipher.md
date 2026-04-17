@@ -36,7 +36,7 @@ languages = [
 ]
 +++
 
-ISAAC is a cryptographically secure pseudo-random number generator (CSPRNG) and stream cipher. It was developed by Bob Jenkins from 1993 (http://burtleburtle.net/bob/rand/isaac.html) and placed in the Public Domain. ISAAC is fast - especially when optimised - and portable to most architectures in nearly all programming and scripting languages.
+ISAAC is a cryptographically secure pseudo-random number generator (CSPRNG) and stream cipher. It was developed by Bob Jenkins from 1993 (<http://burtleburtle.net/bob/rand/isaac.html>) and placed in the Public Domain. ISAAC is fast - especially when optimised - and portable to most architectures in nearly all programming and scripting languages.
 It is also simple and succinct, using as it does just two 256-word arrays for its state.
 
 ISAAC stands for "Indirection, Shift, Accumulate, Add, and Count" which are the principal bitwise operations employed.
@@ -3417,9 +3417,9 @@ MOD dcr: a Top Secret secret
 
 ## Perl
 
-Perl has had an ISAAC module for a few years, and it is the recommended way to use ISAAC.  This example uses [https://metacpan.org/pod/Math::Random::ISAAC Math::Random::ISAAC] which is a pure Perl implementation, but will also allow faster operation if the [https://metacpan.org/pod/Math::Random::ISAAC::XS Math::Random::ISAAC::XS] module is installed.
+Perl has had an ISAAC module for a few years, and it is the recommended way to use ISAAC.  This example uses [Math::Random::ISAAC](https://metacpan.org/pod/Math::Random::ISAAC) which is a pure Perl implementation, but will also allow faster operation if the [Math::Random::ISAAC::XS](https://metacpan.org/pod/Math::Random::ISAAC::XS) module is installed.
 
-Since ISAAC does not do its own seeding, the [https://metacpan.org/pod/Bytes::Random::Secure Bytes::Random::Secure] module is recommended
+Since ISAAC does not do its own seeding, the [Bytes::Random::Secure](https://metacpan.org/pod/Bytes::Random::Secure) module is recommended
 for general use as it includes ISAAC plus a portable way to get good entropy,
 as well as additional convenience functions.
 

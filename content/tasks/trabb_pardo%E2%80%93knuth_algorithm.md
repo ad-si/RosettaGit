@@ -76,7 +76,7 @@ languages = [
 +++
 
 The TPK algorithm is an early example of a programming chrestomathy. 
-It was used in Donald Knuth and Luis Trabb Pardo's Stanford tech report [http://bitsavers.org/pdf/stanford/cs_techReports/STAN-CS-76-562_EarlyDevelPgmgLang_Aug76.pdf The Early Development of Programming Languages]. 
+It was used in Donald Knuth and Luis Trabb Pardo's Stanford tech report [The Early Development of Programming Languages](http://bitsavers.org/pdf/stanford/cs_techReports/STAN-CS-76-562_EarlyDevelPgmgLang_Aug76.pdf). 
 The report traces the early history of work in developing computer languages in the 1940s and 1950s, giving several translations of the algorithm.
 
 From the [[wp:Trabb Pardo–Knuth algorithm|wikipedia entry]]:
@@ -215,7 +215,7 @@ TOO LARGE
 
 ## ALGOL 60
 
-This is as close as possible to Pardo and Knuth's original but works with the [http://www.gnu.org/software/marst/marst.html GNU MARST] ALGOL-to-C compiler. Note Pardo and Knuth did not insist on prompts or textual I/O as their report mostly concerned systems that predated even the idea of keyboard interaction.
+This is as close as possible to Pardo and Knuth's original but works with the [GNU MARST](http://www.gnu.org/software/marst/marst.html) ALGOL-to-C compiler. Note Pardo and Knuth did not insist on prompts or textual I/O as their report mostly concerned systems that predated even the idea of keyboard interaction.
 
 <lang>begin 
   integer i; real y; real array a[0:10];

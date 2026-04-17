@@ -9,4 +9,4 @@ id = 2201
 categories = []
 tags = []
 +++
-OpenEdge is the Progress 4GL with classes. It is a commercial business application oriented language by [http://www.progress.com Progress].
+OpenEdge is the Progress 4GL with classes. It is a commercial business application oriented language by [Progress](http://www.progress.com).

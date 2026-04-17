@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-<includeonly>[[Category:Unimplemented tasks by language|{{{1}}}]]</includeonly>{{#ifeq: {{{1}}} | C |<div class="messagebox">Due to a bug in mod_rewrite, the link for tasks not implemented in C++ may redirect here. To go there, try [http://rosettacode.org/w/index.php?title=Reports:Tasks_not_implemented_in_C%2B%2B this link] instead.</div>|}}
+<includeonly>[[Category:Unimplemented tasks by language|{{{1}}}]]</includeonly>{{#ifeq: {{{1}}} | C |<div class="messagebox">Due to a bug in mod_rewrite, the link for tasks not implemented in C++ may redirect here. To go there, try [this link](http://rosettacode.org/w/index.php?title=Reports:Tasks_not_implemented_in_C%2B%2B) instead.</div>|}}
 
 '''The code that drives these pages is under active development, and formatting issues may be present.  However, the result set itself should be accurate to within fifteen minutes of the last viewing.'''
 

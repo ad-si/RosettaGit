@@ -195,8 +195,8 @@ raised ADA.NUMERICS.ARGUMENT_ERROR : a-ngelfu.adb:427 instantiated at mean_angle
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.8.3 algol68g-2.8.3].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.8.3](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.8.3).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 {{trans|C|Note: This specimen retains the original [[#C|C]] coding style}}
 '''File: Averages_Mean_angle.a68'''
 ```algol68
@@ -1898,7 +1898,7 @@ apply(meanDegrees,[[350, 10], [90, 180, 270, 360], [10, 20, 30]])
 
 uses library math for sincos, a function of FPU80x87, atan2 and DegToRad.
 Tested with free pascal.
-Try to catch very small cos values and set to 0.0 degrees " Error : Not meaningful" as http://rosettacode.org/wiki/Averages/Mean_angle#Euler_Math_Toolbox complains.
+Try to catch very small cos values and set to 0.0 degrees " Error : Not meaningful" as <http://rosettacode.org/wiki/Averages/Mean_angle#Euler_Math_Toolbox> complains.
 
 ```pascal
 program MeanAngle;

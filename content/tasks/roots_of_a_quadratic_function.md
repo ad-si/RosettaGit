@@ -73,7 +73,7 @@ Your program must correctly handle non-real roots, but it need not check that <m
 
 The problem of solving a quadratic equation is a good example of how dangerous it can be to ignore the peculiarities of floating-point arithmetic.
 The obvious way to implement the quadratic formula suffers catastrophic loss of accuracy when one of the roots to be found is much closer to 0 than the other.
-In their classic textbook on numeric methods ''[http://www.pdas.com/fmm.htm Computer Methods for Mathematical Computations]'', George Forsythe, Michael Malcolm, and Cleve Moler suggest trying the naive algorithm with <math>a = 1</math>, <math>b = -10^5</math>, and <math>c = 1</math>.
+In their classic textbook on numeric methods ''[Computer Methods for Mathematical Computations](http://www.pdas.com/fmm.htm)'', George Forsythe, Michael Malcolm, and Cleve Moler suggest trying the naive algorithm with <math>a = 1</math>, <math>b = -10^5</math>, and <math>c = 1</math>.
 (For double-precision floats, set <math>b = -10^9</math>.)
 Consider the following implementation in [[Ada]]:
 
@@ -108,7 +108,7 @@ and the two roots of the quardratic are: <math> \frac{-b}{a} f </math> and <math
 
 
 '''Task''': do it better. This means that given <math>a = 1</math>, <math>b = -10^9</math>, and <math>c = 1</math>, both of the roots your program returns should be greater than <math>10^{-11}</math>. Or, if your language can't do floating-point arithmetic any more precisely than single precision, your program should be able to handle <math>b = -10^6</math>. Either way, show what your program gives as the roots of the quadratic in question. See page 9 of
-[https://web.archive.org/web/20080921074325/http://dlc.sun.com/pdf//800-7895/800-7895.pdf "What Every Scientist Should Know About Floating-Point Arithmetic"] for a possible algorithm.
+["What Every Scientist Should Know About Floating-Point Arithmetic"](https://web.archive.org/web/20080921074325/http://dlc.sun.com/pdf//800-7895/800-7895.pdf) for a possible algorithm.
 
 
 ## Ada
@@ -234,7 +234,7 @@ COMPL x1,x2 = -.66666667+/-1.10554160; COMPL y1 = .00000000+.00000000i, y2 = .00
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
 
 ```AutoHotkey
 MsgBox % quadratic(u,v, 1,-3,2) ", " u ", " v
@@ -1971,7 +1971,7 @@ x1:  1.00000000E+010, x2:  1.00000000E-010
 
 ## Perl
 
-When using [http://perldoc.perl.org/Math/Complex.html Math::Complex] perl automatically convert numbers when necessary.
+When using [Math::Complex](http://perldoc.perl.org/Math/Complex.html) perl automatically convert numbers when necessary.
 
 ```perl
 use Math::Complex;

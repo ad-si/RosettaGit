@@ -16,10 +16,10 @@ EiffelStudio supports the seamless, whole-lifecycle Eiffel object-oriented devel
 
 More information is available at:
 
-* [http://eiffel.com Eiffel Software's web site]
-* [http://en.wikipedia.org/wiki/EiffelStudio EiffelStudio page on Wikipedia]
-* [http://docs.eiffel.com/ EiffelStudio online documentation pages]
+* [Eiffel Software's web site](http://eiffel.com)
+* [EiffelStudio page on Wikipedia](http://en.wikipedia.org/wiki/EiffelStudio)
+* [EiffelStudio online documentation pages](http://docs.eiffel.com/)
 
 EiffelStudio can be downloaded from:
 
-* [http://sourceforge.net/project/showfiles.php?group_id=196408 SourceForge]
+* [SourceForge](http://sourceforge.net/project/showfiles.php?group_id=196408)

@@ -11,7 +11,7 @@ tags = []
 +++
 
 === re: draft task, because NevilleDNZ liked it so much ===
-Many ThanX ;-) I confess that I might be a [http://xkcd.com/356/ Nerd] at heart and as I find it hard resist solving an especially annoying puzzle. 
+Many ThanX ;-) I confess that I might be a [Nerd](http://xkcd.com/356/) at heart and as I find it hard resist solving an especially annoying puzzle. 
 
 But now I have a hammer, where is the nail? An actual "real world" ''test case'' would be really sweet!  Ironically I have yet to think of one.  Ideas are invited...
 
@@ -37,7 +37,7 @@ I suspect that "+-0++0+.+-0++0+" and "+-++-.+-++-"  in decimal don't terminate e
 
 Ironically this algorithm is (basically) the same as the binary equivalent (and which also is yet to be added into RosettaCode).  Hence (for 2, 4, 8 & 16 bytes precision) it is generally just ''built-in'' on everybody's computer.
 
-'''Moreover''' the basic addition and multiplication algorithm is taught to every grade school student on the planet... It is awesome to realise what complex algorithms the mind of an [http://education.more4kids.info/46/homeschooling-math-concepts-and-skills-by-age/ 8-11] year old can be taught to process with a the aid of a good teacher.
+'''Moreover''' the basic addition and multiplication algorithm is taught to every grade school student on the planet... It is awesome to realise what complex algorithms the mind of an [8-11](http://education.more4kids.info/46/homeschooling-math-concepts-and-skills-by-age/) year old can be taught to process with a the aid of a good teacher.
 
 However - back to the point - I am not opposed to splitting it into 2 tasks, eg ''whole'' and ''floating point'' balance ternary.  Certainly ''whole balance ternary'' is a whole lot easier on the old belfry, and ''floating point'' would then be a corollary task.  And it would be sad not to see the more general ''floating point'' solution.
 

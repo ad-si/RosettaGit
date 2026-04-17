@@ -35,7 +35,7 @@ Thank you
 : I've adjusted the page text so that the task is more clearly separated from the implementation of it; the key point is that we want the text to still work when there are many implementations in different languages. (For example, it's obvious that a particular language's implementation is in its own named section so you don't write that in the header material.) I've also made more use of <nowiki><math></nowiki> tags; the basic operations are mathematical after all. But don't worry that these changes were made; it takes practice to write perfect pages, and that you get by working at it and being helped by those who go before you. –[[User:Dkf|Donal Fellows]] 18:09, 22 December 2011 (UTC)
 
 == No overlap with [[modular exponentiation]] ==
-In the previous section, someone wrote that this task might overlap with [[modular exponentiation]]. There is no overlap. Montgomery reduction involves ''a<sup>-1</sup>'', the [https://duckduckgo.com/?q=modular+multiplicative+inverse modular multiplicative inverse] of ''a''. [[Modular exponentiation]], as we have it, can only do ''a<sup>b</sup>'' when ''b'' &ge; 0. --[[User:Kernigh|Kernigh]] 00:40, 22 December 2011 (UTC)
+In the previous section, someone wrote that this task might overlap with [[modular exponentiation]]. There is no overlap. Montgomery reduction involves ''a<sup>-1</sup>'', the [modular multiplicative inverse](https://duckduckgo.com/?q=modular+multiplicative+inverse) of ''a''. [[Modular exponentiation]], as we have it, can only do ''a<sup>b</sup>'' when ''b'' &ge; 0. --[[User:Kernigh|Kernigh]] 00:40, 22 December 2011 (UTC)
 
 == Example numbers? ==
 

@@ -9,10 +9,10 @@ id = 7462
 categories = []
 tags = []
 +++
-[http://www.autohotkey.net/~HotKeyIt/AutoHotkey/ homepage]
+[homepage](http://www.autohotkey.net/~HotKeyIt/AutoHotkey/)
 
-[http://www.autohotkey.com/forum/viewtopic.php?t=43049 discussion]
+[discussion](http://www.autohotkey.com/forum/viewtopic.php?t=43049)
 
-author: [http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=9238 HotKeyIt]
+author: [HotKeyIt](http://www.autohotkey.com/forum/profile.php?mode=viewprofile&u=9238)
 
 AutoHotkey_H is based off [AutoHotkey_L](https://rosettacode.org/wiki/AutoHotkey_L) and [AutoHotkey.dll](https://rosettacode.org/wiki/AutoHotkey.dll).

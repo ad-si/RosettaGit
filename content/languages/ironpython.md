@@ -13,4 +13,4 @@ tags = []
 [](https://rosettacode.org/wiki/runs_on_vm::common_language_runtime)
 An implementation of Python for the [.NET Framework](https://rosettacode.org/wiki/.NET_Framework) and [Silverlight](https://rosettacode.org/wiki/Silverlight).
 ## External Links
-* [http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython IronPython official site] 
+* [IronPython official site](http://www.codeplex.com/Wiki/View.aspx?ProjectName=IronPython) 

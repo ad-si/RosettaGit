@@ -333,7 +333,7 @@ endform.
 ## Ada
 
 
-We split the task into two parts: The first part is to represent permutations, to initialize them and to go from one permutation to another one, until the last one has been reached. This can be used elsewhere, e.g., for the Topswaps [[http://rosettacode.org/wiki/Topswops]] task. The second part is to read the N from the command line, and to actually print all permutations over 1 .. N.
+We split the task into two parts: The first part is to represent permutations, to initialize them and to go from one permutation to another one, until the last one has been reached. This can be used elsewhere, e.g., for the Topswaps <http://rosettacode.org/wiki/Topswops> task. The second part is to read the N from the command line, and to actually print all permutations over 1 .. N.
 
 ===The generic package Generic_Perm===
 When given N, this package defines the Element and Permutation types and exports procedures to set a permutation P to the first one, and to change P into the next one:
@@ -906,7 +906,7 @@ end take
 
 ## AutoHotkey
 
-from the forum topic http://www.autohotkey.com/forum/viewtopic.php?t=77959
+from the forum topic <http://www.autohotkey.com/forum/viewtopic.php?t=77959>
 
 ```AutoHotkey
 #NoEnv
@@ -2725,7 +2725,7 @@ let permutations xs =
 
 ## Factor
 
-The all-permutations word is part of factor's standard library. See http://docs.factorcode.org/content/word-all-permutations,math.combinatorics.html
+The all-permutations word is part of factor's standard library. See <http://docs.factorcode.org/content/word-all-permutations,math.combinatorics.html>
 
 
 ## Fortran
@@ -3075,7 +3075,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       end subroutine
 !=====
 !
-!     http://rosettacode.org/wiki/Permutations#Fortran
+!     <http://rosettacode.org/wiki/Permutations#Fortran>
 !
       recursive subroutine generate (pos)
 
@@ -3105,7 +3105,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       end subroutine
 !=====
 !
-!     http://rosettacode.org/wiki/Permutations#Fortran
+!     <http://rosettacode.org/wiki/Permutations#Fortran>
 !
       recursive subroutine perm (i)
       implicit none
@@ -3139,7 +3139,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       end subroutine
 !=====
 !
-!     http://rosettacode.org/wiki/Permutations#Fortran
+!     <http://rosettacode.org/wiki/Permutations#Fortran>
 !
       function nextp ( n, a )
       logical :: nextp
@@ -5707,8 +5707,8 @@ Output:
 
 ```nim
 # nim implementation of the (very fast) Go example
-# http://rosettacode.org/wiki/Permutations#Go
-# implementing a recursive https://en.wikipedia.org/wiki/Steinhaus–Johnson–Trotter_algorithm
+# <http://rosettacode.org/wiki/Permutations#Go>
+# implementing a recursive <https://en.wikipedia.org/wiki/Steinhaus–Johnson–Trotter_algorithm>
 
 proc perm( s: openArray[int], emit: proc(emit:openArray[int]) ) =
     var s = @s
@@ -6585,7 +6585,7 @@ def perm2(n):
 ```
 
 
-These two solutions make use of a generator, and "yield from" introduced in [https://www.python.org/dev/peps/pep-0380/ PEP-380]. They are slightly different: the latter produces permutations in lexicographic order, because the "remaining" part of a (that is, a[i+1:]) is always sorted, whereas the former always reverses the exchange just after the recursive call.
+These two solutions make use of a generator, and "yield from" introduced in [PEP-380](https://www.python.org/dev/peps/pep-0380/). They are slightly different: the latter produces permutations in lexicographic order, because the "remaining" part of a (that is, a[i+1:]) is always sorted, whereas the former always reverses the exchange just after the recursive call.
 
 On three elements, the difference can be seen on the last two permutations:
 

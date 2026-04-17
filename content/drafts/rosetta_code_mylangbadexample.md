@@ -14,4 +14,4 @@ For [[Template:Mylang]], consider this an example of what ''not'' to do:
 
 <nowiki>{{mylang|Some language|Some proficiency level}}</nowiki>
 
-If you do it that, way, it'll [http://rosettacode.org/mw/index.php?title=Rosetta_Code:MylangBadExample&oldid=83050 look like this].
+If you do it that, way, it'll [look like this](http://rosettacode.org/mw/index.php?title=Rosetta_Code:MylangBadExample&oldid=83050).

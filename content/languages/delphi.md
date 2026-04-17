@@ -26,7 +26,7 @@ The Delphi XE2 version added support for 64-bit applications. It also added a cr
 
 ## See Also
 * [Delphi on Wikipedia](https://en.wikipedia.org/wiki/Embarcadero_Delphi)
-* [http://www.embarcadero.com/products/delphi Delphi page at Embarcadero.com]
+* [Delphi page at Embarcadero.com](http://www.embarcadero.com/products/delphi)
 * [Oxygene on Wikipedia](https://en.wikipedia.org/wiki/Oxygene_(programming_language))
 
 ## Todo

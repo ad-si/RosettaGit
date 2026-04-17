@@ -12,7 +12,7 @@ tags = []
 
 
 This [HQ9+](https://rosettacode.org/wiki/HQ9+) interpreter is written in [Haskell](https://rosettacode.org/wiki/Haskell).
-We use [https://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Traversable.html#v:mapAccumR mapAccumR] to maintain the accumulator.
+We use [mapAccumR](https://hackage.haskell.org/package/base-4.11.1.0/docs/Data-Traversable.html#v:mapAccumR) to maintain the accumulator.
 However, the specification doesn't say what to do with said accumulator on completion.
 
 ```haskell

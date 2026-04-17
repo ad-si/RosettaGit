@@ -2853,7 +2853,7 @@ Exiting worker2
 
 This solution uses a double barrier to synchronize the five threads.
 The method can be found on page 41 of the delightful book
-[http://greenteapress.com/semaphores/downey08semaphores.pdf "The Little Book of Semaphores"] by Allen B. Downey.
+["The Little Book of Semaphores"](http://greenteapress.com/semaphores/downey08semaphores.pdf) by Allen B. Downey.
 
 ```racket
 

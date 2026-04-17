@@ -85,7 +85,7 @@ The output of the Python example has characters like > escaped but in a <pre tag
 == Should we underline that... ==
 
 Should we underline that output differs slightly according to the used parser? LibXML used in C, e.g. does not escape the "'" of O'Shanter, nor " (quot); perl package XML::Mini escapes ", but not ' in O'Shanter ... and other parsers, I can see it from the output samples, do escape ' and "... --[[User:ShinTakezou|ShinTakezou]] 15:44, 14 June 2009 (UTC)
-:As far as I can [http://www.xml.com/axml/testaxml.htm see], there is some flexibility as to what ''needs'' to be escaped where. --[[User:Paddy3118|Paddy3118]] 16:28, 14 June 2009 (UTC)
+:As far as I can [see](http://www.xml.com/axml/testaxml.htm), there is some flexibility as to what ''needs'' to be escaped where. --[[User:Paddy3118|Paddy3118]] 16:28, 14 June 2009 (UTC)
 
 == Return or print? ==
 

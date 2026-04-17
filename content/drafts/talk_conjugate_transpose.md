@@ -20,7 +20,7 @@ tags = []
 
 <math>M \times M^H = \begin{bmatrix} 1 + 2i & 0 \\ 0 & 3 + 4i \end{bmatrix} \times \begin{bmatrix} 1 - 2i & 0 \\ 0 & 3 - 4i \end{bmatrix} = \begin{bmatrix} -3 - 4i & 0 \\ 0 & -7 - 24i \end{bmatrix}</math>
 
-If Ruby and Octave are correct, then <math>M</math> is a normal matrix. If Factor is correct, then <math>M</math> is ''not'' a normal matrix. '''Factor is wrong.''' Factor's [[matrix multiplication]] has a bug: Factor confuses [https://duckduckgo.com/?q=Hermitian+inner+product Hermitian inner product] with [[scalar product]], and calculates ''<span style="text-decoration: overline">A</span> &times; B'' in place of ''A &times; B''. --[[User:Kernigh|Kernigh]] 00:30, 17 March 2012 (UTC)
+If Ruby and Octave are correct, then <math>M</math> is a normal matrix. If Factor is correct, then <math>M</math> is ''not'' a normal matrix. '''Factor is wrong.''' Factor's [[matrix multiplication]] has a bug: Factor confuses [Hermitian inner product](https://duckduckgo.com/?q=Hermitian+inner+product) with [[scalar product]], and calculates ''<span style="text-decoration: overline">A</span> &times; B'' in place of ''A &times; B''. --[[User:Kernigh|Kernigh]] 00:30, 17 March 2012 (UTC)
 
 
 ==Formulae were hidden to most browsers by under-tested cosmetic edits at 23:08, 14 August 2016 ==
@@ -31,7 +31,7 @@ Under-tested cosmetic edits made to the task page at 23:08, 14 August 2016, incl
 
 == Ruby bug fixed in head ==
 
-https://bugs.ruby-lang.org/issues/6290#change-25888
+<https://bugs.ruby-lang.org/issues/6290#change-25888>
 
 
 ```txt

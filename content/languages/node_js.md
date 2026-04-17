@@ -15,5 +15,5 @@ tags = []
 
 Node.js has gained a lot of popularity for using JavaScript outside of the web browser. It has a robust API with support for e.g. file reading, TCP and UDP sockets (both as server and client) etc.
 
-* [http://www.nodejs.org/ Node.js homepage]
-* [http://www.nodejs.org/api/ Documentation]
+* [Node.js homepage](http://www.nodejs.org/)
+* [Documentation](http://www.nodejs.org/api/)

@@ -27,7 +27,7 @@ languages = [
 ]
 +++
 
-Demonstrate the [[wp:Data_Encryption_Standard|Data Encryption Standard]]. For a complete description of the algorithm see: [http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm The DES Algorithm Illustrated]
+Demonstrate the [[wp:Data_Encryption_Standard|Data Encryption Standard]]. For a complete description of the algorithm see: [The DES Algorithm Illustrated](http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm)
 
 
 '''Task:'''
@@ -2428,8 +2428,8 @@ plain:   8787878787878787
 ## Perl 6
 
 This is mainly a translation from the Phix entry, with an additional example on UTF-8.  Regarding the many conversions among different number/string formats, small (and hopefully reusable ) helper routines are created to serve the purpose.
-Update 20190323: After a bug fixed an example does behave correctly and is now in line with the results from the C, D, Kotlin and Phix entries.  By the way it seems ''.comb'' handle "\r\n" inconsistently, why? [https://pastebin.com/d7dBpYkL]
-Update 20190325: Thanks to SqrtNegInf for pointing out that the answer is already in the documentation.[https://docs.perl6.org/type/Str#routine_chomp], [https://docs.perl6.org/language/newline]
+Update 20190323: After a bug fixed an example does behave correctly and is now in line with the results from the C, D, Kotlin and Phix entries.  By the way it seems ''.comb'' handle "\r\n" inconsistently, why? <https://pastebin.com/d7dBpYkL>
+Update 20190325: Thanks to SqrtNegInf for pointing out that the answer is already in the documentation.<https://docs.perl6.org/type/Str#routine_chomp>, <https://docs.perl6.org/language/newline>
 ```perl6
 #!/usr/bin/env perl6
 
@@ -3461,7 +3461,7 @@ object DataEncryptionStandard extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scastie.scala-lang.org/t6nGq1ebShKEA42LSIQ6Hg Scastie (JVM)].
+{{Out}}See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/t6nGq1ebShKEA42LSIQ6Hg).
 
 ## Symsyn
 

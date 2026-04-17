@@ -2063,9 +2063,9 @@ forty-three million, one hundred and twelve thousand, six hundred and nine
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Data_types_tutorial#Number_names this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Data_types_tutorial#Number_names) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2507,7 +2507,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers:spell] was used as a based for this procedure.
+[numbers:spell](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) was used as a based for this procedure.
 
 
 ```Icon
@@ -5090,7 +5090,7 @@ def int_to_english(n):
         else:
             return int_to_english(n // 100) + " hundred and " +\
                int_to_english(n % 100)
-    # http://www.isthe.com/chongo/tech/math/number/tenpower.html
+    # <http://www.isthe.com/chongo/tech/math/number/tenpower.html>
     powers = [("thousand", 3), ("million", 6),
               ("billion", 9), ("trillion", 12), ("quadrillion", 15),
               ("quintillion", 18), ("sextillion", 21), ("septillion", 24),
@@ -5195,7 +5195,7 @@ one vigintillion vigintillion
 ```
 
 
-See also [http://planet.racket-lang.org/package-source/neil/numspell.plt/1/2/planet-docs/numspell/index.html numspell] by Neil van Dyke.
+See also [numspell](http://planet.racket-lang.org/package-source/neil/numspell.plt/1/2/planet-docs/numspell/index.html) by Neil van Dyke.
 
 
 ## REXX
@@ -5212,7 +5212,7 @@ For the REXX program and its associated help document, see   ───►   [[Nu
 ## Ring
 
 this simple script has support for zero,negative integers, and floating-point as well as  positive integers
-this simple script available [https://github.com/AbdelrahmanGIT/RingSamples/blob/master/src/ConvertNumbersToString.ring here]
+this simple script available [here](https://github.com/AbdelrahmanGIT/RingSamples/blob/master/src/ConvertNumbersToString.ring)
 
 
 ```ring
@@ -5822,7 +5822,7 @@ Examples
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/wrinum.htm wrinum.s7i] contains the function [http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ENGLISH,in_integer%29 str(ENGLISH, ...)] which converts an integer to its written english equivalent.
+The library [wrinum.s7i](http://seed7.sourceforge.net/libraries/wrinum.htm) contains the function [str(ENGLISH, ...)](http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ENGLISH,in_integer%29) which converts an integer to its written english equivalent.
 
 
 ```seed7
@@ -6207,7 +6207,7 @@ proc divmod {n d} {
 }
 
 proc get_groups {num} {
-    # from http://wiki.tcl.tk/5000
+    # from <http://wiki.tcl.tk/5000>
     while {[regsub {^([-+]?\d+)(\d\d\d)} $num {\1 \2} num]} {}
     return [split $num]
 }

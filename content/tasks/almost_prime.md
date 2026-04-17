@@ -3738,7 +3738,7 @@ isKPrime(k, n) := size(primeFactorization(n)) = k;
 ```
 
 
-Using Prime Decomposition Solution [http://rosettacode.org/wiki/Prime_decomposition#SequenceL]
+Using Prime Decomposition Solution <http://rosettacode.org/wiki/Prime_decomposition#SequenceL>
 
 {{out}}
 

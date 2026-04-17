@@ -151,7 +151,7 @@ attesoR edoC esarhP lasreveR
 
 
 To split a string into words, the package "Simple_Parse" from another task
-[[http://rosettacode.org/wiki/Reverse_words_in_a_string#Ada]] is used.
+<http://rosettacode.org/wiki/Reverse_words_in_a_string#Ada> is used.
 
 
 ```Ada
@@ -1215,7 +1215,7 @@ Reversed order  => reversal phrase code rosetta
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=77cb8b3386a0f57524bdbff6634387cd Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=77cb8b3386a0f57524bdbff6634387cd)'''
 
 ```gambas
 Public Sub Main()
@@ -2286,7 +2286,7 @@ Reversed order:         reversal phrase code rosetta
 
 ## Python
 
-These examples use the [https://docs.python.org/2/whatsnew/2.3.html#extended-slices extended slicing] notation of <code>[::-1]</code> to reverse strings and lists of strings:
+These examples use the [extended slicing](https://docs.python.org/2/whatsnew/2.3.html#extended-slices) notation of <code>[::-1]</code> to reverse strings and lists of strings:
 
 ```python
 >>>

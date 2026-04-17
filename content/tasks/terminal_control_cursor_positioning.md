@@ -324,7 +324,7 @@ static void Main(string[] args)
 
 ## D
 
-ANSI escape sequences allow you to move the cursor anywhere on the screen. See more at: [http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html Bash Prompt HowTo - Chapter 6. ANSI Escape Sequences: Colours and Cursor Movement]
+ANSI escape sequences allow you to move the cursor anywhere on the screen. See more at: [Bash Prompt HowTo - Chapter 6. ANSI Escape Sequences: Colours and Cursor Movement](http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html)
 
  Position the Cursor:
   \033[<L>;<C>H
@@ -599,7 +599,7 @@ Print["Hello"]
 ## OCaml
 
 
-Using the library [http://forge.ocamlcore.org/projects/ansiterminal/ ANSITerminal]:
+Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/):
 
 
 ```ocaml
@@ -728,7 +728,7 @@ Using ANSI escape sequence, where ESC[y;xH moves curser to row y, col x:
 print("\033[6;3HHello")
 ```
 
-On Windows it needs to import and init the [http://code.google.com/p/colorama/ colorama] module first.
+On Windows it needs to import and init the [colorama](http://code.google.com/p/colorama/) module first.
 
 ANSI sequences are not recognized in Windows console, here is a program using Windows API:
 
@@ -856,8 +856,8 @@ object Main extends App {
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/libraries/console.htm#setPos%28ref_console_file,__ref_integer,ref_integer%29 setPos] is portable and
-positions the cursor on the [http://seed7.sourceforge.net/libraries/console.htm console window].
+The function [setPos](http://seed7.sourceforge.net/libraries/console.htm#setPos%28ref_console_file,__ref_integer,ref_integer%29) is portable and
+positions the cursor on the [console window](http://seed7.sourceforge.net/libraries/console.htm).
 ''SetPos'' is based on terminfo respectively the Windows console API.
 
 

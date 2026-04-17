@@ -90,7 +90,7 @@ puts "Go to the store and buy some more, 99 bottles of beer on the wall."
 
 
 ===99-bottles-of-beer.net===
-from http://99-bottles-of-beer.net/language-tcl-439.html
+from <http://99-bottles-of-beer.net/language-tcl-439.html>
 
 ```tcl
 proc bottles {i} {

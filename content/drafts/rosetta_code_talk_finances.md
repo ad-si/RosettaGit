@@ -42,20 +42,20 @@ There are some computer languages, which compilers are more or less company-boun
 
 == urldogg ==
 
-Too bad they are not real dollars...: [http://urldogg.com/rosettacode.org Rosettacode.org gets about 4,651 pageviews per day, and earns an estimated $13.95 daily.] --[[User:Rdm|Rdm]] 18:12, 21 September 2010 (UTC)
+Too bad they are not real dollars...: [Rosettacode.org gets about 4,651 pageviews per day, and earns an estimated $13.95 daily.](http://urldogg.com/rosettacode.org) --[[User:Rdm|Rdm]] 18:12, 21 September 2010 (UTC)
 : I must definitely be doing something wrong. Also, their pageviews count is low; According to Google Analytics, we had about 40k pageviews over the last 7 days. --[[User:Short Circuit|Michael Mol]] 18:47, 21 September 2010 (UTC)
 :: I imagine they think that those page views are page views with full out ads (and perhaps popups) on every page.  Though I have not really looked into what their assumptions are.  --[[User:Rdm|Rdm]] 18:55, 21 September 2010 (UTC)
 
 == Flattr ==
 
-Along the lines of the donate button, there is also [http://flattr.com/ Flattr]. I haven't used it or looked deeply into it, so I don't know what the full pros and cons are. --[[User:Coderjoe|Coderjoe]] 00:50, 8 December 2011 (UTC)
+Along the lines of the donate button, there is also [Flattr](http://flattr.com/). I haven't used it or looked deeply into it, so I don't know what the full pros and cons are. --[[User:Coderjoe|Coderjoe]] 00:50, 8 December 2011 (UTC)
 
 == 2012 status? ==
 Every document and note I have seen about finances was from 2011.  Is there anything happening in 2012 ? [[User:DavidWhitten|DavidWhitten]] 20:10, 19 October 2012 (UTC)
 
 == Cloudflare? ==
 
-Have you considered using [https://www.cloudflare.com/overview Cloudflare]?  The basic service is free.  You'd still have to run your own server, but their caching would reduce your bandwidth, so you could avoid overages or having to add more servers.  It might also help protect you from spam.  I haven't used it; I've just looked at their website, but it sounds interesting.
+Have you considered using [Cloudflare](https://www.cloudflare.com/overview)?  The basic service is free.  You'd still have to run your own server, but their caching would reduce your bandwidth, so you could avoid overages or having to add more servers.  It might also help protect you from spam.  I haven't used it; I've just looked at their website, but it sounds interesting.
 
 --[[User:Ppelleti|Ppelleti]] 02:50, 3 January 2013 (UTC)
 
@@ -73,14 +73,14 @@ Never mind, it looks like you're already using Cloudflare, since I periodically 
 
 == Gittip ==
  
-I would second Ppelleti's suggestion of Gittip. Various people rave about it. https://www.gittip.com/
+I would second Ppelleti's suggestion of Gittip. Various people rave about it. <https://www.gittip.com/>
 
 [[User:Clebio|Clebio]] ([[User talk:Clebio|talk]]) 10:47, 24 July 2014 (UTC)
 
 == as-a-Service ==
 
-The idea of selling the content, possibly in book form, was mentioned over here: http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Income
+The idea of selling the content, possibly in book form, was mentioned over here: <http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Income>
 
-I'd suggest that the content-as-a-service might be valuable. Specifically, I have an idea for a web app that would use RC's code samples. I've tried reaching out to Michael on Twitter. Since I can't edit his talk page (http://rosettacode.org/wiki/User_talk:Short_Circuit, as an aside, it looks like there's vandalism at the bottom of that page) and since this is potentially related to funding RC, I'm posting it here. But I'd like to discuss offline if possible. Feel free to email me.
+I'd suggest that the content-as-a-service might be valuable. Specifically, I have an idea for a web app that would use RC's code samples. I've tried reaching out to Michael on Twitter. Since I can't edit his talk page (<http://rosettacode.org/wiki/User_talk:Short_Circuit>, as an aside, it looks like there's vandalism at the bottom of that page) and since this is potentially related to funding RC, I'm posting it here. But I'd like to discuss offline if possible. Feel free to email me.
 
 [[User:Clebio|Clebio]] ([[User talk:Clebio|talk]]) 11:05, 24 July 2014 (UTC)

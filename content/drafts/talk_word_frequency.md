@@ -1162,4 +1162,4 @@ cat 135-0.txt | tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | se
 :::::::I agree that freedom to choose is the best, so I'm going with your suggestion, Tigerofdarkness.  Thanks! --[[User:Kentros|Kentros]] ([[User talk:Kentros|talk]]) 01:27, 31 August 2017 (UTC)
 
 ==Code Golf mention==
-*[https://codegolf.stackexchange.com/questions/188133/bentleys-coding-challenge-k-most-frequent-words Bentley's coding challenge: k most frequent words] at Code Golf Stack Exchange mentions this task.
+*[Bentley's coding challenge: k most frequent words](https://codegolf.stackexchange.com/questions/188133/bentleys-coding-challenge-k-most-frequent-words) at Code Golf Stack Exchange mentions this task.

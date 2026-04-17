@@ -618,7 +618,7 @@ void main() {
 ```
 
 Original C++ code, modified (unknown license), by Andre Reinald, Paul Harris, Ryan Rohrer, Dirk Jagdmann:
-http://www.cubic.org/docs/download/radix_ar_2011.cpp
+<http://www.cubic.org/docs/download/radix_ar_2011.cpp>
 
 
 ## EasyLang

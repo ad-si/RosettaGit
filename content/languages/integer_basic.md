@@ -15,4 +15,4 @@ Integer BASIC, written by [Steve Wozniak](https://en.wikipedia.org/wiki/Steve_Wo
 
 ## See Also
 * [Wikipedia: Integer BASIC](https://en.wikipedia.org/wiki/Integer_BASIC)
-* [http://www.landsnail.com/a2ref2.htm Apple II Programmer's Reference] from ][ In a Mac, via [http://www.landsnail.com/ Landsnail.com]
+* [Apple II Programmer's Reference](http://www.landsnail.com/a2ref2.htm) from ][ In a Mac, via [Landsnail.com](http://www.landsnail.com/)

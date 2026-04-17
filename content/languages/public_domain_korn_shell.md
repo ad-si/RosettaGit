@@ -11,7 +11,7 @@ tags = []
 +++
 pdksh is the ''public domain Korn shell'', a clone of the [Korn Shell](https://rosettacode.org/wiki/Korn_Shell). It has most of the ksh88 features, and almost none of the ksh93 features.
 
-The last version, [http://web.cs.mun.ca/~michael/pdksh/ pdksh 5.2.14] from 1999 July 13, still has several bugs. Systems like [http://packages.debian.org/sid/pdksh Debian], [http://www.openbsd.org/cgi-bin/cvsweb/src/bin/ksh/ OpenBSD] and [http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/pdksh/ PLD] now apply several patches to pdksh.
+The last version, [pdksh 5.2.14](http://web.cs.mun.ca/~michael/pdksh/) from 1999 July 13, still has several bugs. Systems like [Debian](http://packages.debian.org/sid/pdksh), [OpenBSD](http://www.openbsd.org/cgi-bin/cvsweb/src/bin/ksh/) and [PLD](http://cvs.pld-linux.org/cgi-bin/cvsweb.cgi/packages/pdksh/) now apply several patches to pdksh.
 
 * If an example from Rosetta Code "works with pdksh", then someone might have tested the example with one of these patched versions of pdksh.
 * If a <tt>#!/bin/sh</tt> script "works with pdksh", then the tester might have used [OpenBSD](https://rosettacode.org/wiki/OpenBSD), where both <tt>/bin/ksh</tt> and <tt>/bin/sh</tt> are pdksh.

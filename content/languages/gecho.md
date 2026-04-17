@@ -9,11 +9,11 @@ id = 10559
 categories = []
 tags = []
 +++
-From its [https://github.com/tekknolagi/gecho GitHub repo]:
+From its [GitHub repo](https://github.com/tekknolagi/gecho):
 <blockquote>gecho is somewhat similar to FORTH. It will probably become less so as it grows.</blockquote>
 
 
 ## Merged content
 
 
-GitHub [http://github.com/tekknolagi/gecho]
+GitHub <http://github.com/tekknolagi/gecho>

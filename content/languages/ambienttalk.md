@@ -17,7 +17,7 @@ The language was designed at the Software Languages Lab of the Vrije Universitei
 The default implementation of AmbientTalk is a Java interpreter, which features full interoperability with the JVM, enabling AmbientTalk code to use existing Java libraries, and enabling Java code to use AmbientTalk as a distributed scripting language. Recent version of AmbientTalk also run on the Android OS, making AmbientTalk portable across a wide range of mobile phones.
 
 ## Trying AmbientTalk
-[http://ambienttalk.googlecode.com The open source AmbientTalk interpreter]
+[The open source AmbientTalk interpreter](http://ambienttalk.googlecode.com)
 
 To run an AmbientTalk program:
 
@@ -36,5 +36,5 @@ $ iat
 
 
 ## See Also
-* [http://ambienttalk.googlecode.com Open source google code project]
-* [http://soft.vub.ac.be/amop AmbientTalk home page] at the Software Languages Lab of the Vrije Universiteit Brussel.
+* [Open source google code project](http://ambienttalk.googlecode.com)
+* [AmbientTalk home page](http://soft.vub.ac.be/amop) at the Software Languages Lab of the Vrije Universiteit Brussel.

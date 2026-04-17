@@ -13,7 +13,7 @@ tags = []
 {{library}}
 [[Category:Python]]
 
-The [https://pypi.python.org/pypi/LiveWires LiveWires] package 
+The [LiveWires](https://pypi.python.org/pypi/LiveWires) package 
 provides resources for people learning [[Python]]. 
 
 

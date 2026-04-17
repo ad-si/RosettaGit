@@ -13,4 +13,4 @@ tags = []
 {{stub}}{{library}}
 A library for image creation, loading, saving and manipulation. Bindings for several languages beyond C exist (among these, Perl package Image::Imglib2).
 
-* [http://docs.enlightenment.org/api/imlib2/html Imlib2 documentation]
+* [Imlib2 documentation](http://docs.enlightenment.org/api/imlib2/html)

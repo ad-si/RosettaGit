@@ -50,7 +50,7 @@ languages = [
 ]
 +++
 
-A [http://mathworld.wolfram.com/Derangement.html derangement] is a permutation of the order of distinct items in which ''no item appears in its original place''.
+A [derangement](http://mathworld.wolfram.com/Derangement.html) is a permutation of the order of distinct items in which ''no item appears in its original place''.
 
 For example, the only two derangements of the three items (0, 1, 2) are (1, 2, 0), and (2, 0, 1).
 
@@ -458,7 +458,7 @@ List vs. calc:
 
 ## AutoHotkey
 
-Note that the permutations are generated in lexicographic order, from http://www.autohotkey.com/forum/topic77959.html
+Note that the permutations are generated in lexicographic order, from <http://www.autohotkey.com/forum/topic77959.html>
 
 ```AHK
 #NoEnv

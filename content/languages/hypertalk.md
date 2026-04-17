@@ -13,4 +13,4 @@ tags = []
 
 HyperCard and HyperTalk come from the era of the black-and-white Macintosh. HyperTalk scripts are plain text, but embedded inside some stack. A ''HyperCard stack'' is the user interface to a HyperTalk program. Each stack appears in a window and displays one card from the stack. A card might include text, images, hyperlinks to other cards, and interactive buttons. These stacks look obsolete because of the small size of each card, and the black and white graphics.
 
-HyperCard only works with Mac OS Classic, and Apple stopped selling copies. HyperCard's surviving relatives include [http://www.supercard.us/hypercard/index.html SuperCard] and [http://www.runrev.com/developers/lessons-and-tutorials/moving-to-rev/hypercard/ LiveCode].
+HyperCard only works with Mac OS Classic, and Apple stopped selling copies. HyperCard's surviving relatives include [SuperCard](http://www.supercard.us/hypercard/index.html) and [LiveCode](http://www.runrev.com/developers/lessons-and-tutorials/moving-to-rev/hypercard/).

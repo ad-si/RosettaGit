@@ -46,7 +46,7 @@ The arithmetic properties I can think of are:
 
 ==Python Image Library?==
 Where is the <code>Image</code> library from? --[[User:Paddy3118|Paddy3118]] 12:56, 31 December 2009 (UTC)
-:[http://www.pythonware.com/products/pil/ Here], I think. PIL has a module named <code>Image</code>, at any rate. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 15:08, 31 December 2009 (UTC)
+:[Here](http://www.pythonware.com/products/pil/), I think. PIL has a module named <code>Image</code>, at any rate. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 15:08, 31 December 2009 (UTC)
 
 == Clarify "Difference"? ==
 

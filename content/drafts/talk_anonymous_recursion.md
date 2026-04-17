@@ -226,7 +226,7 @@ end
 : While some of this stuff, including article on WP which are marked needing expert help, aren't the easiest to understand, it seems that a number of the examples are probably/maybe incorrect (I don't claim to understand all the solutions).
 :# [[wp:Fixed_point_combinator]]
 :# [[wp:Anonymous_function]]
-:# [http://stackoverflow.com/questions/156369/which-languages-support-recursive-function-literals-anonymous-functions] discussion on stack-overflow --[[User:Dgamey|Dgamey]] 22:58, 20 July 2011 (UTC)
+:# <http://stackoverflow.com/questions/156369/which-languages-support-recursive-function-literals-anonymous-functions> discussion on stack-overflow --[[User:Dgamey|Dgamey]] 22:58, 20 July 2011 (UTC)
 :Examples that look like simple recursion no hidden function, no function not bound to an identifier (per #2).:
 :* AutoHotkey, Forth
 :Forth is already marked incorrect.  I think AutoHotKey should be too.

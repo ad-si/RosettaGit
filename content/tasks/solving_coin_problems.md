@@ -13,12 +13,12 @@ languages = [
 ]
 +++
 
-In 1964, Daniel G. Bobrow created the STUDENT AI program in order to solve the types of word problems found in high school algebra books. You can read Bobrow's 1964 Ph.D. thesis, ''[http://dspace.mit.edu/handle/1721.1/6903 Natural Language Input for a Computer Problem Solving System]''. The program consists of 3 main pieces:
+In 1964, Daniel G. Bobrow created the STUDENT AI program in order to solve the types of word problems found in high school algebra books. You can read Bobrow's 1964 Ph.D. thesis, ''[Natural Language Input for a Computer Problem Solving System](http://dspace.mit.edu/handle/1721.1/6903)''. The program consists of 3 main pieces:
 # A pattern matcher that reads the english input,
 # rules to translate english into equations, and
 # an algebraic equation solver.
 
-In chapter 7 of his book, ''[http://norvig.com/paip.html Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp]'', Peter Norvig lays out the STUDENT program and then challenges his readers as follows:
+In chapter 7 of his book, ''[Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp](http://norvig.com/paip.html)'', Peter Norvig lays out the STUDENT program and then challenges his readers as follows:
 
 :"''Exercise 7.8 [d]'' Find a mathematically oriented domain that is sufficiently limited so that STUDENT can solve problems in it. The chemistry of solutions (calculating pH concentrations) might be an example. Write the necessary *student-rules*, and test the resulting program." (PAIP, p. 236)
 

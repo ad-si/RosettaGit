@@ -1296,7 +1296,7 @@ false
 
 
 =={{header|F_Sharp|F#}}==
-The Collections.Set<'T> class implements "Immutable sets based on binary trees, where comparison is the F# structural comparison function, potentially using implementations of the IComparable interface on key values." (http://msdn.microsoft.com/en-us/library/ee353619.aspx)
+The Collections.Set<'T> class implements "Immutable sets based on binary trees, where comparison is the F# structural comparison function, potentially using implementations of the IComparable interface on key values." (<http://msdn.microsoft.com/en-us/library/ee353619.aspx>)
 
 ```fsharp
 [<EntryPoint>
@@ -1380,7 +1380,7 @@ t
 
 Works with any ANS Forth.
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -4325,7 +4325,7 @@ same output as above
 
 ## PicoLisp
 
-We may use plain lists, or '[http://software-lab.de/doc/refI.html#idx idx]' structures for sets. A set may contain any type of data.
+We may use plain lists, or '[idx](http://software-lab.de/doc/refI.html#idx)' structures for sets. A set may contain any type of data.
 
 ### Using lists
 
@@ -4554,7 +4554,7 @@ true.
 
 
 
-SWI-Prolog provides a standard [http://www.swi-prolog.org/pldoc/man?section=ordsets:Link library(ordsets)].
+SWI-Prolog provides a standard [library(ordsets)](http://www.swi-prolog.org/pldoc/man?section=ordsets:Link).
 It is loaded by default. I demonstrate almost all of these predicates in the interactive top-level (`?-` is the prompt).
 Variables prefixed with `$` refer back to the value of the last instantiation.
 It treats sets as ordered lists of unique elements:
@@ -4826,7 +4826,7 @@ Take away 'red green dog' from C to get (cat mouse) of cardinality 2.
 
 ## Python
 
-In Python, <code>[http://docs.python.org/py3k/library/stdtypes.html#set-types-set-frozenset set]</code> is a standard type since Python 2.4.
+In Python, <code>[set](http://docs.python.org/py3k/library/stdtypes.html#set-types-set-frozenset)</code> is a standard type since Python 2.4.
 There is also <code>frozenset</code> which is an immutable version of <code>set</code>. (In Python 2.3, they were provided as <code>Set</code> and <code>ImmutableSet</code> types in the module <code>sets</code>.)
 
 Language syntax for set literals is supported starting in Python 3.0 and 2.7.

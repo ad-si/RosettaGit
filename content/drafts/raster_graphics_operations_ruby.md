@@ -14,7 +14,7 @@ tags = []
 ==The Code==
 Collecting all the Ruby code from [[:Category:Raster graphics operations]], so one can invoke: <code>require 'raster_graphics'</code>
 
-Uses the [https://github.com/wvanbergen/chunky_png ChunkyPNG] pure-Ruby PNG library.
+Uses the [ChunkyPNG](https://github.com/wvanbergen/chunky_png) pure-Ruby PNG library.
 
 
 ```ruby

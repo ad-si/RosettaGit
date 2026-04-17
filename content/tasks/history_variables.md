@@ -63,7 +63,7 @@ Maintaining the history of an object in a program has traditionally required pro
 The Semantics, Formal Correctness, and Implementation of History Variables
 in an Imperative Programming Language" by Mallon and Takaoka]
 
-Concept also discussed on [http://lambda-the-ultimate.org/node/3111 LtU] and [http://www.patents.com/us-7111283.html Patents.com].
+Concept also discussed on [LtU](http://lambda-the-ultimate.org/node/3111) and [Patents.com](http://www.patents.com/us-7111283.html).
 
 ## Task
 

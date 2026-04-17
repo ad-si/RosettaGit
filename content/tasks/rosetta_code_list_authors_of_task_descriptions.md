@@ -30,9 +30,9 @@ Cache as $previous2. Note $author2
 
 
 The following resources for HTTP interface information for MediaWiki may prove to be useful:
-* [https://www.mediawiki.org/wiki/Index.php#Raw https://www.mediawiki.org/wiki/Index.php#Raw]
-* [https://www.mediawiki.org/wiki/Index.php#History https://www.mediawiki.org/wiki/Index.php#History]
-* [https://www.mediawiki.org/wiki/API:Main_page https://www.mediawiki.org/wiki/API:Main_page]
+* [https://www.mediawiki.org/wiki/Index.php#Raw](https://www.mediawiki.org/wiki/Index.php#Raw)
+* [https://www.mediawiki.org/wiki/Index.php#History](https://www.mediawiki.org/wiki/Index.php#History)
+* [https://www.mediawiki.org/wiki/API:Main_page](https://www.mediawiki.org/wiki/API:Main_page)
 
 Conversely, some languages have libraries which abstract these interfaces into language-native idioms. Use of these abstractions is perfectly fine.
 

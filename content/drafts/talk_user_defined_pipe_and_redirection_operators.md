@@ -198,7 +198,7 @@ BTW: I have been wondering how to ''naturally'' take advantage of a [[wp:Graphic
 [[User:NevilleDNZ|NevilleDNZ]] 02:15, 14 September 2011 (UTC)
 : Coroutines and multithreading are completely separate topics.  You yourself linked to coroutine implementation using Duff's device before, which decidedly is a single thread.  And for your stream objects, you don't really need either of those anyway. --[[User:Ledrug|Ledrug]] 02:48, 14 September 2011 (UTC)
 
-Indeed you are right.  On reflection, linking to that page on [http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html C coroutines] was a mistake.  Duff's device is kind of extreme.  (Interesting, but extreme!) In fact I've renamed the Algol routines to "Iterator_pipe_operators.a68".  I'll drop reference to co-processing out of the ''Task Description'' too. ThanX
+Indeed you are right.  On reflection, linking to that page on [C coroutines](http://www.chiark.greenend.org.uk/~sgtatham/coroutines.html) was a mistake.  Duff's device is kind of extreme.  (Interesting, but extreme!) In fact I've renamed the Algol routines to "Iterator_pipe_operators.a68".  I'll drop reference to co-processing out of the ''Task Description'' too. ThanX
 
 [[User:NevilleDNZ|NevilleDNZ]] 03:50, 14 September 2011 (UTC)
 
@@ -216,7 +216,7 @@ Also the "List of computer scientists" is a bit random and the nature of the rec
 
 [[User:NevilleDNZ|NevilleDNZ]] 22:32, 17 September 2011 (UTC)
 
-:Here's a one with some history: [[http://books.google.com/books?id=jO-iKwPRX0QC&lpg=PT126&ots=xiWAzX9HDK&dq=knuth%20bell%20lab%20challenge&ie=ISO-8859-1&pg=PT126#v=onepage&q&f=false]]. --[[User:Ledrug|Ledrug]] 23:55, 17 September 2011 (UTC)
+:Here's a one with some history: <http://books.google.com/books?id=jO-iKwPRX0QC&lpg=PT126&ots=xiWAzX9HDK&dq=knuth%20bell%20lab%20challenge&ie=ISO-8859-1&pg=PT126#v=onepage&q&f=false>. --[[User:Ledrug|Ledrug]] 23:55, 17 September 2011 (UTC)
 
 == comments after writing the J implementation ==
 
@@ -245,7 +245,7 @@ Of course, there are cases where the techniques used in this task are useful.  U
 ::Of those three, syntax declaration seems the most useless.  At the very least, I see no reason to impose "left to right" processing on all languages.  So I would be inclined to discard the syntactic requirements.
 ::Of the remaining two, composition should be trivial, for any language represented here.  But that might be worthy of a task, or at least a reference to an existing task.  (And we probably do have something like that already posted.)
 ::That leaves data flow manipulation. But the dataflow used in pipes is something of a hack -- it is neither reliable, nor algorithmically useful.  You mostly see it in action because file systems are so slow, but depending on what you are doing you still might need to wait hours before getting meaningful results... 
-::Of course, composability matters -- it [http://blog.dbpatterson.com/post/10244529137 matters a lot] -- but it's scarce at the OS level, for some operating systems, and is readily available in the context of programming languages. 
+::Of course, composability matters -- it [matters a lot](http://blog.dbpatterson.com/post/10244529137) -- but it's scarce at the OS level, for some operating systems, and is readily available in the context of programming languages. 
 ::Similarly, good data flow also matters... and is also readily available in the context of programming languages (as long as you do not try to make one language behave exactly like another).
 ::So... personally?  I would not bother changing the task -- I would just file it somewhere out of the way.  It's not like there's any shortage of problems that need solving.  --[[User:Rdm|Rdm]] 16:56, 16 September 2011 (UTC)
 ::: I disagree about the pipe-like dataflow being not useful.  For example, when reading or writing a PDF, a PDF stream object may go through multiple encoders/filters in sequence, e.g. PNG, then hexencoded, then RLE, then flate, and each stream itself may contain multiple streams inside (not unlike tar xf).  When dealing with one of these, it's probably a good idea to use filters that pass on partial data as soon as possible so that total memory usage doesn't get blown out of proportion.  It has ''nothing'' to do with OS pipes, either.
@@ -270,7 +270,7 @@ I'm still keen to see a degree of parallelism in the piping in the test case eg 
 
 [[User:NevilleDNZ|NevilleDNZ]] 12:53, 20 September 2011 (UTC)
 
-:This comment reminds me of: http://jlouisramblings.blogspot.com/2011/07/erlangs-parallelism-is-not-parallelism.html -- or, from my point of view: we talk about "concurrency" and "parallelism" as if they were simple things when in fact they can represent a range of concepts, many of which are only loosely related to each other.  Meanwhile, depending on the application, some of those concepts can be undesirable even though others are desirable.  All of which can matter when dealing with issues of scope and practicality. --[[User:Rdm|Rdm]] 17:20, 21 September 2011 (UTC)
+:This comment reminds me of: <http://jlouisramblings.blogspot.com/2011/07/erlangs-parallelism-is-not-parallelism.html> -- or, from my point of view: we talk about "concurrency" and "parallelism" as if they were simple things when in fact they can represent a range of concepts, many of which are only loosely related to each other.  Meanwhile, depending on the application, some of those concepts can be undesirable even though others are desirable.  All of which can matter when dealing with issues of scope and practicality. --[[User:Rdm|Rdm]] 17:20, 21 September 2011 (UTC)
 
 == Simplify description ==
 

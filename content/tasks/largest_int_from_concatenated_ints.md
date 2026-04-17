@@ -90,8 +90,8 @@ Use the following two sets of integers as tests   and   show your program output
 
 ## See also
 
-*   [http://www.quora.com/Algorithms/What-is-the-most-efficient-way-to-arrange-the-given-numbers-to-form-the-biggest-number Algorithms: What is the most efficient way to arrange the given numbers to form the biggest number?]
-*   [http://stackoverflow.com/questions/14532105/constructing-the-largest-number-possible-by-rearranging-a-list/14539943#14539943 Constructing the largest number possible by rearranging a list]
+*   [Algorithms: What is the most efficient way to arrange the given numbers to form the biggest number?](http://www.quora.com/Algorithms/What-is-the-most-efficient-way-to-arrange-the-given-numbers-to-form-the-biggest-number)
+*   [Constructing the largest number possible by rearranging a list](http://stackoverflow.com/questions/14532105/constructing-the-largest-number-possible-by-rearranging-a-list/14539943#14539943)
 
 
 
@@ -998,7 +998,7 @@ Largest concatenated int from {54,546,548,60} = 6054854654
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4169e7641f29ff0ae1dd202b459e60ce Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4169e7641f29ff0ae1dd202b459e60ce)'''
 
 ```gambas
 'Largest int from concatenated ints
@@ -1948,7 +1948,7 @@ end.
 ### =Inspired by Haskell =
 
 generate the repetition by dividing /(10^CountDigits-1)
-http://rosettacode.org/wiki/Largest_int_from_concatenated_ints#Compare_repeated_string_method
+<http://rosettacode.org/wiki/Largest_int_from_concatenated_ints#Compare_repeated_string_method>
 
 
 ```pascal

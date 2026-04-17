@@ -55,7 +55,7 @@ I decided to keep the game core separate from the players. Although this makes t
 
 
 == letting the human win (sometimes) ==
-A note on the REXX solution:   tic-tac-toe games,   if played perfectly,   will always end in a draw, making it a   [https://en.wikipedia.org/wiki/Futile_game futile game].
+A note on the REXX solution:   tic-tac-toe games,   if played perfectly,   will always end in a draw, making it a   [futile game](https://en.wikipedia.org/wiki/Futile_game).
 
 (Except for the case for a   '''2x2'''   grid, a win is guaranteed for the player moving first.)
 

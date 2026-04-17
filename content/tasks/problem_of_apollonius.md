@@ -1523,7 +1523,7 @@ $ jq -n -c -f apollonius.jq
 
 ## Julia
 
-This solution follows the algebraic solution from [http://mathworld.wolfram.com/ApolloniusProblem.html Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource].  The [https://github.com/Keno/Polynomials.jl Polynomials] package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.
+This solution follows the algebraic solution from [Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource](http://mathworld.wolfram.com/ApolloniusProblem.html).  The [Polynomials](https://github.com/Keno/Polynomials.jl) package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.
 
 The <code>enc</code> array passed to the <code>apollonius</code> function, specifies which of the three defining circles are to be enclosed in the solution.  For this task only the "internal" (<code>enc=[]</code>) and "external" (<code>enc=[1:3]</code>) are called for.
 
@@ -2181,7 +2181,7 @@ Second, it looks more like the original mathematical formulas to do it this way.
 
 Third, together with the use of Unicode, we are emphasizing the social contract between the writer and the reader, which has a clause in it that indicates code is read much more often than it is written, therefore the writer is obligated to undergo vicarious suffering on behalf of the reader to make things clear.  If the reader doesn't understand, it's the writer's fault, in other words.  Or in other other words, figure out how to type those Unicode characters, even if it's hard.  And you should type them whenever it makes things clearer to the reader.
 
-Finally, writing in an [https://en.wikipedia.org/wiki/Static_single_assignment_form SSA style] tends to help the optimizer.
+Finally, writing in an [SSA style](https://en.wikipedia.org/wiki/Static_single_assignment_form) tends to help the optimizer.
 
 
 ```perl6

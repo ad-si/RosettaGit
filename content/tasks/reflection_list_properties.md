@@ -295,7 +295,7 @@ private static java.lang.ref.SoftReference ListProperties.$callSiteArray	java.la
 
 ## J
 
-http://rosettacode.org/wiki/Reflection/List_methods#J
+<http://rosettacode.org/wiki/Reflection/List_methods#J>
 Please observe that names&>i.4 lists nouns (pronouns that store data), adverbs (names of verb modifiers returning any of these four parts of speech), conjunctions (which can take three or four arguments, two of which can any part of these four parts of speech and two nouns), and proverbs (names of verbs, which you might call "functions").
 
 
@@ -697,7 +697,7 @@ $VAR1 = bless( {
 ## Perl 6
 
 
-You can get a list of an object's attributes (instance variables) using <tt>.^attributes</tt>, which is part of the [https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW Meta Object Protocol]..
+You can get a list of an object's attributes (instance variables) using <tt>.^attributes</tt>, which is part of the [Meta Object Protocol](https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW)..
 
 Each is represented as an <tt>Attribute</tt> object that contains a bunch of info:
 
@@ -827,7 +827,7 @@ AddYears        Method     datetime AddYears(int value)
 
 ## Python
 
-The <code>[https://docs.python.org/3.5/library/functions.html#dir dir()]</code> function and Python's <code>[https://docs.python.org/3.5/library/inspect.html#module-inspect inspect]</code> module both will list properties.
+The <code>[dir()](https://docs.python.org/3.5/library/functions.html#dir)</code> function and Python's <code>[inspect](https://docs.python.org/3.5/library/inspect.html#module-inspect)</code> module both will list properties.
 
 
 ```python
@@ -1013,7 +1013,7 @@ p Foo.class_variables                   #=> [:@@xyz, :@@abc]
 
 ### Java Interoperability
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/MdkPxH6yTlS4W8TaXYxSgA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/MdkPxH6yTlS4W8TaXYxSgA).
 
 ```Scala
 object ListProperties extends App {

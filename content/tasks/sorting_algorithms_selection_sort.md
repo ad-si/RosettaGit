@@ -550,7 +550,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/topic44657-105.html discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/topic44657-105.html)
 
 ```AutoHotkey
 MsgBox % SelecSort("")
@@ -3452,7 +3452,7 @@ const proc: selectionSort (inout array elemType: arr) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#selectionSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#selectionSort>
 
 
 ## Sidef

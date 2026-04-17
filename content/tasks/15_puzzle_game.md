@@ -2360,7 +2360,7 @@ start fifteen puzzle
 ## Common Lisp
 
 
-Credit to this post for help with the inversions-counting function: [http://www.lispforum.com/viewtopic.php?f=2&t=3422]
+Credit to this post for help with the inversions-counting function: <http://www.lispforum.com/viewtopic.php?f=2&t=3422>
 
 Run it (after loading the file) with
 ```lisp
@@ -2476,7 +2476,7 @@ Run it (after loading the file) with
 ## EasyLang
 
 
-[https://easylang.online/apps/15-puzzle.html Run it]
+[Run it](https://easylang.online/apps/15-puzzle.html)
 
 <lang>len f[] 16
 subr initvars
@@ -4694,7 +4694,7 @@ end checkDistance
 ```
 
 Screenshot:
-[https://s24.postimg.org/uc6fx7kph/Livecode15_Puzzle_Game.png]
+<https://s24.postimg.org/uc6fx7kph/Livecode15_Puzzle_Game.png>
 
 
 ## Lua
@@ -6938,13 +6938,13 @@ quit                         ◄■■■■■■■■■■ user input.
 ## Ring
 
 
-CalmoSoft [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle) written in Ring Programming Language (http://ring-lang.net)
+CalmoSoft [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle) written in Ring Programming Language (<http://ring-lang.net>)
 
 Video:
-[https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0J6sL9df0JcV2TY&sa=D&sntz=1&usg=AFQjCNEFaWD8AqElMZK3KGnRKDhKxCO1Sw CalmoSoft Fifteen Puzzle Game Video]
+[CalmoSoft Fifteen Puzzle Game Video](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0J6sL9df0JcV2TY&sa=D&sntz=1&usg=AFQjCNEFaWD8AqElMZK3KGnRKDhKxCO1Sw)
 
 Output Image:
-[https://1drv.ms/i/s!AqDUIunCqVnIg0zg_d-lOM8CfLdM CalmoSoft Fifteen Puzzle Game Image]
+[CalmoSoft Fifteen Puzzle Game Image](https://1drv.ms/i/s!AqDUIunCqVnIg0zg_d-lOM8CfLdM)
 
 The code:
 

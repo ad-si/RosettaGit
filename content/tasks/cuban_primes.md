@@ -64,9 +64,9 @@ Note that   '''cuban prime'''   isn't capitalized   (as it doesn't refer to the 
 
 
 ;Also see:
-:*   Wikipedia entry:     [https://en.wikipedia.org/wiki/Cuban_prime <u>cuban prime</u>].
-:*   MathWorld entry:          [http://mathworld.wolfram.com/CubanPrime.html <u>cuban prime</u>].
-:*   The OEIS entry:      [http://oeis.org/A002407 <u>A002407</u>].     The   100,000<sup>th</sup>   cuban prime can be verified in the   2<sup>nd</sup>   ''example''   on this OEIS web page.
+:*   Wikipedia entry:     [<u>cuban prime</u>](https://en.wikipedia.org/wiki/Cuban_prime).
+:*   MathWorld entry:          [<u>cuban prime</u>](http://mathworld.wolfram.com/CubanPrime.html).
+:*   The OEIS entry:      [<u>A002407</u>](http://oeis.org/A002407).     The   100,000<sup>th</sup>   cuban prime can be verified in the   2<sup>nd</sup>   ''example''   on this OEIS web page.
 
 
 
@@ -620,7 +620,7 @@ The 100000th cuban prime is     1792617147127
 
 ### The functions
 
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -1818,7 +1818,7 @@ which took 31 seconds to calculate.
 
 ## Rust
 
-Uses the libraries [https://crates.io/crates/primal primal] and [https://crates.io/crates/separator separator]
+Uses the libraries [primal](https://crates.io/crates/primal) and [separator](https://crates.io/crates/separator)
 
 ```rust
 use std::time::Instant;
@@ -2170,7 +2170,7 @@ Computation time was 49.5868152 seconds
 
 ### k > 1 Version
 
-A VB.NET version of the [http://www.rosettacode.org/wiki/Cuban_primes#Perl_6 Perl 6] version where k > 1, linked at [https://tio.run/##fVVtb9owEP7OrzjlU9KmGbSaJiExqSuthFboNND2cTKJAxaJzWIHqFB/O71zQqghW6SQ3HHP43t5Djbzm1gV/HAYq6TMOFSPXgfwGooc1oXIuYZ7DRO@hWehjf@SwkgavuBF0LFx03KOHmF@2Fg/sM4jQZYbQtcIGMDt524IacYW2sfvAvrym1IZZ7LBPakC5BkKZspy9WGUwkSZmkIGMFtyCX8a8JFg5RJIuMK7JpkavkarX5OsAgyYFSVHz4TvTMNFBvqITrTn4xzrZCbqzKoORixJyAUOtzUeZUIt7EDTzDET0mfFwvZ9agohF35wauuDktpAXJqXND3LCltr5AmFLg8D56xOw3NGE7tgxGZ3wDSIyhXC2jGdUjcfsCFoO@MhM3yGpyDX8TWaqG2Da9VIy6huwSjodatRryBXCdxRflU/sXojJM4KkU5K1BbUUfS7EIY/C8l970kUmNq@@7bvvWnYLnnBkXAA@9u3vhfWLaSWhbAKHLLYHtg6@h6NvjajMdv9YlnJHTBdGaUsUHTV3admkuMaE7DG1cB@0kcf2zkAH99uEBfAJ1hd8NHAUlWiVk4Lg6AnlmkeQr5zcxwzs4weuMhIOtaY/i2MvwmCC2Kq8JHFS8Cu5UhRC/Yirha4jfpKB9ppPO6EuZjEh/AN/aJUoGaCVRnNxv2Tot6@41ZZFBG0nhXDNY0G4x0d@N6@G37pSysBHPkmRD4/tlmhxKzqN/NnFIHntTSnroLUUO/bUYNnUgv@Vwht@CjtnNfWaTVaZPyg8nVpmBFKgqEF2@JaoqpB81jJRGNd/seNQxlpE0QzZVg2rUJOpWE501eNA4mGgi2k0kbEOhryebkgQY/0vTEoB564pf7kLPnOX@vNPf5m0bP6yzgc3gE Try It Online!]
+A VB.NET version of the [Perl 6](http://www.rosettacode.org/wiki/Cuban_primes#Perl_6) version where k > 1, linked at [Try It Online!](https://tio.run/##fVVtb9owEP7OrzjlU9KmGbSaJiExqSuthFboNND2cTKJAxaJzWIHqFB/O71zQqghW6SQ3HHP43t5Djbzm1gV/HAYq6TMOFSPXgfwGooc1oXIuYZ7DRO@hWehjf@SwkgavuBF0LFx03KOHmF@2Fg/sM4jQZYbQtcIGMDt524IacYW2sfvAvrym1IZZ7LBPakC5BkKZspy9WGUwkSZmkIGMFtyCX8a8JFg5RJIuMK7JpkavkarX5OsAgyYFSVHz4TvTMNFBvqITrTn4xzrZCbqzKoORixJyAUOtzUeZUIt7EDTzDET0mfFwvZ9agohF35wauuDktpAXJqXND3LCltr5AmFLg8D56xOw3NGE7tgxGZ3wDSIyhXC2jGdUjcfsCFoO@MhM3yGpyDX8TWaqG2Da9VIy6huwSjodatRryBXCdxRflU/sXojJM4KkU5K1BbUUfS7EIY/C8l970kUmNq@@7bvvWnYLnnBkXAA@9u3vhfWLaSWhbAKHLLYHtg6@h6NvjajMdv9YlnJHTBdGaUsUHTV3admkuMaE7DG1cB@0kcf2zkAH99uEBfAJ1hd8NHAUlWiVk4Lg6AnlmkeQr5zcxwzs4weuMhIOtaY/i2MvwmCC2Kq8JHFS8Cu5UhRC/Yirha4jfpKB9ppPO6EuZjEh/AN/aJUoGaCVRnNxv2Tot6@41ZZFBG0nhXDNY0G4x0d@N6@G37pSysBHPkmRD4/tlmhxKzqN/NnFIHntTSnroLUUO/bUYNnUgv@Vwht@CjtnNfWaTVaZPyg8nVpmBFKgqEF2@JaoqpB81jJRGNd/seNQxlpE0QzZVg2rUJOpWE501eNA4mGgi2k0kbEOhryebkgQY/0vTEoB564pf7kLPnOX@vNPf5m0bP6yzgc3gE)
 
 
 ## zkl

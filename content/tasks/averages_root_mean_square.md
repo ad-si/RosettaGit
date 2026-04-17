@@ -1224,7 +1224,7 @@ main = print $ mean 2 [1 .. 10]
 ```
 
 
-Or, writing a naive '''mean''' of our own, (but see https://donsbot.wordpress.com/2008/06/04/haskell-as-fast-as-c-working-at-a-high-altitude-for-low-level-performance/):
+Or, writing a naive '''mean''' of our own, (but see <https://donsbot.wordpress.com/2008/06/04/haskell-as-fast-as-c-working-at-a-high-altitude-for-low-level-performance/>):
 
 
 ```haskell
@@ -1307,11 +1307,11 @@ rms=: (+/ % #)&.:*:
 6.20484
 ```
 
-<code>*:</code> means [http://jsoftware.com/help/dictionary/d112.htm square]
+<code>*:</code> means [square](http://jsoftware.com/help/dictionary/d112.htm)
 
 <code>(+/ % #)</code> is an idiom for [[../Arithmetic_mean#J|mean]].
 
-<code>&.:</code> means [http://jsoftware.com/help/dictionary/d631c.htm under]  -- in other words, we square numbers, take their average and then use the inverse of square on the result.  (see also the page on [http://jsoftware.com/help/dictionary/d631.htm &.] which does basically the same thing but with different granularity -- item at a time instead of everything at once.
+<code>&.:</code> means [under](http://jsoftware.com/help/dictionary/d631c.htm)  -- in other words, we square numbers, take their average and then use the inverse of square on the result.  (see also the page on [&.](http://jsoftware.com/help/dictionary/d631.htm) which does basically the same thing but with different granularity -- item at a time instead of everything at once.
 
 
 ## Java
@@ -2194,7 +2194,7 @@ EndIf
 6.2048368229954285
 ```
 
-<small>Note that function [http://docs.python.org/release/3.2/library/functions.html#range range] in Python includes the first limit of 1, excludes the second limit of 11, and has a default increment of 1.</small>
+<small>Note that function [range](http://docs.python.org/release/3.2/library/functions.html#range) in Python includes the first limit of 1, excludes the second limit of 11, and has a default increment of 1.</small>
 
 The Python 2 version of this is nearly identical, except you must cast the sum to a float to get float division instead of integer division; or better, do a <code>from __future__ import division</code>, which works on Python 2.2+ as well as Python 3, and makes division work consistently like it does in Python 3.
 

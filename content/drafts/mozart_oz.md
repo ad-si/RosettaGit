@@ -15,4 +15,4 @@ The Mozart Programming System is an advanced development platform for intelligen
 Mozart is based on the [[Oz]] language, which supports declarative programming, [[object-oriented programming]], constraint programming, and concurrency as part of a coherent whole. For distribution, Mozart provides a true network transparent implementation with support for network awareness, openness, and fault tolerance. Security is upcoming. Mozart is an ideal platform for both general-purpose distributed applications as well as for hard problems requiring sophisticated optimization and inferencing abilities. We have developed many applications including sophisticated collaborative tools, multi-agent systems, and digital assistants, as well as applications in natural language understanding and knowledge representation, in scheduling and time-tabling, and in placement and configuration.
 
 ==Citation==
-*[https://mozart.github.io/ Mozart Programming System]
+*[Mozart Programming System](https://mozart.github.io/)

@@ -1107,7 +1107,7 @@ An empty string is a valid FBSL script in both uncompiled and compiled form. It 
 <span style="color:red">BEGIN EVENTS
 END EVENTS</span>
 </code></b></div>
-'''Output:''' [http://i1240.photobucket.com/albums/gg490/FbslGeek/FBSL_ME.png GUI Form]
+'''Output:''' [GUI Form](http://i1240.photobucket.com/albums/gg490/FbslGeek/FBSL_ME.png)
 
 '''Minimum empty Dynamic Assembler block:'''
 <div style="overflow:auto;white-space:nowrap;background-color:ivory;border:1px dashed rgb(47, 111, 171); padding:12px"><b><code>
@@ -1146,9 +1146,9 @@ The shortest program that will actually finish is a <tt>;</tt>, which will end t
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Empty_program this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Empty_program) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1346,7 +1346,7 @@ An empty file is the simplest valid HolyC program and returns 0.
 
 ## HTML
 
-HTML 5, [http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#optional-tags section 12.1.2.4 Optional tags], allows to omit ''html'', ''head'' and ''body'' tags. The implicit ''body'' element can be empty, but the implicit ''head'' element must contain a ''title'' element, says [http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-head-element section 4.2.1 The head element]. There seems no rule against an empty title. Therefore, the shortest correct HTML document is:
+HTML 5, [section 12.1.2.4 Optional tags](http://www.whatwg.org/specs/web-apps/current-work/multipage/syntax.html#optional-tags), allows to omit ''html'', ''head'' and ''body'' tags. The implicit ''body'' element can be empty, but the implicit ''head'' element must contain a ''title'' element, says [section 4.2.1 The head element](http://www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#the-head-element). There seems no rule against an empty title. Therefore, the shortest correct HTML document is:
 
 ```html5
 <!DOCTYPE html><title></title>
@@ -2393,7 +2393,7 @@ An empty file is a correct PureBasic program that does nothing.
 
 An empty text file is a correct Python program that does nothing.
 
-An empty file named <code>__init__.py</code> even has a structural purpose in Python of declaring that a directory is a [https://docs.python.org/3/tutorial/modules.html#packages Package].
+An empty file named <code>__init__.py</code> even has a structural purpose in Python of declaring that a directory is a [Package](https://docs.python.org/3/tutorial/modules.html#packages).
 
 
 ## QUACKASM
@@ -2745,7 +2745,7 @@ Actually, the smallest possible correct program in Standard ML is an empty sourc
 
 ## Stata
 
-Stata does not accept an empty program, so we have to do something. Here we only declare the minimum [http://www.stata.com/help.cgi?version version] of the interpreter for the program.
+Stata does not accept an empty program, so we have to do something. Here we only declare the minimum [version](http://www.stata.com/help.cgi?version) of the interpreter for the program.
 
 
 ```stata

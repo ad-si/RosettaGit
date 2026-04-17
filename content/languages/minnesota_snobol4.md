@@ -14,4 +14,4 @@ tags = []
 
 Yet another implementation of the venerable SNOBOL4 language (DOS interpreter)
 
-[http://www.berstis.com/snobol4.htm Viktors' Berstis site]
+[Viktors' Berstis site](http://www.berstis.com/snobol4.htm)

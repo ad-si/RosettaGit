@@ -90,8 +90,8 @@ The intention in this task to find the Zeckendorf form of an arbitrary integer. 
 
 
 ;Also see:
-*   [http://oeis.org/A014417 OEIS A014417]   for the the sequence of required results.
-*   [http://www.youtube.com/watch?v=kQZmZRE0cQY&list=UUoxcjq-8xIDTYp3uz647V5A&index=3&feature=plcp Brown's Criterion - Numberphile]
+*   [OEIS A014417](http://oeis.org/A014417)   for the the sequence of required results.
+*   [Brown's Criterion - Numberphile](http://www.youtube.com/watch?v=kQZmZRE0cQY&list=UUoxcjq-8xIDTYp3uz647V5A&index=3&feature=plcp)
 
 
 ## Related tasks
@@ -558,7 +558,7 @@ NStepSequence(v1, v2, n, k) {
 	return, a
 }
 ```
-[http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey NStepSequence()]
+[NStepSequence()](http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey)
 '''Output:'''
 
 ```txt
@@ -1625,12 +1625,12 @@ Still another possibility would be to take advantage of the formula for calculat
 ```Fortran
 F(N) = ((1 + SQRT(5))**N - (1 - SQRT(5))**N)/(SQRT(5)*2**N)
 ```
- It can easily be coded as a Fortran function (and would have to be double precision because 32-bit floating-point arithmetic is not accurate enough for integer constants approaching 32 bits), but alas, the compiler does not allow itself to take the risk of invoking a user-written function in a PARAMETER statement, even if the compiler had itself compiled it. For, [https://en.wikipedia.org/wiki/Entscheidungsproblem who knows] what it might do?
+ It can easily be coded as a Fortran function (and would have to be double precision because 32-bit floating-point arithmetic is not accurate enough for integer constants approaching 32 bits), but alas, the compiler does not allow itself to take the risk of invoking a user-written function in a PARAMETER statement, even if the compiler had itself compiled it. For, [who knows](https://en.wikipedia.org/wiki/Entscheidungsproblem) what it might do?
 
 
 Given the array <code>F1B</code> the conversion from an integer to Zeckendorf digit sequence starts from the high-order end to find the highest <code>F1B</code> value not exceeding the number. There is a formula for this mentioned in the [[Zeckendorf_number_representation#EchoLisp|EchoLisp]] section, but it too is intimidating and the rounding of its result would also require checking. Rather than a linear search, a binary chop could be used, though at the cost of additional code. The location of the high-order digit is recorded on general principles, it being useful in formatting output for example. This requires a "first-time" test within the loop, that could be avoided if the conversion were to be done in two stages.
 
-The special feature of the conversion lies in noting that F1B(n + 1) = F1B(n) + F1B(n - 1), the defining feature of the Fibonacci sequence. Thus, when a 1-bit is found (say it is bit ''n''), the next bit down must be a 0 and so the test for it may be skipped, by incrementing <code>L</code> This is because if it were not 0, then the bit above (bit ''n + 1'') would have been turned on in the previous stage instead. Because of this adjustment, the controlling loop cannot be <code>DO L = ZLAST,1,-1</code> to step down the entries in array <code>F1B</code> because modifications to the index variable of a DO-loop, if not rejected out-of-hand by the compiler, may have no effect on the execution of the loop. This is because the execution of a DO-loop is often controlled by an [https://en.wikipedia.org/wiki/For_loop#Loop_variable_scope_and_semantics "iteration count"], calculated on entry to the DO-loop, which is thereby unaffected by changes to the index variable, or indeed to the bounds and step size of the loop. Other implementations of a DO-loop will offer other behaviour. There being no equivalent in Fortran of ''Repeat ... until ...  ;'' (whereby the test is at the end, and there is no initial test), a <code>GO TO</code> appears...
+The special feature of the conversion lies in noting that F1B(n + 1) = F1B(n) + F1B(n - 1), the defining feature of the Fibonacci sequence. Thus, when a 1-bit is found (say it is bit ''n''), the next bit down must be a 0 and so the test for it may be skipped, by incrementing <code>L</code> This is because if it were not 0, then the bit above (bit ''n + 1'') would have been turned on in the previous stage instead. Because of this adjustment, the controlling loop cannot be <code>DO L = ZLAST,1,-1</code> to step down the entries in array <code>F1B</code> because modifications to the index variable of a DO-loop, if not rejected out-of-hand by the compiler, may have no effect on the execution of the loop. This is because the execution of a DO-loop is often controlled by an ["iteration count"](https://en.wikipedia.org/wiki/For_loop#Loop_variable_scope_and_semantics), calculated on entry to the DO-loop, which is thereby unaffected by changes to the index variable, or indeed to the bounds and step size of the loop. Other implementations of a DO-loop will offer other behaviour. There being no equivalent in Fortran of ''Repeat ... until ...  ;'' (whereby the test is at the end, and there is no initial test), a <code>GO TO</code> appears...
 
 The source uses F90 for its MODULE facility, in particular having array <code>F1B</code> available without having to mess about with additional parameters or COMMON statements. This also enables the specification of arrays with a lower bound other than one, which makes it easy to define the digit arrays to have a current length, stored in element zero. This sort of "string" facility is often restricted only to strings of characters, but the notion "string of <type>" is often useful. If in routines declared within a MODULE the size of an array parameter is declared via <code>:</code> there are secret additional parameters defining its size, accessible via special functions such as <code>UBOUND</code> so there is no need for an explicit parameter doing so as would be the case prior to F90. With F90 it is also possible to define a compound data type for the digit sequence, but a simple array seems more flexible.
 
@@ -2017,7 +2017,7 @@ main = (putStrLn . unlines) $ zeckendorf <$> [0 .. 20]
 
 ## J
 
-Please enjoy our [http://www.jsoftware.com/jwiki/Essays/Fibonacci%20Sums Zeckendorf essay].
+Please enjoy our [Zeckendorf essay](http://www.jsoftware.com/jwiki/Essays/Fibonacci%20Sums).
 
 ```J
 

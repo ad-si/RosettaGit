@@ -16,11 +16,11 @@ The authors of Go! describe it as "a multi-paradigm programming language that is
 The authors also propose that the language is suitable for representing ontologies due to its integration of logic, functional, object-oriented and imperative styles of programming.
 
 It can be downloaded from
-[http://homepage.mac.com/WebObjects/FileSharing.woa/wa/default?user=frankmccabe&templatefn=FileSharing1.html&xmlfn=TKDocument.1.xml&sitefn=RootSite.xml&aff=consumer&cty=US&lang=en]
+<http://homepage.mac.com/WebObjects/FileSharing.woa/wa/default?user=frankmccabe&templatefn=FileSharing1.html&xmlfn=TKDocument.1.xml&sitefn=RootSite.xml&aff=consumer&cty=US&lang=en>
 
 Not to be confused with [Go](https://rosettacode.org/wiki/:Category:Go)
 
 ## See Also
 *[Wikipedia:Go! Programming Language](https://en.wikipedia.org/wiki/Go!_(programming_language))
-*[http://portal.acm.org/citation.cfm?id=998367 Go!—A Multi-Paradigm Programming Language for Implementing Multi-Threaded Agents]
-*[http://www.doc.ic.ac.uk/~klc/DistKR.pdf Ontology oriented programming in go!]
+*[Go!—A Multi-Paradigm Programming Language for Implementing Multi-Threaded Agents](http://portal.acm.org/citation.cfm?id=998367)
+*[Ontology oriented programming in go!](http://www.doc.ic.ac.uk/~klc/DistKR.pdf)

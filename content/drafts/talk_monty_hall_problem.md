@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Haskel error on codepad?==
-I don't know Haskel but following the section header link, I tried to run it on [[http://codepad.org/BRigLD93 codepad]], unfortunately it gave errors but I don't think I'm qualified to judge if they are true errors or something to do with the version of Haskel used on Codepad etc. Could someone comment and maybe fix things if there is an error? Thanks. 
+I don't know Haskel but following the section header link, I tried to run it on [codepad](http://codepad.org/BRigLD93), unfortunately it gave errors but I don't think I'm qualified to judge if they are true errors or something to do with the version of Haskel used on Codepad etc. Could someone comment and maybe fix things if there is an error? Thanks. 
 
 P.S. The error was:
 
@@ -27,7 +27,7 @@ P.S. The error was:
 ```
 
 --[[User:Paddy3118|Paddy3118]] 22:10, 10 August 2008 (UTC)
-:My mistake. I wrote that program; the problem was that I used the Haskell implementation GHC, which allowed the literal "10000" to be an Int, and Codepad uses Hugs, which apparently interprets all literal integers as Integers by default. I believe the dreaded [http://www.haskell.org/haskellwiki/Monomorphism_restriction monomorphism restriction] is to blame. Anyway, I added an explicit type signature, so [http://codepad.org/VNKGdwhi the program now works with Hugs]. [[User:Underscore|Underscore]] 15:24, 11 August 2008 (UTC)
+:My mistake. I wrote that program; the problem was that I used the Haskell implementation GHC, which allowed the literal "10000" to be an Int, and Codepad uses Hugs, which apparently interprets all literal integers as Integers by default. I believe the dreaded [monomorphism restriction](http://www.haskell.org/haskellwiki/Monomorphism_restriction) is to blame. Anyway, I added an explicit type signature, so [the program now works with Hugs](http://codepad.org/VNKGdwhi). [[User:Underscore|Underscore]] 15:24, 11 August 2008 (UTC)
 ::Thanks. I ran it on codepad and inserted some sample output. --[[User:Paddy3118|Paddy3118]] 15:59, 11 August 2008 (UTC)
 
 == ADA program problem ==

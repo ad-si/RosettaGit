@@ -2321,7 +2321,7 @@ Enter word(s) to be searched for in these files or 'q' to quit
 ## OCaml
 
 
-We store the inverted index data in the file "data.inv" using the [http://www.ocaml.info/home/ocaml_sources.html#sexplib310 sexplib] library, so we compile with:
+We store the inverted index data in the file "data.inv" using the [sexplib](http://www.ocaml.info/home/ocaml_sources.html#sexplib310) library, so we compile with:
 
  ocamlc -c \
    -pp "camlp4o -I `ocamlc -where`/type-conv \
@@ -3021,7 +3021,7 @@ Note: In this algorithm, word indices start at 1.
 
 Note:   the Burma Shave signs were created from 1930 ──► 1951   and were common among the rural byways of America.
 
-To see more about Burma Shave signs, see the Wikipedia entry:   [http://en.wikipedia.org/wiki/Burma-Shave Burma Shave signs.]
+To see more about Burma Shave signs, see the Wikipedia entry:   [Burma Shave signs.](http://en.wikipedia.org/wiki/Burma-Shave)
 
 ```rexx
 /*REXX program illustrates building a simple inverted index  and  a method of word find.*/
@@ -3180,7 +3180,7 @@ word ───burma-shave─── found in:
 ## Ruby
 
 
-I broke this into two parts, storing the index as a file on disk to better represent how this might actually be used in practice.  The indexmerge part will create or update the index data file with any files given on the command line, and then indexsearch will use the data file to search for any terms listed on the command line.  The example is based on http://en.wikipedia.org/wiki/Inverted_index of 2010/09/10.
+I broke this into two parts, storing the index as a file on disk to better represent how this might actually be used in practice.  The indexmerge part will create or update the index data file with any files given on the command line, and then indexsearch will use the data file to search for any terms listed on the command line.  The example is based on <http://en.wikipedia.org/wiki/Inverted_index> of 2010/09/10.
 
 '''indexmerge.rb'''
 

@@ -12,7 +12,7 @@ tags = []
 
 == Project ==
 
-[http://NNcNannara.net/Html/English/Java/index.html Calculus] has many more classes included.
+[Calculus](http://NNcNannara.net/Html/English/Java/index.html) has many more classes included.
 
 == Code == 
 

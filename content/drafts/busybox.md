@@ -38,7 +38,7 @@ a few configuration files in /etc,
 BusyBox,
 and maybe a bootmanager.
 
-For example, BusyBox is used in [http://distro.ibiblio.org/tinycorelinux Tiny Core Linux].
+For example, BusyBox is used in [Tiny Core Linux](http://distro.ibiblio.org/tinycorelinux).
 
 BusyBox can provide most of the functionality of the many programs 
 typical found in /bin, /sbin, /usr/bin, /usr/sbin, /usr/local/bin,
@@ -53,4 +53,4 @@ As an editor, BusyBox provides [[sed]] and [[Vi]].
 BusyBox can be configured (at compile-time) to include 
 as little or as much "applets" as needed/desired.
 
-[http://www.busybox.net BusyBox] can be compiled to include an [[AWK]]-implementation.
+[BusyBox](http://www.busybox.net) can be compiled to include an [[AWK]]-implementation.

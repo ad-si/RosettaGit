@@ -265,7 +265,7 @@ func main() {
 ## Haskell
 
 
-Example uses the [https://hackage.haskell.org/package/req <tt>req</tt>] and [https://hackage.haskell.org/package/aeson <tt>aeson</tt>] packages:
+Example uses the [<tt>req</tt>](https://hackage.haskell.org/package/req) and [<tt>aeson</tt>](https://hackage.haskell.org/package/aeson) packages:
 
 
 ```haskell
@@ -512,7 +512,7 @@ puts(1,res)
 
 ## Python
 
-'''Note:''' You should install '''''mechanize''''' to run code below. Visit: http://wwwsearch.sourceforge.net/mechanize/
+'''Note:''' You should install '''''mechanize''''' to run code below. Visit: <http://wwwsearch.sourceforge.net/mechanize/>
 
 
 ```python
@@ -701,7 +701,7 @@ mech.submit_form(
 ## Tcl
 
 {{works with|Tcl|8.6}} for the <code>binary encode</code> subcommand, otherwise uses
-Uses the [http://tls.sourceforge.net Tls] package.
+Uses the [Tls](http://tls.sourceforge.net) package.
 
 ```Tcl
 package require http

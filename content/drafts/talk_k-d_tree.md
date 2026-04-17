@@ -54,7 +54,7 @@ struct kd_node_t {...}
 
 
 See the "Chapter 5: Typedefs" here:
-http://www.kernel.org/doc/Documentation/CodingStyle
+<http://www.kernel.org/doc/Documentation/CodingStyle>
 
 I think a better solution is an intermediate way between your code and that coding standard. So using typedef to mask the "struct" is acceptable, but to use it to mask a pointer is not so good. This means I suggest to use something like this in the C entry (untested):
 
@@ -140,7 +140,7 @@ I found this bug empirically; I am using the RosettaCode k-d tree code in my pro
 
 The bug is also apparent if you think about how the quickselect algorithm implemented by <code>find_median()</code> works.  It would be nice if one could detect duplicate values and short-circuit further iterations of the algorithm, as these lines claim in their comment to do, but that does not in fact work unless one does a three-way partition around the pivot (less than, equal to, greater than).  With the standard quickselect algorithm, as implemented by <code>find_median()</code>, which does a two-way partition (less than, greater than or equal to), this attempt to detect duplicate values and short-circuit can do the wrong thing, because although <code>store->x[idx] == md->x[idx]</code>, there is no guarantee that the values in between <code>store</code> and <code>md</code> are also equal; the dataset has not been sorted, just partitioned.
 
-If you look at the Wikipedia article on quickselect (https://en.wikipedia.org/wiki/Quickselect), the algorithm there does not attempt to do this duplicate-detection and early termination.  Instead, written in the terminology of the RosettaCode example, it does:
+If you look at the Wikipedia article on quickselect (<https://en.wikipedia.org/wiki/Quickselect>), the algorithm there does not attempt to do this duplicate-detection and early termination.  Instead, written in the terminology of the RosettaCode example, it does:
 
    if (store == md)
       return md;

@@ -2317,7 +2317,7 @@ C(1000, 333) = 5.77613455E+274
 
 ## Stata
 
-The '''[https://www.stata.com/help.cgi?mf_comb comb]''' function is builtin. Here is an implementation, together with perm:
+The '''[comb](https://www.stata.com/help.cgi?mf_comb)''' function is builtin. Here is an implementation, together with perm:
 
 
 ```stata

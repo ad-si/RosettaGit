@@ -13,7 +13,7 @@ tags = []
 What about ppm image? Since we already have [[read ppm file]] task. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 15:13, 18 February 2009 (UTC)
 : Ops, yes, I've used [[Read image file through a pipe]], which has just 1 C implementation (mine:D). Now I am leaving, but tonight I will upload the ppm converted image, if no one else already did that. --[[User:ShinTakezou|ShinTakezou]] 17:51, 18 February 2009 (UTC)
 : Back to my steps: I can't upload PPM files; tried cheating with a different ext, but it says "corrupted"... so... it is up to you to convert the jpg into PPM if you need it... ;) --[[User:ShinTakezou|ShinTakezou]] 22:27, 18 February 2009 (UTC)
-: In case someone can't convert it, you can download a 50% smaller PPM version [http://www.capo-nord.org/soci/xmav/filepot/RosettaCode/misc/Unfilledcirc.ppm here] (until the site will be up :D)--[[User:ShinTakezou|ShinTakezou]] 00:59, 19 February 2009 (UTC)
+: In case someone can't convert it, you can download a 50% smaller PPM version [here](http://www.capo-nord.org/soci/xmav/filepot/RosettaCode/misc/Unfilledcirc.ppm) (until the site will be up :D)--[[User:ShinTakezou|ShinTakezou]] 00:59, 19 February 2009 (UTC)
 
 How about a 3d flood fill?
 

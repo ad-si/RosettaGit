@@ -139,9 +139,9 @@ And of course use any symbols or notation that is supported in your computer pro
 
 * The Wiki entry: [[wp:Exponentiation#Zero_to_the_power_of_zero|Zero to the power of zero]].
 * The Wiki entry: [[wp:Exponentiation#History_of_differing_points_of_view|History of differing points of view]].
-* The MathWorld™ entry: [http://mathworld.wolfram.com/ExponentLaws.html exponent laws].
+* The MathWorld™ entry: [exponent laws](http://mathworld.wolfram.com/ExponentLaws.html).
 ** Also, in the above MathWorld™ entry, see formula ('''9'''): <math>x^0=1</math>.
-* The OEIS entry: [https://oeis.org/wiki/The_special_case_of_zero_to_the_zeroth_power The special case of zero to the zeroth power]
+* The OEIS entry: [The special case of zero to the zeroth power](https://oeis.org/wiki/The_special_case_of_zero_to_the_zeroth_power)
 
 
 
@@ -822,7 +822,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=7d505dbe89227e9b4423f92ef12d6829 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=7d505dbe89227e9b4423f92ef12d6829)'''
 
 ```gambas
 Public Sub Main()

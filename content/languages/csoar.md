@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-The primary implementation of Soar: http://code.google.com/p/soar/
+The primary implementation of Soar: <http://code.google.com/p/soar/>

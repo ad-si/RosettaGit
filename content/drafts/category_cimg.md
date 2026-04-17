@@ -12,4 +12,4 @@ tags = []
 
 The CImg Library is a small, portable, open-source, and modern C++ header-only toolkit for image processing.
 
-[http://cimg.eu/ CImg Website]
+[CImg Website](http://cimg.eu/)

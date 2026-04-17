@@ -87,7 +87,7 @@ Most of the examples don't even clearly show output, so it's difficult to tell w
 
 :: Second, the task strikes me as underspecified. From the task description, it's not clear to me whether a sequence like "!==" should be parsed as "!=" "=" or "!" "!==". In fact, as far as I can read the output of the code examples, I don't think I'm the only one who sees ambiguity there. I'm sending an email off to the task author in hopes they'll step in.
 
-::: D's interpretation is wrong. Output in D's example should be a {!=} {==} b {=} {!=} c {==} {!=} d in its notation. Please use (my) Python's "Alternative version" as a reference. You can run python code at http://codepad.org. [[User:DSblizzard|DSblizzard]] 06:53, 24 April 2011 (UTC)
+::: D's interpretation is wrong. Output in D's example should be a {!=} {==} b {=} {!=} c {==} {!=} d in its notation. Please use (my) Python's "Alternative version" as a reference. You can run python code at <http://codepad.org>. [[User:DSblizzard|DSblizzard]] 06:53, 24 April 2011 (UTC)
 
 :: Also, please remember to sign your comments with <nowiki>--~~~~</nowiki> --[[User:Short Circuit|Michael Mol]] 12:26, 22 April 2011 (UTC)
 

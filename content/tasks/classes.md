@@ -288,12 +288,12 @@ class Circle (radius, x, y) extends  Shape (x, y) implements Drawable {
 
 ## ALGOL 68
 
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - had to remove calls to ''space'' and even then code generates "Run time fault (aborting): attempt to jump to missing ELSE/OUT clause"
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - had to remove calls to ''space'' and even then code generates "Run time fault (aborting): attempt to jump to missing ELSE/OUT clause"
 }}
 The following code is experimental.  Basically ALGOL 68 is not object oriented, so the task to create (and use of) objects is tedious due to the lack of certain constructs, especially the lack of OO syntactic sugar.
 
 For further details:
-* [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A26/P22.HTM Ross, D.T., "Features Essential for a Workable Algol X," ALGOL Bulletin, No. 26, August 1967, pp. 6-12, and ACM SIGPLAN Notices, Vol.2, No.11, November 1967.]
+* [Ross, D.T., "Features Essential for a Workable Algol X," ALGOL Bulletin, No. 26, August 1967, pp. 6-12, and ACM SIGPLAN Notices, Vol.2, No.11, November 1967.](http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A26/P22.HTM)
 Other examples of this experimental approach are located at pages: [[Life in two dimensions#ALGOL 68|Life in two dimensions]], [[Playing Cards#ALGOL 68|Playing Cards]] and [[Stack#ALGOL 68|Stack]].
 
 
@@ -749,7 +749,7 @@ public class MyClass
 
 ## Clojure
 
-Clojure gives you several options, and to help you decide which is more appropriate to use, see the [https://github.com/cemerick/clojure-type-selection-flowchart/ Clojure type selection flowchart].
+Clojure gives you several options, and to help you decide which is more appropriate to use, see the [Clojure type selection flowchart](https://github.com/cemerick/clojure-type-selection-flowchart/).
 
 defrecord example:
 
@@ -1734,7 +1734,7 @@ Example of dynamic allocation and local variable use"
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -3602,7 +3602,7 @@ See [[Classes#Delphi | Delphi]]
 
 ## Perl
 
-The implementation (there are no declarations) of a class using the [http://search.cpan.org/perldoc?perlobj standard] object system:
+The implementation (there are no declarations) of a class using the [standard](http://search.cpan.org/perldoc?perlobj) object system:
 
 ```perl
 {
@@ -3627,7 +3627,7 @@ The implementation (there are no declarations) of a class using the [http://sear
 ```
 
 
-This is the same using the [http://search.cpan.org/perldoc?Moose Moose] object system:
+This is the same using the [Moose](http://search.cpan.org/perldoc?Moose) object system:
 
 ```perl
 {
@@ -3645,7 +3645,7 @@ This is the same using the [http://search.cpan.org/perldoc?Moose Moose] object s
 ```
 
 
-This is the same class using the [http://search.cpan.org/perldoc?MooseX::Declare MooseX::Declare] extention:
+This is the same class using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) extention:
 
 ```perl
 use MooseX::Declare;
@@ -4072,7 +4072,7 @@ MessageRequester("Info", "Foo = " + *Foo\ToString() )
 
 ### Simple OOP Version
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimpleOOP].
+Using the open-source precompiler [SimpleOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Class Foo
@@ -4170,7 +4170,7 @@ These "new-style" classes support some features which were unavailable in "class
 
 ## R
 
-R has (at least) 5 different object oriented systems.  S3 and S4 correspond to different versions of the S language, from which R was derived.  See, for example, [http://www.r-project.org/conferences/useR-2004/Keynotes/Leisch.pdf this presentation by Freidrich Leisch] for a more thorough introduction to S3 and S4 classes.  Both these class systems are in use, and ship with the standard R distribution.  The [http://www.omegahat.org/RSOOP/ OOP], [http://cran.r-project.org/web/packages/R.oo/index.html R.oo] and [http://cran.r-project.org/web/packages/proto/index.html proto] packages provide other systems.
+R has (at least) 5 different object oriented systems.  S3 and S4 correspond to different versions of the S language, from which R was derived.  See, for example, [this presentation by Freidrich Leisch](http://www.r-project.org/conferences/useR-2004/Keynotes/Leisch.pdf) for a more thorough introduction to S3 and S4 classes.  Both these class systems are in use, and ship with the standard R distribution.  The [OOP](http://www.omegahat.org/RSOOP/), [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) and [proto](http://cran.r-project.org/web/packages/proto/index.html) packages provide other systems.
 
 
 ### S3
@@ -4600,7 +4600,7 @@ object Call_an_object_method extends App {
 
 ## Scheme
 
-From [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_sec_3.1.1 Structure and Interpretation of Computer Programs]
+From [Structure and Interpretation of Computer Programs](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-20.html#%_sec_3.1.1)
 
 ```Scheme
   (define (withdraw amount)

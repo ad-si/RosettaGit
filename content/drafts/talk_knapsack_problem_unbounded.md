@@ -32,7 +32,7 @@ The decimal points need shifting in the printout of the Python "Dynamic Programm
 
 :The problem is that in order to use the dynamic programming solution I had to re-word the problem to only use integer weights and volumes. So the printout is correct for that problem statement. I guess I could manually divide the weights and volumes by the corresponding amounts when I print them, but it doesn't seem like a very nice solution. --[[User:Spoon!|Spoon!]] 22:59, 2 January 2009 (UTC)
 
-::I found [[http://razvi.wordpress.com/2008/10/09/dynamic-programming-integer-knapsack/ this]] to help work out what the dynamic solution looks to do. --[[User:Paddy3118|Paddy3118]] 18:06, 5 January 2009 (UTC)
+::I found [this](http://razvi.wordpress.com/2008/10/09/dynamic-programming-integer-knapsack/) to help work out what the dynamic solution looks to do. --[[User:Paddy3118|Paddy3118]] 18:06, 5 January 2009 (UTC)
 
 :::Note however that that page addresses a slightly different problem; the "0-1" problem, where you can take at most 1 of each item. Whereas in the problem here we can take as many of each item as we want. --[[User:Spoon!|Spoon!]] 02:48, 6 January 2009 (UTC)
 

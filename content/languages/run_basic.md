@@ -16,9 +16,9 @@ Run BASIC serves a similar purpose to other languages like [ASP](https://rosetta
 Database capability is included via the [SQLite](https://rosettacode.org/wiki/:Category:SQLite) database engine.
 
 ## See also
-*[http://www.runbasic.com/ Run BASIC homepage]
+*[Run BASIC homepage](http://www.runbasic.com/)
 *[Run BASIC on Wikipedia](https://en.wikipedia.org/wiki/Run_BASIC)
-*[http://runbasichosting.com/ The Run BASIC Hosting Service] -- "a reliable, hassle-free way to publish your Run BASIC web applications"
+*[The Run BASIC Hosting Service](http://runbasichosting.com/) -- "a reliable, hassle-free way to publish your Run BASIC web applications"
 
 [Category:BASIC Implementations](https://rosettacode.org/wiki/Category:BASIC_Implementations)
 [Category:Web Application](https://rosettacode.org/wiki/Category:Web_Application)

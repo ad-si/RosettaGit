@@ -78,8 +78,8 @@ Tic-tac-toe is also known as   ''naughts and crosses''.
 
 ## See also
 
-*   [http://mathworld.wolfram.com/Tic-Tac-Toe.html MathWorld&trade;, Tic-Tac-Toe game].
-*   [https://en.wikipedia.org/wiki/Tic-tac-toe Wikipedia tic-tac-toe].
+*   [MathWorld&trade;, Tic-Tac-Toe game](http://mathworld.wolfram.com/Tic-Tac-Toe.html).
+*   [Wikipedia tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe).
 
 
 
@@ -2620,7 +2620,7 @@ You win!
 
 It uses minimax with alpha-beta pruning. Therefore, the computer never loses.
 
-[https://easylang.online/apps/tictactoe.html Run it]
+[Run it](https://easylang.online/apps/tictactoe.html)
 
 <lang>len f[] 9
 state = 0
@@ -6662,7 +6662,7 @@ Play again y/n: n
 
 This example uses an HTML form for the UI, buttons representing the game state, and Lasso's built inn session handler to keep track of who's turn it is, what the game matrix state is, and the winner history.
 
-As image uploads has been disabled, a live version can be viewed at: [http://jono.guthrie.net.nz/rosetta/Tic-tac-toe.lasso http://jono.guthrie.net.nz/rosetta/Tic-tac-toe.lasso]
+As image uploads has been disabled, a live version can be viewed at: [http://jono.guthrie.net.nz/rosetta/Tic-tac-toe.lasso](http://jono.guthrie.net.nz/rosetta/Tic-tac-toe.lasso)
 
 ```Lasso
 [
@@ -6767,7 +6767,7 @@ if(not $matrix->find('-')->size && #winner == 'noone') => {
 ## Lingo
 
 The standard way to create GUI apps in Lingo is to use the authoring tool "Director" as GUI builder. The code below instead uses a simple framework (stored in global "$") that eases programmatic GUI creation.<br />
-Screenshot of application window: http://valentin.dasdeck.com/lingo/tic-tac-toe/tic-tac-toe-lingo.png<br />
+Screenshot of application window: <http://valentin.dasdeck.com/lingo/tic-tac-toe/tic-tac-toe-lingo.png><br />
 "Human" cannot win this game.
 
 ```Lingo
@@ -9062,7 +9062,7 @@ The optimal strategy is implemented via lazy minimax algorythm with α-β-prunin
 
 The program consists of separate modules:
  + minimax.rkt    -- Written in Lazy Racket, implements the general minimax algorythm as
- |                   given in [http://en.wikipedia.org/wiki/Alpha-beta_pruning Wikipedia].
+ |                   given in [Wikipedia](http://en.wikipedia.org/wiki/Alpha-beta_pruning).
  |                   Knows nothing about games.
  V
  + game.rkt       -- Written in Lazy Racket, defines general classes for the game and players.
@@ -9451,7 +9451,7 @@ User makes move (1 1)
 ```
 
 
-As an example of another zero-sum game consider the classical [http://en.wikipedia.org/wiki/Nim Nim] game:
+As an example of another zero-sum game consider the classical [Nim](http://en.wikipedia.org/wiki/Nim) game:
 
 
 ```racket
@@ -9910,7 +9910,7 @@ Easy and simple implementation of tecTacToe in ring programming language with hu
 
 This implementation is a gui implementation using the default gui provided by the language
 
-The tecTacToe.ring is provided [https://github.com/AbdelrahmanGIT/RingSamples/blob/master/src/TecTacToe.ring here]
+The tecTacToe.ring is provided [here](https://github.com/AbdelrahmanGIT/RingSamples/blob/master/src/TecTacToe.ring)
 
 ```ring
 
@@ -10047,7 +10047,7 @@ func CheckWinner
 ```
 
 
-[[http://ring-lang.sourceforge.net/tictactoe.jpg image]]
+[image](http://ring-lang.sourceforge.net/tictactoe.jpg)
 
 
 ## Ruby

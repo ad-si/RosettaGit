@@ -20,5 +20,5 @@ Dyalect offers modern syntax, inspired by such languages as C#, Swift, Go and Ru
 The language is currently in an active development.
 
 ## See Also
-* Dyalect at Github: [https://github.com/vorov2/dyalect]
-* Dyalect at Sourceforge: [https://sourceforge.net/projects/dyalect/]
+* Dyalect at Github: <https://github.com/vorov2/dyalect>
+* Dyalect at Sourceforge: <https://sourceforge.net/projects/dyalect/>

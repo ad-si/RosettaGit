@@ -25,11 +25,11 @@ languages = [
 *Reference: [Wikipedia: Abelian sandpile model](https://en.wikipedia.org/wiki/Abelian_sandpile_model)*
 
 
-Implement the '''Abelian sandpile model''' also known as '''Bak–Tang–Wiesenfeld model'''. It's history, mathematical definition and properties can be found under it's [https://en.wikipedia.org/wiki/Abelian_sandpile_model wikipedia article].
+Implement the '''Abelian sandpile model''' also known as '''Bak–Tang–Wiesenfeld model'''. It's history, mathematical definition and properties can be found under it's [wikipedia article](https://en.wikipedia.org/wiki/Abelian_sandpile_model).
 
 The task requires the creation of a 2D grid of arbitrary size on which "piles of sand" can be placed. Any "pile" that has 4 or more sand particles on it ''collapses'', resulting in '''four particles being subtracted from the pile''' and '''distributed among it's neighbors.'''
 
-It is recommended to display the output in some kind of image format, as terminal emulators are usually too small to display images larger than a few dozen characters tall. As an example of how to accomplish this, see the [https://rosettacode.org/wiki/Bitmap/Write_a_PPM_file Bitmap/Write a PPM file] task.
+It is recommended to display the output in some kind of image format, as terminal emulators are usually too small to display images larger than a few dozen characters tall. As an example of how to accomplish this, see the [Bitmap/Write a PPM file](https://rosettacode.org/wiki/Bitmap/Write_a_PPM_file) task.
 
 '''Examples:'''
 
@@ -59,9 +59,9 @@ It is recommended to display the output in some kind of image format, as termina
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Abelian_sandpile_model this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Abelian_sandpile_model) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -145,15 +145,15 @@ simulate bye
 {{out}}
 sandpile with 5000 grains of sand: 
 <tt>./sandpile.fs 61 5000</tt>:
-[http://commons.wikimedia.org/wiki/File:Sandpile-61-5000.png]
+<http://commons.wikimedia.org/wiki/File:Sandpile-61-5000.png>
 
 sandpile with 50000 grains of sand:
 <tt>./sandpile.fs 201 50000</tt>:
-[http://commons.wikimedia.org/wiki/File:Sandpile-201-50000.png]
+<http://commons.wikimedia.org/wiki/File:Sandpile-201-50000.png>
 
 sandpile with 500000 grains of sand:
 <tt>./sandpile.fs 601 500000</tt>:
-[http://commons.wikimedia.org/wiki/File:Sandpile-601-500000.png]
+<http://commons.wikimedia.org/wiki/File:Sandpile-601-500000.png>
 
 
 
@@ -434,13 +434,13 @@ test size height = do
 
 
 {{out}}
-sandpile with 1000 grains of sand: <tt>test 15 1000</tt>: [http://commons.wikimedia.org/wiki/File:Sandpile_15_1000.jpg]
+sandpile with 1000 grains of sand: <tt>test 15 1000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_15_1000.jpg>
 
-sandpile with 10000 grains of sand: <tt>test 40 10000</tt>: [http://commons.wikimedia.org/wiki/File:Sandpile_40_10000.jpg]
+sandpile with 10000 grains of sand: <tt>test 40 10000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_40_10000.jpg>
 
-sandpile with 100000 grains of sand: <tt>test 150 100000</tt>: [http://commons.wikimedia.org/wiki/File:Sandpile_150_100000.jpg]
+sandpile with 100000 grains of sand: <tt>test 150 100000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_150_100000.jpg>
 
-sandpile with 1000000 grains of sand: <tt>test 400 1000000</tt>: [http://commons.wikimedia.org/wiki/File:Sandpile_400_1000000.jpg]
+sandpile with 1000000 grains of sand: <tt>test 400 1000000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_400_1000000.jpg>
 
 
 
@@ -727,8 +727,8 @@ Z_lat, Odometer = AbelSand.move(100000)
 
 ```
 {{out}}
-[http://alahonua.com/temp/Abel_Z_color_100000.png Link to PNG output file for N=100000 ie. AbelSand.move(100000)] <br />
-[http://alahonua.com/temp/Abel_Z_color_1000000.png Link to PNG output file (run time >90 min) for N=1000000 (move(1000000))]
+[Link to PNG output file for N=100000 ie. AbelSand.move(100000)](http://alahonua.com/temp/Abel_Z_color_100000.png) <br />
+[Link to PNG output file (run time >90 min) for N=1000000 (move(1000000))](http://alahonua.com/temp/Abel_Z_color_1000000.png)
 
 
 ## Perl

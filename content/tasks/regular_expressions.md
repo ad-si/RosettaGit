@@ -413,7 +413,7 @@ if (text !~ /strawberry/) {
 
 ## BBC BASIC
 
-Uses the [http://people.delphiforums.com/gjc/gnu_regex.html gnu_regex] library.
+Uses the [gnu_regex](http://people.delphiforums.com/gjc/gnu_regex.html) library.
 
 ```bbcbasic
       SYS "LoadLibrary", "gnu_regex.dll" TO gnu_regex%
@@ -696,7 +696,7 @@ class Program {
 
 ## Common Lisp
 
-Uses [http://weitz.de/cl-ppcre/ CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp].
+Uses [CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp](http://weitz.de/cl-ppcre/).
 
 
 ```lisp
@@ -733,7 +733,7 @@ Test and Substitute
 
 ### CLISP regexp engine
 
-[[Clisp]] comes with [http://clisp.org/impnotes/regexp-mod.html built-in regexp matcher].  On a Clisp prompt:
+[[Clisp]] comes with [built-in regexp matcher](http://clisp.org/impnotes/regexp-mod.html).  On a Clisp prompt:
 
 ```lisp
 [1]> (regexp:match "fox" "quick fox jumps")
@@ -1013,7 +1013,7 @@ line =~ %s/Frank/Frink/g
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=5a2a1052f8dff12596fa7f45242d25a9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=5a2a1052f8dff12596fa7f45242d25a9)'''
 
 ```gambas
 Public Sub Main()
@@ -1043,7 +1043,7 @@ Hello moon!
 
 ## GeneXus
 
-Interesting link: http://wiki.gxtechnical.com/commwiki/servlet/hwiki?Regular+Expressions+%28RegEx%29,<br />
+Interesting link: <http://wiki.gxtechnical.com/commwiki/servlet/hwiki?Regular+Expressions+%28RegEx%29>,<br />
 <br />
 Replacement:<br />
 
@@ -1344,7 +1344,7 @@ end
 link regexp   # link to IPL regexp
 ```
 
-[http://www.cs.arizona.edu/icon/library/procs/regexp.htm See regexp].
+[See regexp](http://www.cs.arizona.edu/icon/library/procs/regexp.htm).
 
 ```txt
 "A simple string" matches "string$"
@@ -1477,7 +1477,7 @@ var newSubject = subject.replace(re_PatternToMatch, "Replaced");
 
 ## jq
 
-Recent versions of jq (jq > 1.4) include PCRE regex support using the [http://www.geocities.jp/kosako3/oniguruma/doc/RE.txt Oniguruma library].
+Recent versions of jq (jq > 1.4) include PCRE regex support using the [Oniguruma library](http://www.geocities.jp/kosako3/oniguruma/doc/RE.txt).
 
 '''Test''':
 
@@ -1531,7 +1531,7 @@ replaced sentence is: This is a different sentence
 
 ## Julia
 
-Julia implements Perl-compatible regular expressions (via the built-in [http://www.pcre.org/ PCRE library]).  To test for a match:
+Julia implements Perl-compatible regular expressions (via the built-in [PCRE library](http://www.pcre.org/)).  To test for a match:
 
 ```julia
 s = "I am a string"
@@ -1547,7 +1547,7 @@ s = "I am a string"
 s = replace(s, r" (a|an) ", " another ")
 ```
 
-There are many [http://docs.julialang.org/en/latest/manual/strings/#regular-expressions other features] of Julia's regular-expression support, too numerous to list here.
+There are many [other features](http://docs.julialang.org/en/latest/manual/strings/#regular-expressions) of Julia's regular-expression support, too numerous to list here.
 
 
 ## Kotlin
@@ -2181,7 +2181,7 @@ let result = Str.global_replace (Str.regexp "original") "modified" orig;;
 
 ###  Using Pcre
 
-'''Library:''' [http://ocaml.info/home/ocaml_sources.html#pcre-ocaml ocaml-pcre]
+'''Library:''' [ocaml-pcre](http://ocaml.info/home/ocaml_sources.html#pcre-ocaml)
 
 
 ```ocaml
@@ -3304,7 +3304,7 @@ case StringCvt.scanString (RE.find re) string
 
 ## Stata
 
-See '''[http://www.stata.com/help.cgi?regexm regexm]''', '''regexr''' and '''regexs''' in Stata help.
+See '''[regexm](http://www.stata.com/help.cgi?regexm)''', '''regexr''' and '''regexs''' in Stata help.
 
 
 ```stata

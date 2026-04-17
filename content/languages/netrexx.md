@@ -33,11 +33,11 @@ as languages such as Java, while preserving the low threshold to learning and th
 ### = Open Source =
 
 
-On the 8th of June 2011, IBM transferred ownership of the reference implementation of NetRexx to The Rexx Language Association (RexxLA) for administration under the [http://site.icu-project.org ICU - International Components for Unicode] open source license.
+On the 8th of June 2011, IBM transferred ownership of the reference implementation of NetRexx to The Rexx Language Association (RexxLA) for administration under the [ICU - International Components for Unicode](http://site.icu-project.org) open source license.
 
 
 ### = Useful Links =
 
-* [http://www.netrexx.org The NetRexx Programming Language - www.netrexx.org]
-* [http://www.rexxla.org The Rexx Language Association - www.rexxla.org]
-* [http://www.oorexx.org/ Open Object Rexx - www.oorexx.org]
+* [The NetRexx Programming Language - www.netrexx.org](http://www.netrexx.org)
+* [The Rexx Language Association - www.rexxla.org](http://www.rexxla.org)
+* [Open Object Rexx - www.oorexx.org](http://www.oorexx.org/)

@@ -25,4 +25,4 @@ In a truly multitasking environment event-driven programming is exposed to serio
 * handlers composition. Though some event-driven systems provide tools for routing, filtering events, chaining handlers etc;
 * low abstraction level. (This is usually alleviate when an even-driven architecture is wrapped into an [[object-oriented programming|OO model]]).
 
-Event-driven programming is quite popular in [[GUI]] design. Many GUI widget libraries have event-driven architecture. It is also used in database programming in the form of [http://en.wikipedia.org/wiki/Database_trigger triggers]. In systems programming hardware communication is predominantly event-driven per hardware nature.
+Event-driven programming is quite popular in [[GUI]] design. Many GUI widget libraries have event-driven architecture. It is also used in database programming in the form of [triggers](http://en.wikipedia.org/wiki/Database_trigger). In systems programming hardware communication is predominantly event-driven per hardware nature.

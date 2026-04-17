@@ -923,9 +923,9 @@ USING: grouping math.order ;
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Compare_a_list_of_strings this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Compare_a_list_of_strings) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1006,7 +1006,7 @@ This depends upon having the novice-package available --- the novice-package is 
 I don't think it is a good idea to write "Raw Forth" as described above.
 Application code is hard to write and hard to read when low-level code is mixed in with application code.
 It is better to hide low-level code in general-purpose code-libraries so that the application code can be simple.
-Here is my solution using LIST.4TH from my novice-package: http://www.forth.org/novice.html
+Here is my solution using LIST.4TH from my novice-package: <http://www.forth.org/novice.html>
 
 <lang>
 : test-equality ( string node -- new-string bad? )
@@ -1183,7 +1183,7 @@ func AllLessThan(strings []string) bool {
 
 See [[Compare_a_list_of_strings/GoTests]] for validation tests.
 
-Note also there is the function [https://golang.org/pkg/sort/#StringsAreSorted sort.StringsAreSorted] in the Go standard library.  This function tests that the list is ordered by less than or equal to, but not strictly less than.
+Note also there is the function [sort.StringsAreSorted](https://golang.org/pkg/sort/#StringsAreSorted) in the Go standard library.  This function tests that the list is ordered by less than or equal to, but not strictly less than.
 
 
 ## Gosu
@@ -2002,7 +2002,7 @@ join("\0", @strings) =~ /^ ( [^\0]*+ ) (?: \0 \1 )* $/x  # All equal
 ## Perl 6
 
 
-In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [http://perlcabal.org/syn/S03.html#line_62 associativity] and identity value)'':
+In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [associativity](http://perlcabal.org/syn/S03.html#line_62) and identity value)'':
 
 
 ```perl6
@@ -2390,7 +2390,7 @@ Testing:
 ## Racket
 
 
-Racket mostly has this... see [http://docs.racket-lang.org/reference/strings.html?q=string%3C%3F#%28def._%28%28quote._~23~25kernel%29._string~3c~3f%29%29 documentation of <code>string=?</code> and <code>string&lt;?</code>].
+Racket mostly has this... see [documentation of <code>string=?</code> and <code>string&lt;?</code>](http://docs.racket-lang.org/reference/strings.html?q=string%3C%3F#%28def._%28%28quote._~23~25kernel%29._string~3c~3f%29%29).
 
 There are two small issues:
 * Racket will not cope with comparing less than 2 strings

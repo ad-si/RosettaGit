@@ -12,4 +12,4 @@ tags = []
 
 
 
-The [http://eso.mroman.ch/cgi/burlesque.cgi Burlesque Shell] is an online available implementation.
+The [Burlesque Shell](http://eso.mroman.ch/cgi/burlesque.cgi) is an online available implementation.

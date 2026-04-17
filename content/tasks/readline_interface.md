@@ -774,7 +774,7 @@ int main(int argc, char **argv)
 ```
 
 
-<small>Code thanks to [http://pari.math.u-bordeaux.fr/archives/pari-dev-1002/msg00023.html Bill Allombert]</small>
+<small>Code thanks to [Bill Allombert](http://pari.math.u-bordeaux.fr/archives/pari-dev-1002/msg00023.html)</small>
 
 
 ## Perl
@@ -847,7 +847,7 @@ sub perl_symbol_completion_function {
 ## Perl 6
 
 
-Perl 6 has a built in REPL that can be initiated by running the perl6 executable without any parameters. It is fairly basic on its own but here are bindings available in the Perl 6 ecosystem for [https://tiswww.case.edu/php/chet/readline/rltop.html GNU Readline] and/or [https://github.com/antirez/linenoise Linenoise] either of which will automatically provide command history, tab completion and more advance command line editing capability if installed. They are not included in the Perl 6 distribution directly. There are incompatible licensing requirements and providing hooks for third party tools allows for more customization options.
+Perl 6 has a built in REPL that can be initiated by running the perl6 executable without any parameters. It is fairly basic on its own but here are bindings available in the Perl 6 ecosystem for [GNU Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) and/or [Linenoise](https://github.com/antirez/linenoise) either of which will automatically provide command history, tab completion and more advance command line editing capability if installed. They are not included in the Perl 6 distribution directly. There are incompatible licensing requirements and providing hooks for third party tools allows for more customization options.
 
 Linenoise is generally the preferred option unless you really want the emacs compatible command line editing key bindings. Readline is arguably more powerful but is somewhat fiddly to set up.
 
@@ -1007,7 +1007,7 @@ Sample session:
 
 ## Racket
 
-Racket's has a readline interface which is not used by default due to its license.  This includes the usual readline-style editing, and tab-completion for Racket bindings.  It is possible to use it as a library, or as a REPL convenience (both uses described [http://docs.racket-lang.org/readline/ in the documentation]) -- but it is better to use [http://docs.racket-lang.org/xrepl/ xrepl] which provides an enhanced command-line REPL and includes the readline interaction.
+Racket's has a readline interface which is not used by default due to its license.  This includes the usual readline-style editing, and tab-completion for Racket bindings.  It is possible to use it as a library, or as a REPL convenience (both uses described [in the documentation](http://docs.racket-lang.org/readline/)) -- but it is better to use [xrepl](http://docs.racket-lang.org/xrepl/) which provides an enhanced command-line REPL and includes the readline interaction.
 
 
 ## REXX

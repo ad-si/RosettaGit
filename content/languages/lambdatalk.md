@@ -177,6 +177,6 @@ Web design is not forgotten and examples can be seen in the workshop's website. 
 
 The {lambda way} project adds on browsers a thin overlay, {lambda tank}, giving to {lambda talk} a small ''Interactive Development Environment'' without any external dependencies and thereby easy to download (50kb) and install on any web account provider running PHP. From any web browser, on any system, complex and dynamic web pages can be created, enriched, structured and tested in real time on the web.
 
-A full presentation of the {lambda way} project can be seen in this last version: http://lambdaway.free.fr/lambdaspeech .
+A full presentation of the {lambda way} project can be seen in this last version: <http://lambdaway.free.fr/lambdaspeech> .
 
 Your opinion is welcome. Alain Marty

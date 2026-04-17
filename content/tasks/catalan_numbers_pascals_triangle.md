@@ -76,10 +76,10 @@ Print out the first   '''15'''   Catalan numbers by extracting them from Pascal'
 
 
 ## See also
-*   [https://archive.is/0IrNp Catalan Numbers and the Pascal Triangle]. <!-- Relation Pascal Triangle and the Catalan Numbers Radoslav Jovanovic -->     This method enables calculation of Catalan Numbers using only addition and subtraction.
+*   [Catalan Numbers and the Pascal Triangle](https://archive.is/0IrNp). <!-- Relation Pascal Triangle and the Catalan Numbers Radoslav Jovanovic -->     This method enables calculation of Catalan Numbers using only addition and subtraction.
 <!-- '''http://milan.milanovic.org/math/english/fibo/fibo4.html is broken. -->
-*   [http://mathworld.wolfram.com/CatalansTriangle.html Catalan's Triangle] for a Number Triangle that generates Catalan Numbers using only addition.
-*   Sequence [http://oeis.org/A000108 A000108] on OEIS has a lot of information on Catalan Numbers.
+*   [Catalan's Triangle](http://mathworld.wolfram.com/CatalansTriangle.html) for a Number Triangle that generates Catalan Numbers using only addition.
+*   Sequence [A000108](http://oeis.org/A000108) on OEIS has a lot of information on Catalan Numbers.
 
 ## Related Tasks
 [[Pascal's triangle]]
@@ -238,7 +238,7 @@ WTOBUF   DC     CL80' '
 ## Ada
 
 
-Uses package Pascal from the Pascal triangle solution[[http://rosettacode.org/wiki/Pascal%27s_triangle#Ada]]
+Uses package Pascal from the Pascal triangle solution<http://rosettacode.org/wiki/Pascal%27s_triangle#Ada>
 
 
 ```Ada
@@ -2108,7 +2108,7 @@ print [catalan_number(n) for n in range(1, 16)]
 
 ### Composition of pure functions
 
-Note that sequence [http://oeis.org/A000108 A000108]  on OEIS (referenced in the task description) confirms that the first four Catalan numbers are indeed 1, 1, 2, 5 ...
+Note that sequence [A000108](http://oeis.org/A000108)  on OEIS (referenced in the task description) confirms that the first four Catalan numbers are indeed 1, 1, 2, 5 ...
 
 (Several scripts on this page appear to lose the first 1).
 
@@ -2531,7 +2531,7 @@ def catalan(n: Int): Int =
 (1 to 15).map(catalan(_))
 ```
 
-{{Out}}See it in running in your browser by [https://scastie.scala-lang.org/2ybpRZxCTOyrx3mIy8yIDw Scastie (JVM)].
+{{Out}}See it in running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/2ybpRZxCTOyrx3mIy8yIDw).
 
 ## Scilab
 

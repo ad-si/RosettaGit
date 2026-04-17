@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==OEIS==
-I stuck the first five nearest integers from the series into The On-Line Encyclopedia of Integer Sequences whereupon I discovered it as series [http://oeis.org/A034172 A034172] and the search for terms mentions [http://oeis.org/search?q=1+3+13+75+541+4683+47293+545835+7087261+102247563&sort=&language=&go=Search more series]. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 11:02, 1 January 2014 (UTC)
+I stuck the first five nearest integers from the series into The On-Line Encyclopedia of Integer Sequences whereupon I discovered it as series [A034172](http://oeis.org/A034172) and the search for terms mentions [more series](http://oeis.org/search?q=1+3+13+75+541+4683+47293+545835+7087261+102247563&sort=&language=&go=Search). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 11:02, 1 January 2014 (UTC)
 
 == range 1 to 17 ==
 

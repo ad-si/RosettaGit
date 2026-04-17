@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==WP Confusing==
-After trying to implement something, I thought the WP article to be less than helpful. How about basing the task on [http://mathforum.org/library/drmath/view/54392.html this]? --[[User:Paddy3118|Paddy3118]] 07:32, 14 December 2009 (UTC)
+After trying to implement something, I thought the WP article to be less than helpful. How about basing the task on [this](http://mathforum.org/library/drmath/view/54392.html)? --[[User:Paddy3118|Paddy3118]] 07:32, 14 December 2009 (UTC)
 
 : Agreed that the WP article is confusing (perhaps one of us ought to improve it!) but I think I've extracted the key part to make the Tcl solution. It even handles signed fractional data, should that be presented. I ''think'' it is easier to convert the data to stems and leaves and store in a map (from stems to a sequence of leaves) before sorting any of it. Or at least that was what made sense to me. –[[User:Dkf|Donal Fellows]] 09:37, 14 December 2009 (UTC)
 

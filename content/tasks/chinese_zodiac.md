@@ -2769,15 +2769,15 @@ object Zodiac extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/O6MUr27/0 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/KXC0j71ORFaQxNZSCCZ1Aw Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/O6MUr27/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/KXC0j71ORFaQxNZSCCZ1Aw).
 
 
 ## Seed7
 
 The standard output file of Seed7 accepts only Latin-1 (byte) output.
 Therefore the output with the chinese characters is written to
-[http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE STD_CONSOLE].
-The library [http://seed7.sourceforge.net/libraries/console.htm console.s7i] defines STD_CONSOLE.
+[STD_CONSOLE](http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE).
+The library [console.s7i](http://seed7.sourceforge.net/libraries/console.htm) defines STD_CONSOLE.
 
 
 ```seed7

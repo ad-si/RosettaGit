@@ -13,4 +13,4 @@ Rakudo is a multi-platform implementation of Perl 6.
 
 Rakudo is written in a combination of [implemented in language::Perl 6](https://rosettacode.org/wiki/implemented_in_language::Perl_6) and [implemented in language::NQP](https://rosettacode.org/wiki/implemented_in_language::NQP) (Not Quite Perl; a Perl6-like simplified language).  NQP currently runs on [Parrot](https://rosettacode.org/wiki/Parrot), [JVM](https://rosettacode.org/wiki/JVM), and [MoarVM](https://rosettacode.org/wiki/MoarVM).
 
-Home page: [http://rakudo.org/ rakudo.org]
+Home page: [rakudo.org](http://rakudo.org/)

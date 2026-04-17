@@ -1231,9 +1231,9 @@ $
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Generic_swap this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Generic_swap) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1440,7 +1440,7 @@ World!          Hello
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=b746e857f6f280fb92c204795f6053be Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=b746e857f6f280fb92c204795f6053be)'''
 
 ```gambas
 Public Sub Main()
@@ -1771,7 +1771,7 @@ end
 
 ## J
 
-J is dynamically typed and J's cycle primitive (<code>C.</code>) will swap elements of an arbitrary list.  See also J's reference documentation on [http://www.jsoftware.com/help/dictionary/dccapdot.htm <code>C.</code>]
+J is dynamically typed and J's cycle primitive (<code>C.</code>) will swap elements of an arbitrary list.  See also J's reference documentation on [<code>C.</code>](http://www.jsoftware.com/help/dictionary/dccapdot.htm)
 
 Shown here are a list of prime numbers and the result of J's parser on some random text (inverting the parsing process on the swapped result):
 
@@ -2932,7 +2932,7 @@ function swap(&$a, &$b) {
 
 ## PicoLisp
 
-[http://software-lab.de/doc/refX.html#xchg xchg] works with any data type
+[xchg](http://software-lab.de/doc/refX.html#xchg) works with any data type
 
 ```PicoLisp
 (let (A 1  B 2)
@@ -3747,7 +3747,7 @@ fun swapref (x, y) =
 
 ## Stata
 
-The Mata '''[http://www.stata.com/help.cgi?mf_swap swap]''' function is built-in.
+The Mata '''[swap](http://www.stata.com/help.cgi?mf_swap)''' function is built-in.
 
 
 ```stata

@@ -2426,7 +2426,7 @@ println (heapSort([88,18,31,44,4,0,8,81,14,78,20,76,84,33,73,75,82,5,62,70,12,7,
 
 ## Haskell
 
-Using package [http://hackage.haskell.org/package/fgl fgl] from HackageDB
+Using package [fgl](http://hackage.haskell.org/package/fgl) from HackageDB
 
 ```haskell
 import Data.Graph.Inductive.Internal.Heap(
@@ -3785,7 +3785,7 @@ end function
 *process source xref attributes or(!);
  /*********************************************************************
  * Pseudocode found here:
- *   http://en.wikipedia.org/wiki/Heapsort#Pseudocode
+ *   <http://en.wikipedia.org/wiki/Heapsort#Pseudocode>
  * Sample data from REXX
  * 27.07.2013 Walter Pachl
  *********************************************************************/
@@ -4687,7 +4687,7 @@ const proc: heapSort (inout array elemType: arr) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#heapSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#heapSort>
 
 
 ## SequenceL
@@ -4786,11 +4786,11 @@ say arr;                       # prints the sorted array
 ## Standard ML
 
 
-Since Standard ML is a functional language, a [http://en.wikipedia.org/wiki/Pairing_heap pairing heap] is used instead of a standard binary heap.
+Since Standard ML is a functional language, a [pairing heap](http://en.wikipedia.org/wiki/Pairing_heap) is used instead of a standard binary heap.
 
 
 ```sml
-(* Pairing heap - http://en.wikipedia.org/wiki/Pairing_heap *)
+(* Pairing heap - <http://en.wikipedia.org/wiki/Pairing_heap> *)
 functor PairingHeap(type t
                     val cmp : t * t -> order) =
 struct

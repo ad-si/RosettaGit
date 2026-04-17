@@ -14,4 +14,4 @@ tags = []
 
 [[OpenGL]] bindings for [[PureBasic]].
 
-Location: [http://www.purearea.net/pb/CodeArchiv/Includes+Macros/Includes/OpenGL/OpenGL.pbi http://www.purearea.net/pb/CodeArchiv/Includes+Macros/Includes/OpenGL/OpenGL.pbi]
+Location: [http://www.purearea.net/pb/CodeArchiv/Includes+Macros/Includes/OpenGL/OpenGL.pbi](http://www.purearea.net/pb/CodeArchiv/Includes+Macros/Includes/OpenGL/OpenGL.pbi)

@@ -17,7 +17,7 @@ The basis is 1, x, x<sup>2</sup>, x<sup>3</sup>, ..., x<sup>n</sup>. `n' is supp
 
 
 ==About fortran==
-It is quickly coded, and while trying to remember things. It works anyway, but I suppose there's a better way. the method I've followed is straightforwardly from [http://mathworld.wolfram.com/LeastSquaresFittingPolynomial.html Wolfram.com] --[[User:ShinTakezou|ShinTakezou]] 23:58, 18 December 2008 (UTC)
+It is quickly coded, and while trying to remember things. It works anyway, but I suppose there's a better way. the method I've followed is straightforwardly from [Wolfram.com](http://mathworld.wolfram.com/LeastSquaresFittingPolynomial.html) --[[User:ShinTakezou|ShinTakezou]] 23:58, 18 December 2008 (UTC)
 
 ----
 

@@ -46,7 +46,7 @@ Display the remaining points here.
 
 
 ;Reference:
-:*   the Wikipedia article:   [https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm Ramer-Douglas-Peucker algorithm].
+:*   the Wikipedia article:   [Ramer-Douglas-Peucker algorithm](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm).
 
 
 

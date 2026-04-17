@@ -296,7 +296,7 @@ CBIN     DC     CL32' '            binary value
 
 {{works with|http://vice-emu.sourceforge.net/ VICE}}
 This example has been written for the C64 and uses some BASIC routines to read the parameter after the SYS command and to print the result.
-Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
+Compile with the [Turbo Macro Pro cross assembler](http://turbo.style64.org/):
 
 ```txt
 
@@ -304,7 +304,7 @@ tmpx -i dec2bin.s -o dec2bin.prg
 
 ```
 
-Use the [http://vice-emu.sourceforge.net/vice_13.html c1541 utility] to create a disk image that can be loaded using VICE x64.
+Use the [c1541 utility](http://vice-emu.sourceforge.net/vice_13.html) to create a disk image that can be loaded using VICE x64.
 Run with:
 
 ```txt
@@ -543,8 +543,8 @@ o_form("/x2/\n", 9000);
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1.}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3 algol68g-2.3.3].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to use of '''format'''[ted] ''transput''.}}
 '''File: Binary_digits.a68'''
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -2339,7 +2339,7 @@ fun main(x: i32): i64 =
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=03e84768e6ee2af9b7664efa04fa6da8 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=03e84768e6ee2af9b7664efa04fa6da8)'''
 
 ```gambas
 Public Sub Main()
@@ -4367,7 +4367,7 @@ Examples:
     10001100101000
 
 
-Explanation of program flow and image download link on my user page: [http://rosettacode.org/wiki/User:Albedo#Binary_Digits]
+Explanation of program flow and image download link on my user page: <http://rosettacode.org/wiki/User:Albedo#Binary_Digits>
 
 
 ## PL/I
@@ -5242,7 +5242,7 @@ res2: String = 10001100101000
 
 ## Seed7
 
-This example uses the [http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29 radix] operator to write a number in binary.
+This example uses the [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29) operator to write a number in binary.
 
 
 ```seed7
@@ -5541,7 +5541,7 @@ PROGRAM:BINARY
 :Str1
 ```
 
-Using the baseInput() "real(25," function from [http://www.detachedsolutions.com/omnicalc/ Omnicalc]
+Using the baseInput() "real(25," function from [Omnicalc](http://www.detachedsolutions.com/omnicalc/)
 
 ```ti83b
 PROGRAM:BINARY

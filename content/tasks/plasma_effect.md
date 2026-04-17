@@ -46,8 +46,8 @@ Create a plasma effect.
 
 ## See also
 
-* [http://lodev.org/cgtutor/plasma.html Computer Graphics Tutorial (lodev.org)]
-* [http://www.bidouille.org/prog/plasma Plasma (bidouille.org)]
+* [Computer Graphics Tutorial (lodev.org)](http://lodev.org/cgtutor/plasma.html)
+* [Plasma (bidouille.org)](http://www.bidouille.org/prog/plasma)
 
 
 
@@ -105,7 +105,7 @@ int main()
 
 ### Graphics version
 
-And here's the Graphics version, requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library. Prints out usage on incorrect invocation.
+And here's the Graphics version, requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. Prints out usage on incorrect invocation.
 
 ```C
 
@@ -1312,7 +1312,7 @@ my $img = plasma(400, 400);
 $img->write(file => 'plasma-perl.png');
 ```
 
-Off-site image: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma.png Plasma effect]
+Off-site image: [Plasma effect](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/plasma.png)
 
 
 ## Perl 6
@@ -1580,7 +1580,7 @@ func dist(a, b, c, d)
 
 Output:
 
-[http://www.dropbox.com/s/gdioouv328m2d60/PlasmaEffect.jpg?dl=0 Plasma effect]
+[Plasma effect](http://www.dropbox.com/s/gdioouv328m2d60/PlasmaEffect.jpg?dl=0)
 
 
 ## Scala
@@ -1681,4 +1681,4 @@ plasma.generate
 plasma.save_as('plasma.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/plasma-effect-sidef.png Plasma effect]
+Output image: [Plasma effect](https://github.com/trizen/rc/blob/master/img/plasma-effect-sidef.png)

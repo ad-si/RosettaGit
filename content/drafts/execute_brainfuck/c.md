@@ -12,9 +12,9 @@ tags = []
 
 {{implementation|Brainfuck}}{{collection|RCBF}}
 
-This Brainfuck interpreter has an eight bit cell size with the tape length bounded only by available memory. The normal [http://esolangs.org/wiki/Brainfuck_bitwidth_conversions cell expansion techniques] work for Brainfuck programs that require a larger cell size (or you can just change the tape cell type).
+This Brainfuck interpreter has an eight bit cell size with the tape length bounded only by available memory. The normal [cell expansion techniques](http://esolangs.org/wiki/Brainfuck_bitwidth_conversions) work for Brainfuck programs that require a larger cell size (or you can just change the tape cell type).
 
-It is a fairly slow interpreter which is probably able to run [http://esoteric.sange.fi/brainfuck/utils/mandelbrot/mandelbrot.b mandelbrot.b] in about a minute on your machine.
+It is a fairly slow interpreter which is probably able to run [mandelbrot.b](http://esoteric.sange.fi/brainfuck/utils/mandelbrot/mandelbrot.b) in about a minute on your machine.
 
 
 ```c

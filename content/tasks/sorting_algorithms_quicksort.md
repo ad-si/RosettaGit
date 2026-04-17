@@ -134,9 +134,9 @@ languages = [
 
 ## Task
 
-Sort an array (or list) elements using the   [https://en.wikipedia.org/wiki/Quicksort ''quicksort'']   algorithm.
+Sort an array (or list) elements using the   [''quicksort''](https://en.wikipedia.org/wiki/Quicksort)   algorithm.
 
-The elements must have a   [https://en.wikipedia.org/wiki/Weak_ordering strict weak order]   and the index of the array can be of any discrete type.
+The elements must have a   [strict weak order](https://en.wikipedia.org/wiki/Weak_ordering)   and the index of the array can be of any discrete type.
 
 For languages where this is not possible, sort an array of integers.
 
@@ -194,7 +194,7 @@ A better quicksort algorithm works in place, by swapping elements within the arr
 
 Quicksort has a reputation as the fastest sort. Optimized variants of quicksort are common features of many languages and libraries. One often contrasts quicksort with   [[../Merge sort|merge sort]],   because both sorts have an average time of   <big> ''[[O]](n ''log'' n)''. </big>
 
-: ''"On average, mergesort does fewer comparisons than quicksort, so it may be better when complicated comparison routines are used. Mergesort also takes advantage of pre-existing order, so it would be favored for using sort() to merge several sorted arrays. On the other hand, quicksort is often faster for small arrays, and on arrays of a few distinct values, repeated many times."'' — http://perldoc.perl.org/sort.html
+: ''"On average, mergesort does fewer comparisons than quicksort, so it may be better when complicated comparison routines are used. Mergesort also takes advantage of pre-existing order, so it would be favored for using sort() to merge several sorted arrays. On the other hand, quicksort is often faster for small arrays, and on arrays of a few distinct values, repeated many times."'' — <http://perldoc.perl.org/sort.html>
 
 Quicksort is at one end of the spectrum of divide-and-conquer algorithms, with merge sort at the opposite end.
 
@@ -2252,7 +2252,7 @@ puts quick_sort(a) # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ## Curry
 
-Copied from [http://www.informatik.uni-kiel.de/~curry/examples/ Curry: Example Programs].
+Copied from [Curry: Example Programs](http://www.informatik.uni-kiel.de/~curry/examples/).
 
 ```curry
 -- quicksort using higher-order functions:
@@ -2313,7 +2313,7 @@ void main() {
 
 
 Often short functional sieves are not a true implementations of the Sieve of Eratosthenes:
-http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
+<http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf>
 
 Similarly, one could argue that a true QuickSort is in-place,
 as this more efficient version (same output):
@@ -3202,7 +3202,7 @@ Compiled with GNU Fortran 4.6.3
 
 ```
 
-A discussion about Quicksort pivot options, free source code for an optimized quicksort using insertion sort as a finisher, and an OpenMP multi-threaded quicksort is found at [http://balfortran.org balfortran.org]
+A discussion about Quicksort pivot options, free source code for an optimized quicksort using insertion sort as a finisher, and an OpenMP multi-threaded quicksort is found at [balfortran.org](http://balfortran.org)
 
 ## FreeBASIC
 
@@ -3315,11 +3315,11 @@ It's actually a combination of quick sort, heap sort, and insertion sort.
 It starts with a quick sort, after a depth of 2*ceil(lg(n+1)) it switches to heap sort, or once a partition becomes small (less than eight items) it switches to insertion sort.
 
 
-Old school, following [http://comjnl.oxfordjournals.org/cgi/content/short/5/1/10 Hoare's 1962 paper].
+Old school, following [Hoare's 1962 paper](http://comjnl.oxfordjournals.org/cgi/content/short/5/1/10).
 
 As a nod to the task request to work for all types with weak strict ordering, code below uses the < operator when comparing key values.  The three points are noted in the code below.
 
-Actually supporting arbitrary types would then require at a minimum a user supplied less-than function, and values referenced from an array of interface{} types.  More efficient and flexible though is the [http://golang.org/pkg/sort/#Interface sort interface] of the Go sort package.  Replicating that here seemed beyond the scope of the task so code was left written to sort an array of ints.
+Actually supporting arbitrary types would then require at a minimum a user supplied less-than function, and values referenced from an array of interface{} types.  More efficient and flexible though is the [sort interface](http://golang.org/pkg/sort/#Interface) of the Go sort package.  Replicating that here seemed beyond the scope of the task so code was left written to sort an array of ints.
 
 Go has no language support for indexing with discrete types other than integer types, so this was not coded.
 
@@ -3636,7 +3636,7 @@ lst quickSort println # ==> list(-4, -1, 2, 5, 9)
 lst quickSortInPlace println # ==> list(-4, -1, 2, 5, 9)
 ```
 
-Another more low-level Quicksort implementation can be found in Io's [[http://github.com/stevedekorte/io/blob/master/samples/misc/qsort.io github ]] repository.
+Another more low-level Quicksort implementation can be found in Io's [github](http://github.com/stevedekorte/io/blob/master/samples/misc/qsort.io) repository.
 
 
 ## J
@@ -3960,7 +3960,7 @@ and so both are omitted here.
 
 ## Julia
 
-Built-in function for in-place sorting via quicksort (the [https://github.com/JuliaLang/julia/blob/2364748377f2a79c0485fdd5155ec2116c9f0d37/base/sort.jl#L259-L296 code from the standard library is quite readable]):
+Built-in function for in-place sorting via quicksort (the [code from the standard library is quite readable](https://github.com/JuliaLang/julia/blob/2364748377f2a79c0485fdd5155ec2116c9f0d37/base/sort.jl#L259-L296)):
 
 ```julia
 sort!(A, alg=QuickSort)
@@ -4318,7 +4318,7 @@ end
 
 ## Lucid
 
-[http://i.csc.uvic.ca/home/hei/lup/06.html]
+<http://i.csc.uvic.ca/home/hei/lup/06.html>
 
 ```lucid
 qsort(a) = if eof(first a) then a else follow(qsort(b0),qsort(b1)) fi
@@ -5521,7 +5521,7 @@ class QuickSort {
 
 
 =={{header|Objective-C}}==
-The [http://weblog.bignerdranch.com/398-objective-c-literals-part-1/ latest XCode compiler] is assumed with [http://en.wikipedia.org/wiki/Automatic_Reference_Counting ARC] enabled.
+The [latest XCode compiler](http://weblog.bignerdranch.com/398-objective-c-literals-part-1/) is assumed with [ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting) enabled.
 
 ```objc
 void quicksortInPlace(NSMutableArray *array, NSInteger first, NSInteger last, NSComparator comparator) {
@@ -7225,7 +7225,7 @@ const proc: quickSort (inout array elemType: arr) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#quickSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#quickSort>
 
 
 ## SETL

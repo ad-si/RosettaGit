@@ -11,4 +11,4 @@ tags = []
 +++
 Kitten is a statically typed, stack-based functional programming language designed to be simple and fast. It is a concatenative language, combining aspects of imperative and pure functional programming.
 
-The source code for the main implementation can be found [https://github.com/evincarofautumn/kitten here].
+The source code for the main implementation can be found [here](https://github.com/evincarofautumn/kitten).

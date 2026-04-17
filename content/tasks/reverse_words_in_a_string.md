@@ -156,7 +156,7 @@ Some strings have no tokens, so an empty string   (or one just containing spaces
 
 ===Simple_Parse===
 
-To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task [[http://rosettacode.org/wiki/Phrase_reversals#Ada]].
+To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task <http://rosettacode.org/wiki/Phrase_reversals#Ada>.
 
 
 ```Ada
@@ -1620,7 +1620,7 @@ for line = lines
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=c81c1bbf94e856035fd382015d208272 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=c81c1bbf94e856035fd382015d208272)'''
 
 ```gambas
 Public Sub Main()

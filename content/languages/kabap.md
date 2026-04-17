@@ -37,5 +37,5 @@ The primary benefits of Kabap are:
 Although Kabap is a relatively new language, it has been tested and proofed for the last year in a critical production environment.
 
 Useful Kabap links:
-* https://kabap.org
-* https://github.com/KabapLang
+* <https://kabap.org>
+* <https://github.com/KabapLang>

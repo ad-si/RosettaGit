@@ -25,7 +25,7 @@ Sort most popular programming languages based on the number of users on Rosetta 
 
 A way to solve the task:
 
-Users of a language X are those referenced in the page https://rosettacode.org/wiki/Category:X_User, or preferably https://rosettacode.org/mw/index.php?title=Category:X_User&redirect=no to avoid redirections. In order to find the list of such categories, it's possible to first parse the entries of http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000. Then download and parse each language users category to count the users.
+Users of a language X are those referenced in the page <https://rosettacode.org/wiki/Category:X_User>, or preferably <https://rosettacode.org/mw/index.php?title=Category:X_User&redirect=no> to avoid redirections. In order to find the list of such categories, it's possible to first parse the entries of <http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>. Then download and parse each language users category to count the users.
 
 Sample output on 18 february 2019:
 

@@ -1221,7 +1221,7 @@ END FUNCTION
 
 ## Batch File
 
-Had trouble with this, so called in the gurus at [http://stackoverflow.com/questions/2680668/what-is-wrong-with-this-recursive-windows-cmd-script-it-wont-do-ackermann-prope StackOverflow]. Thanks to Patrick Cuff for pointing out where I was going wrong.
+Had trouble with this, so called in the gurus at [StackOverflow](http://stackoverflow.com/questions/2680668/what-is-wrong-with-this-recursive-windows-cmd-script-it-wont-do-ackermann-prope). Thanks to Patrick Cuff for pointing out where I was going wrong.
 
 ```dos
 ::Ackermann.cmd
@@ -4030,7 +4030,7 @@ class RosettaDemo
 
 =={{header|Icon}} and {{header|Unicon}}==
 {{libheader|Icon Programming Library}}
-Taken from the public domain Icon Programming Library's [http://www.cs.arizona.edu/icon/library/procs/memrfncs.htm acker in memrfncs],
+Taken from the public domain Icon Programming Library's [acker in memrfncs](http://www.cs.arizona.edu/icon/library/procs/memrfncs.htm),
 written by Ralph E. Griswold.
 
 ```Icon
@@ -4888,7 +4888,7 @@ function ack(m, n) {
 
 ## Joy
 
-From [http://www.latrobe.edu.au/phimvt/joy/jp-nestrec.html here]
+From [here](http://www.latrobe.edu.au/phimvt/joy/jp-nestrec.html)
 
 ```joy
 DEFINE ack == [ [ [pop null]  popd succ ]
@@ -5086,7 +5086,7 @@ ack2(m::Integer, n::Integer) = m == 0 ? n + 1 : n == 0 ? ack2(m - 1, 1) : ack2(m
 ```
 
 
-'''Using memoization''', [https://github.com/simonster/Memoize.jl source]:
+'''Using memoization''', [source](https://github.com/simonster/Memoize.jl):
 
 ```julia
 using Memoize
@@ -5110,7 +5110,7 @@ elapsed time: 0.49337724 seconds (30405308 bytes allocated)
 
 ## K
 
-See [https://github.com/kevinlawler/kona/wiki the K wiki]
+See [the K wiki](https://github.com/kevinlawler/kona/wiki)
 
 ```k
 ack:{:[0=x;y+1;0=y;_f[x-1;1];_f[x-1;_f[x;y-1]]]}
@@ -6130,7 +6130,7 @@ echo "Result: ", $ackermann(first, second)
 ## Nit
 
 
-Source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/ackermann_function.nit the official Nit’s repository].
+Source: [the official Nit’s repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/ackermann_function.nit).
 
 
 ```nit
@@ -6308,7 +6308,7 @@ let a m n =
 
 ###  Arbitrary precision
 
-With arbitrary-precision integers ([http://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html Big_int module]):
+With arbitrary-precision integers ([Big_int module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html)):
 
 ```ocaml
 open Big_int
@@ -7421,7 +7421,7 @@ Rendered as wikitable:
 
 |}
 
-This is a naive implementation that does not use any optimization. Find the explanation at [[http://rosettacode.org/wiki/User:Albedo]]. Computing the Ackermann function for (4,1) is possible, but takes quite a while because the stack grows very fast to large dimensions.
+This is a naive implementation that does not use any optimization. Find the explanation at <http://rosettacode.org/wiki/User:Albedo>. Computing the Ackermann function for (4,1) is possible, but takes quite a while because the stack grows very fast to large dimensions.
 
 Example output:
 
@@ -8679,7 +8679,7 @@ const func integer: ackermann (in integer: m, in integer: n) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#ackermann]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#ackermann>
 
 
 ## SETL
@@ -10142,8 +10142,8 @@ for(m = 0; m <= 3; m++) {
 
 ## ZED
 
-Source -> http://ideone.com/53FzPA
-Compiled -> http://ideone.com/OlS7zL
+Source -> <http://ideone.com/53FzPA>
+Compiled -> <http://ideone.com/OlS7zL>
 
 ```zed
 (A) m n

@@ -19,7 +19,7 @@ String Byte Length and String Character Length were split because many examples 
 == HOPL ==
 
 Does the HOPL have a regular URL pattern that we can take advantage of with the links? It's very slow to load and difficult to find these relevant pages. --[[User:Mwn3d|Mwn3d]] 21:06, 2 March 2008 (MST)
-:It may be possible to link directly to a [http://hopl.murdoch.edu.au/findlanguages2.prx?language=Ada&which=byname search query] by using PAGETITLE. --[[User:Short Circuit|Short Circuit]] 19:54, 4 March 2008 (MST)
+:It may be possible to link directly to a [search query](http://hopl.murdoch.edu.au/findlanguages2.prx?language=Ada&which=byname) by using PAGETITLE. --[[User:Short Circuit|Short Circuit]] 19:54, 4 March 2008 (MST)
 
 ==Language Highlighting==
 The current language highlighter does a very poor job for Ada. It does not highlight most of the Ada reserved words. How can I fix the reserve word list for Ada in the highlighter?--[[User:Waldorf|Waldorf]] 21:44, 3 March 2008 (MST)

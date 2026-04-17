@@ -276,7 +276,7 @@ end Main;
 
 {{trans|C}}
 {{wont work with|ALGOL 68|Standard - argc and argv implementation dependent}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - argc and argv implementation dependent}}
 
 ```algol68
@@ -1759,7 +1759,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers:amean, numbers:gmean, and numbers:hmean] are shown below:
+[numbers:amean, numbers:gmean, and numbers:hmean](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) are shown below:
 
 ```Icon
 procedure amean(L[])		#: arithmetic mean
@@ -2912,7 +2912,7 @@ means (Array.init 10 (function i -> (float_of_int (i+1)))) ;;
 ```
 
 
-Another implementation using <code>[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALfold_left Array.fold_left]</code> instead of a '''for''' loop:
+Another implementation using <code>[Array.fold_left](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALfold_left)</code> instead of a '''for''' loop:
 
 
 ```ocaml
@@ -4105,7 +4105,7 @@ true
 
 ## Stata
 
-The command [http://www.stata.com/help.cgi?ameans ameans] prints the arithmetic, geometric and harmonic means, together with confidence intervals.
+The command [ameans](http://www.stata.com/help.cgi?ameans) prints the arithmetic, geometric and harmonic means, together with confidence intervals.
 <lang>clear all
 set obs 10
 gen x=_n

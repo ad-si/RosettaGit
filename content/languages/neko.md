@@ -11,7 +11,7 @@ tags = []
 +++
 
 
-'''Neko''' is a high-level [dynamically typed](https://rosettacode.org/wiki/Dynamic_programming) programming language developed by Nicolas Cannasse at [http://motion-twin.com/ Motion-Twin] as part of a R&D effort for better languages.
+'''Neko''' is a high-level [dynamically typed](https://rosettacode.org/wiki/Dynamic_programming) programming language developed by Nicolas Cannasse at [Motion-Twin](http://motion-twin.com/) as part of a R&D effort for better languages.
 
 '''Neko''' is also the name used for a Virtual Machine bytecode interpreter. The VM can be embedded in applications via a C language API.
 
@@ -25,6 +25,6 @@ Other tools that ship with Neko, include a '''nekotools boot''' wrapper to creat
 
 '''Neko''', introduced in 2005, may be superseded by a new virtual machine engine for Haxe development, [HashLink](https://rosettacode.org/wiki/HashLink).  '''HashLink''' was introduced in 2016, designed as a successor to '''Neko'''.  Haxe 4 (in preview in late 2018), still supports compilation to Neko bytecode and the '''Haxe 4''' environment still uses Neko library functions.
 
-* https://nekovm.org
-* https://haxe.org
-* https://hashlink.haxe.org
+* <https://nekovm.org>
+* <https://haxe.org>
+* <https://hashlink.haxe.org>

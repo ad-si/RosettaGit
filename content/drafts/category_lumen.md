@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}Lumen is a user interface library for Ada designed to support visually oriented applications such as games, simulations, and visualization. See [http://www.niestu.com/software/lumen/ The Lumen User Interface Library].
+{{library}}Lumen is a user interface library for Ada designed to support visually oriented applications such as games, simulations, and visualization. See [The Lumen User Interface Library](http://www.niestu.com/software/lumen/).

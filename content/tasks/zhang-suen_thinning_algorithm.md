@@ -154,7 +154,7 @@ If any pixels were set in this round of either step 1 or step 2 then all steps a
 
 
 ;Reference:
-* [http://nayefreza.wordpress.com/2013/05/11/zhang-suen-thinning-algorithm-java-implementation/ Zhang-Suen Thinning Algorithm, Java Implementation] by Nayef Reza.
+* [Zhang-Suen Thinning Algorithm, Java Implementation](http://nayefreza.wordpress.com/2013/05/11/zhang-suen-thinning-algorithm-java-implementation/) by Nayef Reza.
 * "Character Recognition Systems: A Guide for Students and Practitioners" By Mohamed Cheriet, Nawwaf Kharma, Cheng-Lin Liu, Ching Suen
 
 
@@ -3733,7 +3733,7 @@ Several input images are converted.
 ```python
 # -*- coding: utf-8 -*-
 
-# Example from [http://nayefreza.wordpress.com/2013/05/11/zhang-suen-thinning-algorithm-java-implementation/ this blog post].
+# Example from [this blog post](http://nayefreza.wordpress.com/2013/05/11/zhang-suen-thinning-algorithm-java-implementation/).
 beforeTxt = '''\
 1100111
 1100111
@@ -3751,7 +3751,7 @@ beforeTxt = '''\
 0000000\
 '''
 
-# Thanks to [http://www.network-science.de/ascii/ this site] and vim for these next two examples
+# Thanks to [this site](http://www.network-science.de/ascii/) and vim for these next two examples
 smallrc01 = '''\
 00000000000000000000000000000000
 01111111110000000111111110000000

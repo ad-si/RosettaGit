@@ -240,7 +240,7 @@ NVECT    EQU    3350               nvect=ceil(nbuf*50/3)
 
 ## Ada
 
-uses same algorithm as Go solution, from http://web.comlab.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf
+uses same algorithm as Go solution, from <http://web.comlab.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf>
 ;pi_digits.adb:
 
 ```Ada
@@ -443,7 +443,7 @@ Loop
 
 ## ALGOL 68
 
-{{trans|Pascal}} Note: This specimen retains the original [[#Pascal|Pascal]] coding style of [http://www.mathpropress.com/stan/bibliography/spigot.pdf code].
+{{trans|Pascal}} Note: This specimen retains the original [[#Pascal|Pascal]] coding style of [code](http://www.mathpropress.com/stan/bibliography/spigot.pdf).
 This codes uses 33 decimals places as a test case.  Performance is O(2) based on the number of decimal places required.
 
 ```algol68
@@ -576,7 +576,7 @@ Output:
 =
 ## BASIC256
 =
-{{Trans|Pascal}} below, and originally published by Stanley Rabinowitz in [http://www.mathpropress.com/stan/bibliography/spigot.pdf].
+{{Trans|Pascal}} below, and originally published by Stanley Rabinowitz in <http://www.mathpropress.com/stan/bibliography/spigot.pdf>.
 
 ```BASIC256
 cls
@@ -964,11 +964,11 @@ There are many ways to do this, with quite different performance profiles.  A si
 | 5.715
 |}
 * Spigot 1: plain C (no GMP), modified Winter/Flammenkamp, correct to 1+M digits
-* Spigot 2: C+GMP, as used in [http://shootout.alioth.debian.org/ Computer Language Benchmarks Game]
+* Spigot 2: C+GMP, as used in [Computer Language Benchmarks Game](http://shootout.alioth.debian.org/)
 * Machin 1: C+GMP, shown below
 * Machin 2: C+GMP, as below but using Chien-Lih 1997 formula
 * AGM: C+GMP, essentially from the [[Arithmetic-geometric mean/Calculate Pi]] task.  This has performance only slightly slower than MPFR.
-* Chudnovsky: Hanhong Xue's code from [https://gmplib.org/pi-with-gmp.html GMP web site].
+* Chudnovsky: Hanhong Xue's code from [GMP web site](https://gmplib.org/pi-with-gmp.html).
 
 
 Using Machin's formula.  The "continuous printing" part is silly: the algorithm really calls for a preset number of digits, so the program repeatedly calculates Pi digits with increasing length and chop off leading digits already displayed.  But it's still faster than the unbounded Spigot method by an order of magnitude, at least for the first 100k digits.
@@ -1694,7 +1694,7 @@ The output is accumulated in BUFFER then written in one go at the end, but it co
 
 
 This is an alternate version using an unbounded spigot. Higher precision is accomplished by using the Fortran Multiple Precision
-Library, FMLIB (http://myweb.lmu.edu/dmsmith/fmlib.html), provided by Dr. David M. Smith (dsmith@lmu.edu), Mathematics Professor (Emeritus) at Loyola Marymount University. We use the default precision which is about 50 significant digits.
+Library, FMLIB (<http://myweb.lmu.edu/dmsmith/fmlib.html>), provided by Dr. David M. Smith (dsmith@lmu.edu), Mathematics Professor (Emeritus) at Loyola Marymount University. We use the default precision which is about 50 significant digits.
 
 ```Fortran
 
@@ -1832,7 +1832,7 @@ Loop
 
 ## FunL
 
-The code for <code>compute_pi()</code> is from [http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf].  The number of digits may be given on the command line as an argument.  If there's no argument, the program will run until interrupted.
+The code for <code>compute_pi()</code> is from <http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf>.  The number of digits may be given on the command line as an argument.  If there's no argument, the program will run until interrupted.
 
 
 ```funl
@@ -2123,8 +2123,8 @@ Elapsed time: 70 ticks
 
 ## Go
 
-Code below is a simplistic translation of Haskell code in [http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf Unbounded Spigot Algorithms for the Digits of Pi].  This is the algorithm specified for the [http://shootout.alioth.debian.org/u64q/performance.php?test=pidigits pidigits] benchmark of the [http://shootout.alioth.debian.org/ Computer Language Benchmarks Game].
-(The standard Go distribution includes [http://golang.org/test/bench/shootout/pidigits.go source] submitted to the benchmark site, and that code runs stunning faster than the code below.)
+Code below is a simplistic translation of Haskell code in [Unbounded Spigot Algorithms for the Digits of Pi](http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf).  This is the algorithm specified for the [pidigits](http://shootout.alioth.debian.org/u64q/performance.php?test=pidigits) benchmark of the [Computer Language Benchmarks Game](http://shootout.alioth.debian.org/).
+(The standard Go distribution includes [source](http://golang.org/test/bench/shootout/pidigits.go) submitted to the benchmark site, and that code runs stunning faster than the code below.)
 
 ```go
 package main
@@ -2242,7 +2242,7 @@ Output (thru first 1000 iterations):
 
 ## Haskell
 
-The code from [http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf]:
+The code from <http://www.cs.ox.ac.uk/people/jeremy.gibbons/publications/spigot.pdf>:
 
 ```haskell
 pi_ = g (1, 0, 1, 1, 3, 3)
@@ -2551,7 +2551,7 @@ The focus in this section is on the Gibbons spigot algorithm as it
 is relatively simple and therefore provides a gentle introduction to
 how such algorithms can be implemented in jq.
 
-Since the Gibbons algorithm quickly fails in the absence of support for large integers, we shall assume BigInt support, such as provided by [https://gist.github.com/pkoppstein/d06a123f30c033195841 BigInt.jq].
+Since the Gibbons algorithm quickly fails in the absence of support for large integers, we shall assume BigInt support, such as provided by [BigInt.jq](https://gist.github.com/pkoppstein/d06a123f30c033195841).
 
 The jq program presented here closely follows the Groovy and Python
 examples on this page.  The spigot generator is named "next", and is
@@ -3030,7 +3030,7 @@ fun main(args: Array<String>) = calcPi()
 
 ## Lasso
 
-Based off [http://crypto.stanford.edu/pbc/notes/pi/code.html Dik T. Winter's C implementation of Beeler et al. 1972, Item 120].
+Based off [Dik T. Winter's C implementation of Beeler et al. 1972, Item 120](http://crypto.stanford.edu/pbc/notes/pi/code.html).
 
 ```Lasso
 #!/usr/bin/lasso9
@@ -3184,7 +3184,7 @@ print( predigit )
 
 ## M2000 Interpreter
 
-We can ask for 200 digits, but we can remove Digits-- in While Digits {} to print endless number of digits (without good precision). Algorithm developed after reading [http://www.pi314.net/eng/goutte.php] and [https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml]
+We can ask for 200 digits, but we can remove Digits-- in While Digits {} to print endless number of digits (without good precision). Algorithm developed after reading <http://www.pi314.net/eng/goutte.php> and <https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml>
 
 A Faster version handling console refresh time (and os shared time). M2000 run on an environment, which is loop event, and console is actual a form, a window. We can stop execution using Esc, Ctrl+C and Break keys, without stopping the interpreter (which is an application for Windows Os, written in Visual Basic 6,a s an ActiveX dll with a window manager on top of Vb forms).
 
@@ -3478,7 +3478,7 @@ Output:
 
 ## OCaml
 
-The Constructive Real library [http://www.lri.fr/~filliatr/creal.en.html Creal] contains an infinite-precision Pi, so we can just print out its digits.
+The Constructive Real library [Creal](http://www.lri.fr/~filliatr/creal.en.html) contains an infinite-precision Pi, so we can just print out its digits.
 
 ```OCaml
 open Creal;;
@@ -3495,7 +3495,7 @@ while true do
 done
 ```
 
-However that is cheating if you want to see an algorithm to generate Pi. Since the Spigot algorithm is already used in the [http://benchmarksgame.alioth.debian.org/u64q/program.php?test=pidigits&lang=ocaml&id=1 pidigits] program, this implements [http://mathworld.wolfram.com/Machin-LikeFormulas.html Machin's formula].
+However that is cheating if you want to see an algorithm to generate Pi. Since the Spigot algorithm is already used in the [pidigits](http://benchmarksgame.alioth.debian.org/u64q/program.php?test=pidigits&lang=ocaml&id=1) program, this implements [Machin's formula](http://mathworld.wolfram.com/Machin-LikeFormulas.html).
 
 ```OCaml
 open Num
@@ -3645,7 +3645,7 @@ pi()={
 
 ## Pascal
 
-With minor editing changes as published by Stanley Rabinowitz in [http://www.mathpropress.com/stan/bibliography/spigot.pdf].
+With minor editing changes as published by Stanley Rabinowitz in <http://www.mathpropress.com/stan/bibliography/spigot.pdf>.
 Minor improvement of <user>Mischi</user> { speedup ~2 ( n=10000 , rumtime 4s-> 1,44s fpc 2.6.4 -O3 }, by calculating only necessary digits up to n.
 
 ```pascal
@@ -4814,7 +4814,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#pi_spigot_algorithm]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#pi_spigot_algorithm>
 
 
 ## Sidef
@@ -5268,8 +5268,8 @@ Based on the reference in the [[#D|D]] code.
 ```tcl
 package require Tcl 8.6
 
-# http://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml
-# http://www.mathpropress.com/stan/bibliography/spigot.pdf
+# <http://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml>
+# <http://www.mathpropress.com/stan/bibliography/spigot.pdf>
 proc piDigitsBySpigot n {
     yield [info coroutine]
     set A [lrepeat [expr {int(floor(10*$n/3.)+1)}] 2]
@@ -5345,7 +5345,7 @@ calcPi(process.stdout);
 
 '''Notes:'''
 
-1. Typescript has ''bigint'' support https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-2.html#bigint Literals are write with a ''n'' sufix: ''10n''
+1. Typescript has ''bigint'' support <https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-2.html#bigint> Literals are write with a ''n'' sufix: ''10n''
 
 2. Pi function receives any object that has a ''write'' function. Using node.js we can pass to it ''process.stdout''
 
@@ -5503,7 +5503,7 @@ End Module
 ```
 
 ===Quicker, unverified algo===
-There seems to be another algorithm in the original reference article (see the [http://www.rosettacode.org/wiki/Pi#Ada Ada] entry), which produces output a bit faster.  However, the math behind the algorithm has not been completely proven.  It's faster because it doesn't calculate whether each digit is accumulated properly before squirting it out.  When using (slow) arbitrary precision libraries, this avoids a lot of computation time.
+There seems to be another algorithm in the original reference article (see the [Ada](http://www.rosettacode.org/wiki/Pi#Ada) entry), which produces output a bit faster.  However, the math behind the algorithm has not been completely proven.  It's faster because it doesn't calculate whether each digit is accumulated properly before squirting it out.  When using (slow) arbitrary precision libraries, this avoids a lot of computation time.
 
 ```vbnet
 Imports System, System.Numerics, System.Text

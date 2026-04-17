@@ -257,7 +257,7 @@ add(yinyang((3 + 3/4, 2 + 1/4), 2));
 ## AutoHotkey
 
 [[file:yin-yang-ahk.png|right]]
-Requires the GDI+ Standard Library by tic: http://www.autohotkey.com/forum/viewtopic.php?t=32238
+Requires the GDI+ Standard Library by tic: <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
 
 ```AHK
 Yin_and_Yang(50,  50, A_ScriptDir "\YinYang1.png")
@@ -518,7 +518,7 @@ Using the built-in graphics statements in BASIC 7.0 on the C-128:
 ```
 
 
-Example of output visible  [http://i.imgur.com/0cFNmrl.png here].
+Example of output visible  [here](http://i.imgur.com/0cFNmrl.png).
 
 =
 ## FreeBASIC
@@ -578,7 +578,7 @@ End
 ```
 
 
-'''[http://www.cogier.com/gambas/Yin%20and%20yang_270.png Click here to view image]'''
+'''[Click here to view image](http://www.cogier.com/gambas/Yin%20and%20yang_270.png)'''
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "YinYang.bas"
@@ -1096,7 +1096,7 @@ This could be done with fewer fills by defining the outline with arcs instead of
 ```
 
 
-[https://i.imgur.com/J1DK7qQl.png Resultant image at Imgur] (uses size=40 and position=40, then size=80 and position=160)
+[Resultant image at Imgur](https://i.imgur.com/J1DK7qQl.png) (uses size=40 and position=40, then size=80 and position=160)
 
 
 ## Befunge
@@ -1226,9 +1226,9 @@ Translation of: Visual Basic .NET
 <!-- Could not Upload image to Rosetta Code so I uploaded it to Wikipedia Commons -->
 [[File:Yin_and_yang_problem_c_sharp.png|left|Image generated from Source Code.]]
 
-Source Code: http://rosettacode.org/wiki/Yin_and_yang#C.23
+Source Code: <http://rosettacode.org/wiki/Yin_and_yang#C.23>
 
-Image: [https://upload.wikimedia.org/wikipedia/commons/a/af/Yin_and_yang_problem_c_sharp.png Yin_and_yang_problem_c_sharp.png]
+Image: [Yin_and_yang_problem_c_sharp.png](https://upload.wikimedia.org/wikipedia/commons/a/af/Yin_and_yang_problem_c_sharp.png)
 
 
 ## D
@@ -1567,9 +1567,9 @@ sq.Print;
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Yin_and_yang this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Yin_and_yang) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1639,8 +1639,8 @@ func main() {
 ## Haskell
 
 [[File:YinYang-Haskell.svg|thumb|Yin and Yang Haskell SVG output.]]
-This program uses the [http://hackage.haskell.org/package/diagrams diagrams] package to produce the Yin and Yang image.
-The package implements an embedded [http://en.wikipedia.org/wiki/EDSL#Usage_patterns DSL] for producing vector graphics.
+This program uses the [diagrams](http://hackage.haskell.org/package/diagrams) package to produce the Yin and Yang image.
+The package implements an embedded [DSL](http://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.
 Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
 The sample output was created with the command <tt>yinyang -o YinYang-Haskell.svg</tt>.
 
@@ -1696,7 +1696,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics.icn provides graphical procedures]
+[graphics.icn provides graphical procedures](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 
 ## J

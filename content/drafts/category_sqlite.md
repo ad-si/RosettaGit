@@ -14,5 +14,5 @@ tags = []
 {{library}}{{implementation|SQL}}
 SQLite is a “small” public-domain server-less embeddable relational database engine.
 ==External Links==
-*[http://www.sqlite.org/ SQLite site]
+*[SQLite site](http://www.sqlite.org/)
 [[Category:Tcl packages]]

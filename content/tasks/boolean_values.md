@@ -236,7 +236,7 @@ Same as [[Common Lisp|Boolean Values#Common Lisp]].
    type Boolean is (False, True);
 ```
 
-with Boolean lattice and relational operations defined on it. See [http://www.adaic.org/standards/1zrm/html/RM-A-1.html RM A.1].
+with Boolean lattice and relational operations defined on it. See [RM A.1](http://www.adaic.org/standards/1zrm/html/RM-A-1.html).
 
 
 ## ALGOL 68
@@ -245,7 +245,7 @@ with Boolean lattice and relational operations defined on it. See [http://www.ad
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - note: null char is missing, AND the C generated is won't compile, so some conversions are missing from RS}}
 ALGOL 68 Enforces strong typing and so has few default coercions.  The appropriate operators must be used to convert to and from '''bool'''[ean] and the following code demonstrates principle conversions:
 
@@ -521,7 +521,7 @@ When an expression is required to evaluate to true or false (such as an <code>IF
 
 There is no keyword for true or false in awk. In awk, any nonzero numeric value or any nonempty string value is true. Any other value (zero or the null string "") is false. Values containing only zeros may produce true or false depending on whether they are obtained from the datasource or by assignment, and different results may be obtained according to which version of awk is being used.
 
-* Reference: [http://awk.freeshell.org/truth AWK Truth values]
+* Reference: [AWK Truth values](http://awk.freeshell.org/truth)
 
 In the following example we use zero for false, and one for true to assign boolean values. However, this is just a convention, so other values may also have been used:
 
@@ -783,7 +783,7 @@ endforeach(var)
 
 The strings "0", "OFF", "NO", "FALSE" and "N" (ignoring case) are false. Any string ending with "-NOTFOUND" (ignoring case) is false. All other strings are true.
 
-Scripts that want <code>if(TRUE)</code> should require CMake 2.8; do refer to [http://www.cmake.org/cmake/help/cmake-2-8-docs.html#policy:CMP0012  cmake --help-policy CMP0012].
+Scripts that want <code>if(TRUE)</code> should require CMake 2.8; do refer to [cmake --help-policy CMP0012](http://www.cmake.org/cmake/help/cmake-2-8-docs.html#policy:CMP0012).
 
 
 ## COBOL
@@ -906,7 +906,7 @@ The only value in Common Lisp that is false is the symbol <code>nil</code>; all 
 
 Considered as variables, <code>nil</code> and <code>t</code> are bound to themselves ("self-evaluating"). <code>nil</code>, as well as being false, is used as the empty list; i.e. an empty list is false.
 
-For more information, follow the links from [http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm CLHS: Type BOOLEAN].
+For more information, follow the links from [CLHS: Type BOOLEAN](http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm).
 
 
 ## Component Pascal
@@ -972,7 +972,7 @@ For the purpose of conditional statements, all objects other than <tt>#f</tt> ev
 ## E
 
 
-E defines two basic objects <code>true</code> and <code>false</code>, and the <code>boolean</code> [http://wiki.erights.org/wiki/Guard guard] which accepts them. All builtin operations which take booleans (e.g. the <code>if</code> control structure) coerce the input to boolean.
+E defines two basic objects <code>true</code> and <code>false</code>, and the <code>boolean</code> [guard](http://wiki.erights.org/wiki/Guard) which accepts them. All builtin operations which take booleans (e.g. the <code>if</code> control structure) coerce the input to boolean.
 
 
 ```e
@@ -1161,9 +1161,9 @@ display expr=
 
 ## Emacs Lisp
 
-Symbol <code>nil</code> is false and symbol <code>t</code> is true.  Both are self-evaluating, being variables whose value is their own symbol.  See [http://www.gnu.org/software/emacs/manual/html_node/elisp/nil-and-t.html the elisp manual] for more.
+Symbol <code>nil</code> is false and symbol <code>t</code> is true.  Both are self-evaluating, being variables whose value is their own symbol.  See [the elisp manual](http://www.gnu.org/software/emacs/manual/html_node/elisp/nil-and-t.html) for more.
 
-In an <code>if</code> and similar, <code>nil</code> is false and anything else is true.  To make that clear docstrings etc say "non-nil" for true.  (See last item in [http://www.gnu.org/software/emacs/manual/html_node/elisp/Documentation-Tips.html elisp manual documentation tips].)
+In an <code>if</code> and similar, <code>nil</code> is false and anything else is true.  To make that clear docstrings etc say "non-nil" for true.  (See last item in [elisp manual documentation tips](http://www.gnu.org/software/emacs/manual/html_node/elisp/Documentation-Tips.html).)
 
 
 ## Erlang
@@ -1325,7 +1325,7 @@ Futhark has a <code>bool</code> type, with the two values <code>True</code> and 
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=65324112fde86d51937b9cfcca0c51f9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=65324112fde86d51937b9cfcca0c51f9)'''
 
 ```gambas
 Public Sub Main()
@@ -1387,7 +1387,7 @@ Unlike Java, any null reference converts to a boolean "false", while any non-nul
 ## Haskell
 
 
-The Haskell standard [http://haskell.org/haskellwiki/Prelude Prelude] defines a data type <code>Bool</code>, which has exactly two members:
+The Haskell standard [Prelude](http://haskell.org/haskellwiki/Prelude) defines a data type <code>Bool</code>, which has exactly two members:
 
 
 ```haskell
@@ -1509,7 +1509,7 @@ When play begins:
 ## J
 
 
-False is <tt>0</tt>, true is <tt>1</tt>.  This is an [http://keiapl.info/anec/#Maple advantage].
+False is <tt>0</tt>, true is <tt>1</tt>.  This is an [advantage](http://keiapl.info/anec/#Maple).
 
 This approach also works well with [[wp:Bayes'_theorem|Bayes' theorem]], as false matches 0% probability and true matches 100% probability.
 
@@ -1530,7 +1530,7 @@ The following table shows the result of type conversions to boolean:
 * String: the empty (zero-length) string is <code>false</code>; otherwise <code>true</code>
 * Object: any object is converted to <code>true</code>
 
-(source: [http://www.ecma-international.org/publications/standards/Ecma-262.htm ECMAScript Language Reference])
+(source: [ECMAScript Language Reference](http://www.ecma-international.org/publications/standards/Ecma-262.htm))
 
 
 ## jq
@@ -2021,7 +2021,7 @@ TYPE BOOLEAN = {FALSE, TRUE}
 ## Monte
 
 
-Much like [[E]], Monte has built-in objects <tt>true</tt> and <tt>false</tt>, and a boolean [http://wiki.erights.org/wiki/Guard guard].
+Much like [[E]], Monte has built-in objects <tt>true</tt> and <tt>false</tt>, and a boolean [guard](http://wiki.erights.org/wiki/Guard).
 
 
 ```Monte
@@ -2329,7 +2329,7 @@ else {
 }
 ```
 
-The values in Perl that are false are: <tt>0</tt> (as a number (including <tt>0.0</tt>), or as the string <tt>'0'</tt>, but '''not''' the string <tt>'0.0'</tt>), the empty string <tt><nowiki>''</nowiki></tt>, the empty list <tt>()</tt>, and <tt>undef</tt>. Everything else is true. See [http://perldoc.perl.org/perlsyn.html#Truth-and-Falsehood perlsyn].
+The values in Perl that are false are: <tt>0</tt> (as a number (including <tt>0.0</tt>), or as the string <tt>'0'</tt>, but '''not''' the string <tt>'0.0'</tt>), the empty string <tt><nowiki>''</nowiki></tt>, the empty list <tt>()</tt>, and <tt>undef</tt>. Everything else is true. See [perlsyn](http://perldoc.perl.org/perlsyn.html#Truth-and-Falsehood).
 
 
 ###  Short circuit evaluations
@@ -2351,7 +2351,7 @@ print ('apples' xor 'pears'); # empty string, rather than 0(false)
 ###  Objects
 
 
-Objects may break these rules at will via [http://perldoc.perl.org/overload.html#*-_Boolean%2c-string-and-numeric-conversion_ overloading].
+Objects may break these rules at will via [overloading](http://perldoc.perl.org/overload.html#*-_Boolean%2c-string-and-numeric-conversion_).
 
 
 ###  There are no keywords for true and false
@@ -2389,7 +2389,7 @@ my $val = 0 but True;
 ```
 
 
-For a discussion of Boolean context (i.e. how Perl decides whether something is true or false), see [http://perlcabal.org/syn/S02.html#Context Synopsis 2].
+For a discussion of Boolean context (i.e. how Perl decides whether something is true or false), see [Synopsis 2](http://perlcabal.org/syn/S02.html#Context).
 
 
 ## Phix
@@ -2406,7 +2406,7 @@ The builtin constants TRUE/FALSE and their aliases True/true/False/false may als
 The values in PHP that are false are: <tt>FALSE</tt>, <tt>NULL</tt>, the number <tt>0</tt> (as an integer <tt>0</tt>, float <tt>0.0</tt>, or string <tt>'0'</tt>, but '''not''' the string <tt>"0.0"</tt>), the empty string <tt>""</tt>, the empty array <tt>array()</tt>, and "SimpleXML objects created from empty tags"(?).
 
 Everything else is true. The keyword <tt>TRUE</tt> exists.
-[http://www.php.net/manual/en/language.types.boolean.php#language.types.boolean.casting]
+<http://www.php.net/manual/en/language.types.boolean.php#language.types.boolean.casting>
 
 
 ## PicoLisp
@@ -2760,7 +2760,7 @@ The only values in Ruby that are false are: <code>false</code> and <code>nil</co
 Everything else is true.  Constants <code>true</code> (and <code>TRUE</code>) exist.  Note for Python and Perl users: unlike Python, in Ruby, the number <code>0</code>, the empty string, the empty array, and the empty hash, etc. are all true; you can instead use the <code>zero?</code> method to test for 0, and the <code>.empty?</code> method to test for an empty sequence.
 
 <code>false</code>, <code>nil</code> and <code>true</code> are singleton instances of classes <code>FalseClass</code>, <code>NilClass</code> and <code>TrueClass</code> respectively.
-[http://www.ruby-doc.org/docs/ProgrammingRuby/html/tut_expressions.html#UF]
+<http://www.ruby-doc.org/docs/ProgrammingRuby/html/tut_expressions.html#UF>
 
 
 ## Run BASIC
@@ -2926,7 +2926,7 @@ Swift defines a built-in data type <code>Bool</code>, which has two values, repr
 :<tt> 1</tt> (or other non-zero number, e.g., <tt>42</tt>)<tt>, true, yes, on</tt>
 ;False values:
 :<tt> 0</tt> (or other zero number, e.g., <tt>0.0</tt>)<tt>, false, no, off</tt>
-Any of these values may be abbreviated, and mixed-case spellings are also acceptable. [http://www.tcl.tk/man/tcl8.5/TclLib/GetInt.htm]
+Any of these values may be abbreviated, and mixed-case spellings are also acceptable. <http://www.tcl.tk/man/tcl8.5/TclLib/GetInt.htm>
 Any other value gives an error.  In an interactive tclsh session:
 
 ```tcl

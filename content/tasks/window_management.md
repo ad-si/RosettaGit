@@ -571,7 +571,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## Java

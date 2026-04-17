@@ -353,7 +353,7 @@ So 580 divided by 34 using the Egyptian method is '''<code>17</code>''' remainde
 
 '''Task'''
 
-The task is to create a function that does [https://en.wikipedia.org/wiki/Ancient_Egyptian_mathematics#Multiplication_and_division Egyptian division]. The function should<br />
+The task is to create a function that does [Egyptian division](https://en.wikipedia.org/wiki/Ancient_Egyptian_mathematics#Multiplication_and_division). The function should<br />
 closely follow the description above in using a list/array of powers of two, and<br />
 another of doublings.
 
@@ -362,7 +362,7 @@ another of doublings.
 
 
 ;References:
-:*   [https://discoveringegypt.com/egyptian-hieroglyphic-writing/egyptian-mathematics-numbers-hieroglyphs/ Egyptian Number System]
+:*   [Egyptian Number System](https://discoveringegypt.com/egyptian-hieroglyphic-writing/egyptian-mathematics-numbers-hieroglyphs/)
 
 
 ;Related tasks:
@@ -1886,7 +1886,7 @@ for 580,34, 578,34, 7532795332300578,235117 -> $n, $d {
 ===More "Egyptian" version===
 As a preceding version was determined to be "let's just say ... not Egyptian" we submit an alternate which is hopefully more "Egyptian". Now only handles positive Integers up to 10 million, mostly due to limitations on Egyptian notation for numbers.
 
-Note: if the below is just a mass of "unknown glyph" boxes, try [https://www.google.com/get/noto/help/install/ installing] Googles free [https://www.google.com/get/noto/#sans-egyp Noto Sans Egyptian Hieroglyphs font].
+Note: if the below is just a mass of "unknown glyph" boxes, try [installing](https://www.google.com/get/noto/help/install/) Googles free [Noto Sans Egyptian Hieroglyphs font](https://www.google.com/get/noto/#sans-egyp).
 
 This is intended to be humorous and should not be regarded as good (or even sane) programming practice. That being said, 𓂽 & 𓂻 really are the ancient Egyptian symbols for addition and subtraction, and the Egyptian number notation is as accurate as possible. Everything else owes more to whimsy than rigor.
 
@@ -2391,7 +2391,7 @@ fn main() {
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/sYSdo9u/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/3yry7OurSQS72xNMK0GMEg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/sYSdo9u/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/3yry7OurSQS72xNMK0GMEg).
 
 ```Scala
 object EgyptianDivision extends App {

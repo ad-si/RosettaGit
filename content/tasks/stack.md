@@ -2359,7 +2359,7 @@ public program()
 
 ## Elisa
 
-This is a generic Stack component based on arrays. See how in Elisa [http://jklunder.home.xs4all.nl/elisa/part01/doc120.html generic components] are defined.
+This is a generic Stack component based on arrays. See how in Elisa [generic components](http://jklunder.home.xs4all.nl/elisa/part01/doc120.html) are defined.
 
 ```Elisa
  component GenericStack ( Stack, Element );
@@ -2385,7 +2385,7 @@ begin
 end component GenericStack;
 ```
 
-Another example of a generic Stack component is based on an unlimited sequence. A sequence is a uni-directional list. See how Elisa defines [http://jklunder.home.xs4all.nl/elisa/part02/doc010.html sequences]. The component has the same interface as the array based version.
+Another example of a generic Stack component is based on an unlimited sequence. A sequence is a uni-directional list. See how Elisa defines [sequences](http://jklunder.home.xs4all.nl/elisa/part02/doc010.html). The component has the same interface as the array based version.
 
 ```Elisa
 component GenericStack ( Stack, ElementType );
@@ -2552,7 +2552,7 @@ printfn "%A" (stack3.IsEmpty())
 ## Factor
 
 Factor is a stack based language, but also provides stack "objects", because
-all resizable sequences can be treated as stacks (see [http://docs.factorcode.org/content/article-sequences-stacks.html docs]). Typically, a vector is used:
+all resizable sequences can be treated as stacks (see [docs](http://docs.factorcode.org/content/article-sequences-stacks.html)). Typically, a vector is used:
 
 ```factor
  V{ 1 2 3 } {
@@ -4089,7 +4089,7 @@ sstack.pop(Elem, !Stack) :-
 
 
 It should be noted that this is purely an illustrative example of a very simple stack.
-A real implementation would have predicate (:- pred) versions of the functions (:- func), for example, for consistency's sake with either the functions implemented in terms of the predicates or vice versa.  [http://www.mercurylang.org/information/doc-release/mercury_library/stack.html#stack The real library implementation] also features more functionality including both semi-deterministic and deterministic versions of some functions/predicates as well as the ability to push a list of values in one operation.
+A real implementation would have predicate (:- pred) versions of the functions (:- func), for example, for consistency's sake with either the functions implemented in terms of the predicates or vice versa.  [The real library implementation](http://www.mercurylang.org/information/doc-release/mercury_library/stack.html#stack) also features more functionality including both semi-deterministic and deterministic versions of some functions/predicates as well as the ability to push a list of values in one operation.
 
 Some of the implementation decisions above need an explanation.
 new/0 and push/2 were implemented as functions both for pedagogical reasons (a desire to show function syntax) and because they are a natural fit for functional thought: 0 or more inputs, one output, deterministic.
@@ -4714,7 +4714,7 @@ define
 end
 ```
 
-There is also a stack implementation in the [http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/stack.html standard library].
+There is also a stack implementation in the [standard library](http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/stack.html).
 
 
 ## PARI/GP
@@ -4968,8 +4968,8 @@ echo array_pop( $stack ); // outputs "1"
 
 ## PicoLisp
 
-The built-in functions [http://software-lab.de/doc/refP.html#push push] and
-[http://software-lab.de/doc/refP.html#pop pop] are used to maintain a stack (of any type).
+The built-in functions [push](http://software-lab.de/doc/refP.html#push) and
+[pop](http://software-lab.de/doc/refP.html#pop) are used to maintain a stack (of any type).
 
 ```PicoLisp
 (push 'Stack 3)

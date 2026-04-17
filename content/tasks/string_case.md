@@ -1759,7 +1759,7 @@ alphabeta
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d45e91bee011314fd126dc53052b5386 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d45e91bee011314fd126dc53052b5386)'''
 
 ```gambas
 Public Sub Main()
@@ -3666,7 +3666,7 @@ Test
 ## Stata
 
 
-Use '''[https://www.stata.com/help.cgi?f_strupper strupper]''' and '''strlower''' to change case of ASCII characters. Use '''[https://www.stata.com/help.cgi?f_ustrupper ustrupper]''' and '''ustrlower''' to change case of all Unicode letters.
+Use '''[strupper](https://www.stata.com/help.cgi?f_strupper)''' and '''strlower''' to change case of ASCII characters. Use '''[ustrupper](https://www.stata.com/help.cgi?f_ustrupper)''' and '''ustrlower''' to change case of all Unicode letters.
 
 
 ```stata
@@ -3678,7 +3678,7 @@ alphabeta
 ```
 
 
-Notice there may be some difficulties with Unicode characters. In the following, the uppercase '''[https://en.wikipedia.org/wiki/Sigma sigma]''' is correctly converted back to the lowercase variant, but the '''[https://en.wikipedia.org/wiki/Iota_subscript iota subscript]''' is not.
+Notice there may be some difficulties with Unicode characters. In the following, the uppercase '''[sigma](https://en.wikipedia.org/wiki/Sigma)''' is correctly converted back to the lowercase variant, but the '''[iota subscript](https://en.wikipedia.org/wiki/Iota_subscript)''' is not.
 
 
 ```stata

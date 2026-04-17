@@ -24,7 +24,7 @@ A calibration parameter can be provided to suit different voices. This can be pr
 
 Clearly, this task is only feasible if you know how frequencies are encoded as bytes in the waveform and even then there are mathematical difficulties in reversing the procedure which mean that the eventual result is unlikely to be exact.
 
-As an example, we analyze the .wav file (notes.wav) created by the [[https://rosettacode.org/wiki/Musical_scale#Go Musical Scale]] task. As we know that the same frequency was used to generate each sample (44100 bytes), it is only necessary to examine a small number of bytes for each sample to determine the average frequency for the file as a whole (8 samples). 
+As an example, we analyze the .wav file (notes.wav) created by the [Musical Scale](https://rosettacode.org/wiki/Musical_scale#Go) task. As we know that the same frequency was used to generate each sample (44100 bytes), it is only necessary to examine a small number of bytes for each sample to determine the average frequency for the file as a whole (8 samples). 
 
 However, as each calculation was of necessity rounded to the nearer byte, it seems sensible to use more than one byte per sample (but not so many that the multi-valued arcsine function will be applied to a value outside its principal range) to try and reduce the effect of rounding. 20 bytes per sample is used here though curiously using only 3 bytes per sample would have produced a more accurate result (384.9 Hz).
 

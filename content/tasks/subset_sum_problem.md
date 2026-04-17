@@ -43,7 +43,7 @@ languages = [
 
 ## Task
 
-Implement a function/procedure/method/subroutine that takes a set/array/list/stream/table/collection of words with integer weights, and identifies a non-empty subset of them whose weights sum to zero (cf. the Dropbox [http://www.dropbox.com/jobs/challenges Diet] candidate screening exercise and the [[wp:Subset sum problem|Subset sum problem]] Wikipedia article).
+Implement a function/procedure/method/subroutine that takes a set/array/list/stream/table/collection of words with integer weights, and identifies a non-empty subset of them whose weights sum to zero (cf. the Dropbox [Diet](http://www.dropbox.com/jobs/challenges) candidate screening exercise and the [[wp:Subset sum problem|Subset sum problem]] Wikipedia article).
 
 
 ;For example:
@@ -1070,8 +1070,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/lists.icn lists.icn provides lcomb for list combinations]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[lists.icn provides lcomb for list combinations](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn)
 
 ```txt
 No zero-sum subsets of length 1
@@ -2513,7 +2513,7 @@ no subsets of length 31 sum to zero
 
 ## Scala
 
-{{Out}}Best seen running in your browser by [https://scastie.scala-lang.org/KnhJimmSTL6QXIGTAdZjBQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser by [Scastie (remote JVM)](https://scastie.scala-lang.org/KnhJimmSTL6QXIGTAdZjBQ).
 
 ```Scala
 object SubsetSum extends App {

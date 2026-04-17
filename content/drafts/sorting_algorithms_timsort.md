@@ -16,8 +16,8 @@ It is a hybrid between Insertion sort and Merge sort so, it brings in the best o
 Time Complexity: O(nlogn)
 Space Complexity: O(n)
 
-C: [[https://hg.python.org/cpython/file/default/Objects/listobject.c CPython's Timsort]]
+C: [CPython's Timsort](https://hg.python.org/cpython/file/default/Objects/listobject.c)
 
-Java: [[http://cr.openjdk.java.net/~martin/webrevs/openjdk7/timsort/raw_files/new/src/share/classes/java/util/TimSort.java OpenJDK's Timsort]]
+Java: [OpenJDK's Timsort](http://cr.openjdk.java.net/~martin/webrevs/openjdk7/timsort/raw_files/new/src/share/classes/java/util/TimSort.java)
 
-C++: [[http://hg.savannah.gnu.org/hgweb/octave/file/0486a29d780f/liboctave/util/oct-sort.cc GNU Octave's Timsort]]
+C++: [GNU Octave's Timsort](http://hg.savannah.gnu.org/hgweb/octave/file/0486a29d780f/liboctave/util/oct-sort.cc)

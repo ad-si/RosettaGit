@@ -1476,7 +1476,7 @@ IO.inspect transpose.(m)
 ## Erlang
 
 
-A nice introduction http://langintro.com/erlang/article2/ which is much more explicit.
+A nice introduction <http://langintro.com/erlang/article2/> which is much more explicit.
 
 
 ```erlang
@@ -1577,9 +1577,9 @@ m = {
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Matrix_transposition this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Matrix_transposition) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2694,7 +2694,7 @@ Usage in the LFE REPL:
 
 ## Liberty BASIC
 
-There is no native matrix capability. A set of functions is available at http://www.diga.me.uk/RCMatrixFuncs.bas implementing matrices of arbitrary dimension in a string format.
+There is no native matrix capability. A set of functions is available at <http://www.diga.me.uk/RCMatrixFuncs.bas> implementing matrices of arbitrary dimension in a string format.
 
 ```lb
 MatrixC$ ="4, 3,          0, 0.10, 0.20, 0.30,       0.40, 0.50, 0.60, 0.70,      0.80, 0.90, 1.00, 1.10"
@@ -3038,7 +3038,7 @@ bundle Default {
 
 ## OCaml
 
-Matrices can be represented in OCaml as a type <tt>'a array array</tt>, or using the module [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html Bigarray].
+Matrices can be represented in OCaml as a type <tt>'a array array</tt>, or using the module [Bigarray](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html).
 The implementation below uses a bigarray:
 
 
@@ -4618,7 +4618,7 @@ transpose(m).each { |row|
 ```
 
 
-Domain:[http://fricas.github.io/api/Matrix.html?highlight=matrix Matrix(R)]
+Domain:[Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## Sparkling
@@ -4638,7 +4638,7 @@ function transpose(A) {
 
 ## Stata
 
-Stata matrices are always real, so there is no ambiguity about the transpose operator. Mata matrices, however, may be real or complex. The transpose operator is actually a conjugate transpose, but there is also a '''[https://www.stata.com/help.cgi?mf_transposeonly transposeonly()]''' function.
+Stata matrices are always real, so there is no ambiguity about the transpose operator. Mata matrices, however, may be real or complex. The transpose operator is actually a conjugate transpose, but there is also a '''[transposeonly()](https://www.stata.com/help.cgi?mf_transposeonly)''' function.
 
 
 ###  Stata matrices

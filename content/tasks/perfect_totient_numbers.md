@@ -35,7 +35,7 @@ languages = [
 ]
 +++
 
-Generate and show here, the first twenty [https://en.wikipedia.org/wiki/Perfect_totient_number Perfect totient numbers].
+Generate and show here, the first twenty [Perfect totient numbers](https://en.wikipedia.org/wiki/Perfect_totient_number).
 
 
 ## Related tasks
@@ -44,8 +44,8 @@ Generate and show here, the first twenty [https://en.wikipedia.org/wiki/Perfect_
 
 
 ;Also see:
-::*   the OEIS      entry for   [http://oeis.org/A082897 perfect totient numbers].
-::*   mrob            [https://mrob.com/pub/seq/a082897.html list of the first 54]
+::*   the OEIS      entry for   [perfect totient numbers](http://oeis.org/A082897).
+::*   mrob            [list of the first 54](https://mrob.com/pub/seq/a082897.html)
 <br/>
 
 

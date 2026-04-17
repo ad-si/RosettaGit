@@ -279,7 +279,7 @@ Poly(x) is a test function of one variable, here we are searching for its roots:
 * Having found such an interval, the root() function searches for a value where our function is 0, within a given tolerance.
 * It also sets ErrorLevel to info about the root found.
 
-[http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139 discussion]
+[discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139)
 
 ```autohotkey
 MsgBox % roots("poly", -0.99, 2, 0.1, 1.0e-5)
@@ -561,7 +561,7 @@ Brent's Method uses a combination of the bisection method, inverse quadratic int
 
 The algorithm is coded as a function that returns a double value for the root. The function takes an input that requires the function being evaluated, the lower and upper bounds, the tolerance one is looking for before converging (i recommend 0.0001) and the maximum number of iterations before giving up on finding the root (the root will always be found if the root is bracketed and a sufficient number of iterations is allowed).
 
-The implementation is taken from the pseudo code on the wikipedia page for Brent's Method found here: https://en.wikipedia.org/wiki/Brent%27s_method.
+The implementation is taken from the pseudo code on the wikipedia page for Brent's Method found here: <https://en.wikipedia.org/wiki/Brent%27s_method>.
 
 ```cpp
 #include <iostream>
@@ -1281,7 +1281,7 @@ Executed in GHCi:
 ```
 
 
-Or using package [http://hackage.haskell.org/package/hmatrix hmatrix] from HackageDB.
+Or using package [hmatrix](http://hackage.haskell.org/package/hmatrix) from HackageDB.
 
 ```haskell
 import Numeric.GSL.Polynomials
@@ -1359,7 +1359,7 @@ To get rid of repeated roots use `Data.List.nub`
 
 ## HicEst
 
-HicEst's [http://www.HicEst.com/SOLVE.htm SOLVE] function employs the Levenberg-Marquardt method:
+HicEst's [SOLVE](http://www.HicEst.com/SOLVE.htm) function employs the Levenberg-Marquardt method:
 
 ```HicEst
 OPEN(FIle='test.txt')
@@ -3048,7 +3048,7 @@ find_roots(-1..3) { |x| x**3 - 3*x**2 + 2*x }
 ## Scala
 
 ===Imperative version (Ugly, side effects)===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/T63KUsH/0 (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/bh8von94Q1y0tInvEZ3cBQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [(ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/T63KUsH/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/bh8von94Q1y0tInvEZ3cBQ).
 
 ```Scala
 object Roots extends App {

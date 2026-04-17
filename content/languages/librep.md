@@ -9,4 +9,4 @@ id = 7551
 categories = []
 tags = []
 +++
-[http://librep.sourceforge.net/ librep] is a shared library implementing a Lisp dialect that is lightweight, reasonably fast, and highly extensible. It contains an interpreter, byte-code compiler and virtual machine. Applications may use the interpreter as an extension language, or it may be used for standalone scripts.
+[librep](http://librep.sourceforge.net/) is a shared library implementing a Lisp dialect that is lightweight, reasonably fast, and highly extensible. It contains an interpreter, byte-code compiler and virtual machine. Applications may use the interpreter as an extension language, or it may be used for standalone scripts.

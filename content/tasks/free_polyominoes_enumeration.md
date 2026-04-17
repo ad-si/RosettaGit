@@ -72,14 +72,14 @@ Or perhaps with corner characters (rank 5):
 
 
 For a slow but clear solution see this Haskell Wiki page:
-http://www.haskell.org/haskellwiki/The_Monad.Reader/Issue5/Generating_Polyominoes
+<http://www.haskell.org/haskellwiki/The_Monad.Reader/Issue5/Generating_Polyominoes>
 
 <b>Bonus Task</b>: you can create an alternative program (or specialize your first program) to generate very quickly just the number of distinct free polyominoes, and to show a sequence like:
 
 1, 1, 1, 2, 5, 12, 35, 108, 369, 1285, 4655, 17073, 63600, 238591, 901971, 3426576, ...
 
 Number of free polyominoes (or square animals) with n cells:
-http://oeis.org/A000105
+<http://oeis.org/A000105>
 
 
 ; Cf.
@@ -527,7 +527,7 @@ All free polyominoes of rank 5:
 
 ### D: Count Only
 
-Translated and modified from C code: http://www.geocities.jp/tok12345/countomino.txt
+Translated and modified from C code: <http://www.geocities.jp/tok12345/countomino.txt>
 
 
 ```d
@@ -1078,7 +1078,7 @@ Number of free polyominoes of ranks 1 to 10:
 
 This Haskell solution is relatively slow, it's meant to be readable and as manifestly correct as possible.
 
-Code updated and slightly improved from: http://www.haskell.org/haskellwiki/The_Monad.Reader/Issue5/Generating_Polyominoes
+Code updated and slightly improved from: <http://www.haskell.org/haskellwiki/The_Monad.Reader/Issue5/Generating_Polyominoes>
 
 ```haskell
 import System.Environment (getArgs)

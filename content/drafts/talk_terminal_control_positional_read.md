@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Very Difficult==
-Just so that people know up front before trying to implement this, it is ''exceptionally'' difficult to do because “read displayed character” (whether at the current or a specific location) is not an operation that forms part of the [http://ascii-table.com/ansi-escape-sequences-vt-100.php standard set of operations]. –[[User:Dkf|Donal Fellows]] 13:01, 17 October 2010 (UTC)
+Just so that people know up front before trying to implement this, it is ''exceptionally'' difficult to do because “read displayed character” (whether at the current or a specific location) is not an operation that forms part of the [standard set of operations](http://ascii-table.com/ansi-escape-sequences-vt-100.php). –[[User:Dkf|Donal Fellows]] 13:01, 17 October 2010 (UTC)
 
 : Or you can just not support vt100 terminals (and I am pretty sure that the basic implementations for these terminal control tasks do not support vt100 terminals, and I wonder about some of the other implementations also -- none really give any clues about hardware support).
 
@@ -50,7 +50,7 @@ ncurses seems to be able to save and redraw the contents of a terminal running i
 
 == Possible with tmux? ==
 
-This task might become possible if the Unix terminal is a [http://tmux.sourceforge.net/ tmux] pane. Inside the pane, run these three shell commands:
+This task might become possible if the Unix terminal is a [tmux](http://tmux.sourceforge.net/) pane. Inside the pane, run these three shell commands:
 
 
 ```bash

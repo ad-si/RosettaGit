@@ -19,16 +19,16 @@ languages = [
 ]
 +++
 
-Calculate Ramanujan's constant (as described on the [http://oeis.org/wiki/Ramanujan%27s_constant OEIS site]) with at least
+Calculate Ramanujan's constant (as described on the [OEIS site](http://oeis.org/wiki/Ramanujan%27s_constant)) with at least
 32 digits of precision, by the method of your choice.  Optionally, if using the 𝑒**(π*√''x'') approach,
-show that when evaluated with the last four [https://en.wikipedia.org/wiki/Heegner_number Heegner numbers]
+show that when evaluated with the last four [Heegner numbers](https://en.wikipedia.org/wiki/Heegner_number)
 the result is ''almost'' an integer.
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Ramanujan%27s_constant this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Ramanujan%27s_constant) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -200,9 +200,9 @@ Ramanujan's constant
 
 To generate a high-precision value for Ramanujan's constant, code is borrowed from three other Rosettacode tasks 
 (with some modifications) for performing calculations of 
-[http://rosettacode.org/wiki/Arithmetic-geometric_mean/Calculate_Pi the value of π],  
-[http://rosettacode.org/wiki/Calculating_the_value_of_e Euler's number], and 
-[http://rosettacode.org/wiki/Arithmetic-geometric_mean/Integer_roots integer roots]. Additional custom routines for exponentiation are used to ensure all computations are done with rationals, specifically <tt>FatRat</tt>s (rational numbers stored with arbitrary size numerator and denominator). The module <tt>Rat::Precise</tt> makes it simple to display these to a configurable precision.
+[the value of π](http://rosettacode.org/wiki/Arithmetic-geometric_mean/Calculate_Pi),  
+[Euler's number](http://rosettacode.org/wiki/Calculating_the_value_of_e), and 
+[integer roots](http://rosettacode.org/wiki/Arithmetic-geometric_mean/Integer_roots). Additional custom routines for exponentiation are used to ensure all computations are done with rationals, specifically <tt>FatRat</tt>s (rational numbers stored with arbitrary size numerator and denominator). The module <tt>Rat::Precise</tt> makes it simple to display these to a configurable precision.
 
 ```perl6
 use Rat::Precise;
@@ -324,7 +324,7 @@ Heegner numbers yielding 'almost' integers
 
 ### Continued fractions
 
-Ramanujan's constant can also be generated to an arbitrary precision using standard   [https://en.wikipedia.org/wiki/Generalized_continued_fraction continued fraction formulas] for each component of the 𝑒**(π*√163) expression. Substantially slower than the first method.
+Ramanujan's constant can also be generated to an arbitrary precision using standard   [continued fraction formulas](https://en.wikipedia.org/wiki/Generalized_continued_fraction) for each component of the 𝑒**(π*√163) expression. Substantially slower than the first method.
 
 ```perl6
 use Rat::Precise;

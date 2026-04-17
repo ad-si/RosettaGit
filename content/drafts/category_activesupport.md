@@ -13,4 +13,4 @@ tags = []
 {{library}}
 "Active Support is a collection of various utility classes and standard library extensions that were found useful for [[wp:Ruby_on_Rails|Rails]]. All these additions have hence been collected in this bundle as way to gather all that sugar that makes [[Ruby]] sweeter."
 
-Documentation can be found at [http://rubydoc.info/gems/activesupport/ rubydoc.info].
+Documentation can be found at [rubydoc.info](http://rubydoc.info/gems/activesupport/).

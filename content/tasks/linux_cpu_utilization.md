@@ -38,7 +38,7 @@ Display the current CPU utilization, as a percentage, calculated from <code> /pr
 
 
 ;Background:
-Most Linux kernels provide a virtual   <code>[https://www.kernel.org/doc/Documentation/filesystems/proc.txt /proc]</code>   filesystem, providing an interface to various internal data structures.
+Most Linux kernels provide a virtual   <code>[/proc](https://www.kernel.org/doc/Documentation/filesystems/proc.txt)</code>   filesystem, providing an interface to various internal data structures.
 
 One of these internal structures (<code>/proc/stat</code>) includes information on the amount of time (in <code>USER_HZ</code>) spent in various states.   From this information, we can, with a little effort, determine the current level of CPU utilization, as a percent of time spent in any states other than ''idle''.
 
@@ -54,7 +54,7 @@ To do this:
 
 The times in <code>/proc/stat</code> are monotonically increasing, and begin at some point during the kernel's initialization (ie during boot up).   So the steps above will give the total CPU utilization since boot, which may or may not be useful to some.   To get a more real-time utilization, we simply repeat the steps above with some small sleep interval in between, and instead of using the absolute total and idle times, we use use the total time delta and the idle time delta to compute the utilization.
 
-This project is based on   [http://colby.id.au/calculating-cpu-usage-from-proc-stat/ this blog post]   by [[User:Paul|Paul Colby]],   and the   [[#UNIX Shell|Bash]]   version comes from there.
+This project is based on   [this blog post](http://colby.id.au/calculating-cpu-usage-from-proc-stat/)   by [[User:Paul|Paul Colby]],   and the   [[#UNIX Shell|Bash]]   version comes from there.
 
 
 
@@ -984,7 +984,7 @@ CPU:  1%
 
 ## UNIX Shell
 
-Example taken, verbatim, from [https://github.com/pcolby/scripts/blob/master/cpu.sh Github].
+Example taken, verbatim, from [Github](https://github.com/pcolby/scripts/blob/master/cpu.sh).
 
 ```bash
 #!/bin/bash

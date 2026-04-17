@@ -24,28 +24,28 @@ Assembly languages are more typically used for detailed and time critical applic
 
 ## See also
 
-Wikipedia Article: https://en.wikipedia.org/wiki/X86_assembly_language
+Wikipedia Article: <https://en.wikipedia.org/wiki/X86_assembly_language>
 
-Intel manuals: https://software.intel.com/en-us/articles/intel-sdm
+Intel manuals: <https://software.intel.com/en-us/articles/intel-sdm>
 
-Brief introduction: http://cs.lmu.edu/~ray/notes/x86assembly/
+Brief introduction: <http://cs.lmu.edu/~ray/notes/x86assembly/>
 
-GNU assembler: https://sourceware.org/binutils/docs/as/
+GNU assembler: <https://sourceware.org/binutils/docs/as/>
 
-SSE: https://en.wikibooks.org/wiki/X86_Assembly/SSE
+SSE: <https://en.wikibooks.org/wiki/X86_Assembly/SSE>
 
-64 bit Linux assembly: http://rayseyfarth.com/asm/
+64 bit Linux assembly: <http://rayseyfarth.com/asm/>
 
-Linux system calls: http://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
+Linux system calls: <http://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/>
 
-YASM manual: http://www.tortall.net/projects/yasm/manual/html/index.html
+YASM manual: <http://www.tortall.net/projects/yasm/manual/html/index.html>
 
-NASM manual: http://www.nasm.us/xdoc/2.12.02/html/nasmdoc0.html
+NASM manual: <http://www.nasm.us/xdoc/2.12.02/html/nasmdoc0.html>
 
-8086 assembly: http://www.stevemorse.org/8086/
+8086 assembly: <http://www.stevemorse.org/8086/>
 
-32 bit: http://pacman128.github.io/pcasm/
+32 bit: <http://pacman128.github.io/pcasm/>
 
-64 bit: https://www.cs.cmu.edu/~fp/courses/15213-s07/misc/asm64-handout.pdf
+64 bit: <https://www.cs.cmu.edu/~fp/courses/15213-s07/misc/asm64-handout.pdf>
 
-Linux procedure calls: https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-r252.pdf
+Linux procedure calls: <https://github.com/hjl-tools/x86-psABI/wiki/x86-64-psABI-r252.pdf>

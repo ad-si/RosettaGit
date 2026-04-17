@@ -22,7 +22,7 @@ languages = [
 
 ## Task
 
-Create a playable [https://en.wikipedia.org/wiki/Tetris Tetris] game.
+Create a playable [Tetris](https://en.wikipedia.org/wiki/Tetris) game.
 
 
 

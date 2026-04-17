@@ -814,10 +814,10 @@ def flush() { out.flush() }
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/keybd.htm keybd.s7i]
-defines the file [http://seed7.sourceforge.net/manual/file.htm#Keyboard_file KEYBOARD],
-which provides functions like [http://seed7.sourceforge.net/libraries/keybd.htm#keypressed%28in_keyboard_file%29 keypressed]
-and [http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29 getc].
+The Seed7 library [keybd.s7i](http://seed7.sourceforge.net/libraries/keybd.htm)
+defines the file [KEYBOARD](http://seed7.sourceforge.net/manual/file.htm#Keyboard_file),
+which provides functions like [keypressed](http://seed7.sourceforge.net/libraries/keybd.htm#keypressed%28in_keyboard_file%29)
+and [getc](http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29).
 
 
 ```seed7

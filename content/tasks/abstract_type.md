@@ -252,7 +252,7 @@ Here Node is an abstract type that is inherited from Limited_Controlled and impl
 
 ## Agda
 
-Using [http://wiki.portal.chalmers.se/agda/agda.php?n=ReferenceManual.Records records] for storing the interface methods and [http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.InstanceArguments instance arguments] (which are [http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.ModellingTypeClassesWithInstanceArguments similar] to Haskell type classes) for overloading:
+Using [records](http://wiki.portal.chalmers.se/agda/agda.php?n=ReferenceManual.Records) for storing the interface methods and [instance arguments](http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.InstanceArguments) (which are [similar](http://wiki.portal.chalmers.se/agda/pmwiki.php?n=ReferenceManual.ModellingTypeClassesWithInstanceArguments) to Haskell type classes) for overloading:
 
 
 ```agda
@@ -1268,7 +1268,7 @@ Main
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1690,7 +1690,7 @@ abstract type Unsigned      <: Integer end
 ```
 
 
-See more [http://docs.julialang.org/en/latest/manual/types/#abstract-types]
+See more <http://docs.julialang.org/en/latest/manual/types/#abstract-types>
 
 
 ## Kotlin
@@ -1776,7 +1776,7 @@ I don't have a name
 
 ## Lasso
 
-Instead of abstract classes or interfaces, Lasso uses a [http://lassoguide.com/language/types.html trait system].
+Instead of abstract classes or interfaces, Lasso uses a [trait system](http://lassoguide.com/language/types.html).
 
 ```lasso
 define abstract_trait => trait {
@@ -2492,7 +2492,7 @@ type
 ## Nit
 
 
-Source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/abstract_type.nit the official Nit’s repository]
+Source: [the official Nit’s repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/abstract_type.nit)
 
 
 ```nit
@@ -2979,7 +2979,7 @@ sub frob_the_baz {
 
 ```
 
-Perl 6 inspired roles are provided by the [http://search.cpan.org/perldoc?Moose Moose] library
+Perl 6 inspired roles are provided by the [Moose](http://search.cpan.org/perldoc?Moose) library
 
 
 ```perl
@@ -2997,7 +2997,7 @@ sub frob_the_baz {
 1;
 ```
 
-Roles are also provided in a more lightweight form with [http://search.cpan.org/perldoc?Role::Tiny Role::Tiny] library
+Roles are also provided in a more lightweight form with [Role::Tiny](http://search.cpan.org/perldoc?Role::Tiny) library
 
 
 ```perl
@@ -3481,7 +3481,7 @@ REXX supports a character ''type'', and as such, nothing needs to be declared.
 
 ## Ruby
 
-The Python and Tcl provisos apply to Ruby too.  Nevertheless, a {{libheader|RubyGems}} package called [http://github.com/Peeja/abstraction/tree/master abstraction] exists where:
+The Python and Tcl provisos apply to Ruby too.  Nevertheless, a {{libheader|RubyGems}} package called [abstraction](http://github.com/Peeja/abstraction/tree/master) exists where:
 
 
 ```ruby
@@ -3605,11 +3605,11 @@ When integrating with Java, traits without implementation appear as interfaces.
 
 ## Seed7
 
-The [http://seed7.sourceforge.net/manual/objects.htm object orientation of Seed7] is based on inteface types.
+The [object orientation of Seed7](http://seed7.sourceforge.net/manual/objects.htm) is based on inteface types.
 An abstract type consists of an interface type and interface functions, that use the interface.
 Interface (DYNAMIC) functions describe what can be done with objects of an interface type.
 Seed7 functions are freestanding and don't have an implicit ''this'' (or ''self'') parameter.
-This concept allows [http://seed7.sourceforge.net/faq.htm#multiple_dispatch multiple dispatch].
+This concept allows [multiple dispatch](http://seed7.sourceforge.net/faq.htm#multiple_dispatch).
 Instead of an implicit ''this'' parameter an interface function has a parameter of an interface type.
 A function is automaticall attached to the interface, when it has an parameter of the interface type.
 

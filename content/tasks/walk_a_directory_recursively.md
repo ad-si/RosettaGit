@@ -392,7 +392,7 @@ int main()
 ```
 
 ==={{libheader|BSD libc}}===
-With the [http://www.openbsd.org/cgi-bin/man.cgi?query=fts&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html fts(3)] functions from 4.4BSD, this program can sort the files, and can also detect cycles (when a link puts a directory inside itself). This program makes a ''logical traversal'' that follows symbolic links to directories.
+With the [fts(3)](http://www.openbsd.org/cgi-bin/man.cgi?query=fts&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) functions from 4.4BSD, this program can sort the files, and can also detect cycles (when a link puts a directory inside itself). This program makes a ''logical traversal'' that follows symbolic links to directories.
 ```c
 #include <sys/types.h>
 #include <err.h>
@@ -1125,7 +1125,7 @@ s" ." ls-r cr
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=f48f8d5c2e2e85a8f80bcdc0124a35a5 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=f48f8d5c2e2e85a8f80bcdc0124a35a5)'''
 
 ```gambas
 Public Sub Main()
@@ -1245,7 +1245,7 @@ new File('.').eachFileRecurse FILES, ~/.*\.txt/, { println it }
 
 
 Flexible search, traversal can be adapted by providing various options in the options Map, see documentation of method:
-[http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html#traverse(java.util.Map,%20groovy.lang.Closure) traverse(Map options, Closure closure)]
+[traverse(Map options, Closure closure)](http://docs.groovy-lang.org/latest/html/groovy-jdk/java/io/File.html#traverse(java.util.Map,%20groovy.lang.Closure))
 
 ```groovy
 new File('.').traverse(
@@ -1272,7 +1272,7 @@ Inputbox: filename>m*.txt,Button:Search
 ## Haskell
 
 
-Using the packages [http://hackage.haskell.org/package/directory-1.2.5.0/docs/System-Directory.html#v:getCurrentDirectory directory] and [https://hackage.haskell.org/package/filemanip-0.3.6.3/docs/System-FilePath-Find.html#v:find filemanip]
+Using the packages [directory](http://hackage.haskell.org/package/directory-1.2.5.0/docs/System-Directory.html#v:getCurrentDirectory) and [filemanip](https://hackage.haskell.org/package/filemanip-0.3.6.3/docs/System-FilePath-Find.html#v:find)
 
 
 ```haskell
@@ -2001,7 +2001,7 @@ find_files('.', '*.mp3');
 ## Perl 6
 
 
-Using the [https://github.com/tadzik/File-Find/ File::Find] module:
+Using the [File::Find](https://github.com/tadzik/File-Find/) module:
 
 ```perl6
 use File::Find;
@@ -2295,7 +2295,7 @@ FinishDirectory(1)
 
 ## Python
 
-This uses the standard [http://docs.python.org/py3k/library/os.html?highlight=os.walk#os.walk os.walk()] module function to walk a directory tree, and the [http://docs.python.org/py3k/library/fnmatch.html fnmatch] module for matching file names.
+This uses the standard [os.walk()](http://docs.python.org/py3k/library/os.html?highlight=os.walk#os.walk) module function to walk a directory tree, and the [fnmatch](http://docs.python.org/py3k/library/fnmatch.html) module for matching file names.
 
 ```python
 import fnmatch
@@ -2663,13 +2663,13 @@ See also: '''(find-files ...)''' function in the '''file''' module.
 
 ## Seed7
 
-Seed7 has a [http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation standard path representation],
-which is independent of the operating system. The function [http://seed7.sourceforge.net/manual/os.htm#readDir readDir]
+Seed7 has a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation),
+which is independent of the operating system. The function [readDir](http://seed7.sourceforge.net/manual/os.htm#readDir)
 reads the contents of a directory as array of strings. The files . and .. are left out, so it is not necessary to ignore them.
-The function [http://seed7.sourceforge.net/manual/os.htm#fileType fileType] is used to determine, if a file is a directory.
+The function [fileType](http://seed7.sourceforge.net/manual/os.htm#fileType) is used to determine, if a file is a directory.
 The example below follows symbolic links. To ignore symbolic links use
-[http://seed7.sourceforge.net/libraries/osfiles.htm#fileTypeSL%28in_string%29 fileTypeSL] instead of
-[http://seed7.sourceforge.net/libraries/osfiles.htm#fileType%28in_string%29 fileType].
+[fileTypeSL](http://seed7.sourceforge.net/libraries/osfiles.htm#fileTypeSL%28in_string%29) instead of
+[fileType](http://seed7.sourceforge.net/libraries/osfiles.htm#fileType%28in_string%29).
 
 
 ```seed7

@@ -1499,7 +1499,7 @@ procedure words()
 end
 ```
 
-See [http://www.cs.arizona.edu/icon/library/src/procs/str2toks.icn str2toks]
+See [str2toks](http://www.cs.arizona.edu/icon/library/src/procs/str2toks.icn)
 
 
 ## J
@@ -1842,7 +1842,7 @@ while [not eof?] [print readline]
 
 ## LSL
 
-LSL doesn't have a File System, but it does have [http://wiki.secondlife.com/wiki/Category:LSL_Notecard Notecards] that function as read-only text files, and can be use as configuration files or data sources.
+LSL doesn't have a File System, but it does have [Notecards](http://wiki.secondlife.com/wiki/Category:LSL_Notecard) that function as read-only text files, and can be use as configuration files or data sources.
 
 To test it yourself; rez a box on the ground, add the following as a New Script, create a notecard named "Input_Loop_Data_Source.txt", and put what ever data you want in it (in this case I just put a copy of the source code.)
 

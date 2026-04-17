@@ -1161,7 +1161,7 @@ unsorted    4  -7  -1   1   2   3  -3   7   0  -2   6  -5   5  -6  -4
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ade780ac2893fcfc95bf0d3feff6a3a8 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ade780ac2893fcfc95bf0d3feff6a3a8)'''
 
 ```gambas
 Public Sub Main()
@@ -2939,7 +2939,7 @@ object CombSort extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/7ykMPZx/0 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/Gp1ZcxnPQAKvToWFZLU7OA Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/7ykMPZx/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/Gp1ZcxnPQAKvToWFZLU7OA).
 
 ## Sather
 

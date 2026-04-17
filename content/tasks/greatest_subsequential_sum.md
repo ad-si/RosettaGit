@@ -995,7 +995,7 @@ console.log max_sum_seq [4, -10, 3]
 ### =Linear Time=
 
 
-Returns the maximum subsequence sum, the subsequence with the maximum sum, and start and end indices for the subsequence within the original sequence.  Based on the implementation at [http://wordaligned.org/articles/the-maximum-subsequence-problem Word Aligned].  Leading zeroes aren't trimmed from the subsequence.
+Returns the maximum subsequence sum, the subsequence with the maximum sum, and start and end indices for the subsequence within the original sequence.  Based on the implementation at [Word Aligned](http://wordaligned.org/articles/the-maximum-subsequence-problem).  Leading zeroes aren't trimmed from the subsequence.
 
 
 ```lisp
@@ -1920,7 +1920,7 @@ These variants are considerably faster than the first implementation, on long se
 
 This is not a particularly efficient solution, but it gets the job done.
 
-The method <tt>nextChoices</tt> was modified from an [http://www.cs.rit.edu/~vcss233/Labs/newlab02/index.html RIT CS lab].
+The method <tt>nextChoices</tt> was modified from an [RIT CS lab](http://www.cs.rit.edu/~vcss233/Labs/newlab02/index.html).
 
 ```java
 import java.util.Scanner;
@@ -3276,7 +3276,7 @@ false.
 
 ### Brute Force
 
-Works with [https://rosettacode.org/wiki/GNU_Prolog GNU Prolog].
+Works with [GNU Prolog](https://rosettacode.org/wiki/GNU_Prolog).
 
 ```Prolog
 subseq(Sub, Seq) :- suffix(X, Seq), prefix(Sub, X).
@@ -3372,7 +3372,7 @@ def maxsum(sequence):
     return maxsofar
 ```
 
-Adapt the above-mentioned solution to return maximizing subsequence. See http://www.java-tips.org/java-se-tips/java.lang/finding-maximum-contiguous-subsequence-sum-using-divide-and-conquer-app.html
+Adapt the above-mentioned solution to return maximizing subsequence. See <http://www.java-tips.org/java-se-tips/java.lang/finding-maximum-contiguous-subsequence-sum-using-divide-and-conquer-app.html>
 
 ```python
 def maxsumseq(sequence):

@@ -20,7 +20,7 @@ What does that "Passwords.jpg" image on the current task page have to do with th
 
 == Stack Overflow? ==
 
-This looks to correspond to at least one stack overflow question: http://stackoverflow.com/questions/36931474/how-to-have-10-characters-total-and-make-sure-at-least-one-character-from-4-diff - I have not looked to see if there are similar questions for other programming languages. It would be interesting to know the origin of this particular requirement. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 05:02, 4 May 2016 (UTC)
+This looks to correspond to at least one stack overflow question: <http://stackoverflow.com/questions/36931474/how-to-have-10-characters-total-and-make-sure-at-least-one-character-from-4-diff> - I have not looked to see if there are similar questions for other programming languages. It would be interesting to know the origin of this particular requirement. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 05:02, 4 May 2016 (UTC)
 
 I think it was reading read that question or a similar one which prompted me to make this task, but the specific requirements of characters from each group is a policy I have followed for some time and seems to be a fairly standard practice/recommendation. [[User:TobyK|TobyK]] ([[User talk:TobyK|talk]]) 14:05, 20 June 2016 (UTC)
 

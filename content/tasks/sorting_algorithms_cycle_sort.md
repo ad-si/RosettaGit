@@ -51,7 +51,7 @@ From the [[wp:Cycle sort|the Wikipedia entry]] on cycle sorting:
 
 ## See also
 
-* [http://www.youtube.com/watch?v=ZSJGf5Ngw18 Youtube] Visualization and audibilization of Cycle Sort algorithm.
+* [Youtube](http://www.youtube.com/watch?v=ZSJGf5Ngw18) Visualization and audibilization of Cycle Sort algorithm.
 
 
 

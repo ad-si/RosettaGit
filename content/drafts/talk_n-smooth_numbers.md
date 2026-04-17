@@ -14,7 +14,7 @@ tags = []
 
 There seems to be some disagreement among the various implementations about what the 30000th value is for the optional sub-task. Perl 6, Factor and Julia are the same, REXX has different answers. I've checked the Perl 6 several times and can't see where it may be wrong. (That is not to say that it ''isn't'' necessarily, I just can't find a problem yet.) And I am not familiar enough with Julia, Factor or REXX to be able to verify any of those, though having 3 of them agree seems to lean toward those being correct.
 
-To help find the disagreement, I've uploaded several text files containing the first 30,000: [https://github.com/thundergnat/rc/blob/master/resouces/503.txt 503-smooth], [https://github.com/thundergnat/rc/blob/master/resouces/509.txt 509-smooth] and [https://github.com/thundergnat/rc/blob/master/resouces/521.txt 521-smooth] numbers as determined by Perl 6. Each file has 30,000 lines with one number on each line. The last line should be the 30,000th.
+To help find the disagreement, I've uploaded several text files containing the first 30,000: [503-smooth](https://github.com/thundergnat/rc/blob/master/resouces/503.txt), [509-smooth](https://github.com/thundergnat/rc/blob/master/resouces/509.txt) and [521-smooth](https://github.com/thundergnat/rc/blob/master/resouces/521.txt) numbers as determined by Perl 6. Each file has 30,000 lines with one number on each line. The last line should be the 30,000th.
 
 If another author could check against these files and let me know where we differ it would be appreciated. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 08:56, 29 August 2019 (UTC)
 

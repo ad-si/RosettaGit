@@ -575,7 +575,7 @@ Quotient: [1,-1] Remainder: [0,0,-1]
 
 ### Java Interoperability
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/59vpjcQ/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/uUk8yRPnQdGdS1aAUFjhmA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/59vpjcQ/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/uUk8yRPnQdGdS1aAUFjhmA).
 
 ```Scala
 import java.util

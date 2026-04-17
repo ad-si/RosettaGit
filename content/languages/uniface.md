@@ -161,11 +161,11 @@ The Uniface Business Unit has been very transparent to the customer base that Un
 There is the intention to continue to provide minor enhancements to Uniface 9.6 until 2017.
 
 ## External links
-*[http://www.uniface.com Uniface product page] The Uniface Corporate Site
-*[http://www.nextcomcz.eu/index.php?kategorie=en.php Nextcom] Czech company developing in Uniface
-*[http://www.udev.info www.udev.info] building better web applications with Uniface (Tutorials und HowTo's)
-*[http://www.uniface.info The Uniface Community] The Uniface Community web site
-*[http://hosted.byjones.net/turf/ T.U.R.F.] An independent Uniface Related Forum
-*[http://march-hare.com/library/html/ud6blurb.htm Database Driver for Source Code] UD6: a database driver for the Uniface repository (used with Version Control)
-*[http://tcco.nl/index.html TCCO.NL] Designer Developer Uniface-FAST templates - speeds up your Uniface development process.
-*[http://www.uniface.es Uniface. Toda ayuda cuenta] Spanish Uniface forum, news and tutorials.
+*[Uniface product page](http://www.uniface.com) The Uniface Corporate Site
+*[Nextcom](http://www.nextcomcz.eu/index.php?kategorie=en.php) Czech company developing in Uniface
+*[www.udev.info](http://www.udev.info) building better web applications with Uniface (Tutorials und HowTo's)
+*[The Uniface Community](http://www.uniface.info) The Uniface Community web site
+*[T.U.R.F.](http://hosted.byjones.net/turf/) An independent Uniface Related Forum
+*[Database Driver for Source Code](http://march-hare.com/library/html/ud6blurb.htm) UD6: a database driver for the Uniface repository (used with Version Control)
+*[TCCO.NL](http://tcco.nl/index.html) Designer Developer Uniface-FAST templates - speeds up your Uniface development process.
+*[Uniface. Toda ayuda cuenta](http://www.uniface.es) Spanish Uniface forum, news and tutorials.

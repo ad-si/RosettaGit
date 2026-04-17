@@ -1022,7 +1022,7 @@ TwinLensCamera(numberOfLenses=2)
 Lasso only allow single inheritance.
 But it supports the use of multiple traits
 and trays hand down the methods it has implemented provided that the type
-fulfills the requirements for the trait. [http://lassoguide.com/language/traits.html http://lassoguide.com/language/traits.html]
+fulfills the requirements for the trait. [http://lassoguide.com/language/traits.html](http://lassoguide.com/language/traits.html)
 
 ```Lasso
 define trait_camera => trait {
@@ -1334,7 +1334,7 @@ All methods in protocols are abstract (they don't have an implementation).
 When you conform to a protocol you need to implement the specified methods.
 
 If you simply want to combine the functionality (method implementations)
-of multiple classes, you can use message forwarding to mimic the functionality of those classes without actually inheriting them, as described in [http://support.apple.com/kb/TA45894 this guide]:
+of multiple classes, you can use message forwarding to mimic the functionality of those classes without actually inheriting them, as described in [this guide](http://support.apple.com/kb/TA45894):
 
 
 ```objc
@@ -1566,7 +1566,7 @@ use base qw/Camera MobilePhone/;
 ```
 
 
-The same using the [http://search.cpan.org/perldoc?MooseX::Declare MooseX::Declare] extention:
+The same using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) extention:
 
 ```perl
 use MooseX::Declare;
@@ -1657,7 +1657,7 @@ class CameraPhone : Camera, MobilePhone {}
 
 ## PureBasic
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimpleOOP].
+Using the open-source precompiler [SimpleOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Class Camera

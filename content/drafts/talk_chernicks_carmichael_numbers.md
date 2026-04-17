@@ -17,7 +17,7 @@ I've checked all values of 'm' up to 16 billion and found nothing. This is in co
 
 So, if a(10) does exist, it must be very large and, given the nature of the constraints, the probability of finding 10 primes which satisfy them is beginning to look low to me. --[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 18:48, 3 June 2019 (UTC)
 
-: a(10) was discovered today by Amiram Eldar (the author of the [https://oeis.org/A318646 A318646] sequence) for m = 3208386195840. -- [[User:Trizen|Trizen]] ([[User talk:Trizen|talk]]) 12:10, 4 June 2019 (UTC)
+: a(10) was discovered today by Amiram Eldar (the author of the [A318646](https://oeis.org/A318646) sequence) for m = 3208386195840. -- [[User:Trizen|Trizen]] ([[User talk:Trizen|talk]]) 12:10, 4 June 2019 (UTC)
 
 Yep, knowing that, I've now found a(10) to be:
 

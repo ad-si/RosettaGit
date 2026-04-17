@@ -1016,7 +1016,7 @@ fox
 ## Common Lisp
 
 
-The [http://www.lispworks.com/documentation/HyperSpec/Body/03_dac.htm <tt>&rest</tt>] [http://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm lambda list keyword] causes all remaining arguments to be bound to the following variable.
+The [<tt>&rest</tt>](http://www.lispworks.com/documentation/HyperSpec/Body/03_dac.htm) [lambda list keyword](http://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm) causes all remaining arguments to be bound to the following variable.
 
 
 ```lisp
@@ -1208,7 +1208,7 @@ Being a system language, in D there are also:
 * D-style variadic functions with type info
 * Typesafe variadic function for class objects
 
-See for more info: http://dlang.org/function.html
+See for more info: <http://dlang.org/function.html>
 
 =={{header|Déjà Vu}}==
 
@@ -1496,9 +1496,9 @@ banana
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Variadic_function this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Variadic_function) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1625,7 +1625,7 @@ TRUE
 
 ## Go
 
-A variadic function in Go has a <code>...</code> prefix on the type of the final parameter.  [https://golang.org/ref/spec#Function_types (spec, Function types)]
+A variadic function in Go has a <code>...</code> prefix on the type of the final parameter.  [(spec, Function types)](https://golang.org/ref/spec#Function_types)
 
 
 ```go
@@ -1867,7 +1867,7 @@ printAll((Object)args);
 
 ### ES5
 
-The [https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Functions/arguments <code>arguments</code>] special variable, when used inside a function, contains an array of all the arguments passed to that function.
+The [<code>arguments</code>](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Functions/arguments) special variable, when used inside a function, contains an array of all the arguments passed to that function.
 
 ```javascript
 function printAll() {
@@ -2825,10 +2825,10 @@ end s;
 
 The '@' operator causes a function to accept a variable number of arguments.
 These can be accesed with the
-'[http://software-lab.de/doc/refA.html#args args]',
-'[http://software-lab.de/doc/refN.html#next next]',
-'[http://software-lab.de/doc/refA.html#arg arg]' and
-'[http://software-lab.de/doc/refR.html#rest rest]' functions.
+'[args](http://software-lab.de/doc/refA.html#args)',
+'[next](http://software-lab.de/doc/refN.html#next)',
+'[arg](http://software-lab.de/doc/refA.html#arg)' and
+'[rest](http://software-lab.de/doc/refR.html#rest)' functions.
 
 ```PicoLisp
 (de varargs @

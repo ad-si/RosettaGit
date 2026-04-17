@@ -30,12 +30,12 @@ languages = [
 
 ## Task
 
-Create a [https://en.wikipedia.org/wiki/Snakes_and_Ladders Snakes and Ladders] game where the computer plays against a human player.
+Create a [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders) game where the computer plays against a human player.
 
 
 This game is also known as   '''Chutes and Ladders'''.       <!--    Alias for "Snakes and Ladders".    !-->
 
-For a board example you can use this image here: [http://paulo-jorente.de/text/snakes_ledders.jpg snakes & ledders].
+For a board example you can use this image here: [snakes & ledders](http://paulo-jorente.de/text/snakes_ledders.jpg).
 
 The way you'll represent the board and the players' tokens is totally up to you: graphics or ASCII graphics or even just text.
 

@@ -12,4 +12,4 @@ tags = []
 
 SWI-Prolog offers a comprehensive Free Software Prolog environment, licensed under the Lesser GNU Public License.
 
-[http://www.swi-prolog.org/ SWI Prolog site]
+[SWI Prolog site](http://www.swi-prolog.org/)

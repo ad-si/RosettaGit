@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-It would be nice if we detailed how to statically analyze code from different languages for errors. I've compiled a personal list of tools for error checking (https://github.com/mcandre/linters).
+It would be nice if we detailed how to statically analyze code from different languages for errors. I've compiled a personal list of tools for error checking (<https://github.com/mcandre/linters>).
 
 --[[User:Mcandre]]
 
-:There are a couple for [[Tcl]]: [http://docs.activestate.com/tdk/4.1/Checker.html TclChecker] (commercial) and [http://nagelfar.berlios.de Nagelfar] (open source). –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 14:42, 21 October 2013 (UTC)
+:There are a couple for [[Tcl]]: [TclChecker](http://docs.activestate.com/tdk/4.1/Checker.html) (commercial) and [Nagelfar](http://nagelfar.berlios.de) (open source). –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 14:42, 21 October 2013 (UTC)

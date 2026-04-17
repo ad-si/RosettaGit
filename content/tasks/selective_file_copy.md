@@ -122,7 +122,7 @@ AAAAA   -2XXXXX
 
 ## AWK
 
-<!-- http://ideone.com/oPMkNK -->
+<!-- <http://ideone.com/oPMkNK> -->
 
 There is no delimiter between input-fields, so we extract the fields from the whole input-record $0 as substrings using substr(). 
 
@@ -907,7 +907,7 @@ I have no idea how PL/I or COBOL store records and little enthusiasm to research
 
 This is WAY more complicated than it could be. Could achieve the same effect in one or two lines of code, but this explicitly shows some of the possible mechanics.
 
-Since the sfc.dat file is binary encoded, I can't include it here easily as text so [https://github.com/thundergnat/rc/blob/master/sfc.dat here is a link to an online copy] instead. 
+Since the sfc.dat file is binary encoded, I can't include it here easily as text so [here is a link to an online copy](https://github.com/thundergnat/rc/blob/master/sfc.dat) instead. 
 
 
 ```perl6

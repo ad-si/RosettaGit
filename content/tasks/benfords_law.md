@@ -86,7 +86,7 @@ For this task, write (a) routine(s) to calculate the distribution of first signi
 
 Use the first 1000 numbers from the Fibonacci sequence as your data set. No need to show how the Fibonacci numbers are obtained.
 
-You can [[Fibonacci sequence|generate]] them or load them [http://www.fullbooks.com/The-first-1001-Fibonacci-Numbers.html from a file]; whichever is easiest.
+You can [[Fibonacci sequence|generate]] them or load them [from a file](http://www.fullbooks.com/The-first-1001-Fibonacci-Numbers.html); whichever is easiest.
 
 Display your actual vs expected distribution.
 
@@ -95,7 +95,7 @@ Display your actual vs expected distribution.
 
 
 ;<nowiki>See also:</nowiki>
-* [http://www.numberphile.com/videos/benfords_law.html numberphile.com].
+* [numberphile.com](http://www.numberphile.com/videos/benfords_law.html).
 * A starting page on Wolfram Mathworld is {{Wolfram|Benfords|Law}}.
 
 
@@ -320,7 +320,7 @@ end Benford;
 ###  Extra Credit
 
 
-Input is the list of primes below 100,000 from [http://www.mathsisfun.com/numbers/prime-number-lists.html]. Since each line in that file holds prime and only a prime, but no ongoing counter, we must slightly modify the program by commenting out a single line:
+Input is the list of primes below 100,000 from <http://www.mathsisfun.com/numbers/prime-number-lists.html>. Since each line in that file holds prime and only a prime, but no ongoing counter, we must slightly modify the program by commenting out a single line:
 
 
 ```Ada
@@ -567,7 +567,7 @@ BigAdd(a, b) {
 	return, (Carry ? Carry : "") . Result
 }
 ```
-NStepSequence() is available [http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey here].
+NStepSequence() is available [here](http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey).
 '''Output:'''
 
 ```txt
@@ -2111,7 +2111,7 @@ fun main(a: Array<String>) = println(Benford(FibonacciGenerator))
 ## Liberty BASIC
 
 Using function from
-http://rosettacode.org/wiki/Fibonacci_sequence#Liberty_BASIC
+<http://rosettacode.org/wiki/Fibonacci_sequence#Liberty_BASIC>
 
 ```lb
 
@@ -2368,7 +2368,7 @@ First 1000 fibonacci numbers:
 ## OCaml
 
 For the Fibonacci sequence, we use the function from
-https://rosettacode.org/wiki/Fibonacci_sequence#Arbitrary_Precision
+<https://rosettacode.org/wiki/Fibonacci_sequence#Arbitrary_Precision>
 
 Note the remark about the compilation of the program there.
 
@@ -3720,7 +3720,7 @@ f,p
 ```
 
 
-Assuming the data are random, one can also do a goodness of fit [https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test chi-square test]:
+Assuming the data are random, one can also do a goodness of fit [chi-square test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test):
 
 
 ```stata

@@ -9,4 +9,4 @@ id = 17296
 categories = []
 tags = []
 +++
-Kamailio Script is the language for configuring the [http://www.kamailio.org/w/ Kamailio SIP Server].
+Kamailio Script is the language for configuring the [Kamailio SIP Server](http://www.kamailio.org/w/).

@@ -85,7 +85,7 @@ The browser is the new [[GUI]] !
 
 ## Task
 
-Serve our standard text   <big><big><code>Goodbye, World!</code></big></big>   to   http://localhost:8080/   so that it can be viewed with a web browser.
+Serve our standard text   <big><big><code>Goodbye, World!</code></big></big>   to   <http://localhost:8080/>   so that it can be viewed with a web browser.
 
 The provided solution must start or implement a server that accepts multiple client connections and serves text as requested.
 
@@ -246,7 +246,7 @@ WEnd
 With GNU AWK (gawk) a simple web server can be implemented.
 
 The example is taken from
-[http://www.gnu.org/software/gawk/manual/gawkinet/gawkinet.html#Primitive-Service]
+<http://www.gnu.org/software/gawk/manual/gawkinet/gawkinet.html#Primitive-Service>
 (Documentation is licensed under GNU Free Documentation License, Version 1.3)
 
 ```AWK
@@ -527,7 +527,7 @@ namespace Webserver
 
 ## Clojure
 
-Taken from: [https://github.com/weavejester/compojure/wiki/Getting-Started Compojure's Getting Started doc].
+Taken from: [Compojure's Getting Started doc](https://github.com/weavejester/compojure/wiki/Getting-Started).
 
 <tt>> lein new compojure goodbye-world</tt>
 
@@ -1109,7 +1109,7 @@ func main() {
 
 
 Lightweightly concurrent "hello world" web server
-using the [http://www.yesodweb.com/book/conduits conduit] stack:
+using the [conduit](http://www.yesodweb.com/book/conduits) stack:
 
 
 ```haskell
@@ -1125,7 +1125,7 @@ main = runTCPServer (ServerSettings 8080 "127.0.0.1") $ const (yield response $$
 ```
 
 
-Or using only "standard" features ([http://hackage.haskell.org/package/base base], [http://hackage.haskell.org/package/bytestring bytestring] and [http://hackage.haskell.org/package/network network] from the [http://hackage.haskell.org/platform/ Haskell Platform]):
+Or using only "standard" features ([base](http://hackage.haskell.org/package/base), [bytestring](http://hackage.haskell.org/package/bytestring) and [network](http://hackage.haskell.org/package/network) from the [Haskell Platform](http://hackage.haskell.org/platform/)):
 
 
 ```haskell
@@ -1149,7 +1149,7 @@ main = bracket (listenOn $ PortNumber 8080) sClose loop where
 
 Both works like this:
 
- $ curl http://localhost:8080/
+ $ curl <http://localhost:8080/>
  Goodbye, World!
  # httperf --port=8080 --num-conns=10000
  Request rate: 4549.5 req/s (0.2 ms/req)
@@ -1157,7 +1157,7 @@ Both works like this:
  Request rate: 8202.5 req/s (0.1 ms/req)
  Errors: total 10000 client-timo 0 socket-timo 0 connrefused 0 connreset 10000
 
-Or using warp ([http://hackage.haskell.org/package/warp warp] [https://wiki.haskell.org/Web/Servers#Warp warp example] [http://aosabook.org/en/posa/warp.html about warp]):
+Or using warp ([warp](http://hackage.haskell.org/package/warp) [warp example](https://wiki.haskell.org/Web/Servers#Warp) [about warp](http://aosabook.org/en/posa/warp.html)):
 
 
 ```haskell
@@ -1185,7 +1185,7 @@ index x = responseBuilder status200 [("Content-Type", "text/plain")] $ mconcat $
 
 
 Work like this:
- $ curl http://localhost:8080/
+ $ curl <http://localhost:8080/>
  Hello World!
  #httperf --server localhost --port 8080 --num-conns 10000 --num-calls 100
  Request rate: 43565.8 req/s (0.0 ms/req)
@@ -1194,7 +1194,7 @@ Work like this:
 
 without any errors
 
-Comparing to [http://www.nginx.org/ nginx]:
+Comparing to [nginx](http://www.nginx.org/):
 
  # httperf --num-conns=10000
  Request rate: 3613.2 req/s (0.3 ms/req)
@@ -1235,8 +1235,8 @@ WebServer start
 ## J
 
 If the desire is to use the browser as a gui, the easiest thing to do
-would be to [http://www.jsoftware.com/stable.htm download] [http://www.jsoftware.com/docs/help701/user/relhigh.htm j7], edit the jhs script to start on port 8080,
-start jhs, visit http://127.0.0.1:8080/jijx then enter the text:
+would be to [download](http://www.jsoftware.com/stable.htm) [j7](http://www.jsoftware.com/docs/help701/user/relhigh.htm), edit the jhs script to start on port 8080,
+start jhs, visit <http://127.0.0.1:8080/jijx> then enter the text:
 
 ```j
 'Goodbye, World!'
@@ -1334,7 +1334,7 @@ http.createServer(function (req, res) {
 
 It scales:
 
- $ curl http://localhost:8080/
+ $ curl <http://localhost:8080/>
  Goodbye, World!
  # httperf --port=8080 --num-conns=10000
  Request rate: 1813.1 req/s (0.6 ms/req)
@@ -1573,7 +1573,7 @@ bundle Default {
 
 ## OCaml
 
-This code is derived from this [http://ocamlunix.forge.ocamlcore.org/sockets.html#htoc54 ocaml-unix documentation].
+This code is derived from this [ocaml-unix documentation](http://ocamlunix.forge.ocamlcore.org/sockets.html#htoc54).
 
 ```ocaml
 let try_finalise f x finally y =
@@ -1663,7 +1663,7 @@ This sample sends 200 OK on any request and echoes the request headers.
 
 ## Opa
 
-From [http://doc.opalang.org/index.html#_a_first_peek_at_opa Opa documentation]:
+From [Opa documentation](http://doc.opalang.org/index.html#_a_first_peek_at_opa):
 
 ```ocaml
 server = one_page_server("Hello", -> <>Goodbye, world</>)
@@ -2216,7 +2216,7 @@ WEBrick::HTTPServer.new(:Port => 80).tap {|srv|
 ```
 
 
-Using the [http://www.sinatrarb.com/ sinatra] gem:
+Using the [sinatra](http://www.sinatrarb.com/) gem:
 
 ```ruby
 require 'sinatra'
@@ -2321,7 +2321,7 @@ simple_http_server(8080, procedure(header, connection)
 
 ## Seed7
 
-The code below was inspired by the example code for the function [http://seed7.sourceforge.net/libraries/listener.htm#openInetListener%28in_integer%29 openInetListener].
+The code below was inspired by the example code for the function [openInetListener](http://seed7.sourceforge.net/libraries/listener.htm#openInetListener%28in_integer%29).
 
 
 ```Seed7
@@ -2461,7 +2461,7 @@ ZnServer stopDefault.
 
 ### Tcl 8.x
 
-This version is adapted from [http://wiki.tcl.tk/28414 the Tcler's Wiki].
+This version is adapted from [the Tcler's Wiki](http://wiki.tcl.tk/28414).
 
 ```tcl
 proc accept {chan addr port} {

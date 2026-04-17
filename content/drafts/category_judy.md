@@ -14,4 +14,4 @@ tags = []
 
 Judy is a C library that provides a state-of-the-art core technology that implements a sparse dynamic array.
 
-[http://judy.sourceforge.net/ Judy on Sourceforge]
+[Judy on Sourceforge](http://judy.sourceforge.net/)

@@ -1860,7 +1860,7 @@ END Queue.
 
 ## D
 
-See code here: http://rosettacode.org/wiki/Queue/Usage#D
+See code here: <http://rosettacode.org/wiki/Queue/Usage#D>
 
 =={{header|Déjà Vu}}==
 This uses a dictionary to have a sort of [[wp:Circular_buffer|circular buffer]] of infinite size.
@@ -1891,7 +1891,7 @@ empty q:
 
 This uses a linked list representation of queues, hanging onto both ends of the list, except that the next-link reference is an E ''promise'' rather than a mutable slot.
 
-Also, according to E design principles, the read and write ends of the queue are separate objects. This has two advantages; first, it implements [http://wiki.erights.org/wiki/POLA POLA] by allowing only the needed end of the queue to be handed out to its users; second, if the reader end is garbage collected the contents of the queue automatically will be as well (rather than accumulating if the writer continues writing).
+Also, according to E design principles, the read and write ends of the queue are separate objects. This has two advantages; first, it implements [POLA](http://wiki.erights.org/wiki/POLA) by allowing only the needed end of the queue to be handed out to its users; second, if the reader end is garbage collected the contents of the queue automatically will be as well (rather than accumulating if the writer continues writing).
 
 
 ```e
@@ -2056,7 +2056,7 @@ Trying to pop:Queue is empty
 ## Elisa
 
 
-This is a generic Queue component based on bi-directional lists. See how in Elisa these [http://jklunder.home.xs4all.nl/elisa/part01/doc080.html lists] are defined.
+This is a generic Queue component based on bi-directional lists. See how in Elisa these [lists](http://jklunder.home.xs4all.nl/elisa/part01/doc080.html) are defined.
 
 
 ```Elisa
@@ -3780,7 +3780,7 @@ Exception: Failure "empty fifo".
 
 
 The standard ocaml library also provides a
-[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Queue.html FIFO module],
+[FIFO module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Queue.html),
 but it is ''imperative'', unlike the implementation above which is ''functional''.
 
 
@@ -3928,7 +3928,7 @@ in
 ```
 
 
-There is also a [http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/queue.html queue datatype] in the Mozart standard library.
+There is also a [queue datatype](http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/queue.html) in the Mozart standard library.
 
 
 ## Pascal
@@ -4451,7 +4451,7 @@ class FIFO:  ## NOT a new-style class, must not derive from "object"
 
 As noted in the contents this must NOT be a new-style class, it must NOT but sub-classed from ''object'' nor any of its descendents.  (A new-style implementation using __getattribute__ would be possible)
 
-Python 2.4 and later includes a [http://docs.python.org/lib/deque-objects.html deque class], supporting thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction. For other options see [http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/68436 Python Cookbook].
+Python 2.4 and later includes a [deque class](http://docs.python.org/lib/deque-objects.html), supporting thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction. For other options see [Python Cookbook](http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/68436).
 
 
 ```python
@@ -4697,7 +4697,7 @@ And this is an implementation of a functional queue.
 ```REBOL
 rebol [
     Title: "FIFO"
-    URL: http://rosettacode.org/wiki/FIFO
+    URL: <http://rosettacode.org/wiki/FIFO>
 ]
 
 ; Define fifo class:

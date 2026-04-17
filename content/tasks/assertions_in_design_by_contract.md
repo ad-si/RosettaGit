@@ -165,7 +165,7 @@ Some compilers allowed a D in column one to signify that this was a debugging st
 
 ## Go
 
-The [https://golang.org/doc/faq#assertions Go FAQ] states:
+The [Go FAQ](https://golang.org/doc/faq#assertions) states:
 ::'''Why does Go not have assertions?'''
 ::Go doesn't provide assertions. They are undeniably convenient, but our experience has been that programmers use them as a crutch to avoid thinking about proper error handling and reporting. Proper error handling means that servers continue operation after non-fatal errors instead of crashing. Proper error reporting means that errors are direct and to the point, saving the programmer from interpreting a large crash trace. Precise errors are particularly important when the programmer seeing the errors is not familiar with the code.
 
@@ -437,10 +437,10 @@ Type check failures can also be caught and processed just like any other excepti
 The function and it's contract are a "translation" of "D".
 
 The Racket Guide introduces contracts here
-[http://docs.racket-lang.org/guide/contracts.html?q=contracts]
+<http://docs.racket-lang.org/guide/contracts.html?q=contracts>
 
 The Racket Reference defines contracts here
-[http://docs.racket-lang.org/reference/contracts.html?q=contracts]
+<http://docs.racket-lang.org/reference/contracts.html?q=contracts>
 
 Note that the examples catch contract blame exceptions -- which, if uncaught are enough to halt a
 program; making them quite assertive.
@@ -674,7 +674,7 @@ puts double("oops")
 
 ## Scala
 
-Scala provides runtime assertions like Java: they are designed to be used by static analysis tools however the default compiler doesn’t perform such analyses by default. The Scala assertions (<tt>assume</tt>, <tt>require</tt>, <tt>assert</tt>, <tt>ensuring</tt>) are [http://www.scala-lang.org/api/current/index.html#scala.Predef$ Predef library] methods that are enabled by default and can be disabled using the <tt>-Xdisable-assertions</tt> runtime flag, unlike Java where assertions are disabled by default and enabled with a runtime flag. It is considered poor form to rely on assertions to validate arguments, because they can be disabled. An appropriate informative runtime exception (e.g. NullPointerException or IllegalArgumentException) should be thrown instead.
+Scala provides runtime assertions like Java: they are designed to be used by static analysis tools however the default compiler doesn’t perform such analyses by default. The Scala assertions (<tt>assume</tt>, <tt>require</tt>, <tt>assert</tt>, <tt>ensuring</tt>) are [Predef library](http://www.scala-lang.org/api/current/index.html#scala.Predef$) methods that are enabled by default and can be disabled using the <tt>-Xdisable-assertions</tt> runtime flag, unlike Java where assertions are disabled by default and enabled with a runtime flag. It is considered poor form to rely on assertions to validate arguments, because they can be disabled. An appropriate informative runtime exception (e.g. NullPointerException or IllegalArgumentException) should be thrown instead.
 
 ```Scala
 object AssertionsInDesignByContract extends App {

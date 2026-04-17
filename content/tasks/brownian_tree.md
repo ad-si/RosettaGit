@@ -123,7 +123,7 @@ Plotting the seed creates an animation effect of the seed moving around in it's 
 
 Works with AutoHotkey_L
 Takes a little while to run, be patient.
-Requires the [http://www.autohotkey.com/forum/topic32238.html GDI+ Standard Library by Tic]
+Requires the [GDI+ Standard Library by Tic](http://www.autohotkey.com/forum/topic32238.html)
 
 ```AHK
 SetBatchLines -1
@@ -180,7 +180,7 @@ Rnd(min, max){
 	return r
 }
 ```
-Sample output file [http://www.autohotkey.net/~crazyfirex/Images/brownian.png here]
+Sample output file [here](http://www.autohotkey.net/~crazyfirex/Images/brownian.png)
 
 
 ## BBC BASIC
@@ -928,7 +928,7 @@ end;
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=color%20999%0Alen%20f%5B%5D%20200%20%2A%20200%0Amove%20100%20100%0Arect%200.5%200.5%0Af%5B100%20%2A%20200%20%2B%20100%5D%20%3D%201%0An%20%3D%209000%0Awhile%20i%20%3C%20n%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0Awhile%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0A.%0Awhile%20x%20%3C%3E%20-1%0Axo%20%3D%20x%0Ayo%20%3D%20y%0Ax%20%2B%3D%20random%203%20-%201%0Ay%20%2B%3D%20random%203%20-%201%0Aif%20x%20%3C%200%20or%20y%20%3C%200%20or%20x%20%3E%3D%20200%20or%20y%20%3E%3D%20200%0Ax%20%3D%20-1%0Aelse%0Aif%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Amove%20xo%20/%202%20yo%20/%202%0Arect%200.5%200.5%0Af%5Byo%20%2A%20200%20%2B%20xo%5D%20%3D%201%0Ai%20%2B%3D%201%0Aif%20i%20mod%2016%20%3D%200%0Acolor_red%200.2%20%2B%20i%20/%20n%0Asleep%200%0A.%0Ax%20%3D%20-1%0A.%0A.%0A.%0A. Run it]
+[Run it](https://easylang.online/apps/run.html?code=color%20999%0Alen%20f%5B%5D%20200%20%2A%20200%0Amove%20100%20100%0Arect%200.5%200.5%0Af%5B100%20%2A%20200%20%2B%20100%5D%20%3D%201%0An%20%3D%209000%0Awhile%20i%20%3C%20n%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0Awhile%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0A.%0Awhile%20x%20%3C%3E%20-1%0Axo%20%3D%20x%0Ayo%20%3D%20y%0Ax%20%2B%3D%20random%203%20-%201%0Ay%20%2B%3D%20random%203%20-%201%0Aif%20x%20%3C%200%20or%20y%20%3C%200%20or%20x%20%3E%3D%20200%20or%20y%20%3E%3D%20200%0Ax%20%3D%20-1%0Aelse%0Aif%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Amove%20xo%20/%202%20yo%20/%202%0Arect%200.5%200.5%0Af%5Byo%20%2A%20200%20%2B%20xo%5D%20%3D%201%0Ai%20%2B%3D%201%0Aif%20i%20mod%2016%20%3D%200%0Acolor_red%200.2%20%2B%20i%20/%20n%0Asleep%200%0A.%0Ax%20%3D%20-1%0A.%0A.%0A.%0A.)
 
 ```easylang
 color 999
@@ -1027,7 +1027,7 @@ MAIN: save-brownian-tree-image
 
 Output:
 
-[https://i.imgur.com/qDVylB9.png image]
+[image](https://i.imgur.com/qDVylB9.png)
 
 
 ## Fantom
@@ -1360,7 +1360,7 @@ set output
 
 ### Plotting from PARI/GP generated dat-files
 
-'''Note:''' dat-files are [[http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP| PARI/GP]] generated output files.
+'''Note:''' dat-files are [PARI/GP](http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP|) generated output files.
 
 [[File:BT1gp.png|right|thumb|Output BT1gp.png]]
 [[File:BT2gp.png|right|thumb|Output BT2gp.png]]
@@ -1616,7 +1616,7 @@ The modules <code>[[Bitmap#Haskell|Bitmap]]</code>,
 <code>[[Bitmap/Write a PPM file#Haskell|Bitmap.Netpbm]]</code>,
 and <code>[[Bitmap/Histogram#Haskell|Bitmap.BW]]</code> are on RosettaGit.
 The commented-out type signatures require
-[http://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables scoped type variables]
+[scoped type variables](http://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables)
 in order to function.
 
 
@@ -1747,8 +1747,8 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1963,7 +1963,7 @@ public class BasicBrownianTree {
 
 ## JavaScript
 
-[http://switchb.org/kpreid/2010/brownian-tree/ Live version]
+[Live version](http://switchb.org/kpreid/2010/brownian-tree/)
 <!-- If changing this example, add note this link is outdated -->
 
 ```javascript
@@ -2412,7 +2412,7 @@ Write_PPM( "brownian_tree.ppm", ConvertToColorImage(f) )
 
 ## Mathematica
 
-There is a [http://demonstrations.wolfram.com/DiffusionLimitedAggregation/ prettier version] at the Mathematica demo site.
+There is a [prettier version](http://demonstrations.wolfram.com/DiffusionLimitedAggregation/) at the Mathematica demo site.
 Its source code is also available there but it is not mine.
 
 Loose translation from D.
@@ -4246,7 +4246,7 @@ func randomf()
 
 Output:
 
-[https://www.dropbox.com/s/a22tu6wf0ibu502/BrownianTree.jpg?dl=0 Brownian tree]
+[Brownian tree](https://www.dropbox.com/s/a22tu6wf0ibu502/BrownianTree.jpg?dl=0)
 
 
 ## Ruby
@@ -4705,7 +4705,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#brownian_tree]
+Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#brownian_tree>
 
 
 ## SequenceL
@@ -4819,7 +4819,7 @@ int main(int argc, char ** argv)
 
 Output:
 
-[http://i.imgur.com/OrB9tLI.gifv Output Video]
+[Output Video](http://i.imgur.com/OrB9tLI.gifv)
 
 
 ## Sidef
@@ -4987,7 +4987,7 @@ Requires at least 2k of RAM. If you have more, you can plot it on a larger gridâ
 
 Output:
 
-Screenshot [http://www.edmundgriffiths.com/zx81browniantree.jpg here].
+Screenshot [here](http://www.edmundgriffiths.com/zx81browniantree.jpg).
 
 
 ## Tcl
@@ -5257,7 +5257,7 @@ loop    [repeat X:= Ran(W);  Y:= Ran(H); \inject particle
 This grows rather slowly, so I've added a circle for barnacles to attach to. It looks like tendrils growing from the center to the circle and vice versa. The tree type is similar to that shown in the XPLO and Visual Basic .NET solutions.
 Also, the image is written to disk as each particle attaches so EventViewer will auto update to show the progression.
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Brownian.zkl.jpg|250px|thumb|right]]
 
 ```zkl

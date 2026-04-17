@@ -718,7 +718,7 @@ Common Lisp has both named and positional parameters. The following example show
 ```
 
 
-(Notes: The builtin [http://www.lispworks.com/documentation/HyperSpec/Body/f_sort_.htm sort] takes a "less than" predicate function. The [http://www.lispworks.com/documentation/HyperSpec/Body/f_comple.htm complement] function inverts a predicate.)
+(Notes: The builtin [sort](http://www.lispworks.com/documentation/HyperSpec/Body/f_sort_.htm) takes a "less than" predicate function. The [complement](http://www.lispworks.com/documentation/HyperSpec/Body/f_comple.htm) function inverts a predicate.)
 
 Example uses:
 

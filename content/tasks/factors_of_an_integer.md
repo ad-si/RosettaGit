@@ -2210,7 +2210,7 @@ OUTPUT :
 
 ```
 
-Must be called with pre-polulated value (Positive Integer) in the input stack. Try at Fish Playground[https://fishlanguage.com/playground/onD7KN6YK3XMzLFdr].
+Must be called with pre-polulated value (Positive Integer) in the input stack. Try at Fish Playground<https://fishlanguage.com/playground/onD7KN6YK3XMzLFdr>.
 For Input Number :
 ```txt
  120
@@ -2632,7 +2632,7 @@ Test:
 
 
 =={{Header|Haskell}}==
-Using [https://web.archive.org/web/20121130222921/http://www.polyomino.f2s.com/david/haskell/codeindex.html D. Amos'es Primes module] for finding prime factors
+Using [D. Amos'es Primes module](https://web.archive.org/web/20121130222921/http://www.polyomino.f2s.com/david/haskell/codeindex.html) for finding prime factors
 
 ```Haskell
 import HFM.Primes (primePowerFactors)
@@ -2662,7 +2662,7 @@ primePowerFactors = map (\x-> (head x, length x)) . group . factorize
 ```
 
 
-The above function can also be found in the package [http://hackage.haskell.org/package/arithmoi <code>arithmoi</code>], as <code>Math.NumberTheory.Primes.factorise :: Integer -> [(Integer, Int)]</code>, [http://hackage.haskell.org/package/arithmoi-0.4.2.0/docs/Math-NumberTheory-Primes-Factorisation.html which performs] "factorisation of Integers by the elliptic curve algorithm after Montgomery" and "is best suited for numbers of up to 50-60 digits".
+The above function can also be found in the package [<code>arithmoi</code>](http://hackage.haskell.org/package/arithmoi), as <code>Math.NumberTheory.Primes.factorise :: Integer -> [(Integer, Int)]</code>, [which performs](http://hackage.haskell.org/package/arithmoi-0.4.2.0/docs/Math-NumberTheory-Primes-Factorisation.html) "factorisation of Integers by the elliptic curve algorithm after Montgomery" and "is best suited for numbers of up to 50-60 digits".
 
 Or, deriving cofactors from factors up to the square root:
 
@@ -2799,7 +2799,7 @@ factors of 100=1 2 4 5 10 20 25 50 100
 ```
 
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn divisors]
+{{libheader|Icon Programming Library}} [divisors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 
 ## J
@@ -2925,7 +2925,7 @@ factors=: (*/@:^"1 odometer@:>:)/@q:~&__
 ```
 
 
-See http://www.jsoftware.com/jwiki/Essays/Odometer
+See <http://www.jsoftware.com/jwiki/Essays/Odometer>
 
 
 ## Java

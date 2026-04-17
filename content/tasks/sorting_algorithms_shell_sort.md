@@ -95,9 +95,9 @@ With an increment size of 1, the sort is a basic insertion sort, but by this tim
 Any sequence will sort the data as long as it ends in 1, but some work better than others.
 
 Empirical studies have shown a geometric increment sequence with a ratio of about 2.2 work well in practice.
-[http://www.cs.princeton.edu/~rs/shell/]
+<http://www.cs.princeton.edu/~rs/shell/>
 
-Other good sequences are found at the [https://oeis.org/search?q=shell+sort On-Line Encyclopedia of Integer Sequences].
+Other good sequences are found at the [On-Line Encyclopedia of Integer Sequences](https://oeis.org/search?q=shell+sort).
 
 
 
@@ -598,7 +598,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=131 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=131)
 
 ```AutoHotkey
 MsgBox % ShellSort("")
@@ -1265,7 +1265,7 @@ def shellSort(array) {
 
 ## Eiffel
 
-Translated from pseudocode at [http://en.wikipedia.org/wiki/Shell_sort#Shell_sort_algorithm_in_pseudocode Wikipedia]
+Translated from pseudocode at [Wikipedia](http://en.wikipedia.org/wiki/Shell_sort#Shell_sort_algorithm_in_pseudocode)
 
 This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>.
 
@@ -1634,7 +1634,7 @@ after:  [-802 -90 2 24 45 66 75 170]
 
 ## Haskell
 
-Adapted version from [http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Shell_sort#Haskell]
+Adapted version from <http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Shell_sort#Haskell>
 
 
 ```haskell
@@ -3215,7 +3215,7 @@ const proc: shellSort (inout array elemType: arr) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#shellSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#shellSort>
 
 
 ## Sidef

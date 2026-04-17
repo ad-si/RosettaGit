@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/gen2brain/raylib-go raylib-go] provides Go bindings for 'raylib', a C library for video-games programming.
+[raylib-go](https://github.com/gen2brain/raylib-go) provides Go bindings for 'raylib', a C library for video-games programming.
 
-Its use is subject to the [https://github.com/gen2brain/raylib-go/blob/master/LICENSE zlib License].
+Its use is subject to the [zlib License](https://github.com/gen2brain/raylib-go/blob/master/LICENSE).

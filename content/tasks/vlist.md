@@ -1022,7 +1022,7 @@ Offset: 2
 
 ## Racket
 
-See  https://github.com/takikawa/tr-pfds/blob/master/pfds/vlist.rkt
+See  <https://github.com/takikawa/tr-pfds/blob/master/pfds/vlist.rkt>
 for an implementation of VLists.
 
 

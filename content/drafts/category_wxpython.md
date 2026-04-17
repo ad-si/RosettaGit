@@ -14,9 +14,9 @@ tags = []
 {{stub}}
 
 wxPython is a GUI toolkit for the [[Python]] programming language,
-using [http://wxwidgets.org/ wxWidgets].
+using [wxWidgets](http://wxwidgets.org/).
 
-Website: [http://wxpython.org/ wxPython]
+Website: [wxPython](http://wxpython.org/)
 
 Current version:  wxPython (classic) 3.0.1.1 - 10-Sept-2014
 

@@ -625,7 +625,7 @@ plot 100, 100
 
 ## C
 
-Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -998,7 +998,7 @@ CheckIt
 
 ```
 
-[https://www.dropbox.com/s/uscltz6pwy06jxv/DrawPixelForm.png?dl=0 OutPut]
+[OutPut](https://www.dropbox.com/s/uscltz6pwy06jxv/DrawPixelForm.png?dl=0)
 
 
 ## Nim
@@ -1059,7 +1059,7 @@ SDL.delay(5000)
 ## Oberon
 
 
-With basic module XYplane, the size of the drawing plane cannot be set. Tested with [https://miasap.se/obnc OBNC].
+With basic module XYplane, the size of the drawing plane cannot be set. Tested with [OBNC](https://miasap.se/obnc).
 
 
 ```Oberon
@@ -1413,7 +1413,7 @@ func draw()
 ```
 
 Output image:
-[https://www.dropbox.com/s/gbtrkx7bx7hogxm/PixelColor.jpg?dl=0 Draw a pixel]
+[Draw a pixel](https://www.dropbox.com/s/gbtrkx7bx7hogxm/PixelColor.jpg?dl=0)
 
 
 ## Robotic
@@ -1452,12 +1452,12 @@ put c0c Sprite p00 at "('xPos')" "('yPos')"
 ```
 
 
-I highly recommend you check out [https://www.digitalmzx.net/wiki/index.php?title=Sprite_(Tutorial) this tutorial] for the usage of Sprites in order to get a better understanding of all this.
+I highly recommend you check out [this tutorial](https://www.digitalmzx.net/wiki/index.php?title=Sprite_(Tutorial)) for the usage of Sprites in order to get a better understanding of all this.
 
 
 ## Rust
 
-{{out|Output Image}} [https://cdn1.imggmi.com/uploads/2018/10/3/71d1e0b8722bca5d239eb733320f6df6-full.png RustOut]
+{{out|Output Image}} [RustOut](https://cdn1.imggmi.com/uploads/2018/10/3/71d1e0b8722bca5d239eb733320f6df6-full.png)
 
 
 
@@ -1507,7 +1507,7 @@ fn main() {
 ### Scala idiom
 
 A more Scalesque version could be with the use of its idiom:
-Best experienced in your browser [https://scastie.scala-lang.org/AHtZh6zhRTWGj3M8azw28g with Scastie (remote JVM)].
+Best experienced in your browser [with Scastie (remote JVM)](https://scastie.scala-lang.org/AHtZh6zhRTWGj3M8azw28g).
 
 ```scala
 import java.awt.image.BufferedImage

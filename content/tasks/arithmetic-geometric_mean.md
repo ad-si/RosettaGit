@@ -114,7 +114,7 @@ languages = [
 ;task:
 
 Write a function to compute the [[wp:Arithmetic-geometric mean|arithmetic-geometric mean]] of two numbers.
-[http://mathworld.wolfram.com/Arithmetic-GeometricMean.html]
+<http://mathworld.wolfram.com/Arithmetic-GeometricMean.html>
 The arithmetic-geometric mean of two numbers can be (usefully) denoted as <math>\mathrm{agm}(a,g)</math>, and is equal to the limit of the sequence:
 : <math>a_0 = a; \qquad g_0 = g</math>
 : <math>a_{n+1} = \tfrac{1}{2}(a_n + g_n); \quad g_{n+1} = \sqrt{a_n g_n}.</math>
@@ -125,7 +125,7 @@ Demonstrate the function by calculating:
 
 
 ;Also see:
-*   [http://mathworld.wolfram.com/Arithmetic-GeometricMean.html mathworld.wolfram.com/Arithmetic-Geometric Mean]
+*   [mathworld.wolfram.com/Arithmetic-Geometric Mean](http://mathworld.wolfram.com/Arithmetic-GeometricMean.html)
 
 
 
@@ -3004,7 +3004,7 @@ EndIf
 
 ## Python
 
-The calculation generates two new values from two existing values which is the classic example for the use of [https://docs.python.org/3/reference/simple_stmts.html#grammar-token-target_list  assignment to a list of values in the one statement], so ensuring a<sub>n</sub> g<sub>n</sub> are only calculated from  a<sub>n-1</sub> g<sub>n-1</sub>.
+The calculation generates two new values from two existing values which is the classic example for the use of [assignment to a list of values in the one statement](https://docs.python.org/3/reference/simple_stmts.html#grammar-token-target_list), so ensuring a<sub>n</sub> g<sub>n</sub> are only calculated from  a<sub>n-1</sub> g<sub>n-1</sub>.
 
 
 ### Basic Version
@@ -3264,7 +3264,7 @@ func agm agm,g
 
 ### Flt Version
 
-The thing to note about this implementation is that it uses the [http://flt.rubyforge.org/ Flt] library for high-precision math. This lets you adapt context (including precision and epsilon) to a ridiculous-in-real-life degree.
+The thing to note about this implementation is that it uses the [Flt](http://flt.rubyforge.org/) library for high-precision math. This lets you adapt context (including precision and epsilon) to a ridiculous-in-real-life degree.
 
 ```ruby
 # The flt package (http://flt.rubyforge.org/) is useful for high-precision floating-point math.

@@ -287,13 +287,13 @@ then those arguments are being passed by reference. #
 ```
 
 
-See [http://rosettacode.org/wiki/First-class_functions#ALGOL_68 First-Class Functions] for an example of first-class functions in ALGOL 68.
+See [First-Class Functions](http://rosettacode.org/wiki/First-class_functions#ALGOL_68) for an example of first-class functions in ALGOL 68.
 
-See [http://rosettacode.org/wiki/Partial_function_application#ALGOL_68 Partial Function Application] for an example of partial function application in ALGOL 68.
+See [Partial Function Application](http://rosettacode.org/wiki/Partial_function_application#ALGOL_68) for an example of partial function application in ALGOL 68.
 
-See [http://rosettacode.org/wiki/Optional_parameters#ALGOL_68 Optional Parameters] for an example of optional parameters in Algol 68.
+See [Optional Parameters](http://rosettacode.org/wiki/Optional_parameters#ALGOL_68) for an example of optional parameters in Algol 68.
 
-See [http://rosettacode.org/wiki/Named_parameters#ALGOL_68 Named Parameters] for an example of named parameters in Algol 68.
+See [Named Parameters](http://rosettacode.org/wiki/Named_parameters#ALGOL_68) for an example of named parameters in Algol 68.
 
 
 ## ALGOL W
@@ -2183,7 +2183,7 @@ end
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=1bbbeb240f6fbca4b893271f1a19833b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=1bbbeb240f6fbca4b893271f1a19833b)'''
 
 Some of the uses of Procedures/Functions in Gambas
 
@@ -5730,7 +5730,7 @@ ignore(getln(IN));      # Using a function in statement context (ignore the resu
 ```
 
 
-* Call-by-name parameters use a function in first-class context. The function [http://seed7.sourceforge.net/examples/map.htm doMap] from the examples section of the Seed7 homepage uses a given expression to modify the elements of an array:
+* Call-by-name parameters use a function in first-class context. The function [doMap](http://seed7.sourceforge.net/examples/map.htm) from the examples section of the Seed7 homepage uses a given expression to modify the elements of an array:
 ```seed7
 seq := doMap([](1, 2, 4, 6, 10, 12, 16), x, succ(x));
 ```

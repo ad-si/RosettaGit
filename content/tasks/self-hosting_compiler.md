@@ -33,26 +33,26 @@ Implement a self-hosting compiler for your language i.e. create a compiler that 
 ## ALGOL 68
 
 
-The Algol 68 to C compiler available here: [http://www.poenikatu.co.uk/src/] or here: [https://github.com/NevilleDNZ/algol68toc] is written in ALGOL 68 and compiles itself. It is derived from the ALGOL 68RS compiler.
+The Algol 68 to C compiler available here: <http://www.poenikatu.co.uk/src/> or here: <https://github.com/NevilleDNZ/algol68toc> is written in ALGOL 68 and compiles itself. It is derived from the ALGOL 68RS compiler.
 
 
 ## BaCon
 
-BaCon is a BASIC to C converter and it is implemented in itself. Also it can compile itself since version 0.110. Source code can be downloaded from [https://basic-converter.org/ here].
+BaCon is a BASIC to C converter and it is implemented in itself. Also it can compile itself since version 0.110. Source code can be downloaded from [here](https://basic-converter.org/).
 
 
 ## C#
 
-The official (Microsoft) C# compiler became self-hosting in 2011 and can be found (along with the self-hosting VB.NET compiler) at [https://github.com/dotnet/roslyn].
+The official (Microsoft) C# compiler became self-hosting in 2011 and can be found (along with the self-hosting VB.NET compiler) at <https://github.com/dotnet/roslyn>.
 
-The older Mono C# compiler, currently backed by the .NET Foundation, can be found at [https://github.com/mono/mono]. There is also a (much newer) Mono VB compiler.
+The older Mono C# compiler, currently backed by the .NET Foundation, can be found at <https://github.com/mono/mono>. There is also a (much newer) Mono VB compiler.
 
 
 ## Go
 
 The principal Go compiler was originally written in C but from version 1.5 became entirely self-hosting (with a little assembler).
 
-The source code for the current version can be viewed [https://go.googlesource.com/go here].
+The source code for the current version can be viewed [here](https://go.googlesource.com/go).
 
 There is also a second compiler 'gccgo' which is part of the GNU Compiler Collection. However, this compiler is written in C++.
 
@@ -78,7 +78,7 @@ Go hang a salami imalas a gnah oG
 
 The Kotlin compiler is partly self-hosted (the rest is written in Java) and the current version (1.1.2), released in April 2017, is the culmination of about 7 years of development by a large team of people at JetBrains and open source contributors.
 
-Any one who is interested can view the code for the compiler at https://github.com/jetbrains/kotlin.
+Any one who is interested can view the code for the compiler at <https://github.com/jetbrains/kotlin>.
 
 
 ## Lingo
@@ -126,31 +126,31 @@ Phix is self hosted. Run "p -c p" and it rebuilds itself in about 15 seconds. On
 
 ## Python
 
-The [http://pypy.org/ PyPy] project has implemented Python using the Python language. The most popular Python interpreter is CPython, which is implemented in C.
+The [PyPy](http://pypy.org/) project has implemented Python using the Python language. The most popular Python interpreter is CPython, which is implemented in C.
 
 ## Rust
 
-[https://web.archive.org/web/20140815054745/http://blog.mozilla.org/graydon/2010/10/02/rust-progress/ Since 2010], the [https://github.com/rust-lang/rust/ Rust compiler] has consisted of a self-hosting compiler frontend built on top of LLVM.
+[Since 2010](https://web.archive.org/web/20140815054745/http://blog.mozilla.org/graydon/2010/10/02/rust-progress/), the [Rust compiler](https://github.com/rust-lang/rust/) has consisted of a self-hosting compiler frontend built on top of LLVM.
 
-A code generator named [https://github.com/CraneStation/cranelift Cranelift], written in Rust, is currently under development with one of its goals being to serve as an alternative to LLVM for debug builds which can provide a better balance between compile time and runtime performance.
+A code generator named [Cranelift](https://github.com/CraneStation/cranelift), written in Rust, is currently under development with one of its goals being to serve as an alternative to LLVM for debug builds which can provide a better balance between compile time and runtime performance.
 
 
 ## Scala
 
-The Scala compiler is totally written in Scala and compiles itself. The code is sourced and maintained in [https://github.com/scala/scala GitHub] repsitory.
+The Scala compiler is totally written in Scala and compiles itself. The code is sourced and maintained in [GitHub](https://github.com/scala/scala) repsitory.
 
 
 ## Visual Basic .NET
 
-The official (Microsoft) VB.NET compiler became self-hosting in 2011 and can be found (along with the self-hosting C# compiler) at [https://github.com/dotnet/roslyn].
+The official (Microsoft) VB.NET compiler became self-hosting in 2011 and can be found (along with the self-hosting C# compiler) at <https://github.com/dotnet/roslyn>.
 
-.NET Mono also has a relatively new VB.NET compiler, which can be found at [https://github.com/mono/mono-basic]. There is also an older Mono C# compiler.
+.NET Mono also has a relatively new VB.NET compiler, which can be found at <https://github.com/mono/mono-basic>. There is also an older Mono C# compiler.
 
 
 ## ZED
 
 Source ->
-Compiled -> http://ideone.com/UHMQco
+Compiled -> <http://ideone.com/UHMQco>
 
 ```zed
 (*) number1 number2

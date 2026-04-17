@@ -12,4 +12,4 @@ tags = []
 
 
 PSQL is the procedural language of the Firebird database. It is used to create stored procedures, and triggers, or, within an EXECUTE BLOCK, within regular SQL.
-See [http://www.firebirdsql.org Firebird homepage]
+See [Firebird homepage](http://www.firebirdsql.org)

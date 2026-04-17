@@ -2918,7 +2918,7 @@ jaro("JELLYFISH", "SMELLYFISH") = 0.8962962963
 
 ## Stata
 
-Here we use the [https://ideas.repec.org/c/boc/bocode/s457850a.html jarowinkler] package from SSC. To install the package, type
+Here we use the [jarowinkler](https://ideas.repec.org/c/boc/bocode/s457850a.html) package from SSC. To install the package, type
 
 
 ```stata

@@ -11,6 +11,6 @@ tags = []
 +++
 
 {{library}}
-REXML is  an XML toolkit for [[Ruby]].  It is distributed in the Ruby [http://www.ruby-doc.org/stdlib/ Standard Library].
+REXML is  an XML toolkit for [[Ruby]].  It is distributed in the Ruby [Standard Library](http://www.ruby-doc.org/stdlib/).
 
-[http://www.germane-software.com/software/rexml/ REXML home]
+[REXML home](http://www.germane-software.com/software/rexml/)

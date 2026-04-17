@@ -1099,7 +1099,7 @@ x^100 + x + 1 for x == modint(10,13) is modint(1,13)
 
 ## Prolog
 
-Works with SWI-Prolog versin 6.4.1 and module lambda (found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl ).
+Works with SWI-Prolog versin 6.4.1 and module lambda (found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> ).
 
 ```Prolog
 :- use_module(library(lambda)).
@@ -1301,7 +1301,7 @@ p x**100 + x +1  ##<Modulo:0x00000000ad1998 @n=1, @m=13>
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/jOSxPQu/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/ZSeJw1lBRZiHenoQ6coDdA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/jOSxPQu/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/ZSeJw1lBRZiHenoQ6coDdA).
 
 ```Scala
 object ModularArithmetic extends App {

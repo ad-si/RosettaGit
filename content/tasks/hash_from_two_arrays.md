@@ -233,7 +233,7 @@ MsgBox % hash["apple"] "`n" hash["two"]
 ## AWK
 
 Awk arrays are used for both lists and hash maps.
-<!--  http://ideone.com/MsdNUc -->
+<!--  <http://ideone.com/MsdNUc> -->
 
 ```awk
 # usage:  awk -v list1="i ii iii" -v list2="1 2 3"  -f hash2.awk
@@ -819,7 +819,7 @@ a = new dict[["a", "b", "c"], [1, 2, 3]]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=944f0b9cbf60910e7ee7ea4191928a7c Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=944f0b9cbf60910e7ee7ea4191928a7c)'''
 
 ```gambas
 Public Sub Main()
@@ -2457,7 +2457,7 @@ println("Successfully completed without errors.")
 
 ## Scheme
 
-Using [http://srfi.schemers.org/srfi-69/srfi-69.html SRFI 69]:
+Using [SRFI 69](http://srfi.schemers.org/srfi-69/srfi-69.html):
 
 ```scheme
 (define (lists->hash-table keys values . rest)
@@ -2654,7 +2654,7 @@ arr(joe)  = tailor
 ```
 
 
-Alternatively, a dictionary could be used: <!-- http://ideone.com/6lI4k5 -->
+Alternatively, a dictionary could be used: <!-- <http://ideone.com/6lI4k5> -->
 
 ```tcl
 package require Tcl 8.5

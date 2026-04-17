@@ -16,6 +16,6 @@ CLIM is a user interface framework for [[Common Lisp]]. It has a specification a
 
 ==See also==
 
-* [http://common-lisp.net/project/mcclim/ McCLIM], an open source CLIM implementation
-* [http://www.cliki.net/CLIM CLIM page at CLiki]
-* [http://bauhh.dyndns.org:8000/clim-spec/index.html CLIM Specification]
+* [McCLIM](http://common-lisp.net/project/mcclim/), an open source CLIM implementation
+* [CLIM page at CLiki](http://www.cliki.net/CLIM)
+* [CLIM Specification](http://bauhh.dyndns.org:8000/clim-spec/index.html)

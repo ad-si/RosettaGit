@@ -72,7 +72,7 @@ After a sufficient number of iterations, the image of a Sierpinski Triangle shou
 
 
 ;See also
-* [http://www.geoastro.de/ChaosSpiel/ChaosEnglish.html The Game of Chaos]
+* [The Game of Chaos](http://www.geoastro.de/ChaosSpiel/ChaosEnglish.html)
 
 
 
@@ -195,7 +195,7 @@ Note that ZX81 BASIC does not have an explicit computed <code>GOTO</code>; we ca
 ```
 
 {{out}}
-Screenshot [http://www.edmundgriffiths.com/zx81chaosgame.jpg here]. As with most ZX81 graphics, you can obtain the very best results by making it quite small and looking at it from a long way away.
+Screenshot [here](http://www.edmundgriffiths.com/zx81chaosgame.jpg). As with most ZX81 graphics, you can obtain the very best results by making it quite small and looking at it from a long way away.
 
 =
 ## ZX Spectrum Basic
@@ -228,7 +228,7 @@ The final <code>INK</code> statement sets the foreground colour back to black.
 ## C
 
 
-Interactive code which asks the side length of the starting triangle and number of iterations as inputs, a larger number of iterations produces a more accurate approximation of the Sierpinski fractal. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Interactive code which asks the side length of the starting triangle and number of iterations as inputs, a larger number of iterations produces a more accurate approximation of the Sierpinski fractal. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -526,7 +526,7 @@ namespace RosettaChaosGame
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=x%5B%5D%20%3D%20%5B%200%20100%2050%20%5D%0Ay%5B%5D%20%3D%20%5B%2093%2093%207%20%5D%0Ac%5B%5D%20%3D%20%5B%20900%20090%20009%20%5D%0Afor%20i%20range%20100000%0Ah%20%3D%20random%203%0Ax%23%20%3D%20%28x%23%20%2B%20x%5Bh%5D%29%20/%202%0Ay%23%20%3D%20%28y%23%20%2B%20y%5Bh%5D%29%20/%202%0Acolor%20c%5Bh%5D%0Amove%20x%23%20y%23%0Arect%200.3%200.3%0A. Run it]
+[Run it](https://easylang.online/apps/run.html?code=x%5B%5D%20%3D%20%5B%200%20100%2050%20%5D%0Ay%5B%5D%20%3D%20%5B%2093%2093%207%20%5D%0Ac%5B%5D%20%3D%20%5B%20900%20090%20009%20%5D%0Afor%20i%20range%20100000%0Ah%20%3D%20random%203%0Ax%23%20%3D%20%28x%23%20%2B%20x%5Bh%5D%29%20/%202%0Ay%23%20%3D%20%28y%23%20%2B%20y%5Bh%5D%29%20/%202%0Acolor%20c%5Bh%5D%0Amove%20x%23%20y%23%0Arect%200.3%200.3%0A.)
 
 <lang>x[] = [ 0 100 50 ]
 y[] = [ 93 93 7 ]
@@ -2289,7 +2289,7 @@ func draw
 
 ```
 
-* [https://lh3.googleusercontent.com/-xqBO5MB8fpc/Wg05SvwaF9I/AAAAAAAABDA/UGI2goKdDoAR6nbbGZF0YcuwGG6tancvACLcBGAs/s1600/CalmoSoftChaos.jpg Chaos Game (image)]
+* [Chaos Game (image)](https://lh3.googleusercontent.com/-xqBO5MB8fpc/Wg05SvwaF9I/AAAAAAAABDA/UGI2goKdDoAR6nbbGZF0YcuwGG6tancvACLcBGAs/s1600/CalmoSoftChaos.jpg)
 
 
 ## Run BASIC
@@ -2552,7 +2552,7 @@ var r = [(width-1).irand, (height-1).irand]
 img.write(file => 'chaos_game.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/chaos-game-sidef.png Chaos game]
+Output image: [Chaos game](https://github.com/trizen/rc/blob/master/img/chaos-game-sidef.png)
 
 
 ## Simula
@@ -2692,7 +2692,7 @@ next
 
 This is a half assed animated process - a bunch of pixels are drawn every couple of seconds and the pixmap written [to the file system]. So, if you open the output file ("chaosGame.jpg") it will [auto] update and show the progression of the image.
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 {{trans|Java}}
 [[File:ChaosGame.zkl.jpg|240px|thumb|right]]
 

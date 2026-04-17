@@ -48,7 +48,7 @@ Show your output here.
 
 ## See also
 
-* [http://mathworld.wolfram.com/s-Cluster.html s-Cluster] on Wolfram mathworld.
+* [s-Cluster](http://mathworld.wolfram.com/s-Cluster.html) on Wolfram mathworld.
 
 
 ## C
@@ -299,7 +299,7 @@ n_iters=  5, p=0.50, n=32768, sim=0.06578374
 
 ## EchoLisp
 
-We use the canvas bit-map as 2D-matrix. For extra-extra credit, a 800x800 nice cluster tapestry image is shown here : http://www.echolalie.org/echolisp/images/rosetta-clusters-800.png.
+We use the canvas bit-map as 2D-matrix. For extra-extra credit, a 800x800 nice cluster tapestry image is shown here : <http://www.echolalie.org/echolisp/images/rosetta-clusters-800.png>.
 
 ```scheme
 

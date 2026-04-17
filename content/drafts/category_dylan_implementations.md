@@ -12,4 +12,4 @@ tags = []
 
 {{implementation cat|Dylan}}
 
-Open Dylan[https://opendylan.org] is the main Dylan implementation. It uses LLVM[http://llvm.org/] to generate machine code and MPS[https://www.ravenbrook.com/project/mps/] for garbage collection.
+Open Dylan<https://opendylan.org> is the main Dylan implementation. It uses LLVM<http://llvm.org/> to generate machine code and MPS<https://www.ravenbrook.com/project/mps/> for garbage collection.

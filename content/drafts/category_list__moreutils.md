@@ -14,4 +14,4 @@ tags = []
 [[Category:Perl_modules]]
 A module containing methods for operating on lists. It is currently not a part of the core Perl distribution and has to be installed manually. It is combined with List::Util in the List::AllUtils module.
 
-Consult the [https://metacpan.org/pod/List::MoreUtils relevant CPAN page] for information about the methods it exports.
+Consult the [relevant CPAN page](https://metacpan.org/pod/List::MoreUtils) for information about the methods it exports.

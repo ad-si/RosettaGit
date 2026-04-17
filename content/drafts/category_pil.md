@@ -15,7 +15,7 @@ tags = []
 
 Package-Name: python-imaging
 
-Website: [http://www.pythonware.com/products/pil/ pythonware.com]
+Website: [pythonware.com](http://www.pythonware.com/products/pil/)
 
 Adds image processing capabilities to the Python interpreter. 
 

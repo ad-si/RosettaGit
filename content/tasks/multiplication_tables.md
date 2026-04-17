@@ -2931,7 +2931,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=3a3a987766a9a9a383b3e0e8a65d9ea2 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=3a3a987766a9a9a383b3e0e8a65d9ea2)'''
 
 ```gambas
 'Code 'stolen' from Free Basic and altered to work in Gambas
@@ -5551,7 +5551,7 @@ multiplication_table()
 ```REBOL
 REBOL [
 	Title: "12x12 Multiplication Table"
-	URL: http://rosettacode.org/wiki/Print_a_Multiplication_Table
+	URL: <http://rosettacode.org/wiki/Print_a_Multiplication_Table>
 ]
 
 size: 12
@@ -5937,7 +5937,7 @@ yield {
 ## Scheme
 
 
-A better implementation of <tt>iota</tt> is provided by SRFI-1 [http://srfi.schemers.org/srfi-1/srfi-1.html].
+A better implementation of <tt>iota</tt> is provided by SRFI-1 <http://srfi.schemers.org/srfi-1/srfi-1.html>.
 
 
 ```scheme

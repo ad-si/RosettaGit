@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-From the [http://msdn.microsoft.com/en-us/vbasic/ Visual Basic Developer Center] website: "With Visual Basic, you can create applications for Windows, the Web, mobile devices, and Office on the .NET Framework". Visual Basic .NET makes it easy to create [Windows](https://rosettacode.org/wiki/Windows) form applications quickly and efficiently. The language is [object-oriented](https://rosettacode.org/wiki/object-oriented) and has unique features to speed development and deployment.
+From the [Visual Basic Developer Center](http://msdn.microsoft.com/en-us/vbasic/) website: "With Visual Basic, you can create applications for Windows, the Web, mobile devices, and Office on the .NET Framework". Visual Basic .NET makes it easy to create [Windows](https://rosettacode.org/wiki/Windows) form applications quickly and efficiently. The language is [object-oriented](https://rosettacode.org/wiki/object-oriented) and has unique features to speed development and deployment.
 
 Visual Basic .NET, like [C#](https://rosettacode.org/wiki/C_sharp) and other .NET languages, runs on the Microsoft [Common Language Runtime](https://rosettacode.org/wiki/runs_on_vm::Common_Language_Runtime) VM.
 
@@ -18,5 +18,5 @@ Not to be confused with [Visual Basic](https://rosettacode.org/wiki/:Category:Vi
 
 ## See Also
 * [Wikipedia: Visual Basic .NET](https://en.wikipedia.org/wiki/Visual_Basic_.NET)
-* [http://msdn.microsoft.com/en-us/vbasic/ The Visual Basic Developer Center]
-* [http://www.mono-project.com/VisualBasic.NET_support Mono: VisualBasic.NET support] — running VB.NET on platforms other than Windows.
+* [The Visual Basic Developer Center](http://msdn.microsoft.com/en-us/vbasic/)
+* [Mono: VisualBasic.NET support](http://www.mono-project.com/VisualBasic.NET_support) — running VB.NET on platforms other than Windows.

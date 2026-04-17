@@ -30,7 +30,7 @@ This is very much like other tasks. How about stripping any set of chars from a 
 
 == ASCII code 127 is a control character ==
 
-I have updated the task description to be consistent with character code 127 being a control character.  See also: http://www.lammertbies.nl/comm/info/ascii-characters.html or http://en.wikipedia.org/wiki/ASCII#ASCII_control_characters --[[User:Rdm|Rdm]] 15:33, 6 June 2011 (UTC)
+I have updated the task description to be consistent with character code 127 being a control character.  See also: <http://www.lammertbies.nl/comm/info/ascii-characters.html> or <http://en.wikipedia.org/wiki/ASCII#ASCII_control_characters> --[[User:Rdm|Rdm]] 15:33, 6 June 2011 (UTC)
 
 == Incorrect statement about ASCII ==
 

@@ -846,9 +846,9 @@ IN: scratchpad { } { 1 2 } cartesian-product .
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Cartesian_product_of_two_or_more_lists this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Cartesian_product_of_two_or_more_lists) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1276,7 +1276,7 @@ main = do
 
 ## J
 
-The J primitive [http://code.jsoftware.com/wiki/Vocabulary/curlylf catalogue] <code>{</code> forms the Cartesian Product of two or more boxed lists. The result is a multi-dimensional array (which can be reshaped to a simple list of lists if desired).
+The J primitive [catalogue](http://code.jsoftware.com/wiki/Vocabulary/curlylf) <code>{</code> forms the Cartesian Product of two or more boxed lists. The result is a multi-dimensional array (which can be reshaped to a simple list of lists if desired).
 
 ```j
    { 1776 1789 ; 7 12 ; 4 14 23 ; 0 1   NB. result is 4 dimensional array with shape 2 2 3 2
@@ -3751,7 +3751,7 @@ val it = [] : int list list
 ## Stata
 
 
-In Stata, the command '''[https://www.stata.com/help.cgi?fillin fillin]''' may be used to expand a dataset with all combinations of a number of variables. Thus it's easy to compute a cartesian product.
+In Stata, the command '''[fillin](https://www.stata.com/help.cgi?fillin)''' may be used to expand a dataset with all combinations of a number of variables. Thus it's easy to compute a cartesian product.
 
 
 ```stata

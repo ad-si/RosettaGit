@@ -14,4 +14,4 @@ tags = []
 
 MPL is a multi-precision (long integer) arithmetic library for AutoHotkey.
 
-Discussion and usage can be found on its [http://www.autohotkey.com/board/topic/19940-long-integer-arithmetic-library/ topic page], or the latest version can be [http://ahkscript.org/boards/code_downloader.php?id=11949&part=2 directly downloaded]. It currently only works in 32bit versions of AHK.
+Discussion and usage can be found on its [topic page](http://www.autohotkey.com/board/topic/19940-long-integer-arithmetic-library/), or the latest version can be [directly downloaded](http://ahkscript.org/boards/code_downloader.php?id=11949&part=2). It currently only works in 32bit versions of AHK.

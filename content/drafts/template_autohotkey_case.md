@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-''Search autohotkey.com'': [http://www.google.com/search?q=site:www.autohotkey.com+{{PAGENAME}}]
+''Search autohotkey.com'': <http://www.google.com/search?q=site:www.autohotkey.com+{{PAGENAME}}>
 <noinclude>
 
 '''Usage''':

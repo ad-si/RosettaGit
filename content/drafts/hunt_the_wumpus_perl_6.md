@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{collection|Hunt_The_Wumpus}}
-This is a fairly faithful translation of the code found in [http://www.atariarchives.org/bcc1/showpage.php?page=247 The Best of Creative Computing Volume 1 (published 1976)]. 
+This is a fairly faithful translation of the code found in [The Best of Creative Computing Volume 1 (published 1976)](http://www.atariarchives.org/bcc1/showpage.php?page=247). 
 
 The text, prompts and game play are very close the the original. 
 

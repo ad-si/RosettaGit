@@ -54,9 +54,9 @@ More information can be found through the links below.
 
 ## See also
 
-* [http://www.ams.org/samplings/feature-column/fcarc-penrose A good introduction (ams.org)]
-* [http://tartarus.org/simon/20110412-penrose/penrose.xhtml Deflation explained for both sets (tartarus.org)]
-* [http://preshing.com/20110831/penrose-tiling-explained/ Deflation explained for Kite and Dart, includes Python code (preshing.com)]
+* [A good introduction (ams.org)](http://www.ams.org/samplings/feature-column/fcarc-penrose)
+* [Deflation explained for both sets (tartarus.org)](http://tartarus.org/simon/20110412-penrose/penrose.xhtml)
+* [Deflation explained for Kite and Dart, includes Python code (preshing.com)](http://preshing.com/20110831/penrose-tiling-explained/)
 
 
 
@@ -562,7 +562,7 @@ print $fh  qq{<svg xmlns="http://www.w3.org/2000/svg" height="350" width="350"> 
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/penrose_tiling.svg Penrose tiling] (offsite image)
+[Penrose tiling](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/penrose_tiling.svg) (offsite image)
 
 
 ## Perl 6
@@ -615,7 +615,7 @@ say SVG.serialize(
 );
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/penrose-perl6.svg Penrose tiling image]
+See: [Penrose tiling image](https://github.com/thundergnat/rc/blob/master/img/penrose-perl6.svg)
 
 
 ## Phix
@@ -903,7 +903,7 @@ object PenroseTiling extends App {
 
 ## Sidef
 
-Using the LSystem class defined at [https://rosettacode.org/wiki/Hilbert_curve#Sidef Hilbert curve].
+Using the LSystem class defined at [Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#Sidef).
 
 ```ruby
 var rules = Hash(
@@ -931,4 +931,4 @@ lsys.execute('[b]++[b]++[b]++[b]++[b]', 5, "penrose_tiling.png", rules)
 ```
 
 
-Output image: [https://github.com/trizen/rc/blob/master/img/penrose-tiling-sidef.png Penrose tiling]
+Output image: [Penrose tiling](https://github.com/trizen/rc/blob/master/img/penrose-tiling-sidef.png)

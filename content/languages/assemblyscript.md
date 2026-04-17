@@ -9,6 +9,6 @@ id = 22395
 categories = []
 tags = []
 +++
-AssemblyScript compiles a strict subset of [http://www.typescriptlang.org/ Typescript] (basically JavaScript with types) to [https://webassembly.org/ WebAssembly] using [https://github.com/WebAssembly/binaryen Binaryen]. It generates lean and mean WebAssembly modules while being just an npm install away.
+AssemblyScript compiles a strict subset of [Typescript](http://www.typescriptlang.org/) (basically JavaScript with types) to [WebAssembly](https://webassembly.org/) using [Binaryen](https://github.com/WebAssembly/binaryen). It generates lean and mean WebAssembly modules while being just an npm install away.
 
-Github: https://github.com/AssemblyScript/assemblyscript
+Github: <https://github.com/AssemblyScript/assemblyscript>

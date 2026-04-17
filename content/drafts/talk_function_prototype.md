@@ -12,7 +12,7 @@ tags = []
 
 What is a function prototype? The task should not assume the reader knows. --[[User:Paddy3118|Paddy3118]] 21:00, 21 July 2011 (UTC)
 :Function prototype is not a truly general language concept.  I think the task author has some very specific language in mind. --[[User:Ledrug|Ledrug]] 01:07, 22 July 2011 (UTC)
-::I found a wikipedia article, if that helps: http://en.wikipedia.org/wiki/Function_prototype [[User:Markhobley|Markhobley]] 01:49, 22 July 2011 (UTC)
+::I found a wikipedia article, if that helps: <http://en.wikipedia.org/wiki/Function_prototype> [[User:Markhobley|Markhobley]] 01:49, 22 July 2011 (UTC)
 ::Prototypes are fairly general, but not all languages use them. [[User:Markhobley|Markhobley]] 01:56, 22 July 2011 (UTC)
 :::You probably wanted [[wp:Type signature|this link]] instead, which is a more general concept when the language is strongly typed. --[[User:Ledrug|Ledrug]] 02:45, 22 July 2011 (UTC)
 ::::Hmmm. They probably need to merge the two articles. :) [[User:Markhobley|Markhobley]] 08:53, 22 July 2011 (UTC)

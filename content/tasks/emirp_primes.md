@@ -81,10 +81,10 @@ The specific method of how to determine if a range or if specific values are to 
 
 ## See also
 
-*   [https://en.wikipedia.org/wiki/Emirp Wikipedia, Emirp].
-*   [http://primes.utm.edu/glossary/xpage/emirp.html The Prime Pages, emirp].
-*   [http://mathworld.wolfram.com/Emirp.html Wolfram MathWorld&trade;, Emirp].
-*   [https://oeis.org/A006567 The On‑Line Encyclopedia of Integer Sequences, emirps (A6567)].
+*   [Wikipedia, Emirp](https://en.wikipedia.org/wiki/Emirp).
+*   [The Prime Pages, emirp](http://primes.utm.edu/glossary/xpage/emirp.html).
+*   [Wolfram MathWorld&trade;, Emirp](http://mathworld.wolfram.com/Emirp.html).
+*   [The On‑Line Encyclopedia of Integer Sequences, emirps (A6567)](https://oeis.org/A006567).
 
 
 
@@ -728,7 +728,7 @@ first20:     13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359
 ## Common Lisp
 
 
-It uses a primitive prime function found in http://www.rosettacode.org/wiki/Primality_by_trial_division, not optimized at all.
+It uses a primitive prime function found in <http://www.rosettacode.org/wiki/Primality_by_trial_division>, not optimized at all.
 
 ```Lisp
 (defun primep (n)
@@ -927,7 +927,7 @@ Emirps between 7,700 and 8,000: 7717 7757 7817 7841 7867 7879 7901 7927 7949 795
 
 ### The function
 
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2867,7 +2867,7 @@ rumtime for this: 2m 3 secs
 
 ### Using static sieve
 
-is much faster. Only Counting Emirps. http://rosettacode.org/wiki/Extensible_prime_generator#Pascal
+is much faster. Only Counting Emirps. <http://rosettacode.org/wiki/Extensible_prime_generator#Pascal>
 It would be nice, if someone could check the results.Like F# today did
 ;output:
 

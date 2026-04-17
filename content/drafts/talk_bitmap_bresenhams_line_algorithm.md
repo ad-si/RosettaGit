@@ -14,7 +14,7 @@ On a related note, I'd like to see [[wp:Xiaolin_Wu's_line_algorithm|Xiaolin Wu's
 
 == Clipping ==
 
-[http://virtualdub.org/blog/pivot/entry.php?id=341 This] popped up in my RSS feeds today, and may be a worthwhile additional consideration in this task. (Possibly as an extra-credit goal). Also, it's be good to have a better description of the algorithm itself on-page. --[[User:Short Circuit|Michael Mol]] 16:09, 7 July 2011 (UTC)
+[This](http://virtualdub.org/blog/pivot/entry.php?id=341) popped up in my RSS feeds today, and may be a worthwhile additional consideration in this task. (Possibly as an extra-credit goal). Also, it's be good to have a better description of the algorithm itself on-page. --[[User:Short Circuit|Michael Mol]] 16:09, 7 July 2011 (UTC)
 
 == Korn Shell ==
 

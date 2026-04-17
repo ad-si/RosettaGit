@@ -121,7 +121,7 @@ A problem posed by [[wp:Paul Graham|Paul Graham]] is that of creating a function
 
 
 ### Rules:
-The detailed rules are at http://paulgraham.com/accgensub.html and are reproduced here for simplicity (with additions in <small>''small italic text''</small>).
+The detailed rules are at <http://paulgraham.com/accgensub.html> and are reproduced here for simplicity (with additions in <small>''small italic text''</small>).
 :Before you submit an example, make sure the function
 
 :# Takes a number n and returns a function (lets call it g), that takes a number i, and returns n incremented by the accumulation of i from every call of function g(i).
@@ -490,9 +490,9 @@ real: 5.6
 ## ALGOL 68
 
 {{trans|aikido}}{{wont work with|ALGOL 68|Revision 1 - scoping rules forbid exporting a procedure out of it's scope}}
-{{wont work with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny] - scoping rules forbid exporting a procedure out of it's scope - detected at compile time and again at runtime}}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
-Note: Standard ALGOL 68's scoping rules forbids exporting a '''procedure''' (or '''format''') out of it's scope (closure).  Hence this specimen will run on [[ELLA ALGOL 68]], but is non-standard.  For a discussion of first-class functions in ALGOL 68 consult [http://www.cs.ru.nl/~kees/home/papers/psi96.pdf "The Making of Algol 68"] - [[wp:Cornelis_H.A._Koster|C.H.A. Koster]] (1993). <!-- Retrieved April 28, 2007 -->
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - scoping rules forbid exporting a procedure out of it's scope - detected at compile time and again at runtime}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+Note: Standard ALGOL 68's scoping rules forbids exporting a '''procedure''' (or '''format''') out of it's scope (closure).  Hence this specimen will run on [[ELLA ALGOL 68]], but is non-standard.  For a discussion of first-class functions in ALGOL 68 consult ["The Making of Algol 68"](http://www.cs.ru.nl/~kees/home/papers/psi96.pdf) - [[wp:Cornelis_H.A._Koster|C.H.A. Koster]] (1993). <!-- Retrieved April 28, 2007 -->
 
 ```algol68
 MODE NUMBER =  UNION(INT,REAL,COMPL);
@@ -2016,7 +2016,7 @@ x(2.3) println  // --> 8.3000000000000007
 
 ## J
 
-See http://www.jsoftware.com/jwiki/Guides/Lexical_Closure, including the [[j:Guides/Lexical%20Closure#dissent|dissent]] section.
+See <http://www.jsoftware.com/jwiki/Guides/Lexical_Closure>, including the [[j:Guides/Lexical%20Closure#dissent|dissent]] section.
 
 ```J
 oleg=:1 :0
@@ -2865,7 +2865,7 @@ Output:
 ## Nit
 
 
-Source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/accumulator_factory.nit the official Nit repository]
+Source: [the official Nit repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/accumulator_factory.nit)
 
 
 ```nit

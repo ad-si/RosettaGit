@@ -13,7 +13,7 @@ tags = []
 {{collection|FizzBuzz}}
 
 ==regular if / else==
-<!-- http://ideone.com/UrHdvd -->
+<!-- <http://ideone.com/UrHdvd> -->
 This is the "traditional" approach:  
 Loop, and modulo-check to see what to print. 
 
@@ -60,7 +60,7 @@ BEGIN {
 When the output is presented like that, it is easy to see a pattern.
 
 ==bash with echo==
-<!-- http://ideone.com/0VMIuO -->
+<!-- <http://ideone.com/0VMIuO> -->
 Using echo from the shell to generate the numbers as input.
 
 Advantage: we need no loop inside the script.
@@ -92,7 +92,7 @@ seq 100 | awk '$0=NR%15?NR%5?NR%3?$0:"Fizz":"Buzz":"FizzBuzz"'
 
 
 ==No divisions, using counters==
-<!-- http://ideone.com/uHmYUr -->
+<!-- <http://ideone.com/uHmYUr> -->
 Division is one of the more expensive operations,
 so it is nice if we can avoid it.
 
@@ -121,7 +121,7 @@ BEGIN {
 Same output as version 1.
 
 ==No divisions, using pattern-string==
-<!--  http://ideone.com/HJsrvl -->
+<!--  <http://ideone.com/HJsrvl> -->
 Another solution that works without division / modulo.
 {{works with|gawk|4.1.0}} {{works with|mawk|1.3.3}}
 This is inspired by the versions "Without Modulus" of Nimrod and Python, 
@@ -176,7 +176,7 @@ and comes in as the file numbers.txt.
 ```
 
 
-<!-- http://ideone.com/yw1oEK -->
+<!-- <http://ideone.com/yw1oEK> -->
 
 ```AWK
 # usage: awk  -f fizzbuzzCustom.awk  numbers.txt

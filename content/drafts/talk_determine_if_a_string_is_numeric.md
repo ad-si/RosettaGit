@@ -25,7 +25,7 @@ if ( *s == 0 ) return 0;</c>
 
 :This checks also for NULL pointer passed (odd!). --[[User:ShinTakezou|ShinTakezou]] 22:52, 11 December 2008 (UTC)
 :: I've fixed the example (with a slightly more compact <code>if</code> :-)). BTW, there's no void string, only an empty string (well, one could call the null pointer a void string :-)). --[[User:Ce|Ce]] 14:12, 12 December 2008 (UTC)
-:::Semanthic. Void means void (i.e., so to say, a container without contents); the same as empty. (Maybe I ''feel'' it since I am italian, so the fact that C uses the term its way does not let me think I can't use it as normally I would, to say ''empty''. By empty C string, I mean a pointer to a byte which is '\0'. ([http://www.merriam-webster.com/dictionary/void void Webster definition])
+:::Semanthic. Void means void (i.e., so to say, a container without contents); the same as empty. (Maybe I ''feel'' it since I am italian, so the fact that C uses the term its way does not let me think I can't use it as normally I would, to say ''empty''. By empty C string, I mean a pointer to a byte which is '\0'. ([void Webster definition](http://www.merriam-webster.com/dictionary/void))
 
 == Unix shell ==
 

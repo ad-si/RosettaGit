@@ -220,7 +220,7 @@ Sum of multiples of 3 and 5 below 1e20: 2333333333333333333316666666666666666668
 ⎕IO←0
 {+/((0=3|a)∨0=5|a)/a←⍳⍵} 1000
 ```
-[http://ngn.github.io/apl/web/index.html#code=%7B+/%28%280%3D3%7Ca%29%u22280%3D5%7Ca%29/a%u2190%u2373%u2375%7D%201000,run=1 run]
+[run](http://ngn.github.io/apl/web/index.html#code=%7B+/%28%280%3D3%7Ca%29%u22280%3D5%7Ca%29/a%u2190%u2373%u2375%7D%201000,run=1)
 ```txt
 233168
 ```
@@ -411,7 +411,7 @@ $ echo 1000 |awk -f sum_multiples_of3and5.awk
 
 ### Extra credit
 
-In Awk, all numbers are represented internally as double precision floating-point numbers. Thus the result for the extra credit is unprecise. Since version 4.1, GNU Awk supports high precision arithmetic (using [http://www.mpfr.org/ GNU MPFR] and [[GMP]]) which is turned on with the <code>-M / --bignum</code> option. The variable <code>PREC</code> sets the working precision for arithmetic operations (here 80 bits):
+In Awk, all numbers are represented internally as double precision floating-point numbers. Thus the result for the extra credit is unprecise. Since version 4.1, GNU Awk supports high precision arithmetic (using [GNU MPFR](http://www.mpfr.org/) and [[GMP]]) which is turned on with the <code>-M / --bignum</code> option. The variable <code>PREC</code> sets the working precision for arithmetic operations (here 80 bits):
 
 
 ```txt
@@ -2604,7 +2604,7 @@ Another alternative is
 n=1000; sum(0:3:n-1)+sum(0:5:n-1)-sum(0:15:n-1)
 ```
 
-Of course, it's more efficient to use [http://mathforum.org/library/drmath/view/57919.html Gauss' approach] of adding subsequent integers:
+Of course, it's more efficient to use [Gauss' approach](http://mathforum.org/library/drmath/view/57919.html) of adding subsequent integers:
 
 ```MATLAB
 n=999;

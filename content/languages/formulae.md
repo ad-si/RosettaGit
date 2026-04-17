@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 ### What is Fōrmulæ ?
-Fōrmulæ is a [https://en.wikipedia.org/wiki/Application_framework framework] to do [https://en.wikipedia.org/wiki/Computer_algebra symbolic computation].
+Fōrmulæ is a [framework](https://en.wikipedia.org/wiki/Application_framework) to do [symbolic computation](https://en.wikipedia.org/wiki/Computer_algebra).
 
-Symbolic computation works by the repeatedly application of rules of transformation &mdash;also called [https://en.wikipedia.org/wiki/Rewriting rewriting rules] &mdash; on symbolic expressions, until no rule can be applied.
+Symbolic computation works by the repeatedly application of rules of transformation &mdash;also called [rewriting rules](https://en.wikipedia.org/wiki/Rewriting) &mdash; on symbolic expressions, until no rule can be applied.
 
 As a very simple example, consider the following sequence of rule application:
 
@@ -21,35 +21,35 @@ As a very simple example, consider the following sequence of rule application:
 |-
 | 2 + (3 × 5) || Starting expression
 |-
-| 2 + 15 || [http://wiki.formulae.org/Math.Arithmetic.Multiplication#Addition_of_numeric_addends Numeric multiplication] rule
+| 2 + 15 || [Numeric multiplication](http://wiki.formulae.org/Math.Arithmetic.Multiplication#Addition_of_numeric_addends) rule
 |-
-| 17 || [http://wiki.formulae.org/Math.Arithmetic.Addition#Addition_of_numeric_addends Numeric addition] rule
+| 17 || [Numeric addition](http://wiki.formulae.org/Math.Arithmetic.Addition#Addition_of_numeric_addends) rule
 |-
 | 17 || Final result, no rule can be applied
 |}
 
 Mathematics is not the only field where symbolic computation can be used.
 
-Traditional symbolic software, such as [https://en.wikipedia.org/wiki/Wolfram_Mathematica Mathematica], [https://en.wikipedia.org/wiki/Maple_(software) Maple] or [https://en.wikipedia.org/wiki/MATLAB Matlab] are provided with a considerable but fixed set of rewriting rules.
+Traditional symbolic software, such as [Mathematica](https://en.wikipedia.org/wiki/Wolfram_Mathematica), [Maple](https://en.wikipedia.org/wiki/Maple_(software)) or [Matlab](https://en.wikipedia.org/wiki/MATLAB) are provided with a considerable but fixed set of rewriting rules.
 
 The Fōrmulæ project works in a different way. We do not only create rewriting rules, It provides an specification with which anybody can write &mdash;in a regular programming language&mdash; rewriting rules that can be also published. It converts the process of creating rewriting rules to a colaborative one.
 
 ### Fōrmulæ wiki
-As you can see, the number of rules are always increasing and they need to be documented. The [http://wiki.formulae.org Fōrmulæ wiki] is the official mean to do it.
+As you can see, the number of rules are always increasing and they need to be documented. The [Fōrmulæ wiki](http://wiki.formulae.org) is the official mean to do it.
 
-The wiki is organized on ''expression tags''. An expression tag is a unique name given to a kind of symbolic expression, i.e. the mathematical addition operation receives the expression tag '''Math.Arithmetic.Addition'''. The [http://wiki.formulae.org/Math.Arithmetic.Addition Math.Arithmetic.Addition] wiki entry enumerates and describes every known rule applied to this expression tag.
+The wiki is organized on ''expression tags''. An expression tag is a unique name given to a kind of symbolic expression, i.e. the mathematical addition operation receives the expression tag '''Math.Arithmetic.Addition'''. The [Math.Arithmetic.Addition](http://wiki.formulae.org/Math.Arithmetic.Addition) wiki entry enumerates and describes every known rule applied to this expression tag.
 
 
 ###  Expression visualization
 
 
-[[File:FormulaeVisualExample.png|thumb|An example of [https://en.wikipedia.org/wiki/Prettyprint pretty-print] visualization of expressions]]
+[[File:FormulaeVisualExample.png|thumb|An example of [pretty-print](https://en.wikipedia.org/wiki/Prettyprint) visualization of expressions]]
 
 The Fōrmulæ framework is not only a specification to create rewriting rules. It also defines a specification of how to visualize symbolic expressions, and how to create methods for editing symbolic expressions.
 
 It means that anybody can write code to define how an expression is to be shown. It is called a visualization rule. Moreover, there can be multiple visualization rules for a specific expression, although only one can be used at the same time.
 
-It is very common that these visualization rules show expression as humans do. It is usually called [https://en.wikipedia.org/wiki/Prettyprint pretty-print]. Moreover, different visualization rules can also written to match science field, localization (see [http://wiki.formulae.org/Category:Expressions_with_localized_implementations Expressions with localized implementations]), or even personal preferences.
+It is very common that these visualization rules show expression as humans do. It is usually called [pretty-print](https://en.wikipedia.org/wiki/Prettyprint). Moreover, different visualization rules can also written to match science field, localization (see [Expressions with localized implementations](http://wiki.formulae.org/Category:Expressions_with_localized_implementations)), or even personal preferences.
 
 Entries in the wiki also describe the known visualization rules for a specific expression tag.
 
@@ -71,9 +71,9 @@ The following are some of the standard packages:
 {| class="wikitable"
 ! Standard package || Description
 |-
-| Arithmetic || Number definition, [https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic arbitrary precision] calculations, [https://en.wikipedia.org/wiki/Rational_number rational numbers], [https://en.wikipedia.org/wiki/Imaginary_unit imaginary unit], [https://en.wikipedia.org/wiki/Infinity infinity]
+| Arithmetic || Number definition, [arbitrary precision](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) calculations, [rational numbers](https://en.wikipedia.org/wiki/Rational_number), [imaginary unit](https://en.wikipedia.org/wiki/Imaginary_unit), [infinity](https://en.wikipedia.org/wiki/Infinity)
 |-
-| Relation || Comparisons, [https://en.wikipedia.org/wiki/Three-way_comparison three-way comparisons], min/max value in set/list, set/list [https://en.wikipedia.org/wiki/Element_(mathematics) membership] (∈)
+| Relation || Comparisons, [three-way comparisons](https://en.wikipedia.org/wiki/Three-way_comparison), min/max value in set/list, set/list [membership](https://en.wikipedia.org/wiki/Element_(mathematics)) (∈)
 |-
 | Logic || Logic literals (true, false), logic operations, first order quantifiers, predicates
 |-
@@ -124,14 +124,14 @@ There is, however a standard program, called the Desktop. It has the following f
 * It can be used to install, reinstall, disable or remove Fōrmulæ packages.
 * It can be used to choose the visualization rule for a tag, when it has multiple of them.
 * It can be used to disable specific edition or rewriting rules.
-* It works in [https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop read-eval-print-loop] mode. It is, the user creates an expression (a question), then the program invokes the process of rule application, returning the result (the answer), and the process continues again, creating a list of question-answers (a script), like a [https://en.wikipedia.org/wiki/Command-line_interface command-line] mode. Unlike a command-line interface, a user can modify and re-evaluate any of the previous questions.
+* It works in [read-eval-print-loop](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) mode. It is, the user creates an expression (a question), then the program invokes the process of rule application, returning the result (the answer), and the process continues again, creating a list of question-answers (a script), like a [command-line](https://en.wikipedia.org/wiki/Command-line_interface) mode. Unlike a command-line interface, a user can modify and re-evaluate any of the previous questions.
 * The script can be saved to a file, to be retrieved later.
 * The script can be printed out.
 * It supports cut/copy/paste operations between expressions and subexpressions.
 * It supports undo/redo operations.
 
 ### Fōrmulæ as a programming language
-There are rewriting rules to do what can be done with traditional programming languages, so it can be used as a programming language too. It is called the ''Fōrmulæ programming language'' and it is [https://en.wikipedia.org/wiki/Turing_completeness Turing-complete], so it can compute everything that is computable.
+There are rewriting rules to do what can be done with traditional programming languages, so it can be used as a programming language too. It is called the ''Fōrmulæ programming language'' and it is [Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness), so it can compute everything that is computable.
 
 Given that rewriting rules, visualization rules and edition rules are continuously created or improved, it produces radical consecuences never seen before in traditional programming languages:
 
@@ -141,12 +141,12 @@ Given that rewriting rules, visualization rules and edition rules are continuous
 
 The term "dynamically defined programming language" is defined here as a language which its features and capabilities are defined and added to the language '''over time'''. It is a language able to evolve and change in time.
 
-Traditionally, programming languages are first fully designed. A grammar is created in order to construct tools, such as compilers. Once it is done, it is very hard or impossible to make changes on the language structure. Adding features to a language usually leads in a new and different language, i.e. the [https://en.wikipedia.org/wiki/C_(programming_language) C] and the [https://en.wikipedia.org/wiki/C%2B%2B C++] languages.
+Traditionally, programming languages are first fully designed. A grammar is created in order to construct tools, such as compilers. Once it is done, it is very hard or impossible to make changes on the language structure. Adding features to a language usually leads in a new and different language, i.e. the [C](https://en.wikipedia.org/wiki/C_(programming_language)) and the [C++](https://en.wikipedia.org/wiki/C%2B%2B) languages.
 
 #### Non-unique visualization of programs
 Because there can be multiple ways symbolic expressions look, there are several forms of visualization for the same program.
 
-The next example shows the definition of a function that generates a [https://en.wikipedia.org/wiki/Farey_sequence Farey sequence] of a given order, using different visualization rules &mdash;for some of its subexpressions&mdash;.
+The next example shows the definition of a function that generates a [Farey sequence](https://en.wikipedia.org/wiki/Farey_sequence) of a given order, using different visualization rules &mdash;for some of its subexpressions&mdash;.
 
 {| class="wikitable" style="text-align: center;"
 ! Flowchart style || Traditional, indented code style
@@ -161,9 +161,9 @@ The next example shows the definition of a function that generates a [https://en
 {| class="wikitable"
 ! Site || Description
 |-
-| [http://www.formulae.org www.formulae.org] || Main page. Official repository of the library, Desktop program, packages and source code.
+| [www.formulae.org](http://www.formulae.org) || Main page. Official repository of the library, Desktop program, packages and source code.
 |-
-| [http://wiki.formulae.org wiki.formulae.org] || Reference of expressions and implementations
+| [wiki.formulae.org](http://wiki.formulae.org) || Reference of expressions and implementations
 |}
 
 [Category:Mathematical programming languages](https://rosettacode.org/wiki/Category:Mathematical_programming_languages)

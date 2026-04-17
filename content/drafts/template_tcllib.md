@@ -11,7 +11,7 @@ tags = []
 +++
 
 <div class="examplemeta libheader">'''Library:''' [[SMW::off]][[:Category:Tcllib|Tcllib]][[Category:Tcllib]][[SMW::on]] <small>('''Package:''' {{{1}}})</small><includeonly>{{#set:Uses library=Tcllib}}{{#set:Uses tcllib package={{{1}}}}}</includeonly></div><noinclude>
-<!-- Considering using this... [http://tcllib.sourceforge.net/doc/{{#if:{{{2|}}}|{{{2}}}|{{{1}}}}}.html {{{1}}}] -->
+<!-- Considering using this... [{{{1}}}](http://tcllib.sourceforge.net/doc/{{#if:{{{2|}}}|{{{2}}}|{{{1}}}}}.html) -->
 
 This template is for tagging [[Tcl]] solutions by the packages within the [[Tcllib]] library they use. It adds both a link to the page for the Tcllib library and a category of the same name.
 

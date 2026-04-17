@@ -75,7 +75,7 @@ For a function, ''lcp'', accepting a list of strings, the following should hold 
  lcp("prefix","suffix") = <math>\varepsilon</math>
  lcp("foo","foobar") = "foo"
 
-''Task inspired by this stackoverflow question'': [http://stackoverflow.com/questions/1916218/find-the-longest-common-starting-substring-in-a-set-of-strings Find the longest common starting substring in a set of strings]
+''Task inspired by this stackoverflow question'': [Find the longest common starting substring in a set of strings](http://stackoverflow.com/questions/1916218/find-the-longest-common-starting-substring-in-a-set-of-strings)
 
 
 ## Related tasks
@@ -1380,7 +1380,7 @@ We could also, of course, use a functional implementation of a zip for an arbitr
 A good balance is often, however, to functionally compose primitive elements which are themselves iteratively implemented.
 
 The functional composition facilitates refactoring, code reuse, and brisk development, while the imperative implementations can sometimes give significantly better performance in ES5, which does not optimise tail recursion.
-( Tail call optimisation is, however, envisaged for ES6 - see https://kangax.github.io/compat-table/es6/ for progress towards its implementation ).
+( Tail call optimisation is, however, envisaged for ES6 - see <https://kangax.github.io/compat-table/es6/> for progress towards its implementation ).
 
 This functionally implemented zip is significantly slower than the iterative version used above:
 
@@ -3005,7 +3005,7 @@ Test case 5 prefix,suffix = No Matching Prefix
 ## Tcl
 
 
-Since [http://www.tcl.tk/cgi-bin/tct/tip/195.html TIP#195] this has been present as a core command:
+Since [TIP#195](http://www.tcl.tk/cgi-bin/tct/tip/195.html) this has been present as a core command:
 
 
 ```Tcl

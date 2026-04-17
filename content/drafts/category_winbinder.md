@@ -21,6 +21,6 @@ PHP-Versions:  5.1.x to 7.2.x
 
 Package-Name: Winbinder
 
-Website: [https://github.com/wagy/WinBinder/]
+Website: <https://github.com/wagy/WinBinder/>
 
 [[Category:Winbinder]] [[Category:PHP]]

@@ -60,7 +60,7 @@ What is eye in make-householder? In array-range m and n seem useless.
 :Thanks for pointing this out. (eye n) returns a nxn identity matrix. I overlooked that. (identity) is an already taken Common Lisp function, so I couldnt use that. The terminology is following matlab/octave's naming. Your second point is also correct, and these two local bindings can be removed. Thanks. --[[User:Avi|Avi]] 16:21, 12 July 2011 (UTC)
 
 ==Description flow==
-In response to [http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779], I find the task description difficult to follow, as its narrative form interleaves mathematical formulae and expressions with English text. I tried splitting it up as I did in [[Gauss-Legendre_Quadrature]], but I was unable to. If someone could organize the task description to visually separate the formulas from the written text, that'd be great. --[[User:Short Circuit|Michael Mol]] 15:34, 4 July 2011 (UTC)
+In response to <http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779>, I find the task description difficult to follow, as its narrative form interleaves mathematical formulae and expressions with English text. I tried splitting it up as I did in [[Gauss-Legendre_Quadrature]], but I was unable to. If someone could organize the task description to visually separate the formulas from the written text, that'd be great. --[[User:Short Circuit|Michael Mol]] 15:34, 4 July 2011 (UTC)
 
 :The narative interleaves formulas and text since this is how most papers are written. The formulas are not meant to be a pseudocode in mathematical notation which can then be reimplemented line by line, I have given a non-optimized Common Lisp version which follows the steps and should be easy to follow and can be used as a reference. --[[User:Avi|Avi]] 16:25, 12 July 2011 (UTC)
 
@@ -68,10 +68,10 @@ In response to [http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779], I f
 As it stands, I think this task description has nothing near good enough to inform a '''programmer''' how to solve it.It relies too much on correct interpretation of the mathematical equations. O.K. this talk page then goes on to state that the Lisp example should be followed, but the lisp example is poorly commented.
 
 How about better comments on what each Lisp function needs, does, and returns. In programming terms. Then add it to the task description as the pseudocode to follow? --[[User:Paddy3118|Paddy3118]] 14:08, 23 July 2011 (UTC)
-:Why not read the [https://en.wikipedia.org/wiki/QR_decomposition Wikipedia page about QR]? Then if it is not enough, why not open a book on numerical analysis, for example Golub & Van Loan? If a book is asking too much, there are many good online courses about matrix decompositions, [http://www.giyf.com/ Google is your friend]. I'm not claiming that writing a good QR code is easy: it needs some thoughts about geometry, basic matrix operations, and some good ideas about storage (in order to write the Q and R factor in a single n x n matrix plus a vector, as is done in linpack or lapack) -- for example, the Ada solution is not very usable as is, it's just showing how things work with Householder matrix H, in an inefficient way. But programming is not about translating someone else's code, and sometimes it requires some "homework" to understand how to write it yourself. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 19:55, 6 October 2013 (UTC)
+:Why not read the [Wikipedia page about QR](https://en.wikipedia.org/wiki/QR_decomposition)? Then if it is not enough, why not open a book on numerical analysis, for example Golub & Van Loan? If a book is asking too much, there are many good online courses about matrix decompositions, [Google is your friend](http://www.giyf.com/). I'm not claiming that writing a good QR code is easy: it needs some thoughts about geometry, basic matrix operations, and some good ideas about storage (in order to write the Q and R factor in a single n x n matrix plus a vector, as is done in linpack or lapack) -- for example, the Ada solution is not very usable as is, it's just showing how things work with Householder matrix H, in an inefficient way. But programming is not about translating someone else's code, and sometimes it requires some "homework" to understand how to write it yourself. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 19:55, 6 October 2013 (UTC)
 
 ==Draft status==
-Also in response to [http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779], the simplest way to get a task from draft to non-draft status is to leave a note here asking if there are any further issues that people would like resolved. So I'll ask it; are there any issues or points of confusion in this task that people would like to see resolved? --[[User:Short Circuit|Michael Mol]] 15:34, 4 July 2011 (UTC)
+Also in response to <http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779>, the simplest way to get a task from draft to non-draft status is to leave a note here asking if there are any further issues that people would like resolved. So I'll ask it; are there any issues or points of confusion in this task that people would like to see resolved? --[[User:Short Circuit|Michael Mol]] 15:34, 4 July 2011 (UTC)
 : Please fix the CommonLisp version.
 :: I did now. Thanks for your hints. Are there any other objections? --[[User:Avi|Avi]] 17:02, 12 July 2011 (UTC)
 ::: What is this line of make-householder doing? (beta (/ 2 (mmul (mtp v) v))))
@@ -85,7 +85,7 @@ Also in response to [http://irclog.perlgeek.de/rosettacode/2011-07-03#i_4051779]
 ```
 
 :::: <math>\beta</math> is a scalar value (since <math>v^T v</math> is a doct product), not a matrix, so making it a array will cause a type error. --[[User:Avi|Avi]] 16:07, 14 July 2011 (UTC)
-::::: What you have reverted breaks the code to me. Maybe I am using a different Common Lisp compiler? http://ideone.com/UUsVG
+::::: What you have reverted breaks the code to me. Maybe I am using a different Common Lisp compiler? <http://ideone.com/UUsVG>
 
 :::::: I have to agree with you once again. In my development version, I used a slightly different matrix multiplication routine (mmul), that turns a 1x1 array, like in the case of <math>v^Tv</math>, to a scalar. The [[Matrix multiplication#Common Lisp|mmul on RC]] does not do that, so your fix was correct, and I will revert my change. Thanks for your effort. --[[User:Avi|Avi]] 09:35, 16 July 2011 (UTC)
 
@@ -110,7 +110,7 @@ Only the vector ''u'' of array ''I - s uu''' is ever stored, together with ''s''
 And both ''Q'' and ''R'' are stored in ''A'' in the process, with only a supplementary vector.
 
 LINPACK and LAPACK are of course no exception, though they handle the question in a slightly
-different way [http://stackoverflow.com/questions/3031215/mystified-by-qr-q-what-is-an-orthonormal-matrix-in-compact-form].
+different way <http://stackoverflow.com/questions/3031215/mystified-by-qr-q-what-is-an-orthonormal-matrix-in-compact-form>.
 
 And when solving a system given an already computed QR in packed form, there are also ways to do
 it in a clever way, not computing the ''Q'' and ''R'' matrices effectively.

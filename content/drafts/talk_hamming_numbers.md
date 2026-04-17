@@ -100,7 +100,7 @@ Two interesting related observations. One, very minor, I can now explain the spa
 :Thanks for the original inspiration :-)
 --[[User:Paddy3118|Paddy3118]] 21:41, 20 August 2012 (UTC)
 
-::Thank ''you'' for getting inspired and making this page happen! :) The book in question is "A Discipline of Programming", Prentice-Hall, [http://web.cecs.pdx.edu/~cs410aph/Lectures/Smalltalk%20II/Dijkstra%20on%20Hamming's%20Problem.pdf chap. 17 "An Exercise Attributed to R.W.Hamming"], [http://i.imgur.com/tPygG.gif pg. 132]. -- [[User:WillNess|WillNess]] 17:40, 29 August 2012 (UTC)
+::Thank ''you'' for getting inspired and making this page happen! :) The book in question is "A Discipline of Programming", Prentice-Hall, [chap. 17 "An Exercise Attributed to R.W.Hamming"](http://web.cecs.pdx.edu/~cs410aph/Lectures/Smalltalk%20II/Dijkstra%20on%20Hamming's%20Problem.pdf), [pg. 132](http://i.imgur.com/tPygG.gif). -- [[User:WillNess|WillNess]] 17:40, 29 August 2012 (UTC)
 
 == "Cyclic generator variant #1" not efficient ==
 

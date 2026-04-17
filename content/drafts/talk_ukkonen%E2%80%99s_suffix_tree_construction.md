@@ -12,9 +12,9 @@ tags = []
 
 This isn't the easiest of tasks and I suspect that most of us will prefer to translate the C code rather than start from scratch.
  
-Unfortunately, the C code [https://www.geeksforgeeks.org/suffix-tree-application-3-longest-repeated-substring/ here] which is the most relevant for completing this task doesn't compile due to the index of the 'children' array being missing in a number of places.
+Unfortunately, the C code [here](https://www.geeksforgeeks.org/suffix-tree-application-3-longest-repeated-substring/) which is the most relevant for completing this task doesn't compile due to the index of the 'children' array being missing in a number of places.
 
-Luckily, I found a C++ translation of most of this code [https://github.com/ganesh-k13/suffix-tree/blob/master/src/SuffixTree.cpp on GitHub] and this has enabled me to fill in the gaps in the C code so that it now compiles and produces the desired results. Here's the final version:
+Luckily, I found a C++ translation of most of this code [on GitHub](https://github.com/ganesh-k13/suffix-tree/blob/master/src/SuffixTree.cpp) and this has enabled me to fill in the gaps in the C code so that it now compiles and produces the desired results. Here's the final version:
 
 
 ```C

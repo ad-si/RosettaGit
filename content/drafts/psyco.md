@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-From [http://en.wikipedia.org/wiki/Psyco Wikipedia]:
+From [Wikipedia](http://en.wikipedia.org/wiki/Psyco):
 
 Psyco is a specializing just-in-time compiler for [[Python]]. 
 
@@ -20,6 +20,6 @@ On March 12, 2012, Psyco was announced to be "unmaintained and dead".
 
 A follow-up project to Psyco is PyPy.
 
-Website: [http://psyco.sourceforge.net SF.net]
+Website: [SF.net](http://psyco.sourceforge.net)
 
 [[Category:Python]]

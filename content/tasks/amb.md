@@ -239,8 +239,8 @@ that thing grows slowly
 ## ALGOL 68
 
 {{wont work with|ALGOL 68|Revision 1 - '''iterpage''' exported out of scope}}
-{{wont work with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny] - '''iterpage''' exported out of scope }}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - '''iterpage''' exported out of scope }}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 Note: This program violates ALGOL 68's scoping rules when a locally scoped procedure is returned to a more global scope.  [[ELLA ALGOL 68RS]] misses this violation, but [[ALGOL 68 Genie]] spots it at run time and then produces an assert.  However [[ELLA ALGOL 68RS]] does produce the desired result, but may potentially suffer from "mysterious" stack problems.
 
 ```algol68
@@ -429,7 +429,7 @@ implement main0 () =
 {{AutoHotkey case}}
 
 
-Source: [http://www.autohotkey.com/forum/topic45454.html AMB - Ambiguous selector] by infogulch
+Source: [AMB - Ambiguous selector](http://www.autohotkey.com/forum/topic45454.html) by infogulch
 
 ```autohotkey
 set1 := "the that a"
@@ -487,7 +487,7 @@ that thing grows slowly
 
 
 =={{Header|C}}==
-Note: This uses the continuations code from https://web.archive.org/web/20120619201518/http://homepage.mac.com:80/sigfpe/Computing/continuations.html
+Note: This uses the continuations code from <https://web.archive.org/web/20120619201518/http://homepage.mac.com:80/sigfpe/Computing/continuations.html>
 
 
 ```c
@@ -3014,7 +3014,7 @@ sub test (Str $l, Str $r) {
 ### Using lazy lists
 
 
-{{improve|Perl 6|This doesn't really solve the task description in a meaningful way; it only works because it cheats with the way the problem statement is encoded. See the [https://gist.github.com/smls/1484e13b89490e218ddc Gist write-up here].}}
+{{improve|Perl 6|This doesn't really solve the task description in a meaningful way; it only works because it cheats with the way the problem statement is encoded. See the [Gist write-up here](https://gist.github.com/smls/1484e13b89490e218ddc).}}
 
 {{works with|niecza|2012-02-29}}
 {{broken|Perl 6}}
@@ -4389,7 +4389,7 @@ end program;
 
 Sadly ''ok'' and ''fail'' were only ever implemented in CIMS SETL, and are not in any compiler or interpreter that is available today, so this is not very useful as it stands.
 
-===Alternate version (avoids [http://www.setl-lang.org/wiki/index.php/Backtracking backtracking])===
+===Alternate version (avoids [backtracking](http://www.setl-lang.org/wiki/index.php/Backtracking))===
 
 ```SETL
 program amb;

@@ -1086,7 +1086,7 @@ now "%A, %B %d, %Y" strftime print
 ## Fantom
 
 
-Today's date can be retrieved using 'Date.today'.  The 'toLocale' method can be passed formatting information to determine how the date should be represented as a string.  The rules are described at http://fantom.org/doc/sys/Date.html#toLocale
+Today's date can be retrieved using 'Date.today'.  The 'toLocale' method can be passed formatting information to determine how the date should be represented as a string.  The rules are described at <http://fantom.org/doc/sys/Date.html#toLocale>
 
 
 ```fantom
@@ -1371,7 +1371,7 @@ println( format('%1$tA, %1$tB %1$td, %1$tY', $date) )
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/ You can run this code. Copy the code, click this link, paste it in and press 'Run !']'''
+'''[You can run this code. Copy the code, click this link, paste it in and press 'Run !'](https://gambas-playground.proko.eu/)'''
 
 ```gambas
 Public Sub Main()
@@ -1559,7 +1559,7 @@ public class Dates
 }
 ```
 
-Better use a library, see http://sourceforge.net/apps/mediawiki/threeten/index.php?title=ThreeTen
+Better use a library, see <http://sourceforge.net/apps/mediawiki/threeten/index.php?title=ThreeTen>
 
 
 ### Java 8 Date Time API
@@ -2296,7 +2296,7 @@ include builtins\timedate.e
 
 ## PHP
 
-Formatting rules: http://www.php.net/date
+Formatting rules: <http://www.php.net/date>
 
 ```php
 <?php
@@ -2483,7 +2483,7 @@ display_date :-
 
 ## Python
 
-Formatting rules: http://docs.python.org/lib/module-time.html (strftime)
+Formatting rules: <http://docs.python.org/lib/module-time.html> (strftime)
 
 
 ```python
@@ -2520,7 +2520,7 @@ that strictly provides "<Full day name>, <Full month name> ...".
 We therefore need to import SRFI/19 "SRFI 19: Time Data Types and Procedures"
 (it's a standard Racket package).
 
-See: http://srfi.schemers.org/srfi-19/srfi-19.html
+See: <http://srfi.schemers.org/srfi-19/srfi-19.html>
 
 
 ```racket
@@ -2931,7 +2931,7 @@ Monday, December 12, 2016
 
 ## Standard ML
 
-Formatting rules: http://www.standardml.org/Basis/date.html#SIG:DATE.fmt:VAL
+Formatting rules: <http://www.standardml.org/Basis/date.html#SIG:DATE.fmt:VAL>
 
 
 ```sml
@@ -3065,8 +3065,8 @@ date +"%F"
 
 
 <!-- ENHANCE-ME: what is new enough for %F ?  For example it doesn't appear in these bits of POSIX,
-       http://pubs.opengroup.org/onlinepubs/009604599/utilities/date.html
-       http://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html
+       <http://pubs.opengroup.org/onlinepubs/009604599/utilities/date.html>
+       <http://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html>
 -->
 
 

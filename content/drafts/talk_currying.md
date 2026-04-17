@@ -22,9 +22,9 @@ Hi NevilleDNZ. Unless you have permission from the authors, I don't think you ca
 
 Fair/interesting points... (as others have said) this code is from "old" wikipedia c. 2007, maybe before a license change.
 Here is an archived version from December 2007, it refers to the "All text is available under the terms of the GNU Free Documentation License. "
-* http://web.archive.org/web/20071201120319/http://en.wikipedia.org/wiki/Currying
+* <http://web.archive.org/web/20071201120319/http://en.wikipedia.org/wiki/Currying>
 The version archived before this appears to have no archived license:
-* http://web.archive.org/web/20070320165459/http://en.wikipedia.org/wiki/Currying
+* <http://web.archive.org/web/20070320165459/http://en.wikipedia.org/wiki/Currying>
 
 I am a bit puzzled that wikipedia can change my "GNU Free Documentation License 1.2" contributions to "Creative Commons Attribution-ShareAlike License;" without specifically asking me. I am guess GFDL is "up gradeable" to "CCASAL", or wikipedia set a re-licensing trip-wire on with the statement "By using this site, you agree to the Terms of Use and Privacy Policy."
 
@@ -33,10 +33,10 @@ re: "a number of the examples should be rewritten anyway, as they don't demonstr
 Agreed... wikipedia never really warmed to algorithms coded in a programming language.   Rosettacode has done a more comprehensive job in this area.  One quirk of this "task" is that it very "open" and (aside from currying) not a specific "task" per se.  I guess "Currying" is more of a concept, then a task.  (For the record I coded the [[ALGOL 68]] version, and am happy that it stays GNU Free Documentation License 1.2)
 
 BTW: here are details of wikipedia's copyright change over dates in 2009:
-*Jun 14th GFDL - http://web.archive.org/web/20090614054151/http://en.wikipedia.org/wiki/Main_Page
-*Jun 16th CCASAL - http://web.archive.org/web/20090616190648/http://en.wikipedia.org/wiki/Main_Page
+*Jun 14th GFDL - <http://web.archive.org/web/20090614054151/http://en.wikipedia.org/wiki/Main_Page>
+*Jun 16th CCASAL - <http://web.archive.org/web/20090616190648/http://en.wikipedia.org/wiki/Main_Page>
 
-Here is a page that talks about the details: http://www.conservapedia.com/Wikipedia_copyright.
+Here is a page that talks about the details: <http://www.conservapedia.com/Wikipedia_copyright>.
 
 Here is wikipedia's position: [[wp:Wikipedia:Reusing_Wikipedia_content#Re-use_of_text_under_the_GNU_Free_Documentation_License|Re-use of text under the GNU Free Documentation License]].
 

@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}Part of [[Windows]]: [http://msdn.microsoft.com/en-us/library/ms738527(VS.85).aspx msdn].
+{{library}}Part of [[Windows]]: [msdn](http://msdn.microsoft.com/en-us/library/ms738527(VS.85).aspx).

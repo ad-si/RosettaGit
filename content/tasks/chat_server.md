@@ -918,9 +918,9 @@ listen(Socket) ->
 
 ## Go
 
-This example uses the Go idiom of [http://blog.golang.org/share-memory-by-communicating ''Do not communicate by sharing memory; instead, share memory by communicating'']; there are no explicit locks used, instead Go channels are used to safely synchronize where required.
+This example uses the Go idiom of [''Do not communicate by sharing memory; instead, share memory by communicating''](http://blog.golang.org/share-memory-by-communicating); there are no explicit locks used, instead Go channels are used to safely synchronize where required.
 
-A similar exercise of a chat roulette (different in that messages only have to be written to a single partner rather than broadcast, this simplifies the code greatly) was the topic of a [http://talks.golang.org/2012/chat.slide#1 2012 Go Talk].
+A similar exercise of a chat roulette (different in that messages only have to be written to a single partner rather than broadcast, this simplifies the code greatly) was the topic of a [2012 Go Talk](http://talks.golang.org/2012/chat.slide#1).
 
 This example handles the case of one specific client "falling behind" by relying on the underlying TCP stack to do a reasonable job of buffering. Once that buffer fills, a write to the that client's connection will time out and the connection will dropped. Other minor improvements would include enabling TCP keep alives, handling temporary errors from accept, and better logging. Not ideal, but it should be good enough for this example.
 

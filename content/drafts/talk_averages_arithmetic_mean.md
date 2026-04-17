@@ -11,7 +11,7 @@ tags = []
 +++
 
 Why is it required that an arbitrary result, 0, be returned when the input is empty? --[[User:Kevin Reid|Kevin Reid]] 22:57, 14 August 2009 (UTC)
-:I suppose we have to define something. From the [[wp:arithmetic mean|Wikipedia page]], the mean is defined as "the sum from i=1 to n ...", so the mean of an empty set of data is undefined. The problem could have specified Inf or nil or anything. (However, it seems the [http://www.simplyhired.com/a/salary/search/q-Empty+Set average salary of the empty set] is US$24,000 :/ ) --[[User:Glennj|glennj]] 19:46, 27 August 2009 (UTC)
+:I suppose we have to define something. From the [[wp:arithmetic mean|Wikipedia page]], the mean is defined as "the sum from i=1 to n ...", so the mean of an empty set of data is undefined. The problem could have specified Inf or nil or anything. (However, it seems the [average salary of the empty set](http://www.simplyhired.com/a/salary/search/q-Empty+Set) is US$24,000 :/ ) --[[User:Glennj|glennj]] 19:46, 27 August 2009 (UTC)
 :I second this question.  The decision that an empty list should return a value of 0 is completely arbitary and lacks rationale.  It might as well return 6 or a googol or pi.  It would be better if it returned some undefined value or if the function definition were improved to specify the value that would be returned if the input array is empty. --[[User:Eliasen|Eliasen]] 08:11, 15 March 2012 (UTC)
 :: Mean value of empty set is sort of a 0/0 problem. I suggest the "return zero" requirement be dropped.  Code could be allowed to throw an error, return something indicating undefinedness, or just do whatever it wants and call it "undefined behavior".  Any objections? --[[User:Ledrug|Ledrug]] 23:30, 29 April 2012 (UTC)
 

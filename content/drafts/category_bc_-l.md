@@ -29,4 +29,4 @@ The command <code>bc -l</code> loads the [[bc]] standard library. One must use <
 
 The standard library also sets <code>scale = 20</code>, so by default, the sines and other calculations go to 20 digits after the decimal point. The programmer can still change the scale. The standard library has no other purpose, except to define the six functions and change the default scale.
 
-* Reference: [http://www.openbsd.org/cgi-bin/man.cgi?query=bc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html OpenBSD bc(1)]
+* Reference: [OpenBSD bc(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=bc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html)

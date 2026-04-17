@@ -81,4 +81,4 @@ I agree, the second solution in Scala was overly complex.  As someone wrote the 
 
 : The following part of this "heavily recursive" solution is way too complex and does not display the idiom of Scala. Memoization is possible with a stream (See final lesson of the Coursera course "Functional Programming Principles in Scala") which is much simpler and better displays the power of the language.
 
-There should be a memoized version, but keeping the wall of code wasn't going to get it there, so I ripped it out.  If anyone wants to review it or reuse it, here's [https://rosettacode.org/mw/index.php?title=Ackermann_function&diff=278347&oldid=278346 the diff where it was removed].   --[[User:Ashawley|Ashawley]] ([[User talk:Ashawley|talk]]) 16:33, 7 March 2019 (UTC)
+There should be a memoized version, but keeping the wall of code wasn't going to get it there, so I ripped it out.  If anyone wants to review it or reuse it, here's [the diff where it was removed](https://rosettacode.org/mw/index.php?title=Ackermann_function&diff=278347&oldid=278346).   --[[User:Ashawley|Ashawley]] ([[User talk:Ashawley|talk]]) 16:33, 7 March 2019 (UTC)

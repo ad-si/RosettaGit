@@ -32,7 +32,7 @@ languages = [
 ## Task
 
 [[file:quantum_frog.png|full color|thumb|left|192px]][[file:quantum_frog_16.png|Example: Gimp 16 color|thumb|left|192px]]
-[[wp:Color_quantization|Color quantization]] is the process of reducing number of colors used in an image while trying to maintain the visual appearance of the original image.  In general, it is a form of [[wp:Cluster_analysis|cluster analysis]], if each RGB color value is considered as a coordinate triple in the 3D colorspace.  There are some well know algorithms [http://web.cs.wpi.edu/~matt/courses/cs563/talks/color_quant/CQindex.html], each with its own advantages and drawbacks.
+[[wp:Color_quantization|Color quantization]] is the process of reducing number of colors used in an image while trying to maintain the visual appearance of the original image.  In general, it is a form of [[wp:Cluster_analysis|cluster analysis]], if each RGB color value is considered as a coordinate triple in the 3D colorspace.  There are some well know algorithms <http://web.cs.wpi.edu/~matt/courses/cs563/talks/color_quant/CQindex.html>, each with its own advantages and drawbacks.
 
 '''Task''': Take an RGB color image and reduce its colors to some smaller number (< 256).  For this task, use the frog as input and reduce colors to 16, and output the resulting colors.  The chosen colors should be adaptive to the input image, meaning you should ''not'' use a fixed palette such as Web colors or Windows system palette.  Dithering is not required.
 
@@ -1450,7 +1450,7 @@ ColorQuantize[Import["http://rosettacode.org/mw/images/3/3f/Quantum_frog.png"],1
 ## OCaml
 
 
-Here we use a simplified method inspired from this paper: [http://www.leptonica.com/papers/mediancut.pdf www.leptonica.com/papers/mediancut.pdf]
+Here we use a simplified method inspired from this paper: [www.leptonica.com/papers/mediancut.pdf](http://www.leptonica.com/papers/mediancut.pdf)
 
 
 ```ocaml
@@ -1574,8 +1574,8 @@ my $img16 = $img->to_paletted({ max_colors => 16});
 $img16->write(file => "frog-16.png")
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog.png frog.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog-16.png frog-16.png]
+Compare offsite images: [frog.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog.png) vs.
+[frog-16.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog-16.png)
 
 
 ## Perl 6
@@ -1590,7 +1590,7 @@ $frog.quantize(16, RGBColorspace, 0, True, False);
 $frog.write('./Quantum-frog-16-perl6.png');
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/Quantum-frog-16-perl6.png Quantum-frog-16-perl6.png] (offsite .png image)
+See: [Quantum-frog-16-perl6.png](https://github.com/thundergnat/rc/blob/master/img/Quantum-frog-16-perl6.png) (offsite .png image)
 
 
 ## Phix

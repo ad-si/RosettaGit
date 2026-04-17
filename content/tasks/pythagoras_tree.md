@@ -97,9 +97,9 @@ End
 
 ## C
 
-A Pythagoras tree constructed from an initial square of side length L, fits exactly in a bounding box of length 6L and width 4L([http://ecademy.agnesscott.edu/~lriddle/ifs/pythagorean/pythSize.htm Proof]). That's why the window dimensions are set to 6L x 4L, where L is entered by the user. The squares increase rapidly, an iteration value of 30 takes 'forever' for a single branch to complete. The colours are picked randomly thus producing the effect of a Pythagorean Christmas Tree. :)
+A Pythagoras tree constructed from an initial square of side length L, fits exactly in a bounding box of length 6L and width 4L([Proof](http://ecademy.agnesscott.edu/~lriddle/ifs/pythagorean/pythSize.htm)). That's why the window dimensions are set to 6L x 4L, where L is entered by the user. The squares increase rapidly, an iteration value of 30 takes 'forever' for a single branch to complete. The colours are picked randomly thus producing the effect of a Pythagorean Christmas Tree. :)
 
-Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -311,7 +311,7 @@ int main( int argc, char* argv[] ) {
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=floatvars%0Afunc%20tree%20x1%20y1%20x2%20y2%20depth%20.%20.%0Aif%20depth%20%3C%208%0Adx%20%3D%20x2%20-%20x1%0Ady%20%3D%20y1%20-%20y2%0Ax3%20%3D%20x2%20-%20dy%0Ay3%20%3D%20y2%20-%20dx%0Ax4%20%3D%20x1%20-%20dy%0Ay4%20%3D%20y1%20-%20dx%0Ax5%20%3D%20x4%20%2B%200.5%20%2A%20%28dx%20-%20dy%29%0Ay5%20%3D%20y4%20-%200.5%20%2A%20%28dx%20%2B%20dy%29%0Acolor_green%200.2%20%2B%20depth%20/%2018%0Afill%20%5B%20x1%20y1%20x2%20y2%20x3%20y3%20x4%20y4%20%5D%0Afill%20%5B%20x3%20y3%20x4%20y4%20x5%20y5%20%5D%0Acall%20tree%20x4%20y4%20x5%20y5%20depth%20%2B%201%0Acall%20tree%20x5%20y5%20x3%20y3%20depth%20%2B%201%0A.%0A.%0Acolor_red%200.3%0Acolor_blue%200.1%0Acall%20tree%2041%2090%2059%2090%200 Run it]
+[Run it](https://easylang.online/apps/run.html?code=floatvars%0Afunc%20tree%20x1%20y1%20x2%20y2%20depth%20.%20.%0Aif%20depth%20%3C%208%0Adx%20%3D%20x2%20-%20x1%0Ady%20%3D%20y1%20-%20y2%0Ax3%20%3D%20x2%20-%20dy%0Ay3%20%3D%20y2%20-%20dx%0Ax4%20%3D%20x1%20-%20dy%0Ay4%20%3D%20y1%20-%20dx%0Ax5%20%3D%20x4%20%2B%200.5%20%2A%20%28dx%20-%20dy%29%0Ay5%20%3D%20y4%20-%200.5%20%2A%20%28dx%20%2B%20dy%29%0Acolor_green%200.2%20%2B%20depth%20/%2018%0Afill%20%5B%20x1%20y1%20x2%20y2%20x3%20y3%20x4%20y4%20%5D%0Afill%20%5B%20x3%20y3%20x4%20y4%20x5%20y5%20%5D%0Acall%20tree%20x4%20y4%20x5%20y5%20depth%20%2B%201%0Acall%20tree%20x5%20y5%20x3%20y3%20depth%20%2B%201%0A.%0A.%0Acolor_red%200.3%0Acolor_blue%200.1%0Acall%20tree%2041%2090%2059%2090%200)
 
 <lang>floatvars
 func tree x1 y1 x2 y2 depth . .
@@ -1507,7 +1507,7 @@ End
 
 ## Python
 
-Using [https://docs.python.org/3/library/turtle.html turtle graphics] and the Zkl example for the calculations.
+Using [turtle graphics](https://docs.python.org/3/library/turtle.html) and the Zkl example for the calculations.
 
 ```python
 from turtle import goto, pu, pd, color, done
@@ -1701,7 +1701,7 @@ func pythagorastree(x1,y1,x2,y2,depth)
 ```
 
 Output:
-https://www.dropbox.com/s/a1gtue7tvmaj2je/PythagorasTree.jpg?dl=0
+<https://www.dropbox.com/s/a1gtue7tvmaj2je/PythagorasTree.jpg?dl=0>
 
 
 ## Scala
@@ -1957,7 +1957,7 @@ tree(img, width/2.3, height, width/1.8, height, 10)
 img.write(file => 'pythagoras_tree.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/pythagoras-tree-sidef.png Pythagoras tree]
+Output image: [Pythagoras tree](https://github.com/trizen/rc/blob/master/img/pythagoras-tree-sidef.png)
 
 
 ## Yabasic
@@ -2001,7 +2001,7 @@ pythagoras_tree(w2 - diff, h -10 , w2 + diff , h -10 , 1)
 ## zkl
 
 I added green crosses at three of the vertexes of the new square to simulate leaves on the tree.
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:PythagorasTreeWithLeafs.zkl.jpg|300px|thumb|right]]
 
 ```zkl

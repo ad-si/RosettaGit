@@ -120,7 +120,7 @@ synopsys
 There are two popular algorithms for topological sorting:
 :*   Kahn's 1962 topological sort <ref> [[wp: topological sorting]] </ref>
 :*   depth-first search <ref> [[wp: topological sorting]] </ref> <ref> Jason Sachs
-[http://www.embeddedrelated.com/showarticle/799.php "Ten little algorithms, part 4: topological sort"] </ref>
+["Ten little algorithms, part 4: topological sort"](http://www.embeddedrelated.com/showarticle/799.php) </ref>
 
 
 
@@ -1647,7 +1647,7 @@ NIL
 ```
 
 
-Provided example with <code>dw04</code> added to the dependencies of <code>dw01</code>.  Some vertices are ordered, but the second return is <code>nil</code>, indicating that not all vertices could be sorted.  The third return value is the hash table containing entries for the four vertices that couldn't be sorted.  (The variable <code>[http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm /]</code> stores the list of values produced by the last form, and <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm describe]</code> prints information about an object.)
+Provided example with <code>dw04</code> added to the dependencies of <code>dw01</code>.  Some vertices are ordered, but the second return is <code>nil</code>, indicating that not all vertices could be sorted.  The third return value is the hash table containing entries for the four vertices that couldn't be sorted.  (The variable <code>[/](http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm)</code> stores the list of values produced by the last form, and <code>[describe](http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm)</code> prints information about an object.)
 
 
 ```lisp
@@ -4536,7 +4536,7 @@ See [[Topological_sort#Object Pascal | Object Pascal]]
 
 ## Perl
 
-In July 2002, [http://perlgolf.sourceforge.net/TPR/0/4b/ Topological Sort] was the monthly [http://perlgolf.sourceforge.net/ Perl Golf] course. The [http://perlgolf.sourceforge.net/cgi-bin/PGAS/post_mortem.cgi?id=6 post-mortem] contains many solutions. This code was adapted from the solution that scored 144.39.
+In July 2002, [Topological Sort](http://perlgolf.sourceforge.net/TPR/0/4b/) was the monthly [Perl Golf](http://perlgolf.sourceforge.net/) course. The [post-mortem](http://perlgolf.sourceforge.net/cgi-bin/PGAS/post_mortem.cgi?id=6) contains many solutions. This code was adapted from the solution that scored 144.39.
 
 The algorithm used allows the output to be clustered; libraries on the same line are all independent (given the building of any previous lines of libraries), and so could be built in parallel.
 
@@ -5338,7 +5338,7 @@ Output:
 
 Some of the FORTRAN 77 statements were converted to   '''do'''   loops (or   '''do'''   structures),   and
 
-some variables were   [https://en.wikipedia.org/wiki/Camel_case <u>''camel capitalized]''</u>.
+some variables were   [<u>''camel capitalized](https://en.wikipedia.org/wiki/Camel_case)''</u>.
 
 ```rexx
 /*REXX pgm does a topological sort (orders such that no item precedes a dependent item).*/
@@ -5417,7 +5417,7 @@ DES_SYSTEM_LIB
 
 ## Ruby
 
-Uses the [http://www.ruby-doc.org/stdlib/libdoc/tsort/rdoc/classes/TSort.html TSort] module from the Ruby stdlib.
+Uses the [TSort](http://www.ruby-doc.org/stdlib/libdoc/tsort/rdoc/classes/TSort.html) module from the Ruby stdlib.
 
 ```ruby
 require 'tsort'
@@ -5622,7 +5622,7 @@ If the suggested extra arc is added, this is the error output:
 
 ## UNIX Shell
 
-The Unix [http://www.openbsd.org/cgi-bin/man.cgi?query=tsort&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html tsort(1)] utility does a topological sort. Each line of input must have two items in order, like 'std des_system_lib'.<ref>
+The Unix [tsort(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=tsort&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) utility does a topological sort. Each line of input must have two items in order, like 'std des_system_lib'.<ref>
 [[wp: tsort]]
 </ref>
 
@@ -5963,11 +5963,11 @@ synopsys
 
 ## Visual Basic .NET
 
-Adapted from http://tawani.blogspot.com/2009/02/topological-sorting-and-cyclic.html which was itself an adaptation of Java code. I added the Rosetta code specific format of dependencies, as well as checks for references to self.
+Adapted from <http://tawani.blogspot.com/2009/02/topological-sorting-and-cyclic.html> which was itself an adaptation of Java code. I added the Rosetta code specific format of dependencies, as well as checks for references to self.
 
 ```vbnet
 ' Adapted from:
-' http://tawani.blogspot.com/2009/02/topological-sorting-and-cyclic.html
+' <http://tawani.blogspot.com/2009/02/topological-sorting-and-cyclic.html>
 ' added/changed:
 ' - conversion to VB.Net (.Net 2 framework)
 ' - added Rosetta Code dependency format parsing

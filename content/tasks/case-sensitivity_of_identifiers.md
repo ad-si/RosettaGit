@@ -932,7 +932,7 @@ printfn "There are three dogs named %s, %s and %s" dog Dog DOG
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=fed58074944b894f5d4cfb8e16c6819a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=fed58074944b894f5d4cfb8e16c6819a)'''
 
 Gambas in case insensitive
 
@@ -2243,7 +2243,7 @@ The three dogs are named Benjamin, Samba, and Bernie.
 
 ## Simula
 
-Simula identifiers are case-insensitive, and the compiler will indignantly reject a program that tries to declare multiple variables with names differing only in case. (Same with ''key words'': Case of a character in Simula ''code'' generally only matters in [http://simula67.at.ifi.uio.no/Standard-86/chap_1.htm| a simple string or a character constant].)
+Simula identifiers are case-insensitive, and the compiler will indignantly reject a program that tries to declare multiple variables with names differing only in case. (Same with ''key words'': Case of a character in Simula ''code'' generally only matters in [a simple string or a character constant](http://simula67.at.ifi.uio.no/Standard-86/chap_1.htm|).)
 
 ```simula
 begin

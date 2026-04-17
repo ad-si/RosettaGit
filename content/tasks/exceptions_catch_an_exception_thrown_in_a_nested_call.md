@@ -127,7 +127,7 @@ Function foo caught exception U0
 
 ```
 
-The exact [http://rosettacode.org/wiki/Talk:Exceptions/Catch_an_exception_thrown_in_a_nested_call#11l_swallows_U1.3F behavior] for an uncaught exception is implementation-defined [as in C++].
+The exact [behavior](http://rosettacode.org/wiki/Talk:Exceptions/Catch_an_exception_thrown_in_a_nested_call#11l_swallows_U1.3F) for an uncaught exception is implementation-defined [as in C++].
 
 
 ## Ada
@@ -327,7 +327,7 @@ program continues in the parent thread. <!-- example needed -->
 
 ###  True exceptions
 
-In [[AutoHotkey_L]], [http://l.autohotkey.net/docs/commands/Try.htm Try], [http://l.autohotkey.net/docs/commands/Catch.htm Catch], and [http://l.autohotkey.net/docs/commands/Throw.htm Throw] are available to handle exceptions.<br/>
+In [[AutoHotkey_L]], [Try](http://l.autohotkey.net/docs/commands/Try.htm), [Catch](http://l.autohotkey.net/docs/commands/Catch.htm), and [Throw](http://l.autohotkey.net/docs/commands/Throw.htm) are available to handle exceptions.<br/>
 When this program is run, the first exception (U0) is raised, and caught by the try-catch section. This causes a Message Box containing the text "An exception was raised: First Exception" to be displayed by the script. The second exception is not caught, generating a runtime error.
 
 ```AHK
@@ -1751,7 +1751,7 @@ func main() {
 }
 ```
 
-[http://play.golang.org/p/X2pa8zE1Ce Run in Go Playground].
+[Run in Go Playground](http://play.golang.org/p/X2pa8zE1Ce).
 ```txt
 Recovered U0: a message
 passing on: 42
@@ -1825,7 +1825,7 @@ main = do result <- runErrorT foo
 ==Icon and {{header|Unicon}}==
 
 The following Unicon example makes use of support for exceptions found
-in the [http://tapestry.tucson.az.us/unilib/ The Unicon Code Library].
+in the [The Unicon Code Library](http://tapestry.tucson.az.us/unilib/).
 <i>Since exception support is not built into Unicon,
 but rather implemented as Unicon code, there are limitations
 not found in languages that natively support exceptions.</i>
@@ -3339,9 +3339,9 @@ when thrown the second time.
 
 ## Seed7
 
-When an [http://seed7.sourceforge.net/manual/errors.htm#Exceptions exception]
-is not [http://seed7.sourceforge.net/manual/errors.htm#Handlers handled]
-the program is terminated and a [http://seed7.sourceforge.net/manual/errors.htm#Stack_trace stack trace] is written.
+When an [exception](http://seed7.sourceforge.net/manual/errors.htm#Exceptions)
+is not [handled](http://seed7.sourceforge.net/manual/errors.htm#Handlers)
+the program is terminated and a [stack trace](http://seed7.sourceforge.net/manual/errors.htm#Stack_trace) is written.
 
 ```seed7
 $ include "seed7_05.s7i";

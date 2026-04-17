@@ -163,7 +163,7 @@ HR= 6; HRA= 9.05000E+01; HLA= 8.42248E+01
 
 ## ALGOL 68
 
-Example extracted - with permission for a GPL - from Simon Wheaton-Smith's [http://www.illustratingshadows.com/stats-Algol.html Illustrating Time's Shadow] web page.
+Example extracted - with permission for a GPL - from Simon Wheaton-Smith's [Illustrating Time's Shadow](http://www.illustratingshadows.com/stats-Algol.html) web page.
 <!-- So... can I have your permission to cut and paste your hdial program as GPLed open-source on RosettaCode.Org?
 On Wed, 2010-06-23 at 19:00 -0700, Simon [illustratingshadows wrote:
 > Thanks for the email.

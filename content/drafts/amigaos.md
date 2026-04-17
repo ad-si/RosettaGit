@@ -27,8 +27,8 @@ Another OS that is mostly compatible with AmigaOS is [[wp:MorphOS|MorphOS]]. Unl
 
 ==See also==
 * [[wp:AmigaOS|AmigaOS on Wikipedia]]
-* [http://hyperion-entertainment.biz/ Hyperion Entertainment], current developers of AmigaOS
-* [http://aros.sourceforge.net/ The AROS home page]
+* [Hyperion Entertainment](http://hyperion-entertainment.biz/), current developers of AmigaOS
+* [The AROS home page](http://aros.sourceforge.net/)
 * [[wp:AROS Research Operating System|AROS on Wikipedia]]
-* [http://www.morphos-team.net/ The MorphOS home page]
+* [The MorphOS home page](http://www.morphos-team.net/)
 * [[wp:MorphOS|MorphOS on Wikipedia]]

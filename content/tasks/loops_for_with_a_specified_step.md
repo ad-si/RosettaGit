@@ -1516,7 +1516,7 @@ Bluebirds fly.
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=cdd9b10b64ac4d78b75c364061f25641 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=cdd9b10b64ac4d78b75c364061f25641)'''
 
 ```gambas
 Public Sub Main()

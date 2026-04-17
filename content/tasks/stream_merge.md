@@ -1336,7 +1336,7 @@ main = do
 ```
 
 
-See implementation in https://github.com/cblp/conduit-merge/blob/master/src/Data/Conduit/Merge.hs
+See implementation in <https://github.com/cblp/conduit-merge/blob/master/src/Data/Conduit/Merge.hs>
 
 
 ###  pipes
@@ -1362,7 +1362,7 @@ main = do
 ```
 
 
-See implementation in https://github.com/bgamari/pipes-interleave/blob/master/Pipes/Interleave.hs
+See implementation in <https://github.com/bgamari/pipes-interleave/blob/master/Pipes/Interleave.hs>
 
 
 ## Java
@@ -1628,7 +1628,7 @@ fun main(args:Array<String>) {
 
 ## Perl
 
-We make use of an iterator interface which String::Tokenizer provides. Credit: we obtained all the sample text from http://www.lipsum.com/.
+We make use of an iterator interface which String::Tokenizer provides. Credit: we obtained all the sample text from <http://www.lipsum.com/>.
 
 ```perl
 use strict;
@@ -2309,7 +2309,7 @@ say merge_streams(ARGV.map {|f| File(f).open_r }).join("\n")
 
 Thw below script will merge an arbitrary number of files (which must be already sorted) specified on the command-line.
 
-A careful reader will notice that '''$peeks''' is treated alternately as a dictionary ('''dict set''', '''dict get''') and as a list ('''lsort''', '''lassign'''), exploiting the fact that dictionaries are simply lists of even length.  For large dictionaries this would not be recommended, as it causes [https://wiki.tcl.tk/3033 "shimmering"], but in this example the impact is too small to matter.
+A careful reader will notice that '''$peeks''' is treated alternately as a dictionary ('''dict set''', '''dict get''') and as a list ('''lsort''', '''lassign'''), exploiting the fact that dictionaries are simply lists of even length.  For large dictionaries this would not be recommended, as it causes ["shimmering"](https://wiki.tcl.tk/3033), but in this example the impact is too small to matter.
 
 
 ```Tcl

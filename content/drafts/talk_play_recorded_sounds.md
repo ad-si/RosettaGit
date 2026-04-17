@@ -26,4 +26,4 @@ General reply: On reflection, it would probably be better to split up the task s
 :: The parts involving simultanous and glitch-free playback can come later, if needed. --[[User:Short Circuit|Michael Mol]] 13:03, 25 August 2010 (UTC)
 
 ==Playing on Linux==
-Here's some discussion of playing recorded sounds in C on Linux using various libraries: http://blog.ometer.com/2010/11/11/playing-a-sound-file/  Perhaps some of the information there could be added to this task. —[[User:Kevin Reid|Kevin Reid]] 03:27, 13 November 2010 (UTC)
+Here's some discussion of playing recorded sounds in C on Linux using various libraries: <http://blog.ometer.com/2010/11/11/playing-a-sound-file/>  Perhaps some of the information there could be added to this task. —[[User:Kevin Reid|Kevin Reid]] 03:27, 13 November 2010 (UTC)

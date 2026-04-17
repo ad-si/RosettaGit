@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==New version==
-Although there are already several edits to this template it still doesn't work properly for the special cases C# and F#. For example the current version of the C# solution for [http://rosettacode.org/mw/index.php?title=Call_a_function&oldid=221098 Call a function] displays the language name correctly but puts the solution into [[:Category:C Sharp]] which is wrong because it should be put into [[:Category:C sharp]] (s instead of S). 
+Although there are already several edits to this template it still doesn't work properly for the special cases C# and F#. For example the current version of the C# solution for [Call a function](http://rosettacode.org/mw/index.php?title=Call_a_function&oldid=221098) displays the language name correctly but puts the solution into [[:Category:C Sharp]] which is wrong because it should be put into [[:Category:C sharp]] (s instead of S). 
 
 I therefore have written a new version which gets rid off the second parameter and allows users to use either '''C#''', '''C sharp''' or '''C Sharp''' as the language name (similarly for F#): [[User:AndiPersti/Sandbox]].
 

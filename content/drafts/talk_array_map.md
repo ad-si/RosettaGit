@@ -40,7 +40,7 @@ Proposal: deletion.  Was not even intended to have a task focus, or to provide s
 
 == draft task ==
 
-Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [http://rosettacode.org home page]. --
+Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [home page](http://rosettacode.org). --
 
 == Proposed deletion ==
 

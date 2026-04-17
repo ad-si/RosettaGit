@@ -789,7 +789,7 @@ void main() {
 
 ## EchoLisp
 
-The '''rationalize''' function uses a Stern-Brocot tree [http://en.wikipedia.org/wiki/Stern%E2%80%93Brocot_tree] to find the best rational approximation of an inexact (floating point) number, for a given precision. The '''inexact->exact''' function returns a rational approximation for the default precision 0.0001 .
+The '''rationalize''' function uses a Stern-Brocot tree <http://en.wikipedia.org/wiki/Stern%E2%80%93Brocot_tree> to find the best rational approximation of an inexact (floating point) number, for a given precision. The '''inexact->exact''' function returns a rational approximation for the default precision 0.0001 .
 
 ```scheme
 
@@ -846,9 +846,9 @@ USE: math.floating-point
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Convert_decimal_number_to_rational this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Convert_decimal_number_to_rational) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1454,7 +1454,7 @@ Deriving an approximation within a specified tolerance:
 
 ## Julia
 
-Julia has a native Rational type, and provides [http://docs.julialang.org/en/latest/manual/conversion-and-promotion/#case-study-rational-conversions a convenience conversion function] that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
+Julia has a native Rational type, and provides [a convenience conversion function](http://docs.julialang.org/en/latest/manual/conversion-and-promotion/#case-study-rational-conversions) that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
 
 
 ```Julia
@@ -2879,7 +2879,7 @@ Now run it with 10 random double floats and some selected ones printing the resu
 
 ## Scala
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/rrlFnuTURgirBiTsH3Kqrg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/rrlFnuTURgirBiTsH3Kqrg).
 
 ```Scala
 import org.apache.commons.math3.fraction.BigFraction
@@ -2896,8 +2896,8 @@ object Number2Fraction extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/bigrat.htm bigrat.s7i]
-defines the operator [http://seed7.sourceforge.net/libraries/bigrat.htm#%28attr_bigRational%29parse%28in_var_string%29 parse],
+The library [bigrat.s7i](http://seed7.sourceforge.net/libraries/bigrat.htm)
+defines the operator [parse](http://seed7.sourceforge.net/libraries/bigrat.htm#%28attr_bigRational%29parse%28in_var_string%29),
 which accepts, besides fractions, also a decimal number with repeating decimals.
 
 ```seed7
@@ -2972,7 +2972,7 @@ say 0.75.as_rat;
 
 ## Tcl
 
-Here is a complete script with the implemented function and a small test suite (which is executed when this script is called directly from a shell) - originally on http://wiki.tcl.tk/752:
+Here is a complete script with the implemented function and a small test suite (which is executed when this script is called directly from a shell) - originally on <http://wiki.tcl.tk/752>:
 
 ```Tcl
 #!/usr/bin/env tclsh

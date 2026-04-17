@@ -19,4 +19,4 @@ In January 2010, Sun was purchased by [[wp:Oracle Corporation|Oracle]], with Sun
 ==See also==
 * [[wp:Sun Microsystems|Sun Microsystems on Wikipedia]]
 * [[wp:Sun acquisition by Oracle|Wikipedia article on Oracle's acquisition of Sun]]
-* [http://www.oracle.com/sun The Sun page at Oracle.com]
+* [The Sun page at Oracle.com](http://www.oracle.com/sun)

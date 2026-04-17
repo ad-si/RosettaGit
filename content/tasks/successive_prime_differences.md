@@ -33,7 +33,7 @@ The task applies a filter to the series returning groups of ''successive'' prime
 '''Example 1:''' Specifying that the difference between s'primes be <code>2</code> leads to the groups:
 :<code>(3, 5), (5, 7), (11, 13), (17, 19), (29, 31), ...</code>
 
-(Known as [[wp:Twin prime|Twin primes]] or [https://oeis.org/A077800 Prime pairs])
+(Known as [[wp:Twin prime|Twin primes]] or [Prime pairs](https://oeis.org/A077800))
 
 '''Example 2:''' Specifying more than one difference ''between'' s'primes leads to groups of size one greater than the number of differences. Differences of <code>2, 4</code> leads to the groups:
 :<code>(5, 7, 11), (11, 13, 17), (17, 19, 23), (41, 43, 47), ...</code>.
@@ -116,7 +116,7 @@ public static class SuccessivePrimeDifferences
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -611,7 +611,7 @@ Differences   Count          First   Last
 
 ## Python
 
-Uses the [https://www.sympy.org/en/index.html Sympy] library.
+Uses the [Sympy](https://www.sympy.org/en/index.html) library.
 
 
 ```python

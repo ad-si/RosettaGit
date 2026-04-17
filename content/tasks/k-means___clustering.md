@@ -823,10 +823,10 @@ Let us apply to random data.
 
 
 Uniform random points over the unit circle (compare to the solution in C)
-[http://13olive.net/kmeans_FORTRAN_points.png (External image)]
+[(External image)](http://13olive.net/kmeans_FORTRAN_points.png)
 
 The points with clusters marked by color:
-[http://13olive.net/kmeans_FORTRAN_clusters.png (External image)]
+[(External image)](http://13olive.net/kmeans_FORTRAN_clusters.png)
 
 
 ## Go
@@ -1483,7 +1483,7 @@ NB.  but wouldn't be hard to provide with  &.cartToPole  .
 
 '''Solution'''
 
-Live Demo (Extra Credit #2) [https://ezward.github.io/kmeans-javascript/kmeansrandom.html KMeans++ in JavaScript]
+Live Demo (Extra Credit #2) [KMeans++ in JavaScript](https://ezward.github.io/kmeans-javascript/kmeansrandom.html)
 
 
 ```javascript
@@ -2672,7 +2672,7 @@ print_eps(data, N_CLUSTERS, centers, cluster)
 
 ## Mathematica
 
-'''Solution - Initial kmeans code comes from http://mathematica.stackexchange.com/questions/7441/k-means-clustering, now extended to kmeans++ by introducing the function initM.
+'''Solution - Initial kmeans code comes from <http://mathematica.stackexchange.com/questions/7441/k-means-clustering>, now extended to kmeans++ by introducing the function initM.
  Was not able to upload pictures of the result...''':
 <lang>initM[list_List, k_Integer, distFunc_Symbol] :=
   Module[{m = {RandomChoice[list]}, n, d},

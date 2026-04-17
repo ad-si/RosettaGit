@@ -12,6 +12,6 @@ tags = []
 '''befungee''' is a [Befunge](https://rosettacode.org/wiki/Befunge) [interpreter](https://rosettacode.org/wiki/interpreter) written in [Python](https://rosettacode.org/wiki/Python). It implements Befunge-93 specification.
 
 ## External links
-* [https://github.com/programble/befungee befungee home page]
+* [befungee home page](https://github.com/programble/befungee)
 
 [Category:Compilers and Interpreters](https://rosettacode.org/wiki/Category:Compilers_and_Interpreters)

@@ -15,6 +15,6 @@ tags = []
 
 Kivy is an open source [[Python]] library for developing mobile apps and other multitouch application software with a natural user interface (NUI). It can run on Android, iOS, Linux, OS X, and Windows.
 
-Website: [https://kivy.org/ kivy.org]
+Website: [kivy.org](https://kivy.org/)
 
 [[Category:Python]][[Category:Library/Toolkit]]

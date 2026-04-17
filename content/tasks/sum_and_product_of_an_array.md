@@ -1448,9 +1448,9 @@ class Main
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Sum_and_product_of_an_array this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Sum_and_product_of_an_array) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1529,7 +1529,7 @@ product[a]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4a4bdc35d661e2dc22d66d88991bef95 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4a4bdc35d661e2dc22d66d88991bef95)'''
 
 ```gambas
 Public Sub Main()
@@ -2855,7 +2855,7 @@ $sum  += $_ foreach @list;
 $prod *= $_ foreach @list;
 ```
 
-Or using the [https://metacpan.org/pod/List::Util List::Util] module:
+Or using the [List::Util](https://metacpan.org/pod/List::Util) module:
 
 ```perl
 use List::Util qw/sum0 product/;

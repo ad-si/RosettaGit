@@ -60,5 +60,5 @@ END
 A translator/compiler for ALGOL 68C was available for the PDP-10 and System/360 as well as a number of other computers.
 
 ## External links
-* [http://hopl.murdoch.edu.au/showlanguage.prx?exp=667 Cambridge Algol 68: on the historical roster of computer languages] - includes 10+ publication references.
-* [http://portal.acm.org/ft_gateway.cfm?id=807148&type=pdf A TRANSPORTATION OF ALGOL68C - PJ Gardner, University of Essex] - March 1977 (From 370 to DECsystem-10)
+* [Cambridge Algol 68: on the historical roster of computer languages](http://hopl.murdoch.edu.au/showlanguage.prx?exp=667) - includes 10+ publication references.
+* [A TRANSPORTATION OF ALGOL68C - PJ Gardner, University of Essex](http://portal.acm.org/ft_gateway.cfm?id=807148&type=pdf) - March 1977 (From 370 to DECsystem-10)

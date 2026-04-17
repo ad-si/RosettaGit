@@ -31,7 +31,7 @@ Another issue: is it really necessary to post code in the interactive prompt for
 
 : I hadn't thought about the 0 specifically, but I did qualify the problem statement by writing that the function "takes a positive integer" (which I wrote to exclude negative numbers, but actually excludes the 0 as well). In other words: An input of 0 is outside the scope of the task. You can handle it however you want. In practice, the cleanest way would be to reject non-positive numbers with a descriptive error message, but such boiler-plate input validation is not what the task is meant to be about, so it is not mandatory. Simply assuming that the function will only be called with positive numbers, is fine for this task. --[[User:Smls|Smls]] ([[User talk:Smls|talk]]) 12:30, 7 June 2015 (UTC)
 
-:I post some small examples of code as entered in the command line prompt because it is a distinguishing feature of the language. Other languages may have a REPL but Pythons' REPL is used, in fact, the [https://docs.python.org/3/tutorial/index.html Python tutorial] uses the REPL.
+:I post some small examples of code as entered in the command line prompt because it is a distinguishing feature of the language. Other languages may have a REPL but Pythons' REPL is used, in fact, the [Python tutorial](https://docs.python.org/3/tutorial/index.html) uses the REPL.
 :I understand that it may cause problems in cut-n-paste trying out of examples, but the REPL adds to Pythons approachability I think and stands out as a distinguishing feature when compared to other examples. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:19, 7 June 2015 (UTC)
 
 :I have fixed the first Python example. Thanks for pointing out my error. 

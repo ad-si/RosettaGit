@@ -96,13 +96,13 @@ Runs in the terminal (using the Ncurses C library and the croatoan Lisp wrapper)
 
 
 {{out|Sample output}}
-[https://i.imgur.com/17b36O3.png https://i.imgur.com/17b36O3.png]
+[https://i.imgur.com/17b36O3.png](https://i.imgur.com/17b36O3.png)
 
 
 ## Go
 
 {{libheader|goncurses}}
-This is a translation of the C code [https://github.com/ruscoe/Digital-Rain/blob/master/drain.c here] which uses the ncurses library.
+This is a translation of the C code [here](https://github.com/ruscoe/Digital-Rain/blob/master/drain.c) which uses the ncurses library.
 
 Rather than pressing Ctrl+C to stop the program, I've added code so that it stops automatically after 1 minute and restores the terminal to its original state.
 
@@ -219,7 +219,7 @@ func main() {
 
 ## Perl
 
-Probably shouldn't, but until someone posts something better... here's something somewhat relevant [https://www.perlmonks.org/?node_id=536000 I wrote back in 2006].
+Probably shouldn't, but until someone posts something better... here's something somewhat relevant [I wrote back in 2006](https://www.perlmonks.org/?node_id=536000).
 
 Follow the bouncing Neo!
 
@@ -620,7 +620,7 @@ sub init ($r, $c) {
 
 
 {{out|Sample output}}
-See [https://github.com/thundergnat/rc/blob/master/img/matrix-digital-rain-perl6.png matrix-digital-rain-perl6.png] (offsite png image)
+See [matrix-digital-rain-perl6.png](https://github.com/thundergnat/rc/blob/master/img/matrix-digital-rain-perl6.png) (offsite png image)
 
 
 ## Racket
@@ -923,7 +923,7 @@ fcn buildScreen(rows,cols){    // build a row major array as list
 }
 ```
 
-Offsite Image: [http://www.zenkinetic.com/Images/RosettaCode/matrixRainDance.jpg Matrix rain dance]
+Offsite Image: [Matrix rain dance](http://www.zenkinetic.com/Images/RosettaCode/matrixRainDance.jpg)
 
 [[Category:Ncurses]]
 [[Category:Curses]]

@@ -958,7 +958,7 @@ def optim2(a):
 ###  Memoized recursive call
 
 
-The only difference between optim2 and optim3 is the [[:wp:https://en.wikipedia.org/wiki/Memoization|@memoize]] [https://www.python.org/dev/peps/pep-0318/ decorator]. Yet the algorithm is way faster with this. According to Wikipedia, the complexity falls from O(2^n) to O(n^3). This is confirmed by plotting log(time) vs log(n) for n up to 580 (this needs [https://docs.python.org/3/library/sys.html#sys.setrecursionlimit changing Python's recursion limit]).
+The only difference between optim2 and optim3 is the [[:wp:https://en.wikipedia.org/wiki/Memoization|@memoize]] [decorator](https://www.python.org/dev/peps/pep-0318/). Yet the algorithm is way faster with this. According to Wikipedia, the complexity falls from O(2^n) to O(n^3). This is confirmed by plotting log(time) vs log(n) for n up to 580 (this needs [changing Python's recursion limit](https://docs.python.org/3/library/sys.html#sys.setrecursionlimit)).
 
 
 ```python
@@ -1258,7 +1258,7 @@ Cost : 1773740
 
 ###  Recursive solution
 
-Here is the equivalent of optim3 in Python's solution. Memoization is done with an [https://www.stata.com/help.cgi?mf_asarray associative array]. Multiple results are returned in a [https://www.stata.com/help.cgi?m2_struct structure]. The same effect as optim2 can be achieved by removing the asarray machinery.
+Here is the equivalent of optim3 in Python's solution. Memoization is done with an [associative array](https://www.stata.com/help.cgi?mf_asarray). Multiple results are returned in a [structure](https://www.stata.com/help.cgi?m2_struct). The same effect as optim2 can be achieved by removing the asarray machinery.
 
 
 ```stata

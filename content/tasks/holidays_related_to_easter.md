@@ -387,7 +387,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 ## ALGOL 68
 
-Note: Base code specimen extracted from [http://www.xs4all.nl/~jmvdveer/a68g-doc.pdf Algol 68 Genie Documentation] Part III - ''Example a68g programs.''
+Note: Base code specimen extracted from [Algol 68 Genie Documentation](http://www.xs4all.nl/~jmvdveer/a68g-doc.pdf) Part III - ''Example a68g programs.''
 <!--
 Part I, II, III and V are distributed under the conditions of the GNU Free Documentation
 License: Permission is granted to copy, distribute and / or modify the text under the terms of
@@ -628,7 +628,7 @@ These programs use several extensions: <code>else</code> branch, <code>print</co
 
 ### Western holidays
 
-This program switches calendar from Julian to Gregorian during October 1582. Its algorithm takes from [http://www.merlyn.demon.co.uk/zel-1886.htm ''Kalendar-Formeln'' by Zeller (1886)].
+This program switches calendar from Julian to Gregorian during October 1582. Its algorithm takes from [''Kalendar-Formeln'' by Zeller (1886)](http://www.merlyn.demon.co.uk/zel-1886.htm).
 
 
 ```bc
@@ -891,7 +891,7 @@ Year	Easter	Ascensn	Pentcst	Trinity	Corpus
 ## C
 
 {{trans|ALGOL 68|Note: This specimen retains the original [[Holidays related to Easter#ALGOL 68|ALGOL 68]] coding style -
-[http://rosettacode.org/mw/index.php?title=Holidays_related_to_Easter&diff=85840&oldid=85839 diff].}}
+[diff](http://rosettacode.org/mw/index.php?title=Holidays_related_to_Easter&diff=85840&oldid=85839).}}
 
 ```c
 #include <stdio.h>
@@ -1894,7 +1894,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 =={{header|Icon}} and {{header|Unicon}}==
 This is a modified translation of the C# code with specialized (limited) date calculation procedures added.
 
-Aside from the already noted issues and inconsistencies with extending these calculations back centuries, the calculation of the correct and proper date of Easter has historically been responsible for massive conflict in Western history including excommunications, near wars, and contributing to the splitting of the Catholic Church.  For more see [http://mangsbatpage.433rd.com/2008/03/calculating-easter.html Calculating Easter @ Mang's Bat Page].
+Aside from the already noted issues and inconsistencies with extending these calculations back centuries, the calculation of the correct and proper date of Easter has historically been responsible for massive conflict in Western history including excommunications, near wars, and contributing to the splitting of the Catholic Church.  For more see [Calculating Easter @ Mang's Bat Page](http://mangsbatpage.433rd.com/2008/03/calculating-easter.html).
 
 
 ```Icon
@@ -2023,7 +2023,7 @@ In Eastern Christianity, Trinity Sunday is the same day as Pentecost.
 ###  Julian Easters
 
 
-This code is based on the above rationale, and http://www.merlyn.demon.co.uk/estr-bcp.htm and the wikipedia pages referenced in the task description:
+This code is based on the above rationale, and <http://www.merlyn.demon.co.uk/estr-bcp.htm> and the wikipedia pages referenced in the task description:
 
 
 ```j
@@ -3199,7 +3199,7 @@ The Phix timedate routines make no attempt to support pre-1752 dates, but the al
 
 --
 function easter(integer year)
--- from https://en.wikipedia.org/wiki/Computus#Anonymous_Gregorian_algorithm
+-- from <https://en.wikipedia.org/wiki/Computus#Anonymous_Gregorian_algorithm>
     integer a = mod(year,19),
             b = floor(year/100),
             c = mod(year,100),
@@ -3782,7 +3782,7 @@ require 'date'
 
 def easter_date(year)
   # Anonymous Gregorian algorithm
-  # http://en.wikipedia.org/wiki/Computus#Algorithms
+  # <http://en.wikipedia.org/wiki/Computus#Algorithms>
 
   a    = year % 19
   b, c = year.divmod(100)
@@ -3871,7 +3871,7 @@ def easter(year: Int) = {
   /*
    * Calculate e = day of Easter, following the 1886 paper,
    * Kalender-Formeln (Calendar Formulae) by Chr. Zeller.
-   *   http://www.merlyn.demon.co.uk/zel-1886.htm
+   *   <http://www.merlyn.demon.co.uk/zel-1886.htm>
    *
    * With Scala, p % 7 gives the wrong result when p < 0. To give the
    * correct result, this code uses "+ 6 * j" where one might have used
@@ -4049,7 +4049,7 @@ const proc: main is func
 ```
 
 
-Original source of the function easterDate, which uses the Gauss formula: [http://seed7.sourceforge.net/algorith/date.htm#easterDate]
+Original source of the function easterDate, which uses the Gauss formula: <http://seed7.sourceforge.net/algorith/date.htm#easterDate>
 
 Output:
 
@@ -4149,7 +4149,7 @@ for year in (400..2100 `by` 100, 2010..2020) {
 ```tcl
 package require Tcl 8.5; # Advanced date handling engine
 
-# Easter computation code from http://www.assa.org.au/edm.html
+# Easter computation code from <http://www.assa.org.au/edm.html>
 proc EasterDate year {
     set FirstDig [expr {$year / 100}]
     set Remain19 [expr {$year % 19}]
@@ -4263,7 +4263,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 ```vb
 Public dates As Variant
 Private Function easter(year_ As Integer) As Date
-'-- from https://en.wikipedia.org/wiki/Computus#Anonymous_Gregorian_algorithm
+'-- from <https://en.wikipedia.org/wiki/Computus#Anonymous_Gregorian_algorithm>
     Dim a As Integer, b As Integer, c As Integer, d As Integer, e As Integer
     Dim f As Integer, g As Integer, h As Integer, i As Integer, k As Integer
     Dim l As Integer, m As Integer, n As Integer

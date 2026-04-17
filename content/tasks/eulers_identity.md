@@ -446,7 +446,7 @@ e ^ (π * im) + 1 = 0.0 + 1.2246467991473532e-16im
 ```
 
 
-Using symbolic algebra, through the [https://github.com/chakravala/Reduce.jl Reduce.jl] package.
+Using symbolic algebra, through the [Reduce.jl](https://github.com/chakravala/Reduce.jl) package.
 
 
 ```julia

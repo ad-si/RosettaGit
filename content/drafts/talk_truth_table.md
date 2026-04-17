@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Inspiration==
-Inspired by a mention of truth tables [[User:Mwn3d#Projects|here]] (Thanks Mike), which reminded me of an old [http://paddy3118.blogspot.com/2010/03/expressions-to-truth-tables.html blog post] of mine. --[[User:Paddy3118|Paddy3118]] 07:24, 31 October 2011 (UTC)
+Inspired by a mention of truth tables [[User:Mwn3d#Projects|here]] (Thanks Mike), which reminded me of an old [blog post](http://paddy3118.blogspot.com/2010/03/expressions-to-truth-tables.html) of mine. --[[User:Paddy3118|Paddy3118]] 07:24, 31 October 2011 (UTC)
 :Always glad to inspire :). --[[User:Mwn3d|Mwn3d]] 13:16, 31 October 2011 (UTC)
 
 ==Which operators?==

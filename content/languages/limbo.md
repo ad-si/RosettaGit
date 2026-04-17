@@ -16,9 +16,9 @@ Limbo is the application programming language for Inferno. Syntactically similar
 Limbo's approach to concurrency was inspired by Hoare's Communicating Sequential Processes ([CSP](https://rosettacode.org/wiki/CSP)).[[2](https://rosettacode.org/wiki/#Citation)]
 
 ## Citations
-#[http://www.vitanuova.com/inferno/papers/limbo.html  The Limbo Programming Language by Dennis M. Ritchie]
+#[The Limbo Programming Language by Dennis M. Ritchie](http://www.vitanuova.com/inferno/papers/limbo.html)
 #[Wikipedia: Limbo Programming Language](https://en.wikipedia.org/wiki/Limbo_(programming_language))
 
 ## See Also
-* [http://www.cs.rit.edu/~ats/inferno/limbo/ The Limbo Programming Language]
-* [http://doc.cat-v.org/inferno/4th_edition/limbo_language/descent A Descent into Limbo by Brian W. Kernighan]
+* [The Limbo Programming Language](http://www.cs.rit.edu/~ats/inferno/limbo/)
+* [A Descent into Limbo by Brian W. Kernighan](http://doc.cat-v.org/inferno/4th_edition/limbo_language/descent)

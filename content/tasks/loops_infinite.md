@@ -1429,7 +1429,7 @@ wend
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=e63dcdc939f8a7dcfd3194d884f8d4a5 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=e63dcdc939f8a7dcfd3194d884f8d4a5)'''
 
 ```gambas
 Public Sub Main()
@@ -2536,7 +2536,7 @@ repeat, write('SPAM'), nl, fail.
 ## Pure Data
 
 
-Screenshot: https://i.imgur.com/IrwaafZ.png
+Screenshot: <https://i.imgur.com/IrwaafZ.png>
 
 
 ```Pure Data
@@ -2600,7 +2600,7 @@ while 1:
 Note: one can also use: "True" or any other non-false value.
 In Python the following values are false: 0, "" (empty string), (,) and {} and [] (empty tuples, dictionaries or lists), ''None'' (the special object), and the ''False'' object.
 Any non-empty collection or string or non-zero numeric value is considered "True".
-However, according to [http://wiki.python.org/moin/PythonSpeed#Takeadvantageofinterpreteroptimizations Python Wiki], for Python versions 2.3+ this variant is optimized by the interpreter and thus is the fastest.
+However, according to [Python Wiki](http://wiki.python.org/moin/PythonSpeed#Takeadvantageofinterpreteroptimizations), for Python versions 2.3+ this variant is optimized by the interpreter and thus is the fastest.
 
 
 ## R
@@ -3078,7 +3078,7 @@ while (1) printf("SPAM\n")
 ```
 
 
-Also possible with a '''[https://www.stata.com/help.cgi?m2_for for]''' loop, but unlike C, the middle expression is not optional:
+Also possible with a '''[for](https://www.stata.com/help.cgi?m2_for)''' loop, but unlike C, the middle expression is not optional:
 
 
 ```stata

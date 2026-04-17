@@ -33,5 +33,5 @@ MAIN
 
 The last version from Mike Brennan was mawk 1.3.3. Thomas E Dickey revived the project and made mawk 1.3.4.
 
-* [http://invisible-island.net/mawk/mawk.html mawk 1.3.4]
-* [http://openports.se/lang/mawk OpenBSD port of mawk 1.3.3]
+* [mawk 1.3.4](http://invisible-island.net/mawk/mawk.html)
+* [OpenBSD port of mawk 1.3.3](http://openports.se/lang/mawk)

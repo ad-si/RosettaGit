@@ -120,7 +120,7 @@ For example, 225(10) is "d4" in base 17, its square "a52g", and a5(17) + 2g(17) 
 
 
 ;Reference:
-* [http://www.cs.uwaterloo.ca/journals/JIS/VOL3/iann2a.html The Kaprekar Numbers] by Douglas E. Iannucci (2000). [http://pictor.math.uqam.ca/~plouffe/OEIS/jis/The%20Kaprekar%20Numbers.pdf PDF version]
+* [The Kaprekar Numbers](http://www.cs.uwaterloo.ca/journals/JIS/VOL3/iann2a.html) by Douglas E. Iannucci (2000). [PDF version](http://pictor.math.uqam.ca/~plouffe/OEIS/jis/The%20Kaprekar%20Numbers.pdf)
 ;related task
 [[Casting out nines]]
 
@@ -1268,7 +1268,7 @@ Which produces:
 ```
 
 ===Casting Out Nines C++11 For Each Generator (v.fast)===
-For details of ran and co9 see: http://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator
+For details of ran and co9 see: <http://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator>
 
 ```cpp
 // Generate Kaprekar Numbers using Casting Out Nines Generator
@@ -2226,7 +2226,7 @@ let isKaprekar n =
 
 ## Factor
 
-This solution is based on the following Haskell code: [https://dev.to/heikodudzus/comment/1cl6].
+This solution is based on the following Haskell code: <https://dev.to/heikodudzus/comment/1cl6>.
 
 ```factor
 USING: io kernel lists lists.lazy locals math math.functions
@@ -3805,7 +3805,7 @@ Kaprekar Numbers below 1000000: 54
 
 
 ===Iannucci factoring method (extremely fast)===
-We can also use the method of [https://cs.uwaterloo.ca/journals/JIS/VOL3/iann2a.html Douglas Iannucci] to get much faster results (the below takes only a few milliseconds).  This works for bigints as well.
+We can also use the method of [Douglas Iannucci](https://cs.uwaterloo.ca/journals/JIS/VOL3/iann2a.html) to get much faster results (the below takes only a few milliseconds).  This works for bigints as well.
 ```perl
 use ntheory qw/fordivisors gcd invmod/;
 
@@ -4437,7 +4437,7 @@ raw_input()
 
 ### Using Casting Out Nines Generator
 
-See: http://rosettacode.org/wiki/Casting_out_nines#Python for explanation and code for CastOut
+See: <http://rosettacode.org/wiki/Casting_out_nines#Python> for explanation and code for CastOut
 
 ```python
 

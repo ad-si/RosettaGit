@@ -1371,7 +1371,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=6d60749ae886a37f128e75cffc6c7118 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=6d60749ae886a37f128e75cffc6c7118)'''
 
 ```gambas
 Public Sub Main()

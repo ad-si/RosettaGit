@@ -740,7 +740,7 @@ execute_process(COMMAND ls)
 ```
 
 
-Because of a quirk in the implementation ([http://cmake.org/gitweb?p=cmake.git;a=blob;f=Source/cmExecuteProcessCommand.cxx;hb=HEAD cmExecuteProcessCommand.cxx] and [http://cmake.org/gitweb?p=cmake.git;a=blob;f=Source/kwsys/ProcessUNIX.c;hb=HEAD ProcessUNIX.c]), CMake diverts the standard output to a pipe. The effect is like running <code>ls | cat</code> in the shell. The ''ls'' process inherits the original standard input and standard error, but receives a new pipe for standard output. CMake then reads this pipe and copies all data to the original standard output.
+Because of a quirk in the implementation ([cmExecuteProcessCommand.cxx](http://cmake.org/gitweb?p=cmake.git;a=blob;f=Source/cmExecuteProcessCommand.cxx;hb=HEAD) and [ProcessUNIX.c](http://cmake.org/gitweb?p=cmake.git;a=blob;f=Source/kwsys/ProcessUNIX.c;hb=HEAD)), CMake diverts the standard output to a pipe. The effect is like running <code>ls | cat</code> in the shell. The ''ls'' process inherits the original standard input and standard error, but receives a new pipe for standard output. CMake then reads this pipe and copies all data to the original standard output.
 
 ''execute_process()'' can also chain commands in a pipeeline, and capture output.
 
@@ -1137,7 +1137,7 @@ var
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=9460b39a86794a7346a390aeb50fc5cf Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=9460b39a86794a7346a390aeb50fc5cf)'''
 
 ```gambas
 Public Sub Main()
@@ -1262,7 +1262,7 @@ main = system "ls"
 ```
 
 
-See also: the [http://www.haskell.org/ghc/docs/latest/html/libraries/process-1.2.0.0/System-Process.html System.Process] module
+See also: the [System.Process](http://www.haskell.org/ghc/docs/latest/html/libraries/process-1.2.0.0/System-Process.html) module
 
 
 ## HicEst
@@ -1371,7 +1371,7 @@ stdout   =:  stdin spawn 'grep blah'
 ```
 
 
-Note that on unix systems, you can also use the [http://www.jsoftware.com/help/dictionary/dx002.htm 2!:x family] of foreign verbs to execute system commands.
+Note that on unix systems, you can also use the [2!:x family](http://www.jsoftware.com/help/dictionary/dx002.htm) of foreign verbs to execute system commands.
 
 
 ## Java
@@ -1547,7 +1547,7 @@ print(options.output);
 
 ## Julia
 
-The Julia manual has an excellent [http://docs.julialang.org/en/release-0.3/manual/running-external-programs/ section] on this topic, which is worth a read.  The short answer on Linux is:
+The Julia manual has an excellent [section](http://docs.julialang.org/en/release-0.3/manual/running-external-programs/) on this topic, which is worth a read.  The short answer on Linux is:
 
 ```Julia
 run(`ls`)
@@ -2170,7 +2170,7 @@ System cmd("pause")
 ```
 
 
-A more sophisticated example can be found [http://www.mozart-oz.org/home/doc/op/node17.html here].
+A more sophisticated example can be found [here](http://www.mozart-oz.org/home/doc/op/node17.html).
 
 
 ## PARI/GP
@@ -2215,8 +2215,8 @@ exec "ls";             # replace current process with another
 
 
 See also:
-http://perldoc.perl.org/perlipc.html#Using-open()-for-IPC
-http://perldoc.perl.org/IPC/Open3.html
+<http://perldoc.perl.org/perlipc.html#Using-open()-for-IPC>
+<http://perldoc.perl.org/IPC/Open3.html>
 
 
 ## Perl 6
@@ -2343,7 +2343,7 @@ passthru("ls");
 ```
 
 
-See also: [http://us.php.net/manual/en/function.proc-open.php proc_open()]
+See also: [proc_open()](http://us.php.net/manual/en/function.proc-open.php)
 
 
 ## PicoLisp
@@ -2656,8 +2656,8 @@ Process("ls", Seq("-oa"))!
 System commands can make a program unportable.
 Unix, Linux and BSD use the command ''ls'', while Windows respectively DOS use the command ''dir''.
 The format written by ''ls'' respectively ''dir'' depends on operating system and locale.
-The library [http://seed7.sourceforge.net/libraries/osfiles.htm osfiles.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/osfiles.htm#readDir%28in_string%29 readDir],
+The library [osfiles.s7i](http://seed7.sourceforge.net/libraries/osfiles.htm) defines
+the function [readDir](http://seed7.sourceforge.net/libraries/osfiles.htm#readDir%28in_string%29),
 which reads the contents of a directory in a portable way. ''ReadDir'' works independend
 from operating system and locale and supports also Unicode filenames.
 Anyway, the task was to use a system command, so here is the example:
@@ -2783,7 +2783,7 @@ In Windows:
 
 ## Stata
 
-Stata has a built-in '''[http://www.stata.com/help.cgi?dir dir]''' command. However, it's also possible to run arbitrary external programs using the '''[http://www.stata.com/help.cgi?shell shell]''' or '''winexec''' commands.
+Stata has a built-in '''[dir](http://www.stata.com/help.cgi?dir)''' command. However, it's also possible to run arbitrary external programs using the '''[shell](http://www.stata.com/help.cgi?shell)''' or '''winexec''' commands.
 
 The command '''!''' (or equivalently '''shell'''), opens a Windows console to run the command, while '''winexec''' does not.
 

@@ -13,4 +13,4 @@ tags = []
 This is the home page for a new category called web application.
 
 ==See Also==
-[https://en.wikipedia.org/wiki/Web_application Wikipedia Web Application Definition]
+[Wikipedia Web Application Definition](https://en.wikipedia.org/wiki/Web_application)

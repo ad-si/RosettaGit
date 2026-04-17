@@ -572,7 +572,7 @@ Hello John!
 
 ### Objects
 
-[http://l.autohotkey.net/docs/Objects.htm Documentation]
+[Documentation](http://l.autohotkey.net/docs/Objects.htm)
 
 ```AutoHotkey
 myCol := Object()
@@ -583,7 +583,7 @@ MsgBox % mycol.mykey ; new val
 
 
 ===Pseudo-arrays===
-Documentation: http://www.autohotkey.com/docs/misc/Arrays.htm
+Documentation: <http://www.autohotkey.com/docs/misc/Arrays.htm>
 
 ```AutoHotkey
 Loop 3
@@ -595,7 +595,7 @@ MsgBox % array1 "  " array2 "  " array3 ; 9  18  27
 ### Structs
 
 Structs are not natively supported in AutoHotkey, however they are often required in DllCalls to C++ Dlls.
-This shows how to retrieve values from a RECT structure in AutoHotkey (from the DllCall documentation at http://www.autohotkey.com/docs/commands/DllCall.htm)
+This shows how to retrieve values from a RECT structure in AutoHotkey (from the DllCall documentation at <http://www.autohotkey.com/docs/commands/DllCall.htm>)
 
 ```AutoHotkey
 VarSetCapacity(Rect, 16)  ; A RECT is a struct consisting of four 32-bit integers (i.e. 4*4=16).
@@ -1739,7 +1739,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=004236066581dd85f39f34e100bf5c40 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=004236066581dd85f39f34e100bf5c40)'''
 
 ```gambas
 Public Sub Main()
@@ -1913,7 +1913,7 @@ println ([combinedSet: combinedSet])
 
 ### Data.List
 
-The list is typically the first collection type to be encountered in textbooks, but other types may tend to be more efficient, or more flexibly accessed; see the <code>Data</code> hierarchy of [http://www.haskell.org/ghc/docs/latest/html/libraries/ GHC's standard library]. New collection types may be defined with <code>data</code>.
+The list is typically the first collection type to be encountered in textbooks, but other types may tend to be more efficient, or more flexibly accessed; see the <code>Data</code> hierarchy of [GHC's standard library](http://www.haskell.org/ghc/docs/latest/html/libraries/). New collection types may be defined with <code>data</code>.
 
 
 ```haskell
@@ -2273,7 +2273,7 @@ Here is a reference table for characteristics of commonly used <code>Collections
 
 ###  Using the Scala collection classes
 
-The [[Scala|Scala]] libraries are valid Java byte-code libraries. The collection part of these are rich because the multiple inheritance by traits. E.g. an [http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.ArrayBuffer ArrayBuffer] has properties inherent of 9 traits such as Buffer[A], IndexedSeqOptimized[A, ArrayBuffer[A]], Builder[A, ArrayBuffer[A]], ResizableArray[A] and Serializable. Another collection e.g. TrieMap uses some of these and other added traits. A [http://www.scala-lang.org/api/current/index.html#scala.collection.concurrent.TrieMap TrieMap] -a hashmap- is the most advanced of all. It supports parallel processing without blocking.
+The [[Scala|Scala]] libraries are valid Java byte-code libraries. The collection part of these are rich because the multiple inheritance by traits. E.g. an [ArrayBuffer](http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.ArrayBuffer) has properties inherent of 9 traits such as Buffer[A], IndexedSeqOptimized[A, ArrayBuffer[A]], Builder[A, ArrayBuffer[A]], ResizableArray[A] and Serializable. Another collection e.g. TrieMap uses some of these and other added traits. A [TrieMap](http://www.scala-lang.org/api/current/index.html#scala.collection.concurrent.TrieMap) -a hashmap- is the most advanced of all. It supports parallel processing without blocking.
 ```Java5
 import scala.Tuple2;
 import scala.collection.concurrent.TrieMap;
@@ -3242,7 +3242,7 @@ To concatenate two lists, use '''@''':
 ```
 
 
-To concatenate a whole list of lists, use [http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALflatten List.flatten]:
+To concatenate a whole list of lists, use [List.flatten](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALflatten):
 
 
 ```ocaml
@@ -3258,7 +3258,7 @@ Being a ''functional'' programming language, the list is one of the most importa
 ```
 
 
-The [http://code.google.com/p/ocaml-extlib/ extlib] also provides a type [http://ocaml-extlib.googlecode.com/svn/doc/apiref/Enum.html Enum.t].
+The [extlib](http://code.google.com/p/ocaml-extlib/) also provides a type [Enum.t](http://ocaml-extlib.googlecode.com/svn/doc/apiref/Enum.html).
 
 
 ## Oforth
@@ -3480,7 +3480,7 @@ declare
 ```
 
 
-There are also [http://www.mozart-oz.org/home/doc/base/tuple.html tuples] (records with consecutive integer keys starting with 1), [http://www.mozart-oz.org/documentation/base/weakdictionary.html weak dictionaries], [http://www.mozart-oz.org/documentation/mozart-stdlib/adt/queue.html queues] and [http://www.mozart-oz.org/documentation/mozart-stdlib/adt/stack.html stacks].
+There are also [tuples](http://www.mozart-oz.org/home/doc/base/tuple.html) (records with consecutive integer keys starting with 1), [weak dictionaries](http://www.mozart-oz.org/documentation/base/weakdictionary.html), [queues](http://www.mozart-oz.org/documentation/mozart-stdlib/adt/queue.html) and [stacks](http://www.mozart-oz.org/documentation/mozart-stdlib/adt/stack.html).
 
 
 ## PARI/GP
@@ -3821,8 +3821,8 @@ Array
 ## PicoLisp
 
 The direct way in PicoLisp is a linear list (other possibilities could involve
-[http://software-lab.de/doc/refI.html#idx index] trees or
-[http://software-lab.de/doc/ref.html#symbol property] lists).
+[index](http://software-lab.de/doc/refI.html#idx) trees or
+[property](http://software-lab.de/doc/ref.html#symbol) lists).
 
 ```PicoLisp
 : (setq Lst (3 4 5 6))
@@ -4064,7 +4064,7 @@ D4 = point{x:25, y:30}.
 
 ### Arrays
 
-Creating an [http://www.purebasic.com/documentation/array/index.html Array] of 10 strings (could be any type). PureBasic starts the index with element 0.
+Creating an [Array](http://www.purebasic.com/documentation/array/index.html) of 10 strings (could be any type). PureBasic starts the index with element 0.
 
 ```PureBasic
 Dim Text.s(9)
@@ -4077,7 +4077,7 @@ Text(7)="World!"
 
 ### Linked Lists
 
-Create a [http://www.purebasic.com/documentation/linkedlist/index.html Linked List] for strings (could be any type), then add two elements.
+Create a [Linked List](http://www.purebasic.com/documentation/linkedlist/index.html) for strings (could be any type), then add two elements.
 
 ```PureBasic
 NewList Cars.s()
@@ -4090,7 +4090,7 @@ AddElement(Cars()): Cars()="BMV"
 
 ### Hash table
 
-Create a [http://www.purebasic.com/documentation/map/index.html Map], e.g. a hash table that could be any type. The size of the dictionary can be defined as needed, otherwise a default value is used.
+Create a [Map](http://www.purebasic.com/documentation/map/index.html), e.g. a hash table that could be any type. The size of the dictionary can be defined as needed, otherwise a default value is used.
 
 ```PureBasic
 NewMap Capitals.s()
@@ -4103,7 +4103,7 @@ Capitals("Sweden")= "Stockholm"
 
 ## Python
 
-Python supports lists, tuples, dictionaries and now sets as built-in collection types.  See http://docs.python.org/tut/node7.html for further details.
+Python supports lists, tuples, dictionaries and now sets as built-in collection types.  See <http://docs.python.org/tut/node7.html> for further details.
 
 ```python
 collection = [0, '1']                 # Lists are mutable (editable) and can be sorted in place

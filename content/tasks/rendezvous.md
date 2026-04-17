@@ -65,7 +65,7 @@ Implement a printer monitor. The monitor guards a printer. There are two printer
 
 ## Ada
 
-Ada has integrated [http://www.iuma.ulpgc.es/users/jmiranda/gnat-rts/node20.htm rendezvous support]. The caller calls to a rendezvous using the name of the task suffixed by the entry point name and the parameters. An entry point can be called using timed entry call statement which allow limit waiting time:
+Ada has integrated [rendezvous support](http://www.iuma.ulpgc.es/users/jmiranda/gnat-rts/node20.htm). The caller calls to a rendezvous using the name of the task suffixed by the entry point name and the parameters. An entry point can be called using timed entry call statement which allow limit waiting time:
 
 ```ada
 select
@@ -994,7 +994,7 @@ schedulework([humptydumpty, oldmothergoose])
 
 ## Oz
 
-Oz does not have a rendezvous mechanism, but the task description lends itself to synchronous [http://c2.com/cgi/wiki?ActiveObject active objects]. We show how to implement this in Oz and then discuss the differences to the rendezvous model.
+Oz does not have a rendezvous mechanism, but the task description lends itself to synchronous [active objects](http://c2.com/cgi/wiki?ActiveObject). We show how to implement this in Oz and then discuss the differences to the rendezvous model.
 
 First a simple printer class whose definition is completely orthogonal to multithreading issues:
 
@@ -1057,7 +1057,7 @@ Active object are not a predefined abstraction in Oz. But due to Oz' first-class
   end
 ```
 
-This functions takes a class and an initialization message and returns a procedure. When called, this procedure will send messages to the new object in a new thread and then wait for the <code>Sync</code> variable to become bound. Exceptions are propagated using [http://www.mozart-oz.org/home/doc/base/node13.html#label696 failed values].
+This functions takes a class and an initialization message and returns a procedure. When called, this procedure will send messages to the new object in a new thread and then wait for the <code>Sync</code> variable to become bound. Exceptions are propagated using [failed values](http://www.mozart-oz.org/home/doc/base/node13.html#label696).
 
 This works because a unary procedure is syntactically indistinguishable from an object in Oz.
 
@@ -1296,7 +1296,7 @@ Rendezvous can be implemented in PicoLisp via the following function:
 ```
 
 The caller invokes it in the callee via the
-'[http://software-lab.de/doc/refT.html#tell tell]' interprocess communication,
+'[tell](http://software-lab.de/doc/refT.html#tell)' interprocess communication,
 and it uses 'tell' in turn to communicate results (and possible errors) back to
 the caller.
 

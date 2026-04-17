@@ -11,8 +11,8 @@ tags = []
 +++
 Potion is a small, fast, object and mixin-orientated, high-level, cross-platform, dynamic functional programming language under 10k sloc, with a stack-based syntax.
 Message passing as in [Smalltalk](https://rosettacode.org/wiki/Smalltalk), an object system as in [Io](https://rosettacode.org/wiki/Io) and the vm based on [Lua](https://rosettacode.org/wiki/Lua). The [JIT](https://rosettacode.org/wiki/JIT) is simplier and new.
-The parser generator is based on [http://piumarta.com/software/peg/ peg/leg].
+The parser generator is based on [peg/leg](http://piumarta.com/software/peg/).
 
 ## See also
-* [https://github.com/perl11/potion/ Potion repo]
-* [http://perl11.org/p2/ perl11.org/p2/] is based on potion
+* [Potion repo](https://github.com/perl11/potion/)
+* [perl11.org/p2/](http://perl11.org/p2/) is based on potion

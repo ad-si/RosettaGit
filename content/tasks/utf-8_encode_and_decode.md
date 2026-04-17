@@ -790,7 +790,7 @@ A       LATIN CAPITAL LETTER A                      U+0041	41          	U+0041
 ## Haskell
 
 
-Example makes use of [http://hackage.haskell.org/package/bytestring <tt>bytestring</tt>] and [http://hackage.haskell.org/package/text <tt>text</tt>] packages:
+Example makes use of [<tt>bytestring</tt>](http://hackage.haskell.org/package/bytestring) and [<tt>text</tt>](http://hackage.haskell.org/package/text) packages:
 
 
 ```haskell
@@ -1348,7 +1348,7 @@ Character|         Name                                | Ordinal| Unicode | UTF-
 ## Phix
 
 Standard autoinclude, see the manual and/or builtins/utfconv.e
-( http://phix.x10.mx/docs/html/utfconv.htm and/or https://bitbucket.org/petelomax/phix/src )
+( <http://phix.x10.mx/docs/html/utfconv.htm> and/or <https://bitbucket.org/petelomax/phix/src> )
 
 As requested in the task description:
 

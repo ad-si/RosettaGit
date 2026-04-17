@@ -60,8 +60,8 @@ Show all output here.
 
 
 ;Also see:
-::*   The OEIS article:   [http://oeis.org/A051634       strong   primes].
-::*   The OEIS article:   [http://oeis.org/A051635   weak    primes].
+::*   The OEIS article:   [strong   primes](http://oeis.org/A051634).
+::*   The OEIS article:   [weak    primes](http://oeis.org/A051635).
 
 
 
@@ -947,7 +947,7 @@ The first 37 weak primes:{3,7,13,19,23,31,43,47,61,73,83,89,103,109,113,131,139,
 
 ## Python
 
-Using the popular [http://www.numpy.org numpy] library for fast prime generation.
+Using the popular [numpy](http://www.numpy.org) library for fast prime generation.
 
 COmputes and shows the requested output then adds similar output for the "balanced" case  where <code>prime(p) == [prime(p-1) + prime(p+1)] ÷ 2</code>.
 
@@ -955,7 +955,7 @@ COmputes and shows the requested output then adds similar output for the "balanc
 import numpy as np
 
 def primesfrom2to(n):
-    # https://stackoverflow.com/questions/2068372/fastest-way-to-list-all-primes-below-n-in-python/3035188#3035188
+    # <https://stackoverflow.com/questions/2068372/fastest-way-to-list-all-primes-below-n-in-python/3035188#3035188>
     """ Input n>=6, Returns a array of primes, 2 <= p < n """
     sieve = np.ones(n//3 + (n%6==2), dtype=np.bool)
     sieve[0] = False

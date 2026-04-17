@@ -588,7 +588,7 @@ code SetVid=45;
 SetVid(Mode)
 ```
 
-Any display mode supported by the IBM-PC-compatible hardware and by the VGA or VESA standards can be enabled by calling the SetVid intrinsic routine. This works without problem on computers booted into DOS and under versions of Windows up until XP. DOSBox[http://www.dosbox.com/] gets around most of the incompatibilities introduced by WinXP and later versions.
+Any display mode supported by the IBM-PC-compatible hardware and by the VGA or VESA standards can be enabled by calling the SetVid intrinsic routine. This works without problem on computers booted into DOS and under versions of Windows up until XP. DOSBox<http://www.dosbox.com/> gets around most of the incompatibilities introduced by WinXP and later versions.
 
 Example display modes:
  $03 - CGA 80x25 text in 16 colors (x4)

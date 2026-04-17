@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://www.realsource.de/ RealSource] offers a large collection of snippets, libraries and general code for [[PureBasic]]. This includes [http://www.realsource.de/index.php/downloads/doc_details/24-autowin AutoWin] which allows for a high level of window automation.
+{{library}}[RealSource](http://www.realsource.de/) offers a large collection of snippets, libraries and general code for [[PureBasic]]. This includes [AutoWin](http://www.realsource.de/index.php/downloads/doc_details/24-autowin) which allows for a high level of window automation.

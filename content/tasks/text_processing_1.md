@@ -59,9 +59,9 @@ languages = [
 
 ## Task
 
-Often data is produced by one program, in the wrong format for later use by another program or person. In these situations another program can be written to parse and transform the original data into a format useful to the other. The term "Data Munging" is [http://www.google.co.uk/search?q=%22data+munging%22 often] used in programming circles for this task.
+Often data is produced by one program, in the wrong format for later use by another program or person. In these situations another program can be written to parse and transform the original data into a format useful to the other. The term "Data Munging" is [often](http://www.google.co.uk/search?q=%22data+munging%22) used in programming circles for this task.
 
-A [http://groups.google.co.uk/group/comp.lang.awk/msg/0ecba3a3fbf247d8?hl=en request] on the comp.lang.awk newsgroup led to a typical data munging task:
+A [request](http://groups.google.co.uk/group/comp.lang.awk/msg/0ecba3a3fbf247d8?hl=en) on the comp.lang.awk newsgroup led to a typical data munging task:
 
 ```txt
 I have to analyse data files that have the following format:
@@ -82,9 +82,9 @@ flag<=0)
 ```
 
 
-The data is [http://www.eea.europa.eu/help/eea-help-centre/faqs/how-do-i-obtain-eea-reports free to download and use] and is of this format:
+The data is [free to download and use](http://www.eea.europa.eu/help/eea-help-centre/faqs/how-do-i-obtain-eea-reports) and is of this format:
 
-Data is no longer available at that link. Zipped mirror available [https://github.com/thundergnat/rc/blob/master/resouces/readings.zip here] (offsite mirror).
+Data is no longer available at that link. Zipped mirror available [here](https://github.com/thundergnat/rc/blob/master/resouces/readings.zip) (offsite mirror).
 <pre style="overflow:scroll">
 1991-03-30	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1
 1991-03-31	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	10.000	1	20.000	1	20.000	1	20.000	1	35.000	1	50.000	1	60.000	1	40.000	1	30.000	1	30.000	1	30.000	1	25.000	1	20.000	1	20.000	1	20.000	1	20.000	1	20.000	1	35.000	1
@@ -96,7 +96,7 @@ Data is no longer available at that link. Zipped mirror available [https://githu
 ```
 
 
-Only a sample of the data showing its format is given above. The full example file may be downloaded [http://rosettacode.org/resources/readings.zip here].
+Only a sample of the data showing its format is given above. The full example file may be downloaded [here](http://rosettacode.org/resources/readings.zip).
 
 Structure your program to show statistics for each line of the file, (similar to the original Python, Perl, and AWK examples below), followed by summary statistics for the file. When showing example output just show a few line statistics and the full end summary.
 

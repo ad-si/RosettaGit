@@ -539,7 +539,7 @@ However, note that interesting objects are generally composed of several levels 
 ```
 
 
-[http://www.lispworks.com/documentation/HyperSpec/Body/f_room.htm room] prints information about current memory usage, but in an implementation-defined format. Take the difference of the relevant numbers, divide by 512, and you have the amount of memory consumed by allocating one additional instance of whatever it is.
+[room](http://www.lispworks.com/documentation/HyperSpec/Body/f_room.htm) prints information about current memory usage, but in an implementation-defined format. Take the difference of the relevant numbers, divide by 512, and you have the amount of memory consumed by allocating one additional instance of whatever it is.
 
 
 ## D
@@ -710,7 +710,7 @@ Furthermore, the GNU Pascal extension <tt>bitSizeOf</tt> is available, too, whic
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=87f102023bd9ef6dbd52b0158be2c3ee Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=87f102023bd9ef6dbd52b0158be2c3ee)'''
 
 ```gambas
 Public Sub Main()
@@ -1277,8 +1277,8 @@ the safety of a secondary heap, so that the one it is examining does not suddenl
 
 In PicoLisp, all variables have the same size (a single cell). Therefore it
 makes more sense to inspect the size of data structures. This can be done with
-the '[http://software-lab.de/doc/refS.html#size size]' and
-'[http://software-lab.de/doc/refL.html#length length]' functions.
+the '[size](http://software-lab.de/doc/refS.html#size)' and
+'[length](http://software-lab.de/doc/refL.html#length)' functions.
 
 
 ## PL/I
@@ -1806,7 +1806,7 @@ something by copying only a reference to it, which is done
 automatically and invisibly to the programmer with correct semantics).
 
 An additional facility exists for arbitrary precision floating point numbers,
-which are based on the [http://www.mpfr.org mpfr] library.
+which are based on the [mpfr](http://www.mpfr.org) library.
 The library function <code>mpfr..prec</code> applies to a number in mpfr format
 and returns the number of bits of precision in the mantissa.
 Host memory usage is linear plus a small constant.

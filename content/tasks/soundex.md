@@ -88,7 +88,7 @@ Soundex is an algorithm for creating indices for words based on their pronunciat
 The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling   (from the   [[wp:soundex|soundex   Wikipedia article]]).
 
 ### Caution
-There is a major issue in many of the implementations concerning the separation of two consonants that have the same soundex code! According to the official Rules [[https://www.archives.gov/research/census/soundex.html]]. So check for instance if '''Ashcraft'''  is coded to '''A-261'''.
+There is a major issue in many of the implementations concerning the separation of two consonants that have the same soundex code! According to the official Rules <https://www.archives.gov/research/census/soundex.html>. So check for instance if '''Ashcraft'''  is coded to '''A-261'''.
 * If a vowel (A, E, I, O, U) separates two consonants that have the same soundex code, the consonant to the right of the vowel is coded. Tymczak is coded as T-522 (T, 5 for the M, 2 for the C, Z ignored (see "Side-by-Side" rule above), 2 for the K). Since the vowel "A" separates the Z and K, the K is coded.
 * If "H" or "W" separate two consonants that have the same soundex code, the consonant to the right of the vowel is not coded. Example: Ashcraft is coded A-261 (A, 2 for the S, C ignored, 6 for the R, 1 for the F). It is not coded A-226.
 
@@ -684,7 +684,7 @@ A226
 
 ## C
 
-Some string examples and rules from [[http://www.archives.gov/research/census/soundex.html]].
+Some string examples and rules from <http://www.archives.gov/research/census/soundex.html>.
 
 ```c
 #include <stdio.h>
@@ -1591,7 +1591,7 @@ void main() {
 ```
 
 It works according to this document:
-http://www.archives.gov/publications/general-info-leaflets/55.html
+<http://www.archives.gov/publications/general-info-leaflets/55.html>
 So soundex("Ashcraft") is A-261 instead of A-226.
 
 ### Alternative Version
@@ -2469,7 +2469,7 @@ procedure soundex(name)
 end
 ```
 
-{{libheader|Icon Programming Library}} implements [http://www.cs.arizona.edu/icon/library/procs/soundex.htm soundex].  The above version is an adaptation of that procedure
+{{libheader|Icon Programming Library}} implements [soundex](http://www.cs.arizona.edu/icon/library/procs/soundex.htm).  The above version is an adaptation of that procedure
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Soundex.bas"
@@ -4502,14 +4502,14 @@ E251
 
 ## Racket
 
-The [http://rosettacode.org/wiki/Soundex#Scheme Scheme solution] runs as is in Racket.
+The [Scheme solution](http://rosettacode.org/wiki/Soundex#Scheme) runs as is in Racket.
 
 
 ## REXX
 
 Some assumptions made:
 :*   rules are from the algorithm for the '''American Soundex'''.
-:*   rules were taken from the Wikipedia article: http://en.wikipedia.org/wiki/Soundex
+:*   rules were taken from the Wikipedia article: <http://en.wikipedia.org/wiki/Soundex>
 :*   multiple words   (like ''Van de Graaff'')    are treated as one word.
 :*   anything that's not a letter of the Latin alphabet is ignored.
 :*   words starting with a non-letter are processed.
@@ -4749,7 +4749,7 @@ Output:
 
 ## Ruby
 
-Courtesy http://snippets.dzone.com/posts/show/4530
+Courtesy <http://snippets.dzone.com/posts/show/4530>
 
 ```ruby
 class String
@@ -4759,7 +4759,7 @@ class String
   SoundexCharsEx = '^' + SoundexChars
   SoundexCharsDel = '^A-Z'
 
-  # desc: http://en.wikipedia.org/wiki/Soundex
+  # desc: <http://en.wikipedia.org/wiki/Soundex>
   def soundex(census = true)
     str = self.upcase.delete(SoundexCharsDel)
     str[0,1] + str[1..-1].delete(SoundexCharsEx).
@@ -4800,7 +4800,7 @@ bar      -> B600
 
 ## Run BASIC
 
-Courtesy http://dkokenge.com/rbp
+Courtesy <http://dkokenge.com/rbp>
 
 ```runbasic
 global val$
@@ -4928,7 +4928,7 @@ def main(args: Array[String]): Unit = {
 ## Scheme
 
 
-This implements American Soundex as described at [http://www.avotaynu.com/soundex.htm].
+This implements American Soundex as described at <http://www.avotaynu.com/soundex.htm>.
 
 {{works with|any R6RS Scheme}}
 
@@ -5231,7 +5231,7 @@ val () = test "Pfister" "P236"
 
 ## Stata
 
-The soundex function is built-in. See [http://www.stata.com/help.cgi?soundex Stata help].
+The soundex function is built-in. See [Stata help](http://www.stata.com/help.cgi?soundex).
 
 ```stata
 . display soundex_nara("Ashcraft")
@@ -5445,7 +5445,7 @@ B620=Burrows
 ### =TXR Pattern Language=
 
 
-This implements the full Soundex described in [[http://www.archives.gov/research/census/soundex.html U.S. National Archives Website]]. Doubled letters are condensed before separating the first letter, so that for instance "Lloyd" is not treated as L followed by the coding of LOYD but as L followed by the coding of OYD. Consecutive consonants which map to the same code are not condensed to a single occurrence of the code if they are separated by vowels, but separating W and H do not thus intervene. Names with common prefixes are encoded in two ways.
+This implements the full Soundex described in [U.S. National Archives Website](http://www.archives.gov/research/census/soundex.html). Doubled letters are condensed before separating the first letter, so that for instance "Lloyd" is not treated as L followed by the coding of LOYD but as L followed by the coding of OYD. Consecutive consonants which map to the same code are not condensed to a single occurrence of the code if they are separated by vowels, but separating W and H do not thus intervene. Names with common prefixes are encoded in two ways.
 
 
 ```txr
@@ -5612,7 +5612,7 @@ declare -A value=(
 ```
 
 
-The first algorithm described at https://en.wikipedia.org/wiki/Soundex#American_Soundex can be implemented like this:
+The first algorithm described at <https://en.wikipedia.org/wiki/Soundex#American_Soundex> can be implemented like this:
 
 
 ```bash

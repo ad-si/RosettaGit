@@ -29,7 +29,7 @@ There are many other differences, not all of which are syntatic.
 ## Download
 Details of how to run Algol 68R under a George 3 emulator can be found at the links below. The emulator and Algol 68R can be run on a number of systems, including the Raspberry Pi.
 
-* http://sw.ccs.bcs.org/CCs/g3/index.html 
-* http://sw.ccs.bcs.org/CCs/g3/g3pi.htm
+* <http://sw.ccs.bcs.org/CCs/g3/index.html> 
+* <http://sw.ccs.bcs.org/CCs/g3/g3pi.htm>
 
 Note that this software is strictly for non-commercial use.

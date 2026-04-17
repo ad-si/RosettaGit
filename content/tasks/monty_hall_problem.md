@@ -131,8 +131,8 @@ Simulate at least a thousand games using three doors for each strategy <u>and sh
 
 ## References
 
-:* Stefan Krauss, X. T. Wang, "The psychology of the Monty Hall problem: Discovering psychological mechanisms for solving a tenacious brain teaser.", Journal of Experimental Psychology: General, Vol 132(1), Mar 2003, 3-22 [https://doi.org/10.1037/0096-3445.132.1.3 DOI: 10.1037/0096-3445.132.1.3]
-:* A YouTube video:   [https://www.youtube.com/watch?v=4Lb-6rxZxx0 Monty Hall Problem - Numberphile].
+:* Stefan Krauss, X. T. Wang, "The psychology of the Monty Hall problem: Discovering psychological mechanisms for solving a tenacious brain teaser.", Journal of Experimental Psychology: General, Vol 132(1), Mar 2003, 3-22 [DOI: 10.1037/0096-3445.132.1.3](https://doi.org/10.1037/0096-3445.132.1.3)
+:* A YouTube video:   [Monty Hall Problem - Numberphile](https://www.youtube.com/watch?v=4Lb-6rxZxx0).
 
 
 
@@ -1976,9 +1976,9 @@ Switch door => 66.7207 %
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Monty_Hall_problem this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Monty_Hall_problem) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2539,7 +2539,7 @@ Object {stayWins: "202 20.2%", switchWins: "265 26.5%"}
 ### Basic Solution
 
 
-<!-- http://blog.dreasgrech.com/2011/09/simulating-monty-hall-problem.html -->
+<!-- <http://blog.dreasgrech.com/2011/09/simulating-monty-hall-problem.html> -->
 
 ```javascript
 
@@ -4675,7 +4675,7 @@ montyHall(n) ==
 
 ```
 
-Domain:[http://fricas.github.io/api/Integer.html?highlight=random Integer]
+Domain:[Integer](http://fricas.github.io/api/Integer.html?highlight=random)
 
 ```txt
 

@@ -20,5 +20,5 @@ The use of the code() built-in function (which takes source code as input and re
 
 CSnobol4 [ftp://ftp.snobol4.org/snobol sources] and [ftp://ftp.snobol4.org/snobol/win32/ Win32 binary]
 
-Above also included in Rafal M. Sulejman's [http://rms.republika.pl/slide.shtml TkS*LIDE SNOBOL4 IDE]
+Above also included in Rafal M. Sulejman's [TkS*LIDE SNOBOL4 IDE](http://rms.republika.pl/slide.shtml)
 [[File:Tkslide.png]]

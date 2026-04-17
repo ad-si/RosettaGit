@@ -44,4 +44,4 @@ print (("Hello, world!", new line))
 |}
 
 ## See also
-* Download incremental ALGOL 68 compiler - [http://www.nunan.fsnet.co.uk/algol68/a68mk2.zip]
+* Download incremental ALGOL 68 compiler - <http://www.nunan.fsnet.co.uk/algol68/a68mk2.zip>

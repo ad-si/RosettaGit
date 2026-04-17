@@ -447,7 +447,7 @@ Clipper has no it's own functions to rename a directory, it is possible, though,
 
 ## Common Lisp
 
-<code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_rn_fil.htm rename-file]</code>
+<code>[rename-file](http://www.lispworks.com/documentation/HyperSpec/Body/f_rn_fil.htm)</code>
 
 
 ```lisp
@@ -637,7 +637,7 @@ s" /input.txt" s" /output.txt" rename-file throw
 
 ## Fortran
 
-Using UNIX extensions to '''Fortran 77''' (see e.g. [http://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/Rename-Intrinsic-_0028subroutine_0029.html#Rename-Intrinsic-_0028subroutine_0029 g77 manual]) :
+Using UNIX extensions to '''Fortran 77''' (see e.g. [g77 manual](http://gcc.gnu.org/onlinedocs/gcc-3.4.6/g77/Rename-Intrinsic-_0028subroutine_0029.html#Rename-Intrinsic-_0028subroutine_0029)) :
 
 ```fortran
       PROGRAM EX_RENAME
@@ -1844,10 +1844,10 @@ object Rename1 {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/osfiles.htm osfiles.s7i]
-defines the function [http://seed7.sourceforge.net/libraries/osfiles.htm#moveFile%28in_string,in_string%29 moveFile],
+The library [osfiles.s7i](http://seed7.sourceforge.net/libraries/osfiles.htm)
+defines the function [moveFile](http://seed7.sourceforge.net/libraries/osfiles.htm#moveFile%28in_string,in_string%29),
 which renames / moves a file.
-Seed7 uses a [http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation standard path representation]
+Seed7 uses a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation)
 to make paths operating system independent. In the standard path representation
 a / is used as path delimiter and drive letters like C: must be written as /c instead.
 Creating files and directories in a file system root may need privileges, so the program may fail,
@@ -1941,7 +1941,7 @@ OS.FileSys.rename {old = "/docs", new = "/mydocs"};
 
 ## Stata
 
-Use a '''[http://www.stata.com/help.cgi?shell shell]''' command. The following works on Windows, there are similar commands on other operating systems.
+Use a '''[shell](http://www.stata.com/help.cgi?shell)''' command. The following works on Windows, there are similar commands on other operating systems.
 
 
 ```stata

@@ -18,13 +18,13 @@ INTERCAL's main advantage over other programming languages is its strict simplic
 "INTERCAL" is an acronym for "Compiler Language With No Pronounceable Acronym."
 
 ## Citations
-#[http://www.catb.org/~esr/intercal/ The INTERCAL Resources Page]
-#[http://www.ofb.net/~jlm/intercal.html Overview from The INTERCAL Programming Language Reference Manual by Donand R. Woods and James M. Lyon]
+#[The INTERCAL Resources Page](http://www.catb.org/~esr/intercal/)
+#[Overview from The INTERCAL Programming Language Reference Manual by Donand R. Woods and James M. Lyon](http://www.ofb.net/~jlm/intercal.html)
 
 ## See Also
 *[Wikipedia: Intercal](https://en.wikipedia.org/wiki/INTERCAL)
-*[http://catb.org/~esr/intercal/stross.html Intercal -- the Language From Hell]
-*[http://www.muppetlabs.com/~breadbox/intercal-man/ The INTERCAL Programming Language Revised Reference Manual]
-*[http://www.muppetlabs.com/~breadbox/intercal/ INTERCAL "The Performance Art of Programming"]
+*[Intercal -- the Language From Hell](http://catb.org/~esr/intercal/stross.html)
+*[The INTERCAL Programming Language Revised Reference Manual](http://www.muppetlabs.com/~breadbox/intercal-man/)
+*[INTERCAL "The Performance Art of Programming"](http://www.muppetlabs.com/~breadbox/intercal/)
 [Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)
 *[INTERCAL on Esolangs](https://rosettacode.org/wiki/eso:INTERCAL)

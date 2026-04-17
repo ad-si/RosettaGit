@@ -397,8 +397,8 @@ H              H
 
 {{trans|Ada}}
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6 algol68g-2.6].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.6](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: prelude/Bitmap/Bresenhams_line_algorithm.a68'''
 ```algol68
 # -*- coding: utf-8 -*- #
@@ -490,7 +490,7 @@ ffffffffffffffffffffffffffffffffffffffffff000000ffffffffffffffffffffffffffffffff
 
 ## Assembly
 
-16 bit Intel 8086\80486 Assembly for dos, see [http://en.wikipedia.org/wiki/X86_assembly_language x86 assembly language].
+16 bit Intel 8086\80486 Assembly for dos, see [x86 assembly language](http://en.wikipedia.org/wiki/X86_assembly_language).
 To run this code you will need to use Dos emulator.
 
 ```txt
@@ -3948,7 +3948,7 @@ func draw
 ```
 
 Output :
-[https://lh3.googleusercontent.com/-6uJvON0dAuo/V2LO2zz4zQI/AAAAAAAAALE/IjEGFuhta6oUSeG2QfuxcPBWMmCyNCjdwCLcB/s1600/CalmoSoftBresenham.jpg Bitmap/Bresenham's algorithm]
+[Bitmap/Bresenham's algorithm](https://lh3.googleusercontent.com/-6uJvON0dAuo/V2LO2zz4zQI/AAAAAAAAALE/IjEGFuhta6oUSeG2QfuxcPBWMmCyNCjdwCLcB/s1600/CalmoSoftBresenham.jpg)
 
 
 ## Ruby

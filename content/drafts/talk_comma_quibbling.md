@@ -22,9 +22,9 @@ The pubs people of IBM (where I worked quite a few years) taught me that a list 
 
 Any opinions?? --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 15:15, 6 October 2013 (UTC)
 
-:Eric Lipperts' blog entry states that the task excludes the [http://oxforddictionaries.com/words/what-is-the-oxford-comma Oxford comma]. -[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:47, 6 October 2013 (UTC)
+:Eric Lipperts' blog entry states that the task excludes the [Oxford comma](http://oxforddictionaries.com/words/what-is-the-oxford-comma). -[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:47, 6 October 2013 (UTC)
 
-:I think your IBM buddies are correct, and leaving out the Oxford comma is imprecise.  It bothered me enough that I immediately looked at this page to see if there was discussion.  Oh well, the task specifically states that the list shall be constructed in this ambiguous and sometimes unintentionally funny ([http://www.buzzfeed.com/adamdavis/the-oxford-comma-is-extremely-important-and-everyone-should buzzfeed]) way.  [[User:Danaj|Danaj]] ([[User talk:Danaj|talk]]) 16:09, 21 October 2014 (UTC) 
+:I think your IBM buddies are correct, and leaving out the Oxford comma is imprecise.  It bothered me enough that I immediately looked at this page to see if there was discussion.  Oh well, the task specifically states that the list shall be constructed in this ambiguous and sometimes unintentionally funny ([buzzfeed](http://www.buzzfeed.com/adamdavis/the-oxford-comma-is-extremely-important-and-everyone-should)) way.  [[User:Danaj|Danaj]] ([[User talk:Danaj|talk]]) 16:09, 21 October 2014 (UTC) 
 
 -----
 
@@ -42,7 +42,7 @@ Note that Bob and Zach are meant to be shown as ''alone''   (as not part of a co
 
 
 
-Also, see:   [http://www.verbicidemagazine.com/2011/09/20/strippers-jfk-and-stalin-illustrate-why-you-should-use-the-serial-comma/ visual proof for the need of an Oxford comma]. 
+Also, see:   [visual proof for the need of an Oxford comma](http://www.verbicidemagazine.com/2011/09/20/strippers-jfk-and-stalin-illustrate-why-you-should-use-the-serial-comma/). 
 
 
 -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:27, 3 February 2017 (UTC)
@@ -52,7 +52,7 @@ Also, see:   [http://www.verbicidemagazine.com/2011/09/20/strippers-jfk-and-stal
 
 
 
-Sirs, I covered just this eventuality, methinks by the use of [http://en.wiktionary.org/wiki/quibble quibbling] in the title ;-)
+Sirs, I covered just this eventuality, methinks by the use of [quibbling](http://en.wiktionary.org/wiki/quibble) in the title ;-)
 
 --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 18:02, 21 October 2014 (UTC)
 

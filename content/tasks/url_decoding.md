@@ -86,7 +86,7 @@ or mechanism to convert an URL-encoded string into its original unencoded form.
 
 
 ;Test cases:
-*   The encoded string   "<code><nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki></code>"   should be reverted to the unencoded form   "<code><nowiki>http://foo bar/</nowiki></code>".
+*   The encoded string   "<code><nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki></code>"   should be reverted to the unencoded form   "<code><nowiki><http://foo> bar/</nowiki></code>".
 
 *   The encoded string   "<code><nowiki>google.com/search?q=%60Abdu%27l-Bah%C3%A1</nowiki></code>"   should revert to the unencoded form   "<code><nowiki>google.com/search?q=`Abdu'l-Bahá</nowiki></code>".
 
@@ -521,7 +521,7 @@ console.log decodeURIComponent "http%3A%2F%2Ffoo%20bar%2F?name=Foo%20Barson"
 
 <lang>
 > coffee foo.coffee
-http://foo bar/?name=Foo Barson
+<http://foo> bar/?name=Foo Barson
 
 ```
 
@@ -819,7 +819,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt provides hexstring]
+[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 ```txt
 encoded = "http%3A%2F%2Ffoo%20bar%2F"
@@ -850,7 +850,7 @@ http://foo bar/
 ```
 
 
-Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [http://tools.ietf.org/html/rfc3986#section-2.1 RFC 3986] regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
+Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [RFC 3986](http://tools.ietf.org/html/rfc3986#section-2.1) regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
 
 Example use:
 
@@ -999,7 +999,7 @@ google.com/search?q=`Abdu'l-Bahá
 bytes('http%3A%2F%2Ffoo%20bar%2F') -> decodeurl
 ```
 
--> http://foo bar/
+-> <http://foo> bar/
 
 
 ## Liberty BASIC
@@ -1091,7 +1091,7 @@ put urldecode("google.com/search?q=%60Abdu%27l-Bah%C3%A1")
 put urlDecode("http%3A%2F%2Ffoo%20bar%2F") & cr & \
     urlDecode("google.com/search?q=%60Abdu%27l-Bah%C3%A1")
 ```
-Results<lang>http://foo bar/
+Results<lang><http://foo> bar/
 google.com/search?q=`Abdu'l-Bah√°
 ```
 
@@ -1276,7 +1276,7 @@ method DecodeURL(arg) public static
 
 <pre style="height: 20ex; overflow: scroll;">
 http%3A%2F%2Ffoo%20bar%2F
-http://foo bar/
+<http://foo> bar/
 
 mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
 mailto:"Ivan Aim" <ivan.aim@email.com>
@@ -1293,7 +1293,7 @@ mailto:"Irma User" <irma.user@mail.com>
 
 ```NewLISP
 ;; universal decoder, works for ASCII and UTF-8
-;; (source http://www.newlisp.org/index.cgi?page=Code_Snippets)
+;; (source <http://www.newlisp.org/index.cgi?page=Code_Snippets>)
 (define (url-decode url (opt nil))
   (if opt (replace "+" url " "))
   (replace "%([0-9a-f][0-9a-f])" url (pack "b" (int $1 0 16)) 1))
@@ -1329,7 +1329,7 @@ END URLDecoding.
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 google.com/search?q=`Abdu'l-Bahá
 
 ```
@@ -1369,7 +1369,7 @@ NSLog(@"%@", normal);
 ## OCaml
 
 
-Using the library [http://projects.camlcity.org/projects/ocamlnet.html ocamlnet] from the interactive loop:
+Using the library [ocamlnet](http://projects.camlcity.org/projects/ocamlnet.html) from the interactive loop:
 
 
 ```ocaml
@@ -1432,7 +1432,7 @@ DecodeURL: Procedure
 ```txt
 
 http%3A%2F%2Ffoo%20bar%2F
-http://foo bar/
+<http://foo> bar/
 
 mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
 mailto:"Ivan Aim" <ivan.aim@email.com>
@@ -1534,7 +1534,7 @@ printf(1,"%s\n",{decode_url("google.com/search?q=%60Abdu%27l-Bah%C3%A1")})
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 google.com/search?q=`Abdu'l-Bahá
 
 ```
@@ -1575,7 +1575,7 @@ echo "The unencoded string is $unencoded !\n";
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 
 ```
 
@@ -1587,7 +1587,7 @@ http://foo bar/
 ```PureBasic
 URL$ = URLDecoder("http%3A%2F%2Ffoo%20bar%2F")
 
-Debug URL$  ; http://foo bar/
+Debug URL$  ; <http://foo> bar/
 ```
 
 
@@ -1721,7 +1721,7 @@ Exit
 ```txt
 
 http%3A%2F%2Ffoo%20bar%2F
-http://foo bar/
+<http://foo> bar/
 
 mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
 mailto:"Ivan Aim" <ivan.aim@email.com>
@@ -1864,7 +1864,7 @@ fn main() {
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 google.com/search?q=`Abdu'l-Bahá
 
 ```
@@ -1896,11 +1896,11 @@ object UrlCoded extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines functions
+The library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines functions
 to handle URL respectively percent encoding.
-The function [http://seed7.sourceforge.net/libraries/encoding.htm#fromPercentEncoded%28in_string%29 fromPercentEncoded]
+The function [fromPercentEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#fromPercentEncoded%28in_string%29)
 decodes a percend-encoded string.
-The function [http://seed7.sourceforge.net/libraries/encoding.htm#fromUrlEncoded%28in_string%29 fromUrlEncoded]
+The function [fromUrlEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#fromUrlEncoded%28in_string%29)
 works like ''fromPercentEncoded'' and additionally decodes '+' with a space.
 Both functions return byte sequences.
 To decode Unicode characters it is necessary to convert them from UTF-8 with ''utf8ToStri'' afterwards.
@@ -1919,8 +1919,8 @@ const proc: main is func
 
 ```txt
 
-http://foo bar/
-http://foo bar/
+<http://foo> bar/
+<http://foo> bar/
 
 ```
 
@@ -1975,7 +1975,7 @@ puts [urlDecode "http%3A%2F%2Ffoo%20bar%2F"]
 ```
 
 ```txt
-http://foo bar/
+<http://foo> bar/
 ```
 
 
@@ -1998,7 +1998,7 @@ PRINT "decoded: ", url_decoded
 ```txt
 
 encoded: http%3A%2F%2Ffoo%20bar%2F
-decoded: http://foo bar/
+decoded: <http://foo> bar/
 
 ```
 
@@ -2017,7 +2017,7 @@ Example:
 
 ```bash
 urldecode http%3A%2F%2Ffoo%20bar%2F
-http://foo bar/
+<http://foo> bar/
 
 urldecode google.com/search?q=%60Abdu%27l-Bah%C3%A1
 google.com/search?q=`Abdu'l-Bahároot@
@@ -2152,7 +2152,7 @@ WScript.Echo "Encoded URL: " & url & vbCrLf &_
 
 ```txt
 Encoded URL: http%3A%2F%2Ffoo%20bar%C3%A8%2F
-Decoded URL: http://foo barè/
+Decoded URL: <http://foo> barè/
 ```
 
 
@@ -2189,7 +2189,7 @@ Text(0, Decode("http%3A%2F%2Ffoo%20bar%2f"))
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 
 ```
 
@@ -2231,7 +2231,7 @@ print decode_url$("google.com/search?q=%60Abdu%27l-Bah%C3%A1")
 ```
 
 ```txt
-http://foo bar/
+<http://foo> bar/
 ```
 
 or use libCurl:
@@ -2242,6 +2242,6 @@ Curl.urlDecode("http%3A%2F%2Ffoo%20bar%2F");
 ```
 
 ```txt
-http://foo bar/
+<http://foo> bar/
 ```
 

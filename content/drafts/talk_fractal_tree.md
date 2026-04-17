@@ -12,7 +12,7 @@ tags = []
 
 ==Why a cairo version of the C code==
 
-I wanted just to try it but without installing SGE, and the reason why I do not want to install SGE is that the project seems to me not well maintained. The Freshmeat.net page has a broken link for the main website. More over, I've downloaded the source from what it seems the main page now (found using google), [http://www.digitalfanatics.org/cal/sge/index.html this one], to check if the PI constant was defined into sge.h, and surprise, it is defined there, but as 3.1414(more correct digits).... The source tarball was <tt>sge030809.tar.gz</tt> just in case one wants to check it too.
+I wanted just to try it but without installing SGE, and the reason why I do not want to install SGE is that the project seems to me not well maintained. The Freshmeat.net page has a broken link for the main website. More over, I've downloaded the source from what it seems the main page now (found using google), [this one](http://www.digitalfanatics.org/cal/sge/index.html), to check if the PI constant was defined into sge.h, and surprise, it is defined there, but as 3.1414(more correct digits).... The source tarball was <tt>sge030809.tar.gz</tt> just in case one wants to check it too.
 
 So I decided to write the needed cairo code to see it... in the same time, I wanted to preserve the original code, maybe there are others using SGE happily... So defining a constant WITH_CAIRO, the compilation uses the other code. Personally I've compiled it with
 <tt>gcc -DWITH_CAIRO -I /usr/include/cairo -lSDL -lcairo fractree.c</tt>. --[[User:ShinTakezou|ShinTakezou]] 16:07, 5 May 2010 (UTC)

@@ -21,4 +21,4 @@ Fancy is a new (pure) [object-oriented](https://rosettacode.org/wiki/object-orie
 At the moment, Fancy follows most of the goals above. Its current implementation is an interpreter written in [implemented in language::C++](https://rosettacode.org/wiki/implemented_in_language::C++).
 
 ## See Also
-[http://www.adztec-independent.de/2010/03/new-project-the-fancy-programming-language/ Adztec Independent – Blog]
+[Adztec Independent – Blog](http://www.adztec-independent.de/2010/03/new-project-the-fancy-programming-language/)

@@ -55,9 +55,9 @@ Another way to express the above is:
 
 ## References
 
-:*   [https://en.wikipedia.org/wiki/Smooth_number#Definition smooth numbers, see the 2<sup>nd</sup> paragraph]
-:*   [http://oeis.org/A002473 OEIS A002473   humble numbers]
-:*   [http://www.informatik.uni-ulm.de/acm/Locals/1996/number.sol University of Ulm, The first 5842 terms of humble numbers]
+:*   [smooth numbers, see the 2<sup>nd</sup> paragraph](https://en.wikipedia.org/wiki/Smooth_number#Definition)
+:*   [OEIS A002473   humble numbers](http://oeis.org/A002473)
+:*   [University of Ulm, The first 5842 terms of humble numbers](http://www.informatik.uni-ulm.de/acm/Locals/1996/number.sol)
 
 
 

@@ -31,7 +31,7 @@ Produce a graphical or ASCII-art representation of a [[wp:Peano curve|Peano curv
 
 ## C
 
-Adaptation of the C program in the  [https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf Breinholt-Schierz paper] , requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Adaptation of the C program in the  [Breinholt-Schierz paper](https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf) , requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -76,7 +76,7 @@ int main(void) {
 
 ## Go
 
-The following is based on the recursive algorithm and C code in [https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf this paper] scaled up to 81 x 81 points. The image produced is a variant known as a Peano-Meander curve (see Figure 1(b) [https://www5.in.tum.de/lehre/vorlesungen/asc/ss17/blatt10/ws10.pdf here]).
+The following is based on the recursive algorithm and C code in [this paper](https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf) scaled up to 81 x 81 points. The image produced is a variant known as a Peano-Meander curve (see Figure 1(b) [here](https://www5.in.tum.de/lehre/vorlesungen/asc/ss17/blatt10/ws10.pdf)).
 
 ```go
 package main
@@ -145,9 +145,9 @@ func main() {
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Peano_curve this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Peano_curve) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -246,7 +246,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/peano_curve.svg Peano curve] (offsite image)
+[Peano curve](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/peano_curve.svg) (offsite image)
 
 
 ## Perl 6
@@ -284,7 +284,7 @@ say SVG.serialize(
 ```
 
 
-See: [https://github.com/thundergnat/rc/blob/master/img/peano-perl6.svg Peano curve] (SVG image)
+See: [Peano curve](https://github.com/thundergnat/rc/blob/master/img/peano-perl6.svg) (SVG image)
 
 
 ## Phix
@@ -430,7 +430,7 @@ Draw the Peano curve using the classical turtle style known from Logo.
 
 The MetaPict library is used to implement a turtle.
 
-See also https://pdfs.semanticscholar.org/fee6/187cc2dd1679d4976db9522b06a49f63be46.pdf
+See also <https://pdfs.semanticscholar.org/fee6/187cc2dd1679d4976db9522b06a49f63be46.pdf>
 
 ```Racket
 
@@ -473,7 +473,7 @@ See also https://pdfs.semanticscholar.org/fee6/187cc2dd1679d4976db9522b06a49f63b
 
 ## Sidef
 
-Using the LSystem class defined at [https://rosettacode.org/wiki/Hilbert_curve#Sidef Hilbert curve].
+Using the LSystem class defined at [Hilbert curve](https://rosettacode.org/wiki/Hilbert_curve#Sidef).
 
 ```ruby
 var rules = Hash(
@@ -496,7 +496,7 @@ var lsys = LSystem(
 lsys.execute('L', 4, "peano_curve.png", rules)
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/peano_curve.png Peano curve]
+Output image: [Peano curve](https://github.com/trizen/rc/blob/master/img/peano_curve.png)
 
 ## VBA
 
@@ -604,7 +604,7 @@ fcn lsystem(axiom,rules,consts,n){	// Lindenmayer system --> string
 ```
 
 Using Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn turtle(koch){
@@ -626,4 +626,4 @@ fcn turtle(koch){
 }
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/peanoCurve.zkl.jpg Peano curve]
+Image at [Peano curve](http://www.zenkinetic.com/Images/RosettaCode/peanoCurve.zkl.jpg)

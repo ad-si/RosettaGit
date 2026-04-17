@@ -64,7 +64,7 @@ And of the list:
 Note that a list may have more than one subsequence that is of the maximum length.
 
 ## References
-# [http://www.youtube.com/watch?v=4fQJGoeW5VE Dynamic Programming #1: Longest Increasing Subsequence] on YouTube
+# [Dynamic Programming #1: Longest Increasing Subsequence](http://www.youtube.com/watch?v=4fQJGoeW5VE) on YouTube
 # An efficient solution can be based on [[wp:Patience sorting|Patience sorting]].
 
 
@@ -898,9 +898,9 @@ Both implementations:
 - Naive version{{trans|Haskell}}
 - Patience sort version.
 
-Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog].
+Function ''combos'' is copied from  [panduwana blog](http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/).
 
-Function ''maxBy'' is copied from  [http://stackoverflow.com/a/4762387/4162959 Hynek -Pichi- Vychodil's answer].
+Function ''maxBy'' is copied from  [Hynek -Pichi- Vychodil's answer](http://stackoverflow.com/a/4762387/4162959).
 
 
 ```erlang
@@ -2367,7 +2367,7 @@ Out = [3,4,5].
 ## Python
 
 
-===Python: O(nlogn) Method from Wikipedia's LIS Article[https://en.wikipedia.org/wiki/Longest_increasing_subsequence#Efficient_algorithms]===
+===Python: O(nlogn) Method from Wikipedia's LIS Article<https://en.wikipedia.org/wiki/Longest_increasing_subsequence#Efficient_algorithms>===
 
 ```python
 def longest_increasing_subsequence(X):
@@ -2776,7 +2776,7 @@ fn main() {
 
 ### Patience sorting
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/Wx8DsUO/1 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/FtLHeaAwSrO6VXVOTTZ7FQ Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/Wx8DsUO/1) or by [Scastie (JVM)](https://scastie.scala-lang.org/FtLHeaAwSrO6VXVOTTZ7FQ).
 
 ```Scala
 object LongestIncreasingSubsequence extends App {
@@ -3064,7 +3064,7 @@ print("\(l2) = \(l2.longestIncreasingSubsequence())")
 ## Swym
 
 {{trans|Python}}
-Based on the Python video solution. Interpreter at [[http://cheersgames.com/swym/SwymInterpreter.html?Array.%27lis%27%0A%7B%0A%20%20%27stems%27%20%3D%20Number.Array.mutableArray%5B%20%5B%5D%20%5D%0A%20%0A%20%20forEach%28this%29%20%27value%27-%3E%0A%20%20%7B%0A%20%20%20%20%27bestStem%27%20%3D%20stems.where%7B%3D%3D%5B%5D%20%7C%7C%20.last%20%3C%20value%7D.max%7B.length%7D%0A%20%0A%20%20%20%20stems.push%28%20bestStem%20+%20%5Bvalue%5D%20%29%0A%20%20%7D%0A%20%0A%20%20return%20stems.max%7B.length%7D%0A%7D%0A%20%0A%5B3%2C2%2C6%2C4%2C5%2C1%5D.lis.trace%0A%5B0%2C8%2C4%2C12%2C2%2C10%2C6%2C14%2C1%2C9%2C5%2C13%2C3%2C11%2C7%2C15%5D.lis.trace]]
+Based on the Python video solution. Interpreter at <http://cheersgames.com/swym/SwymInterpreter.html?Array.%27lis%27%0A%7B%0A%20%20%27stems%27%20%3D%20Number.Array.mutableArray%5B%20%5B%5D%20%5D%0A%20%0A%20%20forEach%28this%29%20%27value%27-%3E%0A%20%20%7B%0A%20%20%20%20%27bestStem%27%20%3D%20stems.where%7B%3D%3D%5B%5D%20%7C%7C%20.last%20%3C%20value%7D.max%7B.length%7D%0A%20%0A%20%20%20%20stems.push%28%20bestStem%20+%20%5Bvalue%5D%20%29%0A%20%20%7D%0A%20%0A%20%20return%20stems.max%7B.length%7D%0A%7D%0A%20%0A%5B3%2C2%2C6%2C4%2C5%2C1%5D.lis.trace%0A%5B0%2C8%2C4%2C12%2C2%2C10%2C6%2C14%2C1%2C9%2C5%2C13%2C3%2C11%2C7%2C15%5D.lis.trace>
 
 ```swym
 Array.'lis'

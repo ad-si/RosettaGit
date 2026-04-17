@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{library}}
-pGUI.e is the Phix binding to the [http://www.tecgraf.puc-rio.br/iup IUP] UI toolkit.
+pGUI.e is the Phix binding to the [IUP](http://www.tecgraf.puc-rio.br/iup) UI toolkit.
 
 The following are all known uses of pGUI.e on rosettacode.
 

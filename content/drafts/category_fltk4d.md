@@ -12,10 +12,10 @@ tags = []
 
 {{library}}{{stub}}
 
-Website: [[http://fltk4d.updatestar.com FLTK4D]]
+Website: [FLTK4D](http://fltk4d.updatestar.com)
 
 fltk4D is a GUI library for the [[D]] programming language, 
-built on top of [http://rosettacode.org/wiki/Category:FLTK FLTK]. 
+built on top of [FLTK](http://rosettacode.org/wiki/Category:FLTK). 
 
 FLTK exists for Unix, Windows, and Mac OS X. 
 

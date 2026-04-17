@@ -19,4 +19,4 @@ The language was designed by Wouter van Oortmerssen, also the perpetrator of [FA
 
 ## See Also
 * [Wikipedia: AmigaE](https://en.wikipedia.org/wiki/Amiga_E)
-* [http://cshandley.co.uk/amigae online AmigaE manual]
+* [online AmigaE manual](http://cshandley.co.uk/amigae)

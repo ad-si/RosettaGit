@@ -1979,7 +1979,7 @@ end
 link factors
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors.icn provides factors]
+[factors.icn provides factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 ```txt
 1 : [ 1 ]
 2 : [ 2 ]
@@ -3636,7 +3636,7 @@ EndIf
 
 ## Python
 
-This uses the [http://docs.python.org/dev/library/functools.html#functools.lru_cache functools.lru_cache] standard library module to cache intermediate results.
+This uses the [functools.lru_cache](http://docs.python.org/dev/library/functools.html#functools.lru_cache) standard library module to cache intermediate results.
 
 ```python
 from functools import lru_cache
@@ -4240,7 +4240,7 @@ end function
 
 ## Rust
 
-You can run and experiment with this code at https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=b66c14d944ff0472d2460796513929e2
+You can run and experiment with this code at <https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=b66c14d944ff0472d2460796513929e2>
 
 ```rust
 use std::env;

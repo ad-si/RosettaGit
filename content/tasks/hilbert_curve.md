@@ -629,9 +629,9 @@ Hilbert curve, order=5
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Hilbert_curve this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Hilbert_curve) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -665,7 +665,7 @@ End
 
 ## Go
 
-The following is based on the recursive algorithm and C code in [https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf this paper]. The image produced is similar to the one linked to in the zkl example.
+The following is based on the recursive algorithm and C code in [this paper](https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf). The image produced is similar to the one linked to in the zkl example.
 
 ```go
 package main
@@ -1732,7 +1732,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/hilbert_curve.svg Hilbert curve] (offsite image)
+[Hilbert curve](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/hilbert_curve.svg) (offsite image)
 
 
 ## Perl 6
@@ -1769,7 +1769,7 @@ say SVG.serialize(
 );
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/hilbert-perl6.svg Hilbert curve]
+See: [Hilbert curve](https://github.com/thundergnat/rc/blob/master/img/hilbert-perl6.svg)
 
 There is a variation of a Hilbert curve known as a [[wp:Moore curve|Moore curve]] which is essentially 4 Hilbert curves joined together in a loop.
 
@@ -1805,7 +1805,7 @@ say SVG.serialize(
 );
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/moore-perl6.svg Moore curve]
+See: [Moore curve](https://github.com/thundergnat/rc/blob/master/img/moore-perl6.svg)
 
 
 ## Phix
@@ -2115,7 +2115,7 @@ func drawtoline x2, y2
 ```
 
 Output image:
-[https://www.dropbox.com/s/anwtxtrnqhubh4a/HilbertCurve.jpg?dl=0 Hilbert curve]
+[Hilbert curve](https://www.dropbox.com/s/anwtxtrnqhubh4a/HilbertCurve.jpg?dl=0)
 
 
 ## Racket
@@ -2160,7 +2160,7 @@ Output image:
 
 ## Scala
 
-===[https://www.scala-js.org/ Scala.js]===
+===[Scala.js](https://www.scala-js.org/)===
 
 ```Scala
 @js.annotation.JSExportTopLevel("ScalaFiddle")
@@ -2213,7 +2213,7 @@ object ScalaFiddle {
 }
 ```
 
-{{Out}}Best seen running in your browser by [https://scalafiddle.io/sf/x7t2zdK/0 ScalaFiddle (ES aka JavaScript, non JVM)].
+{{Out}}Best seen running in your browser by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/x7t2zdK/0).
 
 
 ## Seed7
@@ -2448,7 +2448,7 @@ var lsys = LSystem(
 lsys.execute('a', 6, "hilbert_curve.png", rules)
 ```
 
-[https://github.com/trizen/rc/blob/master/img/hilbert-curve-sidef.png Hilbert curve]
+[Hilbert curve](https://github.com/trizen/rc/blob/master/img/hilbert-curve-sidef.png)
 
 
 ## Vala
@@ -2812,7 +2812,7 @@ hilbert(0, 0, width, 0, 0)
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 hilbert(6) : turtle(_);
@@ -2844,4 +2844,4 @@ fcn turtle(hilbert){
 }
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/hilbert.zkl.jpg hilbert curve]
+Image at [hilbert curve](http://www.zenkinetic.com/Images/RosettaCode/hilbert.zkl.jpg)

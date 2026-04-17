@@ -120,7 +120,7 @@ package  {
 ## AutoHotkey
 
 [[file:ahk_stripes.png|center|300px]]
-Requires the GDI+ standard library: http://www.autohotkey.com/forum/viewtopic.php?t=32238<br/>
+Requires the GDI+ standard library: <http://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
 It is worth noting that this fills the whole screen; press Esc to exit.
 
 ```AHK
@@ -503,7 +503,7 @@ End
 
 ```
 
-'''[http://www.cogier.com/gambas/colour_pinstripe.png Click to see output image]'''
+'''[Click to see output image](http://www.cogier.com/gambas/colour_pinstripe.png)'''
 
 
 ## Go
@@ -592,9 +592,9 @@ end
 
 [[File:Pinstripe_Colour_unicon.jpeg]]
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics] 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides ceil] 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn) 
+[numbers.icn provides ceil](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) 
+[printf.icn provides sprintf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -851,7 +851,7 @@ Graphics[Join[{Thickness[1/408]},
     Range[102]]], ImageSize -> {408, 408}]
 ```
 
-See [https://www.dropbox.com/s/tg4zk4jkddkok8w/Mathematica_Pinstripes_Colored.png?dl=0 here].
+See [here](https://www.dropbox.com/s/tg4zk4jkddkok8w/Mathematica_Pinstripes_Colored.png?dl=0).
 
 
 ## OCaml
@@ -1311,7 +1311,7 @@ func draw
 
 See image:
 
-[https://www.dropbox.com/preview/CalmoSoftColor.jpg?role=personal Colour pinstripe/Display]
+[Colour pinstripe/Display](https://www.dropbox.com/preview/CalmoSoftColor.jpg?role=personal)
 
 
 ## Scala

@@ -12,7 +12,7 @@ tags = []
 
 {{collection|Conway's Game of Life}}
 
-The first Life program was written for the [[wp:PDP-7|PDP-7]] by [[wp:Mike Guy|Mike. J. T. Guy]] and [[wp:Stephen R. Bourne|Stephen Bourne]] in 1970.  It was written in [[ALGOL 68]].  c.f. [http://ddi.cs.uni-potsdam.de/HyFISCH/Produzieren/lis_projekt/proj_gamelife/ConwayScientificAmerican.htm Scientific American 223 (October 1970): 120-123]
+The first Life program was written for the [[wp:PDP-7|PDP-7]] by [[wp:Mike Guy|Mike. J. T. Guy]] and [[wp:Stephen R. Bourne|Stephen Bourne]] in 1970.  It was written in [[ALGOL 68]].  c.f. [Scientific American 223 (October 1970): 120-123](http://ddi.cs.uni-potsdam.de/HyFISCH/Produzieren/lis_projekt/proj_gamelife/ConwayScientificAmerican.htm)
 
 ```algol68
 MODE UNIVERSE = [upb OF class universe, upb OF class universe]BOOL;

@@ -632,7 +632,7 @@ aArray[1] = 'Orange'
 
 ## AWK
 
-<!-- http://ideone.com/qhJQ6g -->
+<!-- <http://ideone.com/qhJQ6g> -->
 
 The main use of the length()-function is to determine the length of a string.
 
@@ -1058,7 +1058,7 @@ Array Length = 2
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -1583,7 +1583,7 @@ Fruit 12 = watermelon
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=2a452c807c7030eb64a2f1d60d31a830 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=2a452c807c7030eb64a2f1d60d31a830)'''
 
 ```gambas
 Public Sub Main()
@@ -1917,7 +1917,7 @@ There is no function in Liberty Basic to directly read the size of an array. Thi
 
 I suppose the implicit DIM feature makes it a bit quicker to write short, simple programs. One or two dimension arrays may be resized with REDIM. Three dimension or more arrays can not be resized. All arrays may be cleared with REDIM. Keep in mind that A$(n) and A$(n,m) are the same array. You must refer to it with the correct arguments or get an error.
 
-NOTE -- This program runs only under LB Booster version 3.05 or higher because of arrays with more than two dimensions, passed array names to functions and subroutines as a parameter, and structured error trapping syntax. Get the LBB compiler here: http://lbbooster.com/
+NOTE -- This program runs only under LB Booster version 3.05 or higher because of arrays with more than two dimensions, passed array names to functions and subroutines as a parameter, and structured error trapping syntax. Get the LBB compiler here: <http://lbbooster.com/>
 ```lb
 
 FruitList$(0)="apple" 'assign 2 cells of a list array
@@ -2943,7 +2943,7 @@ Using Scheme's vector type as an equivalent to an array:
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/libraries/array.htm#length(in_arrayType) length]
+The function [length](http://seed7.sourceforge.net/libraries/array.htm#length(in_arrayType))
 determines the length of an array.
 
 ```seed7
@@ -3105,7 +3105,7 @@ di c(N) " " c(k)
 ###  Length of a macro list
 
 
-Use either the '''[https://www.stata.com/help.cgi?macrolists sizeof]''' macro list function or the '''[https://www.stata.com/help.cgi?extended_fcn word count]''' extended macro function. Notice that the argument of the former is the macro ''name'', while the argument of the latter is the macro ''contents''.
+Use either the '''[sizeof](https://www.stata.com/help.cgi?macrolists)''' macro list function or the '''[word count](https://www.stata.com/help.cgi?extended_fcn)''' extended macro function. Notice that the argument of the former is the macro ''name'', while the argument of the latter is the macro ''contents''.
 
 
 ```stata
@@ -3118,7 +3118,7 @@ di `: word count `fruits''
 
 ###  Mata
 
-For a Mata array, use '''[https://www.stata.com/help.cgi?mf_rows rows]''' and similar functions:
+For a Mata array, use '''[rows](https://www.stata.com/help.cgi?mf_rows)''' and similar functions:
 
 
 ```stata
@@ -3153,7 +3153,7 @@ print(fruitsCount) //print array length to output window
 
 ## Tcl
 
-<!-- http://ideone.com/uotEvm -->
+<!-- <http://ideone.com/uotEvm> -->
 
 
 ```tcl

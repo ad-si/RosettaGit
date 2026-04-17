@@ -14,7 +14,7 @@ tags = []
 |topic=Subreddit
 |summary=Rosetta Code Subreddit
 }}
-I created a Subbreddit for the site. Once I figure out what's going on with DNS, it will be accessible at [http://reddit.rosettacode.org http://reddit.rosettacode.org], but it's also accessible at [http://www.reddit.com/r/rosettacodeorg/ http://www.reddit.com/r/rosettacodeorg/].
+I created a Subbreddit for the site. Once I figure out what's going on with DNS, it will be accessible at [http://reddit.rosettacode.org](http://reddit.rosettacode.org), but it's also accessible at [http://www.reddit.com/r/rosettacodeorg/](http://www.reddit.com/r/rosettacodeorg/).
 
 '''Rationales:'''
 * This allows people to draw attention to particular pages in an immediate fashion. (Either to promote a new task, draw attention to a particular page, a particular feature, etc.)

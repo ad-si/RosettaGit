@@ -135,7 +135,7 @@ The number of   ''known''   perfect numbers is   '''50'''   (as of September, 20
 
 :*   [[Rational Arithmetic]]
 :*   [[oeis:A000396|Perfect numbers on OEIS]]
-:*   [http://www.oddperfect.org/ Odd Perfect] showing the current status of bounds on odd perfect numbers.
+:*   [Odd Perfect](http://www.oddperfect.org/) showing the current status of bounds on odd perfect numbers.
 
 
 
@@ -1732,7 +1732,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses divisors from factors]
+{{libheader|Icon Programming Library}} [Uses divisors from factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 ```txt
 Perfect numbers from 1 to 100000:
@@ -1774,7 +1774,7 @@ Examples of use, including extensions beyond those assumptions:
 ```
 
 
-More efficient version based on [http://jsoftware.com/pipermail/programming/2014-June/037695.html comments] by Henry Rich and Roger Hui (comment train seeded by Jon Hough).
+More efficient version based on [comments](http://jsoftware.com/pipermail/programming/2014-June/037695.html) by Henry Rich and Roger Hui (comment train seeded by Jon Hough).
 
 
 ## Java
@@ -3158,7 +3158,7 @@ false.
 
 ### Functional approach
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

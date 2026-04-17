@@ -13,8 +13,8 @@ tags = []
 p RUBY_ENGINE
 # => "rbx"
 ```
-Rubinius is a Ruby interpreter that translates Ruby to LLVM bytecode, and then to native machine code. Rubinius also implements most of the core library in Ruby. It also has its [http://rubini.us/doc/en/systems/concurrency/ 'actor' library].
+Rubinius is a Ruby interpreter that translates Ruby to LLVM bytecode, and then to native machine code. Rubinius also implements most of the core library in Ruby. It also has its ['actor' library](http://rubini.us/doc/en/systems/concurrency/).
 
 Rubinius 1.2.x only implements Ruby 1.8.7, it cannot run Ruby 1.9 code.
 
-* http://rubini.us/
+* <http://rubini.us/>

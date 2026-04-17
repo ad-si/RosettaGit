@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-MCS is the [http://mono-project.com/CSharp_Compiler Mono C# Compiler].
+MCS is the [Mono C# Compiler](http://mono-project.com/CSharp_Compiler).

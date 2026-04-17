@@ -543,7 +543,7 @@ ROT13(string) ; by Raccoon July-2009
 ```
 
 
-Code modified from [http://www.autohotkey.com/forum/viewtopic.php?t=8421 stringmod] by [http://www.autohotkey.com/forum/author-HugoV.html Hugo]: [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=45 ahk discussion]
+Code modified from [stringmod](http://www.autohotkey.com/forum/viewtopic.php?t=8421) by [Hugo](http://www.autohotkey.com/forum/author-HugoV.html): [ahk discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=45)
 
 ```AutoHotkey
 Str0=Hello, This is a sample text with 1 2 3 or other digits!@#$^&*()-_=
@@ -577,7 +577,7 @@ Rot13(string)
 ```
 
 
-from [http://ahkscript.org/boards/viewtopic.php?f=5&t=2630#p14059 LinearSpoon]'s Translation of [http://hea-www.harvard.edu/~fine/Tech/rot13.html The Worlds Shortest C Implementation of Rot13]
+from [LinearSpoon](http://ahkscript.org/boards/viewtopic.php?f=5&t=2630#p14059)'s Translation of [The Worlds Shortest C Implementation of Rot13](http://hea-www.harvard.edu/~fine/Tech/rot13.html)
 
 
 ```AutoHotkey
@@ -596,7 +596,7 @@ Rot13(string) {
 
 ## AWK
 
-<!--  http://ideone.com/TTZykC -->
+<!--  <http://ideone.com/TTZykC> -->
 
 ```awk
 # usage: awk -f rot13.awk
@@ -4396,7 +4396,7 @@ x2 <- paste(letters, LETTERS, collapse="", sep="")
 rot13(x2)  # "nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmM"
 ```
 
-For a slightly more general function, see the [http://stat.ethz.ch/R-manual/R-patched/library/base/html/chartr.html example on the chartr help page].
+For a slightly more general function, see the [example on the chartr help page](http://stat.ethz.ch/R-manual/R-patched/library/base/html/chartr.html).
 
 
 ## Racket
@@ -4491,7 +4491,7 @@ as rot13 is
 ```REBOL
 REBOL [
     Title: "Rot-13"
-    URL: http://rosettacode.org/wiki/Rot-13
+    URL: <http://rosettacode.org/wiki/Rot-13>
 ]
 
 ; Test data has upper and lower case characters as well as characters
@@ -5344,7 +5344,7 @@ cat ${1+"$@"} | rot13
 ```
 
 
-A simple <code>tr a-zA-Z n-za-mN-ZA-M</code> would work with modern systems that follow [[POSIX]]. Our <code>tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'</code> also works with those older System V systems. For newer systems, it translates '[' and ']' to themselves. (Refer to [http://www.openbsd.org/cgi-bin/man.cgi?query=tr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html#STANDARDS OpenBSD tr(1) manual page, section STANDARDS].)
+A simple <code>tr a-zA-Z n-za-mN-ZA-M</code> would work with modern systems that follow [[POSIX]]. Our <code>tr '[a-m][n-z][A-M][N-Z]' '[n-z][a-m][N-Z][A-M]'</code> also works with those older System V systems. For newer systems, it translates '[' and ']' to themselves. (Refer to [OpenBSD tr(1) manual page, section STANDARDS](http://www.openbsd.org/cgi-bin/man.cgi?query=tr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html#STANDARDS).)
 
 This example shows proper quoting around "$@" (magical argument list) such that this script work properly even if some of the files named on the command line contain embedded spaces or other such characters.  (The ${1+"$@"} check, unnecessary in modern systems, allows the script to work even on older systems where a bare "$@" expanded to a single empty string when no arguments were supplied).
 
@@ -5388,7 +5388,7 @@ rot = ~command.files; * contents:= ~contents; * * -:~& -- ^p(~&,rep13~&zyC)~~ ~=
 
 ## Vedit macro language
 
-Using ROT13.TBL from [http://cu2.home.comcast.net/~cu2/vedit/ here]
+Using ROT13.TBL from [here](http://cu2.home.comcast.net/~cu2/vedit/)
 
 ```vedit
 Translate_Load("ROT13.TBL")

@@ -979,7 +979,7 @@ end
 
 ## Lua
 
-Pure Lua function based on snipplet from Stack Overflow[http://stackoverflow.com/questions/5303174/how-to-get-list-of-directories-in-lua#11130774].
+Pure Lua function based on snipplet from Stack Overflow<http://stackoverflow.com/questions/5303174/how-to-get-list-of-directories-in-lua#11130774>.
 
 ```lua
 
@@ -1003,7 +1003,7 @@ end
 ```
 
 
-Using lfs[https://keplerproject.github.io/luafilesystem/] library.
+Using lfs<https://keplerproject.github.io/luafilesystem/> library.
 
 ```lua
 

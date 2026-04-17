@@ -14,7 +14,7 @@ tags = []
 
 This is not an idiomatic or good example of Go code.
 
-See [https://golang.org/doc/effective_go.html Effective Go] and [https://golang.org/wiki/CodeReviewComments the Go Authors code review comments page] to start.
+See [Effective Go](https://golang.org/doc/effective_go.html) and [the Go Authors code review comments page](https://golang.org/wiki/CodeReviewComments) to start.
 
 For example:
 * Identifier names should not have underscores and no leading underscores. Names like <code>kFoo</code> and <code>tBar</code> are also non-idiomatic.

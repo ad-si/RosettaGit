@@ -8212,7 +8212,7 @@ end.
 ### Alternative
 
 Using Rekusion and Nikolaus Wirth is much faster.
-Ok , this http://rosettacode.org/wiki/N-queens_problem#Fast_Version is nearly 4 times faster, but uses sysmmetry (50% less to search for) :
+Ok , this <http://rosettacode.org/wiki/N-queens_problem#Fast_Version> is nearly 4 times faster, but uses sysmmetry (50% less to search for) :
 
 algo:
 
@@ -9196,7 +9196,7 @@ NQUEENS: PROC OPTIONS (MAIN);
 
 ## Prolog
 
-The code for these samples is taken from [http://www.javaist.com/blog/2008/11/06/eight-queens-problem-in-proglog/].
+The code for these samples is taken from <http://www.javaist.com/blog/2008/11/06/eight-queens-problem-in-proglog/>.
 
 Solution #1:
 
@@ -11831,7 +11831,7 @@ stdout.printf("%d solutions\n", n_queens(range(8), 0));
 ## SQL
 
 
-This implementation, which solves the problem for n=8, makes use of Common Table Expressions and has been tested with SQLite (>=3.8.3) and Postgres (please note the related comment in the code). It might be compatible with other SQL dialects as well. A gist with the SQL file and a Python script that runs it using SQLite is available on Github: https://gist.github.com/adewes/5e5397b693eb50e67f07
+This implementation, which solves the problem for n=8, makes use of Common Table Expressions and has been tested with SQLite (>=3.8.3) and Postgres (please note the related comment in the code). It might be compatible with other SQL dialects as well. A gist with the SQL file and a Python script that runs it using SQLite is available on Github: <https://gist.github.com/adewes/5e5397b693eb50e67f07>
 
 
 ```SQL
@@ -12886,7 +12886,7 @@ def (diagonal_match curr other)
 ## Xanadu
 
 
-Copied from http://www.cs.bu.edu/~hwxi/Xanadu/Examples/
+Copied from <http://www.cs.bu.edu/~hwxi/Xanadu/Examples/>
 
 ```Xanadu
 
@@ -13117,7 +13117,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 <!--
      IE browser exslt:node-set() (XSLT 1.0+), w/o msxsl pollution above
 
-     from http://dpcarlisle.blogspot.com/2007/05/exslt-node-set-function.html
+     from <http://dpcarlisle.blogspot.com/2007/05/exslt-node-set-function.html>
 -->
 <msxsl:script xmlns:msxsl="urn:schemas-microsoft-com:xslt"
               language="JScript" implements-prefix="exslt"

@@ -13,8 +13,8 @@ tags = []
 {{stub}}
 SPIM (the word MIPS reversed) is a MIPS32 Simulator and assembler usable from the command line. Graphical front-ends exist, notably xspim for [[wp:X Window System|X-Windows]] and PCSpim for [[Windows]].
 
-* [http://spimsimulator.sourceforge.net/ SPIM on Sourceforge]
-* [http://pages.cs.wisc.edu/~larus/spim.html Original SPIM website]
+* [SPIM on Sourceforge](http://spimsimulator.sourceforge.net/)
+* [Original SPIM website](http://pages.cs.wisc.edu/~larus/spim.html)
 * [[wp:SPIM|SPIM on Wikipedia]]
 
 [[category:encyclopedia]]

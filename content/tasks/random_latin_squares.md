@@ -47,7 +47,7 @@ Strict ''Uniformity'' in the random generation is a hard problem and '''not''' a
 
 ;Reference:
 * [[wp:Latin_square|Latin square]]
-* [http://oeis.org/A002860 OEIS A002860]
+* [OEIS A002860](http://oeis.org/A002860)
 
 
 
@@ -269,7 +269,7 @@ Sample run:
 
 ### Latin Squares in Reduced Form method
 
-Unlike the "Restarting Row" method, this method does produce uniformly random Latin squares for n <= 6 (see Talk page) but is more involved and therefore slower. It reuses some (suitably adjusted) code from the [https://rosettacode.org/wiki/Latin_Squares_in_reduced_form#Go Latin Squares in Reduced Form] and [https://rosettacode.org/wiki/Permutations#non-recursive.2C_lexicographical_order Permutations] tasks.
+Unlike the "Restarting Row" method, this method does produce uniformly random Latin squares for n <= 6 (see Talk page) but is more involved and therefore slower. It reuses some (suitably adjusted) code from the [Latin Squares in Reduced Form](https://rosettacode.org/wiki/Latin_Squares_in_reduced_form#Go) and [Permutations](https://rosettacode.org/wiki/Permutations#non-recursive.2C_lexicographical_order) tasks.
 
 ```go
 package main

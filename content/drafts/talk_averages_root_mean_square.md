@@ -12,7 +12,7 @@ tags = []
 
 == Changes to Python example ==
 
-I don't think removal of the comment "#1..10" is a good response to [http://www.youtube.com/watch?v=uzUTIffsc-M TimToady's language critique] (at the 2:51 mark). It makes what's going on ''less'' clear. The <math>[A..B)</math> means of describing lists is also shown in C++ where we use collection.begin() for <math>[A</math>, and collection.end() for <math>B)</math>. In the Python example's presentation case, it might help to use more descriptive text, and possibly link to the python docs for range(). --[[User:Short Circuit|Michael Mol]] 15:37, 12 March 2011 (UTC)
+I don't think removal of the comment "#1..10" is a good response to [TimToady's language critique](http://www.youtube.com/watch?v=uzUTIffsc-M) (at the 2:51 mark). It makes what's going on ''less'' clear. The <math>[A..B)</math> means of describing lists is also shown in C++ where we use collection.begin() for <math>[A</math>, and collection.end() for <math>B)</math>. In the Python example's presentation case, it might help to use more descriptive text, and possibly link to the python docs for range(). --[[User:Short Circuit|Michael Mol]] 15:37, 12 March 2011 (UTC)
 
 
 ==Formula made invisible to most browsers by under-tested cosmetic edit at 16:00, 15 April 2016 ==

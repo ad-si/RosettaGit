@@ -146,7 +146,7 @@ How about adding info on how to generate the numbers to the task description? --
 
 -----
 
-The double sum formula used by the REXX example is #33 from the entry [http://mathworld.wolfram.com/BernoulliNumber.html Bernoulli number] on The Eric Weisstein's World of Mathematics (TM).
+The double sum formula used by the REXX example is #33 from the entry [Bernoulli number](http://mathworld.wolfram.com/BernoulliNumber.html) on The Eric Weisstein's World of Mathematics (TM).
 
 
 

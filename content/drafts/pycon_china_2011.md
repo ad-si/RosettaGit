@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-==RosettaCode welcomes the [http://cn.pycon.org/2011/ PyCon China 2011] attendees==
+==RosettaCode welcomes the [PyCon China 2011](http://cn.pycon.org/2011/) attendees==
 
 * [[Rosetta Code]]
 * [[:Category:Programming Tasks|Programming Tasks]]

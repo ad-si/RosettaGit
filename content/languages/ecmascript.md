@@ -33,7 +33,7 @@ ECMAScript is a scripting programming language, standardized by Ecma Internation
 |-
 |4
 |Abandoned
-|[http://stackoverflow.com/questions/2329602/why-was-ecmascript-4th-edition-completely-scrapped Rejected] for proposing too much new syntax and too many extra features.
+|[Rejected](http://stackoverflow.com/questions/2329602/why-was-ecmascript-4th-edition-completely-scrapped) for proposing too much new syntax and too many extra features.
 |-
 |5
 |December 2009
@@ -45,8 +45,8 @@ ECMAScript is a scripting programming language, standardized by Ecma Internation
 |}
 
 ## References
-* http://www.ecmascript.org/
-* [http://www.ecma-international.org/publications/standards/Ecma-262.htm ECMA-262 - ECMAScript Language Specification - Newest edition]
-* [http://es5.github.com/ Annotated ECMAScript 5.1]
+* <http://www.ecmascript.org/>
+* [ECMA-262 - ECMAScript Language Specification - Newest edition](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+* [Annotated ECMAScript 5.1](http://es5.github.com/)
 
 [Category:Standards](https://rosettacode.org/wiki/Category:Standards)

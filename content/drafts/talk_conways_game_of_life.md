@@ -13,9 +13,9 @@ tags = []
 ==Fold-away Sample output sections==
 It would be great if each example could come with a Sample output section that initially displayed in a hidden state, or that scrolled within a fixed height. This would allow much longer output samples so we could show multiple 'gliders' on larger grids for example. --[[User:Paddy3118|Paddy3118]] 16:48, 11 October 2008 (UTC)
 :How to do this, I mean technically? --[[User:Dmitry-kazakov|Dmitry-kazakov]] 09:38, 12 October 2008 (UTC)
-A quick google and I found [http://bonrouge.com/togglescripts.php?script=byidtagandclass this], but I know I have seen better - I just cannot remember where. --[[User:Paddy3118|Paddy3118]] 17:20, 12 October 2008 (UTC)
+A quick google and I found [this](http://bonrouge.com/togglescripts.php?script=byidtagandclass), but I know I have seen better - I just cannot remember where. --[[User:Paddy3118|Paddy3118]] 17:20, 12 October 2008 (UTC)
 
-Or [http://www.dustindiaz.com/basement/block-toggle.html this]. --[[User:Paddy3118|Paddy3118]] 17:26, 12 October 2008 (UTC)
+Or [this](http://www.dustindiaz.com/basement/block-toggle.html). --[[User:Paddy3118|Paddy3118]] 17:26, 12 October 2008 (UTC)
 
 == No headers for sample output ==
 

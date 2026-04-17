@@ -311,7 +311,7 @@ END CO
 )
 ```
 
-[http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download algol68g] output:
+[algol68g](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) output:
 
 ```txt
 
@@ -322,7 +322,7 @@ SHORT SHORT INT:       +727       +727       +727       +727
 
 ```
 
-[http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download algol68toc] output:
+[algol68toc](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) output:
 
 ```txt
 
@@ -738,7 +738,7 @@ int main(void)
 ```
 
 
-GCC supports specifying integers in binary using the [http://gcc.gnu.org/onlinedocs/gcc/Binary-constants.html 0b prefix] syntax, but it's not standard. Standard C has no way of specifying integers in binary.
+GCC supports specifying integers in binary using the [0b prefix](http://gcc.gnu.org/onlinedocs/gcc/Binary-constants.html) syntax, but it's not standard. Standard C has no way of specifying integers in binary.
 
 To specify a literal of an unsigned integer, you add the suffix "u" or "U". To specify a literal of a "long" integer, you add the suffix "l" or "L". In C99, to specify a literal of a "long long" integer, you add the suffix "ll" or "LL". (The "l" and "ll" forms are discouraged as "l" looks like the digit "1"). The "u" suffixes can be combined with "l" or "ll" suffixes for unsigned long or unsigned long long integers.
 
@@ -1094,7 +1094,7 @@ Literals are by default interpreted as type INTEGER, where INTEGER is a synonym 
 ```
 
 
-The digits and the radix character can both be any mixture of upper and lower case.  See [http://www.gnu.org/software/emacs/manual/html_node/elisp/Integer-Basics.html GNU Elisp reference manual "Integer Basics"].
+The digits and the radix character can both be any mixture of upper and lower case.  See [GNU Elisp reference manual "Integer Basics"](http://www.gnu.org/software/emacs/manual/html_node/elisp/Integer-Basics.html).
 
 
 ## Erlang
@@ -1537,7 +1537,7 @@ end
 ## J
 
 
-J's numeric [http://www.jsoftware.com/help/dictionary/dcons.htm mini-language] allows spaces, underlines, dots and lower case alphabetic characters in its numeric literals.
+J's numeric [mini-language](http://www.jsoftware.com/help/dictionary/dcons.htm) allows spaces, underlines, dots and lower case alphabetic characters in its numeric literals.
 
 Arbitrary base numbers begin with a base ten literal (which represents the base of this number), and then the letter 'b' and then an arbitrary sequence of digits and letters which represents the number in that base.  Letters a..z represent digits in the range 10..35.  Each numeric item in a numeric constant must have its base specified independently.
 
@@ -1579,7 +1579,7 @@ J also allows integers to be entered using other notations, such as scientific o
 ```
 
 
-Internally, J freely [http://www.jsoftware.com/help/dictionary/dictg.htm converts] fixed precision integers to floating point numbers when they overflow, and numbers (including integers) of any type may be combined using any operation where they would individually be valid arguments.
+Internally, J freely [converts](http://www.jsoftware.com/help/dictionary/dictg.htm) fixed precision integers to floating point numbers when they overflow, and numbers (including integers) of any type may be combined using any operation where they would individually be valid arguments.
 
 Internally, J represents numeric constants in their simplest type, regardless of how they were specified.  In other words 9r1, although it is "specified as a rational" is represented as an extended precision integer.  Similarly, 2.0, although it is "specified as a floating point value" is represented as an integer, and 1.0 is represented as a boolean.
 
@@ -1989,7 +1989,7 @@ if (num == 0xAAA) $print("base 16, with leading 0x or 0X\n")
 ```
 
 
-Formally (adapted from [http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29 Reference Manual]):
+Formally (adapted from [Reference Manual](http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29)):
 
 ```txt
 <decimal_literal> ::=
@@ -2337,7 +2337,7 @@ if ( 727 == 0x2d7 &&
 
 ## PicoLisp
 
-In the strict sense of this task, PicoLisp reads only integers at bases which are a power of ten (scaled fixpoint numbers). This is controlled via the global variable '[http://software-lab.de/doc/refS.html#*Scl *Scl]':
+In the strict sense of this task, PicoLisp reads only integers at bases which are a power of ten (scaled fixpoint numbers). This is controlled via the global variable '[*Scl](http://software-lab.de/doc/refS.html#*Scl)':
 
 ```PicoLisp
 : (setq *Scl 4)
@@ -2357,11 +2357,11 @@ intially when the sources are read.
 ```
 
 In addition to standard formats like
-'[http://software-lab.de/doc/refH.html#hex hex]' (hexadecimal) and
-'[http://software-lab.de/doc/refO.html#oct oct]' (octal),
+'[hex](http://software-lab.de/doc/refH.html#hex)' (hexadecimal) and
+'[oct](http://software-lab.de/doc/refO.html#oct)' (octal),
 there are also more esoteric formats like
-'[http://software-lab.de/doc/refF.html#fmt64 fmt64]' (base 64) and
-'[http://software-lab.de/doc/refH.html#hax hax]' (hexadecimal numbers
+'[fmt64](http://software-lab.de/doc/refF.html#fmt64)' (base 64) and
+'[hax](http://software-lab.de/doc/refH.html#hax)' (hexadecimal numbers
 coded with alphabetic characters).
 
 
@@ -2488,7 +2488,7 @@ is.integer(0x2d7)     # FALSE
 is.integer(0x2d7L)    # TRUE
 ```
 
-For more information, see [http://cran.r-project.org/doc/manuals/R-lang.pdf Section 10.3.1 of the R Language definition] (PDF).
+For more information, see [Section 10.3.1 of the R Language definition](http://cran.r-project.org/doc/manuals/R-lang.pdf) (PDF).
 
 
 ## Racket

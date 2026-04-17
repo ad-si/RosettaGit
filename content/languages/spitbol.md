@@ -11,4 +11,4 @@ tags = []
 +++
 SPeedy ImplemenTation of snoBOL
 
-[http://www.snobol4.com Catspaw site]
+[Catspaw site](http://www.snobol4.com)

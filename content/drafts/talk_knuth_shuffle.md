@@ -37,13 +37,13 @@ I just happened to notice the [[Knuth shuffle#F#|F#]] entry starts off with <cod
 
 == C# ==
 
-The C# code had a serious problem in its implementation. It selected a random position from the *entire* array on each loop. This is a serious problem as it leads to a non-uniform distribution of outcomes, thereby ruining the purpose of the algorithm. Wikipedia has a nice description of the problem [http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Implementation_errors here].
+The C# code had a serious problem in its implementation. It selected a random position from the *entire* array on each loop. This is a serious problem as it leads to a non-uniform distribution of outcomes, thereby ruining the purpose of the algorithm. Wikipedia has a nice description of the problem [here](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Implementation_errors).
 
 == C++ ==
 
 The C++ example shows <code>std::random_shuffle</code>; however, <code>std::random_shuffle</code> is deprecated in C++14 (and removed in C++17) in preference to <code>std::shuffle</code>.  The conundrum is that <code>std::shuffle</code> isn't available until C++11, since it uses the new random number generation facilities that arrived with C++11. In general, <code>std::random_shuffle</code> and <code>std::shuffle</code> is a bit of a mess.
 
-Does Rosetta Code need a pre-C++11 and post-C++11 language?  So many things have changed with the latest standards, and C++ is now actually a moving target.  (Reference: http://en.cppreference.com/w/cpp/algorithm/random_shuffle ) --[[User:Intvnut|Intvnut]] ([[User talk:Intvnut|talk]]) 06:36, 3 June 2015 (UTC)
+Does Rosetta Code need a pre-C++11 and post-C++11 language?  So many things have changed with the latest standards, and C++ is now actually a moving target.  (Reference: <http://en.cppreference.com/w/cpp/algorithm/random_shuffle> ) --[[User:Intvnut|Intvnut]] ([[User talk:Intvnut|talk]]) 06:36, 3 June 2015 (UTC)
 
 :Standards change things in a lot of languages. If there is still a lot of users of an old standard and an example would be significantly different between standards then you could show them both - or '#ifdef ...' to accommodate both, or just add a comment stating what the change would be. Whatever is neatest. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 06:57, 3 June 2015 (UTC)
 

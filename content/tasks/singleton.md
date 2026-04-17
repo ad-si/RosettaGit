@@ -315,7 +315,7 @@ struct sDog as the definition is only in the C source (or other header privately
 
 ## C++
 
-A generic singleton template class (implemented via the "Curiously Recurring Template Pattern"[https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern]). Warning: if using a version of C++ prior to C++11, a [[Mutex#C|mutex]] (or similar) is required to access static variables within a multi-threaded program.
+A generic singleton template class (implemented via the "Curiously Recurring Template Pattern"<https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern>). Warning: if using a version of C++ prior to C++11, a [[Mutex#C|mutex]] (or similar) is required to access static variables within a multi-threaded program.
 
 
 ```cpp
@@ -803,7 +803,7 @@ void main() {
 
 
 =={{header|Delphi}} and {{header|Pascal}}==
-Detailed explanation [http://www.yanniel.info/2010/10/singleton-pattern-delphi.html here]. (Delphi started out as an object-oriented version of Pascal.)
+Detailed explanation [here](http://www.yanniel.info/2010/10/singleton-pattern-delphi.html). (Delphi started out as an object-oriented version of Pascal.)
 
 ```Delphi
 unit Singleton;
@@ -852,7 +852,7 @@ end.
 
 ## E
 
-Since E uses closure-style objects rather than classes, a singleton is simply an object which is defined at the top level of the program, not inside any method. There are no thread-safety issues since the singleton, like every other object, belongs to some particular [http://www.erights.org/elib/concurrency/vat.html vat] (but can be remotely invoked from other vats).
+Since E uses closure-style objects rather than classes, a singleton is simply an object which is defined at the top level of the program, not inside any method. There are no thread-safety issues since the singleton, like every other object, belongs to some particular [vat](http://www.erights.org/elib/concurrency/vat.html) (but can be remotely invoked from other vats).
 
 ```e
 def aSingleton {
@@ -865,7 +865,7 @@ def aSingleton {
 ## Eiffel
 
 ===Non-Thread Safe===
-Taken from [http://www.jot.fm/issues/issue_2004_04/article5/ this dated site]
+Taken from [this dated site](http://www.jot.fm/issues/issue_2004_04/article5/)
 
 '''Implementation:'''
 
@@ -1015,7 +1015,7 @@ M: bar foo drop "Hello!" print ;
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1604,7 +1604,7 @@ yes
 
 ## NetRexx
 
-Uses a static field to avoid synchronization problems and the ''flawed'' &quot;double-checked locking&quot; idiom in JVMs.  See [http://www.ibm.com/developerworks/java/library/j-dcl/index.html www.ibm.com/developerworks/java/library/j-dcl/index.html] for a detailed explanation.
+Uses a static field to avoid synchronization problems and the ''flawed'' &quot;double-checked locking&quot; idiom in JVMs.  See [www.ibm.com/developerworks/java/library/j-dcl/index.html](http://www.ibm.com/developerworks/java/library/j-dcl/index.html) for a detailed explanation.
 
 ```NetRexx
 /* NetRexx */
@@ -2131,7 +2131,7 @@ This is method 2 on +Singleton
 
 ### per Borg Design
 
-In Python we use the [http://code.activestate.com/recipes/66531/ Borg pattern] to share state between instances rather than concentrate on identity.
+In Python we use the [Borg pattern](http://code.activestate.com/recipes/66531/) to share state between instances rather than concentrate on identity.
 
 Every instance of the Borg class will share the same state:
 
@@ -2315,7 +2315,7 @@ EndDataSection
 
 ### Simple OOP extension
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimpleOOP].
+Using the open-source precompiler [SimpleOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Singleton Class Demo
@@ -2484,7 +2484,7 @@ let sharedObject = SingletonClass.sharedInstance
 
 ## Tcl
 
-ref http://wiki.tcl.tk/21595
+ref <http://wiki.tcl.tk/21595>
 
 ```tcl
 package require TclOO

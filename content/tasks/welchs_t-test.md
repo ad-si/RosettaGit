@@ -45,7 +45,7 @@ Given two sets of data, calculate the p-value:
     y = {490.2,340.0,433.9}
 
 
-Your task is to discern whether or not the difference in means between the two sets is statistically significant and worth further investigation.  P-values are significance tests to gauge the probability that the difference in means between two data sets is significant, or due to chance.  A threshold level, alpha, is usually chosen, 0.01 or 0.05, where p-values below alpha are worth further investigation and p-values above alpha are considered not significant.  The p-value is not considered a final test of significance, [http://www.nature.com/news/scientific-method-statistical-errors-1.14700 only whether the given variable should be given further consideration].
+Your task is to discern whether or not the difference in means between the two sets is statistically significant and worth further investigation.  P-values are significance tests to gauge the probability that the difference in means between two data sets is significant, or due to chance.  A threshold level, alpha, is usually chosen, 0.01 or 0.05, where p-values below alpha are worth further investigation and p-values above alpha are considered not significant.  The p-value is not considered a final test of significance, [only whether the given variable should be given further consideration](http://www.nature.com/news/scientific-method-statistical-errors-1.14700).
 
 There is more than on way of calculating the [[wp:Student's_t-test|t-statistic]], and you must choose which method is appropriate for you.  Here we use [[wp:Welch's_t_test|Welch's t-test]], which assumes that the variances between the two sets <code>x</code> and <code>y</code> are not equal.  Welch's t-test statistic can be computed:
 
@@ -97,9 +97,9 @@ which simplifies to
 
 <math> p_{2-tail} = \frac{\int_0^\frac{\nu}{t^2+\nu} \frac{r^{\frac{\nu}{2}-1}}{\sqrt{1-r}}\,\mathrm{d}r}{ \exp((\ln(\Gamma(\frac{\nu}{2})) + \ln(\Gamma(0.5)) - \ln(\Gamma(\frac{\nu}{2}+0.5))) }</math>
 
-The definite integral can be approximated with [[wp:Simpson's_rule|Simpson's Rule]] but [http://rosettacode.org/wiki/Numerical_integration other methods] are also acceptable.
+The definite integral can be approximated with [[wp:Simpson's_rule|Simpson's Rule]] but [other methods](http://rosettacode.org/wiki/Numerical_integration) are also acceptable.
 
-The <math>\ln(\Gamma(x))</math>, or <code>lgammal(x)</code> function is necessary for the program to work with large <code>a</code> values, as [http://rosettacode.org/wiki/Gamma_function Gamma functions] can often return values larger than can be handled by <code>double</code> or <code>long double</code> data types.   The <code>lgammal(x)</code> function is standard in <code>math.h</code> with C99 and C11 standards.
+The <math>\ln(\Gamma(x))</math>, or <code>lgammal(x)</code> function is necessary for the program to work with large <code>a</code> values, as [Gamma functions](http://rosettacode.org/wiki/Gamma_function) can often return values larger than can be handled by <code>double</code> or <code>long double</code> data types.   The <code>lgammal(x)</code> function is standard in <code>math.h</code> with C99 and C11 standards.
 
 
 ## C
@@ -670,7 +670,7 @@ p2_tail=:dyad define
 
 <code>integrate</code> and <code>simpson</code> are from the [[Numerical_integration#J|Numerical integration]] task.
 
-<code>lngamma</code> is  from http://www.jsoftware.com/pipermail/programming/2015-July/042174.html -- for values less than some convenient threshold (we use 1, but we could use a modestly higher threshold), we calculate it directly. For larger values we compute the fractional part directly and rebuild the log of the factorial using the sum of the logs.
+<code>lngamma</code> is  from <http://www.jsoftware.com/pipermail/programming/2015-July/042174.html> -- for values less than some convenient threshold (we use 1, but we could use a modestly higher threshold), we calculate it directly. For larger values we compute the fractional part directly and rebuild the log of the factorial using the sum of the logs.
 
 <code>mean</code> is classic J - most J tutorials will include this
 
@@ -717,7 +717,7 @@ Task examples:
 
 ## Java
 
-Using the '''[http://commons.apache.org/proper/commons-math/ Apache Commons Mathematics Library]'''.
+Using the '''[Apache Commons Mathematics Library](http://commons.apache.org/proper/commons-math/)'''.
 
 ```java
 import org.apache.commons.math3.distribution.TDistribution;
@@ -2382,7 +2382,7 @@ object WelchTTest extends App {
 
 ## Scilab
 
-Scilab will print a warning because the number of degrees of freedom is not an integer. However, the underlying implementation makes use of the [http://www.netlib.org/random/ dcdflib] Fortran library, which happily accepts a noninteger df.
+Scilab will print a warning because the number of degrees of freedom is not an integer. However, the underlying implementation makes use of the [dcdflib](http://www.netlib.org/random/) Fortran library, which happily accepts a noninteger df.
 
 <lang>x = [3.0,4.0,1.0,2.1];
 y = [490.2,340.0,433.9];

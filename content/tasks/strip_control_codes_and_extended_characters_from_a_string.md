@@ -917,7 +917,7 @@ Both sets stripped          Length =>  19
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=19db658a6c44cfb1f6f887ff53e549bb Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=19db658a6c44cfb1f6f887ff53e549bb)'''
 
 ```gambas
 Public Sub Main()
@@ -1151,7 +1151,7 @@ link strings
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec]
+[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 The IPL procedure ''deletec'' is equivalent to this:
 
@@ -2289,10 +2289,10 @@ ctrl and extended filtered out:
 
 ## Seed7
 
-Seed7 [http://seed7.sourceforge.net/manual/types.htm#string strings] are UTF-32 encoded,
+Seed7 [strings](http://seed7.sourceforge.net/manual/types.htm#string) are UTF-32 encoded,
 therefore no destinction between BYTE and Unicode strings is necessary.
-The example below uses [http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT STD_UTF8_OUT]
-from the library [http://seed7.sourceforge.net/libraries/utf8.htm utf8.s7i], to write
+The example below uses [STD_UTF8_OUT](http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT)
+from the library [utf8.s7i](http://seed7.sourceforge.net/libraries/utf8.htm), to write
 Unicode characters with UTF-8 encoding to the console.
 
 

@@ -13,7 +13,7 @@ tags = []
 == incorrect examples ==
 
 I suppose incorrect examples could be marked as "epoch fail"s. --[[User:Mwn3d|Mwn3d]] 21:38, 8 August 2011 (UTC)
-: [http://xkcd.com/376/ http://xkcd.com/376/] -- [[User:Eriksiers|Erik Siers]] 14:27, 9 August 2011 (UTC)
+: [http://xkcd.com/376/](http://xkcd.com/376/) -- [[User:Eriksiers|Erik Siers]] 14:27, 9 August 2011 (UTC)
 
 == Coming out of draft ==
 

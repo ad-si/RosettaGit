@@ -9,4 +9,4 @@ id = 6068
 categories = []
 tags = []
 +++
-The official [ZPL](https://rosettacode.org/wiki/ZPL) implementation, zc, is available from http://www.cs.washington.edu/research/zpl/download/download.html
+The official [ZPL](https://rosettacode.org/wiki/ZPL) implementation, zc, is available from <http://www.cs.washington.edu/research/zpl/download/download.html>

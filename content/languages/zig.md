@@ -13,7 +13,7 @@ tags = []
 
 '''Zig''' is an open-source programming language designed for robustness, optimality, and clarity.
 
-Zig is under active development at its [https://github.com/ziglang/zig Github repository]. Solutions for RosettaCode tasks can also be found in the [https://github.com/tiehuis/zig-rosetta zig-rosetta] repository.
+Zig is under active development at its [Github repository](https://github.com/ziglang/zig). Solutions for RosettaCode tasks can also be found in the [zig-rosetta](https://github.com/tiehuis/zig-rosetta) repository.
 
 ## Features
 From the official website:

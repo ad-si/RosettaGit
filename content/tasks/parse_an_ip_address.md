@@ -822,8 +822,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides the printf family] 
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn provides hex and hexstring] 
+[printf.icn provides the printf family](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
+[hexcvt.icn provides hex and hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) 
 
 Output:
 ```txt
@@ -2487,7 +2487,7 @@ for address in tests:
 
 ### Python: Using pyparsing
 
-The following uses [http://pyparsing.wikispaces.com/ pyparse] to parse the IP address.  It's an attempt at using pyparse to describe an IP address in an ''extended'' [[wp:Backus–Naur_Form|BNF syntax]].  Using a parser does seems a bit like using a sledgehammer to crack a nut.  However it does make for an interesting alternative to using a [[Regular expression|regular expressions]] to parse IP addresses.  Note - for example - that the parser specifically reports - as an exception - the location where the IP address is syntactically wrong.
+The following uses [pyparse](http://pyparsing.wikispaces.com/) to parse the IP address.  It's an attempt at using pyparse to describe an IP address in an ''extended'' [[wp:Backus–Naur_Form|BNF syntax]].  Using a parser does seems a bit like using a sledgehammer to crack a nut.  However it does make for an interesting alternative to using a [[Regular expression|regular expressions]] to parse IP addresses.  Note - for example - that the parser specifically reports - as an exception - the location where the IP address is syntactically wrong.
 
 ```python
 import string
@@ -2949,7 +2949,7 @@ output_table(output)
 
 ### Full blown ultimate solution
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/kWO8C5pLSu6xEQ0kHAlswg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/kWO8C5pLSu6xEQ0kHAlswg).
 
 ```Scala
 object IPparser extends App {

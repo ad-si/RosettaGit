@@ -40,7 +40,7 @@ languages = [
 
 '''Many big data or scientific programs use boxplots to show distributions of data.   In addition, sometimes saving large arrays for boxplots can be impractical and use extreme amounts of RAM.   It can be useful to save large arrays as arrays with five numbers to save memory.
 
-For example, the   '''R'''   programming language implements Tukey's [[wp:Five-number summary|five-number summary]] as the '''[https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fivenum.html fivenum]''' function.
+For example, the   '''R'''   programming language implements Tukey's [[wp:Five-number summary|five-number summary]] as the '''[fivenum](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fivenum.html)''' function.
 
 
 ## Task
@@ -1176,7 +1176,7 @@ print(y)
 
 There are many ways to compute this kind of summary statistics (see [[wp:Percentile#Definitions]]). The Python Pandas library supports a range.
 
-[https://pandas.pydata.org/ Pandas] is a well known Python library. Its [https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.DataFrame.describe.html Dataframe.describe] method produces summary stats from data.
+[Pandas](https://pandas.pydata.org/) is a well known Python library. Its [Dataframe.describe](https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.DataFrame.describe.html) method produces summary stats from data.
 
 (Though these 25% and 75% values do '''not''' correspond to the Fivenum Tukey quartile values specified in this task)
 
@@ -1199,7 +1199,7 @@ max    6.000000
 ```
 
 
-To get the fivenum values asked for, the [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.quantile.html pandas.DataFrame.quantile] function can be used:
+To get the fivenum values asked for, the [pandas.DataFrame.quantile](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.quantile.html) function can be used:
 
 ```python
 import pandas as pd
@@ -1268,7 +1268,7 @@ for xs in [[15, 6, 42, 41, 7, 36, 49, 40, 39, 47, 43],
 
 ## R
 
-The '''fivenum''' function is built-in, see [https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fivenum.html R manual].
+The '''fivenum''' function is built-in, see [R manual](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/fivenum.html).
 
 
 ```R
@@ -1534,7 +1534,7 @@ object Fivenum extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/8s0OdOO/2 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/Ady3dSnoRRKNhCaZYIVbig Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/8s0OdOO/2) or by [Scastie (JVM)](https://scastie.scala-lang.org/Ady3dSnoRRKNhCaZYIVbig).
 
 
 ## Sidef
@@ -1585,7 +1585,7 @@ gen x=rnormal()
 ```
 
 
-The '''[https://www.stata.com/help.cgi?summarize summarize]''' command produces all the required statistics, and more:
+The '''[summarize](https://www.stata.com/help.cgi?summarize)''' command produces all the required statistics, and more:
 
 
 ```stata
@@ -1602,7 +1602,7 @@ di r(min),r(p25),r(p50),r(p75),r(max)
 ```
 
 
-It's also possible to use the '''[https://www.stata.com/help.cgi?tabstat tabstat]''' command
+It's also possible to use the '''[tabstat](https://www.stata.com/help.cgi?tabstat)''' command
 
 
 ```stata

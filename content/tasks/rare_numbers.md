@@ -39,10 +39,10 @@ Show all output here, on this page.
 
 ## References
 
-:*   an   OEIS   entry:   [http://oeis.org/A035519 A035519          rare numbers].
-:*   an   OEIS   entry:   [http://oeis.org/A059755 A059755   odd rare numbers].
-:*   planetmath entry:              [https://www.planetmath.org/RareNumbers rare numbers].       (some hints)
-:*   author's  website:        [http://www.shyamsundergupta.com/rare.htm rare numbers]    by Shyam Sunder Gupta.     (lots of hints and some observations).
+:*   an   OEIS   entry:   [A035519          rare numbers](http://oeis.org/A035519).
+:*   an   OEIS   entry:   [A059755   odd rare numbers](http://oeis.org/A059755).
+:*   planetmath entry:              [rare numbers](https://www.planetmath.org/RareNumbers).       (some hints)
+:*   author's  website:        [rare numbers](http://www.shyamsundergupta.com/rare.htm)    by Shyam Sunder Gupta.     (lots of hints and some observations).
 
 
 
@@ -850,7 +850,7 @@ The first 8 rare numbers are: [65, 621770, 281089082, 2022652202, 2042832002, 86
 
 (See the ''discussion'' page for a simplistic 1<sup>st</sup> version that computes   ''rare''   numbers only using the task's basic rules).
 
-Most of the hints (properties of ''rare'' numbers) within Shyam Sunder Gupta's   [http://www.shyamsundergupta.com/rare.htm <u>webpage</u>]   have been incorporated in this
+Most of the hints (properties of ''rare'' numbers) within Shyam Sunder Gupta's   [<u>webpage</u>](http://www.shyamsundergupta.com/rare.htm)   have been incorporated in this
 
 REXX program and the logic is now expressed within the list of   '''AB...PQ'''   (abutted numbers within the   '''@g'''   list).
 

@@ -20,9 +20,9 @@ JavaScript is a registered trademark of [Sun Microsystems](https://rosettacode.o
 It was used under license for technology invented and implemented by Netscape Communications and current entities such as the Mozilla Foundation.
 
 Major browsers have generally implemented the features of ECMASScript 5 (ES5), and have started to adopt elements of ES6.
-Updates to implementation of ES6 features are tabulated here: [https://kangax.github.io/compat-table/es6/ https://kangax.github.io/compat-table/es6/]
+Updates to implementation of ES6 features are tabulated here: [https://kangax.github.io/compat-table/es6/](https://kangax.github.io/compat-table/es6/)
 
-Once largely confined to browser environments, and typically isolated from access to system resources, JavaScript (and particularly the cross-platform [https://nodejs.org/en/ Node.js runtime environment]) is now very widely used in server-side and application scripting environments, with full access to local file systems and other OS resources.
+Once largely confined to browser environments, and typically isolated from access to system resources, JavaScript (and particularly the cross-platform [Node.js runtime environment](https://nodejs.org/en/)) is now very widely used in server-side and application scripting environments, with full access to local file systems and other OS resources.
 
 At the same time, mainly because of JavaScript's role in the web, there is a growing number of other languages which
 [compile to JavaScript](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js).
@@ -34,9 +34,9 @@ If ES6 tail-call optimization is widely implemented by JavaScript engines (so fa
 ## Citations
 
 * [Wikipedia:Javascript](https://en.wikipedia.org/wiki/Javascript)
-* [https://nodejs.org/en/ Node.js] Event-driven I/O server-side JavaScript environment based on V8
-* [https://www.npmjs.com npm – Node.js Package Manager] Claims to be the largest ecosystem of open source libraries in the world
-* [https://developer.apple.com/library/mac/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/Introduction.html OS X JavaScript for Applications] JavaScript as an OS X scripting language – supported by the Safari debugger
-* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Shells Other JavaScript shells] List maintained by Mozilla
-* [https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js List of languages that compile to JS] maintained on Github by Jeremy Ashenas – author of CoffeeScript, Underscore and Backbone
-* [http://shop.oreilly.com/product/0636920028857.do Functional JavaScript] – Michael Fogus, O'Reilly 2013
+* [Node.js](https://nodejs.org/en/) Event-driven I/O server-side JavaScript environment based on V8
+* [npm – Node.js Package Manager](https://www.npmjs.com) Claims to be the largest ecosystem of open source libraries in the world
+* [OS X JavaScript for Applications](https://developer.apple.com/library/mac/releasenotes/InterapplicationCommunication/RN-JavaScriptForAutomation/Articles/Introduction.html) JavaScript as an OS X scripting language – supported by the Safari debugger
+* [Other JavaScript shells](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Shells) List maintained by Mozilla
+* [List of languages that compile to JS](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) maintained on Github by Jeremy Ashenas – author of CoffeeScript, Underscore and Backbone
+* [Functional JavaScript](http://shop.oreilly.com/product/0636920028857.do) – Michael Fogus, O'Reilly 2013

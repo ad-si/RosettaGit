@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{library}}{{implementation|JAMES II/Rule-based Cellular Automata}}
-JAMES II ('''Ja'''va-based '''M'''ultipurpose '''E'''nvironment for '''S'''imulation '''II''') is a generic modeling and simulations framework written in the [[:Category:Java|Java]] programming language. It is currently still under development at the University of Rostock, although an early alpha version with some formalisms and simulators exists for download and review<ref>[http://wwwmosi.informatik.uni-rostock.de/mosi/plonesoftwarecenter.2006-03-21.4262636143/pscproject.2006-03-21.6122697558/releases Current software releases]</ref>.
+JAMES II ('''Ja'''va-based '''M'''ultipurpose '''E'''nvironment for '''S'''imulation '''II''') is a generic modeling and simulations framework written in the [[:Category:Java|Java]] programming language. It is currently still under development at the University of Rostock, although an early alpha version with some formalisms and simulators exists for download and review<ref>[Current software releases](http://wwwmosi.informatik.uni-rostock.de/mosi/plonesoftwarecenter.2006-03-21.4262636143/pscproject.2006-03-21.6122697558/releases)</ref>.
 
 It is not tied to a particular modeling formalism or simulation algorithm, allowing those to be easily exchanged and extended via plug-ins. JAMES II consists of four main parts:
 * the graphical user interface
@@ -27,6 +27,6 @@ Currently the publicly available version of JAMES II includes the core framework
 <references/>
 
 == External links ==
-* [http://jamesii.org Main homepage of the framework]
+* [Main homepage of the framework](http://jamesii.org)
 
 {{stub}}

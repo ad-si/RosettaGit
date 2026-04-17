@@ -45,7 +45,7 @@ Write a function to verify that a given distribution of values is uniform by usi
 
 
 ;Reference:
-:*   an entry at the MathWorld website:   [http://mathworld.wolfram.com/Chi-SquaredDistribution.html chi-squared distribution].
+:*   an entry at the MathWorld website:   [chi-squared distribution](http://mathworld.wolfram.com/Chi-SquaredDistribution.html).
 
 
 
@@ -101,7 +101,7 @@ end Chi_Square;
 ```
 
 
-Finally, we actually implement the Chi-square test. We do not actually compute the Chi-square probability; rather we hardcode a table of values for 5% significance level, which has been picked from Wikipedia [http://en.wikipedia.org/wiki/Chi-squared_distribution]:
+Finally, we actually implement the Chi-square test. We do not actually compute the Chi-square probability; rather we hardcode a table of values for 5% significance level, which has been picked from Wikipedia <http://en.wikipedia.org/wiki/Chi-squared_distribution>:
 
 ```Ada
 with Ada.Text_IO, Ada.Command_Line, Chi_Square; use Ada.Text_IO;
@@ -949,7 +949,7 @@ nonUniformData = Total@RandomInteger[10, {5, 100}];
 
 ## OCaml
 
-This code needs to be compiled with library [http://oandrieu.nerim.net/ocaml/gsl/ gsl.cma].
+This code needs to be compiled with library [gsl.cma](http://oandrieu.nerim.net/ocaml/gsl/).
 
 
 ```ocaml
@@ -1088,7 +1088,7 @@ C2 = 790063.276, p-value = 0.000, uniform = False
 
 
 For the incomplete gamma function we use a series expansion related to Kummer's confluent hypergeometric function
-(see http://en.wikipedia.org/wiki/Incomplete_gamma_function#Evaluation_formulae). The gamma function is calculated
+(see <http://en.wikipedia.org/wiki/Incomplete_gamma_function#Evaluation_formulae>). The gamma function is calculated
 in closed form, as we only need its value at integers and half integers.
 
 
@@ -1626,7 +1626,7 @@ Data set:[522573, 244456, 139979, 71531, 21461]
 
 ## Scala
 
-{{Out}}See it yourself by running in your browser [https://scastie.scala-lang.org/WUFeFG5WQkq2MZ51kBqaYA Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/WUFeFG5WQkq2MZ51kBqaYA).
 ```Scala
 import org.apache.commons.math3.special.Gamma.regularizedGammaQ
 

@@ -788,7 +788,7 @@ toBW=: 255 * medianHist@getImgHist < toGray
 
 '''Example Usage:'''
 
-Use [http://rosettacode.org/mw/images/b/b6/Lenna100.jpg Lenna100.jpg] for testing (read using the [[j:Addons/media/platimg|media/platimg]] addon and convert to ppm file).
+Use [Lenna100.jpg](http://rosettacode.org/mw/images/b/b6/Lenna100.jpg) for testing (read using the [[j:Addons/media/platimg|media/platimg]] addon and convert to ppm file).
 
 
 ```j
@@ -1119,7 +1119,7 @@ let () =
 
 ## Octave
 
-'''Using package''' [http://octave.sourceforge.net/image/index.html Image]
+'''Using package''' [Image](http://octave.sourceforge.net/image/index.html)
 
 ```octave
 function h = imagehistogram(imago)
@@ -1240,7 +1240,7 @@ histogram($b);
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/Lenna.png Lenna], and [https://github.com/thundergnat/rc/blob/master/img/Lenna-bw.png Lenna-bw] images. (converted to .png as .ppm format is not widely supported).
+See [Lenna](https://github.com/thundergnat/rc/blob/master/img/Lenna.png), and [Lenna-bw](https://github.com/thundergnat/rc/blob/master/img/Lenna-bw.png) images. (converted to .png as .ppm format is not widely supported).
 
 
 ## Phix
@@ -1583,10 +1583,10 @@ bm_image.show()
 
 
 {{out}}
-[http://timb.net/images/RC/Bitmap/Histogram/271px-John_Constable_002.jpg Original Image],
-[http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.25.png 25% image],
-[http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.50.png 50% image],
-[http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.75.png 75% image]
+[Original Image](http://timb.net/images/RC/Bitmap/Histogram/271px-John_Constable_002.jpg),
+[25% image](http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.25.png),
+[50% image](http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.50.png),
+[75% image](http://timb.net/images/RC/Bitmap/Histogram/histogram-racket-0.75.png)
 
 Sorry guys... I just give up on linking/displaying these images any other way!
 
@@ -1786,7 +1786,7 @@ Return
 ## zkl
 
 {{trans|C}}
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn histogram(image){
@@ -1825,7 +1825,7 @@ bw.write(File("foo.ppm","wb"));
 ```
 
 See the BBC Basic entry or:
-http://www.zenkinetic.com/Images/RosettaCode/lenaBW.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/lenaBW.jpg>
 
 {{omit from|AWK}}
 {{omit from|PARI/GP}}

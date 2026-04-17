@@ -3170,7 +3170,7 @@ const func float: nthRoot (in integer: n, in float: a) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#nthRoot]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#nthRoot>
 
 
 ## Sidef

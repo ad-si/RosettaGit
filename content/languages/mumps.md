@@ -13,7 +13,7 @@ tags = []
 
 <p>Visit [Wikipedia](https://en.wikipedia.org/wiki/MUMPS) for a general description.</p>
 
-<p>See http://71.174.62.16/Demo/AnnoStd for details about the language.</p>
+<p>See <http://71.174.62.16/Demo/AnnoStd> for details about the language.</p>
 
 <p>Standard MUMPS has one data types (strings) and some dialects (Cache, MSM) add a second data type (objects). A variable can be unsubscripted or not, and the subscripted variables form a
 sparse n-tree. MUMPS doesn't have traditional arrays, but has an array syntax that manipulates trees as if they were arrays, using indexing to access nodes of the tree. You can create a tree that can have unlimited levels of branching, with keys and values associated with each node in the tree. Similarly, while the language doesn't have lists, you can mimic lists by creating strings with a consistent character (or string) as a delimiter separating the entries.

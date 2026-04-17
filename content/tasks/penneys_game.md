@@ -71,8 +71,8 @@ Show output of a game where the computer chooses first and a game where the user
 
 
 ;See also
-* [https://www.youtube.com/watch?v=OcYnlSenF04 The Penney Ante Part 1] (Video).
-* [https://www.youtube.com/watch?v=U9wak7g5yQA The Penney Ante Part 2] (Video).
+* [The Penney Ante Part 1](https://www.youtube.com/watch?v=OcYnlSenF04) (Video).
+* [The Penney Ante Part 2](https://www.youtube.com/watch?v=U9wak7g5yQA) (Video).
 
 
 

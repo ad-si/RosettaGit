@@ -1049,7 +1049,7 @@ hLabel.text = sString                             'Display the result
 End
 ```
 
-'''[http://www.cogier.com/gambas/Animation.png Click here for image of running code]'''
+'''[Click here for image of running code](http://www.cogier.com/gambas/Animation.png)'''
 
 
 ## Go
@@ -1120,7 +1120,7 @@ func main() {
 
 ## Haskell
 
-Using simple graphics {{libheader|HGL}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Using simple graphics {{libheader|HGL}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.HGL.Units (Time, Point, Size, )
@@ -2209,7 +2209,7 @@ A plain text version. The following script works in an XTerm window.
 ### HTML/JavaScript
 
 The standard PicoLisp GUI is HTTP based. Connect your browser to
-http://localhost:8080 after starting the following script.
+<http://localhost:8080> after starting the following script.
 
 The scrolling text is displayed in a button. Clicking on the button
 reverses the scroll direction.
@@ -3076,7 +3076,7 @@ object BasicAnimation extends SimpleSwingApplication {
 
 ## Scratch
 
-Scratch is event and animation oriented, so this is a natural task for this language.  This solution is hosted at the [https://scratch.mit.edu/projects/64784694/ scratch website], where one can see it in action and read its code.
+Scratch is event and animation oriented, so this is a natural task for this language.  This solution is hosted at the [scratch website](https://scratch.mit.edu/projects/64784694/), where one can see it in action and read its code.
 
 '''Solution Summary and Comments'''
 
@@ -3197,7 +3197,7 @@ This animation is defined as a smooth movement rather than by moving whole chara
 ```
 
 
-(Does not work in Safari 4.0.2 because it apparently does not implement toggled animations correctly ([http://www.w3.org/TR/2001/REC-smil-animation-20010904/#RestartAttribute see spec]). Dreadful workaround: set the two animations to <code>id="a" begin="0s;all.click" end="all.mousedown"</code> and <code>begin="a.end" end="all.click"</code>, respectively.)
+(Does not work in Safari 4.0.2 because it apparently does not implement toggled animations correctly ([see spec](http://www.w3.org/TR/2001/REC-smil-animation-20010904/#RestartAttribute)). Dreadful workaround: set the two animations to <code>id="a" begin="0s;all.click" end="all.mousedown"</code> and <code>begin="a.end" end="all.click"</code>, respectively.)
 
 
 ## Tcl

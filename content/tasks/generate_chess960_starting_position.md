@@ -635,7 +635,7 @@ RNBNKQRB
 
 ### Single die method
 
-Using the single die method: https://en.wikipedia.org/wiki/Chess960_starting_position#Single_die_method
+Using the single die method: <https://en.wikipedia.org/wiki/Chess960_starting_position#Single_die_method>
 
 ```factor
 USING: io kernel math random sequences ;
@@ -1038,7 +1038,7 @@ public class Chess960{
 
 ## JavaScript
 
-This conforms to Altendörfer's single die method[https://en.wikipedia.org/wiki/Chess960_starting_position#Single_die_method], though the die will give no "needless" numbers.
+This conforms to Altendörfer's single die method<https://en.wikipedia.org/wiki/Chess960_starting_position#Single_die_method>, though the die will give no "needless" numbers.
 
 ```javaScript
 function ch960startPos() {
@@ -2163,7 +2163,7 @@ object Chess960 extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/AkvVAlG/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/qpKdhOc4SkuAbze8kgU6zQ Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/AkvVAlG/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/qpKdhOc4SkuAbze8kgU6zQ).
 
 ### Imperative Programming
 

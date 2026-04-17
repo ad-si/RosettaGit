@@ -38,7 +38,7 @@ Its creator, John Ousterhout, wrote about it:
 :''“I got the idea for Tcl while on sabbatical leave at DEC's Western Research Laboratory in the fall of 1987. I started actually implementing it when I got back to Berkeley in the spring of 1988; by summer of that year it was in use in some internal applications of ours, but there was no Tk. The first external releases of Tcl were in 1989, I believe. I started implementing Tk in 1989, and the first release of Tk was in 1991.”''
 
 The principal pre-built distributions of Tcl are all based on [libtcl](https://rosettacode.org/wiki/libtcl);
-the main ones are - besides those in the repositories of Linux and BSD Unices, which are usually current -  [ActiveTcl](https://rosettacode.org/wiki/ActiveTcl) from ActiveState (for several platforms including Windows), BAWT http://www.bawt.tcl3d.org/ (for several platforms including Windows and Mac), Magicsplat http://www.magicsplat.com/tcl-installer/index.html (Windows),
+the main ones are - besides those in the repositories of Linux and BSD Unices, which are usually current -  [ActiveTcl](https://rosettacode.org/wiki/ActiveTcl) from ActiveState (for several platforms including Windows), BAWT <http://www.bawt.tcl3d.org/> (for several platforms including Windows and Mac), Magicsplat <http://www.magicsplat.com/tcl-installer/index.html> (Windows),
 and [tclkit](https://rosettacode.org/wiki/tclkit) from Equi4 Software ''et al''.
 
 Older versions of the language (8.5) are distributed as part of Apple's OS X.
@@ -65,7 +65,7 @@ to think of the language at a higher level where these differences don't show.
               '''|''' “''\\''” escapeSequence charSubsts''?''
               '''|''' ordinaryChar charSubsts''?''
 
-The syntax of the language is defined more exactly in the [http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm Tcl(n)] manual page.
+The syntax of the language is defined more exactly in the [Tcl(n)](http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm) manual page.
 
 
 ### Conceptual Command Syntax

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/gotk3/gotk3 gotk3] is a library which provides Go bindings for GTK+3 and dependent projects.
+[gotk3](https://github.com/gotk3/gotk3) is a library which provides Go bindings for GTK+3 and dependent projects.
 
-It is subject to the [https://github.com/gotk3/gotk3/blob/master/LICENSE ISC license].
+It is subject to the [ISC license](https://github.com/gotk3/gotk3/blob/master/LICENSE).

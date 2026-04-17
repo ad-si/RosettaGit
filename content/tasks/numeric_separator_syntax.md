@@ -306,7 +306,7 @@ Commas are not allowed in numeric literals, since they delimit sequence elements
 ## Python
 
 
-The Syntax for separators in numbers, (numeric literals), is given [https://docs.python.org/3/reference/lexical_analysis.html#integer-literals here] in the Python documentation.
+The Syntax for separators in numbers, (numeric literals), is given [here](https://docs.python.org/3/reference/lexical_analysis.html#integer-literals) in the Python documentation.
 
 * The underscore, '_', is used as a separator.
 

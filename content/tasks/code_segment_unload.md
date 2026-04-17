@@ -149,7 +149,7 @@ For interpreted programs however, the code is built and executed in dynamically 
 
 ## Python
 
-The [https://docs.python.org/3.4/reference/simple_stmts.html?highlight=del#grammar-token-del_stmt del] statement can make objects (both code and data), available for reuse.
+The [del](https://docs.python.org/3.4/reference/simple_stmts.html?highlight=del#grammar-token-del_stmt) statement can make objects (both code and data), available for reuse.
 
 
 ## Scala

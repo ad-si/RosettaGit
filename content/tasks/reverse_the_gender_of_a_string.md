@@ -1684,7 +1684,7 @@ His dog belongs to her but her dog is his!
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/cpBaoMf/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/0dajvapgRRChRZaZgpeqnQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/cpBaoMf/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/0dajvapgRRChRZaZgpeqnQ).
 
 ```Scala
 object RevGender extends App {

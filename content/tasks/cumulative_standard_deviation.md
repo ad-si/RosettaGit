@@ -329,7 +329,7 @@ N=8 ITEM=9 AVG=5.000  STDDEV=2.000
 
 ## ALGOL 68
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 Note: the use of a UNION to mimic C's enumerated types is "experimental" and probably not typical of "production code".  However it is a example of '''ALGOL 68'''s ''conformity CASE clause'' useful for classroom dissection.
 
 ```Algol68
@@ -401,7 +401,7 @@ value: 9.000000 standard dev := 2.000000
 ```
 
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 
 A code sample in an object oriented style:
 
@@ -498,7 +498,7 @@ value: 9.000000 standard dev := 2.000000
 ```
 
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 
 A simple - but "unpackaged" - code example, useful if the standard deviation is required on only one set of concurrent data:
 

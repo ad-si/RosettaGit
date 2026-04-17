@@ -20,7 +20,7 @@ I wonder why the file system method was considered a better solution. I liked th
 
 [[User:Markhobley|Markhobley]] 06:56, 3 April 2011 (UTC)
 
-: I run [[OpenBSD]]. This system has [http://www.openbsd.org/cgi-bin/man.cgi?query=sem_open&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html a very broken ''sem_open()''] which always fails with ENOSYS. I changed this program from a named semaphore to a regular file, so that the program would work with my system. Now I can add a SIGINT handler.
+: I run [[OpenBSD]]. This system has [a very broken ''sem_open()''](http://www.openbsd.org/cgi-bin/man.cgi?query=sem_open&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) which always fails with ENOSYS. I changed this program from a named semaphore to a regular file, so that the program would work with my system. Now I can add a SIGINT handler.
 
 : I did read some ''sem_open()'' manual pages. I believed that a name of a named semaphore must start with "/"; but the program had "MyUniqueName", which starts not with "/". I also believed that ''sem_open()'' fails by returning SEM_FAILED; but the program checked NULL, not SEM_FAILED.
 

@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==CPP Recursive ==
-Hope you dont mind but i put in a 99 beer solution i had to do for a class a while back. I have my origional reference here: http://csinsider.homeip.net/index.php/CPP_Pro#Program_.234_Recursion_on_99_bottles_of_beer
+Hope you dont mind but i put in a 99 beer solution i had to do for a class a while back. I have my origional reference here: <http://csinsider.homeip.net/index.php/CPP_Pro#Program_.234_Recursion_on_99_bottles_of_beer>
 I figure that you guys helped me so much, i can at least contribute a bit.
 
 == CPP ==
@@ -61,7 +61,7 @@ One possibility that comes to mind is to partition the languages alphabetically:
 This page needs a ''lot'' of review and cleanup. Issues I can see so far:
 * At least one code example is stated as copied from another site. Is this compliant with [[Rosetta Code:Copyrights]]?
 * "Go" is in there twice, as "Go" and "Go!"
-:: Those are two different languages.  The language "Go!" was the first, but Google came 10 years later with the similarly-named language "Go".   Please read more about it at [http://code.google.com/p/go/issues/detail?id=9 Issue 9] --[[User:Eliasen|Eliasen]] 07:39, 15 March 2012 (UTC)
+:: Those are two different languages.  The language "Go!" was the first, but Google came 10 years later with the similarly-named language "Go".   Please read more about it at [Issue 9](http://code.google.com/p/go/issues/detail?id=9) --[[User:Eliasen|Eliasen]] 07:39, 15 March 2012 (UTC)
 * Someone just added a golf'd C version, and called it  the "correct" version...How does one even define a correct version for 99 Bottles of Beer that isn't simply "Meets the requirements of the task and of RC at large?" I'm not a fan of golfing on RC; expressing something as succinctly as possible has its place in showing the expressiveness of a language and/or the breadth of accessible libraries, but dropping mundane readability factors like newlines and whitespace makes it more like an amateur IOCCC exercise.
 So, yeah, this page needs a lot of review and cleanup. --[[User:Short Circuit|Michael Mol]] 14:09, 15 November 2010 (UTC)
 
@@ -91,4 +91,4 @@ I had thought about spelling out the numbers, that is another task by itself.
 
 == plurals in non-english languages ==
 
-as the GNU Gettext manual points out, plurals in non-English languages can be somewhat complex, and would essentially change the entire nature of the code. For example see http://www.russianlessons.net/lessons/lesson11_main.php Russian. ... interesting problem. [[User:Donbright|Donbright]] ([[User talk:Donbright|talk]]) 20:10, 14 April 2013 (UTC)
+as the GNU Gettext manual points out, plurals in non-English languages can be somewhat complex, and would essentially change the entire nature of the code. For example see <http://www.russianlessons.net/lessons/lesson11_main.php> Russian. ... interesting problem. [[User:Donbright|Donbright]] ([[User talk:Donbright|talk]]) 20:10, 14 April 2013 (UTC)

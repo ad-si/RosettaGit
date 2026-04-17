@@ -111,7 +111,7 @@ Produce a zig-zag array.
 
 A   ''zig-zag''   array is a square arrangement of the first   <big>N<sup>2</sup></big>   integers,   where the
 
-numbers increase sequentially as you zig-zag along the array's   [https://en.wiktionary.org/wiki/antidiagonal anti-diagonals].
+numbers increase sequentially as you zig-zag along the array's   [anti-diagonals](https://en.wiktionary.org/wiki/antidiagonal).
 
 For a graphical representation, see   [[wp:Image:JPEG_ZigZag.svg|JPG zigzag]]   (JPG uses such arrays to encode images).
 
@@ -139,7 +139,7 @@ For example, given   '''5''',   produce this array:
 
 ## See also
 
-*   Wiktionary entry:   [https://en.wiktionary.org/wiki/antidiagonal anti-diagonals]
+*   Wiktionary entry:   [anti-diagonals](https://en.wiktionary.org/wiki/antidiagonal)
 
 
 
@@ -973,7 +973,7 @@ main0() = () where
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276307.html#276307 forum].
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276307.html#276307).
 
 ```AutoHotkey
 n = 5                           ; size
@@ -5327,7 +5327,7 @@ Zig-zag matrix of size 6
 ### Python: By sorting indices
 
 There is a full explanation of the algorithm used
-by [http://paddy3118.blogspot.com/2008/08/zig-zag.html paddy3118].
+by [paddy3118](http://paddy3118.blogspot.com/2008/08/zig-zag.html).
 ```python
 def zigzag(n):
     '''zigzag rows'''
@@ -5868,7 +5868,7 @@ new qapp
 
 Output:
 
-[http://kepkezelo.com/images/kk86ng7p4gcl7z3p7vo1.jpg Zig-Zag matrix]
+[Zig-Zag matrix](http://kepkezelo.com/images/kk86ng7p4gcl7z3p7vo1.jpg)
 
 
 ## Ruby

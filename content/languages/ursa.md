@@ -73,4 +73,4 @@ end while
 
 
 ## See Also
-* [http://cygnus-x.net/geekstuff/projects/ursa Ursa homepage]
+* [Ursa homepage](http://cygnus-x.net/geekstuff/projects/ursa)

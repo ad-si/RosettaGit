@@ -44,8 +44,8 @@ For example, given the points (16,3),  (12,17), (0,6),   (-4,-6), (16,6),  (16,-
 
 ## See also
 
-* [https://www.youtube.com/watch?v=wRTGDig3jx8 Convex Hull (youtube)]
-* http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
+* [Convex Hull (youtube)](https://www.youtube.com/watch?v=wRTGDig3jx8)
+* <http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/>
 
 
 
@@ -660,7 +660,7 @@ main =
 ## J
 
 
-Restated from the implementation at http://kukuruku.co/hub/funcprog/introduction-to-j-programming-language-2004 which in turn is a translation of http://dr-klm.livejournal.com/42312.html
+Restated from the implementation at <http://kukuruku.co/hub/funcprog/introduction-to-j-programming-language-2004> which in turn is a translation of <http://dr-klm.livejournal.com/42312.html>
 
 
 ```J
@@ -1500,7 +1500,7 @@ POLYGON ((-3 -9, -9 -3, -3 15, 5 19, 12 17, 17 5, 19 -8, -3 -9))
 
 ## Racket
 
-Also an implementation of https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain (therefore kinda {{trans|Go}}
+Also an implementation of <https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain> (therefore kinda {{trans|Go}}
 
 
 ```racket
@@ -2052,7 +2052,7 @@ Points of convex hull in clockwise order:
 
 ### version 2
 
-After learning from https://www.youtube.com/watch?v=wRTGDig3jx8
+After learning from <https://www.youtube.com/watch?v=wRTGDig3jx8>
 
 ```rexx
 /* REXX ---------------------------------------------------------------

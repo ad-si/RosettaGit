@@ -25,7 +25,7 @@ RC sets out to be a comparison site for whatever tools users apply the effort of
 :* Allowing detailed timings, if someone wants to, in the talk pages.
 :* But generally - like now, leaving them out.
 
-:We don't have the infrastructure of [http://shootout.alioth.debian.org/ The Computer Language Benchmarks Game], which is one of the best sites for comparing language run times, and even they tell users ''[http://shootout.alioth.debian.org/dont-jump-to-conclusions.php don't jump to conclusions]''.
+:We don't have the infrastructure of [The Computer Language Benchmarks Game](http://shootout.alioth.debian.org/), which is one of the best sites for comparing language run times, and even they tell users ''[don't jump to conclusions](http://shootout.alioth.debian.org/dont-jump-to-conclusions.php)''.
 
 :: Yeah, I jumped the gun by responding without seeing the context of your original discussion (I misunderstood it to refer to, e.g. different compilers' run-time support libraries). I agree 100%. --[[User:Short Circuit|Michael Mol]] 12:45, 6 September 2011 (UTC)
 

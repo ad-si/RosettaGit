@@ -48,7 +48,7 @@ languages = [
 ]
 +++
 
-{{task}} From [https://en.wikipedia.org/wiki/Coin_problem#McNugget_numbers Wikipedia]:
+{{task}} From [Wikipedia](https://en.wikipedia.org/wiki/Coin_problem#McNugget_numbers):
 
  The McNuggets version of the coin problem was introduced by Henri Picciotto,
  who included it in his algebra textbook co-authored with Anita Wah. Picciotto
@@ -1635,8 +1635,8 @@ p ((0..limit).to_a - hits).max # => 43
 ## Rust
 
 No hard limits.
-Generalization of Rødseth’s Algorithm explained in [https://parramining.blogspot.com/2019/09/generalization-of-rdseths-algorithm-for.html post].
-Working code: [https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=1424a910a196fb3d0e964c754fbf325c Rust playground].
+Generalization of Rødseth’s Algorithm explained in [post](https://parramining.blogspot.com/2019/09/generalization-of-rdseths-algorithm-for.html).
+Working code: [Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=1424a910a196fb3d0e964c754fbf325c).
 
 ```rust
 fn main() {

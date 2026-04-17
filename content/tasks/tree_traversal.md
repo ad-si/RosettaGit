@@ -298,7 +298,7 @@ end Tree_traversal;
 
 {{trans|C}} - note the strong code structural similarities with C.
 
-Note the changes from the original translation from C in this [http://rosettacode.org/mw/index.php?title=Tree_traversal&diff=78718&oldid=78682 diff].  It contains examples of syntactic sugar available in [[ALGOL 68]].
+Note the changes from the original translation from C in this [diff](http://rosettacode.org/mw/index.php?title=Tree_traversal&diff=78718&oldid=78682).  It contains examples of syntactic sugar available in [[ALGOL 68]].
 
 ```algol68
 MODE VALUE = INT;
@@ -2962,7 +2962,7 @@ LevelOrder:1,2,3,4,5,6,7,8,9
 
 ## Elisa
 
-This is a generic component for binary tree traversals. More information about binary trees in Elisa are given in [http://jklunder.home.xs4all.nl/elisa/part02/doc030.html trees].
+This is a generic component for binary tree traversals. More information about binary trees in Elisa are given in [trees](http://jklunder.home.xs4all.nl/elisa/part02/doc030.html).
 
 ```Elisa
 
@@ -4121,7 +4121,7 @@ level-order: 1 2 3 4 5 6 7 8 9
 
 ### Flat slice
 
-Alternative representation.  Like Wikipedia [http://en.wikipedia.org/wiki/Binary_tree#Arrays Binary tree#Arrays]
+Alternative representation.  Like Wikipedia [Binary tree#Arrays](http://en.wikipedia.org/wiki/Binary_tree#Arrays)
 
 ```go
 package main

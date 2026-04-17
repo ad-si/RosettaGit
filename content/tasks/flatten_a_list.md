@@ -486,9 +486,9 @@ main(void)
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 Flattening is built in to all of Algol68's ''transput'' routines.  The following example also uses ''widening'', where scalars are converted into arrays.
 
@@ -1823,7 +1823,7 @@ class Main
 {{works with|Forth}}
 Works with any ANS Forth.
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -2064,7 +2064,7 @@ println[flatten[a]]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=1c0157ce2b7eab99ba4e784e183ba474 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=1c0157ce2b7eab99ba4e784e183ba474)'''
 
 ```gambas
 'Code 'borrowed' from Run BASIC
@@ -2320,7 +2320,7 @@ end
 ```
 
 {{libheader|Icon Programming Library}}
-The solution uses several procedures from [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings in the IPL]
+The solution uses several procedures from [strings in the IPL](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 This procedure is more in the spirit of the task handling actual lists rather than representations.  It uses a recursive approach using some of the built-in list manipulation functions and operators.
 
@@ -2885,7 +2885,7 @@ Flattened : [1, 2, 3, 4, 5, 6, 7, 8]
 
 ## Lasso
 
-Lasso Delve is a Lasso utility method explicitly for handling embedded arrays. With one array which contain other arrays, delve allows you to treat one array as a single series of elements, thus enabling easy access to an entire tree of values. [http://www.lassosoft.com/lassoDocs/languageReference/obj/delve www.lassosoft.com/lassoDocs/languageReference/obj/delve Lasso reference on Delve]
+Lasso Delve is a Lasso utility method explicitly for handling embedded arrays. With one array which contain other arrays, delve allows you to treat one array as a single series of elements, thus enabling easy access to an entire tree of values. [www.lassosoft.com/lassoDocs/languageReference/obj/delve Lasso reference on Delve](http://www.lassosoft.com/lassoDocs/languageReference/obj/delve)
 
 
 ```Lasso
@@ -3575,7 +3575,7 @@ var_dump($lst);
 ```
 
 
-or a more succint way using [http://www.software-lab.de/doc/refF.html#fish fish]:
+or a more succint way using [fish](http://www.software-lab.de/doc/refF.html#fish):
 
 
 ```PicoLisp

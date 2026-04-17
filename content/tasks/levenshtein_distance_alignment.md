@@ -619,7 +619,7 @@ palace
 
 ===Simple version (no aligment)===
 First we will analyze this solution that only computes the distance.
-See http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html
+See <http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html>
 for a discussion of the code.
 
 
@@ -661,7 +661,7 @@ for a discussion of the code.
 
 ### Complete version
 
-Now we extend the code from http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html to show also the alignment. The code is very similar, but it stores the partial results (number of edits and alignment of each substring) in a lev structure.
+Now we extend the code from <http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html> to show also the alignment. The code is very similar, but it stores the partial results (number of edits and alignment of each substring) in a lev structure.
 
 ```Racket
 #lang racket
@@ -803,7 +803,7 @@ edit_distance("rosettacode", "raisethysword");
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scastie.scala-lang.org/I8BAESkNTjukVPzsWOUyPA ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/I8BAESkNTjukVPzsWOUyPA].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scastie.scala-lang.org/I8BAESkNTjukVPzsWOUyPA) or <https://scastie.scala-lang.org/I8BAESkNTjukVPzsWOUyPA>.
 
 ```Scala
 import scala.collection.mutable

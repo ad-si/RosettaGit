@@ -13,7 +13,7 @@ tags = []
 The following summarises the useful and various [[ALGOL 68]] prelude templates.  
 These are used in several ALGOL 68 code samples.
 
-Note: These are not part of the classic [http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/ UNESCO IFIP Working Group 2.1]'s standard prelude, rather they were specifically created for [[Main_Page|Rosetta Code]]'s ALGOL 68 code examples.
+Note: These are not part of the classic [UNESCO IFIP Working Group 2.1](http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/)'s standard prelude, rather they were specifically created for [[Main_Page|Rosetta Code]]'s ALGOL 68 code examples.
 
 ###  prelude/general.a68 
 
@@ -107,7 +107,7 @@ PROC string in string = ( STRING s, REF INT pos, STRING t )BOOL:
 
 
 
-=== The classic [http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/ UNESCO IFIP Working Group 2.1]'s standard prelude contents ===
+=== The classic [UNESCO IFIP Working Group 2.1](http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/)'s standard prelude contents ===
 Names from the "official" standard prelude: <, <=, +, +:=, +=:, +*, &, ∧, ⌈, ↓, ⌋, ≥, ≤, =, ∨, ⊥, ÷, ÷×, ÷×:=, ÷*, ÷*:=, ÷:=, ×, ×:=, ~, ↑, *, **, *:=, ¬, -, -:=, /, /:=, /=, %, %×, %×:=, %*, %*:=, %:=, >, >=, =, ABS, AND, ARG, BIN, BITS, BOOL, BYTES, CHANNEL, CHAR, COMPL, CONJ, DIVAB, DOWN, ELEM, ENTIER, EQ, FILE, FORMAT, GE, GT, I, IM, INT, LE, LENG, LEVEL, LT, LWB, MINUSAB, MOD, MODAB, NE, NOT, ODD, OR, OVER, OVERAB, PLUSAB, PLUSTO, RE, REAL, REPR, ROUND, SEMA, SHL, SHORTEN, SHR, SIGN, STRING, TIMESAB, UP, UPB, VOID, arccos, arcsin, arctan, associate, backspace, bin possible, bits lengths, bits pack, bits shorths, bits width, blank, bytes lengths, bytes pack, bytes shorths, bytes width, chan, char in string, char number, close, compressible, cos, create, errorchar, estab possible, establish, exp, exp width, fixed, flip, float, flop, get, get bin, get possible, getf, int shorths, int width, last random, line number, ln, lock, make conv, make term, max abs char, max int, max real, newline, newpage, next random, null character, on char error, on format end, on line end, on logical file end, on page end, on physical file end, on value error, open, page number, pi, print, printf, put, put bin, put possible, putf, random, read, read bin, readf, real lengths, real shorths, real width, reidf, reidf possible, reset, reset possible, scratch, set, set char number, set possible, sin, small real, space, sqrt, stand back, stand back channel, stand in, stand in channel, stand out, stand out channel, standconv, stop, tan, whole, write, write bin, writef, L BITS, L BYTES, L COMPL, L INT, L REAL, L arccos, L arcsin, L arctan, L bits pack, L bits width, L bytes pack, L bytes width, L cos, L exp, L exp width, L int width, L last random, L ln, L max int, L max real, L next random, L pi, L random, L real width, L sin, L small real, L sqrt, L tan.
 
 The L indicates extra precision, eg REAL, or LONG REAL or LONG LONG REAL etc, even SHORT REAL etc

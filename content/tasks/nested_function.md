@@ -319,7 +319,7 @@ implement main0() = { val () = MakeList". " }
 
 ## C
 
-I honestly never thought this task could ever be done in C and then I was surprised, again. It turns out that nested functions although not a C standard are supported by [https://gcc.gnu.org/onlinedocs/gcc/Nested-Functions.html GCC]. I have used anonymous functions in Java and frankly, I don't see any practical benefit other than making code even harder to read. Then again, that's one of the [http://www.ioccc.org/ strengths of C]. For example, I still have no clue how come the sprintf line is working correctly. I expected the first line of the list to be '1. second', but no, [http://www.netfunny.com/rhf/jokes/90q2/ode.html C is C is C].
+I honestly never thought this task could ever be done in C and then I was surprised, again. It turns out that nested functions although not a C standard are supported by [GCC](https://gcc.gnu.org/onlinedocs/gcc/Nested-Functions.html). I have used anonymous functions in Java and frankly, I don't see any practical benefit other than making code even harder to read. Then again, that's one of the [strengths of C](http://www.ioccc.org/). For example, I still have no clue how come the sprintf line is working correctly. I expected the first line of the list to be '1. second', but no, [C is C is C](http://www.netfunny.com/rhf/jokes/90q2/ode.html).
 
 ----
 
@@ -478,7 +478,7 @@ string MakeList2(string separator)
 ```
 
 
-''PS: A function named make-list is already defined in Common Lisp, see [http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_lis.htm#make-list specification].''
+''PS: A function named make-list is already defined in Common Lisp, see [specification](http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_lis.htm#make-list).''
 
 
 ## D
@@ -601,9 +601,9 @@ IN: rosetta-code.nested-functions
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Nested_function this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Nested_function) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

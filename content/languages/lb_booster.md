@@ -17,4 +17,4 @@ LBB is actually a variation of BB4W, and has similar capabilities and limitation
 *Overcome many of Liberty BASIC's bugs and limitations.
 
 ## See also
-*[http://www.lbbooster.com/ LB Booster home page]
+*[LB Booster home page](http://www.lbbooster.com/)

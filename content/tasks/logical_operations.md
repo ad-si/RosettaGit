@@ -1299,7 +1299,7 @@ def logicalOperations(a :boolean, b :boolean) {
 ```
 
 
-Each of these is a method on [http://wiki.erights.org/wiki/Boolean boolean objects]; the above is precisely equivalent to:
+Each of these is a method on [boolean objects](http://wiki.erights.org/wiki/Boolean); the above is precisely equivalent to:
 
 
 ```e

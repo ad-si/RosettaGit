@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/rthornton128/goncurses Goncurses] is an ncurses library for the Go programming language.
+[Goncurses](https://github.com/rthornton128/goncurses) is an ncurses library for the Go programming language.
 
-Its use is subject to [https://github.com/rthornton128/goncurses/blob/master/LICENSE this] license.
+Its use is subject to [this](https://github.com/rthornton128/goncurses/blob/master/LICENSE) license.

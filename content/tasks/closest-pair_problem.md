@@ -130,10 +130,10 @@ A better algorithm is based on the recursive divide&amp;conquer approach,   as e
 
 ;References and further readings:
 *   [[wp:Closest pair of points problem|Closest pair of points problem]]
-*   [http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html Closest Pair (McGill)]
-*   [http://www.cs.ucsb.edu/~suri/cs235/ClosestPair.pdf Closest Pair (UCSB)]
-*   [http://classes.cec.wustl.edu/~cse241/handouts/closestpair.pdf Closest pair (WUStL)]
-*   [http://www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt Closest pair (IUPUI)]
+*   [Closest Pair (McGill)](http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html)
+*   [Closest Pair (UCSB)](http://www.cs.ucsb.edu/~suri/cs235/ClosestPair.pdf)
+*   [Closest pair (WUStL)](http://classes.cec.wustl.edu/~cse241/handouts/closestpair.pdf)
+*   [Closest pair (IUPUI)](http://www.cs.iupui.edu/~xkzou/teaching/CS580/Divide-and-conquer-closestPair.ppt)
 
 
 
@@ -677,7 +677,7 @@ Min distance (optimized): 6.95886 (932.735, 1002.7), (939.216, 1000.17)
 ## Common Lisp
 
 
-Points are conses whose cars are x coördinates and whose cdrs are y coördinates.  This version includes the optimizations given in the [http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html McGill description] of the algorithm.
+Points are conses whose cars are x coördinates and whose cdrs are y coördinates.  This version includes the optimizations given in the [McGill description](http://www.cs.mcgill.ca/~cs251/ClosestPair/ClosestPairDQ.html) of the algorithm.
 
 
 ```lisp
@@ -4635,7 +4635,7 @@ recursive      0.187000   0.000000   0.187000 (  0.190000)
 
 ## Run BASIC
 
-Courtesy http://dkokenge.com/rbp
+Courtesy <http://dkokenge.com/rbp>
 
 ```runbasic
 n =10                              ' 10 data points input

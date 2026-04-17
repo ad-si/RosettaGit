@@ -211,7 +211,7 @@ S -> F-S
 ```
 
 
-This always has F at even positions and S at odd.  Eg. after 3 levels <code>F_S_F_S_F_S_F_S</code>.  The +/- turns in between bend to the left or right the same as the "successive approximation" method above.  Read more at for instance [http://www.cs.unm.edu/~joel/PaperFoldingFractal/L-system-rules.html Joel Castellanos' L-system page].
+This always has F at even positions and S at odd.  Eg. after 3 levels <code>F_S_F_S_F_S_F_S</code>.  The +/- turns in between bend to the left or right the same as the "successive approximation" method above.  Read more at for instance [Joel Castellanos' L-system page](http://www.cs.unm.edu/~joel/PaperFoldingFractal/L-system-rules.html).
 
 Variations are possible if you have only a single symbol for line draw, for example the [[#Icon and Unicon|Icon and Unicon]] and [[#Xfractint|Xfractint]] code.  The angles can also be broken into 45-degree parts to keep the expansion in a single direction rather than the endpoint rotating around.
 
@@ -408,21 +408,21 @@ Note: each Dragon curve is composed of many smaller dragon curves (shown in a di
 
 ## AmigaE
 
-Example code using mutual recursion can be found in [http://cshandley.co.uk/JasonHulance/beginner_170.html Recursion Example] of "A Beginner's Guide to Amiga E".
+Example code using mutual recursion can be found in [Recursion Example](http://cshandley.co.uk/JasonHulance/beginner_170.html) of "A Beginner's Guide to Amiga E".
 
 
 ## Applesoft BASIC
 
-Apple IIe BASIC code can be found in Thomas Bannon, "Fractals and Transformations", Mathematics Teacher, March 1991, pages 178-185. ([http://www.jstor.org/stable/27967087 At JSTOR].)
+Apple IIe BASIC code can be found in Thomas Bannon, "Fractals and Transformations", Mathematics Teacher, March 1991, pages 178-185. ([At JSTOR](http://www.jstor.org/stable/27967087).)
 
 
 ## Asymptote
 
 The Asymptote source code includes an <code>examples/dragon.asy</code> which draws the dragon curve (four interlocking copies actually),
 
-: [http://asymptote.sourceforge.net/gallery/dragon.asy http://asymptote.sourceforge.net/gallery/dragon.asy]
+: [http://asymptote.sourceforge.net/gallery/dragon.asy](http://asymptote.sourceforge.net/gallery/dragon.asy)
 
-: [http://asymptote.sourceforge.net/gallery/dragon.pdf http://asymptote.sourceforge.net/gallery/dragon.pdf]
+: [http://asymptote.sourceforge.net/gallery/dragon.pdf](http://asymptote.sourceforge.net/gallery/dragon.pdf)
 
 As of its version 2.15 it uses the successive approximation method.  Vertices are represented as an array of "pairs" (complex numbers).  Between each two vertices a new vertex is is introduced so as to double the segments, repeated to a desired level.
 
@@ -469,11 +469,11 @@ SLEEP
 
 
 See also Sydney Afriat "Dragon Curves" paper for various approaches in BASIC
-* http://www.econ-pol.unisi.it/~afriat/Papers.html
-* http://www.econ-pol.unisi.it/~afriat/Math_Dragon.pdf
+* <http://www.econ-pol.unisi.it/~afriat/Papers.html>
+* <http://www.econ-pol.unisi.it/~afriat/Math_Dragon.pdf>
 
 And TRS-80 BASIC code in Dan Rollins, "A Tiger Meets a Dragon: An examination of the mathematical properties of dragon curves and a program to print them on an IDS Paper Tiger", Byte Magazine, December 1983.  (Based on generating a string of turns by appending middle turn and reversed copy. Options for the middle turn give the alternate paper folding curve and more too.  The turns are then followed for the plot.)
-* https://archive.org/details/byte-magazine-1983-12
+* <https://archive.org/details/byte-magazine-1983-12>
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "Dragon.bas"
@@ -1272,7 +1272,7 @@ hjkl?q
 
 ## Common Lisp
 
-This implementation uses nested transformations rather than turtle motions. [http://bauhh.dyndns.org:8000/clim-spec/10-2.html#_532 <tt>with-scaling</tt>, etc.] establish transformations for the drawing which occurs within them.
+This implementation uses nested transformations rather than turtle motions. [<tt>with-scaling</tt>, etc.](http://bauhh.dyndns.org:8000/clim-spec/10-2.html#_532) establish transformations for the drawing which occurs within them.
 
 The recursive <tt>dragon-part</tt> function draws a curve connecting (0,0) to (1,0); if <var>depth</var> is 0 then the curve is a straight line. <var>bend-direction</var> is either 1 or -1 to specify whether the deviation from a straight line should be to the right or left.
 
@@ -1555,7 +1555,7 @@ See: [[Dragon curve/D/DFL]]
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=floatvars%0Acolor%20955%0Alinewidth%200.5%0Ax%20%3D%2025%0Ay%20%3D%2060%0Amove%20x%20y%0Aangle%20%3D%200%0A%23%20%0Afunc%20dragon%20size%20lev%25%20d%20.%20.%0Aif%20lev%25%20%3D%200%0Ax%20-%3D%20cos%20angle%20%2A%20size%0Ay%20%2B%3D%20sin%20angle%20%2A%20size%0Aline%20x%20y%0Aelse%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%201%0Aangle%20-%3D%20d%20%2A%2090%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%20-1%0A.%0A.%0Acall%20dragon%2060%2012%201 Run it]
+[Run it](https://easylang.online/apps/run.html?code=floatvars%0Acolor%20955%0Alinewidth%200.5%0Ax%20%3D%2025%0Ay%20%3D%2060%0Amove%20x%20y%0Aangle%20%3D%200%0A%23%20%0Afunc%20dragon%20size%20lev%25%20d%20.%20.%0Aif%20lev%25%20%3D%200%0Ax%20-%3D%20cos%20angle%20%2A%20size%0Ay%20%2B%3D%20sin%20angle%20%2A%20size%0Aline%20x%20y%0Aelse%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%201%0Aangle%20-%3D%20d%20%2A%2090%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%20-1%0A.%0A.%0Acall%20dragon%2060%2012%201)
 
 <lang>floatvars
 color 955
@@ -1682,12 +1682,12 @@ main =
 ```
 
 
-Link to live demo: http://dc25.github.io/dragonCurveElm
+Link to live demo: <http://dc25.github.io/dragonCurveElm>
 
 
 ## Emacs Lisp
 
-Drawing ascii art characters into a buffer using <code>[http://www.gnu.org/software/emacs/manual/html_node/emacs/Picture-Mode.html picture-mode]</code>
+Drawing ascii art characters into a buffer using <code>[picture-mode](http://www.gnu.org/software/emacs/manual/html_node/emacs/Picture-Mode.html)</code>
 
 
 ```lisp
@@ -1971,9 +1971,9 @@ MAIN: dragon-window
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Dragon_curve this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Dragon_curve) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2391,7 +2391,7 @@ vmoot xs = (xs++).map (zipWith (+) lxs). flip matmul r_90.
 dragoncurve = iterate vmoot pl
 ```
 
-For plotting I use the gnuplot interface module from [http://hackage.haskell.org/packages/hackage.html hackageDB]
+For plotting I use the gnuplot interface module from [hackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 Use:
  plotPath [] . map (\[x,y] -> (x,y)) $ dragoncurve!!13
@@ -2479,9 +2479,9 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn linddraw]
-[http://www.cs.arizona.edu/icon/library/src/procs/wopen.icn wopen]
-[http://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn linden]
+[linddraw](http://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn)
+[wopen](http://www.cs.arizona.edu/icon/library/src/procs/wopen.icn)
+[linden](http://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn)
 
 
 ## J
@@ -2596,7 +2596,7 @@ public class DragonCurve extends JFrame {
 
 ### Version #1.
 
-I'm sure this can be simplified further, but I have this working [http://kevincantu.org/code/dragon/dragon.html here]!
+I'm sure this can be simplified further, but I have this working [here](http://kevincantu.org/code/dragon/dragon.html)!
 
 Though there is an impressive SVG example further below, this uses JavaScript to recurse through the expansion and simply displays each line with SVG.  It is invoked as a method <code>DRAGON.fractal(...)</code> as described.
 
@@ -2885,7 +2885,7 @@ where:
 fractalMakeDragon("roar"; [100,300]; [500,300]; 15; false; {})
 ```
 
-[https://drive.google.com/file/d/0BwMI1gZaY2-MYW1oanVfMVRTVms/view SVG converted to png]
+[SVG converted to png](https://drive.google.com/file/d/0BwMI1gZaY2-MYW1oanVfMVRTVms/view)
 
 The command to generate the SVG and the first few lines of output are as follows:
 
@@ -2908,7 +2908,7 @@ M259.375 218.75L262.5 218.75
 
 ## Julia
 
-Code uses Luxor library[https://juliagraphics.github.io/Luxor.jl/latest/turtle.html].
+Code uses Luxor library<https://juliagraphics.github.io/Luxor.jl/latest/turtle.html>.
 
 
 ```julia
@@ -3338,7 +3338,7 @@ Output:
 
 ## M2000 Interpreter
 
-[https://1.bp.blogspot.com/-KTPvvri-EAQ/W_7C9ug1WFI/AAAAAAAAHck/NeWCuJ0GXpkMwkANM6i6UJRgZxqig_mXgCLcBGAs/s1600/dragon_curve.png Image]
+[Image](https://1.bp.blogspot.com/-KTPvvri-EAQ/W_7C9ug1WFI/AAAAAAAAHck/NeWCuJ0GXpkMwkANM6i6UJRgZxqig_mXgCLcBGAs/s1600/dragon_curve.png)
 
 
 ```M2000 Interpreter
@@ -4034,7 +4034,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/dragon_curve.svg Dragon curve]  (offsite image)
+[Dragon curve](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/dragon_curve.svg)  (offsite image)
 
 
 ## Perl 6
@@ -4536,10 +4536,10 @@ or you might have a very angry printer).
 
 ## See also
 
-* [http://www.cs.unh.edu/~charpov/Programming/L-systems/ L-systems in Postscript]
+* [L-systems in Postscript](http://www.cs.unh.edu/~charpov/Programming/L-systems/)
 
 =={{header|POV-Ray}}==
-Example code recursive and iterative can be found at [http://aesculier.fr/fichiersPovray/dragon/dragon.html Courbe du Dragon].
+Example code recursive and iterative can be found at [Courbe du Dragon](http://aesculier.fr/fichiersPovray/dragon/dragon.html).
 
 
 ## Prolog
@@ -4797,7 +4797,7 @@ segments(Iteration[[i]][s,1], Iteration[[i]][s,2], Iteration[[i]][s,3], Iteratio
 
 ```
 
-[https://commons.wikimedia.org/wiki/File:Dragon_Curve_16_Iterations_R_programming_language.png#mediaviewer/File:Dragon_Curve_16_Iterations_R_programming_language.png]
+<https://commons.wikimedia.org/wiki/File:Dragon_Curve_16_Iterations_R_programming_language.png#mediaviewer/File:Dragon_Curve_16_Iterations_R_programming_language.png>
 
 
 ### Version #2.
@@ -5396,7 +5396,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#dragon_curve]
+Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#dragon_curve>
 
 
 ## SequenceL
@@ -5527,7 +5527,7 @@ int main(int argc, char** argv)
 ```
 
 
-[https://i.imgur.com/JnXZaMA.gifv Output Video]
+[Output Video](https://i.imgur.com/JnXZaMA.gifv)
 
 
 ## Sidef
@@ -5582,7 +5582,7 @@ The classic book "Smalltalk-80 The Language and its Implementation" chapter 19 p
 
 <!--
  This book can be found at the following location, but requires flash to see the pages.
- http://content.yudu.com/Library/A1oscj/Smalltalk80TheLangua/resources/index.htm
+ <http://content.yudu.com/Library/A1oscj/Smalltalk80TheLangua/resources/index.htm>
 -->
 
 
@@ -5758,7 +5758,7 @@ dragon 400 17
 ```
 
 
-See also the Tcl/Tk wiki [http://wiki.tcl.tk/3349 Dragon Curves] and [http://wiki.tcl.tk/10745 Recursive curves] pages.
+See also the Tcl/Tk wiki [Dragon Curves](http://wiki.tcl.tk/3349) and [Recursive curves](http://wiki.tcl.tk/10745) pages.
 
 
 ## TeX
@@ -5766,7 +5766,7 @@ See also the Tcl/Tk wiki [http://wiki.tcl.tk/3349 Dragon Curves] and [http://wik
 
 ### PGF
 
-The [http://sourceforge.net/projects/pgf/ PGF] package includes a "lindenmayersystems" library.  A dragon can be made with the "F-S" rule by defining S as a second drawing symbol.  So, for [[plainTeX]],
+The [PGF](http://sourceforge.net/projects/pgf/) package includes a "lindenmayersystems" library.  A dragon can be made with the "F-S" rule by defining S as a second drawing symbol.  So, for [[plainTeX]],
 
 
 ```TeX
@@ -6243,7 +6243,7 @@ Visiting file:///home/craigd/Projects/ZKL/Tmp/dragon.svg shows a nice dragon cur
 
 ```
 
-http://home.comcast.net/~zenkinetic/Images/dragon.svg
+<http://home.comcast.net/~zenkinetic/Images/dragon.svg>
 
 
 ## ZX Spectrum Basic

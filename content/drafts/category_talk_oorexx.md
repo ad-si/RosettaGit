@@ -107,7 +107,7 @@ Perhaps you might explain to me why you would object to the rexx code examples h
 thanks. --[[User:Sahananda|Sahananda]] 22:48, 26 June 2012 (UTC)
 
 == Plagiarism ==
-In that the code presented herein is covered by the [http://www.example.com GNU Free Documentation Licence 1.2], I'm not convinced that anything developed or reimplemented from an example in another language can be or should be identified as &quot;plagiarized&quot;, particularly if the appropriate acknowledgements are in place.  (Rosetta Code even provides the means witihin the editor to indicate that a program is a direct translation of some other work via the <nowiki>{{trans|XXXX}}</nowiki> template. <nowiki>[</nowiki>[[Template:Trans|see Template:Trans]]<nowiki>]</nowiki>)  Plagiarism can be a very emotive word and a serious charge to level at someone, particularly when related to software development; we should avoid describing work presented here as such.
+In that the code presented herein is covered by the [GNU Free Documentation Licence 1.2](http://www.example.com), I'm not convinced that anything developed or reimplemented from an example in another language can be or should be identified as &quot;plagiarized&quot;, particularly if the appropriate acknowledgements are in place.  (Rosetta Code even provides the means witihin the editor to indicate that a program is a direct translation of some other work via the <nowiki>{{trans|XXXX}}</nowiki> template. <nowiki>[</nowiki>[[Template:Trans|see Template:Trans]]<nowiki>]</nowiki>)  Plagiarism can be a very emotive word and a serious charge to level at someone, particularly when related to software development; we should avoid describing work presented here as such.
 
 Remember that by contributing programs to Rosetta Code  you are &quot;promising us that you wrote this yourself, or copied it from a public domain or similar free resource&quot; [sic.] --[[User:Alansam|Alansam]]
 
@@ -337,7 +337,7 @@ It receives a nag message when using I.E., however, but I use I.E. sparingly [I 
 
 I would quote the script error, but I don't know nuttin' about nuttin' in Javascript, and it may just be something in my environment. 
 
-I have since found that when browsing other webpages using I.E. (not just Rosetta Code), I'm receiving the same error and it's becoming a pita.  [Error: object doesn't support this property method; Code: 0; URL: http://www.imbd.com/]. Usually, two such errors are presented, and then I.E. proceeds to display the page ok.
+I have since found that when browsing other webpages using I.E. (not just Rosetta Code), I'm receiving the same error and it's becoming a pita.  [Error: object doesn't support this property method; Code: 0; URL: <http://www.imbd.com/>]. Usually, two such errors are presented, and then I.E. proceeds to display the page ok.
 
 
 I wish this code (as is) would be present without having to install in all my preferences, which would give the viewer a choice (and presumably, the default would be highlighting).  As someone else said, I don't like to have highlighting forced on my viewing of source code, having the toggle allows me a choice. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:31, 12 June 2012 (UTC)

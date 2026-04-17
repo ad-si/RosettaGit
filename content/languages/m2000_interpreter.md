@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-M2000 is an interpreter running on its own Environment written in Visual Basic 6, as an open source project and can be found in GitHub[https://github.com/M2000Interpreter/Version9]. Current version is 9.8, revision 29. See [M2000 Interpreter Implementation](https://rosettacode.org/wiki/M2000_Interpreter_Implementation)
+M2000 is an interpreter running on its own Environment written in Visual Basic 6, as an open source project and can be found in GitHub<https://github.com/M2000Interpreter/Version9>. Current version is 9.8, revision 29. See [M2000 Interpreter Implementation](https://rosettacode.org/wiki/M2000_Interpreter_Implementation)
 M2000 has two set of vocabularies, one with English identifiers and one with Greek identifiers. We can mix languages, but not if some identifiers are part of a statement in non matching language.
 
 

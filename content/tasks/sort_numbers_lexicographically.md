@@ -910,7 +910,7 @@ p (1..n).sort_by(&:to_s)
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/KpWHYNR/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/BnxJXLjCRvObdOv3VKTtYA Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/KpWHYNR/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/BnxJXLjCRvObdOv3VKTtYA).
 
 ```Scala
 object LexicographicalNumbers extends App {  def ints = List(0, 5, 13, 21, -22)

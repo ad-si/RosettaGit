@@ -384,7 +384,7 @@ user=> @#'a/priv ; succeeds
 ```
 
 
-Clojure can also access Java private variables with the same strategy that Java uses.  As a convenience, use the [http://clojuredocs.org/clojure_contrib/clojure.contrib.reflect/get-field get-field] function from clojure.contrib.reflect.  Here's an example of grabbing the private field "serialVersionUID" from java.lang.Double:
+Clojure can also access Java private variables with the same strategy that Java uses.  As a convenience, use the [get-field](http://clojuredocs.org/clojure_contrib/clojure.contrib.reflect/get-field) function from clojure.contrib.reflect.  Here's an example of grabbing the private field "serialVersionUID" from java.lang.Double:
 
 ```clojure
 
@@ -511,7 +511,7 @@ System.Int32 = 42
 
 ## Factor
 
-From the [http://docs.factorcode.org/content/article-word-search-private.html documentation for private words]: ''"Privacy is not enforced by the system; private words can be called from other vocabularies, and from the listener. However, this should be avoided where possible."''
+From the [documentation for private words](http://docs.factorcode.org/content/article-word-search-private.html): ''"Privacy is not enforced by the system; private words can be called from other vocabularies, and from the listener. However, this should be avoided where possible."''
 
 This example uses the private word ''sequence/tester'' from the vocabulary ''sets.private''. It tries to count the elements in an intersection of two sets.
 
@@ -541,7 +541,7 @@ There is better way to do the same, without any private words.
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -613,7 +613,7 @@ Go has a <code>reflect</code> and <code>unsafe</code> package that together can 
 Of course, as mentioned in the task description, this is ''a bad idea''.
 
 A relevant Go Blog article is
-[http://blog.golang.org/laws-of-reflection The Laws of Reflection].
+[The Laws of Reflection](http://blog.golang.org/laws-of-reflection).
 
 ```go
 package main
@@ -754,7 +754,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt
@@ -773,7 +773,7 @@ Current implementations of J do not enforce OO privacy, instead favoring design 
 
 It's possible to use OS features (such as other processes, and servers) to hide information.  But that, by definition, is outside the scope of the language.
 
-J does support a "[http://www.jsoftware.com/help/dictionary/dx003.htm Lock Script]" mechanism - to transform a J script so that it's unreadable. However, anyone with access to a machine running the code and ordinary developer tools or who understands the "locking" technique could unlock it.
+J does support a "[Lock Script](http://www.jsoftware.com/help/dictionary/dx003.htm)" mechanism - to transform a J script so that it's unreadable. However, anyone with access to a machine running the code and ordinary developer tools or who understands the "locking" technique could unlock it.
 
 
 ## Java
@@ -1328,8 +1328,8 @@ say $foo.^attributes.first('$!shyguy').get_value($foo);
 
 ## PicoLisp
 
-PicoLisp uses [http://software-lab.de/doc/ref.html#transient "transient symbols"] for variables, functions, methods etc. inaccessible from other parts of the program. Lexically, a transient symbol is enclosed by double quotes.
-The only way to access a transient symbol outside its namespace is to search for its name in other (public) structures. This is done by the '[http://software-lab.de/doc/refL.html#loc loc]' function.
+PicoLisp uses ["transient symbols"](http://software-lab.de/doc/ref.html#transient) for variables, functions, methods etc. inaccessible from other parts of the program. Lexically, a transient symbol is enclosed by double quotes.
+The only way to access a transient symbol outside its namespace is to search for its name in other (public) structures. This is done by the '[loc](http://software-lab.de/doc/refL.html#loc)' function.
 
 ```PicoLisp
 (class +Example)
@@ -1605,7 +1605,7 @@ $e print
 {{trans|C#}}
 {{trans|F#}}
 
-Like the other .NET languages, VB can use Reflection ([https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection Microsoft docs]).
+Like the other .NET languages, VB can use Reflection ([Microsoft docs](https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection)).
 
 
 ```vbnet

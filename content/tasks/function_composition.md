@@ -539,7 +539,7 @@ class Function
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276379.html#276379 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % compose("sin","cos",1.5)
@@ -1044,7 +1044,7 @@ compose f g:
 ## Dylan
 
 
-compose[https://opendylan.org/books/drm/Functional_Operations#compose] is already part of the language standard, with a more complete definition than this.
+compose<https://opendylan.org/books/drm/Functional_Operations#compose> is already part of the language standard, with a more complete definition than this.
 
 
 ```dylan
@@ -1325,9 +1325,9 @@ class Compose
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Function_composition this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Function_composition) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1855,7 +1855,7 @@ print(id(0.5)); // 0.5
 Recursion apart, multiple composition can be written in at least two general ways in JS:
 
 # Iteratively (faster to run, perhaps more fiddly to write)
-# With a fold / reduction (see http://rosettacode.org/wiki/Catamorphism). The fold is arguably simpler to write and reason about, though not quite as fast to execute.
+# With a fold / reduction (see <http://rosettacode.org/wiki/Catamorphism>). The fold is arguably simpler to write and reason about, though not quite as fast to execute.
 
 
 ```JavaScript
@@ -2350,7 +2350,7 @@ compose(f, g) := buildq([f, g], lambda([x], f(g(x))));
 
 ## min
 
-Since min is both [http://concatenative.org/wiki/view/Concatenative%20language concatenative] and homoiconic, function composition is equivalent to list concatenation. Example:
+Since min is both [concatenative](http://concatenative.org/wiki/view/Concatenative%20language) and homoiconic, function composition is equivalent to list concatenation. Example:
 
 ```min
 (1 +) (2 *) concat print
@@ -2775,7 +2775,7 @@ echo $result = $trim_strlen(' Test '), "\n"; // prints 4
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(lambda).

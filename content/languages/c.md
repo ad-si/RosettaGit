@@ -33,7 +33,7 @@ C is the most commonly used programming language for writing system software, th
     - '''C99''' is a significant improvement, adopting many features of [C++](https://rosettacode.org/wiki/C++) and standardizing common compiler extensions.
     It was standardized by ISO in 1999, and by ANSI in 2000.
     It is primarily supported by commercial C compilers, but most of its features are available in [Clang](https://rosettacode.org/wiki/Clang) [GCC](https://rosettacode.org/wiki/GCC).
-    [http://gcc.gnu.org/c99status.html]
+    <http://gcc.gnu.org/c99status.html>
 - '''C11''' is the current standard, published in December 2011.
     It is the default for [GCC](https://rosettacode.org/wiki/GCC) as of version 5.1.
 

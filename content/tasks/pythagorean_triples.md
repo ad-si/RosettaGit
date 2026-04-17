@@ -2455,8 +2455,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides gcd]
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[numbers.icn provides gcd](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 The output from some sample runs with BLKSIZE=500000000 and STRSIZE=50000000 is below.  It starts getting very slow after 10M at about 9 minutes (times are shown in ms.  I suspect there may be faster gcd algorithms that would speed this up.
 
@@ -4208,7 +4208,7 @@ def pytrip(trip=(3,4,5),perim=100, prim=1):
 def pt2(maxperimeter=100):
     '''
 # Parent/child relationship method:
-# http://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples#XI.
+# <http://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples#XI>.
     '''
     trips = pytrip((3,4,5), maxperimeter, 1)
     return trips
@@ -4246,7 +4246,7 @@ for algo, mn, mx in ((pt1, 250, 2500), (pt2, 500, 20000)):
   Up to a perimeter of 2500 there are 969 triples, of which 175 are primitive
 
 # Parent/child relationship method:
-# http://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples#XI.
+# <http://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples#XI>.
 
   Up to a perimeter of 500 there are 137 triples, of which 35 are primitive
   Up to a perimeter of 1000 there are 325 triples, of which 70 are primitive
@@ -4659,7 +4659,7 @@ sys	0m0.024s
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/CAz60TW/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/soOLJ673Q82l78OCgIx4oQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/CAz60TW/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/soOLJ673Q82l78OCgIx4oQ).
 
 ```Scala
 object PythagoreanTriples extends App {
@@ -4725,14 +4725,14 @@ gosh> (py 100)
 
 Scratch is a visual programming language. Click the link, then "see inside" to see the code.
 
-https://scratch.mit.edu/projects/79066598/
+<https://scratch.mit.edu/projects/79066598/>
 
 Output: 17 Pythagorean triples with a perimeter less than 100, 7 of which are primitive.
 
 
 ## Seed7
 
-The example below uses [http://seed7.sourceforge.net/libraries/bigint.htm bigInteger] numbers:
+The example below uses [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm) numbers:
 
 
 ```seed7

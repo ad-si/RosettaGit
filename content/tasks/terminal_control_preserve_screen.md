@@ -131,7 +131,7 @@ The screen is saved as a bitmap:
 ## Befunge
 
 
-Assuming a terminal with support for Xterm's [http://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-The-Alternate-Screen-Buffer ''alternate screen buffer''] escape sequences (which I believe is fairly standard these days), this example will switch to the alternate screen buffer, output "Press <Enter> to restore..." in the top left corner, and then restore the original screen.
+Assuming a terminal with support for Xterm's [''alternate screen buffer''](http://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-The-Alternate-Screen-Buffer) escape sequences (which I believe is fairly standard these days), this example will switch to the alternate screen buffer, output "Press <Enter> to restore..." in the top left corner, and then restore the original screen.
 
 
 ```befunge

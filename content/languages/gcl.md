@@ -9,9 +9,9 @@ id = 7546
 categories = []
 tags = []
 +++
-[http://www.gnu.org/software/gcl/ GCL] is Gnu Common Lisp.
+[GCL](http://www.gnu.org/software/gcl/) is Gnu Common Lisp.
 
 GCL is a Common Lisp currently compliant with the CLtL1 standard. Lisp compilation produces native code through the intermediary of the system's C compiler, from which GCL derives efficient performance and facile portability. Currently uses TCL/Tk as GUI.
-(from http://savannah.gnu.org/projects/gcl)
+(from <http://savannah.gnu.org/projects/gcl>)
 ## See Also
 [Wikipedia:GNU Common Lisp](https://en.wikipedia.org/wiki/GNU_Common_Lisp)

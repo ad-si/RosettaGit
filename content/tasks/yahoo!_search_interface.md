@@ -309,7 +309,7 @@ hWebView.URL = "https://www.yahoo.com"
 End
 ```
 
-'''[http://www.cogier.com/gambas/Yahoo!%20search%20interface.png Click here to see output (I have typed 'rosettacode' in the search box)]'''
+'''[Click here to see output (I have typed 'rosettacode' in the search box)](http://www.cogier.com/gambas/Yahoo!%20search%20interface.png)'''
 
 
 ## GUISS
@@ -493,8 +493,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 Sample Output (truncated):
 ```txt

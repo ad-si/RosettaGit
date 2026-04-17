@@ -153,7 +153,7 @@ Tour:
 ###  Extra Credit
 
 
-The Holy_Knight program can immediately be used to tackle "more interesting" problems, such as those from [http://www.archimedes-lab.org/knight_tour.html New Knight's Tour Puzzles and Graphs]. Here is one sample solution:
+The Holy_Knight program can immediately be used to tackle "more interesting" problems, such as those from [New Knight's Tour Puzzles and Graphs](http://www.archimedes-lab.org/knight_tour.html). Here is one sample solution:
 
 
 ```txt

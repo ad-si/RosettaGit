@@ -101,11 +101,11 @@ to run the languages' example in the [[Hello world/Text]] task.
 
 ## ALGOL 68
 
-For information on installing and using algol68g, read [http://jmvdveer.home.xs4all.nl/algol68g.pdf Learning ALGOL 68 Genie] by Marcel van der Veer.
+For information on installing and using algol68g, read [Learning ALGOL 68 Genie](http://jmvdveer.home.xs4all.nl/algol68g.pdf) by Marcel van der Veer.
 
 While algol68g is available for Mac OS X, this example currently does not provide instructions on running the "Hello, World" program on OS X.
 
-1. [http://jmvdveer.home.xs4all.nl Download] algol68g.
+1. [Download](http://jmvdveer.home.xs4all.nl) algol68g.
 
 2. Install algol68g on Linux, or unzip it to a convenient location on Windows.
 
@@ -166,14 +166,14 @@ iAdrMessage: .int szMessage
 
 ## AutoHotkey
 
-The [http://ahkscript.org/docs/Tutorial.htm Tutorial and Overview], which is part of the [http://ahkscript.org/docs/AutoHotkey.htm AutoHotkey Documentation],
+The [Tutorial and Overview](http://ahkscript.org/docs/Tutorial.htm), which is part of the [AutoHotkey Documentation](http://ahkscript.org/docs/AutoHotkey.htm),
 covers the basics of AutoHotkey.
 The documentation is available online and is included as a .chm help file
 with installation. Installation and "Hello World" are summarized here.
 
-1) [http://ahkscript.org/download/ahk-install.exe Download] and install AutoHotkey.
+1) [Download](http://ahkscript.org/download/ahk-install.exe) and install AutoHotkey.
 
-2) Download and install the [http://fincs.ahk4.net/scite4ahk/ SciTE4AutoHotkey] editor (recommended), or use your favorite [[Editor|texteditor]].
+2) Download and install the [SciTE4AutoHotkey](http://fincs.ahk4.net/scite4ahk/) editor (recommended), or use your favorite [[Editor|texteditor]].
 
 3) Open the text editor and type the following:
 ```AutoHotkey
@@ -209,11 +209,11 @@ Or put code to file and load it from file.
 
 Select one of the [[:Category:AWK Implementations|awk-implementations]] to download.
 
-E.g. [http://gnuwin32.sourceforge.net/packages.html gnuwin32.sourceforge.net] provides gawk, mawk and nawk.
+E.g. [gnuwin32.sourceforge.net](http://gnuwin32.sourceforge.net/packages.html) provides gawk, mawk and nawk.
 
-The most current gawk is at [http://ftp.gnu.org/gnu/gawk gnu.org], but only as source.
+The most current gawk is at [gnu.org](http://ftp.gnu.org/gnu/gawk), but only as source.
 
-To get a ready-made executable, look at [http://code.google.com/p/gnu-on-windows/downloads/list code.google.com] - gawk v4.1.0 currently.
+To get a ready-made executable, look at [code.google.com](http://code.google.com/p/gnu-on-windows/downloads/list) - gawk v4.1.0 currently.
 
 Download, extract the executable file and "install" it.
 
@@ -262,7 +262,7 @@ BEGIN {
 
 To edit awk-scripts use a [[Editor|texteditor]].
 
-Now, look at some example-programs from category [http://rosettacode.org/wiki/Category:AWK AWK], for example: [[Read a file line by line#AWK|Read a file line by line]]
+Now, look at some example-programs from category [AWK](http://rosettacode.org/wiki/Category:AWK), for example: [[Read a file line by line#AWK|Read a file line by line]]
 
 
 ## Axe
@@ -270,7 +270,7 @@ Now, look at some example-programs from category [http://rosettacode.org/wiki/Ca
 
 Besides the built-in program editor on the TI-83/84, Axe requires a compiler app to be installed on the calculator. This is for development only, and is not required on user's calculators.
 
-To install Axe, [http://www.ticalc.org/archives/files/fileinfo/456/45659.html download the latest version] and transfer it to the calculator.
+To install Axe, [download the latest version](http://www.ticalc.org/archives/files/fileinfo/456/45659.html) and transfer it to the calculator.
 
 Next, follow the instructions below in the [[#TI-83_BASIC|TI-83 BASIC]] section to create a sample program named MYPROGRM. The contents of the program should be:
 
@@ -292,7 +292,7 @@ Go to Compile, select MYPROGRM, and press Enter. Your program should compile wit
 ## BASIC256
 
 <h3>Installation</h3>
-Download BASIC256 here: [http://sourceforge.net/projects/kidbasic/ http://sourceforge.net/projects/kidbasic/]
+Download BASIC256 here: [http://sourceforge.net/projects/kidbasic/](http://sourceforge.net/projects/kidbasic/)
 
 <h3>Interface</h3>
 BASIC256 is an Integrated Development Environment (IDE). The code editor, the text output section, and the graphics output section are displayed at the same time.
@@ -325,7 +325,7 @@ Press F1 or click the ''Help'' menu for language help/documentations.
 
 ## Befunge
 
-Befunge is a two-dimensional fungeoidal (in fact, the original fungeoid) esoteric programming language invented in 1993 by Chris Pressey with the goal of being as difficult to compile as possible. A Befunge program consists of a two-dimensional playfield of fixed size. The playfield is initially loaded with the instructions of the program. It also doubles as an updateable storage unit. Execution proceeds by the means of a program counter (-93) or instruction pointer (-98). The instruction pointer begins at a set location (the upper-left corner of the playfield) and is initially travelling in a set direction (right). As it encounters instructions, they are executed. The instructions may have an effect on the instruction pointer's direction and position (-98 only). Instructions may also affect the contents of a stack. See [http://esolangs.org/wiki/Befunge Befunge on Esolang] for more information and examples.
+Befunge is a two-dimensional fungeoidal (in fact, the original fungeoid) esoteric programming language invented in 1993 by Chris Pressey with the goal of being as difficult to compile as possible. A Befunge program consists of a two-dimensional playfield of fixed size. The playfield is initially loaded with the instructions of the program. It also doubles as an updateable storage unit. Execution proceeds by the means of a program counter (-93) or instruction pointer (-98). The instruction pointer begins at a set location (the upper-left corner of the playfield) and is initially travelling in a set direction (right). As it encounters instructions, they are executed. The instructions may have an effect on the instruction pointer's direction and position (-98 only). Instructions may also affect the contents of a stack. See [Befunge on Esolang](http://esolangs.org/wiki/Befunge) for more information and examples.
 
 To start, you will need a Befunge interpreter. You can find one online, or download one.
 
@@ -452,7 +452,7 @@ C# is an ECMA-standardized language with open-source implementations, though dev
 ### C# on Windows
 
 
-Download the [https://www.visualstudio.com/vs/community/ Visual Studio Community Edition], which is free for personal use.  This is a standard Windows click-through installer.
+Download the [Visual Studio Community Edition](https://www.visualstudio.com/vs/community/), which is free for personal use.  This is a standard Windows click-through installer.
 
 Once installed (and after a restart), open Visual Studio.
 
@@ -472,7 +472,7 @@ Press the "Start" button or hit F5 to compile and run.
 ### C# on iOS
 
 
-The [http://continuous.codes/ Continuous] App allows one to write, compile, and run C# code on an iOS device (iPad Pro recommended).
+The [Continuous](http://continuous.codes/) App allows one to write, compile, and run C# code on an iOS device (iPad Pro recommended).
 
 
 ### C# on Linux
@@ -484,7 +484,7 @@ The [http://continuous.codes/ Continuous] App allows one to write, compile, and 
 
 Mono is the oldest effort to bring C# to Linux.
 
-Install the mono-complete package.  Installation instructions are [http://www.mono-project.com/docs/getting-started/install/linux/ here].
+Install the mono-complete package.  Installation instructions are [here](http://www.mono-project.com/docs/getting-started/install/linux/).
 
 Use the text editor or IDE of your choice to enter the Hello World program, saving it as Hello.cs.
 
@@ -502,9 +502,9 @@ $ ./hello.exe
 
 .NET Core is Microsoft's open-source implementation of C# and also part of the .NET libraries.
 
-Microsoft's [https://www.microsoft.com/net/core#linuxredhat installation instructions for Linux] walk through installing .NET Core on a Linux system and also compiling and running a simple "Hello, World!" console application.
+Microsoft's [installation instructions for Linux](https://www.microsoft.com/net/core#linuxredhat) walk through installing .NET Core on a Linux system and also compiling and running a simple "Hello, World!" console application.
 
-It does not come with an IDE, but consider [https://code.visualstudio.com/ Visual Studio Code.]
+It does not come with an IDE, but consider [Visual Studio Code.](https://code.visualstudio.com/)
 
 
 ### C# on macOS
@@ -514,7 +514,7 @@ It does not come with an IDE, but consider [https://code.visualstudio.com/ Visua
 ### =Xamarin Studio=
 
 
-Xamarin Studio is an IDE combined with Mono as well as cross-platform development tools.  [https://developer.xamarin.com/guides/cross-platform/xamarin-studio/ Installation instructions are here.]
+Xamarin Studio is an IDE combined with Mono as well as cross-platform development tools.  [Installation instructions are here.](https://developer.xamarin.com/guides/cross-platform/xamarin-studio/)
 
 
 ### =.NET Core=
@@ -522,16 +522,16 @@ Xamarin Studio is an IDE combined with Mono as well as cross-platform developmen
 
 .NET Core is Microsoft's open-source implementation of C# and also part of the .NET libraries.
 
-Microsoft's [https://www.microsoft.com/net/core#macos installation instructions for macOS] walk through installing .NET Core on macOS and also compiling and running a simple "Hello, World!" console application.
+Microsoft's [installation instructions for macOS](https://www.microsoft.com/net/core#macos) walk through installing .NET Core on macOS and also compiling and running a simple "Hello, World!" console application.
 
-It does not come with an IDE, but consider [https://code.visualstudio.com/ Visual Studio Code.]
+It does not come with an IDE, but consider [Visual Studio Code.](https://code.visualstudio.com/)
 
 
 
 
 ## Clojure
 
-# Install [http://leiningen.org/#install Leiningen].
+# Install [Leiningen](http://leiningen.org/#install).
 # Generate a hello world app: <lang>$ lein new app my-hello
 ```
 
@@ -544,7 +544,7 @@ Hello, World!
 # You don't have to edit files.  Run the REPL (interactive shell) to experiment: <lang>$ lein repl
 ```
 
-# Suggested reading: [http://dev.clojure.org/display/doc/Getting+Started Clojure's Getting Started Guide] and [http://www.braveclojure.com/ Clojure for the Brave and True]
+# Suggested reading: [Clojure's Getting Started Guide](http://dev.clojure.org/display/doc/Getting+Started) and [Clojure for the Brave and True](http://www.braveclojure.com/)
 
 
 ## COBOL
@@ -584,7 +584,7 @@ Common Lisp is a dynamically-typed, garbage-collected language whose features ha
 
 ### =Choosing an Implementation=
 
-As a standardized language, ANSI Common Lisp has multiple implementations. [http://lispworks.com/ LispWorks] and [http://franz.com/products/allegrocl/ AllegroCL] are well-known commercial implementations, while [http://www.cliki.net/Common+Lisp+Implementation the list of free implementations] is extensive. Among the free implementations, [http://www.sbcl.org/ SBCL] is the most popular. It includes a native compiler that generates fast code, supports threads, and has a C foreign function interface. Common Lisp programs compiled with SBCL are generally competitive with Java programs.
+As a standardized language, ANSI Common Lisp has multiple implementations. [LispWorks](http://lispworks.com/) and [AllegroCL](http://franz.com/products/allegrocl/) are well-known commercial implementations, while [the list of free implementations](http://www.cliki.net/Common+Lisp+Implementation) is extensive. Among the free implementations, [SBCL](http://www.sbcl.org/) is the most popular. It includes a native compiler that generates fast code, supports threads, and has a C foreign function interface. Common Lisp programs compiled with SBCL are generally competitive with Java programs.
 
 ### =Choosing an Editor=
 
@@ -618,11 +618,11 @@ SBCL has the <code>save-lisp-and-die</code> function, which saves whatever has b
 
 ## D
 
-There is detailed information in [http://ddili.org/ders/d.en/hello_world.html The Hello World Program chapter] of [http://ddili.org/ders/d.en/index.html the online book Programming in D].
+There is detailed information in [The Hello World Program chapter](http://ddili.org/ders/d.en/hello_world.html) of [the online book Programming in D](http://ddili.org/ders/d.en/index.html).
 
 Here is a summary:
 
-1) Download and install the latest dmd at [http://www.digitalmars.com/d/download.html dmd download page].
+1) Download and install the latest dmd at [dmd download page](http://www.digitalmars.com/d/download.html).
 
 2) Open your favorite [[Editor|texteditor]], write the following source code
 
@@ -673,7 +673,7 @@ Hello world!
 ###  Requirements and installation
 
 You need a computer running an up-to-date browser, such as FireFox, Chrome, Opera, ...
-No installation needed. To run EchoLisp, follow this link : [http://www.echolalie.org/echolisp EchoLisp].
+No installation needed. To run EchoLisp, follow this link : [EchoLisp](http://www.echolalie.org/echolisp).
 
 ###  Hello World
 
@@ -730,7 +730,7 @@ Functions are provided to save data, functions definitions, in the browser local
 
 If the year is 1950, first write to Dr Wilkes at St John's College asking him whether you can submit a job to the electronic brain. Assuming he is agreeable, copy out your program—legibly!—and take it round to the keypunch operator at the Mathematical Laboratory.
 
-If it is the present day, Nishio Hirokazu's browser-based simulator allows you to run EDSAC programs without installing anything. Navigate to [http://nhiro.org/learn_language/repos/EDSAC-on-browser/index.html this page] and click the <tt>Source</tt> tab. Clear the text area (it will contain a 'Welcome' program) and type or paste your program. When you have finished, click the <tt>Machine</tt> tab and then the button marked <tt>Load source</tt>. You should see your program, stripped of comments, newlines, and whitespace, appear in the <tt>Input tape</tt>. Click <tt>Run</tt>. The machine will first execute the Initial Orders, loading your program into storage, and then run your program. The storage tanks are displayed down the left-hand side of the window: clicking on any tank allows you to watch that tank in a larger size.
+If it is the present day, Nishio Hirokazu's browser-based simulator allows you to run EDSAC programs without installing anything. Navigate to [this page](http://nhiro.org/learn_language/repos/EDSAC-on-browser/index.html) and click the <tt>Source</tt> tab. Clear the text area (it will contain a 'Welcome' program) and type or paste your program. When you have finished, click the <tt>Machine</tt> tab and then the button marked <tt>Load source</tt>. You should see your program, stripped of comments, newlines, and whitespace, appear in the <tt>Input tape</tt>. Click <tt>Run</tt>. The machine will first execute the Initial Orders, loading your program into storage, and then run your program. The storage tanks are displayed down the left-hand side of the window: clicking on any tank allows you to watch that tank in a larger size.
 
 
 ## Eiffel
@@ -795,9 +795,9 @@ Windows, Linux, Mac, and others.
 
 ###  Supporting Notes
 
-See [[http://www.eiffel.org| Eiffel-org]] for more information.
+See [Eiffel-org](http://www.eiffel.org|) for more information.
 <p>An example of "Hello World!" is on the home page. You can try Eiffel by clicking the "Play with Eiffel" button on the "Hello World!" example on the home page.</p>
-<p>You can find plenty of YouTube videos on the Eiffel Software [[https://www.eiffel.org/resources/videos| Eiffel Videos]] channel or [[http://www.youtube.com/user/ljr1981yt/videos| Eiffel Videos]] channel.</p>
+<p>You can find plenty of YouTube videos on the Eiffel Software [Eiffel Videos](https://www.eiffel.org/resources/videos|) channel or [Eiffel Videos](http://www.youtube.com/user/ljr1981yt/videos|) channel.</p>
 
 
 ## Erlang
@@ -955,17 +955,17 @@ gfortran hello.f90 -o hello.x
 Macintosh OS X v10.4 or newer
 
 === Download FutureBasic (FB) ===
-FutureBasic is freeware and is commonly called simply "FB" by its developers. The lastest version of FutureBasic can be downloaded from: http://4toc.com/fb/index.htm. The FB site also contains installation instructions, example files, older versions, and other helpful information.
+FutureBasic is freeware and is commonly called simply "FB" by its developers. The lastest version of FutureBasic can be downloaded from: <http://4toc.com/fb/index.htm>. The FB site also contains installation instructions, example files, older versions, and other helpful information.
 
 
 ###  FB Support Group
 
-An active list group of developers who are knowledgable, friendly and helpful to both seasoned and newcomer coders can be found at: http://freegroups.net/groups/futurebasic/. Answers to any of a host of questions about FB are answered quickly by this small, but dedicated group of developers.
+An active list group of developers who are knowledgable, friendly and helpful to both seasoned and newcomer coders can be found at: <http://freegroups.net/groups/futurebasic/>. Answers to any of a host of questions about FB are answered quickly by this small, but dedicated group of developers.
 
 
 ###  FB on Wikipedia
 
-The FB Wikipedia page describing FB's journey from one of earliest commercial Macintosh compilers to its current freeware status can be visited at: https://en.wikipedia.org/wiki/FutureBASIC. This page may not have the latest information about FB, so the authoritative source for the latest information is the FB web  site and list group listed above.
+The FB Wikipedia page describing FB's journey from one of earliest commercial Macintosh compilers to its current freeware status can be visited at: <https://en.wikipedia.org/wiki/FutureBASIC>. This page may not have the latest information about FB, so the authoritative source for the latest information is the FB web  site and list group listed above.
 
 
 ###  Your First Program
@@ -997,9 +997,9 @@ Enjoy your first program!
 ## Go
 
 Currently supported platforms are FreeBSD, Linux, Mac OS X, and Windows.
-From the landing page http://golang.org click the blue box "Download Go"
+From the landing page <http://golang.org> click the blue box "Download Go"
 (under the big gopher drawing.)
-This takes you to [http://golang.org/doc/install Getting Started],
+This takes you to [Getting Started](http://golang.org/doc/install),
 a fairly concise page that is very close to satisfying this task.
 
 The first section, Download, has a link to a downloads page
@@ -1064,7 +1064,7 @@ This covers setting GOPATH, which is essential to standard workflow with Go.
 ## Groovy
 
 First you need to have a JRE or better a JDK 1.5+ installed on your machine.
-Install Groovy following the instructions at: [http://groovy-lang.org/download.html Groovy Installation]
+Install Groovy following the instructions at: [Groovy Installation](http://groovy-lang.org/download.html)
 
 In your repository
 Just type: (no class, no parentheses, no semicolon, no import)
@@ -1123,7 +1123,7 @@ Hello, World!
 ===Non-Linux operating systems===
 
 If you are using another operating system (e. g. Mac OS X),
-the easiest way to get Haskell is to install the [http://www.haskell.org/platform/ Haskell Platform].
+the easiest way to get Haskell is to install the [Haskell Platform](http://www.haskell.org/platform/).
 
 
 ## Java
@@ -1191,7 +1191,7 @@ Type in:
 
 ## jq
 
-The official jq homepage at http://stedolan.github.io/jq has an introduction
+The official jq homepage at <http://stedolan.github.io/jq> has an introduction
 and pointers to instructions on downloading jq; a tutorial; a manual;
 an online jq interpreter called jqplay; and so on.
 
@@ -1289,7 +1289,7 @@ Any text editor can be used for JSON and jq programs.
 An editor such as Emacs or Aquamacs is particularly helpful as these support
 shell windows.  In addition, most distributions come with "js-mode" which can be
 used for editing JSON, and there is also a "json-mode" package available at
-https://github.com/joshwnj/json-mode.
+<https://github.com/joshwnj/json-mode>.
 
 
 ### A note on jq programming style
@@ -1331,9 +1331,9 @@ def binary_digits:
 
 In what follows I'm going to assume that you're using an x64 version of Windows.
 
-First you need to download and install the Java SE Development Kit 8 from Oracle at http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html.
+First you need to download and install the Java SE Development Kit 8 from Oracle at <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>.
 
-Secondly you need to download, unzip and install the Kotlin command line compiler version 1.1 from GitHub at https://github.com/JetBrains/kotlin/releases/tag/v1.1.
+Secondly you need to download, unzip and install the Kotlin command line compiler version 1.1 from GitHub at <https://github.com/JetBrains/kotlin/releases/tag/v1.1>.
 
 Next open up a Command Prompt session in Windows, type the following at the command line and press the Enter key:
 
@@ -1380,10 +1380,10 @@ Hello, World!
 
 ## Locomotive Basic
 
-Either use a browser-based CPC emulator (http://www.cpcbox.com/) or download
+Either use a browser-based CPC emulator (<http://www.cpcbox.com/>) or download
 a binary for your platform.
-A list of emulators is available at http://cpcwiki.eu/index.php/Emulators.
-JavaCPC (http://sourceforge.net/projects/javacpc/) or WinAPE (http://www.winape.net/) are particularly recommended.
+A list of emulators is available at <http://cpcwiki.eu/index.php/Emulators>.
+JavaCPC (<http://sourceforge.net/projects/javacpc/>) or WinAPE (<http://www.winape.net/>) are particularly recommended.
 An advantage of native emulators is that they tend to have copy-and-paste functionality, so you can edit programs in external [[Editor|texteditor]]s.
 
 In the emulator, type
@@ -1398,7 +1398,7 @@ run
 
 ## Lua
 
-Without installing anything, lua-programs can be run online at the [http://www.lua.org/demo.html live demo].
+Without installing anything, lua-programs can be run online at the [live demo](http://www.lua.org/demo.html).
 
 It includes some demo-programs, such as
 
@@ -1407,7 +1407,7 @@ io.write("Hello world, from ",_VERSION,"!\n")
 ```
 
 
-For installing Lua, there are extensive instructions for [http://www.lua.org/start.html getting started] on Linux, MacOS and Windows.
+For installing Lua, there are extensive instructions for [getting started](http://www.lua.org/start.html) on Linux, MacOS and Windows.
 
 
 ## M2000 Interpreter
@@ -1418,12 +1418,12 @@ M2000 Interpreter run on M2000 Environment, a Windows 32bit application. Interpr
 
 We have to download run-time for Access 2007.
 
-We can use [https://github.com/M2000Interpreter/Version9/blob/master/m2000.cer] as a certificate as Trusted Root Certification Authorities, Or we have to block Defender or something like this, because they are suspicious for virus, and they predict whatever they figure from the code.
+We can use <https://github.com/M2000Interpreter/Version9/blob/master/m2000.cer> as a certificate as Trusted Root Certification Authorities, Or we have to block Defender or something like this, because they are suspicious for virus, and they predict whatever they figure from the code.
 
-So now we can install the code downloading the setup executable from this link: [https://github.com/M2000Interpreter/Version9/blob/master/M2000language.exe]
+So now we can install the code downloading the setup executable from this link: <https://github.com/M2000Interpreter/Version9/blob/master/M2000language.exe>
 
 This is the Wiki page on github
-[https://github.com/M2000Interpreter/Version9/wiki/New-Installation-for-Binaries-(from-Revision-46,-Version-9.0)]
+<https://github.com/M2000Interpreter/Version9/wiki/New-Installation-for-Binaries-(from-Revision-46,-Version-9.0)>
 
 '''Starting M2000 Environment'''
 
@@ -1522,7 +1522,7 @@ Example:
 Congratulations, you executed your first line of code!
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-Buy & Install the program from http://www.wolfram.com/mathematica/,
+Buy & Install the program from <http://www.wolfram.com/mathematica/>,
 e.g. "Home - For nonprofessional use by hobbyists and enthusiasts" --> €295
 
 Start Mathematica either :
@@ -1549,7 +1549,7 @@ print "Hello World!"
 ## Monte
 
 
-Follow the directions at http://monte.readthedocs.org/en/latest/intro.html#where-do-i-start to set up your Monte environment.
+Follow the directions at <http://monte.readthedocs.org/en/latest/intro.html#where-do-i-start> to set up your Monte environment.
 
 Then
 
@@ -1571,7 +1571,7 @@ sayHello()
 ## MontiLang
 
 
-Download MontiLang binaries for windows or linux from http://montilang.ml, or from the releases page of https://github.com/lduck11007/MontiLang. Alternatively, you can easily build from source for easy customization with the instructions on Github.
+Download MontiLang binaries for windows or linux from <http://montilang.ml>, or from the releases page of <https://github.com/lduck11007/MontiLang>. Alternatively, you can easily build from source for easy customization with the instructions on Github.
 
 To run MontiLang, open a shell by typing
 ```MontiLang
@@ -1594,7 +1594,7 @@ Here is a simple Hello World program in MontiLang
 
 ## Nemerle
 
-# Download Nemerle from [http://www.nemerle.org Nemerle.org]
+# Download Nemerle from [Nemerle.org](http://www.nemerle.org)
 
 
 ### Nemerle on Windows
@@ -1632,11 +1632,11 @@ and be dazzled by the output:
 
 ## Nim
 
-A comprehensive introduction to the Nim language can be found at [http://howistart.org/posts/nim/1/index.html How I Start: Nim].
+A comprehensive introduction to the Nim language can be found at [How I Start: Nim](http://howistart.org/posts/nim/1/index.html).
 
 A brief summary of installing Nim and building a simple ''Hello world!'' program is as follows:
 
-1) Install Nim by selecting the appropriate platform at [https://nim-lang.org/install.html Install Nim] and follow the instructions.
+1) Install Nim by selecting the appropriate platform at [Install Nim](https://nim-lang.org/install.html) and follow the instructions.
 
 2) Open a text editor and create a file named ''hello.nim'' with the following contents:
 
@@ -1698,7 +1698,7 @@ Run as:
 ## Oforth
 
 
-Select one of the Oforth implementation to download : http://www.oforth.com
+Select one of the Oforth implementation to download : <http://www.oforth.com>
 
 Copy oforth directory at a location of your choice.
 
@@ -1734,7 +1734,7 @@ oforth --P"\"Hello world!\n\" println"
 
 Prerequisites: Perl
 
-Download: https://bitbucket.org/parelang/pare/downloads/pare
+Download: <https://bitbucket.org/parelang/pare/downloads/pare>
 
 Create file 'hello.l':
 ```Pare
@@ -1751,7 +1751,7 @@ perl pare hello.l>
 
 ## PARI/GP
 
-PARI's official site is http://pari.math.u-bordeaux.fr/ .
+PARI's official site is <http://pari.math.u-bordeaux.fr/> .
 
 
 ### PARI/GP on Windows
@@ -1765,15 +1765,15 @@ Go to the download page of the PARI/GP website and download one of the following
 ### PARI/GP on the Mac
 
 Install the latest available gp version on
-* http://www.darwinports.info/ports/math/pari.html
+* <http://www.darwinports.info/ports/math/pari.html>
 or
-* http://www.finkports.info/ports/sci/pari-gp.html
+* <http://www.finkports.info/ports/sci/pari-gp.html>
 
 
 ### PARI/GP on Linux
 
-Install PARI/GP with an appropriate package manager: [http://rpmfind.net/linux/rpm2html/search.php?query=pari-gp RPM], [http://joysofprogramming.com/install-pari-gp-ubuntu/ apt], etc.
-Alternately, [http://math.crg4.com/software.html#pari install it from source].
+Install PARI/GP with an appropriate package manager: [RPM](http://rpmfind.net/linux/rpm2html/search.php?query=pari-gp), [apt](http://joysofprogramming.com/install-pari-gp-ubuntu/), etc.
+Alternately, [install it from source](http://math.crg4.com/software.html#pari).
 
 
 ### Your first program
@@ -1790,7 +1790,7 @@ The program executes, displaying "Hello, world!".
 
 ## Perl
 
-See [http://www.perl.org/get.html Download Perl Distributions]
+See [Download Perl Distributions](http://www.perl.org/get.html)
 
 ```perl
 =head1 Obtaining perl
@@ -1877,7 +1877,7 @@ For ease of installation, there are MSI files for Windows, Homebrew packages for
 
 At least until Rakudo makes it out of beta, it is probably best to build from source.
 
-All of these options are detailed on the Rakuko.org website: [http://rakudo.org/how-to-get-rakudo/| http://rakudo.org/how-to-get-rakudo/ ].
+All of these options are detailed on the Rakuko.org website: [http://rakudo.org/how-to-get-rakudo/](http://rakudo.org/how-to-get-rakudo/|).
 
 If you do run into problems installing Rakudo, (or any perl 6 compiler, or have any Perl6 questions,) the #perl6 IRC channel on freenode.net nearly always has people willing to help out.
 
@@ -1908,9 +1908,9 @@ Note that the file name may have any extension or none at all.
 
 Installing and running Phix is as just about as straightforward as it could possibly be.
 
-Download Phix from http://phix.x10.mx/download.php (16MB)
+Download Phix from <http://phix.x10.mx/download.php> (16MB)
 
-Full documentation is available at http://phix.x10.mx/docs/html/phix.htm as well as being included in the
+Full documentation is available at <http://phix.x10.mx/docs/html/phix.htm> as well as being included in the
 download as a chm file, along with all the files that was originally generated from.
 
 '''Windows'''
@@ -1964,7 +1964,7 @@ The output will appear in the command prompt/terminal.
 
 PHP can be run either from the command line or via a web server such as Apache.
 If you are running Mac or Linux, PHP is likely already installed.  If you are on
-Windows, you can set up your own web server locally by using XAMPP (https://www.apachefriends.org/index.html).
+Windows, you can set up your own web server locally by using XAMPP (<https://www.apachefriends.org/index.html>).
 
 Create the file, hello.php, in your htdocs or public_html directory.
 
@@ -1978,7 +1978,7 @@ echo 'Hello, world!';
 
 
 If Apache is running on your local computer and you saved the file in htdocs, open a
-web browser and go to http://localhost/hello.php.  You should see the phrase in a basic
+web browser and go to <http://localhost/hello.php>.  You should see the phrase in a basic
 font displayed in the window.
 
 From the command line, simply type
@@ -2016,7 +2016,7 @@ Fetch and unpack the tarball
 $ wget software-lab.de/picoLisp.tgz && tar xfz picoLisp.tgz
 ```
 
-then build the executable (see http://software-lab.de/INSTALL file for 64-bit systems)
+then build the executable (see <http://software-lab.de/INSTALL> file for 64-bit systems)
 
 ```txt
 $ cd picoLisp
@@ -2042,7 +2042,7 @@ $ ersatz/pil
 : (prinl "Goodbye, World!")
 ```
 
-(see also http://software-lab.de/ersatz/README).
+(see also <http://software-lab.de/ersatz/README>).
 
 If no Java is available, you can compile "software-lab.de/miniPicoLisp.tgz" and run it
 
@@ -2111,7 +2111,7 @@ To learn the basic syntaxes and details of PowerShell, Open the PowerShell ISE, 
 
 ## Python
 
-Pythons official home site is [http://www.python.org/ http://www.python.org/].
+Pythons official home site is [http://www.python.org/](http://www.python.org/).
 It will point you to everything Python.
 
 
@@ -2179,10 +2179,10 @@ or adding a shebang at the first line of the script:
 
 ==={{libheader|VPython}}===
 # install Python, as above
-# install VPython: at [http://vpython.org/index.html vpython.org], select the download for your system:
-#* [http://vpython.org/contents/download_windows.html Windows]
-#* [http://vpython.org/contents/download_linux.html Linux]
-#* [http://vpython.org/contents/download_mac.html Mac]
+# install VPython: at [vpython.org](http://vpython.org/index.html), select the download for your system:
+#* [Windows](http://vpython.org/contents/download_windows.html)
+#* [Linux](http://vpython.org/contents/download_linux.html)
+#* [Mac](http://vpython.org/contents/download_mac.html)
 # To edit/run programs from the IDE, instead of IDLE use VIDLE (it loads the vpython-extensions, and helptexts)
 #* Look at some example programs -- for example, bounce.py
 #* (on Windows, they should be located at C:\Python27\Lib\site-packages\visual\examples)
@@ -2194,13 +2194,13 @@ or adding a shebang at the first line of the script:
 
 ### Requirements
 
-* [http://cobra-language.com/downloads/ Cobra]
+* [Cobra](http://cobra-language.com/downloads/)
 * All Cobra requirements
 
 
 ### Download
 
-Download the latest version of Ra from [https://github.com/oahmad04/ra/releases GitHub]
+Download the latest version of Ra from [GitHub](https://github.com/oahmad04/ra/releases)
 
 
 ### Installation for Windows
@@ -2254,9 +2254,9 @@ ra HelloWorld.racode
 
 ### Links
 
-[https://github.com/oahmad04/ra/blob/master/README.md Installation instructions]
+[Installation instructions](https://github.com/oahmad04/ra/blob/master/README.md)
 
-[http://oahmad04.github.io/ra/learn.html Learn Ra]
+[Learn Ra](http://oahmad04.github.io/ra/learn.html)
 
 
 ## Racket
@@ -2264,7 +2264,7 @@ ra HelloWorld.racode
 
 ### Installation
 
-Install Racket from [http://racket-lang.org/ the Racket home page].
+Install Racket from [the Racket home page](http://racket-lang.org/).
 
 On Windows and OS X when you have a 64 bit platform, you can install either the 64 bit Racket or the 32 bit one, the installer page will not try to detect this, since both options can be used.  The choice will usually not make much difference; a quick summary is that with the 64 bit version you can use much more space (in 32 bit mode there's a 4gb limit), but things are going to run a bit slower due to Racket shuffling more memory around.  (This is not Racket-specific, of course.)
 
@@ -2278,7 +2278,7 @@ This choice makes it much easier to try Racket quickly -- you can just remove th
 
 Racket comes with DrRacket, an IDE that is specifically designed to make Racket work easy (and implemented in Racket).
 However, you can use your own [[Editor|text editor]] if you're used to one.
-See the [http://docs.racket-lang.org/guide/other-editors.html Racket Guide] section
+See the [Racket Guide](http://docs.racket-lang.org/guide/other-editors.html) section
 on working with different editors, and running Racket from the command line.
 
 As with Common Lisp, EMACS is a good editor to use for Racket code. Its inferior-lisp mode allows you to evaluate Racket expressions from within EMACS, however it doesn't provide debugging, symbol lookup, or other features that are available when editing Common Lisp code with EMACS.
@@ -2286,7 +2286,7 @@ As with Common Lisp, EMACS is a good editor to use for Racket code. Its inferior
 
 ### Learning Racket
 
-One of Racket's main points is coming with thorough documentation, which you get with the installation and but you can also view it [http://docs.racket-lang.org/ on-line].  Specifically, pay attention to the [http://docs.racket-lang.org/getting-started/ Getting Started] page that will help with a few convenient entry points.
+One of Racket's main points is coming with thorough documentation, which you get with the installation and but you can also view it [on-line](http://docs.racket-lang.org/).  Specifically, pay attention to the [Getting Started](http://docs.racket-lang.org/getting-started/) page that will help with a few convenient entry points.
 
 ### Hello World
 
@@ -2427,19 +2427,19 @@ func sayHello
 
 ### Note
 
-This language runs exclusively on MegaZeux. If you are unfamilar with how to use MegaZeux, I would suggest reading into the [http://vault.digitalmzx.net/help.php online manual] provided on their website. Alternatively, MegaZeux has the same manual built in to the program itself and can be accessed any time by pressing F1.
+This language runs exclusively on MegaZeux. If you are unfamilar with how to use MegaZeux, I would suggest reading into the [online manual](http://vault.digitalmzx.net/help.php) provided on their website. Alternatively, MegaZeux has the same manual built in to the program itself and can be accessed any time by pressing F1.
 
 This "Hello World" tutorial will only cover the very basics of the user interface and Robotic coding.
 
 
 ### Short Summary
 
-Robotic is a programming language used in the game creation system titled [http://www.digitalmzx.net/wiki/index.php?title=MegaZeux MegaZeux]. It provides simple things like counters and arithmetic expressions, as well as more complex functions like file reading/writing. A short summary of this language can be found [http://www.digitalmzx.net/wiki/index.php?title=Robotic here].
+Robotic is a programming language used in the game creation system titled [MegaZeux](http://www.digitalmzx.net/wiki/index.php?title=MegaZeux). It provides simple things like counters and arithmetic expressions, as well as more complex functions like file reading/writing. A short summary of this language can be found [here](http://www.digitalmzx.net/wiki/index.php?title=Robotic).
 
 
 ### Download
 
-To get started in programming with Robotic, you must [http://vault.digitalmzx.net/ download MegaZeux] first. The top of the page will show symbols corresponding to the OS you want to download it on (currently supports Windows, Ubuntu, Mac OS X, and MS-DOS).
+To get started in programming with Robotic, you must [download MegaZeux](http://vault.digitalmzx.net/) first. The top of the page will show symbols corresponding to the OS you want to download it on (currently supports Windows, Ubuntu, Mac OS X, and MS-DOS).
 
 After downloading the program, make sure to extract the contents of the .zip in a directory of your choosing.
 
@@ -2483,7 +2483,7 @@ After typing the code down, hit ESC and press Alt+T to test it out. If done prop
 
 
 1. Install Ruby
-For windows you can download Ruby from [http://rubyforge.org/frs/?group_id=167] for Linux try [http://www.rpmfind.net.]
+For windows you can download Ruby from <http://rubyforge.org/frs/?group_id=167> for Linux try <http://www.rpmfind.net.>
 
 2. Use your favorite [[Editor|text editor]].
 
@@ -2509,7 +2509,7 @@ Hello World!!
 
 ## Rust
 
-A complete description of how to install the language can be found on the [http://www.rust-lang.org/install.html Install page] of the [http://www.rust-lang.org Rust web site].  However, for the purposes of trying out code examples, use the [http://play.rust-lang.org online REPL] which allows you to enter code, compile it and run it within a single browser window.
+A complete description of how to install the language can be found on the [Install page](http://www.rust-lang.org/install.html) of the [Rust web site](http://www.rust-lang.org).  However, for the purposes of trying out code examples, use the [online REPL](http://play.rust-lang.org) which allows you to enter code, compile it and run it within a single browser window.
 
 
 ```rust
@@ -2522,7 +2522,7 @@ fn main() {
 
 ## Scala
 
-A complete and actual description can be found on the [http://www.scala-lang.org/documentation/getting-started.html Getting started guide] on the [http://www.scala-lang.org/ Scala site].
+A complete and actual description can be found on the [Getting started guide](http://www.scala-lang.org/documentation/getting-started.html) on the [Scala site](http://www.scala-lang.org/).
 
 Run a program using '''Windows PowerShell''':
 
@@ -2535,7 +2535,7 @@ The double quotes have to be escaped.
 
 ## SETL
 
-Get the suitable [http://setl.org/setl/bin/ precompiled executable] for your platform from the [http://setl.org/setl/ SETL Website]. The 'setl' command works in conjunction with 'setlcpp' and 'setltran' so you may want to copy them all over to /usr/bin/ (or equivalent).
+Get the suitable [precompiled executable](http://setl.org/setl/bin/) for your platform from the [SETL Website](http://setl.org/setl/). The 'setl' command works in conjunction with 'setlcpp' and 'setltran' so you may want to copy them all over to /usr/bin/ (or equivalent).
 
 Run in-line commands
 
@@ -2556,7 +2556,7 @@ setl myscript.setl>
 ```
 
 
-Documentation on the setl command can be found [http://setl.org/doc/setl-user.html here] and a paper on the SETL language can be found [https://www.researchgate.net/publication/238739905_An_introduction_to_the_set_theoretical_language_SETL here].
+Documentation on the setl command can be found [here](http://setl.org/doc/setl-user.html) and a paper on the SETL language can be found [here](https://www.researchgate.net/publication/238739905_An_introduction_to_the_set_theoretical_language_SETL).
 
 
 ## SQL PL
@@ -2572,7 +2572,7 @@ In order to make a Hello World! example run in Db2, you need:
 
 The easies way is to install all of this in a Linux environment (Red Hat, Suse, Ubuntu).
 
-You can download the Express-c edition of the most recent Db2 version at: https://www.ibm.com/developerworks/downloads/im/db2express/.
+You can download the Express-c edition of the most recent Db2 version at: <https://www.ibm.com/developerworks/downloads/im/db2express/>.
 
 Once you get the binaries in the server, you can extract them by issuing
 
@@ -2640,7 +2640,7 @@ db2 "select 'Hello World!' from sysibm.sysdummy1"
 ### =Installation=
 
 Currently supported platforms are Linux, Mac OS X, and Windows.
-From the landing page http://pharo-project.org click the "Download" button
+From the landing page <http://pharo-project.org> click the "Download" button
 in the upper right hand corner.
 You should see a new page with options for downloading a ZIP file
 for your operating system. Unzip the downloaded file and open Pharo.
@@ -2681,7 +2681,7 @@ A new Transcript window should open and you should see "Hello world" in the Tran
 ###  Installation
 
 
-smart BASIC is an Apple iOS application for iPhones and iPads. It must be installed from the [https://itunes.apple.com/us/app/smart-basic-programming-language/id541447413?mt=8 Apple App Store].
+smart BASIC is an Apple iOS application for iPhones and iPads. It must be installed from the [Apple App Store](https://itunes.apple.com/us/app/smart-basic-programming-language/id541447413?mt=8).
 
 
 ###  Programming
@@ -2703,13 +2703,13 @@ Standard output is displayed upon running the application. To run your code, pre
 
 <b>Xcode</b> (Optional, but so cool)
 
-Optionally, an amazing feature of Smart BASIC is the ability to write your code in Apple's free Xcode IDE and compile the code to run in a simulator on your Mac computer or on your own iOS devices. The procedure for this is beyond the scope of this entry but details and code can be found in the Forum section titled "BASIC SDK for Xcode". It might sound complicated, but it's actually very easy and only takes a few simple steps to setup. You can download detailed, step-by-step instructions [https://dl.dropboxusercontent.com/u/24473770/Simple%20Procedure%20for%20Adding%20Smart%20BASIC%20to%20Xcode.pdf here].
+Optionally, an amazing feature of Smart BASIC is the ability to write your code in Apple's free Xcode IDE and compile the code to run in a simulator on your Mac computer or on your own iOS devices. The procedure for this is beyond the scope of this entry but details and code can be found in the Forum section titled "BASIC SDK for Xcode". It might sound complicated, but it's actually very easy and only takes a few simple steps to setup. You can download detailed, step-by-step instructions [here](https://dl.dropboxusercontent.com/u/24473770/Simple%20Procedure%20for%20Adding%20Smart%20BASIC%20to%20Xcode.pdf).
 
 
 ###  Documentation
 
 
-smart BASIC has very detailed documentation installed within the application. There is also an excellent (free) PDF manual that may be downloaded directly from [https://www.dropbox.com/sh/zpsvd55g1iyjldj/AABN92ibmwUe8LgM0GCyu8M4a/Smart%20Basic%20Manual%205-7.pdf?dl=0 here] that includes current information from the smart BASIC [http://kibernetik.pro/forum/viewforum.php?f=2 Forum] (When registering at the Support Forum, the anti-spambot password is: "iOS").
+smart BASIC has very detailed documentation installed within the application. There is also an excellent (free) PDF manual that may be downloaded directly from [here](https://www.dropbox.com/sh/zpsvd55g1iyjldj/AABN92ibmwUe8LgM0GCyu8M4a/Smart%20Basic%20Manual%205-7.pdf?dl=0) that includes current information from the smart BASIC [Forum](http://kibernetik.pro/forum/viewforum.php?f=2) (When registering at the Support Forum, the anti-spambot password is: "iOS").
 
 
 ## Swift
@@ -2730,7 +2730,7 @@ Within this window you are able to write code on the left hand side of the windo
 
 ###  Swift Tutorial and Example Playground
 
-Downloading [https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip GuidedTour.playground] from the book "The Swift Programming Language" available for free from [https://itunes.apple.com/book/swift-programming-language/id881256329 Apple book store], can be opened and this has a lot of examples of the basic structures and how to do different stuff in Swift.
+Downloading [GuidedTour.playground](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip) from the book "The Swift Programming Language" available for free from [Apple book store](https://itunes.apple.com/book/swift-programming-language/id881256329), can be opened and this has a lot of examples of the basic structures and how to do different stuff in Swift.
 
 
 ## Tcl
@@ -2819,9 +2819,9 @@ and Eclipse with the appropriate DLTK module (free to use).
 
 For a range of interesting Tcl programs and techniques
 beyond what is here on Rosetta Code,
-check out [http://wiki.tcl.tk/ The Tcler's Wiki].
+check out [The Tcler's Wiki](http://wiki.tcl.tk/).
 
-Documentation for many versions of Tcl is [http://www.tcl.tk/man/ also online],
+Documentation for many versions of Tcl is [also online](http://www.tcl.tk/man/),
 which can be a handy supplement to your system docs.
 
 =={{header|TI-83 Hex Assembly}}==
@@ -2832,7 +2832,7 @@ which can be a handy supplement to your system docs.
 * Start your program with the "AsmPrgm" (0x6dbb) token, which can be found in the Catalog (press the "2nd" key then the "0" key) going down to the 9th entry and pressing "ENTER".
 * Now you need to enter the actual program code: We want to call the PutS system call (also known as B_CALL) with its argument "HL" being a pointer to the string "Hello, World!", then we want to exit. Note that there should be no spaces in the program at all. Newlines are allowed, but only after an even number of hex digits per line (0, 2, 4, ... are OK, but not 1, 3, 5, ...). There is no way to write comments in the program.
 * First, we'll load the memory location of our string to HL, so write "21XXXX". We'll replace "XXXX" with the actual memory location later because we haven't added the data section yet.
-* Next, make the PutS system call by typing "EF0A45". Here "EF" denotes a syscall and "0A45" represents the system call with address 0x450a, or _PUTS. The bytes are reversed because the TI-83 uses a Z80 processor which is little-endian. (You can find all known syscalls here: [http://wikiti.brandonw.net/index.php?title=Category:83Plus:BCALLs:By_Name])
+* Next, make the PutS system call by typing "EF0A45". Here "EF" denotes a syscall and "0A45" represents the system call with address 0x450a, or _PUTS. The bytes are reversed because the TI-83 uses a Z80 processor which is little-endian. (You can find all known syscalls here: <http://wikiti.brandonw.net/index.php?title=Category:83Plus:BCALLs:By_Name>)
 * Next, make the NewLine (0x452e) system call by typing "EF2E45".
 * Next, write an exit instruction in the program by typing "C9".
 * Now, after the "C9", we'll start our data section. Now that we know where we're starting the data we should update our "21XXXX" line above. To get the "XXXX" number, simply count forward in hexadecimal from the beginning starting at 0x9d93, where the "AsmPrgm" token counts as two bytes and every other string of two consecutive hex characters/digits counts as one byte (there should always be an even number of hex characters/digits in the program). If you counted correctly, you should have gotten 0x9d9f, which after reversing the bytes for little-endian representation becomes 9F9D. So replace "XXXX" with "9F9D".
@@ -2910,8 +2910,8 @@ FreeBSD) on a Intel/AMD box (other CPUs have not been tested). You want cores an
 
 I'll use Ubuntu/64 as my example.
 
-Visit http://www.zenkinetic.com/zklDownloads.html and download
-zkl_vm_src.zip:  http://www.zenkinetic.com/Documents/zkl_vm_src.zip.
+Visit <http://www.zenkinetic.com/zklDownloads.html> and download
+zkl_vm_src.zip:  <http://www.zenkinetic.com/Documents/zkl_vm_src.zip>.
 Other links of interest are zkl_tests.zip and the manual (zklManual.pdf).
 
  Extract to ~

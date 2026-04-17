@@ -392,7 +392,7 @@ On the third hand, note that "definitions of functions" do not actually need to 
 ```
 
 
-And if we were to insist on leaving out functions, it's not clear that there would be much of anything left of the language to be doing anything with. See also Henry Rich's writeup on [http://www.jsoftware.com/docs/help701/jforc/tacit_programs.htm Tacit Programs].
+And if we were to insist on leaving out functions, it's not clear that there would be much of anything left of the language to be doing anything with. See also Henry Rich's writeup on [Tacit Programs](http://www.jsoftware.com/docs/help701/jforc/tacit_programs.htm).
 
 
 ## jq

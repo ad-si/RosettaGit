@@ -19,7 +19,7 @@ After reviewing the original MD5 page and realizing it was all over the map, it 
 * Autohotkey has a largely native implementation that uses a couple of DLL calls.  However, the core of the algorithm is implemented as native code and meets the intent here.
 * C, Liberty  Basic, Matlab (if fixed), Modula3 all seem to satisfy the coding part of the task 
 * Common Lisp may qualify if more is shown, as may Forth
-* The Python examples use hashlib which uses an external call.  However, there is Python 2 code http://www.equi4.com/md5/ that is native and a direct translation of RFC 1321 with the RSA copyrights (I think a derivative work of an RFC is fair game but haven't actually checked it out).
+* The Python examples use hashlib which uses an external call.  However, there is Python 2 code <http://www.equi4.com/md5/> that is native and a direct translation of RFC 1321 with the RSA copyrights (I think a derivative work of an RFC is fair game but haven't actually checked it out).
 
 Basically, I think this is ready but wanted input/review.
 

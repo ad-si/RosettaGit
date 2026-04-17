@@ -625,7 +625,7 @@ epocs;
 
 ## AppleScript
 
-Outputs debug in a .txt file similar to that of [http://brainfuck.tk brainfuck.tk]
+Outputs debug in a .txt file similar to that of [brainfuck.tk](http://brainfuck.tk)
 
 ```AppleScript
 
@@ -1553,7 +1553,7 @@ Daniel B. Cristofani
 >->>>>>]<<[>,>>>]<<[>+>]<<[+<<]<]
 [input a Brainfuck program and its input, separated by an exclamation point.
 Daniel B Cristofani (cristofdathevanetdotcom)
-http://www.hevanet.com/cristofd/brainfuck/]
+<http://www.hevanet.com/cristofd/brainfuck/>]
 
 
 ```
@@ -4228,7 +4228,7 @@ true
 
 ## Racket
 
-[http://hashcollision.org/brainfudge/ Brainfudge] is an implementation of Brainfuck in Racket.
+[Brainfudge](http://hashcollision.org/brainfudge/) is an implementation of Brainfuck in Racket.
 Read the tutorial to see you can integrate a new language into the Racket system. The tutorial
 also shows how to get IDE support from DrRacket.
 
@@ -4256,7 +4256,7 @@ As an appetizer this runs in Racket as is:
 
 ## REXX
 
-The REXX code is original, but the BRAINF░CK program was modified from the example given in Wikipedia:   [http://en.wikipedia.org/wiki/Brainfuck]
+The REXX code is original, but the BRAINF░CK program was modified from the example given in Wikipedia:   <http://en.wikipedia.org/wiki/Brainfuck>
 
 ```rexx
 /*REXX program implements the   Brainf*ck   (self─censored)  language.                  */
@@ -4514,7 +4514,7 @@ Hello World!
 ```
 
 
-Original source [http://seed7.sourceforge.net/algorith/puzzles.htm#brainf7].
+Original source <http://seed7.sourceforge.net/algorith/puzzles.htm#brainf7>.
 
 
 ## Sidef

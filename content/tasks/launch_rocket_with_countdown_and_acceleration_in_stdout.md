@@ -228,7 +228,7 @@ Uses ANSI graphics. Works best in a 24 bit ANSI terminal at least 80x24, though 
 
 This is a very simple simulation. It assumes a constant ~2G+ acceleration in a gravitational field; so net +10 meters per second². It completely neglects the effects of [[wp:Drag_(physics)|air friction]], [[wp:Impulse|impulse]], [[wp:Snap,_Crackle_and_Pop#Physics|snap, crackle & pop]] and has an unrealistically clean fuel burn (no contrail). It does however (unlike most of the entries at this time) start at the base of the terminal (on the ground) and go up, rather than starting at the top and dropping a contrail. It calculates and displays an accurate displacement and velocity over time and uses those to scale its vertical screen displacement. 
 
-The motion is a little "notchy" as the vertical resolution in a terminal is rather low. Exits after the rocket leaves the visible area of the terminal. See the [https://github.com/thundergnat/rc/blob/master/img/rocket-perl6.gif example animated gif]
+The motion is a little "notchy" as the vertical resolution in a terminal is rather low. Exits after the rocket leaves the visible area of the terminal. See the [example animated gif](https://github.com/thundergnat/rc/blob/master/img/rocket-perl6.gif)
 
 
 ```perl6
@@ -303,7 +303,7 @@ sub cleanup () {  print "\e[0m", "\n" xx 50, "\e[H\e[J\e[?25h"; exit(0) }
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/rocket-perl6.gif rocket-perl6.gif] (offsite animated gif image)
+See [rocket-perl6.gif](https://github.com/thundergnat/rc/blob/master/img/rocket-perl6.gif) (offsite animated gif image)
 
 
 ## Phix

@@ -23,12 +23,12 @@ BSD keeps the C Shell at <code>/bin/csh</code>. [Hashbang](https://rosettacode.o
 ## Reputation
 C Shell is obsolete. Most scriptwriters prefer a Bourne-compatible shell, and few users want to learn two flavors of shells. C Shell introduced tilde expansion (<code>ls ~</code>), job control, command history, and aliases, but POSIX shells now have all of those.
 
-[http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/ Csh Programming Considered Harmful] and [http://www.grymoire.com/Unix/CshTop10.txt Top Ten Reasons not to use the C shell] give multiple reasons to avoid C Shell.
+[Csh Programming Considered Harmful](http://www.faqs.org/faqs/unix-faq/shell/csh-whynot/) and [Top Ten Reasons not to use the C shell](http://www.grymoire.com/Unix/CshTop10.txt) give multiple reasons to avoid C Shell.
 
 tcsh is a later version that fixed many of the problems with csh. It is still actively, if intermittently, maintained and has a following such as on Solaris.
 
 ## Syntax
-[http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html The manual for csh(1)] claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [Java](https://rosettacode.org/wiki/Java) and [Pike](https://rosettacode.org/wiki/Pike), and Unix utilities [AWK](https://rosettacode.org/wiki/AWK) and [bc](https://rosettacode.org/wiki/bc). C Shell is less like [C](https://rosettacode.org/wiki/C) than those other languages.
+[The manual for csh(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [Java](https://rosettacode.org/wiki/Java) and [Pike](https://rosettacode.org/wiki/Pike), and Unix utilities [AWK](https://rosettacode.org/wiki/AWK) and [bc](https://rosettacode.org/wiki/bc). C Shell is less like [C](https://rosettacode.org/wiki/C) than those other languages.
 
 This example prints a [Hailstone sequence](https://rosettacode.org/wiki/Hailstone_sequence) from 13.
 
@@ -138,4 +138,4 @@ Bourne Shell requires <code>test</code> or <code>expr</code> to evaluate express
 
 
 ## Links
-* [OpenBSD](https://rosettacode.org/wiki/OpenBSD) has [http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html csh(1) manual] and [http://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/ source code].
+* [OpenBSD](https://rosettacode.org/wiki/OpenBSD) has [csh(1) manual](http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) and [source code](http://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/).

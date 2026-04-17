@@ -74,7 +74,7 @@ Using a well-known testing-specific library/module/suite for your language, writ
 ## ACL2
 
 
-Using [http://www.ccs.neu.edu/home/cce/acl2/doublecheck.html DoubleCheck]:
+Using [DoubleCheck](http://www.ccs.neu.edu/home/cce/acl2/doublecheck.html):
 
 
 ```Lisp
@@ -123,7 +123,7 @@ Using [http://www.ccs.neu.edu/home/cce/acl2/doublecheck.html DoubleCheck]:
 
 For normal use there is pragma Assert, functioning the same as many other languages.
 
-For larger testing frameworks, there are packages like [http://libre.adacore.com/libre/tools/aunit/ Aunit]
+For larger testing frameworks, there are packages like [Aunit](http://libre.adacore.com/libre/tools/aunit/)
 
 
 ```Ada
@@ -640,13 +640,13 @@ To run these tests from the listener:
 ```
 
 
-Factor's tutorial, [http://docs.factorcode.org/content/article-first-program.html Your first program], uses ''palindrome?'' as its example. The tutorial shows how to create tests for ''palindrome?'' and how to fix a failing test.
+Factor's tutorial, [Your first program](http://docs.factorcode.org/content/article-first-program.html), uses ''palindrome?'' as its example. The tutorial shows how to create tests for ''palindrome?'' and how to fix a failing test.
 
 
 ## Fantom
 
 
-To use the built-in test library, the program must be compiled into a pod.  The layout for a simple pod and its build file is given in the [http://fantom.org/doc/docIntro/HelloWorld.html#pod documentation], and also information for adding and running the [http://fantom.org/doc/docTools/Fant.html test files].
+To use the built-in test library, the program must be compiled into a pod.  The layout for a simple pod and its build file is given in the [documentation](http://fantom.org/doc/docIntro/HelloWorld.html#pod), and also information for adding and running the [test files](http://fantom.org/doc/docTools/Fant.html).
 
 
 ```fantom
@@ -1273,7 +1273,7 @@ You can ship ''jsish'' scripts with tests in and they will be ignored during nor
 
 There is more support for unit testing in Jsi. <code>assert(expression)</code> is ignored by default, and turned on during test mode for instance.  Entire directories can be evaluated in test mode, by naming a directory instead of a filename.
 
-See https://jsish.org/doc/Testing.html for more details.
+See <https://jsish.org/doc/Testing.html> for more details.
 
 
 ## Julia
@@ -1345,7 +1345,7 @@ david is not a palindrome
 
 ## Lasso
 
-The following example uses the [https://bitbucket.org/bfad/lspec/ LSpec Library]:
+The following example uses the [LSpec Library](https://bitbucket.org/bfad/lspec/):
 
 
 ```lasso
@@ -1566,7 +1566,7 @@ Output:
 ## OCaml
 
 
-Using the library [http://www.xs4all.nl/~mmzeeman/ocaml/ OUnit].
+Using the library [OUnit](http://www.xs4all.nl/~mmzeeman/ocaml/).
 
 The module '''Palindrome''' is where are compiled the two functions ''is_palindrome'' and ''rem_space'' from [[Palindrome#OCaml|this page]]. We put these two functions in a file named ''palindrome.ml'' and compile it with ''ocamlc -c palindrome.ml -o palindrome.cmo'', then with the code below in the file ''palindrome_tests.ml'' we execute the tests with this command line:
  ocaml unix.cma -I +oUnit oUnit.cma  palindrome.cmo  palindrome_tests.ml
@@ -1637,7 +1637,7 @@ See [[Test_a_function#Delphi | Delphi]]
 
 ## Perl
 
-A test file, with a ''.t'' suffix, is just a Perl program that prints a test stream in [http://testanything.org/wiki/index.php/Main_Page Test Anything Protocol] (TAP). There are modules to help print things in the correct TAP format; Perl 5 bundles Test, Test::Simple and Test::More.
+A test file, with a ''.t'' suffix, is just a Perl program that prints a test stream in [Test Anything Protocol](http://testanything.org/wiki/index.php/Main_Page) (TAP). There are modules to help print things in the correct TAP format; Perl 5 bundles Test, Test::Simple and Test::More.
 
 This example uses Test and requires the ''Palindrome.pm'' file from [[Palindrome detection#Perl]].
 
@@ -1791,7 +1791,7 @@ ok 6 - "In girum imus nocte et consumimur igni" is a palindrome.
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refT.html#test test]' function is
+The '[test](http://software-lab.de/doc/refT.html#test)' function is
 built into PicoLisp.
 
 ```PicoLisp
@@ -2212,7 +2212,7 @@ this test case fails on purpose.
 
 ### minitest
 
-Many Ruby hackers have switched from 'test/unit' to other testing libraries. Some of these libraries provide the 'describe' block, which is just a pretty way to make a test case. [http://rspec.info/ RSpec], [https://github.com/chneukirchen/bacon Bacon] and [http://bfts.rubyforge.org/minitest/ minitest] are such libraries.
+Many Ruby hackers have switched from 'test/unit' to other testing libraries. Some of these libraries provide the 'describe' block, which is just a pretty way to make a test case. [RSpec](http://rspec.info/), [Bacon](https://github.com/chneukirchen/bacon) and [minitest](http://bfts.rubyforge.org/minitest/) are such libraries.
 
 This example uses Minitest, which comes with Ruby 1.9. (But if you have Ruby 1.8, then you can still install Minitest as a gem, using [[:Category:RubyGems|RubyGems]].)
 

@@ -21,6 +21,6 @@ These rules make the set of all possible proofs finite, with the consequence tha
 
 ## See Also
 * [Wikipedia:Datalog](https://en.wikipedia.org/wiki/Datalog)
-* [https://bitbucket.org/pcarbonn/pydatalog pyDatalog]
-* [http://www.ccs.neu.edu/home/ramsdell/tools/datalog/ Datalog]
-* [http://www.ccs.neu.edu/home/ramsdell/tools/datalog/datalog.html Datalog User Manual]
+* [pyDatalog](https://bitbucket.org/pcarbonn/pydatalog)
+* [Datalog](http://www.ccs.neu.edu/home/ramsdell/tools/datalog/)
+* [Datalog User Manual](http://www.ccs.neu.edu/home/ramsdell/tools/datalog/datalog.html)

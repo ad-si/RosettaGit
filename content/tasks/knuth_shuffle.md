@@ -746,7 +746,7 @@ division:
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=133 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=133)
 
 ```AutoHotkey
 MsgBox % shuffle("1,2,3,4,5,6,7,8,9")
@@ -2081,7 +2081,7 @@ def shuffle( a ) =
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=58402023fbdc617ce10f6a85db721105 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=58402023fbdc617ce10f6a85db721105)'''
 
 ```gambas
 Public Sub Main()
@@ -2160,8 +2160,8 @@ Random(SymmetricGroup(10));
 ## Go
 
 (Note, in addition to these examples,
-<code>[https://golang.org/pkg/math/rand/#Shuffle rand.Shuffle]</code>
-was added in [https://golang.org/doc/go1.10#math/rand Go1.10]
+<code>[rand.Shuffle](https://golang.org/pkg/math/rand/#Shuffle)</code>
+was added in [Go1.10](https://golang.org/doc/go1.10#math/rand)
 implementing a Fisher–Yates shuffle.)
 
 
@@ -2589,7 +2589,7 @@ KS L
 ```
 
 In J the shuffling of an arbitrary array can easily be implemented by the phrase
-( ref http://www.jsoftware.com/jwiki/JPhrases/RandomNumbers ):
+( ref <http://www.jsoftware.com/jwiki/JPhrases/RandomNumbers> ):
 
 ```j
 ({~?~@#)
@@ -4061,7 +4061,7 @@ shuffled: 1,8,6,0,5,9,2,4,7,3
 
 ## Python
 
-Python's standard library function <code>[http://docs.python.org/library/random.html#random.shuffle random.shuffle]</code> uses this algorithm and so should normally be used.
+Python's standard library function <code>[random.shuffle](http://docs.python.org/library/random.html#random.shuffle)</code> uses this algorithm and so should normally be used.
 The function below is very similar:
 
 ```python
@@ -4775,7 +4775,7 @@ A mutable version, using vectors (efficient):
 
 ## Scratch
 
-See Knuth's shuffle in action.  Visit [https://scratch.mit.edu/projects/65352234/ this Scratch implementation] to see a demo and inspect its source.
+See Knuth's shuffle in action.  Visit [this Scratch implementation](https://scratch.mit.edu/projects/65352234/) to see a demo and inspect its source.
 
 
 ## Seed7

@@ -45,7 +45,7 @@ For the purposes of this task, the actual memory layout or access method of this
 
 ;The task is to:
 * State if the language supports multi-dimensional arrays in its syntax and usual implementation.
-* State whether the language uses [https://en.wikipedia.org/wiki/Row-major_order row-major or column major order] for multi-dimensional array storage, or any other relevant kind of storage.
+* State whether the language uses [row-major or column major order](https://en.wikipedia.org/wiki/Row-major_order) for multi-dimensional array storage, or any other relevant kind of storage.
 * Show how to create a four dimensional array in your language and set, access, set to another value; and access the new value of an integer-indexed item of the array.
  The idiomatic method for the language is preferred.
 :* The array should allow a range of five, four, three and two (or two three four five if convenient), in each of the indices, in order. (For example, ''if'' indexing starts at zero for the first index then a range of 0..4 inclusive would suffice).
@@ -1044,7 +1044,7 @@ and
 ```
 
 
-For more introductory material on multi-dimensional arrays, you might be interested in [http://www.jsoftware.com/help/learning/05.htm chapter 5] and [http://www.jsoftware.com/help/learning/07.htm chapter 7] of the Learning J book.
+For more introductory material on multi-dimensional arrays, you might be interested in [chapter 5](http://www.jsoftware.com/help/learning/05.htm) and [chapter 7](http://www.jsoftware.com/help/learning/07.htm) of the Learning J book.
 
 
 ## Java
@@ -1883,7 +1883,7 @@ Function <code>dict_as_mdarray</code> allows for the creation of an initialised 
 
 ### Python: numpy library
 
-Python has the widely available [http://www.numpy.org numpy] library for array specific operations. It creates numpy array types that take full advantage of Python's syntax support for [http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-d3f8e5fe9b903f3c3b2a5c0dfceb60d71602cf93 multi-dimensional arrays].
+Python has the widely available [numpy](http://www.numpy.org) library for array specific operations. It creates numpy array types that take full advantage of Python's syntax support for [multi-dimensional arrays](http://wiki.scipy.org/Tentative_NumPy_Tutorial#head-d3f8e5fe9b903f3c3b2a5c0dfceb60d71602cf93).
 
 Numpy arrays contain values of a single type arranged in a contiguous block of memory that can be further arranged to be compatible with C language or Fortran array layouts to aid the use of C and Fortran libraries.
 
@@ -1991,7 +1991,7 @@ array([[[[   0,    0,    0,    0,    0],
 ## Racket
 
 
-Racket has [http://docs.racket-lang.org/math/array.html multi-dimensional arrays] as part of the standard <tt>math</tt> library.  Instead of repeating the whole thing here, see the [http://docs.racket-lang.org/math/array_quick.html quick start] page of the documentation, which describes all of what's asked here.
+Racket has [multi-dimensional arrays](http://docs.racket-lang.org/math/array.html) as part of the standard <tt>math</tt> library.  Instead of repeating the whole thing here, see the [quick start](http://docs.racket-lang.org/math/array_quick.html) page of the documentation, which describes all of what's asked here.
 
 
 ## REXX
@@ -2154,11 +2154,11 @@ First element = 1
 ===All target-machines===
 Scala basically supports single linear arrays but multi-dimensional arrays of any dimension can be easily built up as nested arrays. Individual elements can then be set or accessed by successively applying the indexation and apply operator ().
 
-[https://docs.scala-lang.org/overviews/collections/arrays.html Scala arrays] are considered "last citizens" and are evil because their mutability and side effects. However much effort is done to implement them with the common collections  functions (e.g. head, tail, last, map, flatten etc) in the Scala language to maintain [https://en.wikipedia.org/wiki/Orthogonality_(programming) orthogonality in collections].
+[Scala arrays](https://docs.scala-lang.org/overviews/collections/arrays.html) are considered "last citizens" and are evil because their mutability and side effects. However much effort is done to implement them with the common collections  functions (e.g. head, tail, last, map, flatten etc) in the Scala language to maintain [orthogonality in collections](https://en.wikipedia.org/wiki/Orthogonality_(programming)).
 
 Their presents indicates low level engineering. Arrays are more machine-oriented (lineair memory) than problem-oriented (thinking in e.g. collections, sets).
 
-Arrays in Scala always start (of course as the great Dijkstra in his [https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html EWD831] pointed out) from an index of zero and, insofar the target machine can handle, bounds can be checked automatically e.g. by the JVM (throwing an exception) or ES aka JavaScript (resulting "undefined").
+Arrays in Scala always start (of course as the great Dijkstra in his [EWD831](https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html) pointed out) from an index of zero and, insofar the target machine can handle, bounds can be checked automatically e.g. by the JVM (throwing an exception) or ES aka JavaScript (resulting "undefined").
 
 ```Scala
 object MultiDimensionalArray extends App {
@@ -2176,12 +2176,12 @@ object MultiDimensionalArray extends App {
 }
 ```
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/Lx6AG4S/0 (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/MF2p1z1fReyhjGcu4aY4Eg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [(ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/Lx6AG4S/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/MF2p1z1fReyhjGcu4aY4Eg).
 
 
 ## Tcl
 
-In Tcl, [http://www.tcl.tk/man/tcl/TclCmd/array.htm arrays] are associative maps and [http://wiki.tcl.tk/440 lists] are closer to what other languages name "arrays".
+In Tcl, [arrays](http://www.tcl.tk/man/tcl/TclCmd/array.htm) are associative maps and [lists](http://wiki.tcl.tk/440) are closer to what other languages name "arrays".
 Either can be used for multidimensional data, but the implementations (and implications!) are quite different.
 
 It's worth briefly discussing both here.  Since lists are closer to the theme of this page, they come first.
@@ -2218,7 +2218,7 @@ Both lset and lindex know how to access multi-dimensional lists:
 11
 ```
 
-[http://www.tcl.tk/man/tcl/TclCmd/lsort.htm lsort] and [http://www.tcl.tk/man/tcl/TclCmd/lsearch.htm lsearch] are among other useful commands that support nested lists.
+[lsort](http://www.tcl.tk/man/tcl/TclCmd/lsort.htm) and [lsearch](http://www.tcl.tk/man/tcl/TclCmd/lsearch.htm) are among other useful commands that support nested lists.
 
 ### arrays
 
@@ -2280,4 +2280,4 @@ Scratchy is pink and has 99 points
 %
 ```
 
-The interested reader should also be aware of the difference between arrays and [http://www.tcl.tk/man/tcl/TclCmd/dict.htm dict]ionaries, and know that the latter are often preferred for record-like structures.
+The interested reader should also be aware of the difference between arrays and [dict](http://www.tcl.tk/man/tcl/TclCmd/dict.htm)ionaries, and know that the latter are often preferred for record-like structures.

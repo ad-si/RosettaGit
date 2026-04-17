@@ -1692,7 +1692,7 @@ object NameGame extends App {
 ```
 
 
-See it running in your browser by [https://scastie.scala-lang.org/UilFJ0zFSJu4Qk2xaw2r4A Scastie (JVM)].
+See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/UilFJ0zFSJu4Qk2xaw2r4A).
 
 ## VBA
 

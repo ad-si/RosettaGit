@@ -14,4 +14,4 @@ tags = []
 Arbre is a tree-oriented parallel programming language.
 
 ## Citations
-* [http://code.google.com/p/arbrelang/source/browse/#svn%2Ftrunk%2Fjs Source]
+* [Source](http://code.google.com/p/arbrelang/source/browse/#svn%2Ftrunk%2Fjs)

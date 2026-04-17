@@ -383,9 +383,9 @@ Approximation:
 
 ## Go
 
-Wikipedia gives a formula for coefficients in a section [https://en.wikipedia.org/wiki/Chebyshev_polynomials#Example_1 "Example 1"].  Read past the bit about the inner product to where it gives the technique based on the discrete orthogonality condition.  The N of the WP formulas is the parameter nNodes in the code here.  It is not necessarily the same as n, the number of polynomial coefficients, the parameter nCoeff here.
+Wikipedia gives a formula for coefficients in a section ["Example 1"](https://en.wikipedia.org/wiki/Chebyshev_polynomials#Example_1).  Read past the bit about the inner product to where it gives the technique based on the discrete orthogonality condition.  The N of the WP formulas is the parameter nNodes in the code here.  It is not necessarily the same as n, the number of polynomial coefficients, the parameter nCoeff here.
 
-The evaluation method is the [https://en.wikipedia.org/wiki/Clenshaw_algorithm Clenshaw algorithm].
+The evaluation method is the [Clenshaw algorithm](https://en.wikipedia.org/wiki/Clenshaw_algorithm).
 
 Two variances here from the WP presentation and most mathematical presentations follow other examples on this page and so keep output directly comparable.  One variance is that the Kronecker delta factor is dropped, which has the effect of doubling the first coefficient.  This simplifies both coefficient generation and polynomial evaluation.  A further variance is that there is no scaling for the range of function values.  The result is that coefficients are not necessarily bounded by 1 (2 for the first coefficient) but by the maximum function value over the argument range from min to max (or twice that for the first coefficient.)
 
@@ -489,7 +489,7 @@ x     computed    approximated    computed-approx
 
 ## J
 
-From 'J for C Programmers: Calculating Chebyshev Coefficients [[http://www.jsoftware.com/learning/a_first_look_at_j_programs.htm#_Toc191734318]]
+From 'J for C Programmers: Calculating Chebyshev Coefficients <http://www.jsoftware.com/learning/a_first_look_at_j_programs.htm#_Toc191734318>
 
 ```J
 
@@ -1087,7 +1087,7 @@ r2r: return  arg(1)  //  (pi() * 2)              /*normalize radians ───�
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/DqRNe2A/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/M5Ye6h8ZRkmTCNzexUh3uw Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/DqRNe2A/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/M5Ye6h8ZRkmTCNzexUh3uw).
 
 ```Scala
 import scala.math.{Pi, cos}

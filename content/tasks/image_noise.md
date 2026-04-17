@@ -1512,7 +1512,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides a family of print formatting routines]
+[printf.icn provides a family of print formatting routines](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1718,7 +1718,7 @@ public class ImageNoise {
 
 ## JavaScript
 
-[http://jsfiddle.net/bZJvr/ jsFiddle Demo]
+[jsFiddle Demo](http://jsfiddle.net/bZJvr/)
 
 
 ```javascript

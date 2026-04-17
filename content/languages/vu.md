@@ -12,4 +12,4 @@ tags = []
 
 The standard implementation of Déjà Vu. <code>vu</code> is a virtual machine plus a suite of tools, including a byte code compiler.
 
-The repository can be found at [https://github.com/gvx/deja GitHub].
+The repository can be found at [GitHub](https://github.com/gvx/deja).

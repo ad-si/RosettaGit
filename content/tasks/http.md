@@ -1209,7 +1209,7 @@ void main(){
 
 ## Delphi
 
-Simple example using the free Synapse TCP/IP library [http://www.ararat.cz/synapse/doku.php/download]
+Simple example using the free Synapse TCP/IP library <http://www.ararat.cz/synapse/doku.php/download>
 
 
 ```Delphi
@@ -1622,7 +1622,7 @@ echo http("http://www.rosettacode.org");
 
 ## Haskell
 
-Using {{libheader|HTTP}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Using {{libheader|HTTP}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -2386,10 +2386,10 @@ Print[Import["http://www.google.com/webhp?complete=1&hl=en", "Source"]]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-[http://www.mathworks.com/help/matlab/ref/urlread.html urlread] is MATLAB's function for making URL requests.
-The documentation for Octave is available here [http://octave.sourceforge.net/octave/function/urlread.html urlread].
+[urlread](http://www.mathworks.com/help/matlab/ref/urlread.html) is MATLAB's function for making URL requests.
+The documentation for Octave is available here [urlread](http://octave.sourceforge.net/octave/function/urlread.html).
 
-In this example we initiate an HTTP request for a single random number from [http://www.random.org random.org]:
+In this example we initiate an HTTP request for a single random number from [random.org](http://www.random.org):
 
 ```MATLAB
 
@@ -2402,7 +2402,7 @@ random =
 ```
 
 
-It is possible to make more complicated requests, specifically "GET" and "POST," which is explained in the [http://www.mathworks.com/help/matlab/ref/urlread.html documentation].
+It is possible to make more complicated requests, specifically "GET" and "POST," which is explained in the [documentation](http://www.mathworks.com/help/matlab/ref/urlread.html).
 
 
 ## MIRC Scripting Language
@@ -2618,7 +2618,7 @@ in
 
 ## Pascal
 
-Using [http://wiki.freepascal.org/fphttpclient fphttpclient]
+Using [fphttpclient](http://wiki.freepascal.org/fphttpclient)
 
 ```pascal
 {$mode objfpc}{$H+}
@@ -2946,7 +2946,7 @@ Of course you could use wget too.
 
 
 ;Python 3:
-Using the [http://docs.python.org/py3k/library/urllib.request.html urllib.request] module.
+Using the [urllib.request](http://docs.python.org/py3k/library/urllib.request.html) module.
 
 ```python
 
@@ -2956,7 +2956,7 @@ print(urllib.request.urlopen("http://rosettacode.org").read())
 ```
 
 
-Using a more low-level [https://docs.python.org/3/library/http.client.html http.client] library.
+Using a more low-level [http.client](https://docs.python.org/3/library/http.client.html) library.
 
 ```python
 
@@ -2972,7 +2972,7 @@ r1 = result.read() # This retrieves the entire contents.
 
 
 ;Python 2:
-Using the [http://docs.python.org/library/urllib.html urllib] library.
+Using the [urllib](http://docs.python.org/library/urllib.html) library.
 
 ```python
 
@@ -2982,7 +2982,7 @@ print urllib.urlopen("http://rosettacode.org").read()
 ```
 
 
-Using the [http://docs.python.org/library/urllib2.html urllib2] library.
+Using the [urllib2](http://docs.python.org/library/urllib2.html) library.
 
 ```python
 
@@ -3140,10 +3140,10 @@ For these URLs RLaB provides an internal book-keeping: It keeps track of
 the open ones and, say, upon quitting, closes them and releases the internal
 resources it allocated for managing them.
 
-For accessing URLs on world wide web RLaB implements the library cURL (libcurl) [http://curl.haxx.se] and its "easy" interface.
+For accessing URLs on world wide web RLaB implements the library cURL (libcurl) <http://curl.haxx.se> and its "easy" interface.
 
 This said, this is how one would download financial data for Pfeizer from
-Yahoo [http://ichart.finance.yahoo.com/table.csv?s=PFE&a=00&b=4&c=1982&d=00&e=10&f=2010&g=d&ignore=.csv].
+Yahoo <http://ichart.finance.yahoo.com/table.csv?s=PFE&a=00&b=4&c=1982&d=00&e=10&f=2010&g=d&ignore=.csv>.
 
 
 ```RLaB
@@ -3291,7 +3291,7 @@ object HttpTest extends App {
 
 ```
 
-Using the [http://api.call-cc.org/doc/http-client http-client] library, this is trivial.
+Using the [http-client](http://api.call-cc.org/doc/http-client) library, this is trivial.
 
 ```scheme
 
@@ -3306,8 +3306,8 @@ Using the [http://api.call-cc.org/doc/http-client http-client] library, this is 
 
 ## Seed7
 
-The [http://seed7.sourceforge.net/libraries/gethttp.htm gethttp.s7i] library
-contains the function [http://seed7.sourceforge.net/libraries/gethttp.htm#getHttp%28in_string%29 getHttp],
+The [gethttp.s7i](http://seed7.sourceforge.net/libraries/gethttp.htm) library
+contains the function [getHttp](http://seed7.sourceforge.net/libraries/gethttp.htm#getHttp%28in_string%29),
 which gets data specified by an URL using the HTTP protocol.
 
 
@@ -3489,7 +3489,7 @@ ftp -o - http://rosettacode.org 2>/dev/null
 
 ## VBScript
 
-Based on code at [http://itknowledgeexchange.techtarget.com/vbscript-systems-administrator/how-to-retrieve-html-web-pages-with-vbscript-via-the-microsoftxmlhttp-object/ How to retrieve HTML web pages with VBScript via the Microsoft.XmlHttp object]
+Based on code at [How to retrieve HTML web pages with VBScript via the Microsoft.XmlHttp object](http://itknowledgeexchange.techtarget.com/vbscript-systems-administrator/how-to-retrieve-html-web-pages-with-vbscript-via-the-microsoftxmlhttp-object/)
 
 ```vb
 

@@ -35,7 +35,7 @@ You can also try bringing in people from outside Rosetta Code.
 
 * If you know someone who knows the language (or any language in this list), we'd be happy if you pointed them in our direction.
 * If you have Twitter, tweeting out a request that someone add content for your language would probably also be good. Add '''@rosettacode''', and RC's twitter presence may retweet you.
-* If you have Facebook, post on the [http://www.facebook.com/pages/RosettaCodeorg/199439093012 Facebook page].
+* If you have Facebook, post on the [Facebook page](http://www.facebook.com/pages/RosettaCodeorg/199439093012).
 
 =Languages=
 == Underrepresented ==
@@ -59,7 +59,7 @@ please consider adding examples.
 * [[PIR]], the Parrot intermediate representation.
 * [[Processing]]
 * [[Qi]]
-* [[Ra]] Lets you program in your native tongue (http://oahmad04.github.io/ra/)
+* [[Ra]] Lets you program in your native tongue (<http://oahmad04.github.io/ra/>)
 * [[RPG]] (Report Program Generator)
 * [[Self]]
 * [[SQL]] and derivatives
@@ -73,11 +73,11 @@ but no one has written any example code yet. <!-- say, less then 5 -->
 * [[ASP.Net]]
 * [[AspectJ]]
 * [[Gentee]]
-* [[Hack]] (http://en.wikipedia.org/wiki/Hack_(programming_language)) a new language with gradual typing invented by Facebook.
+* [[Hack]] (<http://en.wikipedia.org/wiki/Hack_(programming_language)>) a new language with gradual typing invented by Facebook.
 * [[NQP]] (Not Quite Perl)
 * [[Malbolge]] - designed to be the hardest programming language ever
 * [[PeopleCode]] - Wikipedia says, "is an (ool) object-oriented proprietary (case-insensitive) language used to express business logic for PeopleSoft applications."
-* [[Q]] The equational programming language based on term rewriting.(http://q-lang.sourceforge.net/)
+* [[Q]] The equational programming language based on term rewriting.(<http://q-lang.sourceforge.net/>)
 * [[QBasic]] - used to be bundled with DOS
 * [[QuickBasic]]
 * [[SmileBASIC]] - The only interpreter is Petit Computer for the Nintendo DSi/3DS, which is no longer able to be purchased.
@@ -94,38 +94,38 @@ There is no page to describe it, or such page exists but is empty. However, ther
 == No presence at all ==
 These languages are nowhere on RC.
 * [[APEX]]
-* [[AppleScriptObjC]] (https://developer.apple.com/library/mac/releasenotes/ScriptingAutomation/RN-AppleScriptObjC/) A high level scripting/programming language that combines features of AppleScript and Objective C
+* [[AppleScriptObjC]] (<https://developer.apple.com/library/mac/releasenotes/ScriptingAutomation/RN-AppleScriptObjC/>) A high level scripting/programming language that combines features of AppleScript and Objective C
 * [[AutoLISP]]
-* [[BitC]] (http://www.bitc-lang.org/), a low-level systems programming language with syntax similar to Standard ML and Haskell.
+* [[BitC]] (<http://www.bitc-lang.org/>), a low-level systems programming language with syntax similar to Standard ML and Haskell.
 * [[BLISS]]
-* [[Charity]] (http://pll.cpsc.ucalgary.ca/charity1/www/home.html). Charity is a categorical programming language.
+* [[Charity]] (<http://pll.cpsc.ucalgary.ca/charity1/www/home.html>). Charity is a categorical programming language.
 * [[CHILL]] - CCITT High Level Language, a procedural programming language, which is mainly used internally by Siemens and Alcatel for telecommunications.
-* [[CLU]] ([https://en.wikipedia.org/wiki/CLU_(programming_language) at Wikipedia]) Language invented at MIT in 1975, which had an influence on several modern languages
+* [[CLU]] ([at Wikipedia](https://en.wikipedia.org/wiki/CLU_(programming_language))) Language invented at MIT in 1975, which had an influence on several modern languages
 * [[Cucumber]]
-* [[DDC]] (http://www.haskell.org/haskellwiki/DDC) is haskell-like language with strict static types, type inference, tracking of mutability and side effects in the type system and default pass-by-reference semantics.
-* [[Funnel]] (https://lampwww.epfl.ch/funnel/)
+* [[DDC]] (<http://www.haskell.org/haskellwiki/DDC>) is haskell-like language with strict static types, type inference, tracking of mutability and side effects in the type system and default pass-by-reference semantics.
+* [[Funnel]] (<https://lampwww.epfl.ch/funnel/>)
 * [[GPSS]] General Purpose Simulation System (developed from Gordon's Programmable Simulation System) is one of the first discrete simulation languages and was an influence on later system such as [[Simula]]
 * [[Joyce]] (note: One of the influential concurrent languages, probably similar to super pascal)
 * [[MAD]] (Michigan Algorithmic Decoder)
 * [[MegaZeux]]
-* [[Mesa]], early PARC language ([http://en.wikipedia.org/wiki/Mesa_%28programming_language%29 Mesa at Wikipedia])
+* [[Mesa]], early PARC language ([Mesa at Wikipedia](http://en.wikipedia.org/wiki/Mesa_%28programming_language%29))
 * [[MUSH]]
 * [[Niakwa]] - a language that should go down in history
 * [[Powerscript]] (note: Ver 1.0 and Ver 2.0 are different)
 * [[PDP-8 Assembly]] - one of the most important minicomputers, practically creating the field.
 * [[SCL]] - Powerful, integer only, System Control Language (VME)
-* [[Shakespeare]] Programming Language - [http://shakespearelang.sourceforge.net/report/shakespeare/shakespeare.html Can be found on Sourceforge]
+* [[Shakespeare]] Programming Language - [Can be found on Sourceforge](http://shakespearelang.sourceforge.net/report/shakespeare/shakespeare.html)
 * [[Splus]]
-* [[thinBasic]] (http://www.thinbasic.com/)
+* [[thinBasic]] (<http://www.thinbasic.com/>)
 * [[Tutor]]
-* [[Tutorial-D]] (https://reldb.org/)
+* [[Tutorial-D]] (<https://reldb.org/>)
 * [[TXL]]
 * [[VO]] (CA-Visual Objects)
 * [[Xojo]] - the new name of [[REALbasic]] (since 6/2013), perhaps just create a redirect page?  Are there any issues with having two languages point to the same page?
 * [[Zeno]]
 * [[ZIL]]
 * [[ZZT]]
-* [[قلب‬]] ([http://nas.sr/%D9%82%D9%84%D8%A8/ website]) a Scheme-like, right-to-left, non-English based language
+* [[قلب‬]] ([website](http://nas.sr/%D9%82%D9%84%D8%A8/)) a Scheme-like, right-to-left, non-English based language
 
 == Need Syntax Highlighting Support ==
 These languages lack syntax highlighting.

@@ -15,4 +15,4 @@ Model descriptions written in the GNU MathProg language consist of a set of
 statements and data blocks constructed by the user from the language elements.
 
 The language syntax and use is described in gmpl.pdf which is available in the
-glpk download at http://ftp.gnu.org/gnu/glpk/
+glpk download at <http://ftp.gnu.org/gnu/glpk/>

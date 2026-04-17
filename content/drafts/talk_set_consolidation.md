@@ -16,7 +16,7 @@ I tried to find out what the "computer science-type" name for the routine might 
 
 :I'm not sure either, but if you break the sets down into sets of 2, it becomes the problem of finding the connected components of a graph, the sets of size 2 being the edges and the items being the nodes. --[[User:Spoon!|Spoon!]] 18:59, 7 May 2012 (UTC)
 
-::Hi Spoon, thanks for the name '''"Connected components of a graph"'''. It lead to links such as [http://www.cs.umd.edu/class/sum2005/cmsc451/components.pdf this] and [http://computation.pa.msu.edu/NO/ConnCompPresentation.html this] that show that the set consolidation routine in Python could be applied to the type of problems described. --[[User:Paddy3118|Paddy3118]] 01:13, 8 May 2012 (UTC)
+::Hi Spoon, thanks for the name '''"Connected components of a graph"'''. It lead to links such as [this](http://www.cs.umd.edu/class/sum2005/cmsc451/components.pdf) and [this](http://computation.pa.msu.edu/NO/ConnCompPresentation.html) that show that the set consolidation routine in Python could be applied to the type of problems described. --[[User:Paddy3118|Paddy3118]] 01:13, 8 May 2012 (UTC)
 
 :There's no need to use permutation to show the result is order independent.  Think input sets as undirected graph nodes, and two nodes are connected if they share elements, then it's just a matter of finding connected subgraphs which clearly doesn't depend on input set ordering. --[[User:Ledrug|Ledrug]] 23:02, 7 May 2012 (UTC)
 

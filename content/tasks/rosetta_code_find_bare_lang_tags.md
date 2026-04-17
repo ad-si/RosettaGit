@@ -91,7 +91,7 @@ Allow multiple files to be read.   Summarize all results by language:
 
 
 ;Extra extra credit:
-Use the   [http://rosettacode.org/mw/api.php Media Wiki API]   to test actual RC tasks.
+Use the   [Media Wiki API](http://rosettacode.org/mw/api.php)   to test actual RC tasks.
 
 
 

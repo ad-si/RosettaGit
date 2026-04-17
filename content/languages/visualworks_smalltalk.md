@@ -11,4 +11,4 @@ tags = []
 +++
 '''VisualWorks''' is a [Smalltalk](https://rosettacode.org/wiki/Smalltalk) implementation by Cincom. It works on [Windows](https://rosettacode.org/wiki/Windows), [Mac OSX](https://rosettacode.org/wiki/Mac_OS), [Linux](https://rosettacode.org/wiki/Linux), [Solaris](https://rosettacode.org/wiki/Solaris) and AIX.
 
-For more information, see [Wikipedia's VisualWorks Smalltalk page](https://en.wikipedia.org/wiki/_VisualWorks) or [http://www.cincomsmalltalk.com/ the Cincom homepage].
+For more information, see [Wikipedia's VisualWorks Smalltalk page](https://en.wikipedia.org/wiki/_VisualWorks) or [the Cincom homepage](http://www.cincomsmalltalk.com/).

@@ -50,7 +50,7 @@ for 4 bags, four:
 
 Note that because all bags are identical, the two 4-bag strings <code>((())())</code> and <code>(()(()))</code> represent the same configuration.
 
-It's easy to see that each configuration for ''n'' bags represents a ''n''-node rooted tree, where a bag is a tree node, and a bag with its content forms a subtree.  The outermost bag is the tree root.  Number of configurations for given ''n'' is given by [https://oeis.org/A000081 OEIS A81].
+It's easy to see that each configuration for ''n'' bags represents a ''n''-node rooted tree, where a bag is a tree node, and a bag with its content forms a subtree.  The outermost bag is the tree root.  Number of configurations for given ''n'' is given by [OEIS A81](https://oeis.org/A000081).
 
 
 ## Task
@@ -988,7 +988,7 @@ Number of 5-trees: 9
 
 ## Perl 6
 
-Bags are represented by Perl 6 type [http://doc.perl6.org/type/Bag <code>Bag</code>].
+Bags are represented by Perl 6 type [<code>Bag</code>](http://doc.perl6.org/type/Bag).
 
 
 ```perl6
@@ -1311,7 +1311,7 @@ for x in trees(5): print(tostr(x))
 (module+ main
   (for-each displayln (LRTs 5))
   (equal? (map (compose length LRTs) (range 1 (add1 13)))
-          '(1 1 2 4 9 20 48 115 286 719 1842 4766 12486))) ;; https://oeis.org/A000081
+          '(1 1 2 4 9 20 48 115 286 719 1842 4766 12486))) ;; <https://oeis.org/A000081>
 ```
 
 

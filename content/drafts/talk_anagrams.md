@@ -192,7 +192,7 @@ words should be shown as they are (not uppercased) !?! --[[User:Walterpachl|Walt
 
 It may be noteworthy to mention that timings (see ooRexx) for various languages have been discouraged on Rosetta Code.
 
- http://rosettacode.org/wiki/User_talk:Paddy3118#Comparisons
+ <http://rosettacode.org/wiki/User_talk:Paddy3118#Comparisons>
 
 (Especially for examples that no longer exist!)   Getting repeatable results is problematic.   Also, not knowing what hardware and/or operating system and/or which compiler/interpreter (or version) was used, or for that matter, what ''code'' (program statements) were used,   etc,   makes it difficult to judge the veracity of the timings. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 07:33, 5 August 2013 (UTC)
 

@@ -17,60 +17,60 @@ After consultation with the community, AutoHotkey_L became the official branch a
 
 
 ## Main Links
-[http://ahkscript.org/ Website]
+[Website](http://ahkscript.org/)
 
-[http://ahkscript.org/download/ Download]
+[Download](http://ahkscript.org/download/)
 
-[http://ahkscript.org/boards/memberlist.php?mode=viewprofile&u=77 Lexikos] · Currently the main author of AHK
+[Lexikos](http://ahkscript.org/boards/memberlist.php?mode=viewprofile&u=77) · Currently the main author of AHK
 
 
 ## Documentation & Tutorials
-[http://ahkscript.org/docs/ Documentation] ([http://ragnar-f.github.com/docs de] - [http://ahkcn.sourceforge.net/docs 帮助])
+[Documentation](http://ahkscript.org/docs/) ([de](http://ragnar-f.github.com/docs) - [帮助](http://ahkcn.sourceforge.net/docs))
 
-[http://ahkscript.org/boards/viewforum.php?f=7 Community tutorials] · ahkscript.org
+[Community tutorials](http://ahkscript.org/boards/viewforum.php?f=7) · ahkscript.org
 
-[http://www.autohotkey.com/board/forum/61-tutorials/ Community tutorials] · autohotkey.com
+[Community tutorials](http://www.autohotkey.com/board/forum/61-tutorials/) · autohotkey.com
 
-[http://www.youtube.com/user/ahkTuts YouTube AutoHotkey tutorials]
+[YouTube AutoHotkey tutorials](http://www.youtube.com/user/ahkTuts)
 
-[http://maul-esel.github.io/ahkbook/index.html Book] · Work in progress
+[Book](http://maul-esel.github.io/ahkbook/index.html) · Work in progress
 
-[http://ahkwiki.net/ 日本語 AutoHotkey Wiki] · Japanese
+[日本語 AutoHotkey Wiki](http://ahkwiki.net/) · Japanese
 
 
 ## Communities
-[http://ahkscript.org/boards/ AHKScript.org forum] ([http://ahkscript.org/boards/viewforum.php?f=8 de], [http://ahkscript.org/boards/viewforum.php?f=26 中文]) 
+[AHKScript.org forum](http://ahkscript.org/boards/) ([de](http://ahkscript.org/boards/viewforum.php?f=8), [中文](http://ahkscript.org/boards/viewforum.php?f=26)) 
 
-[http://www.autohotkey.com/board AutoHotkey.com forum] ([http://www.autohotkey.com/board/forum/62-deutsch-german/ de])
+[AutoHotkey.com forum](http://www.autohotkey.com/board) ([de](http://www.autohotkey.com/board/forum/62-deutsch-german/))
 
-[http://stackoverflow.com/questions/tagged/autohotkey Stackoverflow]
+[Stackoverflow](http://stackoverflow.com/questions/tagged/autohotkey)
 
-[http://forum.script-coding.com/viewforum.php?id=13 Русскоязычный форум] · Russian forum, script-coding.com
+[Русскоязычный форум](http://forum.script-coding.com/viewforum.php?id=13) · Russian forum, script-coding.com
 
-[http://www.autohotkey.co.kr/ 한국어/조선말] · Korean, autohotkey.co.kr
+[한국어/조선말](http://www.autohotkey.co.kr/) · Korean, autohotkey.co.kr
 
 
 ## Source Code (at Github)
-[https://github.com/Lexikos/AutoHotkey_L AutoHotkey source code]
+[AutoHotkey source code](https://github.com/Lexikos/AutoHotkey_L)
 
-[https://github.com/Lexikos/AutoHotkey_L-Docs AutoHotkey documentation] ([https://github.com/Ragnar-F/ragnar-f.github.com de])
+[AutoHotkey documentation](https://github.com/Lexikos/AutoHotkey_L-Docs) ([de](https://github.com/Ragnar-F/ragnar-f.github.com))
 
-[https://github.com/fincs/Ahk2Exe ahk2exe source code]
+[ahk2exe source code](https://github.com/fincs/Ahk2Exe)
 
-[https://github.com/Lexikos/AutoHotkey_L/tree/alpha AutoHotkey v2] · Alpha stage
+[AutoHotkey v2](https://github.com/Lexikos/AutoHotkey_L/tree/alpha) · Alpha stage
 
-[http://ahkscript.github.io/ AHKScript Github organisation]
+[AHKScript Github organisation](http://ahkscript.github.io/)
 
 
 ## Forks
-[http://www.autohotkey.net/~HotKeyIt/AutoHotkey/ AutoHotkey.dll + AHK_N + AHK_H]
+[AutoHotkey.dll + AHK_N + AHK_H](http://www.autohotkey.net/~HotKeyIt/AutoHotkey/)
 
-[http://www.autohotkey.com/forum/topic27146.html Pocket PCs] · WinCE
+[Pocket PCs](http://www.autohotkey.com/forum/topic27146.html) · WinCE
 
-[http://www.autohotkey.com/forum/viewtopic.php?t=54494 IronAHK] · .NET rewrite (cross-platform, alpha stage / abandoned)
+[IronAHK](http://www.autohotkey.com/forum/viewtopic.php?t=54494) · .NET rewrite (cross-platform, alpha stage / abandoned)
 
 
 ## Other
 [AutoHotkey_Basic](https://rosettacode.org/wiki/AutoHotkey_Basic) · The original version by Chris Mallett which is no longer maintained
 
-[http://ahkscript.org/foundation/history.html History]
+[History](http://ahkscript.org/foundation/history.html)

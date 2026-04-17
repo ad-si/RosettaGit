@@ -50,11 +50,11 @@ Show descriptions and comparisons of algorithms used here, and select the "Best"
 The problem of generating the shortest superpermutation for each N ''might'' be NP complete, although the minimal strings for small values of N have been found by brute -force searches.
 
 ;Reference:
-* [http://www.njohnston.ca/2013/04/the-minimal-superpermutation-problem/ The Minimal Superpermutation Problem]. by Nathaniel Johnston.
-* [http://oeis.org/A180632 oeis A180632] gives 0-5 as 0, 1, 3, 9, 33, 153. 6 is thought to be 872.
-* [https://www.youtube.com/watch?v=wJGE4aEWc28 Superpermutations - Numberphile]. A video
-* [https://www.youtube.com/watch?v=OZzIvl1tbPo Superpermutations: the maths problem solved by 4chan - Standupmaths]. A video of recent (2018) mathematical progress.
-* [https://www.youtube.com/watch?v=_tpNuulTeSQ New Superpermutations Discovered!] Standupmaths & Numberphile.
+* [The Minimal Superpermutation Problem](http://www.njohnston.ca/2013/04/the-minimal-superpermutation-problem/). by Nathaniel Johnston.
+* [oeis A180632](http://oeis.org/A180632) gives 0-5 as 0, 1, 3, 9, 33, 153. 6 is thought to be 872.
+* [Superpermutations - Numberphile](https://www.youtube.com/watch?v=wJGE4aEWc28). A video
+* [Superpermutations: the maths problem solved by 4chan - Standupmaths](https://www.youtube.com/watch?v=OZzIvl1tbPo). A video of recent (2018) mathematical progress.
+* [New Superpermutations Discovered!](https://www.youtube.com/watch?v=_tpNuulTeSQ) Standupmaths & Numberphile.
 
 
 
@@ -135,7 +135,7 @@ function r(n,  c) {
 
 ## C
 
-Finding a string whose length follows [https://oeis.org/A007489 OEIS A007489]. Complexity is the length of output string.  It is know to be ''not'' optimal.
+Finding a string whose length follows [OEIS A007489](https://oeis.org/A007489). Complexity is the length of output string.  It is know to be ''not'' optimal.
 
 ```c
 #include <stdio.h>

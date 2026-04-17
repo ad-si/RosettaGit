@@ -101,9 +101,9 @@ For   ''n''   ≤ 100,000,   the power tree method:
 ## References
 
 ::*   Donald E. Knuth's book:   ''The Art of Computer Programming, Vol. 2'', Second Edition, Seminumerical Algorithms, section 4.6.3: Evaluation of Powers.
-::*   link   [http://codegolf.stackexchange.com/questions/3177/knuths-power-tree codegolf.stackexchange.com/questions/3177/knuths-power-tree]     It shows a   '''Haskel''',   '''Python''',   and a   '''Ruby'''   computer program example   (but they are mostly   ''code golf'').
-::*   link   [https://comeoncodeon.wordpress.com/tag/knuth/ comeoncodeon.wordpress.com/tag/knuth/]     (See the section on Knuth's Power Tree.)     It shows a   '''C++'''   computer program example.
-::*   link to Rosetta Code   [http://rosettacode.org/wiki/Addition-chain_exponentiation addition-chain exponentiation].
+::*   link   [codegolf.stackexchange.com/questions/3177/knuths-power-tree](http://codegolf.stackexchange.com/questions/3177/knuths-power-tree)     It shows a   '''Haskel''',   '''Python''',   and a   '''Ruby'''   computer program example   (but they are mostly   ''code golf'').
+::*   link   [comeoncodeon.wordpress.com/tag/knuth/](https://comeoncodeon.wordpress.com/tag/knuth/)     (See the section on Knuth's Power Tree.)     It shows a   '''C++'''   computer program example.
+::*   link to Rosetta Code   [addition-chain exponentiation](http://rosettacode.org/wiki/Addition-chain_exponentiation).
 
 
 

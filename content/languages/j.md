@@ -18,7 +18,7 @@ It is a functional language; creation and composition of functions is emphasized
 
 Object-module and imperative techniques are supported, but not required.
 
-The J programming language was designed and developed by [http://en.wikipedia.org/wiki/Kenneth_E._Iverson Ken Iverson] and Roger Hui. It is a closely related successor to [APL](https://rosettacode.org/wiki/APL), also by Iverson which itself was a successor to the notation Ken Iverson used to teach his classes about computers in the 1950s.
+The J programming language was designed and developed by [Ken Iverson](http://en.wikipedia.org/wiki/Kenneth_E._Iverson) and Roger Hui. It is a closely related successor to [APL](https://rosettacode.org/wiki/APL), also by Iverson which itself was a successor to the notation Ken Iverson used to teach his classes about computers in the 1950s.
 <br clear="all"/>
 
 The notation draws heavily from concepts of [Abstract algebra](https://en.wikipedia.org/wiki/Abstract_algebra) and [Tensor calculus](https://en.wikipedia.org/wiki/Tensor_calculus), simplified for describing computer architecture and design to a pragmatic business audience.  (The ideas themselves are simple, but for some reason the topics scare most teachers.)
@@ -28,7 +28,7 @@ J is meant to be read with the aid of a computer. J sentences are single lines a
 When learning how a J sentence works, you can also try simpler sentences with the same data or perhaps related data.
 When trying to understand contexts that use large data structures, it can often be wise to investigate small, representative samples until you understand how the code works.
 
-Unless you attend an institution which has made a J interpreter available to you through your web browser (or preinstalled on your machine), if you want to see how J works you should probably [https://code.jsoftware.com/wiki/System/Installation install] a copy of J -- or you can try one of the "try me" links, below.
+Unless you attend an institution which has made a J interpreter available to you through your web browser (or preinstalled on your machine), if you want to see how J works you should probably [install](https://code.jsoftware.com/wiki/System/Installation) a copy of J -- or you can try one of the "try me" links, below.
 If you want to understand how to experiment with alternative expressions you should probably also be studying some of its [documentation](https://rosettacode.org/wiki/j:Guides/Getting%20Started#Documentation).
 
 For example, the phrase <code>(+/ % #)</code> finds the average of a list of numbers.
@@ -64,7 +64,7 @@ To understand how this works, you might try working with simpler sentences and t
 By themselves, these experiments mean nothing, but if you know that +/ was finding the sum of a list and # was finding the length of a list and that % was dividing the two quantities (and looks almost like one of the old school division symbols) then these experiments might help confirm that you have understood things properly.
 
 ## Some Perspective
-If you wish to use J you will also have to learn a few grammatical rules (J's parser has [http://www.jsoftware.com/help/dictionary/dicte.htm 9 reduction rules] and "shift" and "accept" - the above examples use four of those rules). J verbs have two definitions - a single argument "monadic" definition and a two argument "dyadic" definition.
+If you wish to use J you will also have to learn a few grammatical rules (J's parser has [9 reduction rules](http://www.jsoftware.com/help/dictionary/dicte.htm) and "shift" and "accept" - the above examples use four of those rules). J verbs have two definitions - a single argument "monadic" definition and a two argument "dyadic" definition.
 These terms are borrowed from music and are distinct from Haskell's use of the word "monad".
 The dyadic definitions are in some sense related to LISP's "cons cell" but are implemented as grammar rather than data structure, and are a pervasive part of the language.
 
@@ -94,15 +94,15 @@ Discussion of the goals of the J community on RC and general guidelines for pres
 
 ## Try me
 Want to try one of those cryptic J lines you see peppered through RC?
-Try pasting it into this [http://joebo.github.io/j-emscripten/ browser-based implementation of J].
+Try pasting it into this [browser-based implementation of J](http://joebo.github.io/j-emscripten/).
 
 If you want to be a bit more interactive, and get some guidance from J gurus, you can join the actual J IRC channel on Freenode, #jsoftware.  Buubot and several other J eval bots run there.
-If you don't have an IRC client you can try [http://webchat.freenode.net/?randomnick=1&channels=jsoftware freenode's web interface] (or just [http://webchat.freenode.net/?channels=jsoftware&randomnick=1 give it a quick spin]).
+If you don't have an IRC client you can try [freenode's web interface](http://webchat.freenode.net/?randomnick=1&channels=jsoftware) (or just [give it a quick spin](http://webchat.freenode.net/?channels=jsoftware&randomnick=1)).
 More [details about the J IRC community](https://rosettacode.org/wiki/j:Community/IRC) is available.
 
-If any of that piques your interest, and you want to explore a little more, you can [http://www.jsoftware.com/ download J] and [http://www.jsoftware.com/forums.htm join the J forums].
+If any of that piques your interest, and you want to explore a little more, you can [download J](http://www.jsoftware.com/) and [join the J forums](http://www.jsoftware.com/forums.htm).
 
-If you have problems executing any of the J code here on Rosetta, please make a note of it either on the task page itself, on the talk page, or on the appropriate [http://forums.jsoftware.com J forum], whichever is best.
+If you have problems executing any of the J code here on Rosetta, please make a note of it either on the task page itself, on the talk page, or on the appropriate [J forum](http://forums.jsoftware.com), whichever is best.
 It might be that there's a version dependency that needs to be documented, or you might have found an actual bug.
 
 ## Todo

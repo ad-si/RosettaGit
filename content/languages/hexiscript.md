@@ -12,4 +12,4 @@ tags = []
 
 
 hexiscript is a dynamically typed scripting language written in [OCaml](https://rosettacode.org/wiki/OCaml).
-The interpreter is available [https://github.com/Rion96/hexiscript here].
+The interpreter is available [here](https://github.com/Rion96/hexiscript).

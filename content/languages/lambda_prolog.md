@@ -11,7 +11,7 @@ tags = []
 +++
 
 
-From [http://www.lix.polytechnique.fr/~dale/lProlog/ the principle λProlog] page:
+From [the principle λProlog](http://www.lix.polytechnique.fr/~dale/lProlog/) page:
 
 <blockquote>
 λProlog is a logic programming language based on an intuitionistic fragment of Church's Simple Theory of Types. Such a strong logical foundation provides λProlog with logically supported notions of
@@ -24,6 +24,6 @@ From [http://www.lix.polytechnique.fr/~dale/lProlog/ the principle λProlog] pag
 Implementations of λProlog contain implementations of the simply typed λ-terms as well as (of subsets) of higher-order unification.
 </blockquote>
 
-The syntax is similar to [Prolog](https://rosettacode.org/wiki/Prolog), but it extends Prolog's basis of [https://en.wikipedia.org/wiki/Horn_clause Horn clause logic] to [https://en.wikipedia.org/wiki/Harrop_formula higher-order hereditary Harrop formulas]. Its higher-order nature allows for quantifying over predicates, and its basis in lambda-tree syntax facilitates construction of terms using lambda abstraction. All λProlog predicates require explicit type signatures.
+The syntax is similar to [Prolog](https://rosettacode.org/wiki/Prolog), but it extends Prolog's basis of [Horn clause logic](https://en.wikipedia.org/wiki/Horn_clause) to [higher-order hereditary Harrop formulas](https://en.wikipedia.org/wiki/Harrop_formula). Its higher-order nature allows for quantifying over predicates, and its basis in lambda-tree syntax facilitates construction of terms using lambda abstraction. All λProlog predicates require explicit type signatures.
 
 λProlog was first developed in 1986. It has had a number implementations, and is still under active development.

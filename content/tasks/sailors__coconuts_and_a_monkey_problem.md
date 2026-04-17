@@ -75,8 +75,8 @@ In the morning (after the surreptitious and separate action of each of the five 
 
 
 ;C.f:
-* [https://www.youtube.com/watch?v=U9qU20VmvaU Monkeys and Coconuts - Numberphile] (Video) Analytical solution.
-* [http://oeis.org/A002021 A002021 Pile of coconuts problem] The On-Line Encyclopedia of Integer Sequences. (Although some of its references may use the alternate form of the tale).
+* [Monkeys and Coconuts - Numberphile](https://www.youtube.com/watch?v=U9qU20VmvaU) (Video) Analytical solution.
+* [A002021 Pile of coconuts problem](http://oeis.org/A002021) The On-Line Encyclopedia of Integer Sequences. (Although some of its references may use the alternate form of the tale).
 
 
 
@@ -1556,7 +1556,7 @@ with none left over for the monkey.
 
 ## Perl 6
 
-There is nowhere in the spec where it explicitly states that the sailors cannot equally share zero coconuts in the morning. Actually, The On-Line Encyclopedia of Integer Sequences [http://oeis.org/A002021 A002021] considers the cases for 1 and 2 sailors equally sharing zero coconuts in the morning to be the correct answer.
+There is nowhere in the spec where it explicitly states that the sailors cannot equally share zero coconuts in the morning. Actually, The On-Line Encyclopedia of Integer Sequences [A002021](http://oeis.org/A002021) considers the cases for 1 and 2 sailors equally sharing zero coconuts in the morning to be the correct answer.
 
 This will test combinations of sailors and coconuts to see if they form a valid pairing. The first 6 are done using brute force, testing every combination until a valid one is found. For cases of 7 to 15 sailors, it uses a carefully crafted filter to drastically reduce the number of trials needed to find a valid case (to one, as it happens... :-) )
 
@@ -1700,7 +1700,7 @@ In the morning each sailor gets 13020 nuts
 
 ## Python
 
-You may want to read [http://paddy3118.blogspot.co.uk/2015/05/solving-monkey-and-coconuts-problem.html Solving the Monkey and coconuts problem] to get more background on the evolution of the Python code.
+You may want to read [Solving the Monkey and coconuts problem](http://paddy3118.blogspot.co.uk/2015/05/solving-monkey-and-coconuts-problem.html) to get more background on the evolution of the Python code.
 
 ### Python: Procedural
 
@@ -2229,7 +2229,7 @@ The number of coconuts requires is as follows, the whole output is at [[Sailors,
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/jBSqGXg/0 ScalaFiddle (ES aka JavaScript, non JVM, be patient)] or [https://scastie.scala-lang.org/lZXMc4YBSl2htEBw4D2TUQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM, be patient)](https://scalafiddle.io/sf/jBSqGXg/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/lZXMc4YBSl2htEBw4D2TUQ).
 
 ```Scala
 object Sailors extends App {

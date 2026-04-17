@@ -74,9 +74,9 @@ The ''[[wp:Hamming weight|population count]]''   is the number of   <big>'''1'''
 : For example,   <big>'''5'''</big>   (which is   <big>'''101'''</big>   in binary)   has a population count of   <big>'''2'''</big>.
 
 
-''[http://mathworld.wolfram.com/EvilNumber.html Evil numbers]''   are non-negative integers  that have an   ''even''   population count.
+''[Evil numbers](http://mathworld.wolfram.com/EvilNumber.html)''   are non-negative integers  that have an   ''even''   population count.
 
-''[http://mathworld.wolfram.com/OdiousNumber.html Odious numbers]''      are  positive integers that have an    ''odd''   population count.
+''[Odious numbers](http://mathworld.wolfram.com/OdiousNumber.html)''      are  positive integers that have an    ''odd''   population count.
 
 
 ## Task
@@ -91,8 +91,8 @@ The ''[[wp:Hamming weight|population count]]''   is the number of   <big>'''1'''
 
 ## See also
 
-* The On-Line Encyclopedia of Integer Sequences:   [http://oeis.org/A000069 A000069 odious numbers].
-* The On-Line Encyclopedia of Integer Sequences:   [http://oeis.org/A001969 A001969 evil numbers].
+* The On-Line Encyclopedia of Integer Sequences:   [A000069 odious numbers](http://oeis.org/A000069).
+* The On-Line Encyclopedia of Integer Sequences:   [A001969 evil numbers](http://oeis.org/A001969).
 
 
 
@@ -1014,9 +1014,9 @@ Odious: { 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Population_count this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Population_count) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1199,7 +1199,7 @@ end.
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=538335b7b71f5ea7b59c0c82fbb0ea3e Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=538335b7b71f5ea7b59c0c82fbb0ea3e)'''
 
 ```gambas
 Public Sub Main()
@@ -2834,7 +2834,7 @@ First 30 odd pop count:
 ```
 
 =={{Header|Scala}}==
-{{Out}}See it yourself by running in your browser either by [https://scalafiddle.io/sf/1IYuvtd/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/w0oHalRXS1mtI59tXh1NaA Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/1IYuvtd/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/w0oHalRXS1mtI59tXh1NaA).
 ```Scala
 import java.lang.Long.bitCount
 
@@ -2861,9 +2861,9 @@ object PopCount extends App {
 
 ## Seed7
 
-The function <code>popcount</code> below [http://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer) converts]
-the integer into a [http://seed7.sourceforge.net/libraries/bitset.htm bitset].
-The function [http://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset) card]
+The function <code>popcount</code> below [converts](http://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer))
+the integer into a [bitset](http://seed7.sourceforge.net/libraries/bitset.htm).
+The function [card](http://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset))
 is used to compute the population count of the bitset.
 
 

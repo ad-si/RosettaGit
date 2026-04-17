@@ -9,7 +9,7 @@ id = 8146
 categories = []
 tags = []
 +++
-[http://iris-reasoner.org/ IRIS] - Integrated Rule Inference System is an extensible reasoning engine for expressive rule-based languages. 
+[IRIS](http://iris-reasoner.org/) - Integrated Rule Inference System is an extensible reasoning engine for expressive rule-based languages. 
 
 Currently IRIS supports the following features: 
 * safe or un-safe [Datalog](https://rosettacode.org/wiki/Datalog)

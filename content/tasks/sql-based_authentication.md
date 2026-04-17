@@ -1134,7 +1134,7 @@ function authenticate_user($username, $password, $db_handle) {
 
 ## Python
 
-Uses the [http://dev.mysql.com/downloads/connector/python/ official Python MySQL connector]
+Uses the [official Python MySQL connector](http://dev.mysql.com/downloads/connector/python/)
 
 ```python
 import mysql.connector
@@ -1341,7 +1341,7 @@ define authenticate_user use $user, $pass
 
 ## Ruby
 
-Uses the [https://github.com/brianmario/mysql2 mysql2 gem]
+Uses the [mysql2 gem](https://github.com/brianmario/mysql2)
 
 ```ruby
 require 'mysql2'

@@ -13,6 +13,6 @@ tags = []
 '''Plorth''' is a stack based, concatenative, strongly typed and minimal scripting language inspired by [[Forth]] and [[Factor]] programming languages.
 
 ==Links==
-* [https://www.github.com/RauliL/plorth Plorth on GitHub]
-* [https://raulil.github.io/plorth Plorth documentation]
-* [https://raulil.github.io/plorth-repl Try Plorth in your browser]
+* [Plorth on GitHub](https://www.github.com/RauliL/plorth)
+* [Plorth documentation](https://raulil.github.io/plorth)
+* [Try Plorth in your browser](https://raulil.github.io/plorth-repl)

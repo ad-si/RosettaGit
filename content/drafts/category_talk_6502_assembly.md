@@ -21,16 +21,16 @@ This language, along with some like x86 assembly, are particular to a virtual ma
 
 == Emulator ==
 
-Here is a 6502 emulator which runs in the browser:  http://e-tradition.net/bytes/6502/
+Here is a 6502 emulator which runs in the browser:  <http://e-tradition.net/bytes/6502/>
 
 Of course, you need to program the emulator in machine language rather than assembly language, but as the 6502 has far fewer instructions than most other 8 bit microprocessors (the original 6502 only had 151 opcodes) it is not that difficult to memorize the machine instructions you need most frequently.
 
 ==6502 instruction set references==
 
 # [ftp://ftp.comlab.ox.ac.uk/pub/Cards/6502.Z Compressed flat text, concise]
-# [http://gshi.org/eh/documents/6502.txt flat text, verbose]
-# [http://www.obelisk.demon.co.uk/6502/reference.html Hyperlinked, verbose]
+# [flat text, verbose](http://gshi.org/eh/documents/6502.txt)
+# [Hyperlinked, verbose](http://www.obelisk.demon.co.uk/6502/reference.html)
 
 ==See Also==
 
-# [http://www.6502.org/ 6502.org]
+# [6502.org](http://www.6502.org/)

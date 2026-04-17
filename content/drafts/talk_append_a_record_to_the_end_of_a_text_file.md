@@ -20,7 +20,7 @@ Basically I was looking for an example of appending an actual record to a file a
 
 ::: I'm under the same impression as Rdm.  Is this about appending? Or some kind of record locking? Is it about append in native I/O facilities?   I was also trying to understand the rationale behind the table and that the table has been left as somewhat vague.  Normally, I would use a table for very specific results/observations and a bullet list for less specific results/observations.  We are already seeing variations on the table content - which is fine if that's what's intended.  For instance a couple of the solutions cite that they are guaranteed for multitasking, yet I don't see that they are doing anything other than relying on the o/s or library via open/close.  --[[User:Dgamey|Dgamey]] 13:38, 26 September 2011 (UTC)
 
-::: There is also [http://www.mjmwired.net/kernel/Documentation/filesystems/mandatory-locking.txt mandatory locking], but you don't really want that. It turns out to be a Bad Idea almost all the time since it allows any process to block all others (among various reasons). –[[User:Dkf|Donal Fellows]] 19:50, 27 September 2011 (UTC)
+::: There is also [mandatory locking](http://www.mjmwired.net/kernel/Documentation/filesystems/mandatory-locking.txt), but you don't really want that. It turns out to be a Bad Idea almost all the time since it allows any process to block all others (among various reasons). –[[User:Dkf|Donal Fellows]] 19:50, 27 September 2011 (UTC)
 
 == CSV? ==
 
@@ -59,7 +59,7 @@ Currently, the initial password file contents are specified as:
 |jdoe||x||1002||1000||Jane Doe,Room 1004,(234)555-8914,(234)555-0044||jdoe@rosettacode.org||/home/jsmith
 |}
 
-But this conflicts with the [http://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/ usual password file format]
+But this conflicts with the [usual password file format](http://www.cyberciti.biz/faq/understanding-etcpasswd-file-format/)
 
 Specifically the sixth field is supposed to be the home directory, and not an email address.  Email address goes in the fifth field.  And the seventh field is supposed to be the user's shell, and not their home directory.  Also, two users with different user ids should not share the same home directory
 
@@ -87,7 +87,7 @@ ThanX for spotting the email/home/shell error .  I've fixed the C and python cod
 
 BTW: On unix (and linux) single writes on files opened with appends are guaranteed to append.  And the syscall to "write" is atomic.  Hence locking is not required.  HOWEVER both the C code and the Python code use printf, and I confess that I am not 100% sure if a "fflush" is called when a printf includes a "\n".  I'll take a look.
 
-(found: http://stackoverflow.com/questions/2131463/fork-and-printf => suggests the fprintf should be replaced with a sprintf/write, not simply a fprintf/fflush)
+(found: <http://stackoverflow.com/questions/2131463/fork-and-printf> => suggests the fprintf should be replaced with a sprintf/write, not simply a fprintf/fflush)
 
 ThanX again.  [[User:NevilleDNZ|NevilleDNZ]] 14:28, 26 September 2011 (UTC)
 
@@ -97,7 +97,7 @@ ThanX again.  [[User:NevilleDNZ|NevilleDNZ]] 14:28, 26 September 2011 (UTC)
 
 Single <code>write</code> to a file opened with <code>O_APPEND</code> is atomic if the underlying file system supports it.  For example, it's not garanteed under NFS, where a lock is necessary (and still not garanteed to work, depending on the bugginess of OS).  A <code>printf</code> by default calls flush on end of line if output is tty, otherwise tends to only flush when buffer is full. --[[User:Ledrug|Ledrug]] 22:10, 26 September 2011 (UTC)
 
-ThanX and Ouch... [Linux NFS Overview, FAQ and HOWTO Documents http://nfs.sourceforge.net/#faq_a9]
+ThanX and Ouch... [Linux NFS Overview, FAQ and HOWTO Documents <http://nfs.sourceforge.net/#faq_a9>]
 * A9. Why does opening files with O_APPEND on multiple clients cause the files to become corrupted?
 * A. The NFS protocol does not support atomic append writes, so append writes are never atomic on NFS for any platform.
 Commentary: Makes appending to the end of a file a bit complicated.  It would be nice if there was a way of querying a file to see if writes are atomic in its filesystem.

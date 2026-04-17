@@ -13,7 +13,7 @@ tags = []
 
 The '''mIRC Scripting Language''' is a [programming language](https://rosettacode.org/wiki/programming_language) interpreted by the well known '''mIRC''' IRC client for [Microsoft](https://rosettacode.org/wiki/Microsoft) [Windows](https://rosettacode.org/wiki/Windows).
 
-* Official Website: http://www.mirc.com/
-* Plugins Website: http://www.mircscripts.org/
+* Official Website: <http://www.mirc.com/>
+* Plugins Website: <http://www.mircscripts.org/>
 
 <br clear="all"/>

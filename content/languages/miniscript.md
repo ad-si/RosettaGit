@@ -9,6 +9,6 @@ id = 22369
 categories = []
 tags = []
 +++
-MiniScript is a high-level scripting language designed originally for embedding in other software (especially games).  The first implementation was in C#.  In 2019, a C++ implementation was added, and both versions were open-sourced on [https://github.com/JoeStrout/miniscript GitHub].
+MiniScript is a high-level scripting language designed originally for embedding in other software (especially games).  The first implementation was in C#.  In 2019, a C++ implementation was added, and both versions were open-sourced on [GitHub](https://github.com/JoeStrout/miniscript).
 
-More information can be found at [https://miniscript.org/ miniscript.org].
+More information can be found at [miniscript.org](https://miniscript.org/).

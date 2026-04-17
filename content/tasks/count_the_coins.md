@@ -80,7 +80,7 @@ languages = [
 ]
 +++
 
-There are four types of common coins in   [https://en.wikipedia.org/wiki/United_States US]   currency:
+There are four types of common coins in   [US](https://en.wikipedia.org/wiki/United_States)   currency:
 :::#   quarters   (25 cents)
 :::#   dimes   (10 cents)
 :::#   nickels   (5 cents),   and
@@ -109,7 +109,7 @@ Less common are dollar coins (100 cents);   and very rare are half dollars (50 c
 
 
 ;Reference:
-*   [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_Temp_52 an algorithm from MIT Press].
+*   [an algorithm from MIT Press](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_Temp_52).
 
 
 
@@ -1533,7 +1533,7 @@ PRIVATE>
 
 ```
 
-Or one could implement the algorithm like described in http://www.cdn.geeksforgeeks.org/dynamic-programming-set-7-coin-change.
+Or one could implement the algorithm like described in <http://www.cdn.geeksforgeeks.org/dynamic-programming-set-7-coin-change>.
 
 ```factor
 
@@ -1587,7 +1587,7 @@ table coin-value 0 , 1 , 5 , 10 , 25 , 50 ,
 
 ## FreeBASIC
 
-Translation from "Dynamic Programming Solution: Python version" on this webside [http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/]
+Translation from "Dynamic Programming Solution: Python version" on this webside <http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/>
 
 ```freebasic
 ' version 09-10-2016
@@ -1994,7 +1994,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt
@@ -2766,7 +2766,7 @@ Recursive:
 
 ## Phix
 
-Very fast, from http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change
+Very fast, from <http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change>
 
 ```Phix
 function coin_count(sequence coins, integer amount)
@@ -3263,7 +3263,7 @@ Output:
 
 ## Ruby
 
-The algorithm also appears [http://www.algorithmist.com/index.php/Coin_Change here]
+The algorithm also appears [here](http://www.algorithmist.com/index.php/Coin_Change)
 
 '''Recursive, with caching'''
 

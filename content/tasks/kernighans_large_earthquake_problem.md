@@ -42,7 +42,7 @@ languages = [
 ]
 +++
 
-[https://en.wikipedia.org/wiki/Brian_Kernighan Brian Kernighan], in a [https://www.youtube.com/watch?v=Sg4U4r_AgJU lecture] at the University of Nottingham, described a [https://youtu.be/Sg4U4r_AgJU?t=50s problem] on which this task is based.
+[Brian Kernighan](https://en.wikipedia.org/wiki/Brian_Kernighan), in a [lecture](https://www.youtube.com/watch?v=Sg4U4r_AgJU) at the University of Nottingham, described a [problem](https://youtu.be/Sg4U4r_AgJU?t=50s) on which this task is based.
 
 ;Problem:
 You are given a a data file of thousands of lines; each of three `whitespace` separated fields: a date, a one word name and the magnitude of the event.

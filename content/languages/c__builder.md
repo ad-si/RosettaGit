@@ -12,7 +12,7 @@ tags = []
 
 
 
-[http://www.embarcadero.com/products/cbuilder C++Builder] is a rapid application development (RAD) environment, developed by Borland and as of 2009 owned by Embarcadero Technologies, for writing programs in the [C++](https://rosettacode.org/wiki/C++) programming language. 
+[C++Builder](http://www.embarcadero.com/products/cbuilder) is a rapid application development (RAD) environment, developed by Borland and as of 2009 owned by Embarcadero Technologies, for writing programs in the [C++](https://rosettacode.org/wiki/C++) programming language. 
 
 ## See Also
 *[Wikipedia:C++Builder](https://en.wikipedia.org/wiki/C%2B%2BBuilder)

@@ -1820,7 +1820,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1949,7 +1949,7 @@ def rand_Microsoft(seed; n):
 
 ### =BSD LCG=
 
-The following code has been tested with the "BigInt" library at [https://gist.github.com/pkoppstein/d06a123f30c033195841].
+The following code has been tested with the "BigInt" library at <https://gist.github.com/pkoppstein/d06a123f30c033195841>.
 
 ```jq
 # BSD rand()
@@ -3285,11 +3285,11 @@ MS : 41, 18467, 6334, 26500, 19169, 15724, 11478, 29358, 26962, 24464, 5705, 281
 ## Seed7
 
 Seed7 provides also a random number generator.
-The random function is overloaded for many types. E.g.: The library [http://seed7.sourceforge.net/libraries/integer.htm integer.s7i]
-defines [http://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29 rand(lower, upper)].
+The random function is overloaded for many types. E.g.: The library [integer.s7i](http://seed7.sourceforge.net/libraries/integer.htm)
+defines [rand(lower, upper)](http://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29).
 The parameters specifiy the lower and upper bound of the desired random value.
-The library [http://seed7.sourceforge.net/libraries/array.htm array.s7i] defines
-[http://seed7.sourceforge.net/libraries/array.htm#rand%28in_arrayType%29 rand(arr)]. This function selects a random element from an array.
+The library [array.s7i](http://seed7.sourceforge.net/libraries/array.htm) defines
+[rand(arr)](http://seed7.sourceforge.net/libraries/array.htm#rand%28in_arrayType%29). This function selects a random element from an array.
 
 
 ```seed7
@@ -3528,7 +3528,7 @@ rand_seq(&rand_ms(),0,10)
 ```
 
 
-'''Output''': compare with OEIS '''[http://oeis.org/A096553 A096553]''' and '''[http://oeis.org/A096558 A096558]'''.
+'''Output''': compare with OEIS '''[A096553](http://oeis.org/A096553)''' and '''[A096558](http://oeis.org/A096558)'''.
 
 
 ```txt

@@ -21,28 +21,28 @@ Modula-2 was designed by Niklaus Wirth at ETH Zurich as a systems implementation
 
 ## Modula 2 Compilers
 
-[http://freepages.modula2.org/compi.html List of Modula-2 Compilers]
+[List of Modula-2 Compilers](http://freepages.modula2.org/compi.html)
 
 
 ## Modula 2 Books & Tutorials
 
-[http://freepages.modula2.org/tutor.html List of Modula-2 Books & Tutorials] [http://www.modula2.org/books/index.php and]
+[List of Modula-2 Books & Tutorials](http://freepages.modula2.org/tutor.html) [and](http://www.modula2.org/books/index.php)
 
 
 ## Modula 2 Grammars
 
-* [http://modula2.net/resources/m2pim4.g PIM Modula-2, original version]
-* [http://modula2.net/resources/m2pim4_LL1.g PIM Modula-2, LL(1) version]
-* [http://modula2.net/resources/m2iso.g ISO Modula-2, original version]
+* [PIM Modula-2, original version](http://modula2.net/resources/m2pim4.g)
+* [PIM Modula-2, LL(1) version](http://modula2.net/resources/m2pim4_LL1.g)
+* [ISO Modula-2, original version](http://modula2.net/resources/m2iso.g)
 
 
 ## Modula 2 Open Source Projects
 
-* [http://www.nongnu.org/gm2 GNU Modula-2]
-* [http://objective.modula2.net Objective Modula-2]
-* [http://code.google.com/p/modula2jcc Modula2JCC]
-* [http://sourceforge.net/projects/modulipse Modulipse]
-* [http://sourceforge.net/projects/schwarzerkaffee Schwarzer Kaffee]
+* [GNU Modula-2](http://www.nongnu.org/gm2)
+* [Objective Modula-2](http://objective.modula2.net)
+* [Modula2JCC](http://code.google.com/p/modula2jcc)
+* [Modulipse](http://sourceforge.net/projects/modulipse)
+* [Schwarzer Kaffee](http://sourceforge.net/projects/schwarzerkaffee)
 
 
 ## Modula 2 on IRC

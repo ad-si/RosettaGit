@@ -233,7 +233,7 @@ The first 15 terms of the sequence are:
 ```
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

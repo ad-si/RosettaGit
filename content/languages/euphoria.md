@@ -14,5 +14,5 @@ Euphoria is a powerful yet simple programming language, developed by Robert Crai
 
 ## See also
 * [Euphoria on Wikipedia](https://en.wikipedia.org/wiki/Euphoria_(programming_language))
-* [http://rapideuphoria.com/ RapidEuphoria site]
-* [http://openeuphoria.org/ openEuphoria site]
+* [RapidEuphoria site](http://rapideuphoria.com/)
+* [openEuphoria site](http://openeuphoria.org/)

@@ -23,9 +23,9 @@ languages = [
 A '''tree sort''' is a [[wp:sort algorithm|sort algorithm]] that builds a [[wp:binary search tree|binary search tree]] from the keys to be sorted, and then traverses the tree ([[wp:Tree traversal|in-order]]) so that the keys come out in sorted order. Its typical use is when sorting the elements of a stream from a file. Several other sorts would have to load the elements to a temporary data structure, whereas in a tree sort the act of loading the input into a data structure is sorting it.
 
 The tree sort is considered by some to be the faster method to sort a linked list, followed by [[Sorting_algorithms#Quicksort|Quicksort]] and [[Sorting_algorithms#Mergesort|Mergesort]]:
-* [http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.31.9981 A Comparative Study of Linked List Sorting Algorithms by Ching-Kuang Shene]
+* [A Comparative Study of Linked List Sorting Algorithms by Ching-Kuang Shene](http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.31.9981)
 [[Sorting_algorithms#Sediment sort|Sediment sort]], [[Sorting_algorithms#bubble sort|bubble sort]], [[Sorting_algorithms#selection sort|selection sort]] perform very badly.
-* http://www.martinbroadhurst.com/sorting-a-linked-list-by-turning-it-into-a-binary-tree.html
+* <http://www.martinbroadhurst.com/sorting-a-linked-list-by-turning-it-into-a-binary-tree.html>
 
 
 '''Task:'''
@@ -484,7 +484,7 @@ test({"d","c","e","b","a"})
 
 ## Racket
 
-{{trans|Scheme}} -- this implementation illustrates differences in identifiers and syntaxes of Scheme and Racket's <code>match-lambda</code> family. [http://docs.racket-lang.org/reference/match.html <code>racket/match</code> documented here].
+{{trans|Scheme}} -- this implementation illustrates differences in identifiers and syntaxes of Scheme and Racket's <code>match-lambda</code> family. [<code>racket/match</code> documented here](http://docs.racket-lang.org/reference/match.html).
 
 
 ```racket

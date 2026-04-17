@@ -14,5 +14,5 @@ tags = []
 min is a minimalistic, concatenative, functional stack language.
 
 ## Links
-*[https://min-lang.org/ min website]
-*[https://min-lang.org/learn/ Learn min]
+*[min website](https://min-lang.org/)
+*[Learn min](https://min-lang.org/learn/)

@@ -460,7 +460,7 @@ output_jpeg $img filename.jpg
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Using the convert utility by ImageMagick:
 

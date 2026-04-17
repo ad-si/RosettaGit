@@ -17,4 +17,4 @@ conditionals and other programming language characteristics, it can be considere
 a "smart" configuration system.
 
 Current implementations are based on java and the code is open source that can be found at
-[https://github.com/wakeupthecat/gastona github.com/wakeupthecat/gastoAna]. Binaries for Windows, Linux and also Android can be found at [https://sourceforge.net/projects/gastona/ sourceforge.net/projects/gastona].
+[github.com/wakeupthecat/gastoAna](https://github.com/wakeupthecat/gastona). Binaries for Windows, Linux and also Android can be found at [sourceforge.net/projects/gastona](https://sourceforge.net/projects/gastona/).

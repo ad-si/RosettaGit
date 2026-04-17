@@ -30,13 +30,13 @@ tags = []
 ::#Animate the colours of the rectangles by ''fading in'' the colour from the outermost rectangle to the innermost. 
 ::#The animation loop can continue for a definite number of iterations or forever. 
 
-Create [https://1drv.ms/v/s!AqDUIunCqVnIg1MxKPi5DzwUbJEf Vibrating rectangles]
+Create [Vibrating rectangles](https://1drv.ms/v/s!AqDUIunCqVnIg1MxKPi5DzwUbJEf)
 
 
 
 ## C
 
-Dimensions of the rectangles, their number and the animation delay can be configured. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Dimensions of the rectangles, their number and the animation delay can be configured. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -79,7 +79,7 @@ int main()
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=on%20timer%0Asz%20-%3D%202%0Aif%20sz%20%3C%200%0Asz%20%3D%2049%0Acolor%20random%201000%0A.%0Amove%2050%20-%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20-%20sz%0Atimer%200.2%0A.%0Atimer%200.2 Run it]
+[Run it](https://easylang.online/apps/run.html?code=on%20timer%0Asz%20-%3D%202%0Aif%20sz%20%3C%200%0Asz%20%3D%2049%0Acolor%20random%201000%0A.%0Amove%2050%20-%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20-%20sz%0Atimer%200.2%0A.%0Atimer%200.2)
 
 <lang>on timer
   sz -= 2
@@ -707,7 +707,7 @@ sub display (@rect) {
 }
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/vibrating-rectangles-perl6.gif Vibrating rectangles] (.gif image)
+See: [Vibrating rectangles](https://github.com/thundergnat/rc/blob/master/img/vibrating-rectangles-perl6.gif) (.gif image)
 
 
 ### SDL Animation
@@ -921,7 +921,7 @@ for colour in cycle(colours):
 ```
 
 
-Hmm, maybe [https://repl.it/@PaddyMcCarthy/DeafeningDroopyBusiness this]?
+Hmm, maybe [this](https://repl.it/@PaddyMcCarthy/DeafeningDroopyBusiness)?
 
 
 ## Racket
@@ -1049,4 +1049,4 @@ return
 
 Output:
 
-[https://1drv.ms/v/s!AqDUIunCqVnIg1MxKPi5DzwUbJEf Vibrating rectangles]
+[Vibrating rectangles](https://1drv.ms/v/s!AqDUIunCqVnIg1MxKPi5DzwUbJEf)

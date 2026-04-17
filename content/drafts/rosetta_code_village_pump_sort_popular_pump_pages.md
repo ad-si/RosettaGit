@@ -14,7 +14,7 @@ tags = []
 |topic=Sort popular pump pages
 |summary=A Python implementation of pump sorting code.
 }}
-I was reading [[http://blog.rosettacode.org/?p=184]].
+I was reading <http://blog.rosettacode.org/?p=184>.
 I'm programming the Village Pump sorter right now.
 
 I will just read all <nowiki>{{vp|...}}</nowiki> and get last edit date.

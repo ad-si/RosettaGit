@@ -18,10 +18,10 @@ The project ''rlabplus'' is its successor for 32- and 64-bit linux operating sys
 It adds new solvers, functions and procedures, while updating the existing ones, all with purpose of
 increasing the versatility of RLaB.
 It integrates data-visualization capabilities using the standard plotting packages
-[http://www.astro.caltech.edu/~tjp/pgplot/ pgplot],
-[http://www.gnuplot.info/ Gnuplot], or [http://plasma-gate.weizmann.ac.il/Grace/ xmgr].
-''rlabplus'' also supports data-export to different formats, e.g., to [http://www.openoffice.org/ openoffice.org],
-and reads and writes more advanced data formats, e.g., [http://www.hdfgroup.org/HDF5/ HDF5].
+[pgplot](http://www.astro.caltech.edu/~tjp/pgplot/),
+[Gnuplot](http://www.gnuplot.info/), or [xmgr](http://plasma-gate.weizmann.ac.il/Grace/).
+''rlabplus'' also supports data-export to different formats, e.g., to [openoffice.org](http://www.openoffice.org/),
+and reads and writes more advanced data formats, e.g., [HDF5](http://www.hdfgroup.org/HDF5/).
 It can also communicate with the outside world through serial port or GPIB interfaces, or through tcp/ip or http/ftp.
 
 RLaB was created by Ian Searle and collaborators.

@@ -61,7 +61,7 @@ The task is to display a word in inverse video (or reverse video) followed by a 
 ## 6502 Assembly
 
 This example has been written for the C64 and uses the STROUT BASIC routine.
-Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
+Compile with the [Turbo Macro Pro cross assembler](http://turbo.style64.org/):
 
 ```txt
 
@@ -497,7 +497,7 @@ echo "\e[7mReversed\e[m Normal"
 ## OCaml
 
 
-Using the library [http://forge.ocamlcore.org/projects/ansiterminal/ ANSITerminal] in the interactive loop:
+Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/) in the interactive loop:
 
 
 ```ocaml
@@ -703,7 +703,7 @@ This is normal
 
 ## UNIX Shell
 
-Use the [http://invisible-island.net/ncurses/man/tput.1.html tput(1)] utility to write the escape sequences that enable or disable reverse video.
+Use the [tput(1)](http://invisible-island.net/ncurses/man/tput.1.html) utility to write the escape sequences that enable or disable reverse video.
 
 ```bash
 #!/bin/sh
@@ -714,7 +714,7 @@ echo 'bar'
 ```
 
 
-If the system supports terminfo, then <code>tput rev</code> and <code>tput sgr0</code> also work. (All recent systems have terminfo, except NetBSD, but [http://blog.netbsd.org/tnf/entry/terminfo_has_replaced_termcap NetBSD 6 will have terminfo].) The shorter names <code>mr</code> and <code>me</code> are the backward-compatible names from termcap.
+If the system supports terminfo, then <code>tput rev</code> and <code>tput sgr0</code> also work. (All recent systems have terminfo, except NetBSD, but [NetBSD 6 will have terminfo](http://blog.netbsd.org/tnf/entry/terminfo_has_replaced_termcap).) The shorter names <code>mr</code> and <code>me</code> are the backward-compatible names from termcap.
 
 If the terminal cannot do reverse video, then ''tput'' will fail with a message to standard error.
 

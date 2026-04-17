@@ -38,7 +38,7 @@ Could you pls show 'your' values of
 ###  might be a task definition issue 
 
 
-It's difficult for me to say for sure (because I am a novice in this area, and because r in <big> r = L/(1 + e cos(angle)) </big> is not defined), but it's currently [http://spiff.rit.edu/classes/phys440/lectures/ellipse/ellipse.html looking] to me like the angle there should be the ''eccentric anomaly'' instead of the ''true anomaly''. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 19:22, 5 December 2018 (UTC)
+It's difficult for me to say for sure (because I am a novice in this area, and because r in <big> r = L/(1 + e cos(angle)) </big> is not defined), but it's currently [looking](http://spiff.rit.edu/classes/phys440/lectures/ellipse/ellipse.html) to me like the angle there should be the ''eccentric anomaly'' instead of the ''true anomaly''. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 19:22, 5 December 2018 (UTC)
 
 == REXX (version 2) results match Perl 6's ==
 I took the orbital elements from the '''Perl 6''' example/entry and added them to the '''REXX''' (version 2) example/entry and the results agree,   so we now have multiple concurrences of two different data examples.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 21:51, 29 October 2018 (UTC)

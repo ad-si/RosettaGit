@@ -14,5 +14,5 @@ tags = []
 
 
 ## External Links
-* [https://www.pyret.org/ Pyret site]
-* [http://papl.cs.brown.edu/2015/ Programming and Programming Languages book]
+* [Pyret site](https://www.pyret.org/)
+* [Programming and Programming Languages book](http://papl.cs.brown.edu/2015/)

@@ -300,7 +300,7 @@ BEGIN {
 ```
 
 
-See also: [[System_time#Batch]], [http://rosettacode.org/wiki/Discordian_date#AWK Discordian_date]
+See also: [[System_time#Batch]], [Discordian_date](http://rosettacode.org/wiki/Discordian_date#AWK)
 
 
 ## BaCon
@@ -818,7 +818,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=f061cc0cf175496b37bbcd14bd1e7058 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=f061cc0cf175496b37bbcd14bd1e7058)'''
 
 ```gambas
 Public Sub Main()
@@ -1097,7 +1097,7 @@ $ jq -n 'now | [., todate]'
 ```
 
 
-"now" reports the number of seconds since the beginning of the [https://en.wikipedia.org/wiki/Unix_epoch  Unix epoch].
+"now" reports the number of seconds since the beginning of the [Unix epoch](https://en.wikipedia.org/wiki/Unix_epoch).
 
 
 ## Jsish
@@ -1719,7 +1719,7 @@ Output (with cs_CZ.UTF-8 locale):
 ```txt
 Čt led 24 11:23:30 2008
 ```
-Using the [http://search.cpan.org/perldoc?DateTime DateTime] module:
+Using the [DateTime](http://search.cpan.org/perldoc?DateTime) module:
 ```perl
 use DateTime;
 my $dt = DateTime->now;
@@ -1785,11 +1785,11 @@ echo microtime(), "\n";
 Formatted time:
 ```php
 echo date('D M j H:i:s Y'), "\n";  // custom format; see format characters here:
-                                   // http://us3.php.net/manual/en/function.date.php
+                                   // <http://us3.php.net/manual/en/function.date.php>
 echo date('c'), "\n";  // ISO 8601 format
 echo date('r'), "\n";  // RFC 2822 format
 echo date(DATE_RSS), "\n";  // can also use one of the predefined formats here:
-                            // http://us3.php.net/manual/en/class.datetime.php#datetime.constants.types
+                            // <http://us3.php.net/manual/en/class.datetime.php#datetime.constants.types>
 ```
 
 
@@ -2087,7 +2087,7 @@ puts Time.now.to_r  # 1424900671883862959/1000000000
 
 ## Scala
 
-{{libheader|Scala}}Ad hoc solution as [http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop REPL] scripts:
+{{libheader|Scala}}Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) scripts:
 
 ### JDK < 8
 

@@ -53,6 +53,6 @@ The Ecere SDK is completely free and includes a full-featured [Integrated Develo
  pen.color = ColorCMYK { 0, 100, 100, 0 };
 
 ## External links
-*[http://ec-lang.org/overview Description of eC language on official web site]
-*[http://ecere.ca/ Ecere Corporation's web site]
-*[http://freshmeat.net/projects/ecere/ Ecere SDK project on FreshMeat]
+*[Description of eC language on official web site](http://ec-lang.org/overview)
+*[Ecere Corporation's web site](http://ecere.ca/)
+*[Ecere SDK project on FreshMeat](http://freshmeat.net/projects/ecere/)

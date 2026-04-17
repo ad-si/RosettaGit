@@ -18,4 +18,4 @@ As of this writing, it's supported for a variety of versions and architectures o
 
 
 =Related links=
-* [http://www.evolane.com/software/etcl/ Official website]
+* [Official website](http://www.evolane.com/software/etcl/)

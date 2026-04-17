@@ -1885,7 +1885,7 @@ end
 
 ## J
 
-The reduced row echelon form of a matrix can be obtained using the <code>gauss_jordan</code> verb from the [http://www.jsoftware.com/wsvn/addons/trunk/math/misc/linear.ijs linear.ijs script], available as part of the <code>math/misc</code> addon. <code>gauss_jordan</code> and the verb <code>pivot</code> are shown below for completeness:
+The reduced row echelon form of a matrix can be obtained using the <code>gauss_jordan</code> verb from the [linear.ijs script](http://www.jsoftware.com/wsvn/addons/trunk/math/misc/linear.ijs), available as part of the <code>math/misc</code> addon. <code>gauss_jordan</code> and the verb <code>pivot</code> are shown below for completeness:
 
 '''Solution:'''
 
@@ -3176,9 +3176,9 @@ Reduced Row Echelon Form Matrix
 
 
 Re-implemented without the pseudocode, expressed as elementary matrix row operations. See
-http://unapologetic.wordpress.com/2009/08/27/elementary-row-and-column-operations/
+<http://unapologetic.wordpress.com/2009/08/27/elementary-row-and-column-operations/>
 and
-http://unapologetic.wordpress.com/2009/09/03/reduced-row-echelon-form/
+<http://unapologetic.wordpress.com/2009/09/03/reduced-row-echelon-form/>
 
 First, a procedural version:
 
@@ -3905,7 +3905,7 @@ const proc: toReducedRowEchelonForm (inout matrix: mat) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#toReducedRowEchelonForm]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#toReducedRowEchelonForm>
 
 
 ## Sidef

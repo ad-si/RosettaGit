@@ -183,11 +183,11 @@ Use these functions to '''create a function that does Ethiopian multiplication''
 
 ## References
 
-*[http://www.bbc.co.uk/learningzone/clips/ethiopian-multiplication-explained/11232.html Ethiopian multiplication explained] (Video)
-*[http://www.youtube.com/watch?v=Nc4yrFXw20Q A Night Of Numbers - Go Forth And Multiply] (Video)
-*[http://www.ncetm.org.uk/blogs/3064 Ethiopian multiplication]
-*[http://www.bbc.co.uk/dna/h2g2/A22808126 Russian Peasant Multiplication]
-*[http://thedailywtf.com/Articles/Programming-Praxis-Russian-Peasant-Multiplication.aspx Programming Praxis: Russian Peasant Multiplication]
+*[Ethiopian multiplication explained](http://www.bbc.co.uk/learningzone/clips/ethiopian-multiplication-explained/11232.html) (Video)
+*[A Night Of Numbers - Go Forth And Multiply](http://www.youtube.com/watch?v=Nc4yrFXw20Q) (Video)
+*[Ethiopian multiplication](http://www.ncetm.org.uk/blogs/3064)
+*[Russian Peasant Multiplication](http://www.bbc.co.uk/dna/h2g2/A22808126)
+*[Programming Praxis: Russian Peasant Multiplication](http://thedailywtf.com/Articles/Programming-Praxis-Russian-Peasant-Multiplication.aspx)
 
 
 
@@ -2271,7 +2271,7 @@ Halve and double are standard words, spelled '''2/''' and '''2*''' respectively.
   over 2* over 2/ recurse
   swap even? if nip else + then ;
 ```
-The author of Forth, Chuck Moore, designed a similar primitive into his MISC Forth microprocessors.  The '''+*''' instruction is a multiply step: it adds S to T if A is odd, then shifts both A and T right one. The idea is that you only need to perform as many of these multiply steps as you have significant bits in the operand.(See his [http://www.colorforth.com/inst.htm core instruction set] for details.)
+The author of Forth, Chuck Moore, designed a similar primitive into his MISC Forth microprocessors.  The '''+*''' instruction is a multiply step: it adds S to T if A is odd, then shifts both A and T right one. The idea is that you only need to perform as many of these multiply steps as you have significant bits in the operand.(See his [core instruction set](http://www.colorforth.com/inst.htm) for details.)
 
 
 ## Fortran
@@ -4642,7 +4642,7 @@ ethiopian(First,Second,Product) :-
 ###  Functional Style
 
 
-Using the same definitions as above for "halve/2", "double/2" and "is_even/2" along with an SWI-Prolog [http://www.swi-prolog.org/pack/list?p=func pack for function notation], one might write the following solution
+Using the same definitions as above for "halve/2", "double/2" and "is_even/2" along with an SWI-Prolog [pack for function notation](http://www.swi-prolog.org/pack/list?p=func), one might write the following solution
 
 
 ```prolog
@@ -5501,7 +5501,7 @@ const func integer: peasantMult (in var integer: a, in var integer: b) is func
 ```
 
 
-Original source (without separate functions for doubling, halving, and checking if a number is even): [http://seed7.sourceforge.net/algorith/math.htm#peasantMult]
+Original source (without separate functions for doubling, halving, and checking if a number is even): <http://seed7.sourceforge.net/algorith/math.htm#peasantMult>
 
 
 ## Sidef

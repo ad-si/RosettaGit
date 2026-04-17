@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-These are the languages supported by [http://codepad.org Codepad].
+These are the languages supported by [Codepad](http://codepad.org).

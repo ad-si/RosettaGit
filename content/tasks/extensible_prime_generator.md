@@ -71,7 +71,7 @@ Show output on this page.
 ;nice site to check results:
 Website with vast count of primes. Small ones for the first 10000 and up to 1,000,000,000,000 aka 1E12, divided in subranges : "Each compressed file contains 10 million primes"
 
-http://www.primos.mat.br/indexen.html
+<http://www.primos.mat.br/indexen.html>
 
 
 
@@ -776,7 +776,7 @@ It solves the Euler Problem 10 in almost too short a time to be measured, and it
 
 ## EchoLisp
 
-Standard prime functions handle numbers < 2e+9. See [http://www.echolalie.org/echolisp/help.html#prime?] . The '''bigint''' library handles large numbers. See [http://www.echolalie.org/echolisp/help.html#bigint.lib]. The only limitations are time, memory, and browser performances ..
+Standard prime functions handle numbers < 2e+9. See <http://www.echolalie.org/echolisp/help.html#prime?> . The '''bigint''' library handles large numbers. See <http://www.echolalie.org/echolisp/help.html#bigint.lib>. The only limitations are time, memory, and browser performances ..
 
 ```lisp
 
@@ -1834,7 +1834,7 @@ Number beween 7,700 and 8,000: 30
 
 
 An alternative showing how to use a good and ''very'' fast open source Sieve of Atkin implementation
-via [https://godoc.org/github.com/jbarham/primegen.go github.com/jbarham/primegen.go].
+via [github.com/jbarham/primegen.go](https://godoc.org/github.com/jbarham/primegen.go).
 Due to how Go's imports work, the bellow can be given directly to "<code>go run</code>" or "<code>go build</code>" and the latest version of the primegen package will be fetched and built if it's not already present on the system.
 (This example may not be exactly within the scope of this task, but it's a trivial to use and extremely fast prime generator probably worth considering whenever primes are needed in Go.)
 
@@ -1873,7 +1873,7 @@ func main() {
 ## Haskell
 
 
-This program uses the [http://hackage.haskell.org/package/primes primes] package, which uses a lazy wheel sieve to produce an infinite list of primes.
+This program uses the [primes](http://hackage.haskell.org/package/primes) package, which uses a lazy wheel sieve to produce an infinite list of primes.
 
 
 ```haskell
@@ -2008,7 +2008,7 @@ procedure getCompositeField(x); return x.composite; end
 ## J
 
 
-Using the p: builtin, http://www.jsoftware.com/help/dictionary/dpco.htm reports "Currently, arguments larger than 2^31 are tested to be prime according to a probabilistic algorithm (Miller-Rabin)".
+Using the p: builtin, <http://www.jsoftware.com/help/dictionary/dpco.htm> reports "Currently, arguments larger than 2^31 are tested to be prime according to a probabilistic algorithm (Miller-Rabin)".
 
 
 ```J
@@ -3424,7 +3424,7 @@ real	0m1,121s
 
 ### alternative
 
-The main intention is the use in http://rosettacode.org/wiki/Emirp_primes.
+The main intention is the use in <http://rosettacode.org/wiki/Emirp_primes>.
 The speed is about 3x times slower than sieve of Atkin.About 13 secs for 10 billion/146 secs for 100 billion in 64-Bit.
 But i can hold all primes til 1e11 in 2.5 Gb memory.Test for isEmirp inserted.
 32-bit is slow doing 64-Bit math.Using a dynamic array is slow too in NextPrime.
@@ -4129,13 +4129,13 @@ real	7m44.649s
 =={{Header|Perl}}==
 Two examples of pure Perl extensible generators are shown in the [[Sieve of Eratosthenes#Extensible_sieves]] section.
 
-The [https://metacpan.org/pod/Math::Prime::Util Math::Prime::Util] module provides a highly performant, feature-rich library for generating, testing, and manipulating prime numbers in Perl. It offers full interoperability with Perl's bigint pragma.
+The [Math::Prime::Util](https://metacpan.org/pod/Math::Prime::Util) module provides a highly performant, feature-rich library for generating, testing, and manipulating prime numbers in Perl. It offers full interoperability with Perl's bigint pragma.
 
 Limits with a 64-bit Perl:
 * nth_prime takes about 20 seconds to return the 10^14th prime and should be fast for all results up to ~4e17.  It will be impractically slow past that.
 * prime_count uses the LMO algorithm and takes about 35 seconds to return the count for primes to 10^16, and should have state of the art speed to 2^64-1.  After that it will use a primality test in the interval so it still useful for large sizes with a small range.
 * fast approximations and upper/lower limits are available, which should be fast for any input size including bigints.
-* <tt>primes</tt>, <tt>next_prime</tt>, <tt>prev_prime</tt>, <tt>forprimes</tt>, <tt>prime_iterator</tt>, <tt>prime_iterator_object</tt>, and primality tests will work for practically any size input.  The [https://metacpan.org/pod/Math::Prime::Util::GMP Math::Prime::Uti::GMP] module is recommended for large inputs.  With that module, these functions will work quickly for multi-thousand digit numbers.
+* <tt>primes</tt>, <tt>next_prime</tt>, <tt>prev_prime</tt>, <tt>forprimes</tt>, <tt>prime_iterator</tt>, <tt>prime_iterator_object</tt>, and primality tests will work for practically any size input.  The [Math::Prime::Uti::GMP](https://metacpan.org/pod/Math::Prime::Util::GMP) module is recommended for large inputs.  With that module, these functions will work quickly for multi-thousand digit numbers.
 
 
 ```perl
@@ -4579,7 +4579,7 @@ print( list( islice( primes(), 10000-1, 10000))[0])
 
 ### Python: Iterative sieve on unbounded count from 2
 
-After a [[https://paddy3118.blogspot.com/2018/11/to-infinity-beyond.html?showComment=1541671062388#c8979782377032256564 blog entry]] on implementing a particular Haskell solution in Python.
+After a [blog entry](https://paddy3118.blogspot.com/2018/11/to-infinity-beyond.html?showComment=1541671062388#c8979782377032256564) on implementing a particular Haskell solution in Python.
 
 
 ```python
@@ -4630,7 +4630,7 @@ Personal note: unless I need the raw power of an application-specific primes gen
 I pretty well stick with the <code>math/number-theory</code> library. And even when I write an ASPG/F I question
 how it performs against the <code>math/number-theory</code> version!
 
-The link referenced in the source: [http://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29 <code>math/number-theory</code> module documentation]
+The link referenced in the source: [<code>math/number-theory</code> module documentation](http://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29)
 
 
 ```scheme
@@ -4883,7 +4883,7 @@ The 10,000th prime is 104729
 
 ## Seed7
 
-The [http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes sieve of eratosthenes]
+The [sieve of eratosthenes](http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes)
 cannot be used, because it needs a limit. Instead the function getPrime is used.
 GetPrime generates all primes in sequence.
 

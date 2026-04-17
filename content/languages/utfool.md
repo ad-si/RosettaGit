@@ -11,4 +11,4 @@ tags = []
 +++
 '''UTFool''' /pron. as <s>b</s>eautiful/ stays for '''UTF'''-based '''o'''bject-'''o'''riented '''l'''anguage.
 
-Find more on the '''[https://github.com/psmitt/UTFool UTFool Homepage]'''.
+Find more on the '''[UTFool Homepage](https://github.com/psmitt/UTFool)'''.

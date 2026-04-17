@@ -846,7 +846,7 @@ String append
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=0b17e205d56985c8cd1ff108c6fc9ca4 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=0b17e205d56985c8cd1ff108c6fc9ca4)'''
 
 ```gambas
 Public Sub Main()

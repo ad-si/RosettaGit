@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[http://gnozal.ucoz.com/#UserLibs PureLPRINT] is a UserLibrary developed by Gnozal for [[PureBasic]]
+[PureLPRINT](http://gnozal.ucoz.com/#UserLibs) is a UserLibrary developed by Gnozal for [[PureBasic]]

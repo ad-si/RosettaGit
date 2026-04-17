@@ -11,4 +11,4 @@ tags = []
 +++
 
 Droopy's Lib is a free add-on library for [[PureBasic]]. 
-Downloadable from: {{library}}[http://sourceforge.net/projects/droopyslib/ Droopy library on Sourceforge]
+Downloadable from: {{library}}[Droopy library on Sourceforge](http://sourceforge.net/projects/droopyslib/)

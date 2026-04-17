@@ -52,8 +52,8 @@ Generate the first 10 closed-form expressions, starting with ''p = 0''.
 ## See also
 
 :*   The Wikipedia entry:   [[wp:Faulhaber's formula|Faulhaber's formula]].
-:*   The Wikipedia entry:   [https://en.wikipedia.org/wiki/Bernoulli_number Bernoulli numbers].
-:*   The Wikipedia entry:   [https://en.wikipedia.org/wiki/Binomial_coefficient binomial coefficients].
+:*   The Wikipedia entry:   [Bernoulli numbers](https://en.wikipedia.org/wiki/Bernoulli_number).
+:*   The Wikipedia entry:   [binomial coefficients](https://en.wikipedia.org/wiki/Binomial_coefficient).
 
 
 
@@ -907,9 +907,9 @@ math.functions regexp sequences ;
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Faulhaber this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Faulhaber) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2300,7 +2300,7 @@ end for
 
 == {{header|Python}} ==
 
-The following implementation does not use [https://en.wikipedia.org/wiki/Bernoulli_number Bernoulli numbers], but [https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind Stirling numbers of the second kind], based on the relation: <math>m^n=\sum_{k=0}^n S_n^k (m)_k=\sum_{k=0}^n S_n^k k!{m\choose k}</math>.
+The following implementation does not use [Bernoulli numbers](https://en.wikipedia.org/wiki/Bernoulli_number), but [Stirling numbers of the second kind](https://en.wikipedia.org/wiki/Stirling_numbers_of_the_second_kind), based on the relation: <math>m^n=\sum_{k=0}^n S_n^k (m)_k=\sum_{k=0}^n S_n^k k!{m\choose k}</math>.
 
 Then summing: <math>\sum_{j=0}^{m} j^n=\sum_{j=0}^m\sum_{k=0}^n S_n^k k!{j\choose k}=\sum_{k=0}^n S_n^k k!{m+1\choose k+1}=\sum_{k=0}^n S_n^k \frac{(m+1)_{k+1}}{k+1}</math>.
 

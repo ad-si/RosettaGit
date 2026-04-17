@@ -251,7 +251,7 @@ list_z_@nl
 ```
 
 
-Note that these mechanisms can be disabled (using [http://www.jsoftware.com/help/dictionary/dx003.htm 3!:6]).
+Note that these mechanisms can be disabled (using [3!:6](http://www.jsoftware.com/help/dictionary/dx003.htm)).
 
 
 ## JavaScript
@@ -534,7 +534,7 @@ give the function: rotateleft
 
 ## Ruby
 
-<code>[http://ruby-doc.org/core/Method.html#method-i-source_location Method#source_location]</code> will return the file and line number of a Ruby method. If a method wasn't defined in Ruby, <code>Method#source_location</code> returns nil.
+<code>[Method#source_location](http://ruby-doc.org/core/Method.html#method-i-source_location)</code> will return the file and line number of a Ruby method. If a method wasn't defined in Ruby, <code>Method#source_location</code> returns nil.
 
 ```ruby
 require 'mathn'

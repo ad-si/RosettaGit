@@ -71,11 +71,11 @@ Write a program to find all Smith numbers ''below'' 10000.
 
 ## See also
 
-* from Wikipedia:   [[https://en.wikipedia.org/wiki/Smith_number Smith number]].
-* from MathWorld:   [[http://mathworld.wolfram.com/SmithNumber.html Smith number]].
-* from OEIS A6753:   [[https://oeis.org/A006753 OEIS sequence A6753]].
-* from OEIS A104170:   [[https://oeis.org/A104170 Number of Smith numbers below 10^n]].
-* from The Prime pages:   [[http://primes.utm.edu/glossary/xpage/SmithNumber.html Smith numbers]].
+* from Wikipedia:   [Smith number](https://en.wikipedia.org/wiki/Smith_number).
+* from MathWorld:   [Smith number](http://mathworld.wolfram.com/SmithNumber.html).
+* from OEIS A6753:   [OEIS sequence A6753](https://oeis.org/A006753).
+* from OEIS A104170:   [Number of Smith numbers below 10^n](https://oeis.org/A104170).
+* from The Prime pages:   [Smith numbers](http://primes.utm.edu/glossary/xpage/SmithNumber.html).
 
 
 
@@ -2026,7 +2026,7 @@ for n = 1, 10000 do
 end
 ```
 
-Seems silly to paste in all 376 numbers but rest assured the output agrees with https://oeis.org/A006753
+Seems silly to paste in all 376 numbers but rest assured the output agrees with <https://oeis.org/A006753>
 
 
 ## M2000 Interpreter

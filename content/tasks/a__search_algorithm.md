@@ -57,8 +57,8 @@ Use this algorithm to solve an 8 puzzle. Each node of the input graph will repre
 
 
 ;See also:
-* Wikipedia webpage:   [https://en.wikipedia.org/wiki/A*_search_algorithm A* search algorithm].
-* [https://www.redblobgames.com/pathfinding/a-star/introduction.html An introduction to: Breadth First Search |> Dijkstra’s Algorithm |> ''A*'']
+* Wikipedia webpage:   [A* search algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm).
+* [An introduction to: Breadth First Search |> Dijkstra’s Algorithm |> ''A*''](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 
 
 ;Related tasks:
@@ -1124,7 +1124,7 @@ _______*
 
 ## JavaScript
 
-Animated.<br />To see how it works on a random map go [http://paulo-jorente.de/tests/astar/ here]
+Animated.<br />To see how it works on a random map go [here](http://paulo-jorente.de/tests/astar/)
 
 ```javascript
 
@@ -2410,7 +2410,7 @@ cost 11
 
 ## Racket
 
-This code is lifted from: [https://jeapostrophe.github.io/2013-04-15-astar-post.html this blog post]. Read it, it's very good.
+This code is lifted from: [this blog post](https://jeapostrophe.github.io/2013-04-15-astar-post.html). Read it, it's very good.
 
 
 ```racket

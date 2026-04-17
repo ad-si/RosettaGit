@@ -1242,7 +1242,7 @@ sleep
 ## Go
 
 ===Partial pivoting, no scaling===
-Gaussian elimination with partial pivoting by [https://en.wikipedia.org/wiki/Gaussian_elimination#Pseudocode pseudocode] on WP page [https://en.wikipedia.org/wiki/Gaussian_elimination Gaussian elimination]."
+Gaussian elimination with partial pivoting by [pseudocode](https://en.wikipedia.org/wiki/Gaussian_elimination#Pseudocode) on WP page [Gaussian elimination](https://en.wikipedia.org/wiki/Gaussian_elimination)."
 
 ```go
 package main
@@ -3829,7 +3829,7 @@ $ python3
 Python 3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> # https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html
+>>> # <https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html>
 >>> import numpy.linalg
 >>> a = [[2, 9, 4], [7, 5, 3], [6, 1, 8]]
 >>> b = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
@@ -4282,7 +4282,7 @@ lusolve(a, b, ludecomp(a, n, zero,one), zero).each{|v| puts v.to_s('F')[0..20]}
 
 ## Sidef
 
-Uses the '''rref(A)''' function from [https://rosettacode.org/wiki/Reduced_row_echelon_form#Sidef Reduced row echelon form].
+Uses the '''rref(A)''' function from [Reduced row echelon form](https://rosettacode.org/wiki/Reduced_row_echelon_form#Sidef).
 ```ruby
 func gauss_jordan_solve (a, b) {
 

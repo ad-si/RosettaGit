@@ -575,7 +575,7 @@ unsafe struct link {
 
 ## Clojure
 
-As with other LISPs, this is built in.  Clojure provides a nice abstraction of lists with its use of: [http://clojure.org/sequences sequences] (also called seqs).
+As with other LISPs, this is built in.  Clojure provides a nice abstraction of lists with its use of: [sequences](http://clojure.org/sequences) (also called seqs).
 
 
 ```clojure
@@ -1534,15 +1534,15 @@ See also [[Singly-linked_list/Element_removal#Phix]] for some working code
 In PicoLisp, the singly-linked list is the most important data structure. Many
 built-in functions deal with linked lists. A list consists of interconnected
 "cells". Cells are also called "cons pairs", because they are constructed with
-the function '[http://software-lab.de/doc/refC.html#cons cons]'.
+the function '[cons](http://software-lab.de/doc/refC.html#cons)'.
 
 Each cell consists of two parts: A CAR and a CDR. Both may contain (i.e. point
 to) arbitrary data (numbers, symbols, other cells, or even to itself). In the
 case of a linked list, the CDR points to the rest of the list.
 
 The CAR of a cell can be manipulated with
-'[http://software-lab.de/doc/refS.html#set set]'
-and the CDR with '[http://software-lab.de/doc/refC.html#con con]'.
+'[set](http://software-lab.de/doc/refS.html#set)'
+and the CDR with '[con](http://software-lab.de/doc/refC.html#con)'.
 
 
 ## PL/I
@@ -1949,7 +1949,7 @@ All the following is to be run in Mata.
 
 ###  Structures
 
-Here we define two [https://www.stata.com/help.cgi?m2_struct structures]: one to hold a list item, another to hold the list [https://www.stata.com/help.cgi?m2_pointer pointers]: we store both the head and the tail, in order to be able to insert an element at both ends. An empty list has both head and tail set to NULL.
+Here we define two [structures](https://www.stata.com/help.cgi?m2_struct): one to hold a list item, another to hold the list [pointers](https://www.stata.com/help.cgi?m2_pointer): we store both the head and the tail, in order to be able to insert an element at both ends. An empty list has both head and tail set to NULL.
 
 
 ```stata

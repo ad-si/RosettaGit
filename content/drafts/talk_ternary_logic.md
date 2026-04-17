@@ -42,7 +42,7 @@ What is if a then b condition?  It's not a straightforward conditional like <cod
 
 I included the operator ⊃ and ≡ as (for some reason) they are part of the original [[wp:ALGOL 60|ALGOL 60]] specification. (Strange but true!) But in the case of binary the ⊃ operator does not seem so useful, AFAIK I have never used it (any got a nice/useful example of usage).  But in the case of Ternary logic ⊃ seems to be useful in tautologies so I included it.  Indeed @Kernigh is correct to say '''a ⊃ b''' is logically equivalent to '''(not a) or b'''.
 
-(Said with my tongue firmly in my cheek: Maybe binary is the reason the computers are so black and white, and (at least on Star Trek and Dr. Who) is it the reason that tautologies make the front panels of computers spout smoke. c.f. http://www.youtube.com/watch?v=w3fyKChJrZw LOL :-^ )
+(Said with my tongue firmly in my cheek: Maybe binary is the reason the computers are so black and white, and (at least on Star Trek and Dr. Who) is it the reason that tautologies make the front panels of computers spout smoke. c.f. <http://www.youtube.com/watch?v=w3fyKChJrZw> LOL :-^ )
 
 Note: ⊃ is the same as → and ⇒ operations. c.f. [[wp:List of logic symbols|List of logic symbols]]
 
@@ -77,7 +77,7 @@ I feel the C [[Ternary_logic#Variable_truthfulness|Variable Truthfulness]] code 
 ==another ternary truth table==
 
 I found another ternary truth table that I used for validation of some of the other functions for the REXX example (which shows more functions) at: 
-::: http://www.scribd.com/doc/78370674/31/A-6-2-AND-XOR-OR-XNOR-NAND
+::: <http://www.scribd.com/doc/78370674/31/A-6-2-AND-XOR-OR-XNOR-NAND>
 '''Ternary Computing Testbed 3-Trit Computer Architecture'''   by   Jeff Connelly
 
 Computer Engineering Department       August 29<sup>th</sup>, 2008

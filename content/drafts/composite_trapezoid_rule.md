@@ -11,7 +11,7 @@ tags = []
 +++
 
 In numerical analysis, the trapezoidal rule is used for approximation of a definite integral. The code here is a general purpose code for any equation.
-[https://en.wikipedia.org/wiki/Trapezoidal_rule]
+<https://en.wikipedia.org/wiki/Trapezoidal_rule>
 
 
 == MATLAB ==

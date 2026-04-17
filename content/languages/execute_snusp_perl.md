@@ -23,7 +23,7 @@ If the generated program needs to read from it's own STDIN, you must direct the 
 
 If the generated program does not read from stdin, you may, if you choose, redirect the compiler's output, via a pipe, to another perl process.
 
-There is one notable difference between this implementation, and the SNUSP specification, [http://www.quirkster.com/iano/snusp/snusp-1.0-spec-wd1.pdf]. This code does not perform context switching after every single step, but only when the '?' or ',' instructions are performed.  This is an optimization, but could be construed
+There is one notable difference between this implementation, and the SNUSP specification, <http://www.quirkster.com/iano/snusp/snusp-1.0-spec-wd1.pdf>. This code does not perform context switching after every single step, but only when the '?' or ',' instructions are performed.  This is an optimization, but could be construed
 as a flaw, if lockstep operation is expected.  The few examples I've found of SNUSP code which create a thread work perfectly fine with my optimization in-place.
 
 There are also several optimizations in place to reduce the size of the
@@ -382,7 +382,7 @@ __END__
 
 
 Here's a basic Hello, World! program, which I found at:
-http://www.quirkster.com/iano/snusp/snusp-js.html
+<http://www.quirkster.com/iano/snusp/snusp-js.html>
 
 
 ```SNUSP

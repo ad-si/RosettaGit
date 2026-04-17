@@ -258,7 +258,7 @@ C_LOOP:
 48. bytes of code; the specified emulator does not report cycles.
 
 
-*Works with: http://www.6502asm.com/ 6502asm.com 1.2*
+*Works with: <http://www.6502asm.com/> 6502asm.com 1.2*
 **optimized**
 Largely inspired by the optimized C implementation -  makes use of the fact that finally only the doors whose numbers are squares of integers are open, as well as the fact that
  <math>n^2 = 1 + 3 + 5 + \ldots + (2n-1)</math>.
@@ -288,7 +288,7 @@ openloop: inc $200,X    ;open X'th door
 
 ## 68000 Assembly
 
-*Works with: http://www.easy68k.com/ EASy68K v5.13.00*
+*Works with: <http://www.easy68k.com/> EASy68K v5.13.00*
 Some of the macro code is derived from the examples included with EASy68K.
 
 ```68000devpac
@@ -3900,7 +3900,7 @@ Goal prison 100 = prisoo 100. compute. reflexivity. Qed.
 ```
 
 
-Full proof at [https://github.com/spanjel/rosetta github]:
+Full proof at [github](https://github.com/spanjel/rosetta):
 
 ```coq
 Goal forall n, prison n = prisoo n. Abort.
@@ -6283,7 +6283,7 @@ END
 
 ## Gambas
 
-**[https://gambas-playground.proko.eu/?gist=10f109e90581b04b9cbc30fdaf49892b Click this link to run this code]**
+**[Click this link to run this code](https://gambas-playground.proko.eu/?gist=10f109e90581b04b9cbc30fdaf49892b)**
 
 ```gambas
 Public Sub Main()
@@ -12568,7 +12568,7 @@ end
 
 Scratch is a visual programming language. Click the link, then "see inside" to see the code.
 
-https://scratch.mit.edu/projects/168687954/
+<https://scratch.mit.edu/projects/168687954/>
 
 Output: 100 indications that "Door ___ is _____," where doors with perfect square indices are open and the rest are closed.
 

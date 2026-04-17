@@ -1005,7 +1005,7 @@ Standard predicates:
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -3271,7 +3271,7 @@ even
 
 ## PicoLisp
 
-PicoLisp doesn't have a built-in predicate for that. Using '[http://software-lab.de/doc/refB.html#bit? bit?]' is the easiest and most efficient. The bit test with 1 will return NIL if the number is even.
+PicoLisp doesn't have a built-in predicate for that. Using '[bit?](http://software-lab.de/doc/refB.html#bit?)' is the easiest and most efficient. The bit test with 1 will return NIL if the number is even.
 
 ```PicoLisp
 : (bit? 1 3)

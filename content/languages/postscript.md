@@ -18,7 +18,7 @@ Although now almost displaced by the '''Portable Document Format''' (PDF), also 
 ''(does "USP" mean "unique selling proposition"?)''
 
 ## See Also
-*[http://logand.com/sw/wps/index.html WPS - PostScript interpreter written in JavaScript.]
-*[http://code.google.com/p/postcanvas/ postcanvas - Open-source PostScript interpreter written in JavaScript.]
-*[http://pages.cs.wisc.edu/~ghost/ Ghostscript opensource postscript interpreter with a lot of extensions. ]
-*[http://code.google.com/p/xpost/downloads/detail?name=monterey86.pdf Owen Densmore, Object-Oriented Programming in NeWS, describes the use of dictionaries for implementing single- and multiple-inheritance.]
+*[WPS - PostScript interpreter written in JavaScript.](http://logand.com/sw/wps/index.html)
+*[postcanvas - Open-source PostScript interpreter written in JavaScript.](http://code.google.com/p/postcanvas/)
+*[Ghostscript opensource postscript interpreter with a lot of extensions.](http://pages.cs.wisc.edu/~ghost/)
+*[Owen Densmore, Object-Oriented Programming in NeWS, describes the use of dictionaries for implementing single- and multiple-inheritance.](http://code.google.com/p/xpost/downloads/detail?name=monterey86.pdf)

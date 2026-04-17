@@ -12,4 +12,4 @@ tags = []
 
 {{library}}U++ a C++ cross-platform [[open source]] development platform.
 ==Citations==
-*[http://www.ultimatepp.org U++ website]
+*[U++ website](http://www.ultimatepp.org)

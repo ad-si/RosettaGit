@@ -867,9 +867,9 @@ Remainder   : -123.0
 ## Clojure
 
 
-This example performs ''multivariate'' polynomial division using [https://en.wikipedia.org/wiki/Buchberger%27s_algorithm Buchberger's algorithm] to decompose a polynomial into its [https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis Gröbner bases]. Polynomials are represented as hash-maps of monomials with tuples of exponents as keys and their corresponding coefficients as values: e.g. 2xy + 3x + 5y + 7 is represented as {[1 1] 2, [1 0] 3, [0 1] 5, [0 0] 7}.
+This example performs ''multivariate'' polynomial division using [Buchberger's algorithm](https://en.wikipedia.org/wiki/Buchberger%27s_algorithm) to decompose a polynomial into its [Gröbner bases](https://en.wikipedia.org/wiki/Gr%C3%B6bner_basis). Polynomials are represented as hash-maps of monomials with tuples of exponents as keys and their corresponding coefficients as values: e.g. 2xy + 3x + 5y + 7 is represented as {[1 1] 2, [1 0] 3, [0 1] 5, [0 0] 7}.
 
-Since this algorithm is much more efficient when the input is in [https://en.wikipedia.org/wiki/Monomial_order#Graded_reverse_lexicographic_order graded reverse lexicographic (grevlex) order] a comparator is included to be used with Clojure's sorted-map&mdash;<code>(into (sorted-map-by grevlex) ...)</code>&mdash;as well as necessary functions to compute polynomial multiplication, monomial complements, and S-polynomials.
+Since this algorithm is much more efficient when the input is in [graded reverse lexicographic (grevlex) order](https://en.wikipedia.org/wiki/Monomial_order#Graded_reverse_lexicographic_order) a comparator is included to be used with Clojure's sorted-map&mdash;<code>(into (sorted-map-by grevlex) ...)</code>&mdash;as well as necessary functions to compute polynomial multiplication, monomial complements, and S-polynomials.
 
 
 ```clojure
@@ -1532,7 +1532,7 @@ str_poly l = intercalate " + " $ terms l
 ## J
 
 
-From http://www.jsoftware.com/jwiki/Phrases/Polynomials
+From <http://www.jsoftware.com/jwiki/Phrases/Polynomials>
 
 
 ```J
@@ -1689,7 +1689,7 @@ Remainder   : -123.0
 
 ## Julia
 
-This task is straightforward with the help of Julia's [https://github.com/Keno/Polynomials.jl Polynomials] package.
+This task is straightforward with the help of Julia's [Polynomials](https://github.com/Keno/Polynomials.jl) package.
 
 ```Julia
 
@@ -2846,7 +2846,7 @@ res do: [ :o |
 ```
 
 
-Domain:[http://fricas.github.io/api/PolynomialCategory.html#l-polynomial-category-monic-divide]
+Domain:<http://fricas.github.io/api/PolynomialCategory.html#l-polynomial-category-monic-divide>
 
 
 

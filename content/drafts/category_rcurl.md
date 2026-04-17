@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://cran.r-project.org/web/packages/RCurl/index.html RCurl] is a package for R that allows you to compose general HTTP requests.
+{{library}}[RCurl](http://cran.r-project.org/web/packages/RCurl/index.html) is a package for R that allows you to compose general HTTP requests.

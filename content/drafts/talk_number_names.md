@@ -38,7 +38,7 @@ Since the task deals with a natural language, a program's output should follow t
 
 The code doesn't seem to work for numbers larger than three digits.
 
-Using PARI/GP via the web on this page: [https://pari.math.u-bordeaux.fr/gp.html https://pari.math.u-bordeaux.fr/gp.html]
+Using PARI/GP via the web on this page: [https://pari.math.u-bordeaux.fr/gp.html](https://pari.math.u-bordeaux.fr/gp.html)
 
 
 ```parigp

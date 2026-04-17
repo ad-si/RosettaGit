@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{implementation|SQL}}{{stub}}
-Apache Derby is part of the Apache DB project.  It's home page is [http://db.apache.org/derby/ http://db.apache.org/derby/].
+Apache Derby is part of the Apache DB project.  It's home page is [http://db.apache.org/derby/](http://db.apache.org/derby/).

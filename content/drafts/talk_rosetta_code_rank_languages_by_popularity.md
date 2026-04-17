@@ -145,7 +145,7 @@ Is this snippet the first ALGOL 68 that you have tried?
 
 [[User:NevilleDNZ|NevilleDNZ]] 08:40, 19 April 2009 (UTC)
 :Yes, it's my first try.
-:I just found that example intersting because it does not use [[http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500]].
+:I just found that example intersting because it does not use <http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>.
 
 :I compiled algol68g right now. (./configure && make && sudo make install)
 :It compiled perfectly.
@@ -197,7 +197,7 @@ sys	0m0.068s
 
 Sort_most_popular_programming_languages_slow - the original - would have been issuing '''thousands''' of calls to malloc.
 
-re: [[http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500]]
+re: <http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>
 I should/could use this link.  I hacked out a solution, c.f. the actual code for the ''re ignore'' values.
 
 ```txt
@@ -234,8 +234,8 @@ The limit needs to be much larger (probably 5000 would work at the moment). I'm 
 
 ### =Note: ALGOL 68 for Ubuntu now available=
 
-* Announcement: [http://sourceforge.net/mailarchive/forum.php?thread_name=1255746666.15125.166.camel%40zod.sgr-a.net&forum_name=algol68-user sourceforge algol68 forum]
-* Download: http://sourceforge.net/projects/algol68/files/
+* Announcement: [sourceforge algol68 forum](http://sourceforge.net/mailarchive/forum.php?thread_name=1255746666.15125.166.camel%40zod.sgr-a.net&forum_name=algol68-user)
+* Download: <http://sourceforge.net/projects/algol68/files/>
 
 [[User:NevilleDNZ|NevilleDNZ]] 09:19, 17 October 2009 (UTC)
 
@@ -285,7 +285,7 @@ end
 
 == Redundant task? ==
 
-I actually asked that on this page on [http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&oldid=21099 Jan 26], however it was [http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&diff=29733&oldid=21099 replaced without comment] by Guga360. Therefore I'll ask again:
+I actually asked that on this page on [Jan 26](http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&oldid=21099), however it was [replaced without comment](http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&diff=29733&oldid=21099) by Guga360. Therefore I'll ask again:
 
 Isn't this task basically a combination of [[HTTP Request]], [[Regular expression matching]] and [[Sorting Using a Custom Comparator]]? --[[User:Ce|Ce]] 11:55, 1 November 2009 (UTC)
 
@@ -310,7 +310,7 @@ This declarative nature also explains why the solution is so concise (relatively
 
 --[[User:DanBron|DanBron]] 05:52, 26 November 2009 (UTC)
 
-: And the downside is that the current XPath implementation relies on [http://sax.sourceforge.net/ SAX], and maintenance has gone so bad there that you can basically only use this J implementation on 32 bit J6.02. The underlying problems of standards decay and implementation decay has a lot of causes, but the bottom line might be that any technical solution relies partially on popularity for support and thus will fail sooner or later. I guess that means I (or, ok, someone else - but if you want something done right you need to take responsibility for accomplishing it) should come up with another J implementation. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:11, 10 April 2016 (UTC)
+: And the downside is that the current XPath implementation relies on [SAX](http://sax.sourceforge.net/), and maintenance has gone so bad there that you can basically only use this J implementation on 32 bit J6.02. The underlying problems of standards decay and implementation decay has a lot of causes, but the bottom line might be that any technical solution relies partially on popularity for support and thus will fail sooner or later. I guess that means I (or, ok, someone else - but if you want something done right you need to take responsibility for accomplishing it) should come up with another J implementation. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:11, 10 April 2016 (UTC)
 
 ==wanted (no longer): a complete list==
 I would like to see at least one (and probably only one) list to be complete.   I also would like it updated, say, every month or quarter so we all can see the current state of all languages, not just the top ten or twenty languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:17, 21 March 2012 (UTC)
@@ -662,7 +662,7 @@ Thanks!  I've updated the Tcl script to produce a similar report to [[RC_POP.OUT
 
 
 
-In the complete list [http://rosettacode.org/wiki/Category:A%2B A+] is ranked 431 although (unfairly) it has no worked tasks. [http://rosettacode.org/wiki/Category:Xanadu Xanadu], a language with which I am unfamiliar, has one worked [http://rosettacode.org/wiki/N-queens_problem task] but is ranked 463. --[[User:Nigel Galloway|Nigel Galloway]] 12:29, 21 December 2012 (UTC)
+In the complete list [A+](http://rosettacode.org/wiki/Category:A%2B) is ranked 431 although (unfairly) it has no worked tasks. [Xanadu](http://rosettacode.org/wiki/Category:Xanadu), a language with which I am unfamiliar, has one worked [task](http://rosettacode.org/wiki/N-queens_problem) but is ranked 463. --[[User:Nigel Galloway|Nigel Galloway]] 12:29, 21 December 2012 (UTC)
 
 : The way identically ranked languages (identical in the sense that they have the same number of entries) is sorted in the order in which they appear first in the Rosetta Code list.   Thus, some languages aren't ranked fairly because of a (weak) sorting artifact of having the same number (of entries).   Strictly speaking, if the following were true:
 :::* hog   97
@@ -687,7 +687,7 @@ Note that the chicken was disqualified as it wouldn't cross the road. -- [[User:
 
 Update notice:   the above (the ranking of tied languages) has been implemented by the REXX program example, and also the Icon and Unicon languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:41, 30 March 2013 (UTC)
 
-:According to [http://rosettacode.org/wiki/Category:A%2B its task page] A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
+:According to [its task page](http://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
 :: rank: 441         (3 entries)  A+
 :--[[User:Nigel Galloway|Nigel Galloway]] 14:51, 26 January 2013 (UTC)
 
@@ -704,7 +704,7 @@ I took the task's requirements quite literally:
 
 ''Sort most popular programming languages based in number of '''members''' in Rosetta Code categories''
 
- (from http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+ (from <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 
 
 (The bold font was added by me.)   Note that it didn't say   '''implementations''',   but   '''members'''.
@@ -863,7 +863,7 @@ This change/deletion changes the very definition of what's being reported. -- [[
 
 :It wasn't changed it was moved into the Notes section. There are two valid ways to retrieve the data, either via Special:Categories or via the API. This reflects how people are coding, they are doing one, the other, or both. -- [[User:3havj7t3nps8z8wij3g9|3havj7t3nps8z8wij3g9]] ([[User talk:3havj7t3nps8z8wij3g9|talk]]) 01:51, 28 May 2015 (UTC)
 
-:: The original requirement (see above box, ''Sort most popular ··· (from http://www.rossetta code.org/ ··· '') specifically mentions which web page to be used.   The new note section that was created which had removed/changed that requirement.   I'm not arguing that the change is wrong, but that it   ''was''   a change.   The original requirement ('''as worded''') was not moved to the new notes section. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 03:33, 28 May 2015 (UTC)
+:: The original requirement (see above box, ''Sort most popular ··· (from <http://www.rossetta> code.org/ ··· '') specifically mentions which web page to be used.   The new note section that was created which had removed/changed that requirement.   I'm not arguing that the change is wrong, but that it   ''was''   a change.   The original requirement ('''as worded''') was not moved to the new notes section. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 03:33, 28 May 2015 (UTC)
 
 :::Many are coding using the API to retrieve the data as it accurately reflects language popularity which is the title of the task and obvious intention of the creator who has not posted on RC since 2010. That doesn't mean those who code using Special:Category are wrong thus there is room to do it both ways should you choose to follow a literal interpretation. -- [[User:3havj7t3nps8z8wij3g9|3havj7t3nps8z8wij3g9]] ([[User talk:3havj7t3nps8z8wij3g9|talk]]) 04:26, 28 May 2015 (UTC)
 

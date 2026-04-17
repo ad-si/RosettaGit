@@ -2805,7 +2805,7 @@ Output:
 
 ## Scala
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/jwxwWpq/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/OBrz9l14Rm2C6tV8tiwhWg Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/jwxwWpq/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/OBrz9l14Rm2C6tV8tiwhWg).
 
 ```Scala
 object Cusip extends App {

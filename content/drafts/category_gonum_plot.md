@@ -12,4 +12,4 @@ tags = []
 
 Originally named Plotinum, gonum/plot is a pure Go plotting library.
 
-https://github.com/gonum/plot
+<https://github.com/gonum/plot>

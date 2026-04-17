@@ -27,7 +27,7 @@ languages = [
 ]
 +++
 
-Draw a [https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH Sunflower fractal]
+Draw a [Sunflower fractal](https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH)
 
 
 
@@ -37,7 +37,7 @@ Draw a [https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH Sunflower fractal]
 
 ## C
 
-The colouring of the "fractal" is determined with every iteration to ensure that the resulting graphic looks similar to a real Sunflower, thus the parameter ''diskRatio'' determines the radius of the central disk as the maximum radius of the flower is known from the number of iterations. The scaling factor is currently hardcoded but can also be externalized. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+The colouring of the "fractal" is determined with every iteration to ensure that the resulting graphic looks similar to a real Sunflower, thus the parameter ''diskRatio'' determines the radius of the central disk as the maximum radius of the flower is known from the number of iterations. The scaling factor is currently hardcoded but can also be externalized. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -295,7 +295,7 @@ sunflowerplot()
   EndFor 
 ```
 
-[https://1drv.ms/u/s!AoFH_AlpH9oZgf5kvtRou1Wuc5lSCg Sunflower fractal]
+[Sunflower fractal](https://1drv.ms/u/s!AoFH_AlpH9oZgf5kvtRou1Wuc5lSCg)
 
 
 ## Objeck
@@ -402,14 +402,14 @@ for $i (1..$seeds) {
 print "</svg>\n";
 ```
 
-See [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sunflower.svg Phi-packing image] (SVG image)
+See [Phi-packing image](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sunflower.svg) (SVG image)
 
 
 ## Perl 6
 
 This is not really a fractal. It is more accurately an example of a Fibonacci spiral or Phi-packing.
 
-Or, to be completely accurate: It is a variation of a generative [[wp:Fermat's_spiral|Fermat's spiral]] using the Vogel model to implement phi-packing. See: [https://thatsmaths.com/2014/06/05/sunflowers-and-fibonacci-models-of-efficiency/ https://thatsmaths.com/2014/06/05/sunflowers-and-fibonacci-models-of-efficiency] 
+Or, to be completely accurate: It is a variation of a generative [[wp:Fermat's_spiral|Fermat's spiral]] using the Vogel model to implement phi-packing. See: [https://thatsmaths.com/2014/06/05/sunflowers-and-fibonacci-models-of-efficiency](https://thatsmaths.com/2014/06/05/sunflowers-and-fibonacci-models-of-efficiency/) 
 
 
 ```perl6
@@ -435,7 +435,7 @@ say SVG.serialize(
 );
 ```
 
-See: [https://github.com/thundergnat/rc/blob/master/img/phi-packing-perl6.svg Phi packing] (SVG image)
+See: [Phi packing](https://github.com/thundergnat/rc/blob/master/img/phi-packing-perl6.svg) (SVG image)
 
 
 ## Phix
@@ -532,7 +532,7 @@ for(i in 1:length(x)){
 
 ```
 
-[https://raw.githubusercontent.com/schwartstack/sunflower/master/sunflower2.png Sunflower]
+[Sunflower](https://raw.githubusercontent.com/schwartstack/sunflower/master/sunflower2.png)
 
 
 ## Racket
@@ -623,7 +623,7 @@ func draw
 
 Output:
 
-[https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH Sunflower fractal]
+[Sunflower fractal](https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH)
 
 
 ## Sidef
@@ -653,13 +653,13 @@ var img = draw_sunflower()
 img.write(file => "sunflower.png")
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/sunflower-sidef.png Sunflower fractal]
+Output image: [Sunflower fractal](https://github.com/trizen/rc/blob/master/img/sunflower-sidef.png)
 
 
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn sunflower(seeds=3000){
@@ -675,4 +675,4 @@ fcn sunflower(seeds=3000){
 }();
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/sunflower.zkl.jpg sunflower fractal]
+Image at [sunflower fractal](http://www.zenkinetic.com/Images/RosettaCode/sunflower.zkl.jpg)

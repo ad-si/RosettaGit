@@ -26,7 +26,7 @@ Extends [[Tcl]] with many useful commands, grouped as follows:
 * Help Facility 
 * Tcl Loadable Libraries and Packages 
 
-Home: http://tclx.sourceforge.net/
+Home: <http://tclx.sourceforge.net/>
 
 Note that a fair number of the features of this package (especially those offering access to low-level Unix features) are also available in the [[Expect]] package.
 [[Category:Tcl packages]]

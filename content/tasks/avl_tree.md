@@ -1908,7 +1908,7 @@ Remove test:
 
 ## Haskell
 
-Based on solution of homework #4 from course http://www.seas.upenn.edu/~cis194/spring13/lectures.html.
+Based on solution of homework #4 from course <http://www.seas.upenn.edu/~cis194/spring13/lectures.html>.
 
 ```haskell
 import Data.Monoid
@@ -3180,10 +3180,10 @@ printing key:
 
 ## Phix
 
-Translated from the C version at http://www.geeksforgeeks.org/avl-tree-set-2-deletion
+Translated from the C version at <http://www.geeksforgeeks.org/avl-tree-set-2-deletion>
 
 The standard distribution includes demo\rosetta\AVL_tree.exw, which contains a slightly longer but perhaps more readable version,
-with a command line equivalent of https://www.cs.usfca.edu/~galles/visualization/AVLtree.html as well as a simple tree structure
+with a command line equivalent of <https://www.cs.usfca.edu/~galles/visualization/AVLtree.html> as well as a simple tree structure
 display routine and additional verification code (both modelled on the C version found on this page)
 
 ```Phix

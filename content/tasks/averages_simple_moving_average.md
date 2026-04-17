@@ -427,9 +427,9 @@ Inserting 1 into max-5:  3.00000E+00
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 Note: This following code is a direct translation of the [[Average/Simple_moving_average#C|C]] code sample.  It mimics C's var_list implementation, and so it probably isn't the most natural way of dong this actual task in '''ALGOL 68'''.
 
 ```Algol68
@@ -544,7 +544,7 @@ next number 1.000000, SMA_3 = 2.000000, SMA_5 = 3.000000
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276695.html#276695 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276695.html#276695)
 For Integers:
 
 ```AutoHotkey
@@ -2364,7 +2364,7 @@ and a sample run:
 ```
 
 
-If the <tt>Utils</tt> package is imported from the [https://tapestry.tucson.az.us/unilib Unicon code library] then a (Unicon only) solution is:
+If the <tt>Utils</tt> package is imported from the [Unicon code library](https://tapestry.tucson.az.us/unilib) then a (Unicon only) solution is:
 
 
 ```Unicon
@@ -2420,7 +2420,7 @@ In that context, moving average is expressed very concisely in J as '''<code>(+/
 ```
 
 
-In the context of the task, we need to produce a stateful function to consume streams.  Since J does not have native lexical closure, we need to [http://www.jsoftware.com/jwiki/Guides/Lexical%20Closure implement it].  Thus the [[Talk:Averages/Simple_moving_average#J_Implementation|streaming solution]] is more complex:
+In the context of the task, we need to produce a stateful function to consume streams.  Since J does not have native lexical closure, we need to [implement it](http://www.jsoftware.com/jwiki/Guides/Lexical%20Closure).  Thus the [[Talk:Averages/Simple_moving_average#J_Implementation|streaming solution]] is more complex:
 
 ```j
    lex =:  1 :'(a[n__a=.m#_.[a=.18!:3$~0)&(4 :''(+/%#)(#~1-128!:5)n__x=.1|.!.y n__x'')'
@@ -2579,7 +2579,7 @@ Next number = 1, SMA_3 = 2, SMA_5 = 3
 
 ### Using reduce/filter
 
-[http://jsfiddle.net/79xe381e/ JS Fiddle]
+[JS Fiddle](http://jsfiddle.net/79xe381e/)
 
 
 ```javascript
@@ -2805,7 +2805,7 @@ Further example:
 ## Liberty BASIC
 
 The interesting thing here is how to implement an equivalent of a stateful function.
-For sample output see http://libertybasic.conforums.com/index.cgi?board=open&action=display&num=1322956720
+For sample output see <http://libertybasic.conforums.com/index.cgi?board=open&action=display&num=1322956720>
 
 ```lb
 
@@ -3038,7 +3038,7 @@ sma(N, Average, state(P, L0), state(P, L)) :-
 ```
 
 
-Some notes about this solution: unless P = 0, length(L) can never be 0, as L always incorporates at least N (a step that is accomplished in the arguments to list.take_upto/3).  If the implementation of the 'state' type is hidden, and if init/1 checks for P = 0, users of this code can never cause a division-by-zero error in sma/4.  Although this solution doesn't try to be as stateful as the task description would like, explicit state is by far simpler and more natural and more straightforward than the alternative in Mercury.  Finally, [http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables state variables] (and higher-order functions that anticipate threaded state) remove much of the potential ugliness or error in threading the same state through many users.
+Some notes about this solution: unless P = 0, length(L) can never be 0, as L always incorporates at least N (a step that is accomplished in the arguments to list.take_upto/3).  If the implementation of the 'state' type is hidden, and if init/1 checks for P = 0, users of this code can never cause a division-by-zero error in sma/4.  Although this solution doesn't try to be as stateful as the task description would like, explicit state is by far simpler and more natural and more straightforward than the alternative in Mercury.  Finally, [state variables](http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables) (and higher-order functions that anticipate threaded state) remove much of the potential ugliness or error in threading the same state through many users.
 
 
 ## MiniScript
@@ -4244,7 +4244,7 @@ EndProcedure
 
 {{Works with|Python|3.x}}
 
-Both implementations use the [http://www.doughellmann.com/PyMOTW/collections/index.html deque] datatype.
+Both implementations use the [deque](http://www.doughellmann.com/PyMOTW/collections/index.html) datatype.
 
 ### Procedural
 

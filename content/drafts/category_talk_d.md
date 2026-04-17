@@ -12,12 +12,12 @@ tags = []
 
 Is D a functional programming language? Here are some functional programming features in D:
 
-* [http://www.digitalmars.com/d/2.0/function.html#pure-functions Pure Functions]
-* [http://www.digitalmars.com/d/2.0/const3.html Immutable Data Structures]
-* [http://www.digitalmars.com/d/2.0/expression.html#FunctionLiteral First Class Functions]
-* [http://www.digitalmars.com/d/2.0/function.html#closures Closures]
-* [http://www.digitalmars.com/d/2.0/lazy-evaluation.html Lazy Evaluation]
-* [http://www.digitalmars.com/d/2.0/garbage.html Garbage Collection]
-* [http://www.digitalmars.com/d/2.0/declaration.html#AutoDeclaration Type Inference]
+* [Pure Functions](http://www.digitalmars.com/d/2.0/function.html#pure-functions)
+* [Immutable Data Structures](http://www.digitalmars.com/d/2.0/const3.html)
+* [First Class Functions](http://www.digitalmars.com/d/2.0/expression.html#FunctionLiteral)
+* [Closures](http://www.digitalmars.com/d/2.0/function.html#closures)
+* [Lazy Evaluation](http://www.digitalmars.com/d/2.0/lazy-evaluation.html)
+* [Garbage Collection](http://www.digitalmars.com/d/2.0/garbage.html)
+* [Type Inference](http://www.digitalmars.com/d/2.0/declaration.html#AutoDeclaration)
 
-Here is [http://www.digitalmars.com/d/2.0/accu-functional.pdf a paper] on mixing imperative programming and functional programming in D. --[[User:Jhuni|Jhuni]] 0:53, 1 January 2010 (UCT)
+Here is [a paper](http://www.digitalmars.com/d/2.0/accu-functional.pdf) on mixing imperative programming and functional programming in D. --[[User:Jhuni|Jhuni]] 0:53, 1 January 2010 (UCT)

@@ -15,7 +15,7 @@ I thought we needed the total number of months within the range as well as stati
 
 Hi Mike(Mwn3d), the changes I have made have invalidated the Java solution. Have I gone to far? --[[User:Paddy3118|Paddy3118]] 07:41, 23 October 2010 (UTC)
 :It's already fixed so nope :). --[[User:Mwn3d|Mwn3d]] 15:31, 23 October 2010 (UTC)
-: FWIW, the task was inspired by this blog post: [http://lovehateubuntu.blogspot.com/2010/10/5-weekends.html http://lovehateubuntu.blogspot.com/2010/10/5-weekends.html] --[[User:Short Circuit|Michael Mol]] 14:52, 23 October 2010 (UTC)
+: FWIW, the task was inspired by this blog post: [http://lovehateubuntu.blogspot.com/2010/10/5-weekends.html](http://lovehateubuntu.blogspot.com/2010/10/5-weekends.html) --[[User:Short Circuit|Michael Mol]] 14:52, 23 October 2010 (UTC)
 
 
 
@@ -36,7 +36,7 @@ The task should be renamed to 'Five full weekends' --[[User:Walterpachl|Walterpa
 Surely this can be solved without relying on an external command. (For EMBee, by --[[User:Paddy3118|Paddy3118]] 07:01, 6 November 2011 (UTC)).
 : thanks, but what's wrong with the improve tag? it helps people looking at the language page to see which solutions could be improved. --[[User:EMBee|eMBee]] 08:15, 6 November 2011 (UTC)
 
-::Hi EMBee, you are right. they are using the [http://www.unix.com/man-page/freebsd/1/ncal/ ncal] external Unix command rather than a C library. I didn't look into it enough. I'll revert back to your edit. Sorry. --[[User:Paddy3118|Paddy3118]] 08:28, 6 November 2011 (UTC)
+::Hi EMBee, you are right. they are using the [ncal](http://www.unix.com/man-page/freebsd/1/ncal/) external Unix command rather than a C library. I didn't look into it enough. I'll revert back to your edit. Sorry. --[[User:Paddy3118|Paddy3118]] 08:28, 6 November 2011 (UTC)
 
 Given Ledrugs' invitation to delete, from his comment on the removal of the improve tag of ''"this example does not need improvement: it was deliberately written so. If you think it's too devious, delete it."'' I am inclined to either leave it with a notice to improve it, or delete it as the solution does not aid language comparison for this straight-forward task. What do others (Including Ledrug), think? --[[User:Paddy3118|Paddy3118]] 03:24, 14 November 2011 (UTC)
 

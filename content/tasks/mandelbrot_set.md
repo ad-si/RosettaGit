@@ -132,7 +132,7 @@ languages = [
 Generate and draw the [[wp:Mandelbrot set|Mandelbrot set]].
 
 
-Note that there are [http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set many algorithms] to draw Mandelbrot set and there are [http://en.wikibooks.org/wiki/Pictures_of_Julia_and_Mandelbrot_sets many functions] which generate it .
+Note that there are [many algorithms](http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set) to draw Mandelbrot set and there are [many functions](http://en.wikibooks.org/wiki/Pictures_of_Julia_and_Mandelbrot_sets) which generate it .
 
 
 
@@ -1101,7 +1101,7 @@ end
 =
 ## OS/8 BASIC
 =
-Works under BASIC on a PDP-8 running OS/8. Various emulators exist including simh's PDP-8 emulator and the [http://www.bernhard-baehr.de/pdp8e/pdp8e.html PDP-8/E Simulator] for Classic Macintosh and OS X.
+Works under BASIC on a PDP-8 running OS/8. Various emulators exist including simh's PDP-8 emulator and the [PDP-8/E Simulator](http://www.bernhard-baehr.de/pdp8e/pdp8e.html) for Classic Macintosh and OS X.
 
 ```qbasic
 10 X1=59\Y1=21
@@ -1319,7 +1319,7 @@ end
 =
 Requires at least 2k of RAM.
 
-Glacially slow, but does eventually produce a tolerable low-resolution image (screenshot [http://edmundgriffiths.com/zxmandelbrot.jpg here]). You can adjust the constants in lines 30 and 40 to zoom in on a particular area, if you like.
+Glacially slow, but does eventually produce a tolerable low-resolution image (screenshot [here](http://edmundgriffiths.com/zxmandelbrot.jpg)). You can adjust the constants in lines 30 and 40 to zoom in on a particular area, if you like.
 
 ```zxbasic
  10 FOR I=0 TO 63
@@ -1405,7 +1405,7 @@ End Function
 ```
 
 [[File:vbamandel.png]]
-Edit: I don't seem to be able to upload the screenshot, so I've shared it here: https://goo.gl/photos/LkezpuQziJPAtdnd9
+Edit: I don't seem to be able to upload the screenshot, so I've shared it here: <https://goo.gl/photos/LkezpuQziJPAtdnd9>
 
 ==={{header|Microsoft Super Extended Color BASIC (Tandy Color Computer 3)}}===
 
@@ -1571,7 +1571,7 @@ done
 
 ## Brace
 
-This is a simple Mandelbrot plotter.  A longer version based on this smooths colors, and avoids calculating the time-consuming black pixels: http://sam.ai.ki/brace/examples/mandelbrot.d/1
+This is a simple Mandelbrot plotter.  A longer version based on this smooths colors, and avoids calculating the time-consuming black pixels: <http://sam.ai.ki/brace/examples/mandelbrot.d/1>
 
 ```brace
 #!/usr/bin/env bx
@@ -2783,7 +2783,7 @@ void main() {
 
 ## Dart
 
-Implementation in Google Dart works on http://try.dartlang.org/ (as of 10/18/2011) since the language is very new, it may break in the future.
+Implementation in Google Dart works on <http://try.dartlang.org/> (as of 10/18/2011) since the language is very new, it may break in the future.
 The implementation uses a incomplete Complex class supporting operator overloading.
 <lang>class Complex {
   double _r,_i;
@@ -2981,7 +2981,7 @@ l2 x
 
 
 =={{header|DEC BASIC-PLUS}}==
-Works under RSTS/E v7.0 on the [[wp:SIMH|simh]] PDP-11 emulator. For installation procedures for RSTS/E, see [http://www.eecis.udel.edu/~mader/delta/downloadrsts.html here].
+Works under RSTS/E v7.0 on the [[wp:SIMH|simh]] PDP-11 emulator. For installation procedures for RSTS/E, see [here](http://www.eecis.udel.edu/~mader/delta/downloadrsts.html).
 <lang>10 X1=59\Y1=21
 20 I1=-1.0\I2=1.0\R1=-2.0\R2=1.0
 30 S1=(R2-R1)/X1\S2=(I2-I1)/Y1
@@ -3068,7 +3068,7 @@ end;
 ## EasyLang
 
 
-[https://easylang.online/apps/mandelbrot.html Run it]
+[Run it](https://easylang.online/apps/mandelbrot.html)
 
 <lang>floatvars
 for y% range 300
@@ -3101,7 +3101,7 @@ for y% range 300
 
 [[File:Mandelbrot4.png]]
 
-[http://ecere.com/apps/mandelbrot/ (Try it in a WebApp)]
+[(Try it in a WebApp)](http://ecere.com/apps/mandelbrot/)
 
 Drawing code:
 
@@ -3401,11 +3401,11 @@ Mandelbrot.set
 
 ## Erlang
 
-Function ''seq_float/2'' is copied from  [https://gist.github.com/andruby/241489 Andrew Fecheyr's GitHubGist].
+Function ''seq_float/2'' is copied from  [Andrew Fecheyr's GitHubGist](https://gist.github.com/andruby/241489).
 
-Using module complex from [https://github.com/ghulette/mandelbrot-erlang/blob/master/simple/complex.erl Geoff Hulette's GitHub repository]
+Using module complex from [Geoff Hulette's GitHub repository](https://github.com/ghulette/mandelbrot-erlang/blob/master/simple/complex.erl)
 
-[https://github.com/ghulette/mandelbrot-erlang Geoff Hulette's GitHub repository] provides two alternative implementations which are very interesting.
+[Geoff Hulette's GitHub repository](https://github.com/ghulette/mandelbrot-erlang) provides two alternative implementations which are very interesting.
 
 
 ```erlang
@@ -3797,9 +3797,9 @@ bbbbbbbcccccdddddddddddddddddddeeeeeeeffghjpjl feeeeedddddcccccccccccc
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Mandelbrot_set this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Mandelbrot_set) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -4004,7 +4004,7 @@ fun main(screenX: int, screenY: int, depth: int, xmin: f32, ymin: f32, xmax: f32
 ## GLSL
 
 
-This example works directly on Shadertoy link[https://www.shadertoy.com/view/XsfGWS]
+This example works directly on Shadertoy link<https://www.shadertoy.com/view/XsfGWS>
 
 
 ```glsl
@@ -4463,13 +4463,13 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics is required ]
+[graphics is required](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 ## IDL
 
 IDL - Interactive Data Language
 (free implementation: GDL - GNU Data Language
-http://gnudatalanguage.sourceforge.net)
+<http://gnudatalanguage.sourceforge.net>)
 
 ```IDL
 
@@ -4906,7 +4906,7 @@ mandelbrot(canvas, -2, 1, -1, 1, 1000);
 
 
 With ES6 and WebAssembly, the program can run faster.  Of course, this requires a compiled WASM file, but one can easily build
-one for instance with the [https://mbebenita.github.io/WasmExplorer/ WebAssembly explorer]
+one for instance with the [WebAssembly explorer](https://mbebenita.github.io/WasmExplorer/)
 
 
 ```javascript
@@ -5900,7 +5900,7 @@ END Mandelbrot.
 ## MySQL
 
 
-See http://arbitraryscrawl.blogspot.co.uk/2012/06/fractsql.html for an explanation.
+See <http://arbitraryscrawl.blogspot.co.uk/2012/06/fractsql.html> for an explanation.
 
 
 ```mysql
@@ -6375,7 +6375,7 @@ for (my $y = 1; $y >= -1; $y -= 0.05) {
 ## Perl 6
 
 [[File:Mandel-perl6.png|thumb]]
-Variant of a Mandelbrot script from the [http://modules.perl6.org/ Perl 6 ecosystem]. Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT.
+Variant of a Mandelbrot script from the [Perl 6 ecosystem](http://modules.perl6.org/). Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT.
 Redirect into a file to save it.
 Converted to a .png file for display here.
 
@@ -6998,9 +6998,9 @@ void mousePressed() {
 }
 ```
 '''Output examples''' :<BR>
-https://drive.google.com/open?id=0B8HXpZALHgx-WWV3dXJwRXdvbWs
+<https://drive.google.com/open?id=0B8HXpZALHgx-WWV3dXJwRXdvbWs>
 
-https://drive.google.com/open?id=0B8HXpZALHgx-MktORkZKelFBbkU
+<https://drive.google.com/open?id=0B8HXpZALHgx-MktORkZKelFBbkU>
 
 
 ## Prolog
@@ -7054,7 +7054,7 @@ Example :<BR>
 
 ## PureBasic
 
-PureBasic forum: [http://www.purebasic.fr/german/viewtopic.php?f=4&t=22107 discussion]
+PureBasic forum: [discussion](http://www.purebasic.fr/german/viewtopic.php?f=4&t=22107)
 
 ```PureBasic
 EnableExplicit
@@ -7574,7 +7574,7 @@ Output:
 
 ## Ruby
 
-Text only, prints an 80-char by 41-line depiction. Found [http://www.xcombinator.com/2008/02/22/ruby-inject-and-the-mandelbrot-set/ here].
+Text only, prints an 80-char by 41-line depiction. Found [here](http://www.xcombinator.com/2008/02/22/ruby-inject-and-the-mandelbrot-set/).
 
 ```ruby
 require 'complex'
@@ -7934,7 +7934,7 @@ const proc: main is func
 
 
 
-Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#mandelbr]
+Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#mandelbr>
 
 
 ## SequenceL
@@ -8144,7 +8144,7 @@ int main(int argc, char ** argv)
 ```
 
 
-[https://i.imgur.com/xeM4u9O.png Output Screenshot]
+[Output Screenshot](https://i.imgur.com/xeM4u9O.png)
 
 
 
@@ -8349,7 +8349,7 @@ The PGF <code>shadings</code> library includes a Mandelbrot set.  In PGF 3.0 the
 ```
 
 
-[[LuaLaTeX]] plus pgfplots code can be found at [http://texwelt.de/wissen/fragen/3960/fraktale-mit-pgfplots http://texwelt.de/wissen/fragen/3960/fraktale-mit-pgfplots].  The calculations are done by inline [[Lua]] code and the resulting bitmap shown with a PGF plot.
+[[LuaLaTeX]] plus pgfplots code can be found at [http://texwelt.de/wissen/fragen/3960/fraktale-mit-pgfplots](http://texwelt.de/wissen/fragen/3960/fraktale-mit-pgfplots).  The calculations are done by inline [[Lua]] code and the resulting bitmap shown with a PGF plot.
 
 =={{header|TI-83 BASIC}}==
 Based on the [[Mandelbrot_set#BASIC|BASIC Version]]. Due to the TI-83's lack of power, it takes around 2 hours to complete at 16 iterations.
@@ -8704,7 +8704,7 @@ SetVid($03);                                    \restore normal text display
 ## XSLT
 
 The fact that you can create an image of the Mandelbrot Set with XSLT is sometimes under-appreciated.
-However, it has been discussed extensively [http://thedailywtf.com/Articles/Stupid-Coding-Tricks-XSLT-Mandelbrot.aspx on the internet] so is best reproduced here, and the code can be executed directly in your browser at that site.
+However, it has been discussed extensively [on the internet](http://thedailywtf.com/Articles/Stupid-Coding-Tricks-XSLT-Mandelbrot.aspx) so is best reproduced here, and the code can be executed directly in your browser at that site.
 
 ```xml
 
@@ -9143,7 +9143,7 @@ Computation finished.
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Mandelbrot.zkl.jpg|300px|thumb|right]]
 
 ```zkl

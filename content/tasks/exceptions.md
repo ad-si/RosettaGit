@@ -340,7 +340,7 @@ Typically: In the Algol68 ''transput'' an attempt is first made to "mend" an "ev
 '''mend''' has failed, the event may be "sent" (via a GO TO) then "caught" by in an outside scope.
 
 The "GOST 27975-88 Programming language ALGOL 68 extended" Soviet standard -
-([http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf Язык программирования АЛГОЛ 68 расширенный (PDF)])
+([Язык программирования АЛГОЛ 68 расширенный (PDF)](http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf))
 had the addition mechanisms, e.g.: ''on'', ''exception'' & ''raise''.
 
 ﻿'''File: prelude/event_base(obj).a68'''
@@ -556,7 +556,7 @@ processing is complete.
 
 ## See also
 
-* StackOverflow: [http://stackoverflow.com/questions/1449951/what-language-was-the-first-to-implement-exception-handling What language was the first to implement exception handling?]
+* StackOverflow: [What language was the first to implement exception handling?](http://stackoverflow.com/questions/1449951/what-language-was-the-first-to-implement-exception-handling)
 
 
 ## AppleScript
@@ -597,8 +597,8 @@ error "Error message." number 2000
 
 ###  True exceptions
 
-In [[AutoHotkey_L]] [http://l.autohotkey.net/docs/commands/Try.htm Try], [http://l.autohotkey.net/docs/commands/Catch.htm Catch], and [http://l.autohotkey.net/docs/commands/Throw.htm Throw] are available to handle exceptions.<br/>
-From the [http://l.autohotkey.net/docs/commands/Throw.htm Throw documentation]:
+In [[AutoHotkey_L]] [Try](http://l.autohotkey.net/docs/commands/Try.htm), [Catch](http://l.autohotkey.net/docs/commands/Catch.htm), and [Throw](http://l.autohotkey.net/docs/commands/Throw.htm) are available to handle exceptions.<br/>
+From the [Throw documentation](http://l.autohotkey.net/docs/commands/Throw.htm):
 
 ```AHK
 try
@@ -1030,7 +1030,7 @@ otherwise:
 ## Common Lisp
 
 
-The Common Lisp condition system allows much more control over condition signaling and condition handling than many exception-based systems.  The following example, however, simply defines a condition type, <code>unexpected-odd-number</code>, defines a function <code>get-number</code> which generates a random number, returning it if it is even, but signaling an <code>unexpected-odd-number</code> condition if it is odd.  The function <code>get-even-number</code> uses <code>[http://www.lispworks.com/documentation/HyperSpec/Body/m_hand_1.htm handler-case]</code> to call <code>get-number</code> returning its result if no condition is signaled, and, in the case that an <code>unexpected-odd-number</code> condition is signaled, returning one plus the odd number.
+The Common Lisp condition system allows much more control over condition signaling and condition handling than many exception-based systems.  The following example, however, simply defines a condition type, <code>unexpected-odd-number</code>, defines a function <code>get-number</code> which generates a random number, returning it if it is even, but signaling an <code>unexpected-odd-number</code> condition if it is odd.  The function <code>get-even-number</code> uses <code>[handler-case](http://www.lispworks.com/documentation/HyperSpec/Body/m_hand_1.htm)</code> to call <code>get-number</code> returning its result if no condition is signaled, and, in the case that an <code>unexpected-odd-number</code> condition is signaled, returning one plus the odd number.
 
 
 ```lisp
@@ -1051,9 +1051,9 @@ The Common Lisp condition system allows much more control over condition signali
 ```
 
 
-A good introduction to Lisp's condition system is the chapter [http://gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html Beyond Exception Handling: Conditions and Restarts] from Peter Seibel's [http://gigamonkeys.com/book/ Practical Common Lisp].
+A good introduction to Lisp's condition system is the chapter [Beyond Exception Handling: Conditions and Restarts](http://gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html) from Peter Seibel's [Practical Common Lisp](http://gigamonkeys.com/book/).
 
-In Common Lisp, there are functions <code>[http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm throw]</code> and <code>[http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm catch]</code>, but these are not related to the condition system.  Rather, they provide another mechanism for non-local control transfer.
+In Common Lisp, there are functions <code>[throw](http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm)</code> and <code>[catch](http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm)</code>, but these are not related to the condition system.  Rather, they provide another mechanism for non-local control transfer.
 
 
 ## D
@@ -1600,7 +1600,7 @@ Caught myError : Error number 1000
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=c3abec93bc7f135203f1f7582f5c3a19 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=c3abec93bc7f135203f1f7582f5c3a19)'''
 
 ```gambas
 Public Sub Main()
@@ -1680,7 +1680,7 @@ func main() {
 	fmt.Println("glad that's over.")
 }
 ```
-[http://play.golang.org/p/9ymYAmOMIP Run in the Go Playground].
+[Run in the Go Playground](http://play.golang.org/p/9ymYAmOMIP).
 ```txt
 
 let's foo...
@@ -1693,7 +1693,7 @@ glad that's over.
 
 ## Haskell
 
-Exceptions can be implemented using monads; no special syntax is necessary.[http://haskell.org/haskellwiki/Exception] In GHC, specialized functionality for exceptions are provided by the <tt>Control.Exception</tt> module.
+Exceptions can be implemented using monads; no special syntax is necessary.<http://haskell.org/haskellwiki/Exception> In GHC, specialized functionality for exceptions are provided by the <tt>Control.Exception</tt> module.
 
 '''Defining exceptions'''
 
@@ -1773,7 +1773,7 @@ try {
 ==Icon and {{header|Unicon}}==
 
 The following Unicon example makes use of support for exceptions found in the
-[http://tapestry.tucson.az.us/unilib/ The Unicon Code Library].  <i>Since
+[The Unicon Code Library](http://tapestry.tucson.az.us/unilib/).  <i>Since
 exception support is not built into Unicon, but rather implemented as
 Unicon code, there are limitations not found in languages that natively
 support exceptions.</i>
@@ -2774,7 +2774,7 @@ end
 ```
 
 
-See also: [http://www.mozart-oz.org/documentation/base/exception.html Exceptions] in the Oz documentation.
+See also: [Exceptions](http://www.mozart-oz.org/documentation/base/exception.html) in the Oz documentation.
 
 '''Catching exceptions'''
 
@@ -2978,7 +2978,7 @@ See [[Exceptions#Delphi | Delphi]]
 
 '''Using eval'''
 
-Exceptions using the core [http://perldoc.perl.org/functions/eval.html eval] function:
+Exceptions using the core [eval](http://perldoc.perl.org/functions/eval.html) function:
 
 
 ```perl
@@ -2996,11 +2996,11 @@ die $@;
 ```
 
 
-See http://perldoc.perl.org/perlvar.html#%24EVAL_ERROR for the meaning of the special variable <tt>$@</tt>. See http://search.cpan.org/dist/Error for advanced object based-exception handling.
+See <http://perldoc.perl.org/perlvar.html#%24EVAL_ERROR> for the meaning of the special variable <tt>$@</tt>. See <http://search.cpan.org/dist/Error> for advanced object based-exception handling.
 
 '''Using Try::Tiny'''
 
-The same using the [http://search.cpan.org/perldoc?Try::Tiny Try::Tiny] module:
+The same using the [Try::Tiny](http://search.cpan.org/perldoc?Try::Tiny) module:
 
 
 ```perl
@@ -3027,7 +3027,7 @@ die $_;
 
 '''Other styles'''
 
-More complicated exception handling can be achieved in Perl using [http://search.cpan.org/perldoc?TryCatch TryCatch] or [http://search.cpan.org/perldoc?Exception::Class Exception::Class] modules.
+More complicated exception handling can be achieved in Perl using [TryCatch](http://search.cpan.org/perldoc?TryCatch) or [Exception::Class](http://search.cpan.org/perldoc?Exception::Class) modules.
 
 
 ## Perl 6
@@ -3067,7 +3067,7 @@ I'm dead.
 ```
 
 
-Perl 6 comes with [http://design.perl6.org/S04.html#Phasers phasers], that are called when certain conditions in the life of a program, routine or block are met. <tt>CATCH</tt> is one of them and works nicely together with <tt>LEAVE</tt> that is called even if an exception would force the current block to be left immediately. It's a nice place to put your cleanup code.
+Perl 6 comes with [phasers](http://design.perl6.org/S04.html#Phasers), that are called when certain conditions in the life of a program, routine or block are met. <tt>CATCH</tt> is one of them and works nicely together with <tt>LEAVE</tt> that is called even if an exception would force the current block to be left immediately. It's a nice place to put your cleanup code.
 
 
 ```perl6
@@ -3212,8 +3212,8 @@ try {
 
 ## PicoLisp
 
-[http://software-lab.de/doc/refC.html#catch catch], [http://software-lab.de/doc/refT.html#throw throw]
-(and [http://software-lab.de/doc/refF.html#finally finally])
+[catch](http://software-lab.de/doc/refC.html#catch), [throw](http://software-lab.de/doc/refT.html#throw)
+(and [finally](http://software-lab.de/doc/refF.html#finally))
 can be used for exception handling.
 'throw' will transfer control to a 'catch' environment
 that was set up with the given label.
@@ -4246,11 +4246,11 @@ val y = f() handle MyDataException x => x;
 
 ## Stata
 
-In Stata, one can trap errors with the '''[http://www.stata.com/help.cgi?capture capture]''' command.
+In Stata, one can trap errors with the '''[capture](http://www.stata.com/help.cgi?capture)''' command.
 
-Without capture, if an error happens in a program, the execution of the current process terminates and the control is returned to the interactive mode. Execution may be terminated by the '''[http://www.stata.com/help.cgi?error error]''' or '''[http://www.stata.com/help.cgi?exit exit]''' commands, or conditionnally using '''[http://www.stata.com/help.cgi?assert assert]''' or '''[http://www.stata.com/help.cgi?confirm confirm]'''.
+Without capture, if an error happens in a program, the execution of the current process terminates and the control is returned to the interactive mode. Execution may be terminated by the '''[error](http://www.stata.com/help.cgi?error)''' or '''[exit](http://www.stata.com/help.cgi?exit)''' commands, or conditionnally using '''[assert](http://www.stata.com/help.cgi?assert)''' or '''[confirm](http://www.stata.com/help.cgi?confirm)'''.
 
-Many other commands may terminate the program if some error occurs during execution: for instance '''[http://www.stata.com/help.cgi?regress regress]''' will return code 2000 if a regressor has only missing values.
+Many other commands may terminate the program if some error occurs during execution: for instance '''[regress](http://www.stata.com/help.cgi?regress)''' will return code 2000 if a regressor has only missing values.
 
 Example of usage:
 
@@ -4269,7 +4269,7 @@ if _rc {
 ```
 
 
-Similarly, Mata has functions '''[http://www.stata.com/help.cgi?mf_error error]''' and '''[http://www.stata.com/help.cgi?mf_exit exit]''' to terminate execution, as well as '''[http://www.stata.com/help.cgi?mf_assert assert]''' and '''asserteq'''.
+Similarly, Mata has functions '''[error](http://www.stata.com/help.cgi?mf_error)''' and '''[exit](http://www.stata.com/help.cgi?mf_exit)''' to terminate execution, as well as '''[assert](http://www.stata.com/help.cgi?mf_assert)''' and '''asserteq'''.
 
 
 ## Swift

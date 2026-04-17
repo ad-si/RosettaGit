@@ -1763,7 +1763,7 @@ Sorted: -12   0   1   2   2   4   4   8  10 999
 
 ### version 2
 
-'''Note:''' The only changes needed were to substitute '''<tt>_</tt>''', '''<tt>!</tt>''' and '''<tt>?</tt>''' characters for the &quot;deprecated&quot; <tt>'''$'''</tt>, <tt>'''#'''</tt> and '''<tt>@</tt>''' characters within variable names; as per <cite>The REXX Language, Second Edition</cite> by M. F. Cowlishaw. (See a description [http://www.rexxla.org/rexxlang/mfc/trl.html here]).
+'''Note:''' The only changes needed were to substitute '''<tt>_</tt>''', '''<tt>!</tt>''' and '''<tt>?</tt>''' characters for the &quot;deprecated&quot; <tt>'''$'''</tt>, <tt>'''#'''</tt> and '''<tt>@</tt>''' characters within variable names; as per <cite>The REXX Language, Second Edition</cite> by M. F. Cowlishaw. (See a description [here](http://www.rexxla.org/rexxlang/mfc/trl.html)).
 
 ```ooRexx
 /*REXX program sorts a list of integers using a bead sort. */

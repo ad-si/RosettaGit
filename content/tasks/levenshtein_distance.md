@@ -622,7 +622,7 @@ kitten -> sitting after 3 edits
 
 
 
-Alternative, much faster but also less readable lazy-evaluation version from http://awk.freeshell.org/LevenshteinEditDistance
+Alternative, much faster but also less readable lazy-evaluation version from <http://awk.freeshell.org/LevenshteinEditDistance>
 (where the above takes e.g. 0m44.904s in gawk 4.1.3 for 5 edits (length 10 and 14 strings), this takes user    0m0.004s):
 
 ```awk
@@ -1208,7 +1208,7 @@ console.log levenshtein("", "yo")
 
 ## Crystal
 
-The standard library includes [https://crystal-lang.org/api/0.19.2/Levenshtein.html levenshtein] module
+The standard library includes [levenshtein](https://crystal-lang.org/api/0.19.2/Levenshtein.html) module
 
 ```ruby
 require "levenshtein"
@@ -1319,7 +1319,7 @@ distance(rosettacode, raisethysword) = 8
 
 ### Standard Version
 
-The standard library [http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#levenshteinDistance std.algorithm] module includes a Levenshtein distance function:
+The standard library [std.algorithm](http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#levenshteinDistance) module includes a Levenshtein distance function:
 
 ```d
 void main() {
@@ -1742,7 +1742,7 @@ END PROGRAM
 
 ## Euphoria
 
-Code by Jeremy Cowgar from the [http://www.rapideuphoria.com/cgi-bin/asearch.exu?gen=on&keywords=Levenshtein Euphoria File Archive].
+Code by Jeremy Cowgar from the [Euphoria File Archive](http://www.rapideuphoria.com/cgi-bin/asearch.exu?gen=on&keywords=Levenshtein).
 
 ```euphoria
 function min(sequence s)
@@ -2291,7 +2291,7 @@ levD=: i.@-@>:@#@] ,~ >:@i.@-@#@[ ,.~ ~:/
 lev=: [: {. {."1@((1&{ ,~ (1 1 , {.) <./@:+ }.)@,/\.)@,./@levD
 ```
 
-First, we setup up an matrix of costs, with 0 or 1 for unexplored cells (1 being where the character pair corresponding to that cell position has two different characters).  Note that the "cost to reach the empty string" cells go on the bottom and the right, instead of the top and the left, because this works better with J's "[http://www.jsoftware.com/help/dictionary/d420.htm insert]" operation (which we will call "reduce" in the next paragraph here. It could also be thought of as a right fold which has been constrained such the initial value is the identity value for the operation. Or, just think of it as inserting its operation between each item of its argument...).
+First, we setup up an matrix of costs, with 0 or 1 for unexplored cells (1 being where the character pair corresponding to that cell position has two different characters).  Note that the "cost to reach the empty string" cells go on the bottom and the right, instead of the top and the left, because this works better with J's "[insert](http://www.jsoftware.com/help/dictionary/d420.htm)" operation (which we will call "reduce" in the next paragraph here. It could also be thought of as a right fold which has been constrained such the initial value is the identity value for the operation. Or, just think of it as inserting its operation between each item of its argument...).
 
 Then we reduce the rows of that matrix using an operation that treats those two rows as columns and reduces the rows of this derived matrix with an operation that gives the (unexplored cell + the minumum of the other cells) followed by (the cell adjacent to the previously unexplored cell.
 {{out|Example use}}
@@ -3413,7 +3413,7 @@ end
 
 ```
 
-Source : [https://github.com/benhamner/Metrics/blob/master/MATLAB/metrics/levenshtein.m]
+Source : <https://github.com/benhamner/Metrics/blob/master/MATLAB/metrics/levenshtein.m>
 
 
 ## NetRexx
@@ -4645,7 +4645,7 @@ True True True True False False False False
 
 ### =Memoized recursion=
 
-(Uses [http://docs.python.org/dev/library/functools.html?highlight=functools.lru_cache#functools.lru_cache this] cache from the standard library).
+(Uses [this](http://docs.python.org/dev/library/functools.html?highlight=functools.lru_cache#functools.lru_cache) cache from the standard library).
 
 ```python
 >>>
@@ -5144,7 +5144,7 @@ distance(rosettacode, raisethysword) = 8
 ```
 
 
-A variant can be found used in Rubygems [https://github.com/rubygems/rubygems/blob/master/lib/rubygems/text.rb]
+A variant can be found used in Rubygems <https://github.com/rubygems/rubygems/blob/master/lib/rubygems/text.rb>
 
 
 ```ruby
@@ -5323,7 +5323,7 @@ rosettacode -> raisethysword : 8
 ```
 
 ===Functional programmed, memoized===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/zj7bHC7/0 (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/qHhDWl68QgWv1uwOYzzNqw Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [(ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/zj7bHC7/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/qHhDWl68QgWv1uwOYzzNqw).
 
 ```Scala
 import scala.collection.mutable

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/ALTree/bigfloat bigfloat] is a library for the Go programming language which provides certains functions which the big.Float type in the standard library lacks (or in the case of Sqrt originally lacked).
+[bigfloat](https://github.com/ALTree/bigfloat) is a library for the Go programming language which provides certains functions which the big.Float type in the standard library lacks (or in the case of Sqrt originally lacked).
 
-It's use is subject to the [https://github.com/ALTree/bigfloat/blob/master/LICENSE.md MIT license].
+It's use is subject to the [MIT license](https://github.com/ALTree/bigfloat/blob/master/LICENSE.md).

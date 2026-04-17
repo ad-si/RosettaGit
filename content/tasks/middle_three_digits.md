@@ -2625,7 +2625,7 @@ The 3 middle digits of the following numbers are :
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ed25e84978446d65895ccd909fc092fa Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ed25e84978446d65895ccd909fc092fa)'''
 
 ```gambas
 Public Sub Main()

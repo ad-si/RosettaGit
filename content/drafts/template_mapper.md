@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[http://www.unisys.com/unisys/product/productdetail.jsp?id=1120000160000010000&pid=1120000970018210161&sid=2800008 Official Source]
+[Official Source](http://www.unisys.com/unisys/product/productdetail.jsp?id=1120000160000010000&pid=1120000970018210161&sid=2800008)
 MAPPER (also more recently known as BIS) was originally a product of the Sperry Corporation and was a mainframe product implemented on the Sperry 1100 systems.
 
 After the merger of Sperry and Burroughs to create the Unisys Corporation, MAPPER was implemented on additional platforms,

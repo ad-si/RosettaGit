@@ -34,7 +34,7 @@ I've taken the plunge and clarified and expanded the description of the task.[[U
 Can we assume, for the purposes of the task, that the pseudo-randomness of "random" numbers available on PCs without external assistance qualify as non-deterministic? --[[User:Short Circuit|Short Circuit]] 22:47, 22 March 2008 (MDT)
 :The non-determinism is a red herring. No implementation of Amb I've seen is actually random. The important feature of Amb is backtracking via capturing the continuation. The result is something closer to exception handling. (Can Amb be implemented using only exceptions?)
 ::non-determinism doesn't mean randomness in computer science. This is clarified in the new task description.[[User:Kazinator|Kazinator]] ([[User talk:Kazinator|talk]]) 15:14, 31 October 2015 (UTC)
-:This is an advanced (almost esoteric) concept covered in SICP among other places. See: http://c2.com/cgi/wiki?AmbSpecialForm [[wp:Continuation]]. --[[User:IanOsgood|IanOsgood]] 09:30, 24 March 2008 (MDT)
+:This is an advanced (almost esoteric) concept covered in SICP among other places. See: <http://c2.com/cgi/wiki?AmbSpecialForm> [[wp:Continuation]]. --[[User:IanOsgood|IanOsgood]] 09:30, 24 March 2008 (MDT)
 
 
 Nondeterminism has nothing to do with randomness.
@@ -74,15 +74,15 @@ Please put a complete C program, that can be compiled as it is.
 
 I've put an alternate C implementation at:
 
-https://github.com/jimwise/shared/tree/master/nondeterminism/c
+<https://github.com/jimwise/shared/tree/master/nondeterminism/c>
 
 if that helps -- this uses setjmp/longjmp, and includes a few examples; no external code is required.
 
 == Go ==
 
-I added a solution inspired more by [http://www-formal.stanford.edu/jmc/basis.html McCarthy's original paper] than the SICP presentation.  McCarthy talks about functions which may be "undefined" in some cases and says, "...when the computation process fails to terminate, the result is undefined." (bottom of p. 7 in the PDF.)  The Go version handles this with channels and go routines.
+I added a solution inspired more by [McCarthy's original paper](http://www-formal.stanford.edu/jmc/basis.html) than the SICP presentation.  McCarthy talks about functions which may be "undefined" in some cases and says, "...when the computation process fails to terminate, the result is undefined." (bottom of p. 7 in the PDF.)  The Go version handles this with channels and go routines.
 
-: It seems they've taken down that server. Here's the Wayback Machine link: [https://web.archive.org/web/20120901194931/http://www-formal.stanford.edu/jmc/basis.html McCarthy's Paper via Wayback Machine] --[[User:Rabuf|Rabuf]] ([[User talk:Rabuf|talk]]) 17:09, 7 November 2013 (UTC)
+: It seems they've taken down that server. Here's the Wayback Machine link: [McCarthy's Paper via Wayback Machine](https://web.archive.org/web/20120901194931/http://www-formal.stanford.edu/jmc/basis.html) --[[User:Rabuf|Rabuf]] ([[User talk:Rabuf|talk]]) 17:09, 7 November 2013 (UTC)
 :: It's still there, the wiki markup for the link was incorrect (I've corrected it). &mdash;[[User:dchapes|dchapes]] ([[User talk:dchapes|talk]] | [[Special:Contributions/dchapes|contribs]]) 14:19, 5 September 2014 (UTC)
 
 He defines amb as a binary operator on x and y where either or both may be undefined.  That is, x and y are separate computations which may or may not terminate.  He talks of functions having possible values (plural) and while he doesn't specify that amb must enumerate its defined values, we assume so because we want to do backtracking.  This binary enumerating amb can be composed into a form that works with multiple values.  The result, in a context of computations that take an unknown amount of time, is a form that may yield a number of values, but perhaps not immediately, perhaps not all at once, perhaps never.  A goroutine supplying values over a channel has this capability.

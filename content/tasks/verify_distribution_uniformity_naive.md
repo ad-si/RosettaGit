@@ -2189,7 +2189,7 @@ object DistrubCheck1 extends App {
 
 ### Functional Style
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/oYJWUvX/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/O513W3VoQ7ulspUMnGvTiQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/oYJWUvX/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/O513W3VoQ7ulspUMnGvTiQ).
 
 ```Scala
 object DistrubCheck2 extends App {

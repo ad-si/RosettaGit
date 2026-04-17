@@ -53,7 +53,7 @@ XXXX..XXXX
 * Any two lines running in the same direction are allowed to touch at the ends but not overlap (i.e. share at most a single point).
 * The game ends when you run out of legal moves.  (The game score is the number of legal moves played.)
 
-The rules to morpion solitaire are [http://www.morpionsolitaire.com/English/Rules.htm here].  
+The rules to morpion solitaire are [here](http://www.morpionsolitaire.com/English/Rules.htm).  
 
 '''Background'''
 
@@ -67,8 +67,8 @@ A short history of the 5T game:
 * 171 and 172 - Tishchenko in 2011
 * 177 and 178 - Rosin in 2011  
 
-For an up to date list of [http://www.morpionsolitaire.com/English/RecordsGrids5T.htm Morpion 5T Records] see here.
-The shortest game possible is [http://www.morpionsolitaire.com/English/Limits.htm 20 moves].
+For an up to date list of [Morpion 5T Records](http://www.morpionsolitaire.com/English/RecordsGrids5T.htm) see here.
+The shortest game possible is [20 moves](http://www.morpionsolitaire.com/English/Limits.htm).
 
 The game is NP-hard in the general case and has a huge search space and is a test case for research into searching methods.
 

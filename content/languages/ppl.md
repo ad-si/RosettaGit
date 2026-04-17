@@ -97,7 +97,7 @@ Have you ever waste valuable minutes trying to remember what was the name of tha
 
 '''The Database library:'''
 
-*[SQLite](https://rosettacode.org/wiki/SQLite) v2 and v3 support (read here http://blog.gobansaor.com/2009/03/14/sqlite-as-the-mp3-of-data why we chose SQLite)
+*[SQLite](https://rosettacode.org/wiki/SQLite) v2 and v3 support (read here <http://blog.gobansaor.com/2009/03/14/sqlite-as-the-mp3-of-data> why we chose SQLite)
 *Visual data grid and data controls
 *Orion database engine
 *Secure SSL encryption package

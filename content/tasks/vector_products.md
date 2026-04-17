@@ -4241,7 +4241,7 @@ a x (b x c) = (-267, 204, -3)
 
 
 ;Note:
-The popular [http://numpy.scipy.org/ numpy] package has functions for dot and cross products.
+The popular [numpy](http://numpy.scipy.org/) package has functions for dot and cross products.
 
 
 ## R

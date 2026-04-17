@@ -270,7 +270,7 @@ Silence-Dogood.
 
 ## C++
 
-Text used to encode:[http://paulo-jorente.de/text/theRaven.txt The Raven - by E.A.Poe]
+Text used to encode:[The Raven - by E.A.Poe](http://paulo-jorente.de/text/theRaven.txt)
 
 ```cpp
 
@@ -1203,7 +1203,7 @@ Silence-Dogood.
 ```
 
 
-http://paulo-jorente.de/text/theRaven.txt
+<http://paulo-jorente.de/text/theRaven.txt>
 
 ```txt
 

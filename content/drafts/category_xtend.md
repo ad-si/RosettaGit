@@ -12,4 +12,4 @@ tags = []
 
 Xtend is a flexible and expressive dialect of Java, which compiles into readable Java 5 compatible source code. You can use any existing Java library seamlessly. The compiled output is readable and pretty-printed, and tends to run as fast as the equivalent handwritten Java code.
 
-Site: http://xtend-lang.org/
+Site: <http://xtend-lang.org/>

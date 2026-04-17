@@ -41,7 +41,7 @@ TL;DR: All four behaviors are useful to know and they're very hard to Google. --
 
 == Some chat in IRC ==
 
-There was some discussion in IRC on the subject: [http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683 http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683]. --[[User:Short Circuit|Michael Mol]] 16:14, 4 March 2011 (UTC)
+There was some discussion in IRC on the subject: [http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683](http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683). --[[User:Short Circuit|Michael Mol]] 16:14, 4 March 2011 (UTC)
 
 :When a compiled program is run, the compiled program is run. The compiled program cannot be loaded as a library too can it? (I mean that it isn't done normally). If not then only normally interpreted languages could have this property; things like the C example don't fit the task description. --[[User:Paddy3118|Paddy3118]] 16:33, 4 March 2011 (UTC)
 :: It can; we do exactly this in one of my employer's products. I was rather surprised myself. I'd venture a guess that, at the OS level, this is exactly what's done with binary images anyway, except that the OS automatically runs a predefined entry point. (On Windows, I believe this is WinMain. I'm not sure what it is on Linux. The CRT wraps these in both cases.) The C example on the page is incorrect to that end, though. I believe the Java example is, too. --[[User:Short Circuit|Michael Mol]] 17:37, 4 March 2011 (UTC)
@@ -54,11 +54,11 @@ C code can use libraries ("shared libraries", "dynamically loaded libraries", wh
 :: I believe that that is an OS issue.  Hypothetically speaking: a shared library that defines a "main()" routine, can be treated as an executable.  However if the OS requires something else (like: let's say there is a bit you set: when this bit is set you have an executable, when this bit is cleared you have a shared library), then you need a separate file (so that that bit can be set to different values for each of the two purposes).  (With Python, the interpreter itself can serve to make this distinction -- in this case it is the "extra 'trivial program'" (or perhaps not-so-trivial program) that you need to make this work.)  --[[User:Rdm|Rdm]] 17:24, 7 March 2011 (UTC)
 
 ::: So far it seems there are a lot of examples with no clear definition of what they are about. To require the presence of a compiler for these examples in statically compiled languages is irregular, as most run-time environments for compiled languages do not have the compiler or the source present. 
-:::The task seems to be a way to get RC as the second place that mentions the page title as well as [http://speely.wordpress.com/2010/11/27/writing-scripts-with-common-lisp/ one blog entry] all from the same person, without enough thought on what ideas are to come under the title. 
+:::The task seems to be a way to get RC as the second place that mentions the page title as well as [one blog entry](http://speely.wordpress.com/2010/11/27/writing-scripts-with-common-lisp/) all from the same person, without enough thought on what ideas are to come under the title. 
 ::: Mcandre needs to answer some more of the points put to him on the purpose of the task - maybe by answering all the questions and suggestions on this talk page). 
 
 :::I guess I am against what looks like one persons attempt to popularize their own nebulous idea through RC. Is this a different kind of spam? --[[User:Paddy3118|Paddy3118]] 07:34, 8 March 2011 (UTC)
-:::: I don't know. It could simply be a case of [https://thelure.wordpress.com/2010/12/06/tais-model/ Tai's Model], or it ''could be a design pattern without an agreed-upon name.'' I could be wrong, but I think it's likely to be the latter. The name 'scripted main' is in no way clarifying to me as to what the pattern is supposed to do. However, the [https://github.com/mcandre/scriptedmain/blob/45e1ea1521fd541681c6db1468ab0964ed8f9595/README README file] from mcandre's GitHub hosting of his initial examples describes a simple behavior, ''"scriptedmain - Programs that only run main() if they're not loaded as libraries by other programs."'' I really think the better description of this is "write a program  which does one thing when executed directly and another thing when loaded as part of a larger program." --[[User:Short Circuit|Michael Mol]] 16:21, 8 March 2011 (UTC)
+:::: I don't know. It could simply be a case of [Tai's Model](https://thelure.wordpress.com/2010/12/06/tais-model/), or it ''could be a design pattern without an agreed-upon name.'' I could be wrong, but I think it's likely to be the latter. The name 'scripted main' is in no way clarifying to me as to what the pattern is supposed to do. However, the [README file](https://github.com/mcandre/scriptedmain/blob/45e1ea1521fd541681c6db1468ab0964ed8f9595/README) from mcandre's GitHub hosting of his initial examples describes a simple behavior, ''"scriptedmain - Programs that only run main() if they're not loaded as libraries by other programs."'' I really think the better description of this is "write a program  which does one thing when executed directly and another thing when loaded as part of a larger program." --[[User:Short Circuit|Michael Mol]] 16:21, 8 March 2011 (UTC)
 
 ::::: Yes, there is some confusion over compiled vs scripted vs interpreted vs assembled code and what qualifies as an executable. For the purposes of this article, I consider any ELF/MACH-O/DOS/WIN32 binary file, and any shebang'ed file as an executable. Strictly compiled languages (C, C++, D, Objective C) don't seem to belong in this article, because programs in those languages already have a good idea of what a main() function does and where it belongs. But, in the subset of compiled languages, some people prefer not to use separate files for API and CLI. E.g., "weak" allows this in C/C++.
 
@@ -97,7 +97,7 @@ Test the C program yourself. As long as scriptedmain.h is missing the main() pro
 
 :: I was wrong about using a blank header file, but one of you on #rosettacode helped me write a definitely working version using the "weak" attribute. Thanks much.
 
-:: My examples could certainly be cleaned up or even patched up. They're currently a work in progress--see the activity at GitHub. https://github.com/mcandre/scriptedmain/commits/master
+:: My examples could certainly be cleaned up or even patched up. They're currently a work in progress--see the activity at GitHub. <https://github.com/mcandre/scriptedmain/commits/master>
 
 :: My hope is that once everyone understand the purpose of this article, people will contribute more and more examples until a "scripted main" can be written in almost any language, and those for which scripted main is impossible will be documented so that coders don't waste time trying. --[[User:Mcandre|Mcandre]]
 
@@ -159,7 +159,7 @@ So the main method in MainClass is callable from another class if MainClass is i
 ==What ''is'' an "Executable library"==
 ''(This section needs expansion and discussion to see if we have enough to create a task that is capable of being completed by enough languages.)'' --[[User:Paddy3118|Paddy3118]] 07:45, 7 March 2011 (UTC)
 
-Since my words only carry so far, someone else wrote a short description of this behavior at [http://stackoverflow.com/questions/1973373/why-does-it-do-this-if-name-main/1973391#1973391 Stack Overflow]. --[[User:Mcandre]]
+Since my words only carry so far, someone else wrote a short description of this behavior at [Stack Overflow](http://stackoverflow.com/questions/1973373/why-does-it-do-this-if-name-main/1973391#1973391). --[[User:Mcandre]]
 
 When given a task in a programming 'contest' such as to create a simple function and to find values of that function at certain points; then you would be giving your example in the form of an executable library if:
 
@@ -233,7 +233,7 @@ if __name__ == '__main__':
 
 :: '''So, who's for the change!''' --[[User:Paddy3118|Paddy3118]] 08:15, 13 March 2011 (UTC)
 
-::: Good stuff. My only concern with hailstone vs meaning of life is that the hailstone sequence may warrant its own article, the duplication may confuse both hailstone geeks and scripting geeks, and the meaning of life snippet is much simpler to read, write, and understand. One caveat I can think of for the meaning of life example is that it fails to demonstrate export of a useful function ("return 42" is not a useful function). The function must be useful enough that the reader understands why it's worthing coding as both a command line script and as an API, yet useless enough that it's not duplicating another article. If you're set on using the hailstone sequence, feel free to borrow code from [https://github.com/mcandre/cspace My Github] --[[User:Mcandre|Mcandre]]
+::: Good stuff. My only concern with hailstone vs meaning of life is that the hailstone sequence may warrant its own article, the duplication may confuse both hailstone geeks and scripting geeks, and the meaning of life snippet is much simpler to read, write, and understand. One caveat I can think of for the meaning of life example is that it fails to demonstrate export of a useful function ("return 42" is not a useful function). The function must be useful enough that the reader understands why it's worthing coding as both a command line script and as an API, yet useless enough that it's not duplicating another article. If you're set on using the hailstone sequence, feel free to borrow code from [My Github](https://github.com/mcandre/cspace) --[[User:Mcandre|Mcandre]]
 
 :::: Hi Mcandre, the new task [[Executable library]] allows people to copy code from the pre-existing [[Hailstone sequence]] task. Check it out. --[[User:Paddy3118|Paddy3118]] 10:25, 4 April 2011 (UTC)
 

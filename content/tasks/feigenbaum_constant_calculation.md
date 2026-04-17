@@ -42,7 +42,7 @@ Calculate the Feigenbaum constant.
 
 
 ;See:
-:*   Details in the Wikipedia article:   [https://en.wikipedia.org/wiki/Feigenbaum_constants Feigenbaum constant].
+:*   Details in the Wikipedia article:   [Feigenbaum constant](https://en.wikipedia.org/wiki/Feigenbaum_constants).
 
 
 
@@ -1320,7 +1320,7 @@ object Feigenbaum1 extends App {
 ```
 
 ===Functional Style, Tail recursive===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/OjA3sae/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/04eS3BfCShmrA7I8ZmQfJA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/OjA3sae/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/04eS3BfCShmrA7I8ZmQfJA).
 
 ```Scala
 object Feigenbaum2 extends App {

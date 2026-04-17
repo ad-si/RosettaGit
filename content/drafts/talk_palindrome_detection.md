@@ -69,10 +69,10 @@ The Python recursive example isn't testing that the string is a palindrome. It s
 == Prolog ==
 
 I've tested it with gprolog... it does not work... nor I know exactly what is not working; but it seems quite interesting; I will spend a little bit of time taking a look at prolog (there's something that reminds me erlang, maybe <code>consult/1</code> or notation like this...)
-:I think the problem is with the string functions I used. I can't figure out how to get the right library loaded. I found the functions [http://www.fraber.de/bap/bap74.html here]...can anyone help? --[[User:Mwn3d|Mwn3d]] 03:32, 10 February 2009 (UTC)
+:I think the problem is with the string functions I used. I can't figure out how to get the right library loaded. I found the functions [here](http://www.fraber.de/bap/bap74.html)...can anyone help? --[[User:Mwn3d|Mwn3d]] 03:32, 10 February 2009 (UTC)
 I've tried to run several examples of prolog, not always with success. There's something still obscure (beyond the language itself, that seems not suitable for some kind of ''out-of-logic'' task; it should share something with functional programming, but I've failed using my poor knowledge of e.g. Haskell; nor I've found well-done full manuals, and tutorials stress the ''logic'' ability of the language...) --[[User:ShinTakezou|ShinTakezou]] 15:37, 10 February 2009 (UTC)
 
-Found this: [http://books.google.com/books?id=w-XjuvpOrjMC&pg=PA359&lpg=PA359&dq=prolog+palindrome&source=bl&ots=4WA-WMI-St&sig=Yo6gIu8mDMpwPdOygiEZC_EQS04&hl=en&ei=zZ2RSbSEK8yE_gadgLWrDA&sa=X&oi=book_result&resnum=7&ct=result palindrome?], but likely it is not suitable for the wiki because of the license... Despite this, I am not sure it works... when I feed it with a palindrome string or list, it "asks" me True? :D
+Found this: [palindrome?](http://books.google.com/books?id=w-XjuvpOrjMC&pg=PA359&lpg=PA359&dq=prolog+palindrome&source=bl&ots=4WA-WMI-St&sig=Yo6gIu8mDMpwPdOygiEZC_EQS04&hl=en&ei=zZ2RSbSEK8yE_gadgLWrDA&sa=X&oi=book_result&resnum=7&ct=result), but likely it is not suitable for the wiki because of the license... Despite this, I am not sure it works... when I feed it with a palindrome string or list, it "asks" me True? :D
 
 ```txt
 | ?- pal([a,b,c]).

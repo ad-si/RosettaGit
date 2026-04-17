@@ -18,4 +18,4 @@ Supports full SNOBOL4 language plus SPITBOL and other extensions.
 
 Maintainer: Phil Budne
 
-[http://www.snobol4.org/csnobol4/curr/ Main site]
+[Main site](http://www.snobol4.org/csnobol4/curr/)

@@ -1885,7 +1885,7 @@ p:[[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 1]]
 
 ## J
 
-Taken with slight modification from [http://www.jsoftware.com/jwiki/Essays/LU%20Decomposition].
+Taken with slight modification from <http://www.jsoftware.com/jwiki/Essays/LU%20Decomposition>.
 
 '''Solution:'''
 
@@ -4058,7 +4058,7 @@ U Matrix
 
 ###  Builtin LU decoposition
 
-See [http://www.stata.com/help.cgi?mf_lud LU decomposition] in Stata help.
+See [LU decomposition](http://www.stata.com/help.cgi?mf_lud) in Stata help.
 
 
 ```stata

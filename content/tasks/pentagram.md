@@ -54,7 +54,7 @@ Draw (or print) a regular pentagram, in any orientation. Use a different color (
 
 ## See also
 
-* [http://proofsfromthebook.com/2013/08/04/angle-sum-of-a-pentagram/ Angle sum of a pentagram]
+* [Angle sum of a pentagram](http://proofsfromthebook.com/2013/08/04/angle-sum-of-a-pentagram/)
 
 
 
@@ -132,7 +132,7 @@ Return
 
 ## C
 
-Interactive program which takes the side lengths of the pentagram's core, it's arms and the colours for filling the background, drawing the figure and then filling it in. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Interactive program which takes the side lengths of the pentagram's core, it's arms and the colours for filling the background, drawing the figure and then filling it in. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -207,7 +207,7 @@ int main(){
 
 ## EasyLang
 
-[https://easylang.online/apps/run.html?code=floatvars%0Axp%20%3D%2010%0Ayp%20%3D%2040%0Alinewidth%202%0Amove%20xp%20yp%0Awhile%20angle%20%3E%20-720%0Ax%20%3D%20xp%20%2B%20cos%20angle%20%2A%2080%0Ay%20%3D%20yp%20%2B%20sin%20-angle%20%2A%2080%0Aline%20x%20y%0Af%5B%5D%20%26%3D%20x%0Af%5B%5D%20%26%3D%20y%0Axp%20%3D%20x%0Ayp%20%3D%20y%0Aangle%20-%3D%20144%0A.%0Acolor%20900%0Afill%20f%5B%5D Run it]
+[Run it](https://easylang.online/apps/run.html?code=floatvars%0Axp%20%3D%2010%0Ayp%20%3D%2040%0Alinewidth%202%0Amove%20xp%20yp%0Awhile%20angle%20%3E%20-720%0Ax%20%3D%20xp%20%2B%20cos%20angle%20%2A%2080%0Ay%20%3D%20yp%20%2B%20sin%20-angle%20%2A%2080%0Aline%20x%20y%0Af%5B%5D%20%26%3D%20x%0Af%5B%5D%20%26%3D%20y%0Axp%20%3D%20x%0Ayp%20%3D%20y%0Aangle%20-%3D%20144%0A.%0Acolor%20900%0Afill%20f%5B%5D)
 <lang>floatvars
 xp = 10
 yp = 40
@@ -280,7 +280,7 @@ The image produced is similar to that of the Java entry.
 
 ## Haskell
 
-This uses the [http://projects.haskell.org/diagrams/ Diagrams] library to create an SVG drawing.  Compiling, then running it like:
+This uses the [Diagrams](http://projects.haskell.org/diagrams/) library to create an SVG drawing.  Compiling, then running it like:
 
 ```txt
 
@@ -714,7 +714,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/pentagram.svg Pentagram] (offsite image)
+[Pentagram](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/pentagram.svg) (offsite image)
 
 
 ## Perl 6
@@ -744,10 +744,10 @@ say SVG.serialize(
 );
 ```
 
-See [https://github.com/thundergnat/rc/blob/master/img/pentagram-perl6.svg Pentagram] (offsite svg image)
+See [Pentagram](https://github.com/thundergnat/rc/blob/master/img/pentagram-perl6.svg) (offsite svg image)
 
 Ever wondered what a regular 7 sided star looks like? Change $sides to 7 and re-run.
-See [https://github.com/thundergnat/rc/blob/master/img/heptagram-perl6.svg Heptagram]
+See [Heptagram](https://github.com/thundergnat/rc/blob/master/img/heptagram-perl6.svg)
 
 
 ## Phix
@@ -1222,7 +1222,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/znbcsoatlc00n4w/Pentagram.jpg?dl=0
+<https://www.dropbox.com/s/znbcsoatlc00n4w/Pentagram.jpg?dl=0>
 
 
 ## Scala
@@ -1363,7 +1363,7 @@ mr = #.min(mx,my)/3
 
 ## Tcl
 
-This implementation draws a simple pentagram on a [http://wiki.tcl.tk/1415 Canvas] widget.
+This implementation draws a simple pentagram on a [Canvas](http://wiki.tcl.tk/1415) widget.
 ```Tcl
 
 package require Tk 8.6   	;# lmap is new in Tcl/Tk 8.6
@@ -1460,5 +1460,5 @@ $ cat pentagram.svg
 
 ```
 
-Until local image uploading is re-enabled, see [http://www.zenkinetic.com/Images/RosettaCode/pentagram.zkl.svg this image].
+Until local image uploading is re-enabled, see [this image](http://www.zenkinetic.com/Images/RosettaCode/pentagram.zkl.svg).
 

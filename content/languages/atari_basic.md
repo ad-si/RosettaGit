@@ -11,4 +11,4 @@ tags = []
 +++
 '''Atari BASIC''' refers to the BASIC that shipped with Atari 8-bit micros.
 
-See Wikipedia: https://en.wikipedia.org/wiki/Atari_BASIC
+See Wikipedia: <https://en.wikipedia.org/wiki/Atari_BASIC>

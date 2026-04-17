@@ -1532,7 +1532,7 @@ s" Washington" haystack s" Bush" haystack
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1696,7 +1696,7 @@ Bush found last at index 8
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=7729d65f8af3f128db6c6992c5f74e98 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=7729d65f8af3f128db6c6992c5f74e98)'''
 
 ```gambas
 Public Sub Main()
@@ -2023,7 +2023,7 @@ end
 ```
 
 
-Taken from the public domain Icon Programming Library's [http://www.cs.arizona.edu/icon/library/src/procs/lists.icn lindex in lists] which generates list indices for x of any type
+Taken from the public domain Icon Programming Library's [lindex in lists](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn) which generates list indices for x of any type
 
 ```Icon
 procedure lindex(lst, x)		#: generate indices for items matching x
@@ -2507,7 +2507,7 @@ Exception in thread "main" java.lang.Exception: Donald does not occur in the lis
 
 ## Lasso
 
-Lasso arrays have a findindex method which returns all matching indexes. [http://lassoguide.com/operations/containers.html?#array]
+Lasso arrays have a findindex method which returns all matching indexes. <http://lassoguide.com/operations/containers.html?#array>
 
 
 ```Lasso
@@ -3329,7 +3329,7 @@ Bush -- first at 4, last at 7
 ```
 
 
-The built-in method <code>.first</code> takes a [https://docs.perl6.org/language/operators#infix_~~ smart-matcher], and returns the first matching list element.
+The built-in method <code>.first</code> takes a [smart-matcher](https://docs.perl6.org/language/operators#infix_~~), and returns the first matching list element.
 
 The <code>:k</code> adverb tells it to return the key (a.k.a. list index) instead of the value of the matching element.
 
@@ -3790,7 +3790,7 @@ ValueError: list.index(x): x not in list
 ```
 
 
-There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex rindex]).
+There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [rindex](http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex)).
 Instead we need to look for the index in the reversed list and adjust the result.
 
 ```python

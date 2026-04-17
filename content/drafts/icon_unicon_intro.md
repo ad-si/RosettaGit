@@ -28,50 +28,50 @@ These are general language references.
 ### == Unicon ==
 
 
-* [http://unicon.org/book/ub.pdf Book: Programming with Unicon 2nd edition; Jeffrey, Mohamed, Gharaibeh, Pereda, Parlett - note also documents details of the Icon Programming Library]
-* [http://unicon.org/utr/utr8.pdf Unicon Language Reference]
+* [Book: Programming with Unicon 2nd edition; Jeffrey, Mohamed, Gharaibeh, Pereda, Parlett - note also documents details of the Icon Programming Library](http://unicon.org/book/ub.pdf)
+* [Unicon Language Reference](http://unicon.org/utr/utr8.pdf)
 
 
 ### == Icon ==
 
-* [http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf Book: The Icon Programming Language, 3rd Edition; Griswold and Griswold]
-* [http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf Book: Icon Programming for Humanists; Corré]
-* [http://www.tools-of-computing.com/tc/CS/iconprog.pdf Book: Icon Programming Language Handbook by T.W. Christopher]
-* [http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf Presentation: Fundamentals of Icon Programming; Mitchell]
+* [Book: The Icon Programming Language, 3rd Edition; Griswold and Griswold](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+* [Book: Icon Programming for Humanists; Corré](http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf)
+* [Book: Icon Programming Language Handbook by T.W. Christopher](http://www.tools-of-computing.com/tc/CS/iconprog.pdf)
+* [Presentation: Fundamentals of Icon Programming; Mitchell](http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf)
 
 ==== Articles, Newsletters ====
 Excellent sources of programming insight.
-* [http://www.cs.arizona.edu/icon/analyst/contents.htm Newsletter:  Table of Contents for the Icon Analyst from 1990-2001] discussing advanced Icon programming and  [http://www.cs.arizona.edu/icon/analyst/ia.htm Archived issues]
-* [http://www.cs.arizona.edu/icon/inl/inlx.txt Newsletter: Table of Contents for the Icon Newsletter from 1979-2000] discussing Icon programming and [http://www.cs.arizona.edu/icon/inl/inl.htm Archived issues]
-* [http://unicon.org/generator/ Newsletter: Archived issues of the Generator from 2004-2005] discussing Unicon programming
+* [Newsletter:  Table of Contents for the Icon Analyst from 1990-2001](http://www.cs.arizona.edu/icon/analyst/contents.htm) discussing advanced Icon programming and  [Archived issues](http://www.cs.arizona.edu/icon/analyst/ia.htm)
+* [Newsletter: Table of Contents for the Icon Newsletter from 1979-2000](http://www.cs.arizona.edu/icon/inl/inlx.txt) discussing Icon programming and [Archived issues](http://www.cs.arizona.edu/icon/inl/inl.htm)
+* [Newsletter: Archived issues of the Generator from 2004-2005](http://unicon.org/generator/) discussing Unicon programming
 
 
 ### = Programming Libraries =
 
-* [http://www.cs.arizona.edu/icon/library/ipl.htm Code: The Icon Programming Library and index]
-* [https://tapestry.tucson.az.us/twiki/bin/view/UniLib/WebHome Code: The Unicon Library]
-* [https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome Code: The Tapestry TWiki examples of Icon and Unicon programs]
+* [Code: The Icon Programming Library and index](http://www.cs.arizona.edu/icon/library/ipl.htm)
+* [Code: The Unicon Library](https://tapestry.tucson.az.us/twiki/bin/view/UniLib/WebHome)
+* [Code: The Tapestry TWiki examples of Icon and Unicon programs](https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome)
 
 ==== Graphics, Network Messaging, Threads, Patterns, etc. ====
 These represent extensions that have been integrated into the core langauge(s).
-* [http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend]
-* [http://unicon.org/utr/utr6b.pdf An IVIB Primer (Visual Interface Builder, UTR6b)]
-* [http://unicon.org/utr/utr9b.pdf Unicon 3D Graphics User's Guide and Reference Manual (UTR9b superseding UTR9a)]
-* [http://unicon.org/utr/utr10.pdf Debugging with UDB (UTR10)]
-* [http://unicon.org/utr/utr12.pdf Ui: a Unicon Development Environment (UTR12)]
-* [http://unicon.org/utr/utr13.pdf The Unicon Messaging Facilities (UTR13)]
-* [http://unicon.org/utr/utr14.pdf Unicon Threads User's Guide and Reference Manual (UTR14)]
-* [http://unicon.org/utr/utr18.pdf Pattern Matching in Unicon (UTR18)]
+* [Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend](http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
+* [An IVIB Primer (Visual Interface Builder, UTR6b)](http://unicon.org/utr/utr6b.pdf)
+* [Unicon 3D Graphics User's Guide and Reference Manual (UTR9b superseding UTR9a)](http://unicon.org/utr/utr9b.pdf)
+* [Debugging with UDB (UTR10)](http://unicon.org/utr/utr10.pdf)
+* [Ui: a Unicon Development Environment (UTR12)](http://unicon.org/utr/utr12.pdf)
+* [The Unicon Messaging Facilities (UTR13)](http://unicon.org/utr/utr13.pdf)
+* [Unicon Threads User's Guide and Reference Manual (UTR14)](http://unicon.org/utr/utr14.pdf)
+* [Pattern Matching in Unicon (UTR18)](http://unicon.org/utr/utr18.pdf)
 
 
 ### = Implementation =
 
-* [http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf The Implementation of the Icon Programming Language; Griswold and Griswold]
-** [http://www.cs.arizona.edu/icon/docs/ipd112.htm Report: IPD112, Supplementary Information for Version 8]
-** [http://www.cs.arizona.edu/icon/docs/ipd239.htm Report: IPD239, Supplementary Information for Version 9]
-** [http://www.cs.arizona.edu/icon/ftp/doc/ipd261.pdf Report: IPD261 Icon's run-time implementation language]
-* [http://unicon.org/book/ib.pdf Book: The Implementation of Icon and Unicon: a Compendium; Jeffery]
-* [http://unicon.org/utr/utr5b.pdf The Implementation of Graphics in Unicon Version 12 (UTR5b)]
+* [The Implementation of the Icon Programming Language; Griswold and Griswold](http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
+** [Report: IPD112, Supplementary Information for Version 8](http://www.cs.arizona.edu/icon/docs/ipd112.htm)
+** [Report: IPD239, Supplementary Information for Version 9](http://www.cs.arizona.edu/icon/docs/ipd239.htm)
+** [Report: IPD261 Icon's run-time implementation language](http://www.cs.arizona.edu/icon/ftp/doc/ipd261.pdf)
+* [Book: The Implementation of Icon and Unicon: a Compendium; Jeffery](http://unicon.org/book/ib.pdf)
+* [The Implementation of Graphics in Unicon Version 12 (UTR5b)](http://unicon.org/utr/utr5b.pdf)
 
 == Icon and Unicon Differences ==
 
@@ -790,12 +790,12 @@ And while the original motivations for co-expressions was to facilitate co-routi
 ==== Co-Expression Articles and References ====
 
 Steve Wampler's "Fun With Co-Expressions" articles in The Generator
-* [http://www.unicon.org/generator/TheGeneratorVol1No1Letter.pdf "Fun With Co-Expressions, part 1"]
-* [http://www.unicon.org/generator/v2n1.pdf "Fun With Co-Expressions, part 2"]
-* [http://www.unicon.org/generator/v2n2.pdf "Fun With Co-Expressions, part 3"]
+* ["Fun With Co-Expressions, part 1"](http://www.unicon.org/generator/TheGeneratorVol1No1Letter.pdf)
+* ["Fun With Co-Expressions, part 2"](http://www.unicon.org/generator/v2n1.pdf)
+* ["Fun With Co-Expressions, part 3"](http://www.unicon.org/generator/v2n2.pdf)
 
 Other articles
-* [http://www.drones.com/coexp/ Shamim Mohamed's article on co-expressions]
+* [Shamim Mohamed's article on co-expressions](http://www.drones.com/coexp/)
 
 
 ### = Example: Function Composition =
@@ -1055,7 +1055,7 @@ fail &fail            # is a syntax error as fail takes no expression
 
 As one can see this is less about the behavior of &fail as it is about the behavior of return and suspend.
 
-'&fail' does have uses as can be seen in this example from [https://www.cs.arizona.edu/icon/progcorn/pc_inl21.htm| The Icon Newsletter's Programming Corner]:
+'&fail' does have uses as can be seen in this example from [The Icon Newsletter's Programming Corner](https://www.cs.arizona.edu/icon/progcorn/pc_inl21.htm|):
 
 ```Icon
 
@@ -1134,7 +1134,7 @@ Other environment variables
 * WICONLOG   File to record output from wicont and wiconx
 
 
-The defaults for [http://unicon.org/utr/utr7.html Unicon are documented in UTR7]
+The defaults for [Unicon are documented in UTR7](http://unicon.org/utr/utr7.html)
 
 == Memory Allocation ==
 
@@ -1180,7 +1180,7 @@ end
 
 == Minor Differences ==
 
-There are numerous minor differences between Icon and Unicon and they are not rigorously documented.  See [http://unicon.org/generator/ The Generator articles entitled: Under-documented Unicon] for more information or contribute below.
+There are numerous minor differences between Icon and Unicon and they are not rigorously documented.  See [The Generator articles entitled: Under-documented Unicon](http://unicon.org/generator/) for more information or contribute below.
 
 === Co-expression Calling ===
 With co-expression ce,  the following pairs of activations are equivalent in Unicon:

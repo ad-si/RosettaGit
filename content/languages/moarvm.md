@@ -9,7 +9,7 @@ id = 19071
 categories = []
 tags = []
 +++
-[http://www.moarvm.com MoarVM] is a virtual machine for running NQP and Rakudo Perl 6.
+[MoarVM](http://www.moarvm.com) is a virtual machine for running NQP and Rakudo Perl 6.
 
 
 ## Languages for MoarVM

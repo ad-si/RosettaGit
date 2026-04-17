@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Inspiration==
-The task was inspired by [http://stackoverflow.com/questions/16474895/finding-a-pattern-in-a-binary-string this question] on stackoverflow. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 19:45, 10 May 2013 (UTC)
+The task was inspired by [this question](http://stackoverflow.com/questions/16474895/finding-a-pattern-in-a-binary-string) on stackoverflow. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 19:45, 10 May 2013 (UTC)
 
 ==Clarification==
 The task needs some clarifation.  What is a repeat? Is string "10" itself repeated once? Is string "101" a repeat of "10"? When finding a repeated substring "if any", what's the preferred answer for "1111", is it "1" or "11", or even "111" and "1111"?  There needs be a clear definition of the word "repeat", not just relying on whatever the first sample solution says, beause can be too arbitrary. --[[User:Ledrug|Ledrug]] ([[User talk:Ledrug|talk]]) 03:53, 12 May 2013 (UTC)

@@ -130,7 +130,7 @@ begin
 ## AutoHotkey
 
 {{works with | AutoHotkey_L}}
-uses [http://www.autohotkey.com/forum/topic32238.html gdip.ahk]
+uses [gdip.ahk](http://www.autohotkey.com/forum/topic32238.html)
 
 ```AutoHotkey
 startup()
@@ -1149,7 +1149,7 @@ The percentage difference is 1.625593%
 ## Liberty BASIC
 
 LB uses here a DLL to allow loading the jpgs. I get the 'other' result if I use LB's native bmp load and convert the jpgs to bmp with the Gimp!
-The GUI shows the 'difference image'. [http://www.diga.me.uk/right.gif SceenDisplay]
+The GUI shows the 'difference image'. [SceenDisplay](http://www.diga.me.uk/right.gif)
 
 ```lb
 
@@ -1624,7 +1624,7 @@ MessageRequester("Result","Diff= "+StrD(100*totalDiff/(255*w*h*3),3)+" %")
 
 ## Python
 
-You must install the [https://pillow.readthedocs.io/ Python Imaging Library] to use this example.
+You must install the [Python Imaging Library](https://pillow.readthedocs.io/) to use this example.
 
 {{works with|python version 3.x}}
 
@@ -2062,7 +2062,7 @@ Difference:  1.619%
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn imageDiff(img1,img2){

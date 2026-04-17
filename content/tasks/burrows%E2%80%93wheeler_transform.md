@@ -1049,7 +1049,7 @@ String can't contain STX character.
 
 ## Phix
 
-An efficient implementation, based mainly on http://spencer-carroll.com/an-easy-to-understand-explanation-of-the-burrows-wheeler-transform/
+An efficient implementation, based mainly on <http://spencer-carroll.com/an-easy-to-understand-explanation-of-the-burrows-wheeler-transform/>
 
 Perhaps not ultra-fast, it takes around about ten seconds to transform and invert a 100K string. Note: requires 0.8.0+
 
@@ -1218,7 +1218,7 @@ This Python implementation sacrifices speed for simplicity: the program is short
 
 Using the STX/ETX control codes to mark the start and end of the text, and using s[i:] + s[:i] to construct the ith rotation of s, the forward transform takes the last character of each of the sorted rows.
 The inverse transform repeatedly inserts r as the left column of the table and sorts the table. After the whole table is built, it returns the row that ends with ETX, minus the STX and ETX.
-Ref: [https://www.codespeedy.com/burrows-wheeler-transform-in-python/ Burrows Wheeler Transform in Python]
+Ref: [Burrows Wheeler Transform in Python](https://www.codespeedy.com/burrows-wheeler-transform-in-python/)
 
 
 ```Python

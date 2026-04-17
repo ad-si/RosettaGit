@@ -1563,7 +1563,7 @@ func main() {
 ## Haskell
 
 
-Example makes use of [http://hackage.haskell.org/package/JuicyPixels <tt>JuicyPixels</tt>] for serialization to PNG format and and [http://hackage.haskell.org/package/primitive <tt>primitive</tt>] to abstract away memory-related operations. This is a fairly close translation of the algorithm as described on [https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm Wikipedia]:
+Example makes use of [<tt>JuicyPixels</tt>](http://hackage.haskell.org/package/JuicyPixels) for serialization to PNG format and and [<tt>primitive</tt>](http://hackage.haskell.org/package/primitive) to abstract away memory-related operations. This is a fairly close translation of the algorithm as described on [Wikipedia](https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm):
 
 
 ```haskell
@@ -3007,7 +3007,7 @@ use of the   '''IPART'''   function should probably be   '''FLOOR'''.
 
 [See the   ''talk''   section on the Xiaolin Wu's line algorithm.]
 
-http://en.wikipedia.org/wiki/Talk:Xiaolin_Wu%27s_line_algorithm
+<http://en.wikipedia.org/wiki/Talk:Xiaolin_Wu%27s_line_algorithm>
 
 
 Also, it takes in account (that can easily be overlooked) of the note after the description of the algorithm:
@@ -3269,7 +3269,7 @@ javax.imageio.ImageIO.write(img.image, "png", new java.io.File("XiaolinWuLineAlg
 ```
 
 View the PNG, available at the following URL because RosettaCode image uploads were disabled:
-https://lh5.googleusercontent.com/GxBAHV4nebuO1uiKboKc6nQmmtlJV47jPwVZnQHcbV7TKm0kjdKfKteclCfxmSdFJnSKvYYoB5I
+<https://lh5.googleusercontent.com/GxBAHV4nebuO1uiKboKc6nQmmtlJV47jPwVZnQHcbV7TKm0kjdKfKteclCfxmSdFJnSKvYYoB5I>
 
 
 ## Sidef

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/glenn-brown/golang-pkg-pcre Golang-pkg-pcre] is a library providing Perl-Compatible RegularExpression support for Go using libpcre++.
+[Golang-pkg-pcre](https://github.com/glenn-brown/golang-pkg-pcre) is a library providing Perl-Compatible RegularExpression support for Go using libpcre++.
 
-Its use is subject to [https://github.com/glenn-brown/golang-pkg-pcre/blob/master/debian/copyright this licence].
+Its use is subject to [this licence](https://github.com/glenn-brown/golang-pkg-pcre/blob/master/debian/copyright).

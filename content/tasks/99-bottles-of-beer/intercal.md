@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Matt Dimeo's code copied from http://mail.99-bottles-of-beer.net/language-intercal-333.html
+Matt Dimeo's code copied from <http://mail.99-bottles-of-beer.net/language-intercal-333.html>
 
 ```intercal
 

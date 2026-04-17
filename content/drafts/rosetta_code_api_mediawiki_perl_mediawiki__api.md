@@ -11,7 +11,7 @@ tags = []
 +++
 
 =Official Resources=
-[http://search.cpan.org/dist/MediaWiki-API/lib/MediaWiki/API.pm MediaWiki::API] on CPAN.
+[MediaWiki::API](http://search.cpan.org/dist/MediaWiki-API/lib/MediaWiki/API.pm) on CPAN.
 =Usage=
 All of the methods take [[Associative Array|hashrefs]], which provides a named parameter approach to function arguments.  MediaWiki::API uses [[object-oriented principles]], which means you need to [[instanciate an object]].  Using MediaWiki::API involves four stages.
 ==Construction==

@@ -13,4 +13,4 @@ tags = []
 {{stub}}{{library}}Text.PhoneticCode.Soundex provides access to [[Soundex]] functionality.
 
 ==Location==
-* [http://hackage.haskell.org/packages/hackage.html hackageDB]
+* [hackageDB](http://hackage.haskell.org/packages/hackage.html)

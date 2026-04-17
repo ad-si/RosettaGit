@@ -778,7 +778,7 @@ quit
 
 ## C
 
-Using goto (note: gotos are [http://en.wikipedia.org/wiki/Considered_harmful considered harmful]):
+Using goto (note: gotos are [considered harmful](http://en.wikipedia.org/wiki/Considered_harmful)):
 
 ```cpp
 #include <iostream>
@@ -1738,7 +1738,7 @@ Sample output :
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=77521a9ffe6bebdfe2e34df8faab5e78 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=77521a9ffe6bebdfe2e34df8faab5e78)'''
 
 ```gambas
 Public Sub Main()
@@ -4278,7 +4278,7 @@ x=5, y=1, a=20
 
 ## Stata
 
-In Stata macro language, one can only break the innermost loop, with '''[https://www.stata.com/help.cgi?continue continue, break]'''. There are several ways to cope with this.
+In Stata macro language, one can only break the innermost loop, with '''[continue, break](https://www.stata.com/help.cgi?continue)'''. There are several ways to cope with this.
 
 First, build the matrix:
 
@@ -4293,7 +4293,7 @@ forv i=1/20 {
 ```
 
 
-Use nested '''[https://www.stata.com/help.cgi?forvalues forvalues]'''. If 20 is found, set a flag and break the inner loop. In the outer loop, check the flag and break the outer loop if 20 was found.
+Use nested '''[forvalues](https://www.stata.com/help.cgi?forvalues)'''. If 20 is found, set a flag and break the inner loop. In the outer loop, check the flag and break the outer loop if 20 was found.
 
 
 ```stata
@@ -4316,7 +4316,7 @@ if !`q' {
 ```
 
 
-Use nested '''[https://www.stata.com/help.cgi?while while]''' loops, and check both the loop indices and a flag. One could also use an inner forvalue loop together with an outer while loop.
+Use nested '''[while](https://www.stata.com/help.cgi?while)''' loops, and check both the loop indices and a flag. One could also use an inner forvalue loop together with an outer while loop.
 
 
 ```stata
@@ -4340,7 +4340,7 @@ if !`q' {
 ```
 
 
-Use the exit/capture exception mechanism: '''[https://www.stata.com/help.cgi?exit_program exit]''' tos throw an exception, and '''[https://www.stata.com/help.cgi?capture capture]''' to catch it. Since this catches all exception, you have then to check the value of '''[https://www.stata.com/help.cgi?_variables _rc]'''.
+Use the exit/capture exception mechanism: '''[exit](https://www.stata.com/help.cgi?exit_program)''' tos throw an exception, and '''[capture](https://www.stata.com/help.cgi?capture)''' to catch it. Since this catches all exception, you have then to check the value of '''[_rc](https://www.stata.com/help.cgi?_variables)'''.
 
 
 ```stata
@@ -4368,7 +4368,7 @@ else exit _rc
 
 ###  Mata
 
-In Mata, the situation is simpler: one may '''[https://www.stata.com/help.cgi?m2_return return]''' from a program without resort to exceptions, or use the '''[https://www.stata.com/help.cgi?m2_goto goto]''' statement. It's still possible to use '''[https://www.stata.com/help.cgi?m2_break break]''' and flags though.
+In Mata, the situation is simpler: one may '''[return](https://www.stata.com/help.cgi?m2_return)''' from a program without resort to exceptions, or use the '''[goto](https://www.stata.com/help.cgi?m2_goto)''' statement. It's still possible to use '''[break](https://www.stata.com/help.cgi?m2_break)''' and flags though.
 
 
 ```stata

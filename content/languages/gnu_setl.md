@@ -12,4 +12,4 @@ tags = []
 
 
 
-[http://setl.org/setl GNU SETL] is an implementation of [SETL](https://rosettacode.org/wiki/SETL) developed between 1989-2009 by David Bacon. Extensions include bindings to many POSIX functions for process control, sockets, asynchronous I/O and file management.
+[GNU SETL](http://setl.org/setl) is an implementation of [SETL](https://rosettacode.org/wiki/SETL) developed between 1989-2009 by David Bacon. Extensions include bindings to many POSIX functions for process control, sockets, asynchronous I/O and file management.

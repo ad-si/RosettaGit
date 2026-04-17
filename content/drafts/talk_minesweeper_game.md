@@ -16,7 +16,7 @@ It took several hours to write the task description and to code this tasks initi
 I freely admit that the task was chosen with an eye to attracting those new to programming :-)
  --[[User:Paddy3118|Paddy3118]] 10:58, 10 July 2010 (UTC)
 
-:Sometimes the Python version exceeds the standard [http://effbot.org/pyref/sys.getrecursionlimit.htm recursion limit] (1,000) on my machine when clearing the first grid point:
+:Sometimes the Python version exceeds the standard [recursion limit](http://effbot.org/pyref/sys.getrecursionlimit.htm) (1,000) on my machine when clearing the first grid point:
 
 
 ```txt

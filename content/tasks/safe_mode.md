@@ -163,7 +163,7 @@ The only built-in 'safer' way to run Perl is to invoke it in 'taint mode' with t
 
 There is a CPAN module <code>Safe</code> that purports to allow Perl to be compiled and executed in <tt>restricted compartments</tt>, isolated namespaces with limits on allowed operators. However, it has not been updated in over 6 years, and so not tested with recent releases of Perl. Further, it does not appear to work at all on BSD-derived versions of UNIX. 
 
-There's really no switch to flip to make Perl code more secure. It is up to the programmer to follow security best-practices, such as employing the <code>strict</code> and <code>warnings</code> pragmas, using 3-argument form of <code>open</code> for filehandles, being careful about the contents of <code>$ENV{PATH}</code>, and so forth.  The CPAN module <code>Perl::Critic</code> can be helpful in this regard.  Read further on this topic in the language documentation on [https://perldoc.perl.org/perlsec.html Perl security]
+There's really no switch to flip to make Perl code more secure. It is up to the programmer to follow security best-practices, such as employing the <code>strict</code> and <code>warnings</code> pragmas, using 3-argument form of <code>open</code> for filehandles, being careful about the contents of <code>$ENV{PATH}</code>, and so forth.  The CPAN module <code>Perl::Critic</code> can be helpful in this regard.  Read further on this topic in the language documentation on [Perl security](https://perldoc.perl.org/perlsec.html)
 
 
 ## Perl 6

@@ -14,4 +14,4 @@ tags = []
 SpiderMonkey is written in [C](https://rosettacode.org/wiki/:Category:C) and contains a [compiler](https://rosettacode.org/wiki/compiler), [interpreter](https://rosettacode.org/wiki/interpreter), [decompiler](https://en.wikipedia.org/wiki/decompiler), [garbage collector](https://rosettacode.org/wiki/Garbage_collection), and standard classes.
 
 ## See also
-*[https://developer.mozilla.org/en/SpiderMonkey SpiderMonkey homepage]
+*[SpiderMonkey homepage](https://developer.mozilla.org/en/SpiderMonkey)

@@ -13,4 +13,4 @@ tags = []
 {{stub}}
 "Prototype is a JavaScript Framework that aims to ease development of dynamic web applications."
 
-[http://www.prototypejs.org/ Home]
+[Home](http://www.prototypejs.org/)

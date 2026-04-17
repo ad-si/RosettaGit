@@ -737,7 +737,7 @@ c 2 =   61.9603254
 ## Fortran
 
 
-{{libheader|SLATEC}} [http://netlib.org/slatec/ Available at the Netlib]
+{{libheader|SLATEC}} [Available at the Netlib](http://netlib.org/slatec/)
 
 
 ```Fortran
@@ -840,7 +840,7 @@ STOP program complete
 
 ## Go
 
-The [http://en.wikipedia.org/wiki/Ordinary_least_squares#Example_with_real_data example] on WP happens to be a polynomial regression example, and so code from the [[Polynomial regression]] task can be reused here.  The only difference here is that givens x and y are computed in a separate function as a task prerequisite.
+The [example](http://en.wikipedia.org/wiki/Ordinary_least_squares#Example_with_real_data) on WP happens to be a polynomial regression example, and so code from the [[Polynomial regression]] task can be reused here.  The only difference here is that givens x and y are computed in a separate function as a task prerequisite.
 
 ### Library gonum/matrix
 
@@ -952,7 +952,7 @@ func main() {
 
 ## Haskell
 
-Using package [http://hackage.haskell.org/package/hmatrix hmatrix] from HackageDB
+Using package [hmatrix](http://hackage.haskell.org/package/hmatrix) from HackageDB
 
 ```haskell
 import Numeric.LinearAlgebra
@@ -1396,7 +1396,7 @@ y*pseudoinv(X)
 
 ## Perl 6
 
-We're going to solve the example on the Wikipedia article using [https://github.com/grondilu/clifford Clifford], a [https://en.wikipedia.org/wiki/Geometric_algebra geometric algebra] module.  Optimization for large vector space does not quite work yet, so it's going to take (a lof of) time and a fair amount of memory, but it should work.
+We're going to solve the example on the Wikipedia article using [Clifford](https://github.com/grondilu/clifford), a [geometric algebra](https://en.wikipedia.org/wiki/Geometric_algebra) module.  Optimization for large vector space does not quite work yet, so it's going to take (a lof of) time and a fair amount of memory, but it should work.
 
 Let's create four vectors containing our input data:
 
@@ -1814,7 +1814,7 @@ gen y=1.5+0.8*x1-0.7*x2+1.1*x3-1.7*x4+rnormal()
 ```
 
 
-Now, use the '''[https://www.stata.com/help.cgi?regress regress]''' command:
+Now, use the '''[regress](https://www.stata.com/help.cgi?regress)''' command:
 
 
 ```stata
@@ -1847,7 +1847,7 @@ The command shows the coefficients along with a bunch of useful information, suc
 ```
 
 
-The regress command also sets a number of '''[https://www.stata.com/help.cgi?ereturn ereturn]''' values, which can be used by subsequent commands. The coefficients and their standard errors also have a [https://www.stata.com/help.cgi?_variables special syntax]:
+The regress command also sets a number of '''[ereturn](https://www.stata.com/help.cgi?ereturn)''' values, which can be used by subsequent commands. The coefficients and their standard errors also have a [special syntax](https://www.stata.com/help.cgi?_variables):
 
 
 ```stata
@@ -1865,7 +1865,7 @@ The regress command also sets a number of '''[https://www.stata.com/help.cgi?ere
 ```
 
 
-See '''[https://www.stata.com/help.cgi?estat estat]''', '''[https://www.stata.com/help.cgi?predict predict]''', '''[https://www.stata.com/help.cgi?estimates estimates]''', '''[https://www.stata.com/help.cgi?margins margins]''' for examples of commands that can be used after a regression.
+See '''[estat](https://www.stata.com/help.cgi?estat)''', '''[predict](https://www.stata.com/help.cgi?predict)''', '''[estimates](https://www.stata.com/help.cgi?estimates)''', '''[margins](https://www.stata.com/help.cgi?margins)''' for examples of commands that can be used after a regression.
 
 Here we compute [[wp:Akaike information criterion|Akaike's AIC]], the covariance matrix of the estimates, the predicted values and residuals:
 
@@ -1953,7 +1953,7 @@ puts [regressionCoefficients $y [map n {map v {expr {$v**$n}} $x} {0 1 2}]]
 ## Ursala
 
 This exact problem is solved by the DGELSD function from
-the Lapack library [http://www.netlib.org/lapack/lug/node27.html],
+the Lapack library <http://www.netlib.org/lapack/lug/node27.html>,
 which is callable in Ursala like this:
 
 ```Ursala

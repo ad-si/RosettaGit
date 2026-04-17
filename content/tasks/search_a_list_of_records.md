@@ -2150,7 +2150,7 @@ $index1 = first_index { $_->{name} eq 'Dar Es Salaam' } @cities;
 
 The built-in method <tt>.first</tt> fulfills the requirements of this task.
 
-It takes any [https://docs.perl6.org/language/operators#infix_~~ smart-matcher] as a predicate. The <tt>:k</tt> adverb makes it return the key (i.e. numerical index) instead of the value of the element.
+It takes any [smart-matcher](https://docs.perl6.org/language/operators#infix_~~) as a predicate. The <tt>:k</tt> adverb makes it return the key (i.e. numerical index) instead of the value of the element.
 
 ```perl6
 my @cities =
@@ -2780,7 +2780,7 @@ Some(4.58)
 
 ## Scala
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/8OlRzf8/0 ScalaFiddle (JavaScript executed in browser)] or by [https://scastie.scala-lang.org/fGhNDUNHRqq8h04x3Mm2Kw Scastie (remote JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript executed in browser)](https://scalafiddle.io/sf/8OlRzf8/0) or by [Scastie (remote JVM)](https://scastie.scala-lang.org/fGhNDUNHRqq8h04x3Mm2Kw).
 
 ```Scala
 object SearchListOfRecords extends App {

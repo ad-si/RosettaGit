@@ -14,5 +14,5 @@ Wolfram is a computational knowledge engine that contains numerous examples of p
 
 ### See also
 
-* http://mathworld.wolfram.com
-* http://en.wikipedia.org/wiki/Wolfram_Alpha
+* <http://mathworld.wolfram.com>
+* <http://en.wikipedia.org/wiki/Wolfram_Alpha>

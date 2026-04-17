@@ -19,6 +19,6 @@ Chicken Scheme uses libraries called '''eggs''' as well as [SRFI](https://rosett
 
 ### External Links
 
-* [http://www.call-with-current-continuation.org/ Chicken Website]
-* [http://wiki.call-cc.org/chicken-projects/egg-index-4.html Eggs Unlimited (library modules)]
-* [http://home.pipeline.com/~hbaker1/CheneyMTA.html Henry Baker's article "Cheney on the MTA"]
+* [Chicken Website](http://www.call-with-current-continuation.org/)
+* [Eggs Unlimited (library modules)](http://wiki.call-cc.org/chicken-projects/egg-index-4.html)
+* [Henry Baker's article "Cheney on the MTA"](http://home.pipeline.com/~hbaker1/CheneyMTA.html)

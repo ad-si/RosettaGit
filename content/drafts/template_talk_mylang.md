@@ -18,5 +18,5 @@ Something odd is going on with this template; it's inserting the link twiceâ€¦ â
 == C# issue ==
 
 The link redirects to C. Should the exception added to this template? --[[User:Mielikki|Mielikki]] ([[User talk:Mielikki|talk]]) 16:49, 3 March 2019 (UTC)
-:There is already a workaround. See for instance this edit: http://rosettacode.org/mw/index.php?title=User:Emilioplatzer&diff=prev&oldid=277995
+:There is already a workaround. See for instance this edit: <http://rosettacode.org/mw/index.php?title=User:Emilioplatzer&diff=prev&oldid=277995>
 :[[User:Eoraptor|Eoraptor]] ([[User talk:Eoraptor|talk]]) 18:03, 3 March 2019 (UTC)

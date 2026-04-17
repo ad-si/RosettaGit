@@ -64,9 +64,9 @@ Related tasks:
 # [[Floyd-Warshall algorithm]]
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Dijkstra%27s_algorithm#F.23 Dijkstra's algorithm (F#)]
+This task uses [Dijkstra's algorithm (F#)](http://www.rosettacode.org/wiki/Dijkstra%27s_algorithm#F.23)
 
-This task uses [http://www.rosettacode.org/wiki/CSV_data_manipulation#F.23 readCSV (F#)]
+This task uses [readCSV (F#)](http://www.rosettacode.org/wiki/CSV_data_manipulation#F.23)
 
 ### Part 1
 

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/sevlyar/go-daemon go-daemon] is a library for writing system daemons in Go on Unix-based systems.
+[go-daemon](https://github.com/sevlyar/go-daemon) is a library for writing system daemons in Go on Unix-based systems.
 
-Its use is subject to the [https://github.com/sevlyar/go-daemon/blob/master/LICENSE MIT License].
+Its use is subject to the [MIT License](https://github.com/sevlyar/go-daemon/blob/master/LICENSE).

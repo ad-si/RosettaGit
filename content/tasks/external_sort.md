@@ -19,14 +19,14 @@ languages = [
 ]
 +++
 
-{{draft task}}Sort a huge file too large to fit into memory. The algorithm consists in reading a large file to be sorted in chunks of data small enough to fit in main memory, sort each of the chunks, write them out to a temporary file, and finally combined the smaller subfiles into a single larger file. For more info see: https://en.wikipedia.org/wiki/External_sorting
+{{draft task}}Sort a huge file too large to fit into memory. The algorithm consists in reading a large file to be sorted in chunks of data small enough to fit in main memory, sort each of the chunks, write them out to a temporary file, and finally combined the smaller subfiles into a single larger file. For more info see: <https://en.wikipedia.org/wiki/External_sorting>
 
 The sorting algorithm can be any popular sort, like quicksort. For simplicity one can assume that the file consists of fixed length integers and that the sort function is less-than (<).
 
 
 ## Go
 
-This is a translation of the C++ code [https://www.geeksforgeeks.org/external-sorting/ here] which implements external sorting using a merge sort. In the interests of brevity, the extensive comments in the C++ version have been largely omitted.
+This is a translation of the C++ code [here](https://www.geeksforgeeks.org/external-sorting/) which implements external sorting using a merge sort. In the interests of brevity, the extensive comments in the C++ version have been largely omitted.
 
 A small test file consisting of random integers has been generated and sorted to demonstrate that the approach works.
 

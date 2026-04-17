@@ -408,7 +408,7 @@ File.WriteAllBytes("favicon.ico", decoded)
 ```
 
 {{out}}
-[https://rosettacode.org/favicon.ico Rosetta Code Icon]
+[Rosetta Code Icon](https://rosettacode.org/favicon.ico)
 
 
 ### Manual Implementation
@@ -446,7 +446,7 @@ File.WriteAllBytes("favicon.ico", decoded)
 ```
 
 {{out}}
-[https://rosettacode.org/favicon.ico Rosetta Code Icon]
+[Rosetta Code Icon](https://rosettacode.org/favicon.ico)
 
 
 ## Go
@@ -835,7 +835,7 @@ To err is human, but to really foul things up you need a computer.
 
 ## Prolog
 
-In SWI-Prolog base64 is a built in predicate. https://www.swi-prolog.org/pldoc/doc_for?object=base64%3Abase64/2
+In SWI-Prolog base64 is a built in predicate. <https://www.swi-prolog.org/pldoc/doc_for?object=base64%3Abase64/2>
 
 This predicate is reversable and can encode or decode.
 {{out}}
@@ -955,7 +955,7 @@ Output: To err is human, but to really foul things up you need a computer.
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/mjgxJDp/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/P4RfGhRQSkaKWEmdBi1gaw Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/mjgxJDp/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/P4RfGhRQSkaKWEmdBi1gaw).
 
 ```Scala
 import java.util.Base64
@@ -978,9 +978,9 @@ object Base64Decode extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines
-the functions [http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string) toBase64] and
-[http://seed7.sourceforge.net/libraries/encoding.htm#fromBase64(in_string) fromBase64].
+The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
+the functions [toBase64](http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)) and
+[fromBase64](http://seed7.sourceforge.net/libraries/encoding.htm#fromBase64(in_string)).
 
 
 ```seed7

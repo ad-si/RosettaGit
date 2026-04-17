@@ -15,7 +15,7 @@ I don't know Haskell, but isn't the definition:
   y f = f (y f)
 '''not''' stateless as it seems to be defining y by referring to y. Haskell, no doubt has lazy evaluation to make it terminate, but the task does ask for a non-recursive, stateless definition of y. --[[User:Paddy3118|Paddy3118]] 09:18, 28 February 2009 (UTC)
 
-I googled [http://groups.google.co.uk/group/fa.haskell/browse_frm/thread/f0a62b6de1416d8b this]. --[[User:Paddy3118|Paddy3118]] 09:22, 28 February 2009 (UTC)
+I googled [this](http://groups.google.co.uk/group/fa.haskell/browse_frm/thread/f0a62b6de1416d8b). --[[User:Paddy3118|Paddy3118]] 09:22, 28 February 2009 (UTC)
 
 :It's impossible to write a fixed-point combinator (or perform any recursion, for that matter) in any statically-typed language, without using either recursive functions or recursive types. --[[User:Spoon!|Spoon!]] 10:42, 28 February 2009 (UTC)
 
@@ -53,7 +53,7 @@ main = do
 
 == Is this really the "Y" combinator? ==
 
-According to [[wp:Fixed point combinator]], and [http://ttic.uchicago.edu/~pl/classes/CMSC336-Winter08/lectures/lec4.pdf here] page 6, and [http://ttic.uchicago.edu/~pl/classes/CMSC336-Winter08/lectures/lec4.pdf here] page 2, the Y combinator is the precise form <code>λf·(λx·f (x x)) (λx·f (x x))</code>, which does not work for applicative-order evaluation. The version you are using for Python is closely related to what they call the ''Z'' combinator, which is <code>λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))</code> (the version you are using is just one step "before" this; one step of evaluation will produce this). So I am not sure if we should have named the article the "Y" combinator. --[[Special:Contributions/71.106.173.110|71.106.173.110]] 20:49, 1 March 2009 (UTC)
+According to [[wp:Fixed point combinator]], and [here](http://ttic.uchicago.edu/~pl/classes/CMSC336-Winter08/lectures/lec4.pdf) page 6, and [here](http://ttic.uchicago.edu/~pl/classes/CMSC336-Winter08/lectures/lec4.pdf) page 2, the Y combinator is the precise form <code>λf·(λx·f (x x)) (λx·f (x x))</code>, which does not work for applicative-order evaluation. The version you are using for Python is closely related to what they call the ''Z'' combinator, which is <code>λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))</code> (the version you are using is just one step "before" this; one step of evaluation will produce this). So I am not sure if we should have named the article the "Y" combinator. --[[Special:Contributions/71.106.173.110|71.106.173.110]] 20:49, 1 March 2009 (UTC)
 
 :Hmm, They are related, and my reference, (and others), seem to have lumped them both together under the familiar title "Y combinator". I suggest a redirect of "Z combinator" to this page and a note be added to task. --[[User:Paddy3118|Paddy3118]] 05:48, 2 March 2009 (UTC)
 
@@ -218,7 +218,7 @@ and then call it as
 [[Special:Contributions/93.144.202.116|93.144.202.116]]
 
 ==Is the C++ a combinator or just recursion "macro"?==
-I was concerned as the definition of Y explicitely depends on Y, which I thought is the kind of thing the Y combinator was trying to dodge! Mind you, my knowledge of this C++ esoteria comes down to reading [http://msdn.microsoft.com/en-us/library/bb982702.aspx this]. --[[User:Paddy3118|Paddy3118]] 06:48, 10 April 2011 (UTC)
+I was concerned as the definition of Y explicitely depends on Y, which I thought is the kind of thing the Y combinator was trying to dodge! Mind you, my knowledge of this C++ esoteria comes down to reading [this](http://msdn.microsoft.com/en-us/library/bb982702.aspx). --[[User:Paddy3118|Paddy3118]] 06:48, 10 April 2011 (UTC)
 
 Isn't the operator() defined within the const struct : RecursiveFunc calling itself in the line
 return (s->operator()(f, s))(x);
@@ -390,7 +390,7 @@ Examples for languages capable of generating 'fibs' as per this algorithm would 
 
 ==Temporary reversion of a recent Haskell edit==
 For the moment I have reverted a couple of edits made to Haskell last night – mainly because the second piece of code no longer compiled. Reversion of the first piece may not have been necessary – reading the editors note, I initially took the phrase 'correcting grammar' as a reference to Haskell grammar, and interpreted the introduction of () as a slight misunderstanding :-)  Perhaps it refers, though, to the English preamble. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 13:15, 10 October 2018 (UTC)
-:I had converted the bindings to the head of the infinite facs` lists to functions to remind users of memory leaks as per [https://wiki.haskell.org/Memory_leak the Haskell wiki]: a binding to the head of an evaluated list means that none of the list can be released; it doesn't matter much here where only 20 elements are evaluated and printed before the program closes, but imagine if the last of a million elements were printed where millions of Megabytes would be tied up - the use of a function means that the head of the list can be released as the list is consumed, meaning that in this case only two elements (the first and second) need be in memory at any given time.
+:I had converted the bindings to the head of the infinite facs` lists to functions to remind users of memory leaks as per [the Haskell wiki](https://wiki.haskell.org/Memory_leak): a binding to the head of an evaluated list means that none of the list can be released; it doesn't matter much here where only 20 elements are evaluated and printed before the program closes, but imagine if the last of a million elements were printed where millions of Megabytes would be tied up - the use of a function means that the head of the list can be released as the list is consumed, meaning that in this case only two elements (the first and second) need be in memory at any given time.
 
 :As to the second part you've temporarily removed, there was a mistake that crept into the type signature for <code>simplefac</code> which should be <code>simplefac :: Integer -> Integer</code>; this prevented it from compiling.
 

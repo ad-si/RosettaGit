@@ -24,7 +24,7 @@ For a reduced Latin Square the first row is always 1 to n. The second row is all
 
 Demonstrate by:
 * displaying the four reduced Latin Squares of order 4.
-* for n = 1 to 6 (or more) produce the set of reduced Latin Squares; produce a table which shows the size of the set of reduced Latin Squares and compares this value times n! times (n-1)! with the values in [http://oeis.org/A002860 OEIS A002860].
+* for n = 1 to 6 (or more) produce the set of reduced Latin Squares; produce a table which shows the size of the set of reduced Latin Squares and compares this value times n! times (n-1)! with the values in [OEIS A002860](http://oeis.org/A002860).
 
 
 

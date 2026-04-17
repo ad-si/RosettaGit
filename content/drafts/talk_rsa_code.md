@@ -134,7 +134,7 @@ Again we need to settle on a definition before too many people add solutions.  J
 
 : The description does need enhancement and citation per Dkf
 ::  A reference to [[wp:RSA|RSA]] for a start - yes it is there either added or missed by me at first read.
-::  A caution that the modulus is a demonstration size only and reference to something on key sizes.  Real keys are much longer and according to NIST even 1024 bit keys are on their way out. I believe the correct NIST document is referenced here [[wp:Key_size|Key sizes]].  Possibly also the RSA challenges [http://www.rsa.com/rsalabs/node.asp?id=2092 RSA Key Factoring Challenge Archive]
+::  A caution that the modulus is a demonstration size only and reference to something on key sizes.  Real keys are much longer and according to NIST even 1024 bit keys are on their way out. I believe the correct NIST document is referenced here [[wp:Key_size|Key sizes]].  Possibly also the RSA challenges [RSA Key Factoring Challenge Archive](http://www.rsa.com/rsalabs/node.asp?id=2092)
 ::  A caution on cryptography like appears in the MD5 or MD5 implementation task (the later if I recall)
 ::  A note that the <strike>blocking</strike> encoding character set is arbitrary and that real implementations just encrypt the the underlying binary -- however as noted later RSA 129 used a plain text encoding scheme
 ::  --[[User:Dgamey|Dgamey]] 10:44, 21 April 2011 (UTC) update: --[[User:Dgamey|Dgamey]] 01:33, 26 April 2011 (UTC)
@@ -148,9 +148,9 @@ Again we need to settle on a definition before too many people add solutions.  J
 ::::::Neither of the current implementations uses ascii characters, instead both use an encoding that can represent 31 distinct characters.  This would support a block size of two characters.  (The J implementation used a block size dynamically determined based on the number of represented characters and the keys, and this was two characters for the example key.  I took that out though, when it seemed that no one else was going to budge on this issue, and the current J implementation uses a blocksize of 1 character -- which does have the advantage of simplicity.) --[[User:Rdm|Rdm]] 14:22, 25 April 2011 (UTC)
 
 :::::: Some links.
-:::::: [http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/ java key gen demo]
-:::::: [http://shop-js.sourceforge.net/crypto2.htm js key gen demo]
-:::::: [http://www.prime-numbers.org/ prime number source] - I've requested a few over 5 billion and will post some
+:::::: [java key gen demo](http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/)
+:::::: [js key gen demo](http://shop-js.sourceforge.net/crypto2.htm)
+:::::: [prime number source](http://www.prime-numbers.org/) - I've requested a few over 5 billion and will post some
 
 ::::: I changed my mind both character encoding and plain text blocking are needed for a small n.  
 :::::I also agree the huge UI thing didn't belong here.  Possible another task.
@@ -163,10 +163,10 @@ Again we need to settle on a definition before too many people add solutions.  J
 
 It seems the RSA 129 challenge performed a character encoding as well ... hmmm
 
-: [http://www.willamette.edu/~mjaneba/rsa129.html RSA 129 factors]
+: [RSA 129 factors](http://www.willamette.edu/~mjaneba/rsa129.html)
 : [[wp:The_Magic_Words_are_Squeamish_Ossifrage|The RSA 129 text "The Magic Words are Squeamish Ossifrage"]]
-: [http://www.math.okstate.edu/~wrightd/numthry/rsa129.html summaries of rsa 129 status reports and full details of keys (see below)]
-: [http://www.math.okstate.edu/~wrightd/crypt/crypt-intro/node21.html More info on the challenge text and signature]
+: [summaries of rsa 129 status reports and full details of keys (see below)](http://www.math.okstate.edu/~wrightd/numthry/rsa129.html)
+: [More info on the challenge text and signature](http://www.math.okstate.edu/~wrightd/crypt/crypt-intro/node21.html)
 : [[wp:Modular_exponentiation|Modular exponentiation]] will challenge any naive implementation of RSA.  Your bignums may blow up decrypting the message above.  This would be a worthy prerequisite task.
 : The RSA 129 character encoding was " "=0, A=1,.. Z=26 by 100's so that 200805 was THE.
 

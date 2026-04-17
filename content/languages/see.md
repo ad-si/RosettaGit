@@ -13,4 +13,4 @@ tags = []
 
 '''SEE''' is an acronym for 'Simple [ECMAScript](https://rosettacode.org/wiki/ECMAScript) Engine'. A full [JavaScript](https://rosettacode.org/wiki/JavaScript) interpreter and runtime library in [C](https://rosettacode.org/wiki/C).
 
-* [http://www.adaptive-enterprises.com.au/~d/software/see/ Homepage]
+* [Homepage](http://www.adaptive-enterprises.com.au/~d/software/see/)

@@ -11,8 +11,8 @@ tags = []
 +++
 
 {{#if: {{{id|}}}
-|[http://hopl.info/showlanguage.prx?exp={{urlencode: {{{id}}} }} {{{1| {{PAGENAME}} }}} on the HOPL]
-|[http://hopl.info/findlanguages2.prx?language={{urlencode: {{{1| {{PAGENAME}} }}} }}&which=byname {{{1| {{PAGENAME}} }}} on the HOPL]
+|[{{{id}}} }} {{{1| {{PAGENAME}} }}} on the HOPL](http://hopl.info/showlanguage.prx?exp={{urlencode:)
+|[{{{1| {{PAGENAME}} }}} }}&which=byname {{{1| {{PAGENAME}} }}} on the HOPL](http://hopl.info/findlanguages2.prx?language={{urlencode:)
 }}<noinclude>
 
 == Usage ==

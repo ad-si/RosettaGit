@@ -2388,7 +2388,7 @@ stop_integrator(dx)
 
 ## PureBasic
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimpleOOP].
+Using the open-source precompiler [SimpleOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Prototype.d ValueFunction(f.d, t.d)

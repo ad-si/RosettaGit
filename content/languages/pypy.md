@@ -13,11 +13,11 @@ A compliant implementation of the [Python](https://rosettacode.org/wiki/Python) 
 
 PyPy's Mission Statement is to provide:
 * a common translation and support framework for producing implementations of dynamic languages, emphasising a clean separation between language specification and implementation aspects.
-* a compliant, flexible and fast implementation of the Python Language using the above framework to enable new advanced features without having to encode low level details into it.<ref>http://codespeak.net/pypy/dist/pypy/doc/architecture.html#mission-statement</ref>
+* a compliant, flexible and fast implementation of the Python Language using the above framework to enable new advanced features without having to encode low level details into it.<ref><http://codespeak.net/pypy/dist/pypy/doc/architecture.html#mission-statement></ref>
 
 ## External Links
-* [http://codespeak.net/pypy/dist/pypy/doc/news.html PyPy official site]
-* [https://codespeak.net/viewvc/pypy/lang/ Browse source of other Virtual Machines implemented on PyPy's framework]
+* [PyPy official site](http://codespeak.net/pypy/dist/pypy/doc/news.html)
+* [Browse source of other Virtual Machines implemented on PyPy's framework](https://codespeak.net/viewvc/pypy/lang/)
 
 ## References
 <references/>

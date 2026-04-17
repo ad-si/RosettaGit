@@ -75,7 +75,7 @@ languages = [
 Create a simple demonstrative example of [[wp:Currying|Currying]] in a specific language.
 
 Add any historic details as to how the feature made its way into the language.
-<!-- from: http://en.wikipedia.org/w/index.php?title=Currying&direction=prev&oldid=142127294 -->
+<!-- from: <http://en.wikipedia.org/w/index.php?title=Currying&direction=prev&oldid=142127294> -->
 ## Aime
 
 Curry a function printing an integer, on a given number of characters, with commas inserted every given number of digits, with a given number of digits, in a given base:
@@ -682,9 +682,9 @@ IN: scratchpad { 1 2 3 4 5 } [ 1 + ] '[ 2 + @ ] map
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Currying this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Currying) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -744,11 +744,11 @@ Sleep
 
 ## Go
 
-Go has had [http://golang.org/ref/spec#Function_literals function literals]
-and [http://golang.org/ref/spec#Method_expressions method expressions]
+Go has had [function literals](http://golang.org/ref/spec#Function_literals)
+and [method expressions](http://golang.org/ref/spec#Method_expressions)
 since before Go 1.0.
-[http://golang.org/ref/spec#Method_values Method values] were added
-in [http://golang.org/doc/go1.1#method_values Go 1.1].
+[Method values](http://golang.org/ref/spec#Method_values) were added
+in [Go 1.1](http://golang.org/doc/go1.1#method_values).
 
 ```go
 package main
@@ -790,7 +790,7 @@ func main() {
 }
 ```
 
-[http://play.golang.org/p/0YL9YTe-9V Run on the Go Playground.]
+[Run on the Go Playground.](http://play.golang.org/p/0YL9YTe-9V)
 
 
 ## Groovy
@@ -1854,7 +1854,7 @@ Add each number in list to its square root:
 
 Works with SWI-Prolog and module '''lambda.pl'''
 
-Module lambda.pl can be found at http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl .
+Module lambda.pl can be found at <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> .
 
 ```txt
  ?- [library('lambda.pl')].
@@ -1914,7 +1914,7 @@ functools.partial(<built-in function add>, 2)
 ```
 
 
-But for a true curried function that can take arguments one at a time via normal function calls, you have to do a bit of wrapper work to build a callable object that defers to partial until all of the arguments are available. Because of the Python's dynamic nature and flexible calling syntax, there's no way to do this in a way that works for every conceivable valid function, but there are a variety of ways that work for different large subsets. Or just use a third-party library like [https://toolz.readthedocs.io toolz] that's already done it for you:
+But for a true curried function that can take arguments one at a time via normal function calls, you have to do a bit of wrapper work to build a callable object that defers to partial until all of the arguments are available. Because of the Python's dynamic nature and flexible calling syntax, there's no way to do this in a way that works for every conceivable valid function, but there are a variety of ways that work for different large subsets. Or just use a third-party library like [toolz](https://toolz.readthedocs.io) that's already done it for you:
 
 ```python
 >>
@@ -2261,8 +2261,8 @@ The type of aliases used here are a simple restriction of general inter-interpre
 TXR Lisp has an operator called <code>op</code> for currying. Of course, currying is done with lambdas under the hood; the operator generates lambdas. Its name is inspired by the same-named operators featured in the Goo language, and in the Common Lisp library <i>cl-op</i>.
 
 References:
-Goo <code>op</code>: [http://people.csail.mit.edu/jrb/goo/manual.46/goomanual_15.html]
-<i>cl-op</i>: [https://code.google.com/p/cl-op/]
+Goo <code>op</code>: <http://people.csail.mit.edu/jrb/goo/manual.46/goomanual_15.html>
+<i>cl-op</i>: <https://code.google.com/p/cl-op/>
 
 TXR's <code>op</code> is quite different in that it uses numbered arguments, has some additional features, and is accompanied by a "zoo" of related operators which share its currying syntax, providing various useful derived behaviors.
 

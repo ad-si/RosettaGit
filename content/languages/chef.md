@@ -21,6 +21,6 @@ the stacks are called 'mixing bowls' and the instructions for manipulating them 
 A program, then, reads much like a cooking recipe.
 
 ## External links
-*[http://www.dangermouse.net/esoteric/ DM's Esoteric Programming Languages]
-*[http://search.cpan.org/dist/Acme-Chef An interpreter for Chef written in Perl]
+*[DM's Esoteric Programming Languages](http://www.dangermouse.net/esoteric/)
+*[An interpreter for Chef written in Perl](http://search.cpan.org/dist/Acme-Chef)
 *[Chef on Esolangs](https://rosettacode.org/wiki/eso:Chef)

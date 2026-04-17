@@ -11,11 +11,11 @@ tags = []
 +++
 
 
-Rascal is a [http://www.rascal-mpl.org/Rascal/RascalDomain domain specific] language for source code analysis and manipulation a.k.a. meta-programming. It is currently being developed and tested at [http://www.cwi.nl/ CWI]. No formal release has been made yet, but alpha quality "previews" are available on the [http://www.rascal-mpl.org/Rascal/Download Download] page.<ref name="The Rascal Project Website">http://www.rascal-mpl.org/</ref>
+Rascal is a [domain specific](http://www.rascal-mpl.org/Rascal/RascalDomain) language for source code analysis and manipulation a.k.a. meta-programming. It is currently being developed and tested at [CWI](http://www.cwi.nl/). No formal release has been made yet, but alpha quality "previews" are available on the [Download](http://www.rascal-mpl.org/Rascal/Download) page.<ref name="The Rascal Project Website"><http://www.rascal-mpl.org/></ref>
 [[Image:RascalLogo.png|200px|thumb|right|The Rascal logo]]
 
 ## Why Rascal?
-Rascal is a new language for ''meta-programming'', this is the activity of writing meta-programs<ref name="The Rascal Project Motivation">http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Motivation/Motivation.html</ref>. Using Rascal you create programs that read, analyse, transform, generate and/or visualize other programs.
+Rascal is a new language for ''meta-programming'', this is the activity of writing meta-programs<ref name="The Rascal Project Motivation"><http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Motivation/Motivation.html></ref>. Using Rascal you create programs that read, analyse, transform, generate and/or visualize other programs.
 Meta-programs are programs that analyze, transform or generate other programs. Ordinary programs work on data; meta-programs work on programs.
 
 The ''range of programs'' to which meta-programming can be applied is large: from programs in standard languages like C and Java to domain-specific languages for describing high-level system models or applications in specialized areas like gaming or finance. In some cases, even test results or performance data are used as input for meta-programs.
@@ -35,7 +35,7 @@ Typical applications of Rascal are:
 #Analyzing the version history of a large software project.
 #Implementing a domain-specific language (DSL) for describing games or business processes.
 
-All these cases involve a form of meta-programming: software programs (in a wide sense) are the objects-of-interest that are being analyzed, transformed or generated. The Rascal language is designed for meta-programming following the [http://tutor.rascal-mpl.org/Courses/EASY/EASY.html EASY] paradigm. It can be applied in domains ranging from compiler construction and implementing domain-specific languages to constraint solving and software renovation.
+All these cases involve a form of meta-programming: software programs (in a wide sense) are the objects-of-interest that are being analyzed, transformed or generated. The Rascal language is designed for meta-programming following the [EASY](http://tutor.rascal-mpl.org/Courses/EASY/EASY.html) paradigm. It can be applied in domains ranging from compiler construction and implementing domain-specific languages to constraint solving and software renovation.
 
 Since representation of information is central to the approach, Rascal provides a rich set of built-in data types. To support extraction and analysis, parsing and advanced pattern matching are provided. High-level control structures make analysis and synthesis of complex datastructures simple.
 
@@ -61,15 +61,15 @@ Since representation of information is central to the approach, Rascal provides 
 #At the time of writing, this checking is done during execution, but we are working on this.
 
 ## Facts
-Here's a list of facts<ref name="The Rascal Project Website Facts">http://www.rascal-mpl.org/Rascal/Facts</ref> about Rascal that you might find interesting:
+Here's a list of facts<ref name="The Rascal Project Website Facts"><http://www.rascal-mpl.org/Rascal/Facts></ref> about Rascal that you might find interesting:
 
-# Rascal is the successor of the [http://www.meta-environment.org/ ASF+SDF Meta-Environment].
-# Like [http://www.asfsdf.org/ ASF+SDF], it fully supports embedded concrete syntax fragments for "syntax safe" matching and construction of source code.
-# Like [http://www.stringtemplate.org/ StringTemplate], it supports recursive string templates for code generation in the absence of a context-free grammar.
-# [http://www.tobiasart.eu/ Tobias Baanders] designed the Rascal logo.
+# Rascal is the successor of the [ASF+SDF Meta-Environment](http://www.meta-environment.org/).
+# Like [ASF+SDF](http://www.asfsdf.org/), it fully supports embedded concrete syntax fragments for "syntax safe" matching and construction of source code.
+# Like [StringTemplate](http://www.stringtemplate.org/), it supports recursive string templates for code generation in the absence of a context-free grammar.
+# [Tobias Baanders](http://www.tobiasart.eu/) designed the Rascal logo.
 # It employs a parsing architecture inspired by Scott and Johnstone's GLL parsing.
-# It's fundamental run-time data representation and manipulation API (pdb.values) is a part of [http://www.eclipse.org/imp/ Eclipse IMP].
-# PDB.values was inspired (mostly) by the [http://www.meta-environment.org/Meta-Environment/ATerms ATerm library] and [http://www.meta-environment.org/twiki/login/Meta-Environment/RScript?origurl=%2FMeta-Environment%2FRScript RScript].
+# It's fundamental run-time data representation and manipulation API (pdb.values) is a part of [Eclipse IMP](http://www.eclipse.org/imp/).
+# PDB.values was inspired (mostly) by the [ATerm library](http://www.meta-environment.org/Meta-Environment/ATerms) and [RScript](http://www.meta-environment.org/twiki/login/Meta-Environment/RScript?origurl=%2FMeta-Environment%2FRScript).
 # We used Rascal itself to transform its Java-based interpreter from the Visitor design pattern to the Interpreter design pattern automagically.
 
 ## References

@@ -279,7 +279,7 @@ END
 
 This solution requires no code blocks as the text is entered directly into the Title properties TextBox of the Designer.
 
-[https://lh4.googleusercontent.com/-RO_nNXm3sw8/UuwFSbeGk6I/AAAAAAAAJ-U/TH1rbpQ9HRE/s1600/noblocks.PNG VIEW THE DESIGNER]
+[VIEW THE DESIGNER](https://lh4.googleusercontent.com/-RO_nNXm3sw8/UuwFSbeGk6I/AAAAAAAAJ-U/TH1rbpQ9HRE/s1600/noblocks.PNG)
 
 
 ### Three blocks solution
@@ -290,7 +290,7 @@ Screen1.Initialize and
 
 set Screen1.Title to "Goodbye World!"
 
-[https://lh6.googleusercontent.com/-0MGq3ZZTgT8/UuwF5KBd7-I/AAAAAAAAJ-c/HirntN5II9g/s1600/blocks.PNG VIEW THE BLOCKS AND ANDROID APP SCREEN]
+[VIEW THE BLOCKS AND ANDROID APP SCREEN](https://lh6.googleusercontent.com/-0MGq3ZZTgT8/UuwF5KBd7-I/AAAAAAAAJ-c/HirntN5II9g/s1600/blocks.PNG)
 
 
 ## AppleScript
@@ -1465,7 +1465,7 @@ Alternative:
 
 ###  MS Windows
 
-Here are solutions for '''Microsoft Windows''', using the [https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505.aspx MessageBox] API function. Both programs use modules provided by the compiler vendor.
+Here are solutions for '''Microsoft Windows''', using the [MessageBox](https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505.aspx) API function. Both programs use modules provided by the compiler vendor.
 
 ```fortran
 program hello
@@ -1492,7 +1492,7 @@ Compile with <code>ifort hello.f90</code>.
 
 ###  Linux
 
-Using [https://github.com/jerryd/gtk-fortran gtk-fortran]  library
+Using [gtk-fortran](https://github.com/jerryd/gtk-fortran)  library
 ```fortran
 
 module handlers_m
@@ -1754,7 +1754,7 @@ PROCEDURE Main()
 
 ## Haskell
 
-Using {{libheader|gtk}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Using {{libheader|gtk}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.UI.Gtk
@@ -1841,7 +1841,7 @@ procedure main()
 end
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics is required ]
+[graphics is required](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 =
 ## Unicon
@@ -2774,7 +2774,7 @@ The Neko program follows:
 </doc>
 */
 
-/* Load some libagar bindings  http://www.libagar.org/mdoc.cgi?man=AG_Intro.3 */
+/* Load some libagar bindings  <http://www.libagar.org/mdoc.cgi?man=AG_Intro.3> */
 var agar_init = $loader.loadprim("nekoagar@agar_init", 3);
 var agar_window = $loader.loadprim("nekoagar@agar_window", 1);
 var agar_window_show = $loader.loadprim("nekoagar@agar_window_show", 1);
@@ -2830,7 +2830,7 @@ MessageBox.Show("Goodbye, World!")
 
 ## NetRexx
 
-Using [[Java|Java's]] [http://download.oracle.com/javase/6/docs/technotes/guides/swing/index.html Swing Foundation Classes].
+Using [[Java|Java's]] [Swing Foundation Classes](http://download.oracle.com/javase/6/docs/technotes/guides/swing/index.html).
 ```NetRexx
 /* NetRexx */
 options replace format comments java crossref symbols binary
@@ -2876,7 +2876,7 @@ method isFalse() public static returns boolean
 ```
 
 
-An example using [[Java|Java's]] [http://download.oracle.com/javase/6/docs/technotes/guides/awt/index.html Abstract Window Toolkit (AWT)]
+An example using [[Java|Java's]] [Abstract Window Toolkit (AWT)](http://download.oracle.com/javase/6/docs/technotes/guides/awt/index.html)
 ```NetRexx
 /* NetRexx */
 options replace format comments java crossref symbols binary
@@ -4152,7 +4152,7 @@ fn main() {
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop REPL] script:
+Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script:
 
 ```scala
 swing.Dialog.showMessage(message = "Goodbye, World!")

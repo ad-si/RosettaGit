@@ -118,7 +118,7 @@ function permutationSort(array:Array):Array {
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276680.html#276680 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276680.html#276680)
 
 ```AutoHotkey
 MsgBox % PermSort("")
@@ -940,7 +940,7 @@ sorted _             = True
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Partly from [http://infohost.nmt.edu/tcc/help/lang/icon/backtrack.html here]
+Partly from [here](http://infohost.nmt.edu/tcc/help/lang/icon/backtrack.html)
 
 ```icon
 procedure do_permute(l, i, n)

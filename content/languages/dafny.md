@@ -14,6 +14,6 @@ tags = []
 The Dafny programming language is designed to support the static verification of programs. It is imperative, sequential, supports generic classes, dynamic allocation, and inductive datatypes, and builds in specification constructs. The specifications include pre- and postconditions, invariants, frame specifications (read and write sets), and termination metrics.
 
 ## Citations
-*[http://stackoverflow.com/tags/dafny/info Stack Overflow:Dafny]
-*[https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness/ Dafny: A language and program verifier for functional correctness] at Microsoft
-*[https://github.com/Microsoft/dafny Dafny at GitHub]
+*[Stack Overflow:Dafny](http://stackoverflow.com/tags/dafny/info)
+*[Dafny: A language and program verifier for functional correctness](https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness/) at Microsoft
+*[Dafny at GitHub](https://github.com/Microsoft/dafny)

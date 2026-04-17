@@ -453,7 +453,7 @@ Associative arrays in App Inventor are lists of ''key:value'' 'pairs'.
 
 When a list is organized as pairs, the '''lookup in pairs''' block can be used to retrieve an associated value from a key name.
 
-[https://lh3.googleusercontent.com/-Cxw_-XGMRyM/UutOX1bEH9I/AAAAAAAAJ9g/MZotfuSEziY/s1600/CreateIterateLookup.PNG '''<VIEW BLOCKS AND ANDROID APP>''']
+['''<VIEW BLOCKS AND ANDROID APP>'''](https://lh3.googleusercontent.com/-Cxw_-XGMRyM/UutOX1bEH9I/AAAAAAAAJ9g/MZotfuSEziY/s1600/CreateIterateLookup.PNG)
 
 
 ## Arturo
@@ -511,7 +511,7 @@ value = john
 ## AutoHotkey
 
 {{works with|AutoHotkey_L}}
-From the [http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/objects/Enumerator.htm documentation]
+From the [documentation](http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/objects/Enumerator.htm)
 ```AutoHotkey
 ; Create an associative array
 obj := Object("red", 0xFF0000, "blue", 0x0000FF, "green", 0x00FF00)
@@ -647,7 +647,7 @@ Lincoln 1809
 ```
 
 
-For more information on maps in Babel, view [https://github.com/claytonkb/clean_babel/blob/master/std.sp std.sp] (see the section titled "map utilities").
+For more information on maps in Babel, view [std.sp](https://github.com/claytonkb/clean_babel/blob/master/std.sp) (see the section titled "map utilities").
 
 
 ## BaCon
@@ -1048,7 +1048,7 @@ There is also a macro <code>with-hash-table-iterator</code> which locally binds 
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -1756,7 +1756,7 @@ Value: 15
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=e48bd6ed7e6b583106b8178bca536eea Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=e48bd6ed7e6b583106b8178bca536eea)'''
 
 ```gambas
 Public Sub Main()
@@ -2427,7 +2427,7 @@ value = 3
 
 ## Liberty BASIC
 
-Needs the sublist library from http://basic.wikispaces.com/SubList+Library since LB does not have built-in associative arrays.
+Needs the sublist library from <http://basic.wikispaces.com/SubList+Library> since LB does not have built-in associative arrays.
 
 ```lb
 

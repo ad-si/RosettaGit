@@ -36,7 +36,7 @@ languages = [
 
 The [[wp:Chaocipher|Chaocipher]] was invented by J.F.Byrne in 1918 and, although simple by modern cryptographic standards, does not appear to have been broken until the algorithm was finally disclosed by his family in 2010.
 
-The algorithm is described in [http://www.mountainvistasoft.com/chaocipher/ActualChaocipher/Chaocipher-Revealed-Algorithm.pdf this paper] by M.Rubin in 2010 and there is a C# implementation [https://www.c-sharpcorner.com/UploadFile/b942f9/implementing-the-chaocipher-in-C-Sharp/ here].
+The algorithm is described in [this paper](http://www.mountainvistasoft.com/chaocipher/ActualChaocipher/Chaocipher-Revealed-Algorithm.pdf) by M.Rubin in 2010 and there is a C# implementation [here](https://www.c-sharpcorner.com/UploadFile/b942f9/implementing-the-chaocipher-in-C-Sharp/).
 
 
 '''Task'''
@@ -582,9 +582,9 @@ WELLDONEISBETTERTHANWELLSAID
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Chaocipher this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Chaocipher) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

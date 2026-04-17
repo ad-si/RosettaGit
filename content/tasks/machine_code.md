@@ -69,9 +69,9 @@ Implement the following in your favorite programming language (take the common l
 
 ## AutoHotkey
 
-'''MCode Tutorial''' ([http://ahkscript.org/boards/viewtopic.php?f=7&t=32 Forum Thread])
+'''MCode Tutorial''' ([Forum Thread](http://ahkscript.org/boards/viewtopic.php?f=7&t=32))
 
-'''MCode4GCC''' ([http://ahkscript.org/boards/viewtopic.php?f=6&t=4642 Forum Thread] | [https://github.com/joedf/MCode4GCC GitHub]) - An MCode generator using the GCC Compiler.
+'''MCode4GCC''' ([Forum Thread](http://ahkscript.org/boards/viewtopic.php?f=6&t=4642) | [GitHub](https://github.com/joedf/MCode4GCC)) - An MCode generator using the GCC Compiler.
 
 ```AutoHotkey
 MCode(Var, "8B44240403442408C3")
@@ -1026,7 +1026,7 @@ EndDataSection
 
 ## Rust
 
-This is heavily inspired by https://www.jonathanturner.org/2015/12/building-a-simple-jit-in-rust.html<br />
+This is heavily inspired by <https://www.jonathanturner.org/2015/12/building-a-simple-jit-in-rust.html><br />
 Hence, only working on Linux (the only other way to disable memory execution protection on other OSes was to use other crates, which kind of defeats the purpose.)
 
 ```Rust

@@ -14,4 +14,4 @@ The '''GNU Liberty Basic Compiler Collection''' ('''GLBCC''') is a suite of tool
 GLBCC hasn't been updated since 2002, and its compatibility with recent versions of Liberty BASIC is unknown.
 
 ## See also
-* [http://lbpp.sourceforge.net/ GLBCC home page] at Sourceforge
+* [GLBCC home page](http://lbpp.sourceforge.net/) at Sourceforge

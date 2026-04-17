@@ -851,7 +851,7 @@ end function
 ```
 
 
-Now, the main program. It will wait for two numbers and compute the result with the DLL function. Compile with '''ifort dynload.f90'''. Three functions of the Kernel32 library are necessary, see '''[https://msdn.microsoft.com/en-us/library/ms684175.aspx LoadLibrary]''', '''[https://msdn.microsoft.com/en-us/library/ms683212.aspx GetProcAddress]''' and '''[https://msdn.microsoft.com/en-us/library/ms683152.aspx FreeLibrary]''' in the MSDN. The kernel32 module is provided with the Intel Fortran compiler. The DLL has to be in a directory in the PATH environment variable.
+Now, the main program. It will wait for two numbers and compute the result with the DLL function. Compile with '''ifort dynload.f90'''. Three functions of the Kernel32 library are necessary, see '''[LoadLibrary](https://msdn.microsoft.com/en-us/library/ms684175.aspx)''', '''[GetProcAddress](https://msdn.microsoft.com/en-us/library/ms683212.aspx)''' and '''[FreeLibrary](https://msdn.microsoft.com/en-us/library/ms683152.aspx)''' in the MSDN. The kernel32 module is provided with the Intel Fortran compiler. The DLL has to be in a directory in the PATH environment variable.
 
 
 ```fortran
@@ -1437,7 +1437,7 @@ ccall( (:GetDoubleClickTime, "User32"), stdcall,
 ccall( (:clock, "libc"), Int32, ())
 ```
 
-For more information, see here [http://docs.julialang.org/en/latest/manual/calling-c-and-fortran-code.html]
+For more information, see here <http://docs.julialang.org/en/latest/manual/calling-c-and-fortran-code.html>
 
 
 ## Kotlin
@@ -1636,7 +1636,7 @@ opening baz
 
 As far as I know there is no solution in OCaml standard library to load a function from a C library dynamically. So I have quickly implemented [[Call a function in a shared library/OCaml|a module named Dlffi that you can find in this sub-page]]. It is basically a wrapper around the GNU/Linux dl* functions and the libffi.
 
-On Windows there is [http://alain.frisch.fr/flexdll.html FlexDLL].
+On Windows there is [FlexDLL](http://alain.frisch.fr/flexdll.html).
 
 Here is an example of use of this [[Call a function in a shared library/OCaml|Dlffi module]]:
 
@@ -1706,7 +1706,7 @@ FreeLibrary user32
 install("function_name","G","gp_name","./test.gp.so");
 ```
 
-where "G" is the parser code; see section 5.7.3 in the [http://pari.math.u-bordeaux.fr/pub/pari/manuals/2.4.4/libpari.pdf User's Guide to the PARI library] for more information.
+where "G" is the parser code; see section 5.7.3 in the [User's Guide to the PARI library](http://pari.math.u-bordeaux.fr/pub/pari/manuals/2.4.4/libpari.pdf) for more information.
 
 
 ## Pascal
@@ -1958,7 +1958,7 @@ hi there, world.
 
 ###  CFFI
 
-[https://cffi.readthedocs.io/ CFFI] isn't built into the stdlib, but, on the other hand, it works with other Python implementations like PyPy. It also has a variety of advantages and disadvantages over ctypes, even for simple cases like this:
+[CFFI](https://cffi.readthedocs.io/) isn't built into the stdlib, but, on the other hand, it works with other Python implementations like PyPy. It also has a variety of advantages and disadvantages over ctypes, even for simple cases like this:
 
 ```python
 
@@ -2078,7 +2078,7 @@ puts "opened with handle #{handle}"
 ```
 
 
-The next script tries to use ImageMagick. First, it tries [https://rmagick.github.io/ rmagick] from RubyGems. If that library is missing, it tries to use [http://wiki.github.com/ffi/ffi ffi] from RubyGems to call C functions in ImageMagick. (FFI is an alternative to Fiddle). If that doesn't work, it falls back to code that only handles PNG images.
+The next script tries to use ImageMagick. First, it tries [rmagick](https://rmagick.github.io/) from RubyGems. If that library is missing, it tries to use [ffi](http://wiki.github.com/ffi/ffi) from RubyGems to call C functions in ImageMagick. (FFI is an alternative to Fiddle). If that doesn't work, it falls back to code that only handles PNG images.
 
 ```ruby
 # This script shows the width x height of some images.
@@ -2283,7 +2283,7 @@ if {[catch {
 set handle [OpenImage "/the/file/name"]
 ```
 
-Note that if the library is appropriately set up with the correct entry function, it can be accessed directly with <code>load</code> which will cause it to register a Tcl command for the functionality it exports. [http://www.swig.org SWIG] can be used to automatically generate the interface code. Alternatively, [[:Category:Critcl|critcl]] can be used to allow writing glue [[C]] code directly embedded within a Tcl script.
+Note that if the library is appropriately set up with the correct entry function, it can be accessed directly with <code>load</code> which will cause it to register a Tcl command for the functionality it exports. [SWIG](http://www.swig.org) can be used to automatically generate the interface code. Alternatively, [[:Category:Critcl|critcl]] can be used to allow writing glue [[C]] code directly embedded within a Tcl script.
 
 With this many ways to perform the call, the best approach often depends on the size and complexity of the API being mapped. SWIG excels at large APIs, Ffidl is better when you just want to call a particular simple function, and critcl handles complex cases (callbacks, etc.) better than the other two.
 

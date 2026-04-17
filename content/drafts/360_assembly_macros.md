@@ -11,7 +11,7 @@ tags = []
 +++
 
 ## 360 Assembly Structured Macros
-There is a long history of IBM Assembler 370 Structured Macros. An early very well known version is found in JES328X product. Now there as part of SPM (Structured Programming Macros) concept. A recent version is HLASM Toolkit Features User's Guide (GC26-8710-10) http://publibz.boulder.ibm.com/epubs/pdf/asmtug21.pdf .
+There is a long history of IBM Assembler 370 Structured Macros. An early very well known version is found in JES328X product. Now there as part of SPM (Structured Programming Macros) concept. A recent version is HLASM Toolkit Features User's Guide (GC26-8710-10) <http://publibz.boulder.ibm.com/epubs/pdf/asmtug21.pdf> .
 You will found : 
 
 ```360asm
@@ -58,8 +58,8 @@ PROLOG and EPILOG are not part of this set my own version is:
 
 ## See also
 * HLASM Programmer's Guide (SC26-4941-06)
-http://publibz.boulder.ibm.com/epubs/pdf/asmp1021.pdf
+<http://publibz.boulder.ibm.com/epubs/pdf/asmp1021.pdf>
 * HLASM Language Reference (SC26-4940-06)
-http://publibz.boulder.ibm.com/epubs/pdf/asmr1021.pdf
+<http://publibz.boulder.ibm.com/epubs/pdf/asmr1021.pdf>
 * HLASM Toolkit Features User's Guide (GC26-8710-10)
-http://publibz.boulder.ibm.com/epubs/pdf/asmtug21.pdf
+<http://publibz.boulder.ibm.com/epubs/pdf/asmtug21.pdf>

@@ -117,7 +117,7 @@ package {
 
 ## AutoHotkey
 
-{{libheader|GDI+}} (available at http://www.autohotkey.net/~tic/Gdip.ahk)
+{{libheader|GDI+}} (available at <http://www.autohotkey.net/~tic/Gdip.ahk>)
 
 ```AutoHotkey
 #SingleInstance, Force
@@ -749,7 +749,7 @@ int main( int argc, char * argv[ ] ) {
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?bg=eee&code=col%5B%5D%20%3D%20%5B%20000%20900%20090%20909%20099%20990%20999%20%5D%0Aw%23%20%3D%20100.0%20/%20len%20col%5B%5D%0Afor%20i%20range%20len%20col%5B%5D%0Acolor%20col%5Bi%5D%0Amove%20w%23%20%2A%20i%200%0Arect%20w%23%20100%0A. Run it]
+[Run it](https://easylang.online/apps/run.html?bg=eee&code=col%5B%5D%20%3D%20%5B%20000%20900%20090%20909%20099%20990%20999%20%5D%0Aw%23%20%3D%20100.0%20/%20len%20col%5B%5D%0Afor%20i%20range%20len%20col%5B%5D%0Acolor%20col%5Bi%5D%0Amove%20w%23%20%2A%20i%200%0Arect%20w%23%20100%0A.)
 
 
 ```easyprog.online
@@ -1156,8 +1156,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides sprintf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1780,7 +1780,7 @@ func draw
 ```
 
 Output :
-[https://lh3.googleusercontent.com/-_y0FSmg0NAs/V1xBPvGV2tI/AAAAAAAAAKk/TXYSJnpdZ346aQLd05yE9vLM8V9lEht1QCLcB/s1600/CalmoSoftColourBars.jpg Colour bars]
+[Colour bars](https://lh3.googleusercontent.com/-_y0FSmg0NAs/V1xBPvGV2tI/AAAAAAAAAKk/TXYSJnpdZ346aQLd05yE9vLM8V9lEht1QCLcB/s1600/CalmoSoftColourBars.jpg)
 
 
 ## Scala

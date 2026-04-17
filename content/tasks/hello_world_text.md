@@ -1877,7 +1877,7 @@ Or
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -2422,7 +2422,7 @@ do putStrLn "Hello world!" ::: IO
 
 ## elastiC
 
-From the [http://www.elasticworld.org/man/elastic.html elastiC Manual].
+From the [elastiC Manual](http://www.elasticworld.org/man/elastic.html).
 
 
 ```elastic
@@ -2664,7 +2664,7 @@ Explanation of the code:<br/>
 Then the characters <tt>Hello world!</tt> are added, and string mode is closed with <tt>"</tt>.<br/>
 The stack is reversed for printing (<tt>r</tt>), and a jump (<tt>!</tt>) is executed to jump over the <tt>!</tt> at the beginning of the line and execute the <tt>v</tt>. ([[Fish]] is torical)<br/>
 After going down by <tt>v</tt>, it goes rightwards again by <tt>></tt> and this line is being executed.<br/>
-This line pushes the stack size (<tt>l</tt>), and stops (<tt>;</tt>) if the top item on the stack is equal to 0 (<tt>?</tt>). Else it executes the <tt>!</tt> directly after it and jumps to the <tt>o</tt>, which outputs the top item in [http://en.wikipedia.org/wiki/Ascii ASCII]. Then the line is executed again. It effectively prints the stack until it's empty, then it terminates.
+This line pushes the stack size (<tt>l</tt>), and stops (<tt>;</tt>) if the top item on the stack is equal to 0 (<tt>?</tt>). Else it executes the <tt>!</tt> directly after it and jumps to the <tt>o</tt>, which outputs the top item in [ASCII](http://en.wikipedia.org/wiki/Ascii). Then the line is executed again. It effectively prints the stack until it's empty, then it terminates.
 
 
 ## FOCAL
@@ -2793,7 +2793,7 @@ PRINT "Hello world!"
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d3a51f670e4eb0f793b513b14329be51 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d3a51f670e4eb0f793b513b14329be51)'''
 
 ```gambas
 Public Sub Main()
@@ -5454,7 +5454,7 @@ import __phello__.spam
 
 ## Quite BASIC
 
-  'See Quite BASIC web application http://www.quitebasic.com/prj/basics/helloworld/
+  'See Quite BASIC web application <http://www.quitebasic.com/prj/basics/helloworld/>
 
 ```Quite BASIC
 10 PRINT "Hello World!"
@@ -5777,7 +5777,7 @@ end;
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop REPL] script. Type this in a REPL session:
+Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script. Type this in a REPL session:
 
 ```Scala
 println("Hello world!")
@@ -6008,7 +6008,7 @@ end function
 print("Hello world!")
 ```
 
-Alternatively if just typing in the SkookumIDE [http://skookumscript.com/docs/v3.0/ide/console/workspace/ REPL]:
+Alternatively if just typing in the SkookumIDE [REPL](http://skookumscript.com/docs/v3.0/ide/console/workspace/):
 
 ```javascript
 "Hello world!"
@@ -6740,7 +6740,7 @@ method main(System.Console console):
 
 ## Whitespace
 
-There is a "Hello World" - example-program on the [http://compsoc.dur.ac.uk/whitespace/hworld.ws Whitespace-website]
+There is a "Hello World" - example-program on the [Whitespace-website](http://compsoc.dur.ac.uk/whitespace/hworld.ws)
 
 
 ## Wolfram Language

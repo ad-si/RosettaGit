@@ -250,7 +250,7 @@ PRINT FN f$("Rosetta", "Code", ":")
 
 ## Batch File
 
-CMD.EXE is the CLI for Batch Files. Batch Files do not have traditional functions and doing the [http://rosettacode.org/wiki/Call_a_function#Batch_File alternative] will not work in interactive mode. So this example uses blocks of code.
+CMD.EXE is the CLI for Batch Files. Batch Files do not have traditional functions and doing the [alternative](http://rosettacode.org/wiki/Call_a_function#Batch_File) will not work in interactive mode. So this example uses blocks of code.
 ```dos>
 set r=Rosetta
 
@@ -459,7 +459,7 @@ user=>
 
 ## CoffeeScript
 
-With the [https://www.npmjs.com/package/coffee-script coffee-script] package for [https://www.npmjs.org/ NPM] on [http://nodejs.org/ Node.js]. The ''-n'' flag is '--node'.
+With the [coffee-script](https://www.npmjs.com/package/coffee-script) package for [NPM](https://www.npmjs.org/) on [Node.js](http://nodejs.org/). The ''-n'' flag is '--node'.
 
 ```CoffeeScript
 
@@ -476,7 +476,7 @@ coffee> f "Rosetta", "Code", ":"
 ## Common Lisp
 
 
-The details of interactive use vary widely between implementations; this example is from [[SBCL]]. <code>*</code> is the prompt. By default, SBCL compiles (not interprets) all code, unless <code>[http://www.sbcl.org/manual/Interpreter.html sb-ext:*evaluator-mode*]</code> is changed.
+The details of interactive use vary widely between implementations; this example is from [[SBCL]]. <code>*</code> is the prompt. By default, SBCL compiles (not interprets) all code, unless <code>[sb-ext:*evaluator-mode*](http://www.sbcl.org/manual/Interpreter.html)</code> is changed.
 
 ```lisp
 $ rlwrap sbcl
@@ -538,7 +538,7 @@ If you type a definitely incomplete expression, such as "<code>def f() {</code>"
 
 ## EchoLisp
 
-EchoLisp runs in a browser window, and is -par essence - interactive. To start the REPL mode, type http://www.echolalie.org/echolisp in the browser URL address field.
+EchoLisp runs in a browser window, and is -par essence - interactive. To start the REPL mode, type <http://www.echolalie.org/echolisp> in the browser URL address field.
 
 ```scheme
 
@@ -819,7 +819,7 @@ gap>
 
 To satisfy some of the desire for a REPL, Go includes a browser-based "playground" that compiles and executes directly from a browser edit box.  You still have to type complete programs with all the usual boilerplate, but at least you don't have to create a source file, run the compiler, run the linker, and run the program.  It has a convenient checkbox for "compile and run after each keystroke" that works quite well.  You just type, and as soon as your program is valid, you see output.
 
-Running goplay takes two steps.  First, start the program with "goplay" on the command line, then visit <nowiki>http://localhost:3999/</nowiki> with a browser.
+Running goplay takes two steps.  First, start the program with "goplay" on the command line, then visit <nowiki><http://localhost:3999/></nowiki> with a browser.
 
 The complete program satisfying the task is,
 
@@ -1373,7 +1373,7 @@ $ rlwrap ocaml
 ```
 
 
-There is also [http://benediktmeurer.de/ocamlnat/ ocamlnat] that is a native toplevel. It permits interactive use of the OCaml system through a read-eval-print loop, similar to the standard OCaml toplevel, but up to 100 times faster.<BR>
+There is also [ocamlnat](http://benediktmeurer.de/ocamlnat/) that is a native toplevel. It permits interactive use of the OCaml system through a read-eval-print loop, similar to the standard OCaml toplevel, but up to 100 times faster.<BR>
 Using a module in the default toplevel is made with <code>.cma</code> files, with '''ocamlnat''' just use <code>.cmxs</code> files instead.
 
 

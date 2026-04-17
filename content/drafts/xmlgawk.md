@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://sourceforge.net/projects/xmlgawk/ XMLgawk] is an extension of the GNU [[wp:Awk|Awk]] scripting language.
+{{library}}[XMLgawk](http://sourceforge.net/projects/xmlgawk/) is an extension of the GNU [[wp:Awk|Awk]] scripting language.

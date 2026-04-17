@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{collection|RCRPG}}
-[[Clojure]] version of [[:Category:RCRPG|RCRPG]]. The code can also be checked out and contributed to on [https://github.com/pistacchio/rosettacode.clojure.rcrpg github] .
+[[Clojure]] version of [[:Category:RCRPG|RCRPG]]. The code can also be checked out and contributed to on [github](https://github.com/pistacchio/rosettacode.clojure.rcrpg) .
 
 ==Code==
 

@@ -92,7 +92,7 @@ Starting position: x = 0, y = 0
 
 {{works with|ALGOL 68G|any with non-standard ''establish'' routine}}
 
-This program generates a [https://en.wikipedia.org/wiki/Netpbm_format PBM file].
+This program generates a [PBM file](https://en.wikipedia.org/wiki/Netpbm_format).
 
 ```algol68
 
@@ -215,7 +215,7 @@ END
 
 ## C
 
-This implementation requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library. Iteration starts from (0,0) as required by the task however before plotting the point is translated and scaled as negative co-ordinates are not supported by the graphics window, scaling is necessary as otherwise the fern is tiny even for large iterations ( > 1000000).
+This implementation requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. Iteration starts from (0,0) as required by the task however before plotting the point is translated and scaled as negative co-ordinates are not supported by the graphics window, scaling is necessary as otherwise the fern is tiny even for large iterations ( > 1000000).
 
 ```C
 
@@ -613,7 +613,7 @@ end.
 ## EasyLang
 
 
-[https://easylang.online/apps/barnsley-fern.html Run it]
+[Run it](https://easylang.online/apps/barnsley-fern.html)
 
 <lang>floatvars
 color 060
@@ -642,9 +642,9 @@ for i% range 200000
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Barnsley_fern this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Barnsley_fern) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2456,7 +2456,7 @@ int main(int argc, char** argv)
 
 
 {{out}}
-[https://i.imgur.com/zerRZo8.png Output Screenshot]
+[Output Screenshot](https://i.imgur.com/zerRZo8.png)
 
 
 
@@ -2489,7 +2489,7 @@ img.flip(dir => 'v')
 img.write(file => 'barnsleyFern.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/barnsley-fern-sidef.png Barnsley fern]
+Output image: [Barnsley fern](https://github.com/trizen/rc/blob/master/img/barnsley-fern-sidef.png)
 
 
 ## SPL
@@ -2653,7 +2653,7 @@ next
 ## zkl
 
 [[File:BarnsleyFern.zkl.jpg|250px|thumb|right]]
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 {{trans|Java}}
 
 ```zkl

@@ -737,7 +737,7 @@ Output:
 
 Recommended solution for simplicity.  Acquire operation is channel send, release is channel receive, and count is provided with cap and len.
 
-To demonstrate, this example implements the [https://en.wikipedia.org/wiki/Semaphore_(programming)#Library_analogy Library analogy] from Wikipedia with 10 study rooms and 20 students.
+To demonstrate, this example implements the [Library analogy](https://en.wikipedia.org/wiki/Semaphore_(programming)#Library_analogy) from Wikipedia with 10 study rooms and 20 students.
 
 The channel type shown here is <code>struct{}</code>.  <code>struct{}</code> is nice because it has zero size and zero content, although the syntax is slightly akward.  Other popular choices for no-content tokens are ints and bools.  They read a little nicer but waste a few bytes and could potentially mislead someone to think the values had some meaning.
 
@@ -1406,7 +1406,7 @@ in
 
 ## Perl
 
-See [http://search.cpan.org/dist/Coro/Coro/Semaphore.pm Coro::Semaphore].
+See [Coro::Semaphore](http://search.cpan.org/dist/Coro/Coro/Semaphore.pm).
 
 ## Perl 6
 

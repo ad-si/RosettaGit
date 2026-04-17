@@ -14,4 +14,4 @@ Berp is an implementation of Python 3. At its heart is a translator, which takes
 Berp provides both a compiler and an interactive interpreter. For the most part it can be used in the same way as [CPython](https://rosettacode.org/wiki/CPython) (the main Python implementation). 
 
 ## External Links
-* [http://wiki.github.com/bjpop/berp/ Berp official site]
+* [Berp official site](http://wiki.github.com/bjpop/berp/)

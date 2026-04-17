@@ -350,7 +350,7 @@ Answer:
 
 ### pure lambda calculus
 
-(See http://en.wikipedia.org/wiki/Lambda_calculus). The following solution works almost the same way as the previous solution, but uses lambda calculus
+(See <http://en.wikipedia.org/wiki/Lambda_calculus>). The following solution works almost the same way as the previous solution, but uses lambda calculus
 
 ```bracmat
 ( /(
@@ -604,7 +604,7 @@ fibonacci2 = (n) ->
 
 ### Using Anaphora
 
-This version uses the anaphoric <code>lambda</code> from [http://dunsmor.com/lisp/onlisp/onlisp_18.html Paul Graham's On Lisp].
+This version uses the anaphoric <code>lambda</code> from [Paul Graham's On Lisp](http://dunsmor.com/lisp/onlisp/onlisp_18.html).
 
 
 ```lisp
@@ -1188,9 +1188,9 @@ ParamError SS0000 at falcon.core.ParamError._init:(PC:ext.c): Negative argument 
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Anonymous_recursion this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Anonymous_recursion) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1625,7 +1625,7 @@ Note that this is an identity function for arguments less than 1 (and 1 (and 5))
 
 -------------
 
-Note also http://www.jsoftware.com/pipermail/general/2003-August/015571.html which points out that the form
+Note also <http://www.jsoftware.com/pipermail/general/2003-August/015571.html> which points out that the form
 
 
 ```j
@@ -2097,7 +2097,7 @@ nonnegint, but received -1
 The check for a negative argument could be put either on the outer Fib procedure, or the anonymous inner procedure (or both).  As it wasn't completely clear what was intended, I put it on Fib, which results in a slightly better error message in that it does not reveal how the procedure was actually implemented.
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-An anonymous reference to a function from within itself is named #0, arguments to that function are named #1,#2..#n, n being the position of the argument. The first argument may also be referenced as a # without a following number, the list of all arguments is referenced with ##. Anonymous functions are also known as [http://reference.wolfram.com/mathematica/tutorial/PureFunctions.html pure functions] in Mathematica.
+An anonymous reference to a function from within itself is named #0, arguments to that function are named #1,#2..#n, n being the position of the argument. The first argument may also be referenced as a # without a following number, the list of all arguments is referenced with ##. Anonymous functions are also known as [pure functions](http://reference.wolfram.com/mathematica/tutorial/PureFunctions.html) in Mathematica.
 
 ```Mathematica
 check := #<0&
@@ -2599,7 +2599,7 @@ echo fib(8), "\n";
          (+ (recurse (dec N)) (recurse (- N 2))) ) ) )
 ```
 
-Explanation: The above uses the '[http://software-lab.de/doc/refR.html#recur recur]' / '[http://software-lab.de/doc/refR.html#recurse recurse]' function pair, which is defined as a standard language extensions as
+Explanation: The above uses the '[recur](http://software-lab.de/doc/refR.html#recur)' / '[recurse](http://software-lab.de/doc/refR.html#recurse)' function pair, which is defined as a standard language extensions as
 
 ```PicoLisp
 (de recur recurse
@@ -2644,8 +2644,8 @@ Postscript can make use of the higher order combinators to provide recursion.
 
 ## Prolog
 
-Works with SWI-Prolog and module <b>lambda</b>, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
-The code is inspired from this page : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord (p 106). It uses the Y combinator.
+Works with SWI-Prolog and module <b>lambda</b>, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+The code is inspired from this page : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106). It uses the Y combinator.
 
 ```prolog
 :- use_module(lambda).
@@ -2711,7 +2711,7 @@ A different approach: the function always receives itself as the first argument,
 ```
 
 
-An interesting approach using introspection  (from http://metapython.blogspot.com/2010/11/recursive-lambda-functions.html)
+An interesting approach using introspection  (from <http://metapython.blogspot.com/2010/11/recursive-lambda-functions.html>)
 
 ```python
 
@@ -2728,7 +2728,7 @@ An interesting approach using introspection  (from http://metapython.blogspot.co
 ```
 
 
-Another way of implementing the "Y" function is given in this post: https://stackoverflow.com/questions/481692/can-a-lambda-function-call-itself-recursively-in-python. The main problem to solve is that the function "fib" can't call itself. Therefore, the function "Y" is used to help "fib" call itself.
+Another way of implementing the "Y" function is given in this post: <https://stackoverflow.com/questions/481692/can-a-lambda-function-call-itself-recursively-in-python>. The main problem to solve is that the function "fib" can't call itself. Therefore, the function "Y" is used to help "fib" call itself.
 
 
 ```python

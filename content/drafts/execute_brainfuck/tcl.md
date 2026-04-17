@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{implementation|Brainfuck}}{{collection|RCBF}}[[implementation of task::RCBF| ]]
-This [[Tcl]] [[Brainfuck]] interpreter is derived from code on [http://wiki.tcl.tk/9490 The Tcler's Wiki], and is written to be short but not particularly clear.
+This [[Tcl]] [[Brainfuck]] interpreter is derived from code on [The Tcler's Wiki](http://wiki.tcl.tk/9490), and is written to be short but not particularly clear.
 
 To use it, save it to a file (e.g., called “bf.tcl”) and run that against <tt>tclsh</tt> with either the name of the file containing the BF program or just input the program on stdin; the program will only begin execution after you do end-of-file (however that's done on your OS). For example:
   tclsh8.5 bf.tcl helloWorld.bf

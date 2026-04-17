@@ -34,6 +34,6 @@ Scheme does not directly support a GUI library: some examples use [PsTk](https:/
 ## Citations
 
 * [Wikipedia:Scheme (programming language)](https://en.wikipedia.org/wiki/Scheme_%28programming_language%29)
-* [http://trac.sacrideo.us/wg/wiki/R7RSHomePage R7RS Scheme home page]
-* [http://www.r6rs.org/ R6RS Scheme home page]
-* [http://www.schemers.org/Documents/Standards/R5RS/ R5RS Scheme documentation]
+* [R7RS Scheme home page](http://trac.sacrideo.us/wg/wiki/R7RSHomePage)
+* [R6RS Scheme home page](http://www.r6rs.org/)
+* [R5RS Scheme documentation](http://www.schemers.org/Documents/Standards/R5RS/)

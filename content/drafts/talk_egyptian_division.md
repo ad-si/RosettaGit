@@ -18,7 +18,7 @@ The description seems attached to the use of two distinct arrays – does that s
 
 : Two arrays, one table of "pairs" would be fine. I would like a such a semblance of the description to be used to aid in example comparison . Thanks. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:24, 10 August 2017 (UTC)
 
-:: Fair enough – it's essentially a hylomorphism [https://en.wikipedia.org/wiki/Hylomorphism_(computer_science)], and it seems reasonable / sufficient to ask people not to fuse the building up and the stripping down to the extent that the intermediate data structure is concealed. In the Haskell, JS, and AppleScript versions I've pulled that out and named it 'rows' rather than fusing it out of sight. I hope that seems enough to you :-) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 19:09, 10 August 2017 (UTC)
+:: Fair enough – it's essentially a hylomorphism <https://en.wikipedia.org/wiki/Hylomorphism_(computer_science)>, and it seems reasonable / sufficient to ask people not to fuse the building up and the stripping down to the extent that the intermediate data structure is concealed. In the Haskell, JS, and AppleScript versions I've pulled that out and named it 'rows' rather than fusing it out of sight. I hope that seems enough to you :-) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 19:09, 10 August 2017 (UTC)
 ::: A fused composition of the unfold and the fold, in which the rows were implicit but not directly visible, might look something like:
 ::::
 ```Haskell

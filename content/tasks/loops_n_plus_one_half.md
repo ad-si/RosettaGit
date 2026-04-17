@@ -1620,7 +1620,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=c43cc581e5f93e70c5dc82733f609a7e Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=c43cc581e5f93e70c5dc82733f609a7e)'''
 
 ```gambas
 Public Sub Main()
@@ -2933,7 +2933,7 @@ The particular pattern and example chosen in the task description is recognised 
 print ( ', '.join(str(i+1) for i in range(10)) )
 ```
 
-But the [http://academicearth.org/lectures/the-loop-and-half-problem named pattern] is shown by code such as the following:
+But the [named pattern](http://academicearth.org/lectures/the-loop-and-half-problem) is shown by code such as the following:
 
 ```python
 >>>

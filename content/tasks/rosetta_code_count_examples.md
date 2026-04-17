@@ -77,7 +77,7 @@ Total: X examples.
 
 For a full output, updated periodically, see [[Rosetta Code/Count examples/Full list]].
 
-You'll need to use the Media Wiki API, which you can find out about locally, [http://rosettacode.org/mw/api.php here], or in Media Wiki's API documentation at, [http://www.mediawiki.org/wiki/API_Query API:Query]
+You'll need to use the Media Wiki API, which you can find out about locally, [here](http://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](http://www.mediawiki.org/wiki/API_Query)
 
 
 ## Ada
@@ -1052,7 +1052,7 @@ Total: 18290 examples.
 
 ## Haskell
 
-{{libheader|HTTP XML}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+{{libheader|HTTP XML}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -1201,8 +1201,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings provides replacem]
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn  hexcvt provides hexstring]
+[strings provides replacem](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 Sample Output for July 6, 2013 (abridged):
 

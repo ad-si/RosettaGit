@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}A [[Common Lisp]] library for pattern matching. A [http://www.takeda.tk/~sthalik/stuff/toadstool-current.tar tar archive] is available.
+{{library}}A [[Common Lisp]] library for pattern matching. A [tar archive](http://www.takeda.tk/~sthalik/stuff/toadstool-current.tar) is available.

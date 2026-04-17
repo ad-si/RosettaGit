@@ -917,7 +917,7 @@ e=: {&obasis
 
 Explanation:
 
-We work with sparse vectors of length 2147483647 on 32 bit machines and of length 9223372036854775807 on 64 bit machines. These are the largest representable vector lengths in current J implementations. J allows [http://www.jsoftware.com/help/learning/06.htm negative indices] and J uses an index value corresponding to the length of the list to indicate value not found when [[j:Vocabulary/idot#dyadic|searching]]. Thus, current J implementations use signed machine integers for performance and correctness reasons and these are the largest vector lengths we can use in J.
+We work with sparse vectors of length 2147483647 on 32 bit machines and of length 9223372036854775807 on 64 bit machines. These are the largest representable vector lengths in current J implementations. J allows [negative indices](http://www.jsoftware.com/help/learning/06.htm) and J uses an index value corresponding to the length of the list to indicate value not found when [[j:Vocabulary/idot#dyadic|searching]]. Thus, current J implementations use signed machine integers for performance and correctness reasons and these are the largest vector lengths we can use in J.
 
 Except, for the purpose of this task, we must pretend that these are "multivectors" instead of vectors - task vectors have a length of log2 the multivector length. So technically speaking, we can only represent 30 element (or less) vectors on 32 bit J and 62 element (or less) vectors on 64 bit J. (Actually, we can represent 31 element vectors on 32 bit J and 63 bit vectors on 64 bit J, but there are hypothetical operations involving the last element which perhaps would be hindered by the fact that the multivector length is not 2147483648 or 9223372036854775808 -- but fortunately, none of this is actually relevant.)
 
@@ -1438,7 +1438,7 @@ fun main() {
 ## Perl 6
 
 
-Here we write a simplified version of the [https://github.com/grondilu/clifford Clifford] module.  It is very general as it is of infinite dimension and also contains an anti-euclidean basis @ē in addition to the euclidean basis @e.
+Here we write a simplified version of the [Clifford](https://github.com/grondilu/clifford) module.  It is very general as it is of infinite dimension and also contains an anti-euclidean basis @ē in addition to the euclidean basis @e.
 
 
 ```perl6

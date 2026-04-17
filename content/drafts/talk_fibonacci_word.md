@@ -26,7 +26,7 @@ the longest repeated substring of fword(n) <i>is</i> fword(n-2).]
 Even expressing in hexadecimal isn't going to help much.
 
 :Plan C:
-::I have found an interesting paper http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf which suggests another interesting task [[Fibonacci word/fractal]].
+::I have found an interesting paper <http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf> which suggests another interesting task [[Fibonacci word/fractal]].
 ::This paper constructs the Fibonacci word in a slightly different manner to the one I am used to, but which comes to the same thing but one iteration later. I have adopted this method for clarity when comparing rosetta code with the reference.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:23, 15 July 2013 (UTC)
 
 

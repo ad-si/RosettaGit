@@ -62,4 +62,4 @@ Here's a brief summary of common SMEQL operators:
 
 A "column table" is merely a way to represent or store column information in tabular form. SMEQL provides a shortcut syntax that is similar to an SQL "WHERE" clause. Any place above where a column-table is required, one can use the shortcut syntax within square brackets "[...]" (not to be confused with "optional" syntax indicators). Column tables potentially allow you to "calculate" column lists instead of having to type them in manually.
 
-More info can be found at: http://www.c2.com/cgi/wiki?TqlRoadmap
+More info can be found at: <http://www.c2.com/cgi/wiki?TqlRoadmap>

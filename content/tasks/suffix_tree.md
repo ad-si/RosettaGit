@@ -1000,7 +1000,7 @@ SuffixTree("banana$").visualize()
 
 ## Racket
 
-See [http://planet.racket-lang.org/package-source/dyoo/suffixtree.plt/1/2/planet-docs/manual/index.html#(def._((planet._main..rkt._(dyoo._suffixtree..plt._1._2))._tree-walk)) Suffix trees with Ukkonen’s algorithm]
+See [Suffix trees with Ukkonen’s algorithm](http://planet.racket-lang.org/package-source/dyoo/suffixtree.plt/1/2/planet-docs/manual/index.html#(def._((planet._main..rkt._(dyoo._suffixtree..plt._1._2))._tree-walk)))
 by Danny Yoo for more information on how to use suffix trees in Racket.
 
 

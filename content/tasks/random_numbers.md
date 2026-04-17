@@ -187,7 +187,7 @@ test:(
 ## AutoHotkey
 
 contributed by Laszlo on the ahk
-[http://www.autohotkey.com/forum/post-276261.html#276261 forum]
+[forum](http://www.autohotkey.com/forum/post-276261.html#276261)
 
 ```AutoHotkey
 Loop 40
@@ -1194,7 +1194,7 @@ let gaussianRand count =
 
 ## Go
 
-This solution uses math/rand package in the standard library.  See also though the subrepository rand package at https://godoc.org/golang.org/x/exp/rand, which also has a NormFloat64 and has a rand source with a number of advantages over the one in standard library.
+This solution uses math/rand package in the standard library.  See also though the subrepository rand package at <https://godoc.org/golang.org/x/exp/rand>, which also has a NormFloat64 and has a rand source with a number of advantages over the one in standard library.
 
 ```go
 package main

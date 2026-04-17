@@ -158,7 +158,7 @@ A♣ 3♣ 7♠ 4♣ 10♦ 8♦ Q♠ K♥ 2♠ 10♠ 4♦ 7♣ J♣ 5♥ 10♥ 10
 ```
 
 
-;Comparıson wıth [[http://www.rosettacode.org/wiki/Permutations#F.23 Permutations(F#)]]:
+;Comparıson wıth [Permutations(F#)](http://www.rosettacode.org/wiki/Permutations#F.23):
 
 ```fsharp
 
@@ -753,7 +753,7 @@ Generate a random shuffle
 
 ## Perl 6
 
-Using my interpretation of the task instructions as shown on the [http://rosettacode.org/wiki/Talk:Factorial_base_numbers_indexing_permutations_of_a_collection#Mojibake_and_misspellings discussion page].
+Using my interpretation of the task instructions as shown on the [discussion page](http://rosettacode.org/wiki/Talk:Factorial_base_numbers_indexing_permutations_of_a_collection#Mojibake_and_misspellings).
 
 
 ```perl6

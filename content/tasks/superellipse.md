@@ -54,7 +54,7 @@ Draw a superellipse with n = 2.5, and a = b = 200
 
 ## C
 
-Interactive program to draw a SuperEllipse.  Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Interactive program to draw a SuperEllipse.  Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -92,7 +92,7 @@ int main(){
 
 ## EchoLisp
 
-Link to the super-ellipse [http://www.echolalie.org/echolisp/images/super-ellipse.png image].
+Link to the super-ellipse [image](http://www.echolalie.org/echolisp/images/super-ellipse.png).
 
 ```scheme
 
@@ -230,7 +230,7 @@ Image similar to J entry.
 
 ## Haskell
 
-Use the [https://github.com/ghcjs/ghcjs ghcjs compiler ] to compile to JavaScript that runs in a browser.  The [https://github.com/reflex-frp/reflex-dom reflex-dom ] library is used to help with SVG rendering and input.
+Use the [ghcjs compiler](https://github.com/ghcjs/ghcjs) to compile to JavaScript that runs in a browser.  The [reflex-dom](https://github.com/reflex-frp/reflex-dom) library is used to help with SVG rendering and input.
 
 ```haskell
 {-# LANGUAGE OverloadedStrings, RankNTypes #-}
@@ -337,7 +337,7 @@ elSvgns = elDynAttrNS' (Just "http://www.w3.org/2000/svg")
 ```
 
 
-Link to live demo: https://dc25.github.io/superEllipseReflex/
+Link to live demo: <https://dc25.github.io/superEllipseReflex/>
 
 
 ## J
@@ -804,7 +804,7 @@ sub pline {
 }
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/superellipse.svg Superellipse] (offsite image)
+[Superellipse](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/superellipse.svg) (offsite image)
 
 
 ## Perl 6
@@ -844,7 +844,7 @@ sub pline (@q) {
 }
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/superellipse.svg Superellipse] (offsite image)
+[Superellipse](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/superellipse.svg) (offsite image)
 
 
 ## Phix
@@ -983,7 +983,7 @@ plt.show()
 
 ## REXX
 
-Here you can see a picture: http://austria-forum.org/af/User/Pachl%20Walter
+Here you can see a picture: <http://austria-forum.org/af/User/Pachl%20Walter>
 
 
 ```rexx
@@ -1323,7 +1323,7 @@ twoway function y=b*(1-(abs(x/a))^n)^(1/n), range(-200 200) || function y=-b*(1-
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:SuperEllipse.zkl.jpg|250px|thumb|right]]
 
 ```zkl

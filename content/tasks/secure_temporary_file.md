@@ -247,7 +247,7 @@ Following the OPEN statement with <code>INQUIRE (F,NAME = FNAME); WRITE (6,*) FN
 
 ## Go
 
-Use <code>[https://golang.org/pkg/io/ioutil/#TempFile ioutil.TempFile]</code>
+Use <code>[ioutil.TempFile](https://golang.org/pkg/io/ioutil/#TempFile)</code>
 
 ```go
 package main
@@ -558,7 +558,7 @@ method runSample(arg) private static
 
 ## OCaml
 
-From the module Filename, one can use the functions [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALtemp_file temp_file] or [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALopen_temp_file open_temp_file]
+From the module Filename, one can use the functions [temp_file](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALtemp_file) or [open_temp_file](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALopen_temp_file)
 
 ```ocaml
 # Filename.temp_file "prefix." ".suffix" ;;

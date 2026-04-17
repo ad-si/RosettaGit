@@ -700,7 +700,7 @@ print mergesort arr
 == [[AutoHotkey_L]] ==
 AutoHotkey_L has true array support and can dynamically grow and shrink its arrays at run time.
 This version of Merge Sort only needs '''n''' locations to sort.
-[http://www.autohotkey.com/forum/viewtopic.php?t=77693&highlight=| AHK forum post]
+[AHK forum post](http://www.autohotkey.com/forum/viewtopic.php?t=77693&highlight=|)
 
 ```AutoHotkey
 #NoEnv
@@ -772,7 +772,7 @@ MergeSort(Array)
 
 ## AutoHotkey
 
-Contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276483.html#276483 forum]
+Contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276483.html#276483)
 
 ```AutoHotkey
 MsgBox % MSort("")
@@ -1547,7 +1547,7 @@ puts merge_sort(a) # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ## Curry
 
-Copied from [http://www.informatik.uni-kiel.de/~curry/examples/ Curry: Example Programs]
+Copied from [Curry: Example Programs](http://www.informatik.uni-kiel.de/~curry/examples/)
 
 ```curry
 -- merge sort: sorting two lists by merging the sorted first
@@ -3308,7 +3308,7 @@ end
 
 ## Lucid
 
-[http://i.csc.uvic.ca/home/hei/lup/06.html]
+<http://i.csc.uvic.ca/home/hei/lup/06.html>
 
 ```lucid
 msort(a) = if iseod(first next a) then a else merge(msort(b0),msort(b1)) fi
@@ -4382,7 +4382,7 @@ my @a = (4, 65, 2, -31, 0, 99, 83, 782, 1);
 print "@a\n";
 ```
 
-Also note, the built-in function [http://perldoc.perl.org/functions/sort.html sort] uses mergesort.
+Also note, the built-in function [sort](http://perldoc.perl.org/functions/sort.html) uses mergesort.
 
 
 ## Perl 6
@@ -5307,7 +5307,7 @@ const proc: mergeSort2 (inout array elemType: arr) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#mergeSort2]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#mergeSort2>
 
 
 ## Sidef
@@ -5687,8 +5687,8 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ## ZED
 
-Source -> http://ideone.com/uZEPL4
-Compiled -> http://ideone.com/SJ5EGu
+Source -> <http://ideone.com/uZEPL4>
+Compiled -> <http://ideone.com/SJ5EGu>
 
 This is a bottom up version of merge sort:
 

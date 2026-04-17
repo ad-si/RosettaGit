@@ -15,9 +15,9 @@ Web 68 could be used for other languages since, AFAIK, there is nothing in the p
 being Algol 68. The preprocessor
 contains a hash function for recognising Algol 68 constructs, but unknown tags are simply stored in its symbol table.
 
-The manual page for Web 68 can be found at [http://www.poenikatu.co.uk/html/Web68man.html]. The source code of '''tang''', the
+The manual page for Web 68 can be found at <http://www.poenikatu.co.uk/html/Web68man.html>. The source code of '''tang''', the
 preprocessor, is in the algol68 directory of that web site. It can be compiled with the a68toc compiler found in the
-algol68toc Debian/RPM package. See [http://www.poenikatu.co.uk/algol68/].
+algol68toc Debian/RPM package. See <http://www.poenikatu.co.uk/algol68/>.
 
 Several Web 68 include files have been prepared which provide access to some C library functions, general procedures such as
 sub-string operators, sorts and the binary chop (implemented as a macro so that it can be used for multiples of any mode).

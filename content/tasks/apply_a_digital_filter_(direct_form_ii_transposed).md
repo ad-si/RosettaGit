@@ -35,7 +35,7 @@ languages = [
 +++
 
 ## Task
-Digital filters are used to apply a mathematical operation to a sampled signal. One of the common formulations is the "direct form II transposed" which can represent both infinite impulse response (IIR) and finite impulse response (FIR) filters, as well as being more numerically stable than other forms. <ref>[https://ccrma.stanford.edu/~jos/fp/Transposed_Direct_Forms.html]</ref>
+Digital filters are used to apply a mathematical operation to a sampled signal. One of the common formulations is the "direct form II transposed" which can represent both infinite impulse response (IIR) and finite impulse response (FIR) filters, as well as being more numerically stable than other forms. <ref><https://ccrma.stanford.edu/~jos/fp/Transposed_Direct_Forms.html></ref>
 
 ;Task:
 
@@ -1269,7 +1269,7 @@ fn main() {
 
 ## Scala
 
-{{Out}}See it yourself by running in your browser either by [https://scalafiddle.io/sf/0D4zyWF/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/mUPbvXTQTXijp2DV1piQgQ Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/0D4zyWF/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/mUPbvXTQTXijp2DV1piQgQ).
 {{libheader|Scala Tail recursion}}
 {{libheader|Scala Digital Signal Processing}}
 {{libheader|ScalaFiddle qualified}}

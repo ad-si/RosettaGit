@@ -1697,7 +1697,7 @@ public class CreditCardLogic
 ```
 
 
-Extremely compact version uses Europa rtl library https://github.com/CodeAlkemist/Europa-rtl
+Extremely compact version uses Europa rtl library <https://github.com/CodeAlkemist/Europa-rtl>
 
 ```c#
 
@@ -1955,7 +1955,7 @@ input=1234567812345670    pass
 ```
 
 Another version, using Maciej Pasternacki's reader macros for
-function composition and [[currying]] in the [http://www.cl-user.net/asp/Fr4F/sdataQ1nAQqjvnQ3MDQ3ESH8X8yBX8yBXnMq=/sdataQu3F$sSHnB== curly] package:
+function composition and [[currying]] in the [curly](http://www.cl-user.net/asp/Fr4F/sdataQ1nAQqjvnQ3MDQ3ESH8X8yBX8yBXnMq=/sdataQu3F$sSHnB==) package:
 
 ```lisp
 (require :curly)
@@ -2498,7 +2498,7 @@ for n <- [49927398716, 49927398717, 1234567812345678, 1234567812345670]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=966f04aa2a1e9af43ba9553f5cb9160d Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=966f04aa2a1e9af43ba9553f5cb9160d)'''
 
 ```gambas
 Public Sub Main()
@@ -4461,7 +4461,7 @@ EndIf
 
 ## Python
 
-The [http://docs.python.org/py3k/library/functions.html#divmod divmod] in the function below conveniently splits a number into its two digits ready for summing:
+The [divmod](http://docs.python.org/py3k/library/functions.html#divmod) in the function below conveniently splits a number into its two digits ready for summing:
 
 ```python
 >>>

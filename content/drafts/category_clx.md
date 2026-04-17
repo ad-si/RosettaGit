@@ -14,5 +14,5 @@ tags = []
 
 ==See also==
 
-* [http://www.cliki.net/CLX CLX at CLiki].
+* [CLX at CLiki](http://www.cliki.net/CLX).
 * [[:Category:Xlib|Xlib]] is the analogous library for C.

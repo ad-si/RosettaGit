@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Inspiration==
-I read [http://stackoverflow.com/questions/7267100/how-to-select-one-of-n-objects-at-random-without-knowing-n-at-first this] and thought of RC. --[[User:Paddy3118|Paddy3118]] 22:03, 7 September 2011 (UTC)
+I read [this](http://stackoverflow.com/questions/7267100/how-to-select-one-of-n-objects-at-random-without-knowing-n-at-first) and thought of RC. --[[User:Paddy3118|Paddy3118]] 22:03, 7 September 2011 (UTC)
 
 == implicit constraints ==
 

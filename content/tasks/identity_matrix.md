@@ -1569,9 +1569,9 @@ Press any key to continue...</span>
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Identity_matrix this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Identity_matrix) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3349,7 +3349,7 @@ A simple solution, using nested lists to represent the matrix.
 ```python
 def identity(size):
     matrix = [[0]*size for i in range(size)]
-    #matrix = [[0] * size] * size    #Has a flaw. See http://stackoverflow.com/questions/240178/unexpected-feature-in-a-python-list-of-lists
+    #matrix = [[0] * size] * size    #Has a flaw. See <http://stackoverflow.com/questions/240178/unexpected-feature-in-a-python-list-of-lists>
 
     for i in range(size):
         matrix[i][i] = 1

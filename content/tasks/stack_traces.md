@@ -630,7 +630,7 @@ at Program.Main()
 
 ## Clojure
 
-[http://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html ThreadMXBean] can be used to show you the stack of all live threads.
+[ThreadMXBean](http://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html) can be used to show you the stack of all live threads.
 
 
 ```clojure
@@ -1158,7 +1158,7 @@ java.lang.Thread                                                   Thread.java  
 ==Icon and {{header|Unicon}}==
 This Icon solution uses Unicon extensions. An Icon only version has not been provided.
 
-[http://tapestry.tucson.az.us/unilib/pack_Utils.html the following code for buildStackTrace in Utils is taken verbatim and shown below the main program]
+[the following code for buildStackTrace in Utils is taken verbatim and shown below the main program](http://tapestry.tucson.az.us/unilib/pack_Utils.html)
 
 ```Unicon
 
@@ -1243,7 +1243,7 @@ To retrieve a current stack trace:
 ```
 
 
-See also: http://www.jsoftware.com/help/dictionary/dx013.htm
+See also: <http://www.jsoftware.com/help/dictionary/dx013.htm>
 
 Example:
 
@@ -1398,7 +1398,7 @@ Continuing ...
 
 ## Lasso
 
-By default Lasso tracks the file path, line and column numbers. You can create a trace method to track type and method names illustrated below or use one of the public libraries like L-Debug [https://github.com/zeroloop/l-debug].
+By default Lasso tracks the file path, line and column numbers. You can create a trace method to track type and method names illustrated below or use one of the public libraries like L-Debug <https://github.com/zeroloop/l-debug>.
 
 
 ```Lasso
@@ -1775,7 +1775,7 @@ in
 Output:
 [[File:Oz_stacktrace1.png|center|Stack trace of a system exception in Oz.]]
 
-To have such a stack trace in custom exceptions, either indicate this by throwing a record value with a <code>debug:unit</code> feature or use the [http://www.mozart-oz.org/documentation/base/exception.html Exception] module to create exceptions.
+To have such a stack trace in custom exceptions, either indicate this by throwing a record value with a <code>debug:unit</code> feature or use the [Exception](http://www.mozart-oz.org/documentation/base/exception.html) module to create exceptions.
 
 To access the stack trace directly, you can use the undocumented internal Debug module. Its <code>getTaskStack</code> function takes a thread, a depth value and a boolean "verbose" flag. It returns a list of stack frames. Example:
 
@@ -2013,9 +2013,9 @@ signal condition(traceback);
 
 ## PicoLisp
 
-PicoLisp doesn't keep full backtrace information at runtime. This is for performance reasons. However, existing variable bindings (environments) can be inspected with the '[http://software-lab.de/doc/refE.html#env env]' function, so this can be used to build your own stack frames.
+PicoLisp doesn't keep full backtrace information at runtime. This is for performance reasons. However, existing variable bindings (environments) can be inspected with the '[env](http://software-lab.de/doc/refE.html#env)' function, so this can be used to build your own stack frames.
 
-The following is analog to (though simpler than) the built-in '[http://software-lab.de/doc/refT.html#trace trace]' mechanism. The function '$$' (corresponds to '[http://software-lab.de/doc/ref_.html#$ $]' for tracing) is inserted by 'stackAll' into every function and method definition (corresponds to '[http://software-lab.de/doc/refT.html#traceAll traceAll]'). Then, when stopping at a '[http://software-lab.de/doc/refD.html#debug debug]' breakpoint or an error handler, 'dumpStack' can be used to inspect the stack contents.
+The following is analog to (though simpler than) the built-in '[trace](http://software-lab.de/doc/refT.html#trace)' mechanism. The function '$$' (corresponds to '[$](http://software-lab.de/doc/ref_.html#$)' for tracing) is inserted by 'stackAll' into every function and method definition (corresponds to '[traceAll](http://software-lab.de/doc/refT.html#traceAll)'). Then, when stopping at a '[debug](http://software-lab.de/doc/refD.html#debug)' breakpoint or an error handler, 'dumpStack' can be used to inspect the stack contents.
 
 As this mechanism uses 'let' to hold the stack frames, it is robust also across catch/throw, coroutines and error handling.
 
@@ -2090,7 +2090,7 @@ Test:
 
 ## PureBasic
 
-The [http://www.purebasic.com/documentation/debugger/showcallstack.html ShowCallstack()]command opens a interactive display allowing viewing of the procedures in the calling path an all their local variables.
+The [ShowCallstack()](http://www.purebasic.com/documentation/debugger/showcallstack.html)command opens a interactive display allowing viewing of the procedures in the calling path an all their local variables.
 
 ```PureBasic
 Procedure Three()
@@ -2117,7 +2117,7 @@ One()
 ## Python
 
 
-See the [http://docs.python.org/library/traceback.html traceback] module
+See the [traceback](http://docs.python.org/library/traceback.html) module
 
 ```python
 import traceback

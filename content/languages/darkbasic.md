@@ -20,5 +20,5 @@ There are two varieties of DB: the original DarkBASIC (often referred to as '''D
 ## See also
 * [DarkBASIC](https://en.wikipedia.org/wiki/DarkBASIC) on Wikipedia
 * [DarkBASIC Professional](https://en.wikipedia.org/wiki/DarkBASIC_Professional) on Wikipedia
-* [http://www.thegamecreators.com/?m=view_product&id=2030 DarkBASIC homepage]
-* [http://www.thegamecreators.com/?m=view_product&id=2000 DarkBASIC Professional homepage]
+* [DarkBASIC homepage](http://www.thegamecreators.com/?m=view_product&id=2030)
+* [DarkBASIC Professional homepage](http://www.thegamecreators.com/?m=view_product&id=2000)

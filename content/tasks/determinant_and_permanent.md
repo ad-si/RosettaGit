@@ -1222,7 +1222,7 @@ Meanwhile, the permanent does not have this problem in this example (the matrix 
 ```
 
 
-As an aside, note also that for specific verbs (like <code>-/ .*</code>) J uses an algorithm which is more efficient than the brute force approach implied by the [http://www.jsoftware.com/help/dictionary/d300.htm definition of <code> .</code>]. (In general, where there are common, useful, concise definitions where special code can improve resource use by more than a factor of 2, the implementors of J try to make sure that that special code gets used for those definitions.)
+As an aside, note also that for specific verbs (like <code>-/ .*</code>) J uses an algorithm which is more efficient than the brute force approach implied by the [definition of <code> .</code>](http://www.jsoftware.com/help/dictionary/d300.htm). (In general, where there are common, useful, concise definitions where special code can improve resource use by more than a factor of 2, the implementors of J try to make sure that that special code gets used for those definitions.)
 
 
 ## Java
@@ -1945,7 +1945,7 @@ print "perm(M) = " . permanent($M) . ".\n";
 ```
 
 
-<code>determinant</code> and <code>det</code> are already defined in PDL, see[http://pdl.perl.org/?docs=MatrixOps&title=the%20PDL::MatrixOps%20manpage#det]. <code>permanent</code> has to be defined manually.
+<code>determinant</code> and <code>det</code> are already defined in PDL, see<http://pdl.perl.org/?docs=MatrixOps&title=the%20PDL::MatrixOps%20manpage#det>. <code>permanent</code> has to be defined manually.
 
 ```txt
 
@@ -2875,7 +2875,7 @@ PERMANENT ..... :     6.778800000&+006
 ```
 
 
-[http://fricas.github.io/api/Matrix.html?highlight=matrix Domain:Matrix(R)]
+[Domain:Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## Stata

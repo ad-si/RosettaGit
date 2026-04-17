@@ -134,5 +134,5 @@ This leads to my proposal in AWK (without header comments):
         print x, y
     }
 
-More in-depth information on the AE can be found on my website [http://rclab.de/rclab/analyticalengine/]. Other examples are in the document on the AE Game [https://rclab.de/rclab/analyticalengine/visualae], but I currently do not think it would be useful to add the AE as a programming language.
+More in-depth information on the AE can be found on my website <http://rclab.de/rclab/analyticalengine/>. Other examples are in the document on the AE Game <https://rclab.de/rclab/analyticalengine/visualae>, but I currently do not think it would be useful to add the AE as a programming language.
 --[[User:Rainglasz|Rainglasz]] ([[User talk:Rainglasz|talk]]) 16:57, 1 December 2018 (UTC)

@@ -520,8 +520,8 @@ println ("a%b=" + (a % b))
 
 {{trans|C}}
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 main:(
@@ -4199,7 +4199,7 @@ a mod b: 10
 
 ## NSIS
 
-All Arithmetic in NSIS is handled by the [http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2 IntOp] instruction.  It is beyond the scope of this task to implement user input (a fairly involved task), so I will be providing hard-coded values simulating the user input, with the intention of later adding the user-input piece.
+All Arithmetic in NSIS is handled by the [IntOp](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2) instruction.  It is beyond the scope of this task to implement user input (a fairly involved task), so I will be providing hard-coded values simulating the user input, with the intention of later adding the user-input piece.
 
 ```nsis
 Function Arithmetic
@@ -4608,7 +4608,7 @@ say 'exponentiation:   ', $a**$b;
 
 
 Note that <code>div</code> doesn't always do integer division; it performs the operation "most appropriate to the
-operand types". [http://perlcabal.org/syn/S03.html#line_729 Synopsis 3] guarantees that <code>div</code> "on built-in integer types is equivalent to taking the floor of a real division". If you want integer division with other types, say <code>floor($a/$b)</code>.
+operand types". [Synopsis 3](http://perlcabal.org/syn/S03.html#line_729) guarantees that <code>div</code> "on built-in integer types is equivalent to taking the floor of a real division". If you want integer division with other types, say <code>floor($a/$b)</code>.
 
 
 ## Phix
@@ -5341,7 +5341,7 @@ print "1st raised to power of 2nd"; i1 ^ i2
 ## Rust
 
 
-Note that this code cannot be run within the [http://play.rust-lang.org Rust playpen] as it does not support console input.
+Note that this code cannot be run within the [Rust playpen](http://play.rust-lang.org) as it does not support console input.
 
 ```rust
 use std::env;
@@ -5858,7 +5858,7 @@ incr x $y
 ```
 
 
-Also, it's important to surround the arguments to the <code>expr</code> in braces, especially when any of the parts of the expression are not literal constants.  Discussion of this is on [http://wiki.tcl.tk/10225 The Tcler's Wiki].
+Also, it's important to surround the arguments to the <code>expr</code> in braces, especially when any of the parts of the expression are not literal constants.  Discussion of this is on [The Tcler's Wiki](http://wiki.tcl.tk/10225).
 
 =={{header|TI-83 BASIC}}==
 Pauses added due to TI-83's lack of screen size.

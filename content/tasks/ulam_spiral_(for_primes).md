@@ -164,8 +164,8 @@ You should demonstrate the generator by showing at Ulam prime spiral large enoug
 
 ## See also
 
-* Wikipedia entry:          [http://en.wikipedia.org/wiki/Ulam_spiral Ulam spiral]
-* MathWorld&trade; entry:   [http://mathworld.wolfram.com/PrimeSpiral.html Prime Spiral]
+* Wikipedia entry:          [Ulam spiral](http://en.wikipedia.org/wiki/Ulam_spiral)
+* MathWorld&trade; entry:   [Prime Spiral](http://mathworld.wolfram.com/PrimeSpiral.html)
 
 
 
@@ -1271,7 +1271,7 @@ void main() {
 
 ## EchoLisp
 
-The plot libray includes a '''plot-spiral''' function. The nice result is here : [http://www.echolalie.org/echolisp/help.html#plot-spiral  EchoLisp Ulam spiral] .
+The plot libray includes a '''plot-spiral''' function. The nice result is here : [EchoLisp Ulam spiral](http://www.echolalie.org/echolisp/help.html#plot-spiral) .
 
 ```scheme
 
@@ -1564,9 +1564,9 @@ o                             o     o                 o
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Ulam_spiral_(for_primes) this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Ulam_spiral_(for_primes)) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2347,7 +2347,7 @@ To transform these spirals to the orientation which has recently been added as a
 
 It should also be possible to redefine the original spiral treatment in some other ways.
 
-See also [https://www.youtube.com/watch?v=dBC5vnwf6Zw https://www.youtube.com/watch?v=dBC5vnwf6Zw] for some variations on this theme (the bit about perfect squares of the count of prime factors is striking).
+See also [https://www.youtube.com/watch?v=dBC5vnwf6Zw](https://www.youtube.com/watch?v=dBC5vnwf6Zw) for some variations on this theme (the bit about perfect squares of the count of prime factors is striking).
 
 
 ## Java
@@ -2623,7 +2623,7 @@ You can find plotting helper functions here on RosettaCode Wiki: [[User:AnatolV/
 <head><title>Ulam Spiral</title>
     <script src="VOE.js"></script>
 <script>
-// http://rosettacode.org/wiki/User:AnatolV/Helper_Functions
+// <http://rosettacode.org/wiki/User:AnatolV/Helper_Functions>
 // Use v.2.0
 var pst;
 
@@ -4226,7 +4226,7 @@ func ulamspiral(nr)
 
 Outputimage:
 
-[https://www.dropbox.com/s/doqvdr8l852t8o9/CalmoSoftUlamSpiral.jpg?dl=0 Ulam spiral]
+[Ulam spiral](https://www.dropbox.com/s/doqvdr8l852t8o9/CalmoSoftUlamSpiral.jpg?dl=0)
 
 
 ## Ruby
@@ -4642,13 +4642,13 @@ for y=(^n), x=(^n) {
 img.write(file => file)
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/ulam-spiral-sidef.png Ulam spiral]
+Output image: [Ulam spiral](https://github.com/trizen/rc/blob/master/img/ulam-spiral-sidef.png)
 
 
 ## Tcl
 
 
-This uses a coroutine to walk around the circle, laying glyphs every prime number of tiles.  Some more elaborate, interactive Tk GUIs for playing with Ulam spirals are at [http://wiki.tcl.tk/11363 Ulam Spiral] and [http://wiki.tcl.tk/23052 Ulam Spiral Demo] on the Tcl'ers Wiki.
+This uses a coroutine to walk around the circle, laying glyphs every prime number of tiles.  Some more elaborate, interactive Tk GUIs for playing with Ulam spirals are at [Ulam Spiral](http://wiki.tcl.tk/11363) and [Ulam Spiral Demo](http://wiki.tcl.tk/23052) on the Tcl'ers Wiki.
 
 
 ```Tcl
@@ -4887,7 +4887,7 @@ next
 
 Simulates turtle graphics, spiral by walking straight while holding left hand against the wall dropping prime breadcrumbs.
 
-Using [[Extensible prime generator#zkl]] and the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl.
+Using [[Extensible prime generator#zkl]] and the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>.
 
 ```zkl
 var primes =Utils.Generator(Import("sieve.zkl").postponed_sieve);  // lazy
@@ -4916,4 +4916,4 @@ uspiral(500).write(File("ulamSpiral.ppm","wb"));
 
 A PPM image similar to that shown in Perl6 but denser. A green dot marks the center.
 
-http://www.zenkinetic.com/Images/RosettaCode/ulamSpiral.png
+<http://www.zenkinetic.com/Images/RosettaCode/ulamSpiral.png>

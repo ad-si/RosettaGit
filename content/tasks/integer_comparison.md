@@ -486,9 +486,9 @@ aime FILE integer a 33 integer b 133
 ## ALGOL 68
 
 Note: the standard includes the characters "&le;", "&ge;" and "&ne;".
-These appear in the character sets [[wp:GOST 10859|GOST 10859]], [http://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html ISOtech] and
-IBM's [[:wp:EBCDIC|EBCDIC]] e.g. code page [http://www.tachyonsoft.com/cp00293.htm 293],
-and in extended ASCII code pages [http://www.tachyonsoft.com/cp00907.htm 910] & [http://www.tachyonsoft.com/cp00907.htm 910]
+These appear in the character sets [[wp:GOST 10859|GOST 10859]], [ISOtech](http://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html) and
+IBM's [[:wp:EBCDIC|EBCDIC]] e.g. code page [293](http://www.tachyonsoft.com/cp00293.htm),
+and in extended ASCII code pages [910](http://www.tachyonsoft.com/cp00907.htm) & [910](http://www.tachyonsoft.com/cp00907.htm)
 
 The above distributions of both [[ALGOL 68G]] and [[ELLA ALGOL 68]] compilers only
 allow [[wp:ASCII|ASCII]] characters (ASCII has neither "&le;", "&ge;" nor "&ne;" characters).
@@ -1964,7 +1964,7 @@ class Main
 
 ## Fish
 
-This example assumes you [http://www.esolangs.org/wiki/Fish#Input.2Foutput pre-populate] the stack with the two integers.
+This example assumes you [pre-populate](http://www.esolangs.org/wiki/Fish#Input.2Foutput) the stack with the two integers.
 
 ```Fish
 l2=?vv ~<                                                        v o<
@@ -3427,7 +3427,7 @@ elif a == b:
 
 ## NSIS
 
-===Pure NSIS (Using [http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.4.13 IntCmp] directly)===
+===Pure NSIS (Using [IntCmp](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.4.13) directly)===
 
 ```nsis
 
@@ -3456,7 +3456,7 @@ FunctionEnd
 
 ```
 
-=== Using [http://nsis.sourceforge.net/LogicLib LogicLib] (bundled library) ===
+=== Using [LogicLib](http://nsis.sourceforge.net/LogicLib) (bundled library) ===
 ```nsis
 
 Function IntegerComparison
@@ -3861,7 +3861,7 @@ if($int1 > $int2)
 ?>
 ```
 
-Note that this works from the command-line interface only, whereas [http://www.php.net PHP] is usually executed as [[wp:Common_Gateway_Interface CGI]].
+Note that this works from the command-line interface only, whereas [PHP](http://www.php.net) is usually executed as [[wp:Common_Gateway_Interface CGI]].
 
 
 ## PicoLisp

@@ -17,4 +17,4 @@ Egel is a small functional language based on untyped eager combinator rewriting.
 
 It's a small versatile language show-casing some features of untyped rewriting.
 
-The sources are available through github[https://egel-lang.github.io/].
+The sources are available through github<https://egel-lang.github.io/>.

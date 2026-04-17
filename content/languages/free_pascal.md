@@ -21,7 +21,7 @@ A member of the [write once, compile anywhere](https://en.wikipedia.org/wiki/Wri
 Separate projects exist to facilitate the development of cross-platform graphical applications, the most prominent one being the [Lazarus](https://rosettacode.org/wiki/Lazarus) IDE.
 
 =See also=
-* [http://www.freepascal.org/ Free Pascal homepage]
+* [Free Pascal homepage](http://www.freepascal.org/)
 * [Free Pascal on Wikipedia](https://en.wikipedia.org/wiki/Free_Pascal)
 
 [category:Free Pascal](https://rosettacode.org/wiki/category:Free_Pascal)

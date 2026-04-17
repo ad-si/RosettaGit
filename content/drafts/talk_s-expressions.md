@@ -25,16 +25,16 @@ People looking for "s-expression" are not finding a specification because this i
 
 These standard languages have read syntax which is based on S-expressions:
 
-Common Lisp: ANSI Standard available in the form of the [[http://www.lispworks.com/documentation/HyperSpec/Front/index.htm Common Lisp HyperSpec]].  The reader syntax is described in [[http://www.lispworks.com/documentation/HyperSpec/Body/02_.htm Syntax]].
-:this page describing the [http://www.lispworks.com/documentation/HyperSpec/Body/02_ad.htm Character Syntax Types] seems most interesting.--[[User:EMBee|eMBee]] 02:07, 20 October 2011 (UTC)
+Common Lisp: ANSI Standard available in the form of the [Common Lisp HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/index.htm).  The reader syntax is described in [Syntax](http://www.lispworks.com/documentation/HyperSpec/Body/02_.htm).
+:this page describing the [Character Syntax Types](http://www.lispworks.com/documentation/HyperSpec/Body/02_ad.htm) seems most interesting.--[[User:EMBee|eMBee]] 02:07, 20 October 2011 (UTC)
 ::Yes. In Common Lisp, the reading is very simple. Characters are assigned to categories in a read-table (in a context-independent way). The reader takes a character and based on what category it is in, it assembles it into a token, or dispatches a function associated with that character. Donald Knuth's TeX has a similar approach: it also has character categories (which TeX code can manipulate).[[Special:Contributions/24.85.131.247|24.85.131.247]] 02:22, 20 October 2011 (UTC)
 :::indeed, i like the approach, it also demonstrates the simplicity of s-expressions (and lisp) syntax. you could not do this as easely with xml or json.--[[User:EMBee|eMBee]] 05:22, 20 October 2011 (UTC)
 ::Note that there is a category of "non-terminating" macro characters. This means that if they are part of a token, they behave like token constituents. The # macro dispatch character is this way, so for instance abc#def is actually a symbol with the name "ABC#DEF": the special meaning of # is defeated. If it were a terminating character, then its presence would signal the end of the token ABC.  The parentheses are terminating, needless to say: (abc) is not a single token, but the same as ( abc ). Lisp tries to allow the programmer to have a lot of freedom in what constitutes a symbol. Just because some symbol has a special meaning doesn't mean we have to inconvenience ourselves by making it difficult to have that character in the middle of a symbol. This is quite important if you're doing domain-specific things where the symbol syntax comes from some outside domain. Another example is the writing of compilers where you have to deal with symbols from another programming language, as well as low-level symbols used by assemblers and linkers. It's not hard to map these to "native" symbols.[[Special:Contributions/24.85.131.247|24.85.131.247]] 02:22, 20 October 2011 (UTC)
 :::this is what i thought of doing with the " character. sure, in lisp it is a terminal, but for this simple task it need not be.--[[User:EMBee|eMBee]] 05:22, 20 October 2011 (UTC)
-ISO Standard Lisp: Also known as [[http://islisp.info/ ISLisp]].
+ISO Standard Lisp: Also known as [ISLisp](http://islisp.info/).
 
-Scheme: Revised [6] Report on the Algorithmic Language Scheme, [[http://www.r6rs.org/ R6RS]].
-:syntax is in chapter [http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-7.html#node_sec_4.2 4.2]
+Scheme: Revised [6] Report on the Algorithmic Language Scheme, [R6RS](http://www.r6rs.org/).
+:syntax is in chapter [4.2](http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-7.html#node_sec_4.2)
 
 There are many common elements, and there are differences.
 
@@ -42,8 +42,8 @@ In addition to some prominent languages like these, there have been countless di
 
 == syntax for S-Expressions ==
 it seems there is no formal definition of S-Expressions, and much of the arguments in the discussion on this task seems to revolve around what is required for S-Expressions and what is not.
-this [http://people.csail.mit.edu/rivest/Sexp.txt draft RFC] makes an attempt at a definition, but it was not accepted for reasons that are unknown.
-: the [http://www-formal.stanford.edu/jmc/recursive/node3.html original definition of S-Expressions] by John McCarthy can be found on his homepage.--[[User:EMBee|eMBee]] 05:28, 4 November 2011 (UTC)
+this [draft RFC](http://people.csail.mit.edu/rivest/Sexp.txt) makes an attempt at a definition, but it was not accepted for reasons that are unknown.
+: the [original definition of S-Expressions](http://www-formal.stanford.edu/jmc/recursive/node3.html) by John McCarthy can be found on his homepage.--[[User:EMBee|eMBee]] 05:28, 4 November 2011 (UTC)
 
 for a definition i'd like to separate two aspects: 
 * the syntactical representation of elements
@@ -107,7 +107,7 @@ you should ask yourself: would i use this approach in a real project? if a solut
 ::::i agree. modules are good. or at least having the code written in a way that it is easy to see where it needs to be modified to add functionality.--[[User:EMBee|eMBee]] 12:04, 19 October 2011 (UTC)
 :  I'm very much not going to use this as a general data exchange format.
 :: i wasn't asking if you want to use the data format, but if you want to use your own implementation which is free to fulfill the requirements that you have. the purpose of this task is not to define the data format. however, a result of this discussion may well lead to a definition. if that is the case then the task will most likely adopt the definition.
-: The task is ok for demonstrating simple parsers, but if you want to use it for real work, maybe you need something more rigorous, say, [http://people.csail.mit.edu/rivest/Sexp.txt the almost RFC]? --[[User:Ledrug|Ledrug]] 04:54, 19 October 2011 (UTC)
+: The task is ok for demonstrating simple parsers, but if you want to use it for real work, maybe you need something more rigorous, say, [the almost RFC](http://people.csail.mit.edu/rivest/Sexp.txt)? --[[User:Ledrug|Ledrug]] 04:54, 19 October 2011 (UTC)
 ::i have been searching for a definition for s-expressions, and i could not find anything. this one raises some interesting points and has things i disagree with.--[[User:EMBee|eMBee]] 06:02, 19 October 2011 (UTC)
 :::Common Lisp (ANSI standard), ISLisp (ISO) and Scheme are programing languages which are based on S-expressions. There are differences between them but they have a lot in common. Rivest's RFC is awful.[[Special:Contributions/192.139.122.42|192.139.122.42]] 22:07, 19 October 2011 (UTC)
 
@@ -190,7 +190,7 @@ The task description might need some work on maybe taking the specific reference
 
 ::There has been too much of the Python taken out I think. The intermediate language specific list structure should have been left in but instead of saying it was Python, just say enough so that implementers knew to use their languages native ints, floats, strings and nestable lists. (They might have to create a [[Linked list|linked list]] data-structure if their language or a library does not produce one).
 ::Also removed is the notion of taking the S-expression through to the internal representation, then back to an S-expression of the original which I thought was good too.  --[[User:Paddy3118|Paddy3118]] 07:08, 20 October 2011 (UTC)
-:::huh? the only thing ever removed was: "must, in addition, recognise integers and floating point literals (that are distinguished as digits followed by a decimal point, followed by digits)." replacing it with "should, in addition, recognize numbers if the language has appropriate datatypes." i have also moved that paragraph in the process. this was the last edit on the description [http://rosettacode.org/mw/index.php?title=S-Expressions&diff=next&oldid=123268 (see diff)]
+:::huh? the only thing ever removed was: "must, in addition, recognise integers and floating point literals (that are distinguished as digits followed by a decimal point, followed by digits)." replacing it with "should, in addition, recognize numbers if the language has appropriate datatypes." i have also moved that paragraph in the process. this was the last edit on the description [(see diff)](http://rosettacode.org/mw/index.php?title=S-Expressions&diff=next&oldid=123268)
 :::i have checked the complete history to make sure i didn't delete something by accident.--[[User:EMBee|eMBee]] 09:06, 20 October 2011 (UTC)
 
 ::::Hi eMBee, This got lost:

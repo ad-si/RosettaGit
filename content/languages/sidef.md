@@ -14,6 +14,6 @@ Sidef is a modern, dynamic, object-oriented programming language, focusing on si
 The language is mostly used as a research programming language.
 
 For more details, see:
-* Gitbook: [http://trizen.gitbooks.io/sidef-lang/content/ http://trizen.gitbooks.io/sidef-lang/content/]
-* Tutorial: [https://github.com/trizen/sidef/wiki https://github.com/trizen/sidef/wiki]
-* Development page: [https://github.com/trizen/sidef https://github.com/trizen/sidef]
+* Gitbook: [http://trizen.gitbooks.io/sidef-lang/content/](http://trizen.gitbooks.io/sidef-lang/content/)
+* Tutorial: [https://github.com/trizen/sidef/wiki](https://github.com/trizen/sidef/wiki)
+* Development page: [https://github.com/trizen/sidef](https://github.com/trizen/sidef)

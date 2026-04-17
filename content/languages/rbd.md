@@ -14,4 +14,4 @@ tags = []
 
 ## See also
 * [EGL on Wikipedia](https://en.wikipedia.org/wiki/EGL_(programming_language))
-* [http://www-01.ibm.com/software/awdtools/developer/business/ RBD homepage]
+* [RBD homepage](http://www-01.ibm.com/software/awdtools/developer/business/)

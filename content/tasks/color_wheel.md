@@ -28,7 +28,7 @@ languages = [
 
 ## Task
 
-Write a function to draw a HSV color wheel<ref>[https://en.wikipedia.org/wiki/HSL_and_HSV]</ref> completely with code. 
+Write a function to draw a HSV color wheel<ref><https://en.wikipedia.org/wiki/HSL_and_HSV></ref> completely with code. 
 
 This is strictly for learning purposes only. It's highly recommended that you use an image in an actual application to actually draw the color wheel   (as procedurally drawing is super slow). This does help you understand how color wheels work and this can easily be used to determine a color value based on a position within a circle.
 
@@ -48,9 +48,9 @@ choose color default color {0, 0, 0, 0}
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Color_wheel this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Color_wheel) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -357,7 +357,7 @@ Check
 
 ```
 
-see [https://4.bp.blogspot.com/-0swVvNDaTjE/XDlPfuGQkBI/AAAAAAAAHno/wU3eyo1BUIEtPjZMyjGXkbN425zHJlc7wCLcBGAs/s1600/colorwheel.png this image]
+see [this image](https://4.bp.blogspot.com/-0swVvNDaTjE/XDlPfuGQkBI/AAAAAAAAHno/wU3eyo1BUIEtPjZMyjGXkbN425zHJlc7wCLcBGAs/s1600/colorwheel.png)
 
 
 ## Perl
@@ -431,7 +431,7 @@ sub hsv2rgb ( $h, $s, $v ){
 ```
 
 
-Until local image uploading is re-enabled, see [https://github.com/thundergnat/rc/blob/master/img/Color-wheel-perl6.png Color-wheel-perl6.png]
+Until local image uploading is re-enabled, see [Color-wheel-perl6.png](https://github.com/thundergnat/rc/blob/master/img/Color-wheel-perl6.png)
 
 
 ## Phix
@@ -681,7 +681,7 @@ for y=(^height), x=(^width) {
 img.write(file => 'color_wheel.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/color-wheel-sidef.png Color wheel]
+Output image: [Color wheel](https://github.com/trizen/rc/blob/master/img/color-wheel-sidef.png)
 
 
 ## Smart BASIC
@@ -737,13 +737,13 @@ END DEF
 ```
 
 View the output on Dropbox
-https://www.dropbox.com/s/g3l5rbywo34bnp6/IMG_4600.PNG?dl=0
+<https://www.dropbox.com/s/g3l5rbywo34bnp6/IMG_4600.PNG?dl=0>
 
 
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var w=300,h=300,out=PPM(w,h);
@@ -780,7 +780,7 @@ fcn hsv2rgb(hue,v,s){  //  0<=H<360, 0<=v(brightness)<=1, 0<=saturation<=1
 }
 ```
 
-See [http://www.zenkinetic.com/Images/RosettaCode/colorWheel.zkl.jpg this image]
+See [this image](http://www.zenkinetic.com/Images/RosettaCode/colorWheel.zkl.jpg)
 
 ==References==
 

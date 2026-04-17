@@ -623,7 +623,7 @@ Hoon has a built-in rune, %smsg (;~) that binds gates under a monad.
 
 ++unit is Hoon's Maybe: it is either ~ (None) or [~ u=val] (Some)
 
-++biff is the monadic bind, which %smsg uses to wire the gates together. It's defined in the standard library [https://github.com/urbit/urbit/blob/6433c621585e87c5d66026d4a63b409babbbab11/urb/zod/arvo/hoon.hoon#L585 here]. m-parse is @tas -> (unit ,@ud), so I use biff a second time in order for the program to be called with (unit ,@tas).
+++biff is the monadic bind, which %smsg uses to wire the gates together. It's defined in the standard library [here](https://github.com/urbit/urbit/blob/6433c621585e87c5d66026d4a63b409babbbab11/urb/zod/arvo/hoon.hoon#L585). m-parse is @tas -> (unit ,@ud), so I use biff a second time in order for the program to be called with (unit ,@tas).
 
 ++rust is one of the parser combinator runners: it parses the string `a` with the rule `dem`, returning a unit with the returned value if it success or ~ if it fails. Note that Hoon's type system is complex enough to get a strongly typed result of the parsing rule, in this case an unsigned decimal (@ud)
 

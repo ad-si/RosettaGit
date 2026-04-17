@@ -262,7 +262,7 @@ aime: can_divide: 4: division by zero
 
 ## ALGOL 68
 
-The USSR's ALGOL 68 had a [http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf "GOST 27975-88 Programming language ALGOL 68 extended (Язык программирования АЛГОЛ 68 расширенный)"] that included additional
+The USSR's ALGOL 68 had a ["GOST 27975-88 Programming language ALGOL 68 extended (Язык программирования АЛГОЛ 68 расширенный)"](http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf) that included additional
 keywords '''on''', '''exception''', '''raise'''.  This was an extension,
 and probably made only an appearance in the Leningrad compiler (Алгола
 68 Ленинград).
@@ -370,7 +370,7 @@ ZeroDiv(3, 0) ; divize by zero alert
 ## Applesoft BASIC
 =
 The error code for division by zero is 133.  There is a good overview of Applesoft ONERR GOTO handling here:
-http://newsgroups.derkeiler.com/Archive/Comp/comp.sys.apple2.programmer/2010-04/msg00000.html
+<http://newsgroups.derkeiler.com/Archive/Comp/comp.sys.apple2.programmer/2010-04/msg00000.html>
 
 
 ```BASIC
@@ -473,7 +473,7 @@ Division by zero in line 40
 ## PureBasic
 =
 
-PureBasic can be compiled with the [http://www.purebasic.com/documentation/onerror/index.html OnError] library included which gives a way to track program errors without losing speed, doing so gives support for the following functions;
+PureBasic can be compiled with the [OnError](http://www.purebasic.com/documentation/onerror/index.html) library included which gives a way to track program errors without losing speed, doing so gives support for the following functions;
 *ErrorAddress()
 *ErrorCode()
 *ErrorFile()
@@ -1099,7 +1099,7 @@ end)
 
 ## Emacs Lisp
 
-Division by zero gives an error of type <code>arith-error</code> which can be caught in the usual ways with <code>condition-case</code> and similar.  A division by zero example can be found in the Elisp manual section [http://www.gnu.org/s/emacs/manual/html_node/elisp/Handling-Errors.html "Handling Errors"].
+Division by zero gives an error of type <code>arith-error</code> which can be caught in the usual ways with <code>condition-case</code> and similar.  A division by zero example can be found in the Elisp manual section ["Handling Errors"](http://www.gnu.org/s/emacs/manual/html_node/elisp/Handling-Errors.html).
 
 
 ```Lisp
@@ -1362,7 +1362,7 @@ print a / 0
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=6c837b97d9c5f296ef23245706544bdf Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=6c837b97d9c5f296ef23245706544bdf)'''
 
 ```gambas
 Public Sub Main()
@@ -1574,9 +1574,9 @@ Run-time error 201 : division by zero in line #3 - converted to failure
 
 Generally, this task should be accomplished in J using 0=DEN. Here we take an approach that's more comparable with the other examples on this page.
 
-Divide by zero is not an error in J. It results in infinity which is represented by an underscore ( <code>_</code> ) or negative infinity (represented by a double underescore) or complex values which can have infinities for the real and/or imaginary part., except that [http://www.jsoftware.com/papers/eem/0div0.htm  0 divided by 0 is defined to have the result zero] (mathematically speaking any number is a valid result for 0 divided by 0, because 0 times any number is zero).
+Divide by zero is not an error in J. It results in infinity which is represented by an underscore ( <code>_</code> ) or negative infinity (represented by a double underescore) or complex values which can have infinities for the real and/or imaginary part., except that [0 divided by 0 is defined to have the result zero](http://www.jsoftware.com/papers/eem/0div0.htm) (mathematically speaking any number is a valid result for 0 divided by 0, because 0 times any number is zero).
 
-See also the [http://www.jsoftware.com/help/dictionary/d030.htm J Dictionary page on infinity]
+See also the [J Dictionary page on infinity](http://www.jsoftware.com/help/dictionary/d030.htm)
 
 So, anyways, the task:
 
@@ -2836,7 +2836,7 @@ object DivideByZero extends Application {
 ## Seed7
 
 Integer division by zero raises NUMERIC_ERROR.
-Floating point division by zero returns [http://seed7.sourceforge.net/libraries/float.htm#Infinity Infinity] or -Infinity.
+Floating point division by zero returns [Infinity](http://seed7.sourceforge.net/libraries/float.htm#Infinity) or -Infinity.
 
 ```seed7
 $ include "seed7_05.s7i";

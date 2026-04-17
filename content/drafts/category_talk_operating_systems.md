@@ -18,7 +18,7 @@ Might it be worthwhile to add a "Unix-like" subcategory? The majority of OSs in 
 *many others ([[Solaris]], [[BeOS]], [[QNX]], etc.)
 ...while the non-*nix systems (notably Windows) are in the minority (though with a majority of users).
 
-Such a subcategory could be either a [http://www.catb.org/~esr/jargon/html/G/Good-Thing.html Good Thing] or a [http://www.catb.org/~esr/jargon/html/B/Bad-Thing.html Bad Thing]. One Good Thing ''could'' be more precise grouping, allowing readers to see that some systems are more similar than others. Some Bad Things would be increased complexity, the need to edit all *nix pages to reflect the new cat, and perhaps a general "WTF?" from people that are truly unfamiliar with *nix systems. (The fact that I thought of 3x more Bad Things than Good Things in ten seconds is one of the reasons why I hesitate.)
+Such a subcategory could be either a [Good Thing](http://www.catb.org/~esr/jargon/html/G/Good-Thing.html) or a [Bad Thing](http://www.catb.org/~esr/jargon/html/B/Bad-Thing.html). One Good Thing ''could'' be more precise grouping, allowing readers to see that some systems are more similar than others. Some Bad Things would be increased complexity, the need to edit all *nix pages to reflect the new cat, and perhaps a general "WTF?" from people that are truly unfamiliar with *nix systems. (The fact that I thought of 3x more Bad Things than Good Things in ten seconds is one of the reasons why I hesitate.)
 
 Alternately, perhaps just a "Unix-like" page that explains what it is to be Unix-like, with appropriate links here-n-there (i.e. some of the more common *nix systems, [[POSIX]], a few wp links for seasoning...) -- [[User:Eriksiers|Eriksiers]] 22:51, 30 October 2009 (UTC)
 

@@ -80,7 +80,7 @@ For general number base conversion, see [[Non-decimal radices/Convert]].
 ## Ada
 
 
-Ada supports the input format <BASE>#<VALUE>#, for example 16#AF42# or 2#1010110# or 8#777#. This can be used for input through Ada.Text_IO.Integer_IO or for conversion through Integer'Value. More details on this format can be found here: [http://www.adaic.com/standards/05rm/html/RM-2-4-2.html Ada 2005 Reference Manual - 2.4.2 Based Literals].
+Ada supports the input format <BASE>#<VALUE>#, for example 16#AF42# or 2#1010110# or 8#777#. This can be used for input through Ada.Text_IO.Integer_IO or for conversion through Integer'Value. More details on this format can be found here: [Ada 2005 Reference Manual - 2.4.2 Based Literals](http://www.adaic.com/standards/05rm/html/RM-2-4-2.html).
 
 Limited to Bases 2 to 16.
 
@@ -454,7 +454,7 @@ Seq.zip fromBases (Seq.zip values fromBases |> Seq.map (System.Convert.ToInt32))
 
 ## Factor
 
-Bases from 2 to 16 are supported through the generic base> word (see online docs [http://docs.factorcode.org/content/word-base__gt__,math.parser.html])
+Bases from 2 to 16 are supported through the generic base> word (see online docs <http://docs.factorcode.org/content/word-base__gt__,math.parser.html>)
 but 4 functions are defined for the most used cases:
     ( scratchpad ) "ff" hex> . ! base 16
     255
@@ -786,9 +786,9 @@ For base 10 and 16 ("0x"-prefixed), (but not 8), it is fastest to parse strings 
 +"-0xabcf123"; // NaN
 ```
 
-See http://www.jibbering.com/faq/notes/type-conversion/#tcNumber for more information.
+See <http://www.jibbering.com/faq/notes/type-conversion/#tcNumber> for more information.
 
-The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/parseInt#Example.3a_Using_parseInt Mozilla's JavaScript 1.5 reference].
+The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [Mozilla's JavaScript 1.5 reference](http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/parseInt#Example.3a_Using_parseInt).
 
 <div style='height:40ex; overflow:scroll'>The following examples all return 15:
 
@@ -1393,7 +1393,7 @@ Number String Base IsNumber InputString
 
 ## Python
 
-The [http://docs.python.org/library/functions.html#int int] function will interpret strings as numbers expressed to some base:
+The [int](http://docs.python.org/library/functions.html#int) function will interpret strings as numbers expressed to some base:
 
 ```python
 >>>
@@ -1721,8 +1721,8 @@ object Main extends App {
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29 integer(str, radix)]
-converts a numeric string, with a specified radix, to an [http://seed7.sourceforge.net/manual/types.htm#integer integer].
+The function [integer(str, radix)](http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29)
+converts a numeric string, with a specified radix, to an [integer](http://seed7.sourceforge.net/manual/types.htm#integer).
 
 
 ```seed7

@@ -61,7 +61,7 @@ languages = [
 tags = []
 +++
 
-The   Fibonacci Word   may be created in a manner analogous to the   Fibonacci Sequence    [http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf as described here]:
+The   Fibonacci Word   may be created in a manner analogous to the   Fibonacci Sequence    [as described here](http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf):
 
      Define   F_Word<sub>1</sub>   as   '''1'''
      Define   F_Word<sub>2</sub>   as   '''0'''
@@ -1625,7 +1625,7 @@ func main() {
 }
 ```
 
-[http://play.golang.org/p/e1whcGGOU1 Run in the Go Playground.]
+[Run in the Go Playground.](http://play.golang.org/p/e1whcGGOU1)
 
 ```txt
   N    Length  Entropy             Word
@@ -3439,7 +3439,7 @@ N       Length Entropy    Fibword
 
 ## R
 
-With inspiration from [http://rosettacode.org/wiki/Entropy#R here] for the entropy function:
+With inspiration from [here](http://rosettacode.org/wiki/Entropy#R) for the entropy function:
 
 ```rsplus
 entropy <- function(s)

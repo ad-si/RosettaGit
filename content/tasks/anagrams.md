@@ -116,7 +116,7 @@ languages = [
 
 When two or more words are composed of the same characters, but in a different order, they are called [anagrams](https://en.wikipedia.org/wiki/Anagram).
 
-Using the word list at   http://wiki.puzzlers.org/pub/wordlists/unixdict.txt,
+Using the word list at   <http://wiki.puzzlers.org/pub/wordlists/unixdict.txt>,
 
 find the sets of words that share the same characters that contain the most words in them.
 
@@ -8511,7 +8511,7 @@ a'b'e'l                                     5: abel able bale bela elba
 There's a bit of a cheat here: bash has no builtin way to sort.
 I have to call out to the system's <tt>sort</tt> utility.
 
-This code uses a [http://www.gnu.org/software/bash/manual/bashref.html#Process-Substitution process substitution].
+This code uses a [process substitution](http://www.gnu.org/software/bash/manual/bashref.html#Process-Substitution).
 Bash will execute each part of a command pipeline in a subshell.
 That means if you set variables inside a while loop that's part of a pipeline, then those variables will disappear when the subshell exits.
 Process substitutions eliminate the need for command pipelines.

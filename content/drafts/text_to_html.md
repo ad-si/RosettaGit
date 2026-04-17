@@ -375,7 +375,7 @@ object make_tree(array markup)
 
 
 This task seems like it's very under-defined, but the discussion seems to be headed towards a simple markdown specification.
-I therefore do this with a small interface to [https://github.com/jgm/cmark cmark] to render [http://commonmark.org/ commonmark] text.
+I therefore do this with a small interface to [cmark](https://github.com/jgm/cmark) to render [commonmark](http://commonmark.org/) text.
 
 (Note that this is not some cooked code, it's coming from code that I'm using to render class notes, and hopefully it will be useful to have such an example here.
 It certainly seems to me as a useful thing compared to some half-baked not-really-markdown-or-anything implementation.)

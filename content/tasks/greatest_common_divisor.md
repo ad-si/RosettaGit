@@ -347,8 +347,8 @@ o_byte('\n');
 
 Works with ALGOL 68|Revision 1 - no extensions to language used
 
-Works with ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
+Works with ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 PROC gcd = (INT a, b) INT: (
@@ -445,7 +445,7 @@ Works with Dyalog APL
 If you're interested in how you'd write GCD in Dyalog,
 if Dyalog didn't have a primitive for it,
 (i.e. using other algorithms mentioned on this page: iterative, recursive, binary recursive),
-see [http://www.dyalog.com/dfnsdws/n_gcd.htm different ways to write GCD in Dyalog].
+see [different ways to write GCD in Dyalog](http://www.dyalog.com/dfnsdws/n_gcd.htm).
 
 Works with APL2
 

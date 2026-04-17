@@ -25,7 +25,7 @@ Not making this a draft task yet: anyone see glaring problems? --[[User:Ledrug|L
 :: Indeed, the number of sets of real numbers describable by this task is countable; whereas the number of sets of real numbers is uncountable. (In fact, the real numbers are already uncountable; its power set has an even bigger cardinality than the real numbers.) So, in fact, this task covers a measure-zero subset of the sets of real numbers. --[[User:Spoon!|Spoon!]] 10:07, 21 November 2011 (UTC)
 
 ==Wolfram Mathworld and Perl==
-I copied one of the equations, <code>|sin(pi x2)| > 1/2, 0 < x < 10</code> into [http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 mathworld] and got the result:
+I copied one of the equations, <code>|sin(pi x2)| > 1/2, 0 < x < 10</code> into [mathworld](http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10) and got the result:
 :<code>sqrt(12 * n + 1) / sqrt(6) < x < sqrt(12 * n + 5) / sqrt(6),   0 <= n <= 49</code>
 For n = 49 I get the range component: (9.9079092984679, 9.941495528004495) which differs from the Perl: (9.96, 9.99). --[[User:Paddy3118|Paddy3118]] 07:04, 2 October 2011 (UTC)
 :: Aren't there two sets of solutions? --[[User:Ledrug|Ledrug]] 07:32, 2 October 2011 (UTC)

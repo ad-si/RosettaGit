@@ -14,7 +14,7 @@ tags = []
 |topic=TestML
 |summary=TestML is a unit test language
 }}
-[http://testml.org TestML] is a programming language agnostic, unit test language. It would be interesting to see TestML documents written for many Rosetta Code tasks. We could then show explicitly that implementations actually met the sufficient task criteria.
+[TestML](http://testml.org) is a programming language agnostic, unit test language. It would be interesting to see TestML documents written for many Rosetta Code tasks. We could then show explicitly that implementations actually met the sufficient task criteria.
 
 TestML is fairly new, and only available in a few languages, but this would be an interesting way to expand its horizons as well.
 <small>—Preceding [[wp:Wikipedia:Signatures|unsigned]] comment added by [[Ingy]] ([[User_talk:Ingy|talk]] • [[Special:Contributions/Ingy|contribs]]) 05:37, 6 September 2010 (UTC)</small>

@@ -22,6 +22,6 @@ Changes from FALSE include:
 
 
 * [DUP on Esolangs](https://rosettacode.org/wiki/eso:DUP)
-* [http://www.quirkster.com/iano/js/dup.html| Osgood’s online Javascript DUP interpreter]
+* [Osgood’s online Javascript DUP interpreter](http://www.quirkster.com/iano/js/dup.html|)
 
 [Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

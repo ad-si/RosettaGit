@@ -212,7 +212,7 @@ DOE, JOHN
 ## AutoHotkey
 
 AutoHotkey doesn't have named parameters, but they can be simulated as follows.
-ahk [http://www.autohotkey.com/forum/viewtopic.php?p=280499 discussion]
+ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=280499)
 
 ```AutoHotkey
 MyFunc( "Val=0, w=1024, Text=The Quick Brown Fox, newVar=I'm New" )
@@ -335,7 +335,7 @@ As a bonus, default values for the parameters left unspecified can be either imp
 
 ## C++
 
-C++ does not support name parameters, but they can be simulated with the "Named Parameter Idiom" (http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.18).
+C++ does not support name parameters, but they can be simulated with the "Named Parameter Idiom" (<http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.18>).
 
 You wrap the parameters in a class, and make the function a friend of the parameter class.
 
@@ -884,7 +884,7 @@ No parameter i:=
 ## J
 
 
-J is similar to Perl in that all arguments to functions come in as separate elements in an array.  But it is possible to emulate more complex calling conventions.  For example, using the [http://www.jsoftware.com/svn/DanBron/trunk/environment/calling_convention.ijs calling convention J script], one could write:
+J is similar to Perl in that all arguments to functions come in as separate elements in an array.  But it is possible to emulate more complex calling conventions.  For example, using the [calling convention J script](http://www.jsoftware.com/svn/DanBron/trunk/environment/calling_convention.ijs), one could write:
 
 
 ```j
@@ -917,12 +917,12 @@ myFunc<MAX=906, COLOR=blue fs>
 ```
 
 
-For further discussion, see the [http://www.jsoftware.com/pipermail/programming/2009-July/015571.html corresponding thread in the J Forums].
+For further discussion, see the [corresponding thread in the J Forums](http://www.jsoftware.com/pipermail/programming/2009-July/015571.html).
 
 
 ## Java
 
-Like C++, Java also does not support named parameters. Named parameters can however be simulated simply with the "Builder pattern". ([http://drdobbs.com/java/208403883?pgno=2 Joshua Bloch: Builder Pattern])
+Like C++, Java also does not support named parameters. Named parameters can however be simulated simply with the "Builder pattern". ([Joshua Bloch: Builder Pattern](http://drdobbs.com/java/208403883?pgno=2))
 
 ```java
 processNutritionFacts(new NutritionFacts.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build());
@@ -1608,7 +1608,7 @@ Output:
 ## PicoLisp
 
 PicoLisp uses normally positional parameters, but
-'[http://software-lab.de/doc/refB.html#bind bind]' can be used
+'[bind](http://software-lab.de/doc/refB.html#bind)' can be used
 to establish bindings to passed names.
 ===Passing symbol-value pairs===
 
@@ -2427,8 +2427,8 @@ example -help
 ```
 
 
-According to [http://wiki.tcl.tk/1730 wiki.tcl.tk discussions], '''::tcl::OptProc is deprecated.'''
-The recommended replacement is [http://tcllib.sourceforge.net/doc/cmdline.html cmdline] in [http://tcllib.sourceforge.net/doc/index.html tcllib]. "This is probably the most standard and widely-used of these packages."
+According to [wiki.tcl.tk discussions](http://wiki.tcl.tk/1730), '''::tcl::OptProc is deprecated.'''
+The recommended replacement is [cmdline](http://tcllib.sourceforge.net/doc/cmdline.html) in [tcllib](http://tcllib.sourceforge.net/doc/index.html). "This is probably the most standard and widely-used of these packages."
 
 
 ## VBA

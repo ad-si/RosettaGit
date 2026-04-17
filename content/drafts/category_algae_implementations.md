@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{implementation cat|Algae}}
-http://algae.sourceforge.net/
+<http://algae.sourceforge.net/>

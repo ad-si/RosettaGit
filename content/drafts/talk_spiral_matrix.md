@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Explanation of Python code ==
-See [http://paddy3118.blogspot.com/2008/08/spiral.html Spiral]. --[[User:Paddy3118|Paddy3118]] 06:30, 5 August 2008 (UTC)
+See [Spiral](http://paddy3118.blogspot.com/2008/08/spiral.html). --[[User:Paddy3118|Paddy3118]] 06:30, 5 August 2008 (UTC)
 :At least for the iterative solution. --[[User:Paddy3118|Paddy3118]] 10:48, 5 August 2008 (UTC)
 
 == J ==
@@ -31,7 +31,7 @@ is our spiral array, then <tt>,SPIRAL</tt> is the rows catenated together:
 ###  insight no. 1 
 
 
-Nothing about this list pops out at me, but if you read the [http://www.jsoftware.com/papers/play132.htm original article], you'll see a smart J guy (Joey Tuttle) noticed that this list looks like the ''grade'' of another list.
+Nothing about this list pops out at me, but if you read the [original article](http://www.jsoftware.com/papers/play132.htm), you'll see a smart J guy (Joey Tuttle) noticed that this list looks like the ''grade'' of another list.
 
 
 ###  aside:  grading 
@@ -223,7 +223,7 @@ In English:
 
 :''Joey discovered a very simple pattern underlying the spiral arrays.  The spiral itself is merely the grade of the running-sum of this pattern, reshaped into a matrix.''
 
-Generating the underlying pattern (<tt>ones_and_fives</tt>) is left as an exercise for the reader.  But, if you get stuck, it's spelled out in [http://www.jsoftware.com/papers/play132.htm the original article].
+Generating the underlying pattern (<tt>ones_and_fives</tt>) is left as an exercise for the reader.  But, if you get stuck, it's spelled out in [the original article](http://www.jsoftware.com/papers/play132.htm).
 
 
 ###  notes 
@@ -298,7 +298,7 @@ lohe
 ```
 
 
-For a fuller explanation, see [http://www.jsoftware.com/papers/play132.htm the original source].
+For a fuller explanation, see [the original source](http://www.jsoftware.com/papers/play132.htm).
 
 : Yet another J solution that looks both interesting and impenetrable to me. at least for [[Zig Zag]] a Haskel person had reimplemented the J solution and left me the clue that it involved a sort :-) 
 :--[[User:Paddy3118|Paddy3118]] 16:56, 5 August 2008 (UTC)
@@ -306,7 +306,7 @@ For a fuller explanation, see [http://www.jsoftware.com/papers/play132.htm the o
 
 
 == Python array initialisation edit problem ==
-Hi Spoon, your edit to Spiral of substituting <python>array = [[None]*n]*n</python> for <python>array = [[None]*n for j in range(n)]</python> [[http://www.rosettacode.org/w/index.php?title=Spiral&curid=2967&diff=16906&oldid=16746 here]] doesn't work because of: 
+Hi Spoon, your edit to Spiral of substituting <python>array = [[None]*n]*n</python> for <python>array = [[None]*n for j in range(n)]</python> [here](http://www.rosettacode.org/w/index.php?title=Spiral&curid=2967&diff=16906&oldid=16746) doesn't work because of: 
 
 ```python
 >>>

@@ -62,7 +62,7 @@ Sun Mar 08 00:30:00 GMT 2009
 
 ::The last one is just to check that it really is doing the time math right. Forgot that there was a DST change at that point in time... —[[User:Dkf|Dkf]] 10:58, 14 May 2009 (UTC)
 
-::: Indeed I've tried to implement something not region specific... but coping with timezones and DST [http://www.timeanddate.com/time/dst2009.html is a mess] if not "directly" supported by a library... (currently I believe POSIX is not too much interested in doing conversions ''to'' any timezones; the results are driven by a environment variable; maybe one can setenv it properly... anyway EST alone gives not the required information directly...) --[[User:ShinTakezou|ShinTakezou]] 11:07, 14 May 2009 (UTC)
+::: Indeed I've tried to implement something not region specific... but coping with timezones and DST [is a mess](http://www.timeanddate.com/time/dst2009.html) if not "directly" supported by a library... (currently I believe POSIX is not too much interested in doing conversions ''to'' any timezones; the results are driven by a environment variable; maybe one can setenv it properly... anyway EST alone gives not the required information directly...) --[[User:ShinTakezou|ShinTakezou]] 11:07, 14 May 2009 (UTC)
 
 :::: Date and time parsing and formatting really ''are'' inherently region-specific. Don't kid yourself otherwise. And feel free to show off the library in conjunction with the language; that'd make for the most valuable kind of contribution to this site. —[[User:Dkf|Dkf]] 12:11, 14 May 2009 (UTC)
 

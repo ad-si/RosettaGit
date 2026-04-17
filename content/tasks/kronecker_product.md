@@ -2841,7 +2841,7 @@ Press return
 
 ### Version 1
 
-In Python, the numpy library has the [https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.kron.html kron] function. The following is an implementation for "bare" lists of lists.
+In Python, the numpy library has the [kron](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.kron.html) function. The following is an implementation for "bare" lists of lists.
 
 
 ```Python

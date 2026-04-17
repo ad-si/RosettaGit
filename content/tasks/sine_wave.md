@@ -271,7 +271,7 @@ beep(prompt_number("Enter Frequency (100..10000 recommended):",{0x25,0x7FFF}))
 
 ## Racket
 
-See https://docs.racket-lang.org/rsound/index.html
+See <https://docs.racket-lang.org/rsound/index.html>
 
 ```Racket
 

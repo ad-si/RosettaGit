@@ -14,7 +14,7 @@ tags = []
 
 == Doubly-Linked List solutions ==
 
-[http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=333 discussion]
+[discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=333)
 
 ```AutoHotkey
 Build(D, L) { ; Double Linked list "D": D_{Head,Tail} = number>0 id of node

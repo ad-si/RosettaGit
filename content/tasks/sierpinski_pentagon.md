@@ -38,7 +38,7 @@ Produce a graphical or ASCII-art representation of a [[wp:N-flake#Pentaflake|Sie
 
 ## See also
 
-* [http://ecademy.agnesscott.edu/~lriddle/ifs/pentagon/pentagon.htm Sierpinski pentagon]
+* [Sierpinski pentagon](http://ecademy.agnesscott.edu/~lriddle/ifs/pentagon/pentagon.htm)
 
 
 
@@ -46,7 +46,7 @@ Produce a graphical or ASCII-art representation of a [[wp:N-flake#Pentaflake|Sie
 
 ## C
 
-The Sierpinski fractals can be generated via the [http://mathworld.wolfram.com/ChaosGame.html Chaos Game]. This implementation thus generalizes the [[Chaos game]] C implementation on Rosettacode. As the number of sides increases, the number of iterations must increase dramatically for a well pronounced fractal ( 30000 for a pentagon). This is in keeping with the requirements that the implementation should work for polygons with sides 1 to 4 as well. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+The Sierpinski fractals can be generated via the [Chaos Game](http://mathworld.wolfram.com/ChaosGame.html). This implementation thus generalizes the [[Chaos game]] C implementation on Rosettacode. As the number of sides increases, the number of iterations must increase dramatically for a well pronounced fractal ( 30000 for a pentagon). This is in keeping with the requirements that the implementation should work for polygons with sides 1 to 4 as well. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -559,7 +559,7 @@ transformation = Scale s s . (Rotate 36 <> foldMap copy [0,72..288])
 ```
 
 
-See also the implementation using [http://projects.haskell.org/diagrams/gallery/Pentaflake.html Diagrams]
+See also the implementation using [Diagrams](http://projects.haskell.org/diagrams/gallery/Pentaflake.html)
 
 
 ## Java
@@ -949,7 +949,7 @@ pentaFlake[n_] :=
 Graphics@pentaFlake[4]
 ```
 
-https://i.imgur.com/rvXvQc0.png
+<https://i.imgur.com/rvXvQc0.png>
 
 
 ## MATLAB
@@ -964,7 +964,7 @@ patch('Faces', reshape(1 : 5 * 5 ^ k, 5, '')', 'Vertices', [real(x(:)) imag(x(:)
 axis image off
 ```
 
-http://i.imgur.com/8ht6HqG.png
+<http://i.imgur.com/8ht6HqG.png>
 
 
 ## Perl
@@ -1007,7 +1007,7 @@ print $fh '</svg>';
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sierpinski_pentagon.svg Sierpinski pentagon] (offsite image)
+[Sierpinski pentagon](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/sierpinski_pentagon.svg) (offsite image)
 
 
 ## Perl 6
@@ -1037,7 +1037,7 @@ $fh.close;
 ```
 
 
-See [http://rosettacode.org/mw/images/5/57/Perl6_pentaflake.svg 5th order pentaflake]
+See [5th order pentaflake](http://rosettacode.org/mw/images/5/57/Perl6_pentaflake.svg)
 
 
 ## Python
@@ -1124,7 +1124,7 @@ main()
 ```
 
 
-See [https://trinket.io/python/5137ae2b92 online implementation]. See [http://i.imgur.com/96D0c7i.png completed output].
+See [online implementation](https://trinket.io/python/5137ae2b92). See [completed output](http://i.imgur.com/96D0c7i.png).
 
 
 ## Racket
@@ -1432,7 +1432,7 @@ fcn pgon(vertices){  // eg ( ((250,0),(248.595,1.93317),...), len 5
 }
 ```
 
-See [http://www.zenkinetic.com/Images/RosettaCode/sierpinskiPentagon.zkl.svg this image].
+See [this image](http://www.zenkinetic.com/Images/RosettaCode/sierpinskiPentagon.zkl.svg).
 Displays fine in FireFox, in Chrome, it doesn't appear to be transformed so you only see part of the image.
 
 ```txt

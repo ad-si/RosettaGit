@@ -1644,7 +1644,7 @@ p := k + 1;;    (* set the value inside to a new value *)
 ```
 
 
-(The OCaml web-site provides this [http://caml.inria.fr/resources/doc/guides/pointers.en.html page] on the subject.)
+(The OCaml web-site provides this [page](http://caml.inria.fr/resources/doc/guides/pointers.en.html) on the subject.)
 
 
 ## Oforth
@@ -1923,8 +1923,8 @@ PHP Objects are Always passed by reference, so passing an object into and out of
 
 ### See Also
 
-* [http://php.net/manual/en/language.references.php php.net:References Explained]
-* [http://php.net/manual/en/function.debug-zval-dump.php php.net:debug_zval_dump]
+* [php.net:References Explained](http://php.net/manual/en/language.references.php)
+* [php.net:debug_zval_dump](http://php.net/manual/en/function.debug-zval-dump.php)
 
 
 ## PicoLisp
@@ -1936,18 +1936,18 @@ two pointers ("cons pair").
 The pointers are not evident to the programmer. The development environment
 presents them as high level structures (symbols or lists). However, the pointer
 value (the address) can be obtained with the
-'[http://software-lab.de/doc/refA.html#adr adr]' function.
+'[adr](http://software-lab.de/doc/refA.html#adr)' function.
 
 "Dereferencing" a pointer is done with the
-'[http://software-lab.de/doc/refC.html#car car]' or
-'[http://software-lab.de/doc/refV.html#val val]' functions. They return the data
+'[car](http://software-lab.de/doc/refC.html#car)' or
+'[val](http://software-lab.de/doc/refV.html#val)' functions. They return the data
 item at the memory location (CAR or VAL part of a cell). With
-'[http://software-lab.de/doc/refS.html#set set]', a value can be stored in the
+'[set](http://software-lab.de/doc/refS.html#set)', a value can be stored in the
 referred location.
 
 There is no meaningful pointer arithmetics, except functions like
-'[http://software-lab.de/doc/refC.html#cdr cdr]' or
-'[http://software-lab.de/doc/refN.html#nth nth]', which advance the pointer to
+'[cdr](http://software-lab.de/doc/refC.html#cdr)' or
+'[nth](http://software-lab.de/doc/refN.html#nth)', which advance the pointer to
 the next (linked to) location(s).
 
 ```PicoLisp

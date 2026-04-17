@@ -9,7 +9,7 @@ id = 12670
 categories = []
 tags = []
 +++
-[http://try.frege-lang.org/ Try] this language on [http://try.frege-lang.org/ frege-lang.org].
+[Try](http://try.frege-lang.org/) this language on [frege-lang.org](http://try.frege-lang.org/).
 
 '''Frege''' is a purely [functional programming](https://rosettacode.org/wiki/functional_programming) language with [non-strict](https://rosettacode.org/wiki/lazy_evaluation) semantics, strongly influenced by [Haskell](https://rosettacode.org/wiki/Haskell), but targeting the [JVM](https://rosettacode.org/wiki/runs_on_vm::Java_Virtual_Machine), and deviates from Haskell in ways which make it easier to interoperate with [Java](https://rosettacode.org/wiki/Java).
 

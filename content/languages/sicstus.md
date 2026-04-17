@@ -9,5 +9,5 @@ id = 7410
 categories = []
 tags = []
 +++
-[http://www.sics.se/isl/sicstuswww/site/index.html SICStus] Prolog is a 
+[SICStus](http://www.sics.se/isl/sicstuswww/site/index.html) Prolog is a 
 state-of-the-art, ISO standard compliant, Prolog development system

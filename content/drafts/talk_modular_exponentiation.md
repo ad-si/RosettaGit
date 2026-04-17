@@ -39,4 +39,4 @@ Under-tested cosmetic edits made to the task page at 04:42, 26 April 2016, inclu
 
 ==Apply Number Theory==
 
-Since we're computing mod 10^40 here, we can reduce a modulo 10^40 right off the bat. And since 10 = 2*5, we can reduce b modulo (10^40)*(1-1/2)*(1-1/5) [https://en.wikipedia.org/wiki/Euler's_totient_function Euler's Totient]. Thus a = 8819466320163312926952423791023078876139 and b = 3690094744975233415544072992656881240319 is equivalent to the original specific question.
+Since we're computing mod 10^40 here, we can reduce a modulo 10^40 right off the bat. And since 10 = 2*5, we can reduce b modulo (10^40)*(1-1/2)*(1-1/5) [Euler's Totient](https://en.wikipedia.org/wiki/Euler's_totient_function). Thus a = 8819466320163312926952423791023078876139 and b = 3690094744975233415544072992656881240319 is equivalent to the original specific question.

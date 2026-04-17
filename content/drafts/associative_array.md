@@ -23,7 +23,7 @@ Associative arrays are used as the underlying data structure for objects in a nu
 
 {{Template:See also lists}}
 ==References==
-* Free On-line Dictionary of Computing, http://foldoc.org/, Editor Denis Howe
+* Free On-line Dictionary of Computing, <http://foldoc.org/>, Editor Denis Howe
 
 == See also ==
 * [[Creating an Associative Array]]

@@ -12,4 +12,4 @@ tags = []
 
 
 
-Neat is [feep](https://rosettacode.org/wiki/User:FeepingCreature)'s language, a D derivate with a focus on gamedev and terseness. Compiler is up on [http://www.github.com/FeepingCreature/fcc github]. Caution advised: not for newcomers.
+Neat is [feep](https://rosettacode.org/wiki/User:FeepingCreature)'s language, a D derivate with a focus on gamedev and terseness. Compiler is up on [github](http://www.github.com/FeepingCreature/fcc). Caution advised: not for newcomers.

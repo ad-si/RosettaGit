@@ -12,8 +12,8 @@ tags = []
 
 System.Numerics is a library used by Visual Studio to implement the '''BigInteger''' Class (among others).  Although it does not directly support ''BigRationals'' or ''BigFloats'', one can usually figure out a way to deal with placing a decimal point properly to simulate arbitrary precision floating point operations.
 
-[https://docs.microsoft.com/en-us/dotnet/api/system.numerics?view=netframework-4.7.2 '''System.Numerics'''] MS documentation for .NET Framework 4.7.2<br/>
-[https://docs.microsoft.com/en-us/dotnet/api/system.numerics?view=netcore-2.2 '''System.Numerics'''] MS documentaion for .NET Core 2.2)<br/>
+['''System.Numerics'''](https://docs.microsoft.com/en-us/dotnet/api/system.numerics?view=netframework-4.7.2) MS documentation for .NET Framework 4.7.2<br/>
+['''System.Numerics'''](https://docs.microsoft.com/en-us/dotnet/api/system.numerics?view=netcore-2.2) MS documentaion for .NET Core 2.2)<br/>
 ''Links added in early 2018, if they don't work, try googling.''
 
 '''Classes:'''<br/> 

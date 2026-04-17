@@ -12,4 +12,4 @@ tags = []
 
 {{library}}Hpricot is an HTML/XML parser for [[Ruby]], available via [[:Category:RubyGems|RubyGems]].
 
-[http://wiki.github.com/why/hpricot Hpricot Home]
+[Hpricot Home](http://wiki.github.com/why/hpricot)

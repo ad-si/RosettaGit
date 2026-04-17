@@ -1816,7 +1816,7 @@ exagon:
 
 '''PNPoly algorithm'''
 
-This solution replaces the <code>rayIntersectsSegment</code> function above with the expression from the popular PNPoly algorithm described at https://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html.  The expression is not only simpler but more accurate.
+This solution replaces the <code>rayIntersectsSegment</code> function above with the expression from the popular PNPoly algorithm described at <https://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html>.  The expression is not only simpler but more accurate.
 
 This solution is preferred over the two above.
 <lang>package main
@@ -2382,7 +2382,7 @@ result: [true, true, false, false, true, true, false]
 
 ## Liberty BASIC
 
-Translated from C code at: http://alienryderflex.com/polygon/
+Translated from C code at: <http://alienryderflex.com/polygon/>
 
 Displays interactively on-screen.
 

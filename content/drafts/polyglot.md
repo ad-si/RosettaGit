@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-A polyglot is a program that contains code in more than one language and produces the same output when it is compiled, assembled or interpreted in all of them. The most famous example is [http://ideology.com.au/polyglot/ Polyglot]. 
+A polyglot is a program that contains code in more than one language and produces the same output when it is compiled, assembled or interpreted in all of them. The most famous example is [Polyglot](http://ideology.com.au/polyglot/). 
 
 The original 1991 version contained seven languages, the 10th Anniversary Edition from 2001 added an eight, Perl. 
 

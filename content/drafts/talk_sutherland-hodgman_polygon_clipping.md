@@ -34,7 +34,7 @@ scratch.rb:26: formal argument cannot be an instance variable
 ```
 
 
-[http://rosettacode.org/mw/index.php?title=Sutherland-Hodgman_polygon_clipping&diff=118024&oldid=118006 My change to the Ruby code] fixes it for Ruby 1.9 but keeps it working with Ruby 1.8. --[[User:Kernigh|Kernigh]] 19:31, 19 August 2011 (UTC)
+[My change to the Ruby code](http://rosettacode.org/mw/index.php?title=Sutherland-Hodgman_polygon_clipping&diff=118024&oldid=118006) fixes it for Ruby 1.9 but keeps it working with Ruby 1.8. --[[User:Kernigh|Kernigh]] 19:31, 19 August 2011 (UTC)
 
 
 ==Point lists hidden to most browsers by cosmetic edits at 06:57, 16 May 2016 ==

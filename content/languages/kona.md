@@ -13,4 +13,4 @@ tags = []
 '''Kona''' is an open-source implementation of the K programming language. Kona is unaffiliated with Kx Systems.
 
 ## External Links
-[https://github.com/kevinlawler/kona Homepage]
+[Homepage](https://github.com/kevinlawler/kona)

@@ -61,7 +61,7 @@ RFC 1320 specifies the MD4 algorithm. RFC 6150 declares that MD4 is obsolete.
 
 ## AutoHotkey
 
-Source: [https://github.com/jNizM/AutoHotkey_Scripts/tree/master/Functions/Checksums MD4 @github] by jNizM
+Source: [MD4 @github](https://github.com/jNizM/AutoHotkey_Scripts/tree/master/Functions/Checksums) by jNizM
 
 ```AutoHotkey
 str := "Rosetta Code"
@@ -554,7 +554,7 @@ a52bcfc6a0d0d300cdc5ddbfbefe478b
 ## Emacs Lisp
 
 
-<code>md4.el</code> by Taro Kawagishi, originally from [http://git.chise.org/elisp/flim/ FLIM] and included in recent Emacs, is an Elisp implementation of the MD4 algorithm.  Its <code>md4</code> function returns the checksum as 16 binary bytes.  <code>encode-hex-string</code> from <code>hex-util.el</code> can convert that to a hex string if desired.
+<code>md4.el</code> by Taro Kawagishi, originally from [FLIM](http://git.chise.org/elisp/flim/) and included in recent Emacs, is an Elisp implementation of the MD4 algorithm.  Its <code>md4</code> function returns the checksum as 16 binary bytes.  <code>encode-hex-string</code> from <code>hex-util.el</code> can convert that to a hex string if desired.
 
 
 ```Lisp
@@ -1069,7 +1069,7 @@ a52bcfc6a0d0d300cdc5ddbfbefe478b
 
 ## Julia
 
-[https://github.com/staticfloat/Nettle.jl Nettle.jl] provides a variety of cryptographic functions including the <tt>MD4</tt> hash.
+[Nettle.jl](https://github.com/staticfloat/Nettle.jl) provides a variety of cryptographic functions including the <tt>MD4</tt> hash.
 
 ```Julia
 
@@ -1096,7 +1096,7 @@ println("\"", msg, "\" => ", h)
 
 ## Kotlin
 
-This is a translation of the Java code [http://www.java2s.com/Code/Java/Security/ImplementstheMD4messagedigestalgorithminJava.htm here]. In the interests of conciseness, I have removed the comments from the Kotlin version:
+This is a translation of the Java code [here](http://www.java2s.com/Code/Java/Security/ImplementstheMD4messagedigestalgorithminJava.htm). In the interests of conciseness, I have removed the comments from the Kotlin version:
 
 ```scala
 // version 1.0.6
@@ -1294,7 +1294,7 @@ cipher_digest('Rosetta Code', -digest='MD4')->encodeHex->asString
 ## Lua
 
 
-{{libheader|LuaCrypto}} ([http://mkottman.github.io/luacrypto/ luarocks install LuaCrypto])
+{{libheader|LuaCrypto}} ([luarocks install LuaCrypto](http://mkottman.github.io/luacrypto/))
 
 
 ```Lua
@@ -1403,7 +1403,7 @@ Output: "a52bcfc6a0d0d300cdc5ddbfbefe478b"
 
 ## Perl
 
-In-lining code from module [https://metacpan.org/pod/Digest::Perl::MD4 Digest::Perl::MD4], lightly edited for clarity.
+In-lining code from module [Digest::Perl::MD4](https://metacpan.org/pod/Digest::Perl::MD4), lightly edited for clarity.
 
 ```perl
 sub md4(@) {

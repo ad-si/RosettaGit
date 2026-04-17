@@ -12,7 +12,7 @@ tags = []
 
 [[Category:Encyclopedia]]
 
-'''Open source''' or '''open-source''' is the idea that source code for a piece of software is freely available for viewing and modifying. Many open source licences are approved by the [http://www.opensource.org/ Open Source Initiative]. Open source licences approved by the Open Source Initiative may be referred to as '''OSI approved licences'''.
+'''Open source''' or '''open-source''' is the idea that source code for a piece of software is freely available for viewing and modifying. Many open source licences are approved by the [Open Source Initiative](http://www.opensource.org/). Open source licences approved by the Open Source Initiative may be referred to as '''OSI approved licences'''.
 
 The [[MIT/X11 License]] and the [[GPL]] are examples of open source licenses.
 
@@ -21,7 +21,7 @@ It should be noted that while the term "open source" has gained wide-spread acce
 
 ==See Also==
 
-* [http://www.opensource.org/docs/osd The Open Source Definition]
-* [http://www.opensource.org/licenses List of Open Source Licenses]
-* [http://www.gnu.org/philosophy/free-sw.html The Free Software Definition]
-* [http://www.gnu.org/philosophy/open-source-misses-the-point.html Why Open Source misses the point of Free Software]
+* [The Open Source Definition](http://www.opensource.org/docs/osd)
+* [List of Open Source Licenses](http://www.opensource.org/licenses)
+* [The Free Software Definition](http://www.gnu.org/philosophy/free-sw.html)
+* [Why Open Source misses the point of Free Software](http://www.gnu.org/philosophy/open-source-misses-the-point.html)

@@ -31,7 +31,7 @@ The Wikipedia article capitalizes, for example, "Southwest by south".  However, 
 
 :The current J implementation abuses the information contained in the wikipedia capitalization to deal with one of the wording quirks.  (I would prefer to get rid of that abuse but do not want to code so generally that I am explicitly parameterizing and supporting all three forms of capitalization -- at least not if the task does not require it.)   --[[User:Rdm|Rdm]] 15:10, 28 March 2011 (UTC)
 
-::Hi Rdm, What is important is matching the capitalisation of the wp table. But I just looked at the capitalization from [http://oxforddictionaries.com/view/entry/m_en_gb0794290#m_en_gb0794290 the OED], which seems to point to south being lower cased for cardinal points, (except when starting a sentence of course). --[[User:Paddy3118|Paddy3118]] 15:39, 28 March 2011 (UTC)
+::Hi Rdm, What is important is matching the capitalisation of the wp table. But I just looked at the capitalization from [the OED](http://oxforddictionaries.com/view/entry/m_en_gb0794290#m_en_gb0794290), which seems to point to south being lower cased for cardinal points, (except when starting a sentence of course). --[[User:Paddy3118|Paddy3118]] 15:39, 28 March 2011 (UTC)
 
 
 :I would argue that the capitalisation is a bit of a non-issue.  Strictly speaking, the cardinal directions are not proper nouns therefore shouldn't really be capitalised.  I did capitalise mine in the same way as the Wikipedia entry simply because it just wouldn't have looked right otherwise, but I did make sure that the capitalisation subroutine acted on the direction names at display time, not on insertion into the array. --[[User:TheMadman|TheMadman]] 15:32, 28 March 2011 (UTC)
@@ -55,7 +55,7 @@ For these reasons, I am inclined to stick an incomplete tag on the J example and
 ::Thank you, fixed.  (I now sort the hyphenated words so that the shortest name in the pair comes first.) --[[User:Rdm|Rdm]] 20:19, 28 March 2011 (UTC)
 
 ==ALGOL's Traditional wind points==
-I tracked them down to being the names of Mediterannean winds. Nice to know. ([http://www.mediterranean-yachting.com/winds.htm here] is one of many references or track each name in wikipedia individually). --[[User:Paddy3118|Paddy3118]] 06:11, 16 June 2011 (UTC)
+I tracked them down to being the names of Mediterannean winds. Nice to know. ([here](http://www.mediterranean-yachting.com/winds.htm) is one of many references or track each name in wikipedia individually). --[[User:Paddy3118|Paddy3118]] 06:11, 16 June 2011 (UTC)
 
 ==Task clarification needed==
 I think the interval between two neighboring directions is exactly 360/32=11.25 degrees. It is conforming to the '''Middle''' column of the table in the [[wp:Boxing the compass|wikipedia article]]. So I do not understand the meaning of the given sequence of numbers: <code>[0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38]</code>.

@@ -16,5 +16,5 @@ Clio compiles to [JavaScript](https://rosettacode.org/wiki/JavaScript). This mak
 
 
 ## See also
-* [https://github.com/clio-lang/clio Clio repo]
-* [https://clio-lang.github.io/clio-docs/quick.html Clio quick guide and online editor/interpreter]
+* [Clio repo](https://github.com/clio-lang/clio)
+* [Clio quick guide and online editor/interpreter](https://clio-lang.github.io/clio-docs/quick.html)

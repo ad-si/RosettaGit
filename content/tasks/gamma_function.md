@@ -599,7 +599,7 @@ gamma( 70)= 1.711224524e98, 1.711224524281e98, 1.711224524281e98, 7.57303907062e
 
 =={{Header|AutoHotkey}}==
 {{AutoHotkey case}}
-Source: [http://www.autohotkey.com/forum/topic44657.html AutoHotkey forum] by Laszlo
+Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```autohotkey
 /*
@@ -1102,7 +1102,7 @@ real taylorGamma(in real x) pure nothrow @safe @nogc {
 
 real lanczosGamma(real z) pure nothrow @safe @nogc {
     // Coefficients used by the GNU Scientific Library.
-    // http://en.wikipedia.org/wiki/Lanczos_approximation
+    // <http://en.wikipedia.org/wiki/Lanczos_approximation>
     enum g = 7;
     static immutable real[9] table =
         [    0.99999_99999_99809_93,
@@ -1661,7 +1661,7 @@ def gamma = { 1.0 / a.inject(0) { sm, a_i -> sm * (it - 1) + a_i } }
 
 ## Haskell
 
-Based on [http://www.haskell.org/haskellwiki/?title=Gamma_and_Beta_function&oldid=25546 HaskellWiki] ([http://www.haskell.org/haskellwiki/HaskellWiki:Copyrights compatible license]):
+Based on [HaskellWiki](http://www.haskell.org/haskellwiki/?title=Gamma_and_Beta_function&oldid=25546) ([compatible license](http://www.haskell.org/haskellwiki/HaskellWiki:Copyrights)):
 :The Gamma and Beta function as described in 'Numerical Recipes in C++', the approximation is taken from [Lanczos, C. 1964 SIAM Journal on Numerical Analysis, ser. B, vol. 1, pp. 86-96]
 
 ```haskell
@@ -3296,7 +3296,7 @@ Lanczos                 Builtin
 
 ## PowerShell
 
-I would download the Math.NET Numerics dll(s).  Documentation and download at: http://cyber-defense.sans.org/blog/2015/06/27/powershell-for-math-net-numerics/comment-page-1/
+I would download the Math.NET Numerics dll(s).  Documentation and download at: <http://cyber-defense.sans.org/blog/2015/06/27/powershell-for-math-net-numerics/comment-page-1/>
 
 ```PowerShell
 
@@ -3347,7 +3347,7 @@ Below is PureBasic code for:
 Procedure.d Gamma(x.d) ; AKJ  01-May-10
 ; Complete Gamma function for x>0 and x<2 (approx)
 ; Extended outside this range via: Gamma(x+1) = x*Gamma(x)
-; Based on http://rosettacode.org/wiki/Gamma_function  [Ada]
+; Based on <http://rosettacode.org/wiki/Gamma_function>  [Ada]
 Protected Dim A.d(28)
 A(0) = 1.0
 A(1) = 0.5772156649015328606
@@ -4536,7 +4536,7 @@ for i in (1..10) {
 ## Stata
 
 This implementation uses the Taylor expansion of 1/gamma(1+x). The coefficients were computed with Maxima (see the Maxima implementation above).
-The results are compared to Mata's '''[https://www.stata.com/help.cgi?mf_gamma gamma]''' function for each real between 1/100 and 100, by steps of 1/100.
+The results are compared to Mata's '''[gamma](https://www.stata.com/help.cgi?mf_gamma)''' function for each real between 1/100 and 100, by steps of 1/100.
 
 
 ```stata
@@ -4946,7 +4946,7 @@ fcn taylorGamma(x){
 ```zkl
 fcn lanczosGamma(z) { z = z.toFloat();
     // Coefficients used by the GNU Scientific Library.
-    // http://en.wikipedia.org/wiki/Lanczos_approximation
+    // <http://en.wikipedia.org/wiki/Lanczos_approximation>
     const g = 7, PI = (0.0).pi;
     exp := (0.0).e.pow;
     var table = T(

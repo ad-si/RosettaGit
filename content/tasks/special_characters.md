@@ -464,7 +464,7 @@ Note that the ampersand, snail, underscore, backtick and apostrophe symbols have
 
 ## Batch File
 
-Check [http://www.robvanderwoude.com/escapechars.php HERE] for more details.
+Check [HERE](http://www.robvanderwoude.com/escapechars.php) for more details.
 
 
 
@@ -829,7 +829,7 @@ Note that the # character is not interpreted specially inside character or strin
 
 ## Clojure
 
-See [http://clojure.org/reader Clojure's Reader documentation].
+See [Clojure's Reader documentation](http://clojure.org/reader).
 
 
 ## E
@@ -905,7 +905,7 @@ Many systems - and the Forth200x standard - extend this set with base prefixes:
 ```
 
 
-Of strings, Forth200x [http://www.forth200x.org/escaped-strings.html Escaped Strings] adds a string-parsing word with very familiar backslashed escapes.
+Of strings, Forth200x [Escaped Strings](http://www.forth200x.org/escaped-strings.html) adds a string-parsing word with very familiar backslashed escapes.
 
 There are otherwise no special characters or escapes in Forth.
 
@@ -1104,13 +1104,13 @@ Other output devices may or may not follow this scheme. A teletype attached to a
 
 ## Go
 
-Within a character literals and string literals, the backslash is a special character that begins an escape sequence.  Examples are '\n' and “\xFF”.  These sequences are documented in the [http://golang.org/doc/go_spec.html#Character_literals language specification].
+Within a character literals and string literals, the backslash is a special character that begins an escape sequence.  Examples are '\n' and “\xFF”.  These sequences are documented in the [language specification](http://golang.org/doc/go_spec.html#Character_literals).
 
 Special purpose escape sequences are also defined within the context of certain packages in the standard library, such html and regexp.
 
 Go keywords, operators, and delimiters are all predefined are all composed of ASCII characters, however the character encoding of Go source code is specified to be UTF-8.  This allows user-defined identifiers and literals to incorporate non-ASCII characters.
 
-Whitespace is generally ignored except as is it delimits tokens, with one exception:  Newline is a very special character.  As explained by the [http://golang.org/doc/go_spec.html#Semicolons language specification], translation (that is compilation) involves a step where the tokenizer converts (most) newlines to semicolons, which are then handled as terminators in the grammar of the formal language.  Of course you as the programmer, or user of the language, are not involved in this intermediate stage of the compilation process and so the effect you see is somewhat different.  The effect for the programmer is that the grammatical structure is partially determined by the 2D layout of the source code.
+Whitespace is generally ignored except as is it delimits tokens, with one exception:  Newline is a very special character.  As explained by the [language specification](http://golang.org/doc/go_spec.html#Semicolons), translation (that is compilation) involves a step where the tokenizer converts (most) newlines to semicolons, which are then handled as terminators in the grammar of the formal language.  Of course you as the programmer, or user of the language, are not involved in this intermediate stage of the compilation process and so the effect you see is somewhat different.  The effect for the programmer is that the grammatical structure is partially determined by the 2D layout of the source code.
 
 
 ## GUISS
@@ -1212,9 +1212,9 @@ HicEst has no escape characters.
 Strings may contain all characters.
 String constants can be delimited by most non-standard characters, usually ' or ".
 * ! starts a comment. The comment extends to the end of the line.
-* The global variable [http://www.HicEst.com/$.htm $] is the current linear left hand side array index in array expressions
-* The global variable [http://www.HicEst.com/$$.htm $$] is set to the sequence number of either of the last activated toolbar button number, or menu item number, or popup item number
-* If # appears as the first character in a line, it starts the optional [http://www.HicEst.com/APPENDIX.htm appendix] section of the script. This terminates the program section. Appendix chapters are not compiled and are therefore not executable. They serve to store information that can be retrieved by the APPENDIX function.
+* The global variable [$](http://www.HicEst.com/$.htm) is the current linear left hand side array index in array expressions
+* The global variable [$$](http://www.HicEst.com/$$.htm) is set to the sequence number of either of the last activated toolbar button number, or menu item number, or popup item number
+* If # appears as the first character in a line, it starts the optional [appendix](http://www.HicEst.com/APPENDIX.htm) section of the script. This terminates the program section. Appendix chapters are not compiled and are therefore not executable. They serve to store information that can be retrieved by the APPENDIX function.
 
 
 ## HTML
@@ -1461,14 +1461,14 @@ punctuation connectors (category Pc), primes, and a few other characters."
 
 ## Kotlin
 
-Kotlin uses a large number of special symbols which are listed on its website at https://kotlinlang.org/docs/reference/keyword-reference.html#operators-and-special-symbols.
+Kotlin uses a large number of special symbols which are listed on its website at <https://kotlinlang.org/docs/reference/keyword-reference.html#operators-and-special-symbols>.
 
-The escape sequences are listed at https://kotlinlang.org/docs/reference/basic-types.html#characters and are somewhat smaller in number than most other C-family languages as rarely used escapes such as \a, \f and \v are not supported. However, an additional escape \$ is needed to represent a literal $ symbol because this symbol is used for string interpolation purposes.
+The escape sequences are listed at <https://kotlinlang.org/docs/reference/basic-types.html#characters> and are somewhat smaller in number than most other C-family languages as rarely used escapes such as \a, \f and \v are not supported. However, an additional escape \$ is needed to represent a literal $ symbol because this symbol is used for string interpolation purposes.
 
 
 ## Lasso
 
-Lasso has the follow special characters (excluding math / string functions) [http://lassoguide.com/language/operators.html].
+Lasso has the follow special characters (excluding math / string functions) <http://lassoguide.com/language/operators.html>.
 
 
 ```Lasso
@@ -1719,7 +1719,7 @@ USER>Set S4="""""""Wow""""""" Write S4
 
 ## Nim
 
-From [http://nim-lang.org/manual.html#string-literals the Nim Manual]:
+From [the Nim Manual](http://nim-lang.org/manual.html#string-literals):
 <table border="1" class="docutils"><tr><th>Escape sequence</th><th>Meaning</th></tr>
 <tr><td><tt class="docutils literal"><span class="pre">\n</span></tt></td><td><span id="newline_109139365">newline</span></td></tr>
 <tr><td><tt class="docutils literal"><span class="pre">\r</span></tt>, <tt class="docutils literal"><span class="pre">\c</span></tt></td><td><span id="carriage-return_731232527">carriage return</span></td></tr>
@@ -2034,7 +2034,7 @@ Note that perl does not provide an integer division operator, but does support m
 ###  Escape sequences
 
 
-These escape sequences can be used in any construct with interpolation. See [http://perldoc.perl.org/perlop.html#Quote-and-Quote-like-Operators Quote-and-Quote-like-Operators] for more info.
+These escape sequences can be used in any construct with interpolation. See [Quote-and-Quote-like-Operators](http://perldoc.perl.org/perlop.html#Quote-and-Quote-like-Operators) for more info.
 {|border="1" style="border-collapse: collapse;"
 | \t || tab (HT,TAB) ||
 |-
@@ -2060,7 +2060,7 @@ These escape sequences can be used in any construct with interpolation. See [htt
 |-
 | \N{U+????} || Unicode character || example: \N{U+263D} (FIRST QUARTER MOON)
 |-
-| \N{????} || named Unicode character || example: \N{FIRST QUARTER MOON}, see [http://perldoc.perl.org/charnames.html charnames]
+| \N{????} || named Unicode character || example: \N{FIRST QUARTER MOON}, see [charnames](http://perldoc.perl.org/charnames.html)
 |}
 
 
@@ -2485,7 +2485,7 @@ b=2*a:  a=b*33  ; b will now be 2, and a=66
 
 ## Python
 
-(From [http://docs.python.org/reference/lexical_analysis.html#literals the Python Documentation]):
+(From [the Python Documentation](http://docs.python.org/reference/lexical_analysis.html#literals)):
 
 Unless an <tt class="docutils literal"><span class="pre">'r'</span></tt> or <tt class="docutils literal"><span class="pre">'R'</span></tt> prefix is present, escape sequences in strings are
 interpreted according to rules similar to those used by Standard C.  The
@@ -3043,7 +3043,7 @@ This flexible approach gives the possibility to define and redefine (overridden)
 
 ## Seed7
 
-Within character literals and string literals, the backslash is a special character that begins an [http://seed7.sourceforge.net/manual/types.htm#escape_sequences escape sequence]:
+Within character literals and string literals, the backslash is a special character that begins an [escape sequence](http://seed7.sourceforge.net/manual/types.htm#escape_sequences):
 
 ```txt
     audible alert    BEL      \a    backslash    (\)   \\
@@ -3058,7 +3058,7 @@ Within character literals and string literals, the backslash is a special charac
 
 Additionally the following escape sequences can be used:
 
-* A backslash followed by an integer literal and a semicolon is interpreted as character with the specified ordinal number. Note that the integer literal is interpreted decimal unless it is written as [http://seed7.sourceforge.net/manual/types.htm#based_integer based integer].
+* A backslash followed by an integer literal and a semicolon is interpreted as character with the specified ordinal number. Note that the integer literal is interpreted decimal unless it is written as [based integer](http://seed7.sourceforge.net/manual/types.htm#based_integer).
 * Two backslashes with a sequence of blanks, horizontal tabs, carriage returns and new lines between them are completely ignored. The ignored characters are not part of the string. This can be used to continue a string in the following line. Note that in this case the leading spaces in the new line are not part of the string. Although this possibility exists also for character literals it makes more sense to use it with string literals.
 
 E.g.:

@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}
 {{library}}
-[http://twapi.magicsplat.com/ TWAPI] is a library providing access to many low-level features of Windows from [[Tcl]].
+[TWAPI](http://twapi.magicsplat.com/) is a library providing access to many low-level features of Windows from [[Tcl]].

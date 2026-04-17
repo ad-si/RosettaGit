@@ -291,7 +291,7 @@ L:
 
 ## ALGOL 68
 
-{{trans|C}} Note: This specimen retains the original [[#C|C]] coding style. [http://rosettacode.org/mw/index.php?title=Cholesky_decomposition&action=historysubmit&diff=107753&oldid=107752 diff]
+{{trans|C}} Note: This specimen retains the original [[#C|C]] coding style. [diff](http://rosettacode.org/mw/index.php?title=Cholesky_decomposition&action=historysubmit&diff=107753&oldid=107752)
 ```algol68
 #!/usr/local/bin/a68g --script #
 
@@ -1562,9 +1562,9 @@ L:
 
 ## Haskell
 
-We use the [http://en.wikipedia.org/wiki/Cholesky_decomposition#The_Cholesky.E2.80.93Banachiewicz_and_Cholesky.E2.80.93Crout_algorithms Cholesky–Banachiewicz algorithm] described in the Wikipedia article.
+We use the [Cholesky–Banachiewicz algorithm](http://en.wikipedia.org/wiki/Cholesky_decomposition#The_Cholesky.E2.80.93Banachiewicz_and_Cholesky.E2.80.93Crout_algorithms) described in the Wikipedia article.
 
-For more serious numerical analysis there is a Cholesky decomposition function in the [http://hackage.haskell.org/package/hmatrix hmatrix package].
+For more serious numerical analysis there is a Cholesky decomposition function in the [hmatrix package](http://hackage.haskell.org/package/hmatrix).
 
 The Cholesky module:
 
@@ -3674,7 +3674,7 @@ FloatMatrix>>#cholesky
 
 ## Stata
 
-See [http://www.stata.com/help.cgi?mf_cholesky Cholesky square-root decomposition] in Stata help.
+See [Cholesky square-root decomposition](http://www.stata.com/help.cgi?mf_cholesky) in Stata help.
 
 ```stata
 mata

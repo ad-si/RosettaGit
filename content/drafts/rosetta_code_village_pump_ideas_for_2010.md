@@ -48,7 +48,7 @@ I would like to have this as a ditch-able feature. If it costs too much to compu
 
 : I've been ''wanting'' to be able to do what you're describing for a couple years. I very much like the idea, myself. --[[User:Short Circuit|Michael Mol]] 01:48, 25 January 2010 (UTC)
 
-:That's cool. It's a similar idea to [http://tactileint.com/cw/index.php/Main_Page CrossWise]. --[[Special:Contributions/164.67.235.148|164.67.235.148]] 04:35, 25 March 2010 (UTC)
+:That's cool. It's a similar idea to [CrossWise](http://tactileint.com/cw/index.php/Main_Page). --[[Special:Contributions/164.67.235.148|164.67.235.148]] 04:35, 25 March 2010 (UTC)
 
 ===Mock-up===
 I am not sure that the RC mediaWiki Tables are as flexible as the Wikipedia ones, but I have tried to do an example below.

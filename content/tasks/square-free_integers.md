@@ -66,7 +66,7 @@ Show here (on this page) the count of square-free integers from:
 
 ## See also
 
-:*   the Wikipedia entry:   [https://wikipedia.org/wiki/Square-free_integer square-free integer]
+:*   the Wikipedia entry:   [square-free integer](https://wikipedia.org/wiki/Square-free_integer)
 
 
 

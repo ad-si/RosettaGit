@@ -53,7 +53,7 @@ Create a magic square of 6 x 6.
 
 
 ## See also
-* [http://www.1728.org/magicsq3.htm Singly Even Magic Squares (1728.org)]
+* [Singly Even Magic Squares (1728.org)](http://www.1728.org/magicsq3.htm)
 
 
 

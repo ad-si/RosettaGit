@@ -56,7 +56,7 @@ Show sequence items up to   '''120'''.
 
 
 ;Reference:
-:*   The OEIS entry:   [http://oeis.org/A063989 A063989 attractive numbers].
+:*   The OEIS entry:   [A063989 attractive numbers](http://oeis.org/A063989).
 
 
 
@@ -1790,7 +1790,7 @@ p (1..120).select{|n| n.prime_division.sum(&:last).prime? }
 
 ## Rust
 
-Uses [https://crates.io/crates/primal primal]
+Uses [primal](https://crates.io/crates/primal)
 
 ```rust
 use primal::Primes;
@@ -1848,7 +1848,7 @@ The attractive numbers up to and including 120 are
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/23oE3SQ/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/U0QUQu0uTT24vbDEHU1c0Q Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/23oE3SQ/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/U0QUQu0uTT24vbDEHU1c0Q).
 
 ```Scala
 object AttractiveNumbers extends App {

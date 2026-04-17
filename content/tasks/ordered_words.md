@@ -105,7 +105,7 @@ An   ''ordered word''   is a word in which the letters appear in alphabetic orde
 
 Examples include   '''abbey'''   and   '''dirt'''.
 
-Find ''and display'' all the ordered words in the dictionary   [https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt]   that have the longest word length.
+Find ''and display'' all the ordered words in the dictionary   [unixdict.txt](https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt)   that have the longest word length.
 
 (Examples that access the dictionary file locally assume that you have downloaded this file yourself.)
 
@@ -2458,7 +2458,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings provides csort] which sorts the letters within a string
+[strings provides csort](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) which sorts the letters within a string
 
 Output:
 
@@ -2611,7 +2611,7 @@ knotty
 
 ## JavaScript
 
-Using [http://nodejs.org/ node.js]:
+Using [node.js](http://nodejs.org/):
 
 
 ```javascript

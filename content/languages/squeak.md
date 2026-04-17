@@ -14,5 +14,5 @@ tags = []
 Squeak is available for many platforms, and programs produced on one platform run bit-identical on all other platforms. The Squeak system includes code for generating a new version of the virtual machine (VM) on which it runs. It also includes a VM simulator written in itself (Squeak). For this reason, it is easily ported.
 
 ## See also
-* [http://www.squeak.org/ Squeak homepage]
+* [Squeak homepage](http://www.squeak.org/)
 * [Squeak on Wikipedia](https://en.wikipedia.org/wiki/Squeak)

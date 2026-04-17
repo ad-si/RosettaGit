@@ -26,7 +26,7 @@ The reference implementation is written in portable C89: "portable" in the sense
 
 Another aspect of portableness or platform-independence is that the Sparkling engine tries to make use of a bunch of convenient libraries in order to improve user experience. For instance, the REPL optionally uses the well-known readline library - if available - in order to provide basic line editing capabilities. Or, on OS X and iOS, the parser and runtime support library conditionally provide Objective-C bindings, so it's possible to call Objective-C methods directly from Sparkling, with proper Objective-C syntax. Neither of these features are required, though, nor do they impose a strong dependency on either libreadline or libobjc. The build system tries to guess if they are available and configures compilation accordingly.
 
-The reference implementation is currently hosted on GitHub, at H2CO3/Sparkling[http://github.com/H2CO3/Sparkling].
+The reference implementation is currently hosted on GitHub, at H2CO3/Sparkling<http://github.com/H2CO3/Sparkling>.
 
 ## Syntax and semantics
 Sparkling borrows most of its syntax from C and a tiny bit from JavaScript. Semantics also follow a - hopefully -  "intuitive" or "expected" convention, so that they're easier to grasp, especially for someone who has programmed before in C, C++, JavaScript or a similar language.
@@ -105,7 +105,7 @@ Being a rudimentary feature of reflection, Sparkling supports querying the type 
 ### = Functions =
 
 
-A full language tutorial is available in the official documentation[https://github.com/H2CO3/Sparkling/blob/master/doc/tutorial.md].
+A full language tutorial is available in the official documentation<https://github.com/H2CO3/Sparkling/blob/master/doc/tutorial.md>.
 
 ## The standard library
 Similarly to most modern languages, the Sparkling distribution comes with a bunch of utility and run-time support functions bundled in various "packages" of the Sparkling standard library. These packages can be loaded separately by the host program (i. e. the native environment that runs the Sparkling interpreter); in the default mode, however, all standard functions are loaded at the beginning of a Sparkling session (represented by an <tt>SpnContext</tt> object, from an API point of view). Library functions are not special in the sense that they are just normal native extension functions. There is one exception, though: standard library functions assume the use of the context API, and as such, they require their user info argument to point to a valid <tt>SpnContext</tt> object. This is done so that these functions can use the error reporting facilities of the virtual machine.

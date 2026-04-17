@@ -1511,9 +1511,9 @@ T{ avl
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Visualize_a_tree this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Visualize_a_tree) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3224,7 +3224,7 @@ display_tree(Direction) :-
 
 ### Library module
 
-Python has the [http://www.doughellmann.com/PyMOTW/pprint/ pprint] [http://docs.python.org/py3k/library/pprint.html module] for pretty-printing data.
+Python has the [pprint](http://www.doughellmann.com/PyMOTW/pprint/) [module](http://docs.python.org/py3k/library/pprint.html) for pretty-printing data.
 
 If you set the presumed width of the output to 1 then pprint will print each level of a nested tuple (which is Pythons obvious method of creating a tree), on a separate line:
 
@@ -4143,7 +4143,7 @@ will produce:
 
 ## Rust
 
-Console visualization of binary trees translated from parts of [http://rosettacode.org/wiki/AVL_tree/C the C AVL tree solution].
+Console visualization of binary trees translated from parts of [the C AVL tree solution](http://rosettacode.org/wiki/AVL_tree/C).
 
 ```Rust
 

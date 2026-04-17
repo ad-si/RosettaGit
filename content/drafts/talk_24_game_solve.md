@@ -19,14 +19,14 @@ One problem with this solution is that it can only attempt one set of brackets. 
 :: Paddy, Python supports declarative logic, doesn't it?  Just thought I'd mention it. (It'd be nice to see some more declarative logic solutions and/or tasks, too.) --[[User:Short Circuit|Michael Mol]] 00:23, 2 November 2009 (UTC)
 
 ::: Unfortunately declarative logic is only supported by external libraries in Python. --[[User:Paddy3118|Paddy3118]] 06:42, 2 November 2009 (UTC)
-:::: If external libraries are un-Pythonic, I suppose solutions [http://xkcd.com/353/ involving antigravity] are out of the question... --[[User:Short Circuit|Michael Mol]] 11:16, 2 November 2009 (UTC)
+:::: If external libraries are un-Pythonic, I suppose solutions [involving antigravity](http://xkcd.com/353/) are out of the question... --[[User:Short Circuit|Michael Mol]] 11:16, 2 November 2009 (UTC)
 :::: I think it's perfectly OK to invoke external libraries – you'd have to do that in many other languages anyway – but if that's done, they should be properly declared with the right <nowiki>{{template}}</nowiki> so that it's easy to see what's going on. (Internal libs, by which I mean ones that are included with standard distributions of the language, don't need such extra declarations.) —[[User:Dkf|Donal Fellows]] 11:35, 2 November 2009 (UTC)
 
 ::: Sorry I meant: "Unfortunately declarative logic is only supported by external libraries in Python ''and I don't know them well enough''". --[[User:Paddy3118|Paddy3118]] 22:52, 2 November 2009 (UTC)
 :::: Hehe.  I didn't mean anything personal by it; I've just got a bit of an undersatisfied fascination with declarative logic. No worries. :) --[[User:Short Circuit|Michael Mol]] 01:31, 3 November 2009 (UTC)
 
 
-I asked on [http://www.reddit.com/r/math/comments/a0fmi/can_all_twoormore_sets_of_bracket_solutions_to/ math reddit] and found that their are indeed digits such as 1127 that need two sets of brackets for their solution: <code>( 1 + 2 ) * ( 1 + 7 )</code>, so I updated the Python solution to handle this case. --[[User:Paddy3118|Paddy3118]] 05:25, 4 November 2009 (UTC)
+I asked on [math reddit](http://www.reddit.com/r/math/comments/a0fmi/can_all_twoormore_sets_of_bracket_solutions_to/) and found that their are indeed digits such as 1127 that need two sets of brackets for their solution: <code>( 1 + 2 ) * ( 1 + 7 )</code>, so I updated the Python solution to handle this case. --[[User:Paddy3118|Paddy3118]] 05:25, 4 November 2009 (UTC)
 
 == Should we enumerate all solutions? ==
 
@@ -66,7 +66,7 @@ I realise 6 + 6 + 6 + 6 is an alternative solution for this, but I'm curious non
 
 : Sounds fine to me, although thats leads to the question: "Is there a set of digits where a leading minus is necessary"? I don't think it is necessary - but do think it is allowed. --[[User:Paddy3118|Paddy3118]] 06:04, 26 January 2011 (UTC)
 
-:: This leads to another question: what operations may be considered part of an [http://www.webopedia.com/TERM/A/arithmetic_expression.html arithmetic expression]?
+:: This leads to another question: what operations may be considered part of an [arithmetic expression](http://www.webopedia.com/TERM/A/arithmetic_expression.html)?
 ::: wp mentions ''"Addition, subtraction, multiplication, or division, and sometimes other operations"'' so there are probably variants that use a different mix of operators, but our game specifically mentions just those first four. --[[User:Paddy3118|Paddy3118]] 21:23, 27 January 2011 (UTC)
 
 == Use 3 3 8 8 in example runs? ==

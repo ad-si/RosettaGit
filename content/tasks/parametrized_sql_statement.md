@@ -389,7 +389,7 @@ func main() {
 ## Haskell
 
 
-Example uses the [http://hackage.haskell.org/package/HDBC <tt>HDBC</tt>] package:
+Example uses the [<tt>HDBC</tt>](http://hackage.haskell.org/package/HDBC) package:
 
 
 ```haskell
@@ -416,7 +416,7 @@ main = undefined
 ```
 
 
-You'll need an instance of a type with an instance for the <tt>IConnection</tt> type class in order to use this function, such as [http://hackage.haskell.org/package/HDBC-postgresql-2.3.2.5/docs/Database-HDBC-PostgreSQL.html#t:Connection <tt>Connection</tt>] from [http://hackage.haskell.org/package/HDBC-postgresql <tt>HDBC-postgresql</tt>].
+You'll need an instance of a type with an instance for the <tt>IConnection</tt> type class in order to use this function, such as [<tt>Connection</tt>](http://hackage.haskell.org/package/HDBC-postgresql-2.3.2.5/docs/Database-HDBC-PostgreSQL.html#t:Connection) from [<tt>HDBC-postgresql</tt>](http://hackage.haskell.org/package/HDBC-postgresql).
 
 
 ## Huginn
@@ -624,7 +624,7 @@ CloseSQLConnection[conn];
 
 ## NetRexx
 
-Using an [http://db.apache.org/derby/ Apache Derby] embedded database:
+Using an [Apache Derby](http://db.apache.org/derby/) embedded database:
 
 ```NetRexx
 /* NetRexx */
@@ -1311,8 +1311,8 @@ Jello, Frank	0	N	101
 
 ## Scala
 
-===Using [http://slick.lightbend.com/doc/3.2.3/introduction.html Slick] FRM===
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/fJKRDaydSsGGlZQXJUhvxw Scastie (remote JVM)].
+===Using [Slick](http://slick.lightbend.com/doc/3.2.3/introduction.html) FRM===
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/fJKRDaydSsGGlZQXJUhvxw).
 
 ```Scala
 import slick.jdbc.H2Profile.api._
@@ -1377,16 +1377,16 @@ object PlayersApp extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/sql_base.htm sql_base.s7i] provides access to databases.
-The type [http://seed7.sourceforge.net/libraries/sql_base.htm#database database] describes a database connection
-and the type [http://seed7.sourceforge.net/libraries/sql_base.htm#sqlStatement sqlStatement] can store a prepared statement.
+The library [sql_base.s7i](http://seed7.sourceforge.net/libraries/sql_base.htm) provides access to databases.
+The type [database](http://seed7.sourceforge.net/libraries/sql_base.htm#database) describes a database connection
+and the type [sqlStatement](http://seed7.sourceforge.net/libraries/sql_base.htm#sqlStatement) can store a prepared statement.
 In the example below the table ''players'' is created and filled with hard coded SQL statements, that are ''execute''d without parametrization.
 The SQL statement to update the table uses parametrization.
-The SQL statement is [http://seed7.sourceforge.net/libraries/sql_base.htm#prepare%28in_database,in_string%29 prepared],
-parameters are [http://seed7.sourceforge.net/libraries/sql_base.htm#bind%28inout_sqlStatement,in_integer,in_integer%29 bound] and
-the statement is [http://seed7.sourceforge.net/libraries/sql_base.htm#execute%28inout_sqlStatement%29 executed].
-Finally a SQL select statement is prepared, executed and the result rows are [http://seed7.sourceforge.net/libraries/sql_base.htm#fetch%28in_sqlStatement%29 fetched].
-A column from a result row is retrieved with the function [http://seed7.sourceforge.net/libraries/sql_base.htm#column%28in_sqlStatement,in_integer,attr_integer%29 column].
+The SQL statement is [prepared](http://seed7.sourceforge.net/libraries/sql_base.htm#prepare%28in_database,in_string%29),
+parameters are [bound](http://seed7.sourceforge.net/libraries/sql_base.htm#bind%28inout_sqlStatement,in_integer,in_integer%29) and
+the statement is [executed](http://seed7.sourceforge.net/libraries/sql_base.htm#execute%28inout_sqlStatement%29).
+Finally a SQL select statement is prepared, executed and the result rows are [fetched](http://seed7.sourceforge.net/libraries/sql_base.htm#fetch%28in_sqlStatement%29).
+A column from a result row is retrieved with the function [column](http://seed7.sourceforge.net/libraries/sql_base.htm#column%28in_sqlStatement,in_integer,attr_integer%29).
 
 
 ```seed7

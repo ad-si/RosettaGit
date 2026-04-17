@@ -26,7 +26,7 @@ As I understand it, the example says that given 0 strings, it should return the 
 : Therefore: it's not reasonable to suppose that this prefix should be useful for the recursive case. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 02:57, 21 March 2015 (UTC)
 
 ==Python: Use of an error==
-I wish that os.path.commonprefix would be fixed rather than documenting that it is broken and hope to prompt a fix [https://groups.google.com/forum/#!topic/python-ideas/GmExT6lcNfs here] on python-ideas. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 21 March 2015 (UTC)
+I wish that os.path.commonprefix would be fixed rather than documenting that it is broken and hope to prompt a fix [here](https://groups.google.com/forum/#!topic/python-ideas/GmExT6lcNfs) on python-ideas. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 21 March 2015 (UTC)
 
 == Empty string ==
 

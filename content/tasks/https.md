@@ -74,7 +74,7 @@ languages = [
 
 Print an HTTPS URL's content to the console. Checking the host certificate for validity is recommended.
 
-The client should not authenticate itself to the server — the webpage https://sourceforge.net/ supports that access policy — as that is the subject of other [[HTTPS request with authentication|tasks]].
+The client should not authenticate itself to the server — the webpage <https://sourceforge.net/> supports that access policy — as that is the subject of other [[HTTPS request with authentication|tasks]].
 
 Readers may wish to contrast with the [[HTTP Request]] task, and also the task on [[HTTPS request with authentication]].
 
@@ -444,7 +444,7 @@ new URL("https://sourceforge.net").eachLine { println it }
 
 ## Haskell
 
-This is just the example from [http://hackage.haskell.org/packages/archive/http-conduit/1.8.5.1/doc/html/Network-HTTP-Conduit.html Network.HTTP.Conduit], with the http URL replaced with an https one, since [http://hackage.haskell.org/package/http-conduit http-conduit] natively supports https without needing any additional work.
+This is just the example from [Network.HTTP.Conduit](http://hackage.haskell.org/packages/archive/http-conduit/1.8.5.1/doc/html/Network-HTTP-Conduit.html), with the http URL replaced with an https one, since [http-conduit](http://hackage.haskell.org/package/http-conduit) natively supports https without needing any additional work.
 
 
 ```haskell
@@ -516,7 +516,7 @@ Using <tt>gethttp</tt> from [[Web Scraping#J|Web Scraping]]
 
 ## Java
 
-Additional certificate information is available through the [http://java.sun.com/javase/6/docs/api/javax/net/ssl/HttpsURLConnection.html javax.net.ssl.HttpsURLConnection] interface.
+Additional certificate information is available through the [javax.net.ssl.HttpsURLConnection](http://java.sun.com/javase/6/docs/api/javax/net/ssl/HttpsURLConnection.html) interface.
 
 ```Java
 
@@ -858,7 +858,7 @@ class HttpsTest {
 
 ## Pascal
 
-Using [http://wiki.freepascal.org/fphttpclient fphttpclient]
+Using [fphttpclient](http://wiki.freepascal.org/fphttpclient)
 
 ```pascal
 {$mode objfpc}{$H+}
@@ -1174,8 +1174,8 @@ object HttpsTest extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/gethttps.htm gethttps.s7i] defines the function
-[http://seed7.sourceforge.net/libraries/gethttps.htm#getHttps%28in_string%29 getHttps] which uses the
+The library [gethttps.s7i](http://seed7.sourceforge.net/libraries/gethttps.htm) defines the function
+[getHttps](http://seed7.sourceforge.net/libraries/gethttps.htm#getHttps%28in_string%29) which uses the
 HTTPS protocol go get a file.
 
 
@@ -1236,7 +1236,7 @@ CFRunLoopRun() // dispatch
 
 ## Tcl
 
-Though Tcl's built-in <code>http</code> package does not understand SSL, it does support the registration of external handlers to accommodate additional protocols. This allows the use of the [http://tls.sourceforge.net/ Tls] package to supply the missing functionality with only a single line to complete the registration.
+Though Tcl's built-in <code>http</code> package does not understand SSL, it does support the registration of external handlers to accommodate additional protocols. This allows the use of the [Tls](http://tls.sourceforge.net/) package to supply the missing functionality with only a single line to complete the registration.
 
 
 ```tcl
@@ -1288,7 +1288,7 @@ curl -k -s -L https://sourceforge.net/
 
 ## VBScript
 
-Based on code at [http://itknowledgeexchange.techtarget.com/vbscript-systems-administrator/how-to-retrieve-html-web-pages-with-vbscript-via-the-microsoftxmlhttp-object/ How to retrieve HTML web pages with VBScript via the Microsoft.XmlHttp object]
+Based on code at [How to retrieve HTML web pages with VBScript via the Microsoft.XmlHttp object](http://itknowledgeexchange.techtarget.com/vbscript-systems-administrator/how-to-retrieve-html-web-pages-with-vbscript-via-the-microsoftxmlhttp-object/)
 
 ```vb
 

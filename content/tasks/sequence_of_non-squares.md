@@ -63,13 +63,13 @@ languages = [
 
 ## Task
 
-Show that the following remarkable formula gives the [http://www.research.att.com/~njas/sequences/A000037 sequence] of non-square [[wp:Natural_number|natural numbers]]:
+Show that the following remarkable formula gives the [sequence](http://www.research.att.com/~njas/sequences/A000037) of non-square [[wp:Natural_number|natural numbers]]:
   n + floor(1/2 + sqrt(n))
 * Print out the values for   <big> n </big>   in the range   '''1'''   to   '''22'''
 * Show that no squares occur for   <big> n </big>   less than one million
 
 
-This sequence is also known as   [http://oeis.org/A000037 A000037]   in the '''OEIS''' database.
+This sequence is also known as   [A000037](http://oeis.org/A000037)   in the '''OEIS''' database.
 
 
 
@@ -207,7 +207,7 @@ Show there are no squares in the first million:
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276683.html#276683 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276683.html#276683)
 
 ```AutoHotkey
 Loop 22
@@ -394,7 +394,7 @@ quit
 ```
 
 
-The functions int, round, floor, ceil are taken from [http://www.pixelbeat.org/scripts/bc here] (int is slightly modified) ([http://www.pixelbeat.org/scripts/ Here] he states the license is GPL).
+The functions int, round, floor, ceil are taken from [here](http://www.pixelbeat.org/scripts/bc) (int is slightly modified) ([Here](http://www.pixelbeat.org/scripts/) he states the license is GPL).
 
 
 ## Burlesque
@@ -1280,7 +1280,7 @@ return n + floor(0.5 + sqrt(n))
 end
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides floor]
+[numbers provides floor](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## IDL

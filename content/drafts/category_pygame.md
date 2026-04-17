@@ -13,7 +13,7 @@ tags = []
 {{library}}
 [[Category:Python]]
 
-;Website: [http://www.pygame.org/ PyGame.org]
+;Website: [PyGame.org](http://www.pygame.org/)
 
 ;Current version: Soya3D 3-0.1 - 2014-10-10
 

@@ -858,9 +858,9 @@ These graphs show that the linear (in log scale) fit do not always fit the data.
 The "most stable" algorithms seem to be quick sort (but not qsort, which indeed is just the libc quick sort, here not plotted!) and shell sort (except for reversed range).
 
 Conclusion: we should repeat the tests...
-* [http://i40.tinypic.com/2dabyb7.png sequences of 1]
-* [http://i43.tinypic.com/2nqrzfs.png reversed range]
-* [http://i41.tinypic.com/24q8hmg.png shuffled range]
+* [sequences of 1](http://i40.tinypic.com/2dabyb7.png)
+* [reversed range](http://i43.tinypic.com/2nqrzfs.png)
+* [shuffled range](http://i41.tinypic.com/24q8hmg.png)
 
 
 
@@ -1044,8 +1044,8 @@ Timings in microseconds:
 
 ## Erlang
 
-The sort routines are borrowed from [http://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort bubble sort], [http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort insertion sort] and [http://rosettacode.org/wiki/Sorting_algorithms/Quicksort quick sort]. Plots by [https://github.com/psyeugenic/eplot eplot].
-Bubble sort does [http://github.com/ebengt/rosettacode/tree/master/graphs/ones.png ones] and [http://github.com/ebengt/rosettacode/tree/master/graphs/ranges.png ranges] best. Insertion sort does [http://github.com/ebengt/rosettacode/tree/master/graphs/reversed_ranges.png reversed ranges] best. Quick sort handles [http://github.com/ebengt/rosettacode/tree/master/graphs/shuffleds.png shuffled numbers] best.
+The sort routines are borrowed from [bubble sort](http://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort), [insertion sort](http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort) and [quick sort](http://rosettacode.org/wiki/Sorting_algorithms/Quicksort). Plots by [eplot](https://github.com/psyeugenic/eplot).
+Bubble sort does [ones](http://github.com/ebengt/rosettacode/tree/master/graphs/ones.png) and [ranges](http://github.com/ebengt/rosettacode/tree/master/graphs/ranges.png) best. Insertion sort does [reversed ranges](http://github.com/ebengt/rosettacode/tree/master/graphs/reversed_ranges.png) best. Quick sort handles [shuffled numbers](http://github.com/ebengt/rosettacode/tree/master/graphs/shuffleds.png) best.
 
 ```Erlang
 
@@ -2378,7 +2378,7 @@ Executing above script we get belowed figures.
 
 ### =ones=
 
-[http://i28.tinypic.com/5lcfmo.png ones.png] (143KiB)
+[ones.png](http://i28.tinypic.com/5lcfmo.png) (143KiB)
 
  builtinsort     - O(N)
  insertion_sort  - O(N)
@@ -2388,7 +2388,7 @@ Executing above script we get belowed figures.
 
 ### =range=
 
-[http://i32.tinypic.com/14azio6.png range.png] (145KiB)
+[range.png](http://i32.tinypic.com/14azio6.png) (145KiB)
  builtinsort     - O(N)
  insertion_sort  - O(N)
  qsort           - O(N**2)
@@ -2397,7 +2397,7 @@ Executing above script we get belowed figures.
 
 ### =shuffled range=
 
-[http://i28.tinypic.com/juclyu.png shuffledrange.png] (152KiB)
+[shuffledrange.png](http://i28.tinypic.com/juclyu.png) (152KiB)
  builtinsort     - O(N)
  insertion_sort  - O(N**4) ???
  qsort           - O(N*log(N))

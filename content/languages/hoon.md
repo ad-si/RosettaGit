@@ -9,5 +9,5 @@ id = 19632
 categories = []
 tags = []
 +++
-Hoon is the lisp-y runic language used in [https://github.com/urbit/urbit Urbit].
+Hoon is the lisp-y runic language used in [Urbit](https://github.com/urbit/urbit).
 Unlike most other language, it has no reserved keywords and instead relies on two-character symbols called runes, which are converted into AST nodes. Hoon compiles to Nock, the simple combinator-based virtual machine that Urbit runs on top of.

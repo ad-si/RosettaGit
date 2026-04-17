@@ -18,7 +18,7 @@ Hi, I was a quiet reader but decided to contribute now. That is my first every w
 :I re-wrote bits for style and trying to be a little more exacting in the definition. I also added two more tests that fit the revised definition, but the existing C# might need revising and extra output.  I also stuck nowiki tags around the example link.
 :What do you think? --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 10:22, 4 May 2015 (UTC)
 
-Thank you Paddy. I did not think about your test cases. I believe the underscore one is legal according to this site: http://filext.com/faq/file_extension_information.php
+Thank you Paddy. I did not think about your test cases. I believe the underscore one is legal according to this site: <http://filext.com/faq/file_extension_information.php>
 Yes, you are right. My C# code needs to be updated. I will try to do that, when I find time.
 
 ==definition of a legal file extension==

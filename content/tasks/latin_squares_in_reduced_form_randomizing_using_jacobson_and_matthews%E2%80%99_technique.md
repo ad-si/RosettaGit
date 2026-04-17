@@ -14,7 +14,7 @@ languages = [
 ]
 +++
 
-Section 3.3 of [[https://pdfs.semanticscholar.org/4a7c/d245f6f6a4ef933c6cf697832607f71a39c1.pdf Generalised 2-designs with Block Size 3(Andy L. Drizen)]] describes a method of generating Latin Squares of order n attributed to Jacobson and Matthews. The purpose of this task is to produce a function which given a valid Latin Square transforms it to another using this method.
+Section 3.3 of [Generalised 2-designs with Block Size 3(Andy L. Drizen)](https://pdfs.semanticscholar.org/4a7c/d245f6f6a4ef933c6cf697832607f71a39c1.pdf) describes a method of generating Latin Squares of order n attributed to Jacobson and Matthews. The purpose of this task is to produce a function which given a valid Latin Square transforms it to another using this method.
 
 ;part 1
 Use one of the 4 [[Latin Squares in reduced form]] of order 4 as X0 to generate 10000 Latin Squares using X(n-1) to generate X(n). Convert the resulting Latin Squares to their reduced form, display them and the number of times each is produced.
@@ -184,7 +184,7 @@ Real: 00:00:01.512, CPU: 00:00:01.970, GC gen0: 10, gen1: 10
 
 ## Go
 
-The J & M implementation is based on the C code [https://brainwagon.org/2016/05/17/code-for-generating-a-random-latin-square/ here] which has been heavily optimized following advice and clarification by Nigel Galloway (see Talk page) on the requirements of this task.
+The J & M implementation is based on the C code [here](https://brainwagon.org/2016/05/17/code-for-generating-a-random-latin-square/) which has been heavily optimized following advice and clarification by Nigel Galloway (see Talk page) on the requirements of this task.
 
 Part 4 is taking about 6.5 seconds on my Celeron @1.6 GHz but will be much faster on a more modern machine. Being able to compute random, uniformly distributed, Latin squares of order 256 reasonably quickly is interesting from a secure communications or cryptographic standpoint as the symbols of such a square can represent the 256 characters of the various extended ASCII encodings. 
 

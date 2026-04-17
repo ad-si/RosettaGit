@@ -1474,9 +1474,9 @@ IN: scratchpad 3 41 josephus .
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Josephus_problem this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Josephus_problem) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3578,7 +3578,7 @@ Josephus is prisoner 30
 The main task (find one survivor) is a special case of the extra task (find m survivors).
 The function ''executeAllButM'' solves the extra task and is called with m=1 to solve the main task.
 The function ''str'' converts an array of integer elements to a string.
-The function [http://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29 enable_output]
+The function [enable_output](http://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29)
 uses ''str'' to define everything necessary to write an array of integers.
 This way the main program can write the survivor array.
 

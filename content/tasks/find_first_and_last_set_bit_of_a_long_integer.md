@@ -66,8 +66,8 @@ If any of these approaches are available, then ''also'' note the library or buil
 
 ## See also
 
-* [http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog Find the log base 2 of an N-bit integer in O(lg(N)) operations]
-* [http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSF.htm 80386 Instruction Set - BSF -- Bit Scan Forward]
+* [Find the log base 2 of an N-bit integer in O(lg(N)) operations](http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog)
+* [80386 Instruction Set - BSF -- Bit Scan Forward](http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSF.htm)
 
 
 
@@ -749,8 +749,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn provides hexstring]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[hexcvt.icn provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 Output:
 ```txt
@@ -1637,9 +1637,9 @@ end
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/integer.htm integer.s7i] defines the functions
-[http://seed7.sourceforge.net/libraries/integer.htm#bitLength%28in_integer%29 bitLength] and
-[http://seed7.sourceforge.net/libraries/integer.htm#lowestSetBit%28in_integer%29 lowestSetBit], which compute the
+The library [integer.s7i](http://seed7.sourceforge.net/libraries/integer.htm) defines the functions
+[bitLength](http://seed7.sourceforge.net/libraries/integer.htm#bitLength%28in_integer%29) and
+[lowestSetBit](http://seed7.sourceforge.net/libraries/integer.htm#lowestSetBit%28in_integer%29), which compute the
 most- and least-significant set bit in a binary value expressed in LSB 0 bit numbering.
 
 
@@ -1823,7 +1823,7 @@ Powers of 1302 up to 128 bits
 
 ## zkl
 
-This uses the Int method log2 (== MSB position), which returns the log base 2 of self. log2 is implemented with shifts and ors (it is a 5 step loop (for 64 bit ints) which could obviously be unrolled). See http://graphics.stanford.edu/~seander/bithacks.html.
+This uses the Int method log2 (== MSB position), which returns the log base 2 of self. log2 is implemented with shifts and ors (it is a 5 step loop (for 64 bit ints) which could obviously be unrolled). See <http://graphics.stanford.edu/~seander/bithacks.html>.
 
 ```zkl
 fcn lsb(n){ n.bitAnd(n.bitNot()+1).log2() }

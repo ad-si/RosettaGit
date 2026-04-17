@@ -59,7 +59,7 @@ add_node('/cleaning/house2/basement/cinema', 1, 0.75)
 
 
 I did not use the above, but thought I should generate it. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:02, 12 August 2015 (UTC)
-: But I've used it subsequently in the Python class-based version as I wanted the task to focus more on the calculations in the tree and the display of output in textual form that might normally be done in something like this [http://ludo.cubicphuse.nl/jquery-treetable/#examples treetable] or this [http://mleibman.github.io/SlickGrid/examples/example5-collapsing.html treetable]. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 07:12, 15 August 2015 (UTC) 
+: But I've used it subsequently in the Python class-based version as I wanted the task to focus more on the calculations in the tree and the display of output in textual form that might normally be done in something like this [treetable](http://ludo.cubicphuse.nl/jquery-treetable/#examples) or this [treetable](http://mleibman.github.io/SlickGrid/examples/example5-collapsing.html). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 07:12, 15 August 2015 (UTC) 
 
 
 ### Weighted sums

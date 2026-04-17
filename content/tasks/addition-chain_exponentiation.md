@@ -76,7 +76,7 @@ The number of multiplications required follows this sequence:
 8, 8, 8, 6, 7, 7, 8, 7, 8, 8,  9, 7, 8, 8, 8, 8, 8, 8, 9, 7,
 8, 8, 8, 8, 8, 8, 9, 8, 9, 8,  9, 8, 9, 9, 9, 7, 8, 8, 8, 8...
 
-This sequence can be found at: http://oeis.org/A003313
+This sequence can be found at: <http://oeis.org/A003313>
 
 '''Task requirements:'''
 

@@ -1308,12 +1308,12 @@ close #f
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/utf8.htm utf8.s7i]
-provides the functions [http://seed7.sourceforge.net/libraries/utf8.htm#openUtf8%28in_string,in_string%29 openUtf8]
-and [http://seed7.sourceforge.net/libraries/utf8.htm#getc%28in_utf8_file%29 getc].
+The library [utf8.s7i](http://seed7.sourceforge.net/libraries/utf8.htm)
+provides the functions [openUtf8](http://seed7.sourceforge.net/libraries/utf8.htm#openUtf8%28in_string,in_string%29)
+and [getc](http://seed7.sourceforge.net/libraries/utf8.htm#getc%28in_utf8_file%29).
 When a file has been opened with <code>openUtf8</code> fhe function <code>getc</code> reads UTF-8 characters from the file.
 To allow writing Unicode characters to standard output
-the file [http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT STD_UTF8_OUT] is used.
+the file [STD_UTF8_OUT](http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT) is used.
 
 
 ```seed7

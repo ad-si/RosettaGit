@@ -81,7 +81,7 @@ gone she said he is gone she said
 ```
 
 The bigger the training text, the better the results.
-You can try this text here: [http://paulo-jorente.de/text/alice_oz.txt alice_oz.txt]
+You can try this text here: [alice_oz.txt](http://paulo-jorente.de/text/alice_oz.txt)
 
 Create a program that is able to handle keys of any size (I guess keys smaller than 2 words would be
 pretty random text but...) and create output text also in any length.

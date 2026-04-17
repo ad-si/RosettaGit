@@ -532,7 +532,7 @@ ELSE
 
 ## C
 
-Adapted from Zack Denton's code posted on [https://zach.se/munchausen-numbers-and-how-to-find-them/ Munchausen Numbers and How to Find Them].
+Adapted from Zack Denton's code posted on [Munchausen Numbers and How to Find Them](https://zach.se/munchausen-numbers-and-how-to-find-them/).
 
 ```c
 #include <stdio.h>
@@ -923,9 +923,9 @@ V{ 1 3435 }
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Munchausen_numbers this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Munchausen_numbers) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1326,7 +1326,7 @@ Note that [[wp:Munchausen_number|wikipedia]] claims that 0=0^0 in the context of
 
 ## Java
 
-Adapted from Zack Denton's code posted on [https://zach.se/munchausen-numbers-and-how-to-find-them/ Munchausen Numbers and How to Find Them].
+Adapted from Zack Denton's code posted on [Munchausen Numbers and How to Find Them](https://zach.se/munchausen-numbers-and-how-to-find-them/).
 
 ```Java
 
@@ -1777,7 +1777,7 @@ END MunchausenNumbers.
 ## Pascal
 
 tried to speed things up.Only checking one arrangement of 123456789 instead of all 9! = 362880 permutations.This ist possible, because summing up is commutative.
-So I only have to create [http://rosettacode.org/wiki/Combinations_with_repetitions Combinations_with_repetitions] and need to check, that the number and the sum of power of digits have the same amount in every possible digit. This means, that a combination of the digits of number leads to the sum of power of digits. Therefore I need leading zero's.
+So I only have to create [Combinations_with_repetitions](http://rosettacode.org/wiki/Combinations_with_repetitions) and need to check, that the number and the sum of power of digits have the same amount in every possible digit. This means, that a combination of the digits of number leads to the sum of power of digits. Therefore I need leading zero's.
 
 ```pascal
 {$IFDEF FPC}{$MODE objFPC}{$ELSE}{$APPTYPE CONSOLE}{$ENDIF}
@@ -2416,7 +2416,7 @@ Munchausen numbers below 5_000 : [1, 3435]
 
 ## Scala
 
-Adapted from Zack Denton's code posted on [https://zach.se/munchausen-numbers-and-how-to-find-them/ Munchausen Numbers and How to Find Them].
+Adapted from Zack Denton's code posted on [Munchausen Numbers and How to Find Them](https://zach.se/munchausen-numbers-and-how-to-find-them/).
 
 ```Scala
 

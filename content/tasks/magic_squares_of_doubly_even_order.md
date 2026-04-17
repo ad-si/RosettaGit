@@ -87,7 +87,7 @@ Create a magic square of 8 x 8.
 
 ## See also
 
-* [http://www.1728.org/magicsq2.htm Doubly Even Magic Squares (1728.org)]
+* [Doubly Even Magic Squares (1728.org)](http://www.1728.org/magicsq2.htm)
 
 
 
@@ -2532,7 +2532,7 @@ Magic constant: 260
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/bdTcGF3/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/gLhkwHHlRO6rPXg9U7MDzg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/bdTcGF3/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/gLhkwHHlRO6rPXg9U7MDzg).
 
 ```Scala
 object MagicSquareDoublyEven extends App {

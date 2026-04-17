@@ -12,4 +12,4 @@ tags = []
 
 [[Category:Solutions by Programming Task]]Tasks in this category involve programming games or collecting data based on games.
 
-See also: [http://rosettacode.org/wiki/Category:Puzzles Category:Puzzles]
+See also: [Category:Puzzles](http://rosettacode.org/wiki/Category:Puzzles)

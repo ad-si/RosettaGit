@@ -183,7 +183,7 @@ func main() {
 ## Haskell
 
 
-Example uses the [https://hackage.haskell.org/package/ldap-client <tt>ldap-client</tt>] package:
+Example uses the [<tt>ldap-client</tt>](https://hackage.haskell.org/package/ldap-client) package:
 
 
 ```haskell
@@ -257,7 +257,7 @@ public class LdapSearchDemo {
 
 ## ooRexx
 
-Using LDAP connecting to a local [http://directory.apache.org/apacheds/1.5/ ApacheDS] LDAP directory server.
+Using LDAP connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 This program drives the <tt>ldapsearch</tt> command and captures the output into an external data queue via ooRexx <tt>rxqueue</tt> facility.  The contents of the queue are then read into program variables for further processing.
 
@@ -413,7 +413,7 @@ Test:
 
 ## NetRexx
 
-Uses the [http://directory.apache.org/api/ Apache LDAP API], connecting to a local [http://directory.apache.org/apacheds/1.5/ ApacheDS] LDAP directory server.
+Uses the [Apache LDAP API](http://directory.apache.org/api/), connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 ```NetRexx
 /* NetRexx */
@@ -584,7 +584,7 @@ var_dump($entries);
 
 ## Python
 
-[http://www.python-ldap.org/doc/html/index.html python-ldap Documentation]
+[python-ldap Documentation](http://www.python-ldap.org/doc/html/index.html)
 
 
 ```python
@@ -613,7 +613,7 @@ finally:
 
 ## REXX
 
-Using LDAP connecting to a local [http://directory.apache.org/apacheds/1.5/ ApacheDS] LDAP directory server.
+Using LDAP connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 A little contrived; this [[REXX]] program drives the <tt>ldapsearch</tt> command.
 
@@ -939,7 +939,7 @@ $conn traverse $Base $Filter $Attrs e {
 
 ## UNIX Shell
 
-Using LDAP connecting to a local [http://directory.apache.org/apacheds/1.5/ ApacheDS] LDAP directory server.
+Using LDAP connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 A shell script to drive the <tt>ldapsearch</tt> command.
 

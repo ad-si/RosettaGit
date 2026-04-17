@@ -20,7 +20,7 @@ Should I change the limits and ask for an output table for n in 1..8 instead? Th
 
 I assume you're not allowed to repeat configurations?  Otherwise you could swap infinitely for any initial setup that didn't start with 1. --[[User:Mwn3d|Mwn3d]] 20:26, 23 November 2012 (UTC)
 
-: I think I read that for all starting permutations you either start at or end up with one on top. There was no mention of it not terminating.  There is [http://oeis.org/A000376 a variant] where you only count a perm if it ends up sorted when the one is on top. (It doesn't always). --[[User:Paddy3118|Paddy3118]] 23:28, 23 November 2012 (UTC)
+: I think I read that for all starting permutations you either start at or end up with one on top. There was no mention of it not terminating.  There is [a variant](http://oeis.org/A000376) where you only count a perm if it ends up sorted when the one is on top. (It doesn't always). --[[User:Paddy3118|Paddy3118]] 23:28, 23 November 2012 (UTC)
 
 : There's no need to worry about that.  It's easy to prove that the swapping process always terminates with 1 at the front, which is the same as saying the configurations will never repeat. --[[User:Ledrug|Ledrug]] 00:22, 24 November 2012 (UTC)
 ::Maybe I'm missing something then. Why can't you have a sequence of reversals like this?:

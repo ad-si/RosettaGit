@@ -123,7 +123,7 @@ And compute the result from the innermost brackets outwards as in this pseudocod
  ''# accumulator now has the answer''
 
 '''Task Description'''
-:Create a routine that takes a list of coefficients of a polynomial in order of increasing powers of x; together with a value of x to compute its value at, and return the value of the polynomial at that value using [http://www.physics.utah.edu/~detar/lessons/c++/array/node1.html Horner's rule].
+:Create a routine that takes a list of coefficients of a polynomial in order of increasing powers of x; together with a value of x to compute its value at, and return the value of the polynomial at that value using [Horner's rule](http://www.physics.utah.edu/~detar/lessons/c++/array/node1.html).
 
 Cf. [[Formal power series]]
 
@@ -949,7 +949,7 @@ Output:
 ```
 
 
-As a matter of fact, computing the derivative is not much more difficult (see [http://www.cs.berkeley.edu/~wkahan/Math128/Poly.pdf Roundoff in Polynomial Evaluation], W. Kahan, 1986). The following subroutine computes both polynomial value and derivative for argument x.
+As a matter of fact, computing the derivative is not much more difficult (see [Roundoff in Polynomial Evaluation](http://www.cs.berkeley.edu/~wkahan/Math128/Poly.pdf), W. Kahan, 1986). The following subroutine computes both polynomial value and derivative for argument x.
 
 
 ```fortran
@@ -1967,7 +1967,7 @@ say horner( [ -19, 7, -4, 6 ], 3 );
 ```
 
 
-A recursive version would spare us the need for reversing the list of coefficients.  However, special care must be taken in order to write it, because the way Perl 6 implements lists is not optimized for this kind of treatment.  [[Lisp]]-style lists are, and fortunately it is possible to emulate them with [http://doc.perl6.org/type/Pair Pairs] and the reduction meta-operator:
+A recursive version would spare us the need for reversing the list of coefficients.  However, special care must be taken in order to write it, because the way Perl 6 implements lists is not optimized for this kind of treatment.  [[Lisp]]-style lists are, and fortunately it is possible to emulate them with [Pairs](http://doc.perl6.org/type/Pair) and the reduction meta-operator:
 
 
 ```perl6
@@ -2180,7 +2180,7 @@ V = 128.
 
 ### Functional approach
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).
@@ -2200,7 +2200,7 @@ f_horner(L, V, R) :-
 
 
 ===Functional syntax (Ciao)===
-Works with Ciao (https://github.com/ciao-lang/ciao) and the fsyntax package:
+Works with Ciao (<https://github.com/ciao-lang/ciao>) and the fsyntax package:
 
 ```Prolog
 

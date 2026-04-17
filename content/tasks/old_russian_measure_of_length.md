@@ -39,7 +39,7 @@ languages = [
 The program should make the conversion of the old Russian measures of length in the metric and vice versa.
 Is an example of the transformation of several variables that are linearly. The program accepts a single value in the selected unit, and return it in the rest: ''vershoks'', ''arshins'', ''sazhens'', ''versts'', ''meters'', ''centimeters'' and ''kilometers''.
 
-See [https://en.wikipedia.org/wiki/Obsolete_Russian_units_of_measurement#Length Old Russian measure of length]
+See [Old Russian measure of length](https://en.wikipedia.org/wiki/Obsolete_Russian_units_of_measurement#Length)
 
 =={{header|MK-61/52}}==
 <lang>П7	1	0	0	*	П8	1	ВП	5	/
@@ -1968,7 +1968,7 @@ centimeter: 746760
 ## Tcl
 
 
-Tcllib already has a [http://core.tcl.tk/tcllib/doc/trunk/embedded/www/tcllib/files/modules/units/units.html units] package which knows about a lot of things, and can be taught more.  Since the other examples in this page provide a nicely tabulated conversions for 1 meter, we can copy that directly to get started ...
+Tcllib already has a [units](http://core.tcl.tk/tcllib/doc/trunk/embedded/www/tcllib/files/modules/units/units.html) package which knows about a lot of things, and can be taught more.  Since the other examples in this page provide a nicely tabulated conversions for 1 meter, we can copy that directly to get started ...
 
 
 ```Tcl

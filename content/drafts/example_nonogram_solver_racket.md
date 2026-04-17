@@ -324,7 +324,7 @@ EOS
 
 I have little luck with attaching images. You may need to run the program in Racket and, if you can, attach some pictures here!
 
-Ah... foo! Here's an external link to one I did earlier... [[http://timb.net/images/nonogram-all.png]]. Life's too short to wrestle with Rosetta Code...
+Ah... foo! Here's an external link to one I did earlier... <http://timb.net/images/nonogram-all.png>. Life's too short to wrestle with Rosetta Code...
 
 After changing the:
  (displayln (image-render-puzzle (solve-nonogram pzl)))

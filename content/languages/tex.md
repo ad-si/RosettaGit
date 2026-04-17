@@ -16,4 +16,4 @@ See wikipedia [](https://en.wikipedia.org/wiki/TeX) for more.
 
 Normally a ''bare''  is hardly usable to typeset, so ''macro packages'' are often used. The basic macro package given as default is [](https://rosettacode.org/wiki/PlainTeX); a very common and widely used macro package is [](https://rosettacode.org/wiki/LaTeX), but there are many.
 
-* [http://hopl.murdoch.edu.au/findlanguages2.prx?language=PlainTeX&which=byname  on HOPL]
+* [on HOPL](http://hopl.murdoch.edu.au/findlanguages2.prx?language=PlainTeX&which=byname)

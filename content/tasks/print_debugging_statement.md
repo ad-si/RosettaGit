@@ -22,7 +22,7 @@ languages = [
 ]
 +++
 
-From [https://en.wikipedia.org/wiki/Debugging#Techniques Wikipedia]:
+From [Wikipedia](https://en.wikipedia.org/wiki/Debugging#Techniques):
 
 <blockquote>
 Print debugging (or tracing) is the act of watching (live or recorded) trace statements, or print statements, that indicate the flow of execution of a process. This is sometimes called printf debugging, due to the use of the printf function in C.
@@ -163,9 +163,9 @@ value: &main.point{x:2, y:3}
 ## Mercury
 
 
-Mercury has [https://mercurylang.org/information/doc-latest/mercury_ref/Trace-goals.html trace goals] which can be used within pure code, can summon <code>!IO</code> for use within the goal, can be made conditional off of compile-time or runtime flags, and which are pretty free with what they can do.
+Mercury has [trace goals](https://mercurylang.org/information/doc-latest/mercury_ref/Trace-goals.html) which can be used within pure code, can summon <code>!IO</code> for use within the goal, can be made conditional off of compile-time or runtime flags, and which are pretty free with what they can do.
 
-Together with data functors like <code>$module</code>, <code>$pred</code>, <code>$line</code>, trace goals can be used for debugging print statements as in the following example. Together with the [https://mercurylang.org/information/doc-latest/mercury_library/require.html require] module's utilities, trace goals can be used for assert() statements or pre/post assertions.
+Together with data functors like <code>$module</code>, <code>$pred</code>, <code>$line</code>, trace goals can be used for debugging print statements as in the following example. Together with the [require](https://mercurylang.org/information/doc-latest/mercury_library/require.html) module's utilities, trace goals can be used for assert() statements or pre/post assertions.
 
 
 ```Mercury
@@ -433,7 +433,7 @@ The line numbers 3, 4, 6, 7, and 9 are returned for five of the seven calls.
 ## Pyret
 
 
-Pyret has the [https://www.pyret.org/docs/latest/s_spies.html <code>spy</code> expression]. The expression can print the value of an identifier, using the identifier itself as a label if it's not already given. It could also print the value of an arbitrary expression, but it needs an explicit label in this case.
+Pyret has the [<code>spy</code> expression](https://www.pyret.org/docs/latest/s_spies.html). The expression can print the value of an identifier, using the identifier itself as a label if it's not already given. It could also print the value of an arbitrary expression, but it needs an explicit label in this case.
 
 
 ```pyret

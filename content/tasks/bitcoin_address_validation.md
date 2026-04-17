@@ -317,7 +317,7 @@ Compile with -lcrypto
 
 ## C#
 
-This requires [https://www.nuget.org/packages/NUnit/ NUnit package] to compile.
+This requires [NUnit package](https://www.nuget.org/packages/NUnit/) to compile.
 
 ```c#
 
@@ -502,7 +502,7 @@ void main() {
 
 ## Delphi
 
-This requires [http://www.cityinthesky.co.uk/opensource/DCPcrypt/ DCPcrypt library] to compile.
+This requires [DCPcrypt library](http://www.cityinthesky.co.uk/opensource/DCPcrypt/) to compile.
 
 ```delphi
 
@@ -577,7 +577,7 @@ end;
 
 ## Erlang
 
-Using base58 module from http://github.com/titan098/erl-base58.git.
+Using base58 module from <http://github.com/titan098/erl-base58.git>.
 
 
 ```Erlang
@@ -2108,7 +2108,7 @@ I calculate that it is         c046b2ff
 
 ## Rust
 
-This requires the [https://crates.io/crates/rust-crypto rust-crypto] crate for sha256.
+This requires the [rust-crypto](https://crates.io/crates/rust-crypto) crate for sha256.
 
 
 ```Rust
@@ -2260,11 +2260,11 @@ object BitcoinAddressValidator extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/encoding.htm#fromBase58(in_string) fromBase58],
+The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [fromBase58](http://seed7.sourceforge.net/libraries/encoding.htm#fromBase58(in_string)),
 which decodes a Base58 encoded string.
-The Seed7 library [http://seed7.sourceforge.net/libraries/msgdigest.htm msgdigest.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string) sha256],
+The Seed7 library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm) defines
+the function [sha256](http://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string)),
 which computes a SHA-256 message digest.
 No external library is needed.
 

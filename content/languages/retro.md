@@ -14,5 +14,5 @@ tags = []
 Retro is a stack-based, concatenative programming language with roots in [Forth](https://rosettacode.org/wiki/Forth).
 
 ## Links
-*[http://forthworks.com/retro Main Site]
-*[http://forth.works/book.html Documentation]
+*[Main Site](http://forthworks.com/retro)
+*[Documentation](http://forth.works/book.html)

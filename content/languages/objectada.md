@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 [Category:Compilers and Interpreters](https://rosettacode.org/wiki/Category:Compilers_and_Interpreters)
-'''ObjectAda''' is an implementation of [Ada 95](https://rosettacode.org/wiki/Ada_95) by Aonix. See [http://www.aonix.com/Ada_Solutions.html ObjectAda]. ObjectAda exists in both native and embedded variants.
+'''ObjectAda''' is an implementation of [Ada 95](https://rosettacode.org/wiki/Ada_95) by Aonix. See [ObjectAda](http://www.aonix.com/Ada_Solutions.html). ObjectAda exists in both native and embedded variants.

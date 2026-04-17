@@ -17,7 +17,7 @@ I welcome someone checking to see if my mathematics is correct! Right now, the i
 :: Well my stats aren't good enough to answer that question. I know I'm computing the degree of deviation from a uniform distribution – that's the easy bit – but the bit where it computes what this means is pure guesswork and the material on wikipedia doesn't help. Most of wikipedia's non-elementary mathematics is of terrible quality from the perspective of someone who was never a real math major (logic and advanced CS I know, but stats... no). —[[User:Dkf|Donal Fellows]] 20:56, 8 September 2009 (UTC)
 
 == Is the Wikibooks Python example good enough? ==
-Assuming that the licenses are compatable, is this [http://en.wikibooks.org/wiki/Algorithm_Implementation/Pseudorandom_Numbers/Chi-Square_Test#Python wikibooks Python example] good enough? --[[User:Paddy3118|Paddy3118]] 04:45, 31 October 2009 (UTC)
+Assuming that the licenses are compatable, is this [wikibooks Python example](http://en.wikibooks.org/wiki/Algorithm_Implementation/Pseudorandom_Numbers/Chi-Square_Test#Python) good enough? --[[User:Paddy3118|Paddy3118]] 04:45, 31 October 2009 (UTC)
 
 == Incomplete gamma ==
 
@@ -62,7 +62,7 @@ It seems computing the the incomplete  gamma function is non-trivial and the tec
 
 :In other words (1.5 * ^ 4.1) * 4.1 ^ -1.5.  (^y with no left argument is e^y).
 
-:And H. is the primitive documented at http://www.jsoftware.com/help/dictionary/dhcapdot.htm
+:And H. is the primitive documented at <http://www.jsoftware.com/help/dictionary/dhcapdot.htm>
 
 :I do not know if this helps, though.
 

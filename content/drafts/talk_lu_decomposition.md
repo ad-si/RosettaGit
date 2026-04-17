@@ -16,12 +16,12 @@ The Python example has a divide by zero error for the matrix
 b = [[1, 1, 1, 1], [1, 1, -1, -1], [1, -1, 0, 0], [0, 0, 1, -1]]
 
 although a LUP decomposition exists:
-[http://www.wolframalpha.com/input/?i=lu+decomposition+{{1%2C+1%2C+1%2C+1}%2C+{1%2C+1%2C+-1%2C+-1}%2C+{1%2C+-1%2C+0%2C+0}%2C+{0%2C+0%2C+1%2C+-1}}]
+<http://www.wolframalpha.com/input/?i=lu+decomposition+{{1%2C+1%2C+1%2C+1}%2C+{1%2C+1%2C+-1%2C+-1}%2C+{1%2C+-1%2C+0%2C+0}%2C+{0%2C+0%2C+1%2C+-1}}>
 
 The permutation matrix has to be updated at each step, but that will make the code a lot more complicated.
 
 == Example 2 pivot matrix seems to be wrong ==
-The pivot matrix in example 2 should also swap the last two rows of the current resulting pivoted matrix: A'(3, 3) = 2 while there is a 7 right beneath it. Here is the result of the multiplication of the two matrices on  [http://www.wolframalpha.com/input/?i=matrix+multiplication+calculator&f1={{1%2C0%2C0%2C0}%2C{0%2C0%2C1%2C0}%2C{0%2C1%2C0%2C0}%2C{0%2C0%2C0%2C1}}&f=MatricesOperations.theMatrix1_{{1%2C0%2C0%2C0}%2C{0%2C0%2C1%2C0}%2C{0%2C1%2C0%2C0}%2C{0%2C0%2C0%2C1}}&f2={{11%2C9%2C24%2C2}%2C{1%2C5%2C2%2C6}%2C{3%2C17%2C18%2C1}%2C{2%2C5%2C7%2C1}}&f=MatricesOperations.theMatrix2_{{11%2C9%2C24%2C2}%2C{1%2C5%2C2%2C6}%2C{3%2C17%2C18%2C1}%2C{2%2C5%2C7%2C1}}&a=*FVarOpt.1-_**-.***MatricesOperations.theMatrix3---.*-- wolfram alpha]
+The pivot matrix in example 2 should also swap the last two rows of the current resulting pivoted matrix: A'(3, 3) = 2 while there is a 7 right beneath it. Here is the result of the multiplication of the two matrices on  [wolfram alpha](http://www.wolframalpha.com/input/?i=matrix+multiplication+calculator&f1={{1%2C0%2C0%2C0}%2C{0%2C0%2C1%2C0}%2C{0%2C1%2C0%2C0}%2C{0%2C0%2C0%2C1}}&f=MatricesOperations.theMatrix1_{{1%2C0%2C0%2C0}%2C{0%2C0%2C1%2C0}%2C{0%2C1%2C0%2C0}%2C{0%2C0%2C0%2C1}}&f2={{11%2C9%2C24%2C2}%2C{1%2C5%2C2%2C6}%2C{3%2C17%2C18%2C1}%2C{2%2C5%2C7%2C1}}&f=MatricesOperations.theMatrix2_{{11%2C9%2C24%2C2}%2C{1%2C5%2C2%2C6}%2C{3%2C17%2C18%2C1}%2C{2%2C5%2C7%2C1}}&a=*FVarOpt.1-_**-.***MatricesOperations.theMatrix3---.*--)
 
 The pivot matrix I propose is {{1,0,0,0},{0,0,1,0},{0,0,0,1},{0,1,0,0}}.
 

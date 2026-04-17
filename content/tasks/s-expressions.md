@@ -1413,7 +1413,7 @@ CL-USER>
 
 Implementation of S-expression serializer & deserializer in C# 6.0 language.
 
-Git repository with code and tests can be found here: https://github.com/ichensky/SExpression/tree/rosettacode
+Git repository with code and tests can be found here: <https://github.com/ichensky/SExpression/tree/rosettacode>
 
 
 ```c#
@@ -2196,7 +2196,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn formats arbitrary structures into printable strings]
+[ximage.icn formats arbitrary structures into printable strings](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 ```txt
 Input:  "((data 'quoted data' 123 4.5) (data (!@# (4.5) '(more' 'data)')))"
@@ -2309,7 +2309,7 @@ Example use:
 ## Java
 
 
-This code is based on [http://jfkbits.blogspot.com/2008/05/thoughts-on-s-expression-parser.html] and [http://jfkbits.blogspot.com/2008/05/thoughts-on-s-expression-lexer.html]
+This code is based on <http://jfkbits.blogspot.com/2008/05/thoughts-on-s-expression-parser.html> and <http://jfkbits.blogspot.com/2008/05/thoughts-on-s-expression-lexer.html>
 It is available under the GPL. The author is Joel F. Klein. He has graciously given permission to share the code under the FDL for the purpose of publishing it on RosettaCode.
 
 The code as presented here is taken unmodified from an application being developed right now where it is used.
@@ -3208,7 +3208,7 @@ echo parse()
 ## OCaml
 
 
-You may be interested by [https://realworldocaml.org/v1/en/html/data-serialization-with-s-expressions.html this chapter of the book Real World Ocaml]
+You may be interested by [this chapter of the book Real World Ocaml](https://realworldocaml.org/v1/en/html/data-serialization-with-s-expressions.html)
 
 The file <code>SExpr.mli</code> containing the interface:
 
@@ -3768,7 +3768,7 @@ Bespoke pretty printing:
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refA.html#any any]' function parses an s-expression from a string (indentical to the way '[http://software-lab.de/doc/refR.html#read read]' does this from an input stream).
+The '[any](http://software-lab.de/doc/refA.html#any)' function parses an s-expression from a string (indentical to the way '[read](http://software-lab.de/doc/refR.html#read)' does this from an input stream).
 
 ```PicoLisp
 : (any "((data \"quoted data\" 123 4.5) (data (!@# (4.5) \"(more\" \"data)\")))")
@@ -3832,7 +3832,7 @@ It can be used in a pipe to read from a string:
 -> ((data "quoted data" 123 5) (data (!@# (5) "(more" "data)")))
 ```
 
-'[http://software-lab.de/doc/refS.html#sym sym]' does the reverse (i.e. builds a symbol (string) from an expression).
+'[sym](http://software-lab.de/doc/refS.html#sym)' does the reverse (i.e. builds a symbol (string) from an expression).
 
 ```PicoLisp
 : (sym @@)

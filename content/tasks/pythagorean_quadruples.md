@@ -79,7 +79,7 @@ Show the values of   '''d'''   on one line of output   (optionally with a title)
 
 
 ;Reference:
-:*   the Wikipedia article:   [https://en.wikipedia.org/wiki/Pythagorean_quadruple Pythagorean quadruple].
+:*   the Wikipedia article:   [Pythagorean quadruple](https://en.wikipedia.org/wiki/Pythagorean_quadruple).
 
 
 
@@ -683,7 +683,7 @@ The values of d <= 2200 which can't be represented:
 
 ### From the Wikipedia page
 
-[https://en.wikipedia.org/wiki/Pythagorean_quadruple Alternate parametrization, second version both A and B even.]Time just less then 0.7 second on a AMD Athlon II X4 645 3.34GHz win7 64bit. Program uses one core. When the limit is set to 576 (abs. minimum for 2200), the time is about 0.85 sec.
+[Alternate parametrization, second version both A and B even.](https://en.wikipedia.org/wiki/Pythagorean_quadruple)Time just less then 0.7 second on a AMD Athlon II X4 645 3.34GHz win7 64bit. Program uses one core. When the limit is set to 576 (abs. minimum for 2200), the time is about 0.85 sec.
 
 ```freebasic
 ' version 12-08-2017
@@ -1467,7 +1467,7 @@ Same as Version 1.
 
 ### version 1
 
-Brute froce, but not as brute as [http://rosettacode.org/mw/index.php?title=Pythagorean_quadruples#Ring Ring].Did it ever run?<BR>
+Brute froce, but not as brute as [Ring](http://rosettacode.org/mw/index.php?title=Pythagorean_quadruples#Ring).Did it ever run?<BR>
 Stopping search if limit is reached<BR>
 
 ```pascal
@@ -1554,8 +1554,8 @@ real    0m2.323s -> 9 cpu-cycles per check on Ryzen 5 1600 3,7 Ghz ( Turbo )
 
 ### version 2
 
-Using a variant of [http://rosettacode.org/wiki/Pythagorean_quadruples#optimized REXX optimized] optimized<BR>
-As I now see the same as [http://rosettacode.org/wiki/Pythagorean_quadruples#ALGOL_68 Algol68]<BR>
+Using a variant of [REXX optimized](http://rosettacode.org/wiki/Pythagorean_quadruples#optimized) optimized<BR>
+As I now see the same as [Algol68](http://rosettacode.org/wiki/Pythagorean_quadruples#ALGOL_68)<BR>
 Quite fast.
 
 ```pascal
@@ -2148,7 +2148,7 @@ puts pyth_quad.take_while{|n| n <= 1000000000}.join(" ")
 ## Rust
 
 
-This is equivalent to https://oeis.org/A094958
+This is equivalent to <https://oeis.org/A094958>
 which simply contains positive integers of the form 2^n or 5*2^n. Multiple implementations are provided.
 
 
@@ -2213,7 +2213,7 @@ mod tests {
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/drfij1d/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/6AHn7YXSRbKHzmOY5rWAwg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/drfij1d/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/6AHn7YXSRbKHzmOY5rWAwg).
 
 ```Scala
 object PythagoreanQuadruple extends App {

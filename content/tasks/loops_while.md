@@ -627,8 +627,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to <http://thinkingeek.com/arm-assembler-raspberry-pi/*>
+/* and   <http://www.hackersdelight.org/>            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1703,7 +1703,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4e992013e4e7dc69a82477299a5ce23a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4e992013e4e7dc69a82477299a5ce23a)'''
 
 ```gambas
 Public Sub Main()
@@ -3297,7 +3297,7 @@ while(i > 0)
 ```REBOL
 REBOL [
 	Title: "Loop/While"
-	URL: http://rosettacode.org/wiki/Loop/While
+	URL: <http://rosettacode.org/wiki/Loop/While>
 ]
 
 value: 1024

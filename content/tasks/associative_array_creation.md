@@ -306,8 +306,8 @@ r_put(r, "B", "associative");	# a string value
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 main:(
@@ -468,7 +468,7 @@ Associative arrays in App Inventor are lists of ''key:value'' 'pairs'.
 
 When a list is organized as pairs, the '''lookup in pairs''' block can be used to retrieve an associated value from a key name.
 
-[https://lh3.googleusercontent.com/-Cxw_-XGMRyM/UutOX1bEH9I/AAAAAAAAJ9g/MZotfuSEziY/s1600/CreateIterateLookup.PNG '''<VIEW BLOCKS AND ANDROID APP>''']
+['''<VIEW BLOCKS AND ANDROID APP>'''](https://lh3.googleusercontent.com/-Cxw_-XGMRyM/UutOX1bEH9I/AAAAAAAAJ9g/MZotfuSEziY/s1600/CreateIterateLookup.PNG)
 
 
 ## Arturo
@@ -501,7 +501,7 @@ print dict
 
 ###  True arrays
 
-[[AutoHotkey_L]] has [http://ahkscript.org/docs/Objects.htm Objects] which function as associative arrays.
+[[AutoHotkey_L]] has [Objects](http://ahkscript.org/docs/Objects.htm) which function as associative arrays.
 
 ```AutoHotkey
 associative_array := {key1: "value 1", "Key with spaces and non-alphanumeric characters !*+": 23}
@@ -528,7 +528,7 @@ Loop, 4
 
 ## AutoIt
 
-See '''[https://msdn.microsoft.com/en-us/library/x4k5wbx4.aspx here]''' in the MSDN the reference for the Dictionary object that can be used in VBA. The following example shows how to create a dictionary, add/remove keys, change a key or a value, and check the existence of a key.
+See '''[here](https://msdn.microsoft.com/en-us/library/x4k5wbx4.aspx)''' in the MSDN the reference for the Dictionary object that can be used in VBA. The following example shows how to create a dictionary, add/remove keys, change a key or a value, and check the existence of a key.
 
 ```AutoIt
 ; Associative arrays in AutoIt.
@@ -1662,7 +1662,7 @@ let takeVal (d:Map<string,string>) =
 
 ## Factor
 
-Associative mappings follow the associative protocol. See [http://docs.factorcode.org/content/article-assocs-protocol.html the docs].
+Associative mappings follow the associative protocol. See [the docs](http://docs.factorcode.org/content/article-assocs-protocol.html).
 Here's an example using a hashtable that can be run in the listener :
 
 ```factor
@@ -1827,7 +1827,7 @@ let associative_array = {key1=1,key2=2}
 
 ## Gambas
 
-See [[http://rosettacode.org/wiki/Associative_array/Iteration#Gambas Associative array/Iteration]]
+See [Associative array/Iteration](http://rosettacode.org/wiki/Associative_array/Iteration#Gambas)
 
 
 ## Go
@@ -2115,7 +2115,7 @@ Example use:
 ```
 
 
-Note that J's symbols (http://www.jsoftware.com/help/dictionary/dsco.htm) might also be used for this purpose. However, symbols are not garbage collected within a J session (and, instead, a mechanism is provided to optionally preserve them across sessions).
+Note that J's symbols (<http://www.jsoftware.com/help/dictionary/dsco.htm>) might also be used for this purpose. However, symbols are not garbage collected within a J session (and, instead, a mechanism is provided to optionally preserve them across sessions).
 
 
 ## Java
@@ -2557,7 +2557,7 @@ with v in #mymap do {^
 
 ## Liberty BASIC
 
-Needs the sublist library from http://basic.wikispaces.com/SubList+Library since LB does not have built-in associative arrays.
+Needs the sublist library from <http://basic.wikispaces.com/SubList+Library> since LB does not have built-in associative arrays.
 
 ```lb
 
@@ -3603,8 +3603,8 @@ foreach($array as $key => $value)
 ## PicoLisp
 
 Here we use symbol properties. Other possiblities could be
-[http://software-lab.de/doc/refI.html#idx index trees] or
-[http://software-lab.de/doc/refA.html#assoc association lists].
+[index trees](http://software-lab.de/doc/refI.html#idx) or
+[association lists](http://software-lab.de/doc/refA.html#assoc).
 
 
 ```PicoLisp
@@ -3898,7 +3898,7 @@ value = hash[key]
 ```
 
 
-Numerous methods exist for the mapping type https://docs.python.org/3/library/stdtypes.html#mapping-types-dict
+Numerous methods exist for the mapping type <https://docs.python.org/3/library/stdtypes.html#mapping-types-dict>
 
 
 ```python
@@ -4454,7 +4454,7 @@ Scheme has association lists (alists), which are inefficient, ordered maps with 
 
 
 
-Hash tables are provided by SRFI-69 [http://srfi.schemers.org/srfi-69/srfi-69.html]. Many Scheme implementation also provide native hash tables.
+Hash tables are provided by SRFI-69 <http://srfi.schemers.org/srfi-69/srfi-69.html>. Many Scheme implementation also provide native hash tables.
 
 
 ```scheme
@@ -4463,7 +4463,7 @@ Hash tables are provided by SRFI-69 [http://srfi.schemers.org/srfi-69/srfi-69.ht
 ```
 
 
-The R6RS standard specifies support for hashtables in the [http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-14.html#node_chap_13 standard libraries] document.
+The R6RS standard specifies support for hashtables in the [standard libraries](http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-14.html#node_chap_13) document.
 
 
 ```scheme
@@ -4482,7 +4482,7 @@ The R6RS standard specifies support for hashtables in the [http://www.r6rs.org/f
 
 ## Seed7
 
-Seed7 uses the type [http://seed7.sourceforge.net/manual/types.htm#hash hash] to support associative arrays.
+Seed7 uses the type [hash](http://seed7.sourceforge.net/manual/types.htm#hash) to support associative arrays.
 
 
 ```seed7
@@ -4962,7 +4962,7 @@ Compile with flag:
 
 ## VBA
 
-See '''[https://msdn.microsoft.com/en-us/library/x4k5wbx4.aspx here]''' in the MSDN the reference for the Dictionary object that can be used in VBA. The following example shows how to create a dictionary, add/remove keys, change a key or a value, and check the existence of a key.
+See '''[here](https://msdn.microsoft.com/en-us/library/x4k5wbx4.aspx)''' in the MSDN the reference for the Dictionary object that can be used in VBA. The following example shows how to create a dictionary, add/remove keys, change a key or a value, and check the existence of a key.
 
 
 ```vb

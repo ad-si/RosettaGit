@@ -5376,7 +5376,7 @@ end;
 ## Sed
 
 This is full adder that means it takes arbitrary number of bits (think of it as infinite stack of 2 bit adders, which is btw how it's internally made).
-I took it from https://github.com/emsi/SedScripts
+I took it from <https://github.com/emsi/SedScripts>
 
 ```sed
 

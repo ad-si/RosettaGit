@@ -2081,7 +2081,7 @@ endif()
 ```
 
 
-The if() and elseif() commands evaluate boolean expressions like ''num GREATER 100''; refer to [http://www.cmake.org/cmake/help/cmake-2-8-docs.html#command:if cmake --help-command if].
+The if() and elseif() commands evaluate boolean expressions like ''num GREATER 100''; refer to [cmake --help-command if](http://www.cmake.org/cmake/help/cmake-2-8-docs.html#command:if).
 The elseif() and else() sections are optional.
 
 
@@ -4277,7 +4277,7 @@ Since jq's <tt>and</tt> and <tt>or</tt> are short-circuiting, they can also be u
 
 ## Julia
 
-Note: this documentation is mostly copied from the Julia 0.6.0 documentation at: https://docs.julialang.org/en/stable/manual/control-flow/#man-conditional-evaluation-1
+Note: this documentation is mostly copied from the Julia 0.6.0 documentation at: <https://docs.julialang.org/en/stable/manual/control-flow/#man-conditional-evaluation-1>
 <h3>Conditional Evaluation</h3>
 
 ```Julia
@@ -4830,7 +4830,7 @@ cases[key]() --equivalent to dothis(), dothat(), or dotheother() respectively
 if char == "<" then Prepend "<" acc else acc
 ```
 
-''(see: [https://github.com/luna/luna/issues/125#issuecomment-365683922 github/luna #125])''
+''(see: [github/luna #125](https://github.com/luna/luna/issues/125#issuecomment-365683922))''
 
 ===case-of===
 
@@ -4843,7 +4843,7 @@ class JSON:
 ```
 
 
-''(see: [https://github.com/luna/luna/blob/77b1d974cb07528e9f195dd47e177dd497560da1/stdlib/Std/src/Base.luna#L1047-L1050 Std.JSON])''
+''(see: [Std.JSON](https://github.com/luna/luna/blob/77b1d974cb07528e9f195dd47e177dd497560da1/stdlib/Std/src/Base.luna#L1047-L1050))''
 
 
 ## M2000 Interpreter
@@ -5763,7 +5763,7 @@ unless (text < "") Write(text);
 
 ### match
 
-Much cleaner than stacked if-else's, similar in some ways to switch-case (but more flexible). See [http://nemerle.org/wiki/index.php?title=Quick_Guide#Pattern_Matching here], [http://nemerle.org/wiki/index.php?title=Grok_Variants_and_matching#Matching here], or, for extra detail, [http://nemerle.org/wiki/index.php?title=Patterns_%28ref%29 the reference].
+Much cleaner than stacked if-else's, similar in some ways to switch-case (but more flexible). See [here](http://nemerle.org/wiki/index.php?title=Quick_Guide#Pattern_Matching), [here](http://nemerle.org/wiki/index.php?title=Grok_Variants_and_matching#Matching), or, for extra detail, [the reference](http://nemerle.org/wiki/index.php?title=Patterns_%28ref%29).
 
 ```Nemerle
 match(x)
@@ -6657,7 +6657,7 @@ given lc prompt("Done? ") {
 
 <tt>when</tt> blocks are allowed in any block that topicalizes <tt>$_</tt>, including a
 <tt>for</tt> loop (assuming one of its loop variables is bound to <tt>$_</tt>)
-or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [http://perlcabal.org/syn/S04.html#Switch_statements Synopsis 4].
+or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [Synopsis 4](http://perlcabal.org/syn/S04.html#Switch_statements).
 
 There are also statement modifier forms of all of the above.
 
@@ -6878,8 +6878,8 @@ switch ($i)
 
 ### See Also
 
-* [http://www.php.net/manual/en/language.control-structures.php php.net:Control Structures]
-* [http://www.php.net/manual/en/control-structures.switch.php php.net:Control Structures: Switch]
+* [php.net:Control Structures](http://www.php.net/manual/en/language.control-structures.php)
+* [php.net:Control Structures: Switch](http://www.php.net/manual/en/control-structures.switch.php)
 
 
 ## PicoLisp
@@ -7542,7 +7542,7 @@ In general a dispatch table or class/object abstraction (using dynamic method ov
 ## Racket
 
 
-===[http://docs.racket-lang.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29 if]===
+===[if](http://docs.racket-lang.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29)===
 If-expressions in Racket must have both branches
 
 ```racket
@@ -7554,7 +7554,7 @@ If-expressions in Racket must have both branches
 ```
 
 
-===[http://docs.racket-lang.org/reference/when_unless.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._when%29%29 when/unless]===
+===[when/unless](http://docs.racket-lang.org/reference/when_unless.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._when%29%29)===
 One-sided conditional expressions use "when" and "unless".  These are more convenient for side-effects since they have an implicit "begin" around their body, and you can also include new definitions
 
 ```racket
@@ -7566,7 +7566,7 @@ One-sided conditional expressions use "when" and "unless".  These are more conve
 ```
 
 
-===[http://docs.racket-lang.org/reference/if.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._cond%29%29 cond]===
+===[cond](http://docs.racket-lang.org/reference/if.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._cond%29%29)===
 Used for multiple conditions:
 
 ```racket
@@ -7582,7 +7582,7 @@ Used for multiple conditions:
 ```
 
 
-===[http://docs.racket-lang.org/reference/case.html#%28form._%28%28lib._racket%2Fprivate%2Fmore-scheme..rkt%29._case%29%29 case]===
+===[case](http://docs.racket-lang.org/reference/case.html#%28form._%28%28lib._racket%2Fprivate%2Fmore-scheme..rkt%29._case%29%29)===
 Similar to a "switch" statement in other languages
 
 ```racket
@@ -8636,7 +8636,7 @@ The SSEM's only conditional operation is <tt>011 Test</tt>, which causes the com
 
 ###  cond function
 
-This is an equivalent of a ternary ?: in C, useful for instance when creating a variable with '''[https://www.stata.com/help.cgi?generate gen]'''. See '''[https://www.stata.com/help.cgi?cond cond]''' in Stata help.
+This is an equivalent of a ternary ?: in C, useful for instance when creating a variable with '''[gen](https://www.stata.com/help.cgi?generate)'''. See '''[cond](https://www.stata.com/help.cgi?cond)''' in Stata help.
 
 
 ```stata
@@ -8657,7 +8657,7 @@ list, noobs noheader
 
 ###  if command
 
-This one is mainly useful in programs. See '''[https://www.stata.com/help.cgi?ifcmd ifcmd]''' in Stata help. To illustrate the command, here is a program that checks if a number is prime.
+This one is mainly useful in programs. See '''[ifcmd](https://www.stata.com/help.cgi?ifcmd)''' in Stata help. To illustrate the command, here is a program that checks if a number is prime.
 
 
 ```stata
@@ -8701,7 +8701,7 @@ isprime `=10^12-11'
 
 ###  if expression
 
-When used in a command, '''[https://www.stata.com/help.cgi?if if]''' means the command is to be applied to the data subset for which the if expression is true.
+When used in a command, '''[if](https://www.stata.com/help.cgi?if)''' means the command is to be applied to the data subset for which the if expression is true.
 
 
 ```stata
@@ -8717,7 +8717,7 @@ count if mod(_n, 3)==0
 
 ###  if statement in Mata
 
-See [https://www.stata.com/help.cgi?%5bM-2%5d%20if Stata help]. Here is an equivalent of the above program to check if a number is prime.
+See [Stata help](https://www.stata.com/help.cgi?%5bM-2%5d%20if). Here is an equivalent of the above program to check if a number is prime.
 
 
 ```stata
@@ -8741,7 +8741,7 @@ isprime(10^12-11)
 ###  ternary operator in Mata
 
 
-See [https://www.stata.com/help.cgi?m2_op_conditional Stata help]. Here is a recursive implementation of the Fibonacci sequence, to illustrate.
+See [Stata help](https://www.stata.com/help.cgi?m2_op_conditional). Here is a recursive implementation of the Fibonacci sequence, to illustrate.
 
 
 ```stata
@@ -10086,7 +10086,7 @@ The <xsl:choose>, <xsl:when>, and <xsl:otherwise> elements allow more general co
 ```
 
 
-The XPath expressions in the <code>test</code> attribute are evaluated in boolean context (converted as if by [http://www.w3.org/TR/xpath/#function-boolean the boolean function] if necessary).
+The XPath expressions in the <code>test</code> attribute are evaluated in boolean context (converted as if by [the boolean function](http://www.w3.org/TR/xpath/#function-boolean) if necessary).
 
 
 ```xml

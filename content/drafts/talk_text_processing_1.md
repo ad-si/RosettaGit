@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Why?==
-I was reading through [http://paddy3118.blogspot.com/2007/01/data-mining-in-three-language05.html old blog entries] and thought it would be appropriate (minus the focus on speed).
+I was reading through [old blog entries](http://paddy3118.blogspot.com/2007/01/data-mining-in-three-language05.html) and thought it would be appropriate (minus the focus on speed).
 
 ==The Sample File Was Not Found==
 still missing [[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 06:16, 1 August 2016 (UTC)
@@ -27,9 +27,9 @@ still missing [[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 06:16
 # What to do when syntactically wrong fields appear (not a number, too large number etc)?
 --[[User:Dmitry-kazakov|Dmitry-kazakov]] 12:13, 8 November 2008 (UTC)
 
-Hi Dmitry the comp.lang.awk newsgroup [http://groups.google.co.uk/group/comp.lang.awk/browse_frm/thread/cbeda85544a742a1/0ecba3a3fbf247d8?hl=en&tvc=1#0ecba3a3fbf247d8 thread] contains all the information necessary for the original poster to get his job done. The example records are probably typical, but you need to try something out and make your own decisions on the format/error handling. The original newsgroup thread actually has more information than you get on some data munging problems as in many cases someone just says "wouldn't it be good if this talked to this"; or "When wasn't this working". 
+Hi Dmitry the comp.lang.awk newsgroup [thread](http://groups.google.co.uk/group/comp.lang.awk/browse_frm/thread/cbeda85544a742a1/0ecba3a3fbf247d8?hl=en&tvc=1#0ecba3a3fbf247d8) contains all the information necessary for the original poster to get his job done. The example records are probably typical, but you need to try something out and make your own decisions on the format/error handling. The original newsgroup thread actually has more information than you get on some data munging problems as in many cases someone just says "wouldn't it be good if this talked to this"; or "When wasn't this working". 
 
-Data format information might be [http://dataservice.eea.europa.eu/dataservice/metadetails.asp?id=1029 here]. (Sorry if I seem patronising, it was not meant) --[[User:Paddy3118|Paddy3118]] 17:34, 8 November 2008 (UTC)
+Data format information might be [here](http://dataservice.eea.europa.eu/dataservice/metadetails.asp?id=1029). (Sorry if I seem patronising, it was not meant) --[[User:Paddy3118|Paddy3118]] 17:34, 8 November 2008 (UTC)
 
 :In my opinion, error checking should be minimal for this type of throwaway code, the assumption being that all data is formatted correctly, in forms that the target language can easily process. This type of task is all about coding speed and economy of expression. --[[User:IanOsgood|IanOsgood]] 16:30, 9 November 2008 (UTC)
 
@@ -37,7 +37,7 @@ Data format information might be [http://dataservice.eea.europa.eu/dataservice/m
 ```txt
 2008/Mar/21    -1E-2 1
 ```
- On second thought I would suggest to replace it to something more general and better defined text processing task. Like parsing a [http://en.wikipedia.org/wiki/Comma-separated_values CSV file], for example. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 18:37, 8 November 2008 (UTC)
+ On second thought I would suggest to replace it to something more general and better defined text processing task. Like parsing a [CSV file](http://en.wikipedia.org/wiki/Comma-separated_values), for example. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 18:37, 8 November 2008 (UTC)
 
 ::How about we wait a week and see what others think? If no one else can figure it out then I will add further explanations.
 ::If you can find such malformed data in the readings.txt file then it becomes an issue. Asking such what-if questions seem to be finding ways to fail.

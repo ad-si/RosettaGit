@@ -71,7 +71,7 @@ languages = [
 
 Demonstrate how to dynamically add variables to an object (a class instance) at runtime.
 
-This is useful when the methods/variables of an instance are based on a data file that isn't available until runtime.  Hal Fulton gives an example of creating an OO CSV parser at [http://www.devsource.com/article2/0,1759,1928562,00.asp An Exercise in Metaprogramming with Ruby].  This is referred to as "monkeypatching" by Pythonistas and some others.
+This is useful when the methods/variables of an instance are based on a data file that isn't available until runtime.  Hal Fulton gives an example of creating an OO CSV parser at [An Exercise in Metaprogramming with Ruby](http://www.devsource.com/article2/0,1759,1928562,00.asp).  This is referred to as "monkeypatching" by Pythonistas and some others.
 
 
 ## ActionScript
@@ -385,7 +385,7 @@ Slots with :INSTANCE allocation:
 ```
 
 
-The following REPL transcript (from [[LispWorks]]) shows the definition of a class <code>some-class</code> with no slots, and the creation of an instance of the class.  The first attempt to access the slot named <code>slot1</code> signals an error as there is no such slot.  Then the class is redefined to have such a slot, and with a default value of 23.  Attempting to access the slot in the preëxisting instance now gives the default value, since the slot has been added to the instance.  This behavior is specified in [http://www.lispworks.com/documentation/HyperSpec/Body/04_cf.htm §4.3.6 Redefining Classes] of the [http://www.lispworks.com/documentation/HyperSpec/Front/index.htm HyperSpec].
+The following REPL transcript (from [[LispWorks]]) shows the definition of a class <code>some-class</code> with no slots, and the creation of an instance of the class.  The first attempt to access the slot named <code>slot1</code> signals an error as there is no such slot.  Then the class is redefined to have such a slot, and with a default value of 23.  Attempting to access the slot in the preëxisting instance now gives the default value, since the slot has been added to the instance.  This behavior is specified in [§4.3.6 Redefining Classes](http://www.lispworks.com/documentation/HyperSpec/Body/04_cf.htm) of the [HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/index.htm).
 
 
 ```txt
@@ -630,7 +630,7 @@ PAUSE
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -849,7 +849,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn provides ximage to dump variable contents]
+[ximage.icn provides ximage to dump variable contents](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 Output:
 ```txt
@@ -1611,7 +1611,7 @@ in
 ```
 
 
-To add a variable number of features and attributes, you can use [http://www.mozart-oz.org/documentation/base/class.html Class.new].
+To add a variable number of features and attributes, you can use [Class.new](http://www.mozart-oz.org/documentation/base/class.html).
 
 
 ## Perl

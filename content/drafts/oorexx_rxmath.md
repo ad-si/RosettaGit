@@ -12,4 +12,4 @@ tags = []
 
 == RxMath ==
 
-RxMath is the Open Object Rexx Math Function library.  The library documentation is ''&quot;[http://www.oorexx.org/docs/rxmath/book1.htm| Open Object Rexx&trade;, RxMath Math Functions Reference]&quot;''.
+RxMath is the Open Object Rexx Math Function library.  The library documentation is ''&quot;[Open Object Rexx&trade;, RxMath Math Functions Reference](http://www.oorexx.org/docs/rxmath/book1.htm|)&quot;''.

@@ -566,7 +566,7 @@ Circle(+4.10000000000000e  +0 @ +0.00000000000000e  +0,+0.00000000000000e  +0)
 
 ## AutoHotkey
 
-AutoHotkey does not support private or protected properties and thus does not need assignment and accessor methods. Assignment and accessor methods, as well as direct assignment and access, are shown. For more information see [http://ahkscript.org/docs/Objects.htm Objects].
+AutoHotkey does not support private or protected properties and thus does not need assignment and accessor methods. Assignment and accessor methods, as well as direct assignment and access, are shown. For more information see [Objects](http://ahkscript.org/docs/Objects.htm).
 
 ```AutoHotkey
 MyPoint := new Point(1, 8)
@@ -1745,7 +1745,7 @@ Circle3 => print
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -4043,7 +4043,7 @@ print(instance2);
 
 ## PureBasic
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimlpeOOP].
+Using the open-source precompiler [SimlpeOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Class MyPoint
@@ -4452,7 +4452,7 @@ puts d                  # => Circle at 4,5 with radius 7.5
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/altUDTl/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/ohfeM4nvTZyeOTYYWHaNgQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/altUDTl/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/ohfeM4nvTZyeOTYYWHaNgQ).
 
 ```Scala
 object PointCircle extends App {
@@ -4496,7 +4496,7 @@ object PointCircle extends App {
 
 ## Seed7
 
-[http://seed7.sourceforge.net/manual/objects.htm Seed7 object orientation] works via interfaces.
+[Seed7 object orientation](http://seed7.sourceforge.net/manual/objects.htm) works via interfaces.
 The example below introduces the interface type ''GraphicObj''. To be usable an interface type needs also interface functions (which are defined with the keyword DYNAMIC). The interface function ''print'' is defined for ''GraphicObj''. The struct types ''Point'' and ''Circle'' implement the the interface ''GraphicObj'' (they are implementation types).
 Note that ''Circle'' inherits ''x'' and ''y'' from ''Point''.
 Functions which return a ''Point'' respectively ''Circle'' are used as constructors.

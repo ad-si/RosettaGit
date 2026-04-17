@@ -12,4 +12,4 @@ tags = []
 
 {{library}}A continuation-based, backtracking, logic programming monad. Gives some capabilities of logic-oriented languages. The library is [[GHC]]-specific.
 
-* [http://hackage.haskell.org/package/logict LogicT home page]
+* [LogicT home page](http://hackage.haskell.org/package/logict)

@@ -16,7 +16,7 @@ tags = []
 
 If a new tool is introduced, a description of the tool is required.
 
-Using utilities from, [http://packages.debian.org/unstable/utils/moreutils moreutils]
+Using utilities from, [moreutils](http://packages.debian.org/unstable/utils/moreutils)
 
 '''unfold'''
 

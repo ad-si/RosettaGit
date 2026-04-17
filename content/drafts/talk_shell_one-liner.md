@@ -12,7 +12,7 @@ tags = []
 
 ==Which Shell?==
 Which shell? Normally the programming language does not specify existence of any shells or others environmental tasks. What happens if the program is run as an [[OS]] driver, a system service, or without any [[OS]] at all on the bare board? Otherwise, how does this task differ from [[Execute a System Command]]? Does spawning a shell qualify? --[[User:Dmitry-kazakov|Dmitry-kazakov]] 13:15, 26 August 2008 (UTC)
-:I guess we could restrict it to mean systems that have command line shells such as bash/tcsh/... on Unix systems, cmd.exe on Windows, or ''[http://www.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html posix-like]'' shells. Maybe we should state what shell the command line is compatible with? --[[User:Paddy3118|Paddy3118]] 13:55, 26 August 2008 (UTC)
+:I guess we could restrict it to mean systems that have command line shells such as bash/tcsh/... on Unix systems, cmd.exe on Windows, or ''[posix-like](http://www.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html)'' shells. Maybe we should state what shell the command line is compatible with? --[[User:Paddy3118|Paddy3118]] 13:55, 26 August 2008 (UTC)
 
 The examples on the page seem to indicate that the task is running a line of the programming language ''from'' a shell; and not doing anything of the shell from the programming language. I am not sure exactly what you are allowed to use; because the OCaml example just echoes a string and pipes it into the ocaml program. You can do that with any language with an interpreter that reads from standard input, so it seems kind of trivial. --[[User:Spoon!|Spoon!]] 19:25, 26 August 2008 (UTC)
 
@@ -38,7 +38,7 @@ The idea was to invoke the language - in this case BASIC, from a command shell o
 :: I think I also misinterpreted the task. When I read SPECIFY and EXECUTE, I understood that to mean to input a program for a particular language and then run it from the (shell) command line. If you had said, "show how to execute a program in a language from a shell (command line or "prompt") ...", and the point here is that it shouldn't matter if the program is 45,000 statements long (or only 3), I would've assumed you wanted example(s) to show the syntax of how to run a program (for a particular language). Of course, I'm assuming that "short" had to do with the size of the program, not the duration of it's execution or smallness of output. -- [[User:Gerard Schildberger|Gerard Schildberger]] 18:49, 23 March 2012 (UTC)
 
 ==One Line?==
-The [http://rosettacode.org/mw/index.php?title=Shell_one-liner&diff=22059&oldid=22058 original aim] of the task specified one-line. I wondered why was it was changed to allow multiple line examples?
+The [original aim](http://rosettacode.org/mw/index.php?title=Shell_one-liner&diff=22059&oldid=22058) of the task specified one-line. I wondered why was it was changed to allow multiple line examples?
 
 The current edited task description seems to be at odds with the task title, as "one-liner" has a well known meaning of one line; and not relying on the shell to concatenate several lines into one. --[[User:Paddy3118|Paddy3118]] 01:50, 9 March 2010 (UTC)
 
@@ -51,7 +51,7 @@ Several examples don't make sense.  I marked the C incorrect for now, but Java, 
 Second class of incorrectness: not running from shell at all.  These include AutoHotkey, ZX spectrum basic, Matlab, MUMPS, and REXX.  REXX example talks about how to run an executable file which is way off topic; all others substitute "shell" with "intepreter".  These, in my mind, are undoubtedly incorrect, more so than the previous category even.
 
 : --- Where does the REXX example talk about anything?   For that matter, where is the REXX example? -- [[User:Gerard Schildberger|Gerard Schildberger]] 00:13, 23 March 2012 (UTC) 
-:: See the history, the example mentioned was [http://rosettacode.org/mw/index.php?title=Shell_one-liner&oldid=121477#REXX marked for deletion] Sept 25, 2011 along with several others, and was later deleted when it was not fixed. [[User:Xenoker|Xenoker]] 17:46, 23 March 2012 (UTC) 
+:: See the history, the example mentioned was [marked for deletion](http://rosettacode.org/mw/index.php?title=Shell_one-liner&oldid=121477#REXX) Sept 25, 2011 along with several others, and was later deleted when it was not fixed. [[User:Xenoker|Xenoker]] 17:46, 23 March 2012 (UTC) 
 
 There is actually a third category, where the braindead compiler/intepreter can eval a file without producing an exe but would not do so with text supplied on commandline or stdin.  These include second example of Go and Oz.  I'm a bit indifferent about this category, it sort of fits the spirit of the task.
 
@@ -81,7 +81,7 @@ So I am going to remove this from the main page. --[[User:Rdm|Rdm]] 13:47, 26 Se
 :::: I agree, to the extent that the example provides for good or common practice.  For C a one-liner is actually used often (to find out a system constant when porting stuff, for example).  But for Go or Java it would appear quite unnatural -- how often do you see a java programmer coding without an IDE? --[[User:Ledrug|Ledrug]] 22:28, 26 September 2011 (UTC)
 
 ==Whilst/while==
-I didn't know that whilst was [http://oxforddictionaries.com/definition/whilst used mainly in Britain]. Some sentences still seem somehow better with the word rather than using while, but now that I am aware of my parochial Englishness I am quite happy to go along with swapping it :-) --[[User:Paddy3118|Paddy3118]] 04:07, 26 September 2011 (UTC)
+I didn't know that whilst was [used mainly in Britain](http://oxforddictionaries.com/definition/whilst). Some sentences still seem somehow better with the word rather than using while, but now that I am aware of my parochial Englishness I am quite happy to go along with swapping it :-) --[[User:Paddy3118|Paddy3118]] 04:07, 26 September 2011 (UTC)
 :Heh I didn't know either. You don't need to change if you don't want to. They mean the same thing. I guess I understand now why I thought it was an unnecessary word: in my country, it isn't necessary. In any case, I guess the nature of this site means we should accept all sorts of language subtleties (spoken, written, programmed, or otherwise, where it doesn't get in the way of clarity). You can stick with "whilst" where you like it and I'll stick with "while" everywhere. --[[User:Mwn3d|Mwn3d]] 19:52, 26 September 2011 (UTC)
 
 ==Liberty BASIC oddity==

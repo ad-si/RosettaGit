@@ -12,4 +12,4 @@ tags = []
 L++ is a programming language that transcompiles to C++. It uses Lisp-like syntax.
 
 ## See also
-* [https://bitbucket.org/ktg/l L++ website]
+* [L++ website](https://bitbucket.org/ktg/l)

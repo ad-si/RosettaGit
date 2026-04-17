@@ -27,6 +27,6 @@ See also [[Pick_random_element]].
 
 == Links ==
 * Wikipedia's article about [[wp:Random number generation|Random number generation]]
-* [http://csrc.nist.gov/groups/ST/toolkit/rng/index.html NIST's statistical tests for random numbers]
+* [NIST's statistical tests for random numbers](http://csrc.nist.gov/groups/ST/toolkit/rng/index.html)
 
 [[Category:Encyclopedia]]

@@ -12,4 +12,4 @@ tags = []
 
 {{library}}Tango is a cross-platform [[open source]] software library, written in the [[D]] programming language for D programmers. It is structured as a cohesive and comprehensive library for general purpose usage, and is supported by a growing number of recognized D enthusiasts.
 ==Citations==
-*[http://www.dsource.org/projects/tango/ Tango Home]
+*[Tango Home](http://www.dsource.org/projects/tango/)

@@ -27,4 +27,4 @@ The original system was developed for a [CDC](https://en.wikipedia.org/wiki/CDC_
 
 ## Download
 * binaries: ftp://ftp.cs.man.ac.uk/pub/chl/A68S
-* source: http://tack.cvs.sourceforge.net/viewvc/tack/Ack/lang/a68s
+* source: <http://tack.cvs.sourceforge.net/viewvc/tack/Ack/lang/a68s>

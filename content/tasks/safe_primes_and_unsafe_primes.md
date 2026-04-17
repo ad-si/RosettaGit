@@ -57,8 +57,8 @@ Show all output here.
 
 
 ;Also see:
-::*   The OEIS article:   [http://oeis.org/A005385   safe   primes].
-::*   The OEIS article:   [http://oeis.org/A059456 unsafe primes].
+::*   The OEIS article:   [safe   primes](http://oeis.org/A005385).
+::*   The OEIS article:   [unsafe primes](http://oeis.org/A059456).
 
 
 
@@ -125,7 +125,7 @@ There are 633,922 unsafe primes below 10,000,000
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 ```fsharp
 
 pCache |> Seq.filter(fun n->isPrime((n-1)/2)) |> Seq.take 35 |> Seq.iter (printf "%d ")

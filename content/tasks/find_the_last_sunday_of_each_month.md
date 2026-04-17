@@ -218,7 +218,7 @@ DW       DS     D                  packed (PL8) 15num
 ## Ada
 
 
-The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada]] solves this task, as well.
+The program from <http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada> solves this task, as well.
 
 ```txt
 >./last_weekday_in_month sunday 2013
@@ -1265,7 +1265,7 @@ Press any key to continue...
 
 =={{header|F_Sharp|F#}}==
 <p>We use a transformation from and to the Julian Day Number, see also PARI/GP or Fortran.</p>
-<p>The formulars used here come from [http://calendars.wikia.com/wiki/Julian_day_number] (section "Calculation").</p>
+<p>The formulars used here come from <http://calendars.wikia.com/wiki/Julian_day_number> (section "Calculation").</p>
 
 ```fsharp
 let jdn (year, month, day) =
@@ -4116,9 +4116,9 @@ object FindTheLastSundayOfEachMonth extends App {
 
 ## Seed7
 
-Uses the libraries [http://seed7.sourceforge.net/libraries/time.htm time.s7i] and
-[http://seed7.sourceforge.net/libraries/duration.htm duration.s7i].
-Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7]].
+Uses the libraries [time.s7i](http://seed7.sourceforge.net/libraries/time.htm) and
+[duration.s7i](http://seed7.sourceforge.net/libraries/duration.htm).
+Applicable to any day of the week, cf. <http://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7>.
 
 
 ```seed7
@@ -4393,7 +4393,7 @@ Next
 ## zkl
 
 
-The program from [[http://rosettacode.org/wiki/Last_Friday_of_each_month#zkl]] solves this task, as well.
+The program from <http://rosettacode.org/wiki/Last_Friday_of_each_month#zkl> solves this task, as well.
 
 ```txt
 var [const] D=Time.Date;

@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}
-More information regarding the C++ Big Integer Library (written by Matt McCutchen) may be found at https://mattmccutchen.net/bigint/
+More information regarding the C++ Big Integer Library (written by Matt McCutchen) may be found at <https://mattmccutchen.net/bigint/>

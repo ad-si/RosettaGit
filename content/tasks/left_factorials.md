@@ -97,15 +97,15 @@ Display the length (in decimal digits) of the left factorials for:
 
 
 ;Also see
-*   The OEIS entry: [http://oeis.org/A003422 A003422 left factorials]
-*   The MathWorld entry: [http://mathworld.wolfram.com/LeftFactorial.html left factorial]
-*   The MathWorld entry: [http://mathworld.wolfram.com/FactorialSums.html factorial sums]
-*   The MathWorld entry: [http://mathworld.wolfram.com/Subfactorial.html subfactorial]
+*   The OEIS entry: [A003422 left factorials](http://oeis.org/A003422)
+*   The MathWorld entry: [left factorial](http://mathworld.wolfram.com/LeftFactorial.html)
+*   The MathWorld entry: [factorial sums](http://mathworld.wolfram.com/FactorialSums.html)
+*   The MathWorld entry: [subfactorial](http://mathworld.wolfram.com/Subfactorial.html)
 
 
 ## Related tasks
 
-*   [http://rosettacode.org/wiki/Permutations/Derangements permutations/derangements (subfactorials)]
+*   [permutations/derangements (subfactorials)](http://rosettacode.org/wiki/Permutations/Derangements)
 
 
 
@@ -1836,7 +1836,7 @@ public class LeftFac{
 ## jq
 
 jq currently only has builtin support for IEEE 64-bit numbers, so in this section we will first present the algorithm using the builtin arithmetic
-operators and then adapt it for use with the BigInt library at https://gist.github.com/pkoppstein/d06a123f30c033195841
+operators and then adapt it for use with the BigInt library at <https://gist.github.com/pkoppstein/d06a123f30c033195841>
 
 '''Using builtin arithmetic''':
 

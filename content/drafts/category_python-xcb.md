@@ -13,4 +13,4 @@ tags = []
 {{library}}X Python Binding, based on the X C Binding (XCB) library.
 
 Homepage:
-http://xcb.freedesktop.org/XcbPythonBinding/
+<http://xcb.freedesktop.org/XcbPythonBinding/>

@@ -1260,7 +1260,7 @@ My measured time is slower than that posted for the original C code, but on my m
 === "Manual" solution (Norvig-style) ===
 {{works with|C sharp|C#|7+ (but easy to adapt to lower versions)}}
 <!-- By Martin Freedman, 17/01/2018 -->
-This is adapted from a solution to a similar problem by Peter Norvig in his [https://www.udacity.com/course/design-of-computer-programs--cs212 Udacity course CS212], originally written in Python. This is translated from [https://github.com/exercism/python/blob/master/exercises/zebra-puzzle/example.py example python solution on exercism]. This is a Generate-and-Prune Constraint Programming algorithm written with Linq. (See Benchmarks below)
+This is adapted from a solution to a similar problem by Peter Norvig in his [Udacity course CS212](https://www.udacity.com/course/design-of-computer-programs--cs212), originally written in Python. This is translated from [example python solution on exercism](https://github.com/exercism/python/blob/master/exercises/zebra-puzzle/example.py). This is a Generate-and-Prune Constraint Programming algorithm written with Linq. (See Benchmarks below)
 
 ```c#
 using System;
@@ -1501,7 +1501,7 @@ House Colour Drink    Nationality Smokes     Pet
 
 
 === "Amb" solution ===
-This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C# class] in the Amb challenge
+This uses the second version of the [Amb C# class](https://rosettacode.org/wiki/Amb#C.23) in the Amb challenge
 {{works with|C sharp|C#|7.1}}
 <!-- By Martin Freedman, 9/02/2018 -->
 
@@ -1767,7 +1767,7 @@ I think that it is Enums (not the use of ''dynamic'' in a dictionary, which is o
 
 ## Clojure
 
-This solution uses the contributed package ''clojure.core.logic'' (with ''clojure.tools.macro''), a mini-Kanren based logic solver. The solution is basically the one in [http://github.com/swannodette/logic-tutorial Swannodette's logic tutorial], adapted to the problem statement here.
+This solution uses the contributed package ''clojure.core.logic'' (with ''clojure.tools.macro''), a mini-Kanren based logic solver. The solution is basically the one in [Swannodette's logic tutorial](http://github.com/swannodette/logic-tutorial), adapted to the problem statement here.
 
 ```clojure
 (ns zebra.core
@@ -1834,7 +1834,7 @@ full solution (in house order):
 === Alternate solution (Norvig-style) ===
 {{libheader|clojure.math.combinatorics}}
 
-This is adapted from a solution to a similar problem by Peter Norvig in his [https://www.udacity.com/course/design-of-computer-programs--cs212 Udacity course CS212], originally written in Python but equally applicable in any language with for-comprehensions.
+This is adapted from a solution to a similar problem by Peter Norvig in his [Udacity course CS212](https://www.udacity.com/course/design-of-computer-programs--cs212), originally written in Python but equally applicable in any language with for-comprehensions.
 
 
 ```clojure
@@ -2025,7 +2025,7 @@ member = anyC . (=:=)
 main = findall $ \(hs,who) -> houses hs & H _ who Zebra _ _ `member` hs
 ```
 
-{{Output}} Using [http://www-ps.informatik.uni-kiel.de/~pakcs/webpakcs/main.cgi web interface].
+{{Output}} Using [web interface](http://www-ps.informatik.uni-kiel.de/~pakcs/webpakcs/main.cgi).
 
 ```txt
 Execution time: 180 msec. / elapsed: 180 msec.
@@ -2804,7 +2804,7 @@ Solved in  .109375  seconds
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Permutations_by_swapping#F.23]
+This task uses <http://www.rosettacode.org/wiki/Permutations_by_swapping#F.23>
 
 ```fsharp
 
@@ -3567,7 +3567,7 @@ House {color = White, man = Swe, pet = Dog, drink = Beer, smoke = BlueMaster}
 No More Solutions
 ```
 
-[http://ideone.com/ZaKfWC Runs in: time: 0.01s.]
+[Runs in: time: 0.01s.](http://ideone.com/ZaKfWC)
 
 === LP-like version ===
 
@@ -5816,7 +5816,7 @@ true.
 ```
 
 
-Works [http://ideone.com/Es8DV with SWI-Prolog]. More verbose [http://ideone.com/6PzbZ translation] of the specification works as well.
+Works [with SWI-Prolog](http://ideone.com/Es8DV). More verbose [translation](http://ideone.com/6PzbZ) of the specification works as well.
 
 
 ### Direct rule by rule translation
@@ -5859,7 +5859,7 @@ zebra( Owner, Houses):-
 ```
 
 
-[http://ideone.com/wcwXfZ Output]:
+[Output](http://ideone.com/wcwXfZ):
 
 ```Prolog
 ?- time(( zebra(Z,HS), (maplist(length,HS,_) -> maplist(sort,HS,S),
@@ -5950,7 +5950,7 @@ the one who keeps zebra: ger
 ### Constraint Programming version
 
 {{Works with|SWI Prolog}}
-Original source code is 'ECLiPSe ( http://eclipseclp.org/ )' example: http://eclipseclp.org/examples/zebra.ecl.txt
+Original source code is 'ECLiPSe ( <http://eclipseclp.org/> )' example: <http://eclipseclp.org/examples/zebra.ecl.txt>
 
 ```prolog
 :- use_module(library(clpfd)).
@@ -6027,7 +6027,7 @@ zebra :-
 ## Python
 
 {{trans|Clojure}}
-Using 'logpy': https://github.com/logpy/logpy
+Using 'logpy': <https://github.com/logpy/logpy>
 
 ```python
 
@@ -6302,8 +6302,8 @@ Runtime about 0.0013 seconds
 
 ### Constraint Programming Version
 
-Using 'python-constraint': http://labix.org/python-constraint,
-Original source code is 'ECLiPSe ( http://eclipseclp.org/ )' example: http://eclipseclp.org/examples/zebra.ecl.txt
+Using 'python-constraint': <http://labix.org/python-constraint>,
+Original source code is 'ECLiPSe ( <http://eclipseclp.org/> )' example: <http://eclipseclp.org/examples/zebra.ecl.txt>
 
 ```python
 from constraint import *
@@ -6971,7 +6971,7 @@ object Einstein extends App {
 } // loc 58
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/h5Y98te/0 ScalaFiddle (JavaScript executed in browser)] or by [https://scastie.scala-lang.org/fJZRog4xQ9aAV4D3crM1gQ Scastie (remote JVM)].{{out}}
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript executed in browser)](https://scalafiddle.io/sf/h5Y98te/0) or by [Scastie (remote JVM)](https://scastie.scala-lang.org/fJZRog4xQ9aAV4D3crM1gQ).{{out}}
 
 ```txt
  The German is the owner of the zebra.
@@ -7074,7 +7074,7 @@ object Einstein extends App {
 }// loc 38
 ```
 
-{{Out}}Experience running it in your browser by [https://scalafiddle.io/sf/hJgtjYG/1 ScalaFiddle (JavaScript executed in browser)] or by [https://scastie.scala-lang.org/ajeuRgDSQKyVv4Jd6SPfVQ Scastie (remote JVM)].
+{{Out}}Experience running it in your browser by [ScalaFiddle (JavaScript executed in browser)](https://scalafiddle.io/sf/hJgtjYG/1) or by [Scastie (remote JVM)](https://scastie.scala-lang.org/ajeuRgDSQKyVv4Jd6SPfVQ).
 {{out}}
 
 ```txt

@@ -27,7 +27,7 @@ But knowing that C++ was designed to be both OO and C backward compatable (to so
 
 : (My opinion) The "Unimplemented task" pages specifically list tasks marked as omitted, yet encourages people to try to implement them. Proofs of concepts such can illustrate where a problem may be solveable using a language, yet be particularly unidiomatic. In short, it can show how you might need to do something if you really have to, but also serve as a warning suggesting there may be a better way. In short, I think the ''example'' is wise, but as an example, not a recommendation. --[[User:Short Circuit|Michael Mol]] 06:34, 17 January 2010 (UTC)
 
-: Actually, there is a full object system for plain C: [http://library.gnome.org/devel/gobject/unstable/pr01.html GObject]. In fact, this implementation might be fruitfully replaced with one that uses GObject. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 12:26, 17 January 2010 (UTC)
+: Actually, there is a full object system for plain C: [GObject](http://library.gnome.org/devel/gobject/unstable/pr01.html). In fact, this implementation might be fruitfully replaced with one that uses GObject. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 12:26, 17 January 2010 (UTC)
 
 :: That would probably be a good Idea.  With what's here, the main purpose gets rather lost in the haystack.--[[User:Rldrenth|Rldrenth]] 13:40, 17 January 2010 (UTC)
 ::: +1 --[[User:Paddy3118|Paddy3118]] 16:59, 17 January 2010 (UTC)

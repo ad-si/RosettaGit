@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-I came across [http://metabox.it/ElqIm.png this cartoon] in which an initially enthusiastic programmer laments the amount of boilerplate cruft they have to write; finally finds an interesting problem; roughs-out an algorithm; then googles for other solutions only to become depressed on finding good or better algorithms pre-written in every language. They end up even more depressed.
+I came across [this cartoon](http://metabox.it/ElqIm.png) in which an initially enthusiastic programmer laments the amount of boilerplate cruft they have to write; finally finds an interesting problem; roughs-out an algorithm; then googles for other solutions only to become depressed on finding good or better algorithms pre-written in every language. They end up even more depressed.
 
 I immediately thought that RC has a lot of examples in many languages so could be the source of such despair; but really think the mindset of the person is wrong. Why be depressed about not being able to contribute an original algorithm. Algorithms and their implementations are better off being honed and copied. 
 

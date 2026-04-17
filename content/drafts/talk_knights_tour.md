@@ -20,21 +20,21 @@ Added my original perl solution and sample output; moved out of draft status.
 == References ==
 [[wp:Knight%27s_tour]]
 
-The following had more than I needed to know about the problem [http://www.cs.cmu.edu/~sganzfri/REUPaper.pdf A Simple Algorithm for Knight’s Tours] by Sam Ganzfried. --[[User:Paddy3118|Paddy3118]] 07:22, 29 May 2011 (UTC)
+The following had more than I needed to know about the problem [A Simple Algorithm for Knight’s Tours](http://www.cs.cmu.edu/~sganzfri/REUPaper.pdf) by Sam Ganzfried. --[[User:Paddy3118|Paddy3118]] 07:22, 29 May 2011 (UTC)
 :::::::   (above) broken link.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:56, 22 July 2019 (UTC)
-:::::::   (above) referenced document can be found here: [http://math.oregonstate.edu/~math_reu/proceedings/REU_Proceedings/Proceedings2004/2004Ganzfried.pdf A Simple Algorithm for Knight’s Tours by Sam Ganzfried] 
+:::::::   (above) referenced document can be found here: [A Simple Algorithm for Knight’s Tours by Sam Ganzfried](http://math.oregonstate.edu/~math_reu/proceedings/REU_Proceedings/Proceedings2004/2004Ganzfried.pdf) 
 
 
 I discovered this weekend that Warnsdorff sometimes generates incomplete tours.  This is discussed in Granzfried (above) and also in Mordecki.
-* [http://www.cmat.edu.uy/~mordecki/articles/warnsdorff.pdf Counting Knight's Tours through the Randomized Warnsdor� Rule, Cancela & Mordecki, 2006] --[[User:Dgamey|Dgamey]] 11:05, 30 May 2011 (UTC)
+* [Counting Knight's Tours through the Randomized Warnsdor� Rule, Cancela & Mordecki, 2006](http://www.cmat.edu.uy/~mordecki/articles/warnsdorff.pdf) --[[User:Dgamey|Dgamey]] 11:05, 30 May 2011 (UTC)
 *  [ftp://reports.stanford.edu/pub/cstr/reports/cs/tr/74/442/CS-TR-74-442.pdf Estimating the efficiency of backtrack programs, Knuth, 1974] --[[User:Dgamey|Dgamey]] 11:36, 30 May 2011 (UTC)
-*  [http://faculty.olin.edu/~sadams/DM/ktpaper.pdf Knight's Tours, Hill & Tostado, 2004] --[[User:Dgamey|Dgamey]] 19:56, 30 May 2011 (UTC)
+*  [Knight's Tours, Hill & Tostado, 2004](http://faculty.olin.edu/~sadams/DM/ktpaper.pdf) --[[User:Dgamey|Dgamey]] 19:56, 30 May 2011 (UTC)
 
 I found some additional references that may be of interest including a genetic algorithm, called Ant Colony.
 
-* http://www.markkeen.com/knight/index.html 
-* http://www.cs.nott.ac.uk/~gxk/papers/phai04.pdf  Ant Colony Algorithm 
-* http://arxiv.org/abs/arXiv:0803.4321
+* <http://www.markkeen.com/knight/index.html> 
+* <http://www.cs.nott.ac.uk/~gxk/papers/phai04.pdf>  Ant Colony Algorithm 
+* <http://arxiv.org/abs/arXiv:0803.4321>
 --[[User:Dgamey|Dgamey]] 10:10, 2 June 2011 (UTC)
 
 == Incomplete Tours and Warnsdorff ==
@@ -175,4 +175,4 @@ I edited the C++ to remove some of the changes made. Several are fairly pointles
 ::::: Sorry if I sounded a bit short; most of my wiki edits are in a few spare minutes here and there, so after a few rounds of quick edits and rewrites, my prose can ultimately sound worse than it started... I'm familiar with the TA role; [[User:Mwn3d|Mwn3d]] is a former TA from RIT, and has been heavily involved with RC for three or four years, now. I think he suggested elsewhere following the model of [[J/HouseStyle]], as far as developing a community style. I'm beginning to see a need for that, I suppose; better to have the debate and discussion over style in one place, than in dozens of places. I suppose the C++ page would be at [[C++/HouseStyle]] --[[User:Short Circuit|Michael Mol]] 15:30, 2 June 2011 (UTC)
 
 ==Tiling smaller tours==
-[https://gilith.wordpress.com/2013/02/20/large-knights-tours/ This] blog post by Joe Leslie-Hurd has a novel technique of stitching together smaller tours to make larger ones. Enjoy. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 06:28, 21 July 2015 (UTC)
+[This](https://gilith.wordpress.com/2013/02/20/large-knights-tours/) blog post by Joe Leslie-Hurd has a novel technique of stitching together smaller tours to make larger ones. Enjoy. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 06:28, 21 July 2015 (UTC)

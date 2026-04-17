@@ -313,7 +313,7 @@ M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 
 
 ```
 
-See also: http://www.xs4all.nl/~jmvdveer/mersenne.a68.html
+See also: <http://www.xs4all.nl/~jmvdveer/mersenne.a68.html>
 
 
 ## ARM Assembly
@@ -2347,7 +2347,7 @@ M31 is PRIME!
 
 ## Perl
 
-Using [https://metacpan.org/pod/Math::GMP Math::GMP]:
+Using [Math::GMP](https://metacpan.org/pod/Math::GMP):
 
 ```perl
 use Math::GMP qw/:constant/;
@@ -3006,7 +3006,7 @@ print
 ```
 
 
-The main loop may be run much faster using [https://pypi.python.org/pypi/gmpy2 gmpy2] :
+The main loop may be run much faster using [gmpy2](https://pypi.python.org/pypi/gmpy2) :
 
 
 ```python
@@ -3036,7 +3036,7 @@ The primes found are
 
 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243
 
-Of course, they agree with [http://oeis.org/A000043 OEIS A000043].
+Of course, they agree with [OEIS A000043](http://oeis.org/A000043).
 
 
 ## R
@@ -3524,7 +3524,7 @@ M2 M3 M5 M7 M13 M17 M19
 
 ## Seed7
 
-To get maximum speed the program should be [http://seed7.sourceforge.net/scrshots/comp.htm compiled] with -O2.
+To get maximum speed the program should be [compiled](http://seed7.sourceforge.net/scrshots/comp.htm) with -O2.
 
 
 ```seed7
@@ -3585,8 +3585,8 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#lucasLehmerTest lucasLehmerTest],
-[http://seed7.sourceforge.net/algorith/math.htm#isPrime isPrime]
+Original source: [lucasLehmerTest](http://seed7.sourceforge.net/algorith/math.htm#lucasLehmerTest),
+[isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime)
 
 ```txt
 

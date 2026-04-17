@@ -301,7 +301,7 @@ Eventually, all items will have been sold, and the store manager will empty the 
 
 The eager --  but destined to be frustrated customers -- will continue to request their random items, forever. :)
 
-[https://lh6.googleusercontent.com/-dTvs9totvDE/Uu3ZiFeE90I/AAAAAAAAJ-w/lJBVHOd-p0g/s1600/Untitled.png CLICK HERE TO VIEW THE CODE BLOCKS AND ANDROID APP SCREEN]
+[CLICK HERE TO VIEW THE CODE BLOCKS AND ANDROID APP SCREEN](https://lh6.googleusercontent.com/-dTvs9totvDE/Uu3ZiFeE90I/AAAAAAAAJ-w/lJBVHOd-p0g/s1600/Untitled.png)
 ---
 END
 
@@ -1256,8 +1256,8 @@ In this demonstration code we show a feature of Forth that is one of the earlies
 <BR>Implementations in other languages or libraries might use a linked list that could potentially consume all memory. Creating a static circular queue is more typical for Forth where it is commonly used in embedded high reliability systems. The code here makes use of the fact that if the queue size is a power of 2, the circular wrap around can be implemented without an IF statement, and uses logical AND with binary mask to wrap around.
 <BR> NOTE: We also used a more Forth like naming convention QC@ (queue char fetch) and QC! (queue char store) rather than PUSH and POP which as stack users we felt were more appropriate for a Stack than a Queue.
 
-A simpler implementation, where you only need 1 queue can be seen here: http://rosettacode.org/wiki/Queue/Definition#Forth<BR>
-And a Forth version using some new features of Forth 2012, dynamic memory allocation and a linked list can be seen here:<BR> http://rosettacode.org/wiki/Queue/Definition#Linked_list_version
+A simpler implementation, where you only need 1 queue can be seen here: <http://rosettacode.org/wiki/Queue/Definition#Forth><BR>
+And a Forth version using some new features of Forth 2012, dynamic memory allocation and a linked list can be seen here:<BR> <http://rosettacode.org/wiki/Queue/Definition#Linked_list_version>
 
 <lang>: cqueue: ( n -- <text>)
     create                                                 \ compile time: build the data structure in memory

@@ -543,7 +543,7 @@ int main()
 ```
 
 
-Memory map on Windows. See MSDN, starting with '''[https://msdn.microsoft.com/en-us/library/windows/desktop/aa366556.aspx File Mapping]'''. In practice, it would be necessary to check for errors, and to take care of large files. Also, this example is using a view on the whole file, but it's possible to create a smaller view.
+Memory map on Windows. See MSDN, starting with '''[File Mapping](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366556.aspx)'''. In practice, it would be necessary to check for errors, and to take care of large files. Also, this example is using a view on the whole file, but it's possible to create a smaller view.
 
 
 ```c
@@ -1651,7 +1651,7 @@ defn(`foo')
 contents := $(shell cat foo.txt)
 ```
 
-This is [http://www.gnu.org/software/make/manual/html_node/Shell-Function.html from the GNU Make manual].  As noted there, newlines are converted to spaces in the <code>$(contents)</code> variable.  This might be acceptable for files which are a list of words anyway.
+This is [from the GNU Make manual](http://www.gnu.org/software/make/manual/html_node/Shell-Function.html).  As noted there, newlines are converted to spaces in the <code>$(contents)</code> variable.  This might be acceptable for files which are a list of words anyway.
 
 
 ## Maple
@@ -2241,7 +2241,7 @@ file($filename)
 
 ## PicoLisp
 
-Using '[http://software-lab.de/doc/refT.html#till till]' is the shortest way:
+Using '[till](http://software-lab.de/doc/refT.html#till)' is the shortest way:
 
 ```PicoLisp
 (in "file" (till NIL T))
@@ -2434,7 +2434,7 @@ $handle close
 
 ## REALbasic
 
-This function accepts a file (FolderItem object) and an optional TextEncoding class. If the TextEncoding is not defined, then REALbasic defaults to UTF-8. Since it is intended for cross-platform development, REALbasic has a number of built-in tools for working with different text encodings, line terminators, etc. [http://docs.realsoftware.com/index.php/TextEncoding]
+This function accepts a file (FolderItem object) and an optional TextEncoding class. If the TextEncoding is not defined, then REALbasic defaults to UTF-8. Since it is intended for cross-platform development, REALbasic has a number of built-in tools for working with different text encodings, line terminators, etc. <http://docs.realsoftware.com/index.php/TextEncoding>
 
 ```realbasic
 
@@ -2679,8 +2679,8 @@ Works with Chicken Scheme:
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/getf.htm getf.s7i]
-defines the function [http://seed7.sourceforge.net/libraries/getf.htm#getf%28in_string%29 getf],
+The library [getf.s7i](http://seed7.sourceforge.net/libraries/getf.htm)
+defines the function [getf](http://seed7.sourceforge.net/libraries/getf.htm#getf%28in_string%29),
 which reads a whole file into a string:
 
 ```seed7
@@ -2765,7 +2765,7 @@ text = #.readtext("filename.txt")
 
 ## Stata
 
-It's possible to get the entire content as an array of lines with '''[http://www.stata.com/help.cgi?mf_cat cat]'''. However, here we want a single string. See '''[http://www.stata.com/help.cgi?mf_fopen fopen]''' and related functions.
+It's possible to get the entire content as an array of lines with '''[cat](http://www.stata.com/help.cgi?mf_cat)'''. However, here we want a single string. See '''[fopen](http://www.stata.com/help.cgi?mf_fopen)''' and related functions.
 
 
 ```stata

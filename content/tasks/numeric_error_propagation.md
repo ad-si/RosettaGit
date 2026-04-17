@@ -80,7 +80,7 @@ notation which causes the  overline  "text-decoration"  to either overlay the su
 
 ## References
 
-* [http://casa.colorado.edu/~benderan/teaching/astr3510/stats.pdf A Guide to Error Propagation] B. Keeney, 2005.
+* [A Guide to Error Propagation](http://casa.colorado.edu/~benderan/teaching/astr3510/stats.pdf) B. Keeney, 2005.
 * [[wp:Propagation of uncertainty|Propagation of uncertainty]] Wikipedia.
 
 

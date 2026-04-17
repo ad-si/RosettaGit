@@ -590,7 +590,7 @@ GetChar(s, x, y, n=1){
 
 ### Alternative Version
 
-http://rosettacode.org/wiki/Maze_solving#AutoHotkey
+<http://rosettacode.org/wiki/Maze_solving#AutoHotkey>
 
 Generator and solver combined.
 
@@ -2243,7 +2243,7 @@ void main() @safe {
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=size%3D20%0A%23%20%0Asz%3D2%2Asize%2B1%0A%23%20we%20only%20have%20one-dimensional%20arrays%0Alen%20f%5B%5D%20sz%2Asz%0A%23%20%0Afunc%20make_maze..%0A%23%20the%20maze%20is%20created%20by%20random%20walking%20around%0Afor%20i%20range%20len%20f%5B%5D%0Af%5Bi%5D%3D1%0A.%0Ax%3D1%2B2%2Arandom%20size%0Ay%3D1%2B2%2Arandom%20size%0Af%5Bx%2By%2Asz%5D%3D0%0Avisited%3D1%0Awhile%20visited%20%3C%20size%2Asize%0Aoldx%3Dx%0Aoldy%3Dy%0Adir%3Drandom%204%0Aif%20dir%3D0%20and%20x%2B2%20%3C%20sz%0Ax%2B%3D2%0Aelif%20dir%3D1%20and%20y%2B2%20%3C%20sz%0Ay%2B%3D2%0Aelif%20dir%3D2%20and%20x%20%3E%202%0Ax-%3D2%0Aelif%20dir%3D3%20and%20y%20%3E%202%0Ay-%3D2%0A.%0Aif%20f%5By%2Asz%2Bx%5D%3D1%0Af%5By%2Asz%2Bx%5D%3D0%0Af%5B%28y%2Boldy%29/2%2Asz%2B%28x%2Boldx%29/2%5D%3D0%0Avisited%2B%3D1%0A.%0A.%0Af%5B%28sz-1%29%2Asz%2Bsz-2%5D%3D0%0A.%0Afunc%20show_maze..%0Ac2%23%3D%28100-24/size%29/size/2%0Ac10%23%3Dc2%23/5%0Alinewidth%202%2Ac10%23%0Acolor%20997%0Amove%200%200%0Arect%20100%20100%0Acolor%20543%0Afor%20r%20range%20sz%0Afor%20c%20range%20sz%0Aif%20f%5Br%2Asz%2Bc%5D%3D1%0Aif%20r%20mod%202%3D0%0Aif%20c%20mod%202%3D1%0Amove%20c10%23%2B%28c-1%29%2Ac2%23%20c10%23%2Br%2Ac2%23%0Aline%20c10%23%2B%28c%2B1%29%2Ac2%23%20c10%23%2Br%2Ac2%23%0A.%0Aelse%0Amove%20c10%23%2Bc%2Ac2%23%20c10%23%2B%28r-1%29%2Ac2%23%0Aline%20c10%23%2Bc%2Ac2%23%20c10%23%2B%28r%2B1%29%2Ac2%23%0A.%0A.%0A.%0A.%0A.%0Acall%20make_maze%0Acall%20show_maze Run it]
+[Run it](https://easylang.online/apps/run.html?code=size%3D20%0A%23%20%0Asz%3D2%2Asize%2B1%0A%23%20we%20only%20have%20one-dimensional%20arrays%0Alen%20f%5B%5D%20sz%2Asz%0A%23%20%0Afunc%20make_maze..%0A%23%20the%20maze%20is%20created%20by%20random%20walking%20around%0Afor%20i%20range%20len%20f%5B%5D%0Af%5Bi%5D%3D1%0A.%0Ax%3D1%2B2%2Arandom%20size%0Ay%3D1%2B2%2Arandom%20size%0Af%5Bx%2By%2Asz%5D%3D0%0Avisited%3D1%0Awhile%20visited%20%3C%20size%2Asize%0Aoldx%3Dx%0Aoldy%3Dy%0Adir%3Drandom%204%0Aif%20dir%3D0%20and%20x%2B2%20%3C%20sz%0Ax%2B%3D2%0Aelif%20dir%3D1%20and%20y%2B2%20%3C%20sz%0Ay%2B%3D2%0Aelif%20dir%3D2%20and%20x%20%3E%202%0Ax-%3D2%0Aelif%20dir%3D3%20and%20y%20%3E%202%0Ay-%3D2%0A.%0Aif%20f%5By%2Asz%2Bx%5D%3D1%0Af%5By%2Asz%2Bx%5D%3D0%0Af%5B%28y%2Boldy%29/2%2Asz%2B%28x%2Boldx%29/2%5D%3D0%0Avisited%2B%3D1%0A.%0A.%0Af%5B%28sz-1%29%2Asz%2Bsz-2%5D%3D0%0A.%0Afunc%20show_maze..%0Ac2%23%3D%28100-24/size%29/size/2%0Ac10%23%3Dc2%23/5%0Alinewidth%202%2Ac10%23%0Acolor%20997%0Amove%200%200%0Arect%20100%20100%0Acolor%20543%0Afor%20r%20range%20sz%0Afor%20c%20range%20sz%0Aif%20f%5Br%2Asz%2Bc%5D%3D1%0Aif%20r%20mod%202%3D0%0Aif%20c%20mod%202%3D1%0Amove%20c10%23%2B%28c-1%29%2Ac2%23%20c10%23%2Br%2Ac2%23%0Aline%20c10%23%2B%28c%2B1%29%2Ac2%23%20c10%23%2Br%2Ac2%23%0A.%0Aelse%0Amove%20c10%23%2Bc%2Ac2%23%20c10%23%2B%28r-1%29%2Ac2%23%0Aline%20c10%23%2Bc%2Ac2%23%20c10%23%2B%28r%2B1%29%2Ac2%23%0A.%0A.%0A.%0A.%0A.%0Acall%20make_maze%0Acall%20show_maze)
 
 
 ```easyprog.online
@@ -2818,7 +2818,7 @@ main =
 ```
 
 
-Link to live demo: http://dc25.github.io/mazeGenerationElm/
+Link to live demo: <http://dc25.github.io/mazeGenerationElm/>
 
 
 ## Erlang
@@ -3499,9 +3499,9 @@ m.Print()
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Maze_generation this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Maze_generation) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -4067,7 +4067,7 @@ end
 ```
 
 Note: The underlying maze structure (matrix) is uni-directional from the start
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -4146,7 +4146,7 @@ import java.util.Arrays;
 /*
  * recursive backtracking algorithm
  * shamelessly borrowed from the ruby at
- * http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking
+ * <http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking>
  */
 public class MazeGenerator {
 	private final int x;
@@ -7291,7 +7291,7 @@ maze.print
 
 ## Rust
 
-Uses the [https://crates.io/crates/rand rand] library
+Uses the [rand](https://crates.io/crates/rand) library
 
 ```rust
 use rand::{thread_rng, Rng, rngs::ThreadRng};

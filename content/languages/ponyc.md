@@ -11,4 +11,4 @@ tags = []
 +++
 
 Pony Compiler
-https://github.com/CausalityLtd/ponyc
+<https://github.com/CausalityLtd/ponyc>

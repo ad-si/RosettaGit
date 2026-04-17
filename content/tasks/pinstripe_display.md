@@ -116,7 +116,7 @@ package  {
 
 ## AutoHotkey
 
-Requires the GDI+ standard library: http://www.autohotkey.com/forum/viewtopic.php?t=32238<br/>
+Requires the GDI+ standard library: <http://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
 It is worth noting that this fills the whole screen; press Esc to exit.
 
 ```AHK
@@ -213,7 +213,7 @@ The dimensions of the image are specified by the first two values on the stack: 
 
 ## C
 
-This code is only a slight variation of my [http://rosettacode.org/wiki/Colour_pinstripe/Display#C Colour Pinstripe C code]. It also uses Borland's Turbo C graphics library.
+This code is only a slight variation of my [Colour Pinstripe C code](http://rosettacode.org/wiki/Colour_pinstripe/Display#C). It also uses Borland's Turbo C graphics library.
 
 
 ```C
@@ -489,12 +489,12 @@ End
 ```
 
 
-'''[http://www.cogier.com/gambas/Pinstripe.png Click here for an image of the output]'''
+'''[Click here for an image of the output](http://www.cogier.com/gambas/Pinstripe.png)'''
 
 
 ## Go
 
-The code here is the same as that for the [https://rosettacode.org/wiki/Colour_pinstripe/Display#Go Color pinstripe task] except that the palette is limited to the two colors, white and black.
+The code here is the same as that for the [Color pinstripe task](https://rosettacode.org/wiki/Colour_pinstripe/Display#Go) except that the palette is limited to the two colors, white and black.
 
 ```go
 package main
@@ -564,7 +564,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn supports graphics]
+[graphics.icn supports graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -815,7 +815,7 @@ Graphics[Join[{Thickness[1/408]},
     Range[102]]], ImageSize -> {408, 408}]
 ```
 
-See [https://www.dropbox.com/s/2ukd07ja3ubyjma/Mathematica_Pinstripes.png?dl=0 here].
+See [here](https://www.dropbox.com/s/2ukd07ja3ubyjma/Mathematica_Pinstripes.png?dl=0).
 
 
 ## Perl
@@ -843,7 +843,7 @@ for my $width (1..4) {
 $img->write(file => 'pinstripes-bw.png');
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/pinstripes-bw.png Pinstripes] (offsite image)
+[Pinstripes](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/pinstripes-bw.png) (offsite image)
 
 
 ## Perl 6
@@ -875,7 +875,7 @@ $img.close;
 
 ## Phix
 
-Just change [http://rosettacode.org/wiki/Colour_pinstripe/Display#Phix Colour Pinstripe] such that colours = {CD_BLACK, CD_WHITE}
+Just change [Colour Pinstripe](http://rosettacode.org/wiki/Colour_pinstripe/Display#Phix) such that colours = {CD_BLACK, CD_WHITE}
 
 
 ## PicoLisp
@@ -1115,7 +1115,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/kbwb8jq5q90n88b/Pinstripe.jpg?dl=0
+<https://www.dropbox.com/s/kbwb8jq5q90n88b/Pinstripe.jpg?dl=0>
 
 
 ## Scala
@@ -1183,7 +1183,7 @@ The ZX81's graphics resolution is only 64x44, so this is quite a blocky pinstrip
 90 NEXT W
 ```
 
-Screenshot [http://www.edmundgriffiths.com/zx81pinstripe.jpg here].
+Screenshot [here](http://www.edmundgriffiths.com/zx81pinstripe.jpg).
 
 
 ## Tcl

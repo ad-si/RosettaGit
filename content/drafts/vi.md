@@ -28,7 +28,7 @@ There are several variants:
 * [[wp:Elvis (text editor)|Elvis]]
 * [[wp:nvi|nvi]]                  - "new vi"
 * [[wp:vile (editor)|vile]]       - "VI Like Emacs"
-* [[wp:Vim (text editor)|vim]]    - "VI-Improved"   Website: [http://www.vim.org vim.org] 
+* [[wp:Vim (text editor)|vim]]    - "VI-Improved"   Website: [vim.org](http://www.vim.org) 
 ** current version: Vim 7.4.507 (2013-07) 
 ** See also [[:Category:Vim Script]]
 

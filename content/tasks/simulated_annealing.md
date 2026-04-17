@@ -20,9 +20,9 @@ languages = [
 ]
 +++
 
-Quoted from the [https://en.wikipedia.org/wiki/Simulated_annealing Wikipedia page] : '''Simulated annealing (SA)''' is a probabilistic technique for approximating the global optimum of a given function. Simulated annealing interprets slow cooling as a slow decrease in the probability of temporarily accepting worse solutions as it explores the solution space.
+Quoted from the [Wikipedia page](https://en.wikipedia.org/wiki/Simulated_annealing) : '''Simulated annealing (SA)''' is a probabilistic technique for approximating the global optimum of a given function. Simulated annealing interprets slow cooling as a slow decrease in the probability of temporarily accepting worse solutions as it explores the solution space.
 
-'''Pseudo code''' from [https://en.wikipedia.org/wiki/Simulated_annealing Wikipedia]
+'''Pseudo code''' from [Wikipedia](https://en.wikipedia.org/wiki/Simulated_annealing)
 
 
 ```txt
@@ -87,7 +87,7 @@ For k = 0 to kmax by step kmax/10 , display k, T, E(s). Display the final state 
 You will see that the Energy may grow to a local optimum, before decreasing to a global optimum.
 
 '''Illustrated example''' 
-	[http://www.echolalie.org/echolisp/annealing.html Temperature charts]
+	[Temperature charts](http://www.echolalie.org/echolisp/annealing.html)
 	
 '''Numerical example''' 
 

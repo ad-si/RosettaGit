@@ -1668,7 +1668,7 @@ TOBEORNOTTOBEORTOBEORNOT => 1150764267498783364 * 10^15
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/EUNJ0zp/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/DVl840oDS2mFvFQ560fxJAScastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/EUNJ0zp/0) or [(remote JVM)](https://scastie.scala-lang.org/DVl840oDS2mFvFQ560fxJAScastie).
 
 ```Scala
 object ArithmeticCoding extends App {

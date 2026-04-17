@@ -17,7 +17,7 @@ This implementation (in [[TI-83 BASIC]]) has quite a few limitations. Among them
 * In order to simplify the main loop, all commands are stored to list L1 at the beginning. Lists (arrays) in TI-BASIC can't be more than 999 elements, so attempting to run a program exceeding that size will throw an error (probably INVALID DIM). This can be fixed at the cost of speed and size.
 * Speaking of which: the interpreter is... on the slow side, to put it nicely.
 
-This was made to be compatible with [http://sc.cemetech.net SourceCoder], so the tilde (~) translates to the negative sign (the <tt>(-)</tt> key) and -> is the arrow on the STO> key.
+This was made to be compatible with [SourceCoder](http://sc.cemetech.net), so the tilde (~) translates to the negative sign (the <tt>(-)</tt> key) and -> is the arrow on the STO> key.
 
  Input "",Str1               //program input
  seq(inString("<>-+.,[]",sub(Ans,S,1)),S,1,length(Str1->L2

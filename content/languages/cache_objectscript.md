@@ -9,7 +9,7 @@ id = 13126
 categories = []
 tags = []
 +++
-<p>Visit the [https://groups.google.com/forum/?fromgroups#!forum/intersystems-public-cache Google group] for discussions about this language.</p>
+<p>Visit the [Google group](https://groups.google.com/forum/?fromgroups#!forum/intersystems-public-cache) for discussions about this language.</p>
 
 <p>Visit [Wikipedia](https://en.wikipedia.org/wiki/Caché_ObjectScript) for a general description.</p>
 
@@ -18,10 +18,10 @@ tags = []
 
 ## Documentation
 ''InterSystems Documentation Overview Page''<br />
-http://docs.intersystems.com
+<http://docs.intersystems.com>
 
 ''InterSystems Product Documentation (Cach&eacute; and Ensemble)''<br />
-http://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls
+<http://docs.intersystems.com/latest/csp/docbook/DocBook.UI.Page.cls>
 
 ''InterSystems Class Reference (Cach&eacute; and Ensemble system, library, and sample classes)''<br />
-http://docs.intersystems.com/latest/csp/documatic/%25CSP.Documatic.cls
+<http://docs.intersystems.com/latest/csp/documatic/%25CSP.Documatic.cls>

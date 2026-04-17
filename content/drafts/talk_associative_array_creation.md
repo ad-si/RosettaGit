@@ -39,7 +39,7 @@ I don't know if it is relevant, but should we add user-made functions ? I know I
    return $ret;
   }
 
-It's like [[http://fr2.php.net/array_push array_push ()]], up to the part that it actually allows associative elements to be added (pushed)... More info: http://fr2.php.net/manual/en/function.array-push.php#58705
+It's like [array_push ()](http://fr2.php.net/array_push), up to the part that it actually allows associative elements to be added (pushed)... More info: <http://fr2.php.net/manual/en/function.array-push.php#58705>
 
 == Requirements? ==
 

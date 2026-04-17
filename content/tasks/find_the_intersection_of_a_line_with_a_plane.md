@@ -490,7 +490,7 @@ The ray intersects the plane at (0, -5, 5)
 
 ## Haskell
 
-Note that V3 is implemented similarly in the external library [https://hackage.haskell.org/package/linear-1.20.7/docs/Linear-V3.html linear].
+Note that V3 is implemented similarly in the external library [linear](https://hackage.haskell.org/package/linear-1.20.7/docs/Linear-V3.html).
 
 ```Haskell
 import Control.Applicative (liftA2)
@@ -973,7 +973,7 @@ end function
 
 ## Python
 
-Based on the approach at geomalgorithms.com<ref>http://geomalgorithms.com/a05-_intersect-1.html</ref>
+Based on the approach at geomalgorithms.com<ref><http://geomalgorithms.com/a05-_intersect-1.html></ref>
 
 
 ```python
@@ -1366,7 +1366,7 @@ object LinePLaneIntersection extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/oLTlNZk/0 ScalaFiddle (JavaScript)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/oLTlNZk/0).
 
 ## Sidef
 

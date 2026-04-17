@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/go-vgo/robotgo RobotGo] is a native cross-platform GUI automation library for Go. It supports Mac, Windows, and Linux(X11).
+[RobotGo](https://github.com/go-vgo/robotgo) is a native cross-platform GUI automation library for Go. It supports Mac, Windows, and Linux(X11).
 
-Its use is subject to the [https://github.com/go-vgo/robotgo/blob/master/LICENSE Apache License 2.0].
+Its use is subject to the [Apache License 2.0](https://github.com/go-vgo/robotgo/blob/master/LICENSE).

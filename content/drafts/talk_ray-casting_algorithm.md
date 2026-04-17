@@ -124,7 +124,7 @@ void main()
 
 
 To see our polygon and test point you can use geogebra web :
-  * go to http://www.geogebra.org/webstart/geogebra.html
+  * go to <http://www.geogebra.org/webstart/geogebra.html>
   * enter in the input field : (-5.000000f,0.023800f)
   * enter in the input field : Polygon[(-0.047600,3.619000),(-0.147595,3.618007),(-0.111895,0.022807),(-0.011900,0.023800),(0.088095,0.024793),(0.052395,3.619993)]
 

@@ -25,41 +25,41 @@ The main aims and principles of design of ALGOL 68:
 #* Representations - in minimal & larger character sets.
 
 ## Execute an ALGOL 68 program online
-* http://www.compileonline.com/execute_algol_online.php
+* <http://www.compileonline.com/execute_algol_online.php>
 ## Grammar
 The grammar for ALGOL 68 is officially in the two level, [Van Wijngaarden grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar) but a subset has been done in the one level [Backus–Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form):
-* [Van Wijngaarden grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar): [http://www.fh-jena.de/~kleine/history/languages/Algol68-ReportAttachement.pdf]
-* [Backus–Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form)/[Yacc](https://en.wikipedia.org/wiki/Yacc): [http://wwwmathlabo.univ-poitiers.fr/~maavl/algol68/syntax68]
-* [http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised-SyntaxOnly.pdf/view Syntax Chart (Size 516.6 kB - File type application/pdf)]
+* [Van Wijngaarden grammar](https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar): <http://www.fh-jena.de/~kleine/history/languages/Algol68-ReportAttachement.pdf>
+* [Backus–Naur Form](https://en.wikipedia.org/wiki/Backus–Naur_Form)/[Yacc](https://en.wikipedia.org/wiki/Yacc): <http://wwwmathlabo.univ-poitiers.fr/~maavl/algol68/syntax68>
+* [Syntax Chart (Size 516.6 kB - File type application/pdf)](http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised-SyntaxOnly.pdf/view)
 
 ## Resources
-* ALGOL BULLETIN - March 1959 to August 1988, in 52 issues[http://archive.computerhistory.org/resources/text/algol/algol_bulletin]
-* Algol68 mailinglist - December 2008 - algol68-user AT lists.sourceforge.net[https://lists.sourceforge.net/lists/listinfo/algol68-user]
-* Algol68 group at linked: [http://www.linkedin.com/groups/Algol68-2333923] - includes various famous compiler composers.
+* ALGOL BULLETIN - March 1959 to August 1988, in 52 issues<http://archive.computerhistory.org/resources/text/algol/algol_bulletin>
+* Algol68 mailinglist - December 2008 - algol68-user AT lists.sourceforge.net<https://lists.sourceforge.net/lists/listinfo/algol68-user>
+* Algol68 group at linked: <http://www.linkedin.com/groups/Algol68-2333923> - includes various famous compiler composers.
 
 FYI: There are two online manual pages:
-* [http://jmvdveer.home.xs4all.nl/algol68g.pdf Algol 68G Manual - By Marcel van der Veer]
-* [http://www.poenikatu.co.uk/algol68/ Programming Algol 68 Made Easy - Sian Mountbatten]
+* [Algol 68G Manual - By Marcel van der Veer](http://jmvdveer.home.xs4all.nl/algol68g.pdf)
+* [Programming Algol 68 Made Easy - Sian Mountbatten](http://www.poenikatu.co.uk/algol68/)
 
 Or - if you prefer a hardcopy - you can try and pick up a hard cover manual like "''Informal Introduction to Algol 68''" - by C. H. Lindsey & S. V. Vander Meulen.  Be sure to get the 1977 edition:
-* [http://www.amazon.com/gp/offer-listing/0720405041/ref=dp_olp_used?ie=UTF8&condition=used www.amazon.com] - Aboout $119
-* [http://search.barnesandnoble.com/Informal-Introduction-to-ALGOL-68/C-H-Lindsey/e/9780720407266/?itm=3&USRI=Informal+Introduction+to+Algol+68 barnesandnoble.com] - about $40
+* [www.amazon.com](http://www.amazon.com/gp/offer-listing/0720405041/ref=dp_olp_used?ie=UTF8&condition=used) - Aboout $119
+* [barnesandnoble.com](http://search.barnesandnoble.com/Informal-Introduction-to-ALGOL-68/C-H-Lindsey/e/9780720407266/?itm=3&USRI=Informal+Introduction+to+Algol+68) - about $40
 IItA68 is a beautiful book, and makes great "bedtime" reading... Highly recommended!
-* '''NEW:''' [http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised.pdf softwarepreservation.org has an on-line IItA68 PDF] ready for download.
+* '''NEW:''' [softwarepreservation.org has an on-line IItA68 PDF](http://www.softwarepreservation.org/projects/ALGOL/book/Lindsey_van_der_Meulen-IItA68-Revised.pdf) ready for download.
 
 Editor modes:
-* [http://www.jemarch.net/a68-mode Emacs mode] for Algol 68  supporting syntax highlighting and context-sensitive indentation.
-* [http://www.vim.org/scripts/script.php?script_id=1927 Vim script] providing support for syntax highlighting.
-* '''NEW:''' [http://qbnz.com/highlighter/demo.php GeSHi syntax highlighting]
+* [Emacs mode](http://www.jemarch.net/a68-mode) for Algol 68  supporting syntax highlighting and context-sensitive indentation.
+* [Vim script](http://www.vim.org/scripts/script.php?script_id=1927) providing support for syntax highlighting.
+* '''NEW:''' [GeSHi syntax highlighting](http://qbnz.com/highlighter/demo.php)
 
 ## Status
-* 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [http://en.wikipedia.org/wiki/UNESCO UNESCO's] [http://en.wikipedia.org/wiki/IFIP IFIP] working group 2.1 in Munich.
+* 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [UNESCO's](http://en.wikipedia.org/wiki/UNESCO) [IFIP](http://en.wikipedia.org/wiki/IFIP) working group 2.1 in Munich.
 * 20th December 2008 - [Zig Zag](https://rosettacode.org/wiki/Zig_Zag#ALGOL_68) - the 100th '''ALGOL 68''' code contribution on rosettacode.org!
 ** Happy 40th Birthday '''ALGOL 68''',
 ** AND 50th Birthday '''ALGOL 58'''.
-* 23rd August 2009 - [http://sourceforge.net/projects/algol68/files/ algol68g-1.18.0-9h] released
+* 23rd August 2009 - [algol68g-1.18.0-9h](http://sourceforge.net/projects/algol68/files/) released
 * 20th December 2009 - Happy 51st/41st Birthdays with [Hamming numbers](https://rosettacode.org/wiki/Hamming_numbers#ALGOL_68) - the 200th '''ALGOL 68''' code contribution on rosettacode.org!
-** This time code was by [Marcel van der Veer](https://rosettacode.org/wiki/User:Algol68g), author of [http://www.xs4all.nl/~jmvdveer/algol.html Algol 68 Genie]
+** This time code was by [Marcel van der Veer](https://rosettacode.org/wiki/User:Algol68g), author of [Algol 68 Genie](http://www.xs4all.nl/~jmvdveer/algol.html)
 * 25th October 2011 - [Jejones3141](https://rosettacode.org/wiki/User:Jejones3141) added [Soundex](https://rosettacode.org/wiki/Soundex#ALGOL_68) - the 300th '''ALGOL 68''' code specimen.
 
 ## Revisions

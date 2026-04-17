@@ -62,7 +62,7 @@ CL-USER> (funcall (partial #'mapcar #'f1) '(2 3 5 7))
 :: Is it the case that there is no real distinction in Lisp, but a significant distinction in other languages?
 ::What about the other feature I seem to see in partial application: that of not needing to refer explicitely to the other arguments of the function being partially applied? E.g. with function f(a,b,c,d); you can partial(f, a=value1) to produce f'(b,c,d) without mention of b, c, and d when ''calling'' partial. --[[User:Paddy3118|Paddy3118]] 06:29, 1 April 2011 (UTC)
 
-::: First considering the feature of not referring to other arguments, I would expect this to be possible in most languages with dynamic types, but not possible in languages with static type checking.  Kernigh's <tt>partial</tt> handles this just fine using apply, for example.  [http://www.engr.uconn.edu/~jeffm/Papers/curry.html This document] I found calls it generalized explicit currying and gives example code in Scheme.  In Go, with it's static type checking, I can write a <tt>partial</tt> that does explicit currying for functions with specific type signatures, but I can't write a <tt>partial</tt> that does ''generalized'' explicit currying for functions with arbitrary type signatures.
+::: First considering the feature of not referring to other arguments, I would expect this to be possible in most languages with dynamic types, but not possible in languages with static type checking.  Kernigh's <tt>partial</tt> handles this just fine using apply, for example.  [This document](http://www.engr.uconn.edu/~jeffm/Papers/curry.html) I found calls it generalized explicit currying and gives example code in Scheme.  In Go, with it's static type checking, I can write a <tt>partial</tt> that does explicit currying for functions with specific type signatures, but I can't write a <tt>partial</tt> that does ''generalized'' explicit currying for functions with arbitrary type signatures.
 
 :::Which leads back to the first question of the distinction between <tt>(partial #'mapcar #'f1)</tt> and <tt>(lambda (s) (mapcar #'f1 s))</tt>.  There are two distinctions!  Function/lambda expression and generalized/specific.  (And they are orthogonal:  You could write a specific function or a generalized lambda expression.)  Anyway, there seems little point in either a function or generality in the case of this task as currently written.  You could just write <tt>fsf1 = lambda s: fs(f1, s)</tt> in Python, for example.
 
@@ -153,7 +153,7 @@ static SequenceFunction fsf1 = fsCurried(f1);
 
 : With the current solution for Java, ''fs(arg1).call(arg2)'' is already a function of two arguments, and there is no reason to also have ''fs(arg1, arg2)''.
 
-: Haskell seems to have an analogy for ''fs(arg1, arg2)''. I looked around the Haskell 2010 report, and learned that Haskell has tuples. A function has only one parameter, but that parameter might be a tuple of 2 items. I also found these functions in the [http://www.haskell.org/onlinereport/haskell2010/haskellch9.html Haskell prelude]:
+: Haskell seems to have an analogy for ''fs(arg1, arg2)''. I looked around the Haskell 2010 report, and learned that Haskell has tuples. A function has only one parameter, but that parameter might be a tuple of 2 items. I also found these functions in the [Haskell prelude](http://www.haskell.org/onlinereport/haskell2010/haskellch9.html):
 
 : 
 ```haskell
@@ -414,7 +414,7 @@ Reading over the current task description, I think it is somewhat odd. It asks y
 :* Perform the following operations: partially apply ''a'' = 7  and ''b'' = 9 to ''f'', and apply this partially applied function to each element of a sequence using ''map''.
 : &mdash;''[[User:Ruud Koot|Ruud]]'' 12:46, 20 April 2011 (UTC)
 
-:: But how to ensure ''[http://www.haskell.org/haskellwiki/Partial_application partial application]'' is what a Haskel, or other functional programming language programmer would think is partial application? The temptation is for folks to just concentrate on getting the right numerical answer and ignore or miss attempts to constrain ''how'' the result is computed. --[[User:Paddy3118|Paddy3118]] 14:10, 20 April 2011 (UTC)
+:: But how to ensure ''[partial application](http://www.haskell.org/haskellwiki/Partial_application)'' is what a Haskel, or other functional programming language programmer would think is partial application? The temptation is for folks to just concentrate on getting the right numerical answer and ignore or miss attempts to constrain ''how'' the result is computed. --[[User:Paddy3118|Paddy3118]] 14:10, 20 April 2011 (UTC)
 
 ::: This is beginning to sound like a Haskell-specific concept, rather than an algorithmic concept.  --[[User:Rdm|Rdm]] 17:52, 20 April 2011 (UTC)
 

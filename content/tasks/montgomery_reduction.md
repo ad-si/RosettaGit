@@ -33,7 +33,7 @@ Implement the [[wp:Montgomery reduction|Montgomery reduction]] algorithm, as exp
 * <math>R</math> is usually chosen as <math>b^n</math>, where <math>b</math> = base (radix) in which the numbers in the calculation as represented in (so <math>b = 10</math> in ‘normal’ paper arithmetic, <math>b = 2</math> for computer implementations) and <math>n</math> = number of digits in base <math>m</math>
 * The numbers <math>m</math> (<math>n</math> digits long), <math>T</math> (<math>2n</math> digits long), <math>R</math>, <math>b</math>, <math>n</math> are known entities, a number <math>m'</math> (often represented as <code>m_dash</code> in code) = <math>-m^{-1} \mathrm{mod} b</math> is precomputed.
 
-See the <!--<amazon id=0849385237>[%buy%--> Handbook of Applied Cryptography<!--]</amazon>--> for brief introduction to theory and numerical example in radix 10. Individual chapters of the book [http://www.cacr.math.uwaterloo.ca/hac/ can be viewed online] as provided by the authors. The said algorithm can be found at [http://www.cacr.math.uwaterloo.ca/hac/about/chap14.pdf] at page 600 (page 11 of pdf file)
+See the <!--<amazon id=0849385237>[%buy%--> Handbook of Applied Cryptography<!--]</amazon>--> for brief introduction to theory and numerical example in radix 10. Individual chapters of the book [can be viewed online](http://www.cacr.math.uwaterloo.ca/hac/) as provided by the authors. The said algorithm can be found at <http://www.cacr.math.uwaterloo.ca/hac/about/chap14.pdf> at page 600 (page 11 of pdf file)
 
 Algorithm:
  A ← T (temporary variable)

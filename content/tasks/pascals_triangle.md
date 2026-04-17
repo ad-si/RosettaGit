@@ -287,7 +287,7 @@ Another way, using the relation between element 'n' and element 'n-1' in a row:
 ## Ada
 
 
-The specification of auxiliary package "Pascal". "First_Row" outputs a row with a single "1", "Next_Row" computes the next row from a given row, and "Length" gives the number of entries in a row. The package is also used for the Catalan numbers solution [[http://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle]]
+The specification of auxiliary package "Pascal". "First_Row" outputs a row with a single "1", "Next_Row" computes the next row from a given row, and "Length" gives the number of entries in a row. The package is also used for the Catalan numbers solution <http://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle>
 
 
 ```ada
@@ -714,7 +714,7 @@ end zipWith
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
 
 ```AutoHotkey
 n := 8, p0 := "1"        ; 1+n rows of Pascal's triangle
@@ -2538,9 +2538,9 @@ class Main
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Pascal%27s_triangle this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Pascal%27s_triangle) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2947,7 +2947,7 @@ list, as in
 ```
 
 
-A shorter approach, plagiarized from [http://www.haskell.org/haskellwiki/Blow_your_mind]
+A shorter approach, plagiarized from <http://www.haskell.org/haskellwiki/Blow_your_mind>
 
 ```haskell
 -- generate next row from current row
@@ -3059,8 +3059,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/math.icn math provides binocoef]
-[http://www.cs.arizona.edu/icon/library/src/procs/pascal.icn math provides the original version of pascal]
+[math provides binocoef](http://www.cs.arizona.edu/icon/library/src/procs/math.icn)
+[math provides the original version of pascal](http://www.cs.arizona.edu/icon/library/src/procs/pascal.icn)
 
 Sample output:
 ```txt
@@ -4467,7 +4467,7 @@ sub pascal { print "@{[map -+-$_, pascal_line $_]}\n" for 0..$_[0]-1 }
 ```
 
 
-This triangle is build using the 'sock' or 'hockey stick' pattern property. Here I use the word tartaglia and not pascal because in my country it's called after the  Niccolò Fontana, known also as Tartaglia. A full graphical implementation of 16 properties that can be found in the triangle can be found at mine [https://github.com/LorenzoTa/Tartaglia-s-triangle Tartaglia's triangle]
+This triangle is build using the 'sock' or 'hockey stick' pattern property. Here I use the word tartaglia and not pascal because in my country it's called after the  Niccolò Fontana, known also as Tartaglia. A full graphical implementation of 16 properties that can be found in the triangle can be found at mine [Tartaglia's triangle](https://github.com/LorenzoTa/Tartaglia-s-triangle)
 
 
 ```perl
@@ -5741,7 +5741,7 @@ object Blaise extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/8VqiX0P/1 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/c3dDWMCcT3eoydy6QJcWCw Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/8VqiX0P/1) or by [Scastie (JVM)](https://scastie.scala-lang.org/c3dDWMCcT3eoydy6QJcWCw).
 
 
 ## Scheme

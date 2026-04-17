@@ -17,7 +17,7 @@ The scoring algorithm gets more interesting if duplicate digits are permitted...
 
 ::: This is the methodology that the REXX program (version 1) uses. -- [[User:Gerard Schildberger|Gerard Schildberger]] 22:53, 4 July 2012 (UTC)
 ==Form of target number==
-The description says that the digits must be from the set 1 through 9, but [http://en.wikipedia.org/wiki/Bulls_and_cows Wikipedia] - and some of the solutions on this page - allow zeroes.  Also, the description should probably specify whether or not repeated digits are allowed.
+The description says that the digits must be from the set 1 through 9, but [Wikipedia](http://en.wikipedia.org/wiki/Bulls_and_cows) - and some of the solutions on this page - allow zeroes.  Also, the description should probably specify whether or not repeated digits are allowed.
 -- [[User:Markjreed|Markjreed]] 00:20, 31 January 2012 (UTC)
 
 ==malformed numbers==

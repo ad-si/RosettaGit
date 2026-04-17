@@ -14,4 +14,4 @@ tags = []
 
 [[wp:RubyGems|RubyGems]] is the [[Ruby]] standard for publishing and managing third party libraries.
 
-[http://www.rubygems.org RubyGems Home]
+[RubyGems Home](http://www.rubygems.org)

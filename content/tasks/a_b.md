@@ -456,7 +456,7 @@ o_newline();
 
 {{trans|python}}
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - missing transput function "read int"}}
 
 ### Console
@@ -3081,7 +3081,7 @@ WRITE(Messagebox, Name) A, B, "Sum = ", A+B
 ## Hope
 
 This being my first hope program, and having no clue how to (have hope) read from stdin,
-I installed hope (but not hopeless) from https://github.com/dmbaturin/hope,
+I installed hope (but not hopeless) from <https://github.com/dmbaturin/hope>,
 read the Byte magazine article from 1980s which is a recast of the tutorial found in the github archive.
 Congratulations, the program worked on my first attempt.
 
@@ -3343,7 +3343,7 @@ document.getElementById('output').innerHTML = sum;
 ```
 
 
-Server side (with [http://nodejs.org node.js]):
+Server side (with [node.js](http://nodejs.org)):
 
 
 ```javascript
@@ -4215,7 +4215,7 @@ echo("Result: " & formatFloat(aplusb(first, second), ffDecimal, 2))
 
 ## Nit
 
-Generic non-robust version (source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/ab.nit the Nit’s official repository]):
+Generic non-robust version (source: [the Nit’s official repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/ab.nit)):
 
 ```nit
 module ab
@@ -4919,7 +4919,7 @@ void mousePressed() {
 ```
 
 
-[https://i.imgur.com/QEHtMyA.jpg What the GUI looks like.]
+[What the GUI looks like.](https://i.imgur.com/QEHtMyA.jpg)
 
 
 ## ProDOS
@@ -5441,7 +5441,7 @@ println(readLine().split(" ").filter(_.length>0).map(_.toInt).sum)
 
 Scratch is a graphical programming language. Follow the link to see an example solution for A + B
 
-[https://scratch.mit.edu/projects/327678813/ '''Scratch A + B''']
+['''Scratch A + B'''](https://scratch.mit.edu/projects/327678813/)
 
 Since Scratch is an educational language, I've included comments in the code for new programmers to better understand what the program is doing.
 
@@ -5480,7 +5480,7 @@ t Loop
 ```
 
 
-Another method, based off of [http://unix.stackexchange.com/a/36959/11750 this StackExchange answer]:
+Another method, based off of [this StackExchange answer](http://unix.stackexchange.com/a/36959/11750):
 
 ```sed
 #!/bin/sed -f
@@ -5759,7 +5759,7 @@ PRINT VAL(LEFT$(n$,(LEN(STR$(VAL(n$))))))+VAL(RIGHT$(n$,(LEN(n$)-LEN(STR$(VAL(n$
 
 And someone did...
 
-A FAR more elegant solution was provided by "Dutchman" on the smart [http://kibernetik.pro/forum/viewforum.php?f=2 BASIC Support Forum]:
+A FAR more elegant solution was provided by "Dutchman" on the smart [BASIC Support Forum](http://kibernetik.pro/forum/viewforum.php?f=2):
 
 
 ```qbasic
@@ -5788,7 +5788,7 @@ One of several possibilities:
 ```
 
 
-Domain:[http://fricas.github.io/api/SExpression.html?highlight=lisp SExpression]
+Domain:[SExpression](http://fricas.github.io/api/SExpression.html?highlight=lisp)
 
 
 ## SPARK
@@ -6668,8 +6668,8 @@ write, a + b;
 
 ## ZED
 
-Source -> http://ideone.com/WLtEfe
-Compiled -> http://ideone.com/fMt6ST
+Source -> <http://ideone.com/WLtEfe>
+Compiled -> <http://ideone.com/fMt6ST>
 
 ```zed
 (A+B)

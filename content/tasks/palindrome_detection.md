@@ -1310,7 +1310,7 @@ false
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -1834,7 +1834,7 @@ myStyle =
 ```
 
 
-Link to live demo: http://dc25.github.io/palindromeDetectionElm/
+Link to live demo: <http://dc25.github.io/palindromeDetectionElm/>
 
 
 ## Erlang
@@ -2367,7 +2367,7 @@ return (str == inv);
 ```
 
 
-Palindrome detection using a [http://rosettacode.org/wiki/Loop/Downward_For#GML Downward For-Loop]
+Palindrome detection using a [Downward For-Loop](http://rosettacode.org/wiki/Loop/Downward_For#GML)
 
 
 ```go
@@ -2612,7 +2612,7 @@ return s == reverse(s)
 end
 ```
 
-Note: The IPL procedure [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings] contains a palindrome tester called '''ispal''' that uses reverse and is equivalent to the version of '''palindrome''' above.
+Note: The IPL procedure [strings](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) contains a palindrome tester called '''ispal''' that uses reverse and is equivalent to the version of '''palindrome''' above.
 
 This version uses positive and negative sub-scripting and works not only on strings but lists of strings, such as ["ab","ab"] or ["ab","x"] the first list would pass the test but the second wouldn't.
 
@@ -2741,7 +2741,7 @@ public static boolean rPaliHelp(String testMe, int strLen, int testLen, int inde
 
 
 '''Regular Expression'''
-([http://stackoverflow.com/questions/3664881/how-does-this-java-regex-detect-palindromes source])
+([source](http://stackoverflow.com/questions/3664881/how-does-this-java-regex-detect-palindromes))
 
 ```java
 public static boolean pali(String testMe){
@@ -4169,7 +4169,7 @@ function is_palindrome($string) {
 ```
 
 
-Regular expression-based solution ([http://www.polygenelubricants.com/2010/09/matching-palindromes-in-pcre-regex.html source])
+Regular expression-based solution ([source](http://www.polygenelubricants.com/2010/09/matching-palindromes-in-pcre-regex.html))
 
 ```php
 <?php
@@ -4522,7 +4522,7 @@ boolean isPalindrome(string check){
 
 '''Non-recursive'''
 
-From [http://www2.dcs.hull.ac.uk/NEAT/dnd/AI/prolog/tutorial2.html this tutorial].
+From [this tutorial](http://www2.dcs.hull.ac.uk/NEAT/dnd/AI/prolog/tutorial2.html).
 
 
 ```prolog
@@ -4998,7 +4998,7 @@ end
 
 
 '''Testing'''
-Note that the recursive method is ''much'' slower -- using the 2151 character palindrome by Dan Hoey [http://www2.vo.lu/homepages/phahn/anagrams/panama.htm here], we have:
+Note that the recursive method is ''much'' slower -- using the 2151 character palindrome by Dan Hoey [here](http://www2.vo.lu/homepages/phahn/anagrams/panama.htm), we have:
 
 ```ruby
 str = "A man, a plan, a caret, [...2110 chars deleted...] a canal--Panama.".downcase.delete('^a-z')

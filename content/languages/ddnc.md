@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[http://ostracodfiles.com/decimal/guide.pdf]
-[http://ostracodfiles.com/decimal/emulator.html]
+<http://ostracodfiles.com/decimal/guide.pdf>
+<http://ostracodfiles.com/decimal/emulator.html>
 
 

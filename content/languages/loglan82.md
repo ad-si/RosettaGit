@@ -21,4 +21,4 @@ It has many features that make Loglan'82 a tool surpassing other programming lan
 * Loglan'82 offers an original, fully object protocol of communication and synchronization, so called ''alien call'' of methods of an agent.
 * Each object of a process, i.e. an agent may create its own system of coroutine objects and manage it,
 
-[https://sourceforge.net/projects/loglan82/ Loglan82 on Sourceforge]
+[Loglan82 on Sourceforge](https://sourceforge.net/projects/loglan82/)

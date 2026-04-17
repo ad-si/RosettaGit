@@ -721,7 +721,7 @@ Slots with :INSTANCE allocation:
 
 ## D
 
-If the requirement was not for binary, the [http://www.dsource.org/projects/doost doost library] would be a better fit for this task.
+If the requirement was not for binary, the [doost library](http://www.dsource.org/projects/doost) would be a better fit for this task.
 First, create a file named test.proto with the following contents:
 
 ```txt
@@ -1304,7 +1304,7 @@ Schroeder
 ## Haskell
 
 
-Example uses [https://hackage.haskell.org/package/binary <tt>binary</tt>] package. Since Haskell doesn't directly support OO-style inheritance, we use a sum type instead:
+Example uses [<tt>binary</tt>](https://hackage.haskell.org/package/binary) package. Since Haskell doesn't directly support OO-style inheritance, we use a sum type instead:
 
 
 ```haskell
@@ -1677,7 +1677,7 @@ prompt$ xxd object-serialization.bin
 =={{header|Objective-C}}==
 
 About Cocoa, I can't test it, but I've used Apple's documentation to learn how to do it (see
-[http://developer.apple.com/DOCUMENTATION/Cocoa/Conceptual/Archiving/Archiving.html#//apple_ref/doc/uid/10000047 here]; serializing or marshalling is rather known in Obj-C world as ''archiving'').
+[here](http://developer.apple.com/DOCUMENTATION/Cocoa/Conceptual/Archiving/Archiving.html#//apple_ref/doc/uid/10000047); serializing or marshalling is rather known in Obj-C world as ''archiving'').
 
 There exists also a way of serializing without the GNUstep/Cocoa framework, using the runtime of Objective-C (so it could be slightly implementation dependent, see [[wp:Serialization#Objective-C|Serialization on Wikipedia]]). (I will work on it and will put here a full working example compatible with the task).
 
@@ -1941,7 +1941,7 @@ print_entity result2;;
 ```
 
 
-The module which provides functions to encode arbitrary data structures as sequences of bytes is [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Marshal.html the module Marshal].
+The module which provides functions to encode arbitrary data structures as sequences of bytes is [the module Marshal](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Marshal.html).
 
 
 ## Ol
@@ -1996,9 +1996,9 @@ $
 
 ## Oz
 
-Stateless values can easily be serialized with functions from the [https://mozart.github.io/mozart-v1/doc-1.4.0/system/node57.html Pickle] module. Objects are not stateless, though.
+Stateless values can easily be serialized with functions from the [Pickle](https://mozart.github.io/mozart-v1/doc-1.4.0/system/node57.html) module. Objects are not stateless, though.
 
-Some objects can be converted to a stateless chunk by using [https://mozart.github.io/mozart-v1/doc-1.4.0/system/node96.html#section.objectsupport.reflect ObjectSupport.reflect]. For technical reasons, this will only work for a small subset of classes.
+Some objects can be converted to a stateless chunk by using [ObjectSupport.reflect](https://mozart.github.io/mozart-v1/doc-1.4.0/system/node96.html#section.objectsupport.reflect). For technical reasons, this will only work for a small subset of classes.
 
 For a general solution, see [[Object Serialization/Oz]].
 
@@ -2075,7 +2075,7 @@ print $s2->string;
 
 ```
 
-This time the objects were serialized to the [http://www.json.org/ JSON] format. Other supported formats are [http://search.cpan.org/perldoc?Storable Storable] and [http://www.yaml.org/ YAML].
+This time the objects were serialized to the [JSON](http://www.json.org/) format. Other supported formats are [Storable](http://search.cpan.org/perldoc?Storable) and [YAML](http://www.yaml.org/).
 
 
 ## Perl 6
@@ -2196,20 +2196,20 @@ close(fh)
 
 ## PHP
 
-Serialization in PHP is straightforward. The built-in function [http://www.php.net/manual/en/function.serialize.php serialize()] handles it in a single statement.
+Serialization in PHP is straightforward. The built-in function [serialize()](http://www.php.net/manual/en/function.serialize.php) handles it in a single statement.
 
 ```php
 $myObj = new Object();
 $serializedObj = serialize($myObj);
 ```
 
-In order to un-serialize the object, use the [http://www.php.net/manual/en/function.unserialize.php unserialize()] function. Note that the class of object must be defined in the script where un-serialization takes place, or the class' methods will be lost.
+In order to un-serialize the object, use the [unserialize()](http://www.php.net/manual/en/function.unserialize.php) function. Note that the class of object must be defined in the script where un-serialization takes place, or the class' methods will be lost.
 
 
 ## PicoLisp
 
-The built-in function [http://software-lab.de/doc/refP.html#pr pr] serializes
-any kind of data, and [http://software-lab.de/doc/refR.html#rd rd] reads it
+The built-in function [pr](http://software-lab.de/doc/refP.html#pr) serializes
+any kind of data, and [rd](http://software-lab.de/doc/refR.html#rd) reads it
 back. This functionality is also used internally for database access and
 interprocess-communication.
 
@@ -2315,7 +2315,7 @@ i2.printName()
 ## Racket
 
 
-Serialization is described in the Racket documentation in: [http://docs.racket-lang.org/reference/serialization.html?q=serialize Serialization], and more specifically with respect to object oriented programming classes: [http://docs.racket-lang.org/reference/objectserialize.html?q=serializable-class#%28form._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._define-serializable-class%29%29 Object Serialization].
+Serialization is described in the Racket documentation in: [Serialization](http://docs.racket-lang.org/reference/serialization.html?q=serialize), and more specifically with respect to object oriented programming classes: [Object Serialization](http://docs.racket-lang.org/reference/objectserialize.html?q=serializable-class#%28form._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._define-serializable-class%29%29).
 
 The serialization needs to be included with
 
@@ -2435,7 +2435,7 @@ With both:	"John [JACK, Joan]"
 
 ## Ruby
 
-The core class <code>[http://www.ruby-doc.org/core/classes/Marshal.html Marshal]</code> handles object serialization.  The <code>dump</code> method serializes an object, and the <code>load</code> method reconstitutes it.
+The core class <code>[Marshal](http://www.ruby-doc.org/core/classes/Marshal.html)</code> handles object serialization.  The <code>dump</code> method serializes an object, and the <code>load</code> method reconstitutes it.
 
 ```ruby
 class Being
@@ -2716,7 +2716,7 @@ Serialized into 172 bytes
 
 ## Tcl
 
-''This example uses an experimental package, available from [http://wiki.tcl.tk/23444 The Tcler's Wiki].
+''This example uses an experimental package, available from [The Tcler's Wiki](http://wiki.tcl.tk/23444).
 
 ```tcl
 package require Tcl 8.6

@@ -17,7 +17,7 @@ I see that although shuffle is not specified we have two implementations.  But I
 ###  Example 
 
 
-I know this doesn't give the shuffle algorithm but ... it gives the result for seed=1 [http://www.solitairegames4all.com/solitaire.php?card-game=Freecell+Solitaire&game=99] and appears compatible with [http://freecellgamesolutions.com/ds/?g=1&p=FpD&v=All]
+I know this doesn't give the shuffle algorithm but ... it gives the result for seed=1 <http://www.solitairegames4all.com/solitaire.php?card-game=Freecell+Solitaire&game=99> and appears compatible with <http://freecellgamesolutions.com/ds/?g=1&p=FpD&v=All>
 
 
 ```txt
@@ -32,7 +32,7 @@ I know this doesn't give the shuffle algorithm but ... it gives the result for s
 ```
 
 
-There is a reference to the shuffle algorithm here [http://www.solitairelaboratory.com/mshuffle.txt]
+There is a reference to the shuffle algorithm here <http://www.solitairelaboratory.com/mshuffle.txt>
 
 --[[User:Dgamey|Dgamey]] 14:26, 19 September 2011 (UTC)
 

@@ -21,19 +21,19 @@ SPL is designed and developed by Mr.Kibernetik.
 
 ###  Documentation
 
-Documentation is available [http://kibernetik.pro/spl_manual/default_en.html > here <].
+Documentation is available [> here <](http://kibernetik.pro/spl_manual/default_en.html).
 
 
 ###  SPL SDK
 
-SPL programs can be converted to UWP applications using [http://kibernetik.pro/spl_sdk.zip SPL SDK].
+SPL programs can be converted to UWP applications using [SPL SDK](http://kibernetik.pro/spl_sdk.zip).
 
 
 ###  Download
 
-You can download SPL for Windows [https://www.microsoft.com/store/apps/9nf9tncg82p1 > here <].
+You can download SPL for Windows [> here <](https://www.microsoft.com/store/apps/9nf9tncg82p1).
 
 
 ###  Support
 
-SPL Support forum is available [http://kibernetik.pro > here <].
+SPL Support forum is available [> here <](http://kibernetik.pro).

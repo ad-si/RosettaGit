@@ -57,14 +57,14 @@ The function should count (and return) how many 'stones' are 'jewels' or, in oth
 
 
 Note that:
-:# Only letters in the [https://en.wikipedia.org/wiki/ISO_basic_Latin_alphabet ISO basic Latin alphabet] i.e. 'A to Z' or 'a to z' need be considered.
+:# Only letters in the [ISO basic Latin alphabet](https://en.wikipedia.org/wiki/ISO_basic_Latin_alphabet) i.e. 'A to Z' or 'a to z' need be considered.
 :# A lower case letter is considered to be different to its upper case equivalent for this purpose i.e. 'a' != 'A'.
 :# The parameters do not need to have exactly the same names.
 :# Validating the arguments is unnecessary.
 
 So, for example, if passed "aAAbbbb" for 'stones' and "aA" for 'jewels', the function should return 3.
 
-This task was inspired by [https://leetcode.com/problems/jewels-and-stones/description/ this problem].
+This task was inspired by [this problem](https://leetcode.com/problems/jewels-and-stones/description/).
 
 
 
@@ -1235,7 +1235,7 @@ object JewelsStones extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/Cz1HXAT/0 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/7ZCCN5hISRuDqLWTKVBHow Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/Cz1HXAT/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/7ZCCN5hISRuDqLWTKVBHow).
 
 ## Sidef
 

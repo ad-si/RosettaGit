@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}
-A Clojure library to generate text banners in an ASCII Art style using FIGlet fonts.  For more information checkout the [https://github.com/gered/clj-figlet clj-figlet github].
+A Clojure library to generate text banners in an ASCII Art style using FIGlet fonts.  For more information checkout the [clj-figlet github](https://github.com/gered/clj-figlet).

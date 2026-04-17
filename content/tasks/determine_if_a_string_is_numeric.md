@@ -1384,7 +1384,7 @@ If the input may be relied upon to not be especially malicious, then it may be '
 
 <code>ignore-errors</code> here handles returning nil in case the input is invalid rather than simply non-numeric.
 
-However, <code>read</code>[<code>-from-string</code>] has the side effect of interning any symbols encountered, and can have memory allocation larger than the input size (due to read syntax such as <code>#*</code>, which takes a length). The [http://www.cliki.net/PARSE-NUMBER <code>parse-number</code>] library provides a numbers-only equivalent of <code>read</code>.
+However, <code>read</code>[<code>-from-string</code>] has the side effect of interning any symbols encountered, and can have memory allocation larger than the input size (due to read syntax such as <code>#*</code>, which takes a length). The [<code>parse-number</code>](http://www.cliki.net/PARSE-NUMBER) library provides a numbers-only equivalent of <code>read</code>.
 
 ```lisp
 (defun numeric-string-p (string)
@@ -2360,7 +2360,7 @@ Scanner also has similar methods for longs, shorts, bytes, doubles, floats, BigI
 
 ## JavaScript
 
-A far better validator can be found on StackOverflow[http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric]
+A far better validator can be found on StackOverflow<http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric>
 
 ```javascript
 function isNumeric(n) {
@@ -3406,7 +3406,7 @@ print looks_like_number($str) ? "numeric" : "not numeric\n";
 ```
 
 
-Quoting from [http://perldoc.perl.org/perlfaq4.html#How-do-I-determine-whether-a-scalar-is-a-number%2fwhole%2finteger%2ffloat%3f perlfaq4]:
+Quoting from [perlfaq4](http://perldoc.perl.org/perlfaq4.html#How-do-I-determine-whether-a-scalar-is-a-number%2fwhole%2finteger%2ffloat%3f):
 
 ''How do I determine whether a scalar is a number/whole/integer/float?''
 
@@ -3556,7 +3556,7 @@ if(is_numeric(trim($string))) {
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refF.html#format format]' function can
+The '[format](http://software-lab.de/doc/refF.html#format)' function can
 be used for that. It returns NIL if the given string is not a legal number
 
 ```PicoLisp
@@ -4409,7 +4409,7 @@ Or, since all non-<tt>#f</tt> are true:
 
 ## Seed7
 
-The function isNumeric uses the function [http://seed7.sourceforge.net/libraries/scanstri.htm#getNumber%28inout_string%29 getNumber] from the library [http://seed7.sourceforge.net/libraries/scanstri.htm scanstri.s7i].
+The function isNumeric uses the function [getNumber](http://seed7.sourceforge.net/libraries/scanstri.htm#getNumber%28inout_string%29) from the library [scanstri.s7i](http://seed7.sourceforge.net/libraries/scanstri.htm).
 GetNumber reads a numeric literal from a string. The numeric literal is removed from the input string.
 
 

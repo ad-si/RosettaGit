@@ -18,7 +18,7 @@ What do you get for an input price of 0.99 or 1.00? --[[User:Paddy3118|Paddy3118
 </code>
 :--[[User:Axtens|Axtens]] 02:36, 16 March 2010 (UTC)
 
-Ah, I get it. You just forgot to add it to the table in the task descrition [http://rosettacode.org/mw/index.php?title=Price_Fraction&diff=77456&oldid=77453 here], and I just looked and saw that the Clipper table had the same entries as the original table and assumed that what was missing was what I then added. (Which in this case just happened to match the Clipper code).
+Ah, I get it. You just forgot to add it to the table in the task descrition [here](http://rosettacode.org/mw/index.php?title=Price_Fraction&diff=77456&oldid=77453), and I just looked and saw that the Clipper table had the same entries as the original table and assumed that what was missing was what I then added. (Which in this case just happened to match the Clipper code).
 
 <small>Damn! I would have liked to save that luck for the lottery :-)</small>
  --[[User:Paddy3118|Paddy3118]] 06:35, 16 March 2010 (UTC)
@@ -38,7 +38,7 @@ What's supposed to happen if you get a negative number, or a number greater than
 
 Floating point for money? Don't they teach kids anything these days? --[[User:IanOsgood|IanOsgood]] 20:15, 15 March 2010 (UTC)
 :I've had that exact conversation with a friend in the past few weeks. All I can say is... I (at least) never think of the problems, or the alternatives. -- [[User:Eriksiers|Eriksiers]] 20:44, 15 March 2010 (UTC)
-:: Two topics on the original wiki, [http://c2.com/cgi/wiki?FloatingPointCurrency Floating Point Currency] and [http://c2.com/cgi/wiki?MoneyObject Money Object], contain many anecdotes, cautionary tales, and useful links. For a toy problem like this, using an integer in units of cents should suffice. --[[User:IanOsgood|IanOsgood]] 01:29, 16 March 2010 (UTC)
+:: Two topics on the original wiki, [Floating Point Currency](http://c2.com/cgi/wiki?FloatingPointCurrency) and [Money Object](http://c2.com/cgi/wiki?MoneyObject), contain many anecdotes, cautionary tales, and useful links. For a toy problem like this, using an integer in units of cents should suffice. --[[User:IanOsgood|IanOsgood]] 01:29, 16 March 2010 (UTC)
 :::All good points. However, (1) I'm the maintenance programmer, and (2) to work in integers would require a significant rewrite, something I have neither the time nor the patience for (I don't get paid for the work, and have to fit it in wherever and whenever possible.) --[[User:Axtens|Axtens]] 02:30, 16 March 2010 (UTC)
 ::::Note that once you have a function which works with integers it should be trivial in most languages to wrap it with something which multiplies floating point numbers by 100 and gets the nearest integer and divides the result by 100. Some languages also let you mark the floating point variant as "obsolete" with a message that points at the other approach.  --[[User:Rdm|Rdm]] 19:20, 18 March 2010 (UTC)
 :::::That said, there are some efficiency problems with that approach.  There are several ways of dealing with these problems.  Probably the best would be to coerce numbers to integer values before doing arithmetic on them and convert them back after.  If you implement this approach the storage system should probably complain if it is ever given values which deviate too much from values which could plausibly result from this approach -- this would be run-time detection of invalid code.  --[[User:Rdm|Rdm]] 14:25, 17 May 2010 (UTC)

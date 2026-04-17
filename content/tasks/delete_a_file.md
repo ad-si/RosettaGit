@@ -240,7 +240,7 @@ FileRemoveDir, \docs, 1
 
 ### with DllCall
 
-Source: [https://github.com/jNizM/AHK_DllCall_WinAPI/ DeleteFile @github] by jNizM
+Source: [DeleteFile @github](https://github.com/jNizM/AHK_DllCall_WinAPI/) by jNizM
 
 ```AutoHotkey
 DeleteFile(lpFileName)
@@ -1911,7 +1911,7 @@ object FileDeleteTest extends App {
 
 ## Scheme
 
-{{works with|Scheme|R6RS}}[http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-10.html]
+{{works with|Scheme|R6RS}}<http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-10.html>
 
 ```scheme
 (delete-file filename)
@@ -1921,7 +1921,7 @@ object FileDeleteTest extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/osfiles.htm osfiles.s7i] provides the functions [http://seed7.sourceforge.net/libraries/osfiles.htm#removeFile%28in_string%29 removeFile] and [http://seed7.sourceforge.net/libraries/osfiles.htm#removeTree%28in_string%29 removeTree]. RemoveFile removes a file of any type unless it is a directory that is not empty. RemoveTree remove a file of any type inclusive a directory tree. Note that removeFile and removeTree fail with the exception [http://seed7.sourceforge.net/manual/errors.htm#FILE_ERROR FILE_ERROR] when the file does not exist.
+The library [osfiles.s7i](http://seed7.sourceforge.net/libraries/osfiles.htm) provides the functions [removeFile](http://seed7.sourceforge.net/libraries/osfiles.htm#removeFile%28in_string%29) and [removeTree](http://seed7.sourceforge.net/libraries/osfiles.htm#removeTree%28in_string%29). RemoveFile removes a file of any type unless it is a directory that is not empty. RemoveTree remove a file of any type inclusive a directory tree. Note that removeFile and removeTree fail with the exception [FILE_ERROR](http://seed7.sourceforge.net/manual/errors.htm#FILE_ERROR) when the file does not exist.
 
 ```seed7
 $ include "seed7_05.s7i";

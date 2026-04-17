@@ -13,7 +13,7 @@ tags = []
 == Might I suggest ...==
 Might I suggest breaking the format description out to a separate page and transcluding it both here and in [[Range expansion]]? --[[User:Short Circuit|Michael Mol]] 00:17, 16 July 2010 (UTC)
 
-:Hi Michael, do you have an example page? I'm just worried that the page with the format description might look a little 'lost' as the format is only loosely based on the relatively obscure [http://www-cecpv.u-strasbg.fr/Documentations/lsf/html/lsf6.1_admin/G_jobarrays.html job array index format for LSF].
+:Hi Michael, do you have an example page? I'm just worried that the page with the format description might look a little 'lost' as the format is only loosely based on the relatively obscure [job array index format for LSF](http://www-cecpv.u-strasbg.fr/Documentations/lsf/html/lsf6.1_admin/G_jobarrays.html).
 :: I just put in a simple example implementation of what I was describing. --[[User:Short Circuit|Michael Mol]] 10:42, 16 July 2010 (UTC)
 ::: I didn't know you could do that. I've added a few small edits to all three pages. --[[User:Paddy3118|Paddy3118]] 12:57, 16 July 2010 (UTC)
 
@@ -69,7 +69,7 @@ Whether these functions are inverses of each other or not I think it would be ni
 
 ==Comment in Ada solution on notation==
 :''"For real-life applications it is better to use the notation -9..-4"'' 
-True. if I were doing this for real then I would have liked to use a different range indication character, but, as in so many things, I modified/simplified an [http://www.ccs.miami.edu/hpc/lsf/7.0.6/admin/jobarrays.html#wp1004400 existing format that used dashes], to allow negative numbers - hence the compromise. (On seeing how easy it was to parse I left it in).
+True. if I were doing this for real then I would have liked to use a different range indication character, but, as in so many things, I modified/simplified an [existing format that used dashes](http://www.ccs.miami.edu/hpc/lsf/7.0.6/admin/jobarrays.html#wp1004400), to allow negative numbers - hence the compromise. (On seeing how easy it was to parse I left it in).
 
 ==TUSCRIPT example==
 It would be good to both keep the current TUSCRIPT example - noting where it fails to follow the task description; as well as create a fully compliant version. It was pleasantly surprising to see that the language had a built-in routine that could so nearly produce the right answer! --[[User:Paddy3118|Paddy3118]] 21:31, 28 January 2011 (UTC)

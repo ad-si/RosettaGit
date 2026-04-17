@@ -2383,7 +2383,7 @@ Column0,C2,C3,C4,C5
 ```
 
 ===Apache commons-csv===
-Using the [http://commons.apache.org/proper/commons-csv/ Apache commons-csv] library.
+Using the [Apache commons-csv](http://commons.apache.org/proper/commons-csv/) library.
 
 ```java
 import java.io.*;
@@ -2539,7 +2539,7 @@ C1,C2,C3,C4,C5,"SUM, ""integers"""
 ```
 
 ===uniVocity-parsers===
-Using the [http://www.univocity.com/pages/parsers-tutorial uniVocity-parsers] library.
+Using the [uniVocity-parsers](http://www.univocity.com/pages/parsers-tutorial) library.
 
 ```java
 
@@ -3233,7 +3233,7 @@ write
 
 ## NetRexx
 
-Using the [http://commons.apache.org/proper/commons-csv/ Apache commons-csv] library.
+Using the [Apache commons-csv](http://commons.apache.org/proper/commons-csv/) library.
 
 ```NetRexx
 /* NetRexx */
@@ -3626,7 +3626,7 @@ C1,C2,C3,C4,C5,SUM
 
 ## Perl
 
-For simple files, you can use [http://p3rl.org/split split]:
+For simple files, you can use [split](http://p3rl.org/split):
 
 ```perl
 #!/usr/bin/perl
@@ -3671,7 +3671,7 @@ print join(',' => @$_), "\n" for @rows;
 ```
 
 
-However, if the CSV can contain quoted texts (the type MS Excel produces), you should rather use the [http://p3rl.org/Text::CSV Text::CSV]. Only reading the data and printing the result is different:
+However, if the CSV can contain quoted texts (the type MS Excel produces), you should rather use the [Text::CSV](http://p3rl.org/Text::CSV). Only reading the data and printing the result is different:
 
 ```perl
 #!/usr/bin/perl
@@ -4098,7 +4098,7 @@ C1,C2,C3,C4,C5,SUM
 
 ###  Using <code>fileinput</code>
 
-Note that the [http://docs.python.org/3.3/library/csv.html csv module] is not required for such a simple and regular CSV file. Here overwriting is done in place.
+Note that the [csv module](http://docs.python.org/3.3/library/csv.html) is not required for such a simple and regular CSV file. Here overwriting is done in place.
 
 ```python
 import fileinput
@@ -4126,7 +4126,7 @@ C1,C2,C3,C4,C5
 
 
 === Using <code>csv</code>, <code>pathlib</code> and <code>tempfile</code> ===
-In this example overwriting is performed ''not'' in place but by using [https://docs.python.org/library/tempfile.html <code>tempfile</code> library] for creating a temporary file and [https://docs.python.org/library/pathlib.html <code>pathlib</code> library] for overwriting the initial file. [http://docs.python.org/library/csv.html <code>csv</code> module] is used to allow easier manipulation with delimiters.
+In this example overwriting is performed ''not'' in place but by using [<code>tempfile</code> library](https://docs.python.org/library/tempfile.html) for creating a temporary file and [<code>pathlib</code> library](https://docs.python.org/library/pathlib.html) for overwriting the initial file. [<code>csv</code> module](http://docs.python.org/library/csv.html) is used to allow easier manipulation with delimiters.
 
 ```python
 import csv

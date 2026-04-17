@@ -18,4 +18,4 @@ in particular, this language has amazing semantics for thread management and dev
 It also has many useful features, such as object-oriented model of code and functional programming syntax.
 And most importantly, programming is easier and it works faster than in most modern programming languages.
 
-Find more at http://www.cindlang.com
+Find more at <http://www.cindlang.com>

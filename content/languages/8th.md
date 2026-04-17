@@ -23,4 +23,4 @@ Some of its features include:
 *  FFI (call native libraries)
 *  Built-in networking (sockets, http etc)
 *  Built-in high-end encryption
-*  Lots of other things... [http://8th-dev.com see the website] for more information.
+*  Lots of other things... [see the website](http://8th-dev.com) for more information.

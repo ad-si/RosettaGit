@@ -14,4 +14,4 @@ tags = []
 
 ## See also
 * [EGL on Wikipedia](https://en.wikipedia.org/wiki/EGL_(programming_language))
-* [http://www.eclipse.org/edt/ EDT homepage]
+* [EDT homepage](http://www.eclipse.org/edt/)

@@ -995,7 +995,7 @@ For large numbers of rules and few actions, J's native support of sparse arrays 
 
 ### Interactive
 
-Since this is an interactive web page, results can't be listed. See http://jsfiddle.net/rGP6C/1/ for a live demo.
+Since this is an interactive web page, results can't be listed. See <http://jsfiddle.net/rGP6C/1/> for a live demo.
 
 ```javascript
 <html

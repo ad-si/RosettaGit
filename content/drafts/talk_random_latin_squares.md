@@ -55,7 +55,7 @@ To quote the factor solution:
 Does it generate uniformly-random Latin squares? To expose this fallacy let me consider I randomly select 0123 for my first row. Let me first select 1230 with some probability 1/n as my second row. The are now 2 ways to complete this square 2301 as the third row and 3012 as the fourth or 2301 as the fourth row and 3012 as the third. So each of these squares is generated with probability 1/2n, Now again with probability 1/n I select 1032 as my second row. There are now 4 ways to complete this square: 2301 as the third row and
 3210 as the fourth; or 3210 as the third row and 2301 as the fourth; or 2310 as the third row and 3201 as the fourth; or 3201 as the third row and 2310 as the fourth. So each of these squares is produced with probability 1/4n.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 19:53, 13 July 2019 (UTC)
 
-:: To the best of my knowledge, it does, in fact, generate uniformly random latin squares. https://www.academia.edu/29890346/Comparison_of_Seven_Techniques_for_Generating_Random_Latin_Squares See page 2. --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 19:32, 16 July 2019 (UTC)
+:: To the best of my knowledge, it does, in fact, generate uniformly random latin squares. <https://www.academia.edu/29890346/Comparison_of_Seven_Techniques_for_Generating_Random_Latin_Squares> See page 2. --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 19:32, 16 July 2019 (UTC)
 
 ::: OK it will have to be pistols at dawn then. Darn in these politically correct times that is not allowed. In my country we can't even have pistols. We'll have to settle for testing it then. Consider the following 4 Latin Squares of order 4:
 
@@ -91,7 +91,7 @@ Does it generate uniformly-random Latin squares? To expose this fallacy let me c
 :::: "(...)different  purposes in cryptography". Dear me. Thought we were heading for sudokus.--[[User:Steenslag|Steenslag]] ([[User talk:Steenslag|talk]]) 20:44, 16 July 2019 (UTC)
 
 ==Python Algorithm==
-I got the mention of Latin squares from a stack-overflow question and a [https://www.academia.edu/29890346/Comparison_of_Seven_Techniques_for_Generating_Random_Latin_Squares link] to some solution methods that I did not read (and so did not add to the task as a reference).
+I got the mention of Latin squares from a stack-overflow question and a [link](https://www.academia.edu/29890346/Comparison_of_Seven_Techniques_for_Generating_Random_Latin_Squares) to some solution methods that I did not read (and so did not add to the task as a reference).
 
 I worked out that if you have a smaller solution of:
 
@@ -201,7 +201,7 @@ distributions(5, 1000_000)
 
 ### =Uniformity over all possible=
 
-I suspect this algorithm does not generate random latin squares uniformly. What matters is the uniformity of latin squares taken from the list of all latin squares. See https://math.stackexchange.com/questions/63131/generate-random-latin-squares . --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 14:19, 9 June 2019 (UTC)
+I suspect this algorithm does not generate random latin squares uniformly. What matters is the uniformity of latin squares taken from the list of all latin squares. See <https://math.stackexchange.com/questions/63131/generate-random-latin-squares> . --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 14:19, 9 June 2019 (UTC)
 
 
 Hi Chunes, you're right!
@@ -245,7 +245,7 @@ Leaving aside the missing full stop, I wonder if that sentence is clear and well
 :: Well ... That still makes no sense at all ... How can a Latin square "generate" the values which constitute it ? Perhaps what the incoherence (and attempted circularity) of that sentence expresses is really a need for a slightly more solid concept of what is actually being asked for here ? [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 17:34, 12 June 2019 (UTC)
 
 ==Ruthless Hillclimbing Method==
-To quote a method for generating uniformly random latin squares from page 20 of https://pdfs.semanticscholar.org/4a7c/d245f6f6a4ef933c6cf697832607f71a39c1.pdf,
+To quote a method for generating uniformly random latin squares from page 20 of <https://pdfs.semanticscholar.org/4a7c/d245f6f6a4ef933c6cf697832607f71a39c1.pdf>,
 
 "Another,  more ruthless method,  is a modification of hill climbing.  This time, do  not  worry  about  finding  SDRs,  merely  look  at  all  possible  permutations and  select  one  uniformly  at  random  to  add  as  the  next  row.   If,  in  doing  so, you violate the rules of being a Latin square,  restart the entire process.   This method terminates with probability 1 and does achieve the uniform distribution. However, if L(n) is the total number of LS(n), the expected number of restarts is n!(n−1/L(n)) =e^(n^2(1+o(1))); an unacceptable price to pay for uniformity [29]."
 

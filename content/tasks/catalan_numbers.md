@@ -4519,7 +4519,7 @@ Next
 
 ## Python
 
-Three algorithms including explicit memoization. (Pythons [http://svn.python.org/view/python/branches/release31-maint/Modules/mathmodule.c?revision=82224&view=markup factorial built-in function] is not memoized internally).
+Three algorithms including explicit memoization. (Pythons [factorial built-in function](http://svn.python.org/view/python/branches/release31-maint/Modules/mathmodule.c?revision=82224&view=markup) is not memoized internally).
 
 Python will transparently switch to bignum-type integer arithmetic, so the code below works unchanged on computing larger catalan numbers such as cat(50) and beyond.
 

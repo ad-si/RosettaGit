@@ -29,8 +29,8 @@ The following are related:
 ## External Links and References
 ###  Home Pages
 
-* [http://unicon.org/ Unicon home page on Sourceforge]
-* [http://www.cs.arizona.edu/icon/ The Icon home page at the University of Arizona]
+* [Unicon home page on Sourceforge](http://unicon.org/)
+* [The Icon home page at the University of Arizona](http://www.cs.arizona.edu/icon/)
 
 
 ###  Books
@@ -38,42 +38,42 @@ The following are related:
 
 ### = General =
 
-* [http://unicon.org/book/ub.pdf Book: Programming with Unicon describing the language, the Icon Programming Library and Unicon extensions]
-* [http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf Book: The Icon Programming Language, 3rd Edition]
-* [http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf Book: Graphics Programming in Icon]
-* [http://www.tools-of-computing.com/tc/CS/iconprog.pdf Book: Icon Programming Language Handbook]
-* [http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf Book: Icon Programming for Humanists]
+* [Book: Programming with Unicon describing the language, the Icon Programming Library and Unicon extensions](http://unicon.org/book/ub.pdf)
+* [Book: The Icon Programming Language, 3rd Edition](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+* [Book: Graphics Programming in Icon](http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
+* [Book: Icon Programming Language Handbook](http://www.tools-of-computing.com/tc/CS/iconprog.pdf)
+* [Book: Icon Programming for Humanists](http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf)
 
 
 ### = Internals =
 
-* [http://unicon.sourceforge.net/book/ib.pdf The Implementation of Icon and Unicon a Compendium]]
-** [http://unicon.sourceforge.net/reports.html Unicon Technical Reports and works in progress]
-* [http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf The Implementation of the Icon Programming Language]
-** [http://www.cs.arizona.edu/icon/docs/ipd112.htm IPD112 Supplement to Version 8]
-** [http://www.cs.arizona.edu/icon/docs/ipd239.htm IPD239 Supplement to Version 9]
-** [http://www.cs.arizona.edu/icon/docs/docs.htm Icon Technical Reports (TR) and Project Documents (IDP)]
+* [The Implementation of Icon and Unicon a Compendium](http://unicon.sourceforge.net/book/ib.pdf)]
+** [Unicon Technical Reports and works in progress](http://unicon.sourceforge.net/reports.html)
+* [The Implementation of the Icon Programming Language](http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
+** [IPD112 Supplement to Version 8](http://www.cs.arizona.edu/icon/docs/ipd112.htm)
+** [IPD239 Supplement to Version 9](http://www.cs.arizona.edu/icon/docs/ipd239.htm)
+** [Icon Technical Reports (TR) and Project Documents (IDP)](http://www.cs.arizona.edu/icon/docs/docs.htm)
 
 
 ###  Articles and Newsletters
 
-* [http://unicon.org/generator/ Archived issues of the Generator from 2004-2005 discussing Unicon programming]
-* [http://www.cs.arizona.edu/icon/inl/inl.htm Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming]
-* [http://www.cs.arizona.edu/icon/analyst/ia.htm Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming]
+* [Archived issues of the Generator from 2004-2005 discussing Unicon programming](http://unicon.org/generator/)
+* [Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming](http://www.cs.arizona.edu/icon/inl/inl.htm)
+* [Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming](http://www.cs.arizona.edu/icon/analyst/ia.htm)
 
 
 ###  Programming References
 
-* [http://www.cs.arizona.edu/icon/library/ipl.htm The Icon Programming Library and index]
-* [https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome Unicon Discussion Web/TWiki containing various programming examples, problems, and challenges]
+* [The Icon Programming Library and index](http://www.cs.arizona.edu/icon/library/ipl.htm)
+* [Unicon Discussion Web/TWiki containing various programming examples, problems, and challenges](https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome)
 
 
 ###  Other
 
 * [Wikipedia: Unicon](https://en.wikipedia.org/wiki/Unicon_(programming_language))
 * [Wikipedia: Icon](https://en.wikipedia.org/wiki/Icon_%28programming_language%29)
-* [http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf Presentation: Fundamentals of Icon Programming]
-* [http://www.pclosmag.com/html/Issues/201101/page17.html PC Linux OS Magazine, Volume 48, Computer Languages From A to Z: Unicon]
+* [Presentation: Fundamentals of Icon Programming](http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf)
+* [PC Linux OS Magazine, Volume 48, Computer Languages From A to Z: Unicon](http://www.pclosmag.com/html/Issues/201101/page17.html)
 
 ### Related/Variants
 

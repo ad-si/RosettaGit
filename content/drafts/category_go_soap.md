@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/tiaguinho/gosoap Go Soap] is a library to help with SOAP integrations (client) for Go programmers.
+[Go Soap](https://github.com/tiaguinho/gosoap) is a library to help with SOAP integrations (client) for Go programmers.
 
-Its use is subject to the [https://github.com/tiaguinho/gosoap/blob/master/LICENSE MIT License].
+Its use is subject to the [MIT License](https://github.com/tiaguinho/gosoap/blob/master/LICENSE).

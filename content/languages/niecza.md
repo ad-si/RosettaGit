@@ -11,6 +11,6 @@ tags = []
 +++
 Niecza is an implementation of [Perl 6](https://rosettacode.org/wiki/Perl_6), generating code to run on the [Common Language Runtime](https://rosettacode.org/wiki/Common_Language_Runtime) (Mono/.Net).
 
-Its stated initial description and mission may be found in its [https://github.com/sorear/niecza/blob/master/docs/announce.initial initial announcement]. It is currently no longer maintained.
+Its stated initial description and mission may be found in its [initial announcement](https://github.com/sorear/niecza/blob/master/docs/announce.initial). It is currently no longer maintained.
 
-Home page: [https://github.com/sorear/niecza sorear/niecza] on Github.
+Home page: [sorear/niecza](https://github.com/sorear/niecza) on Github.

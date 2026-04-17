@@ -12,4 +12,4 @@ tags = []
 
 {{library}}
 
-Seesaw is a Clojure library for UI development. For more information checkout the [https://github.com/daveray/seesaw Seesaw github].
+Seesaw is a Clojure library for UI development. For more information checkout the [Seesaw github](https://github.com/daveray/seesaw).

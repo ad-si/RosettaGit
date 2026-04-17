@@ -1730,7 +1730,7 @@ b7/1RP5/n2P3k/p3Pr2/Pp1b3n/2P5/K7/3q4/ w - - 0 1
 
 ## Scala
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/zdG9NQ4YSaShFRU7AS31GA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/zdG9NQ4YSaShFRU7AS31GA).
 
 ```Scala
 import scala.math.abs

@@ -94,4 +94,4 @@ Or, in wording it in another way, we have computed:
 
  -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:33, 2 June 2015 (UTC)
 
-:: Yes, but it's the power tree algorithm which we need here. Actually, I found https://comeoncodeon.wordpress.com/2009/03/02/evaluation-of-powers/ which indicates that the factor method is different from the binary method. I'm studying its description of the power tree algorithm now. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 21:59, 2 June 2015 (UTC)
+:: Yes, but it's the power tree algorithm which we need here. Actually, I found <https://comeoncodeon.wordpress.com/2009/03/02/evaluation-of-powers/> which indicates that the factor method is different from the binary method. I'm studying its description of the power tree algorithm now. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 21:59, 2 June 2015 (UTC)

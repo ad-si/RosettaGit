@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 [](https://rosettacode.org/wiki/runs_on_vm::java_virtual_machine)[](https://rosettacode.org/wiki/runs_on_vm::common_language_runtime)
-[http://www.fandev.org Fan] is a high-level language that runs on both the [Java VM](https://rosettacode.org/wiki/JVM) and [.NET](https://rosettacode.org/wiki/.NET) CLR.
+[Fan](http://www.fandev.org) is a high-level language that runs on both the [Java VM](https://rosettacode.org/wiki/JVM) and [.NET](https://rosettacode.org/wiki/.NET) CLR.
 
 [Fan](https://rosettacode.org/wiki/:Category:Fan) is now called [Fantom](https://rosettacode.org/wiki/:Category:Fantom)

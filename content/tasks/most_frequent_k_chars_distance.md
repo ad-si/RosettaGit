@@ -37,13 +37,13 @@ In [[wp:information theory|information theory]], the '''MostFreqKDistance''' is 
  | pages = 177-183
  | publisher = [[wp:International Association of Computer Science and Information Technology Press (IACSIT Press)]]
  | title = [[wp:International Journal of Machine Learning and Computing (IJMLC)]]
- | url = http://arxiv.org/abs/1401.6596
+ | url = <http://arxiv.org/abs/1401.6596>
  | year = 2014}}.</ref>
 This method is originally based on a hashing function, MaxFreqKChars<ref name="hashfunc">{{citation
  | last1 = Seker | first1 = Sadi E. | author1-link = Sadi Evren SEKER
  | last2 = Mert | first2 = Cihan
  | contribution = A Novel Feature Hashing For Text Mining
- | url = http://journal.ibsu.edu.ge/index.php/jtst/article/view/428
+ | url = <http://journal.ibsu.edu.ge/index.php/jtst/article/view/428>
  | pages = 37 -41
  | publisher = [[wp:International Black Sea University]]
  | title = Journal of Technical Science and Technologies
@@ -57,7 +57,7 @@ classical [[wp:author recognition|author recognition]] problem and idea first ca
  | last3 = Khan | first3 = Latifur
  | contribution = Author attribution on streaming data
  | doi = 10.1109/IRI.2013.6642511
- | url = http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6642511
+ | url = <http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6642511>
  | pages = 497-503
  | publisher = [[wp:IEEE]]
  | title = Information Reuse and Integration (IRI), 2013 IEEE 14th International Conference on, San Fransisco, USA, Aug 14-16, 2013

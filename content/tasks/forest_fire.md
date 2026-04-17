@@ -1809,7 +1809,7 @@ A couple of other notes on the listing:
 1050 RETURN
 ```
 
-Screenshot [http://www.edmundgriffiths.com/zx81forest.jpg here].
+Screenshot [here](http://www.edmundgriffiths.com/zx81forest.jpg).
 
 =
 ## Visual Basic .NET
@@ -1931,7 +1931,7 @@ End Class
 =
 This isn't a graphical implementation, but it uses a bit of colour to make the display clearer. It runs very slowly. The variable <tt>init</tt> defines the initial likelihood that each square will hold a tree, and can take values between 0 (no trees) and 1 (a tree in every square) inclusive. This can be used to check that the program is running correctly, and using a value of 1 is probably the most dramatic: but it only makes a difference in the short term. After a few generations, any starting configuration using these values of <math>f</math> and <math>p</math> will end up fluctuating around 20% tree cover—sparse woodland, perhaps, rather than true forest.
 
-A screenshot of the program running can be found [http://www.edmundgriffiths.com/spectrumforestfire.jpg here].
+A screenshot of the program running can be found [here](http://www.edmundgriffiths.com/spectrumforestfire.jpg).
 
 ```zxbasic
  10 PAPER 6: CLS
@@ -3886,7 +3886,7 @@ TT..T....T..T..TTTT..
 ## EasyLang
 
 
-[https://easylang.online/apps/forest-fire.html Run it]
+[Run it](https://easylang.online/apps/forest-fire.html)
 
 <lang>subr init
   for r range 100
@@ -4548,7 +4548,7 @@ CONSTANT: colors ${ GRAY GREEN RED }
 ] until drop close-window
 ```
 
-[https://gfycat.com/boilingenviousboto]
+<https://gfycat.com/boilingenviousboto>
 
 
 ## Forth
@@ -5101,8 +5101,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -5343,7 +5343,7 @@ The starting configuration cannot be given in the modeling language since the co
 
 =={{header|JavaScript}} Node ==
 
-Functional approach using [https://lodash.com/ lodash]
+Functional approach using [lodash](https://lodash.com/)
 
 
 ```javascript
@@ -5848,7 +5848,7 @@ while true:
 
 ## OCaml
 
-This example uses a curses display (with the [http://www.nongnu.org/ocaml-tmk/ ocaml-curses] bindings).
+This example uses a curses display (with the [ocaml-curses](http://www.nongnu.org/ocaml-tmk/) bindings).
 
 
 ```ocaml
@@ -7168,7 +7168,7 @@ next
 
 Output:
 
-https://www.dropbox.com/s/6rjho62odzyqaqc/ForestFire.jpg?dl=0
+<https://www.dropbox.com/s/6rjho62odzyqaqc/ForestFire.jpg?dl=0>
 
 
 ## Ruby

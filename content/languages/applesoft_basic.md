@@ -13,5 +13,5 @@ tags = []
 
 ## See Also
 * [Wikipedia: Applesoft BASIC](https://en.wikipedia.org/wiki/Applesoft_BASIC)
-* [http://www.landsnail.com/a2ref.htm Apple II Programmer's Reference] from ][ In a Mac, via [http://www.landsnail.com/ Landsnail.com]
-* [http://www.hoist-point.com/applesoft_basic_tutorial.htm AppleSoft BASIC tutorial for absolute beginners]
+* [Apple II Programmer's Reference](http://www.landsnail.com/a2ref.htm) from ][ In a Mac, via [Landsnail.com](http://www.landsnail.com/)
+* [AppleSoft BASIC tutorial for absolute beginners](http://www.hoist-point.com/applesoft_basic_tutorial.htm)

@@ -43,8 +43,8 @@ for all <math>\mathit d</math>-tuples of integers <math>(n_0, \dots, n_{d-1})\in
 For this task, implement a function (or method, procedure, subroutine, etc.) <code>deconv</code> to perform ''deconvolution'' (i.e., the ''inverse'' of convolution) by solving for <math>\mathit{h}</math> given <math>\mathit{f}</math> and <math>\mathit{g}</math>. (See [[Deconvolution/1D]] for details.)
 * The function should work for <math>\mathit{g}</math> of arbitrary length in each dimension (i.e., not hard coded or constant) and <math>\mathit{f}</math> of any length up to that of <math>\mathit{g}</math> in the corresponding dimension.
 * The <code>deconv</code> function will need to be parameterized by the dimension <math>\mathit d</math> unless the dimension can be inferred from the data structures representing <math>\mathit g</math> and <math>\mathit f</math>.
-* There may be more equations than unknowns. If convenient, use a function from a [http://www.netlib.org/lapack/lug/node27.html library] that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
-* Debug your solution using [http://rosettacode.org/mw/index.php?title=Deconvolution/2D%2B/Test_data&action=raw this test data], of which a portion is shown below. Be sure to verify both that the deconvolution of <math>\mathit g</math> with <math>\mathit f</math> is <math>\mathit h</math> and that the deconvolution of <math>\mathit g</math> with <math>\mathit h</math> is <math>\mathit f</math>. Display the results in a human readable form for the three dimensional case ''only''.
+* There may be more equations than unknowns. If convenient, use a function from a [library](http://www.netlib.org/lapack/lug/node27.html) that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
+* Debug your solution using [this test data](http://rosettacode.org/mw/index.php?title=Deconvolution/2D%2B/Test_data&action=raw), of which a portion is shown below. Be sure to verify both that the deconvolution of <math>\mathit g</math> with <math>\mathit f</math> is <math>\mathit h</math> and that the deconvolution of <math>\mathit g</math> with <math>\mathit h</math> is <math>\mathit f</math>. Display the results in a human readable form for the three dimensional case ''only''.
 
 dimension 1:
 
@@ -1680,7 +1680,7 @@ Blows up with divide by zero error on 4d deconv(g,f) because
 the fft(f) returns 0 for a sample. This shows the limits of
 doing a deconvolution with fft.
 
-https://math.stackexchange.com/questions/380720/is-deconvolution-simply-division-in-frequency-domain
+<https://math.stackexchange.com/questions/380720/is-deconvolution-simply-division-in-frequency-domain>
 
 
 ```python
@@ -2086,7 +2086,7 @@ h: [
 ## Ursala
 
 This is done mostly with list operations that are either primitive or standard library functions in the language (e.g., <code>zipp</code>, <code>zipt</code>, and <code>pad</code>). The equations are solved by
-the [http://www.netlib.org/lapack/lug/node27.html <code>dgelsd</code>] function from the Lapack library.
+the [<code>dgelsd</code>](http://www.netlib.org/lapack/lug/node27.html) function from the Lapack library.
 The <code>break</code> function breaks a long list into a sequence of sublists according to a given template, and the <code>band</code> function is taken from the [[Deconvolution/1D]] solution.
 
 ```Ursala
@@ -2108,9 +2108,9 @@ deconv = # takes a natural number n to the n-dimensional deconvolution function
 
 The equations tend to become increasingly sparse in higher dimensions,
 so the following alternative implementation uses the sparse matrix
-solver from the [http://www.cise.ufl.edu/research/sparse/umfpack/ UMFPACK] library
+solver from the [UMFPACK](http://www.cise.ufl.edu/research/sparse/umfpack/) library
 instead of Lapack, which is also callable in Ursala, adjusted as shown for the different
-[http://www.basis.uklinux.net/avram/refman/umf-input-parameters.html calling convention].
+[calling convention](http://www.basis.uklinux.net/avram/refman/umf-input-parameters.html).
 
 ```Ursala
 deconv = # takes a number n to the n-dimensional deconvolution function

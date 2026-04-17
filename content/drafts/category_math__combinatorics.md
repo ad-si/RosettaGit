@@ -13,4 +13,4 @@ tags = []
 {{library}}{{stub}}
 [[Category:Perl_modules]]
 [[Category:Mathematics]]
-A module that provides functionality for permuting, deranging, and combining lists. Consult the [https://metacpan.org/pod/Math::Combinatorics relevant CPAN page] for more information on the methods it exports.
+A module that provides functionality for permuting, deranging, and combining lists. Consult the [relevant CPAN page](https://metacpan.org/pod/Math::Combinatorics) for more information on the methods it exports.

@@ -29,5 +29,5 @@ I don't get what this task has to do with arithmetic.  Isn't it about invariants
 == FORTRAN parallel effort ==
 
 Please credit additional contributors from 
-[http://forums.devshed.com/other-programming-languages-139/fortran-parallel-945576.html#post2878816]
+<http://forums.devshed.com/other-programming-languages-139/fortran-parallel-945576.html#post2878816>
 --LambertDW 20:45, 21 May 2013 (UTC)

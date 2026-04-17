@@ -558,9 +558,9 @@ The lilypond tool produces musical score sheets and midi files - if asked for - 
 ## M2000 Interpreter
 
 Score make an internal bank (replace a previous one), on a voice, (1 to 16), where 10 is for drum machine.
-Play assign a midi organ to a score and start play, in a "music" thread. We can can use Play 0 to stop all scores, or Play number, 0 to stop as specific score. Beat value 300 is in milliseconds, so play each not in Tune each 300 milliseconds, and the same for Score (scores may use @1 to @6 to play 300/1 to 300/32 for specific note, and can use V1 to V127 for volume control per note). Spaces in strings are pauses, and for scores we can use @1 to @6 to reduce pause value). We can use a thread to send a drum score every some seconds, to play a rhythm. Thread { score 10... : play 10,10 ....} as drums interval 1000  (second value for play 10 maybe 0 or any other 1 to 127 but always assign the drum machine. [https://en.wikipedia.org/wiki/General_MIDI Midi]
+Play assign a midi organ to a score and start play, in a "music" thread. We can can use Play 0 to stop all scores, or Play number, 0 to stop as specific score. Beat value 300 is in milliseconds, so play each not in Tune each 300 milliseconds, and the same for Score (scores may use @1 to @6 to play 300/1 to 300/32 for specific note, and can use V1 to V127 for volume control per note). Spaces in strings are pauses, and for scores we can use @1 to @6 to reduce pause value). We can use a thread to send a drum score every some seconds, to play a rhythm. Thread { score 10... : play 10,10 ....} as drums interval 1000  (second value for play 10 maybe 0 or any other 1 to 127 but always assign the drum machine. [Midi](https://en.wikipedia.org/wiki/General_MIDI)
 
-TUNE use kernel [https://msdn.microsoft.com/en-us/library/windows/desktop/ms679277(v=vs.85).aspx  Beep] which is synchronous and not leaving M2000 threads to process, until ends.
+TUNE use kernel [Beep](https://msdn.microsoft.com/en-us/library/windows/desktop/ms679277(v=vs.85).aspx) which is synchronous and not leaving M2000 threads to process, until ends.
 
 <lang>
 Module checkit {
@@ -954,7 +954,7 @@ next
 
 Output video:
 
-[https://www.dropbox.com/s/jf34s6apalw0k7c/CalmoSoftMusicalScale.avi?dl=0 Musical scale]
+[Musical scale](https://www.dropbox.com/s/jf34s6apalw0k7c/CalmoSoftMusicalScale.avi?dl=0)
 
 
 ## Scala

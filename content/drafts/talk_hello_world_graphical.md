@@ -78,7 +78,7 @@ NSAlert *alert = [[NSAlert alloc] init];
 
 ::the "autorelease called without pool" error is not risen... but a great ''segmentation fault'' is the only thing I obtain anyway :(. I need to take a deeper tour on Obj-C on the web; I want it working :) --[[User:ShinTakezou|ShinTakezou]] 18:59, 9 December 2008 (UTC)
 
-:Continuing learning how to develop GNUstep or Cocoa apps (under GNU/Linux), ... now I am (almost) ''sure'' that ''Objective-C example lacks basic stuffs'' to work! Looking [http://wiki.gnustep.org/index.php/Cocoa here] I know that I can compile and see NSAlert... but the provided code is missing initialization and is usable just by people already knowing how to put altogether full working app with Cocoa/GNUstep in Obj-C. After experimenting, I produced:
+:Continuing learning how to develop GNUstep or Cocoa apps (under GNU/Linux), ... now I am (almost) ''sure'' that ''Objective-C example lacks basic stuffs'' to work! Looking [here](http://wiki.gnustep.org/index.php/Cocoa) I know that I can compile and see NSAlert... but the provided code is missing initialization and is usable just by people already knowing how to put altogether full working app with Cocoa/GNUstep in Obj-C. After experimenting, I produced:
 
 
 ```txt

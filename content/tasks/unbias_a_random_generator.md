@@ -74,7 +74,7 @@ languages = [
 
 The actual unbiasing should be done by generating two numbers at a time from randN and only returning a 1 or 0 if they are different. As long as you always return the first number or always return the second number, the probabilities discussed above should take over the biased probability of randN.
 
-This task is an implementation of [http://en.wikipedia.org/wiki/Randomness_extractor#Von_Neumann_extractor Von Neumann debiasing], first described in a 1951 paper.
+This task is an implementation of [Von Neumann debiasing](http://en.wikipedia.org/wiki/Randomness_extractor#Von_Neumann_extractor), first described in a 1951 paper.
 
 
 
@@ -1595,7 +1595,7 @@ Output:
 
 ## PARI/GP
 
-GP's random number generation is high-quality, using Brent's [http://maths.anu.edu.au/~brent/random.html XORGEN]. Thus this program is slow: the required 400,000 unbiased numbers generated through this bias/unbias scheme take nearly a second. This requires about two million calls to <code>random</code>, which in turn generate a total of about three million calls to the underlying random number generator through the rejection strategy. The overall efficiency of the scheme is 0.8% for 32-bit and 0.4% for 64-bit...
+GP's random number generation is high-quality, using Brent's [XORGEN](http://maths.anu.edu.au/~brent/random.html). Thus this program is slow: the required 400,000 unbiased numbers generated through this bias/unbias scheme take nearly a second. This requires about two million calls to <code>random</code>, which in turn generate a total of about three million calls to the underlying random number generator through the rejection strategy. The overall efficiency of the scheme is 0.8% for 32-bit and 0.4% for 64-bit...
 
 ```parigp
 randN(N)=!random(N);

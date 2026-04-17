@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{stub}}
-The '''GPL''' (short for '''G'''eneral '''P'''ublic '''L'''icense; sometimes called the '''GNU GPL''') a software license by [http://fsf.org Free Software Foundation]. It is one of the most common (if not ''the'' most common) examples of an [[open source]] license.
+The '''GPL''' (short for '''G'''eneral '''P'''ublic '''L'''icense; sometimes called the '''GNU GPL''') a software license by [Free Software Foundation](http://fsf.org). It is one of the most common (if not ''the'' most common) examples of an [[open source]] license.
 
-* [http://www.gnu.org/licenses/gpl.html License text]
+* [License text](http://www.gnu.org/licenses/gpl.html)
 [[Category:Encyclopedia]]

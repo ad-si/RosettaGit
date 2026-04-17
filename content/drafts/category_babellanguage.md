@@ -19,6 +19,6 @@ Babel is implemented in C.
 It is still under development with a v0.9 release planned for December 2012,
 so please excuse the dust and debris in the current implementation, available here:
 
-[https://github.com/claytonkb/Babel]
+<https://github.com/claytonkb/Babel>
 
 Check out the README and the doc/ folder on github for more information.

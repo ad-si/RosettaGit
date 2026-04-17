@@ -33,7 +33,7 @@ languages = [
 
 Demonstrate how to connect to a web server over HTTPS where that server requires that the client present a certificate to prove who (s)he is. Unlike with the [[HTTPS request with authentication]] task, it is ''not'' acceptable to perform the authentication by a username/password or a set cookie.
 
-This task is in general useful for use with [[Creating a SOAP Client|webservice client]]s as it offers a high level of assurance that the client is an acceptable counterparty for the server. For example, [http://aws.amazon.com/ Amazon Web Services] uses this style of authentication.
+This task is in general useful for use with [[Creating a SOAP Client|webservice client]]s as it offers a high level of assurance that the client is an acceptable counterparty for the server. For example, [Amazon Web Services](http://aws.amazon.com/) uses this style of authentication.
 
 ## C#
 ```c#
@@ -405,7 +405,7 @@ object ClientAuthenticated extends App {
 
 ## Tcl
 
-Uses the [http://tls.sourceforge.net Tls] package.
+Uses the [Tls](http://tls.sourceforge.net) package.
 
 ```tcl
 package require http

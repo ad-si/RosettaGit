@@ -864,7 +864,7 @@ could also be written like this:
 
 
 
-Here we implement the <code style='color:#151080; font-weight:bold;'>read_in</code> function to read all the content from an input channel because there is no such function in the standard library, but we can use the [http://code.google.com/p/ocaml-extlib/ extLib] which provides the function <code style='color:#151080; font-weight:bold;'>Std.input_all</code> (in its module [http://ocaml-extlib.googlecode.com/svn/doc/apiref/Std.html Std]).
+Here we implement the <code style='color:#151080; font-weight:bold;'>read_in</code> function to read all the content from an input channel because there is no such function in the standard library, but we can use the [extLib](http://code.google.com/p/ocaml-extlib/) which provides the function <code style='color:#151080; font-weight:bold;'>Std.input_all</code> (in its module [Std](http://ocaml-extlib.googlecode.com/svn/doc/apiref/Std.html)).
 
 
 ## Perl
@@ -1288,7 +1288,7 @@ constituto id, mea an omittam fierent vituperatoribus.
 ### Single pass converter
 
 Tackles e.g. also multiple whitespaces.
-Experience it running in your browser at [https://scastie.scala-lang.org/5U6vqsOaTi6AU5FcqfA2lA Scastie (remote JVM)].
+Experience it running in your browser at [Scastie (remote JVM)](https://scastie.scala-lang.org/5U6vqsOaTi6AU5FcqfA2lA).
 
 ```Scala
 object FixCodeTags extends App {

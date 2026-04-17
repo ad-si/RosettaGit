@@ -34,7 +34,7 @@ Mersenne primes:
 
 Challenge:
 
-Create code that will list (preferably calculate) all of the Mersenne primes until some limitation is reached.  For information on what a Mersenne prime is, go to this link: [[https://en.wikipedia.org/wiki/Mersenne_prime]]
+Create code that will list (preferably calculate) all of the Mersenne primes until some limitation is reached.  For information on what a Mersenne prime is, go to this link: <https://en.wikipedia.org/wiki/Mersenne_prime>
 
 
 ## AppleScript
@@ -720,7 +720,7 @@ forprime(p=2,, if(LL(p), print("2^"p"-1")))
 
 ## Perl
 
-Since [https://www.mersenne.org/report_milestones/ GIMPS] went to the trouble of dedicating thousands of CPU years to finding Mersenne primes, we should be kind enough to use the results.  The [https://metacpan.org/pod/ntheory ntheory] module front end does this, so the results up to 43 million is extremely fast (4 seconds), and we can reduce this another 10x by only checking primes.  After the GIMPS double-checked mark, a Lucas-Lehmer test is done using code similar to [https://rosettacode.org/wiki/Lucas-Lehmer_test#GMP Rosetta Code Lucas-Lehmer in C+GMP].
+Since [GIMPS](https://www.mersenne.org/report_milestones/) went to the trouble of dedicating thousands of CPU years to finding Mersenne primes, we should be kind enough to use the results.  The [ntheory](https://metacpan.org/pod/ntheory) module front end does this, so the results up to 43 million is extremely fast (4 seconds), and we can reduce this another 10x by only checking primes.  After the GIMPS double-checked mark, a Lucas-Lehmer test is done using code similar to [Rosetta Code Lucas-Lehmer in C+GMP](https://rosettacode.org/wiki/Lucas-Lehmer_test#GMP).
 
 If this is too contrived, we can use <code>Math::Prime::Util::GMP::is_mersenne_prime</code> instead, which will run the Lucas-Lehmer test on each input.  The first 23 Mersenne primes are found in under 15 seconds.
 
@@ -1156,7 +1156,7 @@ object MersennePrimes extends App {
 
 ## Sidef
 
-Uses the ''is_mersenne_prime()'' function from [https://metacpan.org/pod/Math::Prime::Util::GMP Math::Prime::Util::GMP].
+Uses the ''is_mersenne_prime()'' function from [Math::Prime::Util::GMP](https://metacpan.org/pod/Math::Prime::Util::GMP).
 
 ```ruby
 for p in (^Inf -> lazy.grep { .is_mersenne_prime }) {

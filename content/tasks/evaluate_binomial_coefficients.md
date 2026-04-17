@@ -1491,8 +1491,8 @@ choose(5,3)=10
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/math.icn math provides binocoef] and
-[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors provides factorial].
+[math provides binocoef](http://www.cs.arizona.edu/icon/library/src/procs/math.icn) and
+[factors provides factorial](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn).
 
 
 ```Icon
@@ -1548,7 +1548,7 @@ end
 
 '''Solution:'''
 
-The dyadic form of the primitive <code>!</code> ([[http://www.jsoftware.com/help/dictionary/d410.htm Out of]]) evaluates binomial coefficients directly.
+The dyadic form of the primitive <code>!</code> ([Out of](http://www.jsoftware.com/help/dictionary/d410.htm)) evaluates binomial coefficients directly.
 
 '''Example usage:'''
 
@@ -3166,7 +3166,7 @@ Alternatively a recursive implementation can be constructed from Pascal's Triang
 
 ## Seed7
 
-The infix operator [http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29!%28in_integer%29 !] computes the binomial coefficient.
+The infix operator [!](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29!%28in_integer%29) computes the binomial coefficient.
 E.g.: <tt>5 ! 3</tt> evaluates to 10. The binomial coefficient operator works also for negative values of n.
 E.g.: <tt>(-6) ! 10</tt> evaluates to 3003.
 
@@ -3217,9 +3217,9 @@ const proc: main is func
 ```
 
 
-The library [http://seed7.sourceforge.net/libraries/bigint.htm bigint.s7i] contains a definition of the binomial coefficient operator
-[http://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29!%28in_var_bigInteger%29 !]
-for the type [http://seed7.sourceforge.net/manual/types.htm#bigInteger bigInteger]:
+The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm) contains a definition of the binomial coefficient operator
+[!](http://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29!%28in_var_bigInteger%29)
+for the type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger):
 
 
 ```seed7
@@ -3253,7 +3253,7 @@ const func bigInteger: (in bigInteger: n) ! (in var bigInteger: k) is func
 ```
 
 
-Original source [http://seed7.sourceforge.net/algorith/math.htm#binomial_coefficient].
+Original source <http://seed7.sourceforge.net/algorith/math.htm#binomial_coefficient>.
 
 
 ## SequenceL
@@ -3306,7 +3306,7 @@ say 400.nok(200)
 
 ## Stata
 
-Use the [http://www.stata.com/help.cgi?comb comb] function. Notice the result is a missing value if k>n or k<0.
+Use the [comb](http://www.stata.com/help.cgi?comb) function. Notice the result is a missing value if k>n or k<0.
 
 
 ```stata

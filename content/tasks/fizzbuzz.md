@@ -2589,7 +2589,7 @@ endforeach(i)
 
 ### Canonical version
 
-{{works with|OpenCOBOL}}<!-- http://www.opencobol.org/ -->
+{{works with|OpenCOBOL}}<!-- <http://www.opencobol.org/> -->
 
 ```COBOL
       * FIZZBUZZ.COB
@@ -2969,7 +2969,7 @@ FizzBuzz
 
 ###  Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -4508,7 +4508,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=efbe83377a1eabe475d8eba13965cfde Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=efbe83377a1eabe475d8eba13965cfde)'''
 
 ```gambas
 Public Sub Main()
@@ -6239,7 +6239,7 @@ put fizzbuzz
 
 ## LiveScript
 
-See: http://livescript.net/blog/fizzbuzzbazz.html
+See: <http://livescript.net/blog/fizzbuzzbazz.html>
 
 ```LiveScript
 [1 to 100] map -> [k + \zz for k, v of {Fi: 3, Bu: 5} | it % v < 1] * '' || it
@@ -7321,7 +7321,7 @@ module FizzBuzz
 }
 ```
 
-A much slicker approach is [http://www.dreamincode.net/forums/blog/217/entry-3539-fizzbuzz-in-nemerle/ posted here]
+A much slicker approach is [posted here](http://www.dreamincode.net/forums/blog/217/entry-3539-fizzbuzz-in-nemerle/)
 
 
 ## NetRexx
@@ -8362,7 +8362,7 @@ for($i = 0; $i++ < 100;) echo [$i, 'Fizz', 'Buzz', 'FizzBuzz'][!($i % 3) + 2 * !
 
 ## PicoLisp
 
-We could simply use '[http://software-lab.de/doc/refA.html#at at]' here:
+We could simply use '[at](http://software-lab.de/doc/refA.html#at)' here:
 
 ```PicoLisp
 (for N 100
@@ -9440,7 +9440,7 @@ repeat i 100 [print spick z: zz i z i]
 
 ## Retro
 
-This is a port of some [http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html Forth code].
+This is a port of some [Forth code](http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html).
 
 ```Retro
 : fizz?    ( s-f ) 3 mod 0 = ;
@@ -10036,7 +10036,7 @@ end
 ```
 
 
-When writing Test Driven code, it's important to remember that you should use the Red, Green, Refactor cycle. Simply writing each of these code snippets independently would go against everything TDD is about. Here is a good video that takes you through the process of writing this [https://www.youtube.com/watch?v=CHTep2zQVAc&feature=youtu.be FizzBuzz implementation using Ruby & RSpec].
+When writing Test Driven code, it's important to remember that you should use the Red, Green, Refactor cycle. Simply writing each of these code snippets independently would go against everything TDD is about. Here is a good video that takes you through the process of writing this [FizzBuzz implementation using Ruby & RSpec](https://www.youtube.com/watch?v=CHTep2zQVAc&feature=youtu.be).
 
 
 ## Run BASIC
@@ -11084,7 +11084,7 @@ $ txr -p "(mapcar (op if @1 @1 @2) (repeat '(nil nil fizz nil buzz fizz nil nil 
 
 ## UNIX Shell
 
-This solution should work with any Bourne-compatible shell: <!-- http://ideone.com/usJXGo -->
+This solution should work with any Bourne-compatible shell: <!-- <http://ideone.com/usJXGo> -->
 
 ```bash
 i=1
@@ -11105,7 +11105,7 @@ The other solutions work with fewer shells.
 
 The next solution requires <code>$(( ))</code> arithmetic expansion,
 and it should work with every POSIX shell.
-<!--  http://ideone.com/5yZmOz -->
+<!--  <http://ideone.com/5yZmOz> -->
 
 ```bash
 n=1
@@ -11169,7 +11169,7 @@ done
 ```
 
 
-Bash one-liner: <!--  http://ideone.com/xMEGFK -->
+Bash one-liner: <!--  <http://ideone.com/xMEGFK> -->
 
 ```bash
 for i in {1..100};do ((($i%15==0))&& echo FizzBuzz)||((($i%5==0))&& echo Buzz;)||((($i%3==0))&& echo Fizz;)||echo $i;done

@@ -70,8 +70,8 @@ Note that a Vampire number can have more than one pair of fangs.
 
 ## See also
 
-* [http://www.numberphile.com/videos/vampire_numbers.html numberphile.com].
-* [http://users.cybercity.dk/~dsl522332/math/vampires/ Vampire search algorithm]
+* [numberphile.com](http://www.numberphile.com/videos/vampire_numbers.html).
+* [Vampire search algorithm](http://users.cybercity.dk/~dsl522332/math/vampires/)
 * [[oeis:A014575|Vampire numbers on OEIS]]
 
 

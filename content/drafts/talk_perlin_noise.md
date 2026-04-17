@@ -11,11 +11,11 @@ tags = []
 +++
 
 ==Correctness==
-The D implementation generates exactly the same outputs of the Java version. I have used the D code to generate this image (with the grayscale code visible in the D entry): http://oi62.tinypic.com/2pt9flx.jpg
+The D implementation generates exactly the same outputs of the Java version. I have used the D code to generate this image (with the grayscale code visible in the D entry): <http://oi62.tinypic.com/2pt9flx.jpg>
 
 Is such image correct? Isn't a correct Perlin noise image without sharp borders, like this?
 
-http://4.bp.blogspot.com/-u4wfD21sIvU/UsI85U78XYI/AAAAAAAAAx8/NG2fEzYjTUA/s1600/perlin2.png
+<http://4.bp.blogspot.com/-u4wfD21sIvU/UsI85U78XYI/AAAAAAAAAx8/NG2fEzYjTUA/s1600/perlin2.png>
 -[[User:Bearophile|bearophile]] ([[User talk:Bearophile|talk]])
 
 :Your image is not correct.  The perlin noise has a range between -1 and 1, and you use this to convert it into an unsigned byte:

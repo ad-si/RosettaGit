@@ -2627,7 +2627,7 @@ def strip3(x: String, s: String = "/*", e: String = "*/"): String = x.indexOf(s)
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/libraries/string.htm#replace2%28in_string,in_string,__in_string,in_string%29 replace2]
+The function [replace2](http://seed7.sourceforge.net/libraries/string.htm#replace2%28in_string,in_string,__in_string,in_string%29)
 can be used to replace unnested comments.
 
 

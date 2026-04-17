@@ -306,8 +306,8 @@ support for negative     <big> n </big>     in the solution is optional.
 
 *   [[wp:Fibonacci number|Wikipedia, Fibonacci number]]
 *   [[wp:Lucas number|Wikipedia, Lucas number]]
-*   [http://mathworld.wolfram.com/FibonacciNumber.html MathWorld, Fibonacci Number]
-*   [http://www.math-cs.ucmo.edu/~curtisc/articles/howardcooper/genfib4.pdf Some identities for r-Fibonacci numbers]
+*   [MathWorld, Fibonacci Number](http://mathworld.wolfram.com/FibonacciNumber.html)
+*   [Some identities for r-Fibonacci numbers](http://www.math-cs.ucmo.edu/~curtisc/articles/howardcooper/genfib4.pdf)
 *   [[oeis:A000045|OEIS Fibonacci numbers]]
 *   [[oeis:A000032|OEIS Lucas numbers]]
 
@@ -700,7 +700,7 @@ end Test_Fibonacci;
 ### Iterative, long integers
 
 
-Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/].
+Using the big integer implementation from a cryptographic library <https://github.com/cforler/Ada-Crypto-Library/>.
 
 
 ```Ada
@@ -877,7 +877,7 @@ fibs(integer n)
 
 ## ALGOL 68
 
-<!-- harvested from my own contribution: http://en.literateprograms.org/Fibonacci_numbers_(ALGOL_68) -->
+<!-- harvested from my own contribution: <http://en.literateprograms.org/Fibonacci_numbers_(ALGOL_68)> -->
 
 ### Analytic
 
@@ -1682,7 +1682,7 @@ fib(n)
 
 ### Recursive and iterative
 
-Source: [http://www.autohotkey.com/forum/topic44657.html AutoHotkey forum] by Laszlo
+Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```AutoHotkey
 /*
@@ -3458,8 +3458,8 @@ Here's a simple interative process (using a recursive function) that carries sta
 
 ### Doubling Algorithm (Fast)
 
-Based upon the doubling algorithm which computes in O(log (n)) time as described here https://www.nayuki.io/page/fast-fibonacci-algorithms
-Implementation credit: https://stackoverflow.com/questions/27466311/how-to-implement-this-fast-doubling-fibonacci-algorithm-in-clojure/27466408#27466408
+Based upon the doubling algorithm which computes in O(log (n)) time as described here <https://www.nayuki.io/page/fast-fibonacci-algorithms>
+Implementation credit: <https://stackoverflow.com/questions/27466311/how-to-implement-this-fast-doubling-fibonacci-algorithm-in-clojure/27466408#27466408>
 
 ```clojure
 
@@ -3784,7 +3784,7 @@ Tail recursive and squaring:
 
 ###  Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -4278,7 +4278,7 @@ def fib(n) {
 ```
 
 
-(This version defines <tt>fib(0) = 0</tt> because [http://www.research.att.com/~njas/sequences/A000045 OEIS A000045] does.)
+(This version defines <tt>fib(0) = 0</tt> because [OEIS A000045](http://www.research.att.com/~njas/sequences/A000045) does.)
 
 
 ## EasyLang
@@ -6544,7 +6544,7 @@ So, for example, the hundred-thousandth Fibonacci number starts with the digits:
 
 ###  With recurrence relations
 
-Using <code>Fib[m=3n+r]</code> [http://en.wikipedia.org/wiki/Fibonacci_number#Other_identities recurrence identities]:
+Using <code>Fib[m=3n+r]</code> [recurrence identities](http://en.wikipedia.org/wiki/Fibonacci_number#Other_identities):
 
 ```haskell
 import Control.Arrow ((&&&))
@@ -6598,7 +6598,7 @@ main = print $ (length &&& take 20) . show . fst $ fibN2 (10 ^ 2)
 
 The above should take less than 0.1s to calculate on a modern box.
 
-Other identities that could also be used are [http://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form here]. In particular, for <i>(n-1,n) ---> (2n-1,2n)</i> transition which is equivalent to the matrix exponentiation scheme, we have
+Other identities that could also be used are [here](http://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form). In particular, for <i>(n-1,n) ---> (2n-1,2n)</i> transition which is equivalent to the matrix exponentiation scheme, we have
 
 
 ```haskell
@@ -6761,7 +6761,7 @@ procedure fib(n)
 end
 ```
 
-The above solution is similar to the one provided [http://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn fib in memrfncs]
+The above solution is similar to the one provided [fib in memrfncs](http://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn)
 
 Now, an O(logN) solution.
 For large N, it takes far longer to convert the result to a string for output
@@ -9899,7 +9899,7 @@ let rec fib = function
 
 ### Arbitrary Precision
 
-Using OCaml's [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Num.html Num] module.
+Using OCaml's [Num](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Num.html) module.
 
 
 ```ocaml
@@ -10405,8 +10405,8 @@ fib(n)=abs(polchebyshev(n-1,2,I/2));
 
 ### Anti-Hadamard matrix
 
-All n×n [https://en.wikipedia.org/wiki/Logical_matrix (0,1)] lower [https://en.wikipedia.org/wiki/Hessenberg_matrix Hessenberg matrices] have determinant at most F(n). The n×n anti-Hadamard matrix<ref>
-R. L. Graham and N. J. A. Sloane, [http://www.math.ucsd.edu/~ronspubs/84_03_anti_hadamard.pdf Anti-Hadamard matrices], Linear Algebra Appl. 62 (1984), 113–137.</ref> matches this upper bound, and hence can be used as an inefficient method for computing Fibonacci numbers of positive index. These matrices are the same as Matlab's type-3 "Dramadah" matrices, following a naming suggestion of C. L. Mallows according to Graham & Sloane.
+All n×n [(0,1)](https://en.wikipedia.org/wiki/Logical_matrix) lower [Hessenberg matrices](https://en.wikipedia.org/wiki/Hessenberg_matrix) have determinant at most F(n). The n×n anti-Hadamard matrix<ref>
+R. L. Graham and N. J. A. Sloane, [Anti-Hadamard matrices](http://www.math.ucsd.edu/~ronspubs/84_03_anti_hadamard.pdf), Linear Algebra Appl. 62 (1984), 113–137.</ref> matches this upper bound, and hence can be used as an inefficient method for computing Fibonacci numbers of positive index. These matrices are the same as Matlab's type-3 "Dramadah" matrices, following a naming suggestion of C. L. Mallows according to Graham & Sloane.
 
 
 ```parigp
@@ -11593,7 +11593,7 @@ All of the interim N/Value pairs have been asserted as facts for quicker future 
 
 ### Continuation passing style
 
-Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(lambda).
@@ -12784,7 +12784,7 @@ Usage:
 p fib.lazy.drop(8).next # => 21
 ```
 
-"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." [http://www.ruby-doc.org/ruby-1.9/classes/Fiber.html]
+"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." <http://www.ruby-doc.org/ruby-1.9/classes/Fiber.html>
 
 
 ```ruby
@@ -13404,7 +13404,7 @@ const func integer: fib (in integer: number) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#fib]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#fib>
 
 
 ### Iterative
@@ -13430,7 +13430,7 @@ const func bigInteger: fib (in integer: number) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#iterative_fib]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
 
 
 ## SequenceL
@@ -13446,7 +13446,7 @@ fibonacci(n) :=
 		fibonacci(n - 1) + fibonacci(n - 2);
 ```
 
-Based on: [https://www.youtube.com/watch?v=5JVC5dDtnyg]
+Based on: <https://www.youtube.com/watch?v=5JVC5dDtnyg>
 
 
 ### Tail Recursive
@@ -13482,9 +13482,9 @@ fibonacciHelper(M(2), n) :=
 matmul(A(2), B(2)) [i,j] := sum( A[i,all] * B[all,j] );
 ```
 
-Based on the C# version: [http://rosettacode.org/wiki/Fibonacci_sequence#C.23]
+Based on the C# version: <http://rosettacode.org/wiki/Fibonacci_sequence#C.23>
 
-Using the SequenceL Matrix Multiply solution: [http://rosettacode.org/wiki/Matrix_multiplication#SequenceL]
+Using the SequenceL Matrix Multiply solution: <http://rosettacode.org/wiki/Matrix_multiplication#SequenceL>
 
 
 ## SETL
@@ -13620,7 +13620,7 @@ SkookumScript's <code>Integer</code> class has a fast built-in <code>fibonnaci()
 ```
 
 
-SkookumScript is designed to work in tandem with C++ and its strength is at the high-level stage-direction of things. So when confronted with [http://skookumscript.com/blog/2016/07-11-fibonacci/ benchmarking scripting systems] it is genrally better to make a built-in call. Though in most practical cases this isn't necessary.
+SkookumScript is designed to work in tandem with C++ and its strength is at the high-level stage-direction of things. So when confronted with [benchmarking scripting systems](http://skookumscript.com/blog/2016/07-11-fibonacci/) it is genrally better to make a built-in call. Though in most practical cases this isn't necessary.
 
 
 ### Recursive
@@ -14218,7 +14218,7 @@ end
 ```
 
 
-An implementation using '''[https://www.stata.com/help.cgi?dyngen dyngen]'''.
+An implementation using '''[dyngen](https://www.stata.com/help.cgi?dyngen)'''.
 
 
 ```stata
@@ -14537,7 +14537,7 @@ proc fib {n} {
 ```
 
 
-The following {{works with|Tcl|8.5}}: defining a procedure in the <code>::tcl::mathfunc</code> namespace allows that proc to be used as a function in <code>[http://www.tcl.tk/man/tcl8.5/TclCmd/expr.htm expr]</code> expressions.
+The following {{works with|Tcl|8.5}}: defining a procedure in the <code>::tcl::mathfunc</code> namespace allows that proc to be used as a function in <code>[expr](http://www.tcl.tk/man/tcl8.5/TclCmd/expr.htm)</code> expressions.
 
 ```tcl
 proc tcl::mathfunc::fib {n} {
@@ -15309,7 +15309,7 @@ Within a minute, fibo(2000000) is a number with 417975 digits.
 ### BigInteger, speedier method
 
 
-This method doesn't need to iterate the entire list, and is much faster.  The 2000000 (two millionth) Fibonacci number can be found in a fraction of a second.<br/>Algorithm from [http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html here, see section 3, ''Finding Fibonacci Numbers Fully''.]
+This method doesn't need to iterate the entire list, and is much faster.  The 2000000 (two millionth) Fibonacci number can be found in a fraction of a second.<br/>Algorithm from [here, see section 3, ''Finding Fibonacci Numbers Fully''.](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html)
 
 ```vbnet
 Imports System
@@ -15459,7 +15459,7 @@ let fib n => (
 
 ### Iterative
 
-This program generates Fibonacci numbers until it is [http://ideone.com/VBDLzk forced to terminate].
+This program generates Fibonacci numbers until it is [forced to terminate](http://ideone.com/VBDLzk).
 
 ```Whitespace
 

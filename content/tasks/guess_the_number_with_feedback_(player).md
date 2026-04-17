@@ -1197,7 +1197,7 @@ Good, thanks for playing the gaame with me!
 
 ## Go
 
-Go's binary search function (<code>sort.Search()</code>) is general enough to be able to do this type of task, as mentioned in the documentation for the function itself.[http://golang.org/pkg/sort/#Search]
+Go's binary search function (<code>sort.Search()</code>) is general enough to be able to do this type of task, as mentioned in the documentation for the function itself.<http://golang.org/pkg/sort/#Search>
 
 ```go
 package main
@@ -3251,8 +3251,8 @@ object GuessNumber extends App {
 ## Seed7
 
 The program reads the possible commands (l, h, c, q) as single keypresses from the
-[http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD KEYBOARD] with
-[http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29 getc].
+[KEYBOARD](http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD) with
+[getc](http://seed7.sourceforge.net/libraries/keybd.htm#getc%28in_console_keybd_file%29).
 It is also possible to quit the program with q.
 The program recognices also a situation when there is only one possible number left
 and the command is not c.

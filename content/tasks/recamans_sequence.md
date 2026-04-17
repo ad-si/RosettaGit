@@ -58,8 +58,8 @@ If the conditions ''don't'' hold then <code>a(n) = a(n-1) + n</code>.
 
 ## References
 
-* [https://oeis.org/A005132 A005132],  The On-Line Encyclopedia of Integer Sequences.
-* [https://www.youtube.com/watch?v=FGC5TdIiT9U The Slightly Spooky Recamán Sequence], Numberphile video.
+* [A005132](https://oeis.org/A005132),  The On-Line Encyclopedia of Integer Sequences.
+* [The Slightly Spooky Recamán Sequence](https://www.youtube.com/watch?v=FGC5TdIiT9U), Numberphile video.
 
 
 
@@ -685,9 +685,9 @@ Terms up to a[328002] are needed to generate 0 to 1000
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Recaman%27s_sequence this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Recaman%27s_sequence) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2148,7 +2148,7 @@ Element number 328002 is the last to satisfy task 3. It is 879
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/xjLHy7m/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/FdJaIB68S8i5OSndpigBtA Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/xjLHy7m/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/FdJaIB68S8i5OSndpigBtA).
 
 ```Scala
 import scala.collection.mutable

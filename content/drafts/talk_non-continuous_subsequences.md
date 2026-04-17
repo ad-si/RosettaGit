@@ -29,7 +29,7 @@ I've not got a formal training in computer science, please try to understand cas
 ::Of course not mind -- [[User:Badmadevil|badmadevil]] 09:04, 29 March 2008 (MDT)
 
 ==Suggestions for improvement==
-After [http://blog.rosettacode.org/?p=186 this post] in the RC blog, I ended up here and thought the page could be improved if references to algorithms attempted where added to the tail of the task description and implementations referred to which they were following. --[[User:Paddy3118|Paddy3118]] 06:08, 12 May 2009 (UTC)
+After [this post](http://blog.rosettacode.org/?p=186) in the RC blog, I ended up here and thought the page could be improved if references to algorithms attempted where added to the tail of the task description and implementations referred to which they were following. --[[User:Paddy3118|Paddy3118]] 06:08, 12 May 2009 (UTC)
 
 == solution sizes ==
 

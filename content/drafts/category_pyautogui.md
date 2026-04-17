@@ -14,7 +14,7 @@ tags = []
 |site=https://pypi.python.org/pypi/PyAutoGUI
 }}
 
-;Website: [https://pypi.python.org/pypi/PyAutoGUI PyAutoGUI]
+;Website: [PyAutoGUI](https://pypi.python.org/pypi/PyAutoGUI)
 
 ;Current version: PyAutoGUI 0.9.20 - 2014-10-11
 

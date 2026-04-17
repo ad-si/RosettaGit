@@ -69,7 +69,7 @@ Note that if ''a'' = ''b'', of the four only [''a'', ''a''] would be non-empty.
 
 '''Optional work'''
 * Create a function to determine if a given set is empty (contains no element).
-* Define ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 A]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x''²)| > 1/2 }, ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 B]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x'')| > 1/2}, calculate the length of the real axis covered by the set ''A'' − ''B''.  Note that
+* Define ''[A](http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10)'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x''²)| > 1/2 }, ''[B](http://www.wolframalpha.com/input/?i=%7Csin%28pi+x%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10)'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x'')| > 1/2}, calculate the length of the real axis covered by the set ''A'' − ''B''.  Note that
 |sin(π ''x'')| > 1/2 is the same as ''n'' + 1/6 < ''x'' < ''n'' + 5/6 for all integers ''n''; your program does not need to derive this by itself.
 
 
@@ -931,7 +931,7 @@ func main() {
 }
 ```
 
-[http://play.golang.org/p/YQ2GRBM4af Run in Go Playground].
+[Run in Go Playground](http://play.golang.org/p/YQ2GRBM4af).
 ```txt
 0 ∈ s0: true
 1 ∈ s0: true

@@ -147,8 +147,8 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides csort,deletec,strcnt,scramble] 
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
+[strings.icn provides csort,deletec,strcnt,scramble](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) 
 
 Sample Game:
 ```txt

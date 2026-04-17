@@ -13,6 +13,6 @@ tags = []
 
 
 ## References
-* [http://www.w3.org/TR/xslt XSLT 1.0 Spec]
-* [http://www.w3.org/TR/REC-xml-names XML Namespaces Spec]
-* [http://www.w3.org/TR/xpath XPath 1.0 Spec]
+* [XSLT 1.0 Spec](http://www.w3.org/TR/xslt)
+* [XML Namespaces Spec](http://www.w3.org/TR/REC-xml-names)
+* [XPath 1.0 Spec](http://www.w3.org/TR/xpath)

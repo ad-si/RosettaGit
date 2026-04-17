@@ -31,7 +31,7 @@ languages = [
 
 ## Task
 
-'''Pell's equation'''   (also called the '''Pell–Fermat''' equation)   is a   [https://en.wikipedia.org/wiki/Diophantine_equation <u>Diophantine equation</u>]   of the form:
+'''Pell's equation'''   (also called the '''Pell–Fermat''' equation)   is a   [<u>Diophantine equation</u>](https://en.wikipedia.org/wiki/Diophantine_equation)   of the form:
 
 :::::: <big> <b>  x<sup>2</sup> - ny<sup>2</sup>   =   1  </b> </big>
 
@@ -44,7 +44,7 @@ with integer solutions for   '''x'''   and   '''y''',   where   '''n'''   is a g
 
 ## See also
 
-:*   Wikipedia entry: [https://en.wikipedia.org/wiki/Pell%27s_equation <u>Pell's equation</u>].
+:*   Wikipedia entry: [<u>Pell's equation</u>](https://en.wikipedia.org/wiki/Pell%27s_equation).
 
 
 

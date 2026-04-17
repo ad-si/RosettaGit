@@ -364,7 +364,7 @@ SUCCESS: An event of type 'WARNING' was created in the 'APPLICATION' log with 'S
 
 ```
 
-Microsoft does provide an C/C++ API for EventCreate, but as with everything Microsoft, it's so wonderfully convoluted, that I will just give a link to the [https://msdn.microsoft.com/en-us/library/aa363680(v=vs.85).aspx ReportEvent] example.
+Microsoft does provide an C/C++ API for EventCreate, but as with everything Microsoft, it's so wonderfully convoluted, that I will just give a link to the [ReportEvent](https://msdn.microsoft.com/en-us/library/aa363680(v=vs.85).aspx) example.
 
 
 ## C++
@@ -654,7 +654,7 @@ SUCCESS: An event of type 'INFORMATION' was created in the 'Application' log wit
 
 ## PicoLisp
 
-PicoLisp doesn't run on Windows. In case of Linux, the equivalent of the event log is the syslog. It can be written with '[http://software-lab.de/doc/refN.html#native native]' C functions, or simply with the 'logger' utility:
+PicoLisp doesn't run on Windows. In case of Linux, the equivalent of the event log is the syslog. It can be written with '[native](http://software-lab.de/doc/refN.html#native)' C functions, or simply with the 'logger' utility:
 
 ```PicoLisp
 : (call 'logger "This is a test")
@@ -707,10 +707,10 @@ $failureAuditEvent=[System.Diagnostics.EventLogEntryType]::FailureAudit
 $EventLog.WriteEntry("My Test Event",$infoevent,70)
 ```
 
-''Note1:'' Thanks to PoSH Fan for posting information that got me started on this at [http://winpowershell.blogspot.com/2006/07/writing-windows-events-using.html Windows PowerShell Blog]
+''Note1:'' Thanks to PoSH Fan for posting information that got me started on this at [Windows PowerShell Blog](http://winpowershell.blogspot.com/2006/07/writing-windows-events-using.html)
 
 
-''Note2:'' See details on registering a new Event Source with Windows at [http://msdn.microsoft.com/en-us/library/system.diagnostics.eventlog.registerdisplayname.aspx MSDN]
+''Note2:'' See details on registering a new Event Source with Windows at [MSDN](http://msdn.microsoft.com/en-us/library/system.diagnostics.eventlog.registerdisplayname.aspx)
 
 
 ### Source and event log existing
@@ -871,7 +871,7 @@ logger.report_event(:event_type => Win32::EventLog::INFO, :data => "a test event
 ```
 
 
-Instructions on setting up an Event Source is [http://rubyforge.org/docman/view.php/85/1734/mc_tutorial.html here]
+Instructions on setting up an Event Source is [here](http://rubyforge.org/docman/view.php/85/1734/mc_tutorial.html)
 
 
 ## Tcl

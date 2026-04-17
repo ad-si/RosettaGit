@@ -328,8 +328,8 @@ main(void)
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
  PROC call back proc = (INT location, INT value)VOID:
@@ -1719,9 +1719,9 @@ Press any key to continue...
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Apply_a_callback_to_an_array this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Apply_a_callback_to_an_array) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3629,7 +3629,7 @@ for(i in seq_along(cubes))
 }
 ```
 
-Loop syntax can often simplified using the [http://stat.ethz.ch/R-manual/R-patched/library/base/html/apply.html *apply] family of functions.
+Loop syntax can often simplified using the [*apply](http://stat.ethz.ch/R-manual/R-patched/library/base/html/apply.html) family of functions.
 
 ```R
 elements2 <- list(1,2,3,4,5)
@@ -4278,7 +4278,7 @@ map (fn x=>x+1) [1,2,3];; (* [2,3,4] *)
 
 ## Stata
 
-There is no 'map' function in Mata, but it's easy to implement. Notice that you can only pass functions that are written in Mata, no builtin ones. For instance, the trigonometric functions (cos, sin) or the exponential are builtin. To pass a builtin function to another function, one needs to write a wrapper in Mata. See also Stata help about '''[https://www.stata.com/help.cgi?m2_pointers pointers]''' and '''[https://www.stata.com/help.cgi?m2_ftof passing functions to functions]'''. There are two versions of the function: one to return a numeric array, another to return a string array.
+There is no 'map' function in Mata, but it's easy to implement. Notice that you can only pass functions that are written in Mata, no builtin ones. For instance, the trigonometric functions (cos, sin) or the exponential are builtin. To pass a builtin function to another function, one needs to write a wrapper in Mata. See also Stata help about '''[pointers](https://www.stata.com/help.cgi?m2_pointers)''' and '''[passing functions to functions](https://www.stata.com/help.cgi?m2_ftof)'''. There are two versions of the function: one to return a numeric array, another to return a string array.
 
 
 ```stata

@@ -13,4 +13,4 @@ tags = []
 {{library}}
 The X protocol C-language Binding library (XCB) is a replacement for Xlib featuring a small footprint, latency hiding, direct access to the protocol, improved threading support, and extensibility.
 
-Homepage: http://xcb.freedesktop.org
+Homepage: <http://xcb.freedesktop.org>

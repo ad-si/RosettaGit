@@ -35,7 +35,7 @@ or use those components as part of a complete program, demonstrating your langua
 
 There are a number of open source Chess programs written in Go on Github.
 
-Rather than spend a lot of time trying to write my own (likely mediocre) program, I thought I'd simply post a link to [https://github.com/notnil/chess notnil/chess] which explains its various capabilities quite well. However, you need to look at the code itself to see that it can cope with all types of move including castling, ''en passant'' capture and promotion to a piece of the player's choice.
+Rather than spend a lot of time trying to write my own (likely mediocre) program, I thought I'd simply post a link to [notnil/chess](https://github.com/notnil/chess) which explains its various capabilities quite well. However, you need to look at the code itself to see that it can cope with all types of move including castling, ''en passant'' capture and promotion to a piece of the player's choice.
 
 
 ## Phix
@@ -50,7 +50,7 @@ It isn't particularly good (though perhaps a reasonable starting point for somet
 ## Python
 
 ==={{libheader|pygame}}===
-"Python Chess" is a chess game at the [http://www.pygame.org/project-Python+Chess-1099-.html PyGame-Website] and [http://uniformlyuninformative.wordpress.com/python-chess Homepage].
+"Python Chess" is a chess game at the [PyGame-Website](http://www.pygame.org/project-Python+Chess-1099-.html) and [Homepage](http://uniformlyuninformative.wordpress.com/python-chess).
 
 ==={{libheader|VPython}}===
-There is a 3D-Chess-Board in the [http://vpython.org/contents/contributed/chessboard.py VPython contributed section].
+There is a 3D-Chess-Board in the [VPython contributed section](http://vpython.org/contents/contributed/chessboard.py).

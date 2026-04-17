@@ -13,4 +13,4 @@ tags = []
 '''Berkeley Logo''' (or '''UCBLogo''') is a portable implementation of the Logo language, maintained by Brian Harvey. He has also written a series of university textbooks using this language, ''Computer Science Logo Style''.
 
 ## External links
-* [http://www.cs.berkeley.edu/~bh/logo.html Home page]
+* [Home page](http://www.cs.berkeley.edu/~bh/logo.html)

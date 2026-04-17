@@ -880,7 +880,7 @@ public class DeathStar extends Application {
 
 ## JavaScript
 
-Layer circles and gradients to achieve result similar to that of the Wikipedia page for the [http://en.wikipedia.org/wiki/Death_Star Death Star].
+Layer circles and gradients to achieve result similar to that of the Wikipedia page for the [Death Star](http://en.wikipedia.org/wiki/Death_Star).
 
 ```JavaScript
 
@@ -1802,7 +1802,7 @@ func draw(k, amb) {
 draw(2, 0.2)
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/death_star_sidef.png here].
+Output image: [here](https://github.com/trizen/rc/blob/master/img/death_star_sidef.png).
 
 
 ## Tcl

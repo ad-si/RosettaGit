@@ -41,7 +41,7 @@ They roll their dice and sum the totals of the faces. The player with the highes
 Later the two players use a different set of dice each. Now the first player has five dice with ten faces each, and the second player has six dice with seven faces each. Now what's the probability of the first player beating the second player?
 
 This task was adapted from the Project Euler Problem n.205:
-https://projecteuler.net/problem=205
+<https://projecteuler.net/problem=205>
 
 
 ## 11l
@@ -280,7 +280,7 @@ IN: rosetta-code.dice-probabilities
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ef255e4239a713aba35598a4617af3c9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ef255e4239a713aba35598a4617af3c9)'''
 
 ```gambas
 ' Gambas module file

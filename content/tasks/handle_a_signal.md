@@ -534,7 +534,7 @@ prompt$
 ## Common Lisp
 
 Each Common Lisp implementation will handle signals differently, although a multi-implementation approach can be done using cffi.
-The full list of signal number can be found on [https://en.wikipedia.org/wiki/Unix_signal#POSIX_signals].
+The full list of signal number can be found on <https://en.wikipedia.org/wiki/Unix_signal#POSIX_signals>.
 Tested on SBCL 1.2.7 and ECL 13.5.1.
 
 ```lisp

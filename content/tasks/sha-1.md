@@ -83,8 +83,8 @@ A US government standard, [[SHA-1/FIPS-180-1|FIPS 180-1]], defines SHA-1.
 
 Find the SHA-1 message digest for a string of [[octet]]s. You may either call a SHA-1 library, or implement SHA-1 in your language. Both approaches interest Rosetta Code.
 
-{{alertbox|lightgray|'''Warning:''' SHA-1 has [https://en.wikinews.org/wiki/Chinese_researchers_crack_major_U.S._government_algorithm_used_in_digital_signatures known weaknesses]. Theoretical attacks may find a collision after [http://lwn.net/Articles/337745/ 2<sup>52</sup> operations], or perhaps fewer.
-This is much faster than a brute force attack of 2<sup>80</sup> operations. USgovernment [http://csrc.nist.gov/groups/ST/hash/statement.html deprecated SHA-1].
+{{alertbox|lightgray|'''Warning:''' SHA-1 has [known weaknesses](https://en.wikinews.org/wiki/Chinese_researchers_crack_major_U.S._government_algorithm_used_in_digital_signatures). Theoretical attacks may find a collision after [2<sup>52</sup> operations](http://lwn.net/Articles/337745/), or perhaps fewer.
+This is much faster than a brute force attack of 2<sup>80</sup> operations. USgovernment [deprecated SHA-1](http://csrc.nist.gov/groups/ST/hash/statement.html).
 For production-grade cryptography, users may consider a stronger alternative, such as SHA-256 (from the SHA-2 family) or the upcoming SHA-3.}}
 
 
@@ -122,7 +122,7 @@ print hash
 
 ## AutoHotkey
 
-Source: [https://github.com/jNizM/AutoHotkey_Scripts/tree/master/Functions/Checksums SHA-1 @github] by jNizM
+Source: [SHA-1 @github](https://github.com/jNizM/AutoHotkey_Scripts/tree/master/Functions/Checksums) by jNizM
 
 ```AutoHotkey
 str := "Rosetta Code"
@@ -445,12 +445,12 @@ USER>zzdump hash
 
 ## Clojure
 
-As Clojure is interoperable with Java the solution to this task would be a small modification to [[MD5#Clojure|MD5]], as with Java. (Replacing "MD5" with "SHA-1" as noted [http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest here].)
+As Clojure is interoperable with Java the solution to this task would be a small modification to [[MD5#Clojure|MD5]], as with Java. (Replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest).)
 
 
 ## Common Lisp
 
-This example uses the [http://method-combination.net/lisp/ironclad/ Ironclad] cryptography library (available via Quicklisp as well).
+This example uses the [Ironclad](http://method-combination.net/lisp/ironclad/) cryptography library (available via Quicklisp as well).
 
 ```lisp
 ;;; in addition to sha1, ironclad provides sha224, sha256, sha384, and sha512.
@@ -622,7 +622,7 @@ Factor provides ''sha1'' in the ''checksums.sha'' vocabulary. In Factor, ''check
  IN: scratchpad '''"Rosetta Code" sha1 checksum-bytes hex-string .'''
  "48c98f7e5a6e736d790ab740dfc3f51a61abe2b5"
 
-The implementation is at [https://github.com/slavapestov/factor/blob/master/basis/checksums/sha/sha.factor basis/checksums/sha/sha.factor].
+The implementation is at [basis/checksums/sha/sha.factor](https://github.com/slavapestov/factor/blob/master/basis/checksums/sha/sha.factor).
 
 Note: In recent factor builds (after June 2017, ie factor 0.98), checksums:hex-string has been moved to math.parser:hex-string>bytes
 
@@ -632,7 +632,7 @@ Note: In recent factor builds (after June 2017, ie factor 0.98), checksums:hex-s
 
 ### Intel Fortran on Windows
 
-Using Windows API. See [https://msdn.microsoft.com/en-us/library/aa379886.aspx CryptAcquireContext], [https://msdn.microsoft.com/en-us/library/aa379908.aspx CryptCreateHash], [https://msdn.microsoft.com/en-us/library/aa380202.aspx CryptHashData] and [https://msdn.microsoft.com/en-us/library/aa379947.aspx CryptGetHashParam] on MSDN.
+Using Windows API. See [CryptAcquireContext](https://msdn.microsoft.com/en-us/library/aa379886.aspx), [CryptCreateHash](https://msdn.microsoft.com/en-us/library/aa379908.aspx), [CryptHashData](https://msdn.microsoft.com/en-us/library/aa380202.aspx) and [CryptGetHashParam](https://msdn.microsoft.com/en-us/library/aa379947.aspx) on MSDN.
 
 
 ```fortran
@@ -1022,7 +1022,7 @@ Remember that SHA-1 is an obsolete standard (and if you *really* want high speed
 
 ## Java
 
-The solution to this task would be a small modification to [[MD5#Java|MD5]] (replacing "MD5" with "SHA-1" as noted [http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest here]).
+The solution to this task would be a small modification to [[MD5#Java|MD5]] (replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
 
 
 ## Jsish
@@ -1241,7 +1241,7 @@ end shaRosettaCode
 ## Lua
 
 
-{{libheader|sha1}} ([https://github.com/kikito/sha1.lua luarocks install sha1])
+{{libheader|sha1}} ([luarocks install sha1](https://github.com/kikito/sha1.lua))
 
 
 ```Lua
@@ -1428,7 +1428,7 @@ $ ocaml -I +sha sha1.cma
 
 ## Octave
 
-Normally SHA-1 is available in the [http://octave.sourceforge.net/general/function/SHA1.html general package].
+Normally SHA-1 is available in the [general package](http://octave.sourceforge.net/general/function/SHA1.html).
 
 
 ```octave
@@ -1832,7 +1832,7 @@ Function Calculate-SHA1( $String ){
 
 ```
 
-taken from [http://stackoverflow.com/questions/8051713/convert-a-string-to-a-byte-array-in-powershell-version-2 Stackoverflow] with a little modification
+taken from [Stackoverflow](http://stackoverflow.com/questions/8051713/convert-a-string-to-a-byte-array-in-powershell-version-2) with a little modification
 
 
 ## PureBasic
@@ -2064,7 +2064,7 @@ print(sha1sum("Rosetta Code"));
 
 ## Scala
 
-The solution to this task would be a small modification to [[MD5#Scala|MD5]] (replacing "MD5" with "SHA-1" as noted [http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest here]).
+The solution to this task would be a small modification to [[MD5#Scala|MD5]] (replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
 
 
 ```scala

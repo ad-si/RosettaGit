@@ -1109,7 +1109,7 @@ Sample run:
 
 ## J
 
-The code at [http://code.jsoftware.com/wiki/User:Marshall_Lochbaum/Parallelize] implements parallel computation. With it, we can write
+The code at <http://code.jsoftware.com/wiki/User:Marshall_Lochbaum/Parallelize> implements parallel computation. With it, we can write
 
 ```j
    numbers =. 12757923 12878611 12878893 12757923 15808973 15780709 197622519
@@ -1542,7 +1542,7 @@ if x==1  then return dollar                           /*Is residual=unity? Then 
 
 ## PARI/GP
 
-See [http://pari.math.u-bordeaux1.fr/Events/PARI2012/talks/pareval.pdf Bill Allombert's slides on parallel programming in GP]. This can be configured to use either MPI (good for many networked computers) or pthreads (good for a single machine).
+See [Bill Allombert's slides on parallel programming in GP](http://pari.math.u-bordeaux1.fr/Events/PARI2012/talks/pareval.pdf). This can be configured to use either MPI (good for many networked computers) or pthreads (good for a single machine).
 ```parigp
 v=pareval(vector(1000,i,()->factor(2^i+1)[1,1]));
 vecmin(v)
@@ -2006,10 +2006,10 @@ and some control-flow scaffolding that is getting parallelised. I only got 4 cor
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refL.html#later later]' function is used in
+The '[later](http://software-lab.de/doc/refL.html#later)' function is used in
 PicoLisp to start parallel computations. The following solution calls 'later' on
 the 'factor' function from [[Prime decomposition#PicoLisp]], and then
-'[http://software-lab.de/doc/refW.html#wait wait]'s until all results are
+'[wait](http://software-lab.de/doc/refW.html#wait)'s until all results are
 available:
 
 ```PicoLisp
@@ -2202,7 +2202,7 @@ EndDataSection
 ## Python
 
 ===Python3 - concurrent===
-Python 3.2 has a new [http://www.python.org/dev/peps/pep-3148/ concurrent.futures] module that allows for the easy specification of thread-parallel or process-parallel processes. The following is modified from their example and will run, by default, with as many processes as there are available cores on your machine.
+Python 3.2 has a new [concurrent.futures](http://www.python.org/dev/peps/pep-3148/) module that allows for the easy specification of thread-parallel or process-parallel processes. The following is modified from their example and will run, by default, with as many processes as there are available cores on your machine.
 
 <small>Note that there is no need to calculate all prime factors of all <code>NUMBERS</code> when only the prime factors of the number with the lowest overall prime factor is needed.</small>
 
@@ -2271,7 +2271,7 @@ For these numbers:
 
 
 ===Python General - multiprocessing===
-<p>This method works for both Python2 and Python3 using the standard library module [https://docs.python.org/3/library/multiprocessing.html multiprocessing]. The result of the following code is the same as the previous example only the different package is used. </p>
+<p>This method works for both Python2 and Python3 using the standard library module [multiprocessing](https://docs.python.org/3/library/multiprocessing.html). The result of the following code is the same as the previous example only the different package is used. </p>
 
 
 ```python
@@ -2398,7 +2398,7 @@ main(args(2)) :=
 ```
 
 
-Using the Trial Division version of primeFactorization here: [http://rosettacode.org/wiki/Prime_decomposition#SequenceL]
+Using the Trial Division version of primeFactorization here: <http://rosettacode.org/wiki/Prime_decomposition#SequenceL>
 
 The primary source of parallelization in the above code is from the line:
 
@@ -2447,7 +2447,7 @@ Total Time:3.01593
 
 ```
 
-[http://i.imgur.com/UIO8X8U.png Performance Plot]
+[Performance Plot](http://i.imgur.com/UIO8X8U.png)
 
 The i7 has 4 physical cores with hyperthreading.
 You can see that nearly linear speedup is gained, automatically, while only using the physical cores. Once the hyperthreaded cores are used the performance suffers slightly.

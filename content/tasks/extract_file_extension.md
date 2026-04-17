@@ -79,7 +79,7 @@ For the purposes of this task, a filename extension
 ! Output
 ! Comment
 |-
-| <code><nowiki>http://example.com/download.tar.gz</nowiki></code>
+| <code><nowiki><http://example.com/download.tar.gz></nowiki></code>
 | <code>.gz</code>
 |
 |-
@@ -929,7 +929,7 @@ document.txt_backup                    (empty string)
 
 As Gambas has its own tools for file extension extraction I have used those rather than complicate the code to match the requested criteria.
 
-'''[https://gambas-playground.proko.eu/?gist=d52464fe8c05c857311d49184299814a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d52464fe8c05c857311d49184299814a)'''
 
 ```gambas
 Public Sub Main()
@@ -1646,7 +1646,7 @@ document.txt_backup has extension:
 
 ## OCaml
 
-Since OCaml 4.04 there is a function '''[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALextension Filename.extension]''':
+Since OCaml 4.04 there is a function '''[Filename.extension](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALextension)''':
 
 ```ocaml
 let () =
@@ -1927,7 +1927,7 @@ extension "/etc/pam.d/login"
 ## Python
 
 
-Uses [https://docs.python.org/3/library/re.html#re.search re.search].
+Uses [re.search](https://docs.python.org/3/library/re.html#re.search).
 
 
 ```python
@@ -2443,7 +2443,7 @@ files.each {|f|
 ## Tcl
 
 
-Tcl's built in [http://wiki.tcl.tk/10072 file extension] command already almost knows how to do this, except it accepts any character after the dot.  Just for fun, we'll enhance the builtin with a new subcommand with the limitation specified for this problem.
+Tcl's built in [file extension](http://wiki.tcl.tk/10072) command already almost knows how to do this, except it accepts any character after the dot.  Just for fun, we'll enhance the builtin with a new subcommand with the limitation specified for this problem.
 
 
 ```Tcl

@@ -16,8 +16,8 @@ In the latter part of the 90s, several attempts were made to extend the language
 The '96 and '97 versions are now largely considered abandoned, and while '''Funge-98''' did gain a certain amount of traction, it has never been as widely adopted as the original '''Befunge-93'''. Being considerably more complex than the original, it is often deemed "too complicated" and sometimes even "too normal".
 
 ## See also
-* [http://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown Befunge-93 Specification]
-* [http://github.com/catseye/Funge-98/blob/master/doc/funge98.markdown Funge-98 Specification]
+* [Befunge-93 Specification](http://github.com/catseye/Befunge-93/blob/master/doc/Befunge-93.markdown)
+* [Funge-98 Specification](http://github.com/catseye/Funge-98/blob/master/doc/funge98.markdown)
 * [Funges on Wikipedia](https://en.wikipedia.org/wiki/Esoteric_programming_language#Funges)
 * [Befunge on Esolangs](https://rosettacode.org/wiki/eso:Befunge)
 

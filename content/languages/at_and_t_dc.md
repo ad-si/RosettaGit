@@ -16,11 +16,11 @@ POSIX only describes [''bc''](https://rosettacode.org/wiki/:Category:bc), not ''
 The manual page accidentally omits <code>!< != !></code>, but AT&T dc does have these commands, and ''dc'' programmers do use them.
 
 ## Ancient dc
-[http://www.tuhs.org/wiki/The_Unix_Heritage_Society The Unix Heritage Society] preserves old versions of AT&T UNIX.
+[The Unix Heritage Society](http://www.tuhs.org/wiki/The_Unix_Heritage_Society) preserves old versions of AT&T UNIX.
 
-* [http://minnie.tuhs.org/cgi-bin/utree.pl?file=V1/man/man1/dc.1 dc(I) manual], Version 1 AT&T UNIX
-* [http://minnie.tuhs.org/cgi-bin/utree.pl?file=V2/cmd source code] (dc1.s to dc5.s), Version 2 AT&T UNIX
+* [dc(I) manual](http://minnie.tuhs.org/cgi-bin/utree.pl?file=V1/man/man1/dc.1), Version 1 AT&T UNIX
+* [source code](http://minnie.tuhs.org/cgi-bin/utree.pl?file=V2/cmd) (dc1.s to dc5.s), Version 2 AT&T UNIX
 
 ## Modern dc
-The [http://heirloom.sourceforge.net/ Heirloom Project] provides AT&T dc along with other System V commands.
-* [http://heirloom.sourceforge.net/man/dc.1.html dc(1) manual] and [http://heirloom.cvs.sourceforge.net/viewvc/heirloom/heirloom/dc/ source code]
+The [Heirloom Project](http://heirloom.sourceforge.net/) provides AT&T dc along with other System V commands.
+* [dc(1) manual](http://heirloom.sourceforge.net/man/dc.1.html) and [source code](http://heirloom.cvs.sourceforge.net/viewvc/heirloom/heirloom/dc/)

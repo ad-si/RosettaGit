@@ -326,7 +326,7 @@ main(void)
 ## AutoHotkey
 
 <tt>echoserver.ahk</tt>, modified from
-[http://www.autohotkey.com/forum/topic13829.html script] by zed gecko.
+[script](http://www.autohotkey.com/forum/topic13829.html) by zed gecko.
 
 ```AutoHotkey
 #SingleInstance Force
@@ -612,7 +612,7 @@ Connection on socket 1012 closed
 
 ## C
 
-This is a rather standard code (details apart); the reference guide for such a code is the [http://beej.us/guide/bgnet Beej's Guide to Network programming]. The dependency from POSIX is mainly in the use of the <tt>read</tt> and <tt>write</tt> functions, (using the socket as a file descriptor sometimes make things simpler).
+This is a rather standard code (details apart); the reference guide for such a code is the [Beej's Guide to Network programming](http://beej.us/guide/bgnet). The dependency from POSIX is mainly in the use of the <tt>read</tt> and <tt>write</tt> functions, (using the socket as a file descriptor sometimes make things simpler).
 
 
 ```c
@@ -853,7 +853,7 @@ server.listen 12321, "localhost"
 ## Common Lisp
 
 
-Here is a basic [http://common-lisp.net/project/usocket/ :usocket] example (it should work with any Common Lisp):
+Here is a basic [:usocket](http://common-lisp.net/project/usocket/) example (it should work with any Common Lisp):
 
 
 ```lisp
@@ -1861,9 +1861,9 @@ Connection lost: localhost:2048.
 
 ## Perl
 
-This server will run indefinitely listening in the port 12321 and [http://perldoc.perl.org/functions/fork.html forking] every time a client connects, the childs listen to the client and write back.
+This server will run indefinitely listening in the port 12321 and [forking](http://perldoc.perl.org/functions/fork.html) every time a client connects, the childs listen to the client and write back.
 
-This is an example using the [http://search.cpan.org/perldoc?IO::Socket IO::Socket] module:
+This is an example using the [IO::Socket](http://search.cpan.org/perldoc?IO::Socket) module:
 
 ```perl
 use IO::Socket;
@@ -1898,7 +1898,7 @@ while (1) {
 ```
 
 
-This is an equivalent program using the [http://search.cpan.org/perldoc?Net::Server Net::Server] module:
+This is an equivalent program using the [Net::Server](http://search.cpan.org/perldoc?Net::Server) module:
 
 ```perl
 package Echo;
@@ -2423,7 +2423,7 @@ object EchoServer extends App {
 
 ## Scheme
 
-Based on the [[Guile]] [http://www.gnu.org/software/guile/manual/html_node/Internet-Socket-Examples.html Internet Socket Server Example].
+Based on the [[Guile]] [Internet Socket Server Example](http://www.gnu.org/software/guile/manual/html_node/Internet-Socket-Examples.html).
 
 ```scheme
 ; Needed in Guile for read-line
@@ -2473,8 +2473,8 @@ Based on the [[Guile]] [http://www.gnu.org/software/guile/manual/html_node/Inter
 
 ## Seed7
 
-The code below uses the library [http://seed7.sourceforge.net/libraries/listener.htm listener.s7i].
-The function [http://seed7.sourceforge.net/libraries/listener.htm#waitForRequest%28inout_listener,inout_file,inout_file%29 waitForRequest] returns
+The code below uses the library [listener.s7i](http://seed7.sourceforge.net/libraries/listener.htm).
+The function [waitForRequest](http://seed7.sourceforge.net/libraries/listener.htm#waitForRequest%28inout_listener,inout_file,inout_file%29) returns
 requests from new and existing connections.
 
 

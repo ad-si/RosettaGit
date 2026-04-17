@@ -187,8 +187,8 @@ one quickly finds it is necessary to use numerous brackets.
 e.g. compare "<tt>(shuffle OF deck class)(deck)</tt>" with python's simple "<tt>deck.shuffle()</tt>"
 
 For further details:
-* [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A26/P22.HTM Ross, D.T., "Features Essential for a Workable Algol X," ALGOL Bulletin, No. 26, August 1967, pp. 6-12, and ACM SIGPLAN Notices, Vol.2, No.11, November 1967.]
-* [http://www.csail.mit.edu/timeline/timeline.php?query=event&id=93 LOC was essential; Algol 68's REF was a mistake.]
+* [Ross, D.T., "Features Essential for a Workable Algol X," ALGOL Bulletin, No. 26, August 1967, pp. 6-12, and ACM SIGPLAN Notices, Vol.2, No.11, November 1967.](http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A26/P22.HTM)
+* [LOC was essential; Algol 68's REF was a mistake.](http://www.csail.mit.edu/timeline/timeline.php?query=event&id=93)
 
 
 ```algol68
@@ -5534,7 +5534,7 @@ remainder of deck:  10♣ 2♣ A♠ 5♦ 9♥ 10♥ Q♠ 6♦ 9♠ K♣ 6♣ A�
 ## Ring
 
 
-The Cards game, Screen shot : http://ring-lang.sourceforge.net/doc/_images/ringqt_shot48.jpg
+The Cards game, Screen shot : <http://ring-lang.sourceforge.net/doc/_images/ringqt_shot48.jpg>
 
 
 ```ring

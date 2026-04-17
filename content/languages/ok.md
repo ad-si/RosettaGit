@@ -13,4 +13,4 @@ tags = []
 '''oK''' is an open-source implementation in Javascript of the evolving K5/6 programming language.
 
 ## External Links
-[https://github.com/JohnEarnest/ok/ GitHub]
+[GitHub](https://github.com/JohnEarnest/ok/)

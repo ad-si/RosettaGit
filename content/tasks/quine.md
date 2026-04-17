@@ -163,7 +163,7 @@ There are several difficulties that one runs into when writing a quine, mostly d
 
 
 
-'''Next to the Quines presented here, many other versions can be found on the [http://www.nyx.net/~gthompso/quine.htm Quine] page.'''
+'''Next to the Quines presented here, many other versions can be found on the [Quine](http://www.nyx.net/~gthompso/quine.htm) page.'''
 
 
 
@@ -171,7 +171,7 @@ There are several difficulties that one runs into when writing a quine, mostly d
 
 ## ABAP
 
-I copied one of my examples from http://www.yaabb.de/viewtopic.php?t=44
+I copied one of my examples from <http://www.yaabb.de/viewtopic.php?t=44>
 
 ```ABAP
 REPORT R NO STANDARD PAGE HEADING LINE-SIZE 67.
@@ -372,7 +372,7 @@ The following is a shorter and character set independent - hence portable - impl
 []CHARa="[]CHARa="";print(2*a[:9]+2*a[9:])";print(2*a[:9]+2*a[9:])
 ```
 
-The original program - from which this is derived - was written by Richard Wendland, who is one of the team who implemented Algol 68 on Honeywell's Multics. [http://portal.acm.org/ft_gateway.cfm?id=1061754&type=pdf The original can be found in Algol Bulletin 46 - 2.1 - Page 5].
+The original program - from which this is derived - was written by Richard Wendland, who is one of the team who implemented Algol 68 on Honeywell's Multics. [The original can be found in Algol Bulletin 46 - 2.1 - Page 5](http://portal.acm.org/ft_gateway.cfm?id=1061754&type=pdf).
 
 
 ## Applesoft BASIC
@@ -386,7 +386,7 @@ The original program - from which this is derived - was written by Richard Wendl
 
 ## AutoHotkey
 
-All from http://www.autohotkey.com/forum/viewtopic.php?t=14336:
+All from <http://www.autohotkey.com/forum/viewtopic.php?t=14336>:
 The "cheating" way:
 
 ```AutoHotkey
@@ -896,7 +896,7 @@ linkage section. 78 c value "display 'linkage section. 78 c value ' x'22' c x'22
 ```
 
 
-The following two quines were in a gray past (around 2004?) posted to the (currently inaccessible) language forum of the [http://mvshelp.net/vbforums/ mvsHelp Boards]
+The following two quines were in a gray past (around 2004?) posted to the (currently inaccessible) language forum of the [mvsHelp Boards](http://mvshelp.net/vbforums/)
 
 ```cobol
        IDENTIFICATION DIVISION.
@@ -1293,7 +1293,7 @@ The following two quines were in a gray past (around 2004?) posted to the (curre
            DISPLAY TE (X) END-PERFORM STOP RUN.
 ```
 
-An even smaller one could be found of the site of [http://www.tmdg.co.uk/programing/quine.cbl.php Tom Dawes-Gamble], but is reproduced below, as the original seems to have vanished:
+An even smaller one could be found of the site of [Tom Dawes-Gamble](http://www.tmdg.co.uk/programing/quine.cbl.php), but is reproduced below, as the original seems to have vanished:
 
 ```cobol
 
@@ -1602,16 +1602,16 @@ All the zeros and +'s on the first line are just for aesthetic purposes. Only tw
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Quine this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Quine) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
 
 ## Forth
 
-A large number of quine methods are listed [http://www.complang.tuwien.ac.at/forth/quines.html here], the simplest of which is:
+A large number of quine methods are listed [here](http://www.complang.tuwien.ac.at/forth/quines.html), the simplest of which is:
 
 ```forth
 SOURCE TYPE>
@@ -1852,12 +1852,12 @@ Two much shorter quines were created and tweeted from the @urbit_ twitter accoun
 ```Hoon
 =-(`@t`(rap 3 - (scot %uw -) ")") 0wwai8F.8y0Fb.i1Tti.kwt6Z.zsOww.bi0P8.71xsy.xwt41.wa2QZ)
 ```
-[https://twitter.com/urbit_/status/651127726670147584 1]
+[1](https://twitter.com/urbit_/status/651127726670147584)
 
 ```Hoon
 =<(`_""`~[. `@`39 . `@`10.535] '=<(`_""`~[. `@`39 . `@`10.535] ')
 ```
-[https://twitter.com/urbit_/status/651126581499314176 2]
+[2](https://twitter.com/urbit_/status/651126581499314176)
 
 
 ## HQ9+
@@ -1985,7 +1985,7 @@ And other [[j:Puzzles/Quine#Solutions|solutions]] are also possible.
 
 ## Java
 
-Copied from [http://www.nyx.net/~gthompso/copyrights.htm The Quine Page]
+Copied from [The Quine Page](http://www.nyx.net/~gthompso/copyrights.htm)
 
 Author: Bertram Felgenhauer
 <div style="width:100%;overflow:scroll">
@@ -3533,7 +3533,7 @@ The last command tests if source code in variable ''quine'' is equal to output o
 
 ## Pascal
 
-A modification of one Pascal example (Author: Oliver Heen) from http://www.nyx.net/~gthompso/self_pasc.txt. This example includes newline at the end.
+A modification of one Pascal example (Author: Oliver Heen) from <http://www.nyx.net/~gthompso/self_pasc.txt>. This example includes newline at the end.
 
 ```pascal
 const s=';begin writeln(#99#111#110#115#116#32#115#61#39,s,#39,s)end.';begin writeln(#99#111#110#115#116#32#115#61#39,s,#39,s)end.
@@ -3618,7 +3618,7 @@ $_=q{print"\$_=q{$_};eval"};eval
 By carefully examining the code, you will find that you can insert any valid perl sentences before and after the print statement in q{}.
 It is just a few lines of codes away before you come up with a quine generator that turns a given perl script into a quine.  Note this quine generator itself is a quine.
 
-cf. [http://blog.livedoor.jp/dankogai/archives/51519405.html http://blog.livedoor.jp/dankogai/archives/51519405.html]
+cf. [http://blog.livedoor.jp/dankogai/archives/51519405.html](http://blog.livedoor.jp/dankogai/archives/51519405.html)
 
 
 
@@ -4104,7 +4104,7 @@ import sys,inspect;sys.stdout.write(inspect.getsource(inspect.currentframe()))
 
 ----
 
-Due to Leon Naley (name guessed) from [http://forums.devshed.com/python-programming-11/2nd-shortest-quine-in-python-ever-937355.html#post2845853 devshed python forum]
+Due to Leon Naley (name guessed) from [devshed python forum](http://forums.devshed.com/python-programming-11/2nd-shortest-quine-in-python-ever-937355.html#post2845853)
 
 ''I think I just thought of the shortest quine for python I think there can ever be! (except a blank program)
 
@@ -4621,7 +4621,7 @@ object Quine {
 ```
 
 
-script, using printf with indexed arguments (proposed here: http://www.codecommit.com/blog/scala/useless-hackery-a-scala-quine):
+script, using printf with indexed arguments (proposed here: <http://www.codecommit.com/blog/scala/useless-hackery-a-scala-quine>):
 
 ```scala
 
@@ -4681,7 +4681,7 @@ const proc: main is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/puzzles.htm#self]
+Original source: <http://seed7.sourceforge.net/algorith/puzzles.htm#self>
 
 
 ## Sidef
@@ -4735,7 +4735,7 @@ PRINT FORMAT$(Q$,CHR$(34)+Q$+CHR$(34)+CHR$(10))
 
 ## SPL
 
-There is a [https://bitbucket.org/FlorianPommerening/splquine bootstrapper for a Quine in SPL]. The actual Quine is
+There is a [bootstrapper for a Quine in SPL](https://bitbucket.org/FlorianPommerening/splquine). The actual Quine is
 quite large (3.1 million to 180 thousand lines in this case).
 
 
@@ -4774,7 +4774,7 @@ quite large (3.1 million to 180 thousand lines in this case).
 
 ## Tcl
 
-There are a number of excellent quines in the Tcl wiki[http://wiki.tcl.tk/730], the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file.
+There are a number of excellent quines in the Tcl wiki<http://wiki.tcl.tk/730>, the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file.
 
 The most straightforward one in the spirit of Quine is probably the one that uses <tt>[join]</tt>, which appends the elements in the list given in its first argument with a "joining string" which is given in the second element of the list. For example the three-element list <tt>{} A B</tt> (the first element of which is an empty list):
 
@@ -5111,7 +5111,7 @@ str.format v v -- io.writeln io.stdout;
 
 ## x86 Assembly
 
-<!-- Used with permission from: https://github.com/calculuswhiz/Assembly-Syntax-Definition/tree/master/test -->
+<!-- Used with permission from: <https://github.com/calculuswhiz/Assembly-Syntax-Definition/tree/master/test> -->
 <lang>
 .global _start;_start:mov $p,%rsi;mov $1,%rax;mov $1,%rdi;mov $255,%rdx;syscall;mov $q,%rsi;mov $1,%rax;mov $1,%rdx;syscall;mov $p,%rsi;mov $1,%rax;mov $255,%rdx;syscall;mov $q,%rsi;mov $1,%rax;mov $1,%rdx;syscall;mov $60,%rax;syscall;q:.byte 34;p:.ascii ".global _start;_start:mov $p,%rsi;mov $1,%rax;mov $1,%rdi;mov $255,%rdx;syscall;mov $q,%rsi;mov $1,%rax;mov $1,%rdx;syscall;mov $p,%rsi;mov $1,%rax;mov $255,%rdx;syscall;mov $q,%rsi;mov $1,%rax;mov $1,%rdx;syscall;mov $60,%rax;syscall;q:.byte 34;p:.ascii "
 

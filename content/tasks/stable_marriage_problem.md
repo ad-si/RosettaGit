@@ -103,12 +103,12 @@ And a complete list of ranked preferences, where the most liked is to the left:
 
 
 '''References'''
-#  [http://www.cs.columbia.edu/~evs/intro/stable/writeup.html The Stable Marriage Problem]. (Eloquent description and background information).
-# [http://sephlietz.com/gale-shapley/ Gale-Shapley Algorithm Demonstration].
-# [http://mathsite.math.berkeley.edu/smp/smp.html Another Gale-Shapley Algorithm Demonstration].
-# [https://www.youtube.com/watch?v=Qcv1IqHWAzg Stable Marriage Problem - Numberphile] (Video).
-# [https://www.youtube.com/watch?v=LtTV6rIxhdo Stable Marriage Problem (the math bit)] (Video).
-# [http://www.ams.org/samplings/feature-column/fc-2015-03 The Stable Marriage Problem and School Choice]. (Excellent exposition)
+#  [The Stable Marriage Problem](http://www.cs.columbia.edu/~evs/intro/stable/writeup.html). (Eloquent description and background information).
+# [Gale-Shapley Algorithm Demonstration](http://sephlietz.com/gale-shapley/).
+# [Another Gale-Shapley Algorithm Demonstration](http://mathsite.math.berkeley.edu/smp/smp.html).
+# [Stable Marriage Problem - Numberphile](https://www.youtube.com/watch?v=Qcv1IqHWAzg) (Video).
+# [Stable Marriage Problem (the math bit)](https://www.youtube.com/watch?v=LtTV6rIxhdo) (Video).
+# [The Stable Marriage Problem and School Choice](http://www.ams.org/samplings/feature-column/fc-2015-03). (Excellent exposition)
 
 
 
@@ -3197,7 +3197,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 ```txt
 
 Matching:
@@ -6315,7 +6315,7 @@ Unstable: bob and abi prefer each other over partners.
 
 ## REXX
 
-Algorithm used: see link https://www.youtube.com/watch?v=Qcv1IqHWAzg
+Algorithm used: see link <https://www.youtube.com/watch?v=Qcv1IqHWAzg>
 
 ```REXX
 /*- REXX --------------------------------------------------------------

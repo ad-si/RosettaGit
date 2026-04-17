@@ -11,9 +11,9 @@ tags = []
 +++
 
 ==Inspiration==
-I need to add a link to [http://www.youtube.com/watch?v=Yhlv5Aeuo_k Vihart].
+I need to add a link to [Vihart](http://www.youtube.com/watch?v=Yhlv5Aeuo_k).
 
-Can the colour of the font of just the task description be changed to pink? (A [http://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png Dark side of the moon] joke). --[[User:Paddy3118|Paddy3118]] 19:13, 24 June 2012 (UTC)
+Can the colour of the font of just the task description be changed to pink? (A [Dark side of the moon](http://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png) joke). --[[User:Paddy3118|Paddy3118]] 19:13, 24 June 2012 (UTC)
 
 ==Output==
 * Has to be shown

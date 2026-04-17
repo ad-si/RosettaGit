@@ -27,7 +27,7 @@ languages = [
 
 On a set of coasters we have, there's a picture of a teacup. On the rim of the teacup the word "TEA" appears a number of times separated by bullet characters. It occurred to me that if the bullet were removed and the words run together, you could start at any letter and still end up with a meaningful three-letter word. So start at the "T" and read "TEA". Start at the "E" and read "EAT", or start at the "A" and read "ATE".
 
-That got me thinking that maybe there are other words that could be used rather that "TEA". And that's just English. What about Italian or Greek or ... um ... Telugu. For English, we use the unixdict (now) located at http://wiki.puzzlers.org/pub/wordlists/unixdict.txt . (This maintains continuity with other RC tasks that also use it.)
+That got me thinking that maybe there are other words that could be used rather that "TEA". And that's just English. What about Italian or Greek or ... um ... Telugu. For English, we use the unixdict (now) located at <http://wiki.puzzlers.org/pub/wordlists/unixdict.txt> . (This maintains continuity with other RC tasks that also use it.)
 
 So here's the task: You're in search of a set of words that could be printed around the edge of a teacup. The words in each set are to be of the same length, that length being greater than two (thus precluding AH and HA, for example.) Having listed a set, for example [ate tea eat], refrain from displaying permutations of that set, e.g. [eat tea ate] etc. The words should also be made of more than one letter (thus precluding III and OOO etc.) 
 
@@ -723,7 +723,7 @@ foreach(println, getteawords("https://www.mit.edu/~ecprice/wordlist.10000"))
 
 Lychen is V8 JavaScript wrapped in C#, exposing C# into JavaScript.
 
-Using https://www.mit.edu/~ecprice/wordlist.10000 as per the Julia example.
+Using <https://www.mit.edu/~ecprice/wordlist.10000> as per the Julia example.
 
 
 ```javascript
@@ -883,7 +883,7 @@ ATE, TEA, EAT
 III
 ```
 
-words.txt file from https://github.com/dwyl/english-words
+words.txt file from <https://github.com/dwyl/english-words>
 
 Command line: <tt>perl6 teacup.p6 words.txt --min-chars=4 --mono=Allow</tt>
 

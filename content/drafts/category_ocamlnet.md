@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-ocamlnet can be found [http://projects.camlcity.org/projects/ocamlnet.html here].
+ocamlnet can be found [here](http://projects.camlcity.org/projects/ocamlnet.html).
 
 ocamlnet is packaged for most Linux distros.

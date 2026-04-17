@@ -3346,7 +3346,7 @@ one,two,2016/07/25 12:33pm
 
 ## PicoLisp
 
-The '[http://software-lab.de/doc/refR.html#rc rc]' resource file handling function is used typically for such tasks. It also takes care of proper locking and protection.
+The '[rc](http://software-lab.de/doc/refR.html#rc)' resource file handling function is used typically for such tasks. It also takes care of proper locking and protection.
 
 ```PicoLisp
 #!/usr/bin/pil

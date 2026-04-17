@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Raven is an eclectic language with features derived from [derived from::Python](https://rosettacode.org/wiki/derived_from::Python), [derived from::Forth](https://rosettacode.org/wiki/derived_from::Forth), and [derived from::Perl](https://rosettacode.org/wiki/derived_from::Perl). It was developed independently by [Sean Pringle](https://rosettacode.org/wiki/User:Mythago). Raven is available from [http://aerosuidae.net aerosuidae.net] under the GNU General Public License. It is currently only available for the [runs on::Linux](https://rosettacode.org/wiki/runs_on::Linux) platform.
+Raven is an eclectic language with features derived from [derived from::Python](https://rosettacode.org/wiki/derived_from::Python), [derived from::Forth](https://rosettacode.org/wiki/derived_from::Forth), and [derived from::Perl](https://rosettacode.org/wiki/derived_from::Perl). It was developed independently by [Sean Pringle](https://rosettacode.org/wiki/User:Mythago). Raven is available from [aerosuidae.net](http://aerosuidae.net) under the GNU General Public License. It is currently only available for the [runs on::Linux](https://rosettacode.org/wiki/runs_on::Linux) platform.
 
 ## Features
 Its described feature set includes:
@@ -47,7 +47,7 @@ Its described feature set includes:
 * Interface to [MySQL](https://rosettacode.org/wiki/MySQL) and SQLite.
 * Support multithreading.
 
-Source: [http://aerosuidae.net/raven.html The Raven home page]
+Source: [The Raven home page](http://aerosuidae.net/raven.html)
 
 ## Other Resources
-* [http://aerosuidae.net/raven.html Raven Manual]
+* [Raven Manual](http://aerosuidae.net/raven.html)

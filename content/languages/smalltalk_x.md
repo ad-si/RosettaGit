@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-'''Smalltalk/X''' is a free implementation of the [Smalltalk](https://rosettacode.org/wiki/:Category:Smalltalk) programming language. For download, see [http://www.smalltalk-x.de http://www.smalltalk-x.de].
+'''Smalltalk/X''' is a free implementation of the [Smalltalk](https://rosettacode.org/wiki/:Category:Smalltalk) programming language. For download, see [http://www.smalltalk-x.de](http://www.smalltalk-x.de).
 
 The Smalltalk/X package includes IDE, debugger, compilers, UI builders and many other tools.
 

@@ -14,4 +14,4 @@ tags = []
 
 Logtalk is an open source object-oriented logic programming language. The language implementation can be downloaded (both sources and installers for several operating-systems) from:
 
-[http://logtalk.org/ http://logtalk.org/]
+[http://logtalk.org/](http://logtalk.org/)

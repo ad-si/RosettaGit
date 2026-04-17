@@ -110,7 +110,7 @@ If this bothers you, please add a multiple-precision version.
 
 ;Reference.
 
-Elliptic curves are in the [https://perso.telecom-paristech.fr/guilley/recherche/cryptoprocesseurs/ieee/00891000.pdf IEEE Std 1363-2000] (Standard Specifications for Public-Key Cryptography), see:
+Elliptic curves are in the [IEEE Std 1363-2000](https://perso.telecom-paristech.fr/guilley/recherche/cryptoprocesseurs/ieee/00891000.pdf) (Standard Specifications for Public-Key Cryptography), see:
 
 7. Primitives based on the elliptic curve discrete logarithm problem (p. 27ff.)
 

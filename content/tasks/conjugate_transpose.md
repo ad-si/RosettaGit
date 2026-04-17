@@ -72,10 +72,10 @@ Also determine if the matrix is a:
 
 ## See also
 
-* MathWorld entry: [http://mathworld.wolfram.com/ConjugateTranspose.html conjugate transpose]
-* MathWorld entry: [http://mathworld.wolfram.com/HermitianMatrix.html Hermitian matrix]
-* MathWorld entry: [http://mathworld.wolfram.com/NormalMatrix.html normal matrix]
-* MathWorld entry: [http://mathworld.wolfram.com/UnitaryMatrix.html unitary matrix]
+* MathWorld entry: [conjugate transpose](http://mathworld.wolfram.com/ConjugateTranspose.html)
+* MathWorld entry: [Hermitian matrix](http://mathworld.wolfram.com/HermitianMatrix.html)
+* MathWorld entry: [normal matrix](http://mathworld.wolfram.com/NormalMatrix.html)
+* MathWorld entry: [unitary matrix](http://mathworld.wolfram.com/UnitaryMatrix.html)
 
 
 
@@ -696,7 +696,7 @@ void main() {
 
 ## Factor
 
-Before the fix to [https://github.com/slavapestov/factor/issues/484 Factor bug #484], <code>m.</code> gave the wrong answer and this code failed. Factor 0.94 is too old to work.
+Before the fix to [Factor bug #484](https://github.com/slavapestov/factor/issues/484), <code>m.</code> gave the wrong answer and this code failed. Factor 0.94 is too old to work.
 
 ```factor
 USING: kernel math.functions math.matrices sequences ;

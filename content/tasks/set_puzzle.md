@@ -68,7 +68,7 @@ Each card contains a unique variation of the following four features: ''color, s
 
 Three cards form a ''set'' if each feature is either the same on each card, or is different on each card. For instance: all 3 cards are red, all 3 cards have a different symbol, all 3 cards have a different number of symbols, all 3 cards are striped.
 
-There are two degrees of difficulty: [http://www.setgame.com/set/rules_basic.htm ''basic''] and [http://www.setgame.com/set/rules_advanced.htm ''advanced'']. The basic mode deals 9 cards, that contain exactly 4 sets; the advanced mode deals 12 cards that contain exactly 6 sets.
+There are two degrees of difficulty: [''basic''](http://www.setgame.com/set/rules_basic.htm) and [''advanced''](http://www.setgame.com/set/rules_advanced.htm). The basic mode deals 9 cards, that contain exactly 4 sets; the advanced mode deals 12 cards that contain exactly 6 sets.
 
 When creating sets you may use the same card more than once.
 

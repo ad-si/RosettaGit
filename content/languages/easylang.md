@@ -11,8 +11,8 @@ tags = []
 +++
 
 
-'''[https://easylang.online/ easylang.online]''' is a (beginners) programming language with a simple syntax and built-in commands for graphics output.
+'''[easylang.online](https://easylang.online/)''' is a (beginners) programming language with a simple syntax and built-in commands for graphics output.
 
-[https://easylang.online/ide/ A browser IDE] with different tutorials, one for [https://easylang.online/beginner.html absolute beginners], makes programming and learning to program as easy as possible.
+[A browser IDE](https://easylang.online/ide/) with different tutorials, one for [absolute beginners](https://easylang.online/beginner.html), makes programming and learning to program as easy as possible.
 
 The finished programs can be easily integrated into a website.

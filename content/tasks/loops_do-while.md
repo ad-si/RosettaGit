@@ -1399,7 +1399,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=57e91eab60baf7e39df9b6d16a0deddd Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=57e91eab60baf7e39df9b6d16a0deddd)'''
 
 ```gambas
 Public Sub Main()
@@ -3240,7 +3240,7 @@ end until val % 6 == 0
 
 |}
 
-During November 2005, Yukihiro Matsumoto, the creator of Ruby, [http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6741 regretted this loop feature] and [http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745 suggested using Kernel#loop].
+During November 2005, Yukihiro Matsumoto, the creator of Ruby, [regretted this loop feature](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6741) and [suggested using Kernel#loop](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745).
 
 {| class="wikitable"
 ! break unless
@@ -3566,7 +3566,7 @@ n = 0
 
 ## Stata
 
-Stata macro language has no do/while loop, but it's possible to achieve this with a '''[https://www.stata.com/help.cgi?while while]''' loop.
+Stata macro language has no do/while loop, but it's possible to achieve this with a '''[while](https://www.stata.com/help.cgi?while)''' loop.
 
 Use a flag to force the first loop. It's changed in the loop so that it will have no effect after the first loop.
 
@@ -3581,7 +3581,7 @@ while `q' | mod(`n',6) {
 ```
 
 
-Use an infinite while loop and do the test with an ''[https://www.stata.com/help.cgi?if if]''' at the end of the loop.
+Use an infinite while loop and do the test with an ''[if](https://www.stata.com/help.cgi?if)''' at the end of the loop.
 
 
 ```stata
@@ -3596,7 +3596,7 @@ while 1 {
 
 ###  Mata
 
-Mata has a '''[https://www.stata.com/help.cgi?m2_do do/while]''' loop:
+Mata has a '''[do/while](https://www.stata.com/help.cgi?m2_do)''' loop:
 
 <lang>mata
 n=0
@@ -3661,7 +3661,7 @@ do {
 
 ## Tcl
 
-Tcl does not have a built-in <code>do...while</code> construct.  This example demonstrates the ease  of creating new looping contructs in plain Tcl.  <code>do</code> procedure taken from [http://wiki.tcl.tk/3603 Tcler's wiki]
+Tcl does not have a built-in <code>do...while</code> construct.  This example demonstrates the ease  of creating new looping contructs in plain Tcl.  <code>do</code> procedure taken from [Tcler's wiki](http://wiki.tcl.tk/3603)
 
 ```tcl
 proc do {body keyword expression} {

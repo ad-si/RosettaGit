@@ -481,7 +481,7 @@ end acos:
 
 ## AutoHotkey
 
-By '''just me'''. [http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&p=16454#p16454 Forum Post]
+By '''just me'''. [Forum Post](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&p=16454#p16454)
 
 ```AutoHotkey
 #NoEnv
@@ -784,7 +784,7 @@ int main(int argc, char *argv[])
 ```
 
 ===Non-portable function body duplication===
-Following code generates true functions at run time.  Extremely unportable, and [http://en.wikipedia.org/wiki/Considered_harmful should be considered harmful] in general, but it's one (again, harmful) way for the truly desperate (or perhaps for people supporting only one platform -- and note that some other languages only work on one platform).
+Following code generates true functions at run time.  Extremely unportable, and [should be considered harmful](http://en.wikipedia.org/wiki/Considered_harmful) in general, but it's one (again, harmful) way for the truly desperate (or perhaps for people supporting only one platform -- and note that some other languages only work on one platform).
 
 ```c
 #include <stdio.h>
@@ -1282,7 +1282,7 @@ x = 0.5, f = <cube>, g = <curt>, compose(<cube>, <curt>)(0.5) = 0.50000000000000
 ```
 
 
-Note: <code>def g := reverse[i]</code> is needed here because E as yet has no defined protocol for iterating over collections in parallel. [http://wiki.erights.org/wiki/Parallel_iteration Page for this issue.]
+Note: <code>def g := reverse[i]</code> is needed here because E as yet has no defined protocol for iterating over collections in parallel. [Page for this issue.](http://wiki.erights.org/wiki/Parallel_iteration)
 
 
 ## EchoLisp
@@ -1883,7 +1883,7 @@ square=: *:
 
 
 ===Tacit (unorthodox) version===
-In J only adverbs and conjunctions (functionals) can produce verbs (functions)... Unless they are forced to cloak as verbs (functions). (Note that this takes advantage of a bug/feature of the interpreter ; see [http://rosettacode.org/wiki/Closures/Value_capture#Tacit_.28unorthodox.29_version unorthodox tacit] .)  The resulting functions (which correspond to functionals) can take and produce functions:
+In J only adverbs and conjunctions (functionals) can produce verbs (functions)... Unless they are forced to cloak as verbs (functions). (Note that this takes advantage of a bug/feature of the interpreter ; see [unorthodox tacit](http://rosettacode.org/wiki/Closures/Value_capture#Tacit_.28unorthodox.29_version) .)  The resulting functions (which correspond to functionals) can take and produce functions:
 
 
 ```j
@@ -2165,7 +2165,7 @@ fun main(args: Array<String>) {
 
 ## Lambdatalk
 
-Tested in [http://epsilonwiki.free.fr/ELS_YAW/?view=p227]
+Tested in <http://epsilonwiki.free.fr/ELS_YAW/?view=p227>
 
 ```Scheme
 
@@ -2238,7 +2238,7 @@ Output:
 
 ## Lingo
 
-Lingo does not support functions as first-class objects. But with the limitations described under [https://www.rosettacode.org/wiki/Function_composition#Lingo Function composition] the task can be solved:
+Lingo does not support functions as first-class objects. But with the limitations described under [Function composition](https://www.rosettacode.org/wiki/Function_composition#Lingo) the task can be solved:
 
 ```lingo
 -- sin, cos and sqrt are built-in, square, asin and acos are user-defined
@@ -3006,7 +3006,7 @@ Output:
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found here: http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found here: <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```Prolog
@@ -3368,7 +3368,7 @@ Each of the trigonometric functions is periodic in the real part of its argument
 '''Cotangent'''   begins its period at   <big>2<big><math>\pi</math></big>k</big>,   finishes it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>,   and then repeats it (forward) over <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>   ───►   <big>2<big><math>\pi</math></big>k + 2<big><math>\pi</math></big></big>.
 
 
-The above text is from the Wikipedia webpage:   http://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+The above text is from the Wikipedia webpage:   <http://en.wikipedia.org/wiki/Inverse_trigonometric_functions>
 
 
 

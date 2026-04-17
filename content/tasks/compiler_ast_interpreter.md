@@ -28,7 +28,7 @@ languages = [
 
 {{task}}AST interpreter
 
-An AST interpreter interprets an [https://en.wikipedia.org/wiki/Abstract_syntax_tree Abstract Syntax Tree (AST)]
+An AST interpreter interprets an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
 produced by a [[Compiler/syntax_analyzer|Syntax Analyzer]].
 
 Take the AST output from the Syntax analyzer [[Compiler/syntax_analyzer|task]], and interpret it as appropriate.

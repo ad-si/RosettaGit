@@ -3162,7 +3162,7 @@ do not overlap:   (0,0),    (1,1),    (0,2) and    (2,1),   (3,-2),    (3,4)
 
 ## Perl 6
 
-First, check if any vertex is inside each other triangle (that should cover most overlapping cases including enclosures).  Then see if an edge of triangle A intersects any of two edges of B (for shapes like Star of David [https://en.wikipedia.org/wiki/Star_of_David])
+First, check if any vertex is inside each other triangle (that should cover most overlapping cases including enclosures).  Then see if an edge of triangle A intersects any of two edges of B (for shapes like Star of David <https://en.wikipedia.org/wiki/Star_of_David>)
 
 ```perl6
 #!/usr/bin/env perl6

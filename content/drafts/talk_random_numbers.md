@@ -36,7 +36,7 @@ The Java and IDL examples do not appear to create normally distributed numbers, 
 
 The numbers generated will also not have the correct mean and standard deviation.  The expected value of the Java example, for instance, will be 1.25 instead of 1.  The standard deviation will be .144 instead of 0.5.
 
-For an example of an algorithm, check out http://en.wikipedia.org/wiki/Normal_distribution#Generating_values_for_normal_random_variables
+For an example of an algorithm, check out <http://en.wikipedia.org/wiki/Normal_distribution#Generating_values_for_normal_random_variables>
 
 --[[User:Nachtrabe|Nachtrabe]] 13:53, 31 May 2007 (EDT)
 

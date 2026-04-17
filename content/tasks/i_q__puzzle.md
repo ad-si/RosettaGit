@@ -53,7 +53,7 @@ Peg   #1   is the top centre through to the bottom row which are pegs 11 through
 ```
 
 
-Reference picture:   http://www.joenord.com/puzzles/peggame/
+Reference picture:   <http://www.joenord.com/puzzles/peggame/>
 
 
 ## Task

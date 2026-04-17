@@ -75,7 +75,7 @@ languages = [
 
 ## Task
 
-The [http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf AKS algorithm] for testing whether a number is prime is a polynomial-time algorithm based on an elementary theorem about Pascal triangles.
+The [AKS algorithm](http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf) for testing whether a number is prime is a polynomial-time algorithm based on an elementary theorem about Pascal triangles.
 
 The theorem on which the test is based can be stated as follows:
 
@@ -109,8 +109,8 @@ And all the coefficients are divisible by '''3''',   so '''3''' is prime.
 
 
 ;References:
-* [https://en.wikipedia.org/wiki/AKS_primality_test Agrawal-Kayal-Saxena (AKS) primality test] (Wikipedia)
-* [http://www.youtube.com/watch?v=HvMSRWTE2mI Fool-Proof Test for Primes] - Numberphile (Video).  The accuracy of this video is disputed -- at best it is an oversimplification.
+* [Agrawal-Kayal-Saxena (AKS) primality test](https://en.wikipedia.org/wiki/AKS_primality_test) (Wikipedia)
+* [Fool-Proof Test for Primes](http://www.youtube.com/watch?v=HvMSRWTE2mI) - Numberphile (Video).  The accuracy of this video is disputed -- at best it is an oversimplification.
 
 
 
@@ -2216,7 +2216,7 @@ NOTE: jq uses IEEE 754 64-bit numbers and thus if builtin
 arithmetic is used, is_prime will only be accurate up to 96 by
 this method because of loss of precision.  The program below, however, can
 easily be adapted to use a BigInt library such as the one at
-https://github.com/joelpurra/jq-bigint
+<https://github.com/joelpurra/jq-bigint>
 
 ```jq
 # add_pairs is a helper function for optpascal/0
@@ -2854,7 +2854,7 @@ Primes:
 ## OCaml
 
 {{trans|Clojure}}
-Uses [http://github.com/c-cube/gen gen] library for lazy streams and [https://forge.ocamlcore.org/projects/zarith zarith] for arbitrarily sized integers. Runs as is through the [https://github.com/diml/utop utop] REPL.
+Uses [gen](http://github.com/c-cube/gen) library for lazy streams and [zarith](https://forge.ocamlcore.org/projects/zarith) for arbitrarily sized integers. Runs as is through the [utop](https://github.com/diml/utop) REPL.
 
 ```OCaml
 #require "gen"
@@ -4874,7 +4874,7 @@ Primes to 80: [2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79]
 
 ## Stata
 
-Using the [https://ideas.repec.org/c/boc/bocode/s455001.html moremata] library to print the polynomial coefficients. They are in decreasing degree order. To install moremata, type '''ssc install moremata''' in Stata. Since Stata is using double precision floating-point instead of 32 bit integers, the polynomials are exact up to p=54.
+Using the [moremata](https://ideas.repec.org/c/boc/bocode/s455001.html) library to print the polynomial coefficients. They are in decreasing degree order. To install moremata, type '''ssc install moremata''' in Stata. Since Stata is using double precision floating-point instead of 32 bit integers, the polynomials are exact up to p=54.
 
 
 ```stata

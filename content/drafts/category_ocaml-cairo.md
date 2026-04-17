@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-{{library}}This library provides ocaml bindings to the library [http://cairographics.org/ Cairo].
+{{library}}This library provides ocaml bindings to the library [Cairo](http://cairographics.org/).
 
-The sources of these bindings are available [http://cairographics.org/cairo-ocaml/ here] but this library is packaged in all major linux distros.
+The sources of these bindings are available [here](http://cairographics.org/cairo-ocaml/) but this library is packaged in all major linux distros.

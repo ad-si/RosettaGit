@@ -11,7 +11,7 @@ tags = []
 +++
 
 
-This [JavaScript](https://rosettacode.org/wiki/JavaScript) code is the core of a Modular SNUSP interpreter and debugger designed to be embedded on a [http://www.quirkster.com/snusp/snusp-js.html web page].
+This [JavaScript](https://rosettacode.org/wiki/JavaScript) code is the core of a Modular SNUSP interpreter and debugger designed to be embedded on a [web page](http://www.quirkster.com/snusp/snusp-js.html).
 
 
 ```javascript

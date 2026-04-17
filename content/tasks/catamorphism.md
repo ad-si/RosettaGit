@@ -581,7 +581,7 @@ Console.WriteLine("{0} {1} {2}", summation, product, concatenation);
 
 ## Clojure
 
-For more detail, check Rich Hickey's [http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html blog post on Reducers].
+For more detail, check Rich Hickey's [blog post on Reducers](http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html).
 
 
 ```clojure
@@ -2229,7 +2229,7 @@ end function
 
 SWI-Prolog has native foldl in version 6.3.1
 
-Module lambda was written by '''Ulrich Neumerkel''' and can be found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Module lambda was written by '''Ulrich Neumerkel''' and can be found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

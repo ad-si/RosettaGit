@@ -38,7 +38,7 @@ In languages where cursor control and highlighting are not possible, it is permi
 ## AutoHotkey
 
 We use the simple SAPI.SPVoice COM Object and a parsing loop. 
-The highlighting is done with [http://msdn.microsoft.com/en-us/library/bb761661 EM_SETSEL] and Notepad. Rather crude, but it works. Due to the simplistic nature of the parsing loop, the text ends with a space.
+The highlighting is done with [EM_SETSEL](http://msdn.microsoft.com/en-us/library/bb761661) and Notepad. Rather crude, but it works. Due to the simplistic nature of the parsing loop, the text ends with a space.
 
 ```AutoHotkey
 SetTitleMatchMode 2

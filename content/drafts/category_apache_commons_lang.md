@@ -17,6 +17,6 @@ Note that Lang 3.0 (and subsequent versions) use a different package (org.apache
 
 Lang 3+ requires Java 5.
 
-* [http://commons.apache.org/proper/commons-lang/ Home page]
+* [Home page](http://commons.apache.org/proper/commons-lang/)
 * Consumption
 ** Gradle: <code>'org.apache.commons:commons-lang3:latest.release'</code>

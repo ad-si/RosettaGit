@@ -23,7 +23,7 @@ lambda functions can get closures as copies. In lexical analyzer the Scanner var
 
 Select Case is a mystery in M2000. We can have one line after Case or a Block but no blank lines. This happen because interpreter execute code every time from source; Only look ahead to find if an expression is a string or number which is very fast because, strings functions and variables have $ at the end of name. Maybe some day interpreter find a lexical/syntax analyzer, but for this time works as one function which consume source code.
 
-[https://3.bp.blogspot.com/-ZU26mh0qU_M/XLKFwYC6YMI/AAAAAAAAH4k/QHvk586KvtojspWx7buhK7Dbyw5Nj_g-ACLcBGAs/s1600/compout.png Image]
+[Image](https://3.bp.blogspot.com/-ZU26mh0qU_M/XLKFwYC6YMI/AAAAAAAAH4k/QHvk586KvtojspWx7buhK7Dbyw5Nj_g-ACLcBGAs/s1600/compout.png)
 
 
 ## M2000 Interpreter

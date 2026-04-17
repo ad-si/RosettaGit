@@ -63,7 +63,7 @@ This task is basically a generalization of [[one-dimensional cellular automata]]
 
 
 ## See also
-* [http://natureofcode.com/book/chapter-7-cellular-automata Cellular automata (natureofcode.com)]
+* [Cellular automata (natureofcode.com)](http://natureofcode.com/book/chapter-7-cellular-automata)
 
 
 
@@ -820,7 +820,7 @@ Rules: [90, 30, 122]
 
 ## EchoLisp
 
-Pictures of the (nice) generated colored bit-maps : The Escher like [http://www.echolalie.org/echolisp/images/automaton-1.png (task 90 5)] and the fractal like  [http://www.echolalie.org/echolisp/images/automaton-2.png (task 22 1)]
+Pictures of the (nice) generated colored bit-maps : The Escher like [(task 90 5)](http://www.echolalie.org/echolisp/images/automaton-1.png) and the fractal like  [(task 22 1)](http://www.echolalie.org/echolisp/images/automaton-2.png)
 
 
 ```scheme
@@ -1218,9 +1218,9 @@ Rule 90:
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Elementary_cellular_automaton this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Elementary_cellular_automaton) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

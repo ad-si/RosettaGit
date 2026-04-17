@@ -23,7 +23,7 @@ Unfortunately a statement of the type  "the right answers are here.." just means
 
 :In addition, there seems to be no justification in the referenced article for hardwiring 1940 and 1945. It's certainly possible to blindly translate Scala's regex to other languages, but it would be nice if it also made some sense to people who are from other parts of the world.  --[[User:TimToady|TimToady]] ([[User talk:TimToady|talk]]) 23:36, 10 June 2014 (UTC)
 :1940 and 1945 also noted as '45 are important historic years, the years of the second world war of course.--[[User:Siskus|Siskus]] ([[User talk:Siskus|talk]]) 21:43, 13 June 2014 (UTC)
-:: The problem is that there are many such commemorative street and square names, (there's also for instance: [http://nl.wikipedia.org/wiki/Straatnaam 1813, 1944, 1953, 1960, 1992]), so you will at least have to specify in the task description which years we should look for. [[User:Fwend|Fwend]] ([[User talk:Fwend|talk]]) 01:22, 14 June 2014 (UTC)
+:: The problem is that there are many such commemorative street and square names, (there's also for instance: [1813, 1944, 1953, 1960, 1992](http://nl.wikipedia.org/wiki/Straatnaam)), so you will at least have to specify in the task description which years we should look for. [[User:Fwend|Fwend]] ([[User talk:Fwend|talk]]) 01:22, 14 June 2014 (UTC)
 
 
 == Vote for deletion? ==

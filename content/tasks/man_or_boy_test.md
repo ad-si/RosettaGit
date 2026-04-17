@@ -86,7 +86,7 @@ languages = [
 
 '''Task''': Imitate [[#ALGOL 60 - Knuth's example|Knuth's example in Algol 60]] in another language, as far as possible.
 
-'''Details''': Local variables of routines are often kept in [http://c2.com/cgi/wiki?ActivationRecord ''activation records''] (also ''call frames''). In many languages, these records are kept on a [[System stack|call stack]]. In Algol (and e.g. in [[Smalltalk]]), they are allocated on a [[heap]] instead. Hence it is possible to pass references to routines that still can use and update variables from their call environment, even if the routine where those variables are declared already returned. This difference in implementations is sometimes called the [[wp:Funarg_problem|Funarg Problem]].
+'''Details''': Local variables of routines are often kept in [''activation records''](http://c2.com/cgi/wiki?ActivationRecord) (also ''call frames''). In many languages, these records are kept on a [[System stack|call stack]]. In Algol (and e.g. in [[Smalltalk]]), they are allocated on a [[heap]] instead. Hence it is possible to pass references to routines that still can use and update variables from their call environment, even if the routine where those variables are declared already returned. This difference in implementations is sometimes called the [[wp:Funarg_problem|Funarg Problem]].
 
 In Knuth's example, each call to ''A'' allocates an activation record for the variable ''A''. When ''B'' is called from ''A'', any access to ''k'' now refers to this activation record. Now ''B'' in turn calls ''A'', but passes itself as an argument. This argument remains bound to the activation record. This call to ''A'' also "shifts" the variables ''x<sub>i</sub>'' by one place, so eventually the argument ''B'' (still bound to its particular
 activation record) will appear as ''x4'' or ''x5'' in a call to ''A''. If this happens when the expression ''x4 + x5'' is evaluated, then this will again call ''B'', which in turn will update ''k'' in the activation record it was originally bound to. As this activation record is shared with other instances of calls to ''A'' and ''B'', it will influence the whole computation.
@@ -547,7 +547,7 @@ It is most likely that this was a deliberate attempt by Knuth to find yet anothe
 
 ## ALGOL 68
 
-[[wp:Charles_H._Lindsey|Charles H. Lindsey]] implemented this [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM man boy test] in [[ALGOL 68]], and - as call by name is not necessary - the same algorithm can be implemented in many languages including [[:Category:Pascal|Pascal]] and [[:Category:PL/I|PL/I]] <!-- <ref>{{cite web|title=Block Structure and Environments | author=[[Charles H. Lindsey]] | url=http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM | accessyear=2007 | accessmonthday=May 2| year=1988 | month=Dec}}</ref>. -->  <!-- <ref>{{cite web|title="Man or boy" test|url=http://groups.google.com/group/comp.lang.haskell/browse_thread/thread/eef78beaaac73b26/7a6672ceea07b34e}}</ref>,  -->.
+[[wp:Charles_H._Lindsey|Charles H. Lindsey]] implemented this [man boy test](http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM) in [[ALGOL 68]], and - as call by name is not necessary - the same algorithm can be implemented in many languages including [[:Category:Pascal|Pascal]] and [[:Category:PL/I|PL/I]] <!-- <ref>{{cite web|title=Block Structure and Environments | author=[[Charles H. Lindsey]] | url=http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM | accessyear=2007 | accessmonthday=May 2| year=1988 | month=Dec}}</ref>. -->  <!-- <ref>{{cite web|title="Man or boy" test|url=http://groups.google.com/group/comp.lang.haskell/browse_thread/thread/eef78beaaac73b26/7a6672ceea07b34e}}</ref>,  -->.
 
 ```algol68
 PROC a = (INT in k, PROC INT xl, x2, x3, x4, x5) INT:(
@@ -573,7 +573,7 @@ Output:
 
 ## AppleScript
 
-AppleScript's stack limit is around 500 frames, which is too low to run this example. It runs in the compatible [http://en.wikipedia.org/wiki/Smile_%28software%29 Smile] environment, however.
+AppleScript's stack limit is around 500 frames, which is too low to run this example. It runs in the compatible [Smile](http://en.wikipedia.org/wiki/Smile_%28software%29) environment, however.
 
 
 ```applescript
@@ -1171,7 +1171,7 @@ The DMD compiler is a man. Increasing the maximum stack space to about 1.2 GB th
 
 ### Lazy Variadic Function Version
 
-[http://www.digitalmars.com/d/1.0/function.html Lazy Variadic Functions] version, as quoted:
+[Lazy Variadic Functions](http://www.digitalmars.com/d/1.0/function.html) version, as quoted:
 
 :If the variadic parameter is an array of delegates with no parameters:
 <tt>    void foo(int delegate()[] dgs ...);</tt>
@@ -3197,7 +3197,7 @@ Output:
 
 The above PL/I code has been tested on OS PL/I V2.3.0, Enterprise PL/I V3R9M0 and PL/I for Windows V8.0. The limit for OS PL/I on a z/OS machine with 4Gb seems to be A=15, the limit for Enterprise PL/I on the same machine seems to be A=23, and the limit for PL/I for Windows on a 16Gb system seems to be A=26.
 
-The «Russian» compiler (that is based on Kildall’s compiler PL/I-86) produced the best results. However, two tricks were used there: a) hardware stack pointer was set directly to allocated memory by quasi-assembler’s instruction; b) stack of parameters was replaced by array of parameters and contexts. The result is A=27 for Win32 (Windows-XP) and A=31 for Win64 (Windows-7). Source code test for Win32 see: http://rsdn.org/article/pl1/PL1ex7/pl1ex7.xml
+The «Russian» compiler (that is based on Kildall’s compiler PL/I-86) produced the best results. However, two tricks were used there: a) hardware stack pointer was set directly to allocated memory by quasi-assembler’s instruction; b) stack of parameters was replaced by array of parameters and contexts. The result is A=27 for Win32 (Windows-XP) and A=31 for Win64 (Windows-7). Source code test for Win32 see: <http://rsdn.org/article/pl1/PL1ex7/pl1ex7.xml>
 In source code test for Win64 FIXED(31) was replaced by FIXED(63) and pseudo-variable ?ESP by ?RSP.
 
 
@@ -4083,7 +4083,7 @@ The complete code follows:
 
 Visual Prolog (like any other Prolog) does not allow variables to be changed.  But behavior can easily be mimicked by using a '''varM''' (modifiable variable), which is actually an object containing a value of the relevant type in a modifiable entity (a so called fact variable).  Secondly, anonymous function (lambda-expression) cannot be recursive, but this is mimicked by using yet a '''varM''' to hold the function.
 
-(Token coloring of Visual Prolog in this wiki is unfortunately wrong, because styles are used across languages. A correctly colored version can be seen in [http://wiki.visual-prolog.com/index.php?title=Man_or_boy_test Man or boy test] in the Visual Prolog wiki).
+(Token coloring of Visual Prolog in this wiki is unfortunately wrong, because styles are used across languages. A correctly colored version can be seen in [Man or boy test](http://wiki.visual-prolog.com/index.php?title=Man_or_boy_test) in the Visual Prolog wiki).
 
 
 ```VisualProlog

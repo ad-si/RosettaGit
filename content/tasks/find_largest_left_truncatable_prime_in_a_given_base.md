@@ -46,7 +46,7 @@ Let's work base 3 by hand:
 
 0 and 1 are not prime so the last digit must be 2. 12<sub>3</sub> = 5<sub>10</sub> which is prime, 22<sub>3</sub> = 8<sub>10</sub> which is not so 12<sub>3</sub> is the only candidate. 112<sub>3</sub> = 14<sub>10</sub> which is not prime, 212<sub>3</sub> = 23<sub>10</sub> which is, so 212<sub>3</sub> is the only candidate. 1212<sub>3</sub> = 50<sub>10</sub> which is not prime, 2212<sub>3</sub> = 77<sub>10</sub> which also is not prime. So there are no more candidates, therefore 23 is the largest left truncatable prime in base 3.
 
-The task is to reconstruct as much, and possibly more, of the table in [https://oeis.org/A103443 the OEIS] as you are able.
+The task is to reconstruct as much, and possibly more, of the table in [the OEIS](https://oeis.org/A103443) as you are able.
 
 Related Tasks:
 * [Miller-Rabin primality test](./miller-rabin_primality_test)
@@ -57,7 +57,7 @@ Related Tasks:
 
 ## BBC BASIC
 
-Uses the '''H'''uge '''I'''nteger '''M'''ath & '''E'''ncryption library from http://devotechs.com/
+Uses the '''H'''uge '''I'''nteger '''M'''ath & '''E'''ncryption library from <http://devotechs.com/>
 
 ```bbcbasic
       HIMEM = PAGE + 3000000
@@ -902,7 +902,7 @@ func main() {
 
 ## Haskell
 
-Miller-Rabin test code from [http://www.haskell.org/haskellwiki/Testing_primality#Miller-Rabin_Primality_Test HaskellWiki], with modifications.
+Miller-Rabin test code from [HaskellWiki](http://www.haskell.org/haskellwiki/Testing_primality#Miller-Rabin_Primality_Test), with modifications.
 
 ```haskell
 primesTo100 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]

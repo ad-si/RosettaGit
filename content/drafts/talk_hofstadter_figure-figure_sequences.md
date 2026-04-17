@@ -29,9 +29,9 @@ I think this should be '''S(n) is defined as the nth integer in the sequence of 
 
 :::Not really, this aspect of the definition is present in the references too. I suspect that it may be a part of the original description cited as: D. Hofstadter, "Gödel, Escher, Bach", p. 73, but I don't have it to hand at the moment to check. When I first saw their definition I found it confusing at first too, but that is what made it interesting when trying to code it.
 
-::: When I had finished the Python version I checked it with tables of the first 1000 values refered to from Sloane: [http://oeis.org/A005228/b005228.txt here] for R and [http://oeis.org/A030124/b030124.txt here] for S, although the table for S has an off-by-one error. --[[User:Paddy3118|Paddy3118]] 18:31, 22 October 2011 (UTC)
+::: When I had finished the Python version I checked it with tables of the first 1000 values refered to from Sloane: [here](http://oeis.org/A005228/b005228.txt) for R and [here](http://oeis.org/A030124/b030124.txt) for S, although the table for S has an off-by-one error. --[[User:Paddy3118|Paddy3118]] 18:31, 22 October 2011 (UTC)
 
-::: Another ref. with a similar definition: [http://books.google.co.uk/books?id=aFDWuZZslUUC&pg=PA1385&dq=%22Figure-Figure+sequences%22+Hofstadter,+%22G%C3%B6del,+Escher,+Bach%22,+p.+73&hl=en&ei=cw2jTt7OBMiA8gOD78zYBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDEQ6AEwAA#v=onepage&q&f=false CRC concise encyclopedia of mathematics By Eric W. Weisstein pp 1385]. --[[User:Paddy3118|Paddy3118]] 18:40, 22 October 2011 (UTC)
+::: Another ref. with a similar definition: [CRC concise encyclopedia of mathematics By Eric W. Weisstein pp 1385](http://books.google.co.uk/books?id=aFDWuZZslUUC&pg=PA1385&dq=%22Figure-Figure+sequences%22+Hofstadter,+%22G%C3%B6del,+Escher,+Bach%22,+p.+73&hl=en&ei=cw2jTt7OBMiA8gOD78zYBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDEQ6AEwAA#v=onepage&q&f=false). --[[User:Paddy3118|Paddy3118]] 18:40, 22 October 2011 (UTC)
 
 :::: Ok, well, I think that's sloppy use of terminology, but I suppose that if they are not considering any possibilities involving sequences of sequences that the sloppiness becomes invisible.  --[[User:Rdm|Rdm]] 19:08, 23 October 2011 (UTC)
 

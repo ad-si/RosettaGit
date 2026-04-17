@@ -16,7 +16,7 @@ tags = []
 }}
 ==Example engine==
 
-I did something in PHP. http://gugarcode.awardspace.us/
+I did something in PHP. <http://gugarcode.awardspace.us/>
 
 Ignore my horrible code. Nothing W3C, almost no CSS. It's just an example. There is missing a lot of important features, like edit history, language info, accounts, and a "visual". This example will not replace MediaWiki. In this engine, there is no "lang tags" or "headers" , you choose a language, write description and code in different fields and submit, and it's all done. All automatic. If you want more than 1 example for a language, just add again. It will be grouped by Language.
 

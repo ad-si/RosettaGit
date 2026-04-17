@@ -804,8 +804,8 @@ object ExtendedCharacter extends App {
 
 ## Seed7
 
-A [http://seed7.sourceforge.net/libraries/console.htm#write%28ref_console_file,in_string%29 write]
-to a [http://seed7.sourceforge.net/libraries/console.htm console] accepts Unicode characters.
+A [write](http://seed7.sourceforge.net/libraries/console.htm#write%28ref_console_file,in_string%29)
+to a [console](http://seed7.sourceforge.net/libraries/console.htm) accepts Unicode characters.
 ```seed7
 $ include "seed7_05.s7i";
   include "console.s7i";
@@ -850,7 +850,7 @@ Tcl can output all unicode characters in the BMP, but only if the consumer of th
 
 ## Xidel
 
-http://videlibri.sourceforge.net/xidel.html
+<http://videlibri.sourceforge.net/xidel.html>
 
 ```bash
 xidel -s -e 'parse-html("&#163; or &#xa3")'

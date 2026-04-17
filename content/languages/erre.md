@@ -24,8 +24,8 @@ There also a reduced version for VIC-20 ('''V 1.3''') and a more recent version 
 
 ERRE is a [imperative](https://rosettacode.org/wiki/imperative_programming) programming language: it's compiled in R-Code and then executed with an interpreter.
 
-Web site: '''ERRE PROJECT'''''[http://www.claudiolarini.altervista.org/erre.htm]''
+Web site: '''ERRE PROJECT'''''<http://www.claudiolarini.altervista.org/erre.htm>''
 
-Web site: '''ERRE TUTORIAL'''''[http://www.claudiolarini.altervista.org/erre_tutor.htm]''
+Web site: '''ERRE TUTORIAL'''''<http://www.claudiolarini.altervista.org/erre_tutor.htm>''
 
 ----

@@ -376,7 +376,7 @@ seq from 3311a1234df31413: [ b3 88 e8 a4 b4 ef cc a8 13 ] back: 3311a1234df31413
 
 
 ## C#
-For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [http://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity this] page.
+For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [this](http://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity) page.
 
 ```c#
 namespace Vlq
@@ -1900,7 +1900,7 @@ All  4  numbers are OK.
 
 ## Ruby
 
-Array#pack can encode the ''BER-compressed integer'', which is identical to the ''variable-length quantity'' from the [http://sander.vanzoest.com/talks/2002/audio_and_apache/midispec.html MIDI specification]. String#unpack can decode it.
+Array#pack can encode the ''BER-compressed integer'', which is identical to the ''variable-length quantity'' from the [MIDI specification](http://sander.vanzoest.com/talks/2002/audio_and_apache/midispec.html). String#unpack can decode it.
 
 
 ```ruby
@@ -1980,7 +1980,7 @@ Output:
 
 ## Seed7
 
-The example below uses [http://seed7.sourceforge.net/libraries/bigint.htm bigInteger] numbers,
+The example below uses [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm) numbers,
 since variable-length quantities are able to represent integer numbers of unlimited size.
 
 ```seed7

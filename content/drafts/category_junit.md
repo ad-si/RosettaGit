@@ -12,4 +12,4 @@ tags = []
 
 {{library}}JUnit is a testing framework for [[Java]] modelled on [[wp:SUnit|SUnit]]. It has inspired similar testing frameworks for [[.NET]] languages (NUnit) and [[Ruby]] (RUnit).
 
-*[http://www.junit.org JUnit official website]
+*[JUnit official website](http://www.junit.org)

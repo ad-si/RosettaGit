@@ -23,7 +23,7 @@ The language is very limited:
 Implementations:
 
 * Microsoft BASIC 5.0 for 8080 (BASIC-80, MBASIC for CP/M - 1981) claims compliance in its manual.
-* [https://jorgicor.niobe.org/bas55/ bas55]
-* [https://buraphakit.sourceforge.io/BASIC.shtml John's ECMA-55 Minimal BASIC Compiler]
+* [bas55](https://jorgicor.niobe.org/bas55/)
+* [John's ECMA-55 Minimal BASIC Compiler](https://buraphakit.sourceforge.io/BASIC.shtml)
 
 Compare with [Full BASIC](https://rosettacode.org/wiki/Full_BASIC).

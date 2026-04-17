@@ -9,7 +9,7 @@ id = 17921
 categories = []
 tags = []
 +++
-Homepage: [https://www.gnu.org/software/sed/ https://www.gnu.org/software/sed/]
+Homepage: [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
 
 [wp:sed](https://en.wikipedia.org/wiki/sed) (stream editor) is a non-interactive text editor. 
 It is used to filter text, i.e., it takes text input, 

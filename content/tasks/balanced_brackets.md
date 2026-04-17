@@ -2337,7 +2337,7 @@ Output:
 
 ### Standard Version
 
-D standard library has a [http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#balancedParens function] for this.
+D standard library has a [function](http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#balancedParens) for this.
 
 ```d
 import std.stdio, std.algorithm, std.random, std.range;
@@ -3212,7 +3212,7 @@ Sample output (last 7 lines random) :
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=8960fb267af43f0549d2cfe04288a2d4 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=8960fb267af43f0549d2cfe04288a2d4)'''
 
 ```gambas
 'Altered to prevent lines starting with ']' or ending with '[' being generated as they can't work

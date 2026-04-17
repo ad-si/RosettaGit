@@ -11,6 +11,6 @@ tags = []
 +++
 
 {{stub}}{{library}}
-The '''HGL''' package is "a simple graphics library, designed to give the programmer access to most interesting parts of the Win32 Graphics Device Interface and X11 library."<ref>From [http://hackage.haskell.org/package/HGL Haskell's central package archive].</ref>
+The '''HGL''' package is "a simple graphics library, designed to give the programmer access to most interesting parts of the Win32 Graphics Device Interface and X11 library."<ref>From [Haskell's central package archive](http://hackage.haskell.org/package/HGL).</ref>
 
 {{Reflist}}

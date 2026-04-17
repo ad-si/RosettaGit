@@ -29,7 +29,7 @@ languages = [
 ]
 +++
 
-Matt Parker of the "Stand Up Maths channel" has a   [https://www.youtube.com/watch?v=aNpGxZ_1KXU <u>YouTube video</u>]   of a card trick that creates a semblance of order from chaos.
+Matt Parker of the "Stand Up Maths channel" has a   [<u>YouTube video</u>](https://www.youtube.com/watch?v=aNpGxZ_1KXU)   of a card trick that creates a semblance of order from chaos.
 
 The task is to simulate the trick in a way that mimics the steps shown in the video.
 

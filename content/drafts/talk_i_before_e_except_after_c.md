@@ -22,7 +22,7 @@ Could we integrate that into this task?
 
 :Hi Mark. I did see that mentioned as a way to make the phrase more accurate but I dismissed using it as:
 :# I would need to get hold of word pronumctiations.
-:# I really wanted to add to the call that this particular [http://en.wiktionary.org/wiki/aide-m%C3%A9moire#Noun aide-mémoire] should be dropped altogether.
+:# I really wanted to add to the call that this particular [aide-mémoire](http://en.wiktionary.org/wiki/aide-m%C3%A9moire#Noun) should be dropped altogether.
 :--[[User:Paddy3118|Paddy3118]] 15:11, 7 January 2013 (UTC)
 
 :: For the pronunciations, just add a flag against each value: Y - pronunciation is EE, N - pronunciation is not EE.
@@ -56,6 +56,6 @@ I found a list of word frequencies and saw that it could be done. --[[User:Paddy
 lex yacc flex bison aren't separate languages at rosettacode, nor should they be.  I maintain the flex program is a proper c solution and examples deserve spotlight.  --LambertDW 01:41, 7 May 2013 (UTC)
 
 ==On modern C++ as a scripting language==
-The blog post [http://www.nu42.com/2015/06/translating-rosetta-code-entry-perl-cpp.html Translating a Rosetta Code entry from Perl to C++] by A. Sinan Unur comments on the existing C++ code as well as comparing modern C++ with scripting languages for this task.
+The blog post [Translating a Rosetta Code entry from Perl to C++](http://www.nu42.com/2015/06/translating-rosetta-code-entry-perl-cpp.html) by A. Sinan Unur comments on the existing C++ code as well as comparing modern C++ with scripting languages for this task.
 
  --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 18:35, 3 July 2015 (UTC)

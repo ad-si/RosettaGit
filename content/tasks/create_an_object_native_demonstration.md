@@ -627,7 +627,7 @@ Actually thrown at:
 ```
 
 
-By defining [http://design.perl6.org/S12.html#FALLBACK_methods FALLBACK] any class can handle undefined method calls. Since any class inherits plenty of methods from <tt>Any</tt> our magic object will be more of a novice conjurer then a master wizard proper.
+By defining [FALLBACK](http://design.perl6.org/S12.html#FALLBACK_methods) any class can handle undefined method calls. Since any class inherits plenty of methods from <tt>Any</tt> our magic object will be more of a novice conjurer then a master wizard proper.
 
 
 ```perl6
@@ -1255,7 +1255,7 @@ end
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/OuVZ3bT/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/qW5qzmdKSZSyAbZEqDROoA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/OuVZ3bT/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/qW5qzmdKSZSyAbZEqDROoA).
 
 ```Scala
 object CreateMapObject extends App {

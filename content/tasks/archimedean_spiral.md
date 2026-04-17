@@ -382,12 +382,12 @@ Works with the unexpanded (1k RAM) ZX81. The output is quite blocky, but identif
 ```
 
 {{out}}
-Screenshot [http://edmundgriffiths.com/zx81archspiral.jpg here].
+Screenshot [here](http://edmundgriffiths.com/zx81archspiral.jpg).
 
 
 ## C
 
-Interactive code which asks the parameters a and b as inputs, the number of cycles and the division steps. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Interactive code which asks the parameters a and b as inputs, the number of cycles and the division steps. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -810,7 +810,7 @@ main = do
 ```
 
 
-Output is [http://funwithsoftware.org/images/2016-SpiralFrege.png here] due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
+Output is [here](http://funwithsoftware.org/images/2016-SpiralFrege.png) due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
 
 
 ## Go
@@ -909,7 +909,7 @@ main = do
 ```
 
 
-Output is [http://funwithsoftware.org/images/2016-SpiralHaskell.png here] due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
+Output is [here](http://funwithsoftware.org/images/2016-SpiralHaskell.png) due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
 
 
 ## J
@@ -2137,7 +2137,7 @@ for Θ in (0 .. 52*π -> by(0.025)) {
 img.write(file => 'Archimedean_spiral.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/archimedean-spiral-sidef.png Archimedean spiral]
+Output image: [Archimedean spiral](https://github.com/trizen/rc/blob/master/img/archimedean-spiral-sidef.png)
 
 
 ## Stata
@@ -2279,7 +2279,7 @@ End Sub
 ## zkl
 
 [[File:ArchimedeanSpiral.zk.jpg|250px|thumb|right]]
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn archimedeanSpiral(a,b,circles){

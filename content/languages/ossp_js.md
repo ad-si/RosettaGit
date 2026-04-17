@@ -13,4 +13,4 @@ tags = []
 
 '''OSSP js''' is a stand-alone distribution of the [JavaScript](https://rosettacode.org/wiki/JavaScript) programming language reference implementation from Mozilla -- aka JSRef or [SpiderMonkey](https://rosettacode.org/wiki/SpiderMonkey). 
 
-* [http://www.ossp.org/pkg/lib/js/ Homepage]
+* [Homepage](http://www.ossp.org/pkg/lib/js/)

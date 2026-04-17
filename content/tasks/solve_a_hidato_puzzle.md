@@ -3495,7 +3495,7 @@ Output:
 
 Works with SWI-Prolog and library(clpfd) written by '''Markus Triska'''.
 
-Puzzle solved is from the Wilkipedia page : http://en.wikipedia.org/wiki/Hidato
+Puzzle solved is from the Wilkipedia page : <http://en.wikipedia.org/wiki/Hidato>
 
 ```Prolog
 :- use_module(library(clpfd)).

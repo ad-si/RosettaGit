@@ -20,7 +20,7 @@ Hi Nigel. I will take another look at the task and convergence over the next few
 
 I had a look:
 # The first Python solution is wrong - I'll either fix it or delete it. Thanks for finding that.
-# The second Python solution does seem to be right. It gives different results than the first Python solution for EKG(9) and EKG(10). Its results for EKG(9) and EKG(10) match those of [https://oeis.org/A169849 A169849] and [https://oeis.org/A169851 A169851], respectively.
+# The second Python solution does seem to be right. It gives different results than the first Python solution for EKG(9) and EKG(10). Its results for EKG(9) and EKG(10) match those of [A169849](https://oeis.org/A169849) and [A169851](https://oeis.org/A169851), respectively.
 
 Addressing your comments:
 * ''"I have modified the task to require EKG(9) and EKG(10)"'' - You've certainly shown that there is a need.

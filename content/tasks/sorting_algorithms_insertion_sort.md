@@ -673,7 +673,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276481.html#276481 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276481.html#276481)
 
 ```AutoHotkey
 MsgBox % InsertionSort("")
@@ -4069,7 +4069,7 @@ const proc: insertionSort (inout array elemType: arr) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#insertionSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#insertionSort>
 
 
 ## Sidef

@@ -285,7 +285,7 @@ Address       :  3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4
 
 
 ==Icon and {{header|Unicon}}==
-{{libheader|Unicon Code Library}} provides the [http://tapestry.tucson.az.us/unilib/pack_soap.html Soap] package.
+{{libheader|Unicon Code Library}} provides the [Soap](http://tapestry.tucson.az.us/unilib/pack_soap.html) package.
 
 This code uses Unicon features not available in Icon.
 
@@ -510,7 +510,7 @@ result = proxy.anotherSoapFunc(34234)
 ```
 
 
-'''Note:''' SOAPpy is a third-party module and can be found at [http://pywebsvcs.sourceforge.net/ Python Web Services]
+'''Note:''' SOAPpy is a third-party module and can be found at [Python Web Services](http://pywebsvcs.sourceforge.net/)
 
 
 ## Ruby
@@ -533,7 +533,7 @@ puts response2.anotherSoapFuncReturn
 ## Smalltalk
 
 {{works with|Smalltalk/X}} {{works with|Dolphin Smalltalk}} (not sure about Pharo and VW)
-(assuming that the open source [http://www.mars.dti.ne.jp/~umejava/smalltalk/soapOpera/index.html SOAPSpray] package has been loaded.)
+(assuming that the open source [SOAPSpray](http://www.mars.dti.ne.jp/~umejava/smalltalk/soapOpera/index.html) package has been loaded.)
 
 ```smalltalk
 | service client response1 response2 |
@@ -549,7 +549,7 @@ response2 := client send: 'anotherSoapFunc' withArguments:{ 34234 }.
 
 ## Tcl
 
-Uses the <code>[http://code.google.com/p/tclws/ tclws]</code> package.
+Uses the <code>[tclws](http://code.google.com/p/tclws/)</code> package.
 
 ```Tcl
 package require WS::Client
@@ -568,7 +568,7 @@ set result2 [ExampleService::anotherSoapFunc 34234]
 
 ## Uniface
 
-Assuming http://example.com/soap/wsdl has been imported into repository and, as result, exists a new component called "webservice"
+Assuming <http://example.com/soap/wsdl> has been imported into repository and, as result, exists a new component called "webservice"
 
 
 ```Uniface

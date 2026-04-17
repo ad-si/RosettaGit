@@ -25,6 +25,6 @@ QB64's extended commands begin with an underscore in order to avoid conflicts wi
 
 ==See also==
 * [[wp:QB64|QB64 on Wikipedia]]
-* [http://www.qb64.net/ QB64 homepage]
-* [http://www.thejoyfulprogrammer.com/qb64/forum/index.php?rndtime=1512833625226929130/ QB64 Partner Site QB64.TheJoyfulProgrammer.com]
-* [https://www.qb64.org/ QB64 Partner Site QB64.org]
+* [QB64 homepage](http://www.qb64.net/)
+* [QB64 Partner Site QB64.TheJoyfulProgrammer.com](http://www.thejoyfulprogrammer.com/qb64/forum/index.php?rndtime=1512833625226929130/)
+* [QB64 Partner Site QB64.org](https://www.qb64.org/)

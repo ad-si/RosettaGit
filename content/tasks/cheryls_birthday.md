@@ -60,8 +60,8 @@ Write a computer program to deduce, by successive elimination, Cheryl's birthday
 
 ## References
 
-* [https://en.wikipedia.org/wiki/Cheryl%27s_Birthday Wikipedia article] of the same name.
-* [https://en.wikipedia.org/wiki/Tuple_relational_calculus, Tuple Relational Calculus]
+* [Wikipedia article](https://en.wikipedia.org/wiki/Cheryl%27s_Birthday) of the same name.
+* [Tuple Relational Calculus](https://en.wikipedia.org/wiki/Tuple_relational_calculus,)
 
 
 
@@ -1947,7 +1947,7 @@ July 16
 ```
 
 ===Scala-ish approach===
-{{Out}}See it yourself by running in your browser either by [https://scalafiddle.io/sf/AiS6u7B/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/hoBvwq5fSkSRk0vnr6NKmA Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/AiS6u7B/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/hoBvwq5fSkSRk0vnr6NKmA).
 ```Scala
 object Cheryl_sBirthday extends App {
 

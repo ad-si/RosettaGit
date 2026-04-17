@@ -1352,7 +1352,7 @@ NB Things like convolution would be best done by combining LB with ImageMagick, 
 
 ```
 
- Screenview is available at [[http://www.diga.me.uk/convolved.gif]]
+ Screenview is available at <http://www.diga.me.uk/convolved.gif>
 
 
 ## Maple
@@ -1382,7 +1382,7 @@ ImageConvolve[img, BoxMatrix[1] ]
 
 ## MATLAB
 
-The built-in function [http://www.mathworks.com/help/matlab/ref/conv2.html conv2] handles the basic convolution. Below is a program that has several more options that may be useful in different image processing applications (see comments under convImage for specifics).
+The built-in function [conv2](http://www.mathworks.com/help/matlab/ref/conv2.html) handles the basic convolution. Below is a program that has several more options that may be useful in different image processing applications (see comments under convImage for specifics).
 
 ```MATLAB
 function testConvImage
@@ -1713,7 +1713,7 @@ let box_blur img =
 ## Octave
 
 
-'''Use package''' [http://octave.sourceforge.net/image/index.html Image]
+'''Use package''' [Image](http://octave.sourceforge.net/image/index.html)
 
 
 ```octave
@@ -1761,8 +1761,8 @@ my $smoothed = conv2d $image, $kernel, {Boundary => 'Truncate'};
 wpic $smoothed, 'pythagoras_convolution.png';
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog.png frog.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog_convolution.png frog_convolution.png]
+Compare offsite images: [frog.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog.png) vs.
+[frog_convolution.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/frog_convolution.png)
 
 
 ## Perl 6
@@ -1780,8 +1780,8 @@ my $smoothed = conv2d $image, $kernel, {Boundary => 'Truncate'};
 wpic $smoothed, 'frog_convolution.png';
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/frog.png frog.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/frog_convolution.png frog_convolution.png]
+Compare offsite images: [frog.png](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/frog.png) vs.
+[frog_convolution.png](https://github.com/SqrtNegInf/Rosettacode-Perl6-Smoke/blob/master/ref/frog_convolution.png)
 
 
 ## Phix
@@ -2001,8 +2001,8 @@ if __name__=="__main__":
 This example uses typed/racket, since that gives access to ''inline-build-flomap'',
 which delivers quite a performance boost over ''build-flomap''.
 
-[http://timb.net/images/rosettacode/image_convolution/271px-John_Constable_002.jpg 271px-John_Constable_002.jpg]
-[http://timb.net/images/rosettacode/image_convolution/convolve-etch-3x3.png convolve-etch-3x3.png]
+[271px-John_Constable_002.jpg](http://timb.net/images/rosettacode/image_convolution/271px-John_Constable_002.jpg)
+[convolve-etch-3x3.png](http://timb.net/images/rosettacode/image_convolution/convolve-etch-3x3.png)
 
 
 

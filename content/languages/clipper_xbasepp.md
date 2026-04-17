@@ -20,12 +20,12 @@ I believe it was the most powerful relational database language of it's time and
 
 Before dBase came about, to find a record in a table you had to do a binary sort. One of the big features, among others, of dBase was that it could find one record out of a billion by doing only 3 comparisons (on a 4.7 MHz computer) that took less than one second using index files as reference. They also invented the DBF file structure which carries the structure of the table internally in record # 0, also known as the phantom or ghost record.
 
-[http://www.clippersolutions.com Clipper Solutions]
+[Clipper Solutions](http://www.clippersolutions.com)
 
-[http://www.alaska-software.com Alaska Software]
+[Alaska Software](http://www.alaska-software.com)
 
-[http://www.xharbour.org xHarbour]
+[xHarbour](http://www.xharbour.org)
 
-[http://www.xailer.com Xailer]
+[Xailer](http://www.xailer.com)
 
-[http://www.donnay-software.com Donnay Software]
+[Donnay Software](http://www.donnay-software.com)

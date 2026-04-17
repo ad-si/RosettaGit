@@ -1428,7 +1428,7 @@ for(i = 10; i >= 0; i -= 1)
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=b236db5bdb1087fa90e934a5a8210e1f Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=b236db5bdb1087fa90e934a5a8210e1f)'''
 
 ```gambas
 Public Sub Main()
@@ -2899,7 +2899,7 @@ The SSEM can't print, so the results are stored in an array at addresses 22 to 3
 
 ## Stata
 
-See '''[https://www.stata.com/help.cgi?forvalues forvalues]''' and '''[https://www.stata.com/help.cgi?foreach foreach]''' in Stata help.
+See '''[forvalues](https://www.stata.com/help.cgi?forvalues)''' and '''[foreach](https://www.stata.com/help.cgi?foreach)''' in Stata help.
 
 
 ```stata

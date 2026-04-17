@@ -422,7 +422,7 @@ Caveat -- This works with specific implementations of CL. This was tested in SBC
 ```
 
 
-[http://clhs.lisp.se/Body/m_declai.htm More about <code>declaim</code> here]
+[More about <code>declaim</code> here](http://clhs.lisp.se/Body/m_declai.htm)
 
 
 ## D
@@ -526,7 +526,7 @@ End Type
 
 
 =={{header|F Sharp|F#}}==
-In F#, prototypes are called signatures. Signature files are used to bulk annotate the accessibility of the things within them. If something is in an implementation file but not in the signature file, it is assumed to be private to that file. If it is in the signature file without the <code>internal</code> accessibility modifier, then it is assumed to public, otherwise it is internal to the assembly. For more details, see the [http://msdn.microsoft.com/en-us/library/dd233196.aspx documentation]. Below is an example of the signatures produced for the functions specified in the task (without any accessibility modifiers):
+In F#, prototypes are called signatures. Signature files are used to bulk annotate the accessibility of the things within them. If something is in an implementation file but not in the signature file, it is assumed to be private to that file. If it is in the signature file without the <code>internal</code> accessibility modifier, then it is assumed to public, otherwise it is internal to the assembly. For more details, see the [documentation](http://msdn.microsoft.com/en-us/library/dd233196.aspx). Below is an example of the signatures produced for the functions specified in the task (without any accessibility modifiers):
 
 ```fsharp
 // A function taking and returning nothing (unit).
@@ -1284,7 +1284,7 @@ sub twoargs :prototype($$);
 
 ## Perl 6
 
-There is no restriction on placement of prototype declarations.  (Actually, we call them "stub declarations".)  In fact, stub declarations are rarely needed in Perl 6 because post-declaration of functions is allowed, and normal [http://design.perl6.org/S06.html#Subroutines_and_other_code_objects function declarations] do not bend the syntax the way they sometimes do in Perl 5.
+There is no restriction on placement of prototype declarations.  (Actually, we call them "stub declarations".)  In fact, stub declarations are rarely needed in Perl 6 because post-declaration of functions is allowed, and normal [function declarations](http://design.perl6.org/S06.html#Subroutines_and_other_code_objects) do not bend the syntax the way they sometimes do in Perl 5.
 
 Note that the <tt>...</tt> in all of these stub bodies is literally part of the declaration syntax.
 
@@ -1346,7 +1346,7 @@ sub foo ($, :$option! --> Int) {...}
 ```
 
 
-A routine may unpack an <tt>Array</tt> automaticly. Here the first element is stored in a scalar and the rest in an <tt>Array</tt>. Other buildin types can be [http://design.perl6.org/S06.html#Unpacking_array_parameters unpacked] as well.
+A routine may unpack an <tt>Array</tt> automaticly. Here the first element is stored in a scalar and the rest in an <tt>Array</tt>. Other buildin types can be [unpacked](http://design.perl6.org/S06.html#Unpacking_array_parameters) as well.
 
 ```perl6
 sub foo ([$, @]) {...}
@@ -1593,7 +1593,7 @@ In SNOBOL4, functions are actually a hack and are defined in an idiosyncratic wa
 
 ### Basics
 
-To begin with, we look at the definition provided [http://rosettacode.org/wiki/Function_definition#SNOBOL4 at the relevant task page]:
+To begin with, we look at the definition provided [at the relevant task page](http://rosettacode.org/wiki/Function_definition#SNOBOL4):
 
 
 ```snobol4

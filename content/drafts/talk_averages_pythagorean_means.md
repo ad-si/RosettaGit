@@ -18,7 +18,7 @@ It is like going back and fixing the question when you got the answer wrong ;-)
 
 On reading the wp article it seemed like a useful little fact about the Pythagorean means, (apart from the nifty little semi-circular diagram), that I want to have in the RC task. I think it should be re-instated and the examples fixed. --[[User:Paddy3118|Paddy3118]] 01:35, 22 February 2010 (UTC)
 
-Note that the second element to the task [http://rosettacode.org/mw/index.php?title=Averages/Pythagorean_means&oldid=75253 was] in the original task description; missed by some, but not others. I decided to move it to make it more prominent. --[[User:Paddy3118|Paddy3118]] 01:59, 22 February 2010 (UTC)
+Note that the second element to the task [was](http://rosettacode.org/mw/index.php?title=Averages/Pythagorean_means&oldid=75253) in the original task description; missed by some, but not others. I decided to move it to make it more prominent. --[[User:Paddy3118|Paddy3118]] 01:59, 22 February 2010 (UTC)
 
 
 ==Formulae hidden to most browsers by under-tested cosmetic edits at 23:05, 3 June 2016 ==

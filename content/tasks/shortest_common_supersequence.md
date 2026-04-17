@@ -41,7 +41,7 @@ Demonstrate this by printing <math>s</math> where <math>u = </math>“<tt>abcbda
 
 
 ;Also see:
-*   The Wikipedia article:   [http://wikipedia.org/wiki/Shortest_common_supersequence_problem shortest common supersequence].
+*   The Wikipedia article:   [shortest common supersequence](http://wikipedia.org/wiki/Shortest_common_supersequence_problem).
 
 
 
@@ -534,7 +534,7 @@ SCS:  WEASRDANCELS
 
 ## Racket
 
-{{trans|C}}This program is based on the C implementation, but use memorization instead of dynamic programming. More explanations about the memorization part in http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html .
+{{trans|C}}This program is based on the C implementation, but use memorization instead of dynamic programming. More explanations about the memorization part in <http://blog.racket-lang.org/2012/08/dynamic-programming-versus-memoization.html> .
 
 ```Racket
 #lang racket
@@ -713,7 +713,7 @@ SCS(abcbdab, bdcaba) = abcbdcaba
 
 ## Sidef
 
-Uses the ''lcs'' function defined [http://rosettacode.org/wiki/Longest_common_subsequence#Sidef here].
+Uses the ''lcs'' function defined [here](http://rosettacode.org/wiki/Longest_common_subsequence#Sidef).
 
 ```ruby
 func scs(u, v) {

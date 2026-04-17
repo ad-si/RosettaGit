@@ -13,5 +13,5 @@ tags = []
 {{stub}}
 {{feature|Programming paradigm}}
 ==See==
-* [http://jpaulmorrison.com/fbp/ Flow-Based Programming]
+* [Flow-Based Programming](http://jpaulmorrison.com/fbp/)
 * [[wp:Flow-based_programming|Wikipedia:Flow-based programming]]

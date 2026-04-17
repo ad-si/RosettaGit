@@ -27,5 +27,5 @@ Some gawkisms are
 * other GNU extensions in the manual.
 
 ## Links
-* Home page: [http://www.gnu.org/software/gawk/ gawk]
-* Manual: [http://www.gnu.org/software/gawk/manual/ ''Gawk: Effective AWK Programming'']
+* Home page: [gawk](http://www.gnu.org/software/gawk/)
+* Manual: [''Gawk: Effective AWK Programming''](http://www.gnu.org/software/gawk/manual/)

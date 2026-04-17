@@ -12,4 +12,4 @@ tags = []
 
 {{library}}
 
-Overtone is a toolkit for making music and it is insanely fun to use.  Watch [https://vimeo.com/22798433 this Overtone demo] and check the [http://overtone.github.io/ Overtone github].
+Overtone is a toolkit for making music and it is insanely fun to use.  Watch [this Overtone demo](https://vimeo.com/22798433) and check the [Overtone github](http://overtone.github.io/).

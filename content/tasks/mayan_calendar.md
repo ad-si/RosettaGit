@@ -200,7 +200,7 @@ theorists to predict a cataclysmic "end-of-the-word" scenario.
 
 *''From the website of the Foundation for the Advancement of Meso-America Studies, Inc.''
 Pitts, Mark. The complete Writing in Maya Glyphs Book 2 – Maya Numbers and the Maya Calendar. 2009. Accessed 2019-01-19.
-http://www.famsi.org/research/pitts/MayaGlyphsBook2.pdf
+<http://www.famsi.org/research/pitts/MayaGlyphsBook2.pdf>
 
 *[[wp:Maya_calendar|wikipedia: Maya calendar]]
 

@@ -533,7 +533,7 @@ The file <code>hailstone_sequence.clj</code> is an executable library:
               number length))))
 ```
 
-You can run it from the command line (<code>clojure.jar</code> is [https://clojure.org/community/downloads the jar that contains the Clojure language]):
+You can run it from the command line (<code>clojure.jar</code> is [the jar that contains the Clojure language](https://clojure.org/community/downloads)):
 
 ```txt
 $ java -cp clojure.jar clojure.main -m rosetta-code.hailstone-sequence
@@ -568,7 +568,7 @@ $ java -cp clojure.jar clojure.main -m rosetta-code.frequent-hailstone-lengths
 The most frequent Hailstone sequence length for numbers under 100000 is 72, with a frequency of 1467.
 ```
 
-Clojure also supports ahead-of-time compilation to class files, and the standard packaging tools [https://leiningen.org/ Leiningen] and [http://boot-clj.com/ Boot] provide meta-commands to compile and package Clojure programs into stand-alone runnable jars. At this point, Clojure has more or less the same executable library story as Java (class files can be named as the main entry point, and they can be included by other classes that import them).
+Clojure also supports ahead-of-time compilation to class files, and the standard packaging tools [Leiningen](https://leiningen.org/) and [Boot](http://boot-clj.com/) provide meta-commands to compile and package Clojure programs into stand-alone runnable jars. At this point, Clojure has more or less the same executable library story as Java (class files can be named as the main entry point, and they can be included by other classes that import them).
 
 =={{header|Déjà Vu}}==
 

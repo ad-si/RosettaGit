@@ -215,13 +215,13 @@ Factors of F₆: { 274177, 67280421310721 }
 
 ## Go
 
-The first seven Fermat numbers are factorized almost instantly by the [https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm Pollard's rho algorithm] but F₇ took a little over 12 minutes!
+The first seven Fermat numbers are factorized almost instantly by the [Pollard's rho algorithm](https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm) but F₇ took a little over 12 minutes!
 
 However, the algorithm factorizes F₈ and finds the first prime factor of F₉ in a much more acceptable 40 seconds. The first prime factor of F₈ is 16 digits long compared to 17 digits for F₇ which seems to make a big difference in execution time.
 
 As the second and third prime factors of F₉ are respectively 49 and 99 digits long there would be no chance of finding these any time soon so I haven't bothered.
 
-I thought that [https://en.wikipedia.org/wiki/Fermat%27s_factorization_method Fermat's own factorization method], which is easy to code, might be able to factorize F₇ faster than Pollard's Rho as the factors are relatively close together but in fact it was much slower.
+I thought that [Fermat's own factorization method](https://en.wikipedia.org/wiki/Fermat%27s_factorization_method), which is easy to code, might be able to factorize F₇ faster than Pollard's Rho as the factors are relatively close together but in fact it was much slower.
 
 The timings are for my Intel Core i7-8565U laptop using Go 1.12.9 on Ubuntu 18.04.
 

@@ -14,7 +14,7 @@ languages = [
 ]
 +++
 
-Implement a version of the [https://en.wikipedia.org/wiki/Black_Box_(game) Black Box game] beginners configuration: 4 Atoms in an 8 x 8 grid.
+Implement a version of the [Black Box game](https://en.wikipedia.org/wiki/Black_Box_(game)) beginners configuration: 4 Atoms in an 8 x 8 grid.
 
 Determine where the hidden atoms are in the box, by observing how the light beams fired into the box react when leaving it.<br />
 Possible results:<br />
@@ -503,7 +503,7 @@ j       ║ 3 ║ H ║ 5 ║ H ║ 4 ║ R ║ H ║ R ║
 
 ## JavaScript
 
-Play it [http://paulo-jorente.de/tests/blackbox/ here].
+Play it [here](http://paulo-jorente.de/tests/blackbox/).
 
 ```javascript
 

@@ -26,7 +26,7 @@ I thought it would be overly repetitious and verbose to cover all cases.
 
 > Also, the last two subtasks seem very obscure and contrived. No language seems to have built-in methods for them. 
 
-Yes, I think you're right. I expected Ruby to have this feature but it turned out not to. Leaving the only language I know that does as XSLT http://www.zvon.org/xxl/XSLTreference/Output/function_substring-after.html Hardly significant enough to justify those two subtasks. If you're happy to make those changes I'll support them.
+Yes, I think you're right. I expected Ruby to have this feature but it turned out not to. Leaving the only language I know that does as XSLT <http://www.zvon.org/xxl/XSLTreference/Output/function_substring-after.html> Hardly significant enough to justify those two subtasks. If you're happy to make those changes I'll support them.
 
 [[User:Oligomous|Oligomous]] 17:48, 10 August 2009 (UTC)
 

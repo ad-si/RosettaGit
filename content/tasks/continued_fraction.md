@@ -70,7 +70,7 @@ languages = [
 
 ## Task
 
-{{task}}A number may be represented as a [[wp:Continued fraction|continued fraction]] (see [http://mathworld.wolfram.com/ContinuedFraction.html Mathworld] for more information) as follows:
+{{task}}A number may be represented as a [[wp:Continued fraction|continued fraction]] (see [Mathworld](http://mathworld.wolfram.com/ContinuedFraction.html) for more information) as follows:
 
 :<math>a_0 + \cfrac{b_1}{a_1 + \cfrac{b_2}{a_2 + \cfrac{b_3}{a_3 + \ddots}}}</math>
 
@@ -113,7 +113,7 @@ print(calc(n -> I n > 0 {6} E 3, n -> (2 * n - 1) ^ 2))
 
 ## Ada
 
-(The source text for these examples can also be found on [https://bitbucket.org/ada_on_rosetta_code/solutions Bitbucket].)
+(The source text for these examples can also be found on [Bitbucket](https://bitbucket.org/ada_on_rosetta_code/solutions).)
 
 Generic function for estimating continued fractions:
 
@@ -1511,9 +1511,9 @@ println$ cf_iter 1000 pi; // => 3.14159
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Continued_fraction this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Continued_fraction) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2180,7 +2180,7 @@ I got this help and simplified the program.
 
 However, I am told that 'my' value of pi is incorrect. I will investigate!
 
-Apparently the coefficients given in the task description are only good for an approximation. One should, therefore, not SHOW more that 15 digits. See http://de.wikipedia.org/wiki/Kreiszahl
+Apparently the coefficients given in the task description are only good for an approximation. One should, therefore, not SHOW more that 15 digits. See <http://de.wikipedia.org/wiki/Kreiszahl>
 
 See [[#REXX|Rexx]] for a better computation
 

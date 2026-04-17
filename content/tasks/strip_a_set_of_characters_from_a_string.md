@@ -1434,7 +1434,7 @@ Sh ws  soul strppr. Sh took my hrt!
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=f199a8f7a56cf466e4a16c3fc71f6278 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=f199a8f7a56cf466e4a16c3fc71f6278)'''
 
 ```gambas
 Public Sub Main()
@@ -1572,7 +1572,7 @@ rdvrks r nt trs.
 
 '''Solution:'''
 
-The dyadic primitive <code>-.</code> ([http://www.jsoftware.com/help/dictionary/d121.htm Less]) is probably the simplest way to solve this task.
+The dyadic primitive <code>-.</code> ([Less](http://www.jsoftware.com/help/dictionary/d121.htm)) is probably the simplest way to solve this task.
 ```j
    'She was a soul stripper. She took my heart!' -. 'aei'
 Sh ws  soul strppr. Sh took my hrt!
@@ -2212,7 +2212,7 @@ Sh ws  soul strppr. Sh took my hrt!
 
 ## Prolog
 
-Works with SWI-Prolog and module '''lambda.pl''' written by  '''Ulrich Neumerkel''' found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl .
+Works with SWI-Prolog and module '''lambda.pl''' written by  '''Ulrich Neumerkel''' found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> .
 
 ```Prolog
 :- use_module(library(lambda)).

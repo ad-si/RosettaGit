@@ -14,7 +14,7 @@ tags = []
 so i found the 100000th term,and ive heard something about the challenge...why no one have solved it?then i tried,just for its lovely chaos,i found it.i used a modified python code for this.i just modified it so that i could list up the numbers...
 p.s. also,the file was too big to post it as a plain text,so i posted it in my "repository".anyways,kindly check it for me.if the choices are valid.ill try a second run,if requested
 
-[http://geocities.ws/pluman/qseq/ the website,includes the code and the output]
+[the website,includes the code and the output](http://geocities.ws/pluman/qseq/)
 
 more stories to come!
 
@@ -46,7 +46,7 @@ Maybe the task description should be changed whether it is required to accommoda
 ==<nowiki><math></nowiki> not working?==
 The equation in the task description is not being rendered for some reason, even though I don't think it has been edited. Could someone check this? Thanks. --[[User:Paddy3118|Paddy3118]] 06:46, 14 December 2011 (UTC)
 : It appears that all <nowiki><math></nowiki> handling on this page is entirely broken (I tested with a very simple version that shouldn't have required an external renderer; “<tt><nowiki><math>1</math></nowiki></tt>” which renders as “<math>1</math>”). Haven't checked on other pages yet (not that I expect it to be working there) but it could be associated with the recent updates. –[[User:Dkf|Donal Fellows]] 09:09, 14 December 2011 (UTC)
-:: [http://irclog.perlgeek.de/rosettacode/2011-12-14 IRC log] says that <nowiki><math></nowiki> now works. However, I find that <nowiki><math></nowiki> remains broken until someone edits the page. I fixed this page with [http://rosettacode.org/mw/index.php?title=Hofstadter_Q_sequence&diff=128336&oldid=128261 a minor edit to Ruby]. Any single edit seems to reset the cache, so <nowiki><math></nowiki> works again. --[[User:Kernigh|Kernigh]] 19:00, 14 December 2011 (UTC)
+:: [IRC log](http://irclog.perlgeek.de/rosettacode/2011-12-14) says that <nowiki><math></nowiki> now works. However, I find that <nowiki><math></nowiki> remains broken until someone edits the page. I fixed this page with [a minor edit to Ruby](http://rosettacode.org/mw/index.php?title=Hofstadter_Q_sequence&diff=128336&oldid=128261). Any single edit seems to reset the cache, so <nowiki><math></nowiki> works again. --[[User:Kernigh|Kernigh]] 19:00, 14 December 2011 (UTC)
 
 
 ==Formulae hidden to most browsers by under-tested cosmetic edits at 03:46, 20 April 2016 ==

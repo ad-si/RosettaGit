@@ -60,7 +60,7 @@ Show your output here.
 
 ## See also
 
-* [http://mathworld.wolfram.com/s-Run.html s-Run] on Wolfram mathworld.
+* [s-Run](http://mathworld.wolfram.com/s-Run.html) on Wolfram mathworld.
 
 
 ## C

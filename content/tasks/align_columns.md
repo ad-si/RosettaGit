@@ -3140,7 +3140,7 @@ justified,    right     justified,    or    center  justified    within      its
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=023b4c5144d45e047abe02ebf5c4525a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=023b4c5144d45e047abe02ebf5c4525a)'''
 
 ```gambas
 Public Sub Main()                                                             'Written in Gambas 3.9.2 as a Command line Application - 15/03/2017
@@ -3580,7 +3580,7 @@ justified,  right       justified,  or      center  justified  within      its  
 
 ## HicEst
 
-A file opened with a Format option describing the column format(s) can be addressed like a standard in-memory array. In addition the DLG function ([http://www.HicEst.com/MatrixExplorer.htm MatrixExplorer]) allows this text/numeric file to be edited or visualized in many ways, but string columns are always left adjusted while numeric columns are right adjusted. Export is possible.
+A file opened with a Format option describing the column format(s) can be addressed like a standard in-memory array. In addition the DLG function ([MatrixExplorer](http://www.HicEst.com/MatrixExplorer.htm)) allows this text/numeric file to be edited or visualized in many ways, but string columns are always left adjusted while numeric columns are right adjusted. Export is possible.
 
 ```HicEst
 
@@ -5155,7 +5155,7 @@ justified,    right   justified,   or   center justified   within      its   col
 ## Nit
 
 
-Source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/align_columns.nit the official Nit’s repository]
+Source: [the official Nit’s repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/align_columns.nit)
 
 
 ```nit

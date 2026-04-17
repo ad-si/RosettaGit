@@ -507,7 +507,7 @@ Value: 1.23e-10 of type: double is integer - true
 
 
 Length and precision of entered numbers in this solution,
-are limited by the limitations of variables type of [https://en.wikipedia.org/wiki/Double-precision_floating-point_format Double].
+are limited by the limitations of variables type of [Double](https://en.wikipedia.org/wiki/Double-precision_floating-point_format).
 
 
 
@@ -2224,7 +2224,7 @@ The scheme/racket number pyramid is notoriously difficult to navigate.
 The following are integers representations that *I* know of, but I'm
 sure there are plenty more!
 
-See [http://docs.racket-lang.org/reference/number-types.html?q=integer%3F#%28def._%28%28quote._~23~25kernel%29._integer~3f%29%29 documentation for <code>integer?</code>]
+See [documentation for <code>integer?</code>](http://docs.racket-lang.org/reference/number-types.html?q=integer%3F#%28def._%28%28quote._~23~25kernel%29._integer~3f%29%29)
 
 
 ```racket

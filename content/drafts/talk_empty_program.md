@@ -21,4 +21,4 @@ I hereby request a COBOL program. --foobie-bletch 20:11, 7 August 2009 (UTC)
 
 == HTML ==
 
-[http://www.w3.org/TR/html401/struct/global.html#edef-TITLE According to the HTML 4 standard], a TITLE element is required to appear in every HTML document.  Thus, someone please fix the HTML example.  [[Special:Contributions/84.2.146.132|84.2.146.132]] 18:05, 6 March 2010 (UTC)
+[According to the HTML 4 standard](http://www.w3.org/TR/html401/struct/global.html#edef-TITLE), a TITLE element is required to appear in every HTML document.  Thus, someone please fix the HTML example.  [[Special:Contributions/84.2.146.132|84.2.146.132]] 18:05, 6 March 2010 (UTC)

@@ -13,6 +13,6 @@ tags = []
 {{stub}}[[Category:SQLite]]
 [[Ruby]] library for interacting with [[SQLite]] databases.
 
-* [http://rubyforge.org/projects/sqlite-ruby/ Project page at RubyForge]
-* [http://sqlite-ruby.rubyforge.org/sqlite3/ Documentation]
-* [http://sqlite-ruby.rubyforge.org/sqlite3/faq.html FAQ]
+* [Project page at RubyForge](http://rubyforge.org/projects/sqlite-ruby/)
+* [Documentation](http://sqlite-ruby.rubyforge.org/sqlite3/)
+* [FAQ](http://sqlite-ruby.rubyforge.org/sqlite3/faq.html)

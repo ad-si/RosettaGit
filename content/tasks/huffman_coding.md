@@ -2152,7 +2152,7 @@ x: 01010
 
 ## Erlang
 
-The main part of the code used here is extracted from [https://gist.github.com/rmies/2828351 Michel Rijnders' GitHubGist]. See also [http://codingpraxis.com/erlang/2012/10/23/huffman-coding-in-erlang.html his blog], for a complete description of the original module.
+The main part of the code used here is extracted from [Michel Rijnders' GitHubGist](https://gist.github.com/rmies/2828351). See also [his blog](http://codingpraxis.com/erlang/2012/10/23/huffman-coding-in-erlang.html), for a complete description of the original module.
 
 ```erlang
 -module(huffman).
@@ -2908,7 +2908,7 @@ this is an example for huffman encoding
 
 ## Haskell
 
-Credits go to [http://www.haskell.org/haskellwiki/99_questions/46_to_50#Problem_50 huffman] where you'll also find a non-tree solution. Uses sorted list as a priority queue.
+Credits go to [huffman](http://www.haskell.org/haskellwiki/99_questions/46_to_50#Problem_50) where you'll also find a non-tree solution. Uses sorted list as a priority queue.
 
 ```haskell
 import Data.List (group, insertBy, sort, sortBy)
@@ -3193,7 +3193,7 @@ Huffman encoding:
 ->
 ```
 
-[http://www.cs.arizona.edu/icon/library/progs/huffstuf.htm HuffStuff provides huffman encoding routines]
+[HuffStuff provides huffman encoding routines](http://www.cs.arizona.edu/icon/library/progs/huffstuf.htm)
 
 
 ## J
@@ -3381,7 +3381,7 @@ f	3	1101
 
 {{works with|SpiderMonkey}} for the <code>print()</code> function.
 
-First, use the Binary Heap implementation from here: http://eloquentjavascript.net/appendix2.html
+First, use the Binary Heap implementation from here: <http://eloquentjavascript.net/appendix2.html>
 
 The Huffman encoder
 
@@ -4476,7 +4476,7 @@ this is an example for huffman encoding
 ### By building a tree
 
 
-This version uses nested <code>Array</code>s to build a tree [https://commons.wikimedia.org/wiki/File:HuffmanCodeAlg.png like shown in this diagram], and then recursively traverses the finished tree to accumulate the prefixes.
+This version uses nested <code>Array</code>s to build a tree [like shown in this diagram](https://commons.wikimedia.org/wiki/File:HuffmanCodeAlg.png), and then recursively traverses the finished tree to accumulate the prefixes.
 
 ```perl6
 sub huffman (%frequencies) {
@@ -5440,7 +5440,7 @@ d 11110
 
 ## Python
 
-A [http://paddy3118.blogspot.com/2009/03/huffman-encoding-in-python.html slight modification] of the method outlined in the task description allows the code to be accumulated as the heap is manipulated.
+A [slight modification](http://paddy3118.blogspot.com/2009/03/huffman-encoding-in-python.html) of the method outlined in the task description allows the code to be accumulated as the heap is manipulated.
 
 The output is sorted first on length of the code, then on the symbols.
 
@@ -5500,7 +5500,7 @@ d   1   111111
 ```
 
 
-An extension to the method outlined above is given [http://paddy3118.blogspot.com/2009/04/abuse-of-pythons-in-built-data.html here].
+An extension to the method outlined above is given [here](http://paddy3118.blogspot.com/2009/04/abuse-of-pythons-in-built-data.html).
 
 
 
@@ -6083,7 +6083,7 @@ result="this is an example for huffman encoding"
 
 ## Ruby
 
-Uses a {{libheader|RubyGems}} package [http://ruby.brian-amberg.de/priority-queue/ PriorityQueue]
+Uses a {{libheader|RubyGems}} package [PriorityQueue](http://ruby.brian-amberg.de/priority-queue/)
 
 ```ruby
 require 'priority_queue'

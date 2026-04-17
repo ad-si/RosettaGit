@@ -1854,7 +1854,7 @@ wend
 ## Rust
 
 
-This example is implemented using an [https://doc.rust-lang.org/book/iterators.html iterator] to reduce memory requirements and encourage code reuse.
+This example is implemented using an [iterator](https://doc.rust-lang.org/book/iterators.html) to reduce memory requirements and encourage code reuse.
 
 
 ```rust

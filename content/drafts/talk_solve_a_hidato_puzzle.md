@@ -58,7 +58,7 @@ I think that sums them up properly. –[[User:Dkf|Donal Fellows]] 10:41, 13 Janu
 ::* I still don't know anything about the hardness of this and if brute force or elegance is preferred/needed.  It seems to me that given the Moore Neighbourhood constraint that puzzles would have to get really quite large before brute force would have any problems (but that's just gut feel).  --[[User:Dgamey|Dgamey]] 17:58, 13 January 2012 (UTC)
 ::: Thinking about it, finding a unique solution to Knights Tour given similar clues and a unique solution is likely much easier than solving Knights Tours.  An alternate name for this might seem to be a Kings Tour (sadly, not very exciting).
 
-See http://en.wikipedia.org/wiki/Adjacency_list fo a discussion of implementations. The Mathprog example Rule 3 is such a list. As is Rule 3 in the Mathprog Knights Tour example. Only the definition of adjacency has changed. We could add extra credit if it also solves Numbrix which is a von Neuman Neighbourhood.
+See <http://en.wikipedia.org/wiki/Adjacency_list> fo a discussion of implementations. The Mathprog example Rule 3 is such a list. As is Rule 3 in the Mathprog Knights Tour example. Only the definition of adjacency has changed. We could add extra credit if it also solves Numbrix which is a von Neuman Neighbourhood.
 –[[User:Dkf|Nigel Galloway]]
 : Perhaps worthy of its own task.  There are probably lots of interesting research and discussion for Numbrix. --[[User:Dgamey|Dgamey]] 21:05, 13 January 2012 (UTC)
 
@@ -83,7 +83,7 @@ solveHidato "
 :: I thought that's what the task asked: "''write a program which solves Hidato puzzles.''" Though I don't know if there is a better general algorighm than exponential (exhaustive search). --[[User:Ledrug|Ledrug]] 19:31, 2 May 2012 (UTC)
 : I do have a version that solves even those awkward cases (using a more careful speculative execution model but still based on the solution in the task) but it's rather longer. I'll put it on a sub-page. –[[User:Dkf|Donal Fellows]] 08:24, 2 May 2012 (UTC)
 :: Extended version failed on the "awkward" example with a stock Tcl8.6.  Guess it's not recent enough? --[[User:Ledrug|Ledrug]] 00:07, 3 May 2012 (UTC)
-::: Yes. It needs a feature ([http://www.tcl.tk/cgi-bin/tct/tip/397.html improved object cloning]) that's not yet made it into a beta release. –[[User:Dkf|Donal Fellows]] 07:50, 3 May 2012 (UTC)
+::: Yes. It needs a feature ([improved object cloning](http://www.tcl.tk/cgi-bin/tct/tip/397.html)) that's not yet made it into a beta release. –[[User:Dkf|Donal Fellows]] 07:50, 3 May 2012 (UTC)
 
 == Any good general algorithm? ==
 
@@ -264,7 +264,7 @@ g6 = 1
 
 Putting g6 into the model and resolving again solves the problem by hand.
 
-It is apparent that the number of equations increases rapidly with problem size. A method exists which makes this increase linear see http://en.wikipedia.org/wiki/Tseitin-Transformation.
+It is apparent that the number of equations increases rapidly with problem size. A method exists which makes this increase linear see <http://en.wikipedia.org/wiki/Tseitin-Transformation>.
 
 --[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 14:12, 30 December 2013 (UTC)
 
@@ -284,4 +284,4 @@ The REXX programming example only needed a couple of '''if''' statements to solv
 
 == solved it using constraint programming ==
 
-Behold: http://hidoku-solver.appspot.com/
+Behold: <http://hidoku-solver.appspot.com/>

@@ -95,7 +95,7 @@ Use the following shoe of cards as your '''Ω''' array:
 
 ::Thanks--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 11:21, 10 December 2018 (UTC)
 
-== Why not using the inverse of [http://rosettacode.org/wiki/Knuth_shuffle Knuth_shuffle] ==
+== Why not using the inverse of [Knuth_shuffle](http://rosettacode.org/wiki/Knuth_shuffle) ==
 
 this has the same factorial base number, but one has to do only length-1 swaps instead of rotation.
 It ist easy to create a map between source and goal arrangement.

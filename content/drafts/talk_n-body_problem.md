@@ -19,7 +19,7 @@ In how many dimensions should we solve this?  All masses at a point with no init
 
 == Caution ==
 
-: "Beware that because of the inherently chaotic nature of the n-body problem, two different but correct implementations may diverge after a sufficiently long sequence of <math>\delta T</math> steps." -- [http://www.csee.umbc.edu/~motteler/teaching/courses/parallel_prog/96b/nbody/nbody1.html] --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:33, 16 April 2014 (UTC)
+: "Beware that because of the inherently chaotic nature of the n-body problem, two different but correct implementations may diverge after a sufficiently long sequence of <math>\delta T</math> steps." -- <http://www.csee.umbc.edu/~motteler/teaching/courses/parallel_prog/96b/nbody/nbody1.html> --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:33, 16 April 2014 (UTC)
 
 == tcl implementation ==
 

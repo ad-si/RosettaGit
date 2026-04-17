@@ -17,7 +17,7 @@ tags = []
 
 Hello community,
 
-I've just noticed some activity going on to group various BASIC dialects into a common BASIC branch in the language tree of certain tasks. It being generally a positive idea which obviously targets better readability and ease of language tree navigation, I wouldn't however consider it reasonable to place such true multi-syntax languages as [[FBSL]], or interoperative languages like [http://terralang.org/ Terra], [http://luajit.org/dynasm.html LuaJIT/DynASM] and a few others, into any particular side branch of the tree. They are too, well, extraordinary for that, and an unbecoming neighborhood may do such languages a disservice of misleading their potential users. Yup, it '''is''' difficult to be different, as [[User:Paddy3118|Paddy3118]] once said. ;)
+I've just noticed some activity going on to group various BASIC dialects into a common BASIC branch in the language tree of certain tasks. It being generally a positive idea which obviously targets better readability and ease of language tree navigation, I wouldn't however consider it reasonable to place such true multi-syntax languages as [[FBSL]], or interoperative languages like [Terra](http://terralang.org/), [LuaJIT/DynASM](http://luajit.org/dynasm.html) and a few others, into any particular side branch of the tree. They are too, well, extraordinary for that, and an unbecoming neighborhood may do such languages a disservice of misleading their potential users. Yup, it '''is''' difficult to be different, as [[User:Paddy3118|Paddy3118]] once said. ;)
 
 [[FBSL]] is exactly as much "BASIC" as it is "assembly" or "C". Why aren't assemblers grouped in a branch? Why aren't C clones (C, C++, C#) grouped either? Markup languages? Esoteric languages? Then why not let FBSL stay alone in the main trunk? At least for fear lest someone rewrite the FBSL solutions in FBSL's thoroughbred Dynamic C and claim C kindred. :)
 
@@ -38,9 +38,9 @@ In the same vein, one of those updates/consolidations managed to delete two prog
 I made a mention of this in the talk section of the Rosetta Code task (in the same day or next morning that it happened), but so far, those two language entries haven't been repaired or re-instated.   To make it worse, I have at this point forgotten which task it was, but it was one of the first attempts at the consolidation/grouping of the   BASIC   languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 10:29, 11 November 2013 (UTC)
 
 -----
-I've been consolidating BASICs as I've been making contributions.  I will stop doing this because it seems too error prone, and it sounds like some BASICs really have very little relation to BASIC at all.  This relates to old discussions about BASIC:  http://rosettacode.org/wiki/Category_talk:BASIC
+I've been consolidating BASICs as I've been making contributions.  I will stop doing this because it seems too error prone, and it sounds like some BASICs really have very little relation to BASIC at all.  This relates to old discussions about BASIC:  <http://rosettacode.org/wiki/Category_talk:BASIC>
 
-It would be good to consolidate the very similar solutions but I imagine that would be error prone too.  I repaired one of my entries where XPL0 moved, I since moved it to where it belongs alphabetically.  http://rosettacode.org/wiki/Hailstone_sequence
+It would be good to consolidate the very similar solutions but I imagine that would be error prone too.  I repaired one of my entries where XPL0 moved, I since moved it to where it belongs alphabetically.  <http://rosettacode.org/wiki/Hailstone_sequence>
 
 -- [[User:mmphosis|mmphosis]] ([[User talk:mmphosis|talk]]) 4:51, 13 November, 2013 (UTC)
 

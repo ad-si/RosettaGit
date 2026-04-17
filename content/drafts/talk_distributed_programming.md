@@ -13,7 +13,7 @@ tags = []
 I used IRC for the AutoHotkey entry. Is that allowed? [[User:BR|BR]]
 :Whether it's allowed or not I think it would be better if it were on its own page ([[Distributed program/AutoHotkey]]) and that page simply had a link on this page. --[[User:Mwn3d|Mwn3d]] 15:50, 9 September 2009 (UTC)
 ::Done. --[[User:Glennj|glennj]] 16:37, 9 September 2009 (UTC)
-:: Part of the problem is that he included the source of a [http://www.autohotkey.com/forum/topic35575.html library] the program depends on.  Talked to him on IRC, suggested he use Template:libheader. --[[User:Short Circuit|Michael Mol]] 16:55, 9 September 2009 (UTC)
+:: Part of the problem is that he included the source of a [library](http://www.autohotkey.com/forum/topic35575.html) the program depends on.  Talked to him on IRC, suggested he use Template:libheader. --[[User:Short Circuit|Michael Mol]] 16:55, 9 September 2009 (UTC)
 :::I moved WinSock2.ahk to [[WinSock2.ahk]], is it short enough now to put back in the main page? [[User:BR|BR]]
 ::::7000 bytes is still pretty big. I wonder if maybe the Python examples could be broken out too. We don't need more problems with loading large pages. It'd be best to get the especially long examples as they come up rather than try to fix the problem after the fact. --[[User:Mwn3d|Mwn3d]] 17:06, 9 September 2009 (UTC)
 

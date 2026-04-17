@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-There is currently only one implementation of Mercury, found at the [http://www.mercurylang.org/ University of Melbourne].
+There is currently only one implementation of Mercury, found at the [University of Melbourne](http://www.mercurylang.org/).
 {{implementation cat|Mercury}}

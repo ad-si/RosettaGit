@@ -348,7 +348,7 @@ UTF supported: △
 The jq "env" function is required to inspect environment variables. It is NOT available in jq version 1.4.
 
 Note also that "The values of locale categories are determined by a precedence order ..."
---  http://pubs.opengroup.org/onlinepubs/007908799/xbd/envvar.html
+--  <http://pubs.opengroup.org/onlinepubs/007908799/xbd/envvar.html>
 
 "has_unicode_support" therefore cannot simply test whether one of the variables LC_ALL, LC_TYPE and LANG contains the string UTF.
 
@@ -742,9 +742,9 @@ Unicode is supported on this terminal and U+25B3 is : △
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/console.htm console.s7i] defines
-[http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE STD_CONSOLE], which can used directly,
-or be assigned to [http://seed7.sourceforge.net/libraries/stdio.htm#OUT OUT] (which is the default
+The Seed7 library [console.s7i](http://seed7.sourceforge.net/libraries/console.htm) defines
+[STD_CONSOLE](http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE), which can used directly,
+or be assigned to [OUT](http://seed7.sourceforge.net/libraries/stdio.htm#OUT) (which is the default
 output file). STD_CONSOLE supports Unicode under Linux and Windows.
 
 

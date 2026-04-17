@@ -2308,7 +2308,7 @@ Tim    : Sales
 
 ## Liberty BASIC
 
-NB LB sorts in a non standard order. See http://libertybasicbugs.wikispaces.com/Comparison+of+characters+and+strings+is+not+ASCII+based
+NB LB sorts in a non standard order. See <http://libertybasicbugs.wikispaces.com/Comparison+of+characters+and+strings+is+not+ASCII+based>
 
 
 The method used here to simulate a compound structure can only hold pairs of terms, since LB arrays ar 1D or 2D. More complicated associated arrays could be stored in delimiter-separated string arrays.
@@ -2949,7 +2949,7 @@ vecsort([["name", "value"],["name2", "value2"]], 1, 2)
 
 ## Pascal
 
-mergesort example sorts an array of record http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement
+mergesort example sorts an array of record <http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement>
 
 ## Perl
 
@@ -3030,7 +3030,7 @@ function compare_col2(sequence a, b) return compare(a[2],b[2]) end function
 
 ## PicoLisp
 
-By default, the [http://software-lab.de/doc/refS.html#sort sort] function in
+By default, the [sort](http://software-lab.de/doc/refS.html#sort) function in
 PicoLisp returns an ascending list (of any type)
 
 ```PicoLisp
@@ -3039,7 +3039,7 @@ PicoLisp returns an ascending list (of any type)
 ```
 
 To sort by a certain sub-element, the function
-[http://software-lab.de/doc/refB.html#by by] can be used. For example, to
+[by](http://software-lab.de/doc/refB.html#by) can be used. For example, to
 sort by the first element
 
 ```PicoLisp
@@ -3095,7 +3095,7 @@ jkl                            three
 PureBasic natively supports sorting of structured data with;
 *SortStructuredArray()
 *SortStructuredList()
-The [http://www.purebasic.com/documentation/sort/index.html on-line documentations] gives a more complete picture.
+The [on-line documentations](http://www.purebasic.com/documentation/sort/index.html) gives a more complete picture.
 
 
 '''Example'''

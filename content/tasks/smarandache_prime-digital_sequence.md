@@ -38,7 +38,7 @@ For example 257 is an element of this sequence because it is prime itself and it
 ## See also
 
 * [[oeis:A019546|OEIS A019546: Primes whose digits are primes.]]
-* https://www.scribd.com/document/214851583/On-the-Smarandache-prime-digital-subsequence-sequences
+* <https://www.scribd.com/document/214851583/On-the-Smarandache-prime-digital-subsequence-sequences>
 
 
 
@@ -98,7 +98,7 @@ function is_prime(x,  i) {
 ```
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

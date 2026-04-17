@@ -179,8 +179,8 @@ should generate the output:
 
 
 ;Ruleset 5:
-A simple [http://en.wikipedia.org/wiki/Turing_machine Turing machine],
-implementing a three-state [http://en.wikipedia.org/wiki/Busy_beaver busy beaver].
+A simple [Turing machine](http://en.wikipedia.org/wiki/Turing_machine),
+implementing a three-state [busy beaver](http://en.wikipedia.org/wiki/Busy_beaver).
 
 The tape consists of '''0'''s and '''1'''s,   the states are '''A''', '''B''', '''C''' and '''H''' (for '''H'''alt), and the head position is indicated by writing the state letter before the character where the head is.
 All parts of the initial tape the machine operates on have to be given in the input.
@@ -1507,7 +1507,7 @@ Testing:
 <lang>(defparameter
     *rules1*
 "# This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# <http://en.wikipedia.org/wiki/Markov_Algorithm>
 A -> apple
 B -> bag
 S -> shop
@@ -3342,7 +3342,7 @@ Output:
 
 Works with SWI-Prolog and module(library(lambda)).
 
-Module lambda can be found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+Module lambda can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```prolog
@@ -4371,7 +4371,7 @@ The script is called much in the same way, but with the ".scala" extension added
 ## Scheme
 
 
-The following implementation uses several string-related procedures provided by SRFI-13 [http://srfi.schemers.org/srfi-13/srfi-13.html].
+The following implementation uses several string-related procedures provided by SRFI-13 <http://srfi.schemers.org/srfi-13/srfi-13.html>.
 
 
 ```scheme

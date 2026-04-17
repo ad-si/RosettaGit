@@ -11,13 +11,13 @@ tags = []
 +++
 
 ==Extra Credit?==
-Does any example go for the extra credit Unicode combining characters? It seems to have been introduced [[http://rosettacode.org/mw/index.php?title=Reversing_a_string&oldid=22893 here]] by Kevin Reid, but I am not sure that even his [[http://rosettacode.org/mw/index.php?title=Reversing_a_string&oldid=36231#E E example]] goes for the extra credit. --[[User:Paddy3118|Paddy3118]] 04:35, 28 July 2009 (UTC)
+Does any example go for the extra credit Unicode combining characters? It seems to have been introduced [here](http://rosettacode.org/mw/index.php?title=Reversing_a_string&oldid=22893) by Kevin Reid, but I am not sure that even his [E example](http://rosettacode.org/mw/index.php?title=Reversing_a_string&oldid=36231#E) goes for the extra credit. --[[User:Paddy3118|Paddy3118]] 04:35, 28 July 2009 (UTC)
 
 :Nobody's tackled it since the requirement was introduced. It's moderately tricky too IIRC, as it gets into the whole problem of normalization of strings. —[[User:Dkf|Donal Fellows]] 08:07, 28 July 2009 (UTC)
 
 ::I've cooked up something that works for the given Unicode string in Python and I have tried to make it generic, but the more I read about Unicode, the more I know I don't know :-)     --[[User:Paddy3118|Paddy3118]] 08:30, 28 July 2009 (UTC)
 
-I have found the [http://www.unicode.org/Public/5.2.0/ucd/Index-5.2.0d2.txt data table], ([http://www.unicode.org/copyright.html#Exhibit1 license]),  that is embedded in the Python module on-line. Should I split the task and have the stretch goal as a task on its own? (parse the table if needed, reverse a unicode string using the info from the table/an internal function with the combining info). --[[User:Paddy3118|Paddy3118]] 09:20, 28 July 2009 (UTC)
+I have found the [data table](http://www.unicode.org/Public/5.2.0/ucd/Index-5.2.0d2.txt), ([license](http://www.unicode.org/copyright.html#Exhibit1)),  that is embedded in the Python module on-line. Should I split the task and have the stretch goal as a task on its own? (parse the table if needed, reverse a unicode string using the info from the table/an internal function with the combining info). --[[User:Paddy3118|Paddy3118]] 09:20, 28 July 2009 (UTC)
 
 About my addition: Yep, it's often tricky, and that's why I said "extra credit". The thing is, if you ''don't'' do it, you get nonsense from certain Unicode strings; this will become increasingly relevant as the world drifts away from the habits of ASCII-and-a-few-extras. So I added this to spread a little Unicode-handling-awareness (though this isn't even complete: there are also e.g. bidirectional formatting markers, which need even more complicated handling). And that's why I think it shouldn't be a separate task: it's not a ''different problem'', it's ''more correctness'' (unless the string you're reversing is not really text, in which case you're looking for [[Binary_string_manipulation_functions|binary]] tasks). --[[User:Kevin Reid|Kevin Reid]] 12:03, 28 July 2009 (UTC)
 
@@ -55,7 +55,7 @@ Um. If your character set includes Unicode, a reversing routine should handle it
 
 [[Ruby]] has the regular expression <tt>/\p{M}/</tt> which matches a combining mark. With this expression, I might be able to reverse a string while preserving the combining marks.
 
-# The most relevant parts of [http://www.unicode.org/versions/Unicode6.0.0/ Unicode 6.0.0] seem to be section 3.6 "Combination" and section 3.12 "Conjoining Jamo Behavior".
+# The most relevant parts of [Unicode 6.0.0](http://www.unicode.org/versions/Unicode6.0.0/) seem to be section 3.6 "Combination" and section 3.12 "Conjoining Jamo Behavior".
 # I am not yet certain whether to preserve "combining character sequences" or "grapheme clusters". My best guess for now is to preserve the combining character sequences (CCS), not the grapheme clusters.
 # The regular expression for a CCS-or-char might look like <tt>/(?>#{base}\p{M}*|\p{M}+|.)/</tt> where <tt>#{base}</tt> is whatever regular expression matches a base character or extended base. The <tt>?></tt> prevents backtracking, so the regexp always matches the longest possible CCS.
 # I need some way with Ruby to comb a string for all matches of a regular expression. For example, with <tt>/[aeiou]./</tt> and <tt>"Rosetta Code"</tt>, I want <tt>["os", "et", "a ", "od"]</tt>. Then I would comb a string for CCS-or-char, reverse the array, join.
@@ -67,7 +67,7 @@ Um. If your character set includes Unicode, a reversing routine should handle it
 
 --[[User:Kernigh|Kernigh]] 04:00, 31 January 2011 (UTC)
 
-:Have you considered [http://unicode.org/reports/tr9/ directionality]? --[[User:Rdm|Rdm]] 04:13, 31 January 2011 (UTC)
+:Have you considered [directionality](http://unicode.org/reports/tr9/)? --[[User:Rdm|Rdm]] 04:13, 31 January 2011 (UTC)
 
 == Extra Credit ==
 

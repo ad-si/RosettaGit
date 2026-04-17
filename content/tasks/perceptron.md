@@ -38,15 +38,15 @@ In order for the perceptron to make the right decision, it needs to train with i
 
 
 ### Requirements
-The website [http://natureofcode.com/book/chapter-10-neural-networks/ The Nature of Code] demonstrates a perceptron by making it perform a very simple task : determine if a randomly chosen point (x, y) is above or below a line:
+The website [The Nature of Code](http://natureofcode.com/book/chapter-10-neural-networks/) demonstrates a perceptron by making it perform a very simple task : determine if a randomly chosen point (x, y) is above or below a line:
   y = mx + b
 
 Implement this perceptron and display an image (or some other visualization) of the result.
 
 
 ## See also
-* [http://natureofcode.com/book/chapter-10-neural-networks/ Neural networks (nature of code)]
-* [https://youtu.be/dXuNAkHsos4?t=16m44s Machine Learning - Perceptrons (youtube)]
+* [Neural networks (nature of code)](http://natureofcode.com/book/chapter-10-neural-networks/)
+* [Machine Learning - Perceptrons (youtube)](https://youtu.be/dXuNAkHsos4?t=16m44s)
 
 
 
@@ -2267,7 +2267,7 @@ Output from perceptron after 5 training runs:
 ## zkl
 
 {{trans|Java}}
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 class Perceptron{

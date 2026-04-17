@@ -19,4 +19,4 @@ JRuby has preemptive concurrency like Java; each Ruby Thread is a Java Thread. J
 
 JRuby implements the interpreter and most of the core library in [implemented in language::Java](https://rosettacode.org/wiki/implemented_in_language::Java). The standard library is a mix of Java and Ruby.
 
-* http://jruby.org
+* <http://jruby.org>

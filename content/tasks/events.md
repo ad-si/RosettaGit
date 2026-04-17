@@ -1044,7 +1044,7 @@ It is important to limit the scope of a stream as much as possible to ensure tha
 
 ## Perl
 
-This is an example of using the [http://search.cpan.org/perldoc?AnyEvent AnyEvent] module.
+This is an example of using the [AnyEvent](http://search.cpan.org/perldoc?AnyEvent) module.
 The result is this: it prints "Hello world!" after one second, then after another second prints "Hi!" four times every quarter of a second and then immediately prints "Bye!" and quits:
 
 ```Perl
@@ -1081,7 +1081,7 @@ my $hello = AnyEvent->timer(
 $quit->recv();
 ```
 
-This is the same using AnyEvent [http://search.cpan.org/perldoc?AE simplified API]:
+This is the same using AnyEvent [simplified API](http://search.cpan.org/perldoc?AE):
 
 ```Perl
 use AnyEvent;
@@ -1214,10 +1214,10 @@ IupSetCallback(dlg, "K_ANY", Icallback("key_cb"))
 ## PicoLisp
 
 PicoLisp supports events from timers (via
-'[http://software-lab.de/doc/refT.html#task task]' and
-'[http://software-lab.de/doc/refA.html#alarm alarm]'),
+'[task](http://software-lab.de/doc/refT.html#task)' and
+'[alarm](http://software-lab.de/doc/refA.html#alarm)'),
 file descriptors (also 'task') and various
-'[http://software-lab.de/doc/refS.html#*Sig1 signals]'.
+'[signals](http://software-lab.de/doc/refS.html#*Sig1)'.
 This will print a message after one second, then terminate the program after
 another four seconds:
 

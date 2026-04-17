@@ -213,7 +213,7 @@ First 50 Pierpont primes of the second kind:
 
 
 ===3-Smooth approach===
-The strategy here is to generate successive [https://en.wikipedia.org/wiki/Smooth_number 3-smooth numbers], add (or subtract) one, check if prime and, if so, append to a slice of 'big' integers until the required number is reached.
+The strategy here is to generate successive [3-smooth numbers](https://en.wikipedia.org/wiki/Smooth_number), add (or subtract) one, check if prime and, if so, append to a slice of 'big' integers until the required number is reached.
 
 The Pierpoint primes of the first and second kind are generated at the same time so there is no real need for parallel processing.
 

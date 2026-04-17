@@ -91,7 +91,7 @@ Load a [[wp:JSON|JSON]] string into a data structure.
 Also, create a new data structure and serialize it into JSON.
 
 Use objects and arrays (as appropriate for your language)
-and make sure your JSON is valid (https://jsonformatter.org).
+and make sure your JSON is valid (<https://jsonformatter.org>).
 
 
 
@@ -580,7 +580,7 @@ json=
 ```
 
 
-The file "rosetta-roundtrip.json" will contain a single line. There is no beautify option when constructing a JSON string using the <code>jsn</code> function. The http://jsonlint.com service can be used to view the JSON string, but notice that some of the numbers are to big to be handled by this service and are turned into null values.
+The file "rosetta-roundtrip.json" will contain a single line. There is no beautify option when constructing a JSON string using the <code>jsn</code> function. The <http://jsonlint.com> service can be used to view the JSON string, but notice that some of the numbers are to big to be handled by this service and are turned into null values.
 
 Content of rosetta-roundtrip.json (1402 characters):
 
@@ -659,7 +659,7 @@ After manual reformatting, again shortened where lines run off the screen:
 ## C
 
 
-Reads a snippet of JSON into [https://github.com/lloyd/yajl YAJL's] tree format, then walks the tree to print it back out again.  The tree contains numbers both in an unparsed, string form, and also converted to long long or double when possible.  The example below demonstrates both ways of dealing with numbers.
+Reads a snippet of JSON into [YAJL's](https://github.com/lloyd/yajl) tree format, then walks the tree to print it back out again.  The tree contains numbers both in an unparsed, string form, and also converted to long long or double when possible.  The example below demonstrates both ways of dealing with numbers.
 
 
 ```c
@@ -817,7 +817,7 @@ Parsing numbers to long long or double...
 
 ## C#
 
-This uses the [http://msdn.microsoft.com/en-us/library/system.web.script.serialization.javascriptserializer(v=VS.90).aspx JavaScriptSerializer] class which was shipped with .NET 3.5.
+This uses the [JavaScriptSerializer](http://msdn.microsoft.com/en-us/library/system.web.script.serialization.javascriptserializer(v=VS.90).aspx) class which was shipped with .NET 3.5.
 
 
 ```c#
@@ -1014,7 +1014,7 @@ SAMPLES>Write person.Home.Street
 
 ## Clojure
 
-Library: [https://github.com/clojure/data.json data.json]
+Library: [data.json](https://github.com/clojure/data.json)
 
 ```clojure
 (use 'clojure.data.json)
@@ -1052,7 +1052,7 @@ console.log json_obj
 
 ## Common Lisp
 
-Library: [https://github.com/hankhero/cl-json cl-json]
+Library: [cl-json](https://github.com/hankhero/cl-json)
 
 ```lisp
 
@@ -1138,7 +1138,7 @@ void main() {
 
 ## EchoLisp
 
-The '''json''' library allows to import/export basic JSON types (string ,numbers, arrays) and to translate EchoLisp objects (lists, dates, ..) from/to JSON objects and types. See reference documentation [[http://www.echolalie.org/echolisp/help.html#export-json]].
+The '''json''' library allows to import/export basic JSON types (string ,numbers, arrays) and to translate EchoLisp objects (lists, dates, ..) from/to JSON objects and types. See reference documentation <http://www.echolalie.org/echolisp/help.html#export-json>.
 
 ```lisp
 
@@ -1381,7 +1381,7 @@ json.bar=10,apples
 
 ## Erlang
 
-Use the JSON library for Erlang (mochijson) from [https://github.com/mochi/mochiweb/blob/master/src/mochijson.erl mochiweb]. The JSON code is extracted from [http://en.wikipedia.org/wiki/JSON#JSON_example wikipedia]
+Use the JSON library for Erlang (mochijson) from [mochiweb](https://github.com/mochi/mochiweb/blob/master/src/mochijson.erl). The JSON code is extracted from [wikipedia](http://en.wikipedia.org/wiki/JSON#JSON_example)
 
 ```Erlang
 
@@ -1510,7 +1510,7 @@ Value for 'ocean/water' is: [cold, blue]
 
 ## Fortran
 
-Using [https://github.com/jacobwilliams/json-fortran json-fortran] library. Creating the json example file / reading a JSON string.
+Using [json-fortran](https://github.com/jacobwilliams/json-fortran) library. Creating the json example file / reading a JSON string.
 
 ```txt
 
@@ -1859,7 +1859,7 @@ As the signature of the method suggests, you pass in a JSON string and receive s
 
 The following JSON example illustrates this:
 
-Sample Person JSON (from http://gosu-lang.github.io/data/person.json):
+Sample Person JSON (from <http://gosu-lang.github.io/data/person.json>):
 
 ```javascript
 {
@@ -1987,7 +1987,7 @@ var clone = eval( person.toGosu() )
 
 Solution requires Groovy 1.8 or later.
 
-Note that JsonSlurper accepts an extra comma such as [1,2,3,].  This is an extension to the [[http://www.json.org/fatfree.html JSON grammar]].
+Note that JsonSlurper accepts an extra comma such as [1,2,3,].  This is an extension to the [JSON grammar](http://www.json.org/fatfree.html).
 
 
 ```groovy
@@ -2068,7 +2068,7 @@ LOCAL arr := { 101, { 18, "Test1" }, 18, .F. }
 ## Haskell
 
 
-Uses the Aeson library from hackage (http://hackage.haskell.org/package/aeson).
+Uses the Aeson library from hackage (<http://hackage.haskell.org/package/aeson>).
 
 
 ```Haskell
@@ -2188,7 +2188,7 @@ Usage: Put code in gen/json.hoon
 ## J
 
 
-Here is a minimal implementation based on [http://www.jsoftware.com/pipermail/chat/2007-April/000462.html an old email message].
+Here is a minimal implementation based on [an old email message](http://www.jsoftware.com/pipermail/chat/2007-April/000462.html).
 
 
 ```j
@@ -2270,7 +2270,7 @@ Also, a different serializer will probably be necessary, if you are delivering j
 
 ## Java
 
-This uses [http://code.google.com/p/google-gson/ Gson], a library to convert JSON to Java objects and vice-versa.
+This uses [Gson](http://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
 
 ```Java
 import com.google.gson.Gson;
@@ -2332,7 +2332,7 @@ var json_string = JSON.stringify(sample);
 ```
 
 
-JSON is called ''JavaScript'' Object Notation, but JSON differs form JavaScript object literal. cf. [https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON MDN/JSON]
+JSON is called ''JavaScript'' Object Notation, but JSON differs form JavaScript object literal. cf. [MDN/JSON](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/JSON)
 
 
 ## jq
@@ -2683,7 +2683,7 @@ put data_decoded
 ## Lua
 
 
-Using the [http://www.eharning.us/wiki/luajson/ luajson] library:
+Using the [luajson](http://www.eharning.us/wiki/luajson/) library:
 
 
 ```lua
@@ -2927,7 +2927,7 @@ ans =
 {"foo":1,"bar":[10,"apples"]}
 ```
 
-The toolbox [http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/Download JSONlab] is doing a nice job to read (loadjson.m) and write (savejson.m) data in JSON format.
+The toolbox [JSONlab](http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/Download) is doing a nice job to read (loadjson.m) and write (savejson.m) data in JSON format.
 
 
 ## NetRexx
@@ -2935,7 +2935,7 @@ The toolbox [http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/Download 
 
 ### json.org Library
 
-This uses a library provided by [http://www.json.org/java/index.html json.org] to serialize/deserialize JSON objects.
+This uses a library provided by [json.org](http://www.json.org/java/index.html) to serialize/deserialize JSON objects.
 
 ```NetRexx
 /* NetRexx */
@@ -3127,7 +3127,7 @@ DwarfBean@39890510 [key=F2012_2, title=Snow White & the Huntsman, year=2012, med
 
 ### Google gson Library
 
-This uses [http://code.google.com/p/google-gson/ Gson], a library to convert JSON to Java objects and vice-versa.
+This uses [Gson](http://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
 
 ```NetRexx
 /* NetRexx */
@@ -3519,7 +3519,7 @@ OK
 
 ## Oz
 
-Using the [http://code.google.com/p/oz-code/downloads/list google.com/oz-code] JSON library:
+Using the [google.com/oz-code](http://code.google.com/p/oz-code/downloads/list) JSON library:
 
 ```oz
 declare
@@ -3555,7 +3555,7 @@ my $json_string = encode_json($sample);
 ## Perl 6
 
 
-Using [http://github.com/moritz/json/ JSON::Tiny]
+Using [JSON::Tiny](http://github.com/moritz/json/)
 
 
 ```perl6
@@ -3999,7 +3999,7 @@ cat(toJSON(data))
 
 ## REBOL
 
-Using [http://www.json.org/json.r json.org/json.r]
+Using [json.org/json.r](http://www.json.org/json.r)
 
 
 ```rebol
@@ -4151,7 +4151,7 @@ res1: String = {"foo" : "bar"}
 
 ## Scheme
 
-Using the [http://api.call-cc.org/doc/json json] egg:
+Using the [json](http://api.call-cc.org/doc/json) egg:
 ```scheme
 
 (use json)
@@ -4194,7 +4194,7 @@ Hash.new(
 
 ## Smalltalk
 
-Use the NeoJSON library: [http://smalltalkhub.com/#!/~SvenVanCaekenberghe/Neo NeoJSON]
+Use the NeoJSON library: [NeoJSON](http://smalltalkhub.com/#!/~SvenVanCaekenberghe/Neo)
 
 ```smalltalk
 
@@ -4360,7 +4360,7 @@ apples
 
 ## Tcl
 
-For parsing JSON, {{tcllib|json}} provides the capability (see [http://wiki.tcl.tk/13419 the Tcler's Wiki page on it] for more discussion):
+For parsing JSON, {{tcllib|json}} provides the capability (see [the Tcler's Wiki page on it](http://wiki.tcl.tk/13419) for more discussion):
 
 ```tcl
 package require json
@@ -4448,7 +4448,7 @@ Note that this is capable of correctly handling the round-trip of values parsed 
 ### Parsing
 
 
-The following implements the parsing half of the task. It is a parser closely based on the JSON grammar [[http://www.json.org/fatfree.html]].
+The following implements the parsing half of the task. It is a parser closely based on the JSON grammar <http://www.json.org/fatfree.html>.
 
 It is implemented with recursive horizontal pattern matching functions, and so basically the definition resembles a grammar. Horizontal functions are a new feature in TXR, and basically allow the language to easily specify LL grammars with indefinite lookahead, not restricted to regular languages (thanks to TXR's backtracking).  The numerous occurences of @\ in the code are line continuations. Horizontal functions must be written on one logical line. @\ eats the whitespace at the start of the next physical line, to allow indentation.
 

@@ -2784,7 +2784,7 @@ There are now three player strategies:
 # A random player RandPlay that rolls randomly.
 # The RollTo20 player that rolls if that rounds score is less than 20.
 # The Desparat player that plays like RollTo20 until any player gets within 20 of winning whereupon it desperately keeps rolling.
-Details of the RollTo20 and Desparat strategy came from a paper referenced from [http://boardgames.about.com/gi/o.htm?zi=1/XJ&zTi=1&sdn=boardgames&cdn=hobbies&tm=55&f=00&su=p284.13.342.ip_p504.6.342.ip_&tt=2&bt=1&bts=1&zu=http%3A//cs.gettysburg.edu/projects/pig/piggame.html here].
+Details of the RollTo20 and Desparat strategy came from a paper referenced from [here](http://boardgames.about.com/gi/o.htm?zi=1/XJ&zTi=1&sdn=boardgames&cdn=hobbies&tm=55&f=00&su=p284.13.342.ip_p504.6.342.ip_&tt=2&bt=1&bts=1&zu=http%3A//cs.gettysburg.edu/projects/pig/piggame.html).
 
 Player instances are passed full (single) game statistics and so can be more complex in their behaviour.
 

@@ -22,4 +22,4 @@ tags = []
 * Bare board Ada runtime
 
 
-The product is fully integrated in the Green Hills' tool chain. See [http://www.ghs.com/products/ada_optimizing_compilers.html Green Hills Ada]
+The product is fully integrated in the Green Hills' tool chain. See [Green Hills Ada](http://www.ghs.com/products/ada_optimizing_compilers.html)

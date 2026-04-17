@@ -208,7 +208,7 @@ Typename *var = alloca(sizeof(Typename));
 An object oriented approach will define a function for creating a new object of a class.
 In these systems, the size of the memory that needs to be allocated for an instance of the
 class will often be included in the 'class' record.
-See http://rosettacode.org/wiki/Polymorphic%20copy#C
+See <http://rosettacode.org/wiki/Polymorphic%20copy#C>
 
 Without using the standard malloc, things get a bit more complicated. For example, here is some code that implements something like it using the mmap system call (for Linux):
 
@@ -957,10 +957,10 @@ end procedure
 PicoLisp allocates any kind of data from a single pool, because everything
 is built out of a "cell" primitive. Most of this allocation happens
 automatically, but can also be done explicitly with
-'[http://software-lab.de/doc/refN.html#new new]' or
-'[http://software-lab.de/doc/refB.html#box box]'. For memory-allocated
+'[new](http://software-lab.de/doc/refN.html#new)' or
+'[box](http://software-lab.de/doc/refB.html#box)'. For memory-allocated
 objects, there is no explicit way of freeing them. Database objects can be
-freed with '[http://software-lab.de/doc/refZ.html#zap zap]'.
+freed with '[zap](http://software-lab.de/doc/refZ.html#zap)'.
 
 
 ## PL/I
@@ -1092,7 +1092,7 @@ Today's languages as Scala relies on memory management outside the scope of the 
 
 ## Tcl
 
-Tcl does not really expose the heap itself, and while it is possible to use [http://www.swig.org/ SWIG] or [[Critcl]] to map the implementation-level allocator into the language, this is highly unusual.
+Tcl does not really expose the heap itself, and while it is possible to use [SWIG](http://www.swig.org/) or [[Critcl]] to map the implementation-level allocator into the language, this is highly unusual.
 
 However, it is entirely possible to use a pooled memory manager for Tcl's objects.
 

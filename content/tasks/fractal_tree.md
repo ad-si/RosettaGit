@@ -89,7 +89,7 @@ Generate and draw a fractal tree.
 
 ## AutoHotkey
 
-[http://i.imgur.com/H7iJOde.png Image] - Link, since uploads seem to be disabled currently.
+[Image](http://i.imgur.com/H7iJOde.png) - Link, since uploads seem to be disabled currently.
 ```AutoHotkey
 #SingleInstance, Force
 #NoEnv
@@ -911,7 +911,7 @@ int main() {
 ## EasyLang
 
 
-[https://easylang.online/apps/fractal-tree.html Run it]
+[Run it](https://easylang.online/apps/fractal-tree.html)
 
 <lang>floatvars
 func tree x y angle depth . .
@@ -1133,7 +1133,7 @@ main = do
 ```
 
 
-Output is [http://funwithsoftware.org/images/2016-FractalTreeFrege.png here] due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
+Output is [here](http://funwithsoftware.org/images/2016-FractalTreeFrege.png) due to [[User talk:Short Circuit#Is file uploading blocked forever?|Is file uploading blocked forever?]]
 
 
 ## Go
@@ -1294,7 +1294,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn WOpen provides graphics I/O]
+[WOpen provides graphics I/O](http://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn)
 
 ## J
 
@@ -1464,7 +1464,7 @@ main(1000; 1000; 400; 6/10)
 
 $ jq -r -n -r -f Fractal_tree_svg.jq > Fractal_tree.svg
 
-[https://drive.google.com/file/d/0BwMI1gZaY2-MWEI4d1kxNHZ4cGs/view?usp=sharing Fractal_tree.svg]
+[Fractal_tree.svg](https://drive.google.com/file/d/0BwMI1gZaY2-MWEI4d1kxNHZ4cGs/view?usp=sharing)
 
 
 ## Julia
@@ -1925,7 +1925,7 @@ FractalTree(15,1500);   \\FracTree3.png
 
 ## Perl
 
-using the [http://search.cpan.org/~lds/GD-2.45/GD/Simple.pm GD::Simple] module.
+using the [GD::Simple](http://search.cpan.org/~lds/GD-2.45/GD/Simple.pm) module.
 
 ```perl
 use GD::Simple;
@@ -2846,7 +2846,7 @@ const proc: main is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/graphic.htm#fractree]
+Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#fractree>
 
 
 ## Sidef
@@ -3006,7 +3006,7 @@ In the same style as [[Dragon curve#SVG]]. SVG has no parameterized definitions,
 
 ## Swift
 
-[http://i.imgur.com/F8Fyn1i.png Image] - Link, since uploads seem to be disabled currently.
+[Image](http://i.imgur.com/F8Fyn1i.png) - Link, since uploads seem to be disabled currently.
 In a playground:
 
 ```swift
@@ -3229,7 +3229,7 @@ SetVid(3);                      \restore normal text mode
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:FractalTree.zkl.jpg|250px|thumb|right]]
 
 ```zkl

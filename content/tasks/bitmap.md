@@ -206,7 +206,7 @@ Note: '''short''' and '''shorten''' need to be tuned (added or removed)
 to match the underlying graphic hardware color depth.
 
 Works with ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive..
-Works with ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6 algol68g-2.6]..
+Works with ALGOL 68G|Any - tested with release [algol68g-2.6](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6)..
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release
 [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) -
 due to extensive use of '''format'''[ted] ''transput''.}}
@@ -1604,8 +1604,8 @@ See [[Basic bitmap storage/Fortran]]
 ### Standard library
 
 Go's standard library include image, color, and drawing packages and the source for them is easy to read.
-There is also a [http://blog.golang.org/go-image-package Go Blog article on the image package]
-The [https://golang.org/pkg/image/#NRGBA <code>image.NRGBA</code>] type supports everything this task requires (the 'A' is for alpha channel, each are 8 bits, if 16 bits each of RGBA is desired there is also the <code>image.NRGBA64</code> type). The 'N' of NRGBA stands for Non-alpha-premultiplied, color values can trivially be converted to/from alpha-premultiplied RGBA values via a <code>color.Model</code>.
+There is also a [Go Blog article on the image package](http://blog.golang.org/go-image-package)
+The [<code>image.NRGBA</code>](https://golang.org/pkg/image/#NRGBA) type supports everything this task requires (the 'A' is for alpha channel, each are 8 bits, if 16 bits each of RGBA is desired there is also the <code>image.NRGBA64</code> type). The 'N' of NRGBA stands for Non-alpha-premultiplied, color values can trivially be converted to/from alpha-premultiplied RGBA values via a <code>color.Model</code>.
 
 Here's how to use the standard packages to do what this task requires:
 
@@ -2137,8 +2137,8 @@ ctx.fillRect(width / 2, height / 2, 1, 1);
 Works with Julia 0.6.
 
 '''Using packages'''
-([https://github.com/JuliaImages/Images.jl Images.jl],
-[https://github.com/JuliaGraphics/Colors.jl Colors.jl]):
+([Images.jl](https://github.com/JuliaImages/Images.jl),
+[Colors.jl](https://github.com/JuliaGraphics/Colors.jl)):
 
 ```julia
 using Images, Colors
@@ -4360,9 +4360,9 @@ The types and functions requested are predefined in the libraries
 - An imaged can be filled with a color with
   [clear](http://seed7.sourceforge.net/libraries/draw.htm#clear%28inout_PRIMITIVE_WINDOW,in_color%29).
 - A given pixel can be set with
-  [point](http://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color).
+  [point](<http://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color)>.
 - The color of a pixel can be retrieved with
-  [getPixelColor](http://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer).
+  [getPixelColor](<http://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer)>.
 
 
 ```seed7

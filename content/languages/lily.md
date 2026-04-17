@@ -11,6 +11,6 @@ tags = []
 +++
 
 
-Lily is a statically-typed, interpreted language developed by Jesse Ray Adkins. The source code of the interpreter can be found [https://github.com/jesserayadkins/lily here].
+Lily is a statically-typed, interpreted language developed by Jesse Ray Adkins. The source code of the interpreter can be found [here](https://github.com/jesserayadkins/lily).
 
 The language provides strong type-inference, and has functional influences from Scala and Haskell. However, it also has a number of features from Python (such as the exception hierarchy) and Ruby (the @ syntax for accessing class members).

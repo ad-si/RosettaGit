@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-'''VxWorks''' is a [[real-time computing|real-time]] operating system by [http://www.windriver.com Wind River].
+'''VxWorks''' is a [[real-time computing|real-time]] operating system by [Wind River](http://www.windriver.com).
 
 [[Category:Operating Systems]]

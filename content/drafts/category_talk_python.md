@@ -28,10 +28,10 @@ Some examples that come to mind:
 The gist of all my suggestions is that we want the examples on RosettaCode to be exemplary --- to consistently show the best practices for each language thta we cover.  These changes to Python, mostly preparatory to the release of Python3 (a.k.a. Python3000 or Python3k) represent significant advances in the standard libraries ... which should simplify and improve the Python entries for a number of the tasks covered on this site. [[User:JimD|JimD]] 22:50, 8 September 2008 (UTC)
 
 
-Thanks to the [http://code.google.com/p/google-highly-open-participation-psf/ Google Highly Open Participation contest] for high-school students, Python has passed Perl as the language with the most solutions.  Well done! --[[User:IanOsgood|IanOsgood]] 18:33, 28 November 2007 (MST)
-:Heh.  I was browing programming.reddit.com, and saw a request for small Python projects.  I sent the guy an email, but didn't find out until today what it was about.  You can see part of the email [http://code.google.com/p/google-highly-open-participation-psf/wiki/ProjectSuggestionNotes here]. --[[User:Short Circuit|Short Circuit]] 20:35, 4 December 2007 (MST)
+Thanks to the [Google Highly Open Participation contest](http://code.google.com/p/google-highly-open-participation-psf/) for high-school students, Python has passed Perl as the language with the most solutions.  Well done! --[[User:IanOsgood|IanOsgood]] 18:33, 28 November 2007 (MST)
+:Heh.  I was browing programming.reddit.com, and saw a request for small Python projects.  I sent the guy an email, but didn't find out until today what it was about.  You can see part of the email [here](http://code.google.com/p/google-highly-open-participation-psf/wiki/ProjectSuggestionNotes). --[[User:Short Circuit|Short Circuit]] 20:35, 4 December 2007 (MST)
 
-Take a look at some of the interesting python code here, it could probably be integrated: [http://pleac.sourceforge.net/pleac_python/fileaccess.html Programming Language Examples Alike Cookbook]
+Take a look at some of the interesting python code here, it could probably be integrated: [Programming Language Examples Alike Cookbook](http://pleac.sourceforge.net/pleac_python/fileaccess.html)
 [[User:StaticShock|StaticShock]]
 
 ==Bytecode?==

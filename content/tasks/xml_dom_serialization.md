@@ -112,7 +112,7 @@ Output:
 
 ## Ada
 
-Uses [http://libre.adacore.com/libre/tools/xmlada/ XML/Ada] from AdaCore.
+Uses [XML/Ada](http://libre.adacore.com/libre/tools/xmlada/) from AdaCore.
 
 
 ```Ada
@@ -782,7 +782,7 @@ println writer
 ## Haskell
 
 
-Using the XML.Light module from [http://hackage.haskell.org/package/xml-1.3.4 HackageDB]
+Using the XML.Light module from [HackageDB](http://hackage.haskell.org/package/xml-1.3.4)
 
 
 ```Haskell
@@ -1847,7 +1847,7 @@ $d asXML
 </root>
 ```
 
-Using [http://tclxml.sf.net TclDOM]
+Using [TclDOM](http://tclxml.sf.net)
 
 ```tcl
 package require dom

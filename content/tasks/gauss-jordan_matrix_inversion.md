@@ -1413,7 +1413,7 @@ The product of input and inverse matrix
 
 ## Sidef
 
-Uses the '''rref(M)''' function from [https://rosettacode.org/wiki/Reduced_row_echelon_form#Sidef Reduced row echelon form].
+Uses the '''rref(M)''' function from [Reduced row echelon form](https://rosettacode.org/wiki/Reduced_row_echelon_form#Sidef).
 ```ruby
 func gauss_jordan_invert (M) {
 

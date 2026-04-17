@@ -676,7 +676,7 @@ channel closed
 
 ## Haskell
 
-In Haskell, there is a semantic concept called [http://www.haskell.org/haskellwiki/Bottom "bottom"], which is a computation that never terminates or runs into an error. So <code>undefined</code> is not a proper value at all; it is a bottom that causes an exception when evaluated. For example,
+In Haskell, there is a semantic concept called ["bottom"](http://www.haskell.org/haskellwiki/Bottom), which is a computation that never terminates or runs into an error. So <code>undefined</code> is not a proper value at all; it is a bottom that causes an exception when evaluated. For example,
 
 
 ```haskell
@@ -798,7 +798,7 @@ J does not have a concept of an "undefined value" as such, but J does allow trea
 ```
 
 
-From this we can infer that <code>foo</code> has a definition (and its definition is a noun, since 0 is the syntactic [http://www.jsoftware.com/help/dictionary/dx004.htm name class] for nouns), and we can also infer that <code>bar</code> does not have a definition.
+From this we can infer that <code>foo</code> has a definition (and its definition is a noun, since 0 is the syntactic [name class](http://www.jsoftware.com/help/dictionary/dx004.htm) for nouns), and we can also infer that <code>bar</code> does not have a definition.
 
 This task also asked that we ''identify and exercise .. mechanisms for ... manipulating a variable's value's status as being undefined''. So: a name can be made to be undefined using the verb <code>erase</code>.  The undefined status can be removed by assigning a value to the name.
 
@@ -958,7 +958,7 @@ julia> x = arr .+ 5
 
 ## Kotlin
 
-Kotlin distinguishes between nullable and non-nullable types but, as this has already been covered in the Null Object task (http://rosettacode.org/wiki/Null_object#Kotlin), there is no point in repeating it here. It is any case debatable whether 'null' is an undefined value or not since, in Kotlin, it is technically the only value of the nullable Nothing? type.
+Kotlin distinguishes between nullable and non-nullable types but, as this has already been covered in the Null Object task (<http://rosettacode.org/wiki/Null_object#Kotlin>), there is no point in repeating it here. It is any case debatable whether 'null' is an undefined value or not since, in Kotlin, it is technically the only value of the nullable Nothing? type.
 
 However, the non-nullable Nothing type which has no instances and is a sub-type of all other types can be said to represent an undefined value as expressions of this type (such as a 'throw' expression) clearly have no defined value. 'Nothing' can be used in Kotlin to represent the return type of a function which never returns, because it always throws an exception or error. This can be useful when developing an application where the implementation of a function is being left until later.
 
@@ -1373,7 +1373,7 @@ my Str $z; say $z.WHAT; # Str()
 ```
 
 
-The user-interface for definedness are [http://design.perl6.org/S12.html#Abstract_vs_Concrete_types type smilies] and the <tt>with</tt>-statement.
+The user-interface for definedness are [type smilies](http://design.perl6.org/S12.html#Abstract_vs_Concrete_types) and the <tt>with</tt>-statement.
 
 
 ```perl6
@@ -1387,7 +1387,7 @@ with 0 { say '0 may not divide but it is defined' }
 ```
 
 
-There are further some [http://design.perl6.org/S03.html operators] for your convenience.
+There are further some [operators](http://design.perl6.org/S03.html) for your convenience.
 
 
 ```perl6
@@ -1905,7 +1905,7 @@ Done
 
 ## Scala
 
-Learned from [http://catless.ncl.ac.uk/Risks/25.51.html#subj9.1 Tony Hoare's "Null References: The Billion Dollar Mistake"], Scala discourages the use of ''null'' values. For Java compatibility the value ''null'' could be used, but since it implies also a mutable ''var''  this is a bad practice.
+Learned from [Tony Hoare's "Null References: The Billion Dollar Mistake"](http://catless.ncl.ac.uk/Risks/25.51.html#subj9.1), Scala discourages the use of ''null'' values. For Java compatibility the value ''null'' could be used, but since it implies also a mutable ''var''  this is a bad practice.
 
 Instead type wrapper ''Option'' is used which could result in ''Some(value)'' or ''None''. A Option[Boolean] e.g. reflects a tri-state (nullable) database value.
 
@@ -1914,7 +1914,7 @@ Notices that ''Option(value).isEmpty'' methods (on e.g. String) usually test for
 
 ## Seed7
 
-Seed7 variables are initialized, when they are defined. This way a variable can never have an undefined value. There is also no general NULL value. When there is a need for a NULL value, an interface type can define its own NULL value. E.g.: The interface type [http://seed7.sourceforge.net/libraries/file.htm file] defines [http://seed7.sourceforge.net/libraries/null_file.htm#STD_NULL STD_NULL], which is used to initialize file variables and as result of [http://seed7.sourceforge.net/libraries/external_file.htm#open%28in_string,in_string%29 open], when a file cannot be opened.
+Seed7 variables are initialized, when they are defined. This way a variable can never have an undefined value. There is also no general NULL value. When there is a need for a NULL value, an interface type can define its own NULL value. E.g.: The interface type [file](http://seed7.sourceforge.net/libraries/file.htm) defines [STD_NULL](http://seed7.sourceforge.net/libraries/null_file.htm#STD_NULL), which is used to initialize file variables and as result of [open](http://seed7.sourceforge.net/libraries/external_file.htm#open%28in_string,in_string%29), when a file cannot be opened.
 
 
 ## Sidef

@@ -698,7 +698,7 @@ end unwords
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276718.html#276718 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276718.html#276718)
 
 ```AutoHotkey
 n := 5, dx := x := y := v := 1, dy := 0
@@ -1719,7 +1719,7 @@ end function
 
 ## Factor
 
-This is an implementation of Joey Tuttle's method for computing a spiral directly as a list and then reshaping it into a matrix, as described in the [http://rosettacode.org/wiki/Spiral_matrix#J J entry]. To summarize, we construct a list with <code>n*n</code> elements by following some simple rules, then take its cumulative sum, and finally its inverse permutation (or grade in J parlance). This gives us a list which can be reshaped to the final matrix.
+This is an implementation of Joey Tuttle's method for computing a spiral directly as a list and then reshaping it into a matrix, as described in the [J entry](http://rosettacode.org/wiki/Spiral_matrix#J). To summarize, we construct a list with <code>n*n</code> elements by following some simple rules, then take its cumulative sum, and finally its inverse permutation (or grade in J parlance). This gives us a list which can be reshaped to the final matrix.
 
 ```factor
 USING: arrays grouping io kernel math math.combinatorics
@@ -2390,7 +2390,7 @@ end
 ## J
 
 This function is the result of
-some [http://www.jsoftware.com/papers/play132.htm beautiful insights]:
+some [beautiful insights](http://www.jsoftware.com/papers/play132.htm):
 
 ```j
 spiral =: ,~ $ [: /: }.@(2 # >:@i.@-) +/\@# <:@+: $ (, -)@(1&,)
@@ -3043,7 +3043,7 @@ fun main(args: Array<String>) {
 
 ## Liberty BASIC
 
-Extended to include automatic scaling of the display scale and font. See [http://www.diga.me.uk/spiralM5.gif spiralM5]
+Extended to include automatic scaling of the display scale and font. See [spiralM5](http://www.diga.me.uk/spiralM5.gif)
 
 ```lb
 nomainwin
@@ -4914,7 +4914,7 @@ new qapp
 
 Output:
 
-[http://kepkezelo.com/images/qyooy2wqd8s502ul977v.jpg Spiral matrix]
+[Spiral matrix](http://kepkezelo.com/images/qyooy2wqd8s502ul977v.jpg)
 
 
 ## Ruby

@@ -1287,7 +1287,7 @@ Solution:
 
 ## C
 
-See e.g. [http://www.techfinesse.com/game/sudoku_solver.php this GPLed solver] written in C.
+See e.g. [this GPLed solver](http://www.techfinesse.com/game/sudoku_solver.php) written in C.
 
 The following code is really only good for size 3 puzzles. A longer, even less readable version [[Sudoku/C|here]] could handle size 4s.
 
@@ -1473,7 +1473,7 @@ class SudokuSolver
 ```
 
 ===“Amb” Solution===
-This uses the second version of the [https://rosettacode.org/wiki/Amb#C.23 Amb C# class] in the Amb challenge
+This uses the second version of the [Amb C# class](https://rosettacode.org/wiki/Amb#C.23) in the Amb challenge
 <!-- By Martin Freedman, 9/02/2018 -->
 
 ```c#
@@ -2231,7 +2231,7 @@ Example:
 
 ## Curry
 
-Copied from [http://www.informatik.uni-kiel.de/~curry/examples/ Curry: Example Programs].
+Copied from [Curry: Example Programs](http://www.informatik.uni-kiel.de/~curry/examples/).
 
 ```curry
 -----------------------------------------------------------------------------
@@ -2514,7 +2514,7 @@ void main() {
 
 ### Short Version
 
-Adapted from: http://code.activestate.com/recipes/576725-brute-force-sudoku-solver/
+Adapted from: <http://code.activestate.com/recipes/576725-brute-force-sudoku-solver/>
 
 ```d
 import std.stdio, std.algorithm, std.range;
@@ -4845,7 +4845,7 @@ solution: 6.956 ms
 
 ## Go
 
-Solution using [http://en.wikipedia.org/wiki/Dancing_Links Knuth's DLX.]
+Solution using [Knuth's DLX.](http://en.wikipedia.org/wiki/Dancing_Links)
 This code follows his paper fairly closely.
 Input to function solve is an 81 character string.
 This seems to be a conventional computer representation for Sudoku puzzles.
@@ -5167,7 +5167,7 @@ solve = { grid ->
 
 '''Test/Benchmark Cases'''
 
-Mentions of ''"exceptionally difficult" example in Wikipedia'' refer to this (former) page: [[https://en.wikipedia.org/w/index.php?title=Sudoku_solving_algorithms&oldid=410240496#Exceptionally_difficult_Sudokus_.28hardest_Sudokus.29 Exceptionally difficult Sudokus]]
+Mentions of ''"exceptionally difficult" example in Wikipedia'' refer to this (former) page: [Exceptionally difficult Sudokus](https://en.wikipedia.org/w/index.php?title=Sudoku_solving_algorithms&oldid=410240496#Exceptionally_difficult_Sudokus_.28hardest_Sudokus.29)
 
 ```groovy
 def sudokus = [
@@ -5269,7 +5269,7 @@ ELAPSED: 28.978 seconds
 
 ## Haskell
 
-Visit the Haskell wiki [http://haskell.org/haskellwiki/Sudoku Sudoku]
+Visit the Haskell wiki [Sudoku](http://haskell.org/haskellwiki/Sudoku)
 
 
 ## J
@@ -6687,7 +6687,7 @@ function solution = sudokuSolver(sudokuGrid)
 end %end sudokuSolver
 ```
 
-[http://www.menneske.no/sudoku/eng/showpuzzle.html?number=6903541 Test Input]:
+[Test Input](http://www.menneske.no/sudoku/eng/showpuzzle.html?number=6903541):
 All empty cells must have a value of NaN.
 
 ```MATLAB
@@ -6702,7 +6702,7 @@ sudoku = [NaN   NaN   NaN   NaN     8     3     9   NaN   NaN
    NaN   NaN   NaN     2     5   NaN   NaN   NaN     6]
 ```
 
-[http://www.menneske.no/sudoku/eng/solution.html?number=6903541 Output]:
+[Output](http://www.menneske.no/sudoku/eng/solution.html?number=6903541):
 
 ```MATLAB
 solution =
@@ -6722,7 +6722,7 @@ solution =
 
 ## OCaml
 
-uses the library [http://ocamlgraph.lri.fr/index.en.html ocamlgraph]
+uses the library [ocamlgraph](http://ocamlgraph.lri.fr/index.en.html)
 
 ```ocaml
 (* Ocamlgraph demo program: solving the Sudoku puzzle using graph coloring
@@ -9554,7 +9554,7 @@ show(X) :- write(X), nl.
 [7,8,2,6,9,3,5,4,1]
 ```
 
-[http://ideone.com/OCstmf Runs in: time: 0.02 memory: 68352 (adapted for gprolog 1.3.1)]
+[Runs in: time: 0.02 memory: 68352 (adapted for gprolog 1.3.1)](http://ideone.com/OCstmf)
 
 
 ## PureBasic
@@ -9709,7 +9709,7 @@ Solved.
 
 ## Python
 
-See [http://www2.warwick.ac.uk/fac/sci/moac/currentstudents/peter_cock/python/sudoku/ Solving Sudoku puzzles with Python] for GPL'd solvers of increasing complexity of algorithm.
+See [Solving Sudoku puzzles with Python](http://www2.warwick.ac.uk/fac/sci/moac/currentstudents/peter_cock/python/sudoku/) for GPL'd solvers of increasing complexity of algorithm.
 
 A simple backtrack algorithm -- Quick but may take longer if the grid had been more than 9 x 9
 
@@ -9805,7 +9805,7 @@ raw_input()
 
 ## Racket
 
-A [http://schemecookbook.org/view/Cookbook/SudokuSolver Sudoku Solver in Racket].
+A [Sudoku Solver in Racket](http://schemecookbook.org/view/Cookbook/SudokuSolver).
 
 
 ## Rascal
@@ -9923,7 +9923,7 @@ The   '''SUDOKU'''   REXX programs (and output) are included here   ──►   
 
 This is a back-tracking solver written in RPN for the HP-15C calculator. It is highly optimized for size, rather than speed, as the target platform only has 448 bytes of memory for code and data combined.
 
-Latest version and usage notes kept at: [[http://neural-noise.blogspot.com/2013/01/a-sudoku-solver-for-hp-15c.html Sudoku Solver for the HP 15-C]]
+Latest version and usage notes kept at: [Sudoku Solver for the HP 15-C](http://neural-noise.blogspot.com/2013/01/a-sudoku-solver-for-hp-15c.html)
 
 
 ```txt
@@ -11296,7 +11296,7 @@ Varying tables:
 * w(n)=1 if cell n is not yet known, otherwise 0.
 * In the initialization step of the sudoku() function, w has another meaning: it stores the column index of the last entry in row n of the array s while it is built. When it's done, every element of w is thus twenty.
 
-The example grid given below is taken from [https://en.wikipedia.org/wiki/Sudoku_solving_algorithms Wikipedia]. It does not require any recursive call (it's entirely filled in the first step of ''solve''), as can be seen with additional ''printf'' in the code to follow the algorithm.
+The example grid given below is taken from [Wikipedia](https://en.wikipedia.org/wiki/Sudoku_solving_algorithms). It does not require any recursive call (it's entirely filled in the first step of ''solve''), as can be seen with additional ''printf'' in the code to follow the algorithm.
 
 
 ```stata
@@ -11425,7 +11425,7 @@ end
 ```
 
 
-Two more examples, from [http://www.7sudoku.com/very-difficult here] and [http://www.extremesudoku.info/sudoku.html there].
+Two more examples, from [here](http://www.7sudoku.com/very-difficult) and [there](http://www.extremesudoku.info/sudoku.html).
 
 
 ```stata
@@ -11920,7 +11920,7 @@ Another solution:
 
 ## Tcl
 
-Adapted from [http://wiki.tcl.tk/19934 a page on the Tcler's Wiki] to use a standard object system.
+Adapted from [a page on the Tcler's Wiki](http://wiki.tcl.tk/19934) to use a standard object system.
 
 Note that you can implement more rules if you want. Just make another subclass of <code>Rule</code> and the solver will pick it up and use it automatically.
 ```tcl

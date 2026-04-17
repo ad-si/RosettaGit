@@ -280,8 +280,8 @@ The list of methods specializing on the fixnum class:
 ## Go
 
 Shows the name,
-[https://golang.org/ref/spec#Method_expressions method expression] and
-[https://golang.org/ref/spec#Method_values method value]
+[method expression](https://golang.org/ref/spec#Method_expressions) and
+[method value](https://golang.org/ref/spec#Method_values)
 of each exported method.
 
 ```go
@@ -806,7 +806,7 @@ DOES
 ## Perl 6
 
 
-You can get a list of an object's methods using <tt>.^methods</tt>, which is part of the [https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW Meta Object Protocol].
+You can get a list of an object's methods using <tt>.^methods</tt>, which is part of the [Meta Object Protocol](https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW).
 
 Each is represented as a <tt>Method</tt> object that contains a bunch of info:
 
@@ -929,7 +929,7 @@ Method [ <user> public method bar ] {
 
 ## Python
 
-In Python, methods are properties that are functions, so methods are retrieved by [[Reflection/List properties|getting properties]] and filtering, using (e.g.) <code>[https://docs.python.org/3.5/library/functions.html#dir dir()]</code> and a list comprehension. Python's <code>[https://docs.python.org/3.5/library/inspect.html#module-inspect inspect]</code> module offers a simple way to get a list of an object's methods, though it won't include wrapped, C-native methods (type 'method-wrapper', type 'wrapper_descriptor', or class 'wrapper_descriptor', depending on version). Dynamic methods can be listed by overriding <code>[https://docs.python.org/3/reference/datamodel.html#object.__dir__ __dir__]</code> in the class.
+In Python, methods are properties that are functions, so methods are retrieved by [[Reflection/List properties|getting properties]] and filtering, using (e.g.) <code>[dir()](https://docs.python.org/3.5/library/functions.html#dir)</code> and a list comprehension. Python's <code>[inspect](https://docs.python.org/3.5/library/inspect.html#module-inspect)</code> module offers a simple way to get a list of an object's methods, though it won't include wrapped, C-native methods (type 'method-wrapper', type 'wrapper_descriptor', or class 'wrapper_descriptor', depending on version). Dynamic methods can be listed by overriding <code>[__dir__](https://docs.python.org/3/reference/datamodel.html#object.__dir__)</code> in the class.
 
 
 ```python
@@ -1071,11 +1071,11 @@ hello from f4
 ## Ruby
 
 Ruby has various properties that will return lists of methods:
-* [http://ruby-doc.org/core/Object.html#method-i-methods Object#methods]
-* [http://ruby-doc.org/core/Object.html#method-i-public_methods Object#public_methods]
-* [http://ruby-doc.org/core/Object.html#method-i-private_methods Object#private_methods]
-* [http://ruby-doc.org/core/Object.html#method-i-protected_methods Object#protected_methods]
-* [http://ruby-doc.org/core/Object.html#method-i-singleton_methods Object#singleton_methods]
+* [Object#methods](http://ruby-doc.org/core/Object.html#method-i-methods)
+* [Object#public_methods](http://ruby-doc.org/core/Object.html#method-i-public_methods)
+* [Object#private_methods](http://ruby-doc.org/core/Object.html#method-i-private_methods)
+* [Object#protected_methods](http://ruby-doc.org/core/Object.html#method-i-protected_methods)
+* [Object#singleton_methods](http://ruby-doc.org/core/Object.html#method-i-singleton_methods)
 
 Dynamic methods can be listed by overriding these methods. Ancestor methods can be filtered out by subtracting a list of methods from the ancestor.
 
@@ -1222,7 +1222,7 @@ p sub.singleton_methods
 
 ### Java Interoperability
 
-{{Out}}Best seen running in your browser by [https://scastie.scala-lang.org/5mLHFfBeQCuGpc9Q7PXxgw Scastie (remote JVM)].
+{{Out}}Best seen running in your browser by [Scastie (remote JVM)](https://scastie.scala-lang.org/5mLHFfBeQCuGpc9Q7PXxgw).
 
 ```Scala
 object ListMethods extends App {
@@ -1275,7 +1275,7 @@ In TclOO, the <tt>info</tt> command can inspect the complete state of an object 
 ```
 
 
-For <i>many</i> more examples, see https://wiki.tcl.tk/40640 and the linked manuals for <tt>info class</tt> and <tt>info object</tt>.  Plugins for <b>tkcon</b> and <b>twDebugInspector</b> (also found on the wiki) use this to create interactive object inspectors similar to [[Smalltalk]]'s.
+For <i>many</i> more examples, see <https://wiki.tcl.tk/40640> and the linked manuals for <tt>info class</tt> and <tt>info object</tt>.  Plugins for <b>tkcon</b> and <b>twDebugInspector</b> (also found on the wiki) use this to create interactive object inspectors similar to [[Smalltalk]]'s.
 
 
 ## zkl

@@ -13,5 +13,5 @@ tags = []
 {{library}}
 tDOM combines high performance XML data processing with easy and powerful [[Tcl]] scripting functionality.
 
-Home: http://www.tdom.org/
+Home: <http://www.tdom.org/>
 [[Category:Tcl packages]]

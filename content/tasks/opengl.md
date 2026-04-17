@@ -454,7 +454,7 @@ int main(int argc, char *argv[])
 
 
 ## C#
-C# example using the [http://www.opentk.com/ OpenTK] library, which is multiplatform and provides C# OpenGL bindings for .Net and Mono. This code creates its own window and draws the triangle into it.
+C# example using the [OpenTK](http://www.opentk.com/) library, which is multiplatform and provides C# OpenGL bindings for .Net and Mono. This code creates its own window and draws the triangle into it.
 
 
 ```c#
@@ -508,7 +508,7 @@ namespace OpenGLTest
 
 ## Clojure
 
-In this example, we use [http://github.com/ztellman/penumbra Penumbra], which is an idiomatic wrapper for OpenGL.
+In this example, we use [Penumbra](http://github.com/ztellman/penumbra), which is an idiomatic wrapper for OpenGL.
 
 ```lisp
 (use 'penumbra.opengl)
@@ -1118,7 +1118,7 @@ previous previous previous
 
 ## Go
 
-This program was also tested on Windows 10 but ''may'' only work if you comment out the marked line. This is because gl.Init() may produce an initialization error which is non-critical as far as this program is concerned. The reason for this error is unknown (see [[https://rosettacode.org/wiki/Talk:OpenGL Talk page]]).
+This program was also tested on Windows 10 but ''may'' only work if you comment out the marked line. This is because gl.Init() may produce an initialization error which is non-critical as far as this program is concerned. The reason for this error is unknown (see [Talk page](https://rosettacode.org/wiki/Talk:OpenGL)).
 
 ```go
 package main
@@ -1297,7 +1297,7 @@ Note: OpenGL's initial state is well defined by the OpenGL standard.
 
 ## Java
 
-This example uses [http://lwjgl.org/ LWJGL], a game library which has an OpenGL binding for Java
+This example uses [LWJGL](http://lwjgl.org/), a game library which has an OpenGL binding for Java
 
 ```Java
 import org.lwjgl.LWJGLException;
@@ -1367,7 +1367,7 @@ public class OpenGlExample {
 
 Unfortunately for comparison with the other examples on this page, WebGL provides only OpenGL ES, which removes the classic “fixed-function pipeline” and glVertex() in favor of requiring you to write ''vertex shaders'' and ''fragment shaders'', and use vertex arrays. It is not hard to write shader programs to emulate as much of the fixed-function pipeline as you need, but it does mean more verbosity as you have to explicitly define all of the data you're going to communicate to your shader.
 
-In the interest of brevity and not depending on an external matrix library, this example ''omits matrix operations entirely'', as OpenGL ES requires you to add those features yourself if you want them. Examples which show how to implement the classic OpenGL matrix stack are available at [http://learningwebgl.com/blog/?page_id=1217 Learning WebGL] (which this code was derived from).
+In the interest of brevity and not depending on an external matrix library, this example ''omits matrix operations entirely'', as OpenGL ES requires you to add those features yourself if you want them. Examples which show how to implement the classic OpenGL matrix stack are available at [Learning WebGL](http://learningwebgl.com/blog/?page_id=1217) (which this code was derived from).
 
 
 ```html
@@ -2452,7 +2452,7 @@ triangles3d(M, col=rainbow(8))
 This example features C-style OpenGL api, that's not racket-idiomatic but offer more capabilites.
 
 Note: your system may miss some support libraries.
-If OpenGL context creation fails please consult Racket [http://docs.racket-lang.org/gui/libs.html documentation]
+If OpenGL context creation fails please consult Racket [documentation](http://docs.racket-lang.org/gui/libs.html)
 
 
 ```racket
@@ -2536,7 +2536,7 @@ func renderScene
 
 Outputimage:
 
-[https://1drv.ms/u/s!AqDUIunCqVnIg1BFt-zV2LphRyjQ OPenGL]
+[OPenGL](https://1drv.ms/u/s!AqDUIunCqVnIg1BFt-zV2LphRyjQ)
 
 
 ## Ruby

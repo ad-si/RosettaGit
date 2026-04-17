@@ -70,7 +70,7 @@ languages = [
 
 [[wp:Knight%27s_tour|Problem]]: you have a standard 8x8 chessboard, empty but for a single knight on some square.   Your task is to emit a series of legal knight moves that result in the knight visiting every square on the chessboard exactly once. Note that it is ''not'' a requirement that the tour be "closed"; that is, the knight need not end within a single move of its start position.
 
-Input and output may be textual or graphical, according to the conventions of the programming environment.  If textual, squares should be indicated in [http://en.wikipedia.org/wiki/Algebraic_chess_notation algebraic notation].  The output should indicate the order in which the knight visits the squares, starting with the initial position.  The form of the output may be a diagram of the board with the squares numbered according to visitation sequence, or a textual list of algebraic coordinates in order, or even an actual animation of the knight moving around the chessboard.
+Input and output may be textual or graphical, according to the conventions of the programming environment.  If textual, squares should be indicated in [algebraic notation](http://en.wikipedia.org/wiki/Algebraic_chess_notation).  The output should indicate the order in which the knight visits the squares, starting with the initial position.  The form of the output may be a diagram of the board with the squares numbered according to visitation sequence, or a textual list of algebraic coordinates in order, or even an actual animation of the knight moving around the chessboard.
 
 Input: starting square
 
@@ -2408,9 +2408,9 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 
 
 
-Closed path on a 12x12 board: [http://www.echolalie.org/echolisp/images/k-tour-12.png]
+Closed path on a 12x12 board: <http://www.echolalie.org/echolisp/images/k-tour-12.png>
 
-Open path on a 24x24 board: [http://www.echolalie.org/echolisp/images/k-tour-24.png]
+Open path on a 24x24 board: <http://www.echolalie.org/echolisp/images/k-tour-24.png>
 
 
 ## Elixir
@@ -2669,7 +2669,7 @@ main =
 ```
 
 
-Link to live demo: http://dc25.github.io/knightsTourElm/
+Link to live demo: <http://dc25.github.io/knightsTourElm/>
 
 
 ## Erlang
@@ -3026,9 +3026,9 @@ Inserire la caselle di partenza (x,y) ? 1,1
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Knight%27s_tour this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Knight%27s_tour) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3098,7 +3098,7 @@ End
 
 ```
 
-[https://www.dropbox.com/s/s3bpwechpoueum4/Knights%20Tour%20FreeBasic.png?dl=0 Knights Tour FreeBasic image]
+[Knights Tour FreeBasic image](https://www.dropbox.com/s/s3bpwechpoueum4/Knights%20Tour%20FreeBasic.png?dl=0)
 
 ```txt
 
@@ -4080,7 +4080,7 @@ Found a path for 8 X 8 chess board.
 
 Using Warnsdorff rule and Backtracking.
 
-You can test it [http://paulo-jorente.de/webgames/repos/knightsTour/ here].
+You can test it [here](http://paulo-jorente.de/webgames/repos/knightsTour/).
 
 
 ```javascript
@@ -5966,7 +5966,7 @@ main :- make_graph, hamiltonian(5*3,Pn), show_path(Pn), halt.
  50 39 42  9 28 47 44 1
 ```
 
-[http://ideone.com/jnFTT3 20x20 board runs in: time: 0.91 memory: 68608.]
+[20x20 board runs in: time: 0.91 memory: 68608.](http://ideone.com/jnFTT3)
 
 
 ## Python
@@ -7256,7 +7256,7 @@ Starting square (1-8,1-8): 1 1
 
 ## XSLT
 
-This solution is for XSLT 3.0 Working Draft 10 (July 2012). This solution, originally reported on [http://seanbdurkin.id.au/pascaliburnus2/archives/10 this blog post], will be updated or removed when the final version of XSLT 3.0 is released.
+This solution is for XSLT 3.0 Working Draft 10 (July 2012). This solution, originally reported on [this blog post](http://seanbdurkin.id.au/pascaliburnus2/archives/10), will be updated or removed when the final version of XSLT 3.0 is released.
 
 First we build a generic package for solving any kind of tour over the chess board. Here it is…
 <lang>

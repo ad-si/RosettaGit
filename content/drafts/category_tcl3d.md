@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{stub}}{{library}}[[Category:Tcl packages]]
-The [http://www.tcl3d.org tcl3d] package provides access to OpenGL and related technologies for [[Tcl]] and [[Tk]].
+The [tcl3d](http://www.tcl3d.org) package provides access to OpenGL and related technologies for [[Tcl]] and [[Tk]].

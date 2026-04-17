@@ -164,7 +164,7 @@ something
 
 ## Applesoft BASIC
 
-http://hoop-la.ca/apple2/2016/winterwarmup/#repeat.bas
+<http://hoop-la.ca/apple2/2016/winterwarmup/#repeat.bas>
 
 
 ## Arturo
@@ -1134,7 +1134,7 @@ Of course, we could have just written <pre style="display:inline; padding:0.3em"
 ```
  directly &ndash; the custom <code>repeat</code> subroutine is just here to satisfy the task description.
 
-Notes on the [http://doc.perl6.org/language/operators#infix_xx <code>xx</code>] operator:
+Notes on the [<code>xx</code>](http://doc.perl6.org/language/operators#infix_xx) operator:
 
 * Unlike other operators, it evaluates its left-hand-side argument lazily - that's why we can simply call <code>f()</code> there rather than passing it as a function object.
 * The operator has a return value: A list consisting of the return values of the left-hand-side ''(and building lists is in fact what <code>xx</code> is usually used for)''.
@@ -1419,7 +1419,7 @@ f2(f1,4)
 
 ## Racket
 
-The racket guide has a section called [http://docs.racket-lang.org/guide/for.html?q=iterators "Iterators and Comprehensions"], which shows that ''for'' isn't just for repeating n times!
+The racket guide has a section called ["Iterators and Comprehensions"](http://docs.racket-lang.org/guide/for.html?q=iterators), which shows that ''for'' isn't just for repeating n times!
 
 
 ```Racket

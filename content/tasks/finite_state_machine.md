@@ -60,7 +60,7 @@ Implement a finite state machine which handles both explicit and implicit transi
 
 ## See also
 
-*[https://www.youtube.com/watch?v=vhiiia1_hC4 Computers Without Memory (Finite State Automata)], A Computerphile Video.
+*[Computers Without Memory (Finite State Automata)](https://www.youtube.com/watch?v=vhiiia1_hC4), A Computerphile Video.
 <br/><br/>
 
 

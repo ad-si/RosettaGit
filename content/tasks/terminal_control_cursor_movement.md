@@ -281,10 +281,10 @@ Output(15,7)
 ## Applesoft BASIC
 =
 80-Column Text Card: Applesoft Control Codes
-http://support.apple.com/kb/TA33130
+<http://support.apple.com/kb/TA33130>
 
 Apple II Family Identification
-http://www.umich.edu/~archive/apple2/technotes/tn/misc/TN.MISC.007
+<http://www.umich.edu/~archive/apple2/technotes/tn/misc/TN.MISC.007>
 
 ```ApplesoftBasic
 REM APPLE II GS ?

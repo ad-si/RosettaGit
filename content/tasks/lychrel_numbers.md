@@ -105,9 +105,9 @@ Show all output here.
 
 ## References
 
-* [https://www.youtube.com/watch?v=bN8PE3eljdA What's special about 196?] Numberphile video.
-* [http://oeis.org/A023108 A023108] Positive integers which apparently never result in a palindrome under repeated applications of the function f(x) = x + (x with digits reversed).
-* [http://mathoverflow.net/questions/117104/status-of-the-196-conjecture/117277#117277 Status of the 196 conjecture?] Mathoverflow.
+* [What's special about 196?](https://www.youtube.com/watch?v=bN8PE3eljdA) Numberphile video.
+* [A023108](http://oeis.org/A023108) Positive integers which apparently never result in a palindrome under repeated applications of the function f(x) = x + (x with digits reversed).
+* [Status of the 196 conjecture?](http://mathoverflow.net/questions/117104/status-of-the-196-conjecture/117277#117277) Mathoverflow.
 
 
 

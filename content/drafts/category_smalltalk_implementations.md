@@ -12,4 +12,4 @@ tags = []
 
 {{implementation cat|Smalltalk}}
 
-* [http://en.wikipedia.org/wiki/Smalltalk#List_of_implementations Smalltalk implementations], most of which are enhanced beyond Smalltalk-80
+* [Smalltalk implementations](http://en.wikipedia.org/wiki/Smalltalk#List_of_implementations), most of which are enhanced beyond Smalltalk-80

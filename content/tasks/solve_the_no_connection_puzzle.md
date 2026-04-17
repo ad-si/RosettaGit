@@ -99,7 +99,7 @@ Produce and show here   ''one''   solution to the puzzle.
 
 ## See also
 
-[https://www.youtube.com/watch?v=AECElyEyZBQ No Connection Puzzle] (youtube).
+[No Connection Puzzle](https://www.youtube.com/watch?v=AECElyEyZBQ) (youtube).
 
 
 
@@ -3270,7 +3270,7 @@ found  3  solutions.
 
 ## Ruby
 
-Be it Golden Frogs jumping on trancendental lilly pads, or a Knight on a board, or square pegs into round holes this is essentially a Hidato Like Problem, so I use [http://rosettacode.org/wiki/Solve_a_Hidato_puzzle#With_Warnsdorff HLPSolver]:
+Be it Golden Frogs jumping on trancendental lilly pads, or a Knight on a board, or square pegs into round holes this is essentially a Hidato Like Problem, so I use [HLPSolver](http://rosettacode.org/wiki/Solve_a_Hidato_puzzle#With_Warnsdorff):
 
 ```ruby
 
@@ -3319,7 +3319,7 @@ Solution:
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/Ub2LEup/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/ZXGSJLFEQe21Frh4Vwp0WA Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/Ub2LEup/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/ZXGSJLFEQe21Frh4Vwp0WA).
 
 ```Scala
 object NoConnection extends App {

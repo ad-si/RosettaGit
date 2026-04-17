@@ -19,7 +19,7 @@ When generating [[wp:Object file|object code]], it is often the case that the re
 
 * [[:Category:Compilers and Interpreters|List of compilers and interpreters]]
 * [[wp:Compiler|Wikipedia page about compilers]]
-* [http://www.ethoberon.ethz.ch/WirthPubl/CBEAll.pdf Free PDF of Niklaus Wirth's "Compiler Construction"]
+* [Free PDF of Niklaus Wirth's "Compiler Construction"](http://www.ethoberon.ethz.ch/WirthPubl/CBEAll.pdf)
 * [[Compiler/lexical_analyzer|Lexical Analyzer task]]
 * [[Compiler/syntax_analyzer|Syntax Analyzer task]]
 * [[Compiler/code_generator|Code Generator task]]

@@ -1893,7 +1893,7 @@ object DecimalFloatPoint2Binary extends App {
 }
 ```
 
-{{Out}}Experience running it in your browser by [https://scastie.scala-lang.org/auzWgFqCRBaYoOaJV92tgw Scastie (remote JVM)].
+{{Out}}Experience running it in your browser by [Scastie (remote JVM)](https://scastie.scala-lang.org/auzWgFqCRBaYoOaJV92tgw).
 
 ## Sidef
 

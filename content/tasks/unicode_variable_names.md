@@ -100,7 +100,7 @@ tags = []
 
 ''The words (e.g. “functions”) 8th provides to do string manipulation are also UTF-8 aware, which means you don’t have to worry about creating an invalid bit of UTF-8 encoded text (unless you deliberately do so).''
 
--- [http://8th-dev.com/local.html Writing localized applications with 8th]
+-- [Writing localized applications with 8th](http://8th-dev.com/local.html)
 
 
 ```forth
@@ -196,7 +196,7 @@ The great majority of implementations have used EBCDIC, ASCII and an encoding of
 ## AutoHotkey
 
 The earlier version of AutoHotkey (AutoHotkey Basic) will produce an error since it doesn't support Unicode. It is perfectly working in AutoHotkey_L Unicode (Lexikos Custom Build).
-Documentation: http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/Variables.htm
+Documentation: <http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/Variables.htm>
 ```ahk
 Δ = 1
 Δ++
@@ -256,7 +256,7 @@ Output:
 
 ## C
 
-C has limited support for Unicode in variable names, see Annex D of the [http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf C standard].
+C has limited support for Unicode in variable names, see Annex D of the [C standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf).
 
 ----
 
@@ -288,7 +288,7 @@ Output:
 
 
 ## C#
-Section 2.4.2 of the [http://go.microsoft.com/fwlink/?LinkId=199552 C# Language Specification] gives rules for identifiers. They correspond exactly to those recommended by the [http://unicode.org/reports/tr31/ Unicode Standard Annex 31], except that underscore is allowed as an initial character (as is traditional in the C programming language), Unicode escape sequences are permitted in identifiers, and the "@" character is allowed as a prefix to enable keywords to be used as identifiers.
+Section 2.4.2 of the [C# Language Specification](http://go.microsoft.com/fwlink/?LinkId=199552) gives rules for identifiers. They correspond exactly to those recommended by the [Unicode Standard Annex 31](http://unicode.org/reports/tr31/), except that underscore is allowed as an initial character (as is traditional in the C programming language), Unicode escape sequences are permitted in identifiers, and the "@" character is allowed as a prefix to enable keywords to be used as identifiers.
 
 ```c#
 class Program
@@ -310,7 +310,7 @@ class Program
 
 ## Clojure
 
-According to the current [http://clojure.org/reader documentation], one should stick to naming with alphanumeric characters and *, +, !, -, _, and ? to avoid possible problems if future versions of Clojure decide to apply special meaning to a character.
+According to the current [documentation](http://clojure.org/reader), one should stick to naming with alphanumeric characters and *, +, !, -, _, and ? to avoid possible problems if future versions of Clojure decide to apply special meaning to a character.
 
 That being said, it is not currently enforced, so while you probably shouldn't, you technically can.
 
@@ -369,12 +369,12 @@ However, the following cannot be used:
     \u0040 (@) and
     \u0060 (`).
 See:
-http://www.prowiki.org/wiki4d/wiki.cgi?DanielKeep/TextInD
+<http://www.prowiki.org/wiki4d/wiki.cgi?DanielKeep/TextInD>
 
 
 ## Delphi
 
-For more information about naming identifiers (including variables) visit: [http://docwiki.embarcadero.com/RADStudio/en/Identifiers Identifiers in Delphi]
+For more information about naming identifiers (including variables) visit: [Identifiers in Delphi](http://docwiki.embarcadero.com/RADStudio/en/Identifiers)
 
 ```Delphi
 (* Compiled with Delphi XE *)
@@ -422,7 +422,7 @@ PrintLn(Δ);
 
 ## EchoLisp
 
-Symbol names can be any string including unicode characters. See the EchoLisp [http://www.echolalie.org/echolisp/help.html#language reference] documentation.
+Symbol names can be any string including unicode characters. See the EchoLisp [reference](http://www.echolalie.org/echolisp/help.html#language) documentation.
 
 ```lisp
 
@@ -465,7 +465,7 @@ Variables are symbols and symbol names can be any string.  Source code <code>.el
 The byte compiler writes <code>utf-8</code> (or past versions wrote <code>emacs-mule</code>) into <code>.elc</code> so that any mixture of non-ASCII is preserved.
 
 =={{header|F_Sharp|F#}}==
-As with C# the [http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/manual/spec.html#_Toc207705761 F# Language Specification] refers to [http://www.unicode.org/reports/tr31/#Default_Identifier_Syntax Unicode Standard Annex #31] for identifier syntax, allowing Unicode letter characters.
+As with C# the [F# Language Specification](http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/manual/spec.html#_Toc207705761) refers to [Unicode Standard Annex #31](http://www.unicode.org/reports/tr31/#Default_Identifier_Syntax) for identifier syntax, allowing Unicode letter characters.
 
 ```fsharp
 let mutable Δ = 1
@@ -527,7 +527,7 @@ Sleep
 
 ## Frink
 
-Frink can use Unicode variable names that meet certain constraints.  Variable names that don't meet these constraints can still be parsed and displayed by specifying them as Unicode escapes:  [https://frinklang.org/#UnicodeInFrink Unicode Variable Names]
+Frink can use Unicode variable names that meet certain constraints.  Variable names that don't meet these constraints can still be parsed and displayed by specifying them as Unicode escapes:  [Unicode Variable Names](https://frinklang.org/#UnicodeInFrink)
 
 ```frink
 
@@ -541,7 +541,7 @@ println[Δ]
 
 ## Go
 
-Go source encoding is [http://golang.org/doc/go_spec.html#Source_code_representation specified] to be UTF-8.  Allowable variable names are specified in the sections [http://golang.org/doc/go_spec.html#Identifiers identifiers] and [http://golang.org/doc/go_spec.html#Exported_identifiers Exported identifiers].
+Go source encoding is [specified](http://golang.org/doc/go_spec.html#Source_code_representation) to be UTF-8.  Allowable variable names are specified in the sections [identifiers](http://golang.org/doc/go_spec.html#Identifiers) and [Exported identifiers](http://golang.org/doc/go_spec.html#Exported_identifiers).
 
 ```go
 package main
@@ -586,7 +586,7 @@ main = print ψ
 
 Variable names must be comprised of ASCII characters.
 
-From the Dictionary page [http://www.jsoftware.com/help/dictionary/dict1.htm Alphabet and Words]:
+From the Dictionary page [Alphabet and Words](http://www.jsoftware.com/help/dictionary/dict1.htm):
 
 :"The alphabet is standard ASCII, comprising digits, letters (of the English alphabet), the underline (used in names and numbers), ..."
 
@@ -668,7 +668,7 @@ Strictly speaking, variables in jq cannot be incremented (in fact, strictly spea
 ## Julia
 
 The Julia documentation on
-[http://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names allowed variable names] explicitly describes the wide variety of Unicode codepoints that are allowed:
+[allowed variable names](http://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names) explicitly describes the wide variety of Unicode codepoints that are allowed:
 
 ```julia
 julia>
@@ -746,7 +746,7 @@ print(Δ.to_s())
 
 ## LOLCODE
 
-The [http://lolcode.com/specs/1.2#variables spec] mandates that identifiers be alphanumeric. However, the fact that [http://lolcode.com/specs/1.2#strings YARNs] are Unicode-aware permits the use of the [http://lolcode.com/proposals/1.3/bukkit2#srs-serious-cast SRS operator] introduced in 1.3 to utilize variables of arbitrary name.
+The [spec](http://lolcode.com/specs/1.2#variables) mandates that identifiers be alphanumeric. However, the fact that [YARNs](http://lolcode.com/specs/1.2#strings) are Unicode-aware permits the use of the [SRS operator](http://lolcode.com/proposals/1.3/bukkit2#srs-serious-cast) introduced in 1.3 to utilize variables of arbitrary name.
 
 ```LOLCODE
 I HAS A SRS "Δ" ITZ 1
@@ -762,7 +762,7 @@ VISIBLE SRS ":[GREEK CAPITAL LETTER DELTA]"
 
 ## Lua
 
-Lua 5.3 supports UTF-8 encoding as documented here: https://www.lua.org/manual/5.3/manual.html#6.5 .
+Lua 5.3 supports UTF-8 encoding as documented here: <https://www.lua.org/manual/5.3/manual.html#6.5> .
 However, this support is not strictly necessary for this task so long as the Lua script is edited using a UTF-8 enabled text editor.
 
 ```Lua
@@ -804,7 +804,7 @@ Print[Δ]
 
 ## Nemerle
 
-From the Nemerle [http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29 Reference Manual]: "Programs are written using the Unicode character set, using the UTF-8 encoding."
+From the Nemerle [Reference Manual](http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29): "Programs are written using the Unicode character set, using the UTF-8 encoding."
 
 ```Nemerle
 using System.Console;
@@ -824,7 +824,7 @@ module UnicodeVar
 
 ## NetRexx
 
-The ''NetRexx Language Definition'' section of the NetRexx documentation ([http://netrexx.org/files/nrl3.pdf netrexx.org/files/nrl3.pdf]) describes the character set support within the language.
+The ''NetRexx Language Definition'' section of the NetRexx documentation ([netrexx.org/files/nrl3.pdf](http://netrexx.org/files/nrl3.pdf)) describes the character set support within the language.
 
 ```NetRexx
 /* NetRexx */
@@ -881,7 +881,7 @@ return
 
 ## Nim
 
-From the spec: http://nim-lang.org/docs/manual.html#identifiers-keywords
+From the spec: <http://nim-lang.org/docs/manual.html#identifiers-keywords>
 
 
 ```Nimrod
@@ -945,7 +945,7 @@ Using what Google Translate says is the Traditional Chinese for 'delta'
 
 ## Perl
 
-Requires Perl 5.8.1 at the minimum. See http://perldoc.perl.org/utf8.html
+Requires Perl 5.8.1 at the minimum. See <http://perldoc.perl.org/utf8.html>
 
 
 ```perl
@@ -957,7 +957,7 @@ print $Δ, "\n";
 ```
 
 
-<code>$</code> sigil can be omitted by using [http://perldoc.perl.org/perlsub.html#Lvalue-subroutines lvalue] subroutine:
+<code>$</code> sigil can be omitted by using [lvalue](http://perldoc.perl.org/perlsub.html#Lvalue-subroutines) subroutine:
 
 
 ```perl
@@ -976,7 +976,7 @@ print Δ, "\n";
 ```
 
 
-or with Perl 5.10 and [http://perldoc.perl.org/functions/state.html state] modifier:
+or with Perl 5.10 and [state](http://perldoc.perl.org/functions/state.html) modifier:
 
 
 ```perl
@@ -1000,7 +1000,7 @@ One can have Unicode in identifier or subroutine names and also in package or cl
 
 Perl 6 is written in Unicode so, with narrow restrictions, nearly any Unicode letter can be used in identifiers.
 
-See Perl 6 Synopsis 02. - http://perlcabal.org/syn/S02.html#Names
+See Perl 6 Synopsis 02. - <http://perlcabal.org/syn/S02.html#Names>
 
 ```perl6
 my $Δ = 1;
@@ -1054,7 +1054,7 @@ PHP is not made to support Unicode. UTF-16 (UCS-2) will not work because it adds
 
 UTF-8 uses ASCII values for bytes which can be represented as ASCII and as result it's possible to insert <code>&lt;?php</code> mark at beginning. PHP sees your document as some 8-bit encoding (like ISO-8859-1), but it doesn't matter because UTF-8 doesn't use ASCII ranges for its values and calls to the variable are consistent.
 
-Documentation: [http://php.net/manual/en/mbstring.php4.req.php mbstring.php4.req], [http://php.net/manual/en/language.variables.basics.php language.variables.basics]
+Documentation: [mbstring.php4.req](http://php.net/manual/en/mbstring.php4.req.php), [language.variables.basics](http://php.net/manual/en/language.variables.basics.php)
 
 ```php
 <?php
@@ -1067,7 +1067,7 @@ echo $Δ;
 
 ## PicoLisp
 
-Variables are usually [http://software-lab.de/doc/ref.html#internal-io Internal Symbols], and their names may contain any UTF-8 character except null-bytes. White space, and 11 special characters (see the reference) must be escaped with a backslash. [http://software-lab.de/doc/ref.html#transient-io Transient Symbols] are often used as variables too, they follow the syntax of strings in other languages.
+Variables are usually [Internal Symbols](http://software-lab.de/doc/ref.html#internal-io), and their names may contain any UTF-8 character except null-bytes. White space, and 11 special characters (see the reference) must be escaped with a backslash. [Transient Symbols](http://software-lab.de/doc/ref.html#transient-io) are often used as variables too, they follow the syntax of strings in other languages.
 
 ```PicoLisp
 : (setq Δ 1)
@@ -1144,7 +1144,7 @@ Result = 2.
 
 Within the ASCII range (U+0001..U+007F), the valid characters for identifiers are the same as in Python 2.x: the uppercase and lowercase letters A through Z, the underscore _ and, except for the first character, the digits 0 through 9.
 
-Python 3.0 introduces additional characters from outside the ASCII range (see [http://www.python.org/dev/peps/pep-3131 PEP 3131]). For these characters, the classification uses the version of the Unicode Character Database as included in the unicodedata module.
+Python 3.0 introduces additional characters from outside the ASCII range (see [PEP 3131](http://www.python.org/dev/peps/pep-3131)). For these characters, the classification uses the version of the Unicode Character Database as included in the unicodedata module.
 
 Identifiers are unlimited in length. Case is significant.
 
@@ -1278,9 +1278,9 @@ puts Δ  # => 2
 
 ## Rust
 
-Rust source encoding is [https://doc.rust-lang.org/reference.html#input-format specified] to be UTF-8. [https://doc.rust-lang.org/reference.html#identifiers Identifiers] must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [https://github.com/mozilla/rust/issues/7048#issuecomment-19254166 ╯°□°╯︵┻━┻] is not permitted under current specification)
+Rust source encoding is [specified](https://doc.rust-lang.org/reference.html#input-format) to be UTF-8. [Identifiers](https://doc.rust-lang.org/reference.html#identifiers) must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [╯°□°╯︵┻━┻](https://github.com/mozilla/rust/issues/7048#issuecomment-19254166) is not permitted under current specification)
 
-<b>Non-ASCII identifiers are [https://github.com/mozilla/rust/pull/10605 feature gated] since version 0.9</b>
+<b>Non-ASCII identifiers are [feature gated](https://github.com/mozilla/rust/pull/10605) since version 0.9</b>
 
 
 ```rust
@@ -1304,7 +1304,7 @@ of [A-Za-z0-9$_].  (The chapter is probably a holdover from S-Lang 1.)
 But in reality, any non-ascii Unicode character is legal in identifiers,
 including the first character, as long as it's encoded in UTF-8.  [As an
 aside, S-Lang includes iconv.sl to interface to the Gnu iconv library.  The
-0.99.18 ms-win version of the S-Lang-powered [http://www.paneura.com/~dino/wjed.html#HISTORY Jed]
+0.99.18 ms-win version of the S-Lang-powered [Jed](http://www.paneura.com/~dino/wjed.html#HISTORY)
 programmer's editor includes this to handle the UTF-16 files popular
 with windows.]
 

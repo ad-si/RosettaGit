@@ -51,6 +51,6 @@ and the following using external packages:
 ##Ruby, via Brian McCallister's DesignByContract, Ruby DBC ruby-contract or contracts.ruby.
 ##Tcl, via the XOTcl object-oriented extension
 
-I have added an example of Ruby using [[https://github.com/egonSchiele/contracts.ruby contracts.ruby]]. Can we clarify which approach is required here. A solution which just puts an if statement in a procedure named assert does not achieve either.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:20, 1 October 2014 (UTC)
+I have added an example of Ruby using [contracts.ruby](https://github.com/egonSchiele/contracts.ruby). Can we clarify which approach is required here. A solution which just puts an if statement in a procedure named assert does not achieve either.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:20, 1 October 2014 (UTC)
 
 :I hope we are going for DbyC. I shall look forward to the Racket solution "emphasizing that contract violations must blame the guilty party and must do so with an accurate explanation". Programmers will be taken out and shot!!!!--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:29, 1 October 2014 (UTC)

@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-The dodo0 language is a dialect based on a subset of dodo [http://dodo.sourceforge.net]. Dodo is an object-oriented prototype- and continuation-based language with an emphasis on parallelism and concurrency.
+The dodo0 language is a dialect based on a subset of dodo <http://dodo.sourceforge.net>. Dodo is an object-oriented prototype- and continuation-based language with an emphasis on parallelism and concurrency.
 
-Project home: http://sourceforge.net/projects/dodo
+Project home: <http://sourceforge.net/projects/dodo>

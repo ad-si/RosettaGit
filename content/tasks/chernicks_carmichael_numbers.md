@@ -26,7 +26,7 @@ In 1939, Jack Chernick proved that, for '''n ≥ 3''' and '''m ≥ 1''':
 
     U(n, m) = (6m + 1) * (12m + 1) * Product_{i=1..n-2} (2^i * 9m + 1)
 
-is a [https://en.wikipedia.org/wiki/Carmichael_number Carmichael number] if all the factors are primes and, for '''n > 4''', '''m''' is a multiple of '''2^(n-4)'''.
+is a [Carmichael number](https://en.wikipedia.org/wiki/Carmichael_number) if all the factors are primes and, for '''n > 4''', '''m''' is a multiple of '''2^(n-4)'''.
 
 
 ;Example
@@ -65,9 +65,9 @@ For '''n ≥ 3''', let '''a(n)''' be the smallest Chernick's Carmichael number w
 
 ## See also
 
-* [http://www.ams.org/journals/bull/1939-45-04/S0002-9904-1939-06953-X/S0002-9904-1939-06953-X.pdf Jack Chernick, On Fermat's simple theorem (PDF)]
+* [Jack Chernick, On Fermat's simple theorem (PDF)](http://www.ams.org/journals/bull/1939-45-04/S0002-9904-1939-06953-X/S0002-9904-1939-06953-X.pdf)
 
-* [https://oeis.org/A318646 OEIS A318646: The least Chernick's "universal form" Carmichael number with n prime factors]
+* [OEIS A318646: The least Chernick's "universal form" Carmichael number with n prime factors](https://oeis.org/A318646)
 
 
 ## Related tasks
@@ -258,7 +258,7 @@ a(10) has m = 3208386195840
 (takes ~3.5 minutes)
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

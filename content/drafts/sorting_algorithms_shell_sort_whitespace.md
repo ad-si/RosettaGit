@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-This solution was tested and found to work correctly with the canonical [http://compsoc.dur.ac.uk/whitespace/download.php Haskell interpreter], [https://github.com/hostilefork/whitespacers/tree/master/ruby this Ruby version], and Pavel Shub's glorious [http://pavelshub.com/blog/2010/10/wspace/ C++ implementation]. Most others either failed to run even the simplest of programs, were Windows-only, or else required tiresome setup.
+This solution was tested and found to work correctly with the canonical [Haskell interpreter](http://compsoc.dur.ac.uk/whitespace/download.php), [this Ruby version](https://github.com/hostilefork/whitespacers/tree/master/ruby), and Pavel Shub's glorious [C++ implementation](http://pavelshub.com/blog/2010/10/wspace/). Most others either failed to run even the simplest of programs, were Windows-only, or else required tiresome setup.
 
 It was observed early on that hard-coding the values to be sorted might rouse suspicion as to whether such an inscrutable program were really doing any sorting; thus it was decided that input would be provided at runtime. This led to the unfortunate discovery that not all of the aforementioned interpreters handle <tt>EOF</tt> in the same way; Haskell and Ruby error out where C++ returns a convenient -1. In the interest of compatibility, the program reads values until a literal -1 is provided; all other negative numbers are permissible and will be sorted appropriately.
 
-A demonstration of the program capable of receiving further test input is available on [http://ideone.com/zVfzfy Ideone].
+A demonstration of the program capable of receiving further test input is available on [Ideone](http://ideone.com/zVfzfy).
 
 
 ```Whitespace
@@ -103,7 +103,7 @@ A demonstration of the program capable of receiving further test input is availa
 ```
 
 
-While [http://i.imgur.com/8LhJoDG.png semantic highlighting] makes the code slightly less opaque (read: transparent), it's much easier to read the pseudo-Assembly from which it was generated.
+While [semantic highlighting](http://i.imgur.com/8LhJoDG.png) makes the code slightly less opaque (read: transparent), it's much easier to read the pseudo-Assembly from which it was generated.
 
 
 ```asm

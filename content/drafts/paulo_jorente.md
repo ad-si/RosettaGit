@@ -13,4 +13,4 @@ tags = []
 '''Paulo Jorente''' is a computer programming and esoteric programming language (especially [[brainfuck]]) enthusiast from Brazil. He designed and developed the language [[0815]] and [[xEec]].
 
 ==External resources==
-* [http://paulo-jorente.de/ http://paulo-jorente.de/]
+* [http://paulo-jorente.de/](http://paulo-jorente.de/)

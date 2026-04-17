@@ -9,4 +9,4 @@ id = 8144
 categories = []
 tags = []
 +++
-[http://bddbddb.sourceforge.net/ bddbddb] stands for BDD-Based Deductive DataBase. It is an implementation of Datalog.
+[bddbddb](http://bddbddb.sourceforge.net/) stands for BDD-Based Deductive DataBase. It is an implementation of Datalog.

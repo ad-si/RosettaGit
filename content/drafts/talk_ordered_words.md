@@ -32,10 +32,10 @@ By "longest word length", do you mean "equal to the length of the longest ordere
 :: For contrast, the Tcl code does it in a single pass. (It happened to be more natural to express it that way.) The result is the same though; the words in the result list are such that they are all of the same length, all ordered words, and there is no other ordered word (in the originating dictionary) such that its length is greater than the length of any result word. (Also, every ordered word of that length in the originating dictionary is present in the result.) I can't be bothered to write that mathematically. :-) –[[User:Dkf|Donal Fellows]] 16:24, 10 November 2010 (UTC)
 
 ==Knotty problem==
-I noticed three of the examples written by [[User talk:Ulrie]], C++, Perl and Perl 6; don't have the word knotty mentioned. I don't know if this is due to a faulty copy of the dictionary or a faulty algorithm. (Knotty is still in the [http://www.puzzlers.org/pub/wordlists/unixdict.txt dictionary]). I will give it a day then I think I should mark them incorrect? --[[User:Paddy3118|Paddy3118]] 12:05, 27 November 2010 (UTC)
+I noticed three of the examples written by [[User talk:Ulrie]], C++, Perl and Perl 6; don't have the word knotty mentioned. I don't know if this is due to a faulty copy of the dictionary or a faulty algorithm. (Knotty is still in the [dictionary](http://www.puzzlers.org/pub/wordlists/unixdict.txt)). I will give it a day then I think I should mark them incorrect? --[[User:Paddy3118|Paddy3118]] 12:05, 27 November 2010 (UTC)
 :Or could their algorithms not cope with the double-t in knotty? (But note, The task description does state that the word 'abbey' with a double-b ''is'' to be considered ordered. --[[User:Paddy3118|Paddy3118]] 16:58, 27 November 2010 (UTC)
 :: Is there a public-domain (or, GFDL1.2-compatible, at least) wordlist I could host and have dictionary-dependent tasks draw from? URL preferred; Places I'm looking have weird or tricky copyright restricitons. --[[User:Short Circuit|Michael Mol]] 18:18, 27 November 2010 (UTC)
-::: [http://wordlist.sourceforge.net/scowl-readme This]? --[[User:Paddy3118|Paddy3118]] 06:02, 28 November 2010 (UTC)
+::: [This](http://wordlist.sourceforge.net/scowl-readme)? --[[User:Paddy3118|Paddy3118]] 06:02, 28 November 2010 (UTC)
 :In the Perl code it was a faulty algorithm that hardwired the number of expected results!?!  I fixed the Perl and Perl 6, but someone else can fix the C++. --[[User:TimToady|TimToady]] 18:32, 27 November 2010 (UTC)
 :::Thanks TimToady. --[[User:Paddy3118|Paddy3118]] 05:42, 28 November 2010 (UTC)
 
@@ -608,14 +608,14 @@ I was comparing my solution to the "short local version" of the python code.  I 
 --[[User:Jtprince|Jtprince]] ([[User talk:Jtprince|talk]]) 15:52, 14 August 2015 (UTC)
 
 ==No Dictionary?==
-At this moment, the URL for the dictionary (http://www.puzzlers.org/pub/wordlists/unixdict.txt) is returning a 401. Is any action required to remedy this?
+At this moment, the URL for the dictionary (<http://www.puzzlers.org/pub/wordlists/unixdict.txt>) is returning a 401. Is any action required to remedy this?
 
 --[[User:Balrog|Balrog]] ([[User talk:Balrog|talk]]) 20:20, 14 August 2018 (UTC)
 
 : Yes, it would be nice to have a (stable) version of the   '''unixdict.txt'''   stored somewhere on Rosetta Code,   that way,   any new computer programming examples would be consistent with those entered before the latest updates or changes that might have been made to the original (dictionary) file.   Plus it would eliminate the possibility of any 401 and 404 errors,   and the possibility of added cookies from the original host site mentioned above.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:50, 14 August 2018 (UTC)
 
-::I started to look into it, but have to stop, myself. I got as far as [http://www.puzzlers.org/word-lists this page] which states that '''some''' of the lists may be open-source. If someone finds that we could site the list here then we might then try and get a copy re-hosted; but it would have to be the exact same page or saved as a latin_1 encoded text file. (We would not want a copy to cause problems with existing code).
+::I started to look into it, but have to stop, myself. I got as far as [this page](http://www.puzzlers.org/word-lists) which states that '''some''' of the lists may be open-source. If someone finds that we could site the list here then we might then try and get a copy re-hosted; but it would have to be the exact same page or saved as a latin_1 encoded text file. (We would not want a copy to cause problems with existing code).
 
-:::I successfully accessed the wordlist using the "Wayback Machine" with this URL ==> https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt
+:::I successfully accessed the wordlist using the "Wayback Machine" with this URL ==> <https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt>
 :::I'll edit that URL into the page. If that's a mistake feel free to back out my change.
 :::--[[User:Balrog|Balrog]] ([[User talk:Balrog|talk]]) 19:16, 7 June 2019 (UTC)

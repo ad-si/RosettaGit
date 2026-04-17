@@ -986,7 +986,7 @@ end mReturn
  80  DEF  FN FA(N) =  USR (N < 2) + N *  FN FA(N - 1)
  90  PRINT  FN FA(4)
 ```
-http://hoop-la.ca/apple2/2013/usr-if-recursive-fn/
+<http://hoop-la.ca/apple2/2013/usr-if-recursive-fn/>
 
 
 ## Arendelle
@@ -1850,7 +1850,7 @@ Compute 10! and checking that it is 3628800, the esoteric way
 ```
 
 
-This recursive lambda function is made in the following way (see http://en.wikipedia.org/wiki/Lambda_calculus):
+This recursive lambda function is made in the following way (see <http://en.wikipedia.org/wiki/Lambda_calculus>):
 
 Recursive lambda function for computing factorial.
 
@@ -2049,7 +2049,7 @@ int factorial(int n) {
 
 ### Obfuscated
 
-This is simply beautiful, [http://www.ioccc.org/1995/savastio.c 1995 IOCCC winning entry by Michael Savastio], largest factorial possible : 429539!
+This is simply beautiful, [1995 IOCCC winning entry by Michael Savastio](http://www.ioccc.org/1995/savastio.c), largest factorial possible : 429539!
 
 ```C
 
@@ -2804,7 +2804,7 @@ fac = (n) ->
 
 ###  Functional
 
-{{works with|JavaScript|1.8}} (See [https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/reduce MDC])
+{{works with|JavaScript|1.8}} (See [MDC](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/reduce))
 
 ```javascript
 fac = (n) ->
@@ -2895,7 +2895,7 @@ Functional:
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -4961,7 +4961,7 @@ The simplest description: factorial is the product of the numbers from 1 to n:
 factorial n = product [1..n]
 ```
 
-Or, using composition and omitting the argument ([https://www.haskell.org/haskellwiki/Partial_application partial application]):
+Or, using composition and omitting the argument ([partial application](https://www.haskell.org/haskellwiki/Partial_application)):
 
 ```haskell
 factorial = product . enumFromTo 1
@@ -4973,7 +4973,7 @@ Or, written explicitly as a fold:
 factorial n = foldl (*) 1 [1..n]
 ```
 
-''See also: [http://www.willamette.edu/~fruehr/haskell/evolution.html The Evolution of a Haskell Programmer]''
+''See also: [The Evolution of a Haskell Programmer](http://www.willamette.edu/~fruehr/haskell/evolution.html)''
 
 Or, if you wanted to generate a list of all the factorials:
 
@@ -5157,7 +5157,7 @@ end
 
 ### Iterative
 
-The {{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors] provides the following iterative procedure which can be included with 'link factors':
+The {{libheader|Icon Programming Library}} [factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn) provides the following iterative procedure which can be included with 'link factors':
 
 ```Icon
 procedure factorial(n)			#: return n! (n factorial)
@@ -8427,7 +8427,7 @@ fact(X, F) :-
 
 ### Fold with anonymous function
 
-Using the module lambda written by Ulrich Neumerkel found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl, we can use anonymous functions and write :
+Using the module lambda written by Ulrich Neumerkel found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>, we can use anonymous functions and write :
 
 ```prolog
 :- use_module(lambda).
@@ -8447,7 +8447,7 @@ fact(N, F) :-
 
 ### Continuation passing style
 
-Works with SWI-Prolog and module lambda written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl.
+Works with SWI-Prolog and module lambda written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
 ```prolog
 :- use_module(lambda).
@@ -8931,7 +8931,7 @@ public int factorial_iter(int n){
 ```
 
 However, Rascal supports an even neater solution.
-By using a [http://tutor.rascal-mpl.org/Courses/Rascal/Libraries/lang/xml/DOM/xmlPretty/xmlPretty.html#/Courses/Rascal/Expressions/Reducer/Reducer.html reducer] we can write this code on one short line:
+By using a [reducer](http://tutor.rascal-mpl.org/Courses/Rascal/Libraries/lang/xml/DOM/xmlPretty/xmlPretty.html#/Courses/Rascal/Expressions/Reducer/Reducer.html) we can write this code on one short line:
 
 ```rascal
 public int factorial_iter2(int n) = (1 | it*e | int e <- [1..n]);
@@ -9741,13 +9741,13 @@ endfunction
 
 ## Seed7
 
-Seed7 defines the prefix operator [http://seed7.sourceforge.net/libraries/integer.htm#!%28in_integer%29 !] ,
-which computes a factorial of an [http://seed7.sourceforge.net/libraries/integer.htm integer].
+Seed7 defines the prefix operator [!](http://seed7.sourceforge.net/libraries/integer.htm#!%28in_integer%29) ,
+which computes a factorial of an [integer](http://seed7.sourceforge.net/libraries/integer.htm).
 The maximum representable number of an integer is
-[http://seed7.sourceforge.net/libraries/integer.htm#(attr_integer)._last 9223372036854775807].
+[9223372036854775807](http://seed7.sourceforge.net/libraries/integer.htm#(attr_integer)._last).
 This limits the maximum factorial for integers to factorial(20)=2432902008176640000.
 Because of this limitations factorial is a very bad example to show the performance advantage of an iterative solution.
-To avoid this limitations the functions below use [http://seed7.sourceforge.net/libraries/bigint.htm bigInteger]:
+To avoid this limitations the functions below use [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm):
 
 ### Iterative
 
@@ -9766,7 +9766,7 @@ const func bigInteger: factorial (in bigInteger: n) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#iterative_fib]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
 
 ### Recursive
 
@@ -9783,7 +9783,7 @@ const func bigInteger: factorial (in bigInteger: n) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#fib]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#fib>
 
 
 ## Self

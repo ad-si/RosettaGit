@@ -2018,7 +2018,7 @@ StdDev: 3.2374717425824, expected 3.1622776601684
 
 ## Maple
 
-Maple has a built-in for sampling directly from [http://www.maplesoft.com/support/help/Maple/view.aspx?path=Statistics/Distributions/Normal Normal] distributions:
+Maple has a built-in for sampling directly from [Normal](http://www.maplesoft.com/support/help/Maple/view.aspx?path=Statistics/Distributions/Normal) distributions:
 
 ```maple
 with(Statistics):
@@ -2128,7 +2128,7 @@ Use <code>mpsincos</code> and caching to generate two values at nearly the same 
 
 got some trouble with math.randg needs this call randg(cMean,cMean*cStdDiv), whereas randg(cMean,cStdDiv) to get the same results??
 
-From  [http://www.freepascal.org/docs-html/rtl/math/randg.html Free Pascal Docs unit math]
+From  [Free Pascal Docs unit math](http://www.freepascal.org/docs-html/rtl/math/randg.html)
 
 ```pascal
 Program Example40;
@@ -2767,7 +2767,7 @@ Stddev = 0.9959455132
 
 ## Python
 
-This uses the external [http://matplotlib.org/ matplotlib] package as well as the built-in standardlib function [http://docs.python.org/2/library/random.html?highlight=gauss#random.gauss random.gauss].
+This uses the external [matplotlib](http://matplotlib.org/) package as well as the built-in standardlib function [random.gauss](http://docs.python.org/2/library/random.html?highlight=gauss#random.gauss).
 
 ```python
 from __future__ import division
@@ -2798,7 +2798,7 @@ Sample mean = 49.9822; Stddev = 4.00938; max = 66.8091; min = 33.5283 for 100000
 
 ## R
 
-R can generate random normal distributed numbers using the [https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Normal.html rnorm] command:
+R can generate random normal distributed numbers using the [rnorm](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/Normal.html) command:
 
 ```r
 n = 100000;
@@ -2837,7 +2837,7 @@ compute statistics and plot a histogram.
 
 The other part of the task was to produce normal distributed numbers from a unit distribution.
 The following code is an implementation of the polar method. It is a slightly modified
-version of [http://planet.plt-scheme.org/package-source/schematics/random.plt/1/0/random.ss code]
+version of [code](http://planet.plt-scheme.org/package-source/schematics/random.plt/1/0/random.ss)
 originally written by Sebastian Egner.
 
 ```racket
@@ -3264,7 +3264,7 @@ s: 4.00295544816687358837821680496471
 
 ## Stata
 
-Pairs of normal numbers are generated from pairs of uniform numbers using the polar form of [https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform Box-Muller method]. A normal density is added to the histogram for comparison. See '''[http://www.stata.com/help.cgi?histogram histogram]''' in Stata help. A [https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot Q-Q plot] is also drawn.
+Pairs of normal numbers are generated from pairs of uniform numbers using the polar form of [Box-Muller method](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform). A normal density is added to the histogram for comparison. See '''[histogram](http://www.stata.com/help.cgi?histogram)''' in Stata help. A [Q-Q plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) is also drawn.
 
 
 ```stata

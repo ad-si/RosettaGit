@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/chsc/gogl GoGL] is an OpenGL binding generator for Go. No external dependencies like GLEW are needed.
+[GoGL](https://github.com/chsc/gogl) is an OpenGL binding generator for Go. No external dependencies like GLEW are needed.
 
-Its use is subject to [https://github.com/chsc/gogl/blob/master/LICENSE.mkd this license].
+Its use is subject to [this license](https://github.com/chsc/gogl/blob/master/LICENSE.mkd).

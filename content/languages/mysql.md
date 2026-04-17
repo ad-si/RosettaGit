@@ -16,6 +16,6 @@ tags = []
 The company develops and maintains the system, selling support and service contracts, as well as proprietary-licensed copies of MySQL, and employing people all over the world who collaborate via the Internet. MySQL AB was founded by David Axmark, Allan Larsson, and Michael "Monty" Widenius.
 
 ## Citations
-* [http://en.wikipedia.org/wiki/Mysql Wikipedia:MySQL]
+* [Wikipedia:MySQL](http://en.wikipedia.org/wiki/Mysql)
 
 [Category:SQL Derivatives](https://rosettacode.org/wiki/Category:SQL_Derivatives)

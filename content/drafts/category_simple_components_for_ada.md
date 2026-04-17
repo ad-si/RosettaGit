@@ -24,4 +24,4 @@ tags = []
 * pseudo-random non-repeating numbers, symmetric encoding and decoding;
 * Portable IEEE 754 representations support.
 
-The library is portable, distributed under GM [[GPL]], and compatible with [[Ada 95]] and [[Ada 2005]]. The library can be downloaded at its [http://www.dmitry-kazakov.de/ada/components.htm home page]
+The library is portable, distributed under GM [[GPL]], and compatible with [[Ada 95]] and [[Ada 2005]]. The library can be downloaded at its [home page](http://www.dmitry-kazakov.de/ada/components.htm)

@@ -9,7 +9,7 @@ id = 7481
 categories = []
 tags = []
 +++
-[http://www.pharo-project.org/home Pharo homepage]
+[Pharo homepage](http://www.pharo-project.org/home)
 
 Pharo is a fork of [Squeak](https://rosettacode.org/wiki/Squeak), an implementation of [Smalltalk](https://rosettacode.org/wiki/Smalltalk). Pharo focuses on removing unessential code from Squeak and serves as the reference implementation of the Seaside web application framework.
 

@@ -48,7 +48,7 @@ languages = [
 ]
 +++
 
-{{task}}Finding the intersection of two lines that are in the same plane is an important topic in collision detection.<ref>[http://mathworld.wolfram.com/Line-LineIntersection.html]</ref>
+{{task}}Finding the intersection of two lines that are in the same plane is an important topic in collision detection.<ref><http://mathworld.wolfram.com/Line-LineIntersection.html></ref>
 
 
 ## Task
@@ -1483,7 +1483,7 @@ intersect({1,-1},{4,4},{2,5},{3,-2})        -- {2.5,1.5}
 ## Python
 
 
-Using external [https://shapely.readthedocs.io/en/latest/manual.html Shapely] library
+Using external [Shapely](https://shapely.readthedocs.io/en/latest/manual.html) library
 
 ```python
 from shapely.geometry import LineString
@@ -1976,8 +1976,8 @@ object Intersection extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/DAqMtEx/0 (JavaScript)]
-or by [https://scastie.scala-lang.org/WQOqakOlQnaBRFBa1PuRYw Scastie (JVM)].
+{{Out}}See it in running in your browser by [(JavaScript)](https://scalafiddle.io/sf/DAqMtEx/0)
+or by [Scastie (JVM)](https://scastie.scala-lang.org/WQOqakOlQnaBRFBa1PuRYw).
 
 ## Sidef
 

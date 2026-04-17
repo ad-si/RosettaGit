@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}The glMLite library can be found on [http://www.linux-nantes.org/~fmonnier/OCaml/GL/ www.linux-nantes.org/~fmonnier/OCaml/GL/].
+{{library}}The glMLite library can be found on [www.linux-nantes.org/~fmonnier/OCaml/GL/](http://www.linux-nantes.org/~fmonnier/OCaml/GL/).

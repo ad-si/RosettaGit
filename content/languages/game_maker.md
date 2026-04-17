@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 ## Game Maker
-'''Game Maker''' (often abbreviated to '''GM''') is a [Windows](https://rosettacode.org/wiki/Windows) and [Mac](https://rosettacode.org/wiki/Mac) [IDE](https://rosettacode.org/wiki/IDE) originally developed by [Mark Overmars](https://en.wikipedia.org/wiki/Mark_Overmars). It is currently developed and published by [http://www.yoyogames.com YoYo Games], a software company in which Overmars is involved. Game Maker allows users to easily develop computer games without the requirement of prior computer programming experience, while allowing advanced users to create complex applications with its built-in scripting language, [GML](https://rosettacode.org/wiki/:Category:GML).
+'''Game Maker''' (often abbreviated to '''GM''') is a [Windows](https://rosettacode.org/wiki/Windows) and [Mac](https://rosettacode.org/wiki/Mac) [IDE](https://rosettacode.org/wiki/IDE) originally developed by [Mark Overmars](https://en.wikipedia.org/wiki/Mark_Overmars). It is currently developed and published by [YoYo Games](http://www.yoyogames.com), a software company in which Overmars is involved. Game Maker allows users to easily develop computer games without the requirement of prior computer programming experience, while allowing advanced users to create complex applications with its built-in scripting language, [GML](https://rosettacode.org/wiki/:Category:GML).
 
 Although intended for programming games, it is also very capable of many other function for a variety of different types of programs.
 
@@ -21,4 +21,4 @@ Game Maker Studio is a significantly newer version of the program. Since Game Ma
 
 ## See also
 * [Game Maker on Wikipedia](https://en.wikipedia.org/wiki/Game_Maker)
-* [http://www.yoyogames.com YoYo Games homepage]
+* [YoYo Games homepage](http://www.yoyogames.com)

@@ -883,11 +883,11 @@ puts res.reverse
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/msgdigest.htm msgdigest.s7i] defines
-the functions [http://seed7.sourceforge.net/libraries/msgdigest.htm#ripemd160(in_var_string) ripemd160] and
-[http://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string) sha256].
-The Seed7 library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/encoding.htm#toBase58(in_string) toBase58],
+The Seed7 library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm) defines
+the functions [ripemd160](http://seed7.sourceforge.net/libraries/msgdigest.htm#ripemd160(in_var_string)) and
+[sha256](http://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string)).
+The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [toBase58](http://seed7.sourceforge.net/libraries/encoding.htm#toBase58(in_string)),
 which encodes a string with the Base58 encoding used by Bitcoin. No external library is needed.
 
 

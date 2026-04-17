@@ -2361,7 +2361,7 @@ Search complete.
 
 ### Generator
 
-From [http://leetm.mingpao.com/cfm/Forum3.cfm?CategoryID=1&TopicID=1545&TopicOrder=Desc&TopicPage=1 here].
+From [here](http://leetm.mingpao.com/cfm/Forum3.cfm?CategoryID=1&TopicID=1545&TopicOrder=Desc&TopicPage=1).
 
 ```python
 def impl(d, c, m):
@@ -2467,8 +2467,8 @@ repeat i 4000000 [  if isSDN? to-string i [print i] ]
 
 ## REXX
 
-Also see:    [http://oeis.org/A046043 OEIS A46043]
-  and   [http://oeis.org/A138480 OEIS A138480].
+Also see:    [OEIS A46043](http://oeis.org/A046043)
+  and   [OEIS A138480](http://oeis.org/A138480).
 
 ### digit by digit test
 
@@ -2742,7 +2742,7 @@ object SelfDescribingNumbers extends App {
 ```
 
 
-See it running in your browser by [https://scastie.scala-lang.org/vQv61PpoSLeWwyVipLUevQ Scastie (JVM)].
+See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/vQv61PpoSLeWwyVipLUevQ).
 
 
 ## Seed7

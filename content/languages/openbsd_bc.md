@@ -11,8 +11,8 @@ tags = []
 +++
 This is the <tt>/usr/bin/bc</tt> on [OpenBSD](https://rosettacode.org/wiki/OpenBSD) systems. It has some, but not all, of the features as [GNU bc](https://rosettacode.org/wiki/GNU_bc).
 
-* [http://www.openbsd.org/cgi-bin/man.cgi?query=bc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html OpenBSD bc(1) manual page]
-* [http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/bc/ src/usr.bin/bc/]
+* [OpenBSD bc(1) manual page](http://www.openbsd.org/cgi-bin/man.cgi?query=bc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html)
+* [src/usr.bin/bc/](http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/bc/)
 
 These extensions are in OpenBSD bc but not in [POSIX](https://rosettacode.org/wiki/POSIX):
 

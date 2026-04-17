@@ -1007,7 +1007,7 @@ END     { print("# Found", numW5, "month with 5 weekends.")
 ```
 
 
-See also: [http://rosettacode.org/wiki/Five_weekends#UNIX_Shell unix-shell] and [http://rosettacode.org/wiki/Calendar#AWK Calendar].
+See also: [unix-shell](http://rosettacode.org/wiki/Five_weekends#UNIX_Shell) and [Calendar](http://rosettacode.org/wiki/Calendar#AWK).
 
 ```txt
 
@@ -2745,7 +2745,7 @@ nr of month from 1900 to 2100 that has five weekends 201
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=fbeb1b7a06fff3da3f8b262ee5d71390 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=fbeb1b7a06fff3da3f8b262ee5d71390)'''
 
 ```gambas
 Public Sub Main()
@@ -3703,8 +3703,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[datetime.icn provides julian](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
 
 ```txt
 There are 201 months from 1900 to 2100 with five full weekends.
@@ -7465,9 +7465,9 @@ awk -f 5weekends.awk  cal.txt
 ```
 
 
-See also: [http://rosettacode.org/wiki/Five_weekends#AWK awk] and [[Calendar]].
+See also: [awk](http://rosettacode.org/wiki/Five_weekends#AWK) and [[Calendar]].
 
-Try it out online: [http://www.compileonline.com/execute_ksh_online.php compileonline.com]
+Try it out online: [compileonline.com](http://www.compileonline.com/execute_ksh_online.php)
 
 
 ## VBA

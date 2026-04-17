@@ -96,7 +96,7 @@ languages = [
 ## Task
 
 Write a program that outputs the lyrics of the Christmas carol ''The Twelve Days of Christmas''.
-The lyrics can be found [http://www.lyricsmode.com/lyrics/c/christmas_carols/the_twelve_days_of_christmas.html here].
+The lyrics can be found [here](http://www.lyricsmode.com/lyrics/c/christmas_carols/the_twelve_days_of_christmas.html).
 
 (You must reproduce the words in the correct order, but case, format, and punctuation are left to your discretion.)
 
@@ -715,7 +715,7 @@ A partridge in a pear tree.
 
 ## Go
 
-[https://play.golang.org/p/dnDyx8ee_G Go Playground]
+[Go Playground](https://play.golang.org/p/dnDyx8ee_G)
 
 
 {{ code(src="content/tasks/the_twelve_days_of_christmas/go.go", lang="go") }}
@@ -2216,7 +2216,7 @@ and A partridge in a pear tree.
 
 ## Rust
 
-[https://play.rust-lang.org/?gist=773d4af97e7c4b374574a3e1656b5029&version=stable&backtrace=0 Rust Playground]
+[Rust Playground](https://play.rust-lang.org/?gist=773d4af97e7c4b374574a3e1656b5029&version=stable&backtrace=0)
 
 
 {{ code(src="content/tasks/the_twelve_days_of_christmas/rust.rs", lang="rust") }}

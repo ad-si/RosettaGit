@@ -69,7 +69,7 @@ I want it to look like math notation not computer code. [[User:Zelah|Zelah]] ([[
 
 ::::: Chrome, and "MathML with SVG or PNG fallback" --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 17:20, 12 May 2016 (UTC)
 
-::::::Ok, I have a theory why it is failing. [[wp:MathML#Web_browsers|Chrome doesn't support MathML]] (I've also tried with another WebKit browser called Vimb). So the fallback image is used. But for some reasons (I guess caching due to Cloudfare) it isn't shown. But the direct link to the fallback image should work: http://rosettacode.org/mw/index.php?title=Special:MathShowImage&hash=b6db46185bb825b2df70bfd507239446&mode=mathml
+::::::Ok, I have a theory why it is failing. [[wp:MathML#Web_browsers|Chrome doesn't support MathML]] (I've also tried with another WebKit browser called Vimb). So the fallback image is used. But for some reasons (I guess caching due to Cloudfare) it isn't shown. But the direct link to the fallback image should work: <http://rosettacode.org/mw/index.php?title=Special:MathShowImage&hash=b6db46185bb825b2df70bfd507239446&mode=mathml>
 ::::::I had another caching issue yesterday when I fixed an overwritten example output image. The task page where the image was included still showed the wrong image. But today everything was alright.
 ::::::So if my theory is correct, you should see the fallback image in a few hours. If not, something else is wrong. --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 19:31, 12 May 2016 (UTC)
 
@@ -77,7 +77,7 @@ I want it to look like math notation not computer code. [[User:Zelah|Zelah]] ([[
 
 :::::::: I noticed that the last change introduced a "cross product" symbol/glyph, but it does not render correctly (under Firefox Aurora or MS Internet Explorer).   This has to do with the 3rd (and last example) in the task's preamble.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:42, 16 May 2016 (UTC)
 
-:::::::::: You could use the     &amp;<nowiki>times;</nowiki>     symbol, it's not quite a large at the cross-product glyph, but it's more accurate.   There is a similar character ⨯ at U+2A2F, but this is not always considered identical to U+00D7, as U+2A2F is intended to ''explicitly'' denote the [[cross product]] of two vectors (last sentence as quoted in full from Wiki: [https://en.wikipedia.org/wiki/Multiplication_sign Multiplication sign]).   I like the expression (for the exponentiation)     100<sup>2000</sup>     or     100<sup>2,000</sup>     better though.     I.E.:   X=2&times;100<sup>2,000</sup>     or, for ease of reading:     <big> X=2&times;100<sup>2,000</sup> </big>     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:30, 16 May 2016 (UTC)
+:::::::::: You could use the     &amp;<nowiki>times;</nowiki>     symbol, it's not quite a large at the cross-product glyph, but it's more accurate.   There is a similar character ⨯ at U+2A2F, but this is not always considered identical to U+00D7, as U+2A2F is intended to ''explicitly'' denote the [[cross product]] of two vectors (last sentence as quoted in full from Wiki: [Multiplication sign](https://en.wikipedia.org/wiki/Multiplication_sign)).   I like the expression (for the exponentiation)     100<sup>2000</sup>     or     100<sup>2,000</sup>     better though.     I.E.:   X=2&times;100<sup>2,000</sup>     or, for ease of reading:     <big> X=2&times;100<sup>2,000</sup> </big>     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 19:30, 16 May 2016 (UTC)
 
 ==if we have successfully moved to the new task page...==
 Can we delete "2001 Digits Of Root Two"? [[User:Zelah|Zelah]] ([[User talk:Zelah|talk]]) 22:29, 12 May 2016 (UTC)
@@ -94,9 +94,9 @@ Can we delete "2001 Digits Of Root Two"? [[User:Zelah|Zelah]] ([[User talk:Zelah
 My original question is still outstanding. If it is impossible to remove a draft task then I will drop the issue. [[User:Zelah|Zelah]] ([[User talk:Zelah|talk]]) 03:37, 16 May 2016 (UTC)
 
 ==Perl 6 example==
-I tried running it here: https://ideone.com/PzMU1C
+I tried running it here: <https://ideone.com/PzMU1C>
 [[User:Zelah|Zelah]] ([[User talk:Zelah|talk]]) 23:33, 15 May 2016 (UTC)
 
-: The version of Perl 6 on IDEOne is ancient, pre-pre-alpha. For what it is worth, all that needs to change to make it work there is to expand the unicode sequence operator (…) in line 10 to its ASCII equivalent (...). See https://ideone.com/dUbfhi with the change applied. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:39, 17 May 2016 (UTC)
+: The version of Perl 6 on IDEOne is ancient, pre-pre-alpha. For what it is worth, all that needs to change to make it work there is to expand the unicode sequence operator (…) in line 10 to its ASCII equivalent (...). See <https://ideone.com/dUbfhi> with the change applied. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:39, 17 May 2016 (UTC)
 
 ::I mentioned the out of date compiler version to IDEOne. They have promised to fix this issue. --[[User:Zelah|Zelah]] ([[User talk:Zelah|talk]]) 21:21, 19 May 2016 (UTC)

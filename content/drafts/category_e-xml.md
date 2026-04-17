@@ -14,6 +14,6 @@ tags = []
 
 Draft XML library for [[:Category:E|E]].
 
-[http://wiki.erights.org/wiki/E-XML Info page at wiki.erights.org]
+[Info page at wiki.erights.org](http://wiki.erights.org/wiki/E-XML)
 
-If you have any comments on the design of the library please let us know on the [http://www.eros-os.org/mailman/listinfo/e-lang mailing list].
+If you have any comments on the design of the library please let us know on the [mailing list](http://www.eros-os.org/mailman/listinfo/e-lang).

@@ -11,5 +11,5 @@ tags = []
 +++
 
 {{library}}
-[http://w3.impa.br/~diego/software/luasocket/home.html LuaSocket] is the definitive networking library for [[Lua]].
+[LuaSocket](http://w3.impa.br/~diego/software/luasocket/home.html) is the definitive networking library for [[Lua]].
 [[Category:Lua]]

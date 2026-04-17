@@ -28,7 +28,7 @@ A more correct name might be '''"Loop/n minus one half"''', but even better migh
 :: While "n+1/2" was a mis-remember from my side, "Loop and a half" seems to be the common name of the pattern. You may not like it, but being the commonly used name, it's the one to use.
 :: Also note that in most languages (namely all having a "break" or similar) arguably the best solution is not to make the second part a conditional, but to make a conditional break in the loop (because that more clearly communicates that you leave the loop afterwards). Of course, SESE purists may differ. --[[User:Ce|Ce]] 13:53, 6 November 2009 (UTC)
 
-::: A little googling found me [http://academicearth.org/lectures/the-loop-and-half-problem this lecture] on the pattern. Is a while true loop necessary? Is the break necessary? If so, then we still need to work on the task description to make this clear. --[[User:Paddy3118|Paddy3118]] 18:11, 6 November 2009 (UTC)
+::: A little googling found me [this lecture](http://academicearth.org/lectures/the-loop-and-half-problem) on the pattern. Is a while true loop necessary? Is the break necessary? If so, then we still need to work on the task description to make this clear. --[[User:Paddy3118|Paddy3118]] 18:11, 6 November 2009 (UTC)
 
 The other problem is defining "best". For example, the third COBOL posting uses GO TO. It's really fast, but is it the "best" way of doing it? [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 15:45, 29 May 2013 (UTC)
 

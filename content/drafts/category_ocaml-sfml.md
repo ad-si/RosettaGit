@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{Library}}
-[https://github.com/fccm/ocaml-sfml ocaml-sfml] provides access to the [http://www.sfml-dev.org/ SFML] library, from [[OCaml]].
+[ocaml-sfml](https://github.com/fccm/ocaml-sfml) provides access to the [SFML](http://www.sfml-dev.org/) library, from [[OCaml]].

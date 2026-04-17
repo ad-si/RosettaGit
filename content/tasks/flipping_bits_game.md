@@ -2373,7 +2373,7 @@ Play again(Y/N)?
 
 ## Maple
 
-Click [http://maplecloud.maplesoft.com/application.jsp?appId=5721146878066688 here] to play this game online.
+Click [here](http://maplecloud.maplesoft.com/application.jsp?appId=5721146878066688) to play this game online.
 
 ```maple
 FlippingBits := module()
@@ -4402,7 +4402,7 @@ func scramblebegin(flip)
 
 Output:
 
-[https://1drv.ms/v/s!AqDUIunCqVnIg1Tbq1vXuLSg5B6L Flipping bits game]
+[Flipping bits game](https://1drv.ms/v/s!AqDUIunCqVnIg1Tbq1vXuLSg5B6L)
 
 
 ## Ruby

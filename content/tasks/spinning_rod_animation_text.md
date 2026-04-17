@@ -474,7 +474,7 @@ EndWhile
 
 ## MiniScript
 
-Control over the text cursor -- or indeed, whether there ''is'' a text cursor, or even text at all -- depends on the host environment.  Here's a version that works with [https://miniscript.org/MiniMicro/ MiniMicro]:
+Control over the text cursor -- or indeed, whether there ''is'' a text cursor, or even text at all -- depends on the host environment.  Here's a version that works with [MiniMicro](https://miniscript.org/MiniMicro/):
 
 ```MiniScript
 print "Press control-C to exit..."

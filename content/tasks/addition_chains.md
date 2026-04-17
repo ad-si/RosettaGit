@@ -43,7 +43,7 @@ For each n in {7,14,21,29,32,42,64} display the following : L(n), the count of B
 Extra-credit: Same task for n in {47, 79, 191, 382 , 379, 12509}
 
 '''References'''
-* OEIS sequences A079301, A079302. [https://oeis.org/A079301]
+* OEIS sequences A079301, A079302. <https://oeis.org/A079301>
 * Richard K. Guy - Unsolved problems in Number Theory - C6 - Addition chains.
 
 '''Example'''
@@ -1953,7 +1953,7 @@ Number of minimum length Brauer chains:  6583
 ## Racket
 
 
-This implementation uses the [https://docs.racket-lang.org/rosette-guide/index.html Rosette] language in Racket. It is inefficient as it asks an SMT solver to enumerate every possible solutions. However, it is very straightforward to write, and in fact is quite efficient for computing <code>l(n)</code> and finding one example (solve n = 379 in ~3 seconds).
+This implementation uses the [Rosette](https://docs.racket-lang.org/rosette-guide/index.html) language in Racket. It is inefficient as it asks an SMT solver to enumerate every possible solutions. However, it is very straightforward to write, and in fact is quite efficient for computing <code>l(n)</code> and finding one example (solve n = 379 in ~3 seconds).
 
 
 ```racket

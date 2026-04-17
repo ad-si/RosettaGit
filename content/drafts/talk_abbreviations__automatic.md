@@ -68,14 +68,14 @@ As soon as I get or find the required information, I'll strike this whole sectio
     Friday	禮拜五	láihbaai ńgh				
     Saturday	禮拜六	láihbaai luhk
 
-:Not being at all fluent or knowledgeable, I have no way to tell if they are accurate. http://languagephrases.com/cantonese/monday-to-sunday-in-cantonese-language/ --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:28, 17 September 2017 (UTC)
+:Not being at all fluent or knowledgeable, I have no way to tell if they are accurate. <http://languagephrases.com/cantonese/monday-to-sunday-in-cantonese-language/> --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:28, 17 September 2017 (UTC)
 
 :Actually, I don't know that I would trust many (most?) of these translations. 
 
     Psuedo Azerbaijani: Bazar_gÜnÜ Bazar_ærtæsi Çærs,ænbæ_axs,amò Çærs,ænbæ_gÜnÜ CÜmæ_axs,amò CÜmæ_gÜnÜ CÜmæ_gÜnÜ
     Actual Azerbaijani: Bazar Bazar_ertəsi Çərşənbə_axşamı Çərşənbə Cümə_axşamı Cümə Şənbə
 
-: Source: https://translate.google.com/translate?hl=en&sl=az&tl=en&u=https%3A%2F%2Faz.wikipedia.org%2Fwiki%2FH%C9%99ft%C9%99nin_g%C3%BCnl%C9%99ri&anno=2 Many that I've looked at are similarly (in)accurate. Not that it really particularly matters I suppose. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:48, 17 September 2017 (UTC)
+: Source: <https://translate.google.com/translate?hl=en&sl=az&tl=en&u=https%3A%2F%2Faz.wikipedia.org%2Fwiki%2FH%C9%99ft%C9%99nin_g%C3%BCnl%C9%99ri&anno=2> Many that I've looked at are similarly (in)accurate. Not that it really particularly matters I suppose. --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 23:48, 17 September 2017 (UTC)
 
 -----
 
@@ -94,11 +94,11 @@ xīngqītiān xīngqīyī xīngqī'èr xīngqīsān xīngqīsì xīngqīwǔ xīn
 ==Solution for Python==
 '''Preface:''' I just registered recently on this website and decided to make my first contribution for a problem that didn't have a solution for Python.  <br/>
 When I finished writing the code, someone else already provided solutions. <br/>
-Imperative: [http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272170#Python http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272170#Python] <br/>
-and Functional: [http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272190#Functional http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272190#Functional]. <br/>
+Imperative: [http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272170#Python](http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272170#Python) <br/>
+and Functional: [http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272190#Functional](http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272190#Functional). <br/>
 I found my solution more concise, Pythonic and readable than both versions and decided to replace one of them by my version. <br/>As my solution follows mainly functional paradigm, apart from main function, I decided to replace the functional version. <br/> 
 '''Problem:''' Please, provide feedback on if I should leave it like that, try to make my version completely functional (and probably less readable), or post it separately (if so then how should I name my version)? <br/>
-Here is my code: [http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272203#Functional link] <br/>
+Here is my code: [link](http://www.rosettacode.org/mw/index.php?title=Abbreviations,_automatic&oldid=272203#Functional) <br/>
 Any notes on the code itself are also welcome. --[[User:Georgy|Georgy]] ([[User talk:Georgy|talk]]) 12:57, 4 November 2018 (UTC)
 
 The author of the original functional version posted both his and mine versions. So, I guess, problem solved! --[[User:Georgy|Georgy]] ([[User talk:Georgy|talk]]) 13:12, 4 November 2018 (UTC)

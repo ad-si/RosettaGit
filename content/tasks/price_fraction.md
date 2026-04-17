@@ -1486,7 +1486,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=87527eed297164593d88aa2c35898eaf Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=87527eed297164593d88aa2c35898eaf)'''
 
 ```gambas
 Public Sub Main()
@@ -3237,7 +3237,7 @@ EndIf
 
 ## Python
 
-Using the [http://docs.python.org/library/bisect.html bisect] standard module to reduce the comparisons with members of the cin array.
+Using the [bisect](http://docs.python.org/library/bisect.html) standard module to reduce the comparisons with members of the cin array.
 
 
 ```python

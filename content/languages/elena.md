@@ -14,5 +14,5 @@ tags = []
 
 ELENA is a general-purpose, object-oriented, polymorphic language with late binding. It features message dispatching/manipulation, dynamic object mutation, a script engine / interpreter and mix-ins.
 
-* ELENA on [https://github.com/ELENA-LANG/elena-lang/wiki/ Github]
-* ELENA on [https://www.reddit.com/r/elena_lang/ Reddit]
+* ELENA on [Github](https://github.com/ELENA-LANG/elena-lang/wiki/)
+* ELENA on [Reddit](https://www.reddit.com/r/elena_lang/)

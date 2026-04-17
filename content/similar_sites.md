@@ -21,8 +21,7 @@ Feel free to update and add to it.
 
 ## Multi-Task efforts
 
-- [Algorithm implementation Wikibooks](
-    http://en.wikibooks.org/wiki/Algorithm_implementation)
+- [Algorithm implementation Wikibooks](http://en.wikibooks.org/wiki/Algorithm_implementation)
 - [The Archive of Interesting Code](http://www.keithschwarz.com/interesting/)
 - [Beyond Hello World](http://www.rawbw.com/~rem/HelloPlus/hellos.html)
     including the
@@ -121,8 +120,7 @@ move it back to the live section.
   is currently down. Most recent version at the Wayback Machine is
   from
   [April 24, 2012](https://web.archive.org/web/20120424061654/http://algowiki.net/wiki/index.php?title=Main_Page).
-- [Common Programming Language Features](
-    http://wiki.schmid.dk/wiki/index.php/Common_Programming_Language_Features)
+- [Common Programming Language Features](http://wiki.schmid.dk/wiki/index.php/Common_Programming_Language_Features)
   - C\#, C++, and Ruby
 - [CrossWise](http://cw.tactileint.com/)
 - [eqcode, the equivalent code

@@ -1597,7 +1597,7 @@ Sample percolating 10 x 10 grid
 ```
 
 
-Note the abrupt cut-off in percolation at around p = 0.5 which is to be [http://mathworld.wolfram.com/PercolationThreshold.html expected].
+Note the abrupt cut-off in percolation at around p = 0.5 which is to be [expected](http://mathworld.wolfram.com/PercolationThreshold.html).
 
 
 ## Racket

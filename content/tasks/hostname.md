@@ -560,7 +560,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=11d7f489117d7909da509050103b7891 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=11d7f489117d7909da509050103b7891)'''
 
 ```gambas
 Public Sub Main()
@@ -582,7 +582,7 @@ charlie
 
 ## Go
 
-Use [https://golang.org/pkg/os/#Hostname <code>os.Hostname</code>].
+Use [<code>os.Hostname</code>](https://golang.org/pkg/os/#Hostname).
 
 ```go
 package main
@@ -1628,8 +1628,8 @@ println(java.net.InetAddress.getLocalHost.getHostName)
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/socket.htm socket.s7i]
-defines the function [http://seed7.sourceforge.net/libraries/socket.htm#getHostname getHostname],
+The library [socket.s7i](http://seed7.sourceforge.net/libraries/socket.htm)
+defines the function [getHostname](http://seed7.sourceforge.net/libraries/socket.htm#getHostname),
 which returns the hostname.
 
 

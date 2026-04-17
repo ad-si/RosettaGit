@@ -77,7 +77,7 @@ languages = [
 ]
 +++
 
-From [http://lambda-the-ultimate.org/node/1872 Chung-Chieh Shan] (LtU):
+From [Chung-Chieh Shan](http://lambda-the-ultimate.org/node/1872) (LtU):
 
 Your stair-climbing robot has a very simple low-level API: the "step" function takes no argument and attempts to climb one step as a side effect. Unfortunately, sometimes the attempt fails and the robot clumsily falls one step instead. The "step" function detects what happens and returns a boolean flag: true on success, false on failure.
 

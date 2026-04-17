@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[http://www.erlang.org/doc/man/digraph.html digraph]
+[digraph](http://www.erlang.org/doc/man/digraph.html)

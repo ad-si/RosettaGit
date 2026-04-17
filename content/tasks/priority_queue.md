@@ -1741,7 +1741,7 @@ The below codes all provide the standard priority queue functions of "peekMin", 
 
 '''Binomial Heap Priority Queue'''
 
-The following Binomial Heap Priority Queue code has been adapted [http://cs.hubfs.net/topic/None/56608 from a version by "DeeJay"] updated for changes in F# over the intervening years, and implementing the O(1) "peekMin" mentioned in that post; in addition to the above standard priority queue functions, it also implements the "merge" function for which the Binomial Heap is particularly suited, taking O(log n) time rather than the usual O(n) (or worse) time:
+The following Binomial Heap Priority Queue code has been adapted [from a version by "DeeJay"](http://cs.hubfs.net/topic/None/56608) updated for changes in F# over the intervening years, and implementing the O(1) "peekMin" mentioned in that post; in addition to the above standard priority queue functions, it also implements the "merge" function for which the Binomial Heap is particularly suited, taking O(log n) time rather than the usual O(n) (or worse) time:
 
 ```fsharp
 [<RequireQualifiedAccess>
@@ -1861,7 +1861,7 @@ The "sort" function also uses a similar technique of building a queue from a seq
 
 '''Min Heap Priority Queue'''
 
-The following code implementing a Min Heap Priority Queue is adapted from the [http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml ML PRIORITY_QUEUE code by Lawrence C. Paulson] including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; it implements an efficient "fromSeq" function using reheapify for which the Min Heap is particularly suited as it has only O(n) instead of O(n log n) computational time complexity, which method is also used for the "adjust" and "merge" functions:
+The following code implementing a Min Heap Priority Queue is adapted from the [ML PRIORITY_QUEUE code by Lawrence C. Paulson](http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; it implements an efficient "fromSeq" function using reheapify for which the Min Heap is particularly suited as it has only O(n) instead of O(n log n) computational time complexity, which method is also used for the "adjust" and "merge" functions:
 
 ```fsharp
 [<RequireQualifiedAccess>
@@ -2011,7 +2011,7 @@ Other than the "merge" function, the Min Heap Priority Queue has the same time c
 
 '''Min Heap Priority Queue'''
 
-As the Min Heap is usually implemented as a [http://opendatastructures.org/versions/edition-0.1e/ods-java/10_1_BinaryHeap_Implicit_Bi.html mutable array binary heap] after a genealogical tree based model invented by [https://en.wikipedia.org/wiki/Michael_Eytzinger Michael Eytzinger] over 400 years ago, the following "ugly imperative" code implements the Min Heap Priority Queue this way; note that the code could be implemented not using "ugly" mutable state variables other than the contents of the array (DotNet List which implements a growable array) but in this case the code would be considerably slower as in not much faster or slower than the functional version since using mutable side effects greatly reduces the number of operations:
+As the Min Heap is usually implemented as a [mutable array binary heap](http://opendatastructures.org/versions/edition-0.1e/ods-java/10_1_BinaryHeap_Implicit_Bi.html) after a genealogical tree based model invented by [Michael Eytzinger](https://en.wikipedia.org/wiki/Michael_Eytzinger) over 400 years ago, the following "ugly imperative" code implements the Min Heap Priority Queue this way; note that the code could be implemented not using "ugly" mutable state variables other than the contents of the array (DotNet List which implements a growable array) but in this case the code would be considerably slower as in not much faster or slower than the functional version since using mutable side effects greatly reduces the number of operations:
 
 ```fsharp
 [<RequireQualifiedAccess>
@@ -2176,7 +2176,7 @@ Also note that the imperative version modifies the state of the "testpq" binding
 
 ## Factor
 
-Factor has priority queues implemented in the library: documentation is available at http://docs.factorcode.org/content/article-heaps.html (or by typing "heaps" help interactively in the listener).
+Factor has priority queues implemented in the library: documentation is available at <http://docs.factorcode.org/content/article-heaps.html> (or by typing "heaps" help interactively in the listener).
 
 ```factor
 <min-heap> [ {
@@ -2461,7 +2461,7 @@ Task(5, Make tea)
 
 ## Haskell
 
-One of the best Haskell implementations of priority queues (of which there are many) is [http://hackage.haskell.org/package/pqueue pqueue], which implements a binomial heap.
+One of the best Haskell implementations of priority queues (of which there are many) is [pqueue](http://hackage.haskell.org/package/pqueue), which implements a binomial heap.
 
 ```haskell
 import Data.PQueue.Prio.Min
@@ -2532,7 +2532,7 @@ main = mapM_ print $ hToList $ hFromList [
 ```
 
 
-The above code is a Priority Queue but isn't a [https://en.wikipedia.org/wiki/Binary_heap Min Heap based on a Binary Heap] for the following reasons:  1) it does not preserve the standard tree structure of the binary heap and 2) the tree balancing can be completely destroyed by some combinations of "pop" operations.  The following code is a true purely functional Min Heap implementation and as well implements the extra optional features of Min Heap's that it can build a new Min Heap from a list in O(n) amortized time rather than the O(n log n) amortized time (for a large number of randomly ordered entries) by simply using repeated "push" operations; as well as the standard "push", "peek", "delete" and "pop" (combines the previous two).  As well as the "fromList", "toList", and "sort" functions (the last combines the first two), it also has an "isEmpty" function to test for the empty queue, an "adjust" function that applies a function to every entry in the queue and reheapifies in O(n) amortized time and also the "replaceMin" function which is about twice as fast on the average as combined "delete" followed by "push" operations:
+The above code is a Priority Queue but isn't a [Min Heap based on a Binary Heap](https://en.wikipedia.org/wiki/Binary_heap) for the following reasons:  1) it does not preserve the standard tree structure of the binary heap and 2) the tree balancing can be completely destroyed by some combinations of "pop" operations.  The following code is a true purely functional Min Heap implementation and as well implements the extra optional features of Min Heap's that it can build a new Min Heap from a list in O(n) amortized time rather than the O(n log n) amortized time (for a large number of randomly ordered entries) by simply using repeated "push" operations; as well as the standard "push", "peek", "delete" and "pop" (combines the previous two).  As well as the "fromList", "toList", and "sort" functions (the last combines the first two), it also has an "isEmpty" function to test for the empty queue, an "adjust" function that applies a function to every entry in the queue and reheapifies in O(n) amortized time and also the "replaceMin" function which is about twice as fast on the average as combined "delete" followed by "push" operations:
 
 ```haskell
 data MinHeap kv = MinHeapEmpty
@@ -2662,7 +2662,7 @@ sortPQ ls = toListPQ $ fromListPQ ls
 ```
 
 
-If one is willing to forgo the fast O(1) "size" function and to give up strict conformance to the Heap tree structure (where rather than building each new level until each left node is full to that level before increasing level to the right, a new level is built by promoting leaves to branches only containing left leaves until all branches have left leaves before filling any right leaves of that level) although having even better tree balancing and therefore at least as high efficiency, one can use the following code adapted from the [http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml ''ML'' PRIORITY_QUEUE code by Lawrence C. Paulson] including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; as noted in the code comments, a "size" function to output the number of elements in the queue (fairly quickly in O((log n)^2)), an "adjust" function to apply a function to all elements and reheapify in O(n) time, and a "merge" function to merge two queues has been added to the ML code:
+If one is willing to forgo the fast O(1) "size" function and to give up strict conformance to the Heap tree structure (where rather than building each new level until each left node is full to that level before increasing level to the right, a new level is built by promoting leaves to branches only containing left leaves until all branches have left leaves before filling any right leaves of that level) although having even better tree balancing and therefore at least as high efficiency, one can use the following code adapted from the [''ML'' PRIORITY_QUEUE code by Lawrence C. Paulson](http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; as noted in the code comments, a "size" function to output the number of elements in the queue (fairly quickly in O((log n)^2)), an "adjust" function to apply a function to all elements and reheapify in O(n) time, and a "merge" function to merge two queues has been added to the ML code:
 
 ```haskell
 data PriorityQ k v = Mt
@@ -4009,7 +4009,7 @@ log:
 ## OCaml
 
 
-Holger Arnold's [http://holgerarnold.net/software/ OCaml base library] provides a [http://holgerarnold.net/software/ocaml/doc/base/PriorityQueue.html PriorityQueue] module.
+Holger Arnold's [OCaml base library](http://holgerarnold.net/software/) provides a [PriorityQueue](http://holgerarnold.net/software/ocaml/doc/base/PriorityQueue.html) module.
 
 
 ```ocaml
@@ -4085,7 +4085,7 @@ let () =
 
 ## Perl
 
-There are a few implementations on CPAN.  Following uses <code>Heap::Priority</code>[http://search.cpan.org/~fwojcik/Heap-Priority-0.11/Priority.pm]
+There are a few implementations on CPAN.  Following uses <code>Heap::Priority</code><http://search.cpan.org/~fwojcik/Heap-Priority-0.11/Priority.pm>
 
 ```perl
 use 5.10.0;
@@ -4435,7 +4435,7 @@ Array
 
 ## PicoLisp
 
-The following implementation imposes no limits. It uses a [http://software-lab.de/doc/refI.html#idx binary tree] for storage. The priority levels may be numeric, or of any other type.
+The following implementation imposes no limits. It uses a [binary tree](http://software-lab.de/doc/refI.html#idx) for storage. The priority levels may be numeric, or of any other type.
 
 ```PicoLisp
 # Insert item into priority queue
@@ -4497,7 +4497,7 @@ Output:
 
 SWI-Prolog has a library <b>heaps.pl</b>, written by <b>Lars Buitinck</b> that implements priority queues.
 
-Informations here : http://www.swi-prolog.org/pldoc/doc/swi/library/heaps.pl
+Informations here : <http://www.swi-prolog.org/pldoc/doc/swi/library/heaps.pl>
 
 Example of use :
 
@@ -4707,7 +4707,7 @@ Exercise
 
 ### Using PriorityQueue
 
-Python has the class [http://docs.python.org/release/3.2/library/queue.html#queue.PriorityQueue queue.PriorityQueue] in its standard library.
+Python has the class [queue.PriorityQueue](http://docs.python.org/release/3.2/library/queue.html#queue.PriorityQueue) in its standard library.
 
 The data structures in the "queue" module are synchronized multi-producer, multi-consumer queues for multi-threaded use. They can however handle this task:
 
@@ -4849,7 +4849,7 @@ class PriorityQueue(Queue)
 
 ### Using heapq
 
-Python has the [http://docs.python.org/release/3.2/library/heapq.html heapq] module in its standard library.
+Python has the [heapq](http://docs.python.org/release/3.2/library/heapq.html) module in its standard library.
 
 Although one can use the heappush method to add items individually to a heap similar to the method used in the PriorityQueue example above, we will instead transform the list of items into a heap in one go then pop them off one at a time as before.
 

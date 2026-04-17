@@ -82,7 +82,7 @@ Calculate the value of   <big>''e''</big>.
 (<big>''e''</big>   is also known as   ''Euler's number''   and   ''Napier's constant''.)
 
 
-See details: [https://en.wikipedia.org/wiki/E_(mathematical_constant) Calculating the value of e]
+See details: [Calculating the value of e](https://en.wikipedia.org/wiki/E_(mathematical_constant))
 
 
 
@@ -979,9 +979,9 @@ terms <iota> [ n! recip ] map-sum >float .
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Calculating_the_value_of_e this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Calculating_the_value_of_e) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2549,7 +2549,7 @@ e = 2.718281828459046
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/gLmNcH2/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/WSvNG9xMT5GcugVTvqogVg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/gLmNcH2/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/WSvNG9xMT5GcugVTvqogVg).
 
 ```Scala
 import scala.annotation.tailrec
@@ -2573,8 +2573,8 @@ object CalculateE extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/math.htm math.s7i] defines
-the constant [http://seed7.sourceforge.net/libraries/math.htm#E E].
+The Seed7 library [math.s7i](http://seed7.sourceforge.net/libraries/math.htm) defines
+the constant [E](http://seed7.sourceforge.net/libraries/math.htm#E).
 The program below computes e:
 
 

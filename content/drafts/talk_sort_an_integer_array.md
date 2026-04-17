@@ -43,7 +43,7 @@ I removed the AppleScript example, pending a response from Apple.  Here's the em
  copyrighted by Apple.
  
  The text in question:
- http://www.apple.com/applescript/guidebook/sbrt/pgs/sbrt.05.htm
+ <http://www.apple.com/applescript/guidebook/sbrt/pgs/sbrt.05.htm>
  
  Any content on our website is licensed under the GNU Free
  Documentation License.  I don't believe I can legally include content

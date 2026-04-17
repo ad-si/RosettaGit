@@ -12,5 +12,5 @@ tags = []
 
 This is the Scala Java Swing interoperability category.
 
-See: [https://docs.scala-lang.org/tour/tour-of-scala.html#scala-interoperates Introduction | Tour of Scala | Scala Documentation]
+See: [Introduction | Tour of Scala | Scala Documentation](https://docs.scala-lang.org/tour/tour-of-scala.html#scala-interoperates)
 [[Category:Scala]]

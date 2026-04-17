@@ -16,4 +16,4 @@ L.in.oleum is an unstructured, untyped, procedural programming language. And mor
 
 ## See Also
 *[Wikipedia:  L.in.oleum(programming_language)](https://en.wikipedia.org/wiki/Linoleum_(programming_language))
-*[http://en.allexperts.com/e/l/li/linoleum_programming_language.htm Linoleum programming language: Encyclopedia]
+*[Linoleum programming language: Encyclopedia](http://en.allexperts.com/e/l/li/linoleum_programming_language.htm)

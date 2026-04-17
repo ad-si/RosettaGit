@@ -444,7 +444,7 @@ int main(void)
 
 
 === {{libheader|BSD libc}} ===
-[http://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html arc4random()] appeared in [[OpenBSD]] 2.1 and has spread to many [[BSD]] systems. This function runs an ARC4 random number generator that takes entropy from a kernel device. (This kernel device is sysctl kern.arandom in OpenBSD, or /dev/urandom in some other systems.)
+[arc4random()](http://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) appeared in [[OpenBSD]] 2.1 and has spread to many [[BSD]] systems. This function runs an ARC4 random number generator that takes entropy from a kernel device. (This kernel device is sysctl kern.arandom in OpenBSD, or /dev/urandom in some other systems.)
 
 
 ```c
@@ -462,7 +462,7 @@ main()
 
 
 === {{libheader|OpenSSL}} ===
-OpenSSL can generate random numbers. The default generator uses SHA1. For [[Unix]] systems, OpenSSL will gather entropy by reading a kernel device like /dev/urandom, or by using [http://egd.sourceforge.net/ EGD, the Entropy Gathering Daemon]. For other systems, OpenSSL might use a different source of entropy.
+OpenSSL can generate random numbers. The default generator uses SHA1. For [[Unix]] systems, OpenSSL will gather entropy by reading a kernel device like /dev/urandom, or by using [EGD, the Entropy Gathering Daemon](http://egd.sourceforge.net/). For other systems, OpenSSL might use a different source of entropy.
 
 
 ```c
@@ -1606,7 +1606,7 @@ SecureRandom.random_number(1 << 32)
 
 ## Rust
 
-<code>rand</code> used to be part of Rust standard library but it was extracted as a 'crate' (https://crates.io/crates/rand).  <code>OsRng</code> uses the appropriate device for many platforms including Unix, Windows, BSD, and iOS (listed [https://docs.rs/rand/0.4/rand/os/struct.OsRng.html here]).  Other methods like <code>RDRAND</code> can be found in other crates (https://crates.io/crates/rdrand).
+<code>rand</code> used to be part of Rust standard library but it was extracted as a 'crate' (<https://crates.io/crates/rand>).  <code>OsRng</code> uses the appropriate device for many platforms including Unix, Windows, BSD, and iOS (listed [here](https://docs.rs/rand/0.4/rand/os/struct.OsRng.html)).  Other methods like <code>RDRAND</code> can be found in other crates (<https://crates.io/crates/rdrand>).
 
 
 ```rust

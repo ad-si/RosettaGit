@@ -12,4 +12,4 @@ tags = []
 
 {{library}}{{stub}}
 
-Reference: [http://search.cpan.org/search?query=MooseX&mode=dist MooseX] search on CPAN.
+Reference: [MooseX](http://search.cpan.org/search?query=MooseX&mode=dist) search on CPAN.

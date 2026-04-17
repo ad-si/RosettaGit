@@ -347,7 +347,7 @@ Same output as the C code.
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276467.html#276467 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276467.html#276467)
 
 ```AutoHotkey
 MsgBox % pad(7.25,7)  ; 0007.25
@@ -976,7 +976,7 @@ ____7.125
 ```
 
 
-<code>format</code> is similar to C <code>sprintf</code>.  See [http://www.gnu.org/software/emacs/manual/html_node/elisp/Formatting-Strings.html GNU Elisp manual on Formatting Strings].
+<code>format</code> is similar to C <code>sprintf</code>.  See [GNU Elisp manual on Formatting Strings](http://www.gnu.org/software/emacs/manual/html_node/elisp/Formatting-Strings.html).
 
 
 ## Erlang
@@ -1151,9 +1151,9 @@ class Main
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Formatted_numeric_output this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Formatted_numeric_output) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1273,7 +1273,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4f64ab96d0f97df5876b76ab0431b302 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4f64ab96d0f97df5876b76ab0431b302)'''
 
 ```gambas
 Public Sub Main()
@@ -1432,7 +1432,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}} provides [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf]
+{{libheader|Icon Programming Library}} provides [printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 LET F=7.125
@@ -1450,7 +1450,7 @@ end
 ```
 
 
-[http://www.jsoftware.com/help/dictionary/dx008.htm Documentation on 8!:]
+[Documentation on 8!:](http://www.jsoftware.com/help/dictionary/dx008.htm)
 
 
 ## Java
@@ -1517,7 +1517,7 @@ alert(str);
 
 or, put in browser URL: javascript:n=123;alert(("00000"+n).slice(-5));
 
-Also, a 60-line implementation of <code>sprintf</code> can be found [http://code.google.com/p/sprintf/ here].
+Also, a 60-line implementation of <code>sprintf</code> can be found [here](http://code.google.com/p/sprintf/).
 
 
 ## jq
@@ -2242,7 +2242,7 @@ e=1.9999e+01 f=19.9991   g=20       !
 ## R
 
 
-[http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/base/html/sprintf.html sprintf] brings the printf goodness one expects:
+[sprintf](http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/base/html/sprintf.html) brings the printf goodness one expects:
 
 
 ```r
@@ -2572,7 +2572,7 @@ fn main() {
 
 ## Sather
 
-The Fill options should fill with any character, but it is still (!) not implemented; according to [http://www.icsi.berkeley.edu/~sather/Documentation/Library/LibraryBrowser/short-FMT.html ICSI Sather library documentation] (GNU Sather library documentation is missing) works only for string, bools and characters, but a test has revealed it does not work in either way (yet) (GNU Sather v1.2.3).
+The Fill options should fill with any character, but it is still (!) not implemented; according to [ICSI Sather library documentation](http://www.icsi.berkeley.edu/~sather/Documentation/Library/LibraryBrowser/short-FMT.html) (GNU Sather library documentation is missing) works only for string, bools and characters, but a test has revealed it does not work in either way (yet) (GNU Sather v1.2.3).
 
 
 ```sather
@@ -2596,7 +2596,7 @@ Luckly the C-like formats are supported too:
 
 ## Scala
 
-As shown in a [https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started Scala Worksheet]:
+As shown in a [Scala Worksheet](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started):
 
 ```Scala
 object FormattedNumeric {
@@ -2616,7 +2616,7 @@ object FormattedNumeric {
 ## Scheme
 
 Obtain the implementation of SRFI 54 from
-http://srfi.schemers.org/srfi-54/srfi-54.html
+<http://srfi.schemers.org/srfi-54/srfi-54.html>
 and save it as "srfi-54.scm" in directory
 Gauche/share/gauche/site/lib/
 
@@ -2750,7 +2750,7 @@ print (Format.format "%09.3f\n" [Format.REAL 7.125])
 
 ## Stata
 
-See '''[https://www.stata.com/help.cgi?format format]''' in Stata help.
+See '''[format](https://www.stata.com/help.cgi?format)''' in Stata help.
 
 
 ```stata

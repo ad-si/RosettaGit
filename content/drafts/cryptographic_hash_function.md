@@ -11,8 +11,8 @@ tags = []
 +++
 
 [[Category:Encyclopedia]]
-A [[wp:cryptographic hash function|cryptographic hash function]], also known as a ''collision resistant hash function'', maps a message (of any length) to a digest (of a fixed length), and has the following three properties:<ref>Dobbertin, Bosselaers, Preneel. [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html "RIPEMD-160, a strengthened version of RIPEMD"]</ref><ref>
-[https://en.wikibooks.org/wiki/Cryptography/Hashes Wikibooks: Cryptography: Hashes]
+A [[wp:cryptographic hash function|cryptographic hash function]], also known as a ''collision resistant hash function'', maps a message (of any length) to a digest (of a fixed length), and has the following three properties:<ref>Dobbertin, Bosselaers, Preneel. ["RIPEMD-160, a strengthened version of RIPEMD"](http://homes.esat.kuleuven.be/~bosselae/ripemd160.html)</ref><ref>
+[Wikibooks: Cryptography: Hashes](https://en.wikibooks.org/wiki/Cryptography/Hashes)
 </ref>
 
 * ''Preimage resistance.'' It is too difficult to invert the function and find an original message from its digest.

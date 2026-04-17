@@ -537,9 +537,9 @@ infix]
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Inverted_syntax this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Inverted_syntax) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -984,7 +984,7 @@ main(!IO) :-
 
 
 The io.write_string/2's in the first example could be written in either order and the result would be the same, as the "world!\n" can't be written until the "Hello, " provides the IO1.
-Order matters in the second example, however, as it uses [http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables state variables].
+Order matters in the second example, however, as it uses [state variables](http://www.mercury.csse.unimelb.edu.au/information/doc-release/mercury_ref/State-variables.html#State-variables).
 The order is still enforced by a data dependency, so
 
 

@@ -1205,7 +1205,7 @@ readstring → 1
 
 ## LiveCode
 
-Initially based on [http://lessons.livecode.com/m/2592/l/126343-listing-all-the-handlers-in-a-script Listing all the handlers in a script]
+Initially based on [Listing all the handlers in a script](http://lessons.livecode.com/m/2592/l/126343-listing-all-the-handlers-in-a-script)
 
 ```LiveCode
 function handlerNames pScript

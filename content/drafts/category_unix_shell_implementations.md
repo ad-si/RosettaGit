@@ -37,14 +37,14 @@ Common Bourne compatible shells include
 ! ''bash''
 |-
 ! Manual page
-| [http://heirloom.sourceforge.net/sh/sh.1.html Heirloom sh]
+| [Heirloom sh](http://heirloom.sourceforge.net/sh/sh.1.html)
 |
-* [http://netbsd.gw.com/cgi-bin/man-cgi?sh++NetBSD-current NetBSD sh]
-* [http://man.cx/dash dash]
+* [NetBSD sh](http://netbsd.gw.com/cgi-bin/man-cgi?sh++NetBSD-current)
+* [dash](http://man.cx/dash)
 |
-* [http://www.openbsd.org/cgi-bin/man.cgi?query=ksh&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html OpenBSD ksh]
-* [http://www.mirbsd.org/htman/i386/man1/mksh.htm mksh]
-| [http://man.cx/bash bash]
+* [OpenBSD ksh](http://www.openbsd.org/cgi-bin/man.cgi?query=ksh&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html)
+* [mksh](http://www.mirbsd.org/htman/i386/man1/mksh.htm)
+| [bash](http://man.cx/bash)
 |-
 | <tt> `''command''`</tt>
 | {{yes}}
@@ -191,4 +191,4 @@ Alternatively one could use an explicit shell sub-process (using the "parenthese
 Note that in all these examples the ''unset bar'' command is simply to avoid any confusion in the unlikely event that a variable named "bar" was present in the shell environment or local variable heap prior to our functional examples. This sort of difference, the implicit creation and scope of subshells and subproceses, and the underlying conceptual distinctions between shell and environment variables are at the root of many shell scripting portability issues and cause most of the confusion experienced by novices to UNIX shell scripting.
 
 ==Comparison of various shells==
-[http://www.math.iitb.ac.in/resources/manuals/Unix_Unleashed/Vol_1/ch13.htm An excerpt] from "UNIX Unleashed, System Administrator's Edition", has a decent discussion of how to choose a shell. The article focuses on three areas: command line usage, shell scripting for personal use and shell scripting for others to use.
+[An excerpt](http://www.math.iitb.ac.in/resources/manuals/Unix_Unleashed/Vol_1/ch13.htm) from "UNIX Unleashed, System Administrator's Edition", has a decent discussion of how to choose a shell. The article focuses on three areas: command line usage, shell scripting for personal use and shell scripting for others to use.

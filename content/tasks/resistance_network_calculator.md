@@ -32,7 +32,7 @@ Calculate the resistance of any resistor network.
 
 
 ;Background
-[https://physics.stackexchange.com/questions/19295/how-calculate-resistance-between-two-points-for-arbitrary-resistor-grid Arbitrary Resistor Grid]
+[Arbitrary Resistor Grid](https://physics.stackexchange.com/questions/19295/how-calculate-resistance-between-two-points-for-arbitrary-resistor-grid)
 
 
 ;Regular 3x3 mesh, using twelve one ohm resistors
@@ -62,7 +62,7 @@ Battery connection nodes: 0 and 15
 
 ;Ten resistor network
 
-[https://photos.google.com/photo/AF1QipPfPkOrrBpJq-KFwWR-BVlfzM5VKklKWnP31nC_ Picture]
+[Picture](https://photos.google.com/photo/AF1QipPfPkOrrBpJq-KFwWR-BVlfzM5VKklKWnP31nC_)
 
 Battery connection nodes: 0 and 1  
  assert 10 == network(7,0,1,"0 2 6|2 3 4|3 4 10|4 5 2|5 6 8|6 1 4|3 5 6|3 6 6|3 1 8|2 1 8")
@@ -70,9 +70,9 @@ Battery connection nodes: 0 and 1
 
 ;Wheatstone network
 
-[https://photos.google.com/photo/AF1QipP7yjK4gA5_xKMTo4IiO6-taHNEzelGtAIkGgE0 Picture]
+[Picture](https://photos.google.com/photo/AF1QipP7yjK4gA5_xKMTo4IiO6-taHNEzelGtAIkGgE0)
 
-This network is not possible to solve using the previous [http://www.rosettacode.org/wiki/Resistance_Calculator Resistance Calculator]
+This network is not possible to solve using the previous [Resistance Calculator](http://www.rosettacode.org/wiki/Resistance_Calculator)
 as there is no natural starting point.
 
  assert 180 == network(4,0,3,"0 1 150|0 2 50|1 3 300|2 3 250")

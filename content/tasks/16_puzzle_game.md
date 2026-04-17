@@ -28,7 +28,7 @@ Create 16 Puzzle Game.
 See details: [16 Puzzle Game](http://www.bsswebsite.me.uk/Puzzlewebsite/Fifteenpuzzle/sixteen.htm)
 
 
-Video: [https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0bsohQX8b5_dc5G&sa=D&sntz=1&usg=AFQjCNH_eKBfk_1m88kte3Wo7MIii8hn1A 16 Puzzle Game]
+Video: [16 Puzzle Game](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0bsohQX8b5_dc5G&sa=D&sntz=1&usg=AFQjCNH_eKBfk_1m88kte3Wo7MIii8hn1A)
 
 
 ;Related task:
@@ -1480,4 +1480,4 @@ func right4
 
 Output image:
 
-[https://www.dropbox.com/s/dy1zmw6xpo2o55v/CalmoSoftSixteenPuzzleGame.jpg?dl=0 16 Puzzle Game]
+[16 Puzzle Game](https://www.dropbox.com/s/dy1zmw6xpo2o55v/CalmoSoftSixteenPuzzleGame.jpg?dl=0)

@@ -2756,7 +2756,7 @@ Test with Reals and Negative Zero Stem
 ## OCaml
 
 
-The definition of the function <code>unique</code> below can be omited if one uses the [http://code.google.com/p/ocaml-extlib/ extlib].
+The definition of the function <code>unique</code> below can be omited if one uses the [extlib](http://code.google.com/p/ocaml-extlib/).
 
 
 ```ocaml
@@ -2955,7 +2955,7 @@ To get from the program above to a rendered PDF,
 
  perl ./Stem-perl.pl > plot.tex && pdflatex plot.tex
 
-and the output will be in <code>plot.pdf</code>. [http://switchb.org/kpreid/2009/12-24-rc-stemplot-perl-latex-output Output.]
+and the output will be in <code>plot.pdf</code>. [Output.](http://switchb.org/kpreid/2009/12-24-rc-stemplot-perl-latex-output)
 
 
 ## Perl 6

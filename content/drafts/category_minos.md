@@ -12,4 +12,4 @@ tags = []
 
 {{library}}{{toolkit}}'''MINOS''' is a GUI library written in [[Forth]]. Currently, it comes only with [[bigFORTH]], but porting to other Forth systems is planned. MINOS comes with a [[GUI]] designer [[:Category:Theseus|Theseus]]. Theseus creates most of the code for you.
 
-More information about MINOS can be found on http://bigforth.sourceforge.net.
+More information about MINOS can be found on <http://bigforth.sourceforge.net>.

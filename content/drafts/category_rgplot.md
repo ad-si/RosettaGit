@@ -14,4 +14,4 @@ tags = []
 {{library}}
 Ruby Gnuplot module
 
-http://rgplot.rubyforge.org/
+<http://rgplot.rubyforge.org/>

@@ -12,5 +12,5 @@ tags = []
 
 '''iForth''' is a commercial optimizing Forth compiler by Marcel Hendrix. It comes with almost 25,000 examples.
 
-* [http://home.iae.nl/users/mhx/ Marcel Hendrix's home page]
-* [http://home.iae.nl/users/mhx/i4faq.html iForth FAQ]
+* [Marcel Hendrix's home page](http://home.iae.nl/users/mhx/)
+* [iForth FAQ](http://home.iae.nl/users/mhx/i4faq.html)

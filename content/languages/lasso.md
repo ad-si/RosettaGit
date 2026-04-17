@@ -14,4 +14,4 @@ Lasso is an application server and server management interface used for developi
 
 ## See also
 * [Lasso on Wikipedia](https://en.wikipedia.org/wiki/Lasso_(programming_language))
-* [http://www.LassoGuide.com The Lasso Programming Guide]
+* [The Lasso Programming Guide](http://www.LassoGuide.com)

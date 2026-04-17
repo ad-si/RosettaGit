@@ -14,4 +14,4 @@ tags = []
 It is a complement to the json-wheel library which provides a parser and a (pretty-) printer.
 
 Homepage:
-http://mjambon.com/json-static.html
+<http://mjambon.com/json-static.html>

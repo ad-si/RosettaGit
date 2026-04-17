@@ -50,7 +50,7 @@ languages = [
 ]
 +++
 
-Quoting from the [http://esolangs.org/wiki/Narcissist Esolangs wiki page]:
+Quoting from the [Esolangs wiki page](http://esolangs.org/wiki/Narcissist):
 
 <blockquote>
 A '''narcissist''' (or '''Narcissus program''') is the decision-problem version of a [[quine]].

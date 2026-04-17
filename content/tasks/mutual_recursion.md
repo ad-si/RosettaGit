@@ -1429,9 +1429,9 @@ class Main
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Mutual_recursion this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Mutual_recursion) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -4050,7 +4050,7 @@ f(15) = 9; m(15) = 9
 
 ## uBasic/4tH
 
-uBasic/4tH supports mutual recursion. However, the underlying system can't support the stress this puts on the stack - at least not for the full sequence. This version uses [https://en.wikipedia.org/wiki/Memoization memoization] to alleviate the stress and speed up execution.
+uBasic/4tH supports mutual recursion. However, the underlying system can't support the stress this puts on the stack - at least not for the full sequence. This version uses [memoization](https://en.wikipedia.org/wiki/Memoization) to alleviate the stress and speed up execution.
 <lang>LOCAL(1)                               ' main uses locals as well
 
 FOR a@ = 0 TO 200                      ' set the array

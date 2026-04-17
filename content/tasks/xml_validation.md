@@ -26,7 +26,7 @@ languages = [
 
 Given an XML document and an XSD schema definition validate that the document follows the schema described.
 
-Sample XML and XSD for tests can be found on [https://www.w3schools.com/xml/schema_example.asp this W3 Schools page].
+Sample XML and XSD for tests can be found on [this W3 Schools page](https://www.w3schools.com/xml/schema_example.asp).
 
 
 ## C
@@ -569,7 +569,7 @@ Not valid: unknown-7fe99976a9a0:0: Schemas validity error :
 # 20191009 Perl 6 programming solution
 
 # Reference:
-# https://github.com/p6-xml/LibXML-p6
+# <https://github.com/p6-xml/LibXML-p6>
 
 use v6.d;
 use LibXML;

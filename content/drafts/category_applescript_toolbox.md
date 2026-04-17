@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-AppleScript Toolbox is an AppleScript-plugin to extend the set of commands in the global name space of the language. See [http://astoolbox.wordpress.com AppleScript Toolbox]
+AppleScript Toolbox is an AppleScript-plugin to extend the set of commands in the global name space of the language. See [AppleScript Toolbox](http://astoolbox.wordpress.com)

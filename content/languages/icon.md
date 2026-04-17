@@ -20,15 +20,15 @@ Several extensions of Icon were developed to improve functionality.  Many of the
 
 ## See Also
 * [Wikipedia: Icon](https://en.wikipedia.org/wiki/Icon_(programming_language))
-* [http://www.cs.arizona.edu/icon/index.htm Icon homepage]
+* [Icon homepage](http://www.cs.arizona.edu/icon/index.htm)
 * [Wikipedia: Unicon](https://en.wikipedia.org/wiki/Unicon_(programming_language))
-* [http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf Book: The Icon Programming Language, 3rd Edition]
-* [http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf Book: Graphics Programming in Icon]
-* [http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf Book: Icon Programming for Humanists]
-* [http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf Presentation: Fundamentals of Icon Programming]
-* [http://www.cs.arizona.edu/icon/inl/inl.htm Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming]
-* [http://www.cs.arizona.edu/icon/analyst/ia.htm Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming]
-* [http://www.cs.arizona.edu/icon/library/ipl.htm The Icon Programming Library and index]
+* [Book: The Icon Programming Language, 3rd Edition](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+* [Book: Graphics Programming in Icon](http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
+* [Book: Icon Programming for Humanists](http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf)
+* [Presentation: Fundamentals of Icon Programming](http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf)
+* [Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming](http://www.cs.arizona.edu/icon/inl/inl.htm)
+* [Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming](http://www.cs.arizona.edu/icon/analyst/ia.htm)
+* [The Icon Programming Library and index](http://www.cs.arizona.edu/icon/library/ipl.htm)
 
 ## Wiki Links
 * [An introduction to Icon and Unicon for Rosetta Code](https://rosettacode.org/wiki/Icon%2BUnicon/Intro)

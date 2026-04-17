@@ -84,7 +84,7 @@ Example: ''lager'' and ''regal''
 
 ## Task
 
-Using only words from <u>[http://wiki.puzzlers.org/pub/wordlists/unixdict.txt this list]</u>, report the total number of unique semordnilap pairs, and print 5 examples. (Note that lager/regal and regal/lager should be counted as one unique pair.)
+Using only words from <u>[this list](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt)</u>, report the total number of unique semordnilap pairs, and print 5 examples. (Note that lager/regal and regal/lager should be counted as one unique pair.)
 
 
 
@@ -2905,7 +2905,7 @@ if __name__ == '__main__':
 ```txt
 Dictionary words paired by equivalence under reversal:
 
-(longest of 158 in http://wiki.puzzlers.org/pub/wordlists/unixdict.txt)
+(longest of 158 in <http://wiki.puzzlers.org/pub/wordlists/unixdict.txt>)
 
 kramer -> remark
  damon -> nomad
@@ -3368,7 +3368,7 @@ drab bard
 
 ```stata
 set seed 17760704
-import delimited http://www.puzzlers.org/pub/wordlists/unixdict.txt, clear
+import delimited <http://www.puzzlers.org/pub/wordlists/unixdict.txt>, clear
 save temp, replace
 replace v1=strreverse(v1)
 merge 1:1 v1 using temp, nogen keep(3)
@@ -3432,7 +3432,7 @@ package require Tcl 8.5
 package require http
 
 # Fetch the words
-set t [http::geturl http://www.puzzlers.org/pub/wordlists/unixdict.txt]
+set t [http::geturl <http://www.puzzlers.org/pub/wordlists/unixdict.txt>]
 set wordlist [split [http::data $t] \n]
 http::cleanup $t
 

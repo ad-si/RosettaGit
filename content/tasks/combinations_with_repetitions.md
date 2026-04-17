@@ -854,7 +854,7 @@ plain and plain
 
 ## D
 
-Using [http://www.graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation lexicographic next bit permutation] to generate combinations with repetitions.
+Using [lexicographic next bit permutation](http://www.graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation) to generate combinations with repetitions.
 
 ```d
 import std.stdio, std.range;
@@ -2685,7 +2685,7 @@ end function
 ## PHP
 
 
-Non-recursive algorithm to generate all combinations with repetitons. Taken from here: [https://habrahabr.ru/post/311934/]
+Non-recursive algorithm to generate all combinations with repetitons. Taken from here: <https://habrahabr.ru/post/311934/>
  You must set k n variables and fill arrays b and c.
 
 
@@ -2949,7 +2949,7 @@ Ways to select 3 items from 10 types: 220
 
 
 '''References:'''
-* [http://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement Python documentation]
+* [Python documentation](http://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement)
 
 
 Or, assembling our own '''combsWithRep''', by composition of functional primitives:

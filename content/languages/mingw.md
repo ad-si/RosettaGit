@@ -9,7 +9,7 @@ id = 7420
 categories = []
 tags = []
 +++
-[http://www.mingw.org/ MinGW] is a port of [GCC](https://rosettacode.org/wiki/GCC) to [Windows](https://rosettacode.org/wiki/Windows).
+[MinGW](http://www.mingw.org/) is a port of [GCC](https://rosettacode.org/wiki/GCC) to [Windows](https://rosettacode.org/wiki/Windows).
 
 MinGW can compile Ada, C, C++, Fortran and Objective-C. The compiled programs are <tt>.exe</tt> files; they can use the Microsoft C runtime <tt>MSVCRT.DLL</tt> and several other Microsoft libraries.
 

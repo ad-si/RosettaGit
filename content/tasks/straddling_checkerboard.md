@@ -2666,7 +2666,7 @@ Finished tests in 0.007873s, 508.0378 tests/s, 635.0472 assertions/s.
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/xCHsvaC/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/42qQPkm6TiONpAOC1ByTCg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/xCHsvaC/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/42qQPkm6TiONpAOC1ByTCg).
 
 ```Scala
 object StraddlingCheckerboard extends App {

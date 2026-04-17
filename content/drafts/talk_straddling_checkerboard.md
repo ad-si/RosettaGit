@@ -26,7 +26,7 @@ I hit the wrong button while I typing in the reason for the undo. Anyway, the ca
 
 I kind of like how it looks when using the stop character to (instead) represent any unencrypted characters (like the Util's Perl6 solution did). Should I put this as part of the specification, or leave it as is? Since this is supposed to be a demonstration of a historical method, how it was actually used should weigh in the decision, but I don't really know much about that. [[User:MagiMaster|MagiMaster]] 04:07, 7 June 2011 (UTC)
 
-From [http://users.telenet.be/d.rijmenants/en/secom.htm The SECOM Cipher] (which uses a straddling checkerboard):
+From [The SECOM Cipher](http://users.telenet.be/d.rijmenants/en/secom.htm) (which uses a straddling checkerboard):
 :In our example, several spaces are used. However, it is recommended to omit all spaces where legibility preserved.
 AFAIK, when you use *any* field cypher in real life, you make a first pass over the plaintext to reduce whitespace, using human judgement on where space must be maintained to preserve the meaning of the message. This improves the cyphertext's resistance to cracking. The cipher procedure itself is mechanical, and cannot presume to know what will be "legible" if words were to be run together. Space reduction is not helpful in examples, and not appropriate for this task.
 

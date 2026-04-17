@@ -2079,7 +2079,7 @@ FactorsInt(2^67-1);
 # [ 193707721, 761838257287 ]
 ```
 
-Or using the [http://www.gap-system.org/Manuals/pkg/factint/doc/chap0.html FactInt] package :
+Or using the [FactInt](http://www.gap-system.org/Manuals/pkg/factint/doc/chap0.html) package :
 
 ```gap
 FactInt(2^67-1);
@@ -2340,7 +2340,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses genfactors and prime from factors]
+{{libheader|Icon Programming Library}} [Uses genfactors and prime from factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 Sample Output showing factors of a large integer:
 
@@ -2517,7 +2517,7 @@ public static List<BigInteger>
 
 ## JavaScript
 
-This code uses the BigInteger Library [http://xenon.stanford.edu/~tjw/jsbn/jsbn.js jsbn] and [http://xenon.stanford.edu/~tjw/jsbn/jsbn2.js jsbn2]
+This code uses the BigInteger Library [jsbn](http://xenon.stanford.edu/~tjw/jsbn/jsbn.js) and [jsbn2](http://xenon.stanford.edu/~tjw/jsbn/jsbn2.js)
 
 ```javascript
 function run_factorize(input, output) {
@@ -2702,7 +2702,7 @@ valid is a flag, and sqrt is either null or the square root of n.
 The caveat is that the program uses jq's builtin arithmetic operations.  Since
 jq currently uses IEEE 754 64-bit numbers, the following program will only be
 reliable for integers up to and including 9,007,199,254,740,992 (2^53).  However, "factors"
-could be easily modified to work with a "BigInt" library for jq, such as [https://gist.github.com/pkoppstein/d06a123f30c033195841 BigInt.jq].
+could be easily modified to work with a "BigInt" library for jq, such as [BigInt.jq](https://gist.github.com/pkoppstein/d06a123f30c033195841).
 
 ```jq
 def factors:
@@ -4072,11 +4072,11 @@ def croft():
     This is a variant of wheel factorisation modulo 30.
     """
     # Copied from:
-    #   https://code.google.com/p/pyprimes/source/browse/src/pyprimes.py
+    #   <https://code.google.com/p/pyprimes/source/browse/src/pyprimes.py>
     # Implementation is based on erat3 from here:
-    #   http://stackoverflow.com/q/2211990
+    #   <http://stackoverflow.com/q/2211990>
     # and this website:
-    #   http://www.primesdemystified.com/
+    #   <http://www.primesdemystified.com/>
     # Memory usage increases roughly linearly with the number of primes seen.
     # dict ``roots`` stores an entry x:p for every prime p.
     for p in (2, 3, 5):
@@ -5056,7 +5056,7 @@ const func array integer: factorise (in var integer: number) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#factorise]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#factorise>
 
 
 ## SequenceL
@@ -5079,7 +5079,7 @@ primeFactorizationHelp(num, current(1)) :=
 ```
 
 
-Using isPrime Based On: [https://www.youtube.com/watch?v=CsCBkPg1FbE]
+Using isPrime Based On: <https://www.youtube.com/watch?v=CsCBkPg1FbE>
 
 '''Recursive Trial Division'''
 
@@ -5143,7 +5143,7 @@ say prime_factors(536870911)   #=> [233, 1103, 2089]
 
 Simula has no built-in function to test for prime numbers.
 
-Code for class bignum can be found here: https://rosettacode.org/wiki/Pi#Simula
+Code for class bignum can be found here: <https://rosettacode.org/wiki/Pi#Simula>
 
 ```simula
 
@@ -5309,7 +5309,7 @@ Integer extend [
 ```
 
 
-Domain:[http://fricas.github.io/api/Factored.html?highlight=factor Factored(R)]
+Domain:[Factored(R)](http://fricas.github.io/api/Factored.html?highlight=factor)
 
 
 

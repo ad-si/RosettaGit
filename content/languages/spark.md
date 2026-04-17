@@ -27,6 +27,6 @@ The annotations state the required properties of a program.  Different propertie
 
 A description of the SPARK Proof process is [here](https://rosettacode.org/wiki/SPARK_Proof_Process).
 
-The SPARK tools are freely available under the GNU GPL.  The SPARK language definition is available from AdaCore at [http://docs.adacore.com/spark2014-docs/html/lrm/ SPARK 2014 Reference Manual].
+The SPARK tools are freely available under the GNU GPL.  The SPARK language definition is available from AdaCore at [SPARK 2014 Reference Manual](http://docs.adacore.com/spark2014-docs/html/lrm/).
 
-The [news:comp.lang.ada comp.lang.ada] [newsgroup](https://rosettacode.org/wiki/newsgroup) ([http://groups.google.com/group/comp.lang.ada/topics access via Google Groups])is the main forum for discussing or asking questions about SPARK.
+The [news:comp.lang.ada comp.lang.ada] [newsgroup](https://rosettacode.org/wiki/newsgroup) ([access via Google Groups](http://groups.google.com/group/comp.lang.ada/topics))is the main forum for discussing or asking questions about SPARK.

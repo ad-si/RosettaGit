@@ -165,7 +165,7 @@ beep>
 beep()
 ```
 
-See [http://asymptote.sourceforge.net/doc/Data-types.html#index-g_t_0040code_007bbeep_007d-287 beep() in the Asymptote manual].
+See [beep() in the Asymptote manual](http://asymptote.sourceforge.net/doc/Data-types.html#index-g_t_0040code_007bbeep_007d-287).
 
 
 ## AutoHotkey
@@ -247,7 +247,7 @@ BEEP 0.2,0
 
 ## Batch File
 
-Source: [http://www.dostips.com/forum/viewtopic.php?f=3&t=5860 Here]
+Source: [Here](http://www.dostips.com/forum/viewtopic.php?f=3&t=5860)
 
 ```dos
 @echo off

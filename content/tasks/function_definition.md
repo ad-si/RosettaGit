@@ -1943,7 +1943,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=bc93236474d9937217dd4117026f7441 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=bc93236474d9937217dd4117026f7441)'''
 
 ```gambas
 Public Sub Main()
@@ -2362,7 +2362,7 @@ multiply=: dyad define
 )
 ```
 
-Here we use an [http://www.jsoftware.com/help/dictionary/intro18.htm explicit] definition (where the arguments are named) rather than a [http://www.jsoftware.com/help/dictionary/intro19.htm tacit] version (where the arguments are implied).  In explicit J verbs, x is the left argument and y is the right argument.
+Here we use an [explicit](http://www.jsoftware.com/help/dictionary/intro18.htm) definition (where the arguments are named) rather than a [tacit](http://www.jsoftware.com/help/dictionary/intro19.htm) version (where the arguments are implied).  In explicit J verbs, x is the left argument and y is the right argument.
 
 (Note, by the way, that explicit definitions are a subset of tacit definitions -- when the arguments are explicitly named they are still implied in the larger context containing the definition.)
 
@@ -3520,7 +3520,7 @@ sub multiply { $_[0] * $_[1] }
 
 Arguments in Perl subroutines are passed in the <code>@_</code> array, and they can be accessed directly, first one as <code>$_[0]</code>, second one as <code>$_[1]</code>, etc. When the above function is called with only one or no arguments then the missing ones have an undefined value which is converted to 0 in multiplication.
 
-This is an example using [http://perldoc.perl.org/perlsub.html#Prototypes subroutine prototypes]:
+This is an example using [subroutine prototypes](http://perldoc.perl.org/perlsub.html#Prototypes):
 
 ```perl
 sub multiply( $$ )
@@ -3530,7 +3530,7 @@ sub multiply( $$ )
 }
 ```
 
-The above subroutine can only be called with exactly two [http://perldoc.perl.org/perldata.html#Scalar-values scalar values] (two dollar signs in the signature) but those values may be not numbers or not even defined. The <code>@_</code> array is unpacked into <code>$a</code> and <code>$b</code> lexical variables, which are used later.
+The above subroutine can only be called with exactly two [scalar values](http://perldoc.perl.org/perldata.html#Scalar-values) (two dollar signs in the signature) but those values may be not numbers or not even defined. The <code>@_</code> array is unpacked into <code>$a</code> and <code>$b</code> lexical variables, which are used later.
 
 The arguments can be automatically unpacked into lexical variables using the experimental signatures feature (in core as of 5.20):
 
@@ -3814,7 +3814,7 @@ test_multiply :-
 
 Still, the lack of user-defined functions remains an annoyance.
 
-Prolog, however, is a remarkably malleable language and through its term re-writing capabilities the function-style approach could be emulated.  The following code relies on the [http://packs.ndrix.com/function_expansion/index.html function_expansion] pack (separately installed through the packs system) for SWI-Prolog.  Similar code could be made in any Prolog implementation, however.
+Prolog, however, is a remarkably malleable language and through its term re-writing capabilities the function-style approach could be emulated.  The following code relies on the [function_expansion](http://packs.ndrix.com/function_expansion/index.html) pack (separately installed through the packs system) for SWI-Prolog.  Similar code could be made in any Prolog implementation, however.
 
 ```Prolog
 :- use_module(library(function_expansion)).
@@ -4482,7 +4482,7 @@ fun multiply x y = x * y
 
 ###  Ado
 
-Stata's macro language does not have functions, but commands. Output is usually saved as a "stored result" (but could also be saved in a global macro variable, in a scalar or matrix, in a dataset or simply printed to the Results window). See '''[https://www.stata.com/help.cgi?program program]''' and '''[https://www.stata.com/help.cgi?return]''' in Stata documentation.
+Stata's macro language does not have functions, but commands. Output is usually saved as a "stored result" (but could also be saved in a global macro variable, in a scalar or matrix, in a dataset or simply printed to the Results window). See '''[program](https://www.stata.com/help.cgi?program)''' and '''<https://www.stata.com/help.cgi?return>''' in Stata documentation.
 
 
 ```stata
@@ -4855,7 +4855,7 @@ X86 Assembly doesn't really have functions. Instead, it has labels that are call
 
 ### Unix
 
-Function definition and calling conventions on a Unix-like system are specified in the book "System V Application Binary Interface: Intel 386 Architecture Processor Supplement" ([https://web.archive.org/web/20000818171113/http://www.sco.com/developer/devspecs/abi386-4.pdf from SCO at archive.org]).  These are the conventions used by the C language and also most other languages.
+Function definition and calling conventions on a Unix-like system are specified in the book "System V Application Binary Interface: Intel 386 Architecture Processor Supplement" ([from SCO at archive.org](https://web.archive.org/web/20000818171113/http://www.sco.com/developer/devspecs/abi386-4.pdf)).  These are the conventions used by the C language and also most other languages.
 
 The stack, for two 32-bit integer parameters, is
 * <code>[esp+8]</code> second parameter

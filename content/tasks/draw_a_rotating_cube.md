@@ -51,7 +51,7 @@ It should be oriented with one vertex pointing straight up, and its opposite ver
 
 ## C
 
-Rotating wireframe cube in [https://www.opengl.org/ OpenGL], windowing implementation via [http://freeglut.sourceforge.net/ freeglut]
+Rotating wireframe cube in [OpenGL](https://www.opengl.org/), windowing implementation via [freeglut](http://freeglut.sourceforge.net/)
 
 ```C
 
@@ -410,7 +410,7 @@ func abs(x int) int {
 
 ## Haskell
 
-This implementation compiles to JavaScript that runs in a browser using the [https://github.com/ghcjs/ghcjs ghcjs compiler ] .  The [https://github.com/reflex-frp/reflex-dom reflex-dom ] library is used to help with svg rendering and animation.
+This implementation compiles to JavaScript that runs in a browser using the [ghcjs compiler](https://github.com/ghcjs/ghcjs) .  The [reflex-dom](https://github.com/reflex-frp/reflex-dom) library is used to help with svg rendering and animation.
 
 
 ```Haskell
@@ -597,7 +597,7 @@ elDynAttrSVG a2 a3 a4 = do
 ```
 
 
-Link to live demo: https://dc25.github.io/drawRotatingCubeHaskell/
+Link to live demo: <https://dc25.github.io/drawRotatingCubeHaskell/>
 
 
 ## Java
@@ -1564,13 +1564,13 @@ object RotatingCube extends App {
 
 ## Tcl
 
-See also [[Draw_a_cuboid|Draw a cuboid]]. This implementation uses tcllib's [http://core.tcl.tk/tcllib/doc/trunk/embedded/www/tcllib/files/modules/math/linalg.html Linear Algebra] module for some matrix ops to handle the screen transform and (animated!) rotation.  Rendering is in a Tk canvas.
+See also [[Draw_a_cuboid|Draw a cuboid]]. This implementation uses tcllib's [Linear Algebra](http://core.tcl.tk/tcllib/doc/trunk/embedded/www/tcllib/files/modules/math/linalg.html) module for some matrix ops to handle the screen transform and (animated!) rotation.  Rendering is in a Tk canvas.
 
 The *Matrix* procedure is something unique to Tcl:  it's essentially a control construct that leverages *expr* to make declaring matrices much more convenient than hand-rolling lists.
 
 There is a bit of wander in the top and bottom points, which might just be due to rounding error in the cube's initial "rotation into position".
 
-See [http://wiki.tcl.tk/14283 this wiki page] (and others linked from it) for many similar examples.
+See [this wiki page](http://wiki.tcl.tk/14283) (and others linked from it) for many similar examples.
 
 
 ```Tcl

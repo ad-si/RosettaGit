@@ -118,7 +118,7 @@ end Sendmail;
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com%2Fforum%2Ftopic39797.html discussion]
+ahk [discussion](http://www.autohotkey.com%2Fforum%2Ftopic39797.html)
 ```autohotkey
 sSubject:= "greeting"
 sText   := "hello"
@@ -255,7 +255,7 @@ COM_Term()
 
 ## C
 
-Sends mail via the GMail SMTP server, requires [https://curl.haxx.se/libcurl/ libcurl]
+Sends mail via the GMail SMTP server, requires [libcurl](https://curl.haxx.se/libcurl/)
 ```C
 
 
@@ -459,7 +459,7 @@ static void Main(string[] args)
 
 ## Clojure
 
-[https://github.com/drewr/postal Postal] wraps JavaMail to make sending emails simple and platform independent.
+[Postal](https://github.com/drewr/postal) wraps JavaMail to make sending emails simple and platform independent.
 
 ```clojure
 (require '[postal.core :refer [send-message]])
@@ -641,7 +641,7 @@ class Mail
 
 ### Intel Fortran on Windows
 
-Using Outlook COM server. Before compiling the program, it's necessary to use the '''[https://software.intel.com/en-us/node/535422 Intel Fortran Module Wizard]''' from the Visual Studio editor, to generate a Fortran module for the Microsoft Outlook Object Library. The following program has to be linked with this module (msoutl).
+Using Outlook COM server. Before compiling the program, it's necessary to use the '''[Intel Fortran Module Wizard](https://software.intel.com/en-us/node/535422)''' from the Visual Studio editor, to generate a Fortran module for the Microsoft Outlook Object Library. The following program has to be linked with this module (msoutl).
 
 
 ```fortran
@@ -840,7 +840,7 @@ func main() {
 
 ## Groovy
 
-From [http://www.jedox.com/en/send-email-using-javamail-groovy-script/]  we can get email solution for Groovy
+From <http://www.jedox.com/en/send-email-using-javamail-groovy-script/>  we can get email solution for Groovy
 
 ```Groovy
 
@@ -899,7 +899,7 @@ simpleMail(s1, s2 , s3, "TITLE", "TEXT");
 ## Haskell
 
 
-Example using [https://hackage.haskell.org/package/smtp-mail <tt>smtp-mail</tt>] package:
+Example using [<tt>smtp-mail</tt>](https://hackage.haskell.org/package/smtp-mail) package:
 
 
 ```haskell
@@ -1272,7 +1272,7 @@ Call doc.Send( False )
 ## Lua
 
 
-Using [http://w3.impa.br/~diego/software/luasocket/smtp.html LuaSocket's SMTP module] (from the documentation on that page):
+Using [LuaSocket's SMTP module](http://w3.impa.br/~diego/software/luasocket/smtp.html) (from the documentation on that page):
 
 
 ```Lua
@@ -1385,7 +1385,7 @@ sendMail(fromAddr = "nim@gmail.com",
 
 ## OCaml
 
-* using the library [http://www.linux-nantes.org/~fmonnier/OCaml/smtp-mail/ smtp-mail-0.1.3]
+* using the library [smtp-mail-0.1.3](http://www.linux-nantes.org/~fmonnier/OCaml/smtp-mail/)
 
 ```ocaml
 let h = Smtp.connect "smtp.gmail.fr";;
@@ -1563,7 +1563,7 @@ await IO::Socket::Async.connect($smtp-server, $smtp-port).then(
 ## Phix
 
 Obviously, USER/PWD/URL/etc. would all need altering for your details.
-For gmail, make sure you enable https://myaccount.google.com/lesssecureapps
+For gmail, make sure you enable <https://myaccount.google.com/lesssecureapps>
 
 ```Phix
 include builtins\libcurl.e
@@ -1643,7 +1643,7 @@ mail('hello@world.net', 'My Subject', "A Message!", "From: my@address.com");
 
 ## PicoLisp
 
-PicoLisp has a built-in '[http://software-lab.de/doc/refM.html#mail mail]'
+PicoLisp has a built-in '[mail](http://software-lab.de/doc/refM.html#mail)'
 function. A minimal call would be
 
 ```PicoLisp
@@ -1730,7 +1730,7 @@ EndIf
 ### Python: POSIX
 
 The function returns a dict of any addresses it could not forward to;
-other connection problems raise [http://docs.python.org/library/smtplib.html?highlight=smtplib#smtplib.SMTP.sendmail errors].
+other connection problems raise [errors](http://docs.python.org/library/smtplib.html?highlight=smtplib#smtplib.SMTP.sendmail).
 
 Tested on Windows, it should work on all [[wp:POSIX|POSIX]] platforms.
 
@@ -1809,12 +1809,12 @@ sendmail("somebody@somewhere", "Title", "Hello")
 
 ## R
 
-R does not have a built-in facility for sending emails though there is a package for this on CRAN: '''[https://cran.r-project.org/web/packages/mail/ mail]'''.
+R does not have a built-in facility for sending emails though there is a package for this on CRAN: '''[mail](https://cran.r-project.org/web/packages/mail/)'''.
 
 
 ### Windows
 
-Using Outlook COM server with the '''[http://www.omegahat.net/RDCOMClient/ RDCOMClient]''' package.
+Using Outlook COM server with the '''[RDCOMClient](http://www.omegahat.net/RDCOMClient/)''' package.
 
 
 ```r
@@ -1929,7 +1929,7 @@ CalmoSoft
 
 ## Ruby
 
-Uses the {{libheader|RubyGems}} gems [http://tmail.rubyforge.org TMail] which allows us to manipulate email objects conveniently, and [http://mime-types.rubyforge.org/ mime-types] which guesses a file's mime type based on its filename.
+Uses the {{libheader|RubyGems}} gems [TMail](http://tmail.rubyforge.org) which allows us to manipulate email objects conveniently, and [mime-types](http://mime-types.rubyforge.org/) which guesses a file's mime type based on its filename.
 
 
 ```ruby
@@ -2100,12 +2100,12 @@ db2 => CALL UTL_MAIL.SEND ('senderAccount@myDomain.com','recipientAccount@yourDo
 ```
 
 If you receive a "SQL1336N  The remote host "smtp.ibm.com" was not found.  SQLSTATE=08001" message, it is because the SMTP_SERVER is not valid.
-More information in the [https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.apdv.sqlpl.doc/doc/r0055177.html IBM Knowledge center]
+More information in the [IBM Knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.apdv.sqlpl.doc/doc/r0055177.html)
 
 
 ## Tcl
 
-Also may use the [http://tls.sourceforge.net/ tls] package (needed for sending via gmail).
+Also may use the [tls](http://tls.sourceforge.net/) package (needed for sending via gmail).
 
 ```tcl
 package require smtp

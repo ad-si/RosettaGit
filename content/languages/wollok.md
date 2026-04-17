@@ -21,4 +21,4 @@ Wollok also has an optional type-system with type inference, aiming to be as muc
 
 Although Wollok can be used from a command line, the full experience to teach and learn OOP is based on an IDE with: tests cases support, autocomplete, syntax-highlight and many static code checks (plus quick fixes)
 
-For more information visit https://github.com/uqbar-project/wollok and http://www.wollok.org/
+For more information visit <https://github.com/uqbar-project/wollok> and <http://www.wollok.org/>

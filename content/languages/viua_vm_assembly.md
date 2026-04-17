@@ -16,4 +16,4 @@ Inside every process programs are executed sequentially.
 
 The programming arsenal provided by Viua VM assembly language includes first-class functions, move- and copy-semantics for value movement (inside a single call frame, and for parameter passing), exceptions, deferred calls, safe pointers, and more.
 
-Documentation can be found at http://docs.viuavm.org/
+Documentation can be found at <http://docs.viuavm.org/>

@@ -35,7 +35,7 @@ languages = [
 
 '''Tonelli–Shanks algorithm'''
 
-In computational number theory, the [https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm  Tonelli–Shanks algorithm] is a technique for solving an equation of the form:
+In computational number theory, the [Tonelli–Shanks algorithm](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm) is a technique for solving an equation of the form:
 
 <big><big>
 :::          x<sup>2</sup> ≡ n (mod p)
@@ -48,7 +48,7 @@ In computational number theory, the [https://en.wikipedia.org/wiki/Tonelli%E2%80
 </big></big>
 
 
-It is used in [https://en.wikipedia.org/wiki/Rabin_cryptosystem cryptography] techniques.
+It is used in [cryptography](https://en.wikipedia.org/wiki/Rabin_cryptosystem) techniques.
 
 
 To apply the algorithm, we need the Legendre symbol.
@@ -78,7 +78,7 @@ All   ≡   are taken to mean   (mod p)   unless stated otherwise.
 
 
 ;Numerical Example:
-* n=10, p= 13.   See [https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm Wikipedia]
+* n=10, p= 13.   See [Wikipedia](https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm)
 
 
 ## Task

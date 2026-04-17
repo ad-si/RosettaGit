@@ -46,8 +46,8 @@ So, The Diversity Prediction Theorem: ''Given a crowd of predictive models''
 
 Collective Error = Average Individual Error - Prediction Diversity
 
-[https://en.wikipedia.org/wiki/Wisdom_of_the_crowd wikipedia]
-[https://web.archive.org/web/20060830201235/http://www.cscs.umich.edu/~spage/teaching_files/modeling_lectures/MODEL5/M18predictnotes.pdf paper]
+[wikipedia](https://en.wikipedia.org/wiki/Wisdom_of_the_crowd)
+[paper](https://web.archive.org/web/20060830201235/http://www.cscs.umich.edu/~spage/teaching_files/modeling_lectures/MODEL5/M18predictnotes.pdf)
 
 <br/><br/>
 
@@ -282,7 +282,7 @@ diversity: 10.5
 
 ## Clojure
 
-John Lawrence Aspden's code posted on [http://www.learningclojure.com/2013/08/diversity-prediction-theorem.html Diversity Prediction Theorem].
+John Lawrence Aspden's code posted on [Diversity Prediction Theorem](http://www.learningclojure.com/2013/08/diversity-prediction-theorem.html).
 
 ```Clojure
 
@@ -309,9 +309,9 @@ John Lawrence Aspden's code posted on [http://www.learningclojure.com/2013/08/di
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Diversity_prediction_theorem this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Diversity_prediction_theorem) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

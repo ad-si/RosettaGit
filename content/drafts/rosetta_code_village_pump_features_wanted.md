@@ -50,7 +50,7 @@ I hate to say it, but the MediaWiki page editing format is horrible for maintain
 ==Better data export==
 
 I'd love to have cached copies of MediaWiki data available for quick export, even if the cache is only updated daily or weekly. --[[User:Short Circuit|Short Circuit]] 02:52, 10 July 2009 (UTC)
-: Category data is [http://rosettacode.org/json/isb/ currently available]. --[[User:Short Circuit|Michael Mol]] 17:49, 13 September 2009 (UTC)
+: Category data is [currently available](http://rosettacode.org/json/isb/). --[[User:Short Circuit|Michael Mol]] 17:49, 13 September 2009 (UTC)
 
 ==Semantic Pages==
 
@@ -63,7 +63,7 @@ I would like a wiki theme that is more aware of Rosetta Code's structure, such a
 
 :Also, how about an "up one level" button/tab for subpages (like Loop/* and Average/*)? --[[User:Mwn3d|Mwn3d]] 12:55, 17 August 2009 (UTC)
 
-::That's a MediaWiki feature that needs to be turned on, see [http://www.mediawiki.org/wiki/Help:Subpages MW Help:Subpages]. The link doesn't show if the 'parent' page doesn't exist. --[[User:Kevin Reid|Kevin Reid]] 13:44, 17 August 2009 (UTC)
+::That's a MediaWiki feature that needs to be turned on, see [MW Help:Subpages](http://www.mediawiki.org/wiki/Help:Subpages). The link doesn't show if the 'parent' page doesn't exist. --[[User:Kevin Reid|Kevin Reid]] 13:44, 17 August 2009 (UTC)
 ::: Just noting that it was turned on for the main namespace last month (at Kevin Reid's request).. --[[User:Short Circuit|Michael Mol]] 17:51, 13 September 2009 (UTC)
 
 ==Mobile theme==
@@ -87,23 +87,23 @@ It would be nice to have a search that could search only examples in a specific 
 ==Simple features==
 - I'd like a page that shows all tasks done with a language.
 - I'd like a language page like:
-http://rosettacode.org/wiki/Category:Lisp
+<http://rosettacode.org/wiki/Category:Lisp>
 to contain links as:
-http://rosettacode.org/wiki/Empty_program#Lisp
+<http://rosettacode.org/wiki/Empty_program#Lisp>
 Instead of:
-http://rosettacode.org/wiki/Empty_program
+<http://rosettacode.org/wiki/Empty_program>
 
 : Something like that is in the works, with the help of Semantic Mediawiki. We've got a few bugs to work out first, however. --[[User:Coderjoe|Coderjoe]] 02:51, 22 August 2010 (UTC)
 
 :: The first query should already be possible: {{#ask: [[Category:Programming Tasks]] [[Category:Lisp]] | limit=3}}
-::: This page http://rosettacode.org/wiki/100_doors shows all languages for a task, but I'd like to see the opposite, a page that shows all tasks for a language (not jut a list, with all the inlined source code too).
+::: This page <http://rosettacode.org/wiki/100_doors> shows all languages for a task, but I'd like to see the opposite, a page that shows all tasks for a language (not jut a list, with all the inlined source code too).
 :: Of course you would put that into a better format, and would make a nice page out of it. --[[User:Ce|Ce]] 07:55, 22 August 2010 (UTC)
 :::Those links don't go right to the example though. You need to add the anchor on to the ends of the links. --[[User:Mwn3d|Mwn3d]] 15:37, 22 August 2010 (UTC)
-:Check http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Language_Page_Links - it's been recommended and two possible solutions (in code) and a few others (in theory) have been made. [[User:BR|BR]] 20:39, 15 December 2010 (UTC)
+:Check <http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Language_Page_Links> - it's been recommended and two possible solutions (in code) and a few others (in theory) have been made. [[User:BR|BR]] 20:39, 15 December 2010 (UTC)
 
 - I'd like to do side-by-side comparisons between pairs of languages.  For example,  I know Python very well but am still learning Scheme.  Being able to easily view side by side examples would be a tremendous time saver compared to having to scroll between the Python and Scheme entries for each example.  BTW, this site is a terrific idea.  My thanks to all the implementors!
 :If you sign up for an account and then copy [[User:Tyrok1/monobook.js]] to the same subpage of your userpage (if your username was "username" then it would go to User:Username/monobook.js, and mine is at [[User:Mwn3d/monobook.js]]), you get a neat little "my scripts" option at the top of every page. If you check "language comparison" then checkboxes will appear next to language names in the tables of contents on task pages. You can then check a couple of those and only those languages will show on the page. It's not side-by-side, but there's a lot less scrolling. Plus it's nice to have an account and a user page to decorate. --[[User:Mwn3d|Mwn3d]] 13:35, 25 March 2011 (UTC)
 
 == Webchat fix ==
-In file /extensions/WebChat/WebChat_body.php, line 40, change the width from '600' to '100%'.  Also, in function webChatExpand on line 52, comment out the two lines that automatically resize the webchat applet to the size of the screen.  Doing this helps prevent an excessivly wide window, especially on those 2048x1152 displays that are popular right now.  For those with Mediawiki bugzilla access, you can also see a patch at [https://bugzilla.wikimedia.org/show_bug.cgi?id=29592 bug 29592]. --[[User:Sigma 7|Sigma 7]] 12:28, 26 June 2011 (UTC)
+In file /extensions/WebChat/WebChat_body.php, line 40, change the width from '600' to '100%'.  Also, in function webChatExpand on line 52, comment out the two lines that automatically resize the webchat applet to the size of the screen.  Doing this helps prevent an excessivly wide window, especially on those 2048x1152 displays that are popular right now.  For those with Mediawiki bugzilla access, you can also see a patch at [bug 29592](https://bugzilla.wikimedia.org/show_bug.cgi?id=29592). --[[User:Sigma 7|Sigma 7]] 12:28, 26 June 2011 (UTC)
 : Done --[[User:Short Circuit|Michael Mol]] 12:55, 26 June 2011 (UTC)

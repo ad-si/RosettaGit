@@ -19,7 +19,7 @@ languages = [
 ]
 +++
 
-Create Spoof game. See details: [https://en.wikipedia.org/wiki/Spoof_(game) Spoof game]
+Create Spoof game. See details: [Spoof game](https://en.wikipedia.org/wiki/Spoof_(game))
 
 
 

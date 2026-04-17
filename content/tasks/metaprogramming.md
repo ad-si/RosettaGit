@@ -219,7 +219,7 @@ kXXc some
 
 C preprocessor can be used to extend language to some extent.
 
-It's possible to create [http://stackoverflow.com/questions/3385515/static-assert-in-c static assertions]
+It's possible to create [static assertions](http://stackoverflow.com/questions/3385515/static-assert-in-c)
 
 
 ```c
@@ -258,7 +258,7 @@ ITERATE_LIST(n, list)
 ```
 
 
-For examples in real world, look [http://svn.gna.org/viewcvs/freeciv/trunk/common/city.h?view=markup FreeCiv], and [http://mz.openttdcoop.org/is2/openttd-is2-h1f270887-docs/engine__base_8h-source.html OpenTTD] macros(city_map_iterate for FreeCiv, FOR_ALL_ENGINES for OpenTTD).
+For examples in real world, look [FreeCiv](http://svn.gna.org/viewcvs/freeciv/trunk/common/city.h?view=markup), and [OpenTTD](http://mz.openttdcoop.org/is2/openttd-is2-h1f270887-docs/engine__base_8h-source.html) macros(city_map_iterate for FreeCiv, FOR_ALL_ENGINES for OpenTTD).
 
 Also, C does not support functions overloading, but becaus macro calls do not require type it's possible to emulate overloading to some extent
 
@@ -278,12 +278,12 @@ The [[Order|Order programming language]] is implemented entirely using the C pre
 ## C#
 
 
-Metaprogramming in C# can be achieved using the [https://msdn.microsoft.com/en-us/library/bb126445.aspx Text Template Transformation Toolkit]. It is a textual preprocessor embedded in Visual Studio (it can also be executed from the command-line, e.g. in build scripts). It is language-agnostic, and therefore can generate code for C#, Visual Basic or other languages. This also means that it has no features which help manipulating the underlying language: it is purely textual, and does '''not''' include a C# parser to transform existing C# files (so you will need to roll your own or use [https://roslyn.codeplex.com/ Roslyn]), and does '''not''' include utilities which would help with combining pieces of code.
+Metaprogramming in C# can be achieved using the [Text Template Transformation Toolkit](https://msdn.microsoft.com/en-us/library/bb126445.aspx). It is a textual preprocessor embedded in Visual Studio (it can also be executed from the command-line, e.g. in build scripts). It is language-agnostic, and therefore can generate code for C#, Visual Basic or other languages. This also means that it has no features which help manipulating the underlying language: it is purely textual, and does '''not''' include a C# parser to transform existing C# files (so you will need to roll your own or use [Roslyn](https://roslyn.codeplex.com/)), and does '''not''' include utilities which would help with combining pieces of code.
 
 
 ## Clojure
 
-See [http://clojure-doc.org/articles/language/macros.html Clojure Macros and Metaprogramming] article.
+See [Clojure Macros and Metaprogramming](http://clojure-doc.org/articles/language/macros.html) article.
 
 
 ## Common Lisp
@@ -444,7 +444,7 @@ Another example, using the identity monad. With the identity monad, the comprehe
 
 I.e. combine the values X, Y and Z into a triplet list, were X is 1, Y is 3X, and Z is X + Y.
 
-To see the original version of this code with lengthy comments, have a look in the Lisp Pastebin. http://paste.lisp.org/display/71196
+To see the original version of this code with lengthy comments, have a look in the Lisp Pastebin. <http://paste.lisp.org/display/71196>
 
 
 ```lisp
@@ -552,7 +552,7 @@ To see the original version of this code with lengthy comments, have a look in t
 
 ### Python in Lisp
 
-The CLPython project (http://common-lisp.net/project/clpython) provides a Python implementation embedded in Common Lisp. Python modules can be included in Lisp programs and interoperate with Lisp code. There is even a mixed-mode interactive loop ("REPL") where one can use a dialect which mixes Python and Lisp:
+The CLPython project (<http://common-lisp.net/project/clpython>) provides a Python implementation embedded in Common Lisp. Python modules can be included in Lisp programs and interoperate with Lisp code. There is even a mixed-mode interactive loop ("REPL") where one can use a dialect which mixes Python and Lisp:
 
 From the project documentation:
 
@@ -593,7 +593,7 @@ Unfortunately, further metaprogramming within the Python is evidently discourage
 ## D
 
 
-[http://dlang.org/mixin.html Mixins] enable string constants to be compiled as regular D code and inserted into the program. Combining this with compile time manipulation of strings enables the creation of domain-specific languages.
+[Mixins](http://dlang.org/mixin.html) enable string constants to be compiled as regular D code and inserted into the program. Combining this with compile time manipulation of strings enables the creation of domain-specific languages.
 
 
 ```d
@@ -785,7 +785,7 @@ If the commented-out code, which uses 'copy' in its normal sense, were uncomment
 ## Haskell
 
 
-Metaprogramming is implemented using [http://www.haskell.org/haskellwiki/Template_Haskell Template Haskell].
+Metaprogramming is implemented using [Template Haskell](http://www.haskell.org/haskellwiki/Template_Haskell).
 
 
 ## J
@@ -797,14 +797,14 @@ Additionally, J script blocks (a block of text terminated by a right parenthesis
 
 The [[Y_combinator#J|J implementation of the Y combinator]] could be considered an example of metaprogramming.
 
-J's [http://www.jsoftware.com/help/dictionary/d310n.htm explicit definitions] might also be considered an example of metaprogramming, since explicit definitions have data dependent syntactic types.
+J's [explicit definitions](http://www.jsoftware.com/help/dictionary/d310n.htm) might also be considered an example of metaprogramming, since explicit definitions have data dependent syntactic types.
 
 
 
 ## Julia
 
 Julia's metaprogramming features are descibed in the online documentation at
-https://docs.julialang.org/en/v1/manual/metaprogramming/index.html
+<https://docs.julialang.org/en/v1/manual/metaprogramming/index.html>
 
 Here is an example of metaprogramming. Julia in base form does not have C's do { } while() statement.
 
@@ -961,14 +961,14 @@ CircleTimes[x_, y_] := Mod[x, 10] Mod[y, 10]
 12
 ```
 
-For more info see: [http://reference.wolfram.com/mathematica/tutorial/OperatorsWithoutBuiltInMeanings.html Operators in Mathematica]
+For more info see: [Operators in Mathematica](http://reference.wolfram.com/mathematica/tutorial/OperatorsWithoutBuiltInMeanings.html)
 
 
 ## Nemerle
 
-Nemerle provides support for macros, which range from defining new infix operators (in fact many 'built-in' operators are [http://nemerle.org/wiki/index.php?title=Macro_operators macros]) to new keywords or control structures.
+Nemerle provides support for macros, which range from defining new infix operators (in fact many 'built-in' operators are [macros](http://nemerle.org/wiki/index.php?title=Macro_operators)) to new keywords or control structures.
 
-See [http://nemerle.org/wiki/index.php?title=Macros here], [http://nemerle.org/wiki/index.php?title=Macros_tutorial here], and [http://nemerle.org/wiki/index.php?title=Category:Macro_packages here] on the Nemerle wiki for more information.
+See [here](http://nemerle.org/wiki/index.php?title=Macros), [here](http://nemerle.org/wiki/index.php?title=Macros_tutorial), and [here](http://nemerle.org/wiki/index.php?title=Category:Macro_packages) on the Nemerle wiki for more information.
 
 
 ## Nim
@@ -1137,7 +1137,7 @@ StmtList
               Ident !"p3"
 ```
 
-Using this information we can create an <code>if2</code> macro for two conditions, as is done in the [http://rosettacode.org/wiki/Extend_your_language#Nim "Extend your language" task].
+Using this information we can create an <code>if2</code> macro for two conditions, as is done in the ["Extend your language" task](http://rosettacode.org/wiki/Extend_your_language#Nim).
 
 
 ## PARI/GP
@@ -1184,7 +1184,7 @@ gmin0(GEN a, GEN b)
 ## Perl
 
 
-You can textually transform code with a [http://perldoc.perl.org/perlfilter.html source filter], a module that when <code>use</code>d modifies the following lines of source. [http://perldoc.perl.org/Filter/Util/Call.html Filter::Util::Call] provides a general means of writing source filters. [http://perldoc.perl.org/Filter/Simple.html Filter::Simple] is an interface to <code>Filter::Util::Call</code> that lets you elide a lot of boilerplate code. More important, <code>Filter::Simple</code> can hide the contents of quoting constructs from your filter, obviating the biggest dangers of textual metaprogramming. For example, given the following module:
+You can textually transform code with a [source filter](http://perldoc.perl.org/perlfilter.html), a module that when <code>use</code>d modifies the following lines of source. [Filter::Util::Call](http://perldoc.perl.org/Filter/Util/Call.html) provides a general means of writing source filters. [Filter::Simple](http://perldoc.perl.org/Filter/Simple.html) is an interface to <code>Filter::Util::Call</code> that lets you elide a lot of boilerplate code. More important, <code>Filter::Simple</code> can hide the contents of quoting constructs from your filter, obviating the biggest dangers of textual metaprogramming. For example, given the following module:
 
 
 ```perl
@@ -1210,7 +1210,7 @@ prints:
 
   1 … 2 … 3 … 4 … 5
 
-[http://search.cpan.org/dist/Devel-Declare Devel::Declare] lets you define a new keyword by setting up a hook to be run whenever the parser encounters a bareword of your choice. Devel::Declare is powerful, but it has a reputation for being difficult to understand. See [http://transfixedbutnotdead.com/2009/12/16/url-develdeclare-and-no-strings-attached/ this blog post] for a relatively simple usage example.
+[Devel::Declare](http://search.cpan.org/dist/Devel-Declare) lets you define a new keyword by setting up a hook to be run whenever the parser encounters a bareword of your choice. Devel::Declare is powerful, but it has a reputation for being difficult to understand. See [this blog post](http://transfixedbutnotdead.com/2009/12/16/url-develdeclare-and-no-strings-attached/) for a relatively simple usage example.
 
 
 ## Perl 6
@@ -1306,9 +1306,9 @@ see [[Extend_your_language#Phix]]
 As in any Lisp, metaprogramming is an essential aspect of PicoLisp.
 In most cases normal functions are used to extend the language
 (see [[Extend your language#PicoLisp]]),
-[http://software-lab.de/doc/ref.html#macro-io read-macros] operate on
+[read-macros](http://software-lab.de/doc/ref.html#macro-io) operate on
 the source level, and also runtime
-[http://software-lab.de/doc/refM.html#macro macros] are used occasionally.
+[macros](http://software-lab.de/doc/refM.html#macro) are used occasionally.
 
 
 ## PostScript
@@ -1364,13 +1364,13 @@ Note that even the let expression was implemented using meta programming
 ## Python
 
 
-Metaprogramming is frowned on in Python and considered un-pythonic. The only widely known example of metaprogramming in Python was an implementation of a goto (and comefrom) keyword done as an [http://entrian.com/goto/ April-fools joke].
+Metaprogramming is frowned on in Python and considered un-pythonic. The only widely known example of metaprogramming in Python was an implementation of a goto (and comefrom) keyword done as an [April-fools joke](http://entrian.com/goto/).
 
-Another more recent library that shows it can be done in Python is [https://github.com/lihaoyi/macropy MacroPy].
+Another more recent library that shows it can be done in Python is [MacroPy](https://github.com/lihaoyi/macropy).
 
 ==={{works with|https://github.com/lihaoyi/macropy MacroPy}}===
 
-This is example is taken from MacroPy's [https://github.com/lihaoyi/macropy/blob/2885df8ca73fa0f6c17168a98d218dc4a3f088c2/docs/examples/first_macro/full/macro_module.py GitHub page]. It creates a macro called <tt>expand</tt> that, when invoked, generates the AST for a function in place of the original expression.
+This is example is taken from MacroPy's [GitHub page](https://github.com/lihaoyi/macropy/blob/2885df8ca73fa0f6c17168a98d218dc4a3f088c2/docs/examples/first_macro/full/macro_module.py). It creates a macro called <tt>expand</tt> that, when invoked, generates the AST for a function in place of the original expression.
 
 
 ```python
@@ -1402,7 +1402,7 @@ print func(5)
 ## Prolog
 
 
-This example expands and prints a goal using [http://www.swi-prolog.org/pldoc/man?predicate=clause/2 clause/2]:
+This example expands and prints a goal using [clause/2](http://www.swi-prolog.org/pldoc/man?predicate=clause/2):
 
 
 ```prolog
@@ -1414,7 +1414,7 @@ less_than(A,B) :- A<B.
 
 ```
 
-New goals can be created at runtime using [http://www.swi-prolog.org/pldoc/man?predicate=assertz/1 assertz/1]:
+New goals can be created at runtime using [assertz/1](http://www.swi-prolog.org/pldoc/man?predicate=assertz/1):
 
 ```prolog
 
@@ -1430,11 +1430,11 @@ assertz((mother(Child, Mother) :-
 ## Racket
 
 
-Racket has an extremely rich set of metaprogramming tools, which scale from simple pattern-based macros to implementing entire new languages with their own syntax, such as [http://docs.racket-lang.org/datalog/index.html Datalog] and [http://docs.racket-lang.org/algol60/index.html Algol 60]. Many parts of Racket itself, including its class-based object system, are implemented as macros that expand to a much smaller set of core forms.
+Racket has an extremely rich set of metaprogramming tools, which scale from simple pattern-based macros to implementing entire new languages with their own syntax, such as [Datalog](http://docs.racket-lang.org/datalog/index.html) and [Algol 60](http://docs.racket-lang.org/algol60/index.html). Many parts of Racket itself, including its class-based object system, are implemented as macros that expand to a much smaller set of core forms.
 
-As a descendent of the Scheme tradition, Racket provides [https://en.wikipedia.org/wiki/Hygienic_macro hygienic] pattern-based macros, allows the use of the full Racket language (including programmer-defined extensions) in implementing macros, and supports locally-defined macros.
+As a descendent of the Scheme tradition, Racket provides [hygienic](https://en.wikipedia.org/wiki/Hygienic_macro) pattern-based macros, allows the use of the full Racket language (including programmer-defined extensions) in implementing macros, and supports locally-defined macros.
 
-Racket adds many extensions to this tradition, such as syntax-parse, which simplifies writing robust macros with good error reporting. For more information on Racket's metaprogramming features, see the relevant chapters of [https://docs.racket-lang.org/guide/macros.html The Racket Guide] and [https://docs.racket-lang.org/reference/Macros.html The Racket Reference].
+Racket adds many extensions to this tradition, such as syntax-parse, which simplifies writing robust macros with good error reporting. For more information on Racket's metaprogramming features, see the relevant chapters of [The Racket Guide](https://docs.racket-lang.org/guide/macros.html) and [The Racket Reference](https://docs.racket-lang.org/reference/Macros.html).
 
 For a simple example, this is the definition and a use of the macro list-when:
 
@@ -1472,7 +1472,7 @@ Alternatively, list-when could be defined using syntax-parse, which provides bet
 
 ## Rascal
 
-Rascal has been developed for metaprogramming. Rascal modules already have functionality to analyse Java code (see [http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/lang/java/jdt/jdt.html documentation]).
+Rascal has been developed for metaprogramming. Rascal modules already have functionality to analyse Java code (see [documentation](http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/lang/java/jdt/jdt.html)).
 
 
 ### Syntax Definition

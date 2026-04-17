@@ -113,8 +113,8 @@ Maximum dimensions of window : W 1280 x H  734
 
 ## AutoHotkey
 
-This is a modified example taken from the AutoHotkey documentation for the [http://ahkscript.org/docs/commands/SysGet.htm SysGet] command.
-Also, the built in variables [http://ahkscript.org/docs/Variables.htm#Screen A_ScreenHeight] and [http://ahkscript.org/docs/Variables.htm#Screen A_ScreenWidth] contain the width and height of the primary monitor, in pixels.
+This is a modified example taken from the AutoHotkey documentation for the [SysGet](http://ahkscript.org/docs/commands/SysGet.htm) command.
+Also, the built in variables [A_ScreenHeight](http://ahkscript.org/docs/Variables.htm#Screen) and [A_ScreenWidth](http://ahkscript.org/docs/Variables.htm#Screen) contain the width and height of the primary monitor, in pixels.
 
 ```AutoHotkey
 SysGet, MonitorCount, MonitorCount
@@ -1268,7 +1268,7 @@ proc maxSize {} {
 }
 ```
 
-On this system, that returns <code>1440 836</code>. Further discussion of related matters, including platform limitations, is on [http://wiki.tcl.tk/10872 the Tcler's Wiki].
+On this system, that returns <code>1440 836</code>. Further discussion of related matters, including platform limitations, is on [the Tcler's Wiki](http://wiki.tcl.tk/10872).
 
 == {{header|Visual Basic}} ==
 

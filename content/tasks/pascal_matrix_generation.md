@@ -1900,7 +1900,7 @@ Symmetric
 
 Explanation:
 
-<code>x!y</code> is [http://www.jsoftware.com/jwiki/Vocabulary/bang#dyadic the number of ways of picking x balls (unordered) from a bag of y balls] and <code>x!/y</code> for list x and list y gives a table where rows correspond to the elements of x and the columns correspond to the elements of y. Meanwhile <code>!/~y</code> is equivalent to <code>y!/y</code> (and <code>i.y</code> just counts the first y non-negative integers).
+<code>x!y</code> is [the number of ways of picking x balls (unordered) from a bag of y balls](http://www.jsoftware.com/jwiki/Vocabulary/bang#dyadic) and <code>x!/y</code> for list x and list y gives a table where rows correspond to the elements of x and the columns correspond to the elements of y. Meanwhile <code>!/~y</code> is equivalent to <code>y!/y</code> (and <code>i.y</code> just counts the first y non-negative integers).
 
 Also, <code>x!~y</code> is <code>y!x</code> (and the second example otherwise follows the same pattern as the first example.
 

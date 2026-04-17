@@ -2456,7 +2456,7 @@ in
 ```
 
 
-As a web application, using the "Roads" web programming library. Connect your browser to http://localhost:8080/start after starting the program.
+As a web application, using the "Roads" web programming library. Connect your browser to <http://localhost:8080/start> after starting the program.
 
 ```oz
 declare
@@ -2522,7 +2522,7 @@ in
 ## PicoLisp
 
 The standard PicoLisp GUI is HTTP based. Connect your browser to
-http://localhost:8080 after starting the following script.
+<http://localhost:8080> after starting the following script.
 
 ```PicoLisp
 #!/usr/bin/picolisp /usr/lib/picolisp/lib.l

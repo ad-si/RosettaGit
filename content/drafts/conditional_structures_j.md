@@ -14,7 +14,7 @@ tags = []
 
 ===if-then===
 
-[http://www.jsoftware.com/help/dictionary/cif.htm if.] is a simple conditional structure in J. As other control words, <code>if.</code> can be used only within explicit definitions (of verbs, adverbs or conjunctions).
+[if.](http://www.jsoftware.com/help/dictionary/cif.htm) is a simple conditional structure in J. As other control words, <code>if.</code> can be used only within explicit definitions (of verbs, adverbs or conjunctions).
 
 
 ```j
@@ -38,7 +38,7 @@ The condition may be omitted, or it may be empty (like an array with 0 elements)
 
 ===select-case===
 
-[http://www.jsoftware.com/help/dictionary/csel.htm select.] is another conditional structure. <code>case.</code> match causes the execution of this <code>case.</code> branch and then terminates the further structure execution. <code>fcase.</code> match after the execution of the associated code executes the next branch; if that's with <code>fcase.</code> again, it again executes the next branch, etc.
+[select.](http://www.jsoftware.com/help/dictionary/csel.htm) is another conditional structure. <code>case.</code> match causes the execution of this <code>case.</code> branch and then terminates the further structure execution. <code>fcase.</code> match after the execution of the associated code executes the next branch; if that's with <code>fcase.</code> again, it again executes the next branch, etc.
 
 
 ```j

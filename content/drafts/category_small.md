@@ -11,7 +11,7 @@ tags = []
 +++
 
 The language small was made in 2015 by David Getindor. It is licensed under the GGL license and has a goal of having the largest sourcefiles possible and the least amount of needed commands. It is considered a great code golf language because you will always have a bigger filesize, therefore you win by having a larger number of bytes.
-[https://github.com/getindor/small small github]
+[small github](https://github.com/getindor/small)
 
 Small has two different commands:
 

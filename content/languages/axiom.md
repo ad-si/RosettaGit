@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[http://axiom-developer.org/ Axiom] is a general purpose Computer Algebra system. It is useful for research and development of mathematical algorithms. It defines a strongly typed, mathematically correct type hierarchy. It has a programming language and a built-in compiler.
+[Axiom](http://axiom-developer.org/) is a general purpose Computer Algebra system. It is useful for research and development of mathematical algorithms. It defines a strongly typed, mathematically correct type hierarchy. It has a programming language and a built-in compiler.
 
 <br clear=all>
 

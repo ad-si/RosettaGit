@@ -99,12 +99,12 @@ For the purposes of this task, every character except 0-9, A-Z and a-z requires 
 
 
 ;Example:
-The string "<code><nowiki>http://foo bar/</nowiki></code>" would be encoded as "<code><nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki></code>".
+The string "<code><nowiki><http://foo> bar/</nowiki></code>" would be encoded as "<code><nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki></code>".
 
 
 ;Variations:
 * Lowercase escapes are legal, as in "<code><nowiki>http%3a%2f%2ffoo%20bar%2f</nowiki></code>".
-* Some standards give different rules: RFC 3986, ''Uniform Resource Identifier (URI): Generic Syntax'', section 2.3, says that "-._~" should not be encoded. HTML 5, section [http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#url-encoded-form-data 4.10.22.5 URL-encoded form data], says to preserve "-._*", and to encode space " " to "+". The options below provide for utilization of an exception string, enabling preservation (non encoding) of particular characters to meet specific standards.
+* Some standards give different rules: RFC 3986, ''Uniform Resource Identifier (URI): Generic Syntax'', section 2.3, says that "-._~" should not be encoded. HTML 5, section [4.10.22.5 URL-encoded form data](http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#url-encoded-form-data), says to preserve "-._*", and to encode space " " to "+". The options below provide for utilization of an exception string, enabling preservation (non encoding) of particular characters to meet specific standards.
 
 
 ;Options:
@@ -710,7 +710,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt provides hexstring]
+[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 ```txt
 text    = "http://foo bar/"
@@ -772,7 +772,7 @@ http%3A%2F%2Ffoo+bar%2F
 
 ## JavaScript
 
-Confusingly, there are 3 different URI encoding functions in JavaScript: <code>escape()</code>, <code>encodeURI()</code>, and <code>encodeURIComponent()</code>. Each of them encodes a different set of characters. See [http://www.javascripter.net/faq/escape.htm this article] and [http://xkr.us/articles/javascript/encode-compare/ this article] for more information and comparisons.
+Confusingly, there are 3 different URI encoding functions in JavaScript: <code>escape()</code>, <code>encodeURI()</code>, and <code>encodeURIComponent()</code>. Each of them encodes a different set of characters. See [this article](http://www.javascripter.net/faq/escape.htm) and [this article](http://xkr.us/articles/javascript/encode-compare/) for more information and comparisons.
 
 ```javascript
 var normal = 'http://foo/bar/';
@@ -1210,33 +1210,33 @@ method testcase(variation = '') public static
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo%20bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma%20User%22%20%3Cirma%2Euser%40mail%2Ecom%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo%2Ebar%2Ecom%2F%7Euser%2Dname%2F%5Fsubdir%2F%2A%7E%2Ehtml
 
 RFC3986
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo%20bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan%20Aim%22%20%3Civan.aim%40email.com%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma%20User%22%20%3Cirma.user%40mail.com%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo.bar.com%2F~user-name%2F_subdir%2F%2A~.html
 
 HTML5
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo+bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan+Aim%22+%3Civan.aim%40email.com%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma+User%22+%3Cirma.user%40mail.com%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo.bar.com%2F%7Euser-name%2F_subdir%2F*%7E.html
 
 ```
@@ -1248,7 +1248,7 @@ http%3A%2F%2Ffoo.bar.com%2F%7Euser-name%2F_subdir%2F*%7E.html
 
 ```NewLISP
 ;; simple encoder
-;; (source http://www.newlisp.org/index.cgi?page=Code_Snippets)
+;; (source <http://www.newlisp.org/index.cgi?page=Code_Snippets>)
 (define (url-encode str)
   (replace {([^a-zA-Z0-9])} str (format "%%%2X" (char $1)) 0))
 
@@ -1337,7 +1337,7 @@ For encoding for various parts of the URL, the allowed character sets <code>[NSC
 ## OCaml
 
 
-Using the library [http://projects.camlcity.org/projects/ocamlnet.html ocamlnet] from the interactive loop:
+Using the library [ocamlnet](http://projects.camlcity.org/projects/ocamlnet.html) from the interactive loop:
 
 
 ```ocaml
@@ -1702,33 +1702,33 @@ end
 
 ```txt
 
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo%20bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma%20User%22%20%3Cirma%2Euser%40mail%2Ecom%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo%2Ebar%2Ecom%2F%7Euser%2Dname%2F%5Fsubdir%2F%2A%7E%2Ehtml
 
 RFC3986
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo%20bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan%20Aim%22%20%3Civan.aim%40email.com%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma%20User%22%20%3Cirma.user%40mail.com%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo.bar.com%2F~user-name%2F_subdir%2F%2A~.html
 
 HTML5
-http://foo bar/
+<http://foo> bar/
 http%3A%2F%2Ffoo+bar%2F
 mailto:"Ivan Aim" <ivan.aim@email.com>
 mailto%3A%22Ivan+Aim%22+%3Civan.aim%40email.com%3E
 mailto:"Irma User" <irma.user@mail.com>
 mailto%3A%22Irma+User%22+%3Cirma.user%40mail.com%3E
-http://foo.bar.com/~user-name/_subdir/*~.html
+<http://foo.bar.com/~user-name/_subdir/*~.html>
 http%3A%2F%2Ffoo.bar.com%2F%7Euser-name%2F_subdir%2F*%7E.html
 
 ```
@@ -1773,7 +1773,7 @@ URLencode: procedure; parse arg $,,z;        t1= '-._~'              /*get args,
 
 ```txt
 
-  original:  http://foo bar/
+  original:  <http://foo> bar/
    encoded:  http%3A%2F%2Ffoo+bar%2F
 
   original:  mailto:"Ivan Aim" <ivan.aim@email.com>
@@ -1782,7 +1782,7 @@ URLencode: procedure; parse arg $,,z;        t1= '-._~'              /*get args,
   original:  mailto:"Irma User" <irma.user@mail.com>
    encoded:  mailto%3A%22Irma+User%22+%3Cirma%2Euser%40mail%2Ecom%3E
 
-  original:  http://foo.bar.com/~user-name/_subdir/*~.html
+  original:  <http://foo.bar.com/~user-name/_subdir/*~.html>
    encoded:  http%3A%2F%2Ffoo%2Ebar%2Ecom%2F%7Euser%2Dname%2F%5Fsubdir%2F%2A%7E%2Ehtml
 
 ```
@@ -1801,7 +1801,7 @@ puts CGI.escape("http://foo bar/").gsub("+", "%20")
 ```
 
 
-Programs should not call <code>URI.escape</code> (alias <code>URI.encode</code>), because it fails to encode some characters. <code>URI.escape</code> is [http://www.ruby-forum.com/topic/207489 obsolete] since Ruby 1.9.2.
+Programs should not call <code>URI.escape</code> (alias <code>URI.encode</code>), because it fails to encode some characters. <code>URI.escape</code> is [obsolete](http://www.ruby-forum.com/topic/207489) since Ruby 1.9.2.
 
 <code>URI.encode_www_form_component</code> is a new method from Ruby 1.9.2. It obeys HTML 5 and encodes all characters except '-.0-9A-Z_a-z' and '*'.
 
@@ -1830,7 +1830,7 @@ print urlIn$;" -> ";url$
 
 
 ```txt
-http://foo bar/ -> http%3A%2F%2Ffoo%20bar%2F
+<http://foo> bar/ -> http%3A%2F%2Ffoo%20bar%2F
 ```
 
 
@@ -1892,11 +1892,11 @@ object UrlCoded extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines functions
+The library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines functions
 to handle URL respectively percent encoding.
-The function [http://seed7.sourceforge.net/libraries/encoding.htm#toPercentEncoded%28in_string%29 toPercentEncoded]
+The function [toPercentEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#toPercentEncoded%28in_string%29)
 encodes every character except 0-9, A-Z, a-z and the characters '-', '.', '_', '~'.
-The function [http://seed7.sourceforge.net/libraries/encoding.htm#toUrlEncoded%28in_string%29 toUrlEncoded]
+The function [toUrlEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#toUrlEncoded%28in_string%29)
 works like ''toPercentEncoded'' and additionally encodes a space with '+'.
 Both functions work for byte sequences (characters beyond '\255\' raise the exception RANGE_ERROR).
 To encode Unicode characters it is necessary to convert them to UTF-8 with ''striToUtf8'' before.
@@ -1937,7 +1937,7 @@ http%3A%2F%2Ffoo+bar%2F
 
 ```tcl
 # Encode all except "unreserved" characters; use UTF-8 for extended chars.
-# See http://tools.ietf.org/html/rfc3986 §2.4 and §2.5
+# See <http://tools.ietf.org/html/rfc3986> §2.4 and §2.5
 proc urlEncode {str} {
     set uStr [encoding convertto utf-8 $str]
     set chRE {[^-A-Za-z0-9._~\n]};		# Newline is special case!
@@ -1978,7 +1978,7 @@ PRINT "encoded: ", url_encoded
 
 ```txt
 
-text:    http://foo bar/
+text:    <http://foo> bar/
 encoded: http%3A%2F%2Ffoo%20bar%2F
 
 ```

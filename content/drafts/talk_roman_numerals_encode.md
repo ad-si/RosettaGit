@@ -26,7 +26,7 @@ I'm pretty sure CD is 400. If you look at [[wp:Roman_numerals#Modern_Roman_numer
 
 Roman numerals are by no means standardized. You should reference the particular brand of encoding you wish to support. --[[User:IanOsgood|IanOsgood]] 08:53, 1 April 2008 (MDT)
 :What are our choices? --[[User:Mwn3d|Mwn3d]] 09:09, 1 April 2008 (MDT)
-:: Project Euler had a similar [http://projecteuler.net/index.php?section=problems&id=89 task], where they addressed possible rules in a [http://projecteuler.net/index.php?section=faq&ref=roman_numerals FAQ]. Wikipedia has also a section on special [http://en.wikipedia.org/wiki/Roman_numerals#XCIX_vs._IC rules]. I guess the safe way is the way all examples so far do it. But maybe specifying it isn't important (I don't know which similarities/dissimilarities between different languages this task should highlight). --[[User:Dirkt|Dirkt]] 15:38, 1 April 2008 (MDT)
+:: Project Euler had a similar [task](http://projecteuler.net/index.php?section=problems&id=89), where they addressed possible rules in a [FAQ](http://projecteuler.net/index.php?section=faq&ref=roman_numerals). Wikipedia has also a section on special [rules](http://en.wikipedia.org/wiki/Roman_numerals#XCIX_vs._IC). I guess the safe way is the way all examples so far do it. But maybe specifying it isn't important (I don't know which similarities/dissimilarities between different languages this task should highlight). --[[User:Dirkt|Dirkt]] 15:38, 1 April 2008 (MDT)
 
 -----
 
@@ -67,7 +67,7 @@ Is there a page for that? I couldn't find one...
 
 It might be worth permitting full range of Roman numerals eg:
 * Ⅰ, Ⅴ, Ⅹ, Ⅼ, Ⅽ, Ⅾ, Ⅿ, ⅰ, ⅴ, ⅹ, ⅼ, ⅽ, ⅾ, ⅿ, ↀ, ↁ, ↂ, Ↄ
-c.f. [http://en.wiktionary.org/wiki/ↀ wiktionary]
+c.f. [wiktionary](http://en.wiktionary.org/wiki/ↀ)
 
 [[User:NevilleDNZ|NevilleDNZ]] 23:16, 30 November 2011 (UTC)
 

@@ -96,12 +96,12 @@ languages = [
 ## Task
 
 ## Task
-Create a program that downloads the time from this URL:   [http://tycho.usno.navy.mil/cgi-bin/timer.pl http://tycho.usno.navy.mil/cgi-bin/timer.pl]   and then prints the current UTC time by extracting just the UTC time from the web page's [[HTML]].
+Create a program that downloads the time from this URL:   [http://tycho.usno.navy.mil/cgi-bin/timer.pl](http://tycho.usno.navy.mil/cgi-bin/timer.pl)   and then prints the current UTC time by extracting just the UTC time from the web page's [[HTML]].
 
 <!-- As of March 2014, the page is available
 {{task|Networking and Web Interaction}}
 
-The page http://tycho.usno.navy.mil/cgi-bin/timer.pl is no longer available since July 2011.
+The page <http://tycho.usno.navy.mil/cgi-bin/timer.pl> is no longer available since July 2011.
 The relevant part of that page source looked like this:
 
 ```txt
@@ -124,7 +124,7 @@ The relevant part of that page source looked like this:
 
 End of comment -->
 
-If possible, only use libraries that come at no ''extra'' monetary cost with the programming language and that are widely available and popular such as [http://www.cpan.org/ CPAN] for Perl or [[Boost]] for C++.
+If possible, only use libraries that come at no ''extra'' monetary cost with the programming language and that are widely available and popular such as [CPAN](http://www.cpan.org/) for Perl or [[Boost]] for C++.
 
 
 
@@ -217,7 +217,7 @@ msgbox % time := SubStr(timefile, pos - 9, 8)
 ## AWK
 
 
-This is inspired by [http://www.gnu.org/software/gawk/manual/gawkinet/html_node/GETURL.html#GETURL GETURL] example in the manual for gawk.
+This is inspired by [GETURL](http://www.gnu.org/software/gawk/manual/gawkinet/html_node/GETURL.html#GETURL) example in the manual for gawk.
 
 <tt>
 ```awk
@@ -250,8 +250,8 @@ BEGIN {
 
 {{works with|ALGOL 68|Revision 1 - however ''grep in string'', ''http content'' and ''str error'' are from a non-standard library}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of ''grep in string'' and ''http content''}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of ''grep in string'' and ''http content''}}
 
 ```algol68
 STRING
@@ -332,7 +332,7 @@ when ScrapeWeb.GotText url,responseCode,responseType,responseContent do
 ```
 
 
-[https://lh5.googleusercontent.com/-lFRRPzsi5N0/UvBM9E_gZMI/AAAAAAAAKBQ/AuqDPGlwXNg/s1600/composite.png A picture of the graphical program]/
+[A picture of the graphical program](https://lh5.googleusercontent.com/-lFRRPzsi5N0/UvBM9E_gZMI/AAAAAAAAKBQ/AuqDPGlwXNg/s1600/composite.png)/
 
 
 ## Arturo
@@ -1266,7 +1266,7 @@ UTC Time was 'Feb. 26, 11:02:30'
 
 ## Haskell
 
-Using package HTTP-4000.0.8 from [http://hackage.haskell.org/packages/hackage.html HackgageDB]
+Using package HTTP-4000.0.8 from [HackgageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```Haskell
 import Data.List
@@ -2838,7 +2838,7 @@ Imports System.Net
 
 ## Xidel
 
-http://videlibri.sourceforge.net/xidel.html
+<http://videlibri.sourceforge.net/xidel.html>
 
 ```sh
 #!/bin/bash

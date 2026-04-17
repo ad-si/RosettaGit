@@ -836,7 +836,7 @@ test_pipe completed successfully.
 
 This program prints its own pid, then runs a copy of itself if given any argument on the command line. When it does so, it prints the pid of the child process it started. Output should show this pid matching the child's self reported pid.
 Note that on Unix like systems <code>os.StartProcess</code> is a wrapper around <code>syscal.ForkExec</code> (which as the name implies, safely calls <code>fork</code> and <code>exec</code> system calls).
-The [https://golang.org/pkg/os/exec <code>os/exec</code>] package offers a higher level interface and may be simpler in some situations.
+The [<code>os/exec</code>](https://golang.org/pkg/os/exec) package offers a higher level interface and may be simpler in some situations.
 For the purpose of this task though, there is little difference.
 
 ```go
@@ -1486,7 +1486,7 @@ if ($pid = fork()) {
 
 Obviously you could do a Fork in a lot less lines, but this code covers all the bases.
 
-Another example using [http://search.cpan.org/perldoc?Proc::Fork Proc::Fork] module:
+Another example using [Proc::Fork](http://search.cpan.org/perldoc?Proc::Fork) module:
 
 
 ```perl
@@ -1892,7 +1892,7 @@ case Posix.Process.fork () of
 
 ## Tcl
 
-(from the [http://wiki.tcl.tk/1967 Tcl Wiki])
+(from the [Tcl Wiki](http://wiki.tcl.tk/1967))
 
 Fork is one of the primitives used for process creation in Unixy systems. It creates a copy of the process that calls it, and the only difference in internal state between the original and the copy is in the return value from the fork call (0 in the copy, but the pid of the copy in the parent).
 
@@ -1924,7 +1924,7 @@ for {set i 0} {$i < 100} {incr i} {
 ```
 
 
-In most cases though, one is not interested in spawning a copy of the process one already has, but rather wants a different process. When using POSIX APIs, this has to be done by first forking and then having the child use the exec system call to replace itself with a different program. The Tcl <code>[http://www.tcl.tk/man/tcl8.5/TclCmd/exec.htm exec]</code> command does this fork&exec combination — in part because non-Unix OSs typicallly don't have "make a copy of parent process" as an intermediate step when spawning new processes.
+In most cases though, one is not interested in spawning a copy of the process one already has, but rather wants a different process. When using POSIX APIs, this has to be done by first forking and then having the child use the exec system call to replace itself with a different program. The Tcl <code>[exec](http://www.tcl.tk/man/tcl8.5/TclCmd/exec.htm)</code> command does this fork&exec combination — in part because non-Unix OSs typicallly don't have "make a copy of parent process" as an intermediate step when spawning new processes.
 
 Note that <code>fork</code> is only supported at all on unthreaded builds of Tcl. This is because the POSIX threads library does not sit well with the fork() system call.
 

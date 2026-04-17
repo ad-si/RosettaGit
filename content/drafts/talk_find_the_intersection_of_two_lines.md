@@ -105,7 +105,7 @@ a=(0,0)      b=(3,3)      c=(8,8)      d=(8,8)       ───►  points  C  an
 
 : If I were to translate many of the Rexx programs of GS to my liking I'd be busy for months.
 ::*  Here is the Rexx program as I wrote it in my style:::*  
-http://rosettacode.org/wiki/Find_the_intersection_of_two_lines#version_2
+<http://rosettacode.org/wiki/Find_the_intersection_of_two_lines#version_2>
 ::*  Any opinions from any peers? --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 06:01, 19 May 2017 (UTC)
 
 -----

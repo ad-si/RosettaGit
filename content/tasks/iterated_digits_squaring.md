@@ -86,7 +86,7 @@ An example in Python:
 Or, for much less credit - (showing that your algorithm and/or language is slow):
 : Count how many number chains for integers 1 <= n < 1_000_000 end with a value 89.
 
-This problem derives from the [https://projecteuler.net/problem=92 Project Euler problem 92].
+This problem derives from the [Project Euler problem 92](https://projecteuler.net/problem=92).
 
 For a quick algorithm for this task see [[Talk:Iterated_digits_squaring|the talk page]]
 
@@ -999,7 +999,7 @@ Time: 335 seconds
 (def factorial (memoize -factorial))
 
 (defn -combinations [coll k]
-  " From http://rosettacode.org/wiki/Combinations_with_repetitions#Clojure "
+  " From <http://rosettacode.org/wiki/Combinations_with_repetitions#Clojure> "
   (when-let [[x & xs] coll]
     (if (= k 1)
       (map list coll)
@@ -2667,7 +2667,7 @@ for i=1 to 8 do
 end for
 ```
 
-Starting with the combinations method from http://rosettacode.org/wiki/Combinations_with_repetitions#Phix converted to a function, make sure we
+Starting with the combinations method from <http://rosettacode.org/wiki/Combinations_with_repetitions#Phix> converted to a function, make sure we
 are covering all the numbers correctly by checking that we have indeed found power(10,n) of them, and show we are looking at significantly fewer combinations.
 {{out}}
 
@@ -3645,7 +3645,7 @@ Runtime: 1.7s on a 2500k @ 4Ghz
 ## Scala
 
 ===Naïve Version, conventional iteration and (tail) recursive in one===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/3XRtgEE/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/6HeszTpxTXOqvrytzShUzg Scastie (remote JVM)] to compare the run times.
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/3XRtgEE/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/6HeszTpxTXOqvrytzShUzg) to compare the run times.
 
 ```Scala
 import scala.annotation.tailrec

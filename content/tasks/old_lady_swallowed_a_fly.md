@@ -1021,7 +1021,7 @@ Old_lady.swallowed
 
 ## Factor
 
-Windows users should put zlib1.dll[http://downloads.factorcode.org/dlls/] to factor folder.
+Windows users should put zlib1.dll<http://downloads.factorcode.org/dlls/> to factor folder.
 
 ```factor
 USING: base85 compression.zlib ;
@@ -1291,7 +1291,7 @@ main = putStr $ unlines song
 
 ## Go
 
-[https://play.golang.org/p/NwG13guusv Go Playground]
+[Go Playground](https://play.golang.org/p/NwG13guusv)
 
 ```go
 package main
@@ -1609,7 +1609,7 @@ link printf
 
 Sample output omitted.
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf formatting]
+[printf.icn provides printf formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -2269,7 +2269,7 @@ List.iter (fun i -> print_string d.(i)) s
 
 ### Using dictionary based decompression
 
-Here we use the function <code ocaml>String.fold_left</code> [http://ocaml-extlib.googlecode.com/svn/doc/apiref/ExtString.String.html#VALfold_left 1] which is not available in the standard library but in the [http://code.google.com/p/ocaml-extlib/ extlib]:
+Here we use the function <code ocaml>String.fold_left</code> [1](http://ocaml-extlib.googlecode.com/svn/doc/apiref/ExtString.String.html#VALfold_left) which is not available in the standard library but in the [extlib](http://code.google.com/p/ocaml-extlib/):
 
 ```ocaml
 let dict = [|
@@ -2834,7 +2834,7 @@ end
 
 ## Rust
 
-[https://play.rust-lang.org/?gist=294c9e29f206d7c8d8028aa5e7002d9a&version=nightly Rust Playground]
+[Rust Playground](https://play.rust-lang.org/?gist=294c9e29f206d7c8d8028aa5e7002d9a&version=nightly)
 
 ```rust
 enum Action {Once, Every, Die}

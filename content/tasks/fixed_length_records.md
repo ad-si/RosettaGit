@@ -30,9 +30,9 @@ languages = [
 
 {{task}}Fixed length read/write
 
-Before terminals, computers commonly used [https://en.wikipedia.org/wiki/Punched_card_reader punch card readers] or paper tape input.
+Before terminals, computers commonly used [punch card readers](https://en.wikipedia.org/wiki/Punched_card_reader) or paper tape input.
 
-A common format before these devices were superseded by terminal technology was based on the Hollerith code, [https://en.wikipedia.org/wiki/Hollerith_card Hollerith code].
+A common format before these devices were superseded by terminal technology was based on the Hollerith code, [Hollerith code](https://en.wikipedia.org/wiki/Hollerith_card).
 
 These input devices handled 80 columns per card and had a limited character set, encoded by punching holes in one or more rows of the card for each column.
 
@@ -46,7 +46,7 @@ Samples here use printable characters, but that is not a given with fixed length
 
 '''Note:''' There are no newlines, inputs and outputs are fixed at 80 columns, no more, no less, space padded.  Fixed length data is 8 bit complete.  NUL bytes of zero are allowed.
 
-These fixed length formats are still in wide use on mainframes, with JCL and with COBOL (which commonly use [https://en.wikipedia.org/wiki/EBCDIC EBCDIC] encoding and not [https://en.wikipedia.org/wiki/ASCII ASCII]).  Most of the large players in day to day financial transactions know all about fixed length records and the expression ''logical record length''.
+These fixed length formats are still in wide use on mainframes, with JCL and with COBOL (which commonly use [EBCDIC](https://en.wikipedia.org/wiki/EBCDIC) encoding and not [ASCII](https://en.wikipedia.org/wiki/ASCII)).  Most of the large players in day to day financial transactions know all about fixed length records and the expression ''logical record length''.
 
 ;Sample data:
 To create the sample input file, use an editor that supports fixed length records or use a conversion utility.  For instance, most GNU/Linux versions of '''dd''' support blocking and unblocking records with a conversion byte size.
@@ -1009,14 +1009,14 @@ close $out;
 NIGRAM TR                                                                 9 eniL
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/flr-infile.dat input file]
+[input file](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/flr-infile.dat)
 and
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/flr-outfile.dat output file]
+[output file](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/flr-outfile.dat)
 
 
 ## Perl 6
 
-Link to a copy of the input file used: [https://github.com/thundergnat/rc/blob/master/resouces/flr-infile.dat flr-infile.dat]
+Link to a copy of the input file used: [flr-infile.dat](https://github.com/thundergnat/rc/blob/master/resouces/flr-infile.dat)
 
 Essentially the same as task [[Selective_File_Copy]] except more boring.
 

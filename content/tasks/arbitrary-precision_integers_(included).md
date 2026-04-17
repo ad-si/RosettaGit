@@ -840,7 +840,7 @@ prompt$ cobc -xj arbitrary-integer.cob
 
 ## Common Lisp
 
-Common Lisp has arbitrary precision integers, inherited from MacLisp: "[B]ignums—arbitrary precision integer arithmetic—were added [to MacLisp] in 1970 or 1971 to meet the needs of Macsyma users." [''Evolution of Lisp'' [http://dreamsongs.com/Files/Hopl2.pdf], 2.2.2]
+Common Lisp has arbitrary precision integers, inherited from MacLisp: "[B]ignums—arbitrary precision integer arithmetic—were added [to MacLisp] in 1970 or 1971 to meet the needs of Macsyma users." [''Evolution of Lisp'' <http://dreamsongs.com/Files/Hopl2.pdf>, 2.2.2]
 
 ```lisp
 (let ((s (format () "~s" (expt 5 (expt 4 (expt 3 2))))))
@@ -1103,9 +1103,9 @@ It prints: <code>5^4^3^2 is 62060698786608744707...92256259918212890625 and has 
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Arbitrary-precision_integers_(included) this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Arbitrary-precision_integers_(included)) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1117,7 +1117,7 @@ Modern Fortran has no in-built facility for arbitrarily-sized numbers, but libra
 
 ### FM library
 
-Here is a solution using David M. Smith's FM library, available [http://myweb.lmu.edu/dmsmith/fmlib.html here].
+Here is a solution using David M. Smith's FM library, available [here](http://myweb.lmu.edu/dmsmith/fmlib.html).
 
 
 ```fortran
@@ -1223,7 +1223,7 @@ s{[m-19..m]};
 ## Go
 
 Using <code>math/big</code>'s
-<code>[https://golang.org/pkg/math/big/#Int.Exp Int.Exp]</code>.
+<code>[Int.Exp](https://golang.org/pkg/math/big/#Int.Exp)</code>.
 
 ```go
 package main
@@ -1451,7 +1451,7 @@ print left$( a$, 20); "......"; right$( a$, 20)
 
 ## Julia
 
-Julia includes built-in support for arbitrary-precision arithmetic using the [http://gmplib.org/ GMP] (integer) and [http://www.mpfr.org/ GNU MPFR] (floating-point) libraries, wrapped by the built-in <code>BigInt</code> and <code>BigFloat</code> types, respectively.
+Julia includes built-in support for arbitrary-precision arithmetic using the [GMP](http://gmplib.org/) (integer) and [GNU MPFR](http://www.mpfr.org/) (floating-point) libraries, wrapped by the built-in <code>BigInt</code> and <code>BigFloat</code> types, respectively.
 
 
 ```julia
@@ -1543,7 +1543,7 @@ Print[StringTake[s,20]<>"..."<>StringTake[s,-20]<>" ("<>ToString@StringLength@s<
 
 ## MATLAB
 
-Using the [http://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic Variable Precision Integer] library this task is accomplished thusly:
+Using the [Variable Precision Integer](http://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic) library this task is accomplished thusly:
 
 ```matlab
 >
@@ -1809,7 +1809,7 @@ let () =
 ```
 
 
-A more readable program can be obtained using [http://forge.ocamlcore.org/projects/pa-do/ Delimited Overloading]:
+A more readable program can be obtained using [Delimited Overloading](http://forge.ocamlcore.org/projects/pa-do/):
 
 ```ocaml
 let () =
@@ -2065,7 +2065,7 @@ printf(1,"5^4^3^2 = %s and has %d digits (%s)\n",{s,l,elapsed(time()-t0)})
 
 PHP has two separate arbitrary-precision integer services.
 
-The first is the BC library.[http://us3.php.net/manual/en/book.bc.php] It represents the integers as strings, so may not be very efficient. The advantage is that it is more likely to be included with PHP.
+The first is the BC library.<http://us3.php.net/manual/en/book.bc.php> It represents the integers as strings, so may not be very efficient. The advantage is that it is more likely to be included with PHP.
 
 ```php
 <?php
@@ -2080,7 +2080,7 @@ printf("5**4**3**2 = %s...%s and has %d digits\n", substr($y,0,20), substr($y,-2
 
 ```
 
-The second is the GMP library.[http://us3.php.net/manual/en/book.gmp.php] It represents the integers as an opaque type, so may be faster. However, it is less likely to be compiled into your version of PHP (it isn't compiled into mine).
+The second is the GMP library.<http://us3.php.net/manual/en/book.gmp.php> It represents the integers as an opaque type, so may be faster. However, it is less likely to be compiled into your version of PHP (it isn't compiled into mine).
 
 
 ## PicoLisp
@@ -2170,7 +2170,7 @@ false.
 
 PureBasic has in its current version (today 4.50) no internal support for large numbers, but there are several free libraries for this.
 
-Using [http://www.purebasic.fr/english/viewtopic.php?p=309763#p309763 Decimal.pbi], e.g. the same included library as in [[Long multiplication#PureBasic]], this task is solved as below.
+Using [Decimal.pbi](http://www.purebasic.fr/english/viewtopic.php?p=309763#p309763), e.g. the same included library as in [[Long multiplication#PureBasic]], this task is solved as below.
 
 ```PureBasic
 IncludeFile "Decimal.pbi"
@@ -2201,7 +2201,7 @@ MessageRequester("Arbitrary-precision integers, PureBasic",out$)
 
 ## Python
 
-Python comes with built-in support for arbitrary precision integers. The type of arbitrary precision integers is <tt>[http://docs.python.org/library/stdtypes.html#typesnumeric long]</tt> in Python 2.x (overflowing operations on <tt>int</tt>'s are automatically converted into <tt>long</tt>'s), and <tt>[http://docs.python.org/3.1/library/stdtypes.html#typesnumeric int]</tt> in Python 3.x.
+Python comes with built-in support for arbitrary precision integers. The type of arbitrary precision integers is <tt>[long](http://docs.python.org/library/stdtypes.html#typesnumeric)</tt> in Python 2.x (overflowing operations on <tt>int</tt>'s are automatically converted into <tt>long</tt>'s), and <tt>[int](http://docs.python.org/3.1/library/stdtypes.html#typesnumeric)</tt> in Python 3.x.
 
 ```python
 >>
@@ -2474,7 +2474,7 @@ scala>
 
 ## Scheme
 
-[http://people.csail.mit.edu/jaffer/r4rs_8.html#SEC52 R<sup>4</sup>RS] and [http://schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.2.3 R<sup>5</sup>RS] encourage, and [http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-6.html#node_sec_3.4 R<sup>6</sup>RS] requires, that exact integers be of arbitrary precision.
+[R<sup>4</sup>RS](http://people.csail.mit.edu/jaffer/r4rs_8.html#SEC52) and [R<sup>5</sup>RS](http://schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.2.3) encourage, and [R<sup>6</sup>RS](http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-6.html#node_sec_3.4) requires, that exact integers be of arbitrary precision.
 
 ```scheme
 (define x (expt 5 (expt 4 (expt 3 2))))

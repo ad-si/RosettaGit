@@ -46,7 +46,7 @@ languages = [
 ]
 +++
 
-This puzzle involves a [http://xunor.free.fr/en/riddles/auto/pyramidnb.php Pascals Triangle], also known as a [http://xunor.free.fr/en/riddles/auto/pyramidnb.php Pyramid of Numbers].
+This puzzle involves a [Pascals Triangle](http://xunor.free.fr/en/riddles/auto/pyramidnb.php), also known as a [Pyramid of Numbers](http://xunor.free.fr/en/riddles/auto/pyramidnb.php).
 
 ```txt
 
@@ -1233,7 +1233,7 @@ dev: 0.0986599
 
 
 =={{header|F_Sharp|F#}}==
-<p>In a script, using the [http://numerics.mathdotnet.com/ Math.NET Numerics] library</p>
+<p>In a script, using the [Math.NET Numerics](http://numerics.mathdotnet.com/) library</p>
 
 ```fsharp
 
@@ -1505,7 +1505,7 @@ equations puzzle = unzip eqs where
 ```
 
 
-To solve the system, any linear algebra library will do (e.g [http://hackage.haskell.org/cgi-bin/hackage-scripts/package/hmatrix-0.2.0.0 hmatrix]). For this example, we assume there are functions ''decompose'' for LR-decomposition, ''kernel'' to solve the homogenous system and ''solve'' to find a special solution for an imhomogenous system. Then
+To solve the system, any linear algebra library will do (e.g [hmatrix](http://hackage.haskell.org/cgi-bin/hackage-scripts/package/hmatrix-0.2.0.0)). For this example, we assume there are functions ''decompose'' for LR-decomposition, ''kernel'' to solve the homogenous system and ''solve'' to find a special solution for an imhomogenous system. Then
 
 
 ```haskell
@@ -2414,7 +2414,7 @@ Z = 8.0
 The Pyramid solver is not restricted to solving for 3 variables, or just this particular pyramid.
 
 Alternative solution using the csp module (based on code by Gustavo Niemeyerby):
-http://www.fantascienza.net/leonardo/so/csp.zip
+<http://www.fantascienza.net/leonardo/so/csp.zip>
 
 
 ```python
@@ -2714,8 +2714,8 @@ object PascalTriangle extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/UJF14fw/0 (JavaScript)]
-or by [https://scastie.scala-lang.org/l0AlwpSdR7i801Fq8CWHEQ Scastie (JVM)].
+{{Out}}See it in running in your browser by [(JavaScript)](https://scalafiddle.io/sf/UJF14fw/0)
+or by [Scastie (JVM)](https://scastie.scala-lang.org/l0AlwpSdR7i801Fq8CWHEQ).
 
 ## Sidef
 

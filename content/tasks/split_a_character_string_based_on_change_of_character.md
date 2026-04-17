@@ -1838,7 +1838,7 @@ g, HHH, 5, YY, ++, ///, \
 
 ### Python3.6+
 
-Using [[https://docs.python.org/3.6/library/itertools.html#itertools.groupby itertools.groupby]].
+Using [itertools.groupby](https://docs.python.org/3.6/library/itertools.html#itertools.groupby).
 
 ```python
 from itertools import groupby
@@ -2116,8 +2116,8 @@ def runLengthSplit(s: String): String = /// Add a guard letter
 println(runLengthSplit("""gHHH5YY++///\"""))
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/c4dp8GT/2 ScalaFiddle (JavaScript)]
-or by [https://scastie.scala-lang.org/mDoBS77YSG2Z7w5xdAPzcw Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/c4dp8GT/2)
+or by [Scastie (JVM)](https://scastie.scala-lang.org/mDoBS77YSG2Z7w5xdAPzcw).
 
 
 ```Scala

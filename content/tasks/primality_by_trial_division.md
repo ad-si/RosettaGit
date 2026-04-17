@@ -518,7 +518,7 @@ else (
 
 
 =={{Header|AutoHotkey}}==
-[http://www.autohotkey.com/forum/topic44657.html Discussion]
+[Discussion](http://www.autohotkey.com/forum/topic44657.html)
 
 ```autohotkey
 MsgBox % IsPrime(1995937)
@@ -1112,7 +1112,7 @@ for i in [-1..100]
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -1867,7 +1867,7 @@ Output:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=85fbc7936b17b3009af282752aa29df7 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=85fbc7936b17b3009af282752aa29df7)'''
 
 ```gambas
 'Reworked from the BBC Basic example
@@ -2144,7 +2144,7 @@ function isPrime(n) {
 
 ## Joy
 
-From [http://www.latrobe.edu.au/phimvt/joy/jp-imper.html here]
+From [here](http://www.latrobe.edu.au/phimvt/joy/jp-imper.html)
 
 ```joy
 DEFINE prime ==
@@ -3065,7 +3065,7 @@ print "Pi(100,000) = $s\n";
 
 ### By Regular Expression
 
-JAPH by Abigail 1999 [http://diswww.mit.edu/bloom-picayune.mit.edu/perl/12606] in conference slides 2000 [http://www.perlmonks.org/?node_id=21580].
+JAPH by Abigail 1999 <http://diswww.mit.edu/bloom-picayune.mit.edu/perl/12606> in conference slides 2000 <http://www.perlmonks.org/?node_id=21580>.
 
 While this is extremely clever and often used for [[wp:Code golf|Code golf]], it should never be used for real work (it is extremely slow and uses lots of memory).
 
@@ -3316,7 +3316,7 @@ def prime2(a):
     return not any(a % x == 0 for x in xrange(3, int(a**0.5) + 1, 2))
 ```
 
-Yet another test. Exclude multiples of 2 and 3, see http://www.devx.com/vb2themax/Tip/19051:
+Yet another test. Exclude multiples of 2 and 3, see <http://www.devx.com/vb2themax/Tip/19051>:
 ```python
 def prime3(a):
     if a < 2: return False
@@ -3338,7 +3338,7 @@ def prime3(a):
 
 Regular expression by "Abigail".
 
-(An explanation is given in "[http://paddy3118.blogspot.com/2009/08/story-of-regexp-and-primes.html The Story of the Regexp and the Primes]").
+(An explanation is given in "[The Story of the Regexp and the Primes](http://paddy3118.blogspot.com/2009/08/story-of-regexp-and-primes.html)").
 
 ```python
 >>>
@@ -3821,7 +3821,7 @@ run;
 ```
 
 ===Accelerated version [[functional_programming|FP]] and parallel runabled===
-// {{Out}}Best seen running in your browser [https://scastie.scala-lang.org/1RLimJrRQUqkXWkUwUxgYg Scastie (remote JVM)].
+// {{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/1RLimJrRQUqkXWkUwUxgYg).
 
 ```Scala
 object IsPrimeTrialDivision extends App {
@@ -3926,7 +3926,7 @@ const func boolean: isPrime (in integer: number) is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#is_prime]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#is_prime>
 
 
 ## Sidef

@@ -9,7 +9,7 @@ id = 21210
 categories = []
 tags = []
 +++
-IBM ILE COBOL is a compiler suite created by [IBM](https://rosettacode.org/wiki/IBM). <ref>IBM, 'ILE COBOL Language Reference, Version 7 Release 1', [http://www.ibm.com/support/knowledgecenter/de/ssw_ibm_i_71/rzahg/rzahgcobollangref.htm]</ref>
+IBM ILE COBOL is a compiler suite created by [IBM](https://rosettacode.org/wiki/IBM). <ref>IBM, 'ILE COBOL Language Reference, Version 7 Release 1', <http://www.ibm.com/support/knowledgecenter/de/ssw_ibm_i_71/rzahg/rzahgcobollangref.htm></ref>
 
 ## References
 <references/>

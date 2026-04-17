@@ -61,7 +61,7 @@ Please add short arguments of disagreement to statements that I listed in the ar
 
 Actually I have documented all the differences I knew on July 2012:
 
-http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Dialects#REXX.2C_ooRexx.2C_and_others
+<http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Dialects#REXX.2C_ooRexx.2C_and_others>
 
 Altogether it may be 10 or a dozen altogether.
 

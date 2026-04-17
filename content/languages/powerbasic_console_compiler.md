@@ -14,4 +14,4 @@ tags = []
 While there are some minor differences between PB/CC and [PowerBASIC for Windows](https://rosettacode.org/wiki/PowerBASIC_for_Windows), for the most part they use the same language.
 
 ## See also
-* [http://www.powerbasic.com/products/pbcc/ PB/CC page at PowerBASIC.com]
+* [PB/CC page at PowerBASIC.com](http://www.powerbasic.com/products/pbcc/)

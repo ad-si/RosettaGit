@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-We have http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=bot to cover this category. --[[User:Mwn3d|Mwn3d]] 16:36, 17 May 2011 (UTC)
+We have <http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=bot> to cover this category. --[[User:Mwn3d|Mwn3d]] 16:36, 17 May 2011 (UTC)

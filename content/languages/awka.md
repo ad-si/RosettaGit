@@ -19,4 +19,4 @@ The AWKA translation utility converts AWK programs to ANSI C, and provides a sep
 * to provide access to external C functions within AWK scripts
 
 
-Homes of Awka: http://awka.sourceforge.net/index.html and https://github.com/noyesno/awka
+Homes of Awka: <http://awka.sourceforge.net/index.html> and <https://github.com/noyesno/awka>

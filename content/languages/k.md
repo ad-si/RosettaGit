@@ -17,5 +17,5 @@ K is a proprietary array processing language developed by Arthur Whitney and com
 #[Wikipedia K Programming Language](https://en.wikipedia.org/wiki/K_(programming_language))
 
 ## See Also
-*[http://vrabi.web.elte.hu/k/ K Programming Language]
-*[https://github.com/kevinlawler/kona Kona an open source implementation of K]
+*[K Programming Language](http://vrabi.web.elte.hu/k/)
+*[Kona an open source implementation of K](https://github.com/kevinlawler/kona)

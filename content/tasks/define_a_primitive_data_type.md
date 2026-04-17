@@ -2395,7 +2395,7 @@ bye
 
 ## Ruby
 
-ref http://codeidol.com/other/rubyckbk/Numbers/Simulating-a-Subclass-of-Fixnum/
+ref <http://codeidol.com/other/rubyckbk/Numbers/Simulating-a-Subclass-of-Fixnum/>
 
  Some object-oriented languages won't let you subclass the "basic" data types
  like integers. Other languages implement those data types as classes, so you
@@ -2562,7 +2562,7 @@ pub fn main() {
 ```
 
 
-However, there exist crates such as [https://lib.rs/crates/derive_more derive_more] to automate the parts other than the restricted construction logic based on a simple <code>#[derive(Add, Copy, Clone, Debug, Div, Into, Mul, Sub)]</code> and so on and so forth.
+However, there exist crates such as [derive_more](https://lib.rs/crates/derive_more) to automate the parts other than the restricted construction logic based on a simple <code>#[derive(Add, Copy, Clone, Debug, Div, Into, Mul, Sub)]</code> and so on and so forth.
 
 
 ## Scala

@@ -2086,7 +2086,7 @@ Table[{y[[1]], y[[2]], Abs[y[[2]] - 1/16 (y[[1]]^2 + 4)^2]},
 
 ## MATLAB
 
-The normally-used built-in solver is the ode45 function, which uses a non-fixed-step solver with 4th/5th order Runge-Kutta methods. The MathWorks Support Team released a [http://www.mathworks.com/matlabcentral/answers/98293-is-there-a-fixed-step-ordinary-differential-equation-ode-solver-in-matlab-8-0-r2012b#answer_107643 package of fixed-step RK method ODE solvers] on MATLABCentral. The ode4 function contained within uses a 4th-order Runge-Kutta method. Here is code that tests both ode4 and my own function, shows that they are the same, and compares them to the exact solution.
+The normally-used built-in solver is the ode45 function, which uses a non-fixed-step solver with 4th/5th order Runge-Kutta methods. The MathWorks Support Team released a [package of fixed-step RK method ODE solvers](http://www.mathworks.com/matlabcentral/answers/98293-is-there-a-fixed-step-ordinary-differential-equation-ode-solver-in-matlab-8-0-r2012b#answer_107643) on MATLABCentral. The ode4 function contained within uses a 4th-order Runge-Kutta method. Here is code that tests both ode4 and my own function, shows that they are the same, and compares them to the exact solution.
 
 ```MATLAB
 function testRK4Programs

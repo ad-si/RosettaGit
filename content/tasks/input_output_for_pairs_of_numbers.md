@@ -527,7 +527,7 @@ $ cat <<EOF | jconsole -js '([: exit 0: [: smoutput [: ,. [: ({. {. }.) [: (+/"1
 
 ```
 
-Considerably simpler than [[http://rosettacode.org/wiki/Input/Output_for_Lines_of_Text#J|see explanation]] output for lines of text, this sentence is a single fork.  J pads the numeric arrays of 0&".;._2 (numbers cut) with 0 .  We form the +/"1 (row sums), then take the sum of the first row of the beheaded sums ({. {. }.) for display.  ,. (raveled items) reshapes the vector into a column-vector shaped matrix.  And the [: (cap) causes the monadic form of the verb to cap's right.
+Considerably simpler than [explanation](http://rosettacode.org/wiki/Input/Output_for_Lines_of_Text#J|see) output for lines of text, this sentence is a single fork.  J pads the numeric arrays of 0&".;._2 (numbers cut) with 0 .  We form the +/"1 (row sums), then take the sum of the first row of the beheaded sums ({. {. }.) for display.  ,. (raveled items) reshapes the vector into a column-vector shaped matrix.  And the [: (cap) causes the monadic form of the verb to cap's right.
 
 
 ## Java

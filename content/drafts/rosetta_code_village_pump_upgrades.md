@@ -19,7 +19,7 @@ Upgrades, past, present and planned.
 =Latest news=
 
 * See [[Special:Webchat]]
-* [http://webchat.freenode.net/?channels=rosettacode Freenode's direct webchat page], or
+* [Freenode's direct webchat page](http://webchat.freenode.net/?channels=rosettacode), or
 * point your IRC client to #rosettacode on irc.freenode.net.
 
 =2010-10-17=
@@ -74,7 +74,7 @@ Questions to answer for each:
 
 * Squid version 2.7.STABLE3-4.1 (debian 5)
 ** Yes. I'm sure it has a few cache hits, too.
-** I don't know if the X-Vary-Options patch is applied. The X-Vary-Options patch is [http://www.mail-archive.com/squid-dev@squid-cache.org/msg07066.html described here], latest references are [http://www.mail-archive.com/squid-dev@squid-cache.org/msg08321.html here] and [http://www.mail-archive.com/squid-dev@squid-cache.org/msg08320.html here], and the [http://wiki.squid-cache.org/Features/XvaryOptions wiki page] in question doesn't appear to have gone anywhere. Furthermore, I don't know what to make of [http://www.mail-archive.com/mediawiki-cvs@lists.wikimedia.org/msg02728.html this]. Without apt-get source 'ing the squid package, I don't know if I have the patch or not.
+** I don't know if the X-Vary-Options patch is applied. The X-Vary-Options patch is [described here](http://www.mail-archive.com/squid-dev@squid-cache.org/msg07066.html), latest references are [here](http://www.mail-archive.com/squid-dev@squid-cache.org/msg08321.html) and [here](http://www.mail-archive.com/squid-dev@squid-cache.org/msg08320.html), and the [wiki page](http://wiki.squid-cache.org/Features/XvaryOptions) in question doesn't appear to have gone anywhere. Furthermore, I don't know what to make of [this](http://www.mail-archive.com/mediawiki-cvs@lists.wikimedia.org/msg02728.html). Without apt-get source 'ing the squid package, I don't know if I have the patch or not.
 *** Have updated info. Don't have the patched version. Not going to do a custom build without further investigation toward integrating MediaWiki's patch set and building a local package. --[[User:Short Circuit|Michael Mol]] 13:22, 17 October 2010 (UTC)
 
 

@@ -58,8 +58,8 @@ languages = [
 
 ## Task
 
-The [https://youtu.be/2JM2oImb9Qg anti-primes]
-(or [https://en.wikipedia.org/wiki/Highly_composite_number highly composite numbers], sequence [https://oeis.org/A002182 A002182] in the [https://oeis.org/ OEIS])
+The [anti-primes](https://youtu.be/2JM2oImb9Qg)
+(or [highly composite numbers](https://en.wikipedia.org/wiki/Highly_composite_number), sequence [A002182](https://oeis.org/A002182) in the [OEIS](https://oeis.org/))
 are the natural numbers with more factors than any smaller than itself.
 
 ;Task:
@@ -554,7 +554,7 @@ Los primeros 20 anti-primos son:
 
 ### The Function
 
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

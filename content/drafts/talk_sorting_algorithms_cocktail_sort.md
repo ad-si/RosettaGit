@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Citation==
-This page was cited in the ''Journal of Statistical Software'': http://www.jstatsoft.org/v46/i03 . Neat. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 03:37, 2 August 2012 (UTC)
+This page was cited in the ''Journal of Statistical Software'': <http://www.jstatsoft.org/v46/i03> . Neat. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 03:37, 2 August 2012 (UTC)
 
 ==Typos?==
 @.13='stength                      ◄───    XI'

@@ -220,4 +220,4 @@ Later,   that same character also used the same device to open a door that had a
 
 
 ;Reference:
-:*   IMDB entry:   [https://www.imdb.com/title/tt0103064/?ref_=fn_tt_tt_12 Terminator 2: Judgement Day].
+:*   IMDB entry:   [Terminator 2: Judgement Day](https://www.imdb.com/title/tt0103064/?ref_=fn_tt_tt_12).

@@ -16,9 +16,9 @@ tags = []
 WinSock2.ahk // a rewrite by derRaphael (w) Sep, 9 2008 
 
 based on the WinLIRC Script from Chris 
-    http://www.autohotkey.com/docs/scripts/WinLIRC.htm 
+    <http://www.autohotkey.com/docs/scripts/WinLIRC.htm> 
 and on the WinLIRC Rewrite by ZedGecko 
-    http://www.autohotkey.com/forum/viewtopic.php?t=13829 
+    <http://www.autohotkey.com/forum/viewtopic.php?t=13829> 
     
 __WSA_GetHostByName - Parts based upon scripts from DarviK 
 and Tasman. Not much left of the origin source, but it was 
@@ -246,16 +246,16 @@ __WSA_Connect()
 
 /* 
  This code based originally upon an example by DarviK 
-    http://www.autohotkey.com/forum/topic8871.html 
+    <http://www.autohotkey.com/forum/topic8871.html> 
  and on the modifcations by Tasman 
-    http://www.autohotkey.com/forum/viewtopic.php?t=9937 
+    <http://www.autohotkey.com/forum/viewtopic.php?t=9937> 
 */ 
 ; Resolves canonical domainname to IP 
 __WSA_GetHostByName(url) 
 { 
     Global __WSA_ErrMsg 
     ; gethostbyname returns information about a domainname into a Hostent Structure 
-    ; http://msdn.microsoft.com/en-us/library/ms738524(VS.85).aspx 
+    ; <http://msdn.microsoft.com/en-us/library/ms738524(VS.85).aspx> 
     IP := "" 
     if ((PtrHostent:=DllCall("Ws2_32\gethostbyname","str",url)) != 0) { 
         Loop, 1 ; 3 is max No of retrieved addresses 
@@ -412,7 +412,7 @@ __WSA_GetThisScriptHandle()
 } 
 
 ; Lookup Winsock ErrCode - for internal use only 
-; This list is form http://www.sockets.com 
+; This list is form <http://www.sockets.com> 
 __WSA_ErrLookUp(sNumber) { 
 WSA_ErrorList = 
 (LTrim Join`n 
@@ -480,7 +480,7 @@ Return ExNr " means " ExErr "`n"
 ; WinINet InternetCrackURL - for internal use only 
 ; v 0.1 / (w) 25.07.2008 by derRaphael / zLib-Style release 
 ; This routine was originally posted here: 
-; http://www.autohotkey.com/forum/viewtopic.php?p=209957#209957 
+; <http://www.autohotkey.com/forum/viewtopic.php?p=209957#209957> 
 __WinINet_InternetCrackURL(lpszUrl,arrayName="URL") 
 { 
     local hModule, offset_name_length 

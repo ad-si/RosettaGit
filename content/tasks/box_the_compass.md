@@ -85,7 +85,7 @@ languages = [
 
 ## TaskAvast me hearties!
 
-There be many a [http://talklikeapirate.com/wordpress/how-to/ land lubber] that knows [https://dictionary.cambridge.org/dictionary/english/naught naught] of the pirate ways and gives direction by degree!
+There be many a [land lubber](http://talklikeapirate.com/wordpress/how-to/) that knows [naught](https://dictionary.cambridge.org/dictionary/english/naught) of the pirate ways and gives direction by degree!
 They know not how to [[wp:Boxing the compass|box the compass]]!
 
 
@@ -287,8 +287,8 @@ Output:
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used.}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny].}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -2354,7 +2354,7 @@ End
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=823a56ac094b8963cf11f792b381fbcc Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=823a56ac094b8963cf11f792b381fbcc)'''
 
 ```gambas
 Public Sub Main()
@@ -2845,8 +2845,8 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/procs/strings.htm strings for replacem]
-[http://www.cs.arizona.edu/icon/library/procs/numbers.htm numbers for round, fix]
+[strings for replacem](http://www.cs.arizona.edu/icon/library/procs/strings.htm)
+[numbers for round, fix](http://www.cs.arizona.edu/icon/library/procs/numbers.htm)
 
 Output:
 ```txt

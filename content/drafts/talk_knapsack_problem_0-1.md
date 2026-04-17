@@ -13,7 +13,7 @@ tags = []
 == dkg? ==
 
 “Decikilogram”? Yowch! Round here we use SI prefixes and call that a “hectogram”. (Well, we don't use it very often at all, but that's another matter.) –[[User:Dkf|Donal Fellows]] 13:10, 14 February 2010 (UTC)
-:Maybe it is a hungarian version of "dag". See the english [http://en.wikipedia.org/wiki/Kg#SI_multiples wikipedia] and the [http://hu.wikipedia.org/wiki/Kilogramm#R.C3.A9szei_.C3.A9s_t.C3.B6bbsz.C3.B6r.C3.B6sei hungarian] also. So I did not think on hectogram. In my program you can see this line with comment: "ZeroOneKnapsack zok = new ZeroOneKnapsack(400); // 400 dkg = 4kg" From this comment you could calculate what I did think. --[[User:Pelci]] 21:01, 14 February 2010 (Budapest)
+:Maybe it is a hungarian version of "dag". See the english [wikipedia](http://en.wikipedia.org/wiki/Kg#SI_multiples) and the [hungarian](http://hu.wikipedia.org/wiki/Kilogramm#R.C3.A9szei_.C3.A9s_t.C3.B6bbsz.C3.B6r.C3.B6sei) also. So I did not think on hectogram. In my program you can see this line with comment: "ZeroOneKnapsack zok = new ZeroOneKnapsack(400); // 400 dkg = 4kg" From this comment you could calculate what I did think. --[[User:Pelci]] 21:01, 14 February 2010 (Budapest)
 
 ==Change to task description==
 I was considering making the following change to the task description as I had seen one slight modification that i wanted to make, but then got carried away:

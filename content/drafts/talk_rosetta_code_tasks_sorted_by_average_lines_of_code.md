@@ -19,7 +19,7 @@ I've no 1st demo, sorry. I hope RC may provide this list from the site itself in
 : Might I suggest bringing this up over in the [[Rosetta Code:Village Pump|Village Pump]]? (That page is currently under reconstruction, but it's still mostly serviceable; someone (probably me) will fix anything that needs tidying if you add a post.)--[[User:Short Circuit|Michael Mol]] 15:33, 15 November 2010 (UTC)
 ::Oh.. I don't aware that Village Pump. I often go to Recent Change as my 1st page of RC, then jump to task/talk. IIRC, last time I visited VP, VP was a seperated blog from RC. It seems it changed a lot.
 ::As of bringing this task to Village Pump, I would not do so for now, but welcome anyone take over this as a project in VP.
-::I recently has an idea to make a greasemonkey [http://userscripts.org/ userscript] to create a side-by-side panel for comparing different language example codes, Village Pump would be a good place to discuss if further optional extension/function would be possible :) [[User:Dingowolf|dingowolf]] 00:18, 16 November 2010 (UTC)
+::I recently has an idea to make a greasemonkey [userscript](http://userscripts.org/) to create a side-by-side panel for comparing different language example codes, Village Pump would be a good place to discuss if further optional extension/function would be possible :) [[User:Dingowolf|dingowolf]] 00:18, 16 November 2010 (UTC)
 ::: Check out [[Rosetta Code talk:Village Pump/Javascript Functionality Add]] and [[Rosetta Code:Village Pump/Javascript Functionality Add]]. I think you're going to enjoy the site. :) Also, I just redesigned the main page, so you might find that of interest, too. --[[User:Short Circuit|Michael Mol]] 01:56, 16 November 2010 (UTC)
 
 ==Modification?==

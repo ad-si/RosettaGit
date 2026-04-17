@@ -724,7 +724,7 @@ Note that this also demonstrates how to use Racket's macro system to implement t
 ###  With functional package 
  
 
-The [https://docs.racket-lang.org/functional/interfaces.html functional] package has already implemented the list monad.
+The [functional](https://docs.racket-lang.org/functional/interfaces.html) package has already implemented the list monad.
 
 
 ```racket

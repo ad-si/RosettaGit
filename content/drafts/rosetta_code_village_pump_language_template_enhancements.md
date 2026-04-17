@@ -38,7 +38,7 @@ Don't be terrified of including templates within templates, either.  If there's 
 
 Text about the language.
 
-<small>Official site: [http://example.com link]
+<small>Official site: [link](http://example.com)
 
 Type checking: static/dynamic
 

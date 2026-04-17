@@ -18,4 +18,4 @@ SRFIs are collections of [[Scheme]] code for certain tasks. They are similar to 
 
 ### External Links
 
-* [http://srfi.schemers.org/ Scheme Requests For Implementation]
+* [Scheme Requests For Implementation](http://srfi.schemers.org/)

@@ -79,8 +79,8 @@ Sequence <big><math>S</math></big> starts:
 
 ## References
 
-* Sloane's [http://oeis.org/A005228 A005228] and [http://oeis.org/A030124 A030124].
-* [http://mathworld.wolfram.com/HofstadterFigure-FigureSequence.html Wolfram MathWorld]
+* Sloane's [A005228](http://oeis.org/A005228) and [A030124](http://oeis.org/A030124).
+* [Wolfram MathWorld](http://mathworld.wolfram.com/HofstadterFigure-FigureSequence.html)
 * Wikipedia: [[wp:Hofstadter_sequence#Hofstadter_Figure-Figure_sequences|Hofstadter Figure-Figure sequences]].
 
 
@@ -1269,8 +1269,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn allows formatting entire structures]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[ximage.icn allows formatting entire structures](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 Output:
 ```txt
@@ -2483,7 +2483,7 @@ FFS: procedure expose r. s. rr.; parse arg n     /*search for not null  R or S  
 ser: errs=errs+1;    say  '***error***'  arg(1);                  return
 ```
 
-To see the talk section about this REXX program's timings, click here:     [http://rosettacode.org/wiki/Talk:Hofstadter_Figure-Figure_sequences#timings_for_the_REXX_solutions timings for the REXX solutions].
+To see the talk section about this REXX program's timings, click here:     [timings for the REXX solutions](http://rosettacode.org/wiki/Talk:Hofstadter_Figure-Figure_sequences#timings_for_the_REXX_solutions).
 
 
 '''output'''   when using the default inputs:

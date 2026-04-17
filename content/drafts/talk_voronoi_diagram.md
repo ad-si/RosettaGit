@@ -41,8 +41,8 @@ Such answer would help RC users.
 I have Win 10 with latest versions of Google Chrome and IE. Both not working.
 
 '''@Rdm:''' You just "imagine", guessing, but '''I've tested'''.
-In addition, RC has http://rosettacode.org/wiki/Rosetta_Code. NO https, no problem.
-Same http://oeis.org/wiki/User:XXX and hundreds of other sites. NO problem.
+In addition, RC has <http://rosettacode.org/wiki/Rosetta_Code>. NO https, no problem.
+Same <http://oeis.org/wiki/User:XXX> and hundreds of other sites. NO problem.
 
 '''@Hout''' If you have no problem, then contact webmaster and point him to our discussion, 
 but tell him OS/browser you are using.
@@ -88,6 +88,6 @@ I can seem to be a bore, but the mathematician's surname was Minkowski, not Mink
 
 Euclidean and Manhattan distances are the special cases of his distance, so we can create something in-between or something entirely different by playing with this metric.
 
-For example, it can create a pattern like a Manhattan distance and add some [https://i.imgur.com/5xwed9M.png rounding] to the corners. (Upload error happened and I wasn't able to add image here, so I used Imgur.)
+For example, it can create a pattern like a Manhattan distance and add some [rounding](https://i.imgur.com/5xwed9M.png) to the corners. (Upload error happened and I wasn't able to add image here, so I used Imgur.)
 
-There's an [https://harryrschwartz.com/2015/09/29/voronoi-experiments article on different metrics] by Harry R. Schwartz, which shows even more examples.
+There's an [article on different metrics](https://harryrschwartz.com/2015/09/29/voronoi-experiments) by Harry R. Schwartz, which shows even more examples.

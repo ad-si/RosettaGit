@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[https://256.makerslocal.org/wiki/index.php/KXML KXML] is a library for parsing, modification, and generation of XML.
+{{library}}[KXML](https://256.makerslocal.org/wiki/index.php/KXML) is a library for parsing, modification, and generation of XML.

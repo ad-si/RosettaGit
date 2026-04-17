@@ -25,7 +25,7 @@ There are two modules:
 The module implementations come first, followed by the code to split, delegate
 and remerge the image channels.
 
-[[http://timb.net/images/RC/Hough-transform/180px-Pentagon-Hough.png The Transformed Image]]
+[The Transformed Image](http://timb.net/images/RC/Hough-transform/180px-Pentagon-Hough.png)
 
 
 ===Hough-transform-basic.rkt===

@@ -16,8 +16,8 @@ tags = []
 Comefrom0x10 features lexical scope, based on block-level indentation, named identifiers and other hallmarks of structured programming.
 
 ## See also
-* [https://comefrom0x10.readthedocs.io/en/latest/tutorial/index.html Tutorial]
-* [http://www.fortran.com/come_from.html COME FROM statement introduced in DATAMATION]
-* [https://esolangs.org/wiki/Comefrom0x10 on Esolangs]
+* [Tutorial](https://comefrom0x10.readthedocs.io/en/latest/tutorial/index.html)
+* [COME FROM statement introduced in DATAMATION](http://www.fortran.com/come_from.html)
+* [on Esolangs](https://esolangs.org/wiki/Comefrom0x10)
 
 [Category:Esoteric Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

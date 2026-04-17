@@ -190,7 +190,7 @@ See [[Distributed program/AutoHotkey]].
 
 ## C
 
-Using PVM [[http://www.csm.ornl.gov/pvm/pvm_home.html]
+Using PVM [<http://www.csm.ornl.gov/pvm/pvm_home.html>
 This program is in a sense both a server and a client, depending on if its task is spawned with a command-line argument: if yes, it spawns another task of the same executible on the parallel virtual machine and waits for it to transmit data; if no, it transmits data and is done.
 
 ```c
@@ -370,7 +370,7 @@ class SampleData
 ## D
 
 Uses the <b>rpc</b> library:
-https://github.com/adamdruppe/misc-stuff-including-D-programming-language-web-stuff/blob/master/rpc.d
+<https://github.com/adamdruppe/misc-stuff-including-D-programming-language-web-stuff/blob/master/rpc.d>
 
 This library is not standard, so this code (by Adam D. Ruppe) could and should be rewritten using more standard means.
 
@@ -706,7 +706,7 @@ Tax on 3.00: 0.15
 
 ### gRPC
 
-See http://www.grpc.io/
+See <http://www.grpc.io/>
 
 The default serialization for gRPC is "protocol buffers."  gRPC uses a .proto file to define an interface for the client and server.  The .proto has its own syntax, independent of client and server implementation languages.  Server and client programs here are Go however.
 
@@ -804,7 +804,7 @@ Tax on 300 cents is 15 cents
 
 ### Apache Thrift
 
-See https://thrift.apache.org/
+See <https://thrift.apache.org/>
 
 '''.thrift'''
 
@@ -901,11 +901,11 @@ tax on 300 is 15
 
 See:
 
-* http://www.haskell.org/haskellwiki/HaXR#Server
-* http://www.haskell.org/haskellwiki/HaXR#Client
+* <http://www.haskell.org/haskellwiki/HaXR#Server>
+* <http://www.haskell.org/haskellwiki/HaXR#Client>
 
 Check license:
-http://www.haskell.org/haskellwiki/HaskellWiki:Copyrights
+<http://www.haskell.org/haskellwiki/HaskellWiki:Copyrights>
 
 
 ## JavaScript
@@ -1804,7 +1804,7 @@ print 'Server Message: %s' % response.read()
 
 '''Protocol:''' raw socket / pickle format
 
-This example builds a very basic RPC mechanism on top of sockets and the [http://docs.python.org/library/pickle.html#module-pickle pickle module]. Please note that the pickle module is not secure - a malicious client can build malformed data to execute arbitrary code on the server. If untrusted clients can access the server, the [http://docs.python.org/library/json.html json module] could be used as a substitute, but we lose the ability to transfer arbitrary Python objects that way.
+This example builds a very basic RPC mechanism on top of sockets and the [pickle module](http://docs.python.org/library/pickle.html#module-pickle). Please note that the pickle module is not secure - a malicious client can build malformed data to execute arbitrary code on the server. If untrusted clients can access the server, the [json module](http://docs.python.org/library/json.html) could be used as a substitute, but we lose the ability to transfer arbitrary Python objects that way.
 
 
 ### = Server =
@@ -1938,7 +1938,7 @@ if __name__ == '__main__':
 
 ### Pyro
 
-'''Note:''' You should install Pyro (http://pyro.sourceforge.net) first and run '''pyro-ns''' binary to run code below.
+'''Note:''' You should install Pyro (<http://pyro.sourceforge.net>) first and run '''pyro-ns''' binary to run code below.
 
 
 ### = Server =
@@ -2002,7 +2002,7 @@ print 'Server responded the result: %s' % math.div(NUM1, NUM2)
 
 ###  Spread
 
-'''Note:''' You should install Spread (http://www.spread.org) and its python bindings (http://www.python.org/other/spread/)
+'''Note:''' You should install Spread (<http://www.spread.org>) and its python bindings (<http://www.python.org/other/spread/>)
 
 
 ### = Server =

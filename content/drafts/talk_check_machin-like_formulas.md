@@ -34,7 +34,7 @@ I don't believe the J or Perl 6 entries are using exact arithmetic, unless they 
 :--[[User:DanBron|DanBron]] 20:04, 20 December 2012 (UTC)
 
 
-:: Normally [http://en.wikipedia.org/wiki/Extended_precision extended precision] means floating-point with greater precision, however I will accept your explanation. The J code is very terse, it would be useful to readers if you or someone else can add a brief description to the solution of how it implements the algorithm.
+:: Normally [extended precision](http://en.wikipedia.org/wiki/Extended_precision) means floating-point with greater precision, however I will accept your explanation. The J code is very terse, it would be useful to readers if you or someone else can add a brief description to the solution of how it implements the algorithm.
 ::: Thanks, I hadn't realized J's terminology was non-standard.  I'll change the note on the solution to say "exact arithmetic" rather than "extended precision numbers".  
 
 :::Regarding the style of the solution: J's compact notation is one of, if not the most, salient feature of the language.  So, when I post solutions to RC, I try to emphasize it.  
@@ -75,8 +75,8 @@ Under-tested cosmetic edits made to the task page at and around 19:37, 24 July 2
 : Visibility of task descrption formulae restored by [[User:TobyK|TobyK]] Nov 7 2016
 
 : (A couple of formulae remain coincidentally invisible in the preamble to the GAP contribution) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 15:21, 7 November 2016 (UTC)
-::There is no space around the invisible formula in the GAP section. Also, it prints correctly on Wikipedia: [https://en.wikipedia.org/wiki/User:Kiwipidae/Test test]. I don't intend to circumvent a botched LaTeX implementation. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 16:39, 7 November 2016 (UTC)
+::There is no space around the invisible formula in the GAP section. Also, it prints correctly on Wikipedia: [test](https://en.wikipedia.org/wiki/User:Kiwipidae/Test). I don't intend to circumvent a botched LaTeX implementation. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 16:39, 7 November 2016 (UTC)
 ::: Helpful to readers, perhaps, to add a note that you have only managed to make those two formulae '''(k \mathrm{atan}(x)''' and '''\frac{5\pi}4)''' visible in Firefox ? (And perhaps give plain text equivalents ? Very understandable that you don't want to pay the price of someone else's Latex limitations, so I'm sure you won't want your readers to pay it either :-) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 17:05, 7 November 2016 (UTC)
 ::::Actually, I'm already paying it, since I am using Opera now. You are right, I can change the formula to text. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 19:11, 7 November 2016 (UTC)
-:::::: PS I don't know what your view is of the parallel issue in the Python contribution to https://rosettacode.org/wiki/Faulhaber%27s_formula [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 15:57, 21 November 2016 (UTC)
+:::::: PS I don't know what your view is of the parallel issue in the Python contribution to <https://rosettacode.org/wiki/Faulhaber%27s_formula> [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 15:57, 21 November 2016 (UTC)
 ::::: :-) Many thanks – one more page completely clear of that 'exheight' glitch now [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 19:26, 7 November 2016 (UTC)

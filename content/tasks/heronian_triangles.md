@@ -69,7 +69,7 @@ where   <big>''s''</big>   is half the perimeter of the triangle; that is,
 
 
 
-'''[http://www.had2know.com/academics/heronian-triangles-generator-calculator.html Heronian triangles]'''
+'''[Heronian triangles](http://www.had2know.com/academics/heronian-triangles-generator-calculator.html)'''
 are triangles whose sides ''and area'' are all integers.
 : An example is the triangle with sides   '''3, 4, 5'''   whose area is   '''6'''   (and whose perimeter is   '''12''').
 
@@ -2701,7 +2701,7 @@ Using the list monad pattern to define a filtered cartesian product:
 :- Monadic fail for lists is simply ''λx -> []''.
 
 List comprehension syntax is convenient and concise, but efficient use of it may be helped by a clearer understanding of the formally equivalent – but slightly more flexible – list monad pattern.
-See, for example [https://wiki.haskell.org/List_comprehension List comprehension] at wiki.haskell.org. (Haskell list comprehensions are themselves implemented in terms of ''concat map'').
+See, for example [List comprehension](https://wiki.haskell.org/List_comprehension) at wiki.haskell.org. (Haskell list comprehensions are themselves implemented in terms of ''concat map'').
 ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list monad pattern can already be used in ES5 – indeed in any language which supports the use of higher-order functions.
 
 

@@ -14,11 +14,11 @@ Note: This page is linked to from the [[:Category_talk:Icon]] page.
 
 = How to go about solving the tasks =
 == Intent .v. Direction of tasks ==
-There was an interesting discussion on [http://sourceforge.net/mailarchive/forum.php?forum_name=unicon-group the Unicon group forum] about meeting the intent .v. literacy in solving tasks.  The [[Loops/Break]] task was used as a point of discussion.  
+There was an interesting discussion on [the Unicon group forum](http://sourceforge.net/mailarchive/forum.php?forum_name=unicon-group) about meeting the intent .v. literacy in solving tasks.  The [[Loops/Break]] task was used as a point of discussion.  
 
 The consensus seemed to be that we should be meeting the intent and not reading too much into the literal interpretation of the title.  Unless there is specific direction within the task description we should have a free hand.
 
-Thanks to Steve, Andrew, Clint, and Charles [http://sourceforge.net/mailarchive/forum.php?thread_name=4BBDFF4D.9000505%40noao.edu&forum_name=unicon-group for this and other discussions].  The overall consensus is that '''we should show our best'''. --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC) 
+Thanks to Steve, Andrew, Clint, and Charles [for this and other discussions](http://sourceforge.net/mailarchive/forum.php?thread_name=4BBDFF4D.9000505%40noao.edu&forum_name=unicon-group).  The overall consensus is that '''we should show our best'''. --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC) 
 
 
 ###  Style 
@@ -41,14 +41,14 @@ There are a number of aspects of the sample programs that need improvement.  The
 
 What happens when there are multiple good examples of how to solve a task with different approaches?  Should we show more than one?
 
-By way of example, on the [https://tapestry.tucson.az.us/twiki/bin/view/Main/StateNamesPuzzle | Unicon Twiki - States Names Problem] there are at least two different approaches to the problem.  If we were to hit one of those here what to do?
+By way of example, on the [| Unicon Twiki - States Names Problem](https://tapestry.tucson.az.us/twiki/bin/view/Main/StateNamesPuzzle) there are at least two different approaches to the problem.  If we were to hit one of those here what to do?
 
 Certainly we could talk about or refer to other solutions.  But, should we show more than one?  My take is that it's not unreasonable to show a couple of good alternate approaches in the same language.  Just don't flood the reader.  --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC)
 
 
 ###  Constrained Tasks 
 
-I'm not sure how many of these there may be here.  But using the [https://tapestry.tucson.az.us/twiki/bin/view/Main/LongestStringsPuzzle| Unicon Twiki - Find the longest string problem without using comparisons, math, or lists] as an example, perhaps we should introduce a few.  I'd like to see how some of the more traditional languages do this :)  --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC)
+I'm not sure how many of these there may be here.  But using the [Unicon Twiki - Find the longest string problem without using comparisons, math, or lists](https://tapestry.tucson.az.us/twiki/bin/view/Main/LongestStringsPuzzle|) as an example, perhaps we should introduce a few.  I'd like to see how some of the more traditional languages do this :)  --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC)
 
 
 ###  Level of detail where Icon and Unicon are different  
@@ -75,8 +75,8 @@ These will never end but [[Reports:Tasks_not_implemented_in_Icon|Icon - tasks no
 == Easy Wins ==
 I expect that many of these tasks are already coded in the Icon Programming Library or one of the Unicon packages. There are also example in the Icon and Unicon books.  If you find an interesting task, check these sources first.
 
-* [http://www.cs.arizona.edu/icon/library/pdx.htm The IPL permuted index of basic procedures]
-* [http://www.cs.arizona.edu/icon/library/gpdx.htm The IPL permuted index of graphic procedures]
+* [The IPL permuted index of basic procedures](http://www.cs.arizona.edu/icon/library/pdx.htm)
+* [The IPL permuted index of graphic procedures](http://www.cs.arizona.edu/icon/library/gpdx.htm)
 
 == Errors/Review Lists ==
 See [[Template:Example-needs-review]] and [[Template:Incorrect]].  I'm not sure how you're supposed to know what is to be reviewed.  Examples I've seen don;t have a lot of explanation.
@@ -93,8 +93,8 @@ There are a number of other related templates like improve that can be found [[:
 == The IPL and Uni Libraries ==
 [[:Category:Solutions_by_Library]] need writing.  Stubs have been created for:
 
-* [[:Category:Icon_Programming_Library|The Icon Programming Library]] --> [http://www.cs.arizona.edu/icon/library/ IPL]
-* [[:Category:Unicon_Code_Library|The Unicon Code Library]] --> [https://tapestry.tucson.az.us/unilib Unilib]
+* [[:Category:Icon_Programming_Library|The Icon Programming Library]] --> [IPL](http://www.cs.arizona.edu/icon/library/)
+* [[:Category:Unicon_Code_Library|The Unicon Code Library]] --> [Unilib](https://tapestry.tucson.az.us/unilib)
 
 To reference these pages '''without inclusion''' on the library pages use these:
 
@@ -150,7 +150,7 @@ It turns out the <nowiki>
 ```blahblah>
 ```
 </nowiki
- tags just provides syntax highlighting via something called GeSHi for syntax highlighting.  Although there are Icon and Unicon tags on RC articles, there is GeSHi for either language.   The details on AutoGeSHi are at http://rosettacode.org/geshi/ and maintained by user BenBE.  (Thanks Mike) --[[User:Dgamey|Dgamey]] 03:10, 12 April 2010 (UTC)
+ tags just provides syntax highlighting via something called GeSHi for syntax highlighting.  Although there are Icon and Unicon tags on RC articles, there is GeSHi for either language.   The details on AutoGeSHi are at <http://rosettacode.org/geshi/> and maintained by user BenBE.  (Thanks Mike) --[[User:Dgamey|Dgamey]] 03:10, 12 April 2010 (UTC)
 * Thanks to [[User:MattOates|Matt Oates]] for getting these done --[[User:Dgamey|Dgamey]] 02:14, 20 April 2010 (UTC)
 
 == Thanks ==
@@ -298,7 +298,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn XXXX provides YYYY] 
+[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 
 Output:&lt;pre&gt;sample output&lt;/pre&gt;</nowiki>
@@ -336,7 +336,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn XXXX provides YYYY] 
+[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 
 Output:&lt;pre&gt;sample output&lt;/pre&gt;</nowiki>
@@ -361,7 +361,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn XXXX provides YYYY] 
+[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 </nowiki>
 ```
@@ -377,7 +377,7 @@ Use the following for IPL references.  Note: if the IPL module solves the task, 
 
 ```txt
 <nowiki>
-[http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn XXXX provides YYYY] 
+[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 </nowiki>
 ```
 
@@ -470,7 +470,7 @@ Sample Output:
 ...
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn fib provides YYYYY] 
+[fib provides YYYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 </nowiki>
 ```
 

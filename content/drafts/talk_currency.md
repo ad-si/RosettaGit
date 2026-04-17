@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Motivation==
-The topic came up on the [https://groups.google.com/forum/?hl=en#!topic/golang-nuts/FAKE3fBY6vc| Go mailing list].  I know it's a common topic and was surprised to see it missing from RC.  My task example comes almost directly from the original post.  I clarified what I thought were points of valid concern, exact representation and rounding, and bumped one number a little so that truncating the tax result would give the wrong answer and rounding was required.  I expect the task to be especially simple for languages with a native or library decimal type.  &mdash;[[User:Sonia|Sonia]] ([[User talk:Sonia|talk]]) 23:45, 2 January 2014 (UTC)
+The topic came up on the [Go mailing list](https://groups.google.com/forum/?hl=en#!topic/golang-nuts/FAKE3fBY6vc|).  I know it's a common topic and was surprised to see it missing from RC.  My task example comes almost directly from the original post.  I clarified what I thought were points of valid concern, exact representation and rounding, and bumped one number a little so that truncating the tax result would give the wrong answer and rounding was required.  I expect the task to be especially simple for languages with a native or library decimal type.  &mdash;[[User:Sonia|Sonia]] ([[User talk:Sonia|talk]]) 23:45, 2 January 2014 (UTC)
 
 ==Problem with tasks examples?==
 Hi, I just saw the J example use floating point and get the expected result?! (Before 'corrected' to not use floating point). Shouldn't the task be amended so that normal double precision floating point calculations would give the wrong result forcing most languages to handle the calculation using something better than this?

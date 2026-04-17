@@ -472,7 +472,7 @@ public class TypeDetection {
 
 == {{header|JavaScript}} ==
 
-[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FOperators%2Ftypeof]
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FOperators%2Ftypeof>
 
 
 ```txt
@@ -630,7 +630,7 @@ $subref     is type:  CODE
 
 Perl 6 is a dynamic language that has gradual, duck typing. It provides introspection methods through its comprehensive MOP (Meta Object Protocol) making it easy to do type detection, subroutine signatures and multi-dispatch. Perl 6 types have two general flavors: content types and container types. Different container types have varying restrictions on what sort of content they can contain and in return provide specialized methods to operate on those contents. Content types give the compiler hints on how to best handle the information, what storage requirements it may have, what operators will work with it, etc.
 
-This is really a very broad and kind of hand-wavey overview of Perl 6 types. For much more indepth coverage see [http://design.perl6.org/S02.html#Built-In_Data_Types| Perl 6 Synopsis S02: Bits and Pieces: Built-In Data Types]
+This is really a very broad and kind of hand-wavey overview of Perl 6 types. For much more indepth coverage see [Perl 6 Synopsis S02: Bits and Pieces: Built-In Data Types](http://design.perl6.org/S02.html#Built-In_Data_Types|)
 
 
 ```perl6
@@ -711,7 +711,7 @@ showtype({5,7.5,"string"})
 
 ## PicoLisp
 
-PicoLisp have only three base data [http://software-lab.de/doc/ref.html#data types].
+PicoLisp have only three base data [types](http://software-lab.de/doc/ref.html#data).
 
 ```txt
 
@@ -735,7 +735,7 @@ PicoLisp have only three base data [http://software-lab.de/doc/ref.html#data typ
 
 == {{header|PHP}} ==
 
-[http://php.net/manual/en/function.gettype.php]
+<http://php.net/manual/en/function.gettype.php>
 
 
 ```txt
@@ -750,7 +750,7 @@ echo gettype(12345); // Returns integer
 ###  Specific tester functions
 
 
-* [http://php.net/manual/en/function.is-array.php is_array()]
+* [is_array()](http://php.net/manual/en/function.is-array.php)
 
 
 ## PowerShell
@@ -821,7 +821,7 @@ True
 
 Hopefully you can see how to extend the code to add all sorts of other types. If I did this, I&rsquo;d swamp the task page.
 A good list of types supported/provided by Racket can be found in the Typed Racket reference:
-http://docs.racket-lang.org/ts-reference/type-ref.html
+<http://docs.racket-lang.org/ts-reference/type-ref.html>
 
 
 ```racket

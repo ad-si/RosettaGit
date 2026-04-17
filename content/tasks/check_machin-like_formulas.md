@@ -1861,7 +1861,7 @@ ERROR: pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arctan
 
 ## Python
 
-This example parses the [http://rosettacode.org/mw/index.php?title=Check_Machin-like_formulas&oldid=146749 original] equations to form an intermediate representation then does the checks.
+This example parses the [original](http://rosettacode.org/mw/index.php?title=Check_Machin-like_formulas&oldid=146749) equations to form an intermediate representation then does the checks.
 
 Function tans and tanEval are translations of the Haskel functions of the same names.
 
@@ -1961,7 +1961,7 @@ ERROR:   pi/4 = 88*arctan(1/172) + 51*arctan(1/239) + 32*arctan(1/682) + 44*arct
 ```
 
 
-'''Note:''' the [http://kodos.sourceforge.net/ Kodos] tool was used in developing the regular expression.
+'''Note:''' the [Kodos](http://kodos.sourceforge.net/) tool was used in developing the regular expression.
 
 
 ## R

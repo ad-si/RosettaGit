@@ -1965,7 +1965,7 @@ object KnuthsAlgorithmS extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/nlldfXD/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/WLaee5H9T72cximqK9gECA Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/nlldfXD/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/WLaee5H9T72cximqK9gECA).
 
 
 ## Sidef

@@ -94,7 +94,7 @@ The number returned can vary, randomly, in each run.
 
 Note: You may choose a smaller number of repetitions if necessary, but mention this up-front.
 
-Note: This is a specific version of a Reservoir Sampling algorithm: https://en.wikipedia.org/wiki/Reservoir_sampling
+Note: This is a specific version of a Reservoir Sampling algorithm: <https://en.wikipedia.org/wiki/Reservoir_sampling>
 
 
 
@@ -1863,7 +1863,7 @@ $ ./one.opt
 
 ## PARI/GP
 
-gp can't read individual lines from a file (PARI would be needed for that) but it can do the simulation easily. The <code>random()</code> function produces high-quality pseudorandom numbers (via Brent's [http://maths-people.anu.edu.au/~brent/pub/pub224.html XORGEN]) so the output passes a chi-square test easily (p = 0.848).
+gp can't read individual lines from a file (PARI would be needed for that) but it can do the simulation easily. The <code>random()</code> function produces high-quality pseudorandom numbers (via Brent's [XORGEN](http://maths-people.anu.edu.au/~brent/pub/pub224.html)) so the output passes a chi-square test easily (p = 0.848).
 
 ```parigp
 one_of_n(n)={
@@ -2623,7 +2623,7 @@ Output:
 
 ## Rust
 
-You could also use `rand::seq::sample_iter` which uses a more general version of this problem, Reservoir Sampling: https://en.wikipedia.org/wiki/Reservoir_sampling.
+You could also use `rand::seq::sample_iter` which uses a more general version of this problem, Reservoir Sampling: <https://en.wikipedia.org/wiki/Reservoir_sampling>.
 
 ```rust
 extern crate rand;

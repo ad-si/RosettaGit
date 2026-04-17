@@ -11,6 +11,6 @@ tags = []
 +++
 
 {{library}}
-This [[AppleScript]] library is part of the programming and working environment [http://www.satimage.fr/software/en/smile/index.html Smile] by the French company Satimage. It includes functions for regular expressions, scientific computing and folder synchronization.
+This [[AppleScript]] library is part of the programming and working environment [Smile](http://www.satimage.fr/software/en/smile/index.html) by the French company Satimage. It includes functions for regular expressions, scientific computing and folder synchronization.
 
-[http://www.satimage.fr/software/en/downloads/downloads_companion_osaxen.html Download page]
+[Download page](http://www.satimage.fr/software/en/downloads/downloads_companion_osaxen.html)

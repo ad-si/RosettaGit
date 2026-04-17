@@ -649,7 +649,7 @@ int main()
 
 
 ## C#
-In C# it is possible to [http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx overload operators] (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
+In C# it is possible to [overload operators](http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx) (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
 
 What this means, is that if we have the class, A, to do an overload of + - we must set one of the arguments as the type "A".
 This is because in C#, overloads are defined on a class basis - so when doing an operator, .Net looks at the class to find the operators. In this manner, one of the arguments must be of the class, else .Net would be looking there in vain.
@@ -1978,7 +1978,7 @@ print( number.pow( x, -4 ) )   --> 0.016
 
 ## Lucid
 
-[http://portal.acm.org/citation.cfm?id=947727.947728&coll=GUIDE&dl=GUIDE Some misconceptions about Lucid]
+[Some misconceptions about Lucid](http://portal.acm.org/citation.cfm?id=947727.947728&coll=GUIDE&dl=GUIDE)
 
 
 ```lucid
@@ -3293,7 +3293,7 @@ fn pow<T>(mut base: T, mut exp: usize) -> T
 ## Scala
 
 {{improve|Scala}}<!-- Why? This template added in place of direct categorization that failed to give any reason. -->
-There's no distinction between an operator and a method in Scala. Alas, there is no way of adding methods to a class, but one can make it look like a method has been added, through a method commonly known as [http://www.artima.com/weblogs/viewpost.jsp?thread=179766 Pimp My Library]. Therefore, we show below how that can beaccomplished. We define the operator ↑ (unicode's uparrow), which is written as \u2191 below, to make cut & paste easier.
+There's no distinction between an operator and a method in Scala. Alas, there is no way of adding methods to a class, but one can make it look like a method has been added, through a method commonly known as [Pimp My Library](http://www.artima.com/weblogs/viewpost.jsp?thread=179766). Therefore, we show below how that can beaccomplished. We define the operator ↑ (unicode's uparrow), which is written as \u2191 below, to make cut & paste easier.
 
 To use it, one has to import the implicit from the appropriate object. ExponentI will work for any integral type (Int, BigInt, etc), ExponentF will work for any fractional type (Double, BigDecimal, etc). Importing both at the same time won't work. In this case, it might be better to define implicits for the actual types being used, such as was done in Exponents.
 
@@ -3392,10 +3392,10 @@ This definition of the exponentiation procedure <code>^</code> operates on bases
 ## Seed7
 
 In Seed7 the ** operator is overloaded for both
-[http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29**%28in_integer%29 integer<sup>integer</sup>]
-and [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29 float<sup>integer</sup>]
+[integer<sup>integer</sup>](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29**%28in_integer%29)
+and [float<sup>integer</sup>](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29)
 (additionally there is a ** operator
-for [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29 float<sup>float</sup>]).
+for [float<sup>float</sup>](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29)).
 The following re-implementation of both functions does not use another exponentiation
 function to do the computation.
 Instead the exponentiation-by-squaring algorithm is used.
@@ -3427,7 +3427,7 @@ const func integer: intPow (in var integer: base, in var integer: exponent) is f
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#intPow]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#intPow>
 
 
 ```seed7
@@ -3466,12 +3466,12 @@ const func float: fltIPow (in var float: base, in var integer: exponent) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#fltIPow]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#fltIPow>
 
 Since Seed7 supports operator and function overloading a new exponentiation
 operator like ^* can be defined for
-[http://seed7.sourceforge.net/libraries/integer.htm integer]
-and [http://seed7.sourceforge.net/libraries/float.htm float] bases:
+[integer](http://seed7.sourceforge.net/libraries/integer.htm)
+and [float](http://seed7.sourceforge.net/libraries/float.htm) bases:
 
 
 ```seed7

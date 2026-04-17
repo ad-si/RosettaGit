@@ -339,7 +339,7 @@ bool polynomialfit(int obs, int degree,
 #endif
 ```
 
-'''Implementation''' (the examples [http://www.gnu.org/software/gsl/manual/html_node/Fitting-Examples.html here] helped alot to code this quickly):
+'''Implementation''' (the examples [here](http://www.gnu.org/software/gsl/manual/html_node/Fitting-Examples.html) helped alot to code this quickly):
 
 ```c
 #include "polifitgsl.h"
@@ -993,7 +993,7 @@ func Vandermonde(a []float64, degree int) *mat64.Dense {
 
 ### Library go.matrix
 
-Least squares solution using QR decomposition and package [http://github.com/skelterjohn/go.matrix go.matrix].
+Least squares solution using QR decomposition and package [go.matrix](http://github.com/skelterjohn/go.matrix).
 
 ```go
 package main
@@ -1051,7 +1051,7 @@ func main() {
 
 ## Haskell
 
-Uses module Matrix.LU from [http://hackage.haskell.org/package/dsp hackageDB DSP]
+Uses module Matrix.LU from [hackageDB DSP](http://hackage.haskell.org/package/dsp)
 
 ```haskell
 import Data.List
@@ -1601,7 +1601,7 @@ V=[1,6,17,34,57,86,121,162,209,262,321]~;
 M=matrix(#V,3,i,j,(i-1)^(j-1));Polrev(matsolve(M~*M,M~*V))
 ```
 
-<small>Code thanks to [http://pari.math.u-bordeaux.fr/archives/pari-users-1105/msg00006.html Bill Allombert]</small>
+<small>Code thanks to [Bill Allombert](http://pari.math.u-bordeaux.fr/archives/pari-users-1105/msg00006.html)</small>
 ```txt
 3*x^2 + 2*x + 1
 ```
@@ -2222,7 +2222,7 @@ p regress([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 
 ## Scala
 
-{{Out}}See it yourself by running in your browser [https://scastie.scala-lang.org/NklZH2LlScCpfsN4NSfFvA Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/NklZH2LlScCpfsN4NSfFvA).
 ```Scala
 object PolynomialRegression extends App {
   private def xy = Seq(1, 6, 17, 34, 57, 86, 121, 162, 209, 262, 321).zipWithIndex.map(_.swap)
@@ -2294,7 +2294,7 @@ say coeff
 
 ## Stata
 
-See '''[http://www.stata.com/help.cgi?fvvarlist Factor variables]''' in Stata help for explanations on the ''c.x##c.x'' syntax.
+See '''[Factor variables](http://www.stata.com/help.cgi?fvvarlist)''' in Stata help for explanations on the ''c.x##c.x'' syntax.
 
 ```stata
 . clear

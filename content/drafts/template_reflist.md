@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-<noinclude>Taken from the reflist template from [http://en.wikipedia.org/wiki/Template:Reflist Wikipeida]</noinclude>
+<noinclude>Taken from the reflist template from [Wikipeida](http://en.wikipedia.org/wiki/Template:Reflist)</noinclude>
 <div class="references-small {{#if: {{{colwidth|}}} | references-column-width | {{#iferror: {{#ifexpr: {{{1|1}}}>1 | references-column-count references-column-count-{{{1}}} }} }} }}" {{#if: {{{colwidth|}}}| style="-moz-column-width:{{{colwidth}}}; column-width:{{{colwidth}}};" | {{#if: {{{1|}}}| style="-moz-column-count:{{{1}}}; column-count:{{{1}}};" }} }}>
 {{#tag:references|{{{refs|}}}|group={{{group|}}}}}</div><noinclude>
 {{documentation}}</noinclude>

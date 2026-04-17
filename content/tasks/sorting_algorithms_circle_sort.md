@@ -91,7 +91,7 @@ Pseudo code:
 
 ## See also
 
-* For more information on Circle sorting, see [http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/ Sourceforge].
+* For more information on Circle sorting, see [Sourceforge](http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/).
 
 
 
@@ -380,7 +380,7 @@ before sort: [6, 7, 8, 9, 2, 5, 3, 4, 1]
 
 ## Forth
 
-This one features the newest version of the algorithm on [http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/ Sourceforge].
+This one features the newest version of the algorithm on [Sourceforge](http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/).
 <lang>[UNDEFINED] cell- [IF] : cell- 1 cells - ; [THEN]
 
 defer precedes                         ( addr addr -- flag )
@@ -1760,7 +1760,7 @@ do { say strs } while circlesort(strs)
 
 ## uBasic/4tH
 
-This one uses the optimized version featured at [http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/ Sourceforge].
+This one uses the optimized version featured at [Sourceforge](http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/).
 <lang>PRINT "Circle sort:"
   n = FUNC (_InitArray)
   PROC _ShowArray (n)
@@ -1878,7 +1878,7 @@ A language like ZX BASIC is not the most obvious choice for a routine which depe
 
 The size of the stack is determined by the amount of memory on the ZX Spectrum, which is 64KB (or 2<sup>16</sup> bytes). Each call requires two array elements. Note the size of a ZX Spectrum floating point number is 5 bytes, so this stack is slightly oversized. The somewhat strange indexing between both recursions is due to an stack pointer adjustment which was optimized away.
 
-This version of Circle sort was based on the optimized version on [http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/ Sourceforge]. It will also show a few asterisks while running, because it will take some time to finish (about two minutes).
+This version of Circle sort was based on the optimized version on [Sourceforge](http://sourceforge.net/p/forth-4th/wiki/Circle%20sort/). It will also show a few asterisks while running, because it will take some time to finish (about two minutes).
 
 
 ```zxbasic

@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-''Wesnoth Markup Language'' or '''WML''' is the configuration format for its computer game, [http://www.wesnoth.org/ ''the Battle for Wesnoth'']. WML files are plain text and consist of tags; and tags can contain key-value pairs and nested tags. WML describes parts of the game, such as units (like Elvish Fighters and Orcish Grunts) that do battle, and scenarios where armies must fight.
+''Wesnoth Markup Language'' or '''WML''' is the configuration format for its computer game, [''the Battle for Wesnoth''](http://www.wesnoth.org/). WML files are plain text and consist of tags; and tags can contain key-value pairs and nested tags. WML describes parts of the game, such as units (like Elvish Fighters and Orcish Grunts) that do battle, and scenarios where armies must fight.
 
-[http://wiki.wesnoth.org/ActionWML ActionWML] responds to events during a scenario. ActionWML qualifies WML as a scripting language. The actions include modifying units, displaying message boxes, accessing variables, using <code>[if]</code> and <code>[while]</code> control structures, and so on.
+[ActionWML](http://wiki.wesnoth.org/ActionWML) responds to events during a scenario. ActionWML qualifies WML as a scripting language. The actions include modifying units, displaying message boxes, accessing variables, using <code>[if]</code> and <code>[while]</code> control structures, and so on.
 
 WML also includes a few sub-languages:
 
-* [http://wiki.wesnoth.org/PreprocessorRef WML Preprocessor] allows macros in WML files. Macros are good for brevity, because a one-line macro might expand to a multi-line tag. Wesnoth also has many predefined macros.
-* [http://wiki.wesnoth.org/FormulaAI FormulaAI] is a pure functional language. Its purpose is to customize AI of armies under computer control, but it can also do arithmetic and define functions.
-* [http://wiki.wesnoth.org/LuaWML LuaWML] embeds [Lua](https://rosettacode.org/wiki/:Category:Lua) inside WML. This is also the only way to define a custom WML tag.
+* [WML Preprocessor](http://wiki.wesnoth.org/PreprocessorRef) allows macros in WML files. Macros are good for brevity, because a one-line macro might expand to a multi-line tag. Wesnoth also has many predefined macros.
+* [FormulaAI](http://wiki.wesnoth.org/FormulaAI) is a pure functional language. Its purpose is to customize AI of armies under computer control, but it can also do arithmetic and define functions.
+* [LuaWML](http://wiki.wesnoth.org/LuaWML) embeds [Lua](https://rosettacode.org/wiki/:Category:Lua) inside WML. This is also the only way to define a custom WML tag.

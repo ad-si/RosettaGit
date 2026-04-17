@@ -12,7 +12,7 @@ tags = []
 Jawk runs an Awk program inside the [runs on vm::Java Virtual Machine](https://rosettacode.org/wiki/runs_on_vm::Java_Virtual_Machine).
 
 ## Quick start
-Go to http://sourceforge.net/projects/jawk/ and download the latest jar. Then run a command like
+Go to <http://sourceforge.net/projects/jawk/> and download the latest jar. Then run a command like
 
 
 ```awk

@@ -35,7 +35,7 @@ Looking over the Julia implementation (and I'm not familiar enough with all of t
 
 [[User:Zacharymatson|Zacharymatson]] ([[User talk:Zacharymatson|talk]]) 03:01, 12 July 2019 (UTC)
 
-See official rules for the board and peg game: http://www.boardgamecapital.com/game_rules/mastermind.pdf
+See official rules for the board and peg game: <http://www.boardgamecapital.com/game_rules/mastermind.pdf>
 <br /> The relevant line in the pdf is "No Key Peg to indicate a color that does not appear at all in the secret code." So a - is not ok there. Inspecting the code for the case when there were that many duplicate colors, I did find a problem with displaying XXXO when the program should show XXXX when the code is AAAA, though :)
 --[[User:Wherrera|Wherrera]] ([[User talk:Wherrera|talk]]) 19:59, 12 July 2019 (UTC)
 

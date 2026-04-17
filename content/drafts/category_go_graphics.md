@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/fogleman/gg Go Graphics] is a library for rendering 2D graphics in pure Go using a simple API.
+[Go Graphics](https://github.com/fogleman/gg) is a library for rendering 2D graphics in pure Go using a simple API.
 
-Its use is subject to the [https://github.com/fogleman/gg/blob/master/LICENSE.md MIT license].
+Its use is subject to the [MIT license](https://github.com/fogleman/gg/blob/master/LICENSE.md).

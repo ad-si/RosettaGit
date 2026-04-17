@@ -256,7 +256,7 @@ hahahahaha
 
 ActionScript does not have a built-in way to repeat a string multiple times, but the addition operator can be used to concatenate strings.
 
-In Flex, there is the method [http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/mx/utils/StringUtil.html#repeat%28%29 mx.utils.StringUtil.repeat()].
+In Flex, there is the method [mx.utils.StringUtil.repeat()](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/mx/utils/StringUtil.html#repeat%28%29).
 
 
 ### Iterative version
@@ -1524,7 +1524,7 @@ println[repeat["ha", 5]]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=bdd2a7a0f4f09ff67e9d78b5d9667bdb Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=bdd2a7a0f4f09ff67e9d78b5d9667bdb)'''
 <lang>Public Sub Main()
 
 Print String$(5, "ha")
@@ -1813,7 +1813,7 @@ public static String repeat(String str, int times) {
 ```
 
 
-In Apache Commons Lang, there is a [http://commons.apache.org/lang/api-2.6/org/apache/commons/lang/StringUtils.html#repeat%28java.lang.String,%20int%29 StringUtils.repeat()] method.
+In Apache Commons Lang, there is a [StringUtils.repeat()](http://commons.apache.org/lang/api-2.6/org/apache/commons/lang/StringUtils.html#repeat%28java.lang.String,%20int%29) method.
 
 
 ## JavaScript
@@ -2338,7 +2338,7 @@ RPTSTR1(S,N) ;Functionally equivalent, but denser to read
 
 
 
-This last example uses the [http://docs.intersystems.com/cache20121/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_fpiece#RCOS_B57001 $PIECE] function.
+This last example uses the [$PIECE](http://docs.intersystems.com/cache20121/csp/docbook/DocBook.UI.Page.cls?KEY=RCOS_fpiece#RCOS_B57001) function.
 
 ```MUMPS
 
@@ -3575,7 +3575,7 @@ Note that using the String version on a string of 1 Character, or the repeat sin
 
 ###  Bitwise Iterative Version
 
-The following version is an enhanced version of the [http://rosettacode.org/mw/index.php?title=Repeat_a_string#Recursive_version recursive ActionScript], where we're using bit operation along with iterative doubling of the string to get to the correctly repeated version of the text in the most effective manner without recursion.  When benchmarked against the plain iterative version in previous section, this version is marginally better, but only my a very small percentage. The critical factor for making the repeat function effective when using larger strings (1000 characters) and multiple repeats (1000 repeats :-) ) was to to exchange the '+=' with 'String.extend' method.
+The following version is an enhanced version of the [recursive ActionScript](http://rosettacode.org/mw/index.php?title=Repeat_a_string#Recursive_version), where we're using bit operation along with iterative doubling of the string to get to the correctly repeated version of the text in the most effective manner without recursion.  When benchmarked against the plain iterative version in previous section, this version is marginally better, but only my a very small percentage. The critical factor for making the repeat function effective when using larger strings (1000 characters) and multiple repeats (1000 repeats :-) ) was to to exchange the '+=' with 'String.extend' method.
 
 
 ```swift

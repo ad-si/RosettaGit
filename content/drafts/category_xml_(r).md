@@ -13,4 +13,4 @@ tags = []
 {{library}}
 This package for [[R]] provides many approaches for both reading and creating XML (and HTML) documents.
 
-[http://www.omegahat.org/RSXML/ XML package home]
+[XML package home](http://www.omegahat.org/RSXML/)

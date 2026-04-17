@@ -82,7 +82,7 @@ Using C:  (one last appeared six steps back)
 
 ## References
 
-* [https://www.youtube.com/watch?v=etMJxB-igrc Don't Know (the Van Eck Sequence) - Numberphile video].
+* [Don't Know (the Van Eck Sequence) - Numberphile video](https://www.youtube.com/watch?v=etMJxB-igrc).
 * [[wp:Van_Eck%27s_sequence|Wikipedia Article: Van Eck's Sequence]].
 * [[oeis:A181391| OEIS sequence: A181391]].
 
@@ -468,9 +468,9 @@ sequences ;
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Van_Eck_sequence this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Van_Eck_sequence) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -964,7 +964,7 @@ showValues(sequence, 991, 1000)
 
 I memorize the last position of each number that occured and use a circular buffer to remember last values.
 Running once through the list of last positions maybe faster
-[https://tio.run/##jVTbThsxEH3frxipDyR0k2xAFWjToAIFNVKBqoEKKULIOLPEZfFubW9CqPrrTT129sKlVf2wlzlzOz5jZzffkZtOzjRnaSfJ@WqVq@xWsXv4xuQRvxsEP4NN2I8BzmcIiVDagEF1D0LDI6qsG4BdXzFHZnCaLoHlebqMnZXWKAFjA1PWiNuUuNgEkzlE448CJbcfGSRMkU3GwUEM1aLCEh9eq0vrzEaohdAYB4f/ipplC1fghvE7W8Va6qYyzguFU8gVzkVWaEyX3V@BfWtbRi91YUSqBwHPpDbWcrJ/eXpxAkPY3tre7e/svBv0ev0oijarx8B7jY@OTkcfL61nqw96lsJOu9MfBHOmLP4l0weYZAohBqYUW0KWwMVImu0tCv9suxsjSijhSdTt1jmvaudeD7hQvEiJXZEkSNkpdDR9CD@xObo0MVwInzuwEnOcWsZwVrgarUNp4lNmxBxtynbZ4SgcX9scNrTCBsEB3gpJ4DHYKNhr8iTxnDCExMMGRIzsLKxDqqZeRJQI@a@LD0suT2wt99U5dO26bjz0HqI6qZDc@4V1J879OFMgKE2f5pBqTzNrLrkBLJQw2NqAjbDUYeISXbnwdR9VG2/7bdg//fiML8opvVyq1DJy/43NP0dtWifsgd4kgNen2n0RMm5kcR/aQRFeiVpDgNzPT5h7dfMSKTkcizTlM6ZaJYFwLB7xLKn@2@GbyLGpR2QI0Xoz67b2ynGvdvXocnRObr2eRpOivDUzYHIKPEXXeGVtVSMe@kqvIXUl61LzomY@VF6T6Mpx9kPjsEoXD1WD4Rh4benL72EFKHdTORr22GjLHOYsLdBZ8obOFOFj/19wyokP7F5IunsWPrM91cY2nRWGzjdnfOaLkapUZM134otd@TzPjOQnPGK1cZHD5pw/oeksmGp8AYkOhQ6qoyGcKIW0t5vdsb2G6M/HQnTcZq4PojuT1@5E@pkuZ85NdD9qAwyqq4WuQ6/@GqW/BlpDfs4a4NbuX6eGwmzt7mr1mycpu9Wrztn2Hw Try it online!] takes only 1.4 s for 32,381,775
+[Try it online!](https://tio.run/##jVTbThsxEH3frxipDyR0k2xAFWjToAIFNVKBqoEKKULIOLPEZfFubW9CqPrrTT129sKlVf2wlzlzOz5jZzffkZtOzjRnaSfJ@WqVq@xWsXv4xuQRvxsEP4NN2I8BzmcIiVDagEF1D0LDI6qsG4BdXzFHZnCaLoHlebqMnZXWKAFjA1PWiNuUuNgEkzlE448CJbcfGSRMkU3GwUEM1aLCEh9eq0vrzEaohdAYB4f/ipplC1fghvE7W8Va6qYyzguFU8gVzkVWaEyX3V@BfWtbRi91YUSqBwHPpDbWcrJ/eXpxAkPY3tre7e/svBv0ev0oijarx8B7jY@OTkcfL61nqw96lsJOu9MfBHOmLP4l0weYZAohBqYUW0KWwMVImu0tCv9suxsjSijhSdTt1jmvaudeD7hQvEiJXZEkSNkpdDR9CD@xObo0MVwInzuwEnOcWsZwVrgarUNp4lNmxBxtynbZ4SgcX9scNrTCBsEB3gpJ4DHYKNhr8iTxnDCExMMGRIzsLKxDqqZeRJQI@a@LD0suT2wt99U5dO26bjz0HqI6qZDc@4V1J879OFMgKE2f5pBqTzNrLrkBLJQw2NqAjbDUYeISXbnwdR9VG2/7bdg//fiML8opvVyq1DJy/43NP0dtWifsgd4kgNen2n0RMm5kcR/aQRFeiVpDgNzPT5h7dfMSKTkcizTlM6ZaJYFwLB7xLKn@2@GbyLGpR2QI0Xoz67b2ynGvdvXocnRObr2eRpOivDUzYHIKPEXXeGVtVSMe@kqvIXUl61LzomY@VF6T6Mpx9kPjsEoXD1WD4Rh4benL72EFKHdTORr22GjLHOYsLdBZ8obOFOFj/19wyokP7F5IunsWPrM91cY2nRWGzjdnfOaLkapUZM134otd@TzPjOQnPGK1cZHD5pw/oeksmGp8AYkOhQ6qoyGcKIW0t5vdsb2G6M/HQnTcZq4PojuT1@5E@pkuZ85NdD9qAwyqq4WuQ6/@GqW/BlpDfs4a4NbuX6eGwmzt7mr1mycpu9Wrztn2Hw) takes only 1.4 s for 32,381,775
 
 ```pascal
 program VanEck;

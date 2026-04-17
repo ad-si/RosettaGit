@@ -35,7 +35,7 @@ tags = []
 
 * '''[NetRexx](https://rosettacode.org/wiki/NetRexx)''' is IBM's variant of the REXX programming language to run on the Java virtual machine.   It supports a classic REXX syntax, with no reserved keywords, along with considerable additions to support Object-oriented programming in a manner compatible with Java's object model, yet can be used as both a compiled and an interpreted language, with an option of using only data types native to the JVM or the NetRexx run-time package.   The syntax and object model of NetRexx differ from Object REXX.
 
-* '''[https://en.wikipedia.org/wiki/Object_REXX Object REXX]''' is/was an object-oriented scripting language initially produced by IBM for OS/2.   It is a follow-on to and a significant extension of the "Classic Rexx" language originally created for the CMS component of VM/SP and later ported to MVS, OS/2 and PC DOS.   OS/2 version of IBM Object REXX is deeply integrated with SOM.   On October 12, 2004, IBM released Object REXX as open source software, giving rise to Open Object Rexx (ooREXX).
+* '''[Object REXX](https://en.wikipedia.org/wiki/Object_REXX)''' is/was an object-oriented scripting language initially produced by IBM for OS/2.   It is a follow-on to and a significant extension of the "Classic Rexx" language originally created for the CMS component of VM/SP and later ported to MVS, OS/2 and PC DOS.   OS/2 version of IBM Object REXX is deeply integrated with SOM.   On October 12, 2004, IBM released Object REXX as open source software, giving rise to Open Object Rexx (ooREXX).
 
 * '''[ooRexx](https://rosettacode.org/wiki/ooRexx)''' (Open Object Rexx) is an implementation of [Object REXX](https://en.wikipedia.org/wiki/Object_REXX), which is REXX with OO features (some REXX programs are compatible).
 
@@ -71,21 +71,21 @@ tags = []
 
 ### External Links
 
-* [https://en.wikipedia.org/wiki/Rexx English Wikipedia <big> REXX </big>]
-* [https://github.com/vlachoudis/brexx Brexx interpreter]
-* [http://www.oorexx.org/ Open Object Rexx - www.oorexx.org]
-* [http://www.netrexx.org The NetRexx Programming Language - www.netrexx.org]
-* [http://www.rexxla.org The Rexx Language Association - www.rexxla.org]
-* [http://regina-rexx.sourceforge.net/index.html Regina Rexx Interpreter]
-* [http://www.kedit.com/ Mansfield Software Group, Inc. (KEDIT)]
-* [http://www.quercus-sys.com/ Personal REXX, Quercus Systems]
-* [http://www.commandtechnology.com/ CTC Command Technology]
-* [http://www.rexxla.org/ CRX Open Source (right column side)]
-* [http://www.kilowattsoftware.com/r4Page.htm R4, Kilowatt Software]
-* [http://www.kilowattsoftware.com/rooPage.htm ROO, Kilowatt Software]
-* [http://publib.boulder.ibm.com/cgi-bin/bookmgr_OS390/BOOKS/HCSE2C00/CCONTENTS?SHELF=hcsh2ab0&DN=SC24-6221-00&DT=20090724140455 z/VM V6R1 REXX/VM Reference]
-* [http://publib.boulder.ibm.com/cgi-bin/bookmgr_OS390/BOOKS/HCSB3C00/CCONTENTS?SHELF=hcsh2ab0&DN=SC24-6222-00&DT=20090724131829 z/VM V6R1 REXX/VM User's Guide]
-* [http://www.rexxinfo.org/html/rexxinfo1.html#Rexx-Manuals {many references to REXX manuals}]
+* [English Wikipedia <big> REXX </big>](https://en.wikipedia.org/wiki/Rexx)
+* [Brexx interpreter](https://github.com/vlachoudis/brexx)
+* [Open Object Rexx - www.oorexx.org](http://www.oorexx.org/)
+* [The NetRexx Programming Language - www.netrexx.org](http://www.netrexx.org)
+* [The Rexx Language Association - www.rexxla.org](http://www.rexxla.org)
+* [Regina Rexx Interpreter](http://regina-rexx.sourceforge.net/index.html)
+* [Mansfield Software Group, Inc. (KEDIT)](http://www.kedit.com/)
+* [Personal REXX, Quercus Systems](http://www.quercus-sys.com/)
+* [CTC Command Technology](http://www.commandtechnology.com/)
+* [CRX Open Source (right column side)](http://www.rexxla.org/)
+* [R4, Kilowatt Software](http://www.kilowattsoftware.com/r4Page.htm)
+* [ROO, Kilowatt Software](http://www.kilowattsoftware.com/rooPage.htm)
+* [z/VM V6R1 REXX/VM Reference](http://publib.boulder.ibm.com/cgi-bin/bookmgr_OS390/BOOKS/HCSE2C00/CCONTENTS?SHELF=hcsh2ab0&DN=SC24-6221-00&DT=20090724140455)
+* [z/VM V6R1 REXX/VM User's Guide](http://publib.boulder.ibm.com/cgi-bin/bookmgr_OS390/BOOKS/HCSB3C00/CCONTENTS?SHELF=hcsh2ab0&DN=SC24-6222-00&DT=20090724131829)
+* [{many references to REXX manuals}](http://www.rexxinfo.org/html/rexxinfo1.html#Rexx-Manuals)
 
 ## Todo
 [Reports:Tasks_not_implemented_in_REXX](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_REXX)

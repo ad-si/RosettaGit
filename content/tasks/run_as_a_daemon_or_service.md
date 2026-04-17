@@ -33,9 +33,9 @@ Note that in some language implementations it may not be possible to disconnect 
 ## C
 
 ==={{libheader|BSD libc}}===
-[[BSD]] provides a convenient [http://netbsd.gw.com/cgi-bin/man-cgi?daemon+3+NetBSD-current daemon(3)] function. [[GNU]] libc also provides [http://www.kernel.org/doc/man-pages/online/pages/man3/daemon.3.html daemon(3)], but [[POSIX]] omits it, so it is not portable. Other BSDisms in this program are __progname and <err.h>.
+[[BSD]] provides a convenient [daemon(3)](http://netbsd.gw.com/cgi-bin/man-cgi?daemon+3+NetBSD-current) function. [[GNU]] libc also provides [daemon(3)](http://www.kernel.org/doc/man-pages/online/pages/man3/daemon.3.html), but [[POSIX]] omits it, so it is not portable. Other BSDisms in this program are __progname and <err.h>.
 
-The task also wants to redirect stdout. This program does so with [http://netbsd.gw.com/cgi-bin/man-cgi?dup2+2+NetBSD-current dup2(2)]. Had we wanted to directly write to a file, we could open the file with <code>file = fopen(argv[1], "a")</code>, and write to ''file'' instead of ''stdout''.
+The task also wants to redirect stdout. This program does so with [dup2(2)](http://netbsd.gw.com/cgi-bin/man-cgi?dup2+2+NetBSD-current). Had we wanted to directly write to a file, we could open the file with <code>file = fopen(argv[1], "a")</code>, and write to ''file'' instead of ''stdout''.
 
 
 ```c

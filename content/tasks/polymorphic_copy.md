@@ -561,7 +561,7 @@ int main()
 
 ### With Structures
 
-With structures, <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_stu.htm copy-structure]</code> performs the right kind of copy.  The object and its copy are compared under <code>eq</code>, <code>eql</code>, <code>equal</code>, and <code>equalp</code> to demonstrate that "The objective is to create an exact copy of such polymorphic object (not to create a reference, nor a pointer to)."
+With structures, <code>[copy-structure](http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_stu.htm)</code> performs the right kind of copy.  The object and its copy are compared under <code>eq</code>, <code>eql</code>, <code>equal</code>, and <code>equalp</code> to demonstrate that "The objective is to create an exact copy of such polymorphic object (not to create a reference, nor a pointer to)."
 
 
 ```lisp
@@ -600,7 +600,7 @@ NIL
 ### With Sequences
 
 
-The same technique works for <code>[http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm sequence]</code> and its subclasses (e.g., <code>[http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm string]</code>, <code>[http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm list]</code>) when <code>[http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm copy-seq]</code> is used rather than <code>copy-structure</code>.
+The same technique works for <code>[sequence](http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code> and its subclasses (e.g., <code>[string](http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm)</code>, <code>[list](http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code>) when <code>[copy-seq](http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm)</code> is used rather than <code>copy-structure</code>.
 
 
 ```lisp
@@ -784,7 +784,7 @@ def copy(object) {
 
 Since E does not have any static dispatch, this cannot be non-polymorphic without also being non-generic.
 
-An example showing that it does indeed make copies follows. (For the task description, let <var>S</var> be the type of all serializable E objects, <var>T</var> be the <code>[http://wiki.erights.org/wiki/FlexList FlexList]</code> type (result of <code>diverge</code>), and the overriden method be <code> [http://wiki.erights.org/wiki/FlexList#push/1 push]</code>.
+An example showing that it does indeed make copies follows. (For the task description, let <var>S</var> be the type of all serializable E objects, <var>T</var> be the <code>[FlexList](http://wiki.erights.org/wiki/FlexList)</code> type (result of <code>diverge</code>), and the overriden method be <code> [push](http://wiki.erights.org/wiki/FlexList#push/1)</code>.
 
 
 ```e
@@ -969,7 +969,7 @@ scopy => print
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1333,7 +1333,7 @@ Note that objects cannot be dereferenced.  If you need polymorphic copy in J, yo
 
 ## JavaScript
 
-Copied from [http://keithdevens.com/weblog/archive/2007/Jun/07/javascript.clone here]:
+Copied from [here](http://keithdevens.com/weblog/archive/2007/Jun/07/javascript.clone):
 
 ```javascript
 function clone(obj){

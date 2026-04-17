@@ -15,4 +15,4 @@ While they may not directly be common programming problems,
 they can serve to illustrate how to use language features and libraries 
 in combination to arrive at a solution.
 
-See also: [http://rosettacode.org/wiki/Category:Games Category:Games]
+See also: [Category:Games](http://rosettacode.org/wiki/Category:Games)

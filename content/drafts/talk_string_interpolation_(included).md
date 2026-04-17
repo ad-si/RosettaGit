@@ -45,11 +45,11 @@ I suggest we knock this task back to draft and sort out the description.
 ###  Wikipedia 
 
 There is already some discussion on WP 
-* [http://en.wikipedia.org/wiki/String_literal#Variable_interpolation]  reference page is not the main article
-* [http://en.wikipedia.org/wiki/Variable_interpolation]  main article
+* <http://en.wikipedia.org/wiki/String_literal#Variable_interpolation>  reference page is not the main article
+* <http://en.wikipedia.org/wiki/Variable_interpolation>  main article
 The talk pages already cover some of this.
-* [http://en.wikipedia.org/wiki/Talk:String_literal#Variable_interpolation] 
-* [http://en.wikipedia.org/wiki/Talk:Variable#interpolation:_rv_example] 
-* [http://en.wikipedia.org/wiki/Talk:Variable_%28programming%29]  (the first jump with little on it of relevance) 
+* <http://en.wikipedia.org/wiki/Talk:String_literal#Variable_interpolation> 
+* <http://en.wikipedia.org/wiki/Talk:Variable#interpolation:_rv_example> 
+* <http://en.wikipedia.org/wiki/Talk:Variable_%28programming%29>  (the first jump with little on it of relevance) 
 
 As far back as 2006, the fact the printf wasn't needed.  Yet the examples seem a bit of a mix mash. -[[User:Dgamey|Dgamey]]

@@ -23,4 +23,4 @@ Would it be appropriate to redefine this task to use an assumed function named S
 == Variations ==
 
 How about a related task to draw the gasket using the [[wp:chaos game]]? Or the Xor method mentioned in [[wp:Sierpinski triangle|the Wikipedia article]]? I've done both in the past; pretty simple, really. -- [[User:Eriksiers|Eriksiers]] 00:51, 4 November 2009 (UTC)
-: http://rosettacode.org/wiki/Chaos_game
+: <http://rosettacode.org/wiki/Chaos_game>

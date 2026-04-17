@@ -24,7 +24,7 @@ Or alternatively, Clenshaw's recurrence might be added as a separate task, with 
 
 == Wikipedia doesn't seem to agree with Numerical Recipes ==
 
-See https://en.wikipedia.org/wiki/Chebyshev_polynomials#Example_1.  WP has that extra Kronecker delta that effectively divides the first term by 2, which, if I understand, gets the absolute value of that first coefficient <= 1.  Am I reading that right?  NR may have a pair of functions that generate and then evaluate an approximating polynomial, but if it's a variant of Chebychev, I'd prefer that we show the more mathematically correct functions.  &mdash;[[User:Sonia|Sonia]] ([[User talk:Sonia|talk]]) 16:15, 21 August 2015 (UTC)
+See <https://en.wikipedia.org/wiki/Chebyshev_polynomials#Example_1>.  WP has that extra Kronecker delta that effectively divides the first term by 2, which, if I understand, gets the absolute value of that first coefficient <= 1.  Am I reading that right?  NR may have a pair of functions that generate and then evaluate an approximating polynomial, but if it's a variant of Chebychev, I'd prefer that we show the more mathematically correct functions.  &mdash;[[User:Sonia|Sonia]] ([[User talk:Sonia|talk]]) 16:15, 21 August 2015 (UTC)
 
 == What is this task about? ==
 It's absolutely not clear what '''Chebyshev coefficients''' actually are. The name of Chebyshev is associated to many things in approximation theory

@@ -17,7 +17,7 @@ What is   '''secp256k1'''   (as mentioned in the Rosetta Codes task's preamble:
 
 -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:18, 4 April 2016 (UTC)
 
-I think that's a reference to https://en.bitcoin.it/wiki/Secp256k1 --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:33, 5 April 2016 (UTC)
+I think that's a reference to <https://en.bitcoin.it/wiki/Secp256k1> --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 00:33, 5 April 2016 (UTC)
 
 == multiple additions vs. multiplication ==
 (Regarding the   ''extra credit''   part of the task.)

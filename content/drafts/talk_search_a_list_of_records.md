@@ -24,7 +24,7 @@ Someone's desk job to establish beachhead positions ?
 
 == draft task ==
 
-Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [http://rosettacode.org home page]. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 04:49, 10 October 2015 (UTC)
+Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [home page](http://rosettacode.org). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 04:49, 10 October 2015 (UTC)
 
 ==perhaps 2/3 slight expansions of the task description and requirements ?==
 
@@ -53,7 +53,7 @@ It might be helpful to specify requirements which drew these things out and made
 
 :: That sounds plausible. Please feel free to update the task description - it's not like you have to worry about messing that up... --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 13:40, 10 October 2015 (UTC)
 
-::: But on second thoughts, do we need this task anyway, given the existing http://rosettacode.org/wiki/Search_a_list ? [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 14:43, 10 October 2015 (UTC)
+::: But on second thoughts, do we need this task anyway, given the existing <http://rosettacode.org/wiki/Search_a_list> ? [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 14:43, 10 October 2015 (UTC)
 
 :::: That's good question. One relevant issue might be that [[Search a list]] specifies an index result, while this task allows non-index results. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 05:27, 11 October 2015 (UTC)
 

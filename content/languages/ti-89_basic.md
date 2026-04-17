@@ -9,7 +9,7 @@ id = 4200
 categories = []
 tags = []
 +++
-[TI-89 BASIC](https://rosettacode.org/wiki/:Category:TI-89_BASIC) is the programming language of the [Texas Instruments TI-89 graphing calculator](https://en.wikipedia.org/wiki/TI-89_series), as well as the TI-92+ and Voyage 200 models<!-- got this last info from http://everything2.com/title/TI+Basic; please revise with better list -->.
+[TI-89 BASIC](https://rosettacode.org/wiki/:Category:TI-89_BASIC) is the programming language of the [Texas Instruments TI-89 graphing calculator](https://en.wikipedia.org/wiki/TI-89_series), as well as the TI-92+ and Voyage 200 models<!-- got this last info from <http://everything2.com/title/TI+Basic>; please revise with better list -->.
 
 TI-89 BASIC is derived from [derived from::TI-83 BASIC](https://rosettacode.org/wiki/derived_from::TI-83_BASIC), but has some incompatible syntax and is much more powerful. For example, it supports arbitrary variable names, user-defined functions, local subroutines, comments, and working with symbolic expressions as well as numbers.
 

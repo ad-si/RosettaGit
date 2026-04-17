@@ -36,7 +36,7 @@ languages = [
 
 Solve '''x² ≡ n (mod p)'''
 
-In computational number theory, [https://en.wikipedia.org/wiki/Cipolla's_algorithm Cipolla's algorithm] is a technique for solving an equation of the form '''x² ≡ n (mod p)''', where p is an odd prime and x ,n ∊ Fp = {0, 1, ... p-1}.
+In computational number theory, [Cipolla's algorithm](https://en.wikipedia.org/wiki/Cipolla's_algorithm) is a technique for solving an equation of the form '''x² ≡ n (mod p)''', where p is an odd prime and x ,n ∊ Fp = {0, 1, ... p-1}.
 
 To apply the algorithm we need the Legendre symbol, and arithmetic in  Fp².
 
@@ -395,7 +395,7 @@ Roots of 331575 are (855842,144161) (mod 1000003)
 
 ### The function
 
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2004,7 +2004,7 @@ object CipollasAlgorithm extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/QQBsMza/3 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/NEP5hOWmSBqqpwmF30LpUA Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/QQBsMza/3) or by [Scastie (JVM)](https://scastie.scala-lang.org/NEP5hOWmSBqqpwmF30LpUA).
 
 ## Sidef
 

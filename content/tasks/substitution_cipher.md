@@ -56,7 +56,7 @@ This type of Encryption/Decryption scheme is often called a Substitution Cipher.
 
 ## See also
 
-* Wikipedia article:   [https://en.wikipedia.org/wiki/Substitution_cipher Substitution cipher]
+* Wikipedia article:   [Substitution cipher](https://en.wikipedia.org/wiki/Substitution_cipher)
 
 
 
@@ -121,7 +121,7 @@ end Cipher;
 
 ## C
 
-Takes input file name, plain and cipher keys and the action ( Encrypt or Decrypt) as inputs. Only the first character of the action string is checked, so if you are feeling really [https://www.nsa.gov/ NSA like], use whatever string you want as long as it has a d/D or e/E in front.
+Takes input file name, plain and cipher keys and the action ( Encrypt or Decrypt) as inputs. Only the first character of the action string is checked, so if you are feeling really [NSA like](https://www.nsa.gov/), use whatever string you want as long as it has a d/D or e/E in front.
 
 ```C
 
@@ -192,7 +192,7 @@ int main(int argC,char* argV[]){
 
 ```
 
-A long, long time ago ( yes, [http://www.rosettacode.org/wiki/N-body_problem#C I have said it before] ), I read Digital Fortress by Dan Brown. One thing which struck me was Ensei Tankado using the same algorithm to encrypt itself ( or it's human readable Unicode version, if you are a purist). I remembered the name : Bigelman's Safe, but I got the spelling wrong so I had to [https://archive.org/stream/LostSymbol/Dan%20Brown/Digital%20Fortress#page/n29/mode/2up/search/bigel read the copy on archive.org], it's there on the last line of page 30/31, Biggleman's Safe.
+A long, long time ago ( yes, [I have said it before](http://www.rosettacode.org/wiki/N-body_problem#C) ), I read Digital Fortress by Dan Brown. One thing which struck me was Ensei Tankado using the same algorithm to encrypt itself ( or it's human readable Unicode version, if you are a purist). I remembered the name : Bigelman's Safe, but I got the spelling wrong so I had to [read the copy on archive.org](https://archive.org/stream/LostSymbol/Dan%20Brown/Digital%20Fortress#page/n29/mode/2up/search/bigel), it's there on the last line of page 30/31, Biggleman's Safe.
 
 ----
 So here it is, a program which encrypts itself, you saw the cleartext file above, now here's the invocation and ciphertext file.
@@ -1665,7 +1665,7 @@ object SubstitutionCipher extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/f9yNWk7/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/8CyCsxnnRZyn0JH0yegndA Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/f9yNWk7/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/8CyCsxnnRZyn0JH0yegndA).
 
 ## Sidef
 

@@ -267,7 +267,7 @@ Oh, my font is Courier. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|ta
 
 : I find that there's quite wide differences in the quality of fonts when it comes to blocks and box elements; a lot of fonts simply don't have the things that should extend to the limits of the glyph box they declare actually doing so at all. In my limited experimenting, Courier New is considerably better than the others I've tried (Andale Mono, Consolas, Courier, Monaco) for this sort of thing. Not much we can do about that really (except “blame the font makers”, which isn't very helpful). –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 11:24, 20 June 2013 (UTC)
 
-I now find that there is raggedness in the baseline of my bar choice if I swap to Consolas font. I think I'll revert to using Tims seven bars and search for a font as the [http://www.unicode.org/Public/UNIDATA/NamesList.txt Unicode page] has nothing to say on this, just:
+I now find that there is raggedness in the baseline of my bar choice if I swap to Consolas font. I think I'll revert to using Tims seven bars and search for a font as the [Unicode page](http://www.unicode.org/Public/UNIDATA/NamesList.txt) has nothing to say on this, just:
 
 ```txt
 @@	2580	Block Elements	259F
@@ -289,7 +289,7 @@ I now find that there is raggedness in the baseline of my bar choice if I swap t
 == Python query ==
 In the (original) Python entry, obviously some kind of to be or not to be unicode thing, can someone explain the try/except on bar, ta? --[[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]])
 
-:It [https://stackoverflow.com/questions/21731043/use-of-input-raw-input-in-python-2-and-3 allows] the code to work in both Python 2 and Python 3. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 10:45, 11 January 2019 (UTC)
+:It [allows](https://stackoverflow.com/questions/21731043/use-of-input-raw-input-in-python-2-and-3) the code to work in both Python 2 and Python 3. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 10:45, 11 January 2019 (UTC)
 
 ::Sorry, I didn't mean the try/except on raw_input, but the one on bar (try: bar = u'▁▂▃▄▅▆▇█' except: bar = '▁▂▃▄▅▆▇█'). Following that link, I am certainly closer to understanding, but still slightly adrift. Is it something to do with u'xx' being ''invalid syntax''' in 3.0 .. 3.2 but accepted/ignored in 3.3+? --[[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 17:33, 11 January 2019 (UTC)
 

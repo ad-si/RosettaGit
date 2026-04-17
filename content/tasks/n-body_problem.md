@@ -51,7 +51,7 @@ Write a simulation of three masses interacting under gravitation and show their 
 
 ### A little history
 
-A long, long time ago ( well, more than 10 years, which is a very long time when it comes to computing ), I implemented a [https://en.wikipedia.org/wiki/Borland_Graphics_Interface BGI] program in C for the [http://www.fact-index.com/g/gr/gravity_set.html Mitchell-Green Gravity Set]. A chaotic dynamical system, the Gravity set, MGGS in short, is a plot of the paths of massive bodies as they move under the influence of gravity. Those were the days when I was crazy about Graphics and the MGGS orbits brought to life all of the high school Physics I had learnt. Orbits, oscillations, parabolic and hyperbolic trajectories suddenly came to life on my computer screen. I didn't stop there and even implemented a 3D version in OpenGL. This was on a Pentium-4 system with 512 MB RAM and I remember the machine groaning when the OpenGL simulation ran for even 10 bodies.
+A long, long time ago ( well, more than 10 years, which is a very long time when it comes to computing ), I implemented a [BGI](https://en.wikipedia.org/wiki/Borland_Graphics_Interface) program in C for the [Mitchell-Green Gravity Set](http://www.fact-index.com/g/gr/gravity_set.html). A chaotic dynamical system, the Gravity set, MGGS in short, is a plot of the paths of massive bodies as they move under the influence of gravity. Those were the days when I was crazy about Graphics and the MGGS orbits brought to life all of the high school Physics I had learnt. Orbits, oscillations, parabolic and hyperbolic trajectories suddenly came to life on my computer screen. I didn't stop there and even implemented a 3D version in OpenGL. This was on a Pentium-4 system with 512 MB RAM and I remember the machine groaning when the OpenGL simulation ran for even 10 bodies.
 
 ----
 And then I got a job, and in case you are wondering, yes, I can't find either program anywhere. Sad, because I am sure I implemented far more Physics in them than in these ones. The only bit extra I have built into the two implementations below is collision detection. To keep things simple, all bodies are assumed to be point particles and collisions to be perfectly elastic.
@@ -340,7 +340,7 @@ Body 3 : -1.006089	-4.103186	-3.122591	|	-0.359686	-1.177995	-0.875924
 
 ### =Graphics=
 
-One of the golden rules of Physics : Draw a diagram. It doesn't have to be artistic, but a properly drawn diagram whose proportions are realistic simplifies the solution of almost every Physics problem. That was the case with this task as well, when I first ran the console version, I noticed that Body 1's position and velocity is varying wildly. I put it down to the chaotic nature of the system and got busy writing the Graphics part and it's when I found that nothing was being drawn on the screen, I took a good look at the implementation and discovered many glaring mistakes. Gravitation is an attractive force, it never repels ( we will talk about [https://en.wikipedia.org/wiki/Dark_energy Dark Energy] later). When I saw the particles moving away from each other, I knew the acceleration vector had the wrong sign.
+One of the golden rules of Physics : Draw a diagram. It doesn't have to be artistic, but a properly drawn diagram whose proportions are realistic simplifies the solution of almost every Physics problem. That was the case with this task as well, when I first ran the console version, I noticed that Body 1's position and velocity is varying wildly. I put it down to the chaotic nature of the system and got busy writing the Graphics part and it's when I found that nothing was being drawn on the screen, I took a good look at the implementation and discovered many glaring mistakes. Gravitation is an attractive force, it never repels ( we will talk about [Dark Energy](https://en.wikipedia.org/wiki/Dark_energy) later). When I saw the particles moving away from each other, I knew the acceleration vector had the wrong sign.
 
 ----
 So yes, always draw a diagram, always do a Graphics implementation of any simulation. Input file for this differs from the console one since the BGI screen is the positive or 1st quadrant of the XY-plane. Hence z components are 0, you can use non-zero values but you won't see any change ( or really weird ones ) on the screen.
@@ -360,7 +360,7 @@ So yes, always draw a diagram, always do a Graphics implementation of any simula
 
 ```
 
-The time step although present in the file, and read, is not used here, the loop goes on indefinitely. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+The time step although present in the file, and read, is not used here, the loop goes on indefinitely. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -2726,7 +2726,7 @@ Body 3 : -1.006089  -4.103186  -3.122591 | -0.359686  -1.177995  -0.875924
 <li>a = (1/3)^(1/2) <em>-- centripetal acceleration</em></li>
 <li>v = (1/3)^(1/4) <em>-- velocity</em></li>
 </ul></p>
-<p>This is a variation on the [Klemperer rosette[https://en.wikipedia.org/wiki/Klemperer_rosette]]. </p>
+<p>This is a variation on the [Klemperer rosette<https://en.wikipedia.org/wiki/Klemperer_rosette>]. </p>
 <h4>Implementing the physics</h4>
 <ul>
 <li>The problem space is a collection of objects. </li>
@@ -2842,7 +2842,7 @@ cases =: 3 : 0
 maxn ITER z0 =: ((1%3)^(1%4)) GEN 3
 ```
 
-[<em>sinusoidal curves of constant amplitude</em>[https://commons.wikimedia.org/wiki/File:Nbody_j_2.jpg]]
+[<em>sinusoidal curves of constant amplitude</em><https://commons.wikimedia.org/wiki/File:Nbody_j_2.jpg>]
 <p>Determine orbital period, and compare configuration after two rotations vs. initial position. </p>
 
 ```J
@@ -2870,7 +2870,7 @@ rot2 ITER v GEN 3
 maxn ITER z1 =: 0.6 GEN 3>
 ```
 
-[<em>sinusoidal curves of varying amplitudes</em>  [https://commons.wikimedia.org/wiki/File:Nbody_j_1.jpg]]
+[<em>sinusoidal curves of varying amplitudes</em>  <https://commons.wikimedia.org/wiki/File:Nbody_j_1.jpg>]
 <h5>Perturbed case. </h5>
 <p>Any perturbation from symmetry, however small, will eventually cause the bodies to escape. Note that the effect demonstrated here is due to the physics of the problem, independently of the numerical precision and increment size of the solver. </p>
 
@@ -2878,7 +2878,7 @@ maxn ITER z1 =: 0.6 GEN 3>
 maxn ITER z2 =: (0.001+6{0{z0)(<0 6)}z0
 ```
 
-[<em>curves start out nice then get jumbled and diverge</em>  [https://commons.wikimedia.org/wiki/File:Nbody_j_3.jpg]]
+[<em>curves start out nice then get jumbled and diverge</em>  <https://commons.wikimedia.org/wiki/File:Nbody_j_3.jpg>]
 <h5>n>3</h5>
 <p>We can generate and execute tests for radially symmetrical configurations of any number of bodies, run the simulations, and compare the results with an explicitly determined result:</p>
 
@@ -3282,7 +3282,7 @@ plot(simresult)
 
 ## K
 
-<p>The simulation is meant to be viewed in-browser, using a Javascript implementation of (a nice subset of) K, plus graphics primitives, here: [http://johnearnest.github.io/ok/ike/ike.html[http://johnearnest.github.io/ok/ike/ike.html]]; just paste the code into the code window and push the go button.  Playing with the parameters in this interactive and immediate environment gives a feel for the system beyond what you are likely to get from tables or graphs.</p>
+<p>The simulation is meant to be viewed in-browser, using a Javascript implementation of (a nice subset of) K, plus graphics primitives, here: <http://johnearnest.github.io/ok/ike/ike.html[http://johnearnest.github.io/ok/ike/ike.html>]; just paste the code into the code window and push the go button.  Playing with the parameters in this interactive and immediate environment gives a feel for the system beyond what you are likely to get from tables or graphs.</p>
 <h4>configuration generator</h4>
 <p>The configurations shown here are based on those in the J task.</p>
 

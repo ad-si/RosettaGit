@@ -312,7 +312,7 @@ implement main0 () = fprint (stderr_ref, "Goodbye, World!\n")
 
 ## AutoHotkey
 
-requires [http://github.com/tinku99/ahkdll/tree/master AutoHotkey_N]
+requires [AutoHotkey_N](http://github.com/tinku99/ahkdll/tree/master)
 implementation.
 
 ```autohotkey
@@ -323,7 +323,7 @@ FileAppend, Goodbye`, World!, stderr   ; requires AutoHotkey_N
 
 
 Or with the current AutoHotkey_L:
-(documentation on this behavior: http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/FileAppend.htm)
+(documentation on this behavior: <http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/FileAppend.htm>)
 
 ```AutoHotkey
 FileAppend, Goodbye`, World!, *
@@ -1284,7 +1284,7 @@ Printf.fprintf stderr "Goodbye, World!\n";
 ```
 
 
-finally the [http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html Unix] module also provides unbuffered write functions:
+finally the [Unix](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html) module also provides unbuffered write functions:
 
 
 ```ocaml
@@ -1508,9 +1508,9 @@ To accurately reproduce the behavior of other languages one has to resort to .NE
 ## PureBasic
 
 
-[http://www.purebasic.com/documentation/console/consoleerror.html ConsoleError()] writes the message string (plus a newline) to the standard error output of current program.
+[ConsoleError()](http://www.purebasic.com/documentation/console/consoleerror.html) writes the message string (plus a newline) to the standard error output of current program.
 
-Standard error output can be used in conjunction with [http://www.purebasic.com/documentation/process/readprogramerror.html ReadProgramError()] to reads a line from an other programs error output (stderr).
+Standard error output can be used in conjunction with [ReadProgramError()](http://www.purebasic.com/documentation/process/readprogramerror.html) to reads a line from an other programs error output (stderr).
 
 
 ```PureBasic
@@ -1788,7 +1788,7 @@ end;
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop REPL] script:
+Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script:
 
 ```Scala
 Console.err.println("Goodbye, World!")

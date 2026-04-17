@@ -75,8 +75,8 @@ The goal of Peaceful chess queen armies is to arrange <code>m</code> black queen
 
 
 ;References:
-* [http://www.mathopt.org/Optima-Issues/optima62.pdf Peaceably Coexisting Armies of Queens] (Pdf) by Robert A. Bosch. Optima, the Mathematical Programming Socity newsletter, issue 62.
-* [https://oeis.org/A250000 A250000] OEIS
+* [Peaceably Coexisting Armies of Queens](http://www.mathopt.org/Optima-Issues/optima62.pdf) (Pdf) by Robert A. Bosch. Optima, the Mathematical Programming Socity newsletter, issue 62.
+* [A250000](https://oeis.org/A250000) OEIS
 
 
 
@@ -372,7 +372,7 @@ W ◦ W W • ◦ •
 
 ## Go
 
-This is based on the C# code [https://www.reddit.com/r/coding/comments/b5eu7w/peaceful_chess_queen_armies_new_draft_rosetta/ here].
+This is based on the C# code [here](https://www.reddit.com/r/coding/comments/b5eu7w/peaceful_chess_queen_armies_new_draft_rosetta/).
 
 Textual rather than HTML output. Whilst the unicode symbols for the black and white queens are recognized by the Ubuntu 16.04 terminal, I found it hard to visually distinguish between them so I've used 'B' and 'W' instead.
 

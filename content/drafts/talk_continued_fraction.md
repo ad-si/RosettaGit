@@ -27,7 +27,7 @@ Both Mathworld and Wikipedia use a subscript convention different that what is u
 
 One might be [[Thiele's interpolation formula]]. &mdash;[[User:Sonia|Sonia]] 21:59, 27 February 2012 (UTC)
 
-:When the structure of the solution: a CF object; generators for aN and bN; and translation from the exact CF object to a real number, is established then we can tackle the Thiele task properly. Note that the cf representation for: arcsin is http://www4b.wolframalpha.com/input/?i=continued%20fraction%20arcsin%28x%29&lk=2; arccos is http://www.wolframalpha.com/input/?i=arcos%28z%29+continued+fraction+representations; and arctan is http://www4b.wolframalpha.com/input/?i=continued%20fraction%20arctan%28x%29&lk=2.
+:When the structure of the solution: a CF object; generators for aN and bN; and translation from the exact CF object to a real number, is established then we can tackle the Thiele task properly. Note that the cf representation for: arcsin is <http://www4b.wolframalpha.com/input/?i=continued%20fraction%20arcsin%28x%29&lk=2>; arccos is <http://www.wolframalpha.com/input/?i=arcos%28z%29+continued+fraction+representations>; and arctan is <http://www4b.wolframalpha.com/input/?i=continued%20fraction%20arctan%28x%29&lk=2>.
 
 
 ### Moebius function
@@ -35,7 +35,7 @@ One might be [[Thiele's interpolation formula]]. &mdash;[[User:Sonia|Sonia]] 21:
 
 I recently read an interesting paper about nested datasets and continued fractions.  One of the useful thing that can be done in this regard is to turn a continued fraction into a Moebius function:
 
-http://www.sigmod.org/sigmod/record/issues/0506/p47-article-tropashko.pdf
+<http://www.sigmod.org/sigmod/record/issues/0506/p47-article-tropashko.pdf>
 
 :<math>a_0 + \cfrac{b_1}{a_1 + \cfrac{b_2}{a_2 + \cfrac{b_3}{a_3 + x}}} = \frac{A_3+B_3x}{C_3+D_3x}</math>
 
@@ -46,7 +46,7 @@ As I think about it, I realize there is a recursive property:
 That should make things much easier than doing the whole algebraic development.
 --[[User:Grondilu|Grondilu]] 02:00, 16 October 2012 (UTC)
 :Thanks for the reference, using a continued fraction as a sort of index into a tree structure is interesting. Do you intend to implement it?--[[User:Nigel Galloway|Nigel Galloway]] 11:52, 23 October 2012 (UTC)
-::I tried with one of my projects [http://github.com/grondilu/libbitcoin-perl on github] but I encountered a few technical difficulties so I put it on hold.  I'll go back to it someday.--[[User:Grondilu|Grondilu]] 14:38, 4 November 2012 (UTC)
+::I tried with one of my projects [on github](http://github.com/grondilu/libbitcoin-perl) but I encountered a few technical difficulties so I put it on hold.  I'll go back to it someday.--[[User:Grondilu|Grondilu]] 14:38, 4 November 2012 (UTC)
 
 == creating a continued fraction ==
 
@@ -85,7 +85,7 @@ This was published in American Mathematical Monthly, December 2008 by Dr. Tom Pi
 == Arithmetics?? ==
 
 
-It's quite complicated, but it can be done.   See [http://perl.plover.com/yak/cftalk/ this talk] for instance.  A nice library which would hide all the gears behind it would be great.  I've never seen any.--[[User:Grondilu|Grondilu]] 00:05, 22 November 2012 (UTC)
+It's quite complicated, but it can be done.   See [this talk](http://perl.plover.com/yak/cftalk/) for instance.  A nice library which would hide all the gears behind it would be great.  I've never seen any.--[[User:Grondilu|Grondilu]] 00:05, 22 November 2012 (UTC)
 
 == Alternative Perl6 ==
 

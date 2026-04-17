@@ -513,7 +513,7 @@ T
 
 ## Coq
 
-Coq allows "[https://coq.inria.fr/refman/user-extensions/syntax-extensions.html syntax extensions]":
+Coq allows "[syntax extensions](https://coq.inria.fr/refman/user-extensions/syntax-extensions.html)":
 
 ```coq
 
@@ -1315,7 +1315,7 @@ particular task.
 
 ## Idris
 
-Idris provides the [http://docs.idris-lang.org/en/latest/tutorial/typesfuns.html#laziness Lazy] data type, which makes the computation of a parameter lazy.
+Idris provides the [Lazy](http://docs.idris-lang.org/en/latest/tutorial/typesfuns.html#laziness) data type, which makes the computation of a parameter lazy.
 
 
 ```idris
@@ -2753,7 +2753,7 @@ first true
 
 Macro programming is heavily discouraged in the Python community. One of the central tenets is that the Python syntax be immutable so that no matter what code is run, you have the assurance that the languages syntax stays the same.
 
-''However''; having said that, Python allows deep reflection and there are packages such as [https://github.com/lihaoyi/macropy MacroPy] that would allow this task to be accomplished.
+''However''; having said that, Python allows deep reflection and there are packages such as [MacroPy](https://github.com/lihaoyi/macropy) that would allow this task to be accomplished.
 
 =={{header|R}} ==
 It is not possible to extend the language by adding keywords or creating macros.  This kind of behaviour can be faked be creating functions that take expressions and evaluating them.  (The switch and ifelse functions are existing examples.)
@@ -3266,7 +3266,7 @@ res1: java.lang.String = Sanji
 
 ## Seed7
 
-Seed7 allows the definition of statement [http://seed7.sourceforge.net/manual/syntax.htm syntax] and semantic.
+Seed7 allows the definition of statement [syntax](http://seed7.sourceforge.net/manual/syntax.htm) and semantic.
 
 ```seed7
 $ include "seed7_05.s7i";

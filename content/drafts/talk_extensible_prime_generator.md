@@ -21,7 +21,7 @@ Rust and Seed7 disagree with the others regarding the 10.000th prime.--[[User:St
 
 :According to published tables, the 10,000th prime is 104,729 so the 'other' languages are correct here.--[[User:PureFox|PureFox]] ([[User talk:PureFox|talk]]) 22.35, 6 January 2019 (UTC)
 
-:: See the webpage   <u>[https://primes.utm.edu/lists/small/10000.txt primes.utm.edu/small/10000.txt]</u>     (at the very bottom).     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:55, 6 January 2019 (UTC)
+:: See the webpage   <u>[primes.utm.edu/small/10000.txt](https://primes.utm.edu/lists/small/10000.txt)</u>     (at the very bottom).     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:55, 6 January 2019 (UTC)
 
 ::: That just confirms that the correct value is 104,729.  The Rust code was wrong; the author forgot that enumerations are zero based in Rust, so one has to ask for item number 9,999 to get the 10,000th prime.  I've corrected Rust.
 ::: It appears that Seed had a slightly different logic error:  it iterated and discarded the primes until the 10,000th one, then printed the next one.  I've fixed that, too.--[[User:GordonBGood|GordonBGood]] ([[User talk:GordonBGood|talk]]) 23:25, 6 January 2019 (UTC)

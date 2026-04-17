@@ -30,7 +30,7 @@ languages = [
 ]
 +++
 
-Hopido puzzles are similar to [[Solve a Hidato puzzle | Hidato]]. The most important difference is that the only moves allowed are:  hop over one tile diagonally; and over two tiles horizontally and vertically. It should be possible to start anywhere in the path, the end point isn't indicated and there are no intermediate clues. [http://gamesandinnovation.com/2010/02/10/hopido-design-post-mortem/ Hopido Design Post Mortem] contains the following:
+Hopido puzzles are similar to [[Solve a Hidato puzzle | Hidato]]. The most important difference is that the only moves allowed are:  hop over one tile diagonally; and over two tiles horizontally and vertically. It should be possible to start anywhere in the path, the end point isn't indicated and there are no intermediate clues. [Hopido Design Post Mortem](http://gamesandinnovation.com/2010/02/10/hopido-design-post-mortem/) contains the following:
 
 "Big puzzles represented another problem. Up until quite late in the project our puzzle solver was painfully slow with most puzzles above 7×7 tiles. Testing the solution from each starting point could take hours. If the tile layout was changed even a little, the whole puzzle had to be tested again. We were just about to give up the biggest puzzles entirely when our programmer suddenly came up with a magical algorithm that cut the testing process down to only minutes. Hooray!"
 
@@ -1235,7 +1235,7 @@ fun main(args: Array<String>) {
 ```perl
 #!/usr/bin/perl
 
-use strict;             # http://www.rosettacode.org/wiki/Solve_a_Hopido_puzzle
+use strict;             # <http://www.rosettacode.org/wiki/Solve_a_Hopido_puzzle>
 use warnings;
 
 $_ = do { local $/; <DATA> };

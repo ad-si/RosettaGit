@@ -12,7 +12,7 @@ tags = []
 
 == Rules, References, How it works ==
 
-The wikipedia page doesn't exist - where else can the exact rules be seen? The task says "A move is made by adding one point to the end of a line of 4 and drawing a straight line through the 5 points." But the in the given example [http://www.morpionsolitaire.com/Grid5T177RosinA+.GIF RosinA] the move number 2 is the middle point of a diagonal line (not the end). So obviously diagonal lines are allowed, but what means then "drawing a straight line through the 5 points"? Also, the description says that "lines cannot overlap existing lines" which contradicts this --[[User:Abu|Abu]] 13:48, 7 June 2011 (UTC)
+The wikipedia page doesn't exist - where else can the exact rules be seen? The task says "A move is made by adding one point to the end of a line of 4 and drawing a straight line through the 5 points." But the in the given example [RosinA](http://www.morpionsolitaire.com/Grid5T177RosinA+.GIF) the move number 2 is the middle point of a diagonal line (not the end). So obviously diagonal lines are allowed, but what means then "drawing a straight line through the 5 points"? Also, the description says that "lines cannot overlap existing lines" which contradicts this --[[User:Abu|Abu]] 13:48, 7 June 2011 (UTC)
 :The WP page does exist, the link was just spelled wrong. The rules are pretty clear there. Looks like it takes practice to get it. --[[User:Mwn3d|Mwn3d]] 13:52, 7 June 2011 (UTC)
 :Ah. Yeah, it's fine to add a point anywhere that creates a line of 5. When it says lines cannot overlap, I think a better way of putting it might be that lines can't share more than one point. (They can cross at one point, but can't overlap pieces of the line itself.) [[User:MagiMaster|MagiMaster]] 21:15, 7 June 2011 (UTC)
 ::Presumably that means that we cannot have a line of more than five. [[User:Markhobley|Markhobley]] 21:05, 18 July 2011 (UTC)
@@ -50,7 +50,7 @@ XXX_XXX
 ```
 --whether the whole thing is considered as one oversized line, or only 5 or them would be considered used... Then again, the whole thing is pretty bogus in that it's NP-hard so no "proper" solution exists, it's not much fun to play, and it's not much fun to watch, so there.  --[[User:Ledrug|Ledrug]] 08:40, 19 July 2011 (UTC)
 
-: I found some rules: http://www.morpionsolitaire.com/English/Rules.htm :) [[User:Markhobley|Markhobley]] 11:02, 19 July 2011 (UTC)
+: I found some rules: <http://www.morpionsolitaire.com/English/Rules.htm> :) [[User:Markhobley|Markhobley]] 11:02, 19 July 2011 (UTC)
 :: Sorry for not posting this sooner, but the idea was to get the computer to play it, probably randomly, or by some simple heuristic. Dealing with all the intricacies of the rules is not an insignificant programming challenge. Trying to find the best solution is beyond this task. [[User:MagiMaster|MagiMaster]] 14:11, 20 July 2011 (UTC)
 
 ::It is not stated in the rules that I found, but I reckon that you must score at least one line of five for each turn of play. (In other words you cannot place marks just anywhere on the grid, you have make a line of five.) If you cannot make a move that creates a line of five, then the game is over. Additionally, marks can be crossed out from the direction that they make the line of 5 in, but can be used from other directions. So 5 in a row vertically, are crossed out vertically, but the marks can still be used to form horizontal or diagonal lines, which then also become crossed out. (I have been playing a version of this on paper for couple of days.) [[User:Markhobley|Markhobley]] 16:56, 20 July 2011 (UTC)
@@ -94,16 +94,16 @@ I looked into this a bit more and think that many of the solutions will be on th
 == Consolidated References ==
 
 * [[wp:Morpion Wikipedia]]
-* On August 12, 2011 Chris Rosin achieved [http://www.morpionsolitaire.com/English/RecordsGrids5T.htm 178 moves]. Unfortunately this graphic of the game requires the a bit more effort on the part of the reader to work out any ambiguities.
-* [http://www.chrisrosin.com/morpion/index.html previous 177 move record] also by Chris Rosin.  This graphic includes 'stops' that disambiguate lines when there are multiple choices in one direction, its also sans background grid.
-* [http://www.chrisrosin.com/rosin-ijcai11.pdf Rosin's paper on NPRA (Nested Rollout Policy Adaption for Monte Carlo search algorithm] this describes some heuristics as well as the search and other good references.  
-* [http://www.lamsade.dauphine.fr/~cazenave/ Tristan Cazenave's articles] Earlier search algorthims
-* [http://www.ipgp.fr/~sibilla/divers/pmorpion_solitaire01.html Jean-Jacques Sibilla's page and best reported random game of 102 moves (french)].
+* On August 12, 2011 Chris Rosin achieved [178 moves](http://www.morpionsolitaire.com/English/RecordsGrids5T.htm). Unfortunately this graphic of the game requires the a bit more effort on the part of the reader to work out any ambiguities.
+* [previous 177 move record](http://www.chrisrosin.com/morpion/index.html) also by Chris Rosin.  This graphic includes 'stops' that disambiguate lines when there are multiple choices in one direction, its also sans background grid.
+* [Rosin's paper on NPRA (Nested Rollout Policy Adaption for Monte Carlo search algorithm](http://www.chrisrosin.com/rosin-ijcai11.pdf) this describes some heuristics as well as the search and other good references.  
+* [Tristan Cazenave's articles](http://www.lamsade.dauphine.fr/~cazenave/) Earlier search algorthims
+* [Jean-Jacques Sibilla's page and best reported random game of 102 moves (french)](http://www.ipgp.fr/~sibilla/divers/pmorpion_solitaire01.html).
 * New Heuristics for Morpion Solitaire, 2007 by Hyyro and Poranen 
 * Morpion Solitare, 2006 by Demaine, Demaine, Langerman, and Langerman gives bounds of 170 <= 5T <= 704
 * Le Morpion Solitare, 2003 by Flammenkamp claims 5T <= 324
-* [http://paths.sheffield.ac.uk/wikiana/wiki/Morpion_solitaire Sheffield Paths Wiki] which has some good references
-* [http://koozdra.wordpress.com/2011/05/21/morpion-dna-encoding/ Koozdra blog] which discusses some approaches to heuristics
+* [Sheffield Paths Wiki](http://paths.sheffield.ac.uk/wikiana/wiki/Morpion_solitaire) which has some good references
+* [Koozdra blog](http://koozdra.wordpress.com/2011/05/21/morpion-dna-encoding/) which discusses some approaches to heuristics
 
 I'm still looking for references or discussion about human player strategies.  
 
@@ -111,7 +111,7 @@ consolidated references --[[User:Dgamey|Dgamey]] 13:48, 13 February 2012 (UTC)
 
 == Game Notation ==
 
-While working on this I realized it might be handy to be able to replay games and a game notation would be needed.  There is a defacto standard which is used for downloadable games found on the [http://www.morpionsolitaire.com/English/RecordsGrids5T.htm  Morpionsolitare.com records page]]. These games can be replayed on the [http://pentasol.systemutvecklarna.se/ Pentasol player].  
+While working on this I realized it might be handy to be able to replay games and a game notation would be needed.  There is a defacto standard which is used for downloadable games found on the [Morpionsolitare.com records page](http://www.morpionsolitaire.com/English/RecordsGrids5T.htm)]. These games can be replayed on the [Pentasol player](http://pentasol.systemutvecklarna.se/).  
 
 The advantage of using this system of output is that the Pentasol player will validate the game and provide an image of the result.
 

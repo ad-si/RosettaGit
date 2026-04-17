@@ -64,7 +64,7 @@ actionscript, ada, apache, applescript, asm, asp, autoit, bash, blitzbasic, bnf,
 == How to create GeSHi script file ==
 
 The help page says "Feel free to provide a GeSHi script file.". However, there is no information on:
-* Where to find information about the script file (with Googe, I found [http://qbnz.com/highlighter/ this page]).
+* Where to find information about the script file (with Googe, I found [this page](http://qbnz.com/highlighter/)).
 * Where to get a sample script file that could be used as base for creating script for a new language. I did not find one from the above link.
 * If I make a syntax file, where can I send it to be included in Rosetta Code?
 --[[User:PauliKL|PauliKL]] 09:00, 6 April 2009 (UTC)
@@ -74,5 +74,5 @@ The help page says "Feel free to provide a GeSHi script file.". However, there i
 :This page was pretty useless, so I redirected it to [[Help:Syntax Highlighting]], which has the things you request (or at least links to them). —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 21:45, 7 December 2009 (UTC)
 
 ==AutoHotkey==
-Created a geshi lexer for autohotkey: [http://github.com/tinku99/ahklexers.git/autohotkey.php autohotkey.php].  
+Created a geshi lexer for autohotkey: [autohotkey.php](http://github.com/tinku99/ahklexers.git/autohotkey.php).  
  Please add to rosettacode. Thanks, --[[User:Tinku99|Tinku99]] 16:49, 19 June 2009 (UTC)

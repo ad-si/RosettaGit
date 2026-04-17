@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Original blogpost==
-I had originally written a [http://paddy3118.blogspot.com/2016/02/mind-boggling-card-trick-in-python.html blog post] on the video and thought now would be a good time to see if it makes an RC task. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 12:48, 25 August 2018 (UTC)
+I had originally written a [blog post](http://paddy3118.blogspot.com/2016/02/mind-boggling-card-trick-in-python.html) on the video and thought now would be a good time to see if it makes an RC task. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 12:48, 25 August 2018 (UTC)
 
 : I think it's a humdinger of a Rosetta Code task;   I spent some time in thinking of which way to go:   treat the card deck as a    ''list'',   or treat it as an   ''array''.   In the end, I thought that (for REXX), a list would be more idiomatic and easier to code.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 06:52, 26 August 2018 (UTC)
 

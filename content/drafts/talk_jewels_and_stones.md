@@ -38,7 +38,7 @@ English (Roman or Latin)?    Greek?       α ß Γ π Σ σ µ τ Φ Θ Ω δ
 
 Counting   ''characters''   would be easier.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:35, 14 May 2018 (UTC)
 
-:Thanks Gerard; I googled and found [https://ell.stackexchange.com/questions/55389/what-is-the-difference-between-a-letter-and-a-character this] to help me with the nuances. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 21:28, 14 May 2018 (UTC)
+:Thanks Gerard; I googled and found [this](https://ell.stackexchange.com/questions/55389/what-is-the-difference-between-a-letter-and-a-character) to help me with the nuances. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 21:28, 14 May 2018 (UTC)
 
 :: Yes, now all we have to do is mention that a Latin/Roman/English alphabet is to be assumed (used) for this Rosetta Code task.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:37, 14 May 2018 (UTC)
 

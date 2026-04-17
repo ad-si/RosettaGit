@@ -752,7 +752,7 @@ Completed.
 
 ## Haskell
 
-This can be achieved by using the <code>setFileSize</code> function in [http://hackage.haskell.org/packages/archive/unix-compat/0.1.2.1/doc/html/System-PosixCompat-Files.html#13 System.PosixCompat.Files]:
+This can be achieved by using the <code>setFileSize</code> function in [System.PosixCompat.Files](http://hackage.haskell.org/packages/archive/unix-compat/0.1.2.1/doc/html/System-PosixCompat-Files.html#13):
 
 
 ```Haskell
@@ -1069,7 +1069,7 @@ discard truncate("filename", 1024)
 ## OCaml
 
 
-The <code>Unix</code> module provided with the standard distribution provides a function <code>[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALtruncate truncate]</code>:
+The <code>Unix</code> module provided with the standard distribution provides a function <code>[truncate](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALtruncate)</code>:
 
 
 ```ocaml
@@ -1078,7 +1078,7 @@ val truncate : string -> int -> unit
 ```
 
 
-There is also a function <code>[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALftruncate ftruncate]</code> that does the equivalent operation but with a file descriptor instead of a file name:
+There is also a function <code>[ftruncate](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALftruncate)</code> that does the equivalent operation but with a file descriptor instead of a file name:
 
 
 ```ocaml
@@ -1301,7 +1301,7 @@ END SUB
 
 ## PureBasic
 
-PureBasic has the internal function [http://www.purebasic.com/documentation/file/truncatefile.html TruncateFile] that cuts the file at the current file position and discards all data that follows.
+PureBasic has the internal function [TruncateFile](http://www.purebasic.com/documentation/file/truncatefile.html) that cuts the file at the current file position and discards all data that follows.
 
 ```PureBasic
 Procedure SetFileSize(File$, length.q)
@@ -1567,7 +1567,7 @@ ls myfile >/dev/null &&
 
 
 ----
-Some systems have a truncate(1) command ([http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html FreeBSD truncate(1)], [http://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation GNU truncate(1)]).
+Some systems have a truncate(1) command ([FreeBSD truncate(1)](http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html), [GNU truncate(1)](http://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation)).
 
 
 ```bash
@@ -1672,7 +1672,7 @@ _EOF_
 ```
 
 
-NOTE[4]: Designed for regular text files.  Does not work when files contain: chars 0x00 and 0xFF as of bash 4.2 - these chars are treated differently in read -N.  For this reason use of method#4 is not prefer over dd(1) or truncate(1) when using binary files, or large files. [4b] http://unix.stackexchange.com/questions/8618/script-that-keep-reading-a-stream,[4a] https://groups.google.com/forum/#!topic/gnu.bash.bug/a2rjQHpQYSU
+NOTE[4]: Designed for regular text files.  Does not work when files contain: chars 0x00 and 0xFF as of bash 4.2 - these chars are treated differently in read -N.  For this reason use of method#4 is not prefer over dd(1) or truncate(1) when using binary files, or large files. [4b] <http://unix.stackexchange.com/questions/8618/script-that-keep-reading-a-stream>,[4a] <https://groups.google.com/forum/#!topic/gnu.bash.bug/a2rjQHpQYSU>
 
 
 ## VBScript

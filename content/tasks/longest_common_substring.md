@@ -51,7 +51,7 @@ Write a function that returns the longest common substring of two strings. Use i
 
 ## References
 
-*[http://en.wikipedia.org/wiki/Generalized_suffix_tree Generalize Suffix Tree]
+*[Generalize Suffix Tree](http://en.wikipedia.org/wiki/Generalized_suffix_tree)
 *[[Ukkonen’s Suffix Tree Construction]]
 
 
@@ -1584,7 +1584,7 @@ p longest_common_substring("thisisatest", "testing123testing")
 ### Dynamic Programming
 
 ====Functional Prog, (tail) recursive====
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/pJTYkcr/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/bRp8rmyjQvyoB99mhrXOcw Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/pJTYkcr/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/bRp8rmyjQvyoB99mhrXOcw).
 
 ```Scala
 import scala.annotation.tailrec

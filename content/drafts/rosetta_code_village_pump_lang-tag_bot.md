@@ -18,12 +18,12 @@ tags = []
 
 I've just perfected [[Rosetta Code:Village Pump/Lang-tag bot/Source|UnderBot]], a program to add lang tags where they're missing and fix them where they're present. By fixing lang tags, I mean changing them to use the right identifier (e.g., "cfm" rather than "coldfusion") and getting rid of excessive whitespace. UnderBot isn't perfect, since it has to guess a great deal, but I've polished it to the point that I think unleashing it upon Rosetta Code would fix a lot more than it would break. Here are UnderBot's last six edits:
 
-* [http://rosettacode.org/mw/index.php?title=User_Output_-_text&curid=1514&diff=67713&oldid=65938 User Output - text]
-* [http://rosettacode.org/mw/index.php?title=True/False_Values&curid=4490&diff=67714&oldid=66923 True/False Values]
-* [http://rosettacode.org/mw/index.php?title=Collections&curid=1635&diff=67716&oldid=67530 Collections]
-* [http://rosettacode.org/mw/index.php?title=24_game_Player&curid=4940&diff=67723&oldid=67707 24 game Player]
-* [http://rosettacode.org/mw/index.php?title=Abstract_type&curid=3131&diff=67724&oldid=67282 Abstract type]
-* [http://rosettacode.org/mw/index.php?title=Ackermann_Function&curid=3050&diff=67725&oldid=66691 Ackermann Function]
+* [User Output - text](http://rosettacode.org/mw/index.php?title=User_Output_-_text&curid=1514&diff=67713&oldid=65938)
+* [True/False Values](http://rosettacode.org/mw/index.php?title=True/False_Values&curid=4490&diff=67714&oldid=66923)
+* [Collections](http://rosettacode.org/mw/index.php?title=Collections&curid=1635&diff=67716&oldid=67530)
+* [24 game Player](http://rosettacode.org/mw/index.php?title=24_game_Player&curid=4940&diff=67723&oldid=67707)
+* [Abstract type](http://rosettacode.org/mw/index.php?title=Abstract_type&curid=3131&diff=67724&oldid=67282)
+* [Ackermann Function](http://rosettacode.org/mw/index.php?title=Ackermann_Function&curid=3050&diff=67725&oldid=66691)
 
 (Full disclosure: I did manually change a few characters in one of these edits. But it was one of those special cases that's so rare it's not worth implementing.)
 

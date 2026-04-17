@@ -14,7 +14,7 @@ tags = []
 
 I totally agree. The current description makes comparing language solutions often pointless or misleading. The encoded output should be as described in the given example in the challenge.[[User:Martinfreedman|Martinfreedman]] ([[User talk:Martinfreedman|talk]]) 
 
-I would prefer this task to use a run length encoding which will work at least on all ASCII characters. The current encoding can't represent [0-9]. A more flexible encoding is implemented [http://wiki.forthfreak.net/index.cgi?RunLengthEncoding here]. --[[User:IanOsgood|IanOsgood]] 19:27, 24 April 2009 (UTC)
+I would prefer this task to use a run length encoding which will work at least on all ASCII characters. The current encoding can't represent [0-9]. A more flexible encoding is implemented [here](http://wiki.forthfreak.net/index.cgi?RunLengthEncoding). --[[User:IanOsgood|IanOsgood]] 19:27, 24 April 2009 (UTC)
 * Run code has high bit set, remaining 7 bits are run length-1.
 * Bytes in stream with high bit set are always encoded as a run, perhaps with a length of only one.
 
@@ -51,7 +51,7 @@ Subsequently, a third requirement, that the decode output, given input from the 
 My concern is that some languages here show decode support, while other's don't, and I'd like to see a symmetric decode implementation per-language shown in this task. --[[User:Short Circuit|Michael Mol]] 00:55, 18 January 2010 (UTC)
 
 : Would the creation of a new task for decode stop an example entry of "See encode" if the encode page already has all three, encode, decode and comparison? 
-: If the code is small enough, it might be better to keep it all together as in: [[http://rosettacode.org/wiki/Run-length_encoding#Python| Python (By regular expression)]]. --[[User:Paddy3118|Paddy3118]] 05:54, 18 January 2010 (UTC)
+: If the code is small enough, it might be better to keep it all together as in: [Python (By regular expression)](http://rosettacode.org/wiki/Run-length_encoding#Python|). --[[User:Paddy3118|Paddy3118]] 05:54, 18 January 2010 (UTC)
 
 :: From a consistency standpoint, probably not. I understand your reservations, though. I don't have a good answer for it. --[[User:Short Circuit|Michael Mol]] 15:06, 18 January 2010 (UTC)
 
@@ -60,7 +60,7 @@ My concern is that some languages here show decode support, while other's don't,
 --[[User:Zorro1024|Zorro1024]] ([[User talk:Zorro1024|talk]]) 10:55, 12 July 2015 (UTC)I added a thin wrapper around a built-in function in Ruby, is showing a built-in on-topic?
 
 :Hi Zorro I'd just like to begin by mentioning that the convention is to add ones signature to the ''end'' of your contribution at that time.
-:Chunk seemed quite like the Python groupby example, but on reading the docs on [http://ruby-doc.org/core-2.2.2/Enumerable.html Ruby chunk], it seems to be marked as deprecated? If it is deprecated you might not want to show an example using it as it could no-longer be thought of as idiomatic Ruby?
+:Chunk seemed quite like the Python groupby example, but on reading the docs on [Ruby chunk](http://ruby-doc.org/core-2.2.2/Enumerable.html), it seems to be marked as deprecated? If it is deprecated you might not want to show an example using it as it could no-longer be thought of as idiomatic Ruby?
 :(Signature at end): --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 12:42, 12 July 2015 (UTC)
 
 

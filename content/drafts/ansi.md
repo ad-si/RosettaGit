@@ -15,5 +15,5 @@ tags = []
 
 ### See Also:
 
-*[http://www.ansi.org/ ANSI official website]
+*[ANSI official website](http://www.ansi.org/)
 *[[wp:American National Standards Institute|ANSI on Wikipedia]]

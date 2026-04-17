@@ -286,7 +286,7 @@ December 25 is a Sunday in:
 
 ## Action!
 
-Action! does not have a standard library providing a day of week function, therefore an adaptation of [https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Sakamoto.27s_methods Sakamoto's method] to determine the day of week for a given date using integer arithmetic is used.
+Action! does not have a standard library providing a day of week function, therefore an adaptation of [Sakamoto's method](https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Sakamoto.27s_methods) to determine the day of week for a given date using integer arithmetic is used.
 
 ```Action!
 Byte FUNC DayOfWeek(BYTE day, month CARD year BYTE century)
@@ -1010,7 +1010,7 @@ Dec 25, 2118 is a Sunday.
 
 ## bc
 
-Because ''bc'' has no date library, this program uses [http://mathforum.org/library/drmath/view/62324.html ''Zeller's rule''], also known as [http://www.merlyn.demon.co.uk/zel-like.htm ''Zeller's congruence''], to calculate day of week.
+Because ''bc'' has no date library, this program uses [''Zeller's rule''](http://mathforum.org/library/drmath/view/62324.html), also known as [''Zeller's congruence''](http://www.merlyn.demon.co.uk/zel-like.htm), to calculate day of week.
 
 
 ```bc
@@ -1131,7 +1131,7 @@ Dec 25, 2118
 
 ## C
 
-Because of problems with various C libraries (such as ''time_t'' overflowing during 2038, or strptime() or mktime() not filling in ''tm_wday''), this program uses [http://mathforum.org/library/drmath/view/62324.html Zeller's Rule] to calculate day of week.
+Because of problems with various C libraries (such as ''time_t'' overflowing during 2038, or strptime() or mktime() not filling in ''tm_wday''), this program uses [Zeller's Rule](http://mathforum.org/library/drmath/view/62324.html) to calculate day of week.
 
 
 ```c
@@ -1955,9 +1955,9 @@ PAUSE
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Day_of_the_week this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Day_of_the_week) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2083,7 +2083,7 @@ END PROGRAM YULETIDE
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=b9b4e9a871e96ea6f1db467fa23669fe Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=b9b4e9a871e96ea6f1db467fa23669fe)'''
 
 ```gambas
 Public Sub Main()
@@ -2372,7 +2372,7 @@ end
 
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime provides dayoweek]
+[datetime provides dayoweek](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
 
 
 ```Icon
@@ -2949,7 +2949,7 @@ bye
 
 ## Lua
 
-'''Library:''' [http://luaforge.net/projects/date/ LuaDate]
+'''Library:''' [LuaDate](http://luaforge.net/projects/date/)
 
 
 ```Lua
@@ -4389,7 +4389,7 @@ from calendar import weekday, SUNDAY
 ```
 
 
-The function <code>calendar.weekday</code> accepts all dates between 1/1/1 and 9999/12/31, and uses the [https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar proleptic Gregorian calendar] before adoption of the [https://en.wikipedia.org/wiki/Gregorian_calendar Gregorian calendar] in 1582. There is no gap between 1582/10/4 and 1582/10/15, as can be seen with <code>print(calendar.calendar(1582))</code>.
+The function <code>calendar.weekday</code> accepts all dates between 1/1/1 and 9999/12/31, and uses the [proleptic Gregorian calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar) before adoption of the [Gregorian calendar](https://en.wikipedia.org/wiki/Gregorian_calendar) in 1582. There is no gap between 1582/10/4 and 1582/10/15, as can be seen with <code>print(calendar.calendar(1582))</code>.
 
 
 Or, in terms of datetime:
@@ -4861,7 +4861,7 @@ Or using the Time class
 ```
 
 
-(Note: The Time class could not handle dates beyond 2038 prior to Ruby 1.9.2.[https://www.ruby-lang.org/en/news/2010/08/18/ruby-1-9.2-released/])
+(Note: The Time class could not handle dates beyond 2038 prior to Ruby 1.9.2.<https://www.ruby-lang.org/en/news/2010/08/18/ruby-1-9.2-released/>)
 
 
 ## Run BASIC
@@ -5137,8 +5137,8 @@ Years between 2008 and 2121 including when Christmas is observed on Sunday:
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/time.htm time.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/time.htm#dayOfWeek%28in_time%29 dayOfWeek],
+The library [time.s7i](http://seed7.sourceforge.net/libraries/time.htm) defines
+the function [dayOfWeek](http://seed7.sourceforge.net/libraries/time.htm#dayOfWeek%28in_time%29),
 which returns 1 for monday, 2 for tuesday, and so on up to 7 for sunday.
 
 ```seed7

@@ -16,7 +16,7 @@ tags = []
 }}
 
 I was wondering if RC is strictly about '''programming''' languages or whether specification languages could be interesting, too?
-More specifically, I'm thinking of specification languages that allow to "solve" their models, i.e. create example instantiations automatically. Those languages are relatively well-suited to implement logic puzzles like [[Zebra puzzle]]. Some of these languages have pretty interesting semantics and syntax, for example [https://en.wikipedia.org/wiki/Alloy_(specification_language) Alloy].
+More specifically, I'm thinking of specification languages that allow to "solve" their models, i.e. create example instantiations automatically. Those languages are relatively well-suited to implement logic puzzles like [[Zebra puzzle]]. Some of these languages have pretty interesting semantics and syntax, for example [Alloy](https://en.wikipedia.org/wiki/Alloy_(specification_language)).
 
 So, is it programming languages only, or do we tolerate languages that are only "somewhat executable"? - [[User:Wmeyer|Wmeyer]] ([[User talk:Wmeyer|talk]]) 14:51, 1 August 2013 (UTC)
 

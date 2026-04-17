@@ -50,8 +50,8 @@ re [[Rosetta_Code:Village_Pump/Task_page_subsections]]
 {{Special:MultiCategorySearch/include=Maintenance}}
 
 === Semantic MediaWiki (SMW) ===
-* http://semantic-mediawiki.org/wiki/Help:Inline_queries
-* http://semantic-mediawiki.org/wiki/Help:Result_formats
+* <http://semantic-mediawiki.org/wiki/Help:Inline_queries>
+* <http://semantic-mediawiki.org/wiki/Help:Result_formats>
 
 {{#ask: [[Category:Maintenance]]
 | intro=These pages need the maintenance!!! (This shows all the pages in [[:Category:Maintenance]] or its subcategories.)

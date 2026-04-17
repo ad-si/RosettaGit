@@ -47,7 +47,7 @@ Should I keep the really bloated Python version as a reminder of the progress be
 
 == Mass number and atomic weight ==
 
-There seems to be some confusion here. The mass number is the total number of nucleons in a nucleus. The standard atomic weight is the average observed weight, and this depends on the relative proportion of isotopes. The integer masses given in the task are actually the mass numbers of the most stable isotopes (they are all radioactive). See the [https://www.nist.gov/pml/periodic-table-elements NIST periodic table of the elements] for instance.
+There seems to be some confusion here. The mass number is the total number of nucleons in a nucleus. The standard atomic weight is the average observed weight, and this depends on the relative proportion of isotopes. The integer masses given in the task are actually the mass numbers of the most stable isotopes (they are all radioactive). See the [NIST periodic table of the elements](https://www.nist.gov/pml/periodic-table-elements) for instance.
 
 An interesting extension to the task could be to allow isotopes in the chemical formula.
 

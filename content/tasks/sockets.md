@@ -130,7 +130,7 @@ i.text("hello socket world");
 ## AutoHotkey
 
 modified from
-[http://www.autohotkey.com/forum/topic13829.html script] by zed gecko.
+[script](http://www.autohotkey.com/forum/topic13829.html) by zed gecko.
 
 ```autohotkey
 Network_Port = 256
@@ -1408,8 +1408,8 @@ object sendSocketData {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/socket.htm socket.s7i]
-defines the function [http://seed7.sourceforge.net/libraries/socket.htm#openInetSocket%28in_integer%29 openInetSocket],
+The library [socket.s7i](http://seed7.sourceforge.net/libraries/socket.htm)
+defines the function [openInetSocket](http://seed7.sourceforge.net/libraries/socket.htm#openInetSocket%28in_integer%29),
 which returns a connected internet socket file at a port at localhost.
 
 
@@ -1468,7 +1468,7 @@ This uses fairly verbose and low level messages. This will probably be simplifie
 
 ## Smalltalk
 
-This is taken from [http://sblinn.jottit.com/GNU_Smalltalk_SimpleEcho_TCP_Server here] with few modification to fit the task better.
+This is taken from [here](http://sblinn.jottit.com/GNU_Smalltalk_SimpleEcho_TCP_Server) with few modification to fit the task better.
 
 
 ```smalltalk

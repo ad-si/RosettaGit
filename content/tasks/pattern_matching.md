@@ -325,9 +325,9 @@ int main(int argc, char* argv[]) {
 
 ## Clojure
 
-Pattern matching library: [https://github.com/clojure/core.match core.match].
+Pattern matching library: [core.match](https://github.com/clojure/core.match).
 
-For code and a thorough write-up on the red-black tree implementation that uses core.match, please read: [https://github.com/clojure-cookbook/clojure-cookbook/blob/master/02_composite-data/2-27_and_2-28_custom-data-structures/2-27_red-black-trees-part-i.asciidoc Clojure Cookbook - Data Structures: Red-Black Trees].
+For code and a thorough write-up on the red-black tree implementation that uses core.match, please read: [Clojure Cookbook - Data Structures: Red-Black Trees](https://github.com/clojure-cookbook/clojure-cookbook/blob/master/02_composite-data/2-27_and_2-28_custom-data-structures/2-27_red-black-trees-part-i.asciidoc).
 
 
 ## Common Lisp
@@ -335,7 +335,7 @@ For code and a thorough write-up on the red-black tree implementation that uses 
 
 Common Lisp doesn't come with any pattern-matching solutions on its own, but with the help of its macro facility, it can incorporate features from other languages such as pattern matching. Macros expand into efficient code during compilation time and there isn't much difference if it's included in the core language or not. As has been said, Lisp is a ball of mud and remains one no matter what one throws at it.
 
-This is a straighforward translation of the TCL solution. I don't know red-black-trees myself but I tried mirroring the original program as closely as possible. It uses a pattern-matching library called [http://www.takeda.tk/~sthalik/stuff/toadstool-current.tar toadstool].
+This is a straighforward translation of the TCL solution. I don't know red-black-trees myself but I tried mirroring the original program as closely as possible. It uses a pattern-matching library called [toadstool](http://www.takeda.tk/~sthalik/stuff/toadstool-current.tar).
 
 ```lisp
 (mapc #'use-package '(#:toadstool #:toadstool-system))
@@ -653,7 +653,7 @@ Output:
 ## Erlang
 
 
-The code used here is extracted from [https://gist.github.com/mjn/2648040 Mark Northcott's GitHubGist]. 
+The code used here is extracted from [Mark Northcott's GitHubGist](https://gist.github.com/mjn/2648040). 
 
 ```erlang
 
@@ -903,7 +903,7 @@ insert x s = T B a y b where
 ## J
 
 
-J incorporates a symbol data type which, in versions 6.02 and 7.01, J implements directly as a red-black tree. The [http://www.jsoftware.com/docs/help701/dictionary/dsco.htm s: entry in the J dictionary] begins
+J incorporates a symbol data type which, in versions 6.02 and 7.01, J implements directly as a red-black tree. The [s: entry in the J dictionary](http://www.jsoftware.com/docs/help701/dictionary/dsco.htm) begins
 ''Symbols are a data type and are created by the verb s:. Symbols provide a mechanism for searching, sorting, and comparisons more efficient than alternative mechanisms such as boxed strings. Structural, selection, and relational verbs work on symbols. Arithmetic verbs do not work on symbols.''
 
 The following code provides dictionary functionality using a red-black tree written in J without symbols.
@@ -1781,7 +1781,7 @@ Rascal offers many options for pattern matching. In essence, there are four sort
 ### Abstract
 
 
-An abstract pattern is recursively defined and may contain, among others, the following elements: Literal, VariableDeclaration, MultiVariable, Variable, List, Set, Tuple, Node, Descendant, Labelled, TypedLabelled, TypeConstrained. More explanation can be found in the [http://http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Patterns/Abstract/Abstract.html Documentation]. Some examples:
+An abstract pattern is recursively defined and may contain, among others, the following elements: Literal, VariableDeclaration, MultiVariable, Variable, List, Set, Tuple, Node, Descendant, Labelled, TypedLabelled, TypeConstrained. More explanation can be found in the [Documentation](http://http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Patterns/Abstract/Abstract.html). Some examples:
 
 ```rascal
 
@@ -1873,7 +1873,7 @@ A concrete pattern is a quoted concrete syntax fragment that may contain variabl
 ```
 
 
-A full example of concrete patterns can be found in the [http://tutor.rascal-mpl.org/Courses/Recipes/Languages/Exp/Concrete/WithLayout/WithLayout.html Rascal Recipes].
+A full example of concrete patterns can be found in the [Rascal Recipes](http://tutor.rascal-mpl.org/Courses/Recipes/Languages/Exp/Concrete/WithLayout/WithLayout.html).
 
 
 ### PatternWithAction
@@ -1946,7 +1946,7 @@ bool: true
 ## REXX
 
 The nodes used for this example are taken from the Wikipedia example at:   
-[[https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#/media/File:Red-black_tree_example.svg red black tree, an example]]
+[red black tree, an example](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree#/media/File:Red-black_tree_example.svg)
 
 ```rexx
 /*REXX pgm builds a red/black tree (with verification & validation), balances as needed.*/

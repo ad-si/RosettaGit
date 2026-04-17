@@ -96,7 +96,7 @@ Clear the terminal window.
 ## 6502 Assembly
 
 This example has been written for the C64 and uses the CHROUT KERNEL routine.
-Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
+Compile with the [Turbo Macro Pro cross assembler](http://turbo.style64.org/):
 
 ```txt
 
@@ -270,7 +270,7 @@ affichageMess:
 
 ## AutoHotkey
 
-Reference: http://www.autohotkey.com/forum/topic76532.html
+Reference: <http://www.autohotkey.com/forum/topic76532.html>
 
 ```AHK
 RunWait %comspec% /c cls
@@ -643,7 +643,7 @@ end program
 
 ###  Intel Fortran on Windows
 
-Using console functions, one can also clear the screen without using a system command. See also ''[https://msdn.microsoft.com/en-us/library/ms682022.aspx Clearing the Screen]'' on MSDN.
+Using console functions, one can also clear the screen without using a system command. See also ''[Clearing the Screen](https://msdn.microsoft.com/en-us/library/ms682022.aspx)'' on MSDN.
 
 
 ```fortran
@@ -1168,7 +1168,7 @@ discard execCmd "clear"
 ## OCaml
 
 
-Using the library [http://forge.ocamlcore.org/projects/ansiterminal/ ANSITerminal]:
+Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/):
 
 
 ```ocaml
@@ -1488,8 +1488,8 @@ print!("{}[2J", 27 as char);
 
 ## Seed7
 
-The function [http://seed7.sourceforge.net/libraries/console.htm#clear(in_console_file) clear] is portable and
-clears the [http://seed7.sourceforge.net/libraries/console.htm console window].
+The function [clear](http://seed7.sourceforge.net/libraries/console.htm#clear(in_console_file)) is portable and
+clears the [console window](http://seed7.sourceforge.net/libraries/console.htm).
 ''Clear'' is based on terminfo respectively the Windows console API.
 A portable function to clear cannot rely on shell respectively cmd.exe commands,
 because Windows uses ''CLS'' and Unix shells use ''CLEAR'', to clear a screen.
@@ -1585,7 +1585,7 @@ ACLS>
 ## Stata
 
 
-The '''[https://www.stata.com/help.cgi?cls cls]''' command clears the Results window, which is the closest to a ''terminal'' in Stata.
+The '''[cls](https://www.stata.com/help.cgi?cls)''' command clears the Results window, which is the closest to a ''terminal'' in Stata.
 
 
 ## Tcl

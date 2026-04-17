@@ -198,7 +198,7 @@ You can use numbers or names to identify vertices in your program.
 
 ## See also
 
-* [https://www.youtube.com/watch?v=cSxnOm5aceA Dijkstra's Algorithm vs. A* Search vs. Concurrent Dijkstra's Algorithm (youtube)]
+* [Dijkstra's Algorithm vs. A* Search vs. Concurrent Dijkstra's Algorithm (youtube)](https://www.youtube.com/watch?v=cSxnOm5aceA)
 
 
 
@@ -962,7 +962,7 @@ output
 
 ## C++
 
-(Modified from [http://en.literateprograms.org/Dijkstra%27s_algorithm_%28C_Plus_Plus%29 LiteratePrograms], which is MIT/X11 licensed.)
+(Modified from [LiteratePrograms](http://en.literateprograms.org/Dijkstra%27s_algorithm_%28C_Plus_Plus%29), which is MIT/X11 licensed.)
 
 Solution follows Dijkstra's algorithm as described elsewhere. Data like min-distance, previous node, neighbors, are kept in separate data structures instead of part of the vertex. We number the vertexes starting from 0, and represent the graph using an adjacency list (vector whose i'th element is the vector of neighbors that vertex i has edges to) for simplicity.
 
@@ -4090,7 +4090,7 @@ true.
 
 Starts from the [[wp:Dijkstra's_algorithm#Pseudocode]] recognising that their function <code>dist_between</code> is what this task calls ''cost''; and that their action <code>decrease-key v in Q</code> at their line 24 should be omitted if their Q is a set as stated in their line 9. The wp back-tracking pseudocode also misses a final insert of u at the beginning of S that must occur ''after'' exiting their while loop.
 
-Note: q could be changed to be a priority queue instead of a set as mentioned [http://docs.python.org/3.3/library/heapq.html#priority-queue-implementation-notes here].
+Note: q could be changed to be a priority queue instead of a set as mentioned [here](http://docs.python.org/3.3/library/heapq.html#priority-queue-implementation-notes).
 
 ```python
 from collections import namedtuple, deque

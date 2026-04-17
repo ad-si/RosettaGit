@@ -12,4 +12,4 @@ tags = []
 
 A simple graphical library for D language:
 
-https://github.com/adamdruppe/misc-stuff-including-D-programming-language-web-stuff
+<https://github.com/adamdruppe/misc-stuff-including-D-programming-language-web-stuff>

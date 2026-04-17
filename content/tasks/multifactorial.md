@@ -79,7 +79,7 @@ languages = [
 
 The factorial of a number, written as <math>n!</math>, is defined as <math>n! = n(n-1)(n-2)...(2)(1)</math>.
 
-[http://mathworld.wolfram.com/Multifactorial.html Multifactorials] generalize factorials as follows:
+[Multifactorials](http://mathworld.wolfram.com/Multifactorial.html) generalize factorials as follows:
 : <math>n! = n(n-1)(n-2)...(2)(1)</math>
 : <math>n!! = n(n-2)(n-4)...</math>
 : <math>n!! ! = n(n-3)(n-6)...</math>
@@ -93,7 +93,7 @@ If we define the degree of the multifactorial as the difference in successive te
 # Use the function to generate and display here a table of the first ten members (1 to 10) of the first five degrees of multifactorial.
 
 
-'''Note:''' The [[wp:Factorial#Multifactorials|wikipedia entry on multifactorials]] gives a different formula. This task uses the [http://mathworld.wolfram.com/Multifactorial.html Wolfram mathworld definition].
+'''Note:''' The [[wp:Factorial#Multifactorials|wikipedia entry on multifactorials]] gives a different formula. This task uses the [Wolfram mathworld definition](http://mathworld.wolfram.com/Multifactorial.html).
 
 
 

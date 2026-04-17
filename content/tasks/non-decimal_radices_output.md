@@ -257,7 +257,7 @@ end.
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276235.html#276235 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276235.html#276235)
 
 ```AutoHotkey
 MsgBox % BC("FF",16,3) ; -> 100110 in base 3 = FF in hex = 256 in base 10
@@ -983,7 +983,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf, fprintf, and sprintf]
+[printf.icn provides printf, fprintf, and sprintf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 Output:
 ```txt
 %d = 255
@@ -1686,7 +1686,7 @@ Next
 
 ## Python
 
-Binary (b), Octal (o), Decimal (d), and Hexadecimal (X and x) are supported by the [http://www.python.org/dev/peps/pep-3101/ format]method of a string
+Binary (b), Octal (o), Decimal (d), and Hexadecimal (X and x) are supported by the [format](http://www.python.org/dev/peps/pep-3101/)method of a string
 <div style="height:30ex;overflow:scroll">
 ```python
 >>>
@@ -2101,13 +2101,13 @@ object Main extends App {
 
 ## Seed7
 
-The [http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29 radix]
+The [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29)
 operator converts an integer number to a string. The conversion uses the numeral system with
 the given base. The base can be any integer value between 2 and 36. Digits greater than 9
 are represented with lower case characers (10 is represented with a, etc.). The operator
-[http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29RADIX%28in_integer%29 RADIX] works
+[RADIX](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29RADIX%28in_integer%29) works
 just like ''radix'', but uses upper case characters for digits greater than 9 (10 is represented with A, etc.).
-The [http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29lpad%28in_integer%29 lpad] operator
+The [lpad](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29lpad%28in_integer%29) operator
 is used to pad the result of the ''radix'' operator at the left side. The padding is done with spaces.
 
 ```seed7

@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}{{library}}A Functional Constraint Library for OCaml.
 
-Site: http://www.recherche.enac.fr/opti/facile/
+Site: <http://www.recherche.enac.fr/opti/facile/>

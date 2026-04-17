@@ -15,7 +15,7 @@ NewtonScript is a [Self](https://rosettacode.org/wiki/Self)-influenced prototype
 The language [Io](https://rosettacode.org/wiki/Io) is partly influenced by NewtonScript's design, using a similar prototyping model as well as NewtonScript's differential inheritance.
 
 ## External links
-* [http://www.newted.org/download/manuals/NewtonScriptProgramLanguage.pdf Language Guide]
-* [http://www.newted.org/download/manuals/NewtonProgrammerRef20.pdf Language Reference]
-* [http://communicrossings.com/html/newton/newtdev.htm IDE for Newton devices]
-* [http://gnue.github.io/NEWT0/ Multiplatform interpreter]
+* [Language Guide](http://www.newted.org/download/manuals/NewtonScriptProgramLanguage.pdf)
+* [Language Reference](http://www.newted.org/download/manuals/NewtonProgrammerRef20.pdf)
+* [IDE for Newton devices](http://communicrossings.com/html/newton/newtdev.htm)
+* [Multiplatform interpreter](http://gnue.github.io/NEWT0/)

@@ -1701,7 +1701,7 @@ under=87.20%, over=12.80%
 ## Scala
 
 ===Imperative version (Ugly, side effects)===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/69o8tJX/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/jpUyNPetRXabZkEKc68FAA Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/69o8tJX/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/jpUyNPetRXabZkEKc68FAA).
 
 ```Scala
 object PermutationTest extends App {

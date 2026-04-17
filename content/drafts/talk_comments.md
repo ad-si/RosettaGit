@@ -45,7 +45,7 @@ The assertion was made that
  #endif	
 would cause a compile error due to an unmatched apostrophe in a character literal. This is false. The preprocessor removes this text from the source before the compiler has a chance to parse it. --[[User:IanOsgood|IanOsgood]] 18:59, 29 September 2007 (MDT)
 
-: Did you actually ''read'' the text you removed? The ''Compiler'' does not see the unterminated character constant, but the '''Preprocessor''' does. See e.g. http://c-faq.com/ansi/ifdefsyntax.html
+: Did you actually ''read'' the text you removed? The ''Compiler'' does not see the unterminated character constant, but the '''Preprocessor''' does. See e.g. <http://c-faq.com/ansi/ifdefsyntax.html>
 : Unfortunately I don't have the C standard, so I cannot quote directly from there, but I double-checked with C++ that both CD2 (latest public draft of the 1998 version) and n2009 (a draft for the next section) contain wording identically in both (i.e. with exrtemely high probability also in the real standard) that this is true in C++ as well. More exactly, character literals are preprocessing tokens, and translation to preprocessing tokens happens in translation phase 3, while processing of preprocessing directives (this includes #ifdef) doesn't happen until translation phase 4. --[[User:Ce|Ce]] 05:17, 30 September 2007 (MDT)
 
 ::Egads! The reason I disbelieved you is that I have never used a C compiler which actually obeyed this part of the standard. The snippet compiles fine in gcc 3.4 and 4.0.1. I even tried with '''-std=c99 -pedantic-errors''' options for all supported standards. I also tried with just the preprocessor '''cpp''' in isolation.

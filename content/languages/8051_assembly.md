@@ -30,6 +30,6 @@ Original 8051 features:
 Derivatives exist that alter many or all features listed above.
 
 ## Useful links
-* [http://www.keil.com/dd/docs/datashts/intel/ism51.pdf Instruction set]
-* [http://www.8052.com/tutintro.phtml Basic tutorial]
-* [http://plit.de/asem-51/ Freeware assembler]
+* [Instruction set](http://www.keil.com/dd/docs/datashts/intel/ism51.pdf)
+* [Basic tutorial](http://www.8052.com/tutintro.phtml)
+* [Freeware assembler](http://plit.de/asem-51/)

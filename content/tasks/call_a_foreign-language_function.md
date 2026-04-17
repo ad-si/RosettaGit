@@ -449,7 +449,7 @@ Alternatively, to avoid having to create a library in native code you could use 
 
 ''This code uses a deprecated feature of CMake.'' In 2014, CMake 3.0 deprecated load_command(). CMake 3.0 can run this code but shows a deprecation warning. When a future version of CMake removes load_command(), this code will stop working, and there will be no way to call C functions from CMake.
 
-In old versions of CMake, we can write custom commands for CMake in C. This example defines CMake command div() to call [http://man7.org/linux/man-pages/man3/div.3.html C function div()]. Only works in a project, not in a <code>cmake -P</code> script. Uses more than 20 lines of CMake and 50 lines of C. There are 3 files: ''CMakeLists.txt'' in the top directory, and ''div/CMakeLists.txt'' and ''div/div-command.c'' in a subdirectory. Run it with the command <code>cmake .</code> in the top directory.
+In old versions of CMake, we can write custom commands for CMake in C. This example defines CMake command div() to call [C function div()](http://man7.org/linux/man-pages/man3/div.3.html). Only works in a project, not in a <code>cmake -P</code> script. Uses more than 20 lines of CMake and 50 lines of C. There are 3 files: ''CMakeLists.txt'' in the top directory, and ''div/CMakeLists.txt'' and ''div/div-command.c'' in a subdirectory. Run it with the command <code>cmake .</code> in the top directory.
 
 '''CMakeLists.txt'''
 
@@ -1118,7 +1118,7 @@ Hello World!
 
 Portability is possible, but often irrelevant for a task of this sort.  To make this work with a different OS, you would need to use the appropriate file name for libc for the os in question.  For example, on linux, replace msvcrt.dll with /lib/libc.so.6 (or whichever version of libc you are using).
 
-See also: [http://www.jsoftware.com/help/user/call_procedure.htm J's documentation]
+See also: [J's documentation](http://www.jsoftware.com/help/user/call_procedure.htm)
 
 
 ## Java
@@ -1264,7 +1264,7 @@ ccall(:free, Void, (Ptr{Cuchar},), p)
 ```
 
 
-'''PyCall''', [https://github.com/JuliaPy/PyCall.jl source]:
+'''PyCall''', [source](https://github.com/JuliaPy/PyCall.jl):
 
 ```julia
 using PyCall
@@ -1339,7 +1339,7 @@ Section Public
 ## Lua
 
 
-Using the [http://luajit.org/ext_ffi.html FFI library] available in [http://luajit.org/ LuaJIT]:
+Using the [FFI library](http://luajit.org/ext_ffi.html) available in [LuaJIT](http://luajit.org/):
 
 
 ```lua
@@ -2486,9 +2486,9 @@ X = booger.
 
 ## PureBasic
 
-Here we will use [http://flatassembler.net/ Fasm (flat assembler)] to create an object file and then import the function
+Here we will use [Fasm (flat assembler)](http://flatassembler.net/) to create an object file and then import the function
 strucase(t.s) As "_strucase@4". The object file is statically linked within
-the resulting executable. [http://www.purebasic.com/ PureBasic] supports {Windows, Linux, MacOS}.
+the resulting executable. [PureBasic](http://www.purebasic.com/) supports {Windows, Linux, MacOS}.
 
 
 ```PureBasic
@@ -2764,7 +2764,7 @@ puts RosettaCode.strdup('This string gets duplicated.')
 ###  FFI
 
 
-A recent effort to make it easier to write libraries, portable across platforms and interpreters, led to the creation of a [http://sourceware.org/libffi/ libffi] binding simply called [http://wiki.github.com/ffi/ffi/ ffi] for completely dynamic calls.
+A recent effort to make it easier to write libraries, portable across platforms and interpreters, led to the creation of a [libffi](http://sourceware.org/libffi/) binding simply called [ffi](http://wiki.github.com/ffi/ffi/) for completely dynamic calls.
 
 
 ```ruby
@@ -2833,7 +2833,7 @@ Fiddle.free duplicate
 ###  RubyInline
 
 
-Using {{libheader|RubyGems}} package [http://www.zenspider.com/ZSS/Products/RubyInline/ RubyInline], which compiles the inlined code on demand during runtime.
+Using {{libheader|RubyGems}} package [RubyInline](http://www.zenspider.com/ZSS/Products/RubyInline/), which compiles the inlined code on demand during runtime.
 
 
 ```ruby
@@ -2923,14 +2923,14 @@ object JNIDemo {
 
 ## Stata
 
-Here are examples showing how to build and call from Stata a plugin written in C or Java. See also the entries 29 to 32 in the ''[https://blog.stata.com/2016/01/15/programming-an-estimation-command-in-stata-a-map-to-posted-entries/ Programming an estimation command in Stata]'' series by David M. Drukker, on [https://blog.stata.com/ Stata Blog].
+Here are examples showing how to build and call from Stata a plugin written in C or Java. See also the entries 29 to 32 in the ''[Programming an estimation command in Stata](https://blog.stata.com/2016/01/15/programming-an-estimation-command-in-stata-a-map-to-posted-entries/)'' series by David M. Drukker, on [Stata Blog](https://blog.stata.com/).
 
 
 ###  Calling C
 
-It's possible to call a C program from Stata using a '''[https://www.stata.com/plugins/ plugin]'''. A plugin is a C program that is compiled to a DLL, then used as any other command in Stata after being loaded.
+It's possible to call a C program from Stata using a '''[plugin](https://www.stata.com/plugins/)'''. A plugin is a C program that is compiled to a DLL, then used as any other command in Stata after being loaded.
 
-As an example let's build a '''[https://en.wikipedia.org/wiki/Hilbert_matrix Hilbert matrix]''' in C.
+As an example let's build a '''[Hilbert matrix](https://en.wikipedia.org/wiki/Hilbert_matrix)''' in C.
 
 
 ```cpp
@@ -2951,7 +2951,7 @@ STDLL stata_call(int argc, char *argv[]) {
 ```
 
 
-The DLL can be built from '''Visual Studio''', or in the console with <code>cl /LD hilbertmat.c stplugin.c</code>. With '''MinGW''', compile with <code>gcc -shared stplugin.c hilbertmatrix.c -o hilbertmat.plugin</code>. With '''Pelles C''', compile with <code>cc /Tx64-coff /Ze stplugin.c hilbertmat.c /DLL /OUT:hilbertmat.plugin</code>. The DLL must be renamed with the '''.plugin''' extension, and put in a directory visible in [https://www.stata.com/help.cgi?adopath adopath].
+The DLL can be built from '''Visual Studio''', or in the console with <code>cl /LD hilbertmat.c stplugin.c</code>. With '''MinGW''', compile with <code>gcc -shared stplugin.c hilbertmatrix.c -o hilbertmat.plugin</code>. With '''Pelles C''', compile with <code>cc /Tx64-coff /Ze stplugin.c hilbertmat.c /DLL /OUT:hilbertmat.plugin</code>. The DLL must be renamed with the '''.plugin''' extension, and put in a directory visible in [adopath](https://www.stata.com/help.cgi?adopath).
 
 Declare also an ADO file to call the plugin:
 
@@ -2988,9 +2988,9 @@ Notice the program as is has minimal protection against invalid arguments. Produ
 
 ###  Calling Java
 
-It's possible to call a Java program from Stata using the '''[https://www.stata.com/help.cgi?javacall javacall]''' command. Using the '''[https://www.stata.com/java/api15/ Stata Java API]''', one can access the current dataset, matrices, macros...
+It's possible to call a Java program from Stata using the '''[javacall](https://www.stata.com/help.cgi?javacall)''' command. Using the '''[Stata Java API](https://www.stata.com/java/api15/)''', one can access the current dataset, matrices, macros...
 
-As an example let's build a '''[https://en.wikipedia.org/wiki/Hilbert_matrix Hilbert matrix]''' in Java.
+As an example let's build a '''[Hilbert matrix](https://en.wikipedia.org/wiki/Hilbert_matrix)''' in Java.
 
 
 ```java
@@ -3032,7 +3032,7 @@ r4        .25         .2  .16666667  .14285714
 ```
 
 
-Notice that Mata has the builtin function '''[https://www.stata.com/help.cgi?mf_Hilbert Hilbert]''' to do the same:
+Notice that Mata has the builtin function '''[Hilbert](https://www.stata.com/help.cgi?mf_Hilbert)''' to do the same:
 
 
 ```stata

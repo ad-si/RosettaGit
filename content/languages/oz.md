@@ -14,8 +14,8 @@ The [Mozart](https://rosettacode.org/wiki/Mozart/Oz) Programming System is the p
 ## How to execute the examples on Rosetta Code
 All examples that start with <code>declare</code> can be used directly in the Emacs-based IDE, without a separate compilation step. Just copy the source code to the <code>Oz</code> buffer and select the menu item "Oz&rarr;Feed Buffer".
 
-Some examples are functor definitions and must be compiled. The compiler is invoked with a command such as: <code>ozc -c filename.oz</code>, and then executed with the command, <code>ozengine filename.ozf</code>. This [https://stackoverflow.com/a/29207029/371304 Stack Overflow answer] shows an example of the boilerplate to transform code written for the Emacs IDE to code that can run directly on the Mozart VM.
+Some examples are functor definitions and must be compiled. The compiler is invoked with a command such as: <code>ozc -c filename.oz</code>, and then executed with the command, <code>ozengine filename.ozf</code>. This [Stack Overflow answer](https://stackoverflow.com/a/29207029/371304) shows an example of the boilerplate to transform code written for the Emacs IDE to code that can run directly on the Mozart VM.
 
 ## Citation
-#[https://mozart.github.io/mozart-v1/doc-1.4.0/tutorial/index.html Tutorial of Oz]
+#[Tutorial of Oz](https://mozart.github.io/mozart-v1/doc-1.4.0/tutorial/index.html)
 #[Wikipedia:Oz (programming language)](https://en.wikipedia.org/wiki/Oz_%28programming_language%29)

@@ -2468,7 +2468,7 @@ my Point $point .= new(x => 3, y => 8);
 ```
 
 
-===[http://design.perl6.org/S32/Containers.html#Set Set]===
+===[Set](http://design.perl6.org/S32/Containers.html#Set)===
 
 ```perl6
 my $s1 = set <a b c d>; # order is not preserved
@@ -2673,7 +2673,7 @@ person_location(person(name(N), age(A)), point(X, Y)).
 ## PureBasic
 
 
-A basic [http://www.purebasic.com/documentation/reference/structures.html structure] is implemented as;
+A basic [structure](http://www.purebasic.com/documentation/reference/structures.html) is implemented as;
 
 ```PureBasic
 Structure MyPoint
@@ -2964,7 +2964,7 @@ println(p.y)   //=> 2
 
 ## Scheme
 
-Using [http://srfi.schemers.org/srfi-9/srfi-9.html SRFI 9]:
+Using [SRFI 9](http://srfi.schemers.org/srfi-9/srfi-9.html):
 
 ```scheme
 (define-record-type point
@@ -3134,7 +3134,7 @@ The <code>#y</code> above extracts the field named "y" of its argument.
 
 ## Stata
 
-See '''[https://www.stata.com/help.cgi?m2_struct struct]''' in Stata help.
+See '''[struct](https://www.stata.com/help.cgi?m2_struct)''' in Stata help.
 
 
 ```stata

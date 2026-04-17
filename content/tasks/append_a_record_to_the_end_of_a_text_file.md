@@ -1787,7 +1787,7 @@ assert 1 e. R3 E. fread passwd
 | array || literal
 |}
 
-Note that no file locking is needed if this is implemented under windows (since all file writes are atomic across processes -- only one process can have a file open at one time, by default).  Note that file locking would be needed under Linux (or unix), but it's [http://0pointer.de/blog/projects/locking2 not clear] which file locking mechanism should be used.
+Note that no file locking is needed if this is implemented under windows (since all file writes are atomic across processes -- only one process can have a file open at one time, by default).  Note that file locking would be needed under Linux (or unix), but it's [not clear](http://0pointer.de/blog/projects/locking2) which file locking mechanism should be used.
 
 
 ## Java

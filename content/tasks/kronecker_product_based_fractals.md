@@ -104,7 +104,7 @@ Although this task is related to [[Kronecker product]], this is computationally 
 
 However, if half of the elements of the initial matrix A are zeroes, computations and storage for such elements are wasted as they will never be plotted. The only relevant elements are the 1s.
 
-Thus this implementation treats the initial matrix as a [https://en.wikipedia.org/wiki/Sparse_matrix Sparse matrix]. Doing so cuts down drastically on the required storage and number of operations. The graphical part needs the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library. 
+Thus this implementation treats the initial matrix as a [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix). Doing so cuts down drastically on the required storage and number of operations. The graphical part needs the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. 
 
 ```C
 
@@ -612,7 +612,7 @@ Same as Kotlin entry.
 
 ## Haskell
 
-This implementation compiles to javascript that runs in the browser using the [https://github.com/ghcjs/ghcjs ghcjs compiler ] .  The [https://github.com/reflex-frp/reflex-dom reflex-dom ] library is used to help with svg rendering.
+This implementation compiles to javascript that runs in the browser using the [ghcjs compiler](https://github.com/ghcjs/ghcjs) .  The [reflex-dom](https://github.com/reflex-frp/reflex-dom) library is used to help with svg rendering.
 
 
 ```haskell
@@ -703,7 +703,7 @@ elSvgns t m ma = do
 ```
 
 
-Link to live demo: https://dc25.github.io/rosettaCode__Kronecker_product_based_fractals/ ( a little slow to load ).
+Link to live demo: <https://dc25.github.io/rosettaCode__Kronecker_product_based_fractals/> ( a little slow to load ).
 
 ## J
 
@@ -2021,7 +2021,7 @@ for (['vicsek', \@vicsek, 4],
 }
 ```
 
-See [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-vicsek-perl6.png Kronecker-Vicsek], [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-carpet-perl6.png Kronecker-Carpet] and [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-six-perl6.png Kronecker-Six] images.
+See [Kronecker-Vicsek](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-vicsek-perl6.png), [Kronecker-Carpet](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-carpet-perl6.png) and [Kronecker-Six](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/kronecker-six-perl6.png) images.
 
 
 ## Perl 6
@@ -2058,7 +2058,7 @@ for  'vicsek', @vicsek, 4,
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/kronecker-vicsek-perl6.png Kronecker-Vicsek], [https://github.com/thundergnat/rc/blob/master/img/kronecker-carpet-perl6.png Kronecker-Carpet] and [https://github.com/thundergnat/rc/blob/master/img/kronecker-six-perl6.png Kronecker-Six] images.
+See [Kronecker-Vicsek](https://github.com/thundergnat/rc/blob/master/img/kronecker-vicsek-perl6.png), [Kronecker-Carpet](https://github.com/thundergnat/rc/blob/master/img/kronecker-carpet-perl6.png) and [Kronecker-Six](https://github.com/thundergnat/rc/blob/master/img/kronecker-six-perl6.png) images.
 
 
 ## Phix
@@ -2482,13 +2482,13 @@ for name,shape,order in [
 }
 ```
 
-Output images: [https://github.com/trizen/rc/blob/master/img/kronecker-carpet-sidef.png Kronecker Carpet], [https://github.com/trizen/rc/blob/master/img/kronecker-vicsek-sidef.png Kronecker Vicsek] and [https://github.com/trizen/rc/blob/master/img/kronecker-six-sidef.png Kronecker Six]
+Output images: [Kronecker Carpet](https://github.com/trizen/rc/blob/master/img/kronecker-carpet-sidef.png), [Kronecker Vicsek](https://github.com/trizen/rc/blob/master/img/kronecker-vicsek-sidef.png) and [Kronecker Six](https://github.com/trizen/rc/blob/master/img/kronecker-six-sidef.png)
 
 
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var [const] GSL=Import.lib("zklGSL");    // libGSL (GNU Scientific Library)
@@ -2525,5 +2525,5 @@ sierpinskiCarpet_k.jpg: 243x243 with 32,768 points
 
 ```
 
-Images at [http://www.zenkinetic.com/Images/RosettaCode/vicsek_k.zkl.jpg Vicsek fractal]
-and [http://www.zenkinetic.com/Images/RosettaCode/sierpinskiCarpet_k.zkl.jpg Sierpinski Carpet fractal].
+Images at [Vicsek fractal](http://www.zenkinetic.com/Images/RosettaCode/vicsek_k.zkl.jpg)
+and [Sierpinski Carpet fractal](http://www.zenkinetic.com/Images/RosettaCode/sierpinskiCarpet_k.zkl.jpg).

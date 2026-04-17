@@ -23,7 +23,7 @@ Detect a cycle in an iterated function using Brent's algorithm.
 
 Detecting cycles in iterated function sequences is a sub-problem in many computer algorithms, such as factoring prime numbers. Some such algorithms are highly space efficient, such as Floyd's cycle-finding algorithm, also called the "tortoise and the hare algorithm". A more time efficient algorithm than "tortoise and hare" is Brent's Cycle algorithm. This task will implement Brent's algorithm.
 
-See https://en.wikipedia.org/wiki/Cycle_detection for a discussion of the theory and discussions of other algorithms that are used to solve the problem.
+See <https://en.wikipedia.org/wiki/Cycle_detection> for a discussion of the theory and discussions of other algorithms that are used to solve the problem.
 
 When testing the cycle detecting function, you need two things:
 
@@ -671,7 +671,7 @@ End
 
 ## Go
 
-Run it on the [https://play.golang.org/p/unOtxuwZfg go playground], or on [https://goplay.space/#S1pQZSuJci go play space].
+Run it on the [go playground](https://play.golang.org/p/unOtxuwZfg), or on [go play space](https://goplay.space/#S1pQZSuJci).
 
 ```Go
 
@@ -2422,7 +2422,7 @@ Start index = 2
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/6O7WjnO/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/kPCg0fxOQQCZPkOnmMR0Kg Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/6O7WjnO/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/kPCg0fxOQQCZPkOnmMR0Kg).
 
 ```Scala
 object CycleDetection extends App {

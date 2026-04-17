@@ -79,7 +79,7 @@ Semiprime numbers are natural numbers that are products of exactly two (possibly
 ;Example:
    <big> 1679  =  23 &times; 73 </big>
 
-(This particular number was chosen as the length of the [http://en.wikipedia.org/wiki/Arecibo_message Arecibo message]).
+(This particular number was chosen as the length of the [Arecibo message](http://en.wikipedia.org/wiki/Arecibo_message)).
 
 
 ;Task;
@@ -88,9 +88,9 @@ Write a function determining whether a given number is semiprime.
 
 ## See also
 
-* The Wikipedia article:   [http://mathworld.wolfram.com/Semiprime.html semiprime].
-* The Wikipedia article:   [http://mathworld.wolfram.com/AlmostPrime.html almost prime].
-* The OEIS article:   [http://oeis.org/A001358 semiprimes]   which has a shorter definition: ''the product of two primes''.
+* The Wikipedia article:   [semiprime](http://mathworld.wolfram.com/Semiprime.html).
+* The Wikipedia article:   [almost prime](http://mathworld.wolfram.com/AlmostPrime.html).
+* The OEIS article:   [semiprimes](http://oeis.org/A001358)   which has a shorter definition: ''the product of two primes''.
 
 
 

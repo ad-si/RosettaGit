@@ -970,7 +970,7 @@ $exec->execute;
 ```
 
 
-This example uses mysql, but DBI supports a extensive list of database drivers. See [http://dbi.perl.org/ dbi.perl.org] for more info.
+This example uses mysql, but DBI supports a extensive list of database drivers. See [dbi.perl.org](http://dbi.perl.org/) for more info.
 
 
 ## Perl 6
@@ -1708,7 +1708,7 @@ CREATE TABLE address_USA (
 
 While Stata is not a database language ''per se'', it is not uncommon to store address data in a Stata dataset. The following creates an empty dataset.
 
-Other possibilities include using the '''[https://www.stata.com/help.cgi?odbc odbc]''' command or a C or Java plugin to connect to a database. See the FAQ for more details: '''[https://www.stata.com/support/faqs/data-management/using-plugin-to-connect-to-database/ How do I connect to a database by using a Stata plugin?]'''.
+Other possibilities include using the '''[odbc](https://www.stata.com/help.cgi?odbc)''' command or a C or Java plugin to connect to a database. See the FAQ for more details: '''[How do I connect to a database by using a Stata plugin?](https://www.stata.com/support/faqs/data-management/using-plugin-to-connect-to-database/)'''.
 
 
 ```stata

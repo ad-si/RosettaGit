@@ -1254,7 +1254,7 @@ Well, again, the problem is that the task has assumed that the language is treat
 ```
 
 Voila!
-See also http://keiapl.info/anec/#fuzz
+See also <http://keiapl.info/anec/#fuzz>
 
 ## Java
 
@@ -2479,7 +2479,7 @@ object KahanSummation extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/lWI0SJC/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/CI7dNAKQSlupivKAnYcGJg Scastie (remote JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/lWI0SJC/0) or by [Scastie (remote JVM)](https://scastie.scala-lang.org/CI7dNAKQSlupivKAnYcGJg).
 Note: JVM float is  IEEE-754 32 bit floating point while JavaScript always default to the IEEE 754 standard 64-bit.
 
 

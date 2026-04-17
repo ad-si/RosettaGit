@@ -202,7 +202,7 @@ Who are you?  You're not a terminal.
 ## Haskell
 
 
-Example uses [https://hackage.haskell.org/package/unix <tt>unix</tt>] package:
+Example uses [<tt>unix</tt>](https://hackage.haskell.org/package/unix) package:
 
 
 ```haskell

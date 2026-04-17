@@ -14,4 +14,4 @@ tags = []
 
 Rockstar was created by a rockin' dude named Dylan Beattie.
 
-See the spec [https://github.com/dylanbeattie/rockstar here.]
+See the spec [here.](https://github.com/dylanbeattie/rockstar)

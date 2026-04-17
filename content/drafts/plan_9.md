@@ -27,11 +27,11 @@ Available languages include:
 *[[Assembly]] (all platforms share the same syntax; less machine-specific)
 
 ==GUI==
-The creators of Plan 9 took the opportunity to build graphics capabilities into the system from the ground up, unlike UNIX. The most frequently-used "window manager" for Plan 9 is called rio, as seen in [http://csplan9.rit.edu/users/john/rosettacode.png this image].
+The creators of Plan 9 took the opportunity to build graphics capabilities into the system from the ground up, unlike UNIX. The most frequently-used "window manager" for Plan 9 is called rio, as seen in [this image](http://csplan9.rit.edu/users/john/rosettacode.png).
 
 ==Compatibility==
 Plan 9 is not POSIX-compliant, although it shares similarities with POSIX systems. The architects decided to create a new operating system without backwards-compatibility baggage, which allowed them greater freedom in implementing whatever they thought was important. There is, however, a POSIX emulation layer which allows compilation of some POSIX programs.
 
 ==External Links==
-*[http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs Wikipedia: Plan 9 from Bell Labs]
-* [http://plan9.bell-labs.com/plan9/ Plan 9 homepage]
+*[Wikipedia: Plan 9 from Bell Labs](http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs)
+* [Plan 9 homepage](http://plan9.bell-labs.com/plan9/)

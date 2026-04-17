@@ -19,7 +19,7 @@ This native code translation is mostly done via a [JIT](https://rosettacode.org/
 The primary benefits of Java are:
 
 * Cross-[platform](https://rosettacode.org/wiki/platform) (Write Once, Run Anywhere (if all of the libraries are ported))
-* Comprehensive class library (which is thoroughly [http://www.oracle.com/technetwork/java/javase/documentation/index.html documented])
+* Comprehensive class library (which is thoroughly [documented](http://www.oracle.com/technetwork/java/javase/documentation/index.html))
 * [Automatic memory management](https://rosettacode.org/wiki/garbage_collection)
 * Large user community
 * Well supported by the [open source](https://rosettacode.org/wiki/open_source) community and commercial industry ([Sun](https://rosettacode.org/wiki/Sun_Microsystems), [IBM](https://rosettacode.org/wiki/IBM), [Oracle](https://rosettacode.org/wiki/Oracle), HP, BEA, [Apple Inc](https://rosettacode.org/wiki/Apple_Inc), etc.)

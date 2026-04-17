@@ -630,8 +630,8 @@ conversion10:
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to <http://thinkingeek.com/arm-assembler-raspberry-pi/*>
+/* and   <http://www.hackersdelight.org/>            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1039,7 +1039,7 @@ delete r;
 
 ## Chef
 
-"Liquify" is now depreciated in favor of "Liquefy", but my interpreter/compiler ([http://search.cpan.org/~smueller/Acme-Chef/ Acme::Chef]) works only with "Liquify" so that's how I'm leaving it. At least it'll work no matter which version you use.
+"Liquify" is now depreciated in favor of "Liquefy", but my interpreter/compiler ([Acme::Chef](http://search.cpan.org/~smueller/Acme-Chef/)) works only with "Liquify" so that's how I'm leaving it. At least it'll work no matter which version you use.
 <div style='width:full;overflow:scroll'>
 
 ```Chef
@@ -1665,7 +1665,7 @@ C is easy enough to type "fortran 77 random number generator" into your
 C preferred search engine and to copy and paste what you find. The
 C following code is a slightly-modified version of:
 C
-C     http://www.tat.physik.uni-tuebingen.de/
+C     <http://www.tat.physik.uni-tuebingen.de/>
 C         ~kley/lehre/ftn77/tutorial/subprograms.html
       SUBROUTINE SDRAND (IRSEED)
         COMMON  /SEED/ UTSEED, IRFRST
@@ -1852,7 +1852,7 @@ End
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=65d2287312298a938e7e8eea8899e38b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=65d2287312298a938e7e8eea8899e38b)'''
 
 ```gambas
 Public Sub Main()
@@ -2273,7 +2273,7 @@ Using the built-in `foreach` construct, the above is equivalent to:
 
 '''PRNG'''
 
-Currently, jq does not have a built-in random-number generator, so here we borrow one of the linear congruential generators defined at https://rosettacode.org/wiki/Linear_congruential_generator -
+Currently, jq does not have a built-in random-number generator, so here we borrow one of the linear congruential generators defined at <https://rosettacode.org/wiki/Linear_congruential_generator> -
 
 ```jq
 # 15-bit integers generated using the same formula as rand()
@@ -3374,7 +3374,7 @@ repeat
 ```REBOL
 REBOL [
 	Title: "Loop/Break"
-	URL: http://rosettacode.org/wiki/Loop/Break
+	URL: <http://rosettacode.org/wiki/Loop/Break>
 ]
 
 random/seed 1 ; Make repeatable.

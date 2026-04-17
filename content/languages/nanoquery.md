@@ -13,4 +13,4 @@ tags = []
 
 
 ## See Also
-* [http://cygnus-x.net/design/nq Nanoquery homepage]
+* [Nanoquery homepage](http://cygnus-x.net/design/nq)

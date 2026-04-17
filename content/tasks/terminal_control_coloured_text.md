@@ -530,7 +530,7 @@ CYAN TEXT ok
 
 ### Intel Fortran on Windows
 
-Using Windows API functions, see for instance '''[https://msdn.microsoft.com/en-us/library/ms686047.aspx SetConsoleTextAttribute]''' in MSDN. On can set foreground and background colors, available attributes are [https://msdn.microsoft.com/en-us/library/ms682088.aspx here]. It's not possible to cause blinking without using a thread to change attributes at time intervals. The program reverts the console attributes to the preceding values. Failing to do that, it is still possible to reset console colors with the '''color''' command, without arguments.
+Using Windows API functions, see for instance '''[SetConsoleTextAttribute](https://msdn.microsoft.com/en-us/library/ms686047.aspx)''' in MSDN. On can set foreground and background colors, available attributes are [here](https://msdn.microsoft.com/en-us/library/ms682088.aspx). It's not possible to cause blinking without using a thread to change attributes at time intervals. The program reverts the console attributes to the preceding values. Failing to do that, it is still possible to reset console colors with the '''color''' command, without arguments.
 
 
 ```fortran
@@ -924,7 +924,7 @@ $ julia --color=yes terminal_control_color.jl
 
 ```
 
-[https://raw.githubusercontent.com/MichaeLeroy/rosetta-code/master/julia/completed/terminal_control_color.png Output Image]
+[Output Image](https://raw.githubusercontent.com/MichaeLeroy/rosetta-code/master/julia/completed/terminal_control_color.png)
 
 ```txt
 
@@ -1099,7 +1099,7 @@ echo "RosettaCode!"
 ## OCaml
 
 
-Using the library [http://forge.ocamlcore.org/projects/ansiterminal/ ANSITerminal] in the interactive loop:
+Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/) in the interactive loop:
 
 
 ```ocaml
@@ -1117,7 +1117,7 @@ Hello
 ## ooRexx
 
 This program is based on the shell script in the Bash Prompt HowTo at
-http://www.tldp.org/, by Giles Orr.  It uses object-oriented features of Open Object Rexx.
+<http://www.tldp.org/>, by Giles Orr.  It uses object-oriented features of Open Object Rexx.
 
 ```REXX
 
@@ -1614,7 +1614,7 @@ next
 
 Output image:
 
-https://www.dropbox.com/s/d313jguinhr6jyl/Colors.jpg?dl=0
+<https://www.dropbox.com/s/d313jguinhr6jyl/Colors.jpg?dl=0>
 
 
 ## Ruby

@@ -12,4 +12,4 @@ tags = []
 
 {{library}}Babel is a [[Common Lisp]] library (not to be confused with the [[Babel]] language) used to convert between Lisp strings containing [[Unicode]] data and various encoding formats, for instance [[UTF-8]] or UTF-16.
 
-It can be downloaded from [http://common-lisp.net/project/babel/ common-lisp.net].
+It can be downloaded from [common-lisp.net](http://common-lisp.net/project/babel/).

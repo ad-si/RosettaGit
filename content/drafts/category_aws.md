@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}Ada Web Server (AWS) is a framework to develop Web based applications. See [https://libre.adacore.com/libre/tools/aws/ AWS].
+{{library}}Ada Web Server (AWS) is a framework to develop Web based applications. See [AWS](https://libre.adacore.com/libre/tools/aws/).

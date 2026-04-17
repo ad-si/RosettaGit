@@ -509,8 +509,8 @@ Hello, world!
 
 Since FPC (FreePascal compiler) version 2.6.0 the distribution – e.g. the Debian or FreeBSD packages <tt>fpc-utils</tt> – come with the program <tt>instantfpc(1)</tt>, or <tt>ifpc(1)</tt> for short.
 The program fulfills this task’s specifications, plus other goodies.
-The sources are available in [https://svn.freepascal.org/cgi-bin/viewvc.cgi/trunk/utils/instantfpc/instantfpc.pas?view=markup <tt>trunk/utils/instantfpc/instantfpc.pas</tt>] and are not repeated here.
-See the [https://wiki.freepascal.org/InstantFPC FreePascal wiki for <tt>ifpc</tt> usage].
+The sources are available in [<tt>trunk/utils/instantfpc/instantfpc.pas</tt>](https://svn.freepascal.org/cgi-bin/viewvc.cgi/trunk/utils/instantfpc/instantfpc.pas?view=markup) and are not repeated here.
+See the [FreePascal wiki for <tt>ifpc</tt> usage](https://wiki.freepascal.org/InstantFPC).
 
 
 ## Go
@@ -728,7 +728,7 @@ Hello, world!
 
 ## Python
 
-Extract: "If you need to create a .pyc file for a module that is not imported, you can use the py_compile and compileall modules. The py_compile module can manually compile any module. One way is to use the py_compile.compile function in that module interactively:[http://effbot.org/pyfaq/how-do-i-create-a-pyc-file.htm]:"
+Extract: "If you need to create a .pyc file for a module that is not imported, you can use the py_compile and compileall modules. The py_compile module can manually compile any module. One way is to use the py_compile.compile function in that module interactively:<http://effbot.org/pyfaq/how-do-i-create-a-pyc-file.htm>:"
 
 ```txt
 
@@ -767,7 +767,7 @@ Hello, world!
 
 ## Racket
 
-Racket has [http://docs.racket-lang.org/raco/index.html?q=raco <tt>raco: Racket Command Line Tools</tt>]
+Racket has [<tt>raco: Racket Command Line Tools</tt>](http://docs.racket-lang.org/raco/index.html?q=raco)
 which can be used to compile to bytecode or compile to standalone executables (along with a whole load of
 other fun stuff to do with packages, unit testing and the likes).
 

@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}
 {{library}}
-OCamlSDL is an [http://ocamlsdl.sourceforge.net/home.html ocaml-sdl binding].
+OCamlSDL is an [ocaml-sdl binding](http://ocamlsdl.sourceforge.net/home.html).

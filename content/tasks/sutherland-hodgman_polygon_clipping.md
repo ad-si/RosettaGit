@@ -1603,7 +1603,7 @@ func main() {
 
 ```
 
-(You can [http://golang.org/doc/play/#package%20main%0A%20%0Aimport%20%22fmt%22%0A%20%0Atype%20point%20struct%20%7B%0A%20%20%20%20x%2C%20y%20float32%0A%7D%0A%20%0Avar%20subjectPolygon%20%3D%20%5B%5Dpoint%7B%7B50%2C%20150%7D%2C%20%7B200%2C%2050%7D%2C%20%7B350%2C%20150%7D%2C%20%7B350%2C%20300%7D%2C%0A%20%20%20%20%7B250%2C%20300%7D%2C%20%7B200%2C%20250%7D%2C%20%7B150%2C%20350%7D%2C%20%7B100%2C%20250%7D%2C%20%7B100%2C%20200%7D%7D%0A%20%0Avar%20clipPolygon%20%3D%20%5B%5Dpoint%7B%7B100%2C%20100%7D%2C%20%7B300%2C%20100%7D%2C%20%7B300%2C%20300%7D%2C%20%7B100%2C%20300%7D%7D%0A%20%0Afunc%20main()%20%7B%0A%20%20%20%20var%20cp1%2C%20cp2%2C%20s%2C%20e%20point%0A%20%20%20%20inside%20%3A%3D%20func(p%20point)%20bool%20%7B%0A%20%20%20%20%20%20%20%20return%20(cp2.x-cp1.x)*(p.y-cp1.y)%20%3E%20(cp2.y-cp1.y)*(p.x-cp1.x)%0A%20%20%20%20%7D%0A%20%20%20%20intersection%20%3A%3D%20func()%20(p%20point)%20%7B%0A%20%20%20%20%20%20%20%20dcx%2C%20dcy%20%3A%3D%20cp1.x-cp2.x%2C%20cp1.y-cp2.y%0A%20%20%20%20%20%20%20%20dpx%2C%20dpy%20%3A%3D%20s.x-e.x%2C%20s.y-e.y%0A%20%20%20%20%20%20%20%20n1%20%3A%3D%20cp1.x*cp2.y%20-%20cp1.y*cp2.x%0A%20%20%20%20%20%20%20%20n2%20%3A%3D%20s.x*e.y%20-%20s.y*e.x%0A%20%20%20%20%20%20%20%20n3%20%3A%3D%201%20%2F%20(dcx*dpy%20-%20dcy*dpx)%0A%20%20%20%20%20%20%20%20p.x%20%3D%20(n1*dpx%20-%20n2*dcx)%20*%20n3%0A%20%20%20%20%20%20%20%20p.y%20%3D%20(n1*dpy%20-%20n2*dcy)%20*%20n3%0A%20%20%20%20%20%20%20%20return%0A%20%20%20%20%7D%0A%20%20%20%20outputList%20%3A%3D%20subjectPolygon%0A%20%20%20%20cp1%20%3D%20clipPolygon%5Blen(clipPolygon)-1%5D%0A%20%20%20%20for%20_%2C%20cp2%20%3D%20range%20clipPolygon%20%7B%20%2F%2F%20WP%20clipEdge%20is%20cp1%2Ccp2%20here%0A%20%20%20%20%20%20%20%20inputList%20%3A%3D%20outputList%0A%20%20%20%20%20%20%20%20outputList%20%3D%20nil%0A%20%20%20%20%20%20%20%20s%20%3D%20inputList%5Blen(inputList)-1%5D%0A%20%20%20%20%20%20%20%20for%20_%2C%20e%20%3D%20range%20inputList%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20inside(e)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20!inside(s)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20intersection())%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20e)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20if%20inside(s)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20intersection())%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20s%20%3D%20e%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20cp1%20%3D%20cp2%0A%20%20%20%20%7D%0A%20%20%20%20fmt.Println(outputList)%0A%7D try it online])
+(You can [try it online](http://golang.org/doc/play/#package%20main%0A%20%0Aimport%20%22fmt%22%0A%20%0Atype%20point%20struct%20%7B%0A%20%20%20%20x%2C%20y%20float32%0A%7D%0A%20%0Avar%20subjectPolygon%20%3D%20%5B%5Dpoint%7B%7B50%2C%20150%7D%2C%20%7B200%2C%2050%7D%2C%20%7B350%2C%20150%7D%2C%20%7B350%2C%20300%7D%2C%0A%20%20%20%20%7B250%2C%20300%7D%2C%20%7B200%2C%20250%7D%2C%20%7B150%2C%20350%7D%2C%20%7B100%2C%20250%7D%2C%20%7B100%2C%20200%7D%7D%0A%20%0Avar%20clipPolygon%20%3D%20%5B%5Dpoint%7B%7B100%2C%20100%7D%2C%20%7B300%2C%20100%7D%2C%20%7B300%2C%20300%7D%2C%20%7B100%2C%20300%7D%7D%0A%20%0Afunc%20main()%20%7B%0A%20%20%20%20var%20cp1%2C%20cp2%2C%20s%2C%20e%20point%0A%20%20%20%20inside%20%3A%3D%20func(p%20point)%20bool%20%7B%0A%20%20%20%20%20%20%20%20return%20(cp2.x-cp1.x)*(p.y-cp1.y)%20%3E%20(cp2.y-cp1.y)*(p.x-cp1.x)%0A%20%20%20%20%7D%0A%20%20%20%20intersection%20%3A%3D%20func()%20(p%20point)%20%7B%0A%20%20%20%20%20%20%20%20dcx%2C%20dcy%20%3A%3D%20cp1.x-cp2.x%2C%20cp1.y-cp2.y%0A%20%20%20%20%20%20%20%20dpx%2C%20dpy%20%3A%3D%20s.x-e.x%2C%20s.y-e.y%0A%20%20%20%20%20%20%20%20n1%20%3A%3D%20cp1.x*cp2.y%20-%20cp1.y*cp2.x%0A%20%20%20%20%20%20%20%20n2%20%3A%3D%20s.x*e.y%20-%20s.y*e.x%0A%20%20%20%20%20%20%20%20n3%20%3A%3D%201%20%2F%20(dcx*dpy%20-%20dcy*dpx)%0A%20%20%20%20%20%20%20%20p.x%20%3D%20(n1*dpx%20-%20n2*dcx)%20*%20n3%0A%20%20%20%20%20%20%20%20p.y%20%3D%20(n1*dpy%20-%20n2*dcy)%20*%20n3%0A%20%20%20%20%20%20%20%20return%0A%20%20%20%20%7D%0A%20%20%20%20outputList%20%3A%3D%20subjectPolygon%0A%20%20%20%20cp1%20%3D%20clipPolygon%5Blen(clipPolygon)-1%5D%0A%20%20%20%20for%20_%2C%20cp2%20%3D%20range%20clipPolygon%20%7B%20%2F%2F%20WP%20clipEdge%20is%20cp1%2Ccp2%20here%0A%20%20%20%20%20%20%20%20inputList%20%3A%3D%20outputList%0A%20%20%20%20%20%20%20%20outputList%20%3D%20nil%0A%20%20%20%20%20%20%20%20s%20%3D%20inputList%5Blen(inputList)-1%5D%0A%20%20%20%20%20%20%20%20for%20_%2C%20e%20%3D%20range%20inputList%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20inside(e)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20!inside(s)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20intersection())%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20e)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20if%20inside(s)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20outputList%20%3D%20append(outputList%2C%20intersection())%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20s%20%3D%20e%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20cp1%20%3D%20cp2%0A%20%20%20%20%7D%0A%20%20%20%20fmt.Println(outputList)%0A%7D))
 
 
 ## Haskell
@@ -1963,7 +1963,7 @@ class SutherlandHodgmanPanel extends JPanel {
 ```
 
 
-You can see it running <code>[http://jsfiddle.net/elisherer/y6RDB/ here]</code>
+You can see it running <code>[here](http://jsfiddle.net/elisherer/y6RDB/)</code>
 
 
 ## Julia
@@ -2228,7 +2228,7 @@ main()
 {100.000000, 250.000000},
 ```
 
-(You can also [http://ideone.com/5tGEQ see it live])
+(You can also [see it live](http://ideone.com/5tGEQ))
 
 
 ## Mathematica
@@ -2426,7 +2426,7 @@ let () =
  (100, 250)
 ```
 
-We can display the result in a window using the <code>[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html Graphics]</code> module:
+We can display the result in a window using the <code>[Graphics](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html)</code> module:
 
 ```ocaml
 let subject_polygon =
@@ -3517,7 +3517,7 @@ end sub
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 class P{	// point
@@ -3592,7 +3592,7 @@ println("Clipped polygon has ",clipped.len()," points:");
 clipped.pump(Console.println);
 ```
 
-Until local image uploading is re-enabled, see [http://www.zenkinetic.com/Images/RosettaCode/sutherland_hodgman.zkl.jpg this image].
+Until local image uploading is re-enabled, see [this image](http://www.zenkinetic.com/Images/RosettaCode/sutherland_hodgman.zkl.jpg).
 
 ```txt
 

@@ -372,7 +372,7 @@ eight quadrillion seven trillion six billion five million four thousand third
 
 ## Julia
 
-This makes use of code posted on this site by MichaeLeroy for a similar task at https://rosettacode.org/wiki/Number_names#Julia. The function num2text is used (but not included here) as posted from that location.
+This makes use of code posted on this site by MichaeLeroy for a similar task at <https://rosettacode.org/wiki/Number_names#Julia>. The function num2text is used (but not included here) as posted from that location.
 
 ```Julia
 
@@ -431,7 +431,7 @@ end
 
 ## Kotlin
 
-This makes use of the code at https://rosettacode.org/wiki/Number_names#Kotlin, which I also wrote, and adjusts it to output the corresponding ordinal. Although, for good measure, the program can deal with negative integers, zero and UK-style numbers (the insertion of 'and' at strategic places, no 'milliards' I promise!) none of these are actually tested in line with the task's requirements.  
+This makes use of the code at <https://rosettacode.org/wiki/Number_names#Kotlin>, which I also wrote, and adjusts it to output the corresponding ordinal. Although, for good measure, the program can deal with negative integers, zero and UK-style numbers (the insertion of 'and' at strategic places, no 'milliards' I promise!) none of these are actually tested in line with the task's requirements.  
 
 ```scala
 // version 1.1.4-3

@@ -13,6 +13,6 @@ tags = []
 {{stub}}
 {{library}}
 
-'''Ironclad''' is a cryptography library written entirely in [[Common Lisp]]. It is available via [http://www.quicklisp.org/ Quicklisp].
+'''Ironclad''' is a cryptography library written entirely in [[Common Lisp]]. It is available via [Quicklisp](http://www.quicklisp.org/).
 
-See also its [http://method-combination.net/lisp/ironclad/ Webpage] and [https://github.com/froydnj/ironclad GitHub repo].
+See also its [Webpage](http://method-combination.net/lisp/ironclad/) and [GitHub repo](https://github.com/froydnj/ironclad).

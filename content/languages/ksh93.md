@@ -20,5 +20,5 @@ ksh93 is the original [Korn Shell](https://rosettacode.org/wiki/Korn_Shell). ksh
 * several additional builtin commands
 
 References:
-* http://www.kornshell.org/doc/
-* http://www-01.ibm.com/support/knowledgecenter/ssw_aix_61/com.ibm.aix.osdevice/korn_shell_enhanced.htm
+* <http://www.kornshell.org/doc/>
+* <http://www-01.ibm.com/support/knowledgecenter/ssw_aix_61/com.ibm.aix.osdevice/korn_shell_enhanced.htm>

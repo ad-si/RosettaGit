@@ -2165,7 +2165,7 @@ aardvarks are ant eaters -> sdaaaraaasv rer nt keter (0)
 ## J
 
 
-Based on [http://rosettacode.org/mw/index.php?title=Best_shuffle&oldid=97419#J Dan Bron's approach]:
+Based on [Dan Bron's approach](http://rosettacode.org/mw/index.php?title=Best_shuffle&oldid=97419#J):
 
 
 ```j

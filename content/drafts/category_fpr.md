@@ -14,4 +14,4 @@ Function-level Programming right-associative.
 FP with linked lists and single dispatch.
 
 ==Links==
-[http://www.heise.de/download/fpr-1168853.html FPr lite]
+[FPr lite](http://www.heise.de/download/fpr-1168853.html)

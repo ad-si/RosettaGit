@@ -1215,7 +1215,7 @@ A thorough analysis of the problem appears in ''Structured Programming with'' ''
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=64e4e68b1c6ce73341d08ba2d9333c07 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=64e4e68b1c6ce73341d08ba2d9333c07)'''
 
 ```gambas
 Public Sub Main()
@@ -1358,7 +1358,7 @@ A complete program must have exactly one function named main, which is called on
 ## Haskell
 
 
-In the context of normal, functional-style code, there are no flow-control statements, because explicit flow control is imperative. A monad may offer flow control; what kinds are available depends on the monad. For example, the [http://haskell.org/haskellwiki/New_monads/MonadExit <code>ExitT</code> monad transformer] lets you use the <code>exitWith</code> function to jump out a block of statements at will.
+In the context of normal, functional-style code, there are no flow-control statements, because explicit flow control is imperative. A monad may offer flow control; what kinds are available depends on the monad. For example, the [<code>ExitT</code> monad transformer](http://haskell.org/haskellwiki/New_monads/MonadExit) lets you use the <code>exitWith</code> function to jump out a block of statements at will.
 
 
 ```haskell
@@ -1380,7 +1380,7 @@ main = do
 
 ## HicEst
 
-[http://www.HicEst.com More on HicEst's ALARM function]
+[More on HicEst's ALARM function](http://www.HicEst.com)
 
 ```hicest
 1 GOTO 2 ! branch to label
@@ -1577,7 +1577,7 @@ For example, here's an example of a program which loops over a sequence of integ
 ```
 
 
-That said, J's control structures are documented at http://www.jsoftware.com/help/dictionary/ctrl.htm  So, if you want to perform this same operation using a while loop, or a goto, you can do so.  It's just... often not a good idea (but sometimes they are indispensable).
+That said, J's control structures are documented at <http://www.jsoftware.com/help/dictionary/ctrl.htm>  So, if you want to perform this same operation using a while loop, or a goto, you can do so.  It's just... often not a good idea (but sometimes they are indispensable).
 
 
 ## Java
@@ -1667,12 +1667,12 @@ top: for (int 1 = 0; i < 10; ++i) {
 
 ## JavaScript
 
-* <code>'''return'''</code> from a function ([http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/return])
-* <code>'''yield'''</code> from a generator function ([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield])
-* <code>'''yield*'''</code> from a generator function ([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*])
-* <code>'''await'''</code> from an async function ([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await])
-* loop control with <code>'''break''' [label]</code> ([http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/break]) and <code>'''continue''' [label]</code> ([http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/continue])
-* exceptions with <code>'''throw'''</code> ([http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/throw]) and <code>'''try ... catch ... finally ...'''</code>  ([http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/try...catch])
+* <code>'''return'''</code> from a function (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/return>)
+* <code>'''yield'''</code> from a generator function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield>)
+* <code>'''yield*'''</code> from a generator function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*>)
+* <code>'''await'''</code> from an async function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await>)
+* loop control with <code>'''break''' [label]</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/break>) and <code>'''continue''' [label]</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/continue>)
+* exceptions with <code>'''throw'''</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/throw>) and <code>'''try ... catch ... finally ...'''</code>  (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/try...catch>)
 
 
 ## jq
@@ -2100,7 +2100,7 @@ end
 ```
 
 
-The Lisp-influenced [http://www.mozart-oz.org/home/doc/loop/index.html for-loop] is very powerful and convenient to use.
+The Lisp-influenced [for-loop](http://www.mozart-oz.org/home/doc/loop/index.html) is very powerful and convenient to use.
 
 As a constraint programming language, Oz has a number of flow control structures which target logic programming. They are typically used to implement new constraint search engines. However, it is also possible to use them for general logic programming.
 
@@ -2230,11 +2230,11 @@ goto FORK;
 
 ### Control exceptions
 
-Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [[http://perlcabal.org/syn/S04.html#Control_Exceptions S04/Control exceptions]] for more information.
+Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [S04/Control exceptions](http://perlcabal.org/syn/S04.html#Control_Exceptions) for more information.
 
 ### Phasers
 
-Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [[http://perlcabal.org/syn/S04.html#Phasers S04/Phasers]].
+Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [S04/Phasers](http://perlcabal.org/syn/S04.html#Phasers).
 
 ### goto
 
@@ -2375,63 +2375,63 @@ Relevant functions are:
 
 ### fork
 
-[http://software-lab.de/doc/refF.html#fork fork] creates a child process
+[fork](http://software-lab.de/doc/refF.html#fork) creates a child process
 
 ### task
 
-[http://software-lab.de/doc/refT.html#task task] installs a background task
+[task](http://software-lab.de/doc/refT.html#task) installs a background task
 consisting of an environment and a list of executable expressions
 
 ### alarm
 
-[http://software-lab.de/doc/refA.html#alarm alarm] schedules a timer, which
+[alarm](http://software-lab.de/doc/refA.html#alarm) schedules a timer, which
 runs a given list of executable expressions when it expires
 
 ### abort
 
-[http://software-lab.de/doc/refA.html#abort abort] runs a given list of
+[abort](http://software-lab.de/doc/refA.html#abort) runs a given list of
 executable expressions, and aborts processing it if it takes longer than
 a given time
 
 ### quit
 
-[http://software-lab.de/doc/refQ.html#quit quit] immediately stops all
+[quit](http://software-lab.de/doc/refQ.html#quit) immediately stops all
 execution and returns to the top level read-eval-print loop, optionally
 signaling an error
 
 ### wait
 
-[http://software-lab.de/doc/refW.html#wait wait] delays current processing
+[wait](http://software-lab.de/doc/refW.html#wait) delays current processing
 (optionally to a maximal time) until an optionally given condition
 evaluates to non-NIL
 
 ### sync
 
-[http://software-lab.de/doc/refS.html#sync sync] synchronizes with other
+[sync](http://software-lab.de/doc/refS.html#sync) synchronizes with other
 processes of the same family
 
 ### protect
 
-[http://software-lab.de/doc/refP.html#protect protect] delays the processing
+[protect](http://software-lab.de/doc/refP.html#protect) delays the processing
 of signals while a given list of executable expressions is executed
 
 ### catch
 
-[http://software-lab.de/doc/refC.html#catch catch] prepares for receiving a
+[catch](http://software-lab.de/doc/refC.html#catch) prepares for receiving a
 'throw' while running a given list of executable expressions
 
 ### throw
 
-[http://software-lab.de/doc/refT.html#throw throw] causes a non-local jump
+[throw](http://software-lab.de/doc/refT.html#throw) causes a non-local jump
 to a specified 'catch' environment
 
 ### bye
 
-[http://software-lab.de/doc/refB.html#bye bye] exits the interpreter
+[bye](http://software-lab.de/doc/refB.html#bye) exits the interpreter
 
 ### finally
 
-[http://software-lab.de/doc/refF.html#finally finally] specifies a list of
+[finally](http://software-lab.de/doc/refF.html#finally) specifies a list of
 executable expressions, to be run when current processing is done, even if
 a 'throw' or 'bye' was executed, or an error occurred.
 
@@ -2916,7 +2916,7 @@ if(__name__ == "__main__"):
 
 
 ===The "with" statement===
-See [[http://www.python.org/peps/pep-0343.html PEP 0343, The "with" statement]]
+See [PEP 0343, The "with" statement](http://www.python.org/peps/pep-0343.html)
 
 
 ```python
@@ -2939,7 +2939,7 @@ Use cases for ''with:'' enabled objects include automated/guaranteed closing of 
 
 ### Yield expressions
 
-See [[http://www.python.org/peps/pep-0342.html PEP 0342, Coroutines via Enhanced Generators]]
+See [PEP 0342, Coroutines via Enhanced Generators](http://www.python.org/peps/pep-0342.html)
  >>> value = 1
  >>> echo = lambda: (yield value)
  >>> for i in echo():
@@ -3546,7 +3546,7 @@ ensure
 end
 ```
 
-There is also a rescue modifier (example from the [http://www.pragprog.com/titles/ruby/programming-ruby Pickaxe book]):
+There is also a rescue modifier (example from the [Pickaxe book](http://www.pragprog.com/titles/ruby/programming-ruby)):
 
 ```ruby
 values = ["1", "2.3", /pattern/]
@@ -3723,9 +3723,9 @@ adds 10 to CI. Once again, CI is incremented <i>after</i> the instruction has be
 ## Stata
 
 
-Mata has a '''[https://www.stata.com/help.cgi?m2_goto goto]''' statement. It may be used to break nested loops, or to convert easily Fortran code to Mata.
+Mata has a '''[goto](https://www.stata.com/help.cgi?m2_goto)''' statement. It may be used to break nested loops, or to convert easily Fortran code to Mata.
 
-As an example, let's find a Pythagorean triple a,b,c such that a+b+c=n, where n is given. Here goto is used to break the two loops when such a triple is found. A '''[https://www.stata.com/help.cgi?m2_return return]''' can be used in such situations, unless one has to do further computations after the loop.
+As an example, let's find a Pythagorean triple a,b,c such that a+b+c=n, where n is given. Here goto is used to break the two loops when such a triple is found. A '''[return](https://www.stata.com/help.cgi?m2_return)''' can be used in such situations, unless one has to do further computations after the loop.
 
 
 ```stata
@@ -3832,7 +3832,7 @@ try {
 
 ###  custom control structures
 
-A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at http://wiki.tcl.tk/685).
+A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at <http://wiki.tcl.tk/685>).
 For example, this example defines a command to perform some operation for each line of an input file:
 
 ```tcl

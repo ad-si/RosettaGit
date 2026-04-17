@@ -28,4 +28,4 @@ Does this task need a better description of what is needed. Is it maybe too lang
 
 A smaller and simpler but still interesting task is might be to implement a Lisp kernel using any language.
 
-(A second, and surprisingly modest, related task might be to implement a Lisp evaluator within the Lisp kernel :-) See http://www.paulgraham.com/rootsoflisp.html )
+(A second, and surprisingly modest, related task might be to implement a Lisp evaluator within the Lisp kernel :-) See <http://www.paulgraham.com/rootsoflisp.html> )

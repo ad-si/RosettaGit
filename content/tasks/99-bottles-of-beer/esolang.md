@@ -76,7 +76,7 @@ $>=<:01:x-^:_296:<:0D:~${x<:01:x->&==<:01:-^:_90:
 
 
 '''Readable:'''
-<!-- the version at http://99-bottles-of-beer.net/language-befunge-88.html looks like a train wreck to me -->
+<!-- the version at <http://99-bottles-of-beer.net/language-befunge-88.html> looks like a train wreck to me -->
 
 ```befunge
 <v,<.g10" bottles of beer on the wall"+550   <
@@ -388,7 +388,7 @@ Refrigerate for 1 hour.
 
 
 =={{header|Extended Brainfuck}}==
-[http://sylwester.no/ebf/ More Info About EBF]
+[More Info About EBF](http://sylwester.no/ebf/)
 
 ```ebf
 
@@ -546,7 +546,7 @@ KTHXBYE
 
 ## Piet
 
-[http://www.toothycat.net/~sham/piet/99bottles.png see image]
+[see image](http://www.toothycat.net/~sham/piet/99bottles.png)
 
 
 ## SNUSP

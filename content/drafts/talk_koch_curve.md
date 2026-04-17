@@ -23,6 +23,6 @@ Note that if most people look at the existing programs for test cases,
 so if the first one had a snow flake, the others will just copy it.
 [[User:Soegaard|Soegaard]] 15:54, 2 September 2019 (UTC)
 
-The original 1904 paper may be found here [http://staff.math.su.se/lenb/dok/von-Koch-1904.pdf Sur une courbe continue sans tangente obtenue par une construction géométrique élémentnire] complete with 5 figures. This work predates the realization that applying these rules to a triangle creates a fractal which may be used to explain snowflakes.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 14:53, 3 September 2019 (UTC)
+The original 1904 paper may be found here [Sur une courbe continue sans tangente obtenue par une construction géométrique élémentnire](http://staff.math.su.se/lenb/dok/von-Koch-1904.pdf) complete with 5 figures. This work predates the realization that applying these rules to a triangle creates a fractal which may be used to explain snowflakes.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 14:53, 3 September 2019 (UTC)
 
 : Perfect – I was trying to find an accessible copy of that. Many thanks. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 21:16, 3 September 2019 (UTC)

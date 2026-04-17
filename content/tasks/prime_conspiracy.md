@@ -42,7 +42,7 @@ languages = [
 ]
 +++
 
-A recent discovery, quoted from   [https://www.quantamagazine.org/20160313-mathematicians-discover-prime-conspiracy/ Quantamagazine]   (March 13, 2016):
+A recent discovery, quoted from   [Quantamagazine](https://www.quantamagazine.org/20160313-mathematicians-discover-prime-conspiracy/)   (March 13, 2016):
      '' Two mathematicians have uncovered a simple, previously unnoticed property of ''
      '' prime numbers — those numbers that are divisible only by 1 and themselves.   ''
      '' Prime numbers, it seems, have decided preferences about the final digits of  ''
@@ -728,7 +728,7 @@ Prime.conspiracy(1000000)
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2483,13 +2483,13 @@ object PrimeConspiracy1 extends App {
 
 ## Seed7
 
-The program below uses the [http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes Sieve of Eratosthenes],
+The program below uses the [Sieve of Eratosthenes](http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes),
 to create a set of prime numbers.
-The set of prime numbers is [http://seed7.sourceforge.net/faq.htm#initialize_data assigned to a constant].
+The set of prime numbers is [assigned to a constant](http://seed7.sourceforge.net/faq.htm#initialize_data).
 This way the set of prime numbers is computed at compile-time.
 Interesting fact: The Seed7 interpreter takes around 2 seconds to parse and execute the program.
 Executing the compiled C++ solution of this task takes around 8 seconds.
-Executing the [http://seed7.sourceforge.net/faq.htm#compile compiled] Seed7 program takes only 0.08 seconds.
+Executing the [compiled](http://seed7.sourceforge.net/faq.htm#compile) Seed7 program takes only 0.08 seconds.
 
 
 ```seed7

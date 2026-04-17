@@ -48,7 +48,7 @@ languages = [
 {{task}} [[Category:Checksums]]
 '''RIPEMD-160''' is another hash function; it computes a 160-bit message digest.
 
-There is a [http://homes.esat.kuleuven.be/~bosselae/ripemd160.html RIPEMD-160 home page], with test vectors and [http://www.esat.kuleuven.be/~bosselae/ripemd/rmd160.txt pseudocode for RIPEMD-160].
+There is a [RIPEMD-160 home page](http://homes.esat.kuleuven.be/~bosselae/ripemd160.html), with test vectors and [pseudocode for RIPEMD-160](http://www.esat.kuleuven.be/~bosselae/ripemd/rmd160.txt).
 For padding the message, RIPEMD-160 acts like [[MD4]] (RFC 1320).
 
 Find the RIPEMD-160 message digest of a string of [[octet]]s.
@@ -852,7 +852,7 @@ b3be159860842cebaa7174c8fff0aa9e50a5199f
 ```
 
 
-The [https://metacpan.org/release/CryptX CryptX] module also implements RIPEMD-160 along with the 128-, 256-, and 320-bit variants, as well many many other hashes.  This gives identical output as above as expected.
+The [CryptX](https://metacpan.org/release/CryptX) module also implements RIPEMD-160 along with the 128-, 256-, and 320-bit variants, as well many many other hashes.  This gives identical output as above as expected.
 
 ```perl
 use Crypt::Digest::RIPEMD160 qw/ripemd160_hex/;
@@ -1532,10 +1532,10 @@ object RosettaRIPEMD160 extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/msgdigest.htm msgdigest.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/msgdigest.htm#ripemd160(in_var_string) ripemd160],
+The Seed7 library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm) defines
+the function [ripemd160](http://seed7.sourceforge.net/libraries/msgdigest.htm#ripemd160(in_var_string)),
 which computes a RIPEMD-160 message digest. No external library is needed.
-The source code of ripemd160 can be found [http://seed7.sourceforge.net/algorith/msgdigest.htm#ripemd160 here].
+The source code of ripemd160 can be found [here](http://seed7.sourceforge.net/algorith/msgdigest.htm#ripemd160).
 
 
 ```seed7
@@ -1559,14 +1559,14 @@ b3be159860842cebaa7174c8fff0aa9e50a5199f
 
 ## Swift
 
-Full implementation on [http://github.com/CryptoCoinSwift/RIPEMD-Swift/ Github]. A single block is processed as shown below.
+Full implementation on [Github](http://github.com/CryptoCoinSwift/RIPEMD-Swift/). A single block is processed as shown below.
 
 To apply RIPEMD to "Rosetta Code" takes a single block. The message itself is put in the first 3 words. It's followed by 0x80 in the fourth word.The last two UInt32's (words) are used to specify the length of the message in bits.
 
 Everything is in little endian, so "Rose" becomes "esoR" becomes 0x65_73_6f_52
 
 ```swift
-// Circular left shift: http://en.wikipedia.org/wiki/Circular_shift
+// Circular left shift: <http://en.wikipedia.org/wiki/Circular_shift>
 // Precendence should be the same as <<
 infix operator  ~<< { precedence 160 associativity none }
 

@@ -71,7 +71,7 @@ languages = [
 ## Task
 
 Write a program that will list everything in the current folder,   similar to:
-:::*   the Unix utility   “<tt>ls</tt>”   [http://man7.org/linux/man-pages/man1/ls.1.html]       or
+:::*   the Unix utility   “<tt>ls</tt>”   <http://man7.org/linux/man-pages/man1/ls.1.html>       or
 :::*   the Windows terminal command   “<tt>DIR</tt>”
 
 
@@ -753,7 +753,7 @@ main = do
 
 ## J
 
-See the [http://www.jsoftware.com/wsvn/base8/trunk/main/main/dir.ijs dir.ijs script] for a full description of the interface for <code>dir</code>:
+See the [dir.ijs script](http://www.jsoftware.com/wsvn/base8/trunk/main/main/dir.ijs) for a full description of the interface for <code>dir</code>:
 
 ```J
    dir ''       NB. includes properties
@@ -1416,7 +1416,7 @@ sort result;
 
 ## Stata
 
-Stata has a builtin '''[http://www.stata.com/help.cgi?dir dir]''' command (or equivalently '''ls''').
+Stata has a builtin '''[dir](http://www.stata.com/help.cgi?dir)''' command (or equivalently '''ls''').
 
 
 ```stata

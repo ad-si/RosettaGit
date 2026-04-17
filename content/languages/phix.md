@@ -12,7 +12,7 @@ tags = []
 
 Phix is a self-hosted hybrid interpreter/compiler, developed by Pete Lomax. It is very easy to use, and similar to Euphoria.
 
-[http://phix.x10.mx/download.php A simple 20MB download] contains a pre-compiled executable, all the sources, and'' '''everything''' ''needed to recompile them, in about 15 seconds. The download also contains a full-featured programmer's editor and 130+ demo programs.
+[A simple 20MB download](http://phix.x10.mx/download.php) contains a pre-compiled executable, all the sources, and'' '''everything''' ''needed to recompile them, in about 15 seconds. The download also contains a full-featured programmer's editor and 130+ demo programs.
 
 Perhaps the most striking feature of Phix is that it has just five builtin data types:
 
@@ -35,5 +35,5 @@ Phix is not inherently object orientated, but achieves many of the claimed benef
 The fundamental goal of Phix is to make debugging easier, a whole subject area that does not seem to get the attention it deserves, despite several studies finding that most programmers actually spend between 70 and 90% of their time debugging. (Most of us tend to think that getting just-written code to work is somehow not debugging, but that bloke with a clipboard stood behind you would disagree.)
 
 ## See also
-* [http://phix.x10.mx Phix site]
-* [https://bitbucket.org/petelomax/phix/src bitbucket]
+* [Phix site](http://phix.x10.mx)
+* [bitbucket](https://bitbucket.org/petelomax/phix/src)

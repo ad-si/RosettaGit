@@ -13,4 +13,4 @@ tags = []
 '''SwiftForth''' (executable name '''sf''') is an optimizing native-code ANS Forth system that runs under [Windows](https://rosettacode.org/wiki/Windows), [Linux](https://rosettacode.org/wiki/Linux), and [Mac OS X](https://rosettacode.org/wiki/Mac_OS_X), and is a close relative of '''SwiftX''', an ANS Forth system for embedded targets.
 
 ## External links
-* http://forth.com/
+* <http://forth.com/>

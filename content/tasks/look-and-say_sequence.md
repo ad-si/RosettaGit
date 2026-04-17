@@ -133,9 +133,9 @@ Write a program to generate successive members of the look-and-say sequence.
 
 ## See also
 
-*   [https://www.youtube.com/watch?v=ea7lJkEhytA Look-and-Say Numbers (feat John Conway)], A Numberphile Video.
+*   [Look-and-Say Numbers (feat John Conway)](https://www.youtube.com/watch?v=ea7lJkEhytA), A Numberphile Video.
 *   This task is related to, and an application of, the [[Run-length encoding]] task.
-*   Sequence [https://oeis.org/A005150 A005150] on  The On-Line Encyclopedia of Integer Sequences.
+*   Sequence [A005150](https://oeis.org/A005150) on  The On-Line Encyclopedia of Integer Sequences.
 
 
 
@@ -983,10 +983,10 @@ with n=55 are about 31.1, 0.10 and 0.23 seconds.
 ### More Direct Version
 
 Translated and modified from C code by Reddit user "skeeto":
-http://www.reddit.com/r/dailyprogrammer/comments/2ggy30/9152014_challenge180_easy_looknsay/
+<http://www.reddit.com/r/dailyprogrammer/comments/2ggy30/9152014_challenge180_easy_looknsay/>
 
 Using ideas from:
-http://www.njohnston.ca/2010/10/a-derivation-of-conways-degree-71-look-and-say-polynomial/
+<http://www.njohnston.ca/2010/10/a-derivation-of-conways-degree-71-look-and-say-polynomial/>
 
 This recursive version is able to generate very large sequences in a short time without memory for the intermediate sequence (and with stack space proportional to the sequence order).
 
@@ -1569,9 +1569,9 @@ Secuencia:
 
 ## Gambas
 
-'''Code is modified from the [[http://rosettacode.org/wiki/Look-and-say_sequence#PureBasic PureBasic]] example'''
+'''Code is modified from the [PureBasic](http://rosettacode.org/wiki/Look-and-say_sequence#PureBasic) example'''
 
-'''[https://gambas-playground.proko.eu/?gist=83d63e1706fa1dc3c7468b1e9d7bcf05 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=83d63e1706fa1dc3c7468b1e9d7bcf05)'''
 
 ```gambas
 Public Sub Main()
@@ -2662,7 +2662,7 @@ run this example with 'ocaml -I +pcre pcre.cma script.ml'
 
 
 ```ocaml
-(* see http://oeis.org/A005150 *)
+(* see <http://oeis.org/A005150> *)
 
 let look_and_say s =
 let n = String.length s
@@ -2703,7 +2703,7 @@ List.map (String.length) (las 59);;
     12680852]
 *)
 
-(* see http://oeis.org/A005341 *)
+(* see <http://oeis.org/A005341> *)
 ```
 
 
@@ -3899,7 +3899,7 @@ Without regular expression:
 
 
 ```ruby
-# Adding clusterization (http://apidock.com/rails/Enumerable/group_by)
+# Adding clusterization (<http://apidock.com/rails/Enumerable/group_by>)
 module Enumerable
   # clumps adjacent elements together
   # >> [2,2,2,3,3,4,2,2,1].cluster
@@ -4026,7 +4026,7 @@ object LookAndSay extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/V5Jn5mf/0 (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/7kn0fV3gTaqCDLIv4QGuMQ Scastie (JVM)].
+{{Out}}See it running in your browser by [(JavaScript, non JVM)](https://scalafiddle.io/sf/V5Jn5mf/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/7kn0fV3gTaqCDLIv4QGuMQ).
 
 ### using Iterator
 

@@ -25,13 +25,13 @@ Will work with emacs or vi! I use c mode.
 ## External Links and References
 ###  Web Pages
 
-* [http://www.zenkinetic.com/zkl.html zkl home page]
-* [http://www.zenkinetic.com/zklDownloads.html zkl downloads page]
+* [zkl home page](http://www.zenkinetic.com/zkl.html)
+* [zkl downloads page](http://www.zenkinetic.com/zklDownloads.html)
 
 
 ###  Books
 
-* [http://www.zenkinetic.com/Documents/zklManual.pdf The zkl programming language and reference manual (PDF)]
+* [The zkl programming language and reference manual (PDF)](http://www.zenkinetic.com/Documents/zklManual.pdf)
 
 ## Todo
 [Reports:Tasks_not_implemented_in_Zkl](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Zkl)

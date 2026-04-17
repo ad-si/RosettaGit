@@ -20,4 +20,4 @@ There is very little [C](https://rosettacode.org/wiki/C) code in the implementat
 Recently (About the middle of 2009) CM3 has seen a surge in development, and a stable release is planned. Version 5.8 RC3 is available, with a stable release in the next few months.
 
 ## External Links
-* [http://modula3.elegosoft.com/cm3/ Critical Mass Modula-3]
+* [Critical Mass Modula-3](http://modula3.elegosoft.com/cm3/)

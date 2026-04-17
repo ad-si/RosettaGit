@@ -32,6 +32,6 @@ It would be better if these links included the #lang part in the URL to jump to 
 
 :: My take on how to solve this issue is to '''introduce collapsible language sections'''. If entering a task without the language tag, all the language sections could be collapsed with options to open them. If entering using a tag, then the general description of the task and the tagged language would be open. --[[User:Holroy|Holroy]] ([[User talk:Holroy|talk]]) 19:15, 5 March 2015 (UTC)
 
-::: I wrote a blog entry, [http://oddsbyeven.blogspot.com/2015/03/bookmarklet-idea-collapse-all.html Boomarklet Idea - Collapse all subsections], to illustrate my concept of collapsing language sections. --[[User:Holroy|Holroy]] ([[User talk:Holroy|talk]]) 21:16, 5 March 2015 (UTC)
+::: I wrote a blog entry, [Boomarklet Idea - Collapse all subsections](http://oddsbyeven.blogspot.com/2015/03/bookmarklet-idea-collapse-all.html), to illustrate my concept of collapsing language sections. --[[User:Holroy|Holroy]] ([[User talk:Holroy|talk]]) 21:16, 5 March 2015 (UTC)
 
 :::: Ideally, if this were implemented, it would be implemented in the wiki software we use here (which I believe is [[mw:Gerrit|mediawiki]]). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 22:25, 7 July 2015 (UTC)

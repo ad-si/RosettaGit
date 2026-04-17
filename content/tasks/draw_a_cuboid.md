@@ -63,10 +63,10 @@ languages = [
 
 ## Task
 
-Draw a   [http://en.wikipedia.org/wiki/Cuboid cuboid]   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big>
+Draw a   [cuboid](http://en.wikipedia.org/wiki/Cuboid)   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big>
 
 
-The cuboid can be represented graphically, or in   [https://en.wikipedia.org/wiki/ASCII_art ASCII art],   depending on the language capabilities.
+The cuboid can be represented graphically, or in   [ASCII art](https://en.wikipedia.org/wiki/ASCII_art),   depending on the language capabilities.
 
 To fulfill the criteria of being a cuboid, three faces must be visible.
 
@@ -163,7 +163,7 @@ end Main;
 
 ## AutoHotkey
 
-{{libheader|GDIP}}Some portions of code from [http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/ Gdip examples].
+{{libheader|GDIP}}Some portions of code from [Gdip examples](http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
 
 ```AutoHotkey
 Angle := 45
@@ -578,7 +578,7 @@ Output :
 ## C++
 
 
-This code needs the BGI for Windows available at [http://www.cs.colorado.edu/~main/cs1300/doc/bgi/bgi.html Colorado State University].
+This code needs the BGI for Windows available at [Colorado State University](http://www.cs.colorado.edu/~main/cs1300/doc/bgi/bgi.html).
 
 
 ```cpp
@@ -762,7 +762,7 @@ namespace Cuboid
 ```
 
 
-[http://i.imgur.com/7io7wo4.png]
+<http://i.imgur.com/7io7wo4.png>
 
 
 ## D
@@ -966,7 +966,7 @@ S{ Camera3D
 ] until drop close-window
 ```
 
-[https://i.imgur.com/JQMPjhk.png]
+<https://i.imgur.com/JQMPjhk.png>
 
 
 ## Go
@@ -3483,7 +3483,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/bdew8ihhm0c79sd/DrawCuboid.jpg?dl=0
+<https://www.dropbox.com/s/bdew8ihhm0c79sd/DrawCuboid.jpg?dl=0>
 
 
 ## Ruby
@@ -4011,7 +4011,7 @@ SetVid(3);                              \restore normal text mode (for DOS)
 ## zkl
 
 Draws a wire frame PPM image, no hidden/dotted lines.<br/>
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var [const] M=50.0;
@@ -4037,7 +4037,7 @@ fcn cuboid(w,h,z){
 }(2,3,4);
 ```
 
-http://www.zenkinetic.com/Images/RosettaCode/cuboid.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/cuboid.jpg>
 
 
 ## ZX Spectrum Basic

@@ -2214,7 +2214,7 @@ while ($_ = <$fh>) {
 ## Perl 6
 
 {{works with|Rakudo|2017.08}}
-Saving the "Days of Week, Also Known As"  table to a local file [https://github.com/thundergnat/rc-run/blob/master/rc/resources/DoWAKA.txt DoWAKA.txt]. Lines that have duplicate day names will get ∞ as the minimum number of characters, as there is no amount of characters that can be entered to distinguish the days uniquely. It is somewhat unclear as to what is meant by "return a null string". I have chosen to return Nil.
+Saving the "Days of Week, Also Known As"  table to a local file [DoWAKA.txt](https://github.com/thundergnat/rc-run/blob/master/rc/resources/DoWAKA.txt). Lines that have duplicate day names will get ∞ as the minimum number of characters, as there is no amount of characters that can be entered to distinguish the days uniquely. It is somewhat unclear as to what is meant by "return a null string". I have chosen to return Nil.
 
 Note that this is using a previous version of the date file that has erroneous duplicate day names (see line 90). Since the effort was already expended to catch such problems, it may as well be demonstrated.
 

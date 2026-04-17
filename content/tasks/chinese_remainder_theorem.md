@@ -214,7 +214,7 @@ x=          23
 ## Ada
 
 
-Using the package Mod_Inv from [[http://rosettacode.org/wiki/Modular_inverse#Ada]].
+Using the package Mod_Inv from <http://rosettacode.org/wiki/Modular_inverse#Ada>.
 
 
 ```Ada
@@ -518,7 +518,7 @@ namespace ChineseRemainderTheorem
 
 ## Clojure
 
-Modeled after the Python version http://rosettacode.org/wiki/Category:Python
+Modeled after the Python version <http://rosettacode.org/wiki/Category:Python>
 
 ```lisp
 (ns test-p.core
@@ -614,7 +614,7 @@ print crt [3,5,7], [2,3,2]
 
 ## Common Lisp
 
-Using function ''invmod'' from [[http://rosettacode.org/wiki/Modular_inverse#Common_Lisp]].
+Using function ''invmod'' from <http://rosettacode.org/wiki/Modular_inverse#Common_Lisp>.
 
 ```lisp
 
@@ -867,7 +867,7 @@ undefined
 
 
 =={{header|F_Sharp|F#}}==
-===[https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Search_by_sieving sieving]===
+===[sieving](https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Search_by_sieving)===
 
 ```fsharp
 let rec sieve cs x N =
@@ -2496,7 +2496,7 @@ fn main() {
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/9QZvFht/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/njcaS3BFT6GtaWT2cHiwXg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/9QZvFht/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/njcaS3BFT6GtaWT2cHiwXg).
 
 ```Scala
 import scala.util.{Success, Try}

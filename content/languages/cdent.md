@@ -16,5 +16,5 @@ C'Dent is a Acmeist programming language for writing portable modules. It define
 
 The main idea behind the language, is that if you write modules in a strict subset of your favorite programming language, the modules can be shipped to many languages' module repositories. [TestML](https://rosettacode.org/wiki/TestML) and [Stardoc](https://rosettacode.org/wiki/Stardoc) are related Acmeist projects for portable unit tests and documentation, respectively.
 
-* Reference: [http://cdent.org/ http://cdent.org/]
-* Reference: [http://cdent.org/examples/hello-world/ http://cdent.org/examples/hello-world/]
+* Reference: [http://cdent.org/](http://cdent.org/)
+* Reference: [http://cdent.org/examples/hello-world/](http://cdent.org/examples/hello-world/)

@@ -891,7 +891,7 @@ Sums to 100:
 
 }}
 
-Inspired by https://autohotkey.com/board/topic/149914-five-challenges-to-do-in-an-hour/
+Inspired by <https://autohotkey.com/board/topic/149914-five-challenges-to-do-in-an-hour/>
 
 ```AutoHotkey
 global Matches:=[]

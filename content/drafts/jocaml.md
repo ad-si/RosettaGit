@@ -12,6 +12,6 @@ tags = []
 
 JoCaml is OCaml plus the join calculus, that is, OCaml extended for concurrent and distributed programming.
 
-Website of JoCaml: http://moscova.inria.fr/jocaml/
+Website of JoCaml: <http://moscova.inria.fr/jocaml/>
 
-Wikipedia article: http://en.wikipedia.org/wiki/JoCaml
+Wikipedia article: <http://en.wikipedia.org/wiki/JoCaml>

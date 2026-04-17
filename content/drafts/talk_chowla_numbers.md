@@ -51,7 +51,7 @@ In French—and many other languages—a comma indicates the decimal, so 26,000 
 :: The quote is an epigraph.   Chowla numbers (or its function) has significant relevance concerning number theory. It wasn't meant to take attention away from the task at hand, but to add reflection.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:54, 12 March 2019 (UTC)
 
 ::: Well, epigraphs on RC. That's change.
-:::(P.S. Obligatory [https://xkcd.com/435/ xkcd comic]. To which someone [https://i.imgur.com/sEevZ.png replied]. And [https://qphl.fs.quoracdn.net/main-qimg-bb61a9b12a5047d3ca4f28697f8c5a52-c replied]. And [http://darjeelingzen.blogspot.com/2012/06/fields-arranged-by-purity-of-concept.html replied]) --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 23:11, 12 March 2019 (UTC)
+:::(P.S. Obligatory [xkcd comic](https://xkcd.com/435/). To which someone [replied](https://i.imgur.com/sEevZ.png). And [replied](https://qphl.fs.quoracdn.net/main-qimg-bb61a9b12a5047d3ca4f28697f8c5a52-c). And [replied](http://darjeelingzen.blogspot.com/2012/06/fields-arranged-by-purity-of-concept.html)) --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 23:11, 12 March 2019 (UTC)
 
 :::Hi Gerard, Maybe the epigraph should be left out. It too could be thought of as something best left to the talk page. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 23:28, 12 March 2019 (UTC)
 

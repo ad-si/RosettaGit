@@ -463,7 +463,7 @@ end.
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276379.html#276379 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % CocktailSort("")
@@ -1575,7 +1575,7 @@ unsorted   -2  -4   7  -5  -7   4   2  -1   5  -6   6   1   0  -3   3
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=ee5467e58f0ef649373eed5a2503b988 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=ee5467e58f0ef649373eed5a2503b988)'''
 
 ```gambas
 Public Sub Main()
@@ -3619,7 +3619,7 @@ const proc: cocktailSort (inout array elemType: arr) is func
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/sorting.htm#cocktailSort]
+Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#cocktailSort>
 
 
 ## Sidef

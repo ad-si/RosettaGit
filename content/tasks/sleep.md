@@ -2272,7 +2272,7 @@ echo "Awake!\n";
 (prinl "Awake!")
 ```
 
-As [http://software-lab.de/doc/refW.html#wait wait] will continue executing
+As [wait](http://software-lab.de/doc/refW.html#wait) will continue executing
 background events, another possibility (for a complete stop) is calling
 some external program like
 
@@ -2361,7 +2361,7 @@ print "Awake!"
 
 ## R
 
-The call to flush.console is only needed if buffering is turned on.  See [http://cran.r-project.org/bin/windows/base/rw-FAQ.html#The-output-to-the-console-seems-to-be-delayed FAQ for R on windows].  The time is given in seconds (fractions allowed, resolution is system dependent).
+The call to flush.console is only needed if buffering is turned on.  See [FAQ for R on windows](http://cran.r-project.org/bin/windows/base/rw-FAQ.html#The-output-to-the-console-seems-to-be-delayed).  The time is given in seconds (fractions allowed, resolution is system dependent).
 
 ```R
 
@@ -2688,7 +2688,7 @@ Scheme implementations also provide alternative approaches.  For example, Chicke
 ## Seed7
 
 
-The [http://seed7.sourceforge.net/libraries/duration.htm duration.s7i] library defines the function ''wait'', which takes an argument of type ''duration''. Functions to create durations with years, months, days, hours, minutes, seconds and micro seconds exist also.
+The [duration.s7i](http://seed7.sourceforge.net/libraries/duration.htm) library defines the function ''wait'', which takes an argument of type ''duration''. Functions to create durations with years, months, days, hours, minutes, seconds and micro seconds exist also.
 
 
 ```seed7
@@ -2913,7 +2913,7 @@ echo "Awake!"
 ```
 
 
-This uses the [http://www.openbsd.org/cgi-bin/man.cgi?query=sleep&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html sleep(1)] command. POSIX sleep(1) only takes an integer, as in <tt>sleep 2</tt>, so you can only sleep for a whole number of seconds. Some systems extend sleep(1) to take a decimal fraction, as in <tt>sleep 2.5</tt>.
+This uses the [sleep(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=sleep&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) command. POSIX sleep(1) only takes an integer, as in <tt>sleep 2</tt>, so you can only sleep for a whole number of seconds. Some systems extend sleep(1) to take a decimal fraction, as in <tt>sleep 2.5</tt>.
 
 
 ## Ursa

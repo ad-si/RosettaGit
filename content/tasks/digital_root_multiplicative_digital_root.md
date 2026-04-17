@@ -87,9 +87,9 @@ Show all output on this page.
 
 ## References
 
-* [http://mathworld.wolfram.com/MultiplicativeDigitalRoot.html Multiplicative Digital Root] on Wolfram Mathworld.
-* [http://oeis.org/A031347 Multiplicative digital root] on The On-Line Encyclopedia of Integer Sequences.
-* [https://www.youtube.com/watch?v=Wim9WJeDTHQ What's special about 277777788888899?] - Numberphile video
+* [Multiplicative Digital Root](http://mathworld.wolfram.com/MultiplicativeDigitalRoot.html) on Wolfram Mathworld.
+* [Multiplicative digital root](http://oeis.org/A031347) on The On-Line Encyclopedia of Integer Sequences.
+* [What's special about 277777788888899?](https://www.youtube.com/watch?v=Wim9WJeDTHQ) - Numberphile video
 
 
 
@@ -170,7 +170,7 @@ MP: [n0..n4]
 ## Ada
 
 
-The solution uses the Package "Generic_Root" from the additive digital roots [[http://rosettacode.org/wiki/Digital_root#Ada]].
+The solution uses the Package "Generic_Root" from the additive digital roots <http://rosettacode.org/wiki/Digital_root#Ada>.
 
 
 ```Ada

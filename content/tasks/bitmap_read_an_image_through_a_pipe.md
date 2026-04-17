@@ -33,7 +33,7 @@ This task is the ''opposite'' of the [[PPM conversion through a pipe]]. In this 
 
 ## AutoHotkey
 
-Uses [http://www.autohotkey.com/forum/viewtopic.php?t=16823 StdoutTovar.ahk] 
+Uses [StdoutTovar.ahk](http://www.autohotkey.com/forum/viewtopic.php?t=16823) 
 
 ```AutoHotkey
 ppm := Run("cmd.exe /c convert lena50.jpg ppm:-") 
@@ -410,7 +410,7 @@ $b.data = $proc.out.slurp.ords.rotor(3).map:
 ```
 
 
-See [https://github.com/thundergnat/rc/blob/master/img/camelia.png camelia image here].
+See [camelia image here](https://github.com/thundergnat/rc/blob/master/img/camelia.png).
 
 
 ## PicoLisp
@@ -555,7 +555,7 @@ proc magickalReadImage {bufferImage fileName} {
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Using the convert utility by ImageMagick:
 

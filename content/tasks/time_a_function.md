@@ -985,7 +985,7 @@ Output:
 ## Common Lisp
 
 
-Common Lisp provides a standard utility for performance measurement, [http://www.lispworks.com/documentation/HyperSpec/Body/m_time.htm time]:
+Common Lisp provides a standard utility for performance measurement, [time](http://www.lispworks.com/documentation/HyperSpec/Body/m_time.htm):
 
 
 ```lisp
@@ -1002,9 +1002,9 @@ Evaluation took:
 
 (The example output here is from [[SBCL]].)
 
-However, it merely prints textual information to [http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_t.htm#trace_output trace output], so the information is not readily available for further processing (except by parsing it in a CL-implementation-specific manner).
+However, it merely prints textual information to [trace output](http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_t.htm#trace_output), so the information is not readily available for further processing (except by parsing it in a CL-implementation-specific manner).
 
-The functions [http://www.lispworks.com/documentation/HyperSpec/Body/f_get__1.htm get-internal-run-time] and [http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm get-internal-real-time] may be used to get time information programmatically, with at least one-second granularity (and usually more). Here is a function which uses them to measure the time taken for one execution of a provided function:
+The functions [get-internal-run-time](http://www.lispworks.com/documentation/HyperSpec/Body/f_get__1.htm) and [get-internal-real-time](http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm) may be used to get time information programmatically, with at least one-second granularity (and usually more). Here is a function which uses them to measure the time taken for one execution of a provided function:
 
 
 ```lisp
@@ -1366,7 +1366,7 @@ time;
 
 ### go test
 
-The Go command line tool <code>go test</code> includes [http://golang.org/pkg/testing/#hdr-Benchmarks benchmarking support].
+The Go command line tool <code>go test</code> includes [benchmarking support](http://golang.org/pkg/testing/#hdr-Benchmarks).
 Given a package with functions:
 
 ```go
@@ -1418,7 +1418,7 @@ ok  		3.642s
 The first number is the value of <code>b.N</code> chosen and the second the average time per iteration.
 The <code>testing</code> package can optionally include memory use and throughput benchmarks.
 
-There is also a [https://golang.org/x/tools/cmd/benchcmp standard tool] to compare the multiple benchmark outputs (installable via <code>go get golang.org/x/tools/cmd/benchcmp</code>).
+There is also a [standard tool](https://golang.org/x/tools/cmd/benchcmp) to compare the multiple benchmark outputs (installable via <code>go get golang.org/x/tools/cmd/benchcmp</code>).
 
 
 ### testing.Benchmark
@@ -1724,7 +1724,7 @@ Benchmark report(1, 1, func)
 
 Time and space requirements are tested using verbs obtained through the Foreign conjunction (<code>!:</code>). <code>6!:2</code> returns time required for execution, in floating-point measurement of seconds. <code>7!:2</code> returns a measurement of space required to execute. Both receive as input a sentence for execution. The verb <code>timespacex</code> combines these and is available in the standard library.
 
-When the [http://www.jsoftware.com/help/dictionary/dmcapdot.htm Memoize] feature or similar techniques are used, execution time and space can both be affected by prior calculations.
+When the [Memoize](http://www.jsoftware.com/help/dictionary/dmcapdot.htm) feature or similar techniques are used, execution time and space can both be affected by prior calculations.
 
 ### Example
 
@@ -2301,10 +2301,10 @@ printf(1,"%3.2fs.\n",time()-t0)
 
 ## PicoLisp
 
-There is a built-in function '[http://software-lab.de/doc/refB.html#bench bench]'
+There is a built-in function '[bench](http://software-lab.de/doc/refB.html#bench)'
 for that. However, it measures wall-clock time, because for practical purposes
 the real time needed by a task (including I/O and communication) is more meaningful.
-There is another function, '[http://software-lab.de/doc/refT.html#tick tick]', which
+There is another function, '[tick](http://software-lab.de/doc/refT.html#tick)', which
 also measures user time, and is used by the profiling tools.
 
 ```PicoLisp
@@ -2972,7 +2972,7 @@ end
 
 ## Stata
 
-Stata can track up to 100 timers. See '''[http://www.stata.com/help.cgi?timer timer]''' in Stata help.
+Stata can track up to 100 timers. See '''[timer](http://www.stata.com/help.cgi?timer)''' in Stata help.
 
 
 ```stata

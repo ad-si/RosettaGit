@@ -25,7 +25,7 @@ And by the way, the C++ implementation does not uses 2-grams as [[User:Rdm|Rdm]]
 
 Currently, the J entry wraps oddly in Safari.
 
-This seems to be because of the style sheet http://rosettacode.org/mw/load.php?debug=false&lang=en&modules=ext.bootstrap.styles&only=styles&skin=chameleon which contains '''word-wrap: break-word;''' (along with a bunch of other stuff). Disabling this removes the wrapping (which seems to be on character boundaries rather than word boundaries).
+This seems to be because of the style sheet <http://rosettacode.org/mw/load.php?debug=false&lang=en&modules=ext.bootstrap.styles&only=styles&skin=chameleon> which contains '''word-wrap: break-word;''' (along with a bunch of other stuff). Disabling this removes the wrapping (which seems to be on character boundaries rather than word boundaries).
 
 I'm not sure why we have things set up this way, but my impression is that if we are trying to achieve word wrap we should not be using the pre tag (even in the heavily doctored way that it's currently being used).
 
@@ -39,7 +39,7 @@ Does anyone else get a semi-broken link    (within the first sentence of this ta
 It does directs me to the 
 
 <nowiki> 
-[http://www.rose-hulman.edu/Users/faculty/young/CS-Classes/csse220/200820/web/Programs/Markov/markov.html Markov Chain algorithm] </nowiki>  
+[Markov Chain algorithm](http://www.rose-hulman.edu/Users/faculty/young/CS-Classes/csse220/200820/web/Programs/Markov/markov.html) </nowiki>  
 
 and it displays:
                               Please accept our apologies!

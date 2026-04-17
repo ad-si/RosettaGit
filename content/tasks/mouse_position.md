@@ -213,7 +213,7 @@ return
 
 ### with DllCall
 
-Source: [https://github.com/jNizM/AHK_DllCall_WinAPI/ GetCursorPos @github] by jNizM
+Source: [GetCursorPos @github](https://github.com/jNizM/AHK_DllCall_WinAPI/) by jNizM
 
 ```AutoHotkey
 GetCursorPos()
@@ -232,7 +232,7 @@ MsgBox, % "GetCursorPos function`n"
         . "y-coordinate:`t`t"     GetCursorPos[1]
 ```
 
-Source: [https://github.com/jNizM/AHK_DllCall_WinAPI/ GetPhysicalCursorPos @github] by jNizM
+Source: [GetPhysicalCursorPos @github](https://github.com/jNizM/AHK_DllCall_WinAPI/) by jNizM
 
 ```AutoHotkey
 GetPhysicalCursorPos()
@@ -417,7 +417,7 @@ end.
 ## EasyLang
 
 
-[https://easylang.online/apps/run.html?code=on%20mouse_move%0Acolor%20889%0Arect%20100%20100%0Acolor%20000%0Atext%20mouse_x%20%26%20%22%20%22%20%26%20mouse_y%0A. Run it]
+[Run it](https://easylang.online/apps/run.html?code=on%20mouse_move%0Acolor%20889%0Arect%20100%20100%0Acolor%20000%0Atext%20mouse_x%20%26%20%22%20%22%20%26%20mouse_y%0A.)
 
 <lang>on mouse_move
   color 889
@@ -1040,7 +1040,7 @@ $w.show()
 
 ## OCaml
 
-equivalent to the C example, uses the Xlib binding [http://www.linux-nantes.org/~fmonnier/OCaml/Xlib/ ocaml-xlib]
+equivalent to the C example, uses the Xlib binding [ocaml-xlib](http://www.linux-nantes.org/~fmonnier/OCaml/Xlib/)
 
 ```OCaml
 open Xlib
@@ -1369,7 +1369,7 @@ There are other alternatives but they are platform specific.
 Shows position of mouse while it is over the program windows and
 changes color of window when mouse is near (<10) hot spot 100,100.
 
-Code is based on post in Daniweb: http://www.daniweb.com/forums/post616327.html#post616327 by ZZucker
+Code is based on post in Daniweb: <http://www.daniweb.com/forums/post616327.html#post616327> by ZZucker
 
 ```python
 
@@ -1608,9 +1608,9 @@ x: 0, y: 0
 
 ## Seed7
 
-The functions [http://seed7.sourceforge.net/libraries/graph.htm#pointerXPos%28in_PRIMITIVE_WINDOW%29 pointerXPos]
-and [http://seed7.sourceforge.net/libraries/graph.htm#pointerYPos%28in_PRIMITIVE_WINDOW%29 pointerYPos] from the
-[http://seed7.sourceforge.net/libraries/graph.htm graph.s7i] library determine the actual X and Y position of the mouse pointer, relative to the given window:
+The functions [pointerXPos](http://seed7.sourceforge.net/libraries/graph.htm#pointerXPos%28in_PRIMITIVE_WINDOW%29)
+and [pointerYPos](http://seed7.sourceforge.net/libraries/graph.htm#pointerYPos%28in_PRIMITIVE_WINDOW%29) from the
+[graph.s7i](http://seed7.sourceforge.net/libraries/graph.htm) library determine the actual X and Y position of the mouse pointer, relative to the given window:
 
 ```seed7
 xPos := pointerXPos(curr_win);

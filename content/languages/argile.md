@@ -27,4 +27,4 @@ Its main features are:
 * Both indentation-style and braces-style can be used
 
 ## See also
-* [https://savannah.nongnu.org/projects/argile/ Argile project page on Savannah]
+* [Argile project page on Savannah](https://savannah.nongnu.org/projects/argile/)

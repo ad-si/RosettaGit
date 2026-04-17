@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-The flavor of EBNF used here is the same as that defined [http://karmin.ch/ebnf/index here], except a literal can't contain the character used for quoting, and an identifier can't contain whitespace or any of the characters <code>= | ( ) { } [ ] . ; " '</code>.
+The flavor of EBNF used here is the same as that defined [here](http://karmin.ch/ebnf/index), except a literal can't contain the character used for quoting, and an identifier can't contain whitespace or any of the characters <code>= | ( ) { } [ ] . ; " '</code>.
 
 ==A one-liner==
 

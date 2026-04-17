@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}} usocket is a [[Common Lisp]] library providing compatibility among various implementations' socket APIs. See the [http://common-lisp.net/project/usocket/ project page] for more details.
+{{library}} usocket is a [[Common Lisp]] library providing compatibility among various implementations' socket APIs. See the [project page](http://common-lisp.net/project/usocket/) for more details.

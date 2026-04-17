@@ -586,7 +586,7 @@ Return { x+y, x-y }
 ## Clojure
 
 Multiple values can be returned by packaging them in a vector.
-At receiving side, these arguments can be obtained individually by using [http://blog.jayfields.com/2010/07/clojure-destructuring.html destructuring].
+At receiving side, these arguments can be obtained individually by using [destructuring](http://blog.jayfields.com/2010/07/clojure-destructuring.html).
 
 ```clojure
 (defn quot-rem [m n] [(quot m n) (rem m n)])
@@ -1200,9 +1200,9 @@ Its stack effect declares that ''*/'' always returns 2 values. To return a varia
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Return_multiple_values this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Return_multiple_values) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3047,7 +3047,7 @@ puts "33 - 12 = #{difference}"
 
 ## Run BASIC
 
-Courtesy http://dkokenge.com/rbp
+Courtesy <http://dkokenge.com/rbp>
 
 Gets the UTC time from the web
 
@@ -3118,7 +3118,7 @@ You can use pattern matching to extract the components:
 val (sum, difference) = addsub(33, 12)
 ```
 
-Scala borrows this idea from ML, and generalizes it into [http://www.scala-lang.org/node/112 extractors].
+Scala borrows this idea from ML, and generalizes it into [extractors](http://www.scala-lang.org/node/112).
 
 
 ## Scheme
@@ -3162,7 +3162,7 @@ SRFI 11 introduces a <code>let-values</code> construct to make this simpler:
 
 ## Seed7
 
-Seed7 functions can only return one value. That value could be an array or record holding multiple values, but the usual method for returning several values is using a procedure with [http://seed7.sourceforge.net/manual/params.htm#inout_parameter inout] parameters:
+Seed7 functions can only return one value. That value could be an array or record holding multiple values, but the usual method for returning several values is using a procedure with [inout](http://seed7.sourceforge.net/manual/params.htm#inout_parameter) parameters:
 
 ```Seed7
 $ include "seed7_05.s7i";

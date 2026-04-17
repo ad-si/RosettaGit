@@ -104,7 +104,7 @@ languages = [
 ## Task
 
 Comma quibbling is a task originally set by Eric Lippert in his
-[http://blogs.msdn.com/b/ericlippert/archive/2009/04/15/comma-quibbling.aspx blog].
+[blog](http://blogs.msdn.com/b/ericlippert/archive/2009/04/15/comma-quibbling.aspx).
 
 
 ### Requirements
@@ -1678,7 +1678,7 @@ printf "{"; fN [] |> Seq.iter(fun(n,g)->printf "%s%s" n g); printfn"}"
 
 ## Factor
 
-This example uses the <code>inverse</code> vocabulary, which builds on the concept of invertible quotations as the basis for pattern matching. It is discussed at length in this approachable [http://micsymposium.org/mics_2009_proceedings/mics2009_submission_72.pdf paper].
+This example uses the <code>inverse</code> vocabulary, which builds on the concept of invertible quotations as the basis for pattern matching. It is discussed at length in this approachable [paper](http://micsymposium.org/mics_2009_proceedings/mics2009_submission_72.pdf).
 
 ```factor
 USING: inverse qw sequences ;
@@ -1831,7 +1831,7 @@ DECIMAL
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
  include FMS-SI.f
@@ -2044,7 +2044,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=8edc63b206a1de50dd104cd12486ac03 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=8edc63b206a1de50dd104cd12486ac03)'''
 
 ```gambas
 Public Sub Main()

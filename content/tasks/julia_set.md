@@ -200,7 +200,7 @@ BEGIN {
 =
 ## Sinclair ZX81 BASIC
 =
-I don't know exactly how long this takes to run; but I left it for about three and a half hours and when I came back it had already finished. If you can't wait to see the results, I've posted a screenshot [http://edmundgriffiths.com/zxjulia.jpg here]. I also haven't tested it with only 1k of RAM—but I suspect it needs at least 2k.
+I don't know exactly how long this takes to run; but I left it for about three and a half hours and when I came back it had already finished. If you can't wait to see the results, I've posted a screenshot [here](http://edmundgriffiths.com/zxjulia.jpg). I also haven't tested it with only 1k of RAM—but I suspect it needs at least 2k.
 
 You can try changing lines 10 and 20 to run the program with different values of the complex constant <tt>C</tt>+<tt>D</tt><math>i</math>, or lines 50 and 60 to zoom in.
 
@@ -248,7 +248,7 @@ Higher resolution is obtainable, if you have the time to wait for it.
 160 NEXT v
 ```
 
-Screenshot [http://edmundgriffiths.com/spectrumjulia.jpg here].
+Screenshot [here](http://edmundgriffiths.com/spectrumjulia.jpg).
 
 
 ## C
@@ -261,7 +261,7 @@ Interactive implementation which takes the following 6 parameters as input :
 
 ```
 
-Prints out usage on incorrect invocation. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Prints out usage on incorrect invocation. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -796,7 +796,7 @@ julia(-0.8, 0.156)
 ## EasyLang
 
 
-[https://easylang.online/apps/julia-set.html Run it]
+[Run it](https://easylang.online/apps/julia-set.html)
 
 <lang>floatvars
 cx = -0.7
@@ -1006,9 +1006,9 @@ showGraphic toColor 640 480 -0.7 0.27015 1.0 5000
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Julia_set this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Julia_set) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1087,9 +1087,9 @@ view_image pal2;b=:g escapetc (10 255) 500 zl_clur _1.5 1.5j1.5
 ```
 
 
-See also: [http://webbox.lafayette.edu/~reiterc/j/fvj4/index.html Fractals Visualization and J, 4th edition, Part 1] (by Clifford A. Reiter), Chapter 6
+See also: [Fractals Visualization and J, 4th edition, Part 1](http://webbox.lafayette.edu/~reiterc/j/fvj4/index.html) (by Clifford A. Reiter), Chapter 6
 
-See http://webbox.lafayette.edu/~reiterc/mvp/ec_julia/index.html for some other examples. (That said, note that this is a link into a small college site and it might drift over time. In the past, for example, you would have had to use 'www' where it currently says 'webbox')
+See <http://webbox.lafayette.edu/~reiterc/mvp/ec_julia/index.html> for some other examples. (That said, note that this is a link into a small college site and it might drift over time. In the past, for example, you would have had to use 'www' where it currently says 'webbox')
 
 
 ## Java
@@ -1167,7 +1167,7 @@ public class JuliaSet extends JPanel {
 
 ## JavaScript
 
-take a look [http://paulo-jorente.de/tests/juliaset/ here].
+take a look [here](http://paulo-jorente.de/tests/juliaset/).
 
 ```javascript
 
@@ -1785,7 +1785,7 @@ if __name__ == "__main__":
 
 Efficient version using vectorized operations in NumPy.
 
-[https://imgur.com/a/o3j9Zzn Example output.]
+[Example output.](https://imgur.com/a/o3j9Zzn)
 
 ```python
 """
@@ -2572,7 +2572,7 @@ for y in ^h {
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:JuliaSet.zkl.jpg|250px|thumb|right]]
 
 ```zkl

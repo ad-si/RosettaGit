@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-'''GNU Smalltalk''' is an implementation of the [Smalltalk](https://rosettacode.org/wiki/:Category:Smalltalk) programming language by the GNU Project. For download, see [http://smalltalk.gnu.org/ http://smalltalk.gnu.org/].
+'''GNU Smalltalk''' is an implementation of the [Smalltalk](https://rosettacode.org/wiki/:Category:Smalltalk) programming language by the GNU Project. For download, see [http://smalltalk.gnu.org/](http://smalltalk.gnu.org/).
 
 The implementation, unlike other Smalltalk environments, uses text files for program input and interprets the contents as Smalltalk code. In this way, GNU Smalltalk acts more like an interpreter rather than an environment in the traditional Smalltalk manner.
 
@@ -205,5 +205,5 @@ It is possible to use the exception object, which is made available to the handl
          printNl ] on: Warning do: [ :ex | ex resume: 5 ]    "=> 5"
 
 ## External links
-* [http://www.gnu.org GNU]
-* [http://smalltalk.gnu.org/ GNU Smalltalk]
+* [GNU](http://www.gnu.org)
+* [GNU Smalltalk](http://smalltalk.gnu.org/)

@@ -68,7 +68,7 @@ Some are code golf/ or otherwise obscure algorithms. If a language has more than
 
 
 ====Version 1 - regular if / else====
-with linebreaks after each "FizzBuzz":  <!-- http://ideone.com/UrHdvd -->
+with linebreaks after each "FizzBuzz":  <!-- <http://ideone.com/UrHdvd> -->
 
 ```AWK
 # usage: awk  -v n=38  -f FizzBuzz.awk
@@ -107,7 +107,7 @@ BEGIN {
 
 
 ====Version 2 - bash with echo====
-using echo to generate the numbers: <!-- http://ideone.com/0VMIuO -->
+using echo to generate the numbers: <!-- <http://ideone.com/0VMIuO> -->
 
 ```AWK
 echo {1..100} | awk '
@@ -129,7 +129,7 @@ seq 100 | awk '$0=NR%15?NR%5?NR%3?$0:"Fizz":"Buzz":"FizzBuzz"'
 
 
 ====Version 4 - no divisions====
-awk, using no division & no modulo: <!-- http://ideone.com/uHmYUr -->
+awk, using no division & no modulo: <!-- <http://ideone.com/uHmYUr> -->
 
 ```AWK
 # usage: awk -v n=38  -f fizzbuzzNoDiv.awk
@@ -152,7 +152,7 @@ BEGIN {
 Same output as version 1.
 
 ====Version 5 - no divisions, repeating pattern====
-another solution with no division & no modulo: <!-- http://ideone.com/jF9Ddd -->
+another solution with no division & no modulo: <!-- <http://ideone.com/jF9Ddd> -->
 
 ```AWK
 # usage: awk -v n=42  -f fizzbuzzRepeatPattern.awk
@@ -212,6 +212,6 @@ Now the above is just my opinion, and we ''could'' just have an edit war on vers
 
 There's no real way of including something like this here, but perhaps this is worth mentioning:
 
-https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition
+<https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition>
 
 It's... well, see for yourself... --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 01:29, 16 April 2015 (UTC)

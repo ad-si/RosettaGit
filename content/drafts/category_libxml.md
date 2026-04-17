@@ -16,7 +16,7 @@ The library '''libxml''' is a software library for parsing XML documents and it 
 
 Several bindings for several languages exist.
 
-Homepage is at [http://xmlsoft.org/index.html Libxml2 homepage]
+Homepage is at [Libxml2 homepage](http://xmlsoft.org/index.html)
 
 To compile a sample program that use the libxml2:
  gcc -o example -I /usr/include/libxml2 -lxml2 example.c

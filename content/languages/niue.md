@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[http://vmathew.in/niue Niue] is an expressive, lightweight, embeddable scripting language for Java applications.  It has a simple and consistent syntax based on the Reverse Polish notation.  Niue is an extensible language with powerful meta-programming facilities.
+[Niue](http://vmathew.in/niue) is an expressive, lightweight, embeddable scripting language for Java applications.  It has a simple and consistent syntax based on the Reverse Polish notation.  Niue is an extensible language with powerful meta-programming facilities.

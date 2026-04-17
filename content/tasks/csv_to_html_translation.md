@@ -3463,7 +3463,7 @@ The multitude</td><td>Behold his mother! Behold his mother!</td></tr>
 
 ```
 
- Rendered output is available at http://www.diga.me.uk/csvhtml.gif
+ Rendered output is available at <http://www.diga.me.uk/csvhtml.gif>
 
 
 ## Lua
@@ -4356,7 +4356,7 @@ Output:
 ### Simple solution
 
 
-OCaml possesses a [http://forge.ocamlcore.org/projects/csv/ CSV module]
+OCaml possesses a [CSV module](http://forge.ocamlcore.org/projects/csv/)
 but we do not use it hereafter because the CSV data does not contain comas.
 
 
@@ -5896,8 +5896,8 @@ $ sed -f csv2html.sed input.csv
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/html_ent.htm html_ent.s7i] defines the
-function [http://seed7.sourceforge.net/libraries/html_ent.htm#encodeHtmlContent%28in_string%29 encodeHtmlContent],
+The library [html_ent.s7i](http://seed7.sourceforge.net/libraries/html_ent.htm) defines the
+function [encodeHtmlContent](http://seed7.sourceforge.net/libraries/html_ent.htm#encodeHtmlContent%28in_string%29),
 which replaces characters with HTML entities. E.g.: '<' is replaced by ''&amp;lt;''.
 
 ```seed7
@@ -6634,7 +6634,7 @@ The multitude,Behold his mother! Behold his mother!
 
 
 <h3>Setup</h3>
-# Download to a local copy of the [http://pascaliburnus.seanbdurkin.id.au/index.php?/archives/17-A-Generalised-and-Comprehensive-Solution-to-CSV-to-XML-and-XML-to-CSV-Transformations.html#extended csv-to-xml.xslt library] style-sheet listed in the linked blog entry. Alternatively a copy of the style-sheet on this wiki can be found here: [[csv-to-xml.xslt]]
+# Download to a local copy of the [csv-to-xml.xslt library](http://pascaliburnus.seanbdurkin.id.au/index.php?/archives/17-A-Generalised-and-Comprehensive-Solution-to-CSV-to-XML-and-XML-to-CSV-Transformations.html#extended) style-sheet listed in the linked blog entry. Alternatively a copy of the style-sheet on this wiki can be found here: [[csv-to-xml.xslt]]
 # Pass as the URI of the input csv as a parameter (named url-of-csv) to your XSLT 2.0 processor
 
  <lang><xsl:stylesheet

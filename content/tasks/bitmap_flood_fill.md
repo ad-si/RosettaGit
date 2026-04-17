@@ -1146,7 +1146,7 @@ Note: I haven't an "Upload files" item, so I can't show the resulting image!
 ## Euler Math Toolbox
 
 
-Using an emulated stack. EMT's recursive stack space is limited. For the notebook with images see [http://www.euler-math-toolbox.de/renegrothmann/Flood%20Fill.html this page].
+Using an emulated stack. EMT's recursive stack space is limited. For the notebook with images see [this page](http://www.euler-math-toolbox.de/renegrothmann/Flood%20Fill.html).
 
 <lang>
 >file="test.png";
@@ -1646,7 +1646,7 @@ floodFillScanlineStack b coords newC = do
 
 ## HicEst
 
-HicEst color fill is via the [http://www.HicEst.com/DeCoRation.htm decoration option of WRITE()]
+HicEst color fill is via the [decoration option of WRITE()](http://www.HicEst.com/DeCoRation.htm)
 
 ```HicEst
 WINDOW(WINdowhandle=wh, BaCkcolor=0, TItle="Rosetta test image")
@@ -2735,7 +2735,7 @@ fn main() {
 ## Scala
 
 
-Based on Lode Vandevenne's algorithm linked to from Wikipedia, [http://lodev.org/cgtutor/floodfill.html#Scanline_Floodfill_Algorithm_With_Stack Scanline Floodfill Algorithm With Stack].
+Based on Lode Vandevenne's algorithm linked to from Wikipedia, [Scanline Floodfill Algorithm With Stack](http://lodev.org/cgtutor/floodfill.html#Scanline_Floodfill_Algorithm_With_Stack).
 
 See [[Basic_bitmap_storage#Scala|Basic Bitmap Storage]] for RgbBitmap class.
 
@@ -3010,7 +3010,7 @@ SetVid(3);                      \restore normal text mode
 
 [[file:Flood_before.zkl.jpg|right]][[file:Flood.zkl.jpg|right]]
 {{trans|D}}
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 
 ```zkl

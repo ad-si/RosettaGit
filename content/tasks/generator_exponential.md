@@ -847,7 +847,7 @@ main()
 ```
 
 
-One must download [http://byuu.org/programming/ libco] and give libco.c to the compiler.
+One must download [libco](http://byuu.org/programming/) and give libco.c to the compiler.
 
 
 ```txt
@@ -3243,7 +3243,7 @@ Next 10 values:
 
 ## Python
 
-In Python, any function that contains a yield statement becomes a generator. The standard libraries itertools module provides the following functions used in the solution: [http://docs.python.org/library/itertools.html#itertools.count count], that will count up from zero; and [http://docs.python.org/library/itertools.html#itertools.islice islice], which will take a slice from an iterator/generator.
+In Python, any function that contains a yield statement becomes a generator. The standard libraries itertools module provides the following functions used in the solution: [count](http://docs.python.org/library/itertools.html#itertools.count), that will count up from zero; and [islice](http://docs.python.org/library/itertools.html#itertools.islice), which will take a slice from an iterator/generator.
 
 {{works with|Python|2.6+ and 3.x}} (in versions prior to 2.6, replace <code>next(something)</code> with <code>something.next()</code>)
 

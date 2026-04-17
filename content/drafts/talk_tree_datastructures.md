@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Attribution==
-My thanks to Ralf Ebert who asked this [https://stackoverflow.com/q/58398986/10562 question] on Stack Overflow which introduced me to the indent form. I answered his question then thought of RC. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:28, 17 October 2019 (UTC)
+My thanks to Ralf Ebert who asked this [question](https://stackoverflow.com/q/58398986/10562) on Stack Overflow which introduced me to the indent form. I answered his question then thought of RC. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:28, 17 October 2019 (UTC)
 
 ==Good idea for a task – a couple of thoughts.==
 This seems a promising kind of task – perhaps worth linking to the Functional Coverage Tree task, so that the latter can use outline parsing routines shaped up here.
@@ -133,6 +133,6 @@ digraph rc {
 ```
 
 
-* [https://commons.wikimedia.org/wiki/File:RC_Tree_Datastructures_diagram.svg  Diagram of tree shown in task: Tree datastructures]
+* [Diagram of tree shown in task: Tree datastructures](https://commons.wikimedia.org/wiki/File:RC_Tree_Datastructures_diagram.svg)
 
  --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 10:06, 20 October 2019 (UTC)

@@ -836,7 +836,7 @@ Timothy Grove            	E16398	29900
 ```
 
 
-Online demo: http://ideone.com/95TxAV
+Online demo: <http://ideone.com/95TxAV>
 
 
 ## Ceylon
@@ -1603,7 +1603,7 @@ E41298  $21900  Nathan Adams
 ```Forth
 
 \ Written in ANS-Forth; tested under VFX.
-\ Requires the novice package: http://www.forth.org/novice.html
+\ Requires the novice package: <http://www.forth.org/novice.html>
 \ The following should already be done:
 \ include novice.4th
 \ include list.4th
@@ -1996,7 +1996,7 @@ var data = EmployeeList{
 //
 // Instead, we'll add a bit here that makes it easier to use arbitrary orderings.
 // This is like the "SortKeys" Planet sorting example in the sort package
-// documentation, see https://golang.org/pkg/sort
+// documentation, see <https://golang.org/pkg/sort>
 
 type By func(e1, e2 *Employee) bool
 type employeeSorter struct {
@@ -2421,8 +2421,8 @@ Claire Buckman      E39876   27800  D202
 David Motsinger     E27002   19250  D202
 ```
 
-Note: In place of writing the sorted result to file outP, [http://www.HicEst.com/DLG.htm DLG] allows the direct export of the formatted and sorted result.
-Use of the CLUSter= and Groups= options of [http://www.HicEst.com/SORT.htm SORT] performs a variance controlled cluster sort of up to 8 columns instead of the department step sort in this example.
+Note: In place of writing the sorted result to file outP, [DLG](http://www.HicEst.com/DLG.htm) allows the direct export of the formatted and sorted result.
+Use of the CLUSter= and Groups= options of [SORT](http://www.HicEst.com/SORT.htm) performs a variance controlled cluster sort of up to 8 columns instead of the department step sort in this example.
 
 =={{header|Icon}} and {{header|Unicon}}==
 

@@ -29,10 +29,10 @@ its descendants. The 360 assembly was introduced with the System/360 in 1964.
 [IBM Basic assembly language and successors](https://en.wikipedia.org/wiki/IBM_Basic_assembly_language_and_successors)
 
 ## See also
-WikiBooks Article: https://en.wikibooks.org/wiki/360_Assembly/360_Instructions
+WikiBooks Article: <https://en.wikibooks.org/wiki/360_Assembly/360_Instructions>
 
 IBM manuals:
 
-* IBM System/360 Principles of operation (c. 1963) : http://bitsavers.trailing-edge.com/pdf/ibm/360/princOps/A22-6821-0_360PrincOps.pdf
+* IBM System/360 Principles of operation (c. 1963) : <http://bitsavers.trailing-edge.com/pdf/ibm/360/princOps/A22-6821-0_360PrincOps.pdf>
 
-* A programmer instrodution to IBM System/360 Assembler Language : http://bitsavers.trailing-edge.com/pdf/ibm/360/asm/SC20-1646-6_int360asm_Aug70.pdf
+* A programmer instrodution to IBM System/360 Assembler Language : <http://bitsavers.trailing-edge.com/pdf/ibm/360/asm/SC20-1646-6_int360asm_Aug70.pdf>

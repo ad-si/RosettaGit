@@ -27,7 +27,7 @@ I fixed up the description. I tried to be more specific, but didn't rule out rec
 
 == Python ==
 
-This task can also be handled by the [http://tnt.math.se.tmu.ac.jp/nzmath/ NZMATH] modules prime and arith1 to enable its trialDivision function.----[[User:Billymac00|Billymac00]] 02:42, 3 January 2011 (UTC)
+This task can also be handled by the [NZMATH](http://tnt.math.se.tmu.ac.jp/nzmath/) modules prime and arith1 to enable its trialDivision function.----[[User:Billymac00|Billymac00]] 02:42, 3 January 2011 (UTC)
 : As I noted in [[Talk:Sieve of Eratosthenes]], feel free to add a code example, as long as there's already an example that satisfies the task description as-written. --[[User:Short Circuit|Michael Mol]] 04:19, 3 January 2011 (UTC)
 
 == Extending the task to producing ranges of primes, optionally. ==

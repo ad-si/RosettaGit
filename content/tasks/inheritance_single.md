@@ -1016,7 +1016,7 @@ include 4pp/lib/foos.4pp
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1337,7 +1337,7 @@ coinsert 'Dog'
 
 <code>coclass</code> specifies that following definitions will be within the named class, and <code>coinsert</code> specifies that the current class will inherit from the named classes (or object -- in J the only difference between a class and an object is its name and how you can create them -- this motivates the "co" prefix on operations which manipulate '''c'''lasses and '''o'''bjects).
 
-See http://www.jsoftware.com/help/jforc/modular_code.htm
+See <http://www.jsoftware.com/help/jforc/modular_code.htm>
 
 That said, some operations in J -- including <code>coinsert</code> -- will create classes if they did not already exist.  So the above may be simplified to:
 
@@ -1933,7 +1933,7 @@ type
 
 ## Oberon
 
-Tested with [https://miasap.se/obnc OBNC].
+Tested with [OBNC](https://miasap.se/obnc).
 
 ```Oberon
 MODULE Animals;
@@ -2254,7 +2254,7 @@ use Dog;
 ```
 
 
-The same using the [http://search.cpan.org/perldoc?MooseX::Declare MooseX::Declare] module:
+The same using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) module:
 
 
 ```perl
@@ -2404,7 +2404,7 @@ EndInterface
 
 ### Simple OOP Version
 
-Using the open-source precompiler [http://www.development-lounge.de/viewtopic.php?t=5915 SimpleOOP].
+Using the open-source precompiler [SimpleOOP](http://www.development-lounge.de/viewtopic.php?t=5915).
 
 ```PureBasic
 Class Animal
@@ -2702,7 +2702,7 @@ class Collie extends Dog
 
 ## Seed7
 
-[http://seed7.sourceforge.net/manual/objects.htm Seed7 object orientation] is based on interface types and implementation types.
+[Seed7 object orientation](http://seed7.sourceforge.net/manual/objects.htm) is based on interface types and implementation types.
 The example below defines a hierarchy of implementation types.
 
 

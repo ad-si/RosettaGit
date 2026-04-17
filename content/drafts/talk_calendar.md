@@ -89,7 +89,7 @@ eleven days.
 ```
 
 The  URL  still works (albeit it re-directs you to the current URL of:
-: http://www.tondering.dk/claus/cal/calendar.html
+: <http://www.tondering.dk/claus/cal/calendar.html>
 Also, if a Julian calendar is going to be mixed with the showing of a Gregorian calendar, it should be so stated. The usual nomanclature is to mark the {Gregorian calendar] date with "OS" [old style]. Some of us older gizzers might remember some calendars that marked George Washington's (1st president of the USA) birthday as one date and another with OS — this was when it was a legal holiday in some states way back when (also, Thomas Jefferson) — this was all changed when congress created a "President's day") — but I digress once again. I was thinking of showing a Mayan calendar mixed with a Gregorian calendar just to show the obvious.  Also, if a Julian calendar is going to be shown, then I would like to see year 4 (as in 4 C.E., for you old gizzers: 4 A.D.) and see if February is a leap year or not.  It wasn't. – [[User:Gerard Schildberger|Gerard Schildberger]] 01:46, 14 April 2012 (UTC)
 
 == Calendar versus CALENDAR ==
@@ -171,4 +171,4 @@ whereas Scala Version 1 shows
 which is in my opinion correct.
 Any opinions/explanations??
 --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 15:06, 23 December 2014 (UTC)
-:See [https://en.wikipedia.org/wiki/Gregorian_calendar Gregorian calendar] on Wikipedia. However, 1752 is not really correct: the switch from the Julian to the Gregorian calendar was initially done in october 1582. Some countries switched later. There is also a [https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar Proleptic Gregorian calendar], which "continues" the Gregorian calendar in both directions, past and future, without any reference to the Julian calendar. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 03:54, 16 March 2017 (UTC)
+:See [Gregorian calendar](https://en.wikipedia.org/wiki/Gregorian_calendar) on Wikipedia. However, 1752 is not really correct: the switch from the Julian to the Gregorian calendar was initially done in october 1582. Some countries switched later. There is also a [Proleptic Gregorian calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar), which "continues" the Gregorian calendar in both directions, past and future, without any reference to the Julian calendar. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 03:54, 16 March 2017 (UTC)

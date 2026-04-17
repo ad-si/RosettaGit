@@ -613,7 +613,7 @@ int main() {
 
 ## Clojure
 
-Using Java 8's [https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String- PathMatcher] patterns.
+Using Java 8's [PathMatcher](https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String-) patterns.
 
 
 ```clojure
@@ -877,7 +877,7 @@ s" ." ls
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=c5fde952fecd1d7052101b1e2287f2ff Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=c5fde952fecd1d7052101b1e2287f2ff)'''
 
 ```gambas
 Public Sub Main()
@@ -963,7 +963,7 @@ main = walk "." ".\\.hs$"
 
 ## HicEst
 
-More on [http://www.HicEst.com/SYSTEM.htm SYSTEM], [http://www.HicEst.com/OPEN.htm OPEN], [http://www.HicEst.com/indexfnc.htm INDEX]
+More on [SYSTEM](http://www.HicEst.com/SYSTEM.htm), [OPEN](http://www.HicEst.com/OPEN.htm), [INDEX](http://www.HicEst.com/indexfnc.htm)
 
 ```hicest
 CHARACTER dirtxt='dir.txt', filename*80
@@ -1544,7 +1544,7 @@ my @filenames = glob($pattern);
 
 ## Perl 6
 
-The <code>dir</code> function takes the directory to traverse, and optionally a named parameter <code>test</code>, which is [https://docs.perl6.org/routine/$TILDE$TILDE smart-matched] against the basename of each file (so for example we can use a regex):
+The <code>dir</code> function takes the directory to traverse, and optionally a named parameter <code>test</code>, which is [smart-matched](https://docs.perl6.org/routine/$TILDE$TILDE) against the basename of each file (so for example we can use a regex):
 
 ```perl6
 .say for dir ".", :test(/foo/);
@@ -1711,7 +1711,7 @@ EndIf
 
 ## Python
 
-The [http://python.org/doc/lib/module-glob.html glob] library included with Python lists files matching shell-like patterns:
+The [glob](http://python.org/doc/lib/module-glob.html) library included with Python lists files matching shell-like patterns:
 
 ```python
 import glob

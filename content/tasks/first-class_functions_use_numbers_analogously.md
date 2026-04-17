@@ -124,7 +124,7 @@ end Firstclass;
 
 ## ALGOL 68
 
-Note: Standard ALGOL 68's scoping rules forbids exporting a '''proc'''[edure] (or '''format''') out of it's scope (closure).  Hence this specimen will run on [[ELLA ALGOL 68]], but is non-standard.  For a discussion of first-class functions in ALGOL 68 consult [http://www.cs.ru.nl/~kees/home/papers/psi96.pdf "The Making of Algol 68"] - [[wp:Cornelis_H.A._Koster|C.H.A. Koster]] (1993). <!-- Retrieved April 28, 2007 -->
+Note: Standard ALGOL 68's scoping rules forbids exporting a '''proc'''[edure] (or '''format''') out of it's scope (closure).  Hence this specimen will run on [[ELLA ALGOL 68]], but is non-standard.  For a discussion of first-class functions in ALGOL 68 consult ["The Making of Algol 68"](http://www.cs.ru.nl/~kees/home/papers/psi96.pdf) - [[wp:Cornelis_H.A._Koster|C.H.A. Koster]] (1993). <!-- Retrieved April 28, 2007 -->
 
 ```algol68
 REAL
@@ -510,7 +510,7 @@ Output:
  s = 0.5, a = 4.0, b = 0.25, multiplier(4.0, 0.25)(0.5) = 0.5
  s = 0.5, a = 6.0, b = 0.16666666666666666, multiplier(6.0, 0.16666666666666666)(0.5) = 0.5
 
-Note: <code>def g := reverse[i]</code> is needed here because E as yet has no defined protocol for iterating over collections in parallel. [http://wiki.erights.org/wiki/Parallel_iteration Page for this issue.]
+Note: <code>def g := reverse[i]</code> is needed here because E as yet has no defined protocol for iterating over collections in parallel. [Page for this issue.](http://wiki.erights.org/wiki/Parallel_iteration)
 
 ## Elena
 
@@ -611,7 +611,7 @@ let multiplier (n1,n2) = fun (m:float) -> n1 * n2 * m
 
 ## Factor
 
-Compared to http://rosettacode.org/wiki/First-class_functions, the call to "compose" is replaced with the call to "mutliplier"
+Compared to <http://rosettacode.org/wiki/First-class_functions>, the call to "compose" is replaced with the call to "mutliplier"
 
 ```factor
 USING: arrays kernel literals math prettyprint sequences ;
@@ -971,7 +971,7 @@ For contrast, here are the final results from  [[First-class functions#J]]:
 
 
 ===Tacit (unorthodox) version===
-Although the pseudo-code to generate the numbers can certainly be written (see  above [http://rosettacode.org/wiki/First-class_functions/Use_numbers_analogously#Explicit_version Explicit version] ) this is not done for this version because it would destroy part of the analogy (J encourages, from the programming perspective, to process all components at once as opposed to one component at a time).  In addition, this version is done in terms of boxed lists of numbers instead of plain list of numbers, again, to preserve the analogy.
+Although the pseudo-code to generate the numbers can certainly be written (see  above [Explicit version](http://rosettacode.org/wiki/First-class_functions/Use_numbers_analogously#Explicit_version) ) this is not done for this version because it would destroy part of the analogy (J encourages, from the programming perspective, to process all components at once as opposed to one component at a time).  In addition, this version is done in terms of boxed lists of numbers instead of plain list of numbers, again, to preserve the analogy.
 
 <lang>   multiplier=. train@:((;:'&*') ;~ an@: *)
 
@@ -992,7 +992,7 @@ Although the pseudo-code to generate the numbers can certainly be written (see  
 ```
 
 
-Please refer to [http://rosettacode.org/wiki/First-class_functions#Tacit_.28unorthodox.29_version First-class functions tacit (unorthodox) version] for the definitions of the functions train, an and of.
+Please refer to [First-class functions tacit (unorthodox) version](http://rosettacode.org/wiki/First-class_functions#Tacit_.28unorthodox.29_version) for the definitions of the functions train, an and of.
 
 
 ## jq

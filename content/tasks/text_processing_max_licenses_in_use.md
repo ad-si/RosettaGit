@@ -84,9 +84,9 @@ An example of  checkout and  checkin events are:
 
 ## Task
 
-Save the 10,000 line log file from   [http://rosettacode.org/resources/mlijobs.txt <big> here</big>]   into a local file, then write a program to scan the file extracting both the maximum licenses that were out at any time, and the time(s) at which this occurs.
+Save the 10,000 line log file from   [<big> here</big>](http://rosettacode.org/resources/mlijobs.txt)   into a local file, then write a program to scan the file extracting both the maximum licenses that were out at any time, and the time(s) at which this occurs.
 
-Mirror of log file available as a zip [https://github.com/thundergnat/rc/blob/master/resouces/mlijobs.zip here] (offsite mirror).
+Mirror of log file available as a zip [here](https://github.com/thundergnat/rc/blob/master/resouces/mlijobs.zip) (offsite mirror).
 
 
 
@@ -183,7 +183,7 @@ The max. number of licenses out is    99
 
 ## ALGOL 68
 
-{{trans|C}} note: This specimen retains the original [http://rosettacode.org/mw/index.php?title=Text_processing%2F3&diff=87014&oldid=87011 C] coding style.
+{{trans|C}} note: This specimen retains the original [C](http://rosettacode.org/mw/index.php?title=Text_processing%2F3&diff=87014&oldid=87011) coding style.
 ```algol68
 PROC report = (REF FILE file in)INT: (
 
@@ -1448,7 +1448,7 @@ main = do
 
 ## HicEst
 
-We open Licenses.txt in [http://www.HicEst.com/MatrixExplorer.htm MatrixExplorer mode] with 3 columns: IN/OUT, date_time, ID_nr.
+We open Licenses.txt in [MatrixExplorer mode](http://www.HicEst.com/MatrixExplorer.htm) with 3 columns: IN/OUT, date_time, ID_nr.
 This allows to adress single file elements by Licenses(row, column).
 
 ```HicEst
@@ -2901,7 +2901,7 @@ print maxCount;" ";theDate$
 
 ### Translated imperative version
 
-Can be seen running in your browser [https://scastie.scala-lang.org/a31Q3P5gQ36VcAre5i4I7g Scastie (remote JVM)].
+Can be seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/a31Q3P5gQ36VcAre5i4I7g).
 
 ```Scala
 import java.io.{BufferedReader, InputStreamReader}
@@ -2939,7 +2939,7 @@ object License0 extends App {
 
 ### Smart Imperative Scala with dirty side effects
 
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/2bdByPOUSICgRIMx4KJ29A Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/2bdByPOUSICgRIMx4KJ29A).
 
 ```Scala
 import scala.collection.mutable.ListBuffer
@@ -2970,7 +2970,7 @@ object License1 extends App {
 ```
 
 ===Clean coded [[functional_programming|FP]] with (tail) recursion, no side effects===
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/MvwfLtnFTcqBoNHwB4aURg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/MvwfLtnFTcqBoNHwB4aURg).
 
 ```Scala
 import scala.annotation.tailrec
@@ -3023,7 +3023,7 @@ object License2 extends App {
 ```
 
 ===Totally [[functional_programming|FP]] with foldLeft===
-{{Out}}Best seen running in your browser [https://scastie.scala-lang.org/h8CgsFx8TJGtRy1B5KVSOg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser [Scastie (remote JVM)](https://scastie.scala-lang.org/h8CgsFx8TJGtRy1B5KVSOg).
 
 ```Scala
 object License3 extends App {

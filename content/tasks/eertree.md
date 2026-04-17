@@ -42,9 +42,9 @@ Construct an eertree for the string "eertree", then output all sub-palindromes b
 
 ## See also
 
-*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Trie trie].
-*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Suffix_tree suffix tree]
-*   [https://arxiv.org/abs/1506.04862 Cornell University Library, Computer Science, Data Structures and Algorithms ───► EERTREE: An Efficient Data Structure for Processing Palindromes in Strings].
+*   Wikipedia entry:   [trie](https://en.wikipedia.org/wiki/Trie).
+*   Wikipedia entry:   [suffix tree](https://en.wikipedia.org/wiki/Suffix_tree)
+*   [Cornell University Library, Computer Science, Data Structures and Algorithms ───► EERTREE: An Efficient Data Structure for Processing Palindromes in Strings](https://arxiv.org/abs/1506.04862).
 
 
 

@@ -77,7 +77,7 @@ and results in a sequence of equal length, again of complex numbers.
 If you need to restrict yourself to real numbers, the output should
 be the magnitude (i.e. sqrt(re²+im²)) of the complex result.
 
-The classic version is the recursive Cooley–Tukey FFT. [http://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm Wikipedia] has pseudo-code for that.
+The classic version is the recursive Cooley–Tukey FFT. [Wikipedia](http://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm) has pseudo-code for that.
 Further optimizations are possible but not required.
 
 
@@ -3237,7 +3237,7 @@ print( ' '.join("%5.3f" % abs(f)
 ```
 
 
-===Python: Using module [http://numpy.scipy.org/ numpy]===
+===Python: Using module [numpy](http://numpy.scipy.org/)===
 
 ```python
 >>
@@ -3804,7 +3804,7 @@ cmd:>fft(makeComplex([1,1,1,1,0,0,0,0],0))
 
 ###  Mata
 
-See the '''[https://www.stata.com/help.cgi?mf_fft fft function]''' in Mata help, and in the FAQ: [https://www.stata.com/support/faqs/mata/discrete-fast-fourier-transform/ How can I calculate the Fourier coefficients of a discretely sampled function in Stata?].
+See the '''[fft function](https://www.stata.com/help.cgi?mf_fft)''' in Mata help, and in the FAQ: [How can I calculate the Fourier coefficients of a discretely sampled function in Stata?](https://www.stata.com/support/faqs/mata/discrete-fast-fourier-transform/).
 
 <lang>. mata
 : a=1,2,3,4
@@ -4176,7 +4176,7 @@ fft2:   0.000  0.000  0.000  8.000  0.000  0.000  0.000  0.000  0.000  0.000  0.
 
 ## Ursala
 
-The [http://www.fftw.org <code>fftw</code> library] is callable from Ursala using the syntax <code>..u_fw_dft</code> for a one dimensional forward discrete Fourier transform operating on a list of complex numbers. Ordinarily the results are scaled so that the forward and reverse transforms are inverses of each other, but additional scaling can be performed as shown below to conform to convention.
+The [<code>fftw</code> library](http://www.fftw.org) is callable from Ursala using the syntax <code>..u_fw_dft</code> for a one dimensional forward discrete Fourier transform operating on a list of complex numbers. Ordinarily the results are scaled so that the forward and reverse transforms are inverses of each other, but additional scaling can be performed as shown below to conform to convention.
 
 ```ursala
 #import nat

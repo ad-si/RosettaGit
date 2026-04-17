@@ -64,7 +64,7 @@ egg).   A   ''commercial at''   symbol   (<big>'''@'''</big>)   could make a poo
 
 ;Mayan glyphs (constructed):
 The Mayan numbering system is
-a   [[https://en.wikipedia.org/wiki/Vigesimal vigesimal (base 20)]]   positional numeral system.
+a   [vigesimal (base 20)](https://en.wikipedia.org/wiki/Vigesimal)   positional numeral system.
 
 
 
@@ -162,7 +162,7 @@ Other forms of cartouches (boxes) can be used for this task.
 
 
 ;See also:
-:*   The Wikipedia entry:   [[https://en.wikipedia.org/wiki/Maya_numerals Mayan numerals]]
+:*   The Wikipedia entry:   [Mayan numerals](https://en.wikipedia.org/wiki/Maya_numerals)
 
 
 

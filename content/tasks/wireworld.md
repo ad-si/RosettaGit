@@ -463,7 +463,7 @@ HtH. ......
 
 ## AutoHotkey
 
-[http://i.imgur.com/FsLB8i1.gif Demo gif] - Link, since uploads seem to be disabled currently.
+[Demo gif](http://i.imgur.com/FsLB8i1.gif) - Link, since uploads seem to be disabled currently.
 ```AutoHotkey
 #SingleInstance, Force
 #NoEnv
@@ -3088,7 +3088,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
+[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -3116,7 +3116,7 @@ nwS=: 3 : 0
 )
 ```
 
-The 'most' powerful part is contained in the following iterating sentence, namely the dyad cut ;. [http://www.jsoftware.com/help/dictionary/d331.htm ]. In this way verb nwS can work on all the 3x3 matrices containing each cell surrounded by its 8 relevant neighbors.
+The 'most' powerful part is contained in the following iterating sentence, namely the dyad cut ;. <http://www.jsoftware.com/help/dictionary/d331.htm>. In this way verb nwS can work on all the 3x3 matrices containing each cell surrounded by its 8 relevant neighbors.
 
 ```J
  process=: (3 3 nwS;. _3 board)^:

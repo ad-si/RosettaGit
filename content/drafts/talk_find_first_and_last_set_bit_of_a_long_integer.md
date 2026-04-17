@@ -32,7 +32,7 @@ Can you clarify? For it would be an interesting aside to see a host code sample 
 :Hrm, if it's not in two's compliment, what motivates you to find ''bits'' in it to begin with? --[[User:Ledrug|Ledrug]] 04:49, 8 December 2011 (UTC)
 Wikipedia has a few non-Two's complement ideas:
 * [[wp:Bitboard|Bitboard]] 
-** e.g. [http://nanochess.110mb.com/chess3.html#algol nanochess68]
+** e.g. [nanochess68](http://nanochess.110mb.com/chess3.html#algol)
 * [[wp:Mask_(computing)#Uses_of_bitmasks|Mask_(computing)#Uses_of_bitmasks]]
 * [[wp:Bit_field#Examples|Bit_field#Examples]]
 * [[wp:Affinity_mask|Affinity_mask]]
@@ -42,7 +42,7 @@ Wikipedia has a few non-Two's complement ideas:
 * and probably a couple of others...
 
 Sometimes it is just done for fun:
-* [http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog Find the log base 2 of an N-bit integer in O(lg(N)) operations]
+* [Find the log base 2 of an N-bit integer in O(lg(N)) operations](http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog)
 [[User:NevilleDNZ|NevilleDNZ]] 05:52, 8 December 2011 (UTC)
 
 I was almost thinking about added a REXX solution for this problem, as REXX doesn't store it's numbers in binary on any computer, but instead, REXX stores them as characters.  So the problem of finding the first and last set bits could be an exercise in finding what bits are set for the various characters (that represent the ten digits) --- and this would make it dependent whether it being ASCII or EBCDIC  (or BCD for that matter) computer.  The REXX program of course, could pretend that the number is stored in binary, and then return the appropiate bits as requested. This would be the equivalent of fantasy baseball. -- [[User:Gerard Schildberger|Gerard Schildberger]] 04:17, 8 May 2012 (UTC)
@@ -153,9 +153,9 @@ struct {signed int bits:1[32];} ordered;
 : The problem comes when comparing, say, calculations of the bits for an 8-bit number with those for a 64-bit number. The only non-crazy interpretation of <code>upb</code> and <code>lwb</code> involves giving the same values for “65” however many bits are used to represent it. This in turn enables arbitrary-precision integer arithmetic (because you can ignore the actual representation width — a good thing because it may be variable in the implementation). OTOH, it also means that you probably lose the duality between bit arrays and numbers as with numbers you enumerate the bits in ''logical'' order, whereas with bit arrays you enumerate in physical order; there's no reason to assume the two are identical (nor is it possible to know the physical order of bits in a byte with modern hardware, though it probably follows the byte order in order to keep circuitry smaller in ALUs). The long and short of it is this: the task asked about integers so the results ''must'' be sane for them even if that leads to odd results for bit strings. (I prefer the convention of using <tt>-1</tt> for bit positions of <tt>0</tt>, as that at least is a position that is always not in the bit sequence at all; this might be in part implied by the fact that the Tcl solution is always using arbitrary-precision math; that's how Tcl's math works.) –[[User:Dkf|Donal Fellows]] 14:51, 8 December 2011 (UTC)
 
 Fair enough, getting the answer for '''short int''', vs '''long int''' is useful, and OTOH it is also useful to know just the actual position of the bit without counting backwards from the last bit.  Note also:
-* RFC's counts from the left to the right [http://tools.ietf.org/html/rfc2360#section-3.1 rfc2360].  
+* RFC's counts from the left to the right [rfc2360](http://tools.ietf.org/html/rfc2360#section-3.1).  
 * There is a comparison in wikipedia ([[wp:Bit_numbering#LSB_0_bit_numbering|LSB_0_bit_numbering]] vs [[wp:Bit_numbering#MSB_0_bit_numbering|MSB_0_bit_numbering]]) and a description of [[wp:MSB_0_bit_numbering#Bit_numbering|Bit_numbering]].
-* Intel asm uses the [http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSF.htm BSF] & [http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSR.htm BSR] op codes.
+* Intel asm uses the [BSF](http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSF.htm) & [BSR](http://pdos.csail.mit.edu/6.858/2011/readings/i386/BSR.htm) op codes.
 * Maybe the '''lwb''' and '''upb''' routines can be modelled (and renamed) to match intels BSF/BSR to avoid confusion?  
 * Or keep  use '''lwb''' and '''upb''' for absolute position ([[wp:Bit_numbering#MSB_0_bit_numbering|MSB_0_bit_numbering]]), but use '''lwb0''' and '''upb0''' for LSB (bits width) reverse relative positions ([[wp:Bit_numbering#LSB_0_bit_numbering|LSB_0_bit_numbering]]). 
 * Maybe '''rlwb''' and '''rupb''' for the "right/reverse/relative" '''lwb''' and '''upb'''.

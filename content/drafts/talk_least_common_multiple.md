@@ -34,7 +34,7 @@ It is out by any common factor. --[[User:Paddy3118|Paddy3118]] 03:17, 31 March 2
 :I do not know where you found that sentence, but a bigger problem seems to be that all of the page history for this page displays for me as 2011-03-11 when I believe this page has been around for quite some time. --[[User:Rdm|Rdm]] 13:03, 31 March 2011 (UTC)
 ::That sentence used to be in the description, but it was removed when it was found to be wrong. Also the page is even younger than that (as long as I'm reading your date format correctly) It was only created yesterday. I was amazed too. I thought for sure we had this one, but I couldn't find it. --[[User:Mwn3d|Mwn3d]] 13:31, 31 March 2011 (UTC)
 
-::Hi Rdm, try [http://rosettacode.org/mw/index.php?title=Least_common_multiple&oldid=104117 this direct link]. --[[User:Paddy3118|Paddy3118]] 13:35, 31 March 2011 (UTC)
+::Hi Rdm, try [this direct link](http://rosettacode.org/mw/index.php?title=Least_common_multiple&oldid=104117). --[[User:Paddy3118|Paddy3118]] 13:35, 31 March 2011 (UTC)
 
 :Does lcm(x,y) = lcm(-x,y) = lcm(-x,-y)? If so then you could just change the sign on the arguments and use the fractional method. I'm pretty sure it works for positive numbers. The fractional method wouldn't work for fractional arguments, though (ex: lcm(1/3, 1/6) = 1/3 = 1 * 1/3 = 2 * 1/6). For those you would nee to use the "iteration over multiples" method I believe. --[[User:Mwn3d|Mwn3d]] 14:53, 31 March 2011 (UTC)
 

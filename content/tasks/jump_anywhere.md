@@ -223,7 +223,7 @@ GOTO mylabel
 =
 ## Applesoft BASIC
 =
-caveat: http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html
+caveat: <http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html>
 
 ```ApplesoftBASIC
   0 REM GOTO
@@ -1242,9 +1242,9 @@ Harbour has no labels and ''goto'' statements. The ''exit'' statements allows le
 
 ## Haskell
 
-Haskell being pure functional language doesn't need labels or goto's. However it is flexible and powerful enough to implement imperative constructions using monads. Hackage has a library [https://hackage.haskell.org/package/GotoT-transformers-1.0.0.1/docs/Control-Monad-Trans-Goto.html GoToT-transformers]. This module provides a <code>Goto</code> monad and corresponding monad transformer that allow the user to transfer the flow of execution from an arbitrary point of a monadic computation to another monadic computation. It works with any monad, not only with <code>IO</code>.
+Haskell being pure functional language doesn't need labels or goto's. However it is flexible and powerful enough to implement imperative constructions using monads. Hackage has a library [GoToT-transformers](https://hackage.haskell.org/package/GotoT-transformers-1.0.0.1/docs/Control-Monad-Trans-Goto.html). This module provides a <code>Goto</code> monad and corresponding monad transformer that allow the user to transfer the flow of execution from an arbitrary point of a monadic computation to another monadic computation. It works with any monad, not only with <code>IO</code>.
 
-We show possible implementation of <code>goto</code>, given [https://www.reddit.com/r/haskell/comments/1jk06q/goto_in_haskell/ here], with some simplifications.
+We show possible implementation of <code>goto</code>, given [here](https://www.reddit.com/r/haskell/comments/1jk06q/goto_in_haskell/), with some simplifications.
 
 First some boilerplate, where we define labels and goto "operator".
 
@@ -2264,9 +2264,9 @@ Obviously there are also several hll keywords such as <code>exit</code> and <cod
 
 ## PicoLisp
 
-PicoLisp supports non-local jumps to a previously setup environment (see [[Exceptions#PicoLisp|exceptions]]) via '[http://software-lab.de/doc/refC.html#catch catch]' and '[http://software-lab.de/doc/refT.html#throw throw]', or to some location in another coroutine with '[http://software-lab.de/doc/refY.html#yield yield]' (see [[Generator#PicoLisp|generator]]).
+PicoLisp supports non-local jumps to a previously setup environment (see [[Exceptions#PicoLisp|exceptions]]) via '[catch](http://software-lab.de/doc/refC.html#catch)' and '[throw](http://software-lab.de/doc/refT.html#throw)', or to some location in another coroutine with '[yield](http://software-lab.de/doc/refY.html#yield)' (see [[Generator#PicoLisp|generator]]).
 
-'[http://software-lab.de/doc/refQ.html#quit quit]' is similar to 'throw', but doesn't require a corresponding 'catch', as it directly jumps to the error handler (where the program may catch that error again).
+'[quit](http://software-lab.de/doc/refQ.html#quit)' is similar to 'throw', but doesn't require a corresponding 'catch', as it directly jumps to the error handler (where the program may catch that error again).
 
 There is no 'go' or 'goto' function in PicoLisp, but it can be emulated with normal list processing functions. This allows "jumps" to arbitrary locations within (the same or other) functions. The following example implements a "loop":
 
@@ -2479,7 +2479,7 @@ eins zwei eins zwei eins zwei - drei -
 
 Python has both [[Exceptions#Python|exceptions]] and [[Generator#Python|generators]] but no unstructured goto ability.
 
-The "goto" module was an April Fool's joke, published on 1st April 2004. Yes, it works, but it's a joke nevertheless. Please don't use it in real code! For those who like computer languages with a sense of humour it can be downloded [http://entrian.com/goto/goto-1.0.tar.gz here]. It is well documented and comes with many examples. My favorite:
+The "goto" module was an April Fool's joke, published on 1st April 2004. Yes, it works, but it's a joke nevertheless. Please don't use it in real code! For those who like computer languages with a sense of humour it can be downloded [here](http://entrian.com/goto/goto-1.0.tar.gz). It is well documented and comes with many examples. My favorite:
 
 ```Python
 
@@ -2527,7 +2527,7 @@ As a little example:
 
 Here, return is the program continuation being passed to the function, when it is called, the string "Leaving" i the result of the function and the following code is never executed.
 
-A much more complicated example done [http://blog.racket-lang.org/2007/07/callcc-and-self-modifying-code.html here]
+A much more complicated example done [here](http://blog.racket-lang.org/2007/07/callcc-and-self-modifying-code.html)
 Where we generate elements of a list one at a time:
 
 
@@ -2856,7 +2856,7 @@ This code uses the Continuation object <code>c</code> to jump to the top of the 
 
 ## Scala
 
-Goto's are in the European programmer community [http://en.wikipedia.org/wiki/Considered_harmful considered harmful]. They are error-prune and not essential. A good programmer would stay away from that. Scala is not equipped with goto's.
+Goto's are in the European programmer community [considered harmful](http://en.wikipedia.org/wiki/Considered_harmful). They are error-prune and not essential. A good programmer would stay away from that. Scala is not equipped with goto's.
 
 
 ## SPL
@@ -2920,7 +2920,7 @@ and this accomplishes a relative jump forward by five words:
 
 ## Tcl
 
-Tcl has both [[Exceptions#Tcl|exceptions]] and (from 8.6 onwards) [[Generator#Tcl|generators/coroutines]] but no unstructured goto ability. However, the main case where it might be desired, coding a general state machine, can be handled through metaprogramming (as discussed at some length on [http://wiki.tcl.tk/8363 the Tcler's Wiki]) so the absence is not strongly felt in practice.
+Tcl has both [[Exceptions#Tcl|exceptions]] and (from 8.6 onwards) [[Generator#Tcl|generators/coroutines]] but no unstructured goto ability. However, the main case where it might be desired, coding a general state machine, can be handled through metaprogramming (as discussed at some length on [the Tcler's Wiki](http://wiki.tcl.tk/8363)) so the absence is not strongly felt in practice.
 
 
 ## VBA

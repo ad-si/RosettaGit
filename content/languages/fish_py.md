@@ -9,5 +9,5 @@ id = 10571
 categories = []
 tags = []
 +++
-Fish.py is the original interpreter of [Fish](https://rosettacode.org/wiki/:Category:Fish). The latest version can always be downloaded at [https://github.com/harpyon/fish.py/archives/master GitHub].
-It requires that you have [Python](https://rosettacode.org/wiki/Python) [http://www.python.org/download/releases/2.7.2/ 2.7], [http://www.python.org/download/releases/3.2.2/ 3.2] or [http://www.python.org/download/ newer] installed on your computer, because it´s the [Python](https://rosettacode.org/wiki/Python) source code.
+Fish.py is the original interpreter of [Fish](https://rosettacode.org/wiki/:Category:Fish). The latest version can always be downloaded at [GitHub](https://github.com/harpyon/fish.py/archives/master).
+It requires that you have [Python](https://rosettacode.org/wiki/Python) [2.7](http://www.python.org/download/releases/2.7.2/), [3.2](http://www.python.org/download/releases/3.2.2/) or [newer](http://www.python.org/download/) installed on your computer, because it´s the [Python](https://rosettacode.org/wiki/Python) source code.

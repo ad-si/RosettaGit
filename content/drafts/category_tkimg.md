@@ -13,5 +13,5 @@ tags = []
 {{library}}
 This package (usually referred to as <code>Img</code> in [[Tcl]] code, but called TkImg here to avoid confusion) enhances [[Tk]], adding support for many other Image formats: BMP, XBM, XPM, PNG, JPEG, TIFF and postscript.
 
-Home: http://tkimg.sourceforge.net/
+Home: <http://tkimg.sourceforge.net/>
 [[Category:Tcl packages]]

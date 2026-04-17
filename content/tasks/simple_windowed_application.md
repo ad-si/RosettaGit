@@ -1326,7 +1326,7 @@ new SwingBuilder().edt {
 
 ## Haskell
 
-{{libheader|Gtk}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+{{libheader|Gtk}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.UI.Gtk
@@ -1673,9 +1673,9 @@ fun main(args: Array<String>) = launch<ClicksApp>(args)
 
 ## Lambdatalk
 
-The environment is a small wiki: http://epsilonwiki.free.fr/lambdaway/
+The environment is a small wiki: <http://epsilonwiki.free.fr/lambdaway/>
 
-The code is tested in this page: http://epsilonwiki.free.fr/lambdaway/?view=popup
+The code is tested in this page: <http://epsilonwiki.free.fr/lambdaway/?view=popup>
 
 ```Scheme
 
@@ -2453,7 +2453,7 @@ WinMain(main,SW_NORMAL)
 ## PicoLisp
 
 The standard PicoLisp GUI is HTTP based. Connect your browser to
-http://localhost:8080 after starting the following script.
+<http://localhost:8080> after starting the following script.
 
 ```PicoLisp
 #!/usr/bin/picolisp /usr/lib/picolisp/lib.l

@@ -9,7 +9,7 @@ id = 17224
 categories = []
 tags = []
 +++
-[http://www.dyalog.com/ Dyalog] is a modern, multi-paradigm programming
+[Dyalog](http://www.dyalog.com/) is a modern, multi-paradigm programming
 environment that combines the array-oriented APL notation with functional,
 procedural and object-oriented programming.
 

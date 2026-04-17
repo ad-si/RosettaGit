@@ -44,11 +44,11 @@ That is how it goes for me; sometimes I need the numbers to understand the text.
 :::: As you say, a generator is only one variation. We should maybe include this is the title, so we have forms Generator/A, Generator/B, etc. There are also generators that are not a generator at all in this sense, such as parametric generators and code generators, which all come under the context of computing. I still advise rename. --[[User:Markhobley|Markhobley]] 15:58, 8 June 2011 (UTC)
 :::::Hi Markhobley, but Generator in our context is still enough. Which generator has equal prominance in our field that someone might mistake this for? We need to be wary of overlong titles, so please expand on your reasons. Thanks. --[[User:Paddy3118|Paddy3118]] 20:00, 8 June 2011 (UTC)
 
-::::: Perhaps "sequential generator"?  But, yes, "generator" does have [http://www.sz-wholesale.com/uploadFiles/LPG-B%20Generator_802.jpg other meanings] --[[User:Rdm|Rdm]] 16:57, 8 June 2011 (UTC)
+::::: Perhaps "sequential generator"?  But, yes, "generator" does have [other meanings](http://www.sz-wholesale.com/uploadFiles/LPG-B%20Generator_802.jpg) --[[User:Rdm|Rdm]] 16:57, 8 June 2011 (UTC)
 
 :::::: Yeah that sounds good, apart from the generator is this task is exponential, but I do like the sound of that for a sequential output version (such as the type used for generating ticket numbers or invoice numbers), if such a task was written. We could probably go with "Exponential generator", or "Sequence Generator/Exponential". --[[User:Markhobley|Markhobley]] 20:25, 8 June 2011 (UTC)
 
-:::: Ok, tooting my own horn here a bit, but I put together a nice little Python module for [https://code.google.com/p/dastoobnet/source/browse/multi_m1/filterstack.py using stacked generators] as a filter chain. The docs might be illuminating in this discussion. [http://codepad.org/S7lYcnpO Here's its demo output], on Codepad.--[[User:Short Circuit|Michael Mol]] 15:16, 8 June 2011 (UTC)
+:::: Ok, tooting my own horn here a bit, but I put together a nice little Python module for [using stacked generators](https://code.google.com/p/dastoobnet/source/browse/multi_m1/filterstack.py) as a filter chain. The docs might be illuminating in this discussion. [Here's its demo output](http://codepad.org/S7lYcnpO), on Codepad.--[[User:Short Circuit|Michael Mol]] 15:16, 8 June 2011 (UTC)
 
 ::: Also, I think "Sequence generator" could be misleading, given that sequences can als be data structures which can be generated without a requirement for mutating state.  --[[User:Rdm|Rdm]] 15:01, 8 June 2011 (UTC)
 

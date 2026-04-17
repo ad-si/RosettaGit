@@ -13,6 +13,6 @@ tags = []
 {{library}}
 libconfini is an INI parser written in C.
 
-;Website:          https://madmurphy.github.io/libconfini/
+;Website:          <https://madmurphy.github.io/libconfini/>
 
-;Current version:  [https://github.com/madmurphy/libconfini/releases/tag/1.8.0 1.8.0] - 2018-10-28
+;Current version:  [1.8.0](https://github.com/madmurphy/libconfini/releases/tag/1.8.0) - 2018-10-28

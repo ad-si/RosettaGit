@@ -284,7 +284,7 @@ Simpson's integration of sine from 0 to 1 = 0.459698
 
 ## Julia
 
-Originally from Modesto Mas, https://mmas.github.io/simpson-integration-julia
+Originally from Modesto Mas, <https://mmas.github.io/simpson-integration-julia>
 
 ```julia
 function simps(f::Function, a::Number, b::Number, n::Number)

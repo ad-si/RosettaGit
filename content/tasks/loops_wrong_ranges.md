@@ -480,7 +480,7 @@ Range(0, 0, 0) -> [0 0 0 0 0 0 0 0 0 0]
 
 ## Huginn
 
-[https://huginn.org/ Huginn] has the Range generator in Algorithms package.
+[Huginn](https://huginn.org/) has the Range generator in Algorithms package.
 Instantiation of an a priori invalid range is a fatal error.
 
 
@@ -573,7 +573,7 @@ _3 _2.5 _2 _1.5 _1 _0.5 0 0.5 1 1.5 2 2.5 3
 ```
 
 The loops with multiple ranges shall use this version of range.  Or so it is in on 2019, March 6.
-http://rosettacode.org/wiki/Loops/with_multiple_ranges#J
+<http://rosettacode.org/wiki/Loops/with_multiple_ranges#J>
 
 
 ```txt
@@ -926,7 +926,7 @@ Start equal stop equal zero: zero increment: {0,0,0,0,0,0,0,0,0,0}
 
 ## Python
 
-Python has the [https://docs.python.org/3/library/functions.html#func-range range] function.
+Python has the [range](https://docs.python.org/3/library/functions.html#func-range) function.
 
 ```python
 import re

@@ -1402,7 +1402,7 @@ The kdtree implementation is over ten times slower than the brute force implemen
 
 On the bigger dataset, the kdtree implementation is about the same speed as the brute force implementation.
 
-For a more practical approach to this kind of problem, see https://github.com/locklin/j-nearest-neighbor (that is: link to a high performance implementation).
+For a more practical approach to this kind of problem, see <https://github.com/locklin/j-nearest-neighbor> (that is: link to a high performance implementation).
 
 See also: [[wp:KISS_principle]]
 

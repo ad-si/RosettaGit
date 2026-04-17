@@ -82,7 +82,7 @@ When the problem was first posed, Dijkstra then went on to successively refine a
 
 ;C.f.:
 * [[wp:Dutch national flag problem|Dutch national flag problem]]
-* [https://www.google.co.uk/search?rlz=1C1DSGK_enGB472GB472&sugexp=chrome,mod=8&sourceid=chrome&ie=UTF-8&q=Dutch+national+flag+problem#hl=en&rlz=1C1DSGK_enGB472GB472&sclient=psy-ab&q=Probabilistic+analysis+of+algorithms+for+the+Dutch+national+flag+problem&oq=Probabilistic+analysis+of+algorithms+for+the+Dutch+national+flag+problem&gs_l=serp.3...60754.61818.1.62736.1.1.0.0.0.0.72.72.1.1.0...0.0.Pw3RGungndU&psj=1&bav=on.2,or.r_gc.r_pw.r_cp.r_qf.,cf.osb&fp=c33d18147f5082cc&biw=1395&bih=951 Probabilistic analysis of algorithms for the Dutch national flag problem] by Wei-Mei Chen. (pdf)
+* [Probabilistic analysis of algorithms for the Dutch national flag problem](https://www.google.co.uk/search?rlz=1C1DSGK_enGB472GB472&sugexp=chrome,mod=8&sourceid=chrome&ie=UTF-8&q=Dutch+national+flag+problem#hl=en&rlz=1C1DSGK_enGB472GB472&sclient=psy-ab&q=Probabilistic+analysis+of+algorithms+for+the+Dutch+national+flag+problem&oq=Probabilistic+analysis+of+algorithms+for+the+Dutch+national+flag+problem&gs_l=serp.3...60754.61818.1.62736.1.1.0.0.0.0.72.72.1.1.0...0.0.Pw3RGungndU&psj=1&bav=on.2,or.r_gc.r_pw.r_cp.r_qf.,cf.osb&fp=c33d18147f5082cc&biw=1395&bih=951) by Wei-Mei Chen. (pdf)
 
 
 
@@ -1275,7 +1275,7 @@ Using three variables for the screen position pointers (vs stack juggling) makes
 
 A video of the results can be seen here:
 
-https://github.com/bfox9900/CAMEL99-V2/blob/master/Video/DIJKSTRAFLAG%20.mp4
+<https://github.com/bfox9900/CAMEL99-V2/blob/master/Video/DIJKSTRAFLAG%20.mp4>
 
 <lang>\ Dutch flag DEMO for CAMEL99 Forth
 \ *SORTS IN PLACE FROM Video MEMORY*
@@ -1585,7 +1585,7 @@ End
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=e57a862aff12647fa80c84a595161cb9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=e57a862aff12647fa80c84a595161cb9)'''
 
 ```gambas
 Public Sub Main()

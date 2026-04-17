@@ -48,7 +48,7 @@ languages = [
 ]
 +++
 
-The following function, due to D Hickerson, is said to generate "Almost integers" by the [http://mathworld.wolfram.com/AlmostInteger.html "Almost Integer" page of Wolfram Mathworld]. (December 31 2013).
+The following function, due to D Hickerson, is said to generate "Almost integers" by the ["Almost Integer" page of Wolfram Mathworld](http://mathworld.wolfram.com/AlmostInteger.html). (December 31 2013).
 
 The function is:
 
@@ -189,7 +189,7 @@ function factorial(n,  i,out) {
 This solution approximates <math>\log_e{2}</math>
 with enough terms to make the first two decimals right with high likelyhood.
 (It stops adding more terms when the first three decimals in two consecutive approximations are the same.)
-See [https://en.wikipedia.org/wiki/Natural_logarithm_of_2 Natural logarithm of 2]
+See [Natural logarithm of 2](https://en.wikipedia.org/wiki/Natural_logarithm_of_2)
 
 Bracmat has no built in support for fixed point notation of rational numbers.
 Therefore each Hickerson number is split in an integer part (using integer division)
@@ -607,9 +607,9 @@ h(18) = 3385534663256845326.390   almost integer? f
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Hickerson_series_of_almost_integers this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Hickerson_series_of_almost_integers) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1536,7 +1536,7 @@ h(17) = 130370767029135900.458 is NOT almost an integer.
 
 ## Perl 6
 
-We'll use [http://doc.perl6.org/type/FatRat FatRat] values, and a series for an [http://mathworld.wolfram.com/NaturalLogarithmof2.html approximation of ln(2)].
+We'll use [FatRat](http://doc.perl6.org/type/FatRat) values, and a series for an [approximation of ln(2)](http://mathworld.wolfram.com/NaturalLogarithmof2.html).
 
 
 ```perl6
@@ -1719,7 +1719,7 @@ do n = 1 to 18;
 
 ## Python
 
-This uses Pythons [http://docs.python.org/2/library/decimal.html decimal module] of fixed precision decimal floating point calculations.
+This uses Pythons [decimal module](http://docs.python.org/2/library/decimal.html) of fixed precision decimal floating point calculations.
 
 
 ```python
@@ -2319,8 +2319,8 @@ object Hickerson extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/tNNk9jB/2 ScalaFiddle (JavaScript executed in browser)]
-or by [https://scastie.scala-lang.org/aX6X59zrTkWpEbCOXmpmAg Scastie (remote JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript executed in browser)](https://scalafiddle.io/sf/tNNk9jB/2)
+or by [Scastie (remote JVM)](https://scastie.scala-lang.org/aX6X59zrTkWpEbCOXmpmAg).
 
 
 ## Seed7

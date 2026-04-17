@@ -2690,12 +2690,12 @@ hValueBox.ReadOnly = True                                     'Set ValueBox to R
 End
 ```
 
-'''[http://www.cogier.com/gambas/Roman%20Numeral%20converter.png Click here for image of running code]'''
+'''[Click here for image of running code](http://www.cogier.com/gambas/Roman%20Numeral%20converter.png)'''
 
 
 ## Go
 
-For fluff, the unicode overbar is recognized as a factor of 1000, [http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers as described in WP].
+For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
 
 ```go
 package main
@@ -3230,7 +3230,7 @@ main = print $ fromRoman <$> ["MDCLXVI", "MCMXC", "MMVIII", "MMXVI", "MMXVII"]
 ```
 
 
-Where the left fold above could also be rewritten [http://wiki.haskell.org/Foldr_Foldl_Foldl%27 | as a right fold].
+Where the left fold above could also be rewritten [| as a right fold](http://wiki.haskell.org/Foldr_Foldl_Foldl%27).
 
 ```Haskell
 import qualified Data.Map.Strict as M
@@ -3348,7 +3348,7 @@ every R := "MCMXC"|"MDCLXVI"|"MMVIII" do
 end
 ```
 
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides unroman]
+[numbers.icn provides unroman](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 The code for this procedure is copied below:
 
@@ -6236,7 +6236,7 @@ const proc: main is func
   end func;
 ```
 
-Original source: [http://seed7.sourceforge.net/algorith/puzzles.htm#decode_roman_numerals]
+Original source: <http://seed7.sourceforge.net/algorith/puzzles.htm#decode_roman_numerals>
 ```txt
 
 1990
@@ -6641,7 +6641,7 @@ MMVIII	-> 2008
 
 
 =={{header|TI-83 BASIC}}==
-Using the Rom‣Dec function "real(21," from [http://www.detachedsolutions.com/omnicalc/ Omnicalc].
+Using the Rom‣Dec function "real(21," from [Omnicalc](http://www.detachedsolutions.com/omnicalc/).
 
 ```ti83b
 PROGRAM:ROM2DEC

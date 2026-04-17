@@ -84,7 +84,7 @@ where <math>b \ge 0</math> and <math>m > 0</math>.
 ## Ada
 
 
-Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/].
+Using the big integer implementation from a cryptographic library <https://github.com/cforler/Ada-Crypto-Library/>.
 
 
 ```Ada
@@ -990,12 +990,12 @@ last 40 digits = 1527229998585248450016808958343740453059
 1527229998585248450016808958343740453059
 ```
 
-'''Discussion''': The phrase <tt>a m&|@^ b</tt> is the natural expression of <tt>a^b mod m</tt> in J, and is recognized by the interpreter as an opportunity for optimization, by [http://www.jsoftware.com/help/dictionary/special.htm#recognized%20phrase avoiding the exponentiation].
+'''Discussion''': The phrase <tt>a m&|@^ b</tt> is the natural expression of <tt>a^b mod m</tt> in J, and is recognized by the interpreter as an opportunity for optimization, by [avoiding the exponentiation](http://www.jsoftware.com/help/dictionary/special.htm#recognized%20phrase).
 
 
 ## Java
 
-<code>java.math.BigInteger.modPow</code> solves this task. Inside [[OpenJDK]], [http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/f097ca2434b1/src/share/classes/java/math/BigInteger.java BigInteger.java] implements <code>BigInteger.modPow</code> with a fast algorithm from [http://philzimmermann.com/EN/bnlib/index.html Colin Plumb's bnlib]. This "window algorithm" caches odd powers of the base, to decrease the number of squares and multiplications. It also exploits both the Chinese remainder theorem and the [[Montgomery reduction]].
+<code>java.math.BigInteger.modPow</code> solves this task. Inside [[OpenJDK]], [BigInteger.java](http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/f097ca2434b1/src/share/classes/java/math/BigInteger.java) implements <code>BigInteger.modPow</code> with a fast algorithm from [Colin Plumb's bnlib](http://philzimmermann.com/EN/bnlib/index.html). This "window algorithm" caches odd powers of the base, to decrease the number of squares and multiplications. It also exploits both the Chinese remainder theorem and the [[Montgomery reduction]].
 
 
 ```java
@@ -1762,8 +1762,8 @@ println(a.modPow(b, BigInt(10).pow(40)))
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/bigint.htm bigint.s7i] defines the function
-[http://seed7.sourceforge.net/libraries/bigint.htm#modPow%28in_var_bigInteger,in_var_bigInteger,in_bigInteger%29 modPow],
+The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm) defines the function
+[modPow](http://seed7.sourceforge.net/libraries/bigint.htm#modPow%28in_var_bigInteger,in_var_bigInteger,in_bigInteger%29),
 which does modular exponentiation.
 
 ```seed7
@@ -1809,7 +1809,7 @@ const func bigInteger: modPow (in var bigInteger: base,
 ```
 
 
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#modPow]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#modPow>
 
 
 ## Sidef

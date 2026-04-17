@@ -4947,11 +4947,11 @@ game24=: (respond input)@deal@rules
 Example use:
 
     '*<nowiki>game24 *</nowiki>'''
- see <nowiki>http://en.wikipedia.org/wiki/24_Game</nowiki>
+ see <nowiki><http://en.wikipedia.org/wiki/24_Game></nowiki>
  enter 24 expression using 6 5 9 4: **6+5+9+4**
  yes
     '*<nowiki>game24 *</nowiki>'''
- see <nowiki>http://en.wikipedia.org/wiki/24_Game</nowiki>
+ see <nowiki><http://en.wikipedia.org/wiki/24_Game></nowiki>
  enter 24 expression using 3 3 3 3: **3+3+3+3+3+3+3+3**
  no
 
@@ -6420,7 +6420,7 @@ Good job!
 ## Nit
 
 
-Source: [https://github.com/nitlang/nit/blob/master/examples/rosettacode/24_game.nit the Nit’s official repository]
+Source: [the Nit’s official repository](https://github.com/nitlang/nit/blob/master/examples/rosettacode/24_game.nit)
 
 
 ```nit

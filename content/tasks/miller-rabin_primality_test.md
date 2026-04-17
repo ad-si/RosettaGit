@@ -228,7 +228,7 @@ What is it? COMPOSITE
 ### using an external library to handle big integers
 
 
-Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/].
+Using the big integer implementation from a cryptographic library <https://github.com/cforler/Ada-Crypto-Library/>.
 
 
 ```Ada
@@ -418,7 +418,7 @@ OD
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276712.html#276712 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276712.html#276712)
 
 ```AutoHotkey
 MsgBox % MillerRabin(999983,10) ; 1
@@ -819,7 +819,7 @@ bool is_prime_mr(size_t n)
 }
 ```
 
-Inspiration from http://stackoverflow.com/questions/4424374/determining-if-a-number-is-prime
+Inspiration from <http://stackoverflow.com/questions/4424374/determining-if-a-number-is-prime>
 
 
 
@@ -855,7 +855,7 @@ public static class RabinMiller
 }
 ```
 
-[https://stackoverflow.com/questions/7860802/miller-rabin-primality-test] Corrections made 6/21/2017
+<https://stackoverflow.com/questions/7860802/miller-rabin-primality-test> Corrections made 6/21/2017
 
 
 
@@ -2330,7 +2330,7 @@ for i <- 3..100
 ## Go
 
 ;Library
-Go has it in math/big in standard library as [http://golang.org/pkg/math/big/#Int.ProbablyPrime ProbablyPrime].  The argument n to ProbablyPrime is the input k of the pseudocode in the task description.
+Go has it in math/big in standard library as [ProbablyPrime](http://golang.org/pkg/math/big/#Int.ProbablyPrime).  The argument n to ProbablyPrime is the input k of the pseudocode in the task description.
 ;Deterministic
 Below is a deterministic test for 32 bit unsigned integers.  Intermediate results in the code below include a 64 bit result from multiplying two 32 bit numbers.  Since 64 bits is the largest fixed integer type in Go, a 32 bit number is the largest that is convenient to test.
 
@@ -2409,11 +2409,11 @@ func prime(n uint32) bool {
 
 ## Haskell
 
-* Ideas taken from [http://primes.utm.edu/prove/prove2_3.html Primality proving]
-* Functions witns and isMillerRabinPrime follow closely the code outlined in [http://www.jsoftware.com/jwiki/Essays/Primality%20Tests#Miller-Rabin J/Essays]
+* Ideas taken from [Primality proving](http://primes.utm.edu/prove/prove2_3.html)
+* Functions witns and isMillerRabinPrime follow closely the code outlined in [J/Essays](http://www.jsoftware.com/jwiki/Essays/Primality%20Tests#Miller-Rabin)
 * A useful powerMod function is taken from [[Multiplicative order#Haskell]]
 * Original Rosetta code has been simplified to be easier to follow
-Another Miller Rabin test can be found in D. Amos's Haskell for Math module [http://www.polyomino.f2s.com/david/haskell/numbertheory.html Primes.hs]
+Another Miller Rabin test can be found in D. Amos's Haskell for Math module [Primes.hs](http://www.polyomino.f2s.com/david/haskell/numbertheory.html)
 
 ```Haskell
 module Primes where
@@ -2647,7 +2647,7 @@ java MillerRabinPrimalityTest 123456791234567891234567 1000000
 ```
 
 
-This is a translation of the [http://rosettacode.org/wiki/Miller-Rabin_primality_test#Python:_Proved_correct_up_to_large_N Python solution] for a deterministic test for n < 341,550,071,728,321:
+This is a translation of the [Python solution](http://rosettacode.org/wiki/Miller-Rabin_primality_test#Python:_Proved_correct_up_to_large_N) for a deterministic test for n < 341,550,071,728,321:
 
 ```java
 import java.math.BigInteger;
@@ -4618,10 +4618,10 @@ def is_Prime(n):
 
 ### Python: Proved correct up to large N
 
-This versions will give correct answers for <code>n</code> less than 341550071728321 and then reverting to the probabilistic form of the first solution. By selecting [http://primes.utm.edu/prove/prove2_3.html predetermined values] for the <code>a</code> values to use instead of random values, the results can be shown to be deterministically correct below certain thresholds.
+This versions will give correct answers for <code>n</code> less than 341550071728321 and then reverting to the probabilistic form of the first solution. By selecting [predetermined values](http://primes.utm.edu/prove/prove2_3.html) for the <code>a</code> values to use instead of random values, the results can be shown to be deterministically correct below certain thresholds.
 
 For 341550071728321 and beyond, I have followed the pattern in choosing <code>a</code> from the set of prime numbers.
-While this uses the best sets known in 1993, there are [http://miller-rabin.appspot.com/ better sets known], and at most 7 are needed for 64-bit numbers.
+While this uses the best sets known in 1993, there are [better sets known](http://miller-rabin.appspot.com/), and at most 7 are needed for 64-bit numbers.
 
 
 ```python
@@ -5519,7 +5519,7 @@ const proc: main is func
     end for;
   end func;
 ```
-Original source: [http://seed7.sourceforge.net/algorith/math.htm#millerRabin]
+Original source: <http://seed7.sourceforge.net/algorith/math.htm#millerRabin>
 
 
 ## Sidef

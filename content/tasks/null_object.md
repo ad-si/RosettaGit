@@ -182,8 +182,8 @@ In ALGOL 68 the NIL yields a name that does not refer to any value. NIL can neve
 naturally coerced and can only appear where the context is [[ALGOL 68#strong|strong]].
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 ```algol68
 REF STRING no result = NIL;
@@ -427,7 +427,7 @@ In this example, we place nil on the stack, then perform an if-then-else (ifte) 
 =
 ## Applesoft BASIC
 =
-caveat: http://qconlondon.com/london-2009/presentation/Null+References%3A+The+Billion+Dollar+Mistake
+caveat: <http://qconlondon.com/london-2009/presentation/Null+References%3A+The+Billion+Dollar+Mistake>
 
 Applesoft has no built-in object system.  The closest values to NULL or nil for each of the types are 0 for integers and floating point numbers, and "" for strings.  There is also the NUL character: CHR$(0).  One could create an object system using global variables and include a special value for NULL, but this is probably a mistake.
 
@@ -499,7 +499,7 @@ a:?x a ?z  {assigns "" (or (), which is equivalent) to x and to z}
 
 ## C
 
-C has the null pointer, written as "0", whose internal representation is often, [http://c-faq.com/null/varieties.html though not always], the same as integer zero. It is (supposedly) garanteed to be pointing to nothing, so receiving one of those likely means you are not looking at an object--<i>but</i>, there are occasions where changing content of a null pointer actually does something (say, on DOS); and a function that's supposed to return a pointer on success doesn't always return a 0 otherwise (e.g. mmap returns -1 for failure).
+C has the null pointer, written as "0", whose internal representation is often, [though not always](http://c-faq.com/null/varieties.html), the same as integer zero. It is (supposedly) garanteed to be pointing to nothing, so receiving one of those likely means you are not looking at an object--<i>but</i>, there are occasions where changing content of a null pointer actually does something (say, on DOS); and a function that's supposed to return a pointer on success doesn't always return a 0 otherwise (e.g. mmap returns -1 for failure).
 
 There is a very common macro, <code>NULL</code>, which evaluates to <code>(void*) 0</code> or an equivalent value. NULL is compatible with all pointer types, including both data pointers and function pointers.
 
@@ -741,7 +741,7 @@ The idea of making functions accept <code>nil</code> without failing did not app
 
 The defaulting behavior <code>(car nil)</code> which Common Lisp programmers take for granted was introduced in InterLisp, and then copied into MacLisp. (InterLisp had other liberties that do not survive into Common Lisp: it was possible to call a function with insufficient arguments, and the missing ones defaulted to <code>nil</code>. Likewise, excess arguments were ignored. CL has a disciplined syntax and semantics for default and variable arguments.)
 
-This <code>(car nil) -> nil</code> behavior shows <code>nil</code> in an kind of new role: the role of a null object which takes methods that apply to other objects and provides some default non-failing behavior. It is the beginnings of the [[http://en.wikipedia.org/wiki/Null_Object_pattern null object design pattern]].
+This <code>(car nil) -> nil</code> behavior shows <code>nil</code> in an kind of new role: the role of a null object which takes methods that apply to other objects and provides some default non-failing behavior. It is the beginnings of the [null object design pattern](http://en.wikipedia.org/wiki/Null_Object_pattern).
 
 ====Object-Oriented Null Object====
 
@@ -1357,7 +1357,7 @@ undefined
 
 ## Julia
 
-See language reference: https://docs.julialang.org/en/stable/manual/faq/#Nothingness-and-missing-values-1
+See language reference: <https://docs.julialang.org/en/stable/manual/faq/#Nothingness-and-missing-values-1>
 
 
 ## K
@@ -1381,7 +1381,7 @@ additional properties :  _n@i and _n?i are i; _n`v is _n
 ```
 
 
-For more detail on K's concept of typed nulls, see http://code.kx.com/wiki/Reference/Datatypes#Primitive_Types
+For more detail on K's concept of typed nulls, see <http://code.kx.com/wiki/Reference/Datatypes#Primitive_Types>
 
 
 ## Kotlin
@@ -2136,7 +2136,7 @@ in
   {Show X+2}  %% blocks
 ```
 
-If you later assign a value to X in another thread, the original thread will resume and print the result of the addition. This is the basic building block of Oz' [http://c2.com/cgi/wiki?DeclarativeConcurrency declarative concurrency].
+If you later assign a value to X in another thread, the original thread will resume and print the result of the addition. This is the basic building block of Oz' [declarative concurrency](http://c2.com/cgi/wiki?DeclarativeConcurrency).
 
 ### Undefined values
 
@@ -2196,7 +2196,7 @@ print defined($x) ? 'Defined' : 'Undefined', ".\n";
 
 From the above discussion, it should be clear that if <code>defined</code> returns false, it does not mean that the variable has not been set; rather, it could be that it was explicitly set to <code>undef</code>.
 
-Starting in Perl 5.10, there is also a [http://perldoc.perl.org/perlop.html#C-style-Logical-Defined-Or defined-or] operator in Perl. For example:
+Starting in Perl 5.10, there is also a [defined-or](http://perldoc.perl.org/perlop.html#C-style-Logical-Defined-Or) operator in Perl. For example:
 
 ```perl
 say $number // "unknown";
@@ -2325,7 +2325,7 @@ if (is_null($x))
 
 New internal symbols are initialized with the value NIL. NIL is also the value
 for "false", so there is never really an "undefined value".
-'[http://software-lab.de/doc/refN.html#not not]' is the predicate to check for
+'[not](http://software-lab.de/doc/refN.html#not)' is the predicate to check for
 NIL, but many other (typically flow control) functions can be used.
 
 ```PicoLisp
@@ -2660,7 +2660,7 @@ Null_Type
 
 ## Scala
 
-[http://blog.sanaulla.info/2009/07/12/nothingness/ This blog post] has a good explanations of the different types of null-like values.
+[This blog post](http://blog.sanaulla.info/2009/07/12/nothingness/) has a good explanations of the different types of null-like values.
 
 
 ```scala

@@ -61,7 +61,7 @@ Define the data structure for a complete Doubly Linked List.
 
 Examples already in other doubly-linked list tasks: see [[Doubly-linked list/Element insertion#Ada]] and [[Doubly-linked list/Traversal#Ada]].
 
-Ada 2005 defines doubly-linked lists in [http://www.adaic.com/standards/05rm/html/RM-A-18-3.html A.18.3 The Package Containers.Doubly_Linked_Lists].
+Ada 2005 defines doubly-linked lists in [A.18.3 The Package Containers.Doubly_Linked_Lists](http://www.adaic.com/standards/05rm/html/RM-A-18-3.html).
 
 
 ## ALGOL 68
@@ -1587,7 +1587,7 @@ type dlList struct {
 }
 ```
 
-Or, just use the [http://golang.org/pkg/container/list/#Element container/list] package:
+Or, just use the [container/list](http://golang.org/pkg/container/list/#Element) package:
 
 ```go
 package main
@@ -1614,7 +1614,7 @@ func main() {
 
 ## Haskell
 
-For an efficient implementation, see the <code>Data.FDList</code> module provided by [http://hackage.haskell.org/package/liboleg liboleg]. But before using doubly linked lists at all, see [http://stackoverflow.com/questions/1844195/doubly-linked-list-in-a-purely-functional-programming-language this discussion on Stack Overflow].
+For an efficient implementation, see the <code>Data.FDList</code> module provided by [liboleg](http://hackage.haskell.org/package/liboleg). But before using doubly linked lists at all, see [this discussion on Stack Overflow](http://stackoverflow.com/questions/1844195/doubly-linked-list-in-a-purely-functional-programming-language).
 
 
 ```haskell
@@ -2750,7 +2750,7 @@ Insertion at Middle: One Five Six Three Four Two
 
 ## Python
 
-In the high level language Python, its <code>list</code> native datatype should be used. It automatically preserves the integrity of the list w.r.t. loops and allows insertion at any point using [http://docs.python.org/library/stdtypes.html#typesseq-mutable list.insert()] via an integer index into the list rather than a machine-code level pointer to a list element.
+In the high level language Python, its <code>list</code> native datatype should be used. It automatically preserves the integrity of the list w.r.t. loops and allows insertion at any point using [list.insert()](http://docs.python.org/library/stdtypes.html#typesseq-mutable) via an integer index into the list rather than a machine-code level pointer to a list element.
 
 
 ## Racket

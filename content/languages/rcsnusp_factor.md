@@ -11,7 +11,7 @@ tags = []
 +++
 
 
-This is a translation of the Go entry [http://www.rosettacode.org/wiki/Execute_SNUSP/Go], and as such consists of core SNUSP, a fixed-size data store, and no bounds checking. It has been made a bit more idiomatic for Factor by splitting the implementation up into several words (functions), and uses a tuple in place of Go's lexical variables.
+This is a translation of the Go entry <http://www.rosettacode.org/wiki/Execute_SNUSP/Go>, and as such consists of core SNUSP, a fixed-size data store, and no bounds checking. It has been made a bit more idiomatic for Factor by splitting the implementation up into several words (functions), and uses a tuple in place of Go's lexical variables.
 
 ```factor
 USING: accessors byte-arrays combinators

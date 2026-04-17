@@ -35,7 +35,7 @@ The phone call example is just a quick example. I think we should define a more 
 
 I have some (currently incomplete) documentation relating to command line parameter conventions that you may wish to consider as part of this project.
 
-http://computerconventions.wikia.com/wiki/Command_line_parameter_conventions
+<http://computerconventions.wikia.com/wiki/Command_line_parameter_conventions>
 
 I have also got some part written code that will follow the conventions, but the project is in its infancy, and not ready for prime time here on rosettacode (because it is in a language that I am still learning). It will eventually become available as library code, providing an alternative parser to getopt (but using different conventions). [[User:Markhobley|Markhobley]] 19:37, 6 August 2011 (UTC)
 
@@ -60,7 +60,7 @@ The order of the three options mentioned can vary and and option indicators such
 
 Comments please. --[[User:Paddy3118|Paddy3118]] 06:59, 13 September 2011 (UTC)
 
-:Do you mean follow the conventions of an OS which might be different from the one where the command line is being used?  Or do you mean that the program should detect what OS it is running under (and, for an interpreted language, that can change without any changes in the program). Meanwhile, the rules for quote handling under windows look [http://ss64.com/nt/cmd.html baroque].  Also the concept of "followed by a string" can be ambiguous (in the same option? in the next option? in the same option after an = character? ...)  And then there's the handling of -- followed by whitespace that should probably be respected if we are using hyphen to delimit command line options?  Meanwhile, another possibility here (one that seems to have been followed by some "implementations") is that of documenting the default parsing provided by the language.  --[[User:Rdm|Rdm]] 10:36, 13 September 2011 (UTC)
+:Do you mean follow the conventions of an OS which might be different from the one where the command line is being used?  Or do you mean that the program should detect what OS it is running under (and, for an interpreted language, that can change without any changes in the program). Meanwhile, the rules for quote handling under windows look [baroque](http://ss64.com/nt/cmd.html).  Also the concept of "followed by a string" can be ambiguous (in the same option? in the next option? in the same option after an = character? ...)  And then there's the handling of -- followed by whitespace that should probably be respected if we are using hyphen to delimit command line options?  Meanwhile, another possibility here (one that seems to have been followed by some "implementations") is that of documenting the default parsing provided by the language.  --[[User:Rdm|Rdm]] 10:36, 13 September 2011 (UTC)
 ::Hi. 
 ::# Choose your OS (This may affect the normal option syntax)
 ::# What is the normal way of adding an option that is stand-alone; i.e. the presence/absence is used to set a boolean variable within your program, and has a name of 'b'.

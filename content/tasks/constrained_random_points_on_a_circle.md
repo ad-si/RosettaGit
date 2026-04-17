@@ -403,7 +403,7 @@ Sample output:
 
 ## AutoHotkey
 
-Requires the GDI+ standard library by tic: http://www.autohotkey.com/forum/viewtopic.php?t=32238<br /> Works with individual pixels.
+Requires the GDI+ standard library by tic: <http://www.autohotkey.com/forum/viewtopic.php?t=32238><br /> Works with individual pixels.
 [[File:Ahk_fuzzycircle.png|thumb|right]]
 ```AHK
 z=100 ; x = x-coord; y = y-coord; z = count; pBitmap = a pointer to the image; f = filename
@@ -1082,7 +1082,7 @@ void main() {
 
 ## EchoLisp
 
-Using the '''plot''' library. For a greater visual appeal, points are plotted as circles of random radius and color. The resulting image is at [http://www.echolalie.org/echolisp/images/circle.png].
+Using the '''plot''' library. For a greater visual appeal, points are plotted as circles of random radius and color. The resulting image is at <http://www.echolalie.org/echolisp/images/circle.png>.
 
 ```scheme
 

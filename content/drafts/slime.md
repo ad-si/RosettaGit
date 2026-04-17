@@ -15,4 +15,4 @@ tags = []
 
 Emacs, by itself, can already edit, indent and highlight Common Lisp mode. SLIME integrates Emacs with a Common Lisp implementation. Emacs and SLIME, together, can compile Lisp files, run a [[read-eval-print loop]], show documentation for functions and macros, locate errors in source code, and so on.
 
-* [http://common-lisp.net/project/slime/ SLIME: The Superior Lisp Interaction Mode for Emacs]
+* [SLIME: The Superior Lisp Interaction Mode for Emacs](http://common-lisp.net/project/slime/)

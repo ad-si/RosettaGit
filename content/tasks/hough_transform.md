@@ -838,7 +838,7 @@ $image.output($png_fh, GD_PNG);
 $png_fh.close;
 ```
 
-See [https://github.com/thundergnat/rc/blob/master/img/hough-transform.png Hough Transform] (offsite .png image)
+See [Hough Transform](https://github.com/thundergnat/rc/blob/master/img/hough-transform.png) (offsite .png image)
 
 
 ## Phix
@@ -1187,7 +1187,7 @@ int main( int argc, char** argv )
 ```
 
 
-[http://i.imgur.com/McCuZP3.png Output Screenshot]
+[Output Screenshot](http://i.imgur.com/McCuZP3.png)
 
 
 ## Sidef
@@ -1240,7 +1240,7 @@ ht.write(file => 'Hough transform.png')
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 const WHITE=0xffFFff, X=0x010101;
 fcn houghTransform(image,hx=460,hy=360){
@@ -1276,5 +1276,5 @@ houghTransform(readPNG2PPM("pentagon.png"))
 
 The output image looks the same as in the Go solution.
 
-http://www.zenkinetic.com/Images/RosettaCode/pentagon_hough.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/pentagon_hough.jpg>
 

@@ -56,8 +56,8 @@ Show the first twenty members of the series.
 
 ;Cf.
 * [[wp:Primorial prime|Primorial prime]] Wikipedia.
-* [https://primes.utm.edu/glossary/page.php?sort=PrimorialPrime Primorial prime] from The Prime Glossary.
-* [https://oeis.org/A088411 Sequence A088411] from The On-Line Encyclopedia of Integer Sequences
+* [Primorial prime](https://primes.utm.edu/glossary/page.php?sort=PrimorialPrime) from The Prime Glossary.
+* [Sequence A088411](https://oeis.org/A088411) from The On-Line Encyclopedia of Integer Sequences
 
 
 ## Related tasks
@@ -2850,7 +2850,7 @@ state = gmp_randclear(state)
 
 ## Python
 
-Uses the pure python library [https://pypi.python.org/pypi/pyprimes/0.1.1a pyprimes ]. Note that pyprimes.isprime switches to a fast and good probabilistic algorithm for larger integers.
+Uses the pure python library [pyprimes](https://pypi.python.org/pypi/pyprimes/0.1.1a). Note that pyprimes.isprime switches to a fast and good probabilistic algorithm for larger integers.
 
 
 ```python

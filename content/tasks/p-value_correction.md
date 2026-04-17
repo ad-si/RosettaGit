@@ -52,11 +52,11 @@ Given one list of [[Welch's_t-test|p-values]], return the p-values correcting fo
 
 
 There are several methods to do this, see:
-* Yoav Benjamini, Yosef Hochberg "[http://www.math.tau.ac.il/~ybenja/MyPapers/benjamini_hochberg1995.pdf Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing]", ''Journal of the Royal Statistical Society. Series B'', Vol. 57, No. 1 (1995), pp. 289-300, JSTOR:[http://www.jstor.org/stable/2346101 2346101]
-* Yoav Benjamini, Daniel Yekutieli, "[http://www.math.tau.ac.il/~ybenja/MyPapers/benjamini_yekutieli_ANNSTAT2001.pdf The control of the false discovery rate in multiple testing under dependency]", ''Ann. Statist.'', Vol. 29, No. 4 (2001), pp. 1165-1188, DOI:[https://doi.org/10.1214/aos/1013699998 10.1214/aos/1013699998] JSTOR:[http://www.jstor.org/stable/2674075 2674075]
-* Sture Holm, "A Simple Sequentially Rejective Multiple Test Procedure", ''Scandinavian Journal of Statistics'', Vol. 6, No. 2 (1979), pp. 65-70, JSTOR:[https://www.jstor.org/stable/4615733 4615733]
-* Yosef Hochberg, "A sharper Bonferroni procedure for multiple tests of significance", ''Biometrika'', Vol. 75, No. 4 (1988), pp 800–802, DOI:[https://doi.org/10.1093/biomet/75.4.800 10.1093/biomet/75.4.800] JSTOR:[https://www.jstor.org/stable/2336325 2336325]
-* Gerhard Hommel, "A stagewise rejective multiple test procedure based on a modified Bonferroni test", ''Biometrika'', Vol. 75, No. 2 (1988), pp 383–386, DOI:[https://doi.org/10.1093/biomet/75.2.383 10.1093/biomet/75.2.383] JSTOR:[https://www.jstor.org/stable/2336190 2336190]
+* Yoav Benjamini, Yosef Hochberg "[Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing](http://www.math.tau.ac.il/~ybenja/MyPapers/benjamini_hochberg1995.pdf)", ''Journal of the Royal Statistical Society. Series B'', Vol. 57, No. 1 (1995), pp. 289-300, JSTOR:[2346101](http://www.jstor.org/stable/2346101)
+* Yoav Benjamini, Daniel Yekutieli, "[The control of the false discovery rate in multiple testing under dependency](http://www.math.tau.ac.il/~ybenja/MyPapers/benjamini_yekutieli_ANNSTAT2001.pdf)", ''Ann. Statist.'', Vol. 29, No. 4 (2001), pp. 1165-1188, DOI:[10.1214/aos/1013699998](https://doi.org/10.1214/aos/1013699998) JSTOR:[2674075](http://www.jstor.org/stable/2674075)
+* Sture Holm, "A Simple Sequentially Rejective Multiple Test Procedure", ''Scandinavian Journal of Statistics'', Vol. 6, No. 2 (1979), pp. 65-70, JSTOR:[4615733](https://www.jstor.org/stable/4615733)
+* Yosef Hochberg, "A sharper Bonferroni procedure for multiple tests of significance", ''Biometrika'', Vol. 75, No. 4 (1988), pp 800–802, DOI:[10.1093/biomet/75.4.800](https://doi.org/10.1093/biomet/75.4.800) JSTOR:[2336325](https://www.jstor.org/stable/2336325)
+* Gerhard Hommel, "A stagewise rejective multiple test procedure based on a modified Bonferroni test", ''Biometrika'', Vol. 75, No. 2 (1988), pp 383–386, DOI:[10.1093/biomet/75.2.383](https://doi.org/10.1093/biomet/75.2.383) JSTOR:[2336190](https://www.jstor.org/stable/2336190)
 
 
 Each method has its own advantages and disadvantages.
@@ -70,7 +70,7 @@ Each method has its own advantages and disadvantages.
 
 ### Version 1
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 This work is a translation of the R source code.  In order to confirm that the new function is working correctly, each value is compared to R's output and a cumulative absolute error is returned.
 
@@ -1771,7 +1771,7 @@ type 5 = 'hommel' has a cumulative error of 4.353024E-007
 
 ## D
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 ```D
 import std.algorithm;
@@ -2610,7 +2610,7 @@ Perhaps you want one of these?:
 
 ## Java
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 ```Java
 import java.util.Arrays;
@@ -3138,7 +3138,7 @@ MultipleTesting.Hommel()
 
 ### Version 1
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 
 ```scala
@@ -3700,7 +3700,7 @@ Perhaps you want one of these?:
 
 ## Perl
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 ```perl
 #!/usr/bin/env perl
@@ -4477,7 +4477,7 @@ Sidak has cumulative error of 7.26897e-10
 
 ## Python
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 ```python
 from __future__ import division
@@ -4733,7 +4733,7 @@ BY error = 3.64072e-07
 
 ## R
 
-The '''p.adjust''' function is built-in, see [https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html R manual].
+The '''p.adjust''' function is built-in, see [R manual](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
 
 
 ```R
@@ -4941,7 +4941,7 @@ run;
 ## Stata
 
 
-The '''[https://econpapers.repec.org/software/bocbocode/s457100.htm qqvalue]''' package on SSC provides the equivalent of the R function '''p.adjust'''.
+The '''[qqvalue](https://econpapers.repec.org/software/bocbocode/s457100.htm)''' package on SSC provides the equivalent of the R function '''p.adjust'''.
 
 First, install the package with:
 
@@ -5054,7 +5054,7 @@ list
 
 ## zkl
 
-''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
+''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [FAQ about GNU licenses](https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic)''.
 
 
 ```zkl

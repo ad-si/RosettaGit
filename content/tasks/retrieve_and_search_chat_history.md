@@ -31,7 +31,7 @@ languages = [
 
 '''Details:''' 
 
-The Tcl Chatroom is an online chatroom. Its conversations are logged. It's useful to know if someone has mentioned you or your project in the chatroom recently. You can find this out by searching the chat logs. The logs are publicly available at http://tclers.tk/conferences/tcl/. One log file corresponds to the messages from one day in [[wp:Time in Germany|Germany's current time zone]]. Each chat log file has the name <tt>YYYY-MM-DD.tcl</tt> where <tt>YYYY</tt> is the year, <tt>MM</tt> is the month and <tt>DD</tt> the day. The logs store one message per line. The messages themselves are human-readable and their internal structure doesn't matter.
+The Tcl Chatroom is an online chatroom. Its conversations are logged. It's useful to know if someone has mentioned you or your project in the chatroom recently. You can find this out by searching the chat logs. The logs are publicly available at <http://tclers.tk/conferences/tcl/>. One log file corresponds to the messages from one day in [[wp:Time in Germany|Germany's current time zone]]. Each chat log file has the name <tt>YYYY-MM-DD.tcl</tt> where <tt>YYYY</tt> is the year, <tt>MM</tt> is the month and <tt>DD</tt> the day. The logs store one message per line. The messages themselves are human-readable and their internal structure doesn't matter.
 
 Retrieve the chat logs from the last 10 days via [[HTTP]]. Find the lines that include a particular [[substring]] and print them in the following format:
 
@@ -60,7 +60,7 @@ If your language does not have an HTTP client in the standard library, you can s
 
 ## C
 
-Starts from current date, prints out lines containing matching substring and also if the string is not found at all in the log of that particular day and also if the log of a day cannot be read for any reason, requires [https://curl.haxx.se/libcurl/ libcurl]
+Starts from current date, prints out lines containing matching substring and also if the string is not found at all in the log of that particular day and also if the log of a day cannot be read for any reason, requires [libcurl](https://curl.haxx.se/libcurl/)
 
 ```C
 

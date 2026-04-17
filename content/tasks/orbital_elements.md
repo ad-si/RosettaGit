@@ -928,7 +928,7 @@ $VAR1 = {
 
 ## Perl 6
 
-We'll use the [https://github.com/grondilu/clifford Clifford geometric algebra library] but only for the vector operations.
+We'll use the [Clifford geometric algebra library](https://github.com/grondilu/clifford) but only for the vector operations.
 
 ```perl6
 sub orbital-state-vectors(
@@ -1393,7 +1393,7 @@ object OrbitalElements extends App {
 }
 ```
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/ac17jh2/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/2NQNgj4OQkazxZNvSzcexQ Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/ac17jh2/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/2NQNgj4OQkazxZNvSzcexQ).
 
 
 ## Sidef

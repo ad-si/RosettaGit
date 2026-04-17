@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/jtblin/go-ldap-client go-ldap-client] is a library which provides Go programmers with a simple ldap client to authenticate, retrieve basic information and groups for a user.
+[go-ldap-client](https://github.com/jtblin/go-ldap-client) is a library which provides Go programmers with a simple ldap client to authenticate, retrieve basic information and groups for a user.
 
-Its use is subject to the [https://github.com/jtblin/go-ldap-client/blob/master/LICENSE BSD license].
+Its use is subject to the [BSD license](https://github.com/jtblin/go-ldap-client/blob/master/LICENSE).

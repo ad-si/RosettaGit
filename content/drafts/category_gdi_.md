@@ -13,5 +13,5 @@ tags = []
 {{library}}GDI+ is an object-oriented graphics library for Microsoft's Win32 environment.
 
 ==Bindings==
-* [[AutoHotkey]] bindings are [http://www.autohotkey.com/forum/topic32238.html available].
-* The library is [http://msdn.microsoft.com/en-us/library/ms533798(v=VS.85).aspx native] for use with [[C++]].
+* [[AutoHotkey]] bindings are [available](http://www.autohotkey.com/forum/topic32238.html).
+* The library is [native](http://msdn.microsoft.com/en-us/library/ms533798(v=VS.85).aspx) for use with [[C++]].

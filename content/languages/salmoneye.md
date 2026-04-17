@@ -16,4 +16,4 @@ SalmonEye also provides a library form of the interpreter, allowing it to be inc
 SalmonEye is in the public domain.
 
 ## External Links
-* [http://salmonpl.net SalmonEye official site]
+* [SalmonEye official site](http://salmonpl.net)

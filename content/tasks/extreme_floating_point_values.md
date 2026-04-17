@@ -75,7 +75,7 @@ If your language can directly enter these extreme floating point values then sho
 
 ## See also
 
-*   [http://www.cl.cam.ac.uk/teaching/1011/FPComp/floatingmath.pdf What Every Computer Scientist Should Know About Floating-Point Arithmetic]
+*   [What Every Computer Scientist Should Know About Floating-Point Arithmetic](http://www.cl.cam.ac.uk/teaching/1011/FPComp/floatingmath.pdf)
 
 
 ## Related tasks
@@ -1855,7 +1855,7 @@ See [[Extreme_floating_point_values#Delphi | Delphi]]
 
 ## Perl
 
-Perl numbers have three formats (integer, floating-point, string) and [http://perldoc.perl.org/perlnumber.html perlnumber] explains the automatic conversions. Arithmetic tends to convert numbers to integers.
+Perl numbers have three formats (integer, floating-point, string) and [perlnumber](http://perldoc.perl.org/perlnumber.html) explains the automatic conversions. Arithmetic tends to convert numbers to integers.
 To get negative zero, one must negate a floating-point zero, not an integer zero.
 So <tt>-0</tt> is "0", <tt>-0.0</tt> is "-0", but <tt>-(1.0 - 1.0)</tt> is again "0" because the result of <tt>1.0 - 1.0</tt> is an integer zero.
 Stringification of minus zero may or may not keep the sign in the string, depending on the platform and Perl version.
@@ -2429,7 +2429,7 @@ end
 ## Rust
 
 
-Negative zero needs to printed using the [https://doc.rust-lang.org/std/fmt/trait.Debug.html Debug trait] (rather than the "user-facing" [https://doc.rust-lang.org/std/fmt/trait.Display.html Display trait]) because <code>0 == -0</code> to most users. See https://github.com/rust-lang/rfcs/issues/1074 and https://github.com/rust-lang/rust/issues/24623 for further discussion about this.
+Negative zero needs to printed using the [Debug trait](https://doc.rust-lang.org/std/fmt/trait.Debug.html) (rather than the "user-facing" [Display trait](https://doc.rust-lang.org/std/fmt/trait.Display.html)) because <code>0 == -0</code> to most users. See <https://github.com/rust-lang/rfcs/issues/1074> and <https://github.com/rust-lang/rust/issues/24623> for further discussion about this.
 
 
 ```rust
@@ -2563,14 +2563,14 @@ NaN == NaN:       false
 
 ## Seed7
 
-The type [http://seed7.sourceforge.net/libraries/float.htm float] works according to IEEE 754.
-Constants like [http://seed7.sourceforge.net/libraries/float.htm#Infinity Infinity] and
-[http://seed7.sourceforge.net/libraries/float.htm#NaN NaN] are predefined in the library
-[http://seed7.sourceforge.net/libraries/float.htm float.s7i].
+The type [float](http://seed7.sourceforge.net/libraries/float.htm) works according to IEEE 754.
+Constants like [Infinity](http://seed7.sourceforge.net/libraries/float.htm#Infinity) and
+[NaN](http://seed7.sourceforge.net/libraries/float.htm#NaN) are predefined in the library
+[float.s7i](http://seed7.sourceforge.net/libraries/float.htm).
 A zero is always written without sign (e.g.: ''write(-0.0)'' writes ''0.0'',
-and ''write(-0.004 [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29digits%28ref_integer%29 digits] 2);'' writes ''0.00'').
-To recognize negative zero the function [http://seed7.sourceforge.net/libraries/float.htm#isNegativeZero%28in_float%29 isNegativeZero]
-can be used. NaN can be checked with [http://seed7.sourceforge.net/libraries/float.htm#isNaN%28ref_float%29 isNaN].
+and ''write(-0.004 [digits](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29digits%28ref_integer%29) 2);'' writes ''0.00'').
+To recognize negative zero the function [isNegativeZero](http://seed7.sourceforge.net/libraries/float.htm#isNegativeZero%28in_float%29)
+can be used. NaN can be checked with [isNaN](http://seed7.sourceforge.net/libraries/float.htm#isNaN%28ref_float%29).
 
 
 ```seed7
@@ -2734,7 +2734,7 @@ Stata does not use NaN values, but instead it has several kinds of missing value
 
 Notice that .z > ... > .a > . and . is greater than any real number, and c(maxdouble) is the value 8.9884656743115785e+307.
 
-The hexadecimal representation of floating-point numbers is discussed in two articles by William Gould on Stata blog: [http://blog.stata.com/2011/02/02/how-to-read-the-percent-21x-format/ part 1], [http://blog.stata.com/2011/02/10/how-to-read-the-percent-21x-format-part-2/ part 2].
+The hexadecimal representation of floating-point numbers is discussed in two articles by William Gould on Stata blog: [part 1](http://blog.stata.com/2011/02/02/how-to-read-the-percent-21x-format/), [part 2](http://blog.stata.com/2011/02/10/how-to-read-the-percent-21x-format-part-2/).
 
 
 ## Swift

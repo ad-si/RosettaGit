@@ -1428,7 +1428,7 @@ z=x~'/'(0.1)         => [-14.1421356,-14.1421356]
 
 ## Perl
 
-Typically we would use a module, such as [https://metacpan.org/pod/Math::Vector::Real Math::Vector::Real] or [https://metacpan.org/pod/Math::Complex Math::Complex].  Here is a very basic Moose class.
+Typically we would use a module, such as [Math::Vector::Real](https://metacpan.org/pod/Math::Vector::Real) or [Math::Complex](https://metacpan.org/pod/Math::Complex).  Here is a very basic Moose class.
 
 ```perl
 package Vector;
@@ -2382,7 +2382,7 @@ say u/2                                  #: vec[1.5, 2]
 ## Tcl
 
 
-Good artists steal .. code .. from the great RS on [http://wiki.tcl.tk/14022|the Tcl'ers wiki].  Seriously, this is a neat little procedure:
+Good artists steal .. code .. from the great RS on [Tcl'ers wiki](http://wiki.tcl.tk/14022|the).  Seriously, this is a neat little procedure:
 
 
 ```Tcl

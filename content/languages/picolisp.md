@@ -22,7 +22,7 @@ A special feature is the intrinsic database functionality: Persistent symbols ar
 
 Other features include a [Prolog](https://rosettacode.org/wiki/Prolog) engine for logic programming and database queries, distributed databases, inlining of [C](https://rosettacode.org/wiki/C)/asm functions and native C/asm function calls, child process management, interprocess communication, Browser GUI, Internationalization and localization.
 
-To try the RosettaCode tasks, download [http://software-lab.de/picoLisp.tgz picoLisp.tgz], unpack it, and follow the instructions in README and INSTALL. Unless stated otherwise, the examples assume that the interpreter was started with the command
+To try the RosettaCode tasks, download [picoLisp.tgz](http://software-lab.de/picoLisp.tgz), unpack it, and follow the instructions in README and INSTALL. Unless stated otherwise, the examples assume that the interpreter was started with the command
 ```bash
 $ pil +
 :
@@ -32,8 +32,8 @@ $ pil +
 Note: Do not call just the 'picolisp' binary, this is only the bare kernel of PicoLisp)
 
 ## See Also
-* [http://software-lab.de/doc/ref.html Reference Manual]
-* [http://software-lab.de/doc/faq.html Frequently asked questions]
+* [Reference Manual](http://software-lab.de/doc/ref.html)
+* [Frequently asked questions](http://software-lab.de/doc/faq.html)
 
 ## Todo
 [Reports:Tasks_not_implemented_in_PicoLisp](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_PicoLisp)

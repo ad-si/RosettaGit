@@ -57,7 +57,7 @@ Then check the gcmcontinue code at the top to cycle through each additional 500 
 
 -----
 
-:According to [http://rosettacode.org/wiki/Category:A%2B its task page] A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
+:According to [its task page](http://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
 :: rank: 441         (3 entries)  A+
 :--[[User:Nigel Galloway|Nigel Galloway]] 14:51, 26 January 2013 (UTC)
 
@@ -70,7 +70,7 @@ I took the task's requirements quite literally:
 
 ''Sort most popular programming languages based in number of '''members''' in Rosetta Code categories''
 
- (from http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+ (from <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 
 
 (The bold font was added by me.)   Note that it didn't say   '''implementations''',   but   '''members'''.
@@ -226,7 +226,7 @@ Also, as a by-product of having two computer programming languages specified in 
 ## Mathematica / Wolfram Language
  </nowiki> </big>   header,   it would appear like there was an entry for each of the two languages specified, thus my comment about double counting.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:04, 11 February 2019 (UTC)
 
-:See my musing on this subject (from last September) here: [http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Whoa!_10000_examples!#Lies.2C_damned_lies_and_statistics Lies, damned lies, and statistics]  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:23, 11 February 2019 (UTC)
+:See my musing on this subject (from last September) here: [Lies, damned lies, and statistics](http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Whoa!_10000_examples!#Lies.2C_damned_lies_and_statistics)  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:23, 11 February 2019 (UTC)
 
 
 == Category vs. solution ==

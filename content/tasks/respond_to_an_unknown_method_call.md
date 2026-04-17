@@ -75,7 +75,7 @@ This task is intended only for object systems that use a dynamic dispatch mechan
 
 ## AutoHotkey
 
-[http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&start=140#p14454 Example by LinearSpoon]
+[Example by LinearSpoon](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&start=140#p14454)
 
 ```AutoHotkey
 class example
@@ -440,7 +440,7 @@ a they_can_too: "eat" and: "walk"
 ## Fantom
 
 
-In Fantom, you can call methods statically or dynamically.  Static calls to methods will be checked at compile time.  Dynamic method calls (indicated by an <code>instance->method</code> syntax) are run through a "[http://fantom.org/doc/sys/Obj.html#trap trap]" method at run time.  This method looks up the given method name, and throws an exception if the method/field is not known.  This exception can be caught, and processed specially:
+In Fantom, you can call methods statically or dynamically.  Static calls to methods will be checked at compile time.  Dynamic method calls (indicated by an <code>instance->method</code> syntax) are run through a "[trap](http://fantom.org/doc/sys/Obj.html#trap)" method at run time.  This method looks up the given method name, and throws an exception if the method/field is not known.  This exception can be caught, and processed specially:
 
 
 ```fantom
@@ -498,7 +498,7 @@ In trap, you called: methodName with args 1,2,3
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-http://soton.mpeforth.com/flag/fms/index.html
+<http://soton.mpeforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -719,7 +719,7 @@ hello world
 ## JavaScript
 
 
-There is a way (a bit unconfortable if you compare it to php´s way), involves using Proxy interface defined on ES 6, it isn´t supported still on all vendors, but for updated info, view [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy MDN proxy] site
+There is a way (a bit unconfortable if you compare it to php´s way), involves using Proxy interface defined on ES 6, it isn´t supported still on all vendors, but for updated info, view [MDN proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) site
 ```javascript
 
 obj  = new Proxy({},
@@ -1379,7 +1379,7 @@ Sparrow: Hoist the Jolly Roger mateys, full speed ahead!
 ```
 
 
-<tt>[http://design.perl6.org/S12.html#FALLBACK_methods FALLBACK]</tt> will be called for any method that is not defined. Since any class inherits from <tt>Any</tt>, there will be plenty of already defined methods. Those which are not defined can also be used as L-Values by the magic of <tt>[http://design.perl6.org/S12.html#Lvalue_methods is rw]</tt>.
+<tt>[FALLBACK](http://design.perl6.org/S12.html#FALLBACK_methods)</tt> will be called for any method that is not defined. Since any class inherits from <tt>Any</tt>, there will be plenty of already defined methods. Those which are not defined can also be used as L-Values by the magic of <tt>[is rw](http://design.perl6.org/S12.html#Lvalue_methods)</tt>.
 
 
 ```perl6
@@ -1476,7 +1476,7 @@ $example->ding("dong"); // prints "tried to handle unknown method ding"
 
 ## PicoLisp
 
-The function '[http://software-lab.de/doc/refT.html#try try]' is used to send a message to an object for which it is not known whether it inherits a method for that message or not. As opposed to the syntacically equivalent '[http://software-lab.de/doc/refS.html#send send]' function, 'try' does not give an error, but returns NIL. We might redefine 'send' to get an effect analog to CLOS.
+The function '[try](http://software-lab.de/doc/refT.html#try)' is used to send a message to an object for which it is not known whether it inherits a method for that message or not. As opposed to the syntacically equivalent '[send](http://software-lab.de/doc/refS.html#send)' function, 'try' does not give an error, but returns NIL. We might redefine 'send' to get an effect analog to CLOS.
 
 ```PicoLisp
 (redef send (Msg Obj . @)

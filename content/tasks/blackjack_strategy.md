@@ -11,13 +11,13 @@ tags = []
 +++
 
 {{draft task}} [[Category:Games]]
-The objective of this task is to recreate and explore the following [https://web.archive.org/web/20130625120019/http://www.blackjacktactics.com/blackjack/strategy/charts/single-deck/ strategy charts] for the game of [[wp:Blackjack|blackjack]] (which is known by many other names as well).
+The objective of this task is to recreate and explore the following [strategy charts](https://web.archive.org/web/20130625120019/http://www.blackjacktactics.com/blackjack/strategy/charts/single-deck/) for the game of [[wp:Blackjack|blackjack]] (which is known by many other names as well).
 
 Assume that my casino:
 * uses a single deck,
 * does not allow Double after split,
 * pays out 3 to 2 for Blackjack, and
-* uses [https://web.archive.org/web/20140822052840/http://www.blackjacktactics.com/blackjack/how-to-play// these rules].
+* uses [these rules](https://web.archive.org/web/20140822052840/http://www.blackjacktactics.com/blackjack/how-to-play//).
 
 Begin by assuming the player's dealt hand contains no aces and is not a pair. 
 Create functions which given the players dealt cards and the dealers exposed card returns the number of wins and losses for all possible continuations when the player either sticks or hits. 

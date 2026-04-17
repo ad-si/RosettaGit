@@ -130,7 +130,7 @@ He thought the answer might be 99,736, whose square is 9,947,269,696; but he cou
 The task is to find out if Babbage had the right answer — and to do so, as far as your language allows it, in code that Babbage himself would have been able to read and understand.
 As Babbage evidently solved the task with pencil and paper, a similar efficient solution is preferred.
 
-For these purposes, Charles Babbage may be taken to be an intelligent person, familiar with mathematics and with the idea of a computer; he has written the first drafts of simple computer programmes in tabular form. [[https://collection.sciencemuseum.org.uk/documents/aa110000020 Babbage Archive Series L]].
+For these purposes, Charles Babbage may be taken to be an intelligent person, familiar with mathematics and with the idea of a computer; he has written the first drafts of simple computer programmes in tabular form. [Babbage Archive Series L](https://collection.sciencemuseum.org.uk/documents/aa110000020).
 
 
 {{task heading|Motivation}}
@@ -1269,7 +1269,7 @@ COMPUTATION-PARAGRAPH.
 
 ### Alternate solution
 
-I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
+I use [Allegro CL 10.1](https://franz.com/downloads/clp/survey)
 
 
 ```lisp
@@ -1870,9 +1870,9 @@ drop ! find leaves both the found element from the sequence
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Babbage_problem this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Babbage_problem) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2058,7 +2058,7 @@ Its square is 638269696
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=08eafccbe3febb79ec62301ca84e3662 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=08eafccbe3febb79ec62301ca84e3662)'''
 
 ```gambas
 Public Sub Main()

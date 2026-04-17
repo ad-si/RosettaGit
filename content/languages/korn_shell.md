@@ -29,5 +29,5 @@ $ echo $KSH_VERSION
 * A ''[zsh](https://rosettacode.org/wiki/zsh)'' invoked as ''ksh'' sets ZSH_VERSION, not KSH_VERSION.
 
 ## Links
-* [http://www.kornshell.com/ Home Page For The KornShell Command And Programming Language]
+* [Home Page For The KornShell Command And Programming Language](http://www.kornshell.com/)
 * [wp:korn shell](https://en.wikipedia.org/wiki/korn_shell)

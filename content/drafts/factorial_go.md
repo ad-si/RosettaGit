@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-An implementation of one of Peter Luschny's [http://www.luschny.de/math/factorial/FastFactorialFunctions.htm fast factorial algorithms].  Fast as this algorithm is, I believe there is room to speed it up more with parallelization and attention to cache effects.  The Go library has a nice Karatsuba multiplier but it is yet single threaded.
+An implementation of one of Peter Luschny's [fast factorial algorithms](http://www.luschny.de/math/factorial/FastFactorialFunctions.htm).  Fast as this algorithm is, I believe there is room to speed it up more with parallelization and attention to cache effects.  The Go library has a nice Karatsuba multiplier but it is yet single threaded.
 
 ```go
 package main

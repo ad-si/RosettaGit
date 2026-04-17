@@ -1300,8 +1300,8 @@ end
 ```
 
 
-[http://tapestry.tucson.az.us/unilib/pack_Utils.html package Utils provides makeProc]
-[https://tapestry.tucson.az.us/twiki/bin/view/Main/AnonymousFunctions Summary of Anonymous Functions in Unicon]
+[package Utils provides makeProc](http://tapestry.tucson.az.us/unilib/pack_Utils.html)
+[Summary of Anonymous Functions in Unicon](https://tapestry.tucson.az.us/twiki/bin/view/Main/AnonymousFunctions)
 
 ```txt
 Randomly selecting L[8] = 64
@@ -1377,7 +1377,7 @@ Running a randomly picked function which is not the last one:
 
 
 ===Tacit (unorthodox) version===
-In J only adverbs and conjunctions (functionals) can produce verbs (functions)...  Unless they are forced to cloak  as verbs; in this instance, the rank conjunction (“) cloaks as a dyadic verb. (Note that this takes advantage of a bug/feature where the interpreter does not produce a result with [http://www.jsoftware.com/help/dictionary/dictb.htm the correct shape]):
+In J only adverbs and conjunctions (functionals) can produce verbs (functions)...  Unless they are forced to cloak  as verbs; in this instance, the rank conjunction (“) cloaks as a dyadic verb. (Note that this takes advantage of a bug/feature where the interpreter does not produce a result with [the correct shape](http://www.jsoftware.com/help/dictionary/dictb.htm)):
 
 
 ```j
@@ -1625,7 +1625,7 @@ Calling the functions:
 ## Lingo
 
 
-Lingo doesn't really support closures. But with the limitations described at [https://www.rosettacode.org/wiki/Function_composition#Lingo Function composition] and based on the fact that Lingo allows to create arbitrary code at runtime, the task can be solved like this:
+Lingo doesn't really support closures. But with the limitations described at [Function composition](https://www.rosettacode.org/wiki/Function_composition#Lingo) and based on the fact that Lingo allows to create arbitrary code at runtime, the task can be solved like this:
 
 
 ```lingo
@@ -2314,7 +2314,7 @@ Function Sum
 
 Works with SWI-Prolog and module '''lambda.pl''' from '''Ulrich Neumerkel'''.
 
-'''lambda.pl''' can be found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
+'''lambda.pl''' can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```Prolog
@@ -2700,7 +2700,7 @@ fn main() {
 
 ----
 
-Using Scheme [http://srfi.schemers.org/srfi-1/srfi-1.html SRFI 1] ''iota'' procedure can be simplified to:
+Using Scheme [SRFI 1](http://srfi.schemers.org/srfi-1/srfi-1.html) ''iota'' procedure can be simplified to:
 
 ```scheme
 

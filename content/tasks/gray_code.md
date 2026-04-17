@@ -396,7 +396,7 @@ Output:
 ## [APL](/languages/apl)
 
 Generate the complete N-bit Gray sequence as a matrix:
-<sup>[http://ngn.github.io/apl/web/index.html#code=N%u21905%0A%28%7B%280%2C%u2375%29%u236A1%2C%u2296%u2375%7D%u2363N%29%281%200%u2374%u236C%29,run=1 run]</sup>
+<sup>[run](http://ngn.github.io/apl/web/index.html#code=N%u21905%0A%28%7B%280%2C%u2375%29%u236A1%2C%u2296%u2375%7D%u2363N%29%281%200%u2374%u236C%29,run=1)</sup>
 
 ```apl
 N←5
@@ -441,7 +441,7 @@ Output:
 ```
 
 
-Encode and decode an individual integer:<sup>[http://ngn.github.io/apl/web/index.html#code=N%u21905%0AgrayEncode%u2190%7Ba%u2260N%u2191%280%2Ca%u2190%28N%u23742%29%u22A4%u2375%29%7D%0AgrayDecode%u2190%7B2%u22A5%u2260%u233FN%20N%u2191N%282%D7N%29%u2374%u2375%2C0%2CN%u23740%7D%0A%0AgrayEncode%2019,run=1 run]</sup>
+Encode and decode an individual integer:<sup>[run](http://ngn.github.io/apl/web/index.html#code=N%u21905%0AgrayEncode%u2190%7Ba%u2260N%u2191%280%2Ca%u2190%28N%u23742%29%u22A4%u2375%29%7D%0AgrayDecode%u2190%7B2%u22A5%u2260%u233FN%20N%u2191N%282%D7N%29%u2374%u2375%2C0%2CN%u23740%7D%0A%0AgrayEncode%2019,run=1)</sup>
 
 ```apl
 N←5
@@ -1849,7 +1849,7 @@ FORTH> test
 
 ## [Fortran](/languages/fortran)
 
-Using [http://www.everyspec.com/MIL-STD/MIL-STD+(1700+-+1799)/download.php?spec=MIL-STD-1753.011044.PDF MIL-STD-1753] extensions in '''Fortran 77''', and formulas found at OEIS for [http://oeis.org/A003188 direct] and [http://oeis.org/A006068 inverse] Gray code :
+Using [MIL-STD-1753](http://www.everyspec.com/MIL-STD/MIL-STD+(1700+-+1799)/download.php?spec=MIL-STD-1753.011044.PDF) extensions in '''Fortran 77''', and formulas found at OEIS for [direct](http://oeis.org/A003188) and [inverse](http://oeis.org/A006068) Gray code :
 
 ```fortran
       PROGRAM GRAY
@@ -3024,7 +3024,7 @@ Output:
 ## [Lua](/languages/lua)
 
 Translated from Euphoria
-This code uses the [http://bitop.luajit.org/index.html Lua BitOp] module.
+This code uses the [Lua BitOp](http://bitop.luajit.org/index.html) module.
 Designed to be a module named <tt>gray.lua</tt>.
 
 ```lua
@@ -3417,7 +3417,7 @@ Note the absence of the usual kinds of testing you'd see in most programming lan
 Then <tt>gray.to_int</tt> is mapped over the <tt>Grays</tt> list and placed into the <tt>Numbers</tt> (input) list.
 Or so it would seem to those used to imperative or functional languages.
 
-In reality what's happening is [https://en.wikipedia.org/wiki/Unification_%28computer_science%29 unification].
+In reality what's happening is [unification](https://en.wikipedia.org/wiki/Unification_%28computer_science%29).
 Since the <tt>Grays</tt> list is not yet populated, unification is very similar notionally to assignment in other languages.
 <tt>Numbers</tt>, however, '''is''' instantiated and thus unification is more like testing for equality.
 
@@ -4268,7 +4268,7 @@ This example works with lists of discrete binary digits.
 
 
 ;Now the bin<>gray converters.
-These follow closely the methods in the animation seen here: [http://www.wisc-online.com/Objects/ViewObject.aspx?ID=IAU8307 Converting Between Gray and Binary Codes].
+These follow closely the methods in the animation seen here: [Converting Between Gray and Binary Codes](http://www.wisc-online.com/Objects/ViewObject.aspx?ID=IAU8307).
 
 ```python
 >>>
@@ -4810,14 +4810,14 @@ decimal  binary   gray  decoded
 ## [Scratch](/languages/scratch)
 
 <div style="overflow: auto;">
-[http://i.imgur.com/0sw5D4T.png]
+<http://i.imgur.com/0sw5D4T.png>
 </div>
 
 
 ## [Seed7](/languages/seed7)
 
-The type [http://seed7.sourceforge.net/libraries/bin32.htm bin32] is intended for bit operations that are not defined for [http://seed7.sourceforge.net/libraries/integer.htm integer] values.
-Bin32 is used for the [http://seed7.sourceforge.net/libraries/bin32.htm#%28in_bin32%29%3E%3C%28in_bin32%29 exclusive or]
+The type [bin32](http://seed7.sourceforge.net/libraries/bin32.htm) is intended for bit operations that are not defined for [integer](http://seed7.sourceforge.net/libraries/integer.htm) values.
+Bin32 is used for the [exclusive or](http://seed7.sourceforge.net/libraries/bin32.htm#%28in_bin32%29%3E%3C%28in_bin32%29)
 ('''><''') operation.
 
 ```seed7

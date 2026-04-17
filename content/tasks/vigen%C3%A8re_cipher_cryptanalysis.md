@@ -1901,7 +1901,7 @@ THISW ASTHE POEMT HATAL ICERE ADJAB BERWO CKYTW ASBRI LLIGA
 
 ###  An attempted more complete implementation
 
-This is an attempt at following the [http://en.wikipedia.org/wiki/Index_of_coincidence#Example Wikipedia] description.  However, it performs just as well as the simple version.  Most likely because I know almost nothing about cryptography...
+This is an attempt at following the [Wikipedia](http://en.wikipedia.org/wiki/Index_of_coincidence#Example) description.  However, it performs just as well as the simple version.  Most likely because I know almost nothing about cryptography...
 
 
 ```Racket

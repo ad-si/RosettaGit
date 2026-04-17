@@ -95,7 +95,7 @@ This would also work:
 
 
 ;Reference:
-* The blog post [http://paddy3118.blogspot.co.uk/2014/03/nonogram-puzzle-solver-part-1.html Nonogram puzzle solver (part 1)] Inspired this task and donated its [[Nonoblock#Python]] solution.
+* The blog post [Nonogram puzzle solver (part 1)](http://paddy3118.blogspot.co.uk/2014/03/nonogram-puzzle-solver-part-1.html) Inspired this task and donated its [[Nonoblock#Python]] solution.
 
 
 

@@ -23,9 +23,9 @@ I can't remember how to do a redirect. Could someone create and redirect [[Lucas
 (spelling).  The term '''octonacci''' seems to be a misspelling.  It should be '''octanacci'''. 
 The misspelling in the OEIS database entry A104415 is (most likely) being changed as I typeth (as it was just edited for correction by me). -- [[User:Gerard Schildberger|Gerard Schildberger]] 17:20, 25 May 2012 (UTC)
 
-:Hi Gerard, I read it the other way round. From [[wp:Number_prefix#Greek_series|greek prefixes]], if we have tri-pod and octo-pod and we have trib'''o'''nacci and not trib'''a'''nacci, then surely we need oct'''o'''nacci as well. Google [http://www.googlefight.com/index.php?lang=en_GB&word1=octonacci&word2=octanacci fight] shows that there is some confusion but even here, the octonacci term seems to 'win'. --[[User:Paddy3118|Paddy3118]] 18:43, 25 May 2012 (UTC)
+:Hi Gerard, I read it the other way round. From [[wp:Number_prefix#Greek_series|greek prefixes]], if we have tri-pod and octo-pod and we have trib'''o'''nacci and not trib'''a'''nacci, then surely we need oct'''o'''nacci as well. Google [fight](http://www.googlefight.com/index.php?lang=en_GB&word1=octonacci&word2=octanacci) shows that there is some confusion but even here, the octonacci term seems to 'win'. --[[User:Paddy3118|Paddy3118]] 18:43, 25 May 2012 (UTC)
 
-:I wouldn't sweat it. [http://phrontistery.info/numbers.html This reference] shows both oct, octa and octo in use!? --[[User:Paddy3118|Paddy3118]] 18:48, 25 May 2012 (UTC)
+:I wouldn't sweat it. [This reference](http://phrontistery.info/numbers.html) shows both oct, octa and octo in use!? --[[User:Paddy3118|Paddy3118]] 18:48, 25 May 2012 (UTC)
 
 ::: Yeah, in my REXX calculator, I accept both names.  OEIS uses octanacci (with a misspelled ''octoancci'' reference that points to the ''octanacci'' sequence), and Wolfram MathWorld &#8482; doesn't mention either one.  It's like the word ''hexadecimal'' --- it's wrong (mixing Greek with Latin), but it's too late to change it now.  The common usage is so ingrained that everybody uses it and knows what it means.  I suspect it will be with '''octo''' & '''octa'''. -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:09, 25 May 2012 (UTC)
 
@@ -66,7 +66,7 @@ When I learned the Fibonacci sequence, we always used the base case [0, 1] (i.e.
 
 Looking at the other sequences here, the 0 also works. For n = 3, [0, 1, 1] produces the same sequence (with the additional 0 at the beginning). For n = 4, [0, 1, 1, 2] produces the same sequence, and so on. --[[User:Spoon!|Spoon!]] 01:38, 26 May 2012 (UTC)
 
-:This [http://www.math-cs.ucmo.edu/~curtisc/articles/howardcooper/genfib4.pdf reference, (pdf)] gives the zero too but I had found the was I reported earlier and just stuck with it. If you were to just make a note of the change in 'base' at the head of any example using this alternative then it should not be a problem. --[[User:Paddy3118|Paddy3118]] 03:21, 26 May 2012 (UTC)
+:This [reference, (pdf)](http://www.math-cs.ucmo.edu/~curtisc/articles/howardcooper/genfib4.pdf) gives the zero too but I had found the was I reported earlier and just stuck with it. If you were to just make a note of the change in 'base' at the head of any example using this alternative then it should not be a problem. --[[User:Paddy3118|Paddy3118]] 03:21, 26 May 2012 (UTC)
 
 ==Racket function fib-n? ==
 Hi Soegaard, the Racket function <code>fib-n</code> does not fit the task description (part 1); although <code>fib-list</code> does. Unfortunately you seem to have used <code>fib-n</code> for some of the output which means that with only a slight change you can make it fit the task description. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 15:21, 28 April 2013 (UTC)

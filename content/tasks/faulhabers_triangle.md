@@ -33,7 +33,7 @@ languages = [
 ]
 +++
 
-Named after [https://en.wikipedia.org/wiki/Johann_Faulhaber Johann Faulhaber], the rows of Faulhaber's triangle are the coefficients of polynomials that represent sums of integer powers, which are extracted from Faulhaber's formula:
+Named after [Johann Faulhaber](https://en.wikipedia.org/wiki/Johann_Faulhaber), the rows of Faulhaber's triangle are the coefficients of polynomials that represent sums of integer powers, which are extracted from Faulhaber's formula:
 
 
 :<math>\sum_{k=1}^n k^p = {1 \over p+1} \sum_{j=0}^p {p+1 \choose j} B_j n^{p+1-j}</math>
@@ -71,8 +71,8 @@ Using the third row of the triangle, we have:
 
 * [[Bernoulli numbers]]
 * [[Evaluate binomial coefficients]]
-* [https://en.wikipedia.org/wiki/Faulhaber%27s_formula Faulhaber's formula (Wikipedia)]
-* [http://www.ww.ingeniousmathstat.org/sites/default/files/Torabi-Dashti-CMJ-2011.pdf Faulhaber's triangle (PDF)]
+* [Faulhaber's formula (Wikipedia)](https://en.wikipedia.org/wiki/Faulhaber%27s_formula)
+* [Faulhaber's triangle (PDF)](http://www.ww.ingeniousmathstat.org/sites/default/files/Torabi-Dashti-CMJ-2011.pdf)
 
 
 
@@ -815,9 +815,9 @@ math.ranges prettyprint sequences ;
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Faulhaber this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Faulhaber) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 

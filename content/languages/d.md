@@ -17,4 +17,4 @@ Rather, D redesigns some C++ features and is influenced by concepts from other p
 
 ## Citations
 
-- [Wikipedia - D(https://en.wikipedia.org/wiki/D_(programming_language))
+- [Wikipedia - D(<https://en.wikipedia.org/wiki/D_(programming_language)>)

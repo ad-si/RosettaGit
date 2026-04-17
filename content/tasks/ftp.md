@@ -111,7 +111,7 @@ This is a just a text to seperate two directory listings.
 
 ## C
 
-Using [http://nbpfaus.net/~pfau/ftplib/ ftplib]
+Using [ftplib](http://nbpfaus.net/~pfau/ftplib/)
 
 ```c
 
@@ -140,7 +140,7 @@ int main(void)
 ## Common Lisp
 
 
-Using package [http://code.kepibu.org/cl-ftp/ cl-ftp].
+Using package [cl-ftp](http://code.kepibu.org/cl-ftp/).
 
 
 ```lisp
@@ -175,7 +175,7 @@ Using package [http://code.kepibu.org/cl-ftp/ cl-ftp].
 
 ## Go
 
-Using the FTP package from [https://godoc.org/github.com/stacktic/ftp github.com/stacktic/ftp].
+Using the FTP package from [github.com/stacktic/ftp](https://godoc.org/github.com/stacktic/ftp).
 
 ```go
 package main
@@ -246,7 +246,7 @@ func main() {
 
 ## Groovy
 
-This is the code from [https://gist.github.com/ran488/1135043 Ran488 GitHub], modified to be executable.
+This is the code from [Ran488 GitHub](https://gist.github.com/ran488/1135043), modified to be executable.
 It relies on external Apache FTP client.
 Dependencies are automatically loaded with the @Grab annotation.
 let's say the code is saved in the file ftpTest.groovy:
@@ -294,7 +294,7 @@ Debian 6.0.10 was released Saturday, 19th July 2014. Please note that the 6.0 di
 ## Haskell
 
 
-Example uses [https://hackage.haskell.org/package/ftphs <tt>ftphs</tt>] package:
+Example uses [<tt>ftphs</tt>](https://hackage.haskell.org/package/ftphs) package:
 
 
 ```haskell
@@ -989,13 +989,13 @@ object FTPconn extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scastie.scala-lang.org/3Lq8ehzIQTCuAOPXWofNLw Scastie (JVM)].
+{{Out}}See it in running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/3Lq8ehzIQTCuAOPXWofNLw).
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/ftp.htm ftp.s7i] contains functions to
-[http://seed7.sourceforge.net/libraries/ftp.htm#openFtp(in_string) open] and handle an
-[http://seed7.sourceforge.net/libraries/ftp.htm#ftpFileSys ftpFileSys].
+The library [ftp.s7i](http://seed7.sourceforge.net/libraries/ftp.htm) contains functions to
+[open](http://seed7.sourceforge.net/libraries/ftp.htm#openFtp(in_string)) and handle an
+[ftpFileSys](http://seed7.sourceforge.net/libraries/ftp.htm#ftpFileSys).
 
 ```seed7
 $ include "seed7_05.s7i";
@@ -1060,7 +1060,7 @@ foreach line [ftp::NList $conn] {
 
 ### Using a virtual file system
 
-An alternative approach that uses the package [http://sourceforge.net/projects/tclvfs/ TclVFS] to access ftp:// paths as a virtual file system.
+An alternative approach that uses the package [TclVFS](http://sourceforge.net/projects/tclvfs/) to access ftp:// paths as a virtual file system.
 
 
 ```tcl
@@ -1081,7 +1081,7 @@ file copy README [file join $dir README]
 ```
 
 
-The file <tt>vfsftpfix.tcl</tt> with the passive mode patch (see http://wiki.tcl.tk/12837):
+The file <tt>vfsftpfix.tcl</tt> with the passive mode patch (see <http://wiki.tcl.tk/12837>):
 
 ```tcl
 

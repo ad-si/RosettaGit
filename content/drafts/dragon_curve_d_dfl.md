@@ -89,4 +89,4 @@ int main() {
 ```
 
 
-Screenshot: [http://img534.imageshack.us/img534/2324/dfldragoncurve.png]
+Screenshot: <http://img534.imageshack.us/img534/2324/dfldragoncurve.png>

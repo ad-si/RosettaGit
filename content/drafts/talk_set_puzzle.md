@@ -79,7 +79,7 @@ Found 12 sets:
 
 --[[User:Paddy3118|Paddy3118]] 19:49, 10 February 2013 (UTC)
 
-: You need the exact number of sets in the dealt cards, not more not less. Imagine you had to generate the puzzle for an applet such as [http://www.nytimes.com/ref/crosswords/setpuzzle.html this one]. And yes, you may use cards more than once. [[User:Fwend|Fwend]] 20:18, 10 February 2013 (UTC)
+: You need the exact number of sets in the dealt cards, not more not less. Imagine you had to generate the puzzle for an applet such as [this one](http://www.nytimes.com/ref/crosswords/setpuzzle.html). And yes, you may use cards more than once. [[User:Fwend|Fwend]] 20:18, 10 February 2013 (UTC)
 
 ::Does that mean that for the 9 cards above I have found twelve sets, but I need to refine my algorithm to only deal 9 cards if they can generate a maximum of only four sets? I.e. add a post-filter? --[[User:Paddy3118|Paddy3118]] 02:20, 11 February 2013 (UTC)
 ::: If you deal 9 cards there should be exactly 4 sets in it, not more, not less. There are different ways of doing that. [[User:Fwend|Fwend]] 03:01, 11 February 2013 (UTC)

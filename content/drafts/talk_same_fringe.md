@@ -53,7 +53,7 @@ def fringe(tree):
 
 Act together to emulate the depth first L-to-R traversal of a true binary tree, generating successive leaf values, in order.
 
-The [http://docs.python.org/library/itertools.html#itertools.izip_longest itertools.izip_longest] function pairs the successive members of two 'trees' together allowing them to be tested for equality one pair of terms at a time. The [http://docs.python.org/library/functions.html?highlight=all#all all] function short circuit evaluates and will return false as soon as the next pair of terms are unequal. The izip_longest function is set to pad a shorter 'tree' with the None value which should not be a member of either tree.
+The [itertools.izip_longest](http://docs.python.org/library/itertools.html#itertools.izip_longest) function pairs the successive members of two 'trees' together allowing them to be tested for equality one pair of terms at a time. The [all](http://docs.python.org/library/functions.html?highlight=all#all) function short circuit evaluates and will return false as soon as the next pair of terms are unequal. The izip_longest function is set to pad a shorter 'tree' with the None value which should not be a member of either tree.
 --[[User:Paddy3118|Paddy3118]] 15:46, 14 August 2012 (UTC)
 :I think your representation of binary trees is fine, even if it doesn't have explicit CDR pointers.  That is, as long as the algorithm has to choose "left" or "right", it's an okay representation.  To push it a bit further, a string representation of the whole tree would not be okay if the leaves were extracted directly from the string, but probably would be okay if a stack of cursors were navigating around the string making those left/right/down/up decisions. --[[User:TimToady|TimToady]] 17:35, 14 August 2012 (UTC)
 
@@ -76,7 +76,7 @@ TimToady obviously had concurrency in mind for this task, but could a solution w
 
 ::: Tree rotation sounds somewhat iffy.  Isn't it essentially the same as massaging (part of) the tree into a singly linked list? --[[User:Ledrug|Ledrug]] 06:12, 15 August 2012 (UTC)
 
-::::Well, sure, but who am I to argue with John McCarthy, who proposed that very solution?  <tt>:-)</tt>  See about 1/3 the way down [http://c2.com/cgi/wiki?SameFringeProblem this article]. --[[User:TimToady|TimToady]] 07:05, 15 August 2012 (UTC)
+::::Well, sure, but who am I to argue with John McCarthy, who proposed that very solution?  <tt>:-)</tt>  See about 1/3 the way down [this article](http://c2.com/cgi/wiki?SameFringeProblem). --[[User:TimToady|TimToady]] 07:05, 15 August 2012 (UTC)
 
 ==Copy problem in D entry?==
 I am not a D programmer but I see

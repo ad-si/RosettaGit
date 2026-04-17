@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Mathematica is a computational software program developed by [http://wolfram.com Wolfram Research].
+Mathematica is a computational software program developed by [Wolfram Research](http://wolfram.com).
 It is used in many scientific, engineering, mathematical and computing fields, and is based on symbolic mathematics.
 [Wolfram Language](https://rosettacode.org/wiki/Wolfram_Language) is the primary programming language of Mathematica.
 

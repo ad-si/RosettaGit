@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://www.autohotkey.com/forum/viewtopic.php?t=30599&start=4 iWeb] by tank
+{{library}}[iWeb](http://www.autohotkey.com/forum/viewtopic.php?t=30599&start=4) by tank

@@ -117,7 +117,7 @@ Normalized total (extensive) entropy:
 :<math>S_n = \frac{H_2 N * \log(2)}{\log(n)}</math>
 which varies from 0 to N and does not have units. It is simply the "entropy", but it needs to be called "total normalized extensive entropy" so that it is not confused with Shannon's (specific) entropy or physical entropy. For this example, S<sub>n<\sub>= 9.23.
 
-Shannon himself is the reason his "entropy/symbol" H function is very confusingly called "entropy". That's like calling a function that returns a speed a "meter". See section 1.7 of his classic [http://worrydream.com/refs/Shannon%20-%20A%20Mathematical%20Theory%20of%20Communication.pdf  A Mathematical Theory of Communication] and search on "per symbol" and "units" to see he always stated his entropy H has units of "bits/symbol" or "entropy/symbol" or "information/symbol".  So it is legitimate to say entropy NH is "information".
+Shannon himself is the reason his "entropy/symbol" H function is very confusingly called "entropy". That's like calling a function that returns a speed a "meter". See section 1.7 of his classic [A Mathematical Theory of Communication](http://worrydream.com/refs/Shannon%20-%20A%20Mathematical%20Theory%20of%20Communication.pdf) and search on "per symbol" and "units" to see he always stated his entropy H has units of "bits/symbol" or "entropy/symbol" or "information/symbol".  So it is legitimate to say entropy NH is "information".
 
 In keeping with Landauer's limit, the physics entropy generated from erasing N bits is <math>S = H_2 N k_B \ln(2)</math> if the bit storage device is perfectly efficient.  This can be solved for H<sub>2</sub>*N to (arguably) get the number of bits of information that a physical entropy represents.
 
@@ -1182,9 +1182,9 @@ IN: rosetta-code.entropy
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Entropy this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Entropy) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -2380,7 +2380,7 @@ Exit
 ## Pascal
 
 
-Free Pascal (http://freepascal.org).
+Free Pascal (<http://freepascal.org>).
 
 
 ```Pascal

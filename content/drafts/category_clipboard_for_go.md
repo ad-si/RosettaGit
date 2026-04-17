@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-[https://github.com/atotto/clipboard Clipboard for Go] is a library which provides clipboard copying and pasting facilities for Go programmers.
+[Clipboard for Go](https://github.com/atotto/clipboard) is a library which provides clipboard copying and pasting facilities for Go programmers.
 
-Its use is subject to the [https://github.com/atotto/clipboard/blob/master/LICENSE BSD 3-Clause] license.
+Its use is subject to the [BSD 3-Clause](https://github.com/atotto/clipboard/blob/master/LICENSE) license.

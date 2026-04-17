@@ -1709,7 +1709,7 @@ Final pairs for S: 1
 I tried hard to understand/translate the algorithms shown so far (16 Oct 2016)
 Unfortunately to no avail (not knowing the semantics of the used languages).
 Finally I was successful by implementing the rules referred to in Wikipedia
-http://www.win.tue.nl/~gwoegi/papers/freudenthal1.pdf
+<http://www.win.tue.nl/~gwoegi/papers/freudenthal1.pdf>
 which had a very clear description.
 
 ```rexx
@@ -2445,7 +2445,7 @@ X = 4, Y = 13
 
 ## zkl
 
-Damn it Jim, I'm a programmer, not a logician. So I translated the python code found in https://qmaurmann.wordpress.com/2013/08/10/sam-and-polly-and-python/ but I don't understand it. It does seem quite a bit more efficient than the Scala code, on par with the Python code.
+Damn it Jim, I'm a programmer, not a logician. So I translated the python code found in <https://qmaurmann.wordpress.com/2013/08/10/sam-and-polly-and-python/> but I don't understand it. It does seem quite a bit more efficient than the Scala code, on par with the Python code.
 
 ```zkl
 mul:=Utils.Helpers.summer.fp1('*,1); //-->list.reduce('*,1), multiply list items

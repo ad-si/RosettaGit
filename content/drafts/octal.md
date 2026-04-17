@@ -17,7 +17,7 @@ Instead of using only 0's and 1's like binary, or the characters '0' to '9' of t
 == Uses ==
 The octal number system was used widely in the Electronics and Computer Industry, as although digital electronics is based on gates with only two states and is therefore fundamentally binary, binary numbers can quickly become long and hard to transcribe without errors. Their octal equivalents are much shorter and easier to remember, and have a straight-forward way of conversion to/from binary.
 
-The [http://en.wikipedia.org/wiki/Pdp-11 PDP-11] computer made by the [http://en.wikipedia.org/wiki/Digital_Equipment_Corporation Digital Equipment Corporation] used the octal numeric system exclusively for displaying memory addresses and content.
+The [PDP-11](http://en.wikipedia.org/wiki/Pdp-11) computer made by the [Digital Equipment Corporation](http://en.wikipedia.org/wiki/Digital_Equipment_Corporation) used the octal numeric system exclusively for displaying memory addresses and content.
 
 [[Unix]] file system permissions have three sets (user, group, others) of three bit permissions (read, write, execute), which is naturally represented in octal.
 

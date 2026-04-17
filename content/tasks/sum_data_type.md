@@ -459,7 +459,7 @@ let loopback = IpAddr::V6(String::from("::1"));
 
 ## Scala
 
-{{Out}}See it yourself by running in your browser either by [https://scalafiddle.io/sf/encsuyJ/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/3U8mEeYqTliyKn6ikYnFAg Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/encsuyJ/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/3U8mEeYqTliyKn6ikYnFAg).
 ```Scala
 case class Envelop[T](member: T)
 

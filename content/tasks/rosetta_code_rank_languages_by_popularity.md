@@ -36,7 +36,7 @@ Rank: 10   (964 entries) Zkl
 
 ;Notes:
 *   Each language typically demonstrates one or two methods of accessing the data:
-:::*   with web scraping   (via http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+:::*   with web scraping   (via <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 :::*   with the API method   (examples below for [[Rosetta Code/Rank languages by popularity#AWK|Awk]], [[Rosetta Code/Rank languages by popularity#Perl|Perl]], [[Rosetta Code/Rank languages by popularity#Ruby|Ruby]], [[Rosetta Code/Rank languages by popularity#Tcl|Tcl]], etc).
 *   The scraping and API solutions can be separate subsections, see the [[Rosetta Code/Rank languages by popularity#Tcl|Tcl example]].
 *   Filtering wrong results is optional.   You can check against [[Special:MostLinkedCategories]] (if using web scraping)
@@ -586,7 +586,7 @@ return
 
 ### By using the API
 
-This is the third solution. The [http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=102962#AWK first solution] used web scraping with an external program '''ns''' for networking. The [http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=204081 second solution] used the Rosetta Code API instead of web scraping, but continued use of '''ns''' which for unknown reasons didn't work correctly. This solution uses native gawk networking to connect to the API at 500 items per request ("gmcontinue").
+This is the third solution. The [first solution](http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=102962#AWK) used web scraping with an external program '''ns''' for networking. The [second solution](http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=204081) used the Rosetta Code API instead of web scraping, but continued use of '''ns''' which for unknown reasons didn't work correctly. This solution uses native gawk networking to connect to the API at 500 items per request ("gmcontinue").
 
 
 ```awk
@@ -3378,8 +3378,8 @@ class RosettaRank {
 * rearranged to my taste and utilizing the array class of ooRexx
 * which offers a neat way of sorting as desired, see :CLASS mycmp below
 * For the input to this program open these links:
-*  http://rosettacode.org/wiki/Category:Programming_Languages
-*  http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000
+*  <http://rosettacode.org/wiki/Category:Programming_Languages>
+*  <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
 * and save the pages as LAN.txt and CAT.txt, respectively
 * Output: RC_POP.txt list of languages sorted by popularity
 * If test=1, additionally:
@@ -5004,7 +5004,7 @@ Rank: 15  (904 entries) Ruby
 
 
 Recent, occasionally (hourly-ish) updated output also available at:
-http://www.timb.net/popular-languages.html.
+<http://www.timb.net/popular-languages.html>.
 
 
 ## Red
@@ -5014,7 +5014,7 @@ proccesses only languages with more than 25 entries to keep the list short
 ```Red
 Red []
 
-data: read http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000
+data: read <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
 lb: make block! 500
 ;;data: read %data.html ;; for testing save html and use flat file
 arr: split data newline
@@ -6098,7 +6098,7 @@ list in 1/10, noobs
 package require Tcl 8.5
 package require http
 
-set response [http::geturl http://rosettacode.org/mw/index.php?title=Special:Categories&limit=8000]
+set response [http::geturl <http://rosettacode.org/mw/index.php?title=Special:Categories&limit=8000>]
 
 array set ignore {
     "Basic language learning"           1

@@ -19,7 +19,7 @@ I believe that some symbols are usually not encoded in URLs. The exact list vari
 ::: As this task seems to be about HTTP URLs we should ignore some of the RFCs for other protocols like mail, tn3270, etc.   There are also RFCs that extend functionality such as for extensions of protocols such as WebDav which would seem not to be part of the core task.  Also, some of these RFC's have been marked as 'historic' a polite way of sayng obsolete.
 :::: This task is not restricted to HTTP urls, and can be applied to any string that can be encoded into this format.  
 :: I believe the example of an encoded url is in error (or not described properly).  Specifically, 
-::: The string "<nowiki>http://foo bar/</nowiki>" would be encoded as "<nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki>".  
+::: The string "<nowiki><http://foo> bar/</nowiki>" would be encoded as "<nowiki>http%3A%2F%2Ffoo%20bar%2F</nowiki>".  
 ::: Would only be encoded if this URL were being passed as data within another URL.  See the RFC sections on Reserved Characters and When to Encode or Decode.
 :::: The task is to demonstrate the encoding mechanism, rather than when to use the application of this, so we can assume that this will be used in applications where the URL string requires encoding. --[[User:Markhobley|Markhobley]] 13:01, 17 June 2011 (UTC)
 ::::: Fair enough. --[[User:Dgamey|Dgamey]] 01:43, 19 June 2011 (UTC)
@@ -35,7 +35,7 @@ The current task lists six groups of characters to encode. The puzzle became, wh
 
 * The current task preserves only "0-9A-Za-z".
 * My interpretation of RFC 3986 is to preserve "-._~0-9A-Za-z".
-* My interpretation of HTML 5, [http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#url-encoded-form-data URL-encoded form data], is to preserve "-._*0-9A-Za-z" and to encode " " to "+".
+* My interpretation of HTML 5, [URL-encoded form data](http://www.whatwg.org/specs/web-apps/current-work/multipage/association-of-controls-and-forms.html#url-encoded-form-data), is to preserve "-._*0-9A-Za-z" and to encode " " to "+".
 
 I added this information to the task. If I understand well, RFC 3986 preserves '~' and encodes '*', while HTML 5 preserves '*' and encodes '~'. RFC 3986 also permits lowercase, so "http%3a%2f%2ffoo%20bar%2f" is valid. HTML 5 has specific rule to always encode to uppercase. --[[User:Kernigh|Kernigh]] 00:29, 31 July 2011 (UTC)
 

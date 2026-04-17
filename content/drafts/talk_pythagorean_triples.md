@@ -91,7 +91,7 @@ I see literal <nowiki><math></math></nowiki> tags everywhere...<br/>Is this a bu
 
 == Wrong? ==
 
-Both [[wp:Pythagorean_triple|Wikipedia]] and Sloane's [https://oeis.org/A020882 A020882] agree that there are 16 primitive Pythagorean triples with c up to 100:
+Both [[wp:Pythagorean_triple|Wikipedia]] and Sloane's [A020882](https://oeis.org/A020882) agree that there are 16 primitive Pythagorean triples with c up to 100:
 
 : (3 , 4 , 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), (9, 40, 41), (11, 60, 61), (12, 35, 37), (13, 84, 85), (16, 63, 65), (20, 21, 29), (28, 45, 53), (33, 56, 65), (36, 77, 85), (39, 80, 89), (48, 55, 73), (65, 72, 97)
 

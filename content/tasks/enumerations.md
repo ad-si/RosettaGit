@@ -864,7 +864,7 @@ end enum nametype
 ```
 
 
-does not work with gfortran; it is used in some [http://docs.cray.com/books/S-3692-51/html-S-3692-51/z970507905n9123.html Cray docs] about Fortran, but the syntax shown at [http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/index.jsp?topic=/com.ibm.xlf101a.doc/xlflr/enum.htm IBM] is the one gfortran can understand. (Cray's docs refer to Fortran 2003 draft, IBM docs refers to Fortran 2003 standard, but read the brief [http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/topic/com.ibm.xlf101a.doc/xlflr/languagestandards.htm#wq17 Fortran 2003 Standard] section to understand why differences may exist...)
+does not work with gfortran; it is used in some [Cray docs](http://docs.cray.com/books/S-3692-51/html-S-3692-51/z970507905n9123.html) about Fortran, but the syntax shown at [IBM](http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/index.jsp?topic=/com.ibm.xlf101a.doc/xlflr/enum.htm) is the one gfortran can understand. (Cray's docs refer to Fortran 2003 draft, IBM docs refers to Fortran 2003 standard, but read the brief [Fortran 2003 Standard](http://publib.boulder.ibm.com/infocenter/comphelp/v8v101/topic/com.ibm.xlf101a.doc/xlflr/languagestandards.htm#wq17) section to understand why differences may exist...)
 
 
 ## FreeBASIC
@@ -1963,7 +1963,7 @@ EndEnumeration
 
 ### Python: Version 3.4+
 
-Note: [http://www.python.org/dev/peps/pep-0435/ enumerations have come to Python version 3.4].
+Note: [enumerations have come to Python version 3.4](http://www.python.org/dev/peps/pep-0435/).
 
 
 ```python
@@ -2013,7 +2013,7 @@ R does not have an enumeration type, though factors provide a similar functional
 # Levels: apple banana cherry
 ```
 
-[http://tolstoy.newcastle.edu.au/R/help/04/07/0368.html This thread] in the R mail archive contains code for an enum-like class for traffic light colours.
+[This thread](http://tolstoy.newcastle.edu.au/R/help/04/07/0368.html) in the R mail archive contains code for an enum-like class for traffic light colours.
 
 
 ## Racket
@@ -2428,7 +2428,7 @@ enum Season : Int {
 
 ## Tcl
 
-It is normal in Tcl to use strings from a set directly rather than treating them as an enumeration, but enumerations can be simulated easily. The following elegant example comes straight from the [[http://wiki.tcl.tk/1308  Tcl wiki:]]
+It is normal in Tcl to use strings from a set directly rather than treating them as an enumeration, but enumerations can be simulated easily. The following elegant example comes straight from the [Tcl wiki:](http://wiki.tcl.tk/1308)
 
 
 ```tcl

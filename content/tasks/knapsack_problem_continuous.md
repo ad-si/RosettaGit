@@ -1848,7 +1848,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt
@@ -2215,7 +2215,7 @@ Total weight: 15
 
 This solution is built around the immutable type <code>KPCSupply</code>, which holds an item's data including its unit value (<code>uvalue</code>).  When the store's inventory is kept in this way, the solution to the continuous knapsack problem (provided by <code>solve</code>), is straightforward.  The thief should pack as much of the highest value items as are available until full capacity is reached, topping off with as much of the last item as the knapsack will hold.  (If the store contains less than the thief's knapsack will hold, he'll take the store's entire inventory.)
 
-An [http://docs.julialang.org/en/release-0.3/manual/constructors/#outer-constructor-methods outer constructor method] is used to create instances of <code>KPCSupply</code> when only the <code>item</code>, <code>weight</code> and <code>value</code> are supplied.  The <code>isless</code> method is provided for <code>KPCSupply</code> objects so that items are transparently sorted by their unit value.  <code>KPCSupply</code> supports any real type for <code>weight</code>, <code>value</code> and <code>uvalue</code> (though this simple implementation does not support mixed types or promotion).  This solution uses [http://docs.julialang.org/en/release-0.3/manual/complex-and-rational-numbers/#rational-numbers Rational] numbers to avoid rounding errors until the results are printed.
+An [outer constructor method](http://docs.julialang.org/en/release-0.3/manual/constructors/#outer-constructor-methods) is used to create instances of <code>KPCSupply</code> when only the <code>item</code>, <code>weight</code> and <code>value</code> are supplied.  The <code>isless</code> method is provided for <code>KPCSupply</code> objects so that items are transparently sorted by their unit value.  <code>KPCSupply</code> supports any real type for <code>weight</code>, <code>value</code> and <code>uvalue</code> (though this simple implementation does not support mixed types or promotion).  This solution uses [Rational](http://docs.julialang.org/en/release-0.3/manual/complex-and-rational-numbers/#rational-numbers) numbers to avoid rounding errors until the results are printed.
 
 '''Type and Functions''':
 
@@ -4025,7 +4025,7 @@ object ContinousKnapsackForRobber extends App {
 Totals: weight: 15.0, value: 349.38
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/RHZQ4Xj/1 ScalaFiddle (JavaScript)] <!--or by [https://scastie.scala-lang.org/mDoBS77YSG2Z7w5xdAPzcw Scastie (JVM)]-->.
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/RHZQ4Xj/1) <!--or by [Scastie (JVM)](https://scastie.scala-lang.org/mDoBS77YSG2Z7w5xdAPzcw)-->.
 
 ## Sidef
 
@@ -4163,9 +4163,9 @@ contents:
 ## Ursala
 
 We might as well leave this one to the experts by setting it up as a
-[[wp:Linear_programming|linear programming]] problem and handing it off to an external library (which will be either [http://sourceforge.net/projects/lpsolve lpsolve] or
-[http://www.gnu.org/software/glpk/glpk.html glpk] depending on the
-[http://www.basis.netii.net/avram run-time system] configuration).
+[[wp:Linear_programming|linear programming]] problem and handing it off to an external library (which will be either [lpsolve](http://sourceforge.net/projects/lpsolve) or
+[glpk](http://www.gnu.org/software/glpk/glpk.html) depending on the
+[run-time system](http://www.basis.netii.net/avram) configuration).
 
 ```Ursala
 #import flo

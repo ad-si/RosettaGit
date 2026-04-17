@@ -16,7 +16,7 @@ Are these part of the ALGOL standard library? Or just intended for code sharing 
 
 :None of those routines (including ''sort'' and ''pow mod'') are part of [[ALGOL 68]]'s standard prelude, see below for a complete list. Specifically there is no ''sort'' in the list below, nor any linear algebra OPerators or routines (which is surprising).
 
-:The people with the "Continuing responsibility ALGOL 68" ([http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/ Working Group 2.1 ]) defined only the names in the list below, and there appears to be no continuing effort to evolve any related libraries, maybe in the next 50 years something will happen. :-)  (This is not all bad, as there are several standard libraries in existence today, eg GSL, POSIX etc, that are standard across many langauges, so plugging into these - like ALGOL 68G does - really helps)
+:The people with the "Continuing responsibility ALGOL 68" ([Working Group 2.1](http://web.comlab.ox.ac.uk/people/Jeremy.Gibbons/wg21/)) defined only the names in the list below, and there appears to be no continuing effort to evolve any related libraries, maybe in the next 50 years something will happen. :-)  (This is not all bad, as there are several standard libraries in existence today, eg GSL, POSIX etc, that are standard across many langauges, so plugging into these - like ALGOL 68G does - really helps)
 
 :FYI: Here is the complete list of the "standard prelude" routines/operators/files/constants etc:
 

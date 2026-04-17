@@ -24,7 +24,7 @@ I guess girls who ditch the rules and ask the guys win big time. --[[User:Paddy3
 ::This bring up old memories from those classes in national economy, where one thing was how to calculate the maximum sum of ‘usefulness’ that any resource could do in a society. And that is neither “all to one”, or “equal to all”. Resources where according o the maximization thesis to be spread so that their total sum is maximized, e.g. alls individual needs for different resources valued against their specific needs and available resources… I think I just connected it into the Knapsack series… --[[User:Jofur|&lt;Jofur&gt;]] 12:59, 6 August 2010 (UTC)
 
 ==Test==
-Just found [http://www.spoj.pl/problems/STABLEMP/ this site] which has two testcases and expected results. I modified the Python solution:
+Just found [this site](http://www.spoj.pl/problems/STABLEMP/) which has two testcases and expected results. I modified the Python solution:
 
 ```python
 
@@ -81,7 +81,7 @@ Again, it seems hard to work out that the stability criteria is violated using t
 
 Since this specifies the Gale-Shapley algorithm, shouldn't that be the name of the task? Similar to how [[Lucas-Lehmer test]] finds Mersienne primes? --[[User:Short Circuit|Michael Mol]] 16:30, 23 August 2010 (UTC)
 : Ah, your thinking logically. That's your problem! :-)
-: Stable marriage problem is more often quoted than the algorithm used to solve it, although it looks like that algorithm is the only one used to solve the problem (apart from exhaustive search). See [http://googlefight.com/index.php?lang=en_GB&word1=%22Gale+Shapley+algorithm%22&word2=%22Stable+marriage+problem%22 this]. --[[User:Paddy3118|Paddy3118]] 21:58, 23 August 2010 (UTC)
+: Stable marriage problem is more often quoted than the algorithm used to solve it, although it looks like that algorithm is the only one used to solve the problem (apart from exhaustive search). See [this](http://googlefight.com/index.php?lang=en_GB&word1=%22Gale+Shapley+algorithm%22&word2=%22Stable+marriage+problem%22). --[[User:Paddy3118|Paddy3118]] 21:58, 23 August 2010 (UTC)
 
 :: Created [[Gale-Shapley algorithm]] as a redirect to this task. –[[User:Dkf|Donal Fellows]] 14:34, 26 August 2010 (UTC)
 ::: An excellent solution I think! --[[User:Paddy3118|Paddy3118]] 15:06, 26 August 2010 (UTC)
@@ -207,6 +207,6 @@ After looking at some of the solutions here, I noticed that there are several th
 
 == PHP ==
 
-If you want you can add my PHP port of the Python version from: http://www.leaseweblabs.com/2013/04/stable-marriage-problem-in-php/
+If you want you can add my PHP port of the Python version from: <http://www.leaseweblabs.com/2013/04/stable-marriage-problem-in-php/>
 
 --[[User:Maurits|Maurits]] ([[User talk:Maurits|talk]]) 15:01, 24 April 2013 (UTC)

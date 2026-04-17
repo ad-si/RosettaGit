@@ -29,7 +29,7 @@ I kinda remember something about not all seeds being good? a seed of zero for ex
 :::*<math>r_{n + 1} = 7^5 \times r_n \pmod {2^{31} - 1}</math>
 :::If the program tries <math>r_0 = 0</math>, then FreeBSD uses <math>r_0 = 123459876</math>. --[[User:Kernigh|Kernigh]] 04:23, 15 July 2011 (UTC)
 ::::Huh, how does that work?  <math>2^{31}-1</math> is a prime number, so no <math>r_n</math> will ever produce a 0 return value.  <code>RAND_MAX</code> presumably is <math>2^{31}-2</math>?  Aren't <code>rand()</code> supposed to return a value from 0 to <code>RAND_MAX</code> inclusive? --[[User:Ledrug|Ledrug]] 07:52, 15 July 2011 (UTC)
-:::[http://svnweb.freebsd.org/base/head/lib/libc/stdlib/rand.c?revision=174541&view=markup Here is the FreeBSD code.] Also, [http://svnweb.freebsd.org/base/head/include/stdlib.h?revision=206997&view=markup RAND_MAX is <math>2^{31} - 1</math>]. --[[User:Kernigh|Kernigh]] 18:12, 15 July 2011 (UTC)
+:::[Here is the FreeBSD code.](http://svnweb.freebsd.org/base/head/lib/libc/stdlib/rand.c?revision=174541&view=markup) Also, [RAND_MAX is <math>2^{31} - 1</math>](http://svnweb.freebsd.org/base/head/include/stdlib.h?revision=206997&view=markup). --[[User:Kernigh|Kernigh]] 18:12, 15 July 2011 (UTC)
 
 == Example Sequences==
 It occurs to me that the BSD LCRNG can produce an overflow of 32 bit words.  It would be nice to have a sequence that exercises this to ensure the behavior is reproduced.   --[[User:Dgamey|Dgamey]] 04:58, 8 July 2011 (UTC)

@@ -14,7 +14,7 @@ Visual Prolog is a multi-paradigm language with origin in Prolog.
 
 See also
 * [Visual Prolog](https://en.wikipedia.org/wiki/Visual_Prolog) in Wikipedia
-* [http://wiki.visual-prolog.com Visual Prolog wiki]
+* [Visual Prolog wiki](http://wiki.visual-prolog.com)
 
 [Category:Programming paradigm/Functional](https://rosettacode.org/wiki/Category:Programming_paradigm/Functional)
 [Category:Programming paradigm/Generic](https://rosettacode.org/wiki/Category:Programming_paradigm/Generic)

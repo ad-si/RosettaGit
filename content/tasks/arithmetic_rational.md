@@ -1901,7 +1901,7 @@ main = do
 ```
 
 
-For a sample implementation of <code>Ratio</code>, see [http://www.haskell.org/onlinereport/ratio.html the Haskell 98 Report].
+For a sample implementation of <code>Ratio</code>, see [the Haskell 98 Report](http://www.haskell.org/onlinereport/ratio.html).
 
 =={{header|Icon}} and {{header|Unicon}}==
 The IPL provides support for rational arithmetic
@@ -2034,7 +2034,7 @@ end
 link rational
 ```
 
-The {{libheader|Icon Programming Library}} provides [http://www.cs.arizona.edu/icon/library/src/procs/rational.icn rational] and [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn gcd in numbers].  Record definition and usage is shown below:
+The {{libheader|Icon Programming Library}} provides [rational](http://www.cs.arizona.edu/icon/library/src/procs/rational.icn) and [gcd in numbers](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn).  Record definition and usage is shown below:
 
 ```Icon
    record rational(numer, denom, sign)        # rational type
@@ -2820,7 +2820,7 @@ end function
 
 ## M2000 Interpreter
 
-http://www.rosettacode.org/wiki/M2000_Interpreter_rational_numbers
+<http://www.rosettacode.org/wiki/M2000_Interpreter_rational_numbers>
 
 
 ```M2000 Interpreter
@@ -3255,7 +3255,7 @@ for candidate = 2 to 1 lsl 19 do
 done;;
 ```
 
-[http://forge.ocamlcore.org/projects/pa-do/ Delimited overloading] can be used to make the arithmetic expressions more readable:
+[Delimited overloading](http://forge.ocamlcore.org/projects/pa-do/) can be used to make the arithmetic expressions more readable:
 
 ```ocaml
 let () =
@@ -4600,12 +4600,12 @@ def find_perfects():Unit=
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/rational.htm rational.s7i] defines the type
-[http://seed7.sourceforge.net/manual/types.htm#rational rational], which supports the required functionality.
-Rational numbers are based on the type [http://seed7.sourceforge.net/manual/types.htm#integer integer].
+The library [rational.s7i](http://seed7.sourceforge.net/libraries/rational.htm) defines the type
+[rational](http://seed7.sourceforge.net/manual/types.htm#rational), which supports the required functionality.
+Rational numbers are based on the type [integer](http://seed7.sourceforge.net/manual/types.htm#integer).
 For rational numbers, which are based on integers with unlimited precision, use
-[http://seed7.sourceforge.net/manual/types.htm#bigRational bigRational], which is defined
-in the library [http://seed7.sourceforge.net/libraries/bigrat.htm bigrat.s7i].
+[bigRational](http://seed7.sourceforge.net/manual/types.htm#bigRational), which is defined
+in the library [bigrat.s7i](http://seed7.sourceforge.net/libraries/bigrat.htm).
 
 
 ```seed7

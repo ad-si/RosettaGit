@@ -12,7 +12,7 @@ tags = []
 
 Hello
 
-My code http://rosettacode.org/wiki/Roman_numerals/Encode#Prolog works in both ways Roman => Arabic and Arabic => Roman. It can be published in this page. [[user:Trap D]] 13/05/2011 18:25
+My code <http://rosettacode.org/wiki/Roman_numerals/Encode#Prolog> works in both ways Roman => Arabic and Arabic => Roman. It can be published in this page. [[user:Trap D]] 13/05/2011 18:25
 
 ==Roman numeral numbers==
 

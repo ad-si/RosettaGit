@@ -877,7 +877,7 @@ Julia also has scopes based on modules. Variables within a standard module such 
 
 ## Kotlin
 
-As Kotlin supports both procedural and object oriented programming, the usage of scope modifiers is more complicated than in some other languages and is described in the online language reference at https://kotlinlang.org/docs/reference/visibility-modifiers.html.
+As Kotlin supports both procedural and object oriented programming, the usage of scope modifiers is more complicated than in some other languages and is described in the online language reference at <https://kotlinlang.org/docs/reference/visibility-modifiers.html>.
 
 Note in particular the following differences between Java and Kotlin:
 
@@ -1484,14 +1484,14 @@ External symbols are surrounded by braces.
 
 Regardless of the scope, the binding of symbols to values is always dynamic.
 This happens implicitly for function parameters, or explicitly with functions
-like [http://software-lab.de/doc/refL.html#let let],
-[http://software-lab.de/doc/refU.html#use use],
-[http://software-lab.de/doc/refB.html#bind bind],
-[http://software-lab.de/doc/refJ.html#job job] and others.
+like [let](http://software-lab.de/doc/refL.html#let),
+[use](http://software-lab.de/doc/refU.html#use),
+[bind](http://software-lab.de/doc/refB.html#bind),
+[job](http://software-lab.de/doc/refJ.html#job) and others.
 This means that the current value of a symbol is saved locally, then set to the
 new value. When done, the old value is restored. Closures are created by
 maintaining an explicit environment. More about that
-[http://software-lab.de/doc/faq.html#dynamic here].
+[here](http://software-lab.de/doc/faq.html#dynamic).
 
 
 ## PowerShell
@@ -1606,12 +1606,12 @@ scoped_notdefinedlocally scope gives x = From global scope
 >>>
 ```
 
-More information on the scope modifiers can be found [http://docs.python.org/3.0/reference/simple_stmts.html#grammar-token-global_stmt here].
+More information on the scope modifiers can be found [here](http://docs.python.org/3.0/reference/simple_stmts.html#grammar-token-global_stmt).
 
 
 ## R
 
-See [http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/ "How R Searches and Finds Stuff"] for a thorough introduction to scoping, particularly the surprisingly complicated conventions for packages. For a briefer overview, read on.
+See ["How R Searches and Finds Stuff"](http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/) for a thorough introduction to scoping, particularly the surprisingly complicated conventions for packages. For a briefer overview, read on.
 
 In R, functions use lexical scope: a function acquires its parent
 scope at the time of definition, and each invocation creates a new
@@ -1879,7 +1879,7 @@ Ruby is an open language. Declaring methods private prevents inadvertend use of 
 
 ## Scala
 
-In the [https://www.scala-lang.org/files/archive/spec/2.13/05-classes-and-objects.html#modifiers Language Specification] is exactly defined what the 3 Access modifiers do.
+In the [Language Specification](https://www.scala-lang.org/files/archive/spec/2.13/05-classes-and-objects.html#modifiers) is exactly defined what the 3 Access modifiers do.
 
 ## Tcl
 

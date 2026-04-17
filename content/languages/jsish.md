@@ -104,6 +104,6 @@ Jsish includes database and websocket modules; SQLite, MySQL, libwebsockets. The
 
 Jsish first appeared in 2015. The system was considered feature stable with the December 2017 release of version 2.4.  Development is still active at time of writing, version 2.8.1 released in March 2019.
 
-* https://jsish.org
-* https://jsish.org/fossil/jsi/doc/tip/www/home.wiki
-* https://en.wikipedia.org/wiki/Jsish
+* <https://jsish.org>
+* <https://jsish.org/fossil/jsi/doc/tip/www/home.wiki>
+* <https://en.wikipedia.org/wiki/Jsish>

@@ -87,10 +87,10 @@ The Farey sequences of orders   '''1'''   to   '''5'''   are:
 
 ## See also
 
-*    OEIS sequence    [http://oeis.org/A006842 A006842 numerators   of Farey series of order 1, 2, ···]
-*    OEIS sequence    [http://oeis.org/A006843 A006843 denominators of Farey series of order 1, 2, ···]
-*    OEIS sequence    [http://oeis.org/A005728 A005728 number of fractions in Farey series of order n.]
-*   MathWorld entry   [http://mathworld.wolfram.com/FareySequence.html Farey sequence]
+*    OEIS sequence    [A006842 numerators   of Farey series of order 1, 2, ···](http://oeis.org/A006842)
+*    OEIS sequence    [A006843 denominators of Farey series of order 1, 2, ···](http://oeis.org/A006843)
+*    OEIS sequence    [A005728 number of fractions in Farey series of order n.](http://oeis.org/A005728)
+*   MathWorld entry   [Farey sequence](http://mathworld.wolfram.com/FareySequence.html)
 
 
 
@@ -759,7 +759,7 @@ F(11) { 0 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 
 
 ## Factor
 
-Factor's <code>ratio</code> type automatically reduces fractions such as <code>0/1</code> and <code>1/1</code> to integers, so we print those separately at the beginning and ending of every sequence. This implementation makes use of the algorithm for calculating the next term from the wiki page [https://en.wikipedia.org/wiki/Farey_sequence#Next_term]. It also makes use of Euler's totient function for recursively calculating the length [https://en.wikipedia.org/wiki/Farey_sequence#Sequence_length_and_index_of_a_fraction].
+Factor's <code>ratio</code> type automatically reduces fractions such as <code>0/1</code> and <code>1/1</code> to integers, so we print those separately at the beginning and ending of every sequence. This implementation makes use of the algorithm for calculating the next term from the wiki page <https://en.wikipedia.org/wiki/Farey_sequence#Next_term>. It also makes use of Euler's totient function for recursively calculating the length <https://en.wikipedia.org/wiki/Farey_sequence#Sequence_length_and_index_of_a_fraction>.
 
 ```factor
 USING: formatting io kernel math math.primes.factors math.ranges
@@ -828,9 +828,9 @@ Running time: 0.033974675 seconds
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Farey_sequence this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Farey_sequence) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -924,7 +924,7 @@ F1000 = 304193
 
 ## FunL
 
-Translation of Python code at [http://en.wikipedia.org/wiki/Farey_sequence#Next_term].
+Translation of Python code at <http://en.wikipedia.org/wiki/Farey_sequence#Next_term>.
 
 ```funl
 def farey( n ) =
@@ -1759,7 +1759,7 @@ apply(countFarey, 100*[1..10])
  }}
 
 
-Using a function, to get next in Farey sequence. calculated as stated in wikipedia article, see Lua [[http://rosettacode.org/wiki/Farey_sequence#Lua]].
+Using a function, to get next in Farey sequence. calculated as stated in wikipedia article, see Lua <http://rosettacode.org/wiki/Farey_sequence#Lua>.
 So there is no need to store them in a big array..
 
 ```pascal

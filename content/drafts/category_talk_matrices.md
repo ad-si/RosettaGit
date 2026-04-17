@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-Wouldn't it better to name this category [http://en.wikipedia.org/wiki/Linear_algebra linear algebra]. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 15:15, 30 June 2009 (UTC)
+Wouldn't it better to name this category [linear algebra](http://en.wikipedia.org/wiki/Linear_algebra). --[[User:Dmitry-kazakov|Dmitry-kazakov]] 15:15, 30 June 2009 (UTC)

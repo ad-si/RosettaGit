@@ -96,9 +96,9 @@ Show your output on this page.
 
 
 ;Ref:
-* [https://www.youtube.com/watch?v=DpwUVExX27E Infinite Fractions - Numberphile] (Video).
-* [http://www.ams.org/samplings/feature-column/fcarc-stern-brocot Trees, Teeth, and Time: The mathematics of clock making].
-* [https://oeis.org/A002487 A002487] The On-Line Encyclopedia of Integer Sequences.
+* [Infinite Fractions - Numberphile](https://www.youtube.com/watch?v=DpwUVExX27E) (Video).
+* [Trees, Teeth, and Time: The mathematics of clock making](http://www.ams.org/samplings/feature-column/fcarc-stern-brocot).
+* [A002487](https://oeis.org/A002487) The On-Line Encyclopedia of Integer Sequences.
 
 
 
@@ -1592,7 +1592,7 @@ The first 15 values:
 
 ###  Stream
 
-From [https://oeis.org/A002487 A002487], if we group the elements by two, we get (uniquely) all the rationals. Another way to generate the rationals, hence the stern sequence, is to iterate the function f(x) = floor(x) + 1 - fract(x).
+From [A002487](https://oeis.org/A002487), if we group the elements by two, we get (uniquely) all the rationals. Another way to generate the rationals, hence the stern sequence, is to iterate the function f(x) = floor(x) + 1 - fract(x).
 
 
 ```lisp
@@ -2766,7 +2766,7 @@ def gcd(a; b):
 
 '''The A002487 integer sequence:'''
 
-The following definition is in strict accordance with https://oeis.org/A002487:
+The following definition is in strict accordance with <https://oeis.org/A002487>:
 i.e. a(0) = 0, a(1) = 1; for n > 0: a(2*n) = a(n), a(2*n+1) = a(n) + a(n+1).
 The n-th element of the Rosetta Code sequence (counting from 1)
 is thus a[n], which accords with the fact that jq arrays have an index origin of 0.

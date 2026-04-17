@@ -33,7 +33,7 @@ Being a wiki, there will always be imperfect content on Rosetta Code.  Such cont
 Please confer with [[User:Short Circuit|Short Circuit]] about adding things like templates and categories not dedicated to languages.  If you've successfully participated in adding code, tasks and encyclopedic knowledge, and have demonstrated some degree of prowess in maintenance, he could certainly use your help maintaining and expanding the infrastructure of the site.
 
 ==Removing a page==
-To delete a page (in case you make a mistake that can't be corrected by editing), note it in a talk page and/or directly ask a [http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=bureaucrat bureaucrat] or [http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=sysop administrator].
+To delete a page (in case you make a mistake that can't be corrected by editing), note it in a talk page and/or directly ask a [bureaucrat](http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=bureaucrat) or [administrator](http://rosettacode.org/mw/index.php?title=Special:ListUsers&group=sysop).
 
 ==See Also==
 

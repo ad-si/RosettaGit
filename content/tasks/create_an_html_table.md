@@ -1239,7 +1239,7 @@ namespace N
 
 ## Clojure
 
-Using Hiccup (https://github.com/weavejester/hiccup):
+Using Hiccup (<https://github.com/weavejester/hiccup>):
 
 ```clojure
 (ns rosettacode.html-table
@@ -1309,7 +1309,7 @@ console.log html
 
 ## Common Lisp
 
-Using Closure-HTML (https://common-lisp.net/project/closure/closure-html/) installed by the code itself via QuickLisp (http://quicklisp.org/).
+Using Closure-HTML (<https://common-lisp.net/project/closure/closure-html/>) installed by the code itself via QuickLisp (<http://quicklisp.org/>).
 
 
 ```Common Lisp
@@ -2528,7 +2528,7 @@ link printf
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```html5
 <table
@@ -4027,7 +4027,7 @@ let () =
 ###  With a dedicated library
 
 
-Using the library [http://theorie.physik.uni-wuerzburg.de/~ohl/xhtml/ ocaml-xhtml]. With this library the validity of the pages is guaranteed by the OCaml type system.
+Using the library [ocaml-xhtml](http://theorie.physik.uni-wuerzburg.de/~ohl/xhtml/). With this library the validity of the pages is guaranteed by the OCaml type system.
 
 
 ```ocaml
@@ -4077,7 +4077,7 @@ let () =
 ###  TyXml
 
 
-The library [http://ocsigen.org/tyxml/ TyXml] contains a module for XHTML that provides the same interface than the previous <code>ocaml-xhtml</code> library.
+The library [TyXml](http://ocsigen.org/tyxml/) contains a module for XHTML that provides the same interface than the previous <code>ocaml-xhtml</code> library.
 
 
 ```ocaml
@@ -4130,7 +4130,7 @@ let make_table () =
 
 ## Oz
 
-As a complete web application, using the [https://github.com/wmeyer/roads/wiki "Roads"] web programming library. Connect your browser to http://localhost:8080/table after starting the program.
+As a complete web application, using the ["Roads"](https://github.com/wmeyer/roads/wiki) web programming library. Connect your browser to <http://localhost:8080/table> after starting the program.
 
 ```oz
 declare
@@ -5296,7 +5296,7 @@ Output:
 
 Output image:
 
-[https://www.dropbox.com/s/1c8svjprod2tqyu/CalmoSoftHTTP.jpg?dl=0 Create an HTML table]
+[Create an HTML table](https://www.dropbox.com/s/1c8svjprod2tqyu/CalmoSoftHTTP.jpg?dl=0)
 
 
 ## Ruby

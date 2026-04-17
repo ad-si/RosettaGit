@@ -38,7 +38,7 @@ languages = [
 ]
 +++
 
-Create Magic 8-Ball. See details: [https://en.wikipedia.org/wiki/Magic_8-Ball Magic 8-Ball]
+Create Magic 8-Ball. See details: [Magic 8-Ball](https://en.wikipedia.org/wiki/Magic_8-Ball)
 
 
 ## Ada

@@ -29,7 +29,7 @@ languages = [
 ]
 +++
 
-The [https://en.wikipedia.org/wiki/Law_of_cosines Law of cosines] states that for an angle γ, (gamma) of any triangle, if the sides adjacent to the angle are A and B and the side opposite is C; then the lengths of the sides are related by this formula:
+The [Law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines) states that for an angle γ, (gamma) of any triangle, if the sides adjacent to the angle are A and B and the side opposite is C; then the lengths of the sides are related by this formula:
           <big>  <code>A<sup>2</sup> + B<sup>2</sup> - 2ABcos(γ) = C<sup>2</sup></code> </big>
 
 ;Specific angles:
@@ -63,7 +63,7 @@ Note: Triangles with the same length sides but different order are to be treated
 
 ## See also
 
-* [https://youtu.be/p-0SOWbzUYI?t=12m11s Visualising Pythagoras: ultimate proofs and crazy contortions] Mathlogger Video
+* [Visualising Pythagoras: ultimate proofs and crazy contortions](https://youtu.be/p-0SOWbzUYI?t=12m11s) Mathlogger Video
 
 
 

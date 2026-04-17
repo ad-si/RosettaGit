@@ -1091,7 +1091,7 @@ hiphophiphop -> { 7 8 15 2 15 2 2 3 2 2 3 2 } -> hiphophiphop
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=4268c779c36def03ea10764630cdc401 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=4268c779c36def03ea10764630cdc401)'''
 
 ```gambas
 Public Sub Main()

@@ -25,24 +25,24 @@ You can visit Rosetta Code's IRC channel via your web browser on the [[Special:W
 
 ### Linux
 
-* [http://www.xchat.org/ XChat] should come with your distribution
+* [XChat](http://www.xchat.org/) should come with your distribution
 
 ### Unix
 
-* [http://www.irssi.org/ irssi]
+* [irssi](http://www.irssi.org/)
 
 ### Windows
 
-* [http://www.mirc.com/get.html mIRC] is a popular Windows IRC client.
-* Another choice is [http://silverex.info SilverEx XChat], a free windows build of XChat.
+* [mIRC](http://www.mirc.com/get.html) is a popular Windows IRC client.
+* Another choice is [SilverEx XChat](http://silverex.info), a free windows build of XChat.
 
 ### Windows and Linux
 
-* [http://www.pidgin.im/ Pidgin/Finch] works with other chat protocols as well as IRC.
+* [Pidgin/Finch](http://www.pidgin.im/) works with other chat protocols as well as IRC.
 
 ### Mac
 
-* [http://colloquy.info/ Colloquy]
+* [Colloquy](http://colloquy.info/)
 
 ==Logging==
 Logging is stalled and has been for some time. Anyone who feels like making a logging bot should talk to people (especially Short Circuit) in the IRC channel. A complete listing of logs of the channel are available on request.

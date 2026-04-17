@@ -63,8 +63,8 @@ is language-dependent and left to the programmer, but the code should be clear e
 
 Extra credit is given for clear error diagnostics.
 
-*   Here is the official standard:     https://tools.ietf.org/html/rfc3986,
-*   and here is a simpler   BNF:     http://www.w3.org/Addressing/URL/5_URI_BNF.html.
+*   Here is the official standard:     <https://tools.ietf.org/html/rfc3986>,
+*   and here is a simpler   BNF:     <http://www.w3.org/Addressing/URL/5_URI_BNF.html>.
 
 
 ;Test cases:
@@ -87,7 +87,7 @@ According to T. Berners-Lee
 '''other URLs that must be parsed include:'''
 :*   <nowiki> jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true </nowiki>
 :*   <nowiki> ftp://ftp.is.co.za/rfc/rfc1808.txt                                      </nowiki>
-:*   <nowiki> http://www.ietf.org/rfc/rfc2396.txt#header1                             </nowiki>
+:*   <nowiki> <http://www.ietf.org/rfc/rfc2396.txt#header1>                             </nowiki>
 :*   <nowiki> ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two               </nowiki>
 :*   <nowiki> mailto:John.Doe@example.com                                             </nowiki>
 :*   <nowiki> news:comp.infosystems.www.servers.unix                                  </nowiki>
@@ -459,7 +459,7 @@ URI:           ftp://ftp.is.co.za/rfc/rfc1808.txt
      port:      21
      path:      /rfc/rfc1808.txt
 
-URI:           http://www.ietf.org/rfc/rfc2396.txt#header1
+URI:           <http://www.ietf.org/rfc/rfc2396.txt#header1>
      scheme:    http
      host:      www.ietf.org
      port:      80
@@ -501,8 +501,8 @@ URI:           urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ## Go
 
-This uses Go's standard [https://golang.org/pkg/net/url/ <tt>net/url</tt>] package.
-The [https://golang.org/src/net/url/url.go source code] for this package (excluding tests) is in a single file of ~720 lines.
+This uses Go's standard [<tt>net/url</tt>](https://golang.org/pkg/net/url/) package.
+The [source code](https://golang.org/src/net/url/url.go) for this package (excluding tests) is in a single file of ~720 lines.
 
 ```go
 package main
@@ -604,7 +604,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
     Scheme: ftp
     Host: ftp.is.co.za
     Path: /rfc/rfc1808.txt
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
     Scheme: http
     Host: www.ietf.org
     Path: /rfc/rfc2396.txt
@@ -636,13 +636,13 @@ ssh://alice@example.com
     Scheme: ssh
     Username: alice
     Host: example.com
-https://bob:pass@example.com/place
+<https://bob:pass@example.com/place>
     Scheme: https
     Username: bob
     Password: pass
     Host: example.com
     Path: /place
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+<http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>
     Scheme: http
     Host: example.com
     Path: /
@@ -727,7 +727,7 @@ Parsing ftp://ftp.is.co.za/rfc/rfc1808.txt
     query    = null
     fragment = null
 
-Parsing http://www.ietf.org/rfc/rfc2396.txt#header1
+Parsing <http://www.ietf.org/rfc/rfc2396.txt#header1>
     scheme   = http
     domain   = www.ietf.org
     port     = default
@@ -789,7 +789,7 @@ Parsing urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 ## Haskell
 
 
-Example uses [https://hackage.haskell.org/package/network-uri <tt>network-uri</tt>] package:
+Example uses [<tt>network-uri</tt>](https://hackage.haskell.org/package/network-uri) package:
 
 
 ```haskell
@@ -872,7 +872,7 @@ main = do
 
 ```txt
 
-https://bob:pass@example.com/place
+<https://bob:pass@example.com/place>
   scheme = https
   user-info = bob:pass
   domain = example.com
@@ -902,7 +902,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
   port =
   path = rfc/rfc1808.txt
 
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
   scheme = http
   domain = www.ietf.org
   port =
@@ -1435,7 +1435,7 @@ Results of applying this approach in the JavaScript of Safari 8
 
 ## Julia
 
-This solution uses Julia's [https://github.com/JuliaWeb/URIParser.jl URIParser] package.  The <code>detailview</code> function shows all of the non-empty components of the <code>URI</code> object created by this parser.  No attempt is made to further parse more complex components, e.g. query or userinfo.  Error detection is limited to indicating whether a string is parsable as a URI and providing a hint as to whether the <code>URI</code> is valid (according to this package's <code>isvalid</code> function).
+This solution uses Julia's [URIParser](https://github.com/JuliaWeb/URIParser.jl) package.  The <code>detailview</code> function shows all of the non-empty components of the <code>URI</code> object created by this parser.  No attempt is made to further parse more complex components, e.g. query or userinfo.  Error detection is limited to indicating whether a string is parsable as a URI and providing a hint as to whether the <code>URI</code> is valid (according to this package's <code>isvalid</code> function).
 
 ```Julia
 
@@ -1703,7 +1703,7 @@ Parsing ftp://ftp.is.co.za/rfc/rfc1808.txt
   domain   =  ftp.is.co.za
   path     =  /rfc/rfc1808.txt
 
-Parsing http://www.ietf.org/rfc/rfc2396.txt#header1
+Parsing <http://www.ietf.org/rfc/rfc2396.txt#header1>
   scheme   =  http
   domain   =  www.ietf.org
   path     =  /rfc/rfc2396.txt
@@ -1742,13 +1742,13 @@ Parsing ssh://alice@example.com
   userinfo =  alice
   domain   =  example.com
 
-Parsing https://bob:pass@example.com/place
+Parsing <https://bob:pass@example.com/place>
   scheme   =  https
   userinfo =  bob:pass
   domain   =  example.com
   path     =  /place
 
-Parsing http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+Parsing <http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>
   scheme   =  http
   domain   =  example.com
   path     =  /
@@ -1817,7 +1817,7 @@ URI: ftp://ftp.is.co.za/rfc/rfc1808.txt
   authority: ftp.is.co.za
   scheme: ftp
 
-URI: http://www.ietf.org/rfc/rfc2396.txt#header1
+URI: <http://www.ietf.org/rfc/rfc2396.txt#header1>
   fragment: header1
   authority: www.ietf.org
   host: www.ietf.org
@@ -2052,7 +2052,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
 Scheme=ftp
 Domain:ftp.is.co.za
 Path:rfc/rfc1808.txt
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
 Scheme=http
 Domain:www.ietf.org
 Path:rfc/rfc2396.txt
@@ -2368,7 +2368,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
           Scheme: ftp
         Hostname: ftp.is.co.za
             Path: /rfc/rfc1808.txt
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
           Scheme: http
         Hostname: www.ietf.org
             Path: /rfc/rfc2396.txt
@@ -2404,13 +2404,13 @@ ssh://alice@example.com
           Scheme: ssh
         Hostname: example.com
         Username: alice
-https://bob:pass@example.com/place
+<https://bob:pass@example.com/place>
           Scheme: https
         Hostname: example.com
         Username: bob
         Password: pass
             Path: /place
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+<http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>
           Scheme: http
         Hostname: example.com
             Path: /
@@ -2475,7 +2475,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
         host='ftp.is.co.za'
         path='/rfc/rfc1808.txt'
 
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
         scheme='http'
         host='www.ietf.org'
         path='/rfc/rfc2396.txt'
@@ -2509,7 +2509,7 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
         scheme='urn'
         path='oasis:names:specification:docbook:dtd:xml:4.1.2'
 
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64:
+<http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>:
         scheme='http'
         host='example.com'
         path='/'
@@ -2534,7 +2534,7 @@ for my $uri (do { no warnings 'qw';
                       urn:example:animal:ferret:nose
                       jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
                       ftp://ftp.is.co.za/rfc/rfc1808.txt
-                      http://www.ietf.org/rfc/rfc2396.txt#header1
+                      <http://www.ietf.org/rfc/rfc2396.txt#header1>
                       ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
                       mailto:John.Doe@example.com
                       news:comp.infosystems.www.servers.unix
@@ -2573,7 +2573,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
         authority       ftp.is.co.za
         host    ftp.is.co.za
         port    21
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
         scheme  http
         path    /rfc/rfc2396.txt
         fragment        header1
@@ -2622,7 +2622,7 @@ my @test-uris = <
     urn:example:animal:ferret:nose
     jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
     ftp://ftp.is.co.za/rfc/rfc1808.txt
-    http://www.ietf.org/rfc/rfc2396.txt#header1
+    <http://www.ietf.org/rfc/rfc2396.txt#header1>
     ldap://[2001:db8::7]/c=GB?objectClass?one
     mailto:John.Doe@example.com
     news:comp.infosystems.www.servers.unix
@@ -2668,7 +2668,7 @@ host:	ftp.is.co.za
 port:	21
 path:	/rfc/rfc1808.txt
 
-URI:	http://www.ietf.org/rfc/rfc2396.txt#header1
+URI:	<http://www.ietf.org/rfc/rfc2396.txt#header1>
 scheme:	http
 host:	www.ietf.org
 port:	80
@@ -2899,7 +2899,7 @@ foo://example.com:8042/over/there?name=ferret#nose
 urn:example:animal:ferret:nose
 jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
 ftp://ftp.is.co.za/rfc/rfc1808.txt
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
 ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
 mailto:John.Doe@example.com
 news:comp.infosystems.www.servers.unix
@@ -2936,7 +2936,7 @@ urn      -1               oasis:names:specification:docbook:dtd:xml:4.1.2
 
 ## Python
 
-Links to Python Documentation: v2: [https://docs.python.org/2/library/urlparse.html#module-urlparse], v3: [https://docs.python.org/3.4/library/urllib.parse.html]
+Links to Python Documentation: v2: <https://docs.python.org/2/library/urlparse.html#module-urlparse>, v3: <https://docs.python.org/3.4/library/urllib.parse.html>
 
 ```Python
 import urllib.parse as up # urlparse for Python v2
@@ -3034,7 +3034,7 @@ scheme 	: ftp
 domain 	: ftp.is.co.za
 path 	: rfc/rfc1808.txt
 
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
 scheme 	: http
 domain 	: www.ietf.org
 path 	: rfc/rfc2396.txt
@@ -3069,12 +3069,12 @@ ssh://alice@example.com
 scheme 	: ssh
 domain 	: example.com
 
-https://bob:pass@example.com/place
+<https://bob:pass@example.com/place>
 scheme 	: https
 domain 	: example.com
 path 	: place
 
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+<http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>
 scheme 	: http
 domain 	: example.com
 parameter 	: a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
@@ -3085,7 +3085,7 @@ parameter 	: a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
 
 ## Racket
 
-Links: [http://docs.racket-lang.org/net/url.html?q=url#%28def._%28%28lib._net%2Furl-structs..rkt%29._url%29%29 <code>url</code> structure in Racket documentation].
+Links: [<code>url</code> structure in Racket documentation](http://docs.racket-lang.org/net/url.html?q=url#%28def._%28%28lib._net%2Furl-structs..rkt%29._url%29%29).
 
 
 ```racket
@@ -3176,7 +3176,7 @@ path  bits:     ("db8::7]" "c=GB")
 query:          ((objectClass . "one") (objectClass . "two"))
 ```
 
-IPv6 URL address parses incorrectly. See issue https://github.com/plt/racket/issues/980
+IPv6 URL address parses incorrectly. See issue <https://github.com/plt/racket/issues/980>
 
 ```txt
 URL: "mailto:John.Doe@example.com"
@@ -3217,7 +3217,7 @@ path  bits:     ("oasis:names:specification:docbook:dtd:xml:4.1.2")
 
 ## Ruby
 
-Link to [http://ruby-doc.org/stdlib/libdoc/uri/rdoc/URI.html Ruby Documentation].
+Link to [Ruby Documentation](http://ruby-doc.org/stdlib/libdoc/uri/rdoc/URI.html).
 
 As you can see in the output below, the URI library doesn't parse all of these as recommended.
 
@@ -3269,7 +3269,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
     domain = ftp.is.co.za
       port = 21
       path = rfc/rfc1808.txt
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
     scheme = http
     domain = www.ietf.org
       port = 80
@@ -3299,14 +3299,14 @@ ssh://alice@example.com
     domain = example.com
       path =
       user = alice
-https://bob:pass@example.com/place
+<https://bob:pass@example.com/place>
     scheme = https
     domain = example.com
       port = 443
       path = /place
       user = bob
   password = pass
-http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
+<http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64>
     scheme = http
     domain = example.com
       port = 80
@@ -3356,12 +3356,12 @@ object WebAddressParser extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scastie.scala-lang.org/GZdtfkhfRsa9QPKZQ7W4XQ Scastie (JVM)].
+{{Out}}See it in running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/GZdtfkhfRsa9QPKZQ7W4XQ).
 
 ## Tcl
 
 
-Tcllib's uri package already knows how to decompose many kinds of URIs.  The [http://core.tcl.tk/tcllib/dir?name=modules/uri implementation] is a a quite readable example of this kind of parsing.  For this task, we'll use it directly.
+Tcllib's uri package already knows how to decompose many kinds of URIs.  The [implementation](http://core.tcl.tk/tcllib/dir?name=modules/uri) is a a quite readable example of this kind of parsing.  For this task, we'll use it directly.
 
 Schemes can be added with <tt>uri::register</tt>, but the rules for this task assume HTTP-style decomposition for unknown schemes, which is done below by reaching into the documented interfaces <tt>$::uri::schemes</tt> and <tt>uri::SplitHttp</tt>.
 
@@ -3398,7 +3398,7 @@ set tests {
     urn:example:animal:ferret:nose
     jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
     ftp://ftp.is.co.za/rfc/rfc1808.txt
-    http://www.ietf.org/rfc/rfc2396.txt#header1
+    <http://www.ietf.org/rfc/rfc2396.txt#header1>
     ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
     mailto:John.Doe@example.com
     news:comp.infosystems.www.servers.unix
@@ -3439,7 +3439,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
 	(path)   = rfc/rfc1808.txt
 	(scheme) = ftp
 
-http://www.ietf.org/rfc/rfc2396.txt#header1
+<http://www.ietf.org/rfc/rfc2396.txt#header1>
 	(fragment) = header1
 	(host)     = www.ietf.org
 	(path)     = rfc/rfc2396.txt
@@ -3604,7 +3604,7 @@ Scheme: ftp
 Domain: ftp.is.co.za
 Path: rfc/rfc1808.txt
 -------------------------------
-URL: http://www.ietf.org/rfc/rfc2396.txt#header1
+URL: <http://www.ietf.org/rfc/rfc2396.txt#header1>
 Scheme: http
 Domain: www.ietf.org
 Path: rfc/rfc2396.txt

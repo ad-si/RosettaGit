@@ -59,8 +59,8 @@ A [[wp:Truth table|truth table]] is a display of the inputs to, and the output o
 
 ## See also
 
-*   [http://mathworld.wolfram.com/TruthTable.html Wolfram MathWorld entry on truth tables].
-*   [http://www.google.co.uk/search?q=truth+table&hl=en&client=firefox-a&hs=Om7&rls=org.mozilla:en-GB:official&prmd=imvns&tbm=isch&tbo=u&source=univ&sa=X&ei=C0uuTtjuH4Wt8gOF4dmYCw&ved=0CDUQsAQ&biw=941&bih=931&sei=%20Jk-uTuKKD4Sg8QOFkPGcCw some "truth table" examples from Google].
+*   [Wolfram MathWorld entry on truth tables](http://mathworld.wolfram.com/TruthTable.html).
+*   [some "truth table" examples from Google](http://www.google.co.uk/search?q=truth+table&hl=en&client=firefox-a&hs=Om7&rls=org.mozilla:en-GB:official&prmd=imvns&tbm=isch&tbo=u&source=univ&sa=X&ei=C0uuTtjuH4Wt8gOF4dmYCw&ved=0CDUQsAQ&biw=941&bih=931&sei=%20Jk-uTuKKD4Sg8QOFkPGcCw).
 
 
 
@@ -1076,9 +1076,9 @@ f f f | t
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Truth_table this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Truth_table) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3565,7 +3565,7 @@ false  true  true  true  ────►  true
 
 ## Ruby
 
-Uses <code>eval</code>, so blindly trusts the user's input. The core <code>true</code> and <code>false</code> objects understand the methods <code>&</code> (and), <code>|</code> (or), <code>!</code> (not) and <code>^</code> (xor) -- [http://www.ruby-doc.org/core-1.9.2/TrueClass.html]
+Uses <code>eval</code>, so blindly trusts the user's input. The core <code>true</code> and <code>false</code> objects understand the methods <code>&</code> (and), <code>|</code> (or), <code>!</code> (not) and <code>^</code> (xor) -- <http://www.ruby-doc.org/core-1.9.2/TrueClass.html>
 
 ```ruby
 loop do

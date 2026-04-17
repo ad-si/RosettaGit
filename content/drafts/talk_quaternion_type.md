@@ -123,7 +123,7 @@ I wish it was possible to just specify those identities as particular cases of a
 : Another issue is that traditionally programming languages have been thought of as abstractions representing sequences of computer instructions ([some examples of] type theory[s], for example), or abstractions representing "core mechanisms" (scoping rules, for example). There has been some work based on modeling hardware behavior using mathematical concepts (array theory, for example), but that's not where most communities focus their energy.
 : There are lots of infinities here and unless we are careful the computing platform will get bogged down, spending a bulk of the computational time on unnecessary issues. As an example, consider whether we should have a hermetian basis for quaternions or whether octonions are acceptable as an implementation of quaternions. Since we are people, and since we are smart, we have a concept of simplicity which kicks in when we understand something, but computers do not have that. [But this also means that if it seems complicated we do not understand it.] --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 17:16, 2 May 2013 (UTC)
 
-Grondilu, you may consider [http://www.gap-system.org/ GAP]. You can define an algebra by specifying it's multiplication table: I added an example in the GAP section. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 20:24, 28 October 2013 (UTC)
+Grondilu, you may consider [GAP](http://www.gap-system.org/). You can define an algebra by specifying it's multiplication table: I added an example in the GAP section. [[User:Arbautjc|Arbautjc]] ([[User talk:Arbautjc|talk]]) 20:24, 28 October 2013 (UTC)
 
 ==Imaginary parts (plural)==
 I had to mark both jq and Julia as incorrect as they both had the imaginary parts of a quaternion defined as just i by their definition of <code>imag</code>. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 15:30, 10 August 2014 (UTC)
@@ -141,14 +141,14 @@ I had to mark both jq and Julia as incorrect as they both had the imaginary part
 
 Hi Peak, imag looks like it was probably forgotten from extending imaginary numbers to their implementation for quaternions. It jq is based on the Julia entry, could you state its use? Maybe there is no use for this in Julia either? --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 19:52, 10 August 2014 (UTC)
 
-It seemed straight -forward to involve the [https://github.com/JuliaLang/julia/issues/7945 Julia library writers]. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:08, 10 August 2014 (UTC)
-: Moved to [https://github.com/andrioni/Quaternions.jl/issues/4 here]. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:26, 10 August 2014 (UTC)
+It seemed straight -forward to involve the [Julia library writers](https://github.com/JuliaLang/julia/issues/7945). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:08, 10 August 2014 (UTC)
+: Moved to [here](https://github.com/andrioni/Quaternions.jl/issues/4). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 20:26, 10 August 2014 (UTC)
 : Julia code on site (well one source), is fixed.
 
 
 ### Julia outdated w.r.t. imag?
 
-Look at [https://github.com/andrioni/Quaternions.jl this link] to see a version from the Julia site that has fixed imag to be:
+Look at [this link](https://github.com/andrioni/Quaternions.jl) to see a version from the Julia site that has fixed imag to be:
 :<code>imag{T}(z::Quaternion{T}) = Quaternion(zero(T), z.q1, z.q2, z.q3)</code>
 If jq was a copy ...
 --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:16, 11 August 2014 (UTC)

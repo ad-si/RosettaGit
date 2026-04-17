@@ -1235,7 +1235,7 @@ println[b]
 
 In gambas, the ampersand symbol is used as a concatenation operator:
 
-'''[https://gambas-playground.proko.eu/?gist=098450adbbe0e284f0b9cdac67d74dda Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=098450adbbe0e284f0b9cdac67d74dda)'''
 
 ```gambas
 Public sub main()
@@ -1400,8 +1400,8 @@ Some more text!
 ```
 
 For more info see:
-* http://www.jsoftware.com/help/dictionary/d320.htm on <code>,</code>
-* http://www.jsoftware.com/help/dictionary/d500.htm on <code>]</code>
+* <http://www.jsoftware.com/help/dictionary/d320.htm> on <code>,</code>
+* <http://www.jsoftware.com/help/dictionary/d500.htm> on <code>]</code>
 
 
 ## Java
@@ -2091,7 +2091,7 @@ echo (c);
 
 ## Oz
 
-Strings are lists and are concatenated with the "Append" function. However, often "virtual strings" are used instead. [http://www.mozart-oz.org/home/doc/base/virtualstring.html "Virtual string are designed as a convenient way to combine strings, byte strings, atoms, integers and floats to compound strings without explicit concatenation and conversion"].
+Strings are lists and are concatenated with the "Append" function. However, often "virtual strings" are used instead. ["Virtual string are designed as a convenient way to combine strings, byte strings, atoms, integers and floats to compound strings without explicit concatenation and conversion"](http://www.mozart-oz.org/home/doc/base/virtualstring.html).
 
 ```oz
 declare

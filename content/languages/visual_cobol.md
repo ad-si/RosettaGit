@@ -15,6 +15,6 @@ Visual COBOL supports many dialects, such as OS/VS COBOL and X/OPEN COBOL, while
 
 Visual COBOL is available as a personal edition which is free for non-commercial use. However, registration is required to be able to download and use it.
 ## See Also
-* [https://www.microfocus.com/products/micro-focus-developer/visual_cobol/index.aspx Visual COBOL at Micro Focus]
-* [https://www.microfocus.com Micro Focus homepage]
-* [https://www.microfocus.com/product-downloads/vcpe/index.aspx Visual COBOL Personal Edition download page]
+* [Visual COBOL at Micro Focus](https://www.microfocus.com/products/micro-focus-developer/visual_cobol/index.aspx)
+* [Micro Focus homepage](https://www.microfocus.com)
+* [Visual COBOL Personal Edition download page](https://www.microfocus.com/product-downloads/vcpe/index.aspx)

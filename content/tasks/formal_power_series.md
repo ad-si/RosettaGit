@@ -1251,7 +1251,7 @@ minus=: -/@,:
 ```
 
 
-See also section 2 at http://www.jsoftware.com/papers/tot1.htm
+See also section 2 at <http://www.jsoftware.com/papers/tot1.htm>
 
 Note that this approach to division will not be accurate when exact division is not possible (a best fit polynomial will be used).  Note also that if extended precision results are expected the &.x: in the definition of divide should be replaced with &x: or removed entirely (which would then require extended precision arguments).
 
@@ -2430,7 +2430,7 @@ Exp: 1 1 0.5 0.166667 0.0416667 0.00833333 0.00138889 0.000198413 2.48016e-5 2.7
 
 ## PicoLisp
 
-With a 'lazy' function, as a frontend to '[http://software-lab.de/doc/refC.html#cache cache]',
+With a 'lazy' function, as a frontend to '[cache](http://software-lab.de/doc/refC.html#cache)',
 
 ```PicoLisp
 (de lazy Args

@@ -1156,7 +1156,7 @@ police fire sanitation
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=cdfeadc26aaeb0e23f4523626b6fe7c9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=cdfeadc26aaeb0e23f4523626b6fe7c9)'''
 
 ```gambas
 Public Sub Main()

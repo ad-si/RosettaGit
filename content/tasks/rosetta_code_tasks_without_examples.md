@@ -20,7 +20,7 @@ languages = [
 
 {{draft task}}A RosettaCode contributor is going on a long journey. To ease the boredom of a long flight he takes his favourite programming language manual and a list of RosettaCode tasks, but there's a catch: the tasks have to be description only and not include all the solutions already supplied by other programmers.
 
-Task: Scrape http://rosettacode.org/wiki/Category:Programming_Tasks for all the tasks. Traverse the links. Extract the text or html between a tag with a class of "infobox" and the beginning of the table with the id of "toc".
+Task: Scrape <http://rosettacode.org/wiki/Category:Programming_Tasks> for all the tasks. Traverse the links. Extract the text or html between a tag with a class of "infobox" and the beginning of the table with the id of "toc".
 
 
 ## Go

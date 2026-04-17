@@ -1324,7 +1324,7 @@ lalpha count type abcdefghijklmnopqrstuvwxyz ok
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=debd3987d4db75099032a86927978046 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=debd3987d4db75099032a86927978046)'''
 
 ```gambas
 Public Sub Main()

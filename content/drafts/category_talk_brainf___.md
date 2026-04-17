@@ -12,9 +12,9 @@ tags = []
 
 I like how the name got censored. --[[Special:Contributions/169.232.238.84|169.232.238.84]] 00:10, 27 March 2010 (UTC)
 : I don't, but I did it, and I don't like the noise I'd have to put up with if I hadn't. --[[User:Short Circuit|Michael Mol]] 03:30, 27 March 2010 (UTC)
-:: "Offense is a complex emotion requiring a well-developed brain. Words and pictures do not have brains and so cannot be offensive. Any offense you feel is therefore your own fault. Think about this before misplacing blame." (from http://notstupid.us/ ) -- [[User:Eriksiers|Eriksiers]] 03:05, 3 April 2010 (UTC)
+:: "Offense is a complex emotion requiring a well-developed brain. Words and pictures do not have brains and so cannot be offensive. Any offense you feel is therefore your own fault. Think about this before misplacing blame." (from <http://notstupid.us/> ) -- [[User:Eriksiers|Eriksiers]] 03:05, 3 April 2010 (UTC)
 ::: Thus one may create a few more esolangs with names like Coon, Nigger, Wop, Dago, Poofter and Faggot and no one will bat an eyelid. Ah, how wonderful it is to enjoy freedom of speech and live in a pluralistic society. --[[User:Axtens|Axtens]] 07:17, 4 April 2010 (UTC)
-:::: '''"I disapprove of what you say, but I will defend to the death your right to say it."''' ([http://en.wikiquote.org/wiki/Evelyn_Beatrice_Hall Evelyn Beatrice Hall] paraphrasing [[wp:Voltaire|Voltaire]])
+:::: '''"I disapprove of what you say, but I will defend to the death your right to say it."''' ([Evelyn Beatrice Hall](http://en.wikiquote.org/wiki/Evelyn_Beatrice_Hall) paraphrasing [[wp:Voltaire|Voltaire]])
 :::: I think that anything more is getting off-topic for RC (and we're probably there already). This is not the place for sociological debates. -- [[User:Eriksiers|Eriksiers]] 18:22, 4 April 2010 (UTC)
 :: Honestly I doubt there'd be any noise to put up with; Wikipedia gets by just fine with the uncensored version. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 20:10, 3 April 2010 (UTC)
 

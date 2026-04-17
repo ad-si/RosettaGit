@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[http://fexl.com Fexl] is a [functional programming](https://rosettacode.org/wiki/functional_programming) language designed to be compact, efficient, and customizable in embedded environments.  Its implementation aims to be the thinnest possible functional programming layer built on top of [C](https://rosettacode.org/wiki/C).
+[Fexl](http://fexl.com) is a [functional programming](https://rosettacode.org/wiki/functional_programming) language designed to be compact, efficient, and customizable in embedded environments.  Its implementation aims to be the thinnest possible functional programming layer built on top of [C](https://rosettacode.org/wiki/C).
 
 Fexl has no keywords, so whenever you see a symbol in a Fexl program, that symbol always refers to a function.
 

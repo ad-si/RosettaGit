@@ -28,8 +28,8 @@ Would a solution which includes a specific platform restriction be acceptable fr
 started working on fixing that but don't have time to continue now.
 
 hints to possible solutions can be found here:
-http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/2009-11/msg00568.html
+<http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/2009-11/msg00568.html>
 and here:
-http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/2009-11/msg00666.html
+<http://coding.derkeiler.com/Archive/Lisp/comp.lang.lisp/2009-11/msg00666.html>
 
 --[[User:EMBee|eMBee]] 04:39, 11 March 2013 (UTC)

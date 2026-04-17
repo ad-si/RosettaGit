@@ -1164,7 +1164,7 @@ for p in [ local_file, local_dir, root_file, root_dir ] then do ( p ) ->
 ```
 
 
-There is no standardized way to determine if an empty directory exists, as Common Lisp dates from before the notion of directories as a type of file was near-universal. [http://www.weitz.de/cl-fad/ CL-FAD] provides many of the therefore-missing capabilities in a cross-implementation library.
+There is no standardized way to determine if an empty directory exists, as Common Lisp dates from before the notion of directories as a type of file was near-universal. [CL-FAD](http://www.weitz.de/cl-fad/) provides many of the therefore-missing capabilities in a cross-implementation library.
 
 {{libheader|CL-FAD}}
 
@@ -1543,7 +1543,7 @@ All files and directories were created first. The files are empty:
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=fa06b7cc43166fb0ab48e878d86e3d1b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=fa06b7cc43166fb0ab48e878d86e3d1b)'''
 
 ```gambas
 Public Sub Main()
@@ -2804,11 +2804,11 @@ enddefine;
 
 The above works but is not the only way or the best way to check status of a file in Pop11. There is a very general procedure sys_file_stat that allows interrogation of a file or directory. The full documentation can be seen in the online documentation (search for sys_file_stat):
 
-http://wwwcgi.rdg.ac.uk:8081/cgi-bin/cgiwrap/wsi14/poplog/pop11/ref/sysio
+<http://wwwcgi.rdg.ac.uk:8081/cgi-bin/cgiwrap/wsi14/poplog/pop11/ref/sysio>
 
-http://www.poplog.org/docs/popdocs/pop11/ref/sysio
+<http://www.poplog.org/docs/popdocs/pop11/ref/sysio>
 
-http://www.cs.bham.ac.uk/research/projects/poplog/doc/popref/sysio
+<http://www.cs.bham.ac.uk/research/projects/poplog/doc/popref/sysio>
 (Not so well formatted).
 
 Users can easily define special cases of the general procedure.
@@ -2886,7 +2886,7 @@ os.path.isdir("/docs")
 ```
 
 
-The more generic [https://docs.python.org/3/library/os.path.html#os.path.exists <code>os.path.exists(path)</code>] function will return True if the path exists, being it either a regular file or a directory.
+The more generic [<code>os.path.exists(path)</code>](https://docs.python.org/3/library/os.path.html#os.path.exists) function will return True if the path exists, being it either a regular file or a directory.
 
 
 ## R
@@ -3155,7 +3155,7 @@ object FileExistsTest extends App {
 
 ## Scheme
 
-{{works with|Scheme|R6RS}}[http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-10.html]
+{{works with|Scheme|R6RS}}<http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-10.html>
 
 ```scheme
 (file-exists? filename)
@@ -3260,7 +3260,7 @@ end
 ```
 
 
-It's not as straightforward in Stata's macro language. For files, use [http://www.stata.com/help.cgi?confirm confirm]. Since it throws an error when the file does not exist, use [http://www.stata.com/help.cgi?capture capture] and check [http://www.stata.com/help.cgi?_variables _rc] afterwards.
+It's not as straightforward in Stata's macro language. For files, use [confirm](http://www.stata.com/help.cgi?confirm). Since it throws an error when the file does not exist, use [capture](http://www.stata.com/help.cgi?capture) and check [_rc](http://www.stata.com/help.cgi?_variables) afterwards.
 
 
 ```stata
@@ -3271,7 +3271,7 @@ if !_rc {
 ```
 
 
-It's not possible to check existence of a directory with confirm. One may use the [https://ideas.repec.org/c/boc/bocode/s435507.html confirmdir] package from SSC. The confirmdir command saves the current directory, then tries to chdir to the directory to test (with capture to prevent an error). Then the value of _rc is put in a [http://www.stata.com/help.cgi?return stored result]. Example of use:
+It's not possible to check existence of a directory with confirm. One may use the [confirmdir](https://ideas.repec.org/c/boc/bocode/s435507.html) package from SSC. The confirmdir command saves the current directory, then tries to chdir to the directory to test (with capture to prevent an error). Then the value of _rc is put in a [stored result](http://www.stata.com/help.cgi?return). Example of use:
 
 
 ```stata

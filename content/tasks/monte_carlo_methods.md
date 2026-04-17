@@ -295,7 +295,7 @@ print (("100 000 000:",pi (100 000 000),new line))
 
 
 =={{Header|AutoHotkey}}==
-Source: [http://www.autohotkey.com/forum/topic44657.html AutoHotkey forum] by Laszlo
+Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```autohotkey
 
@@ -670,7 +670,7 @@ void main() {
 ## Dart
 
 
-From example at [https://www.dartlang.org/ Dart Official Website]
+From example at [Dart Official Website](https://www.dartlang.org/)
 
 
 ```dart
@@ -1466,7 +1466,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 Rounds=100000 Pi ~ 3.143400
@@ -2030,7 +2030,7 @@ monteCarloPi /@ (10^Range@6)
 
 ## MATLAB
 
-See: [http://www.mathworks.com/discovery/monte-carlo-simulation.html Monte Carlo Simulation] in MATLAB for more examples
+See: [Monte Carlo Simulation](http://www.mathworks.com/discovery/monte-carlo-simulation.html) in MATLAB for more examples
 
 The first example given is not vectorized. MATLAB has a self-imposed memory limitation that prevents this simulation from having more than 3 decimal digits of accuracy. Because of this limitation it is best to vectorize the code as much as possible so extra memory isn't consumed by unneeded variables. Therefore, I have provided a second solution that is maximally vectorized.
 

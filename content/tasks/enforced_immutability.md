@@ -828,12 +828,12 @@ public class Immute{
 
 In the <code>Immute</code> class above, the object pointed to by "buff" is still technically mutable, since its internal values can still be changed. The <code>private</code> modifier ensures that no other classes can access that variable. Some trickery needed to be done to ensure that no pointers to the actual mutable objects are passed out. Programmers should be aware of which objects that they use are mutable (usually noted in javadocs).
 
-The [http://download.oracle.com/javase/6/docs/api/java/util/Collections.html Collections class] also has methods that will create "unmodifiable" <code>Collection</code>s out of existing <code>Collection</code>s instances.
+The [Collections class](http://download.oracle.com/javase/6/docs/api/java/util/Collections.html) also has methods that will create "unmodifiable" <code>Collection</code>s out of existing <code>Collection</code>s instances.
 
 
 ## JavaScript
 
-You can create constants with the [https://developer.mozilla.org/en/JavaScript/Reference/Statements/const Mozilla-specific extension const]. This is not supported by IE and it only works on simple scalars and not on arrays, objects, or parameters.
+You can create constants with the [Mozilla-specific extension const](https://developer.mozilla.org/en/JavaScript/Reference/Statements/const). This is not supported by IE and it only works on simple scalars and not on arrays, objects, or parameters.
 
 '''Update''': const is now a standard part of ES6 JavaScript, and works with all data types, including arrays, objects, and parameters. It is not, however, included in the ES5 standard.
 
@@ -1237,7 +1237,7 @@ const MSG = "Hello World";
 ```
 
 
-http://us.php.net/manual/en/language.constants.syntax.php
+<http://us.php.net/manual/en/language.constants.syntax.php>
 
 
 ## PicoLisp

@@ -189,7 +189,7 @@ AABBBC AABBCB AABCBB AACBBB ABABBC ABABCB ABACBB ABBABC ABBACB ABBBAC ABBBCA ABB
 
 ## Go
 
-This is based on the C++ code [https://www.geeksforgeeks.org/distinct-permutations-string-set-2/ here].
+This is based on the C++ code [here](https://www.geeksforgeeks.org/distinct-permutations-string-set-2/).
 
 ```go
 package main

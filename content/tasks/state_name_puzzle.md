@@ -41,14 +41,14 @@ languages = [
 
 '''Background'''
 
-This task is inspired by [http://drdobbs.com/windows/198701685 Mark Nelson's DDJ Column "Wordplay"] and one of the weekly puzzle challenges from Will Shortz on NPR Weekend Edition [http://www.npr.org/templates/story/story.php?storyId=9264290] and originally attributed to David Edelheit.
+This task is inspired by [Mark Nelson's DDJ Column "Wordplay"](http://drdobbs.com/windows/198701685) and one of the weekly puzzle challenges from Will Shortz on NPR Weekend Edition <http://www.npr.org/templates/story/story.php?storyId=9264290> and originally attributed to David Edelheit.
 
 The challenge was to take the names of two U.S. States, mix them all together, then rearrange the letters to form the names of two ''different'' U.S. States (so that all four state names differ from one another).
 
 What states are these?
 
 
-The problem was reissued on  [https://tapestry.tucson.az.us/twiki/bin/view/Main/StateNamesPuzzle the Unicon Discussion Web] which includes several solutions with analysis.  Several techniques may be helpful and you may wish to refer to [[wp:Goedel_numbering|Gödel numbering]], [[wp:Equivalence_relation|equivalence relations]], and [[wp:Equivalence_classes|equivalence classes]].  The basic merits of these were discussed in the Unicon Discussion Web.
+The problem was reissued on  [the Unicon Discussion Web](https://tapestry.tucson.az.us/twiki/bin/view/Main/StateNamesPuzzle) which includes several solutions with analysis.  Several techniques may be helpful and you may wish to refer to [[wp:Goedel_numbering|Gödel numbering]], [[wp:Equivalence_relation|equivalence relations]], and [[wp:Equivalence_classes|equivalence classes]].  The basic merits of these were discussed in the Unicon Discussion Web.
 
 A second challenge in the form of a set of fictitious new states was also presented.
 
@@ -855,8 +855,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec, csort]
-[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors.icn provides prime]
+[strings.icn provides deletec, csort](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[factors.icn provides prime](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 Sample Output (ECsolve):
 ```txt

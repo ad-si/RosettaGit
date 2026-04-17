@@ -1080,7 +1080,7 @@ Serves 1.
 ## Clojure
 
 
-Returns a [http://clojure.org/data_structures ratio]:
+Returns a [ratio](http://clojure.org/data_structures):
 
 ```lisp
 (defn mean [sq]
@@ -3887,7 +3887,7 @@ EndProcedure
 {{works with|Python|3.0}}.
 {{works with|Python|2.6}}
 
-Uses [http://docs.python.org/3.3/library/math.html?highlight=fsum#math.fsum fsum] which tracks multiple partial sums to avoid losing precision
+Uses [fsum](http://docs.python.org/3.3/library/math.html?highlight=fsum#math.fsum) which tracks multiple partial sums to avoid losing precision
 
 ```python
 from math import fsum
@@ -3947,7 +3947,7 @@ print avg([0,0,3,1,4,1,5,9,0,0])
 
 
 {{works with|Python|3.4}}
-Since 3.4, Python has a [[http://docs.python.org/3/library/statistics.html statistics] library in the stdlib, which takes care of these precision overflow issues in a way that works for all standard types, not just float, even with values way too big or small to fit in a float. (For Python 2.6-2.7, there's a backport available on PyPI.)
+Since 3.4, Python has a [[statistics](http://docs.python.org/3/library/statistics.html) library in the stdlib, which takes care of these precision overflow issues in a way that works for all standard types, not just float, even with values way too big or small to fit in a float. (For Python 2.6-2.7, there's a backport available on PyPI.)
 
 ```python
 >>
@@ -4547,7 +4547,7 @@ fun mean_ints [] = raise Empty
 
 ###  Mean of a dataset variable
 
-Illustration of the mean on the population (in millions) in january 2016 of a few european countries (source [http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_gind&lang=fr Eurostat]).
+Illustration of the mean on the population (in millions) in january 2016 of a few european countries (source [Eurostat](http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_gind&lang=fr)).
 <lang>clear all
 input str20 country population
 Belgium 11311.1

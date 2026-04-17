@@ -129,7 +129,7 @@ That new list will have two fewer elements than   <big>'''A'''</big>   and one l
 
 The goal of this task is to repeat this process up to the desired order.
 
-For a more formal description, see the related   [http://mathworld.wolfram.com/ForwardDifference.html Mathworld article].
+For a more formal description, see the related   [Mathworld article](http://mathworld.wolfram.com/ForwardDifference.html).
 
 
 ;Algorithmic options:
@@ -483,7 +483,7 @@ end zipWith
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276470.html#276470 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276470.html#276470)
 
 ```AutoHotkey
 MsgBox % diff("2,3,4,3",1)
@@ -3390,7 +3390,7 @@ gen y=x[_n+1]-x[_n]
 ```
 
 
-However, it's much more natural to use [http://www.stata.com/help.cgi?tsvarlist time-series varlists]. In order to use them, it's necessary to first set a ''time'' variable, which may be simply an index variable.
+However, it's much more natural to use [time-series varlists](http://www.stata.com/help.cgi?tsvarlist). In order to use them, it's necessary to first set a ''time'' variable, which may be simply an index variable.
 
 
 ```stata

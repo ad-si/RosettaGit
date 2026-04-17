@@ -232,7 +232,7 @@ print $fh  $svg->xmlify(-namespace=>'svg');
 close $fh;
 ```
 
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/curve-3-points.svg Hilbert curve passing through 3 defined points] (offsite image)
+[Hilbert curve passing through 3 defined points](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/curve-3-points.svg) (offsite image)
 
 
 ## Perl 6
@@ -335,7 +335,7 @@ sub dot ($X is copy, $Y is copy, @rgb, $png, $radius = 3) {
 }
 ```
 
-See [https://github.com/thundergnat/rc/blob/master/img/Curve-3-points-perl6.png Curve-3-points-perl6.png] (offsite .png image)
+See [Curve-3-points-perl6.png](https://github.com/thundergnat/rc/blob/master/img/Curve-3-points-perl6.png) (offsite .png image)
 
 
 ## Phix
@@ -425,7 +425,7 @@ main()
 ## zkl
 
 Uses Image Magick and
-the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 const X=0, Y=1;   // p.X == p[X]
@@ -465,4 +465,4 @@ fcn main{
 }();
 ```
 
-Image at [http://www.zenkinetic.com/Images/RosettaCode/quadraticCurve.zkl.jpg quadratic curve]
+Image at [quadratic curve](http://www.zenkinetic.com/Images/RosettaCode/quadraticCurve.zkl.jpg)

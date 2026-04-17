@@ -898,7 +898,7 @@ Unsigned 64-bit:
 
 ## Clojure
 
-Clojure supports Java's primitive integers, int (32-bit signed) and long (64-bit signed).  However, Clojure automatically promotes the smaller int to a 64-bit long internally, so no 32-bit integer overflow issues can occur.   For more information, see the [http://dev.clojure.org/display/design/Documentation+for+1.3+Numerics documentation].
+Clojure supports Java's primitive integers, int (32-bit signed) and long (64-bit signed).  However, Clojure automatically promotes the smaller int to a 64-bit long internally, so no 32-bit integer overflow issues can occur.   For more information, see the [documentation](http://dev.clojure.org/display/design/Documentation+for+1.3+Numerics).
 
 By default, Clojure throws Exceptions on overflow conditions:
 
@@ -1040,7 +1040,7 @@ Frink's numerical type automatically promotes and demotes between arbitrary-size
 
 ## Go
 
-[http://play.golang.org/p/jsPWC8KGzD Run this in the Go playground].
+[Run this in the Go playground](http://play.golang.org/p/jsPWC8KGzD).
 A Go program does <b>not</b> recognize an integer overflow and the program <b>continues with wrong results</b>.
 
 ```go
@@ -1303,7 +1303,7 @@ Signed unbounded (passed):
 
 ## Haskell
 
-Haskell supports both fixed sized signed integers (Int) and unbounded integers (Integer). Various sizes of signed and unsigned integers are available in Data.Int and Data.Word, respectively. The Haskell 2010 Language Report explains the following: "The results of exceptional conditions (such as overflow or underflow) on the fixed-precision numeric types are undefined; an implementation may choose error (⊥, semantically), a truncated value, or a special value such as infinity, indefinite, etc" (http://www.haskell.org/definition/haskell2010.pdf Section 6.4 Paragraph 4).
+Haskell supports both fixed sized signed integers (Int) and unbounded integers (Integer). Various sizes of signed and unsigned integers are available in Data.Int and Data.Word, respectively. The Haskell 2010 Language Report explains the following: "The results of exceptional conditions (such as overflow or underflow) on the fixed-precision numeric types are undefined; an implementation may choose error (⊥, semantically), a truncated value, or a special value such as infinity, indefinite, etc" (<http://www.haskell.org/definition/haskell2010.pdf> Section 6.4 Paragraph 4).
 
 ```Haskell
 import Data.Int
@@ -2441,8 +2441,8 @@ requireOverflow(++(1,1)) // Undetected overflow
 
 ## Seed7
 
-Seed7 supports unlimited precision integers with the type [http://seed7.sourceforge.net/manual/types.htm#bigInteger bigInteger].
-The type [http://seed7.sourceforge.net/manual/types.htm#integer integer] is a 64-bit signed integer type.
+Seed7 supports unlimited precision integers with the type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger).
+The type [integer](http://seed7.sourceforge.net/manual/types.htm#integer) is a 64-bit signed integer type.
 All computations with the type integer are checked for overflow.
 
 ```seed7

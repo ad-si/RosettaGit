@@ -1088,7 +1088,7 @@ sequence moves
 integer total_moves = 0
 atom t0 = time()
 
-    -- "hardest case" from http://www.cube20.org
+    -- "hardest case" from <http://www.cube20.org>
     moves = {F, Us, F2, Ds, B, U, Rs, Fs, L, Ds, 
              Rs, Us, L, U, Bs, D2, Rs, F, U2, D2}
     cube = apply_moves(init,moves)
@@ -1112,7 +1112,7 @@ end procedure
 main()
 ```
 
-The "hardest case" from http://www.cube20.org with a high threshold. You can try this manually.
+The "hardest case" from <http://www.cube20.org> with a high threshold. You can try this manually.
 Disclaimer: the results are not always quite as good as this!
 
 ```txt
@@ -1180,7 +1180,7 @@ solution of 42 total moves found in 81.33s
 
 ### thistlethwaite
 
-Translation/de-golf(hrumph) of Tomas Sirgedas' winning entry from http://tomas.rokicki.com/cubecontest as held in 2004.
+Translation/de-golf(hrumph) of Tomas Sirgedas' winning entry from <http://tomas.rokicki.com/cubecontest> as held in 2004.
 
 Faster and shorter solutions (in most cases) than cfop, however probably nigh on impossible to debug/enhance...
 

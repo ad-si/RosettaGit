@@ -13,4 +13,4 @@ tags = []
 
 Rubylog is a Prolog-like DSL for Ruby.
 
-See it on [https://github.com/cie/rubylog Github] or  [http://rubygems.org/gems/rubylog Rubygems]
+See it on [Github](https://github.com/cie/rubylog) or  [Rubygems](http://rubygems.org/gems/rubylog)

@@ -11,11 +11,11 @@ tags = []
 +++
 
 ==Inspiration==
-The idea for the task comes from this blog entry: [http://www.mikedoesweb.com/2013/interesting-interview-question-1/ Interesting interview question #1] by Michael Jasper. Thanks. --[[User:Paddy3118|Paddy3118]] 12:41, 2 February 2013 (UTC)
+The idea for the task comes from this blog entry: [Interesting interview question #1](http://www.mikedoesweb.com/2013/interesting-interview-question-1/) by Michael Jasper. Thanks. --[[User:Paddy3118|Paddy3118]] 12:41, 2 February 2013 (UTC)
 
 ==Second D entry and return type==
 Because the middle three digits can have leading zeroes, I would think that the more natural return type would be a string rather than an int. --[[User:Paddy3118|Paddy3118]] 19:18, 3 February 2013 (UTC)
-: I didn't write that code, but I think I can explain it. The return type is a [http://dlang.org/phobos/std_variant.html#.Algebraic Variant] type that can represent ''any'' type. In this case it's limited to the types listed: string, char[]. So the function will return a Variant that represents either a string or a char[]. By looking at the returned type (peek) you can tell whether or not an error occured. [[User:Fwend|Fwend]] 21:54, 3 February 2013 (UTC)
+: I didn't write that code, but I think I can explain it. The return type is a [Variant](http://dlang.org/phobos/std_variant.html#.Algebraic) type that can represent ''any'' type. In this case it's limited to the types listed: string, char[]. So the function will return a Variant that represents either a string or a char[]. By looking at the returned type (peek) you can tell whether or not an error occured. [[User:Fwend|Fwend]] 21:54, 3 February 2013 (UTC)
 
 ::Ah. I get it now. The middle three digits are calculated numerically and then changed to an array of three characters for the non-error return value. Error conditions return a string type. Thanks. --[[User:Paddy3118|Paddy3118]] 22:13, 3 February 2013 (UTC)
 ::: Of course, you can also just check the length of the returned value, but that would be cowboy programming! :-) Discriminating between a string and  a char[] is also not very solid, when safety is concerned. They are both string types. A function could easily return an error message as a char[]. It would be better to throw an error, or if you want to avoid the overhead, to return an Exception object. Or an enum error code. Then you have strong typing. [[User:Fwend|Fwend]] 22:32, 3 February 2013 (UTC)

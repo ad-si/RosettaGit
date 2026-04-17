@@ -21,7 +21,7 @@ It would be better if you preferably put the algorithm in the task description i
 
 : Agreed. Right now we've got a task that produces a large amount of output that it is difficult to check by eye, and an algorithm in a paper rather than on this page. That's a good reason to keep it as draft. (At the very least, copy the key equations to this page and think of a way to reduce the volume of output in a useful non-trivial way.) –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 09:12, 16 January 2014 (UTC)
 
-::I quite like Gerard Schildberger's idea of showing the number of correct digits per iteration, perhaps to 100 million. http://www.angio.net/pi/ section Repeating Patterns in Pi tells us 'Jonathan Day recently (02/1999) noticed that there appear to be no simple, repeating patterns longer than 10 digits. He found 9 6's at 45681781, 9 7's at 24658601 and 9 8's at 46663520.' It would be interseting to check this --[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:56, 16 January 2014 (UTC)
+::I quite like Gerard Schildberger's idea of showing the number of correct digits per iteration, perhaps to 100 million. <http://www.angio.net/pi/> section Repeating Patterns in Pi tells us 'Jonathan Day recently (02/1999) noticed that there appear to be no simple, repeating patterns longer than 10 digits. He found 9 6's at 45681781, 9 7's at 24658601 and 9 8's at 46663520.' It would be interseting to check this --[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 12:56, 16 January 2014 (UTC)
 : I've included the key equations from the paper; people who want more can read the paper for themselves. –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 09:34, 16 January 2014 (UTC)
 
 

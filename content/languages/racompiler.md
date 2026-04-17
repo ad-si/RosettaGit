@@ -14,8 +14,8 @@ tags = []
 This is Ra's official and only compiler. It is a transpiler that converts to Cobra code.
 
 =Links=
-[http://oahmad04.github.io/ra/ Ra website]
+[Ra website](http://oahmad04.github.io/ra/)
 
-[https://github.com/oahmad04/ra Ra source code]
+[Ra source code](https://github.com/oahmad04/ra)
 
-[http://cobra-language.com/ Cobra website]
+[Cobra website](http://cobra-language.com/)

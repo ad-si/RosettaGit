@@ -2591,9 +2591,9 @@ Output:
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Happy_numbers this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Happy_numbers) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -6352,7 +6352,7 @@ happy numbers: 1 7 10 13 19 23 28 31
 
 Scratch is a free visual programming language. Click the link, then "See inside" to view the code.
 
-https://scratch.mit.edu/projects/78912620/
+<https://scratch.mit.edu/projects/78912620/>
 
 This code will allow you to check if a positive interger (<=9999) is a happy number. It will also output a list of the first 8 happy numbers. (1 7 10 13 19 23 28 31)
 

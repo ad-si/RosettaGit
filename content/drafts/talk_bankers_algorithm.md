@@ -27,7 +27,7 @@ WP mentions EWD-108 and EWD-623, but I just saw that EWD-123 describes the Banke
 == Code in Java ==
 
 Here's a link from where you can refer the code for Banker's algorithm in java
-[https://github.com/rajat81/SPOS/blob/master/Bankers/src/com/rajatswnt/Bankers.java]
+<https://github.com/rajat81/SPOS/blob/master/Bankers/src/com/rajatswnt/Bankers.java>
 
 
 == Algorithm ==

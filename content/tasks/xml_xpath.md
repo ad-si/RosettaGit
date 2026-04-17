@@ -1387,7 +1387,7 @@ let names = seq { for name in nav.Select(@"//name") do yield name } |> Seq.toArr
 ## Gastona
 
 The example uses the command XMELON which parses a XML file of any schema and stores its
-contents into db tables. This parser is described in the article [http://web3.codeproject.com/Articles/680642/XMeLon-Schema XMeLon-Schema]
+contents into db tables. This parser is described in the article [XMeLon-Schema](http://web3.codeproject.com/Articles/680642/XMeLon-Schema)
 
 ```gastona
 #javaj#

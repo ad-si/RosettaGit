@@ -44,7 +44,7 @@ Write a program that takes a checksum (resultant hash digest) ''integer binary''
 :::*   '''0'''         the digit zero.
 
 
-The ''reference algorithm'' is at [https://en.bitcoin.it/wiki/Base58Check_encoding#Base58_symbol_chart the Bitcoin's Base58Check page].
+The ''reference algorithm'' is at [the Bitcoin's Base58Check page](https://en.bitcoin.it/wiki/Base58Check_encoding#Base58_symbol_chart).
 
 
 
@@ -1168,7 +1168,7 @@ Base 58 check encoding:
 ### version 1
 
 Following the description in
-https://www.anintegratedworld.com/how-to-manually-calculate-base58check-encoding/
+<https://www.anintegratedworld.com/how-to-manually-calculate-base58check-encoding/>
 I get the result expected there.
 Apart for the leading 1 the program works also for the inputs shown above.
 
@@ -1343,7 +1343,7 @@ Rt5zm
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/GMcrlBB/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/GMcrlBB/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org).
 
 ```Scala
 import java.math.BigInteger
@@ -1404,8 +1404,8 @@ object Base58 extends App {
 
 ## Seed7
 
-The Seed7 library [http://seed7.sourceforge.net/libraries/encoding.htm encoding.s7i] defines
-the function [http://seed7.sourceforge.net/libraries/encoding.htm#toBase(in_bigInteger,in_string) toBase],
+The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [toBase](http://seed7.sourceforge.net/libraries/encoding.htm#toBase(in_bigInteger,in_string)),
 which encodes a number with a positional numeric system. No external library is needed.
 
 ```seed7

@@ -28,7 +28,7 @@ I have adjusted the task definition. Please let me know if you have any more que
 
 Thanks; I think that's much better.
 
-Since you ask, I was also wondering about how broadly to interpret "swap". For example, I wrote two examples which don't exchange values in mutable cells (as the Ada, Perl, and first E example do), but rather accept two values and produce them in the opposite order. (However, the Haskell version could easily be used in an imperatively-expressed program; e.g. <code>[http://haskell.org/ghc/docs/latest/html/libraries/mtl/Control-Monad-State-Class.html#v%3Amodify modify] swap</code>.)
+Since you ask, I was also wondering about how broadly to interpret "swap". For example, I wrote two examples which don't exchange values in mutable cells (as the Ada, Perl, and first E example do), but rather accept two values and produce them in the opposite order. (However, the Haskell version could easily be used in an imperatively-expressed program; e.g. <code>[modify](http://haskell.org/ghc/docs/latest/html/libraries/mtl/Control-Monad-State-Class.html#v%3Amodify) swap</code>.)
 
 --[[User:Kevin Reid|Kevin Reid]] 21:41, 7 September 2007 (EDT)
 

@@ -35,7 +35,7 @@ zip(*(lst[n:] for n in range(count)))
 
 I finished the code and played with the differences then firmed up what the task details would become. I wrote the task and added extra explanations and emphasis to try and help the reader grasp the details, then went to bed.
 
-Today I've just done a search of the primes generated from differences of <code>2, 4</code> on OEIS to find that it is [https://oeis.org/A275515 known] to some degree, but expressed differently and not as generally as here - I guess recreational maths peeps think alike :-)
+Today I've just done a search of the primes generated from differences of <code>2, 4</code> on OEIS to find that it is [known](https://oeis.org/A275515) to some degree, but expressed differently and not as generally as here - I guess recreational maths peeps think alike :-)
 
 Enjoy. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 06:54, 27 April 2019 (UTC)
 :It is very well studied, but you must state it slightly differently. Let P2 be the infinite sequence of successive primes (p2_a,P2_b) such that P2_b-P2_a=2. and P4 be the similar infinite sequence (P4_a,P4_b) such that P4_b-P4_a = 4. The your generalization to P2P4 as 3 successive primes with Pa,Pb,Pc with Pb-Pa=2 and Pc-Pb=4 is a search through P2 and P4 to find P2_b=P4_a. An interesting study would be to compute over a large range the length of P2 and P4 and thus predict the length of P2P4. For a given range should the length of P2P4 be the same as P4P2?--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 13:28, 27 April 2019 (UTC)

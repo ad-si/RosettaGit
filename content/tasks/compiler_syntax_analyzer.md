@@ -33,7 +33,7 @@ A Syntax analyzer transforms a token stream (from the [[Compiler/lexical_analyze
 into a Syntax tree, based on a grammar.
 
 Take the output from the Lexical analyzer [[Compiler/lexical_analyzer|task]],
-and convert it to an [https://en.wikipedia.org/wiki/Abstract_syntax_tree Abstract Syntax Tree (AST)],
+and convert it to an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree),
 based on the grammar below.  The output should be in a [[Flatten_a_list|flattened format.]]
 
 The program should read input from a file and/or stdin, and write output to a file and/or
@@ -43,7 +43,7 @@ with.
 
 The simple programming language to be analyzed is more or less a (very tiny) subset of
 [[C]]. The formal grammar in
-[https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form Extended Backus-Naur Form (EBNF)]:
+[Extended Backus-Naur Form (EBNF)](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form):
 
 
 ```EBNF
@@ -321,8 +321,8 @@ In flattened form:
 
 ;Pseudo-code for the parser.
 
-Uses [https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm Precedence Climbing] for expression parsing, and
-[https://en.wikipedia.org/wiki/Recursive_descent_parser Recursive Descent] for statement parsing. The AST is also built:
+Uses [Precedence Climbing](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm) for expression parsing, and
+[Recursive Descent](https://en.wikipedia.org/wiki/Recursive_descent_parser) for statement parsing. The AST is also built:
 
 
 ```python

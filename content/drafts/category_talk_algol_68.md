@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Although it's not obvious (to me) how to solve the Interactive Programming task purely within the bounds of any known (to me) implementations of Algol 68, one could in principle use Algol 68 Genie to implement an interface to http://www.tutorialspoint.com/execute_algol_online.php but doing so would constitute cheating IMAO.
+Although it's not obvious (to me) how to solve the Interactive Programming task purely within the bounds of any known (to me) implementations of Algol 68, one could in principle use Algol 68 Genie to implement an interface to <http://www.tutorialspoint.com/execute_algol_online.php> but doing so would constitute cheating IMAO.
 
 Genie has a debugging mode but as of Version 2.8 this is not powerful enough to elaborate more than a miniscule subset of A68.
 --[[User:Brnikat|Brnikat]] ([[User talk:Brnikat|talk]]) 17:12, 7 August 2015 (UTC)

@@ -15,4 +15,4 @@ The Leon system aims to help developers build verified Scala software. It encour
 * repair a program for you to ensure that the above holds
 * automatically execute and synthesize working functions from partial input/output specifications and test cases.
 
-[http://leon.epfl.ch/doc/intro.html Link to the documentation]
+[Link to the documentation](http://leon.epfl.ch/doc/intro.html)

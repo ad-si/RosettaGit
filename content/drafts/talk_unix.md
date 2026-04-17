@@ -18,4 +18,4 @@ So... I think that perhaps this article should be renamed to '''Unix''', with ''
 :Done. --[[User:Mwn3d|Mwn3d]] 20:30, 8 October 2009 (UTC)
 ::That was fast. I would've done it myself, but I was thinking about getting input from others first... oh, well. Thanks.
 
-::FWIW, the Jargon File's [http://catb.org/jargon/html/U/Unix.html Unix entry] (which is partially quoted in the above cite) ends with this: <cite>So, while the trademark today is 'UNIX', both capitalizations are grounded in ancient usage; the Jargon File uses 'Unix' in deference to dmr's wishes.</cite> -- [[User:Eriksiers|Eriksiers]] 20:38, 8 October 2009 (UTC)
+::FWIW, the Jargon File's [Unix entry](http://catb.org/jargon/html/U/Unix.html) (which is partially quoted in the above cite) ends with this: <cite>So, while the trademark today is 'UNIX', both capitalizations are grounded in ancient usage; the Jargon File uses 'Unix' in deference to dmr's wishes.</cite> -- [[User:Eriksiers|Eriksiers]] 20:38, 8 October 2009 (UTC)

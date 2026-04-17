@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-xml-light can be found [http://tech.motion-twin.com/xmllight here].
+xml-light can be found [here](http://tech.motion-twin.com/xmllight).
 
 xml-light is packaged for most Linux distros.

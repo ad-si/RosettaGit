@@ -116,7 +116,7 @@ Sometimes a [[multiline shebang]] is necessary in order to provide the script na
 
 See also [[Command-line arguments]]
 
-Examples from [https://github.com/mcandre/scriptname GitHub].
+Examples from [GitHub](https://github.com/mcandre/scriptname).
 
 
 ## AArch64 Assembly
@@ -415,14 +415,14 @@ Many BASICs -- notably older DOS BASICs, and especially DOS MS BASICs -- do not 
 ## FreeBASIC
 =
 
-Unlike most MS BASICs, [[FreeBASIC]] provides a parsed version of <code>[http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgCommand COMMAND$]</code> (called as <code>COMMAND$(n)</code>). <code>COMMAND$(0)</code> is the program's name:
+Unlike most MS BASICs, [[FreeBASIC]] provides a parsed version of <code>[COMMAND$](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgCommand)</code> (called as <code>COMMAND$(n)</code>). <code>COMMAND$(0)</code> is the program's name:
 
 ```qbasic
 appname = COMMAND$(0)
 ```
 
 
-Additionally, FreeBASIC also provides an analog of [[#C|C's]] <code>argc/argv[]</code>, called <code>[http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargc __FB_ARGC__]</code> and <code>[http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargv __FB_ARGV__]</code>. __FB_ARGV__ can be used to get the program's name like this:
+Additionally, FreeBASIC also provides an analog of [[#C|C's]] <code>argc/argv[]</code>, called <code>[__FB_ARGC__](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargc)</code> and <code>[__FB_ARGV__](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargv)</code>. __FB_ARGV__ can be used to get the program's name like this:
 
 ```qbasic
 appname = *__FB_ARGV__(0)
@@ -554,7 +554,7 @@ ucomm: myname
 
 ###  Windows
 
-[http://msdn.microsoft.com/en-us/library/ms683197%28v=VS.85%29.aspx GetModuleFileName], from the Win32 API, provides the correct path to the current executable file.
+[GetModuleFileName](http://msdn.microsoft.com/en-us/library/ms683197%28v=VS.85%29.aspx), from the Win32 API, provides the correct path to the current executable file.
 
 ```c
 #include <windows.h>
@@ -843,7 +843,7 @@ Program: /tmp/.rdmd/Users/andrew/Desktop/src/scriptname/scriptname.d.D3B32385A31
 
 
 
-Alternative method using built-in function [http://dlang.org/changelog.html#current_path thisExePath()]
+Alternative method using built-in function [thisExePath()](http://dlang.org/changelog.html#current_path)
 ```d
 // thisExePath function was introduced in D 2.064 (November 5, 2013)
 
@@ -1115,7 +1115,7 @@ Sleep
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=fc8af45b13a9bb52b6955bab487fc7ac Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=fc8af45b13a9bb52b6955bab487fc7ac)'''
 
 ```gambas
 Public Sub Main()
@@ -2042,7 +2042,7 @@ echo "Program: $program\n";
 
 ## PicoLisp
 
-The function '[http://software-lab.de/doc/refC.html#cmd cmd]' returns the command name.
+The function '[cmd](http://software-lab.de/doc/refC.html#cmd)' returns the command name.
 
 ```PicoLisp
 : (cmd)

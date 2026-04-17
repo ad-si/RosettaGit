@@ -53,7 +53,7 @@ languages = [
 ]
 +++
 
-A perfect shuffle (or [https://en.wikipedia.org/wiki/Faro_shuffle faro/weave shuffle]) means splitting a deck of cards into equal halves, and perfectly interleaving them - so that you end up with the first card from the left half, followed by the first card from the right half, and so on:
+A perfect shuffle (or [faro/weave shuffle](https://en.wikipedia.org/wiki/Faro_shuffle)) means splitting a deck of cards into equal halves, and perfectly interleaving them - so that you end up with the first card from the left half, followed by the first card from the right half, and so on:
 
 <big>
 <!-- START OF DIAGRAM -->
@@ -2274,7 +2274,7 @@ fn main() {
 ## Scala
 
 ===Imperative, Quick, dirty and ugly===
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/Ux9RKDx/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/eWeiDIBbQMGpNIQAmvXfLg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/Ux9RKDx/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/eWeiDIBbQMGpNIQAmvXfLg).
 
 ```Scala
 object PerfectShuffle extends App {

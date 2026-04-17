@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}
-[http://cran.r-project.org/web/packages/pixmap/index.html pixmap] is a package for R that is used for reading, writing and manipulating portable bitmap file types: PBM, PGM, PPM.
+[pixmap](http://cran.r-project.org/web/packages/pixmap/index.html) is a package for R that is used for reading, writing and manipulating portable bitmap file types: PBM, PGM, PPM.

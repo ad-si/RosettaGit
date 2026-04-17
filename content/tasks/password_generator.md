@@ -1373,7 +1373,7 @@ For example:
 ```
 
 
-User interface (uses a powerful and easy-to-use command-line  [https://hackage.haskell.org/package/options-1.2.1.1/docs/Options.html option parser]).
+User interface (uses a powerful and easy-to-use command-line  [option parser](https://hackage.haskell.org/package/options-1.2.1.1/docs/Options.html)).
 
 
 ```Haskell

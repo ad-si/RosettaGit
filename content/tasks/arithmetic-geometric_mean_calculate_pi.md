@@ -287,7 +287,7 @@ Translation from Ruby
 {{libheader|MMA}}
 
 This is an example that uses the Common Lisp Bigfloat Package
-(http://www.cs.berkeley.edu/~fateman/lisp/mma4max/more/bf.lisp)
+(<http://www.cs.berkeley.edu/~fateman/lisp/mma4max/more/bf.lisp>)
 
 ```lisp
 (load "bf.fasl")
@@ -549,8 +549,8 @@ main = do
 ## J
 
 Relevant J essays:
-[http://www.jsoftware.com/jwiki/Essays/Extended%20Precision%20Functions|Extended precision functions]
-and [http://www.jsoftware.com/jwiki/Essays/Chudnovsky%20Algorithm|Pi]
+[precision functions](http://www.jsoftware.com/jwiki/Essays/Extended%20Precision%20Functions|Extended)
+and <http://www.jsoftware.com/jwiki/Essays/Chudnovsky%20Algorithm|Pi>
 
 Translated from Python:
 
@@ -1486,7 +1486,7 @@ pi(7): 3.1415926535901733
 
 
 Note: num crate could be used if sqrt was supported
-(https://github.com/rust-num/num-rational/issues/35)
+(<https://github.com/rust-num/num-rational/issues/35>)
 
 
 ## Scala

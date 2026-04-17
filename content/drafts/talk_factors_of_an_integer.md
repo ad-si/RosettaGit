@@ -63,7 +63,7 @@ q) f:{i:{y where x=y*x div y}[x ; 1+ til floor sqrt x]; distinct i,x div reverse
 
 Very nice final list comprehension example there. Thanks !
 
-Perhaps Johan Tibell style (https://github.com/tibbe/haskell-style-guide) or hindent (http://chrisdone.com/posts/hindent-5) to bring the 97-character within the 80 character Rosetta guidelines, and for ease of reading  ? (PS maybe that Data.List import is not needed with current default builds of GHC ? Those functions all seem to be Prelude default)
+Perhaps Johan Tibell style (<https://github.com/tibbe/haskell-style-guide>) or hindent (<http://chrisdone.com/posts/hindent-5>) to bring the 97-character within the 80 character Rosetta guidelines, and for ease of reading  ? (PS maybe that Data.List import is not needed with current default builds of GHC ? Those functions all seem to be Prelude default)
 
 
 ```haskell

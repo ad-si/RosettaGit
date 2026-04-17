@@ -33,4 +33,4 @@ A different take on assembly, with the goal of creating tiny executables.
 * The intermediate assembly is fully commented.
 
 ## Project page
-https://github.com/xyproto/battlestar
+<https://github.com/xyproto/battlestar>

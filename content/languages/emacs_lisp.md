@@ -16,4 +16,4 @@ Emacs Lisp (often abbreviated to elisp) is the [Lisp](https://rosettacode.org/wi
 
 Emacs configuration files actually are Emacs Lisp source files.
 
-Emacs Lisp can be used as a general programming language with the emacs "-batch" or "--script" command line arguments. [http://www.emacswiki.org/emacs/BatchMode]
+Emacs Lisp can be used as a general programming language with the emacs "-batch" or "--script" command line arguments. <http://www.emacswiki.org/emacs/BatchMode>

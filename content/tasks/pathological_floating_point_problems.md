@@ -124,7 +124,7 @@ Demonstrate how to solve at least one of the first two problems, or both, and th
 
 
 ;See also;
-*   [https://perso.ens-lyon.fr/jean-michel.muller/chapitre1.pdf Floating-Point Arithmetic]   Section 1.3.2 Difficult problems.
+*   [Floating-Point Arithmetic](https://perso.ens-lyon.fr/jean-michel.muller/chapitre1.pdf)   Section 1.3.2 Difficult problems.
 
 
 
@@ -1607,9 +1607,9 @@ f(77617.0, 33096.0) = -0.8273960599468214
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Pathological_floating_point_problems this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Pathological_floating_point_problems) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -3345,7 +3345,7 @@ rump(77617, 33096) =  -0.8273960599468214
 
 
 Racket has the concept of exact (rational) and inexact (floating point) numbers, both real and complex.
-See: http://docs.racket-lang.org/guide/numbers.html for more details.
+See: <http://docs.racket-lang.org/guide/numbers.html> for more details.
 
 The examples below use real numbers, and the <code>x</code> function is used to transform them to floats, if desired, with the function <code>exact->inexact</code>.
 
@@ -3875,7 +3875,7 @@ Single and Double are 32-bit and 64-bit IEEE floating-point numbers, respectivel
 
 Decimal is a fixed-point number intended for use in financial calculations where a high number of significant digits are required and magnitudes are reasonably small. It has a 128-bit size and is stored as a 1-bit sign, 96-bit integer, and scaling factor (from 1 to 10^28) that determines the position of the decimal point. Decimal math in .NET is notoriously slow.
 
-.NET Framework and Core do have the arbitrary-precision BigInteger structure, but do not have an arbitrary-precision rational type, though Microsoft did create a prototype BigRational that never made it into the library. Its source has been released on GitHub and a NuGet package was published for it in 2011 (at [https://www.nuget.org/packages/BigRationalLibrary/]). The type is fully functional and is sufficient for these tasks, so this program has been designed to optionally use it (and must be compiled with a reference to the library to do so).
+.NET Framework and Core do have the arbitrary-precision BigInteger structure, but do not have an arbitrary-precision rational type, though Microsoft did create a prototype BigRational that never made it into the library. Its source has been released on GitHub and a NuGet package was published for it in 2011 (at <https://www.nuget.org/packages/BigRationalLibrary/>). The type is fully functional and is sufficient for these tasks, so this program has been designed to optionally use it (and must be compiled with a reference to the library to do so).
 
 The program defines three compiler constants that toggle:
 * <code>USE_BIGRATIONAL</code>: whether to use BigRationalLibrary; when False, a mock type and functions are defined that allows the code to be compiled without a reference to the library.

@@ -15,4 +15,4 @@ tags = []
 
 ## External Links
 * [Turbo Pascal on Wikipedia](https://en.wikipedia.org/wiki/Turbo_Pascal)
-* [https://downloads.embarcadero.com/free/turbopascal Free downloads] of 3 historical versions of Turbo Pascal from Embarcadero
+* [Free downloads](https://downloads.embarcadero.com/free/turbopascal) of 3 historical versions of Turbo Pascal from Embarcadero

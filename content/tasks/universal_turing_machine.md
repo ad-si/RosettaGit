@@ -782,7 +782,7 @@ Requires at least 2k of RAM.
 111111
 ```
 
-A screenshot from part-way through the execution of this machine can be found [http://www.edmundgriffiths.com/zx81turingmachine.jpg here].
+A screenshot from part-way through the execution of this machine can be found [here](http://www.edmundgriffiths.com/zx81turingmachine.jpg).
 
 If it is true that the <b>five-state probable beaver</b> runs for 47m cycles, then there is no point even attempting it on a slow computer like the ZX81. I don't know exactly how long it would take: but it would be months.
 
@@ -2007,7 +2007,7 @@ void main() @safe {
     }
     M1(tm1);
 
-    // http://en.wikipedia.org/wiki/Busy_beaver
+    // <http://en.wikipedia.org/wiki/Busy_beaver>
     "\nBusy Beaver machine (3-state, 2-symbol):".writeln;
     enum States2 : ubyte { A, B, C, H }
     alias Symbols2 = Symbols1;
@@ -2595,9 +2595,9 @@ action(right, _, {Left, [R|Rs]}) -> {[R|Left], Rs}.
 
 =={{header|Fōrmulæ}}==
 
-In [http://wiki.formulae.org/Universal_Turing_Machine this] page you can see the solution of this task.
+In [this](http://wiki.formulae.org/Universal_Turing_Machine) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -4292,8 +4292,8 @@ Machine halts in halt with tape:
 
 ## J
 
-Source for this task was slightly adapted from http://www.2bestsystems.com/j/J_Conference_2012.  All the information for the Turing machines is represented by integers, the halting state is set as _1 (minus one), and head movements are mapped as (left, stay, right) ➜ (_1, 0, 1).    A Turing machine is executed until a halt state is issued or a trivial infinite regress in the form of a single changeless cycle is detected.  The transition table entry format is similar to the one in
-http://drb9.drb.insel.de/~heiner/BB/simAB3Y_SB.html.
+Source for this task was slightly adapted from <http://www.2bestsystems.com/j/J_Conference_2012>.  All the information for the Turing machines is represented by integers, the halting state is set as _1 (minus one), and head movements are mapped as (left, stay, right) ➜ (_1, 0, 1).    A Turing machine is executed until a halt state is issued or a trivial infinite regress in the form of a single changeless cycle is detected.  The transition table entry format is similar to the one in
+<http://drb9.drb.insel.de/~heiner/BB/simAB3Y_SB.html>.
 ===The universal (stateless point-free) Turing machine===
 The universal Turing machine is defined in terms of fixed tacit (stateless point-free) code, showing that this dialect of J is Turing complete.
 
@@ -5603,7 +5603,7 @@ fin[[1]]//N
 
 ### The universal machine
 
-Source for this example was lightly adapted from [https://bitbucket.org/ttmrichter/turing https://bitbucket.org/ttmrichter/turing].  Of particular interest in this implementation is that because of the type parameterisation of the <code>config</code> type, the machine being simulated cannot be compiled if there is any mistake in the states, symbols and actions.  Also, because of Mercury's determinism detection and enforcement, it's impossible to pass in a non-deterministic set of rules.  At most one answer can come back from the rules interface.
+Source for this example was lightly adapted from [https://bitbucket.org/ttmrichter/turing](https://bitbucket.org/ttmrichter/turing).  Of particular interest in this implementation is that because of the type parameterisation of the <code>config</code> type, the machine being simulated cannot be compiled if there is any mistake in the states, symbols and actions.  Also, because of Mercury's determinism detection and enforcement, it's impossible to pass in a non-deterministic set of rules.  At most one answer can come back from the rules interface.
 
 ```mercury
 :- module turing.
@@ -5730,7 +5730,7 @@ This will, on execution, fill TapeOut with [1, 1, 1, 1, 1, 1].
 The following is the Code section of the NetLogo file UTMachine_RSdan3dewey.nlogo which can be
 downloaded from the page:
 
-http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine
+<http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine>
 
 This page also has other information, screen shots, etc.
 
@@ -5741,7 +5741,7 @@ This page also has other information, screen shots, etc.
 ;;    by Dan Dewey 1/16/2016
 ;;
 ;; This NetLogo code implements a Turing Machine, see, e.g.,
-;;    http://en.wikipedia.org/wiki/Turing_machine
+;;    <http://en.wikipedia.org/wiki/Turing_machine>
 ;; The Turing machine fits nicely into the NetLogo paradigm in which
 ;; there are agents (aka the turtles), that move around
 ;; in a world of "patches" (2D cells).
@@ -5751,16 +5751,16 @@ This page also has other information, screen shots, etc.
 ;; obvious way.
 
 ;; This program is presented as a NetLogo example on the page:
-;;    http://rosettacode.org/wiki/Universal_Turing_machine
+;;    <http://rosettacode.org/wiki/Universal_Turing_machine>
 ;;    This file may be larger than others on that page, note however
 ;;    that I include many comments in the code and I have made no
 ;;    effort to 'condense' the code, prefering clarity over compactness.
 ;; A demo and discussion of this program is on the web page:
-;;    http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine
+;;    <http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine>
 ;; The Copy example machine was taken from:
-;;    http://en.wikipedia.org/wiki/Turing_machine_examples
+;;    <http://en.wikipedia.org/wiki/Turing_machine_examples>
 ;; The "Busy Beaver" machines encoded below were taken from:
-;;    http://www.logique.jussieu.fr/~michel/ha.html
+;;    <http://www.logique.jussieu.fr/~michel/ha.html>
 
 ;; The implementation here allows 3 symbols (blank, 0, 1) on the tape
 ;; and 3 head motions (left, stay, right).
@@ -7640,7 +7640,7 @@ Output:
 
 ### The universal machine
 
-Source for this example was lightly adapted from [https://bitbucket.org/ttmrichter/turing https://bitbucket.org/ttmrichter/turing].  This machine, because of Prolog's dynamic nature, has to check its configuration and the rules' compliance to the same at run-time.  This is the role of all but the first of the <code>memberchk/2</code> predicates.  In addition, calling the user-supplied rules has to be wrapped in a <code>once/1</code> wrapper because there is no way to guarantee in advance that the rules provided are deterministic.  (An alternative to doing this is to simply allow <code>perform/5</code> to be non-deterministic or to check for multiple results and report an error on such.)
+Source for this example was lightly adapted from [https://bitbucket.org/ttmrichter/turing](https://bitbucket.org/ttmrichter/turing).  This machine, because of Prolog's dynamic nature, has to check its configuration and the rules' compliance to the same at run-time.  This is the role of all but the first of the <code>memberchk/2</code> predicates.  In addition, calling the user-supplied rules has to be wrapped in a <code>once/1</code> wrapper because there is no way to guarantee in advance that the rules provided are deterministic.  (An alternative to doing this is to simply allow <code>perform/5</code> to be non-deterministic or to check for multiple results and report an error on such.)
 
 ```prolog
 turing(Config, Rules, TapeIn, TapeOut) :-
@@ -8483,7 +8483,7 @@ import scala.language.implicitConversions
   * Implementation of Universal Turing Machine in Scala that can simulate an arbitrary
   * Turing machine on arbitrary input
   *
-  * @author Abdulla Abdurakhmanov (https://github.com/abdmob/utms)
+  * @author Abdulla Abdurakhmanov (<https://github.com/abdmob/utms>)
   */
 class UniversalTuringMachine[S](val rules: List[UTMRule[S]],
                                 val initialState: S,
@@ -8755,7 +8755,7 @@ Finished in the final state: halt()
 
 ## SequenceL
 
-This implemetnation is based on the Computing Machines introduced in Turing's 1936 paper [https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf ON COMPUTABLE NUMBERS, WITH AN APPLICATION TO THE ENTSCHEIDUNGSPROBLEM]. With the exception of "skeleton tables".
+This implemetnation is based on the Computing Machines introduced in Turing's 1936 paper [ON COMPUTABLE NUMBERS, WITH AN APPLICATION TO THE ENTSCHEIDUNGSPROBLEM](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf). With the exception of "skeleton tables".
 
 '''SequenceL Code:'''
 

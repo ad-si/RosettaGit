@@ -11,7 +11,7 @@ tags = []
 +++
 
 == higher dimensional deconvolution ==
-I got interested in higher dimensional deconvolution when contacted by someone about using it as a way of looking for trading indicators in financial time series. I set this task as an example of something that I'm speculating can be done well with functional and array processing languages, but only with difficulty otherwise, which I hope someone will weigh in to confirm or refute. In case anyone wants to know, consistent [[http://drop.io/yatxacy test data]] were generated partly by this higher dimensional convolution function,
+I got interested in higher dimensional deconvolution when contacted by someone about using it as a way of looking for trading indicators in financial time series. I set this task as an example of something that I'm speculating can be done well with functional and array processing languages, but only with difficulty otherwise, which I hope someone will weigh in to confirm or refute. In case anyone wants to know, consistent [test data](http://drop.io/yatxacy) were generated partly by this higher dimensional convolution function,
 
 ```Ursala
 conv = +^|(~&x+,*DrlDSNiCK9xxSNiCK9K7iFS+ *)=>times+ **+ *K7|\x+ iota; * ! plus:-0
@@ -25,7 +25,7 @@ invoked as <code>(conv d)(h,f)</code> with dimension <code>d &gt; 0</code> and c
 I am new here, but I think the definition of convolution is wrong and should be
 :<math>G(n_0, \dots, n_{d-1})=\sum_{m_0=-\infty}^{\infty}\dots\sum_{m_{d-1}=-\infty}^{\infty}F(m_0, \dots, m_{d-1})H(n_0-m_0, \dots, n_{d-1}-m_{d-1})</math>
 
-in accordance with [[http://en.wikipedia.org/wiki/Convolution#Definition|Wiki convolution]]
+in accordance with [convolution](http://en.wikipedia.org/wiki/Convolution#Definition|Wiki)
 
 --[[User:R.E. Boss|R.E. Boss]] 08:45, 3 march 2010
 
@@ -86,7 +86,7 @@ the <code>band</code> function above to construct a matrix <math>A</math> of vec
 the same pattern, with which each <math>i,j</math>-th element of <math>A</math> being either a
 vector from <math>f</math>, or a zero vector of conforming length.
 
-I'm not saying it can't be done, but I'm not sure how pruning the matrix generalizes to higher dimensions, so the rest of this description assumes the solver copes with over determined systems. Such a solver is readily available in the [[http://www.netlib.org/lapack Lapack]] library, which is callable from many languages.
+I'm not saying it can't be done, but I'm not sure how pruning the matrix generalizes to higher dimensions, so the rest of this description assumes the solver copes with over determined systems. Such a solver is readily available in the [Lapack](http://www.netlib.org/lapack) library, which is callable from many languages.
 
 Next, pair up each row of the matrix-of-vectors <math>A</math> with the corresponding member of
 <math>g</math>. Since <math>A</math> is a matrix of vectors, each row of it can be considered a matrix

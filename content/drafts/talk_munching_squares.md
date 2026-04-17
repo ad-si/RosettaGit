@@ -18,4 +18,4 @@ I guess someone has to say it: what are the task specifications here? --[[User:M
 Also, this is very very similar to [[Sierpinski_triangle]] and [[Sierpinski_triangle/Graphical]] (xor method).  Mind you it is very pretty too :) --[[User:Dgamey|Dgamey]] 13:07, 26 November 2011 (UTC)
 
 ==Move reason==
-This is [[wp:munching squares|munching squares]], a well-known display hack that dates back to 1962. (It's mentioned in [http://www.catb.org/jargon/html/M/munching-squares.html the Jargon File], and also [http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146 HAKMEM items 146-148], dated 1972.) -- [[User:Eriksiers|Erik Siers]] 22:28, 10 July 2012 (UTC)
+This is [[wp:munching squares|munching squares]], a well-known display hack that dates back to 1962. (It's mentioned in [the Jargon File](http://www.catb.org/jargon/html/M/munching-squares.html), and also [HAKMEM items 146-148](http://www.inwap.com/pdp10/hbaker/hakmem/hacks.html#item146), dated 1972.) -- [[User:Eriksiers|Erik Siers]] 22:28, 10 July 2012 (UTC)

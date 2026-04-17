@@ -13,10 +13,10 @@ tags = []
 
 Axe Parser has options to compile under a variety of shells:
 * No-stub executable (no dependencies)
-* [http://www.ticalc.org/archives/files/fileinfo/130/13059.html Ion]
-* [http://www.ticalc.org/archives/files/fileinfo/139/13949.html Mirage OS]
-* [http://www.ticalc.org/archives/files/fileinfo/430/43068.html Doors CS]
+* [Ion](http://www.ticalc.org/archives/files/fileinfo/130/13059.html)
+* [Mirage OS](http://www.ticalc.org/archives/files/fileinfo/139/13949.html)
+* [Doors CS](http://www.ticalc.org/archives/files/fileinfo/430/43068.html)
 * Application (alpha support; no dependencies)
 * Axe Fusion (links to the Axe Parser executable at runtime to keep programs small, but users must have Axe Parser installed)
 
-Axe Parser can be downloaded [http://www.ticalc.org/archives/files/fileinfo/456/45659.html here]. Transfer it to a calculator via TI Connect, TiLP, or any other linking program.
+Axe Parser can be downloaded [here](http://www.ticalc.org/archives/files/fileinfo/456/45659.html). Transfer it to a calculator via TI Connect, TiLP, or any other linking program.

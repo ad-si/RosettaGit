@@ -17,4 +17,4 @@ The language was also designed for simple, high-level game programming. The Unre
 
 By making the process of modifying the game easier, UnrealScript helped enable the growth of a large community of people on the Internet dedicated to modifying Unreal. This ability greatly added to the overall longevity of Unreal and provided an incentive for new development.
 ## See Also
-*[http://wiki.beyondunreal.com/UnrealScript  UnrealScript]
+*[UnrealScript](http://wiki.beyondunreal.com/UnrealScript)

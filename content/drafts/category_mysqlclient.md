@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{library}}{{stub}}
-The [http://dev.mysql.com/doc/refman/5.5/en/c.html mysqlclient library] is what you need to link your objects with to make a [[MySQL]] client program/library.
+The [mysqlclient library](http://dev.mysql.com/doc/refman/5.5/en/c.html) is what you need to link your objects with to make a [[MySQL]] client program/library.

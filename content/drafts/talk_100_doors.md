@@ -16,7 +16,7 @@ An observation: You're actually making 101 passes.  100 mutative, and one for re
 ----
 Oddly enough it seems that the only doors left open after all the passes are complete are those which are perfect squares of integers: 1, 4, 9, 16, 25, 36, 49, 64, 81, and 100
 Trivially trying the same code for 1000 doors and 1000 mutative passes seems to suggest that this is true for larger numbers (though it's far from proven).  I should, undoubtely, do a proper analysis to see if I can prove that it generalizes and explain why.[[User:JimD|JimD]] 16:03, 11 October 2007 (MDT)
-:The number of times a door is visited is the same as the number of factors of the door's index. Open doors have been visited an odd number of times and only perfect squares have an odd number of factors. This [http://olimu.com/Notes/Monkeys&Doors.htm] explains it.[[User:Drea|Drea]] 16:20, 11 October 2007 (MDT)
+:The number of times a door is visited is the same as the number of factors of the door's index. Open doors have been visited an odd number of times and only perfect squares have an odd number of factors. This <http://olimu.com/Notes/Monkeys&Doors.htm> explains it.[[User:Drea|Drea]] 16:20, 11 October 2007 (MDT)
 ::Actually, square numbers have an even number of factors, the odd count comes from the first iteration that opens all doors. --[[User:AlexLehm|AlexLehm]] 22:16, 19 October 2011 (UTC)
 ::: Integer factors of 5 -> [1, 5], Integer factors of 4 -> [1, 2, 4]  (The integer square root gives the list an odd length - other factors are always paired with their matching quotients) [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 07:59, 8 September 2016 (UTC)
 ----

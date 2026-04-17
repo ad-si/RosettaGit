@@ -14,5 +14,5 @@ tags = []
 '''SciTE''' (short for ''SCIntilla based Text Editor'') is a cross-platform text editor written by Neil Hodgson using the [[wp:Scintilla (editing component)|Scintilla editing component]]. It is licensed under a minimal version of the [[wp:Historical Permission Notice and Disclaimer|Historical Permission Notice and Disclaimer]]. Lightweight and built for speed, it is designed mainly for source editing, and performs syntax highlighting and inline function reference for many different languages.
 
 ==See also==
-* [http://www.scintilla.org/SciTE.html SciTE homepage]
+* [SciTE homepage](http://www.scintilla.org/SciTE.html)
 * [[wp:SciTE|SciTE on Wikipedia]]

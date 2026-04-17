@@ -106,5 +106,5 @@ say  n**m  'permutations'
 == Isn't it just similar to "Increment_a_numerical_string" ==
 
 You set the length of the string to n fill it completly with "0" and set the base to k.
-http://rosettacode.org/wiki/Increment_a_numerical_string#Pascal
+<http://rosettacode.org/wiki/Increment_a_numerical_string#Pascal>
 Of course you can use an array of integer instead.

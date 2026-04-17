@@ -171,7 +171,7 @@ end Env_Vars;
 ###  Alternative version using Matreshka
 
 
-Uses [http://forge.ada-ru.org/matreshka Matreshka].
+Uses [Matreshka](http://forge.ada-ru.org/matreshka).
 
 
 ```Ada
@@ -502,7 +502,7 @@ Access to environment variables isn't a part of the Common Lisp standard, but mo
 (getenv "HOME")
 ```
 
-Ways to do this in some other implementations are listed in the [http://cl-cookbook.sourceforge.net/os.html#env Common Lisp Cookbook].
+Ways to do this in some other implementations are listed in the [Common Lisp Cookbook](http://cl-cookbook.sourceforge.net/os.html#env).
 
 
 ## D
@@ -1395,7 +1395,7 @@ echo getEnv("HOME")
 
 ## NSIS
 
-While common environment variables exist as constants within the NSIS script compilation environment [http://nsis.sourceforge.net/Docs/Chapter4.html#4.2.3 (see NSIS documentation)], arbitrarily-named environment variables' values may be retrieved using [http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.2.7 '''ExpandEnvStrings'''].
+While common environment variables exist as constants within the NSIS script compilation environment [(see NSIS documentation)](http://nsis.sourceforge.net/Docs/Chapter4.html#4.2.3), arbitrarily-named environment variables' values may be retrieved using ['''ExpandEnvStrings'''](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.2.7).
 
 ```nsis
 ExpandEnvStrings $0 "%PATH%" ; Retrieve PATH and place it in builtin register 0.
@@ -1791,11 +1791,11 @@ sys.env.get("HOME")
 
 ## Seed7
 
-Seed7 provides the function [http://seed7.sourceforge.net/manual/os.htm#getenv getenv],
+Seed7 provides the function [getenv](http://seed7.sourceforge.net/manual/os.htm#getenv),
 to get the value of an environment variable. Environment variables are highly operating system
 dependent. Some variables such as HOME are not always defined and others like PATH use
 an operating system dependent format (different delimiters). Seed7 provides the functions
-[http://seed7.sourceforge.net/libraries/osfiles.htm#homeDir homeDir] and [http://seed7.sourceforge.net/libraries/process.htm#getSearchPath getSearchPath]
+[homeDir](http://seed7.sourceforge.net/libraries/osfiles.htm#homeDir) and [getSearchPath](http://seed7.sourceforge.net/libraries/process.htm#getSearchPath)
 to get the home directory and the search path in an operating system independent manner.
 
 
@@ -1832,7 +1832,7 @@ Environment variables at: 'PATH'.
 
 ## Smalltalk
 
-Use the [http://pharo.gemtalksystems.com/book/PharoTools/OSProcess OSProcess] library to gain access to environment variables:
+Use the [OSProcess](http://pharo.gemtalksystems.com/book/PharoTools/OSProcess) library to gain access to environment variables:
 
 
 ```smalltalk
@@ -1868,7 +1868,7 @@ returns an option type which is either SOME value or NONE if variable doesn't ex
 
 ## Stata
 
-Use the '''env''' [http://www.stata.com/help.cgi?extended_fcn extended macro function].
+Use the '''env''' [extended macro function](http://www.stata.com/help.cgi?extended_fcn).
 
 
 ```stata

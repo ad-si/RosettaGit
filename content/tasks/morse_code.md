@@ -505,7 +505,7 @@ BEGIN { FS="";
 
 This replaces all non-supported characters with a hash ('''#''') and plays the lowest supported note in their place.
 
-Note that this will ''only'' work as-is under [[DOS]] (and [[Windows]] 9x); under NT systems, the <code>player</code> routine must be changed to use the <code>Beep</code> API call. ([http://www.freebasic.net/forum/viewtopic.php?p=20441#20441 This forum post] details how to use the speaker under Linux, DOS, and Windows in FreeBASIC; the Linux & DOS code differs further from the below by require inline assembly.)
+Note that this will ''only'' work as-is under [[DOS]] (and [[Windows]] 9x); under NT systems, the <code>player</code> routine must be changed to use the <code>Beep</code> API call. ([This forum post](http://www.freebasic.net/forum/viewtopic.php?p=20441#20441) details how to use the speaker under Linux, DOS, and Windows in FreeBASIC; the Linux & DOS code differs further from the below by require inline assembly.)
 
 
 ```qbasic
@@ -2104,7 +2104,7 @@ morsecode('Hello World');
 ```
 
 
-[http://jsbin.com/orubaq/1/edit Live Version]
+[Live Version](http://jsbin.com/orubaq/1/edit)
 
 
 
@@ -3863,7 +3863,7 @@ your message is "this is a test."
 ## Rust
 
 
-Original code can be found on [https://github.com/Dragonrun1/morse_code GitHub].
+Original code can be found on [GitHub](https://github.com/Dragonrun1/morse_code).
 
 morse_code/src/main.rs file:
 
@@ -4031,7 +4031,7 @@ pub fn init_code_map() -> HashMap<char, &'static str> {
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/9Dsd74J/1 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/68KAarvEQQafYevTkWaCWg Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/9Dsd74J/1) or [Scastie (remote JVM)](https://scastie.scala-lang.org/68KAarvEQQafYevTkWaCWg).
 
 ```Scala
 object MorseCode extends App {

@@ -685,7 +685,7 @@ for (x := SIZE-1; x >= 0; x := x-1)
 
 ## AutoHotkey
 
-ahk [http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=150 discussion]
+ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=150)
 
 ```autohotkey
 Loop 6
@@ -1643,7 +1643,7 @@ myStyle =
 ```
 
 
-Link to live demo: http://dc25.github.io/sierpinskiElm/
+Link to live demo: <http://dc25.github.io/sierpinskiElm/>
 
 
 ## Erlang
@@ -2300,7 +2300,7 @@ end
 ```
 
 
-Adapted from [http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn graphics/sier1.icn]
+Adapted from [graphics/sier1.icn](http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
 
 ```txt
 Triangle order = 2

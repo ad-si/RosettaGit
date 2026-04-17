@@ -263,7 +263,7 @@ brown fox jumps
 
 ## ALGOL 68
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 
 ```Algol68
 main: (
@@ -2075,7 +2075,7 @@ starting from a known character within the string and of m length: multi
 
 ## Forth
 
-/STRING and SEARCH are standard words.  [http://home.earthlink.net/~neilbawd/tool2002.txt SCAN] is widely implemented.  Substrings represented by address/length pairs require neither mutation nor allocation.
+/STRING and SEARCH are standard words.  [SCAN](http://home.earthlink.net/~neilbawd/tool2002.txt) is widely implemented.  Substrings represented by address/length pairs require neither mutation nor allocation.
 
 
 ```forth
@@ -2175,7 +2175,7 @@ s[pos(p, s)..pos(p, s)+m]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d4baf4adccd2220f63a1019695e072b0 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d4baf4adccd2220f63a1019695e072b0)'''
 
 ```gambas
 Public Sub Main()
@@ -4263,7 +4263,7 @@ $str $matchChrs split as $l
 ```REBOL
 REBOL [
 	Title: "Retrieve Substring"
-	URL: http://rosettacode.org/wiki/Substring#REBOL
+	URL: <http://rosettacode.org/wiki/Substring#REBOL>
 ]
 
 s: "abcdefgh"  n: 2  m: 3  char: #"d"  chars: "cd"
@@ -5041,7 +5041,7 @@ qrd
 ```
 
 
-This program uses [http://www.openbsd.org/cgi-bin/man.cgi?query=expr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html ''expr(1)''] to capture a substring.
+This program uses [''expr(1)''](http://www.openbsd.org/cgi-bin/man.cgi?query=expr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) to capture a substring.
 
 
 ### Bourne Shell
@@ -5099,7 +5099,7 @@ echo ${${string/*cde/cde}:0:3}  # Display 3 chars starting with 'cde'
 
 ### Pipe
 
-This example shows how to [http://www.openbsd.org/cgi-bin/man.cgi?query=cut&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html cut(1)] a substring from a string.
+This example shows how to [cut(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=cut&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) a substring from a string.
 
 ```bash
 #!/bin/sh

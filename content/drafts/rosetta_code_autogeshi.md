@@ -19,7 +19,7 @@ While we're on the subject, I would be interested in a programmatic approach to 
 :: Not sure how far to go as far as sanitation and execution. The more secure I try make it, the more time I'll need to spend responding to problems. --[[User:Short Circuit|Michael Mol]] 16:09, 10 November 2009 (UTC)
 ::: How about this: sometime in the near future, I'll write the simplest such program that could possibly be useful. Then I'll take feature requests, or anybody who wants to can submit patches. How does that sound? Could you give me FTP access to geshi.rosettacode.org, or some other way of controlling what appears there? —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 23:28, 10 November 2009 (UTC)
 :::: Sounds like a plan. I'll send you an email regarding connectivity. --[[User:Short Circuit|Michael Mol]] 00:17, 11 November 2009 (UTC)
-: Okay, everyone, a basic implementation is up at http://rosettacode.org/geshi. The source is available upon request. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 23:16, 17 November 2009 (UTC)
+: Okay, everyone, a basic implementation is up at <http://rosettacode.org/geshi>. The source is available upon request. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 23:16, 17 November 2009 (UTC)
 :: Here are some notes about the current version:
 ::* You could add some more instructions for filling the field. For example, what is used as separator character (a space?).
 ::* The current version only has one keyword group. If you could add at least 2nd keyword group, then it would be easier to add more groups by editing the resulting file.
@@ -34,4 +34,4 @@ While we're on the subject, I would be interested in a programmatic approach to 
 :::: Actually, AutoGeSHi doesn't produce the form; it only processes the input. rosettacode.org/geshi/index.html is a static HTML document that I hand-wrote. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 20:47, 16 December 2009 (UTC)
 Currently there's a language file creation tool under construction for GeSHi itself that will be included in upcoming releases and will offer basic support for writing language files. This tool isn't finished yet though. --[[User:BenBE|BenBE]] 13:58, 6 January 2010 (UTC)
 
-The link http://rosettacode.org/geshi is not found. -[[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 07:15, 18 August 2015 (UTC)
+The link <http://rosettacode.org/geshi> is not found. -[[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 07:15, 18 August 2015 (UTC)

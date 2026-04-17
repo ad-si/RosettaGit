@@ -13,4 +13,4 @@ tags = []
 {{stub}}
 MARS is a MIPS Assembler and Runtime Simulator written in Java. It provides an IDE to assemble, run and debug MIPS code.
 
-* [http://courses.missouristate.edu/KenVollmar/MARS/download.htm MARS Page (official?)]
+* [MARS Page (official?)](http://courses.missouristate.edu/KenVollmar/MARS/download.htm)

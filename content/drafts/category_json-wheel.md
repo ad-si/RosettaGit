@@ -13,4 +13,4 @@ tags = []
 JSON library for OCaml following RFC 4627.
 
 Homepage:
-http://mjambon.com/json-wheel.html
+<http://mjambon.com/json-wheel.html>

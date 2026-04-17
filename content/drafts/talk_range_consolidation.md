@@ -97,7 +97,7 @@ Out[7]: [[1, 2]]
 
 ==A better-defined notation ?==
 
-Mathematically, the ''consolidation'' here is an operation on two separate  ''ordered pairs'', '''tuples''' or ''2tuples'', for which the conventional notation is '''(a, b)''' rather than [a, b]. See Wikipedia [https://en.wikipedia.org/wiki/Tuple  Tuple].
+Mathematically, the ''consolidation'' here is an operation on two separate  ''ordered pairs'', '''tuples''' or ''2tuples'', for which the conventional notation is '''(a, b)''' rather than [a, b]. See Wikipedia [Tuple](https://en.wikipedia.org/wiki/Tuple).
 
 The base ''consolidation'' (two tuples in, one or two tuples out), is then lifted to an operation on a structure containing '''many tuples''' which appears to be either ordered or unordered, and either potentially '''with''' duplicates (a '''list''' ?) or without duplicates (a '''set''' ?) .
 
@@ -105,7 +105,7 @@ Some of the noise and confusion might subside if we were to 'give math a chance'
 # define the domain of the the simple function we are asking for in terms of two '''tuples''' (or two ''pairs'' if you prefer), 
 # and define the domain (and output type) of the ''lifted'' function on a container in terms of a '''set''' of tuples ''{(a, b), (y, z) ... (m, n)}'' or a '''list''' of tuples ''[(a, b), (y, z) ... (m, n)]''  [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 11:17, 31 March 2019 (UTC)
 
-:: Hi, I had read of the use of the bracketing in conjunction with "ranges" but the link I find is to the same use for mathematical [https://en.m.wikipedia.org/wiki/Interval_(mathematics)#Excluding_the_endpoints intervals]
+:: Hi, I had read of the use of the bracketing in conjunction with "ranges" but the link I find is to the same use for mathematical [intervals](https://en.m.wikipedia.org/wiki/Interval_(mathematics)#Excluding_the_endpoints)
 :: --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 23:11, 31 March 2019 (UTC)
 
 ==Python tester==

@@ -16,9 +16,9 @@ Curses is a library to draw characters on a terminal. Programs can use curses to
 There are at least 4 implementations of curses:
 
 * [[:Category:ncurses|ncurses]].
-* [http://netbsd.gw.com/cgi-bin/man-cgi?curses+3+NetBSD-current NetBSD curses].
-* [http://pdcurses.sourceforge.net/ PDCurses].
-* [http://compute.cnr.berkeley.edu/cgi-bin/man-cgi?curses+3 System V curses].
+* [NetBSD curses](http://netbsd.gw.com/cgi-bin/man-cgi?curses+3+NetBSD-current).
+* [PDCurses](http://pdcurses.sourceforge.net/).
+* [System V curses](http://compute.cnr.berkeley.edu/cgi-bin/man-cgi?curses+3).
 
 Curses is terminal-independent, and uses ''termcap'' or ''terminfo'' to send escape sequences to different flavors of terminals. (The exception is PDCurses, which never sends escape sequences, because it uses a DOS console or a graphical interface.)
 

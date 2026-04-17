@@ -34,7 +34,7 @@ languages = [
 ]
 +++
 
-A [http://www.otherwise.com/Jurtle/screenshots_win/assets/DisplayWindow_Full.png Polyspiral] is a spiral made of multiple line segments, whereby each segment is larger (or smaller) than the previous one by a given amount. Each segment also changes direction at a given angle.
+A [Polyspiral](http://www.otherwise.com/Jurtle/screenshots_win/assets/DisplayWindow_Full.png) is a spiral made of multiple line segments, whereby each segment is larger (or smaller) than the previous one by a given amount. Each segment also changes direction at a given angle.
 
 
 ## Task
@@ -77,7 +77,7 @@ If animation is not practical in your programming environment, you may show a si
 
 ## C
 
-Straightforward implementation of the pseudocode, incr and angle are integers and incr is incremented by 5 instead of 0.05 as the % operation in C is not defined for non-integers. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Straightforward implementation of the pseudocode, incr and angle are integers and incr is incremented by 5 instead of 0.05 as the % operation in C is not defined for non-integers. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -447,9 +447,9 @@ shared class PolySpiralApp() extends Application() {
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Polyspiral this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Polyspiral) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -918,7 +918,7 @@ func main() {
 
 ## Haskell
 
-This implementation compiles to javascript that runs in the browser using the [https://github.com/ghcjs/ghcjs ghcjs compiler ] .  The [https://github.com/reflex-frp/reflex-dom reflex-dom ] library is used to help with svg rendering and animation.
+This implementation compiles to javascript that runs in the browser using the [ghcjs compiler](https://github.com/ghcjs/ghcjs) .  The [reflex-dom](https://github.com/reflex-frp/reflex-dom) library is used to help with svg rendering and animation.
 
 
 ```haskell
@@ -1008,7 +1008,7 @@ elSvgns t m ma = do
 ```
 
 
-Link to live demo: https://dc25.github.io/rosettaCode__Polyspiral_haskell/
+Link to live demo: <https://dc25.github.io/rosettaCode__Polyspiral_haskell/>
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "PolySp.bas"
@@ -1518,7 +1518,7 @@ end
 ### Plotting helper functions
 
 Both versions #1 and #2 are based on using my own small plotting helper functions.
-You can find a few others on [http://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions OEIS Wiki] and here on RC Wiki.
+You can find a few others on [OEIS Wiki](http://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions) and here on RC Wiki.
 
 
 ```parigp
@@ -1720,7 +1720,7 @@ sub hsv2rgb ( $h, $s, $v ){ # inputs normalized 0-1
 }
 ```
 
-See [https://github.com/thundergnat/rc/blob/master/img/polyspiral-perl6.gif polyspiral-perl6.gif]  (offsite animated gif image)
+See [polyspiral-perl6.gif](https://github.com/thundergnat/rc/blob/master/img/polyspiral-perl6.gif)  (offsite animated gif image)
 
 
 ### SDL full animation
@@ -2101,7 +2101,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/zwnpimbndekbd5k/PolySpiral.jpg?dl=0
+<https://www.dropbox.com/s/zwnpimbndekbd5k/PolySpiral.jpg?dl=0>
 
 
 ## Scala
@@ -2204,7 +2204,7 @@ incr = 0
 [[File:PolySprial.zkl.gif|250px|thumb|right]]
 If you click on the image, it is animated.
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 w,h:=640,640;

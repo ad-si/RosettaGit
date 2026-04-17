@@ -23,4 +23,4 @@ Biferno is currently implemented as an interpreted language.
 Biferno is also a "HTML-embedded" language. Scripts can be written in pure Biferno language, but can also contain HTML code segments between Biferno code blocks.
 The Biferno code is always delimited by special tags that allow separation from the rest of the code (HTML or whatever).
 
-http://www.tabasoft.it/biferno/
+<http://www.tabasoft.it/biferno/>

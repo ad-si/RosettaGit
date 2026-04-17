@@ -2100,7 +2100,7 @@ object Subleq extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scastie.scala-lang.org/f4MszRqZR5qtxI6YwarJhw Scastie (JVM)].
+{{Out}}See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/f4MszRqZR5qtxI6YwarJhw).
 
 ## Sidef
 

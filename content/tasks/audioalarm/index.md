@@ -490,7 +490,7 @@ Features:
 ## Python
 
 Python natively supports playing .wav files
-(via the [https://docs.python.org/3.4/library/wave.html wave] library),
+(via the [wave](https://docs.python.org/3.4/library/wave.html) library),
 but not .mp3.
 Therefore, this calls to the OS to start the file.
 This behaves as though the mp3 file were double-clicked

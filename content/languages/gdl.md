@@ -9,4 +9,4 @@ id = 6229
 categories = []
 tags = []
 +++
-[http://gnudatalanguage.sourceforge.net/ GDL] (GNU Data Language) is a free open-source compiler for [IDL](https://rosettacode.org/wiki/IDL).
+[GDL](http://gnudatalanguage.sourceforge.net/) (GNU Data Language) is a free open-source compiler for [IDL](https://rosettacode.org/wiki/IDL).

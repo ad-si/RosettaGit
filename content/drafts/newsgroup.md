@@ -27,8 +27,8 @@ Messages are tracked by a unique ID, so a message sent to multiple newsgroups is
 =How to access=
 ==Clients==
 
-Most modern email clients also support NNTP, though there are also clients dedicated to NNTP. Try [[wp:List of Usenet newsreaders|List of Usenet newsreaders on Wikipedia]], to find one you may already be familiar with. Otherwise, you may try a web based gateway, such as [http://groups.google.com Google Groups]. (Google Groups is not entirely specific to newsgroups, but their service does allow access to it.)
+Most modern email clients also support NNTP, though there are also clients dedicated to NNTP. Try [[wp:List of Usenet newsreaders|List of Usenet newsreaders on Wikipedia]], to find one you may already be familiar with. Otherwise, you may try a web based gateway, such as [Google Groups](http://groups.google.com). (Google Groups is not entirely specific to newsgroups, but their service does allow access to it.)
 
 ==Services==
 
-If you use your own NNTP client, you will need a feed server. [http://www.dmoz.org/Computers/Usenet/Feed_Services/ DMOZ has a list of such].
+If you use your own NNTP client, you will need a feed server. [DMOZ has a list of such](http://www.dmoz.org/Computers/Usenet/Feed_Services/).

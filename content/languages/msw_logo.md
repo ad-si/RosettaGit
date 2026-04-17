@@ -12,4 +12,4 @@ tags = []
 MSW Logo (MicroSoft Windows Logo) is a Logo implementation, based on but different from [UCB_Logo](https://rosettacode.org/wiki/UCB_Logo), for Windows-based computers.
 
 ## External links
-* [http://www.softronix.com/logo.html Home page]
+* [Home page](http://www.softronix.com/logo.html)

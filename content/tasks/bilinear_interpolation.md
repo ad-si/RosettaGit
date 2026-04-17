@@ -259,7 +259,7 @@ let main _ =
 ## Go
 
 (and also just using
-<code>[https://godoc.org/golang.org/x/image/draw#BiLinear draw.BiLinear]</code>
+<code>[draw.BiLinear](https://godoc.org/golang.org/x/image/draw#BiLinear)</code>
 from the <code>golang.org/x/image/draw</code> pacakge).
 
 ```Go
@@ -714,8 +714,8 @@ my $image2 = $image->copyScaleInterpolated( 1.6*$width, 1.6*$height );
 $image2->_file('color_wheel_interpolated.png');
 ```
 
-Compare offsite images: [https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/color_wheel.png color_wheel.png] vs.
-[https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/color_wheel_interpolated.png color_wheel_interpolated.png]
+Compare offsite images: [color_wheel.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/color_wheel.png) vs.
+[color_wheel_interpolated.png](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/color_wheel_interpolated.png)
 
 
 ## Perl 6
@@ -1223,7 +1223,7 @@ End Module
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl.
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>.
 
 Not fast enough to be called slow.
 
@@ -1259,4 +1259,4 @@ img2.write(File("lena1.5.ppm","wb"));
 scale(img,0.5,0.5).write(File("lena.5.ppm","wb"));
 ```
 
-http://www.zenkinetic.com/Images/RosettaCode/3Lenas.jpg
+<http://www.zenkinetic.com/Images/RosettaCode/3Lenas.jpg>

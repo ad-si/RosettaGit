@@ -254,7 +254,7 @@ Output:
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276379.html#276379 forum]
+contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % GnomeSort("")
@@ -1372,7 +1372,7 @@ unsort    4  -5   5   1  -3  -1  -2  -6   0   7  -4   6   2  -7   3
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d91a871bd9f43cd9644c89baa3ee861a Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d91a871bd9f43cd9644c89baa3ee861a)'''
 
 ```gambas
 Public Sub Main()

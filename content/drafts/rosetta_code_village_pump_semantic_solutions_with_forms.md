@@ -12,7 +12,7 @@ tags = []
 
 {{Vptopic
 |topic=Semantic Solutions with Forms
-|summary=Feedback requested for forms that would allow semantic input of solutions for tasks. This page itself is using a tiny part of SMW's power, using a rudimentary form, and including itself into the [[Rosetta Code:Village Pump]] using [http://semantic-mediawiki.org/wiki/Help:Properties_and_types '''semantic properties'''].
+|summary=Feedback requested for forms that would allow semantic input of solutions for tasks. This page itself is using a tiny part of SMW's power, using a rudimentary form, and including itself into the [[Rosetta Code:Village Pump]] using ['''semantic properties'''](http://semantic-mediawiki.org/wiki/Help:Properties_and_types).
 }}
 I am in the midst of designing a semantic form giving a solution to a task. This will force solutions to be properly tagged and categorized by their properties in a consistent manner. The best way to demonstrate this is by showing what I have so far.
 

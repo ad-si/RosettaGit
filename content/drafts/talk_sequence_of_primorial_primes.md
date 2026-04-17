@@ -14,7 +14,7 @@ tags = []
 It looks like the isprime function from the library used in the Python example is no longer present in the new version.  <tt>is_probable_prime</tt> is the new function. [[User:Danaj|Danaj]] ([[User talk:Danaj|talk]]) 03:28, 15 June 2015 (UTC)
 
 :Can you give a link? --[[User:Paddy3118|Paddy3118]] 
-:Ah, [https://pypi.python.org/pypi/pyprimes/0.2.2a found it]. It seems that isprime becomes is_prime in the later version. The link is to the earlier version so I won't hurry to update to the new library. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 04:51, 15 June 2015 (UTC)
+:Ah, [found it](https://pypi.python.org/pypi/pyprimes/0.2.2a). It seems that isprime becomes is_prime in the later version. The link is to the earlier version so I won't hurry to update to the new library. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 04:51, 15 June 2015 (UTC)
 
 == Ring's Code Produced Error Message ==
 

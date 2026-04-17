@@ -12,5 +12,5 @@ tags = []
 
 {{stub}}
 {{library}}
-IUPLua is the Lua binding to the [http://www.tecgraf.puc-rio.br/iup IUP] UI toolkit.
+IUPLua is the Lua binding to the [IUP](http://www.tecgraf.puc-rio.br/iup) UI toolkit.
 [[Category:Lua]]

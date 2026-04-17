@@ -2444,7 +2444,7 @@ object StoogeSort extends App {
 ```
 
 
-See it running in your browser by [https://scastie.scala-lang.org/QTCrb5SNTVqDNC6oRQRmZw Scastie (JVM)].
+See it running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/QTCrb5SNTVqDNC6oRQRmZw).
 
 ## Sidef
 

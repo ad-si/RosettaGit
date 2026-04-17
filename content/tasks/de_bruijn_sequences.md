@@ -61,16 +61,16 @@ distinct de Bruijn sequences   <big> ''B''(''k'', ''n''). </big>
 ## Task
 
 For this Rosetta Code task,   a   '''de Bruijn'''   sequence is to be generated that can be used to shorten a brute-force attack on
-a   [https://en.wikipedia.org/wiki/Personal_Identification_Number PIN]-like   code lock that does not have an "enter"
+a   [PIN](https://en.wikipedia.org/wiki/Personal_Identification_Number)-like   code lock that does not have an "enter"
 key and accepts the last   <big> ''n'' </big>   digits entered.
 
 
-Note:   [https://en.wikipedia.org/wiki/Automated_teller_machine automated tell machines (ATMs)]   used to work like
+Note:   [automated tell machines (ATMs)](https://en.wikipedia.org/wiki/Automated_teller_machine)   used to work like
 this,   but their software has been updated to not allow a brute-force attack.
 
 
 ;Example:
-A   [https://en.wikipedia.org/wiki/digital_door_lock digital door lock]   with a 4-digit code would
+A   [digital door lock](https://en.wikipedia.org/wiki/digital_door_lock)   with a 4-digit code would
 have ''B''&thinsp;(10, 4) solutions,   with a length of   '''10,000'''   (digits).
 
 Therefore, only at most     '''10,000 + 3'''     (as the solutions are cyclic or ''wrap-around'')   presses are needed to
@@ -100,9 +100,9 @@ Show all output here, on this page.
 
 ## References
 
-:*   Wikipedia           entry:   [https://en.wikipedia.org/wiki/De_Bruijn_sequence de Bruijn sequence].
-:*   MathWorld           entry:   [http://mathworld.wolfram.com/deBruijnSequence.html de Bruijn sequence].
-:*   An  OEIS  entry:   [https://oeis.org/A166315 A166315 lexicographically earliest binary de Bruijn sequences, B(2,n)]     --- Not B(10,4),   but possibly relevant.
+:*   Wikipedia           entry:   [de Bruijn sequence](https://en.wikipedia.org/wiki/De_Bruijn_sequence).
+:*   MathWorld           entry:   [de Bruijn sequence](http://mathworld.wolfram.com/deBruijnSequence.html).
+:*   An  OEIS  entry:   [A166315 lexicographically earliest binary de Bruijn sequences, B(2,n)](https://oeis.org/A166315)     --- Not B(10,4),   but possibly relevant.
 
 
 

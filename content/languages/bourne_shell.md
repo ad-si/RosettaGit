@@ -20,7 +20,7 @@ A Bourne Shell script begins with a [shebang](https://en.wikipedia.org/wiki/sheb
 
  #!/bin/sh
 
-In 2009, [Computerworld](https://en.wikipedia.org/wiki/Computerworld) published an in-depth interview with Steve Bourne, ''[http://www.computerworld.com.au/article/279011/a-z_programming_languages_bourne_shell_sh/ The A-Z of Programming Languages: Bourne shell, or sh]'', which details the Bourne shell origins and design decisions.
+In 2009, [Computerworld](https://en.wikipedia.org/wiki/Computerworld) published an in-depth interview with Steve Bourne, ''[The A-Z of Programming Languages: Bourne shell, or sh](http://www.computerworld.com.au/article/279011/a-z_programming_languages_bourne_shell_sh/)'', which details the Bourne shell origins and design decisions.
 
 ## Bugs
 Bourne Shell and Heirloom Shell have problems with here documents. Here is one such problem. A substitution, inside a here document, inside backquotes, inside double quotes, does insert too many backslashes.

@@ -111,7 +111,7 @@ Chowla numbers can also be expressed as:
 
 ## See also
 
-:*   the OEIS entry for   [http://oeis.org/A048050 A48050 Chowla's function].
+:*   the OEIS entry for   [A48050 Chowla's function](http://oeis.org/A048050).
 
 
 
@@ -2682,7 +2682,7 @@ press any key to exit program
 
 ## Python
 
-Uses [https://www.python.org/dev/peps/pep-0515/ underscores to separate digits] in numbers, and th [https://www.sympy.org/en/index.htm sympy library] to aid calculations.
+Uses [underscores to separate digits](https://www.python.org/dev/peps/pep-0515/) in numbers, and th [sympy library](https://www.sympy.org/en/index.htm) to aid calculations.
 
 
 ```python
@@ -2783,7 +2783,7 @@ Found 1 Perfect numbers between [1_000_000, 35_000_000)
 
 ### Python: Numba
 
-(Elementary) use of the [http://numba.pydata.org/ numba] library needs
+(Elementary) use of the [numba](http://numba.pydata.org/) library needs
 * library install and import
 *use of `@jit` decorator on some functions
 * Rewrite to remove use of `sum()`

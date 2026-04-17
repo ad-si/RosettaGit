@@ -29,7 +29,7 @@ Although Haskell has a comparatively small user community,
 its strengths have been well applied to a few projects:
 
 - [Pandoc](https://pandoc.org/) - Universal document converter.
-- [Shellcheck]](https://www.shellcheck.net/) - Static analysis tool for shell scripts.
+- [Shellcheck]](<https://www.shellcheck.net/>) - Static analysis tool for shell scripts.
 - [Pugs](https://en.wikipedia.org/wiki/Pugs_(compiler)) by Audrey Tang - Implementation for the Perl 6 language
     with an interpreter and compilers that proved useful already after just a few months of its writing.
 - [Darcs](https://en.wikipedia.org/wiki/Darcs) - Revision control system with several innovative features.

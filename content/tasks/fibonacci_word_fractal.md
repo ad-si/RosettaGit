@@ -43,7 +43,7 @@ languages = [
 
 [[File:Fib_word_fractal.gif|613px||right]]
 
-The [[Fibonacci word]] may be represented as a fractal as described [http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf here]:
+The [[Fibonacci word]] may be represented as a fractal as described [here](http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf):
 
 :For F_word<sub>m</sub> start with F_wordChar<sub>n=1</sub>
 :Draw a segment forward
@@ -56,7 +56,7 @@ The [[Fibonacci word]] may be represented as a fractal as described [http://hal.
 
 ## Task
 
-Create and display a fractal similar to [http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf Fig 1].
+Create and display a fractal similar to [Fig 1](http://hal.archives-ouvertes.fr/docs/00/36/79/72/PDF/The_Fibonacci_word_fractal.pdf).
 
 
 
@@ -65,7 +65,7 @@ Create and display a fractal similar to [http://hal.archives-ouvertes.fr/docs/00
 ## AutoHotkey
 
 Prints F_Word<sub>30</sub> currently. Segment length and F_Word<sub>n</sub> can be adjusted.
-{{libheader|GDIP}}Also see the [http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/ Gdip examples].
+{{libheader|GDIP}}Also see the [Gdip examples](http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
 
 ```AutoHotkey
 #NoEnv
@@ -1637,7 +1637,7 @@ main()
 
 ## Python
 
-Note that for Python 3, [http://docs.python.org/py3k/library/functools.html#functools.lru_cache functools.lru_cache] could be used instead of the memoize decorator below.
+Note that for Python 3, [functools.lru_cache](http://docs.python.org/py3k/library/functools.html#functools.lru_cache) could be used instead of the memoize decorator below.
 
 ```python
 from functools import wraps
@@ -2167,7 +2167,7 @@ drawSVG(0,25,550,530,fibIt.drop(18).next,3,"000")
 ```
 
 
-[https://www.dropbox.com/s/vb4cu4fvq2f6cvz/fibfract.svg?dl=0 output string saved as an SVG file] - BTW, would appreciate help on getting the image to display here nicely. couldn't figure out how to do that...
+[output string saved as an SVG file](https://www.dropbox.com/s/vb4cu4fvq2f6cvz/fibfract.svg?dl=0) - BTW, would appreciate help on getting the image to display here nicely. couldn't figure out how to do that...
 
 
 ## Scilab
@@ -2395,7 +2395,7 @@ drawFW .c [fibword 23]
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Fibonacci word fractal.zkl.jpg|250px|thumb|right]]
 
 ```zkl

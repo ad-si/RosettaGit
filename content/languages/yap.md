@@ -11,4 +11,4 @@ tags = []
 +++
 YAP offers a high-performance Free Software Prolog environment, highly-compatible with [SWI Prolog](https://rosettacode.org/wiki/SWI_Prolog) licensed under the Artistic License.
 
-[http://www.dcc.fc.up.pt/~vsc/Yap/ YAP site]
+[YAP site](http://www.dcc.fc.up.pt/~vsc/Yap/)

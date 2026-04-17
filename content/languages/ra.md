@@ -14,10 +14,10 @@ tags = []
 The Ra Programming Language is an alternative syntax for the .NET language Cobra that allows you to program in your native tongue.
 
 =Links=
-[http://oahmad04.github.io/ra/ Ra website]
+[Ra website](http://oahmad04.github.io/ra/)
 
-[https://github.com/oahmad04/ra Ra source code]
+[Ra source code](https://github.com/oahmad04/ra)
 
-[http://cobra-language.com/ Cobra website]
+[Cobra website](http://cobra-language.com/)
 
 [RaCompiler](https://rosettacode.org/wiki/RaCompiler)

@@ -84,7 +84,7 @@ Or perhaps the wikipedia page is in error? Do we have anyone with sufficient bac
 ::::::::::::::::::: But the algorithm itself is not very useful - it's more of an exercise.
 ::::::::::::::::::: Also, the wikipedia page specifies C=2 and you claim that's only for ordering, but the wikipedia page specifies "each symbol in the ordered set denotes a sequential integer", but cumulative frequencies skip integers in the sequence for all examples used in this task.
 ::::::::::::::::::: So, as it currently stands, the wikipedia writeup is ambiguous, and uses a poorly choosen example which does not help resolve this ambiguity.
-::::::::::::::::::: So... I'm going to have to study some other treatments of this algorithm (http://marknelson.us/1991/02/01/arithmetic-coding-statistical-modeling-data-compression/ looks promising), and I imagine once I've resolved these issues to my satisfaction I'll have to update the task description.  --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 09:58, 1 February 2016 (UTC)
+::::::::::::::::::: So... I'm going to have to study some other treatments of this algorithm (<http://marknelson.us/1991/02/01/arithmetic-coding-statistical-modeling-data-compression/> looks promising), and I imagine once I've resolved these issues to my satisfaction I'll have to update the task description.  --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 09:58, 1 February 2016 (UTC)
 
 == Goof? (part 2) ==
 
@@ -102,10 +102,10 @@ That's something of a problem because this algorithm, and the frequencies used, 
 
 == Next steps? ==
 
-After reading http://marknelson.us/2014/10/19/data-compression-with-arithmetic-coding/ I think the important thing is that there are many different arithmetic coding algorithms.
+After reading <http://marknelson.us/2014/10/19/data-compression-with-arithmetic-coding/> I think the important thing is that there are many different arithmetic coding algorithms.
 So, right now, from my point of view, the implementations in this task have deviated in a minor way from my reading of the wikipedia entry. And, this deviation is motivated by "usefulness", but does not actually go far enough to be useful.
 So probably what should happen is the task description should go into more detail about those ambiguities. Or, if we want a useful approach, we should also revise the task (to separate model generation from encryption/decryption using that model - frequencies should probably be normalized to sum to one, also, if we want a generically useful model).
 But it would also be possible (or at least less immediate effort, though also probably less useful so perhaps more effort and pain in the long term) to just spell out in the task description that each symbol represents (or is represented by) its cumulative frequency (accumulated in alphabetic order).
 Still, that's a choice to be made, and obviously other people have different perspectives from mine. So I guess I'd like some feedback on what other people think we should do about this draft task. --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 23:28, 1 February 2016 (UTC)
 
-: If it's of any help, I can add a link in the task description to [http://trizenx.blogspot.ro/2015/05/arithmetic-coding.html a little bit more detailed tutorial] which explains the encoding and the decoding process, using an unambiguous example. [[User:Trizen|Trizen]] ([[User talk:Trizen|talk]]) 23:47, 1 February 2016 (UTC)
+: If it's of any help, I can add a link in the task description to [a little bit more detailed tutorial](http://trizenx.blogspot.ro/2015/05/arithmetic-coding.html) which explains the encoding and the decoding process, using an unambiguous example. [[User:Trizen|Trizen]] ([[User talk:Trizen|talk]]) 23:47, 1 February 2016 (UTC)

@@ -17,19 +17,19 @@ Suffix Trees are very useful in numerous string processing and computational bio
 
 The task is to create a function which implements Ukkonen’s algorithm to create a useful Suffix Tree as described:
 
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-1/ Part 1]
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-2/ Part 2]
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-3/ Part 3]
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-4/ Part 4]
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-5/ Part 5]
- [http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-6/ Part 6]
+ [Part 1](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-1/)
+ [Part 2](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-2/)
+ [Part 3](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-3/)
+ [Part 4](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-4/)
+ [Part 5](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-5/)
+ [Part 6](http://www.geeksforgeeks.org/ukkonens-suffix-tree-construction-part-6/)
 
 Using [[Arithmetic-geometric mean/Calculate Pi]] generate the first 1000, 10000, and 100000 decimal places of pi. Using your implementation with an alphabet of 0 through 9 (plus $ say to make the tree explicit) find the longest repeated string in each list. Time your results and demonstrate that your implementation is linear (i.e. that 10000 takes approx. 10 times as long as 1000). You may vary the size of the lists of decimal places of pi to give reasonable answers.
 
 
 ## Go
 
-This is a translation of the C code [https://www.geeksforgeeks.org/suffix-tree-application-3-longest-repeated-substring/ here] which is an extended form of the code in Part 6 of the task description for finding the longest repeated substring of a given string. In the interests of brevity, the extensive comments in the C version have been largely omitted. The C code doesn't compile as it stands but I have added a fix in the Talk Page.
+This is a translation of the C code [here](https://www.geeksforgeeks.org/suffix-tree-application-3-longest-repeated-substring/) which is an extended form of the code in Part 6 of the task description for finding the longest repeated substring of a given string. In the interests of brevity, the extensive comments in the C version have been largely omitted. The C code doesn't compile as it stands but I have added a fix in the Talk Page.
 
 For convenience I have included the code from the [[Arithmetic-geometric_mean/Calculate_Pi#Go]] task in the same package.
 

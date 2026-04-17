@@ -721,7 +721,7 @@ void wxPendulumDlg::OnTimer(wxTimerEvent& WXUNUSED(event))
 
 This program is tested with wxWidgets version 2.8 and 2.9.
 The whole project, including makefile for compiling on Linux
-can be download from [https://github.com/orbitcowboy/wxPendulum github].
+can be download from [github](https://github.com/orbitcowboy/wxPendulum).
 [[File:WxPendulumScreenshot.png]]
 
 
@@ -1041,7 +1041,7 @@ interp.blockAtTop()
 ## EasyLang
 
 
-[https://easylang.online/apps/pendulum.html Run it]
+[Run it](https://easylang.online/apps/pendulum.html)
 
 <lang>floatvars
 on animate
@@ -1142,7 +1142,7 @@ main =
 ```
 
 
-Link to live demo: http://dc25.github.io/animatedPendulumElm
+Link to live demo: <http://dc25.github.io/animatedPendulumElm>
 
 
 ## ERRE
@@ -1876,7 +1876,7 @@ Application.Run( new PendulumForm( Visible=true ) )
 
 ## Go
 
-Using {{libheader|GXUI}} from [https://github.com/google/gxui Github]
+Using {{libheader|GXUI}} from [Github](https://github.com/google/gxui)
 
 ```go
 package main
@@ -2102,7 +2102,7 @@ main = do   --plotOnGNU
 
 ## HicEst
 
-[http://www.HicEst.com/DIFFEQ.htm DIFFEQ] and the callback procedure pendulum numerically integrate the pendulum equation.
+[DIFFEQ](http://www.HicEst.com/DIFFEQ.htm) and the callback procedure pendulum numerically integrate the pendulum equation.
 The display window can be resized during the run, but for window width not equal to 2*height the pendulum rod becomes a rubber band instead:
 
 ```HicEst
@@ -3863,7 +3863,7 @@ func pendulum(a, l)
 
 
 Output video:
-[https://www.dropbox.com/s/j9usrmmdy9pajmp/CalmoSoftPendulum.avi?dl=0 Animate a pendulum]
+[Animate a pendulum](https://www.dropbox.com/s/j9usrmmdy9pajmp/CalmoSoftPendulum.avi?dl=0)
 
 
 ## RLaB
@@ -4461,7 +4461,7 @@ clear i
 ## SequenceL
 
 {{libheader|EaselSL}}
-Using the [https://github.com/bethune-bryant/Easel Easel Engine for SequenceL]
+Using the [Easel Engine for SequenceL](https://github.com/bethune-bryant/Easel)
 
 
 ```sequencel
@@ -4546,7 +4546,7 @@ pendulumLocation(angle) :=
 
 
 {{out}}
-[http://i.imgur.com/ZR2sK54.gifv GIF of Output]
+[GIF of Output](http://i.imgur.com/ZR2sK54.gifv)
 
 
 ## Sidef

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[http://mathworld.wolfram.com/{{{1|{{PAGENAME}}}}}{{{2|}}}{{{3|}}}{{{4|}}}{{{5|}}}{{{6|}}}{{{7|}}}{{{8|}}}{{{9|}}}.html {{{1|{{PAGENAMEE}}}}} {{{2|}}} {{{3|}}} {{{4|}}} {{{5|}}} {{{6|}}} {{{7|}}} {{{8|}}} {{{9|}}}]
+[{{{1|{{PAGENAMEE}}}}} {{{2|}}} {{{3|}}} {{{4|}}} {{{5|}}} {{{6|}}} {{{7|}}} {{{8|}}} {{{9|}}}](http://mathworld.wolfram.com/{{{1|{{PAGENAME}}}}}{{{2|}}}{{{3|}}}{{{4|}}}{{{5|}}}{{{6|}}}{{{7|}}}{{{8|}}}{{{9|}}}.html)
 <includeonly>[[Category:Wolfram Linked]]</includeonly><noinclude>
 == Usage ==
 

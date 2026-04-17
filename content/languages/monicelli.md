@@ -11,5 +11,5 @@ tags = []
 +++
 
 
-Monicelli is an esoterical programming language based on the so-called "supercazzole" from the movie [http://www.imdb.com/title/tt0072637/ Amici Miei], a classic Italian comedy.
-The [https://github.com/esseks/monicelli Monicelli project page] offers a compiler and a description of the language.
+Monicelli is an esoterical programming language based on the so-called "supercazzole" from the movie [Amici Miei](http://www.imdb.com/title/tt0072637/), a classic Italian comedy.
+The [Monicelli project page](https://github.com/esseks/monicelli) offers a compiler and a description of the language.

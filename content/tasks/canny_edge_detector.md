@@ -850,7 +850,7 @@ canny =: step5 @ step4 @ step3 @ step2 @ step1
 
 <p>The above implementation solves the 'inner problem' of Canny Edge Detection in the J language, with no external dependencies.  J's Qt IDE provides additional support including interfaces to image file formats, graphic displays, and the user. The following code exercises these features</p>
 
-<p>The file 'valve.png' referenced in this code is from one of several Wikipedia articles on edge detection. It can be viewed at [https://upload.wikimedia.org/wikipedia/commons/2/2e/Valve_gaussian_%282%29.PNG[https://upload.wikimedia.org/wikipedia/commons/2/2e/Valve_gaussian_%282%29.PNG]]</p>
+<p>The file 'valve.png' referenced in this code is from one of several Wikipedia articles on edge detection. It can be viewed at <https://upload.wikimedia.org/wikipedia/commons/2/2e/Valve_gaussian_%282%29.PNG[https://upload.wikimedia.org/wikipedia/commons/2/2e/Valve_gaussian_%282%29.PNG>]</p>
 
 ```J
 
@@ -940,7 +940,7 @@ Mathematica uses canny edge detection by default. This seems so cheaty next to a
 
 ## MATLAB
 
-There is a built-in function, [http://www.mathworks.com/help/images/ref/edge.html edge], that has Canny Edge Detection as one of its options.
+There is a built-in function, [edge](http://www.mathworks.com/help/images/ref/edge.html), that has Canny Edge Detection as one of its options.
 
 ```MATLAB
 BWImage = edge(GrayscaleImage,'canny');
@@ -949,7 +949,7 @@ BWImage = edge(GrayscaleImage,'canny');
 
 =={{Header|Python}}==
 
-In Python, Canny edge detection would normally be done using [http://scikit-image.org/docs/dev/auto_examples/plot_canny.html scikit-image] or OpenCV-Python. Here is an approach using numpy/scipy:
+In Python, Canny edge detection would normally be done using [scikit-image](http://scikit-image.org/docs/dev/auto_examples/plot_canny.html) or OpenCV-Python. Here is an approach using numpy/scipy:
 
 
 ```python

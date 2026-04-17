@@ -12,11 +12,11 @@ tags = []
 
 The OCaml Calendar Library is a library for handling dates and times in OCaml programs.
 
-Homepage: http://calendar.forge.ocamlcore.org/
+Homepage: <http://calendar.forge.ocamlcore.org/>
 
-Project page: http://forge.ocamlcore.org/projects/calendar/
+Project page: <http://forge.ocamlcore.org/projects/calendar/>
 
-Opam package: http://opam.ocaml.org/packages/calendar/calendar.2.03.2/
+Opam package: <http://opam.ocaml.org/packages/calendar/calendar.2.03.2/>
 
 
 ###  How to use 

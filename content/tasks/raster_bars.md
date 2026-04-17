@@ -274,4 +274,4 @@ sub handle-event ($event) {
 ```
 
 
-Screenshot still of typical run: [https://github.com/thundergnat/rc/blob/master/img/Raster-bars-Perl6.png (offsite .png image)]
+Screenshot still of typical run: [(offsite .png image)](https://github.com/thundergnat/rc/blob/master/img/Raster-bars-Perl6.png)

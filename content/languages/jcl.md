@@ -44,7 +44,7 @@ The OS JCL has only three basic cards:
 In the following examples JCL refers only to IBM OS JCL.
 
 ## Wikipedia article
-https://en.wikipedia.org/wiki/Job_Control_Language
+<https://en.wikipedia.org/wiki/Job_Control_Language>
 
 ## See also
-https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zjcl/zjclc_basicjclconcepts.htm
+<https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zjcl/zjclc_basicjclconcepts.htm>

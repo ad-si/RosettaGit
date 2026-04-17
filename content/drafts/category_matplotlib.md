@@ -17,14 +17,14 @@ and its numerical mathematics extension [[NumPy]].
 
 It can do 3D-plots, but the focus is on 2D-plotting.
 
-Website: http://matplotlib.org/
+Website: <http://matplotlib.org/>
 
 There is a procedural "pylab" interface based on a state machine 
 
 (like [[OpenGL]]), designed to closely resemble that of [[MATLAB]], 
 
-see [http://matplotlib.org/api/pyplot_summary.html Plotting commands summary]
-and [http://matplotlib.org/faq/usage_faq.html#matplotlib-pyplot-and-pylab-how-are-they-related pyplot-and-pylab].
+see [Plotting commands summary](http://matplotlib.org/api/pyplot_summary.html)
+and [pyplot-and-pylab](http://matplotlib.org/faq/usage_faq.html#matplotlib-pyplot-and-pylab-how-are-they-related).
 
 
 [[:Category:SciPy|SciPy]] makes use of matplotlib.

@@ -69,7 +69,7 @@ To make things more interesting, this task is specifically about finding   ''odd
 
 
 ;References:
-:*   the OEIS entry:   [http://oeis.org/A005231 odd abundant numbers (odd numbers n whose sum of divisors exceeds 2n)].
+:*   the OEIS entry:   [odd abundant numbers (odd numbers n whose sum of divisors exceeds 2n)](http://oeis.org/A005231).
 :*   American Journal of Mathematics, Vol. 35, No. 4 (Oct., 1913), pp. 413-422 - Finiteness of the Odd Perfect and Primitive Abundant Numbers with n Distinct Prime Factors (LE Dickson)
 
 
@@ -208,7 +208,7 @@ XDEC     DS     CL12               temp for edit
 
 
 This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
-[[http://rosettacode.org/wiki/Proper_divisors#Ada]].
+<http://rosettacode.org/wiki/Proper_divisors#Ada>.
 
 
 ```Ada
@@ -2827,7 +2827,7 @@ done...
 
 ## Ruby
 
-proper_divisors method taken from http://rosettacode.org/wiki/Proper_divisors#Ruby
+proper_divisors method taken from <http://rosettacode.org/wiki/Proper_divisors#Ruby>
 
 ```ruby
 require "prime"

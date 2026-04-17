@@ -80,7 +80,7 @@ languages = [
 ]
 +++
 
-The purpose of this task is to explore working with   [https://en.wikipedia.org/wiki/Complex_number complex numbers].
+The purpose of this task is to explore working with   [complex numbers](https://en.wikipedia.org/wiki/Complex_number).
 
 
 ## Task
@@ -234,7 +234,7 @@ Output:
 
 ## AutoHotkey
 
-ahk forum: [http://www.autohotkey.com/forum/post-276712.html#276712 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/post-276712.html#276712)
 
 ```AutoHotkey
 n := 8, a := 8*atan(1)/n

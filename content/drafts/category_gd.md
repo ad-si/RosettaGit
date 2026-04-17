@@ -13,4 +13,4 @@ tags = []
 {{stub}}{{library}}
 An open source library for creation of images. Used in [[PHP]], among others.
 
-* [http://www.libgd.org/ GD library official site]
+* [GD library official site](http://www.libgd.org/)

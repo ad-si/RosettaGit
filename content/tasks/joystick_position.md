@@ -101,9 +101,9 @@ The task implementer could at their option provide a solution that includes a jo
 
 ## AutoHotkey
 
-[http://ahkscript.org/boards/viewtopic.php?f=6&t=2347&p=12973#p12973 Forum thread]
+[Forum thread](http://ahkscript.org/boards/viewtopic.php?f=6&t=2347&p=12973#p12973)
 
-[http://i.imgur.com/KsbrpK4.png Image link]
+[Image link](http://i.imgur.com/KsbrpK4.png)
 
 ```AutoHotkey
 ; Uncomment if Gdip.ahk is not in your standard library
@@ -1006,7 +1006,7 @@ while True:
 
 ## Tcl
 
-{{libheader|mkLibsdl}} <!-- from http://mkextensions.sourceforge.net/ -->
+{{libheader|mkLibsdl}} <!-- from <http://mkextensions.sourceforge.net/> -->
 
 ```tcl
 package require Tk 8.6

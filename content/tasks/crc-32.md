@@ -80,7 +80,7 @@ languages = [
 Demonstrate a method of deriving the [[wp:Computation of cyclic redundancy checks|Cyclic Redundancy Check]] from within the language.
 
 
-The result should be in accordance with ISO 3309, [http://www.itu.int/rec/T-REC-V.42-200203-I/en ITU-T V.42], [http://tools.ietf.org/html/rfc1952 Gzip] and [http://www.w3.org/TR/2003/REC-PNG-20031110/ PNG].
+The result should be in accordance with ISO 3309, [ITU-T V.42](http://www.itu.int/rec/T-REC-V.42-200203-I/en), [Gzip](http://tools.ietf.org/html/rfc1952) and [PNG](http://www.w3.org/TR/2003/REC-PNG-20031110/).
 
 Algorithms are described on [[wp:Cyclic redundancy check|Computation of CRC]] in Wikipedia.
 This variant of CRC-32 uses LSB-first order, sets the initial CRC to FFFFFFFF<sub>16</sub>, and complements the final CRC.
@@ -275,7 +275,7 @@ MsgBox % CRC32("The quick brown fox jumps over the lazy dog")
 
 ### Library
 
-Using [http://www.stillhq.com/gpg/source-modified-1.0.3/zlib/crc32.html zlib's crc32]:
+Using [zlib's crc32](http://www.stillhq.com/gpg/source-modified-1.0.3/zlib/crc32.html):
 
 ```c
 #include <stdio.h>
@@ -295,7 +295,7 @@ int main()
 
 ### Implementation
 
-This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [http://tools.ietf.org/html/rfc1952#section-8 RFC 1952 section 8] and from [http://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix PNG annex D], because those examples use an identical table.
+This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [RFC 1952 section 8](http://tools.ietf.org/html/rfc1952#section-8) and from [PNG annex D](http://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix), because those examples use an identical table.
 
 
 ```c
@@ -781,7 +781,7 @@ Like [[SHA-1#Factor]], but with crc32.
                 '''checksum-bytes hex-string .'''
  "414fa339"
 
-The implementation is at [https://github.com/slavapestov/factor/blob/master/core/checksums/crc32/crc32.factor core/checksums/crc32/crc32.factor].
+The implementation is at [core/checksums/crc32/crc32.factor](https://github.com/slavapestov/factor/blob/master/core/checksums/crc32/crc32.factor).
 
 
 ## FBSL
@@ -1136,8 +1136,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn] (provides hex and hexstring)
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn] (provides formatting)
+[hexcvt.icn](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) (provides hex and hexstring)
+[printf.icn](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) (provides formatting)
 
 ```txt
 crc("The quick brown fox jumps over the lazy dog")=414FA339 - implementation is correct
@@ -1505,7 +1505,7 @@ put cx.cx_crc32_string("The quick brown fox jumps over the lazy dog")
 
 ### Using Library
 
-[https://github.com/brimworks/lua-zlib <code>zlib.crc32</code>]
+[<code>zlib.crc32</code>](https://github.com/brimworks/lua-zlib)
 
 
 ```lua
@@ -1741,7 +1741,7 @@ let () =
 ```
 
 
-Running this code in interpreted mode:<nowiki>[[Media:Insert non-formatted text here]][[File:[Example.jpg][http://www.example.com link title]]]</nowiki>
+Running this code in interpreted mode:<nowiki>[[Media:Insert non-formatted text here]][[File:[Example.jpg][link title](http://www.example.com)]]</nowiki>
 
 
 ```txt
@@ -1756,7 +1756,7 @@ crc: 414FA339
 ## ooRexx
 
 This Program shows how easy it is to use JAVA functionality from ooRexx.
-bsf4oorexx from Sourceforge https://sourceforge.net/projects/bsf4oorexx/ makes that possible.
+bsf4oorexx from Sourceforge <https://sourceforge.net/projects/bsf4oorexx/> makes that possible.
 
 ```oorexx
 /* ooRexx */
@@ -1942,7 +1942,7 @@ The CRC of The quick brown fox jumps over the lazy dog is 414FA339
 
 ## PHP
 
-PHP has a built-in function [http://us2.php.net/manual/en/function.crc32.php crc32].
+PHP has a built-in function [crc32](http://us2.php.net/manual/en/function.crc32.php).
 
 
 ```php
@@ -2198,7 +2198,7 @@ CRC32 Cecksum [dec] = 1095738169
 
 ### Library
 
-[http://docs.python.org/library/zlib.html#zlib.crc32 <code>zlib.crc32</code>] and [http://docs.python.org/library/binascii.html#binascii.crc32 <code>binascii.crc32</code>] give identical results.
+[<code>zlib.crc32</code>](http://docs.python.org/library/zlib.html#zlib.crc32) and [<code>binascii.crc32</code>](http://docs.python.org/library/binascii.html#binascii.crc32) give identical results.
 
 
 ```python

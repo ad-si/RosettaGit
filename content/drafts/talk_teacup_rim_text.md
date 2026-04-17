@@ -60,7 +60,7 @@ I know the specified dictionary of words (now) to be used has no uppercase lette
 :::::: Urdu language blurs the distinction a little. White (man) as in foreigner: گورا. Horse: گھوڑا. There's aspiration after the initial 'g' and the 'r' is retroflexed. Otherwise it's just 'gora'. Gotta watch those points of articulation.   [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 20:37, 7 August 2019 (UTC)
 
 ==Dictionary swap? ==
-We seem to use dictionary [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt]  [https://www.google.com/search?client=firefox-b-d&q=site%3Arosettacode.org+unixdict.txt a lot], and I just found it again as they moved it on their site. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:48, 6 August 2019 (UTC)
+We seem to use dictionary [unixdict.txt](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt)  [a lot](https://www.google.com/search?client=firefox-b-d&q=site%3Arosettacode.org+unixdict.txt), and I just found it again as they moved it on their site. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 16:48, 6 August 2019 (UTC)
 
 : For the sake of continuity with the history of RC, I will specify that. Good find. Thank you! [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 01:32, 8 August 2019 (UTC)
 
@@ -74,7 +74,7 @@ We seem to use dictionary [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt u
 
 :::: Gerard, if you have a big dictionary I would prefer to use that than the unixdict one. I had only opted for that because, well, "we've (mostly) always used that one." Oh, and if you have any others in other languages, that'd be good too. But getting back to the casing issue: the original illustration used uppercase. I'm very much inclined to say "uppercase only." I may yet actually be so bold. [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 10:42, 9 August 2019 (UTC)
 
-:::: https://github.com/dwyl/english-words looks like a serious contender [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 13:48, 9 August 2019 (UTC) Hah! so I downloaded words.txt and tried to get my QB64 submission to load it. It couldn't. [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 13:56, 9 August 2019 (UTC)
+:::: <https://github.com/dwyl/english-words> looks like a serious contender [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 13:48, 9 August 2019 (UTC) Hah! so I downloaded words.txt and tried to get my QB64 submission to load it. It couldn't. [[User:Axtens|Axtens]] ([[User talk:Axtens|talk]]) 13:56, 9 August 2019 (UTC)
 
 ::::: I've just downloaded that file and there are 466,551 words in it altogether. This produces 374 sets which match the task requirements of which 12 consist of 4-letter words such as:
 

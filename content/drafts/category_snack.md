@@ -13,4 +13,4 @@ tags = []
 {{stub}}{{library}}[[Category:Tcl packages]]
 Cross-platform sound management and analysis library for [[Tcl]] and [[Python]].
 ==Links==
-*[http://www.speech.kth.se/snack/ Home Page]
+*[Home Page](http://www.speech.kth.se/snack/)

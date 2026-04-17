@@ -13,9 +13,9 @@ tags = []
 {{implementation|Brainfuck}}{{collection|RCBF}}
 In this implementation of [[Brainfuck]] in [[Java]], the code is read in all at once and checked for uneven brackets (unequal amounts of [ and ] commands). If that error occurs, the code will obviously not be run.
 
-Under the hood, the program memory is an <tt>ArrayList</tt> of Integers which expands "infinitely" (limited by your system's memory) to the right (still [http://en.wikipedia.org/wiki/Turing_completeness Turing complete]). So, if the pointer moves past zero to the left, the program will exit and a "Pointer out of range" error message will be displayed.
+Under the hood, the program memory is an <tt>ArrayList</tt> of Integers which expands "infinitely" (limited by your system's memory) to the right (still [Turing complete](http://en.wikipedia.org/wiki/Turing_completeness)). So, if the pointer moves past zero to the left, the program will exit and a "Pointer out of range" error message will be displayed.
 
-Due to the <tt>BufferedReader</tt> input class, return characters ([http://www.asciitable.com ASCII] 10 and 13) are ignored on input (the , command), but are not ignored on output (the . command). In order to input anything, you'll need to append a new line.
+Due to the <tt>BufferedReader</tt> input class, return characters ([ASCII](http://www.asciitable.com) 10 and 13) are ignored on input (the , command), but are not ignored on output (the . command). In order to input anything, you'll need to append a new line.
 
 Loops are handled in the <tt>jumpForward</tt> and <tt>jumpBack</tt> methods. In each method, the bracket that the code pointer is on is counted as 1 (the counter is initialized to 1). The method then moves the code pointer forward or back and counts other brackets along the way. If it finds a bracket of the same type, 1 is added to the counter; if it finds a bracket of the other type, 1 is subtracted from the counter. The search continues until the counter reaches 0. For jumping forward, the code pointer must be allowed to skip the ending bracket, or else it will jump back on the next execution iteration. For jumping back, the pointer can remain at the starting bracket. So, <tt>jumpBack</tt> offsets the next code pointer increment to make sure the check for 0 happens.
 

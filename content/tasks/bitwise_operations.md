@@ -2782,7 +2782,7 @@ Results are displayed in decimal.
 
 ## CoffeeScript
 
-CoffeeScript provides sugar for some JavaScript operators, but the bitwise operators are taken directly from JS.  See more here: http://coffeescript.org/#operators
+CoffeeScript provides sugar for some JavaScript operators, but the bitwise operators are taken directly from JS.  See more here: <http://coffeescript.org/#operators>
 
 
 ```coffeescript
@@ -3776,7 +3776,7 @@ Inform 6 has no xor or rotate operators.  It also has no shift operators, althou
 ## J
 
 
-Here are the "[http://www.jsoftware.com/help/dictionary/dbdotn.htm bitwise operators]":
+Here are the "[bitwise operators](http://www.jsoftware.com/help/dictionary/dbdotn.htm)":
 
 
 ```j
@@ -4294,7 +4294,7 @@ assert(bit.bor(1,2,4,8,16,32,64,128) == 255)
 ```
 
 
-The ''RiscLua'' dialect, for [http://lua.riscos.org.uk/ '''RISC OS'''], has
+The ''RiscLua'' dialect, for ['''RISC OS'''](http://lua.riscos.org.uk/), has
 32-bit integers as the default number type. It provides binary operations
 & (and), | (or), ^^ (xor), << (logical shift left), >> (logical shift right)
 and a unary operation ~ (negate).
@@ -4385,7 +4385,7 @@ gives back:
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Newer versions of MATLAB have even more bitwise operations than those demonstrated here. A complete list of bitwise operations for the newest version of MATLAB can be found at [http://www.mathworks.com/help/toolbox/fixedpoint/ref/f20333.html#bp7caxc-42 MathWorks]
+Newer versions of MATLAB have even more bitwise operations than those demonstrated here. A complete list of bitwise operations for the newest version of MATLAB can be found at [MathWorks](http://www.mathworks.com/help/toolbox/fixedpoint/ref/f20333.html#bp7caxc-42)
 
 
 ```MATLAB
@@ -4672,7 +4672,7 @@ proc bitwise(a, b) =
 
 ## NSIS
 
-All bitwise operations in NSIS are handled by the [http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2 IntOp] instruction.
+All bitwise operations in NSIS are handled by the [IntOp](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2) instruction.
 
 ```nsis
 Function Bitwise
@@ -5832,14 +5832,14 @@ Output:
 ```
 
 
-''Note: bitwise operations were also described in [http://srfi.schemers.org/srfi-60/ SRFI-60], with additional aliases (and previously discussed in [http://srfi.schemers.org/srfi-33/ SRFI-33] which remained draft).''
+''Note: bitwise operations were also described in [SRFI-60](http://srfi.schemers.org/srfi-60/), with additional aliases (and previously discussed in [SRFI-33](http://srfi.schemers.org/srfi-33/) which remained draft).''
 
 
 ## Seed7
 
-The type [http://seed7.sourceforge.net/manual/types.htm#integer integer] is intended for arithmetic operations.
+The type [integer](http://seed7.sourceforge.net/manual/types.htm#integer) is intended for arithmetic operations.
 Besides arithmetic shifts, which are seen as multiplication and division by powers of two, no bitwise operations are supported.
-The type [http://seed7.sourceforge.net/libraries/bin32.htm bin32] is intended for bit-pattern operations.
+The type [bin32](http://seed7.sourceforge.net/libraries/bin32.htm) is intended for bit-pattern operations.
 Bin32 has the same internal representation as integer.
 That way conversions between them don't cause an overhead.
 Right shifting of bin32 values is done with logical shifts.
@@ -6148,7 +6148,7 @@ fun bitwise_words (a, b) = (
 
 ## Stata
 
-Stata does not have bitwise operators as of version 15.1. It's possible to use Mata functions '''[https://www.stata.com/help.cgi?mf_inbase inbase]''' and '''frombase''' to convert integers to binary strings, and operate on these, but it will be much slower than native operators. William Matsuoka has written functions for this [http://www.wmatsuoka.com/stata/building-an-api-library here].
+Stata does not have bitwise operators as of version 15.1. It's possible to use Mata functions '''[inbase](https://www.stata.com/help.cgi?mf_inbase)''' and '''frombase''' to convert integers to binary strings, and operate on these, but it will be much slower than native operators. William Matsuoka has written functions for this [here](http://www.wmatsuoka.com/stata/building-an-api-library).
 
 
 ## Swift

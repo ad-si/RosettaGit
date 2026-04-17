@@ -90,11 +90,11 @@ By   ''length''   (above), it is meant the number of decimal digits in the numbe
 
 '''links:'''
 
-See the MathWorld webpage:   [http://mathworld.wolfram.com/Primorial.html primorial]
+See the MathWorld webpage:   [primorial](http://mathworld.wolfram.com/Primorial.html)
 
-See the Wikipedia   webpage:   [http://en.wikipedia.org/wiki/Primorial primorial].
+See the Wikipedia   webpage:   [primorial](http://en.wikipedia.org/wiki/Primorial).
 
-See the     OEIS     webpage:   [http://oeis.org/A002110 A2110].
+See the     OEIS     webpage:   [A2110](http://oeis.org/A002110).
 
 
 '''Related tasks:'''
@@ -217,7 +217,7 @@ Primorial(1000000) has 6722809 digits
 
 ### Single Process
 
-Using HashMap prime number generation from https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Unbounded_Versions
+Using HashMap prime number generation from <https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Unbounded_Versions>
 
 ```lisp
 (ns example
@@ -294,7 +294,7 @@ Using: i7 920 @ 2.67 GHz CPU with Windows 10 /64 bit OS
 
 ### Parallel Process
 
-Using HashMap prime number generation from https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Unbounded_Versions
+Using HashMap prime number generation from <https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Unbounded_Versions>
 
 ```lisp
 (ns example
@@ -602,7 +602,7 @@ Primorial 10000 has length: 45337
 Primorial 100000 has length: 563921
 
 =={{header|F_Sharp|F#}}==
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ### The function to generate a sequence of Primorial Numbers
 
@@ -2186,7 +2186,7 @@ Primorial(100000) has 563921 digits (4.2s)
 
 ## PicoLisp
 
-This code uses '''prime?''' and '''take''' functions from [http://www.rosettacode.org/wiki/Extensible_prime_generator#PicoLisp Extensible Prime Generator(PicoLisp)]
+This code uses '''prime?''' and '''take''' functions from [Extensible Prime Generator(PicoLisp)](http://www.rosettacode.org/wiki/Extensible_prime_generator#PicoLisp)
 
 ```PicoLisp
 
@@ -2246,7 +2246,7 @@ primorial: 6469693230
 
 ## Python
 
-Uses the pure python library [https://pypi.python.org/pypi/pyprimes/0.1.1a pyprimes ].
+Uses the pure python library [pyprimes](https://pypi.python.org/pypi/pyprimes/0.1.1a).
 
 
 ```python

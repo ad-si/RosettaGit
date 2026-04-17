@@ -80,7 +80,7 @@ pair     dist    path
 
 ## See also
 
-* [https://www.youtube.com/watch?v=8WSZQwNtXPU Floyd-Warshall Algorithm - step by step guide (youtube)]
+* [Floyd-Warshall Algorithm - step by step guide (youtube)](https://www.youtube.com/watch?v=8WSZQwNtXPU)
 
 
 
@@ -2494,7 +2494,7 @@ pair     dist    path
 ## Tcl
 
 
-The implementation of Floyd-Warshall in tcllib is [https://core.tcl.tk/tcllib/finfo?name=modules/struct/graphops.tcl quite readable];  this example merely initialises a graph from an adjacency list then calls the tcllib code:
+The implementation of Floyd-Warshall in tcllib is [quite readable](https://core.tcl.tk/tcllib/finfo?name=modules/struct/graphops.tcl);  this example merely initialises a graph from an adjacency list then calls the tcllib code:
 
 
 ```Tcl

@@ -123,7 +123,7 @@ Alternately, output can be placed in <nowiki>
 
 ## Ada
 
-Uses [http://libre.adacore.com/libre/tools/xmlada/ XML/Ada] from AdaCore.
+Uses [XML/Ada](http://libre.adacore.com/libre/tools/xmlada/) from AdaCore.
 
 character_remarks.adb:
 
@@ -175,7 +175,7 @@ end Character_Remarks;
 ###  Alternative version using Matreshka
 
 
-Uses [http://forge.ada-ru.org/matreshka Matreshka SAX API for XML].
+Uses [Matreshka SAX API for XML](http://forge.ada-ru.org/matreshka).
 
 
 ```Ada
@@ -1471,7 +1471,7 @@ println writer.toString()
 
 ## Haskell
 
-This implementation uses the [http://hackage.haskell.org/package/xml <code>xml</code> package].
+This implementation uses the [<code>xml</code> package](http://hackage.haskell.org/package/xml).
 
 
 ```haskell
@@ -2227,7 +2227,7 @@ bundle Default {
 ## OCaml
 
 
-from the toplevel using the library [http://tech.motion-twin.com/xmllight.html xml-light]:
+from the toplevel using the library [xml-light](http://tech.motion-twin.com/xmllight.html):
 
 
 ```ocaml
@@ -2257,7 +2257,7 @@ from the toplevel using the library [http://tech.motion-twin.com/xmllight.html x
 ```
 
 
-Another solution using the library [http://erratique.ch/software/xmlm xmlm]:
+Another solution using the library [xmlm](http://erratique.ch/software/xmlm):
 
 
 ```ocaml

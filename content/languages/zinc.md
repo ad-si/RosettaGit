@@ -12,4 +12,4 @@ tags = []
 
 
 
-[http://zinc-project.sourceforge.net/ Zinc] The main purpose of the Zinc Compiler is to develop an experimental Curry compiler which features some extensions to the language, such as type classes.
+[Zinc](http://zinc-project.sourceforge.net/) The main purpose of the Zinc Compiler is to develop an experimental Curry compiler which features some extensions to the language, such as type classes.

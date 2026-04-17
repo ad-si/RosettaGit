@@ -79,7 +79,7 @@ languages = [
 ## Task
 
 {{task}}[[Category:Recursion]][[Category:Memoization]]
-The '''longest common subsequence''' (or [http://en.wikipedia.org/wiki/Longest_common_subsequence_problem '''LCS''']) of groups A and B is the longest group of elements from A and B that are common between the two groups and in the same order in each group. For example, the sequences "1234" and "1224533324" have an LCS of "1234":
+The '''longest common subsequence''' (or ['''LCS'''](http://en.wikipedia.org/wiki/Longest_common_subsequence_problem)) of groups A and B is the longest group of elements from A and B that are common between the two groups and in the same order in each group. For example, the sequences "1234" and "1224533324" have an LCS of "1234":
  '''<u>1234</u>'''
  '''<u>12</u>'''245'''<u>3</u>'''332'''<u>4</u>'''
 For a string example, consider the sequences "thisisatest" and "testing123testing". An LCS would be "tsitest":
@@ -246,7 +246,7 @@ lcs←{
 
 {{trans|Java}} using dynamic programming
 
-ahk forum: [http://www.autohotkey.com/forum/viewtopic.php?t=44657&start=135 discussion]
+ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&start=135)
 
 ```AutoHotkey
 lcs(a,b) { ; Longest Common Subsequence of strings, using Dynamic Programming
@@ -907,11 +907,11 @@ void main() {
 
 ### Hirschberg algorithm version
 
-See: http://en.wikipedia.org/wiki/Hirschberg_algorithm
+See: <http://en.wikipedia.org/wiki/Hirschberg_algorithm>
 
 This is currently a little slower than the classic dynamic programming version, but it uses a linear amount of memory, so it's usable for much larger inputs. To speed up this code on dmd remove the memory allocations from lensLCS, and do not use the retro range (replace it with foreach_reverse). The output is the same.
 
-Adapted from Python code: http://wordaligned.org/articles/longest-common-subsequence
+Adapted from Python code: <http://wordaligned.org/articles/longest-common-subsequence>
 
 
 ```d
@@ -1338,7 +1338,7 @@ compute_lcs([_AToken |ATail]=A, [_BToken |BTail]=B, Acc, Cache) ->
 
 ## Fortran
 
-Using the <tt>iso_varying_string</tt> module which can be found [http://www.fortran.com/iso_varying_string.f95 here] (or equivalent module conforming to the ISO/IEC 1539-2:2000 API or to a subset according to the need of this code: <code>char</code>, <code>len</code>, <code>//</code>, <code>extract</code>, <code>==</code>, <code>=</code>)
+Using the <tt>iso_varying_string</tt> module which can be found [here](http://www.fortran.com/iso_varying_string.f95) (or equivalent module conforming to the ISO/IEC 1539-2:2000 API or to a subset according to the need of this code: <code>char</code>, <code>len</code>, <code>//</code>, <code>extract</code>, <code>==</code>, <code>=</code>)
 
 
 ```fortran
@@ -1641,7 +1641,7 @@ main = print $ lcs "thisisatest" "testing123testing"
 =={{header|Icon}} and {{header|Unicon}}==
 This solution is a modified variant of the recursive solution.  The modifications include (a) deleting all characters not common to both strings and (b) stripping off common prefixes and suffixes in a single step.
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn Uses deletec from strings]
+{{libheader|Icon Programming Library}} [Uses deletec from strings](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ```Icon
@@ -2991,7 +2991,7 @@ PrintN("Press any key to exit"): Repeat: Until Inkey() <> ""
 
 ## Python
 
-The simplest way is to use [http://mlpy.sourceforge.net/docs/3.5/lcs.html LCS within mlpy package]
+The simplest way is to use [LCS within mlpy package](http://mlpy.sourceforge.net/docs/3.5/lcs.html)
 
 
 ### Recursion

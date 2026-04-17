@@ -1155,7 +1155,7 @@ main =
 ```
 
 
-Link to live demo: http://dc25.github.io/galtonBoxAnimationElm/ .  Follow the link, enter a number and press the GO button.
+Link to live demo: <http://dc25.github.io/galtonBoxAnimationElm/> .  Follow the link, enter a number and press the GO button.
 
 
 ## Factor
@@ -1272,7 +1272,7 @@ MAIN-WINDOW: galton-box-animation
     } <galton-gadget> >>gadgets ;
 ```
 
-Image taken from the program mid-animation: [https://i.imgur.com/E2ge7LE.png]
+Image taken from the program mid-animation: <https://i.imgur.com/E2ge7LE.png>
 
 
 ## Go
@@ -4039,7 +4039,7 @@ After a sample run with input parameters <tt>10 55</tt>:
 
 ```
 
-There is a much more comprehensive solution to this on the [http://wiki.tcl.tk/8825 Tcler's Wiki].<!-- Too long to reproduce here -->
+There is a much more comprehensive solution to this on the [Tcler's Wiki](http://wiki.tcl.tk/8825).<!-- Too long to reproduce here -->
 
 
 ## XPL0

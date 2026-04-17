@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[http://tapestry.tucson.az.us/unilib/ The Unicon Code Library] is a collection of programs and procedures using [[:Category:Unicon]] extensions.
+{{library}}[The Unicon Code Library](http://tapestry.tucson.az.us/unilib/) is a collection of programs and procedures using [[:Category:Unicon]] extensions.

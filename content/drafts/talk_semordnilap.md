@@ -16,7 +16,7 @@ Do we really want literal copies of the dict file on the task page? --[[User:Rdm
 
 I added a note to the submitters talk page and have chopped most of it from the example for now. --[[User:Paddy3118|Paddy3118]] 17:13, 10 September 2012 (UTC)
 
-What sort of a world is it where if someone says your dict looks big an Irish number chops it? From http://rosettacode.org/wiki/User_talk:Nigel_Galloway#Huge_Ruby_example I see I have two choices:
+What sort of a world is it where if someone says your dict looks big an Irish number chops it? From <http://rosettacode.org/wiki/User_talk:Nigel_Galloway#Huge_Ruby_example> I see I have two choices:
 :A) modify it to read the dict from a file
 :B) move it to a sub-page on its own
 
@@ -40,6 +40,6 @@ Perhaps this may be too general a statement, but I wish the dictionary specified
 
 The file to be used for input appears to be missing or blank. I attempted to use a file of the same name I found in someone's github repository, but I am getting different output from the other examples and I suspect it may be a different file. Any advice on how to proceed? --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 13:37, 3 November 2018 (UTC)
 
-:After some poking around the website, I found this working link: http://wiki.puzzlers.org/pub/wordlists/unixdict.txt. I'll give this one a shot. --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 13:49, 3 November 2018 (UTC)
+:After some poking around the website, I found this working link: <http://wiki.puzzlers.org/pub/wordlists/unixdict.txt>. I'll give this one a shot. --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 13:49, 3 November 2018 (UTC)
 
 ::The issue was that my code was incorrect. Nevertheless, I've updated the link in the task description to the working one. --[[User:Chunes|Chunes]] ([[User talk:Chunes|talk]]) 14:36, 3 November 2018 (UTC)

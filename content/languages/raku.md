@@ -12,11 +12,11 @@ tags = []
 Can't install Raku locally?
 Try Raku on-line!
 
-[https://perl6.github.io/6pad/ Try Raku on 6pad].
+[Try Raku on 6pad](https://perl6.github.io/6pad/).
 
-[https://tio.run/#perl6 Try Raku on tio.run].
+[Try Raku on tio.run](https://tio.run/#perl6).
 
-[https://glot.io/new/perl6 Try Raku on glot.io].
+[Try Raku on glot.io](https://glot.io/new/perl6).
 Raku is the up-and-coming little sister to Perl 5.
 Though it resembles previous versions of [Perl](https://rosettacode.org/wiki/Perl) to no small degree, Raku is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
 The first official release was at Christmas of 2015.

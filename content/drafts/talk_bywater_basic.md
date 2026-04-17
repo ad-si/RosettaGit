@@ -12,4 +12,4 @@ tags = []
 
 =Wikipedia text=
 The text that I used is from the last version of the WP page before it was changed to a redirect. The actual original text can be found here:
- [http://en.wikipedia.org/w/index.php?title=Bywater_BASIC&oldid=289219584]
+ <http://en.wikipedia.org/w/index.php?title=Bywater_BASIC&oldid=289219584>

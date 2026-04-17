@@ -14,4 +14,4 @@ tags = []
 '''Just BASIC''' is the free version of [Liberty BASIC](https://rosettacode.org/wiki/:Category:Liberty_BASIC).
 
 ## See also
-*[http://www.justbasic.com/ Just BASIC homepage]
+*[Just BASIC homepage](http://www.justbasic.com/)

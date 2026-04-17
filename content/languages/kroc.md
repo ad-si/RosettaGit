@@ -13,4 +13,4 @@ tags = []
 '''KRoC''' is a suite of software for occam-π development.
 
 ## External links
-* [http://projects.cs.kent.ac.uk/projects/kroc/trac/ Home page]
+* [Home page](http://projects.cs.kent.ac.uk/projects/kroc/trac/)

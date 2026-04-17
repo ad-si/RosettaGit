@@ -402,7 +402,7 @@ Enum.each(World_Cup.group_stage, fn x -> :io.format(format, x) end)
 
 ## Erlang
 
-This solution take advantage of the expressiveness power of the list comprehensions expressions. Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog].
+This solution take advantage of the expressiveness power of the list comprehensions expressions. Function ''combos'' is copied from  [panduwana blog](http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/).
 
 
 ```erlang

@@ -30,7 +30,7 @@ Internally, the grid is automatically expanded as needed whenever a cell is play
 
 The program produces a crude ASCII art grid; however and more importantly it produces a game log that can be replayed in the Pentasol free player.  This can be used to capture graphical grids as well as providing independent validation of the games.
 
-Most of the [http://www.morpionsolitaire.com/English/RecordsGrids5T.htm Record Games] have downloadable games in this notation.  For example [http://www.morpionsolitaire.com/Grid5T178Rosin.txt Chris Rosin's 178 move grid].
+Most of the [Record Games](http://www.morpionsolitaire.com/English/RecordsGrids5T.htm) have downloadable games in this notation.  For example [Chris Rosin's 178 move grid](http://www.morpionsolitaire.com/Grid5T178Rosin.txt).
 
 For more see: Morpion -h|-help
 
@@ -683,9 +683,9 @@ $endif
 
 
 {{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec] 
-[http://www.cs.arizona.edu/icon/library/src/procs/options.icn options.icn provides options processing] 
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
+[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) 
+[options.icn provides options processing](http://www.cs.arizona.edu/icon/library/src/procs/options.icn) 
 <br/><br/>'''Other RosettaCode pages used'''  [[Deepcopy]]
 
 == SampleOutput ==
@@ -865,7 +865,7 @@ This the game record used to produce the above image:
 ###  Multigame Run 
 
 
-The multigame simulation of completely random play includes a histogram showing game scores clustering in the 20's and 60's.  This result is similar to results obtained by [http://www.morpionsolitaire.com/English/RecordsGrids5T.htm Jean-Jacques Sibil] (you will have to scroll down that page to find the reference) who has run nearly a billion such simulations achieving a high score of 102 as of 2010.
+The multigame simulation of completely random play includes a histogram showing game scores clustering in the 20's and 60's.  This result is similar to results obtained by [Jean-Jacques Sibil](http://www.morpionsolitaire.com/English/RecordsGrids5T.htm) (you will have to scroll down that page to find the reference) who has run nearly a billion such simulations achieving a high score of 102 as of 2010.
 
 The following is a summary file:
 

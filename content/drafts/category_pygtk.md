@@ -22,6 +22,6 @@ Python-Versions: 2.6
 
 Package-Name: python-gtk2
 
-Website: [http://www.pygtk.org/ pygtk.org]
+Website: [pygtk.org](http://www.pygtk.org/)
 
 [[Category:GTK]] [[Category:Python]]

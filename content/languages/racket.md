@@ -12,8 +12,8 @@ tags = []
 '''Racket''' (renamed from "PLT Scheme" years ago) is a member of the Lisp and Scheme family of languages.
 Racket draws freely from the various strands of its lineage.
 
-* [http://racket-lang.org/ Home page]
-* [http://en.wikipedia.org/wiki/Racket_(programming_language) Wikipedia]
+* [Home page](http://racket-lang.org/)
+* [Wikipedia](http://en.wikipedia.org/wiki/Racket_(programming_language))
 
 ## Todo
 [Reports:Tasks_not_implemented_in_Racket](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Racket)

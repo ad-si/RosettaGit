@@ -63,9 +63,9 @@ Note: The Steinhaus–Johnson–Trotter algorithm generates successive permutati
 ## References
 
 * [[wp:Steinhaus–Johnson–Trotter algorithm|Steinhaus–Johnson–Trotter algorithm]]
-* [http://www.cut-the-knot.org/Curriculum/Combinatorics/JohnsonTrotter.shtml Johnson-Trotter Algorithm Listing All Permutations]
-* [http://stackoverflow.com/a/29044942/10562 Correction to] Heap's algorithm as presented in Wikipedia and widely distributed.
-* [http://www.gutenberg.org/files/18567/18567-h/18567-h.htm#ch7] Tintinnalogia
+* [Johnson-Trotter Algorithm Listing All Permutations](http://www.cut-the-knot.org/Curriculum/Combinatorics/JohnsonTrotter.shtml)
+* [Correction to](http://stackoverflow.com/a/29044942/10562) Heap's algorithm as presented in Wikipedia and widely distributed.
+* <http://www.gutenberg.org/files/18567/18567-h/18567-h.htm#ch7> Tintinnalogia
 
 
 ## Related tasks
@@ -1041,7 +1041,7 @@ Perm: [2, 1, 3, 4]  Sign: -1
 ```
 
 =={{header|F_Sharp|F#}}==
-See [http://www.rosettacode.org/wiki/Zebra_puzzle#F.23] for an example using this module
+See <http://www.rosettacode.org/wiki/Zebra_puzzle#F.23> for an example using this module
 
 ```fsharp
 
@@ -1561,7 +1561,7 @@ _1 _2 _1  3
 ```
 
 
-Alternatively, J defines [http://www.jsoftware.com/help/dictionary/dccapdot.htm C.!.2] as the parity of a permutation:
+Alternatively, J defines [C.!.2](http://www.jsoftware.com/help/dictionary/dccapdot.htm) as the parity of a permutation:
 
 
 ```J
@@ -1917,7 +1917,7 @@ end
 
 ## Kotlin
 
-This is based on the recursive Java code found at http://introcs.cs.princeton.edu/java/23recursion/JohnsonTrotter.java.html 
+This is based on the recursive Java code found at <http://introcs.cs.princeton.edu/java/23recursion/JohnsonTrotter.java.html> 
 
 ```scala
 // version 1.1.2
@@ -2083,7 +2083,7 @@ until not perm:next()
 
 ### Coroutine Implementation
 
-This is adapted from the [https://www.lua.org/pil/9.3.html Lua Book ].
+This is adapted from the [Lua Book](https://www.lua.org/pil/9.3.html).
 
 ```lua
 local wrap, yield = coroutine.wrap, coroutine.yield
@@ -3070,7 +3070,7 @@ object JohnsonTrotter extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scastie.scala-lang.org/DdM4xnUnQ2aNGP481zwcrw Scastie (JVM)].
+{{Out}}See it in running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/DdM4xnUnQ2aNGP481zwcrw).
 
 ## Sidef
 

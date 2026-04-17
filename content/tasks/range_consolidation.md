@@ -659,7 +659,7 @@ Array{Float64,1}[[1.0, 3.0], [-6.0, -1.0], [-4.0, -5.0], [8.0, 2.0], [-6.0, -6.0
 ## Perl
 
 
-Note: the output is shown in the standard [https://perldoc.perl.org/perlop.html#Range-Operators Perl notation for Ranges].
+Note: the output is shown in the standard [Perl notation for Ranges](https://perldoc.perl.org/perlop.html#Range-Operators).
 
 
 ```perl
@@ -710,7 +710,7 @@ for my $intervals (
 
 In Perl 6, a Range is a first class object with its own specialized notation. Perl 6 Ranges allow for exclusion of the boundary numbers. This example doesn't since it isn't a requirement in this task. Much of the logic is lifted from the [[Set_of_real_numbers#Perl_6|Set_of_real_numbers]] task with simplified logic for the much simpler requirements.
 
-Note: the output is in standard [https://docs.perl6.org/type/Range Perl 6 notation for Ranges].
+Note: the output is in standard [Perl 6 notation for Ranges](https://docs.perl6.org/type/Range).
 
 
 ```perl6

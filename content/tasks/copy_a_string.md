@@ -240,7 +240,7 @@ DATA(string2) = string1.
 
 ## ActionScript
 
-Strings are immutable in ActionScript, and can safely be assigned with the assignment operator, much as they can in Java.[http://livedocs.adobe.com/flash/9.0/main/00000647.html]
+Strings are immutable in ActionScript, and can safely be assigned with the assignment operator, much as they can in Java.<http://livedocs.adobe.com/flash/9.0/main/00000647.html>
 
 ```ActionScript
 var str1:String = "Hello";
@@ -1402,7 +1402,7 @@ Output:
 
 Note that the DIM statement is required in Gambas.
 
-'''[https://gambas-playground.proko.eu/?gist=b88224f45b9b5be09eafdf069b059076 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=b88224f45b9b5be09eafdf069b059076)'''
 
 ```gambas
 Public Sub main()
@@ -2500,7 +2500,7 @@ print "$original\n";   # prints "Good evening."
 
 Note that <tt>our $alias</tt>, though in most cases a no-op, is necessary under stricture. Beware that <tt>local</tt> binds dynamically, so any subroutines called in this scope will see (and possibly modify!) the value of <tt>$alias</tt> assigned here.
 
-To make a lexical variable that is an alias of some other variable, the [http://search.cpan.org/perldoc?Lexical::Alias Lexical::Alias] module can be used:
+To make a lexical variable that is an alias of some other variable, the [Lexical::Alias](http://search.cpan.org/perldoc?Lexical::Alias) module can be used:
 
 ```perl
 use Lexical::Alias;

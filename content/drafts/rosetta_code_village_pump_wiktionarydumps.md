@@ -17,7 +17,7 @@ tags = []
 
 I think it would be nice to do some tasks with the wiktionary dumps:
 
-[https://dumps.wikimedia.org/enwiktionary/20190420/ https://dumps.wikimedia.org/enwiktionary/20190420/]
+[https://dumps.wikimedia.org/enwiktionary/20190420/](https://dumps.wikimedia.org/enwiktionary/20190420/)
 
 The complete dump is a big bz2'ed XML file of about 800MB so it's quite interesting to see how to handle it!
 
@@ -28,5 +28,5 @@ but I lack imagination right now to find an interesting task, so I post here in 
 
 :[[User:Blue Prawn|Blue Prawn]] ([[User talk:Blue Prawn|talk]]) 17:44, 30 April 2019 (UTC)
 
-:Maybe recreate the kind of files like "/usr/share/dict/french" or [https://users.cs.duke.edu/~ola/ap/linuxwords linuxwords]
+:Maybe recreate the kind of files like "/usr/share/dict/french" or [linuxwords](https://users.cs.duke.edu/~ola/ap/linuxwords)
 :[[User:Blue Prawn|Blue Prawn]] ([[User talk:Blue Prawn|talk]]) 17:44, 30 April 2019 (UTC)

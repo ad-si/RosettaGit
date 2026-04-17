@@ -386,7 +386,7 @@ end regexTest
 
 ## AutoHotkey
 
-AutoHotkey_L and v2 contain a [http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/Trim.htm Trim function]
+AutoHotkey_L and v2 contain a [Trim function](http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/Trim.htm)
 
 ```AutoHotkey
 string := "   abc   "
@@ -1191,7 +1191,7 @@ Fully trimmed =>  Length =  12
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=62e56fea0f74819daa3d3a548869fa90 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=62e56fea0f74819daa3d3a548869fa90)'''
 
 ```gambas
 Public Sub Main()
@@ -1265,7 +1265,7 @@ both removed: |simple| [115 105 109 112 108 101]
 
 ## Groovy
 
-Solution uses StringUtils class from [http://commons.apache.org/lang/ Apache Commons "Lang" library]:
+Solution uses StringUtils class from [Apache Commons "Lang" library](http://commons.apache.org/lang/):
 
 ```groovy
 //Grape setup to get library
@@ -1414,7 +1414,7 @@ dews=: #~ (+. (1: |. (> </\)))@(-.@:e.&whpsc)  NB. delete extraneous whitespace
 
 ## Java
 
-Left trim and right trim taken from [http://www.fromdev.com/2009/07/playing-with-java-string-trim-basics.html here].
+Left trim and right trim taken from [here](http://www.fromdev.com/2009/07/playing-with-java-string-trim-basics.html).
 <code>Character.isWhitespace()</code> returns true if the character given is one of the following [[Unicode]] characters: '\u00A0', '\u2007', '\u202F', '\u0009', '\u000A', '\u000B', '\u000C', '\u000D',  '\u001C', '\u001D', '\u001E', or '\u001F'.
 
 ```java
@@ -1976,7 +1976,7 @@ method stripWhitespace(sstring, soption = 'BOTH') public static
  * Create an array containing a useful subset of unicode whitespace characters
  *
  * @return an array of unicode whitespace characters
- * @see http://www.fileformat.info/info/unicode/category/index.htm
+ * @see <http://www.fileformat.info/info/unicode/category/index.htm>
  */
 method getWhitspaceCharacters() public static returns Rexx[]
   wsChars = [ -
@@ -3059,7 +3059,7 @@ Full trim: >Hello, people of earth!<
 
 ## Stata
 
-See '''[https://www.stata.com/help.cgi?mf_strtrim strtrim]''' in Stata help. Use the equivalent '''[https://www.stata.com/help.cgi?mf_ustrtrim ustrtrim]''' functions with Unicode strings.
+See '''[strtrim](https://www.stata.com/help.cgi?mf_strtrim)''' in Stata help. Use the equivalent '''[ustrtrim](https://www.stata.com/help.cgi?mf_ustrtrim)''' functions with Unicode strings.
 
 
 ```stata

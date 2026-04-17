@@ -37,7 +37,7 @@ Create a window and draw a pixel in it, subject to the following:
 
 ## C
 
-Same as the [[Draw a pixel]] task, uses the random number functions of stdlib.h to plot a random point. Requires the [http://www.cs.colorado.edu/~main/bgi/cs1300/ WinBGIm] library.
+Same as the [[Draw a pixel]] task, uses the random number functions of stdlib.h to plot a random point. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -489,14 +489,14 @@ func PixelColor()
 
 Outputimage:
  
-[https://www.dropbox.com/s/n31ppq8cu9ipru8/CalmoSoftPixelColor.jpg?dl=0 Draw pixel 2]
+[Draw pixel 2](https://www.dropbox.com/s/n31ppq8cu9ipru8/CalmoSoftPixelColor.jpg?dl=0)
 
 ## Scala
 
 
 ### Java Swing Interoperability
 
-{{Out}}See it yourself by running in your browser either by [https://scastie.scala-lang.org/9jfWoH2uRomUBKDBzFGzkw Scastie (remote JVM)].
+{{Out}}See it yourself by running in your browser either by [Scastie (remote JVM)](https://scastie.scala-lang.org/9jfWoH2uRomUBKDBzFGzkw).
 ```Scala
 import java.awt.image.BufferedImage
 import java.awt.Color

@@ -9,6 +9,6 @@ id = 18646
 categories = []
 tags = []
 +++
-[http://www.tasoft.com/tawk.html TAWK] by Thompson Automation Software
+[TAWK](http://www.tasoft.com/tawk.html) by Thompson Automation Software
 
 Last Updated:  February 12, 1997

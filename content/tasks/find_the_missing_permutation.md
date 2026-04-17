@@ -1623,7 +1623,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn member 'strings' provides permutes(s) which generates all permutations of a string]
+[member 'strings' provides permutes(s) which generates all permutations of a string](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ## J
@@ -1679,7 +1679,7 @@ DBAC
 
 Here, <code>'ABCD'</code> represents the values being permuted (their order does not matter), and <code>4</code> is how many of them we have.
 
-Yet another alternative expression, which uses parentheses instead of the [http://www.jsoftware.com/help/dictionary/d220v.htm passive operator] (<code>~</code>), would be:
+Yet another alternative expression, which uses parentheses instead of the [passive operator](http://www.jsoftware.com/help/dictionary/d220v.htm) (<code>~</code>), would be:
 
 
 ```J
@@ -1793,7 +1793,7 @@ public class FindMissingPermutation
 ### =Imperative=
 
 
-The permute() function taken from http://snippets.dzone.com/posts/show/1032
+The permute() function taken from <http://snippets.dzone.com/posts/show/1032>
 
 ```javascript
 permute = function(v, m){ //v1.0
@@ -2274,7 +2274,7 @@ The missing permutation is DBAC
 
 ## Lua
 
-Using the popular Penlight extension module - https://luarocks.org/modules/steved/penlight
+Using the popular Penlight extension module - <https://luarocks.org/modules/steved/penlight>
 
 ```Lua
 local permute, tablex = require("pl.permute"), require("pl.tablex")

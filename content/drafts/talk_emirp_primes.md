@@ -12,7 +12,7 @@ tags = []
 
 ==Upper bound?==
 :''Invoke the (same) program once per task requirement, this will show what limit is used as the upper bound for calculating surplus (regular) primes.''
-I am unsure of the need for the above. Some prime generators are set up to automatically expand to give higher primes until reaching system limits such as [https://code.google.com/p/pyprimes/source/browse/src/pyprimes.py this one].
+I am unsure of the need for the above. Some prime generators are set up to automatically expand to give higher primes until reaching system limits such as [this one](https://code.google.com/p/pyprimes/source/browse/src/pyprimes.py).
 
 : I never thought that any contemporary computer language (and operating system) would exceed system limits on a (I think, reasonable) request for a modest number of primes.   If the prime number generator automatically expands the (list of) primes until it has enough to fulfill what is required, so much the better.   I had assumed that most algorithms would try to calculate an upper bound and then generate as many "regular" primes as required up to that upper bound, and then find the necessary emirp primes from the "regular" primes (list).   Specifically, I was trying to avoid programmers generating 11,237,000 primes, and then solve the task requirements by simply ''grepping'' what is needed.   I was hoping for some intelligent choices (assuming that was the mechanism chosen). -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 08:39, 24 March 2014 (UTC)
 

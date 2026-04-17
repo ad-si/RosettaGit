@@ -11,4 +11,4 @@ tags = []
 +++
 
 [[file:LabVIEW_CWD.png]]
-GetSetCurrentDir (CWD) is a [[LabVIEW]] [[SubVI]] used to get or set the current working directory. It is available from [http://zone.ni.com/devzone/cda/epd/p/id/2706 ni.com].
+GetSetCurrentDir (CWD) is a [[LabVIEW]] [[SubVI]] used to get or set the current working directory. It is available from [ni.com](http://zone.ni.com/devzone/cda/epd/p/id/2706).

@@ -4166,7 +4166,7 @@ object UnboundedKnapsack extends App {
 
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/1fRBQs5/2 ScalaFiddle (JavaScript)] or by [https://scastie.scala-lang.org/S4oGElcwQkCMesfuSRKfkw Scastie (JVM)].
+{{Out}}See it in running in your browser by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/1fRBQs5/2) or by [Scastie (JVM)](https://scastie.scala-lang.org/S4oGElcwQkCMesfuSRKfkw).
 
 ## Seed7
 

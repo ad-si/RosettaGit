@@ -85,7 +85,7 @@ The task is to find the largest left-truncatable and right-truncatable primes le
 
 ## See also
 
-* [http://mathworld.wolfram.com/TruncatablePrime.html Truncatable Prime] from MathWorld.]
+* [Truncatable Prime](http://mathworld.wolfram.com/TruncatablePrime.html) from MathWorld.]
 
 
 
@@ -1666,7 +1666,7 @@ max right truncatable: 739399
 
 ## Haskell
 
-Using {{libheader|Primes}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+Using {{libheader|Primes}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Data.Numbers.Primes(primes, isPrime)

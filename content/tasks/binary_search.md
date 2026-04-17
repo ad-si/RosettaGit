@@ -279,7 +279,7 @@ where <code> >>> </code> is the logical right shift operator. The reason why thi
 
 ;See also:
 :* [[wp:Binary search algorithm]]
-:* [http://googleresearch.blogspot.com/2006/06/extra-extra-read-all-about-it-nearly.html Extra, Extra - Read All About It: Nearly All Binary Searches and Mergesorts are Broken].
+:* [Extra, Extra - Read All About It: Nearly All Binary Searches and Mergesorts are Broken](http://googleresearch.blogspot.com/2006/06/extra-extra-read-all-about-it-nearly.html).
 
 
 
@@ -604,8 +604,8 @@ Sample output:
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 MODE ELEMENT = STRING;
@@ -3859,7 +3859,7 @@ fun main(args: Array<String>) {
 
 ## Lambdatalk
 
-Can be tested in (http://lambdaway.free.fr)[http://lambdaway.free.fr/lambdaway/?view=binary_search]
+Can be tested in (<http://lambdaway.free.fr>)<http://lambdaway.free.fr/lambdaway/?view=binary_search>
 
 ```scheme
 
@@ -7232,7 +7232,7 @@ Output:
 
 ## Tcl
 
-ref: [http://wiki.tcl.tk/22796 Tcl wiki]
+ref: [Tcl wiki](http://wiki.tcl.tk/22796)
 
 ```tcl
 proc binSrch {lst x} {

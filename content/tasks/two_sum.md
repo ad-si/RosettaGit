@@ -72,7 +72,7 @@ return [1, 3].
 
 
 ### Source
-[http://stackoverflow.com/questions/8334981/find-pair-of-numbers-in-array-that-add-to-given-sum Stack Overflow: Find pair of numbers in array that add to given sum]
+[Stack Overflow: Find pair of numbers in array that add to given sum](http://stackoverflow.com/questions/8334981/find-pair-of-numbers-in-array-that-add-to-given-sum)
 <br/><br/>
 
 
@@ -2780,7 +2780,7 @@ object TwoSum extends App {
 }
 ```
 
-{{Out}}See it running in your browser by [https://scalafiddle.io/sf/GxVfCE7/0 ScalaFiddle (JavaScript, non JVM)] or by [https://scastie.scala-lang.org/S5aks2gRTcqcy1VUWJ6GzQ Scastie (JVM)].
+{{Out}}See it running in your browser by [ScalaFiddle (JavaScript, non JVM)](https://scalafiddle.io/sf/GxVfCE7/0) or by [Scastie (JVM)](https://scastie.scala-lang.org/S5aks2gRTcqcy1VUWJ6GzQ).
 
 ## Stata
 

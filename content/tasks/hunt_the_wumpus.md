@@ -28,7 +28,7 @@ languages = [
 
 ## Task
 
-Create a simple implementation of the classic textual game [http://en.wikipedia.org/wiki/Hunt_the_Wumpus Hunt The Wumpus].
+Create a simple implementation of the classic textual game [Hunt The Wumpus](http://en.wikipedia.org/wiki/Hunt_the_Wumpus).
 
 The rules are:
 
@@ -672,7 +672,7 @@ See [[Hunt_The_Wumpus/Phix]].
 
 Prolog package available here:
 
-https://github.com/jburse/jekejeke-samples/raw/master/pack/games/wumpus-1.0.0.zip
+<https://github.com/jburse/jekejeke-samples/raw/master/pack/games/wumpus-1.0.0.zip>
 
 
 ```prolog

@@ -58,7 +58,7 @@ languages = [
 
 Create a directory and any missing parents.
 
-This task is named after the posix <code>[http://www.unix.com/man-page/POSIX/0/mkdir/ mkdir -p]</code> command, and several libraries which implement the same behavior.
+This task is named after the posix <code>[mkdir -p](http://www.unix.com/man-page/POSIX/0/mkdir/)</code> command, and several libraries which implement the same behavior.
 
 Please implement a function of a single path string (for example <code>./path/to/dir</code>) which has the above side-effect.
 If the directory already exists, return successfully.
@@ -432,7 +432,7 @@ End
 
 ## Go
 
-The standard packages include <tt>[http://golang.org/pkg/os/#MkdirAll os.MkdirAll]</tt> which does exactly this
+The standard packages include <tt>[os.MkdirAll](http://golang.org/pkg/os/#MkdirAll)</tt> which does exactly this
 (and its source is also available via that link).
 
 ```go
@@ -461,7 +461,7 @@ main = do
 ## J
 
 
-The verb <code>pathcreate</code> in the addon package [http://www.jsoftware.com/jwiki/Addons/general/dirutils general/dirutils] will create any non-existing directories in a path. It works on Windows, Linux and OS X.
+The verb <code>pathcreate</code> in the addon package [general/dirutils](http://www.jsoftware.com/jwiki/Addons/general/dirutils) will create any non-existing directories in a path. It works on Windows, Linux and OS X.
 
 
 ```J
@@ -519,7 +519,7 @@ public interface Test {
 
 ## JavaScript
 
-Simplified version of the popular [https://www.npmjs.org/package/mkdirp mkdirp library]:
+Simplified version of the popular [mkdirp library](https://www.npmjs.org/package/mkdirp):
 
 
 ```Javascript
@@ -833,7 +833,7 @@ def mkdirp(path):
 
 Uses <code>make-directory*</code> (NB the star &mdash; that causes the intermediate directories to be produced).
 
-Canonical documentation at [http://docs.racket-lang.org/reference/Filesystem.html#%28def._%28%28lib._racket%2Ffile..rkt%29._make-directory*%29%29 Racket Documentation for <var>Filesystem</var>]
+Canonical documentation at [Racket Documentation for <var>Filesystem</var>](http://docs.racket-lang.org/reference/Filesystem.html#%28def._%28%28lib._racket%2Ffile..rkt%29._make-directory*%29%29)
 
 <blockquote>Creates directory specified by <var>path</var>, creating intermediate
 directories as necessary, and never failing if <var>path</var> exists already.
@@ -1003,7 +1003,7 @@ mkdirs(List("/path", "to", "dir"))
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/cli_cmds.htm cli_cmds.s7i]
+The library [cli_cmds.s7i](http://seed7.sourceforge.net/libraries/cli_cmds.htm)
 defines the function doMkdirCmd, which is used below.
 
 
@@ -1019,8 +1019,8 @@ const proc: main is func
 
 
 The library cli_cmds.s7i defines also
-[http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMkdir%28inout_string%29 doMkdir] (Make directories like the Unix mkdir command)
-and [http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMd%28inout_string%29 doMd] (Make directories like the DOS md command).
+[doMkdir](http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMkdir%28inout_string%29) (Make directories like the Unix mkdir command)
+and [doMd](http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMd%28inout_string%29) (Make directories like the DOS md command).
 This functions read the parameters and options from a string.
 The reading is done according to Unix respectively DOS/Windows rules.
 The function doMkdir is used in the alternate solution below:

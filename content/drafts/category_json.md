@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{stub}}{{np language}}{{format}}
-'''[http://www.json.org/ JavaScript Object Notation]''' is a declarative subset of [[JavaScript]], used to describe complex data structures for serialization. It supports primitive types boolean, integer, real, and string. From these, composite structures such as arrays and objects (key/value associations) can be constructed.
+'''[JavaScript Object Notation](http://www.json.org/)''' is a declarative subset of [[JavaScript]], used to describe complex data structures for serialization. It supports primitive types boolean, integer, real, and string. From these, composite structures such as arrays and objects (key/value associations) can be constructed.

@@ -102,7 +102,7 @@ languages = [
 In strict [[wp:Functional programming|functional programming]] and the [[wp:lambda calculus|lambda calculus]], functions (lambda expressions) don't have state and are only allowed to refer to arguments of enclosing functions.
 This rules out the usual definition of a recursive function wherein a function is associated with the state of a variable and this variable's state is used in the body of the function.
 
-The [http://mvanier.livejournal.com/2897.html Y combinator] is itself a stateless function that, when applied to another stateless function, returns a recursive version of the function. The Y combinator is the simplest of the class of such functions, called [[wp:Fixed-point combinator|fixed-point combinators]].
+The [Y combinator](http://mvanier.livejournal.com/2897.html) is itself a stateless function that, when applied to another stateless function, returns a recursive version of the function. The Y combinator is the simplest of the class of such functions, called [[wp:Fixed-point combinator|fixed-point combinators]].
 
 
 ### Requirements
@@ -110,7 +110,7 @@ Define the stateless Y combinator and use it to compute [[wp:Factorial|factorial
 
 
 ### References
-* [http://vimeo.com/45140590 Jim Weirich: Adventures in Functional Programming]
+* [Jim Weirich: Adventures in Functional Programming](http://vimeo.com/45140590)
 
 
 
@@ -122,8 +122,8 @@ Define the stateless Y combinator and use it to compute [[wp:Factorial|factorial
 {{wont work with|ALGOL 68|Revision 1 - scoping extensions to language used.}}
 {{works with|ALGOL 68S|from Amsterdam Compiler Kit ( [[wp:Guido van Rossum|Guido van Rossum]]'s teething ring) with runtime scope checking turned off.}}
 <!--
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - compile not currently available on my system.}}
-{{wont work with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny] - correctly detects a scope violation}} -->
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - compile not currently available on my system.}}
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - correctly detects a scope violation}} -->
 
 ```algol68
 BEGIN
@@ -978,7 +978,7 @@ Like many other statically typed languages, this involves a recursive type, and 
 
 The combinator here is expressed entirely as a lambda expression and is a static property of the generic <code>YCombinator</code> class. Both it and the <code>RecursiveFunc</code> type thus "inherit" the type parameters of the containing class—there effectively exists a separate specialized copy of both for each generic instantiation of <code>YCombinator</code>.
 
-''Note: in the code, <code>Func<T, TResult></code> is a delegate type (the CLR equivalent of a function pointer) that has a parameter of type <code>T</code> and return type of <code>TResult</code>. See [[Higher-order functions#C#]] or [https://docs.microsoft.com/en-us/dotnet/standard/delegates-lambdas the documentation] for more information.''
+''Note: in the code, <code>Func<T, TResult></code> is a delegate type (the CLR equivalent of a function pointer) that has a parameter of type <code>T</code> and return type of <code>TResult</code>. See [[Higher-order functions#C#]] or [the documentation](https://docs.microsoft.com/en-us/dotnet/standard/delegates-lambdas) for more information.''
 
 
 ```c#
@@ -1054,7 +1054,7 @@ static class YCombinator
 
 To compare differences in language and runtime instead of in approaches to the task, the following are translations of solutions from other languages. Two versions of each translation are provided, one seeking to resemble the original as closely as possible, and another that is identical in program control flow but syntactically closer to idiomatic C#.
 
-====[http://rosettacode.org/mw/index.php?oldid=287744#C++ C++]====
+====[C++](http://rosettacode.org/mw/index.php?oldid=287744#C++)====
 <code>std::function<TResult(T)></code> in C++ corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -1137,7 +1137,7 @@ static class Program {
 ```
 
 
-====[http://rosettacode.org/mw/index.php?oldid=287744#Ceylon Ceylon]====
+====[Ceylon](http://rosettacode.org/mw/index.php?oldid=287744#Ceylon)====
 <code>TResult(T)</code> in Ceylon corresponds to <code>Func<T, TResult></code> in C#.
 
 Since C# does not have local classes, <code>RecursiveFunc</code> and <code>y1</code> are declared in a class of their own. Moving the type parameters to the class also prevents type parameter inference.
@@ -1246,7 +1246,7 @@ static class Program {
 ```
 
 
-====[http://rosettacode.org/mw/index.php?oldid=287744#Go Go]====
+====[Go](http://rosettacode.org/mw/index.php?oldid=287744#Go)====
 <code>func(T) TResult</code> in Go corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -1345,7 +1345,7 @@ Recursive:
 ```
 
 
-====[http://rosettacode.org/mw/index.php?oldid=287744#Java Java]====
+====[Java](http://rosettacode.org/mw/index.php?oldid=287744#Java)====
 
 '''Verbatim'''
 
@@ -1406,7 +1406,7 @@ static class Program {
 
 '''"Idiomatic"'''
 
-For demonstrative purposes, to completely avoid using CLR delegates, lambda expressions can be replaced with explicit types that implement the functional interfaces. Closures are thus implemented by replacing all usages of the original local variable with a field of the type that represents the lambda expression; this process, called "hoisting" is actually how variable capturing is implemented by the C# compiler (for more information, see [https://blogs.msdn.microsoft.com/abhinaba/2005/10/18/c-anonymous-methods-are-not-closures/ this Microsoft blog post].
+For demonstrative purposes, to completely avoid using CLR delegates, lambda expressions can be replaced with explicit types that implement the functional interfaces. Closures are thus implemented by replacing all usages of the original local variable with a field of the type that represents the lambda expression; this process, called "hoisting" is actually how variable capturing is implemented by the C# compiler (for more information, see [this Microsoft blog post](https://blogs.msdn.microsoft.com/abhinaba/2005/10/18/c-anonymous-methods-are-not-closures/).
 
 ```c#
 using System;
@@ -1746,7 +1746,7 @@ static class Program {
 ```
 
 
-====[http://rosettacode.org/mw/index.php?oldid=287744#Swift Swift]====
+====[Swift](http://rosettacode.org/mw/index.php?oldid=287744#Swift)====
 <code>T -> TResult</code> in Swift corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -3749,7 +3749,7 @@ Fibonacci(1..10)   : 1  1  2  3  5  8  13  21  34  55
 
 ## Lambdatalk
 
-Tested in http://epsilonwiki.free.fr/lambdaway/?view=Ycombinator
+Tested in <http://epsilonwiki.free.fr/lambdaway/?view=Ycombinator>
 
 
 ```Scheme
@@ -4711,11 +4711,11 @@ $Y.invoke($fib).invoke(5)
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl.
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
-The code is inspired from this page : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord (p 106).
+The code is inspired from this page : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106).
 
-Original code is from <b>Hermenegildo</b> and al : <b>Hiord: A Type-Free Higher-Order Logic Programming Language with Predicate Abstraction</b>, pdf accessible here http://www.stups.uni-duesseldorf.de/asap/?id=129.
+Original code is from <b>Hermenegildo</b> and al : <b>Hiord: A Type-Free Higher-Order Logic Programming Language with Predicate Abstraction</b>, pdf accessible here <http://www.stups.uni-duesseldorf.de/asap/?id=129>.
 
 ```Prolog
 :- use_module(lambda).
@@ -5176,7 +5176,7 @@ fn main() {
 
 ## Scala
 
-Credit goes to the thread in [http://scala-blogs.org/2008/09/y-combinator-in-scala.html scala blog]
+Credit goes to the thread in [scala blog](http://scala-blogs.org/2008/09/y-combinator-in-scala.html)
 
 ```scala
 def Y[A,B](f: (A=>B)=>(A=>B)) = {
@@ -5585,7 +5585,7 @@ fibonacci 5: 5
 
 ## Tcl
 
-Y combinator is derived in great detail [http://wiki.tcl.tk/4833 here].
+Y combinator is derived in great detail [here](http://wiki.tcl.tk/4833).
 
 
 ## TXR
@@ -5893,7 +5893,7 @@ prn factorial.5
 ## XQuery
 
 
-Version 3.0 of the [http://www.w3.org/TR/xpath-30/ XPath] and [http://www.w3.org/TR/xquery-30/ XQuery] specifications added support for function items.
+Version 3.0 of the [XPath](http://www.w3.org/TR/xpath-30/) and [XQuery](http://www.w3.org/TR/xquery-30/) specifications added support for function items.
 
 
 ```XQuery

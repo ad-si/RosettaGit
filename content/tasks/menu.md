@@ -104,7 +104,7 @@ For test purposes use the following four phrases in a list:
     tick tock
 
 ;Note:
-This task is fashioned after the action of the [http://www.softpanorama.org/Scripting/Shellorama/Control_structures/select_statements.shtml Bash select statement].
+This task is fashioned after the action of the [Bash select statement](http://www.softpanorama.org/Scripting/Shellorama/Control_structures/select_statements.shtml).
 
 =={{header|Ada|}}==
 
@@ -2738,7 +2738,7 @@ You chose: tick tock
 ## R
 
 
-Uses [http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/base/html/menu.html menu].
+Uses [menu](http://www.stat.ucl.ac.be/ISdidactique/Rhelp/library/base/html/menu.html).
 
 ```R
 showmenu <- function(choices = NULL)
@@ -3319,7 +3319,7 @@ The language also has a Menu( command, but it doesn't really follow the requirem
 
 ## UNIX Shell
 
-This example uses the [http://www.softpanorama.org/Scripting/Shellorama/Control_structures/select_statements.shtml Bash select statement], but Bash did not invent this feature. The ''select'' loop comes originally from the [[Korn Shell]], and appears in some other shells. This loop always continues to read menu choices until the script breaks the loop, or the standard input reaches end of file (EOF).
+This example uses the [Bash select statement](http://www.softpanorama.org/Scripting/Shellorama/Control_structures/select_statements.shtml), but Bash did not invent this feature. The ''select'' loop comes originally from the [[Korn Shell]], and appears in some other shells. This loop always continues to read menu choices until the script breaks the loop, or the standard input reaches end of file (EOF).
 
 * If the user enters a blank line, the ''select'' loop repeats the list of choices. This is the only way to print the list again. An invalid choice only repeats the prompt, not the list.
 

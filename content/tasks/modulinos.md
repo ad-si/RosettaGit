@@ -59,9 +59,9 @@ languages = [
 ]
 +++
 
-It is useful to be able to execute a main() function only when a program is run directly. This is a central feature in programming scripts. A script that behaves this way is called a [http://www.slideshare.net/brian_d_foy/advanced-modulinos ''modulino''].
+It is useful to be able to execute a main() function only when a program is run directly. This is a central feature in programming scripts. A script that behaves this way is called a [''modulino''](http://www.slideshare.net/brian_d_foy/advanced-modulinos).
 
-Examples from https://github.com/mcandre/modulinos
+Examples from <https://github.com/mcandre/modulinos>
 
 Sometimes getting the [[ScriptName]] is required in order to determine when to run main().
 
@@ -249,7 +249,7 @@ int main() {
 
 ## Clojure
 
-Uses [https://github.com/kumarshantanu/lein-exec lein-exec].
+Uses [lein-exec](https://github.com/kumarshantanu/lein-exec).
 
 scriptedmain.clj:
 

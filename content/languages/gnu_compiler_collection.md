@@ -40,11 +40,11 @@ g++ (source-file) -o mybinary
 These example behaves the same as their sibling examples, with the exception that they create a binary named <tt>mybinary</tt> instead of <tt>a.out</tt>.
 
 ## See Also
-* [http://gcc.gnu.org/ GCC official home page]
+* [GCC official home page](http://gcc.gnu.org/)
 * [GNU Compiler Collection on Wikipedia](https://en.wikipedia.org/wiki/GNU_Compiler_Collection)
-* [http://gcc.gnu.org/onlinedocs/ GCC online documentation]
-* [http://gcc.gnu.org/install/binaries.html An incomplete list of third-party binary distributions] for systems that don't already have a compiler installed.
-* [http://mingw.org/ MinGW], a widely-used port of GCC to [Windows](https://rosettacode.org/wiki/Windows)
-* [https://mingw-w64.org MinGW-w64], a popular fork of MinGW that adds Win64 support and additional tools and APIs
-* [http://tdm-gcc.tdragon.net/ TDM-GCC], another Windows port (not listed in the third-party distribution page above)
-* [http://www.delorie.com/djgpp/ DJGPP], a widely-used port of GCC to [DOS](https://rosettacode.org/wiki/DOS)
+* [GCC online documentation](http://gcc.gnu.org/onlinedocs/)
+* [An incomplete list of third-party binary distributions](http://gcc.gnu.org/install/binaries.html) for systems that don't already have a compiler installed.
+* [MinGW](http://mingw.org/), a widely-used port of GCC to [Windows](https://rosettacode.org/wiki/Windows)
+* [MinGW-w64](https://mingw-w64.org), a popular fork of MinGW that adds Win64 support and additional tools and APIs
+* [TDM-GCC](http://tdm-gcc.tdragon.net/), another Windows port (not listed in the third-party distribution page above)
+* [DJGPP](http://www.delorie.com/djgpp/), a widely-used port of GCC to [DOS](https://rosettacode.org/wiki/DOS)

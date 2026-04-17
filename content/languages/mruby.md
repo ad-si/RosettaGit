@@ -11,5 +11,5 @@ tags = []
 +++
 '''mruby''' will be a "minimalistic Ruby" that targets [ISO/IEC 30170](https://rosettacode.org/wiki/ISO/IEC_30170), the Ruby standard. This project is not yet complete, but has some source code at GitHub.
 
-* [https://github.com/mruby/mruby mruby at GitHub]
-* [http://www.h-online.com/open/news/item/Minimalistic-Ruby-to-help-bring-Ruby-to-iPhone-1560804.html Minimalistic Ruby to help bring Ruby to iPhone]
+* [mruby at GitHub](https://github.com/mruby/mruby)
+* [Minimalistic Ruby to help bring Ruby to iPhone](http://www.h-online.com/open/news/item/Minimalistic-Ruby-to-help-bring-Ruby-to-iPhone-1560804.html)

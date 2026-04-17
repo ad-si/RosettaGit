@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-The Raspberry Pi is a very affordable, amazingly versatile, credit card–sized, single-board computer developed in the United Kingdom by the [https://www.raspberrypi.org/ Raspberry Pi Foundation] with the intention to promote the teaching of basic computer science in schools and developing countries. A handful of different models have been designed since its inception in early 2012.
+The Raspberry Pi is a very affordable, amazingly versatile, credit card–sized, single-board computer developed in the United Kingdom by the [Raspberry Pi Foundation](https://www.raspberrypi.org/) with the intention to promote the teaching of basic computer science in schools and developing countries. A handful of different models have been designed since its inception in early 2012.

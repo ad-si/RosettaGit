@@ -12,7 +12,7 @@ tags = []
 
 == Confusing not really DC in BusyBox ==
 
-Quoting https://busybox.net/downloads/BusyBox.html at 20190227-1940-GMT:
+Quoting <https://busybox.net/downloads/BusyBox.html> at 20190227-1940-GMT:
 
 == dc ==
 
@@ -31,7 +31,7 @@ Should it?
 
 == Heirloom Dc ==
 
-Just as reminder to somewhen mention it: https://github.com/aksr/heirloom/tree/master/heirloom/dc
+Just as reminder to somewhen mention it: <https://github.com/aksr/heirloom/tree/master/heirloom/dc>
 
 --[[User:Yeti|Yeti]] ([[User talk:Yeti|talk]]) 19:43, 27 February 2019 (UTC)
 

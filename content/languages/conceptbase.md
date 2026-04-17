@@ -9,7 +9,7 @@ id = 8145
 categories = []
 tags = []
 +++
-[http://conceptbase.sourceforge.net/ ConceptBase]
+[ConceptBase](http://conceptbase.sourceforge.net/)
 
 ConceptBase implements Datalog-neg, i.e. Datalog with negation. The computational model mimics Prolog's SLDNF but
 employs so-called tabling for all derived predicates. Tabling is a technique to maintain the extension of finite

@@ -75,7 +75,7 @@ This isn't the bubble sort I've learned. Where did you get this algorithm? This 
 ```
 
 
-::I wrote it fastly, but hopely it works; would you call it still BubbleSort or no? Do you agree with the fact that if the inner loop makes no swap, it will make no swap even in every other iteration? So it is still bubble sort in principle, but the code is optimised; but let us have the implementation A of the algo X. If the Code Optimizer (a person) optimize A generating the implementation B, B is still an implementation of X? Even though Knuth would be more precise in word using, I believe it would say yes. On internet you can find also interesting resources, like [http://www.cs.duke.edu/~ola/bubble/bubble.pdf this pdf file] where we can read:
+::I wrote it fastly, but hopely it works; would you call it still BubbleSort or no? Do you agree with the fact that if the inner loop makes no swap, it will make no swap even in every other iteration? So it is still bubble sort in principle, but the code is optimised; but let us have the implementation A of the algo X. If the Code Optimizer (a person) optimize A generating the implementation B, B is still an implementation of X? Even though Knuth would be more precise in word using, I believe it would say yes. On internet you can find also interesting resources, like [this pdf file](http://www.cs.duke.edu/~ola/bubble/bubble.pdf) where we can read:
 
 <blockquote style="background-color:#DDF; padding:5px">
 Nearly every description of bubble sort describes how
@@ -149,9 +149,9 @@ end
 ```
 
 
-[http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake The old code] used list operations against ''ARGN''. Because a list is a semicolon-delimited string (like "11;22;33;44;55;66"), these list operations might be O(n). Contrast other languages, where array operations are O(1).
+[The old code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake) used list operations against ''ARGN''. Because a list is a semicolon-delimited string (like "11;22;33;44;55;66"), these list operations might be O(n). Contrast other languages, where array operations are O(1).
 
-Benchmark results for [http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake the old code]:
+Benchmark results for [the old code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake):
 
 
 ```txt
@@ -171,9 +171,9 @@ $ ruby bubble-old.rb
 
 The old code was slightly better than O(n<sup>3</sup>), but not much better. 6 was almost 8, 19 was almost 27, 42 was almost 64.
 
-[http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake The new code] uses associative array operations against ''ARG1'' to ''ARG${last}''. The switch from a list to an associative array improves performance, but requires extra code at the end of bubble_sort() to convert the sorted associative array to a regular list.
+[The new code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake) uses associative array operations against ''ARG1'' to ''ARG${last}''. The switch from a list to an associative array improves performance, but requires extra code at the end of bubble_sort() to convert the sorted associative array to a regular list.
 
-Benchmark results for [http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake the new code]:
+Benchmark results for [the new code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake):
 
 
 ```txt

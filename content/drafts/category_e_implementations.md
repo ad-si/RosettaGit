@@ -13,4 +13,4 @@ tags = []
 {{implementation cat|E}}
 
 ==See also==
-* [http://wiki.erights.org/wiki/Category:E_implementations E implementations at wiki.erights.org]
+* [E implementations at wiki.erights.org](http://wiki.erights.org/wiki/Category:E_implementations)

@@ -11,6 +11,6 @@ tags = []
 +++
 IronAHK is a port of AutoHotkey functionality to .NET and Mono in order to gain cross-platform functionality on Unix and Macintosh systems. This version's implementation has the goal of implementing most of the functionality from [AutoHotkey_Basic](https://rosettacode.org/wiki/AutoHotkey_Basic), in addition to JSON structures.
 
-[http://www.ironahk.net/ homepage]
+[homepage](http://www.ironahk.net/)
 
-author: [http://www.autohotkey.com/forum/author-Polyethene.html Polyethene]
+author: [Polyethene](http://www.autohotkey.com/forum/author-Polyethene.html)

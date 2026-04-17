@@ -11,4 +11,4 @@ tags = []
 +++
 
 [](https://rosettacode.org/wiki/runs_on_vm::java_virtual_machine)
-* [http://www.erights.org/download/ Download]
+* [Download](http://www.erights.org/download/)

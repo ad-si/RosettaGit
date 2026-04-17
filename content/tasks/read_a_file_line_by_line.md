@@ -1379,9 +1379,9 @@ procedure ReadFileByLine;
 ```
 
 
-Above uses the powerful utility classs type [http://www.delphibasics.co.uk/RTL.asp?Name=TStringList TStringList]  from Classes Unit
+Above uses the powerful utility classs type [TStringList](http://www.delphibasics.co.uk/RTL.asp?Name=TStringList)  from Classes Unit
 
-See also GNU LGPL (Delphi replacement) [http://www.lazarus.freepascal.org/ Lazarus IDE FreePascal] and specifically [http://wiki.lazarus.freepascal.org/TString_List-TString_Tutorial Lazarus FreePascal Equivalent for TStringList]
+See also GNU LGPL (Delphi replacement) [Lazarus IDE FreePascal](http://www.lazarus.freepascal.org/) and specifically [Lazarus FreePascal Equivalent for TStringList](http://wiki.lazarus.freepascal.org/TString_List-TString_Tutorial)
 
 ## Elena
 
@@ -1547,7 +1547,7 @@ close(fn)
 
 
 =={{header|F_Sharp|F#}}==
-Using DotNet's [http://msdn.microsoft.com/en-us/library/dd383503.aspx System.IO.File.ReadLines] iterator:
+Using DotNet's [System.IO.File.ReadLines](http://msdn.microsoft.com/en-us/library/dd383503.aspx) iterator:
 
 ```fsharp
 open System.IO
@@ -1741,7 +1741,7 @@ ReadByLines := function(name)
 	return count;
 end;
 
-# With [http://www.ibiblio.org/pub/docs/misc/amnesty.txt amnesty.txt]
+# With [amnesty.txt](http://www.ibiblio.org/pub/docs/misc/amnesty.txt)
 ReadByLines("amnesty.txt");
 # 384
 ```
@@ -2951,7 +2951,7 @@ print "Line count " c
 
 ## PARI/GP
 
-GP has an unfortunate limitations that prevents reading files line-by-line, but it's just as well since its file-handling capabilities are poor.  The [http://pari.math.u-bordeaux.fr/cgi-bin/viewcvs.cgi/trunk/TODO?view=markup&revision=12632&root=pari TODO] file lists one desiderata as adding a <code>t_FILE</code>, which if added would presumably have support for this sort of operation.
+GP has an unfortunate limitations that prevents reading files line-by-line, but it's just as well since its file-handling capabilities are poor.  The [TODO](http://pari.math.u-bordeaux.fr/cgi-bin/viewcvs.cgi/trunk/TODO?view=markup&revision=12632&root=pari) file lists one desiderata as adding a <code>t_FILE</code>, which if added would presumably have support for this sort of operation.
 
 Thus the usual way of interacting with files in more than the simple way allowed by <code>read</code> is done by PARI with the usual [[#C|C]] commands:
 
@@ -3234,7 +3234,7 @@ The with statement ensures the correct closing of the file after it is processed
 
 Any exceptional conditions seen when processing the file will raise an exception. Leaving the while loop because of an exception will also cause the file to be correctly closed on the way.
 
-Python also has the [http://docs.python.org/library/fileinput.html fileinput module]. This can process multiple files parsed from the command line and can be set to modify files 'in-place'.
+Python also has the [fileinput module](http://docs.python.org/library/fileinput.html). This can process multiple files parsed from the command line and can be set to modify files 'in-place'.
 
 ```python
 import fileinput
@@ -3555,7 +3555,7 @@ const proc: main is func
 ```
 
 
-The function [http://seed7.sourceforge.net/libraries/file.htm#hasNext%28in_file%29 hasNext]
+The function [hasNext](http://seed7.sourceforge.net/libraries/file.htm#hasNext%28in_file%29)
 returns TRUE when at least one character can be read successfully.
 
 
@@ -3745,7 +3745,7 @@ ENDLOOP
 
 Redirect standard input from a file, and then use '''<code>IFS= read -r line</code>''' to read each line.
 
-: [https://www.mirbsd.org/htman/i386/man1/mksh.htm mksh(1) manual] says, "If '''<code>read</code>''' is run in a loop such as '''<code>while read foo; do ...; done</code>''' then leading whitespace will be removed (IFS) and backslashes processed. You might want to use '''<code>while IFS= read -r foo; do ...; done</code>''' for pristine I/O."
+: [mksh(1) manual](https://www.mirbsd.org/htman/i386/man1/mksh.htm) says, "If '''<code>read</code>''' is run in a loop such as '''<code>while read foo; do ...; done</code>''' then leading whitespace will be removed (IFS) and backslashes processed. You might want to use '''<code>while IFS= read -r foo; do ...; done</code>''' for pristine I/O."
 
 ```bash
 # This while loop repeats for each line of the file.

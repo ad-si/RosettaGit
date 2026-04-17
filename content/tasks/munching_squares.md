@@ -490,7 +490,7 @@ void main() {
 
 ## EchoLisp
 
-Use the '''plot''' library, hsv->rgb ((x xor y) modulo m) as color table, and see the nice results here : http://www.echolalie.org/echolisp/help.html#bit-map .
+Use the '''plot''' library, hsv->rgb ((x xor y) modulo m) as color table, and see the nice results here : <http://www.echolalie.org/echolisp/help.html#bit-map> .
 
 ```scheme
 
@@ -547,9 +547,9 @@ Output image is identical to the Racket version.
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Munching_squares this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Munching_squares) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -585,7 +585,7 @@ End
 
 ## GLSL
 
-This is an example that will work directly on shadertoy.com, Example [https://www.shadertoy.com/view/Mss3Rs]
+This is an example that will work directly on shadertoy.com, Example <https://www.shadertoy.com/view/Mss3Rs>
 
 ```GLSL
 vec3 color;
@@ -719,7 +719,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -991,7 +991,7 @@ fun main(args: Array<String>) {
 
 ```
 
-Image available at [[http://www.diga.me.uk/xorRC.gif]]
+Image available at <http://www.diga.me.uk/xorRC.gif>
 
 
 ## Lua
@@ -1118,7 +1118,7 @@ Sub Int2Bit 'n->ret
 EndSub
 ```
 
-[https://github.com/Pat-Garrett/RC/blob/master/Munching%20squares%20-%20vbnet.jpg Munching squares - SmallBasic]
+[Munching squares - SmallBasic](https://github.com/Pat-Garrett/RC/blob/master/Munching%20squares%20-%20vbnet.jpg)
 
 
 ## MiniScript
@@ -1580,7 +1580,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/wvdqyihtxralviz/Squares.jpg?dl=0
+<https://www.dropbox.com/s/wvdqyihtxralviz/Squares.jpg?dl=0>
 
 
 ## Ruby
@@ -1711,7 +1711,7 @@ for y=(^256), x=(^256) {
 img.write(file => 'xor.png')
 ```
 
-Output image: [https://github.com/trizen/rc/blob/master/img/munching-squares-sidef.png Munching squares]
+Output image: [Munching squares](https://github.com/trizen/rc/blob/master/img/munching-squares-sidef.png)
 
 
 ## Tcl
@@ -1861,7 +1861,7 @@ Public Class MunchingSquares
 End Class
 ```
 
-[https://github.com/Pat-Garrett/RC/blob/7e9842513d361a5b4241bc6bb28f9985c2bfe161/Munching%20squares%20-%20vbnet.jpg Munching squares - vbnet]
+[Munching squares - vbnet](https://github.com/Pat-Garrett/RC/blob/7e9842513d361a5b4241bc6bb28f9985c2bfe161/Munching%20squares%20-%20vbnet.jpg)
 
 
 ## XPL0
@@ -1908,7 +1908,7 @@ Next
 
 ## zkl
 
-Uses the PPM class from http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl
+Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 For a kaleidoscopic image, play with coolness.
 
 ```zkl

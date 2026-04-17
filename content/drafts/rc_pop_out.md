@@ -22,17 +22,17 @@ __TOC__
 ### preamble
 
 This is the output file from the   '''REXX'''   example/solution   which is used to solve the Rosetta Code task:
-:::::::: <big> [https://rosettacode.org/wiki/Rosetta_Code/Rank_languages_by_popularity <u>Rosetta Code/Rank languages by popularity</u>]</big>
+:::::::: <big> [<u>Rosetta Code/Rank languages by popularity</u>](https://rosettacode.org/wiki/Rosetta_Code/Rank_languages_by_popularity)</big>
 
 
 The output file  (which is shown below)  contains the complete ranking   (current as of the timestamp
 
 shown below)   of all   '''727'''   computer programming languages used on   ''Rosetta Code''   as per the
 
-[https://www.rosettacode.org/wiki/Category:Programming_Languages <u>Category:Programming Languages</u>]   page,
+[<u>Category:Programming Languages</u>](https://www.rosettacode.org/wiki/Category:Programming_Languages)   page,
 and only computer programming languages that have at
 
-least one     ''member''     mentioned for the programming language entry in the   [http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000 <u>Special:Categories</u>]
+least one     ''member''     mentioned for the programming language entry in the   [<u>Special:Categories</u>](http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
 
 page are included here.
 

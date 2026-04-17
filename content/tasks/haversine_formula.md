@@ -163,10 +163,10 @@ most of the given solutions have already adopted, anyways).
 
 Most of the examples below adopted Kaimbridge's recommended value of
 6372.8 km for the earth radius.  However, the derivation of this
-[http://math.wikia.com/wiki/Ellipsoidal_quadratic_mean_radius ellipsoidal quadratic mean radius]
+[ellipsoidal quadratic mean radius](http://math.wikia.com/wiki/Ellipsoidal_quadratic_mean_radius)
 is wrong (the averaging over azimuth is biased).  When applying these
 examples in real applications, it is better to use the
-[https://en.wikipedia.org/wiki/Earth_radius#Mean_radius mean earth radius],
+[mean earth radius](https://en.wikipedia.org/wiki/Earth_radius#Mean_radius),
 6371 km.  This value is recommended by the International Union of
 Geodesy and Geophysics and it minimizes the RMS relative error between the
 great circle and geodesic distance.
@@ -1320,7 +1320,7 @@ println[d-> "km"]
 
 Note that physical constants like degrees, kilometers, and the average radius of the earth (as well as the polar and equatorial radii) are already known to Frink.  Also note that units of measure are tracked throughout all calculations, and results can be displayed in a huge number of units of distance (miles, km, furlongs, chains, feet, statutemiles, etc.) by changing the final <code>"km"</code> to something like <code>"miles"</code>.
 
-However, Frink's library/sample program [http://futureboy.us/fsp/colorize.fsp?fileName=navigation.frink navigation.frink] (included in larger distributions) contains a much higher-precision calculation that uses ellipsoidal (not spherical) calculations to determine the distance on earth's geoid with far greater accuracy:
+However, Frink's library/sample program [navigation.frink](http://futureboy.us/fsp/colorize.fsp?fileName=navigation.frink) (included in larger distributions) contains a much higher-precision calculation that uses ellipsoidal (not spherical) calculations to determine the distance on earth's geoid with far greater accuracy:
 
 
 ```frink
@@ -1364,7 +1364,7 @@ println( haversine((36.12, -86.67), (33.94, -118.40)) )
 ## FutureBasic
 
 Note: The Haversine function returns an approximate theoretical value of the Great Circle Distance between two points because it does not factor the ellipsoidal shape of Earth -- fat in the middle from centrifugal force, and squashed at the ends. Navigators once relied on trigonometric functions like versine (versed sine) where angle A is 1-cos(A), and haversine (half versine) or ( 1-cos(A) ) / 2.
-Also, the radius of the Earth varies, at least depending on who you talk to. Here's NASA's take on it: http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
+Also, the radius of the Earth varies, at least depending on who you talk to. Here's NASA's take on it: <http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html>
 
 Since it was trivial, this functions returns the distance in miles and kilometers.
 
@@ -1540,7 +1540,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 BNA to LAX is 2886 km (1793 miles)
@@ -3398,7 +3398,7 @@ list
 MEM/CGN joins two Fedex Express hubs. The line AMS/LAX is operated by KLM Royal Dutch Airlines.
 We will compute the distance between each pair of airports, both at sea level and at typical cruising flight level (35000 ft).
 
-Bear in mind that the actual route of an airliner is usually not a piece of great circle, so this will only give an idea. For instance, according to [http://flightaware.com/ FlightAware], the route of a Fedex flight from Memphis to Paris is 7852 km long, at FL300 altitude (9150 m). The program given here would yield 7328.33 km instead.
+Bear in mind that the actual route of an airliner is usually not a piece of great circle, so this will only give an idea. For instance, according to [FlightAware](http://flightaware.com/), the route of a Fedex flight from Memphis to Paris is 7852 km long, at FL300 altitude (9150 m). The program given here would yield 7328.33 km instead.
 
 
 ```stata
@@ -3470,7 +3470,7 @@ list iata* dist fl350
 ```
 
 
-Notice that the distance from Nashville to Los Angeles is given as 2886.32 km, which is slightly different from the task description. The coordinates come from [https://openflights.org/html/apsearch OpenFlights] and are supposably more accurate. Using the data in the task description, one gets 2886.44 as expected.
+Notice that the distance from Nashville to Los Angeles is given as 2886.32 km, which is slightly different from the task description. The coordinates come from [OpenFlights](https://openflights.org/html/apsearch) and are supposably more accurate. Using the data in the task description, one gets 2886.44 as expected.
 
 
 ## Swift

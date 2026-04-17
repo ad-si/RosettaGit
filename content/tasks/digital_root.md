@@ -210,7 +210,7 @@ number=2147483647  persistence=  3  root=1
 
 ## Ada
 
-We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots [[http://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada]]. Further note the tunable parameter for the number base (default 10).
+We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots <http://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada>. Further note the tunable parameter for the number base (default 10).
 
 
 ```Ada
@@ -965,7 +965,7 @@ class Program
 
 ## C++
 
-For details of SumDigits see: http://rosettacode.org/wiki/Sum_digits_of_an_integer
+For details of SumDigits see: <http://rosettacode.org/wiki/Sum_digits_of_an_integer>
 
 ```cpp
 // Calculate the Digital Root and Additive Persistance of an Integer - Compiles with gcc4.7
@@ -2255,7 +2255,7 @@ fun main(args: Array<String>) {
 
 ## Lua
 
-With function sum_digits from [http://rosettacode.org/wiki/Sum_digits_of_an_integer#Lua]
+With function sum_digits from <http://rosettacode.org/wiki/Sum_digits_of_an_integer#Lua>
 
 ```lua
 function digital_root(n, base)

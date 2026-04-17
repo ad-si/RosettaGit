@@ -510,7 +510,7 @@ cC3
 ## AutoHotkey
 
 === Pseudo-arrays ===
-[http://www.autohotkey.com/docs/commands/StringSplit.htm StringSplit]
+[StringSplit](http://www.autohotkey.com/docs/commands/StringSplit.htm)
 creates a pseudo-array
 
 ```autohotkey
@@ -557,8 +557,8 @@ e
 ###  Real arrays
 
 In [[AutoHotkey_L]], we can use true arrays
-([http://l.autohotkey.com/docs/Objects.htm Objects]) and the
-[http://l.autohotkey.net/docs/commands/For.htm For loop].
+([Objects](http://l.autohotkey.com/docs/Objects.htm)) and the
+[For loop](http://l.autohotkey.net/docs/commands/For.htm).
 
 ```AHK
 List1 := ["a", "b", "c"]
@@ -1726,7 +1726,7 @@ cC3
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=3a69e733694aeab3b72c6a5c0316535b Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=3a69e733694aeab3b72c6a5c0316535b)'''
 
 ```gambas
 Public Sub Main()
@@ -4243,7 +4243,7 @@ Or simpler:
 
 
 
-Same with lamination (a concept from APL/[http://rosettacode.org/wiki/Category:J#The_J_language J]):
+Same with lamination (a concept from APL/[J](http://rosettacode.org/wiki/Category:J#The_J_language)):
 
 ```SuperCollider
 
@@ -4375,7 +4375,7 @@ foreach i $list1 j $list2 k $list3 {
 ```
 
 If lists are different lengths, the manual
-[http://www.tcl.tk/man/tcl8.5/TclCmd/foreach.htm] says:
+<http://www.tcl.tk/man/tcl8.5/TclCmd/foreach.htm> says:
 "The total number of loop iterations is large enough to use up all the
 values from all the value lists.
 If a value list does not contain enough elements for each of its loop

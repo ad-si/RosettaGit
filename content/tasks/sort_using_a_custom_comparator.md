@@ -2081,7 +2081,7 @@ Example:
 
 ## Julia
 
-My word list source is the opening sentence of Shelly's [http://www.gutenberg.org/cache/epub/84/pg84.txt Frankenstein].
+My word list source is the opening sentence of Shelly's [Frankenstein](http://www.gutenberg.org/cache/epub/84/pg84.txt).
 
 ```julia
 wl = filter(!isempty, split("""You will rejoice to hear that no disaster has accompanied the
@@ -2888,7 +2888,7 @@ vecsort(v,cmp)
 
 ## Pascal
 
-See at http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement struct/record with myText implementing this task too
+See at <http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement> struct/record with myText implementing this task too
 
 
 ## Perl
@@ -2979,7 +2979,7 @@ usort($strings, "mycmp");
 
 ## PicoLisp
 
-By default, the [http://software-lab.de/doc/refS.html#sort sort] function in
+By default, the [sort](http://software-lab.de/doc/refS.html#sort) function in
 PicoLisp returns an ascending list (of any type). To get a result in descending
 order, the "greater than" function can be supplied
 

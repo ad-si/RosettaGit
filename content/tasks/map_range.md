@@ -1874,7 +1874,7 @@ console.log(range);
 
 ### =Extra credit=
 
-Here we will use the [https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map ECMAScript 5 support for map] and the [http://underscorejs.org/#range _.range] function from Underscore.js.
+Here we will use the [ECMAScript 5 support for map](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map) and the [_.range](http://underscorejs.org/#range) function from Underscore.js.
 {{libheader|Underscore.js}}
 
 ```JavaScript

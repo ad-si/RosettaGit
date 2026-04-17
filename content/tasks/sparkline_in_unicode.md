@@ -1941,7 +1941,7 @@ $ echo 12 12 12 12 | perl spark.pl
 
 ```
 
-Most Perl builds have [https://en.wikipedia.org/wiki/IEEE_754-2008_revision IEEE-754 floats]:
+Most Perl builds have [IEEE-754 floats](https://en.wikipedia.org/wiki/IEEE_754-2008_revision):
 
 ```txt
 

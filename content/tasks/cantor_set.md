@@ -19,7 +19,7 @@ languages = [
 ## Task
 
 Draw a Cantor set.
-See details: [https://en.wikipedia.org/wiki/Cantor_set Cantor set]
+See details: [Cantor set](https://en.wikipedia.org/wiki/Cantor_set)
 
 
 
@@ -2530,7 +2530,7 @@ func cantor(x,y,lens)
 
 Output image:
 
-[https://www.dropbox.com/s/ap7c3301i0syh4e/CantorSet.jpg?dl=0 Cantor set]
+[Cantor set](https://www.dropbox.com/s/ap7c3301i0syh4e/CantorSet.jpg?dl=0)
 
 ## Ruby
 
@@ -2590,8 +2590,8 @@ object CantorSetQD extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/QrqaHeu/0 (JavaScript)]
-or by [https://scastie.scala-lang.org/4JTi1zXzRq6H4yUlAYNTSw Scastie (JVM)].
+{{Out}}See it in running in your browser by [(JavaScript)](https://scalafiddle.io/sf/QrqaHeu/0)
+or by [Scastie (JVM)](https://scastie.scala-lang.org/4JTi1zXzRq6H4yUlAYNTSw).
 
 ===Functional Programming (Recommended)===
 
@@ -2630,8 +2630,8 @@ object CantorSetFP extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scalafiddle.io/sf/szUjPWO/7 (JavaScript)]
-or by [https://scastie.scala-lang.org/ZaNUtEOcStuBfJImOnEz5Q Scastie (JVM)].
+{{Out}}See it in running in your browser by [(JavaScript)](https://scalafiddle.io/sf/szUjPWO/7)
+or by [Scastie (JVM)](https://scastie.scala-lang.org/ZaNUtEOcStuBfJImOnEz5Q).
 
 
 ## Sidef

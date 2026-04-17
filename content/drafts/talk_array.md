@@ -57,6 +57,6 @@ Does anybody want to take on the task of rewriting this...er...whatever it is?  
 
 :::::: <nowiki>[</nowiki>Please do not feed my interest in word-playing or filology by writing such a nonsense thing like "associative array" &ne; "array" deduced by "butterfly" &ne; "fly"; it's a completely different thing! I couldn't help answering this with at least this ''bit'' :D<nowiki>]</nowiki> --[[User:ShinTakezou|ShinTakezou]] 22:42, 3 April 2009 (UTC)
 
-::::::Enumeration is not an integer, except than in C, which, honestly, does not have enumerations. Let us not confuse ''named integer constants'' with enumeration type. Integer is a datatype that provides a certain set of operations ([http://en.wikipedia.org/wiki/Peano_arithmetic Peano arithmetic]). Enumeration is a set of values without such operations except for comparison and copy.
+::::::Enumeration is not an integer, except than in C, which, honestly, does not have enumerations. Let us not confuse ''named integer constants'' with enumeration type. Integer is a datatype that provides a certain set of operations ([Peano arithmetic](http://en.wikipedia.org/wiki/Peano_arithmetic)). Enumeration is a set of values without such operations except for comparison and copy.
 
 ::::::The key logical difference between associative and "plain" arrays is that the index of former is not necessarily dense, which does not allow iteration. The commonality is that both are maps of index to element. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 08:27, 4 April 2009 (UTC)

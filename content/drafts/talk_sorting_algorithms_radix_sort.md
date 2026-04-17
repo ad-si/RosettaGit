@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Negatives==
-Beware negative number handling! See [http://codepad.org/MLi6H7Y1 Wiki's python demo]. [[User:Dingowolf|dingowolf]] 13:25, 19 January 2011 (UTC) 
+Beware negative number handling! See [Wiki's python demo](http://codepad.org/MLi6H7Y1). [[User:Dingowolf|dingowolf]] 13:25, 19 January 2011 (UTC) 
 : An interesting problem; the easiest way to handle it seems to me to be to double the number of bins and put negative values in the first half and positive in the second. Or at least it produces correct results when I implemented it in the Tcl solution. (I suspect that the original algorithm simply didn't implement them, or sorted by printed digit instead of logical digit.) –[[User:Dkf|Donal Fellows]] 13:22, 19 January 2011 (UTC)
 :: The easiest way to handle negative numbers might be to find the minimum value in the list, subtract it from every item in the unsorted list and add it to every item in the sorted list.  This approach is modular and can wrap any "non-negative integers only" implementation, and work well in a variety of circumstances.  That said the "double the bins" approach might have an efficiency advantage when the the absolute value of the maximum equals the absolute value of the minimum.  --[[User:Rdm|Rdm]] 16:13, 19 January 2011 (UTC)
 ::: It was a smaller change to the code I already had working for the positive case. :-) –[[User:Dkf|Donal Fellows]] 16:42, 19 January 2011 (UTC)

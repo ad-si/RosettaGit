@@ -38,5 +38,5 @@ Try:
 
 ==Why Wikia link?==
 
-Unrelated to the above, is there a reason the GNU FDL text links to Wikia, rather than the FSF? The FDL is [http://www.gnu.org/licenses/fdl.html here], and I think it would make better sense to link directly to it; I'm just wondering if there's a reason to leave it as-is. -- [[User:Eriksiers|Erik Siers]] 18:24, 15 January 2011 (UTC)
+Unrelated to the above, is there a reason the GNU FDL text links to Wikia, rather than the FSF? The FDL is [here](http://www.gnu.org/licenses/fdl.html), and I think it would make better sense to link directly to it; I'm just wondering if there's a reason to leave it as-is. -- [[User:Eriksiers|Erik Siers]] 18:24, 15 January 2011 (UTC)
 : I never noticed it. I didn't create the template. Fixed. --[[User:Short Circuit|Michael Mol]] 00:35, 16 January 2011 (UTC)

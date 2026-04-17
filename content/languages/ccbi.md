@@ -12,7 +12,7 @@ tags = []
 '''CCBI''', the '''Conforming Concurrent Befunge-98 Interpreter''' is a [Befunge](https://rosettacode.org/wiki/Befunge) [interpreter](https://rosettacode.org/wiki/interpreter) and [debugger](https://rosettacode.org/wiki/debugger) for [Linux](https://rosettacode.org/wiki/Linux) and [Windows](https://rosettacode.org/wiki/Windows). It aims to be the first befunge interpreter to completely implement the Funge-98 final specification.
 
 ## External links
-* [https://deewiant.iki.fi/projects/ccbi/ CCBI home page]
-* [http://quadium.net/funge/spec98.html Funge-98 final specification]
+* [CCBI home page](https://deewiant.iki.fi/projects/ccbi/)
+* [Funge-98 final specification](http://quadium.net/funge/spec98.html)
 
 [Category:Compilers and Interpreters](https://rosettacode.org/wiki/Category:Compilers_and_Interpreters)

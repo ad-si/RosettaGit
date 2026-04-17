@@ -130,7 +130,7 @@ raised CONSTRAINT_ERROR : yuletide.adb:8 range check failed
 
 Anyway, at least I ''discovered'' how to ''arrange'' the code on my system with my poor GNAT :) --[[User:ShinTakezou|ShinTakezou]] 20:52, 12 December 2008 (UTC)
 
-: I see, now it seems to be clear. First of all, GNAT.Calendar is not a part of the standard. But that is not the problem, Ada.Calendar is. The standard ([[Ada 2005]]) requires Year_Number to be at least in the range 1901..2399. See [http://www.adaic.org/standards/1zrm/html/RM-9-6.html LRM 9.6 11/2]. So the code given in the Ada solution '''must''' work, or else your compiler is not Ada 2005. From your attempts I deduce that it is indeed not. You have an [[Ada 95]] compiler. In Ada 95 the range of Number was narrower, 1901 .. 2099. This is why your code produces an exception. You can slightly modify your code:
+: I see, now it seems to be clear. First of all, GNAT.Calendar is not a part of the standard. But that is not the problem, Ada.Calendar is. The standard ([[Ada 2005]]) requires Year_Number to be at least in the range 1901..2399. See [LRM 9.6 11/2](http://www.adaic.org/standards/1zrm/html/RM-9-6.html). So the code given in the Ada solution '''must''' work, or else your compiler is not Ada 2005. From your attempts I deduce that it is indeed not. You have an [[Ada 95]] compiler. In Ada 95 the range of Number was narrower, 1901 .. 2099. This is why your code produces an exception. You can slightly modify your code:
 <blockquote>
 
 ```ada
@@ -151,7 +151,7 @@ end Yuletide;
 ```
 
 </blockquote>
-:Now the compiler will warn you that Year is not in the range of Year_Number and you will get Constraint_Error at run time. So the problem is that your GNAT is not [[Ada 2005]]. Remove it and install a new one. The official distributor is [https://libre.adacore.com here]. Register yourself (it is free) and download GNAT GPL for your platform. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 21:48, 12 December 2008 (UTC)
+:Now the compiler will warn you that Year is not in the range of Year_Number and you will get Constraint_Error at run time. So the problem is that your GNAT is not [[Ada 2005]]. Remove it and install a new one. The official distributor is [here](https://libre.adacore.com). Register yourself (it is free) and download GNAT GPL for your platform. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 21:48, 12 December 2008 (UTC)
 
 ::Thanks again. I imagined that GNAT.* is not standard, but with Ada.Calendar nothing worked :( Going to update out of the repositories :D --[[User:ShinTakezou|ShinTakezou]] 23:27, 12 December 2008 (UTC)
 
@@ -176,7 +176,7 @@ I am happy to use your original, although I did check and ''seq'' is available o
 :It's not so important... The seq is into the GNU coreutils, so 99/100 should exist. It's a memory and elegance matter. The backtilde say to execute the extern command, which generate a list for ''for''. The calling to another extern tool can be avoided, and we don't need to create the list which is like: 2008 2009 2010 2011 2012 2013 ..... 2121 ... not so short. Bash allows to use a counter in a rather common way, so I've thought it was much better, and we have not to worry about how long the list generated as output by ''seq'' is. Anyway, it does not matter. --[[User:ShinTakezou|ShinTakezou]] 15:04, 14 December 2008 (UTC)
 
 ==Zune Problem==
-It seems owners of the Microsoft Zune MP3 player had date related issues [[http://74.125.77.132/search?q=cache:6Q7xpDmGz-8J:www.zuneboards.com/forums/zune-news/38143-cause-zune-30-leapyear-problem-isolated.html+Zune+leapyear&hl=en&client=firefox-a&gl=uk&strip=1 recently]].
+It seems owners of the Microsoft Zune MP3 player had date related issues [recently](http://74.125.77.132/search?q=cache:6Q7xpDmGz-8J:www.zuneboards.com/forums/zune-news/38143-cause-zune-30-leapyear-problem-isolated.html+Zune+leapyear&hl=en&client=firefox-a&gl=uk&strip=1).
 
 (The link is to a Google cache as the page was not accessible when I tried).
 

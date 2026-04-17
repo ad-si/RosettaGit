@@ -32,4 +32,4 @@ Some of the Apex features and functionality:
 
 Useful Apex Programming links:
 
-* [http://developer.salesforce.com Salesforce Developers]
+* [Salesforce Developers](http://developer.salesforce.com)

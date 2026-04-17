@@ -17,7 +17,7 @@ tags = []
 
 == C++ problem ==
 
-I can't get to the [[C++]] page. You can try it on that link there. It just takes you to C. RCBF(C++) has a problem too: http://rosettacode.org/wiki/RCBF_(C++) --[[User:Mwn3d|Mwn3d]] 10:25, 7 February 2008 (MST)
+I can't get to the [[C++]] page. You can try it on that link there. It just takes you to C. RCBF(C++) has a problem too: <http://rosettacode.org/wiki/RCBF_(C++)> --[[User:Mwn3d|Mwn3d]] 10:25, 7 February 2008 (MST)
 :Ugh. This was fixed with a Mediawiki upgrade in November. I don't know what broke it again. --[[User:IanOsgood|IanOsgood]] 10:46, 7 February 2008 (MST)
 ::It may have been broken again in the maintenance on Sunday. --[[User:Mwn3d|Mwn3d]] 10:49, 7 February 2008 (MST)
 

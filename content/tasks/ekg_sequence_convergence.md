@@ -31,7 +31,7 @@ The sequence is from the natural numbers and is defined by:
 * for n > 2, <code>a(n)</code> shares at least one prime factor with <code>a(n-1)</code> and is the ''smallest'' such natural number ''not already used''.
 
 
-The sequence is called the [http://oeis.org/A064740 EKG sequence] (after its visual similarity to an electrocardiogram when graphed).
+The sequence is called the [EKG sequence](http://oeis.org/A064740) (after its visual similarity to an electrocardiogram when graphed).
 
 Variants of the sequence can be generated starting 1, N where N is any natural number larger than one. For the purposes of this task let us call:
 * The sequence described above , starting <code>1, 2, ...</code> the <code>EKG(2)</code> sequence;
@@ -60,7 +60,7 @@ If an algorithm that keeps track of the minimum amount of numbers and their corr
 
 
 ;Reference:
-* [https://www.youtube.com/watch?v=yd2jr30K2R4 The EKG Sequence and the Tree of Numbers]. (Video).
+* [The EKG Sequence and the Tree of Numbers](https://www.youtube.com/watch?v=yd2jr30K2R4). (Video).
 
 
 
@@ -164,7 +164,7 @@ EKG(5) and EKG(7) converge at term 21
 
 ### The Function
 
-This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function Extensible Prime Generator (F#)]
+This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

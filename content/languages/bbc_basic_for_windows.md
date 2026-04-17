@@ -22,4 +22,4 @@ tags = []
 * indirect procedure and function calls
 * improved numeric accuracy (64-bit floats)
 
-Details can be found at the [http://www.bbcbasic.co.uk/bbcwin/bbcwin.html official web site].
+Details can be found at the [official web site](http://www.bbcbasic.co.uk/bbcwin/bbcwin.html).

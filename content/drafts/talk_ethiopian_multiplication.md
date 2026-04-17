@@ -51,19 +51,19 @@ How to amalgamate? --[[User:Paddy3118|Paddy3118]] 12:53, 9 June 2010 (UTC)
 ==OpenOffice Calc==
 i did made a version in openoffice calc. but since there is no "sourcecode", i would like to upload the .ods file. how should i do this since this filetype is not allowed as  upload in this wiki? [[User:Elvis|Elvis]] 05:46, 18 June 2010 (UTC)
 :Try showing the equations then the values that are in the grid instead. A .ods file would be much harder for someone to compare with other solutions as it is not meant to be readable. See [[Knapsack problem/Unbounded#OOCalc]]. --[[User:Paddy3118|Paddy3118]] 06:53, 18 June 2010 (UTC)
-::There is source code if you've used any formulas. Change the cell format to show the formulas, then take a screen-shot as a .PNG and upload that. That's what I hope to do when I get to demonstrating [http://www.mytongue.biz MyTongue].
+::There is source code if you've used any formulas. Change the cell format to show the formulas, then take a screen-shot as a .PNG and upload that. That's what I hope to do when I get to demonstrating [MyTongue](http://www.mytongue.biz).
 : CSV export? --[[User:Short Circuit|Michael Mol]] 12:45, 18 June 2010 (UTC)
 :: Won't export formulaes. --[[User:Paddy3118|Paddy3118]] 13:05, 18 June 2010 (UTC)
 ==Unexplained Popularity!?==
 Has anyone checked out the popularity of this page at [[Special:PopularPages]]?  It's far and above the most popular single task and second only to the main page.  I wonder why?--[[User:Dgamey|Dgamey]] 11:16, 22 July 2010 (UTC)
 
 :I imagine it is linked from some popular page(s).  --[[User:Rdm|Rdm]] 12:20, 22 July 2010 (UTC)
-: According to the Google Analytics data, most of those hits come from [http://www.stumbleupon.com/url/rosettacode.org/wiki/Ethiopian_Multiplication StumbleUpon]. Actually, the traffic surge that hit when SU started sending people to this task forced me to upgrade servers last year. [[Quine]] is the other task that's currently seeing high relative inflow from SU. --[[User:Short Circuit|Michael Mol]] 13:46, 22 July 2010 (UTC)
+: According to the Google Analytics data, most of those hits come from [StumbleUpon](http://www.stumbleupon.com/url/rosettacode.org/wiki/Ethiopian_Multiplication). Actually, the traffic surge that hit when SU started sending people to this task forced me to upgrade servers last year. [[Quine]] is the other task that's currently seeing high relative inflow from SU. --[[User:Short Circuit|Michael Mol]] 13:46, 22 July 2010 (UTC)
 :SU seems to be a great way to increase traffic. I know of a number of sites and blogs that have seen this. Far better than most similar.--[[User:Dgamey|Dgamey]] 13:56, 22 July 2010 (UTC)
 :: It's finicky. They obviously don't like spamming submissions to a site, so people will thumb submissions down for that. Apart from that, it takes a novel page to catch the interest of CS-types on SU. --[[User:Short Circuit|Michael Mol]] 14:35, 22 July 2010 (UTC)
 :: Agreed. The occasional self submission is usually fine.  I should probably thumbs up the main page and then lay low for a while.  I'm not consistently on SU so it's time. --[[User:Dgamey|Dgamey]] 21:49, 22 July 2010 (UTC)
 
-::: Michael and I discussed it at the time [http://rosettacode.org/wiki/User_talk:Paddy3118#Ethiopian_Multiplication here]. --[[User:Paddy3118|Paddy3118]] 22:11, 22 July 2010 (UTC)
+::: Michael and I discussed it at the time [here](http://rosettacode.org/wiki/User_talk:Paddy3118#Ethiopian_Multiplication). --[[User:Paddy3118|Paddy3118]] 22:11, 22 July 2010 (UTC)
 
 ==Ethiopian??? My foot!==
 

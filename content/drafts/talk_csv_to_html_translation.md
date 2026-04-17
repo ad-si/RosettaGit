@@ -30,7 +30,7 @@ Is there any way to show the rendered HTML rather than the raw HTML (without the
 :::::: [[Image:Csv2html_ocaml_konsole_kde_frame_extra_credit_solution.png|CSV to HTML OCaml, the extra credit, with links browser in konsole]]
 :::::: And this one 7,0K (7087 octets.)
 :::::: But well do not hesitate to remove any of these screenshots. [[User:Blue Prawn|Blue Prawn]] 02:48, 14 November 2010 (UTC)
-:: Displaying someone else's HTML without excessive stripping or vulnerability is just what [http://code.google.com/p/google-caja/ Caja] is for. Web-service and Java interfaces are available. —[[User:Kevin Reid|Kevin Reid]] 23:16, 14 November 2010 (UTC)
+:: Displaying someone else's HTML without excessive stripping or vulnerability is just what [Caja](http://code.google.com/p/google-caja/) is for. Web-service and Java interfaces are available. —[[User:Kevin Reid|Kevin Reid]] 23:16, 14 November 2010 (UTC)
 
 
 ==Cheating in Optional Part==
@@ -44,4 +44,4 @@ If so, the description of that optional solution should be changed to something 
 If not, many languages might have a overcomplicated solution for the extra part
 
 ==HTML==
-Some of the solutions distinguish the header from the body by inserting bgcolor="acolour" in the THEAD element. According to http://www.w3schools.com/tags/tag_thead.asp bgcolour is not an attribute of THEAD. By experiment I find that these solutions work on IE and Firefox under Windows, but not Opera or Firefox under Linux.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 11:17, 3 June 2013 (UTC)
+Some of the solutions distinguish the header from the body by inserting bgcolor="acolour" in the THEAD element. According to <http://www.w3schools.com/tags/tag_thead.asp> bgcolour is not an attribute of THEAD. By experiment I find that these solutions work on IE and Firefox under Windows, but not Opera or Firefox under Linux.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 11:17, 3 June 2013 (UTC)

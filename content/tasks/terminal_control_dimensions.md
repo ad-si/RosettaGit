@@ -545,7 +545,7 @@ HEIGHT=RunThrough["tput lines", ""];
 ## OCaml
 
 
-Using the library [http://forge.ocamlcore.org/projects/ansiterminal/ ANSITerminal] in the interactive loop:
+Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/) in the interactive loop:
 
 
 ```ocaml
@@ -655,7 +655,7 @@ EndIf
 
 ## Python
 
-This uses the [http://python.net/crew/theller/ctypes/ ctypes library] in order to get the console dimensions on Windows. This code is a slight refactoring of an [http://code.activestate.com/recipes/440694-determine-size-of-console-window-on-windows/ ActiveState Recipe]. For Linux, the tput utility is used.
+This uses the [ctypes library](http://python.net/crew/theller/ctypes/) in order to get the console dimensions on Windows. This code is a slight refactoring of an [ActiveState Recipe](http://code.activestate.com/recipes/440694-determine-size-of-console-window-on-windows/). For Linux, the tput utility is used.
 
 
 ```python
@@ -827,9 +827,9 @@ end
 
 ## Seed7
 
-The functions [http://seed7.sourceforge.net/libraries/console.htm#height%28ref_console_file%29 height] and
-[http://seed7.sourceforge.net/libraries/console.htm#width%28ref_console_file%29 width] are portable and
-determine the dimensions of the [http://seed7.sourceforge.net/libraries/console.htm console window].
+The functions [height](http://seed7.sourceforge.net/libraries/console.htm#height%28ref_console_file%29) and
+[width](http://seed7.sourceforge.net/libraries/console.htm#width%28ref_console_file%29) are portable and
+determine the dimensions of the [console window](http://seed7.sourceforge.net/libraries/console.htm).
 ''Height'' and ''width'' are based on terminfo respectively the Windows console API.
 
 

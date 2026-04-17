@@ -9,8 +9,8 @@ id = 9548
 categories = []
 tags = []
 +++
-'''[http://openjdk.java.net/ OpenJDK]''' is an [free](https://rosettacode.org/wiki/open_source) implementation of [Java](https://rosettacode.org/wiki/:Category:Java) for [Linux](https://rosettacode.org/wiki/Linux), [Solaris](https://rosettacode.org/wiki/Solaris) and [Windows](https://rosettacode.org/wiki/Windows).<ref>[http://hg.openjdk.java.net/jdk7/build/raw-file/tip/README-builds.html#MBE OpenJDK Build README: Minimum Build Environments]</ref> 
-There is also OpenJDK for [BSD](https://rosettacode.org/wiki/BSD)<ref>[http://openjdk.java.net/projects/bsd-port/ OpenJDK: BSD Port Project]</ref>. 
+'''[OpenJDK](http://openjdk.java.net/)''' is an [free](https://rosettacode.org/wiki/open_source) implementation of [Java](https://rosettacode.org/wiki/:Category:Java) for [Linux](https://rosettacode.org/wiki/Linux), [Solaris](https://rosettacode.org/wiki/Solaris) and [Windows](https://rosettacode.org/wiki/Windows).<ref>[OpenJDK Build README: Minimum Build Environments](http://hg.openjdk.java.net/jdk7/build/raw-file/tip/README-builds.html#MBE)</ref> 
+There is also OpenJDK for [BSD](https://rosettacode.org/wiki/BSD)<ref>[OpenJDK: BSD Port Project](http://openjdk.java.net/projects/bsd-port/)</ref>. 
 Several BSD and Linux distros carry packages of OpenJDK.
 
 OpenJDK can compile and run Java programs. 

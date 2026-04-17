@@ -105,9 +105,9 @@ Characters:
 :(I avoid the ^ by using lt-gt instead of ^=)
 
 ::For a Brief History of Rexx see
-:: http://www.speleotrove.com/rexxhist/rexxhistory.html
+:: <http://www.speleotrove.com/rexxhist/rexxhistory.html>
 ::For a rather complete list of Rexx implementations see
-:: http://www.speleotrove.com/rexxhist/rexxplat.html
+:: <http://www.speleotrove.com/rexxhist/rexxplat.html>
 ::(both courtesy Mike Cowlishaw)
  --[[User:Walterpachl|Walterpachl]] 20:23, 8 July 2012 (UTC)
 

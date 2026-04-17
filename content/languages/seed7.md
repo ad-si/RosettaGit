@@ -16,5 +16,5 @@ In Seed7 new statements and operators can be declared easily. Functions with typ
 
 ## See also
 * [Seed7 on Wikipedia](https://en.wikipedia.org/wiki/Seed7)
-* [http://seed7.sourceforge.net/ Seed7 Homepage]
-* [https://sourceforge.net/projects/seed7/files Download Seed7]
+* [Seed7 Homepage](http://seed7.sourceforge.net/)
+* [Download Seed7](https://sourceforge.net/projects/seed7/files)

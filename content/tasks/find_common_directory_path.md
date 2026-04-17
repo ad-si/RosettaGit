@@ -1656,7 +1656,7 @@ put getCommonPath(pathes, "/")
 ## MapBasic
 
 
-Derived from the [https://www.rosettacode.org/wiki/Find_common_directory_path#BASIC BASIC] example above
+Derived from the [BASIC](https://www.rosettacode.org/wiki/Find_common_directory_path#BASIC) example above
 
 
 ```qbasic
@@ -1878,7 +1878,7 @@ let () =
 ```
 
 
-(uses the module <code>[http://caml.inria.fr/pub/docs/manual-ocaml/libref/Str.html Str]</code>, str.cma)
+(uses the module <code>[Str](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Str.html)</code>, str.cma)
 
 
 ## OpenEdge/Progress
@@ -2515,7 +2515,7 @@ Debug CommonPath(t(),"/"))
 
 ## Python
 
-The Python os.path.commonprefix function is [http://nedbatchelder.com/blog/201003/whats_the_point_of_ospathcommonprefix.html broken] as it returns common characters that may not form a valid directory path:
+The Python os.path.commonprefix function is [broken](http://nedbatchelder.com/blog/201003/whats_the_point_of_ospathcommonprefix.html) as it returns common characters that may not form a valid directory path:
 
 ```python
 >>
@@ -2710,7 +2710,7 @@ Output:
 
 ## Ruby
 
-Uses the standard library <code>[http://www.ruby-doc.org/stdlib/libdoc/abbrev/rdoc/index.html abbrev]</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
+Uses the standard library <code>[abbrev](http://www.ruby-doc.org/stdlib/libdoc/abbrev/rdoc/index.html)</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
 
 
 ```ruby
@@ -3041,7 +3041,7 @@ object FindCommonDirectoryPathRelative extends App {
 
 ## Seed7
 
-Seed7 has a [http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation standard path representation]:
+Seed7 has a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation):
 *The slash ('/') is used as path delimiter.
 *Drive letters are not allowed, but there is a solution to replace them.
 *Except for the path "/" a standard path is not allowed to end with a slash.

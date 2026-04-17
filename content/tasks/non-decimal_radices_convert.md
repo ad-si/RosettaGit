@@ -552,7 +552,7 @@ parse(number, base)
 }
 ```
 
-alternate implementation contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276241.html#276241 forum]
+alternate implementation contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276241.html#276241)
 
 ```AutoHotkey
 MsgBox % ToBase(29,3)
@@ -1845,7 +1845,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
+[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 There are several conversion routines for bases in the IPL, however, none returns the input radix form.
 
 Output:
@@ -1870,7 +1870,7 @@ J supports direct specification of native precision integers by base. The number
 ```
 
 
-Additionally, J has primitives [http://www.jsoftware.com/help/dictionary/d401.htm #.] and [http://www.jsoftware.com/help/dictionary/d402.htm #:] for dealing with base conversion issues.
+Additionally, J has primitives [#.](http://www.jsoftware.com/help/dictionary/d401.htm) and [#:](http://www.jsoftware.com/help/dictionary/d402.htm) for dealing with base conversion issues.
 
 Here are programs for conversion of numeric values to literals, and of literals to numbers:
 
@@ -1903,7 +1903,7 @@ These may be combined so the conversion performed is derived from the type of ar
 aa
 ```
 
-See also primary verbs [http://www.jsoftware.com/help/dictionary/d401.htm Base] and [http://www.jsoftware.com/help/dictionary/d402.htm Antibase].
+See also primary verbs [Base](http://www.jsoftware.com/help/dictionary/d401.htm) and [Antibase](http://www.jsoftware.com/help/dictionary/d402.htm).
 
 
 ## Java
@@ -1981,7 +1981,7 @@ Using BigInteger, can convert any base.
 
 ```javascript
 
-// Tom Wu jsbn.js http://www-cs-students.stanford.edu/~tjw/jsbn/
+// Tom Wu jsbn.js <http://www-cs-students.stanford.edu/~tjw/jsbn/>
 var baselist = "0123456789abcdefghijklmnopqrstuvwxyz", listbase = [];
 for(var i = 0; i < baselist.length; i++) listbase[baselist[i]] = i; // Generate baselist reverse
 function baseconvert(snumber, frombase, tobase) // String number in base X to string number in base Y, arbitrary length, base
@@ -2850,7 +2850,7 @@ sub base_from {
 
 There are a plethora of modules that perform base conversion.
 
-The core [https://metacpan.org/pod/distribution/perl/ext/POSIX/lib/POSIX.pod POSIX] module includes strtol (and strtoul) which is simple and fast, but only does conversions from a base.  On some platforms the function may be limited to 32-bit even with a 64-bit Perl.
+The core [POSIX](https://metacpan.org/pod/distribution/perl/ext/POSIX/lib/POSIX.pod) module includes strtol (and strtoul) which is simple and fast, but only does conversions from a base.  On some platforms the function may be limited to 32-bit even with a 64-bit Perl.
 
 ```perl
 use POSIX;
@@ -2860,7 +2860,7 @@ print "$num\n"; # prints "26"
 ```
 
 
-The [https://metacpan.org/pod/ntheory ntheory] module includes functions that will perform base conversion, and is fast.  It supports bases up to 36 and bigints.{{libheader|ntheory}}
+The [ntheory](https://metacpan.org/pod/ntheory) module includes functions that will perform base conversion, and is fast.  It supports bases up to 36 and bigints.{{libheader|ntheory}}
 
 ```perl
 use ntheory qw/fromdigits todigitstring/;
@@ -2873,16 +2873,16 @@ say "$n $n16 $n10";  # prints "65261 feed 65261"
 
 Other modules include but are not limited to:
 
-* [https://metacpan.org/pod/Math::BaseCalc Math::BaseCalc]
-* [https://metacpan.org/pod/Math::Int2Base Math::Int2Base]
-* [https://metacpan.org/pod/Math::NumberBase Math::NumberBase]
-* [https://metacpan.org/pod/Convert::AnyBase Convert::AnyBase]
-* [https://metacpan.org/pod/Math::BaseCnv Math::BaseCnv]
-* [https://metacpan.org/pod/Math::BaseConvert Math::BaseConvert]
+* [Math::BaseCalc](https://metacpan.org/pod/Math::BaseCalc)
+* [Math::Int2Base](https://metacpan.org/pod/Math::Int2Base)
+* [Math::NumberBase](https://metacpan.org/pod/Math::NumberBase)
+* [Convert::AnyBase](https://metacpan.org/pod/Convert::AnyBase)
+* [Math::BaseCnv](https://metacpan.org/pod/Math::BaseCnv)
+* [Math::BaseConvert](https://metacpan.org/pod/Math::BaseConvert)
 
 The last two are ''much'' slower than the others or the simple functions above, but may have extra features.  Math::Base::Convert and Convert::BaseN are currently not recommended.
 
-The module [https://metacpan.org/pod/Math::Fleximal Math::Fleximal] not only does very arbitrary base conversion, but allows computations in different bases.
+The module [Math::Fleximal](https://metacpan.org/pod/Math::Fleximal) not only does very arbitrary base conversion, but allows computations in different bases.
 
 
 ## Perl 6
@@ -3480,13 +3480,13 @@ def bigToBase(num: BigInt, newBase: Int): String = num.toString(newBase)
 
 ## Seed7
 
-The type [http://seed7.sourceforge.net/manual/types.htm#integer integer]
-defines the operator [http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29 radix]
-and the function [http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29 integer],
+The type [integer](http://seed7.sourceforge.net/manual/types.htm#integer)
+defines the operator [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29)
+and the function [integer](http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29),
 which convert to string and vice versa.
-The type [http://seed7.sourceforge.net/manual/types.htm#bigInteger bigInteger]
-defines [http://seed7.sourceforge.net/libraries/bigint.htm#%28in_var_bigInteger%29radix%28in_integer%29 radix]
-and [http://seed7.sourceforge.net/libraries/bigint.htm#bigInteger%28in_string,in_integer%29 bigInteger]
+The type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger)
+defines [radix](http://seed7.sourceforge.net/libraries/bigint.htm#%28in_var_bigInteger%29radix%28in_integer%29)
+and [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm#bigInteger%28in_string,in_integer%29)
 for corresponding purposes.
 
 

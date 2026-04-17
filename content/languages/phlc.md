@@ -14,4 +14,4 @@ tags = []
 
 '''Proceed High Language Compiler''' (ab. '''phlc''') is the reference implementation of the [PHL language](https://rosettacode.org/wiki/PHL).
 
-[http://www.kaivos.org/doc/phl/comp.html Official webpage]
+[Official webpage](http://www.kaivos.org/doc/phl/comp.html)

@@ -229,7 +229,7 @@ Mean: 0.50178,  Standard Deviation: 0.28805
 ### Making the solution ready for one trillion samples
 
 
-Depending on where you live, one trillion is either 10^12 or 10^18 [https://en.wikipedia.org/wiki/Trillion].
+Depending on where you live, one trillion is either 10^12 or 10^18 <https://en.wikipedia.org/wiki/Trillion>.
 Below, I'll assume 10^12, which implies a number of operations I can still perform on my PC.
 
 The above program will fail with such large inputs for two reasons:
@@ -1833,7 +1833,7 @@ Stddev: 0.289269693719711
 
 ```
 
-The usual approach to the extra problem is [http://en.wikipedia.org/wiki/Sampling_%28statistics%29 sampling.]  That is, to not do it.
+The usual approach to the extra problem is [sampling.](http://en.wikipedia.org/wiki/Sampling_%28statistics%29)  That is, to not do it.
 
 To show really show how computations could be done a trillion numbers however, here is an outline of a map reduce strategy.  The main task indicated that numbers should be generated before doing any computations on them.  Consistent with that, The function getSegment returns data based on a starting and ending index, as if it were accessing some large data store.
 

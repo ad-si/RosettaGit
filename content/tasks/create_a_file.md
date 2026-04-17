@@ -1355,7 +1355,7 @@ File( File.separator + 'docs' ).mkdir()
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=abe59d5d62a4d01817638115e75e7e29 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=abe59d5d62a4d01817638115e75e7e29)'''
 
 ```gambas
 Public Sub Main()
@@ -1499,7 +1499,7 @@ Note: Icon and Unicon accept both / and \ for directory separators.
 ## J
 
 
-The conjunction <tt>!:</tt> with a scalar <tt>1</tt> to the left (<tt>1!:</tt>) provides the underlying cross-platform support for [http://www.jsoftware.com/help/dictionary/dx001.htm working with files].
+The conjunction <tt>!:</tt> with a scalar <tt>1</tt> to the left (<tt>1!:</tt>) provides the underlying cross-platform support for [working with files](http://www.jsoftware.com/help/dictionary/dx001.htm).
 
 
 ```j
@@ -1527,9 +1527,9 @@ Finally note that writing a file in J creates that file.  In typical use, files 
 ### See Also
 
 
-* http://www.jsoftware.com/help/learning/28.htm
-* http://www.jsoftware.com/help/jforc/input_and_output.htm
-* http://www.jsoftware.com/jwiki/Studio/Mapped%20Files
+* <http://www.jsoftware.com/help/learning/28.htm>
+* <http://www.jsoftware.com/help/jforc/input_and_output.htm>
+* <http://www.jsoftware.com/jwiki/Studio/Mapped%20Files>
 
 
 ## Java
@@ -2686,7 +2686,7 @@ I am not aware of any '''standard''' way of creating directories in Scheme.
 
 ## Seed7
 
-Seed7 uses a [http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation standard path representation]
+Seed7 uses a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation)
 to make paths operating system independent. In the standard path representation
 a / is used as path delimiter and drive letters like C: must be written as /c instead.
 Creating files and directories in a file system root may need privileges, so the program may fail,

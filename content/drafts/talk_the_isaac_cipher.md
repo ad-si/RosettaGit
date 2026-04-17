@@ -30,7 +30,7 @@ You might want to add pseudo-code and a description of the algorithm as well as 
 == Pascal Compiler error(s) ==
 
 Curious as I am sometimes, I installed free Pascal and got this compiler error(s)
-https://www.dropbox.com/l/a6rIEG5zByiM4UDKhwGMpr?
+<https://www.dropbox.com/l/a6rIEG5zByiM4UDKhwGMpr>?
 (The IDE does not allow copy / paste :-( 
 Any advice?? --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 10:35, 23 July 2014 (UTC)
 :Odd, but you have a default Lazarus install, I think(?). I'm compiling mine on the command line with 
@@ -49,6 +49,6 @@ MOD    : 734270227D36772A783B4F2A5F206266236978
 ```
 
 --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 19:50, 23 July 2014 (UTC)
-:::Ah good. I was going to suggest adding the fpc bin directory to your %PATH but your install seems to have done that by default. I noticed you were using the old DOS-style (Turbo Pascal) IDE to compile. While there is nothing whatever wrong with this, I'd recommend using a good programmer's text editor like [http://notepad-plus-plus.org/ Notepad++] (Windows) or [http://www.geany.org/ Geany] (Linux) for viewing and editing your code, and then just compiling on the command line with >fpc filename.pas. Simple is often best :) --[[User:BlaiseP|BlaiseP]] ([[User talk:BlaiseP|talk]]) 06:55, 24 July 2014 (UTC)
+:::Ah good. I was going to suggest adding the fpc bin directory to your %PATH but your install seems to have done that by default. I noticed you were using the old DOS-style (Turbo Pascal) IDE to compile. While there is nothing whatever wrong with this, I'd recommend using a good programmer's text editor like [Notepad++](http://notepad-plus-plus.org/) (Windows) or [Geany](http://www.geany.org/) (Linux) for viewing and editing your code, and then just compiling on the command line with >fpc filename.pas. Simple is often best :) --[[User:BlaiseP|BlaiseP]] ([[User talk:BlaiseP|talk]]) 06:55, 24 July 2014 (UTC)
 ::::I'm happily using Kedit ever since I "lost" VM's Xedit and TSO's ISPF Editor. Can I ask you one or the other Pascal Question offline if some arise)? pachl .. chello.at --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 08:51, 24 July 2014 (UTC)
 :::::Sure - I'll gladly help in any way I can. --[[User:BlaiseP|BlaiseP]] ([[User talk:BlaiseP|talk]]) 09:30, 24 July 2014 (UTC)

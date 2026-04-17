@@ -369,7 +369,7 @@ sh returns a map of exit code, stdout, and stderr from the command:
 
 
 We can also use functions specific to Common Lisp implementations.
-In [http://www.sbcl.org/manual/ SBCL], we have RUN-PROGRAM, which returns
+In [SBCL](http://www.sbcl.org/manual/), we have RUN-PROGRAM, which returns
 a process object. This object will contain an output stream if we use
 the :output keyword. We can then read from the stream:
 
@@ -382,7 +382,7 @@ the :output keyword. We can then read from the stream:
 ```
 
 
-A bit more general, using [https://github.com/fare/asdf uiop] and grabbing output as a string:
+A bit more general, using [uiop](https://github.com/fare/asdf) and grabbing output as a string:
 
 ```lisp
 (uiop:run-program '("ls" "-l" "-a") :output :string)
@@ -458,7 +458,7 @@ End
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=d595094b5bc9c3abb17808b2b00938f9 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=d595094b5bc9c3abb17808b2b00938f9)'''
 
 ```gambas
 Public Sub Main()
@@ -1193,9 +1193,9 @@ my $p2 = run 'cat', '-n', :in($p1.out), :out;
 say $p2.out.slurp-rest;
 ```
 
-See [http://doc.perl6.org/type/Proc docs] for more info.
+See [docs](http://doc.perl6.org/type/Proc) for more info.
 
-If you really want to run something in shell and you understand potential security problems, then you can use <code>qx//</code> (interpolates environment variables) or <code>qqx//</code> (interpolates normally). See [http://doc.perl6.org/language/quoting the docs for more info].
+If you really want to run something in shell and you understand potential security problems, then you can use <code>qx//</code> (interpolates environment variables) or <code>qqx//</code> (interpolates normally). See [the docs for more info](http://doc.perl6.org/language/quoting).
 
 
 ```perl6
@@ -1321,7 +1321,7 @@ We use <code>#lang racket/base</code> to show which module system is in. It woul
 
 This demonstrates one function: <code>system</system>. It is the simplest of a family of commands in the <code>racket/system</code> collection.
 
-See [http://docs.racket-lang.org/reference/subprocess.html?q=system#%28def._%28%28lib._racket%2Fsystem..rkt%29._system%29%29 documentation for <code>system</code> and friends].
+See [documentation for <code>system</code> and friends](http://docs.racket-lang.org/reference/subprocess.html?q=system#%28def._%28%28lib._racket%2Fsystem..rkt%29._system%29%29).
 
 
 ```racket

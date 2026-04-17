@@ -20,8 +20,8 @@ Implementations include:
 
 * [True BASIC](https://rosettacode.org/wiki/True_BASIC)
 
-* [https://hp.vector.co.jp/authors/VA008683/english/ Decimal BASIC]
+* [Decimal BASIC](https://hp.vector.co.jp/authors/VA008683/english/)
 
-* [http://www.moria.de/~michael/bas/ Bas] 
+* [Bas](http://www.moria.de/~michael/bas/) 
 
 Compare with [Minimal BASIC](https://rosettacode.org/wiki/Minimal_BASIC).

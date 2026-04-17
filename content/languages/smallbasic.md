@@ -14,6 +14,6 @@ tags = []
 SmallBASIC is fairly similar to [QBasic](https://rosettacode.org/wiki/QuickBASIC#QBasic), although many keywords are different (for example, <code>DO</code> works significantly different in the two languages).
 
 ## See also
-*[http://smallbasic.github.io/ SmallBASIC homepage]
+*[SmallBASIC homepage](http://smallbasic.github.io/)
 *[SmallBASIC on Wikipedia](https://en.wikipedia.org/wiki/SmallBASIC)
-*[http://smallbasic.github.io/pages/reference.html SmallBASIC Language reference]
+*[SmallBASIC Language reference](http://smallbasic.github.io/pages/reference.html)

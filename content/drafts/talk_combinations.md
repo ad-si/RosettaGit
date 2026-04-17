@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Combinations with repetitions ==
-The formula for combinations with repetitions is wrong. Can some body correct it with the right formula from http://en.wikipedia.org/wiki/Multiset_coefficient#Counting_multisets.
+The formula for combinations with repetitions is wrong. Can some body correct it with the right formula from <http://en.wikipedia.org/wiki/Multiset_coefficient#Counting_multisets>.
 
 --[[User:Raghu|Raghu]] ([[User talk:Raghu|talk]]) 13:51, 23 May 2013 (UTC)
 
@@ -24,7 +24,7 @@ The gain of dynamic programming for a problem asking to list all solution rather
 == Formula ==
 
 Strictlly speaking, combinations with repetiotions 5 of 5 give you 126 variants, just combinations give you just 1 variant
-Formula for comb. with repet: http://hijos.ru/wp-content/ql-cache/quicklatex-7f6e17e6e05e9a62c1188bd95ff7e8ad.gif
+Formula for comb. with repet: <http://hijos.ru/wp-content/ql-cache/quicklatex-7f6e17e6e05e9a62c1188bd95ff7e8ad.gif>
 
 Also, we should distinguish third thing - when we have a deal with combinations with repetitions with additional condition.
 Sorry for this sentence looking like folk verses.  

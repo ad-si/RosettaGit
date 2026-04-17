@@ -624,7 +624,7 @@ Reads the GECOS field. SBCL+Linux-specific, probably."
 ## Clojure
 
 
-* [https://github.com/bbatsov/clojure-style-guide The Clojure Style Guide]
+* [The Clojure Style Guide](https://github.com/bbatsov/clojure-style-guide)
 
 
 ## Delphi
@@ -1029,7 +1029,7 @@ Its planetary system comprises :
 
 ## Lua
 
-Extract from https://github.com/zaki/lua-style-guide
+Extract from <https://github.com/zaki/lua-style-guide>
 
  - constants use UPCASE_SNAKE
  - variable names use lower_case_snake
@@ -1194,7 +1194,7 @@ may be necessary to invoke the <code>use utf8</code> pragma that case.
 <b>A caution about variables names and sigils</b>:
 Perl won't stop you from giving three variables in the same scope the names
 <code>%foo</code>, <code>@foo</code> and <code>$foo</code>, but that doesn't
-mean it's a good idea.  Here's a good example of [https://gist.github.com/SqrtNegInf/df5fbab044babc6ca16e229d2d1c669f what not to do] (offsite Perl code)
+mean it's a good idea.  Here's a good example of [what not to do](https://gist.github.com/SqrtNegInf/df5fbab044babc6ca16e229d2d1c669f) (offsite Perl code)
 
 
 ## Perl 6
@@ -1256,9 +1256,9 @@ File extensions generally imply the following:
 
 PicoLisp has not hard-coded naming rules, with the exception of symbols starting
 with an at-mark '@': They have special meaning as "pattern variables" for the
-'[http://software-lab.de/doc/refM.html#match match]' and
-'[http://software-lab.de/doc/refF.html#fill fill]' functions, and as
-'[http://software-lab.de/doc/ref.html#pilog Pilog]' variables.
+'[match](http://software-lab.de/doc/refM.html#match)' and
+'[fill](http://software-lab.de/doc/refF.html#fill)' functions, and as
+'[Pilog](http://software-lab.de/doc/ref.html#pilog)' variables.
 
 Besides this, PicoLisp programs follow these naming conventions:
 
@@ -1302,7 +1302,7 @@ PowerShell, of course, offers the option of naming a variable "anything" if the 
 ## Racket
 
 
-For more details, read the explanation in the Name section of the Style Guide: http://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29 .
+For more details, read the explanation in the Name section of the Style Guide: <http://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29> .
 
 The convention is to use full English lowercase words separated by dashes
 
@@ -1604,14 +1604,14 @@ end
 
 ## Scala
 
-An excellent documentation about naming is given in [https://docs.scala-lang.org/style/naming-conventions.html the Scala Style Guide.]
+An excellent documentation about naming is given in [the Scala Style Guide.](https://docs.scala-lang.org/style/naming-conventions.html)
 
 ## Tcl
 
 Tcl leaves nearly all matters of variable and procedure naming up to the programmer, so styles vary. Variables are not declared by type. However, each variable contains a scalar, list, or hash array. Once assigned a scalar, list, or array, a variable must be unset to be re-assigned a different kind (scalar, list or array).
 
 A few conventions are common:
-* Names typically use alphanumeric characters ('''a-zA-Z0-9_'''). Use of other characters are allowed, but may require extra quoting with curly braces ('''{}''') (See ref: [http://wiki.tcl.tk/10259 Rule #7])
+* Names typically use alphanumeric characters ('''a-zA-Z0-9_'''). Use of other characters are allowed, but may require extra quoting with curly braces ('''{}''') (See ref: [Rule #7](http://wiki.tcl.tk/10259))
 * Two naming styles dominate for variables: '''all_lower_case_with_words_separated_by_underscore''' or '''camelCase'''
 * Namespaces are usually named in lowercase, starting with a letter ('''{[a-z][a-z0-9_]*}''') and separated by double colons ('''::'''). For example space1::space2::space3
 * '''TitleCase''' names are typically used for private members.  TclOO's default export pattern '''{[a-z]*}''' supports this convention.
@@ -1637,7 +1637,7 @@ Sometimes suffixes are added to variables to indicate a significant way that the
 ## Visual Basic
 
 <!-- Naming conventions -->
-Microsoft was encouraging [https://en.wikipedia.org/wiki/Camel_case camelCase] in Visual Basic. And at the beginning Microsoft was also encouraging programmers to use [https://en.wikipedia.org/wiki/Hungarian_notation Hungarian notation].
+Microsoft was encouraging [camelCase](https://en.wikipedia.org/wiki/Camel_case) in Visual Basic. And at the beginning Microsoft was also encouraging programmers to use [Hungarian notation](https://en.wikipedia.org/wiki/Hungarian_notation).
 
 '''Camel case:'''
 

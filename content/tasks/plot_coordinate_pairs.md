@@ -183,7 +183,7 @@ PR READ "postlude/exception.a68" PR
 
 ## AutoHotkey
 
-[http://i.imgur.com/8LgE7FS.png Image] - Link, since uploads seem to be disabled currently.
+[Image](http://i.imgur.com/8LgE7FS.png) - Link, since uploads seem to be disabled currently.
 {{works with|AutoHotkey_L}}(AutoHotkey1.1+)
 ```AutoHotkey
 #SingleInstance, Force
@@ -423,7 +423,7 @@ int main()
 ```
 
 
-No one would use the previous code to produce a plot (that looks [http://i40.tinypic.com/f2t0l0.png this way]; instead, normally we produce data through a program, then we plot the data using e.g. [[Plot x, y arrays#gnuplot|gnuplot]] or other powerful tools; the result (with gnuplot and without enhancement) could look [http://i41.tinypic.com/2qivbsn.png like this] instead.
+No one would use the previous code to produce a plot (that looks [this way](http://i40.tinypic.com/f2t0l0.png); instead, normally we produce data through a program, then we plot the data using e.g. [[Plot x, y arrays#gnuplot|gnuplot]] or other powerful tools; the result (with gnuplot and without enhancement) could look [like this](http://i41.tinypic.com/2qivbsn.png) instead.
 
 
 ### Writing EPS
@@ -811,12 +811,12 @@ int main( int argc, char* argv[] )
 ```
 
 
-[http://i.imgur.com/0RQaxNl.png]
+<http://i.imgur.com/0RQaxNl.png>
 
 
 ## EchoLisp
 
-Resulting image [http://www.echolalie.org/echolisp/images/plot-coordinates.png here].
+Resulting image [here](http://www.echolalie.org/echolisp/images/plot-coordinates.png).
 
 ```scheme
 
@@ -836,7 +836,7 @@ Resulting image [http://www.echolalie.org/echolisp/images/plot-coordinates.png h
 
 ## Erlang
 
-Using [https://github.com/psyeugenic/eplot Eplot] to produce PNG.
+Using [Eplot](https://github.com/psyeugenic/eplot) to produce PNG.
 
 
 ```Erlang
@@ -858,10 +858,10 @@ to_png_file( File, Xs, Ys ) ->
 ```
 
 
-The result looks like [https://github.com/ebengt/rosettacode/blob/master/graphs/plot_coordinate_pairs.png this].
+The result looks like [this](https://github.com/ebengt/rosettacode/blob/master/graphs/plot_coordinate_pairs.png).
 
 =={{header|F Sharp|F#}}==
-Using the [http://www.ffconsultancy.com/products/fsharp_for_visualization/ F# for Visualization] library:
+Using the [F# for Visualization](http://www.ffconsultancy.com/products/fsharp_for_visualization/) library:
 [[Image:FSViz.png|300px|thumb|right|alt text]]
 
 ```fsharp
@@ -878,9 +878,9 @@ Plot([Data(Seq.zip x y)], (0.0, 9.0))
 
 =={{header|Fōrmulæ}}==
 
-In [https://wiki.formulae.org/Plot_coordinate_pairs this] page you can see the solution of this task.
+In [this](https://wiki.formulae.org/Plot_coordinate_pairs) page you can see the solution of this task.
 
-Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions more info]). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
+Fōrmulæ programs are not textual, visualization/edition of programs is done showing/manipulating structures but not text ([more info](http://wiki.formulae.org/Editing_F%C5%8Drmul%C3%A6_expressions)). Moreover, there can be multiple visual representations of the same program. Even though it is possible to have textual representation &mdash;i.e. XML, JSON&mdash; they are intended for transportation effects more than visualization and edition.
 
 The option to show Fōrmulæ programs and their results is showing images. Unfortunately images cannot be uploaded in Rosetta Code.
 
@@ -1035,7 +1035,7 @@ new SwingBuilder().edt {
 
 ## Haskell
 
-gnuplot is a package from [http://hackage.haskell.org/packages/hackage.html HackageDB].
+gnuplot is a package from [HackageDB](http://hackage.haskell.org/packages/hackage.html).
 
 ```haskell
 import Graphics.Gnuplot.Simple
@@ -1157,8 +1157,8 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides floor,ceil]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[numbers.icn provides floor,ceil](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## J
@@ -1170,7 +1170,7 @@ Y=: 2.7 2.8 31.4 38.1 58.0 76.2 100.5 130.0 149.3 180.0
 'dot; pensize 2.4' plot X;Y
 ```
 
-[http://www.jsoftware.com/jwiki/RosettaCode/ExamplePlot1 Output of plot.]
+[Output of plot.](http://www.jsoftware.com/jwiki/RosettaCode/ExamplePlot1)
 
 If you eliminate the left argument to plot,
 the dots will be connected instead of being isolated.
@@ -1509,14 +1509,14 @@ end function
 
 ```
 
-[http://www.diga.me.uk/PlotCoordPairs.gif LB screen]
+[LB screen](http://www.diga.me.uk/PlotCoordPairs.gif)
 
 
 ## M2000 Interpreter
 
 Last statements used for copy the console screen to clipboard
 
-Result image [https://4.bp.blogspot.com/-8XdIVaW79lU/W_iCUBmj92I/AAAAAAAAHbA/TxMl_P22yckQ1Wdi4zsu6k_QVNRZpqJCgCLcBGAs/s1600/graph222.png  here]
+Result image [here](https://4.bp.blogspot.com/-8XdIVaW79lU/W_iCUBmj92I/AAAAAAAAHbA/TxMl_P22yckQ1Wdi4zsu6k_QVNRZpqJCgCLcBGAs/s1600/graph222.png)
 
 
 ```M2000 Interpreter
@@ -1618,7 +1618,7 @@ y={2.7,2.8,31.4,38.1,58.0,76.2,100.5,130.0,149.3,180.0};
 ListPlot[{x, y} // Transpose]
 ```
 
-[http://i43.tinypic.com/2a689yw.png]
+<http://i43.tinypic.com/2a689yw.png>
 
 
 ## MATLAB
@@ -1644,7 +1644,7 @@ ListPlot[{x, y} // Transpose]
 ```
 
 
-[http://img28.picoodle.com/img/img28/4/2/7/f_qsortrange1m_1b7f493.png qsort-range-10-9.png]
+[qsort-range-10-9.png](http://img28.picoodle.com/img/img28/4/2/7/f_qsortrange1m_1b7f493.png)
 
 
 ## OCaml
@@ -1674,7 +1674,7 @@ let () =
 ```
 
 
-Using the [http://forge.ocamlcore.org/projects/archimedes/ Archimedes] library,
+Using the [Archimedes](http://forge.ocamlcore.org/projects/archimedes/) library,
 one can write:
 [[Image:Archimedes.png|300px|thumb|right|Archimedes plot (graphics output).]]
 
@@ -2089,9 +2089,9 @@ Interactive session:
 ```
 
 See some other examples:
-* [http://matplotlib.org/examples/pylab_examples/simple_plot.html simple plot]
-* [http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html scatter demo]
-* [http://matplotlib.org/examples/ticks_and_spines/ticklabels_demo_rotation.html rotated ticklabels demo]
+* [simple plot](http://matplotlib.org/examples/pylab_examples/simple_plot.html)
+* [scatter demo](http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html)
+* [rotated ticklabels demo](http://matplotlib.org/examples/ticks_and_spines/ticklabels_demo_rotation.html)
 
 ==={{libheader|VPython}}===
 
@@ -2442,7 +2442,7 @@ func draw
 
 Output:
 
-https://www.dropbox.com/s/q6tra0cqoty4pya/Plot.jpg?dl=0
+<https://www.dropbox.com/s/q6tra0cqoty4pya/Plot.jpg?dl=0>
 
 
 ## Ruby
@@ -2737,7 +2737,7 @@ y = <2.7, 2.8, 31.4, 38.1, 58.0, 76.2, 100.5, 130.0, 149.3, 180.0>
 main = visualization[curves: <curve[points: ~&p/x y]>]
 ```
 
-([http://i25.tinypic.com/33oi74j.jpg output])
+([output](http://i25.tinypic.com/33oi74j.jpg))
 
 Here's one way you might do it if you were interested in publication
 quality graphics. The dots are connected with a cubic spline interpolating
@@ -2765,7 +2765,7 @@ visualization[
          attributes: {'linecolor': 'black'}]>]
 ```
 
-([http://i32.tinypic.com/x1x6cz.jpg output])
+([output](http://i32.tinypic.com/x1x6cz.jpg))
 
 
 ## VBA

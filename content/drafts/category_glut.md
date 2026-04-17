@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}The Open'''GL''' '''U'''ser '''T'''oolkit, or '''GLUT''', is a toolkit for abstracting operating-system-specific details from programmers writing [[OpenGL]] applications.  The original is available, but no longer maintained. There are [http://www.opengl.org/resources/libraries/windowtoolkits/ multiple implementations of GLUT's API available].
+{{library}}The Open'''GL''' '''U'''ser '''T'''oolkit, or '''GLUT''', is a toolkit for abstracting operating-system-specific details from programmers writing [[OpenGL]] applications.  The original is available, but no longer maintained. There are [multiple implementations of GLUT's API available](http://www.opengl.org/resources/libraries/windowtoolkits/).

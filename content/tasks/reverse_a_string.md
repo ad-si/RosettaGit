@@ -1346,7 +1346,7 @@ Due to using "~" this example needs GNU Dc or OpenBSD Dc.
 
 ## Dart
 
-Since Dart strings are sequences of [http://en.wikipedia.org/wiki/UTF-16 UTF-16] code units, it would not be sufficient to simply reverse the characters in strings, as this would not work with UTF-16 [http://en.wikipedia.org/wiki/UTF-16#Code_points_U.2B10000_to_U.2B10FFFF surrogate pairs] (pairs of UTF-16 code units that represent single characters [http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane outside the Unicode BMP]). However, Dart provides a method to convert strings to sequences of unicode code points (called "runes" in Dart), and these sequences can easily be reversed and used to create new strings, so a string reversal function can be written with a single line of Dart code:
+Since Dart strings are sequences of [UTF-16](http://en.wikipedia.org/wiki/UTF-16) code units, it would not be sufficient to simply reverse the characters in strings, as this would not work with UTF-16 [surrogate pairs](http://en.wikipedia.org/wiki/UTF-16#Code_points_U.2B10000_to_U.2B10FFFF) (pairs of UTF-16 code units that represent single characters [outside the Unicode BMP](http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane)). However, Dart provides a method to convert strings to sequences of unicode code points (called "runes" in Dart), and these sequences can easily be reversed and used to create new strings, so a string reversal function can be written with a single line of Dart code:
 
 
 ```dart
@@ -1647,7 +1647,7 @@ myStyle =
 ```
 
 
-Link to live demo: http://dc25.github.io/reverseStringElm/
+Link to live demo: <http://dc25.github.io/reverseStringElm/>
 
 
 ## Erlang
@@ -2254,7 +2254,7 @@ fun main(s: []i32) = s[::-1]
 
 ## Gambas
 
-'''[https://gambas-playground.proko.eu/?gist=e32989a1ffdc4428075ca6d4cb15dfa6 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=e32989a1ffdc4428075ca6d4cb15dfa6)'''
 
 ```gambas
 Public Sub Main()
@@ -2751,7 +2751,7 @@ julia>
 "yeh"
 ```
 
-The <code>reverse</code> function reverses codepoints ([https://github.com/JuliaLang/julia/issues/6165 because this is the right behavior] for the main application of string reversal: reversed string processing by external C libraries).  However, [https://github.com/JuliaLang/julia/pull/9261 starting in Julia 0.4], you can also reverse the graphemes if you want (i.e. to reverse "visual order" including combining characters etc.) by:
+The <code>reverse</code> function reverses codepoints ([because this is the right behavior](https://github.com/JuliaLang/julia/issues/6165) for the main application of string reversal: reversed string processing by external C libraries).  However, [starting in Julia 0.4](https://github.com/JuliaLang/julia/pull/9261), you can also reverse the graphemes if you want (i.e. to reverse "visual order" including combining characters etc.) by:
 
 ```julia
 julia>
@@ -3281,7 +3281,7 @@ Reversed: gnirts a si sihT
 
 ## MIPS Assembly
 
-This is heavily based off of the [http://rosettacode.org/wiki/Copy_a_string#MIPS_Assembly Copy String] solution. Only a few lines are changed. In the Copy String solution, the pointer at the source string starts at 0th then keeps adding until the loaded byte isn't 0. This instead when copying the string starts at the ''last'' index, then decrements the source pointer a number of times equal to the determined string length.
+This is heavily based off of the [Copy String](http://rosettacode.org/wiki/Copy_a_string#MIPS_Assembly) solution. Only a few lines are changed. In the Copy String solution, the pointer at the source string starts at 0th then keeps adding until the loaded byte isn't 0. This instead when copying the string starts at the ''last'' index, then decrements the source pointer a number of times equal to the determined string length.
 
 
 ```mips
@@ -3705,7 +3705,7 @@ doAssert "先秦兩漢".reversed == "漢兩秦先"
 
 ## Oberon
 
-Tested with [https://miasap.se/obnc OBNC].
+Tested with [OBNC](https://miasap.se/obnc).
 
 ```Oberon
 MODULE reverse;
@@ -3843,7 +3843,7 @@ int main()
 ## OCaml
 
 
-Since OCaml 4.02 we can use the handy [http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html#VALinit String.init] function.
+Since OCaml 4.02 we can use the handy [String.init](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html#VALinit) function.
 
 Here a version that returns a new allocated string (preserving the original one):
 
@@ -4565,7 +4565,7 @@ or
 
 ### Python: Unicode reversal
 
-(See [http://paddy3118.blogspot.com/2009/07/case-of-disappearing-over-bar.html this article] for more information from which this is improved)
+(See [this article](http://paddy3118.blogspot.com/2009/07/case-of-disappearing-over-bar.html) for more information from which this is improved)
 
 '''Note:''' How this looks may be subject to how the tool you are using to view this page can render Unicode.
 
@@ -5377,7 +5377,7 @@ val reversed = str_reverse string;
 ## Stata
 
 
-Use '''[https://www.stata.com/help.cgi?f_strreverse strreverse]''' if there are only ASCII characters, and '''[https://www.stata.com/help.cgi?f_ustrreverse ustrreverse]''' if there are Unicode characters in the string.
+Use '''[strreverse](https://www.stata.com/help.cgi?f_strreverse)''' if there are only ASCII characters, and '''[ustrreverse](https://www.stata.com/help.cgi?f_ustrreverse)''' if there are Unicode characters in the string.
 
 
 ```stata

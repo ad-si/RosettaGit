@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-<includeonly><div class="examplemeta translation">'''Translation of''': {{#if:{{{version|}}}|[http://{{SERVERNAME}}/mw/index.php?oldid={{{version}}}#{{{1}}} {{{1}}} (old version)]|{{#if:{{{subpage|}}}|[[../{{{1}}}|{{{1}}}]]|[[#{{{1}}}|{{{1}}}]]}}}}{{#if:{{{2|}}}| &ndash; {{{2}}} }}</div></includeonly><noinclude>
+<includeonly><div class="examplemeta translation">'''Translation of''': {{#if:{{{version|}}}|[{{{1}}} (old version)](http://{{SERVERNAME}}/mw/index.php?oldid={{{version}}}#{{{1}}})|{{#if:{{{subpage|}}}|[[../{{{1}}}|{{{1}}}]]|[[#{{{1}}}|{{{1}}}]]}}}}{{#if:{{{2|}}}| &ndash; {{{2}}} }}</div></includeonly><noinclude>
 
 This template marks a programming example as a translation of another one on the same task page.
 

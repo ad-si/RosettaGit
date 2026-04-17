@@ -9,4 +9,4 @@ id = 7552
 categories = []
 tags = []
 +++
-[http://ficl.sourceforge.net/ Ficl] is an acronym for "Forth Inspired Command Language".
+[Ficl](http://ficl.sourceforge.net/) is an acronym for "Forth Inspired Command Language".

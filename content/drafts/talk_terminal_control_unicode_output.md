@@ -39,7 +39,7 @@ There are some other problems with the Unix shell solution. It uses a non-portab
 
 Right. What about a set command without hyphens? How does that differ? There is a set command without hyphens, which is portable. [[User:Markhobley|Markhobley]] 19:13, 12 September 2011 (UTC)
 
-: [http://www.in-ulm.de/~mascheck/bourne/index.html ''The Traditional Bourne Shell Family: History and Development''] claims that <code>set --</code> appears in System III. Later, <code>unset</code> appears in System V Release 2 (SVR2). Shell functions, like <code>unicode_tty() { ... }</code>, also appear in SVR2. I expect that today's shells have SVR4 features. --[[User:Kernigh|Kernigh]] 18:04, 12 September 2011 (UTC)
+: [''The Traditional Bourne Shell Family: History and Development''](http://www.in-ulm.de/~mascheck/bourne/index.html) claims that <code>set --</code> appears in System III. Later, <code>unset</code> appears in System V Release 2 (SVR2). Shell functions, like <code>unicode_tty() { ... }</code>, also appear in SVR2. I expect that today's shells have SVR4 features. --[[User:Kernigh|Kernigh]] 18:04, 12 September 2011 (UTC)
 
 My books are based on System V, and they do not mention it, so it is probably an undocumented feature. There are some compatible shells, where the set -- does not work either. I stumbled across some notes somewhere, which talks about the implementation of the set command, and how the behaviour of the doublehypen is inconsistent when given as a parameter to set. I can't remember where I saw it at the moment though, I think it might have been an awk book, or a korn shell book, rather than a System V book. I am looking into it. [[User:Markhobley|Markhobley]] 19:25, 12 September 2011 (UTC)
 

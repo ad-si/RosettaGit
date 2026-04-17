@@ -46,7 +46,7 @@ Given the name of a language on Rosetta Code, find all tasks which are not imple
 
 Note: Implementations should allow for fetching more data than can be returned in one request to Rosetta Code.
 
-You'll need to use the Media Wiki API, which you can find out about locally, [http://rosettacode.org/mw/api.php here], or in Media Wiki's API documentation at, [http://www.mediawiki.org/wiki/API_Query API:Query]
+You'll need to use the Media Wiki API, which you can find out about locally, [here](http://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](http://www.mediawiki.org/wiki/API_Query)
 
 
 
@@ -781,7 +781,7 @@ func main() {
 
 ## Haskell
 
-{{libheader|HTTP XML}} from [http://hackage.haskell.org/packages/hackage.html HackageDB]
+{{libheader|HTTP XML}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -2425,7 +2425,7 @@ proc get_tasks {category} {
     if {[info exists cache($category)]} {
 	return $cache($category)
     }
-    set base_url http://www.rosettacode.org/mw/api.php
+    set base_url <http://www.rosettacode.org/mw/api.php>
     set query {
 	action	query
 	list	categorymembers
@@ -2444,7 +2444,7 @@ proc get_tasks {category} {
 	    # Process redirects
             if {[http::ncode $response] == 301} {
                 set newurl [dict get [http::meta $response] Location]
-                if {[string match http://* $newurl]} {
+                if {[string match <http://*> $newurl]} {
                     set url $newurl
                 } else {
                     set url [regexp -inline {http://[^/]+} $url]

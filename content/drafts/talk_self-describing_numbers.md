@@ -146,9 +146,9 @@ This task appears to be a duplicate of [[Self-describing numbers]].
 
 == Autobiographical number ==
 
-Wikipedia http://en.wikipedia.org/wiki/Self-descriptive_number describes a self descriptive number:
+Wikipedia <http://en.wikipedia.org/wiki/Self-descriptive_number> describes a self descriptive number:
 
 A self-descriptive number is an integer m that in a given base b is b digits long in which each digit d at position n (the most significant digit being at position 0 and the least significant at position b - 1) counts how many instances of digit n are in m.
 
-The task described here is closer to that which wikipedia defines as an Autobiographical number http://en.wikipedia.org/wiki/Autobiographical_numbers
+The task described here is closer to that which wikipedia defines as an Autobiographical number <http://en.wikipedia.org/wiki/Autobiographical_numbers>
 --[[User:Nigel Galloway|Nigel Galloway]] 12:07, 10 January 2013 (UTC)

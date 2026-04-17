@@ -223,7 +223,7 @@ func main() {
 ## Haskell
 
 
-Example uses the [https://hackage.haskell.org/package/ldap-client <tt>ldap-client</tt>] package:
+Example uses the [<tt>ldap-client</tt>](https://hackage.haskell.org/package/ldap-client) package:
 
 
 ```haskell
@@ -326,7 +326,7 @@ fun main(args: Array<String>) = LDAP(mapOf("hostname" to "localhost", "port"  to
 
 ## NetRexx
 
-Uses the [http://directory.apache.org/api/ Apache LDAP API], connecting to a local [http://directory.apache.org/apacheds/1.5/ ApacheDS] LDAP directory server.
+Uses the [Apache LDAP API](http://directory.apache.org/api/), connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 ```NetRexx
 /* NetRexx */
@@ -421,7 +421,7 @@ class RDirectoryLDAP public
 
 ## Perl
 
-[http://search.cpan.org/dist/perl-ldap/|Perl LDAP Modules]
+[LDAP Modules](http://search.cpan.org/dist/perl-ldap/|Perl)
 
 ```perl
 
@@ -452,7 +452,7 @@ my %DB := LMDB::DB.open(:path<some-dir>, %connection-parameters);
 
 ## PHP
 
-[http://php.net/ldap PHP LDAP Reference]
+[PHP LDAP Reference](http://php.net/ldap)
 
 ```php
 <?php
@@ -479,7 +479,7 @@ $success = ldap_bind($ldap, $username, $password);
 {{works with|Python|2.6}}
 {{libheader|python-ldap}}
 
-[http://www.python-ldap.org/doc/html/index.html python-ldap Documentation]
+[python-ldap Documentation](http://www.python-ldap.org/doc/html/index.html)
 
 
 ```python
@@ -539,7 +539,7 @@ This is a direct translation of the C code -- I have no idea how to try it out s
 
 Similar to Tcl, assume the AD server talks LDAP.
 
-There are many Ruby LDAP packages ([http://rubyforge.org/search/?type_of_search=soft&words=ldap&Search=Search]) -- this solution uses [http://net-ldap.rubyforge.org/rdoc/ Net::LDAP] ("Pure Ruby LDAP Tools" on RubyForge, gem name "ruby-net-ldap")
+There are many Ruby LDAP packages (<http://rubyforge.org/search/?type_of_search=soft&words=ldap&Search=Search>) -- this solution uses [Net::LDAP](http://net-ldap.rubyforge.org/rdoc/) ("Pure Ruby LDAP Tools" on RubyForge, gem name "ruby-net-ldap")
 
 {{libheader|RubyGems}}
 
@@ -564,7 +564,7 @@ print shell$("dir") ' shell out to the os and print it
 
 ## Rust
 
-This solution uses the popular [https://crates.io/crates/ldap3 ldap3] crate.
+This solution uses the popular [ldap3](https://crates.io/crates/ldap3) crate.
 
 ```rust
 

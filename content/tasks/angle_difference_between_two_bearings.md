@@ -62,7 +62,7 @@ languages = [
 +++
 
 ## Task
-Finding the angle between two bearings is often confusing.<ref>[https://stackoverflow.com/questions/16180595/find-the-angle-between-two-bearings]</ref>
+Finding the angle between two bearings is often confusing.<ref><https://stackoverflow.com/questions/16180595/find-the-angle-between-two-bearings></ref>
 
 
 ;Task:
@@ -1242,7 +1242,7 @@ def angleDifferenceB(double b1, double b2) {
 }
 ```
 
-NOTE: We could ADD 540 and SUBTRACT 180 instead (as did many others, notably [[Angle_difference_between_two_bearings#360_Assembly|360_Assembly]], [[Angle_difference_between_two_bearings#NewLISP|NewLISP]], [[Angle_difference_between_two_bearings#Racket|Racket]], and [[Angle_difference_between_two_bearings#REXX|REXX]]). The difference is that my choice normalizes "about face" to +180° while the other (At least in [https://rosettacode.org/wiki/Category:Groovy Groovy] and other [https://rosettacode.org/wiki/Category:C C]-derived languages) normalizes "about face" to -180°.
+NOTE: We could ADD 540 and SUBTRACT 180 instead (as did many others, notably [[Angle_difference_between_two_bearings#360_Assembly|360_Assembly]], [[Angle_difference_between_two_bearings#NewLISP|NewLISP]], [[Angle_difference_between_two_bearings#Racket|Racket]], and [[Angle_difference_between_two_bearings#REXX|REXX]]). The difference is that my choice normalizes "about face" to +180° while the other (At least in [Groovy](https://rosettacode.org/wiki/Category:Groovy) and other [C](https://rosettacode.org/wiki/Category:C)-derived languages) normalizes "about face" to -180°.
 
 '''Test:'''
 
@@ -2871,7 +2871,7 @@ mod tests {
 
 ## Scala
 
-{{Out}}Best seen running in your browser either by [https://scalafiddle.io/sf/lH5eUix/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/IgQSmzcjSpSMxvWWoZUc9w Scastie (remote JVM)].
+{{Out}}Best seen running in your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/lH5eUix/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/IgQSmzcjSpSMxvWWoZUc9w).
 
 ```Scala
 object AngleDifference extends App {
@@ -2905,8 +2905,8 @@ object AngleDifference extends App {
 
 ## Seed7
 
-The library [http://seed7.sourceforge.net/libraries/float.htm float.s7i] supports the
-operator [http://seed7.sourceforge.net/libraries/float.htm#(in_float)mod(in_float) mod],
+The library [float.s7i](http://seed7.sourceforge.net/libraries/float.htm) supports the
+operator [mod](http://seed7.sourceforge.net/libraries/float.htm#(in_float)mod(in_float)),
 which can be used to solve this task easily.
 
 

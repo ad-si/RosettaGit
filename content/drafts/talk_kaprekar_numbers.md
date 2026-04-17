@@ -11,9 +11,9 @@ tags = []
 +++
 
 ==We've been linked to from a prestigious source==
-[http://webcache.googleusercontent.com/search?q=cache:6-8YE2tEQKwJ:oeis.org/A006886+site:https://oeis.org/A006886+%22Rosetta%2BCode%22&cd=1&hl=en&ct=clnk&gl=uk The On-Line Encyclopedia of Integer Sequences] has a link to this RC page! (The link is to the google cache - for the highlight) --[[User:Paddy3118|Paddy3118]] 22:24, 29 August 2011 (UTC)
+[The On-Line Encyclopedia of Integer Sequences](http://webcache.googleusercontent.com/search?q=cache:6-8YE2tEQKwJ:oeis.org/A006886+site:https://oeis.org/A006886+%22Rosetta%2BCode%22&cd=1&hl=en&ct=clnk&gl=uk) has a link to this RC page! (The link is to the google cache - for the highlight) --[[User:Paddy3118|Paddy3118]] 22:24, 29 August 2011 (UTC)
 
-And on this entry [https://oeis.org/A194218 A194218] we get mentioned a second time as a place to compare programs! This is just brilliant to me as I have admired OEIS for what it collates for some time. --[[User:Paddy3118|Paddy3118]] 06:11, 30 August 2011 (UTC)
+And on this entry [A194218](https://oeis.org/A194218) we get mentioned a second time as a place to compare programs! This is just brilliant to me as I have admired OEIS for what it collates for some time. --[[User:Paddy3118|Paddy3118]] 06:11, 30 August 2011 (UTC)
 : Sweet. --[[User:Short Circuit|Michael Mol]] 13:15, 30 August 2011 (UTC)
 
 ==Java count missing==
@@ -51,12 +51,12 @@ We are splitting into the number into numeric values the belong to the set of "w
 ::Right. The "whole numbers" verbage avoids the issue of explaining that chains of zeros do not fulfil the criteria, (although we would probably still need to keep that as a note to remind the task implementers.) --[[User:Markhobley|Markhobley]] 16:22, 8 June 2011 (UTC)
 :::"Whole numbers", to me, includes 0 so I don't think that works that way. Is "whole numbers" an official mathematical set like "natural numbers"? Maybe say "split in to two positive parts"? --[[User:Mwn3d|Mwn3d]] 16:33, 8 June 2011 (UTC)
 
-::::There isn't a consensus on the definition of a whole number, natural numbers, or counting number (especially in grammer/grade/highschool/secondary school texts). See the links for "Mathworld" http://mathworld.wolfram.com/WholeNumber.html, http://mathworld.wolfram.com/NaturalNumber.html, http://mathworld.wolfram.com/CountingNumber.html, all those seem to prefer defintions based on integers (positive integers, nonnegative integers, negative intergers, ∙∙∙ --[[User:Gerard Schildberger|Gerard Schildberger]] 19:26, 21 March 2012 (UTC)
+::::There isn't a consensus on the definition of a whole number, natural numbers, or counting number (especially in grammer/grade/highschool/secondary school texts). See the links for "Mathworld" <http://mathworld.wolfram.com/WholeNumber.html>, <http://mathworld.wolfram.com/NaturalNumber.html>, <http://mathworld.wolfram.com/CountingNumber.html>, all those seem to prefer defintions based on integers (positive integers, nonnegative integers, negative intergers, ∙∙∙ --[[User:Gerard Schildberger|Gerard Schildberger]] 19:26, 21 March 2012 (UTC)
 
 :::Generally zero is not considered to be a whole number, but there are people who would disagree. We could use the term "integers greater than or equal to one" --[[User:Markhobley|Markhobley]] 19:40, 8 June 2011 (UTC)
 
 :::FWIW zero is positive, but not a whole number, so "positive parts" would be no clearer IMHO, I would also call them numerical components, rather than parts, because 12 can be split into parts of sizes 8 and 4, but 1 and 2 are its numerical components. --[[User:Markhobley|Markhobley]] 19:45, 8 June 2011 (UTC)
-::::OK 0 cannot be positive because then no one would need to call anything "non-negative" ([http://www.positiveintegers.org/] [http://mathworld.wolfram.com/PositiveInteger.html] [http://simple.wikipedia.org/wiki/Positive_number]). The phrase "string representation" earlier in the first sentence avoids the "split" definition you're thinking of. And once again, the examples following the language reinforce the wording. --[[User:Mwn3d|Mwn3d]] 19:58, 8 June 2011 (UTC)
+::::OK 0 cannot be positive because then no one would need to call anything "non-negative" (<http://www.positiveintegers.org/> <http://mathworld.wolfram.com/PositiveInteger.html> <http://simple.wikipedia.org/wiki/Positive_number>). The phrase "string representation" earlier in the first sentence avoids the "split" definition you're thinking of. And once again, the examples following the language reinforce the wording. --[[User:Mwn3d|Mwn3d]] 19:58, 8 June 2011 (UTC)
 
 ==Promoting to full task status==
 As the resolution of any of the discussions above in unlikely to change the fundamental task  goals, and we have several correct examples.--[[User:Paddy3118|Paddy3118]] 20:07, 8 June 2011 (UTC)
@@ -69,7 +69,7 @@ I'm tempted to change all the "long" type to "long long" in the C++ sample code,
 :That change seems fine since the output goes up pretty high anyway. Does that just mean they used a 64-bit machine? --[[User:Mwn3d|Mwn3d]] 17:17, 14 June 2011 (UTC)
 ::What 'long' means depends on the compiler, but it's typically defined to be the longest native integer type, while 'long long' is (I think) defined to be 64-bit.  Someone correct me if I'm wrong. I'll change the code anyhow, because it overflows with 32 bit long for sure. --[[User:Ledrug|Ledrug]] 17:25, 14 June 2011 (UTC)
 ::: On every C and C++ compiler I've used on a 64-bit OS (so, GNU on Linux and MSVC/MSVC++ on Windows), 'long' is 32-bits. 'long long' is 64-bits. I don't know about, e.g. SPARC64, though. That's why you get things like uint32_t from stdint.h or DWORD from Windows.h. --[[User:Short Circuit|Michael Mol]] 18:05, 14 June 2011 (UTC)
-:::: It's always sort of confusing to me anyway.  For reference, see http://www.unix.org/whitepapers/64bit.html, which also has a table for integer types. It's true that if you worry about the exact length, use exactly defined types instead of the compiler native ones. --[[User:Ledrug|Ledrug]] 18:28, 14 June 2011 (UTC)
+:::: It's always sort of confusing to me anyway.  For reference, see <http://www.unix.org/whitepapers/64bit.html>, which also has a table for integer types. It's true that if you worry about the exact length, use exactly defined types instead of the compiler native ones. --[[User:Ledrug|Ledrug]] 18:28, 14 June 2011 (UTC)
 ::::: If 53 bits is enough (and I think it is, here), you might also consider using double. --[[User:Rdm|Rdm]] 20:01, 14 June 2011 (UTC)
 :::::: Heh, tried double, seg faulted.  I'm not very motivated to see what's happening--probably that atol()--so I'll just leave it as is. --[[User:Ledrug|Ledrug]] 21:44, 14 June 2011 (UTC)
 

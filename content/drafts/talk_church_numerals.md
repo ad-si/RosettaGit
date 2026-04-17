@@ -18,7 +18,7 @@ Not sure if this needs the addition of a more stretching task ? It may already n
 
 ===Worker-wrapper transformation in Haskell===
 
-In response to Spoon!'s query – "not sure why `go` helper is necessary": the worker-wrapper transform is a useful reflex whenever recursion is needed. http://ku-fpg.github.io/practice/workerwrapper/ – (recursive name found in a more local namespace – often a smaller frame pushed to stack etc. etc) but no particular view on it here. Your edit looks fine. [[User:Hout|Hout]] ([[User talk:Hout|talk]])
+In response to Spoon!'s query – "not sure why `go` helper is necessary": the worker-wrapper transform is a useful reflex whenever recursion is needed. <http://ku-fpg.github.io/practice/workerwrapper/> – (recursive name found in a more local namespace – often a smaller frame pushed to stack etc. etc) but no particular view on it here. Your edit looks fine. [[User:Hout|Hout]] ([[User talk:Hout|talk]])
 
 
 ### Phix disclaimer

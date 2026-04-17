@@ -747,7 +747,7 @@ Sleep
 =
 ## Gambas
 =
-'''[https://gambas-playground.proko.eu/?gist=cb94500c68749f6f93915f3f10de5a03 Click this link to run this code]'''
+'''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=cb94500c68749f6f93915f3f10de5a03)'''
 
 ```gambas
 Public Sub Main()
@@ -1139,7 +1139,7 @@ return(0);
 
 
 Most general: string or array as collection (collection size known at run-time)
-: ''Note: idxtype can be removed and [http://gcc.gnu.org/onlinedocs/gcc/Typeof.html typeof(col&#91;0&#93;)] can be used in it's place with [[GCC]]''
+: ''Note: idxtype can be removed and [typeof(col&#91;0&#93;)](http://gcc.gnu.org/onlinedocs/gcc/Typeof.html) can be used in it's place with [[GCC]]''
 
 ```c
 
@@ -2122,7 +2122,7 @@ for (var a in o) {
 
 
 ;Deprecated
-There is also a <tt>[https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for_each...in for each in]</tt> construct that iterates over the values of an object:
+There is also a <tt>[for each in](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for_each...in)</tt> construct that iterates over the values of an object:
 
 ```JavaScript
 h = {"one":1, "two":2, "three":3}
@@ -2142,7 +2142,7 @@ for each (y in h) print(y);
 ```
 
 
-There is also a <tt>[https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for...of for of]</tt> construct that iterates over the values of an object:
+There is also a <tt>[for of](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for...of)</tt> construct that iterates over the values of an object:
 
 ```JavaScript
 h = {"one":1, "two":2, "three":3}
@@ -3362,7 +3362,7 @@ collection.each do |i|
 end
 ```
 
-There are various flavours of <code>each</code> that may be class-dependent: [http://www.ruby-doc.org/core/classes/String.html#M000862 String#each_char], [http://www.ruby-doc.org/core/classes/Array.html#M002174 Array#each_index], [http://www.ruby-doc.org/core/classes/Hash.html#M002863 Hash#each_key], etc
+There are various flavours of <code>each</code> that may be class-dependent: [String#each_char](http://www.ruby-doc.org/core/classes/String.html#M000862), [Array#each_index](http://www.ruby-doc.org/core/classes/Array.html#M002174), [Hash#each_key](http://www.ruby-doc.org/core/classes/Hash.html#M002863), etc
 
 
 

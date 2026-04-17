@@ -986,7 +986,7 @@ puts "#{x} => #{rank(x)} => #{unrank(rank(x))}"
 
 ## Scala
 
-{{Out}}Best seen in running your browser either by [https://scalafiddle.io/sf/7NvnU4t/0 ScalaFiddle (ES aka JavaScript, non JVM)] or [https://scastie.scala-lang.org/l0uAGyyCTDSAV9Q45vRGaA Scastie (remote JVM)].
+{{Out}}Best seen in running your browser either by [ScalaFiddle (ES aka JavaScript, non JVM)](https://scalafiddle.io/sf/7NvnU4t/0) or [Scastie (remote JVM)](https://scastie.scala-lang.org/l0uAGyyCTDSAV9Q45vRGaA).
 
 ```Scala
 object IndexFiniteList extends App {

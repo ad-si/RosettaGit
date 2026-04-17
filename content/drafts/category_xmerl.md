@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-[http://www.erlang.org/doc/apps/xmerl/ xmerl Reference Manual]
+[xmerl Reference Manual](http://www.erlang.org/doc/apps/xmerl/)

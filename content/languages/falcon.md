@@ -25,9 +25,9 @@ Key goals of the language:
 * File dumping.
 * Embedding into application (for real-time data control/flexible manipulation).
 * Application of high level logic to computing problems.
-You can try it at [http://ideone.com/ Ideone].
+You can try it at [Ideone](http://ideone.com/).
 
 ## See Also
 * [Wikipedia: Falcon](https://en.wikipedia.org/wiki/Falcon_(programming_language))
-* [http://www.freesoftwaremagazine.com/articles/falcon_programming_language_brief_tutorial a brief tutorial]
-* [http://www.linuxjournal.com/magazine/falcon-programming-language-nutshell The Falcon Programming Language in a Nutshell]
+* [a brief tutorial](http://www.freesoftwaremagazine.com/articles/falcon_programming_language_brief_tutorial)
+* [The Falcon Programming Language in a Nutshell](http://www.linuxjournal.com/magazine/falcon-programming-language-nutshell)

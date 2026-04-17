@@ -35,7 +35,7 @@ would, in the strictest sense, fullfill a random Chess960 starting position   (a
 
 However, I believe the spirit of the requirement of ''random'' be that the random position would produce ''any'' of the 960 ''possible'' starting positions. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 04:53, 8 May 2014 (UTC)
 
-:[http://www.xkcd.com/221/ relevant] :-) --[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 05:49, 8 May 2014 (UTC)
+:[relevant](http://www.xkcd.com/221/) :-) --[[User:Grondilu|Grondilu]] ([[User talk:Grondilu|talk]]) 05:49, 8 May 2014 (UTC)
 :: Excellent!     ''':-)'''
 
 To this end, I wrote a REXX program (2<sup>nd</sup> programming entry) that randomly generates all possible unique 960 Chess960 starting positions and it shows a log of the results (unique starting positions) after each one-thousand generations.
@@ -223,7 +223,7 @@ When I view the task page, the Chess symbols in Unicode appear as small square b
 
 ::They are small in "normal" viewing mode and they occupy "one character", so you can image how small the glyphs are. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 06:44, 8 May 2014 (UTC)
 
-:::The numbers are the Unicode code points in hex that have no glyph in your current font. For fonts that support these symbols see for example [http://www.alanwood.net/unicode/miscellaneous_symbols.html Test for Unicode support in Web browsers].
+:::The numbers are the Unicode code points in hex that have no glyph in your current font. For fonts that support these symbols see for example [Test for Unicode support in Web browsers](http://www.alanwood.net/unicode/miscellaneous_symbols.html).
 :::In Firefox you would need to change the Sans Serif font (Preferences - Content - Fonts&Colours/Advanced...). --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 09:36, 8 May 2014 (UTC)
 
 As an aside, some languages don't support Unicode characters. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 06:44, 8 May 2014 (UTC)

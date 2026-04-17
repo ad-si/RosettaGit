@@ -14,4 +14,4 @@ tags = []
 Crimp is a library for [[Tcl]] that performs image manipulation.
 
 ==Links==
-* [http://chiselapp.com/user/andreas_kupries/repository/crimp/home Package home page]
+* [Package home page](http://chiselapp.com/user/andreas_kupries/repository/crimp/home)

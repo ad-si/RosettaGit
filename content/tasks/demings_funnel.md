@@ -47,8 +47,8 @@ Note that rules 2, 3, and 4 give successively worse results.  Trying to determin
 
 
 ;Further information:
-* Further [http://blog.newsystemsthinking.com/w-edwards-deming-and-the-funnel-experiment/ explanation and interpretation]
-* [https://www.youtube.com/watch?v=2VogtYRc9dA Video demonstration] of the funnel experiment at the Mayo Clinic.
+* Further [explanation and interpretation](http://blog.newsystemsthinking.com/w-edwards-deming-and-the-funnel-experiment/)
+* [Video demonstration](https://www.youtube.com/watch?v=2VogtYRc9dA) of the funnel experiment at the Mayo Clinic.
 
 
 ## D

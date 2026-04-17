@@ -24,7 +24,7 @@ Optional: provide an update mechanism, to repeatedly re-render the triangle.  (P
 
 Optional: after updating the opengl rendering target but before rendering the triangle, query the opengl implementation to determine which versions of shaders are supported by the rendering target, list the tested shaders and the available shaders and then use a supported shader.
 
-See also: [http://www.opengl.org/documentation/glsl/ opengl.org's gl shader language documentation], and [http://www.lighthouse3d.com/tutorials/glsl-tutorial/ lighthouse3d.com's glsl tutorial].
+See also: [opengl.org's gl shader language documentation](http://www.opengl.org/documentation/glsl/), and [lighthouse3d.com's glsl tutorial](http://www.lighthouse3d.com/tutorials/glsl-tutorial/).
 
 ## C
 
@@ -607,7 +607,7 @@ void main() {
 
 ## Tcl
 
-Using the [http://www.tcl3d.org Tcl3d] library and liberally borrowing from [http://wiki.tcl.tk/41477 this pixel shader demo on the wiki], here is a brute translation of the C implementation.
+Using the [Tcl3d](http://www.tcl3d.org) library and liberally borrowing from [this pixel shader demo on the wiki](http://wiki.tcl.tk/41477), here is a brute translation of the C implementation.
 
 
 ```Tcl

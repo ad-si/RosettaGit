@@ -1538,8 +1538,7 @@ for my $type (keys %type) {
 }
 ```
 
-[Euclidean Voronoi diagram](
-  https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/voronoi-Euclidean.png)
+[Euclidean Voronoi diagram](https://github.com/SqrtNegInf/Rosettacode-Perl5-Smoke/blob/master/ref/voronoi-Euclidean.png)
 
 
 ## Perl 6

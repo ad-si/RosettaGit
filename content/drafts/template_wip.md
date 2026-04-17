@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{alertbox|#ffc8c8"|<center>This content is a [http://en.wiktionary.org/wiki/work_in_progress '''W'''ork '''I'''n '''P'''rogress]. Please help to fix it and remove this message.</center>}}
+{{alertbox|#ffc8c8"|<center>This content is a ['''W'''ork '''I'''n '''P'''rogress](http://en.wiktionary.org/wiki/work_in_progress). Please help to fix it and remove this message.</center>}}
 <noinclude>{{template}}</noinclude>

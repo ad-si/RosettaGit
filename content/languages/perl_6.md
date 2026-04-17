@@ -12,11 +12,11 @@ tags = []
 Can't install Perl 6 locally?
 Try Perl 6 on-line!
 
-[https://perl6.github.io/6pad/ Try Perl 6 on 6pad].
+[Try Perl 6 on 6pad](https://perl6.github.io/6pad/).
 
-[https://tio.run/#perl6 Try Perl 6 on tio.run].
+[Try Perl 6 on tio.run](https://tio.run/#perl6).
 
-[https://glot.io/new/perl6 Try Perl 6 on glot.io].
+[Try Perl 6 on glot.io](https://glot.io/new/perl6).
 Perl 6 is the up-and-coming little sister to Perl 5.
 Though it resembles previous versions of [Perl](https://rosettacode.org/wiki/Perl) to no small degree, Perl 6 is substantially a new language; by design, it isn't backwards-compatible with Perl 5.
 The first official release was at Christmas of 2015.

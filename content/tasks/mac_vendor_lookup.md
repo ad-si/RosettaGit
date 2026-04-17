@@ -40,7 +40,7 @@ languages = [
 ]
 +++
 
-Every connected device around the world comes with a unique Media Access Control address, or a  [https://en.wikipedia.org/wiki/MAC_address MAC address]. A common task a network administrator may come across is being able to identify a network device's manufacturer when given only a MAC address.
+Every connected device around the world comes with a unique Media Access Control address, or a  [MAC address](https://en.wikipedia.org/wiki/MAC_address). A common task a network administrator may come across is being able to identify a network device's manufacturer when given only a MAC address.
 
 ;Basic Task:
 The task is to interface with one (or numerous) APIs that exist on the internet and retrieve the device manufacturer based on a supplied MAC address.
@@ -95,7 +95,7 @@ Hon Hai Precision Ind. Co.,Ltd.
 
 ## C
 
-Takes MAC address as input, prints usage on incorrect invocation, requires [https://curl.haxx.se/libcurl/ libcurl]
+Takes MAC address as input, prints usage on incorrect invocation, requires [libcurl](https://curl.haxx.se/libcurl/)
 
 ```C
 

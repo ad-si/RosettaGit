@@ -53,7 +53,7 @@ languages = [
 ]
 +++
 
-This puzzle is borrowed from   [http://math-frolic.blogspot.co.uk/2012/08/mind-wrenching.html math-frolic.blogspot].
+This puzzle is borrowed from   [math-frolic.blogspot](http://math-frolic.blogspot.co.uk/2012/08/mind-wrenching.html).
 
 
 Given the following twelve statements, which of them are true?
@@ -3590,8 +3590,8 @@ object LogicPuzzle extends App {
 }
 ```
 
-{{Out}}See it in running in your browser by [https://scastie.scala-lang.org/XaRsz8gOQxavQ5rwMxi9ZA Scastie (JVM)] or
-by [https://scalafiddle.io/sf/x73tnT6/1 ScalaFiddle (JavaScript)].
+{{Out}}See it in running in your browser by [Scastie (JVM)](https://scastie.scala-lang.org/XaRsz8gOQxavQ5rwMxi9ZA) or
+by [ScalaFiddle (JavaScript)](https://scalafiddle.io/sf/x73tnT6/1).
 
 
 ## Sidef

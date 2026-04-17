@@ -64,7 +64,7 @@ One must then choose an “<math>e</math>” such that <math>\gcd(e, (p-1)\times
 The decryption value <math>d</math> is then found by solving
 : <math>d\times e \equiv  1 \mod (p-1)\times(q-1)</math>
 
-The security of the code is based on the secrecy of the Private Key (decryption exponent) “<math>d</math>” and the difficulty in factoring “<math>n</math>”.  Research into RSA facilitated advances in factoring and a number of [http://www.rsa.com/rsalabs/node.asp?id=2092 factoring challenges].   Keys of 768 bits have been successfully factored.  While factoring of keys of 1024 bits has not been demonstrated, NIST expected them to be factorable by 2010 and now recommends 2048 bit keys going forward (see [[wp:Key_size#Asymmetric_algorithm_key_lengths|Asymmetric algorithm key lengths]] or [http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf NIST 800-57 Pt 1 Revised Table 4: Recommended algorithms and minimum key sizes]).
+The security of the code is based on the secrecy of the Private Key (decryption exponent) “<math>d</math>” and the difficulty in factoring “<math>n</math>”.  Research into RSA facilitated advances in factoring and a number of [factoring challenges](http://www.rsa.com/rsalabs/node.asp?id=2092).   Keys of 768 bits have been successfully factored.  While factoring of keys of 1024 bits has not been demonstrated, NIST expected them to be factorable by 2010 and now recommends 2048 bit keys going forward (see [[wp:Key_size#Asymmetric_algorithm_key_lengths|Asymmetric algorithm key lengths]] or [NIST 800-57 Pt 1 Revised Table 4: Recommended algorithms and minimum key sizes](http://csrc.nist.gov/publications/nistpubs/800-57/sp800-57-Part1-revised2_Mar08-2007.pdf)).
 
 '''Summary of the task requirements:'''
 
@@ -518,7 +518,7 @@ As string: Rosetta Code
 
 ## Go
 
-Note: see the [https://golang.org/pkg/crypto/rsa/ crypto/rsa] package
+Note: see the [crypto/rsa](https://golang.org/pkg/crypto/rsa/) package
 included with Go for a full implementation.
 
 ```go
@@ -762,7 +762,7 @@ Decoded = "xxxxxxxxxxxxxxxxxx"
 ## J
 
 
-Note, for an implementation with blocking (and a much smaller key) see [http://rosettacode.org/mw/index.php?title=RSA_code&oldid=103802]
+Note, for an implementation with blocking (and a much smaller key) see <http://rosettacode.org/mw/index.php?title=RSA_code&oldid=103802>
 
 
 ```j
@@ -785,7 +785,7 @@ Rosetta Code
 ```
 
 
-Note: as indicated at http://www.jsoftware.com/help/dictionary/special.htm, <code>N&|@^</code> does not bother with creating the exponential intermediate result.
+Note: as indicated at <http://www.jsoftware.com/help/dictionary/special.htm>, <code>N&|@^</code> does not bother with creating the exponential intermediate result.
 
 
 ## Java

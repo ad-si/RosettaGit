@@ -23,7 +23,7 @@ When developers talk about "web scraping" they are usually talking about much mo
 Thus I would expect the task to describe the fetching and parsing of a web page, in HTML form ... with a subsequent encoding of selected results into a new query (and/or posted form).  This would give a far more realistic example of what "web scraping" means to most people who would employ the phrase. [[User:JimD|JimD]] 23:00, 8 September 2008 (UTC)
 
 :Hi Jim, 
-:I have read your criticism, and looked at the introduction of the definition of web scraping [http://en.wikipedia.org/wiki/Web_scraping here]. It seems we disagree on the size of example appropriate to R.C. but not really on what web scraping is. If you have a larger example then the central idea of extracting data from a live web page may be lost in the details of how the data is extracted from HTML, or what is done subsequently with that data. A lot of the tasks on R.C. are small and I thought this would fit that mould.
+:I have read your criticism, and looked at the introduction of the definition of web scraping [here](http://en.wikipedia.org/wiki/Web_scraping). It seems we disagree on the size of example appropriate to R.C. but not really on what web scraping is. If you have a larger example then the central idea of extracting data from a live web page may be lost in the details of how the data is extracted from HTML, or what is done subsequently with that data. A lot of the tasks on R.C. are small and I thought this would fit that mould.
 :You could always add a separate task involving extracting data from HTML files? --[[User:Paddy3118|Paddy3118]] 12:56, 9 September 2008 (UTC)
 
 :: Whatever the task calls for, It's perfectly acceptable to break a particular language's code example out into a separate page (e.g. [[Web Scraping/x86 Macro Assembler]]) if the code size gets too large.  If the task itself calls for something beyond a function or two, the task falls under a "project" scope as in [[RCBF]] and [[RCSNUSP]], where the task itself becomes a category, and each example gets its own page there.
@@ -45,6 +45,6 @@ I've noticed that some examples disagree on what exactly should be printed. Some
 :A big aim of the task is showing what can be done with the libraries easily available with the language. I would not want to be more exact on what should be scraped if that would merely add more code to parse text. Obviously returning the whole page would be wrong, as would returning time from another zone, or time that was not from the web page, or the use of some obscure library. (I'm with the sleeping dogs, AAaaoooooowwww...) --[[User:Paddy3118|Paddy3118]] 09:08, 21 December 2009 (UTC)
 
 == xPath and HTML web scraping ==
-You should have a chance with xPath working on XHTML, but HTML in general can be notoriously badly formed and contains [http://www.w3schools.com/tags/tag_br.asp tags without terminators] such as <nowiki>
+You should have a chance with xPath working on XHTML, but HTML in general can be notoriously badly formed and contains [tags without terminators](http://www.w3schools.com/tags/tag_br.asp) such as <nowiki>
 </nowiki>
 I can't remember how well formed this site is though. --[[User:Paddy3118|Paddy3118]] 16:49, 13 May 2011 (UTC)

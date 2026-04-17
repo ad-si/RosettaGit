@@ -12,7 +12,7 @@ tags = []
 
 It is amazing how wrong some ideas of early computing were. Fortunately none of modern languages really supports this mess. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 11:53, 22 November 2008 (UTC)
 
-I don't think the guys in the 1960's had a monopoly on bad ideas... take the new "\" (back slash) operator in PHP[http://news.php.net/php.internals/41374] as an example.  Fortunately, every now and then, a good idea floats to the top, the trick is being able to spot the good idea early and rewind all the bad ideas even earlier. [[User:NevilleDNZ|NevilleDNZ]] 15:01, 22 November 2008 (UTC)
+I don't think the guys in the 1960's had a monopoly on bad ideas... take the new "\" (back slash) operator in PHP<http://news.php.net/php.internals/41374> as an example.  Fortunately, every now and then, a good idea floats to the top, the trick is being able to spot the good idea early and rewind all the bad ideas even earlier. [[User:NevilleDNZ|NevilleDNZ]] 15:01, 22 November 2008 (UTC)
 
 Seeing an entry on Jensen's Device just floats my boat.
 

@@ -453,7 +453,7 @@ First 10 rows of the Bell triangle:
 
 ### via recurrence relation
 
-This solution makes use of a [https://en.wikipedia.org/wiki/Bell_number#Summation_formulas recurrence relation] involving binomial coefficients.
+This solution makes use of a [recurrence relation](https://en.wikipedia.org/wiki/Bell_number#Summation_formulas) involving binomial coefficients.
 {{works with|Factor|0.98}}
 
 ```factor
@@ -483,7 +483,7 @@ First 15 Bell numbers:
 
 ### via Stirling sums
 
-This solution defines Bell numbers in terms of [https://en.wikipedia.org/wiki/Bell_number#Summation_formulas sums of Stirling numbers of the second kind].
+This solution defines Bell numbers in terms of [sums of Stirling numbers of the second kind](https://en.wikipedia.org/wiki/Bell_number#Summation_formulas).
 {{works with|Factor|0.99 development release 2019-07-10}}
 
 ```factor
@@ -585,7 +585,7 @@ First ten rows of Bell's triangle:
 
 ## Julia
 
-Source: Combinatorics at https://github.com/JuliaMath/Combinatorics.jl/blob/master/src/numbers.jl
+Source: Combinatorics at <https://github.com/JuliaMath/Combinatorics.jl/blob/master/src/numbers.jl>
 
 ```julia
 """

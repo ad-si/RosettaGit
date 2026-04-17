@@ -83,7 +83,7 @@ Create a program that takes an [[wp:Reverse Polish notation|RPN]] representation
 
 *   [[Parsing/Shunting-yard algorithm]]   for a method of generating an RPN from an infix expression.
 *   [[Parsing/RPN calculator algorithm]]   for a method of calculating a final value from this output RPN expression.
-*   [http://www.rubyquiz.com/quiz148.html Postfix to infix]   from the RubyQuiz site.
+*   [Postfix to infix](http://www.rubyquiz.com/quiz148.html)   from the RubyQuiz site.
 
 
 
@@ -2133,7 +2133,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt

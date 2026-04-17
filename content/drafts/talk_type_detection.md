@@ -20,7 +20,7 @@ Hi, Is this the start of a draft task? --[[User:Paddy3118|Paddy3118]] ([[User ta
 ::#Designed to '''demonstrate how languages are similar and different''', and to
 ::#'''Aid a person with a grounding in one approach to a problem in learning another'''
 :? [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 17:47, 7 October 2015 (UTC)
-: PS There are some existing tasks, like list flattening (http://rosettacode.org/wiki/Flatten_a_list) which already demonstrate type-conditional divergence of evaluation or flow. Perhaps "type detection", however, would either be too parochial (or simply misleading) as a description of what is happening in, for example, pattern matching. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 18:14, 7 October 2015 (UTC)
+: PS There are some existing tasks, like list flattening (<http://rosettacode.org/wiki/Flatten_a_list>) which already demonstrate type-conditional divergence of evaluation or flow. Perhaps "type detection", however, would either be too parochial (or simply misleading) as a description of what is happening in, for example, pattern matching. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 18:14, 7 October 2015 (UTC)
 
 ==Spam attempt ?==
 :I notice that www.BugMeNot.com provides a login-control evasion service, by sharing ersatz login credentials.
