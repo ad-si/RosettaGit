@@ -41,17 +41,24 @@ uv run --no-project python .claude/skills/extract-task-code/extract.py <task-nam
 without writing. Pass `--sync-frontmatter` to rewrite the frontmatter
 `languages = [...]` list from the emitted shortcodes — this works on a first
 run and also on an already-bundled task (since it reads the shortcodes, not
-the sections) and correctly preserves slugs whose trailing digits are part
-of the language name (e.g. `xslt_2_0` is kept intact unless a sibling
-`xslt_2_1` exists, in which case it collapses to `xslt_2`).
+the sections). Collapse rule: `foo_1`, `foo_2`, `foo_3` (the exact `_1..N`
+pattern the extractor emits for multi-block sections) collapses to `foo`;
+any other trailing digits are treated as part of the language name and
+stay distinct (so `algol_60` / `algol_68` and `modula_2` / `modula_3` are
+not merged).
 
 The script:
 
 1. Auto-repairs leftover wiki-to-markdown conversion artifacts in the source
-   (`=={{header|X}}==` headings, `<lang>…</lang>` tags including multi-word
-   args like `<lang X86_64 Assembly>` (whitespace is collapsed to `_`),
-   `<pre style=…>` output blocks, prose-level `{{libheader|…}}` /
-   `{{trans|…}}` / `{{works with|…}}` / `{{omit from|…}}` / `{{out}}` / etc.).
+   (`=={{header|X}}==` headings, combined `=={{header|A}} and {{header|B}}==`
+   headings *and* their half-converted form `## A}} and {{header|B`,
+   markdown-link titles like `## [Rust](/languages/rust)` (the link text is
+   used for LANG_EXT lookup and slugification), `<lang>…</lang>` tags
+   including multi-word args like `<lang X86_64 Assembly>` (whitespace is
+   collapsed to `_`), `<pre style=…>` output blocks, prose-level
+   `{{libheader|…}}` / `{{trans|…}}` / `{{works with|…}}` / `{{omit from|…}}`
+   / `{{out}}` / `{{incorrect|…}}` / `{{improve|…}}` / `{{untested|…}}`
+   / etc.).
 2. Runs preflight checks — see below. On failure, aborts *before* moving any
    files, so the source is left intact.
 3. Moves `content/tasks/<task>.md` to `content/tasks/<task>/index.md` (if not

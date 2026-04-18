@@ -299,6 +299,24 @@ def repair_wiki_leftovers(text: str) -> str:
     text = re.sub(r"^==\s*(.*\{\{\s*header\|[^}]+\}\}.*)==\s*$",
                   combined_repl, text, flags=re.M)
 
+    # Half-converted combined headers: the `==` wrappers have already been
+    # stripped (by an earlier wiki->md pass) but leftover `}}` and
+    # `{{header|…` fragments survive inside a `## …` line.
+    # E.g. `## Icon}} and {{header|Unicon`
+    #      `## Mathematica}} / {{header|Wolfram Language`
+    def partial_combined_repl(m: re.Match[str]) -> str:
+        first = m.group(1).strip()
+        connector = m.group(2).strip()
+        second = m.group(3).strip().rstrip("}").strip()
+        return f"## {first} {connector} {second}"
+
+    text = re.sub(
+        r"^##\s*(.+?)\s*\}\}\s*(and|/|,)\s*\{\{\s*header\|\s*(.+?)\s*$",
+        partial_combined_repl,
+        text,
+        flags=re.M,
+    )
+
     def _fence_from_lang(raw: str) -> str:
         # Whitespace inside a <lang ...> arg (e.g. `<lang X86_64 Assembly>`)
         # is collapsed to `_` so the resulting fence tag is a single token.
@@ -344,7 +362,8 @@ def repair_wiki_leftovers(text: str) -> str:
     # / {{omit from|X}}
     text = re.sub(
         r"^\s*\{\{\s*(?:works with|libheader|trans|translation of|out|output|in|"
-        r"uses from|requires|header|omit from)\s*(?:\|[^}]*)?\}\}\s*$",
+        r"uses from|requires|header|omit from|incorrect|improve|untested|needs review|"
+        r"wont work with)\s*(?:\|[^}]*)?\}\}\s*$",
         "",
         text,
         flags=re.M | re.I,
@@ -352,8 +371,14 @@ def repair_wiki_leftovers(text: str) -> str:
     return text
 
 
+def _clean_title(title: str) -> str:
+    """Flatten markdown links `[text](url)` to `text` so lookups match."""
+    return re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", title).strip()
+
+
 def parse_sections(lines: list[str]) -> list[tuple[str, int, int]]:
-    """Return [(title, start_line, end_line)] for each level-2 section."""
+    """Return [(title, start_line, end_line)] for each level-2 section.
+    Titles are normalized: markdown links `[text](url)` collapse to `text`."""
     sections = []
     current_title: str | None = None
     current_start: int | None = None
@@ -363,7 +388,7 @@ def parse_sections(lines: list[str]) -> list[tuple[str, int, int]]:
             if current_title is not None:
                 assert current_start is not None
                 sections.append((current_title, current_start, i))
-            current_title = m.group(1).strip()
+            current_title = _clean_title(m.group(1))
             current_start = i
     if current_title is not None:
         assert current_start is not None
@@ -497,28 +522,36 @@ def preflight_checks(
 
 def collect_shortcode_slugs(text: str, task: str) -> list[str]:
     """Return the sorted language slugs referenced by `{{ code(src=...) }}`
-    shortcodes for the given task. Collapses multi-block suffixes: if the text
-    contains both `foo_1.ext` and `foo_2.ext`, the slug is `foo`; a lone
-    `xslt_2_0.ext` (no `xslt_2_1` sibling) keeps its trailing digits.
+    shortcodes for the given task. Collapses multi-block suffixes to their
+    base only when the siblings form a contiguous 1..N run (which is the
+    exact pattern the extractor emits for multi-block sections). Version-
+    number suffixes like `algol_60`/`algol_68` or `modula_2`/`modula_3` stay
+    distinct because their numeric suffixes are not 1..N.
     """
     filenames = re.findall(
         rf'code\(src="content/tasks/{re.escape(task)}/([^"]+)"',
         text,
     )
     stems = {re.sub(r"\.[^.]+$", "", f) for f in filenames}
-    slugs: set[str] = set()
+    # Group stems by their `(base, index)` split so we can check the run.
+    indices_by_base: dict[str, set[int]] = {}
     for stem in stems:
         m = re.match(r"(.+)_(\d+)$", stem)
         if m:
-            base = m.group(1)
-            has_siblings = any(
-                other != stem and re.fullmatch(rf"{re.escape(base)}_\d+", other)
-                for other in stems
-            )
-            if has_siblings:
-                slugs.add(base)
-                continue
-        slugs.add(stem)
+            base, idx = m.group(1), int(m.group(2))
+            indices_by_base.setdefault(base, set()).add(idx)
+    collapsed_bases = {
+        base
+        for base, idxs in indices_by_base.items()
+        if len(idxs) >= 2 and idxs == set(range(1, len(idxs) + 1))
+    }
+    slugs: set[str] = set()
+    for stem in stems:
+        m = re.match(r"(.+)_(\d+)$", stem)
+        if m and m.group(1) in collapsed_bases:
+            slugs.add(m.group(1))
+        else:
+            slugs.add(stem)
     return sorted(slugs)
 
 
