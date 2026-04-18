@@ -1,0 +1,264 @@
+--
+-- demo\rosetta\2048.exw
+--
+include pGUI.e
+
+Ihandle canvas, dialog
+cdCanvas cddbuffer, cdcanvas
+
+constant tile_colours = {#CCC0B4,   -- blank
+                         #EEE4DA,   -- 2
+                         #EDE0C8,   -- 4
+                         #F2B179,   -- 8
+                         #F59563,   -- 16
+                         #F67C5F,   -- 32
+                         #F65E3B,   -- 64
+                         #EDCF72,   -- 128
+                         #EDCC61,   -- 256
+                         #EDC850,   -- 512
+                         #EDC53F,   -- 1024
+                         #EDC22E}   -- 2048
+
+-- the 4x4 board.
+--  note that values are [1..12] for [blank,2,4,8,..2048].
+--  (merging two eights is not 8+8->16 but 4+1->5, internally)
+sequence board
+
+integer newgame = 1
+
+procedure add_rand(integer count)
+-- (nb infinite loop if board is full)
+integer x, y
+    while count do
+        x = rand(4)
+        y = rand(4)
+        if board[y][x]=1 then   -- blank
+            board[y][x] = 2+(rand(10)=10)
+            count -= 1
+        end if
+    end while
+end procedure
+
+integer valid = 0
+integer prev, nxt, bxy
+
+procedure move_x(integer x, integer y, integer d)
+    bxy = board[x][y]
+    if bxy!=1 then
+        if bxy=prev then
+            board[x][y] = 1
+            bxy += 1
+            board[x][nxt] = bxy
+            nxt += d
+            prev = 13
+            valid = 1
+        else
+            if prev=1
+            or y!=nxt then
+                if prev!=1
+                and prev!=13 then
+                    nxt += d
+                end if
+                if y!=nxt then
+                    board[x][y] = 1
+                    board[x][nxt] = bxy
+                    valid = 1
+                end if
+            end if
+            prev = bxy
+        end if
+    end if
+end procedure
+
+procedure move_y(integer x, integer y, integer d)
+    bxy = board[x][y]
+    if bxy!=1 then
+        if bxy=prev then
+            board[x][y] = 1
+            bxy += 1
+            board[nxt][y] = bxy
+            nxt += d
+            prev = 13
+            valid = 1
+        else
+            if prev=1
+            or x!=nxt then
+                if prev!=1
+                and prev!=13 then
+                    nxt += d
+                end if
+                if x!=nxt then
+                    board[x][y] = 1
+                    board[nxt][y] = bxy
+                    valid = 1
+                end if
+            end if
+            prev = bxy
+        end if
+    end if
+end procedure
+
+function move(integer key)
+-- a non-zero result means it changed something.
+    valid = 0
+    if key=K_LEFT then
+        for x=1 to 4 do
+            prev = 13
+            nxt = 1
+            for y=1 to 4 do
+                move_x(x,y,+1)
+            end for
+        end for
+    elsif key=K_UP then
+        for y=1 to 4 do
+            prev = 13
+            nxt = 4
+            for x=4 to 1 by -1 do
+                move_y(x,y,-1)
+            end for
+        end for
+    elsif key=K_RIGHT then
+        for x=1 to 4 do
+            prev = 13
+            nxt = 4
+            for y=4 to 1 by -1 do
+                move_x(x,y,-1)
+            end for
+        end for
+    elsif key=K_DOWN then
+        for y=1 to 4 do
+            prev = 13
+            nxt = 1
+            for x=1 to 4 do
+                move_y(x,y,+1)
+            end for
+        end for
+    end if
+    return valid
+end function
+
+function game_won()
+    for i=1 to length(board) do
+        if find(12,board[i]) then return 1 end if
+    end for
+    return 0
+end function
+
+constant valid_keys = {K_LEFT,K_DOWN,K_RIGHT,K_UP}
+
+function no_valid_moves()
+sequence saved_board = board
+    for i=1 to length(valid_keys) do
+        if move(valid_keys[i]) then
+            board = saved_board
+            return 0    -- OK
+        end if
+    end for
+    return 1 -- game over...
+end function
+
+function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
+integer tx, ty, bxy,
+        ox,oy,              -- top right coords
+        os,ts,              -- overall and tile size
+        ts2                 -- half tile, for number positioning
+integer {dw,dh} = IupGetIntInt(canvas, "DRAWSIZE")
+    if dw>=dh then
+        ox = floor((dw-dh)/2)
+        oy = 0
+        os = dh
+    else
+        ox = 0
+        oy = floor((dh-dw)/2)
+        os = dw
+    end if
+    ts = floor((os-10)/4-7)
+    ts2 = floor(ts/2+5)-10
+
+    if newgame then
+        board = repeat(repeat(1,4),4)
+        add_rand(2)
+        newgame = 0
+    end if
+
+    cdCanvasActivate(cddbuffer)
+    cdCanvasSetBackground(cddbuffer, #FAF8EF)
+    cdCanvasClear(cddbuffer)
+    cdCanvasSetForeground(cddbuffer, #BBADA0)
+    cdCanvasRoundedBox(cddbuffer, ox+5, ox+os-5, oy+5, oy+os-5, 10, 10)
+
+    tx = ox+15
+    for y=1 to 4 do
+        ty = oy+15
+        for x=1 to 4 do
+            bxy = board[x][y]
+            cdCanvasSetForeground(cddbuffer, tile_colours[bxy])
+            cdCanvasRoundedBox(cddbuffer, tx, tx+ts-10, ty, ty+ts-10, 5, 5)
+            if bxy>1 then
+                cdCanvasSetForeground(cddbuffer, iff(bxy<=3?#776E65:#F9F6F2))
+                cdCanvasFont(cddbuffer, "Calibri", CD_BOLD, iff(bxy>10?32:40))
+                cdCanvasText(cddbuffer, tx+ts2, ty+ts2-25-iff(bxy<11?7:0), sprint(power(2,bxy-1)))
+            end if
+            ty += ts+5
+        end for
+        tx += ts+5
+    end for
+    cdCanvasFlush(cddbuffer)
+    return IUP_DEFAULT
+end function
+
+function map_cb(Ihandle ih)
+    cdcanvas = cdCreateCanvas(CD_IUP, ih)
+    cddbuffer = cdCreateCanvas(CD_DBUFFER, cdcanvas)
+    {} = cdCanvasTextAlignment(cddbuffer, CD_SOUTH)
+    return IUP_DEFAULT
+end function
+
+function key_cb(Ihandle /*ih*/, atom c)
+    if c=K_ESC then return IUP_CLOSE end if
+    if find(c,valid_keys) then
+        if move(c) then
+            IupUpdate(canvas)
+            string mbmsg = ""
+            if game_won() then
+                mbmsg = "!!!YOU WON!!!\n\nAnother Go?"
+            else
+                add_rand(1)
+--              repaintWindow(main)
+                IupUpdate(canvas)
+                if no_valid_moves() then
+                    mbmsg = "You Lost.\n\nAnother Go?"
+                end if
+            end if
+            if length(mbmsg) then
+                if IupAlarm("Game Over",mbmsg,"Yes","No")=1 then
+                    newgame=1
+                else
+                    return IUP_CLOSE
+                end if
+            end if
+        end if
+        IupUpdate(canvas)
+    end if
+    return IUP_CONTINUE
+end function
+
+procedure main()
+
+    IupOpen()
+
+    canvas = IupCanvas("RASTERSIZE=520x540")
+    IupSetCallback(canvas, "MAP_CB", Icallback("map_cb"))
+    IupSetCallback(canvas, "ACTION", Icallback("redraw_cb"))
+
+    dialog = IupDialog(canvas,"MINSIZE=440x450")
+    IupSetAttribute(dialog,"TITLE","2048");
+    IupSetCallback(dialog, "K_ANY", Icallback("key_cb"));
+
+    IupShow(dialog)
+    IupSetAttribute(canvas, "RASTERSIZE", NULL)
+
+    IupMainLoop()
+    IupClose()
+end procedure
+main()
