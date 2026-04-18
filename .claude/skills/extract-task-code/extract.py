@@ -314,6 +314,17 @@ def repair_wiki_leftovers(text: str) -> str:
     )
     # </pre> -> ```  (in case any closes survived)
     text = re.sub(r"</pre>", "```", text)
+
+    # Strip common prose-level wiki templates that carry metadata but no
+    # structural meaning in markdown. Keep them on their own line if possible.
+    # {{works with|Foo}} / {{libheader|Bar}} / {{trans|C}} / {{out}} / {{in}}
+    text = re.sub(
+        r"^\s*\{\{\s*(?:works with|libheader|trans|translation of|out|in|"
+        r"uses from|requires|header)\s*(?:\|[^}]*)?\}\}\s*$",
+        "",
+        text,
+        flags=re.M | re.I,
+    )
     return text
 
 
@@ -366,10 +377,10 @@ def extract_code_blocks(
     return blocks
 
 
-def resolve_bundle_path(root: Path, task_name: str) -> tuple[Path, Path, bool]:
-    """Return (bundle_dir, index_file, already_bundle).
+def locate_source(root: Path, task_name: str) -> tuple[Path, Path, Path, bool]:
+    """Return (tasks_dir, source_file, bundle_dir, already_bundle).
 
-    Moves content/tasks/<task>.md -> content/tasks/<task>/index.md if needed.
+    Does NOT move or create anything — that happens later after preflight passes.
     """
     tasks_dir = root / "content" / "tasks"
     single_md = tasks_dir / f"{task_name}.md"
@@ -377,20 +388,121 @@ def resolve_bundle_path(root: Path, task_name: str) -> tuple[Path, Path, bool]:
     index_md = bundle_dir / "index.md"
 
     if bundle_dir.is_dir() and index_md.is_file():
-        return bundle_dir, index_md, True
+        return tasks_dir, index_md, bundle_dir, True
     if single_md.is_file():
-        bundle_dir.mkdir(exist_ok=True)
-        single_md.rename(index_md)
-        return bundle_dir, index_md, False
+        return tasks_dir, single_md, bundle_dir, False
     raise SystemExit(
         f"Task not found: neither {single_md} nor {index_md} exists."
     )
+
+
+def parse_frontmatter_languages(text: str) -> list[str] | None:
+    """Return the `languages = [...]` list from TOML frontmatter, or None."""
+    fm_match = re.match(r"\+\+\+\n(.*?)\n\+\+\+", text, re.S)
+    if not fm_match:
+        return None
+    body = fm_match.group(1)
+    langs_match = re.search(r"^languages\s*=\s*\[(.*?)\]", body, re.S | re.M)
+    if not langs_match:
+        return None
+    return re.findall(r'"([^"]+)"', langs_match.group(1))
+
+
+def preflight_checks(
+    text: str,
+    sections: list[tuple[str, int, int]],
+    lines: list[str],
+) -> tuple[list[str], list[str]]:
+    """Scan for issues that would produce wrong output. Returns (blockers, warnings)."""
+    blockers: list[str] = []
+    warnings: list[str] = []
+
+    # Strip HTML comments before other checks so their contents don't trigger
+    # false positives — but flag any fenced code buried inside them.
+    for m in re.finditer(r"<!--(.*?)-->", text, re.S):
+        if "```" in m.group(1) or "<lang" in m.group(1):
+            line_no = text[: m.start()].count("\n") + 1
+            blockers.append(
+                f"line {line_no}: fenced code or <lang> tag inside an HTML comment; "
+                "remove the comment wrapping before extracting."
+            )
+    stripped = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+
+    # Unrepaired wiki artifacts (repair pass should have handled these).
+    for tag, label in (
+        (r"<lang\b", "<lang> opener"),
+        (r"</lang>", "</lang> closer"),
+        (r"<pre\b", "<pre> opener"),
+        (r"</pre>", "</pre> closer"),
+    ):
+        for m in re.finditer(tag, stripped):
+            line_no = stripped[: m.start()].count("\n") + 1
+            blockers.append(f"line {line_no}: unrepaired {label}")
+
+    # Surviving wiki-style headers (==…==).
+    for i, line in enumerate(lines, 1):
+        if re.match(r"^==[^=].*==\s*$", line):
+            blockers.append(f"line {i}: unrepaired wiki heading {line.strip()!r}")
+
+    # Non-header `{{…}}` wiki templates. Scan only prose (outside fenced code
+    # blocks) — text inside fences may legitimately contain `{{...}}` (e.g. Go
+    # templates, Tera samples). Allow the `{{ code(...) }}` shortcode.
+    prose_only = re.sub(r"(?m)^```.*?^```\s*$", "", stripped, flags=re.S)
+    for m in re.finditer(r"\{\{([^}]+)\}\}", prose_only):
+        inner = m.group(1).strip()
+        if inner.startswith("code(") or inner.startswith("code "):
+            continue
+        line_no = prose_only[: m.start()].count("\n") + 1
+        blockers.append(
+            f"line {line_no}: wiki template still present: {{{{{inner}}}}}"
+        )
+
+    # Fenced blocks with no language tag in any implementation section.
+    for title, start, end in sections:
+        if title in SKIP_SECTIONS:
+            continue
+        section_slice = lines[start:end]
+        for block_start, _, flang, _ in extract_code_blocks(section_slice):
+            if not flang.strip():
+                blockers.append(
+                    f"line {start + block_start + 1}: fenced code block with no "
+                    f"language tag in section {title!r}"
+                )
+    return blockers, warnings
+
+
+def cross_check_frontmatter(
+    frontmatter_langs: list[str] | None,
+    section_slugs: list[str],
+) -> list[str]:
+    """Warn about frontmatter/section mismatches. Non-blocking — the skill's
+    after-run step is to reconcile these."""
+    if frontmatter_langs is None:
+        return []
+    fm = set(frontmatter_langs)
+    sec = set(section_slugs)
+    warnings = []
+    for missing in sorted(sec - fm):
+        warnings.append(
+            f"section extracts to {missing!r} but it's not in frontmatter languages"
+        )
+    for stale in sorted(fm - sec):
+        warnings.append(
+            f"frontmatter lists {stale!r} but no matching section was found"
+        )
+    return warnings
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("task", help="task filename without .md")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Proceed even if preflight blockers are detected. Use only after "
+             "reviewing the reported issues.",
+    )
     parser.add_argument(
         "--root",
         default=None,
@@ -412,8 +524,8 @@ def main() -> int:
         if root is None:
             raise SystemExit("Could not find config.toml up the tree; pass --root.")
 
-    bundle_dir, index_md, already = resolve_bundle_path(root, args.task)
-    text = index_md.read_text()
+    _, source_file, bundle_dir, already = locate_source(root, args.task)
+    text = source_file.read_text()
     repaired = repair_wiki_leftovers(text)
     if repaired != text:
         print("Repaired wiki-to-markdown leftovers.")
@@ -421,6 +533,37 @@ def main() -> int:
 
     lines = text.split("\n")
     sections = parse_sections(lines)
+
+    # Preflight: scan for problems the extractor can't safely handle. Runs
+    # BEFORE any file moves so a failing check leaves the source untouched.
+    blockers, pre_warnings = preflight_checks(text, sections, lines)
+    frontmatter_langs = parse_frontmatter_languages(text)
+    section_slugs = [
+        LANG_EXT[t][0] if t in LANG_EXT else slugify(t)
+        for t, _, _ in sections
+        if t not in SKIP_SECTIONS
+    ]
+    fm_warnings = cross_check_frontmatter(frontmatter_langs, section_slugs)
+
+    for w in pre_warnings + fm_warnings:
+        print(f"PREFLIGHT WARN: {w}", file=sys.stderr)
+    if blockers:
+        for b in blockers:
+            print(f"PREFLIGHT BLOCK: {b}", file=sys.stderr)
+        if not args.force:
+            print(
+                f"\nAborting: {len(blockers)} preflight blocker(s). Fix them "
+                "in the source file, or re-run with --force to override.",
+                file=sys.stderr,
+            )
+            return 2
+        print("Continuing despite blockers due to --force.", file=sys.stderr)
+
+    # Convert to page bundle (if needed) only after preflight passes.
+    index_md = bundle_dir / "index.md"
+    if not already and not args.dry_run:
+        bundle_dir.mkdir(exist_ok=True)
+        source_file.rename(index_md)
 
     # Process sections in reverse so splices don't shift later indices.
     new_lines = list(lines)

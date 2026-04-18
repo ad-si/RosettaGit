@@ -42,24 +42,39 @@ without writing.
 
 The script:
 
-1. Moves `content/tasks/<task>.md` to `content/tasks/<task>/index.md` (if not
-   already a page bundle).
-2. Auto-repairs leftover wiki-to-markdown conversion artifacts in the source
+1. Auto-repairs leftover wiki-to-markdown conversion artifacts in the source
    (`=={{header|X}}==` headings, `<lang>…</lang>` tags, `<pre style=…>` output
-   blocks).
-3. Walks `## Language` sections, extracts every non-`txt` fenced code block
+   blocks, prose-level `{{libheader|…}}` / `{{trans|…}}` / `{{works with|…}}` /
+   `{{out}}` / etc.).
+2. Runs preflight checks — see below. On failure, aborts *before* moving any
+   files, so the source is left intact.
+3. Moves `content/tasks/<task>.md` to `content/tasks/<task>/index.md` (if not
+   already a page bundle).
+4. Walks `## Language` sections, extracts every non-`txt` fenced code block
    into `content/tasks/<task>/<slug>.<ext>`, and replaces the block with a
    `{{ code(src=…, lang=…) }}` call.
-4. Multiple blocks within one section get numeric suffixes
+5. Multiple blocks within one section get numeric suffixes
    (`javascript_1.js`, `javascript_2.js`).
 
-## Before running
+## Preflight checks (built into the script)
 
-- Confirm the task isn't already a page bundle.
-- Read the task's frontmatter `languages = [...]` list to confirm the slugs.
-- Skim the file for oddities the auto-repair may miss (e.g. wiki templates
-  other than `{{header}}`, fenced blocks with no language, code inside HTML
-  comments). Patch manually before running if needed.
+Preflight runs automatically after the repair pass and before any file moves.
+It aborts (exit code 2) if it finds any of:
+
+- Unrepaired `<lang>` / `<pre>` tags or `==…==` wiki headings.
+- Non-`{{ code(...) }}` wiki templates in prose (fenced content is exempt so
+  Go template syntax etc. in output samples doesn't false-positive).
+- Fenced code blocks with no language tag in implementation sections.
+- Fenced code or `<lang>` buried inside HTML comments.
+
+Non-blocking warnings are also reported:
+
+- Frontmatter `languages = [...]` entries with no matching section, and
+  sections whose slug isn't in `languages` (you're expected to reconcile
+  these after the run).
+
+Override with `--force` only after reviewing each reported issue. The typical
+fix is to edit the source markdown and rerun without `--force`.
 
 ## After running
 
