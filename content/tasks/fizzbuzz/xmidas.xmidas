@@ -1,0 +1,15 @@
+startmacro
+  loop 100 count
+    calc/quiet three ^count 3 modulo
+    calc/quiet five ^count 5 modulo
+    if ^three eq 0 and ^five eq 0
+      say "fizzbuzz"
+    elseif ^three eq 0
+      say "fizz"
+    elseif ^five eq 0
+      say "buzz"
+    else
+      say ^count
+    endif
+  endloop
+endmacro
