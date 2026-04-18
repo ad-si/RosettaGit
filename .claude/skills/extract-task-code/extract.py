@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import textwrap
 from pathlib import Path
 
 
@@ -264,6 +265,18 @@ def slugify(title: str) -> str:
     """Lowercase, replace non-alnum runs with `_`, strip edges."""
     s = re.sub(r"[^a-zA-Z0-9]+", "_", title.lower()).strip("_")
     return s or "section"
+
+
+def normalize_code(code: str) -> str:
+    """Drop leading/trailing blank lines and strip common indentation."""
+    lines = code.split("\n")
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    while lines and not lines[-1].strip():
+        lines.pop()
+    if not lines:
+        return ""
+    return textwrap.dedent("\n".join(lines))
 
 
 def repair_wiki_leftovers(text: str) -> str:
@@ -606,7 +619,7 @@ def main() -> int:
                     filename = f"{slug}_{file_counter}.{ext}"
                 target = bundle_dir / filename
                 if not args.dry_run:
-                    target.write_text(code.rstrip() + "\n")
+                    target.write_text(normalize_code(code) + "\n")
                 total_files += 1
                 shortcode_lang = flang if flang else default_lang
                 src = f"content/tasks/{args.task}/{filename}"

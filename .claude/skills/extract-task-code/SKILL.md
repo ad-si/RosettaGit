@@ -52,7 +52,9 @@ The script:
    already a page bundle).
 4. Walks `## Language` sections, extracts every non-`txt` fenced code block
    into `content/tasks/<task>/<slug>.<ext>`, and replaces the block with a
-   `{{ code(src=…, lang=…) }}` call.
+   `{{ code(src=…, lang=…) }}` call. Each extracted file is normalized:
+   leading/trailing blank lines are dropped and any common leading
+   indentation is stripped (via `textwrap.dedent`).
 5. Multiple blocks within one section get numeric suffixes
    (`javascript_1.js`, `javascript_2.js`).
 
