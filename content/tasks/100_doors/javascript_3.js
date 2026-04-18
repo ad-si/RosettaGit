@@ -1,0 +1,1 @@
+[{"door":1, "open":true}, {"door":4, "open":true}, {"door":9, "open":true}, {"door":16, "open":true}, {"door":25, "open":true}, {"door":36, "open":true}, {"door":49, "open":true}, {"door":64, "open":true}, {"door":81, "open":true}, {"door":100, "open":true}]

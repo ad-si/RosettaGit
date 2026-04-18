@@ -1,0 +1,11 @@
+templates hundredDoors
+  @: [ 1..100 -> 0 ];
+  templates toggle
+    def jump: $;
+    $jump..100:$jump -> (<?($@hundredDoors($) <0>)> @hundredDoors($): 1;  <> @hundredDoors($): 0;) -> !VOID
+  end toggle
+  1..100 -> toggle -> !VOID
+  $@ -> [i](<1> ' $i;' !) !
+end hundredDoors
+// hundredDoors should be called a source and we shouldn't need to do "0 ->" here
+0 -> hundredDoors -> 'Open doors:$...;' -> !OUT::write

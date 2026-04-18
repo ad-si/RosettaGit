@@ -1,0 +1,8 @@
+  FOR d = p TO 100 STEP p
+    @(d) = @(d) = 0
+  NEXT d
+NEXT p
+
+FOR d= 1 TO 100
+  IF @(d) PRINT "Door ";d;" is open"
+NEXT d
