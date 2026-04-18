@@ -299,10 +299,15 @@ def repair_wiki_leftovers(text: str) -> str:
     text = re.sub(r"^==\s*(.*\{\{\s*header\|[^}]+\}\}.*)==\s*$",
                   combined_repl, text, flags=re.M)
 
+    def _fence_from_lang(raw: str) -> str:
+        # Whitespace inside a <lang ...> arg (e.g. `<lang X86_64 Assembly>`)
+        # is collapsed to `_` so the resulting fence tag is a single token.
+        return re.sub(r"\s+", "_", raw.strip())
+
     # <lang LANG>…</lang> -> ```LANG\n…\n```
     text = re.sub(
-        r"<lang\s+([^>\s]+)\s*>(.*?)</lang>",
-        lambda m: f"```{m.group(1)}\n{m.group(2).strip()}\n```",
+        r"<lang\s+([^>]+)>(.*?)</lang>",
+        lambda m: f"```{_fence_from_lang(m.group(1))}\n{m.group(2).strip()}\n```",
         text,
         flags=re.S,
     )
@@ -316,7 +321,12 @@ def repair_wiki_leftovers(text: str) -> str:
     # Half-broken <lang …>CODE with later standalone ``` close (seen in the
     # twelve-days task). Only the opener is present; replace it with a plain
     # fence and let the pre-existing ``` close match up.
-    text = re.sub(r"^<lang\s+([^>\s]+)\s*>", r"```\1", text, flags=re.M)
+    text = re.sub(
+        r"^<lang\s+([^>]+)>",
+        lambda m: f"```{_fence_from_lang(m.group(1))}",
+        text,
+        flags=re.M,
+    )
     text = re.sub(r"^<lang\s*>", r"```", text, flags=re.M)
 
     # <pre style="…">CONTENT -> ```txt\nCONTENT
@@ -331,9 +341,10 @@ def repair_wiki_leftovers(text: str) -> str:
     # Strip common prose-level wiki templates that carry metadata but no
     # structural meaning in markdown. Keep them on their own line if possible.
     # {{works with|Foo}} / {{libheader|Bar}} / {{trans|C}} / {{out}} / {{in}}
+    # / {{omit from|X}}
     text = re.sub(
         r"^\s*\{\{\s*(?:works with|libheader|trans|translation of|out|in|"
-        r"uses from|requires|header)\s*(?:\|[^}]*)?\}\}\s*$",
+        r"uses from|requires|header|omit from)\s*(?:\|[^}]*)?\}\}\s*$",
         "",
         text,
         flags=re.M | re.I,
@@ -484,6 +495,51 @@ def preflight_checks(
     return blockers, warnings
 
 
+def collect_shortcode_slugs(text: str, task: str) -> list[str]:
+    """Return the sorted language slugs referenced by `{{ code(src=...) }}`
+    shortcodes for the given task. Collapses multi-block suffixes: if the text
+    contains both `foo_1.ext` and `foo_2.ext`, the slug is `foo`; a lone
+    `xslt_2_0.ext` (no `xslt_2_1` sibling) keeps its trailing digits.
+    """
+    filenames = re.findall(
+        rf'code\(src="content/tasks/{re.escape(task)}/([^"]+)"',
+        text,
+    )
+    stems = {re.sub(r"\.[^.]+$", "", f) for f in filenames}
+    slugs: set[str] = set()
+    for stem in stems:
+        m = re.match(r"(.+)_(\d+)$", stem)
+        if m:
+            base = m.group(1)
+            has_siblings = any(
+                other != stem and re.fullmatch(rf"{re.escape(base)}_\d+", other)
+                for other in stems
+            )
+            if has_siblings:
+                slugs.add(base)
+                continue
+        slugs.add(stem)
+    return sorted(slugs)
+
+
+def sync_frontmatter_languages(text: str, slugs: list[str]) -> str:
+    """Replace the `languages = [...]` list in TOML frontmatter with `slugs`.
+    No-op if frontmatter or the languages key is missing."""
+    lang_block = (
+        "languages = [\n"
+        + "".join(f'  "{s}",\n' for s in slugs)
+        + "]"
+    )
+    new_text, n = re.subn(
+        r"^languages\s*=\s*\[.*?\n\]",
+        lang_block,
+        text,
+        count=1,
+        flags=re.S | re.M,
+    )
+    return new_text if n else text
+
+
 def cross_check_frontmatter(
     frontmatter_langs: list[str] | None,
     section_slugs: list[str],
@@ -520,6 +576,13 @@ def main() -> int:
         "--root",
         default=None,
         help="Site root (defaults to git root; falls back to cwd).",
+    )
+    parser.add_argument(
+        "--sync-frontmatter",
+        action="store_true",
+        help="After extracting, rewrite the frontmatter `languages = [...]` "
+             "list to match the emitted files. Also works on an already-"
+             "bundled task (no code blocks to extract).",
     )
     args = parser.parse_args()
 
@@ -634,8 +697,23 @@ def main() -> int:
                 idx += 1
         new_lines[start:end] = rewritten
 
+    output = "\n".join(new_lines)
+    if args.sync_frontmatter:
+        slugs = collect_shortcode_slugs(output, args.task)
+        if slugs:
+            output = sync_frontmatter_languages(output, slugs)
+            print(
+                f"{'Would sync' if args.dry_run else 'Synced'} frontmatter "
+                f"languages ({len(slugs)} entries)."
+            )
+        else:
+            print(
+                "No `code(...)` shortcodes found; skipping frontmatter sync.",
+                file=sys.stderr,
+            )
+
     if not args.dry_run:
-        index_md.write_text("\n".join(new_lines))
+        index_md.write_text(output)
     print(f"{'Would write' if args.dry_run else 'Wrote'} {total_files} code files.")
     if not already and not args.dry_run:
         print(f"Converted to page bundle: {bundle_dir}")

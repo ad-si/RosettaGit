@@ -38,14 +38,20 @@ uv run --no-project python .claude/skills/extract-task-code/extract.py <task-nam
 
 `<task-name>` is the markdown filename without `.md`
 (e.g. `the_twelve_days_of_christmas`, `fizzbuzz`). Pass `--dry-run` to preview
-without writing.
+without writing. Pass `--sync-frontmatter` to rewrite the frontmatter
+`languages = [...]` list from the emitted shortcodes — this works on a first
+run and also on an already-bundled task (since it reads the shortcodes, not
+the sections) and correctly preserves slugs whose trailing digits are part
+of the language name (e.g. `xslt_2_0` is kept intact unless a sibling
+`xslt_2_1` exists, in which case it collapses to `xslt_2`).
 
 The script:
 
 1. Auto-repairs leftover wiki-to-markdown conversion artifacts in the source
-   (`=={{header|X}}==` headings, `<lang>…</lang>` tags, `<pre style=…>` output
-   blocks, prose-level `{{libheader|…}}` / `{{trans|…}}` / `{{works with|…}}` /
-   `{{out}}` / etc.).
+   (`=={{header|X}}==` headings, `<lang>…</lang>` tags including multi-word
+   args like `<lang X86_64 Assembly>` (whitespace is collapsed to `_`),
+   `<pre style=…>` output blocks, prose-level `{{libheader|…}}` /
+   `{{trans|…}}` / `{{works with|…}}` / `{{omit from|…}}` / `{{out}}` / etc.).
 2. Runs preflight checks — see below. On failure, aborts *before* moving any
    files, so the source is left intact.
 3. Moves `content/tasks/<task>.md` to `content/tasks/<task>/index.md` (if not
@@ -81,7 +87,8 @@ fix is to edit the source markdown and rerun without `--force`.
 ## After running
 
 - Check that the taxonomy `languages` list in the frontmatter covers every
-  new section (add any that were hidden behind wiki-style headers).
+  new section (add any that were hidden behind wiki-style headers). Use
+  `--sync-frontmatter` to do this automatically.
 - Spot-check two or three generated files: the extension should match the
   language and the file should contain only the implementation.
 - Run `zola build` and verify the page renders. Pre-existing build failures
