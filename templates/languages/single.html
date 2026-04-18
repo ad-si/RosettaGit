@@ -10,8 +10,10 @@
       %}
       {% if singleton | length > 0 %}
         {% set_global language = singleton[0] %}
+        {% set termTitle = singleton[0].title %}
+      {% else %}
+        {% set termTitle = term.name %}
       {% endif %}
-      {% set termTitle = singleton | length > 0 and singleton[0] | get(key="title") or term.name %}
     {% else %}
       {% set_global language = page %}
     {% endif %}
