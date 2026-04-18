@@ -21,10 +21,20 @@ serve:
 	zola serve
 
 
+.PHONY: prune-public  # Remove source files from public/ before deploy
+prune-public: public
+	find public -type f -name '*.md' -delete
+	find public/tasks public/drafts -mindepth 2 -type f \
+		! -name 'index.html' \
+		! -iname '*.png' ! -iname '*.jpg' ! -iname '*.jpeg' \
+		! -iname '*.gif' ! -iname '*.svg' ! -iname '*.webp' \
+		-delete
+
+
 .PHONY: deploy  # Deploy website with Netlify
-deploy: public
+deploy: public prune-public
 	netlify deploy \
-		--dir=$< \
+		--dir=public \
 		--site=5984a2df-f835-4e6c-87cd-12aa26ec33f3 \
 		--prod
 
