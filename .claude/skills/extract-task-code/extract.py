@@ -212,7 +212,7 @@ LANG_EXT: dict[str, tuple[str, str, str]] = {
     "ZX Spectrum Basic": ("zx_spectrum_basic", "bas", "basic"),
 }
 
-SKIP_SECTIONS = {"Task", "Related tasks", "See also", "References"}
+SKIP_SECTIONS = {"Task", "Related tasks", "See also", "References", "Example"}
 
 
 # Fallback: fence-tag (lowercased) -> extension. Used when a section header is
@@ -343,7 +343,7 @@ def repair_wiki_leftovers(text: str) -> str:
     # {{works with|Foo}} / {{libheader|Bar}} / {{trans|C}} / {{out}} / {{in}}
     # / {{omit from|X}}
     text = re.sub(
-        r"^\s*\{\{\s*(?:works with|libheader|trans|translation of|out|in|"
+        r"^\s*\{\{\s*(?:works with|libheader|trans|translation of|out|output|in|"
         r"uses from|requires|header|omit from)\s*(?:\|[^}]*)?\}\}\s*$",
         "",
         text,
@@ -661,7 +661,12 @@ def main() -> int:
         else:
             slug = slugify(title)
             fence_tag = impl_blocks[0][2].strip().lower()
-            ext = FENCE_EXT.get(fence_tag, fence_tag if fence_tag.isalnum() else "txt")
+            if fence_tag in FENCE_EXT:
+                ext = FENCE_EXT[fence_tag]
+            elif fence_tag:
+                ext = slugify(fence_tag)
+            else:
+                ext = "txt"
             default_lang = fence_tag or slug
             warnings.append(
                 f"Unknown section {title!r}: inferred slug={slug!r} ext=.{ext}"
