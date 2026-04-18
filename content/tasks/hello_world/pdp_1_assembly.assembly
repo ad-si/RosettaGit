@@ -1,0 +1,19 @@
+hello
+/ above: title line - was punched in human readable letters on paper tape
+/ below: location specifier - told assembler what address to assemble to
+100/
+lup,    lac i ptr       / load ac from address stored in pointer
+    cli         / clear io register
+lu2,    rcl 6s          / rotate combined ac + io reg 6 bits to the left
+                / left 6 bits in ac move into right 6 bits of io reg
+    tyo         / type out character in 6 right-most bits of io reg
+    sza         / skip next instr if accumulator is zero
+    jmp lu2         / otherwise do next character in current word
+    idx ptr         / increment pointer to next word in message
+    sas end         / skip next instr if pointer passes the end of message
+    jmp lup         / otherwise do next word in message
+    hlt         / halt machine
+ptr,    msg         / pointer to current word in message
+msg,    text "hello, world" / 3 6-bit fiodec chars packed into each 18-bit word
+end,    .               / sentinel for end of message
+start 100           / tells assembler where program starts
