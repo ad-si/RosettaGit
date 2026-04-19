@@ -6,7 +6,7 @@ tags = ["ibm", "lotus"]
 
 LotusScript is a programming language used in Lotus Notes
 and other IBM Lotus products.
-It is very similar to [Visual Basic](/languages/visual_basic)
+It is very similar to [Visual Basic](@/languages/visual_basic.md)
 (code can usually be copied between languages with little modification),
 but has many specific built-in classes
 for accessing objects within the Lotus Notes/Domino environment.

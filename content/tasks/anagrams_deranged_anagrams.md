@@ -77,7 +77,7 @@ languages = [
 
 ## Task
 
-Two or more words are said to be [anagrams](/tasks/anagrams) if they have the same characters, but in a different order.
+Two or more words are said to be [anagrams](@/tasks/anagrams.md) if they have the same characters, but in a different order.
 
 By analogy with [[Permutations/Derangements|derangements]] we define a  ''deranged anagram'' as two words with the same characters, but in which the same character does ''not'' appear in the same position in both words.
 
@@ -639,7 +639,7 @@ In the product of all elements the anagrams are to be found in the exponents con
 To find the longest deranged anagrams, we traverse the product list to find all exponents with multiple words, check that the length of the first word is at least as long as the length of the longest deranged anagram up to now, and check each pair of words for being deranged.
 If a pair of deranged anagrams is found with more letters than previously found deranged anagrams, the earlier finds are forgotten. If the new anagrams are the same length, however, they are added to the output.
 
-The Bracmat solution to the similar task [anagrams](/tasks/anagrams) skips the explicit merge sort and instead prepends new factors directly to the product one by one.
+The Bracmat solution to the similar task [anagrams](@/tasks/anagrams.md) skips the explicit merge sort and instead prepends new factors directly to the product one by one.
 Bracmat shuffles each new factor into place to keep the growing product normalized before continuing with the next word from the list.
 The result is exactly the same, but the running time becomes much longer.
 

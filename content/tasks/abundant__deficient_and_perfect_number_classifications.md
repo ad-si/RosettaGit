@@ -92,7 +92,7 @@ languages = [
 +++
 
 ## Task
-These define three classifications of positive integers based on their   [proper divisors](/tasks/proper_divisors).
+These define three classifications of positive integers based on their   [proper divisors](@/tasks/proper_divisors.md).
 
 Let   P(n)   be the sum of the proper divisors of   '''n'''   where the proper divisors are all positive divisors of   '''n'''   other than   '''n'''   itself.
     if   <code> P(n) <  n </code>   then  '''n'''  is classed as  '''deficient'''  ([OEIS A005100](https://oeis.org/A005100)).

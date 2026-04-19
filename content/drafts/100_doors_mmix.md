@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-*Part of: [100 doors](/tasks/100 doors)*
+*Part of: [100 doors](@/tasks/100_doors/index.md)*
 
 ***not optimized**
 

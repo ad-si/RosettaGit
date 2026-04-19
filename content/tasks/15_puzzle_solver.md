@@ -72,8 +72,8 @@ Solve the following problem:
 
 
 ;Related Task:
-* [15 puzzle game](/tasks/15_Puzzle_Game)
-* [A* search algorithm](/tasks/A* search algorithm)
+* [15 puzzle game](@/tasks/15_puzzle_game.md)
+* [A* search algorithm](@/tasks/a__search_algorithm.md)
 
 
 
@@ -240,7 +240,7 @@ Such a guide function is rather like a "distance" function, so along these lines
 
 As an experiment, when the Red Tide was poured to completion for a board of three rows and four columns, every position in the stash was presented to ZDIST and the result written out. The filesystem presented difficulties: reading the stash file as a sequential file failed! So, a slog through reading specified record numbers, one after the other, taking half an hour. By contrast, the B6700 filesystem of the 1970s employed a feature called "diagonal I/O" whereby the style of the previous I/O for a file was retained and compared to the style of the new I/O operation: for matching styles, conclusions could be drawn. The first and last few ZDIST values are  0, 105, 1, 328449, 609, 632, 4, 3271809, 3312009, ... 287247191, 446727869, 287039663. That last is entry 23950800 which is 12!/2: every possible attainable position has been tested and stored in the stash (once each), since a parity condition means that half the layout combinations have one parity and half the other, the possible moves being unable to change the parity. Alas, the ZDIST figures do not show anything so simple as odd/even for this. Every value should be unique, but in the past it has suspiciously often been easy to find a proof of a desired situation, so a test: sort the values and check. UltraEdit ran for a long time, then reported that there was insufficient memory to maintain an "undo" list. Very well. And then it wiped the file! Fortunately, the stash was still intact. On restarting in Linux the "sort" utility was available, and after some impressive running of all six cpus at 100% in cyclic bursts, I was looking at a file in a mad order: 0, 1, 10, 100, 1000, 10000, ... Apparently some sort of "word" order, even though the text file used leading spaces so that the numbers were all aligned right. As usual, the "man"ual information was brief and vague, but option "g" for "general number" looked likely, and so it proved. In sorted order: 0, 1, 4, 8, 9, 11, 12, 13, ... 479001589, 479001590, 479001593, 479001594, 479001597, 479001598. And 12! = 479001600. All values were unique.
 
-The ZDIST function would be a candidate for a hash function, as it looks to give a good spray. But it requires rather more computation. It is always possible to calculate a "perfect" hash function, one that not only gives a distinct integer value for every possible key but also produces no gaps, so if there are N keys, there are N hash values in the range 1:N (or 0:N - 1) and the mapping is one to one. There even exist "hyper perfect" hash functions, that possess useful ordering properties: an example is the conversion of dates to a [day number](/tasks/Calendar#Fortran), which is one-to-one, without gaps, and ordered by date. However, the calculation of such perfection may be lengthy, so a fast hash is preferable, except for special cases.
+The ZDIST function would be a candidate for a hash function, as it looks to give a good spray. But it requires rather more computation. It is always possible to calculate a "perfect" hash function, one that not only gives a distinct integer value for every possible key but also produces no gaps, so if there are N keys, there are N hash values in the range 1:N (or 0:N - 1) and the mapping is one to one. There even exist "hyper perfect" hash functions, that possess useful ordering properties: an example is the conversion of dates to a [day number](@/tasks/calendar.md#fortran), which is one-to-one, without gaps, and ordered by date. However, the calculation of such perfection may be lengthy, so a fast hash is preferable, except for special cases.
 
 In the event, when running, TaskInfo showed that almost all of the time was spent in the filesystem's I/O procedures, no "user time" was visible. The hash calculation indeed was fast, but the I/O was slow. Probably because the disc file was scattered in blocks across the disc device (actually a solid-state drive) and finding the appropriate block took a lot of messing about. In the past, a large disc file would be in one or very few pieces on the actual disc, with a straightforward direct calculation between a record number and a disc's corresponding cylinder, surface, track and sector. These days, the operating system uses "spare" memory to hold the content of recently-used disc blocks, but alas, each index file is 781MB, and the stash files are over 3,000MB. Some systems have many gigabytes of memory, but this one has 4GB.
 
@@ -1094,7 +1094,7 @@ The two paths deviate on the seventh move, from entry 126 Blue either R to 265 B
 
 ### =Another Example=
 
-Taking the first example from [15_puzzle_solver/20_Random](/tasks/15_puzzle_solver/20_Random) shows that with the red tide expansion in hand, only the new blue tide is poured into the maze:
+Taking the first example from [15_puzzle_solver/20_Random](@/drafts/15_puzzle_solver_20_random.md) shows that with the red tide expansion in hand, only the new blue tide is poured into the maze:
 
 ```txt
 

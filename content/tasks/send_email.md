@@ -118,7 +118,7 @@ end Sendmail;
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com%2Fforum%2Ftopic39797.html)
+ahk [discussion](http://www.autohotkey.com/forum/topic39797.html)
 ```autohotkey
 sSubject:= "greeting"
 sText   := "hello"

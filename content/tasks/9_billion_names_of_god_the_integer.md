@@ -1781,7 +1781,7 @@ rowSums=: 3 :0"0
 
 ## Java
 
-Translation of [Python](/tasks/9_billion_names_of_God_the_integer#Python) via [D](/tasks/9_billion_names_of_God_the_integer#D)
+Translation of [Python](@/tasks/9_billion_names_of_god_the_integer.md#python) via [D](@/tasks/9_billion_names_of_god_the_integer.md#d)
 *Works with: Java 8*
 
 ```java

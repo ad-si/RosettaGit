@@ -96,7 +96,7 @@ given its width and height, and provide 3 additional functions:
 These functions are used as a base for the
 [tasks with the "raster-graphics" tag](/tags/raster-graphics)
 and a basic output function to check the results
-is available in the task [write ppm file](/tasks/write_ppm_file).''
+is available in the task [write ppm file](@/tasks/bitmap_write_a_ppm_file.md).''
 
 
 ## ActionScript
@@ -1065,7 +1065,7 @@ Compiling it with `version=bitmap_main` prints:
 
 ## E
 
-This example includes the [write ppm file](/tasks/write_ppm_file) code,
+This example includes the [write ppm file](@/tasks/bitmap_write_a_ppm_file.md) code,
 because it is most naturally written as a method on the image object.
 
 

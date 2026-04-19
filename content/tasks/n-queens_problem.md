@@ -131,14 +131,14 @@ For the number of solutions for small values of   **N**,   see   [oeis.org seque
 
 ## Related tasks
 
-* [A* search algorithm](/tasks/a*_search_algorithm)
-* [Solve a Hidato puzzle](/tasks/solve_a_hidato_puzzle)
-* [Solve a Holy Knight's tour](/tasks/solve_a_holy_knights_tour)
-* [Knight's tour](/tasks/knights_tour)
-* [Peaceful chess queen armies](/tasks/peaceful_chess_queen_armies)
-* [Solve a Hopido puzzle](/tasks/solve_a_hopido_puzzle)
-* [Solve a Numbrix puzzle](/tasks/solve_a_numbrix_puzzle)
-* [Solve the no connection puzzle](/tasks/solve_the_no_connection_puzzle)
+* [A* search algorithm](@/tasks/a__search_algorithm.md)
+* [Solve a Hidato puzzle](@/tasks/solve_a_hidato_puzzle.md)
+* [Solve a Holy Knight's tour](@/tasks/solve_a_holy_knights_tour.md)
+* [Knight's tour](@/tasks/knights_tour.md)
+* [Peaceful chess queen armies](@/tasks/peaceful_chess_queen_armies.md)
+* [Solve a Hopido puzzle](@/tasks/solve_a_hopido_puzzle.md)
+* [Solve a Numbrix puzzle](@/tasks/solve_a_numbrix_puzzle.md)
+* [Solve the no connection puzzle](@/tasks/solve_the_no_connection_puzzle.md)
 
 
 
@@ -9783,7 +9783,7 @@ sum(1 for p in queens(8))
 ```
 
 
-The preceding function does not enumerate solutions in lexicographic order, see [Permutations#Recursive implementation](/tasks/permutations#recursive_implementation) for an explanation. The following does, but is almost 50% slower, because the exchange is always made (otherwise the loop to shift the array a by one place would not work).
+The preceding function does not enumerate solutions in lexicographic order, see [Permutations](@/tasks/permutations.md) for an explanation. The following does, but is almost 50% slower, because the exchange is always made (otherwise the loop to shift the array a by one place would not work).
 
 However, it may be interesting to look at the first solution in lexicographic order: for growing n, and apart from a +1 offset, it gets closer and closer to the sequence [A065188](http://oeis.org/A065188) at OEIS. The first n for which the first solutions differ is n=26.
 
@@ -12290,7 +12290,7 @@ A solution to the 3 queens problem is non-existent
 
 ## Tcl
 
-This solution is based on the [C](/tasks/c) version on [wikipedia](https://en.wikipedia.org/wiki/Eight_queens_puzzle#Solutions). By default it solves the 8-queen case; to solve for any other number, pass *N* as an extra argument on the script's command line (see the example for the *N*=6 case, which has anomalously few solutions).
+This solution is based on the [C](@/languages/c.md) version on [wikipedia](https://en.wikipedia.org/wiki/Eight_queens_puzzle#Solutions). By default it solves the 8-queen case; to solve for any other number, pass *N* as an extra argument on the script's command line (see the example for the *N*=6 case, which has anomalously few solutions).
 
 ```tcl
 package require Tcl 8.5

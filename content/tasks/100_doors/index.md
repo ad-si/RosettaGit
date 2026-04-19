@@ -402,7 +402,7 @@ Some of the macro code is derived from the examples included with EASy68K.
 
 ## 8086 Assembly
 
-See [100 doors/8086 Assembly](/tasks/100 doors/8086 Assembly)
+See [100 doors/8086 Assembly](@/drafts/100_doors_8086_assembly.md)
 
 ## 8th
 
@@ -1830,7 +1830,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## Delphi
 
-:*See [Pascal](/tasks/#Pascal)*
+:*See [Pascal](#pascal)*
 
 ## Déjà Vu
 
@@ -3733,7 +3733,7 @@ Using an array of boolean values to keep track of door state, and a separate lis
 
 ## MMIX
 
-See [100 doors/MMIX](/tasks/100 doors/MMIX)
+See [100 doors/MMIX](@/drafts/100_doors_mmix.md)
 
 ## Modula-2
 **unoptimized**
@@ -6663,7 +6663,7 @@ With input document ...
 
 
 
-Also see: [100 doors/XSLT](/tasks/100 doors/XSLT)
+Also see: [100 doors/XSLT](@/drafts/100_doors_xslt.md)
 
 
 ## XSLT 2.0

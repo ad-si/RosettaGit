@@ -10,16 +10,22 @@ categories = []
 tags = []
 +++
 
+Raw MediaWiki template source (not rendered as Markdown — contains
+unexpanded `{{{var}}}` placeholders):
+
+```mediawiki
 {| align=center border=0 cellpadding=3 cellspacing=3 style="border: 1px solid #E0E0E0; background-color: #F8F8F8; color:black;"
 | style="font-size: 90%" |
 This page uses content from '''[Wikipedia](http://{{{lang|en}}}.wikipedia.org)'''.
-The current wikipedia article is at [}} {{{pagename|{{PAGENAME}}}}}](http://{{{lang|en}}}.wikipedia.org/wiki/{{PAGENAMEE:{{{pagename|{{PAGENAMEE}}}}}). 
+The current wikipedia article is at [}} {{{pagename|{{PAGENAME}}}}}](http://{{{lang|en}}}.wikipedia.org/wiki/{{PAGENAMEE:{{{pagename|{{PAGENAMEE}}}}}).
 The original RosettaCode article was extracted from the [}}}}&oldid={{{oldid|~}}} wikipedia article № {{{oldid|~}}} of {{{timedate|~}}}](http://{{{lang|en}}}.wikipedia.org/w/index.php?title={{PAGENAMEE:{{urlencode:{{{pagename|{{PAGENAMEE}}}}}).
 The list of authors can be seen in the [{{{pagename|{{PAGENAMEE}}}}} }}&action=history '''page history'''](http://{{{lang|en}}}.wikipedia.org/w/index.php?title={{urlencode:).
 [[Project:Copyrights|As with {{SITENAME}}]],
 the pre '''5 June 2009''' text of Wikipedia [[wp:Project:Copyrights|is available]] under the [GNU FDL](http://www.gnu.org/licenses/fdl.html).
 (See links for details on variance)
 |}<includeonly>[[Category:WikipediaSourced]]</includeonly><noinclude>
+```
+
 == Usage ==
 
 ```txt

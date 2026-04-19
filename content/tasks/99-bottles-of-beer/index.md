@@ -37,9 +37,9 @@ as possible (simple, obvious solutions allowed, too).
 
 **Related tasks:**
 
-*   [The Twelve Days of Christmas](/tasks/the-twelfe-days-of-christmas)
-*   [Old Lady Swallowed a Fly](/tasks/old-lady-swallowed-a-fly)
-*   [Mad Libs](/tasks/mad-libs)
+*   [The Twelve Days of Christmas](@/tasks/the_twelve_days_of_christmas/index.md)
+*   [Old Lady Swallowed a Fly](@/tasks/old_lady_swallowed_a_fly.md)
+*   [Mad Libs](@/tasks/mad_libs.md)
 
 
 **See also:**

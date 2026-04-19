@@ -134,7 +134,7 @@ The goal is for the player to enter an expression that (numerically) evaluates t
 
 
 ## Related tasks
-* [24 game/Solve](/tasks/24 game/Solve)
+* [24 game/Solve](@/tasks/24_game_solve.md)
 
 
 ## Reference
@@ -266,7 +266,7 @@ start
 
 ## ABAP
 
-See [24 game/ABAP](/tasks/24 game/ABAP)
+See [24 game/ABAP](@/drafts/24_game_abap.md)
 
 
 ## Ada
@@ -1309,12 +1309,12 @@ Your choice? [Expr/n/q] q
 Bye
 ```
 
-See [24 game/C](/tasks/24 game/C)
+See [24 game/C](@/drafts/24_game_c.md)
 
 
 ## C#
 
-See [24 game/CSharp](/tasks/24 game/CSharp)
+See [24 game/CSharp](@/drafts/24_game_csharp.md)
 
 
 ## C++
@@ -3660,7 +3660,7 @@ end
 ### Clever implementation
 
 Indicate operator precedence by parentheses; e.g. (3+(5*6))-9. No whitespace is admissible.
-The program uses [Insertion_sort in Fortran](/tasks/Insertion_sort#Fortran).
+The program uses [Insertion_sort in Fortran](@/tasks/sorting_algorithms_insertion_sort.md#fortran).
 
 ```Fortran
 program game_24
@@ -4832,7 +4832,7 @@ main() {
 
 
 ## Icon and ## Unicon
-This plays the game of 24 using a simplified version of the code from the [Arithmetic evaluation](/tasks/Arithmetic_evaluation#Icon_and_Unicon) task.
+This plays the game of 24 using a simplified version of the code from the [Arithmetic evaluation](@/tasks/arithmetic_evaluation.md#icon-and-unicon) task.
 
 ```Icon
 invocable all
@@ -6823,9 +6823,9 @@ import: mapping
 
 ## ooRexx
 
-While the solution shown within this page at [Rexx version 2](/tasks/#rexx_version2) was created for Classic Rexx it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
+While the solution shown within this page at [REXX](#rexx) was created for Classic Rexx it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
 
-Incompatibilities(*) that were originally in [Rexx version 1](/tasks/#rexx_version1) were meanwhile "fixed", so it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
+Incompatibilities(*) that were originally in an earlier [REXX](#rexx) version were meanwhile "fixed", so it also can be used unchanged by the ooRexx interpreter and so can be considered a solution for the ooRexx language too.
 
 (*) Classic Rexx accepts assignment without an expression (x=;), ooRexx does not.
 
@@ -8636,7 +8636,7 @@ validate: parse arg y;      errCode= 0;         _v= verify(y, digs)
           return \errCode
 ```
 
-Some older REXXes don't have a   **changestr**   BIF,   so one is included here   ──►   [CHANGESTR.REX](/tasks/CHANGESTR.REX).
+Some older REXXes don't have a   **changestr**   BIF,   so one is included here   ──►   [CHANGESTR.REX](@/drafts/changestr_rex.md).
 
 ### output|text=  of a sample execution:
 

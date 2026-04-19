@@ -795,7 +795,7 @@ Windows, Linux, Mac, and others.
 
 ###  Supporting Notes
 
-See [Eiffel-org](http://www.eiffel.org|) for more information.
+See [Eiffel-org](http://www.eiffel.org) for more information.
 <p>An example of "Hello World!" is on the home page. You can try Eiffel by clicking the "Play with Eiffel" button on the "Hello World!" example on the home page.</p>
 <p>You can find plenty of YouTube videos on the Eiffel Software [Eiffel Videos](https://www.eiffel.org/resources/videos|) channel or [Eiffel Videos](http://www.youtube.com/user/ljr1981yt/videos|) channel.</p>
 

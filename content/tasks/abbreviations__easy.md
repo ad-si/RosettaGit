@@ -35,7 +35,7 @@ languages = [
 
 ## Task
 
-This task is an easier (to code) variant of the Rosetta Code task: <big>   [Abbreviations, simple](/tasks/abbreviations__simple)</big>.
+This task is an easier (to code) variant of the Rosetta Code task: <big>   [Abbreviations, simple](@/tasks/abbreviations__simple.md)</big>.
 
 
 For this task, the following   ''command table''   will be used:
@@ -118,7 +118,7 @@ the computer program should return the string:
 
 
 ;Related tasks:
-:*   [Abbreviations, simple](/tasks/abbreviations__simple)
+:*   [Abbreviations, simple](@/tasks/abbreviations__simple.md)
 :*   [[Abbreviations, automatic]]
 :*   [[Suffixation of decimal numbers]]
 

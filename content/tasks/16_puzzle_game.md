@@ -32,7 +32,7 @@ Video: [16 Puzzle Game](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2
 
 
 ;Related task:
-:*   [15 Puzzle Game](/tasks/15_Puzzle_Game)
+:*   [15 Puzzle Game](@/tasks/15_puzzle_game.md)
 
 
 

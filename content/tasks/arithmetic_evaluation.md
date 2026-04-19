@@ -2769,7 +2769,7 @@ main = print $ solution "(1+3)*7"
 ```
 
 
-=={{header|Icon}} and {{header|Unicon}}==
+## Icon and Unicon
 A compact recursive descent parser using Hanson's device.  This program
 *  handles left and right associativity and different precedences
 *  is ready to handle any number of infix operators without adding more functions to handle the precedences

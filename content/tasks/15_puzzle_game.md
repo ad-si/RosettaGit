@@ -89,8 +89,8 @@ The   **15-puzzle**   is also known as:
 * and many others.
 
 ## Related Tasks:
-* [15 Puzzle Solver](/tasks/15_puzzle_solver)
-* [16 Puzzle Game](/tasks/16_puzzle_game)
+* [15 Puzzle Solver](@/tasks/15_puzzle_solver.md)
+* [16 Puzzle Game](@/tasks/16_puzzle_game.md)
 
 
 
@@ -6019,7 +6019,7 @@ sub ad{
 ## Perl 6
 
 *Works with: Rakudo 2018.06*
-Most of this is interface code. Reused substantial portions from the [2048](/tasks/2048#Perl_6) task. Use the arrow keys to slide tiles, press 'q' to quit or 'n' for a new puzzle. Requires a POSIX termios aware terminal. Ensures that the puzzle is solvable by shuffling the board with an even number of swaps, then checking for even taxicab parity for the empty space.
+Most of this is interface code. Reused substantial portions from the [2048](@/tasks/2048/index.md#perl-6) task. Use the arrow keys to slide tiles, press 'q' to quit or 'n' for a new puzzle. Requires a POSIX termios aware terminal. Ensures that the puzzle is solvable by shuffling the board with an even number of swaps, then checking for even taxicab parity for the empty space.
 
 ```perl6
 use Term::termios;

@@ -19,7 +19,7 @@ languages = [
 +++
 
 
-## [Haskell](/languages/haskell)
+## [Haskell](@/languages/haskell.md)
 
 **Note:**
 This doesn't keep the file in memory.
@@ -30,7 +30,7 @@ main = readFile "input.txt" >>= writeFile "output.txt"
 ```
 
 
-## [Python](/languages/python)
+## [Python](@/languages/python.md)
 
 ```python
 i = open("input.txt", "r")
@@ -39,7 +39,7 @@ o.write(i.read())
 ```
 
 
-## [Rust](/languages/rust)
+## [Rust](@/languages/rust.md)
 
 **Note:**
 The program will panic with any sort of error.
@@ -58,7 +58,7 @@ fn main() {
 ```
 
 
-## [JavaScript](/languages/javascript)
+## [JavaScript](@/languages/javascript.md)
 
 ```javascript
 const fs = require('fs');

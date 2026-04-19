@@ -21,7 +21,7 @@ Examples of use:
 - run-time exception
 - run-time library
 - run-time object
-- dynamic [polymorphism](/tasks/polymorphism)
+- dynamic [polymorphism](@/tasks/polymorphism.md)
 - dynamic memory allocation
 - [Type checking](/tasks/dynamic_typing)
 - dynamic semantics

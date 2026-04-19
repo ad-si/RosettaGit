@@ -48,7 +48,7 @@ languages = [
 
 ## Task
 An [[wp:Aliquot sequence|aliquot sequence]] of a positive integer K is defined recursively as the first member
-being K and subsequent members being the sum of the [Proper divisors](/tasks/proper_divisors) of the previous term.
+being K and subsequent members being the sum of the [Proper divisors](@/tasks/proper_divisors.md) of the previous term.
 
 :* If the terms eventually reach 0 then the series for K is said to '''terminate'''.
 
@@ -79,7 +79,7 @@ Show all output on this page.
 
 ;Related tasks:
 *   [[Abundant, deficient and perfect number classifications]]. (Classifications from only the first two members of the whole sequence).
-*   [Proper divisors](/tasks/proper_divisors)
+*   [Proper divisors](@/tasks/proper_divisors.md)
 *   [[Amicable pairs]]
 
 

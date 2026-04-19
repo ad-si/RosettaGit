@@ -178,7 +178,7 @@ PG       DC     CL80' '            buffer
          END    PERMUTE
 ```
 
-<pre style="height:40ex;overflow:scroll">
+```txt
 ABCD
 ABDC
 ACBD

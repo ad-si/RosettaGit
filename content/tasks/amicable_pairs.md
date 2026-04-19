@@ -76,7 +76,7 @@ tags = []
 
 ## Task
 
-Two integers <math>N</math> and <math>M</math> are said to be [[wp:Amicable numbers|amicable pairs]] if <math>N \neq M</math> and the sum of the [proper divisors](/tasks/proper_divisors) of <math>N</math> (<math>\mathrm{sum}(\mathrm{propDivs}(N))</math>) <math>= M</math> as well as <math>\mathrm{sum}(\mathrm{propDivs}(M)) = N</math>.
+Two integers <math>N</math> and <math>M</math> are said to be [[wp:Amicable numbers|amicable pairs]] if <math>N \neq M</math> and the sum of the [proper divisors](@/tasks/proper_divisors.md) of <math>N</math> (<math>\mathrm{sum}(\mathrm{propDivs}(N))</math>) <math>= M</math> as well as <math>\mathrm{sum}(\mathrm{propDivs}(M)) = N</math>.
 
 
 ;Example:
