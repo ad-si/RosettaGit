@@ -4,7 +4,7 @@ help: makefile
 
 
 public: static templates content config.toml
-	zola build
+	RAYON_NUM_THREADS=4 zola build
 
 
 .PHONY: test

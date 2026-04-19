@@ -9,8 +9,9 @@ taxonomies = [
 ]
 
 [markdown]
-highlight_code = false # TODO: Re-enable
-highlight_theme = "monokai"
+# TODO: Re-enable highlighting by uncommenting the section below
+# [markdown.highlighting]
+# theme = "monokai"
 
 [extra]
 author = "Adrian Sieber"
