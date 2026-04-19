@@ -5,6 +5,12 @@ date = 2019-08-22T14:36:07Z
 aliases = []
 [extra]
 id = 17613
+task = """
+  Implement a bijective-style mapping between finite lists of
+  positive integers and natural numbers: write `rank` (list to
+  integer) and its inverse `unrank`. Demonstrate by encoding a
+  random list, then recovering it.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

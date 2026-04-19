@@ -5,6 +5,11 @@ date = 2019-08-01T21:09:00Z
 aliases = []
 [extra]
 id = 19255
+task = """
+  Generate the increasing values of `n` for which `primorial(n) ± 1`
+  is prime. Show the first ten (optionally first twenty) values of
+  the sequence (OEIS A088411).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

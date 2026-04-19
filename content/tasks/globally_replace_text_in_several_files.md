@@ -5,6 +5,11 @@ date = 2019-04-05T10:18:53Z
 aliases = []
 [extra]
 id = 8642
+task = """
+  Replace every occurrence of a piece of text across a group of text
+  files with another. For this task, replace `Goodbye London!` with
+  `Hello New York!` in a list of files.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

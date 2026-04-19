@@ -5,6 +5,11 @@ date = 2019-09-13T12:55:46Z
 aliases = []
 [extra]
 id = 4362
+task = """
+  Show the scope modifiers available in the language and explain how
+  each changes the visibility of a variable or function.
+  Note if the language has no scope modifiers.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

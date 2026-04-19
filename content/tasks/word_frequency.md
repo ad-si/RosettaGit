@@ -5,6 +5,13 @@ date = 2019-10-16T15:00:34Z
 aliases = []
 [extra]
 id = 21560
+task = """
+  Given a text file and an integer `n`, print the `n` most common
+  words in the file along with their occurrence counts in decreasing
+  frequency. Treat words as contiguous letter sequences and uppercase
+  letters as equivalent to lowercase. Demonstrate with *Les Misérables*
+  from Project Gutenberg, showing the top 10.
+"""
 [taxonomies]
 categories = ["Text processing", "String manipulation", "task"]
 tags = []

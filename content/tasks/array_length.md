@@ -5,6 +5,10 @@ date = 2019-10-17T04:16:06Z
 aliases = []
 [extra]
 id = 19599
+task = """
+  Determine the number of elements in an array, demonstrated on
+  an array containing the strings `apple` and `orange`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

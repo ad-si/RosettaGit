@@ -5,6 +5,11 @@ date = 2019-10-15T09:53:28Z
 aliases = []
 [extra]
 id = 10866
+task = """
+  Test whether an integer is even or odd, using whatever facility
+  the language provides (built-in predicates, bitwise `AND` with
+  `1`, division by `2`, or modular arithmetic).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

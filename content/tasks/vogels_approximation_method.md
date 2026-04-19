@@ -5,6 +5,11 @@ date = 2019-05-18T18:17:23Z
 aliases = []
 [extra]
 id = 16103
+task = """
+  Use **Vogel's Approximation Method** to allocate four contractors
+  (`W`, `X`, `Y`, `Z`) to five tasks (`A`-`E`) given supply, demand,
+  and a per-hour cost matrix. Output the allocations and total cost.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

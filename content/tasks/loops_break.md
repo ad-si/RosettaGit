@@ -5,6 +5,12 @@ date = 2019-08-27T20:57:33Z
 aliases = []
 [extra]
 id = 4334
+task = """
+  Demonstrate a loop that prints freshly-generated random numbers in
+  `0..19`. If the number is `10`, print it and `break`. Otherwise,
+  print a second random number and continue. If `10` is never the
+  first number generated, the loop runs forever.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

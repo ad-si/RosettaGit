@@ -5,6 +5,13 @@ date = 2019-09-18T23:50:20Z
 aliases = []
 [extra]
 id = 17594
+task = """
+  Randomly generate one of the 960 Chess960 starting positions:
+  place the white pieces on the first rank such that the two
+  bishops stand on opposite-colored squares and the king lies
+  between the two rooks. Display the rank using Unicode chess
+  symbols or the letters `K`, `Q`, `R`, `B`, `N`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

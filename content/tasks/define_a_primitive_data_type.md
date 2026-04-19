@@ -5,6 +5,11 @@ date = 2019-09-14T16:04:55Z
 aliases = []
 [extra]
 id = 1992
+task = """
+  Define a type that behaves like an integer but is restricted to the
+  range `1..10` inclusive. Include any bounds checking required, or
+  explain how the compiler or interpreter enforces it.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

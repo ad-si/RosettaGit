@@ -5,6 +5,13 @@ date = 2019-10-11T20:27:38Z
 aliases = []
 [extra]
 id = 2151
+task = """
+  There are 100 doors in a row that are all initially closed.
+  You make 100 passes by the doors.
+  On the n-th pass you visit every n-th door and toggle it
+  (open if closed, close if open).
+  What state are the doors in after the last pass?
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

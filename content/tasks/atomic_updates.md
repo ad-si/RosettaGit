@@ -5,6 +5,13 @@ date = 2019-06-25T10:57:30Z
 aliases = []
 [extra]
 id = 4178
+task = """
+  Define a data type of fixed-size *buckets* holding nonnegative
+  integers, supporting reading a bucket and atomically transferring
+  a clamped amount between two buckets so the total is preserved.
+  Run concurrent tasks that equalize, redistribute, and display the
+  buckets to demonstrate atomicity.
+"""
 [taxonomies]
 categories = ["Concurrency", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-05-11T14:41:58Z
 aliases = []
 [extra]
 id = 13245
+task = """
+  Given a set of positive integers, write a function that orders them so
+  that their concatenation forms the largest possible integer, and
+  returns that integer.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

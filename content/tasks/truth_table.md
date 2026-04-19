@@ -5,6 +5,11 @@ date = 2019-07-04T06:24:10Z
 aliases = []
 [extra]
 id = 10744
+task = """
+  Read a Boolean expression from the user as a string, then compute and
+  print a formatted truth table. Support an arbitrary number of
+  variables and accept either reverse-polish or infix notation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

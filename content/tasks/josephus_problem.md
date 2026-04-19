@@ -5,6 +5,12 @@ date = 2019-09-18T18:48:12Z
 aliases = []
 [extra]
 id = 12472
+task = """
+  Given `n` prisoners standing in a circle numbered `0` to `n-1` and an
+  executioner removing every `k`-th one until a single survivor remains,
+  determine the survivor's position. Optionally, generalize to find any
+  prisoner's position in the killing sequence or the last `m` survivors.
+"""
 [taxonomies]
 categories = ["Puzzles", "Mathematics", "Algorithms", "task"]
 tags = []

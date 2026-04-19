@@ -5,6 +5,12 @@ date = 2019-03-24T21:21:39Z
 aliases = []
 [extra]
 id = 17441
+task = """
+  Implement the **MostFreqKDistance** string metric: hash each input
+  string into its `k` most frequent characters with their counts, then
+  compute similarity by summing the counts of characters appearing in
+  both hashes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

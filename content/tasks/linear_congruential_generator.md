@@ -5,6 +5,14 @@ date = 2019-08-04T03:57:52Z
 aliases = []
 [extra]
 id = 10002
+task = """
+  Replicate two historic linear congruential `rand()` generators so
+  that, given the same seed, each yields the same sequence as the
+  original:
+  - **BSD libc**: `state = (1103515245*state + 12345) mod 2^31`
+  - **Microsoft CRT**: `state = (214013*state + 2531011) mod 2^31`,
+    `rand = state / 2^16`
+"""
 [taxonomies]
 categories = ["task", "Randomness"]
 tags = []

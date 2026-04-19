@@ -5,6 +5,10 @@ date = 2019-01-12T06:39:41Z
 aliases = []
 [extra]
 id = 21792
+task = """
+  Implement the [Spoof](https://en.wikipedia.org/wiki/Spoof_(game)) coin
+  guessing game.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

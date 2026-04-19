@@ -5,6 +5,12 @@ date = 2019-10-21T19:47:11Z
 aliases = []
 [extra]
 id = 21379
+task = """
+  Compute Leonardo numbers via `L(n) = L(n-1) + L(n-2) + 1` with
+  `L(0) = L(1) = 1`. Show the first 25 numbers, allow the two seeds
+  and the *add* constant to be configurable, and demonstrate that
+  using seeds `0, 1` and add `0` produces the Fibonacci sequence.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

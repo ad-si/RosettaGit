@@ -5,6 +5,11 @@ date = 2019-03-17T21:30:13Z
 aliases = []
 [extra]
 id = 3120
+task = """
+  Given a mapping from items to required probabilities, generate a
+  million items randomly subject to the given probabilities and
+  compare target probabilities against the observed frequencies.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

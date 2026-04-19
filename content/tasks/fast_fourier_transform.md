@@ -5,6 +5,13 @@ date = 2019-10-09T20:47:20Z
 aliases = []
 [extra]
 id = 9235
+task = """
+  Calculate the **Fast Fourier Transform** (FFT) of an input sequence.
+  The general case accepts complex inputs and returns a
+  same-length complex sequence; for real-only outputs, return the
+  magnitude of each complex result. The classic recursive
+  Cooley-Tukey algorithm suffices.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

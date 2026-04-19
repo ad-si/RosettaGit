@@ -5,6 +5,12 @@ date = 2019-09-12T17:50:49Z
 aliases = []
 [extra]
 id = 22088
+task = """
+  A prime `prime(p)` is **strong** if it exceeds the average of its neighbours,
+  and **weak** if it is below that average.
+  Show the first 36 strong and first 37 weak primes,
+  plus the counts of each below `1,000,000` and `10,000,000`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

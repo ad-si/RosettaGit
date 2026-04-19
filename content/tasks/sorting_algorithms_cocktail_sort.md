@@ -5,6 +5,11 @@ date = 2019-10-18T20:09:18Z
 aliases = []
 [extra]
 id = 3146
+task = """
+  Sort an array using the *cocktail shaker sort*, an improved bubble
+  sort that bubbles values both forwards and backwards through the
+  array on each iteration.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

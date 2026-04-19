@@ -5,6 +5,11 @@ date = 2019-02-06T17:54:21Z
 aliases = []
 [extra]
 id = 9746
+task = """
+  Print alternating black/white vertical pinstripes across a page.
+  Start with 1-point stripes for the first inch, then widen by one
+  point each inch (2, 3, 4, ...) for the full page length.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

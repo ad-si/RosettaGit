@@ -5,6 +5,11 @@ date = 2019-08-30T10:26:00Z
 aliases = []
 [extra]
 id = 19065
+task = """
+  Read structured records from an input file and copy selected
+  fields to an output file, demonstrating record-oriented file
+  processing as found in PL/I or COBOL.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

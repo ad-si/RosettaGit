@@ -5,6 +5,9 @@ date = 2019-10-18T10:44:56Z
 aliases = []
 [extra]
 id = 1758
+task = """
+  Pass a function as an argument to another function.
+"""
 [taxonomies]
 categories = ["task", "Programming language concepts"]
 tags = []

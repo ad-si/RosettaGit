@@ -5,6 +5,10 @@ date = 2019-10-22T03:58:55Z
 aliases = []
 [extra]
 id = 4558
+task = """
+  Implement an interpreter or compiler for the **HQ9+**
+  esoteric programming language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

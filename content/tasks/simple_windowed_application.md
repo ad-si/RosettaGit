@@ -5,6 +5,11 @@ date = 2019-07-02T05:14:55Z
 aliases = []
 [extra]
 id = 1952
+task = """
+  Create a window containing a label reading
+  `"There have been no clicks yet"` and a `click me` button. On each
+  click, update the label to show the current click count.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

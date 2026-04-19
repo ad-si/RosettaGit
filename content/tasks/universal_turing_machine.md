@@ -5,6 +5,12 @@ date = 2019-10-12T13:32:23Z
 aliases = []
 [extra]
 id = 12892
+task = """
+  Simulate a universal Turing machine that takes another machine's
+  definition and executes it, supporting `left`, `right`, and `stay`
+  tape moves. Test it on a simple incrementer and a three-state busy
+  beaver.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

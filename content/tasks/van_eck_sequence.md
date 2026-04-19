@@ -5,6 +5,11 @@ date = 2019-10-03T23:59:54Z
 aliases = []
 [extra]
 id = 22381
+task = """
+  Write a function that generates the **Van Eck sequence**: start with
+  zero; if the last term is new, append `0`, otherwise append how many
+  steps back it last appeared. Print terms 1-10 and 991-1000.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

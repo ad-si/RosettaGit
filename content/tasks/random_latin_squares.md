@@ -5,6 +5,12 @@ date = 2019-07-18T17:50:08Z
 aliases = []
 [extra]
 id = 22365
+task = """
+  Write a function that, given `n`, generates a randomised Latin
+  square of size `n` (an `n`-by-`n` arrangement where each symbol
+  appears exactly once per row and column). Use it to display two
+  random squares of size `5`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

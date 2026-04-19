@@ -5,6 +5,11 @@ date = 2019-05-19T21:03:46Z
 aliases = []
 [extra]
 id = 11600
+task = """
+  Compute the **MD4** message digest of the ASCII string
+  `Rosetta Code`, either via a library or by implementing
+  RFC 1320 directly.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-19T19:06:04Z
 aliases = []
 [extra]
 id = 22565
+task = """
+  Implement intersecting number wheels: each named wheel cycles through
+  ordered values that are either numbers (yielded directly) or names of
+  other wheels (which then yield their next value). Generate and show the
+  first twenty terms produced by several given wheel groups.
+"""
 [taxonomies]
 categories = ["Data structures", "Mathematics", "task"]
 tags = []

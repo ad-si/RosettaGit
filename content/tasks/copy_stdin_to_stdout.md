@@ -5,6 +5,10 @@ date = 2019-08-22T04:10:21Z
 aliases = []
 [extra]
 id = 22066
+task = """
+  Create an executable file (or interpreter script) that copies `stdin`
+  to `stdout`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

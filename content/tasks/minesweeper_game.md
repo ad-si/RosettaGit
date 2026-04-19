@@ -5,6 +5,13 @@ date = 2019-09-08T21:55:26Z
 aliases = []
 [extra]
 id = 7718
+task = """
+  Implement Minesweeper on a 6 by 4 grid with randomly placed mines.
+  Let the player mark suspected mines with `?` and clear free cells
+  (recursively revealing adjacent empty cells and showing neighbour
+  mine counts). The player wins by identifying every mine and loses
+  by clearing a hidden mine.
+"""
 [taxonomies]
 categories = ["task", "games"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-28T15:07:52Z
 aliases = []
 [extra]
 id = 3109
+task = """
+  Create a simple **X11** application using an X11 protocol library
+  such as Xlib or XCB that draws a box and the text *Hello World* in a
+  window. Avoid using a higher-level toolkit.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

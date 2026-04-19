@@ -5,6 +5,15 @@ date = 2019-01-13T22:55:40Z
 aliases = []
 [extra]
 id = 9996
+task = """
+  Build twelve first-class environments, each holding a hailstone
+  value (initial values 1 through 12) and a step counter. Run a
+  single piece of code repeatedly in each environment that
+  advances the hailstone sequence by one step (unless the value
+  is already 1) and prints the current value. Stop once all
+  values have reached 1, then print the per-environment step
+  counts.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

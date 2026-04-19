@@ -5,6 +5,11 @@ date = 2019-04-05T05:26:52Z
 aliases = []
 [extra]
 id = 3015
+task = """
+  Show that `n + floor(1/2 + sqrt(n))` produces the sequence of
+  non-square natural numbers. Print values for `n` from `1` to `22`
+  and verify no squares appear for `n` below one million (OEIS A000037).
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

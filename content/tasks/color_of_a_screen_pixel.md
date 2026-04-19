@@ -5,6 +5,10 @@ date = 2019-10-06T05:57:47Z
 aliases = []
 [extra]
 id = 4268
+task = """
+  Retrieve the color of an arbitrary pixel on the screen, for
+  example at the current mouse cursor position.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-11T15:48:10Z
 aliases = []
 [extra]
 id = 2327
+task = """
+  Implement an interpreter or compiler for the **Brainfuck**
+  programming language, supporting its eight standard commands
+  (`>`, `<`, `+`, `-`, `.`, `,`, `[`, `]`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

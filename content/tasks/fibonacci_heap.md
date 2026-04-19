@@ -5,6 +5,11 @@ date = 2018-12-29T19:13:37Z
 aliases = []
 [extra]
 id = 21508
+task = """
+  Implement queue operations for a **Fibonacci heap**: `MakeHeap`,
+  `Insert(H, x)`, `Union(H1, H2)`, `Minimum(H)`, `ExtractMin(H)`,
+  `DecreaseKey(H, x, k)`, and `Delete(H, x)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

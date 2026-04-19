@@ -5,6 +5,10 @@ date = 2019-10-21T06:08:44Z
 aliases = []
 [extra]
 id = 5177
+task = """
+  Print a formatted 12x12 multiplication table, showing only the upper
+  triangle of products.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

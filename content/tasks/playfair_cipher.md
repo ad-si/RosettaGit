@@ -5,6 +5,11 @@ date = 2018-10-28T21:21:26Z
 aliases = []
 [extra]
 id = 13455
+task = """
+  Implement a **Playfair cipher** for encryption and decryption.
+  Allow the user to choose either `J = I` or no `Q` in the alphabet.
+  Output capitalized digraphs separated by spaces.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

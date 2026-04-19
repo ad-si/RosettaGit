@@ -5,6 +5,12 @@ date = 2019-05-30T18:49:49Z
 aliases = []
 [extra]
 id = 3211
+task = """
+  Demonstrate **constrained genericity** (bounded quantification) by
+  writing a generic `FoodBox` type that holds a collection of objects
+  parameterized by an "eatable" type (one supporting an `eat` function),
+  even though `FoodBox` itself never calls `eat`.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

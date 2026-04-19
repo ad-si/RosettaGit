@@ -5,6 +5,11 @@ date = 2019-09-28T00:49:52Z
 aliases = []
 [extra]
 id = 22561
+task = """
+  Implement an interpreter or compiler for the **CopyPasta**
+  language, supporting the commands `Copy`, `CopyFile`,
+  `Duplicate`, and `Pasta!` operating on a clipboard.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

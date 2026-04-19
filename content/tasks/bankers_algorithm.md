@@ -5,6 +5,12 @@ date = 2019-08-11T09:35:29Z
 aliases = []
 [extra]
 id = 12970
+task = """
+  Implement Dijkstra's Banker's algorithm for resource allocation
+  and deadlock avoidance: given the total resources, current
+  allocations, and maximum needs of each process, determine
+  whether the system is in a safe state.
+"""
 [taxonomies]
 categories = ["Classic CS problems", "Algorithms", "Operating systems", "task"]
 tags = []

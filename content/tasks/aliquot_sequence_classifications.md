@@ -5,6 +5,14 @@ date = 2019-10-06T00:16:20Z
 aliases = []
 [extra]
 id = 18401
+task = """
+  For a positive integer `K`, generate its aliquot sequence (each
+  term is the sum of the proper divisors of the previous) and
+  classify `K` as **terminating**, **perfect**, **amicable**,
+  **sociable**, **aspiring**, **cyclic**, or **non-terminating**.
+  Show the classification and sequence for `1`–`10` and for a list
+  of specific values including `11, 12, 28, 496, 220, 1184`, etc.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

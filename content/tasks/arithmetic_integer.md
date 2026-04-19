@@ -5,6 +5,12 @@ date = 2019-10-15T07:43:29Z
 aliases = []
 [extra]
 id = 2069
+task = """
+  Read two integers from the user and display their sum, difference,
+  product, integer quotient, remainder, and (if available)
+  exponentiation. Note how the quotient rounds and which operand's
+  sign the remainder follows.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Arithmetic operations", "Arithmetic", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-14T11:33:18Z
 aliases = []
 [extra]
 id = 2449
+task = """
+  Demonstrate `sine`, `cosine`, `tangent` and their inverses using the
+  same angle expressed in both radians and degrees. If the language
+  lacks built-ins, implement them via a known identity or approximation.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

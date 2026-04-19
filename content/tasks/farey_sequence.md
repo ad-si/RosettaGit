@@ -5,6 +5,13 @@ date = 2019-10-21T19:05:19Z
 aliases = []
 [extra]
 id = 17470
+task = """
+  Compute and show the **Farey sequence** `F_n` (reduced fractions
+  between `0` and `1` with denominators `<= n`) for orders `1`
+  through `11`. Also display the number of fractions in `F_n` for
+  `n` from `100` through `1000` by hundreds. Format fractions as
+  `n/d`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-08T06:19:22Z
 aliases = []
 [extra]
 id = 12961
+task = """
+  Given two strings `u` and `v`, find a **shortest common supersequence**
+  `s` such that both `u` and `v` are subsequences of `s`. Demonstrate
+  with `u = "abcbdab"` and `v = "bdcaba"`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

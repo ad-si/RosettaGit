@@ -5,6 +5,11 @@ date = 2019-08-24T15:04:59Z
 aliases = []
 [extra]
 id = 1968
+task = """
+  Create classes `Point(x, y)` and `Circle(x, y, r)` with a
+  polymorphic `print` method, accessors, copy constructor,
+  assignment, destructor, and the available default constructors.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

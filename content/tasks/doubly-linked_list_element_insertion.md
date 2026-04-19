@@ -5,6 +5,12 @@ date = 2018-11-28T06:33:25Z
 aliases = []
 [extra]
 id = 2090
+task = """
+  Using the doubly linked list element structure, define a procedure
+  that inserts a new link into a doubly linked list. Demonstrate it
+  by inserting element `C` between elements `A` and `B` of the list
+  `{A, B}`.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

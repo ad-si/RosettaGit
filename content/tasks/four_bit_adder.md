@@ -5,6 +5,13 @@ date = 2019-10-10T16:07:32Z
 aliases = []
 [extra]
 id = 7518
+task = """
+  Simulate a four-bit adder by composing half adders from
+  `xor` and `and` gates, full adders from two half adders and
+  an `or` gate, and the 4-bit adder from four full adders.
+  Use only `not`, `or`, and `and` (bitwise) as primitive gates,
+  and demonstrate by summing two four-bit numbers in binary.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-05-01T22:19:45Z
 aliases = []
 [extra]
 id = 20698
+task = """
+  Implement a variant of the **Snake** game in any interactive
+  environment. The player runs the snake's head into items to eat
+  them, growing the snake; new items spawn randomly. The game ends
+  when the snake eats itself.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

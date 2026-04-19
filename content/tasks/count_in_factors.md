@@ -5,6 +5,11 @@ date = 2019-10-08T02:08:00Z
 aliases = []
 [extra]
 id = 9012
+task = """
+  Write a program that counts up from `1`, displaying each number as
+  the product of its prime factors (e.g. `6` -> `2 x 3`,
+  `2144` -> `2 x 2 x 2 x 2 x 2 x 67`).
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

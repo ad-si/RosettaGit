@@ -5,6 +5,12 @@ date = 2018-09-30T09:46:45Z
 aliases = []
 [extra]
 id = 10198
+task = """
+  Implement a subtractive random number generator using the formula
+  `r_n = r_(n-55) - r_(n-24) mod 10^9`, replicating the sequences from *xpat2*.
+  Use Bentley's seeding algorithm and start emitting values from `r_220` to
+  avoid bias in the initial numbers.
+"""
 [taxonomies]
 categories = ["task", "Randomness"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-06-15T21:27:04Z
 aliases = []
 [extra]
 id = 11982
+task = """
+  Compute the response password for **Legrand/Bticino MyHome
+  OpenWebNet** ethernet gateways from the gateway's "password open"
+  value and the nonce sent by the gateway, using the documented
+  bit-shifting algorithm.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

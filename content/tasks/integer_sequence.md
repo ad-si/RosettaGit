@@ -5,6 +5,10 @@ date = 2019-10-18T19:31:11Z
 aliases = []
 [extra]
 id = 9249
+task = """
+  Write a program that displays all integers from `1` upward in sequence,
+  continuing indefinitely or until reaching the implementation's limit.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

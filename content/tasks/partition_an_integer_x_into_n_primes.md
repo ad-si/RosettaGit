@@ -5,6 +5,11 @@ date = 2019-08-22T14:31:33Z
 aliases = []
 [extra]
 id = 21327
+task = """
+  Partition a positive integer `X` into `N` distinct primes (using the
+  lowest primes possible). Print `X` and the primes joined by `+`,
+  e.g. `Partitioned 19 with 3 primes: 3+5+11`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

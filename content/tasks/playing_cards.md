@@ -5,6 +5,11 @@ date = 2019-10-17T23:23:11Z
 aliases = []
 [extra]
 id = 2837
+task = """
+  Define a deck of 52 playing cards with pip and suit values, and
+  provide methods to create a new deck, shuffle it, deal cards, and
+  print the current contents.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

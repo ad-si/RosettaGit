@@ -5,6 +5,10 @@ date = 2019-10-21T05:06:43Z
 aliases = []
 [extra]
 id = 21946
+task = """
+  Display the ASCII character set from values `32` to `127` (decimal)
+  formatted as a table.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

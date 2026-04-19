@@ -5,6 +5,12 @@ date = 2019-02-28T11:25:25Z
 aliases = []
 [extra]
 id = 8856
+task = """
+  Write a function that linearly maps a value `s` from one range
+  `[a1, a2]` to another range `[b1, b2]` using
+  `t = b1 + (s - a1)(b2 - b1) / (a2 - a1)`. Demonstrate by mapping
+  `[0, 10]` to `[-1, 0]`.
+"""
 [taxonomies]
 categories = ["Mathematics", "Interpolation", "task"]
 tags = []

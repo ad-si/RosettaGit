@@ -5,6 +5,11 @@ date = 2019-02-21T20:43:09Z
 aliases = []
 [extra]
 id = 16497
+task = """
+  Implement the Zhang-Suen thinning algorithm to reduce a black and
+  white (1-bit-per-pixel) image to a skeleton of single-pixel-wide
+  lines, and apply it to a sample input image.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

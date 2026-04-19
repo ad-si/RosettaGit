@@ -5,6 +5,10 @@ date = 2019-09-02T14:52:08Z
 aliases = []
 [extra]
 id = 4263
+task = """
+  Show how to bind user-defined methods to user-defined keys.
+  State whether the bindings are application-specific or system-wide.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

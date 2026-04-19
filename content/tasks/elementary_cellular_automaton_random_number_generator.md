@@ -5,6 +5,12 @@ date = 2019-08-02T10:45:16Z
 aliases = []
 [extra]
 id = 17411
+task = """
+  Use elementary cellular automaton **rule 30** as a pseudo-random
+  number generator: starting from a single cell set to 1, follow
+  that cell's value across generations and group successive bits
+  into bytes (most significant bit first). Show the first ten bytes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

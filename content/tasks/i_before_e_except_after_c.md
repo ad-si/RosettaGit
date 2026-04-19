@@ -5,6 +5,13 @@ date = 2019-09-02T19:12:26Z
 aliases = []
 [extra]
 id = 12739
+task = """
+  Using a word list, check whether the two sub-clauses of the
+  mnemonic *"I before E, except after C"* are individually
+  plausible: *"I before E when not preceded by C"* and
+  *"E before I when preceded by C"*. A claim is *plausible* if
+  matching words outnumber counter-examples by more than 2:1.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

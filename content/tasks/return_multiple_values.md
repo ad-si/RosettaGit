@@ -5,6 +5,9 @@ date = 2019-10-18T18:33:01Z
 aliases = []
 [extra]
 id = 10654
+task = """
+  Show how to return more than one value from a function.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

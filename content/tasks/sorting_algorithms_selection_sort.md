@@ -5,6 +5,11 @@ date = 2019-10-20T04:11:13Z
 aliases = []
 [extra]
 id = 3138
+task = """
+  Sort an array using *selection sort*: repeatedly find the smallest
+  remaining element and swap it into the next position, continuing
+  until the entire array is sorted.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

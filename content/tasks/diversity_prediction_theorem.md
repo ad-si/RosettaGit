@@ -5,6 +5,13 @@ date = 2019-10-04T00:27:13Z
 aliases = []
 [extra]
 id = 21206
+task = """
+  Implement Scott E. Page's diversity prediction theorem: given a set
+  of individual predictions and the true value, compute the average
+  individual error, the collective error (squared error of the mean
+  prediction), and the prediction diversity, and verify that
+  `collective error = average individual error - prediction diversity`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

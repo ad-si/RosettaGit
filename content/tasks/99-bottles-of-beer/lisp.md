@@ -5,6 +5,10 @@ date = 2018-08-23T12:04:42Z
 aliases = []
 [extra]
 id = 18273
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Lisp-family languages.
+"""
 [taxonomies]
 categories = []
 tags = []

@@ -5,6 +5,11 @@ date = 2019-03-31T15:02:45Z
 aliases = []
 [extra]
 id = 17949
+task = """
+  Implement the Time-based One-time Password (TOTP) algorithm using
+  `HMAC-SHA1` per RFC 6238. Optionally also generate the random Base-32
+  shared-secret key.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

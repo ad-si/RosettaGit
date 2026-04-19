@@ -5,6 +5,13 @@ date = 2019-10-19T00:24:26Z
 aliases = []
 [extra]
 id = 22424
+task = """
+  Construct the set of all reduced Latin Squares of a given order `n`
+  and provide a way to retrieve any specific element by index `g`.
+  Display the four reduced squares of order 4, then for `n = 1..6`
+  produce the set sizes and compare `count * n! * (n-1)!` with
+  [OEIS A002860](https://oeis.org/A002860).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

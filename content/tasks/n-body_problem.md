@@ -5,6 +5,10 @@ date = 2019-10-04T16:07:48Z
 aliases = []
 [extra]
 id = 17519
+task = """
+  Simulate three masses interacting under Newtonian gravity and show
+  their positions and velocities evolving over at least 20 time steps.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

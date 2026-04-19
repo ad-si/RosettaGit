@@ -5,6 +5,11 @@ date = 2019-10-07T22:57:54Z
 aliases = []
 [extra]
 id = 19231
+task = """
+  Write a function that takes a positive integer number of seconds and
+  returns a string decomposing it into weeks, days, hours, minutes, and
+  seconds (e.g. `7259` -> `2 hr, 59 sec`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

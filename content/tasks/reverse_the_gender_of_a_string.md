@@ -5,6 +5,11 @@ date = 2019-10-12T09:21:55Z
 aliases = []
 [extra]
 id = 12356
+task = """
+  Create a function that takes a string and returns it with all
+  gender-related references switched, e.g. `"She took my heart"` becomes
+  `"He took my heart"`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-02T13:14:26Z
 aliases = []
 [extra]
 id = 5219
+task = """
+  Produce a well-formatted **stem-and-leaf plot** from a given data set,
+  using the last digit of each value as the leaf.
+  Output should be plain monospaced text (or better), not a bitmap.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

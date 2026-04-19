@@ -5,6 +5,10 @@ date = 2019-10-20T08:53:40Z
 aliases = []
 [extra]
 id = 7084
+task = """
+  Find the limit of recursion supported by the language or
+  runtime.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

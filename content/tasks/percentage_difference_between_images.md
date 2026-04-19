@@ -5,6 +5,11 @@ date = 2019-09-04T08:39:18Z
 aliases = []
 [extra]
 id = 3112
+task = """
+  Compute the percentage difference between two JPEG images of the
+  same size (or, alternatively, two equal-sized bitmaps). Useful
+  for comparing images saved at different compression ratios.
+"""
 [taxonomies]
 categories = ["Image processing", "task"]
 tags = []

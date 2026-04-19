@@ -5,6 +5,13 @@ date = 2019-01-19T00:46:50Z
 aliases = []
 [extra]
 id = 17325
+task = """
+  Generate **lucky numbers** and **even lucky numbers** (sieve-like
+  sequences from the odd/even positive integers). Provide a CLI
+  accepting `j`, `j k`, or `j -k` plus an optional `lucky` /
+  `evenLucky` selector to print a single number, a range by index,
+  or a range by value, with input validation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

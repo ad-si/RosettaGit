@@ -5,6 +5,11 @@ date = 2019-06-23T20:47:34Z
 aliases = []
 [extra]
 id = 11084
+task = """
+  Implement the Montgomery reduction algorithm to compute
+  `T * R^-1 mod m` without dividing by `m`, given precomputed
+  `m' = -m^-1 mod b`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

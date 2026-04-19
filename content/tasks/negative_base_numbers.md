@@ -5,6 +5,12 @@ date = 2019-05-10T18:36:05Z
 aliases = []
 [extra]
 id = 21222
+task = """
+  Encode and decode numbers using negative bases (negabinary,
+  negaternary, negadecimal). Encode `10` to negabinary (`11110`),
+  `146` to negaternary (`21102`), `15` to negadecimal (`195`), and
+  convert each result back to decimal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

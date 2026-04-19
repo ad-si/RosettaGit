@@ -5,6 +5,10 @@ date = 2019-08-30T14:18:21Z
 aliases = []
 [extra]
 id = 21300
+task = """
+  Implement Tarjan's algorithm for finding the strongly connected
+  components of a directed graph in linear time.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

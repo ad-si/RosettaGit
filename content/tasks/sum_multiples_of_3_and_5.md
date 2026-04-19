@@ -5,6 +5,11 @@ date = 2019-10-14T16:05:59Z
 aliases = []
 [extra]
 id = 13489
+task = """
+  Write a function that finds the sum of all positive multiples of 3 or 5
+  below `n`. Show output for `n = 1000`. **Extra credit:** do this
+  efficiently for `n = 1e20` or higher.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

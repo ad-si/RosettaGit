@@ -5,6 +5,11 @@ date = 2019-09-04T23:33:01Z
 aliases = []
 [extra]
 id = 4201
+task = """
+  Implement *counting sort*, sorting integers when their minimum and
+  maximum values are known by tallying occurrences of each value
+  and then writing them back in order.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

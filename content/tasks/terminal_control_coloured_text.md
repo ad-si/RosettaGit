@@ -5,6 +5,9 @@ date = 2019-10-09T10:31:08Z
 aliases = []
 [extra]
 id = 10458
+task = """
+  Display a word in various colours on the terminal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

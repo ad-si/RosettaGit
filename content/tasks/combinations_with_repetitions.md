@@ -5,6 +5,12 @@ date = 2019-06-05T10:59:23Z
 aliases = []
 [extra]
 id = 8749
+task = """
+  Given a set `S` of `n` items and a selection size `k`, generate
+  all combinations of size `k` chosen from `S` *with repetitions
+  allowed* (multisets, where order does not matter). Show the
+  count for chosen examples.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-03T12:22:11Z
 aliases = []
 [extra]
 id = 10309
+task = """
+  Read lines from standard input and, on EOF, print the longest line(s)
+  (all ties) to standard output. Adhere to the spirit of these
+  restrictions: no comparison operators, no arithmetic, only integer
+  and string types (no lists), and do not re-read the input.
+"""
 [taxonomies]
 categories = ["task", "Programming Challenge"]
 tags = []

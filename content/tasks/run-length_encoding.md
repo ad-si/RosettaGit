@@ -5,6 +5,11 @@ date = 2019-07-29T16:11:07Z
 aliases = []
 [extra]
 id = 4080
+task = """
+  Compress runs of repeated uppercase letters by storing each
+  run length followed by the character, and provide a function
+  to reverse the compression (e.g. `WWWB` -> `3W1B`).
+"""
 [taxonomies]
 categories = ["task", "Compression"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-05-19T16:21:28Z
 aliases = []
 [extra]
 id = 19668
+task = """
+  Produce a graphical or ASCII-art representation of a
+  **Sierpinski pentagon** (pentaflake) of order `5`. The code
+  should also handle orders `1` through `4`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

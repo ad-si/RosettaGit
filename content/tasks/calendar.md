@@ -5,6 +5,11 @@ date = 2019-08-11T14:57:41Z
 aliases = []
 [extra]
 id = 9818
+task = """
+  Write a routine that generates a text calendar for any year,
+  targeting a line printer (132 cols) or an 80x43 terminal.
+  Test it by producing a calendar for 1969.
+"""
 [taxonomies]
 categories = ["Date and time", "task"]
 tags = []

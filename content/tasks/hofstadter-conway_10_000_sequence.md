@@ -5,6 +5,13 @@ date = 2019-03-08T19:13:41Z
 aliases = []
 [extra]
 id = 6245
+task = """
+  Generate the **Hofstadter-Conway $10,000 sequence** defined by
+  `a(1) = a(2) = 1` and `a(n) = a(a(n-1)) + a(n - a(n-1))`. Show
+  the maxima of `a(n)/n` between successive powers of two up to
+  `2^20`, and optionally find the largest `n` where
+  `a(n)/n >= 0.55`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

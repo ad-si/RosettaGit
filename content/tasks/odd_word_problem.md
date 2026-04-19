@@ -5,6 +5,12 @@ date = 2018-09-04T22:43:37Z
 aliases = []
 [extra]
 id = 10773
+task = """
+  Read a stream of English letters and punctuation where words are
+  separated by single punctuation marks and the input ends with `.`.
+  Output the stream with every other word reversed, preserving the
+  original punctuation between words.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

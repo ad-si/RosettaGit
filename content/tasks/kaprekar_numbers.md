@@ -5,6 +5,13 @@ date = 2019-09-19T11:38:53Z
 aliases = []
 [extra]
 id = 9891
+task = """
+  Generate and show all **Kaprekar numbers** less than `10000`.
+  A positive integer is Kaprekar if its square can be split into two
+  positive parts that sum to the original number (e.g.
+  `2223^2 = 4941729`, and `494 + 1729 = 2223`). Optionally count those
+  below `1000000` and find Kaprekar numbers in base 17.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

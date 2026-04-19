@@ -5,6 +5,11 @@ date = 2019-10-20T16:59:42Z
 aliases = []
 [extra]
 id = 3056
+task = """
+  Show how to spell out a number in English. Support inputs up to at
+  least one million (or the language's default bounded integer
+  maximum, whichever is smaller).
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

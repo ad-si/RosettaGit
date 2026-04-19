@@ -5,6 +5,12 @@ date = 2015-04-14T19:50:53Z
 aliases = []
 [extra]
 id = 10589
+task = """
+  Create two named pipes (FIFOs), `in` and `out`. Write a program that
+  discards data written to `in` while accumulating its byte count, and
+  serves the running total to any process that reads from `out`. Avoid
+  blocking on one pipe while the other is waiting.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

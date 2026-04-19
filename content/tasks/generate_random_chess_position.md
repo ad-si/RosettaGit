@@ -5,6 +5,12 @@ date = 2019-09-21T06:28:29Z
 aliases = []
 [extra]
 id = 19820
+task = """
+  Generate a random chess position in **Forsyth-Edwards Notation (FEN)**.
+  The position need not be realistic, but must obey: exactly one king of
+  each color (not on adjacent squares), no pawn on its promotion rank,
+  at most 32 pieces total, and end with `w - - 0 1`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

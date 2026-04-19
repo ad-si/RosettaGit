@@ -5,6 +5,10 @@ date = 2019-09-15T10:21:18Z
 aliases = []
 [extra]
 id = 21824
+task = """
+  Create a `640 x 480` window and draw a single yellow pixel
+  (RGB `255, 255, 0`) at a random position.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

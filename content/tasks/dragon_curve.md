@@ -5,6 +5,11 @@ date = 2019-10-14T01:14:22Z
 aliases = []
 [extra]
 id = 2780
+task = """
+  Create and display a **dragon curve** fractal.
+  The curve may be drawn directly on screen or written to an image
+  file.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

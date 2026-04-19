@@ -5,6 +5,12 @@ date = 2019-08-11T01:00:38Z
 aliases = []
 [extra]
 id = 17877
+task = """
+  Repeatedly replacing a natural number with the sum of the squares of
+  its digits eventually reaches either `1` or `89`. Count how many
+  starting integers in `1 <= n < 100_000_000` end at `89` (or use
+  `1_000_000` for less credit).
+"""
 [taxonomies]
 categories = ["Mathematics", "Number theory", "task"]
 tags = []

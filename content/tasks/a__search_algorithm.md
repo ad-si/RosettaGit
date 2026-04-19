@@ -5,6 +5,14 @@ date = 2019-09-28T21:05:37Z
 aliases = []
 [extra]
 id = 21248
+task = """
+  Implement the A* search algorithm to find the lowest-cost
+  path between two nodes in a weighted graph using an
+  admissible heuristic. Demonstrate it by routing from `(0,0)`
+  to `(7,7)` on an 8x8 grid (king-style moves, standard cost
+  `1`, barrier squares cost `100`), then print the optimal
+  route and its total cost.
+"""
 [taxonomies]
 categories = ["Routing algorithms", "task"]
 tags = []

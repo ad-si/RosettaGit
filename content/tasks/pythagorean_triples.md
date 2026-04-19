@@ -5,6 +5,12 @@ date = 2019-10-20T20:46:23Z
 aliases = []
 [extra]
 id = 9980
+task = """
+  Determine how many Pythagorean triples `(a, b, c)` exist with a
+  perimeter no larger than `100`, and how many of those are primitive
+  (with `gcd(a, b) = 1`). Extra credit for handling perimeters up to
+  `1,000,000` or beyond.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

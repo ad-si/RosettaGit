@@ -5,6 +5,12 @@ date = 2019-07-29T14:35:28Z
 aliases = []
 [extra]
 id = 11656
+task = """
+  Write a program that plays chess against a human player. A textual
+  user interface is sufficient — no graphics required. May be built
+  from the move generation, search and evaluation, and user interface
+  sub-tasks.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

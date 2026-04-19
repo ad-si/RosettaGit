@@ -5,6 +5,12 @@ date = 2019-10-03T00:42:38Z
 aliases = []
 [extra]
 id = 20756
+task = """
+  Find the smallest positive integer whose square ends in the
+  digits `269,696`, and verify whether Babbage's guess of `99,736`
+  was correct.
+  Write the solution so it would be readable to Babbage himself.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

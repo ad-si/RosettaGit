@@ -5,6 +5,10 @@ date = 2019-10-04T05:12:34Z
 aliases = []
 [extra]
 id = 9143
+task = """
+  If the system provides a hardware-based or OS entropy source
+  (e.g. `/dev/urandom`), show how to obtain a random 32-bit number from it.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

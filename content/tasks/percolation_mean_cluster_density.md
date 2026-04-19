@@ -5,6 +5,12 @@ date = 2019-06-09T07:41:42Z
 aliases = []
 [extra]
 id = 15850
+task = """
+  Estimate the mean cluster density `K(p) = C_n / n^2` for a
+  random `n x n` boolean grid at `p = 0.5`, using the Von Neumann
+  neighborhood to define clusters. Show how accuracy improves with
+  `n` (up to at least `1000`), averaging over `t >= 5` runs.
+"""
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []

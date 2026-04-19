@@ -5,6 +5,10 @@ date = 2019-05-30T08:08:11Z
 aliases = []
 [extra]
 id = 2958
+task = """
+  Show how to access the language's null (or nil) object and how to
+  test whether a value is equivalent to it.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Simple", "task"]
 tags = []

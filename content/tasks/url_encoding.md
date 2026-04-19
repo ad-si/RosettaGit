@@ -5,6 +5,11 @@ date = 2019-10-14T11:20:32Z
 aliases = []
 [extra]
 id = 9936
+task = """
+  Provide a function that URL-encodes a string by replacing every
+  character outside `0-9`, `A-Z`, and `a-z` with a percent sign followed
+  by its two-digit hexadecimal code (e.g. space becomes `%20`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

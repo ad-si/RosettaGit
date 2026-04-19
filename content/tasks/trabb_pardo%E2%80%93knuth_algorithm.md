@@ -5,6 +5,11 @@ date = 2019-04-03T15:45:40Z
 aliases = []
 [extra]
 id = 11755
+task = """
+  Read 11 numbers into a sequence, reverse it, and for each item compute
+  `f(x) = |x|^0.5 + 5*x^3`. Print each result in reverse-input order; if a
+  result exceeds 400, alert the user instead but continue processing.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-09T18:40:12Z
 aliases = []
 [extra]
 id = 13460
+task = """
+  Given a binary string, determine if it is a *rep-string*: a string
+  formed by repeating a prefix substring at least twice and truncating
+  to the original length. Return the repeating substring if so.
+"""
 [taxonomies]
 categories = ["String manipulation", "Pattern recognition", "task"]
 tags = []

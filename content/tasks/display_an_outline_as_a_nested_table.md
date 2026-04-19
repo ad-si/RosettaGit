@@ -5,6 +5,12 @@ date = 2019-10-20T23:06:59Z
 aliases = []
 [extra]
 id = 22595
+task = """
+  Given an indented outline at least three levels deep, parse it into
+  a tree, count the leaves under each node, and emit a nested table
+  (WikiTable or HTML) using `colspan` values on parent cells equal to
+  the sum of their children's widths.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

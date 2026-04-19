@@ -5,6 +5,12 @@ date = 2019-07-26T14:01:39Z
 aliases = []
 [extra]
 id = 9877
+task = """
+  Write `stripchars(s, chars)` that returns `s` with every occurrence of
+  any character in `chars` removed.
+  Example: `stripchars("She was a soul stripper. She took my heart!", "aei")`
+  yields `Sh ws  soul strppr. Sh took my hrt!`.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

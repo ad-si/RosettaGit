@@ -5,6 +5,11 @@ date = 2019-09-16T20:44:55Z
 aliases = []
 [extra]
 id = 6036
+task = """
+  Using the language's built-in arbitrary-precision integer support,
+  compute `5^(4^(3^2))`, confirm its first and last twenty digits, and
+  report the total number of decimal digits in the result.
+"""
 [taxonomies]
 categories = ["task", "Arbitrary precision"]
 tags = []

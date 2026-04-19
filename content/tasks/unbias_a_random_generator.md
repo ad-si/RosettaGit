@@ -5,6 +5,11 @@ date = 2019-07-01T15:34:41Z
 aliases = []
 [extra]
 id = 9284
+task = """
+  Build a biased one-bit generator `randN` that returns 1 with
+  probability `1/N` for `N` in 3..6, then implement Von Neumann
+  debiasing on top of it. Show counts for both generators across `N`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

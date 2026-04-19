@@ -5,6 +5,12 @@ date = 2019-10-09T17:18:58Z
 aliases = []
 [extra]
 id = 21408
+task = """
+  The rows of **Faulhaber's triangle** are the coefficients of the
+  polynomials that give sums of integer powers (from Faulhaber's
+  formula). Show the first 10 rows of the triangle, and use the 18th
+  row to compute the sum of `k^17` for `k = 1..1000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

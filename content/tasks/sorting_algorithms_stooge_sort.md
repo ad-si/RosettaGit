@@ -5,6 +5,9 @@ date = 2019-03-22T11:29:52Z
 aliases = []
 [extra]
 id = 7801
+task = """
+  Implement **Stooge sort** for an array of integers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

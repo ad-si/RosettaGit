@@ -5,6 +5,12 @@ date = 2019-10-18T10:01:05Z
 aliases = []
 [extra]
 id = 4001
+task = """
+  Define two user exceptions `U0` and `U1`. Have `foo` call `bar`
+  twice, `bar` call `baz`, and `baz` raise `U0` on its first call
+  and `U1` on its second. `foo` should catch only `U0`, letting
+  `U1` propagate. Describe what happens when run.
+"""
 [taxonomies]
 categories = ["task", "Control Structures"]
 tags = []

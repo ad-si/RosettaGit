@@ -5,6 +5,12 @@ date = 2019-09-08T05:28:51Z
 aliases = []
 [extra]
 id = 9299
+task = """
+  Split a string using an ordered collection of (potentially
+  multi-character) separators, retaining information about which
+  separator matched at each position. Earlier separators take priority
+  when matches overlap.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

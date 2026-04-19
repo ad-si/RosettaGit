@@ -3,7 +3,9 @@ title = "Hello world!"
 date = 2019-10-04T03:16:11Z
 [extra]
 id = 1514
-task = "Display the string \"Hello world!\" on a text console."
+task = """
+  Display the string `Hello world!` on a text console.
+"""
 [taxonomies]
 categories = ["task"]
 tags = ["cli", "basic", "simple"]

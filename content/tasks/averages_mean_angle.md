@@ -5,6 +5,12 @@ date = 2019-10-06T04:56:04Z
 aliases = []
 [extra]
 id = 11983
+task = """
+  Write a function that, given a list of angles in degrees,
+  returns their mean angle, accounting for the wrap-around at 360°.
+  Compute the means for `[350, 10]`, `[90, 180, 270, 360]`,
+  and `[10, 20, 30]`.
+"""
 [taxonomies]
 categories = ["Mathematics", "Statistics", "task"]
 tags = []

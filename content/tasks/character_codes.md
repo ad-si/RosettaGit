@@ -5,6 +5,11 @@ date = 2019-09-10T10:31:22Z
 aliases = []
 [extra]
 id = 3118
+task = """
+  Given a character, print its numeric code (ASCII, Unicode, or
+  whatever the language uses). Conversely, given a code, print the
+  corresponding character.
+"""
 [taxonomies]
 categories = ["Text processing", "Basic language learning", "String manipulation", "task"]
 tags = []

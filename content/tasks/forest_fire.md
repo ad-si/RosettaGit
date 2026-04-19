@@ -5,6 +5,14 @@ date = 2019-10-18T20:50:03Z
 aliases = []
 [extra]
 id = 7734
+task = """
+  Implement the Drossel-Schwabl forest-fire model: a 2D cellular
+  automaton on a Moore neighborhood with cells in states *empty*,
+  *tree*, or *burning*. Burning cells become empty, trees catch
+  fire if any neighbor burns or spontaneously with probability
+  `f`, and empty cells grow a tree with probability `p`. Use
+  fixed (always-empty) boundaries and let the system evolve.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

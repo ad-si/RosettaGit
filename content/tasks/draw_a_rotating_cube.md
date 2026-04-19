@@ -5,6 +5,12 @@ date = 2019-09-05T10:22:02Z
 aliases = []
 [extra]
 id = 19095
+task = """
+  Draw a rotating cube oriented with one vertex pointing straight
+  up and the opposite vertex on the main diagonal pointing down.
+  Solid or wire-frame, ASCII art if the language lacks graphics;
+  perspective is optional.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

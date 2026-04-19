@@ -5,6 +5,11 @@ date = 2019-08-31T08:50:02Z
 aliases = []
 [extra]
 id = 3991
+task = """
+  Create a function `compose(f, g)` that takes two single-argument
+  functions and returns a new function `x -> f(g(x))`. In some
+  languages this requires creating a closure.
+"""
 [taxonomies]
 categories = ["task", "Higher-order functions"]
 tags = []

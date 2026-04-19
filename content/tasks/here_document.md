@@ -5,6 +5,11 @@ date = 2019-09-06T23:49:24Z
 aliases = []
 [extra]
 id = 9634
+task = """
+  Demonstrate the use of *here documents* (heredocs): a syntax for
+  embedding a multi-line text block that preserves line breaks,
+  indentation, and other whitespace.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

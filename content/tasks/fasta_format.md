@@ -5,6 +5,13 @@ date = 2019-07-19T13:28:05Z
 aliases = []
 [extra]
 id = 13244
+task = """
+  Write a program that reads a **FASTA** file (bioinformatics format
+  where each sequence begins with a name line prefixed by `>`) and
+  prints each sequence as `name: concatenated-sequence`. High-quality
+  implementations should stream the file rather than loading it
+  entirely into memory.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

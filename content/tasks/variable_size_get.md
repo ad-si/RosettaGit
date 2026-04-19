@@ -5,6 +5,9 @@ date = 2019-09-07T23:42:56Z
 aliases = []
 [extra]
 id = 1987
+task = """
+  Demonstrate how to get the size of a variable in the language.
+"""
 [taxonomies]
 categories = ["task", "Type System"]
 tags = []

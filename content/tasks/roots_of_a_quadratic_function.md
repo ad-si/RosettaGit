@@ -5,6 +5,11 @@ date = 2018-11-09T16:53:13Z
 aliases = []
 [extra]
 id = 3149
+task = """
+  Solve `ax^2 + bx + c = 0`, correctly handling non-real roots
+  and avoiding catastrophic loss of accuracy when one root is
+  much closer to `0` than the other.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

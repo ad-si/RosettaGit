@@ -5,6 +5,12 @@ date = 2019-08-27T16:07:47Z
 aliases = []
 [extra]
 id = 22349
+task = """
+  For `n >= 3`, let `a(n)` be the smallest Chernick's Carmichael
+  number with `n` prime factors, defined by Chernick's formula
+  `U(n, m) = (6m+1)(12m+1) * product_{i=1..n-2}(2^i*9m + 1)`.
+  Compute `a(n)` for `n = 3..9` (optionally `a(10)`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

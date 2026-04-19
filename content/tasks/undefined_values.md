@@ -5,6 +5,11 @@ date = 2019-10-14T10:20:31Z
 aliases = []
 [extra]
 id = 4997
+task = """
+  For languages with an explicit notion of an undefined value, identify
+  and demonstrate the mechanisms used to detect and manipulate the
+  undefined status of a variable's value.
+"""
 [taxonomies]
 categories = ["task", "Programming language concepts"]
 tags = []

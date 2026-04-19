@@ -5,6 +5,12 @@ date = 2019-04-24T00:52:17Z
 aliases = []
 [extra]
 id = 21552
+task = """
+  Implement **Egyptian division**, an integer division method using
+  only addition and doubling. Build a table of powers of 2 and
+  doublings of the divisor, then sum the appropriate rows in reverse
+  to obtain the quotient and remainder. Demonstrate with `580 / 34`.
+"""
 [taxonomies]
 categories = ["Mathematics", "Arithmetic", "Ancient mathematics", "task"]
 tags = []

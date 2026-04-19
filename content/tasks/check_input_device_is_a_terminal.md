@@ -5,6 +5,10 @@ date = 2019-05-18T19:44:30Z
 aliases = []
 [extra]
 id = 12341
+task = """
+  Demonstrate how to check whether the input device (stdin) is a
+  terminal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-09-21T22:31:23Z
 aliases = []
 [extra]
 id = 22190
+task = """
+  Describe whether the language implementation supports a *safe* (or
+  restricted) execution mode and which features it disables.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

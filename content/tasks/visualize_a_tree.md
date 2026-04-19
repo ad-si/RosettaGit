@@ -5,6 +5,10 @@ date = 2019-10-18T20:49:31Z
 aliases = []
 [extra]
 id = 12276
+task = """
+  Write a program that produces a human-friendly visual representation
+  of a tree. The tree's content and the output format are up to you.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

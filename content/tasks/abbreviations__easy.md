@@ -5,6 +5,13 @@ date = 2019-09-18T11:31:06Z
 aliases = []
 [extra]
 id = 21596
+task = """
+  Given a command table where uppercase letters mark the minimum
+  abbreviation of each command (e.g. `ALTer`, `BAckup`), write a
+  function that validates a user word against the table. Return the
+  full uppercase command when valid, `*error*` when not, and an empty
+  string for blank input.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,9 @@ date = 2019-10-18T20:29:35Z
 aliases = []
 [extra]
 id = 16950
+task = """
+  Print the lyrics of the Christmas carol *The Twelve Days of Christmas*.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

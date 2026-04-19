@@ -5,6 +5,11 @@ date = 2019-10-14T11:51:32Z
 aliases = []
 [extra]
 id = 8274
+task = """
+  Find the largest left-truncatable and right-truncatable primes below
+  one million in base 10. A truncatable prime stays prime as digits are
+  removed from one end; no zero digits are permitted.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

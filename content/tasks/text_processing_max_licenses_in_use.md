@@ -5,6 +5,11 @@ date = 2018-08-25T13:37:44Z
 aliases = []
 [extra]
 id = 3064
+task = """
+  Scan a license-manager log of `License OUT`/`License IN` events and
+  determine the maximum number of licenses checked out simultaneously,
+  along with the time(s) at which that peak occurred.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

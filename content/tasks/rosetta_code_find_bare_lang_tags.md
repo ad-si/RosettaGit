@@ -5,6 +5,10 @@ date = 2019-07-26T11:23:23Z
 aliases = []
 [extra]
 id = 10059
+task = """
+  Find all `<lang>` tags lacking a language specifier in a page
+  and display counts grouped by the enclosing language section.
+"""
 [taxonomies]
 categories = ["task", "Rosetta Code related"]
 tags = []

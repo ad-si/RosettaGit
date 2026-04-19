@@ -5,6 +5,13 @@ date = 2019-08-03T17:29:58Z
 aliases = []
 [extra]
 id = 17475
+task = """
+  Express fractions as **Egyptian fractions** (sums of distinct
+  unit fractions) using Fibonacci's greedy algorithm. Show the
+  expansion of `43/48`, `5/121`, and `2014/59`, and for all proper
+  fractions `a/b` with one- or two-digit `a`, `b`, find those with
+  the largest number of terms and the largest denominator.
+"""
 [taxonomies]
 categories = ["Mathematics", "Fractions", "Ancient mathematics", "task"]
 tags = []

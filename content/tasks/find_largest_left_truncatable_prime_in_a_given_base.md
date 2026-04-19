@@ -5,6 +5,12 @@ date = 2019-10-10T02:52:13Z
 aliases = []
 [extra]
 id = 12308
+task = """
+  A *left-truncatable prime* in base `b` is a prime whose every
+  right-substring is also prime when read in that base. Compute
+  the largest left-truncatable prime for each base, reconstructing
+  as much of OEIS A103443 as possible.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

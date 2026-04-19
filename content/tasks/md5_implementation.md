@@ -5,6 +5,11 @@ date = 2019-05-01T19:25:01Z
 aliases = []
 [extra]
 id = 8366
+task = """
+  Implement the **MD5** message digest algorithm directly from the
+  specification (no built-in or library hashing) and verify it
+  against the RFC 1321 test vectors.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

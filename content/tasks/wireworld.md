@@ -5,6 +5,12 @@ date = 2018-12-06T01:06:20Z
 aliases = []
 [extra]
 id = 4827
+task = """
+  Read a *Wireworld* cellular automaton program from a file and
+  display an animation of its execution. Each cell is `empty`,
+  `electron head`, `electron tail`, or `conductor`, with the standard
+  Wireworld transition rules applied simultaneously to all cells.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

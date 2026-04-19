@@ -5,6 +5,13 @@ date = 2019-06-04T21:48:56Z
 aliases = []
 [extra]
 id = 17934
+task = """
+  Generate combinations with repetitions of `k` items drawn from
+  `[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]` (excluding all zeroes).
+  For each combination whose iterated digit-square chain ends at
+  `1`, count the distinct orderings; sum those counts. Report the
+  total for `k = 7, 8, 11, 14` (and optionally `17`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

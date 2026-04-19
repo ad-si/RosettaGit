@@ -5,6 +5,10 @@ date = 2019-10-18T09:58:29Z
 aliases = []
 [extra]
 id = 1789
+task = """
+  Show an example of an exception-handling routine and how to
+  *throw* a new exception.
+"""
 [taxonomies]
 categories = ["task", "Control Structures"]
 languages = [

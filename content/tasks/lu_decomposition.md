@@ -5,6 +5,12 @@ date = 2019-08-02T15:00:28Z
 aliases = []
 [extra]
 id = 9359
+task = """
+  Implement **LU decomposition**: factor a square matrix `A` into a
+  lower triangular matrix `L` (with unit diagonal) and an upper
+  triangular matrix `U` such that `A = LU`, e.g. via Crout's
+  algorithm.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

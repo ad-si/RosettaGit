@@ -5,6 +5,11 @@ date = 2019-10-14T23:45:12Z
 aliases = []
 [extra]
 id = 22228
+task = """
+  Find and display the first 25 *weird numbers*: natural numbers that
+  are abundant (proper divisors sum to more than the number itself) but
+  not semiperfect (no subset of those divisors sums to the number).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-09T15:11:04Z
 aliases = []
 [extra]
 id = 16420
+task = """
+  Create a string variable, prepend another string literal to it
+  (idiomatically and without referring to the variable twice when possible),
+  then show the resulting value.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

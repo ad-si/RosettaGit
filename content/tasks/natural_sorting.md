@@ -5,6 +5,13 @@ date = 2018-12-05T06:56:21Z
 aliases = []
 [extra]
 id = 9454
+task = """
+  Implement a natural sort that orders strings the way humans expect:
+  ignore leading/trailing/multiple spaces, treat all whitespace as
+  equivalent, sort case-insensitively, and sort numeric runs as
+  numbers (so `foo9.txt` precedes `foo10.txt`). Test each feature on
+  the provided sample inputs.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

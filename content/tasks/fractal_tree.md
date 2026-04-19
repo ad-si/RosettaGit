@@ -5,6 +5,12 @@ date = 2019-09-20T15:46:58Z
 aliases = []
 [extra]
 id = 7175
+task = """
+  Generate and draw a fractal tree: draw a trunk, then at its
+  end split by some angle and draw two branches. Repeat at
+  the end of each branch until a sufficient level of branching
+  is reached.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

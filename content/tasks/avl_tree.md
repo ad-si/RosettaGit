@@ -5,6 +5,11 @@ date = 2019-06-06T16:23:46Z
 aliases = []
 [extra]
 id = 13412
+task = """
+  Implement an AVL tree (a self-balancing binary search tree)
+  with at least the basic operations
+  (lookup, insertion, and deletion).
+"""
 [taxonomies]
 categories = ["Data Structures", "task"]
 tags = []

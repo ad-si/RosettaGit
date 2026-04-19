@@ -5,6 +5,10 @@ date = 2019-08-26T10:29:57Z
 aliases = []
 [extra]
 id = 9587
+task = """
+  Create a function that takes a Roman numeral and returns its value as
+  a decimal integer. Validation of input form is not required.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

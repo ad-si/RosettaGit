@@ -5,6 +5,11 @@ date = 2019-08-20T08:18:37Z
 aliases = []
 [extra]
 id = 17323
+task = """
+  Implement (or call a library for) Ken Perlin's 2002 reference
+  **Perlin noise** algorithm and verify that the noise value at
+  the 3D point `(3.14, 42, 7)` equals `0.13691995878400012`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

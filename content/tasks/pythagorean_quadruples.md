@@ -5,6 +5,11 @@ date = 2019-10-22T00:57:21Z
 aliases = []
 [extra]
 id = 21516
+task = """
+  Find all positive integers `d` up to `2200` for which no positive
+  integers `a`, `b`, `c` satisfy `a² + b² + c² = d²`. Print the
+  values of `d` that cannot be represented.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

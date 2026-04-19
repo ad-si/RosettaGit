@@ -5,6 +5,12 @@ date = 2019-10-09T15:22:30Z
 aliases = []
 [extra]
 id = 17074
+task = """
+  Use the arithmetic-geometric mean (which converges quadratically)
+  to compute a large number of decimal digits of pi, applying the
+  Almkvist-Berndt approximation
+  `pi ~ 4 * a_N^2 / (1 - sum_{k=1..N} 2^(k+1) * (a_k^2 - g_k^2))`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = ["geometry"]

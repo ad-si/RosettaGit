@@ -5,6 +5,12 @@ date = 2019-10-21T14:43:02Z
 aliases = []
 [extra]
 id = 2174
+task = """
+  Implement the **Sieve of Eratosthenes** to find primes up to a given
+  integer. The only allowed optimizations are stopping the outer loop
+  at `sqrt(limit)` and starting the inner loop at the prime's square;
+  no wheel-based optimizations.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

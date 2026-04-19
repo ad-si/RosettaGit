@@ -5,6 +5,11 @@ date = 2019-10-21T12:04:41Z
 aliases = []
 [extra]
 id = 22215
+task = """
+  Compute the Mian–Chowla sequence (each term is the smallest
+  positive integer that keeps all pairwise sums distinct) and
+  display the first 30 terms and the 91st through 100th terms.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

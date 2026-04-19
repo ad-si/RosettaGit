@@ -5,6 +5,12 @@ date = 2019-10-06T20:54:41Z
 aliases = []
 [extra]
 id = 19210
+task = """
+  Use **Knuth's power tree** to compute `x^n` efficiently. Show the
+  list of integers from the tree needed for the computation, then
+  calculate the exact values of `2^n` for `n` from 0 to 17, `3^191`,
+  and `1.1^81`.
+"""
 [taxonomies]
 categories = ["task", "Knuth's power tree"]
 tags = []

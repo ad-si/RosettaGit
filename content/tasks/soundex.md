@@ -5,6 +5,11 @@ date = 2019-08-10T23:39:33Z
 aliases = []
 [extra]
 id = 4966
+task = """
+  Implement the **Soundex** algorithm, encoding words by pronunciation so
+  homophones share the same code. Honor the rules around vowels and `H`/`W`
+  separating consonants with the same code (e.g. `Ashcraft` -> `A-261`).
+"""
 [taxonomies]
 categories = ["Text processing", "String algorithms", "task"]
 tags = []

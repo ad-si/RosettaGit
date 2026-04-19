@@ -5,6 +5,11 @@ date = 2018-03-24T01:34:00Z
 aliases = []
 [extra]
 id = 10259
+task = """
+  Show the **epoch** used by the language's popular date libraries.
+  Prefer a runtime demonstration (e.g. setting an internal date to
+  zero) over documentation; display the date in UTC where possible.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

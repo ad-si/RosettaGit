@@ -5,6 +5,11 @@ date = 2019-09-19T13:02:36Z
 aliases = []
 [extra]
 id = 22427
+task = """
+  Normalize and convert geometric angles between common scales:
+  `degree`, `gradian`, `mil`, and `radian`.
+  A full turn is 360 degrees = 400 gradians = 6400 mils = 2π radians.
+"""
 [taxonomies]
 categories = ["geometry", "task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-08-25T10:46:16Z
 aliases = []
 [extra]
 id = 21612
+task = """
+  Given an integer, return a sentence that spells it in English,
+  appends `is` and the spelled-out letter count of that word,
+  then repeats the process with each new word until reaching
+  `four`, which terminates with `four is magic.`
+  For example, `3` yields `Three is five, five is four, four is magic.`
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

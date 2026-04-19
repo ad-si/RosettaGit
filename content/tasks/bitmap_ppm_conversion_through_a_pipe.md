@@ -5,6 +5,10 @@ date = 2018-12-29T18:44:20Z
 aliases = []
 [extra]
 id = 3217
+task = """
+  Write a bitmap to a JPEG file by piping PPM data into an
+  external converter such as `cjpeg`, `ppmtojpeg`, or `convert`.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

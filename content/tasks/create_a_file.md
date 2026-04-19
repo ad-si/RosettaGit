@@ -5,6 +5,11 @@ date = 2019-06-29T22:06:21Z
 aliases = []
 [extra]
 id = 2027
+task = """
+  Create a new empty file named `output.txt` (0 bytes) and an empty
+  directory named `docs`, both in the current working directory and
+  also at the filesystem root.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

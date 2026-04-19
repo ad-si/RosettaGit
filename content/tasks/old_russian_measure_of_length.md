@@ -5,6 +5,12 @@ date = 2019-06-07T15:55:05Z
 aliases = []
 [extra]
 id = 12759
+task = """
+  Convert between old Russian length units (*vershoks*, *arshins*,
+  *sazhens*, *versts*) and metric units (*meters*, *centimeters*,
+  *kilometers*). Accept a single value in one selected unit and output
+  the equivalent in all the others.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

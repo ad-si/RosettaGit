@@ -5,6 +5,10 @@ date = 2019-10-18T20:46:03Z
 aliases = []
 [extra]
 id = 4470
+task = """
+  Demonstrate the language's facilities for variables: declaration,
+  initialization, assignment, datatypes, scope, and referencing.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

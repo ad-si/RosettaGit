@@ -5,6 +5,10 @@ date = 2019-09-02T14:37:45Z
 aliases = []
 [extra]
 id = 21875
+task = """
+  Animate a spinning rod by cycling through the frames `|`, `/`, `-`, `\\`
+  with a 0.25 second delay, clearing each frame before drawing the next.
+"""
 [taxonomies]
 categories = ["task", "Spinning rod animation/Text"]
 tags = []

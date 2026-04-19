@@ -5,6 +5,10 @@ date = 2019-10-18T20:26:52Z
 aliases = []
 [extra]
 id = 12919
+task = """
+  Accept a value in **kelvin** and convert it to **Celsius**,
+  **Fahrenheit**, and **Rankine**, printing all four scales.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

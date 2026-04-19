@@ -5,6 +5,12 @@ date = 2019-08-30T11:11:46Z
 aliases = []
 [extra]
 id = 16903
+task = """
+  Given a character stream containing formfeed, linefeed, tab, and space
+  separators, print the *i*-th character of the *i*-th tab-field of the
+  *i*-th line of the *i*-th page to reveal a secret password. Stop
+  immediately on encountering `!` at that *i,i,i,i* position.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-08T18:25:49Z
 aliases = []
 [extra]
 id = 1624
+task = """
+  Write a boolean function that takes a string and returns whether it
+  represents a number (including floats and negatives) using the
+  language's syntax for numeric literals or string-to-number
+  conversion.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-05T14:17:50Z
 aliases = []
 [extra]
 id = 3313
+task = """
+  Compute the **reduced row echelon form** (row canonical form) of a
+  matrix, using built-in functions or the standard algorithm. Verify on
+  the given 3x4 test matrix.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

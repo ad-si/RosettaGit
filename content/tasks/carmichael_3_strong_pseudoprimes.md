@@ -5,6 +5,11 @@ date = 2019-10-11T18:31:43Z
 aliases = []
 [extra]
 id = 12638
+task = """
+  Find all Carmichael numbers of the form
+  `Prime1 * Prime2 * Prime3` (with `Prime1 < Prime2 < Prime3`)
+  for every `Prime1` up to 61.
+"""
 [taxonomies]
 categories = ["Prime Numbers", "Mathematics", "task"]
 tags = []

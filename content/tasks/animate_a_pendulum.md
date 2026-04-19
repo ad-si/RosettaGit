@@ -5,6 +5,10 @@ date = 2019-09-03T12:17:36Z
 aliases = []
 [extra]
 id = 4669
+task = """
+  Build a simple physical model of a gravity pendulum and animate it,
+  using graphics to show the pendulum swinging over time.
+"""
 [taxonomies]
 categories = ["Temporal media", "task"]
 tags = []

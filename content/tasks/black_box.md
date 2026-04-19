@@ -5,6 +5,12 @@ date = 2019-10-09T20:39:11Z
 aliases = []
 [extra]
 id = 21511
+task = """
+  Implement the *Black Box* game in its beginner configuration: 4
+  hidden atoms in an 8x8 grid. The player fires light beams into
+  the box and uses the exit results (`H` hit, `R` reflection, or
+  matched entry/exit numbers for detours) to deduce atom positions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

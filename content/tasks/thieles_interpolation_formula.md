@@ -5,6 +5,12 @@ date = 2019-10-21T14:57:34Z
 aliases = []
 [extra]
 id = 8375
+task = """
+  Implement Thiele's continued-fraction interpolation. Build a 32-row table
+  of `sin`, `cos`, and `tan` for `x` from `0` to `1.55` step `0.05`, derive
+  inverse functions via Thiele interpolation, and verify the identities
+  `6 * asin(0.5) = pi`, `3 * acos(0.5) = pi`, and `4 * atan(1) = pi`.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-24T20:19:26Z
 aliases = []
 [extra]
 id = 5032
+task = """
+  Given two sets `A` and `B`, compute their symmetric difference
+  `(A \\ B) U (B \\ A)`: the items in `A` or `B` but not in both.
+  Optionally, also return the individual differences `A \\ B` and `B \\ A`.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

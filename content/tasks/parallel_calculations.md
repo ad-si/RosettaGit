@@ -5,6 +5,11 @@ date = 2019-07-22T22:45:39Z
 aliases = []
 [extra]
 id = 8986
+task = """
+  Given a collection of numbers, factorize them in parallel using threads
+  or processes, then return the number with the largest minimal prime
+  factor along with its prime factorization.
+"""
 [taxonomies]
 categories = ["task", "Control Structures"]
 tags = []

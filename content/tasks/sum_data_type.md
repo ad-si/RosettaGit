@@ -5,6 +5,11 @@ date = 2019-09-08T10:40:03Z
 aliases = []
 [extra]
 id = 22393
+task = """
+  Create a sum data type: a structure that can hold a value of one of several
+  fixed types, but only one at a time. Also known as a tagged union, variant,
+  discriminated union, or algebraic data type.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

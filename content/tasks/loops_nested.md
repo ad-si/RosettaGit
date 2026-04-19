@@ -5,6 +5,11 @@ date = 2019-08-28T17:09:33Z
 aliases = []
 [extra]
 id = 4373
+task = """
+  Use nested loops to scan a 2D array of random integers in `1..20`,
+  printing each element until the value `20` is encountered, at which
+  point break out of both loops.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

@@ -5,6 +5,9 @@ date = 2019-09-02T18:07:52Z
 aliases = []
 [extra]
 id = 21753
+task = """
+  Invert an `n` by `n` matrix `A` using the Gauss-Jordan method.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-05-06T22:22:36Z
 aliases = []
 [extra]
 id = 20851
+task = """
+  Generate random ASCII passwords containing at least one lower-case
+  letter, upper-case letter, digit, and other printable character.
+  Allow the user to specify length and count, source randomness from a
+  system library, and provide a help option.
+"""
 [taxonomies]
 categories = ["Security", "Randomness", "String manipulation", "task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-06-15T05:55:13Z
 aliases = []
 [extra]
 id = 21147
+task = """
+  Sort a file too large to fit in memory. Read the input in chunks
+  small enough to fit in main memory, sort each chunk and write it to
+  a temporary file, then merge the sorted subfiles into a single
+  larger sorted file.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

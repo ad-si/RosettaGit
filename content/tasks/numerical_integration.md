@@ -5,6 +5,11 @@ date = 2019-09-07T10:12:56Z
 aliases = []
 [extra]
 id = 2428
+task = """
+  Write functions to approximate the definite integral of `f(x)` over
+  `[a, b]` with `n` subintervals using all five methods: rectangular
+  (left, right, midpoint), trapezium, and composite Simpson's rule.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

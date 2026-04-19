@@ -5,6 +5,10 @@ date = 2019-09-16T05:05:48Z
 aliases = []
 [extra]
 id = 15995
+task = """
+  Sort an array of numbers in ascending order using *patience sort*,
+  which deals values onto sorted piles and then merges them.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

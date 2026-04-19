@@ -5,6 +5,12 @@ date = 2019-06-14T18:45:05Z
 aliases = []
 [extra]
 id = 2085
+task = """
+  Given a sequence of integers, find a contiguous subsequence whose
+  sum is maximal, and return both the sum and the subsequence. An
+  empty subsequence has sum `0`, so if all elements are negative the
+  result is the empty sequence.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

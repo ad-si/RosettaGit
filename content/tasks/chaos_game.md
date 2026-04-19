@@ -5,6 +5,12 @@ date = 2019-09-09T18:45:38Z
 aliases = []
 [extra]
 id = 20078
+task = """
+  Play the Chaos Game using the corners of an equilateral triangle as
+  reference points. Start from a random point, then repeatedly add a
+  new point halfway between the current point and a randomly chosen
+  corner. After enough iterations, a Sierpinski Triangle emerges.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

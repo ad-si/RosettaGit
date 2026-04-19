@@ -5,6 +5,13 @@ date = 2018-12-22T18:14:09Z
 aliases = []
 [extra]
 id = 4266
+task = """
+  Treat windows (or at least window identities) as first-class
+  objects: store them in variables and compare them for equality.
+  Demonstrate operations such as hide, show, close, minimize, maximize,
+  move, and resize. The target window may or may not have been created
+  by your program.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

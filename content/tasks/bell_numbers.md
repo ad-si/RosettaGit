@@ -5,6 +5,11 @@ date = 2019-10-01T23:59:06Z
 aliases = []
 [extra]
 id = 22417
+task = """
+  Generate the Bell number sequence (counts of partitions of an
+  `n`-element set) and show at least the first 15 and the 50th value.
+  Optionally also display the first ten rows of the Bell triangle.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

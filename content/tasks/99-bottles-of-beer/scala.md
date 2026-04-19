@@ -5,6 +5,10 @@ date = 2019-05-04T20:31:05Z
 aliases = []
 [extra]
 id = 5295
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Scala.
+"""
 [taxonomies]
 categories = []
 tags = []

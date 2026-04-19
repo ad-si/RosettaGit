@@ -5,6 +5,11 @@ date = 2019-10-10T19:45:31Z
 aliases = []
 [extra]
 id = 8434
+task = """
+  Determine if a key has been pressed and store the result in a
+  variable. If no key has been pressed, the program should continue
+  without waiting.
+"""
 [taxonomies]
 categories = ["task", "Keyboard input"]
 tags = []

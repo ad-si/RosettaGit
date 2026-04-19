@@ -5,6 +5,9 @@ date = 2019-10-20T17:53:46Z
 aliases = []
 [extra]
 id = 8412
+task = """
+  Clear the terminal window.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

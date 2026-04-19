@@ -5,6 +5,12 @@ date = 2019-09-09T11:17:59Z
 aliases = []
 [extra]
 id = 19037
+task = """
+  Draw or print a regular **pentagram** in any orientation. Use
+  distinct colors (or tokens) for stroke, fill, and background;
+  treat all points inside the central pentagon and the five
+  triangular points as filled.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

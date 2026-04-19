@@ -5,6 +5,12 @@ date = 2019-10-14T00:49:48Z
 aliases = []
 [extra]
 id = 22490
+task = """
+  Implement the **Abelian sandpile model** (Bak–Tang–Wiesenfeld) on a
+  2D grid. Any cell holding 4 or more grains collapses: 4 grains are
+  removed and one is distributed to each of its four neighbors.
+  Iterate until the grid is stable and display the result.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

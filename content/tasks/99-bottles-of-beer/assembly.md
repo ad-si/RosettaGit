@@ -5,6 +5,10 @@ date = 2017-11-05T17:30:09Z
 aliases = []
 [extra]
 id = 18274
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  assembly languages.
+"""
 [taxonomies]
 categories = []
 tags = []

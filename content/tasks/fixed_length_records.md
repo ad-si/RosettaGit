@@ -5,6 +5,13 @@ date = 2019-10-04T00:00:44Z
 aliases = []
 [extra]
 id = 22028
+task = """
+  Read 80-column fixed-length records (no newline terminators,
+  but newline characters allowed in data) and write out the
+  reverse of each line as 80-column fixed-length records, space
+  padded. Bonus: convert between Forth-style 1024-byte block
+  files (16 lines of 64 characters) and ordinary text files.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

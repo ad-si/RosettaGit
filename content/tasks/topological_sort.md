@@ -5,6 +5,12 @@ date = 2019-06-29T02:47:21Z
 aliases = []
 [extra]
 id = 4469
+task = """
+  Given a mapping of VHDL libraries to their dependencies, return a valid
+  compile order via topological sort. Ignore self-dependencies, include
+  libraries that appear only as dependents, and flag any unorderable
+  (cyclic) dependencies.
+"""
 [taxonomies]
 categories = ["Algorithms", "Graph theory", "Sorting", "task"]
 tags = []

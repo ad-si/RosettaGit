@@ -5,6 +5,11 @@ date = 2019-10-18T20:14:26Z
 aliases = []
 [extra]
 id = 2147
+task = """
+  Sort an array using *quicksort*: pick a pivot, partition the
+  remaining elements into those less than and greater than the
+  pivot, and recursively sort each partition.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

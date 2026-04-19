@@ -5,6 +5,13 @@ date = 2019-07-04T12:15:55Z
 aliases = []
 [extra]
 id = 9223
+task = """
+  Implement `partitions(a1, a2, ..., an)` that enumerates all ways to
+  distribute the elements `{1, ..., a1+a2+...+an}` into `n` ordered
+  blocks of the given sizes. Default to printing `partitions(2, 0, 2)`
+  when run from the command line, and avoid non-standard library
+  functions.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

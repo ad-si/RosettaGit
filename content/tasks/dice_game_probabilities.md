@@ -5,6 +5,12 @@ date = 2019-07-08T07:30:34Z
 aliases = []
 [extra]
 id = 18509
+task = """
+  Compute the probability that the first player beats the second when
+  each rolls a set of dice and sums the faces. First case: player 1
+  rolls nine 4-sided dice vs player 2's six 6-sided dice. Second case:
+  player 1 rolls five 10-sided dice vs player 2's six 7-sided dice.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

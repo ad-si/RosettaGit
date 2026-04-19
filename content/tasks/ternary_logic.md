@@ -5,6 +5,12 @@ date = 2019-10-18T20:28:35Z
 aliases = []
 [extra]
 id = 10384
+task = """
+  Define a new type `trit` that emulates ternary logic with values
+  *true*, *false*, and *maybe*. Reimplement the language's binary
+  logic operators (not, and, or, implies, equivalent) for `trit` and
+  produce a sampling of results.
+"""
 [taxonomies]
 categories = ["task", "Logic"]
 tags = []

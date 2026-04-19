@@ -5,6 +5,11 @@ date = 2019-07-10T00:56:07Z
 aliases = []
 [extra]
 id = 12576
+task = """
+  Write a function that computes the multifactorial of `n` for a given
+  degree (the difference between successive multiplied terms), then
+  print a table of the first ten values for degrees 1 through 5.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

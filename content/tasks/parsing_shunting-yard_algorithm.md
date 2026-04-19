@@ -5,6 +5,11 @@ date = 2019-04-29T23:48:33Z
 aliases = []
 [extra]
 id = 10991
+task = """
+  Apply the **shunting-yard algorithm** to convert an infix expression
+  into RPN, displaying the operator stack and RPN output as each token
+  is processed. Test with `3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

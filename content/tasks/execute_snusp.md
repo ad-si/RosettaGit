@@ -5,6 +5,12 @@ date = 2019-10-04T15:47:19Z
 aliases = []
 [extra]
 id = 2843
+task = """
+  Implement an interpreter or compiler for the **SNUSP** programming
+  language. A compliant implementation must support the core SNUSP
+  instructions (`$`, `\`, `/`, `+`, `-`, `<`, `>`, `,`, `.`, `!`, `?`);
+  Modular and Bloated SNUSP extensions are optional.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

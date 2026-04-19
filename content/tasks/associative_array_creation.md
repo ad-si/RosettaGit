@@ -5,6 +5,10 @@ date = 2019-10-17T04:36:08Z
 aliases = []
 [extra]
 id = 1642
+task = """
+  Create an associative array
+  (also known as a dictionary, map, or hash).
+"""
 [taxonomies]
 categories = ["Basic language learning", "Data Structures", "task"]
 tags = []

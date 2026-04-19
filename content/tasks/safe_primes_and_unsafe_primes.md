@@ -5,6 +5,12 @@ date = 2019-09-12T17:49:06Z
 aliases = []
 [extra]
 id = 22006
+task = """
+  A **safe prime** `p` is one where `(p-1)/2` is also prime;
+  otherwise `p` is **unsafe**.
+  Display the first 35 safe primes and 40 unsafe primes,
+  plus counts of each below 1,000,000 and 10,000,000.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

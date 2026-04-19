@@ -5,6 +5,13 @@ date = 2018-07-29T14:02:05Z
 aliases = []
 [extra]
 id = 15207
+task = """
+  Generate the **Fibonacci word** analogously to the Fibonacci
+  sequence: `F_Word_1 = "1"`, `F_Word_2 = "0"`, and
+  `F_Word_n = F_Word_{n-1} ++ F_Word_{n-2}`. For `n = 1` through
+  `37`, print a table showing each word's character count and its
+  Shannon entropy.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

@@ -5,6 +5,12 @@ date = 2019-02-05T16:59:30Z
 aliases = []
 [extra]
 id = 21515
+task = """
+  Write a program that finds a solution to a given 15 Puzzle
+  configuration in the fewest possible single moves.
+  Output the sequence of move directions (left, right, up, down)
+  that transforms the start board into the solved board.
+"""
 [taxonomies]
 categories = ["Games", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-28T20:52:00Z
 aliases = []
 [extra]
 id = 2007
+task = """
+  Define a method to insert an element into a singly-linked list after
+  a given element. Demonstrate by inserting `C` between `A` and `B` in
+  the list `A->B`.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 languages = [

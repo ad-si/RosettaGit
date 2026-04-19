@@ -5,6 +5,11 @@ date = 2019-04-05T19:27:26Z
 aliases = []
 [extra]
 id = 4397
+task = """
+  Implement **polynomial long division**: given numerator `N` and
+  divisor `D` (represented as coefficient vectors), compute the
+  quotient `q` and remainder `r` such that `N = q*D + r`.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-12T10:59:58Z
 aliases = []
 [extra]
 id = 2502
+task = """
+  Write a function returning the **prime decomposition** of a number
+  `n > 1`: the list of primes whose product equals `n`. The
+  implementation should not be limited by machine word size.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

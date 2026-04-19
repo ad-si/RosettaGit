@@ -5,6 +5,13 @@ date = 2019-10-12T12:31:25Z
 aliases = []
 [extra]
 id = 2994
+task = """
+  Download a web page and extract a specific value from its HTML.
+  As an example, fetch the time from
+  `https://tycho.usno.navy.mil/cgi-bin/timer.pl` and print the current
+  UTC time parsed out of the page. Prefer freely available standard
+  libraries.
+"""
 [taxonomies]
 categories = ["Networking and Web Interaction", "task"]
 tags = []

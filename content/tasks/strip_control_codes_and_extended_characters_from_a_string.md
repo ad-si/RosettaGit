@@ -5,6 +5,11 @@ date = 2019-05-01T19:34:27Z
 aliases = []
 [extra]
 id = 9875
+task = """
+  Strip ASCII **control codes** (decimal 0-31, 127) from a string,
+  then also strip **extended characters** (outside 32-126).
+  Demonstrate both results.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-04-28T10:12:39Z
 aliases = []
 [extra]
 id = 19227
+task = """
+  Implement Martin Gardner's **Hexapawn**, a 3x3 pawn game played
+  against the computer. The computer should *learn* by memorizing
+  good moves and discarding bad ones, eventually becoming
+  unbeatable.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

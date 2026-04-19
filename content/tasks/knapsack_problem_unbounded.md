@@ -5,6 +5,12 @@ date = 2019-05-17T03:23:43Z
 aliases = []
 [extra]
 id = 3196
+task = """
+  Solve the **unbounded knapsack problem**: given items (panacea,
+  ichor, gold) with values, weights, and volumes, choose whole-unit
+  quantities to maximize total value subject to a `25` weight limit
+  and `0.25` volume capacity.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-04-26T13:34:39Z
 aliases = []
 [extra]
 id = 17802
+task = """
+  Write code that automatically opens a web browser to display a
+  formatted, colored table of dynamically processed address data from
+  the *separate the house number from the street name* task.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

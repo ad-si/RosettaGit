@@ -5,6 +5,10 @@ date = 2019-08-28T20:14:07Z
 aliases = []
 [extra]
 id = 2482
+task = """
+  Output the system **time** (any units, noted) using either a system
+  command or a language built-in.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

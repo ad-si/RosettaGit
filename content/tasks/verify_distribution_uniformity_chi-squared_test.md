@@ -5,6 +5,11 @@ date = 2019-09-10T19:51:36Z
 aliases = []
 [extra]
 id = 4688
+task = """
+  Write a function that uses the chi-squared test to verify whether a
+  distribution of values is uniform at a given significance level
+  (typically 5%). Return a boolean indicating uniformity.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

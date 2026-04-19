@@ -5,6 +5,12 @@ date = 2018-11-11T22:00:02Z
 aliases = []
 [extra]
 id = 12909
+task = """
+  Write a routine that obtains a string from the user at a specific
+  terminal location, given row, column, and maximum input length. The
+  cursor must not move beyond the input width and wrapping is not
+  allowed. Demonstrate at row 3, column 5, width 8.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

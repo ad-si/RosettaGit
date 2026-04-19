@@ -5,6 +5,10 @@ date = 2019-08-20T08:09:15Z
 aliases = []
 [extra]
 id = 1924
+task = """
+  Spawn a new process that can run simultaneously with, and
+  independently of, the original parent process.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

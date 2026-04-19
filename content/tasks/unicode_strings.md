@@ -5,6 +5,11 @@ date = 2019-08-12T02:48:55Z
 aliases = []
 [extra]
 id = 9995
+task = """
+  Discuss and demonstrate the language's Unicode awareness and
+  capabilities, covering source-code support, identifiers, I/O, string
+  manipulation, supported encodings, and normalization.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

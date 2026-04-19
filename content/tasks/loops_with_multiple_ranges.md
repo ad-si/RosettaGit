@@ -5,6 +5,12 @@ date = 2019-10-15T10:52:20Z
 aliases = []
 [extra]
 id = 21990
+task = """
+  Translate the given PL/I `do` loop, whose index iterates over
+  several ranges (each with its own start, end, and step) joined by
+  commas, into your language. Accumulate the sum of `|j|` and a
+  bounded product of the values, then display both.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-06-06T06:06:51Z
 aliases = []
 [extra]
 id = 2420
+task = """
+  Given a non-negative integer `n` and a list of numbers,
+  compute the `n`-th order forward difference. The first-order
+  forward difference of list `A` is a new list `B` where
+  `B[i] = A[i+1] - A[i]`, shrinking by one element per order.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

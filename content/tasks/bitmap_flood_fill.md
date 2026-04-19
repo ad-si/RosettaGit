@@ -5,6 +5,11 @@ date = 2019-08-23T21:44:06Z
 aliases = []
 [extra]
 id = 3562
+task = """
+  Implement a flood fill on a bitmap: starting from a seed pixel,
+  fill the connected region defined by a target colour (or colour
+  bank) with a new colour.
+"""
 [taxonomies]
 categories = ["Raster graphics operations", "Graphics algorithms", "task"]
 tags = []

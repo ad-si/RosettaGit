@@ -5,6 +5,11 @@ date = 2018-10-15T13:28:39Z
 aliases = []
 [extra]
 id = 2619
+task = """
+  Find and output the roots of a given function over a range
+  (with optional step width), indicating whether each root is
+  exact or approximate. Use `f(x) = x^3 - 3x^2 + 2x`.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

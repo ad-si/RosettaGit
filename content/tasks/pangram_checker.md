@@ -5,6 +5,10 @@ date = 2019-10-17T23:32:31Z
 aliases = []
 [extra]
 id = 5383
+task = """
+  Write a function that checks whether a sentence is a *pangram*,
+  i.e. contains every letter of the English alphabet at least once.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

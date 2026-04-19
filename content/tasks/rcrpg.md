@@ -5,6 +5,12 @@ date = 2019-09-05T16:41:15Z
 aliases = []
 [extra]
 id = 3042
+task = """
+  Build a small interactive game with room-based 3D `(x, y, z)`
+  navigation, a player inventory, three item types (sledge, gold,
+  ladder) and a goal coordinate. Sledges break passages between rooms;
+  ladders let the player ascend.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

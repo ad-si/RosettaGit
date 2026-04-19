@@ -5,6 +5,12 @@ date = 2019-09-11T04:37:36Z
 aliases = []
 [extra]
 id = 4712
+task = """
+  Implement the `Query` function (declared `extern` in a given C
+  driver) in your language so that the C program can call it. `Query`
+  must write `Here am I` into the supplied buffer, set `Length` to the
+  bytes written, and return `0` if the buffer is too small.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

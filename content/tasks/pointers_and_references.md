@@ -5,6 +5,10 @@ date = 2019-08-25T05:25:15Z
 aliases = []
 [extra]
 id = 1784
+task = """
+  Demonstrate common operations on **pointers** and **references** in
+  the language, illustrating their syntax and basic usage.
+"""
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []

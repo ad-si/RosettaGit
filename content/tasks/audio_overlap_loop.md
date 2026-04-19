@@ -5,6 +5,13 @@ date = 2018-12-31T19:10:30Z
 aliases = []
 [extra]
 id = 10153
+task = """
+  Write a program that takes a number of repetitions and plays
+  the file `loop.wav` in an overlapping loop to produce an
+  echo-chamber effect.
+  Optionally accept parameters for delay between repetitions and
+  for decay (volume reduction between successive repetitions).
+"""
 [taxonomies]
 categories = ["Audio", "Multimedia", "task"]
 tags = []

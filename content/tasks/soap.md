@@ -5,6 +5,11 @@ date = 2019-02-08T20:03:36Z
 aliases = []
 [extra]
 id = 1678
+task = """
+  Create a SOAP client that accesses functions defined at
+  `https://example.com/soap/wsdl` and calls `soapFunc()` and
+  `anotherSoapFunc()`.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

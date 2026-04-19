@@ -5,6 +5,13 @@ date = 2019-10-14T10:07:18Z
 aliases = []
 [extra]
 id = 17291
+task = """
+  Implement an **elementary cellular automaton**, a 1D automaton
+  with two states whose next-cell value depends on the cell and its
+  two neighbors per an 8-bit rule. Visualize the evolution of any
+  of the 256 possible rules over arbitrary length and initial state,
+  with the space wrapping at the edges.
+"""
 [taxonomies]
 categories = ["Cellular automata", "Simulation", "task"]
 tags = []

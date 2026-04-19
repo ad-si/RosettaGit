@@ -5,6 +5,12 @@ date = 2019-09-12T18:05:09Z
 aliases = []
 [extra]
 id = 17424
+task = """
+  Idiomatically determine and display the set of all lowercase
+  and uppercase Latin letters (`a`-`z` and `A`-`Z`) used by the
+  programming language, independent of the host hardware
+  architecture.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

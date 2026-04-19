@@ -5,6 +5,13 @@ date = 2019-04-26T23:41:18Z
 aliases = []
 [extra]
 id = 19642
+task = """
+  Use the Floyd-Warshall algorithm to find the shortest-path
+  lengths between every pair of vertices in a given directed
+  weighted graph. Print each pair, its distance, and optionally
+  the path. Assume the input has no loops, parallel edges, or
+  negative cycles.
+"""
 [taxonomies]
 categories = ["task", "Routing algorithms"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-30T19:01:15Z
 aliases = []
 [extra]
 id = 2053
+task = """
+  Define the data structure for a doubly linked list element.
+  It should hold a value plus mutable pointers to both the next
+  and previous elements in the list.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

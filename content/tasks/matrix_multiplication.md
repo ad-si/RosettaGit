@@ -5,6 +5,10 @@ date = 2019-10-19T11:13:06Z
 aliases = []
 [extra]
 id = 2408
+task = """
+  Multiply two matrices of any compatible dimensions, where the number
+  of columns of the first equals the number of rows of the second.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

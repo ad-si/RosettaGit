@@ -5,6 +5,13 @@ date = 2019-10-21T23:22:14Z
 aliases = []
 [extra]
 id = 9805
+task = """
+  Compute the definite integral of `f(x)` on `[a, b]` using an
+  `n`-point **Gauss-Legendre quadrature** rule. Find the nodes as
+  roots of the `n`-th Legendre polynomial via Newton-Raphson, derive
+  the corresponding weights, and demonstrate by integrating
+  `exp(x)` from `-3` to `3` with a 5-point rule (~`20.036`).
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

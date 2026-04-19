@@ -5,6 +5,11 @@ date = 2019-02-25T04:46:50Z
 aliases = []
 [extra]
 id = 8418
+task = """
+  Determine the character displayed at column 3, row 6 of the terminal
+  and store it in a variable. System or language facilities for
+  reading the screen contents may be used.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

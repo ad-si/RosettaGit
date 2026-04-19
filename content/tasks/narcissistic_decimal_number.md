@@ -5,6 +5,12 @@ date = 2019-08-25T12:52:35Z
 aliases = []
 [extra]
 id = 17335
+task = """
+  A *narcissistic decimal number* (also called an Armstrong number) is a
+  non-negative integer `n` equal to the sum of the `m`-th powers of its
+  decimal digits, where `m` is the digit count.
+  Generate and show the first 25 narcissistic decimal numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-09-03T06:08:33Z
 aliases = []
 [extra]
 id = 3131
+task = """
+  Show how an abstract type (a type without instances, or without a
+  full definition) can be declared in the language. If the language
+  distinguishes between interfaces and partially implemented abstract
+  types, illustrate both.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Object oriented", "Type System", "task"]
 tags = []

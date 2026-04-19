@@ -5,6 +5,12 @@ date = 2019-08-22T14:35:34Z
 aliases = []
 [extra]
 id = 20050
+task = """
+  Implement Brent's cycle-detection algorithm and use it on the
+  iterated function `f(x) = (x*x + 1) mod 255` starting from `3`.
+  Output the cycle length and the zero-based index where the cycle
+  starts.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

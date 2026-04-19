@@ -5,6 +5,10 @@ date = 2018-05-08T18:56:28Z
 aliases = []
 [extra]
 id = 4235
+task = """
+  Given a point and a polygon, determine whether the point lies inside
+  or outside the polygon using the **ray-casting algorithm**.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

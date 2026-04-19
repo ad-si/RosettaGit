@@ -5,6 +5,10 @@ date = 2019-10-15T14:19:41Z
 aliases = []
 [extra]
 id = 2575
+task = """
+  Display the string `Goodbye, World!` on a GUI object such as
+  an alert box, plain window, or text area.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

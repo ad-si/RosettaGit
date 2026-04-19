@@ -5,6 +5,11 @@ date = 2019-07-22T19:55:21Z
 aliases = []
 [extra]
 id = 10573
+task = """
+  Parse text-format IPv4 and IPv6 addresses, optionally with a port.
+  Emit each as a hexadecimal integer along with its address space and
+  port number (if specified).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

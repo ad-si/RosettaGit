@@ -5,6 +5,11 @@ date = 2019-10-18T11:08:07Z
 aliases = []
 [extra]
 id = 4655
+task = """
+  Loop over multiple arrays (or equivalent collections) in parallel
+  and display the *i*-th element of each. Use the language's
+  `for each` construct if available.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

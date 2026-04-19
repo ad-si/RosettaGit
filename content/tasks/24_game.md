@@ -5,6 +5,13 @@ date = 2019-10-17T13:27:31Z
 aliases = []
 [extra]
 id = 4938
+task = """
+  Implement the 24 game: given four randomly chosen digits
+  from 1 to 9, let the player enter an arithmetic expression
+  using each digit exactly once (with `+`, `-`, `*`, `/`, and
+  parentheses) that evaluates to `24`. Validate the input and
+  report whether the player succeeded.
+"""
 [taxonomies]
 categories = ["Games", "task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-10T18:44:23Z
 aliases = []
 [extra]
 id = 4747
+task = """
+  Write a function that flattens the nesting of an arbitrary
+  list of values. For example, flattening
+  `[[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []]` should
+  yield `[1, 2, 3, 4, 5, 6, 7, 8]`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

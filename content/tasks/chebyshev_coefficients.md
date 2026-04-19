@@ -5,6 +5,11 @@ date = 2018-12-22T12:40:34Z
 aliases = []
 [extra]
 id = 19463
+task = """
+  Write a program to generate Chebyshev coefficients for polynomial
+  approximation of a function. Calculate 10 coefficients for the
+  cosine function on the interval `[0, 1]`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

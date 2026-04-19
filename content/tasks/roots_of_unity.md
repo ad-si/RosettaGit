@@ -5,6 +5,10 @@ date = 2019-09-08T15:11:06Z
 aliases = []
 [extra]
 id = 2419
+task = """
+  Given `n`, find the `n`-th roots of unity (the complex numbers
+  whose `n`-th power equals `1`).
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

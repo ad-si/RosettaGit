@@ -5,6 +5,12 @@ date = 2018-04-18T13:00:19Z
 aliases = []
 [extra]
 id = 7770
+task = """
+  Using expressions involving normal floating-point values, calculate
+  the IEEE 'extreme' values `-0.0`, `NaN`, and positive/negative
+  infinity, assign them to variables, print them, and demonstrate
+  some arithmetic with them.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

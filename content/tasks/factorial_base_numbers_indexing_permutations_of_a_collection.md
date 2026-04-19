@@ -5,6 +5,14 @@ date = 2019-10-11T06:22:47Z
 aliases = []
 [extra]
 id = 22098
+task = """
+  Build a 1-to-1 mapping between factorial-base numbers and
+  permutations of a collection: for each digit from most to least
+  significant, rotate a window of the collection by the digit value.
+  Use it to recreate the 24 permutations of `0123`, enumerate the
+  permutations of 11 digits, and shuffle a 52-card deck from supplied
+  51-digit factorial numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

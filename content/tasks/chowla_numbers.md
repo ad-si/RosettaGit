@@ -5,6 +5,12 @@ date = 2019-09-18T00:10:29Z
 aliases = []
 [extra]
 id = 22212
+task = """
+  Implement a `chowla(n)` function that returns the sum of the
+  divisors of `n` excluding `1` and `n`. Print `chowla(n)` for the
+  first 37 integers, use it to count primes up to several powers of
+  ten, and find all perfect numbers up to `35,000,000`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

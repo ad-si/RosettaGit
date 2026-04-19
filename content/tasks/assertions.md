@@ -5,6 +5,10 @@ date = 2019-10-06T04:48:49Z
 aliases = []
 [extra]
 id = 3353
+task = """
+  Demonstrate the language's assertion mechanism by asserting that
+  an integer variable equals `42`.
+"""
 [taxonomies]
 categories = ["Basic language learning", "task"]
 tags = []

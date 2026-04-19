@@ -5,6 +5,11 @@ date = 2019-08-30T19:45:05Z
 aliases = []
 [extra]
 id = 3273
+task = """
+  Define the data structure for a complete doubly linked list.
+  It should support adding elements at the head, tail, and middle,
+  and must not allow circular loops.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

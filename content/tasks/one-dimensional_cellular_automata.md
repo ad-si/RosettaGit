@@ -5,6 +5,13 @@ date = 2019-10-09T18:49:34Z
 aliases = []
 [extra]
 id = 3072
+task = """
+  Simulate a one-dimensional cellular automaton on an array of live and
+  dead cells. Each new cell value depends on the previous value of
+  itself and its two nearest neighbours according to a fixed lookup
+  table where a live cell needs exactly one live neighbour to survive
+  or be born.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

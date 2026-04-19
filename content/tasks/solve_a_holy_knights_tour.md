@@ -5,6 +5,11 @@ date = 2019-08-05T10:46:20Z
 aliases = []
 [extra]
 id = 17663
+task = """
+  Solve a **Holy Knight's tour** puzzle: construct a knight's tour on
+  a chess board where some squares are blocked (have pennies on
+  them), visiting every available square exactly once.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

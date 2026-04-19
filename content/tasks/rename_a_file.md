@@ -5,6 +5,11 @@ date = 2019-08-25T19:18:56Z
 aliases = []
 [extra]
 id = 2030
+task = """
+  Rename the file `input.txt` to `output.txt` and the directory `docs`
+  to `mydocs`, both in the current working directory and at the
+  filesystem root.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

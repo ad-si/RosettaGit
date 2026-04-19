@@ -5,6 +5,11 @@ date = 2019-10-15T12:00:20Z
 aliases = []
 [extra]
 id = 2838
+task = """
+  Show a tree of derived types using single inheritance. The root class is
+  `Animal`, with subclasses `Dog` and `Cat`, and `Lab` and `Collie`
+  inheriting from `Dog`. No methods need to be implemented.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

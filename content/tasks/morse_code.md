@@ -5,6 +5,11 @@ date = 2019-08-26T20:49:22Z
 aliases = []
 [extra]
 id = 8080
+task = """
+  Send a string as audible Morse code to an audio device (e.g., the PC
+  speaker). Either ignore characters not in standard Morse code or
+  signal them in some way (e.g. with a different pitch).
+"""
 [taxonomies]
 categories = ["task", "Sound"]
 tags = []

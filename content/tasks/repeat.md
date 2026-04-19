@@ -5,6 +5,10 @@ date = 2019-10-12T09:26:18Z
 aliases = []
 [extra]
 id = 17634
+task = """
+  Write a procedure that accepts another procedure and a positive
+  integer, and executes the given procedure that many times.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

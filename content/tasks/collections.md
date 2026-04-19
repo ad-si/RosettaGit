@@ -5,6 +5,11 @@ date = 2019-10-17T15:01:17Z
 aliases = []
 [extra]
 id = 1635
+task = """
+  Create a collection and add a few values to it, demonstrating
+  the language's built-in facilities for aggregating sets of
+  values.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

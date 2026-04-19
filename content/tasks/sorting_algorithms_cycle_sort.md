@@ -5,6 +5,11 @@ date = 2018-11-05T05:34:26Z
 aliases = []
 [extra]
 id = 17705
+task = """
+  Implement *cycle sort*, an in-place, unstable comparison sort that
+  factors the permutation into cycles and rotates each cycle into
+  place, minimizing the number of writes to the array.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

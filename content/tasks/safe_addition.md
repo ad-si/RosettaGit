@@ -5,6 +5,11 @@ date = 2019-03-18T23:39:17Z
 aliases = []
 [extra]
 id = 4723
+task = """
+  Implement safe interval addition for floating-point numbers.
+  Define an interval type and an addition that yields safe lower and
+  upper bounds `[a +↓ b, a +↑ b]` containing the exact result.
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "task"]
 tags = []

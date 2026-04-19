@@ -5,6 +5,12 @@ date = 2019-10-08T18:01:41Z
 aliases = []
 [extra]
 id = 3335
+task = """
+  Show how integer literals can be expressed in as many bases as
+  your language allows, interpreted directly by the compiler or
+  interpreter (no function calls). Also show any other ways of
+  expressing literals, e.g. for different integer types.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

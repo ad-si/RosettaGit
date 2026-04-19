@@ -5,6 +5,11 @@ date = 2019-10-20T08:02:09Z
 aliases = []
 [extra]
 id = 1628
+task = """
+  Sort an array using the *bubble sort* algorithm, repeatedly
+  comparing each adjacent pair and swapping them when out of order
+  until a full pass produces no swaps.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-06T10:13:31Z
 aliases = []
 [extra]
 id = 20583
+task = """
+  Construct a `6x6` **magic square of singly even order** (size that is
+  a multiple of 4 plus 2), where every row, column, and both diagonals
+  sum to the same magic constant.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

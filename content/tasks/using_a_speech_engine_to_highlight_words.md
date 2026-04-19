@@ -5,6 +5,11 @@ date = 2018-12-26T01:42:00Z
 aliases = []
 [extra]
 id = 9415
+task = """
+  Display a piece of text and speak it via a speech engine, visually
+  highlighting each word as it is spoken. When highlighting is not
+  feasible, print each word as it is spoken instead.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

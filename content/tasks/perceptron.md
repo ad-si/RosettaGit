@@ -5,6 +5,11 @@ date = 2019-07-20T19:22:27Z
 aliases = []
 [extra]
 id = 20857
+task = """
+  Implement a single-neuron **perceptron** that learns to classify
+  random 2D points as above or below the line `y = mx + b` by
+  iteratively adjusting its weights. Display the result visually.
+"""
 [taxonomies]
 categories = ["Machine learning", "Neural networks", "AI", "task"]
 tags = []

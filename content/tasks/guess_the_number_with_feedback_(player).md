@@ -5,6 +5,13 @@ date = 2019-08-22T14:31:24Z
 aliases = []
 [extra]
 id = 8636
+task = """
+  Write a player for the guess-the-number game: a scorer chooses a
+  target within set limits, and the program prints guesses, asking
+  after each whether the guess is higher than, lower than, or equal
+  to the target. Keep guessing intelligently (e.g. via binary search)
+  until correct.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

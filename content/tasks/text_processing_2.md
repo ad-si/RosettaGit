@@ -5,6 +5,11 @@ date = 2019-05-07T13:54:03Z
 aliases = []
 [extra]
 id = 3111
+task = """
+  Process the pollution-monitoring `readings.txt` file and report any lines
+  with fewer than 49 fields, lines with no good readings, and the totals
+  and averages of valid readings grouped by year.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

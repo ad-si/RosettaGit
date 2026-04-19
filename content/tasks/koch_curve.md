@@ -5,6 +5,9 @@ date = 2019-09-08T01:04:53Z
 aliases = []
 [extra]
 id = 21785
+task = """
+  Draw a **Koch curve**.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

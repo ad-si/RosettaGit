@@ -5,6 +5,11 @@ date = 2019-07-08T23:08:47Z
 aliases = []
 [extra]
 id = 11225
+task = """
+  Compute the **SHA-1** message digest of a string of octets, either
+  by calling a library or implementing the algorithm. SHA-1 produces
+  a 160-bit hash defined by FIPS 180-1.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

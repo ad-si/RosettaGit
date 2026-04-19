@@ -5,6 +5,11 @@ date = 2019-10-05T20:46:52Z
 aliases = []
 [extra]
 id = 12274
+task = """
+  Implement the **main step** of the GOST 28147-89 Feistel-network block
+  cipher: take a 64-bit text block and a 32-bit key element, apply the
+  8x16 4-bit substitution table, and return the encrypted block.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

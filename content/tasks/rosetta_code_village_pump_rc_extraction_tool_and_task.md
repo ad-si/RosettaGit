@@ -5,6 +5,11 @@ date = 2019-05-10T21:21:58Z
 aliases = []
 [extra]
 id = 9520
+task = """
+  A Village Pump discussion proposing tools and a task to
+  extract Rosetta Code material (task descriptions, code,
+  metadata) for one specific language and bundle it.
+"""
 [taxonomies]
 categories = ["task", "Category"]
 tags = []

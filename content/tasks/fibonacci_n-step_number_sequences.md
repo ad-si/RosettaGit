@@ -5,6 +5,13 @@ date = 2019-07-28T17:56:32Z
 aliases = []
 [extra]
 id = 11776
+task = """
+  Write a function to generate **Fibonacci n-step** number sequences
+  from arbitrary initial values, where the number of initial values
+  determines how many previous terms are summed. Use it to print at
+  least the first ten members of the fibonacci, tribonacci,
+  tetranacci, and Lucas sequences.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-03-30T20:18:01Z
 aliases = []
 [extra]
 id = 10876
+task = """
+  Define a polynomial type and routines that parse a messy Unicode
+  polynomial string (with super/subscripts, fractions, scientific
+  notation, etc.) into it, then format it back as a canonical, pretty
+  Unicode representation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

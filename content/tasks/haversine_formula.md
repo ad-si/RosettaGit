@@ -5,6 +5,12 @@ date = 2019-08-22T15:56:25Z
 aliases = []
 [extra]
 id = 10990
+task = """
+  Implement (or call a library implementation of) the **haversine
+  formula** to compute the great-circle distance between two points
+  given by latitude and longitude. Use it to find the distance between
+  Nashville (BNA) and Los Angeles (LAX) airports.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

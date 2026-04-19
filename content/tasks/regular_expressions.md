@@ -5,6 +5,10 @@ date = 2019-09-04T23:42:04Z
 aliases = []
 [extra]
 id = 1691
+task = """
+  Match a string against a regular expression and substitute part of a
+  string using a regular expression.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

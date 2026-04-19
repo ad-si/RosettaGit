@@ -5,6 +5,13 @@ date = 2019-05-31T10:51:28Z
 aliases = []
 [extra]
 id = 9552
+task = """
+  Generate an animated simulation of a Galton box (bean
+  machine): balls drop through a triangular grid of pins,
+  deflecting left or right at each pin, and collect in bins
+  at the bottom. The box should have at least 5 pins on the
+  bottom row. Graphics or ASCII animation are both acceptable.
+"""
 [taxonomies]
 categories = ["task", "Animation"]
 tags = []

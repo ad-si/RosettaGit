@@ -5,6 +5,10 @@ date = 2015-02-21T13:54:50Z
 aliases = []
 [extra]
 id = 18269
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Python.
+"""
 [taxonomies]
 categories = []
 tags = []

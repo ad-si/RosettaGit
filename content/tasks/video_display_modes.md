@@ -5,6 +5,10 @@ date = 2019-06-11T15:03:07Z
 aliases = []
 [extra]
 id = 9889
+task = """
+  Demonstrate how to switch video display modes within the language
+  and briefly describe the supported modes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

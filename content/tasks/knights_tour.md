@@ -5,6 +5,11 @@ date = 2019-10-19T20:18:42Z
 aliases = []
 [extra]
 id = 9802
+task = """
+  Given an 8x8 chessboard with a single knight on some starting square,
+  emit a sequence of legal knight moves that visits every square
+  exactly once. The tour need not be closed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

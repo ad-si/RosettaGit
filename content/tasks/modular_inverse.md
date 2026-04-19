@@ -5,6 +5,11 @@ date = 2019-10-09T15:23:36Z
 aliases = []
 [extra]
 id = 12637
+task = """
+  Compute the modular multiplicative inverse of `42` modulo `2017`
+  — an integer `x` such that `a*x ≡ 1 (mod m)` — using an
+  algorithm, library, or built-in function.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

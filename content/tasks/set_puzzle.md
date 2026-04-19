@@ -5,6 +5,12 @@ date = 2019-10-20T07:57:20Z
 aliases = []
 [extra]
 id = 12906
+task = """
+  Deal `9` (basic) or `12` (advanced) cards from a shuffled Set Game
+  deck containing exactly `4` or `6` valid sets. A set is three cards
+  whose color, symbol, number, and shading are each all-same or all-different.
+  Print the cards and the sets found.
+"""
 [taxonomies]
 categories = ["task", "Cards"]
 tags = []

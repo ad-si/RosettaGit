@@ -5,6 +5,12 @@ date = 2019-08-22T01:28:52Z
 aliases = []
 [extra]
 id = 6122
+task = """
+  Solve the **continuous (fractional) knapsack problem**: given items
+  with weights and prices and a knapsack capacity of `15 kg`, maximize
+  total value where items may be cut and a fraction of an item carries
+  the same fraction of its price.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

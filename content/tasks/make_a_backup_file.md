@@ -5,6 +5,11 @@ date = 2019-07-24T04:28:15Z
 aliases = []
 [extra]
 id = 10841
+task = """
+  Create a backup of an existing file, then write new text to the
+  original filename. Prefer renaming over copying, follow symlinks to
+  back up the target rather than the link, and avoid shelling out.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

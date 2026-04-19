@@ -5,6 +5,13 @@ date = 2019-03-06T03:50:08Z
 aliases = []
 [extra]
 id = 12635
+task = """
+  Implement a simplified (non-modular) version of elliptic curve
+  arithmetic on `y^2 = x^3 + a*x + b` with secp256k1 parameters
+  `a = 0`, `b = 7`. Define point addition, pick two points on the
+  curve, compute their sum, and show that the sum's symmetric is
+  collinear with the original points.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

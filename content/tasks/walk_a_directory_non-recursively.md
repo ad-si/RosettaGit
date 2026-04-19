@@ -5,6 +5,10 @@ date = 2019-09-07T17:18:20Z
 aliases = []
 [extra]
 id = 1766
+task = """
+  Walk a single directory (non-recursively) and print the names of
+  files matching a given pattern.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

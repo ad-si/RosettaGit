@@ -5,6 +5,13 @@ date = 2019-10-06T00:13:42Z
 aliases = []
 [extra]
 id = 17175
+task = """
+  Using the theorem that `p` is prime iff every coefficient of the
+  expanded polynomial `(x-1)^p - (x^p - 1)` is divisible by `p`,
+  write a function that generates the coefficients of `(x-1)^p`,
+  show expansions for `p` from `0` to at least `7`, and use the
+  result to list all primes under `35` (stretch: under `50`).
+"""
 [taxonomies]
 categories = ["Prime Numbers", "task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-22T04:53:38Z
 aliases = []
 [extra]
 id = 4126
+task = """
+  Implement the *Bulls and Cows* guessing game. Pick a random
+  4-digit number with distinct digits from 1 to 9, prompt the
+  user for guesses, reject malformed input, and score each guess
+  with **bulls** (right digit, right place) and **cows** (right
+  digit, wrong place) until the player wins.
+"""
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []

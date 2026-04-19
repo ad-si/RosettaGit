@@ -5,6 +5,12 @@ date = 2019-09-26T23:08:51Z
 aliases = []
 [extra]
 id = 9131
+task = """
+  Implement (or use a library for) the **Levenshtein distance** --
+  the minimum number of single-character insertions, deletions, or
+  substitutions needed to transform one string into another. Show the
+  distance between `kitten` and `sitting`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-30T21:36:13Z
 aliases = []
 [extra]
 id = 21587
+task = """
+  Write a function that returns the English-spelled ordinal form of a
+  positive integer (e.g. `1` -> `first`, `100` -> `one hundredth`,
+  `1000000000` -> `one billionth`), using American number names.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

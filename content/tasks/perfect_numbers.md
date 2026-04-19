@@ -5,6 +5,11 @@ date = 2019-09-10T13:31:46Z
 aliases = []
 [extra]
 id = 2999
+task = """
+  Write a function that returns whether a positive integer is a
+  **perfect number**, i.e. equal to the sum of its proper
+  divisors (or equivalently, half the sum of all its divisors).
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

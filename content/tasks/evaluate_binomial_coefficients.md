@@ -5,6 +5,10 @@ date = 2019-10-06T16:38:02Z
 aliases = []
 [extra]
 id = 6924
+task = """
+  Compute an arbitrary binomial coefficient `C(n, k)`.
+  In particular, the program must be able to output `C(5, 3) = 10`.
+"""
 [taxonomies]
 categories = ["task", "Mathematical operations"]
 tags = []

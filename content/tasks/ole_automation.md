@@ -5,6 +5,12 @@ date = 2019-01-10T21:15:31Z
 aliases = []
 [extra]
 id = 10147
+task = """
+  Implement an **OLE Automation** server exposing objects whose methods
+  can be invoked by a client running in a separate process via a
+  proxy. Handle conversion of *variant* values to and from native
+  types in both directions.
+"""
 [taxonomies]
 categories = ["task", "OLE Automation Client and Server"]
 tags = []

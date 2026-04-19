@@ -5,6 +5,11 @@ date = 2019-10-07T20:04:34Z
 aliases = []
 [extra]
 id = 10022
+task = """
+  Demonstrate how to assign an empty string to a variable, how to
+  check that a string is empty, and how to check that a string is
+  not empty.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

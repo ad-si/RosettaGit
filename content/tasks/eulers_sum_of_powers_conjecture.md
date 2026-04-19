@@ -5,6 +5,11 @@ date = 2019-06-23T01:07:08Z
 aliases = []
 [extra]
 id = 19005
+task = """
+  Search for an integer counterexample to Euler's sum of powers
+  conjecture by finding distinct `x0, x1, x2, x3, y` in `(0, 250)`
+  such that `x0^5 + x1^5 + x2^5 + x3^5 == y^5`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-01-30T11:48:31Z
 aliases = []
 [extra]
 id = 9380
+task = """
+  Clear the screen, output something, then restore the screen to its
+  prior state. Character decorations and attributes must be preserved;
+  any font/kerning changes made during display must also be restored.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

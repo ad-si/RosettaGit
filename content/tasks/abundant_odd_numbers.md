@@ -5,6 +5,12 @@ date = 2019-10-18T14:56:13Z
 aliases = []
 [extra]
 id = 22324
+task = """
+  An *abundant number* `n` has a proper-divisor sum greater than `n`.
+  Find and display the first 25 odd abundant numbers, the 1000th odd
+  abundant number, and the first odd abundant number greater than
+  10^9 — each with its proper-divisor or sigma sum.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

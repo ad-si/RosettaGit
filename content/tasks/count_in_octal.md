@@ -5,6 +5,11 @@ date = 2019-10-08T05:09:31Z
 aliases = []
 [extra]
 id = 9879
+task = """
+  Produce a sequential count in **octal**, starting at zero and
+  incrementing by one, with each number on a single line, until
+  terminated or the numeric type's maximum is reached.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

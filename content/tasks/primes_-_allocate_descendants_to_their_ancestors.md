@@ -5,6 +5,12 @@ date = 2019-03-16T20:43:54Z
 aliases = []
 [extra]
 id = 18777
+task = """
+  Decompose numbers into prime factors and sum those factors to find each
+  number's parent. For each ancestor from `1` to `99`, list its level,
+  ancestors, and all direct descendants (using prime factors `< 100`),
+  then print the grand total of descendants.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

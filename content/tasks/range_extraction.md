@@ -5,6 +5,11 @@ date = 2019-08-06T20:43:23Z
 aliases = []
 [extra]
 id = 7772
+task = """
+  Write a function that takes a sorted list of integers and returns the
+  range-formatted string (e.g. `0-2,4,6-8,11,12,14-25,27-33,35-39`).
+  Use it on a sample list and show the output.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

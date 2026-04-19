@@ -5,6 +5,12 @@ date = 2019-07-27T21:15:46Z
 aliases = []
 [extra]
 id = 7914
+task = """
+  Implement checkpoint synchronization: multiple concurrent tasks
+  must each finish their work and meet at a checkpoint before any of
+  them proceeds to the next cycle. Ensure the solution is free of
+  race conditions, and ideally support workers joining and leaving.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

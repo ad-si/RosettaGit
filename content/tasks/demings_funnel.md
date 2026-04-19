@@ -5,6 +5,12 @@ date = 2019-07-14T10:49:53Z
 aliases = []
 [extra]
 id = 14060
+task = """
+  Simulate Deming's funnel experiment. Apply each of the four funnel
+  adjustment rules to the supplied 50 pseudorandom `(dx, dy)`
+  displacements, then report the mean and standard deviation of the
+  resulting `x` and `y` values for each rule.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

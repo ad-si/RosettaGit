@@ -5,6 +5,13 @@ date = 2019-10-18T10:26:26Z
 aliases = []
 [extra]
 id = 3849
+task = """
+  Build an ordered collection `A` of functions of a real number
+  (mixing built-ins and user-defined, e.g. sine, cosine, cube)
+  and a parallel collection `B` of their inverses. Implement
+  function composition and show that composing each function
+  in `A` with its inverse in `B` returns the original value.
+"""
 [taxonomies]
 categories = ["task", "Programming language concepts"]
 tags = []

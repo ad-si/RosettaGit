@@ -5,6 +5,14 @@ date = 2019-10-16T08:23:28Z
 aliases = []
 [extra]
 id = 8058
+task = """
+  Build a minimal GUI form with a numeric input field `Value` (init
+  to zero), an `increment` button, and a `random` button. Allow
+  manual entry of numeric values (rejecting non-numeric input);
+  pressing `increment` adds one; pressing `random` shows a
+  confirmation dialog and, if confirmed, sets the field to a random
+  value.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

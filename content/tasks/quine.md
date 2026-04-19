@@ -5,6 +5,12 @@ date = 2019-09-06T18:57:15Z
 aliases = []
 [extra]
 id = 2210
+task = """
+  Write a non-empty program that outputs its own source code without
+  reading any external file. The program must contain some form of
+  self-reference (constants that simply re-print themselves are not
+  allowed).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

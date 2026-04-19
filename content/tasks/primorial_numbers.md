@@ -5,6 +5,12 @@ date = 2019-09-15T21:26:58Z
 aliases = []
 [extra]
 id = 19245
+task = """
+  Compute primorial numbers, the product of the first `n` primes.
+  Show the first ten primorials, then the digit length of primorials
+  with index `10`, `100`, `1,000`, `10,000`, and `100,000`. Use exact
+  integers, not approximations.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

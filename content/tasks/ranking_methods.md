@@ -5,6 +5,11 @@ date = 2019-09-21T23:50:50Z
 aliases = []
 [extra]
 id = 17751
+task = """
+  Given an ordered list of competition scores, implement five ranking
+  methods (**standard**, **modified**, **dense**, **ordinal**, and
+  **fractional**) and show the rankings each produces.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

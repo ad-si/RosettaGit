@@ -5,6 +5,11 @@ date = 2019-08-24T20:06:10Z
 aliases = []
 [extra]
 id = 4679
+task = """
+  Given a uniform `dice5` generator returning `1..5`, build `dice7`
+  that returns `1..7` with equal probability using only `dice5`.
+  Verify the distribution over at least one million calls.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

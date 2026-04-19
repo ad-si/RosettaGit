@@ -5,6 +5,14 @@ date = 2019-02-25T22:05:03Z
 aliases = []
 [extra]
 id = 21109
+task = """
+  Convert dates between the Gregorian calendar and the French
+  Republican calendar (12 months of 30 days plus 5 or 6
+  *Sansculottides*). Support at minimum the range
+  `1 Vendémiaire 1` (22 September 1792) through
+  `10 Nivôse 14` (31 December 1805), and state the leap-year
+  method used for later dates.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

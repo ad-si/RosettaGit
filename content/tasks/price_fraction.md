@@ -5,6 +5,10 @@ date = 2019-07-22T14:21:45Z
 aliases = []
 [extra]
 id = 6443
+task = """
+  Given a floating-point value between `0.00` and `1.00`, rescale it
+  to a standard value according to a fixed lookup table of ranges.
+"""
 [taxonomies]
 categories = ["task", "Financial operations"]
 tags = []

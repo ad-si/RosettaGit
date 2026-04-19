@@ -5,6 +5,10 @@ date = 2019-10-18T19:46:41Z
 aliases = []
 [extra]
 id = 1870
+task = """
+  Sort an array of strings by descending length, breaking ties by
+  ascending lexicographic order, using a user-supplied comparator.
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

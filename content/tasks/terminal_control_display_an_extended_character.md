@@ -5,6 +5,10 @@ date = 2019-07-30T12:24:46Z
 aliases = []
 [extra]
 id = 8596
+task = """
+  Display an extended (non-ASCII) character on the terminal,
+  specifically the GBP currency sign `£`.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

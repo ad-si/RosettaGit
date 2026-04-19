@@ -5,6 +5,12 @@ date = 2019-08-14T09:31:51Z
 aliases = []
 [extra]
 id = 11184
+task = """
+  Write a program that solves **Hidato** (Hidoku) puzzles. Fill blank
+  squares so that consecutive numbers from `1` upward form a path
+  where each step lies in the Moore neighborhood (king's move) of the
+  previous one. The grid may be non-rectangular and may contain holes.
+"""
 [taxonomies]
 categories = ["Puzzles", "Games", "Algorithms", "task"]
 tags = []

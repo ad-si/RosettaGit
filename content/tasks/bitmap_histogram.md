@@ -5,6 +5,11 @@ date = 2018-06-28T09:15:27Z
 aliases = []
 [extra]
 id = 3226
+task = """
+  Compute the luminance histogram of an image and use it to
+  convert the image to black-and-white: pixels below the median
+  luminance become black, the rest white.
+"""
 [taxonomies]
 categories = ["Image processing", "task"]
 tags = []

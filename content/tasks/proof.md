@@ -5,6 +5,12 @@ date = 2019-08-28T19:30:06Z
 aliases = []
 [extra]
 id = 2429
+task = """
+  Using a dependently-typed language or proof assistant, define the
+  Peano naturals, even and odd subsets, and addition. Then prove
+  that the sum of two evens is even, that addition is associative
+  and commutative, and demonstrate disproofs for false statements.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

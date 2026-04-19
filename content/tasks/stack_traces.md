@@ -5,6 +5,11 @@ date = 2019-03-20T13:02:12Z
 aliases = []
 [extra]
 id = 4197
+task = """
+  Print the current call stack in a manner suitable for the platform,
+  including at least each frame's function/method name. Execution must
+  continue after the trace.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

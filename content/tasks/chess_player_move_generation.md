@@ -5,6 +5,12 @@ date = 2015-05-18T19:08:00Z
 aliases = []
 [extra]
 id = 19141
+task = """
+  Given a chess position and the side to move, generate the list of
+  valid moves. A basic version handles per-piece moves, queen
+  promotion, and resignation; an advanced version adds castling, en
+  passant, all promotions, check-aware legality, and draw rules.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

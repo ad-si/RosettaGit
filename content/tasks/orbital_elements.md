@@ -5,6 +5,13 @@ date = 2019-10-20T15:52:03Z
 aliases = []
 [extra]
 id = 20992
+task = """
+  Convert a set of six classical **orbital elements** (semi-major axis,
+  eccentricity, inclination, longitude of the ascending node, argument
+  of periapsis, true anomaly) into the orbital state vectors
+  (Cartesian position and velocity), using `GM = 1` and the vis-viva
+  equation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

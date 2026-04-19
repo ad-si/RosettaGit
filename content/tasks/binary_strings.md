@@ -5,6 +5,13 @@ date = 2019-10-05T17:46:26Z
 aliases = []
 [extra]
 id = 4071
+task = """
+  Provide functions for handling binary (byte) strings: creation
+  and destruction, comparison, cloning/copying, emptiness check,
+  byte append, substring extraction, byte/string replacement, and
+  joining. Languages with built-in support should show an
+  alternative implementation.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

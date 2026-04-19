@@ -5,6 +5,11 @@ date = 2019-06-16T08:46:39Z
 aliases = []
 [extra]
 id = 12552
+task = """
+  Verify a list of Machin-like formulas for `pi/4` by computing
+  `tan(right hand side)` using exact arithmetic and showing each
+  equals `1` (or doesn't, for the deliberately incorrect formula).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

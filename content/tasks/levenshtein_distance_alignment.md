@@ -5,6 +5,11 @@ date = 2019-01-02T14:27:41Z
 aliases = []
 [extra]
 id = 13411
+task = """
+  Write a function that, for two strings, shows an alignment matching
+  the minimum Levenshtein edits, using `-` to mark inserted positions.
+  Demonstrate it with `rosettacode` and `raisethysword`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

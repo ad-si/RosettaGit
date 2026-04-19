@@ -5,6 +5,11 @@ date = 2019-10-22T01:13:24Z
 aliases = []
 [extra]
 id = 22260
+task = """
+  A number is *attractive* if its number of prime factors
+  (counted with multiplicity) is itself prime.
+  Show all attractive numbers up to `120`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

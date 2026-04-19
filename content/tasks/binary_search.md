@@ -5,6 +5,11 @@ date = 2019-07-23T22:33:52Z
 aliases = []
 [extra]
 id = 2206
+task = """
+  Implement binary search over a sorted integer array, given a
+  range and a target value. Provide a recursive and/or iterative
+  version. Report whether the value was found and, if so, its index.
+"""
 [taxonomies]
 categories = ["Classic CS problems and programs", "Recursion", "task"]
 tags = []

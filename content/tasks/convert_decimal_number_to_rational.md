@@ -5,6 +5,10 @@ date = 2019-08-24T20:20:15Z
 aliases = []
 [extra]
 id = 9912
+task = """
+  Write a program that transforms a decimal number into a fraction in
+  lowest terms (e.g. `0.75` -> `3/4`, `0.9054054` -> `4527027/5000000`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

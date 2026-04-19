@@ -5,6 +5,13 @@ date = 2019-10-21T18:27:44Z
 aliases = []
 [extra]
 id = 21703
+task = """
+  Given a search string, a start delimiter, and an end delimiter,
+  return the text between the first occurrence of the start delimiter
+  and the next occurrence of the end delimiter. If start is missing,
+  return empty; if end is missing, return the remainder. Special
+  values `start` and `end` match the beginning/end of the string.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

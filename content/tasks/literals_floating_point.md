@@ -5,6 +5,12 @@ date = 2019-10-08T18:02:08Z
 aliases = []
 [extra]
 id = 8651
+task = """
+  Show how floating-point literals can be expressed in your language:
+  decimal or other bases, exponential notation, and any other special
+  features. Optionally include a regular expression or BNF describing
+  the allowable formats.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 languages = [

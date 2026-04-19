@@ -5,6 +5,11 @@ date = 2019-07-30T04:30:42Z
 aliases = []
 [extra]
 id = 17386
+task = """
+  Generate **ludic numbers** with a sieve similar to the Sieve of Eratosthenes:
+  start from `2, 3, 4, ...`, take the first as the next ludic, then remove
+  every k-th remaining item, and repeat.
+"""
 [taxonomies]
 categories = ["task", "Sieves"]
 tags = []

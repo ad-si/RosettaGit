@@ -5,6 +5,12 @@ date = 2019-10-11T15:47:45Z
 aliases = []
 [extra]
 id = 8136
+task = """
+  If the language supports it, show how to introduce a new flow-control
+  mechanism. As a practical example, implement a four-way branch
+  construct `if2` that takes two conditions and up to three `else`
+  clauses, behaving and nesting like the built-in `if`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

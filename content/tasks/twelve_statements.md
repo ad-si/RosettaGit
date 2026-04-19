@@ -5,6 +5,11 @@ date = 2019-10-18T20:41:42Z
 aliases = []
 [extra]
 id = 12318
+task = """
+  Solve a self-referential puzzle of twelve statements by determining
+  which combination is consistent, and print the solution(s). For extra
+  credit also list near misses contradicted by a single statement.
+"""
 [taxonomies]
 categories = ["task", "Puzzles"]
 tags = []

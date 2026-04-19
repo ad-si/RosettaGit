@@ -5,6 +5,10 @@ date = 2019-05-04T13:41:41Z
 aliases = []
 [extra]
 id = 12294
+task = """
+  Find all **semordnilaps** — words that spell a different word
+  when reversed — in a supplied word list.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-27T16:55:15Z
 aliases = []
 [extra]
 id = 11157
+task = """
+  Find a graph on 17 nodes such that no 4 nodes are either fully
+  connected or fully unconnected, demonstrating Ramsey's theorem.
+  A nominated solution may be used, but it must be checked.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

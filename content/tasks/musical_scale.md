@@ -5,6 +5,12 @@ date = 2019-06-04T06:01:05Z
 aliases = []
 [extra]
 id = 13149
+task = """
+  Output the 8 notes of the C major diatonic scale (`C, D, E, F, G, A,
+  B, c`) as crotchets starting from middle C, sent to the system's
+  default sound device. A score sheet or MIDI file is acceptable when
+  audio is unavailable.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

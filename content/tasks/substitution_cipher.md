@@ -5,6 +5,11 @@ date = 2018-11-21T11:49:57Z
 aliases = []
 [extra]
 id = 19649
+task = """
+  Implement a simple **substitution cipher** that encrypts an input file by
+  mapping each upper/lower-case letter to a fixed substitute,
+  then decrypts the resulting file back to the original.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

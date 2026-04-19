@@ -5,6 +5,11 @@ date = 2019-05-19T01:37:23Z
 aliases = []
 [extra]
 id = 20993
+task = """
+  Sort a list of **Object Identifiers** (OIDs) in their natural sort
+  order: lexicographical over the dot-separated fields, comparing
+  each field numerically.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

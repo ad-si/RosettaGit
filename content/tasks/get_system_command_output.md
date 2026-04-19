@@ -5,6 +5,10 @@ date = 2019-09-26T02:15:35Z
 aliases = []
 [extra]
 id = 17505
+task = """
+  Execute a system command and capture its output into the program.
+  The output may be stored in any kind of collection (array, list, etc.).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

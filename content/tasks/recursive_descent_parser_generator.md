@@ -5,6 +5,12 @@ date = 2014-04-30T07:07:59Z
 aliases = []
 [extra]
 id = 17472
+task = """
+  Write a recursive-descent parser generator that takes a grammar
+  description and outputs parser source code in the same language. Use
+  it to generate a parser that turns arithmetic expressions into
+  three-address code.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

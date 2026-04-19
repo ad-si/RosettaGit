@@ -5,6 +5,11 @@ date = 2019-07-08T18:10:11Z
 aliases = []
 [extra]
 id = 2967
+task = """
+  Produce a *spiral array*: an `N` by `N` square containing the first
+  `N^2` natural numbers placed sequentially while spiraling inward from
+  the edges.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

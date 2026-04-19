@@ -5,6 +5,11 @@ date = 2019-09-04T12:31:07Z
 aliases = []
 [extra]
 id = 21688
+task = """
+  Rank the most popular Rosetta Code languages by number of
+  declared users (via `Category:X_User` pages), showing
+  languages with at least 100 users.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

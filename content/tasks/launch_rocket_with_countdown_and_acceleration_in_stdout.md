@@ -5,6 +5,11 @@ date = 2019-10-16T12:40:34Z
 aliases = []
 [extra]
 id = 22451
+task = """
+  Simulate a rocket launch countdown from 5 to 0 seconds, then display
+  the moving, accelerating rocket on standard output as a simple
+  ASCII-art animation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

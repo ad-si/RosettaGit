@@ -5,6 +5,10 @@ date = 2019-09-20T08:20:47Z
 aliases = []
 [extra]
 id = 3998
+task = """
+  Implement **Xiaolin Wu's line algorithm** to draw antialiased lines,
+  as described on Wikipedia.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

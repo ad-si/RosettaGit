@@ -5,6 +5,12 @@ date = 2019-10-14T00:56:19Z
 aliases = []
 [extra]
 id = 3224
+task = """
+  Extend the basic bitmap storage type to support grayscale images,
+  and define two operations to convert a color image to grayscale and
+  back. Use the CIE luminance formula
+  `L = 0.2126*R + 0.7152*G + 0.0722*B`.
+"""
 [taxonomies]
 categories = ["task", "Image processing"]
 tags = []

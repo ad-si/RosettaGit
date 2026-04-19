@@ -5,6 +5,12 @@ date = 2019-06-25T22:37:58Z
 aliases = []
 [extra]
 id = 8372
+task = """
+  Create a hash/associative-array/dictionary-like object using the
+  language's native object creation, initialised with default key/value
+  pairs. New items cannot be added and items cannot be deleted (a delete
+  may reset to the default). Demonstrate magic methods if supported.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

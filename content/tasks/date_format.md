@@ -5,6 +5,10 @@ date = 2019-05-16T00:23:40Z
 aliases = []
 [extra]
 id = 2098
+task = """
+  Display the current date in two formats: `2007-11-23` and
+  `Sunday, November 23, 2007`.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

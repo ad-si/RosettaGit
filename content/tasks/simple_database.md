@@ -5,6 +5,12 @@ date = 2018-12-08T10:24:42Z
 aliases = []
 [extra]
 id = 10750
+task = """
+  Build a small CLI tool that tracks records with a description,
+  category/tag, date, and optional fields. Support commands to add
+  an entry, print the latest, print the latest per category, and
+  print all entries sorted by date. Persist to a human-readable file.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

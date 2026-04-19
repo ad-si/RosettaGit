@@ -5,6 +5,11 @@ date = 2019-10-08T09:14:44Z
 aliases = []
 [extra]
 id = 9404
+task = """
+  Display a region consisting of a large sphere with part of a
+  smaller sphere geometrically subtracted from it, producing a
+  *Death Star* shape.
+"""
 [taxonomies]
 categories = ["task", "Constructive Solid Geometry"]
 tags = []

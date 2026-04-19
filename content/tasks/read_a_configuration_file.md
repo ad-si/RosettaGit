@@ -5,6 +5,12 @@ date = 2019-09-30T01:10:39Z
 aliases = []
 [extra]
 id = 9244
+task = """
+  Parse a standard configuration file (with `#`/`;` comments, optional
+  `=`, case-insensitive option names, and comma-separated multi-value
+  parameters) and set variables such as `fullname`, `favouritefruit`,
+  `needspeeling`, `seedsremoved`, and an `otherfamily` array.
+"""
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []

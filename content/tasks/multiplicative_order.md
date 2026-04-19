@@ -5,6 +5,11 @@ date = 2019-08-01T21:07:54Z
 aliases = []
 [extra]
 id = 2400
+task = """
+  Implement a routine that calculates the multiplicative order of `a`
+  modulo `m`: the least positive `n` such that `a^n == 1 (mod m)`. May
+  assume a prime-power factorization routine is available.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

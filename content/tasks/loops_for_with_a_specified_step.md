@@ -5,6 +5,9 @@ date = 2019-10-08T16:58:57Z
 aliases = []
 [extra]
 id = 4491
+task = """
+  Demonstrate a `for` loop whose step value is greater than one.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

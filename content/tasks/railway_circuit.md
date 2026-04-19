@@ -5,6 +5,13 @@ date = 2018-12-05T20:07:09Z
 aliases = []
 [extra]
 id = 19923
+task = """
+  Given `n` curved track sections, each a 30° arc of radius `R`,
+  count and display all distinct closed railway circuits (modulo
+  symmetry, translation, reflection, and rotation) for
+  `n = 12, 16, 20`. Represent circuits as sequences of right (`1`)
+  and left (`-1`) turns.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

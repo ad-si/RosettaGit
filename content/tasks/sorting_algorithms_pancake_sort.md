@@ -5,6 +5,11 @@ date = 2019-10-18T20:13:34Z
 aliases = []
 [extra]
 id = 6758
+task = """
+  Sort an array of integers in ascending order using *pancake sort*:
+  the only allowed operation is to flip a prefix (or always-suffix)
+  of the list, reversing that portion in place.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

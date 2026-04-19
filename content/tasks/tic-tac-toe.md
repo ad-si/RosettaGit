@@ -5,6 +5,10 @@ date = 2019-09-09T22:02:30Z
 aliases = []
 [extra]
 id = 9207
+task = """
+  Play a game of tic-tac-toe (noughts and crosses), enforcing legal moves
+  and announcing a winning position.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

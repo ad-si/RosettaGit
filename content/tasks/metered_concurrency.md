@@ -5,6 +5,11 @@ date = 2018-10-15T17:47:40Z
 aliases = []
 [extra]
 id = 1931
+task = """
+  Implement a counting semaphore with `acquire`, `release`, and
+  `count` operations, then use it to coordinate concurrent units
+  that each acquire it, sleep for 2 seconds, and release it.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-12T19:12:47Z
 aliases = []
 [extra]
 id = 12952
+task = """
+  Show how to redefine operators so a generic polynomial like
+  `f(x) = x^100 + x + 1` can transparently take either ordinary or
+  modular integers. Compute `f(10)` modulo `13`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

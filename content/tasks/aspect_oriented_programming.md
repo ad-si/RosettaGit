@@ -5,6 +5,12 @@ date = 2019-07-30T11:10:55Z
 aliases = []
 [extra]
 id = 9898
+task = """
+  Describe or show how the language implements, or can simulate,
+  Aspect Oriented Programming (AOP): instrumenting existing code
+  with cross-cutting concerns (join points, pointcuts, advice)
+  without modifying the original code.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

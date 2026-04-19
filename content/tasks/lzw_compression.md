@@ -5,6 +5,10 @@ date = 2019-10-14T10:57:45Z
 aliases = []
 [extra]
 id = 2981
+task = """
+  Implement the **Lempel-Ziv-Welch (LZW)** lossless data compression
+  algorithm.
+"""
 [taxonomies]
 categories = ["task", "Compression"]
 tags = []

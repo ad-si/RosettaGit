@@ -5,6 +5,13 @@ date = 2019-09-18T03:06:33Z
 aliases = []
 [extra]
 id = 21941
+task = """
+  Given a map where each cell's number is the step length per day,
+  use Dijkstra's algorithm to find shortest routes from HQ at
+  `(11,11)` to safety (cells marked `0`), then use Floyd's
+  algorithm for all-pairs shortest paths and report selected
+  routes plus the longest shortest route.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

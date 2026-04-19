@@ -5,6 +5,11 @@ date = 2019-10-18T00:05:24Z
 aliases = []
 [extra]
 id = 22230
+task = """
+  Given a molecule's chemical formula (e.g. `H2O`, `(CH3)2CHCOOH`),
+  calculate its molar mass using a provided table of atomic masses.
+  Support nested parenthesized atom groups with multipliers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

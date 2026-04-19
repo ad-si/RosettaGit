@@ -5,6 +5,11 @@ date = 2019-10-11T02:32:55Z
 aliases = []
 [extra]
 id = 21299
+task = """
+  Brute-force the five-letter lower-case ASCII passwords matching three
+  given **SHA-256** hashes, using concurrent or parallel processing where
+  available. Print each password with its hash.
+"""
 [taxonomies]
 categories = ["task", "Parallel Brute Force"]
 tags = []

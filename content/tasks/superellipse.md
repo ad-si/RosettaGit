@@ -5,6 +5,10 @@ date = 2019-04-28T10:28:06Z
 aliases = []
 [extra]
 id = 19672
+task = """
+  Draw a superellipse, the set of points satisfying
+  `|x/a|^n + |y/b|^n = 1`, with `n = 2.5` and `a = b = 200`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

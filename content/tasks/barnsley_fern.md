@@ -5,6 +5,12 @@ date = 2019-10-14T01:20:09Z
 aliases = []
 [extra]
 id = 20079
+task = """
+  Generate the Barnsley fern fractal using an iterated function
+  system of four affine transformations selected with the
+  probabilities `1%`, `85%`, `7%`, and `7%`,
+  starting from `(0, 0)`.
+"""
 [taxonomies]
 categories = ["Fractals", "Graphics", "Mathematics", "task"]
 tags = []

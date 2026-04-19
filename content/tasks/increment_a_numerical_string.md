@@ -5,6 +5,9 @@ date = 2019-10-15T12:31:54Z
 aliases = []
 [extra]
 id = 1966
+task = """
+  Increment a numerical string.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-12T09:14:46Z
 aliases = []
 [extra]
 id = 17401
+task = """
+  Show the result of raising zero to the zeroth power (`0^0`) using the
+  language's native exponentiation, demonstrating how each language
+  handles this edge case.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

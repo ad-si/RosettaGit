@@ -5,6 +5,12 @@ date = 2019-09-09T22:26:00Z
 aliases = []
 [extra]
 id = 17428
+task = """
+  Idiomatically determine and display the set of all characters
+  that the language allows for *symbols* (identifiers: variable
+  names, function names, labels, etc.), independent of the host
+  hardware architecture (ASCII, EBCDIC, or other).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-20T11:47:38Z
 aliases = []
 [extra]
 id = 2593
+task = """
+  Use the **Lucas-Lehmer test** to find Mersenne primes `2^p - 1` for
+  odd primes `p`, going up to the implementation's precision limit
+  or the 47th Mersenne prime (whichever comes first). The test:
+  `2^p - 1` is prime iff it divides `S(p-1)` where `S(1) = 4` and
+  `S(n+1) = S(n)^2 - 2`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

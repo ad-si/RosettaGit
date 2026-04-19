@@ -5,6 +5,11 @@ date = 2018-06-22T22:57:10Z
 aliases = []
 [extra]
 id = 10925
+task = """
+  Build a program that downloads a Rosetta Code task solution
+  for a given task and language, displays it, prompts to run
+  it, verifies tooling, and exits gracefully if unsupported.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-29T06:29:48Z
 aliases = []
 [extra]
 id = 8846
+task = """
+  Implement a recursive Fibonacci function that uses anonymous (in-place)
+  recursion for the recursive calls, while still validating the argument
+  (e.g. checking for negatives) at the top level without naming a helper.
+"""
 [taxonomies]
 categories = ["Recursion", "task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-08T17:39:51Z
 aliases = []
 [extra]
 id = 1937
+task = """
+  Retrieve and display the list of command-line arguments passed
+  to the program.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

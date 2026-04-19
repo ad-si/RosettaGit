@@ -5,6 +5,12 @@ date = 2019-10-12T11:26:06Z
 aliases = []
 [extra]
 id = 22475
+task = """
+  Write a routine to generate **Fermat numbers** `F_n = 2^(2^n) + 1`.
+  Use it to display the first 10 Fermat numbers (`F_0` through `F_9`)
+  and the prime factors of as many of them as can be computed in a
+  reasonable time.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

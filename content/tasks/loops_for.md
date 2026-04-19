@@ -5,6 +5,12 @@ date = 2019-10-13T03:27:28Z
 aliases = []
 [extra]
 id = 2819
+task = """
+  Demonstrate nesting one `for` loop inside another, with the inner
+  loop's iteration count controlled by the outer loop's index. Use
+  this to print a right-triangle of `*` characters with rows of
+  length `1` to `5`.
+"""
 [taxonomies]
 categories = ["Iteration", "task"]
 tags = []

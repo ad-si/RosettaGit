@@ -5,6 +5,11 @@ date = 2018-06-11T13:32:45Z
 aliases = []
 [extra]
 id = 4124
+task = """
+  Create a class for searching Yahoo! results. It must implement a
+  *Next Page* method and read the URL, title, and content of each
+  result.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

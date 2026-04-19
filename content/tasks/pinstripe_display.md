@@ -5,6 +5,11 @@ date = 2018-11-17T14:13:13Z
 aliases = []
 [extra]
 id = 9745
+task = """
+  Draw alternating black/white vertical pinstripes across the display.
+  Use 1-pixel stripes for the top quarter, 2-pixel for the next, then
+  3-pixel, then 4-pixel for the bottom quarter.
+"""
 [taxonomies]
 categories = ["task", "Test card"]
 tags = []

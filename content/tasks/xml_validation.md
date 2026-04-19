@@ -5,6 +5,10 @@ date = 2019-10-09T10:18:31Z
 aliases = []
 [extra]
 id = 18190
+task = """
+  Given an XML document and an XSD schema definition, validate that
+  the document conforms to the schema.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

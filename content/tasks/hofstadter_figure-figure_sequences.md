@@ -5,6 +5,13 @@ date = 2019-03-09T21:38:35Z
 aliases = []
 [extra]
 id = 10707
+task = """
+  Implement the Hofstadter Figure-Figure sequences: `R(1) = 1`,
+  `S(1) = 2`, `R(n) = R(n-1) + S(n-1)`, with `S` containing all
+  positive integers not in `R`. Provide functions `ffr(n)` and
+  `ffs(n)`, show the first ten `R` values, and verify that the
+  first 40 `R` and first 960 `S` values together cover `1..1000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

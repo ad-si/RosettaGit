@@ -5,6 +5,11 @@ date = 2019-09-02T19:05:03Z
 aliases = []
 [extra]
 id = 17468
+task = """
+  Build an unsorted doubly linked list, transform it in situ into a binary
+  search tree (reusing `prev`/`next` as left/right pointers), then traverse
+  in-order to rebuild the list as a sorted doubly linked list, again in situ.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

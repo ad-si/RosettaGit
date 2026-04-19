@@ -5,6 +5,9 @@ date = 2019-09-20T23:23:06Z
 aliases = []
 [extra]
 id = 19589
+task = """
+  Generate the Thue-Morse sequence.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

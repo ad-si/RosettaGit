@@ -5,6 +5,13 @@ date = 2018-12-02T07:25:17Z
 aliases = []
 [extra]
 id = 9733
+task = """
+  Edit a hash/semicolon-commented configuration file in place: disable
+  `NEEDSPEELING`, enable `SEEDSREMOVED`, set `NUMBEROFBANANAS` to
+  `1024`, and add `NUMBEROFSTRAWBERRIES` as `62000`. Normalise option
+  names to uppercase, drop duplicates, and tidy whitespace and
+  semicolons.
+"""
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []

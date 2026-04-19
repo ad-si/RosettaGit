@@ -5,6 +5,11 @@ date = 2019-06-15T07:05:12Z
 aliases = []
 [extra]
 id = 17416
+task = """
+  For any odd `N`, generate a **magic square** filled with the integers
+  `1` through `N^2` so that every row, column, and main diagonal sums
+  to the same magic number. Demonstrate at least with `N = 5`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

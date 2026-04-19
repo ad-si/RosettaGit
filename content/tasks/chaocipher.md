@@ -5,6 +5,11 @@ date = 2019-10-06T22:19:40Z
 aliases = []
 [extra]
 id = 21806
+task = """
+  Implement the Chaocipher encryption algorithm and verify it by
+  encrypting the plaintext `WELLDONEISBETTERTHANWELLSAID` from the
+  original paper.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

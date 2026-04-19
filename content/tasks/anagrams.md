@@ -5,6 +5,11 @@ date = 2019-08-26T17:35:59Z
 aliases = []
 [extra]
 id = 3052
+task = """
+  Using the `unixdict.txt` word list, find the sets of words that
+  are anagrams of each other (same letters, different order) and
+  report the groups containing the most words.
+"""
 [taxonomies]
 categories = ["Text processing", "task"]
 tags = []

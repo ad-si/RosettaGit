@@ -5,6 +5,12 @@ date = 2019-10-18T20:54:35Z
 aliases = []
 [extra]
 id = 17721
+task = """
+  Generate all `3^6 = 729` possible outcome combinations for the six
+  group-stage games among four teams (win = 3 points, draw = 1, loss
+  = 0). For each combination, compute the standings points of each
+  team and display a histogram of points across all outcomes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

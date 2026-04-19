@@ -5,6 +5,12 @@ date = 2019-07-27T21:36:49Z
 aliases = []
 [extra]
 id = 4347
+task = """
+  Show how language objects can be allocated at a specific machine
+  address. Create an integer object, print its address, create another
+  integer at that address, verify the value matches, then change the
+  original and verify again.
+"""
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []

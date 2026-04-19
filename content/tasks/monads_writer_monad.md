@@ -5,6 +5,11 @@ date = 2019-10-07T22:22:31Z
 aliases = []
 [extra]
 id = 20022
+task = """
+  Construct a `Writer` monad with `bind` and `unit`, derive Writer
+  versions of `root`, `addOne`, and `half`, then apply their composition
+  to `5` to compute the Golden Ratio along with a concatenated log.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

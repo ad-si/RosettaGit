@@ -5,6 +5,11 @@ date = 2019-09-08T05:34:33Z
 aliases = []
 [extra]
 id = 21143
+task = """
+  Given a sorted array of integers (possibly with duplicates) and a
+  target sum, return the indices of two elements that add up to the
+  target, or an empty array if no such pair exists.
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "Arrays", "Algorithms", "task"]
 tags = []

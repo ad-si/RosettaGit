@@ -5,6 +5,10 @@ date = 2019-10-12T09:49:18Z
 aliases = []
 [extra]
 id = 8379
+task = """
+  Write a program that generates all **permutations** of `n`
+  distinct objects.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

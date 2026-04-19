@@ -5,6 +5,11 @@ date = 2019-09-05T15:55:36Z
 aliases = []
 [extra]
 id = 9389
+task = """
+  Draw a sphere, graphically or as ASCII art depending on the
+  language's capabilities. Either a static or rotational projection
+  is acceptable.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

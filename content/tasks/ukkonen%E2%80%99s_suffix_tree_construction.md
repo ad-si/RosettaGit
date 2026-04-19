@@ -5,6 +5,12 @@ date = 2019-04-25T00:53:10Z
 aliases = []
 [extra]
 id = 18764
+task = """
+  Implement Ukkonen's algorithm to build a suffix tree, then use it on
+  the first 1000, 10000, and 100000 decimal digits of pi to find the
+  longest repeated substring. Time the runs to demonstrate linear
+  scaling.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

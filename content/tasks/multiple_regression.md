@@ -5,6 +5,10 @@ date = 2018-08-24T01:17:04Z
 aliases = []
 [extra]
 id = 4456
+task = """
+  Given a response vector `y` and a matrix of predictors `X`, compute
+  the coefficient vector `beta` using ordinary least squares regression.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

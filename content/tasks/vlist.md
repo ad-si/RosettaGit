@@ -5,6 +5,11 @@ date = 2018-10-25T17:56:21Z
 aliases = []
 [extra]
 id = 9174
+task = """
+  Demonstrate creating a **VList** persistent data structure and its
+  primary operations: locate the *k*th element, prepend an element,
+  obtain a tail starting at the second element, and compute length.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

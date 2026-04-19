@@ -5,6 +5,10 @@ date = 2019-07-10T09:17:59Z
 aliases = []
 [extra]
 id = 9683
+task = """
+  Use DNS to resolve `www.kame.net` to both its IPv4 and IPv6
+  addresses and print them.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

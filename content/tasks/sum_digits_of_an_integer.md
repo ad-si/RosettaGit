@@ -5,6 +5,10 @@ date = 2019-10-16T18:36:38Z
 aliases = []
 [extra]
 id = 12054
+task = """
+  Take a natural number in a given base and return the sum of its digits.
+  E.g. `1234` in base 10 sums to `10`; `fe` in base 16 sums to `29`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

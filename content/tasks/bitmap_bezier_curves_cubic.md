@@ -5,6 +5,10 @@ date = 2018-05-02T14:14:33Z
 aliases = []
 [extra]
 id = 3219
+task = """
+  Using the basic bitmap storage type and a `draw_line` primitive,
+  draw a cubic Bezier curve defined by four control points.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-18T11:47:11Z
 aliases = []
 [extra]
 id = 10317
+task = """
+  Print the lyrics to the song *I Knew an Old Lady Who Swallowed a Fly*,
+  exploiting the cumulative, repetitive structure of the verses.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

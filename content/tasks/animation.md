@@ -5,6 +5,12 @@ date = 2019-09-15T15:32:55Z
 aliases = []
 [extra]
 id = 4381
+task = """
+  Create a window showing the string `Hello World! ` (with trailing space)
+  and animate it by periodically moving the last character to the front
+  so the text appears to scroll right.
+  Clicking the text should reverse the scroll direction.
+"""
 [taxonomies]
 categories = ["Temporal media", "GUI", "task"]
 tags = []

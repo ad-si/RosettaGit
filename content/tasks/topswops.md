@@ -5,6 +5,12 @@ date = 2019-10-18T03:36:20Z
 aliases = []
 [extra]
 id = 12627
+task = """
+  For each `n` from 1 to 10, compute `topswops(n)`: the maximum number of
+  prefix-reversal rounds needed to bring `1` to the top of any starting
+  permutation of cards `1..n`, where each round reverses the first `m`
+  cards and `m` is the value of the top card.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

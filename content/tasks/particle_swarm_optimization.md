@@ -5,6 +5,12 @@ date = 2019-10-06T17:04:01Z
 aliases = []
 [extra]
 id = 19448
+task = """
+  Implement **Particle Swarm Optimization** (PSO), a method where candidate
+  solutions migrate through the search space guided by local and global
+  best-known positions. Demonstrate with the McCormick and Michalewicz
+  test functions using the suggested parameters.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

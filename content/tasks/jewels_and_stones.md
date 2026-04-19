@@ -5,6 +5,11 @@ date = 2019-08-22T23:07:57Z
 aliases = []
 [extra]
 id = 21809
+task = """
+  Write a function taking two strings `stones` and `jewels` (the latter
+  with all distinct letters) and returning how many letters of `stones`
+  also appear in `jewels`. Only ASCII letters count and case matters.
+"""
 [taxonomies]
 categories = ["Puzzles", "String manipulation", "task"]
 tags = []

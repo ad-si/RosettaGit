@@ -5,6 +5,10 @@ date = 2019-10-12T23:25:11Z
 aliases = []
 [extra]
 id = 6099
+task = """
+  Compute the root mean square (quadratic mean)
+  of the numbers `1..10`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

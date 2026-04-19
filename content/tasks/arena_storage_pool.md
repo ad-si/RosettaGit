@@ -5,6 +5,11 @@ date = 2019-08-12T18:03:11Z
 aliases = []
 [extra]
 id = 4028
+task = """
+  Define an arena storage pool — a heap in which objects are allocated
+  individually but freed as a group — allocate a few objects (e.g. integers)
+  in it, and explain how the language controls storage-pool selection.
+"""
 [taxonomies]
 categories = ["Encyclopedia", "task"]
 tags = []

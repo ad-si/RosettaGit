@@ -5,6 +5,12 @@ date = 2019-08-23T07:11:17Z
 aliases = []
 [extra]
 id = 22287
+task = """
+  Create a command-line utility that pipes the output of `md5sum` or
+  `shaXsum`, interprets each group of 3 or 6 hex characters as a
+  color code, and prints the checksum colored in the closest console
+  color. If output is not a terminal, pass input through unchanged.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-08-27T21:48:51Z
 aliases = []
 [extra]
 id = 21517
+task = """
+  Write a program that takes a checksum's binary integer
+  representation and encodes it into Base58 using the standard
+  Bitcoin alphabet, which omits the characters `O`, `I`, `l`,
+  and `0`.
+"""
 [taxonomies]
 categories = ["Encodings", "Checksums", "task"]
 tags = []

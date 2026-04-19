@@ -5,6 +5,11 @@ date = 2019-10-17T04:22:17Z
 aliases = []
 [extra]
 id = 2019
+task = """
+  Read two integers from the user and display whether the first is less
+  than, equal to, or greater than the second. Test each condition
+  separately so that all three comparison operators are used.
+"""
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []

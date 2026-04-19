@@ -5,6 +5,11 @@ date = 2019-04-23T20:28:05Z
 aliases = []
 [extra]
 id = 16391
+task = """
+  Use the quickselect algorithm on the vector
+  `[9, 8, 7, 6, 5, 0, 1, 2, 3, 4]` to display the first, second,
+  third, ... up to the tenth largest element, in order.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2018-06-22T10:01:50Z
 aliases = []
 [extra]
 id = 21285
+task = """
+  Write a program that solves a **Rubik's Cube** as efficiently as
+  possible. Any input format may be used.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

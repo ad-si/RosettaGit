@@ -5,6 +5,11 @@ date = 2019-09-09T20:22:08Z
 aliases = []
 [extra]
 id = 9828
+task = """
+  Demonstrate the language's support for inverted syntax forms by showing
+  both traditional and inverted versions, e.g. an action stated before
+  its conditional or an expression placed before the assigned variable.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

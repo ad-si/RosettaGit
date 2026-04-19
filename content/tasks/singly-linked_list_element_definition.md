@@ -5,6 +5,11 @@ date = 2019-08-25T17:44:12Z
 aliases = []
 [extra]
 id = 2005
+task = """
+  Define the data structure for a singly-linked list element. It must
+  hold a numeric value, and the link to the next element must be
+  mutable.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

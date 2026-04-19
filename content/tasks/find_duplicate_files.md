@@ -5,6 +5,13 @@ date = 2019-07-29T17:11:18Z
 aliases = []
 [extra]
 id = 13271
+task = """
+  Given a minimum size and a directory, find all files of at
+  least that size with duplicate contents under the directory
+  and output the sets of duplicates ordered by decreasing size.
+  Duplicate content may be detected by direct comparison or by
+  hashing.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

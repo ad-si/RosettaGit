@@ -5,6 +5,10 @@ date = 2019-10-15T08:03:25Z
 aliases = []
 [extra]
 id = 10321
+task = """
+  Show how to call a static (class) method and an instance method
+  of a class in the language.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

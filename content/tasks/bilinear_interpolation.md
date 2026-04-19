@@ -5,6 +5,10 @@ date = 2019-10-14T09:37:44Z
 aliases = []
 [extra]
 id = 14064
+task = """
+  Open an image file, enlarge it by 60% using bilinear
+  interpolation, then display or save the result.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

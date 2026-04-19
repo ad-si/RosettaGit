@@ -5,6 +5,11 @@ date = 2019-10-18T21:00:57Z
 aliases = []
 [extra]
 id = 12489
+task = """
+  Implement addition, subtraction, multiplication, and division directly
+  on Zeckendorf number representations (no decimal conversion).
+  Optionally provide increment, decrement, and comparison operations.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

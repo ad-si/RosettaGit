@@ -5,6 +5,12 @@ date = 2019-09-05T12:13:21Z
 aliases = []
 [extra]
 id = 21994
+task = """
+  Pick the language's range syntax/function and exercise it with a
+  set of degenerate parameter combinations (zero/negative steps,
+  start equal to or past stop, oversized steps, etc.) to show what
+  it produces in each case.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

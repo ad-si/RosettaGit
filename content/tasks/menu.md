@@ -5,6 +5,12 @@ date = 2019-10-08T11:52:20Z
 aliases = []
 [extra]
 id = 4314
+task = """
+  Write a function that prints an indexed textual menu for a list of
+  strings, prompts the user to pick a number, and returns the chosen
+  string. Reject invalid input by redisplaying the menu, and return
+  an empty string for an empty list.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

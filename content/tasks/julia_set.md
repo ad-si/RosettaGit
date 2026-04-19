@@ -5,6 +5,9 @@ date = 2019-10-14T01:08:24Z
 aliases = []
 [extra]
 id = 20208
+task = """
+  Generate and draw a Julia set fractal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

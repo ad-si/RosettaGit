@@ -5,6 +5,10 @@ date = 2019-10-14T14:09:38Z
 aliases = []
 [extra]
 id = 1904
+task = """
+  Split the string `"Hello,How,Are,You,Today"` by commas into a list of
+  tokens, then print the tokens joined by `.` (a period followed by a space).
+"""
 [taxonomies]
 categories = ["String manipulation", "Simple", "task"]
 tags = []

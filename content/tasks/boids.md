@@ -5,6 +5,11 @@ date = 2019-06-08T07:40:53Z
 aliases = []
 [extra]
 id = 12755
+task = """
+  Implement a Boids flocking simulation (graphical or textual). A
+  textual variant may model birds as `O` characters that flock
+  rightward through a cave of fixed `#` walls and `.` free space.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

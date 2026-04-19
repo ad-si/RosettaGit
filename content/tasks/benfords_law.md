@@ -5,6 +5,12 @@ date = 2019-04-26T20:55:13Z
 aliases = []
 [extra]
 id = 13417
+task = """
+  Test whether a given dataset (such as Fibonacci numbers or another
+  real-world series) follows **Benford's law** by comparing the
+  observed first-digit distribution against the expected
+  logarithmic frequencies.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

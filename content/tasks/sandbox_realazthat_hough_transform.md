@@ -5,6 +5,11 @@ date = 2010-10-22T17:42:39Z
 aliases = []
 [extra]
 id = 8470
+task = """
+  Implement the Hough transform for detecting straight lines in
+  a digital image, mapping each `(x, y)` point to the
+  `(ρ, θ)` parameter space.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

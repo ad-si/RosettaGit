@@ -5,6 +5,13 @@ date = 2019-10-15T03:44:39Z
 aliases = []
 [extra]
 id = 22446
+task = """
+  Find sets of equal-length words (length > 2, more than one distinct
+  letter) such that rotating the first letter to the end yields
+  another word in the dictionary, and all rotations are themselves
+  words. Display one line per set, omitting permutations of a set
+  already shown. Use `unixdict.txt` as the word list.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

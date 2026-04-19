@@ -5,6 +5,11 @@ date = 2019-08-27T10:15:16Z
 aliases = []
 [extra]
 id = 2680
+task = """
+  Write (or identify) a function that converts a non-negative integer
+  to its string representation in a given integer base, and a function
+  that parses such a string back into an integer.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-17T17:24:17Z
 aliases = []
 [extra]
 id = 21787
+task = """
+  Given a whitespace-separated data file with date, name, and magnitude
+  fields per line, find and print all events with magnitude greater
+  than `6`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

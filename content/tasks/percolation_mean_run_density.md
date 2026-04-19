@@ -5,6 +5,13 @@ date = 2018-10-05T14:03:29Z
 aliases = []
 [extra]
 id = 15846
+task = """
+  Estimate the mean run density `R_n / n` of `1`s in random binary
+  vectors of length `n`, where each entry is `1` with probability
+  `p`. For `p` in `{0.1, 0.3, 0.5, 0.7, 0.9}`, average over
+  `t >= 100` runs and show how the estimate converges to
+  `p(1 - p)` as `n` grows.
+"""
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []

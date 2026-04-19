@@ -5,6 +5,11 @@ date = 2019-10-18T13:01:01Z
 aliases = []
 [extra]
 id = 17217
+task = """
+  Walk from the top of a number triangle to the bottom row, stepping
+  down-left or down-right at each level, and find the **maximum sum**
+  among all such paths for the given large triangle.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-30T00:26:03Z
 aliases = []
 [extra]
 id = 21228
+task = """
+  Given pairs of triangles in the plane, determine whether each pair
+  overlaps. Run the supplied test cases and optionally handle the
+  edge case where triangles touch only at a single corner.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

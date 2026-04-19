@@ -5,6 +5,13 @@ date = 2019-10-04T12:35:35Z
 aliases = []
 [extra]
 id = 18366
+task = """
+  Implement the **Kahan summation** algorithm using six-digit decimal
+  arithmetic. Show that left-to-right summation of `10000.0`, `3.14159`,
+  `2.71828` yields `10005.8`, while Kahan summation gives the more
+  precise `10005.9`. If the language lacks decimal precision, use a
+  floating-point variant with `1.0`, `epsilon`, `-epsilon`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

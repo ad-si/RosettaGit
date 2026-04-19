@@ -5,6 +5,12 @@ date = 2019-09-19T21:31:03Z
 aliases = []
 [extra]
 id = 12237
+task = """
+  List the language's operators and constructs in descending order of
+  **precedence**, together with their **associativity**, so that any
+  operator on a given row is evaluated before any operator on rows
+  below it.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

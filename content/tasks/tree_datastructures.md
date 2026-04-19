@@ -5,6 +5,12 @@ date = 2019-10-21T23:30:52Z
 aliases = []
 [extra]
 id = 22586
+task = """
+  Define two tree datastructures: a *nest* form (nodes with child lists)
+  and an *indent* form (ordered list of `(level, name)` pairs). Implement
+  conversions in both directions and round-trip an example tree
+  (nest -> indent -> nest), verifying the result equals the original.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

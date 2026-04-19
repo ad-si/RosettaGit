@@ -5,6 +5,12 @@ date = 2019-09-22T06:10:54Z
 aliases = []
 [extra]
 id = 7858
+task = """
+  Implement a quaternion type and provide functions for the norm,
+  negation, conjugation, addition with a real and another quaternion,
+  scalar multiplication, and quaternion multiplication. Show that
+  quaternion multiplication is non-commutative.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

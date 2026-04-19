@@ -5,6 +5,11 @@ date = 2019-08-05T10:48:43Z
 aliases = []
 [extra]
 id = 17656
+task = """
+  Solve **Numbrix** puzzles. Like Hidato, but moves are restricted to
+  one step left, right, up, or down (Von Neumann neighborhood). Grids
+  generally have no holes and may not indicate the end node.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

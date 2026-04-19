@@ -5,6 +5,12 @@ date = 2019-06-29T14:03:52Z
 aliases = []
 [extra]
 id = 12631
+task = """
+  Given a Bitcoin address (base58, version byte zero, 20-byte
+  payload, 4-byte checksum), decode it, recompute the double
+  SHA-256 checksum of the first 21 bytes, and verify it matches
+  the trailing 4 bytes. Return whether the address is valid.
+"""
 [taxonomies]
 categories = ["Checksums", "task"]
 tags = []

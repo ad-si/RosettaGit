@@ -5,6 +5,11 @@ date = 2019-09-18T01:32:57Z
 aliases = []
 [extra]
 id = 20019
+task = """
+  Compute the Jaro distance between two strings, a similarity measure
+  normalized so that `0` means no similarity and `1` is an exact match,
+  derived from counts of matching characters and transpositions.
+"""
 [taxonomies]
 categories = ["String metrics", "String manipulation", "task"]
 tags = []

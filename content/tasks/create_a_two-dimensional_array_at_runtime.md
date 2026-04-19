@@ -5,6 +5,12 @@ date = 2019-10-04T18:25:11Z
 aliases = []
 [extra]
 id = 1982
+task = """
+  Get two integers from the user, then create a two-dimensional array
+  whose dimensions have those sizes and which can be accessed naturally.
+  Write a value to one element, output it, and finally destroy the
+  array if the language doesn't do so automatically.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

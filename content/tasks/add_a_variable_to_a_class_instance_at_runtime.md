@@ -5,6 +5,10 @@ date = 2019-09-10T10:21:34Z
 aliases = []
 [extra]
 id = 2135
+task = """
+  Demonstrate how to dynamically add a new variable (attribute) to an
+  existing object — a class instance — at runtime.
+"""
 [taxonomies]
 categories = ["Object oriented", "task"]
 tags = []

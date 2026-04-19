@@ -5,6 +5,12 @@ date = 2019-10-08T16:53:37Z
 aliases = []
 [extra]
 id = 21733
+task = """
+  Write a loop starting at index `42`, normally incrementing by one,
+  that on each prime index prints the running prime count and the
+  prime, then jumps the index forward by that prime. Stop after `42`
+  primes have been displayed; format primes with comma separators.
+"""
 [taxonomies]
 categories = ["task", "iterations"]
 tags = []

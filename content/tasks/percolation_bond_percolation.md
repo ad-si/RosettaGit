@@ -5,6 +5,13 @@ date = 2019-01-31T17:13:18Z
 aliases = []
 [extra]
 id = 15821
+task = """
+  Simulate **bond percolation** on a `10x10` grid where each
+  interior wall is present with probability `p`. Estimate the
+  fraction of grids through which fluid drips from top to bottom
+  by running `t = 100` trials at each `p` from `0.0` to `1.0` in
+  steps of `0.1`.
+"""
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []

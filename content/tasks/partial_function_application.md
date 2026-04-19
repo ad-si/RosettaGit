@@ -5,6 +5,11 @@ date = 2019-10-18T11:48:19Z
 aliases = []
 [extra]
 id = 9391
+task = """
+  Define `fs(f, s)` that maps function `f` over sequence `s`.
+  Define `f1` (multiply by 2) and `f2` (square). Partially apply each
+  to `fs` to get `fsf1` and `fsf2`, then test on two integer sequences.
+"""
 [taxonomies]
 categories = ["task", "Programming language concepts"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-06-21T05:46:54Z
 aliases = []
 [extra]
 id = 11132
+task = """
+  Given a path to a directory, determine whether it is empty
+  (contains no files or subdirectories, ignoring `.` and `..`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

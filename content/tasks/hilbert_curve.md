@@ -5,6 +5,10 @@ date = 2019-10-14T01:11:52Z
 aliases = []
 [extra]
 id = 21807
+task = """
+  Produce a graphical or ASCII-art representation of a **Hilbert
+  curve** of at least order 3.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

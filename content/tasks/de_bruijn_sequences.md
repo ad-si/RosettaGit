@@ -5,6 +5,13 @@ date = 2019-10-21T23:58:02Z
 aliases = []
 [extra]
 id = 22500
+task = """
+  Generate a *de Bruijn* sequence `B(10, 4)` usable to brute-force a
+  4-digit PIN lock. Show its length and first/last 130 digits, verify
+  every 4-digit PIN appears in it, then reverse the sequence and
+  re-verify. Finally replace the 4444th digit with `.` and re-verify,
+  listing any missing PINs.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

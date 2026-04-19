@@ -5,6 +5,12 @@ date = 2019-10-21T11:02:23Z
 aliases = []
 [extra]
 id = 21939
+task = """
+  Generate **Recamán's sequence**: starting from `0`, set
+  `a(n) = a(n-1) - n` if positive and not yet seen, else
+  `a(n) = a(n-1) + n`. Show the first 15 terms, the first duplicate,
+  and optionally how many terms are needed to cover `0..1000`.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

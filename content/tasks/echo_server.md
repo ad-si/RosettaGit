@@ -5,6 +5,12 @@ date = 2019-02-09T04:53:08Z
 aliases = []
 [extra]
 id = 4155
+task = """
+  Create a network service listening on TCP port `12321` that echoes
+  complete `CRLF`-terminated lines back to clients. It must handle
+  multiple simultaneous connections and keep serving other clients
+  even if one sends a partial line or stops reading.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

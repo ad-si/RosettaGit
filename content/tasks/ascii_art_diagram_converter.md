@@ -5,6 +5,13 @@ date = 2019-06-16T21:10:22Z
 aliases = []
 [extra]
 id = 16505
+task = """
+  Given an ASCII-art diagram of a packet header (such as the RFC 1035
+  DNS header), parse it and produce a data structure that can decode
+  or store a header matching that bit layout. The parser should accept
+  tables of 8, 16, 32, or 64 columns built from `+`, `-`, `|`, and
+  whitespace.
+"""
 [taxonomies]
 categories = ["String manipulation", "ASCII art", "task"]
 tags = []

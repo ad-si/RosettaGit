@@ -5,6 +5,10 @@ date = 2019-10-11T15:49:36Z
 aliases = []
 [extra]
 id = 2139
+task = """
+  Write a definition of a function called `multiply` that takes
+  two arguments and returns their product.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

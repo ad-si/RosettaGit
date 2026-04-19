@@ -5,6 +5,12 @@ date = 2019-10-20T18:28:15Z
 aliases = []
 [extra]
 id = 22520
+task = """
+  Find *rare* numbers: positive integers `n` (in base 10) such that `n`
+  is non-palindromic, `n - r > 0`, and both `n + r` and `n - r` are
+  perfect squares (where `r` is `n` reversed). Show the first 5
+  (and optionally the first 8 or more).
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

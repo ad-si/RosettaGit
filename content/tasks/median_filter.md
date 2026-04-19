@@ -5,6 +5,10 @@ date = 2019-10-12T21:21:10Z
 aliases = []
 [extra]
 id = 3230
+task = """
+  Apply a **median filter** to an image, replacing each pixel with
+  the median color of its neighbourhood.
+"""
 [taxonomies]
 categories = ["task", "Image processing"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-05T18:03:22Z
 aliases = []
 [extra]
 id = 10794
+task = """
+  Guide a programmer who is new to the language through installing
+  it, choosing a text editor, and running the *Hello world/Text*
+  example, including how to view the output.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

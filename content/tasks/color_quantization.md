@@ -5,6 +5,12 @@ date = 2019-10-14T17:20:49Z
 aliases = []
 [extra]
 id = 10293
+task = """
+  Take an RGB color image and reduce it to a smaller palette
+  (fewer than 256 colors), choosing the palette adaptively from
+  the image rather than using a fixed one. Output the resulting
+  colors. Dithering is not required.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

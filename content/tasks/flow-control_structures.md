@@ -5,6 +5,11 @@ date = 2019-05-02T19:23:27Z
 aliases = []
 [extra]
 id = 1788
+task = """
+  Document the language's common flow-control structures
+  (such as `goto`), excluding conditional and loop structures
+  which are covered separately.
+"""
 [taxonomies]
 categories = ["task", "Control Structures"]
 tags = []

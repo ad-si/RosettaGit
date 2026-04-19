@@ -5,6 +5,12 @@ date = 2019-07-19T09:44:12Z
 aliases = []
 [extra]
 id = 9890
+task = """
+  Have the computer play Morpion solitaire in the standard 5T
+  ("touching") variant starting from the 36-point Greek cross. Random
+  legal moves are acceptable; provide sample output, ideally as a move
+  record replayable in Pentasol.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

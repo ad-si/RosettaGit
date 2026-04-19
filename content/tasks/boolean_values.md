@@ -5,6 +5,11 @@ date = 2019-10-17T23:36:32Z
 aliases = []
 [extra]
 id = 4490
+task = """
+  Show how to represent the boolean states **true** and **false**
+  in a language. If other objects represent true or false in
+  conditionals, note it.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Simple", "task"]
 tags = []

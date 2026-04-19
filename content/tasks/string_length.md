@@ -5,6 +5,11 @@ date = 2019-10-09T08:15:28Z
 aliases = []
 [extra]
 id = 2472
+task = """
+  Find both the **character** (Unicode code point) length and the **byte** length
+  of a string, correctly handling encodings like UTF-8/UTF-16 and non-BMP code points.
+  Examples: `"møøse"` is 5 chars / 7 bytes UTF-8.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

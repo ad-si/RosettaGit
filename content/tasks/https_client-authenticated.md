@@ -5,6 +5,12 @@ date = 2018-11-28T08:48:38Z
 aliases = []
 [extra]
 id = 4291
+task = """
+  Connect to a web server over HTTPS where the server requires
+  the client to present a certificate to prove its identity.
+  Authentication via username/password or cookies is *not*
+  acceptable for this task.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

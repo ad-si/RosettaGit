@@ -5,6 +5,11 @@ date = 2019-10-05T21:32:57Z
 aliases = []
 [extra]
 id = 22133
+task = """
+  Render numbers in the Mayan vigesimal (base 20) numbering system,
+  drawing each numeral as a cartouche built from dots, bars, and a
+  zero glyph using ASCII or Unicode characters.
+"""
 [taxonomies]
 categories = ["Mayan numerals", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2018-11-29T09:17:48Z
 aliases = []
 [extra]
 id = 1912
+task = """
+  Implement SQL-backed authentication with three operations against a
+  MySQL `users` table: `connect_db`, `create_user` (storing a 16-byte
+  random salt and the MD5 of `salt || password`), and `authenticate_user`.
+"""
 [taxonomies]
 categories = ["task", "Database operations"]
 tags = []

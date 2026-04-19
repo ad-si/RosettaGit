@@ -5,6 +5,10 @@ date = 2019-05-06T00:12:49Z
 aliases = []
 [extra]
 id = 20081
+task = """
+  Draw an Archimedean spiral, defined by the polar equation
+  `r = a + b*theta` for real numbers `a` and `b`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

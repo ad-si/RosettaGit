@@ -5,6 +5,12 @@ date = 2019-02-07T23:53:09Z
 aliases = []
 [extra]
 id = 9749
+task = """
+  Draw 1-pixel-wide vertical pinstripes spanning the display in
+  the sequence black, red, green, blue, magenta, cyan, yellow,
+  white. Switch to 2-, 3-, then 4-pixel-wide stripes for each
+  successive quarter of the display height.
+"""
 [taxonomies]
 categories = ["task", "Test card"]
 tags = []

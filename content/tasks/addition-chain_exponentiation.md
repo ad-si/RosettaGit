@@ -5,6 +5,14 @@ date = 2019-05-15T20:18:36Z
 aliases = []
 [extra]
 id = 10399
+task = """
+  Using **addition-chain exponentiation**, compute `A^m`, `A^n`, and
+  `A^(n·m)` for a given 6×6 matrix `A` with `m = 31415`, `n = 27182`.
+  As an easier alternative, generate addition chains for `12509`,
+  `31415`, and `27182` and use them to evaluate
+  `1.00002206445416^31415` and `1.00002550055251^27182`. Also report
+  the multiplication count for each case.
+"""
 [taxonomies]
 categories = ["Logic", "task"]
 tags = []

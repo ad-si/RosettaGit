@@ -5,6 +5,11 @@ date = 2019-05-28T00:01:16Z
 aliases = []
 [extra]
 id = 9393
+task = """
+  Continually calculate and emit successive decimal digits of
+  *pi*, starting `3.14159265 ...` and running until the user
+  aborts the program.
+"""
 [taxonomies]
 categories = ["task", "Irrational numbers"]
 tags = []

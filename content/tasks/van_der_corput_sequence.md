@@ -5,6 +5,11 @@ date = 2019-03-21T19:18:03Z
 aliases = []
 [extra]
 id = 9349
+task = """
+  Generate the **van der Corput sequence** by reflecting the digits
+  of successive integers about the radix point. Provide a generator
+  that works for arbitrary bases.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

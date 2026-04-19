@@ -5,6 +5,10 @@ date = 2019-06-14T10:00:24Z
 aliases = []
 [extra]
 id = 8099
+task = """
+  Sort an array of positive integers using the *bead sort* (also
+  known as *gravity sort*) algorithm.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

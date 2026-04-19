@@ -5,6 +5,12 @@ date = 2019-09-13T00:05:32Z
 aliases = []
 [extra]
 id = 20030
+task = """
+  Implement the classic 15 Puzzle sliding-tile game,
+  where tiles numbered 1 to 15 are arranged in a 4x4 grid
+  with one empty square, and the player slides tiles into
+  the empty space to reach the ordered goal configuration.
+"""
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []

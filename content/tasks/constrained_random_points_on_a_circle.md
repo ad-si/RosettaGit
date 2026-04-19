@@ -5,6 +5,11 @@ date = 2019-02-04T12:04:49Z
 aliases = []
 [extra]
 id = 8230
+task = """
+  Generate 100 `(x, y)` integer coordinate pairs sampled from a uniform
+  distribution subject to `10 <= sqrt(x^2 + y^2) <= 15`, then display
+  or plot them, producing a "fuzzy" circle.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 languages = [

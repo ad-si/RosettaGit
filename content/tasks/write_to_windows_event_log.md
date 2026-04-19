@@ -5,6 +5,9 @@ date = 2019-07-20T17:11:03Z
 aliases = []
 [extra]
 id = 7181
+task = """
+  Write script status to the Windows Event Log.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

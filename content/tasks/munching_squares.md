@@ -5,6 +5,10 @@ date = 2019-10-14T01:24:13Z
 aliases = []
 [extra]
 id = 10938
+task = """
+  Render a graphical pattern where each pixel's color is given by
+  `x xor y` indexed into an arbitrary color table.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

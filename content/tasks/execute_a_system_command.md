@@ -5,6 +5,10 @@ date = 2019-10-15T09:57:35Z
 aliases = []
 [extra]
 id = 1883
+task = """
+  Run a system command from the program — for example `ls`
+  (`dir` on Windows) or `pause`.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

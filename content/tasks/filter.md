@@ -5,6 +5,12 @@ date = 2019-10-18T10:07:22Z
 aliases = []
 [extra]
 id = 1647
+task = """
+  Select certain elements from an array into a new array in a generic way.
+  As a demonstration, select all even numbers from an array.
+  Optionally, also provide a destructive variant that filters
+  in place by modifying the original array.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

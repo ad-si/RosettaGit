@@ -5,6 +5,10 @@ date = 2015-10-12T07:54:37Z
 aliases = []
 [extra]
 id = 18266
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  esoteric programming languages.
+"""
 [taxonomies]
 categories = []
 tags = []

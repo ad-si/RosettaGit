@@ -5,6 +5,11 @@ date = 2019-07-12T13:09:41Z
 aliases = []
 [extra]
 id = 21344
+task = """
+  Implement the **Kronecker product** of two arbitrarily-sized
+  matrices, producing a block matrix. Show results for the two given
+  test cases.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-03-13T08:49:10Z
 aliases = []
 [extra]
 id = 21855
+task = """
+  Given a template `t` (an arbitrarily nested tree of integer indices)
+  and a flat payload mapping `p` of strings, build a structure with
+  the template's nesting where each index is replaced by its
+  corresponding payload. Avoid string-replacement or regex; traverse
+  the template using the language's native list/tuple types.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

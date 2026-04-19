@@ -5,6 +5,13 @@ date = 2018-11-13T05:36:38Z
 aliases = []
 [extra]
 id = 2102
+task = """
+  Write two programs (or one program with two modes) that run on
+  networked computers and exchange messages. The protocol must be
+  general-purpose, suitable for many components of a single
+  application, and able to transfer arbitrary data structures
+  natural to the language - going beyond raw socket use.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

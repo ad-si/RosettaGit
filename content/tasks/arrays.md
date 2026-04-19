@@ -5,6 +5,12 @@ date = 2019-10-17T04:32:39Z
 aliases = []
 [extra]
 id = 4613
+task = """
+  Show the basic array syntax of the language: create an array,
+  assign a value to it, and retrieve an element. Where applicable,
+  demonstrate both fixed-length arrays and dynamic arrays
+  (including pushing a value).
+"""
 [taxonomies]
 categories = ["Basic language learning", "Simple", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-29T00:17:11Z
 aliases = []
 [extra]
 id = 21365
+task = """
+  Retrieve the last 10 days of Tcl chatroom logs over HTTP, find lines
+  containing a substring given as a command-line argument, and print
+  them grouped by log-file URL. Use only the standard library.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

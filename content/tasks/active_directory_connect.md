@@ -5,6 +5,9 @@ date = 2019-09-09T05:54:14Z
 aliases = []
 [extra]
 id = 2983
+task = """
+  Establish a connection to an Active Directory or LDAP server.
+"""
 [taxonomies]
 categories = ["Programming environment operations", "task"]
 tags = []

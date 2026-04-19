@@ -5,6 +5,9 @@ date = 2019-10-04T03:16:11Z
 aliases = []
 [extra]
 id = 1514
+task = """
+  Display the string `Hello world!` on a text console.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

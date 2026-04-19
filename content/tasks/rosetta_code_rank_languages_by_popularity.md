@@ -5,6 +5,11 @@ date = 2019-10-20T21:29:58Z
 aliases = []
 [extra]
 id = 3315
+task = """
+  Rank the most popular programming languages on Rosetta Code
+  by the number of entries in each language's category, via
+  scraping or the MediaWiki API.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

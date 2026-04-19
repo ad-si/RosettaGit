@@ -5,6 +5,12 @@ date = 2019-10-14T14:39:02Z
 aliases = []
 [extra]
 id = 17730
+task = """
+  Write a function that splits a string by a separator character but
+  ignores separators preceded by an escape character. Both separator and
+  escape are configurable, escape characters are removed from the output,
+  and empty fields (including leading/trailing) are preserved.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

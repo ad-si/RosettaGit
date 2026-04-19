@@ -5,6 +5,10 @@ date = 2019-09-05T22:23:30Z
 aliases = []
 [extra]
 id = 10020
+task = """
+  Implement the classic game *Rock-paper-scissors* including a simple
+  predictive AI player.
+"""
 [taxonomies]
 categories = ["Games", "AI", "Interactive", "task"]
 tags = []

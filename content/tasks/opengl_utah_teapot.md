@@ -5,6 +5,9 @@ date = 2019-03-10T12:50:04Z
 aliases = []
 [extra]
 id = 19861
+task = """
+  Render the classic **Utah Teapot** using the OpenGL library.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

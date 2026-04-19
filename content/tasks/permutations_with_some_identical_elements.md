@@ -5,6 +5,12 @@ date = 2019-09-11T10:25:35Z
 aliases = []
 [extra]
 id = 22435
+task = """
+  Given multiplicities `[a_1, a_2, ..., a_k]` describing how many
+  copies of each element are present, list all
+  `n! / (a_1! * a_2! * ... * a_k!)` distinct permutations. Show
+  the result for input `[2, 3, 1]`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

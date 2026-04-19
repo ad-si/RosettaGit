@@ -5,6 +5,10 @@ date = 2019-10-07T04:08:47Z
 aliases = []
 [extra]
 id = 1985
+task = """
+  Demonstrate how to get the address of a variable, and how to set
+  the address of a variable.
+"""
 [taxonomies]
 categories = ["Basic Data Operations", "task"]
 tags = []

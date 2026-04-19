@@ -5,6 +5,12 @@ date = 2019-10-05T21:18:40Z
 aliases = []
 [extra]
 id = 21778
+task = """
+  Given a list of successive matrix dimensions, compute the optimal
+  parenthesization for the **matrix chain multiplication** product that
+  minimizes the number of scalar multiplications, along with the total
+  cost. Use dynamic programming.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-17T15:05:06Z
 aliases = []
 [extra]
 id = 17733
+task = """
+  Given a list of strings named `strings`, show expressions that
+  test whether all elements are lexically equal, and whether the
+  list is in strictly ascending order. Both tests must yield a
+  single boolean and return true for lists of fewer than two
+  elements.
+"""
 [taxonomies]
 categories = ["String manipulation", "Comparison", "task"]
 tags = []

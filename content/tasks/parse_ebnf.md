@@ -5,6 +5,11 @@ date = 2019-05-17T03:35:13Z
 aliases = []
 [extra]
 id = 7506
+task = """
+  Write a program that parses a grammar in **Extended Backus-Naur Form**
+  and then decides whether some other input belongs to the language
+  described by the grammar. Optionally output a syntax tree.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

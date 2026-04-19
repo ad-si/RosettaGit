@@ -5,6 +5,12 @@ date = 2019-07-20T15:31:04Z
 aliases = []
 [extra]
 id = 19103
+task = """
+  Given `n`, enumerate all distinct ways to nest `n` identical bags
+  (equivalently, all unordered rooted trees with `n` nodes). Use
+  parenthesis notation or any unambiguous tree representation. Run
+  for `n = 5` (9 configurations).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

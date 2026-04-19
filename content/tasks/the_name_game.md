@@ -5,6 +5,11 @@ date = 2019-07-04T15:14:29Z
 aliases = []
 [extra]
 id = 21761
+task = """
+  Given a name, print the lyrics to Shirley Ellis' *The Name Game*,
+  applying special rules when the name starts with a vowel or with
+  `B`, `F`, or `M`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

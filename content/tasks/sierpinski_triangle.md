@@ -5,6 +5,10 @@ date = 2019-09-23T13:42:14Z
 aliases = []
 [extra]
 id = 2705
+task = """
+  Produce an ASCII representation of a **Sierpinski triangle** of
+  order `N`.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

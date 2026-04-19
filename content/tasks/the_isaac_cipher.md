@@ -5,6 +5,11 @@ date = 2019-04-08T16:03:11Z
 aliases = []
 [extra]
 id = 17790
+task = """
+  Implement Bob Jenkins' ISAAC CSPRNG, seed it with `"this is my secret key"`,
+  then encrypt `"a Top Secret secret"` using either XOR (Vernam) or
+  Caesar-shift mod 95 (Vigenere) and output the ciphertext as hex digits.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-09-21T21:31:11Z
 aliases = []
 [extra]
 id = 9468
+task = """
+  Render the text **This is an example of speech synthesis** as audible
+  speech.
+"""
 [taxonomies]
 categories = ["task", "Temporal media"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-07-04T06:18:38Z
 aliases = []
 [extra]
 id = 22295
+task = """
+  Find groups of successive primes (less than 1,000,000) whose consecutive
+  differences match a given sequence. For differences `2`, `1`, `2,2`, `2,4`,
+  `4,2`, and `6,4,2`, show the first group, the last group, and the total
+  count of matching groups.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

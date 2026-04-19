@@ -5,6 +5,11 @@ date = 2019-08-04T16:51:04Z
 aliases = []
 [extra]
 id = 1643
+task = """
+  Perform three XPath queries on a given XML inventory document:
+  retrieve the first `item` element, perform an action on each `price`
+  element (print it), and obtain an array of all `name` elements.
+"""
 [taxonomies]
 categories = ["task", "XML"]
 tags = []

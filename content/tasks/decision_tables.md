@@ -5,6 +5,11 @@ date = 2019-06-13T21:39:21Z
 aliases = []
 [extra]
 id = 9184
+task = """
+  Demonstrate how the language implements *decision tables*, using
+  the printer-troubleshooting example from the Wikipedia article on
+  decision tables.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-04-28T10:26:51Z
 aliases = []
 [extra]
 id = 20432
+task = """
+  Render a **plasma effect**: a colorful image produced by applying
+  trigonometric functions (sine/cosine) to pixel coordinates to
+  generate smoothly varying colors.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

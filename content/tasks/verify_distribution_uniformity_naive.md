@@ -5,6 +5,12 @@ date = 2019-09-15T17:33:14Z
 aliases = []
 [extra]
 id = 4680
+task = """
+  Write a function that checks whether a small-integer random generator
+  produces a uniform distribution. It takes the generator, a call count,
+  and a `delta` tolerance, then reports the distribution and signals an
+  error when it is not flat enough.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

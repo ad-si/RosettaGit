@@ -5,6 +5,12 @@ date = 2019-08-27T03:32:39Z
 aliases = []
 [extra]
 id = 19987
+task = """
+  For each `n` in `{7, 14, 21, 29, 32, 42, 64}` determine the minimal
+  length `L(n)` of an addition chain, the count of Brauer chains of
+  that length with an example, and the count of non-Brauer chains of
+  that length with an example.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

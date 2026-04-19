@@ -5,6 +5,12 @@ date = 2019-09-12T19:45:51Z
 aliases = []
 [extra]
 id = 1995
+task = """
+  Define a small inheritance hierarchy of classes, each with a print
+  method. Instantiate them and print the instances, then serialize the
+  objects to a binary file `objects.dat`. Read the file back and print
+  the deserialized objects.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

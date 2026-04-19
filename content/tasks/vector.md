@@ -5,6 +5,11 @@ date = 2019-10-13T07:18:21Z
 aliases = []
 [extra]
 id = 18904
+task = """
+  Implement a `Vector` class (or set of functions) modelling a physical
+  vector. Provide vector addition (`+`), subtraction (`-`), scalar
+  multiplication (`*`), scalar division (`/`), and a pretty-print.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

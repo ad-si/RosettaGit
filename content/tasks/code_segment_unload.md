@@ -5,6 +5,11 @@ date = 2019-10-01T03:07:46Z
 aliases = []
 [extra]
 id = 12959
+task = """
+  Demonstrate or explain how to unload an unused section of code
+  from memory, freeing its resources for reuse (for example,
+  discarding initialization code that will no longer run).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

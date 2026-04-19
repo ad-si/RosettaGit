@@ -5,6 +5,11 @@ date = 2019-10-14T11:22:50Z
 aliases = []
 [extra]
 id = 9937
+task = """
+  Provide a function that converts a URL-encoded string back to its
+  original unencoded form. For example, `http%3A%2F%2Ffoo%20bar%2F`
+  should decode to `http://foo bar/`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

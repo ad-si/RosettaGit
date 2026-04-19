@@ -5,6 +5,10 @@ date = 2019-10-15T00:04:09Z
 aliases = []
 [extra]
 id = 4737
+task = """
+  Compute the factors (positive divisors) of a positive integer.
+  Zero and negative integers need not be handled.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

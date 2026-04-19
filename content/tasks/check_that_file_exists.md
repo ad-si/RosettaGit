@@ -5,6 +5,11 @@ date = 2019-10-15T08:09:45Z
 aliases = []
 [extra]
 id = 2026
+task = """
+  Verify that a file `input.txt` and a directory `docs` exist. Do
+  this twice: once for the current working directory and once for the
+  filesystem root.
+"""
 [taxonomies]
 categories = ["File System Operations", "Simple", "task"]
 tags = []

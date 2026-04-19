@@ -5,6 +5,10 @@ date = 2019-10-03T09:15:09Z
 aliases = []
 [extra]
 id = 2252
+task = """
+  Encode a string using the **MD5** algorithm and optionally validate
+  the implementation against the test vectors in IETF RFC 1321.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

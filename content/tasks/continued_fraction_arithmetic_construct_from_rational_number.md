@@ -5,6 +5,13 @@ date = 2019-10-20T06:45:32Z
 aliases = []
 [extra]
 id = 12894
+task = """
+  Write a function `r2cf(N1, N2)` that lazily emits the continued
+  fraction representation of the rational `N1/N2`, one term per call,
+  by repeatedly taking the integer quotient and remainder.
+  Demonstrate it on several rationals and rational approximations of
+  `sqrt(2)` and `pi`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

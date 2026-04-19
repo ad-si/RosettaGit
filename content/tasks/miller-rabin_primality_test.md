@@ -5,6 +5,11 @@ date = 2019-08-21T14:07:14Z
 aliases = []
 [extra]
 id = 4106
+task = """
+  Implement the **Miller–Rabin primality test**, a probabilistic
+  algorithm that determines whether a given odd integer `n > 2`
+  is composite or probably prime, using `k` random witnesses.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

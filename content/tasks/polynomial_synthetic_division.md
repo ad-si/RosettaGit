@@ -5,6 +5,11 @@ date = 2019-09-09T18:24:24Z
 aliases = []
 [extra]
 id = 19225
+task = """
+  Implement **polynomial synthetic division**: divide a polynomial by
+  another of the same or lower degree using the synthetic-division
+  trick on coefficients, returning quotient and remainder.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

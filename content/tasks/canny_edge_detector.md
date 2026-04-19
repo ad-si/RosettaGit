@@ -5,6 +5,12 @@ date = 2018-12-21T15:22:20Z
 aliases = []
 [extra]
 id = 11471
+task = """
+  Write a program that performs Canny edge detection on an image:
+  Gaussian noise reduction, intensity-gradient computation
+  (e.g. via Sobel operators), non-maximum suppression, and edge
+  tracing with hysteresis between two thresholds.
+"""
 [taxonomies]
 categories = ["Image processing", "Computer vision", "task"]
 languages = [

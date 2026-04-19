@@ -5,6 +5,12 @@ date = 2019-10-12T10:05:23Z
 aliases = []
 [extra]
 id = 20906
+task = """
+  Compute an approximation of the principal `N`th root of `X` as the
+  largest integer `R` such that `R^N <= X`, where `N` is a positive
+  integer and `X` is a non-negative integer. No arbitrary limits on
+  the magnitudes of the numbers should be imposed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

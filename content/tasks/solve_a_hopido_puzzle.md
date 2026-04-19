@@ -5,6 +5,12 @@ date = 2019-08-05T10:47:19Z
 aliases = []
 [extra]
 id = 17657
+task = """
+  Solve **Hopido** puzzles. Like Hidato, but moves are restricted to
+  hops of one tile diagonally or two tiles horizontally/vertically.
+  The start point may be anywhere; there is no end marker or
+  intermediate clue.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

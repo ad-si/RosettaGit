@@ -5,6 +5,12 @@ date = 2019-10-22T18:38:46Z
 aliases = []
 [extra]
 id = 22091
+task = """
+  Implement Euler's totient function `phi(n)`. For the first 25 integers
+  show `n`, `phi(n)`, and whether `n` is prime (i.e. `phi(n) == n - 1`),
+  and report the count of primes up to 100, 1,000, 10,000 (and optionally
+  100,000).
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

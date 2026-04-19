@@ -5,6 +5,9 @@ date = 2019-10-14T01:05:49Z
 aliases = []
 [extra]
 id = 4039
+task = """
+  Generate and draw the **Mandelbrot set** fractal in the complex plane.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

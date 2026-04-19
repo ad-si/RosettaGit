@@ -5,6 +5,10 @@ date = 2019-08-30T20:02:48Z
 aliases = []
 [extra]
 id = 4888
+task = """
+  Traverse a doubly linked list from the beginning to the end,
+  and from the end back to the beginning.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

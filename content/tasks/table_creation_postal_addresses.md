@@ -5,6 +5,12 @@ date = 2018-12-15T13:03:07Z
 aliases = []
 [extra]
 id = 1676
+task = """
+  Create a table to store US postal addresses with a unique identifier
+  plus fields for street, city, state code, and zip code, choosing
+  appropriate types. For non-database languages, show how to open a
+  database connection and create the table.
+"""
 [taxonomies]
 categories = ["task", "Database operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-30T16:46:40Z
 aliases = []
 [extra]
 id = 10233
+task = """
+  Create a priority queue supporting at least insertion (with a numeric
+  priority) and removal of the highest-priority element. Optionally
+  support peeking, merging, and other operations.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-21T16:57:55Z
 aliases = []
 [extra]
 id = 8622
+task = """
+  Write a program that picks a number between `1` and `10` and
+  prompts the player to guess it, repeating until the guess is
+  correct. On success, print `Well guessed!` and exit.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

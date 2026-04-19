@@ -5,6 +5,9 @@ date = 2019-10-18T20:23:46Z
 aliases = []
 [extra]
 id = 2378
+task = """
+  Compute the sum and product of an array of integers.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

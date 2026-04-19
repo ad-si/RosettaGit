@@ -5,6 +5,11 @@ date = 2019-09-13T07:40:42Z
 aliases = []
 [extra]
 id = 9384
+task = """
+  Given an RSA key `(n, e, d)`, encrypt and decrypt plaintext
+  messages without using a library, supporting blocking and a
+  non-trivial key requiring big-integer arithmetic.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

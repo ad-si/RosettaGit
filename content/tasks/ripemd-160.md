@@ -5,6 +5,10 @@ date = 2019-05-08T07:27:41Z
 aliases = []
 [extra]
 id = 11608
+task = """
+  Compute the RIPEMD-160 message digest of the ASCII string
+  `Rosetta Code`, using a library or implementing the algorithm.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

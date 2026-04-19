@@ -5,6 +5,10 @@ date = 2019-10-17T04:18:08Z
 aliases = []
 [extra]
 id = 1596
+task = """
+  Create the simplest possible program that is still considered
+  *correct* in the language.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

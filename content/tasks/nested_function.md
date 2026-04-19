@@ -5,6 +5,13 @@ date = 2019-09-09T20:17:33Z
 aliases = []
 [extra]
 id = 21107
+task = """
+  Write a program with two nested functions that prints a numbered
+  list (`1. first`, `2. second`, `3. third`). The outer `MakeList`
+  takes the separator `". "` and holds a counter; the inner `MakeItem`
+  reads the separator and modifies the counter, demonstrating that the
+  inner function can access and modify the outer's variables.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

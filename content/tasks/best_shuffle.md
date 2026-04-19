@@ -5,6 +5,12 @@ date = 2019-10-02T10:08:08Z
 aliases = []
 [extra]
 id = 8971
+task = """
+  Shuffle the characters of a string so that as few positions as
+  possible retain their original character. Display the original
+  string, the shuffled result, and a score equal to the number of
+  unchanged positions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

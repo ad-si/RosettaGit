@@ -5,6 +5,10 @@ date = 2019-08-11T17:23:22Z
 aliases = []
 [extra]
 id = 22141
+task = """
+  Convert dates between the Gregorian calendar and the Mayan
+  **Calendar Round** (Tzolk'in + Haab') and **Long Count** systems.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-20T12:32:54Z
 aliases = []
 [extra]
 id = 3556
+task = """
+  Evaluate a program containing a free variable `x` twice with
+  two different bindings and return the difference, without
+  string manipulation and without making `x` global.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

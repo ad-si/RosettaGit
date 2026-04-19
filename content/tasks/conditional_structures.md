@@ -5,6 +5,10 @@ date = 2019-10-09T07:38:44Z
 aliases = []
 [extra]
 id = 1787
+task = """
+  List the *conditional structures* offered by a programming language,
+  such as **if-then-else** and **switch**.
+"""
 [taxonomies]
 categories = ["task", "Control Structures"]
 tags = []

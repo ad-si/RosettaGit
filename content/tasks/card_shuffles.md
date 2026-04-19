@@ -5,6 +5,11 @@ date = 2019-04-17T00:33:33Z
 aliases = []
 [extra]
 id = 19055
+task = """
+  Implement the *riffle shuffle* and *overhand shuffle* on a
+  deck (or generic collection) for `n` iterations, and where
+  possible compare them to a built-in shuffling procedure.
+"""
 [taxonomies]
 categories = ["Games", "task"]
 tags = []

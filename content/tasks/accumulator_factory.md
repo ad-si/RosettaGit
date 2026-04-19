@@ -5,6 +5,13 @@ date = 2019-09-11T03:46:02Z
 aliases = []
 [extra]
 id = 5255
+task = """
+  Write a function that takes a number `n` and returns a new function
+  (an accumulator) which, on each call with a numeric argument `i`,
+  returns the running sum of all values passed to it (including `n`).
+  It must work for both integers and floats, and each accumulator
+  must have independent state.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

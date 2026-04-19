@@ -5,6 +5,12 @@ date = 2019-08-02T18:46:58Z
 aliases = []
 [extra]
 id = 3266
+task = """
+  Implement functions (or a class) for reading and writing
+  arbitrary-length bit sequences, most-significant-bit first, with
+  byte-quantized I/O and zero-padded final byte. Demonstrate with a
+  rough 7-bit-per-byte ASCII compressor/decompressor.
+"""
 [taxonomies]
 categories = ["Bitwise operations", "task"]
 tags = []

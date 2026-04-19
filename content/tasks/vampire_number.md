@@ -5,6 +5,11 @@ date = 2019-10-11T09:57:29Z
 aliases = []
 [extra]
 id = 13146
+task = """
+  Print the first 25 vampire numbers and their fangs, then check
+  whether `16758243290880`, `24959017348650`, and `14593825548650`
+  are vampire numbers and print their fangs if so.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

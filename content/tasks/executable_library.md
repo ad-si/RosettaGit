@@ -5,6 +5,13 @@ date = 2019-10-18T15:35:16Z
 aliases = []
 [extra]
 id = 9371
+task = """
+  Create a library exposing a `hailstone` function (returning the
+  Hailstone sequence for a positive integer) that, when executed
+  directly, also runs as a CLI satisfying the *Hailstone sequence*
+  task. Then write a second executable that uses the library to
+  find the most common hailstone length for `1 <= n < 100,000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

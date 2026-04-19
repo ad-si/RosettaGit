@@ -5,6 +5,12 @@ date = 2019-10-13T14:11:54Z
 aliases = []
 [extra]
 id = 9220
+task = """
+  Show whether the language treats the identifiers `dog`, `Dog`,
+  and `DOG` as distinct (case-sensitive) or as the same name
+  (case-insensitive), printing the appropriate "three dogs" or
+  "one dog" message accordingly.
+"""
 [taxonomies]
 categories = ["task", "Case Sensitivity"]
 tags = []

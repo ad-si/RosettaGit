@@ -5,6 +5,10 @@ date = 2019-10-15T08:29:33Z
 aliases = []
 [extra]
 id = 1996
+task = """
+  Show every way to embed text in a source file that the compiler
+  or interpreter ignores entirely (i.e. all forms of comments).
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

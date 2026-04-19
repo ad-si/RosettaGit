@@ -5,6 +5,12 @@ date = 2019-10-12T10:27:05Z
 aliases = []
 [extra]
 id = 19093
+task = """
+  Write a function or program that takes a string path/URL and returns
+  the filename extension, or an empty string if none exists. An
+  extension occurs at the very end of the filename and consists of a
+  period followed by one or more ASCII letters or digits.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

@@ -5,6 +5,10 @@ date = 2019-06-05T18:32:11Z
 aliases = []
 [extra]
 id = 9550
+task = """
+  Produce a graphical representation of a **Sierpinski triangle**
+  of order `N` in any orientation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-28T14:33:43Z
 aliases = []
 [extra]
 id = 17673
+task = """
+  Connect to a server via FTP, change directory, list its
+  contents, and download a file as binary. Use passive mode
+  if available.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

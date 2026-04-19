@@ -5,6 +5,10 @@ date = 2019-03-26T21:56:57Z
 aliases = []
 [extra]
 id = 12977
+task = """
+  Write a program that computes and shows its own Shannon entropy
+  by reading its own source code.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

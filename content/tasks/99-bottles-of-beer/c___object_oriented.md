@@ -5,6 +5,11 @@ date = 2009-08-06T20:57:13Z
 aliases = []
 [extra]
 id = 4665
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song with a
+  deliberately over-engineered object-oriented C++ solution
+  that also handles grammar (singular vs. plural) correctly.
+"""
 [taxonomies]
 categories = []
 tags = []

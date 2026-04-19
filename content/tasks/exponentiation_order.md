@@ -5,6 +5,11 @@ date = 2019-07-03T07:14:12Z
 aliases = []
 [extra]
 id = 17399
+task = """
+  Demonstrate the order of exponentiation when multiple exponents are
+  chained. Using the language's exponentiation operator, show the
+  results of `5**3**2`, `(5**3)**2`, and `5**(3**2)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

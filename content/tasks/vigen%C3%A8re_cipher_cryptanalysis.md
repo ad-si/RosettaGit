@@ -5,6 +5,11 @@ date = 2018-06-06T16:17:30Z
 aliases = []
 [extra]
 id = 9837
+task = """
+  Given English plaintext suspected of being encrypted with a
+  **Vigenère cipher**, recover the key and decrypted plaintext from
+  ciphertext alone (assume uppercase letters with optional whitespace).
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

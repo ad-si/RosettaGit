@@ -5,6 +5,12 @@ date = 2019-10-22T04:13:36Z
 aliases = []
 [extra]
 id = 10709
+task = """
+  Compute the **Hofstadter Q sequence**: `Q(1) = Q(2) = 1`,
+  `Q(n) = Q(n - Q(n-1)) + Q(n - Q(n-2))`. Display the first ten
+  terms and the 1000th term. Optionally count how many times a
+  term is less than its predecessor up to the 100,000th term.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

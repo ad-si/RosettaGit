@@ -5,6 +5,11 @@ date = 2019-08-31T05:57:34Z
 aliases = []
 [extra]
 id = 8699
+task = """
+  An *ordered word* has its letters in alphabetic order (e.g. `abbey`,
+  `dirt`). Read the dictionary `unixdict.txt`, find every ordered word
+  of the maximum length, and display them all.
+"""
 [taxonomies]
 categories = ["task", "text processing"]
 tags = []

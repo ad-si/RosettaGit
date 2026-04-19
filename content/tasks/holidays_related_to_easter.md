@@ -5,6 +5,12 @@ date = 2019-09-25T00:49:06Z
 aliases = []
 [extra]
 id = 7622
+task = """
+  Calculate the dates of **Easter**, **Ascension Thursday**,
+  **Pentecost**, **Trinity Sunday**, and **Corpus Christi** for
+  the first year of each century from 400 to 2100 CE, and for
+  each year from 2010 to 2020 CE.
+"""
 [taxonomies]
 categories = ["task", "sciences"]
 tags = []

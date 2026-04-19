@@ -5,6 +5,13 @@ date = 2019-10-17T14:52:05Z
 aliases = []
 [extra]
 id = 10098
+task = """
+  Demonstrate the different syntax and semantics for calling a
+  function: no arguments, fixed, optional, variadic, and named
+  arguments; use in statement and first-class contexts; return
+  values; built-in vs. user-defined; by-value vs. by-reference
+  passing; and partial application.
+"""
 [taxonomies]
 categories = ["Functions and subroutines", "Simple", "task"]
 tags = []

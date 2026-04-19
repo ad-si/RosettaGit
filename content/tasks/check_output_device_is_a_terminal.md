@@ -5,6 +5,10 @@ date = 2019-08-26T23:37:56Z
 aliases = []
 [extra]
 id = 13194
+task = """
+  Demonstrate how to check whether the output device (stdout) is a
+  terminal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-01T02:44:32Z
 aliases = []
 [extra]
 id = 13900
+task = """
+  Using simulation, estimate the smallest group size that gives a
+  better than even chance that at least 2 (then 3, 4, and 5)
+  randomly chosen people share a birthday.
+"""
 [taxonomies]
 categories = ["Probability and statistics", "task"]
 languages = [

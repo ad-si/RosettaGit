@@ -5,6 +5,10 @@ date = 2019-10-19T01:40:13Z
 aliases = []
 [extra]
 id = 1639
+task = """
+  Take a collection of elements and apply a callback function
+  to each element of the array.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Iteration", "task"]
 tags = []

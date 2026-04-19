@@ -5,6 +5,12 @@ date = 2019-10-17T23:51:11Z
 aliases = []
 [extra]
 id = 3209
+task = """
+  Write a function that checks whether a given sequence of characters is a
+  palindrome (reads the same forward and backward).
+  For extra credit, support Unicode and detect *inexact* palindromes by
+  ignoring whitespace, punctuation, and case.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

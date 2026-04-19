@@ -5,6 +5,10 @@ date = 2019-10-22T03:31:43Z
 aliases = []
 [extra]
 id = 1646
+task = """
+  Given an array, derive a sequence of elements in which all duplicates
+  are removed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

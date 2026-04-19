@@ -5,6 +5,10 @@ date = 2019-06-21T14:46:12Z
 aliases = []
 [extra]
 id = 13313
+task = """
+  Write a program or script that, given a year as input,
+  prints the date of the last Sunday of every month in that year.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

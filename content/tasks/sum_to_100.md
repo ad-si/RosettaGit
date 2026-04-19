@@ -5,6 +5,12 @@ date = 2019-09-20T16:50:32Z
 aliases = []
 [extra]
 id = 21263
+task = """
+  Insert `+` or `-` operators (or nothing) between the digits of `123456789`
+  so the resulting expression evaluates to a target sum. Show all solutions
+  for `100`, the sum with the most solutions, the lowest positive sum that
+  has none, and the ten highest expressible sums.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-09-13T22:18:36Z
 aliases = []
 [extra]
 id = 18843
+task = """
+  Write a generalized FizzBuzz that accepts a max number and
+  a list of `(factor, word)` pairs from the user, then prints
+  `1` through the max, replacing each multiple by its word(s).
+  When a number matches multiple factors, concatenate words
+  in order of increasing factor (e.g. `3`,`5` -> `FizzBuzz`).
+"""
 [taxonomies]
 categories = ["Classic CS problems and programs", "Iteration", "Recursion", "task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-08-08T07:31:10Z
 aliases = []
 [extra]
 id = 6039
+task = """
+  Solve the **0-1 knapsack problem**: given a list of items with
+  weights and values and a knapsack capacity of `4 kg`, choose a subset
+  (each item taken whole or not at all) that maximizes total value
+  without exceeding the capacity.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

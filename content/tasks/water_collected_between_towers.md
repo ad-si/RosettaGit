@@ -5,6 +5,11 @@ date = 2019-09-15T10:59:00Z
 aliases = []
 [extra]
 id = 21208
+task = """
+  Given an array of bar heights representing towers, compute how many
+  unit squares of water are trapped between them after rain.
+  Calculate the answer for seven sample series.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

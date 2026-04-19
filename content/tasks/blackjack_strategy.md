@@ -5,6 +5,13 @@ date = 2014-11-12T11:09:38Z
 aliases = []
 [extra]
 id = 14761
+task = """
+  Recreate the single-deck Blackjack strategy charts (Hard Totals,
+  Soft Totals, Pair Splitting) by computing exact win/loss
+  probabilities for sticking, hitting, doubling, and splitting.
+  Then simulate playing 50 hands daily for a year using the
+  derived strategy and report expected wins, losses, and extremes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

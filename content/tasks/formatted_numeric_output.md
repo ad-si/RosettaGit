@@ -5,6 +5,10 @@ date = 2019-10-10T16:05:49Z
 aliases = []
 [extra]
 id = 1934
+task = """
+  Express a number in decimal as a fixed-length string with
+  leading zeros.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

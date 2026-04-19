@@ -5,6 +5,10 @@ date = 2019-10-08T10:24:32Z
 aliases = []
 [extra]
 id = 2596
+task = """
+  Write a function that detects a *divide by zero* error without
+  checking whether the denominator is zero.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

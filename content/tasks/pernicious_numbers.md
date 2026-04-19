@@ -5,6 +5,12 @@ date = 2019-09-10T18:35:58Z
 aliases = []
 [extra]
 id = 17363
+task = """
+  A **pernicious number** is a positive integer whose binary
+  population count is prime. Display the first 25 pernicious
+  numbers, and all pernicious numbers between `888,888,877` and
+  `888,888,888` inclusive.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

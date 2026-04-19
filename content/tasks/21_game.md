@@ -5,6 +5,13 @@ date = 2019-08-28T13:56:25Z
 aliases = []
 [extra]
 id = 21960
+task = """
+  Write a program to play the two-player **21** game against
+  the computer. Players alternate adding `1`, `2`, or `3` to
+  a running total that starts at zero; the player whose move
+  brings the total to exactly `21` wins. Handle prompting,
+  input validation, turn taking, win detection, and quitting.
+"""
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []

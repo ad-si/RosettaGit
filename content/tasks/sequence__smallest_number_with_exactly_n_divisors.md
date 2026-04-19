@@ -5,6 +5,10 @@ date = 2019-09-16T09:43:22Z
 aliases = []
 [extra]
 id = 22267
+task = """
+  Compute the sequence where term `a(n)` is the smallest natural number
+  having exactly `n` divisors. Show at least the first 15 terms (OEIS A005179).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

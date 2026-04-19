@@ -5,6 +5,11 @@ date = 2019-08-29T04:13:20Z
 aliases = []
 [extra]
 id = 21272
+task = """
+  Query an online API to look up the device manufacturer for a given
+  **MAC address**. Return `"N/A"` for invalid results and `null` for
+  network or API errors.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

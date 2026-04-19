@@ -5,6 +5,11 @@ date = 2019-10-12T07:51:53Z
 aliases = []
 [extra]
 id = 2188
+task = """
+  Implement a FIFO queue data structure supporting `push` (enqueue),
+  `pop` (dequeue), and `empty` operations. Handle the error case of
+  popping from an empty queue.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

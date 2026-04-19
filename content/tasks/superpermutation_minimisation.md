@@ -5,6 +5,12 @@ date = 2019-07-27T18:57:22Z
 aliases = []
 [extra]
 id = 18234
+task = """
+  A superpermutation of `N` characters is a string containing every
+  permutation of those characters as a substring. Investigate algorithms
+  for generating short superpermutations for `N` from 1 to 7, comparing
+  results against the trivial `N! * N` upper bound.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,14 @@ date = 2019-04-25T14:06:58Z
 aliases = []
 [extra]
 id = 6243
+task = """
+  Generate the **Hailstone (Collatz) sequence**: starting from a
+  positive integer `n`, repeatedly apply `n / 2` if even and
+  `3*n + 1` if odd, ending at `1`. Show that the sequence for `27`
+  has 112 elements starting `27, 82, 41, 124` and ending
+  `8, 4, 2, 1`, and find the number below `100,000` with the
+  longest sequence (report only its length).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-09-30T17:06:31Z
 aliases = []
 [extra]
 id = 10150
+task = """
+  Display a string without a trailing newline, suppressing any
+  newline that the language would normally append automatically.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-14T13:30:22Z
 aliases = []
 [extra]
 id = 9836
+task = """
+  Implement a **Vigenère cipher** for both encryption and decryption.
+  Handle keys and text of unequal length, capitalize everything, and
+  discard non-alphabetic characters.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

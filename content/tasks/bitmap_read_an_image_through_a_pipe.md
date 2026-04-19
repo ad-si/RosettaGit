@@ -5,6 +5,11 @@ date = 2018-12-08T23:10:57Z
 aliases = []
 [extra]
 id = 3246
+task = """
+  Load a foreign image format into the basic bitmap storage type
+  by piping it through an external converter (such as `convert` or
+  a `netpbm` tool) that emits PPM.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

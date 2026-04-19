@@ -5,6 +5,12 @@ date = 2019-07-02T14:56:06Z
 aliases = []
 [extra]
 id = 21083
+task = """
+  Implement the **Sattolo cycle** to randomly shuffle an array such
+  that every element ends up in a new position. For each `i` from
+  `last` down to 1, swap `items[i]` with `items[j]` where `j` is
+  random in `0 ≤ j < i`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

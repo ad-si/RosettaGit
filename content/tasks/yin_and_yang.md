@@ -5,6 +5,11 @@ date = 2019-10-14T01:17:14Z
 aliases = []
 [extra]
 id = 9410
+task = """
+  Write a function that, given a size variable, generates a Yin and yang
+  (Taijitu) symbol scaled to that size. Display the symbol for two
+  different small sizes.
+"""
 [taxonomies]
 categories = ["task", "Graphics"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-18T10:52:46Z
 aliases = []
 [extra]
 id = 2598
+task = """
+  Read from a text stream word-by-word or line-by-line until the stream
+  runs out of data. The amount of data on the stream is unknown.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

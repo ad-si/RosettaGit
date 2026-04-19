@@ -5,6 +5,11 @@ date = 2019-03-27T06:23:01Z
 aliases = []
 [extra]
 id = 4063
+task = """
+  Write two mutually recursive functions implementing the Hofstadter
+  Female and Male sequences: `F(0)=1`, `M(0)=0`,
+  `F(n)=n-M(F(n-1))`, `M(n)=n-F(M(n-1))`.
+"""
 [taxonomies]
 categories = ["task", "recursion"]
 tags = []

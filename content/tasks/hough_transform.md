@@ -5,6 +5,13 @@ date = 2019-09-11T03:05:17Z
 aliases = []
 [extra]
 id = 5346
+task = """
+  Implement the **Hough transform**, a feature-extraction technique
+  for digital images that maps each point in the target image
+  `(ρ, θ)` to the average color of pixels along the corresponding
+  line `x·cos(θ) + y·sin(θ) = ρ` in the source image, making
+  straight lines easy to identify regardless of orientation.
+"""
 [taxonomies]
 categories = ["task", "Image processing"]
 tags = []

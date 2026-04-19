@@ -5,6 +5,10 @@ date = 2019-08-01T05:00:05Z
 aliases = []
 [extra]
 id = 16816
+task = """
+  Read a count `N` from `STDIN`, then read `N` lines containing a pair of
+  space-separated integers, and write each pair's sum to `STDOUT`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

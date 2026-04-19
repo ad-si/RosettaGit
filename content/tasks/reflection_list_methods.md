@@ -5,6 +5,9 @@ date = 2019-03-30T04:52:34Z
 aliases = []
 [extra]
 id = 21022
+task = """
+  Get the methods of an object, as names, values, or both.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

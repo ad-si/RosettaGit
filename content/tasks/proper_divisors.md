@@ -5,6 +5,12 @@ date = 2019-10-11T23:33:51Z
 aliases = []
 [extra]
 id = 18388
+task = """
+  Write a routine that returns all proper divisors of a positive
+  integer `N` (divisors other than `N` itself). Show divisors of
+  `1` to `10`, then find the number in `1..20000` with the most
+  proper divisors and report its count.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

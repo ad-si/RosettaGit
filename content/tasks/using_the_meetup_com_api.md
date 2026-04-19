@@ -5,6 +5,11 @@ date = 2014-12-30T16:29:06Z
 aliases = []
 [extra]
 id = 18440
+task = """
+  Implement `get` and `post` functions for the Meetup.com API,
+  each taking a `details` object and a `url` path. Avoid third-party
+  helper libraries and read the API key from `api_key.txt`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

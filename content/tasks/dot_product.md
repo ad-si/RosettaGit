@@ -5,6 +5,11 @@ date = 2019-10-17T19:26:06Z
 aliases = []
 [extra]
 id = 6115
+task = """
+  Compute the **dot product** (scalar product) of two vectors of
+  arbitrary length. As an example, compute the dot product of
+  `[1, 3, -5]` and `[4, -2, -1]`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-08-22T11:11:50Z
 aliases = []
 [extra]
 id = 22162
+task = """
+  Consolidate a list of numeric ranges `[b0, b1]` by merging any that
+  overlap or touch into single encompassing ranges. Output the result
+  normalised (smaller bound left, ranges sorted by lower bound) for
+  several given inputs.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

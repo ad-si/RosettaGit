@@ -5,6 +5,11 @@ date = 2019-08-06T19:29:31Z
 aliases = []
 [extra]
 id = 21397
+task = """
+  Implement the **Damm** checksum algorithm, which detects all single-
+  digit errors and adjacent transposition errors. Verify the checksum
+  stored as the last digit of an input number.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-01T05:45:26Z
 aliases = []
 [extra]
 id = 3291
+task = """
+  Write a message to the **standard error** stream (rather than
+  standard output), so that it can be redirected separately from
+  ordinary console messages.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-20T17:13:45Z
 aliases = []
 [extra]
 id = 2824
+task = """
+  Start with a value of `0`. Loop while `value mod 6` is non-zero;
+  on each iteration add `1` and print the value. The loop body must
+  execute at least once (a `do`/`while` style loop).
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

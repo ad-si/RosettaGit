@@ -5,6 +5,13 @@ date = 2019-10-17T19:24:59Z
 aliases = []
 [extra]
 id = 12061
+task = """
+  Compute the **digital root** of a number by repeatedly summing its
+  digits until a single digit remains, and report the **additive
+  persistence** (number of summations required). Demonstrate on
+  `627615`, `39390`, `588225`, and `393900588225`. The digital root
+  may be computed in bases other than 10.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

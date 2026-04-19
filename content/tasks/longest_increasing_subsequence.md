@@ -5,6 +5,11 @@ date = 2019-09-03T07:14:52Z
 aliases = []
 [extra]
 id = 15922
+task = """
+  Compute and display a longest increasing subsequence of the lists
+  `{3, 2, 6, 4, 5, 1}` and
+  `{0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15}`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

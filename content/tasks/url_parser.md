@@ -5,6 +5,11 @@ date = 2019-10-20T18:37:01Z
 aliases = []
 [extra]
 id = 19432
+task = """
+  Parse a well-formed URL of the form
+  `scheme://[user:pass@]domain[:port]/path?query#fragment` and extract
+  its components. Extra credit for clear error diagnostics.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

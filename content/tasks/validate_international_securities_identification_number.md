@@ -5,6 +5,12 @@ date = 2019-05-07T00:26:44Z
 aliases = []
 [extra]
 id = 18778
+task = """
+  Write a function that checks whether a string is a valid ISIN.
+  Verify the format (2-letter country code, 9-character security code,
+  1 check digit) and validate the embedded Luhn checksum after
+  converting letters from base 36 to base 10.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

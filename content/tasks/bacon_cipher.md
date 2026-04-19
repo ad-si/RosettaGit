@@ -5,6 +5,13 @@ date = 2019-10-11T01:28:56Z
 aliases = []
 [extra]
 id = 19556
+task = """
+  Implement encryption and decryption with Bacon's cipher,
+  a steganographic method that maps each plaintext letter to a
+  five-symbol code over `{A, B}`.
+  Use a change in letter case (rather than font) of a cover text
+  to convey the hidden message.
+"""
 [taxonomies]
 categories = ["Encryption", "task"]
 tags = []

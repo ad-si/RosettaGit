@@ -5,6 +5,10 @@ date = 2019-10-20T02:52:13Z
 aliases = []
 [extra]
 id = 2850
+task = """
+  Sort a list of numbers with *bogosort*: repeatedly shuffle the
+  collection randomly until it happens to be in sorted order.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

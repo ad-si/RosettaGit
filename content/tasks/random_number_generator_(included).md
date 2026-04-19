@@ -5,6 +5,11 @@ date = 2019-09-01T16:40:34Z
 aliases = []
 [extra]
 id = 5365
+task = """
+  Report the type of pseudo-random number generator algorithm used by
+  the language's built-in RNG (e.g. **LCG**, **Mersenne twister**,
+  cryptographic), and link to a wider explanation if possible.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

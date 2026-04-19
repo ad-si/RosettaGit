@@ -5,6 +5,13 @@ date = 2019-08-20T13:59:44Z
 aliases = []
 [extra]
 id = 6643
+task = """
+  Given a set of directory path strings and a single-character
+  separator, return the longest path prefix that is common to
+  all of them (a valid directory, not just the longest common
+  string). Test with `/` as separator on the three paths
+  `/home/user1/tmp/{coverage/test, covert/operator, coven/members}`.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

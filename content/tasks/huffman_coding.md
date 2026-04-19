@@ -5,6 +5,11 @@ date = 2019-05-16T19:52:41Z
 aliases = []
 [extra]
 id = 4035
+task = """
+  Generate a **Huffman encoding** for each character in the string
+  `this is an example for huffman encoding` and display the
+  resulting code table.
+"""
 [taxonomies]
 categories = ["task", "Compression"]
 tags = []

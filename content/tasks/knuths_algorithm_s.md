@@ -5,6 +5,12 @@ date = 2019-10-18T13:26:02Z
 aliases = []
 [extra]
 id = 10705
+task = """
+  Implement **Knuth's algorithm S** for reservoir-style random sampling
+  of `n` items from an unknown-length stream with equal probability.
+  Provide an `s_of_n_creator(n)` factory; test by sampling 3 of the
+  digits 0-9 across 100,000 runs and reporting frequency counts.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

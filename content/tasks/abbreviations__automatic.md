@@ -5,6 +5,14 @@ date = 2019-10-01T08:29:39Z
 aliases = []
 [extra]
 id = 21597
+task = """
+  Given a list of lines where each line contains the seven
+  day-of-week names for some language, write a function that
+  finds the minimum abbreviation length required to make the
+  words on each line uniquely distinguishable. Return a null
+  string for blank lines and show output for at least the
+  first five lines.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

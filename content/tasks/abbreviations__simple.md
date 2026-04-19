@@ -5,6 +5,13 @@ date = 2019-10-20T07:16:58Z
 aliases = []
 [extra]
 id = 21595
+task = """
+  Given a command table where each command is followed by a number
+  giving its minimum abbreviation length (e.g. `add 1  alter 3`),
+  write a function that validates a user word against the table.
+  Return the full uppercase command when valid, `*error*` when not,
+  and an empty string for blank input.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

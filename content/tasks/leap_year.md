@@ -5,6 +5,10 @@ date = 2019-10-13T18:22:25Z
 aliases = []
 [extra]
 id = 7782
+task = """
+  Determine whether a given year is a leap year in the Gregorian
+  calendar.
+"""
 [taxonomies]
 categories = ["task", "Date and time"]
 tags = []

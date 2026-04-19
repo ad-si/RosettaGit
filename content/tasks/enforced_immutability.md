@@ -5,6 +5,11 @@ date = 2019-10-17T14:55:25Z
 aliases = []
 [extra]
 id = 9077
+task = """
+  Demonstrate any means the language has to prevent modification of
+  values, or to create objects that cannot be modified after they
+  have been created.
+"""
 [taxonomies]
 categories = ["task", "Initialization"]
 tags = []

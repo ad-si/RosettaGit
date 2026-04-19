@@ -5,6 +5,10 @@ date = 2019-10-10T14:07:00Z
 aliases = []
 [extra]
 id = 21825
+task = """
+  Create a `320 x 240` window and draw a single red pixel
+  (RGB `255, 0, 0`) at position `x = 100`, `y = 100`.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

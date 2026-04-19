@@ -5,6 +5,13 @@ date = 2019-08-26T20:16:32Z
 aliases = []
 [extra]
 id = 10467
+task = """
+  Implement reservoir sampling for a single line: write `one_of_n(n)`
+  that picks a uniformly random line number from `1..n` by replacing
+  the current choice with line `i` with probability `1/i`. Run a
+  1,000,000-trial simulation on a 10-line file and report how often
+  each line was selected.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

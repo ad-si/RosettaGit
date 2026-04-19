@@ -5,6 +5,12 @@ date = 2019-03-09T20:11:42Z
 aliases = []
 [extra]
 id = 7508
+task = """
+  Write a *player* (not a scorer) for *Bulls and Cows*. After
+  each guess, prune the set of possible answers to those
+  consistent with prior bull/cow scores, and pick the next guess
+  from the remaining candidates.
+"""
 [taxonomies]
 categories = ["Games", "task"]
 tags = []

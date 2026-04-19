@@ -5,6 +5,11 @@ date = 2019-07-10T08:52:52Z
 aliases = []
 [extra]
 id = 22235
+task = """
+  Compute the resistance between two nodes of an arbitrary resistor
+  network specified as a string of `start end resistance` triples
+  separated by `|`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

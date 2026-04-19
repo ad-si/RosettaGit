@@ -5,6 +5,12 @@ date = 2019-05-20T13:45:36Z
 aliases = []
 [extra]
 id = 17373
+task = """
+  Compute and display the lowest 25 taxicab numbers (positive integers
+  expressible as a sum of two positive cubes in more than one way) in
+  numeric order, showing each number along with its constituent cubes.
+  Extra credit: show the 2000th taxicab number and a half dozen more.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

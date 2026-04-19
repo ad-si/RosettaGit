@@ -5,6 +5,11 @@ date = 2018-09-23T18:54:13Z
 aliases = []
 [extra]
 id = 19542
+task = """
+  Repeatedly add a number to its digit-reversal until a palindrome forms.
+  Numbers that fail to produce a palindrome within 500 iterations are
+  **Lychrel numbers**. Identify Lychrel seeds and related numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-21T20:33:24Z
 aliases = []
 [extra]
 id = 8634
+task = """
+  Write a number-guessing game where the computer chooses a target
+  within given limits and the player makes repeated guesses. After
+  each guess, respond whether it was higher than, lower than, equal
+  to the target, or invalid input.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

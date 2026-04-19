@@ -5,6 +5,11 @@ date = 2019-10-16T04:17:34Z
 aliases = []
 [extra]
 id = 19734
+task = """
+  Create a playable Tetris game. Requirements: left/right keys, a
+  hard-drop key, a rotation key, a preview piece, and the full set of
+  7 tetromino shapes (`I`, `T`, `O`, `S`, `Z`, `J`, `L`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

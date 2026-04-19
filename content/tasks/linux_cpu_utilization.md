@@ -5,6 +5,12 @@ date = 2019-07-05T13:28:19Z
 aliases = []
 [extra]
 id = 19186
+task = """
+  Display the current CPU utilization as a percentage by reading the
+  first line of `/proc/stat`, summing the time fields, and computing
+  `1 - idle/total`. Sampling across an interval gives a real-time
+  reading rather than the since-boot average.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

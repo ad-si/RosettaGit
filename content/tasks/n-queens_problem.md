@@ -5,6 +5,10 @@ date = 2019-10-21T23:51:15Z
 aliases = []
 [extra]
 id = 4838
+task = """
+  Solve the eight queens puzzle, optionally generalized to an `N` by `N`
+  board.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

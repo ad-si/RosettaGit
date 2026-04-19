@@ -5,6 +5,11 @@ date = 2019-01-17T17:12:42Z
 aliases = []
 [extra]
 id = 8426
+task = """
+  From a file-dependency graph, identify the top-level files (those with
+  dependents but no dependents themselves), and produce a compile order
+  for any given top-level file using only the files it depends on.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2015-05-18T18:57:42Z
 aliases = []
 [extra]
 id = 19142
+task = """
+  Create a component that searches the tree of moves from a given
+  chess position to a maximum depth and chooses the best move. A
+  basic version uses min-max with material-based static evaluation;
+  advanced versions add alpha-beta, iterative deepening, quiescence,
+  and other refinements.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

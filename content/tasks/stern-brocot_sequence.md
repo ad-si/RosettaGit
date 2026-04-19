@@ -5,6 +5,12 @@ date = 2019-04-01T19:29:47Z
 aliases = []
 [extra]
 id = 18358
+task = """
+  Generate the **Stern-Brocot sequence** starting `1, 1`, repeatedly appending
+  the sum of the considered term and its predecessor, then the considered term itself.
+  Show selected members and verify properties like first occurrences and `gcd` of
+  consecutive members being 1.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

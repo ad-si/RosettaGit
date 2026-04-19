@@ -5,6 +5,13 @@ date = 2019-05-04T03:36:55Z
 aliases = []
 [extra]
 id = 9200
+task = """
+  Perform a **permutation test** on a given table of treatment
+  vs. control measurements: enumerate all `C(n+m, n)` reassignments
+  of subjects between groups, compute the difference in group
+  means for each, and report the percentage of alternatives whose
+  difference is `<=` and `>` the observed difference.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

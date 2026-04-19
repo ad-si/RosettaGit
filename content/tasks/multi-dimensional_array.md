@@ -5,6 +5,12 @@ date = 2019-03-25T23:37:34Z
 aliases = []
 [extra]
 id = 18481
+task = """
+  Show how the language supports multi-dimensional arrays: create a
+  four-dimensional array with index ranges 5, 4, 3, 2, set and access an
+  integer-indexed item, then update it and read again. Note row- vs
+  column-major order, memory layout, and any special array features.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

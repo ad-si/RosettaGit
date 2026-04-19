@@ -5,6 +5,11 @@ date = 2019-10-17T04:17:11Z
 aliases = []
 [extra]
 id = 1965
+task = """
+  Show how to copy a string. Where relevant, distinguish between copying
+  the string contents and creating an additional reference to the same
+  string.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

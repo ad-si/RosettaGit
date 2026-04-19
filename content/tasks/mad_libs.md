@@ -5,6 +5,11 @@ date = 2019-10-05T20:28:44Z
 aliases = []
 [extra]
 id = 10812
+task = """
+  Read a multiline story template containing `<placeholder>` markers,
+  prompt the user for a word for each unique placeholder, substitute
+  them throughout, and print the completed **Mad Libs** story.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

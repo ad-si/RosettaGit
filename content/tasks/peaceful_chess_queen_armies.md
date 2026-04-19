@@ -5,6 +5,11 @@ date = 2019-08-28T00:06:00Z
 aliases = []
 [extra]
 id = 22237
+task = """
+  Place `m` black queens and `m` white queens on an `n`-by-`n` board so
+  that no queen attacks one of the other colour. Provide a representation
+  routine and a placement routine, and display a solution for `m=4, n=5`.
+"""
 [taxonomies]
 categories = ["Chess", "Games", "Puzzles", "task"]
 tags = []

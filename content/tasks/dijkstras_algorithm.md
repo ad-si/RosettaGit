@@ -5,6 +5,12 @@ date = 2019-10-05T18:02:25Z
 aliases = []
 [extra]
 id = 11025
+task = """
+  Implement Dijkstra's single-source shortest-path algorithm on a
+  directed, non-negatively weighted graph. Given a start vertex,
+  return the set of edges forming the shortest path to every other
+  vertex.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems"]
 tags = []

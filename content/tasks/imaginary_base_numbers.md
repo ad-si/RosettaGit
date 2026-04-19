@@ -5,6 +5,12 @@ date = 2019-10-12T00:51:38Z
 aliases = []
 [extra]
 id = 21308
+task = """
+  Write procedures to convert numbers between base 10 and an
+  imaginary base. At minimum support quater-imaginary (base `2i`).
+  Optionally support bases `2i` through `6i` and conversion of
+  non-integer / complex numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

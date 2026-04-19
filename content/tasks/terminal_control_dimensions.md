@@ -5,6 +5,10 @@ date = 2019-02-24T14:42:55Z
 aliases = []
 [extra]
 id = 8423
+task = """
+  Determine the height and width of the terminal and store them in
+  variables for subsequent use.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-03-29T21:31:54Z
 aliases = []
 [extra]
 id = 8714
+task = """
+  Name and briefly demonstrate the language's support for
+  metaprogramming — any built-in or conventional means of
+  effectively modifying its syntax (e.g. macros, preprocessors,
+  user-defined operators).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-15T08:58:27Z
 aliases = []
 [extra]
 id = 9338
+task = """
+  Create an HTML table with at least three rows of three columns
+  labelled `X`, `Y`, and `Z`, plus an extra unlabelled column on one
+  side filled with sequential row numbers. Fill the `X`/`Y`/`Z` columns
+  with random or sequential 4-digit integers, aligned consistently.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

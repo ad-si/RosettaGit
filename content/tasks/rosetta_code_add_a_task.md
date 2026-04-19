@@ -5,6 +5,11 @@ date = 2015-03-04T09:46:45Z
 aliases = []
 [extra]
 id = 8337
+task = """
+  A meta-page describing how to author and submit a new task
+  to Rosetta Code, covering page creation, draft vs. non-draft
+  status, task focus, and structural conventions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2018-07-29T15:52:18Z
 aliases = []
 [extra]
 id = 12099
+task = """
+  Generate all permutations of `n` items (e.g. via the
+  Steinhaus-Johnson-Trotter algorithm) such that successive
+  permutations differ by swapping two items. Also emit each
+  permutation's sign (`+1` for an even number of swaps from the
+  initial state, `-1` for odd). Demonstrate for `n = 3`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

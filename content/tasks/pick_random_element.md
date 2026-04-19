@@ -5,6 +5,9 @@ date = 2019-10-18T11:50:10Z
 aliases = []
 [extra]
 id = 10267
+task = """
+  Demonstrate how to pick a random element from a list.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

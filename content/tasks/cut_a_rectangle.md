@@ -5,6 +5,12 @@ date = 2018-11-11T04:28:21Z
 aliases = []
 [extra]
 id = 10636
+task = """
+  Given an `m`x`n` rectangle of unit squares (with `m` and `n` not both
+  odd), count the distinct paths along square edges that split it into
+  two connected pieces of identical shape (one rotated 180 degrees).
+  Optionally show each cut.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-09-04T15:51:28Z
 aliases = []
 [extra]
 id = 22469
+task = """
+  Write a routine to find Zumkeller numbers (integers whose divisors can
+  be partitioned into two disjoint sets with equal sums). Use it to
+  display the first **220** Zumkeller numbers and the first **40** odd
+  Zumkeller numbers. Optionally, show the first 40 odd Zumkeller numbers
+  that don't end with `5`.
+"""
 [taxonomies]
 categories = ["Mathematics", "Number theory", "Divisors", "task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-05-20T23:26:52Z
 aliases = []
 [extra]
 id = 5222
+task = """
+  Create an interpreter for a **Markov algorithm**: read a ruleset
+  of `pattern -> replacement` rules (with optional comments and
+  terminating `.` rules) and apply them repeatedly to an input
+  string until no rule matches or a terminating rule fires.
+"""
 [taxonomies]
 categories = ["task", "Compilers and Interpreters"]
 tags = []

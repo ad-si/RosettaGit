@@ -5,6 +5,11 @@ date = 2019-09-12T19:34:07Z
 aliases = []
 [extra]
 id = 2227
+task = """
+  List the language's special characters (symbols with built-in meaning that
+  cannot appear in identifiers) and show the escape sequences used to treat
+  them as ordinary characters.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

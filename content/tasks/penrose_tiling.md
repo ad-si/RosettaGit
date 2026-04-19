@@ -5,6 +5,11 @@ date = 2019-09-05T10:22:18Z
 aliases = []
 [extra]
 id = 20837
+task = """
+  Fill a rectangular area with a non-periodic **Penrose tiling**,
+  typically using prototiles such as `Kite and Dart (P2)` or
+  `Thin/Fat Rhombus (P3)` and the *deflation* (subdivision) method.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

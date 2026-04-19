@@ -5,6 +5,10 @@ date = 2019-08-29T18:46:56Z
 aliases = []
 [extra]
 id = 8507
+task = """
+  Make the terminal running the program ring its bell, typically by
+  outputting the ASCII bell character (code `7`, `\\a`).
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

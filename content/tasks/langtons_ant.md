@@ -5,6 +5,12 @@ date = 2019-08-17T15:35:48Z
 aliases = []
 [extra]
 id = 10740
+task = """
+  Simulate Langton's ant cellular automaton on a 100x100 field.
+  At each step the ant flips its current cell's color, turns left on
+  black or right on white, then moves forward.
+  Run until the ant exits the region and display the final cell colors.
+"""
 [taxonomies]
 categories = ["task", "Cellular automata"]
 tags = []

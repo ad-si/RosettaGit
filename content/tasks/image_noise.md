@@ -5,6 +5,10 @@ date = 2019-08-25T21:15:24Z
 aliases = []
 [extra]
 id = 8370
+task = """
+  Continuously generate and display a random black-and-white
+  `320x240` image, showing FPS (frames per second).
+"""
 [taxonomies]
 categories = ["task", "Graphics"]
 tags = []

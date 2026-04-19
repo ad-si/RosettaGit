@@ -5,6 +5,11 @@ date = 2019-05-08T23:47:53Z
 aliases = []
 [extra]
 id = 13459
+task = """
+  Build and display the suffix tree of the string `"banana$"`. The terminal
+  `$` character ensures the tree exists. Edge labels are non-empty substrings
+  of the input. An `O(n^2)` algorithm is acceptable; `O(n)` is harder.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

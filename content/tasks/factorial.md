@@ -5,6 +5,12 @@ date = 2019-10-20T04:00:30Z
 aliases = []
 [extra]
 id = 2989
+task = """
+  Write a function to return the factorial of a non-negative integer
+  `n`, defined as the product `n * (n-1) * (n-2) * ... * 1`.
+  Solutions may be iterative or recursive; handling of negative `n`
+  is optional.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

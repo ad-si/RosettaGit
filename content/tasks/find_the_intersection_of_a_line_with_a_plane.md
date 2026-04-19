@@ -5,6 +5,12 @@ date = 2019-05-12T14:52:56Z
 aliases = []
 [extra]
 id = 21225
+task = """
+  Find the point of intersection of an infinite ray with an
+  infinite plane in 3D. Use the ray with direction `(0,-1,-1)`
+  through `(0, 0, 10)` and the plane with normal `(0, 0, 1)`
+  passing through `(0, 0, 5)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

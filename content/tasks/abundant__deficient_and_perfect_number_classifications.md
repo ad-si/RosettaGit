@@ -5,6 +5,12 @@ date = 2019-10-14T12:59:19Z
 aliases = []
 [extra]
 id = 18392
+task = """
+  For each integer from `1` to `20000`, classify it as **deficient**,
+  **perfect**, or **abundant** based on whether the sum of its proper
+  divisors is less than, equal to, or greater than the number itself.
+  Report the count in each class.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-17T04:53:48Z
 aliases = []
 [extra]
 id = 4913
+task = """
+  Take a string and repeat it a given number of times, e.g. `"ha" * 5`
+  yielding `"hahahahaha"`.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

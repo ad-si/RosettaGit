@@ -5,6 +5,12 @@ date = 2019-06-11T23:51:23Z
 aliases = []
 [extra]
 id = 4940
+task = """
+  Write a program that takes four digits (from user input or
+  randomly generated) and computes arithmetic expressions that
+  evaluate to `24` following the rules of the 24 game.
+  Show examples of the solutions generated.
+"""
 [taxonomies]
 categories = ["Puzzles", "task"]
 tags = []

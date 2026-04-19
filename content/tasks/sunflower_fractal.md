@@ -5,6 +5,9 @@ date = 2019-09-01T06:47:16Z
 aliases = []
 [extra]
 id = 21914
+task = """
+  Draw a *Sunflower fractal*.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

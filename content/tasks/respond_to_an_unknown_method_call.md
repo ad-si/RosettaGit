@@ -5,6 +5,10 @@ date = 2019-03-30T04:49:03Z
 aliases = []
 [extra]
 id = 4317
+task = """
+  Demonstrate how an object can respond sensibly to invocation of a
+  method that is not defined in its class.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

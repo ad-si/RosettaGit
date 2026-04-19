@@ -5,6 +5,10 @@ date = 2018-08-26T09:31:44Z
 aliases = []
 [extra]
 id = 10782
+task = """
+  Write a program that, given a year, prints the date of the last
+  Friday of every month of that year.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

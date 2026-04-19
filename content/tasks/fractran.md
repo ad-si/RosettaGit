@@ -5,6 +5,14 @@ date = 2019-09-17T16:04:14Z
 aliases = []
 [extra]
 id = 17107
+task = """
+  Implement the **FRACTRAN** esoteric language: parse a list
+  of positive fractions and an initial integer `n`, then
+  repeatedly replace `n` with `n * f` for the first fraction
+  `f` that makes the product an integer, halting when none
+  does. Print each step, bound the number of steps, and
+  optionally use Conway's prime-generating program.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

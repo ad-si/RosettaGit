@@ -5,6 +5,10 @@ date = 2019-08-24T20:20:39Z
 aliases = []
 [extra]
 id = 13378
+task = """
+  Print the first 15 Catalan numbers by extracting them from
+  Pascal's triangle.
+"""
 [taxonomies]
 categories = ["Mathematics", "Number theory", "task"]
 tags = []

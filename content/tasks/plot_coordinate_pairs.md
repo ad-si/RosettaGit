@@ -5,6 +5,10 @@ date = 2019-10-04T19:01:05Z
 aliases = []
 [extra]
 id = 2435
+task = """
+  Plot a function given as numerical `x` and `y` arrays, and post the
+  resulting image for a sample input.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

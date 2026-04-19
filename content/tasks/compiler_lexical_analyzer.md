@@ -5,6 +5,11 @@ date = 2019-09-05T09:38:34Z
 aliases = []
 [extra]
 id = 21046
+task = """
+  Implement a lexical analyzer (lexer/tokenizer) for a small C-like
+  programming language that converts a source file into a stream of
+  tokens, reading from a file or stdin and writing to a file or stdout.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

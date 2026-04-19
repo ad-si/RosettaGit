@@ -5,6 +5,11 @@ date = 2019-10-18T20:12:40Z
 aliases = []
 [extra]
 id = 2219
+task = """
+  Implement *insertion sort*, an `O(n^2)` algorithm that builds the
+  sorted output one element at a time by inserting each new value
+  into its correct position within the already-sorted prefix.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

@@ -5,6 +5,14 @@ date = 2019-02-27T01:04:29Z
 aliases = []
 [extra]
 id = 20673
+task = """
+  Build a 10-by-10 word search puzzle filled with at least 25 words
+  (length > 2, alphabetic only) from `unixdict`, placed horizontally,
+  vertically, or diagonally, forwards or backwards, possibly
+  overlapping. Cells not used by hidden words should spell out
+  *Rosetta Code* in uppercase, evenly distributed. Print the grid and
+  the solutions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

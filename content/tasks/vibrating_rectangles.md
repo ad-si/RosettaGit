@@ -5,6 +5,11 @@ date = 2019-08-31T13:38:27Z
 aliases = []
 [extra]
 id = 21906
+task = """
+  Draw at least 20 non-overlapping rectangles sharing a common centre,
+  then animate their colours by fading from the outermost to the
+  innermost rectangle, looping for a fixed count or forever.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

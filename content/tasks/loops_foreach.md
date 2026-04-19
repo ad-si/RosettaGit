@@ -5,6 +5,10 @@ date = 2019-10-18T11:09:28Z
 aliases = []
 [extra]
 id = 2822
+task = """
+  Loop through and print each element of a collection in order, using
+  the language's `for each` construct if available.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-19T22:35:19Z
 aliases = []
 [extra]
 id = 22268
+task = """
+  Compute the sequence whose `n`th term is the `n`th natural number
+  having exactly `n` divisors. Show at least the first 15 terms.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

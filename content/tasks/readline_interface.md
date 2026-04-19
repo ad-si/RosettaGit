@@ -5,6 +5,11 @@ date = 2019-04-10T16:52:22Z
 aliases = []
 [extra]
 id = 10767
+task = """
+  Build a small application that uses a readline-style line-editing
+  interface, supporting recall of previous commands, command-line
+  editing, and at least two application-specific commands.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

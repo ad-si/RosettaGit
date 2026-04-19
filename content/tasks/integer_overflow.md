@@ -5,6 +5,12 @@ date = 2019-06-05T20:55:07Z
 aliases = []
 [extra]
 id = 17806
+task = """
+  For each fixed-size integer type the language supports, perform
+  arithmetic that overflows and demonstrate the behavior: the resulting
+  value, any exception caught, or whether overflow goes undetected.
+  Cover signed and unsigned 32- and 64-bit integers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

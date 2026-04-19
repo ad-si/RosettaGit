@@ -5,6 +5,11 @@ date = 2019-06-04T20:56:42Z
 aliases = []
 [extra]
 id = 9896
+task = """
+  Implement basic element-wise matrix-matrix and scalar-matrix
+  operations: addition, subtraction, multiplication, division,
+  and exponentiation.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-09-11T18:55:46Z
 aliases = []
 [extra]
 id = 12940
+task = """
+  Explain or demonstrate the levels of visibility (scope) of
+  function names and labels in the language.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-03T18:19:12Z
 aliases = []
 [extra]
 id = 13385
+task = """
+  Display the first 25 rows of the integer-partition triangle,
+  where row `n` column `C` counts the partitions of `n` whose
+  largest part is `C`. Define `G(n)` as the sum of row `n`
+  (equivalent to the partition function `P(n)`) and show
+  `G(23)`, `G(123)`, `G(1234)`, and `G(12345)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

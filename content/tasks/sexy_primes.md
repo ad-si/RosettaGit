@@ -5,6 +5,12 @@ date = 2019-07-14T10:40:38Z
 aliases = []
 [extra]
 id = 22013
+task = """
+  **Sexy primes** differ by `6`. For pairs, triplets, quadruplets, and
+  quintuplets below `1,000,035`, count each group type and display the
+  last `5`. Also count and display the last `10` unsexy primes below
+  the same limit.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

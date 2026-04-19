@@ -5,6 +5,11 @@ date = 2019-09-15T16:04:38Z
 aliases = []
 [extra]
 id = 3275
+task = """
+  Given an XML fragment containing `<Student>` elements with `Name`
+  attributes, extract and print the list of student names by any
+  suitable means.
+"""
 [taxonomies]
 categories = ["task", "XML"]
 tags = []

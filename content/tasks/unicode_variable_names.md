@@ -5,6 +5,11 @@ date = 2019-09-09T19:11:23Z
 aliases = []
 [extra]
 id = 10008
+task = """
+  Describe the language's support for non-ASCII characters in variable
+  names, then set a variable named with `Δ` to `1`, increment it, and
+  print its value.
+"""
 [taxonomies]
 categories = ["task", "Unicode"]
 languages = [

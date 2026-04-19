@@ -5,6 +5,12 @@ date = 2019-10-20T19:25:05Z
 aliases = []
 [extra]
 id = 21893
+task = """
+  Write a function that tests whether a positive integer is *square-free*
+  (divisible by no perfect square other than `1`). List the square-free
+  numbers in `1..145` and `10^12..10^12+145`, and count them up to `100`,
+  `1_000`, `10_000`, `100_000`, and `1_000_000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-20T16:40:07Z
 aliases = []
 [extra]
 id = 20623
+task = """
+  For the first one million primes, count transitions `i -> j` where
+  `i` and `j` are the last decimal digits of consecutive primes.
+  Print the counts and relative frequencies, sorted by `i`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

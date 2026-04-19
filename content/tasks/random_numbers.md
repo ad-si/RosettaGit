@@ -5,6 +5,10 @@ date = 2019-10-18T11:54:16Z
 aliases = []
 [extra]
 id = 2024
+task = """
+  Generate a collection of `1000` normally distributed random numbers
+  with a mean of `1.0` and a standard deviation of `0.5`.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

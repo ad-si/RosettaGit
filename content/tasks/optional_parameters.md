@@ -5,6 +5,12 @@ date = 2019-09-15T10:23:59Z
 aliases = []
 [extra]
 id = 4236
+task = """
+  Define a function that sorts a table (sequence of rows of string
+  cells) by one column, with optional parameters for the `ordering`
+  function (lexicographic by default), the `column` to sort on, and
+  `reverse` order.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

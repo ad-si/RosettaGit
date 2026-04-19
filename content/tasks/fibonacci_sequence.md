@@ -5,6 +5,12 @@ date = 2019-10-18T10:04:11Z
 aliases = []
 [extra]
 id = 2667
+task = """
+  Write a function to generate the `n`-th **Fibonacci** number,
+  defined by `F_0 = 0`, `F_1 = 1`, and `F_n = F_{n-1} + F_{n-2}` for
+  `n > 1`. Solutions may be iterative or recursive; support for
+  negative `n` (via `F_n = F_{n+2} - F_{n+1}`) is optional.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

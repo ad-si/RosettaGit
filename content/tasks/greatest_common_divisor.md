@@ -5,7 +5,9 @@ date = 2019-10-21T17:09:00Z
 aliases = []
 [extra]
 id = 2422
-task = "Find the greatest common divisor of two integers."
+task = """
+  Find the greatest common divisor of two integers.
+"""
 [taxonomies]
 categories = []
 tags = ["math", "recursion"]

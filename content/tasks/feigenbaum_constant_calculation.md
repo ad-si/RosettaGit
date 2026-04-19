@@ -5,6 +5,11 @@ date = 2019-09-15T17:22:03Z
 aliases = []
 [extra]
 id = 21786
+task = """
+  Calculate the **Feigenbaum constant**, the limiting ratio of
+  successive bifurcation intervals of a one-parameter map (such as
+  the logistic map) as the system enters chaos.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

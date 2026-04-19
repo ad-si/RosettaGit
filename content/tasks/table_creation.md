@@ -5,6 +5,10 @@ date = 2019-01-22T15:28:47Z
 aliases = []
 [extra]
 id = 1553
+task = """
+  Create a database table that exemplifies most commonly used data types
+  and options.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

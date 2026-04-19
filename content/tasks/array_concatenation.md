@@ -5,6 +5,9 @@ date = 2019-10-17T04:14:17Z
 aliases = []
 [extra]
 id = 4833
+task = """
+  Show how to concatenate two arrays in the language.
+"""
 [taxonomies]
 categories = ["Data Structures", "Simple", "task"]
 tags = []

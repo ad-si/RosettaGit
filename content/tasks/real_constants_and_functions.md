@@ -5,6 +5,11 @@ date = 2019-04-04T13:26:38Z
 aliases = []
 [extra]
 id = 2849
+task = """
+  Show how to use the math constants `e` and pi and the functions
+  `sqrt`, `log`, `exp`, `abs`, `floor`, `ceiling`, and `power` (`x^y`)
+  in the language; note any that are unavailable.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

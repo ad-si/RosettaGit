@@ -5,6 +5,13 @@ date = 2019-10-05T17:30:35Z
 aliases = []
 [extra]
 id = 19663
+task = """
+  Implement a **geometric (Clifford) algebra** over a Euclidean vector
+  space of dimension at least five. Provide a function `e(n)` yielding
+  orthonormal basis vectors, plus random-vector and random-multivector
+  generators, and verify the algebra's axioms (associativity,
+  distributivity, and `x^2` real) for sample elements.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

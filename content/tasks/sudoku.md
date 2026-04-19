@@ -5,6 +5,10 @@ date = 2019-09-04T18:45:41Z
 aliases = []
 [extra]
 id = 4567
+task = """
+  Solve a partially filled-in normal 9x9 *Sudoku* grid and display the
+  result in a human-readable format.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-24T20:10:52Z
 aliases = []
 [extra]
 id = 11690
+task = """
+  Implement **set consolidation**: given `N` sets, repeatedly merge
+  any pair sharing a common element until no further merges are
+  possible, then return the resulting collection of disjoint sets.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

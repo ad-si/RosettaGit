@@ -5,6 +5,12 @@ date = 2018-04-30T16:31:51Z
 aliases = []
 [extra]
 id = 10410
+task = """
+  Find pairs of U.S. state names whose combined letters can be rearranged
+  into two *different* state names (all four distinct). Solve for both the
+  real list of states and a fictitious extended list, ignoring case,
+  spacing, and duplicates.
+"""
 [taxonomies]
 categories = ["task", "Puzzles"]
 tags = []

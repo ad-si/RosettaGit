@@ -5,6 +5,12 @@ date = 2019-08-11T17:34:18Z
 aliases = []
 [extra]
 id = 10491
+task = """
+  Crop a given audio waveform file by removing leading and trailing
+  silence, leaving just the audible sound. Use a configurable squelch
+  level threshold so background hiss or hum can be trimmed. The output
+  file format must match the input format.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

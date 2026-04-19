@@ -5,6 +5,10 @@ date = 2018-04-01T21:23:07Z
 aliases = []
 [extra]
 id = 3218
+task = """
+  Implement the midpoint (Bresenham) circle-drawing algorithm
+  using the basic bitmap storage type.
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

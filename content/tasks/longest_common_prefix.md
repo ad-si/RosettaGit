@@ -5,6 +5,11 @@ date = 2019-10-12T09:45:59Z
 aliases = []
 [extra]
 id = 18892
+task = """
+  Write a function `lcp` that returns the longest common prefix of a
+  list of strings: the longest initial substring shared by every input.
+  Return the empty string when no prefix is common or the list is empty.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

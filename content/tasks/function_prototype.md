@@ -5,6 +5,12 @@ date = 2019-07-29T14:52:59Z
 aliases = []
 [extra]
 id = 10110
+task = """
+  Demonstrate the language's methods for declaring function
+  prototypes, including placement rules and prototypes for
+  functions with no arguments, two arguments, varargs,
+  optional arguments, named parameters, and subroutines.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

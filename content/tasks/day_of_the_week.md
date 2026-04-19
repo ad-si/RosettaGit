@@ -5,6 +5,11 @@ date = 2019-10-18T19:43:06Z
 aliases = []
 [extra]
 id = 3249
+task = """
+  Find which years between 2008 and 2121 have December 25 falling on
+  a Sunday, using the language's standard date-handling library, and
+  compare results across languages to spot date-handling anomalies.
+"""
 [taxonomies]
 categories = ["task", "Date and time"]
 tags = []

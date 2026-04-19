@@ -5,6 +5,11 @@ date = 2019-10-03T13:38:57Z
 aliases = []
 [extra]
 id = 6812
+task = """
+  Read two integers `A` and `B` (with `-1000 <= A, B <= 1000`)
+  separated by whitespace from the input stream and print
+  their sum.
+"""
 [taxonomies]
 categories = ["Simple", "task"]
 tags = []

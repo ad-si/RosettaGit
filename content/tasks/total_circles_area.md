@@ -5,6 +5,11 @@ date = 2019-05-17T03:47:14Z
 aliases = []
 [extra]
 id = 12310
+task = """
+  Given a set of partially overlapping circles defined by center and
+  radius, compute the total area covered by their union (counting
+  overlaps once) to several decimal digits of precision.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

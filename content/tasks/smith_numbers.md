@@ -5,6 +5,11 @@ date = 2019-09-13T15:31:18Z
 aliases = []
 [extra]
 id = 20737
+task = """
+  Find all **Smith numbers** below `10000`. A Smith number is a
+  composite whose decimal digit sum equals the digit sum of its prime
+  factors (excluding 1). Primes are excluded by definition.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

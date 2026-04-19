@@ -5,6 +5,11 @@ date = 2019-09-30T18:03:22Z
 aliases = []
 [extra]
 id = 4711
+task = """
+  Show how to call a foreign-language function from the language.
+  As an example, pass a `"Hello World!"` string to C's `strdup`,
+  print the returned copy, and free the heap-allocated result.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

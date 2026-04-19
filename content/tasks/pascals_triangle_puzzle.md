@@ -5,6 +5,11 @@ date = 2018-09-25T14:10:03Z
 aliases = []
 [extra]
 id = 2770
+task = """
+  Solve a Pascal-triangle pyramid puzzle in which each brick equals the
+  sum of the two below it. Given partial values (top `151`, row entries
+  `40`, `11`, `4`, and `Y = X + Z`), find `X`, `Y`, and `Z`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

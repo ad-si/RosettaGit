@@ -5,6 +5,11 @@ date = 2019-10-18T19:35:34Z
 aliases = []
 [extra]
 id = 2322
+task = """
+  Open a socket to `localhost` on port `256`, send the message
+  `hello socket world`, then close the socket. Error handling is not
+  required.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

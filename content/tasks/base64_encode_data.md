@@ -5,6 +5,11 @@ date = 2019-08-26T20:28:51Z
 aliases = []
 [extra]
 id = 16043
+task = """
+  Convert an array of bytes (or a binary string) to its
+  Base64 encoding and output the result.
+  Use the Rosetta Code favicon as the input data.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

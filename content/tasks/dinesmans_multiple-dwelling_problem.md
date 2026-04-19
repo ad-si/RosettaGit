@@ -5,6 +5,13 @@ date = 2019-08-13T17:24:47Z
 aliases = []
 [extra]
 id = 9965
+task = """
+  Solve Dinesman's multiple-dwelling problem: assign Baker, Cooper,
+  Fletcher, Miller, and Smith to the five floors of an apartment
+  house subject to the stated constraints. Express the problem in a
+  way that closely mirrors the natural-language statement and remains
+  easy to modify.
+"""
 [taxonomies]
 categories = ["task", "Dinesman's multiple-dwelling problem"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-08T13:14:13Z
 aliases = []
 [extra]
 id = 3837
+task = """
+  Show how to start the language's interactive mode (REPL or shell), and
+  use it to define a function of two strings and a separator that returns
+  the strings joined by two concatenated copies of the separator.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

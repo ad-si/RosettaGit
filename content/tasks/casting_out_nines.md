@@ -5,6 +5,12 @@ date = 2019-06-02T12:39:12Z
 aliases = []
 [extra]
 id = 11905
+task = """
+  Implement a *casting out nines* checksum `co9(x)` and use it to
+  filter a range of numbers where `co9(k) = co9(k^2)`, showing
+  this subset is small and contains all Kaprekar numbers in the
+  range. Then generalize the algorithm to bases other than 9.
+"""
 [taxonomies]
 categories = ["Checksums", "task"]
 tags = []

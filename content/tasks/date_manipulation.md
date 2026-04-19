@@ -5,6 +5,11 @@ date = 2019-10-08T09:08:02Z
 aliases = []
 [extra]
 id = 4157
+task = """
+  Given the date string `March 7 2009 7:30pm EST`, output the time
+  12 hours later in any human-readable format. As extra credit,
+  display the resulting time in a different time zone.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

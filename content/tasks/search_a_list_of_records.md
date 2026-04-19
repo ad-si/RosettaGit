@@ -5,6 +5,12 @@ date = 2019-10-18T19:18:34Z
 aliases = []
 [extra]
 id = 19635
+task = """
+  Write a generic function that returns the first element of a list
+  of records (compound objects) matching a given condition.
+  Demonstrate it on the supplied dataset of African metropolitan
+  area names and populations.
+"""
 [taxonomies]
 categories = ["task", "List processing"]
 tags = []

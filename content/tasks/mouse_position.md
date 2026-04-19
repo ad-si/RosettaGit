@@ -5,6 +5,10 @@ date = 2019-07-07T04:34:02Z
 aliases = []
 [extra]
 id = 4261
+task = """
+  Get the current location of the mouse cursor relative to the active
+  window. Specify whether the window may be externally created.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

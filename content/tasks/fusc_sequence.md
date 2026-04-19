@@ -5,6 +5,13 @@ date = 2019-09-20T00:03:05Z
 aliases = []
 [extra]
 id = 22192
+task = """
+  Compute the **fusc** (Stern's diatomic) sequence defined by
+  `fusc(0) = 0`, `fusc(1) = 1`, `fusc(2n) = fusc(n)`, and
+  `fusc(2n+1) = fusc(n) + fusc(n+1)`.
+  Show the first 61 terms, and show each fusc number (with its
+  index) whose decimal length exceeds all previous lengths.
+"""
 [taxonomies]
 categories = ["Mathematics", "Sequences", "task"]
 tags = []

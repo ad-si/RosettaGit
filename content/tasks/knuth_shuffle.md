@@ -5,6 +5,11 @@ date = 2019-10-20T02:49:03Z
 aliases = []
 [extra]
 id = 4216
+task = """
+  Implement the **Knuth (Fisher-Yates) shuffle** for an integer array.
+  For `i` from `last` down to `1`, pick a random `j` in `0..i` and
+  swap `items[i]` with `items[j]`.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

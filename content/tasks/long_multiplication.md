@@ -5,6 +5,11 @@ date = 2019-05-24T11:25:56Z
 aliases = []
 [extra]
 id = 3851
+task = """
+  Explicitly implement long multiplication as one approach to
+  arbitrary-precision integer arithmetic. Display the result of
+  `2^64 * 2^64` (i.e. `2^128`).
+"""
 [taxonomies]
 categories = ["Arbitrary precision", "Arithmetic operations", "task"]
 tags = []

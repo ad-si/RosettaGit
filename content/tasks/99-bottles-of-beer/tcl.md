@@ -5,6 +5,11 @@ date = 2014-11-21T02:39:05Z
 aliases = []
 [extra]
 id = 5293
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Tcl, demonstrating idiomatic techniques such as variable
+  traces.
+"""
 [taxonomies]
 categories = []
 tags = []

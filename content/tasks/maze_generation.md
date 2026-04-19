@@ -5,6 +5,10 @@ date = 2019-10-21T21:41:16Z
 aliases = []
 [extra]
 id = 8976
+task = """
+  Generate and display a maze using the simple depth-first search
+  algorithm.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

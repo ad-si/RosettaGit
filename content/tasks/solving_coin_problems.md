@@ -5,6 +5,11 @@ date = 2015-02-23T17:18:53Z
 aliases = []
 [extra]
 id = 13504
+task = """
+  Write an AI program, inspired by Bobrow's STUDENT, that takes
+  high-school algebra coin problems written in plain English and
+  outputs their solutions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

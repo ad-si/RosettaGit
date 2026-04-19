@@ -5,6 +5,11 @@ date = 2019-07-13T23:04:39Z
 aliases = []
 [extra]
 id = 17023
+task = """
+  Poke x86 (32-bit) machine code into memory and execute it. The opcodes
+  implement an `add` of two byte arguments; call it with `7` and `12`,
+  expect `19`, then free the memory.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

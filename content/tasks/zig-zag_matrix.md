@@ -5,6 +5,11 @@ date = 2019-07-21T10:31:53Z
 aliases = []
 [extra]
 id = 2961
+task = """
+  Produce an `N` by `N` zig-zag array: a square arrangement of the first
+  `N^2` integers where the values increase sequentially as you zig-zag
+  along the array's anti-diagonals.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

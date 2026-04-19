@@ -5,6 +5,11 @@ date = 2019-10-17T23:15:41Z
 aliases = []
 [extra]
 id = 21909
+task = """
+  Generate six RPG attributes by rolling 4d6 and summing the
+  three highest dice, repeating until the total is at least
+  `75` and at least two values are `15` or more.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

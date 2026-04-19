@@ -5,6 +5,12 @@ date = 2019-09-20T00:25:19Z
 aliases = []
 [extra]
 id = 22498
+task = """
+  Show the language's numeric-literal separator syntax and describe
+  its rules: which separator characters are allowed, whether multiple
+  consecutive separators are permitted, where in a literal they may
+  appear, and so on.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

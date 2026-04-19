@@ -5,6 +5,13 @@ date = 2019-06-25T13:58:35Z
 aliases = []
 [extra]
 id = 17975
+task = """
+  Implement **Penney's game**: two players each pick a length-3
+  sequence of `H`/`T` coin flips, then a fair coin is tossed
+  repeatedly until one player's sequence appears in the stream.
+  Have the computer choose a counter-sequence that beats the
+  player's pick, then simulate matches and report results.
+"""
 [taxonomies]
 categories = ["Games", "Probability", "Randomness", "task"]
 tags = []

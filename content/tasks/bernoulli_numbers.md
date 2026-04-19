@@ -5,6 +5,11 @@ date = 2019-10-09T18:56:53Z
 aliases = []
 [extra]
 id = 17350
+task = """
+  Compute and display the Bernoulli numbers `B0` through `B60` as
+  reduced fractions, suppressing the zero values, indexed so each
+  number is identifiable. Optionally align the solidi.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

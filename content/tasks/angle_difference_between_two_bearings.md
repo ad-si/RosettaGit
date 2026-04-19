@@ -5,6 +5,11 @@ date = 2019-10-06T00:24:38Z
 aliases = []
 [extra]
 id = 21229
+task = """
+  Given two compass bearings `b1` and `b2` in the range `-180` to
+  `+180` degrees, compute the signed angular difference `b2 - b1`,
+  normalized to the range `-180` to `+180` degrees.
+"""
 [taxonomies]
 categories = ["Geometry", "task"]
 tags = []

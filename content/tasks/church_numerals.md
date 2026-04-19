@@ -5,6 +5,13 @@ date = 2019-10-22T01:35:38Z
 aliases = []
 [extra]
 id = 21963
+task = """
+  Define Church zero, a successor function, and addition,
+  multiplication, and exponentiation on Church numerals, plus
+  conversions to and from integers. Derive `3` and `4`, then compute
+  `3 + 4`, `3 * 4`, `4^3`, and `3^4`, converting each result back to
+  an integer.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

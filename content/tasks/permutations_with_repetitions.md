@@ -5,6 +5,12 @@ date = 2019-05-07T11:19:39Z
 aliases = []
 [extra]
 id = 13370
+task = """
+  Lazily generate the `k^n` sequences of length `n` drawn from a
+  set of `k` values (permutations with repetition). Yield each
+  one to a deciding routine for inspection or early termination,
+  without materializing all intermediate values.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-30T15:10:43Z
 aliases = []
 [extra]
 id = 10087
+task = """
+  Obtain the contents of a specific line within a file (the seventh
+  line) and store it in a variable. Print an appropriate message if the
+  file has fewer lines, the line is empty, or it is too big to read.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,9 @@ date = 2019-03-08T17:13:23Z
 aliases = []
 [extra]
 id = 2073
+task = """
+  Display a smooth-shaded triangle using **OpenGL**.
+"""
 [taxonomies]
 categories = ["task", "3D"]
 tags = []

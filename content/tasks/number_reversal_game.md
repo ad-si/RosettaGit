@@ -5,6 +5,13 @@ date = 2019-07-25T22:09:55Z
 aliases = []
 [extra]
 id = 6745
+task = """
+  Given a jumbled list of the numbers `1` to `9` (definitely not in
+  ascending order), show the list and repeatedly ask the player how
+  many digits from the left to reverse, applying each reversal until
+  the digits are in ascending order. The score is the number of
+  reversals used.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

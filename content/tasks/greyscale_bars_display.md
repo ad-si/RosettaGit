@@ -5,6 +5,12 @@ date = 2019-09-17T03:15:41Z
 aliases = []
 [extra]
 id = 9751
+task = """
+  Display a series of vertical greyscale (contrast) bars spanning
+  the full display width. Show four horizontal stripes of 8, 16, 32,
+  and 64 bars, alternating black-to-white and white-to-black gradients
+  from top to bottom.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

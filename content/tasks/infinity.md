@@ -5,6 +5,11 @@ date = 2019-10-22T03:34:40Z
 aliases = []
 [extra]
 id = 2476
+task = """
+  Write a function that tests whether the language supports floating-point
+  infinity and returns positive infinity if so, otherwise the largest
+  representable positive float. Use the type of the literal `1.5`.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

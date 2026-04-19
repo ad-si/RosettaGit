@@ -5,6 +5,12 @@ date = 2019-10-06T00:22:59Z
 aliases = []
 [extra]
 id = 9632
+task = """
+  A *deranged anagram* is a pair of anagram words in which no
+  character appears at the same position in both words. Using the
+  `unixdict.txt` word list, find and display the longest deranged
+  anagram.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

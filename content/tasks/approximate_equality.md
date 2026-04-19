@@ -5,6 +5,11 @@ date = 2019-10-15T09:57:07Z
 aliases = []
 [extra]
 id = 22502
+task = """
+  Write a function that returns `true` if two floating-point numbers
+  are approximately equal, accounting for magnitude so that tiny
+  differences are tolerated on large values but not on small ones.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

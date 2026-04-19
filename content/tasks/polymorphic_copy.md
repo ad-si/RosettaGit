@@ -5,6 +5,11 @@ date = 2019-10-22T03:39:08Z
 aliases = []
 [extra]
 id = 3094
+task = """
+  Create an exact copy of a polymorphic object whose runtime type
+  derives from a known base type `T`, and call an overridden method
+  on the copy to confirm the dynamic type is preserved.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

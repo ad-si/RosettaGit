@@ -5,6 +5,13 @@ date = 2019-10-07T18:35:28Z
 aliases = []
 [extra]
 id = 20780
+task = """
+  Clone the game **GREED** by Matthew Day. On a 79x22 grid filled
+  with random digits 1-9 and a player marker `@`, the player moves in
+  any of 8 directions, erasing `N` squares in that direction where
+  `N` is the first digit there. Moves off-grid or onto eaten squares
+  are illegal. Maximize total squares eaten before no moves remain.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

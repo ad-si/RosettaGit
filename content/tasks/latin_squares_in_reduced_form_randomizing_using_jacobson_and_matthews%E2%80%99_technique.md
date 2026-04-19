@@ -5,6 +5,12 @@ date = 2019-08-27T11:25:36Z
 aliases = []
 [extra]
 id = 22450
+task = """
+  Implement the Jacobson and Matthews technique that transforms one
+  valid Latin Square of order `n` into another. Use it to generate
+  many squares of orders 4, 5, 42, and 256 and report distribution
+  statistics or timing as appropriate.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

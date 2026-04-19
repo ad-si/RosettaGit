@@ -5,6 +5,11 @@ date = 2019-07-09T10:57:09Z
 aliases = []
 [extra]
 id = 6051
+task = """
+  Build the component that marshals commands and events between a stream
+  and the program issuing commands and processing events, following the
+  Remote agent protocol, in a fashion natural to your language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

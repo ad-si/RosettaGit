@@ -5,6 +5,12 @@ date = 2019-08-12T14:51:18Z
 aliases = []
 [extra]
 id = 20044
+task = """
+  Demonstrate how your language handles floating-point pathologies:
+  the Muller recurrence `v_n = 111 - 1130/v_(n-1) + 3000/(v_(n-1)*v_(n-2))`
+  (true limit `6`, naively converges to `100`), the Chaotic Bank Society
+  account, and Siegfried Rump's example.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

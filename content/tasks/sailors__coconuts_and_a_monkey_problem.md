@@ -5,6 +5,11 @@ date = 2019-03-26T17:25:30Z
 aliases = []
 [extra]
 id = 19083
+task = """
+  Find the minimum initial pile size in the sailors-and-monkey
+  coconut puzzle for both 5 and 6 sailors, using a constraint-checking
+  approach rather than a closed-form formula.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

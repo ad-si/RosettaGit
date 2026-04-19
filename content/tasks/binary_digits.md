@@ -5,6 +5,10 @@ date = 2019-10-20T17:11:00Z
 aliases = []
 [extra]
 id = 10041
+task = """
+  Given a non-negative integer, output its binary representation
+  with no leading zeros, sign, radix prefix, or extra whitespace.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Radices", "task"]
 tags = []

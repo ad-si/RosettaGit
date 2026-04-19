@@ -5,6 +5,11 @@ date = 2009-08-06T20:54:51Z
 aliases = []
 [extra]
 id = 4664
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song with a
+  deliberately over-engineered object-oriented Java solution
+  that also handles grammar (singular vs. plural) correctly.
+"""
 [taxonomies]
 categories = []
 tags = []

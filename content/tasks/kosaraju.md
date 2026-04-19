@@ -5,6 +5,11 @@ date = 2019-07-31T16:16:45Z
 aliases = []
 [extra]
 id = 21302
+task = """
+  Implement **Kosaraju's algorithm** to find the strongly connected
+  components of a directed graph in linear time, using the transpose
+  graph.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

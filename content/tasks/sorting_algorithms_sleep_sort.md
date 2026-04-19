@@ -5,6 +5,11 @@ date = 2019-09-17T17:44:04Z
 aliases = []
 [extra]
 id = 9934
+task = """
+  Implement **sleep sort**: spawn one task per non-negative integer that
+  sleeps proportional to its value, then prints the value. Collected output
+  is the sorted sequence.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

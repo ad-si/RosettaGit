@@ -5,6 +5,10 @@ date = 2019-03-30T04:53:00Z
 aliases = []
 [extra]
 id = 21019
+task = """
+  Retrieve the source code, or the file path and line number, where a
+  programming object (module, class, function, method) is defined.
+"""
 [taxonomies]
 categories = ["task", "Reflection"]
 tags = []

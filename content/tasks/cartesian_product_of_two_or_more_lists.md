@@ -5,6 +5,12 @@ date = 2019-10-17T21:23:27Z
 aliases = []
 [extra]
 id = 21394
+task = """
+  Show idiomatic ways to compute the Cartesian product of two
+  arbitrary lists, e.g. `{1,2} x {3,4} = {(1,3),(1,4),(2,3),(2,4)}`,
+  and verify that pairing with an empty list yields an empty
+  product. For extra credit, generalize to the n-ary product.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

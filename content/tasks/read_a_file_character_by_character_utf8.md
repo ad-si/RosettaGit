@@ -5,6 +5,10 @@ date = 2019-01-06T21:39:58Z
 aliases = []
 [extra]
 id = 13123
+task = """
+  Read a file one character at a time, returning whole UTF-8 encoded
+  characters per call and `EOF` at end of file.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

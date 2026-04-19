@@ -5,6 +5,10 @@ date = 2019-09-22T21:56:06Z
 aliases = []
 [extra]
 id = 21840
+task = """
+  Generate a sine wave at a chosen frequency, lasting 5 seconds, and
+  play it as sound.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

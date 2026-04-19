@@ -5,6 +5,9 @@ date = 2019-10-18T18:34:24Z
 aliases = []
 [extra]
 id = 17462
+task = """
+  Reverse the order of whitespace-separated words in a string.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

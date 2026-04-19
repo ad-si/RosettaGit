@@ -5,6 +5,11 @@ date = 2019-10-10T14:08:12Z
 aliases = []
 [extra]
 id = 2501
+task = """
+  Implement a **Global Singleton**: a class of which only one instance
+  exists within a program. Any use of non-static members operates on
+  this single instance.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

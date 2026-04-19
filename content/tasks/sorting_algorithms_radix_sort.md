@@ -5,6 +5,10 @@ date = 2019-07-30T13:51:02Z
 aliases = []
 [extra]
 id = 9169
+task = """
+  Sort an integer array using the *radix sort* algorithm, processing
+  the digits of each value to bucket and merge them into order.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

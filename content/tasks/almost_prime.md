@@ -5,6 +5,12 @@ date = 2019-10-16T07:31:22Z
 aliases = []
 [extra]
 id = 17227
+task = """
+  A *k-almost-prime* is a natural number that is the product of
+  exactly `k` primes (possibly repeated). Write a function that
+  generates k-almost-primes and use it to show the first ten
+  k-almost-primes for `k` from `1` to `5`.
+"""
 [taxonomies]
 categories = ["Prime Numbers", "task"]
 tags = []

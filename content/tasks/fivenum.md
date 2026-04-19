@@ -5,6 +5,11 @@ date = 2019-09-12T17:41:04Z
 aliases = []
 [extra]
 id = 21734
+task = """
+  Given an array of numbers, compute Tukey's five-number summary
+  (minimum, lower hinge, median, upper hinge, maximum) as
+  implemented by R's `fivenum` function.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

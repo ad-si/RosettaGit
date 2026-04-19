@@ -5,6 +5,10 @@ date = 2019-09-13T03:57:33Z
 aliases = []
 [extra]
 id = 1637
+task = """
+  Given two arrays of equal length, build a hash (associative array)
+  whose keys come from one array and whose values come from the other.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

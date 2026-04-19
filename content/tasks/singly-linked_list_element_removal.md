@@ -5,6 +5,10 @@ date = 2019-09-22T20:52:16Z
 aliases = []
 [extra]
 id = 21176
+task = """
+  Define a method to remove an element from a singly-linked list and
+  demonstrate its use.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-06-30T15:14:44Z
 aliases = []
 [extra]
 id = 21169
+task = """
+  Write a code generator that takes the flattened Abstract Syntax Tree
+  produced by the syntax analyzer and emits virtual assembly code
+  runnable by the virtual machine interpreter.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

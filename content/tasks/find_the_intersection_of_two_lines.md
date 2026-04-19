@@ -5,6 +5,11 @@ date = 2019-08-05T11:43:00Z
 aliases = []
 [extra]
 id = 21226
+task = """
+  Find the point of intersection of two lines in 2D. The first
+  line passes through `(4, 0)` and `(6, 10)`; the second passes
+  through `(0, 3)` and `(10, 7)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

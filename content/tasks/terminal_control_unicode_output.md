@@ -5,6 +5,11 @@ date = 2019-05-14T19:52:40Z
 aliases = []
 [extra]
 id = 10505
+task = """
+  Check whether the terminal supports Unicode output and, if so,
+  output a Unicode delta (`U+25B3`). Otherwise raise an appropriate
+  error.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

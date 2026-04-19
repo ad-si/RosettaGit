@@ -5,6 +5,9 @@ date = 2019-10-12T12:23:14Z
 aliases = []
 [extra]
 id = 19684
+task = """
+  (Over)write a file so that it contains a given string.
+"""
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []

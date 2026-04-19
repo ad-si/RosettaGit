@@ -5,6 +5,13 @@ date = 2019-08-03T21:40:20Z
 aliases = []
 [extra]
 id = 22003
+task = """
+  Find all integer-sided triangles with sides `1..13` satisfying the
+  law of cosines for angles of 90deg, 60deg, and 120deg. Report the
+  count for each angle and list the triples (treating reorderings as
+  the same). Optional: count 60deg triples for sides `1..10000` where
+  not all sides are equal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

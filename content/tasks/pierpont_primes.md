@@ -5,6 +5,11 @@ date = 2019-10-10T23:31:12Z
 aliases = []
 [extra]
 id = 22476
+task = """
+  Find Pierpont primes of the first kind (`2^u * 3^v + 1`) and
+  second kind (`2^u * 3^v - 1`). Display the first 50 of each, and
+  the 250th of each if large integers are supported.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

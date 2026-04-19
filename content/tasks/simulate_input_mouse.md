@@ -5,6 +5,10 @@ date = 2019-02-13T00:16:39Z
 aliases = []
 [extra]
 id = 4257
+task = """
+  Simulate the click of a mouse button by the user.
+  Specify whether the target GUI may be externally created.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-18T08:21:10Z
 aliases = []
 [extra]
 id = 22566
+task = """
+  Calculate the number of days between two dates given in the form
+  `YYYY-MM-DD`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

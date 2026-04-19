@@ -5,6 +5,10 @@ date = 2010-05-18T17:49:02Z
 aliases = []
 [extra]
 id = 7355
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  the INTERCAL language.
+"""
 [taxonomies]
 categories = []
 tags = []

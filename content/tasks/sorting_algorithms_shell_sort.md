@@ -5,6 +5,11 @@ date = 2019-04-09T19:16:41Z
 aliases = []
 [extra]
 id = 2861
+task = """
+  Sort an array using **Shell sort**, a diminishing-increment sort that runs
+  interleaved insertion sorts over progressively smaller gap sequences ending
+  in `1`.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

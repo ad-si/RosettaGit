@@ -5,6 +5,12 @@ date = 2019-10-20T15:33:14Z
 aliases = []
 [extra]
 id = 16746
+task = """
+  Solve nonogram puzzles: given the lengths of filled-cell runs for
+  each row and column of a rectangular grid, find a valid filled/empty
+  configuration (or report failure). Solve the four problems supplied
+  in `nonogram_problems.txt`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

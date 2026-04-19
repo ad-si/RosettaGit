@@ -5,6 +5,11 @@ date = 2019-09-17T18:54:25Z
 aliases = []
 [extra]
 id = 19985
+task = """
+  Solve a given 4-variable system of linear equations for `w`, `x`,
+  `y`, `z` using **Cramer's rule** (ratios of determinants of the
+  coefficient matrix and matrices with columns replaced by the RHS).
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

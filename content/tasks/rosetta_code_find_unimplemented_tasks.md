@@ -5,6 +5,11 @@ date = 2019-05-10T14:25:51Z
 aliases = []
 [extra]
 id = 3357
+task = """
+  Given the name of a language on Rosetta Code, find all tasks
+  not yet implemented in that language, fetching data via the
+  MediaWiki API with paging support.
+"""
 [taxonomies]
 categories = ["task", "Rosetta Code related"]
 tags = []

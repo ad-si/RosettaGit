@@ -5,6 +5,11 @@ date = 2018-08-29T21:30:32Z
 aliases = []
 [extra]
 id = 3326
+task = """
+  Print a small range of integers in different number bases (such as
+  binary, octal, hexadecimal) using the language's built-in formatting
+  routines. Do not write a custom conversion function.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

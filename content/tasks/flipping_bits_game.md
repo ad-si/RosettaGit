@@ -5,6 +5,14 @@ date = 2019-10-10T06:53:36Z
 aliases = []
 [extra]
 id = 15108
+task = """
+  Implement the Flipping Bits game: given an `N` by `N` array
+  of zeroes and ones with a starting and a target configuration,
+  transform the start into the target in as few moves as
+  possible by inverting an entire numbered row or lettered
+  column per move. Ensure the start differs from the target but
+  is reachable, and report the move count.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

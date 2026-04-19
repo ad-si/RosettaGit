@@ -5,6 +5,11 @@ date = 2019-03-24T21:29:06Z
 aliases = []
 [extra]
 id = 10159
+task = """
+  Derive normally distributed random numbers from a uniform generator, build a
+  large sample, then report its **mean**, **stddev**, and a histogram.
+  Note any native language support for normal random number generation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

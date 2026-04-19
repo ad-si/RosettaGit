@@ -5,6 +5,13 @@ date = 2019-08-05T18:51:16Z
 aliases = []
 [extra]
 id = 3098
+task = """
+  Implement a solution to the dining philosophers problem in which
+  five philosophers share five forks around a round table and each
+  needs both adjacent forks to eat. Avoid the deadlock that arises
+  with a naive semaphore-based approach and explain how it is
+  prevented.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-12T12:22:58Z
 aliases = []
 [extra]
 id = 7628
+task = """
+  Load the entire contents of a text file into a single string variable.
+  If applicable, discuss encoding selection and memory-mapping.
+"""
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-08-03T18:47:09Z
 aliases = []
 [extra]
 id = 22048
+task = """
+  Parse decimal numbers with abutted multiplier suffixes and expand them
+  to their full numeric value. Suffixes include alphabetic words
+  (`PAIRs`, `SCOres`, `DOZens`, `GRoss`, `GOOGOLs`), metric prefixes
+  (`K`, `M`, `G`, ...), binary prefixes (`Ki`, `Mi`, `Gi`, ...), and
+  trailing `!` marks denoting factorials or multifactorials.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

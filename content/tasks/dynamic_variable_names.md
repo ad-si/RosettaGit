@@ -5,6 +5,10 @@ date = 2019-10-17T19:29:04Z
 aliases = []
 [extra]
 id = 4297
+task = """
+  Create a variable whose name is supplied by the user at runtime
+  rather than written literally in the program text.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

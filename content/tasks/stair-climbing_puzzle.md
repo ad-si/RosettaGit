@@ -5,6 +5,11 @@ date = 2019-07-01T14:04:53Z
 aliases = []
 [extra]
 id = 4924
+task = """
+  A robot's `step()` either climbs one step (returning true) or falls one
+  step (returning false). Write `step_up()` that reliably climbs exactly
+  one step, ideally without variables or numeric counters.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

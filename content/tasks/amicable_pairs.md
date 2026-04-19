@@ -5,6 +5,11 @@ date = 2019-10-02T12:51:41Z
 aliases = []
 [extra]
 id = 18389
+task = """
+  Two distinct integers `N` and `M` form an *amicable pair* when the
+  sum of the proper divisors of `N` equals `M` and vice versa. Find
+  and display all amicable pairs below `20000` (there are eight).
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

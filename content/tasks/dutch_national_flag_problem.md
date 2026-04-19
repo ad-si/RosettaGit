@@ -5,6 +5,11 @@ date = 2019-07-20T10:39:40Z
 aliases = []
 [extra]
 id = 11939
+task = """
+  Generate a randomized list of red, white, and blue balls that is
+  not already in Dutch-flag order, sort it idiomatically into the
+  order red, white, blue, and verify the result.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

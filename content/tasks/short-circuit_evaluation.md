@@ -5,6 +5,12 @@ date = 2019-10-18T19:22:42Z
 aliases = []
 [extra]
 id = 7806
+task = """
+  Define functions `a` and `b` that print their name and return their
+  boolean argument. Compute `x = a(i) and b(j)` and `y = a(i) or b(j)`
+  so that `b` is called only when necessary, demonstrating
+  **short-circuit evaluation**.
+"""
 [taxonomies]
 categories = ["task", "Programming language concepts"]
 tags = []

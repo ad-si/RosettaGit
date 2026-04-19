@@ -5,6 +5,10 @@ date = 2019-08-24T23:01:31Z
 aliases = []
 [extra]
 id = 3216
+task = """
+  Write the basic bitmap storage type to a PPM file (binary P6
+  preferred).
+"""
 [taxonomies]
 categories = ["task", "Raster graphics operations"]
 tags = []

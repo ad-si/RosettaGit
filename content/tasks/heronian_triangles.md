@@ -5,6 +5,13 @@ date = 2019-03-18T21:24:09Z
 aliases = []
 [extra]
 id = 18449
+task = """
+  Implement Hero's formula for triangle area, then enumerate all
+  *primitive* Heronian triangles (integer sides with `gcd = 1` and
+  integer area) with sides `<= 200`. Report the count, list the
+  first ten ordered by area, perimeter, then maximum side, and
+  list those with area `210`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-07-29T15:28:38Z
 aliases = []
 [extra]
 id = 2602
+task = """
+  Re-implement integer exponentiation for both `int^int` and
+  `float^int` as both a procedure and an operator (if the language
+  supports operator definition). Provide overloaded forms for both
+  variants when overloading is available.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

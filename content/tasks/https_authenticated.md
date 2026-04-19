@@ -5,6 +5,10 @@ date = 2019-04-08T18:25:37Z
 aliases = []
 [extra]
 id = 2074
+task = """
+  Demonstrate HTTPS requests with authentication
+  (e.g. username/password), without using client certificates.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

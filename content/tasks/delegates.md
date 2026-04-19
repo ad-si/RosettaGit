@@ -5,6 +5,13 @@ date = 2019-10-17T19:11:57Z
 aliases = []
 [extra]
 id = 2148
+task = """
+  Implement the delegation pattern. A *delegator* holds an optional
+  *delegate* and exposes an `operation` method that returns the
+  delegate's `thing` result if available, otherwise the string
+  `"default implementation"`. Demonstrate calls with no delegate, a
+  delegate lacking `thing`, and a delegate implementing it.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-08T08:42:37Z
 aliases = []
 [extra]
 id = 2829
+task = """
+  Write a loop that emits the comma-separated list
+  `1, 2, 3, 4, 5, 6, 7, 8, 9, 10`, using separate output statements
+  for the number and the comma so that the trailing comma is omitted
+  on the last iteration (an *n+½* loop).
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

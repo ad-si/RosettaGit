@@ -5,6 +5,11 @@ date = 2019-10-13T00:27:16Z
 aliases = []
 [extra]
 id = 2621
+task = """
+  Compute the `n`th partial sum of a series. Specifically, evaluate
+  `S_n = sum(1/k^2)` for `k` from `1` to `n` with `n = 1000`. This
+  approximates `zeta(2) = pi^2 / 6` (the Basel problem).
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

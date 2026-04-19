@@ -5,6 +5,13 @@ date = 2019-10-21T04:14:15Z
 aliases = []
 [extra]
 id = 6107
+task = """
+  Implement a `deconv` function that performs 1D deconvolution: given
+  finite sequences `f` and `g` (where `g = f * h`), recover `h` by
+  constructing and solving the corresponding linear system. The
+  function must work for arbitrary lengths with `|h| = |g| - |f| + 1`.
+  Verify both `deconv(g,f) = h` and `deconv(g,h) = f`.
+"""
 [taxonomies]
 categories = ["task", "Mathematical operations"]
 tags = []

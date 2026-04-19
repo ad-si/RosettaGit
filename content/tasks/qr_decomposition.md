@@ -5,6 +5,12 @@ date = 2019-09-12T22:46:15Z
 aliases = []
 [extra]
 id = 9939
+task = """
+  Demonstrate QR decomposition of a matrix into an orthogonal `Q`
+  and upper triangular `R` using Householder reflections. Apply it
+  to the example matrix from the Wikipedia article and use it for
+  a linear least-squares polynomial regression problem.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

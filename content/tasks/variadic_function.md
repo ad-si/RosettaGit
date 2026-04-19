@@ -5,6 +5,11 @@ date = 2019-10-18T20:47:42Z
 aliases = []
 [extra]
 id = 2868
+task = """
+  Create a variadic function that takes a variable number of arguments
+  and prints each one on its own line. Show how to call it with a list
+  of arguments built at runtime if the language allows it.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

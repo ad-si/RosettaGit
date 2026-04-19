@@ -5,6 +5,11 @@ date = 2019-08-14T22:16:37Z
 aliases = []
 [extra]
 id = 9913
+task = """
+  Implement a Caesar cipher with both encoding and decoding.
+  The key is an integer from 1 to 25 that shifts each letter of
+  the alphabet by that amount (wrapping `Z` to `A`).
+"""
 [taxonomies]
 categories = ["Encryption", "String manipulation", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-01T06:28:28Z
 aliases = []
 [extra]
 id = 22187
+task = """
+  Demonstrate any unit-testing support built into the language and
+  state whether the support is internal or external to the
+  interpreter/compiler.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

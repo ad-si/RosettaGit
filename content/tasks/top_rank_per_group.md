@@ -5,6 +5,10 @@ date = 2019-10-18T20:35:13Z
 aliases = []
 [extra]
 id = 3203
+task = """
+  Given a list of employee records (name, ID, salary, department),
+  find and display the top `N` salaries within each department.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

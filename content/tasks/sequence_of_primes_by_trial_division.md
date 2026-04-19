@@ -5,6 +5,11 @@ date = 2019-10-20T02:00:13Z
 aliases = []
 [extra]
 id = 17919
+task = """
+  Generate a sequence of primes using **trial division**: test each
+  candidate by attempting to divide it by other numbers. The sequence
+  may be bounded or unbounded.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

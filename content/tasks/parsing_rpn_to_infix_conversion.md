@@ -5,6 +5,11 @@ date = 2019-06-29T16:29:28Z
 aliases = []
 [extra]
 id = 10993
+task = """
+  Convert a space-separated **RPN** expression into the equivalent
+  infix expression, respecting operator precedence and associativity.
+  Show how the main data structure changes with each token parsed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

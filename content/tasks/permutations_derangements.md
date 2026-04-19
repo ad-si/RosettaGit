@@ -5,6 +5,13 @@ date = 2019-08-01T21:07:32Z
 aliases = []
 [extra]
 id = 9631
+task = """
+  Write a function that generates all **derangements** of
+  `0..n-1` (permutations where no element stays in its original
+  place), and a separate function that computes the subfactorial
+  `!n`. Show all derangements of 4 items and a table of counted
+  vs. calculated `!n` for `n = 0..9`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

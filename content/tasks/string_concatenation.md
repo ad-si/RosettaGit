@@ -5,6 +5,10 @@ date = 2019-10-09T08:35:44Z
 aliases = []
 [extra]
 id = 3263
+task = """
+  Create a string variable, then create a second variable whose value is the first
+  concatenated with another string literal. Display both variables to show the result.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

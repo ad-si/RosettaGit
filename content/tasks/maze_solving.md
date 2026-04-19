@@ -5,6 +5,11 @@ date = 2019-10-13T20:38:12Z
 aliases = []
 [extra]
 id = 8984
+task = """
+  For a maze produced by the *Maze generation* task, write a function
+  that finds and displays the shortest path between two cells using
+  a depth-first tree search.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

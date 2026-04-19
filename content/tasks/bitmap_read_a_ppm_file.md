@@ -5,6 +5,10 @@ date = 2018-09-13T01:11:13Z
 aliases = []
 [extra]
 id = 3225
+task = """
+  Read a PPM image file (binary P6 preferred) into the basic
+  bitmap storage type.
+"""
 [taxonomies]
 categories = ["Raster graphics operations", "Input Output", "task"]
 tags = []

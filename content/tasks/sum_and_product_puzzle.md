@@ -5,6 +5,12 @@ date = 2019-08-28T15:31:17Z
 aliases = []
 [extra]
 id = 19053
+task = """
+  Solve the *Impossible Puzzle*: find two whole numbers `X` and `Y` with
+  `1 < X < Y` and `X + Y <= 100`, given that S knows `X+Y`, P knows `X*Y`,
+  and the dialog "P does not know X and Y", "Now I know X and Y", "Now I
+  also know X and Y" uniquely determines them.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

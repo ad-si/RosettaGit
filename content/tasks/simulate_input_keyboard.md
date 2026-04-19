@@ -5,6 +5,10 @@ date = 2019-02-13T00:15:55Z
 aliases = []
 [extra]
 id = 4298
+task = """
+  Simulate keyboard input by sending keystrokes to a GUI application.
+  Specify whether the target GUI may be externally created.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

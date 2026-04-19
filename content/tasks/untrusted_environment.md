@@ -5,6 +5,11 @@ date = 2019-08-19T09:34:14Z
 aliases = []
 [extra]
 id = 12812
+task = """
+  Explain and demonstrate the language's features for handling
+  untrusted input or untrusted code, and discuss possible
+  compromises, weaknesses, and exploits these features may expose.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

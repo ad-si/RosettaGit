@@ -5,6 +5,11 @@ date = 2019-08-24T03:21:41Z
 aliases = []
 [extra]
 id = 2253
+task = """
+  Implement the **rot-13** substitution cipher: rotate each
+  ASCII letter by 13 positions (wrapping `z` to `a`), preserve
+  case, and pass non-letters through unchanged.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

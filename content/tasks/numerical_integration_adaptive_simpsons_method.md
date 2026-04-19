@@ -5,6 +5,11 @@ date = 2019-06-25T17:01:18Z
 aliases = []
 [extra]
 id = 22011
+task = """
+  Implement Lychee's modified **adaptive Simpson's method** for
+  numerical quadrature, which recursively bisects the integration
+  interval until the desired precision is reached.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

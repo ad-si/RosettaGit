@@ -5,6 +5,11 @@ date = 2019-05-18T00:02:42Z
 aliases = []
 [extra]
 id = 22053
+task = """
+  Draw a curve passing through three points: start `(10,10)`, middle
+  `(100,200)`, and end `(200,10)`. Implement the `curve()` function
+  yourself rather than using a library function.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

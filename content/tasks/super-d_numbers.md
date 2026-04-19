@@ -5,6 +5,12 @@ date = 2019-10-12T20:49:17Z
 aliases = []
 [extra]
 id = 22580
+task = """
+  A super-d number is a positive integer `n` such that `d * n^d` contains
+  at least `d` consecutive digits equal to `d`, for `2 <= d <= 9`. Write a
+  routine to find them and show the first 10 super-d numbers for `d = 2`
+  through `d = 6`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

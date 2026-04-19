@@ -5,6 +5,11 @@ date = 2019-09-08T10:49:17Z
 aliases = []
 [extra]
 id = 10590
+task = """
+  Represent arbitrary sets of real numbers as unions of convex ranges
+  with open or closed bounds. Provide membership, union, intersection,
+  and difference operations; test on sample sets containing `0`, `1`, `2`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

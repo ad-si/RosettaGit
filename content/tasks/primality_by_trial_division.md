@@ -5,6 +5,11 @@ date = 2019-09-12T14:09:40Z
 aliases = []
 [extra]
 id = 2254
+task = """
+  Write a boolean function that tests whether a given integer is
+  prime by **trial division**. `1` and all non-positive numbers are
+  not prime.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

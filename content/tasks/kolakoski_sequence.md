@@ -5,6 +5,13 @@ date = 2019-07-04T20:57:56Z
 aliases = []
 [extra]
 id = 21846
+task = """
+  Generate a **Kolakoski sequence** from a given starting list (e.g.
+  `(1, 2)`), where the sequence equals its own run-length encoding.
+  Verify each generated sequence by comparing it against its RLE.
+  Show the first 20 members for `(1, 2)` and `(2, 1)`, and the first
+  30 members for `(1, 3, 1, 2)` and `(1, 3, 2, 1)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

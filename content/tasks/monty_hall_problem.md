@@ -5,6 +5,11 @@ date = 2019-07-24T09:03:33Z
 aliases = []
 [extra]
 id = 2972
+task = """
+  Simulate the Monty Hall game show with three doors over at least a
+  thousand trials. Compare the win rates of the *stay* strategy versus
+  the *switch* strategy and present the results clearly.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

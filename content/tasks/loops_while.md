@@ -5,6 +5,10 @@ date = 2019-10-08T08:25:02Z
 aliases = []
 [extra]
 id = 2821
+task = """
+  Start with an integer of `1024`. Loop while it is greater than zero,
+  printing the value on each iteration and dividing it by two.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

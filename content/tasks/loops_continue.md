@@ -5,6 +5,12 @@ date = 2019-08-27T19:41:34Z
 aliases = []
 [extra]
 id = 2834
+task = """
+  Using a single loop, print the integers `1` to `10` in two rows of
+  five separated by commas. Achieve the row break by skipping to the
+  next iteration on a specific condition (a `continue` statement) if
+  the language allows it.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

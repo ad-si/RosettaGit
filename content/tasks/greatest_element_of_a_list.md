@@ -5,6 +5,10 @@ date = 2019-10-18T10:33:13Z
 aliases = []
 [extra]
 id = 2865
+task = """
+  Create a function that returns the maximum value in a provided set
+  of values, where the number of values may not be known until run-time.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

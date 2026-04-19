@@ -5,6 +5,11 @@ date = 2019-10-15T09:28:33Z
 aliases = []
 [extra]
 id = 4815
+task = """
+  Show how to attach documentation to classes, functions, and/or
+  variables in the language. Note whether documentation is built in
+  or requires external tools.
+"""
 [taxonomies]
 categories = ["task", "Software Engineering"]
 tags = []

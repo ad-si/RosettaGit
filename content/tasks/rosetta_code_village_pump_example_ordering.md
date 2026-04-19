@@ -5,6 +5,11 @@ date = 2011-05-10T19:55:58Z
 aliases = []
 [extra]
 id = 8302
+task = """
+  A Village Pump discussion proposing case-insensitive
+  alphabetic ordering of language sections within tasks and
+  resolving how to order names like `C`, `C#`, `C++`.
+"""
 [taxonomies]
 categories = ["task", "Category"]
 tags = []

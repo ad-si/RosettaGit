@@ -5,6 +5,12 @@ date = 2019-10-17T14:58:01Z
 aliases = []
 [extra]
 id = 10125
+task = """
+  Create a list of ten functions such that the function at index
+  `i` returns `i²` when called. Each closure must capture the
+  *value* of `i` at creation time, not a shared reference.
+  Demonstrate this by calling one of the functions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

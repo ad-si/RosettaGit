@@ -5,6 +5,11 @@ date = 2019-10-13T05:53:14Z
 aliases = []
 [extra]
 id = 9565
+task = """
+  Find self-describing numbers: integers where the digit at each
+  position `i` (zero-indexed) equals the count of digit `i` in
+  the number itself (e.g. `2020`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

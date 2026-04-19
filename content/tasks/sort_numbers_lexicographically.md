@@ -5,6 +5,10 @@ date = 2019-08-30T12:51:09Z
 aliases = []
 [extra]
 id = 21919
+task = """
+  Given an integer **n**, return the integers `1` through `n`
+  inclusive, sorted lexicographically (as strings).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-07-17T13:25:18Z
 aliases = []
 [extra]
 id = 19016
+task = """
+  Implement a **perfect (faro/weave) shuffle** that splits an
+  even-sized deck in half and interleaves the halves. Apply it
+  repeatedly and count how many shuffles return the deck to its
+  original order for sizes `8`, `24`, `52`, `100`, `1020`,
+  `1024`, and `10000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

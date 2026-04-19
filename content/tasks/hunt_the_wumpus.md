@@ -5,6 +5,12 @@ date = 2019-09-03T19:09:00Z
 aliases = []
 [extra]
 id = 19106
+task = """
+  Implement the classic textual game **Hunt The Wumpus**.
+  The player explores a 20-room cave (a dodecahedron's vertices)
+  with 5 arrows, hunting the Wumpus while avoiding bottomless pits
+  and giant bats. Sensory hints warn of nearby hazards.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

@@ -5,6 +5,12 @@ date = 2018-11-16T12:52:13Z
 aliases = []
 [extra]
 id = 3247
+task = """
+  Find a small factor (if any) of the Mersenne number `2^P - 1` for a
+  prime exponent `P`, using efficient modular exponentiation (`modPow`)
+  and the constraint that any factor `q` must be of the form `2kP+1`
+  and congruent to `1` or `7` mod `8`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

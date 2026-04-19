@@ -5,6 +5,12 @@ date = 2019-08-11T13:10:21Z
 aliases = []
 [extra]
 id = 16850
+task = """
+  Parse a five-card poker hand (e.g. `2h 5h 7d 8c 9s`) and classify
+  it as `straight-flush`, `four-of-a-kind`, `full-house`, `flush`,
+  `straight`, `three-of-a-kind`, `two-pair`, `one-pair`, `high-card`,
+  or `invalid`. Reject duplicate cards.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

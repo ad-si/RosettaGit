@@ -5,6 +5,11 @@ date = 2019-03-27T23:07:03Z
 aliases = []
 [extra]
 id = 10966
+task = """
+  Compute the **CRC-32** checksum (ISO 3309 / V.42 / Gzip / PNG variant:
+  LSB-first, initial CRC `0xFFFFFFFF`, final complement) of the ASCII
+  string `The quick brown fox jumps over the lazy dog`.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

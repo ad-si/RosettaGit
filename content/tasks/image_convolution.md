@@ -5,6 +5,12 @@ date = 2019-10-14T03:42:39Z
 aliases = []
 [extra]
 id = 3228
+task = """
+  Write a generic 3x3 **convolution kernel** image filter that
+  computes each new pixel as a weighted sum of its neighbours
+  using the kernel coefficients. Optionally demonstrate end-user
+  filters built atop it.
+"""
 [taxonomies]
 categories = ["task", "Image processing"]
 tags = []

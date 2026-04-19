@@ -5,6 +5,11 @@ date = 2019-06-21T15:52:51Z
 aliases = []
 [extra]
 id = 20682
+task = """
+  Tile an `8x8` grid with the 12 distinct pentomino shapes, each
+  used exactly once, leaving 4 randomly chosen cells uncovered.
+  Print the resulting tiling.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

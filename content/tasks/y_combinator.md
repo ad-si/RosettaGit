@@ -5,6 +5,12 @@ date = 2019-09-15T04:47:33Z
 aliases = []
 [extra]
 id = 3988
+task = """
+  Define the stateless **Y combinator** (the simplest fixed-point
+  combinator from lambda calculus) and use it to compute factorials
+  and Fibonacci numbers from otherwise stateless functions or lambda
+  expressions.
+"""
 [taxonomies]
 categories = ["Classic CS problems and programs", "Recursion", "Functional programming", "task"]
 tags = []

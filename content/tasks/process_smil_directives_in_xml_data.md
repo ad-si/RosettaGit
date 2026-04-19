@@ -5,6 +5,11 @@ date = 2019-08-01T14:28:20Z
 aliases = []
 [extra]
 id = 5265
+task = """
+  Build a utility that processes SMIL animation directives embedded in
+  XML and produces the resolved XML output for a given time `t`,
+  interpolating animated attributes accordingly.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-12T14:35:01Z
 aliases = []
 [extra]
 id = 9882
+task = """
+  Implement encrypt and decrypt functions for the **straddling checkerboard** cipher
+  using a 28-character alphabet (`A`-`Z`, full stop, escape) and two blank positions
+  in the first row. Output is decimal digits; digits in the plaintext are escaped.
+"""
 [taxonomies]
 categories = ["task", "Encryption"]
 tags = []

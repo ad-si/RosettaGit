@@ -5,6 +5,11 @@ date = 2019-09-06T22:39:44Z
 aliases = []
 [extra]
 id = 17864
+task = """
+  Show an example of using assertions in the *design by contract*
+  style — as preconditions, postconditions, and class invariants
+  that document the code's expectations.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

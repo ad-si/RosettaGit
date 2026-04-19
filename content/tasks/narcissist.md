@@ -5,6 +5,12 @@ date = 2019-10-09T15:19:43Z
 aliases = []
 [extra]
 id = 8341
+task = """
+  Write a *narcissist* program: read a string from input and output
+  `accept` (or `1`) if it matches the program's own source code, or
+  `reject` (or `0`) otherwise. The program must always halt and handle
+  any finite input.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

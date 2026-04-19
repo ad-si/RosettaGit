@@ -5,6 +5,13 @@ date = 2019-10-07T16:18:15Z
 aliases = []
 [extra]
 id = 20664
+task = """
+  Apply **simulated annealing** to the travelling salesman problem on a
+  10×10 grid of 100 cities. Start from city 0, visit each city exactly
+  once, return to 0, and minimize total euclidean path length. Neighbor
+  moves swap nearby cities; accept worse states with probability
+  `exp(-ΔE / T)` as temperature `T` cools toward 0.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

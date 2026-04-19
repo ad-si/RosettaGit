@@ -5,6 +5,11 @@ date = 2019-10-10T05:33:29Z
 aliases = []
 [extra]
 id = 5247
+task = """
+  Given a list of 23 of the 24 permutations of the four-letter
+  string `ABCD`, determine and output the single missing
+  permutation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2011-05-19T12:01:29Z
 aliases = []
 [extra]
 id = 9450
+task = """
+  A Village Pump discussion about organising Rosetta Code
+  programming tasks into shared categories and tags such as
+  `Higher-order functions`.
+"""
 [taxonomies]
 categories = ["task", "something goes here"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-29T16:47:12Z
 aliases = []
 [extra]
 id = 10052
+task = """
+  Demonstrate terminal cursor movement: left, right, up, down, to
+  beginning/end of line, and to top-left/bottom-right corners. Do not
+  overwrite any characters or attributes on the screen.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

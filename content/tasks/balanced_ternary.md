@@ -5,6 +5,14 @@ date = 2019-03-15T01:11:30Z
 aliases = []
 [extra]
 id = 10748
+task = """
+  Implement balanced ternary integers (base 3 with digits `+`, `0`,
+  `-`) supporting arbitrary size, conversion to/from strings and
+  native integers, and addition, negation, and multiplication
+  performed directly on the balanced ternary representation.
+  Test with `a = "+-0++0+"`, `b = -436`, `c = "+-++-"`:
+  print them in decimal and compute `a * (b - c)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

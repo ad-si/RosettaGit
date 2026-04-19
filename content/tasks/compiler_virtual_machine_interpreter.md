@@ -5,6 +5,11 @@ date = 2019-04-16T14:32:26Z
 aliases = []
 [extra]
 id = 21170
+task = """
+  Write a virtual machine interpreter that executes the byte-coded,
+  32-bit word, stack-based virtual assembly produced by the code
+  generator, reading from a file or stdin and writing to a file or stdout.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

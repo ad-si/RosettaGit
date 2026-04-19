@@ -5,6 +5,12 @@ date = 2019-10-04T00:02:12Z
 aliases = []
 [extra]
 id = 22189
+task = """
+  An *eban* number is a number whose American English spelling
+  contains no letter `e`. Show all eban numbers up to `1,000`,
+  all between `1,000` and `4,000`, and counts of eban numbers up
+  through `10,000`, `100,000`, `1,000,000`, and `10,000,000`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

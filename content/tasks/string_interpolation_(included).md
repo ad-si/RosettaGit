@@ -5,6 +5,11 @@ date = 2019-05-23T09:45:53Z
 aliases = []
 [extra]
 id = 5394
+task = """
+  Use the language's built-in **string interpolation** to insert the value of
+  a variable holding `"little"` into a template, producing `"Mary had a little lamb"`.
+  Link to documentation of the interpolation feature where possible.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

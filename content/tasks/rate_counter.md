@@ -5,6 +5,11 @@ date = 2019-04-20T15:18:34Z
 aliases = []
 [extra]
 id = 5179
+task = """
+  Measure how quickly a repeated job runs: execute jobs for `N` seconds
+  or run `Y` jobs, and report at least three distinct timings. Note
+  precision and accuracy limitations of the timing mechanism used.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

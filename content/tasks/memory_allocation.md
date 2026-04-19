@@ -5,6 +5,11 @@ date = 2019-08-20T14:37:43Z
 aliases = []
 [extra]
 id = 4248
+task = """
+  Show how to explicitly allocate and deallocate blocks of memory,
+  and demonstrate access to different memory regions (heap, stack,
+  shared, foreign) where applicable.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

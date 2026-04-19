@@ -5,6 +5,11 @@ date = 2019-09-24T02:58:40Z
 aliases = []
 [extra]
 id = 9399
+task = """
+  Create a function that takes a heading in degrees and returns
+  the correct 32-point compass heading. Use it to print a table of
+  index, compass point, and degree for a given list of test headings.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

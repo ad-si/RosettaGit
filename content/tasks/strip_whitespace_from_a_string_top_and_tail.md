@@ -5,6 +5,11 @@ date = 2019-06-07T12:25:10Z
 aliases = []
 [extra]
 id = 9867
+task = """
+  Strip whitespace from a string, demonstrating three variants:
+  remove only **leading**, only **trailing**, and **both** leading and trailing.
+  Whitespace covers spaces, tabs, and other non-printable characters.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

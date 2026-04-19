@@ -5,6 +5,11 @@ date = 2019-06-28T09:04:41Z
 aliases = []
 [extra]
 id = 4498
+task = """
+  Implement *heapsort*, an in-place `O(n log n)` sort that builds the
+  array into a max-heap, then repeatedly removes the maximum to
+  produce the sorted sequence from back to front.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

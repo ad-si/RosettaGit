@@ -5,6 +5,12 @@ date = 2019-10-18T10:47:13Z
 aliases = []
 [extra]
 id = 6677
+task = """
+  Implement Horner's rule to evaluate a polynomial.
+  Given a list of coefficients in order of increasing powers of `x`
+  and a value of `x`, compute the polynomial's value efficiently
+  using nested multiplication.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

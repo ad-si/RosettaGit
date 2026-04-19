@@ -5,6 +5,11 @@ date = 2018-04-07T21:11:08Z
 aliases = []
 [extra]
 id = 12228
+task = """
+  Compare the leaves (fringe) of two binary trees left-to-right to
+  determine if they are equal, ideally short-circuiting on the first
+  difference without flattening either tree fully.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

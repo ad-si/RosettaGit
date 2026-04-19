@@ -5,6 +5,12 @@ date = 2019-06-05T08:24:32Z
 aliases = []
 [extra]
 id = 3051
+task = """
+  Approximate **pi** with a Monte Carlo simulation: scatter random points
+  inside a square containing an inscribed circle and use the ratio of
+  points falling in the circle. Accept a variable sample size and show
+  results for several sizes.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

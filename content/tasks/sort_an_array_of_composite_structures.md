@@ -5,6 +5,10 @@ date = 2019-10-18T19:36:46Z
 aliases = []
 [extra]
 id = 2099
+task = """
+  Sort an array of composite structures (e.g. name/value pairs)
+  by a specified key field.
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

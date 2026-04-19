@@ -5,6 +5,13 @@ date = 2019-02-08T05:51:34Z
 aliases = []
 [extra]
 id = 11474
+task = """
+  Construct a *k*-d tree and perform a nearest-neighbor search on two
+  data sets: the Wikipedia 2-D example `[(2,3), (5,4), (9,6), (4,7),
+  (8,1), (7,2)]` searching for `(9, 2)`, and 1000 random 3-D points in
+  a cube. Report the query point, found point, distance, and the number
+  of nodes visited.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

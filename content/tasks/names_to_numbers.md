@@ -5,6 +5,11 @@ date = 2018-06-25T10:09:51Z
 aliases = []
 [extra]
 id = 13501
+task = """
+  Translate the spelled-out English name of a number into the numeric
+  value. Support inputs up to at least one million (or the language's
+  default bounded integer maximum, whichever is smaller).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

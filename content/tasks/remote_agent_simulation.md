@@ -5,6 +5,10 @@ date = 2019-07-09T10:48:40Z
 aliases = []
 [extra]
 id = 6050
+task = """
+  Generate a map and accept and respond to commands from a Remote agent
+  using an unbuffered stream.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

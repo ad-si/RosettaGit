@@ -5,6 +5,11 @@ date = 2019-09-09T18:18:34Z
 aliases = []
 [extra]
 id = 8974
+task = """
+  Draw a cuboid with relative dimensions `2 x 3 x 4`, graphically
+  or as ASCII art. Three faces must be visible. Either a static or
+  rotational projection is acceptable.
+"""
 [taxonomies]
 categories = ["task", "Geometric Primitives"]
 tags = []

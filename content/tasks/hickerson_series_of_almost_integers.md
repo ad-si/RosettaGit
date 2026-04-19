@@ -5,6 +5,12 @@ date = 2019-07-01T02:56:36Z
 aliases = []
 [extra]
 id = 17027
+task = """
+  Compute Hickerson's function `h(n) = n! / (2 * (ln 2)^(n+1))` for
+  `n` from 1 to 17 and verify that each value is an *almost integer*
+  (i.e. its first digit after the decimal point is `0` or `9`).
+  Use arbitrary precision as needed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

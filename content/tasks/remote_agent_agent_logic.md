@@ -5,6 +5,11 @@ date = 2019-07-11T07:58:57Z
 aliases = []
 [extra]
 id = 6052
+task = """
+  Using the Remote agent interface, write a program whose agent attempts
+  to place all balls in squares of matching colors in as few turns as
+  possible.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

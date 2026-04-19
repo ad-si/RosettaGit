@@ -5,6 +5,11 @@ date = 2019-10-15T08:18:30Z
 aliases = []
 [extra]
 id = 9246
+task = """
+  Compute and print the first 15 Catalan numbers using at least
+  one of the standard formulas (closed-form binomial, the
+  convolution recurrence, or the simple multiplicative recurrence).
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "task"]
 tags = []

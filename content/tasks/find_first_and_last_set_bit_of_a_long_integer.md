@@ -5,6 +5,14 @@ date = 2019-04-30T00:12:45Z
 aliases = []
 [extra]
 id = 11018
+task = """
+  Define routines `lwb` and `upb` that locate the first and last
+  set bit of a positive integer using a binary search, plus
+  reverse routines `rlwb`/`rupb` that report indices in LSB 0
+  numbering. Implement once for the host word size (no looping)
+  and once generically for arbitrary-width long integers, using
+  primarily bitwise operations.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

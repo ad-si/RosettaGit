@@ -5,6 +5,11 @@ date = 2019-10-08T17:55:29Z
 aliases = []
 [extra]
 id = 2228
+task = """
+  Show literal specification of characters and strings. If supported,
+  cover *verbatim strings* (escapes treated literally) and
+  *here-strings*, and discuss which quote styles expand variables.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

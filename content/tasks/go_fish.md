@@ -5,6 +5,14 @@ date = 2019-07-21T21:33:04Z
 aliases = []
 [extra]
 id = 4996
+task = """
+  Write a program that lets the user play **Go Fish** against a
+  computer opponent. Each player starts with nine cards; on a turn
+  the player asks the opponent for a rank they already hold,
+  receiving all matching cards (and another turn) or drawing one.
+  Completed *books* are removed; the player with the most books wins.
+  The AI should use at least some strategy.
+"""
 [taxonomies]
 categories = ["task", "Games"]
 tags = []

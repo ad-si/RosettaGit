@@ -5,6 +5,12 @@ date = 2019-10-21T03:52:34Z
 aliases = []
 [extra]
 id = 10366
+task = """
+  Generate the convergent self-referential sequence by summarizing
+  the previous term's digit counts (sorted largest digit first).
+  Find all seeds under 1,000,000 that take the most iterations to
+  converge and print those iterations and resulting sequence.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

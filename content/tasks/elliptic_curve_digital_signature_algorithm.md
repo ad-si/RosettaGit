@@ -5,6 +5,12 @@ date = 2019-07-30T17:54:22Z
 aliases = []
 [extra]
 id = 22032
+task = """
+  Implement a toy version of the Elliptic Curve Digital Signature
+  Algorithm (ECDSA) using parameters that fit standard arithmetic
+  types. Demonstrate key generation, signature computation, and
+  signature verification on an elliptic curve over `Z_p`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

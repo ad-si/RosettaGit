@@ -5,6 +5,12 @@ date = 2019-05-24T07:49:50Z
 aliases = []
 [extra]
 id = 12633
+task = """
+  Convert an elliptic-curve public point `(X, Y)` to a Bitcoin
+  address: prepend `0x04` to the 64-byte concatenation, take the
+  RIPEMD-160 of its SHA-256, prepend the version byte, append the
+  4-byte double-SHA-256 checksum, and base58-encode the result.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

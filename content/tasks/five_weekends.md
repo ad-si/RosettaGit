@@ -5,6 +5,13 @@ date = 2019-10-01T21:43:09Z
 aliases = []
 [extra]
 id = 8562
+task = """
+  Find every month from 1900 through 2100 (Gregorian) that
+  contains five Fridays, five Saturdays, and five Sundays.
+  Show the count of such months (should be 201) and at least
+  the first and last five dates in order. Optionally also count
+  or list the years that contain no such month (should be 29).
+"""
 [taxonomies]
 categories = ["task", "Date and time"]
 tags = []

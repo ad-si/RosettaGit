@@ -5,6 +5,12 @@ date = 2019-06-17T03:35:23Z
 aliases = []
 [extra]
 id = 2852
+task = """
+  Write a function that returns a longest common subsequence (LCS) of
+  two case-sensitive strings. The LCS is the longest sequence of
+  characters appearing in both strings in the same order, not
+  necessarily contiguously.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

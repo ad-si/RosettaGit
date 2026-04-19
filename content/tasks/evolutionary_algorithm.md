@@ -5,6 +5,12 @@ date = 2019-10-18T09:56:58Z
 aliases = []
 [extra]
 id = 4873
+task = """
+  Implement Dawkins's *weasel* evolutionary algorithm: starting
+  from a random `parent` string, repeatedly produce mutated copies,
+  keep the fittest one as the new `parent`, and continue until it
+  converges to the target `"METHINKS IT IS LIKE A WEASEL"`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

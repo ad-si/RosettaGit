@@ -5,6 +5,11 @@ date = 2019-10-14T09:57:44Z
 aliases = []
 [extra]
 id = 3270
+task = """
+  Write a program that prints an integer roughly twice per second.
+  On receipt of `SIGINT` (e.g. Ctrl-C), stop printing, output the
+  total seconds the program has run, and exit cleanly.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

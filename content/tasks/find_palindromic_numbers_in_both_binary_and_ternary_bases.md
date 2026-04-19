@@ -5,6 +5,12 @@ date = 2019-05-15T18:48:09Z
 aliases = []
 [extra]
 id = 17454
+task = """
+  Find and show in decimal the first six non-negative integers
+  that are palindromes in *both* base 2 and base 3, treating `0`
+  as the first such number. Optionally also display each value
+  in its binary and ternary form.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

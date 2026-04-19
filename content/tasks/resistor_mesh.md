@@ -5,6 +5,10 @@ date = 2019-07-10T11:34:22Z
 aliases = []
 [extra]
 id = 10354
+task = """
+  Given a 10x10 grid of nodes interconnected by 1Ω resistors, find the
+  resistance between two specified points **A** and **B**.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

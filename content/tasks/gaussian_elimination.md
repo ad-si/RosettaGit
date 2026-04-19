@@ -5,6 +5,12 @@ date = 2019-09-09T12:35:26Z
 aliases = []
 [extra]
 id = 11391
+task = """
+  Solve `A x = b` using Gaussian elimination followed by
+  back-substitution, where `A` is an `n` by `n` matrix and
+  `x`, `b` are `n` by `1` vectors. Use partial pivoting and
+  scaling to improve accuracy.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

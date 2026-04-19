@@ -5,6 +5,10 @@ date = 2019-10-20T01:52:42Z
 aliases = []
 [extra]
 id = 21701
+task = """
+  List (preferably calculate) all Mersenne primes up to some
+  limit.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

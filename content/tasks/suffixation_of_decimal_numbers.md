@@ -5,6 +5,13 @@ date = 2019-07-10T18:34:48Z
 aliases = []
 [extra]
 id = 22055
+task = """
+  Write a function that appends a metric (`K M G T P E Z Y X W V U`) or
+  binary metric (`Ki Mi ... Ui`) suffix to a decimal number, optionally
+  rounded to a specified number of digits past the decimal point. Preserve
+  sign, accept commas/exponents in input, and output suffixes in uppercase
+  (with lowercase `i` for binary).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-06T05:04:22Z
 aliases = []
 [extra]
 id = 4400
+task = """
+  Create a stateful function/class that, given a period `P`,
+  returns a routine that accepts numbers one at a time
+  and returns the simple moving average of the most recent
+  `P` values.
+  Separate instances must keep independent state.
+"""
 [taxonomies]
 categories = ["Probability and statistics", "task"]
 tags = []

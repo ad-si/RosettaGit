@@ -5,6 +5,11 @@ date = 2019-09-27T08:09:25Z
 aliases = []
 [extra]
 id = 2880
+task = """
+  Write a function that takes a set `S` and returns its **power set**
+  `P(S)` (the set of all subsets). For an `n`-element set the result
+  has `2^n` elements, including the empty set.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-10T16:10:37Z
 aliases = []
 [extra]
 id = 10768
+task = """
+  Display the top ten most frequently occurring functions (or
+  identifiers/tokens) in a program or runtime environment via
+  static analysis. The goal is to demonstrate language
+  self-inspection, not runtime call frequency.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

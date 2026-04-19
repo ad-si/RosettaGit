@@ -5,6 +5,12 @@ date = 2018-08-10T23:20:12Z
 aliases = []
 [extra]
 id = 18632
+task = """
+  Map each word in a wordlist to its phone-keypad digit sequence
+  (`2`=ABC, `3`=DEF, ..., `9`=WXYZ) and report how many words map,
+  how many distinct digit combinations they require, and how many of
+  those combinations represent multiple words (textonyms).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

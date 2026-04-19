@@ -5,6 +5,11 @@ date = 2019-10-14T09:48:07Z
 aliases = []
 [extra]
 id = 17682
+task = """
+  List the contents of the current directory in sorted order, similar
+  to the Unix `ls` utility or the Windows `DIR` command. Extended
+  details and multi-column output are not required.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

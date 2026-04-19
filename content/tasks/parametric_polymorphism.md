@@ -5,6 +5,11 @@ date = 2019-09-14T09:08:17Z
 aliases = []
 [extra]
 id = 2209
+task = """
+  Define a type that is parametric over another type (e.g. a binary tree),
+  along with a small piece of code (and its type signature) that uses it,
+  such as a `map`-style traversal over every element.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

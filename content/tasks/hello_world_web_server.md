@@ -5,6 +5,11 @@ date = 2019-10-06T10:01:50Z
 aliases = []
 [extra]
 id = 10000
+task = """
+  Start or implement a web server that listens on
+  `http://localhost:8080/`, accepts multiple client connections,
+  and serves the text `Goodbye, World!` to each request.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

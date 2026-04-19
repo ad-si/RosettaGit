@@ -5,6 +5,11 @@ date = 2019-09-08T09:00:06Z
 aliases = []
 [extra]
 id = 18092
+task = """
+  Print a solution to the IQ Puzzle, a triangle of 15 pegs where
+  one slot starts empty and pegs jump over each other (removing
+  the jumped peg) until only one remains.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

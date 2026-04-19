@@ -5,6 +5,11 @@ date = 2019-10-04T23:06:44Z
 aliases = []
 [extra]
 id = 17162
+task = """
+  Write a program that converts a decimal floating-point number to
+  its binary representation, and vice versa (binary floating-point
+  number back to decimal).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

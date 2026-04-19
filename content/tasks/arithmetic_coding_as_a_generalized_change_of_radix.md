@@ -5,6 +5,12 @@ date = 2019-08-22T14:35:45Z
 aliases = []
 [extra]
 id = 19924
+task = """
+  Implement arithmetic coding as a generalized change of radix.
+  Encode the strings `DABDDB`, `DABDDBBDDBA`, `ABRACADABRA`, and
+  `TOBEORNOTTOBEORTOBEORNOT` to base-10 numbers, then decode them
+  back and verify each round-trip matches the original string.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

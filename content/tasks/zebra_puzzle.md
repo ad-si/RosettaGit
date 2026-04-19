@@ -5,6 +5,12 @@ date = 2019-08-28T12:05:13Z
 aliases = []
 [extra]
 id = 10989
+task = """
+  Solve the Zebra puzzle (Einstein's Riddle) programmatically: given 15
+  constraints about five houses, their occupants, drinks, smokes, and
+  pets, determine who owns the zebra. List the full solution for all
+  houses and optionally show that the solution is unique.
+"""
 [taxonomies]
 categories = ["Puzzles", "Constraint Handling Rules", "Logic puzzles", "task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2018-08-30T15:51:56Z
 aliases = []
 [extra]
 id = 4336
+task = """
+  Examine the language's built-in sort routines, indicate whether one
+  is supplied, and state whether it is *stable* (preserves the
+  relative order of records with equal keys).
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

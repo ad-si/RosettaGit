@@ -5,6 +5,12 @@ date = 2019-10-02T10:04:28Z
 aliases = []
 [extra]
 id = 4377
+task = """
+  Write a program that finds the mode (most frequent value)
+  of a collection.
+  Handle the case where the mode is non-unique;
+  empty input may be ignored.
+"""
 [taxonomies]
 categories = ["Probability and statistics", "task"]
 tags = []

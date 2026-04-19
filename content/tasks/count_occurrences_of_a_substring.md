@@ -5,6 +5,11 @@ date = 2019-10-18T05:05:24Z
 aliases = []
 [extra]
 id = 9932
+task = """
+  Write (or show) a function that counts the number of non-overlapping
+  occurrences of a substring inside a string, returning an integer
+  count (e.g. `countSubstring("ababababab", "abab")` -> `2`).
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

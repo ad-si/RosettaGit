@@ -5,6 +5,11 @@ date = 2019-10-16T09:46:09Z
 aliases = []
 [extra]
 id = 4878
+task = """
+  Demonstrate a parameterized SQL `UPDATE` statement to avoid SQL injection.
+  Bind values for `name`, `score`, `active`, and `jerseyNum`, then execute
+  the prepared statement.
+"""
 [taxonomies]
 categories = ["task", "Database operations"]
 tags = []

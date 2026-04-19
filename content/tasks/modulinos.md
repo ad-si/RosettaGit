@@ -5,6 +5,11 @@ date = 2019-06-25T07:44:56Z
 aliases = []
 [extra]
 id = 9318
+task = """
+  Demonstrate a *modulino*: a program/script whose `main()` runs
+  only when executed directly, and is skipped when the file is
+  loaded as a module/library by another program.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

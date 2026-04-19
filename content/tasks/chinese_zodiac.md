@@ -5,6 +5,12 @@ date = 2019-07-14T13:32:42Z
 aliases = []
 [extra]
 id = 21289
+task = """
+  Given a CE year, output the Chinese zodiac animal, yin/yang, and
+  element for the lunisolar year that begins in it. Optionally also
+  show the position within the 60-year cycle and the stem-branch
+  name.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

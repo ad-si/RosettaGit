@@ -5,6 +5,11 @@ date = 2019-05-28T20:32:30Z
 aliases = []
 [extra]
 id = 11129
+task = """
+  Given a collection of words with integer weights, find a non-empty subset
+  whose weights sum to zero (the **subset sum problem**).
+  Apply this to the supplied table of weighted words.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

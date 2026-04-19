@@ -5,6 +5,13 @@ date = 2018-11-12T00:13:38Z
 aliases = []
 [extra]
 id = 12910
+task = """
+  Write a routine that obtains a string from the user at a specific
+  terminal location, given row, column, and input width. When typed
+  text exceeds the field width, the leftmost characters scroll off so
+  more input can be entered, but the cursor must not move beyond the
+  field. Demonstrate at row 3, column 5, width 8.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

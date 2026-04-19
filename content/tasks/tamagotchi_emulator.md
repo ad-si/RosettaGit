@@ -5,6 +5,12 @@ date = 2019-04-30T04:03:02Z
 aliases = []
 [extra]
 id = 19799
+task = """
+  Build a Tamagotchi emulator: a virtual pet that gets hungry, bored,
+  ages and poops. Provide ways to feed, play with, and clean it, and
+  display its status (age, hunger, happiness, avatar). Untreated
+  illness leads to death; eventually the pet dies of old age.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

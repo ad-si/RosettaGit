@@ -5,6 +5,11 @@ date = 2019-07-05T14:30:22Z
 aliases = []
 [extra]
 id = 21332
+task = """
+  Write an encoder that converts a Unicode code-point into a sequence
+  of 1-4 UTF-8 bytes, and a matching decoder that reverses the process.
+  Demonstrate both on five sample characters.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

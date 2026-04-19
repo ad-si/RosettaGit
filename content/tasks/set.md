@@ -5,6 +5,11 @@ date = 2019-04-20T15:57:47Z
 aliases = []
 [extra]
 id = 10526
+task = """
+  Demonstrate **set** operations: creation, membership test, union,
+  intersection, difference, subset, and equality. A set is an unordered
+  collection of unique elements.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

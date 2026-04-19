@@ -5,6 +5,12 @@ date = 2019-08-23T02:02:13Z
 aliases = []
 [extra]
 id = 17127
+task = """
+  Write a function that performs brace expansion on an input string,
+  where balanced `{...}` containing comma-separated alternatives
+  expand into multiple output strings (as in Unix shells). Support
+  nesting and backslash-escaped braces, commas, and backslashes.
+"""
 [taxonomies]
 categories = ["String manipulation", "task"]
 tags = []

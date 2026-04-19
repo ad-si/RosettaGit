@@ -5,6 +5,12 @@ date = 2019-10-18T11:45:15Z
 aliases = []
 [extra]
 id = 17382
+task = """
+  Write a function that, given a non-negative integer, returns the
+  number followed by its English ordinal suffix (e.g. `1'st`, `2'nd`,
+  `3'rd`, `11'th`). Show output for the ranges `0..25`, `250..265`,
+  and `1000..1025`.
+"""
 [taxonomies]
 categories = ["task", "Ordinal numbers"]
 tags = []

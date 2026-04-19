@@ -5,6 +5,12 @@ date = 2019-04-23T20:05:46Z
 aliases = []
 [extra]
 id = 13300
+task = """
+  Implement the combination operator `nCk` and permutation
+  operator `nPk`. Demonstrate small cases using exact integer
+  arithmetic and large cases (up to thousands) using floating
+  point arithmetic.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

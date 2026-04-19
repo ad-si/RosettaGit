@@ -5,6 +5,11 @@ date = 2019-08-19T16:30:06Z
 aliases = []
 [extra]
 id = 4361
+task = """
+  Show how a manual-reset **event** synchronization object can be
+  implemented (or used via a library). Write a program that waits
+  one second and then signals the event to a task waiting for it.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

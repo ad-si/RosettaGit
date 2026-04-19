@@ -5,6 +5,13 @@ date = 2019-06-27T21:52:42Z
 aliases = []
 [extra]
 id = 21977
+task = """
+  Simulate Matt Parker's card trick: deal a shuffled 52-card deck
+  into red and black piles based on the colour of each top card,
+  swap a random number of cards between the two piles, and verify
+  that the count of black cards in the black pile equals the count
+  of red cards in the red pile.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

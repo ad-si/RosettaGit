@@ -5,6 +5,13 @@ date = 2019-09-03T15:30:29Z
 aliases = []
 [extra]
 id = 16108
+task = """
+  Use the language itself for shebang-style scripting: write a program
+  in the same language that, via a custom shebang, transparently
+  compiles a source file to a native binary and runs it. Cache the
+  binary and rebuild only when the source has changed. No shell or
+  third-party language allowed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-06-08T02:32:49Z
 aliases = []
 [extra]
 id = 6110
+task = """
+  Generalize discrete deconvolution to `d` dimensions: implement
+  `deconv` that, given multi-dimensional arrays `f` and `g`, recovers
+  `h` such that the convolution of `f` and `h` equals `g`. Verify on
+  the supplied 1D, 2D, and 3D test data and display the 3D result.
+"""
 [taxonomies]
 categories = ["task", "Mathematical operations"]
 tags = []

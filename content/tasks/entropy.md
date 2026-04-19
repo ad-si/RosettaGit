@@ -5,6 +5,11 @@ date = 2019-06-21T06:28:11Z
 aliases = []
 [extra]
 id = 12957
+task = """
+  Calculate the **Shannon entropy** `H` of a given input string in
+  bits per symbol. For the example `X = "1223334444"` the result
+  should be approximately `1.84644` bits/symbol.
+"""
 [taxonomies]
 categories = ["Mathematics", "Information theory", "task"]
 tags = []

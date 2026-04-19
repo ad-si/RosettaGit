@@ -5,6 +5,9 @@ date = 2019-10-10T19:11:59Z
 aliases = []
 [extra]
 id = 2817
+task = """
+  Print **SPAM** followed by a newline in an infinite loop.
+"""
 [taxonomies]
 categories = ["task", "Iteration"]
 tags = []

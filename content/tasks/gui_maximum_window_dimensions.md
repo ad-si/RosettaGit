@@ -5,6 +5,12 @@ date = 2019-08-07T12:44:11Z
 aliases = []
 [extra]
 id = 8843
+task = """
+  Determine the maximum height and width, in pixels, of a window
+  that can fit within the physical display area without scrolling.
+  This is effectively the screen size minus any space taken by
+  window decorations and menubars.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

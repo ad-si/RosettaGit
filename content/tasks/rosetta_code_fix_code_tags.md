@@ -5,6 +5,11 @@ date = 2019-07-28T12:42:09Z
 aliases = []
 [extra]
 id = 3320
+task = """
+  Convert deprecated Rosetta Code markup tags to their
+  replacements: change `<lang>`/`<code>` style tags to the
+  current `<lang %s>` form and close them appropriately.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

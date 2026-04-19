@@ -5,6 +5,11 @@ date = 2019-10-10T00:30:07Z
 aliases = []
 [extra]
 id = 22467
+task = """
+  Write a routine to compute **unsigned Lah numbers** `L(n, k)`.
+  Display a table up to `L(12, 12)`, and if the language supports
+  large integers, find the maximum value of `L(n, k)` for `n == 100`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

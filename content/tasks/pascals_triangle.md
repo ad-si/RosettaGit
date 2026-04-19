@@ -5,6 +5,11 @@ date = 2019-10-22T13:08:49Z
 aliases = []
 [extra]
 id = 2892
+task = """
+  Write a function that prints the first `n` rows of Pascal's triangle,
+  where each element is `1` or the sum of the two elements directly above
+  it. Row `n` gives the binomial coefficients of `(x + y)^n`.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

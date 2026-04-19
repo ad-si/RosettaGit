@@ -5,6 +5,14 @@ date = 2019-10-21T22:00:27Z
 aliases = []
 [extra]
 id = 10185
+task = """
+  Add an uncertain-number type that supports addition, subtraction,
+  multiplication, division, and exponentiation between values with
+  associated error terms (and plain floats), propagating errors per
+  the standard formulas. Use it to compute the Pythagorean distance
+  between two points whose coordinates carry uncertainties, and print
+  the distance and its error.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

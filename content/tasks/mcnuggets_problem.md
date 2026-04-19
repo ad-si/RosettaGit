@@ -5,6 +5,11 @@ date = 2019-10-18T16:02:58Z
 aliases = []
 [extra]
 id = 22042
+task = """
+  From `0` up to `100`, find the largest non-McNuggets number:
+  an integer `n` that cannot be expressed as `6x + 9y + 20z = n`
+  for natural numbers `x`, `y`, `z`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

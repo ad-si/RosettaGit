@@ -5,6 +5,11 @@ date = 2019-08-24T23:04:02Z
 aliases = []
 [extra]
 id = 10017
+task = """
+  Draw a simple time-keeping device that visibly updates at least
+  every second and cycles over time. Use a proper timer or event
+  rather than busy-polling, and keep the implementation concise.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

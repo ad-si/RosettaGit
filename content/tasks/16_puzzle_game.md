@@ -5,6 +5,11 @@ date = 2019-08-01T03:00:24Z
 aliases = []
 [extra]
 id = 21790
+task = """
+  Create a 16 Puzzle Game, a sliding-tile variant of the
+  classic 15 Puzzle played on a 4x4 grid where rows and
+  columns can be rotated.
+"""
 [taxonomies]
 categories = ["Games", "Puzzles", "task"]
 tags = []

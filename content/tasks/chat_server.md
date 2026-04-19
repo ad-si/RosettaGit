@@ -5,6 +5,12 @@ date = 2019-09-01T17:02:00Z
 aliases = []
 [extra]
 id = 8970
+task = """
+  Write a server for a minimal text-based chat. Users connect via
+  telnet, sign on with a nickname, and exchange messages with all
+  other connected users. Arrivals and departures should generate
+  notification messages.
+"""
 [taxonomies]
 categories = ["Networking and Web Interaction", "task"]
 tags = []

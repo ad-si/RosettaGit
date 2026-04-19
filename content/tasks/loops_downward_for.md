@@ -5,6 +5,9 @@ date = 2019-10-12T23:11:19Z
 aliases = []
 [extra]
 id = 2830
+task = """
+  Write a `for` loop that prints a countdown from `10` down to `0`.
+"""
 [taxonomies]
 categories = ["Iteration", "task"]
 tags = []

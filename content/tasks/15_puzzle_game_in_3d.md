@@ -5,6 +5,11 @@ date = 2019-05-09T15:26:45Z
 aliases = []
 [extra]
 id = 21789
+task = """
+  Create a 15 Puzzle sliding-tile game rendered in 3D using
+  computer graphics, where the tiles are displayed as 3D cubes
+  that slide into the empty space.
+"""
 [taxonomies]
 categories = ["Puzzles and games", "task"]
 tags = []

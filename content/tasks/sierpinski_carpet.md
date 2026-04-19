@@ -5,6 +5,10 @@ date = 2019-07-12T18:19:28Z
 aliases = []
 [extra]
 id = 2737
+task = """
+  Produce a graphical or ASCII-art representation of a
+  **Sierpinski carpet** of order `N`.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-09-29T23:43:07Z
 aliases = []
 [extra]
 id = 17421
+task = """
+  Create a version of an elementary cellular automaton whose number
+  of cells is limited only by available memory. The state has
+  bounded support: a finite run of cells with explicit values, with
+  all other cells equal to the negation of the nearest defined cell.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

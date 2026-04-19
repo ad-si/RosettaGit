@@ -5,6 +5,10 @@ date = 2019-10-12T07:53:01Z
 aliases = []
 [extra]
 id = 3287
+task = """
+  Create a queue data structure and demonstrate `push` (enqueue),
+  `pop` (dequeue), and `empty` operations on it.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

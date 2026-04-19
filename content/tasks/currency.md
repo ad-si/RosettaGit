@@ -5,6 +5,13 @@ date = 2019-09-20T12:29:40Z
 aliases = []
 [extra]
 id = 17038
+task = """
+  Represent currency using an exact dollars-and-cents data type
+  (avoiding IEEE 754 inexactness). Compute total price before tax,
+  the tax (rounded to the nearest cent), and the total with tax for
+  4000000000000000 hamburgers at `$5.50`, 2 milkshakes at `$2.86`,
+  taxed at 7.65%.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,14 @@ date = 2019-10-08T00:03:29Z
 aliases = []
 [extra]
 id = 22506
+task = """
+  Find proper fractions reducible by *anomalous cancellation*
+  (crossing out a shared digit from numerator and denominator
+  yields the correct reduced value, e.g. `16/64` -> `1/4`).
+  Show up to a dozen examples each for 2-, 3-, 4-, and
+  5-digit fractions, with counts of which digit was crossed.
+  Digits must not repeat or be zero within numerator or denominator.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

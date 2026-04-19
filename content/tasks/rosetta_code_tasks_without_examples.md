@@ -5,6 +5,11 @@ date = 2019-05-10T00:10:17Z
 aliases = []
 [extra]
 id = 19035
+task = """
+  Scrape `Category:Programming_Tasks` and extract each task's
+  description (text between the `infobox` class and the `toc`
+  table), without including the language solutions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

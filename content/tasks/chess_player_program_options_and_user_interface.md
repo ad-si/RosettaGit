@@ -5,6 +5,12 @@ date = 2015-05-18T19:21:54Z
 aliases = []
 [extra]
 id = 19143
+task = """
+  Build a driver / main loop on top of the move generation and
+  search-and-evaluation components that lets a user play chess against
+  the computer. Allow choosing colour, validate moves, display the
+  board, and detect checkmate and stalemate.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-10-12T09:49:42Z
 aliases = []
 [extra]
 id = 9425
+task = """
+  Given three 3D vectors `a = (3, 4, 5)`, `b = (4, 3, 5)`, and
+  `c = (-5, -12, -13)`, compute the **dot product**, **cross product**,
+  **scalar triple product**, and **vector triple product**.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

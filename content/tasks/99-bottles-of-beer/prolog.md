@@ -5,6 +5,10 @@ date = 2014-11-21T12:00:48Z
 aliases = []
 [extra]
 id = 18272
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Prolog-family languages.
+"""
 [taxonomies]
 categories = []
 tags = []

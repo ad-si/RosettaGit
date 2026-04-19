@@ -5,6 +5,9 @@ date = 2019-05-12T12:21:28Z
 aliases = []
 [extra]
 id = 9054
+task = """
+  Record a monophonic 16-bit PCM sound into memory, a file, or an array.
+"""
 [taxonomies]
 categories = ["task", "Sound"]
 tags = []

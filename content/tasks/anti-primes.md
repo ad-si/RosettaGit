@@ -5,6 +5,11 @@ date = 2019-09-18T01:52:50Z
 aliases = []
 [extra]
 id = 22097
+task = """
+  Generate and show the first twenty anti-primes
+  (also called highly composite numbers): natural numbers that have
+  more divisors than any smaller positive integer.
+"""
 [taxonomies]
 categories = ["Prime Numbers", "task"]
 tags = []

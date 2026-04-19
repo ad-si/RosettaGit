@@ -5,6 +5,12 @@ date = 2019-10-10T12:35:36Z
 aliases = []
 [extra]
 id = 2412
+task = """
+  Write a program that computes the arithmetic mean
+  of a numeric vector.
+  For an empty input, the program may behave in any reasonable way,
+  preferably following the language's convention for math errors.
+"""
 [taxonomies]
 categories = ["Probability and statistics", "task"]
 tags = []

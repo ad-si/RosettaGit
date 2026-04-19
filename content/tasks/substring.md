@@ -5,6 +5,12 @@ date = 2019-09-07T23:03:48Z
 aliases = []
 [extra]
 id = 4645
+task = """
+  Display substrings of a string in five ways: from position `n` of length `m`,
+  from position `n` to end, whole string minus last character, from a known
+  character of length `m`, and from a known substring of length `m`.
+  Programs using UTF-8/UTF-16 must reference logical code points, not code units.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

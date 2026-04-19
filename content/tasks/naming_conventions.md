@@ -5,6 +5,12 @@ date = 2019-09-08T13:27:34Z
 aliases = []
 [extra]
 id = 19588
+task = """
+  Document the language's naming conventions for identifiers
+  (procedures, classes, libraries, etc.) with brief examples. Indicate
+  whether the conventions are implicit or explicit, mandatory or
+  discretionary, and any tools that enforce them.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

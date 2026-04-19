@@ -5,6 +5,10 @@ date = 2019-08-18T21:20:45Z
 aliases = []
 [extra]
 id = 17596
+task = """
+  Implement (or link to) a self-hosting compiler for the language,
+  i.e. a compiler written in the same language it compiles.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

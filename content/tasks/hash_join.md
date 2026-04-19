@@ -5,6 +5,11 @@ date = 2019-10-18T00:51:06Z
 aliases = []
 [extra]
 id = 16752
+task = """
+  Implement the **hash join** algorithm for performing an inner join
+  on two tables: build a multimap from one table keyed on the join
+  column, then scan the other table and emit matching row pairs.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

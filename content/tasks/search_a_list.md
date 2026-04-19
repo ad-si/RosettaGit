@@ -5,6 +5,10 @@ date = 2019-10-18T19:15:49Z
 aliases = []
 [extra]
 id = 3057
+task = """
+  Find a given value in a list and return its index, or indicate
+  that it is not present.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

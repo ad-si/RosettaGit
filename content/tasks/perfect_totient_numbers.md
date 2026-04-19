@@ -5,6 +5,11 @@ date = 2019-09-20T21:32:38Z
 aliases = []
 [extra]
 id = 22093
+task = """
+  Generate and display the first twenty **perfect totient
+  numbers** (integers `n` equal to the sum of iterated totients
+  `phi(n) + phi(phi(n)) + ...` down to `1`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

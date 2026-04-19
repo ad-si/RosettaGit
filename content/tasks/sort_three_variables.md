@@ -5,6 +5,11 @@ date = 2019-10-18T19:45:44Z
 aliases = []
 [extra]
 id = 21364
+task = """
+  Sort the values of three variables `X`, `Y`, and `Z` (containing
+  numbers and/or strings). If sorting mixed types is not possible,
+  just sort numbers and note the supported numeric type.
+"""
 [taxonomies]
 categories = ["task"]
 languages = [

@@ -5,6 +5,11 @@ date = 2019-05-18T00:39:58Z
 aliases = []
 [extra]
 id = 10013
+task = """
+  Generate uniform random reals in `[0, 1]` for sample sizes 100, 1000, and 10000,
+  then compute each set's **mean** and **standard deviation** and display a histogram.
+  Optionally, show how to compute these statistics streaming over a huge dataset.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

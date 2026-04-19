@@ -5,6 +5,11 @@ date = 2019-09-24T22:01:12Z
 aliases = []
 [extra]
 id = 3999
+task = """
+  Show how to call a function from a shared library without
+  linking to it at compile time. If the library is available
+  use it, otherwise fall back to an internal equivalent.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

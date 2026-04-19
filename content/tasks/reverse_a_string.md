@@ -5,6 +5,10 @@ date = 2019-10-14T10:52:06Z
 aliases = []
 [extra]
 id = 2831
+task = """
+  Take a string and reverse it, e.g. `"asdf"` becomes `"fdsa"`. For
+  extra credit, preserve Unicode combining characters.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

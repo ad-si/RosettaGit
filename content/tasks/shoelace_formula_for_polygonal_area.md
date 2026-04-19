@@ -5,6 +5,10 @@ date = 2019-10-13T04:05:53Z
 aliases = []
 [extra]
 id = 21557
+task = """
+  Use the **shoelace formula** to compute the area of the polygon
+  with vertices `(3,4), (5,11), (12,8), (9,5), (5,6)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

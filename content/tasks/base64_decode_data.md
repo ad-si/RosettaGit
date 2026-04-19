@@ -5,6 +5,10 @@ date = 2019-10-17T05:23:03Z
 aliases = []
 [extra]
 id = 22103
+task = """
+  Write a program that decodes the Base64 output produced by the
+  Base64 encode task and reproduces the original file bit-for-bit.
+"""
 [taxonomies]
 categories = ["Encodings", "Data processing", "task"]
 tags = []

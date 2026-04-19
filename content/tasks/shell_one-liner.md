@@ -5,6 +5,11 @@ date = 2019-09-21T17:01:51Z
 aliases = []
 [extra]
 id = 3028
+task = """
+  Show how to specify and execute a short program in the language
+  from a command shell using only a single line of input. Show
+  alternatives if argument syntax differs by implementation or shell.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

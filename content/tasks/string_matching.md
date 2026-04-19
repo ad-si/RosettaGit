@@ -5,6 +5,11 @@ date = 2019-10-19T05:54:56Z
 aliases = []
 [extra]
 id = 8493
+task = """
+  Given two strings, demonstrate three forms of matching:
+  whether the first **starts with**, **contains**, or **ends with** the second.
+  Optionally print the location and handle multiple occurrences.
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

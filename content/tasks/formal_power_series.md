@@ -5,6 +5,14 @@ date = 2018-10-14T22:48:04Z
 aliases = []
 [extra]
 id = 2783
+task = """
+  Implement formal power series as a numeric type supporting
+  *addition*, *multiplication*, *division*, *differentiation*,
+  and *integration* (with integration constant zero).
+  Handle the potentially infinite number of coefficients via
+  lazy evaluation, and define `sin` and `cos` in terms of each
+  other using integration.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

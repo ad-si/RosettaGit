@@ -5,6 +5,11 @@ date = 2019-09-30T17:12:27Z
 aliases = []
 [extra]
 id = 17360
+task = """
+  Write a function that returns the **population count** (number of
+  `1` bits) of a non-negative integer. Display the popcounts of the
+  first 30 powers of 3, and the first 30 evil and odious numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

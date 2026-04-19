@@ -5,6 +5,11 @@ date = 2019-04-23T20:24:14Z
 aliases = []
 [extra]
 id = 11520
+task = """
+  Use the explicit fourth-order Runge-Kutta method to solve
+  `y'(t) = t * sqrt(y(t))` with `y(0) = 1` over `t = 0..10`
+  with step `0.1`, printing values and errors at integer `t`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

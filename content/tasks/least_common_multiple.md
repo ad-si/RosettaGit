@@ -5,6 +5,11 @@ date = 2019-04-23T22:43:51Z
 aliases = []
 [extra]
 id = 9406
+task = """
+  Compute the least common multiple of two integers `m` and `n` -- the
+  smallest positive integer that has both as factors. If either is
+  zero, the result is zero.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

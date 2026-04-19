@@ -5,6 +5,10 @@ date = 2019-09-20T17:31:59Z
 aliases = []
 [extra]
 id = 2436
+task = """
+  Fit a polynomial of a given degree to data points `(x, y)` and
+  return its coefficients.
+"""
 [taxonomies]
 categories = ["task", "Mathematical operations|Matrices"]
 tags = []

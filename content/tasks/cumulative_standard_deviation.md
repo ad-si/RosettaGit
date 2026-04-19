@@ -5,6 +5,12 @@ date = 2019-07-06T21:29:21Z
 aliases = []
 [extra]
 id = 4395
+task = """
+  Write a stateful function, class, generator or coroutine that takes
+  floating point numbers one at a time and returns the running standard
+  deviation of the series. Do not apply Bessel's correction; treat the
+  sample seen so far as the entire population.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

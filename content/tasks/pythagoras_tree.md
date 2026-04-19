@@ -5,6 +5,10 @@ date = 2019-08-07T08:19:33Z
 aliases = []
 [extra]
 id = 10734
+task = """
+  Construct a Pythagoras tree fractal of order 7 using only vector
+  arithmetic, without rotation or trigonometric functions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

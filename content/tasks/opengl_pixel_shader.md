@@ -5,6 +5,12 @@ date = 2019-03-11T10:25:56Z
 aliases = []
 [extra]
 id = 10722
+task = """
+  Render the OpenGL triangle but instead of `glColor3d`, use a **pixel
+  shader** that assigns a random RGB colour to each pixel so that
+  most pixels differ from each other. Optionally re-render
+  repeatedly so the random colours change each frame.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

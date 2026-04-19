@@ -5,6 +5,10 @@ date = 2019-01-21T08:05:31Z
 aliases = []
 [extra]
 id = 9526
+task = """
+  Implement **strand sort**, which sorts numbers by repeatedly extracting
+  already-sorted subsequences from the unsorted list and merging them.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

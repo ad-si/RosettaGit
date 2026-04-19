@@ -5,6 +5,12 @@ date = 2019-10-18T10:46:01Z
 aliases = []
 [extra]
 id = 9987
+task = """
+  Demonstrate **history variables** (variables that retain all past
+  values, not just the current one): enable support if needed,
+  define a history variable, assign three values, non-destructively
+  display the history, and recall the three values.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

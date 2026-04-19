@@ -5,6 +5,13 @@ date = 2019-05-16T18:25:33Z
 aliases = []
 [extra]
 id = 17480
+task = """
+  Given a row of cells and a list of connected block sizes (in
+  left-to-right order), enumerate every legal placement of those
+  blocks within the row (with at least one gap between blocks) and
+  show the count. Solve for several given configurations and indicate
+  when no solution exists.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

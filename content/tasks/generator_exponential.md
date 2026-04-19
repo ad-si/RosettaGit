@@ -5,6 +5,12 @@ date = 2019-08-09T14:31:42Z
 aliases = []
 [extra]
 id = 8822
+task = """
+  Using generators, create one that yields the `m`-th powers of the
+  non-negative integers in order. Build generators of squares and
+  cubes from it, then a generator that filters cubes out of the
+  squares. Drop the first 20 filtered values and show the next 10.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

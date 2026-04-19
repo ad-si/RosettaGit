@@ -5,6 +5,11 @@ date = 2019-09-20T09:40:08Z
 aliases = []
 [extra]
 id = 21791
+task = """
+  Show that **Euler's identity**, `e^(i*pi) + 1 = 0`, holds in the
+  language. If only floating-point arithmetic is available, show
+  that the result is approximately zero and report the error.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

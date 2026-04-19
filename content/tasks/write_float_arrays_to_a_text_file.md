@@ -5,6 +5,11 @@ date = 2019-02-21T21:13:48Z
 aliases = []
 [extra]
 id = 2433
+task = """
+  Write two equal-sized numerical arrays `x` and `y` to a two-column
+  text file `filename`. Format the first column with a given
+  `xprecision` and the second with `yprecision`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

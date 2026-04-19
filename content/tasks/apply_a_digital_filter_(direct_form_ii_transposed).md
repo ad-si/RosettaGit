@@ -5,6 +5,11 @@ date = 2019-09-10T10:25:18Z
 aliases = []
 [extra]
 id = 21230
+task = """
+  Implement a digital filter in *direct form II transposed* and use it
+  to filter a given signal vector through an order-3 low-pass
+  Butterworth filter with the supplied `a` and `b` coefficients.
+"""
 [taxonomies]
 categories = ["Digital signal processing", "task"]
 tags = []

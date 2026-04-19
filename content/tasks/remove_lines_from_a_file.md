@@ -5,6 +5,11 @@ date = 2018-12-08T11:22:33Z
 aliases = []
 [extra]
 id = 10088
+task = """
+  Implement a routine that removes a specific line or range of lines
+  from a file, taking three parameters: filename, starting line, and
+  number of lines to remove.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-05-07T23:39:44Z
 aliases = []
 [extra]
 id = 21205
+task = """
+  Create a **Snakes and Ladders** game where the computer plays
+  against a human player. Board representation and tokens are up to
+  the implementer (graphics, ASCII, or text).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

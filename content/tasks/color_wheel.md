@@ -5,6 +5,10 @@ date = 2019-10-14T00:53:23Z
 aliases = []
 [extra]
 id = 21070
+task = """
+  Write a function that draws an HSV color wheel entirely from
+  code.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

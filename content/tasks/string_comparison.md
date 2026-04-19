@@ -5,6 +5,11 @@ date = 2019-10-16T13:52:44Z
 aliases = []
 [extra]
 id = 12964
+task = """
+  Demonstrate string equality, inequality, and lexical ordering (before/after).
+  Show both **case-sensitive** and **case-insensitive** comparisons,
+  how numeric strings are handled, and any other comparison kinds the language offers.
+"""
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []

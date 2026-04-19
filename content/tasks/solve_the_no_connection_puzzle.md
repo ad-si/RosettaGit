@@ -5,6 +5,11 @@ date = 2019-10-06T23:36:04Z
 aliases = []
 [extra]
 id = 18017
+task = """
+  Place pegs `1`-`8` into eight holes `A`-`H` connected by 15 lines
+  so that the absolute difference between any two pegs joined by a
+  line is greater than `1`. Show one valid solution.
+"""
 [taxonomies]
 categories = ["task", "Puzzles"]
 tags = []

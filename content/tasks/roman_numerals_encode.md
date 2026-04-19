@@ -5,6 +5,11 @@ date = 2019-08-24T01:00:12Z
 aliases = []
 [extra]
 id = 2789
+task = """
+  Write a function that takes a positive integer
+  and returns its Roman numeral representation
+  (e.g. `1990` becomes `MCMXC`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

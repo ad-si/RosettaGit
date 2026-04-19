@@ -5,6 +5,10 @@ date = 2019-10-15T10:22:18Z
 aliases = []
 [extra]
 id = 3055
+task = """
+  Access and print a URL's content (the located resource) to the
+  console.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

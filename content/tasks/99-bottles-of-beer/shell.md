@@ -5,6 +5,10 @@ date = 2016-08-15T00:28:46Z
 aliases = []
 [extra]
 id = 18270
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  shell-family languages.
+"""
 [taxonomies]
 categories = []
 tags = []

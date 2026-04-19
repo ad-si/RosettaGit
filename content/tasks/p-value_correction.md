@@ -5,6 +5,13 @@ date = 2019-09-14T17:26:55Z
 aliases = []
 [extra]
 id = 21652
+task = """
+  Given a list of p-values, compute adjusted p-values (q-values) that
+  correct for multiple comparisons and control the false discovery
+  rate. Apply the supplied 50-element list of p-values using methods
+  such as Benjamini-Hochberg, Benjamini-Yekutieli, Holm, Hochberg,
+  Hommel, and Bonferroni.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

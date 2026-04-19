@@ -5,6 +5,11 @@ date = 2019-06-21T16:55:43Z
 aliases = []
 [extra]
 id = 3557
+task = """
+  Demonstrate the language's ability to execute code provided
+  at runtime as a string, showing what fragments are allowed,
+  how values flow in and out, and any sandboxing facilities.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

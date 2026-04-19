@@ -5,6 +5,11 @@ date = 2019-09-08T09:31:06Z
 aliases = []
 [extra]
 id = 21396
+task = """
+  Demonstrate the **Data Encryption Standard** (DES). Use key
+  `0e329232ea6d0d73` to encrypt `8787878787878787` and display the
+  result `0000000000000000`. Optionally apply standard padding.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

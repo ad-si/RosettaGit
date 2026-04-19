@@ -5,6 +5,12 @@ date = 2019-10-18T11:43:46Z
 aliases = []
 [extra]
 id = 12884
+task = """
+  Write a function that returns the middle three digits of an
+  integer (preserving order) or a clear error indication when the
+  input has an even number of digits, fewer than three digits, or
+  similar problems.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

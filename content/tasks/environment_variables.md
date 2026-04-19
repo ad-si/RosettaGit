@@ -5,6 +5,10 @@ date = 2019-08-25T20:05:36Z
 aliases = []
 [extra]
 id = 3271
+task = """
+  Show how to read one of the process's environment variables
+  (e.g. `PATH`, `HOME`, or `USER`).
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-29T16:11:38Z
 aliases = []
 [extra]
 id = 8435
+task = """
+  Obtain a valid `Y` or `N` response from the keyboard. Flush the
+  keyboard first to discard any prior key-presses, and accept the
+  response immediately without requiring an `enter` key.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-05-15T20:49:56Z
 aliases = []
 [extra]
 id = 21137
+task = """
+  Implement a syntax analyzer (parser) that converts the token stream
+  from the lexical analyzer into a flattened Abstract Syntax Tree (AST)
+  according to a given EBNF grammar for a tiny C-like language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

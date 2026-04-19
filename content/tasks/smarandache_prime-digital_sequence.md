@@ -5,6 +5,11 @@ date = 2019-09-16T08:15:25Z
 aliases = []
 [extra]
 id = 22344
+task = """
+  Compute the Smarandache prime-digital sequence (primes whose digits
+  are themselves prime). Show the first 25 such primes and the
+  hundredth one.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

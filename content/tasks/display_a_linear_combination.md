@@ -5,6 +5,13 @@ date = 2019-09-09T23:37:53Z
 aliases = []
 [extra]
 id = 19648
+task = """
+  Given a finite list of scalars, format the linear combination
+  `sum(alpha_i * e_i)` as a string in conventional mathematical
+  notation: omit zero terms, omit unit coefficients, and use
+  subtraction for negative terms instead of `+ -`. Show output for
+  the ten supplied test lists.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

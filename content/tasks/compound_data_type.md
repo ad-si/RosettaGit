@@ -5,6 +5,10 @@ date = 2019-10-12T07:45:40Z
 aliases = []
 [extra]
 id = 1969
+task = """
+  Create a compound data type, e.g. `Point(x, y)`, that holds multiple
+  independent values.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

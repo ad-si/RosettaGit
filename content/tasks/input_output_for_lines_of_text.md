@@ -5,6 +5,10 @@ date = 2019-09-03T15:04:02Z
 aliases = []
 [extra]
 id = 17065
+task = """
+  Read a count `N` from `STDIN`, then read that many lines of text and
+  write each line to `STDOUT` by passing it through an intermediate method.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

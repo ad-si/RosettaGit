@@ -5,6 +5,11 @@ date = 2019-04-18T19:23:58Z
 aliases = []
 [extra]
 id = 12844
+task = """
+  Demonstrate the language's "topic" or "current" variable (a special
+  short-named or implicit variable), and show how it behaves under
+  different levels of nesting or scope.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

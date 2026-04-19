@@ -5,6 +5,10 @@ date = 2019-10-17T05:53:26Z
 aliases = []
 [extra]
 id = 10250
+task = """
+  Demonstrate how to parse complex command-line arguments in your language,
+  using its standard library (such as `getopt`) where available.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

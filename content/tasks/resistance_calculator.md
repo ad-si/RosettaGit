@@ -5,6 +5,11 @@ date = 2019-07-03T19:11:53Z
 aliases = []
 [extra]
 id = 22219
+task = """
+  Compute the equivalent resistance of a network of series and parallel
+  resistors expressed in infix or RPN form, and report resistance,
+  voltage, current, and power for every resistor and operation.
+"""
 [taxonomies]
 categories = ["Electronics", "Physics", "Calculators", "task"]
 tags = []

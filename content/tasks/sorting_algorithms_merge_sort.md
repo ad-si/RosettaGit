@@ -5,6 +5,11 @@ date = 2019-07-28T19:12:29Z
 aliases = []
 [extra]
 id = 2531
+task = """
+  Write a function that sorts a collection of integers using
+  *merge sort*: recursively split the collection in half, sort each
+  half, then merge the sorted halves back together.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

@@ -5,6 +5,13 @@ date = 2018-12-28T06:07:38Z
 aliases = []
 [extra]
 id = 13128
+task = """
+  Implement the original **NYSIIS** phonetic algorithm, which encodes
+  names so that homophones share the same key. Uppercase the input
+  and strip whitespace before applying the algorithm. Optionally
+  handle double-barrelled names and trailing honorifics like `Jnr`
+  or `III`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

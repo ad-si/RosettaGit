@@ -5,6 +5,10 @@ date = 2014-11-21T11:52:14Z
 aliases = []
 [extra]
 id = 18275
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  visual programming languages (such as LabVIEW or Scratch).
+"""
 [taxonomies]
 categories = []
 tags = []

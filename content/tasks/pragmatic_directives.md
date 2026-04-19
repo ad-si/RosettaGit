@@ -5,6 +5,10 @@ date = 2019-06-20T10:10:07Z
 aliases = []
 [extra]
 id = 10639
+task = """
+  List the **pragmatic directives** supported by the language and
+  show how to activate, deactivate, and scope them within a program.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

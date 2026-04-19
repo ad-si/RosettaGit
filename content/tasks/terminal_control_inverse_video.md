@@ -5,6 +5,10 @@ date = 2019-01-30T22:42:46Z
 aliases = []
 [extra]
 id = 8597
+task = """
+  Display a word in inverse (reverse) video followed by a word in
+  normal video.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

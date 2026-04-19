@@ -5,6 +5,10 @@ date = 2019-10-15T10:42:22Z
 aliases = []
 [extra]
 id = 13227
+task = """
+  Validate the fictitious IBAN `GB82 WEST 1234 5698 7654 32`
+  using the standard IBAN check-digit algorithm.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

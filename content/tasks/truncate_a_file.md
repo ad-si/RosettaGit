@@ -5,6 +5,11 @@ date = 2019-03-05T09:51:16Z
 aliases = []
 [extra]
 id = 10120
+task = """
+  Implement a binary-safe routine that truncates a file to a given byte
+  length. Raise an error when the file is missing or the requested
+  length is not less than the current size.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

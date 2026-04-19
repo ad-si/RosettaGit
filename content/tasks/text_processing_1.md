@@ -5,6 +5,11 @@ date = 2018-11-07T01:15:45Z
 aliases = []
 [extra]
 id = 3104
+task = """
+  Parse a pollution-data file with a date and 24 value/flag pairs per line.
+  For each line and overall, compute the mean of valid readings (flag > 0)
+  and report the longest run of consecutive invalid readings.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-10-20T03:08:28Z
 aliases = []
 [extra]
 id = 2853
+task = """
+  Implement *permutation sort*, which generates successive
+  permutations of the input list until it happens to be in order.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

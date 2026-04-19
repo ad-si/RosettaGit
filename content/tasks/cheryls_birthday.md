@@ -5,6 +5,12 @@ date = 2019-10-03T00:17:15Z
 aliases = []
 [extra]
 id = 22038
+task = """
+  Solve the Cheryl's Birthday logic puzzle: given ten candidate
+  dates and the chain of statements between Albert (told the month)
+  and Bernard (told the day), deduce Cheryl's birthday by successive
+  elimination.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

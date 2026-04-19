@@ -5,6 +5,12 @@ date = 2019-09-12T14:14:18Z
 aliases = []
 [extra]
 id = 6216
+task = """
+  Implement the **Luhn test** for credit card number validation: reverse
+  the digits, sum the odd-positioned digits, double each even-positioned
+  digit (summing its digits if greater than nine), and check that the
+  combined total ends in zero.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

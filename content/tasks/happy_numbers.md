@@ -5,6 +5,12 @@ date = 2019-09-16T15:42:51Z
 aliases = []
 [extra]
 id = 4140
+task = """
+  A **happy number** is a positive integer for which repeatedly
+  replacing it with the sum of the squares of its digits eventually
+  reaches `1`; otherwise it is *unhappy*. Find and print the first
+  eight happy numbers.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

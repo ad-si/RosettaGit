@@ -5,6 +5,13 @@ date = 2019-09-02T18:53:36Z
 aliases = []
 [extra]
 id = 3996
+task = """
+  Implement at least one algorithm to compute the Gamma
+  function `Γ(x)` over the real numbers, using a method such
+  as the Lanczos or Stirling approximation or numerical
+  integration of the defining integral. If available, compare
+  against the language's built-in or library implementation.
+"""
 [taxonomies]
 categories = ["Mathematical operations", "Mathematics", "task"]
 tags = []

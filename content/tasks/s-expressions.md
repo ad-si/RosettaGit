@@ -5,6 +5,11 @@ date = 2019-07-27T18:19:29Z
 aliases = []
 [extra]
 id = 10679
+task = """
+  Write a reader and writer for nested S-expressions.
+  Handle quoted strings, integers and floats, parsing into a native
+  data structure and serializing it back.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

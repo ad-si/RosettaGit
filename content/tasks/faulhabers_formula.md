@@ -5,6 +5,12 @@ date = 2019-10-09T17:20:41Z
 aliases = []
 [extra]
 id = 19860
+task = """
+  **Faulhaber's formula** expresses the sum of the `p`-th powers of
+  the first `n` positive integers as a degree-`(p+1)` polynomial in
+  `n` whose coefficients involve Bernoulli numbers. Generate the
+  first 10 closed-form expressions, starting with `p = 0`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

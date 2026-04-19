@@ -5,6 +5,10 @@ date = 2019-09-14T11:55:48Z
 aliases = []
 [extra]
 id = 2604
+task = """
+  Implement **matrix exponentiation** as an operator, raising a matrix
+  to a non-negative integer power.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

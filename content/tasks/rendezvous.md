@@ -5,6 +5,11 @@ date = 2019-01-06T05:22:52Z
 aliases = []
 [extra]
 id = 3559
+task = """
+  Demonstrate the rendezvous synchronization technique by implementing
+  a printer monitor with a *main* and *reserve* printer, each limited
+  to 5 lines of ink, raising `Out_Of_Ink` when both are exhausted.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

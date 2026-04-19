@@ -5,6 +5,11 @@ date = 2019-06-11T17:27:50Z
 aliases = []
 [extra]
 id = 22356
+task = """
+  Display horizontal and/or vertical raster bars of color that move
+  across the screen, swaying side to side. Use a gradient between
+  multiple colors to create a metallic-looking effect.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

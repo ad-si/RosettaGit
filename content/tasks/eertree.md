@@ -5,6 +5,12 @@ date = 2019-07-19T23:40:17Z
 aliases = []
 [extra]
 id = 21218
+task = """
+  An **eertree** is a data structure for efficient palindrome
+  processing, e.g. counting sub-palindromes in a string. Construct
+  an eertree for the string `"eertree"` and output all
+  sub-palindromes by traversing the tree.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

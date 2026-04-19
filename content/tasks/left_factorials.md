@@ -5,6 +5,12 @@ date = 2019-09-20T21:00:57Z
 aliases = []
 [extra]
 id = 17467
+task = """
+  Using the definition `!n = sum(k! for k in 0..n-1)` with `!0 = 0`,
+  display the left factorials for `0..10` and for `20..110` step 10.
+  Also display the digit length of `!n` for `n` in `1000..10000` step
+  1000.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

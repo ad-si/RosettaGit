@@ -5,6 +5,11 @@ date = 2019-10-04T20:43:47Z
 aliases = []
 [extra]
 id = 5279
+task = """
+  Implement the Catmull-Clark surface subdivision algorithm, which
+  refines a polygonal mesh into a smoother mesh of quadrilaterals by
+  computing face points, edge points, and updated vertex positions.
+"""
 [taxonomies]
 categories = ["task", "3D"]
 tags = []

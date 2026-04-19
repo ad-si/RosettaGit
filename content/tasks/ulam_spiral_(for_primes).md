@@ -5,6 +5,11 @@ date = 2019-10-14T01:03:19Z
 aliases = []
 [extra]
 id = 18507
+task = """
+  Construct and display a counter-clockwise Ulam spiral of primes on an
+  `N x N` grid starting from a chosen initial number. Mark primes with
+  a glyph and leave non-prime cells blank.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

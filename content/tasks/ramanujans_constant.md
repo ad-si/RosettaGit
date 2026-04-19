@@ -5,6 +5,11 @@ date = 2019-08-08T23:04:16Z
 aliases = []
 [extra]
 id = 22293
+task = """
+  Calculate Ramanujan's constant with at least 32 digits of precision.
+  Optionally, using the `e^(π·√x)` approach, show that evaluating it
+  at the last four Heegner numbers yields *almost*-integer results.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-04-23T18:50:02Z
 aliases = []
 [extra]
 id = 20796
+task = """
+  Implement a clone of Ken Arnold's turn-based game *Robots*, where the
+  player must escape a number of robots programmed to kill them.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

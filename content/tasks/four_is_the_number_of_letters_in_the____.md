@@ -5,6 +5,13 @@ date = 2019-09-02T17:54:22Z
 aliases = []
 [extra]
 id = 21590
+task = """
+  Generate the self-referential sentence `Four is the number of
+  letters in the first word of this sentence, two in the second,
+  three in the third, ...` and return, for any positive `N`,
+  the letter count of the first `N` words and the `N`-th word
+  itself. Only build as much of the sentence as needed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2018-10-19T17:26:27Z
 aliases = []
 [extra]
 id = 8488
+task = """
+  Implement conversions between integers and their **variable-length
+  quantity** binary representation. Encode `0x200000` and `0x1fffff`
+  to octet sequences, display them, then decode and verify equality.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

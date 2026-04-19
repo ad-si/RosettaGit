@@ -5,6 +5,9 @@ date = 2019-01-30T06:57:07Z
 aliases = []
 [extra]
 id = 8595
+task = """
+  Hide the terminal cursor and then show it again.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

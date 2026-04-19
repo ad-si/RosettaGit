@@ -5,6 +5,10 @@ date = 2019-10-08T18:48:57Z
 aliases = []
 [extra]
 id = 7783
+task = """
+  Convert a given date from the Gregorian calendar to the Discordian
+  calendar.
+"""
 [taxonomies]
 categories = ["task", "Date and time"]
 tags = []

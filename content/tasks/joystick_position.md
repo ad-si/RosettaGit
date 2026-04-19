@@ -5,6 +5,12 @@ date = 2019-08-12T22:00:53Z
 aliases = []
 [extra]
 id = 9763
+task = """
+  Read a joystick's position and continuously move a crosshair on the
+  display to match: centred when the stick is centred, moving toward the
+  edges as it is pushed. Also show the currently pressed buttons. Treat
+  digital joysticks as full-extent movements.
+"""
 [taxonomies]
 categories = ["task", "Joystick"]
 tags = []

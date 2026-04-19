@@ -5,6 +5,10 @@ date = 2015-09-05T01:18:18Z
 aliases = []
 [extra]
 id = 18271
+task = """
+  Display the lyrics of the *99 Bottles of Beer* song using
+  Pascal-family languages.
+"""
 [taxonomies]
 categories = []
 tags = []

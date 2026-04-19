@@ -5,6 +5,10 @@ date = 2019-08-31T13:48:48Z
 aliases = []
 [extra]
 id = 2193
+task = """
+  Demonstrate algebraic data types and pattern matching by implementing
+  insertion into a **red-black tree**, including the rebalancing rules.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

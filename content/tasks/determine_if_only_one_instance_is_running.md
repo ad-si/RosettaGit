@@ -5,6 +5,10 @@ date = 2019-10-10T17:35:35Z
 aliases = []
 [extra]
 id = 2241
+task = """
+  Determine whether another instance of the application is already
+  running. If so, display a message and exit.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

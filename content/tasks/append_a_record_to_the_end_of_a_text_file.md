@@ -5,6 +5,12 @@ date = 2019-09-27T23:46:43Z
 aliases = []
 [extra]
 id = 10507
+task = """
+  Write two records of a `passwd`-style file with typed fields,
+  reopen the file in append mode and add a third record safely
+  (avoiding concurrent overwrites), then read the file back to
+  confirm the new record is at the end.
+"""
 [taxonomies]
 categories = ["File handling", "task"]
 tags = []

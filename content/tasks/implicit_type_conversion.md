@@ -5,6 +5,12 @@ date = 2019-05-29T09:20:41Z
 aliases = []
 [extra]
 id = 13350
+task = """
+  Demonstrate the language's **implicit type conversions**
+  (coercions), giving an example path from the smallest possible
+  variable size to the largest. Indicate whether the language
+  supports user-defined implicit conversions and show one if so.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

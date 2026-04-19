@@ -5,6 +5,9 @@ date = 2019-10-18T18:29:54Z
 aliases = []
 [extra]
 id = 21023
+task = """
+  Get the properties of an object as names, values, or both, using reflection.
+"""
 [taxonomies]
 categories = ["task", "Reflection"]
 tags = []

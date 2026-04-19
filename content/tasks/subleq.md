@@ -5,6 +5,12 @@ date = 2019-10-22T03:19:58Z
 aliases = []
 [extra]
 id = 19060
+task = """
+  Implement an interpreter for the **Subleq** OISC, whose only instruction
+  subtracts the value at address `A` from the value at `B`, branches to `C`
+  if the result is non-positive, and uses `A` or `B` of `-1` for I/O.
+  Run the supplied "Hello, world!" machine-code program.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-05-30T08:10:31Z
 aliases = []
 [extra]
 id = 9850
+task = """
+  List the special variables (those with predefined meaning) used within
+  the language.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

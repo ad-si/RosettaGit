@@ -5,6 +5,12 @@ date = 2019-10-13T00:37:04Z
 aliases = []
 [extra]
 id = 9881
+task = """
+  Demonstrate how to remove the first and last characters from a string,
+  producing three results: string without the first character, string without
+  the last character, and string without both. Must operate on logical code
+  points for UTF-8/UTF-16, not code units.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

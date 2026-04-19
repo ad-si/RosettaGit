@@ -5,6 +5,11 @@ date = 2019-06-11T23:24:25Z
 aliases = []
 [extra]
 id = 10992
+task = """
+  Build a stack-based evaluator for an expression in **Reverse Polish
+  Notation** (RPN) that also displays the stack changes after each
+  token as a table. Test with `3 4 2 * 1 5 - 2 3 ^ ^ / +`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

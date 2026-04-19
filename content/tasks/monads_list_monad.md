@@ -5,6 +5,12 @@ date = 2019-10-03T18:54:01Z
 aliases = []
 [extra]
 id = 20014
+task = """
+  Construct a **List monad** by defining its `bind` and `pure`
+  (return) functions, write two functions of types like
+  `Int -> List Int` and `Int -> List String`, and compose them
+  using `bind`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

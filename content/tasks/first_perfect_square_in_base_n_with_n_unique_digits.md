@@ -5,6 +5,12 @@ date = 2019-10-21T15:44:12Z
 aliases = []
 [extra]
 id = 22334
+task = """
+  For each base `N`, find and display the first perfect square
+  that has at least `N` digits and exactly `N` significant
+  *unique* digits when written in base `N`. Cover bases 2 through
+  12 (optionally 13 through 16, or further with big integers).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

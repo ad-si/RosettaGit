@@ -5,6 +5,12 @@ date = 2019-04-15T17:57:31Z
 aliases = []
 [extra]
 id = 9748
+task = """
+  Print 1-point-wide colored vertical pinstripes spanning the
+  printer width using the sequence black, red, green, blue,
+  magenta, cyan, yellow, white. Widen the stripes by one point
+  each inch down the page, then eject.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-04-24T13:56:11Z
 aliases = []
 [extra]
 id = 7588
+task = """
+  Prompt the user for a location (latitude, longitude, and legal
+  meridian) and compute the hour, sun hour angle, and dial hour
+  line angle for each hour from 6 am to 6 pm for a horizontal
+  sundial at that location.
+"""
 [taxonomies]
 categories = ["task", "sciences"]
 tags = []

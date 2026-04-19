@@ -5,6 +5,11 @@ date = 2019-08-12T14:37:08Z
 aliases = []
 [extra]
 id = 13238
+task = """
+  Create a simple demonstrative example of *currying* in the language,
+  and add any historic detail about how the feature made its way into
+  the language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

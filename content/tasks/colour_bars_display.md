@@ -5,6 +5,11 @@ date = 2019-06-14T20:06:43Z
 aliases = []
 [extra]
 id = 9747
+task = """
+  Display a series of vertical color bars spanning the width of
+  the display, using either the system palette or the sequence
+  black, red, green, magenta, cyan, yellow, white.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

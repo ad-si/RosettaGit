@@ -5,6 +5,12 @@ date = 2019-10-17T04:41:12Z
 aliases = []
 [extra]
 id = 3050
+task = """
+  Write a function that computes the **Ackermann function** `A(m, n)`,
+  defined as `n+1` when `m = 0`, `A(m-1, 1)` when `n = 0`, and
+  `A(m-1, A(m, n-1))` otherwise. Arbitrary precision is preferred
+  since the function grows extremely quickly.
+"""
 [taxonomies]
 categories = ["Recursion", "Memoization", "Classic CS problems and programs", "task"]
 tags = []

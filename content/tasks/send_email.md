@@ -5,6 +5,11 @@ date = 2019-09-17T09:04:55Z
 aliases = []
 [extra]
 id = 4467
+task = """
+  Write a function to send an email, with parameters for `From`,
+  `To`, `Cc`, subject, message text and optional server and
+  login details.
+"""
 [taxonomies]
 categories = ["task", "Networking and Web Interaction"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-09-04T12:13:15Z
 aliases = []
 [extra]
 id = 20964
+task = """
+  Build a **Markov chain** text generator: split a training text into
+  N-word prefixes mapped to possible suffix words, then generate new
+  text by repeatedly picking a random suffix for the current prefix.
+  Support arbitrary key sizes and output lengths.
+"""
 [taxonomies]
 categories = ["Text processing", "Randomness", "Algorithms", "task"]
 tags = []

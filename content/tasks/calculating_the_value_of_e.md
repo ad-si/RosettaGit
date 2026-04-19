@@ -5,6 +5,9 @@ date = 2019-10-18T19:51:02Z
 aliases = []
 [extra]
 id = 21788
+task = """
+  Calculate the value of *e* (Euler's number, Napier's constant).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

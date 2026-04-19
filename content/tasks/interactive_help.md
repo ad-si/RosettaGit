@@ -5,6 +5,11 @@ date = 2019-08-30T16:07:09Z
 aliases = []
 [extra]
 id = 22172
+task = """
+  Demonstrate any interactive or command-line help offered by the
+  language implementation, whether for exploring features and syntax
+  or for pointing to further documentation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

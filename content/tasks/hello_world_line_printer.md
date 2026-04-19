@@ -5,6 +5,11 @@ date = 2019-09-09T17:30:38Z
 aliases = []
 [extra]
 id = 8380
+task = """
+  Cause a line printer attached to the computer to print a line
+  containing the message `Hello World!`. A line printer is not the
+  same as standard output.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

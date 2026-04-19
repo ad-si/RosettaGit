@@ -5,6 +5,11 @@ date = 2019-09-16T17:17:34Z
 aliases = []
 [extra]
 id = 1915
+task = """
+  Using native concurrency syntax or freely available libraries, write a
+  program that displays the strings `Enjoy`, `Rosetta`, `Code` (one per
+  line) in random order using threads, tasks, or co-routines.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

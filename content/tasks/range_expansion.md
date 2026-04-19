@@ -5,6 +5,10 @@ date = 2019-08-12T23:19:55Z
 aliases = []
 [extra]
 id = 7773
+task = """
+  Expand a range description such as `-6,-3--1,3-5,7-11,14,15,17-20`
+  into the full list of integers it represents.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-12T17:22:18Z
 aliases = []
 [extra]
 id = 21925
+task = """
+  Implement the Burrows-Wheeler transform and its inverse.
+  The forward transform rearranges a string into runs of similar
+  characters (useful as a preprocessing step for compression),
+  and the inverse must recover the original string exactly.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

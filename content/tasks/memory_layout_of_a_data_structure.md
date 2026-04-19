@@ -5,6 +5,11 @@ date = 2019-09-08T20:06:28Z
 aliases = []
 [extra]
 id = 1991
+task = """
+  Define a data structure whose memory layout matches an interface
+  control definition, using the 9-pin RS-232 plug definition as the
+  example.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

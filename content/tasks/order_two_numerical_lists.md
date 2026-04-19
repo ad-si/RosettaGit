@@ -5,6 +5,12 @@ date = 2019-07-09T19:43:43Z
 aliases = []
 [extra]
 id = 10957
+task = """
+  Write a function comparing two numeric lists in **lexicographic
+  order**. It returns `true` if the first list should be ordered
+  before the second, comparing elements pairwise; if the first list
+  is exhausted first, return `true`, otherwise `false`.
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

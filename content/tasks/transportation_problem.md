@@ -5,6 +5,12 @@ date = 2019-05-18T18:22:37Z
 aliases = []
 [extra]
 id = 13633
+task = """
+  Solve the classical transportation problem in linear programming using
+  the method of potentials with a redistributive cycle, building the
+  initial plan via the north-west corner rule. Add a fictitious supplier
+  or consumer if supply and demand differ.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

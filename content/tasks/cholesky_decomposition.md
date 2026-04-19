@@ -5,6 +5,11 @@ date = 2019-09-06T22:53:35Z
 aliases = []
 [extra]
 id = 9335
+task = """
+  Compute the Cholesky decomposition of a symmetric, positive-
+  definite matrix `A`, producing the lower triangular matrix `L`
+  such that `A = L * L^T`.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

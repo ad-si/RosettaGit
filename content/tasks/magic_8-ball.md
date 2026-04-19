@@ -5,6 +5,10 @@ date = 2019-10-17T23:26:03Z
 aliases = []
 [extra]
 id = 21805
+task = """
+  Create a **Magic 8-Ball** program that responds to the user's question
+  with a randomly chosen answer from the standard set of replies.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

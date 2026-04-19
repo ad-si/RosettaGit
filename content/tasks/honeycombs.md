@@ -5,6 +5,13 @@ date = 2019-09-05T10:22:22Z
 aliases = []
 [extra]
 id = 9782
+task = """
+  Build a GUI showing 20 hexagonal widgets arranged as a honeycomb
+  (five columns of four, with even columns offset downward), each
+  displaying a unique random capital letter. Let the user pick
+  hexagons by mouse or by typing the matching letter, change their
+  colour on selection, and end once every letter has been chosen.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

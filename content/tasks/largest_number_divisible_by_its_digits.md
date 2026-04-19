@@ -5,6 +5,12 @@ date = 2019-10-02T03:57:03Z
 aliases = []
 [extra]
 id = 21584
+task = """
+  Find the largest base-10 integer with all distinct digits that is
+  evenly divisible by each of its digits (a **Lynch-Bell number**).
+  Digits cannot include zero. Use an actual search rather than
+  hard-coding the answer. Stretch goal: do the same for hexadecimal.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

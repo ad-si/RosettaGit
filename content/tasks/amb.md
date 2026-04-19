@@ -5,6 +5,12 @@ date = 2019-10-02T07:26:55Z
 aliases = []
 [extra]
 id = 2774
+task = """
+  Define and demonstrate the **Amb operator**, which expresses
+  nondeterminism. `Amb(x, y, z)` is taken to yield whichever of its
+  arguments leads to a successful subsequent computation; `Amb()`
+  with no arguments fails. Use it to solve a small constraint puzzle.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

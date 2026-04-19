@@ -5,6 +5,11 @@ date = 2019-10-03T13:11:31Z
 aliases = []
 [extra]
 id = 2305
+task = """
+  Load a JSON string into a data structure, then construct a new data
+  structure and serialize it back to valid JSON, using objects and arrays
+  as appropriate for the language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

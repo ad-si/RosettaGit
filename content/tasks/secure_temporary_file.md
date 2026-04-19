@@ -5,6 +5,12 @@ date = 2019-07-24T21:14:59Z
 aliases = []
 [extra]
 id = 2178
+task = """
+  Create a temporary file securely and exclusively, with no
+  possibility of race conditions. Resolve name collisions
+  automatically and only fail on permission, read-only or
+  full-filesystem errors.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

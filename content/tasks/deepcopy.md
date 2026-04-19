@@ -5,6 +5,12 @@ date = 2018-11-30T23:52:37Z
 aliases = []
 [extra]
 id = 10109
+task = """
+  Demonstrate how to deep-copy data structures containing complex,
+  heterogeneous, and cyclic references so that the copy is independent
+  of the original. Note any limitations and show that the structure
+  and its copy are distinct.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

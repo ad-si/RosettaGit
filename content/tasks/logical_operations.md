@@ -5,6 +5,12 @@ date = 2019-10-11T15:50:40Z
 aliases = []
 [extra]
 id = 2250
+task = """
+  Write a function that takes two boolean values and outputs the
+  result of `and` and `or` on both arguments and `not` on the first.
+  If the language lacks a dedicated boolean type, use the most common
+  substitute. List any additional logical operations such as `xor`.
+"""
 [taxonomies]
 categories = ["task", "Basic Data Operations"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-08-11T17:36:40Z
 aliases = []
 [extra]
 id = 10078
+task = """
+  Analyse a section of monophonic audio waveform for average pitch and
+  output the corresponding sol-fa trigraph (`Doh`, `Ray`, `Mee`, `Fah`,
+  `Soh`, `Lah`, `Tee`, `doh`). Optionally append `+`/`-` to indicate
+  whether the note falls above or below the solfa, and extend the scale
+  to 21 notes. Allow a calibration parameter for different voices.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

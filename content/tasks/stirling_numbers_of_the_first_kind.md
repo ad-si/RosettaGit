@@ -5,6 +5,12 @@ date = 2019-09-20T16:13:23Z
 aliases = []
 [extra]
 id = 22465
+task = """
+  Compute **Stirling numbers of the first kind** `S1(n, k)`, which count
+  permutations of `n` elements with `k` disjoint cycles.
+  Show a triangle up to `S1(12, 12)` and, if big integers are supported,
+  the maximum `S1(100, k)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

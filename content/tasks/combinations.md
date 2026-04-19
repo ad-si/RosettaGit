@@ -5,6 +5,11 @@ date = 2019-08-03T23:31:44Z
 aliases = []
 [extra]
 id = 2405
+task = """
+  Given non-negative integers `m` and `n`, generate all size-`m`
+  combinations of the integers from `0` to `n-1` in sorted order
+  (each combination sorted, and the whole table sorted).
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

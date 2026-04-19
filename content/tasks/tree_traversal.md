@@ -5,6 +5,10 @@ date = 2019-10-20T12:47:25Z
 aliases = []
 [extra]
 id = 4486
+task = """
+  Implement a binary tree of integers and perform pre-order, in-order,
+  post-order, and level-order traversals on a fixed sample tree.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 tags = []

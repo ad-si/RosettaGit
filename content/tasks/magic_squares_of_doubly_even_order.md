@@ -5,6 +5,11 @@ date = 2019-10-05T22:32:59Z
 aliases = []
 [extra]
 id = 20582
+task = """
+  Construct an `8x8` **magic square of doubly even order** (size that is
+  a multiple of four), where every row, column, and both diagonals sum
+  to the same magic constant.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

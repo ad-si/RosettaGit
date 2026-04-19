@@ -5,6 +5,13 @@ date = 2019-10-12T08:31:23Z
 aliases = []
 [extra]
 id = 2251
+task = """
+  Given two integers, perform bitwise AND, OR, and XOR; bitwise
+  NOT on the first; left shift, right shift, right arithmetic
+  shift, left rotate, and right rotate (using the second integer
+  as the shift/rotate amount). Note any operations the language
+  does not support.
+"""
 [taxonomies]
 categories = ["Discrete math", "task"]
 tags = []

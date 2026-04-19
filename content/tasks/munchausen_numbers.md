@@ -5,6 +5,11 @@ date = 2019-09-10T20:53:28Z
 aliases = []
 [extra]
 id = 21120
+task = """
+  Find all Munchausen numbers between 1 and 5000 — natural numbers `n`
+  whose decimal digits each raised to themselves sum to `n` (e.g.
+  `3435 = 3^3 + 4^4 + 3^3 + 5^5`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

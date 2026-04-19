@@ -5,6 +5,11 @@ date = 2019-05-14T23:32:01Z
 aliases = []
 [extra]
 id = 20956
+task = """
+  Merge sorted streams into a single sorted output stream, both for **2 streams**
+  and the general **N-stream** case. Read input streamingly (do not load into memory);
+  the N-way version typically uses a heap of buffered head items.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

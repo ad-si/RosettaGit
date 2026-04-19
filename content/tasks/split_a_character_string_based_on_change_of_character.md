@@ -5,6 +5,11 @@ date = 2019-10-17T21:27:12Z
 aliases = []
 [extra]
 id = 21261
+task = """
+  Split a string into comma-and-blank delimited runs whenever the character
+  changes (left to right). For example `gHHH5YY++///\\` becomes
+  `g, HHH, 5, YY, ++, ///, \\`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

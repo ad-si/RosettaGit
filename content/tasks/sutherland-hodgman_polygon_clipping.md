@@ -5,6 +5,12 @@ date = 2019-09-07T13:54:52Z
 aliases = []
 [extra]
 id = 6634
+task = """
+  Use the Sutherland-Hodgman algorithm to clip a given closed subject
+  polygon by a rectangular clip polygon, printing the points of the
+  resulting clipped polygon. **Extra credit:** display all three
+  polygons graphically with different colors.
+"""
 [taxonomies]
 categories = ["task", "Graphics algorithms"]
 tags = []

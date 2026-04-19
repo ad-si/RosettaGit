@@ -5,6 +5,11 @@ date = 2019-04-29T22:00:44Z
 aliases = []
 [extra]
 id = 4289
+task = """
+  Print an HTTPS URL's content to the console.
+  Checking the host certificate for validity is recommended.
+  The client should not authenticate itself to the server.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

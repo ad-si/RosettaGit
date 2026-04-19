@@ -5,6 +5,11 @@ date = 2019-01-13T03:29:34Z
 aliases = []
 [extra]
 id = 10974
+task = """
+  Given `n` carbon atoms, count all distinct paraffin (alkane) isomers
+  with formula `C_n H_(2n+2)`, treating bond rotations and reorientations
+  as the same molecule and ignoring stereo-isomerism.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

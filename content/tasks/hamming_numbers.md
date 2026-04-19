@@ -5,6 +5,12 @@ date = 2019-08-29T02:02:29Z
 aliases = []
 [extra]
 id = 5030
+task = """
+  Generate **Hamming numbers** (5-smooth numbers of the form
+  `2^i * 3^j * 5^k` with `i, j, k >= 0`) in increasing order. Show
+  the first 20, the 1691st (the last below `2^31`), and, if
+  arbitrary-precision integers are available, the one-millionth.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

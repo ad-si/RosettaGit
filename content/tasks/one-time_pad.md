@@ -5,6 +5,13 @@ date = 2019-06-22T20:40:28Z
 aliases = []
 [extra]
 id = 18243
+task = """
+  Implement a **one-time pad** for letter-only messages. Generate a pad
+  file of true random data of a given length, encrypt and decrypt
+  messages using the pad as the key (Vigenère-style), and optionally
+  manage `.1tp` pad files (list, mark used, delete) where `#` lines
+  are comments and `-` marks lines as already consumed.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

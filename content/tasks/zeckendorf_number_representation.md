@@ -5,6 +5,11 @@ date = 2019-03-27T15:33:22Z
 aliases = []
 [extra]
 id = 12371
+task = """
+  Generate and display a table of the Zeckendorf number representations
+  of the decimal numbers `0` through `20`. The Zeckendorf form expresses
+  an integer as a sum of distinct non-consecutive Fibonacci numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

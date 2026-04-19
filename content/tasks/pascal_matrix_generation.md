@@ -5,6 +5,11 @@ date = 2019-06-07T04:12:02Z
 aliases = []
 [extra]
 id = 19012
+task = """
+  Generate the three forms of the 5-by-5 **Pascal matrix**: upper-triangular
+  (`M[i,j] = jCi`), lower-triangular (its transpose), and the symmetric
+  matrix (`M[i,j] = (i+j)Ci`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

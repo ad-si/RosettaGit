@@ -5,6 +5,13 @@ date = 2019-10-12T22:51:07Z
 aliases = []
 [extra]
 id = 11601
+task = """
+  Wrap a paragraph of text at a specified column. Use a built-in or
+  standard library if available; otherwise implement the minimum-length
+  greedy algorithm. Demonstrate at two different wrap columns. For
+  extra credit, implement a more sophisticated algorithm such as
+  Knuth and Plass.
+"""
 [taxonomies]
 categories = ["Text processing", "String manipulation", "task"]
 tags = []

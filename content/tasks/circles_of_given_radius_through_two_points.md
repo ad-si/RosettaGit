@@ -5,6 +5,12 @@ date = 2019-09-27T22:31:57Z
 aliases = []
 [extra]
 id = 13311
+task = """
+  Write a function that takes two points and a radius and returns
+  the two circles of that radius passing through both points.
+  Handle the special cases: coincident points, points exactly one
+  diameter apart, points too far apart, and `r == 0`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

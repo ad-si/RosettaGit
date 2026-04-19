@@ -5,6 +5,11 @@ date = 2019-05-06T21:35:52Z
 aliases = []
 [extra]
 id = 2840
+task = """
+  Demonstrate multiple inheritance by writing two classes (or interfaces)
+  `Camera` and `MobilePhone`, then a class `CameraPhone` that is both a
+  `Camera` and a `MobilePhone`. No methods need to be implemented.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

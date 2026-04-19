@@ -5,6 +5,13 @@ date = 2019-10-21T23:46:34Z
 aliases = []
 [extra]
 id = 21572
+task = """
+  Implement a finite state machine that supports both explicit
+  transitions (triggered by input signals) and implicit
+  transitions (taken automatically based on the current state).
+  Demonstrate it by modeling a real-world process such as a
+  vending machine.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-09-20T16:14:59Z
 aliases = []
 [extra]
 id = 22466
+task = """
+  Compute **Stirling numbers of the second kind** `S2(n, k)`, which count
+  the partitions of an `n`-element set into `k` non-empty subsets.
+  Show a triangle up to `S2(12, 12)` and, with big integers,
+  the maximum `S2(100, k)`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

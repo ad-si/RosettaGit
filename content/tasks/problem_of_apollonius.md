@@ -5,6 +5,11 @@ date = 2018-09-28T02:22:27Z
 aliases = []
 [extra]
 id = 7941
+task = """
+  Implement an algebraic solution to the Problem of Apollonius:
+  finding a circle tangent to three specified circles, supporting
+  both internal and external tangency.
+"""
 [taxonomies]
 categories = ["task", "arithmetic operations"]
 tags = []

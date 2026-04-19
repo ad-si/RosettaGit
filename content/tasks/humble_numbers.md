@@ -5,6 +5,12 @@ date = 2019-10-08T23:59:48Z
 aliases = []
 [extra]
 id = 22492
+task = """
+  *Humble numbers* (also called 7-smooth numbers) are positive
+  integers with no prime factors greater than `7`.
+  Show the first **50** humble numbers, and for `x` from 1 to `n`
+  show how many humble numbers have `x` decimal digits.
+"""
 [taxonomies]
 categories = ["task", "Prime numbers"]
 tags = []

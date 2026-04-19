@@ -5,6 +5,10 @@ date = 2019-09-06T09:51:14Z
 aliases = []
 [extra]
 id = 1967
+task = """
+  Create an enumeration of constants, both with and without
+  explicitly assigned values.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

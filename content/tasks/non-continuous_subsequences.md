@@ -5,6 +5,12 @@ date = 2019-04-06T01:08:27Z
 aliases = []
 [extra]
 id = 2778
+task = """
+  For a given sequence, find all *non-continuous* subsequences:
+  subsequences that preserve order but have at least one gap between
+  the first and last selected elements. For example, `1,2,3,4` has
+  five: `1,3`, `1,4`, `2,4`, `1,3,4`, `1,2,4`.
+"""
 [taxonomies]
 categories = ["task", "Discrete math"]
 tags = []

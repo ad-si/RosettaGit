@@ -5,6 +5,9 @@ date = 2019-08-24T23:05:23Z
 aliases = []
 [extra]
 id = 21783
+task = """
+  Draw a Cantor set.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-05-12T15:41:03Z
 aliases = []
 [extra]
 id = 4366
+task = """
+  Load and play prerecorded sounds. Demonstrate features such as
+  individual/simultaneous playback, stopping, looping, volume control,
+  stereo positioning, and timed event callbacks.
+"""
 [taxonomies]
 categories = ["task", "Temporal media"]
 tags = []

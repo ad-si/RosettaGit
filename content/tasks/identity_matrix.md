@@ -5,6 +5,11 @@ date = 2019-10-19T09:26:45Z
 aliases = []
 [extra]
 id = 11548
+task = """
+  Build an **identity matrix** of a size known at run-time:
+  a square `n x n` matrix with `1`s on the diagonal and `0`s
+  everywhere else.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

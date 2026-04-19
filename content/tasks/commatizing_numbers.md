@@ -5,6 +5,15 @@ date = 2019-03-19T13:42:37Z
 aliases = []
 [extra]
 id = 17481
+task = """
+  Write a function that inserts commas (or another configurable
+  separator) into the numeric portion of a string. Support custom
+  separator characters, configurable period length (default 3),
+  and a configurable scan start position. Preserve signs,
+  whitespace, exponents, leading zeroes, and any non-numeric
+  surrounding text; return the input unchanged if no suitable
+  number is found.
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "String manipulation", "task"]
 tags = []

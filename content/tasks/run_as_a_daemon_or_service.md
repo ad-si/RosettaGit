@@ -5,6 +5,11 @@ date = 2019-01-31T22:24:57Z
 aliases = []
 [extra]
 id = 10877
+task = """
+  Write a small program that detaches from the terminal to run
+  as a background daemon and writes a message roughly once per
+  second to its stdout (redirected to a file).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

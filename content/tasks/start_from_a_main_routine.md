@@ -5,6 +5,11 @@ date = 2019-08-10T11:12:16Z
 aliases = []
 [extra]
 id = 10077
+task = """
+  Demonstrate how to make an application run a main procedure at startup
+  rather than launching an event-driven window. Languages that always
+  start from `main()` may be omitted.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

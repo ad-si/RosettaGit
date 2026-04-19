@@ -5,6 +5,10 @@ date = 2019-09-24T20:50:28Z
 aliases = []
 [extra]
 id = 9814
+task = """
+  Demonstrate the language's ability to include source code from
+  other files.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

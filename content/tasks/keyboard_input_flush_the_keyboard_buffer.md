@@ -5,6 +5,10 @@ date = 2019-03-02T13:30:29Z
 aliases = []
 [extra]
 id = 8432
+task = """
+  Flush the keyboard buffer by reading and discarding any pending
+  characters, without waiting for the user to type anything.
+"""
 [taxonomies]
 categories = ["task", "Keyboard input"]
 tags = []

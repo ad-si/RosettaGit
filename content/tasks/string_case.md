@@ -5,6 +5,11 @@ date = 2019-10-12T11:18:06Z
 aliases = []
 [extra]
 id = 1933
+task = """
+  Convert the string `alphaBETA` to upper- and lower-case.
+  Also demonstrate any additional case conversions provided by the language
+  (e.g. swap case, capitalize first letter).
+"""
 [taxonomies]
 categories = ["task", "String manipulation"]
 tags = []

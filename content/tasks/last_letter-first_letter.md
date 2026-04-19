@@ -5,6 +5,11 @@ date = 2019-04-22T21:05:28Z
 aliases = []
 [extra]
 id = 9878
+task = """
+  Given 70 English Pokemon names, find the longest sequence in which
+  each successive name begins with the final letter of the previous
+  one, with no name repeated.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

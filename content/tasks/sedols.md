@@ -5,6 +5,10 @@ date = 2019-09-12T14:12:28Z
 aliases = []
 [extra]
 id = 2960
+task = """
+  For each of a list of 6-digit **SEDOL** codes, calculate and
+  append the checksum digit to produce the full 7-character SEDOL.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-07T22:28:31Z
 aliases = []
 [extra]
 id = 1760
+task = """
+  Construct a simple DOM tree and serialize it to an XML document with
+  a `<root>` element containing an `<element>` whose text content is
+  *Some text here*.
+"""
 [taxonomies]
 categories = ["task", "XML"]
 tags = []

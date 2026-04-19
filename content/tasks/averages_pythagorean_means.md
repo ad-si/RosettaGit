@@ -5,6 +5,11 @@ date = 2019-10-09T18:26:14Z
 aliases = []
 [extra]
 id = 6095
+task = """
+  Compute the three Pythagorean means
+  (arithmetic, geometric, and harmonic) of the integers `1..10`,
+  and verify the inequality `A >= G >= H`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

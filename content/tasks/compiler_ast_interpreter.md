@@ -5,6 +5,14 @@ date = 2019-05-18T14:05:10Z
 aliases = []
 [extra]
 id = 21167
+task = """
+  Implement an interpreter that walks an abstract syntax tree
+  produced by the companion *syntax analyzer* task. Load the AST
+  in the specified serialized form, then recursively evaluate
+  nodes for integers, strings, identifiers, assignments, unary
+  and binary operators, `If`, `While`, `Prtc`/`Prti`/`Prts`, and
+  `Sequence`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-06T04:52:36Z
 aliases = []
 [extra]
 id = 12743
+task = """
+  Let `f` be a uniformly random mapping from `1..N` to `1..N`.
+  For each `N`, estimate by simulation the average length of the
+  sequence `1, f(1), f(f(1)), ...` until the first repetition.
+  Also compute the expected length analytically and optionally
+  compare the simulated and theoretical results.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

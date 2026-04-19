@@ -5,6 +5,11 @@ date = 2019-10-08T02:48:51Z
 aliases = []
 [extra]
 id = 14402
+task = """
+  Read a CSV file, change some values, and save the changes back to a
+  file. Optionally add a `SUM` column containing the row sums, and
+  illustrate use of built-in or standard CSV libraries where possible.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

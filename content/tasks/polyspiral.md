@@ -5,6 +5,11 @@ date = 2019-10-14T00:46:17Z
 aliases = []
 [extra]
 id = 20435
+task = """
+  Animate a series of **polyspirals** (spirals built from line
+  segments that grow in length and turn by a given angle). Draw each
+  full spiral as a frame, incrementing the turn angle between frames.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-07-23T02:33:41Z
 aliases = []
 [extra]
 id = 17833
+task = """
+  Implement a function that creates a directory and any missing parent
+  directories from a single path string (like `mkdir -p`), returning
+  successfully if the directory already exists.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

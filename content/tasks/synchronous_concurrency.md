@@ -5,6 +5,12 @@ date = 2019-08-17T22:53:32Z
 aliases = []
 [extra]
 id = 1930
+task = """
+  Create two concurrent threads/tasks that share data synchronously: one
+  reads `input.txt` line by line and sends each line to the other, which
+  prints it and counts the lines. After the last line, the reader requests
+  the count and prints it. Both units must terminate cleanly.
+"""
 [taxonomies]
 categories = ["task", "Concurrency"]
 tags = []

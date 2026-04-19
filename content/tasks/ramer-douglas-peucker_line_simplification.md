@@ -5,6 +5,12 @@ date = 2019-08-19T20:11:35Z
 aliases = []
 [extra]
 id = 21223
+task = """
+  Use the Ramer-Douglas-Peucker algorithm to simplify the 2D line
+  defined by `(0,0) (1,0.1) (2,-0.1) (3,5) (4,6) (5,7) (6,8.1)
+  (7,9) (8,9) (9,9)` with an error threshold of `1.0`, and display
+  the remaining points.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

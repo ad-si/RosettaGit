@@ -5,6 +5,12 @@ date = 2019-10-21T10:50:46Z
 aliases = []
 [extra]
 id = 10244
+task = """
+  Show how to access private or protected members of a class from
+  outside an instance, without going through any non-private
+  proxy. Demonstrate the language's reflection or escape-hatch
+  mechanism rather than raw memory peeks.
+"""
 [taxonomies]
 categories = ["Object oriented", "task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-06-21T00:00:50Z
 aliases = []
 [extra]
 id = 3099
+task = """
+  Implement an *active* integrator object whose state evolves with
+  time. It exposes `Input(f)` to set the input as a function of time
+  and `Output()` to read the running integral of that input (via the
+  trapezoidal rule). Test it by feeding `sin(2π·0.5·t)` for 2s, then
+  constant `0` for 0.5s, and verify the output is approximately `0`.
+"""
 [taxonomies]
 categories = ["Object oriented", "Concurrency", "task"]
 tags = []

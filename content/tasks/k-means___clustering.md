@@ -5,6 +5,11 @@ date = 2019-08-31T05:55:39Z
 aliases = []
 [extra]
 id = 9798
+task = """
+  Implement the **K-means++** clustering algorithm. Provide a function
+  that takes the number of clusters `K` and a dataset of Cartesian
+  points, and returns the resulting clusters.
+"""
 [taxonomies]
 categories = ["task", "Probability and statistics"]
 tags = []

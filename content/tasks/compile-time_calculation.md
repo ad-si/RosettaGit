@@ -5,6 +5,11 @@ date = 2019-08-09T15:14:27Z
 aliases = []
 [extra]
 id = 5380
+task = """
+  Compute `10!` (ten factorial) at compile time, then print the
+  result when the program runs. Discuss the limitations of
+  compile-time calculation in the language.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

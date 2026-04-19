@@ -5,6 +5,11 @@ date = 2019-10-18T20:11:48Z
 aliases = []
 [extra]
 id = 4088
+task = """
+  Implement *gnome sort*, similar to insertion sort but moving each
+  element into place via a series of adjacent swaps as in bubble
+  sort.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

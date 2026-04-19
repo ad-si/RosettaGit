@@ -5,6 +5,12 @@ date = 2019-10-16T00:30:48Z
 aliases = []
 [extra]
 id = 17124
+task = """
+  Write a program that solves a system of linear congruences using
+  the Chinese Remainder Theorem, returning the unique solution in
+  `[0, n1*n2*...*nk)` or indicating failure. Demonstrate with
+  `n = [3, 5, 7]` and `a = [2, 3, 2]`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

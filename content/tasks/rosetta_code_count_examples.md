@@ -5,6 +5,11 @@ date = 2019-07-24T15:18:40Z
 aliases = []
 [extra]
 id = 3363
+task = """
+  For each Rosetta Code task, count the number of programming
+  examples (occurrences of `=={{header|`) and report the total
+  across all tasks via the MediaWiki API.
+"""
 [taxonomies]
 categories = ["task", "Rosetta Code related"]
 tags = []

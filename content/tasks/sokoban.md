@@ -5,6 +5,13 @@ date = 2019-06-02T08:15:01Z
 aliases = []
 [extra]
 id = 9801
+task = """
+  Find a solution to a given **Sokoban** level. Any method may be
+  used, but move-, push-, or otherwise -optimal solutions are
+  preferred. Levels use the standard character grid (`#` wall, `@`
+  player, `$` box, `.` goal); solutions are typically given in LURD
+  notation.
+"""
 [taxonomies]
 categories = ["Games", "Puzzles", "AI", "task"]
 tags = []

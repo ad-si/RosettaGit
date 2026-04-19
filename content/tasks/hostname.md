@@ -5,6 +5,9 @@ date = 2019-10-20T02:12:28Z
 aliases = []
 [extra]
 id = 1909
+task = """
+  Find the name of the host on which the routine is running.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

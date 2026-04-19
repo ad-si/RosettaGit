@@ -5,6 +5,10 @@ date = 2019-10-12T12:34:15Z
 aliases = []
 [extra]
 id = 1555
+task = """
+  Display a GUI window. The window need not have any contents, but
+  should respond to requests to be closed.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

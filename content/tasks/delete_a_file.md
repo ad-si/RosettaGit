@@ -5,6 +5,11 @@ date = 2019-09-09T16:46:36Z
 aliases = []
 [extra]
 id = 2029
+task = """
+  Delete a file named `input.txt` and a directory named `docs`. Do
+  this twice: once in the current working directory and once at the
+  filesystem root.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-09-05T10:22:07Z
 aliases = []
 [extra]
 id = 12297
+task = """
+  Simulate the dice game **Pig** for two players. On each turn a
+  player either rolls (adding 2-6 to the turn score, but losing it on
+  a 1) or holds (banking the turn score). First to 100 wins.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

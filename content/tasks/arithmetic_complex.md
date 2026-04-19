@@ -5,6 +5,11 @@ date = 2019-06-22T14:50:59Z
 aliases = []
 [extra]
 id = 2688
+task = """
+  Show addition, multiplication, negation, and inversion of complex
+  numbers in separate functions, and print the result of each.
+  Optionally demonstrate complex conjugation.
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "task"]
 tags = []

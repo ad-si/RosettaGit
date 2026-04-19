@@ -5,6 +5,12 @@ date = 2019-02-03T01:33:53Z
 aliases = []
 [extra]
 id = 2438
+task = """
+  Measure and plot the relative performance of several sorting
+  algorithm implementations. Time each on three input types — all
+  ones, ascending range, and shuffled range — across varying
+  sequence lengths, then plot execution time against length.
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

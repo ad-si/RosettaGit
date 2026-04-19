@@ -5,6 +5,12 @@ date = 2019-09-27T00:44:23Z
 aliases = []
 [extra]
 id = 17458
+task = """
+  Write a generator of prime numbers, in order, that automatically
+  adjusts to produce any reasonably high prime. Use it to show the
+  first twenty primes, the primes between `100` and `150`, the count
+  of primes between `7,700` and `8,000`, and the `10,000`th prime.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

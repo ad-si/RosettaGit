@@ -5,6 +5,13 @@ date = 2019-09-28T16:26:51Z
 aliases = []
 [extra]
 id = 22457
+task = """
+  A *Brazilian number* `N` has at least one base `B` (with
+  `1 < B < N-1`) in which `N` is written with all equal digits.
+  Write a routine to test if a number is Brazilian and print the
+  first 20 Brazilian numbers, the first 20 odd ones, and the first
+  20 prime ones.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,14 @@ date = 2019-10-15T18:26:41Z
 aliases = []
 [extra]
 id = 19505
+task = """
+  Given a hierarchical tree of tasks where leaves have
+  fractional completion and branches have optional weights,
+  compute and display each node's rolled-up weighted coverage
+  (missing weights default to `1.0`, missing coverage to `0.0`).
+  Also report how much each node's coverage would change if
+  it were increased by `0.5`.
+"""
 [taxonomies]
 categories = ["Data structures", "Tree structures", "task"]
 tags = []

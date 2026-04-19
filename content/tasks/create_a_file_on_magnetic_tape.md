@@ -5,6 +5,9 @@ date = 2019-10-21T03:03:42Z
 aliases = []
 [extra]
 id = 12431
+task = """
+  Create a new file called `TAPE.FILE` of any size on **magnetic tape**.
+"""
 [taxonomies]
 categories = ["task", "File System Operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-08-20T14:02:42Z
 aliases = []
 [extra]
 id = 11080
+task = """
+  Find the last 40 decimal digits of `a^b` for very large `a` and
+  `b` using a fast modular exponentiation algorithm that works for
+  any integers with `b >= 0` and `m > 0`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

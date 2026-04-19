@@ -5,6 +5,11 @@ date = 2019-10-08T10:22:28Z
 aliases = []
 [extra]
 id = 21382
+task = """
+  Output every assignment of distinct numbers in `1..7` to the police,
+  sanitation, and fire departments such that the three numbers sum to
+  `12` and the police number is even.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

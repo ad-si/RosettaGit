@@ -5,6 +5,11 @@ date = 2019-04-12T13:20:47Z
 aliases = []
 [extra]
 id = 2833
+task = """
+  Show the syntax for completely stopping a program from inside a
+  conditional, terminating all threads and processes. Explain any
+  cleanup of memory, files, connections, and exit hooks.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

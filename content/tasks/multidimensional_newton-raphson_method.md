@@ -5,6 +5,10 @@ date = 2019-07-29T10:02:57Z
 aliases = []
 [extra]
 id = 21754
+task = """
+  Find and print the root of a system of nonlinear equations using the
+  multidimensional Newton-Raphson method.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

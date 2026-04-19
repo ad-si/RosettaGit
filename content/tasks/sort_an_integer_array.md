@@ -5,6 +5,10 @@ date = 2019-10-18T19:37:44Z
 aliases = []
 [extra]
 id = 1846
+task = """
+  Sort an array (or list) of integers in ascending numerical order,
+  preferring a sorting facility provided by the language or library.
+"""
 [taxonomies]
 categories = ["task", "Sorting"]
 tags = []

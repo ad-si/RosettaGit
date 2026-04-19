@@ -5,6 +5,11 @@ date = 2019-08-21T15:22:31Z
 aliases = []
 [extra]
 id = 12312
+task = """
+  Show how *reduce* (or *foldl* / *foldr*) works or would be implemented
+  in your language — a function that combines successive elements of a
+  list into a single value using a binary operation.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

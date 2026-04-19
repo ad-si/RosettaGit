@@ -5,6 +5,10 @@ date = 2019-09-15T15:27:10Z
 aliases = []
 [extra]
 id = 1986
+task = """
+  Demonstrate how to specify the minimum size of a variable
+  or a data type.
+"""
 [taxonomies]
 categories = ["task", "Type System"]
 tags = []

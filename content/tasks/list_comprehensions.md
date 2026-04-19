@@ -5,6 +5,12 @@ date = 2018-11-24T23:37:50Z
 aliases = []
 [extra]
 id = 2197
+task = """
+  Write a list comprehension that builds the list of all Pythagorean
+  triples with elements between `1` and `n`. If the language has
+  multiple comprehension-like constructs (e.g. comprehensions and
+  generators), provide one example for each.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

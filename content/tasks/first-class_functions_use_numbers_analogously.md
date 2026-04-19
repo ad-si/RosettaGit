@@ -5,6 +5,15 @@ date = 2019-10-18T10:27:50Z
 aliases = []
 [extra]
 id = 4649
+task = """
+  Build an ordered collection of real numbers (some literal,
+  some computed) plus a parallel collection of their
+  multiplicative inverses. Define `multiplier(n1, n2)` returning
+  a function `f(m) = n1 * n2 * m`, then show that for each pair
+  the multiplier applied to any value yields that value (since
+  the product is one). Compare the result with the corresponding
+  *First-class functions* solution.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

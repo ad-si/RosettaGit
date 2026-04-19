@@ -5,6 +5,11 @@ date = 2019-10-18T02:20:13Z
 aliases = []
 [extra]
 id = 18731
+task = """
+  Write a function that returns the longest common *substring* (a
+  contiguous run of characters) of two strings, then demonstrate it
+  on `"thisisatest"` and `"testing123testing"` (expected: `"test"`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

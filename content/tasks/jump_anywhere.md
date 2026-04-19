@@ -5,6 +5,10 @@ date = 2019-10-07T18:00:57Z
 aliases = []
 [extra]
 id = 9722
+task = """
+  Demonstrate a *local* jump and a *global* jump,
+  along with any other types of jumps the language supports.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-03-01T11:35:59Z
 aliases = []
 [extra]
 id = 14267
+task = """
+  Read a series of numbers separated by whitespace or commas and emit a
+  one-line bar graph using the Unicode block characters
+  `▁▂▃▄▅▆▇█` (U+2581 - U+2588).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

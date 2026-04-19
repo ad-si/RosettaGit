@@ -5,6 +5,10 @@ date = 2019-09-16T21:06:35Z
 aliases = []
 [extra]
 id = 17215
+task = """
+  Determine whether a given natural number is a **semiprime**, i.e.
+  the product of exactly two (possibly equal) prime numbers.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-10-17T03:29:22Z
 aliases = []
 [extra]
 id = 19182
+task = """
+  Given two lists of data, compute the two-tailed *p-value* for
+  **Welch's t-test**, equivalent to R's
+  `t.test(vector1, vector2, alternative="two.sided", var.equal=FALSE)`.
+  Test with `x = {3.0, 4.0, 1.0, 2.1}` and
+  `y = {490.2, 340.0, 433.9}`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

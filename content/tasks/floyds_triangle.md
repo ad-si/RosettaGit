@@ -5,6 +5,14 @@ date = 2019-10-10T07:24:58Z
 aliases = []
 [extra]
 id = 11906
+task = """
+  Generate and display the first `n` lines of Floyd's triangle
+  (a left-aligned right triangle of consecutive natural numbers
+  starting at 1, with the *k*-th row containing `k` entries).
+  Show output for `n = 5` and `n = 14`, with columns aligned in
+  a monospace font and a single space separating the numbers in
+  the last row.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

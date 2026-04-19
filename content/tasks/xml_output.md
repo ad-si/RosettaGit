@@ -5,6 +5,13 @@ date = 2019-10-03T10:58:53Z
 aliases = []
 [extra]
 id = 3274
+task = """
+  Write a function that takes a list of character names and a list of
+  corresponding remarks and returns an XML document of `<Character>`
+  elements (each with a `name` attribute and enclosing its remarks),
+  all wrapped in an outer `<CharacterRemarks>` element. Properly
+  escape special characters.
+"""
 [taxonomies]
 categories = ["task", "XML"]
 tags = []

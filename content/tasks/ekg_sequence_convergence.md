@@ -5,6 +5,13 @@ date = 2019-04-08T21:57:15Z
 aliases = []
 [extra]
 id = 21942
+task = """
+  The **EKG(N)** sequence starts `1, N, ...` and each subsequent
+  term is the smallest unused natural number sharing a prime factor
+  with the previous term. Show the first 10 members of `EKG(2)`,
+  `EKG(5)`, `EKG(7)`, `EKG(9)`, and `EKG(10)`, and find the term at
+  which `EKG(5)` and `EKG(7)` converge.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-06-09T22:11:36Z
 aliases = []
 [extra]
 id = 12279
+task = """
+  Compile an authorship list for Rosetta Code task
+  descriptions by walking page revisions and recording the
+  author whenever the description portion changes.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-01-05T17:55:43Z
 aliases = []
 [extra]
 id = 18460
+task = """
+  Sort an array of integers in ascending order using *circle sort*:
+  compare opposite-end pairs while moving inward, then recurse on
+  the two halves, repeating until no swaps occur.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

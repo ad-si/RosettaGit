@@ -5,6 +5,12 @@ date = 2019-10-08T02:59:02Z
 aliases = []
 [extra]
 id = 8707
+task = """
+  Given a string of CSV data (newline-separated rows, comma-separated
+  columns, no commas in fields), write a function that returns an HTML
+  table representing it, escaping HTML-special characters as needed.
+  Optionally format the first row as a `<thead>` header row.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

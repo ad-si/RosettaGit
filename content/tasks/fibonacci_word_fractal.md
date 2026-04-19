@@ -5,6 +5,12 @@ date = 2018-09-21T22:13:07Z
 aliases = []
 [extra]
 id = 15306
+task = """
+  Render the **Fibonacci word fractal** by walking the Fibonacci
+  word one character at a time: draw a forward segment, and when the
+  current character is `0` turn left if its index is even, otherwise
+  turn right.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

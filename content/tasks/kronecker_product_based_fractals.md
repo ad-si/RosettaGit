@@ -5,6 +5,12 @@ date = 2019-07-12T13:24:48Z
 aliases = []
 [extra]
 id = 21345
+task = """
+  Using the **Kronecker product**, implement `matkronpow(M, n)` that
+  computes the *n*-th Kronecker power of a 0/1 matrix. Use it to
+  generate and display the **Vicsek fractal** and the **Sierpinski
+  carpet** (order at least 4) from the two given seed matrices.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

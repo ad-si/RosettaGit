@@ -5,6 +5,13 @@ date = 2019-09-22T20:03:23Z
 aliases = []
 [extra]
 id = 12966
+task = """
+  Emulate an audio frequency generator that produces a continuous
+  monotone with adjustable frequency and volume.
+  Detect available sound hardware, play the tone, allow the user
+  to adjust frequency and volume, and silence the output on exit.
+  Optionally support multiple waveforms (sine, square, sawtooth).
+"""
 [taxonomies]
 categories = ["Electronics", "Sciences", "Sound", "Temporal media", "task"]
 tags = []

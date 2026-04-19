@@ -5,6 +5,12 @@ date = 2019-10-06T04:57:23Z
 aliases = []
 [extra]
 id = 11986
+task = """
+  Map times of day to angles (24 hours = 360°) and use the mean
+  angle technique to compute the average of the times
+  `23:00:17`, `23:40:20`, `00:12:45`, and `00:17:19`,
+  accurate to one second.
+"""
 [taxonomies]
 categories = ["Date and time", "Statistics", "Mathematics", "task"]
 tags = []

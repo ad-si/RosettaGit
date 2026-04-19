@@ -5,6 +5,14 @@ date = 2019-06-10T05:31:17Z
 aliases = []
 [extra]
 id = 17599
+task = """
+  Given a list `M` and a sublist `N` whose items are drawn from `M`,
+  produce `M'` by leaving non-`N` items in place and re-filling the
+  positions originally occupied by the first occurrences of `N`'s
+  items with the items in the order given by `N`. For example,
+  `M = 'the cat sat on the mat'`, `N = 'mat cat'` yields
+  `'the mat sat on the cat'`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2019-09-16T02:13:14Z
 aliases = []
 [extra]
 id = 22496
+task = """
+  **n-smooth** numbers are positive integers whose prime factors are all
+  no greater than `n` (where `n` itself is prime).
+  Show the first 25 n-smooth numbers for `n = 2` through `n = 29`,
+  and three numbers starting at the 3000th n-smooth number for the
+  same range.
+"""
 [taxonomies]
 categories = ["task", "Prime numbers"]
 tags = []

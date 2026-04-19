@@ -5,6 +5,11 @@ date = 2019-10-18T10:31:38Z
 aliases = []
 [extra]
 id = 2119
+task = """
+  Write a generic swap function or operator that exchanges the values
+  of two variables (or any two assignable storage places) regardless
+  of their types. Describe how the language provides genericity.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

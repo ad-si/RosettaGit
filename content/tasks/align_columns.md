@@ -5,6 +5,13 @@ date = 2019-08-11T11:03:41Z
 aliases = []
 [extra]
 id = 3114
+task = """
+  Given a text file whose lines contain fields separated by a single
+  `$` character, write a program that aligns each column so that
+  words in every column are separated by at least one space. Support
+  left, right, and center justification (all columns share the same
+  alignment).
+"""
 [taxonomies]
 categories = ["Text processing", "task"]
 tags = []

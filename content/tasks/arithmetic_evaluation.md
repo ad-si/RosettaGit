@@ -5,6 +5,12 @@ date = 2019-08-21T23:09:59Z
 aliases = []
 [extra]
 id = 2414
+task = """
+  Parse an arithmetic expression string (e.g. `(1+3)*7`) into an
+  abstract syntax tree, then evaluate the AST. Support the binary
+  operators `+`, `-`, `*`, `/` with conventional precedence and
+  parentheses for grouping. Do not delegate to `eval` or similar.
+"""
 [taxonomies]
 categories = ["Recursion", "task"]
 tags = []

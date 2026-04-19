@@ -5,6 +5,11 @@ date = 2019-09-19T16:53:08Z
 aliases = []
 [extra]
 id = 21307
+task = """
+  Verify the check digit (last character) of a 9-character **CUSIP**
+  code using the standard CUSIP check-digit algorithm, and validate a
+  given list of CUSIPs.
+"""
 [taxonomies]
 categories = ["task", "Checksums"]
 tags = []

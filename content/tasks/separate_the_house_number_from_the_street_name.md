@@ -5,6 +5,11 @@ date = 2019-06-08T21:30:33Z
 aliases = []
 [extra]
 id = 17696
+task = """
+  Given Dutch/German postal addresses where the house number follows
+  the street name, separate the two correctly even when street names
+  contain numbers and house numbers contain letter extensions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

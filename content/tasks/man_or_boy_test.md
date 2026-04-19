@@ -5,6 +5,11 @@ date = 2019-10-18T11:26:38Z
 aliases = []
 [extra]
 id = 2426
+task = """
+  Imitate Knuth's ALGOL 60 **man or boy test** in another language to
+  check correct handling of recursion and non-local references via
+  activation records. A correct implementation produces `-67`.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-06-21T16:32:49Z
 aliases = []
 [extra]
 id = 4576
+task = """
+  Multiply two integers using the Ethiopian method, which relies
+  only on doubling, halving, and addition. Define three named
+  helpers — `halve`, `double`, and `is_even` — and combine them
+  into a function that performs the multiplication.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

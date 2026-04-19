@@ -5,6 +5,12 @@ date = 2019-10-06T04:58:23Z
 aliases = []
 [extra]
 id = 4376
+task = """
+  Write a program to find the median of a vector
+  of floating-point numbers.
+  Handle vectors with an even number of elements
+  by averaging the two middle values.
+"""
 [taxonomies]
 categories = ["Probability and statistics", "task"]
 tags = []

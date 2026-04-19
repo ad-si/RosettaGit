@@ -5,6 +5,10 @@ date = 2019-10-17T04:50:16Z
 aliases = []
 [extra]
 id = 1970
+task = """
+  Implement a **stack** (LIFO container) supporting the basic operations
+  `push`, `pop`, and `empty`.
+"""
 [taxonomies]
 categories = ["task", "Data Structures"]
 languages = [

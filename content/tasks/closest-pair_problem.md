@@ -5,6 +5,12 @@ date = 2019-08-10T22:23:13Z
 aliases = []
 [extra]
 id = 4142
+task = """
+  Provide a function that finds the two closest points among a set
+  of points in the plane (the planar *closest pair of points*
+  problem). A brute-force `O(n²)` solution is acceptable, though a
+  divide-and-conquer `O(n log n)` algorithm is preferred.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 languages = [

@@ -5,6 +5,11 @@ date = 2019-09-13T21:59:12Z
 aliases = []
 [extra]
 id = 2410
+task = """
+  Read a duration from input, print `Sleeping...`, sleep the main
+  thread for that duration, then print `Awake!` and exit. Note the
+  time unit used.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-07-09T05:11:58Z
 aliases = []
 [extra]
 id = 21940
+task = """
+  Find **long primes** (full reptend primes), i.e. primes whose
+  reciprocal in decimal has a repeating period of length one less
+  than the prime. List all long primes up to `500` and report counts
+  up to `1,000`, `2,000`, ..., `64,000`.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

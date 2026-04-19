@@ -5,6 +5,11 @@ date = 2019-04-30T06:32:43Z
 aliases = []
 [extra]
 id = 18815
+task = """
+  Implement *jortSort*: a function that takes an array of comparable
+  values, sorts a copy in ascending order, and returns `true` if the
+  original was already sorted, `false` otherwise.
+"""
 [taxonomies]
 categories = ["Sorting", "Algorithms", "Humor", "task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-19T03:57:53Z
 aliases = []
 [extra]
 id = 21185
+task = """
+  Implement a simple **Mastermind** game. Allow choosing the number of
+  colors (2-20), code length (4-10), maximum guesses (7-20), and whether
+  colors may repeat. Display each guess and feedback on correct
+  colors and positions.
+"""
 [taxonomies]
 categories = ["Puzzles", "Games", "task"]
 tags = []

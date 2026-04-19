@@ -5,6 +5,10 @@ date = 2019-10-13T00:59:23Z
 aliases = []
 [extra]
 id = 8640
+task = """
+  Remove text following any of a given set of comment markers (e.g. `#` or `;`)
+  from an input line, and trim leading and trailing whitespace from the result.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

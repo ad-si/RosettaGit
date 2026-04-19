@@ -5,6 +5,11 @@ date = 2019-10-20T18:30:38Z
 aliases = []
 [extra]
 id = 22107
+task = """
+  Implement the **Matrix digital rain** visual effect from the movie
+  *The Matrix*: cascading streams of random characters falling down
+  the screen.
+"""
 [taxonomies]
 categories = ["Graphics", "Animation", "User interface", "task"]
 tags = []

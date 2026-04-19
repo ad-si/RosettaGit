@@ -5,6 +5,11 @@ date = 2019-10-14T14:43:45Z
 aliases = []
 [extra]
 id = 2434
+task = """
+  Use the system's finest-granularity timer to measure how long a function
+  takes to execute, preferring CPU/process time over wall-clock time when
+  possible.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-01-03T19:49:45Z
 aliases = []
 [extra]
 id = 8644
+task = """
+  Strip block comments (delimited by `/*` and `*/`) from C-like program text,
+  handling simple, non-nested, multi-line comments.
+  For extra credit, allow the caller to specify the delimiters.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-08-29T16:29:42Z
 aliases = []
 [extra]
 id = 8413
+task = """
+  Move the cursor to column 3, row 6 and display `Hello`, so that the
+  letter `H` is in column 3 on row 6.
+"""
 [taxonomies]
 categories = ["task", "Terminal control"]
 tags = []

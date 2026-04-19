@@ -5,6 +5,13 @@ date = 2019-08-10T09:25:53Z
 aliases = []
 [extra]
 id = 8059
+task = """
+  Build a GUI form with a numeric `Value` field (init zero), an
+  `increment` button, and a `decrement` button. Dynamically enable
+  or disable controls based on state: the field is editable only
+  when zero, `increment` is enabled only while the value is below
+  `10`, and `decrement` is enabled only while the value is above `0`.
+"""
 [taxonomies]
 categories = ["task", "GUI"]
 tags = []

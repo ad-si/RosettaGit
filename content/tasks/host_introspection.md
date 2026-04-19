@@ -5,6 +5,9 @@ date = 2019-03-16T20:16:03Z
 aliases = []
 [extra]
 id = 3077
+task = """
+  Print the **word size** and **endianness** of the host machine.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

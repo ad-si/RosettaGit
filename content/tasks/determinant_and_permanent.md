@@ -5,6 +5,10 @@ date = 2019-10-08T10:26:45Z
 aliases = []
 [extra]
 id = 11931
+task = """
+  For a given matrix, compute and return both its **determinant** and
+  its **permanent**.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2019-10-22T03:45:25Z
 aliases = []
 [extra]
 id = 18225
+task = """
+  Given the phrase `rosetta code phrase reversal`, produce three
+  outputs: the entire string reversed character-by-character;
+  each word reversed in place with word order preserved; and the
+  word order reversed with characters within each word intact.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-07-18T10:43:17Z
 aliases = []
 [extra]
 id = 2973
+task = """
+  Search for a user in Active Directory (or an LDAP directory) after
+  connecting to the server.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 tags = []

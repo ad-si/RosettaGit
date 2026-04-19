@@ -5,6 +5,12 @@ date = 2018-05-27T19:15:28Z
 aliases = []
 [extra]
 id = 7892
+task = """
+  Solve the **Stable Marriage Problem** using the Gale-Shapley algorithm
+  for the given 10 men and 10 women with their full ranked preference
+  lists. Then perturb the result into an unstable matching and verify
+  that stability check.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

@@ -5,6 +5,11 @@ date = 2019-04-15T19:46:30Z
 aliases = []
 [extra]
 id = 3139
+task = """
+  Demonstrate *call by name* by implementing Jensen's Device: a `sum`
+  procedure that takes the loop variable, bounds, and a term expression
+  by name, then computes the 100th harmonic number as `sum(i, 1, 100, 1/i)`.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

@@ -5,6 +5,12 @@ date = 2018-10-04T22:44:00Z
 aliases = []
 [extra]
 id = 12454
+task = """
+  Write mutually inverse functions that map between a permutation
+  of `0..n-1` and its integer **rank** in `0..n!-1`. Verify that
+  they are inverses for `n = 3`, then use them to draw 4 random,
+  distinct sample permutations of 12 items.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

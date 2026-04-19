@@ -5,6 +5,11 @@ date = 2019-02-22T04:25:29Z
 aliases = []
 [extra]
 id = 12298
+task = """
+  Extend the **Pig** dice game simulator with at least one
+  computer-player strategy. Describe the strategy and show a sample
+  game. Optionally compare strategies over many simulated games.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

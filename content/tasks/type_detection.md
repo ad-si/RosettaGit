@@ -5,6 +5,11 @@ date = 2019-10-03T17:58:25Z
 aliases = []
 [extra]
 id = 19626
+task = """
+  Write a function that prints a block of text and demonstrate calling
+  it with arguments of two different types. Use pattern matching,
+  multi-methods, dynamic dispatch, tagged structures, or coercion.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,12 @@ date = 2018-05-04T15:31:54Z
 aliases = []
 [extra]
 id = 4352
+task = """
+  Parse a string containing a number in some base (decimal, hex,
+  octal, binary, etc.) into an integer using the language's built-in
+  facilities. Show base-guessing from prefixes (e.g. `0x`) if
+  supported.
+"""
 [taxonomies]
 categories = ["task", "Arithmetic operations"]
 tags = []

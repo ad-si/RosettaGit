@@ -5,6 +5,11 @@ date = 2019-08-25T21:45:18Z
 aliases = []
 [extra]
 id = 13183
+task = """
+  Generate the **Harshad** (or **Niven**) numbers, the positive integers
+  divisible by the sum of their digits, in increasing order.
+  For example, `42` is Harshad because `4 + 2 = 6` divides `42`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

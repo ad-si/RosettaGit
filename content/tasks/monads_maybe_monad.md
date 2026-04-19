@@ -5,6 +5,11 @@ date = 2019-10-21T12:40:52Z
 aliases = []
 [extra]
 id = 20016
+task = """
+  Construct a `Maybe` monad with `bind` and `unit` (return), then write
+  two functions like `Int -> Maybe Int` and `Int -> Maybe String` and
+  compose them using `bind`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

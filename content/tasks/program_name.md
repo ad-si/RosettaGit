@@ -5,6 +5,11 @@ date = 2019-10-04T04:45:37Z
 aliases = []
 [extra]
 id = 10242
+task = """
+  Programmatically obtain the name used to invoke the running program
+  (for example, distinguishing whether the user ran `python hello.py`
+  or another script that imports it).
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

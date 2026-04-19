@@ -5,6 +5,11 @@ date = 2019-10-18T20:10:38Z
 aliases = []
 [extra]
 id = 5382
+task = """
+  Implement a *comb sort*, a bubble-sort variant that compares
+  elements separated by a shrinking gap (typically divided by ~1.3
+  each pass) until the gap reaches 1.
+"""
 [taxonomies]
 categories = ["task", "Sorting Algorithms"]
 tags = []

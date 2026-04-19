@@ -5,6 +5,12 @@ date = 2018-12-05T17:49:11Z
 aliases = []
 [extra]
 id = 12953
+task = """
+  Write a small program that emulates a nautical bell, producing the
+  appropriate ringing pattern at the proper times of day (typically in
+  GMT). Daemonizing or using alternative notifications such as a
+  written notice is permitted.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

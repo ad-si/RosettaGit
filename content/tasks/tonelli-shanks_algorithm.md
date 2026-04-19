@@ -5,6 +5,11 @@ date = 2019-08-03T19:21:16Z
 aliases = []
 [extra]
 id = 20692
+task = """
+  Implement the Tonelli-Shanks algorithm to find a square root of `n`
+  modulo an odd prime `p`, i.e. solve `x^2 = n (mod p)`, using the
+  Legendre symbol to verify that `n` is a quadratic residue.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

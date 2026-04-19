@@ -5,6 +5,12 @@ date = 2019-09-10T09:12:35Z
 aliases = []
 [extra]
 id = 22459
+task = """
+  A *factorion* is a natural number that equals the sum of the
+  factorials of its digits. Find and print all factorions in bases
+  `9`, `10`, `11`, and `12` (up to the base-10 upper bound of
+  `1,499,999`).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

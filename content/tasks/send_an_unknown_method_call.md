@@ -5,6 +5,9 @@ date = 2019-10-18T19:19:52Z
 aliases = []
 [extra]
 id = 10406
+task = """
+  Invoke an object method whose name is determined at run time.
+"""
 [taxonomies]
 categories = ["task", "Object oriented"]
 tags = []

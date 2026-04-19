@@ -5,6 +5,12 @@ date = 2019-10-21T03:53:13Z
 aliases = []
 [extra]
 id = 11445
+task = """
+  Write a program that evaluates a generalized **continued fraction**
+  and produces a real-valued approximation. Test it by computing the
+  square root of 2, Napier's constant `e`, and `pi` using their
+  standard `a_n`/`b_n` coefficients.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

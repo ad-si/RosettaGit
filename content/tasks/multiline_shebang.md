@@ -5,6 +5,12 @@ date = 2019-06-27T03:19:25Z
 aliases = []
 [extra]
 id = 10246
+task = """
+  Demonstrate a multiline shebang: a polyglot header that is comment to
+  the main language but executable by a shell, used for example to make
+  the program name appear in `ARGV` when the language otherwise omits
+  it.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

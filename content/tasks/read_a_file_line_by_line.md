@@ -5,6 +5,10 @@ date = 2019-05-19T18:41:42Z
 aliases = []
 [extra]
 id = 9412
+task = """
+  Read a file one line at a time, as opposed to reading the entire file
+  at once.
+"""
 [taxonomies]
 categories = ["task", "File handling"]
 tags = []

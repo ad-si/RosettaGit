@@ -5,6 +5,12 @@ date = 2019-10-15T08:00:03Z
 aliases = []
 [extra]
 id = 9279
+task = """
+  Generate a string of `N` `[` and `N` `]` brackets in arbitrary
+  order, then determine whether the brackets are balanced
+  (every opening bracket is properly matched and nested with a
+  closing one).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,10 @@ date = 2019-08-19T10:35:09Z
 aliases = []
 [extra]
 id = 19207
+task = """
+  Given a set of arbitrary 2D points, find the points that form their
+  **convex hull**.
+"""
 [taxonomies]
 categories = ["task", "geometry"]
 tags = []

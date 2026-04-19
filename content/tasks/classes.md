@@ -5,6 +5,10 @@ date = 2019-10-18T04:03:03Z
 aliases = []
 [extra]
 id = 1844
+task = """
+  Demonstrate the language's facilities for defining classes and
+  their methods, including inheritance and polymorphic dispatch.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

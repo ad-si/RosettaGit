@@ -5,6 +5,10 @@ date = 2019-09-03T12:21:27Z
 aliases = []
 [extra]
 id = 10543
+task = """
+  Open a text file and count how often each letter occurs. Counting
+  may cover all characters or restrict to letters `A`-`Z`.
+"""
 [taxonomies]
 categories = ["task", "Probability_and_statistics"]
 tags = []

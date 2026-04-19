@@ -5,6 +5,10 @@ date = 2019-10-08T00:34:21Z
 aliases = []
 [extra]
 id = 22161
+task = """
+  Find the smallest positive-integer solution to **Pell's equation**
+  `x^2 - n*y^2 = 1` for `n` in `{61, 109, 181, 277}`.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

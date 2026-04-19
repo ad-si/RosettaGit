@@ -5,6 +5,12 @@ date = 2019-08-25T05:24:50Z
 aliases = []
 [extra]
 id = 1998
+task = """
+  Verify the running language version/revision and exit if too old. Then
+  check whether a variable `bloop` and a math function `abs()` exist; if
+  both do, compute `abs(bloop)`. Extra credit: report the count and sum
+  of integer variables in global scope.
+"""
 [taxonomies]
 categories = ["task", "Programming environment operations"]
 languages = [

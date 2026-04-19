@@ -5,6 +5,10 @@ date = 2019-10-19T10:39:44Z
 aliases = []
 [extra]
 id = 2542
+task = """
+  **Transpose** an arbitrarily sized rectangular matrix, swapping rows
+  and columns.
+"""
 [taxonomies]
 categories = ["task", "Matrices"]
 tags = []

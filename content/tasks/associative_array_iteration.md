@@ -5,6 +5,12 @@ date = 2019-10-17T04:38:06Z
 aliases = []
 [extra]
 id = 4633
+task = """
+  Iterate over the key-value pairs of an associative array
+  and print each pair.
+  Also show how to iterate over just the keys
+  or just the values, if the language provides separate ways.
+"""
 [taxonomies]
 categories = ["Basic language learning", "Iteration", "Data Structures", "task"]
 tags = []

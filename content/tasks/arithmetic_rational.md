@@ -5,6 +5,13 @@ date = 2019-09-20T08:36:30Z
 aliases = []
 [extra]
 id = 3370
+task = """
+  Implement rational-number arithmetic idiomatically. Define a `frac`
+  type built from two integers with the usual unary, arithmetic,
+  comparison, and equality operators plus integer-to-frac coercion,
+  then use it to find all perfect numbers below `2^19` by summing
+  reciprocals of factors.
+"""
 [taxonomies]
 categories = ["Arithmetic operations", "Arithmetic", "task"]
 tags = []

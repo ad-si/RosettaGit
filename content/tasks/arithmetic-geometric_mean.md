@@ -5,6 +5,12 @@ date = 2019-09-20T08:15:26Z
 aliases = []
 [extra]
 id = 11377
+task = """
+  Write a function that computes the arithmetic-geometric mean
+  `agm(a, g)` of two numbers by iterating
+  `a' = (a + g) / 2` and `g' = sqrt(a * g)` until they converge,
+  then demonstrate it by computing `agm(1, 1/sqrt(2))`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

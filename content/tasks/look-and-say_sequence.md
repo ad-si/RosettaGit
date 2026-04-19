@@ -5,6 +5,12 @@ date = 2019-10-18T05:02:29Z
 aliases = []
 [extra]
 id = 4055
+task = """
+  Generate successive members of the **look-and-say** sequence: each
+  term describes the previous term by reading off runs of identical
+  digits as *count followed by digit* (e.g. `1` → `11` → `21` → `1211`
+  → `111221`).
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

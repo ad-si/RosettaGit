@@ -5,6 +5,10 @@ date = 2019-10-14T01:22:14Z
 aliases = []
 [extra]
 id = 21908
+task = """
+  Produce a graphical or ASCII-art rendering of a **Peano curve** of at
+  least order 3.
+"""
 [taxonomies]
 categories = ["task", "Fractals"]
 tags = []

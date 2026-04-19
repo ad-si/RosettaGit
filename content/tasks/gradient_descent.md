@@ -5,6 +5,12 @@ date = 2019-09-05T11:36:21Z
 aliases = []
 [extra]
 id = 22397
+task = """
+  Use the **gradient descent** (steepest-descent) algorithm to find
+  a local minimum of the bivariate function
+  `f(x, y) = (x - 1)^2 * exp(-y^2) + y(y + 2) * exp(-2x^2)`
+  starting near `x = 0.1`, `y = -1`.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

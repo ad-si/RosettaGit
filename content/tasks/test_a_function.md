@@ -5,6 +5,11 @@ date = 2019-10-21T00:04:08Z
 aliases = []
 [extra]
 id = 4276
+task = """
+  Using a well-known testing library/module/suite for the language,
+  write tests for that language's [Palindrome](@/tasks/palindrome_detection.md) entry. If the
+  language has no widely-known testing library, state this or omit.
+"""
 [taxonomies]
 categories = ["task", "Testing"]
 tags = []

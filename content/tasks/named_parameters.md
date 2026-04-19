@@ -5,6 +5,11 @@ date = 2019-08-18T15:51:15Z
 aliases = []
 [extra]
 id = 4451
+task = """
+  Create a function whose arguments are passed by name rather than
+  position, and show how to call it. Note whether the language permits
+  reordering or omitting arguments.
+"""
 [taxonomies]
 categories = ["task", "Basic language learning"]
 tags = []

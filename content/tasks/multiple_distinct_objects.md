@@ -5,6 +5,12 @@ date = 2019-03-31T23:07:03Z
 aliases = []
 [extra]
 id = 3317
+task = """
+  Create a sequence of `n` *distinct*, *initialized* items of the same
+  type, where `n` is determined at runtime. Mutating one item must not
+  affect any other, and the technique must generalize beyond zero/range
+  initialization.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

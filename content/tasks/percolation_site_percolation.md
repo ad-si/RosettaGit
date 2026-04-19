@@ -5,6 +5,13 @@ date = 2019-06-08T20:23:37Z
 aliases = []
 [extra]
 id = 15836
+task = """
+  Simulate **site percolation** on a `15x15` grid where each cell
+  is filled with probability `p`. For `p` from `0.0` to `1.0` in
+  steps of `0.1`, run `t >= 100` trials and report the fraction
+  of grids that have a connected path of filled cells from the
+  top row to the bottom row.
+"""
 [taxonomies]
 categories = ["task", "Percolation Simulations"]
 tags = []

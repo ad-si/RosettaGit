@@ -5,6 +5,11 @@ date = 2019-09-11T00:42:58Z
 aliases = []
 [extra]
 id = 22494
+task = """
+  Show the language's print debugging statements and demonstrate their
+  ability to track provenance by displaying source information such as
+  code fragments, line numbers, or column numbers.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

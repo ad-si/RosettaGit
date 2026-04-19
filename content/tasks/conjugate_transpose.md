@@ -5,6 +5,11 @@ date = 2019-10-07T22:16:12Z
 aliases = []
 [extra]
 id = 11330
+task = """
+  Given a matrix of complex numbers, compute its **conjugate transpose**
+  `M^H` (the complex conjugate of the transpose). Also determine whether
+  the matrix is Hermitian, normal, or unitary.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

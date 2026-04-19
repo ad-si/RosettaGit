@@ -5,6 +5,11 @@ date = 2019-09-16T09:49:42Z
 aliases = []
 [extra]
 id = 22259
+task = """
+  Compute the sequence where each term `aₙ` is the smallest natural
+  number greater than the previous term that has exactly `n`
+  divisors. Show at least the first 15 terms.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

@@ -5,6 +5,13 @@ date = 2018-05-09T18:53:20Z
 aliases = []
 [extra]
 id = 17719
+task = """
+  Given a rational, real, or complex number of any type, test whether
+  it is mathematically an integer (i.e. could be represented as an
+  integer with no loss of precision). Handle all numeric data types
+  commonly used in your language. Optionally accept a `tolerance`
+  parameter for fuzzy testing of approximate values.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

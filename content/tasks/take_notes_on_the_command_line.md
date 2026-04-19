@@ -5,6 +5,12 @@ date = 2019-06-10T16:53:20Z
 aliases = []
 [extra]
 id = 6727
+task = """
+  Implement a `NOTES` command. Without arguments, print the contents
+  of `NOTES.TXT`. With arguments, append the current date/time and a
+  tab-prefixed line of the joined arguments to `NOTES.TXT`, creating
+  the file if it doesn't exist.
+"""
 [taxonomies]
 categories = ["task", "Text processing"]
 tags = []

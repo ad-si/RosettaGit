@@ -5,6 +5,11 @@ date = 2019-04-22T10:59:28Z
 aliases = []
 [extra]
 id = 17636
+task = """
+  Implement the move-to-front transform: encode a sequence of input
+  symbols to indices using a zero-indexed symbol table, moving each used
+  symbol to the front after each step, and provide the inverse decoder.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

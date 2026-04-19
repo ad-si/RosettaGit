@@ -5,6 +5,10 @@ date = 2012-01-24T14:02:24Z
 aliases = []
 [extra]
 id = 9547
+task = """
+  Create an IRC gateway capable of connecting an IRC server with another
+  IRC server or chat server, forwarding messages between them.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

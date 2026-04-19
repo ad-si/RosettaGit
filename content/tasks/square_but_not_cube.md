@@ -5,6 +5,11 @@ date = 2019-10-21T16:07:39Z
 aliases = []
 [extra]
 id = 21947
+task = """
+  Show the first 30 positive integers that are squares but not cubes.
+  Optionally also list the first 3 positive integers that are both
+  squares and cubes, marking them as such.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

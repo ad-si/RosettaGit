@@ -5,6 +5,12 @@ date = 2019-10-09T09:24:31Z
 aliases = []
 [extra]
 id = 17444
+task = """
+  An *emirp* is a prime that, when its decimal digits are reversed,
+  yields a different prime (palindromic primes excluded). Show the
+  first twenty emirps, all emirps between `7,700` and `8,000`, and
+  the `10,000`th emirp.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

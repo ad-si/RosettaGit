@@ -5,6 +5,10 @@ date = 2019-05-20T14:41:52Z
 aliases = []
 [extra]
 id = 21374
+task = """
+  Given an input string and a dictionary of words, segment the string
+  into a space-separated sequence of dictionary words if possible.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

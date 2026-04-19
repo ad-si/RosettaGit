@@ -5,6 +5,11 @@ date = 2019-10-18T20:43:07Z
 aliases = []
 [extra]
 id = 9247
+task = """
+  Given a list of values and a set of integer indices into that list,
+  sort the values at those indices in place while preserving the
+  values at all other positions.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

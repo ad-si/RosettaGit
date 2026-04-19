@@ -5,6 +5,12 @@ date = 2019-10-18T10:29:54Z
 aliases = []
 [extra]
 id = 15789
+task = """
+  Generate an array, list, lazy sequence, or indexable string containing
+  all lower case ASCII characters from `a` to `z`. If the standard
+  library provides such a sequence, show how to access it; also show
+  how to generate one without manually enumerating the letters.
+"""
 [taxonomies]
 categories = ["task", "String_manipulation"]
 tags = []

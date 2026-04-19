@@ -5,6 +5,13 @@ date = 2019-05-25T04:47:43Z
 aliases = []
 [extra]
 id = 17509
+task = """
+  Compute the **multiplicative digital root** (MDR) and
+  **multiplicative persistence** (MP) of a number by repeatedly
+  multiplying its digits until one digit remains. Tabulate MP and MDR
+  for `123321`, `7739`, `893`, `899998`, and list the first five
+  numbers having each MDR from `0` to `9`.
+"""
 [taxonomies]
 categories = ["task", "Mathematics"]
 tags = []

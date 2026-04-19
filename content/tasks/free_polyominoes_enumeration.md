@@ -5,6 +5,13 @@ date = 2019-06-20T12:53:30Z
 aliases = []
 [extra]
 id = 18165
+task = """
+  Generate all free polyominoes with `n` cells, where free
+  polyominoes are distinct when none is a translation,
+  rotation, reflection, or glide reflection of another.
+  As a bonus, produce just the count sequence:
+  `1, 1, 1, 2, 5, 12, 35, 108, 369, 1285, ...` (OEIS A000105).
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

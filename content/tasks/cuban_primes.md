@@ -5,6 +5,12 @@ date = 2019-10-21T02:55:32Z
 aliases = []
 [extra]
 id = 22159
+task = """
+  A *cuban prime* is a prime of the form `(n+1)^3 - n^3`. Show the
+  first 200 cuban primes in a multi-line horizontal format, and show
+  the 100,000th cuban prime, with commas inserted in the numbers
+  where appropriate.
+"""
 [taxonomies]
 categories = ["task", "Prime Numbers"]
 tags = []

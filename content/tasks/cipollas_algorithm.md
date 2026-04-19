@@ -5,6 +5,12 @@ date = 2019-08-03T19:30:39Z
 aliases = []
 [extra]
 id = 20672
+task = """
+  Implement **Cipolla's algorithm** to solve `x² ≡ n (mod p)`,
+  where `p` is an odd prime and `n` is in `Fp`. Use the Legendre
+  symbol to verify `n` is a quadratic residue, then compute
+  `(a + ω) ^ ((p+1)/2)` in `Fp²` to recover the two roots.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []

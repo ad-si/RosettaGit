@@ -5,6 +5,12 @@ date = 2019-10-12T08:49:32Z
 aliases = []
 [extra]
 id = 16446
+task = """
+  Write a function that joins a list of words into a single string
+  enclosed in braces: `{}` for an empty list, `{X}` for one word,
+  `{X and Y}` for two, and `{A, B, ... Y and Z}` for three or
+  more (last separator is ` and `, others are `, `).
+"""
 [taxonomies]
 categories = ["String manipulation", "Text processing", "task"]
 tags = []

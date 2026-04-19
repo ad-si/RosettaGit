@@ -5,6 +5,11 @@ date = 2019-10-09T18:17:09Z
 aliases = []
 [extra]
 id = 4622
+task = """
+  Implement an algorithm that computes the principal `n`-th root of a
+  positive real number `A`, as described on the Wikipedia *nth root
+  algorithm* page.
+"""
 [taxonomies]
 categories = ["task", "Classic CS problems and programs"]
 tags = []

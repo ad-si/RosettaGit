@@ -5,6 +5,12 @@ date = 2019-10-11T15:47:07Z
 aliases = []
 [extra]
 id = 10731
+task = """
+  Compute how many ways there are to make change for one US dollar
+  (100 cents) using quarters, dimes, nickels, and pennies. Optionally,
+  also count the ways to make change for `$1000` when half-dollars and
+  dollar coins are added.
+"""
 [taxonomies]
 categories = ["task"]
 tags = []
