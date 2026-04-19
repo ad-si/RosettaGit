@@ -8,7 +8,7 @@ id = 2843
 task = """
   Implement an interpreter or compiler for the **SNUSP** programming
   language. A compliant implementation must support the core SNUSP
-  instructions (`$`, `\`, `/`, `+`, `-`, `<`, `>`, `,`, `.`, `!`, `?`);
+  instructions (`$`, `\\`, `/`, `+`, `-`, `<`, `>`, `,`, `.`, `!`, `?`);
   Modular and Bloated SNUSP extensions are optional.
 """
 [taxonomies]
