@@ -69,7 +69,7 @@ languages = [
 tags = ["geometry", "fractals", "graphics", "raster-graphics"]
 +++
 
-![Brownian tree](/images/Brownian_tree.jpg)
+![Brownian tree](/images/brownian_tree.jpg)
 
 
 ## Task
@@ -123,7 +123,7 @@ Plotting the seed creates an animation effect of the seed moving around in it's 
 
 Works with AutoHotkey_L
 Takes a little while to run, be patient.
-Requires the [GDI+ Standard Library by Tic](http://www.autohotkey.com/forum/topic32238.html)
+Requires the [GDI+ Standard Library by Tic](https://www.autohotkey.com/forum/topic32238.html)
 
 ```AHK
 SetBatchLines -1
@@ -1360,7 +1360,7 @@ set output
 
 ### Plotting from PARI/GP generated dat-files
 
-'''Note:''' dat-files are [PARI/GP](http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP|) generated output files.
+'''Note:''' dat-files are [PARI/GP](https://rosettacode.org/wiki/Brownian_tree#PARI.2FGP|) generated output files.
 
 [[File:BT1gp.png|right|thumb|Output BT1gp.png]]
 [[File:BT2gp.png|right|thumb|Output BT2gp.png]]
@@ -1375,7 +1375,7 @@ set output
 ## BTff.gp 11/27/16 aev
 ## Plotting 6 Brownian tree pictures.
 ## dat-files are PARI/GP generated output files:
-## http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP
+## https://rosettacode.org/wiki/Brownian_tree#PARI.2FGP
 #cd 'C:\gnupData'
 
 ##BT1
@@ -1616,7 +1616,7 @@ The modules <code>[[Bitmap#Haskell|Bitmap]]</code>,
 <code>[[Bitmap/Write a PPM file#Haskell|Bitmap.Netpbm]]</code>,
 and <code>[[Bitmap/Histogram#Haskell|Bitmap.BW]]</code> are on RosettaGit.
 The commented-out type signatures require
-[scoped type variables](http://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables)
+[scoped type variables](https://hackage.haskell.org/trac/haskell-prime/wiki/ScopedTypeVariables)
 in order to function.
 
 
@@ -1747,8 +1747,8 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -4705,7 +4705,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#brownian_tree>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#brownian_tree>
 
 
 ## SequenceL
@@ -4819,7 +4819,7 @@ int main(int argc, char ** argv)
 
 Output:
 
-[Output Video](http://i.imgur.com/OrB9tLI.gifv)
+[Output Video](https://i.imgur.com/OrB9tLI.gifv)
 
 
 ## Sidef
@@ -4987,7 +4987,7 @@ Requires at least 2k of RAM. If you have more, you can plot it on a larger gridâ
 
 Output:
 
-Screenshot [here](http://www.edmundgriffiths.com/zx81browniantree.jpg).
+Screenshot [here](https://www.edmundgriffiths.com/zx81browniantree.jpg).
 
 
 ## Tcl
@@ -5257,7 +5257,7 @@ loop    [repeat X:= Ran(W);  Y:= Ran(H); \inject particle
 This grows rather slowly, so I've added a circle for barnacles to attach to. It looks like tendrils growing from the center to the circle and vice versa. The tree type is similar to that shown in the XPLO and Visual Basic .NET solutions.
 Also, the image is written to disk as each particle attaches so EventViewer will auto update to show the progression.
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Brownian.zkl.jpg|250px|thumb|right]]
 
 ```zkl

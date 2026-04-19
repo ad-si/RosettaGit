@@ -36,7 +36,7 @@ Rank: 10   (964 entries) Zkl
 
 ;Notes:
 *   Each language typically demonstrates one or two methods of accessing the data:
-:::*   with web scraping   (via <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
+:::*   with web scraping   (via <https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 :::*   with the API method   (examples below for [[Rosetta Code/Rank languages by popularity#AWK|Awk]], [[Rosetta Code/Rank languages by popularity#Perl|Perl]], [[Rosetta Code/Rank languages by popularity#Ruby|Ruby]], [[Rosetta Code/Rank languages by popularity#Tcl|Tcl]], etc).
 *   The scraping and API solutions can be separate subsections, see the [[Rosetta Code/Rank languages by popularity#Tcl|Tcl example]].
 *   Filtering wrong results is optional.   You can check against [[Special:MostLinkedCategories]] (if using web scraping)
@@ -134,7 +134,7 @@ procedure Test is
    end Display;
 
    Http_Source : constant AWS.Response.Data :=
-     AWS.Client.Get ("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
+     AWS.Client.Get ("https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
 begin
    Find_Counts (AWS.Response.Message_Body (Http_Source));
    Counts.Reverse_Iterate (Display'Access);
@@ -220,7 +220,7 @@ PROC re split = (STRING re split, REF STRING beetles)[]STRING:(
 
 IF STRING reply;
    INT rc =
-      http content (reply, "www.rosettacode.org", "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=500", 0);
+      http content (reply, "www.rosettacode.org", "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=500", 0);
    rc /= 0 OR NOT good page (reply)
 THEN print (("Error:",strerror (rc)))
 ELSE
@@ -492,8 +492,8 @@ rank:  10               (707 entries)  Perl
 
 
 ```autohotkey
-MembsUrl = http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000
-ValidUrl = http://rosettacode.org/wiki/Category:Programming_Languages
+MembsUrl = https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000
+ValidUrl = https://rosettacode.org/wiki/Category:Programming_Languages
 WebRequest := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 
 ; Get the webpages
@@ -558,7 +558,7 @@ Open:
 if (A_GuiEvent == "DoubleClick")
 {
 	LV_GetText(Language, A_EventInfo, 3)
-	Run, % "http://rosettacode.org" ValidLangs[Language]
+	Run, % "https://rosettacode.org" ValidLangs[Language]
 }
 return
 
@@ -586,7 +586,7 @@ return
 
 ### By using the API
 
-This is the third solution. The [first solution](http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=102962#AWK) used web scraping with an external program '''ns''' for networking. The [second solution](http://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=204081) used the Rosetta Code API instead of web scraping, but continued use of '''ns''' which for unknown reasons didn't work correctly. This solution uses native gawk networking to connect to the API at 500 items per request ("gmcontinue").
+This is the third solution. The [first solution](https://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=102962#AWK) used web scraping with an external program '''ns''' for networking. The [second solution](https://rosettacode.org/mw/index.php?title=Rosetta_Code/Rank_languages_by_popularity&oldid=204081) used the Rosetta Code API instead of web scraping, but continued use of '''ns''' which for unknown reasons didn't work correctly. This solution uses native gawk networking to connect to the API at 500 items per request ("gmcontinue").
 
 
 ```awk
@@ -712,7 +712,7 @@ Note that language names differing only in their case are merged.
       SYS "GetProcAddress", urlmon%, "URLDownloadToFileA" TO UDTF
 
       PRINT "Downloading languages list..."
-      url$ = "http://rosettacode.org/wiki/Category:Programming_Languages"
+      url$ = "https://rosettacode.org/wiki/Category:Programming_Languages"
       file$ = @tmp$ + "languages.htm"
       SYS UDTF, 0, url$, file$, 0, 0 TO fail%
       IF fail% ERROR 100, "File download failed (languages)"
@@ -738,7 +738,7 @@ Note that language names differing only in their case are merged.
       CALL SortUp%, lang$(0)
 
       PRINT "Downloading categories list..."
-      url$ = "http://www.rosettacode.org/w/index.php"
+      url$ = "https://www.rosettacode.org/w/index.php"
       url$ += "?title=Special:Categories&limit=5000"
       file$ = @tmp$ + "categories.htm"
       SYS UDTF, 0, url$, file$, 0, 0 TO fail%
@@ -896,12 +896,12 @@ List of languages as of Sat.17 Nov 2012,00:21:11
   )
 &     get-cats
     $ (   get-page
-        $ ( "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
+        $ ( "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
           . HT,ML
           )
       .   get-langs
         $ ( get-page
-          $ ( "http://rosettacode.org/wiki/Category:Programming_Languages"
+          $ ( "https://rosettacode.org/wiki/Category:Programming_Languages"
             . HT ML
             )
           )
@@ -990,10 +990,10 @@ Ghetto parser
 #include <stdlib.h>
 #include <string.h>
 
-const char * lang_url = "http://www.rosettacode.org/w/api.php?action=query&"
+const char * lang_url = "https://www.rosettacode.org/w/api.php?action=query&"
 		"list=categorymembers&cmtitle=Category:Programming_Languages&"
 		"cmlimit=500&format=json";
-const char * cat_url = "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000";
+const char * cat_url = "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000";
 
 #define BLOCK 1024
 char *get_page(const char *url)
@@ -1096,8 +1096,8 @@ Outputs the first [number] languages in the list, default to 10. Use -1 to displ
 #include <string.h>
 #include <curl/curl.h>
 #include "cJSON.h"
-char *URL_BASE = "http://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&rawcontinue";
-char *URL_BASE_CONT = "http://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&gcmcontinue=";
+char *URL_BASE = "https://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&rawcontinue";
+char *URL_BASE_CONT = "https://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&gcmcontinue=";
 
 typedef struct mem {
 	char *text;
@@ -1272,8 +1272,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        string get1 = new WebClient().DownloadString("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json");
-        string get2 = new WebClient().DownloadString("http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000");
+        string get1 = new WebClient().DownloadString("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json");
+        string get2 = new WebClient().DownloadString("https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000");
 
         ArrayList langs = new ArrayList();
         Dictionary<string, int> qtdmbr = new Dictionary<string, int>();
@@ -1348,8 +1348,8 @@ class Category {
 
 class Program {
     static void Main(string[] args) {
-        string get1 = new WebClient().DownloadString("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json");
-        string get2 = new WebClient().DownloadString("http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000");
+        string get1 = new WebClient().DownloadString("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json");
+        string get2 = new WebClient().DownloadString("https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000");
 
         MatchCollection match1 = new Regex("\"title\":\"Category:(.+?)\"").Matches(get1);
         MatchCollection match2 = new Regex("title=\"Category:(.+?)\">.+?</a>[^(]*\\((\\d+) members\\)").Matches(get2);
@@ -1645,7 +1645,7 @@ task() ->
 	ok = find_unimplemented_tasks:init(),
 	Category_programming_languages = find_unimplemented_tasks:rosetta_code_list_of( "Programming_Languages" ),
 	Programming_languages = [X || "Category:" ++ X <- Category_programming_languages],
-	{ok, {{_HTTP,200,"OK"}, _Headers, Body}} = httpc:request( "http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" ),
+	{ok, {{_HTTP,200,"OK"}, _Headers, Body}} = httpc:request( "https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" ),
 	Count_categories = lists:sort( [{Y, X} || {X, Y} <- category_counts(Body, []), lists:member(X, Programming_languages)] ),
 	lists:foldr( fun place_count_category_write/2, #print_fold{}, Count_categories ).
 
@@ -1734,9 +1734,9 @@ open System.Text.RegularExpressions
 [<EntryPoint>]
 let main argv =
     let rosettacodeSpecialCategoriesAddress =
-        "http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
+        "https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
     let rosettacodeProgrammingLaguagesAddress =
-        "http://rosettacode.org/wiki/Category:Programming_Languages"
+        "https://rosettacode.org/wiki/Category:Programming_Languages"
 
     let getWebContent (url :string)  =
         using (new System.Net.WebClient()) (fun x -> x.DownloadString url)
@@ -1831,7 +1831,7 @@ import (
 	"strings"
 )
 
-var baseQuery = "http://rosettacode.org/mw/api.php?action=query" +
+var baseQuery = "https://rosettacode.org/mw/api.php?action=query" +
 	"&format=xml&list=categorymembers&cmlimit=500"
 
 func req(u string, foundCm func(string)) string {
@@ -1900,7 +1900,7 @@ func main() {
 	s := make(popList, 0, len(langMap))
 
 	// get big list of categories
-	resp, err := http.Get("http://rosettacode.org/mw/index.php" +
+	resp, err := http.Get("https://rosettacode.org/mw/index.php" +
 		"?title=Special:Categories&limit=5000")
 	if err != nil {
 		log.Fatal(err)
@@ -1955,7 +1955,7 @@ func main() {
 
 
 ```groovy
-def html = new URL('http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000').getText([
+def html = new URL('https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000').getText([
         connectTimeout:500,
         readTimeout:15000,
         requestProperties: [ 'User-Agent': 'Firefox/2.0.0.4']])
@@ -2067,7 +2067,7 @@ showLanguages allLanguages =
           sortBy (flip compare `on` quantity) allLanguages
 
 -- Mediawiki api style query to send to rosettacode.org
-queryStr = "http://rosettacode.org/mw/api.php?" ++
+queryStr = "https://rosettacode.org/mw/api.php?" ++
            "format=json" ++
            "&action=query" ++
            "&generator=categorymembers" ++
@@ -2156,9 +2156,9 @@ getRespons url = do
 
 
 mostPopLang = do
-  rsp <-getRespons $ "http://www.rosettacode.org/w/api.php?action=query&list=" ++
+  rsp <-getRespons $ "https://www.rosettacode.org/w/api.php?action=query&list=" ++
 		    "categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=xml"
-  mbrs <- getRespons "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
+  mbrs <- getRespons "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
   let xmls = onlyElems $ parseXML rsp
       langs = concatMap (map ((\\"Category:"). fromJust.findAttr (unqual "title")). filterElementsName (== unqual "cm")) xmls
 
@@ -2265,7 +2265,7 @@ The following solution only works in Unicon.
 
 
 ```unicon
-$define RCLANGS "http://rosettacode.org/mw/api.php?format=xml&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo"
+$define RCLANGS "https://rosettacode.org/mw/api.php?format=xml&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo"
 $define RCUA    "User-Agent: Unicon Rosetta 0.1"
 $define RCXUA   "X-Unicon: http://unicon.org/"
 
@@ -2378,7 +2378,7 @@ rcPopLangs =:  formatTab@:process_rcPopLang_@:gethttp
 
 '''Example''':
 ```j
-   10 {. rcPopLangs 'http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=2000'
+   10 {. rcPopLangs 'https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=2000'
    1. 687 - Tcl
    2. 646 - Python
    3. 637 - C
@@ -2495,7 +2495,7 @@ public class GetRCLanguages
         gcmcontinue[0]                 = "";
         do
         {
-            String path = ( "http://www.rosettacode.org/mw/api.php?action=query"
+            String path = ( "https://www.rosettacode.org/mw/api.php?action=query"
                           + "&generator=categorymembers"
                           + "&gcmtitle=Category:Programming%20Languages"
                           + "&gcmlimit=500"
@@ -2559,7 +2559,7 @@ jq 1.4  cannot retrieve documents over the web and has no support for regular ex
 
 # produce lines of the form: [ "language", n ]
 function categories {
-  curl -Ss 'http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000' |\
+  curl -Ss 'https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000' |\
     grep "/wiki/Category:" | grep member | grep -v '(.*(' |\
     grep -v ' User</a>' |\
     sed -e 's/.*title="Category://' -e 's/member.*//'  |\
@@ -2568,7 +2568,7 @@ function categories {
 
 # produce lines of the form: "language"
 function languages {
-  curl -Ss 'http://rosettacode.org/wiki/Category:Programming_Languages' |\
+  curl -Ss 'https://rosettacode.org/wiki/Category:Programming_Languages' |\
     sed '/Pages in category "Programming Languages"/,$d' |\
     grep '<li><a href="/wiki/Category:' | fgrep title= |\
     sed 's/.*Category:\([^"]*\)".*/"\1"/'
@@ -2637,7 +2637,7 @@ $ pop.sh
 using HTTP
 
 try
-    response = HTTP.request("GET", "http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
+    response = HTTP.request("GET", "https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
     langcount = Dict{String, Int}()
     for mat in eachmatch(r"<li><a href[^\>]+>([^\<]+)</a>[^1-9]+(\d+)[^\w]+member.?.?</li>", String(response.body))
         if match(r"^Programming", mat.captures[1]) == nothing
@@ -2694,9 +2694,9 @@ Language WikiStubs can be ranked #25 at 614.
 ```Julia
 
 using HTTP, Dates
-response = HTTP.request("GET", "http://rosettacode.org/wiki/Category:Programming_Languages")
+response = HTTP.request("GET", "https://rosettacode.org/wiki/Category:Programming_Languages")
 languages = Set(m.captures[1] for m in eachmatch(r"title=\"Category:(.*?)\">",String(response.body)))
-response = HTTP.request("GET", "http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
+response = HTTP.request("GET", "https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
 response = replace(String(response.body),"," => "")
 reg = r"<li><a[^>]+>([^<]+)</a>[^(]*[\(](\d+) member[s]?[)]</li>"
 ms = eachmatch(reg,response)
@@ -2800,7 +2800,7 @@ object Popularity {
     /** Gets the string following marker in text. */
     private operator fun String.get(c: Char) = substringAfter(c).trim { it <= ' ' }
 
-    private val url = "http://www.rosettacode.org/mw/api.php?action=query" +
+    private val url = "https://www.rosettacode.org/mw/api.php?action=query" +
             "&generator=categorymembers" + "&gcmtitle=Category:Programming%20Languages" +
             "&gcmlimit=500"
 }
@@ -2845,7 +2845,7 @@ fun main(args: Array<String>) {
 [
 sys_listtraits !>> 'xml_tree_trait' ? include('xml_tree.lasso')
 local(lang = array)
-local(f = curl('http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000')->result->asString)
+local(f = curl('https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000')->result->asString)
 local(ff) = xml_tree(#f)
 local(lis = #ff->body->div(3)->div(3)->div(3)->div->ul->getnodes)
 with li in #lis do => {
@@ -2899,8 +2899,8 @@ Update: Numbers above 999 get a comma (,) so we have to drop this using Filter$(
 
 Module RankLanguages {
       Const Part1$="<a href="+""""+ "/wiki/Category", Part2$="member"
-      Const langHttp$="http://rosettacode.org/wiki/Category:Programming_Languages"
-      Const categoriesHttp$="http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
+      Const langHttp$="https://rosettacode.org/wiki/Category:Programming_Languages"
+      Const categoriesHttp$="https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
       Def long m, i,j, tasks, counter, limit, T, t1
       Def string LastLang$, job$
 
@@ -3005,7 +3005,7 @@ RankLanguages
 ```
 
 
-<pre style="height:30ex;overflow:scroll">
+```txt
 Sample output on Saturday, June 22, 2019:
 
 rank:   1.  1149 entries - Go
@@ -3129,7 +3129,7 @@ rank: 736.     0 entries - SimpleLang
 rank: 737.     0 entries - Star
 rank: 738.     0 entries - X10
 rank: 739.     0 entries - XS
-</pre >
+```
 
 
 ## Maple
@@ -3152,13 +3152,13 @@ count_sizes := proc(arr_name,arr_pop,i,lst)
 	return index:
 end proc:
 
-txt := JSON:-ParseFile("http://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json"):
+txt := JSON:-ParseFile("https://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json"):
 arr_name := Array():
 arr_pop := Array():
 i := count_sizes(arr_name, arr_pop, 1, [indices(txt["query"]["pages"])]):
 while (assigned(txt["continue"]["gcmcontinue"])) do
 	continue := txt["continue"]["gcmcontinue"]:
-	txt := JSON:-ParseFile(cat("http://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json", "&continue=", txt["continue"]["continue"], "&gcmcontinue=", txt["continue"]["gcmcontinue"])):
+	txt := JSON:-ParseFile(cat("https://rosettacode.org/mw/api.php?action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=350&prop=categoryinfo&format=json", "&continue=", txt["continue"]["continue"], "&gcmcontinue=", txt["continue"]["gcmcontinue"])):
 	i:=count_sizes(arr_name,arr_pop,i,[indices(txt["query"]["pages"])]):
 end do:
 arr_name:= arr_name[sort(arr_pop,output=permutation)]:
@@ -3196,9 +3196,9 @@ rank 685    0 examples    Loglan82
 
 
 ```Mathematica
-Languages = Flatten[Import["http://rosettacode.org/wiki/Category:Programming_Languages","Data"][[1,1]]];
+Languages = Flatten[Import["https://rosettacode.org/wiki/Category:Programming_Languages","Data"][[1,1]]];
 Languages = Most@StringReplace[Languages, {" " -> "_", "+" -> "%2B"}];
-b = {#, If[#  ===  {}, 0, #[[1]]]&@( StringCases[Import["http://rosettacode.org/wiki/Category:"<>#,"Plaintext"],
+b = {#, If[#  ===  {}, 0, #[[1]]]&@( StringCases[Import["https://rosettacode.org/wiki/Category:"<>#,"Plaintext"],
    "category, out of " ~~ x:NumberString ~~ " total" ->x])} &/@ Languages;
 For[i = 1, i < Length@b , i++ , Print[i, ". ", #[[2]], " - ", #[[1]] ]&@ Part[Reverse@SortBy[b, Last], i]]
 ```
@@ -3227,8 +3227,8 @@ For[i = 1, i < Length@b , i++ , Print[i, ". ", #[[2]], " - ", #[[1]] ]&@ Part[Re
 import httpclient, json, re, strutils, algorithm
 
 const
-  langSite = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json"
-  catSize = "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
+  langSite = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500&format=json"
+  catSize = "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000"
 let regex = re"title=""Category:(.*?)"">.+?</a>.*\((.*) members\)"
 
 var langs: seq[string] = @[]
@@ -3278,7 +3278,7 @@ class RosettaRank {
   function : Main(args : String[]) ~ Nil {
     langs_xml := "";
     client := HttpClient->New();
-    in := client->Get("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=5000&format=xml");
+    in := client->Get("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=5000&format=xml");
     each(i : in) {
       langs_xml += in->Get(i)->As(String);
     };
@@ -3301,7 +3301,7 @@ class RosettaRank {
 
     langs_counts := IntMap->New();
     client := HttpClient->New();
-    html := client->Get("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
+    html := client->Get("https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000");
     each(i : html) {
       lines := html->Get(i)->As(String);
       html_elements := lines->Split("\n");
@@ -3378,8 +3378,8 @@ class RosettaRank {
 * rearranged to my taste and utilizing the array class of ooRexx
 * which offers a neat way of sorting as desired, see :CLASS mycmp below
 * For the input to this program open these links:
-*  <http://rosettacode.org/wiki/Category:Programming_Languages>
-*  <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
+*  <https://rosettacode.org/wiki/Category:Programming_Languages>
+*  <https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
 * and save the pages as LAN.txt and CAT.txt, respectively
 * Output: RC_POP.txt list of languages sorted by popularity
 * If test=1, additionally:
@@ -3759,7 +3759,7 @@ declare
      }
   end
 
-  Url = "http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
+  Url = "https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
 
   {System.showInfo "Retrieving..."}
   Doc = {GetPage Url}
@@ -3803,7 +3803,7 @@ use 5.010;
 use MediaWiki::API;
 
 my $api =
-  MediaWiki::API->new( { api_url => 'http://rosettacode.org/mw/api.php' } );
+  MediaWiki::API->new( { api_url => 'https://rosettacode.org/mw/api.php' } );
 
 my @languages;
 my $gcmcontinue;
@@ -3874,7 +3874,7 @@ use Sort::Naturally;
 
 my $client = HTTP::UserAgent.new;
 
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 
 my $tablefile = './RC_Popularity.txt';
 
@@ -4132,8 +4132,8 @@ Categories
 Scraping the languages and categories pages.  Perl 6 automatically handles Unicode names correctly.
 
 ```perl6
-my $languages =  qx{wget -O - 'http://rosettacode.org/wiki/Category:Programming_Languages'};
-my $categories = qx{wget -O - 'http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'};
+my $languages =  qx{wget -O - 'https://rosettacode.org/wiki/Category:Programming_Languages'};
+my $categories = qx{wget -O - 'https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'};
 
 my @lines = $languages.lines;
 shift @lines until @lines[0] ~~ / '<h2>Subcategories</h2>' /;
@@ -4185,8 +4185,8 @@ include builtins\libcurl.e
 constant output_users = false,
          limit = 20,    -- 0 to list all
          refresh_cache = timedelta(days:=1),    -- 0 for always
-         languages = "http://rosettacode.org/wiki/Category:Programming_Languages",
-         categories = "http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
+         languages = "https://rosettacode.org/wiki/Category:Programming_Languages",
+         categories = "https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000"
 
 function open_download(string filename, url)
     bool refetch = true
@@ -4355,8 +4355,8 @@ Downloading rc_cache\categories.htm...
 
 ```PowerShell
 
-$get1 = (New-Object Net.WebClient).DownloadString("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=700&format=json")
-$get2 = (New-Object Net.WebClient).DownloadString("http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000")
+$get1 = (New-Object Net.WebClient).DownloadString("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=700&format=json")
+$get2 = (New-Object Net.WebClient).DownloadString("https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=5000")
 $match1 = [regex]::matches($get1, "`"title`":`"Category:(.+?)`"")
 $match2 = [regex]::matches($get2, "title=`"Category:([^`"]+?)`">[^<]+?</a>[^\(]*\((\d+) members\)")
 $r = 1
@@ -4429,10 +4429,10 @@ Rank 1..30 Members 1..30 Language 1..30 Rank 31..60 Members 31..60 Language 31..
 
 ```PowerShell
 
-$response = (New-Object Net.WebClient).DownloadString("http://rosettacode.org/wiki/Category:Programming_Languages")
+$response = (New-Object Net.WebClient).DownloadString("https://rosettacode.org/wiki/Category:Programming_Languages")
 $languages = [regex]::matches($response,'title="Category:(.*?)">') | foreach {$_.Groups[1].Value}
 
-$response = [Net.WebClient]::new().DownloadString("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
+$response = [Net.WebClient]::new().DownloadString("https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
 $response = [regex]::Replace($response,'(\d+),(\d+)','$1$2')
 
 $members  = [regex]::matches($response,'<li><a[^>]+>([^<]+)</a>[^(]*[(](\d+) member[s]?[)]</li>') | foreach { [pscustomobject]@{
@@ -4499,7 +4499,7 @@ Define url$, title$, currentPage$, language$, langPageCount, gcmcontinue$, *buff
 handleError(InitNetwork(), "Unable to initialize network functions.")
 
 Repeat
-  url$ = "http://www.rosettacode.org/mw/api.php?action=query" +
+  url$ = "https://www.rosettacode.org/mw/api.php?action=query" +
          "&generator=categorymembers&gcmtitle=Category:Programming%20Languages" +
          "&gcmlimit=500" + "&gcmcontinue=" + gcmcontinue$ +
          "&prop=categoryinfo&format=json"
@@ -4712,7 +4712,7 @@ ignore$ = "Basic language learning Encyclopedia Implementations " +
           "tasks by language WikiStubs Examples needing attention " +
           "Impl needed"
 
-url$ = "http://www.rosettacode.org/mw/index.php?" +
+url$ = "https://www.rosettacode.org/mw/index.php?" +
      "title=Special:Categories&limit=5000"
 
 ReceiveHTTPFile(url$, "special.htm")
@@ -4791,10 +4791,10 @@ Using <code>requests</code> library.
 import requests
 import re
 
-response = requests.get("http://rosettacode.org/wiki/Category:Programming_Languages").text
+response = requests.get("https://rosettacode.org/wiki/Category:Programming_Languages").text
 languages = re.findall('title="Category:(.*?)">',response)[:-3] # strip last 3
 
-response = requests.get("http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000").text
+response = requests.get("https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000").text
 response = re.sub('(\d+),(\d+)',r'\1'+r'\2',response)           # strip ',' from popular languages above 999 members
 members  = re.findall('<li><a[^>]+>([^<]+)</a>[^(]*[(](\\d+) member[s]*[)]</li>',response) # find language and members
 
@@ -4835,7 +4835,7 @@ import requests
 import operator
 import re
 
-api_url    = 'http://rosettacode.org/mw/api.php'
+api_url    = 'https://rosettacode.org/mw/api.php'
 languages  = {}
 
 parameters = {
@@ -4895,7 +4895,7 @@ library(plyr)
 library(dplyr)
 options(stringsAsFactors=FALSE)
 
-langUrl <- "http://rosettacode.org/mw/api.php?format=xml&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&prop=categoryinfo&gcmlimit=5000"
+langUrl <- "https://rosettacode.org/mw/api.php?format=xml&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&prop=categoryinfo&gcmlimit=5000"
 langs <- html(langUrl) %>%
   html_nodes('page')
 
@@ -4944,7 +4944,7 @@ tbl %>%
 (define category "Category:Programming Languages")
 (define entries "entries")
 
-(define api-url (string->url "http://rosettacode.org/mw/api.php"))
+(define api-url (string->url "https://rosettacode.org/mw/api.php"))
 (define (make-complete-url gcmcontinue)
   (struct-copy url api-url
                [query `([format . "json"]
@@ -5014,7 +5014,7 @@ proccesses only languages with more than 25 entries to keep the list short
 ```Red
 Red []
 
-data: read <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
+data: read <https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>
 lb: make block! 500
 ;;data: read %data.html ;; for testing save html and use flat file
 arr: split data newline
@@ -5268,7 +5268,7 @@ The '''output'''   for this REXX (RC_POP.REX) program is included here   ──�
 # Project: Rosetta Code/Rank languages by popularity
 
 load "stdlib.ring"
-ros= download("http://rosettacode.org/wiki/Category:Programming_Languages")
+ros= download("https://rosettacode.org/wiki/Category:Programming_Languages")
 pos = 1
 totalros = 0
 rosname = ""
@@ -5428,7 +5428,8 @@ langcount.sort_by {|key,val| val}.reverse[0,25].each_with_index do |(lang, count
 end
 ```
 
-<pre style="height: 40ex; overflow: scroll">2010-07-08 14:52:46 -0500
+```txt
+2010-07-08 14:52:46 -0500
 There are 306 languages
 the top 25:
 1. 399 - Tcl
@@ -5466,8 +5467,8 @@ the top 25:
 ```runbasic
 sqliteconnect #mem, ":memory:"  ' make memory DB
 #mem execute("CREATE TABLE stats(lang,cnt)")
-a$	= httpGet$("http://rosettacode.org/wiki/Category:Programming_Languages")
-aa$	= httpGet$("http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
+a$	= httpGet$("https://rosettacode.org/wiki/Category:Programming_Languages")
+aa$	= httpGet$("https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
 i	= instr(a$,"/wiki/Category:")
 while i > 0 and lang$ <> "Languages"
 	j	= instr(a$,"""",i)
@@ -5542,7 +5543,7 @@ import scala.xml.XML
 // Reports a list with all languages recorded in the Wiki
 
 private object Acquisition {
-  val (endPoint, prefix) = ("http://rosettacode.org/mw/api.php", "Category:")
+  val (endPoint, prefix) = ("https://rosettacode.org/mw/api.php", "Category:")
   val (maxPlaces, correction) = (50, 2)
 
   def convertPathArgsToURL(endPoint: String, pathArgs: Map[String, String]) = {
@@ -5556,7 +5557,7 @@ private object Acquisition {
    * All strings starts with the prefixes "Category:"
    */
   def mineCatos = {
-    val endPoint = "http://rosettacode.org/mw/index.php"
+    val endPoint = "https://rosettacode.org/mw/index.php"
     Concurrent.logInfo("Acquisition of categories started.")
     val categories =
       (XML.load(convertPathArgsToURL(endPoint,
@@ -5869,7 +5870,7 @@ List of languages as of 2014-01-15:
 require('MediaWiki::API')
 
 var api = %O<MediaWiki::API>.new(
-    Hash(api_url => 'http://rosettacode.org/mw/api.php')
+    Hash(api_url => 'https://rosettacode.org/mw/api.php')
 )
 
 var languages = []
@@ -5937,7 +5938,7 @@ sorted_languages.each_kv { |i, lang|
         http.recl = "K,32767"  ;* Read next 32767 characters
                                ;*   of very long lines.
 
-        rclangs = "http://rosettacode.org/mw/api.php?"
+        rclangs = "https://rosettacode.org/mw/api.php?"
 +          "format=xml&action=query&generator=categorymembers&"
 +          "gcmtitle=Category:Programming%20Languages&"
 +          "gcmlimit=500&prop=categoryinfo"
@@ -6011,7 +6012,7 @@ First we build the database:
 
 
 ```stata
-copy "http://rosettacode.org/wiki/Category:Programming_Languages" lang.html, replace
+copy "https://rosettacode.org/wiki/Category:Programming_Languages" lang.html, replace
 import delimited lang.html, delim("@") enc("utf-8") clear
 keep if ustrpos(v1,"/wiki/Category:")
 gen i = ustrpos(v1,"title=")
@@ -6023,7 +6024,7 @@ gen lang=usubstr(s,11,ustrlen(s)-11)
 keep lang
 save lang, replace
 
-copy "http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" categ.html, replace
+copy "https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" categ.html, replace
 import delimited categ.html, delim("@") enc("utf-8") clear
 keep if ustrpos(v1,"/wiki/Category:") & ustrpos(v1,"member")
 gen i = ustrpos(v1,"title=")
@@ -6098,7 +6099,7 @@ list in 1/10, noobs
 package require Tcl 8.5
 package require http
 
-set response [http::geturl <http://rosettacode.org/mw/index.php?title=Special:Categories&limit=8000>]
+set response [http::geturl <https://rosettacode.org/mw/index.php?title=Special:Categories&limit=8000>]
 
 array set ignore {
     "Basic language learning"           1
@@ -6177,7 +6178,7 @@ namespace eval rc {
 	dict set q action "query"
         # Loop to pick up all results out of a category query
 	while 1 {
-	    set url "http://rosettacode.org/mw/api.php?[http::formatQuery {*}$q]"
+	    set url "https://rosettacode.org/mw/api.php?[http::formatQuery {*}$q]"
 	    puts -nonewline stderr .		;# Indicate query progress...
 	    set token [http::geturl $url]
 	    set doc [dom parse [http::data $token]]
@@ -6310,7 +6311,7 @@ Full output is included at [[Rosetta_Code/Rank_languages_by_popularity/Tcl_API_f
 
 ```tuscript
 $$ MODE TUSCRIPT
-remotedata = REQUEST ("http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
+remotedata = REQUEST ("https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000")
 allmembers=allnames=""
 COMPILE
 LOOP d=remotedata
@@ -6360,7 +6361,7 @@ ENDLOOP
 ENDCOMPILE
 ```
 
-<pre style='height:30ex;overflow:scroll'>
+```txt
 2011-01-24 14:05:27
 1. Tcl --- 472 member
 2. PicoLisp --- 441 member
@@ -6407,7 +6408,7 @@ ENDCOMPILE
 
 
 ```bash
-curl 'http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000' |
+curl 'https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000' |
 sed -nre 's/^<li.*title="Category:([^"(]+)".*\(([0-9]+) members\).*/\2 - \1/p' |
 sort -nr | awk '{printf "%2d. %s\n",NR,$0}'
 ```
@@ -6425,8 +6426,8 @@ Uses the API. Instead of displaying it on the command prompt, the records of the
     '...........................................'
 
 'API Links (From C Code)
-URL1 = "http://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&rawcontinue"
-URL2 = "http://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&gcmcontinue="
+URL1 = "https://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&rawcontinue"
+URL2 = "https://www.rosettacode.org/mw/api.php?format=json&action=query&generator=categorymembers&gcmtitle=Category:Programming%20Languages&gcmlimit=500&prop=categoryinfo&gcmcontinue="
 
 'Get Contents of the API from the Web...
 Function ScrapeGoat(link)
@@ -6585,7 +6586,7 @@ var [const] CURL=Import("zklCurl"), YAJL=Import("zklYAJL")[0];
 fcn getLangCounts(language){ // -->( (count,lang), ...)
    continueValue,tasks,curl := "",List(), CURL();  // "nm\0nm\0...."
    do{	// eg 5 times
-      page:=curl.get(("http://rosettacode.org/mw/api.php?"
+      page:=curl.get(("https://rosettacode.org/mw/api.php?"
          "format=json"
 	 "&action=query"
 	 "&generator=categorymembers"

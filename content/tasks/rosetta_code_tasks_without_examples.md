@@ -20,7 +20,7 @@ languages = [
 
 {{draft task}}A RosettaCode contributor is going on a long journey. To ease the boredom of a long flight he takes his favourite programming language manual and a list of RosettaCode tasks, but there's a catch: the tasks have to be description only and not include all the solutions already supplied by other programmers.
 
-Task: Scrape <http://rosettacode.org/wiki/Category:Programming_Tasks> for all the tasks. Traverse the links. Extract the text or html between a tag with a class of "infobox" and the beginning of the table with the id of "toc".
+Task: Scrape <https://rosettacode.org/wiki/Category:Programming_Tasks> for all the tasks. Traverse the links. Extract the text or html between a tag with a class of "infobox" and the beginning of the table with the id of "toc".
 
 
 ## Go
@@ -42,7 +42,7 @@ import (
 func main() {    
     ex := `<li><a href="/wiki/(.*?)"`
     re := regexp.MustCompile(ex)
-    page := "http://rosettacode.org/wiki/Category:Programming_Tasks"
+    page := "https://rosettacode.org/wiki/Category:Programming_Tasks"
     resp, _ := http.Get(page)
     body, _ := ioutil.ReadAll(resp.Body)
     matches := re.FindAllStringSubmatch(string(body), -1)
@@ -51,7 +51,7 @@ func main() {
     for i, match := range matches {
         tasks[i] = match[1]
     }
-    const base = "http://rosettacode.org/wiki/"
+    const base = "https://rosettacode.org/wiki/"
     const limit = 3 // number of tasks to print out
     ex = `(?s)using any language you may know.</div>(.*?)<div id="toc"`
     ex2 := `</?[^>]*>` // to remove all tags including links
@@ -179,12 +179,12 @@ use LWP::UserAgent;
 my $ua = LWP::UserAgent->new;
 
 # get list of task titles
-my $html  = $ua->request( HTTP::Request->new( GET => 'http://rosettacode.org/wiki/Category:Programming_Tasks'))->content;
+my $html  = $ua->request( HTTP::Request->new( GET => 'https://rosettacode.org/wiki/Category:Programming_Tasks'))->content;
 my @tasks = $html =~ m#<li><a href="/wiki/(.*?)"#g;
 
 # download tasks, and extract task descriptions
 for my $title (@tasks) {
-    my $html = $ua->request( HTTP::Request->new( GET => "http://rosettacode.org/wiki/$title" ))->content;
+    my $html = $ua->request( HTTP::Request->new( GET => "https://rosettacode.org/wiki/$title" ))->content;
     my($task_at_hand) = $html =~ m#using any language you may know.</div>(.*?)<div id="toc"#s;
     print "$title\n$task_at_hand\n\n";
     sleep 10; # so you have time to read each task...
@@ -204,7 +204,7 @@ my $taskfile = './RC_tasks.html';
 
 # Get list of Tasks
 say "Updating Programming_Tasks list...";
-my $page   = "http://rosettacode.org/wiki/Category:Programming_Tasks";
+my $page   = "https://rosettacode.org/wiki/Category:Programming_Tasks";
 my $html   = $ua.get($page).content;
 my $xmldoc = parse-html($html, :TAG<div>, :id<mw-pages>);
 my @tasks  = parse-html($xmldoc[0].Str, :TAG<li>).Str.comb( /'/wiki/' <-["]>+ / )».substr(6); #"
@@ -226,7 +226,7 @@ for 'Programming_Tasks' -> $category
         note $title;
 
         # Get the raw page
-        my $html = $ua.get: "http://rosettacode.org/wiki/{$title}";
+        my $html = $ua.get: "https://rosettacode.org/wiki/{$title}";
 
         # Filter out the actual task description
         $html.content ~~ m|'<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div'
@@ -256,7 +256,7 @@ sub cleanup ( $string ) {
 <hr>
 
 <p>There are 100 doors in a row that are all initially closed.
-</p><p>You make 100 <a href="/wiki/Rosetta_Code:Multiple_passes" title="Rosetta Code:Multiple passes">passes</a> by the doors.
+</p><p>You make 100 <a href="https://rosettacode.org/wiki/Rosetta_Code:Multiple_passes" title="Rosetta Code:Multiple passes">passes</a> by the doors.
 </p><p>The first time through, visit every door and &#160;<i>toggle</i>&#160; the door &#160;(if the door is closed, &#160;open it; &#160; if it is open,&#160; close it).
 </p><p>The second time, only visit every 2<sup>nd</sup> door &#160; (door #2, #4, #6, ...), &#160; and toggle it.
 </p><p>The third time, visit every 3<sup>rd</sup> door &#160; (door #3, #6, #9, ...), etc, &#160; until you only visit the 100<sup>th</sup> door.
@@ -266,9 +266,9 @@ sub cleanup ( $string ) {
 <dd></dd></dl>
 <p>Answer the question: &#160; what state are the doors in after the last pass? &#160; Which are open, which are closed?
 </p><p><br />
-<b><a href="/wiki/Rosetta_Code:Extra_credit" title="Rosetta Code:Extra credit">Alternate</a>:</b>
-As noted in this page's &#160; <a href="/wiki/Talk:100_doors" title="Talk:100 doors">discussion page</a>, &#160; the only doors that remain open are those whose numbers are perfect squares.
-</p><p>Opening only those doors is an &#160; <a href="/wiki/Rosetta_Code:Optimization" title="Rosetta Code:Optimization">optimization</a> &#160; that may also be expressed;
+<b><a href="https://rosettacode.org/wiki/Rosetta_Code:Extra_credit" title="Rosetta Code:Extra credit">Alternate</a>:</b>
+As noted in this page's &#160; <a href="https://rosettacode.org/wiki/Talk:100_doors" title="Talk:100 doors">discussion page</a>, &#160; the only doors that remain open are those whose numbers are perfect squares.
+</p><p>Opening only those doors is an &#160; <a href="https://rosettacode.org/wiki/Rosetta_Code:Optimization" title="Rosetta Code:Optimization">optimization</a> &#160; that may also be expressed;
 however, as should be obvious, this defeats the intent of comparing implementations across programming languages.
 <br /><br />
 </p>
@@ -279,12 +279,12 @@ however, as should be obvious, this defeats the intent of comparing implementati
 
 <dl><dt>Task</dt>
 <dd></dd></dl>
-<p>Implement the <a href="http://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.
+<p>Implement the <a href="https://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.
 <br /><br />
 </p>
 <dl><dt>Related Task</dt>
 <dd></dd></dl>
-<ul><li> <a href="/wiki/15_puzzle_solver" title="15 puzzle solver">15 Puzzle Solver</a></li></ul>
+<ul><li> <a href="https://rosettacode.org/wiki/15_puzzle_solver" title="15 puzzle solver">15 Puzzle Solver</a></li></ul>
 <p><br /><br />
 </p>
 
@@ -292,7 +292,7 @@ however, as should be obvious, this defeats the intent of comparing implementati
      15_puzzle_solver
 <hr>
 
-<p>Your task is to write a program that finds a solution in the fewest single moves (no multimoves) possible to a random <a href="http://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.<br />
+<p>Your task is to write a program that finds a solution in the fewest single moves (no multimoves) possible to a random <a href="https://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.<br />
 For this task you will be using the following puzzle:<br />
 </p>
 
@@ -319,7 +319,7 @@ There are 2 solutions with 52 moves:<br />
 rrrulddluuuldrurdddrullulurrrddldluurddlulurruldrdrd<br />
 rrruldluuldrurdddluulurrrdlddruldluurddlulurruldrrdd<br />
 finding either one, or both is an acceptable result.<br />
-see: <a rel="nofollow" class="external text" href="http://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution">Pretty Print of Optimal Solution</a>
+see: <a rel="nofollow" class="external text" href="https://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution">Pretty Print of Optimal Solution</a>
 </p>
 <dl><dt>Extra credit.</dt></dl>
 <p>Solve the following problem:
@@ -337,7 +337,7 @@ see: <a rel="nofollow" class="external text" href="http://www.rosettacode.org/wi
 </p>
 <dl><dt>Related Task</dt>
 <dd></dd></dl>
-<ul><li> <a href="/wiki/15_Puzzle_Game" title="15 Puzzle Game">15 puzzle game</a></li></ul>
+<ul><li> <a href="https://rosettacode.org/wiki/15_Puzzle_Game" title="15 Puzzle Game">15 puzzle game</a></li></ul>
 <p><br /><br /><b>...and so on... </b>
 </p>
 </div>
@@ -424,7 +424,7 @@ function open_download(string filename, url)
 end function
 
 function open_category(string filename)
-    return open_download(filename&".htm","http://rosettacode.org/wiki/Category:"&filename)
+    return open_download(filename&".htm","https://rosettacode.org/wiki/Category:"&filename)
 end function
 
 function dewiki(string s)
@@ -453,7 +453,7 @@ function extract_tasks()
     end if
     if length(notlang) then
         -- filter already done in specified language
-        string langurl = "http://rosettacode.org/wiki/Category:"&notlang
+        string langurl = "https://rosettacode.org/wiki/Category:"&notlang
         sequence done = dewiki(open_download(notlang&".htm",langurl))
         integer k = 0
         for i=1 to length(tasks) do
@@ -469,7 +469,7 @@ function extract_tasks()
         -- replace with contents
         for i=1 to length(tasks) do
             string ti = tasks[i],
-                   url = sprintf("http://rosettacode.org/wiki/%s",{ti}),
+                   url = sprintf("https://rosettacode.org/wiki/%s",{ti}),
                    contents = open_download(ti&".htm",url)
             integer start = match(`</div>`,contents,match(`<div class="infobox"`,contents))+length(`</div>`)
             integer finish = match(`<div id="toc"`,contents,start)-1
@@ -568,7 +568,7 @@ Dim oRE : Set oRE = New RegExp
 oRE.Pattern = "class=[" & Chr(34) & "'](.*?)[" & Chr(34) & "']" 
 oRE.IgnoreCase = True
 
-oIE.Navigate "http://rosettacode.org/wiki/Category:Programming_Tasks"
+oIE.Navigate "https://rosettacode.org/wiki/Category:Programming_Tasks"
 While oIE.Busy
 	WScript.Sleep 100
 Wend
@@ -653,7 +653,7 @@ var [const] CURL=Import("zklCurl"), YAJL=Import("zklYAJL")[0];
 fcn getTasks(language){
    continueValue,tasks,curl := "",Data(0,String), CURL();  // "nm\0nm\0...."
    do{	// eg 5 times
-      page:=curl.get(("http://rosettacode.org/mw/api.php?"
+      page:=curl.get(("https://rosettacode.org/mw/api.php?"
          "action=query&cmlimit=500"
 	 "&format=json"
 	 "&list=categorymembers"
@@ -712,18 +712,18 @@ Ackermann function
 
 <div style="border-style: groove; margin: 50px; padding: 25px;">
 15 Puzzle Game
-<p>Implement the <a href="http://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.
+<p>Implement the <a href="https://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.
 <br /><br />
 </p>
 <dl><dt>Related Task</dt>
 <dd></dd></dl>
-<ul><li> <a href="/wiki/15_puzzle_solver" title="15 puzzle solver">15 Puzzle Solver</a></li></ul>
+<ul><li> <a href="https://rosettacode.org/wiki/15_puzzle_solver" title="15 puzzle solver">15 Puzzle Solver</a></li></ul>
 <p><br /><br />
 </p>
 
 <hr>
 15 puzzle solver
-<p>Your task is to write a program that finds a solution in the fewest moves possible single moves to a random <a href="http://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.<br />
+<p>Your task is to write a program that finds a solution in the fewest moves possible single moves to a random <a href="https://en.wikipedia.org/wiki/15_puzzle" class="extiw" title="wp:15 puzzle">Fifteen Puzzle Game</a>.<br />
 For this task you will be using the following puzzle:<br />
 </p>
 15 14  1  6
@@ -743,7 +743,7 @@ There are 2 solutions with 52 moves:<br />
 rrrulddluuuldrurdddrullulurrrddldluurddlulurruldrdrd<br />
 rrruldluuldrurdddluulurrrdlddruldluurddlulurruldrrdd<br />
 finding either one, or both is an acceptable result.<br />
-see: <a rel="nofollow" class="external text" href="http://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution">Pretty Print of Optimal Solution</a>
+see: <a rel="nofollow" class="external text" href="https://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution">Pretty Print of Optimal Solution</a>
 </p>
 <dl><dt>Extra credit.</dt></dl>
 <p>Solve the following problem:
@@ -757,8 +757,8 @@ see: <a rel="nofollow" class="external text" href="http://www.rosettacode.org/wi
 </p>
 <dl><dt>Related Task</dt>
 <dd></dd></dl>
-<ul><li> <a href="/wiki/15_Puzzle_Game" title="15 Puzzle Game">15 puzzle game</a></li>
-<li> <a href="/wiki/A*_search_algorithm" title="A* search algorithm">A* search algorithm</a></li></ul>
+<ul><li> <a href="https://rosettacode.org/wiki/15_Puzzle_Game" title="15 Puzzle Game">15 puzzle game</a></li>
+<li> <a href="https://rosettacode.org/wiki/A*_search_algorithm" title="A* search algorithm">A* search algorithm</a></li></ul>
 <p><br /><br />
 </p>
 

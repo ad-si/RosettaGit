@@ -20,7 +20,6 @@ header_links = [
   { name = "Tasks", url = "/tasks" },
   { name = "Drafts", url = "/drafts" },
   { name = "Languages", url = "/languages" },
-  { name = "Tags", url = "/tags"},
 ]
 
 paginate_by = 20
@@ -52,7 +51,7 @@ name = "Contributing"
 urls = [
   { name = "Code on GitHub", url = "https://github.com/ad-si/rosettagit" },
   { name = "Issues", url = "https://github.com/ad-si/rosettagit/issues" },
-  { name = "Changelog", url = "https://github.com/ad-si/rosettagit/blob/changelog.md" },
+  { name = "Changelog", url = "https://github.com/ad-si/RosettaGit/commits/main" },
 ]
 
 [[extra.sidebar]]

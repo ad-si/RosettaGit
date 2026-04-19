@@ -113,7 +113,7 @@ This sequence is also known as the   ''Collatz sequence''.
 
 ## See also
 
-*   [xkcd](http://xkcd.com/710) (humourous).
+*   [xkcd](https://xkcd.com/710) (humourous).
 
 
 
@@ -3618,9 +3618,9 @@ The longest hailstone sequence under 100,000 is 77031 with 351 elements.
 
 ## Ezhil
 
-Ezhil is a Tamil programming language, see [| Wikipedia](http://en.wikipedia.org/wiki/Ezhil_%28programming_language%29) entry.
+Ezhil is a Tamil programming language, see [| Wikipedia](https://en.wikipedia.org/wiki/Ezhil_%28programming_language%29) entry.
 
-<lang src="Python">
+```python
 நிரல்பாகம்  hailstone ( எண் )
            பதிப்பி "=> ",எண் #hailstone seq
 	    @( எண் == 1 )   ஆனால்
@@ -6198,7 +6198,7 @@ hailstone(N, [N|S]) :-
 ```
 
 
-The mainline test driver (making use of [unification](http://en.wikipedia.org/wiki/Unification_(computer_science)) for more succinct tests):
+The mainline test driver (making use of [unification](https://en.wikipedia.org/wiki/Unification_(computer_science)) for more succinct tests):
 
 ```mercury
 :- module test_hailstone.
@@ -6951,7 +6951,7 @@ and
 
 
 Different kind of PARI scripts for Collatz sequences you can find in OEIS, e.g.:
-[A070165](http://oeis.org/A070165)
+[A070165](https://oeis.org/A070165)
 
 
 ```parigp

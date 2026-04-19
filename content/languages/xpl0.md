@@ -20,7 +20,7 @@ written in XPL0's syntax.
 XPL0 has been implemented on more than a dozen processors, but it's
 currently maintained for IBM-type PCs. Programs run under DOS and under versions of Windows that can still run DOS apps. Free, open-source versions of the
 compilers (interpreted, assembly-code compiled, and optimizing) are
-available from the official website: xpl0.org <http://www.xpl0.org/>. The 32-bit version of the compiler, XPLPX, was used for all these Rosetta Code tasks.
+available from the official website: xpl0.org ([archived copy](https://web.archive.org/web/2023/http://www.xpl0.org/)). The 32-bit version of the compiler, XPLPX, was used for all these Rosetta Code tasks.
 
 Here's how the traditional Hello World program is coded:
 

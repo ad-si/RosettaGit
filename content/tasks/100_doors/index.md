@@ -312,7 +312,7 @@ Answer the question:   what state are the doors in after the last pass?   Which 
 
 
 **Alternate:**
-As noted in this page's   [discussion page](/talk/100_doors),   the only doors that remain open are those whose numbers are perfect squares.
+As noted in this page's   [discussion page](https://rosettacode.org/wiki/Talk:100_doors),   the only doors that remain open are those whose numbers are perfect squares.
 
 Opening only those doors is an   optimization   that may also be expressed;
 however, as should be obvious, this defeats the intent of comparing implementations across programming languages.
@@ -1862,7 +1862,7 @@ Result:
 
 
 
-Compare this solution to the [FALSE](http://rosettacode.org/wiki/100_doors#FALSE) solution of this problem.
+Compare this solution to the [FALSE](https://rosettacode.org/wiki/100_doors#FALSE) solution of this problem.
 
 
 ## DWScript
@@ -2299,7 +2299,7 @@ Result:
 
 
 
-Compare this solution to the [DUP](http://rosettacode.org/wiki/100_doors#DUP) solution of this problem.
+Compare this solution to the [DUP](https://rosettacode.org/wiki/100_doors#DUP) solution of this problem.
 
 
 ## Fantom

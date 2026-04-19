@@ -126,7 +126,7 @@ Solve the [eight queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzl
 
 You can extend the problem to solve the puzzle with a board of size   **N**x**N**.
 
-For the number of solutions for small values of   **N**,   see   [oeis.org sequence A170](http://oeis.org/A000170).
+For the number of solutions for small values of   **N**,   see   [oeis.org sequence A170](https://oeis.org/A000170).
 
 
 ## Related tasks
@@ -1282,7 +1282,7 @@ implement main0() = ()
 
 ```AutoHotkey
 ;
-; Post: http://www.autohotkey.com/forum/viewtopic.php?p=353059#353059
+; Post: https://www.autohotkey.com/forum/viewtopic.php?p=353059#353059
 ; Timestamp: 05/may/2010
 ;
 
@@ -2685,7 +2685,7 @@ int main( int argc, char* argv[] )
 ```
 
 
-Version using Heuristics - explained here: [Solution_construction](http://en.wikipedia.org/wiki/8_queens_puzzle#Solution_construction)
+Version using Heuristics - explained here: [Solution_construction](https://en.wikipedia.org/wiki/8_queens_puzzle#Solution_construction)
 
 ```cpp
 
@@ -6297,7 +6297,7 @@ end
 
 
 Notes:
-* Solution assumes attempting to place 8 queens on a standard chessboard, and is a simplification of a program in the [The Icon Programming Library (IPL)](/categories/icon_programming_library) which is in the public domain.
+* Solution assumes attempting to place 8 queens on a standard chessboard, and is a simplification of a program in the Icon Programming Library (IPL) which is in the public domain.
 * There are 15 left-side-down-diagonals and 15 left-side-up-diagonals represented in the lists. An unfilled row or diagonal has value 0, otherwise the row number is stored to indicate placement.
 * The numeric equality operator **=**, like all the comparators in Icon, yields the right argument as its solution, or fails. The chain of 0 = A = B = C therefore tests each of A B and C for equality with 0; these semantics read very naturally.
 * **every** drives the chain of **=** tests to yield every possible result; the iterable component is the generator **1 to 8** which is progressively stored into **r** and will be backtracked if any of the equality tests fail. If all the placements are zero, the chain of equalities suceeds, and the suspend is invoked for that iteration.
@@ -6383,7 +6383,7 @@ solution: 1
 ->
 ```
 
-Two solutions are in the IPL [queens](http://www.cs.arizona.edu/icon/library/progs/queens.htm) and [genqueen](http://www.cs.arizona.edu/icon/library/progs/genqueen.htm).
+Two solutions are in the IPL [queens](https://www.cs.arizona.edu/icon/library/progs/queens.htm) and [genqueen](https://www.cs.arizona.edu/icon/library/progs/genqueen.htm).
 
 ## IS-BASIC
 ```basic
@@ -6443,7 +6443,7 @@ queenst=: comb2 (] #"1~ mask)&.|: perm
 ```
 
 
-Note that the Roger Hui's approach (used here) matches the description attributed to Raymond Hettinger (in the Python implementation).  (Both were posted years ago: 1981 for Hui's version which was  used here, and 2009 for Hettinger's.) However they do use different diagonal queen clash elimination approaches -see [C# Roger Hui Algorithm](http://rosettacode.org/wiki/N-queens_problem#Roger_Hui_.281981.29_Algorithm) for a comparison of the two approaches.
+Note that the Roger Hui's approach (used here) matches the description attributed to Raymond Hettinger (in the Python implementation).  (Both were posted years ago: 1981 for Hui's version which was  used here, and 2009 for Hettinger's.) However they do use different diagonal queen clash elimination approaches -see [C# Roger Hui Algorithm](https://rosettacode.org/wiki/N-queens_problem#Roger_Hui_.281981.29_Algorithm) for a comparison of the two approaches.
 
 Example use:
 
@@ -8116,7 +8116,7 @@ in
 ```
 
 
-There is a more concise and much more efficient [solution](http://www.mozart-oz.org/documentation/fdt/node25.html#section.scripts.queens) in the Mozart documentation.
+There is a more concise and much more efficient [solution](https://www.mozart-oz.org/documentation/fdt/node25.html#section.scripts.queens) in the Mozart documentation.
 
 
 
@@ -8212,7 +8212,7 @@ end.
 ### Alternative
 
 Using Rekusion and Nikolaus Wirth is much faster.
-Ok , this <http://rosettacode.org/wiki/N-queens_problem#Fast_Version> is nearly 4 times faster, but uses sysmmetry (50% less to search for) :
+Ok , this <https://rosettacode.org/wiki/N-queens_problem#Fast_Version> is nearly 4 times faster, but uses sysmmetry (50% less to search for) :
 
 algo:
 
@@ -9285,7 +9285,7 @@ del(Item,[First|List],[First|List1]) :-
 ```
 
 
-[Output](http://ideone.com/Y6olN):
+[Output](https://ideone.com/Y6olN):
    ?- findall(S, solution(S), LS), length(LS,N), write(N).
    92
 
@@ -9313,7 +9313,7 @@ not_diag(Q, [Qh|Qs], D) :-
 main :- findall(Qs, (queens(8,Qs), write(Qs), nl), _), halt.
 ```
 
-[Runs in: time: 0.02 memory: 68352](http://ideone.com/3bbIx0)
+[Runs in: time: 0.02 memory: 68352](https://ideone.com/3bbIx0)
 
 
 ### Alternative Solution
@@ -9642,7 +9642,7 @@ Sample output showing the last solution (all are actually displayed) for 1 - 12 
 
 ### Python: Raymond Hettingers permutations based solution
 
-This solution, originally by [Raymond Hettinger](http://code.activestate.com/recipes/576647/) for demonstrating the power of the itertools module, generates all solutions.
+This solution, originally by [Raymond Hettinger](https://code.activestate.com/recipes/576647/) for demonstrating the power of the itertools module, generates all solutions.
 
 
 ```python
@@ -9785,7 +9785,7 @@ sum(1 for p in queens(8))
 
 The preceding function does not enumerate solutions in lexicographic order, see [Permutations](@/tasks/permutations.md) for an explanation. The following does, but is almost 50% slower, because the exchange is always made (otherwise the loop to shift the array a by one place would not work).
 
-However, it may be interesting to look at the first solution in lexicographic order: for growing n, and apart from a +1 offset, it gets closer and closer to the sequence [A065188](http://oeis.org/A065188) at OEIS. The first n for which the first solutions differ is n=26.
+However, it may be interesting to look at the first solution in lexicographic order: for growing n, and apart from a +1 offset, it gets closer and closer to the sequence [A065188](https://oeis.org/A065188) at OEIS. The first n for which the first solutions differ is n=26.
 
 
 ```python
@@ -11926,7 +11926,7 @@ queens(2);
 
 ###  Iterative version
 
-Adapted from the Fortran 77 program, to illustrate the **[goto](http://www.stata.com/help.cgi?m2_goto)** statement in Stata.
+Adapted from the Fortran 77 program, to illustrate the **[goto](https://www.stata.com/help.cgi?m2_goto)** statement in Stata.
 
 
 ```stata
@@ -12978,7 +12978,7 @@ or any of the big5 browsers):
 ```
 
 
-You can view the results directly in your browser (Chrome/FF/IE/Opera/Safari) here: [http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
+You can view the results directly in your browser (Chrome/FF/IE/Opera/Safari) here: [https://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](https://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
 
 This stylesheet is in category XSLT because it makes use or EXSLT [http://exslt.org/](http://exslt.org/) exslt:node-set() extension function not available in XSLT 1.0
 
@@ -12986,15 +12986,15 @@ It is extracted from a bigger solution described in this blog posting: [https://
 * determine all 500 n-queens solutions for 4<=n<=9
 * determine distict solutions and totals
 * display solutions graphically nicely
-* with references to external .gif images [http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml)
-* with internal "data:..." .gif images [http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml)
+* with references to external .gif images [https://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml](https://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.xsl.xml)
+* with internal "data:..." .gif images [https://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml](https://stamm-wilbrandt.de/en/xsl-list/n-queens/n-queens.internalImages.xsl.xml)
 
 This is the initial part of a screenshot from browser output:
 
 
 
 
-Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having itself as input: [http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](http://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
+Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having itself as input: [https://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml](https://stamm-wilbrandt.de/en/xsl-list/n-queens/8-queens.xsl.xml)
 
 ```xml
 
@@ -13010,7 +13010,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 
 <!-- this is the stylesheet being referenced by href="#" above -->
 <xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
   xmlns:exslt="http://exslt.org/common"
   xmlns:n-queens="urn:n-queens"
   exclude-result-prefixes="n-queens exslt"

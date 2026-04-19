@@ -1166,8 +1166,8 @@ conversion10:
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1850,7 +1850,7 @@ Compute 10! and checking that it is 3628800, the esoteric way
 ```
 
 
-This recursive lambda function is made in the following way (see <http://en.wikipedia.org/wiki/Lambda_calculus>):
+This recursive lambda function is made in the following way (see <https://en.wikipedia.org/wiki/Lambda_calculus>):
 
 Recursive lambda function for computing factorial.
 
@@ -4072,7 +4072,7 @@ The result is shown as :
 ## Ezhil
 
 Recursive
-<lang src="Python">
+```python
 நிரல்பாகம்  fact ( n )
   @( n == 0 ) ஆனால்
             பின்கொடு  1
@@ -5157,7 +5157,7 @@ end
 
 ### Iterative
 
-The {{libheader|Icon Programming Library}} [factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn) provides the following iterative procedure which can be included with 'link factors':
+The {{libheader|Icon Programming Library}} [factors](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn) provides the following iterative procedure which can be included with 'link factors':
 
 ```Icon
 procedure factorial(n)			#: return n! (n factorial)
@@ -8427,7 +8427,7 @@ fact(X, F) :-
 
 ### Fold with anonymous function
 
-Using the module lambda written by Ulrich Neumerkel found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>, we can use anonymous functions and write :
+Using the module lambda written by Ulrich Neumerkel found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>, we can use anonymous functions and write :
 
 ```prolog
 :- use_module(lambda).
@@ -8447,7 +8447,7 @@ fact(N, F) :-
 
 ### Continuation passing style
 
-Works with SWI-Prolog and module lambda written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
+Works with SWI-Prolog and module lambda written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
 ```prolog
 :- use_module(lambda).
@@ -8931,7 +8931,7 @@ public int factorial_iter(int n){
 ```
 
 However, Rascal supports an even neater solution.
-By using a [reducer](http://tutor.rascal-mpl.org/Courses/Rascal/Libraries/lang/xml/DOM/xmlPretty/xmlPretty.html#/Courses/Rascal/Expressions/Reducer/Reducer.html) we can write this code on one short line:
+By using a [reducer](https://tutor.rascal-mpl.org/Courses/Rascal/Libraries/lang/xml/DOM/xmlPretty/xmlPretty.html#/Courses/Rascal/Expressions/Reducer/Reducer.html) we can write this code on one short line:
 
 ```rascal
 public int factorial_iter2(int n) = (1 | it*e | int e <- [1..n]);
@@ -8970,7 +8970,7 @@ int: 3628800
 ```REBOL
 REBOL [
     Title: "Factorial"
-    URL: http://rosettacode.org/wiki/Factorial_function
+    URL: https://rosettacode.org/wiki/Factorial_function
 ]
 
 ; Standard recursive implementation.
@@ -9741,13 +9741,13 @@ endfunction
 
 ## Seed7
 
-Seed7 defines the prefix operator [!](http://seed7.sourceforge.net/libraries/integer.htm#!%28in_integer%29) ,
-which computes a factorial of an [integer](http://seed7.sourceforge.net/libraries/integer.htm).
+Seed7 defines the prefix operator [!](https://seed7.sourceforge.net/libraries/integer.htm#!%28in_integer%29) ,
+which computes a factorial of an [integer](https://seed7.sourceforge.net/libraries/integer.htm).
 The maximum representable number of an integer is
-[9223372036854775807](http://seed7.sourceforge.net/libraries/integer.htm#(attr_integer)._last).
+[9223372036854775807](https://seed7.sourceforge.net/libraries/integer.htm#(attr_integer)._last).
 This limits the maximum factorial for integers to factorial(20)=2432902008176640000.
 Because of this limitations factorial is a very bad example to show the performance advantage of an iterative solution.
-To avoid this limitations the functions below use [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm):
+To avoid this limitations the functions below use [bigInteger](https://seed7.sourceforge.net/libraries/bigint.htm):
 
 ### Iterative
 
@@ -9766,7 +9766,7 @@ const func bigInteger: factorial (in bigInteger: n) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
 
 ### Recursive
 
@@ -9783,7 +9783,7 @@ const func bigInteger: factorial (in bigInteger: n) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#fib>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#fib>
 
 
 ## Self

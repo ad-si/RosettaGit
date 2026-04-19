@@ -14,8 +14,8 @@ tags = []
 ## Racket
 
 
-<img src="timb.net/images/RC/Total-circles-area/TCA-all-circles.png" alt="All the circles"/><br/>
-<img src="timb.net/images/RC/Total-circles-area/TCA-split-circles.png" alt="Showing the path edge from split-circles"/>
+<img src="http://timb.net/images/RC/Total-circles-area/TCA-all-circles.png" alt="All the circles"/><br/>
+<img src="http://timb.net/images/RC/Total-circles-area/TCA-split-circles.png" alt="Showing the path edge from split-circles"/>
 
 [All the circles](http://timb.net/images/RC/Total-circles-area/TCA-all-circles.png)
 [Showing the path edge from split-circles](http://timb.net/images/RC/Total-circles-area/TCA-split-circles.png)

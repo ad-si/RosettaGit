@@ -23,5 +23,5 @@ Examples of use:
 - run-time object
 - dynamic [polymorphism](@/tasks/polymorphism.md)
 - dynamic memory allocation
-- [Type checking](/tasks/dynamic_typing)
+- [Type checking](@/drafts/type_checking.md)
 - dynamic semantics
