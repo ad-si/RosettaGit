@@ -1,0 +1,69 @@
+# Lychee link checker configuration.
+# See https://lychee.cli.rs for the full reference.
+
+cache = true
+max_cache_age = "30d"
+
+max_redirects = 5
+timeout = 15
+max_concurrency = 32
+retry_wait_time = 2
+
+# Status codes to accept. 4xx auth/throttling responses prove the resource
+# exists; the failure is an access restriction we cannot work around.
+accept = [
+  "200..=299",
+  "301", "302", "304", "307", "308",
+  "401", "403", "405", "429",
+]
+
+exclude = [
+  # Templates link every page to GitHub for "Edit"/"Submit issue", so
+  # GitHub aggressively rate-limits these. The links work in browsers.
+  'github\.com/.*?/(issues/new|tree/master)',
+
+  # Lychee fails on rosettacode.org with TLS/cert errors that don't
+  # reproduce in browsers or curl.
+  'rosettacode\.org',
+
+  # Defunct services
+  'scalafiddle\.io',
+  'alioth\.debian\.org',
+  'siteduzero\.com',
+  'merd\.sourceforge\.net',
+  'swiftapi\.com',
+  'php2python\.com',
+  'angelfire\.com',
+  'informatyka\.wroc\.pl',
+  'wiki\.theory\.org/YourLanguageSucks',
+
+  # Sites already documented as dead in content/similar_sites.md "Archive".
+  'algpedia\.dcc\.ufrj\.br',
+  'amath\.colorado\.edu',
+  'cs\.fit\.edu/~ryan/compare',
+  'cw\.tactileint\.com',
+  'eqcode\.com',
+  'everything2\.com',
+  'sicp\.org\.ua',
+  'wiki\.archlinux\.org/index\.php/Kiloseconds',
+  'wiki\.schmid\.dk',
+  'www\.algorithm-code\.com',
+  'www\.codepoetics\.com',
+  'www\.dawnofthegeeks\.com',
+  'www\.kernelthread\.com',
+  'www\.miranda\.org',
+  'www\.nocruft\.com',
+  'www\.planetsourcecode\.com',
+  'wp7mapping\.interoperabilitybridges',
+
+  # Persistent cert/connection errors from lychee but reachable in browsers
+  'jibbering\.com',
+  'l\.autohotkey\.com',
+  'autohotkey\.com/forum',
+  'mvshelp\.net',
+  'i\.csc\.uvic\.ca',
+  'simula67\.at\.ifi\.uio\.no',
+  'gfycat\.com',
+  'blog\.newsystemsthinking\.com',
+  'git\.chise\.org',
+]

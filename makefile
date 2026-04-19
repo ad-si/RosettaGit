@@ -46,7 +46,7 @@ deploy: public prune-public
 
 .PHONY: check-links  # Check links with Lychee (https://github.com/lycheeverse/lychee)
 check-links: public
-	lychee --no-progress public
+	lychee --no-progress --root-dir "$(CURDIR)/public" public
 
 
 .PHONY: clean
