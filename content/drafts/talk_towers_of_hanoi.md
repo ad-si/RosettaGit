@@ -22,7 +22,7 @@ and their aunt must be intimately familiar with the "Towers of Hanoi"
 now I needed to do a Google search to get a clue
 as I can find no clue on this Wiki....
 
-["http://www.google.com/search?hl=en&q=%22Towers+of+Hanoi%22&btnG=Google+Search"]
+["https://www.google.com/search?hl=en&q=%22Towers+of+Hanoi%22&btnG=Google+Search"]
 
 == Verbose explanation for J ==
 Here is one of the J implementations:

@@ -3857,7 +3857,7 @@ Tested with perl v5.26.1
 #!/usr/bin/perl
 
 use strict;   # gen.pl - flatAST to stack machine code
-use warnings; # http://www.rosettacode.org/wiki/Compiler/code_generator
+use warnings; # https://www.rosettacode.org/wiki/Compiler/code_generator
 
 my $stringcount = my $namecount = my $pairsym = my $pc = 0;
 my (%strings, %names);

@@ -118,7 +118,7 @@ end Sendmail;
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/topic39797.html)
+ahk [discussion](https://www.autohotkey.com/forum/topic39797.html)
 ```autohotkey
 sSubject:= "greeting"
 sText   := "hello"
@@ -136,14 +136,14 @@ pmsg :=   COM_CreateObject("CDO.Message")
 pcfg :=   COM_Invoke(pmsg, "Configuration")
 pfld :=   COM_Invoke(pcfg, "Fields")
 
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/sendusing", 2)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/smtpconnectiontimeout", 60)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/smtpserver", sServer)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/smtpserverport", nPort)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/smtpusessl", bTLS)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", 1)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/sendusername", sUsername)
-COM_Invoke(pfld, "Item", "http://schemas.microsoft.com/cdo/configuration/sendpassword", sPassword)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/sendusing", 2)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/smtpconnectiontimeout", 60)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/smtpserver", sServer)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/smtpserverport", nPort)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/smtpusessl", bTLS)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/smtpauthenticate", 1)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/sendusername", sUsername)
+COM_Invoke(pfld, "Item", "https://schemas.microsoft.com/cdo/configuration/sendpassword", sPassword)
 COM_Invoke(pfld, "Update")
 
 COM_Invoke(pmsg, "Subject", sSubject)
@@ -1643,7 +1643,7 @@ mail('hello@world.net', 'My Subject', "A Message!", "From: my@address.com");
 
 ## PicoLisp
 
-PicoLisp has a built-in '[mail](http://software-lab.de/doc/refM.html#mail)'
+PicoLisp has a built-in '[mail](https://software-lab.de/doc/refM.html#mail)'
 function. A minimal call would be
 
 ```PicoLisp
@@ -1730,7 +1730,7 @@ EndIf
 ### Python: POSIX
 
 The function returns a dict of any addresses it could not forward to;
-other connection problems raise [errors](http://docs.python.org/library/smtplib.html?highlight=smtplib#smtplib.SMTP.sendmail).
+other connection problems raise [errors](https://docs.python.org/library/smtplib.html?highlight=smtplib#smtplib.SMTP.sendmail).
 
 Tested on Windows, it should work on all [[wp:POSIX|POSIX]] platforms.
 
@@ -2240,12 +2240,12 @@ Function send_mail(from,recipient,cc,subject,message)
 		.Subject = subject
 		.Textbody = message
 		.Configuration.Fields.Item _
-			("http://schemas.microsoft.com/cdo/configuration/sendusing") = 2
+			("https://schemas.microsoft.com/cdo/configuration/sendusing") = 2
 		.Configuration.Fields.Item _
-			("http://schemas.microsoft.com/cdo/configuration/smtpserver") = _
+			("https://schemas.microsoft.com/cdo/configuration/smtpserver") = _
 		        "mystmpserver"
 		.Configuration.Fields.Item _
-		    ("http://schemas.microsoft.com/cdo/configuration/smtpserverport") = 25
+		    ("https://schemas.microsoft.com/cdo/configuration/smtpserverport") = 25
 		.Configuration.Fields.Update
 		.Send
 	End With

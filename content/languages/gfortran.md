@@ -16,4 +16,4 @@ tags = []
 
 ## See also
 * [gfortran on Wikipedia](https://en.wikipedia.org/wiki/gfortran)
-* [GNU Fortran home page](http://gcc.gnu.org/fortran/)
+* [GNU Fortran home page](https://gcc.gnu.org/fortran/)

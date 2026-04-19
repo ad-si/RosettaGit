@@ -1484,8 +1484,8 @@ const
   htmlHead =
   '<!DOCTYPE html'+CRLF+
   'PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"'+CRLF+
-  '"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'+CRLF+
-  '<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">'+CRLF+
+  '"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">'+CRLF+
+  '<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">'+CRLF+
   '<head>'+CRLF+
   '<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />'+CRLF+
   '<title>CSV-to-HTML Conversion</title>'+CRLF+
@@ -1642,8 +1642,8 @@ end.
 ```html5
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 <title>CSV-to-HTML Conversion</title>
@@ -1675,8 +1675,8 @@ td.c {width:15%}
 ```html5
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
 <title>CSV-to-HTML Conversion</title>
@@ -2861,8 +2861,8 @@ class Csv2Html {
 		BufferedReader br = new BufferedReader(isr);
 		PrintStream stdout = System.out;
 
-		stdout.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
-		stdout.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+		stdout.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
+		stdout.println("<html xmlns=\"https://www.w3.org/1999/xhtml\">");
 		stdout.println("<head><meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\"/>");
 		stdout.println("<title>Csv2Html</title>");
 		stdout.println("<style type=\"text/css\">");
@@ -2892,8 +2892,8 @@ class Csv2Html {
 
 
 ```html5
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <title>Csv2Html</title>
 <style type="text/css">
@@ -2914,8 +2914,8 @@ td{border:0.1em solid #2F6FAB;padding:0.5em;background-color:#F9F9F9;}</style>
 
 
 ```html5
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <title>Csv2Html</title>
 <style type="text/css">
@@ -3920,8 +3920,8 @@ return
 
 method htmlHeader() public static returns Rexx
   html = '<?xml version="1.0" encoding="UTF-8"?>\n' -
-      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n' -
-      || '<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">\n' -
+      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n' -
+      || '<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">\n' -
       || '<head>\n' -
       || '<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>\n' -
       || '<title>RCsv2Html</title>\n' -
@@ -3950,7 +3950,7 @@ method htmlHeader() public static returns Rexx
       || '</head>\n' -
       || '<body>\n' -
       || '<h1>Rosetta Code &ndash; NetRexx Sample Output</h2>\n' -
-      || '<h2><a href="http://rosettacode.org/wiki/CSV_to_HTML_translation">CSV to HTML translation</a></h2>\n' -
+      || '<h2><a href="https://rosettacode.org/wiki/CSV_to_HTML_translation">CSV to HTML translation</a></h2>\n' -
       || ''
 
   return html
@@ -4031,8 +4031,8 @@ method htmlCsvTableRow(row, tag = 'td') public static returns Rexx
 
 ```html5
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <title>RCsv2Html</title>
@@ -4061,7 +4061,7 @@ p.classname {
 </head>
 <body>
 <h1>Rosetta Code &ndash; NetRexx Sample Output</h2>
-<h2><a href="http://rosettacode.org/wiki/CSV_to_HTML_translation">CSV to HTML translation</a></h2>
+<h2><a href="https://rosettacode.org/wiki/CSV_to_HTML_translation">CSV to HTML translation</a></h2>
 
 <h3>Contents of CSV <code>./data/Brian.csv</code></h3>
 
@@ -4356,7 +4356,7 @@ Output:
 ### Simple solution
 
 
-OCaml possesses a [CSV module](http://forge.ocamlcore.org/projects/csv/)
+OCaml possesses a [CSV module](https://forge.ocamlcore.org/projects/csv/)
 but we do not use it hereafter because the CSV data does not contain comas.
 
 
@@ -4851,8 +4851,8 @@ Invoke-Expression .\csv_html_test.html
 
 ```html5
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <title>Csv to Html</title><style type="text/css">BODY{background-color:#663300;color:#FFCC00;font-family:Arial Narrow,sans-serif;font-size:17px;}TABLE{border-width: 3px;border-style: solid;border-color: black;border-collapse: collapse;}TH{border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color:#663333}TD{border-width: 1px;padding: 8px;border-style: solid;border-color: black;background-color:#660033}</style>
 </head><body>
@@ -5896,8 +5896,8 @@ $ sed -f csv2html.sed input.csv
 
 ## Seed7
 
-The library [html_ent.s7i](http://seed7.sourceforge.net/libraries/html_ent.htm) defines the
-function [encodeHtmlContent](http://seed7.sourceforge.net/libraries/html_ent.htm#encodeHtmlContent%28in_string%29),
+The library [html_ent.s7i](https://seed7.sourceforge.net/libraries/html_ent.htm) defines the
+function [encodeHtmlContent](https://seed7.sourceforge.net/libraries/html_ent.htm#encodeHtmlContent%28in_string%29),
 which replaces characters with HTML entities. E.g.: '<' is replaced by ''&amp;lt;''.
 
 ```seed7
@@ -6638,15 +6638,15 @@ The multitude,Behold his mother! Behold his mother!
 # Pass as the URI of the input csv as a parameter (named url-of-csv) to your XSLT 2.0 processor
 
  <lang><xsl:stylesheet
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:xcsvt="http://www.seanbdurkin.id.au/xslt/csv-to-xml.xslt"
-   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-   xmlns:xcsv="http://www.seanbdurkin.id.au/xslt/xcsv.xsd"
+   xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
+   xmlns:xcsvt="https://www.seanbdurkin.id.au/xslt/csv-to-xml.xslt"
+   xmlns:xs="https://www.w3.org/2001/XMLSchema"
+   xmlns:xcsv="https://www.seanbdurkin.id.au/xslt/xcsv.xsd"
    version="2.0"
    exclude-result-prefixes="xsl xs xcsvt xcsv">
  <xsl:import href="csv-to-xml.xslt" />
  <xsl:output indent="yes" encoding="UTF-8" method="html" doctype-system="about:legacy-compat" />
- <xsl:import-schema schema-location="http://www.seanbdurkin.id.au/xslt/xcsv.xsd"
+ <xsl:import-schema schema-location="https://www.seanbdurkin.id.au/xslt/xcsv.xsd"
                     use-when="system-property('xsl:is-schema-aware')='yes'" />
  <xsl:param name="url-of-csv" as="xs:string" select="'roseta.csv'" />
 

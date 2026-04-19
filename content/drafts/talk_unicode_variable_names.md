@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Why!==
-I just saw [this](http://rosettacode.org/mw/index.php?title=Bitmap/Bresenham%27s_line_algorithm&curid=3214&diff=112356&oldid=112342&rcid=113529) edit and wondered ...? --[[User:Paddy3118|Paddy3118]] 07:23, 1 July 2011 (UTC)
+I just saw [this](https://rosettacode.org/mw/index.php?title=Bitmap/Bresenham%27s_line_algorithm&curid=3214&diff=112356&oldid=112342&rcid=113529) edit and wondered ...? --[[User:Paddy3118|Paddy3118]] 07:23, 1 July 2011 (UTC)
 :Yeah, that is not good at all. It means that the source code needs conversion to be usable on ascii based platforms. Maybe we will need a unidecoder for such sources. That is probably a future task. [[User:Markhobley|Markhobley]] 20:57, 6 July 2011 (UTC)
 ::The change was made to Perl 6 code, and it is my understanding that that's correct code for that language. Usage of Unicode glyphs in Perl 6 code is pretty normal. --[[User:Short Circuit|Michael Mol]] 21:58, 6 July 2011 (UTC)
 :::I'm not saying that it is incorrect. However, I do not think that it is a good idea to use non ascii characters in source code, because this will not look good on some terminals, and printed listings may have wrong glyphs or these characters may be omitted completely from the printout. The older version of the code was better IMHO. [[User:Markhobley|Markhobley]] 22:19, 6 July 2011 (UTC)

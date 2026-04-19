@@ -101,7 +101,7 @@ end
 
 ```oz
 %% For real task prefer QTk's images:
-%% http://www.mozart-oz.org/home/doc/mozart-stdlib/wp/qtk/html/node38.html
+%% https://www.mozart-oz.org/home/doc/mozart-stdlib/wp/qtk/html/node38.html
 
 functor
 import

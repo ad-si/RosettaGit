@@ -9,4 +9,4 @@ id = 12109
 categories = []
 tags = []
 +++
-See <http://en.wikipedia.org/wiki/GNAT> at wikipedia.
+See <https://en.wikipedia.org/wiki/GNAT> at wikipedia.

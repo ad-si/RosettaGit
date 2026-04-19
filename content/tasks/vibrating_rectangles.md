@@ -36,7 +36,7 @@ Create [Vibrating rectangles](https://1drv.ms/v/s!AqDUIunCqVnIg1MxKPi5DzwUbJEf)
 
 ## C
 
-Dimensions of the rectangles, their number and the animation delay can be configured. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Dimensions of the rectangles, their number and the animation delay can be configured. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 

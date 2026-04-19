@@ -1,6 +1,6 @@
 REBOL [
 	Title: "FizzBuzz"
-	URL: http://rosettacode.org/wiki/FizzBuzz
+	URL: https://rosettacode.org/wiki/FizzBuzz
 ]
 
 ; Concatenative. Note use of 'case/all' construct to evaluate all

@@ -4392,7 +4392,7 @@ $ sh babbage.sh 1234554321
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Babbage_problem
+https://rosettacode.org/wiki/Babbage_problem
 ···
 ■ BabbageProblem
   § static

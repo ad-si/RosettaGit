@@ -41,5 +41,5 @@ __toc__
 
 [[File:Thyrd-9bottles.png|300px|thumb|none|main]]
 [[File:Thyrd-9bottles-detail.png|300px|thumb|none|detail]]
-* [Screencast of program running (20s)](http://www.youtube.com/watch?v=AwTQEJdh9aQ)
-* [Screencast of program begin debugged (2m 16s)](http://www.youtube.com/watch?v=_DB9UhPr4rM)
+* [Screencast of program running (20s)](https://www.youtube.com/watch?v=AwTQEJdh9aQ)
+* [Screencast of program begin debugged (2m 16s)](https://www.youtube.com/watch?v=_DB9UhPr4rM)

@@ -713,7 +713,7 @@ SCS(abcbdab, bdcaba) = abcbdcaba
 
 ## Sidef
 
-Uses the ''lcs'' function defined [here](http://rosettacode.org/wiki/Longest_common_subsequence#Sidef).
+Uses the ''lcs'' function defined [here](https://rosettacode.org/wiki/Longest_common_subsequence#Sidef).
 
 ```ruby
 func scs(u, v) {

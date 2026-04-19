@@ -2,8 +2,8 @@
 * Title      : 100Doors.X68
 * Written by : G. A. Tippery
 * Date       : 2014-01-17
-* Description: Solves "100 Doors" problem, see: http://rosettacode.org/wiki/100_doors
-* Notes      : Translated from C "Unoptimized" version, http://rosettacode.org/wiki/100_doors#unoptimized
+* Description: Solves "100 Doors" problem, see: https://rosettacode.org/wiki/100_doors
+* Notes      : Translated from C "Unoptimized" version, https://rosettacode.org/wiki/100_doors#unoptimized
 *            : No optimizations done relative to C version; "for("-equivalent loops could be optimized.
 *-----------------------------------------------------------
 

@@ -512,7 +512,7 @@ We've passed the range list argument literally for evaluation in local scope.  V
 
 ```j
 
-NB. http://rosettacode.org/wiki/Loops/Wrong_ranges#J
+NB. https://rosettacode.org/wiki/Loops/Wrong_ranges#J
 NB. define range as a linear polynomial
 start =: 0&{
 stop =: 1&{

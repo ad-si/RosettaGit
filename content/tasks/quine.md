@@ -163,7 +163,7 @@ There are several difficulties that one runs into when writing a quine, mostly d
 
 
 
-'''Next to the Quines presented here, many other versions can be found on the [Quine](http://www.nyx.net/~gthompso/quine.htm) page.'''
+'''Next to the Quines presented here, many other versions can be found on the [Quine](https://www.nyx.net/~gthompso/quine.htm) page.'''
 
 
 
@@ -386,7 +386,7 @@ The original program - from which this is derived - was written by Richard Wendl
 
 ## AutoHotkey
 
-All from <http://www.autohotkey.com/forum/viewtopic.php?t=14336>:
+All from <https://www.autohotkey.com/forum/viewtopic.php?t=14336>:
 The "cheating" way:
 
 ```AutoHotkey
@@ -1611,7 +1611,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ## Forth
 
-A large number of quine methods are listed [here](http://www.complang.tuwien.ac.at/forth/quines.html), the simplest of which is:
+A large number of quine methods are listed [here](https://www.complang.tuwien.ac.at/forth/quines.html), the simplest of which is:
 
 ```forth
 SOURCE TYPE>
@@ -1985,7 +1985,7 @@ And other [[j:Puzzles/Quine#Solutions|solutions]] are also possible.
 
 ## Java
 
-Copied from [The Quine Page](http://www.nyx.net/~gthompso/copyrights.htm)
+Copied from [The Quine Page](https://www.nyx.net/~gthompso/copyrights.htm)
 
 Author: Bertram Felgenhauer
 <div style="width:100%;overflow:scroll">
@@ -3533,7 +3533,7 @@ The last command tests if source code in variable ''quine'' is equal to output o
 
 ## Pascal
 
-A modification of one Pascal example (Author: Oliver Heen) from <http://www.nyx.net/~gthompso/self_pasc.txt>. This example includes newline at the end.
+A modification of one Pascal example (Author: Oliver Heen) from <https://www.nyx.net/~gthompso/self_pasc.txt>. This example includes newline at the end.
 
 ```pascal
 const s=';begin writeln(#99#111#110#115#116#32#115#61#39,s,#39,s)end.';begin writeln(#99#111#110#115#116#32#115#61#39,s,#39,s)end.
@@ -4681,7 +4681,7 @@ const proc: main is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/puzzles.htm#self>
+Original source: <https://seed7.sourceforge.net/algorith/puzzles.htm#self>
 
 
 ## Sidef
@@ -4774,7 +4774,7 @@ quite large (3.1 million to 180 thousand lines in this case).
 
 ## Tcl
 
-There are a number of excellent quines in the Tcl wiki<http://wiki.tcl.tk/730>, the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file.
+There are a number of excellent quines in the Tcl wiki<https://wiki.tcl-lang.org/730>, the most useful for real-world programming probably the one that uses <tt>[info]</tt> to read the source of the currently running script. But that would be like opening its own source file.
 
 The most straightforward one in the spirit of Quine is probably the one that uses <tt>[join]</tt>, which appends the elements in the list given in its first argument with a "joining string" which is given in the second element of the list. For example the three-element list <tt>{} A B</tt> (the first element of which is an empty list):
 

@@ -855,8 +855,8 @@ end
 ```
 
 
-[strings.icn provides deletec, csort](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
-[factors.icn provides prime](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
+[strings.icn provides deletec, csort](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[factors.icn provides prime](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 Sample Output (ECsolve):
 ```txt

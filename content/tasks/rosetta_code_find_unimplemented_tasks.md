@@ -46,7 +46,7 @@ Given the name of a language on Rosetta Code, find all tasks which are not imple
 
 Note: Implementations should allow for fetching more data than can be returned in one request to Rosetta Code.
 
-You'll need to use the Media Wiki API, which you can find out about locally, [here](http://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](http://www.mediawiki.org/wiki/API_Query)
+You'll need to use the Media Wiki API, which you can find out about locally, [here](https://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](https://www.mediawiki.org/wiki/API_Query)
 
 
 
@@ -89,7 +89,7 @@ procedure Not_Coded is
       -- Query has cmlimit value of 100, so we need 5 calls to
       -- retrieve the complete list of Programming_category
       Uri_Xml    : constant String  :=
-         "http://rosettacode.org/mw/api.php?action=query&list=categorymembers"
+         "https://rosettacode.org/mw/api.php?action=query&list=categorymembers"
          &
          "&format=xml&cmlimit=100&cmtitle=Category:";
       Cmcontinue : Unbounded_String := Null_Unbounded_String;
@@ -248,7 +248,7 @@ OnLV:
     LV_GetText(rowTxt, A_EventInfo) ; get the text of the clicked row
     rowTxt := Enc_Uri(rowTxt) ; uri-encode the text
     StringReplace, rowTxt, rowTxt, `%20, _, All ; replace all space-encodings with underscores
-    Run % "http://rosettacode.org/wiki/" . rowTxt ; run the resulting link in the default browser
+    Run % "https://rosettacode.org/wiki/" . rowTxt ; run the resulting link in the default browser
   }
 Return
 
@@ -275,7 +275,7 @@ getList(category)
 
   getFile: ; function-internal subroutine for getting a file and parsing it
     ; construct the url
-    url := "http://www.rosettacode.org/w/api.php?action=query&list="
+    url := "https://www.rosettacode.org/w/api.php?action=query&list="
           . "categorymembers&cmtitle=Category:" . category
           . "&cmlimit=500&format=xml" . doContinue
     UrlDownloadToFile, %url%, %fileName% ; download the url
@@ -399,7 +399,7 @@ using System.Net;
 
 class Program {
     static List<string> GetTitlesFromCategory(string category) {
-        string searchQueryFormat = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:{0}&format=json{1}";
+        string searchQueryFormat = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:{0}&format=json{1}";
         List<string> results = new List<string>();
         string cmcontinue = string.Empty;
 
@@ -474,7 +474,7 @@ The ''get-titles'' function has 1- and 2-argument versions. The former takes the
 
 (defn get-titles
   ([category]
-    (let [urlbase "http://www.rosettacode.org/w/api.php"
+    (let [urlbase "https://www.rosettacode.org/w/api.php"
           params ["action=query"
                   "list=categorymembers"
                   "format=xml"
@@ -644,7 +644,7 @@ per_language( Language ) ->
 	[io:fwrite("~p~n", [X]) || X <- Uninplemented].
 
 rosetta_code_list_of( Category ) ->
-	URL = "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmlimit=500&format=xml&cmtitle=Category:"
+	URL = "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmlimit=500&format=xml&cmtitle=Category:"
 	++ Category,
 	title_contents( URL, "", [] ).
 
@@ -713,7 +713,7 @@ import (
 
 const language = "Go"
 
-var baseQuery = "http://rosettacode.org/mw/api.php?action=query" +
+var baseQuery = "https://rosettacode.org/mw/api.php?action=query" +
     "&format=xml&list=categorymembers&cmlimit=100"
 
 func req(u string, foundCm func(string)) string {
@@ -781,7 +781,7 @@ func main() {
 
 ## Haskell
 
-{{libheader|HTTP XML}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+{{libheader|HTTP XML}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -806,8 +806,8 @@ replaceWithSpace c = (\x -> if c==x then ' ' else x)
 encl = chr 34
 
 unimpTasks lang = do
-  allTasks <- getRespons "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
-  impl <-  getRespons ( "http://rosettacode.org/json/isb/" ++ lang ++ ".json")
+  allTasks <- getRespons "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+  impl <-  getRespons ( "https://rosettacode.org/json/isb/" ++ lang ++ ".json")
   let langxx = map (map(replaceWithSpace '_')) $ filter (/=",") $ words $ map (replaceWithSpace encl ) $ init $ drop 1 impl
       xml = onlyElems $ parseXML allTasks
       allxx = concatMap (map (fromJust.findAttr (unqual "title")). filterElementsName (== unqual "cm")) xml
@@ -830,8 +830,8 @@ getTasks url = do
 
 main :: String -> IO ()
 main lang = do
-  implTasks <- getTasks $ "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:" ++ lang ++ "&format=json&cmlimit=500"
-  allTasks <- getTasks "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&format=json&cmlimit=500"
+  implTasks <- getTasks $ "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:" ++ lang ++ "&format=json&cmlimit=500"
+  allTasks <- getTasks "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&format=json&cmlimit=500"
   mapM_ putStrLn $ allTasks \\ implTasks
 ```
 
@@ -842,8 +842,8 @@ The following code only works in Unicon.
 
 
 ```unicon
-$define RCINDEX "http://rosettacode.org/mw/api.php?format=xml&action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500"
-$define RCTASK  "http://rosettacode.org/mw/index.php?action=raw&title="
+$define RCINDEX "https://rosettacode.org/mw/api.php?format=xml&action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500"
+$define RCTASK  "https://rosettacode.org/mw/index.php?action=raw&title="
 $define RCUA    "User-Agent: Unicon Rosetta 0.1"
 $define RCXUA   "X-Unicon: http://unicon.org/"
 $define TASKTOT "* Total Tasks *"
@@ -972,7 +972,7 @@ getCMcontquery=: ('&cmcontinue=' , urlencode)^:(0 < #)@>@parseCMcontinue
 
 getCategoryMembers=: monad define
   buildqry=. 'action=query&list=categorymembers&cmtitle=Category:' , ,&'&cmlimit=500&format=json'
-  url=.'http://www.rosettacode.org/w/api.php'
+  url=.'https://www.rosettacode.org/w/api.php'
   uri=. url ,'?', buildqry urlencode y
   catmbrs=. qrycont=. ''
   whilst. #qrycont=. getCMcontquery jsondat do.
@@ -1072,7 +1072,7 @@ Find limit of recursion
 ```julia
 using HTTP, JSON
 
-const baseuri = "http://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:"
+const baseuri = "https://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:"
 const enduri = "&cmlimit=500&format=json"
 queries(x) = baseuri * HTTP.Strings.escapehtml(x) * enduri
 
@@ -1246,7 +1246,7 @@ local function merge_tables(existing, from_req)
 end
 
 local function get_task_list(category)
-  local url = 'http://www.rosettacode.org/mw/api.php'
+  local url = 'https://www.rosettacode.org/mw/api.php'
   local query = {
     action = 'query',
     list = 'categorymembers',
@@ -1314,7 +1314,7 @@ Python has 24 unimplemented programming tasks:
 ```Maple
 #Example with the Maple Language
 lan := "Maple":
-x := URL:-Get(cat("http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_", StringTools:-SubstituteAll(lan, " ", "_")), output = content):
+x := URL:-Get(cat("https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_", StringTools:-SubstituteAll(lan, " ", "_")), output = content):
 x := StringTools:-StringSplit(x, "<h2><span class=\"mw-headline\" id=\"Not_implemented\">Not implemented</span>")[2]:
 x := StringTools:-StringSplit(x, "<span class=\"mw-headline\" id=\"Draft_tasks_without_implementation\">Draft tasks without implementation</span>")[1]:
 x := StringTools:-StringSplit(x,"<li><a href=\"/wiki/")[2..]:
@@ -1358,7 +1358,7 @@ ImportAll[lang_String] :=
   cmcontinue = "";
   While[continue,
    extra = If[cmcontinue =!= "", "&cmcontinue=" <> cmcontinue, ""];
-   xml = Import["http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:" <> lang <> "&cmlimit=500&format=xml" <> extra, "XML"];
+   xml = Import["https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:" <> lang <> "&cmlimit=500&format=xml" <> extra, "XML"];
    AppendTo[data, Cases[xml, XMLElement["cm", _, {}], \[Infinity]]];
    next = Flatten[Cases[xml, {"cmcontinue" -> _}, \[Infinity]]];
    If[Length[next] > 0,
@@ -1381,7 +1381,7 @@ which outputs a list of items not implemented:
 Another method is by getting the Tasks not implemented page:
 
 ```Mathematica
-url = "http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Mathematica";
+url = "https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Mathematica";
 html = Import[url, "XMLObject"];
 pos = Position[html, XMLElement["div", {"class" -> "mw-content-ltr", "dir" -> "ltr", "lang" -> "en"}, ___]];
 pos = First[pos];
@@ -1390,7 +1390,7 @@ pos = Position[data, XMLElement["li", {}, {XMLElement["a", {"shape" -> "rect", "
 data = Extract[data, pos];
 data = data[[All, -1, -1, 2]];
 data = {"title", "href"} /. # & /@ %;
-data[[All, 2]] = "http://rosettacode.org" <> # & /@ data[[All, 2]];
+data[[All, 2]] = "https://rosettacode.org" <> # & /@ data[[All, 2]];
 newb = data[[All, 1]];
 data = Hyperlink @@@ data;
 data // Column
@@ -1416,7 +1416,7 @@ import httpclient, strutils, xmldom, xmldomparser, cgi, os
 
 proc findrc(category: string): seq[string] =
   var
-    name = "http://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:$#&cmlimit=500&format=xml" % encodeUrl(category)
+    name = "https://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:$#&cmlimit=500&format=xml" % encodeUrl(category)
     cmcontinue = @[""]
     titles = newSeq[string]()
 
@@ -1487,7 +1487,7 @@ declare
   end
 
   fun {FindCategory Cat}
-     CatUrl = "http://www.rosettacode.org/mw/api.php?action=query"
+     CatUrl = "https://www.rosettacode.org/mw/api.php?action=query"
      #"&list=categorymembers"
      #"&cmtitle=Category:"#{PercentEncode Cat}
      #"&cmlimit=500&format=xml"
@@ -1620,7 +1620,7 @@ sub get { $ua->request( HTTP::Request->new( GET => shift))->content }
 
 sub tasks {
     my($category) = shift;
-    my $fmt = 'http://www.rosettacode.org/mw/api.php?' .
+    my $fmt = 'https://www.rosettacode.org/mw/api.php?' .
               'action=query&generator=categorymembers&gcmtitle=Category:%s&gcmlimit=500&format=json&rawcontinue=';
     my @tasks;
     my $json = get(sprintf $fmt, $category);
@@ -1651,7 +1651,7 @@ use Sort::Naturally;
 unit sub MAIN( Str :$lang = 'Perl_6' );
 
 my $client = HTTP::UserAgent.new;
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 
 my @total;
 my @impl;
@@ -1698,7 +1698,7 @@ does much that same via web scraping, whereas this uses the web api.
 ```Phix
 -- demo\rosetta\Find_unimplemented_tasks.exw
 constant language = "Phix",
-         base_query = "http://rosettacode.org/mw/api.php?action=query"&
+         base_query = "https://rosettacode.org/mw/api.php?action=query"&
                       "&format=xml&list=categorymembers&cmlimit=100"
 
 include builtins\libcurl.e
@@ -1835,7 +1835,7 @@ function Find-UnimplementedTask
         $Language
     )
 
-    $url = "http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_$Language"
+    $url = "https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_$Language"
     $web = Invoke-WebRequest $url
     $unimplemented = 1
 
@@ -1934,7 +1934,7 @@ from typing import (Dict,
 
 import requests
 
-URL = 'http://www.rosettacode.org/mw/api.php'
+URL = 'https://www.rosettacode.org/mw/api.php'
 REQUEST_PARAMETERS = dict(action='query',
                           list='categorymembers',
                           cmlimit=500,
@@ -1992,7 +1992,7 @@ import xml.dom.minidom
 import urllib, sys
 
 def findrc(category):
-    name = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:%s&cmlimit=500&format=xml" % urllib.quote(category)
+    name = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:%s&cmlimit=500&format=xml" % urllib.quote(category)
     cmcontinue, titles = '', []
     while True:
         u = urllib.urlopen(name + cmcontinue)
@@ -2023,10 +2023,10 @@ for i in [i for i in alltasks if i not in lang]:
 ```R
 library(XML)
 find.unimplemented.tasks <- function(lang="R"){
-	PT <- xmlInternalTreeParse( paste("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml",sep="") )
+	PT <- xmlInternalTreeParse( paste("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml",sep="") )
 	PT.nodes <- getNodeSet(PT,"//cm")
 	PT.titles = as.character( sapply(PT.nodes, xmlGetAttr, "title") )
-	language <- xmlInternalTreeParse( paste("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:",
+	language <- xmlInternalTreeParse( paste("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:",
 	lang, "&cmlimit=500&format=xml",sep="") )
 	lang.nodes <- getNodeSet(language,"//cm")
 	lang.titles = as.character( sapply(lang.nodes, xmlGetAttr, "title") )
@@ -2052,7 +2052,7 @@ sapply(langs, find.unimplemented.tasks) # fetching data for multiple languages
 
 (define (RC-get verb params)
   ((compose1 get-pure-port string->url format)
-   "http://rosettacode.org/mw/~a.php?~a" verb (alist->form-urlencoded params)))
+   "https://rosettacode.org/mw/~a.php?~a" verb (alist->form-urlencoded params)))
 
 (define (get-category catname)
   (let loop ([c #f])
@@ -2086,7 +2086,7 @@ sapply(langs, find.unimplemented.tasks) # fetching data for multiple languages
 # Project: Rosetta Code/Find unimplemented tasks
 
 load "stdlib.ring"
-ros= download("http://rosettacode.org/wiki/Category:Programming_Tasks")
+ros= download("https://rosettacode.org/wiki/Category:Programming_Tasks")
 lang = "Ring"
 pos = 1
 num = 0
@@ -2299,7 +2299,7 @@ Select Language from DropDown and click [GO] or [Exit].
 
 ```runbasic
 WordWrap$ = "style='white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word'"
-a$	= httpGet$("http://rosettacode.org/wiki/Category:Programming_Languages")
+a$	= httpGet$("https://rosettacode.org/wiki/Category:Programming_Languages")
 a$	= word$(a$,2,"mw-subcategories")
 a$	= word$(a$,1,"</table>")
 i	= instr(a$,"/wiki/Category:")
@@ -2324,7 +2324,7 @@ wait
 [go]
 cls
 lang$	= #request get$("lang")
-h$	= "http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_";lang$
+h$	= "https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_";lang$
 a$	= httpGet$(h$)
 a$	= word$(a$,3,"mw-content-ltr")
 html "<table border=1><tr>"
@@ -2383,7 +2383,7 @@ case class Query(query: Category)
 List("Programming Tasks", "Scala")
   .map { title =>
     sttp
-      .get(uri"http://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:${title}&cmlimit=1000&format=json")
+      .get(uri"https://www.rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:${title}&cmlimit=1000&format=json")
       .header("User-Agent", mozillaUserAgent)
       .response(asJson[Query])
       .send()
@@ -2425,7 +2425,7 @@ proc get_tasks {category} {
     if {[info exists cache($category)]} {
 	return $cache($category)
     }
-    set base_url <http://www.rosettacode.org/mw/api.php>
+    set base_url <https://www.rosettacode.org/mw/api.php>
     set query {
 	action	query
 	list	categorymembers
@@ -2520,7 +2520,7 @@ var [const] YAJL=Import("zklYAJL")[0], CURL=Import("zklCurl");
 fcn getTasks(language){
    continueValue,tasks:="",Data(0,String);  // "nm\0nm\0...."
    do{
-      page:=CURL().get(("http://rosettacode.org/mw/api.php?"
+      page:=CURL().get(("https://rosettacode.org/mw/api.php?"
          "action=query&cmlimit=500"
 	 "&format=json"
 	 "&list=categorymembers"

@@ -626,7 +626,7 @@ end (* end of [main0] *)
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147)
 
 ```autohotkey
 a = 1,a,--             ; elements separated by commas
@@ -2241,7 +2241,7 @@ end
 ## J
 
 
-There are a [number of ways](http://www.jsoftware.com/jwiki/Essays/Power_Set) to generate a power set in J.  Here's one:
+There are a [number of ways](https://www.jsoftware.com/jwiki/Essays/Power_Set) to generate a power set in J.  Here's one:
 
 ```j
 ps =: #~ 2 #:@i.@^ #
@@ -2384,7 +2384,7 @@ public static <T extends Comparable<? super T>> LinkedList<LinkedList<T>>
 
 ### =Iteration=
 
-Uses a JSON stringifier from <http://www.json.org/js.html>
+Uses a JSON stringifier from <https://www.json.org/js.html>
 
 ```javascript
 function powerset(ary) {
@@ -3941,7 +3941,7 @@ def powerset(s):
 
 ###  Recursive Alternative
 
-This is an (inefficient) recursive version that almost reflects the recursive definition of a power set as explained in <http://en.wikipedia.org/wiki/Power_set#Algorithms>. It does not create a sorted output.
+This is an (inefficient) recursive version that almost reflects the recursive definition of a power set as explained in <https://en.wikipedia.org/wiki/Power_set#Algorithms>. It does not create a sorted output.
 
 
 ```python
@@ -3956,7 +3956,7 @@ def p(l):
 
 ### Python: Standard documentation
 
-Pythons [documentation](http://docs.python.org/3/library/itertools.html?highlight=powerset#itertools-recipes) has a method that produces the groupings, but not as sets:
+Pythons [documentation](https://docs.python.org/3/library/itertools.html?highlight=powerset#itertools-recipes) has a method that produces the groupings, but not as sets:
 
 
 ```python

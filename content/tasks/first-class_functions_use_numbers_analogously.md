@@ -611,7 +611,7 @@ let multiplier (n1,n2) = fun (m:float) -> n1 * n2 * m
 
 ## Factor
 
-Compared to <http://rosettacode.org/wiki/First-class_functions>, the call to "compose" is replaced with the call to "mutliplier"
+Compared to <https://rosettacode.org/wiki/First-class_functions>, the call to "compose" is replaced with the call to "mutliplier"
 
 ```factor
 USING: arrays kernel literals math prettyprint sequences ;
@@ -971,7 +971,7 @@ For contrast, here are the final results from  [[First-class functions#J]]:
 
 
 ===Tacit (unorthodox) version===
-Although the pseudo-code to generate the numbers can certainly be written (see  above [Explicit version](http://rosettacode.org/wiki/First-class_functions/Use_numbers_analogously#Explicit_version) ) this is not done for this version because it would destroy part of the analogy (J encourages, from the programming perspective, to process all components at once as opposed to one component at a time).  In addition, this version is done in terms of boxed lists of numbers instead of plain list of numbers, again, to preserve the analogy.
+Although the pseudo-code to generate the numbers can certainly be written (see  above [Explicit version](https://rosettacode.org/wiki/First-class_functions/Use_numbers_analogously#Explicit_version) ) this is not done for this version because it would destroy part of the analogy (J encourages, from the programming perspective, to process all components at once as opposed to one component at a time).  In addition, this version is done in terms of boxed lists of numbers instead of plain list of numbers, again, to preserve the analogy.
 
 <lang>   multiplier=. train@:((;:'&*') ;~ an@: *)
 
@@ -992,7 +992,7 @@ Although the pseudo-code to generate the numbers can certainly be written (see  
 ```
 
 
-Please refer to [First-class functions tacit (unorthodox) version](http://rosettacode.org/wiki/First-class_functions#Tacit_.28unorthodox.29_version) for the definitions of the functions train, an and of.
+Please refer to [First-class functions tacit (unorthodox) version](https://rosettacode.org/wiki/First-class_functions#Tacit_.28unorthodox.29_version) for the definitions of the functions train, an and of.
 
 
 ## jq

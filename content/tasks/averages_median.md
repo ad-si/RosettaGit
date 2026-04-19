@@ -4033,7 +4033,7 @@ Using Rosetta Code's [[Bubble_Sort#Scheme|bubble-sort function]]
 ```
 
 
-Using [SRFI-95](http://srfi.schemers.org/srfi-95/srfi-95.html):
+Using [SRFI-95](https://srfi.schemers.org/srfi-95/srfi-95.html):
 
 ```Scheme
 (define (median l)

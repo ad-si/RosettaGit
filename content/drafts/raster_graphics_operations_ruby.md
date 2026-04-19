@@ -19,7 +19,7 @@ Uses the [ChunkyPNG](https://github.com/wvanbergen/chunky_png) pure-Ruby PNG lib
 
 ```ruby
 ###########################################################################
-# Represents an RGB[http://en.wikipedia.org/wiki/Rgb] colour.  
+# Represents an RGB[https://en.wikipedia.org/wiki/Rgb] colour.  
 class RGBColour
   # Red, green and blue values must fall in the range 0..255.
   def initialize(red, green, blue)

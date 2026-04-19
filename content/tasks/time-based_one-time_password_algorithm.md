@@ -477,7 +477,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
 (define H  (make-parameter (lambda (k d) (HMAC-SHA1 k d))))
 (define N  (make-parameter 6))
 
-;; http://tools.ietf.org/html/rfc4226#section-5.3
+;; https://datatracker.ietf.org/html/rfc4226#section-5.3
 (define (HOTP sha1-bytes (Digit (N)))
   (define (DT b)
     (define offset (&& #b1111 (bytes-ref b 19)))
@@ -490,7 +490,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
 (define (Generate-HOTP K C (Digit (N)))
   (HOTP ((H) K (integer->integer-bytes C 8 #t)) Digit))
 
-;; http://tools.ietf.org/html/rfc6238
+;; https://datatracker.ietf.org/html/rfc6238
 (define (T #:previous-timeframe (T- 0))
   (- (quotient ((T0)) (X)) T-))
 
@@ -589,7 +589,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
    (pad-needed 10) => 0
    (pad-needed 12) => 3
 
-   ;; http://commons.apache.org/proper/commons-codec/xref-test/org/apache/commons/codec/binary/Base32Test.html
+   ;; https://commons.apache.org/proper/commons-codec/xref-test/org/apache/commons/codec/binary/Base32Test.html
    (base32-encode-bytes #"")       => #""
    (base32-encode-bytes #"f")      => #"MY======"
    (base32-encode-bytes #"fo")     => #"MZXQ===="
@@ -638,7 +638,7 @@ This TOTP/HOTP module clocks in small by taking advantage of [tcllib's](https://
 
 # rfc6238 contains examples of hotp with 8-digit modulus and sha1/sha256/sha512 hmac
 #
-# these require options handling, perhaps http://wiki.tcl.tk/38965
+# these require options handling, perhaps https://wiki.tcl-lang.org/38965
 #
 catch {namespace delete ::totp}
 namespace eval ::totp {

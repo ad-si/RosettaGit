@@ -113,8 +113,8 @@ The 'prize' was won quite quickly by [Dr. Colin L. Mallows](http://www.research.
 
 
 ;Also see:
-*   [Conways Challenge Sequence](http://www.jstor.org/stable/2324028), Mallows' own account.
-*   [Mathworld Article](http://mathworld.wolfram.com/Hofstadter-Conway10000-DollarSequence.html).
+*   [Conways Challenge Sequence](https://www.jstor.org/stable/2324028), Mallows' own account.
+*   [Mathworld Article](https://mathworld.wolfram.com/Hofstadter-Conway10000-DollarSequence.html).
 
 
 

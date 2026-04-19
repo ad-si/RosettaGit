@@ -78,7 +78,7 @@ Tic-tac-toe is also known as   ''naughts and crosses''.
 
 ## See also
 
-*   [MathWorld&trade;, Tic-Tac-Toe game](http://mathworld.wolfram.com/Tic-Tac-Toe.html).
+*   [MathWorld&trade;, Tic-Tac-Toe game](https://mathworld.wolfram.com/Tic-Tac-Toe.html).
 *   [Wikipedia tic-tac-toe](https://en.wikipedia.org/wiki/Tic-tac-toe).
 
 
@@ -9062,7 +9062,7 @@ The optimal strategy is implemented via lazy minimax algorythm with α-β-prunin
 
 The program consists of separate modules:
  + minimax.rkt    -- Written in Lazy Racket, implements the general minimax algorythm as
- |                   given in [Wikipedia](http://en.wikipedia.org/wiki/Alpha-beta_pruning).
+ |                   given in [Wikipedia](https://en.wikipedia.org/wiki/Alpha-beta_pruning).
  |                   Knows nothing about games.
  V
  + game.rkt       -- Written in Lazy Racket, defines general classes for the game and players.
@@ -9451,7 +9451,7 @@ User makes move (1 1)
 ```
 
 
-As an example of another zero-sum game consider the classical [Nim](http://en.wikipedia.org/wiki/Nim) game:
+As an example of another zero-sum game consider the classical [Nim](https://en.wikipedia.org/wiki/Nim) game:
 
 
 ```racket

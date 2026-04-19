@@ -2170,7 +2170,7 @@ Consider ending the line.
          INDEEP = 0		!We start.
          CALL HTML('<!DOCTYPE HTML PUBLIC "'	!Before we begin, we wave hands.
      1    //'-//W3C//DTD HTML 4.01 Transitional//EN"'	!Otherwise "nowrap" is objected to, as in http://validator.w3.org/check
-     2    //' "http://www.w3.org/TR/html4/loose.dtd">')	!Endless blather.
+     2    //' "https://www.w3.org/TR/html4/loose.dtd">')	!Endless blather.
          CALL HTML('<HTML lang="en-NZ">')	!  H E R E   W E   G O !
          INDEEP = 1				!Its content.
          CALL HTML("<Head>")			!And the first decoration begins.
@@ -2312,7 +2312,7 @@ As yet another demonstration of the vagaries of text interpretation, notice that
 
 ```txt
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 <HTML lang="en-NZ">
  <Head>
   <Title>Gnash Powers</Title>
@@ -2528,7 +2528,7 @@ link printf
 ```
 
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```html5
 <table
@@ -3622,8 +3622,8 @@ return
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method htmlHeader() public static returns Rexx
   html = '<?xml version="1.0" encoding="UTF-8"?>\n' -
-      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n' -
-      || '<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">\n' -
+      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n' -
+      || '<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">\n' -
       || '<head>\n' -
       || '<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>\n' -
       || '<title>RCreateHTMLTable</title>\n' -
@@ -3644,7 +3644,7 @@ method htmlHeader() public static returns Rexx
       || '</head>\n' -
       || '<body>\n' -
       || '<h1>Rosetta Code &ndash; NetRexx Sample Output</h2>\n' -
-      || '<h2><a href="http://rosettacode.org/wiki/Create_an_HTML_table">Create an HTML table</a></h2>\n' -
+      || '<h2><a href="https://rosettacode.org/wiki/Create_an_HTML_table">Create an HTML table</a></h2>\n' -
       || ''
 
   return html
@@ -3723,8 +3723,8 @@ method htmlCsvTableRow(row, tag = 'td', sep = ' ', emptyCell = '.') public stati
 
 ```html5
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <title>RCreateHTMLTable</title>
@@ -3745,7 +3745,7 @@ p.classname {
 </head>
 <body>
 <h1>Rosetta Code &ndash; NetRexx Sample Output</h2>
-<h2><a href="http://rosettacode.org/wiki/Create_an_HTML_table">Create an HTML table</a></h2>
+<h2><a href="https://rosettacode.org/wiki/Create_an_HTML_table">Create an HTML table</a></h2>
 <table>
 <tr>
 <th> </th>
@@ -3802,7 +3802,7 @@ p.classname {
 
 ```NewLISP
 ; file:   html-table.lsp
-; url:    http://rosettacode.org/wiki/Create_an_HTML_table
+; url:    https://rosettacode.org/wiki/Create_an_HTML_table
 ; author: oofoe 2012-01-29
 
 (seed (time-of-day)) ; Initialize random number generator.
@@ -4527,8 +4527,8 @@ $object | ConvertTo-Html
 
 ```PowerShell
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <title>HTML TABLE</title>
 </head><body>
@@ -4541,8 +4541,8 @@ nd</th><th>Minute</th><th>Month</th><th>Second</th><th>Ticks</th><th>TimeOfDay</
 </table>
 </body></html>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <title>HTML TABLE</title>
 </head><body>
@@ -5017,7 +5017,7 @@ sequential integers having 4 digits or less.
 The numbers should be aligned in the same fashion for all columns.
 
 Red [
-    Problem: %http://www.rosettacode.org/wiki/Create_an_HTML_table
+    Problem: %https://www.rosettacode.org/wiki/Create_an_HTML_table
     Code: %https://github.com/metaperl/red-rosetta/blob/master/html-table.r
     Acknowledgements: "@endo64 @toomsav"
 ]
@@ -6406,7 +6406,7 @@ End Module
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html" version="4.01" indent="yes"/>
 
     <!-- Most XSLT processors have some way to supply a different value for this parameter -->
@@ -6494,7 +6494,7 @@ Sample input:
 
 
 ```html
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

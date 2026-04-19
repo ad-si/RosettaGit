@@ -362,8 +362,8 @@ Decrypted Ciphertext ->The five boxing wizards jump quickly
 
 {{trans|Ada|Note: This specimen retains the original [[#Ada|Ada]] coding style.}}
 {{works with|ALGOL 68|Revision 1 - no extensions to language used.}}
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -5671,11 +5671,11 @@ THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOGS
 
 ## R
 
-This is a generalization of the Rot-13 solution for R at: <http://rosettacode.org/wiki/Rot-13#R> .
+This is a generalization of the Rot-13 solution for R at: <https://rosettacode.org/wiki/Rot-13#R> .
 
 ```R
 
-# based on Rot-13 solution: http://rosettacode.org/wiki/Rot-13#R
+# based on Rot-13 solution: https://rosettacode.org/wiki/Rot-13#R
 ceasar <- function(x, key)
 {
   # if key is negative, wrap to be positive

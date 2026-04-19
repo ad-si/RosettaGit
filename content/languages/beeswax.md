@@ -9,7 +9,7 @@ id = 19853
 categories = []
 tags = []
 +++
-'''beeswax''' is a stack-based 2 dimensional esoteric programming language developed by [user:Albedo](https://rosettacode.org/wiki/user:Albedo) (Manuel Lohmann). Beeswax draws inspiration from bees moving around on a honeycomb, and is partly inspired by languages like [Cardinal](http://esolangs.org/wiki/Cardinal) etc.
+'''beeswax''' is a stack-based 2 dimensional esoteric programming language developed by [user:Albedo](https://rosettacode.org/wiki/user:Albedo) (Manuel Lohmann). Beeswax draws inspiration from bees moving around on a honeycomb, and is partly inspired by languages like [Cardinal](https://esolangs.org/wiki/Cardinal) etc.
 The instruction pointers (bees) move around on a 2D hexagonal grid (the honeycomb). beeswax programs can manipulate their own source code, change the program size, and can read and write files.
 beeswax programs are stored in a rectangular grid with a 6-neigborhood. β depicts a bee/instruction pointer.
 

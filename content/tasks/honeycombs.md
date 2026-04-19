@@ -775,7 +775,7 @@ int main(int argc,char*argv[]) {
   /* discovery: NULL is placeholder for extra data sent to the callback */
   g_signal_connect_swapped(G_OBJECT(window),"destroy",G_CALLBACK(gtk_main_quit),NULL);
 
-  /* I created /tmp/favicon.ico from http://rosettacode.org/favicon.ico */
+  /* I created /tmp/favicon.ico from https://rosettacode.org/favicon.ico */
   /* Your window manager could use the icon, if it exists, and you fix the file name */
   gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf("/tmp/favicon.ico"));
 
@@ -1027,8 +1027,8 @@ XAML:
 
 ```xml
 <Window x:Class="Honeycombs.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns="https://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="https://schemas.microsoft.com/winfx/2006/xaml"
         Title="Honeycomb" Height="400" Width="300" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid x:Name="Main" Margin="5,5,5,0">
         <Grid.RowDefinitions>
@@ -1438,7 +1438,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## Java

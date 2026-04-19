@@ -215,7 +215,7 @@ Sample output:
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276465.html#276465)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276465.html#276465)
 
 ```AutoHotkey
 MsgBox % CountingSort("-1,1,1,0,-1",-1,1)
@@ -559,7 +559,7 @@ namespace CountingSort
 
 ## Common Lisp
 
-Straightforward implementation of counting sort.  By using <code>[map](http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm)</code> and <code>[map-into](http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm)</code>, counting sort can work efficiently on both lists and vectors.  The closure given as the second argument to <code>map-into</code> returns the sorted elements of sequence.  Because <code>map-into</code> will only call the function as many times as necessary to re-populate sequence, there is no need for bounds checking.  <code>counts</code> is declared to have dynamic-extent and so a compiler might stack allocate it.
+Straightforward implementation of counting sort.  By using <code>[map](https://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm)</code> and <code>[map-into](https://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm)</code>, counting sort can work efficiently on both lists and vectors.  The closure given as the second argument to <code>map-into</code> returns the sorted elements of sequence.  Because <code>map-into</code> will only call the function as many times as necessary to re-populate sequence, there is no need for bounds checking.  <code>counts</code> is declared to have dynamic-extent and so a compiler might stack allocate it.
 
 
 ```lisp

@@ -539,7 +539,7 @@ class Function
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % compose("sin","cos",1.5)
@@ -1855,7 +1855,7 @@ print(id(0.5)); // 0.5
 Recursion apart, multiple composition can be written in at least two general ways in JS:
 
 # Iteratively (faster to run, perhaps more fiddly to write)
-# With a fold / reduction (see <http://rosettacode.org/wiki/Catamorphism>). The fold is arguably simpler to write and reason about, though not quite as fast to execute.
+# With a fold / reduction (see <https://rosettacode.org/wiki/Catamorphism>). The fold is arguably simpler to write and reason about, though not quite as fast to execute.
 
 
 ```JavaScript
@@ -2350,7 +2350,7 @@ compose(f, g) := buildq([f, g], lambda([x], f(g(x))));
 
 ## min
 
-Since min is both [concatenative](http://concatenative.org/wiki/view/Concatenative%20language) and homoiconic, function composition is equivalent to list concatenation. Example:
+Since min is both [concatenative](https://concatenative.org/wiki/view/Concatenative%20language) and homoiconic, function composition is equivalent to list concatenation. Example:
 
 ```min
 (1 +) (2 *) concat print
@@ -2775,7 +2775,7 @@ echo $result = $trim_strlen(' Test '), "\n"; // prints 4
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(lambda).
@@ -3059,7 +3059,7 @@ Also available as a <tt>compose1</tt> builtin, and a more general <tt>compose</t
 ```REBOL
 REBOL [
 	Title: "Functional Composition"
-	URL: http://rosettacode.org/wiki/Functional_Composition
+	URL: https://rosettacode.org/wiki/Functional_Composition
 ]
 
 ; "compose" means something else in REBOL, therefore I use a 'compose-functions name.

@@ -790,7 +790,7 @@ A       LATIN CAPITAL LETTER A                      U+0041	41          	U+0041
 ## Haskell
 
 
-Example makes use of [<tt>bytestring</tt>](http://hackage.haskell.org/package/bytestring) and [<tt>text</tt>](http://hackage.haskell.org/package/text) packages:
+Example makes use of [<tt>bytestring</tt>](https://hackage.haskell.org/package/bytestring) and [<tt>text</tt>](https://hackage.haskell.org/package/text) packages:
 
 
 ```haskell

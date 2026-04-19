@@ -28,7 +28,7 @@ C Shell is obsolete. Most scriptwriters prefer a Bourne-compatible shell, and fe
 tcsh is a later version that fixed many of the problems with csh. It is still actively, if intermittently, maintained and has a following such as on Solaris.
 
 ## Syntax
-[The manual for csh(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [Java](https://rosettacode.org/wiki/Java) and [Pike](https://rosettacode.org/wiki/Pike), and Unix utilities [AWK](https://rosettacode.org/wiki/AWK) and [bc](https://rosettacode.org/wiki/bc). C Shell is less like [C](https://rosettacode.org/wiki/C) than those other languages.
+[The manual for csh(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) claims that C Shell has "a C-like syntax". Several other languages have a C-like syntax, including [Java](https://rosettacode.org/wiki/Java) and [Pike](https://rosettacode.org/wiki/Pike), and Unix utilities [AWK](https://rosettacode.org/wiki/AWK) and [bc](https://rosettacode.org/wiki/bc). C Shell is less like [C](https://rosettacode.org/wiki/C) than those other languages.
 
 This example prints a [Hailstone sequence](https://rosettacode.org/wiki/Hailstone_sequence) from 13.
 
@@ -138,4 +138,4 @@ Bourne Shell requires <code>test</code> or <code>expr</code> to evaluate express
 
 
 ## Links
-* [OpenBSD](https://rosettacode.org/wiki/OpenBSD) has [csh(1) manual](http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) and [source code](http://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/).
+* [OpenBSD](https://rosettacode.org/wiki/OpenBSD) has [csh(1) manual](https://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) and [source code](https://www.openbsd.org/cgi-bin/cvsweb/src/bin/csh/).

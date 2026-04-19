@@ -2949,7 +2949,7 @@ Note that non-integer powers are not supported with this function.
 
 ## Ruby
 
-Ruby's standard library already provides the matrix-exponentiation operator. It is <code>Matrix#**</code> from package 'matrix' of the standard library. [[MRI]] 1.9.x implements the matrix-exponentiation operator in file [matrix.rb](http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/matrix.rb), <code>def **</code> (around [line 961](http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/matrix.rb#L961)).
+Ruby's standard library already provides the matrix-exponentiation operator. It is <code>Matrix#**</code> from package 'matrix' of the standard library. [[MRI]] 1.9.x implements the matrix-exponentiation operator in file [matrix.rb](https://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/matrix.rb), <code>def **</code> (around [line 961](https://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/matrix.rb#L961)).
 
 
 ```txt
@@ -3261,7 +3261,7 @@ For simplicity, the matrix is represented as a list of lists, and no dimension c
 
 The example below uses several features of Seed7:
 *Overloading of the operators ''*'' and ''**'' .
-*The template [enable_output](http://seed7.sourceforge.net/libraries/enable_io.htm#enable_output%28in_type%29), which allows writing a ''matrix'' with write (the function ''str'' must be defined before calling ''enable_output'').
+*The template [enable_output](https://seed7.sourceforge.net/libraries/enable_io.htm#enable_output%28in_type%29), which allows writing a ''matrix'' with write (the function ''str'' must be defined before calling ''enable_output'').
 *A ''for'' loop which loops over values listed in an array literal
 
 
@@ -3361,7 +3361,7 @@ const proc: main is func
 ```
 
 
-Original source of matrix exponentiation: <http://seed7.sourceforge.net/algorith/math.htm#matrix_exponentiation>
+Original source of matrix exponentiation: <https://seed7.sourceforge.net/algorith/math.htm#matrix_exponentiation>
 
 Output:
 
@@ -3494,7 +3494,7 @@ for order in (0..5) {
 ```
 
 
-Domain:[Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
+Domain:[Matrix(R)](https://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## Stata

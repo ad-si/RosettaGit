@@ -1390,7 +1390,7 @@ Example use:
 
 
 
-Solution invoking the sequential machine primitive verb.[this thread.](http://jsoftware.com/pipermail/programming/2014-December/040658.html|See)
+Solution invoking the sequential machine primitive verb.[this thread.](https://www.jsoftware.com/pipermail/programming/2014-December/040658.html|See)
 ```J
 charTokens =: (0;(3 2 2$(2 1 1 1 2 2 1 2 1 0 1 0));<<'^')&;:  NB. sequential machine
 splitTokens =: ((<,'|')&= <;._1 ])@:((<,'|'),])
@@ -1909,7 +1909,7 @@ val res : string list = ["one|uno"; ""; "three^^"; "four^|cuatro"; ""]
 
 
 
-The built-in <code>split</code> function can be used with a regex that matches the delimiter ''(although [advanced backtracking control verbs](http://perldoc.perl.org/perlre.html#Special-Backtracking-Control-Verbs) are needed to skip escaped delimiters)'':
+The built-in <code>split</code> function can be used with a regex that matches the delimiter ''(although [advanced backtracking control verbs](https://perldoc.perl.org/perlre.html#Special-Backtracking-Control-Verbs) are needed to skip escaped delimiters)'':
 
 
 ```perl
@@ -1922,7 +1922,7 @@ sub tokenize {
 ```
 
 
-A more traditional approach is to parse the input string step by step ''(using a repeatedly-matching regex of the form [<code>/\G.../g</code>](http://perldoc.perl.org/perlretut.html#Global-matching))'', and throw away the separators ''(which can be done implicitly using [\K](http://perldoc.perl.org/perlre.html#%28?%3C=pattern%29-\K))'':
+A more traditional approach is to parse the input string step by step ''(using a repeatedly-matching regex of the form [<code>/\G.../g</code>](https://perldoc.perl.org/perlretut.html#Global-matching))'', and throw away the separators ''(which can be done implicitly using [\K](https://perldoc.perl.org/perlre.html#%28?%3C=pattern%29-\K))'':
 
 
 ```perl

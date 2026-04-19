@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{implementation cat|Befunge}}
-* [JavaScript Befunge-93 debugger](http://www.quirkster.com/iano/js/befunge.html)
+* [JavaScript Befunge-93 debugger](https://www.quirkster.com/iano/js/befunge.html)

@@ -97,9 +97,9 @@ which simplifies to
 
 <math> p_{2-tail} = \frac{\int_0^\frac{\nu}{t^2+\nu} \frac{r^{\frac{\nu}{2}-1}}{\sqrt{1-r}}\,\mathrm{d}r}{ \exp((\ln(\Gamma(\frac{\nu}{2})) + \ln(\Gamma(0.5)) - \ln(\Gamma(\frac{\nu}{2}+0.5))) }</math>
 
-The definite integral can be approximated with [[wp:Simpson's_rule|Simpson's Rule]] but [other methods](http://rosettacode.org/wiki/Numerical_integration) are also acceptable.
+The definite integral can be approximated with [[wp:Simpson's_rule|Simpson's Rule]] but [other methods](https://rosettacode.org/wiki/Numerical_integration) are also acceptable.
 
-The <math>\ln(\Gamma(x))</math>, or <code>lgammal(x)</code> function is necessary for the program to work with large <code>a</code> values, as [Gamma functions](http://rosettacode.org/wiki/Gamma_function) can often return values larger than can be handled by <code>double</code> or <code>long double</code> data types.   The <code>lgammal(x)</code> function is standard in <code>math.h</code> with C99 and C11 standards.
+The <math>\ln(\Gamma(x))</math>, or <code>lgammal(x)</code> function is necessary for the program to work with large <code>a</code> values, as [Gamma functions](https://rosettacode.org/wiki/Gamma_function) can often return values larger than can be handled by <code>double</code> or <code>long double</code> data types.   The <code>lgammal(x)</code> function is standard in <code>math.h</code> with C99 and C11 standards.
 
 
 ## C
@@ -670,7 +670,7 @@ p2_tail=:dyad define
 
 <code>integrate</code> and <code>simpson</code> are from the [[Numerical_integration#J|Numerical integration]] task.
 
-<code>lngamma</code> is  from <http://www.jsoftware.com/pipermail/programming/2015-July/042174.html> -- for values less than some convenient threshold (we use 1, but we could use a modestly higher threshold), we calculate it directly. For larger values we compute the fractional part directly and rebuild the log of the factorial using the sum of the logs.
+<code>lngamma</code> is  from <https://www.jsoftware.com/pipermail/programming/2015-July/042174.html> -- for values less than some convenient threshold (we use 1, but we could use a modestly higher threshold), we calculate it directly. For larger values we compute the fractional part directly and rebuild the log of the factorial using the sum of the logs.
 
 <code>mean</code> is classic J - most J tutorials will include this
 
@@ -717,7 +717,7 @@ Task examples:
 
 ## Java
 
-Using the '''[Apache Commons Mathematics Library](http://commons.apache.org/proper/commons-math/)'''.
+Using the '''[Apache Commons Mathematics Library](https://commons.apache.org/proper/commons-math/)'''.
 
 ```java
 import org.apache.commons.math3.distribution.TDistribution;
@@ -2382,7 +2382,7 @@ object WelchTTest extends App {
 
 ## Scilab
 
-Scilab will print a warning because the number of degrees of freedom is not an integer. However, the underlying implementation makes use of the [dcdflib](http://www.netlib.org/random/) Fortran library, which happily accepts a noninteger df.
+Scilab will print a warning because the number of degrees of freedom is not an integer. However, the underlying implementation makes use of the [dcdflib](https://www.netlib.org/random/) Fortran library, which happily accepts a noninteger df.
 
 <lang>x = [3.0,4.0,1.0,2.1];
 y = [490.2,340.0,433.9];

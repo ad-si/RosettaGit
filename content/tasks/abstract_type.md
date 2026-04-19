@@ -1268,7 +1268,7 @@ Main
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1690,7 +1690,7 @@ abstract type Unsigned      <: Integer end
 ```
 
 
-See more <http://docs.julialang.org/en/latest/manual/types/#abstract-types>
+See more <https://docs.julialang.org/en/latest/manual/types/#abstract-types>
 
 
 ## Kotlin
@@ -1776,7 +1776,7 @@ I don't have a name
 
 ## Lasso
 
-Instead of abstract classes or interfaces, Lasso uses a [trait system](http://lassoguide.com/language/types.html).
+Instead of abstract classes or interfaces, Lasso uses a [trait system](https://lassoguide.com/language/types.html).
 
 ```lasso
 define abstract_trait => trait {
@@ -2399,7 +2399,7 @@ method callOverridden2() public returns String
 
 ```NewLISP
 ; file:   abstract.lsp
-; url:    http://rosettacode.org/wiki/Abstract_type
+; url:    https://rosettacode.org/wiki/Abstract_type
 ; author: oofoe 2012-01-28
 
 ; Abstract Shape Class
@@ -2979,7 +2979,7 @@ sub frob_the_baz {
 
 ```
 
-Perl 6 inspired roles are provided by the [Moose](http://search.cpan.org/perldoc?Moose) library
+Perl 6 inspired roles are provided by the [Moose](https://metacpan.org/perldoc?Moose) library
 
 
 ```perl
@@ -2997,7 +2997,7 @@ sub frob_the_baz {
 1;
 ```
 
-Roles are also provided in a more lightweight form with [Role::Tiny](http://search.cpan.org/perldoc?Role::Tiny) library
+Roles are also provided in a more lightweight form with [Role::Tiny](https://metacpan.org/perldoc?Role::Tiny) library
 
 
 ```perl
@@ -3369,7 +3369,7 @@ class BaseQueue():
 ```REBOL
 REBOL [
 	Title: "Abstract Type"
-	URL: http://rosettacode.org/wiki/Abstract_type
+	URL: https://rosettacode.org/wiki/Abstract_type
 ]
 
 ; The "shape" class is an abstract class -- it defines the "pen"
@@ -3481,7 +3481,7 @@ REXX supports a character ''type'', and as such, nothing needs to be declared.
 
 ## Ruby
 
-The Python and Tcl provisos apply to Ruby too.  Nevertheless, a {{libheader|RubyGems}} package called [abstraction](http://github.com/Peeja/abstraction/tree/master) exists where:
+The Python and Tcl provisos apply to Ruby too.  Nevertheless, a {{libheader|RubyGems}} package called [abstraction](https://github.com/Peeja/abstraction/tree/master) exists where:
 
 
 ```ruby
@@ -3605,11 +3605,11 @@ When integrating with Java, traits without implementation appear as interfaces.
 
 ## Seed7
 
-The [object orientation of Seed7](http://seed7.sourceforge.net/manual/objects.htm) is based on inteface types.
+The [object orientation of Seed7](https://seed7.sourceforge.net/manual/objects.htm) is based on inteface types.
 An abstract type consists of an interface type and interface functions, that use the interface.
 Interface (DYNAMIC) functions describe what can be done with objects of an interface type.
 Seed7 functions are freestanding and don't have an implicit ''this'' (or ''self'') parameter.
-This concept allows [multiple dispatch](http://seed7.sourceforge.net/faq.htm#multiple_dispatch).
+This concept allows [multiple dispatch](https://seed7.sourceforge.net/faq.htm#multiple_dispatch).
 Instead of an implicit ''this'' parameter an interface function has a parameter of an interface type.
 A function is automaticall attached to the interface, when it has an parameter of the interface type.
 

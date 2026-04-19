@@ -18,15 +18,15 @@ languages = [
 
 ## Task
 
-[OLE Automation](http://en.wikipedia.org/wiki/OLE_Automation) is an inter-process communication mechanism based on [Component Object Model](http://en.wikipedia.org/wiki/Component_Object_Model) (COM) on Microsoft Windows. 
+[OLE Automation](https://en.wikipedia.org/wiki/OLE_Automation) is an inter-process communication mechanism based on [Component Object Model](https://en.wikipedia.org/wiki/Component_Object_Model) (COM) on Microsoft Windows. 
 
 Provide an automation server implementing objects that can be accessed by a client running in a separate process.  The client gets a proxy-object that can call methods on the object.   
-The communication should be able to handle conversions of [variants](http://en.wikipedia.org/wiki/Variant_type) to and from the native value types. 
+The communication should be able to handle conversions of [variants](https://en.wikipedia.org/wiki/Variant_type) to and from the native value types. 
 
 
 ## AutoHotkey
 
-{{libheader|ComDispatch}} by [fincs](http://www.autohotkey.com/forum/author-fincs.html):[discussion](http://www.autohotkey.com/forum/topic66559.html)
+{{libheader|ComDispatch}} by [fincs](https://www.autohotkey.com/forum/author-fincs.html):[discussion](https://www.autohotkey.com/forum/topic66559.html)
 
 client: using the ahk ole server as well as the python ole server implemented below
 

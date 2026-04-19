@@ -840,7 +840,7 @@ STOP program complete
 
 ## Go
 
-The [example](http://en.wikipedia.org/wiki/Ordinary_least_squares#Example_with_real_data) on WP happens to be a polynomial regression example, and so code from the [[Polynomial regression]] task can be reused here.  The only difference here is that givens x and y are computed in a separate function as a task prerequisite.
+The [example](https://en.wikipedia.org/wiki/Ordinary_least_squares#Example_with_real_data) on WP happens to be a polynomial regression example, and so code from the [[Polynomial regression]] task can be reused here.  The only difference here is that givens x and y are computed in a separate function as a task prerequisite.
 
 ### Library gonum/matrix
 
@@ -952,7 +952,7 @@ func main() {
 
 ## Haskell
 
-Using package [hmatrix](http://hackage.haskell.org/package/hmatrix) from HackageDB
+Using package [hmatrix](https://hackage.haskell.org/package/hmatrix) from HackageDB
 
 ```haskell
 import Numeric.LinearAlgebra
@@ -1953,7 +1953,7 @@ puts [regressionCoefficients $y [map n {map v {expr {$v**$n}} $x} {0 1 2}]]
 ## Ursala
 
 This exact problem is solved by the DGELSD function from
-the Lapack library <http://www.netlib.org/lapack/lug/node27.html>,
+the Lapack library <https://www.netlib.org/lapack/lug/node27.html>,
 which is callable in Ursala like this:
 
 ```Ursala

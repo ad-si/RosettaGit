@@ -1407,7 +1407,7 @@ Note: <code>NIL</code> is the return value of function <code>format</code> when 
 ```NewLISP
 ; here-document.lsp
 ; oofoe 2012-01-19
-; http://rosettacode.org/wiki/Here_document
+; https://rosettacode.org/wiki/Here_document
 
 (print (format [text]
     Blast it %s! I'm a %s,
@@ -1745,7 +1745,7 @@ FOO;
 
 ## PicoLisp
 
-We can use the '[here](http://software-lab.de/doc/refH.html#here)' function:
+We can use the '[here](https://software-lab.de/doc/refH.html#here)' function:
 
 
 ```PicoLisp
@@ -1806,7 +1806,7 @@ $XMLdata=@"
 ## Python
 
 Python does not have here-docs.
-It does however have [triple-quoted strings](http://docs.python.org/py3k/tutorial/introduction.html#strings) which can be used similarly.
+It does however have [triple-quoted strings](https://docs.python.org/py3k/tutorial/introduction.html#strings) which can be used similarly.
 
 
 ```python
@@ -2784,12 +2784,12 @@ marks (^") and any carets (^^) within the string must be escaped.")
 ## XSLT
 
 
-Being a dialect of XML, XSLT inherits [CDATA sections](http://www.w3.org/TR/REC-xml/#sec-cdata-sect). Not quite heredocs, these are more like raw triple quotes in Python (<code>r"""…"""</code>) or Scala (<code>"""…"""</code>) in that anything except the end delimiter is treated literally.
+Being a dialect of XML, XSLT inherits [CDATA sections](https://www.w3.org/TR/REC-xml/#sec-cdata-sect). Not quite heredocs, these are more like raw triple quotes in Python (<code>r"""…"""</code>) or Scala (<code>"""…"""</code>) in that anything except the end delimiter is treated literally.
 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:output method="text"/>
 
 <xsl:template match="/">

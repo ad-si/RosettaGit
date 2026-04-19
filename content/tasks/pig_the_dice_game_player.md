@@ -2795,7 +2795,7 @@ Notice how Pythons Counter class from the standard library is used to collate th
 #!/usr/bin/python3
 
 '''
-See: http://en.wikipedia.org/wiki/Pig_(dice)
+See: https://en.wikipedia.org/wiki/Pig_(dice)
 
 This program scores, throws the dice, and plays for an N player game of Pig.
 

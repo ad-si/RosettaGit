@@ -13,7 +13,7 @@ tags = []
 * Community
 ** <http://twitter.com/rosettacode|Twitter>
 ** Special:WebChat|Chat/IRC
-** <http://rosettacode.org/planet|Planet>
+** <https://rosettacode.org/planet|Planet>
 ** Rosetta Code:Village Pump|The Village Pump
 ** Rosetta Code:Finances|Finances
 * Explore

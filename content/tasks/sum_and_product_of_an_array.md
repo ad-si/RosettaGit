@@ -3223,7 +3223,7 @@ product <- prod(1:5)
 ```REBOL
 REBOL [
     Title: "Sum and Product"
-    URL: http://rosettacode.org/wiki/Sum_and_product_of_array
+    URL: https://rosettacode.org/wiki/Sum_and_product_of_array
 ]
 
 ; Simple:
@@ -4099,7 +4099,7 @@ XSLT (or XPath rather) has a few built-in functions for reducing from a collecti
 
 
 ```xml
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" />
 
   <xsl:template name="sum-prod">

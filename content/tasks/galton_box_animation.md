@@ -4039,7 +4039,7 @@ After a sample run with input parameters <tt>10 55</tt>:
 
 ```
 
-There is a much more comprehensive solution to this on the [Tcler's Wiki](http://wiki.tcl.tk/8825).<!-- Too long to reproduce here -->
+There is a much more comprehensive solution to this on the [Tcler's Wiki](https://wiki.tcl-lang.org/8825).<!-- Too long to reproduce here -->
 
 
 ## XPL0

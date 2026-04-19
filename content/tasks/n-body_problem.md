@@ -360,7 +360,7 @@ So yes, always draw a diagram, always do a Graphics implementation of any simula
 
 ```
 
-The time step although present in the file, and read, is not used here, the loop goes on indefinitely. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+The time step although present in the file, and read, is not used here, the loop goes on indefinitely. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 

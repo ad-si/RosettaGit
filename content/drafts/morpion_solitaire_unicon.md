@@ -683,9 +683,9 @@ $endif
 
 
 {{libheader|Icon Programming Library}}  
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
-[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) 
-[options.icn provides options processing](http://www.cs.arizona.edu/icon/library/src/procs/options.icn) 
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
+[strings.icn provides deletec](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn) 
+[options.icn provides options processing](https://www.cs.arizona.edu/icon/library/src/procs/options.icn) 
 <br/><br/>'''Other RosettaCode pages used'''  [[Deepcopy]]
 
 == SampleOutput ==

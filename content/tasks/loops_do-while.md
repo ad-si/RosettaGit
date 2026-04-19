@@ -523,8 +523,8 @@ conversion10:
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -3088,7 +3088,7 @@ But an imperative version is easy to do too:
 ```REBOL
 REBOL [
 	Title: "Loop/While"
-	URL: http://rosettacode.org/wiki/Loop/Do_While
+	URL: https://rosettacode.org/wiki/Loop/Do_While
 ]
 
 ; REBOL doesn't have a specific 'do/while' construct, but 'until' can
@@ -3661,7 +3661,7 @@ do {
 
 ## Tcl
 
-Tcl does not have a built-in <code>do...while</code> construct.  This example demonstrates the ease  of creating new looping contructs in plain Tcl.  <code>do</code> procedure taken from [Tcler's wiki](http://wiki.tcl.tk/3603)
+Tcl does not have a built-in <code>do...while</code> construct.  This example demonstrates the ease  of creating new looping contructs in plain Tcl.  <code>do</code> procedure taken from [Tcler's wiki](https://wiki.tcl-lang.org/3603)
 
 ```tcl
 proc do {body keyword expression} {

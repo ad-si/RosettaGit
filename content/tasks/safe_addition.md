@@ -1018,7 +1018,7 @@ the user), and division in combination with the remainder.
 
 ## Python
 
-Python doesn't include a module that returns an interval for safe addition, however, it does [include](http://docs.python.org/library/math.html#math.fsum) a routine for performing additions of floating point numbers whilst preserving precision:
+Python doesn't include a module that returns an interval for safe addition, however, it does [include](https://docs.python.org/library/math.html#math.fsum) a routine for performing additions of floating point numbers whilst preserving precision:
 
 
 ```python

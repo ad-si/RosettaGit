@@ -9,4 +9,4 @@ id = 11604
 categories = []
 tags = []
 +++
-[Go version 1](http://golang.org/doc/go1.html), Go 1 for short, was released March 28, 2012 as the first stable release of the [Go](https://rosettacode.org/wiki/:Category:Go) language.  The release is the product of an open source development effort supported largely Google.  The release includes a version 1.0 language specification and implementations on several hardware platforms.
+[Go version 1](https://golang.org/doc/go1.html), Go 1 for short, was released March 28, 2012 as the first stable release of the [Go](https://rosettacode.org/wiki/:Category:Go) language.  The release is the product of an open source development effort supported largely Google.  The release includes a version 1.0 language specification and implementations on several hardware platforms.

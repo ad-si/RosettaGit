@@ -2196,7 +2196,7 @@ end
 ```
 
 
-[ximage.icn formats arbitrary structures into printable strings](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
+[ximage.icn formats arbitrary structures into printable strings](https://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 ```txt
 Input:  "((data 'quoted data' 123 4.5) (data (!@# (4.5) '(more' 'data)')))"
@@ -3768,7 +3768,7 @@ Bespoke pretty printing:
 
 ## PicoLisp
 
-The '[any](http://software-lab.de/doc/refA.html#any)' function parses an s-expression from a string (indentical to the way '[read](http://software-lab.de/doc/refR.html#read)' does this from an input stream).
+The '[any](https://software-lab.de/doc/refA.html#any)' function parses an s-expression from a string (indentical to the way '[read](https://software-lab.de/doc/refR.html#read)' does this from an input stream).
 
 ```PicoLisp
 : (any "((data \"quoted data\" 123 4.5) (data (!@# (4.5) \"(more\" \"data)\")))")
@@ -3832,7 +3832,7 @@ It can be used in a pipe to read from a string:
 -> ((data "quoted data" 123 5) (data (!@# (5) "(more" "data)")))
 ```
 
-'[sym](http://software-lab.de/doc/refS.html#sym)' does the reverse (i.e. builds a symbol (string) from an expression).
+'[sym](https://software-lab.de/doc/refS.html#sym)' does the reverse (i.e. builds a symbol (string) from an expression).
 
 ```PicoLisp
 : (sym @@)

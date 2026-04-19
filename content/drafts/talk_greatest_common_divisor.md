@@ -34,7 +34,7 @@ A few programs would attempt to divide by zero if the 2nd argument is 0 (zero).
 
 The special case of '''gcd(0,0)''' is usually defined to be '''0''', but some authors consider it to be '''undefined'''. When implementing the REXX version 1 example, the first definition (equal to zero) was chosen.  So, for that case, '''|0| = 0'''. 
 
-From the Wikipedia page: <http://en.wikipedia.org/wiki/Greatest_common_divisor>
+From the Wikipedia page: <https://en.wikipedia.org/wiki/Greatest_common_divisor>
 
 It is useful to define gcd(0,0)=0 and lcm(0,0)=0 because then the natural numbers become a complete distributive lattice with gcd as meet and lcm as join operation. 
 

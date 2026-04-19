@@ -149,9 +149,9 @@ end
 ```
 
 
-[The old code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake) used list operations against ''ARGN''. Because a list is a semicolon-delimited string (like "11;22;33;44;55;66"), these list operations might be O(n). Contrast other languages, where array operations are O(1).
+[The old code](https://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake) used list operations against ''ARGN''. Because a list is a semicolon-delimited string (like "11;22;33;44;55;66"), these list operations might be O(n). Contrast other languages, where array operations are O(1).
 
-Benchmark results for [the old code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake):
+Benchmark results for [the old code](https://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121250#CMake):
 
 
 ```txt
@@ -171,9 +171,9 @@ $ ruby bubble-old.rb
 
 The old code was slightly better than O(n<sup>3</sup>), but not much better. 6 was almost 8, 19 was almost 27, 42 was almost 64.
 
-[The new code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake) uses associative array operations against ''ARG1'' to ''ARG${last}''. The switch from a list to an associative array improves performance, but requires extra code at the end of bubble_sort() to convert the sorted associative array to a regular list.
+[The new code](https://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake) uses associative array operations against ''ARG1'' to ''ARG${last}''. The switch from a list to an associative array improves performance, but requires extra code at the end of bubble_sort() to convert the sorted associative array to a regular list.
 
-Benchmark results for [the new code](http://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake):
+Benchmark results for [the new code](https://rosettacode.org/mw/index.php?title=Sorting_algorithms/Bubble_sort&oldid=121403#CMake):
 
 
 ```txt

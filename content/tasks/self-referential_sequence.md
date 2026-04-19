@@ -2336,7 +2336,7 @@ end
 ```
 
 
-[printf.icn provides printf, sprintf, fprintf, etc.](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf, sprintf, fprintf, etc.](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Sample of Output:
 ```txt

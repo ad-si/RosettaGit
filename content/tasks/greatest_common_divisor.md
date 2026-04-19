@@ -347,8 +347,8 @@ o_byte('\n');
 
 Works with ALGOL 68|Revision 1 - no extensions to language used
 
-Works with ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
+Works with ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 PROC gcd = (INT a, b) INT: (
@@ -529,7 +529,7 @@ Output:
 ## AutoHotkey
 
 Contributed by Laszlo on the ahk
-[forum](http://www.autohotkey.com/forum/post-276379.html#276379)
+[forum](https://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 GCD(a,b) {
@@ -2551,7 +2551,7 @@ procedure main(args)
 end
 ```
 
-[numbers](http://www.cs.arizona.edu/icon/library/procs/numbers.htm)
+[numbers](https://www.cs.arizona.edu/icon/library/procs/numbers.htm)
 implements this as:
 
 ```Icon
@@ -4780,7 +4780,7 @@ Translated from REXX}} using different argument handlin.
 Use as `gcd(a,b,c,---)`
 Considerably faster than version 1 (and version 2)
 
-See <http://rosettacode.org/wiki/Least_common_multiple#REXX> for reasoning.
+See <https://rosettacode.org/wiki/Least_common_multiple#REXX> for reasoning.
 
 ```rexx
 gcd: procedure
@@ -5383,7 +5383,7 @@ const func integer: gcd (in var integer: a, in var integer: b) is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#gcd>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#gcd>
 
 
 ## SequenceL

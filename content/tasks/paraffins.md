@@ -137,7 +137,7 @@ H - C - H     H - C - C - H     H - C - C - C - H     H - C - C - C - H
 <https://github.com/ghc/nofib/blob/master/imaginary/paraffins/Main.hs>
 
 * A Scheme implementation:
-<http://www.ccs.neu.edu/home/will/Twobit/src/paraffins.scm>
+<https://www.ccs.neu.edu/home/will/Twobit/src/paraffins.scm>
 
 * A Fortress implementation:
 <http://java.net/projects/projectfortress/sources/sources/content/ProjectFortress/demos/turnersParaffins0.fss?rev=3005>
@@ -2614,7 +2614,7 @@ for k in range(500): print(k, A000602(k))
 
 ## Racket
 
-[This Scheme solution](http://www.ccs.neu.edu/home/will/Twobit/src/paraffins.scm) runs in Racket too:
+[This Scheme solution](https://www.ccs.neu.edu/home/will/Twobit/src/paraffins.scm) runs in Racket too:
 
 Or, a direct translation of the C entry:
 

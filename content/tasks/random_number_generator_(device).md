@@ -444,7 +444,7 @@ int main(void)
 
 
 === {{libheader|BSD libc}} ===
-[arc4random()](http://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) appeared in [[OpenBSD]] 2.1 and has spread to many [[BSD]] systems. This function runs an ARC4 random number generator that takes entropy from a kernel device. (This kernel device is sysctl kern.arandom in OpenBSD, or /dev/urandom in some other systems.)
+[arc4random()](https://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) appeared in [[OpenBSD]] 2.1 and has spread to many [[BSD]] systems. This function runs an ARC4 random number generator that takes entropy from a kernel device. (This kernel device is sysctl kern.arandom in OpenBSD, or /dev/urandom in some other systems.)
 
 
 ```c

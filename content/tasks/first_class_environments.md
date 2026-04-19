@@ -647,7 +647,7 @@ procedure hailstep(env)
 end
 ```
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 ```txt
 Sequences:
    1    2    3    4    5    6    7    8    9   10   11   12
@@ -1601,7 +1601,7 @@ main()
 
 ## PicoLisp
 
-Runtime environments can be controlled with the '[job](http://software-lab.de/doc/refJ.html#job)' function:
+Runtime environments can be controlled with the '[job](https://software-lab.de/doc/refJ.html#job)' function:
 
 ```PicoLisp
 (let Envs
@@ -1656,7 +1656,7 @@ Runtime environments can be controlled with the '[job](http://software-lab.de/do
 
 ## Python
 
-In Python, name bindings are held in dicts, one for global scope and another for local scope. When [exec](http://docs.python.org/release/3.1.3/library/functions.html#exec)'ing code, you are allowed to give your own dictionaries for these scopes. In this example, two names are held in dictionaries that are used as the local scope for the evaluation of source.
+In Python, name bindings are held in dicts, one for global scope and another for local scope. When [exec](https://docs.python.org/release/3.1.3/library/functions.html#exec)'ing code, you are allowed to give your own dictionaries for these scopes. In this example, two names are held in dictionaries that are used as the local scope for the evaluation of source.
 
 ```python
 environments = [{'cnt':0, 'seq':i+1} for i in range(12)]

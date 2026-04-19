@@ -478,7 +478,7 @@ string MakeList2(string separator)
 ```
 
 
-''PS: A function named make-list is already defined in Common Lisp, see [specification](http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_lis.htm#make-list).''
+''PS: A function named make-list is already defined in Common Lisp, see [specification](https://www.lispworks.com/documentation/HyperSpec/Body/f_mk_lis.htm#make-list).''
 
 
 ## D

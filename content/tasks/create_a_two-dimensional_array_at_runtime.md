@@ -1004,7 +1004,7 @@ Start world
 ```
 
 
-The <tt>[assert](http://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm)</tt> will allow the user to reenter the dimensions if they are not positive integers.
+The <tt>[assert](https://www.lispworks.com/documentation/HyperSpec/Body/m_assert.htm)</tt> will allow the user to reenter the dimensions if they are not positive integers.
 
 
 ## Component Pascal
@@ -2160,7 +2160,7 @@ print_float array.(0).(0); print_newline ();;
 ```
 
 
-or using the module [Bigarray](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html):
+or using the module [Bigarray](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html):
 
 
 ```ocaml

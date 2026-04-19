@@ -1651,7 +1651,7 @@ bundle Default {
 ## OCaml
 
 
-In OCaml, the function <code>[print_endline](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_endline)</code> prints a string followed by a newline character on the standard output and flush the standard output. And the function <code>[print_string](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_string)</code> just prints a string with nothing additional.
+In OCaml, the function <code>[print_endline](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_endline)</code> prints a string followed by a newline character on the standard output and flush the standard output. And the function <code>[print_string](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_string)</code> just prints a string with nothing additional.
 
 
 ```ocaml
@@ -2015,7 +2015,7 @@ print("Goodbye, World!");
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script. Type this in a REPL session:
+Ad hoc solution as [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script. Type this in a REPL session:
 
 ```Scala
 print("Goodbye, World!")

@@ -156,7 +156,7 @@ Some strings have no tokens, so an empty string   (or one just containing spaces
 
 ===Simple_Parse===
 
-To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task <http://rosettacode.org/wiki/Phrase_reversals#Ada>.
+To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task <https://rosettacode.org/wiki/Phrase_reversals#Ada>.
 
 
 ```Ada

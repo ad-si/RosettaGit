@@ -1560,7 +1560,7 @@ def mul_point(p, m):
 
 def get_face_points(input_points, input_faces):
     """
-    From http://rosettacode.org/wiki/Catmull%E2%80%93Clark_subdivision_surface
+    From https://rosettacode.org/wiki/Catmull%E2%80%93Clark_subdivision_surface
     
     1. for each face, a face point is created which is the average of all the points of the face.
     """

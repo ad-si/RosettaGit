@@ -1442,7 +1442,7 @@ The resulting image is as expected and details of the 16 colors used are as foll
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-ColorQuantize[Import["http://rosettacode.org/mw/images/3/3f/Quantum_frog.png"],16,Dithering->False]
+ColorQuantize[Import["https://rosettacode.org/mw/images/3/3f/Quantum_frog.png"],16,Dithering->False]
 ```
 
 
@@ -1980,7 +1980,7 @@ if __name__=="__main__":
   
   (define frog 
     (block
-      (define url (string->url "http://rosettacode.org/mw/images/3/3f/Quantum_frog.png"))
+      (define url (string->url "https://rosettacode.org/mw/images/3/3f/Quantum_frog.png"))
       (define frog-ip (get-pure-port url))
       (define bitmap (make-object bitmap% frog-ip))
       (close-input-port frog-ip)

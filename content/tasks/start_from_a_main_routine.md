@@ -321,7 +321,7 @@ If a file name is specified on the command line, that file is executed before dr
 
 Thus, if the script issues an exit command, that will happen before the event loop executes.
 
-If you want the script to exit even when it hits an error, you can use an [immex phrase](http://www.jsoftware.com/help/dictionary/dx009.htm#26), which will be the first thing executed by the event loop, before it prompts.
+If you want the script to exit even when it hits an error, you can use an [immex phrase](https://www.jsoftware.com/help/dictionary/dx009.htm#26), which will be the first thing executed by the event loop, before it prompts.
 
 
 ## Julia

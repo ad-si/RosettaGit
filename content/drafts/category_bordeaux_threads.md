@@ -16,7 +16,7 @@ Bordeaux-Threads is a Common Lisp library providing threading functionality acro
 
 One common thing left unspecified as well is how special variables behave in relation to threading. Despite no mention in the standard, all implementations implementing threading treat special variables as thread-local variables [1] with some of them providing also truly global variables (see SBCL's <code>SB-EXT:DEFGLOBAL</code> for instance).
 
-More information can be found at the [project page](http://common-lisp.net/project/bordeaux-threads/).
+More information can be found at the [project page](https://common-lisp.net/project/bordeaux-threads/).
 
 Other library implementing threading is Portable-Threads, but it has omissions, e.g. there's no way to manually acquire or release locks without a <code>WITH-LOCK</code> macro or acquire them non-blockingly.
 

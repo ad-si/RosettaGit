@@ -15,4 +15,4 @@ It was developed at [Sun Microsystems Laboratories](https://rosettacode.org/wiki
 
 In some respects it is similar in functionality to [Python](https://rosettacode.org/wiki/Python), [Perl](https://rosettacode.org/wiki/Perl), [JavaScript](https://rosettacode.org/wiki/JavaScript) and [Java](https://rosettacode.org/wiki/Java). Syntactically it is very similar to [C++](https://rosettacode.org/wiki/C++) and Java.
 
-Aikido is available for Linux, Mac OS X and Solaris.  The interpreter can be obtained from <http://sourceforge.net/projects/aikido>.  Documentation (in PDF) is at <http://downloads.sourceforge.net/aikido/aikido_prm.pdf>
+Aikido is available for Linux, Mac OS X and Solaris.  The interpreter can be obtained from <https://sourceforge.net/projects/aikido>.  Documentation (in PDF) is at <http://downloads.sourceforge.net/aikido/aikido_prm.pdf>

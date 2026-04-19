@@ -62,7 +62,7 @@ The fields (from the left) are:
   DATESTAMP [ VALUEn FLAGn ] * 24
 i.e. a datestamp followed by twenty-four repetitions of a floating-point instrument value and that instrument's associated integer flag. Flag values are >= 1 if the instrument is working and < 1 if there is some problem with it, in which case that instrument's value should be ignored.
 
-A sample from the full data file [readings.txt](http://rosettacode.org/resources/readings.zip), which is also used in the [[Text processing/1]] task, follows:
+A sample from the full data file [readings.txt](https://rosettacode.org/resources/readings.zip), which is also used in the [[Text processing/1]] task, follows:
 
 Data is no longer available at that link. Zipped mirror available [here](https://github.com/thundergnat/rc/blob/master/resouces/readings.zip)
 

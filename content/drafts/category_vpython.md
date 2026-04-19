@@ -11,10 +11,10 @@ tags = []
 +++
 
 {{library
-|site=http://www.vpython.org/
+|site=https://www.vpython.org/
 }}
 
-'''VPython''', from <http://www.vpython.org/> :
+'''VPython''', from <https://www.vpython.org/> :
 
 :"VPython is the [[Python]] programming language plus a 3D graphics modul" which also provides animations.
 
@@ -22,7 +22,7 @@ tags = []
 
 supports Python-Versions: 2.7.9
 
-;2016-01-25 - [News](http://www.vpython.org/contents/announcements/evolution.html): Development of VPython will now split into these branches:
+;2016-01-25 - [News](https://www.vpython.org/contents/announcements/evolution.html): Development of VPython will now split into these branches:
 * 'Classic VPython', still using Python 2.7, and
 * a 'new' branch using [GlowScript](http://www.glowscript.org) based on WebGL.
 

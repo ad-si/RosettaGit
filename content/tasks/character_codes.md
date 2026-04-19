@@ -519,8 +519,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */

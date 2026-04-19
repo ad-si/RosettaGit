@@ -566,7 +566,7 @@ Circle(+4.10000000000000e  +0 @ +0.00000000000000e  +0,+0.00000000000000e  +0)
 
 ## AutoHotkey
 
-AutoHotkey does not support private or protected properties and thus does not need assignment and accessor methods. Assignment and accessor methods, as well as direct assignment and access, are shown. For more information see [Objects](http://ahkscript.org/docs/Objects.htm).
+AutoHotkey does not support private or protected properties and thus does not need assignment and accessor methods. Assignment and accessor methods, as well as direct assignment and access, are shown. For more information see [Objects](https://www.autohotkey.com/docs/Objects.htm).
 
 ```AutoHotkey
 MyPoint := new Point(1, 8)
@@ -1745,7 +1745,7 @@ Circle3 => print
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -4496,7 +4496,7 @@ object PointCircle extends App {
 
 ## Seed7
 
-[Seed7 object orientation](http://seed7.sourceforge.net/manual/objects.htm) works via interfaces.
+[Seed7 object orientation](https://seed7.sourceforge.net/manual/objects.htm) works via interfaces.
 The example below introduces the interface type ''GraphicObj''. To be usable an interface type needs also interface functions (which are defined with the keyword DYNAMIC). The interface function ''print'' is defined for ''GraphicObj''. The struct types ''Point'' and ''Circle'' implement the the interface ''GraphicObj'' (they are implementation types).
 Note that ''Circle'' inherits ''x'' and ''y'' from ''Point''.
 Functions which return a ''Point'' respectively ''Circle'' are used as constructors.

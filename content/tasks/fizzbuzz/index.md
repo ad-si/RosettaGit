@@ -3763,7 +3763,7 @@ In contrast to the if-else ladder, this method lets us skip the check to see if 
 
 ## PicoLisp
 
-We could simply use '[at](http://software-lab.de/doc/refA.html#at)' here:
+We could simply use '[at](https://software-lab.de/doc/refA.html#at)' here:
 
 
 {{ code(src="content/tasks/fizzbuzz/picolisp_1.l", lang="PicoLisp") }}
@@ -5213,7 +5213,7 @@ See [[FizzBuzz/Assembly]]
 
 ## UNIX Shell
 
-This solution should work with any Bourne-compatible shell: <!-- <http://ideone.com/usJXGo> -->
+This solution should work with any Bourne-compatible shell: <!-- <https://ideone.com/usJXGo> -->
 
 
 {{ code(src="content/tasks/fizzbuzz/unix_shell_1.sh", lang="bash") }}
@@ -5227,7 +5227,7 @@ The other solutions work with fewer shells.
 
 The next solution requires <code>$(( ))</code> arithmetic expansion,
 and it should work with every POSIX shell.
-<!--  <http://ideone.com/5yZmOz> -->
+<!--  <https://ideone.com/5yZmOz> -->
 
 
 {{ code(src="content/tasks/fizzbuzz/unix_shell_2.sh", lang="bash") }}
@@ -5252,7 +5252,7 @@ A version using some of the insane overkill of Bash 4:
 
 
 
-Bash one-liner: <!--  <http://ideone.com/xMEGFK> -->
+Bash one-liner: <!--  <https://ideone.com/xMEGFK> -->
 
 
 {{ code(src="content/tasks/fizzbuzz/unix_shell_6.sh", lang="bash") }}

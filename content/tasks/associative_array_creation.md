@@ -306,8 +306,8 @@ r_put(r, "B", "associative");	# a string value
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 main:(
@@ -501,7 +501,7 @@ print dict
 
 ###  True arrays
 
-[[AutoHotkey_L]] has [Objects](http://ahkscript.org/docs/Objects.htm) which function as associative arrays.
+[[AutoHotkey_L]] has [Objects](https://www.autohotkey.com/docs/Objects.htm) which function as associative arrays.
 
 ```AutoHotkey
 associative_array := {key1: "value 1", "Key with spaces and non-alphanumeric characters !*+": 23}
@@ -1662,7 +1662,7 @@ let takeVal (d:Map<string,string>) =
 
 ## Factor
 
-Associative mappings follow the associative protocol. See [the docs](http://docs.factorcode.org/content/article-assocs-protocol.html).
+Associative mappings follow the associative protocol. See [the docs](https://docs.factorcode.org/content/article-assocs-protocol.html).
 Here's an example using a hashtable that can be run in the listener :
 
 ```factor
@@ -1827,7 +1827,7 @@ let associative_array = {key1=1,key2=2}
 
 ## Gambas
 
-See [Associative array/Iteration](http://rosettacode.org/wiki/Associative_array/Iteration#Gambas)
+See [Associative array/Iteration](https://rosettacode.org/wiki/Associative_array/Iteration#Gambas)
 
 
 ## Go
@@ -2115,7 +2115,7 @@ Example use:
 ```
 
 
-Note that J's symbols (<http://www.jsoftware.com/help/dictionary/dsco.htm>) might also be used for this purpose. However, symbols are not garbage collected within a J session (and, instead, a mechanism is provided to optionally preserve them across sessions).
+Note that J's symbols (<https://www.jsoftware.com/help/dictionary/dsco.htm>) might also be used for this purpose. However, symbols are not garbage collected within a J session (and, instead, a mechanism is provided to optionally preserve them across sessions).
 
 
 ## Java
@@ -3603,8 +3603,8 @@ foreach($array as $key => $value)
 ## PicoLisp
 
 Here we use symbol properties. Other possiblities could be
-[index trees](http://software-lab.de/doc/refI.html#idx) or
-[association lists](http://software-lab.de/doc/refA.html#assoc).
+[index trees](https://software-lab.de/doc/refI.html#idx) or
+[association lists](https://software-lab.de/doc/refA.html#assoc).
 
 
 ```PicoLisp
@@ -4454,7 +4454,7 @@ Scheme has association lists (alists), which are inefficient, ordered maps with 
 
 
 
-Hash tables are provided by SRFI-69 <http://srfi.schemers.org/srfi-69/srfi-69.html>. Many Scheme implementation also provide native hash tables.
+Hash tables are provided by SRFI-69 <https://srfi.schemers.org/srfi-69/srfi-69.html>. Many Scheme implementation also provide native hash tables.
 
 
 ```scheme
@@ -4482,7 +4482,7 @@ The R6RS standard specifies support for hashtables in the [standard libraries](h
 
 ## Seed7
 
-Seed7 uses the type [hash](http://seed7.sourceforge.net/manual/types.htm#hash) to support associative arrays.
+Seed7 uses the type [hash](https://seed7.sourceforge.net/manual/types.htm#hash) to support associative arrays.
 
 
 ```seed7

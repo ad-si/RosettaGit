@@ -1817,7 +1817,7 @@ Output:
 ## Factor
 
 This solution uses the `backtrack` vocabulary —
-Factor's implementation of John McCarthy's [ambiguous operator](http://www.rosettacode.org/wiki/Amb)(/).
+Factor's implementation of John McCarthy's [ambiguous operator](https://www.rosettacode.org/wiki/Amb)(/).
 In short, we define 7 integers that can take up any value
 within the range that we give it, such as [3,9], and assign them names a-g.
 We then test whether the four sums from the puzzle are equal,
@@ -5370,7 +5370,7 @@ Works with Linux.
 64 bit
 
 ```asm
-; Based on C version http://rosettacode.org/wiki/4-rings_or_4-squares_puzzle#C
+; Based on C version https://rosettacode.org/wiki/4-rings_or_4-squares_puzzle#C
 
 %define TRUE 1
 %define FALSE 0

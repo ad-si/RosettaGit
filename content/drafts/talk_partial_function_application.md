@@ -153,7 +153,7 @@ static SequenceFunction fsf1 = fsCurried(f1);
 
 : With the current solution for Java, ''fs(arg1).call(arg2)'' is already a function of two arguments, and there is no reason to also have ''fs(arg1, arg2)''.
 
-: Haskell seems to have an analogy for ''fs(arg1, arg2)''. I looked around the Haskell 2010 report, and learned that Haskell has tuples. A function has only one parameter, but that parameter might be a tuple of 2 items. I also found these functions in the [Haskell prelude](http://www.haskell.org/onlinereport/haskell2010/haskellch9.html):
+: Haskell seems to have an analogy for ''fs(arg1, arg2)''. I looked around the Haskell 2010 report, and learned that Haskell has tuples. A function has only one parameter, but that parameter might be a tuple of 2 items. I also found these functions in the [Haskell prelude](https://www.haskell.org/onlinereport/haskell2010/haskellch9.html):
 
 : 
 ```haskell
@@ -414,7 +414,7 @@ Reading over the current task description, I think it is somewhat odd. It asks y
 :* Perform the following operations: partially apply ''a'' = 7  and ''b'' = 9 to ''f'', and apply this partially applied function to each element of a sequence using ''map''.
 : &mdash;''[[User:Ruud Koot|Ruud]]'' 12:46, 20 April 2011 (UTC)
 
-:: But how to ensure ''[partial application](http://www.haskell.org/haskellwiki/Partial_application)'' is what a Haskel, or other functional programming language programmer would think is partial application? The temptation is for folks to just concentrate on getting the right numerical answer and ignore or miss attempts to constrain ''how'' the result is computed. --[[User:Paddy3118|Paddy3118]] 14:10, 20 April 2011 (UTC)
+:: But how to ensure ''[partial application](https://www.haskell.org/haskellwiki/Partial_application)'' is what a Haskel, or other functional programming language programmer would think is partial application? The temptation is for folks to just concentrate on getting the right numerical answer and ignore or miss attempts to constrain ''how'' the result is computed. --[[User:Paddy3118|Paddy3118]] 14:10, 20 April 2011 (UTC)
 
 ::: This is beginning to sound like a Haskell-specific concept, rather than an algorithmic concept.  --[[User:Rdm|Rdm]] 17:52, 20 April 2011 (UTC)
 

@@ -63,7 +63,7 @@ languages = [
 
 ## Task
 
-Draw a   [cuboid](http://en.wikipedia.org/wiki/Cuboid)   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big>
+Draw a   [cuboid](https://en.wikipedia.org/wiki/Cuboid)   with relative dimensions of   <big> 2 &times; 3 &times; 4. </big>
 
 
 The cuboid can be represented graphically, or in   [ASCII art](https://en.wikipedia.org/wiki/ASCII_art),   depending on the language capabilities.
@@ -163,7 +163,7 @@ end Main;
 
 ## AutoHotkey
 
-{{libheader|GDIP}}Some portions of code from [Gdip examples](http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
+{{libheader|GDIP}}Some portions of code from [Gdip examples](https://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
 
 ```AutoHotkey
 Angle := 45
@@ -578,7 +578,7 @@ Output :
 ## C++
 
 
-This code needs the BGI for Windows available at [Colorado State University](http://www.cs.colorado.edu/~main/cs1300/doc/bgi/bgi.html).
+This code needs the BGI for Windows available at [Colorado State University](https://www.cs.colorado.edu/~main/cs1300/doc/bgi/bgi.html).
 
 
 ```cpp
@@ -762,7 +762,7 @@ namespace Cuboid
 ```
 
 
-<http://i.imgur.com/7io7wo4.png>
+<https://i.imgur.com/7io7wo4.png>
 
 
 ## D
@@ -4011,7 +4011,7 @@ SetVid(3);                              \restore normal text mode (for DOS)
 ## zkl
 
 Draws a wire frame PPM image, no hidden/dotted lines.<br/>
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var [const] M=50.0;

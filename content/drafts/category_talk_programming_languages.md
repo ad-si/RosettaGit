@@ -68,7 +68,7 @@ What could (some)one do so that these languages appear under the capital M? --[[
 :: I understand that, but in other pages MK... finds is proper place among the other M's. See, e.g..
 
 ```txt
-http://rosettacode.org/wiki/Primality_by_trial_division
+https://rosettacode.org/wiki/Primality_by_trial_division
 * 48 M4 <#M4>
   * 49 Maple <#Maple>
   * 50 Mathematica <#Mathematica>

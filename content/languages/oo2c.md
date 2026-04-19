@@ -20,4 +20,4 @@ It is available in Debian/Ubuntu APT repositories.
 ## External Links
 * [OO2C Homepage](http://ooc.sourceforge.net/index.html)
 * [Boehm GC](http://www.hpl.hp.com/personal/Hans_Boehm/gc/)
-* [GNU Libtool](http://www.gnu.org/software/libtool/)
+* [GNU Libtool](https://www.gnu.org/software/libtool/)

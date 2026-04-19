@@ -126,7 +126,7 @@ The used algorithm is implementation defined. The standard says: "To enable the 
 
 * [Ada 95 RM - A.5.2 Random Number Generation](http://www.adahome.com/rm95/rm9x-A-05-02.html)
 * [Ada 2005 RM - A.5.2 Random Number Generation](http://www.adaic.com/standards/05rm/html/RM-A-5-2.html)
-* [Ada 2005 RM - A.5.2 Random Number Generation](http://www.adaic.org/resources/add_content/standards/12rm/html/RM-A-5-2.html)
+* [Ada 2005 RM - A.5.2 Random Number Generation](https://www.adaic.org/resources/add_content/standards/12rm/html/RM-A-5-2.html)
 
 
 ## ALGOL 68
@@ -168,18 +168,18 @@ PROC long random = LONG REAL: long next random(long last random);
 
 ## AutoHotkey
 
-The built-in command [Random](http://www.autohotkey.com/docs/commands/Random.htm) generates a pseudo-random number using Mersenne Twister "MT19937" (see documentation).
+The built-in command [Random](https://www.autohotkey.com/docs/commands/Random.htm) generates a pseudo-random number using Mersenne Twister "MT19937" (see documentation).
 
 
 ## AWK
 
 The built-in command "rand" generates a pseudo-random uniform distributed random variable. More information is available from the documentation of
-[gawk](http://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html).
+[gawk](https://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html).
 
 It is important that the RNG is seeded with the funtions "srand", otherwise,
 the same random number is produced.
 
-Example usage: see [#UNIX_Shell](http://rosettacode.org/wiki/Random_number_generator_(included)#UNIX_Shell)
+Example usage: see [#UNIX_Shell](https://rosettacode.org/wiki/Random_number_generator_(included)#UNIX_Shell)
 
 
 ## BASIC
@@ -227,7 +227,7 @@ Among current systems, [[BSD]] might have the worst algorithm for rand(). BSD ra
 * <math>state_{n + 1} = 1103515245 \times state_n + 12345 \pmod{2^{31}}</math>
 * <math>rand_n = state_n</math>
 
-[[FreeBSD]] switched to a different formula, but [[NetBSD]] and [[OpenBSD]] stayed with this formula. ([NetBSD rand.c](http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/stdlib/rand.c?only_with_tag=MAIN), [OpenBSD rand.c](http://www.openbsd.org/cgi-bin/cvsweb/src/lib/libc/stdlib/rand.c))
+[[FreeBSD]] switched to a different formula, but [[NetBSD]] and [[OpenBSD]] stayed with this formula. ([NetBSD rand.c](http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/stdlib/rand.c?only_with_tag=MAIN), [OpenBSD rand.c](https://www.openbsd.org/cgi-bin/cvsweb/src/lib/libc/stdlib/rand.c))
 
 BSD rand() produces a cycling sequence of only <math>2^{31}</math> possible states; this is already too short to produce good random numbers. The big problem with BSD rand() is that the low <math>n</math> bits' cycle sequence length is only <math>2^n</math>. (This problem happens because the modulus <math>2^{31}</math> is a power of two.) The worst case, when <math>n = 1</math>, becomes obvious if one uses the low bit to flip a coin.
 
@@ -316,7 +316,7 @@ int main()
 
 ## C#
 
-The .NET Random class says that it uses Knuth's subtractive random number generator algorithm.<http://msdn.microsoft.com/en-us/library/system.random.aspx#remarksToggle>
+The .NET Random class says that it uses Knuth's subtractive random number generator algorithm.<https://msdn.microsoft.com/en-us/library/system.random.aspx#remarksToggle>
 
 
 ## Clojure
@@ -360,7 +360,7 @@ The easiest way to generate random numbers in Common Lisp is to use the built-in
 
 From std.random:
 
-The generators feature a number of well-known and well-documented methods of generating random numbers. An overall fast and reliable means to generate random numbers is the Mt19937 generator, which derives its name from "[Mersenne Twister](http://en.wikipedia.org/wiki/Mersenne_twister) with a period of 2 to the power of 19937". In memory-constrained situations, [linear congruential](http://en.wikipedia.org/wiki/Linear_congruential_generator) generators such as MinstdRand0 and MinstdRand might be useful. The standard library provides an alias Random for whichever generator it considers the most fit for the target environment.
+The generators feature a number of well-known and well-documented methods of generating random numbers. An overall fast and reliable means to generate random numbers is the Mt19937 generator, which derives its name from "[Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_twister) with a period of 2 to the power of 19937". In memory-constrained situations, [linear congruential](https://en.wikipedia.org/wiki/Linear_congruential_generator) generators such as MinstdRand0 and MinstdRand might be useful. The standard library provides an alias Random for whichever generator it considers the most fit for the target environment.
 =={{header|Déjà Vu}}==
 The standard implementation, <code>[[vu]]</code>, uses a Mersenne twister.
 
@@ -537,7 +537,7 @@ Bays and Durham as describend in Knuth's book.
 
 ## Factor
 
-The default RNG used when the <code>random</code> vocabulary is used, is the [[wp:Mersenne twister|Mersenne twister]] algorithm <http://docs.factorcode.org/content/article-random.html>. But there are other RNGs available, including [[wp:SFMT|SFMT]], the system RNG ([[wp:/dev/random|/dev/random]] on Unix) and [[wp:Blum Blum Shub|Blum Blum Shub]]. It's also very easy to implement your own RNG and integrate it into the system. <http://docs.factorcode.org/content/article-random-protocol.html>
+The default RNG used when the <code>random</code> vocabulary is used, is the [[wp:Mersenne twister|Mersenne twister]] algorithm <https://docs.factorcode.org/content/article-random.html>. But there are other RNGs available, including [[wp:SFMT|SFMT]], the system RNG ([[wp:/dev/random|/dev/random]] on Unix) and [[wp:Blum Blum Shub|Blum Blum Shub]]. It's also very easy to implement your own RNG and integrate it into the system. <https://docs.factorcode.org/content/article-random-protocol.html>
 
 
 ## Fortran
@@ -744,14 +744,14 @@ Same as Java.
 
 ## Haskell
 
-The [Haskell 98 report](http://www.haskell.org/onlinereport/random.html) specifies an interface for pseudorandom number generation and requires that implementations be minimally statistically robust. It is silent, however, on the choice of algorithm.
+The [Haskell 98 report](https://www.haskell.org/onlinereport/random.html) specifies an interface for pseudorandom number generation and requires that implementations be minimally statistically robust. It is silent, however, on the choice of algorithm.
 
 =={{header|Icon}} and {{header|Unicon}} ==
 Icon and Unicon both use the same linear congruential random number generator  x := (x * 1103515245 + 453816694) mod 2^31.  Icon uses an initial seed value of 0 and Unicon randomizes the initial seed.
 
-This LCRNG has a number of well documented quirks (see [The Icon Analyst issues #26, 28, 38](http://www.cs.arizona.edu/icon/analyst/ia.htm)) relating to the choices of an even additive and a power of two modulus.  This LCRNG produces two independent sequences of length 2^30 one of even numbers the other odd.
+This LCRNG has a number of well documented quirks (see [The Icon Analyst issues #26, 28, 38](https://www.cs.arizona.edu/icon/analyst/ia.htm)) relating to the choices of an even additive and a power of two modulus.  This LCRNG produces two independent sequences of length 2^30 one of even numbers the other odd.
 
-Additionally, the {{libheader|Icon Programming Library}} [random](http://www.cs.arizona.edu/icon/library/src/procs/random.icn) provides related procedures including a parametrized  LCRNG that defaults to the built-in values.
+Additionally, the {{libheader|Icon Programming Library}} [random](https://www.cs.arizona.edu/icon/library/src/procs/random.icn) provides related procedures including a parametrized  LCRNG that defaults to the built-in values.
 
 
 ## Io
@@ -766,12 +766,12 @@ Inform's random functions are built on the random number generator exposed at ru
 
 ## J
 
-By default J's <code>?</code> primitive (Roll/Deal) uses the Mersenne twister algorithm, but can be set to use a number of other algorithms as detailed on the [J Dictionary page for Roll/Deal](http://www.jsoftware.com/help/dictionary/d640.htm).
+By default J's <code>?</code> primitive (Roll/Deal) uses the Mersenne twister algorithm, but can be set to use a number of other algorithms as detailed on the [J Dictionary page for Roll/Deal](https://www.jsoftware.com/help/dictionary/d640.htm).
 
 
 ## Java
 
-Java's <code>Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]], as described in [its documentation](http://java.sun.com/javase/6/docs/api/java/util/Random.html). The commonly used <code>Math.random()</code> uses a <code>Random</code> object under the hood.
+Java's <code>Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]], as described in [its documentation](https://docs.oracle.com/javase/6/docs/api/java/util/Random.html). The commonly used <code>Math.random()</code> uses a <code>Random</code> object under the hood.
 
 
 ## JavaScript
@@ -781,7 +781,7 @@ The only built-in random number generation facility is <code>Math.random()</code
 
 ## Julia
 
-Julia's [built-in random-number generation functions](http://docs.julialang.org/en/latest/stdlib/base/#random-numbers), <code>rand()</code> etcetera, use the Mersenne Twister algorithm.
+Julia's [built-in random-number generation functions](https://docs.julialang.org/en/latest/stdlib/base/#random-numbers), <code>rand()</code> etcetera, use the Mersenne Twister algorithm.
 
 
 ## Kotlin
@@ -796,12 +796,12 @@ Lua's <code>math.random()</code> is an interface to the C <code>rand()</code> fu
 
 ## Mathematica
 
-Mathematica 7, by default, uses an Extended Cellular Automaton method ("ExtendedCA") to generate random numbers. The main PRNG functions are <code>RandomReal[]</code> and <code>RandomInteger[]</code> You can specify alternative generation methods including the Mersenne Twister and a Linear Congruential Generator (the default earlier versions). Information about random number generation is provided at [Mathematica](http://reference.wolfram.com/mathematica/tutorial/RandomNumberGeneration.html#185956823).
+Mathematica 7, by default, uses an Extended Cellular Automaton method ("ExtendedCA") to generate random numbers. The main PRNG functions are <code>RandomReal[]</code> and <code>RandomInteger[]</code> You can specify alternative generation methods including the Mersenne Twister and a Linear Congruential Generator (the default earlier versions). Information about random number generation is provided at [Mathematica](https://reference.wolfram.com/mathematica/tutorial/RandomNumberGeneration.html#185956823).
 
 
 ## MATLAB
 
-MATLAB uses the Mersenne Twister as its default random number generator. Information about how the "rand()" function is utilized is given at [MathWorks](http://www.mathworks.com/help/techdoc/ref/rand.html).
+MATLAB uses the Mersenne Twister as its default random number generator. Information about how the "rand()" function is utilized is given at [MathWorks](https://www.mathworks.com/help/techdoc/ref/rand.html).
 
 
 ## Maxima
@@ -845,7 +845,7 @@ The Random interface in Modula-3 states that it uses "an additive generator base
 ## Nemerle
 
 Uses .Net Random class; so, as mentioned under C#, above, implements Knuth's subtractive random number generator algorithm.
-Random class documentation at [MSDN](http://msdn.microsoft.com/en-us/library/system.random.aspx#remarksToggle).
+Random class documentation at [MSDN](https://msdn.microsoft.com/en-us/library/system.random.aspx#remarksToggle).
 
 
 ## NetRexx
@@ -862,7 +862,7 @@ There are two PRNGs provided in the standard library:
 
 ## OCaml
 
-OCaml provides a module called [Random](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html) in its standard library.  It used to be a "Linear feedback shift register" pseudo-random number generator (References: Robert Sedgewick, "Algorithms", Addison-Wesley). It is now (as of version 3.12.0) a "lagged-Fibonacci F(55, 24, +) with a modified addition function to enhance the mixing of bits."  It passes the Diehard test suite.
+OCaml provides a module called [Random](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html) in its standard library.  It used to be a "Linear feedback shift register" pseudo-random number generator (References: Robert Sedgewick, "Algorithms", Addison-Wesley). It is now (as of version 3.12.0) a "lagged-Fibonacci F(55, 24, +) with a modified addition function to enhance the mixing of bits."  It passes the Diehard test suite.
 
 
 ## Octave
@@ -872,7 +872,7 @@ As explained [here](https://www.gnu.org/software/octave/doc/interpreter/Special-
 
 ## Oz
 
-Oz provides a binding to the C <code>[rand](http://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> function as <code>[OS.rand](http://www.mozart-oz.org/home/doc/system/node56.html#label719)</code>.
+Oz provides a binding to the C <code>[rand](https://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> function as <code>[OS.rand](https://www.mozart-oz.org/home/doc/system/node56.html#label719)</code>.
 
 
 ## PARI/GP
@@ -901,7 +901,7 @@ Random functions:
 
 ## Perl
 
-Previous to Perl 5.20.0 (May 2014), Perl's <code>[rand](http://perldoc.perl.org/functions/rand.html)</code> function will try and call <code>[drand48](http://www.opengroup.org/onlinepubs/007908775/xsh/drand48.html)</code>, <code>[random](http://www.opengroup.org/onlinepubs/000095399/functions/random.html)</code> or <code>[rand](http://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> from the C library <code>[stdlib.h](http://www.opengroup.org/onlinepubs/000095399/basedefs/stdlib.h.html)</code> in that order.
+Previous to Perl 5.20.0 (May 2014), Perl's <code>[rand](https://perldoc.perl.org/functions/rand.html)</code> function will try and call <code>[drand48](https://www.opengroup.org/onlinepubs/007908775/xsh/drand48.html)</code>, <code>[random](https://www.opengroup.org/onlinepubs/000095399/functions/random.html)</code> or <code>[rand](https://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> from the C library <code>[stdlib.h](https://www.opengroup.org/onlinepubs/000095399/basedefs/stdlib.h.html)</code> in that order.
 
 Beginning with Perl 5.20.0, a drand48() implementation is built into Perl and used on all platforms.  The implementation is from FreeBSD and uses a 48-bit linear congruential generator with this formula:
 
@@ -927,14 +927,14 @@ There are at least a couple of Mersenne twister components in the archive.
 
 ## PHP
 
-PHP has two random number generators: <code>[rand](http://us3.php.net/manual/en/function.rand.php)</code>, which uses the underlying C library's <code>rand</code> function; and <code>[mt_rand](http://us3.php.net/manual/en/function.mt-rand.php)</code>, which uses the [[wp:Mersenne twister|Mersenne twister]] algorithm.
+PHP has two random number generators: <code>[rand](https://us3.php.net/manual/en/function.rand.php)</code>, which uses the underlying C library's <code>rand</code> function; and <code>[mt_rand](https://us3.php.net/manual/en/function.mt-rand.php)</code>, which uses the [[wp:Mersenne twister|Mersenne twister]] algorithm.
 
 
 ## PicoLisp
 
 PicoLisp uses a linear congruential generator in the built-in (rand) function,
 with a multiplier suggested in Knuth's "Seminumerical Algorithms". See the
-[documentation](http://software-lab.de/doc/refR.html#rand).
+[documentation](https://software-lab.de/doc/refR.html#rand).
 
 
 ## PL/I
@@ -994,7 +994,7 @@ PureBasic has two random number generators, <tt>Random()</tt> and <tt>CryptRando
 
 ## Python
 
-Python uses the [[wp:Mersenne twister|Mersenne twister]] algorithm accessed via the built-in [random module](http://docs.python.org/library/random.html).
+Python uses the [[wp:Mersenne twister|Mersenne twister]] algorithm accessed via the built-in [random module](https://docs.python.org/library/random.html).
 
 
 ## R
@@ -1036,9 +1036,9 @@ help.search("Distribution", package="stats")
 
 
 Racket's random number generator uses a 54-bit version of L’Ecuyer’s MRG32k3a algorithm [L'Ecuyer02],
-as specified in the [docs](http://docs.racket-lang.org/reference/generic-numbers.html#%28def._%28%28quote._~23~25kernel%29._random%29%29).
+as specified in the [docs](https://docs.racket-lang.org/reference/generic-numbers.html#%28def._%28%28quote._~23~25kernel%29._random%29%29).
 In addition, the "math" library has a bunch of additional
-[random functions](http://docs.racket-lang.org/math/base.html#%28part._.Random_.Number_.Generation%29).
+[random functions](https://docs.racket-lang.org/math/base.html#%28part._.Random_.Number_.Generation%29).
 
 
 ## Rascal
@@ -1153,7 +1153,7 @@ next
 
 ## Ruby
 
-Ruby's <code>rand</code> function currently uses the [[wp:Mersenne twister|Mersenne twister]] algorithm, as described in [its documentation](http://www.ruby-doc.org/core/classes/Kernel.html#M005974).
+Ruby's <code>rand</code> function currently uses the [[wp:Mersenne twister|Mersenne twister]] algorithm, as described in [its documentation](https://www.ruby-doc.org/core/classes/Kernel.html#M005974).
 
 
 ## Run BASIC
@@ -1174,7 +1174,7 @@ For any other PRNGs not provided, they merely have to implement the <code>[Rng](
 
 ## Scala
 
-Scala's <code>scala.util.Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]] of the JVM run-time libary, as described in [its documentation](http://java.sun.com/javase/6/docs/api/java/util/Random.html).
+Scala's <code>scala.util.Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]] of the JVM run-time libary, as described in [its documentation](https://docs.oracle.com/javase/6/docs/api/java/util/Random.html).
 An example can be found here:
 
 ```scala
@@ -1211,11 +1211,11 @@ object Throws extends App {
 
 Seed7 uses a linear congruential generator to compute pseudorandom numbers.
 Usually random number generators deliver a random value in a fixed range,
-The Seed7 function [rand(low, high)](http://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29)
+The Seed7 function [rand(low, high)](https://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29)
 delivers a random number in the requested range [low, high].
 Seed7 overloads the ''rand'' functions for the types char, boolean,
-[bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm#rand%28in_bigInteger,in_bigInteger%29),
-[float](http://seed7.sourceforge.net/libraries/float.htm#rand%28ref_float,ref_float%29) and others.
+[bigInteger](https://seed7.sourceforge.net/libraries/bigint.htm#rand%28in_bigInteger,in_bigInteger%29),
+[float](https://seed7.sourceforge.net/libraries/float.htm#rand%28ref_float,ref_float%29) and others.
 
 
 ## Sidef
@@ -1238,7 +1238,7 @@ Sparkling uses the built-in PRNG of whichever C library implementation the inter
 ## Stata
 
 
-See '''[set rng](http://www.stata.com/help.cgi?set%20rng)''' in Stata help. Stata uses the '''[Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister)''' RNG by default, and may use the 32-bit '''[KISS](https://en.wikipedia.org/wiki/KISS_(algorithm))''' RNG for compatibility with versions earlier than Stata 14.
+See '''[set rng](https://www.stata.com/help.cgi?set%20rng)''' in Stata help. Stata uses the '''[Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister)''' RNG by default, and may use the 32-bit '''[KISS](https://en.wikipedia.org/wiki/KISS_(algorithm))''' RNG for compatibility with versions earlier than Stata 14.
 
 
 ## Tcl
@@ -1291,7 +1291,7 @@ Cygnus/X Ursa is written in Java and makes calls to java.util.Random, which uses
 ## Ursala
 
 Ursala uses the [[wp:Mersenne twister|Mersenne twister]] algorithm as implemented by the [Avram](http://www.basis.uklinux.net/avram) run time system for most purposes, except for arbitrary precision floating point random numbers, which are generated by the <code>urandomb</code> function from the
-[mpfr](http://www.mpfr.org) library.
+[mpfr](https://www.mpfr.org) library.
 
 
 ## XPL0
@@ -1331,7 +1331,7 @@ Output:
 
 ## zkl
 
-zkl uses the Xorshift (<http://en.wikipedia.org/wiki/Xorshift>) random number generator. It will also, on occasion, read from /dev/urandom.
+zkl uses the Xorshift (<https://en.wikipedia.org/wiki/Xorshift>) random number generator. It will also, on occasion, read from /dev/urandom.
 
 
 ## ZX Spectrum Basic

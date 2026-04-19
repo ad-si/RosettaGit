@@ -15,7 +15,7 @@ Rascal is a [domain specific](http://www.rascal-mpl.org/Rascal/RascalDomain) lan
 [[Image:RascalLogo.png|200px|thumb|right|The Rascal logo]]
 
 ## Why Rascal?
-Rascal is a new language for ''meta-programming'', this is the activity of writing meta-programs<ref name="The Rascal Project Motivation"><http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Motivation/Motivation.html></ref>. Using Rascal you create programs that read, analyse, transform, generate and/or visualize other programs.
+Rascal is a new language for ''meta-programming'', this is the activity of writing meta-programs<ref name="The Rascal Project Motivation"><https://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Motivation/Motivation.html></ref>. Using Rascal you create programs that read, analyse, transform, generate and/or visualize other programs.
 Meta-programs are programs that analyze, transform or generate other programs. Ordinary programs work on data; meta-programs work on programs.
 
 The ''range of programs'' to which meta-programming can be applied is large: from programs in standard languages like C and Java to domain-specific languages for describing high-level system models or applications in specialized areas like gaming or finance. In some cases, even test results or performance data are used as input for meta-programs.
@@ -35,7 +35,7 @@ Typical applications of Rascal are:
 #Analyzing the version history of a large software project.
 #Implementing a domain-specific language (DSL) for describing games or business processes.
 
-All these cases involve a form of meta-programming: software programs (in a wide sense) are the objects-of-interest that are being analyzed, transformed or generated. The Rascal language is designed for meta-programming following the [EASY](http://tutor.rascal-mpl.org/Courses/EASY/EASY.html) paradigm. It can be applied in domains ranging from compiler construction and implementing domain-specific languages to constraint solving and software renovation.
+All these cases involve a form of meta-programming: software programs (in a wide sense) are the objects-of-interest that are being analyzed, transformed or generated. The Rascal language is designed for meta-programming following the [EASY](https://tutor.rascal-mpl.org/Courses/EASY/EASY.html) paradigm. It can be applied in domains ranging from compiler construction and implementing domain-specific languages to constraint solving and software renovation.
 
 Since representation of information is central to the approach, Rascal provides a rich set of built-in data types. To support extraction and analysis, parsing and advanced pattern matching are provided. High-level control structures make analysis and synthesis of complex datastructures simple.
 

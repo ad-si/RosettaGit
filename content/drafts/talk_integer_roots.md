@@ -69,7 +69,7 @@ I want it to look like math notation not computer code. [[User:Zelah|Zelah]] ([[
 
 ::::: Chrome, and "MathML with SVG or PNG fallback" --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 17:20, 12 May 2016 (UTC)
 
-::::::Ok, I have a theory why it is failing. [[wp:MathML#Web_browsers|Chrome doesn't support MathML]] (I've also tried with another WebKit browser called Vimb). So the fallback image is used. But for some reasons (I guess caching due to Cloudfare) it isn't shown. But the direct link to the fallback image should work: <http://rosettacode.org/mw/index.php?title=Special:MathShowImage&hash=b6db46185bb825b2df70bfd507239446&mode=mathml>
+::::::Ok, I have a theory why it is failing. [[wp:MathML#Web_browsers|Chrome doesn't support MathML]] (I've also tried with another WebKit browser called Vimb). So the fallback image is used. But for some reasons (I guess caching due to Cloudfare) it isn't shown. But the direct link to the fallback image should work: <https://rosettacode.org/mw/index.php?title=Special:MathShowImage&hash=b6db46185bb825b2df70bfd507239446&mode=mathml>
 ::::::I had another caching issue yesterday when I fixed an overwritten example output image. The task page where the image was included still showed the wrong image. But today everything was alright.
 ::::::So if my theory is correct, you should see the fallback image in a few hours. If not, something else is wrong. --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 19:31, 12 May 2016 (UTC)
 

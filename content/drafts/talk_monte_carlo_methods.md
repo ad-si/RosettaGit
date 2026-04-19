@@ -17,7 +17,7 @@ I don't think this should be done here, as I am attempting to show how the shell
 
 == Error formula in C implementation ==
 
-What formula is being used for the error calculation in the [C Implementation](http://rosettacode.org/wiki/Monte_Carlo_methods#C)?
+What formula is being used for the error calculation in the [C Implementation](https://rosettacode.org/wiki/Monte_Carlo_methods#C)?
 
 At first I thought it was the formula for standard deviation but the code is:
 
@@ -30,7 +30,7 @@ The factor 4 is explained because we are not interested in the ratio <math>\pi/4
 <math>\sigma = \mu \sqrt{\frac{1}{N} \mu(1 - \mu)}, {\rm \ \ where\ \ } \mu {\rm \ \ is \ \ the \ \ ratio \ \ } \pi/4 {\rm \ \ and\ \ } N {\rm \ \ is \ \ the \ \ number \ \ of \ \ samples \ \ }</math>
 
 
-But according to [Wikipedia](http://en.wikipedia.org/wiki/Standard_deviation#Definition_of_population_values) the formula is this:
+But according to [Wikipedia](https://en.wikipedia.org/wiki/Standard_deviation#Definition_of_population_values) the formula is this:
  
 :<math>\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N (x_i - \mu)^2}, {\rm \ \ where\ \ } \mu = \frac{1}{N} \sum_{i=1}^N x_i.</math>
 

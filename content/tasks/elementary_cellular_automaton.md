@@ -63,7 +63,7 @@ This task is basically a generalization of [[one-dimensional cellular automata]]
 
 
 ## See also
-* [Cellular automata (natureofcode.com)](http://natureofcode.com/book/chapter-7-cellular-automata)
+* [Cellular automata (natureofcode.com)](https://natureofcode.com/book/chapter-7-cellular-automata)
 
 
 
@@ -820,7 +820,7 @@ Rules: [90, 30, 122]
 
 ## EchoLisp
 
-Pictures of the (nice) generated colored bit-maps : The Escher like [(task 90 5)](http://www.echolalie.org/echolisp/images/automaton-1.png) and the fractal like  [(task 22 1)](http://www.echolalie.org/echolisp/images/automaton-2.png)
+Pictures of the (nice) generated colored bit-maps : The Escher like [(task 90 5)](https://www.echolalie.org/echolisp/images/automaton-1.png) and the fractal like  [(task 22 1)](https://www.echolalie.org/echolisp/images/automaton-2.png)
 
 
 ```scheme
@@ -2912,7 +2912,7 @@ object ElementaryCellularAutomaton extends App {
 
 
 ```scheme
-; uses SRFI-1 library http://srfi.schemers.org/srfi-1/srfi-1.html
+; uses SRFI-1 library https://srfi.schemers.org/srfi-1/srfi-1.html
 
 (define (evolve ls r)
   (unfold

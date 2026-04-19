@@ -13,7 +13,7 @@ tags = []
 
 
 ## See also
-* [xEec Esolangs](http://esolangs.org/wiki/xEec) &ndash; xEec on Esolangs
+* [xEec Esolangs](https://esolangs.org/wiki/xEec) &ndash; xEec on Esolangs
 * [xEec page](http://paulo-jorente.de/poncho/esolang/xEec) &ndash; features specs, programs and an interpreter.
 
 [Category:Esoteric_Languages](https://rosettacode.org/wiki/Category:Esoteric_Languages)

@@ -445,7 +445,7 @@ Output: ""
 Works with any ANS Forth 
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -682,7 +682,7 @@ main = do
 
 ## J
 
-Warning: <http://rosettacode.org/wiki/Abbreviations,_easy#J> uses this code without duplication.  Must provide expand with the same signature.  x is the command table string, y is the user sentence.
+Warning: <https://rosettacode.org/wiki/Abbreviations,_easy#J> uses this code without duplication.  Must provide expand with the same signature.  x is the command table string, y is the user sentence.
 
 ```J
 

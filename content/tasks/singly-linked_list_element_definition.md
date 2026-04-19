@@ -1534,15 +1534,15 @@ See also [[Singly-linked_list/Element_removal#Phix]] for some working code
 In PicoLisp, the singly-linked list is the most important data structure. Many
 built-in functions deal with linked lists. A list consists of interconnected
 "cells". Cells are also called "cons pairs", because they are constructed with
-the function '[cons](http://software-lab.de/doc/refC.html#cons)'.
+the function '[cons](https://software-lab.de/doc/refC.html#cons)'.
 
 Each cell consists of two parts: A CAR and a CDR. Both may contain (i.e. point
 to) arbitrary data (numbers, symbols, other cells, or even to itself). In the
 case of a linked list, the CDR points to the rest of the list.
 
 The CAR of a cell can be manipulated with
-'[set](http://software-lab.de/doc/refS.html#set)'
-and the CDR with '[con](http://software-lab.de/doc/refC.html#con)'.
+'[set](https://software-lab.de/doc/refS.html#set)'
+and the CDR with '[con](https://software-lab.de/doc/refC.html#con)'.
 
 
 ## PL/I

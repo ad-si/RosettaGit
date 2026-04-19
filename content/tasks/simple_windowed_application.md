@@ -1326,7 +1326,7 @@ new SwingBuilder().edt {
 
 ## Haskell
 
-{{libheader|Gtk}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+{{libheader|Gtk}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.UI.Gtk
@@ -2574,8 +2574,8 @@ $Result = $Form1.ShowDialog()
 
 [xml]$Xaml = @"
 <Window
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns="https://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="https://schemas.microsoft.com/winfx/2006/xaml"
     x:Name = "Window1"
     Width  = "200"
     Height = "120"
@@ -2939,7 +2939,7 @@ form.ShowModal
 ```REBOL
 REBOL [
 	Title: "Simple Windowed Application"
-	URL: http://rosettacode.org/wiki/Simple_Windowed_Application
+	URL: https://rosettacode.org/wiki/Simple_Windowed_Application
 ]
 
 clicks: 0

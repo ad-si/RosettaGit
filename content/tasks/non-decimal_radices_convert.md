@@ -552,7 +552,7 @@ parse(number, base)
 }
 ```
 
-alternate implementation contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276241.html#276241)
+alternate implementation contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276241.html#276241)
 
 ```AutoHotkey
 MsgBox % ToBase(29,3)
@@ -1845,7 +1845,7 @@ end
 ```
 
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 There are several conversion routines for bases in the IPL, however, none returns the input radix form.
 
 Output:
@@ -1870,7 +1870,7 @@ J supports direct specification of native precision integers by base. The number
 ```
 
 
-Additionally, J has primitives [#.](http://www.jsoftware.com/help/dictionary/d401.htm) and [#:](http://www.jsoftware.com/help/dictionary/d402.htm) for dealing with base conversion issues.
+Additionally, J has primitives [#.](https://www.jsoftware.com/help/dictionary/d401.htm) and [#:](https://www.jsoftware.com/help/dictionary/d402.htm) for dealing with base conversion issues.
 
 Here are programs for conversion of numeric values to literals, and of literals to numbers:
 
@@ -1903,7 +1903,7 @@ These may be combined so the conversion performed is derived from the type of ar
 aa
 ```
 
-See also primary verbs [Base](http://www.jsoftware.com/help/dictionary/d401.htm) and [Antibase](http://www.jsoftware.com/help/dictionary/d402.htm).
+See also primary verbs [Base](https://www.jsoftware.com/help/dictionary/d401.htm) and [Antibase](https://www.jsoftware.com/help/dictionary/d402.htm).
 
 
 ## Java
@@ -3480,13 +3480,13 @@ def bigToBase(num: BigInt, newBase: Int): String = num.toString(newBase)
 
 ## Seed7
 
-The type [integer](http://seed7.sourceforge.net/manual/types.htm#integer)
-defines the operator [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29)
-and the function [integer](http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29),
+The type [integer](https://seed7.sourceforge.net/manual/types.htm#integer)
+defines the operator [radix](https://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29)
+and the function [integer](https://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29),
 which convert to string and vice versa.
-The type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger)
-defines [radix](http://seed7.sourceforge.net/libraries/bigint.htm#%28in_var_bigInteger%29radix%28in_integer%29)
-and [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm#bigInteger%28in_string,in_integer%29)
+The type [bigInteger](https://seed7.sourceforge.net/manual/types.htm#bigInteger)
+defines [radix](https://seed7.sourceforge.net/libraries/bigint.htm#%28in_var_bigInteger%29radix%28in_integer%29)
+and [bigInteger](https://seed7.sourceforge.net/libraries/bigint.htm#bigInteger%28in_string,in_integer%29)
 for corresponding purposes.
 
 

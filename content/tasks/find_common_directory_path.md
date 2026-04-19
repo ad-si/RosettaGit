@@ -1878,7 +1878,7 @@ let () =
 ```
 
 
-(uses the module <code>[Str](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Str.html)</code>, str.cma)
+(uses the module <code>[Str](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Str.html)</code>, str.cma)
 
 
 ## OpenEdge/Progress
@@ -2710,7 +2710,7 @@ Output:
 
 ## Ruby
 
-Uses the standard library <code>[abbrev](http://www.ruby-doc.org/stdlib/libdoc/abbrev/rdoc/index.html)</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
+Uses the standard library <code>[abbrev](https://www.ruby-doc.org/stdlib/libdoc/abbrev/rdoc/index.html)</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
 
 
 ```ruby
@@ -3041,7 +3041,7 @@ object FindCommonDirectoryPathRelative extends App {
 
 ## Seed7
 
-Seed7 has a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation):
+Seed7 has a [standard path representation](https://seed7.sourceforge.net/manual/os.htm#Standard_path_representation):
 *The slash ('/') is used as path delimiter.
 *Drive letters are not allowed, but there is a solution to replace them.
 *Except for the path "/" a standard path is not allowed to end with a slash.

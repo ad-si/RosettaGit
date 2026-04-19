@@ -18,7 +18,7 @@ This is a nebulous task.  Are we talking strictly SQL servers??  Or are we talki
 :: I read this the other way, ie that it is not SQL related, and the task speaks about different data types, so this appears to be a table type for the language, albeit the language may use SQL for a solution, It doesn't look like a requirement. --[[User:Markhobley|Markhobley]] 18:59, 20 June 2011 (UTC)
 ::: I created the original task. The intent at the time was to broaden the selection of tasks on RC (we had fewer than twenty, and I'd written all of them) to try to add support for SQL languages to the site by defining a task which was a common necessary activity in those languages. At the time I had no concept of the dizzying array of different language domains and paradigms that exist. If the task can be scrapped and replaced with something else more appropriate (common activities in data storage, retrieval and processing languages were what I was shooting for), then by all means, go for it. --[[User:Short Circuit|Michael Mol]] 19:22, 20 June 2011 (UTC)
 
-:::From the [first edits](http://rosettacode.org/mw/index.php?title=Table_creation&action=historysubmit&diff=1836&oldid=1670) it seems the task is to create a database table but not necessarily using SQL. --[[User:Paddy3118|Paddy3118]] 19:24, 20 June 2011 (UTC)
+:::From the [first edits](https://rosettacode.org/mw/index.php?title=Table_creation&action=historysubmit&diff=1836&oldid=1670) it seems the task is to create a database table but not necessarily using SQL. --[[User:Paddy3118|Paddy3118]] 19:24, 20 June 2011 (UTC)
 
 ==Redundant==
 Is this task redundant?  It's along the same lines as [[Table Creation - Address]], but more generic. --[[User:Short Circuit|Short Circuit]] 21:13, 12 November 2007 (MST)

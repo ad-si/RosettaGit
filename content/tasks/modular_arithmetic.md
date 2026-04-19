@@ -1099,7 +1099,7 @@ x^100 + x + 1 for x == modint(10,13) is modint(1,13)
 
 ## Prolog
 
-Works with SWI-Prolog versin 6.4.1 and module lambda (found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> ).
+Works with SWI-Prolog versin 6.4.1 and module lambda (found there : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> ).
 
 ```Prolog
 :- use_module(library(lambda)).

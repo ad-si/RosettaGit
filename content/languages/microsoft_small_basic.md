@@ -33,8 +33,8 @@ Small Basic also uses some ideas from other languages, most notably [Logo's](htt
 Note that although this is a compiler, the only way to actually compile programs is by running them from the IDE.
 
 ## See also
-*[Small Basic homepage](http://msdn.microsoft.com/en-us/devlabs/cc950524.aspx)
+*[Small Basic homepage](https://msdn.microsoft.com/en-us/devlabs/cc950524.aspx)
 *[Small Basic on Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Small_Basic)
-*[Small Basic Getting Started Guide](http://msdn.microsoft.com/en-us/beginner/hh304480.aspx)
+*[Small Basic Getting Started Guide](https://msdn.microsoft.com/en-us/beginner/hh304480.aspx)
 
 [Category:Web Application](https://rosettacode.org/wiki/Category:Web_Application)

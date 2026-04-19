@@ -965,8 +965,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1860,7 +1860,7 @@ END Queue.
 
 ## D
 
-See code here: <http://rosettacode.org/wiki/Queue/Usage#D>
+See code here: <https://rosettacode.org/wiki/Queue/Usage#D>
 
 =={{header|Déjà Vu}}==
 This uses a dictionary to have a sort of [[wp:Circular_buffer|circular buffer]] of infinite size.
@@ -3780,7 +3780,7 @@ Exception: Failure "empty fifo".
 
 
 The standard ocaml library also provides a
-[FIFO module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Queue.html),
+[FIFO module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Queue.html),
 but it is ''imperative'', unlike the implementation above which is ''functional''.
 
 
@@ -3928,7 +3928,7 @@ in
 ```
 
 
-There is also a [queue datatype](http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/queue.html) in the Mozart standard library.
+There is also a [queue datatype](https://www.mozart-oz.org/home/doc/mozart-stdlib/adt/queue.html) in the Mozart standard library.
 
 
 ## Pascal
@@ -4451,7 +4451,7 @@ class FIFO:  ## NOT a new-style class, must not derive from "object"
 
 As noted in the contents this must NOT be a new-style class, it must NOT but sub-classed from ''object'' nor any of its descendents.  (A new-style implementation using __getattribute__ would be possible)
 
-Python 2.4 and later includes a [deque class](http://docs.python.org/lib/deque-objects.html), supporting thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction. For other options see [Python Cookbook](http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/68436).
+Python 2.4 and later includes a [deque class](https://docs.python.org/lib/deque-objects.html), supporting thread-safe, memory efficient appends and pops from either side of the deque with approximately the same O(1) performance in either direction. For other options see [Python Cookbook](http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/68436).
 
 
 ```python
@@ -4697,7 +4697,7 @@ And this is an implementation of a functional queue.
 ```REBOL
 rebol [
     Title: "FIFO"
-    URL: <http://rosettacode.org/wiki/FIFO>
+    URL: <https://rosettacode.org/wiki/FIFO>
 ]
 
 ; Define fifo class:

@@ -309,7 +309,7 @@ hWebView.URL = "https://www.yahoo.com"
 End
 ```
 
-'''[Click here to see output (I have typed 'rosettacode' in the search box)](http://www.cogier.com/gambas/Yahoo!%20search%20interface.png)'''
+'''[Click here to see output (I have typed 'rosettacode' in the search box)](https://www.cogier.com/gambas/Yahoo!%20search%20interface.png)'''
 
 
 ## GUISS
@@ -493,26 +493,26 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[strings.icn provides deletec](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 Sample Output (truncated):
 ```txt
 
 Title : "<b>Rosetta Code</b> - <b>Rosetta Code</b>"
-URL   : "http://rosettacode.org/"
+URL   : "https://rosettacode.org/"
 Abstr : "<b>Rosetta Code</b> is a programming chrestomathy site. The idea is to
 present solutions to the same task in as many different languages as possible, t
 o demonstrate how ..."
 
 Title : "<b>Rosetta Code</b> - Wikipedia, the free <wbr />encyclopedia"
-URL   : "http://en.wikipedia.org/wiki/Rosetta_Code"
+URL   : "https://en.wikipedia.org/wiki/Rosetta_Code"
 Abstr : " <b>Rosetta Code</b> is a wiki -based programming chrestomathy website
 with solutions to various programming problems in many different programming lan
 guages. It was created ..."
 
 Title : "Category:AutoHotkey - <b>Rosetta Code</b>"
-URL   : "http://rosettacode.org/wiki/Category:AutoHotkey"
+URL   : "https://rosettacode.org/wiki/Category:AutoHotkey"
 Abstr : "Listed below are all of the tasks on <b>Rosetta Code</b> which have bee
 n solved using AutoHotkey."
 
@@ -754,7 +754,7 @@ Output (restricted to first three results on first two pages):
 PAGE 1 =>
 
 Title: Rosetta Code - Official Site
-Link : http://rosettacode.org/wiki/Rosetta_Code
+Link : https://rosettacode.org/wiki/Rosetta_Code
 Text : Rosetta Code is a programming chrestomathy site. The idea is to present solutions to the same task in as ...
 
 Title: Rosetta Code - Wikipedia
@@ -1085,8 +1085,8 @@ Output:
 : (more (yahoo "test"))
 ("http://www.test.com/" "Test" "Offers practice online tests for many ...
 ("http://www.test.com/aboutus.htm" "Test" "Test.com has a successful ...
-("http://en.wikipedia.org/wiki/Test" "Test" "YUI Test is a testing ...
-("http://en.wikipedia.org/wiki/F-test" "test " "test n. A procedure for ...
+("https://en.wikipedia.org/wiki/Test" "Test" "YUI Test is a testing ...
+("https://en.wikipedia.org/wiki/F-test" "test " "test n. A procedure for ...
 ...
 ```
 
@@ -1755,11 +1755,11 @@ URL: http://www.rosettastone.com/
 TEXT: <b>Rosetta</b> Stone is the world&#39;s #1 language-learning software. Our comprehensive foreign language program provides language learning for individuals and language learning ...
 ---
 TITLE: <b>Rosetta</b> (software) - Wikipedia, the <wbr />free encyclopedia
-URL: http://en.wikipedia.org/wiki/Rosetta_(software)
+URL: https://en.wikipedia.org/wiki/Rosetta_(software)
 TEXT: Rosettais a lightweight dynamic translatorfor Mac OS Xdistributed by Apple. It enabled applications compiled for the PowerPCfamily of processors to run on Apple systems that use...
 ---
 TITLE: <b>Rosetta</b> (spacecraft) - Wikipedia, the <wbr />free encyclopedia
-URL: http://en.wikipedia.org/wiki/Rosetta_space_probe
+URL: https://en.wikipedia.org/wiki/Rosetta_space_probe
 TEXT: Rosettais a robotic spacecraftof the European Space Agencyon a mission to study the comet 67P/ChuryumovâGerasimenko. <b>Rosetta </b>consists of two main elements: the <b>Rosetta </b>space probeand...
 ---
 TITLE: Apple - Mac

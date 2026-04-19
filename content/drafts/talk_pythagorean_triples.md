@@ -32,7 +32,7 @@ The correct results:<lang>           10 0 0
  --[[User:Ledrug|Ledrug]] 18:27, 28 June 2011 (UTC)
 
 Hmmm... I get 324 and 4857 for perimeters of 1000 and 10000 respectively. I see that the Python solution also gets 324 for a perimeter of 1000. Am I missing something?--[[User:Tikkanz|Tikkanz]] 23:59, 28 June 2011 (UTC)
-:I got 325 for 1000 using Java. Here's the full list: http://pastebin.com/HK74uBCz --[[User:Mwn3d|Mwn3d]] 00:49, 29 June 2011 (UTC)
+:I got 325 for 1000 using Java. Here's the full list: https://pastebin.com/HK74uBCz --[[User:Mwn3d|Mwn3d]] 00:49, 29 June 2011 (UTC)
 ::Good, beat me to it. I was wondering if I should post the list here, guess not :) --[[User:Ledrug|Ledrug]] 00:52, 29 June 2011 (UTC)
 :::I'm running 10K now. Even if it finishes before I get bored I don't think I'll put up the full list. It seems like too much. I'll add the count here in any case. --[[User:Mwn3d|Mwn3d]] 00:54, 29 June 2011 (UTC)
 :::It finished immediately after I clicked "submit"... I got 4858 triples and 703 primitives. --[[User:Mwn3d|Mwn3d]] 00:55, 29 June 2011 (UTC)

@@ -47,7 +47,7 @@ Implementations of this task should not use client certificates for this: that i
 ```AutoHotkey
 iWeb_Init()
 pwb := iWeb_newGui(0, 0, 1000, 800)
-iWeb_nav(pwb, "http://www.facebook.com/login.php?ref=pf")
+iWeb_nav(pwb, "https://www.facebook.com/login.php?ref=pf")
 iWeb_Term()
 iWeb_complete(pwb)
 inputbox, email, email

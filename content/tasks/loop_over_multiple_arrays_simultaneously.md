@@ -260,12 +260,12 @@ end Array_Loop_Test;
 ## ALGOL 68
 
 {{works with|ALGOL 68G|Any - tested with release
-[http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download
+[https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download
 
  1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested
  with release
-[http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download
+[https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download
 
  1.8-8d] - due to extensive use of '''format'''[ted] ''transput''}}
 
@@ -510,7 +510,7 @@ cC3
 ## AutoHotkey
 
 === Pseudo-arrays ===
-[StringSplit](http://www.autohotkey.com/docs/commands/StringSplit.htm)
+[StringSplit](https://www.autohotkey.com/docs/commands/StringSplit.htm)
 creates a pseudo-array
 
 ```autohotkey
@@ -2028,7 +2028,7 @@ end
 ```
 
 
-[http://www.cs.arizona.edu/icon/library/procs/numbers.htm Uses max from
+[https://www.cs.arizona.edu/icon/library/procs/numbers.htm Uses max from
 numbers]
 
 
@@ -4243,7 +4243,7 @@ Or simpler:
 
 
 
-Same with lamination (a concept from APL/[J](http://rosettacode.org/wiki/Category:J#The_J_language)):
+Same with lamination (a concept from APL/[J](https://rosettacode.org/wiki/Category:J#The_J_language)):
 
 ```SuperCollider
 
@@ -4375,7 +4375,7 @@ foreach i $list1 j $list2 k $list3 {
 ```
 
 If lists are different lengths, the manual
-<http://www.tcl.tk/man/tcl8.5/TclCmd/foreach.htm> says:
+<https://www.tcl-lang.org/man/tcl8.5/TclCmd/foreach.htm> says:
 "The total number of loop iterations is large enough to use up all the
 values from all the value lists.
 If a value list does not contain enough elements for each of its loop

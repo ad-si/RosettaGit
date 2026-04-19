@@ -1193,12 +1193,12 @@ A simple implementation in rust. The user has to input an endline since i did no
 ## Seed7
 
 The Seed7 program below works in a text console.
-Commands are [read](http://seed7.sourceforge.net/libraries/keybd.htm#getc(in_console_keybd_file)) from the file
-[KEYBOARD](http://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD), which delivers cursor keys and function keys as single characters (e.g. KEY_LEFT or KEY_F1). Additionally KEYBOARD delivers single key-presses without echo.
+Commands are [read](https://seed7.sourceforge.net/libraries/keybd.htm#getc(in_console_keybd_file)) from the file
+[KEYBOARD](https://seed7.sourceforge.net/libraries/keybd.htm#KEYBOARD), which delivers cursor keys and function keys as single characters (e.g. KEY_LEFT or KEY_F1). Additionally KEYBOARD delivers single key-presses without echo.
 All this is done independent from the operating system or terminal/console.
-The output of the program is written to [STD_CONSOLE](http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE),
-which allows [cursor positioning](http://seed7.sourceforge.net/libraries/console.htm#setPos(in_console_file,in_integer,in_integer)),
-after it has been [opened](http://seed7.sourceforge.net/libraries/console.htm#open(CONSOLE)).
+The output of the program is written to [STD_CONSOLE](https://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE),
+which allows [cursor positioning](https://seed7.sourceforge.net/libraries/console.htm#setPos(in_console_file,in_integer,in_integer)),
+after it has been [opened](https://seed7.sourceforge.net/libraries/console.htm#open(CONSOLE)).
 STD_CONSOLE works also always the same, independent from the operating system or terminal/console.
 
 

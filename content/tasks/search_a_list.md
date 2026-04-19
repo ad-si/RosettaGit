@@ -1532,7 +1532,7 @@ s" Washington" haystack s" Bush" haystack
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -2023,7 +2023,7 @@ end
 ```
 
 
-Taken from the public domain Icon Programming Library's [lindex in lists](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn) which generates list indices for x of any type
+Taken from the public domain Icon Programming Library's [lindex in lists](https://www.cs.arizona.edu/icon/library/src/procs/lists.icn) which generates list indices for x of any type
 
 ```Icon
 procedure lindex(lst, x)		#: generate indices for items matching x
@@ -2507,7 +2507,7 @@ Exception in thread "main" java.lang.Exception: Donald does not occur in the lis
 
 ## Lasso
 
-Lasso arrays have a findindex method which returns all matching indexes. <http://lassoguide.com/operations/containers.html?#array>
+Lasso arrays have a findindex method which returns all matching indexes. <https://lassoguide.com/operations/containers.html?#array>
 
 
 ```Lasso
@@ -3790,7 +3790,7 @@ ValueError: list.index(x): x not in list
 ```
 
 
-There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [rindex](http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex)).
+There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [rindex](https://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex)).
 Instead we need to look for the index in the reversed list and adjust the result.
 
 ```python
@@ -3890,7 +3890,7 @@ Let us test with a linked list:
 ```REBOL
 REBOL [
 	Title: "List Indexing"
-	URL: http://rosettacode.org/wiki/Index_in_a_list
+	URL: https://rosettacode.org/wiki/Index_in_a_list
 ]
 
 locate: func [

@@ -804,8 +804,8 @@ object ExtendedCharacter extends App {
 
 ## Seed7
 
-A [write](http://seed7.sourceforge.net/libraries/console.htm#write%28ref_console_file,in_string%29)
-to a [console](http://seed7.sourceforge.net/libraries/console.htm) accepts Unicode characters.
+A [write](https://seed7.sourceforge.net/libraries/console.htm#write%28ref_console_file,in_string%29)
+to a [console](https://seed7.sourceforge.net/libraries/console.htm) accepts Unicode characters.
 ```seed7
 $ include "seed7_05.s7i";
   include "console.s7i";

@@ -1632,7 +1632,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 Q(1 to 10) - verified.

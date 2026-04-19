@@ -21,4 +21,4 @@ Why not upload the images to Rosetta Code and embed them directly on the respect
 However, I'm still pretty new here myself, so it would be nice if one of the admins could weigh in on the issue.
 
 --[[User:Smls|Smls]] ([[User talk:Smls|talk]]) 16:22, 29 January 2014 (UTC)
-: Update: Apparently, image uploading is temporarily disabled (see  [IRC log](http://irclog.perlgeek.de/rosettacode/2014-01-29#i_8193055)) --[[User:Smls|Smls]] ([[User talk:Smls|talk]]) 16:47, 29 January 2014 (UTC)
+: Update: Apparently, image uploading is temporarily disabled (see  [IRC log](https://irclog.perlgeek.de/rosettacode/2014-01-29#i_8193055)) --[[User:Smls|Smls]] ([[User talk:Smls|talk]]) 16:47, 29 January 2014 (UTC)

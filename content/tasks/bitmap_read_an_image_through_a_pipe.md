@@ -33,7 +33,7 @@ This task is the ''opposite'' of the [[PPM conversion through a pipe]]. In this 
 
 ## AutoHotkey
 
-Uses [StdoutTovar.ahk](http://www.autohotkey.com/forum/viewtopic.php?t=16823) 
+Uses [StdoutTovar.ahk](https://www.autohotkey.com/forum/viewtopic.php?t=16823) 
 
 ```AutoHotkey
 ppm := Run("cmd.exe /c convert lena50.jpg ppm:-") 
@@ -94,8 +94,8 @@ loop % width * height
 }
  return bitmap  
   }
-#include bitmap_storage.ahk ; from http://rosettacode.org/wiki/Basic_bitmap_storage/AutoHotkey
-#include run.ahk ; http://www.autohotkey.com/forum/viewtopic.php?t=16823
+#include bitmap_storage.ahk ; from https://rosettacode.org/wiki/Basic_bitmap_storage/AutoHotkey
+#include run.ahk ; https://www.autohotkey.com/forum/viewtopic.php?t=16823
 
 ```
 
@@ -555,7 +555,7 @@ proc magickalReadImage {bufferImage fileName} {
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Using the convert utility by ImageMagick:
 

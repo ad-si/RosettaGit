@@ -1532,7 +1532,7 @@ str_poly l = intercalate " + " $ terms l
 ## J
 
 
-From <http://www.jsoftware.com/jwiki/Phrases/Polynomials>
+From <https://www.jsoftware.com/jwiki/Phrases/Polynomials>
 
 
 ```J
@@ -2517,7 +2517,7 @@ def synthetic_division(f, g)
 end
 
 # an ugly mess of array index arithmetic
-# http://en.wikipedia.org/wiki/Polynomial_long_division#Higher_degree_synthetic_division
+# https://en.wikipedia.org/wiki/Polynomial_long_division#Higher_degree_synthetic_division
 def higher_degree_synthetic_division(f, g)
 
   # [use] the negative coefficients of the denominator following the leading term
@@ -2846,7 +2846,7 @@ res do: [ :o |
 ```
 
 
-Domain:<http://fricas.github.io/api/PolynomialCategory.html#l-polynomial-category-monic-divide>
+Domain:<https://fricas.github.io/api/PolynomialCategory.html#l-polynomial-category-monic-divide>
 
 
 

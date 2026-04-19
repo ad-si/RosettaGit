@@ -577,7 +577,7 @@ end;
 
 ## Erlang
 
-Using base58 module from <http://github.com/titan098/erl-base58.git>.
+Using base58 module from <https://github.com/titan098/erl-base58.git>.
 
 
 ```Erlang
@@ -2260,11 +2260,11 @@ object BitcoinAddressValidator extends App {
 
 ## Seed7
 
-The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
-the function [fromBase58](http://seed7.sourceforge.net/libraries/encoding.htm#fromBase58(in_string)),
+The Seed7 library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [fromBase58](https://seed7.sourceforge.net/libraries/encoding.htm#fromBase58(in_string)),
 which decodes a Base58 encoded string.
-The Seed7 library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm) defines
-the function [sha256](http://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string)),
+The Seed7 library [msgdigest.s7i](https://seed7.sourceforge.net/libraries/msgdigest.htm) defines
+the function [sha256](https://seed7.sourceforge.net/libraries/msgdigest.htm#sha256(in_var_string)),
 which computes a SHA-256 message digest.
 No external library is needed.
 

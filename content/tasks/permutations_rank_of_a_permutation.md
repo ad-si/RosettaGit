@@ -73,7 +73,7 @@ Algorithms exist that can generate a rank from a permutation for some particular
 
 One use of such algorithms could be in generating a small, random, sample of permutations of <math>n</math> items without duplicates when the total number of permutations is large. Remember that the total number of permutations of <math>n</math> items is given by <math>n!</math> which grows large very quickly: A 32 bit integer can only hold <math>12!</math>, a 64 bit integer only <math>20!</math>. It becomes difficult to take the straight-forward approach of generating all permutations then taking a random sample of them.
 
-A [question on the Stack Overflow site](http://stackoverflow.com/questions/12884428/generate-sample-of-1-000-000-random-permutations) asked how to generate one million random and indivudual permutations of 144 items.
+A [question on the Stack Overflow site](https://stackoverflow.com/questions/12884428/generate-sample-of-1-000-000-random-permutations) asked how to generate one million random and indivudual permutations of 144 items.
 
 
 ## Task
@@ -92,7 +92,7 @@ A [question on the Stack Overflow site](http://stackoverflow.com/questions/12884
 
 # [Ranking and Unranking Permutations in Linear Time](http://webhome.cs.uvic.ca/~ruskey/Publications/RankPerm/RankPerm.html) by Myrvold & Ruskey. (Also available via Google [here](https://docs.google.com/viewer?a=v&q=cache:t8G2xQ3-wlkJ:citeseerx.ist.psu.edu/viewdoc/download%3Fdoi%3D10.1.1.43.4521%26rep%3Drep1%26type%3Dpdf+&hl=en&gl=uk&pid=bl&srcid=ADGEESgDcCc4JVd_57ziRRFlhDFxpPxoy88eABf9UG_TLXMzfxiC8D__qx4xfY3JAhw_nuPDrZ9gSInX0MbpYjgh807ZfoNtLrl40wdNElw2JMdi94Znv1diM-XYo53D8uelCXnK053L&sig=AHIEtbQtx-sxcVzaZgy9uhniOmETuW4xKg)).
 # [Ranks](http://www.davdata.nl/math/ranks.html) on the DevData site.
-# [Another answer](http://stackoverflow.com/a/1506337/10562) on Stack Overflow to a different question that explains its algorithm in detail.
+# [Another answer](https://stackoverflow.com/a/1506337/10562) on Stack Overflow to a different question that explains its algorithm in detail.
 
 
 

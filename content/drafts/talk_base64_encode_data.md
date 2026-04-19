@@ -20,7 +20,7 @@ Using a short piece of sample text would make it much more practical to include 
 
 Should the output be shown when converting the Rosetta Code icon (''favicon.ico'')?
 
-I would prefer to show something shorter/smaller (and can be used to verify the various program's outputs) such as the five examples that the Wikipedia article on ''Base64''   <http://en.wikipedia.org/wiki/Base64>   that were used as illustrations (as used in the REXX example). -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 16:25, 27 August 2013 (UTC)
+I would prefer to show something shorter/smaller (and can be used to verify the various program's outputs) such as the five examples that the Wikipedia article on ''Base64''   <https://en.wikipedia.org/wiki/Base64>   that were used as illustrations (as used in the REXX example). -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 16:25, 27 August 2013 (UTC)
 :Now that I think of it I'd like it to split the task or to merge these tasks.
 :*Base64 Encode a string
 :*Base64 Encode an image
@@ -125,13 +125,13 @@ The Base64 for the image file seems to have changed (at least it's different tha
 In the Python on my computer, if I do
 
 ```txt
-urllib2.urlopen('http://rosettacode.org/favicon.ico')
+urllib2.urlopen('https://rosettacode.org/favicon.ico')
 ```
 
 , it gives a 403 error. And if I do
 
 ```txt
-print urllib.urlopen('http://rosettacode.org/favicon.ico').read()
+print urllib.urlopen('https://rosettacode.org/favicon.ico').read()
 ```
 
 , I get HTML that, among other things, says

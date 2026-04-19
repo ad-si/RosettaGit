@@ -350,7 +350,7 @@ Answer:
 
 ### pure lambda calculus
 
-(See <http://en.wikipedia.org/wiki/Lambda_calculus>). The following solution works almost the same way as the previous solution, but uses lambda calculus
+(See <https://en.wikipedia.org/wiki/Lambda_calculus>). The following solution works almost the same way as the previous solution, but uses lambda calculus
 
 ```bracmat
 ( /(
@@ -1625,7 +1625,7 @@ Note that this is an identity function for arguments less than 1 (and 1 (and 5))
 
 -------------
 
-Note also <http://www.jsoftware.com/pipermail/general/2003-August/015571.html> which points out that the form
+Note also <https://www.jsoftware.com/pipermail/general/2003-August/015571.html> which points out that the form
 
 
 ```j
@@ -2097,7 +2097,7 @@ nonnegint, but received -1
 The check for a negative argument could be put either on the outer Fib procedure, or the anonymous inner procedure (or both).  As it wasn't completely clear what was intended, I put it on Fib, which results in a slightly better error message in that it does not reveal how the procedure was actually implemented.
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-An anonymous reference to a function from within itself is named #0, arguments to that function are named #1,#2..#n, n being the position of the argument. The first argument may also be referenced as a # without a following number, the list of all arguments is referenced with ##. Anonymous functions are also known as [pure functions](http://reference.wolfram.com/mathematica/tutorial/PureFunctions.html) in Mathematica.
+An anonymous reference to a function from within itself is named #0, arguments to that function are named #1,#2..#n, n being the position of the argument. The first argument may also be referenced as a # without a following number, the list of all arguments is referenced with ##. Anonymous functions are also known as [pure functions](https://reference.wolfram.com/mathematica/tutorial/PureFunctions.html) in Mathematica.
 
 ```Mathematica
 check := #<0&
@@ -2599,7 +2599,7 @@ echo fib(8), "\n";
          (+ (recurse (dec N)) (recurse (- N 2))) ) ) )
 ```
 
-Explanation: The above uses the '[recur](http://software-lab.de/doc/refR.html#recur)' / '[recurse](http://software-lab.de/doc/refR.html#recurse)' function pair, which is defined as a standard language extensions as
+Explanation: The above uses the '[recur](https://software-lab.de/doc/refR.html#recur)' / '[recurse](https://software-lab.de/doc/refR.html#recurse)' function pair, which is defined as a standard language extensions as
 
 ```PicoLisp
 (de recur recurse
@@ -2644,8 +2644,8 @@ Postscript can make use of the higher order combinators to provide recursion.
 
 ## Prolog
 
-Works with SWI-Prolog and module <b>lambda</b>, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
-The code is inspired from this page : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106). It uses the Y combinator.
+Works with SWI-Prolog and module <b>lambda</b>, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+The code is inspired from this page : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106). It uses the Y combinator.
 
 ```prolog
 :- use_module(lambda).
@@ -3691,7 +3691,7 @@ The recursive conditional operator <code>^?</code> differs from the ordinary con
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Anonymous_recursion
+https://rosettacode.org/wiki/Anonymous_recursion
 ···
 ⟦import java.util.function.UnaryOperator;⟧
 

@@ -1892,7 +1892,7 @@ Example use:
 
 ## Java
 
-By default, [java.util.GregorianCalendar](http://docs.oracle.com/javase/7/docs/api/index.html?java/util/GregorianCalendar.html) switches from Julian calendar to Gregorian calendar at 15 October 1582.
+By default, [java.util.GregorianCalendar](https://docs.oracle.com/javase/7/docs/api/index.html?java/util/GregorianCalendar.html) switches from Julian calendar to Gregorian calendar at 15 October 1582.
 The code below uses both the GregorianCalendar class
 and the algorithm from the wiki.
 Both values are printed in the output.
@@ -3488,7 +3488,7 @@ Test of current half-decade
 ## Scala
 
 ===JDK 7 (not recommended)===
-By default, [java.util.GregorianCalendar](http://docs.oracle.com/javase/7/docs/api/index.html?java/util/GregorianCalendar.html) switches from Julian calendar to Gregorian calendar at 15 October 1582.
+By default, [java.util.GregorianCalendar](https://docs.oracle.com/javase/7/docs/api/index.html?java/util/GregorianCalendar.html) switches from Julian calendar to Gregorian calendar at 15 October 1582.
 
 
 ```scala
@@ -3548,7 +3548,7 @@ const func boolean: isLeapYear (in integer: year) is
   return (year rem 4 = 0 and year rem 100 <> 0) or year rem 400 = 0;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/date.htm#isLeapYear>
+Original source: <https://seed7.sourceforge.net/algorith/date.htm#isLeapYear>
 
 
 ## Sidef

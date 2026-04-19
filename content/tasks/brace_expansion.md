@@ -1076,7 +1076,7 @@ It{{em,alic}iz,erat}e{d,}, please.
 
 ## Haskell
 
-["Here is a direct translation to Haskell using parsec"](http://www.reddit.com/r/readablecode/comments/1w6exe/p6_crosswalk_braceexpansionparses/cf229at) (of [an earlier version of the Perl 6 solution](http://rosettacode.org/mw/index.php?title=Brace_expansion&oldid=175567#Perl_6)):
+["Here is a direct translation to Haskell using parsec"](https://www.reddit.com/r/readablecode/comments/1w6exe/p6_crosswalk_braceexpansionparses/cf229at) (of [an earlier version of the Perl 6 solution](https://rosettacode.org/mw/index.php?title=Brace_expansion&oldid=175567#Perl_6)):
 
 
 ```haskell
@@ -1375,7 +1375,7 @@ import (
 func (t Text) String() string          { return fmt.Sprintf("%#q", string(t)) }
 func (alt Alternation) String() string { return fmt.Sprintf("ALT:%v", []Expander(alt)) }
 
-// From http://rosettacode.org/wiki/Brace_expansion
+// From https://rosettacode.org/wiki/Brace_expansion
 var testCases = []struct {
 	input    string
 	expected []string
@@ -2133,8 +2133,8 @@ gotta have\, again\, more cowbell!
 ## Perl
 
 
-Perl has a built-in [<code>glob</code>](http://perldoc.perl.org/functions/glob.html) function which does brace expansion, but it can't be used to solve this task because it also does shell-like word splitting, wildcard expansion, and tilde expansion at the same time.
-The <code>File::Glob</code> core module gives access to the more low-level [<code>bsd_glob</code>](http://perldoc.perl.org/File/Glob.html#EXPORTS) function which actually supports exclusive brace expansion, however it does not comply with this task's specification when it comes to preserving backslashes and handling unbalanced brace characters.
+Perl has a built-in [<code>glob</code>](https://perldoc.perl.org/functions/glob.html) function which does brace expansion, but it can't be used to solve this task because it also does shell-like word splitting, wildcard expansion, and tilde expansion at the same time.
+The <code>File::Glob</code> core module gives access to the more low-level [<code>bsd_glob</code>](https://perldoc.perl.org/File/Glob.html#EXPORTS) function which actually supports exclusive brace expansion, however it does not comply with this task's specification when it comes to preserving backslashes and handling unbalanced brace characters.
 
 So here is a manual solution that implements the specification precisely:
 

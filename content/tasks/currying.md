@@ -75,7 +75,7 @@ languages = [
 Create a simple demonstrative example of [[wp:Currying|Currying]] in a specific language.
 
 Add any historic details as to how the feature made its way into the language.
-<!-- from: <http://en.wikipedia.org/w/index.php?title=Currying&direction=prev&oldid=142127294> -->
+<!-- from: <https://en.wikipedia.org/w/index.php?title=Currying&direction=prev&oldid=142127294> -->
 ## Aime
 
 Curry a function printing an integer, on a given number of characters, with commas inserted every given number of digits, with a given number of digits, in a given base:
@@ -744,11 +744,11 @@ Sleep
 
 ## Go
 
-Go has had [function literals](http://golang.org/ref/spec#Function_literals)
-and [method expressions](http://golang.org/ref/spec#Method_expressions)
+Go has had [function literals](https://golang.org/ref/spec#Function_literals)
+and [method expressions](https://golang.org/ref/spec#Method_expressions)
 since before Go 1.0.
-[Method values](http://golang.org/ref/spec#Method_values) were added
-in [Go 1.1](http://golang.org/doc/go1.1#method_values).
+[Method values](https://golang.org/ref/spec#Method_values) were added
+in [Go 1.1](https://golang.org/doc/go1.1#method_values).
 
 ```go
 package main
@@ -790,7 +790,7 @@ func main() {
 }
 ```
 
-[Run on the Go Playground.](http://play.golang.org/p/0YL9YTe-9V)
+[Run on the Go Playground.](https://play.golang.org/p/0YL9YTe-9V)
 
 
 ## Groovy
@@ -1854,7 +1854,7 @@ Add each number in list to its square root:
 
 Works with SWI-Prolog and module '''lambda.pl'''
 
-Module lambda.pl can be found at <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> .
+Module lambda.pl can be found at <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> .
 
 ```txt
  ?- [library('lambda.pl')].
@@ -2261,7 +2261,7 @@ The type of aliases used here are a simple restriction of general inter-interpre
 TXR Lisp has an operator called <code>op</code> for currying. Of course, currying is done with lambdas under the hood; the operator generates lambdas. Its name is inspired by the same-named operators featured in the Goo language, and in the Common Lisp library <i>cl-op</i>.
 
 References:
-Goo <code>op</code>: <http://people.csail.mit.edu/jrb/goo/manual.46/goomanual_15.html>
+Goo <code>op</code>: <https://people.csail.mit.edu/jrb/goo/manual.46/goomanual_15.html>
 <i>cl-op</i>: <https://code.google.com/p/cl-op/>
 
 TXR's <code>op</code> is quite different in that it uses numbered arguments, has some additional features, and is accompanied by a "zoo" of related operators which share its currying syntax, providing various useful derived behaviors.

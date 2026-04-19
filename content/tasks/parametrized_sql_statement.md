@@ -389,7 +389,7 @@ func main() {
 ## Haskell
 
 
-Example uses the [<tt>HDBC</tt>](http://hackage.haskell.org/package/HDBC) package:
+Example uses the [<tt>HDBC</tt>](https://hackage.haskell.org/package/HDBC) package:
 
 
 ```haskell
@@ -416,7 +416,7 @@ main = undefined
 ```
 
 
-You'll need an instance of a type with an instance for the <tt>IConnection</tt> type class in order to use this function, such as [<tt>Connection</tt>](http://hackage.haskell.org/package/HDBC-postgresql-2.3.2.5/docs/Database-HDBC-PostgreSQL.html#t:Connection) from [<tt>HDBC-postgresql</tt>](http://hackage.haskell.org/package/HDBC-postgresql).
+You'll need an instance of a type with an instance for the <tt>IConnection</tt> type class in order to use this function, such as [<tt>Connection</tt>](https://hackage.haskell.org/package/HDBC-postgresql-2.3.2.5/docs/Database-HDBC-PostgreSQL.html#t:Connection) from [<tt>HDBC-postgresql</tt>](https://hackage.haskell.org/package/HDBC-postgresql).
 
 
 ## Huginn
@@ -1377,16 +1377,16 @@ object PlayersApp extends App {
 
 ## Seed7
 
-The library [sql_base.s7i](http://seed7.sourceforge.net/libraries/sql_base.htm) provides access to databases.
-The type [database](http://seed7.sourceforge.net/libraries/sql_base.htm#database) describes a database connection
-and the type [sqlStatement](http://seed7.sourceforge.net/libraries/sql_base.htm#sqlStatement) can store a prepared statement.
+The library [sql_base.s7i](https://seed7.sourceforge.net/libraries/sql_base.htm) provides access to databases.
+The type [database](https://seed7.sourceforge.net/libraries/sql_base.htm#database) describes a database connection
+and the type [sqlStatement](https://seed7.sourceforge.net/libraries/sql_base.htm#sqlStatement) can store a prepared statement.
 In the example below the table ''players'' is created and filled with hard coded SQL statements, that are ''execute''d without parametrization.
 The SQL statement to update the table uses parametrization.
-The SQL statement is [prepared](http://seed7.sourceforge.net/libraries/sql_base.htm#prepare%28in_database,in_string%29),
-parameters are [bound](http://seed7.sourceforge.net/libraries/sql_base.htm#bind%28inout_sqlStatement,in_integer,in_integer%29) and
-the statement is [executed](http://seed7.sourceforge.net/libraries/sql_base.htm#execute%28inout_sqlStatement%29).
-Finally a SQL select statement is prepared, executed and the result rows are [fetched](http://seed7.sourceforge.net/libraries/sql_base.htm#fetch%28in_sqlStatement%29).
-A column from a result row is retrieved with the function [column](http://seed7.sourceforge.net/libraries/sql_base.htm#column%28in_sqlStatement,in_integer,attr_integer%29).
+The SQL statement is [prepared](https://seed7.sourceforge.net/libraries/sql_base.htm#prepare%28in_database,in_string%29),
+parameters are [bound](https://seed7.sourceforge.net/libraries/sql_base.htm#bind%28inout_sqlStatement,in_integer,in_integer%29) and
+the statement is [executed](https://seed7.sourceforge.net/libraries/sql_base.htm#execute%28inout_sqlStatement%29).
+Finally a SQL select statement is prepared, executed and the result rows are [fetched](https://seed7.sourceforge.net/libraries/sql_base.htm#fetch%28in_sqlStatement%29).
+A column from a result row is retrieved with the function [column](https://seed7.sourceforge.net/libraries/sql_base.htm#column%28in_sqlStatement,in_integer,attr_integer%29).
 
 
 ```seed7
@@ -1596,7 +1596,7 @@ proc setPlayer {db jersey -> playerName playerScore playerActive} {
 
 # How to use...
 setPlayer $db 99 -> "Smith, Steve" 42 true
-# With apologies to http://xkcd.com/327/
+# With apologies to https://xkcd.com/327/
 setPlayer $db 76 -> "Robert'; DROP TABLE players--" 0 false
 $db close
 ```

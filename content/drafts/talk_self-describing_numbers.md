@@ -110,7 +110,7 @@ Hi!
 This is a great task idea. I think the person you should ask about
 this would be Paddy3118 and/or Rdm.
 
-I'd leave a note on http://rosettacode.org/wiki/User_talk:Paddy3118
+I'd leave a note on https://rosettacode.org/wiki/User_talk:Paddy3118
 and chat with him about it. Use Google Translate or some such if you
 need to. Perhaps including the original Spanish would help, too. There
 are a large number of folks on Rosetta Code who know multiple spoken
@@ -146,9 +146,9 @@ This task appears to be a duplicate of [[Self-describing numbers]].
 
 == Autobiographical number ==
 
-Wikipedia <http://en.wikipedia.org/wiki/Self-descriptive_number> describes a self descriptive number:
+Wikipedia <https://en.wikipedia.org/wiki/Self-descriptive_number> describes a self descriptive number:
 
 A self-descriptive number is an integer m that in a given base b is b digits long in which each digit d at position n (the most significant digit being at position 0 and the least significant at position b - 1) counts how many instances of digit n are in m.
 
-The task described here is closer to that which wikipedia defines as an Autobiographical number <http://en.wikipedia.org/wiki/Autobiographical_numbers>
+The task described here is closer to that which wikipedia defines as an Autobiographical number <https://en.wikipedia.org/wiki/Autobiographical_numbers>
 --[[User:Nigel Galloway|Nigel Galloway]] 12:07, 10 January 2013 (UTC)

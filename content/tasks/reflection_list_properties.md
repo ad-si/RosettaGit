@@ -295,7 +295,7 @@ private static java.lang.ref.SoftReference ListProperties.$callSiteArray	java.la
 
 ## J
 
-<http://rosettacode.org/wiki/Reflection/List_methods#J>
+<https://rosettacode.org/wiki/Reflection/List_methods#J>
 Please observe that names&>i.4 lists nouns (pronouns that store data), adverbs (names of verb modifiers returning any of these four parts of speech), conjunctions (which can take three or four arguments, two of which can any part of these four parts of speech and two nouns), and proverbs (names of verbs, which you might call "functions").
 
 

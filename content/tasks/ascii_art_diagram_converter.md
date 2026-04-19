@@ -24,7 +24,7 @@ languages = [
 ## Task
 
 Given the RFC 1035 message diagram from Section 4.1.1 (Header section format) as a string:
-<http://www.ietf.org/rfc/rfc1035.txt>
+<https://www.ietf.org/rfc/rfc1035.txt>
 
  +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
  |                      ID                       |
@@ -1374,8 +1374,8 @@ A wrapper which doesn't disturb the below code too much is in progress.}}
 
 This is a nice task to illustrate a couple of important concepts in Tcl:
 
-  * using [dict](http://wiki.tcl.tk/5042)ionaries, taking advantage of their ordering properties
-  * the [binary](http://wiki.tcl.tk/1181) command
+  * using [dict](https://wiki.tcl-lang.org/5042)ionaries, taking advantage of their ordering properties
+  * the [binary](https://wiki.tcl-lang.org/1181) command
   * using (semi-)structured text as part of your source code
 
 In this implementation, '''parse''' produces a dictionary from names to bit-lengths.  '''encode''' and '''decode''' use these to produce appropriate binary format strings, and then do what they say on the tin.  As implemented, this is limited to unsigned numeric values in fields.  Supporting unsigned values, strings and enums would require parsing a more complex annotation than only the ASCII art packet structure, but ought not take much more code.

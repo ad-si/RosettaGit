@@ -389,7 +389,7 @@ LAB:
 ```algol68
 main: (
     INT a, b;
-    INT seed := 4; # chosen by a fair dice roll, guaranteed to be random c.f. http://xkcd.com/221/ #
+    INT seed := 4; # chosen by a fair dice roll, guaranteed to be random c.f. https://xkcd.com/221/ #
     # first random; #
     WHILE
         a := ENTIER (next random(seed) * 20);
@@ -630,8 +630,8 @@ conversion10:
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to <http://thinkingeek.com/arm-assembler-raspberry-pi/*>
-/* and   <http://www.hackersdelight.org/>            */
+/* Thanks to <https://thinkingeek.com/arm-assembler-raspberry-pi/*>
+/* and   <https://www.hackersdelight.org/>            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1039,7 +1039,7 @@ delete r;
 
 ## Chef
 
-"Liquify" is now depreciated in favor of "Liquefy", but my interpreter/compiler ([Acme::Chef](http://search.cpan.org/~smueller/Acme-Chef/)) works only with "Liquify" so that's how I'm leaving it. At least it'll work no matter which version you use.
+"Liquify" is now depreciated in favor of "Liquefy", but my interpreter/compiler ([Acme::Chef](https://metacpan.org/~smueller/Acme-Chef/)) works only with "Liquify" so that's how I'm leaving it. At least it'll work no matter which version you use.
 <div style='width:full;overflow:scroll'>
 
 ```Chef
@@ -3374,7 +3374,7 @@ repeat
 ```REBOL
 REBOL [
 	Title: "Loop/Break"
-	URL: <http://rosettacode.org/wiki/Loop/Break>
+	URL: <https://rosettacode.org/wiki/Loop/Break>
 ]
 
 random/seed 1 ; Make repeatable.

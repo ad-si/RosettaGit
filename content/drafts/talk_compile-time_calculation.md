@@ -15,7 +15,7 @@ Should be correct. I queried a D developer, and got this:
 
 ```txt
 22:24 <@shortcircuit> feep: Could you check on this? 
-                      http://rosettacode.org/mw/index.php?title=Compile-time_calculation&diff=75121&oldid=prev
+                      https://rosettacode.org/mw/index.php?title=Compile-time_calculation&diff=75121&oldid=prev
 22:25  * shortcircuit wishes he knew of a channel full of D programmers that would find such queries interesting.
 22:26 <+feep> hah
 22:27 <+feep> shortcircuit: no, it's run at compile time

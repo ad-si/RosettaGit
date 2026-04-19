@@ -15,7 +15,7 @@ tags = []
 PureBasic is a portable programming language with current up-to-date implementations on Windows, Linux, and MacOS. The same code can be compiled and run natively on each OS. An older version for the Amiga platform is also available, but no longer maintained.
 
 ## See Also
-* [PureBasic home page](http://www.purebasic.com)
+* [PureBasic home page](https://www.purebasic.com)
 * [PureBasic on Wikipedia](https://en.wikipedia.org/wiki/PureBasic)
 ## Merged content
 

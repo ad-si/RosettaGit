@@ -9,7 +9,7 @@ id = 4698
 categories = []
 tags = []
 +++
-'''PowerBASIC for Windows''' (a.k.a. '''PB/Win''') is the [Windows](https://rosettacode.org/wiki/Windows) compiler for [PowerBASIC](https://rosettacode.org/wiki/PowerBASIC). This is the version that is meant to deal with windows, and there is an add-on (called [PowerBASIC Forms](http://www.powerbasic.com/products/pbforms)) that can make this task easier.
+'''PowerBASIC for Windows''' (a.k.a. '''PB/Win''') is the [Windows](https://rosettacode.org/wiki/Windows) compiler for [PowerBASIC](https://rosettacode.org/wiki/PowerBASIC). This is the version that is meant to deal with windows, and there is an add-on (called [PowerBASIC Forms](https://www.powerbasic.com/products/pbforms)) that can make this task easier.
 
 It's important to note that there are some fairly major language differences between the [DOS](https://rosettacode.org/wiki/PB/DOS) and Windows versions of PowerBASIC.
 
@@ -17,4 +17,4 @@ It's important to note that there are some fairly major language differences bet
 PB/Win was originally named '''PowerBASIC DLL Compiler''' ('''PB/DLL'''), which reflected its original purpose: writing DLLs for Windows, both 16-bit and 32-bit. (Normal applications were supported in a manner similar to other contemporary languages, using resource scripts to draw windows.) With version 7 the name was changed to PB/Win and 16-bit support was dropped.
 
 ## See also
-* [PB/Win page at PowerBASIC.com](http://www.powerbasic.com/products/pbdll32/)
+* [PB/Win page at PowerBASIC.com](https://www.powerbasic.com/products/pbdll32/)

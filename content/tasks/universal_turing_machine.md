@@ -448,7 +448,7 @@ end Busy_Beaver_3;
 
 
 ```autohotkey
-; By Uberi, http://www.autohotkey.com/board/topic/58599-turing-machine/
+; By Uberi, https://www.autohotkey.com/board/topic/58599-turing-machine/
 SetBatchLines, -1
 OnExit, Exit
 SaveFilePath := A_ScriptFullPath ".ini"
@@ -782,7 +782,7 @@ Requires at least 2k of RAM.
 111111
 ```
 
-A screenshot from part-way through the execution of this machine can be found [here](http://www.edmundgriffiths.com/zx81turingmachine.jpg).
+A screenshot from part-way through the execution of this machine can be found [here](https://www.edmundgriffiths.com/zx81turingmachine.jpg).
 
 If it is true that the <b>five-state probable beaver</b> runs for 47m cycles, then there is no point even attempting it on a slow computer like the ZX81. I don't know exactly how long it would take: but it would be months.
 
@@ -2007,7 +2007,7 @@ void main() @safe {
     }
     M1(tm1);
 
-    // <http://en.wikipedia.org/wiki/Busy_beaver>
+    // <https://en.wikipedia.org/wiki/Busy_beaver>
     "\nBusy Beaver machine (3-state, 2-symbol):".writeln;
     enum States2 : ubyte { A, B, C, H }
     alias Symbols2 = Symbols1;
@@ -5741,7 +5741,7 @@ This page also has other information, screen shots, etc.
 ;;    by Dan Dewey 1/16/2016
 ;;
 ;; This NetLogo code implements a Turing Machine, see, e.g.,
-;;    <http://en.wikipedia.org/wiki/Turing_machine>
+;;    <https://en.wikipedia.org/wiki/Turing_machine>
 ;; The Turing machine fits nicely into the NetLogo paradigm in which
 ;; there are agents (aka the turtles), that move around
 ;; in a world of "patches" (2D cells).
@@ -5751,14 +5751,14 @@ This page also has other information, screen shots, etc.
 ;; obvious way.
 
 ;; This program is presented as a NetLogo example on the page:
-;;    <http://rosettacode.org/wiki/Universal_Turing_machine>
+;;    <https://rosettacode.org/wiki/Universal_Turing_machine>
 ;;    This file may be larger than others on that page, note however
 ;;    that I include many comments in the code and I have made no
 ;;    effort to 'condense' the code, prefering clarity over compactness.
 ;; A demo and discussion of this program is on the web page:
 ;;    <http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine>
 ;; The Copy example machine was taken from:
-;;    <http://en.wikipedia.org/wiki/Turing_machine_examples>
+;;    <https://en.wikipedia.org/wiki/Turing_machine_examples>
 ;; The "Busy Beaver" machines encoded below were taken from:
 ;;    <http://www.logique.jussieu.fr/~michel/ha.html>
 

@@ -1321,7 +1321,7 @@ We use <code>#lang racket/base</code> to show which module system is in. It woul
 
 This demonstrates one function: <code>system</system>. It is the simplest of a family of commands in the <code>racket/system</code> collection.
 
-See [documentation for <code>system</code> and friends](http://docs.racket-lang.org/reference/subprocess.html?q=system#%28def._%28%28lib._racket%2Fsystem..rkt%29._system%29%29).
+See [documentation for <code>system</code> and friends](https://docs.racket-lang.org/reference/subprocess.html?q=system#%28def._%28%28lib._racket%2Fsystem..rkt%29._system%29%29).
 
 
 ```racket

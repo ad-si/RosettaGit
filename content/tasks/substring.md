@@ -263,7 +263,7 @@ brown fox jumps
 
 ## ALGOL 68
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 
 ```Algol68
 main: (
@@ -4263,7 +4263,7 @@ $str $matchChrs split as $l
 ```REBOL
 REBOL [
 	Title: "Retrieve Substring"
-	URL: <http://rosettacode.org/wiki/Substring#REBOL>
+	URL: <https://rosettacode.org/wiki/Substring#REBOL>
 ]
 
 s: "abcdefgh"  n: 2  m: 3  char: #"d"  chars: "cd"
@@ -5041,7 +5041,7 @@ qrd
 ```
 
 
-This program uses [''expr(1)''](http://www.openbsd.org/cgi-bin/man.cgi?query=expr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) to capture a substring.
+This program uses [''expr(1)''](https://www.openbsd.org/cgi-bin/man.cgi?query=expr&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) to capture a substring.
 
 
 ### Bourne Shell
@@ -5099,7 +5099,7 @@ echo ${${string/*cde/cde}:0:3}  # Display 3 chars starting with 'cde'
 
 ### Pipe
 
-This example shows how to [cut(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=cut&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) a substring from a string.
+This example shows how to [cut(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=cut&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) a substring from a string.
 
 ```bash
 #!/bin/sh

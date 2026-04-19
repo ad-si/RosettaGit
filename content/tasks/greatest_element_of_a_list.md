@@ -852,8 +852,8 @@ conversion10S:
     bx lr
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1237,7 +1237,7 @@ float max(unsigned int count, float values[]) {
 ```
 
 
-The following macro can be used with any number and type of arguments, provided that the arguments are ''simple'', i.e. must not contain subexpressions where commas appear (this is because of the way the arguments are counted; the macro can be modified so that it is up to the caller to count the number of arguments passed). <!-- You might wanna look at the macro from here which can count the number of arguments without parsing commas: <http://groups.google.com/group/comp.std.c/browse_thread/thread/77ee8c8f92e4a3fb/346fc464319b1ee5> -->
+The following macro can be used with any number and type of arguments, provided that the arguments are ''simple'', i.e. must not contain subexpressions where commas appear (this is because of the way the arguments are counted; the macro can be modified so that it is up to the caller to count the number of arguments passed). <!-- You might wanna look at the macro from here which can count the number of arguments without parsing commas: <https://groups.google.com/group/comp.std.c/browse_thread/thread/77ee8c8f92e4a3fb/346fc464319b1ee5> -->
 
 ```c
 #include <stdarg.h>
@@ -4689,7 +4689,7 @@ $lst max "max value: %d\n" print
 ```REBOL
 REBOL [
     Title: "Maximum Value"
-    URL: http://rosettacode.org/wiki/Maximum_Value
+    URL: https://rosettacode.org/wiki/Maximum_Value
 ]
 
 max: func [
@@ -5584,7 +5584,7 @@ Longest line = 80
 The desired value is the first in a sequence that has been sorted numerically in descending order.
 
 ```xml
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="text"/>
 
 	<xsl:template match="/">

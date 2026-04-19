@@ -270,7 +270,7 @@ Return
 LookAndSay(Input) {
 ;---------------------------------------------------------------------------
     ; credit for this function goes to AutoHotkey forum member Laslo
-    ; http://www.autohotkey.com/forum/topic44657-161.html
+    ; https://www.autohotkey.com/forum/topic44657-161.html
     ;-----------------------------------------------------------------------
     Loop, Parse, Input          ; look at every digit
         If (A_LoopField = d)    ; I've got another one! (of the same value)
@@ -983,7 +983,7 @@ with n=55 are about 31.1, 0.10 and 0.23 seconds.
 ### More Direct Version
 
 Translated and modified from C code by Reddit user "skeeto":
-<http://www.reddit.com/r/dailyprogrammer/comments/2ggy30/9152014_challenge180_easy_looknsay/>
+<https://www.reddit.com/r/dailyprogrammer/comments/2ggy30/9152014_challenge180_easy_looknsay/>
 
 Using ideas from:
 <http://www.njohnston.ca/2010/10/a-derivation-of-conways-degree-71-look-and-say-polynomial/>
@@ -1569,7 +1569,7 @@ Secuencia:
 
 ## Gambas
 
-'''Code is modified from the [PureBasic](http://rosettacode.org/wiki/Look-and-say_sequence#PureBasic) example'''
+'''Code is modified from the [PureBasic](https://rosettacode.org/wiki/Look-and-say_sequence#PureBasic) example'''
 
 '''[Click this link to run this code](https://gambas-playground.proko.eu/?gist=83d63e1706fa1dc3c7468b1e9d7bcf05)'''
 
@@ -2662,7 +2662,7 @@ run this example with 'ocaml -I +pcre pcre.cma script.ml'
 
 
 ```ocaml
-(* see <http://oeis.org/A005150> *)
+(* see <https://oeis.org/A005150> *)
 
 let look_and_say s =
 let n = String.length s
@@ -2703,7 +2703,7 @@ List.map (String.length) (las 59);;
     12680852]
 *)
 
-(* see <http://oeis.org/A005341> *)
+(* see <https://oeis.org/A005341> *)
 ```
 
 

@@ -1235,7 +1235,7 @@ fun main(args: Array<String>) {
 ```perl
 #!/usr/bin/perl
 
-use strict;             # <http://www.rosettacode.org/wiki/Solve_a_Hopido_puzzle>
+use strict;             # <https://www.rosettacode.org/wiki/Solve_a_Hopido_puzzle>
 use warnings;
 
 $_ = do { local $/; <DATA> };

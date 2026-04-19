@@ -37,7 +37,7 @@ Create a window and draw a pixel in it, subject to the following:
 
 ## C
 
-Same as the [[Draw a pixel]] task, uses the random number functions of stdlib.h to plot a random point. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Same as the [[Draw a pixel]] task, uses the random number functions of stdlib.h to plot a random point. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 

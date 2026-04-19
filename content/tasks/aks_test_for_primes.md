@@ -110,7 +110,7 @@ And all the coefficients are divisible by '''3''',   so '''3''' is prime.
 
 ;References:
 * [Agrawal-Kayal-Saxena (AKS) primality test](https://en.wikipedia.org/wiki/AKS_primality_test) (Wikipedia)
-* [Fool-Proof Test for Primes](http://www.youtube.com/watch?v=HvMSRWTE2mI) - Numberphile (Video).  The accuracy of this video is disputed -- at best it is an oversimplification.
+* [Fool-Proof Test for Primes](https://www.youtube.com/watch?v=HvMSRWTE2mI) - Numberphile (Video).  The accuracy of this video is disputed -- at best it is an oversimplification.
 
 
 
@@ -318,7 +318,7 @@ And just to show off, the primes between 900 and 1000 are 907 911 919 929 937 94
 
 ```autohotkey
 ; 1. Create a function/subroutine/method that given p generates the coefficients of the expanded polynomial representation of (x-1)^p.
-; Function modified from http://rosettacode.org/wiki/Pascal%27s_triangle#AutoHotkey
+; Function modified from https://rosettacode.org/wiki/Pascal%27s_triangle#AutoHotkey
 pascalstriangle(n=8) ; n rows of Pascal's triangle
 {
 	p := Object(), z:=Object()
@@ -2854,7 +2854,7 @@ Primes:
 ## OCaml
 
 {{trans|Clojure}}
-Uses [gen](http://github.com/c-cube/gen) library for lazy streams and [zarith](https://forge.ocamlcore.org/projects/zarith) for arbitrarily sized integers. Runs as is through the [utop](https://github.com/diml/utop) REPL.
+Uses [gen](https://github.com/c-cube/gen) library for lazy streams and [zarith](https://forge.ocamlcore.org/projects/zarith) for arbitrarily sized integers. Runs as is through the [utop](https://github.com/diml/utop) REPL.
 
 ```OCaml
 #require "gen"

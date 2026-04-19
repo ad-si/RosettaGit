@@ -299,7 +299,7 @@ namespace DynamicClassVariable
             Console.WriteLine( "sampleObj.bar = {0}", sampleObj.bar );
 
             // We can also add dynamically methods and events to expando object
-            // More information: http://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject.aspx
+            // More information: https://msdn.microsoft.com/en-us/library/system.dynamic.expandoobject.aspx
             // This sample only show very small part of dynamic language features - there is lot's more
 
             Console.WriteLine( "< Press any key >" );
@@ -385,7 +385,7 @@ Slots with :INSTANCE allocation:
 ```
 
 
-The following REPL transcript (from [[LispWorks]]) shows the definition of a class <code>some-class</code> with no slots, and the creation of an instance of the class.  The first attempt to access the slot named <code>slot1</code> signals an error as there is no such slot.  Then the class is redefined to have such a slot, and with a default value of 23.  Attempting to access the slot in the preëxisting instance now gives the default value, since the slot has been added to the instance.  This behavior is specified in [§4.3.6 Redefining Classes](http://www.lispworks.com/documentation/HyperSpec/Body/04_cf.htm) of the [HyperSpec](http://www.lispworks.com/documentation/HyperSpec/Front/index.htm).
+The following REPL transcript (from [[LispWorks]]) shows the definition of a class <code>some-class</code> with no slots, and the creation of an instance of the class.  The first attempt to access the slot named <code>slot1</code> signals an error as there is no such slot.  Then the class is redefined to have such a slot, and with a default value of 23.  Attempting to access the slot in the preëxisting instance now gives the default value, since the slot has been added to the instance.  This behavior is specified in [§4.3.6 Redefining Classes](https://www.lispworks.com/documentation/HyperSpec/Body/04_cf.htm) of the [HyperSpec](https://www.lispworks.com/documentation/HyperSpec/Front/index.htm).
 
 
 ```txt
@@ -630,7 +630,7 @@ PAUSE
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -849,7 +849,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[ximage.icn provides ximage to dump variable contents](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
+[ximage.icn provides ximage to dump variable contents](https://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 Output:
 ```txt
@@ -1611,7 +1611,7 @@ in
 ```
 
 
-To add a variable number of features and attributes, you can use [Class.new](http://www.mozart-oz.org/documentation/base/class.html).
+To add a variable number of features and attributes, you can use [Class.new](https://www.mozart-oz.org/documentation/base/class.html).
 
 
 ## Perl
@@ -1923,7 +1923,7 @@ e.print_output()
 
 REBOL [
 	Title: "Add Variables to Class at Runtime"
-	URL: http://rosettacode.org/wiki/Adding_variables_to_a_class_instance_at_runtime
+	URL: https://rosettacode.org/wiki/Adding_variables_to_a_class_instance_at_runtime
 ]
 
 ; As I understand it, a REBOL object can only ever have whatever

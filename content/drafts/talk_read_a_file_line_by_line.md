@@ -12,7 +12,7 @@ tags = []
 
 ==C++==
 C++ could use an STL-algorithm implemented solution, ala:
-<http://stackoverflow.com/questions/1567082/how-do-i-iterate-over-cin-line-by-line-in-c/1567703#1567703>
+<https://stackoverflow.com/questions/1567082/how-do-i-iterate-over-cin-line-by-line-in-c/1567703#1567703>
 ----
 
 ==NetRexx==

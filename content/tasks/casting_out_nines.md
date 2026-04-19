@@ -49,7 +49,7 @@ languages = [
 
 
 ;Part 1
-Write a procedure (say <math>\mathit{co9}(x)</math>) which implements [Casting Out Nines](http://mathforum.org/library/drmath/view/55926.html) as described by returning the checksum for <math>x</math>. Demonstrate the procedure using the examples given there, or others you may consider lucky.
+Write a procedure (say <math>\mathit{co9}(x)</math>) which implements [Casting Out Nines](https://mathforum.org/library/drmath/view/55926.html) as described by returning the checksum for <math>x</math>. Demonstrate the procedure using the examples given there, or others you may consider lucky.
 
 ;Part 2
 Notwithstanding past Intel microcode errors, checking computer calculations like this would not be sensible. To find a computer use for your procedure:
@@ -61,7 +61,7 @@ Notwithstanding past Intel microcode errors, checking computer calculations like
 Demonstrate that your procedure can be used to generate or filter a range of numbers with the property <math>\mathit{co9}(k) = \mathit{co9}(k^2)</math> and show that this subset is a small proportion of the range and contains all the Kaprekar in the range.
 
 ;Part 3
-Considering [this MathWorld page](http://mathworld.wolfram.com/CastingOutNines.html), produce a efficient algorithm based on the more mathematical treatment of Casting Out Nines, and realizing:
+Considering [this MathWorld page](https://mathworld.wolfram.com/CastingOutNines.html), produce a efficient algorithm based on the more mathematical treatment of Casting Out Nines, and realizing:
 : <math>\mathit{co9}(x)</math> is the residual of <math>x</math> mod <math>9</math>;
 : the procedure can be extended to bases other than 9.
 
@@ -307,7 +307,7 @@ int main() {
 
 ```
 
-An alternative implementation for struct ran using <http://rosettacode.org/wiki/Sum_digits_of_an_integer#C.2B.2B> which produces the same result is:
+An alternative implementation for struct ran using <https://rosettacode.org/wiki/Sum_digits_of_an_integer#C.2B.2B> which produces the same result is:
 
 ```cpp
 struct ran {
@@ -528,7 +528,7 @@ import (
 
 // A casting out nines algorithm.
 
-// Quoting from: http://mathforum.org/library/drmath/view/55926.html
+// Quoting from: https://mathforum.org/library/drmath/view/55926.html
 /*
 First, for any number we can get a single digit, which I will call the 
 "check digit," by repeatedly adding the digits. That is, we add the 

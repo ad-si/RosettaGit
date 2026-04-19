@@ -114,7 +114,7 @@ languages = [
 ;task:
 
 Write a function to compute the [[wp:Arithmetic-geometric mean|arithmetic-geometric mean]] of two numbers.
-<http://mathworld.wolfram.com/Arithmetic-GeometricMean.html>
+<https://mathworld.wolfram.com/Arithmetic-GeometricMean.html>
 The arithmetic-geometric mean of two numbers can be (usefully) denoted as <math>\mathrm{agm}(a,g)</math>, and is equal to the limit of the sequence:
 : <math>a_0 = a; \qquad g_0 = g</math>
 : <math>a_{n+1} = \tfrac{1}{2}(a_n + g_n); \quad g_{n+1} = \sqrt{a_n g_n}.</math>
@@ -125,7 +125,7 @@ Demonstrate the function by calculating:
 
 
 ;Also see:
-*   [mathworld.wolfram.com/Arithmetic-Geometric Mean](http://mathworld.wolfram.com/Arithmetic-GeometricMean.html)
+*   [mathworld.wolfram.com/Arithmetic-Geometric Mean](https://mathworld.wolfram.com/Arithmetic-GeometricMean.html)
 
 
 

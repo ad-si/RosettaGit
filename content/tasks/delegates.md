@@ -64,7 +64,7 @@ languages = [
 
 ## Task
 
-A delegate is a helper object used by another object. The delegator may send the delegate certain messages, and provide a default implementation when there is no delegate or the delegate does not respond to a message. This pattern is heavily used in [Cocoa framework on Mac OS X](http://developer.apple.com/documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaDesignPatterns/chapter_5_section_3.html#//apple_ref/doc/uid/TP40002974-CH6-DontLinkElementID_93). See also [[wp:Delegation pattern]].
+A delegate is a helper object used by another object. The delegator may send the delegate certain messages, and provide a default implementation when there is no delegate or the delegate does not respond to a message. This pattern is heavily used in [Cocoa framework on Mac OS X](https://developer.apple.com/documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaDesignPatterns/chapter_5_section_3.html#//apple_ref/doc/uid/TP40002974-CH6-DontLinkElementID_93). See also [[wp:Delegation pattern]].
 
 Objects responsibilities:
 
@@ -798,7 +798,7 @@ main() {
 
 ## Delphi
 
-Translation of the Java example found at [Wikipedia](http://en.wikipedia.org/wiki/Delegation_pattern).
+Translation of the Java example found at [Wikipedia](https://en.wikipedia.org/wiki/Delegation_pattern).
 
 ```Delphi
 unit Printer;
@@ -1076,7 +1076,7 @@ assert (d.operation() = "delegate implementation")
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -2650,9 +2650,9 @@ if __name__ == '__main__':
 ## Racket
 
 
-<code>[object-method-arity-includes?](http://docs.racket-lang.org/reference/objectutils.html?q=is-a%3F#%28def._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._object-method-arity-includes~3f%29%29)</code>
+<code>[object-method-arity-includes?](https://docs.racket-lang.org/reference/objectutils.html?q=is-a%3F#%28def._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._object-method-arity-includes~3f%29%29)</code>
 tests for the existence of the method in an object.
-<code>[is-a?](http://docs.racket-lang.org/reference/objectutils.html?q=is-a%3F#%28def._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._is-a~3f%29%29)</code>
+<code>[is-a?](https://docs.racket-lang.org/reference/objectutils.html?q=is-a%3F#%28def._%28%28lib._racket%2Fprivate%2Fclass-internal..rkt%29._is-a~3f%29%29)</code>
 can be used to test for a class instance or interface implementor; and is
 probably more likely to be used in anger. But
 <code>object-method-arity-includes?</code> can be used generally; and actually

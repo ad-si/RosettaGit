@@ -2229,7 +2229,7 @@ end function
 
 SWI-Prolog has native foldl in version 6.3.1
 
-Module lambda was written by '''Ulrich Neumerkel''' and can be found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Module lambda was written by '''Ulrich Neumerkel''' and can be found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

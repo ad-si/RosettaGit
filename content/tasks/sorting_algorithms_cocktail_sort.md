@@ -463,7 +463,7 @@ end.
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % CocktailSort("")
@@ -3619,7 +3619,7 @@ const proc: cocktailSort (inout array elemType: arr) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#cocktailSort>
+Original source: <https://seed7.sourceforge.net/algorith/sorting.htm#cocktailSort>
 
 
 ## Sidef

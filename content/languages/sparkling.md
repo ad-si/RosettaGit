@@ -26,7 +26,7 @@ The reference implementation is written in portable C89: "portable" in the sense
 
 Another aspect of portableness or platform-independence is that the Sparkling engine tries to make use of a bunch of convenient libraries in order to improve user experience. For instance, the REPL optionally uses the well-known readline library - if available - in order to provide basic line editing capabilities. Or, on OS X and iOS, the parser and runtime support library conditionally provide Objective-C bindings, so it's possible to call Objective-C methods directly from Sparkling, with proper Objective-C syntax. Neither of these features are required, though, nor do they impose a strong dependency on either libreadline or libobjc. The build system tries to guess if they are available and configures compilation accordingly.
 
-The reference implementation is currently hosted on GitHub, at H2CO3/Sparkling<http://github.com/H2CO3/Sparkling>.
+The reference implementation is currently hosted on GitHub, at H2CO3/Sparkling<https://github.com/H2CO3/Sparkling>.
 
 ## Syntax and semantics
 Sparkling borrows most of its syntax from C and a tiny bit from JavaScript. Semantics also follow a - hopefully -  "intuitive" or "expected" convention, so that they're easier to grasp, especially for someone who has programmed before in C, C++, JavaScript or a similar language.

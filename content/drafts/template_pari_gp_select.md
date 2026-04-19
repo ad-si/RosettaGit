@@ -12,7 +12,7 @@ tags = []
 
 Works with PARI/GP 2.4.3 and above.
 
-This code uses the [this select function](http://pari.math.u-bordeaux.fr/dochtml/html/Programming_in_GP:_other_specific_functions.html#select),
+This code uses the [this select function](https://pari.math.u-bordeaux.fr/dochtml/html/Programming_in_GP:_other_specific_functions.html#select),
 which was added in PARI version 2.4.2.
 
 The order of the arguments changed between versions;

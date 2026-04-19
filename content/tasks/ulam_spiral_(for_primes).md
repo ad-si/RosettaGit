@@ -164,8 +164,8 @@ You should demonstrate the generator by showing at Ulam prime spiral large enoug
 
 ## See also
 
-* Wikipedia entry:          [Ulam spiral](http://en.wikipedia.org/wiki/Ulam_spiral)
-* MathWorld&trade; entry:   [Prime Spiral](http://mathworld.wolfram.com/PrimeSpiral.html)
+* Wikipedia entry:          [Ulam spiral](https://en.wikipedia.org/wiki/Ulam_spiral)
+* MathWorld&trade; entry:   [Prime Spiral](https://mathworld.wolfram.com/PrimeSpiral.html)
 
 
 
@@ -1271,7 +1271,7 @@ void main() {
 
 ## EchoLisp
 
-The plot libray includes a '''plot-spiral''' function. The nice result is here : [EchoLisp Ulam spiral](http://www.echolalie.org/echolisp/help.html#plot-spiral) .
+The plot libray includes a '''plot-spiral''' function. The nice result is here : [EchoLisp Ulam spiral](https://www.echolalie.org/echolisp/help.html#plot-spiral) .
 
 ```scheme
 
@@ -2623,7 +2623,7 @@ You can find plotting helper functions here on RosettaCode Wiki: [[User:AnatolV/
 <head><title>Ulam Spiral</title>
     <script src="VOE.js"></script>
 <script>
-// <http://rosettacode.org/wiki/User:AnatolV/Helper_Functions>
+// <https://rosettacode.org/wiki/User:AnatolV/Helper_Functions>
 // Use v.2.0
 var pst;
 
@@ -4648,7 +4648,7 @@ Output image: [Ulam spiral](https://github.com/trizen/rc/blob/master/img/ulam-sp
 ## Tcl
 
 
-This uses a coroutine to walk around the circle, laying glyphs every prime number of tiles.  Some more elaborate, interactive Tk GUIs for playing with Ulam spirals are at [Ulam Spiral](http://wiki.tcl.tk/11363) and [Ulam Spiral Demo](http://wiki.tcl.tk/23052) on the Tcl'ers Wiki.
+This uses a coroutine to walk around the circle, laying glyphs every prime number of tiles.  Some more elaborate, interactive Tk GUIs for playing with Ulam spirals are at [Ulam Spiral](https://wiki.tcl-lang.org/11363) and [Ulam Spiral Demo](https://wiki.tcl-lang.org/23052) on the Tcl'ers Wiki.
 
 
 ```Tcl
@@ -4887,7 +4887,7 @@ next
 
 Simulates turtle graphics, spiral by walking straight while holding left hand against the wall dropping prime breadcrumbs.
 
-Using [[Extensible prime generator#zkl]] and the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>.
+Using [[Extensible prime generator#zkl]] and the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>.
 
 ```zkl
 var primes =Utils.Generator(Import("sieve.zkl").postponed_sieve);  // lazy

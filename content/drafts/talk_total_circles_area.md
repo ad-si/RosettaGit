@@ -83,7 +83,7 @@ int main(void)
 ::: A bad solution algorithm is quite useful for didactic purposes (but I don't know how much Rosettacode cares for didactic).
 
 == Haskell analytical solution ==
-I like the analytical solution in Haskell, but I think a tuples soup harms readability. So do you mind if I replace it with this code that introduces the Vec, Circle and Arc types? <http://ideone.com/JjD4x> [[User:Bearophile|bearophile]] 12:11, 21 September 2012 (UTC)
+I like the analytical solution in Haskell, but I think a tuples soup harms readability. So do you mind if I replace it with this code that introduces the Vec, Circle and Arc types? <https://ideone.com/JjD4x> [[User:Bearophile|bearophile]] 12:11, 21 September 2012 (UTC)
 
 : Go ahead.  I'm a complete newbie in Haskell, and have no problem with people improving it. --[[User:Ledrug|Ledrug]] 15:04, 21 September 2012 (UTC)
 
@@ -104,7 +104,7 @@ I like the analytical solution in Haskell, but I think a tuples soup harms reada
 
 :::: The program is a little more complex than before, as you see I have had to unpack the angle argument of arcPoint, I have defined a Pi angle, I have had to use a language extension (GeneralizedNewtypeDeriving) to do it simply, and so on.
 
-:::: Functional languages like Haskell recognize and show the value of giving different types to different entities. In F# you even add units of measures (<http://msdn.microsoft.com/en-us/library/dd233243.aspx> ) to variables (many other languages have libraries for it, but I think they are rarely used in small programs like this). The idea of encoding units of measure or the meaning of values like Angle in the type system is to help avoid mistakes like mixing things that must not mix.
+:::: Functional languages like Haskell recognize and show the value of giving different types to different entities. In F# you even add units of measures (<https://msdn.microsoft.com/en-us/library/dd233243.aspx> ) to variables (many other languages have libraries for it, but I think they are rarely used in small programs like this). The idea of encoding units of measure or the meaning of values like Angle in the type system is to help avoid mistakes like mixing things that must not mix.
 
 :::: In this program Angle has not spot bugs, but I think it helps self-document a bit better this sparsely comment code. One advantage of using types over comments is that the (Haskell) compiler enforces their correct usage. As example, the type of the aNorm function is "Angle -> Angle". Now it's easy to understand that "a" in its name refers to angle, and "Norm" of the function name means putting the angle value back in a simple range of values, no comments on this function are required now.
 
@@ -113,7 +113,7 @@ I like the analytical solution in Haskell, but I think a tuples soup harms reada
 :::: If you want and you have some time, I suggest you to add an image (like the ones in the Stack Overflow thread) to the Haskell code to help show how your program works, using only on four or five of the input circles for visual simplicity. --[[User:Bearophile|bearophile]] 11:57, 22 September 2012 (UTC)
 
 ==Link==
-* [Stack Overflow. Nice diagram and comments](http://stackoverflow.com/a/1667789/10562).
+* [Stack Overflow. Nice diagram and comments](https://stackoverflow.com/a/1667789/10562).
 
 ==Python Van der Corput==
 Is this solution converging faster or slower than the simpler grid or totally random sampling strategies?
@@ -269,14 +269,14 @@ I have a suggestion: generally, don't convert C89 to C99 code.  Compatibility as
 
 : I prefer to use C99 where possible because it offers VLAs, better struct initializers, some nice standard libraries, and localized variable definitions that allow for more readable, safer and nicer looking C code. I try to show that just because it's C code it doesn't need to look ugly, unreadable and messy. And C11 is coming.
 
-: Sometimes I too noticed small performance reductions with GCC using C99 instead of C89, but I have never seen a 2X runtime increase, and even in this case I can't reproduce the magnitude of your speed decrease. On my system using GCC to compile this nearly-GNU-C89 version is only about 2% faster than the GNU-C99 you see on the page (gcc 4.7.1, -Ofast -s -flto): <http://ideone.com/9xihK>  A further very small performance increase comes from using malloc+free instead of the variable length array (that are not present in C89), maybe because the heap memory has a bigger alignment. Maybe the performance decrease you are seeing doesn't come from C99 alone, but from other very small changes I have put in the code.
+: Sometimes I too noticed small performance reductions with GCC using C99 instead of C89, but I have never seen a 2X runtime increase, and even in this case I can't reproduce the magnitude of your speed decrease. On my system using GCC to compile this nearly-GNU-C89 version is only about 2% faster than the GNU-C99 you see on the page (gcc 4.7.1, -Ofast -s -flto): <https://ideone.com/9xihK>  A further very small performance increase comes from using malloc+free instead of the variable length array (that are not present in C89), maybe because the heap memory has a bigger alignment. Maybe the performance decrease you are seeing doesn't come from C99 alone, but from other very small changes I have put in the code.
 
 : Generally I think the quality of the code is more important than performance, especially if the performance is already enough and the performance difference is small. The small increase of language guarantees given by C99 (like not leaving to the implementation the definition of %) should not decrease performance. On the other hand C99 allows to reduce the scope of variables because it allows to define loop variables in place and to define variables where they are initialized and used; this should help increase code performance (and this is what happens if I am using the DMD D compiler).
 
 : If the 2X speed decrease you are seeing is real (and I can't reproduce it), I suggest you to create a bug report for GCC devs, to help them fix the situation in the right place, inside GCC, instead of inside my code. --[[User:Bearophile|bearophile]] 12:13, 25 September 2012 (UTC)
 
 ==Excessive digits==
-Maybe it's worth explaining after the Task description how the many digits of the reference answer were computed. Have you used this <http://hackage.haskell.org/package/hmpfr> with the Haskell analytical solution? --[[User:Bearophile|bearophile]] 11:22, 1 October 2012 (UTC)
+Maybe it's worth explaining after the Task description how the many digits of the reference answer were computed. Have you used this <https://hackage.haskell.org/package/hmpfr> with the Haskell analytical solution? --[[User:Bearophile|bearophile]] 11:22, 1 October 2012 (UTC)
 : No, it was calculated using the same method as Haskell, but in C with MPFR, at 2000 bits precision.  I only did it as an exercise to know MPFR, and the code was too messy to post here -- I got too bored halfway and stopped keeping track of memory allocation, so there are hundreds of lost memory chunks and valgrind was extremely grumpy about it, but I do believe all the digits I posted are accurate. --[[User:Ledrug|Ledrug]] 20:06, 1 October 2012 (UTC)
 :: If you want to create a D version of the analytical solution (using regular double or real floating point values), I will fix your code and help you with the D idioms. D has a garbage collector, so manual tracking of memory allocation/deallocation is usually not needed. Otherwise I'll eventually try to translate your Haskell code myself to D. --[[User:Bearophile|bearophile]] 23:07, 14 October 2012 (UTC)
 

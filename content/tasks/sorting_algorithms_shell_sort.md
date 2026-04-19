@@ -598,7 +598,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=131)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=131)
 
 ```AutoHotkey
 MsgBox % ShellSort("")
@@ -1265,7 +1265,7 @@ def shellSort(array) {
 
 ## Eiffel
 
-Translated from pseudocode at [Wikipedia](http://en.wikipedia.org/wiki/Shell_sort#Shell_sort_algorithm_in_pseudocode)
+Translated from pseudocode at [Wikipedia](https://en.wikipedia.org/wiki/Shell_sort#Shell_sort_algorithm_in_pseudocode)
 
 This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>.
 
@@ -1634,7 +1634,7 @@ after:  [-802 -90 2 24 45 66 75 170]
 
 ## Haskell
 
-Adapted version from <http://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Shell_sort#Haskell>
+Adapted version from <https://en.wikibooks.org/wiki/Algorithm_Implementation/Sorting/Shell_sort#Haskell>
 
 
 ```haskell
@@ -2775,7 +2775,7 @@ END SHELL_SORT;
 ```PowerShell
 Function ShellSort( [Array] $data )
 {
-	# http://oeis.org/A108870
+	# https://oeis.org/A108870
 	$A108870 = [Int64[]] ( 1, 4, 9, 20, 46, 103, 233, 525, 1182, 2660, 5985, 13467, 30301, 68178, 153401, 345152, 776591, 1747331, 3931496, 8845866, 19903198, 44782196, 100759940, 226709866, 510097200, 1147718700, 2582367076, 5810325920, 13073233321, 29414774973 )
 	$datal = $data.length - 1
 	$inci = [Array]::BinarySearch( $A108870, [Int64] ( [Math]::Floor( $datal / 2 ) ) )
@@ -3215,7 +3215,7 @@ const proc: shellSort (inout array elemType: arr) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#shellSort>
+Original source: <https://seed7.sourceforge.net/algorith/sorting.htm#shellSort>
 
 
 ## Sidef

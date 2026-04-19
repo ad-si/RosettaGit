@@ -426,8 +426,8 @@ Using ROR and ROL is as fast as assembler and more portable.<BR>[Try it online!]
 
 ```pascal
 Program Rule30;
-//http://en.wikipedia.org/wiki/Next_State_Rule_30;
-//http://mathworld.wolfram.com/Rule30.html
+//https://en.wikipedia.org/wiki/Next_State_Rule_30;
+//https://mathworld.wolfram.com/Rule30.html
 {$IFDEF FPC}
   {$Mode Delphi}{$ASMMODE INTEL}
   {$OPTIMIZATION ON,ALL}
@@ -890,7 +890,7 @@ fn main() {
 
 ```scheme
 
-; uses SRFI-1 library http://srfi.schemers.org/srfi-1/srfi-1.html
+; uses SRFI-1 library https://srfi.schemers.org/srfi-1/srfi-1.html
 
 (define (random-r30 n)
   (let ((r30 (vector 0 1 1 1 1 0 0 0)))

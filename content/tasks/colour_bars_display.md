@@ -1156,8 +1156,8 @@ end
 ```
 
 
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
-[printf.icn provides sprintf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides sprintf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J

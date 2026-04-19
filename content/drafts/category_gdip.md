@@ -14,4 +14,4 @@ tags = []
 
 GDIP is a wrapper to [[Win32]]'s [[GDI+]] for [[AutoHotkey]].
 
-Discussion and usage can be found on its [topic page](http://www.autohotkey.com/forum/topic32238.html), or the latest version can be [directly downloaded](http://www.autohotkey.net/~tic/Gdip.ahk).
+Discussion and usage can be found on its [topic page](https://www.autohotkey.com/forum/topic32238.html), or the latest version can be [directly downloaded](http://www.autohotkey.net/~tic/Gdip.ahk).

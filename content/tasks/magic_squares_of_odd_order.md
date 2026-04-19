@@ -107,7 +107,7 @@ You should demonstrate the generator by showing at least a magic square for   ''
 
 ## See also
 
-* MathWorld&trade; entry: [Magic_square](http://mathworld.wolfram.com/MagicSquare.html)
+* MathWorld&trade; entry: [Magic_square](https://mathworld.wolfram.com/MagicSquare.html)
 * [Odd Magic Squares (1728.org)](http://www.1728.org/magicsq1.htm)
 
 
@@ -1026,7 +1026,7 @@ The size, ''n'', is specified by the first value on the stack.
 
 ## C
 
-Generates an associative magic square.  If the size is larger than 3, the square is also [panmagic](http://en.wikipedia.org/wiki/Pandiagonal_magic_square).
+Generates an associative magic square.  If the size is larger than 3, the square is also [panmagic](https://en.wikipedia.org/wiki/Pandiagonal_magic_square).
 
 ```c
 #include <stdio.h>
@@ -1623,7 +1623,7 @@ Only the first 2 square shown.        56  69  82  95 108 121   2  15  28  41  54
 
 ## Factor
 
-This solution uses the method from the paper linked in the J entry: <http://www.jsoftware.com/papers/eem/magicsq.htm>
+This solution uses the method from the paper linked in the J entry: <https://www.jsoftware.com/papers/eem/magicsq.htm>
 
 ```factor
 USING: formatting io kernel math math.matrices math.ranges
@@ -2213,7 +2213,7 @@ Magic number: 65
 ## J
 
 
-Based on <http://www.jsoftware.com/papers/eem/magicsq.htm>
+Based on <https://www.jsoftware.com/papers/eem/magicsq.htm>
 
 
 ```J
@@ -2333,7 +2333,7 @@ Magic constant: 65
 
 ### ES5
 
-( and referring to <http://www.jsoftware.com/papers/eem/magicsq.htm> )
+( and referring to <https://www.jsoftware.com/papers/eem/magicsq.htm> )
 
 
 ```JavaScript
@@ -3075,7 +3075,7 @@ See [[Magic_squares/Lua]].
 
 Rotate rows and columns of the initial matrix with rows filled in order 1 2 3 .... N^2
 
-Method from <http://www.jsoftware.com/papers/eem/magicsq.htm>
+Method from <https://www.jsoftware.com/papers/eem/magicsq.htm>
 
 
 ```Mathematica
@@ -4009,7 +4009,7 @@ Magic squares of odd order N:
 ```racket
 #lang racket
 ;; Using "helpful formulae" in:
-;; http://en.wikipedia.org/wiki/Magic_square#Method_for_constructing_a_magic_square_of_odd_order
+;; https://en.wikipedia.org/wiki/Magic_square#Method_for_constructing_a_magic_square_of_odd_order
 (define (squares n) n)
 
 (define (last-no n) (sqr n))

@@ -14,7 +14,7 @@ tags = []
 Tools are available for simply building user applications into single file distributions based on tclkit, through concatenating a further filesystem-database file. Since this technique is orthogonal (and largely transparent) to the application, it has become a very popular technique for distributing applications implemented in Tcl.
 
 ## Building an Application with Tclkit
-Note that unlike the [source for this material](http://wiki.tcl.tk/10558), this quick tutorial assumes that you already have things installed.
+Note that unlike the [source for this material](https://wiki.tcl-lang.org/10558), this quick tutorial assumes that you already have things installed.
 
 
 ###  Write your application
@@ -60,8 +60,8 @@ $(SDX) wrap hello -vfs hello.vfs -runtime `which tclkit`
 
 
 ## See Also
-* [Description, fully-supported builds](http://www.equi4.com/tclkit/)
-** [Tool for building and working with tclkit-packaged applications, <tt>sdx.kit</tt>](http://www.equi4.com/starkit/sdx.html)
+* [Description, fully-supported builds](https://www.equi4.com/tclkit/)
+** [Tool for building and working with tclkit-packaged applications, <tt>sdx.kit</tt>](https://www.equi4.com/starkit/sdx.html)
 * [Bleeding-edge builds](http://www.patthoyts.tk/tclkit/)
-* [Tclkit on the Tcler's Wiki](http://wiki.tcl.tk/52)
-* [Starkit on the Tcler's Wiki](http://wiki.tcl.tk/3661)
+* [Tclkit on the Tcler's Wiki](https://wiki.tcl-lang.org/52)
+* [Starkit on the Tcler's Wiki](https://wiki.tcl-lang.org/3661)

@@ -568,7 +568,7 @@ Number of primes between 7,700 and 8,000: 30
 
 
 ```d
-/// Prime sieve based on: http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
+/// Prime sieve based on: https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 
 import std.container: Array, BinaryHeap, RedBlackTree;
 
@@ -776,7 +776,7 @@ It solves the Euler Problem 10 in almost too short a time to be measured, and it
 
 ## EchoLisp
 
-Standard prime functions handle numbers < 2e+9. See <http://www.echolalie.org/echolisp/help.html#prime?> . The '''bigint''' library handles large numbers. See <http://www.echolalie.org/echolisp/help.html#bigint.lib>. The only limitations are time, memory, and browser performances ..
+Standard prime functions handle numbers < 2e+9. See <https://www.echolalie.org/echolisp/help.html#prime?> . The '''bigint''' library handles large numbers. See <https://www.echolalie.org/echolisp/help.html#bigint.lib>. The only limitations are time, memory, and browser performances ..
 
 ```lisp
 
@@ -1873,7 +1873,7 @@ func main() {
 ## Haskell
 
 
-This program uses the [primes](http://hackage.haskell.org/package/primes) package, which uses a lazy wheel sieve to produce an infinite list of primes.
+This program uses the [primes](https://hackage.haskell.org/package/primes) package, which uses a lazy wheel sieve to produce an infinite list of primes.
 
 
 ```haskell
@@ -2008,7 +2008,7 @@ procedure getCompositeField(x); return x.composite; end
 ## J
 
 
-Using the p: builtin, <http://www.jsoftware.com/help/dictionary/dpco.htm> reports "Currently, arguments larger than 2^31 are tested to be prime according to a probabilistic algorithm (Miller-Rabin)".
+Using the p: builtin, <https://www.jsoftware.com/help/dictionary/dpco.htm> reports "Currently, arguments larger than 2^31 are tested to be prime according to a probabilistic algorithm (Miller-Rabin)".
 
 
 ```J
@@ -3424,7 +3424,7 @@ real	0m1,121s
 
 ### alternative
 
-The main intention is the use in <http://rosettacode.org/wiki/Emirp_primes>.
+The main intention is the use in <https://rosettacode.org/wiki/Emirp_primes>.
 The speed is about 3x times slower than sieve of Atkin.About 13 secs for 10 billion/146 secs for 100 billion in 64-Bit.
 But i can hold all primes til 1e11 in 2.5 Gb memory.Test for isEmirp inserted.
 32-bit is slow doing 64-Bit math.Using a dynamic array is slow too in NextPrime.
@@ -4630,7 +4630,7 @@ Personal note: unless I need the raw power of an application-specific primes gen
 I pretty well stick with the <code>math/number-theory</code> library. And even when I write an ASPG/F I question
 how it performs against the <code>math/number-theory</code> version!
 
-The link referenced in the source: [<code>math/number-theory</code> module documentation](http://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29)
+The link referenced in the source: [<code>math/number-theory</code> module documentation](https://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29)
 
 
 ```scheme
@@ -4660,7 +4660,7 @@ The link referenced in the source: [<code>math/number-theory</code> module docum
 ;; to/excerpt from, language documentation).
 ;;
 ;; Full details in:
-;; [[http://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29]]
+;; [[https://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29]]
 ;; When reading the manual, note that "Integer" and "Natural" are unlimited (or bounded by whatever
 ;; big number representation there is (and the computational complexity of the work being asked).
 (define 2^256 (expt 2 256))
@@ -4883,7 +4883,7 @@ The 10,000th prime is 104729
 
 ## Seed7
 
-The [sieve of eratosthenes](http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes)
+The [sieve of eratosthenes](https://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes)
 cannot be used, because it needs a limit. Instead the function getPrime is used.
 GetPrime generates all primes in sequence.
 
@@ -5239,7 +5239,7 @@ The last prime I could find is the : 7 550 283th, Value : 133 218 289
 
 
 ```zkl
-// http://stackoverflow.com/revisions/10733621/4
+// https://stackoverflow.com/revisions/10733621/4
 
 fcn postponed_sieve(){            # postponed sieve, by Will Ness
    vm.yield(2); vm.yield(3);	  # original code David Eppstein,

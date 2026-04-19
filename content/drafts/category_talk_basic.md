@@ -12,9 +12,9 @@ tags = []
 
 ==Major reorganization needed?==
 
-I've given some thought, and it seems to me that the way BASIC is handled needs some reorganization here. For starters, read [this IRC log](http://irclog.perlgeek.de/rosettacode/2011-12-01#i_4778078).
+I've given some thought, and it seems to me that the way BASIC is handled needs some reorganization here. For starters, read [this IRC log](https://irclog.perlgeek.de/rosettacode/2011-12-01#i_4778078).
 
-A big part of the problem is that BASIC isn't ''really'' standardized. Sure, there's an ANSI/ISO/IEC/etc. standard (or if you don't feel like paying for it, the withdrawn standards from [[wp:ECMA|ECMA]] are close enough: [ECMA-55, Minimal BASIC](http://www.ecma-international.org/publications/files/ECMA-ST-WITHDRAWN/ECMA-55,%201st%20Edition,%20January%201978.pdf) and [ECMA-116, BASIC](http://www.ecma-international.org/publications/files/ECMA-ST-WITHDRAWN/ECMA-116,%201st%20edition,%20June%201986.pdf)), but those are ignored by the vast majority of BASICs out there today.
+A big part of the problem is that BASIC isn't ''really'' standardized. Sure, there's an ANSI/ISO/IEC/etc. standard (or if you don't feel like paying for it, the withdrawn standards from [[wp:ECMA|ECMA]] are close enough: [ECMA-55, Minimal BASIC](https://www.ecma-international.org/publications/files/ECMA-ST-WITHDRAWN/ECMA-55,%201st%20Edition,%20January%201978.pdf) and [ECMA-116, BASIC](https://www.ecma-international.org/publications/files/ECMA-ST-WITHDRAWN/ECMA-116,%201st%20edition,%20June%201986.pdf)), but those are ignored by the vast majority of BASICs out there today.
 
 This has led to some vastly different languages being called "BASIC". (How different? Different enough that some BASICs don't even recognize the same comment characters (see [[Comments#BASIC]] for that).) This has led to some BASICs being given their own sections in task pages, while others are grouped under BASIC, like this:
  ==BASIC==

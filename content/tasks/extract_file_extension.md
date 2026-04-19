@@ -1564,7 +1564,7 @@ c:\programs\myprogs\myprog.exe_backup -> (empty string)
 
 
 ```Lua
--- Lua pattern docs at http://www.lua.org/manual/5.1/manual.html#5.4.1
+-- Lua pattern docs at https://www.lua.org/manual/5.1/manual.html#5.4.1
 function fileExt (filename) return filename:match("(%.%w+)$") or "" end
 
 local testCases = {
@@ -1646,7 +1646,7 @@ document.txt_backup has extension:
 
 ## OCaml
 
-Since OCaml 4.04 there is a function '''[Filename.extension](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALextension)''':
+Since OCaml 4.04 there is a function '''[Filename.extension](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Filename.html#VALextension)''':
 
 ```ocaml
 let () =
@@ -2443,7 +2443,7 @@ files.each {|f|
 ## Tcl
 
 
-Tcl's built in [file extension](http://wiki.tcl.tk/10072) command already almost knows how to do this, except it accepts any character after the dot.  Just for fun, we'll enhance the builtin with a new subcommand with the limitation specified for this problem.
+Tcl's built in [file extension](https://wiki.tcl-lang.org/10072) command already almost knows how to do this, except it accepts any character after the dot.  Just for fun, we'll enhance the builtin with a new subcommand with the limitation specified for this problem.
 
 
 ```Tcl

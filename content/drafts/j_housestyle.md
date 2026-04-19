@@ -30,7 +30,7 @@ This page is a sandbox for discussing the goals of the [[:Category:J|J]] communi
 Most of the J code presented in the RC J examples are considered good form - to J programmers. The main issue is that programmers familiar with other languages tend to expect an algorithm statement to have explicit iteration, and perhaps consume several lines of code. What is "good form" to a J programmer isn't necessarily easily readable to programmers familiar with scalar languages.
 
 I agree with Donal Fellows in his comments 
-<http://rosettacode.org/wiki/User_talk:Dkf#Your_discussion_about_J>
+<https://rosettacode.org/wiki/User_talk:Dkf#Your_discussion_about_J>
 in that more detailed comments and algorithm explanations are required for every code example in the RC forum, since the whole point is to help readers unfamiliar with that specific language understand what is going on in the code. The more unconventional a language is, the more explanation required. Hence, J examples in RC should display good coding practices (for J) in the example, but that code example should also be accompanied with thorough explanations and comments, all of which should be more thorough than if the audience was just J programmers. For that matter, this advice should be applied for all RC code examples. Teledon 8:47am 13 October 2009
 
 :This is great advice! Would it help to have something like an {Obscure} template readers could use to tag examples which they find difficult to understand?  --[[User:IanOsgood|IanOsgood]] 17:10, 14 October 2009 (UTC)
@@ -90,7 +90,7 @@ select=: ({::~ _&".@prompt@(makeMsg [ displayMenu)) :: ($:@displayBadNumMsg)
 :::As a relatively fluent tacit J user, the first version took a little while to come to grips with if for no other reason than because it was so long. --[[User:Tikkanz|Tikkanz]] 02:02, 16 October 2009 (UTC)
 
 ----
-Thanks to to both of you.  I'm going to write up my own views in the next couple of days, and start recommending specific guidlines.  Feel free to change them and push them in any direction you see fit.  If I get time, I'll try to collect here the views that others expressed in the [corresponding J forum thread](http://www.jsoftware.com/pipermail/programming/2009-October/016537.html).
+Thanks to to both of you.  I'm going to write up my own views in the next couple of days, and start recommending specific guidlines.  Feel free to change them and push them in any direction you see fit.  If I get time, I'll try to collect here the views that others expressed in the [corresponding J forum thread](https://www.jsoftware.com/pipermail/programming/2009-October/016537.html).
 
 --[[User:DanBron|DanBron]] 16:55, 14 October 2009 (UTC)
 
@@ -99,12 +99,12 @@ Thanks to to both of you.  I'm going to write up my own views in the next couple
 
 We have several nebulous purposes on this site, but IMO the primary one is advocacy.  So here are my thoughts on a '''''style''''':
 
-In order that J garner notice and perhaps converts, the J code should differentiate itself.  One way to do this is to ''consistently'' keep the code short, to pique interest and preclude [TL;DR](http://www.urbandictionary.com/define.php?term=tl%3Bdr).  However, the code should not be so dense as to be impenetrable, to preclude [sentiments like these](http://rosettacode.org/mw/index.php?title=User_talk:Dkf&diff=63678&oldid=53652); at the very least the names should provide some hints.  
+In order that J garner notice and perhaps converts, the J code should differentiate itself.  One way to do this is to ''consistently'' keep the code short, to pique interest and preclude [TL;DR](http://www.urbandictionary.com/define.php?term=tl%3Bdr).  However, the code should not be so dense as to be impenetrable, to preclude [sentiments like these](https://rosettacode.org/mw/index.php?title=User_talk:Dkf&diff=63678&oldid=53652); at the very least the names should provide some hints.  
 
 Another way to do differentiate J is to emphasize its unusual or powerful aspects.  This includes:
 :# Preferring tacit code to explicit, 
 :# focusing on function composition and powerful and unusual primitives, such as <code>&.</code> and <code>^:</code>, and
-:# minimizing explicit control structures while highlighting tacit flow control (see [an exposition on this topic](http://www.jsoftware.com/pipermail/programming/2009-November/017042.html)). <br />This latter rule isn't hard-and-fast, e.g. <code>if.</code> statements are ok if the code is ''already'' explicit, but I would like to see Jers avoid explicit <u>loops</u> at any reasonable cost. 
+:# minimizing explicit control structures while highlighting tacit flow control (see [an exposition on this topic](https://www.jsoftware.com/pipermail/programming/2009-November/017042.html)). <br />This latter rule isn't hard-and-fast, e.g. <code>if.</code> statements are ok if the code is ''already'' explicit, but I would like to see Jers avoid explicit <u>loops</u> at any reasonable cost. 
 
 And my idea for a '''''format''''':
 

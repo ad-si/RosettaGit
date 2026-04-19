@@ -31,7 +31,7 @@ The Wikipedia article capitalizes, for example, "Southwest by south".  However, 
 
 :The current J implementation abuses the information contained in the wikipedia capitalization to deal with one of the wording quirks.  (I would prefer to get rid of that abuse but do not want to code so generally that I am explicitly parameterizing and supporting all three forms of capitalization -- at least not if the task does not require it.)   --[[User:Rdm|Rdm]] 15:10, 28 March 2011 (UTC)
 
-::Hi Rdm, What is important is matching the capitalisation of the wp table. But I just looked at the capitalization from [the OED](http://oxforddictionaries.com/view/entry/m_en_gb0794290#m_en_gb0794290), which seems to point to south being lower cased for cardinal points, (except when starting a sentence of course). --[[User:Paddy3118|Paddy3118]] 15:39, 28 March 2011 (UTC)
+::Hi Rdm, What is important is matching the capitalisation of the wp table. But I just looked at the capitalization from [the OED](https://oxforddictionaries.com/view/entry/m_en_gb0794290#m_en_gb0794290), which seems to point to south being lower cased for cardinal points, (except when starting a sentence of course). --[[User:Paddy3118|Paddy3118]] 15:39, 28 March 2011 (UTC)
 
 
 :I would argue that the capitalisation is a bit of a non-issue.  Strictly speaking, the cardinal directions are not proper nouns therefore shouldn't really be capitalised.  I did capitalise mine in the same way as the Wikipedia entry simply because it just wouldn't have looked right otherwise, but I did make sure that the capitalisation subroutine acted on the direction names at display time, not on insertion into the array. --[[User:TheMadman|TheMadman]] 15:32, 28 March 2011 (UTC)

@@ -2209,7 +2209,7 @@ console.log(discordianDate(new Date(Date.now())));
 ```
 
 
-look at [calendar](http://www.cs.cmu.edu/~tilt/principia/body.html#applecorps);
+look at [calendar](https://www.cs.cmu.edu/~tilt/principia/body.html#applecorps);
 learn about [holydays](http://jubal.westnet.com/hyperdiscordia/discordian_holydays.html)
 
 

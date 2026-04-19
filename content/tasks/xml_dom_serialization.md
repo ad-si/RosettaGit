@@ -313,8 +313,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -782,7 +782,7 @@ println writer
 ## Haskell
 
 
-Using the XML.Light module from [HackageDB](http://hackage.haskell.org/package/xml-1.3.4)
+Using the XML.Light module from [HackageDB](https://hackage.haskell.org/package/xml-1.3.4)
 
 
 ```Haskell
@@ -1875,7 +1875,7 @@ Some text here
 
 
 ```xml
-<p:pipeline xmlns:p="http://www.w3.org/ns/xproc" version="1.0">
+<p:pipeline xmlns:p="https://www.w3.org/ns/xproc" version="1.0">
   <p:identity>
     <p:input port="source">
       <p:inline>
@@ -1927,7 +1927,7 @@ return
 
 
 ```xml
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
   <xsl:output method="xml" indent="yes" />
   <xsl:template match="/">   <!-- replace the root of the incoming document with our own model -->
     <xsl:element name="root">

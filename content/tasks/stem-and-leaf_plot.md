@@ -1838,7 +1838,7 @@ It turns out that HTML+CSS renders the plot quite attractively.
 
 
 ```html4strict
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <title>stem and leaf plot</title>
@@ -2756,7 +2756,7 @@ Test with Reals and Negative Zero Stem
 ## OCaml
 
 
-The definition of the function <code>unique</code> below can be omited if one uses the [extlib](http://code.google.com/p/ocaml-extlib/).
+The definition of the function <code>unique</code> below can be omited if one uses the [extlib](https://code.google.com/p/ocaml-extlib/).
 
 
 ```ocaml

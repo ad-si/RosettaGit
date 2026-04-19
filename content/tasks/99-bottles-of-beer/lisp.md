@@ -80,7 +80,7 @@ and then just call
           (loop :for n :from 99 :downto 0 :collect n))
 ```
 
-The [FORMAT function](http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm) is probably the most baroque (i.e. featureful almost to a fault) function in Common Lisp.
+The [FORMAT function](https://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm) is probably the most baroque (i.e. featureful almost to a fault) function in Common Lisp.
 To really drive this point home, try replacing each instance of <tt>~D</tt>
 with <tt>~R</tt>, and then with <tt>~@R</tt>.
 Yes, this is all standard and dependable (dys?)functionality.

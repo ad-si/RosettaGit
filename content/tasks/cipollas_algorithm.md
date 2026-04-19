@@ -395,7 +395,7 @@ Roots of 331575 are (855842,144161) (mod 1000003)
 
 ### The function
 
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

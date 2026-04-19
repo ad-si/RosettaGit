@@ -80,8 +80,8 @@ Fusc numbers are also known as:
 
 
 ;Also see:
-::*   the MathWorld entry:   [Stern's Diatomic Series](http://mathworld.wolfram.com/SternsDiatomicSeries.html).
-::*   the OEIS      entry:   [A2487](http://oeis.org/A2487).
+::*   the MathWorld entry:   [Stern's Diatomic Series](https://mathworld.wolfram.com/SternsDiatomicSeries.html).
+::*   the OEIS      entry:   [A2487](https://oeis.org/A2487).
 
 
 
@@ -1305,7 +1305,7 @@ real  0m1,968s  user  0m1,594s  sys 0m0,373s
 
 ## Perl
 
-Borrowing from the [Stern-Brocot sequence](http://rosettacode.org/wiki/Stern-Brocot_sequence) task.
+Borrowing from the [Stern-Brocot sequence](https://rosettacode.org/wiki/Stern-Brocot_sequence) task.
 
 ```perl
 use strict;

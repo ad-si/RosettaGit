@@ -44,7 +44,7 @@ languages = [
 
 Show how to link user defined methods to user defined keys.
 
-An example of this is the facility provided by emacs for [key bindings](http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html).
+An example of this is the facility provided by emacs for [key bindings](https://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html).
 
 These key bindings may be application-specific or system-wide; state which you have done.
 
@@ -83,7 +83,7 @@ resume()
 }
 ```
 
-See [ahk-viper-mode](http://www.autohotkey.com/forum/topic44290.html&highlight=vim) for a context sensitive vi key bindings example.
+See [ahk-viper-mode](https://www.autohotkey.com/forum/topic44290.html&highlight=vim) for a context sensitive vi key bindings example.
 
 
 ## BBC BASIC
@@ -804,8 +804,8 @@ initialise()
 constant INPUT_KEYBOARD=1
 
 procedure pokeKey(atom pKey, integer key)
--- see http://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx
--- and http://msdn.microsoft.com/en-us/library/windows/desktop/ms646271(v=vs.85).aspx
+-- see https://msdn.microsoft.com/en-us/library/windows/desktop/ms646270(v=vs.85).aspx
+-- and https://msdn.microsoft.com/en-us/library/windows/desktop/ms646271(v=vs.85).aspx
 integer ScanCode
     ScanCode = c_func(xVkKeyScan,{key})
     poke4(pKey+KEYBDINPUT_type,INPUT_KEYBOARD)
@@ -857,7 +857,7 @@ integer nRes
                    "as otherwise something called UIPI will block it and not say why.\n"
             void = messageBox("HotKey",text,MB_OK)
         elsif id=SetButton then
-            -- see http://msdn.microsoft.com/en-us/library/windows/desktop/ms646309(v=vs.85).aspx
+            -- see https://msdn.microsoft.com/en-us/library/windows/desktop/ms646309(v=vs.85).aspx
             if c_func(xRegisterHotKey,{MainHwnd, 0, Modifier, vKeyCode})=0 then
                 void = messageBox("HotKey","Register Hotkey failed",MB_OK)
             end if
@@ -874,7 +874,7 @@ integer nRes
         pKey += sizeofstruct(KEYBDINPUT)
         pokeKey(pKey,VK_DOWN)
 
-        -- see http://msdn.microsoft.com/en-us/library/windows/desktop/ms646310(v=vs.85).aspx
+        -- see https://msdn.microsoft.com/en-us/library/windows/desktop/ms646310(v=vs.85).aspx
         nRes = c_func(xSendInput,{2,pKeys,sizeofstruct(KEYBDINPUT)})
         if nRes!=2 then
             nRes = c_func(xGetLastError,{})
@@ -930,7 +930,7 @@ Current value is 2
 ## PureBasic
 
 PureBasic has support for shortcut/macro creation in any window that supports events. This allows for creation of both single and combinations as shown in the code below.
-For full set of combinations on PC, Mac & Linux please see the official manual, [here](http://www.purebasic.com/documentation/window/addkeyboardshortcut.html).
+For full set of combinations on PC, Mac & Linux please see the official manual, [here](https://www.purebasic.com/documentation/window/addkeyboardshortcut.html).
 
 ```PureBasic
 #Win   = 0
@@ -1066,12 +1066,12 @@ curses.endwin()
 ```REBOL
 REBOL [
     Title: "Keyboard Macros"
-    URL: http://rosettacode.org/wiki/Keyboard_macros
+    URL: https://rosettacode.org/wiki/Keyboard_macros
 ]
 
 ; Application specific keyboard bindings using REBOL VID
 ; dialect. Implementation of the "Averageman" calculator --
-; See http://www.atariarchives.org/bcc2/showpage.php?page=63 for details.
+; See https://www.atariarchives.org/bcc2/showpage.php?page=63 for details.
 
 view layout [
 	style btn button coal 46

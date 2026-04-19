@@ -35,7 +35,7 @@ You can also try bringing in people from outside Rosetta Code.
 
 * If you know someone who knows the language (or any language in this list), we'd be happy if you pointed them in our direction.
 * If you have Twitter, tweeting out a request that someone add content for your language would probably also be good. Add '''@rosettacode''', and RC's twitter presence may retweet you.
-* If you have Facebook, post on the [Facebook page](http://www.facebook.com/pages/RosettaCodeorg/199439093012).
+* If you have Facebook, post on the [Facebook page](https://www.facebook.com/pages/RosettaCodeorg/199439093012).
 
 =Languages=
 == Underrepresented ==
@@ -73,7 +73,7 @@ but no one has written any example code yet. <!-- say, less then 5 -->
 * [[ASP.Net]]
 * [[AspectJ]]
 * [[Gentee]]
-* [[Hack]] (<http://en.wikipedia.org/wiki/Hack_(programming_language)>) a new language with gradual typing invented by Facebook.
+* [[Hack]] (<https://en.wikipedia.org/wiki/Hack_(programming_language)>) a new language with gradual typing invented by Facebook.
 * [[NQP]] (Not Quite Perl)
 * [[Malbolge]] - designed to be the hardest programming language ever
 * [[PeopleCode]] - Wikipedia says, "is an (ool) object-oriented proprietary (case-insensitive) language used to express business logic for PeopleSoft applications."
@@ -102,13 +102,13 @@ These languages are nowhere on RC.
 * [[CHILL]] - CCITT High Level Language, a procedural programming language, which is mainly used internally by Siemens and Alcatel for telecommunications.
 * [[CLU]] ([at Wikipedia](https://en.wikipedia.org/wiki/CLU_(programming_language))) Language invented at MIT in 1975, which had an influence on several modern languages
 * [[Cucumber]]
-* [[DDC]] (<http://www.haskell.org/haskellwiki/DDC>) is haskell-like language with strict static types, type inference, tracking of mutability and side effects in the type system and default pass-by-reference semantics.
+* [[DDC]] (<https://www.haskell.org/haskellwiki/DDC>) is haskell-like language with strict static types, type inference, tracking of mutability and side effects in the type system and default pass-by-reference semantics.
 * [[Funnel]] (<https://lampwww.epfl.ch/funnel/>)
 * [[GPSS]] General Purpose Simulation System (developed from Gordon's Programmable Simulation System) is one of the first discrete simulation languages and was an influence on later system such as [[Simula]]
 * [[Joyce]] (note: One of the influential concurrent languages, probably similar to super pascal)
 * [[MAD]] (Michigan Algorithmic Decoder)
 * [[MegaZeux]]
-* [[Mesa]], early PARC language ([Mesa at Wikipedia](http://en.wikipedia.org/wiki/Mesa_%28programming_language%29))
+* [[Mesa]], early PARC language ([Mesa at Wikipedia](https://en.wikipedia.org/wiki/Mesa_%28programming_language%29))
 * [[MUSH]]
 * [[Niakwa]] - a language that should go down in history
 * [[Powerscript]] (note: Ver 1.0 and Ver 2.0 are different)

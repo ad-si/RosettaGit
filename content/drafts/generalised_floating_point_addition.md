@@ -47,8 +47,8 @@ Make the template (module, class, mixing, etc.) able to successfully handle usin
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
-{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 ''Note:'' This code stores the digits as array of digits with the "most significant digit" on the "left" as per normal "human" form.  The net effect is that whole numbers (such as 100) are stored in the negative array positions, eg -2, -1 & 0, or [-2:0],  And the fractional part of the floating point numbers are stored from index 1, eg. 1, 2, 3 etc. or [1:].
 
 '''See also:''' [[Generalised floating point multiplication#ALGOL 68|Generalised floating point multiplication]]

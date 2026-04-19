@@ -15,7 +15,7 @@ What is this thing with redirect? I tried to insert redirect command as describe
 --[[User:PauliKL|PauliKL]] 15:02, 23 October 2008 (UTC)
 :The "My Language" should be replaced with the category title that you want to redirect to. "Add the following text, replacing My Language with the name of your programming language"
 
-:The link is actually the page that you want to redirect to. For instance, if I wanted a page to redirect to my user page, I would add <nowiki>REDIRECT [[User:Mwn3d]]</nowiki>. If I wanted to redirect to [[IEEE]], I would add <nowiki>REDIRECT [[IEEE]]</nowiki>. Look at [this page](http://rosettacode.org/w/index.php?title=Vedit_macro_language&oldid=18520) for another example. --[[User:Mwn3d|Mwn3d]] 15:55, 23 October 2008 (UTC)
+:The link is actually the page that you want to redirect to. For instance, if I wanted a page to redirect to my user page, I would add <nowiki>REDIRECT [[User:Mwn3d]]</nowiki>. If I wanted to redirect to [[IEEE]], I would add <nowiki>REDIRECT [[IEEE]]</nowiki>. Look at [this page](https://rosettacode.org/w/index.php?title=Vedit_macro_language&oldid=18520) for another example. --[[User:Mwn3d|Mwn3d]] 15:55, 23 October 2008 (UTC)
 
 ::Yes, I know that redirecting to some page redirects to that page. The question is: '''why''' would I want to redirect? And from where?
 ::According to this help page, clicking a red link in a task page would lead to some page. From there you are supposed to redirect to ''another'' page. But the problem is that the first page is already the page where you are supposed to redirect to. That is, you are redirecting to the page itself.

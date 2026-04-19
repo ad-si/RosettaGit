@@ -604,7 +604,7 @@ bool CkeckISIN(const std::string& isin)
 		return false;
 
 	std::string coded = CodeISIN(isin);
-// from http://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#C.2B.2B11
+// from https://rosettacode.org/wiki/Luhn_test_of_credit_card_numbers#C.2B.2B11
 	return luhn(coded);
 }
 

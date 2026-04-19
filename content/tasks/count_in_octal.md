@@ -2032,7 +2032,7 @@ loop forever
 
 ```NewLISP
 ; file:   ocount.lsp
-; url:    http://rosettacode.org/wiki/Count_in_octal
+; url:    https://rosettacode.org/wiki/Count_in_octal
 ; author: oofoe 2012-01-29
 
 ; Although NewLISP itself uses a 64-bit integer representation, the
@@ -2194,7 +2194,7 @@ n=0;while(1,printf("%o\n",n);n++)
 ## Pascal
 
 See [[Count_in_octal#Delphi | Delphi]] or {{works with|Free Pascal}}
-old string incrementer for Turbo Pascal transformed, same as in <http://rosettacode.org/wiki/Count_in_octal#Logo>, about 100x times faster than Dephi-Version, with the abilty to used preformated strings leading zeroes.
+old string incrementer for Turbo Pascal transformed, same as in <https://rosettacode.org/wiki/Count_in_octal#Logo>, about 100x times faster than Dephi-Version, with the abilty to used preformated strings leading zeroes.
 Added a Bit fiddling Version IntToOctString, nearly as fast.
 
 ```pascal
@@ -2730,7 +2730,7 @@ func octal m
 
 ## Ruby
 
-From the [documentation](http://www.ruby-doc.org/core/Fixnum.html): "A Fixnum holds Integer values that can be represented in a native machine word (minus 1 bit). If any operation on a Fixnum exceeds this range, the value is automatically converted to a Bignum."
+From the [documentation](https://www.ruby-doc.org/core/Fixnum.html): "A Fixnum holds Integer values that can be represented in a native machine word (minus 1 bit). If any operation on a Fixnum exceeds this range, the value is automatically converted to a Bignum."
 
 
 ```ruby
@@ -2854,7 +2854,7 @@ Stream from 0 foreach (i => println(i.toOctalString))
 
 ## Seed7
 
-This example uses the [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29) operator to write a number in octal.
+This example uses the [radix](https://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29) operator to write a number in octal.
 
 
 ```seed7

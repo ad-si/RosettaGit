@@ -710,7 +710,7 @@ end
 ```
 
 
-[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
+[hexcvt provides hexstring](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 ```txt
 text    = "http://foo bar/"
@@ -1892,11 +1892,11 @@ object UrlCoded extends App {
 
 ## Seed7
 
-The library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines functions
+The library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines functions
 to handle URL respectively percent encoding.
-The function [toPercentEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#toPercentEncoded%28in_string%29)
+The function [toPercentEncoded](https://seed7.sourceforge.net/libraries/encoding.htm#toPercentEncoded%28in_string%29)
 encodes every character except 0-9, A-Z, a-z and the characters '-', '.', '_', '~'.
-The function [toUrlEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#toUrlEncoded%28in_string%29)
+The function [toUrlEncoded](https://seed7.sourceforge.net/libraries/encoding.htm#toUrlEncoded%28in_string%29)
 works like ''toPercentEncoded'' and additionally encodes a space with '+'.
 Both functions work for byte sequences (characters beyond '\255\' raise the exception RANGE_ERROR).
 To encode Unicode characters it is necessary to convert them to UTF-8 with ''striToUtf8'' before.
@@ -1937,7 +1937,7 @@ http%3A%2F%2Ffoo+bar%2F
 
 ```tcl
 # Encode all except "unreserved" characters; use UTF-8 for extended chars.
-# See <http://tools.ietf.org/html/rfc3986> §2.4 and §2.5
+# See <https://datatracker.ietf.org/html/rfc3986> §2.4 and §2.5
 proc urlEncode {str} {
     set uStr [encoding convertto utf-8 $str]
     set chRE {[^-A-Za-z0-9._~\n]};		# Newline is special case!

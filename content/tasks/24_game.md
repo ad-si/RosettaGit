@@ -627,7 +627,7 @@ Return
 Eval(Expr) { ; evaluate expression using separate AHK process
 ;---------------------------------------------------------------------------
     ; credit for this function goes to AutoHotkey forum member Laszlo
-    ; http://www.autohotkey.com/forum/topic9578.html
+    ; https://www.autohotkey.com/forum/topic9578.html
     ;-----------------------------------------------------------------------
     static File := "24$Temp.ahk"
 
@@ -4897,7 +4897,7 @@ end
 
 
 *Library: Icon Programming Library*
-[strings.icn provides deletec and sortc](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides deletec and sortc](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 ### Output
 
@@ -4932,7 +4932,7 @@ Malformed expression.
 ```J
 require'misc'
 deal=: 1 + ? bind 9 9 9 9
-rules=: smoutput bind 'see http://en.wikipedia.org/wiki/24_Game'
+rules=: smoutput bind 'see https://en.wikipedia.org/wiki/24_Game'
 input=: prompt @ ('enter 24 expression using ', ":, ': '"_)
 
 wellformed=: (' '<;._1@, ":@[) -:&(/:~)  '(+-*%)' -.&;:~ ]
@@ -4947,11 +4947,11 @@ game24=: (respond input)@deal@rules
 Example use:
 
     '*<nowiki>game24 *</nowiki>'''
- see <nowiki><http://en.wikipedia.org/wiki/24_Game></nowiki>
+ see <nowiki><https://en.wikipedia.org/wiki/24_Game></nowiki>
  enter 24 expression using 6 5 9 4: **6+5+9+4**
  yes
     '*<nowiki>game24 *</nowiki>'''
- see <nowiki><http://en.wikipedia.org/wiki/24_Game></nowiki>
+ see <nowiki><https://en.wikipedia.org/wiki/24_Game></nowiki>
  enter 24 expression using 3 3 3 3: **3+3+3+3+3+3+3+3**
  no
 

@@ -256,7 +256,7 @@ screen.getcanvas().postscript(file="striped.eps")
 im = Image.open("striped.eps")
 im.save("striped.jpg")
 
-# Got idea from http://rosettacode.org/wiki/Colour_pinstripe/Printer#Go
+# Got idea from https://rosettacode.org/wiki/Colour_pinstripe/Printer#Go
     
 subprocess.run(["mspaint", "/pt", "striped.jpg"])
 

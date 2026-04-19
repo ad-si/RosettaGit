@@ -19,5 +19,5 @@ Netcat has at least four implementations:
 
 * [Netcat 1.10](http://nc110.sourceforge.net/) is the original program by *Hobbit*.
 * [GNU Netcat](http://netcat.sourceforge.net/) is by Giovanni Giacobbi.
-* [OpenBSD nc(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=nc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) (with [source code](http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/)) is a rewrite by Eric Jackson. It adds support for IPv6 and UNIX-domain sockets, and SOCKS and HTTPS proxies.
+* [OpenBSD nc(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=nc&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) (with [source code](https://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/)) is a rewrite by Eric Jackson. It adds support for IPv6 and UNIX-domain sockets, and SOCKS and HTTPS proxies.
 * [ncat](http://nmap.org/ncat/), from the Nmap Project, reimplements Netcat with several more features, like SCTP and SSL. The command name is '''ncat''', not '''nc'''.

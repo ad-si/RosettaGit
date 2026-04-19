@@ -3546,7 +3546,7 @@ doit called with 23.54
 ```REBOL
 REBOL [
 	Title: "Function Argument"
-	URL: http://rosettacode.org/wiki/Function_as_an_Argument
+	URL: https://rosettacode.org/wiki/Function_as_an_Argument
 ]
 
 map: func [

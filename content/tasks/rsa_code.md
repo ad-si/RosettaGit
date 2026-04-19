@@ -762,7 +762,7 @@ Decoded = "xxxxxxxxxxxxxxxxxx"
 ## J
 
 
-Note, for an implementation with blocking (and a much smaller key) see <http://rosettacode.org/mw/index.php?title=RSA_code&oldid=103802>
+Note, for an implementation with blocking (and a much smaller key) see <https://rosettacode.org/mw/index.php?title=RSA_code&oldid=103802>
 
 
 ```j
@@ -785,7 +785,7 @@ Rosetta Code
 ```
 
 
-Note: as indicated at <http://www.jsoftware.com/help/dictionary/special.htm>, <code>N&|@^</code> does not bother with creating the exponential intermediate result.
+Note: as indicated at <https://www.jsoftware.com/help/dictionary/special.htm>, <code>N&|@^</code> does not bother with creating the exponential intermediate result.
 
 
 ## Java

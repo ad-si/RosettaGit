@@ -1038,7 +1038,7 @@ val it : Set<string> = set ["Jim"; "Serena"]
 ```Eiffel
 note
 	description: "Summary description for {SYMETRIC_DIFFERENCE_EXAMPLE}."
-	URI: "http://rosettacode.org/wiki/Symmetric_difference"
+	URI: "https://rosettacode.org/wiki/Symmetric_difference"
 
 class
 	SYMETRIC_DIFFERENCE_EXAMPLE

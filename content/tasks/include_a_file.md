@@ -656,7 +656,7 @@ GNU Awk has an <code>@include</code> which can include another awk source file a
 ```
 
 
-This is a parser-level construct and so must be a literal filename, not a variable or expression.  If the filename is not absolute then it's sought in an <code>$AWKPATH</code> list of directories.  See [the gawk manual](http://www.gnu.org/software/gawk/manual/html_node/Include-Files.html) for more.
+This is a parser-level construct and so must be a literal filename, not a variable or expression.  If the filename is not absolute then it's sought in an <code>$AWKPATH</code> list of directories.  See [the gawk manual](https://www.gnu.org/software/gawk/manual/html_node/Include-Files.html) for more.
 
 
 ## Axe
@@ -2020,7 +2020,7 @@ require_once("file.php")
 
 ## PicoLisp
 
-The function '[load](http://software-lab.de/doc/refL.html#load)' is used for recursively executing the contents of files.
+The function '[load](https://software-lab.de/doc/refL.html#load)' is used for recursively executing the contents of files.
 
 ```PicoLisp
 (load "file1.l" "file2.l" "file3.l")
@@ -2117,7 +2117,7 @@ XIncludeFile "Filename"
 
 
 IncludeBinary will include a named file of any type at the current place in the code.
-IncludeBinary don't have to, but should preferably be done inside a [data block](http://www.purebasic.com/documentation/reference/data.html).
+IncludeBinary don't have to, but should preferably be done inside a [data block](https://www.purebasic.com/documentation/reference/data.html).
 
 ```PureBasic
 IncludeBinary "Filename"
@@ -2127,7 +2127,7 @@ IncludeBinary "Filename"
 
 ## Python
 
-Python supports the use of [execfile](http://docs.python.org/library/functions.html#execfile) to allow code from arbitrary files to be executed from a program (without using its modules system).
+Python supports the use of [execfile](https://docs.python.org/library/functions.html#execfile) to allow code from arbitrary files to be executed from a program (without using its modules system).
 
 
 ```python
@@ -2358,8 +2358,8 @@ $ include "seed7_05.s7i";
 ```
 
 All following include directives don't need a $ to introduce them.
-The [float.s7i](http://seed7.sourceforge.net/libraries/float.htm)
-[library](http://seed7.sourceforge.net/libraries) can be included with:
+The [float.s7i](https://seed7.sourceforge.net/libraries/float.htm)
+[library](https://seed7.sourceforge.net/libraries) can be included with:
 
 ```seed7
   include "float.s7i";
@@ -2473,7 +2473,7 @@ source myfile.sh
 ```
 
 
-GNU Bash has both  <code>.</code> and the C-Shell style <code>source</code>.  See [Bash manual on <code>source</code>](http://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html#index-source)
+GNU Bash has both  <code>.</code> and the C-Shell style <code>source</code>.  See [Bash manual on <code>source</code>](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html#index-source)
 
 
 ## Ursa

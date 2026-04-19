@@ -13,7 +13,7 @@ tags = []
 CafeOBJ is a algebraic specification language.
 It has an executable sub-language which is broadly similar to Haskell or ML.
 CafeOBJ has many advanced features including: multiple logics, flexible mix-fix syntax, powerful and clear typing system with ordered sorts, parametric modules and views for instantiating the parameters, and module expressions, and more.
-Many of these features are inherited from [OBJ3](http://en.wikipedia.org/wiki/OBJ3)
+Many of these features are inherited from [OBJ3](https://en.wikipedia.org/wiki/OBJ3)
 
 [Download](http://www.ldl.jaist.ac.jp/cafeobj/) ,
 [Tutorial](http://www.jaist.ac.jp/~t-seino/lectures/cafeobj-intro/en/index.html) ,

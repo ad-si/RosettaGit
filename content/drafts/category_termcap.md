@@ -19,4 +19,4 @@ Early [[Unix]] systems used ''termcap'' to send escape sequences for [[terminal 
 
 == Manuals ==
 * [curs_termcap(3x)](http://invisible-island.net/ncurses/man/curs_termcap.3x.html), manual page from [[:Category:ncurses|''ncurses'']]
-* [termcap(5)](http://www.openbsd.org/cgi-bin/man.cgi?query=termcap&apropos=0&sektion=5&manpath=OpenBSD+Current&arch=i386&format=html), manual page from [[OpenBSD]]
+* [termcap(5)](https://www.openbsd.org/cgi-bin/man.cgi?query=termcap&apropos=0&sektion=5&manpath=OpenBSD+Current&arch=i386&format=html), manual page from [[OpenBSD]]

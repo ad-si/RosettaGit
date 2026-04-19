@@ -753,7 +753,7 @@ main = do
 
 ## J
 
-See the [dir.ijs script](http://www.jsoftware.com/wsvn/base8/trunk/main/main/dir.ijs) for a full description of the interface for <code>dir</code>:
+See the [dir.ijs script](https://www.jsoftware.com/wsvn/base8/trunk/main/main/dir.ijs) for a full description of the interface for <code>dir</code>:
 
 ```J
    dir ''       NB. includes properties
@@ -1416,7 +1416,7 @@ sort result;
 
 ## Stata
 
-Stata has a builtin '''[dir](http://www.stata.com/help.cgi?dir)''' command (or equivalently '''ls''').
+Stata has a builtin '''[dir](https://www.stata.com/help.cgi?dir)''' command (or equivalently '''ls''').
 
 
 ```stata

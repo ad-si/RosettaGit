@@ -2904,7 +2904,7 @@ res36: List[(Int, Int, Int)] = List((3,4,5), (5,12,13), (6,8,10), (8,15,17), (9,
 
 ## Scheme
 
-Scheme has no native list comprehensions, but SRFI-42 <http://srfi.schemers.org/srfi-42/srfi-42.html> provides them:
+Scheme has no native list comprehensions, but SRFI-42 <https://srfi.schemers.org/srfi-42/srfi-42.html> provides them:
 
 
 ```scheme
@@ -3048,7 +3048,7 @@ Tcl does not have list comprehensions built-in to the language, but they can be 
 ```tcl
 package require Tcl 8.5
 
-# from <http://wiki.tcl.tk/12574>
+# from <https://wiki.tcl-lang.org/12574>
 proc lcomp {expression args} {
     # Check the number of arguments.
     if {[llength $args] < 2} {

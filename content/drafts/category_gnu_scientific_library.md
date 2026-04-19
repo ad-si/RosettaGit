@@ -11,4 +11,4 @@ tags = []
 +++
 
 {{stub}}{{library}}
-The [GNU Scientific Library](http://www.gnu.org/software/gsl/) (GSL) is a numerical library for [[C]] and [[C++]] programmers. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. (Text excerpt from the site)
+The [GNU Scientific Library](https://www.gnu.org/software/gsl/) (GSL) is a numerical library for [[C]] and [[C++]] programmers. The library provides a wide range of mathematical routines such as random number generators, special functions and least-squares fitting. (Text excerpt from the site)

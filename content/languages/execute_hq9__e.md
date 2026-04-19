@@ -28,7 +28,7 @@ def eParser := <elang:syntax.makeEParser>
 def `@_
 ```e
 @beerSource</la${""}ng>@_` :=
-  <http://rosettacode.org/mw/index.php?title=99_Bottles_of_Beer&action=raw>.getText()
+  <https://rosettacode.org/mw/index.php?title=99_Bottles_of_Beer&action=raw>.getText()
 def beerProgram := eParser(beerSource)
 
 def opcodes := [

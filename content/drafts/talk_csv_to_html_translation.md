@@ -30,7 +30,7 @@ Is there any way to show the rendered HTML rather than the raw HTML (without the
 :::::: [[Image:Csv2html_ocaml_konsole_kde_frame_extra_credit_solution.png|CSV to HTML OCaml, the extra credit, with links browser in konsole]]
 :::::: And this one 7,0K (7087 octets.)
 :::::: But well do not hesitate to remove any of these screenshots. [[User:Blue Prawn|Blue Prawn]] 02:48, 14 November 2010 (UTC)
-:: Displaying someone else's HTML without excessive stripping or vulnerability is just what [Caja](http://code.google.com/p/google-caja/) is for. Web-service and Java interfaces are available. —[[User:Kevin Reid|Kevin Reid]] 23:16, 14 November 2010 (UTC)
+:: Displaying someone else's HTML without excessive stripping or vulnerability is just what [Caja](https://code.google.com/p/google-caja/) is for. Web-service and Java interfaces are available. —[[User:Kevin Reid|Kevin Reid]] 23:16, 14 November 2010 (UTC)
 
 
 ==Cheating in Optional Part==

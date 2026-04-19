@@ -2124,7 +2124,7 @@ Elapsed time: 70 ticks
 ## Go
 
 Code below is a simplistic translation of Haskell code in [Unbounded Spigot Algorithms for the Digits of Pi](http://web.comlab.ox.ac.uk/oucl/work/jeremy.gibbons/publications/spigot.pdf).  This is the algorithm specified for the [pidigits](http://shootout.alioth.debian.org/u64q/performance.php?test=pidigits) benchmark of the [Computer Language Benchmarks Game](http://shootout.alioth.debian.org/).
-(The standard Go distribution includes [source](http://golang.org/test/bench/shootout/pidigits.go) submitted to the benchmark site, and that code runs stunning faster than the code below.)
+(The standard Go distribution includes [source](https://golang.org/test/bench/shootout/pidigits.go) submitted to the benchmark site, and that code runs stunning faster than the code below.)
 
 ```go
 package main
@@ -3495,7 +3495,7 @@ while true do
 done
 ```
 
-However that is cheating if you want to see an algorithm to generate Pi. Since the Spigot algorithm is already used in the [pidigits](http://benchmarksgame.alioth.debian.org/u64q/program.php?test=pidigits&lang=ocaml&id=1) program, this implements [Machin's formula](http://mathworld.wolfram.com/Machin-LikeFormulas.html).
+However that is cheating if you want to see an algorithm to generate Pi. Since the Spigot algorithm is already used in the [pidigits](http://benchmarksgame.alioth.debian.org/u64q/program.php?test=pidigits&lang=ocaml&id=1) program, this implements [Machin's formula](https://mathworld.wolfram.com/Machin-LikeFormulas.html).
 
 ```OCaml
 open Num
@@ -4814,7 +4814,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#pi_spigot_algorithm>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#pi_spigot_algorithm>
 
 
 ## Sidef
@@ -5503,7 +5503,7 @@ End Module
 ```
 
 ===Quicker, unverified algo===
-There seems to be another algorithm in the original reference article (see the [Ada](http://www.rosettacode.org/wiki/Pi#Ada) entry), which produces output a bit faster.  However, the math behind the algorithm has not been completely proven.  It's faster because it doesn't calculate whether each digit is accumulated properly before squirting it out.  When using (slow) arbitrary precision libraries, this avoids a lot of computation time.
+There seems to be another algorithm in the original reference article (see the [Ada](https://www.rosettacode.org/wiki/Pi#Ada) entry), which produces output a bit faster.  However, the math behind the algorithm has not been completely proven.  It's faster because it doesn't calculate whether each digit is accumulated properly before squirting it out.  When using (slow) arbitrary precision libraries, this avoids a lot of computation time.
 
 ```vbnet
 Imports System, System.Numerics, System.Text

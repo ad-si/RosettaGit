@@ -84,7 +84,7 @@ An example of  checkout and  checkin events are:
 
 ## Task
 
-Save the 10,000 line log file from   [<big> here</big>](http://rosettacode.org/resources/mlijobs.txt)   into a local file, then write a program to scan the file extracting both the maximum licenses that were out at any time, and the time(s) at which this occurs.
+Save the 10,000 line log file from   [<big> here</big>](https://rosettacode.org/resources/mlijobs.txt)   into a local file, then write a program to scan the file extracting both the maximum licenses that were out at any time, and the time(s) at which this occurs.
 
 Mirror of log file available as a zip [here](https://github.com/thundergnat/rc/blob/master/resouces/mlijobs.zip) (offsite mirror).
 
@@ -183,7 +183,7 @@ The max. number of licenses out is    99
 
 ## ALGOL 68
 
-{{trans|C}} note: This specimen retains the original [C](http://rosettacode.org/mw/index.php?title=Text_processing%2F3&diff=87014&oldid=87011) coding style.
+{{trans|C}} note: This specimen retains the original [C](https://rosettacode.org/mw/index.php?title=Text_processing%2F3&diff=87014&oldid=87011) coding style.
 ```algol68
 PROC report = (REF FILE file in)INT: (
 
@@ -294,7 +294,7 @@ Maximum simultaneous license use is 99 at the following times:
 ```autohotkey
 
 IfNotExist, mlijobs.txt
-  UrlDownloadToFile, http://rosettacode.org/mlijobs.txt, mlijobs.txt
+  UrlDownloadToFile, https://rosettacode.org/mlijobs.txt, mlijobs.txt
 
 out := 0, max_out := -1, max_times := ""
 
@@ -1448,7 +1448,7 @@ main = do
 
 ## HicEst
 
-We open Licenses.txt in [MatrixExplorer mode](http://www.HicEst.com/MatrixExplorer.htm) with 3 columns: IN/OUT, date_time, ID_nr.
+We open Licenses.txt in [MatrixExplorer mode](https://www.HicEst.com/MatrixExplorer.htm) with 3 columns: IN/OUT, date_time, ID_nr.
 This allows to adress single file elements by Licenses(row, column).
 
 ```HicEst

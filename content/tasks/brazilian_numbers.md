@@ -726,7 +726,7 @@ Brazilian() |> Seq.filter(fun n->n%2=1) |> Seq.take 20 |> Seq.iter(printf "%d ")
 ```
 
 ;the first 20 prime Brazilian numbers
-Using [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+Using [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

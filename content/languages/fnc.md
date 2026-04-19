@@ -14,5 +14,5 @@ fnc is the compiler for [efene](https://rosettacode.org/wiki/:Category:efene) cr
 ## Useful links
 * [Website](http://marianoguerra.com.ar/efene)
 * [Blog](http://efene.tumblr.com/)
-* [Central repo (fork this one)](http://github.com/marianoguerra/efene)
-* [Issue tracker](http://github.com/marianoguerra/efene/issues)
+* [Central repo (fork this one)](https://github.com/marianoguerra/efene)
+* [Issue tracker](https://github.com/marianoguerra/efene/issues)

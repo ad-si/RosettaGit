@@ -60,7 +60,7 @@ my %cat = (
 
 my $client = HTTP::UserAgent.new;
 
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 
 my $tablefile = './RC_Authors.txt';
 my $hashfile  = './RC_Authors.json';

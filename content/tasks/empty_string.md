@@ -2781,7 +2781,7 @@ if (strlen($str) != 0) { ... }
 
 ## PicoLisp
 
-The empty string is represented by '[NIL](http://software-lab.de/doc/ref.html#nilSym)' in PicoLisp. During input, two subsequent double quotes '""' return the symbol NIL.
+The empty string is represented by '[NIL](https://software-lab.de/doc/ref.html#nilSym)' in PicoLisp. During input, two subsequent double quotes '""' return the symbol NIL.
 
 ```PicoLisp
 # To assign a variable an empty string:

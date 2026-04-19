@@ -80,7 +80,7 @@ languages = [
 Demonstrate a method of deriving the [[wp:Computation of cyclic redundancy checks|Cyclic Redundancy Check]] from within the language.
 
 
-The result should be in accordance with ISO 3309, [ITU-T V.42](http://www.itu.int/rec/T-REC-V.42-200203-I/en), [Gzip](http://tools.ietf.org/html/rfc1952) and [PNG](http://www.w3.org/TR/2003/REC-PNG-20031110/).
+The result should be in accordance with ISO 3309, [ITU-T V.42](http://www.itu.int/rec/T-REC-V.42-200203-I/en), [Gzip](https://datatracker.ietf.org/html/rfc1952) and [PNG](https://www.w3.org/TR/2003/REC-PNG-20031110/).
 
 Algorithms are described on [[wp:Cyclic redundancy check|Computation of CRC]] in Wikipedia.
 This variant of CRC-32 uses LSB-first order, sets the initial CRC to FFFFFFFF<sub>16</sub>, and complements the final CRC.
@@ -295,7 +295,7 @@ int main()
 
 ### Implementation
 
-This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [RFC 1952 section 8](http://tools.ietf.org/html/rfc1952#section-8) and from [PNG annex D](http://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix), because those examples use an identical table.
+This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [RFC 1952 section 8](https://datatracker.ietf.org/html/rfc1952#section-8) and from [PNG annex D](https://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix), because those examples use an identical table.
 
 
 ```c
@@ -1136,8 +1136,8 @@ end
 ```
 
 
-[hexcvt.icn](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) (provides hex and hexstring)
-[printf.icn](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) (provides formatting)
+[hexcvt.icn](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) (provides hex and hexstring)
+[printf.icn](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn) (provides formatting)
 
 ```txt
 crc("The quick brown fox jumps over the lazy dog")=414FA339 - implementation is correct
@@ -2198,7 +2198,7 @@ CRC32 Cecksum [dec] = 1095738169
 
 ### Library
 
-[<code>zlib.crc32</code>](http://docs.python.org/library/zlib.html#zlib.crc32) and [<code>binascii.crc32</code>](http://docs.python.org/library/binascii.html#binascii.crc32) give identical results.
+[<code>zlib.crc32</code>](https://docs.python.org/library/zlib.html#zlib.crc32) and [<code>binascii.crc32</code>](https://docs.python.org/library/binascii.html#binascii.crc32) give identical results.
 
 
 ```python

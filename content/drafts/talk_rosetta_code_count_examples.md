@@ -39,14 +39,14 @@ A complex solution, will be read all sections, but will take a long time, and wi
 
 Traceback (most recent call last):
   File "count.py", line 8, in <module>
-    y = urllib.urlopen("http://www.rosettacode.org/w/index.php?title=%s&action=raw" % t)
+    y = urllib.urlopen("https://www.rosettacode.org/w/index.php?title=%s&action=raw" % t)
   File "d:\Python26\lib\urllib.py", line 87, in urlopen
     return opener.open(url)
   File "d:\Python26\lib\urllib.py", line 178, in open
     fullurl = unwrap(toBytes(fullurl))
   File "d:\Python26\lib\urllib.py", line 1028, in toBytes
     " contains non-ASCII characters")
-UnicodeError: URL u'http://www.rosettacode.org/w/index.php?title=Catmull\u2013Clark_subdivision_s
+UnicodeError: URL u'https://www.rosettacode.org/w/index.php?title=Catmull\u2013Clark_subdivision_s
 urface&action=raw' contains non-ASCII characters
 
 ```

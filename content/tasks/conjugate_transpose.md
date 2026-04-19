@@ -72,10 +72,10 @@ Also determine if the matrix is a:
 
 ## See also
 
-* MathWorld entry: [conjugate transpose](http://mathworld.wolfram.com/ConjugateTranspose.html)
-* MathWorld entry: [Hermitian matrix](http://mathworld.wolfram.com/HermitianMatrix.html)
-* MathWorld entry: [normal matrix](http://mathworld.wolfram.com/NormalMatrix.html)
-* MathWorld entry: [unitary matrix](http://mathworld.wolfram.com/UnitaryMatrix.html)
+* MathWorld entry: [conjugate transpose](https://mathworld.wolfram.com/ConjugateTranspose.html)
+* MathWorld entry: [Hermitian matrix](https://mathworld.wolfram.com/HermitianMatrix.html)
+* MathWorld entry: [normal matrix](https://mathworld.wolfram.com/NormalMatrix.html)
+* MathWorld entry: [unitary matrix](https://mathworld.wolfram.com/UnitaryMatrix.html)
 
 
 

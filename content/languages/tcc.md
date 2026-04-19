@@ -11,7 +11,7 @@ tags = []
 +++
 TCC — Tiny C Compiler — is a compiler of [C](https://rosettacode.org/wiki/C) designed to be used in embedded environments. It only generates code for the x86 and x86-64 architectures.
 
-There is a [Tcl](https://rosettacode.org/wiki/Tcl) extension that embeds TCC to enable putting C inside Tcl scripts. (See [the Tcler's Wiki](http://wiki.tcl.tk/20123) for more details.)
+There is a [Tcl](https://rosettacode.org/wiki/Tcl) extension that embeds TCC to enable putting C inside Tcl scripts. (See [the Tcler's Wiki](https://wiki.tcl-lang.org/20123) for more details.)
 
 ## Links
 * [Home page](http://www.tinycc.org/) (redirects to <http://bellard.org/tcc/>)

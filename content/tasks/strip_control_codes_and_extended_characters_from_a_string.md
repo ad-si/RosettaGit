@@ -1030,7 +1030,7 @@ func stripCtlAndExtFromUTF8(str string) string {
 }
 
 // Advanced Unicode normalization and filtering,
-// see http://blog.golang.org/normalization and
+// see https://blog.golang.org/normalization and
 // http://godoc.org/golang.org/x/text/unicode/norm for more
 // details.
 func stripCtlAndExtFromUnicode(str string) string {
@@ -1151,7 +1151,7 @@ link strings
 ```
 
 
-[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides deletec](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 The IPL procedure ''deletec'' is equivalent to this:
 
@@ -2289,10 +2289,10 @@ ctrl and extended filtered out:
 
 ## Seed7
 
-Seed7 [strings](http://seed7.sourceforge.net/manual/types.htm#string) are UTF-32 encoded,
+Seed7 [strings](https://seed7.sourceforge.net/manual/types.htm#string) are UTF-32 encoded,
 therefore no destinction between BYTE and Unicode strings is necessary.
-The example below uses [STD_UTF8_OUT](http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT)
-from the library [utf8.s7i](http://seed7.sourceforge.net/libraries/utf8.htm), to write
+The example below uses [STD_UTF8_OUT](https://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT)
+from the library [utf8.s7i](https://seed7.sourceforge.net/libraries/utf8.htm), to write
 Unicode characters with UTF-8 encoding to the console.
 
 

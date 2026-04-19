@@ -647,7 +647,7 @@ Hello, World!
 
 ## Common Lisp
 
-Objects are typically automatically allocated and deallocated in Common Lisp.  However, the <code>[dynamic-extent](http://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm)</code> declaration can be used to inform the compiler that the values a variable assumes can be stack-allocated.
+Objects are typically automatically allocated and deallocated in Common Lisp.  However, the <code>[dynamic-extent](https://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm)</code> declaration can be used to inform the compiler that the values a variable assumes can be stack-allocated.
 
 This behavior can be observed with the (not good for actual use) code:
 
@@ -783,7 +783,7 @@ void main() {
     array4 ~= 300;
     assert(array4.length == 3);
     // See here for more info:
-    // http://dlang.org/d-array-article.html
+    // https://dlang.org/d-array-article.html
 
 
     // Allocates a struct and a class on the D GC heap:
@@ -1069,7 +1069,7 @@ The actual reclamation of unreferenced structures takes place when garbage colle
 ## J
 
 
-Example of explicit [memory allocation](http://www.jsoftware.com/help/user/memory_management.htm):
+Example of explicit [memory allocation](https://www.jsoftware.com/help/user/memory_management.htm):
 
 
 ```J
@@ -1102,7 +1102,7 @@ int[] fooArray = new int[size]; //Allocate all spaces in an array and a referenc
 int x = 0; //Allocate an integer and set its value to 0
 ```
 
-There is no real destructor in Java as there is in C++, but there is the <tt>finalize</tt> method. From the [Java 6 JavaDocs](http://java.sun.com/javase/6/docs/api/java/lang/Object.html#finalize()):
+There is no real destructor in Java as there is in C++, but there is the <tt>finalize</tt> method. From the [Java 6 JavaDocs](https://docs.oracle.com/javase/6/docs/api/java/lang/Object.html#finalize()):
 
 ''The general contract of finalize is that it is invoked if and when the JavaTM virtual machine has determined that there is no longer any means by which this object can be accessed by any thread that has not yet died, except as a result of an action taken by the finalization of some other object or class which is ready to be finalized. The finalize method may take any action, including making this object available again to other threads; the usual purpose of finalize, however, is to perform cleanup actions before the object is irrevocably discarded. For example, the finalize method for an object that represents an input/output connection might perform explicit I/O transactions to break the connection before the object is permanently discarded.''
 
@@ -1231,7 +1231,7 @@ ba = VOID
 
 Buffer is an object which hold a block of memory in heap. There are two types, the default and the Code type. In code type we can execute code, but at execution time we can't write to that block. So to get results from machine code we have to use a default type buffer (for data). Buffers used to read/write to binary files too.
 
-[See example for Machine Code](http://www.rosettacode.org/wiki/Machine_code#M2000_Interpreter)
+[See example for Machine Code](https://www.rosettacode.org/wiki/Machine_code#M2000_Interpreter)
 
 If we use a wrong offset, buffer return error and locked (can't be used until erased)
 
@@ -1500,7 +1500,7 @@ would be utterly pointless and quite probably extremely tricky to mess with.
 
 Only the heap can be explicitly controlled in PicoLisp. Usually this is not necessary, as it happens automatically.
 
-But if desired, memory can be pre-allocated by calling [gc](http://software-lab.de/doc/refG.html#gc) with a single numeric argument, specifying the desired number of megabytes that should be reserved. When that argument is zero, the heap size is decreased (as far as possible).
+But if desired, memory can be pre-allocated by calling [gc](https://software-lab.de/doc/refG.html#gc) with a single numeric argument, specifying the desired number of megabytes that should be reserved. When that argument is zero, the heap size is decreased (as far as possible).
 
 
 ## PL/I
@@ -1642,7 +1642,7 @@ Memory for strings is handled automatically from a separate memory heap.  The au
 
 ## Python
 
-Python has the [array module](http://docs.python.org/library/array.html):
+Python has the [array module](https://docs.python.org/library/array.html):
 This module defines an object type which can compactly represent an array of basic values: characters, integers, floating point numbers.  Arrays are sequence types and behave very much like lists, except that the type of objects stored in them is constrained.  The type is specified at object creation time by using a <em>type code</em>, which is a single character.  The following type codes are defined:
 
 <table class="docutils" border="1">
@@ -1785,7 +1785,7 @@ Racket doesn't allow direct memory allocation, although it supports some things
 
 
 Custodians manage threads, ports, sockets, etc.
-A bit of information about them is available [here](http://docs.racket-lang.org/reference/eval-model.html?q=memory&q=custodian&q=computer&q=pointer#%28part._custodian-model%29)
+A bit of information about them is available [here](https://docs.racket-lang.org/reference/eval-model.html?q=memory&q=custodian&q=computer&q=pointer#%28part._custodian-model%29)
 
 
 ## Retro

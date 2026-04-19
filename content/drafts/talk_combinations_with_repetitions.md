@@ -44,7 +44,7 @@ I wrote an example about the task! [[User:Pelci|Pelci]] 19:44, 18 November 2010 
 ::If it were "sampling with replacement" I imagine that that result would have also included [1,1] and [3,3].  Since it did not, I do not think we can have (a,a,a)  as a result for set n= ('a,a,b,c,d'), k=3.  But perhaps the results from the deleted example should be reposted as a part of the task description?  --[[User:Rdm|Rdm]] 21:58, 18 November 2010 (UTC)
 
 ==How about this definition?==
-From the [Python documentation](http://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement):
+From the [Python documentation](https://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement):
 
 '''itertools.combinations_with_replacement(iterable, r)'''
 
@@ -77,7 +77,7 @@ def combinations_with_replacement(iterable, r):
 ```
 
 
-:The code for combinations_with_replacement() can be also expressed as a subsequence of [product()](http://docs.python.org/py3k/library/itertools.html#itertools.product) after filtering entries where the elements are not in sorted order (according to their position in the input pool):
+:The code for combinations_with_replacement() can be also expressed as a subsequence of [product()](https://docs.python.org/py3k/library/itertools.html#itertools.product) after filtering entries where the elements are not in sorted order (according to their position in the input pool):
 
 :
 ```python
@@ -111,7 +111,7 @@ We would need to '''change the page name''' to ''Combinations with replacement''
 
 :: And yet I get the n=10, k=3 result of 220 which is mentioned in the Wikipedia article?
 
-:: Looking again at the [previous description](http://rosettacode.org/mw/index.php?title=Combinations_with_repetitions&oldid=95620) of:
+:: Looking again at the [previous description](https://rosettacode.org/mw/index.php?title=Combinations_with_repetitions&oldid=95620) of:
 :::Write a program which generates the all [[wp:Combination|k-combination with repetitions]] of '''n''' different objects. (Practically numerals!) 
 
 :::An example about the task:
@@ -126,7 +126,7 @@ We would need to '''change the page name''' to ''Combinations with replacement''
 :: --[[User:Paddy3118|Paddy3118]] 17:00, 19 November 2010 (UTC)
 ::: If you go back and look at the original entry, you will see that the original java code worked the same way as the old J example.  But that code was deleted for copyright reasons and when it was deleted, the associated examples were also deleted, which makes talking about that issue a bit confusing.  But, anyways, we have two tasks here: one based on a common interpretation of the wording of the original task description and another based on the original examples.  Without those examples, the original task description does not distinguish between these two cases.  --[[User:Rdm|Rdm]] 19:15, 19 November 2010 (UTC)
 
-::::Hi Rdm. I went to the original blog with the Java code, and I think that it is probably a case of a loosely used term: "Combinations with repetitions" that is not what is mentioned in the wp article.  Wolfram mathworld calls what is mentioned in the wp article [multichoose](http://mathworld.wolfram.com/Multichoose.html), but it is not what the Java does - as you have been saying. If someone can come up with some good references for what the Java code is doing then I'd be grateful, Ta. --[[User:Paddy3118|Paddy3118]] 20:11, 19 November 2010 (UTC) 
+::::Hi Rdm. I went to the original blog with the Java code, and I think that it is probably a case of a loosely used term: "Combinations with repetitions" that is not what is mentioned in the wp article.  Wolfram mathworld calls what is mentioned in the wp article [multichoose](https://mathworld.wolfram.com/Multichoose.html), but it is not what the Java does - as you have been saying. If someone can come up with some good references for what the Java code is doing then I'd be grateful, Ta. --[[User:Paddy3118|Paddy3118]] 20:11, 19 November 2010 (UTC) 
 
 :: [Another link](https://docs.google.com/viewer?url=http://www.nitte.ac.in/userfiles/file/Combinations%2520with%2520Repetitions.pdf&embedded=true&chrome=true) that might be a better explanation? --[[User:Paddy3118|Paddy3118]] 17:07, 19 November 2010 (UTC)
 ::: The WP article references [this](https://compprog.wordpress.com/2007/10/17/generating-combinations-1/), which seems fairly readable. --[[User:Short Circuit|Michael Mol]] 17:12, 19 November 2010 (UTC)

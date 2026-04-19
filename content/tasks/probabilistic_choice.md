@@ -248,7 +248,7 @@ Attained prob.: 0.199987 0.166917 0.142531 0.124203 0.111338 0.099702 0.091660 0
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276279.html#276279)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276279.html#276279)
 
 ```AutoHotkey
 s1 := "aleph",   p1 := 1/5.0                       ; Input

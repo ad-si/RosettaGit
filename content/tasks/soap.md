@@ -143,8 +143,8 @@ Input XML for soapFunc()
 ```XML
 
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<soapenv:Envelope xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="https://www.w3.org/2001/XMLSchema"
 xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:dom="http://example.com/soap/wsdl">
    <soapenv:Header/>
@@ -160,8 +160,8 @@ Input XML for anotherSoapFunc()
 ```XML
 
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<soapenv:Envelope xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="https://www.w3.org/2001/XMLSchema"
 xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:dom="http://example.com/soap/wsdl">
    <soapenv:Header/>
@@ -549,7 +549,7 @@ response2 := client send: 'anotherSoapFunc' withArguments:{ 34234 }.
 
 ## Tcl
 
-Uses the <code>[tclws](http://code.google.com/p/tclws/)</code> package.
+Uses the <code>[tclws](https://code.google.com/p/tclws/)</code> package.
 
 ```Tcl
 package require WS::Client

@@ -347,7 +347,7 @@ Same output as the C code.
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276467.html#276467)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276467.html#276467)
 
 ```AutoHotkey
 MsgBox % pad(7.25,7)  ; 0007.25
@@ -976,7 +976,7 @@ ____7.125
 ```
 
 
-<code>format</code> is similar to C <code>sprintf</code>.  See [GNU Elisp manual on Formatting Strings](http://www.gnu.org/software/emacs/manual/html_node/elisp/Formatting-Strings.html).
+<code>format</code> is similar to C <code>sprintf</code>.  See [GNU Elisp manual on Formatting Strings](https://www.gnu.org/software/emacs/manual/html_node/elisp/Formatting-Strings.html).
 
 
 ## Erlang
@@ -1432,7 +1432,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}} provides [printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+{{libheader|Icon Programming Library}} provides [printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 LET F=7.125
@@ -1450,7 +1450,7 @@ end
 ```
 
 
-[Documentation on 8!:](http://www.jsoftware.com/help/dictionary/dx008.htm)
+[Documentation on 8!:](https://www.jsoftware.com/help/dictionary/dx008.htm)
 
 
 ## Java
@@ -1517,7 +1517,7 @@ alert(str);
 
 or, put in browser URL: javascript:n=123;alert(("00000"+n).slice(-5));
 
-Also, a 60-line implementation of <code>sprintf</code> can be found [here](http://code.google.com/p/sprintf/).
+Also, a 60-line implementation of <code>sprintf</code> can be found [here](https://code.google.com/p/sprintf/).
 
 
 ## jq
@@ -2309,7 +2309,7 @@ Other string formatting functions include
 ```REBOL
 REBOL [
 	Title: "Formatted Numeric Output"
-	URL: http://rosettacode.org/wiki/Formatted_Numeric_Output
+	URL: https://rosettacode.org/wiki/Formatted_Numeric_Output
 ]
 
 ; REBOL has no built-in facilities for printing pictured output.
@@ -2616,7 +2616,7 @@ object FormattedNumeric {
 ## Scheme
 
 Obtain the implementation of SRFI 54 from
-<http://srfi.schemers.org/srfi-54/srfi-54.html>
+<https://srfi.schemers.org/srfi-54/srfi-54.html>
 and save it as "srfi-54.scm" in directory
 Gauche/share/gauche/site/lib/
 

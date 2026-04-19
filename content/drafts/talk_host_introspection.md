@@ -47,6 +47,6 @@ It looks like Perl uses 4-bytes as int size, even on 64-bit systems (yes, I've 6
 
 [[User:GlitchMr|GlitchMr]] 18:55, 24 October 2011 (UTC)
 
-: I decided to change the program from $Config{intsize} to $Config{uvsize}, so that the byte order has the same size. ([perldoc Config](http://perldoc.perl.org/Config.html) says that $Config{byteorder} is for UV.)
+: I decided to change the program from $Config{intsize} to $Config{uvsize}, so that the byte order has the same size. ([perldoc Config](https://perldoc.perl.org/Config.html) says that $Config{byteorder} is for UV.)
 
 : "Word size" has multiple meanings. For an amd64 (x64) processor, some programmers think that a ''word'' is 16 bits, a ''double word'' is 32 bits, and a ''quad word'' is 64 bits. Other programmers think that a ''word'' is 32 bits, like an ''int''. Yet other programmers think that a ''word'' is 64 bits, like a pointer. So $Config{intsize} and $Config{uvsize} are both correct even if they give different sizes. --[[User:Kernigh|Kernigh]] 03:38, 25 October 2011 (UTC)

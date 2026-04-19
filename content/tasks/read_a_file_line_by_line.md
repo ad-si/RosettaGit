@@ -1547,7 +1547,7 @@ close(fn)
 
 
 =={{header|F_Sharp|F#}}==
-Using DotNet's [System.IO.File.ReadLines](http://msdn.microsoft.com/en-us/library/dd383503.aspx) iterator:
+Using DotNet's [System.IO.File.ReadLines](https://msdn.microsoft.com/en-us/library/dd383503.aspx) iterator:
 
 ```fsharp
 open System.IO
@@ -2951,7 +2951,7 @@ print "Line count " c
 
 ## PARI/GP
 
-GP has an unfortunate limitations that prevents reading files line-by-line, but it's just as well since its file-handling capabilities are poor.  The [TODO](http://pari.math.u-bordeaux.fr/cgi-bin/viewcvs.cgi/trunk/TODO?view=markup&revision=12632&root=pari) file lists one desiderata as adding a <code>t_FILE</code>, which if added would presumably have support for this sort of operation.
+GP has an unfortunate limitations that prevents reading files line-by-line, but it's just as well since its file-handling capabilities are poor.  The [TODO](https://pari.math.u-bordeaux.fr/cgi-bin/viewcvs.cgi/trunk/TODO?view=markup&revision=12632&root=pari) file lists one desiderata as adding a <code>t_FILE</code>, which if added would presumably have support for this sort of operation.
 
 Thus the usual way of interacting with files in more than the simple way allowed by <code>read</code> is done by PARI with the usual [[#C|C]] commands:
 
@@ -3234,7 +3234,7 @@ The with statement ensures the correct closing of the file after it is processed
 
 Any exceptional conditions seen when processing the file will raise an exception. Leaving the while loop because of an exception will also cause the file to be correctly closed on the way.
 
-Python also has the [fileinput module](http://docs.python.org/library/fileinput.html). This can process multiple files parsed from the command line and can be set to modify files 'in-place'.
+Python also has the [fileinput module](https://docs.python.org/library/fileinput.html). This can process multiple files parsed from the command line and can be set to modify files 'in-place'.
 
 ```python
 import fileinput
@@ -3555,7 +3555,7 @@ const proc: main is func
 ```
 
 
-The function [hasNext](http://seed7.sourceforge.net/libraries/file.htm#hasNext%28in_file%29)
+The function [hasNext](https://seed7.sourceforge.net/libraries/file.htm#hasNext%28in_file%29)
 returns TRUE when at least one character can be read successfully.
 
 

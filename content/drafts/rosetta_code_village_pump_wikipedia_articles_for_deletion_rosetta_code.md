@@ -33,7 +33,7 @@ One thing I gained from the conversations as [[wp:Wikipedia:Articles_for_deletio
 * "Touching factor: software development on tablets - M Hesenius, C Orozco Medina, D Herzberg - Software Composition, 2012 - Springer"
 * "The Implementation of Zoning for Winner Determination in Combinatorial Spectrum Auction - A Purbasari, A Zulianto - Informatics and Computational …, 2011 - <http://ieeexplore.ieee.org>"
 * "CyberMate∼ Artificial Intelligent business help desk assistant with instance messaging services NT Weerawarna, H Haththella… - … (ICIIS), 2011 6th …, 2011 - ieeexplore.ieee.org"
-* "Software Mutational Robustness: Bridging The Gap Between Mutation Testing and Evolutionary Biology - E Schulte, ZP Fry, E Fast, S Forrest… - arXiv preprint arXiv: …, 2012 - <http://arxiv.org>"
+* "Software Mutational Robustness: Bridging The Gap Between Mutation Testing and Evolutionary Biology - E Schulte, ZP Fry, E Fast, S Forrest… - arXiv preprint arXiv: …, 2012 - <https://arxiv.org>"
 * "101companies: a community project on software technologies and software languages - JM Favre, R Lämmel, T Schmorleiz… - Objects, Models, …, 2012 - Springer"
 * "Using Domain Specific Language for modeling and simulation: ScalaTion as a case study - JA Miller, J Han, M Hybinette - Simulation Conference (WSC), …, 2010 - ieeexplore.ieee.org"
 * "Advances in Sensors, Signals, Visualization, Imaging and Simulation - MICHAL MUSILEK, STEPAN HUBALOVSKY - University of Hradec Kralove - CZECH REPUBLIC"

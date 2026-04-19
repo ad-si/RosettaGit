@@ -42,7 +42,7 @@ This version demonstrates the following language idioms:
 ```inform7
 "RCRPG"
  
-The story headline is "An implementation of http://rosettacode.org/wiki/RCRPG".
+The story headline is "An implementation of https://rosettacode.org/wiki/RCRPG".
  
 Chapter - Rooms
  

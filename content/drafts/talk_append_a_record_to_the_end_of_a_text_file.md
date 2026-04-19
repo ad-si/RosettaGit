@@ -87,7 +87,7 @@ ThanX for spotting the email/home/shell error .  I've fixed the C and python cod
 
 BTW: On unix (and linux) single writes on files opened with appends are guaranteed to append.  And the syscall to "write" is atomic.  Hence locking is not required.  HOWEVER both the C code and the Python code use printf, and I confess that I am not 100% sure if a "fflush" is called when a printf includes a "\n".  I'll take a look.
 
-(found: <http://stackoverflow.com/questions/2131463/fork-and-printf> => suggests the fprintf should be replaced with a sprintf/write, not simply a fprintf/fflush)
+(found: <https://stackoverflow.com/questions/2131463/fork-and-printf> => suggests the fprintf should be replaced with a sprintf/write, not simply a fprintf/fflush)
 
 ThanX again.  [[User:NevilleDNZ|NevilleDNZ]] 14:28, 26 September 2011 (UTC)
 

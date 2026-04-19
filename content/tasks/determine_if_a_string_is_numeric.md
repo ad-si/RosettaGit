@@ -2360,7 +2360,7 @@ Scanner also has similar methods for longs, shorts, bytes, doubles, floats, BigI
 
 ## JavaScript
 
-A far better validator can be found on StackOverflow<http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric>
+A far better validator can be found on StackOverflow<https://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric>
 
 ```javascript
 function isNumeric(n) {
@@ -3406,7 +3406,7 @@ print looks_like_number($str) ? "numeric" : "not numeric\n";
 ```
 
 
-Quoting from [perlfaq4](http://perldoc.perl.org/perlfaq4.html#How-do-I-determine-whether-a-scalar-is-a-number%2fwhole%2finteger%2ffloat%3f):
+Quoting from [perlfaq4](https://perldoc.perl.org/perlfaq4.html#How-do-I-determine-whether-a-scalar-is-a-number%2fwhole%2finteger%2ffloat%3f):
 
 ''How do I determine whether a scalar is a number/whole/integer/float?''
 
@@ -3556,7 +3556,7 @@ if(is_numeric(trim($string))) {
 
 ## PicoLisp
 
-The '[format](http://software-lab.de/doc/refF.html#format)' function can
+The '[format](https://software-lab.de/doc/refF.html#format)' function can
 be used for that. It returns NIL if the given string is not a legal number
 
 ```PicoLisp
@@ -3997,7 +3997,7 @@ end
 
 REBOL [
 	Title: "Is Numeric?"
-	URL: http://rosettacode.org/wiki/IsNumeric
+	URL: https://rosettacode.org/wiki/IsNumeric
 ]
 
 ; Built-in.
@@ -4409,7 +4409,7 @@ Or, since all non-<tt>#f</tt> are true:
 
 ## Seed7
 
-The function isNumeric uses the function [getNumber](http://seed7.sourceforge.net/libraries/scanstri.htm#getNumber%28inout_string%29) from the library [scanstri.s7i](http://seed7.sourceforge.net/libraries/scanstri.htm).
+The function isNumeric uses the function [getNumber](https://seed7.sourceforge.net/libraries/scanstri.htm#getNumber%28inout_string%29) from the library [scanstri.s7i](https://seed7.sourceforge.net/libraries/scanstri.htm).
 GetNumber reads a numeric literal from a string. The numeric literal is removed from the input string.
 
 

@@ -849,7 +849,7 @@ Output:
 
 ## OCaml
 
-'''Library:''' [extlib](http://code.google.com/p/ocaml-extlib/)
+'''Library:''' [extlib](https://code.google.com/p/ocaml-extlib/)
 
 ```ocaml
 open ExtLib
@@ -979,10 +979,10 @@ Alternatively you could use bit-masks, or it may be possible to enhance builtins
 ## PicoLisp
 
 PicoLisp can handle bit fields or bit structures only as bignums. They can be
-manipulated with '[&](http://software-lab.de/doc/ref_.html#&)',
-'[|](http://software-lab.de/doc/ref_.html#|)' and
-'[x|](http://software-lab.de/doc/refX.html#x|)',
-or tested with '[bit?](http://software-lab.de/doc/refB.html#bit?)'.
+manipulated with '[&](https://software-lab.de/doc/ref_.html#&)',
+'[|](https://software-lab.de/doc/ref_.html#|)' and
+'[x|](https://software-lab.de/doc/refX.html#x|)',
+or tested with '[bit?](https://software-lab.de/doc/refB.html#bit?)'.
 
 ```PicoLisp
 # Define bit constants
@@ -1018,7 +1018,7 @@ declare 1 RS232_layout,
 
 ## Python
 
-The ctypes module allows for the creation of Structures that can map between the structures of C and python datatypes. Within Structures, [bit fields](http://docs.python.org/library/ctypes.html#bit-fields-in-structures-and-unions) can be created.
+The ctypes module allows for the creation of Structures that can map between the structures of C and python datatypes. Within Structures, [bit fields](https://docs.python.org/library/ctypes.html#bit-fields-in-structures-and-unions) can be created.
 
 
 ```python

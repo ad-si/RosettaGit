@@ -1139,7 +1139,7 @@ return(0);
 
 
 Most general: string or array as collection (collection size known at run-time)
-: ''Note: idxtype can be removed and [typeof(col&#91;0&#93;)](http://gcc.gnu.org/onlinedocs/gcc/Typeof.html) can be used in it's place with [[GCC]]''
+: ''Note: idxtype can be removed and [typeof(col&#91;0&#93;)](https://gcc.gnu.org/onlinedocs/gcc/Typeof.html) can be used in it's place with [[GCC]]''
 
 ```c
 
@@ -3227,7 +3227,7 @@ for(i in a) print(i)
 ```REBOL
 REBOL [
 	Title: "Loop/Foreach"
-	URL: http://rosettacode.org/wiki/Loop/Foreach
+	URL: https://rosettacode.org/wiki/Loop/Foreach
 ]
 
 x: [Sork Gun Blues Neds Thirst Fright Catur]
@@ -3362,7 +3362,7 @@ collection.each do |i|
 end
 ```
 
-There are various flavours of <code>each</code> that may be class-dependent: [String#each_char](http://www.ruby-doc.org/core/classes/String.html#M000862), [Array#each_index](http://www.ruby-doc.org/core/classes/Array.html#M002174), [Hash#each_key](http://www.ruby-doc.org/core/classes/Hash.html#M002863), etc
+There are various flavours of <code>each</code> that may be class-dependent: [String#each_char](https://www.ruby-doc.org/core/classes/String.html#M000862), [Array#each_index](https://www.ruby-doc.org/core/classes/Array.html#M002174), [Hash#each_key](https://www.ruby-doc.org/core/classes/Hash.html#M002863), etc
 
 
 

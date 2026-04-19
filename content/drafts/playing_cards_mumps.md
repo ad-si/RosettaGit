@@ -15,7 +15,7 @@ tags = []
 ```MUMPS
 
 DECK ;Routines to deal with playing cards
- ;http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#Modern_method
+ ;https://en.wikipedia.org/wiki/Fisher-Yates_shuffle#Modern_method
  ;Global ^DARCH is the definitions for the deck types.
  ; First node contains the Deck Number, a non-negative integer
  ;   Second node:

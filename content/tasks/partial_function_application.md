@@ -1017,8 +1017,8 @@ println( fsf2(2..8 by 2) )
 
 ## Go
 
-{{works with|Go|1.1}} (The first way shown uses [Method values](http://golang.org/ref/spec#Method_values) which were added in Go 1.1. The second uses a function returning a function which was always possible.)
-[Run this in the Go playground](http://play.golang.org/p/fbmK4qfFZr).
+{{works with|Go|1.1}} (The first way shown uses [Method values](https://golang.org/ref/spec#Method_values) which were added in Go 1.1. The second uses a function returning a function which was always possible.)
+[Run this in the Go playground](https://play.golang.org/p/fbmK4qfFZr).
 
 ```go
 package main
@@ -1190,7 +1190,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt

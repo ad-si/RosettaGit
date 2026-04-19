@@ -21,7 +21,7 @@ Its main implementation is [Critical Mass Modula-3](https://rosettacode.org/wiki
 Modula-3 influenced a few languages such as [C#](https://rosettacode.org/wiki/C_Sharp), [Java](https://rosettacode.org/wiki/Java), [Ocaml](https://rosettacode.org/wiki/Ocaml) and [Python](https://rosettacode.org/wiki/Python).
 
 ## Links
-* [Modula-3 at Wikipedia](http://en.wikipedia.org/wiki/Modula-3)
+* [Modula-3 at Wikipedia](https://en.wikipedia.org/wiki/Modula-3)
 
 
 ## Merged content

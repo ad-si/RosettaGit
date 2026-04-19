@@ -119,7 +119,7 @@ Ada uses the usual comparison operators ("=" for equality, "/=" for not being eq
 But, as Ada is strongly typed, comparing two objects of different type is not possible.
 To compare, say, a string and an integer, one would need to call an explicit type conversion for one of these objects.
 
-String comparisons are case sensitive. Case insensitive comparisons have to use some conversion operation, such as Ada.Characters.Handling.To_Lower from the standard library, cf. <http://rosettacode.org/wiki/String_case#Ada>
+String comparisons are case sensitive. Case insensitive comparisons have to use some conversion operation, such as Ada.Characters.Handling.To_Lower from the standard library, cf. <https://rosettacode.org/wiki/String_case#Ada>
 
 
 ```Ada
@@ -1580,10 +1580,10 @@ Dog is not equal to Pig
 
 
 =={{header|F_Sharp|F#}}==
-As a .NET language F# can make use of the [System.String](http://msdn.microsoft.com/en-us/library/system.string) class.
+As a .NET language F# can make use of the [System.String](https://msdn.microsoft.com/en-us/library/system.string) class.
 As strict strongly typed language F# never coerces any other type to string.
 <tt>System.String</tt> implements <tt>Compare</tt> function variants which are told by a
-[StringComparison](http://msdn.microsoft.com/en-us/library/system.stringcomparison) enumeration value how to compare, which might be "culture sensitive" or use an "ordinal comparison".
+[StringComparison](https://msdn.microsoft.com/en-us/library/system.stringcomparison) enumeration value how to compare, which might be "culture sensitive" or use an "ordinal comparison".
 Both of these might also be of the <tt>IgnoreCase</tt> variant.
 
 ```fsharp
@@ -3461,16 +3461,16 @@ The case-insensitive lexical relationship is: 0
 
 ## Seed7
 
-Seed7 uses the string comparison operators [=](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29=%28in_string%29),
-[<>](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C%3E%28in_string%29),
-[<](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C%28in_string%29),
-[>](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3E%28in_string%29),
-[<=](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C=%28in_string%29) and
-[>=](http://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3E=%28in_string%29).
-The function [compare](http://seed7.sourceforge.net/libraries/string.htm#compare%28in_string,in_string%29)
+Seed7 uses the string comparison operators [=](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29=%28in_string%29),
+[<>](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C%3E%28in_string%29),
+[<](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C%28in_string%29),
+[>](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3E%28in_string%29),
+[<=](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3C=%28in_string%29) and
+[>=](https://seed7.sourceforge.net/libraries/string.htm#%28in_string%29%3E=%28in_string%29).
+The function [compare](https://seed7.sourceforge.net/libraries/string.htm#compare%28in_string,in_string%29)
 returns -1, 0 or 1 if the first argument is considered to be respectively less than, equal to, or greater than the second.
-All string comparisons work case sensitive. The functions [upper](http://seed7.sourceforge.net/libraries/string.htm#upper%28in_string%29) and
-[lower](http://seed7.sourceforge.net/libraries/string.htm#lower%28in_string%29) can be used to do an insensitive comparison.
+All string comparisons work case sensitive. The functions [upper](https://seed7.sourceforge.net/libraries/string.htm#upper%28in_string%29) and
+[lower](https://seed7.sourceforge.net/libraries/string.htm#lower%28in_string%29) can be used to do an insensitive comparison.
 
 
 ```seed7
@@ -3544,7 +3544,7 @@ const func integer: cmpNumeric (in var string: stri1, in var string: stri2) is f
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/string.htm#cmpNumeric>
+Original source: <https://seed7.sourceforge.net/algorith/string.htm#cmpNumeric>
 
 
 ## Sidef

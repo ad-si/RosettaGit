@@ -1979,7 +1979,7 @@ end
 link factors
 ```
 
-[factors.icn provides factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
+[factors.icn provides factors](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 ```txt
 1 : [ 1 ]
 2 : [ 2 ]
@@ -3636,7 +3636,7 @@ EndIf
 
 ## Python
 
-This uses the [functools.lru_cache](http://docs.python.org/dev/library/functools.html#functools.lru_cache) standard library module to cache intermediate results.
+This uses the [functools.lru_cache](https://docs.python.org/dev/library/functools.html#functools.lru_cache) standard library module to cache intermediate results.
 
 ```python
 from functools import lru_cache

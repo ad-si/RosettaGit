@@ -376,7 +376,7 @@ loop args [arg]{
 
 ## AutoHotkey
 
-From the AutoHotkey [documentation](http://www.autohotkey.com/docs/Scripts.htm):
+From the AutoHotkey [documentation](https://www.autohotkey.com/docs/Scripts.htm):
 "The script sees incoming parameters as the variables %1%, %2%, and so on. In addition, %0% contains the number of parameters passed (0 if none). "
 
 ```autohotkey
@@ -1497,7 +1497,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}} includes [options](http://www.cs.arizona.edu/icon/library/procs/options.htm) that parses the command line as switches and arguments and returns the results in a table.
+{{libheader|Icon Programming Library}} includes [options](https://www.cs.arizona.edu/icon/library/procs/options.htm) that parses the command line as switches and arguments and returns the results in a table.
 
 
 ## Io
@@ -1545,7 +1545,7 @@ public class Arguments {
 ```
 
 
-For more sophisticated command-line option and option-argument parsing use the ['''Apache Commons CLI'''](http://commons.apache.org/cli) (command-line interface) library.
+For more sophisticated command-line option and option-argument parsing use the ['''Apache Commons CLI'''](https://commons.apache.org/cli) (command-line interface) library.
 
 
 ## JavaScript
@@ -2198,7 +2198,7 @@ let () =
 ```
 
 
-=== Using the [Arg](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Arg.html) module ===
+=== Using the [Arg](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Arg.html) module ===
 
 
 ```ocaml
@@ -2335,7 +2335,7 @@ GetOptions (
 
 ## Perl 6
 
-Perl 5's <code>@ARGV</code> is available as <code>@*ARGS</code>. Alternatively, if you define a subroutine named <code>MAIN</code>, Perl will automatically process <code>@*ARGS</code> according to Unix conventions and <code>MAIN</code>'s signature (or signatures, if your <code>MAIN</code> is a multi sub) and then call <code>MAIN</code> with appropriate arguments; see [Synopsis 6](http://perlcabal.org/syn/S06.html#Declaring_a_MAIN_subroutine) or <http://perlgeek.de/en/article/5-to-6#post_14|5-to-6>.
+Perl 5's <code>@ARGV</code> is available as <code>@*ARGS</code>. Alternatively, if you define a subroutine named <code>MAIN</code>, Perl will automatically process <code>@*ARGS</code> according to Unix conventions and <code>MAIN</code>'s signature (or signatures, if your <code>MAIN</code> is a multi sub) and then call <code>MAIN</code> with appropriate arguments; see [Synopsis 6](https://perlcabal.org/syn/S06.html#Declaring_a_MAIN_subroutine) or <http://perlgeek.de/en/article/5-to-6#post_14|5-to-6>.
 
 
 ```perl6
@@ -2426,17 +2426,17 @@ $all_args_without_program_name = array_shift($argv);
 
 There are three ways to handle command-line arguments in PicoLisp:
 
-1. Obtain all arguments as a list of strings via '[argv](http://software-lab.de/doc/refA.html#argv)'
+1. Obtain all arguments as a list of strings via '[argv](https://software-lab.de/doc/refA.html#argv)'
 
-2. Fetch each argument individually with '[opt](http://software-lab.de/doc/refO.html#opt)'
+2. Fetch each argument individually with '[opt](https://software-lab.de/doc/refO.html#opt)'
 
-3. Use the built-in [command-line interpretation](http://software-lab.de/doc/ref.html#invoc), where arguments starting with a hyphen are executed as functions.
+3. Use the built-in [command-line interpretation](https://software-lab.de/doc/ref.html#invoc), where arguments starting with a hyphen are executed as functions.
 
 Here we use the third option, as it is not so obvious, sometimes more flexible,
 and in fact the most commonly used one for application development.
 
 We define 'c' and 'h' as functions, which retrieve their argument with 'opt',
-and then '[load](http://software-lab.de/doc/refL.html#load)' all remaining
+and then '[load](https://software-lab.de/doc/refL.html#load)' all remaining
 command line arguments.
 
 ```PicoLisp
@@ -2605,7 +2605,7 @@ count = len(arguments)
 
 When running a module by invoking Python, the Python interpreter processes and removes some of the arguments, and the module cannot access them. To process command line arguments, run the module directly. sys.argv is a copy of the command line arguments; modifying sys.argv will not change the arguments seen by other processes, e.g. ps.  (In other words sys.argv is an object which contains a copy of the process' command line arguments ... modifying that copy is only visible from within the Python program and not externally).
 
-For powerful option parsing capabilities check out the [optparse](http://docs.python.org/library/optparse.html) module.
+For powerful option parsing capabilities check out the [optparse](https://docs.python.org/library/optparse.html) module.
 
 
 ## R

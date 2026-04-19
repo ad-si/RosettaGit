@@ -444,7 +444,7 @@ new URL("https://sourceforge.net").eachLine { println it }
 
 ## Haskell
 
-This is just the example from [Network.HTTP.Conduit](http://hackage.haskell.org/packages/archive/http-conduit/1.8.5.1/doc/html/Network-HTTP-Conduit.html), with the http URL replaced with an https one, since [http-conduit](http://hackage.haskell.org/package/http-conduit) natively supports https without needing any additional work.
+This is just the example from [Network.HTTP.Conduit](https://hackage.haskell.org/packages/archive/http-conduit/1.8.5.1/doc/html/Network-HTTP-Conduit.html), with the http URL replaced with an https one, since [http-conduit](https://hackage.haskell.org/package/http-conduit) natively supports https without needing any additional work.
 
 
 ```haskell
@@ -516,7 +516,7 @@ Using <tt>gethttp</tt> from [[Web Scraping#J|Web Scraping]]
 
 ## Java
 
-Additional certificate information is available through the [javax.net.ssl.HttpsURLConnection](http://java.sun.com/javase/6/docs/api/javax/net/ssl/HttpsURLConnection.html) interface.
+Additional certificate information is available through the [javax.net.ssl.HttpsURLConnection](https://docs.oracle.com/javase/6/docs/api/javax/net/ssl/HttpsURLConnection.html) interface.
 
 ```Java
 
@@ -1090,7 +1090,7 @@ REALBasic provides an HTTPSecureSocket class for handling HTTPS connections. The
 
 ```ring
 
-cStr= download("http://sourceforge.net/")
+cStr= download("https://sourceforge.net/")
 see cStr + nl
 
 ```
@@ -1133,7 +1133,7 @@ outputs
 ```txt
 
 ["302", "Found"]
-{"location"=>["http://sourceforge.net/"],
+{"location"=>["https://sourceforge.net/"],
  "content-type"=>["text/html; charset=UTF-8"],
  "connection"=>["close"],
  "server"=>["nginx/0.7.60"],
@@ -1147,7 +1147,7 @@ outputs
  </head>
  <body>
   <h1>302 Found</h1>
-  The resource was found at <a href="http://sourceforge.net/">http://sourceforge.net/</a>;
+  The resource was found at <a href="https://sourceforge.net/">https://sourceforge.net/</a>;
 you should be redirected automatically.
 
 
@@ -1174,8 +1174,8 @@ object HttpsTest extends App {
 
 ## Seed7
 
-The library [gethttps.s7i](http://seed7.sourceforge.net/libraries/gethttps.htm) defines the function
-[getHttps](http://seed7.sourceforge.net/libraries/gethttps.htm#getHttps%28in_string%29) which uses the
+The library [gethttps.s7i](https://seed7.sourceforge.net/libraries/gethttps.htm) defines the function
+[getHttps](https://seed7.sourceforge.net/libraries/gethttps.htm#getHttps%28in_string%29) which uses the
 HTTPS protocol go get a file.
 
 

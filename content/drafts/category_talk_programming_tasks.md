@@ -27,7 +27,7 @@ I agree with Donal: Both lists are useful. One is alphabetical, the other is gro
 == Sort programming tasks ==
 We really need to have the ability to sort the programming tasks not only alphabetically but also chronologically. As it stands now, it's almost impossible to know which programming tasks have been added (or updated) recently. It's also difficult to know whether a task you have suggested has been accepted and added as an 'official' task for others to start solving.
 [[User:Francogrex|Francogrex]] 8:05, 06 October 2011 (UTC)
-:To solve the first problem we have [this link](http://rosettacode.org/wiki/Special:Ask/-5B-5BIs-20task::true-5D-5D/order%3DDESC/sort%3DModification_date) from the main page. For the other one I just watch [[Special:RecentChanges]] to see when a task gets created. You can get an RSS feed for that or just reload it all the time (which is what I do). --[[User:Mwn3d|Mwn3d]] 14:08, 7 October 2011 (UTC)
+:To solve the first problem we have [this link](https://rosettacode.org/wiki/Special:Ask/-5B-5BIs-20task::true-5D-5D/order%3DDESC/sort%3DModification_date) from the main page. For the other one I just watch [[Special:RecentChanges]] to see when a task gets created. You can get an RSS feed for that or just reload it all the time (which is what I do). --[[User:Mwn3d|Mwn3d]] 14:08, 7 October 2011 (UTC)
 
 == Are there any Recursion Tasks? ==
 

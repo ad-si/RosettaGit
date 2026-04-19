@@ -391,7 +391,7 @@ main = getContents >>= mapM_ doStuff.tail.lines
 
 ## J
 
-[for number pairs links to this page.](http://rosettacode.org/wiki/Input/Output_for_Pairs_of_Numbers#J|io)
+[for number pairs links to this page.](https://rosettacode.org/wiki/Input/Output_for_Pairs_of_Numbers#J|io)
 
 Example in bash.  jconsole is on the PATH.
 

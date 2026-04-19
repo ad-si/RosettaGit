@@ -573,7 +573,7 @@ _3 _2.5 _2 _1.5 _1 _0.5 0 0.5 1 1.5 2 2.5 3
 ```
 
 The loops with multiple ranges shall use this version of range.  Or so it is in on 2019, March 6.
-<http://rosettacode.org/wiki/Loops/with_multiple_ranges#J>
+<https://rosettacode.org/wiki/Loops/with_multiple_ranges#J>
 
 
 ```txt

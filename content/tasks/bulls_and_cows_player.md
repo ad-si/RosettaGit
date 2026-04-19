@@ -391,7 +391,7 @@ Remove(S, Guess, Bulls, Cows) {
 	Return SubStr(S2,1,-1)
 }
 
-; from http://rosettacode.org/wiki/Bulls and Cows#AutoHotkey
+; from https://rosettacode.org/wiki/Bulls and Cows#AutoHotkey
 Response(Guess,Code) {
 	Bulls := 0, Cows := 0
 	Loop, % StrLen(Code)
@@ -402,7 +402,7 @@ Response(Guess,Code) {
 	Return Bulls "," Cows
 }
 
-; from http://rosettacode.org/wiki/Permutations#Alternate_Version
+; from https://rosettacode.org/wiki/Permutations#Alternate_Version
 P(n,k="",opt=0,delim="",str="") {
 	i:=0
 	If !InStr(n,"`n")

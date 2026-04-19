@@ -12,7 +12,7 @@ tags = []
 
 ==C++:An Alternative approach==
 Really needs some explanation to merit citing from the task description. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 06:22, 22 April 2013 (UTC)
-:see <http://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle-->[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:54, 26 April 2013 (UTC)
+:see <https://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle-->[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:54, 26 April 2013 (UTC)
 
 ==relative speeds of formulas for Catalan numbers==
 

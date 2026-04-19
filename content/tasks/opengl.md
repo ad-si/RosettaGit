@@ -508,7 +508,7 @@ namespace OpenGLTest
 
 ## Clojure
 
-In this example, we use [Penumbra](http://github.com/ztellman/penumbra), which is an idiomatic wrapper for OpenGL.
+In this example, we use [Penumbra](https://github.com/ztellman/penumbra), which is an idiomatic wrapper for OpenGL.
 
 ```lisp
 (use 'penumbra.opengl)
@@ -2452,7 +2452,7 @@ triangles3d(M, col=rainbow(8))
 This example features C-style OpenGL api, that's not racket-idiomatic but offer more capabilites.
 
 Note: your system may miss some support libraries.
-If OpenGL context creation fails please consult Racket [documentation](http://docs.racket-lang.org/gui/libs.html)
+If OpenGL context creation fails please consult Racket [documentation](https://docs.racket-lang.org/gui/libs.html)
 
 
 ```racket

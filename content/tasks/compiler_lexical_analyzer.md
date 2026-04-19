@@ -5751,7 +5751,7 @@ Tested on perl v5.26.1
 #!/usr/bin/perl
 
 use strict;   # lex.pl - source to tokens
-use warnings; # http://www.rosettacode.org/wiki/Compiler/lexical_analyzer
+use warnings; # https://www.rosettacode.org/wiki/Compiler/lexical_analyzer
 no warnings qw(qw);
 
 my %keywords = map { $_, "Keyword_$_" } qw( while print if else putc );

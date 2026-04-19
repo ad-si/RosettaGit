@@ -795,7 +795,7 @@ void main() {
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2999,7 +2999,7 @@ fn main() {
 
 ## Seed7
 
-The function [isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime) below is borrowed from the [Seed7 algorithm collection](http://seed7.sourceforge.net/algorith).
+The function [isPrime](https://seed7.sourceforge.net/algorith/math.htm#isPrime) below is borrowed from the [Seed7 algorithm collection](https://seed7.sourceforge.net/algorith).
 
 
 ```seed7

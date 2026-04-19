@@ -34,7 +34,7 @@ I don't believe the J or Perl 6 entries are using exact arithmetic, unless they 
 :--[[User:DanBron|DanBron]] 20:04, 20 December 2012 (UTC)
 
 
-:: Normally [extended precision](http://en.wikipedia.org/wiki/Extended_precision) means floating-point with greater precision, however I will accept your explanation. The J code is very terse, it would be useful to readers if you or someone else can add a brief description to the solution of how it implements the algorithm.
+:: Normally [extended precision](https://en.wikipedia.org/wiki/Extended_precision) means floating-point with greater precision, however I will accept your explanation. The J code is very terse, it would be useful to readers if you or someone else can add a brief description to the solution of how it implements the algorithm.
 ::: Thanks, I hadn't realized J's terminology was non-standard.  I'll change the note on the solution to say "exact arithmetic" rather than "extended precision numbers".  
 
 :::Regarding the style of the solution: J's compact notation is one of, if not the most, salient feature of the language.  So, when I post solutions to RC, I try to emphasize it.  

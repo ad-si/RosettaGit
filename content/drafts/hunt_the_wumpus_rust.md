@@ -31,7 +31,7 @@ Welcome to \"Hunt the Wumpus\"
 
 The wumpus lives in a cave of 20 rooms. Each room has 3
 tunnels to other rooms. (The tunnels form a dodecahedron:
-http://en.wikipedia.org/wiki/dodecahedron)
+https://en.wikipedia.org/wiki/dodecahedron)
 
 Hazards:
 

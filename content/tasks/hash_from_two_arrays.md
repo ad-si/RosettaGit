@@ -233,7 +233,7 @@ MsgBox % hash["apple"] "`n" hash["two"]
 ## AWK
 
 Awk arrays are used for both lists and hash maps.
-<!--  <http://ideone.com/MsdNUc> -->
+<!--  <https://ideone.com/MsdNUc> -->
 
 ```awk
 # usage:  awk -v list1="i ii iii" -v list2="1 2 3"  -f hash2.awk
@@ -2457,7 +2457,7 @@ println("Successfully completed without errors.")
 
 ## Scheme
 
-Using [SRFI 69](http://srfi.schemers.org/srfi-69/srfi-69.html):
+Using [SRFI 69](https://srfi.schemers.org/srfi-69/srfi-69.html):
 
 ```scheme
 (define (lists->hash-table keys values . rest)
@@ -2654,7 +2654,7 @@ arr(joe)  = tailor
 ```
 
 
-Alternatively, a dictionary could be used: <!-- <http://ideone.com/6lI4k5> -->
+Alternatively, a dictionary could be used: <!-- <https://ideone.com/6lI4k5> -->
 
 ```tcl
 package require Tcl 8.5

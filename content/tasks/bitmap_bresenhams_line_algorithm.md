@@ -397,8 +397,8 @@ H              H
 
 {{trans|Ada}}
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
-{{works with|ALGOL 68G|Any - tested with release [algol68g-2.6](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.6](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: prelude/Bitmap/Bresenhams_line_algorithm.a68'''
 ```algol68
 # -*- coding: utf-8 -*- #
@@ -490,7 +490,7 @@ ffffffffffffffffffffffffffffffffffffffffff000000ffffffffffffffffffffffffffffffff
 
 ## Assembly
 
-16 bit Intel 8086\80486 Assembly for dos, see [x86 assembly language](http://en.wikipedia.org/wiki/X86_assembly_language).
+16 bit Intel 8086\80486 Assembly for dos, see [x86 assembly language](https://en.wikipedia.org/wiki/X86_assembly_language).
 To run this code you will need to use Dos emulator.
 
 ```txt
@@ -1672,7 +1672,7 @@ include std/graphics.e
 include std/math.e
 
 -- the new_image function and related code in the 25 or so
--- lines below are from http://rosettacode.org/wiki/Basic_bitmap_storage#Euphoria
+-- lines below are from https://rosettacode.org/wiki/Basic_bitmap_storage#Euphoria
 -- as of friday, march 2, 2012
 
 -- Some color constants:
@@ -3341,7 +3341,7 @@ for a -10:10 x -10:10 grid:
  /*********************************************************************
  * 21.05.2014  Walter Pachl
  * Implementing the pseudo code of
- *    http://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+ *    https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
  * under 'Simplification' (see also REXX version 2)
  *********************************************************************/
 grid.=
@@ -3816,7 +3816,7 @@ err=dx-dy                                        /*calculate error between adjus
 /* REXX ***************************************************************
 * 21.05.2014  Walter Pachl
 * Implementing the pseudo code of
-*    http://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+*    https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 * under 'Simplification'
 **********************************************************************/
 grid.='.'

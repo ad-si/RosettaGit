@@ -2498,7 +2498,7 @@ import scala.io.Source
 
 object FastPalindrome23 extends App {
 
-  val rawText = Source.fromURL("http://oeis.org/A060792/b060792.txt")
+  val rawText = Source.fromURL("https://oeis.org/A060792/b060792.txt")
   var count = 0
 
   rawText.getLines().map(_.split(" "))

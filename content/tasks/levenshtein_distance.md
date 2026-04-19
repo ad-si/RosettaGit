@@ -1319,7 +1319,7 @@ distance(rosettacode, raisethysword) = 8
 
 ### Standard Version
 
-The standard library [std.algorithm](http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#levenshteinDistance) module includes a Levenshtein distance function:
+The standard library [std.algorithm](https://digitalmars.com/d/2.0/phobos/std_algorithm.html#levenshteinDistance) module includes a Levenshtein distance function:
 
 ```d
 void main() {
@@ -2291,7 +2291,7 @@ levD=: i.@-@>:@#@] ,~ >:@i.@-@#@[ ,.~ ~:/
 lev=: [: {. {."1@((1&{ ,~ (1 1 , {.) <./@:+ }.)@,/\.)@,./@levD
 ```
 
-First, we setup up an matrix of costs, with 0 or 1 for unexplored cells (1 being where the character pair corresponding to that cell position has two different characters).  Note that the "cost to reach the empty string" cells go on the bottom and the right, instead of the top and the left, because this works better with J's "[insert](http://www.jsoftware.com/help/dictionary/d420.htm)" operation (which we will call "reduce" in the next paragraph here. It could also be thought of as a right fold which has been constrained such the initial value is the identity value for the operation. Or, just think of it as inserting its operation between each item of its argument...).
+First, we setup up an matrix of costs, with 0 or 1 for unexplored cells (1 being where the character pair corresponding to that cell position has two different characters).  Note that the "cost to reach the empty string" cells go on the bottom and the right, instead of the top and the left, because this works better with J's "[insert](https://www.jsoftware.com/help/dictionary/d420.htm)" operation (which we will call "reduce" in the next paragraph here. It could also be thought of as a right fold which has been constrained such the initial value is the identity value for the operation. Or, just think of it as inserting its operation between each item of its argument...).
 
 Then we reduce the rows of that matrix using an operation that treats those two rows as columns and reduces the rows of this derived matrix with an operation that gives the (unexplored cell + the minumum of the other cells) followed by (the cell adjacent to the previously unexplored cell.
 {{out|Example use}}
@@ -4645,7 +4645,7 @@ True True True True False False False False
 
 ### =Memoized recursion=
 
-(Uses [this](http://docs.python.org/dev/library/functools.html?highlight=functools.lru_cache#functools.lru_cache) cache from the standard library).
+(Uses [this](https://docs.python.org/dev/library/functools.html?highlight=functools.lru_cache#functools.lru_cache) cache from the standard library).
 
 ```python
 >>>

@@ -869,7 +869,7 @@ example_numbers:
 
 ```AutoHotkey
 ; Originally submitted by Laszlo:
-; http://www.autohotkey.com/forum/post-229412.html#229412
+; https://www.autohotkey.com/forum/post-229412.html#229412
 
 MsgBox % LuhnTest(49927398716)
 MsgBox % LuhnTest(49927398717)
@@ -4461,7 +4461,7 @@ EndIf
 
 ## Python
 
-The [divmod](http://docs.python.org/py3k/library/functions.html#divmod) in the function below conveniently splits a number into its two digits ready for summing:
+The [divmod](https://docs.python.org/py3k/library/functions.html#divmod) in the function below conveniently splits a number into its two digits ready for summing:
 
 ```python
 >>>

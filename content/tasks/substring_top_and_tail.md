@@ -1199,7 +1199,7 @@ write(s := "knight"," --> ", s[1] := "", s)  # drop 1st char
 
 ## J
 
-The monadic primitives <code>}.</code> ([Behead](http://www.jsoftware.com/help/dictionary/d531.htm)) and <code>}:</code> ([Curtail](http://www.jsoftware.com/help/dictionary/d532.htm)) are useful for this task.
+The monadic primitives <code>}.</code> ([Behead](https://www.jsoftware.com/help/dictionary/d531.htm)) and <code>}:</code> ([Curtail](https://www.jsoftware.com/help/dictionary/d532.htm)) are useful for this task.
 
 '''Example use:'''
 

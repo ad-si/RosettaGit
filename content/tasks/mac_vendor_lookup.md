@@ -54,7 +54,7 @@ A MAC address that does not return a valid result should return the String "N/A"
 ```AutoHotkey
 macLookup(MAC){
 	WebRequest := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-	WebRequest.Open("GET", "http://api.macvendors.com/" MAC)
+	WebRequest.Open("GET", "https://api.macvendors.com/" MAC)
 	WebRequest.Send()
 	return WebRequest.ResponseText
 }
@@ -104,7 +104,7 @@ Takes MAC address as input, prints usage on incorrect invocation, requires [libc
 #include <stdlib.h>
 #include <stdio.h>
 
-/* Length of http://api.macvendors.com/ */
+/* Length of https://api.macvendors.com/ */
 #define FIXED_LENGTH 16
 
 struct MemoryStruct {
@@ -155,7 +155,7 @@ int main(int argC,char* argV[])
 			chunk.size = 0;
 
         if ((curl = curl_easy_init()) != NULL) {
-				sprintf(str,"http://api.macvendors.com/%s",argV[1]);
+				sprintf(str,"https://api.macvendors.com/%s",argV[1]);
 
                                 curl_easy_setopt(curl, CURLOPT_URL, str);
 				curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
@@ -204,7 +204,7 @@ class Program
 {
     static async Task<string> LookupMac(string MacAddress)
     {
-        var uri = new Uri("http://api.macvendors.com/" + WebUtility.UrlEncode(MacAddress));
+        var uri = new Uri("https://api.macvendors.com/" + WebUtility.UrlEncode(MacAddress));
         using (var wc = new HttpClient())
             return await wc.GetStringAsync(uri);
     }
@@ -237,7 +237,7 @@ D4:F4:6F:C9:EF:8D       Apple, Inc.
 (defun mac-vendor (mac)
   (check-type mac string "A MAC address as a string")
   (multiple-value-bind (vendor status)
-    (drakma:http-request (format nil "http://api.macvendors.com/~a" mac))
+    (drakma:http-request (format nil "https://api.macvendors.com/~a" mac))
     (if (= 200 status)
       (format t "~%Vendor is ~a" vendor)
       (error "~%Not a MAC address: ~a" mac))))
@@ -265,7 +265,7 @@ begin
     try
       allowRedirect := true;
       try
-        res := Get('http://api.macvendors.com/' + ParamStr(1));
+        res := Get('https://api.macvendors.com/' + ParamStr(1));
         writeLn(res);
       except
         writeLn('N/A');
@@ -303,7 +303,7 @@ import (
 )
 
 func macLookUp(mac string) (res string){
-	resp, _ := http.Get("http://api.macvendors.com/" + mac)
+	resp, _ := http.Get("https://api.macvendors.com/" + mac)
 	body, _ := ioutil.ReadAll(resp.Body)
 	res = string(body)
 	return
@@ -359,7 +359,7 @@ fetchURL mgr url = try $ do
 
 lookupMac :: Manager -> String -> IO String
 lookupMac mgr mac = do
-  eth <- fetchURL mgr $ "http://api.macvendors.com/" ++ mac
+  eth <- fetchURL mgr $ "https://api.macvendors.com/" ++ mac
   return $ case eth of
              Left _ -> "null"
              Right resp -> let body = responseBody resp
@@ -397,7 +397,7 @@ banana            = N/A
 
 ```j
 require 'web/gethttp'
-lookupMACvendor=: [: gethttp 'http://api.macvendors.com/'&,
+lookupMACvendor=: [: gethttp 'https://api.macvendors.com/'&,
 ```
 
 '''Example Usage
@@ -431,7 +431,7 @@ import java.net.URL;
  * @author James A. Donnell Jr. */
 public class Lookup {
 	/** Base URL for API. The API from www.macvendors.com was chosen. */
-	private static final String baseURL = "http://api.macvendors.com/";
+	private static final String baseURL = "https://api.macvendors.com/";
 
 	/** Performs lookup on MAC address(es) supplied in arguments.
 	 * @param args MAC address(es) to lookup. */
@@ -479,7 +479,7 @@ using Requests
 
 function getvendor(addr::String)
     try
-        get("http://api.macvendors.com/$addr") |> readstring
+        get("https://api.macvendors.com/$addr") |> readstring
     catch e
         nothing
     end
@@ -508,7 +508,7 @@ D4:F4:6F:C9:EF:8D -> Apple, Inc.
 
 import java.net.URL
 
-fun lookupVendor(mac: String) = URL("http://api.macvendors.com/" + mac).readText()
+fun lookupVendor(mac: String) = URL("https://api.macvendors.com/" + mac).readText()
 
 fun main(args: Array<String>) {
     val macs = arrayOf("FC-A1-3E", "FC:FB:FB:01:FA:21", "88:53:2E:67:07:BE", "D4:F4:6F:C9:EF:8D")
@@ -536,7 +536,7 @@ Apple, Inc.
 -- Created by James A. Donnell Jr.
 -- www.JamesDonnell.com
 
-local baseURL = "http://api.macvendors.com/"
+local baseURL = "https://api.macvendors.com/"
 
 local function lookup(macAddress)
 	http = require "socket.http"
@@ -573,7 +573,7 @@ Module Checkit {
        Urls=("88:53:2E:67:07:BE", "FC:FB:FB:01:FA:21", "D4:F4:6F:C9:EF:8D", "23:45:67")
        url=each(URLs)
        While Url {
-             Print Array$(URL), httpGet$("http://api.macvendors.com/"+Array$(URL))
+             Print Array$(URL), httpGet$("https://api.macvendors.com/"+Array$(URL))
              Wait 20
       }
 }
@@ -586,7 +586,7 @@ Checkit
 
 
 ```Mathematica
-macLookup[mac_String] := Quiet[Check[Import["http://api.macvendors.com/" <> mac], "N/A"]]
+macLookup[mac_String] := Quiet[Check[Import["https://api.macvendors.com/" <> mac], "N/A"]]
 ```
 
 
@@ -610,7 +610,7 @@ Dell Inc.
 import httpclient
 
 for mac in ["FC-A1-3E", "FC:FB:FB:01:FA:21", "BC:5F:F4"]:
-  echo newHttpClient().getContent("http://api.macvendors.com/"&mac)
+  echo newHttpClient().getContent("https://api.macvendors.com/"&mac)
 ```
 
 
@@ -655,7 +655,7 @@ for my $mac (@macs) {
 sub get_mac_vendor {
     my $s = shift;
 
-    my $req = HTTP::Request->new( GET => "http://api.macvendors.com/$s" );
+    my $req = HTTP::Request->new( GET => "https://api.macvendors.com/$s" );
     my $res = $ua->request($req);
 
     # A error related to the network connectivity or the API should
@@ -722,7 +722,7 @@ my $ua = HTTP::UserAgent.new;
 
 $ua.timeout = 10; # seconds
 
-my $server = 'http://api.macvendors.com/';
+my $server = 'https://api.macvendors.com/';
 
 sub lookup ($mac) {
     my $response = $ua.get: "$server+$mac";
@@ -763,7 +763,7 @@ string test = "00-11-22-33-44-55-66"     -- CIMSYS Inc
 include builtins/libcurl.e
 curl_global_init()
 atom curl = curl_easy_init()
-string url = sprintf("http://api.macvendors.com/%s",{test})
+string url = sprintf("https://api.macvendors.com/%s",{test})
 curl_easy_setopt(curl, CURLOPT_URL, url)
 object res = curl_easy_perform_ex(curl)
 if string(res) then
@@ -816,7 +816,7 @@ import requests
 
 for addr in ['88:53:2E:67:07:BE', 'FC:FB:FB:01:FA:21',
         'D4:F4:6F:C9:EF:8D', '23:45:67']:
-    vendor = requests.get('http://api.macvendors.com/' + addr).text
+    vendor = requests.get('https://api.macvendors.com/' + addr).text
     print(addr, vendor)
 ```
 
@@ -925,7 +925,7 @@ extern crate reqwest;
 use std::{thread, time};
 
 fn get_vendor(mac: &str) -> Option<String> {
-    let mut url = String::from("http://api.macvendors.com/");
+    let mut url = String::from("https://api.macvendors.com/");
     url.push_str(mac);
     let url_ref = &url;
     match reqwest::get(url_ref) {
@@ -994,7 +994,7 @@ object LookUp extends App {
   val macs = Seq("FC-A1-3E", "FC:FB:FB:01:FA:21", "88:53:2E:67:07:BE", "D4:F4:6F:C9:EF:8D")
 
   def lookupVendor(mac: String) =
-    scala.io.Source.fromURL("""http://api.macvendors.com/""" + mac, "UTF-8").mkString
+    scala.io.Source.fromURL("""https://api.macvendors.com/""" + mac, "UTF-8").mkString
 
   macs.foreach(mac => println(lookupVendor(mac)))
 }
@@ -1019,7 +1019,7 @@ proc geturl {url} {
     ::http::data $tok
 }
 proc maclookup {mac} {
-    geturl http://api.macvendors.com/$mac
+    geturl https://api.macvendors.com/$mac
 }
 
 foreach mac {00-14-22-01-23-45 88:53:2E:67:07:BE} {
@@ -1041,7 +1041,7 @@ Uses libcurl (the multiprotocol file transfer library) to do the web query
 
 ```zkl
 var [const] CURL=Import("zklCurl");   // libcurl
-const MAC_VENDORS="http://api.macvendors.com/";
+const MAC_VENDORS="https://api.macvendors.com/";
 
 fcn lookUp(macAddress){
    httpAddr:=MAC_VENDORS + macAddress;

@@ -12,7 +12,7 @@ tags = []
 
 ==Table of contents==
 It looks like this page lack a table of contents. Other pages have it, but this doesn't. I can't seem to find a way to add one either... Perhaps someone could add it/shed some light on the issue? --[[User:Ullner|Ullner]] 13:30, 6 April 2007 (EDT)
-:Ah, according to [Wikipedia's help section](http://en.wikipedia.org/wiki/Wikipedia:Section#Table_of_contents_.28TOC.29), the page must contain more than 3 headings to get an automagic TOC. And this page only got three. So, it seems this will be fixed automagically once someone add a forth language. --[[User:Ullner|Ullner]] 11:05, 8 April 2007 (EDT)  
+:Ah, according to [Wikipedia's help section](https://en.wikipedia.org/wiki/Wikipedia:Section#Table_of_contents_.28TOC.29), the page must contain more than 3 headings to get an automagic TOC. And this page only got three. So, it seems this will be fixed automagically once someone add a forth language. --[[User:Ullner|Ullner]] 11:05, 8 April 2007 (EDT)  
 
 :: You can force a table of contents   (TOC)   by using the string: 
          <big> <nowiki> __TOC__ </nowiki> </big> 

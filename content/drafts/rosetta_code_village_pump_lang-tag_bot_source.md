@@ -212,7 +212,7 @@ local *tasks = LoadFile $tasks_path;
 local *done  = $tasks{done};
 local *todo  = $tasks{todo};
 
-my $mw = new MediaWiki::API({api_url => 'http://rosettacode.org/mw/api.php'});
+my $mw = new MediaWiki::API({api_url => 'https://rosettacode.org/mw/api.php'});
 $mw->login({lgname => $username, lgpassword => $password})
   or die q{Couldn't log in. (}, $mw->{error}->{code}, ': ',
   $mw->{error}->{details}, ')';

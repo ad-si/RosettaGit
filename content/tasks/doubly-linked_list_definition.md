@@ -1587,7 +1587,7 @@ type dlList struct {
 }
 ```
 
-Or, just use the [container/list](http://golang.org/pkg/container/list/#Element) package:
+Or, just use the [container/list](https://golang.org/pkg/container/list/#Element) package:
 
 ```go
 package main
@@ -1614,7 +1614,7 @@ func main() {
 
 ## Haskell
 
-For an efficient implementation, see the <code>Data.FDList</code> module provided by [liboleg](http://hackage.haskell.org/package/liboleg). But before using doubly linked lists at all, see [this discussion on Stack Overflow](http://stackoverflow.com/questions/1844195/doubly-linked-list-in-a-purely-functional-programming-language).
+For an efficient implementation, see the <code>Data.FDList</code> module provided by [liboleg](https://hackage.haskell.org/package/liboleg). But before using doubly linked lists at all, see [this discussion on Stack Overflow](https://stackoverflow.com/questions/1844195/doubly-linked-list-in-a-purely-functional-programming-language).
 
 
 ```haskell
@@ -2750,7 +2750,7 @@ Insertion at Middle: One Five Six Three Four Two
 
 ## Python
 
-In the high level language Python, its <code>list</code> native datatype should be used. It automatically preserves the integrity of the list w.r.t. loops and allows insertion at any point using [list.insert()](http://docs.python.org/library/stdtypes.html#typesseq-mutable) via an integer index into the list rather than a machine-code level pointer to a list element.
+In the high level language Python, its <code>list</code> native datatype should be used. It automatically preserves the integrity of the list w.r.t. loops and allows insertion at any point using [list.insert()](https://docs.python.org/library/stdtypes.html#typesseq-mutable) via an integer index into the list rather than a machine-code level pointer to a list element.
 
 
 ## Racket

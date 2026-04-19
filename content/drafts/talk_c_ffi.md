@@ -17,5 +17,5 @@ This task looks exceptionally similar to [[Call foreign language function]]. '''
 :::: When importing the content you forgot to make the attribution, how can we correct this? [[User:Blue Prawn|Blue Prawn]] 22:10, 17 August 2009 (UTC)
 ::::: It's a wiki. You work it out… (I'm not doing it because I don't think there's a need to attribute the content of the task to its former location. If you meant a different type of attribution, you'll have to explain more.) —[[User:Dkf|Donal Fellows]] 10:26, 18 August 2009 (UTC)
 :::::: if you copy-past content which you are not the author, it would be fine to tell who is the original author in the summary log field,
-:::::: I have made a no-op to add such a log in the history page: <http://rosettacode.org/mw/index.php?title=Call_foreign_language_function&action=history>
+:::::: I have made a no-op to add such a log in the history page: <https://rosettacode.org/mw/index.php?title=Call_foreign_language_function&action=history>
 ::::::: Where there's a wiki, there's a way. :-) My goal is the readability of the resulting page, not the building up of a grand set of attributed examples. —[[User:Dkf|Donal Fellows]] 09:05, 20 August 2009 (UTC)

@@ -21,7 +21,7 @@ RCBF is intended for educational purposes only; There is no guarantee it won't l
 plus the GNU C++ Standard Library
 
 ```cpp
-// RCBF -- A free Brainfuck interpreter written for Rosetta Code (http://rosettacode.org)
+// RCBF -- A free Brainfuck interpreter written for Rosetta Code (https://rosettacode.org)
 // Created by Mike Mol and Mike Neurohr, and under the same license as Rosetta Code.
 // Repaired by Robert de Bath -- but Ghods is it slow!
 

@@ -22,5 +22,5 @@ The manual page accidentally omits <code>!< != !></code>, but AT&T dc does have 
 * [source code](http://minnie.tuhs.org/cgi-bin/utree.pl?file=V2/cmd) (dc1.s to dc5.s), Version 2 AT&T UNIX
 
 ## Modern dc
-The [Heirloom Project](http://heirloom.sourceforge.net/) provides AT&T dc along with other System V commands.
-* [dc(1) manual](http://heirloom.sourceforge.net/man/dc.1.html) and [source code](http://heirloom.cvs.sourceforge.net/viewvc/heirloom/heirloom/dc/)
+The [Heirloom Project](https://heirloom.sourceforge.net/) provides AT&T dc along with other System V commands.
+* [dc(1) manual](https://heirloom.sourceforge.net/man/dc.1.html) and [source code](http://heirloom.cvs.sourceforge.net/viewvc/heirloom/heirloom/dc/)

@@ -13,7 +13,7 @@ tags = []
 ==Explanation==
 Solfa Trigraphs? Could you add more explanation/links to help those not from that audio processing background? Thanks.--[[User:Paddy3118|Paddy3118]] 13:46, 12 July 2011 (UTC)
 
-:http://en.wikipedia.org/wiki/Tonic_sol-fa
+:https://en.wikipedia.org/wiki/Tonic_sol-fa
 :These have used digraph spelling variant with a single reh. (do, reh, me, fa, so, la, te, do), but I don't suppose that matters. You must remember Julie Andrews: Doe - a deer a female deer, Ray - a drop of golden sun, etc :) [[User:Markhobley|Markhobley]] 14:03, 12 July 2011 (UTC)
 
 ==Average pitch or average frequency?==

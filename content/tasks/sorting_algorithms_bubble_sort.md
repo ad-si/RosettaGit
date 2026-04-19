@@ -172,7 +172,7 @@ This can be expressed in pseudo-code as follows (assuming 1-based indexing):
 ## References
 
 * The article on [[wp:Bubble_sort|Wikipedia]].
-* Dance [interpretation](http://www.youtube.com/watch?v=lyZQPjUT5B4&feature=youtu.be).
+* Dance [interpretation](https://www.youtube.com/watch?v=lyZQPjUT5B4&feature=youtu.be).
 
 
 
@@ -5626,7 +5626,7 @@ const proc: bubbleSort (inout array elemType: arr) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#bubbleSort>
+Original source: <https://seed7.sourceforge.net/algorith/sorting.htm#bubbleSort>
 
 ## Shen
 

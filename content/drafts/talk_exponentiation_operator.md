@@ -39,7 +39,7 @@ The awk solution is pretty weak: It does not handle fractional exponents. It loo
 
 ::The exponent operator is causing confusion. I am under the impression that some versions of awk do not have this. Looking at various documentation on the internet, the caret operator is not on the list of operators. However, some documents state that POSIX lists the caret, but that doesn't mean anything because that could be a retrofit. Did System 5 awk supported the caret as an exponent operator? I only have it listed as a regular expression anchor. I was hoping to come up with a formula that does not use the exponent operator altogether. [[User:Markhobley|Markhobley]] 22:34, 7 September 2011 (UTC)
 	
-:::[oawk](http://heirloom.sourceforge.net/man/oawk.1.html) is missing the ^ operator. I believe that the ^ operator and the function keyword appeared in [[nawk]] around 1985 to 1988, but I am not sure. --[[User:Kernigh|Kernigh]] 23:34, 6 March 2012 (UTC)
+:::[oawk](https://heirloom.sourceforge.net/man/oawk.1.html) is missing the ^ operator. I believe that the ^ operator and the function keyword appeared in [[nawk]] around 1985 to 1988, but I am not sure. --[[User:Kernigh|Kernigh]] 23:34, 6 March 2012 (UTC)
 
 ==diatomic operator==
 

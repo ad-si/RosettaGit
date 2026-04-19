@@ -1015,7 +1015,7 @@ M: bar foo drop "Hello!" print ;
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -2131,7 +2131,7 @@ This is method 2 on +Singleton
 
 ### per Borg Design
 
-In Python we use the [Borg pattern](http://code.activestate.com/recipes/66531/) to share state between instances rather than concentrate on identity.
+In Python we use the [Borg pattern](https://code.activestate.com/recipes/66531/) to share state between instances rather than concentrate on identity.
 
 Every instance of the Borg class will share the same state:
 
@@ -2484,7 +2484,7 @@ let sharedObject = SingletonClass.sharedInstance
 
 ## Tcl
 
-ref <http://wiki.tcl.tk/21595>
+ref <https://wiki.tcl-lang.org/21595>
 
 ```tcl
 package require TclOO

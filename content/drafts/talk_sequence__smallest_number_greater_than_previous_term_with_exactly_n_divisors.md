@@ -41,7 +41,7 @@ I don't understand the output of the   '''F#'''   entry.   Where is the list of 
 :::::::: Perhaps we should have two tasks: A005179 Smallest number with exactly n divisors; and A069654 a(1) = 1; for n > 1, a(n) = smallest number > a(n-1) having exactly n divisors. 
  If we can only have one I would favour A005179 for its number theoretic interest. Why does the sequence have spikes at prime n? Anyone proposing this task should be able to answer this question!!!! --[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 16:20, 10 April 2019 (UTC)
 ::::::::: Already said in [[Anti-primes_Plus#Pascal|Pascal]]. waitung for CalmoSoft :-) -- [[User:Horsth|Horsth]]
-:::::::::: I'm sure that why the sequence has spikes at prime n hasn't been adequately said! I've now had my say at <http://www.rosettacode.org/wiki/Talk:Sequence:_smallest_number_with_exactly_n_divisors>.
+:::::::::: I'm sure that why the sequence has spikes at prime n hasn't been adequately said! I've now had my say at <https://www.rosettacode.org/wiki/Talk:Sequence:_smallest_number_with_exactly_n_divisors>.
 
 == Rename and split ==
 

@@ -37,7 +37,7 @@ languages = [
 ]
 +++
 
-Negative base numbers are an alternate way to encode numbers without the need for a minus sign. Various negative bases may be used including negadecimal (base -10), negabinary (-2) and negaternary (-3).<ref>[Negabinary on Wolfram Mathworld](http://mathworld.wolfram.com/Negabinary.html)</ref><ref>[Negative base](https://en.wikipedia.org/wiki/Negative_base) on Wikipedia</ref>
+Negative base numbers are an alternate way to encode numbers without the need for a minus sign. Various negative bases may be used including negadecimal (base -10), negabinary (-2) and negaternary (-3).<ref>[Negabinary on Wolfram Mathworld](https://mathworld.wolfram.com/Negabinary.html)</ref><ref>[Negative base](https://en.wikipedia.org/wiki/Negative_base) on Wikipedia</ref>
 
 
 ## Task

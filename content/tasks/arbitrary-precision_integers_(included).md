@@ -1451,7 +1451,7 @@ print left$( a$, 20); "......"; right$( a$, 20)
 
 ## Julia
 
-Julia includes built-in support for arbitrary-precision arithmetic using the [GMP](http://gmplib.org/) (integer) and [GNU MPFR](http://www.mpfr.org/) (floating-point) libraries, wrapped by the built-in <code>BigInt</code> and <code>BigFloat</code> types, respectively.
+Julia includes built-in support for arbitrary-precision arithmetic using the [GMP](http://gmplib.org/) (integer) and [GNU MPFR](https://www.mpfr.org/) (floating-point) libraries, wrapped by the built-in <code>BigInt</code> and <code>BigFloat</code> types, respectively.
 
 
 ```julia
@@ -1543,7 +1543,7 @@ Print[StringTake[s,20]<>"..."<>StringTake[s,-20]<>" ("<>ToString@StringLength@s<
 
 ## MATLAB
 
-Using the [Variable Precision Integer](http://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic) library this task is accomplished thusly:
+Using the [Variable Precision Integer](https://www.mathworks.com/matlabcentral/fileexchange/22725-variable-precision-integer-arithmetic) library this task is accomplished thusly:
 
 ```matlab
 >
@@ -1809,7 +1809,7 @@ let () =
 ```
 
 
-A more readable program can be obtained using [Delimited Overloading](http://forge.ocamlcore.org/projects/pa-do/):
+A more readable program can be obtained using [Delimited Overloading](https://forge.ocamlcore.org/projects/pa-do/):
 
 ```ocaml
 let () =
@@ -2065,7 +2065,7 @@ printf(1,"5^4^3^2 = %s and has %d digits (%s)\n",{s,l,elapsed(time()-t0)})
 
 PHP has two separate arbitrary-precision integer services.
 
-The first is the BC library.<http://us3.php.net/manual/en/book.bc.php> It represents the integers as strings, so may not be very efficient. The advantage is that it is more likely to be included with PHP.
+The first is the BC library.<https://us3.php.net/manual/en/book.bc.php> It represents the integers as strings, so may not be very efficient. The advantage is that it is more likely to be included with PHP.
 
 ```php
 <?php
@@ -2080,7 +2080,7 @@ printf("5**4**3**2 = %s...%s and has %d digits\n", substr($y,0,20), substr($y,-2
 
 ```
 
-The second is the GMP library.<http://us3.php.net/manual/en/book.gmp.php> It represents the integers as an opaque type, so may be faster. However, it is less likely to be compiled into your version of PHP (it isn't compiled into mine).
+The second is the GMP library.<https://us3.php.net/manual/en/book.gmp.php> It represents the integers as an opaque type, so may be faster. However, it is less likely to be compiled into your version of PHP (it isn't compiled into mine).
 
 
 ## PicoLisp
@@ -2201,7 +2201,7 @@ MessageRequester("Arbitrary-precision integers, PureBasic",out$)
 
 ## Python
 
-Python comes with built-in support for arbitrary precision integers. The type of arbitrary precision integers is <tt>[long](http://docs.python.org/library/stdtypes.html#typesnumeric)</tt> in Python 2.x (overflowing operations on <tt>int</tt>'s are automatically converted into <tt>long</tt>'s), and <tt>[int](http://docs.python.org/3.1/library/stdtypes.html#typesnumeric)</tt> in Python 3.x.
+Python comes with built-in support for arbitrary precision integers. The type of arbitrary precision integers is <tt>[long](https://docs.python.org/library/stdtypes.html#typesnumeric)</tt> in Python 2.x (overflowing operations on <tt>int</tt>'s are automatically converted into <tt>long</tt>'s), and <tt>[int](https://docs.python.org/3.1/library/stdtypes.html#typesnumeric)</tt> in Python 3.x.
 
 ```python
 >>
@@ -2474,7 +2474,7 @@ scala>
 
 ## Scheme
 
-[R<sup>4</sup>RS](http://people.csail.mit.edu/jaffer/r4rs_8.html#SEC52) and [R<sup>5</sup>RS](http://schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.2.3) encourage, and [R<sup>6</sup>RS](http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-6.html#node_sec_3.4) requires, that exact integers be of arbitrary precision.
+[R<sup>4</sup>RS](https://people.csail.mit.edu/jaffer/r4rs_8.html#SEC52) and [R<sup>5</sup>RS](http://schemers.org/Documents/Standards/R5RS/HTML/r5rs-Z-H-9.html#%_sec_6.2.3) encourage, and [R<sup>6</sup>RS](http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-6.html#node_sec_3.4) requires, that exact integers be of arbitrary precision.
 
 ```scheme
 (define x (expt 5 (expt 4 (expt 3 2))))

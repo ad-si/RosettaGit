@@ -9,4 +9,4 @@ id = 16920
 categories = []
 tags = []
 +++
-Spn is the reference implementation of the Sparkling scripting language <http://rosettacode.org/wiki/Category:Sparkling>.
+Spn is the reference implementation of the Sparkling scripting language <https://rosettacode.org/wiki/Category:Sparkling>.

@@ -110,7 +110,7 @@ I'm reverting the last change of array size from 8 to 30, since it's mathematica
 
 == Factor missing from 15 November 2001 to 23 March 2012 ==
 
-An anonymous user [accidentally deleted the Factor example](http://rosettacode.org/mw/index.php?title=Prime_decomposition&diff=next&oldid=125923) at '''15 November 2001'''. Rosetta Code never caught this mistake and never restored the deleted code. Nickolas [contributed a new Factor example](http://rosettacode.org/mw/index.php?title=Prime_decomposition&diff=134165&oldid=132999) at '''23 March 2012'''. --[[User:Kernigh|Kernigh]] 15:03, 23 March 2012 (UTC)
+An anonymous user [accidentally deleted the Factor example](https://rosettacode.org/mw/index.php?title=Prime_decomposition&diff=next&oldid=125923) at '''15 November 2001'''. Rosetta Code never caught this mistake and never restored the deleted code. Nickolas [contributed a new Factor example](https://rosettacode.org/mw/index.php?title=Prime_decomposition&diff=134165&oldid=132999) at '''23 March 2012'''. --[[User:Kernigh|Kernigh]] 15:03, 23 March 2012 (UTC)
 
 : '''2001'''?   I thought ''Rosetta Code'' was inaugurated in '''2007'''. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 13:37, 16 October 2013 (UTC)
 

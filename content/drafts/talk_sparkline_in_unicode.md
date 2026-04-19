@@ -267,7 +267,7 @@ Oh, my font is Courier. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|ta
 
 : I find that there's quite wide differences in the quality of fonts when it comes to blocks and box elements; a lot of fonts simply don't have the things that should extend to the limits of the glyph box they declare actually doing so at all. In my limited experimenting, Courier New is considerably better than the others I've tried (Andale Mono, Consolas, Courier, Monaco) for this sort of thing. Not much we can do about that really (except “blame the font makers”, which isn't very helpful). –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 11:24, 20 June 2013 (UTC)
 
-I now find that there is raggedness in the baseline of my bar choice if I swap to Consolas font. I think I'll revert to using Tims seven bars and search for a font as the [Unicode page](http://www.unicode.org/Public/UNIDATA/NamesList.txt) has nothing to say on this, just:
+I now find that there is raggedness in the baseline of my bar choice if I swap to Consolas font. I think I'll revert to using Tims seven bars and search for a font as the [Unicode page](https://www.unicode.org/Public/UNIDATA/NamesList.txt) has nothing to say on this, just:
 
 ```txt
 @@	2580	Block Elements	259F

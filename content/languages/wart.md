@@ -9,7 +9,7 @@ id = 16381
 categories = []
 tags = []
 +++
-[Wart](http://github.com/akkartik/wart#readme) is an experimental, dynamic, [batshit-liberal](http://plus.google.com/110981030061712822816/posts/KaSKeg4vQtz) language designed to eventually be used by small teams of [intrinsically-motivated](http://en.wikipedia.org/wiki/Motivation#Intrinsic_and_extrinsic_motivation) programmers. Wart is based on [Lisp](http://paulgraham.com/lispfaq1.html), but with a cleaner syntax and more powerful primitives to help non-lispers appreciate the power of Lisp. Wart was designed with several questions in mind:
+[Wart](https://github.com/akkartik/wart#readme) is an experimental, dynamic, [batshit-liberal](http://plus.google.com/110981030061712822816/posts/KaSKeg4vQtz) language designed to eventually be used by small teams of [intrinsically-motivated](https://en.wikipedia.org/wiki/Motivation#Intrinsic_and_extrinsic_motivation) programmers. Wart is based on [Lisp](http://paulgraham.com/lispfaq1.html), but with a cleaner syntax and more powerful primitives to help non-lispers appreciate the power of Lisp. Wart was designed with several questions in mind:
 
 * How far can we change the syntax of Lisp without compromising the power of Lisp macros? Wart has several features to help make codebases more pleasurable to read and easier to ramp up on.
 *# While lispers can continue to write fully-parenthesized Lisp, Wart provides a whitespace-sensitive syntax that is easy to get used to and eliminates most parentheses for the convenience of non-lisp readers.<pre style='margin-left:3.5em'>if (odd 3) "odd"
@@ -38,11 +38,11 @@ subtract 3 :from 4
 
 * Can a language implementation remain intelligible to outsiders over time, especially under pressure to run fast? Wart is exploring experimental primitives in the core interpreter that will make partial evaluation as easy as passing code through eval multiple times.
 
-These are all hard open questions, not expected to be definitively answered anytime soon. Wart is an experiment, and looking for feedback from people unafraid to bounce between language and implementation. If that's you, check it out: <http://github.com/akkartik/wart#readme>
+These are all hard open questions, not expected to be definitively answered anytime soon. Wart is an experiment, and looking for feedback from people unafraid to bounce between language and implementation. If that's you, check it out: <https://github.com/akkartik/wart#readme>
 
 To run the following examples in most places (but not Windows):
 
- $ git clone <http://github.com/akkartik/wart>
+ $ git clone <https://github.com/akkartik/wart>
  $ cd wart
  $ ./wart
  ready! type in an expression, then hit enter twice. ctrl-d exits.

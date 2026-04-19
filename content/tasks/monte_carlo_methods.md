@@ -295,7 +295,7 @@ print (("100 000 000:",pi (100 000 000),new line))
 
 
 =={{Header|AutoHotkey}}==
-Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
+Source: [AutoHotkey forum](https://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```autohotkey
 
@@ -1466,7 +1466,7 @@ end
 ```
 
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 Rounds=100000 Pi ~ 3.143400
@@ -2030,7 +2030,7 @@ monteCarloPi /@ (10^Range@6)
 
 ## MATLAB
 
-See: [Monte Carlo Simulation](http://www.mathworks.com/discovery/monte-carlo-simulation.html) in MATLAB for more examples
+See: [Monte Carlo Simulation](https://www.mathworks.com/discovery/monte-carlo-simulation.html) in MATLAB for more examples
 
 The first example given is not vectorized. MATLAB has a self-imposed memory limitation that prevents this simulation from having more than 3 decimal digits of accuracy. Because of this limitation it is best to vectorize the code as much as possible so extra memory isn't consumed by unneeded variables. Therefore, I have provided a second solution that is maximally vectorized.
 

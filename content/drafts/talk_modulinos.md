@@ -41,7 +41,7 @@ TL;DR: All four behaviors are useful to know and they're very hard to Google. --
 
 == Some chat in IRC ==
 
-There was some discussion in IRC on the subject: [http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683](http://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683). --[[User:Short Circuit|Michael Mol]] 16:14, 4 March 2011 (UTC)
+There was some discussion in IRC on the subject: [https://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683](https://irclog.perlgeek.de/rosettacode/2011-03-04#i_3355683). --[[User:Short Circuit|Michael Mol]] 16:14, 4 March 2011 (UTC)
 
 :When a compiled program is run, the compiled program is run. The compiled program cannot be loaded as a library too can it? (I mean that it isn't done normally). If not then only normally interpreted languages could have this property; things like the C example don't fit the task description. --[[User:Paddy3118|Paddy3118]] 16:33, 4 March 2011 (UTC)
 :: It can; we do exactly this in one of my employer's products. I was rather surprised myself. I'd venture a guess that, at the OS level, this is exactly what's done with binary images anyway, except that the OS automatically runs a predefined entry point. (On Windows, I believe this is WinMain. I'm not sure what it is on Linux. The CRT wraps these in both cases.) The C example on the page is incorrect to that end, though. I believe the Java example is, too. --[[User:Short Circuit|Michael Mol]] 17:37, 4 March 2011 (UTC)
@@ -159,7 +159,7 @@ So the main method in MainClass is callable from another class if MainClass is i
 ==What ''is'' an "Executable library"==
 ''(This section needs expansion and discussion to see if we have enough to create a task that is capable of being completed by enough languages.)'' --[[User:Paddy3118|Paddy3118]] 07:45, 7 March 2011 (UTC)
 
-Since my words only carry so far, someone else wrote a short description of this behavior at [Stack Overflow](http://stackoverflow.com/questions/1973373/why-does-it-do-this-if-name-main/1973391#1973391). --[[User:Mcandre]]
+Since my words only carry so far, someone else wrote a short description of this behavior at [Stack Overflow](https://stackoverflow.com/questions/1973373/why-does-it-do-this-if-name-main/1973391#1973391). --[[User:Mcandre]]
 
 When given a task in a programming 'contest' such as to create a simple function and to find values of that function at certain points; then you would be giving your example in the form of an executable library if:
 

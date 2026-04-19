@@ -1157,7 +1157,7 @@ Output:
 '[RC] Forest Fire
 'written for FreeBASIC
 'Program code based on BASIC256 from Rosettacode website
-'http://rosettacode.org/wiki/Forest_fire#BASIC256
+'https://rosettacode.org/wiki/Forest_fire#BASIC256
 '06-10-2016 updated/tweaked the code
 'compile with fbc -s gui
 
@@ -1809,7 +1809,7 @@ A couple of other notes on the listing:
 1050 RETURN
 ```
 
-Screenshot [here](http://www.edmundgriffiths.com/zx81forest.jpg).
+Screenshot [here](https://www.edmundgriffiths.com/zx81forest.jpg).
 
 =
 ## Visual Basic .NET
@@ -1931,7 +1931,7 @@ End Class
 =
 This isn't a graphical implementation, but it uses a bit of colour to make the display clearer. It runs very slowly. The variable <tt>init</tt> defines the initial likelihood that each square will hold a tree, and can take values between 0 (no trees) and 1 (a tree in every square) inclusive. This can be used to check that the program is running correctly, and using a value of 1 is probably the most dramatic: but it only makes a difference in the short term. After a few generations, any starting configuration using these values of <math>f</math> and <math>p</math> will end up fluctuating around 20% tree cover—sparse woodland, perhaps, rather than true forest.
 
-A screenshot of the program running can be found [here](http://www.edmundgriffiths.com/spectrumforestfire.jpg).
+A screenshot of the program running can be found [here](https://www.edmundgriffiths.com/spectrumforestfire.jpg).
 
 ```zxbasic
  10 PAPER 6: CLS
@@ -5101,8 +5101,8 @@ end
 ```
 
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -6105,7 +6105,7 @@ forest while (1);
 ```Perl
 #!/usr/bin/perl
 
-use strict;                       # http://www.rosettacode.org/wiki/Forest_fire
+use strict;                       # https://www.rosettacode.org/wiki/Forest_fire
 use warnings;
 
 my $p = 0.01;                               # probability of empty -> tree
@@ -6709,7 +6709,7 @@ Entering 'p' will print the grid, and 'q' will quit. A summary of the grids stat
 ```python
 '''
 Forest-Fire Cellular automation
- See: http://en.wikipedia.org/wiki/Forest-fire_model
+ See: https://en.wikipedia.org/wiki/Forest-fire_model
 '''
 
 L = 15

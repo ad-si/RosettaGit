@@ -3358,7 +3358,7 @@ Player 1 wins with a score of 101
 #!/usr/bin/python3
 
 '''
-See: http://en.wikipedia.org/wiki/Pig_(dice)
+See: https://en.wikipedia.org/wiki/Pig_(dice)
 
 This program scores and throws the dice for a two player game of Pig
 

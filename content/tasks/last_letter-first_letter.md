@@ -2373,7 +2373,7 @@ seqs=: 3 :0
 ```
 
 
-The line      <code>assert. 1e9>*/8,$r</code>   was added to avoid a very bad behavior from microsoft windows which appeared on different arguments, when intermediate results became too large (the machine would have to be rebooted when intermediate results became an order of magnitude larger than the available physical memory).  By ensuring that the program would end before consuming that much virtual memory, this behavior from the operating system can be avoided.  Note that [9!:21 and/or 9!:33](http://www.jsoftware.com/help/dictionary/dx009.htm) could also be used to prevent OS instability triggered by requesting too many resources.
+The line      <code>assert. 1e9>*/8,$r</code>   was added to avoid a very bad behavior from microsoft windows which appeared on different arguments, when intermediate results became too large (the machine would have to be rebooted when intermediate results became an order of magnitude larger than the available physical memory).  By ensuring that the program would end before consuming that much virtual memory, this behavior from the operating system can be avoided.  Note that [9!:21 and/or 9!:33](https://www.jsoftware.com/help/dictionary/dx009.htm) could also be used to prevent OS instability triggered by requesting too many resources.
 
 With this procedure we are able to conduct the entire search for this list of names:
 
@@ -3511,7 +3511,7 @@ quite probably not finishing within my lifetime...
 
 ## Prolog
 
-Works with SWI-Prolog and module '''lambda.pl''' written  by '''Ulrich Neumerkel''' found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and module '''lambda.pl''' written  by '''Ulrich Neumerkel''' found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

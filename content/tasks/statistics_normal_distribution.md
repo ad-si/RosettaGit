@@ -2767,7 +2767,7 @@ Stddev = 0.9959455132
 
 ## Python
 
-This uses the external [matplotlib](http://matplotlib.org/) package as well as the built-in standardlib function [random.gauss](http://docs.python.org/2/library/random.html?highlight=gauss#random.gauss).
+This uses the external [matplotlib](https://matplotlib.org/) package as well as the built-in standardlib function [random.gauss](https://docs.python.org/2/library/random.html?highlight=gauss#random.gauss).
 
 ```python
 from __future__ import division
@@ -3264,7 +3264,7 @@ s: 4.00295544816687358837821680496471
 
 ## Stata
 
-Pairs of normal numbers are generated from pairs of uniform numbers using the polar form of [Box-Muller method](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform). A normal density is added to the histogram for comparison. See '''[histogram](http://www.stata.com/help.cgi?histogram)''' in Stata help. A [Q-Q plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) is also drawn.
+Pairs of normal numbers are generated from pairs of uniform numbers using the polar form of [Box-Muller method](https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform). A normal density is added to the histogram for comparison. See '''[histogram](https://www.stata.com/help.cgi?histogram)''' in Stata help. A [Q-Q plot](https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot) is also drawn.
 
 
 ```stata

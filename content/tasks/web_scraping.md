@@ -217,7 +217,7 @@ msgbox % time := SubStr(timefile, pos - 9, 8)
 ## AWK
 
 
-This is inspired by [GETURL](http://www.gnu.org/software/gawk/manual/gawkinet/html_node/GETURL.html#GETURL) example in the manual for gawk.
+This is inspired by [GETURL](https://www.gnu.org/software/gawk/manual/gawkinet/html_node/GETURL.html#GETURL) example in the manual for gawk.
 
 <tt>
 ```awk
@@ -250,8 +250,8 @@ BEGIN {
 
 {{works with|ALGOL 68|Revision 1 - however ''grep in string'', ''http content'' and ''str error'' are from a non-standard library}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of ''grep in string'' and ''http content''}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of ''grep in string'' and ''http content''}}
 
 ```algol68
 STRING
@@ -1266,7 +1266,7 @@ UTC Time was 'Feb. 26, 11:02:30'
 
 ## Haskell
 
-Using package HTTP-4000.0.8 from [HackgageDB](http://hackage.haskell.org/packages/hackage.html)
+Using package HTTP-4000.0.8 from [HackgageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```Haskell
 import Data.List
@@ -2322,7 +2322,7 @@ utc_line <- time_lines[str_detect(time_lines, "UTC")]
 ```REBOL
 REBOL [
   Title: "Web Scraping"
-  URL: http://rosettacode.org/wiki/Web_Scraping
+  URL: https://rosettacode.org/wiki/Web_Scraping
 ]
 
 ; Notice that REBOL understands unquoted URL's:

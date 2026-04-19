@@ -368,7 +368,7 @@ function drawpenrose()
 
     svg = join(unique(svglines), "\n")
     fp = open("penrose_tiling.svg", "w")
-    write(fp, """<svg xmlns="http://www.w3.org/2000/svg" height="350" width="350"> <rect height="100%" """ *
+    write(fp, """<svg xmlns="https://www.w3.org/2000/svg" height="350" width="350"> <rect height="100%" """ *
               """width="100%" style="fill:black" />""" * "\n$svg</svg>")
     close(fp)
 end
@@ -558,7 +558,7 @@ for (split //, $penrose) {
 }
 $svg .= $_ for keys %SVG;
 open  $fh, '>', 'penrose_tiling.svg';
-print $fh  qq{<svg xmlns="http://www.w3.org/2000/svg" height="350" width="350"> <rect height="100%" width="100%" style="fill:black" />\n$svg</svg>};
+print $fh  qq{<svg xmlns="https://www.w3.org/2000/svg" height="350" width="350"> <rect height="100%" width="100%" style="fill:black" />\n$svg</svg>};
 close $fh;
 ```
 

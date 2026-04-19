@@ -411,7 +411,7 @@ B000300
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276683.html#276683)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276683.html#276683)
 
 
 ### Full

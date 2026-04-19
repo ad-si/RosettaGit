@@ -89,7 +89,7 @@ languages = [
 ]
 +++
 
-The [Harshad](http://mathworld.wolfram.com/HarshadNumber.html) or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits.
+The [Harshad](https://mathworld.wolfram.com/HarshadNumber.html) or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits.
 
 For example,   '''42'''   is a [[oeis:A005349|Harshad number]] as   '''42'''   is divisible by   ('''4''' + '''2''')   without remainder.
 
@@ -2960,7 +2960,7 @@ Get-HarshadNumbers -Minimum 1001 -Count 1
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda.pl written by '''Ulrich Neumerkel''', it can be found there :  <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
+Works with SWI-Prolog and module lambda.pl written by '''Ulrich Neumerkel''', it can be found there :  <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
 ```Prolog
 :- use_module(library(lambda)).
@@ -4143,7 +4143,7 @@ First such number > 1000: 1002
 ```
 
 This solution was generated from the pseudo-Assembly below.
-A [live run](http://ideone.com/AKxEMY) is available for the inquiring skeptic.
+A [live run](https://ideone.com/AKxEMY) is available for the inquiring skeptic.
 
 ```asm
 push 0 ; Harshad numbers found

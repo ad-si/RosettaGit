@@ -1568,7 +1568,7 @@ require 'general/misc/prompt regex'
 
 madlib=:3 :0
   smoutput 'Please enter the story template'
-  smoutput 'See http://rosettacode.org/wiki/Mad_Libs for details'
+  smoutput 'See https://rosettacode.org/wiki/Mad_Libs for details'
   t=.''
   while.#l=.prompt '' do. t=.t,l,LF end.
   repl=. ~.'<[^<>]*>' rxall t
@@ -1587,7 +1587,7 @@ Example use:
 ```J
    madlib''
 Please enter the story template
-See http://rosettacode.org/wiki/Mad_Libs for details
+See https://rosettacode.org/wiki/Mad_Libs for details
 <name> went for a walk in the park. <he or she>
 found a <noun>. <name> decided to take it home.
 
@@ -1720,7 +1720,7 @@ end
 ```
 
 
-[strings.icn provides replace](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides replace](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 ```txt
 Please provide words for the following:

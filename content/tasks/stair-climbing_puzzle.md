@@ -1586,7 +1586,7 @@ Example output:
 ```REBOL
 REBOL [
     Title: "Stair Climber"
-    URL: http://rosettacode.org/wiki/Stair_Climbing
+    URL: https://rosettacode.org/wiki/Stair_Climbing
 ]
 
 random/seed now

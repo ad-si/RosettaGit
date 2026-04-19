@@ -1404,8 +1404,8 @@ object Base58 extends App {
 
 ## Seed7
 
-The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
-the function [toBase](http://seed7.sourceforge.net/libraries/encoding.htm#toBase(in_bigInteger,in_string)),
+The Seed7 library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [toBase](https://seed7.sourceforge.net/libraries/encoding.htm#toBase(in_bigInteger,in_string)),
 which encodes a number with a positional numeric system. No external library is needed.
 
 ```seed7

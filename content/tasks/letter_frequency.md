@@ -1763,7 +1763,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 c - 17
@@ -4574,7 +4574,7 @@ letterHistogram the/sample.txt
 ```tuscript
 
 $$ MODE TUSCRIPT
-words = REQUEST ("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+words = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 DICT letters create
 MODE {}

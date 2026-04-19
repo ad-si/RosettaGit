@@ -1738,7 +1738,7 @@ foreach oid_list $oid4_lists {
 
 ## zkl
 
-Translation of <http://rosettacode.org/wiki/Natural_sorting#zkl>
+Translation of <https://rosettacode.org/wiki/Natural_sorting#zkl>
 
 Basically, blow apart each line into a list of numbers and sort that.
 

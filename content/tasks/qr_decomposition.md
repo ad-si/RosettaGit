@@ -1650,7 +1650,7 @@ $ ./qr
 ## Go
 
 ===Method of task description, library go.matrix===
-A fairly close port of the Common Lisp solution, this solution uses the [go.matrix library](http://github.com/skelterjohn/go.matrix) for supporting functions.  Note though, that go.matrix has QR decomposition, as shown in the [[Polynomial_regression#Go|Go solution]] to Polynomial regression.  The solution there is coded more directly than by following the CL example here.  Similarly, examination of the go.matrix QR source shows that it computes the decomposition more directly.
+A fairly close port of the Common Lisp solution, this solution uses the [go.matrix library](https://github.com/skelterjohn/go.matrix) for supporting functions.  Note though, that go.matrix has QR decomposition, as shown in the [[Polynomial_regression#Go|Go solution]] to Polynomial regression.  The solution there is coded more directly than by following the CL example here.  Similarly, examination of the go.matrix QR source shows that it computes the decomposition more directly.
 
 ```go
 package main
@@ -3470,7 +3470,7 @@ val it = [|1.0,2.0,3.0|] : real array
 
 ## Stata
 
-See [QR decomposition](http://www.stata.com/help.cgi?mf_qrd) in Stata help.
+See [QR decomposition](https://www.stata.com/help.cgi?mf_qrd) in Stata help.
 
 
 ```stata

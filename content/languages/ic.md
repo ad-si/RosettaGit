@@ -11,4 +11,4 @@ tags = []
 +++
 
 
-Ic is the reference I compiler. It can be found at <http://github.com/Qlova/ilang>
+Ic is the reference I compiler. It can be found at <https://github.com/Qlova/ilang>

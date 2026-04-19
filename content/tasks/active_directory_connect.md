@@ -326,7 +326,7 @@ fun main(args: Array<String>) = LDAP(mapOf("hostname" to "localhost", "port"  to
 
 ## NetRexx
 
-Uses the [Apache LDAP API](http://directory.apache.org/api/), connecting to a local [ApacheDS](http://directory.apache.org/apacheds/1.5/) LDAP directory server.
+Uses the [Apache LDAP API](https://directory.apache.org/api/), connecting to a local [ApacheDS](https://directory.apache.org/apacheds/1.5/) LDAP directory server.
 
 ```NetRexx
 /* NetRexx */
@@ -421,7 +421,7 @@ class RDirectoryLDAP public
 
 ## Perl
 
-[LDAP Modules](http://search.cpan.org/dist/perl-ldap/|Perl)
+[LDAP Modules](https://metacpan.org/dist/perl-ldap/|Perl)
 
 ```perl
 
@@ -452,7 +452,7 @@ my %DB := LMDB::DB.open(:path<some-dir>, %connection-parameters);
 
 ## PHP
 
-[PHP LDAP Reference](http://php.net/ldap)
+[PHP LDAP Reference](https://php.net/ldap)
 
 ```php
 <?php

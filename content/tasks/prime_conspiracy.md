@@ -728,7 +728,7 @@ Prime.conspiracy(1000000)
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -2483,13 +2483,13 @@ object PrimeConspiracy1 extends App {
 
 ## Seed7
 
-The program below uses the [Sieve of Eratosthenes](http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes),
+The program below uses the [Sieve of Eratosthenes](https://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes),
 to create a set of prime numbers.
-The set of prime numbers is [assigned to a constant](http://seed7.sourceforge.net/faq.htm#initialize_data).
+The set of prime numbers is [assigned to a constant](https://seed7.sourceforge.net/faq.htm#initialize_data).
 This way the set of prime numbers is computed at compile-time.
 Interesting fact: The Seed7 interpreter takes around 2 seconds to parse and execute the program.
 Executing the compiled C++ solution of this task takes around 8 seconds.
-Executing the [compiled](http://seed7.sourceforge.net/faq.htm#compile) Seed7 program takes only 0.08 seconds.
+Executing the [compiled](https://seed7.sourceforge.net/faq.htm#compile) Seed7 program takes only 0.08 seconds.
 
 
 ```seed7
@@ -2643,7 +2643,7 @@ Debug.Print "Execution time : " & Format(Timer - t, "0.000s.")
 End Sub
 
 Private Function ListPrimes(MAX As Long) As Long()
-'http://rosettacode.org/wiki/Extensible_prime_generator#VBA
+'https://rosettacode.org/wiki/Extensible_prime_generator#VBA
 Dim t() As Boolean, L() As Long, c As Long, s As Long, i As Long, j As Long
     ReDim t(2 To MAX)
     ReDim L(MAX \ 2)

@@ -2624,7 +2624,7 @@ Result:
 ## XSLT 2.0
 
 This XSLT 2.0 style-sheet...
-<lang><xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<lang><xsl:stylesheet version="2.0" xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
 <xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />
 <xsl:template match="/*">
   <t><xsl:copy-of select="for $l in max( for $s in s return string-length($s))

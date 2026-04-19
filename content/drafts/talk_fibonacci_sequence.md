@@ -71,7 +71,7 @@ Size of the floating-point type (float, double, long double etc..) will limit ho
 
 --[[User:Spekkio|Spekkio]] 11:27, 25 November 2011 (UTC)
 
-:Thanks. Prompted by the above, I read [this](http://en.wikipedia.org/wiki/Fibonacci_chain#Closed-form_expression).
+:Thanks. Prompted by the above, I read [this](https://en.wikipedia.org/wiki/Fibonacci_chain#Closed-form_expression).
 
 ==Optional credits==
 
@@ -135,7 +135,7 @@ Note that there seems to be two definitions of the above series, the main differ
 :There seems to be enough in your proposal for a new task maybe called "Fibonacci-like sequences generator" in which the starting numbers/numbers of past numbers to sum to form the next, could be set.
 :It would also be good to maybe confirm some of the Lucas/Fibonacci identities mentioned in the Lucas wp article. --[[User:Paddy3118|Paddy3118]] 20:33, 24 May 2012 (UTC)
 
-==[Fibonacci n-Step Numbers](http://mathworld.wolfram.com/Fibonaccin-StepNumber.html)==
+==[Fibonacci n-Step Numbers](https://mathworld.wolfram.com/Fibonaccin-StepNumber.html)==
 The name is from MathWorld. I doodled the following:
 
 ```python
@@ -202,7 +202,7 @@ Does anyone think it would be a good idea to do a global change for the spelling
 :: No, nobody asked.  I understand domain names would be hard to add a trade-mark symbol, but RC uses/references/quotes that trademarked site a lot, and I thought it would be a show of "good faith" on RC's part to honor that site with at least a TM symbol. -- [[User:Gerard Schildberger|Gerard Schildberger]] 20:42, 25 May 2012 (UTC)
 
 ==ECMAScript 2015 (ES6) recursive implementations exploration==
-I wrote this little exploration of various recursive takes on Fib generation a while ago: <http://pastebin.com/ExTuYkAE> Among other things it takes time consumption and multiple uses into account. Might look a bit foreign to many as it uses the new ES6 fat arrow syntax for pretty much everything.
+I wrote this little exploration of various recursive takes on Fib generation a while ago: <https://pastebin.com/ExTuYkAE> Among other things it takes time consumption and multiple uses into account. Might look a bit foreign to many as it uses the new ES6 fat arrow syntax for pretty much everything.
 If someone wants to incorporate it into the JavaScript section, be my guest!
 
 == Ocaml matrix example remark ==

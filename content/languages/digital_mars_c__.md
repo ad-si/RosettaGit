@@ -13,4 +13,4 @@ tags = []
 
 Originally a [C](https://rosettacode.org/wiki/:Category:C) compiler created by [Datalight](https://en.wikipedia.org/wiki/Datalight), it was sold to [Zortech](https://en.wikipedia.org/wiki/Zortech), who then added a C++ compiler, calling the result '''Zortech C++'''. [Symantec](https://en.wikipedia.org/wiki/Symantec) purchased Zortech specifically to get ownership of these compilers, which were eventually acquired by Digital Mars (which is more well-known for creating the [D programming language](https://rosettacode.org/wiki/:Category:D)).
 
-For more information, see [Digital Mars' website](http://www.digitalmars.com/).
+For more information, see [Digital Mars' website](https://digitalmars.com/).

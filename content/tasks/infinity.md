@@ -452,7 +452,7 @@ isFinite x>
 ## Common Lisp
 
 
-Common Lisp does not specify an infinity value.  Some implementations may have support for IEEE infinity, however.  For instance, CMUCL supports [IEEE Special Values](http://common-lisp.net/project/cmucl/downloads/doc/cmu-user-old/extensions.html#toc7).  Common Lisp does specify that implementations define [constants](http://www.lispworks.com/documentation/HyperSpec/Body/v_most_1.htm) with most (and least) positive (and negative) values.  These may vary between implementations.
+Common Lisp does not specify an infinity value.  Some implementations may have support for IEEE infinity, however.  For instance, CMUCL supports [IEEE Special Values](https://common-lisp.net/project/cmucl/downloads/doc/cmu-user-old/extensions.html#toc7).  Common Lisp does specify that implementations define [constants](https://www.lispworks.com/documentation/HyperSpec/Body/v_most_1.htm) with most (and least) positive (and negative) values.  These may vary between implementations.
 
 {{works with|LispWorks}} 5.1.2, Intel, OS X, 32-bit
 
@@ -1763,7 +1763,7 @@ put skip list (huge(x), huge(y), huge(z));
 
 ## PicoLisp
 
-The symbol '[T](http://software-lab.de/doc/refT.html#T)' is used to represent
+The symbol '[T](https://software-lab.de/doc/refT.html#T)' is used to represent
 infinite values, e.g. for the length of circular lists, and is greater than any
 other value in comparisons. PicoLisp has only very limited floating point
 support (scaled bignum arithmetics), but some functions return 'T' for infinite
@@ -2056,9 +2056,9 @@ res5: Double = -0.0
 
 ## Seed7
 
-Seed7s floating-point type ([float](http://seed7.sourceforge.net/manual/types.htm#float)) supports infinity.
-The library [float.s7i](http://seed7.sourceforge.net/libraries/float.htm) defines
-the constant [Infinity](http://seed7.sourceforge.net/libraries/float.htm#Infinity) as:
+Seed7s floating-point type ([float](https://seed7.sourceforge.net/manual/types.htm#float)) supports infinity.
+The library [float.s7i](https://seed7.sourceforge.net/libraries/float.htm) defines
+the constant [Infinity](https://seed7.sourceforge.net/libraries/float.htm#Infinity) as:
 
 ```seed7
 const float: Infinity is 1.0 / 0.0;>

@@ -999,7 +999,7 @@ Time: 335 seconds
 (def factorial (memoize -factorial))
 
 (defn -combinations [coll k]
-  " From <http://rosettacode.org/wiki/Combinations_with_repetitions#Clojure> "
+  " From <https://rosettacode.org/wiki/Combinations_with_repetitions#Clojure> "
   (when-let [[x & xs] coll]
     (if (= k 1)
       (map list coll)
@@ -2667,7 +2667,7 @@ for i=1 to 8 do
 end for
 ```
 
-Starting with the combinations method from <http://rosettacode.org/wiki/Combinations_with_repetitions#Phix> converted to a function, make sure we
+Starting with the combinations method from <https://rosettacode.org/wiki/Combinations_with_repetitions#Phix> converted to a function, make sure we
 are covering all the numbers correctly by checking that we have indeed found power(10,n) of them, and show we are looking at significantly fewer combinations.
 {{out}}
 

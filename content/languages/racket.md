@@ -13,7 +13,7 @@ tags = []
 Racket draws freely from the various strands of its lineage.
 
 * [Home page](http://racket-lang.org/)
-* [Wikipedia](http://en.wikipedia.org/wiki/Racket_(programming_language))
+* [Wikipedia](https://en.wikipedia.org/wiki/Racket_(programming_language))
 
 ## Todo
 [Reports:Tasks_not_implemented_in_Racket](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_Racket)

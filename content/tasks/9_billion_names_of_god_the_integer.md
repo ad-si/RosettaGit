@@ -99,7 +99,7 @@ A function   <math>G(n)</math>   should return the sum of the   <math>n</math>-t
 
 Demonstrate this function by displaying:   <math>G(23)</math>,   <math>G(123)</math>,   <math>G(1234)</math>,   and   <math>G(12345)</math>.
 
-Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [integer partition function](http://mathworld.wolfram.com/PartitionFunctionP.html).
+Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [integer partition function](https://mathworld.wolfram.com/PartitionFunctionP.html).
 
 Demonstrate this is equivalent to   <math>G(n)</math>   by displaying:   <math>P(23)</math>,   <math>P(123)</math>,   <math>P(1234)</math>,   and   <math>P(12345)</math>.
 
@@ -427,7 +427,7 @@ namespace NamesOfGod
 
 ### The Code
 
-see [[The Green Triangle](http://rosettacode.org/wiki/Talk:9_billion_names_of_God_the_integer#The_Green_Triangle)].
+see [[The Green Triangle](https://rosettacode.org/wiki/Talk:9_billion_names_of_God_the_integer#The_Green_Triangle)].
 
 ```cpp
 
@@ -1049,7 +1049,7 @@ end)
 ## Erlang
 
 
-Step 1: Print the pyramid for a smallish number of names. The P function is implement as described on [partition function](http://mathworld.wolfram.com/PartitionFunctionP.html), (see 59 on that page). This is slow for N > 100, but works fine for the example: 10.
+Step 1: Print the pyramid for a smallish number of names. The P function is implement as described on [partition function](https://mathworld.wolfram.com/PartitionFunctionP.html), (see 59 on that page). This is slow for N > 100, but works fine for the example: 10.
 
 ```Erlang
 
@@ -4072,7 +4072,7 @@ end
 ```
 
 
-The result is shown for n=10 to keep it small. Due to computations being done in floating point, the result is exact up to n=299, and suffers rounding for larger values of n. Compare the array with [OEIS A008284](http://oeis.org/A008284) and row sums with [OEIS A000041](http://oeis.org/A000041).
+The result is shown for n=10 to keep it small. Due to computations being done in floating point, the result is exact up to n=299, and suffers rounding for larger values of n. Compare the array with [OEIS A008284](https://oeis.org/A008284) and row sums with [OEIS A000041](https://oeis.org/A000041).
 
 **Output**
 

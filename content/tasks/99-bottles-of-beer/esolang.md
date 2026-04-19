@@ -76,7 +76,7 @@ $>=<:01:x-^:_296:<:0D:~${x<:01:x->&==<:01:-^:_90:
 
 
 '''Readable:'''
-<!-- the version at <http://99-bottles-of-beer.net/language-befunge-88.html> looks like a train wreck to me -->
+<!-- the version at <https://99-bottles-of-beer.net/language-befunge-88.html> looks like a train wreck to me -->
 
 ```befunge
 <v,<.g10" bottles of beer on the wall"+550   <

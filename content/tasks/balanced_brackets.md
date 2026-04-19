@@ -1919,7 +1919,7 @@ import com.vasileff.ceylon.random.api {
     platformRandom,
     Random
 }
-"""Run the example code for Rosetta Code ["Balanced brackets" task] (http://rosettacode.org/wiki/Balanced_brackets)."""
+"""Run the example code for Rosetta Code ["Balanced brackets" task] (https://rosettacode.org/wiki/Balanced_brackets)."""
 shared void run() {
     value rnd = platformRandom();
     for (len in (0..10)) {
@@ -2337,7 +2337,7 @@ Output:
 
 ### Standard Version
 
-D standard library has a [function](http://www.digitalmars.com/d/2.0/phobos/std_algorithm.html#balancedParens) for this.
+D standard library has a [function](https://digitalmars.com/d/2.0/phobos/std_algorithm.html#balancedParens) for this.
 
 ```d
 import std.stdio, std.algorithm, std.random, std.range;
@@ -3759,7 +3759,7 @@ pairs l u r = snd $ mapAccumL step r [l..pred u]
     where step r i = let (j, r') = randomR (i, u) r in (r', (i, j))
 
 -- Return a random permutation of the list.  We use the algorithm described in
--- http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm.
+-- https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm.
 shuffle :: (RandomGen g) => [a] -> g -> [a]
 shuffle xs r = V.toList . runST $ do
                  v <- V.unsafeThaw $ V.fromList xs

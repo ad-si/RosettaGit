@@ -13,4 +13,4 @@ tags = []
 
 Elisa is a multiparadigm programming language. It combines the best features of procedural programming, functional programming, object-oriented programming and logic programming into one coherent framework.
 
-The language is described in [Elisa](http://www.xs4all.nl/~jklunder/)
+The language is described in [Elisa](https://www.xs4all.nl/~jklunder/)

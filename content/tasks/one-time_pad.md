@@ -44,7 +44,7 @@ i.e. an indexfile that stores which parts have been used
 -->
 
 
-For example, here is the data from [Wikipedia](http://upload.wikimedia.org/wikipedia/commons/6/60/One-time_pad.svg):
+For example, here is the data from [Wikipedia](https://upload.wikimedia.org/wikipedia/commons/6/60/One-time_pad.svg):
 
 ```txt
 
@@ -66,7 +66,7 @@ For example, here is the data from [Wikipedia](http://upload.wikimedia.org/wikip
 
 * [one time pad encryption in Python](https://breakingcode.wordpress.com/2010/02/17/one-time-pad-encryption-in-python/)
 * [snapfractalpop](https://github.com/snapfractalpop/1tp) -  One-Time-Pad Command-Line-Utility (C).
-* [Crypt-OTP-2.00](http://search.cpan.org/~sifukurt/Crypt-OTP-2.00/OTP.pm) on CPAN (Perl)
+* [Crypt-OTP-2.00](https://metacpan.org/~sifukurt/Crypt-OTP-2.00/OTP.pm) on CPAN (Perl)
 
 
 
@@ -952,7 +952,7 @@ See [[One-time pad/Racket]]
 
 Get true random numbers, and turn them into strings.
 
-With "randInt" from Tcl'ers wiki [Cryptographically secure random numbers using /dev/urandom](http://wiki.tcl.tk/29163)
+With "randInt" from Tcl'ers wiki [Cryptographically secure random numbers using /dev/urandom](https://wiki.tcl-lang.org/29163)
 
 
 ```Tcl
@@ -1025,8 +1025,8 @@ puts "# Done."
 
 
 See Tcl'ers wiki:
-[vignere](http://wiki.tcl.tk/2884)
-[Vigenere](http://wiki.tcl.tk/23095)
+[vignere](https://wiki.tcl-lang.org/2884)
+[Vigenere](https://wiki.tcl-lang.org/23095)
 ...
 
 

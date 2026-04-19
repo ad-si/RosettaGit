@@ -22,12 +22,12 @@ I'm going on a long plane trip. I'd like to take a printout of all the tasks but
 :Sounds like a good idea for a task "Extract task description from an RC task" (i.e. down to the first <nowiki>{{header|...}}</nowiki> :-)
 :--[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 10:18, 27 March 2015 (UTC)
 
-:I'd approach this by downloading all the tasks (approximately: all the rosetta wiki links from <http://rosettacode.org/wiki/Category:Programming_Tasks> which do not have a ':' in the url's path), and then clip them off starting at the line which contains "mw-headline"). That should get you close enough?
+:I'd approach this by downloading all the tasks (approximately: all the rosetta wiki links from <https://rosettacode.org/wiki/Category:Programming_Tasks> which do not have a ':' in the url's path), and then clip them off starting at the line which contains "mw-headline"). That should get you close enough?
 :In other words, something like this:
 
 :
 ```bash
-wget -k http://rosettacode.org/wiki/Category:Programming_Tasks
+wget -k https://rosettacode.org/wiki/Category:Programming_Tasks
 lynx -force_html -dump Category%3AProgramming_Tasks | awk '/http:..rosettacode.org.wiki/{print $2}' | grep -v ':.*:' | xargs wget --wait=1 -kp
 find rosettacode.org/wiki -type f | xargs perl -i -0777 -pe 's/\n[^\n]*mw-headline.*//s'
 ```
@@ -103,7 +103,7 @@ function innerCall(nam, ref) {
 
 
 var page = require("webpage").create();
-page.open("http://rosettacode.org/wiki/Category:Programming_Tasks", function () {
+page.open("https://rosettacode.org/wiki/Category:Programming_Tasks", function () {
     var anchors = page.evaluate(function () {
         return document.getElementById("mw-pages").getElementsByTagName("a");
     });

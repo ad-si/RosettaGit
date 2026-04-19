@@ -743,7 +743,7 @@ View the output on Dropbox
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var w=300,h=300,out=PPM(w,h);

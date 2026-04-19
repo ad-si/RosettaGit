@@ -23,11 +23,11 @@ To:
 <li>Create a 'post' function for the API, that can be used to create a new venue or event for example.</li>
 </ol>
 
-Using the [Meetup.com API](http://www.meetup.com/meetup_api/).
+Using the [Meetup.com API](https://www.meetup.com/meetup_api/).
 
-Both functions take two parameters, 'details' and 'url'. Details is an object containing required and optional arguments specified by the API's requirement (Example, [open events](http://www.meetup.com/meetup_api/docs/2/open_events/) requires at least one detail). The 'url' supplied informs the get/post method what part of the API to ping (Example, valid URLs for 'get' could be ['/2/open_events' <http://www.meetup.com/meetup_api/docs/2/open_events/>] or ['/comments' <http://www.meetup.com/meetup_api/docs/comments/>]).
+Both functions take two parameters, 'details' and 'url'. Details is an object containing required and optional arguments specified by the API's requirement (Example, [open events](https://www.meetup.com/meetup_api/docs/2/open_events/) requires at least one detail). The 'url' supplied informs the get/post method what part of the API to ping (Example, valid URLs for 'get' could be ['/2/open_events' <https://www.meetup.com/meetup_api/docs/2/open_events/>] or ['/comments' <https://www.meetup.com/meetup_api/docs/comments/>]).
 
-Some posting features are paid, such as creating an event. [Editing member details <http://www.meetup.com/meetup_api/docs/2/member/#edit>] for example, is an example of a free 'post' API.
+Some posting features are paid, such as creating an event. [Editing member details <https://www.meetup.com/meetup_api/docs/2/member/#edit>] for example, is an example of a free 'post' API.
 
 An API key is assumed to be supplied through an <code>api_key.txt</code> file.
 
@@ -172,7 +172,7 @@ func main() {
 Got 200 events
 First event:
  ID: 219254566
-URL: http://www.meetup.com/Bay-Area-Photography-Shoots-and-Workshops/events/219254566/
+URL: https://www.meetup.com/Bay-Area-Photography-Shoots-and-Workshops/events/219254566/
 Time: Sun Dec 28 16:00:00 EST 2014
 Description: <p><b>Beginners Lighting:</b> join us for this exciting workshop…
 
@@ -273,7 +273,7 @@ public class Main {
 		String key_path = "API_key/api_key.txt"; 							//Path to API Key (api_key.txt)
 		String key = "";
 		String path_code = "/2/open_events";								//PathCode for get-events
-																			//More PathCodes : http://www.meetup.com/meetup_api/docs/
+																			//More PathCodes : https://www.meetup.com/meetup_api/docs/
 		String events = "";
 		
 		EventGetter eventGetter = new EventGetter();
@@ -440,7 +440,7 @@ var meetup = function() {
 
 
 meetup().get({
-  // More Info: http://www.meetup.com/meetup_api/docs/2/open_events/
+  // More Info: https://www.meetup.com/meetup_api/docs/2/open_events/
   topic: 'photo',
   city: 'nyc'
 }, function(results) {
@@ -467,7 +467,7 @@ meetup().get({
 **/
 
 meetup().post({
-  // More Info: http://www.meetup.com/meetup_api/docs/:urlname/venues/#create
+  // More Info: https://www.meetup.com/meetup_api/docs/:urlname/venues/#create
   name: 'Finding Nemo',
   address_1: 'p sherman 42 wallaby way sydney',
   city: 'sydney',
@@ -481,7 +481,7 @@ meetup().post({
 
 
 meetup().post({
-  // More Info: http://www.meetup.com/meetup_api/docs/2/groups/
+  // More Info: https://www.meetup.com/meetup_api/docs/2/groups/
   group_id: 42, // Group ID goes here
   group_urlname: 'foodie-programmers',
   name: 'Tomato Python Fest',

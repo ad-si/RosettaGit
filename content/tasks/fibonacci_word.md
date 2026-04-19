@@ -1569,7 +1569,7 @@ import (
 	"math"
 )
 
-// From http://rosettacode.org/wiki/Entropy#Go
+// From https://rosettacode.org/wiki/Entropy#Go
 func entropy(s string) float64 {
 	m := map[rune]float64{}
 	for _, r := range s {
@@ -1625,7 +1625,7 @@ func main() {
 }
 ```
 
-[Run in the Go Playground.](http://play.golang.org/p/e1whcGGOU1)
+[Run in the Go Playground.](https://play.golang.org/p/e1whcGGOU1)
 
 ```txt
   N    Length  Entropy             Word
@@ -3439,7 +3439,7 @@ N       Length Entropy    Fibword
 
 ## R
 
-With inspiration from [here](http://rosettacode.org/wiki/Entropy#R) for the entropy function:
+With inspiration from [here](https://rosettacode.org/wiki/Entropy#R) for the entropy function:
 
 ```rsplus
 entropy <- function(s)

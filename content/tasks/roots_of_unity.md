@@ -234,7 +234,7 @@ Output:
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276712.html#276712)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276712.html#276712)
 
 ```AutoHotkey
 n := 8, a := 8*atan(1)/n

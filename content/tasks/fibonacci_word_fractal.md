@@ -65,7 +65,7 @@ Create and display a fractal similar to [Fig 1](http://hal.archives-ouvertes.fr/
 ## AutoHotkey
 
 Prints F_Word<sub>30</sub> currently. Segment length and F_Word<sub>n</sub> can be adjusted.
-{{libheader|GDIP}}Also see the [Gdip examples](http://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
+{{libheader|GDIP}}Also see the [Gdip examples](https://www.autohotkey.com/board/topic/29449-gdi-standard-library-145-by-tic/).
 
 ```AutoHotkey
 #NoEnv
@@ -1637,7 +1637,7 @@ main()
 
 ## Python
 
-Note that for Python 3, [functools.lru_cache](http://docs.python.org/py3k/library/functools.html#functools.lru_cache) could be used instead of the memoize decorator below.
+Note that for Python 3, [functools.lru_cache](https://docs.python.org/py3k/library/functools.html#functools.lru_cache) could be used instead of the memoize decorator below.
 
 ```python
 from functools import wraps
@@ -2159,7 +2159,7 @@ def convertToLine(s: String, c: Int): String = (s.head, s.tail) match {
 def drawSVG(xStart: Int, yStart: Int, width: Int, height: Int, fibWord: String, lineMultiplier: Int, color: String): String = {
   val xs = fibWord.zipWithIndex.map{case (c,i) => (c, if(c == '1') '_' else i % 2 match{case 0 => 'E'; case 1 => 'O'})}.toList
   val fractalPath = buildIt(directions(xs)).tail.map(convertToLine(_,lineMultiplier))
-  s"""<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="${width}px" height="${height}px" viewBox="0 0 $width $height"><path d="M $xStart $yStart ${fractalPath.mkString(" ")}" style="stroke:#$color;stroke-width:1" stroke-linejoin="miter" fill="none"/></svg>"""
+  s"""<?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px" width="${width}px" height="${height}px" viewBox="0 0 $width $height"><path d="M $xStart $yStart ${fractalPath.mkString(" ")}" style="stroke:#$color;stroke-width:1" stroke-linejoin="miter" fill="none"/></svg>"""
 }
 
 drawSVG(0,25,550,530,fibIt.drop(18).next,3,"000")
@@ -2395,7 +2395,7 @@ drawFW .c [fibword 23]
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Fibonacci word fractal.zkl.jpg|250px|thumb|right]]
 
 ```zkl

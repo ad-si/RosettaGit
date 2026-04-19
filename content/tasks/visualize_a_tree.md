@@ -3224,7 +3224,7 @@ display_tree(Direction) :-
 
 ### Library module
 
-Python has the [pprint](http://www.doughellmann.com/PyMOTW/pprint/) [module](http://docs.python.org/py3k/library/pprint.html) for pretty-printing data.
+Python has the [pprint](http://www.doughellmann.com/PyMOTW/pprint/) [module](https://docs.python.org/py3k/library/pprint.html) for pretty-printing data.
 
 If you set the presumed width of the output to 1 then pprint will print each level of a nested tuple (which is Pythons obvious method of creating a tree), on a separate line:
 
@@ -4143,7 +4143,7 @@ will produce:
 
 ## Rust
 
-Console visualization of binary trees translated from parts of [the C AVL tree solution](http://rosettacode.org/wiki/AVL_tree/C).
+Console visualization of binary trees translated from parts of [the C AVL tree solution](https://rosettacode.org/wiki/AVL_tree/C).
 
 ```Rust
 

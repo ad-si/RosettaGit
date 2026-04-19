@@ -64,7 +64,7 @@ And of the list:
 Note that a list may have more than one subsequence that is of the maximum length.
 
 ## References
-# [Dynamic Programming #1: Longest Increasing Subsequence](http://www.youtube.com/watch?v=4fQJGoeW5VE) on YouTube
+# [Dynamic Programming #1: Longest Increasing Subsequence](https://www.youtube.com/watch?v=4fQJGoeW5VE) on YouTube
 # An efficient solution can be based on [[wp:Patience sorting|Patience sorting]].
 
 
@@ -900,7 +900,7 @@ Both implementations:
 
 Function ''combos'' is copied from  [panduwana blog](http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/).
 
-Function ''maxBy'' is copied from  [Hynek -Pichi- Vychodil's answer](http://stackoverflow.com/a/4762387/4162959).
+Function ''maxBy'' is copied from  [Hynek -Pichi- Vychodil's answer](https://stackoverflow.com/a/4762387/4162959).
 
 
 ```erlang
@@ -986,7 +986,7 @@ recover_lis([]) ->
 % **************************************************
 
 % **************************************************
-% Copied from http://stackoverflow.com/a/4762387/4162959
+% Copied from https://stackoverflow.com/a/4762387/4162959
 % **************************************************
 
 maxBy(F, L) ->

@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Combinations with repetitions ==
-The formula for combinations with repetitions is wrong. Can some body correct it with the right formula from <http://en.wikipedia.org/wiki/Multiset_coefficient#Counting_multisets>.
+The formula for combinations with repetitions is wrong. Can some body correct it with the right formula from <https://en.wikipedia.org/wiki/Multiset_coefficient#Counting_multisets>.
 
 --[[User:Raghu|Raghu]] ([[User talk:Raghu|talk]]) 13:51, 23 May 2013 (UTC)
 

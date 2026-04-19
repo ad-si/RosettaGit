@@ -3270,7 +3270,7 @@ found  3  solutions.
 
 ## Ruby
 
-Be it Golden Frogs jumping on trancendental lilly pads, or a Knight on a board, or square pegs into round holes this is essentially a Hidato Like Problem, so I use [HLPSolver](http://rosettacode.org/wiki/Solve_a_Hidato_puzzle#With_Warnsdorff):
+Be it Golden Frogs jumping on trancendental lilly pads, or a Knight on a board, or square pegs into round holes this is essentially a Hidato Like Problem, so I use [HLPSolver](https://rosettacode.org/wiki/Solve_a_Hidato_puzzle#With_Warnsdorff):
 
 ```ruby
 

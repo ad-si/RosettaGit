@@ -3407,7 +3407,7 @@ public class MultiplicationTable {
 
 
 ```html4strict
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <title>12 times table</title>
@@ -5551,7 +5551,7 @@ multiplication_table()
 ```REBOL
 REBOL [
 	Title: "12x12 Multiplication Table"
-	URL: <http://rosettacode.org/wiki/Print_a_Multiplication_Table>
+	URL: <https://rosettacode.org/wiki/Print_a_Multiplication_Table>
 ]
 
 size: 12
@@ -5937,7 +5937,7 @@ yield {
 ## Scheme
 
 
-A better implementation of <tt>iota</tt> is provided by SRFI-1 <http://srfi.schemers.org/srfi-1/srfi-1.html>.
+A better implementation of <tt>iota</tt> is provided by SRFI-1 <https://srfi.schemers.org/srfi-1/srfi-1.html>.
 
 
 ```scheme

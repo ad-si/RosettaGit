@@ -157,7 +157,7 @@ open System.IO
 
 let xml = @"<root>
 <!--Start of schema-->
-<xs:schema id='an-element' targetNamespace='example' xmlns:mstns='example' xmlns='example' xmlns:xs='http://www.w3.org/2001/XMLSchema' attributeFormDefault='unqualified' elementFormDefault='qualified'>
+<xs:schema id='an-element' targetNamespace='example' xmlns:mstns='example' xmlns='example' xmlns:xs='https://www.w3.org/2001/XMLSchema' attributeFormDefault='unqualified' elementFormDefault='qualified'>
   <xs:element name='an-element'>
     <xs:complexType>
       <xs:sequence minOccurs='0' maxOccurs='unbounded'>
@@ -218,12 +218,12 @@ let main argv =
 ```
 
 <pre style="white-space:pre-wrap">>RosettaCode
-Validation error: The 'an-attribute' element is invalid - The value 'wrong' is invalid according to its datatype 'http://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid boolean value.
+Validation error: The 'an-attribute' element is invalid - The value 'wrong' is invalid according to its datatype 'https://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid boolean value.
 [[Error, 1]]
 
 >RosettaCode -w
 Validation warning: Could not find schema information for the element 'root'.
-Validation error: The 'an-attribute' element is invalid - The value 'wrong' is invalid according to its datatype 'http://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid boolean value.
+Validation error: The 'an-attribute' element is invalid - The value 'wrong' is invalid according to its datatype 'https://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid boolean value.
 [[Error, 1]; [Warning, 1]]
 
 
@@ -529,7 +529,7 @@ my $parser = XML::LibXML->new();
 my $good_xml         = '<a>5</a>';
 my $bad_xml          = '<a>5<b>foobar</b></a>';
 my $xmlschema_markup = <<'END';
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="https://www.w3.org/2001/XMLSchema">
   <xsd:element name="a" type="xsd:integer"/>
 </xsd:schema>
 END
@@ -579,7 +579,7 @@ my $good_xml         = '<a>5</a>';
 my $bad_xml          = '<a>5<b>foobar</b></a>';
 
 my $xsdschema = q:to<EOF>;
-   <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:schema xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <xsd:element name="a" type="xsd:integer"/>
    </xsd:schema>
 EOF
@@ -615,7 +615,7 @@ if __name__=="__main__":
 
 	parser = etree.XMLParser(dtd_validation=True)
 	schema_root = etree.XML('''\
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+		<xsd:schema xmlns:xsd="https://www.w3.org/2001/XMLSchema">
 			<xsd:element name="a" type="xsd:integer"/>
 		</xsd:schema>
 		''')
@@ -721,7 +721,7 @@ var good_xml = '<a>5</a>'
 var bad_xml  = '<a>5<b>foobar</b></a>'
 
 var xmlschema_markup = <<'END'
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="https://www.w3.org/2001/XMLSchema">
   <xsd:element name="a" type="xsd:integer"/>
 </xsd:schema>
 END
@@ -779,7 +779,7 @@ End Module
 
 ```txt
 Validation Error:
-The 'an-attribute' attribute is invalid - The value 'wrong' is invalid according to its datatype 'http://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid Boolean value.
+The 'an-attribute' attribute is invalid - The value 'wrong' is invalid according to its datatype 'https://www.w3.org/2001/XMLSchema:boolean' - The string 'wrong' is not a valid Boolean value.
 ```
 
 
@@ -813,7 +813,7 @@ Creating the documents (same as F#) from strings (does not handle syntax errors)
 Module Constants
     Const SCHEMA As String =
 "<?xml version='1.0'?>
-<xs:schema id='an-element' targetNamespace='example' xmlns:mstns='example' xmlns='example' xmlns:xs='http://www.w3.org/2001/XMLSchema' attributeFormDefault='unqualified' elementFormDefault='qualified'>
+<xs:schema id='an-element' targetNamespace='example' xmlns:mstns='example' xmlns='example' xmlns:xs='https://www.w3.org/2001/XMLSchema' attributeFormDefault='unqualified' elementFormDefault='qualified'>
     <xs:element name='an-element'>
         <xs:complexType>
             <xs:sequence minOccurs='0' maxOccurs='unbounded'>
@@ -866,7 +866,7 @@ Module Constants
     Function GetSchema() As XDocument
         Return _
         <?xml version="1.0"?>
-        <xs:schema id="an-element" targetNamespace="example" xmlns:mstns="example" xmlns="example" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+        <xs:schema id="an-element" targetNamespace="example" xmlns:mstns="example" xmlns="example" xmlns:xs="https://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
             <xs:element name="an-element">
                 <xs:complexType>
                     <xs:sequence minOccurs="0" maxOccurs="unbounded">

@@ -711,7 +711,7 @@ showtype({5,7.5,"string"})
 
 ## PicoLisp
 
-PicoLisp have only three base data [types](http://software-lab.de/doc/ref.html#data).
+PicoLisp have only three base data [types](https://software-lab.de/doc/ref.html#data).
 
 ```txt
 
@@ -735,7 +735,7 @@ PicoLisp have only three base data [types](http://software-lab.de/doc/ref.html#d
 
 == {{header|PHP}} ==
 
-<http://php.net/manual/en/function.gettype.php>
+<https://php.net/manual/en/function.gettype.php>
 
 
 ```txt
@@ -750,7 +750,7 @@ echo gettype(12345); // Returns integer
 ###  Specific tester functions
 
 
-* [is_array()](http://php.net/manual/en/function.is-array.php)
+* [is_array()](https://php.net/manual/en/function.is-array.php)
 
 
 ## PowerShell
@@ -821,7 +821,7 @@ True
 
 Hopefully you can see how to extend the code to add all sorts of other types. If I did this, I&rsquo;d swamp the task page.
 A good list of types supported/provided by Racket can be found in the Typed Racket reference:
-<http://docs.racket-lang.org/ts-reference/type-ref.html>
+<https://docs.racket-lang.org/ts-reference/type-ref.html>
 
 
 ```racket
@@ -839,7 +839,7 @@ A good list of types supported/provided by Racket can be found in the Typed Rack
   (list f (regexp-replace #rx"\\?" (symbol->string (object-name f)) "")))
 
 ;; listed in the order (as close as) shown in
-;; http://docs.racket-lang.org/guide/datatypes.html (section numbers next to
+;; https://docs.racket-lang.org/guide/datatypes.html (section numbers next to
 ;; some entries)
 (define type-tests.names
   `(,@(map n.t
@@ -865,7 +865,7 @@ A good list of types supported/provided by Racket can be found in the Typed Rack
                  void? ; 3.12
                  ))
     ,(list (λ (v) (eq? v undefined)) "undefined") ; 3. 12
-    ;; now we move to http://docs.racket-lang.org/reference/data.html
+    ;; now we move to https://docs.racket-lang.org/reference/data.html
     ;; for section numbering
     ,@(map n.t
            (list

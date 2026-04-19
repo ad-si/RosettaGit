@@ -69,9 +69,9 @@ Implement the following in your favorite programming language (take the common l
 
 ## AutoHotkey
 
-'''MCode Tutorial''' ([Forum Thread](http://ahkscript.org/boards/viewtopic.php?f=7&t=32))
+'''MCode Tutorial''' ([Forum Thread](https://www.autohotkey.com/boards/viewtopic.php?f=7&t=32))
 
-'''MCode4GCC''' ([Forum Thread](http://ahkscript.org/boards/viewtopic.php?f=6&t=4642) | [GitHub](https://github.com/joedf/MCode4GCC)) - An MCode generator using the GCC Compiler.
+'''MCode4GCC''' ([Forum Thread](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=4642) | [GitHub](https://github.com/joedf/MCode4GCC)) - An MCode generator using the GCC Compiler.
 
 ```AutoHotkey
 MCode(Var, "8B44240403442408C3")
@@ -79,7 +79,7 @@ MsgBox, % DllCall(&Var, "Char",7, "Char",12)
 Var := ""
 return
 
-; http://www.autohotkey.com/board/topic/19483-machine-code-functions-bit-wizardry/
+; https://www.autohotkey.com/board/topic/19483-machine-code-functions-bit-wizardry/
 MCode(ByRef code, hex) { ; allocate memory and write Machine Code there
    VarSetCapacity(code, StrLen(hex) // 2)
    Loop % StrLen(hex) // 2

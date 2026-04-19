@@ -178,8 +178,8 @@ end Test_Bit_Streams;
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 ```algol68
 # NIBBLEs are of any width, eg 1-bit OR 4-bits etc. #
@@ -2037,7 +2037,7 @@ when isMainModule:
 
 ## OCaml
 
-The [extLib](http://code.google.com/p/ocaml-extlib/) provides [bit oriented IO functions](http://ocaml-extlib.googlecode.com/svn/doc/apiref/IO.html#6_BitsAPI).
+The [extLib](https://code.google.com/p/ocaml-extlib/) provides [bit oriented IO functions](http://ocaml-extlib.googlecode.com/svn/doc/apiref/IO.html#6_BitsAPI).
 
 ```ocaml
 let write_7bit_string ~filename ~str =
@@ -2886,11 +2886,11 @@ end
 
 ## Seed7
 
-The Seed7 library [bitdata.s7i](http://seed7.sourceforge.net/libraries/bitdata.htm) defines
+The Seed7 library [bitdata.s7i](https://seed7.sourceforge.net/libraries/bitdata.htm) defines
 several functions to do bitwise I/O. Bitwise data can be read from (or written to) a string or a file.
 The direction of bits can be from LSB (least significant bit) to MSB (most significant bit) or vice versa.
 In the program below the functions
-[putBitsMsb](http://seed7.sourceforge.net/libraries/bitdata.htm#putBitsMsb(inout_file,inout_integer,in_var_integer,in_var_integer)) and [getBitsMsb](http://seed7.sourceforge.net/libraries/bitdata.htm#getBitsMsb(inout_file,inout_integer,in_var_integer)) are used.
+[putBitsMsb](https://seed7.sourceforge.net/libraries/bitdata.htm#putBitsMsb(inout_file,inout_integer,in_var_integer,in_var_integer)) and [getBitsMsb](https://seed7.sourceforge.net/libraries/bitdata.htm#getBitsMsb(inout_file,inout_integer,in_var_integer)) are used.
 
 
 ```seed7

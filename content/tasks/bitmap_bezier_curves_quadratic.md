@@ -1220,7 +1220,7 @@ SetVid(3);              \restore normal text display
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Add this to the PPM class:
 

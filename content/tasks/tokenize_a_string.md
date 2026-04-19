@@ -1344,7 +1344,7 @@ console.log arr.join "."
 ## Common Lisp
 
 
-There are libraries out there that handle splitting (e.g., [SPLIT-SEQUENCE](http://www.cliki.net/SPLIT-SEQUENCE), and the more-general [CL-PPCRE](http://weitz.de/cl-ppcre/)), but this is a simple one-off, too.  When the words are written with write-with-periods, there is no final period after the last word.
+There are libraries out there that handle splitting (e.g., [SPLIT-SEQUENCE](http://www.cliki.net/SPLIT-SEQUENCE), and the more-general [CL-PPCRE](https://weitz.de/cl-ppcre/)), but this is a simple one-off, too.  When the words are written with write-with-periods, there is no final period after the last word.
 
 
 ```lisp
@@ -2923,7 +2923,7 @@ are not allowed too.
 ```parigp
 
 \\ Tokenize a string str according to 1 character delimiter d. Return a list of tokens.
-\\ Using ssubstr() from http://rosettacode.org/wiki/Substring#PARI.2FGP
+\\ Using ssubstr() from https://rosettacode.org/wiki/Substring#PARI.2FGP
 \\ tokenize() 3/5/16 aev
 tokenize(str,d)={
 my(str=Str(str,d),vt=Vecsmall(str),d1=sasc(d),Lr=List(),sn=#str,v1,p1=1);
@@ -2969,7 +2969,7 @@ This version can be used for positional parameters processing, or for processing
 ```parigp
 
 \\ Tokenize a string str according to 1 character delimiter d. Return a list of tokens.
-\\ Using ssubstr() from http://rosettacode.org/wiki/Substring#PARI.2FGP
+\\ Using ssubstr() from https://rosettacode.org/wiki/Substring#PARI.2FGP
 \\ stok() 3/5/16 aev
 stok(str,d)={
 my(d1c=ssubstr(d,1,1),str=Str(str,d1c),vt=Vecsmall(str),d1=sasc(d1c),

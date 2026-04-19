@@ -263,7 +263,7 @@ print( ( "the result is: ", r, " after ", n, " iterations", newline ) );
 # expecting an array, e.g.: #
 f( () );
 
-# named arguments - see the Algol 68 sample in: http://rosettacode.org/wiki/Named_parameters #
+# named arguments - see the Algol 68 sample in: https://rosettacode.org/wiki/Named_parameters #
 
 # In "Talk:Call a function" a statement context is explained as
 "The function is used as an instruction (with a void context),
@@ -287,13 +287,13 @@ then those arguments are being passed by reference. #
 ```
 
 
-See [First-Class Functions](http://rosettacode.org/wiki/First-class_functions#ALGOL_68) for an example of first-class functions in ALGOL 68.
+See [First-Class Functions](https://rosettacode.org/wiki/First-class_functions#ALGOL_68) for an example of first-class functions in ALGOL 68.
 
-See [Partial Function Application](http://rosettacode.org/wiki/Partial_function_application#ALGOL_68) for an example of partial function application in ALGOL 68.
+See [Partial Function Application](https://rosettacode.org/wiki/Partial_function_application#ALGOL_68) for an example of partial function application in ALGOL 68.
 
-See [Optional Parameters](http://rosettacode.org/wiki/Optional_parameters#ALGOL_68) for an example of optional parameters in Algol 68.
+See [Optional Parameters](https://rosettacode.org/wiki/Optional_parameters#ALGOL_68) for an example of optional parameters in Algol 68.
 
-See [Named Parameters](http://rosettacode.org/wiki/Named_parameters#ALGOL_68) for an example of named parameters in Algol 68.
+See [Named Parameters](https://rosettacode.org/wiki/Named_parameters#ALGOL_68) for an example of named parameters in Algol 68.
 
 
 ## ALGOL W
@@ -520,8 +520,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -714,7 +714,7 @@ Batch files do not have a traditional "function" system like OOP languages, howe
 
 ```dos
 
-:: http://rosettacode.org/wiki/Call_a_function
+:: https://rosettacode.org/wiki/Call_a_function
 :: Demonstrate the different syntax and semantics provided for calling a function.
 
 @echo off
@@ -4893,7 +4893,7 @@ def takes_anything(*args, **kwargs):
 ## See, for example, http://www.python-course.eu/passing_arguments.php
 
 ## For partial function application see:
-##   http://rosettacode.org/wiki/Partial_function_application#Python
+##   https://rosettacode.org/wiki/Partial_function_application#Python
 ```
 
 
@@ -4947,7 +4947,7 @@ x
 
 ### Distinguishing built-in functions and user-defined functions
 # Not easily possible. See
-# http://cran.r-project.org/doc/manuals/R-ints.html#g_t_002eInternal-vs-_002ePrimitive
+# https://cran.r-project.org/doc/manuals/R-ints.html#g_t_002eInternal-vs-_002ePrimitive
 # for details.
 
 
@@ -4960,7 +4960,7 @@ x
 
 
 ### Is partial application possible and how
-# Yes, see http://rosettacode.org/wiki/Partial_function_application#R
+# Yes, see https://rosettacode.org/wiki/Partial_function_application#R
 ```
 
 
@@ -5730,7 +5730,7 @@ ignore(getln(IN));      # Using a function in statement context (ignore the resu
 ```
 
 
-* Call-by-name parameters use a function in first-class context. The function [doMap](http://seed7.sourceforge.net/examples/map.htm) from the examples section of the Seed7 homepage uses a given expression to modify the elements of an array:
+* Call-by-name parameters use a function in first-class context. The function [doMap](https://seed7.sourceforge.net/examples/map.htm) from the examples section of the Seed7 homepage uses a given expression to modify the elements of an array:
 ```seed7
 seq := doMap([](1, 2, 4, 6, 10, 12, 16), x, succ(x));
 ```
@@ -6100,7 +6100,7 @@ m.cos 3 -- print;
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="xml" indent="yes"/>
     <xsl:template match="/">
         <demo>

@@ -553,8 +553,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1861,7 +1861,7 @@ The "sort" function also uses a similar technique of building a queue from a seq
 
 '''Min Heap Priority Queue'''
 
-The following code implementing a Min Heap Priority Queue is adapted from the [ML PRIORITY_QUEUE code by Lawrence C. Paulson](http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; it implements an efficient "fromSeq" function using reheapify for which the Min Heap is particularly suited as it has only O(n) instead of O(n log n) computational time complexity, which method is also used for the "adjust" and "merge" functions:
+The following code implementing a Min Heap Priority Queue is adapted from the [ML PRIORITY_QUEUE code by Lawrence C. Paulson](https://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; it implements an efficient "fromSeq" function using reheapify for which the Min Heap is particularly suited as it has only O(n) instead of O(n log n) computational time complexity, which method is also used for the "adjust" and "merge" functions:
 
 ```fsharp
 [<RequireQualifiedAccess>
@@ -2176,7 +2176,7 @@ Also note that the imperative version modifies the state of the "testpq" binding
 
 ## Factor
 
-Factor has priority queues implemented in the library: documentation is available at <http://docs.factorcode.org/content/article-heaps.html> (or by typing "heaps" help interactively in the listener).
+Factor has priority queues implemented in the library: documentation is available at <https://docs.factorcode.org/content/article-heaps.html> (or by typing "heaps" help interactively in the listener).
 
 ```factor
 <min-heap> [ {
@@ -2461,7 +2461,7 @@ Task(5, Make tea)
 
 ## Haskell
 
-One of the best Haskell implementations of priority queues (of which there are many) is [pqueue](http://hackage.haskell.org/package/pqueue), which implements a binomial heap.
+One of the best Haskell implementations of priority queues (of which there are many) is [pqueue](https://hackage.haskell.org/package/pqueue), which implements a binomial heap.
 
 ```haskell
 import Data.PQueue.Prio.Min
@@ -2662,7 +2662,7 @@ sortPQ ls = toListPQ $ fromListPQ ls
 ```
 
 
-If one is willing to forgo the fast O(1) "size" function and to give up strict conformance to the Heap tree structure (where rather than building each new level until each left node is full to that level before increasing level to the right, a new level is built by promoting leaves to branches only containing left leaves until all branches have left leaves before filling any right leaves of that level) although having even better tree balancing and therefore at least as high efficiency, one can use the following code adapted from the [''ML'' PRIORITY_QUEUE code by Lawrence C. Paulson](http://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; as noted in the code comments, a "size" function to output the number of elements in the queue (fairly quickly in O((log n)^2)), an "adjust" function to apply a function to all elements and reheapify in O(n) time, and a "merge" function to merge two queues has been added to the ML code:
+If one is willing to forgo the fast O(1) "size" function and to give up strict conformance to the Heap tree structure (where rather than building each new level until each left node is full to that level before increasing level to the right, a new level is built by promoting leaves to branches only containing left leaves until all branches have left leaves before filling any right leaves of that level) although having even better tree balancing and therefore at least as high efficiency, one can use the following code adapted from the [''ML'' PRIORITY_QUEUE code by Lawrence C. Paulson](https://www.cl.cam.ac.uk/~lp15/MLbook/programs/sample4.sml) including separating the key/value pairs as separate entries in the data structure for better comparison efficiency; as noted in the code comments, a "size" function to output the number of elements in the queue (fairly quickly in O((log n)^2)), an "adjust" function to apply a function to all elements and reheapify in O(n) time, and a "merge" function to merge two queues has been added to the ML code:
 
 ```haskell
 data PriorityQ k v = Mt
@@ -4085,7 +4085,7 @@ let () =
 
 ## Perl
 
-There are a few implementations on CPAN.  Following uses <code>Heap::Priority</code><http://search.cpan.org/~fwojcik/Heap-Priority-0.11/Priority.pm>
+There are a few implementations on CPAN.  Following uses <code>Heap::Priority</code><https://metacpan.org/~fwojcik/Heap-Priority-0.11/Priority.pm>
 
 ```perl
 use 5.10.0;
@@ -4435,7 +4435,7 @@ Array
 
 ## PicoLisp
 
-The following implementation imposes no limits. It uses a [binary tree](http://software-lab.de/doc/refI.html#idx) for storage. The priority levels may be numeric, or of any other type.
+The following implementation imposes no limits. It uses a [binary tree](https://software-lab.de/doc/refI.html#idx) for storage. The priority levels may be numeric, or of any other type.
 
 ```PicoLisp
 # Insert item into priority queue
@@ -4497,7 +4497,7 @@ Output:
 
 SWI-Prolog has a library <b>heaps.pl</b>, written by <b>Lars Buitinck</b> that implements priority queues.
 
-Informations here : <http://www.swi-prolog.org/pldoc/doc/swi/library/heaps.pl>
+Informations here : <https://www.swi-prolog.org/pldoc/doc/swi/library/heaps.pl>
 
 Example of use :
 
@@ -4707,7 +4707,7 @@ Exercise
 
 ### Using PriorityQueue
 
-Python has the class [queue.PriorityQueue](http://docs.python.org/release/3.2/library/queue.html#queue.PriorityQueue) in its standard library.
+Python has the class [queue.PriorityQueue](https://docs.python.org/release/3.2/library/queue.html#queue.PriorityQueue) in its standard library.
 
 The data structures in the "queue" module are synchronized multi-producer, multi-consumer queues for multi-threaded use. They can however handle this task:
 
@@ -4849,7 +4849,7 @@ class PriorityQueue(Queue)
 
 ### Using heapq
 
-Python has the [heapq](http://docs.python.org/release/3.2/library/heapq.html) module in its standard library.
+Python has the [heapq](https://docs.python.org/release/3.2/library/heapq.html) module in its standard library.
 
 Although one can use the heappush method to add items individually to a heap similar to the method used in the PriorityQueue example above, we will instead transform the list of items into a heap in one go then pop them off one at a time as before.
 

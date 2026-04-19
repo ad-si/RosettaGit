@@ -14,7 +14,7 @@ The SRFIs are Scheme Requests for Implementations, and form an unofficial standa
 Each SRFI is a library for a particular set of functionality.  They include additional functions for working with lists, strings or 
 vectors; additional data types, such as hash sets or time data; and alternative expression types, such as eager comprehensions and generators.
 
-<http://srfi.schemers.org> is the official list of SRFIs.  There are currently more than 150 SRFIs, although some of these are still in draft status, or have been withdrawn.  All (almost) SRFIs come with a sample implementation.
+<https://srfi.schemers.org> is the official list of SRFIs.  There are currently more than 150 SRFIs, although some of these are still in draft status, or have been withdrawn.  All (almost) SRFIs come with a sample implementation.
 
 The latest standard for Scheme, R7RS, has been divided into two parts.  R7RS-small provides the core language definition, in the same spirit as R5RS.  R7RS-large is currently in progress, and will formally sanction a standard library: known as the [Red Edition](http://trac.sacrideo.us/wg/wiki/RedEdition), this library looks like being a selection from established SRFIs.  For example, the (scheme list) library is SRFI-1; the (scheme vector) library is SRFI-133, etc.
 

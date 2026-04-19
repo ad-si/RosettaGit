@@ -561,7 +561,7 @@ int main()
 
 ### With Structures
 
-With structures, <code>[copy-structure](http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_stu.htm)</code> performs the right kind of copy.  The object and its copy are compared under <code>eq</code>, <code>eql</code>, <code>equal</code>, and <code>equalp</code> to demonstrate that "The objective is to create an exact copy of such polymorphic object (not to create a reference, nor a pointer to)."
+With structures, <code>[copy-structure](https://www.lispworks.com/documentation/HyperSpec/Body/f_cp_stu.htm)</code> performs the right kind of copy.  The object and its copy are compared under <code>eq</code>, <code>eql</code>, <code>equal</code>, and <code>equalp</code> to demonstrate that "The objective is to create an exact copy of such polymorphic object (not to create a reference, nor a pointer to)."
 
 
 ```lisp
@@ -600,7 +600,7 @@ NIL
 ### With Sequences
 
 
-The same technique works for <code>[sequence](http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code> and its subclasses (e.g., <code>[string](http://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm)</code>, <code>[list](http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code>) when <code>[copy-seq](http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm)</code> is used rather than <code>copy-structure</code>.
+The same technique works for <code>[sequence](https://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code> and its subclasses (e.g., <code>[string](https://www.lispworks.com/documentation/HyperSpec/Body/t_string.htm)</code>, <code>[list](https://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm)</code>) when <code>[copy-seq](https://www.lispworks.com/documentation/HyperSpec/Body/f_cp_seq.htm)</code> is used rather than <code>copy-structure</code>.
 
 
 ```lisp
@@ -969,7 +969,7 @@ scopy => print
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f

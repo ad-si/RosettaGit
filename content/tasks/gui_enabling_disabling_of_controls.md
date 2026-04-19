@@ -1967,7 +1967,7 @@ Manipulate[Null, {{value, 0},
 
 ```NewLISP
 ; file:   gui-enable.lsp
-; url:    http://rosettacode.org/wiki/GUI_enabling/disabling_of_controls
+; url:    https://rosettacode.org/wiki/GUI_enabling/disabling_of_controls
 ; author: oofoe 2012-02-02
 
 ; Load library and initialize GUI server:

@@ -2919,7 +2919,7 @@ Other approaches include using <nowiki>rle ::(''"_)</nowiki> or <nowiki>rle^:(*@
 ###  Alternative Implementation
 
 
-A numeric approach, based on a discussion in the J forums (primarily [Pascal Jasmin](http://jsoftware.com/pipermail/programming/2015-June/042139.html) and [Marshall Lochbaum](http://jsoftware.com/pipermail/programming/2015-June/042141.html)):
+A numeric approach, based on a discussion in the J forums (primarily [Pascal Jasmin](https://www.jsoftware.com/pipermail/programming/2015-June/042139.html) and [Marshall Lochbaum](https://www.jsoftware.com/pipermail/programming/2015-June/042141.html)):
 
 
 ```j
@@ -4414,7 +4414,7 @@ WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 
 Works with SWI-Prolog.
 
-This code is inspired from a code found here : <http://groups.google.com/group/comp.lang.prolog/browse_thread/thread/b053ea2512e8b350> (author : Pascal J. Bourguignon).
+This code is inspired from a code found here : <https://groups.google.com/group/comp.lang.prolog/browse_thread/thread/b053ea2512e8b350> (author : Pascal J. Bourguignon).
 
 ```Prolog
 % the test

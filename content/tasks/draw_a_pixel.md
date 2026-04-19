@@ -605,7 +605,7 @@ It seems that the program should be this.  And the BASIC256 tutorial programs wo
 
 ```BASIC256
 
-rem http://rosettacode.org/wiki/Draw_a_pixel
+rem https://rosettacode.org/wiki/Draw_a_pixel
 
 graphsize 320, 240
 color red
@@ -625,7 +625,7 @@ plot 100, 100
 
 ## C
 
-Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -1344,7 +1344,7 @@ img.show()
 
 
 ```qbasic
-' http://rosettacode.org/wiki/Draw_a_pixel
+' https://rosettacode.org/wiki/Draw_a_pixel
 ' This program can run in QBASIC, QuickBASIC, gw-BASIC (adding line numbers) and VB-DOS
 SCREEN 1
 COLOR , 0

@@ -105,7 +105,7 @@ An   ''ordered word''   is a word in which the letters appear in alphabetic orde
 
 Examples include   '''abbey'''   and   '''dirt'''.
 
-Find ''and display'' all the ordered words in the dictionary   [unixdict.txt](https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt)   that have the longest word length.
+Find ''and display'' all the ordered words in the dictionary   [unixdict.txt](https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt)   that have the longest word length.
 
 (Examples that access the dictionary file locally assume that you have downloaded this file yourself.)
 
@@ -1089,7 +1089,7 @@ static class Program
     static void Main(string[] args)
     {
         WebClient client = new WebClient();
-        string text = client.DownloadString("http://www.puzzlers.org/pub/wordlists/unixdict.txt");
+        string text = client.DownloadString("https://www.puzzlers.org/pub/wordlists/unixdict.txt");
         string[] words = text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
         var query = from w in words
@@ -1438,7 +1438,7 @@ end;
 
 begin
   try
-    WriteLn(ProcessDictionary('http://www.puzzlers.org/pub/wordlists/unixdict.txt'));
+    WriteLn(ProcessDictionary('https://www.puzzlers.org/pub/wordlists/unixdict.txt'));
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
@@ -1464,7 +1464,7 @@ abbott accent accept access accost almost bellow billow biopsy chilly choosy cho
 ```e
 pragma.enable("accumulator")
 
-def words := <http://www.puzzlers.org/pub/wordlists/unixdict.txt>.getText().split("\n")
+def words := <https://www.puzzlers.org/pub/wordlists/unixdict.txt>.getText().split("\n")
 def ordered := accum [] for word ? (word.sort() <=> word) in words { _.with(word) }
 def maxLen := accum 0 for word in ordered { _.max(word.size()) }
 def maxOrderedWords := accum [] for word ? (word.size() <=> maxLen) in ordered { _.with(word) }
@@ -1477,7 +1477,7 @@ One-pass procedural algorithm which avoids keeping the entire data set in memory
 
 ```e
 def best := [].diverge()
-for `@word$\n` ? (word.sort() <=> word) in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> {
+for `@word$\n` ? (word.sort() <=> word) in <https://www.puzzlers.org/pub/wordlists/unixdict.txt> {
   if (best.size() == 0) {
     best.push(word)
   } else if (word.size() > best[0].size()) {
@@ -1594,7 +1594,7 @@ sort_with_length( Words ) ->
     Words_with_length_first = [{erlang:length(X), X} || X <- Words],
     lists:sort( Words_with_length_first ).
 
-words() -> anagrams_deranged:words_from_url( "http://www.puzzlers.org/pub/wordlists/unixdict.txt" ).
+words() -> anagrams_deranged:words_from_url( "https://www.puzzlers.org/pub/wordlists/unixdict.txt" ).
 
 ```
 
@@ -1831,7 +1831,7 @@ FUNCTION RESTfulGET(url)
     RETURN GETVALUE("%s", HTTP, ".ResponseText")
 END FUNCTION
 
-DIM $TEXT = RESTfulGET("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+DIM $TEXT = RESTfulGET("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 DIM dict[] = Split(TEXT, CHR(10))
 DIM max AS INTEGER = UBOUND(dict)
 DIM theword AS STRING
@@ -2311,7 +2311,7 @@ def isOrdered = { word -> def letters = word as List; letters == ([] + letters).
 assert isOrdered('abbey')
 assert !isOrdered('cat')
 
-def dictUrl = new URL('http://www.puzzlers.org/pub/wordlists/unixdict.txt')
+def dictUrl = new URL('https://www.puzzlers.org/pub/wordlists/unixdict.txt')
 def orderedWords = dictUrl.readLines().findAll { isOrdered(it) }
 def owMax = orderedWords*.size().max()
 
@@ -2458,7 +2458,7 @@ end
 ```
 
 
-[strings provides csort](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) which sorts the letters within a string
+[strings provides csort](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn) which sorts the letters within a string
 
 Output:
 
@@ -2520,7 +2520,7 @@ abbott accent accept access accost almost bellow billow biopsy chilly choosy cho
 
 ```j
    require'web/gethttp'
-   dict=: gethttp'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+   dict=: gethttp'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
    oWords=: (#~ ] = /:~L:0) <;._2 dict-.CR
    ;:inv (#~ (= >./)@:(#@>))oWords
 abbott accent accept access accost almost bellow billow biopsy chilly choosy choppy effort floppy glossy knotty
@@ -2611,7 +2611,7 @@ knotty
 
 ## JavaScript
 
-Using [node.js](http://nodejs.org/):
+Using [node.js](https://nodejs.org/):
 
 
 ```javascript
@@ -3034,7 +3034,7 @@ knotty
 
 
 ```Maple
-lst := StringTools:-Split(Import("http://www.puzzlers.org/pub/wordlists/unixdict.txt"), "\n"):
+lst := StringTools:-Split(Import("https://www.puzzlers.org/pub/wordlists/unixdict.txt"), "\n"):
 longest := 0:
 words := Array():
 i := 1:
@@ -3082,7 +3082,7 @@ for word in words do print(word); end do;
 
 ```mathematica
 Module[{max,
-   data = Select[Import["http://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"],
+   data = Select[Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"],
      OrderedQ[Characters[#]] &]},
   max = Max[StringLength /@ data];
   Select[data, StringLength[#] == max &]]
@@ -3232,7 +3232,7 @@ proc isSorted(s): bool =
     last = c
   return true
 
-const url = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
+const url = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 var mx = 0
 var words: seq[string] = @[]
 
@@ -3642,7 +3642,7 @@ abbott
 
 ```PowerShell
 
-$url = 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+$url = 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 
 (New-Object System.Net.WebClient).DownloadFile($url, "$env:TEMP\unixdict.txt")
 
@@ -3682,7 +3682,7 @@ Works with SWI-Prolog
 
 ordered_words :-
         % we read the URL of the words
-	http_open('http://www.puzzlers.org/pub/wordlists/unixdict.txt',	In, []),
+	http_open('https://www.puzzlers.org/pub/wordlists/unixdict.txt',	In, []),
 	read_file(In, [], Out),
 	close(In),
 
@@ -3821,7 +3821,7 @@ choosy  choppy  effort  floppy  glossy  knotty
 ```python
 import urllib.request
 
-url = 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+url = 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 words = urllib.request.urlopen(url).read().decode("utf-8").split()
 ordered = [word for word in words if word==''.join(sorted(word))]
 maxlen = len(max(ordered, key=len))
@@ -3837,7 +3837,7 @@ print(' '.join(maxorderedwords))
 ```python
 import urllib.request
 
-mx, url = 0, 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+mx, url = 0, 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 
 for word in urllib.request.urlopen(url).read().decode("utf-8").split():
     lenword = len(word)
@@ -3945,7 +3945,7 @@ knotty
 #lang racket
 (require net/url)
 
-(define dict "http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+(define dict "https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 (define (ordered? str)
   (define lower (string-downcase str))
@@ -3996,7 +3996,7 @@ knotty
 ```Red
 Red []
 ;; code to read url and save to local file:
-;;data: read/binary http://www.puzzlers.org/pub/wordlists/unixdict.txt
+;;data: read/binary https://www.puzzlers.org/pub/wordlists/unixdict.txt
 ;;write %unixdict.txt data
 
 max: [ "" ] ;; init array with one empty string (length 0 )
@@ -4168,7 +4168,7 @@ knotty
 
 ```ruby
 require 'open-uri'
-ordered_words = open('http://www.puzzlers.org/pub/wordlists/unixdict.txt', 'r').select do |word|
+ordered_words = open('https://www.puzzlers.org/pub/wordlists/unixdict.txt', 'r').select do |word|
   word.strip!
   word.chars.sort.join == word
 end
@@ -4213,7 +4213,7 @@ puts words.group_by(&:size).sort_by(&:first).last.last
 
 
 ```runbasic
-a$	= httpget$("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+a$	= httpget$("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 j	= 1
 i   	= instr(a$,chr$(10),j)
 while i <> 0
@@ -4312,7 +4312,7 @@ fn main() {
 
 
 ```scala
-val wordsAll = scala.io.Source.fromURL("http://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.toSeq
+val wordsAll = scala.io.Source.fromURL("https://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.toSeq
 
 /**
  * Given a sequence of words return a sub-sequence of the
@@ -4701,7 +4701,7 @@ knotty
 import Foundation
 
 guard
-    let url =  NSURL(string: "http://www.puzzlers.org/pub/wordlists/unixdict.txt"),
+    let url =  NSURL(string: "https://www.puzzlers.org/pub/wordlists/unixdict.txt"),
     let input = try? NSString(contentsOfURL: url,encoding: NSUTF8StringEncoding) as String
     else { exit(EXIT_FAILURE) }
 
@@ -4779,7 +4779,7 @@ proc chooseOrderedWords list {
 }
 
 # Get the dictionary and print the ordered words from it
-set t [http::geturl "http://www.puzzlers.org/pub/wordlists/unixdict.txt"]
+set t [http::geturl "https://www.puzzlers.org/pub/wordlists/unixdict.txt"]
 puts [chooseOrderedWords [http::data $t]]
 http::cleanup $t
 ```
@@ -4800,7 +4800,7 @@ abbott accent accept access accost almost bellow billow biopsy chilly choosy cho
 ```tuscript
 
 $$ MODE TUSCRIPT
-SET data = REQUEST ("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+SET data = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 DICT orderdwords CREATE 99999
 COMPILE
 LOOP word=data

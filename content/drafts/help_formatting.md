@@ -13,7 +13,7 @@ tags = []
 Editing on a wiki site is a bit different from editing plain [[HTML]]. While HTML is allowed, there are some extra things.
 
 ==The Editor==
-If you enable JavaScript on your browser, you get a neat little toolbar to help you out with wiki editing. You can use these buttons you help you learn how to do things for yourself. First, there are '''Bold''' and ''Italics'' buttons. Next, there is a button you can use to [[Main Page|link to an internal page]], and one you can use to [link to an external page](http://www.rosettacode.org). There is a button for making text into a header (like "The Editor" shown above). You can link to an image on the site with the next button:
+If you enable JavaScript on your browser, you get a neat little toolbar to help you out with wiki editing. You can use these buttons you help you learn how to do things for yourself. First, there are '''Bold''' and ''Italics'' buttons. Next, there is a button you can use to [[Main Page|link to an internal page]], and one you can use to [link to an external page](https://www.rosettacode.org). There is a button for making text into a header (like "The Editor" shown above). You can link to an image on the site with the next button:
 
 [[Image:Fifo.gif]]
 

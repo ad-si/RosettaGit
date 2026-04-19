@@ -53,9 +53,9 @@ However, the system of categories under [[:Category:Solutions by Programming Tas
 
 ::A comment on one of the pages in question suggested the library may be correct and that disambiguation may be need like Library: prime (language).  I'm not convinced if there is a library or package called primes that it would not have a broader name like the well known hosting site or such.  The RC template [[:Template:Library]] has no documentation about what is expected/required so there is little surprise that people use the template differently.  At least one attempt to get more information was made in 2009 but it didn't seem to go anywhere.  Even if we conclude that a certain use is wrong, we'd need to go around an mark the pages needs improvement or similar.  Examples:
 
-::: <nowiki>Using {{libheader|Primes}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)</nowiki> - creates Primes and formats in an ugly fashion. The code refers to HackageDB (which I would take to be the library and [primes](http://hackage.haskell.org/package/primes) the package.
+::: <nowiki>Using {{libheader|Primes}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)</nowiki> - creates Primes and formats in an ugly fashion. The code refers to HackageDB (which I would take to be the library and [primes](https://hackage.haskell.org/package/primes) the package.
 
-::: <nowiki>{{libheader|Icon Programming Library}} [strings.icn provides deletec and sortc](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)</wiki>  This allows for the category page to represent the entire library rather than a single member.
+::: <nowiki>{{libheader|Icon Programming Library}} [strings.icn provides deletec and sortc](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)</wiki>  This allows for the category page to represent the entire library rather than a single member.
 
 ::: vs. something else.  What is intended?    I see an example that includes: <nowiki>{{libheader|GTK}}{{libheader|GtkAda}}{{uses from|library|GtkAda|component1=Window|component2=Widget|component3=Handlers|component4=Main}}</nowiki> which seems much along the lines of what I would have expected. Except that the libheader for GtkAda and the uses from point at different pages (GtkAda and Library/GtkAda).
 

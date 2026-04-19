@@ -18,4 +18,4 @@ Because of divergence from the BSD projects, there are now at least 5 different 
 * [FreeBSD make](http://www.freebsd.org/cgi/man.cgi?query=make&apropos=0&sektion=1&manpath=FreeBSD+8.2-RELEASE&format=html)
 * [MirOS make](http://www.mirbsd.org/htman/i386/man1/make.htm)
 * [NetBSD make](http://netbsd.gw.com/cgi-bin/man-cgi?make+1+NetBSD-current)
-* [OpenBSD make](http://www.openbsd.org/cgi-bin/man.cgi?query=make&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html)
+* [OpenBSD make](https://www.openbsd.org/cgi-bin/man.cgi?query=make&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html)

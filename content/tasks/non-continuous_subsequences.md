@@ -305,7 +305,7 @@ aeiu
 ## AutoHotkey
 
 using filtered templates
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=277328#277328)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?p=277328#277328)
 
 
 ```AutoHotkey
@@ -1462,7 +1462,7 @@ public class NonContinuousSubsequences {
 
 ## JavaScript
 
-Uses powerset() function from [[Power Set#JavaScript|here]]. Uses a JSON stringifier from <http://www.json.org/js.html>
+Uses powerset() function from [[Power Set#JavaScript|here]]. Uses a JSON stringifier from <https://www.json.org/js.html>
 
 ```javascript
 function non_continuous_subsequences(ary) {
@@ -1486,7 +1486,7 @@ function is_array_continuous(ary) {
     return true;
 }
 
-load('json2.js'); /* <http://www.json.org/js.html> */
+load('json2.js'); /* <https://www.json.org/js.html> */
 
 print(JSON.stringify( non_continuous_subsequences( powerset([1,2,3,4]))));
 ```
@@ -2424,7 +2424,7 @@ def C(n, k):
         result /= d
     return result
 
-# <http://oeis.org/A002662>
+# <https://oeis.org/A002662>
 nsubs = lambda n: sum(C(n, k) for k in xrange(3, n+1))
 
 def ncsub(seq):

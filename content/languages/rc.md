@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-['''rc'''](https://en.wikipedia.org/wiki/Rc) is a simple yet powerful shell written by Tom Duff. Originally used on AT&T's Version 10 UNIX, it is now primarily used under [Plan 9](http://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs), where it is the default shell. Despite rc's simplicity, it is powerful enough that many of Plan 9's basic utilities are written using it.
+['''rc'''](https://en.wikipedia.org/wiki/Rc) is a simple yet powerful shell written by Tom Duff. Originally used on AT&T's Version 10 UNIX, it is now primarily used under [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs), where it is the default shell. Despite rc's simplicity, it is powerful enough that many of Plan 9's basic utilities are written using it.
 
 ## Examples
 Here is a script to check the weather in a given city. (Retrieved from [http://plan9.bell-labs.com/sources/plan9/rc/bin/weather](http://plan9.bell-labs.com/sources/plan9/rc/bin/weather))

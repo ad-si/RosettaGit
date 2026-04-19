@@ -90,7 +90,7 @@ puts "Go to the store and buy some more, 99 bottles of beer on the wall."
 
 
 ===99-bottles-of-beer.net===
-from <http://99-bottles-of-beer.net/language-tcl-439.html>
+from <https://99-bottles-of-beer.net/language-tcl-439.html>
 
 ```tcl
 proc bottles {i} {
@@ -118,7 +118,7 @@ for {set i 99} {$i>0} {} {
 
 ### The Boozy Version
 
-A [http://99-bottles-of-beer.net/language-expect-249.html
+A [https://99-bottles-of-beer.net/language-expect-249.html
 particularly entertaining version] is [[wp:Don Libes|Don Libes]]’s coding
 from the mid-'90s in [[Expect]],
 which "... SIMULATES a human typing the beer song."

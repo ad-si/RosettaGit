@@ -3345,7 +3345,7 @@ rump(77617, 33096) =  -0.8273960599468214
 
 
 Racket has the concept of exact (rational) and inexact (floating point) numbers, both real and complex.
-See: <http://docs.racket-lang.org/guide/numbers.html> for more details.
+See: <https://docs.racket-lang.org/guide/numbers.html> for more details.
 
 The examples below use real numbers, and the <code>x</code> function is used to transform them to floats, if desired, with the function <code>exact->inexact</code>.
 

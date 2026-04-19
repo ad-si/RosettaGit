@@ -1628,8 +1628,8 @@ println(java.net.InetAddress.getLocalHost.getHostName)
 
 ## Seed7
 
-The library [socket.s7i](http://seed7.sourceforge.net/libraries/socket.htm)
-defines the function [getHostname](http://seed7.sourceforge.net/libraries/socket.htm#getHostname),
+The library [socket.s7i](https://seed7.sourceforge.net/libraries/socket.htm)
+defines the function [getHostname](https://seed7.sourceforge.net/libraries/socket.htm#getHostname),
 which returns the hostname.
 
 

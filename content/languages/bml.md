@@ -9,6 +9,6 @@ id = 17030
 categories = []
 tags = []
 +++
-The '''BML''' programming language is a BASIC dialect currently being developed by Fluffy Smoke Technologies(formerly The BuRg3r Team) and some of its features are based on [Lua](http://rosettacode.org/wiki/Category:Lua).
+The '''BML''' programming language is a BASIC dialect currently being developed by Fluffy Smoke Technologies(formerly The BuRg3r Team) and some of its features are based on [Lua](https://rosettacode.org/wiki/Category:Lua).
 
 BML is also compiled into its own bytecode which can then either be executed or translated into a different language entirely.

@@ -473,7 +473,7 @@ Division by zero in line 40
 ## PureBasic
 =
 
-PureBasic can be compiled with the [OnError](http://www.purebasic.com/documentation/onerror/index.html) library included which gives a way to track program errors without losing speed, doing so gives support for the following functions;
+PureBasic can be compiled with the [OnError](https://www.purebasic.com/documentation/onerror/index.html) library included which gives a way to track program errors without losing speed, doing so gives support for the following functions;
 *ErrorAddress()
 *ErrorCode()
 *ErrorFile()
@@ -1099,7 +1099,7 @@ end)
 
 ## Emacs Lisp
 
-Division by zero gives an error of type <code>arith-error</code> which can be caught in the usual ways with <code>condition-case</code> and similar.  A division by zero example can be found in the Elisp manual section ["Handling Errors"](http://www.gnu.org/s/emacs/manual/html_node/elisp/Handling-Errors.html).
+Division by zero gives an error of type <code>arith-error</code> which can be caught in the usual ways with <code>condition-case</code> and similar.  A division by zero example can be found in the Elisp manual section ["Handling Errors"](https://www.gnu.org/s/emacs/manual/html_node/elisp/Handling-Errors.html).
 
 
 ```Lisp
@@ -1574,9 +1574,9 @@ Run-time error 201 : division by zero in line #3 - converted to failure
 
 Generally, this task should be accomplished in J using 0=DEN. Here we take an approach that's more comparable with the other examples on this page.
 
-Divide by zero is not an error in J. It results in infinity which is represented by an underscore ( <code>_</code> ) or negative infinity (represented by a double underescore) or complex values which can have infinities for the real and/or imaginary part., except that [0 divided by 0 is defined to have the result zero](http://www.jsoftware.com/papers/eem/0div0.htm) (mathematically speaking any number is a valid result for 0 divided by 0, because 0 times any number is zero).
+Divide by zero is not an error in J. It results in infinity which is represented by an underscore ( <code>_</code> ) or negative infinity (represented by a double underescore) or complex values which can have infinities for the real and/or imaginary part., except that [0 divided by 0 is defined to have the result zero](https://www.jsoftware.com/papers/eem/0div0.htm) (mathematically speaking any number is a valid result for 0 divided by 0, because 0 times any number is zero).
 
-See also the [J Dictionary page on infinity](http://www.jsoftware.com/help/dictionary/d030.htm)
+See also the [J Dictionary page on infinity](https://www.jsoftware.com/help/dictionary/d030.htm)
 
 So, anyways, the task:
 
@@ -2597,7 +2597,7 @@ In Racket, the division by zero exception can be caught directly:
 ```REBOL
 REBOL [
     Title: "Detect Divide by Zero"
-    URL: http://rosettacode.org/wiki/Divide_by_Zero_Detection
+    URL: https://rosettacode.org/wiki/Divide_by_Zero_Detection
 ]
 
 ; The 'try' word returns an error object if the operation fails for
@@ -2836,7 +2836,7 @@ object DivideByZero extends Application {
 ## Seed7
 
 Integer division by zero raises NUMERIC_ERROR.
-Floating point division by zero returns [Infinity](http://seed7.sourceforge.net/libraries/float.htm#Infinity) or -Infinity.
+Floating point division by zero returns [Infinity](https://seed7.sourceforge.net/libraries/float.htm#Infinity) or -Infinity.
 
 ```seed7
 $ include "seed7_05.s7i";

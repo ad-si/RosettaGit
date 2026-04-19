@@ -18,4 +18,4 @@ tags = []
 * Pattern matching;
 * Sockets.
 
-The library is distributed under the [[GPL]] license and maintained by [AdaCore](http://www.adacore.com/home/).
+The library is distributed under the [[GPL]] license and maintained by [AdaCore](https://www.adacore.com/home/).

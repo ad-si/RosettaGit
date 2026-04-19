@@ -3180,7 +3180,7 @@ printing key:
 
 ## Phix
 
-Translated from the C version at <http://www.geeksforgeeks.org/avl-tree-set-2-deletion>
+Translated from the C version at <https://www.geeksforgeeks.org/avl-tree-set-2-deletion>
 
 The standard distribution includes demo\rosetta\AVL_tree.exw, which contains a slightly longer but perhaps more readable version,
 with a command line equivalent of <https://www.cs.usfca.edu/~galles/visualization/AVLtree.html> as well as a simple tree structure

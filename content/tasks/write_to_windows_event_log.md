@@ -52,7 +52,7 @@ Write script status to the Windows Event Log
 
 
 ```autohotkey
-; By ABCza, http://www.autohotkey.com/board/topic/76170-function-send-windows-log-events/
+; By ABCza, https://www.autohotkey.com/board/topic/76170-function-send-windows-log-events/
 h := RegisterForEvents("AutoHotkey")
 SendWinLogEvent(h, "Test Message")
 DeregisterForEvents(h)
@@ -79,9 +79,9 @@ pData		- A buffer containing the binary data.
 --------------------------------------------------------------------------------------------------------------------------------
 SYSTEM CALLS, STRUCTURES AND INFO:
 --------------------------------------------------------------------------------------------------------------------------------
-ReportEvent										- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363679(v=vs.85).aspx
-Event Identifiers								- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363651(v=vs.85).aspx
-Event categories								- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363649(v=vs.85).aspx
+ReportEvent										- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363679(v=vs.85).aspx
+Event Identifiers								- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363651(v=vs.85).aspx
+Event categories								- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363649(v=vs.85).aspx
 --------------------------------------------------------------------------------------------------------------------------------
 */
 SendWinLogEvent(hSource, String="", evType=0x0004, evId=0x03EA, evCat=0, pData=0) {
@@ -120,8 +120,8 @@ logName	 - Can be "Application", "System" or a custom log name.
 --------------------------------------------------------------------------------------------------------------------------------
 SYSTEM CALLS, STRUCTURES AND INFO:
 --------------------------------------------------------------------------------------------------------------------------------
-RegisterEventSource							- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363678(v=VS.85).aspx
-Event Sources								- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363661(v=VS.85).aspx
+RegisterEventSource							- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363678(v=VS.85).aspx
+Event Sources								- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363661(v=VS.85).aspx
 --------------------------------------------------------------------------------------------------------------------------------
 */
 RegisterForEvents(logName) {
@@ -141,8 +141,8 @@ hSource	 - Handle to a registered source.
 --------------------------------------------------------------------------------------------------------------------------------
 SYSTEM CALLS, STRUCTURES AND INFO:
 --------------------------------------------------------------------------------------------------------------------------------
-DeregisterEventSource						- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363642(v=vs.85).aspx
-Event Sources								- http://msdn.microsoft.com/en-us/library/windows/desktop/aa363661(v=VS.85).aspx
+DeregisterEventSource						- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363642(v=vs.85).aspx
+Event Sources								- https://msdn.microsoft.com/en-us/library/windows/desktop/aa363661(v=VS.85).aspx
 --------------------------------------------------------------------------------------------------------------------------------
 */
 DeregisterForEvents(hSource) {
@@ -654,7 +654,7 @@ SUCCESS: An event of type 'INFORMATION' was created in the 'Application' log wit
 
 ## PicoLisp
 
-PicoLisp doesn't run on Windows. In case of Linux, the equivalent of the event log is the syslog. It can be written with '[native](http://software-lab.de/doc/refN.html#native)' C functions, or simply with the 'logger' utility:
+PicoLisp doesn't run on Windows. In case of Linux, the equivalent of the event log is the syslog. It can be written with '[native](https://software-lab.de/doc/refN.html#native)' C functions, or simply with the 'logger' utility:
 
 ```PicoLisp
 : (call 'logger "This is a test")
@@ -710,7 +710,7 @@ $EventLog.WriteEntry("My Test Event",$infoevent,70)
 ''Note1:'' Thanks to PoSH Fan for posting information that got me started on this at [Windows PowerShell Blog](http://winpowershell.blogspot.com/2006/07/writing-windows-events-using.html)
 
 
-''Note2:'' See details on registering a new Event Source with Windows at [MSDN](http://msdn.microsoft.com/en-us/library/system.diagnostics.eventlog.registerdisplayname.aspx)
+''Note2:'' See details on registering a new Event Source with Windows at [MSDN](https://msdn.microsoft.com/en-us/library/system.diagnostics.eventlog.registerdisplayname.aspx)
 
 
 ### Source and event log existing

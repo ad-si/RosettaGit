@@ -2165,7 +2165,7 @@ aardvarks are ant eaters -> sdaaaraaasv rer nt keter (0)
 ## J
 
 
-Based on [Dan Bron's approach](http://rosettacode.org/mw/index.php?title=Best_shuffle&oldid=97419#J):
+Based on [Dan Bron's approach](https://rosettacode.org/mw/index.php?title=Best_shuffle&oldid=97419#J):
 
 
 ```j
@@ -3587,7 +3587,7 @@ def best_shuffle(s):
 
     # Convert list to string. PEP 8, "Style Guide for Python Code",
     # suggests that ''.join() is faster than + when concatenating
-    # many strings. See http://www.python.org/dev/peps/pep-0008/
+    # many strings. See https://www.python.org/dev/peps/pep-0008/
     r = ''.join(r)
 
     score = sum(x == y for x, y in zip(r, s))

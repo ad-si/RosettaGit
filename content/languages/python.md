@@ -5,13 +5,13 @@ date = 2018-04-09T03:22:33Z
 aliases = []
 [extra]
 id = 1696
-website = "http://www.python.org"
+website = "https://www.python.org"
 [taxonomies]
 categories = []
 tags = ["garbage-collected", "interpreted", "dynamic", "object-oriented"]
 +++
 
-From the official [Python](http://www.python.org) website:
+From the official [Python](https://www.python.org) website:
 
 > Python is a programming language that lets you work more quickly
 > and integrate your systems more effectively.

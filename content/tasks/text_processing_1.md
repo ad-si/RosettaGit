@@ -96,7 +96,7 @@ Data is no longer available at that link. Zipped mirror available [here](https:/
 ```
 
 
-Only a sample of the data showing its format is given above. The full example file may be downloaded [here](http://rosettacode.org/resources/readings.zip).
+Only a sample of the data showing its format is given above. The full example file may be downloaded [here](https://rosettacode.org/resources/readings.zip).
 
 Structure your program to show statistics for each line of the file, (similar to the original Python, Perl, and AWK examples below), followed by summary statistics for the file. When showing example output just show a few line statistics and the full end summary.
 

@@ -51,7 +51,7 @@ Write a function that returns the longest common substring of two strings. Use i
 
 ## References
 
-*[Generalize Suffix Tree](http://en.wikipedia.org/wiki/Generalized_suffix_tree)
+*[Generalize Suffix Tree](https://en.wikipedia.org/wiki/Generalized_suffix_tree)
 *[[Ukkonen’s Suffix Tree Construction]]
 
 

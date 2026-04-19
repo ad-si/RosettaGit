@@ -3438,7 +3438,7 @@ Dim names = (From item In xml.XPathSelectElements("//name") Select item.Value).T
 
 
 ```xml
-<p:pipeline xmlns:p="http://www.w3.org/ns/xproc"
+<p:pipeline xmlns:p="https://www.w3.org/ns/xproc"
   name="one-two-three"
   version="1.0">
   <p:identity>
@@ -3525,7 +3525,7 @@ Performing this XQuery on the given input document results in
 
 
 ```xml
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" />
   <xsl:template match="/">
 

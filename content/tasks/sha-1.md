@@ -445,7 +445,7 @@ USER>zzdump hash
 
 ## Clojure
 
-As Clojure is interoperable with Java the solution to this task would be a small modification to [[MD5#Clojure|MD5]], as with Java. (Replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest).)
+As Clojure is interoperable with Java the solution to this task would be a small modification to [[MD5#Clojure|MD5]], as with Java. (Replacing "MD5" with "SHA-1" as noted [here](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest).)
 
 
 ## Common Lisp
@@ -1022,7 +1022,7 @@ Remember that SHA-1 is an obsolete standard (and if you *really* want high speed
 
 ## Java
 
-The solution to this task would be a small modification to [[MD5#Java|MD5]] (replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
+The solution to this task would be a small modification to [[MD5#Java|MD5]] (replacing "MD5" with "SHA-1" as noted [here](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
 
 
 ## Jsish
@@ -1428,7 +1428,7 @@ $ ocaml -I +sha sha1.cma
 
 ## Octave
 
-Normally SHA-1 is available in the [general package](http://octave.sourceforge.net/general/function/SHA1.html).
+Normally SHA-1 is available in the [general package](https://octave.sourceforge.net/general/function/SHA1.html).
 
 
 ```octave
@@ -1832,7 +1832,7 @@ Function Calculate-SHA1( $String ){
 
 ```
 
-taken from [Stackoverflow](http://stackoverflow.com/questions/8051713/convert-a-string-to-a-byte-array-in-powershell-version-2) with a little modification
+taken from [Stackoverflow](https://stackoverflow.com/questions/8051713/convert-a-string-to-a-byte-array-in-powershell-version-2) with a little modification
 
 
 ## PureBasic
@@ -2064,7 +2064,7 @@ print(sha1sum("Rosetta Code"));
 
 ## Scala
 
-The solution to this task would be a small modification to [[MD5#Scala|MD5]] (replacing "MD5" with "SHA-1" as noted [here](http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
+The solution to this task would be a small modification to [[MD5#Scala|MD5]] (replacing "MD5" with "SHA-1" as noted [here](https://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#MessageDigest)).
 
 
 ```scala

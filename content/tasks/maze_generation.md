@@ -590,7 +590,7 @@ GetChar(s, x, y, n=1){
 
 ### Alternative Version
 
-<http://rosettacode.org/wiki/Maze_solving#AutoHotkey>
+<https://rosettacode.org/wiki/Maze_solving#AutoHotkey>
 
 Generator and solver combined.
 
@@ -4067,7 +4067,7 @@ end
 ```
 
 Note: The underlying maze structure (matrix) is uni-directional from the start
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -4547,7 +4547,7 @@ This difers of the basic Javascript in that in NodeJS we take advantage of the a
 
 'use strict';
 /*
- * Imported from http://rosettacode.org/wiki/Maze_generation#JavaScript
+ * Imported from https://rosettacode.org/wiki/Maze_generation#JavaScript
  * Added asynchronous behaviour to the maze generation.
  *
  * Port by sigmasoldier

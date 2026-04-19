@@ -326,7 +326,7 @@ See also: [gawk-Reference](https://www.gnu.org/software/gawk/manual/html_node/Pr
 
 ## bc
 
-From the [POSIX Standard](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/bc.html), ordered by decreasing precedence:
+From the [POSIX Standard](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/bc.html), ordered by decreasing precedence:
 {| class="wikitable"
 ! Precedence !! Operator(s) !! Description !! Associativity
 |-
@@ -436,7 +436,7 @@ If you are wondering what the discussed unary operators are for, see this table:
 
 ## C
 
-Same as [C++](http://rosettacode.org/wiki/Operator_precedence#C.2B.2B|See).
+Same as [C++](https://rosettacode.org/wiki/Operator_precedence#C.2B.2B|See).
 
 
 ## C++
@@ -795,7 +795,7 @@ A [copy from the D wiki](http://wiki.dlang.org/Operator_precedence).
 ## Eiffel
 
 
-Official documentation: <http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-367.pdf>, section 8.28.5
+Official documentation: <https://www.ecma-international.org/publications/files/ECMA-ST/ECMA-367.pdf>, section 8.28.5
 {| class="wikitable"
 ! Priority || Operator || Description || Associativity
 |-
@@ -1064,7 +1064,7 @@ Syntactic elements not in the list are not considered operators in Go; if they p
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Taken from <http://www.cs.arizona.edu/icon/refernce/exprlist.htm#expressions>
+Taken from <https://www.cs.arizona.edu/icon/refernce/exprlist.htm#expressions>
 (blank lines separate groups of operators with equal precedence):
 
 ```txt
@@ -1255,11 +1255,11 @@ Low Precedence Expressions
 | long right scope
 |}
 
-See <http://www.jsoftware.com/help/dictionary/partsofspeech.htm> for tokens in each grammatical class.
+See <https://www.jsoftware.com/help/dictionary/partsofspeech.htm> for tokens in each grammatical class.
 
 Note that other parts of speech do not have any precedence, because they are not "operators".
 
-Note that this is an imprecise statement of the grammatical rules.  For a complete treatment, see <http://www.jsoftware.com/help/dictionary/dicte.htm>
+Note that this is an imprecise statement of the grammatical rules.  For a complete treatment, see <https://www.jsoftware.com/help/dictionary/dicte.htm>
 
 Here's an informal treatment of the grammar:
 
@@ -1278,7 +1278,7 @@ The result of an adverb or a conjunction can have any one of these grammatical c
 
 ## Java
 
-This is well-documented [on the Oracle website](http://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html).
+This is well-documented [on the Oracle website](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html).
 
 ## JavaScript
 
@@ -1449,7 +1449,7 @@ From the LIL readme.txt documentation:
 
 ## Lua
 
-Table available [here](http://www.lua.org/manual/5.1/manual.html#2.5.6). That table does not contain all operators, however.
+Table available [here](https://www.lua.org/manual/5.1/manual.html#2.5.6). That table does not contain all operators, however.
 {| class="wikitable"
 |-
 ! Precedence
@@ -1555,7 +1555,7 @@ Here is an outline:
 | Compound expression
 | ''e'';''e''
 |}
-There is a table of precedence of all operators on the page [tutorial/OperatorInputForms](http://reference.wolfram.com/language/tutorial/OperatorInputForms.html) in Mathematica help.
+There is a table of precedence of all operators on the page [tutorial/OperatorInputForms](https://reference.wolfram.com/language/tutorial/OperatorInputForms.html) in Mathematica help.
 
 
 
@@ -1659,7 +1659,7 @@ There is a table of precedence of all operators on the page <http://mathworks.co
 
 ## OCaml
 
-[This table](http://caml.inria.fr/pub/docs/manual-ocaml/expr.html#@manual.kwd32) contains the precedence and associativity of operators and other expression constructs in OCaml, including user-defined operators.
+[This table](https://caml.inria.fr/pub/docs/manual-ocaml/expr.html#@manual.kwd32) contains the precedence and associativity of operators and other expression constructs in OCaml, including user-defined operators.
 
 
 ## Oforth
@@ -1698,12 +1698,12 @@ we must code:
 
 ## Perl
 
-See [the relevant documentation](http://perldoc.perl.org/perlop.html#Operator-Precedence-and-Associativity) for a table of Perl 5 operators ordered by precedence level.
+See [the relevant documentation](https://perldoc.perl.org/perlop.html#Operator-Precedence-and-Associativity) for a table of Perl 5 operators ordered by precedence level.
 
 
 ## Perl 6
 
-See [this table](http://perlcabal.org/syn/S03.html#Operator_precedence) for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
+See [this table](https://perlcabal.org/syn/S03.html#Operator_precedence) for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
 
 
 ## Phix
@@ -1745,7 +1745,7 @@ Parenthesis is required to mix and/or/xor in an expression.
 
 ## PHP
 
-[Operator Precedence](http://www.php.net/manual/en/language.operators.precedence.php)
+[Operator Precedence](https://www.php.net/manual/en/language.operators.precedence.php)
 
 
 ## PARI/GP
@@ -1818,7 +1818,7 @@ There are some exceptions to this standard order:
 * If the [[wp:Short-circuit evaluation|short-circuit operator]] `&&` is used and the left expression is [[Boolean values#PARI/GP|falsy]] (`0`, `[]`, etc.) then the right expression is not evaluated. Similarly, with `||` is the left is truthy then the right expression is not evaluated.
 * Assignment and all of the compound assignment operators need an lvalue on the left; if there is an expression where the rightmost part is an lvalue, assignment happens first. So `1 + n = 4 + 1` first adds 4 to 1, then assigns 5 to n, then adds 1 to 5.
 
-See the User's Guide to PARI/GP in the [documentation](http://pari.math.u-bordeaux.fr/doc.html), section 2.4, "GP operators".
+See the User's Guide to PARI/GP in the [documentation](https://pari.math.u-bordeaux.fr/doc.html), section 2.4, "GP operators".
 
 
 ## PicoLisp
@@ -1888,7 +1888,7 @@ Arguments are passed by value.
 
 ## Python
 
-See [this table](http://docs.python.org/py3k/reference/expressions.html?highlight=precedence#summary) and the whole page for details on Python version 3.x
+See [this table](https://docs.python.org/py3k/reference/expressions.html?highlight=precedence#summary) and the whole page for details on Python version 3.x
 An excerpt of which is this table:
 
 {| class="wikitable"
@@ -2292,9 +2292,9 @@ Note: // is the Euclidean division
 ## Seed7
 
 
-Seed7 supports [user defined operators](http://seed7.sourceforge.net/examples/operator.htm) with priority and associativity.
+Seed7 supports [user defined operators](https://seed7.sourceforge.net/examples/operator.htm) with priority and associativity.
 This includes user defined operator symbols. Priority and associativity are defined with
-the Seed7 Structured Syntax Description ([S7SSD](http://seed7.sourceforge.net/manual/syntax.htm))
+the Seed7 Structured Syntax Description ([S7SSD](https://seed7.sourceforge.net/manual/syntax.htm))
 A S7SSD statement like
 
 ```seed7
@@ -2320,7 +2320,7 @@ The symbol <code>()</code> is a nonterminal symbol and <code>+</code> is a termi
 The S7SSD does not distinguish between different nonterminal symbols.
 Instead it only knows one nonterminal symbol: <code>()</code>.
 
-The include file [syntax.s7i](http://seed7.sourceforge.net/prg/syntax.htm) contains the syntax of the predefined operators.
+The include file [syntax.s7i](https://seed7.sourceforge.net/prg/syntax.htm) contains the syntax of the predefined operators.
 The table below is extracted from syntax.s7i:
 
 {| class="wikitable"
@@ -2386,7 +2386,7 @@ See also the [documentation](https://trizen.gitbooks.io/sidef-lang/content/synta
 
 ## Tcl
 
-Tcl only supports operators within an expression context (such as the [<code>expr</code>](http://www.tcl.tk/man/tcl8.6/TclCmd/expr.htm#M6) command, which lists the operators with more detail):
+Tcl only supports operators within an expression context (such as the [<code>expr</code>](https://www.tcl-lang.org/man/tcl8.6/TclCmd/expr.htm#M6) command, which lists the operators with more detail):
 
 {| class="wikitable"
 |-

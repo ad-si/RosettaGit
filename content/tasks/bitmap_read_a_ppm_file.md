@@ -215,7 +215,7 @@ loop % width * height
 }
  return bitmap
   }
-#include bitmap_storage.ahk ; from http://rosettacode.org/wiki/Basic_bitmap_storage/AutoHotkey
+#include bitmap_storage.ahk ; from https://rosettacode.org/wiki/Basic_bitmap_storage/AutoHotkey
 ```
 
 

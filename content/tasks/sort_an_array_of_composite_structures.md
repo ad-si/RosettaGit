@@ -2949,7 +2949,7 @@ vecsort([["name", "value"],["name2", "value2"]], 1, 2)
 
 ## Pascal
 
-mergesort example sorts an array of record <http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement>
+mergesort example sorts an array of record <https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#improvement>
 
 ## Perl
 
@@ -3030,7 +3030,7 @@ function compare_col2(sequence a, b) return compare(a[2],b[2]) end function
 
 ## PicoLisp
 
-By default, the [sort](http://software-lab.de/doc/refS.html#sort) function in
+By default, the [sort](https://software-lab.de/doc/refS.html#sort) function in
 PicoLisp returns an ascending list (of any type)
 
 ```PicoLisp
@@ -3039,7 +3039,7 @@ PicoLisp returns an ascending list (of any type)
 ```
 
 To sort by a certain sub-element, the function
-[by](http://software-lab.de/doc/refB.html#by) can be used. For example, to
+[by](https://software-lab.de/doc/refB.html#by) can be used. For example, to
 sort by the first element
 
 ```PicoLisp
@@ -3095,7 +3095,7 @@ jkl                            three
 PureBasic natively supports sorting of structured data with;
 *SortStructuredArray()
 *SortStructuredList()
-The [on-line documentations](http://www.purebasic.com/documentation/sort/index.html) gives a more complete picture.
+The [on-line documentations](https://www.purebasic.com/documentation/sort/index.html) gives a more complete picture.
 
 
 '''Example'''

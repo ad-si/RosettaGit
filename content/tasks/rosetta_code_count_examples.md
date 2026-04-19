@@ -77,7 +77,7 @@ Total: X examples.
 
 For a full output, updated periodically, see [[Rosetta Code/Count examples/Full list]].
 
-You'll need to use the Media Wiki API, which you can find out about locally, [here](http://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](http://www.mediawiki.org/wiki/API_Query)
+You'll need to use the Media Wiki API, which you can find out about locally, [here](https://rosettacode.org/mw/api.php), or in Media Wiki's API documentation at, [API:Query](https://www.mediawiki.org/wiki/API_Query)
 
 
 ## Ada
@@ -114,7 +114,7 @@ procedure Count_Examples is
       A       : Attr;
       Page    : Aws.Response.Data;
       Uri_Xml : constant String :=
-         "http://rosettacode.org/mw/api.php?action=query&list=categorymembers"
+         "https://rosettacode.org/mw/api.php?action=query&list=categorymembers"
          &
          "&format=xml&cmlimit=500&cmtitle=Category:";
    begin
@@ -152,7 +152,7 @@ procedure Count_Examples is
    begin
       Page :=
          Client.Get
-           ("http://rosettacode.org/mw/index.php?title=" &
+           ("https://rosettacode.org/mw/index.php?title=" &
             Aws.Url.Encode (Title) &
             "&action=raw");
       Response.Message_Body (Page, File);
@@ -208,7 +208,7 @@ Total : 17238 exemples.
 
 ```AutoHotkey
 UrlDownloadToFile
-  , http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml
+  , https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml
   , tasks.xml
 FileRead, tasks, tasks.xml
 pos = 0
@@ -217,7 +217,7 @@ regtitle := "<cm.*?title=" . quote . "(.*?)" . quote
 While, pos := RegExMatch(tasks, regtitle, title, pos + 1)
 {
   UrlDownloadToFile
-    , % "http://www.rosettacode.org/w/index.php?title=" . title1 . "&action=raw"
+    , % "https://www.rosettacode.org/w/index.php?title=" . title1 . "&action=raw"
     , task.xml
   FileRead, task, task.xml
   RegExReplace(task, "\{\{header\|", "", count)
@@ -240,7 +240,7 @@ Return
       SYS "GetProcAddress", urlmon%, "URLDownloadToFileA" TO UDTF
       special$ = "+()'"
 
-      url$ = "http://www.rosettacode.org/w/api.php?action=query" + \
+      url$ = "https://www.rosettacode.org/w/api.php?action=query" + \
       \      "&list=categorymembers&cmtitle=Category:Programming_Tasks" + \
       \      "&cmlimit=500&format=xml"
       file$ = @tmp$ + "tasks.xml"
@@ -275,7 +275,7 @@ Return
                 IF k% t$ = LEFT$(t$,k%-1) + "%" + STR$~ASCs$ + MID$(t$,k%+1)
               UNTIL k% = 0
             NEXT
-            url$ = "http://www.rosettacode.org/w/index.php?title=" + t$ + \
+            url$ = "https://www.rosettacode.org/w/index.php?title=" + t$ + \
             \      "&action=raw"
             file$ = @tmp$ + "title.htm"
             SYS UDTF, 0, url$, file$, 0, 0 TO fail%
@@ -295,7 +295,7 @@ Return
           CLOSE #file%
           j% = INSTR(a$, """", i%+1)
           k% = INSTR(a$, """", j%+1)
-          url$ = "http://www.rosettacode.org/w/api.php?action=query" + \
+          url$ = "https://www.rosettacode.org/w/api.php?action=query" + \
           \      "&list=categorymembers&cmtitle=Category:Programming_Tasks" + \
           \      "&cmlimit=500&format=xml&cmcontinue=" + MID$(a$,j%+1,k%-j%)
           REPEAT
@@ -361,7 +361,7 @@ Total: 27004 examples.
     .   sys$(str$("wget -q -O wget.out \"" !arg \"))
       & get$("wget.out",HT ML)
   )
-&   get-page$"http://rosettacode.org/wiki/Category:Programming_Tasks"
+&   get-page$"https://rosettacode.org/wiki/Category:Programming_Tasks"
   : ? (table.?) ?tasklist (.table.) ?
 & 0:?list
 &   whl
@@ -369,7 +369,7 @@ Total: 27004 examples.
     :   ?
         ( a
         .   (href.@(?:"/wiki/" ?href)) (title.?title)
-          &   get-page$(str$("http://rosettacode.org/wiki/" !href))
+          &   get-page$(str$("https://rosettacode.org/wiki/" !href))
             : ?task
           & 0:?cnt
           &   whl
@@ -483,7 +483,7 @@ class Task {
 class Program {
     static List<string> GetTitlesFromCategory(string category, WebClient wc) {
         string content = wc.DownloadString(
-            String.Format("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:{0}&cmlimit=500&format=json", category)
+            String.Format("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:{0}&cmlimit=500&format=json", category)
         );
 
         return new Regex("\"title\":\"(.+?)\"").Matches(content).Cast<Match>().Select(x => x.Groups[1].Value.Replace("\\/", "/")).ToList();
@@ -491,7 +491,7 @@ class Program {
 
     static string GetSourceCodeFromPage(string page, WebClient wc) {
         return wc.DownloadString(
-            String.Format("http://www.rosettacode.org/w/index.php?title={0}&action=raw", page)
+            String.Format("https://www.rosettacode.org/w/index.php?title={0}&action=raw", page)
         );
     }
 
@@ -530,7 +530,7 @@ class Program {
 
 (defn rosettacode-get [path params]
   (let [param-string (join "&" (for [[n v] params] (str (name n) "=" (url-encode v))))]
-    (string (http-agent (format "http://www.rosettacode.org/w/%s?%s" path param-string)))))
+    (string (http-agent (format "https://www.rosettacode.org/w/%s?%s" path param-string)))))
 
 (defn rosettacode-query [params]
   (read-json (rosettacode-get "api.php" (merge {:action "query" :format "json"} params))))
@@ -597,7 +597,7 @@ import tango.text.Util;
 
 alias HttpHeader.ContentLength CL;
 
-auto url = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml";
+auto url = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml";
 void main()
 {
     auto client = new HttpClient (HttpClient.Get, url);
@@ -616,7 +616,7 @@ void main()
         doc.parse(mainData);
         foreach (n; doc.query.descendant("cm").attribute("title")) {
             auto subClient = new HttpClient(HttpClient.Get,
-                    "http://www.rosettacode.org/w/index.php?title=" ~
+                    "https://www.rosettacode.org/w/index.php?title=" ~
                     replace(n.value.dup, ' ', '_') ~ "&action=raw");
             subClient.open();
             if (! subClient.isResponseOK) {
@@ -676,11 +676,11 @@ handler RosettaCodeHandler type RUIhandler{initialUI =[ui], title = "Rosetta Cod
 
     restBindingTasks IHttp? = new HttpRest{
         restType = eglx.rest.ServiceType.TrueRest,
-   	request.uri = "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=1&format=json"};
+   	request.uri = "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=1&format=json"};
 
     restBindingPageDetail IHttp? = new HttpRest{
         restType = eglx.rest.ServiceType.TrueRest,
-   	request.uri = "http://rosettacode.org/mw/index.php"};
+   	request.uri = "https://rosettacode.org/mw/index.php"};
 
     function b1_onClick(event Event in)
 	call ProxyFunctions.listTasks("") using restBindingTasks
@@ -792,7 +792,7 @@ main() ->
    application:stop(inets).
 
 read_titles(CurrentContinue) ->
-   URL0 = "http://rosettacode.org/mw/api.php?" ++
+   URL0 = "https://rosettacode.org/mw/api.php?" ++
          "action=query&list=categorymembers&cmtitle=Category:Programming_Tasks" ++
          "&cmlimit=500&format=xml",
    URL =
@@ -815,7 +815,7 @@ read_titles(CurrentContinue) ->
 
 calculate_one(Title0) ->
    Title = replace_chars(Title0),
-   URL = "http://www.rosettacode.org/w/index.php?title=" ++
+   URL = "https://www.rosettacode.org/w/index.php?title=" ++
          Title ++ "&action=raw",
    case httpc:request(URL) of
       {ok,Result} ->
@@ -871,8 +871,8 @@ Using asynchronous workflows to perform downloads concurrently:
 ```fsharp
 #r "System.Xml.Linq.dll"
 
-let uri1 = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
-let uri2 task = sprintf "http://www.rosettacode.org/w/index.php?title=%s&action=raw" task
+let uri1 = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+let uri2 task = sprintf "https://www.rosettacode.org/w/index.php?title=%s&action=raw" task
 
 [|for xml in (System.Xml.Linq.XDocument.Load uri1).Root.Descendants() do
     for attrib in xml.Attributes() do
@@ -904,7 +904,7 @@ json.reader kernel math math.parser sequences splitting
 urls.encoding ;
 IN: rosetta-code.count-examples
 
-CONSTANT: list-url "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&cmprop=title&format=json"
+CONSTANT: list-url "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&cmprop=title&format=json"
 
 : titles ( query -- titles )
   "query" of "categorymembers" of [ "title" of ] map ;
@@ -917,7 +917,7 @@ CONSTANT: list-url "http://rosettacode.org/mw/api.php?action=query&list=category
   [ (all-programming-titles) ] [ f ] if* ;
 : all-programming-titles ( -- titles ) { } list-url (all-programming-titles) drop ;
 
-CONSTANT: content-base-url "http://rosettacode.org/mw/index.php?title=&action=raw"
+CONSTANT: content-base-url "https://rosettacode.org/mw/index.php?title=&action=raw"
 : content-url ( title -- url )
   " " "_" replace
   "title" associate assoc>query
@@ -1005,7 +1005,7 @@ func req(u string, foundCm func(string)) string {
 }
 
 func main() {
-    taskQuery := "http://rosettacode.org/mw/api.php?action=query" +
+    taskQuery := "https://rosettacode.org/mw/api.php?action=query" +
         "&format=xml&list=categorymembers&cmlimit=500" +
         "&cmtitle=Category:Programming_Tasks"
     continueAt := req(taskQuery, count)
@@ -1019,7 +1019,7 @@ var marker = []byte("=={{header|")
 var total int
 
 func count(cm string) {
-    taskFmt := "http://rosettacode.org/mw/index.php?title=%s&action=raw"
+    taskFmt := "https://rosettacode.org/mw/index.php?title=%s&action=raw"
     taskEsc := url.QueryEscape(strings.Replace(cm, " ", "_", -1))
     resp, err := http.Get(fmt.Sprintf(taskFmt, taskEsc))
     var page []byte
@@ -1052,7 +1052,7 @@ Total: 18290 examples.
 
 ## Haskell
 
-{{libheader|HTTP XML}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+{{libheader|HTTP XML}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -1076,13 +1076,13 @@ getRespons url = do
 
 getNumbOfExampels p = do
   let pg = intercalate "_" $ words p
-  rsp <- getRespons $ "http://www.rosettacode.org/w/index.php?title=" ++ pg ++ "&action=raw"
+  rsp <- getRespons $ "https://www.rosettacode.org/w/index.php?title=" ++ pg ++ "&action=raw"
   let taskPage = rsp
       countEx = length $ filter (=="=={{header|") $ takeWhile(not.null) $ unfoldr (Just. (take 11 &&& drop 1)) taskPage
   return countEx
 
 progTaskExamples = do
-  rsp <- getRespons "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+  rsp <- getRespons "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
 
   let xmls = onlyElems $ parseXML $ rsp
       tasks = concatMap (map (fromJust.findAttr (unqual "title")). filterElementsName (== unqual "cm")) xmls
@@ -1116,8 +1116,8 @@ The following code uses features exclusive to Unicon.  This version handles all 
 
 
 ```Unicon
-$define RCINDEX "http://rosettacode.org/mw/api.php?format=xml&action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500"
-$define RCTASK  "http://rosettacode.org/mw/index.php?action=raw&title="
+$define RCINDEX "https://rosettacode.org/mw/api.php?format=xml&action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500"
+$define RCTASK  "https://rosettacode.org/mw/index.php?action=raw&title="
 $define RCUA    "User-Agent: Unicon Rosetta 0.1"
 $define RCXUA   "X-Unicon: http://unicon.org/"
 $define TASKTOT "* Total Tasks *"
@@ -1201,8 +1201,8 @@ end
 ```
 
 
-[strings provides replacem](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
-[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings provides replacem](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[hexcvt provides hexstring](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 Sample Output for July 6, 2013 (abridged):
 
@@ -1248,7 +1248,7 @@ getAllTaskSolnCounts=: monad define
 )
 
 getTaskSolnCounts=: monad define
-  makeuri=. 'http://www.rosettacode.org/w/index.php?title=' , ,&'&action=raw'
+  makeuri=. 'https://www.rosettacode.org/w/index.php?title=' , ,&'&action=raw'
   wikidata=. gethttp makeuri urlencode y
   ([: +/ '{{header|'&E.) wikidata
 )
@@ -1283,8 +1283,8 @@ import java.util.ArrayList;
 import ScreenScrape;
 
 public class CountProgramExamples {
-    private static final String baseURL = "http://rosettacode.org/wiki/";
-    private static final String rootURL = "http://www.rosettacode.org/w/"
+    private static final String baseURL = "https://rosettacode.org/wiki/";
+    private static final String rootURL = "https://www.rosettacode.org/w/"
         + "api.php?action=query&list=categorymembers"
         + "&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml";
     private static final String taskBegin = "title=\"";
@@ -1368,7 +1368,7 @@ as illustrated by the following bash script.  Note in particular the use of jq's
 
 # Produce lines of the form: URI TITLE
 function titles {
-    local uri="http://www.rosettacode.org/mw/api.php?action=query&list=categorymembers"
+    local uri="https://www.rosettacode.org/mw/api.php?action=query&list=categorymembers"
     uri+="&cmtitle=Category:Programming_Tasks&cmlimit=5000&format=json"
     curl -Ss "$uri" |
       jq -r '.query.categorymembers[] | .title | "\(@uri) \(.)"'
@@ -1377,7 +1377,7 @@ function titles {
 # Syntax: count URI
 function count {
     local uri="$1"
-    curl -Ss "http://rosettacode.org/mw/index.php?title=${uri}&action=raw" |
+    curl -Ss "https://rosettacode.org/mw/index.php?title=${uri}&action=raw" |
       jq -R -n 'reduce (inputs|select(test("=={{header\\|"))) as $x(0; .+1)'
 }
 
@@ -1413,7 +1413,7 @@ Output by page is too long, so summaries only output shown.
 ```julia
 using HTTP, JSON, Dates
 
-rosorg = "http://rosettacode.org"
+rosorg = "https://rosettacode.org"
 qURI = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=json"
 qdURI = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Draft_Programming_Tasks&cmlimit=500&format=json"
 sqURI = rosorg * "/wiki/"
@@ -1474,7 +1474,7 @@ Total of 3385 on 216 task pages.
 
 
 ```Lasso
-local(root = json_deserialize(curl('http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json')->result))
+local(root = json_deserialize(curl('https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json')->result))
 local(tasks = array, title = string, urltitle = string, thiscount = 0, totalex = 0)
 with i in #root->find('query')->find('categorymembers') do => {^
 	#thiscount = 0
@@ -1483,7 +1483,7 @@ with i in #root->find('query')->find('categorymembers') do => {^
 	#urltitle->replace(' ','_')
 
 	#title+': '
-	local(src = curl('http://rosettacode.org/mw/index.php?title='+#urltitle->asBytes->encodeurl+'&action=raw')->result->asString)
+	local(src = curl('https://rosettacode.org/mw/index.php?title='+#urltitle->asBytes->encodeurl+'&action=raw')->result->asString)
 	#thiscount = (#src->split('=={{header|'))->size - 1
 	#thiscount < 0 ? #thiscount = 0
 	#thiscount + ' examples.'
@@ -1523,13 +1523,13 @@ n.b. The list of tasks is limited to 10 for demo purposes
 ```LiveCode
 on mouseUp
     put empty into fld "taskurls"
-    put URL "http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=xml" into  apixml
+    put URL "https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=xml" into  apixml
     put revXMLCreateTree(apixml,true,true,false) into pDocID
     put "/api/query/categorymembers/cm" into pXPathExpression
     repeat for each line xmlnode in revXMLEvaluateXPath(pDocID, pXPathExpression)
         put revXMLAttribute(pDocID,xmlnode,"title") into pgTitle
         put revXMLAttribute(pDocID,xmlnode,"pageid") into pageId
-        put "http://www.rosettacode.org/w/index.php?title=" & urlEncode(pgTitle) & "&action=raw" into taskURL
+        put "https://www.rosettacode.org/w/index.php?title=" & urlEncode(pgTitle) & "&action=raw" into taskURL
         put URL taskURL into taskPage
         filter lines of taskPage with "=={{header|*"
         put the number of lines of taskPage into taskTotal
@@ -1565,7 +1565,7 @@ print_examples := proc(lst)
 	local task, count, url, headers, item;
 	for task in lst do
 		count := 0:
-		url := cat("http://www.rosettacode.org/mw/index.php?title=", StringTools:-Encode(StringTools:-SubstituteAll(task["title"], " ", "_"), 'percent'), "&action=raw"):
+		url := cat("https://www.rosettacode.org/mw/index.php?title=", StringTools:-Encode(StringTools:-SubstituteAll(task["title"], " ", "_"), 'percent'), "&action=raw"):
 		headers := [StringTools:-SearchAll("=={{header|",URL:-Get(url))]:
 		for item in headers do
 			count++:
@@ -1575,11 +1575,11 @@ print_examples := proc(lst)
 end proc:
 
 
-x := JSON:-ParseFile("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=20&format=json"):
+x := JSON:-ParseFile("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=20&format=json"):
 print_examples(x["query"]["categorymembers"]);
 while(assigned(x["continue"]["cmcontinue"])) do
 	continue := x["continue"]["cmcontinue"]:
-	more_tasks:= cat("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=20&format=json", "&continue=", x["continue"]["continue"], "&cmcontinue=", x["continue"]["cmcontinue"]):
+	more_tasks:= cat("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=20&format=json", "&continue=", x["continue"]["continue"], "&cmcontinue=", x["continue"]["cmcontinue"]):
 	x := JSON:-ParseFile(more_tasks):
 	print_examples(x["query"]["categorymembers"]);
 end do:
@@ -1708,10 +1708,10 @@ Zig-zag matrix has 92 examples
 
 ```Mathematica
 TaskList = Flatten[
-   Import["http://rosettacode.org/wiki/Category:Programming_Tasks", "Data"][[1, 1]]];
+   Import["https://rosettacode.org/wiki/Category:Programming_Tasks", "Data"][[1, 1]]];
 
 Print["Task \"", StringReplace[#, "_" -> " "], "\" has ",
-  Length@Select[Import["http://rosettacode.org/wiki/" <> #, "Data"][[1,2]],
+  Length@Select[Import["https://rosettacode.org/wiki/" <> #, "Data"][[1,2]],
   StringFreeQ[#, __ ~~ "Programming Task" | __ ~~ "Omit"]& ], " example(s)"]&
   ~Map~ StringReplace[TaskList, " " -> "_"]
 ```
@@ -1739,14 +1739,14 @@ The function count_examples() need to be saved in a file count_examples.m and it
   end;
 
   % script
-  s   = urlread ('http://rosettacode.org/wiki/Category:Programming_Tasks');
+  s   = urlread ('https://rosettacode.org/wiki/Category:Programming_Tasks');
   pat = '<li><a href="/wiki/';
   ix  = strfind(s,pat)+length(pat)-6;
   for k = 1:length(ix);
      % look through all tasks
      e = find(s(ix(k):end)==34,1)-2;
      t = s(ix(k)+[0:e]);    % task
-     c = count_examples(['http://rosettacode.org',t]);
+     c = count_examples(['https://rosettacode.org',t]);
      printf('Task "%s" has %i examples.\n',t(7:end), c);
   end;
 ```
@@ -1782,8 +1782,8 @@ proc count(s, sub): int =
     inc result
 
 const
-  mainSite = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
-  subSite = "http://www.rosettacode.org/w/index.php?title=$#&action=raw"
+  mainSite = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+  subSite = "https://www.rosettacode.org/w/index.php?title=$#&action=raw"
 
 var sum = 0
 
@@ -1824,14 +1824,14 @@ use XML;
 
 class RosettaCount {
   function : Main(args : String[]) ~ Nil {
-    taks_xml := HttpGet("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml");
+    taks_xml := HttpGet("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml");
     parser := XmlParser->New(taks_xml);
     if(parser->Parse()) {
       task_names := parser->FindElements("/api/query/categorymembers/cm");
       if(task_names <> Nil) {
         each(i : task_names) {
           task_name := task_names->Get(i)->As(XmlElement)->GetAttribute("title")->GetValue();
-          task_url := "http://rosettacode.org/mw/index.php?title=";
+          task_url := "https://rosettacode.org/mw/index.php?title=";
           task_url->Append(task_name);
           task_url->Append("&action=raw");
 
@@ -1930,7 +1930,7 @@ let get_child child xml =
   Xml.children child
 
 let () =
-  let url = "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&\
+  let url = "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&\
                cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml" in
 
   let xml = Xml.parse_string (http_get url) in
@@ -1943,7 +1943,7 @@ let () =
       (try
         let _title = List.assoc "title" attrs in
         let title = repl_quote (repl_space _title) in
-        let url = "http://www.rosettacode.org/w/index.php?title="^ title ^"&action=raw" in
+        let url = "https://www.rosettacode.org/w/index.php?title="^ title ^"&action=raw" in
         let n = count_ex (http_get url) in
         Printf.printf "%s: %d\n%!" _title n;
         total := n + !total;
@@ -1996,7 +1996,7 @@ declare
   [StringX] = {Module.link ['x-oz://system/String.ozf']}
   [Regex] = {Module.link ['x-oz://contrib/regex']}
 
-  AllTasksUrl = "http://rosettacode.org/mw/api.php?action=query&list="#
+  AllTasksUrl = "https://rosettacode.org/mw/api.php?action=query&list="#
   "categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
 
   proc {Main}
@@ -2016,7 +2016,7 @@ declare
   end
 
   fun {TaskUrl Task}
-     "http://rosettacode.org/mw/index.php?"#
+     "https://rosettacode.org/mw/index.php?"#
      "title="#{PercentEncode {StringX.replace Task " " "_"}}#
      "&action=raw"
   end
@@ -2103,7 +2103,7 @@ Total: 14099 examples.
 ```Perl
 use HTTP::Tiny;
 
-my $site = "http://rosettacode.org";
+my $site = "https://rosettacode.org";
 my $list_url = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml";
 
 my $response = HTTP::Tiny->new->get("$site$list_url");
@@ -2120,7 +2120,7 @@ for ($response->{content} =~ /cm.*?title="(.*?)"/g) {
 use v5.10;
 use Mojo::UserAgent;
 
-my $site = "http://rosettacode.org";
+my $site = "https://rosettacode.org";
 my $list_url = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml";
 
 my $ua = Mojo::UserAgent->new;
@@ -2154,7 +2154,7 @@ my %cat = (
 
 my $client = HTTP::UserAgent.new;
 
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 
 my $hashfile  = './RC_Task_count.json';
 my $tablefile = './RC_Task_count.txt';
@@ -2455,7 +2455,7 @@ function open_download(string filename, url)
 end function
 
 function open_category(string filename)
-    return open_download(filename&".htm","http://rosettacode.org/wiki/Category:"&filename)
+    return open_download(filename&".htm","https://rosettacode.org/wiki/Category:"&filename)
 end function
 
 function dewiki(string s)
@@ -2499,7 +2499,7 @@ function count_tasks()
     end if
     if length(notlang) then
         -- filter already done in specified language
-        string langurl = "http://rosettacode.org/wiki/Category:"&notlang
+        string langurl = "https://rosettacode.org/wiki/Category:"&notlang
         sequence done = dewiki(open_download(notlang&".htm",langurl))
         integer k = 0
         for i=1 to length(tasks) do
@@ -2517,7 +2517,7 @@ function count_tasks()
     sequence task_counts = repeat(0,length(tasks))
     for i=1 to length(tasks) do
         string ti = tasks[i],
-               url = sprintf("http://rosettacode.org/mw/index.php?title=%s&action=raw",{ti}),
+               url = sprintf("https://rosettacode.org/mw/index.php?title=%s&action=raw",{ti}),
                contents = open_download(ti&".raw",url),
                prev = "", this
         integer count = 0, start = 1
@@ -2652,7 +2652,7 @@ handleError(InitNetwork(), "Unable to initialize network functions.")
 If OpenConsole()
   Define url$, x1$, y1$, title$, unescapedTitle$, encodedURL$
   Define x2, i, j, totalExamples, totalTasks
-  url$ = "http://www.rosettacode.org/mw/api.php?action=query" +
+  url$ = "https://www.rosettacode.org/mw/api.php?action=query" +
          "&list=categorymembers&cmtitle=Category:Programming_Tasks" +
          "&cmlimit=500&format=xml"
 
@@ -2669,7 +2669,7 @@ If OpenConsole()
         title$ = Mid(x1$, x2 + 7, 99)
         title$ = Left(title$, FindString(title$, ">", 1) - 4)
         unescapedTitle$ = UnescapeString(ReplaceString(title$, "&#039;", "&apos;"), #PB_String_EscapeXML)
-        encodedURL$ = URLEncoder("http://www.rosettacode.org/mw/index.php?title=" + unescapedTitle$ + "&action=raw")
+        encodedURL$ = URLEncoder("https://www.rosettacode.org/mw/index.php?title=" + unescapedTitle$ + "&action=raw")
         If ReceiveHTTPFile(encodedURL$, "task.xml")
           ReadFile(0, "task.xml")
           While Not Eof(0)
@@ -2693,7 +2693,7 @@ If OpenConsole()
     If x2
       i = FindString(x1$, #DQUOTE$, x2 + 1)
       j = FindString(x1$, #DQUOTE$, i + 1)
-      url$ = URLEncoder("http://www.rosettacode.org/mw/api.php?action=query" +
+      url$ = URLEncoder("https://www.rosettacode.org/mw/api.php?action=query" +
                         "&list=categorymembers&cmtitle=Category:Programming_Tasks" +
                         "&cmlimit=500&format=xml&cmcontinue=" + Mid(x1$, i + 1, j - i))
     Else
@@ -2734,12 +2734,12 @@ Total: 44140 examples
 ```python
 import urllib, xml.dom.minidom
 
-x = urllib.urlopen("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml")
+x = urllib.urlopen("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml")
 
 tasks = []
 for i in xml.dom.minidom.parseString(x.read()).getElementsByTagName("cm"):
     t = i.getAttribute('title').replace(" ", "_")
-    y = urllib.urlopen("http://www.rosettacode.org/w/index.php?title=%s&action=raw" % t.encode('utf-8'))
+    y = urllib.urlopen("https://www.rosettacode.org/w/index.php?title=%s&action=raw" % t.encode('utf-8'))
     tasks.append( y.read().lower().count("{{header|") )
     print t.replace("_", " ") + ": %d examples." % tasks[-1]
 
@@ -2754,13 +2754,13 @@ print "\nTotal: %d examples." % sum(tasks)
 
 library(XML)
 library(RCurl)
-doc <- xmlInternalTreeParse("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml")
+doc <- xmlInternalTreeParse("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml")
 nodes <- getNodeSet(doc,"//cm")
 titles = as.character( sapply(nodes, xmlGetAttr, "title") )
 headers <- list()
 counts <- list()
 for (i in 1:length(titles)){
-	headers[[i]] <- getURL( paste("http://rosettacode.org/mw/index.php?title=", gsub(" ", "_", titles[i]), "&action=raw", sep="") )
+	headers[[i]] <- getURL( paste("https://rosettacode.org/mw/index.php?title=", gsub(" ", "_", titles[i]), "&action=raw", sep="") )
 	counts[[i]] <- strsplit(headers[[i]],split=" ")[[1]]
 	counts[[i]] <- grep("\\{\\{header", counts[[i]])
 	cat(titles[i], ":", length(counts[[i]]), "examples\n")
@@ -2783,7 +2783,7 @@ cat("Total: ", length(unlist(counts)), "examples\n")
 
 (define (RC-get verb params)
   ((compose1 get-pure-port string->url format)
-   "http://rosettacode.org/mw/~a.php?~a" verb (alist->form-urlencoded params)))
+   "https://rosettacode.org/mw/~a.php?~a" verb (alist->form-urlencoded params)))
 
 (define (get-category catname)
   (let loop ([c #f])
@@ -2815,7 +2815,7 @@ cat("Total: ", length(unlist(counts)), "examples\n")
 # Project: Rosetta Code/Count examples
 
 load "stdlib.ring"
-ros= download("http://rosettacode.org/wiki/Category:Programming_Tasks")
+ros= download("https://rosettacode.org/wiki/Category:Programming_Tasks")
 pos = 1
 num = 0
 totalros = 0
@@ -2912,7 +2912,7 @@ require 'rexml/document'
 
 module RosettaCode
 
-  URL_ROOT = "http://rosettacode.org/mw"
+  URL_ROOT = "https://rosettacode.org/mw"
 
   def self.get_url(page, query)
     begin
@@ -3023,7 +3023,7 @@ impl From<reqwest::Error> for ParseError {
 
 
 fn construct_query_category(category: &str) -> Url {
-    let mut base_url = Url::parse("http://rosettacode.org/mw/api.php").unwrap();
+    let mut base_url = Url::parse("https://rosettacode.org/mw/api.php").unwrap();
     let cat = format!("Category:{}", category);
     let query_pairs = vec![("action", "query"),
                            ("format", "json"),
@@ -3036,7 +3036,7 @@ fn construct_query_category(category: &str) -> Url {
 }
 
 fn construct_query_task_content(task_id: &str) -> Url {
-    let mut base_url = Url::parse("http://rosettacode.org/mw/api.php").unwrap();
+    let mut base_url = Url::parse("https://rosettacode.org/mw/api.php").unwrap();
     let mut query_pairs =
         vec![("action", "query"), ("format", "json"), ("prop", "revisions"), ("rvprop", "content")];
     query_pairs.push(("pageids", task_id));
@@ -3122,7 +3122,7 @@ fn main() {
 ```runbasic
 html "<table border=1><tr bgcolor=wheat align=center><td>Num</td><td>Task</td><td>Examples</td></tr>"
 
-a$	= httpGet$("http://rosettacode.org/wiki/Category:Programming_Tasks")
+a$	= httpGet$("https://rosettacode.org/wiki/Category:Programming_Tasks")
 a$	= word$(a$,1,"</table></div>")
 i	= instr(a$,"<a href=""/wiki/")
 i	= instr(a$,"<a href=""/wiki/",i+1)
@@ -3133,7 +3133,7 @@ while i > 0
   a1$	= mid$(a$,i+15,j-i)
   taskId$ = word$(a1$,1,"""")
   task$   = word$(a1$,3,"""")
-  url$	= "http://rosettacode.org/wiki/";taskId$
+  url$	= "https://rosettacode.org/wiki/";taskId$
   a2$	= httpGet$(url$)
   ii	= instr(a2$,"<span class=""tocnumber"">")
   jj	= 0
@@ -3188,14 +3188,14 @@ object TaskCount extends App {
 
   System.setProperty("http.agent", "*")
   val allTasksURL =
-    "http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+    "https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
   val allTasks = xml.parsing.XhtmlParser(fromURL(new URL(allTasksURL)))
 
   val regexExpr = "(?i)==\\{\\{header\\|".r
 
   def oneTaskURL(title: String) = {
     println(s"Check $title")
-    "http://www.rosettacode.org/w/index.php?title=%s&action=raw" format URLEncoder.encode(title.replace(' ', '_'), "UTF-8")
+    "https://www.rosettacode.org/w/index.php?title=%s&action=raw" format URLEncoder.encode(title.replace(' ', '_'), "UTF-8")
   }
 
   def count(title: String) = regexExpr findAllIn fromURL(new URL(oneTaskURL(title)))(io.Codec.UTF8).mkString length
@@ -3214,7 +3214,7 @@ object TaskCount extends App {
 ```ruby
 var lwp = require('LWP::UserAgent').new(agent => 'Mozilla/5.0');
 
-var site = 'http://rosettacode.org';
+var site = 'https://rosettacode.org';
 var list_url = '/mw/api.php?action=query&list=categorymembers&'+
                'cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml';
 
@@ -3257,7 +3257,7 @@ fconfigure stdout -buffering none
 proc get_tasks {category} {
     set start [clock milliseconds]
     puts -nonewline "getting $category members..."
-    set base_url http://www.rosettacode.org/w/api.php
+    set base_url https://www.rosettacode.org/w/api.php
     set query {action query list categorymembers cmtitle Category:%s format json cmlimit 500}
     set this_query [dict create {*}[split [format $query $category]]]
     set tasks [list]
@@ -3301,7 +3301,7 @@ proc count_substrings {needle haystack} {
 
 set total 0
 foreach task [get_tasks Programming_Tasks] {
-    set url [format "http://www.rosettacode.org/w/index.php?title=%s&action=raw" [string map {{ } _} $task]]
+    set url [format "https://www.rosettacode.org/w/index.php?title=%s&action=raw" [string map {{ } _} $task]]
     set response [http::geturl $url]
     if {[set s [http::status $response]] ne "ok" || [http::ncode $response] != 200} {
         error "Oops: url=$url\nstatus=$s\nhttp code=[http::code $response]"
@@ -3322,7 +3322,7 @@ puts "\nTotal: $total examples"
 
 ```tuscript
 $$ MODE TUSCRIPT
-url="http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
+url="https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=xml"
 data=REQUEST (url)
 
 BUILD S_TABLE beg=*
@@ -3345,7 +3345,7 @@ ask=*
 ask      =SET_VALUE(ask,"title",title)
 ask      =SET_VALUE(ask,"action","raw")
 ask      =ENCODE (ask,cgi)
-http     ="http://www.rosettacode.org/mw/index.php"
+http     ="https://www.rosettacode.org/mw/index.php"
 url      =CONCAT (http,"?",ask)
 data     =REQUEST (url)
 header   =FILTER_INDEX (data,header,-)
@@ -3396,7 +3396,7 @@ var [const] YAJL=Import("zklYAJL")[0], CURL=Import("zklCurl");
 fcn getTasks(language){
    continueValue,tasks:="",Data(0,String);  // "nm\0nm\0...."
    do{
-      page:=CURL().get(("http://rosettacode.org/mw/api.php?"
+      page:=CURL().get(("https://rosettacode.org/mw/api.php?"
          "action=query&cmlimit=500"
 	 "&format=json"
 	 "&list=categorymembers"
@@ -3413,7 +3413,7 @@ fcn getTasks(language){
 re:=RegExp(0'!\s+==\s*{{\s*header\s*|!);  // == {{ header | zkl
 foreach task in (getTasks("Programming_Tasks")){
    page:=CURL().get(
-      "http://www.rosettacode.org/mw/index.php?title=%s&action=raw"
+      "https://www.rosettacode.org/mw/index.php?title=%s&action=raw"
       .fmt(CURL.urlEncode(task)));
    page=page[0].del(0,page[1]);  // get rid of HTML header
    cnt,n:=0,0;  while(re.search(page,True,n)){ cnt+=1; n=re.matched[0].sum(0); }

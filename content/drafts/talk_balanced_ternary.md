@@ -11,7 +11,7 @@ tags = []
 +++
 
 === re: draft task, because NevilleDNZ liked it so much ===
-Many ThanX ;-) I confess that I might be a [Nerd](http://xkcd.com/356/) at heart and as I find it hard resist solving an especially annoying puzzle. 
+Many ThanX ;-) I confess that I might be a [Nerd](https://xkcd.com/356/) at heart and as I find it hard resist solving an especially annoying puzzle. 
 
 But now I have a hammer, where is the nail? An actual "real world" ''test case'' would be really sweet!  Ironically I have yet to think of one.  Ideas are invited...
 

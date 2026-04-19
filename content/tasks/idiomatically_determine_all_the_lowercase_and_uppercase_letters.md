@@ -847,7 +847,7 @@ them in a MessageBox, which hid the 2/3 glitches, but got exactly the same resul
 
 ## Python
 
-Python defines [eleven string classes](http://docs.python.org/3.1/library/stdtypes.html#str.isalnum) for the Unicode characters in the range 0 to 0x10FFFF which include lowercase and uppercase. The following gives information on all the classes with the two asked for coming first but only printing out the first up to 100 characters to spare long meaningless printouts.
+Python defines [eleven string classes](https://docs.python.org/3.1/library/stdtypes.html#str.isalnum) for the Unicode characters in the range 0 to 0x10FFFF which include lowercase and uppercase. The following gives information on all the classes with the two asked for coming first but only printing out the first up to 100 characters to spare long meaningless printouts.
 
 
 ```python
@@ -901,7 +901,7 @@ String class istitle has 1514 characters the first of which are:
 
 ## Racket
 
-Character sets and utils are defined in [SRFI 14: Character-set Library](http://docs.racket-lang.org/srfi/srfi-std/srfi-14.html).
+Character sets and utils are defined in [SRFI 14: Character-set Library](https://docs.racket-lang.org/srfi/srfi-std/srfi-14.html).
 
 ```racket
 #lang racket

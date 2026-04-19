@@ -3260,7 +3260,7 @@ end
 ```
 
 
-It's not as straightforward in Stata's macro language. For files, use [confirm](http://www.stata.com/help.cgi?confirm). Since it throws an error when the file does not exist, use [capture](http://www.stata.com/help.cgi?capture) and check [_rc](http://www.stata.com/help.cgi?_variables) afterwards.
+It's not as straightforward in Stata's macro language. For files, use [confirm](https://www.stata.com/help.cgi?confirm). Since it throws an error when the file does not exist, use [capture](https://www.stata.com/help.cgi?capture) and check [_rc](https://www.stata.com/help.cgi?_variables) afterwards.
 
 
 ```stata
@@ -3271,7 +3271,7 @@ if !_rc {
 ```
 
 
-It's not possible to check existence of a directory with confirm. One may use the [confirmdir](https://ideas.repec.org/c/boc/bocode/s435507.html) package from SSC. The confirmdir command saves the current directory, then tries to chdir to the directory to test (with capture to prevent an error). Then the value of _rc is put in a [stored result](http://www.stata.com/help.cgi?return). Example of use:
+It's not possible to check existence of a directory with confirm. One may use the [confirmdir](https://ideas.repec.org/c/boc/bocode/s435507.html) package from SSC. The confirmdir command saves the current directory, then tries to chdir to the directory to test (with capture to prevent an error). Then the value of _rc is put in a [stored result](https://www.stata.com/help.cgi?return). Example of use:
 
 
 ```stata

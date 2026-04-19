@@ -37,7 +37,7 @@ I just happened to notice the [[Knuth shuffle#F#|F#]] entry starts off with <cod
 
 == C# ==
 
-The C# code had a serious problem in its implementation. It selected a random position from the *entire* array on each loop. This is a serious problem as it leads to a non-uniform distribution of outcomes, thereby ruining the purpose of the algorithm. Wikipedia has a nice description of the problem [here](http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Implementation_errors).
+The C# code had a serious problem in its implementation. It selected a random position from the *entire* array on each loop. This is a serious problem as it leads to a non-uniform distribution of outcomes, thereby ruining the purpose of the algorithm. Wikipedia has a nice description of the problem [here](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Implementation_errors).
 
 == C++ ==
 

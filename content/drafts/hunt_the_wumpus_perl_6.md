@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{collection|Hunt_The_Wumpus}}
-This is a fairly faithful translation of the code found in [The Best of Creative Computing Volume 1 (published 1976)](http://www.atariarchives.org/bcc1/showpage.php?page=247). 
+This is a fairly faithful translation of the code found in [The Best of Creative Computing Volume 1 (published 1976)](https://www.atariarchives.org/bcc1/showpage.php?page=247). 
 
 The text, prompts and game play are very close the the original. 
 
@@ -23,7 +23,7 @@ The originals instructions explicitly say hitting yourself with an arrow will ca
 {{works with|Rakudo|2015-11-20}}
 
 ```perl6
-#Based on code from http://www.atariarchives.org/bcc1/showpage.php?page=247 copyright Gregory Yob
+#Based on code from https://www.atariarchives.org/bcc1/showpage.php?page=247 copyright Gregory Yob
 
 my $intro = q:to/END/;
      ATTENTION ALL WUMPUS LOVERS!!!

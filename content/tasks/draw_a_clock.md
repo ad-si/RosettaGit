@@ -235,8 +235,8 @@ package  {
 
 ## AutoHotkey
 
-requires the GDI+ Library from <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
-this code from <http://www.autohotkey.com/forum/viewtopic.php?p=231836#231836>
+requires the GDI+ Library from <https://www.autohotkey.com/forum/viewtopic.php?t=32238>
+this code from <https://www.autohotkey.com/forum/viewtopic.php?p=231836#231836>
 draws a very nice clock with GDI+
 
 ```AHK
@@ -3179,7 +3179,7 @@ while true:
 ## OCaml
 
 
-Using only the standard library of OCaml with its [Graphics](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html) module:
+Using only the standard library of OCaml with its [Graphics](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html) module:
 
 
 ```ocaml
@@ -3258,7 +3258,7 @@ let () =
 ###  GTK + Cairo
 
 
-Using the libraries GTK2 and Cairo and their OCaml bindings [LablGTK](http://forge.ocamlcore.org/projects/lablgtk/) and [ocaml-cairo](http://forge.ocamlcore.org/projects/cairo/).
+Using the libraries GTK2 and Cairo and their OCaml bindings [LablGTK](https://forge.ocamlcore.org/projects/lablgtk/) and [ocaml-cairo](https://forge.ocamlcore.org/projects/cairo/).
 
  # compile with:
  ocamlopt -I +lablgtk2 -I +cairo -o gtkclock.opt \
@@ -4222,7 +4222,7 @@ print secs(s)
 
 ==={{libheader|VPython}}===
 There is a 3D analog clock in the
-[VPython contributed section](http://www.vpython.org/contents/contributed/cxvp_clock.py)
+[VPython contributed section](https://www.vpython.org/contents/contributed/cxvp_clock.py)
 
 
 ## Racket
@@ -4737,7 +4737,7 @@ object Clock extends App {
 
 ### Berliner Uhr
 
-See [The Berlin set theory clock](http://en.wikipedia.org/wiki/Mengenlehreuhr)
+See [The Berlin set theory clock](https://en.wikipedia.org/wiki/Mengenlehreuhr)
 
 ```scala
 import java.time.LocalTime
@@ -4796,7 +4796,7 @@ class QDclock extends java.applet.Applet with Runnable {
 
 ## Scheme
 
-Translation of a Tcl example at <http://wiki.tcl.tk/1011>
+Translation of a Tcl example at <https://wiki.tcl-lang.org/1011>
 The program displays an analogue clock with three hands, updating once a second.
 
 
@@ -5003,7 +5003,7 @@ loop {
 
 
 ```svg
-<svg viewBox="0 0 100 100" width="480px" height="480px" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 100 100" width="480px" height="480px" xmlns="https://www.w3.org/2000/svg">
 <circle cx="50" cy="50" r="48" style="fill:peru; stroke:black; stroke-width:2" />
 <g transform="translate(50,50) rotate(0)" style="fill:none; stroke-linecap:round">
   <line y2="-36" style="stroke:black; stroke-width:5">

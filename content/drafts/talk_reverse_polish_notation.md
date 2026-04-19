@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Dup? ==
-This seems like a duplicate of <http://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm> to me.  --[[User:TimToady|TimToady]] ([[User talk:TimToady|talk]]) 20:43, 14 March 2014 (UTC)
+This seems like a duplicate of <https://rosettacode.org/wiki/Parsing/RPN_calculator_algorithm> to me.  --[[User:TimToady|TimToady]] ([[User talk:TimToady|talk]]) 20:43, 14 March 2014 (UTC)
 :Sorry, couldn't find that page. I do think it is a duplicate. [[User:Elyashiv|Elyashiv]] ([[User talk:Elyashiv|talk]]) 17:50, 15 March 2014 (UTC)
 
 :I've marked the page as duplicate. The current 5 examples should be easy to merge with the ones on [[Parsing/RPN_calculator_algorithm]].

@@ -216,7 +216,7 @@ end Greyscale;
 
 ## AutoHotkey
 
-Requires the GDI+ Standard Library by tic: <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
+Requires the GDI+ Standard Library by tic: <https://www.autohotkey.com/forum/viewtopic.php?t=32238>
 
 ```AHK
 h	:= A_ScreenHeight
@@ -737,7 +737,7 @@ End
 ```
 
 
-'''[Click here for image of the output](http://www.cogier.com/gambas/GreyScale.png)'''
+'''[Click here for image of the output](https://www.cogier.com/gambas/GreyScale.png)'''
 
 
 ## Go
@@ -902,9 +902,9 @@ end
 ```
 
 
-[graphics.icn supports graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
-[printf.icn provides sprintf, etc.](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[numbers.icn provides round](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[graphics.icn supports graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides sprintf, etc.](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[numbers.icn provides round](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## J
@@ -983,7 +983,7 @@ public class Greybars extends JFrame {
 
 ## JavaScript
 
-Live Demo: <http://jsfiddle.net/gcN9g/embedded/result/>
+Live Demo: <https://jsfiddle.net/gcN9g/embedded/result/>
 
 ```javascript
 <html><body>
@@ -1965,7 +1965,7 @@ next row
 ## zkl
 
 Draws to a PPM file, not the screen, assumes a 640/480 display.
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 img:=PPM(640,480);

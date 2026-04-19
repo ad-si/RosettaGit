@@ -46,7 +46,7 @@ As I think about it, I realize there is a recursive property:
 That should make things much easier than doing the whole algebraic development.
 --[[User:Grondilu|Grondilu]] 02:00, 16 October 2012 (UTC)
 :Thanks for the reference, using a continued fraction as a sort of index into a tree structure is interesting. Do you intend to implement it?--[[User:Nigel Galloway|Nigel Galloway]] 11:52, 23 October 2012 (UTC)
-::I tried with one of my projects [on github](http://github.com/grondilu/libbitcoin-perl) but I encountered a few technical difficulties so I put it on hold.  I'll go back to it someday.--[[User:Grondilu|Grondilu]] 14:38, 4 November 2012 (UTC)
+::I tried with one of my projects [on github](https://github.com/grondilu/libbitcoin-perl) but I encountered a few technical difficulties so I put it on hold.  I'll go back to it someday.--[[User:Grondilu|Grondilu]] 14:38, 4 November 2012 (UTC)
 
 == creating a continued fraction ==
 

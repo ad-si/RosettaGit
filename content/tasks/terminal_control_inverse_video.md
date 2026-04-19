@@ -497,7 +497,7 @@ echo "\e[7mReversed\e[m Normal"
 ## OCaml
 
 
-Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/) in the interactive loop:
+Using the library [ANSITerminal](https://forge.ocamlcore.org/projects/ansiterminal/) in the interactive loop:
 
 
 ```ocaml

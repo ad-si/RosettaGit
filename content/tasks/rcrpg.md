@@ -46,7 +46,7 @@ languages = [
 
 Use of the sledge should be required to create a passage between rooms.  The ladder should be present in a room (but not held by the player), in order for the player to access the room above him.  The gold need not have a function.
 
-This project is based on [this blog post](http://web.archive.org/web/20080212201605/http://shortcircuit.us/muddy-kinda-like-a-mud-but-single-player/) by [[User:Short Circuit|Michael Mol]], and the Perl version comes from there.
+This project is based on [this blog post](https://web.archive.org/web/20080212201605/http://shortcircuit.us/muddy-kinda-like-a-mud-but-single-player/) by [[User:Short Circuit|Michael Mol]], and the Perl version comes from there.
 
 
 ## C

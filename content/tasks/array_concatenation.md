@@ -339,9 +339,9 @@ main(void)
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-<!-- {{not tested with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
+<!-- {{not tested with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 Includes operators for ''appending'' and ''prefixing'' an array to an existing flexible array:
 
 ```Algol68
@@ -692,8 +692,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -1351,7 +1351,7 @@ c = a.concat b
 
 ## Common Lisp
 
-<code>[concatenate](http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm)</code> is a general function for concatenating any type of sequence. It takes the type of sequence to produce, followed by any number of sequences of any type.
+<code>[concatenate](https://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm)</code> is a general function for concatenating any type of sequence. It takes the type of sequence to produce, followed by any number of sequences of any type.
 
 ```lisp
 (concatenate 'vector #(0 1 2 3) #(4 5 6 7))
@@ -3329,7 +3329,7 @@ loop m_ = 0 to merged.length - 1
 
 ```NewLISP
 ; file:   arraycon.lsp
-; url:    http://rosettacode.org/wiki/Array_concatenation
+; url:    https://rosettacode.org/wiki/Array_concatenation
 ; author: oofoe 2012-01-28
 
 (println "Append lists:  " (append '(3 a 5 3) (sequence 1 9)))
@@ -3748,7 +3748,7 @@ my @arr3 = (@arr1, @arr2);
 ```
 
 
-The <code>[push](http://perldoc.perl.org/functions/push.html)</code> function appends elements onto an existing array:
+The <code>[push](https://perldoc.perl.org/functions/push.html)</code> function appends elements onto an existing array:
 
 ```perl
 my @arr1 = (1, 2, 3);
@@ -4047,8 +4047,8 @@ concat of a[] + b[]: [5, 2, -4, -1, -2, 0, -4, -1]
 
 ## Python
 
-The <code>[+](http://docs.python.org/library/stdtypes.html#sequence-types-str-unicode-list-tuple-buffer-xrange)</code> operator concatenates two lists and returns a new list.
-The <code>[list.extend](http://docs.python.org/library/stdtypes.html#mutable-sequence-types)</code> method appends elements of another list to the receiver.
+The <code>[+](https://docs.python.org/library/stdtypes.html#sequence-types-str-unicode-list-tuple-buffer-xrange)</code> operator concatenates two lists and returns a new list.
+The <code>[list.extend](https://docs.python.org/library/stdtypes.html#mutable-sequence-types)</code> method appends elements of another list to the receiver.
 
 ```python
 arr1 = [1, 2, 3]
@@ -4333,7 +4333,7 @@ matrix columns 1 thru 6
 
 ## Ruby
 
-The <code>[Array#+](http://www.ruby-doc.org/core/classes/Array.html#M002209)</code> method concatenates two arrays and returns a new array.  The <code>[Array#concat](http://www.ruby-doc.org/core/classes/Array.html#M002166)</code> method appends elements of another array to the receiver.
+The <code>[Array#+](https://www.ruby-doc.org/core/classes/Array.html#M002209)</code> method concatenates two arrays and returns a new array.  The <code>[Array#concat](https://www.ruby-doc.org/core/classes/Array.html#M002166)</code> method appends elements of another array to the receiver.
 
 ```ruby
 arr1 = [1, 2, 3]
@@ -4457,7 +4457,7 @@ Array concat ( arr1, arr2, arr3 )
 ```
 
 
-''Note : vector-append is also defined in [SRFI-43](http://srfi.schemers.org/srfi-43/srfi-43.html).''
+''Note : vector-append is also defined in [SRFI-43](https://srfi.schemers.org/srfi-43/srfi-43.html).''
 
 === Concatening two-dimensional arrays ===
 {{works with|Gauche Scheme}}

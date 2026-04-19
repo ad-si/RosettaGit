@@ -16,4 +16,4 @@ The features of Lisp 1.5 include [garbage collection](https://rosettacode.org/wi
 * [LISP 1.5 family](http://www.softwarepreservation.org/projects/LISP/lisp15_family/)
 * [LISP 1.5 for the Univac 1100](http://www.frobenius.com/univac.htm)
 * [Lisp 1.5 interpreters (CDC 6600, DEC VAX 11/780)](http://www.mentallandscape.com/Lisp.htm)
-* [LispOnePointFive](http://c2.com/cgi/wiki?LispOnePointFive)
+* [LispOnePointFive](https://c2.com/cgi/wiki?LispOnePointFive)

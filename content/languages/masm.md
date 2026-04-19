@@ -9,4 +9,4 @@ id = 17225
 categories = []
 tags = []
 +++
-[MASM](http://msdn.microsoft.com/en-us/library/afzk3475.aspx) (Microsoft Macro Assembler) is Microsoft's x86 assembler.
+[MASM](https://msdn.microsoft.com/en-us/library/afzk3475.aspx) (Microsoft Macro Assembler) is Microsoft's x86 assembler.

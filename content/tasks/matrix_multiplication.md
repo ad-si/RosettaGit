@@ -693,7 +693,7 @@ By contrast, A×B is for element-by-element multiplication of arrays of the same
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/topic44657-150.html)
+ahk [discussion](https://www.autohotkey.com/forum/topic44657-150.html)
 
 ```autohotkey
 Matrix("b","  ; rows separated by ","
@@ -5036,7 +5036,7 @@ const func matrix: (in matrix: left) * (in matrix: right) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#mmult>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#mmult>
 
 
 ## SequenceL
@@ -5147,7 +5147,7 @@ for line in matrix_multi(a, b) {
 ```
 
 
-Domain:[Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
+Domain:[Matrix(R)](https://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## SQL
@@ -5862,7 +5862,7 @@ With input document ...
 
 ```xml
 <xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
 >
   <xsl:output method="html"/>
 

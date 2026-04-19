@@ -79,8 +79,8 @@ I would second Ppelleti's suggestion of Gittip. Various people rave about it. <h
 
 == as-a-Service ==
 
-The idea of selling the content, possibly in book form, was mentioned over here: <http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Income>
+The idea of selling the content, possibly in book form, was mentioned over here: <https://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Income>
 
-I'd suggest that the content-as-a-service might be valuable. Specifically, I have an idea for a web app that would use RC's code samples. I've tried reaching out to Michael on Twitter. Since I can't edit his talk page (<http://rosettacode.org/wiki/User_talk:Short_Circuit>, as an aside, it looks like there's vandalism at the bottom of that page) and since this is potentially related to funding RC, I'm posting it here. But I'd like to discuss offline if possible. Feel free to email me.
+I'd suggest that the content-as-a-service might be valuable. Specifically, I have an idea for a web app that would use RC's code samples. I've tried reaching out to Michael on Twitter. Since I can't edit his talk page (<https://rosettacode.org/wiki/User_talk:Short_Circuit>, as an aside, it looks like there's vandalism at the bottom of that page) and since this is potentially related to funding RC, I'm posting it here. But I'd like to discuss offline if possible. Feel free to email me.
 
 [[User:Clebio|Clebio]] ([[User talk:Clebio|talk]]) 11:05, 24 July 2014 (UTC)

@@ -587,8 +587,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -3327,7 +3327,7 @@ str: "124"
 ```REBOL
 REBOL [
 	Title: "Increment Numerical String"
-	URL: http://rosettacode.org/wiki/Increment_numerical_string
+	URL: https://rosettacode.org/wiki/Increment_numerical_string
 ]
 
 ; Note the use of unusual characters in function name. Also note that

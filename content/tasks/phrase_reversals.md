@@ -151,7 +151,7 @@ attesoR edoC esarhP lasreveR
 
 
 To split a string into words, the package "Simple_Parse" from another task
-<http://rosettacode.org/wiki/Reverse_words_in_a_string#Ada> is used.
+<https://rosettacode.org/wiki/Reverse_words_in_a_string#Ada> is used.
 
 
 ```Ada

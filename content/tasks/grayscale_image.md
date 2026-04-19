@@ -1247,7 +1247,7 @@ end
 
 function ConvertToColorImage( gray_im )
     local size_x, size_y = #gray_im, #gray_im[1]
-    local bitmap = Allocate_Bitmap( size_x, size_y )         -- this function is defined at http://rosettacode.org/wiki/Basic_bitmap_storage#Lua
+    local bitmap = Allocate_Bitmap( size_x, size_y )         -- this function is defined at https://rosettacode.org/wiki/Basic_bitmap_storage#Lua
 
     for i = 1, size_x do
         for j = 1, size_y do
@@ -2156,7 +2156,7 @@ Does an in-place conversion from a color PPM image to a gray scale PPM image (ie
 but remains rgb vs one byte color). If you wish to write a bit map (or some other format), check out
 [[Bitmap/PPM conversion through a pipe#zkl]]
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 fcn toGrayScale(img){  // in-place conversion
    foreach x,y in (img.w,img.h){

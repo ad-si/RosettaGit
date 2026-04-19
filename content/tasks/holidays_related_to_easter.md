@@ -387,7 +387,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 ## ALGOL 68
 
-Note: Base code specimen extracted from [Algol 68 Genie Documentation](http://www.xs4all.nl/~jmvdveer/a68g-doc.pdf) Part III - ''Example a68g programs.''
+Note: Base code specimen extracted from [Algol 68 Genie Documentation](https://www.xs4all.nl/~jmvdveer/a68g-doc.pdf) Part III - ''Example a68g programs.''
 <!--
 Part I, II, III and V are distributed under the conditions of the GNU Free Documentation
 License: Permission is granted to copy, distribute and / or modify the text under the terms of
@@ -891,7 +891,7 @@ Year	Easter	Ascensn	Pentcst	Trinity	Corpus
 ## C
 
 {{trans|ALGOL 68|Note: This specimen retains the original [[Holidays related to Easter#ALGOL 68|ALGOL 68]] coding style -
-[diff](http://rosettacode.org/mw/index.php?title=Holidays_related_to_Easter&diff=85840&oldid=85839).}}
+[diff](https://rosettacode.org/mw/index.php?title=Holidays_related_to_Easter&diff=85840&oldid=85839).}}
 
 ```c
 #include <stdio.h>
@@ -3782,7 +3782,7 @@ require 'date'
 
 def easter_date(year)
   # Anonymous Gregorian algorithm
-  # <http://en.wikipedia.org/wiki/Computus#Algorithms>
+  # <https://en.wikipedia.org/wiki/Computus#Algorithms>
 
   a    = year % 19
   b, c = year.divmod(100)
@@ -4049,7 +4049,7 @@ const proc: main is func
 ```
 
 
-Original source of the function easterDate, which uses the Gauss formula: <http://seed7.sourceforge.net/algorith/date.htm#easterDate>
+Original source of the function easterDate, which uses the Gauss formula: <https://seed7.sourceforge.net/algorith/date.htm#easterDate>
 
 Output:
 

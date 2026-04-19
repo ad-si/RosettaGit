@@ -17,9 +17,9 @@ Hi. You need to describe that part of "file processing as known from PL/I or COB
 
           Contact the editor:
 
-          mail: http://rosettacode.org/wiki/Special:EmailUser/Paddy3118
+          mail: https://rosettacode.org/wiki/Special:EmailUser/Paddy3118
 
-          wiki: http://rosettacode.org/wiki/User:Paddy3118
+          wiki: https://rosettacode.org/wiki/User:Paddy3118
 
           Trying to use the email link gives me
 

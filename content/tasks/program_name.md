@@ -415,14 +415,14 @@ Many BASICs -- notably older DOS BASICs, and especially DOS MS BASICs -- do not 
 ## FreeBASIC
 =
 
-Unlike most MS BASICs, [[FreeBASIC]] provides a parsed version of <code>[COMMAND$](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgCommand)</code> (called as <code>COMMAND$(n)</code>). <code>COMMAND$(0)</code> is the program's name:
+Unlike most MS BASICs, [[FreeBASIC]] provides a parsed version of <code>[COMMAND$](https://www.freebasic.net/wiki/wikka.php?wakka=KeyPgCommand)</code> (called as <code>COMMAND$(n)</code>). <code>COMMAND$(0)</code> is the program's name:
 
 ```qbasic
 appname = COMMAND$(0)
 ```
 
 
-Additionally, FreeBASIC also provides an analog of [[#C|C's]] <code>argc/argv[]</code>, called <code>[__FB_ARGC__](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargc)</code> and <code>[__FB_ARGV__](http://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargv)</code>. __FB_ARGV__ can be used to get the program's name like this:
+Additionally, FreeBASIC also provides an analog of [[#C|C's]] <code>argc/argv[]</code>, called <code>[__FB_ARGC__](https://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargc)</code> and <code>[__FB_ARGV__](https://www.freebasic.net/wiki/wikka.php?wakka=KeyPgDdfbargv)</code>. __FB_ARGV__ can be used to get the program's name like this:
 
 ```qbasic
 appname = *__FB_ARGV__(0)
@@ -554,7 +554,7 @@ ucomm: myname
 
 ###  Windows
 
-[GetModuleFileName](http://msdn.microsoft.com/en-us/library/ms683197%28v=VS.85%29.aspx), from the Win32 API, provides the correct path to the current executable file.
+[GetModuleFileName](https://msdn.microsoft.com/en-us/library/ms683197%28v=VS.85%29.aspx), from the Win32 API, provides the correct path to the current executable file.
 
 ```c
 #include <windows.h>
@@ -843,7 +843,7 @@ Program: /tmp/.rdmd/Users/andrew/Desktop/src/scriptname/scriptname.d.D3B32385A31
 
 
 
-Alternative method using built-in function [thisExePath()](http://dlang.org/changelog.html#current_path)
+Alternative method using built-in function [thisExePath()](https://dlang.org/changelog.html#current_path)
 ```d
 // thisExePath function was introduced in D 2.064 (November 5, 2013)
 
@@ -907,7 +907,7 @@ end.
 ```lisp
 
 (js-eval "window.location.href")
-    → "http://www.echolalie.org/echolisp/"
+    → "https://www.echolalie.org/echolisp/"
 
 ```
 
@@ -2042,7 +2042,7 @@ echo "Program: $program\n";
 
 ## PicoLisp
 
-The function '[cmd](http://software-lab.de/doc/refC.html#cmd)' returns the command name.
+The function '[cmd](https://software-lab.de/doc/refC.html#cmd)' returns the command name.
 
 ```PicoLisp
 : (cmd)

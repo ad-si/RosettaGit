@@ -184,7 +184,7 @@ Use these functions to '''create a function that does Ethiopian multiplication''
 ## References
 
 *[Ethiopian multiplication explained](http://www.bbc.co.uk/learningzone/clips/ethiopian-multiplication-explained/11232.html) (Video)
-*[A Night Of Numbers - Go Forth And Multiply](http://www.youtube.com/watch?v=Nc4yrFXw20Q) (Video)
+*[A Night Of Numbers - Go Forth And Multiply](https://www.youtube.com/watch?v=Nc4yrFXw20Q) (Video)
 *[Ethiopian multiplication](http://www.ncetm.org.uk/blogs/3064)
 *[Russian Peasant Multiplication](http://www.bbc.co.uk/dna/h2g2/A22808126)
 *[Programming Praxis: Russian Peasant Multiplication](http://thedailywtf.com/Articles/Programming-Praxis-Russian-Peasant-Multiplication.aspx)
@@ -3365,7 +3365,7 @@ end
 ## MMIX
 
 
-In order to assemble and run this program you'll have to install MMIXware from [http://www-cs-faculty.stanford.edu/~knuth/mmix-news.html]. This provides you with a simple assembler, a simulator, example programs and full documentation.
+In order to assemble and run this program you'll have to install MMIXware from [https://www-cs-faculty.stanford.edu/~knuth/mmix-news.html]. This provides you with a simple assembler, a simulator, example programs and full documentation.
 
 
 ```mmix
@@ -4642,7 +4642,7 @@ ethiopian(First,Second,Product) :-
 ###  Functional Style
 
 
-Using the same definitions as above for "halve/2", "double/2" and "is_even/2" along with an SWI-Prolog [pack for function notation](http://www.swi-prolog.org/pack/list?p=func), one might write the following solution
+Using the same definitions as above for "halve/2", "double/2" and "is_even/2" along with an SWI-Prolog [pack for function notation](https://www.swi-prolog.org/pack/list?p=func), one might write the following solution
 
 
 ```prolog
@@ -5501,7 +5501,7 @@ const func integer: peasantMult (in var integer: a, in var integer: b) is func
 ```
 
 
-Original source (without separate functions for doubling, halving, and checking if a number is even): <http://seed7.sourceforge.net/algorith/math.htm#peasantMult>
+Original source (without separate functions for doubling, halving, and checking if a number is even): <https://seed7.sourceforge.net/algorith/math.htm#peasantMult>
 
 
 ## Sidef

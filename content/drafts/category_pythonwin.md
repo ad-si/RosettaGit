@@ -17,7 +17,7 @@ tags = []
 [[Python]] extensions for Windows 
 
 ;Websites 
-* <http://sourceforge.net/projects/pywin32/> 
+* <https://sourceforge.net/projects/pywin32/> 
 * <http://starship.python.net/crew/mhammond/win32/Downloads.html>
 
 ;Current version: Build 219 (2014-05-04)

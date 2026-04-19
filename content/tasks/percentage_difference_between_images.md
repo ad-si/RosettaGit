@@ -59,8 +59,8 @@ You can use these pictures for testing (use the full-size version of each):
 
 | 50% quality JPEG | 100% quality JPEG |
 | --- | --- |
-| ![Lenna 50%](http://rosettacode.org/mw/images/3/3c/Lenna50.jpg) | ![Lenna 100%](http://rosettacode.org/mw/images/b/b6/Lenna100.jpg) |
-| [Link to full size 50% image](http://rosettacode.org/mw/images/3/3c/Lenna50.jpg) | [Link to full size 100% image](http://rosettacode.org/mw/images/b/b6/Lenna100.jpg) |
+| ![Lenna 50%](https://rosettacode.org/mw/images/3/3c/Lenna50.jpg) | ![Lenna 100%](https://rosettacode.org/mw/images/b/b6/Lenna100.jpg) |
+| [Link to full size 50% image](https://rosettacode.org/mw/images/3/3c/Lenna50.jpg) | [Link to full size 100% image](https://rosettacode.org/mw/images/b/b6/Lenna100.jpg) |
 
 The expected difference for these two images is 1.62125%
 
@@ -130,7 +130,7 @@ begin
 ## AutoHotkey
 
 {{works with | AutoHotkey_L}}
-uses [gdip.ahk](http://www.autohotkey.com/forum/topic32238.html)
+uses [gdip.ahk](https://www.autohotkey.com/forum/topic32238.html)
 
 ```AutoHotkey
 startup()
@@ -1566,8 +1566,8 @@ Difference is 1.6256 percent
 This program downloads both jpg files, decodes them & saves them in 2D-arrays for simple comparison which part is comparable with the other languages.
 
 ```PureBasic
-#URL1="http://rosettacode.org/mw/images/3/3c/Lenna50.jpg"
-#URL2="http://rosettacode.org/mw/images/b/b6/Lenna100.jpg"
+#URL1="https://rosettacode.org/mw/images/3/3c/Lenna50.jpg"
+#URL2="https://rosettacode.org/mw/images/b/b6/Lenna100.jpg"
 
 Procedure.s GetTempFileName(basename$="",Extension$=".tmp")
   Protected file$, i
@@ -1711,7 +1711,7 @@ Note: On OS X I get 1.6192% as the result. (soegaard)
 ```REBOL
 REBOL [
 	Title: "Percent Image Difference"
-	URL: http://rosettacode.org/wiki/Percentage_of_difference_between_2_images
+	URL: https://rosettacode.org/wiki/Percentage_of_difference_between_2_images
 ]
 
 ; Load from local storage. Un/comment as preferred.
@@ -1719,8 +1719,8 @@ REBOL [
 ; b: load-image %lenna100.jpg
 
 ; Download from rosettacode.org.
-a: load-image http://rosettacode.org/mw/images/3/3c/Lenna50.jpg
-b: load-image http://rosettacode.org/mw/images/b/b6/Lenna100.jpg
+a: load-image https://rosettacode.org/mw/images/3/3c/Lenna50.jpg
+b: load-image https://rosettacode.org/mw/images/b/b6/Lenna100.jpg
 
 if a/size <> b/size [print "Image dimensions must match."  halt]
 
@@ -2062,7 +2062,7 @@ Difference:  1.619%
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn imageDiff(img1,img2){

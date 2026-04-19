@@ -1687,7 +1687,7 @@ func main() {
 }
 ```
 
-[Run in Go Playground](http://play.golang.org/p/pj7UmJnqoE).
+[Run in Go Playground](https://play.golang.org/p/pj7UmJnqoE).
 ```txt
 First 25: [1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107]
 Numner of Ludics below 1000: 142
@@ -2512,7 +2512,7 @@ Ludic Triplets below 250:
 
 ### Version  #2. Creating vector of ludic numbers.
 
-Upgraded script from [A003309](http://oeis.org/A003309) to meet task requirements.
+Upgraded script from [A003309](https://oeis.org/A003309) to meet task requirements.
 
 
 ```parigp

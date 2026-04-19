@@ -282,8 +282,8 @@ Sample output:
 
 Translated from D}} Note: This specimen retains the original [[#D|D]] coding styl
 Works with ALGOL 68|Revision 1 - no extensions to language used.
-Works with ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+Works with ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download).
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 
 ```algol68
 #
@@ -3112,7 +3112,7 @@ Plotting results:
 [[File:euler1.jpg]]
 
 High modularity of the program allows to implement very different solution metods. For example
-[2-nd order Runge-Kutta method](http://en.wikipedia.org/wiki/Midpoint_method):
+[2-nd order Runge-Kutta method](https://en.wikipedia.org/wiki/Midpoint_method):
 
 
 ```racket
@@ -3125,7 +3125,7 @@ High modularity of the program allows to implement very different solution metod
 ```
 
 
-[Two-step Adams–Bashforth method](http://en.wikipedia.org/wiki/Adams_method#Two-step_Adams.E2.80.93Bashforth)
+[Two-step Adams–Bashforth method](https://en.wikipedia.org/wiki/Adams_method#Two-step_Adams.E2.80.93Bashforth)
 
 ```racket
 
@@ -3140,7 +3140,7 @@ High modularity of the program allows to implement very different solution metod
 ```
 
 
-[Adaptive one-step method](http://en.wikipedia.org/wiki/Adaptive_stepsize) modifier using absolute accuracy ''ε''
+[Adaptive one-step method](https://en.wikipedia.org/wiki/Adaptive_stepsize) modifier using absolute accuracy ''ε''
 
 ```racket
 
@@ -3749,7 +3749,7 @@ euler(f, y, n, h, x, output(1)) :=
 			euler(f, newY, n, h, newX, newOutput);
 ```
 
-Based on C# version <http://rosettacode.org/wiki/Euler_method#C.23> but using tail recursion instead of looping.
+Based on C# version <https://rosettacode.org/wiki/Euler_method#C.23> but using tail recursion instead of looping.
 
 Output:
 

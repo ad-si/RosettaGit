@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[{{{1|{{PAGENAMEE}}}}} {{{2|}}} {{{3|}}} {{{4|}}} {{{5|}}} {{{6|}}} {{{7|}}} {{{8|}}} {{{9|}}}](http://mathworld.wolfram.com/{{{1|{{PAGENAME}}}}}{{{2|}}}{{{3|}}}{{{4|}}}{{{5|}}}{{{6|}}}{{{7|}}}{{{8|}}}{{{9|}}}.html)
+[{{{1|{{PAGENAMEE}}}}} {{{2|}}} {{{3|}}} {{{4|}}} {{{5|}}} {{{6|}}} {{{7|}}} {{{8|}}} {{{9|}}}](https://mathworld.wolfram.com/{{{1|{{PAGENAME}}}}}{{{2|}}}{{{3|}}}{{{4|}}}{{{5|}}}{{{6|}}}{{{7|}}}{{{8|}}}{{{9|}}}.html)
 <includeonly>[[Category:Wolfram Linked]]</includeonly><noinclude>
 == Usage ==
 
@@ -33,8 +33,8 @@ tags = []
 
 ```txt
 
-<nowiki>{{{Wolfram|BirthdayProblem}}}</nowiki> links to http://mathworld.wolfram.com/BirthdayProblem.html
-<nowiki>{{{Wolfram|Birthday|Problem}}}</nowiki> also links to http://mathworld.wolfram.com/BirthdayProblem.html
+<nowiki>{{{Wolfram|BirthdayProblem}}}</nowiki> links to https://mathworld.wolfram.com/BirthdayProblem.html
+<nowiki>{{{Wolfram|Birthday|Problem}}}</nowiki> also links to https://mathworld.wolfram.com/BirthdayProblem.html
 
 ```
 

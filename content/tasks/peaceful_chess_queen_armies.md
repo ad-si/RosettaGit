@@ -1079,7 +1079,7 @@ W ◦ W W • ◦ •
 ```perl
 #!/usr/bin/perl
 
-use strict;       # http://www.rosettacode.org/wiki/Peaceful_chess_queen_armies
+use strict;       # https://www.rosettacode.org/wiki/Peaceful_chess_queen_armies
 use warnings;
 
 my $m = shift // 4;

@@ -561,7 +561,7 @@ Loop, % size
 Return s
 }
 
-; modified from http://www.autohotkey.com/board/topic/58737-stdlib-regexmatchall/
+; modified from https://www.autohotkey.com/board/topic/58737-stdlib-regexmatchall/
 RegExMatchAll( Haystack, NeedleRegEx , QuotedOutputVar, StartingPosition = 1 )
 {
 	Local RegExPosition := StartingPosition-1, MatchCount := 0, temp

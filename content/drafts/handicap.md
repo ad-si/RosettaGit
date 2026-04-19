@@ -22,6 +22,6 @@ E.g.
 ...
 
 
-'''See also:''' [Category:Excessively difficult task](http://rosettacode.org/wiki/Category:Excessively_difficult_task)
+'''See also:''' [Category:Excessively difficult task](https://rosettacode.org/wiki/Category:Excessively_difficult_task)
 
 [[Category:Handicap]]

@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}{{library}}
 
-The <tt>libplot</tt> is part of the [GNU plotutils package](http://www.gnu.org/software/plotutils/)
+The <tt>libplot</tt> is part of the [GNU plotutils package](https://www.gnu.org/software/plotutils/)

@@ -61,8 +61,8 @@ This will allow optimizations to be used.
 
 ## See also
 
-:*   The MathWorld entry:   [eban numbers](http://mathworld.wolfram.com/EbanNumber.html).
-:*   The OEIS      entry:   [A6933,                eban numbers](http://oeis.org/A006933).
+:*   The MathWorld entry:   [eban numbers](https://mathworld.wolfram.com/EbanNumber.html).
+:*   The OEIS      entry:   [A6933,                eban numbers](https://oeis.org/A006933).
 
 
 

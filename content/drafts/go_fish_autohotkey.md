@@ -63,7 +63,7 @@ class Cards
 	HasCards() {
 		Return this.Cards.MaxIndex()
 	}
-	Shuffle() {	; Knuth Shuffle from http://rosettacode.org/wiki/Knuth_Shuffle#AutoHotkey
+	Shuffle() {	; Knuth Shuffle from https://rosettacode.org/wiki/Knuth_Shuffle#AutoHotkey
 		Loop % this.HasCards()-1 {
 			Random, i, A_Index, this.HasCards()	; swap item 1,2... with a random item to the right of it
 			temp := this.Cards[i], this.Cards[i] := this.Cards[A_Index], this.Cards[A_Index] := temp

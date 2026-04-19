@@ -529,7 +529,7 @@ x       17999997.000000     18000003.000000     18000000.000000     18000000.000
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139)
 
 ```autohotkey
 MsgBox % Rect("fun", 0, 1, 10,-1) ; 0.45 left
@@ -2923,7 +2923,7 @@ So to integrate <math>x^2</math> from 0 to &pi; :
 ```
 
 
-That said, J also has <code>d.</code> which can [integrate](http://www.jsoftware.com/help/dictionary/dddot.htm) suitable functions.
+That said, J also has <code>d.</code> which can [integrate](https://www.jsoftware.com/help/dictionary/dddot.htm) suitable functions.
 
 
 ```j

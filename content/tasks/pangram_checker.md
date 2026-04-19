@@ -1897,7 +1897,7 @@ false
 ```javascript
 function isPangram(s) {
     var letters = "zqxjkvbpygfwmucldrhsnioate"
-    // sorted by frequency ascending (http://en.wikipedia.org/wiki/Letter_frequency)
+    // sorted by frequency ascending (https://en.wikipedia.org/wiki/Letter_frequency)
     s = s.toLowerCase().replace(/[^a-z]/g,'')
     for (var i = 0; i < 26; i++)
         if (s.indexOf(letters[i]) < 0) return false

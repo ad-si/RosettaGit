@@ -24,4 +24,4 @@ Is it possible to change the metric, to put more weight on green, less on red, e
 
 ::I now have four implementations out there, and I have fixed a bug in my initial implementation.  --[[User:Rdm|Rdm]] 01:44, 13 August 2011 (UTC)
 ::: Without dithering, I think the second palette looks the best.  Kinda funny since that one probably required least amount of work. --[[User:Ledrug|Ledrug]] 05:27, 13 August 2011 (UTC)
-:::: That is the case surprisingly often.  Anyways, I have removed the alternate implementations.  If anyone cares, they can find them in the [edit history for this page](http://rosettacode.org/mw/index.php?title=Color_quantization&oldid=117230#J) --[[User:Rdm|Rdm]] 11:44, 14 August 2011 (UTC)
+:::: That is the case surprisingly often.  Anyways, I have removed the alternate implementations.  If anyone cares, they can find them in the [edit history for this page](https://rosettacode.org/mw/index.php?title=Color_quantization&oldid=117230#J) --[[User:Rdm|Rdm]] 11:44, 14 August 2011 (UTC)

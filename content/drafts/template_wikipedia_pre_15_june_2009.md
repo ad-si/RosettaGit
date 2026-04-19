@@ -21,7 +21,7 @@ The current wikipedia article is at [}} {{{pagename|{{PAGENAME}}}}}](http://{{{l
 The original RosettaCode article was extracted from the [}}}}&oldid={{{oldid|~}}} wikipedia article № {{{oldid|~}}} of {{{timedate|~}}}](http://{{{lang|en}}}.wikipedia.org/w/index.php?title={{PAGENAMEE:{{urlencode:{{{pagename|{{PAGENAMEE}}}}}).
 The list of authors can be seen in the [{{{pagename|{{PAGENAMEE}}}}} }}&action=history '''page history'''](http://{{{lang|en}}}.wikipedia.org/w/index.php?title={{urlencode:).
 [[Project:Copyrights|As with {{SITENAME}}]],
-the pre '''5 June 2009''' text of Wikipedia [[wp:Project:Copyrights|is available]] under the [GNU FDL](http://www.gnu.org/licenses/fdl.html).
+the pre '''5 June 2009''' text of Wikipedia [[wp:Project:Copyrights|is available]] under the [GNU FDL](https://www.gnu.org/licenses/fdl.html).
 (See links for details on variance)
 |}<includeonly>[[Category:WikipediaSourced]]</includeonly><noinclude>
 ```

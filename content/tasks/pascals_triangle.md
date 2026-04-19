@@ -287,7 +287,7 @@ Another way, using the relation between element 'n' and element 'n-1' in a row:
 ## Ada
 
 
-The specification of auxiliary package "Pascal". "First_Row" outputs a row with a single "1", "Next_Row" computes the next row from a given row, and "Length" gives the number of entries in a row. The package is also used for the Catalan numbers solution <http://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle>
+The specification of auxiliary package "Pascal". "First_Row" outputs a row with a single "1", "Next_Row" computes the next row from a given row, and "Length" gives the number of entries in a row. The package is also used for the Catalan numbers solution <https://rosettacode.org/wiki/Catalan_numbers/Pascal%27s_triangle>
 
 
 ```ada
@@ -714,7 +714,7 @@ end zipWith
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
 
 ```AutoHotkey
 n := 8, p0 := "1"        ; 1+n rows of Pascal's triangle
@@ -2947,7 +2947,7 @@ list, as in
 ```
 
 
-A shorter approach, plagiarized from <http://www.haskell.org/haskellwiki/Blow_your_mind>
+A shorter approach, plagiarized from <https://www.haskell.org/haskellwiki/Blow_your_mind>
 
 ```haskell
 -- generate next row from current row
@@ -3059,8 +3059,8 @@ end
 ```
 
 
-[math provides binocoef](http://www.cs.arizona.edu/icon/library/src/procs/math.icn)
-[math provides the original version of pascal](http://www.cs.arizona.edu/icon/library/src/procs/pascal.icn)
+[math provides binocoef](https://www.cs.arizona.edu/icon/library/src/procs/math.icn)
+[math provides the original version of pascal](https://www.cs.arizona.edu/icon/library/src/procs/pascal.icn)
 
 Sample output:
 ```txt

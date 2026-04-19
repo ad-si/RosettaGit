@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[SPAD](http://fricas.github.io/) is programming language used by the Fricas Computer Algebra System (as well as by Axiom and OpenAxiom). It is a multiparadigm language with second order dependent types. It is useful for research and development of mathematical algorithms. It defines a strongly typed, mathematically correct type hierarchy and is used in compiler - or interpreter mode.
+[SPAD](https://fricas.github.io/) is programming language used by the Fricas Computer Algebra System (as well as by Axiom and OpenAxiom). It is a multiparadigm language with second order dependent types. It is useful for research and development of mathematical algorithms. It defines a strongly typed, mathematically correct type hierarchy and is used in compiler - or interpreter mode.
 
 
 <br clear=all>

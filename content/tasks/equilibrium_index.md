@@ -1892,7 +1892,7 @@ runSample(arg)
 return
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- @see http://www.geeksforgeeks.org/equilibrium-index-of-an-array/
+-- @see https://www.geeksforgeeks.org/equilibrium-index-of-an-array/
 method equilibriumIndex(sequence) private static
   es = ''
   loop ix = 1 to sequence.words()
@@ -3139,7 +3139,7 @@ example = edex <-7,1,5,2,-4,3,0>
 
 ## VBScript
 
-Solution adopted from <http://www.geeksforgeeks.org/equilibrium-index-of-an-array/> .
+Solution adopted from <https://www.geeksforgeeks.org/equilibrium-index-of-an-array/> .
 
 ```vb
 arr = Array(-7,1,5,2,-4,3,0)

@@ -11,6 +11,6 @@ tags = []
 +++
 
 {{library}}
-[HttpClient](http://www.mozart-oz.org/mogul/doc/mesaros/httpclient/) is a third-party library for [[Oz]]. Install it with
+[HttpClient](https://www.mozart-oz.org/mogul/doc/mesaros/httpclient/) is a third-party library for [[Oz]]. Install it with
 
 <code>ozmake --install --package=mogul:/mesaros/httpclient</code>

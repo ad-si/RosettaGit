@@ -231,7 +231,7 @@ In this example, we define a class <code>food</code>, and two subclasses, <code>
 We define a generic function <code>eat</code>,
 and specialize it only for <code>edible-food</code>.
 We then define a predicate <code>eatable-p</code> which returns true only on objects for which <code>eat</code> methods have been defined.
-Then, using <code>[deftype](http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm)</code> with a <code>[satisfies](http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm)</code> type specifier, we define a type <code>eatable</code> to which only objects satisfying <code>eatable-p</code> belong.  Finally, we define a function <code>make-food-box</code> which takes, in addition to typical array creation arguments, a type specifier.
+Then, using <code>[deftype](https://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm)</code> with a <code>[satisfies](https://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm)</code> type specifier, we define a type <code>eatable</code> to which only objects satisfying <code>eatable-p</code> belong.  Finally, we define a function <code>make-food-box</code> which takes, in addition to typical array creation arguments, a type specifier.
 The array is declared to have elements of the type that is the intersection of <code>food</code> and the provided type.
 <code>make-eatable-food-box</code> simply calls <code>make-food-box</code>
 with the type <code>eatable</code>.
@@ -586,7 +586,7 @@ let someBananas = FoodBox [Banana(); Banana()]
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1818,7 +1818,7 @@ class MAIN is
 end;
 ```
 
-The GNU Sather compiler v1.2.3 let the "box2" pass, even though it shouldn't. Read e.g. [this tutorial's section](http://www.gnu.org/software/sather/docs-1.2/tutorial/parameterized1751.html)
+The GNU Sather compiler v1.2.3 let the "box2" pass, even though it shouldn't. Read e.g. [this tutorial's section](https://www.gnu.org/software/sather/docs-1.2/tutorial/parameterized1751.html)
 
 
 ## Scala

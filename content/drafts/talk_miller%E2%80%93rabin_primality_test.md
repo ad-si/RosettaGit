@@ -32,7 +32,7 @@ The task asks for a function with two arguments. One is an odd integer, the othe
 Is Tcl correct? It has 1 as a prime.
 
 == Testing Composite Probability ==
-In addition to finding primes it is interesting to determine how often the algorithm returns composites as prime, see [here](http://rosettacode.org/wiki/Talk:Carmichael_3_strong_pseudoprimes,_or_Miller_Rabin%27s_nemesis#Analysis). Using [Ruby's miller_rabin_prime?](http://rosettacode.org/wiki/Miller-Rabin_primality_test#Ruby) as follows:
+In addition to finding primes it is interesting to determine how often the algorithm returns composites as prime, see [here](https://rosettacode.org/wiki/Talk:Carmichael_3_strong_pseudoprimes,_or_Miller_Rabin%27s_nemesis#Analysis). Using [Ruby's miller_rabin_prime?](https://rosettacode.org/wiki/Miller-Rabin_primality_test#Ruby) as follows:
 
 
 ```ruby
@@ -43,7 +43,7 @@ puts v.length
 ```
 
 
-with n=703 (19 * 37) and g=1 for times=10,000 returned 2242 false trues, which compares well with the 2286 which may be expected [from](http://rosettacode.org/wiki/Talk:Carmichael_3_strong_pseudoprimes,_or_Miller_Rabin%27s_nemesis#Analysis). Increasing g to 5 reduced the number of false trues to 7. Increasing g to 10 reduced the number of false trues to 0 even when times was increased to 100000. Increasing times to 1000000 only returned 1 false true. Obviously these results will vary for each trial.--[[User:Nigel Galloway|Nigel Galloway]] 13:47, 30 December 2012 (UTC)
+with n=703 (19 * 37) and g=1 for times=10,000 returned 2242 false trues, which compares well with the 2286 which may be expected [from](https://rosettacode.org/wiki/Talk:Carmichael_3_strong_pseudoprimes,_or_Miller_Rabin%27s_nemesis#Analysis). Increasing g to 5 reduced the number of false trues to 7. Increasing g to 10 reduced the number of false trues to 0 even when times was increased to 100000. Increasing times to 1000000 only returned 1 false true. Obviously these results will vary for each trial.--[[User:Nigel Galloway|Nigel Galloway]] 13:47, 30 December 2012 (UTC)
 
 :There is also some mention of this in the Python entry. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 09:33, 17 January 2014 (UTC)
 

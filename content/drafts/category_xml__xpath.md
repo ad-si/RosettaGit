@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}{{library}}[[Category:Perl_modules]]
 This is a [[Perl]] library, available from CPAN, for working with XML using XPath.
-* [Documentation <small>(v1.13)</small>](http://search.cpan.org/~msergeant/XML-XPath-1.13/XPath.pm)
+* [Documentation <small>(v1.13)</small>](https://metacpan.org/~msergeant/XML-XPath-1.13/XPath.pm)

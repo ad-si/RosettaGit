@@ -98,7 +98,7 @@ Or Here: [Annex K - Language-Defined Attributes](http://www2.adacore.com/gap-sta
 
 ## AutoHotkey
 
-Refer to [Built-in Variables](http://www.autohotkey.com/docs/Variables.htm#BuiltIn) for the complete special variables (those variables are global, except noticed).
+Refer to [Built-in Variables](https://www.autohotkey.com/docs/Variables.htm#BuiltIn) for the complete special variables (those variables are global, except noticed).
 
 
 ## ALGOL 68
@@ -635,7 +635,7 @@ The following snippet prints a list of the special variables defined in clojure.
 
 Note: the term "special variable" has a meaning in Common Lisp and related dialects, different from the way it is being used here. It is a jargon which denotes a dynamically scoped variable. ANSI Common Lisp's standard-defined variables are special variables in both senses of the term.
 
-The following code snippet prints a list of all 44 special variables defined by the Common Lisp standard. For further information about each of them consult the [online documentation](http://www.lispworks.com/documentation/HyperSpec/Front/X_Alph_9.htm).
+The following code snippet prints a list of all 44 special variables defined by the Common Lisp standard. For further information about each of them consult the [online documentation](https://www.lispworks.com/documentation/HyperSpec/Front/X_Alph_9.htm).
 
 ```lisp
 (defun special-variables ()
@@ -1315,7 +1315,7 @@ Exception in thread "main" java.lang.IllegalArgumentException: Theodore's age mu
 ## Lasso
 
 
-In Lasso parameters can be referenced as numerical locals within methods or unbound captures. <http://lassoguide.com/language/variables.html?#parameter-pseudo-locals>
+In Lasso parameters can be referenced as numerical locals within methods or unbound captures. <https://lassoguide.com/language/variables.html?#parameter-pseudo-locals>
 
 
 ```Lasso
@@ -1679,7 +1679,7 @@ The only special variable is <tt>%@</tt> which specifies which object the player
 ## OCaml
 
 
-Some predefined variables from the <code>[Sys](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Sys.html)</code> module:
+Some predefined variables from the <code>[Sys](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Sys.html)</code> module:
 
 
 ```ocaml
@@ -1724,7 +1724,7 @@ val ocaml_version : string
 ```
 
 
-Some predefined variables from the <code>[Pervasives](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)</code> module:
+Some predefined variables from the <code>[Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)</code> module:
 
 
 ```ocaml
@@ -1925,7 +1925,7 @@ Also, not really a variable but...
 ```perl6
  *  # A standalone term that has no fixed value, instead it captures the notion of "Whatever",
     # the meaning of which is decided lazily by whatever it is an argument to.
-    # See the "*" section of <http://perlcabal.org/syn/S02.html#Built-In_Data_Types>
+    # See the "*" section of <https://perlcabal.org/syn/S02.html#Built-In_Data_Types>
 ```
 
 

@@ -76,7 +76,7 @@ file.Close()
 ```AWK
 
 # syntax: GAWK -f MAKE_A_BACKUP_FILE.AWK filename(s)
-# see: http://www.gnu.org/software/gawk/manual/gawk.html#Extension-Sample-Inplace
+# see: https://www.gnu.org/software/gawk/manual/gawk.html#Extension-Sample-Inplace
 @load "inplace"
 BEGIN {
     INPLACE_SUFFIX = ".BAK"

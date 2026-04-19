@@ -2674,7 +2674,7 @@ zebra
 
 ## Python
 
-Uses the [fileinput](http://docs.python.org/library/fileinput.html) standard module.
+Uses the [fileinput](https://docs.python.org/library/fileinput.html) standard module.
 
 ```python
 #!/usr/bin/env python
@@ -3090,7 +3090,7 @@ remove_lines(File(__FILE__), 2, 3);
 
 ## Stata
 
-The usual way to solve this task in Stata consists in removing lines from the currently loaded dataset. This is done with the '''[drop](http://www.stata.com/help.cgi?drop)''' command, or alternately with '''keep'''.
+The usual way to solve this task in Stata consists in removing lines from the currently loaded dataset. This is done with the '''[drop](https://www.stata.com/help.cgi?drop)''' command, or alternately with '''keep'''.
 
 
 ```stata

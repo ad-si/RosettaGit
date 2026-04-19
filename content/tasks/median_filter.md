@@ -447,7 +447,7 @@ Compile with -version=median_filter_main to run the demo.
 
 ## GDL
 
-GDL has no inbuilt median filter function, which is native in IDL. This example is based on pseudocode here: <http://en.wikipedia.org/wiki/Median_filter#2D_median_filter_pseudo_code>, however, it works with 1D arrays only. It does not process boundaries.
+GDL has no inbuilt median filter function, which is native in IDL. This example is based on pseudocode here: <https://en.wikipedia.org/wiki/Median_filter#2D_median_filter_pseudo_code>, however, it works with 1D arrays only. It does not process boundaries.
 
 ```GDL
 
@@ -1183,7 +1183,7 @@ pack [label .dst.l -image [medianFilter teapot]]
 
 ## zkl
 
-Uses Image Magick and the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses Image Magick and the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 
 ```zkl

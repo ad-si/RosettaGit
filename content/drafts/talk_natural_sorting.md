@@ -32,7 +32,7 @@ Using the above comparison rules you should be able to sort/order strings. --[[U
 
 :: Wait! I'm gobsmacked! Do you have a link to the documentation? --[[User:Paddy3118|Paddy3118]] 21:25, 23 April 2011 (UTC)
 
-::: That's what <code>[lsort -dictionary](http://www.tcl.tk/man/tcl8.5/TclCmd/lsort.htm#M6)</code> does. (Well, it also handles case a bit differently, treating it as a second-order difference rather than the usual first-order difference.) It was added because it is the mode which “puts filenames in the order that the user expects”, making it much easier to produce a nice GUI to use. (FWIW, I'm not doing the ligature normalization stuff because that's a lot of work to do right and it's an area where Tcl needs more work; I forget the Request For Enhancement number. :-)) –[[User:Dkf|Donal Fellows]] 11:17, 2 May 2011 (UTC)
+::: That's what <code>[lsort -dictionary](https://www.tcl-lang.org/man/tcl8.5/TclCmd/lsort.htm#M6)</code> does. (Well, it also handles case a bit differently, treating it as a second-order difference rather than the usual first-order difference.) It was added because it is the mode which “puts filenames in the order that the user expects”, making it much easier to produce a nice GUI to use. (FWIW, I'm not doing the ligature normalization stuff because that's a lot of work to do right and it's an area where Tcl needs more work; I forget the Request For Enhancement number. :-)) –[[User:Dkf|Donal Fellows]] 11:17, 2 May 2011 (UTC)
 :::: Thanks. --[[User:Paddy3118|Paddy3118]] 23:26, 2 May 2011 (UTC)
 
 I'm not understanding this algorithm.  Copied from the Python results,

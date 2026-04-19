@@ -105,7 +105,7 @@ int main()
 
 ### Graphics version
 
-And here's the Graphics version, requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. Prints out usage on incorrect invocation.
+And here's the Graphics version, requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library. Prints out usage on incorrect invocation.
 
 ```C
 

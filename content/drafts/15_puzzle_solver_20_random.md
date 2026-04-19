@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-The following table shows the result of solving 20 [randomly generated 15 puzzles](http://www.rosettacode.org/wiki/15_Puzzle_Game#C.23) using the C++ imperative solver.
+The following table shows the result of solving 20 [randomly generated 15 puzzles](https://www.rosettacode.org/wiki/15_Puzzle_Game#C.23) using the C++ imperative solver.
 
 
 The average number of moves to solve the puzzle is 53, max 61 min 45.

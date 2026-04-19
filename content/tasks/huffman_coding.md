@@ -2908,7 +2908,7 @@ this is an example for huffman encoding
 
 ## Haskell
 
-Credits go to [huffman](http://www.haskell.org/haskellwiki/99_questions/46_to_50#Problem_50) where you'll also find a non-tree solution. Uses sorted list as a priority queue.
+Credits go to [huffman](https://www.haskell.org/haskellwiki/99_questions/46_to_50#Problem_50) where you'll also find a non-tree solution. Uses sorted list as a priority queue.
 
 ```haskell
 import Data.List (group, insertBy, sort, sortBy)
@@ -3193,7 +3193,7 @@ Huffman encoding:
 ->
 ```
 
-[HuffStuff provides huffman encoding routines](http://www.cs.arizona.edu/icon/library/progs/huffstuf.htm)
+[HuffStuff provides huffman encoding routines](https://www.cs.arizona.edu/icon/library/progs/huffstuf.htm)
 
 
 ## J
@@ -5440,7 +5440,7 @@ d 11110
 
 ## Python
 
-A [slight modification](http://paddy3118.blogspot.com/2009/03/huffman-encoding-in-python.html) of the method outlined in the task description allows the code to be accumulated as the heap is manipulated.
+A [slight modification](https://paddy3118.blogspot.com/2009/03/huffman-encoding-in-python.html) of the method outlined in the task description allows the code to be accumulated as the heap is manipulated.
 
 The output is sorted first on length of the code, then on the symbols.
 
@@ -5500,7 +5500,7 @@ d   1   111111
 ```
 
 
-An extension to the method outlined above is given [here](http://paddy3118.blogspot.com/2009/04/abuse-of-pythons-in-built-data.html).
+An extension to the method outlined above is given [here](https://paddy3118.blogspot.com/2009/04/abuse-of-pythons-in-built-data.html).
 
 
 

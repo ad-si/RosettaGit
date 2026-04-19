@@ -9,7 +9,7 @@ id = 7549
 categories = []
 tags = []
 +++
-[Guile](http://www.gnu.org/software/guile/guile.html) stands for Gnu's Ubiquitous Interactive Language for Extension. It is the "official" extension language of the GNU Project.
+[Guile](https://www.gnu.org/software/guile/guile.html) stands for Gnu's Ubiquitous Interactive Language for Extension. It is the "official" extension language of the GNU Project.
 
 ## See Also
 [Wikipedia:Gnu Guile](https://en.wikipedia.org/wiki/GNU_Guile)

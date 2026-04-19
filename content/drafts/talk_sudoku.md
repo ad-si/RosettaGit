@@ -18,7 +18,7 @@ I added the MATLAB solution, but when I did it my computer wasn't logged in. Som
 
 ### = CL solver =
 
-There's a nice CL sudoku [solver](http://common-lisp.net/project/computed-class/sudoku-source.html) using constraint propagation written by the [CL-DWIM](http://www.cliki.net/cl-dwim) crew.
+There's a nice CL sudoku [solver](https://common-lisp.net/project/computed-class/sudoku-source.html) using constraint propagation written by the [CL-DWIM](http://www.cliki.net/cl-dwim) crew.
 
 == C'mon ==
 

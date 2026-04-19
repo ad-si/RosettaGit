@@ -317,7 +317,7 @@ xs := m + n*rs
 ys := p + q*rs
 }
 
-; from http://rosettacode.org/wiki/Greatest_element_of_a_list#AutoHotkey
+; from https://rosettacode.org/wiki/Greatest_element_of_a_list#AutoHotkey
 max(list) {
 	Loop Parse, list, `,
 	x := x < A_LoopField ? A_LoopField : x
@@ -1523,7 +1523,7 @@ $ jq -n -c -f apollonius.jq
 
 ## Julia
 
-This solution follows the algebraic solution from [Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource](http://mathworld.wolfram.com/ApolloniusProblem.html).  The [Polynomials](https://github.com/Keno/Polynomials.jl) package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.
+This solution follows the algebraic solution from [Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource](https://mathworld.wolfram.com/ApolloniusProblem.html).  The [Polynomials](https://github.com/Keno/Polynomials.jl) package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.
 
 The <code>enc</code> array passed to the <code>apollonius</code> function, specifies which of the three defining circles are to be enclosed in the solution.  For this task only the "internal" (<code>enc=[]</code>) and "external" (<code>enc=[1:3]</code>) are called for.
 

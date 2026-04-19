@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Why a draft task?==
-A comment in [here](http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Request_a_programming_task#Unsorted) (look for ''shortcutting''), thought that the task would most likely not be written in a neutral manner. I've tried to write a task that allows each language, whether it has short-circuit evaluation or not, to solve the problem idiomatically. 
+A comment in [here](https://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Request_a_programming_task#Unsorted) (look for ''shortcutting''), thought that the task would most likely not be written in a neutral manner. I've tried to write a task that allows each language, whether it has short-circuit evaluation or not, to solve the problem idiomatically. 
 
 I saw the comments on the Icon solution, for example, which makes me think that the task could soon lose the draft status? --[[User:Paddy3118|Paddy3118]] 23:59, 24 July 2010 (UTC)
 

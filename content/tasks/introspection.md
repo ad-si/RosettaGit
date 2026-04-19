@@ -1882,7 +1882,7 @@ when compiles abs(bloop):
 
 Checking if an identifier (a value or a function) is bound doesn't make any sens in OCaml, which is strongly staticaly typed.
 
-For optionnal values we would rather use a structure to contain them, for example an [association lists](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#6_Associationlists) for a small amount of items, or an [hash table](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html) for a huge amount of data. Both can contain expressions or functions.
+For optionnal values we would rather use a structure to contain them, for example an [association lists](https://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#6_Associationlists) for a small amount of items, or an [hash table](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html) for a huge amount of data. Both can contain expressions or functions.
 
 
 ## Oforth
@@ -2820,7 +2820,7 @@ their sum is: 18630
 
 Note: The warning is because it accessed the global variable which was made invalid.
 
-The meaning of these variables can be found many places, including [here](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants).
+The meaning of these variables can be found many places, including [here](https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants).
 
 
 ## Scala

@@ -484,7 +484,7 @@ This only works with internal windows.
 
 ## Perl
 
-Perl on linux can do this for PseudoTerminals (ptys) and Terminals (ttys) using [IOCTL TIOCSTI](http://www.kernel.org/doc/man-pages/online/pages/man4/tty_ioctl.4.html).  The same can be done with C or any other language that can use IOCTL either natively or via [FFI](http://en.wikipedia.org/wiki/Foreign_function_interface) such as [JNI](http://en.wikipedia.org/wiki/Java_Native_Interface) or [JNA](http://en.wikipedia.org/wiki/Java_Native_Access).
+Perl on linux can do this for PseudoTerminals (ptys) and Terminals (ttys) using [IOCTL TIOCSTI](http://www.kernel.org/doc/man-pages/online/pages/man4/tty_ioctl.4.html).  The same can be done with C or any other language that can use IOCTL either natively or via [FFI](https://en.wikipedia.org/wiki/Foreign_function_interface) such as [JNI](https://en.wikipedia.org/wiki/Java_Native_Interface) or [JNA](https://en.wikipedia.org/wiki/Java_Native_Access).
 
 Target may be externally created, but process must be able to open tty/pty for writing.
 
@@ -504,9 +504,9 @@ print "DONE\n";
 
 
 
-Perl on X11 can do this using the SendKeys function from [X11::GUITest](http://search.cpan.org/%7ectrondlp/X11-GUITest/GUITest.pm)
+Perl on X11 can do this using the SendKeys function from [X11::GUITest](https://metacpan.org/%7ectrondlp/X11-GUITest/GUITest.pm)
 
-Perl on Windows can do this using the SendKeys function from [Win32::GUITest](http://search.cpan.org/%7ekarasik/Win32-GuiTest/lib/Win32/GuiTest.pm)
+Perl on Windows can do this using the SendKeys function from [Win32::GUITest](https://metacpan.org/%7ekarasik/Win32-GuiTest/lib/Win32/GuiTest.pm)
 
 Target may be externally created.
 
@@ -565,7 +565,7 @@ PicoLisp comes with a dedicated browser GUI. A library based on web scraping (in
 to read GUI pages, click on HTML links, enter text into forms, and press submit
 buttons. In that way one application can control another application.
 
-The documented [demo application](http://software-lab.de/doc/app.html#minApp),
+The documented [demo application](https://software-lab.de/doc/app.html#minApp),
 which is also available online at [app.7fach.de](http://7fach.de/8080), is used
 in the following example. Keyboard input is simulated with the function 'enter'
 to fill the login form's name and password fields.

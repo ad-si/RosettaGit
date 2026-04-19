@@ -1044,8 +1044,8 @@ Timings in microseconds:
 
 ## Erlang
 
-The sort routines are borrowed from [bubble sort](http://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort), [insertion sort](http://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort) and [quick sort](http://rosettacode.org/wiki/Sorting_algorithms/Quicksort). Plots by [eplot](https://github.com/psyeugenic/eplot).
-Bubble sort does [ones](http://github.com/ebengt/rosettacode/tree/master/graphs/ones.png) and [ranges](http://github.com/ebengt/rosettacode/tree/master/graphs/ranges.png) best. Insertion sort does [reversed ranges](http://github.com/ebengt/rosettacode/tree/master/graphs/reversed_ranges.png) best. Quick sort handles [shuffled numbers](http://github.com/ebengt/rosettacode/tree/master/graphs/shuffleds.png) best.
+The sort routines are borrowed from [bubble sort](https://rosettacode.org/wiki/Sorting_algorithms/Bubble_sort), [insertion sort](https://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort) and [quick sort](https://rosettacode.org/wiki/Sorting_algorithms/Quicksort). Plots by [eplot](https://github.com/psyeugenic/eplot).
+Bubble sort does [ones](https://github.com/ebengt/rosettacode/tree/master/graphs/ones.png) and [ranges](https://github.com/ebengt/rosettacode/tree/master/graphs/ranges.png) best. Insertion sort does [reversed ranges](https://github.com/ebengt/rosettacode/tree/master/graphs/reversed_ranges.png) best. Quick sort handles [shuffled numbers](https://github.com/ebengt/rosettacode/tree/master/graphs/shuffleds.png) best.
 
 ```Erlang
 

@@ -903,7 +903,7 @@ insert x s = T B a y b where
 ## J
 
 
-J incorporates a symbol data type which, in versions 6.02 and 7.01, J implements directly as a red-black tree. The [s: entry in the J dictionary](http://www.jsoftware.com/docs/help701/dictionary/dsco.htm) begins
+J incorporates a symbol data type which, in versions 6.02 and 7.01, J implements directly as a red-black tree. The [s: entry in the J dictionary](https://www.jsoftware.com/docs/help701/dictionary/dsco.htm) begins
 ''Symbols are a data type and are created by the verb s:. Symbols provide a mechanism for searching, sorting, and comparisons more efficient than alternative mechanisms such as boxed strings. Structural, selection, and relational verbs work on symbols. Arithmetic verbs do not work on symbols.''
 
 The following code provides dictionary functionality using a red-black tree written in J without symbols.
@@ -1781,7 +1781,7 @@ Rascal offers many options for pattern matching. In essence, there are four sort
 ### Abstract
 
 
-An abstract pattern is recursively defined and may contain, among others, the following elements: Literal, VariableDeclaration, MultiVariable, Variable, List, Set, Tuple, Node, Descendant, Labelled, TypedLabelled, TypeConstrained. More explanation can be found in the [Documentation](http://http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Patterns/Abstract/Abstract.html). Some examples:
+An abstract pattern is recursively defined and may contain, among others, the following elements: Literal, VariableDeclaration, MultiVariable, Variable, List, Set, Tuple, Node, Descendant, Labelled, TypedLabelled, TypeConstrained. More explanation can be found in the [Documentation](http://https://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Patterns/Abstract/Abstract.html). Some examples:
 
 ```rascal
 
@@ -1873,7 +1873,7 @@ A concrete pattern is a quoted concrete syntax fragment that may contain variabl
 ```
 
 
-A full example of concrete patterns can be found in the [Rascal Recipes](http://tutor.rascal-mpl.org/Courses/Recipes/Languages/Exp/Concrete/WithLayout/WithLayout.html).
+A full example of concrete patterns can be found in the [Rascal Recipes](https://tutor.rascal-mpl.org/Courses/Recipes/Languages/Exp/Concrete/WithLayout/WithLayout.html).
 
 
 ### PatternWithAction
@@ -2226,7 +2226,7 @@ func insert<A : Comparable>(x: A, s: Tree<A>) -> Tree<A> {
 Tcl doesn't have algebraic types built-in, but they can be simulated using tagged lists, and a custom pattern matching control structure can be built:
 
 ```tcl
-# From http://wiki.tcl.tk/9547
+# From https://wiki.tcl-lang.org/9547
 package require Tcl         8.5
 package provide datatype    0.1
 

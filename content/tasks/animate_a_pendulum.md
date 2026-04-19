@@ -2102,7 +2102,7 @@ main = do   --plotOnGNU
 
 ## HicEst
 
-[DIFFEQ](http://www.HicEst.com/DIFFEQ.htm) and the callback procedure pendulum numerically integrate the pendulum equation.
+[DIFFEQ](https://www.HicEst.com/DIFFEQ.htm) and the callback procedure pendulum numerically integrate the pendulum equation.
 The display window can be resized during the run, but for window width not equal to 2*height the pendulum rod becomes a rubber band instead:
 
 ```HicEst
@@ -4546,7 +4546,7 @@ pendulumLocation(angle) :=
 
 
 {{out}}
-[GIF of Output](http://i.imgur.com/ZR2sK54.gifv)
+[GIF of Output](https://i.imgur.com/ZR2sK54.gifv)
 
 
 ## Sidef

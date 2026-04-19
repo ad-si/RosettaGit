@@ -1249,7 +1249,7 @@ returns 12.
 
 ### Character Length
 
-Common Lisp represents strings as sequences of characters, not bytes, so there is no ambiguity about the encoding. The [length](http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm) function always returns the number of characters in a string.
+Common Lisp represents strings as sequences of characters, not bytes, so there is no ambiguity about the encoding. The [length](https://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm) function always returns the number of characters in a string.
 
 ```lisp
 (length "Hello World")
@@ -2044,7 +2044,7 @@ Output:
 
 ### Grapheme Length
 
-Go does not have language or library features to recognize graphemes directly.  For example, it does not provide functions implementing [Unicode Standard Annex #29, Unicode Text Segmentation](http://www.unicode.org/reports/tr29/).  It does however have convenient functions for recognizing Unicode character categories, and so an expected subset of grapheme possibilites is easy to recognize.  Here is a solution recognizing the category "Mn", which includes the combining characters used in the task example.
+Go does not have language or library features to recognize graphemes directly.  For example, it does not provide functions implementing [Unicode Standard Annex #29, Unicode Text Segmentation](https://www.unicode.org/reports/tr29/).  It does however have convenient functions for recognizing Unicode character categories, and so an expected subset of grapheme possibilites is easy to recognize.  Here is a solution recognizing the category "Mn", which includes the combining characters used in the task example.
 
 ```go
 package main
@@ -2132,7 +2132,7 @@ It is not possible to determine the "byte length" of an ordinary string, because
 
 For efficient storage of sequences of bytes, there's ''Data.ByteString'', which uses ''Word8'' as a base type. Byte strings have an additional ''Data.ByteString.Char8'' interface, which will truncate each Unicode ''Char'' to 8 bits as soon as it is converted to a byte string. However, this is not adequate for the task, because truncation simple will garble characters other than Latin-1, instead of encoding them into UTF-8, say.
 
-There are several (non-standard, so far) Unicode encoding libraries available on [Hackage](http://hackage.haskell.org/). As an example, we'll use [encoding-0.2](http://hackage.haskell.org/packages/archive/encoding/0.2/doc/html/Data-Encoding.html), as ''Data.Encoding'':
+There are several (non-standard, so far) Unicode encoding libraries available on [Hackage](https://hackage.haskell.org/). As an example, we'll use [encoding-0.2](https://hackage.haskell.org/packages/archive/encoding/0.2/doc/html/Data-Encoding.html), as ''Data.Encoding'':
 
 
 ```haskell
@@ -2258,7 +2258,7 @@ Here we use the default encoding for character literals (8 bit wide literals).
 5
 ```
 
-Here we have used 16 bit wide character literals.  See also the dictionary page for [u:](http://www.jsoftware.com/help/dictionary/duco.htm).
+Here we have used 16 bit wide character literals.  See also the dictionary page for [u:](https://www.jsoftware.com/help/dictionary/duco.htm).
 
 
 ## Java
@@ -3432,7 +3432,7 @@ my $length = length "Hello, world!";
 
 ### Grapheme Length
 
-Since Perl 5.12, <code>/\X/</code> matches an ''extended grapheme cluster''. See ["Unicode overhaul" in perl5120delta](http://perldoc.perl.org/perl5120delta.html#Unicode-overhaul) and also [UAX #29](http://www.unicode.org/reports/tr29/).
+Since Perl 5.12, <code>/\X/</code> matches an ''extended grapheme cluster''. See ["Unicode overhaul" in perl5120delta](https://perldoc.perl.org/perl5120delta.html#Unicode-overhaul) and also [UAX #29](https://www.unicode.org/reports/tr29/).
 
 Perl understands that "\x{1112}\x{1161}\x{11ab}\x{1100}\x{1173}\x{11af}" (한글) contains 2 graphemes, just like "\x{d55c}\x{ae00}" (한글). The longer string uses Korean combining jamo characters.
 
@@ -4090,7 +4090,7 @@ Unfortunately, only character length can be retrieved in this language.
 
 ### Byte Length
 
-Since Ruby 1.8.7, [String#bytesize](http://www.ruby-doc.org/core-1.9.1/String.html#method-i-bytesize) is the byte length.
+Since Ruby 1.8.7, [String#bytesize](https://www.ruby-doc.org/core-1.9.1/String.html#method-i-bytesize) is the byte length.
 
 ```ruby
 # -*- coding: utf-8 -*-
@@ -4103,7 +4103,7 @@ puts "あいうえお".bytesize
 
 ### Character Length
 
-Since Ruby 1.9, [String#length](http://www.ruby-doc.org/core-1.9.1/String.html#method-i-length) (alias String#size) is the character length. The magic comment, "coding: utf-8", sets the encoding of all string literals in this file.
+Since Ruby 1.9, [String#length](https://www.ruby-doc.org/core-1.9.1/String.html#method-i-length) (alias String#size) is the character length. The magic comment, "coding: utf-8", sets the encoding of all string literals in this file.
 
 ```ruby
 # -*- coding: utf-8 -*-

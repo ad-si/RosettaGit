@@ -1767,7 +1767,7 @@ I think that it is Enums (not the use of ''dynamic'' in a dictionary, which is o
 
 ## Clojure
 
-This solution uses the contributed package ''clojure.core.logic'' (with ''clojure.tools.macro''), a mini-Kanren based logic solver. The solution is basically the one in [Swannodette's logic tutorial](http://github.com/swannodette/logic-tutorial), adapted to the problem statement here.
+This solution uses the contributed package ''clojure.core.logic'' (with ''clojure.tools.macro''), a mini-Kanren based logic solver. The solution is basically the one in [Swannodette's logic tutorial](https://github.com/swannodette/logic-tutorial), adapted to the problem statement here.
 
 ```clojure
 (ns zebra.core
@@ -2804,7 +2804,7 @@ Solved in  .109375  seconds
 
 
 =={{header|F_Sharp|F#}}==
-This task uses <http://www.rosettacode.org/wiki/Permutations_by_swapping#F.23>
+This task uses <https://www.rosettacode.org/wiki/Permutations_by_swapping#F.23>
 
 ```fsharp
 
@@ -3567,7 +3567,7 @@ House {color = White, man = Swe, pet = Dog, drink = Beer, smoke = BlueMaster}
 No More Solutions
 ```
 
-[Runs in: time: 0.01s.](http://ideone.com/ZaKfWC)
+[Runs in: time: 0.01s.](https://ideone.com/ZaKfWC)
 
 === LP-like version ===
 
@@ -5816,7 +5816,7 @@ true.
 ```
 
 
-Works [with SWI-Prolog](http://ideone.com/Es8DV). More verbose [translation](http://ideone.com/6PzbZ) of the specification works as well.
+Works [with SWI-Prolog](https://ideone.com/Es8DV). More verbose [translation](https://ideone.com/6PzbZ) of the specification works as well.
 
 
 ### Direct rule by rule translation
@@ -5859,7 +5859,7 @@ zebra( Owner, Houses):-
 ```
 
 
-[Output](http://ideone.com/wcwXfZ):
+[Output](https://ideone.com/wcwXfZ):
 
 ```Prolog
 ?- time(( zebra(Z,HS), (maplist(length,HS,_) -> maplist(sort,HS,S),

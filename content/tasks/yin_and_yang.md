@@ -257,7 +257,7 @@ add(yinyang((3 + 3/4, 2 + 1/4), 2));
 ## AutoHotkey
 
 [[file:yin-yang-ahk.png|right]]
-Requires the GDI+ Standard Library by tic: <http://www.autohotkey.com/forum/viewtopic.php?t=32238>
+Requires the GDI+ Standard Library by tic: <https://www.autohotkey.com/forum/viewtopic.php?t=32238>
 
 ```AHK
 Yin_and_Yang(50,  50, A_ScriptDir "\YinYang1.png")
@@ -518,7 +518,7 @@ Using the built-in graphics statements in BASIC 7.0 on the C-128:
 ```
 
 
-Example of output visible  [here](http://i.imgur.com/0cFNmrl.png).
+Example of output visible  [here](https://i.imgur.com/0cFNmrl.png).
 
 =
 ## FreeBASIC
@@ -578,7 +578,7 @@ End
 ```
 
 
-'''[Click here to view image](http://www.cogier.com/gambas/Yin%20and%20yang_270.png)'''
+'''[Click here to view image](https://www.cogier.com/gambas/Yin%20and%20yang_270.png)'''
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "YinYang.bas"
@@ -847,8 +847,8 @@ Imports System.IO
 ' Yep, VB.NET can import XML namespaces. All literals have xmlns changed, while xmlns:xlink is only
 ' declared in literals that use it directly (e.g. the output of this program has it defined in both
 ' of the <use /> tags and not the root, <svg />).
-Imports <xmlns="http://www.w3.org/2000/svg">
-Imports <xmlns:xlink="http://www.w3.org/1999/xlink">
+Imports <xmlns="https://www.w3.org/2000/svg">
+Imports <xmlns:xlink="https://www.w3.org/1999/xlink">
 
 Module Program
     Sub Main()
@@ -867,7 +867,7 @@ Module Program
 </svg>
 
         ' XML literals don't support DTDs.
-        Dim type As New XDocumentType(name:="svg", publicId:="-//W3C//DTD SVG 1.1//EN", systemId:="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd", internalSubset:=Nothing)
+        Dim type As New XDocumentType(name:="svg", publicId:="-//W3C//DTD SVG 1.1//EN", systemId:="https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd", internalSubset:=Nothing)
         doc.AddFirst(type)
 
         Dim draw_yinyang =
@@ -888,8 +888,8 @@ End Module
 
 ```xml
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="30" height="30" xmlns="https://www.w3.org/2000/svg">
   <defs>
     <g id="y">
       <circle cx="0" cy="0" r="200" stroke="black" fill="white" stroke-width="1" />
@@ -898,8 +898,8 @@ End Module
       <circle cx="0" cy="-100" r="33" fill="black" />
     </g>
   </defs>
-  <use xlink:href="#y" transform="translate(20,20) scale(0.05)" xmlns:xlink="http://www.w3.org/1999/xlink" />
-  <use xlink:href="#y" transform="translate(8,8) scale(0.02)" xmlns:xlink="http://www.w3.org/1999/xlink" />
+  <use xlink:href="#y" transform="translate(20,20) scale(0.05)" xmlns:xlink="https://www.w3.org/1999/xlink" />
+  <use xlink:href="#y" transform="translate(8,8) scale(0.02)" xmlns:xlink="https://www.w3.org/1999/xlink" />
 </svg>
 ```
 
@@ -1158,9 +1158,9 @@ int main()
 {	printf(
 	"<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
 	"<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'\n"
-	"	'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
-	"<svg xmlns='http://www.w3.org/2000/svg' version='1.1'\n"
-	"	xmlns:xlink='http://www.w3.org/1999/xlink'\n"
+	"	'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
+	"<svg xmlns='https://www.w3.org/2000/svg' version='1.1'\n"
+	"	xmlns:xlink='https://www.w3.org/1999/xlink'\n"
 	"		width='30' height='30'>\n"
 	"	<defs><g id='y'>\n"
 	"		<circle cx='0' cy='0' r='200' stroke='black'\n"
@@ -1226,7 +1226,7 @@ Translation of: Visual Basic .NET
 <!-- Could not Upload image to Rosetta Code so I uploaded it to Wikipedia Commons -->
 [[File:Yin_and_yang_problem_c_sharp.png|left|Image generated from Source Code.]]
 
-Source Code: <http://rosettacode.org/wiki/Yin_and_yang#C.23>
+Source Code: <https://rosettacode.org/wiki/Yin_and_yang#C.23>
 
 Image: [Yin_and_yang_problem_c_sharp.png](https://upload.wikimedia.org/wikipedia/commons/a/af/Yin_and_yang_problem_c_sharp.png)
 
@@ -1589,8 +1589,8 @@ import (
 )
 
 var tmpl = `<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns="https://www.w3.org/2000/svg"
+    xmlns:xlink="https://www.w3.org/1999/xlink"
     width="210" height="150">
 <symbol id="yy" viewBox="0 0 200 200">
 <circle stroke="black" stroke-width="2" fill="white"
@@ -1639,8 +1639,8 @@ func main() {
 ## Haskell
 
 [[File:YinYang-Haskell.svg|thumb|Yin and Yang Haskell SVG output.]]
-This program uses the [diagrams](http://hackage.haskell.org/package/diagrams) package to produce the Yin and Yang image.
-The package implements an embedded [DSL](http://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.
+This program uses the [diagrams](https://hackage.haskell.org/package/diagrams) package to produce the Yin and Yang image.
+The package implements an embedded [DSL](https://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.
 Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
 The sample output was created with the command <tt>yinyang -o YinYang-Haskell.svg</tt>.
 
@@ -1696,7 +1696,7 @@ end
 ```
 
 
-[graphics.icn provides graphical procedures](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
+[graphics.icn provides graphical procedures](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 
 ## J
@@ -2168,15 +2168,15 @@ it can be isolated from the HTML document too, making it a standalone SVG
   <body>
     <svg
     id="svg"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="https://www.w3.org/2000/svg"
+    xmlns:xlink="https://www.w3.org/1999/xlink"
     version="1.1"
     width="100%"
     height="100%">
       </svg>
       <script>
 function makeElem(elemName, attribs) { //atribs must be an Object
-  var e = document.createElementNS("http://www.w3.org/2000/svg", elemName),
+  var e = document.createElementNS("https://www.w3.org/2000/svg", elemName),
     a, b, d = attribs.style;
   for (a in attribs) {
     if (attribs.hasOwnProperty(a)) {
@@ -2277,8 +2277,8 @@ The jq program presented here is adapted from the C version and produces the sam
 
 def svg:
   "<svg width='100%' height='100%' version='1.1'
-        xmlns='http://www.w3.org/2000/svg'
-	xmlns:xlink='http://www.w3.org/1999/xlink'>" ;
+        xmlns='https://www.w3.org/2000/svg'
+	xmlns:xlink='https://www.w3.org/1999/xlink'>" ;
 
 def draw_yinyang(x; scale):
   "<use xlink:href='#y' transform='translate(\(x),\(x)) scale(\(scale))'/>";
@@ -2573,9 +2573,9 @@ options replace format comments java crossref savelog symbols binary
 
 say "<?xml version='1.0' encoding='UTF-8' standalone='no'?>"
 say "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'"
-say "  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>"
-say "<svg xmlns='http://www.w3.org/2000/svg' version='1.1'"
-say "  xmlns:xlink='http://www.w3.org/1999/xlink'"
+say "  'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>"
+say "<svg xmlns='https://www.w3.org/2000/svg' version='1.1'"
+say "  xmlns:xlink='https://www.w3.org/1999/xlink'"
 say "  width='30' height='30'>"
 say "  <defs><g id='y'>"
 say "    <circle cx='0' cy='0' r='200' stroke='black'"
@@ -2838,9 +2838,9 @@ sub yin_yang {
 print <<'HEAD';
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-        xmlns:xlink="http://www.w3.org/1999/xlink">
+        "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="https://www.w3.org/2000/svg" version="1.1"
+        xmlns:xlink="https://www.w3.org/1999/xlink">
 HEAD
 
 yin_yang(200, 250, 250, recur=>1,
@@ -2879,9 +2879,9 @@ sub yin_yang ($rad, $cx, $cy, :$fill = 'white', :$stroke = 'black', :$angle = 90
 }
 
 say '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg height="400" width="400" xmlns="http://www.w3.org/2000/svg" version="1.1"
- xmlns:xlink="http://www.w3.org/1999/xlink">';
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="400" width="400" xmlns="https://www.w3.org/2000/svg" version="1.1"
+ xmlns:xlink="https://www.w3.org/1999/xlink">';
 
 yin_yang(100, 130, 130);
 yin_yang(50, 300, 300);
@@ -4056,8 +4056,8 @@ func yin_yang (rad, cx, cy, fill='white', stroke='black', angle=90) {
 }
 
 say '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">';
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="https://www.w3.org/2000/svg" version="1.1" xmlns:xlink="https://www.w3.org/1999/xlink">';
 
 yin_yang(40, 50, 50);
 yin_yang(20, 120, 120);
@@ -4077,9 +4077,9 @@ but we can translate and rescale a shape after defining it.
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
+  "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="https://www.w3.org/2000/svg" version="1.1"
+    xmlns:xlink="https://www.w3.org/1999/xlink"
     width="600" height="600">
 
 <!-- We create the symbol in the rectangle from (0, 0) to (1, 1)
@@ -4199,9 +4199,9 @@ fcn draw_yinyang(trans,scale){
 print(
 "<?xml version='1.0' encoding='UTF-8' standalone='no'?>\n"
 "<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'\n"
-"	'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
-"<svg xmlns='http://www.w3.org/2000/svg' version='1.1'\n"
-"	xmlns:xlink='http://www.w3.org/1999/xlink'\n"
+"	'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>\n"
+"<svg xmlns='https://www.w3.org/2000/svg' version='1.1'\n"
+"	xmlns:xlink='https://www.w3.org/1999/xlink'\n"
 "		width='30' height='30'>\n"
 "	<defs><g id='y'>\n"
 "		<circle cx='0' cy='0' r='200' stroke='black'\n"

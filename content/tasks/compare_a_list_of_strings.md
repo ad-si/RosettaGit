@@ -2002,7 +2002,7 @@ join("\0", @strings) =~ /^ ( [^\0]*+ ) (?: \0 \1 )* $/x  # All equal
 ## Perl 6
 
 
-In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [associativity](http://perlcabal.org/syn/S03.html#line_62) and identity value)'':
+In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [associativity](https://perlcabal.org/syn/S03.html#line_62) and identity value)'':
 
 
 ```perl6
@@ -2390,7 +2390,7 @@ Testing:
 ## Racket
 
 
-Racket mostly has this... see [documentation of <code>string=?</code> and <code>string&lt;?</code>](http://docs.racket-lang.org/reference/strings.html?q=string%3C%3F#%28def._%28%28quote._~23~25kernel%29._string~3c~3f%29%29).
+Racket mostly has this... see [documentation of <code>string=?</code> and <code>string&lt;?</code>](https://docs.racket-lang.org/reference/strings.html?q=string%3C%3F#%28def._%28%28quote._~23~25kernel%29._string~3c~3f%29%29).
 
 There are two small issues:
 * Racket will not cope with comparing less than 2 strings

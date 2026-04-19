@@ -37,7 +37,7 @@ $lang = $_GET['lang'];
 function categorytitles($category) {
 	$titlesarr = array();
 	
-	$titles = unserialize(file_get_contents("http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:$category&cmlimit=500&format=php"));
+	$titles = unserialize(file_get_contents("https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:$category&cmlimit=500&format=php"));
 	$titles = $titles['query']['categorymembers'];
 	
 	foreach ($titles as $i) {
@@ -52,7 +52,7 @@ $langtasks = categorytitles($lang);
 $notimplemented =  array_diff($alltasks, $langtasks);
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 
 <html>
 

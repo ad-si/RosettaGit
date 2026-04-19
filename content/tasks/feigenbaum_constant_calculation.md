@@ -709,7 +709,7 @@ public class Feigenbaum {
 
 
 ```julia
-# http://en.wikipedia.org/wiki/Feigenbaum_constant
+# https://en.wikipedia.org/wiki/Feigenbaum_constant
 
 function feigenbaum_delta(imax=23, jmax=20)
     a1, a2, d1 = BigFloat(1.0), BigFloat(0.0), BigFloat(3.2)

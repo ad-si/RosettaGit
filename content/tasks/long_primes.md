@@ -79,8 +79,8 @@ include wording/verbiage for bases other than ten.
 
 ;;;Also see:
 :*   the Wikipedia webpage:   [full reptend prime](http://wikipedia.org/wiki/Full_reptend_prime).
-:*   the MathWorld webpage:   [full reptend prime](http://mathworld.wolfram.com/FullReptendPrime.html).
-:*   the     OEIS     webpage:   [A1913](http://oeis.org/A001913).
+:*   the MathWorld webpage:   [full reptend prime](https://mathworld.wolfram.com/FullReptendPrime.html).
+:*   the     OEIS     webpage:   [A1913](https://oeis.org/A001913).
 
 
 
@@ -243,7 +243,7 @@ There are 2430 long primes below 64000
 
 ### The Functions
 
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 This task uses [[Factors_of_an_integer#F.23]]
 

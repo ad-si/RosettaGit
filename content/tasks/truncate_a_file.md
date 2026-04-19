@@ -752,7 +752,7 @@ Completed.
 
 ## Haskell
 
-This can be achieved by using the <code>setFileSize</code> function in [System.PosixCompat.Files](http://hackage.haskell.org/packages/archive/unix-compat/0.1.2.1/doc/html/System-PosixCompat-Files.html#13):
+This can be achieved by using the <code>setFileSize</code> function in [System.PosixCompat.Files](https://hackage.haskell.org/packages/archive/unix-compat/0.1.2.1/doc/html/System-PosixCompat-Files.html#13):
 
 
 ```Haskell
@@ -1069,7 +1069,7 @@ discard truncate("filename", 1024)
 ## OCaml
 
 
-The <code>Unix</code> module provided with the standard distribution provides a function <code>[truncate](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALtruncate)</code>:
+The <code>Unix</code> module provided with the standard distribution provides a function <code>[truncate](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALtruncate)</code>:
 
 
 ```ocaml
@@ -1078,7 +1078,7 @@ val truncate : string -> int -> unit
 ```
 
 
-There is also a function <code>[ftruncate](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALftruncate)</code> that does the equivalent operation but with a file descriptor instead of a file name:
+There is also a function <code>[ftruncate](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#VALftruncate)</code> that does the equivalent operation but with a file descriptor instead of a file name:
 
 
 ```ocaml
@@ -1301,7 +1301,7 @@ END SUB
 
 ## PureBasic
 
-PureBasic has the internal function [TruncateFile](http://www.purebasic.com/documentation/file/truncatefile.html) that cuts the file at the current file position and discards all data that follows.
+PureBasic has the internal function [TruncateFile](https://www.purebasic.com/documentation/file/truncatefile.html) that cuts the file at the current file position and discards all data that follows.
 
 ```PureBasic
 Procedure SetFileSize(File$, length.q)
@@ -1481,7 +1481,7 @@ Output:
 ```txt
 
 The Ring Programming Language
-http://ring-lang.net/
+https://ring-lang.net/
 Version 1.0
 Release Date : January 25, 2016
 
@@ -1567,7 +1567,7 @@ ls myfile >/dev/null &&
 
 
 ----
-Some systems have a truncate(1) command ([FreeBSD truncate(1)](http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html), [GNU truncate(1)](http://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation)).
+Some systems have a truncate(1) command ([FreeBSD truncate(1)](http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html), [GNU truncate(1)](https://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation)).
 
 
 ```bash

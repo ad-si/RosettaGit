@@ -694,8 +694,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -2579,7 +2579,7 @@ let () =
 ```
 
 
-using the [ocaml expat wrapper](http://www.xs4all.nl/~mmzeeman/ocaml/):
+using the [ocaml expat wrapper](https://www.xs4all.nl/~mmzeeman/ocaml/):
 
 
 ```ocaml
@@ -3174,7 +3174,7 @@ ok
 ```REBOL
 REBOL [
 	Title: "XML Reading"
-	URL: http://rosettacode.org/wiki/XML_Reading
+	URL: https://rosettacode.org/wiki/XML_Reading
 ]
 
 xml: {
@@ -3554,7 +3554,7 @@ $parser parse $xml
 ```
 
 
-Using just pure-Tcl (originally on <http://wiki.tcl.tk/3919>):
+Using just pure-Tcl (originally on <https://wiki.tcl-lang.org/3919>):
 
 ```Tcl
 proc xml2list xml {

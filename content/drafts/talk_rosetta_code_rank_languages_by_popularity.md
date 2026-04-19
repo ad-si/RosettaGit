@@ -89,7 +89,7 @@ PS: I'm currently on Windows, i'll try to restart in Ubuntu later.
 
 Error:
 
-<code algol68>39 http content (reply, "www.rosettacode.org", "http://www.rosettacode.org/w
+<code algol68>39 http content (reply, "www.rosettacode.org", "https://www.rosettacode.org/w
 /index.php?title=Special:Categories&limit=500", 0);
 1 a68g16.exe: error: 1: tag "httpcontent" has not been declared properly (detected in c
 onditional-clause starting at "IF" in line 37).</code>
@@ -145,7 +145,7 @@ Is this snippet the first ALGOL 68 that you have tried?
 
 [[User:NevilleDNZ|NevilleDNZ]] 08:40, 19 April 2009 (UTC)
 :Yes, it's my first try.
-:I just found that example intersting because it does not use <http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>.
+:I just found that example intersting because it does not use <https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>.
 
 :I compiled algol68g right now. (./configure && make && sudo make install)
 :It compiled perfectly.
@@ -197,7 +197,7 @@ sys	0m0.068s
 
 Sort_most_popular_programming_languages_slow - the original - would have been issuing '''thousands''' of calls to malloc.
 
-re: <http://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>
+re: <https://www.rosettacode.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Languages&cmlimit=500>
 I should/could use this link.  I hacked out a solution, c.f. the actual code for the ''re ignore'' values.
 
 ```txt
@@ -222,7 +222,7 @@ Even if the work-around is applied to the web-scrapping example, there is an add
 
 ```txt
 
-http content (reply, "www.rosettacode.org", "http://www.rosettacode.org/w/index.php?title=Special:Categories&limit=500", 0);
+http content (reply, "www.rosettacode.org", "https://www.rosettacode.org/w/index.php?title=Special:Categories&limit=500", 0);
 
 ```
 
@@ -234,8 +234,8 @@ The limit needs to be much larger (probably 5000 would work at the moment). I'm 
 
 ### =Note: ALGOL 68 for Ubuntu now available=
 
-* Announcement: [sourceforge algol68 forum](http://sourceforge.net/mailarchive/forum.php?thread_name=1255746666.15125.166.camel%40zod.sgr-a.net&forum_name=algol68-user)
-* Download: <http://sourceforge.net/projects/algol68/files/>
+* Announcement: [sourceforge algol68 forum](https://sourceforge.net/mailarchive/forum.php?thread_name=1255746666.15125.166.camel%40zod.sgr-a.net&forum_name=algol68-user)
+* Download: <https://sourceforge.net/projects/algol68/files/>
 
 [[User:NevilleDNZ|NevilleDNZ]] 09:19, 17 October 2009 (UTC)
 
@@ -245,7 +245,7 @@ The limit needs to be much larger (probably 5000 would work at the moment). I'm 
 
 I updated the Ruby solution today when I noticed there were more than 500 categories.  Popular (top 10%) languages like Visual Basic .NET and Vedit macro language are left off most lists. --[[User:Glennj|glennj]] 20:02, 15 June 2009 (UTC)
 :I found a better way to do this task.
-:"http://www.rosettacode.org/w/api.php?action=query&prop=categoryinfo&titles=Category:Python|Category:Tcl|...", property "pages" should return category members. --[[User:Guga360|Guga360]] 21:31, 15 June 2009 (UTC)
+:"https://www.rosettacode.org/w/api.php?action=query&prop=categoryinfo&titles=Category:Python|Category:Tcl|...", property "pages" should return category members. --[[User:Guga360|Guga360]] 21:31, 15 June 2009 (UTC)
 :: I completely missed the Perl/Python solutions:  first filter on the Programming_Languages category, not all categories. --[[User:Glennj|glennj]]
 ::: Actually, this does not solve the problem. We're still reading Special:Categories, if there is a language starting with Z, probably it will not get in the list. --[[User:Guga360|Guga360]] 01:30, 16 June 2009 (UTC)
 
@@ -285,7 +285,7 @@ end
 
 == Redundant task? ==
 
-I actually asked that on this page on [Jan 26](http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&oldid=21099), however it was [replaced without comment](http://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&diff=29733&oldid=21099) by Guga360. Therefore I'll ask again:
+I actually asked that on this page on [Jan 26](https://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&oldid=21099), however it was [replaced without comment](https://rosettacode.org/mw/index.php?title=Talk:Sort_most_popular_programming_languages&diff=29733&oldid=21099) by Guga360. Therefore I'll ask again:
 
 Isn't this task basically a combination of [[HTTP Request]], [[Regular expression matching]] and [[Sorting Using a Custom Comparator]]? --[[User:Ce|Ce]] 11:55, 1 November 2009 (UTC)
 
@@ -662,7 +662,7 @@ Thanks!  I've updated the Tcl script to produce a similar report to [[RC_POP.OUT
 
 
 
-In the complete list [A+](http://rosettacode.org/wiki/Category:A%2B) is ranked 431 although (unfairly) it has no worked tasks. [Xanadu](http://rosettacode.org/wiki/Category:Xanadu), a language with which I am unfamiliar, has one worked [task](http://rosettacode.org/wiki/N-queens_problem) but is ranked 463. --[[User:Nigel Galloway|Nigel Galloway]] 12:29, 21 December 2012 (UTC)
+In the complete list [A+](https://rosettacode.org/wiki/Category:A%2B) is ranked 431 although (unfairly) it has no worked tasks. [Xanadu](https://rosettacode.org/wiki/Category:Xanadu), a language with which I am unfamiliar, has one worked [task](https://rosettacode.org/wiki/N-queens_problem) but is ranked 463. --[[User:Nigel Galloway|Nigel Galloway]] 12:29, 21 December 2012 (UTC)
 
 : The way identically ranked languages (identical in the sense that they have the same number of entries) is sorted in the order in which they appear first in the Rosetta Code list.   Thus, some languages aren't ranked fairly because of a (weak) sorting artifact of having the same number (of entries).   Strictly speaking, if the following were true:
 :::* hog   97
@@ -687,7 +687,7 @@ Note that the chicken was disqualified as it wouldn't cross the road. -- [[User:
 
 Update notice:   the above (the ranking of tied languages) has been implemented by the REXX program example, and also the Icon and Unicon languages. -- [[User:Gerard Schildberger|Gerard Schildberger]] 19:41, 30 March 2013 (UTC)
 
-:According to [its task page](http://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
+:According to [its task page](https://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
 :: rank: 441         (3 entries)  A+
 :--[[User:Nigel Galloway|Nigel Galloway]] 14:51, 26 January 2013 (UTC)
 
@@ -704,7 +704,7 @@ I took the task's requirements quite literally:
 
 ''Sort most popular programming languages based in number of '''members''' in Rosetta Code categories''
 
- (from <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
+ (from <https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 
 
 (The bold font was added by me.)   Note that it didn't say   '''implementations''',   but   '''members'''.
@@ -835,7 +835,7 @@ Most of the code here is web scrapping exercises that will break at 500 (or 5000
 The jq example uses limit=5000:
 
 ```sh
-'http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'
+'https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'
 ```
 
 This (together with the single-page query Category:Programming_Languages) seems like the simplest approach.  Is there a problem with that? --[[User:Peak|Peak]] ([[User talk:Peak|talk]]) 21:09, 27 May 2015 (UTC)
@@ -854,7 +854,7 @@ The following text was deleted:
 ```txt
 
 Sort most popular programming languages based in number of members in Rosetta Code categories.
-(from http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+(from https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
 
 ```
 
@@ -874,7 +874,7 @@ I'm trying to solve this in Java - the "obvious" Java code:
 
 ```txt
 
-       String path = "http://www.rosettacode.org"
+       String path = "https://www.rosettacode.org"
                    + "/mw/api.php"
                    + "?action=query"
                    + "&generator=categorymembers"

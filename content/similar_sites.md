@@ -21,13 +21,13 @@ Feel free to update and add to it.
 
 ## Multi-Task efforts
 
-- [Algorithm implementation Wikibooks](http://en.wikibooks.org/wiki/Algorithm_implementation)
+- [Algorithm implementation Wikibooks](https://en.wikibooks.org/wiki/Algorithm_implementation)
 - [The Archive of Interesting Code](http://www.keithschwarz.com/interesting/)
 - [Beyond Hello World](http://www.rawbw.com/~rem/HelloPlus/hellos.html)
     including the
     [CookBook](http://www.rawbw.com/~rem/HelloPlus/CookBook/CookTop.html)
-- [CategoryInManyProgrammingLanguages](http://c2.com/cgi/wiki?CategoryInManyProgrammingLanguages)
-    on the [original wiki](http://c2.com/cgi/wiki)
+- [CategoryInManyProgrammingLanguages](https://c2.com/cgi/wiki?CategoryInManyProgrammingLanguages)
+    on the [original wiki](https://c2.com/cgi/wiki)
 - [Code golf](http://golf.shinh.org/) in 104 languages
 - [Literate Programs](https://literateprograms.org) - Collection of literate programming code samples
 - [Hyperpolyglot](https://hyperpolyglot.org) - Commonly used features in a side-by-side format
@@ -49,7 +49,7 @@ Feel free to update and add to it.
 - [Progopedia - Encyclopedia of Programming
   Languages](http://progopedia.com/) ([Russian
   version](http://progopedia.ru))
-- [Project Euler](http://projecteuler.net/) - Learn programming by
+- [Project Euler](https://projecteuler.net/) - Learn programming by
   solving problems with increased difficulty. After solving a problem
   the solution can be shared and discussed with others.
 - [Programming Language
@@ -67,7 +67,7 @@ Feel free to update and add to it.
   Languages](http://merd.sourceforge.net/pixel/language-study/syntax-across-languages/)
     - compares basic instructions, not tasks
 - [Wikipedia:Comparison of programming
-  languages](http://en.wikipedia.org/wiki/Comparison_of_programming_languages)
+  languages](https://en.wikipedia.org/wiki/Comparison_of_programming_languages)
 
 
 ## Specific Tasks
@@ -82,7 +82,7 @@ Feel free to update and add to it.
 - [The Hello World
   Collection](http://www.roesler-ac.de/wolfram/hello.htm)
 - [Wikibooks: List of Hello World
-  programs](http://en.wikibooks.org/wiki/List_of_hello_world_programs)
+  programs](https://en.wikibooks.org/wiki/List_of_hello_world_programs)
 - [doukaku](https://github.com/nishio/doukaku) — Communication with
   subprocesses in Haskell, Python and Ruby
 - [rosetta-cow](https://github.com/gaborbata/rosetta-cow) — cowsay in
@@ -91,12 +91,12 @@ Feel free to update and add to it.
 
 ## Humorous
 
-- [99 Bottles of Beer](http://99-bottles-of-beer.net/)
+- [99 Bottles of Beer](https://99-bottles-of-beer.net/)
 - [Consumers Guide to Programming Languages](http://cse.csusb.edu/dick/cs320/consumers.html)
-- [Esolangs Wiki](http://esolangs.org/)
+- [Esolangs Wiki](https://esolangs.org/)
 - [Evolution of a
   Programmer](http://www.ariel.com.au/jokes/The_Evolution_of_a_Programmer.html)
-- [Quine](http://www.nyx.net/~gthompso/quine.htm)
+- [Quine](https://www.nyx.net/~gthompso/quine.htm)
 - [Shooting Yourself in the Foot
   (PDF)](http://www.thecorememory.com/How_to_Determine_Which_Programming_Language_You.pdf)
     or How to Determine Which Programming Language You're Using

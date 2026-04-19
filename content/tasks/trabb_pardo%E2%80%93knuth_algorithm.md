@@ -215,7 +215,7 @@ TOO LARGE
 
 ## ALGOL 60
 
-This is as close as possible to Pardo and Knuth's original but works with the [GNU MARST](http://www.gnu.org/software/marst/marst.html) ALGOL-to-C compiler. Note Pardo and Knuth did not insist on prompts or textual I/O as their report mostly concerned systems that predated even the idea of keyboard interaction.
+This is as close as possible to Pardo and Knuth's original but works with the [GNU MARST](https://www.gnu.org/software/marst/marst.html) ALGOL-to-C compiler. Note Pardo and Knuth did not insist on prompts or textual I/O as their report mostly concerned systems that predated even the idea of keyboard interaction.
 
 <lang>begin 
   integer i; real y; real array a[0:10];

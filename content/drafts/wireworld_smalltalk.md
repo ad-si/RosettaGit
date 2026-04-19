@@ -12,7 +12,7 @@ tags = []
 
 This is a flexible implementation of [[implementation of task::Wireworld]].  It was also my first Smalltalk program, which may explain why it is so large.
 
-This code is part of [jwgif](http://github.com/elginer/jwgif).  jwgif actually produces animated gifs of wireworld simulations.  Hence, here is an animated GIF of the example, presented in the task description for [[Wireworld]]:
+This code is part of [jwgif](https://github.com/elginer/jwgif).  jwgif actually produces animated gifs of wireworld simulations.  Hence, here is an animated GIF of the example, presented in the task description for [[Wireworld]]:
 
 [[Image:3cycle.gif]]
 

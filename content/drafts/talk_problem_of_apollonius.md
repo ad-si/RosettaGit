@@ -46,7 +46,7 @@ Besides the above, there are other special cases: <code>[(0, 0), 1], [(0, 0), 2]
   I'll have to talk with Henry Rich to see if he agrees that this is a good change. Thanks! --[[User:Rdm|Rdm]] 20:31, 16 September 2011 (UTC)
 
 ==Turbines==
-In general there are eight solutions to this problem. [see](http://en.wikipedia.org/wiki/File:Apollonius8ColorMultiplyV2.svg) for a picture showing the eight solutions for a configuration similar to the one depicted in the task description.
+In general there are eight solutions to this problem. [see](https://en.wikipedia.org/wiki/File:Apollonius8ColorMultiplyV2.svg) for a picture showing the eight solutions for a configuration similar to the one depicted in the task description.
 
 Circles are of course passé‎, in modern geometry they are replaced by an abstract object called a turbine. A turbine is made of modern points, which are like old fashioned points but have an added direction property. A turbine is the set of points which are equidistant from an origin point. If the points point towards the origin it looks like a turbine. If the points point at 90deg to the direction to the origin (tangential) it looks like a circle. If the origin is directed to a particular point then the structure is called a clock. If all the points are tangential in the same direction it is called a cycle.
 

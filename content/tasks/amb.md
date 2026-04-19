@@ -239,8 +239,8 @@ that thing grows slowly
 ## ALGOL 68
 
 {{wont work with|ALGOL 68|Revision 1 - '''iterpage''' exported out of scope}}
-{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - '''iterpage''' exported out of scope }}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - '''iterpage''' exported out of scope }}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 Note: This program violates ALGOL 68's scoping rules when a locally scoped procedure is returned to a more global scope.  [[ELLA ALGOL 68RS]] misses this violation, but [[ALGOL 68 Genie]] spots it at run time and then produces an assert.  However [[ELLA ALGOL 68RS]] does produce the desired result, but may potentially suffer from "mysterious" stack problems.
 
 ```algol68
@@ -429,7 +429,7 @@ implement main0 () =
 {{AutoHotkey case}}
 
 
-Source: [AMB - Ambiguous selector](http://www.autohotkey.com/forum/topic45454.html) by infogulch
+Source: [AMB - Ambiguous selector](https://www.autohotkey.com/forum/topic45454.html) by infogulch
 
 ```autohotkey
 set1 := "the that a"
@@ -717,7 +717,7 @@ Usage:
                 amb.Stop();
             });
     }
-    // problem from http://www.randomhacks.net/articles/2005/10/11/amb-operator
+    // problem from https://www.randomhacks.net/articles/2005/10/11/amb-operator
     using (Amb amb = new Amb())
     {
         IAmbValue<int> x = amb.DefineValues(1, 2, 3);
@@ -869,7 +869,7 @@ namespace Amb
             WriteLine($"{set1} {set2} {set3} {set4}");
             Read();
 
-            // problem from http://www.randomhacks.net/articles/2005/10/11/amb-operator
+            // problem from https://www.randomhacks.net/articles/2005/10/11/amb-operator
             amb = new Amb();
 
             var x = amb.Choose(1, 2, 3);
@@ -3199,7 +3199,7 @@ procedure pythag_show(sequence sets, sequence res)
 end procedure
 constant r_pythag_show = routine_id("pythag_show")
 
--- see http://www.randomhacks.net/articles/2005/10/11/amb-operator
+-- see https://www.randomhacks.net/articles/2005/10/11/amb-operator
 function not8(sequence sets, sequence res, integer idx)
 -- (note that idx==2 in all cases)
 -- (at the last moment, I flipped the test, after realising that
@@ -3577,7 +3577,7 @@ if __name__ == '__main__':
         amb = Amb()
 
         print("\nAmb problem from "
-            "http://www.randomhacks.net/articles/2005/10/11/amb-operator:")
+            "https://www.randomhacks.net/articles/2005/10/11/amb-operator:")
         x = amb([1, 2, 3])
         y = amb([4, 5, 6])
 
@@ -3599,7 +3599,7 @@ Small Pythagorean triples problem:
 Rosetta Code Amb problem:
 that thing grows slowly
 
-Amb problem from http://www.randomhacks.net/articles/2005/10/11/amb-operator:
+Amb problem from https://www.randomhacks.net/articles/2005/10/11/amb-operator:
 1 4
 1 5
 1 6

@@ -28,7 +28,7 @@ languages = [
 +++
 
 {{Draft task}} [[Category:Web]]
-In Germany and the Netherlands postal addresses have the form: street name, followed by the house number, in accordance with the national standards DIN 5008 respectively NEN 5825. The problem is that some street names have numbers (e.g. special years) and some [house numbers](http://en.wikipedia.org/wiki/House_numbering#Europe) have characters as an extension. It's a real life problem and difficult because in the Netherlands some street names are a tribute to our liberators. The street names have the numbers 40 and 45 indicating the years of war between 1940 and 1945.
+In Germany and the Netherlands postal addresses have the form: street name, followed by the house number, in accordance with the national standards DIN 5008 respectively NEN 5825. The problem is that some street names have numbers (e.g. special years) and some [house numbers](https://en.wikipedia.org/wiki/House_numbering#Europe) have characters as an extension. It's a real life problem and difficult because in the Netherlands some street names are a tribute to our liberators. The street names have the numbers 40 and 45 indicating the years of war between 1940 and 1945.
 ## Task
 
 Write code that correctly separates the house number from the street name and presents them both. 

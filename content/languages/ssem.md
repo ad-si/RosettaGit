@@ -42,4 +42,4 @@ Each storage address could hold either a signed 32-bit integer (using two's comp
 </table>
 
 
-Several emulators exist allowing SSEM code to be run on modern computers, including two browser-based implementations: David Sharp's [Manchester Baby Simulator](http://www.davidsharp.com/baby/) in Java and Edmund Griffiths's [JsSSEM](http://www.edmundgriffiths.com/jsssem.html) in JavaScript.
+Several emulators exist allowing SSEM code to be run on modern computers, including two browser-based implementations: David Sharp's [Manchester Baby Simulator](http://www.davidsharp.com/baby/) in Java and Edmund Griffiths's [JsSSEM](https://www.edmundgriffiths.com/jsssem.html) in JavaScript.

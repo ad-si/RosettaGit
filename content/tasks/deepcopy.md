@@ -112,7 +112,7 @@ deepcopy
 
 ## AutoHotkey
 
-<http://www.autohotkey.com/board/topic/85201-array-deep-copy-treeview-viewer-and-more/>
+<https://www.autohotkey.com/board/topic/85201-array-deep-copy-treeview-viewer-and-more/>
 
 ```autohotkey
 DeepCopy(Array, Objs=0)
@@ -915,8 +915,8 @@ end
 
 
 [DeepCopy.icn](https://tapestry.tucson.az.us/twiki/bin/view/Main/DeepCopy)
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[ximage.icn provides xdump](http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[ximage.icn provides xdump](https://www.cs.arizona.edu/icon/library/src/procs/ximage.icn)
 
 The sample of output below compares all elements of a copy of a structure against the original.  Immutable types like numbers, strings, and csets will show as the same (i.e. ===) and different mutable types will show as not the same (i.e. ~===).  This clearly shows the difference between assignment, copy, and deepcopy.
 
@@ -1597,7 +1597,7 @@ Tree:
 ## OCaml
 
 
-This code is just provided in order to achieve this task, but an OCaml programmer wouldn't use this kind of code, because this <code>copy</code> function is made generic due to the use of the [<code>Obj</code>](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Obj.html) module, and it is not recommanded to use it.
+This code is just provided in order to achieve this task, but an OCaml programmer wouldn't use this kind of code, because this <code>copy</code> function is made generic due to the use of the [<code>Obj</code>](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Obj.html) module, and it is not recommanded to use it.
 
 
 ```ocaml
@@ -1620,7 +1620,7 @@ let copy (v : 'a) : 'a = Obj.obj (copy (Obj.repr v))
 ```
 
 
-OCaml programmers will prefer to use specialised copy functions for each mutable types. For base types like strings and arrays, the standard library provides copy functions: <code>String.copy</code> and <code>Array.copy</code>. For mutable user-defined data structures, we will create a copy function based on these previous copy functions. For example in the module [<code>Hashtbl</code>](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html), the type is a record containing an integer and an array, so the copy function is defined as below:
+OCaml programmers will prefer to use specialised copy functions for each mutable types. For base types like strings and arrays, the standard library provides copy functions: <code>String.copy</code> and <code>Array.copy</code>. For mutable user-defined data structures, we will create a copy function based on these previous copy functions. For example in the module [<code>Hashtbl</code>](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html), the type is a record containing an integer and an array, so the copy function is defined as below:
 
 ```ocaml
 let copy h =
@@ -1634,11 +1634,11 @@ let copy h =
 
 All copies in GP are deep; this is one of its major inefficiencies when working with large objects.
 
-In PARI, this is accomplished with the command <code>gcopy</code> rather than <code>shallowcopy</code> or <code>leafcopy</code>. The function takes and returns a <code>GEN</code>. See section 10.6 of the [User's Guide to the PARI Library](http://pari.math.u-bordeaux.fr/pub/pari/manuals/2.5.0/libpari.pdf).
+In PARI, this is accomplished with the command <code>gcopy</code> rather than <code>shallowcopy</code> or <code>leafcopy</code>. The function takes and returns a <code>GEN</code>. See section 10.6 of the [User's Guide to the PARI Library](https://pari.math.u-bordeaux.fr/pub/pari/manuals/2.5.0/libpari.pdf).
 
 =={{Header|Perl}}==
 
-use [Storable](http://search.cpan.org/perldoc?Storable); <code>Storable::dclone()</code> is exactly what you are looking for.
+use [Storable](https://metacpan.org/perldoc?Storable); <code>Storable::dclone()</code> is exactly what you are looking for.
 
 
 ```Perl
@@ -1780,7 +1780,7 @@ object d = deserialize(serialize(a))
 
 =={{Header|PHP}}==
 
-PHP provides the <code>clone</code> operator ([docs](http://www.php.net/manual/en/language.oop5.cloning.php)) for shallow copying, and allows you to hook into a magic class method called <code>__clone()</code> in your classes to do some of the lifting to create deeper copies, but this method won't create a true deep copy if you don't write the code to manage it in each of the child classes.
+PHP provides the <code>clone</code> operator ([docs](https://www.php.net/manual/en/language.oop5.cloning.php)) for shallow copying, and allows you to hook into a magic class method called <code>__clone()</code> in your classes to do some of the lifting to create deeper copies, but this method won't create a true deep copy if you don't write the code to manage it in each of the child classes.
 
 
 ```PHP
@@ -1833,15 +1833,15 @@ echo "Object contains {$object->some_value}, child contains {$object->child->som
 
 ## PicoLisp
 
-A shallow copy can be done with '[copy](http://software-lab.de/doc/refC.html#copy)'. This function takes care of cons pairs and lists, no matter whether they are cyclic, or end in NIL or some other data structure.
+A shallow copy can be done with '[copy](https://software-lab.de/doc/refC.html#copy)'. This function takes care of cons pairs and lists, no matter whether they are cyclic, or end in NIL or some other data structure.
 
-For a known depth, it might be used in combination with other list functions. For example, to copy a non-cyclic structure of depth 2 with '[mapcar](http://software-lab.de/doc/refM.html#mapcar)':
+For a known depth, it might be used in combination with other list functions. For example, to copy a non-cyclic structure of depth 2 with '[mapcar](https://software-lab.de/doc/refM.html#mapcar)':
 
 ```PicoLisp
 (mapcar copy List)
 ```
 
-Copying non-cyclic structures of arbitrary depth and list-termination could be handled with a custom function (using '[cons](http://software-lab.de/doc/refC.html#cons)'):
+Copying non-cyclic structures of arbitrary depth and list-termination could be handled with a custom function (using '[cons](https://software-lab.de/doc/refC.html#cons)'):
 
 ```PicoLisp
 (de deepCopy (X)

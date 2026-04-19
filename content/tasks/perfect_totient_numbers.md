@@ -44,7 +44,7 @@ Generate and show here, the first twenty [Perfect totient numbers](https://en.wi
 
 
 ;Also see:
-::*   the OEIS      entry for   [perfect totient numbers](http://oeis.org/A082897).
+::*   the OEIS      entry for   [perfect totient numbers](https://oeis.org/A082897).
 ::*   mrob            [list of the first 54](https://mrob.com/pub/seq/a082897.html)
 <br/>
 

@@ -63,7 +63,7 @@ For the purposes of this task:
 * Words of equal frequency can be listed in any order
 
 
-Show example output using [Les Misérables from Project Gutenberg](http://www.gutenberg.org/files/135/135-0.txt) as the text file input and display the top 10 most used words.
+Show example output using [Les Misérables from Project Gutenberg](https://www.gutenberg.org/files/135/135-0.txt) as the text file input and display the top 10 most used words.
 
 
 ;History:
@@ -83,7 +83,7 @@ demonstrating solving the problem in a 6 line Unix shell script (provided as an 
 
 
 ```AutoHotkey
-URLDownloadToFile, http://www.gutenberg.org/files/135/135-0.txt, % A_temp "\tempfile.txt"
+URLDownloadToFile, https://www.gutenberg.org/files/135/135-0.txt, % A_temp "\tempfile.txt"
 FileRead, H, % A_temp "\tempfile.txt"
 FileDelete,  % A_temp "\tempfile.txt"
 words := []
@@ -643,7 +643,7 @@ def topWordCounts = { String content, int n ->
 Test:
 
 ```groovy
-def rawText = "http://www.gutenberg.org/files/135/135-0.txt".toURL().text
+def rawText = "https://www.gutenberg.org/files/135/135-0.txt".toURL().text
 topWordCounts(rawText, 10)
 ```
 
@@ -771,7 +771,7 @@ main = do
 
 ## J
 
-Text acquisition: store the entire text from the web page <http://www.gutenberg.org/files/135/135-0.txt> (the plain text UTF-8 link) into a file.  This linux example uses ~/downloads/books/LesMis.txt .
+Text acquisition: store the entire text from the web page <https://www.gutenberg.org/files/135/135-0.txt> (the plain text UTF-8 link) into a file.  This linux example uses ~/downloads/books/LesMis.txt .
 
 Program:
 Reading from left to right,
@@ -1496,7 +1496,7 @@ How many?: 10
 ```python
 """
 Word count task from Rosetta Code
-http://www.rosettacode.org/wiki/Word_count#Python
+https://www.rosettacode.org/wiki/Word_count#Python
 """
 from itertools import (groupby,
                        starmap)
@@ -2008,7 +2008,7 @@ import scala.io.Source
 
 object WordCount extends App {
 
-  val url = "http://www.gutenberg.org/files/135/135-0.txt"
+  val url = "https://www.gutenberg.org/files/135/135-0.txt"
   val header = "Rank Word  Frequency\n
 ### = ======== ===
 "
@@ -2058,10 +2058,10 @@ Successfully completed without errors. [total 4528 ms]
 ## Seed7
 
 
-The Seed7 program uses the function [getHttp](http://seed7.sourceforge.net/libraries/gethttp.htm#getHttp(in_string)),
-to get the file 135-0.txt directly from Gutemberg. The library [scanfile.s7i](http://seed7.sourceforge.net/libraries/scanfile.htm)
-provides [getSimpleSymbol](http://seed7.sourceforge.net/libraries/scanfile.htm#getSimpleSymbol(inout_file)),
-to get words from a fle. The words are [converted to lower case](http://seed7.sourceforge.net/libraries/string.htm#lower(in_string)), to assure that "The" and "the" are considered the same.
+The Seed7 program uses the function [getHttp](https://seed7.sourceforge.net/libraries/gethttp.htm#getHttp(in_string)),
+to get the file 135-0.txt directly from Gutemberg. The library [scanfile.s7i](https://seed7.sourceforge.net/libraries/scanfile.htm)
+provides [getSimpleSymbol](https://seed7.sourceforge.net/libraries/scanfile.htm#getSimpleSymbol(inout_file)),
+to get words from a fle. The words are [converted to lower case](https://seed7.sourceforge.net/libraries/string.htm#lower(in_string)), to assure that "The" and "the" are considered the same.
 
 
 ```seed7
@@ -2548,7 +2548,7 @@ Debug.Print "Execution Time : " & Format(Timer - T, "0.000") & " sec."
 End Sub
 
 Private Function ExtractTxt(strFile As String) As String
-'http://rosettacode.org/wiki/File_input/output#VBA
+'https://rosettacode.org/wiki/File_input/output#VBA
 Dim i As Integer
    i = FreeFile
    Open strFile For Input As #i

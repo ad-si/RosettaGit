@@ -12,4 +12,4 @@ tags = []
 
 
 
-[GitHub repo](http://github.com/FeepingCreature/fcc). Note that it needs [GDC](https://rosettacode.org/wiki/GDC)/D1 (gcc 4.5.3, hg from 20110428, DMDFE 1.067) to build. Newer ones won't work, older ones won't work!
+[GitHub repo](https://github.com/FeepingCreature/fcc). Note that it needs [GDC](https://rosettacode.org/wiki/GDC)/D1 (gcc 4.5.3, hg from 20110428, DMDFE 1.067) to build. Newer ones won't work, older ones won't work!

@@ -1118,7 +1118,7 @@ Hello World!
 
 Portability is possible, but often irrelevant for a task of this sort.  To make this work with a different OS, you would need to use the appropriate file name for libc for the os in question.  For example, on linux, replace msvcrt.dll with /lib/libc.so.6 (or whichever version of libc you are using).
 
-See also: [J's documentation](http://www.jsoftware.com/help/user/call_procedure.htm)
+See also: [J's documentation](https://www.jsoftware.com/help/user/call_procedure.htm)
 
 
 ## Java
@@ -2488,7 +2488,7 @@ X = booger.
 
 Here we will use [Fasm (flat assembler)](http://flatassembler.net/) to create an object file and then import the function
 strucase(t.s) As "_strucase@4". The object file is statically linked within
-the resulting executable. [PureBasic](http://www.purebasic.com/) supports {Windows, Linux, MacOS}.
+the resulting executable. [PureBasic](https://www.purebasic.com/) supports {Windows, Linux, MacOS}.
 
 
 ```PureBasic

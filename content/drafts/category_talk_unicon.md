@@ -14,11 +14,11 @@ Note: This page is linked to from the [[:Category_talk:Icon]] page.
 
 = How to go about solving the tasks =
 == Intent .v. Direction of tasks ==
-There was an interesting discussion on [the Unicon group forum](http://sourceforge.net/mailarchive/forum.php?forum_name=unicon-group) about meeting the intent .v. literacy in solving tasks.  The [[Loops/Break]] task was used as a point of discussion.  
+There was an interesting discussion on [the Unicon group forum](https://sourceforge.net/mailarchive/forum.php?forum_name=unicon-group) about meeting the intent .v. literacy in solving tasks.  The [[Loops/Break]] task was used as a point of discussion.  
 
 The consensus seemed to be that we should be meeting the intent and not reading too much into the literal interpretation of the title.  Unless there is specific direction within the task description we should have a free hand.
 
-Thanks to Steve, Andrew, Clint, and Charles [for this and other discussions](http://sourceforge.net/mailarchive/forum.php?thread_name=4BBDFF4D.9000505%40noao.edu&forum_name=unicon-group).  The overall consensus is that '''we should show our best'''. --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC) 
+Thanks to Steve, Andrew, Clint, and Charles [for this and other discussions](https://sourceforge.net/mailarchive/forum.php?thread_name=4BBDFF4D.9000505%40noao.edu&forum_name=unicon-group).  The overall consensus is that '''we should show our best'''. --[[User:Dgamey|Dgamey]] 21:17, 8 April 2010 (UTC) 
 
 
 ###  Style 
@@ -75,8 +75,8 @@ These will never end but [[Reports:Tasks_not_implemented_in_Icon|Icon - tasks no
 == Easy Wins ==
 I expect that many of these tasks are already coded in the Icon Programming Library or one of the Unicon packages. There are also example in the Icon and Unicon books.  If you find an interesting task, check these sources first.
 
-* [The IPL permuted index of basic procedures](http://www.cs.arizona.edu/icon/library/pdx.htm)
-* [The IPL permuted index of graphic procedures](http://www.cs.arizona.edu/icon/library/gpdx.htm)
+* [The IPL permuted index of basic procedures](https://www.cs.arizona.edu/icon/library/pdx.htm)
+* [The IPL permuted index of graphic procedures](https://www.cs.arizona.edu/icon/library/gpdx.htm)
 
 == Errors/Review Lists ==
 See [[Template:Example-needs-review]] and [[Template:Incorrect]].  I'm not sure how you're supposed to know what is to be reviewed.  Examples I've seen don;t have a lot of explanation.
@@ -93,7 +93,7 @@ There are a number of other related templates like improve that can be found [[:
 == The IPL and Uni Libraries ==
 [[:Category:Solutions_by_Library]] need writing.  Stubs have been created for:
 
-* [[:Category:Icon_Programming_Library|The Icon Programming Library]] --> [IPL](http://www.cs.arizona.edu/icon/library/)
+* [[:Category:Icon_Programming_Library|The Icon Programming Library]] --> [IPL](https://www.cs.arizona.edu/icon/library/)
 * [[:Category:Unicon_Code_Library|The Unicon Code Library]] --> [Unilib](https://tapestry.tucson.az.us/unilib)
 
 To reference these pages '''without inclusion''' on the library pages use these:
@@ -150,7 +150,7 @@ It turns out the <nowiki>
 ```blahblah>
 ```
 </nowiki
- tags just provides syntax highlighting via something called GeSHi for syntax highlighting.  Although there are Icon and Unicon tags on RC articles, there is GeSHi for either language.   The details on AutoGeSHi are at <http://rosettacode.org/geshi/> and maintained by user BenBE.  (Thanks Mike) --[[User:Dgamey|Dgamey]] 03:10, 12 April 2010 (UTC)
+ tags just provides syntax highlighting via something called GeSHi for syntax highlighting.  Although there are Icon and Unicon tags on RC articles, there is GeSHi for either language.   The details on AutoGeSHi are at <https://rosettacode.org/geshi/> and maintained by user BenBE.  (Thanks Mike) --[[User:Dgamey|Dgamey]] 03:10, 12 April 2010 (UTC)
 * Thanks to [[User:MattOates|Matt Oates]] for getting these done --[[User:Dgamey|Dgamey]] 02:14, 20 April 2010 (UTC)
 
 == Thanks ==
@@ -298,7 +298,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
+[XXXX provides YYYY](https://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 
 Output:&lt;pre&gt;sample output&lt;/pre&gt;</nowiki>
@@ -336,7 +336,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
+[XXXX provides YYYY](https://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 
 Output:&lt;pre&gt;sample output&lt;/pre&gt;</nowiki>
@@ -361,7 +361,7 @@ end
 
 
 {{libheader|Icon Programming Library}}  
-[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
+[XXXX provides YYYY](https://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 {{libheader|Unicon Code Library}}
 </nowiki>
 ```
@@ -377,7 +377,7 @@ Use the following for IPL references.  Note: if the IPL module solves the task, 
 
 ```txt
 <nowiki>
-[XXXX provides YYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
+[XXXX provides YYYY](https://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 </nowiki>
 ```
 
@@ -470,7 +470,7 @@ Sample Output:
 ...
 
 {{libheader|Icon Programming Library}}  
-[fib provides YYYYY](http://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
+[fib provides YYYYY](https://www.cs.arizona.edu/icon/library/src/procs/XXXX.icn) 
 </nowiki>
 ```
 

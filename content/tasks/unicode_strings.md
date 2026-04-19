@@ -791,7 +791,7 @@ In contrast,
 
 bytes 4 and 5 showing the UTF-8 encoding of à.
 The expression <code>w[i]</code> in this case has the type of <code>byte</code> rather than <code>rune</code>.
-A Go blog post covers this in more detail: [Strings, bytes, runes and characters in Go](http://blog.golang.org/strings).
+A Go blog post covers this in more detail: [Strings, bytes, runes and characters in Go](https://blog.golang.org/strings).
 
 The heavily used standard packages <code>bytes</code> and <code>strings</code> both have functions for working with strings both as UTF-8 and as encoding-unspecified bytes.
 The standard packages <code>unicode</code>, <code>unicode/utf8</code>, and <code>unicode/utf16</code> have additional functions.
@@ -799,7 +799,7 @@ The standard packages <code>unicode</code>, <code>unicode/utf8</code>, and <code
 Normalization support is available in the [[:Category:Go sub-repositories|sub-repository]] package <code>golang.org/x/text/unicode/norm</code>.
 It contains a number of string manipulation functions that work with the four normalization forms NFC, NFD, NFKC, and NFKD.
 The normalization form type in this package implements the <code>io.Reader</code> and <code>io.WriteCloser</code> interfaces to enable on-the-fly normalization during I/O.
-A Go blog post covers this in more detail: [Text normalization in Go](http://blog.golang.org/normalization).
+A Go blog post covers this in more detail: [Text normalization in Go](https://blog.golang.org/normalization).
 
 There is no built-in or automatic handling of byte order marks (which are at best unnecessary with UTF-8).
 
@@ -885,7 +885,7 @@ Here, we see that even when comparing non-ascii characters, we can coerce both a
 Output uses characters in whatever format they happen to be in.
 Character input assumes 8 bit characters but places no additional interpretation on them.
 
-See also: <http://www.jsoftware.com/help/dictionary/duco.htm>
+See also: <https://www.jsoftware.com/help/dictionary/duco.htm>
 
 Non-ascii unicode characters are not legal tokens or names, within current versions J.
 
@@ -1237,7 +1237,7 @@ How easy is it to present Unicode strings in source code? '''Very; they can be i
 Can Unicode literals be written directly, or be part of identifiers/keywords/etc? '''Yes; identifiers, literals and such can be written directly as UTF8 strings.'''
 
 How well can the language communicate with the rest of the world? Is it good at input/output with Unicode? '''Nemerle plays well with the 'rest of the world' (it was developed in Poland and most of its user-base is Polish or Russian, so the 'rest of the world' from the language developers/users perspective is different than that typically envisioned by an Anglophone.)
-Input/output in UTF8 is handled readily, other encodings, text directions and such are handled by classes in the <tt>System.Text</tt> and <tt>System.Globalization</tt> namespaces. See [this](http://msdn.microsoft.com/en-us/library/h6270d0z.aspx) MSDN page for recommendations on globalization/localization of applications.'''
+Input/output in UTF8 is handled readily, other encodings, text directions and such are handled by classes in the <tt>System.Text</tt> and <tt>System.Globalization</tt> namespaces. See [this](https://msdn.microsoft.com/en-us/library/h6270d0z.aspx) MSDN page for recommendations on globalization/localization of applications.'''
 
 Is it convenient to manipulate Unicode strings in the language? '''Yes; string methods expect UTF8 strings'''
 
@@ -1365,7 +1365,7 @@ print(ord(u[-1]))
 
 In Python 3, the default encoding is UTF-8. Before that it was ASCII.
 
-For more info on Unicode in Python, see its [how-to](http://docs.python.org/howto/unicode.html).
+For more info on Unicode in Python, see its [how-to](https://docs.python.org/howto/unicode.html).
 
 
 ## Racket
@@ -1548,16 +1548,16 @@ e	\u0065
 
 ## Seed7
 
-The Unicode encoding of Seed7 [characters](http://seed7.sourceforge.net/manual/types.htm#char) and
-[strings](http://seed7.sourceforge.net/manual/types.htm#string) is UTF-32. Seed7 source files use
-UTF-8 encoding. [Character literals](http://seed7.sourceforge.net/manual/tokens.htm#Character_literals) and
-[string literals](http://seed7.sourceforge.net/manual/tokens.htm#String_literals) are
+The Unicode encoding of Seed7 [characters](https://seed7.sourceforge.net/manual/types.htm#char) and
+[strings](https://seed7.sourceforge.net/manual/types.htm#string) is UTF-32. Seed7 source files use
+UTF-8 encoding. [Character literals](https://seed7.sourceforge.net/manual/tokens.htm#Character_literals) and
+[string literals](https://seed7.sourceforge.net/manual/tokens.htm#String_literals) are
 therefore written with UTF-8 encoding. Unicode characters are allowed in comments,
 but not in identifiers and keywords. Functions, which send strings to the operating system convert
 them to the encoding used by the OS. Strings received by the operating system are converted to UTF-32.
-Seed7 supports reading and writing [Latin-1](http://seed7.sourceforge.net/libraries/external_file.htm),
-[UTF-8](http://seed7.sourceforge.net/libraries/utf8.htm) and
-[UTF-16](http://seed7.sourceforge.net/libraries/utf16.htm) files.
+Seed7 supports reading and writing [Latin-1](https://seed7.sourceforge.net/libraries/external_file.htm),
+[UTF-8](https://seed7.sourceforge.net/libraries/utf8.htm) and
+[UTF-16](https://seed7.sourceforge.net/libraries/utf16.htm) files.
 Because of UTF-32 there is no distinction between byte and character position.
 
 

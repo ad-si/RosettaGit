@@ -931,7 +931,7 @@ func main() {
 }
 ```
 
-[Run in Go Playground](http://play.golang.org/p/YQ2GRBM4af).
+[Run in Go Playground](https://play.golang.org/p/YQ2GRBM4af).
 ```txt
 0 ∈ s0: true
 1 ∈ s0: true

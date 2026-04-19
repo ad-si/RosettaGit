@@ -51,7 +51,7 @@ This will significantly clean up the Mediawiki extension namespace, and make for
 ::::*Quote characters
 ::::*Symbols from the language (besides math operators)
 ::::*Comment characters
-::::Also it would need a regular expression for comments. It would probably be best to talk to the people working on [the GeSHi project](http://sourceforge.net/projects/geshi/) about adding new languages.--[[User:Mwn3d|Mwn3d]] 16:29, 7 July 2008 (UTC)
+::::Also it would need a regular expression for comments. It would probably be best to talk to the people working on [the GeSHi project](https://sourceforge.net/projects/geshi/) about adding new languages.--[[User:Mwn3d|Mwn3d]] 16:29, 7 July 2008 (UTC)
 
 : It's happened!  I've replaced the GeSHiSyntaxHighlight Mediawiki extension with the GeSHiCodeTag extension.  The old tag format works (for now), but it ''will'' be removed as soon as possible.  All tags of <nowiki>&lt;mylang&gt;some_code&lt;mylang&gt;</nowiki> need to be changed to <nowiki>&lt;lang mylang&gt;some_code&lt;/lang&gt;</nowiki>.  So this block:
 
@@ -217,7 +217,7 @@ IF
 ==Update GeSHi==
 Can we get GeSHi updated? Also I created a Modula-3 language file for GeSHi and submitted it to their sourceforge forums, hopefully it will get put in SVN for their next release. --[[User:Mbishop|Mbishop]] 05:22, 22 January 2009 (UTC)
 
-:It's been updated, per your request.  Also, I created [this 1.5MB file](http://rosettacode.org/geshi.txt) in an attempt to put the GeSHi source files where everyone could see and correct them.  I'd intended to place it into a subpage of this one, but MediaWiki OOMs while it parses the wikicode.  And I'm not fond of the idea of increasing the interpreter's memory consumption limit again. --[[User:Short Circuit|Short Circuit]] 10:02, 22 January 2009 (UTC)
+:It's been updated, per your request.  Also, I created [this 1.5MB file](https://rosettacode.org/geshi.txt) in an attempt to put the GeSHi source files where everyone could see and correct them.  I'd intended to place it into a subpage of this one, but MediaWiki OOMs while it parses the wikicode.  And I'm not fond of the idea of increasing the interpreter's memory consumption limit again. --[[User:Short Circuit|Short Circuit]] 10:02, 22 January 2009 (UTC)
 ::Is there a way to edit that file? Is that the one that the site uses or is it just compiled from the GeSHi files? --[[User:Mwn3d|Mwn3d]] 19:14, 22 January 2009 (UTC)
 :::No way to edit it where it currently sits...It's too large for Mediawiki in one large clump.  It could be broken into per-language pages, though. --[[User:Short Circuit|Short Circuit]] 23:42, 22 January 2009 (UTC)
 ::::It would be nice if there was a separate page for syntax highlight for each language, and an option to add new languages. But meanwhile, if I create GeSHi file for a new language, could I send it to someone who has ability to integrate it in the system? --[[User:PauliKL|PauliKL]] 10:09, 23 January 2009 (UTC)
@@ -386,7 +386,7 @@ I've modified GeshiCodeTag to "fail" silently on unsupported languages, wrapping
 
 What this means is that virtually ''all'' code examples should now be wrapped in &lt;lang&gt; blocks, whether or not the highlighter supports them.  If highlighting is supported by a later version of GeSHi, code examples across the site will then be decorated automagically.  I just ask that each language try to standardize on a language ID, so that when support is added by GeSHi, I can simply alias our standardized ID to point to whatever ID GeSHi decided on upstream.--[[User:Short Circuit|Short Circuit]] 08:24, 30 January 2009 (UTC)
 
-: I've just found that the "fail" on unsupported languages indeed fails, i.e. doesn't work correctly. See e.g. <http://www.rosettacode.org/wiki/Apply_a_callback_to_an_Array#E>. Looking at the generated HTML, you obviously inserted &lt;code&gt; tags instead of &lt;pre&gt; tags. --[[User:Ce|Ce]] 16:57, 30 January 2009 (UTC)
+: I've just found that the "fail" on unsupported languages indeed fails, i.e. doesn't work correctly. See e.g. <https://www.rosettacode.org/wiki/Apply_a_callback_to_an_Array#E>. Looking at the generated HTML, you obviously inserted &lt;code&gt; tags instead of &lt;pre&gt; tags. --[[User:Ce|Ce]] 16:57, 30 January 2009 (UTC)
 
 
 ### Inconsistent content model
@@ -462,9 +462,9 @@ The current list of "keywords" for Tcl 8.6 (which is quite a bit longer than for
 :'''Variable Definition Keywords:''' global upvar variable
 :'''Compound Keywords:''' after array binary chan clock dde dict encoding file info interp namespace package prefix registry string trace update zlib
 (With compound keywords, the word after the listed keyword should also be highlighted.) OK, they're not formally keywords, but they should be formatted like they are. —[[User:Dkf|Donal Fellows]] 09:58, 17 June 2009 (UTC)
-:The following words are linkable to <code><nowiki><http://www.tcl.tk/man/tcl8.6/TclCmd/></nowiki>''blah''<nowiki>.htm</nowiki></code>:
+:The following words are linkable to <code><nowiki><https://www.tcl-lang.org/man/tcl8.6/TclCmd/></nowiki>''blah''<nowiki>.htm</nowiki></code>:
 ::proc global upvar variable after append apply array bgerror binary break catch cd chan clock close concat continue dde dict encoding eof error eval exec exit expr fblocked fconfigure fcopy file fileevent flush for foreach format gets glob if incr info interp join lappend lassign lindex linsert list llength load lrange lrepeat lreplace lreverse lsearch lset lsort my namespace next open package parray pid prefix puts pwd read regexp registry regsub rename return scan seek self set socket source split string subst switch tell throw time trace try unload unset update uplevel vwait while zlib
-:Alternatively go to <code><nowiki><http://wiki.tcl.tk/></nowiki>''blah''</code> for any identified keyword and, if the page isn't there now it soon will be... ;-) —[[User:Dkf|Donal Fellows]] 14:14, 17 June 2009 (UTC)
+:Alternatively go to <code><nowiki><https://wiki.tcl-lang.org/></nowiki>''blah''</code> for any identified keyword and, if the page isn't there now it soon will be... ;-) —[[User:Dkf|Donal Fellows]] 14:14, 17 June 2009 (UTC)
 
 ### Variables
 

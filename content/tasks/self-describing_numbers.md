@@ -2467,8 +2467,8 @@ repeat i 4000000 [  if isSDN? to-string i [print i] ]
 
 ## REXX
 
-Also see:    [OEIS A46043](http://oeis.org/A046043)
-  and   [OEIS A138480](http://oeis.org/A138480).
+Also see:    [OEIS A46043](https://oeis.org/A046043)
+  and   [OEIS A138480](https://oeis.org/A138480).
 
 ### digit by digit test
 

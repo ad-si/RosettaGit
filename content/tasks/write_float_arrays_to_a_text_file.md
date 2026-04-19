@@ -842,7 +842,7 @@ DO i = 1, n
 ENDDO
 ```
 
-Alternative: Display or Edit the formatted arrays in a [spreadsheet-like dialog](http://www.HicEst.com/MatrixExplorer) with a common scroll bar.
+Alternative: Display or Edit the formatted arrays in a [spreadsheet-like dialog](https://www.HicEst.com/MatrixExplorer) with a common scroll bar.
 The menu More - Export - File writes the formatted arrays to a file:
 
 ```HicEst
@@ -1294,7 +1294,7 @@ method formatArrays(outFile, xf = Rexx[], yf = Rexx[], xprecision = 3, yprecisio
 
 ```NewLISP
 ; file:   write-float-array.lsp
-; url:    http://rosettacode.org/wiki/Write_float_arrays_to_a_text_file
+; url:    https://rosettacode.org/wiki/Write_float_arrays_to_a_text_file
 ; author: oofoe 2012-01-30
 
 ; The "transpose" function is used to flip the joined lists around so
@@ -2094,7 +2094,7 @@ object FloatArray extends App {
 
 ## Seed7
 
-The library [math.s7i](http://seed7.sourceforge.net/libraries/math.htm) defines the function [sqrt](http://seed7.sourceforge.net/libraries/math.htm#sqrt%28ref_float%29). The operators [sci](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29sci%28ref_integer%29) and [exp](http://seed7.sourceforge.net/libraries/float.htm#%28in_string%29exp%28in_integer%29) (defined in [float.s7i](http://seed7.sourceforge.net/libraries/float.htm)) support writing floating point numbers in scientific notation.
+The library [math.s7i](https://seed7.sourceforge.net/libraries/math.htm) defines the function [sqrt](https://seed7.sourceforge.net/libraries/math.htm#sqrt%28ref_float%29). The operators [sci](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29sci%28ref_integer%29) and [exp](https://seed7.sourceforge.net/libraries/float.htm#%28in_string%29exp%28in_integer%29) (defined in [float.s7i](https://seed7.sourceforge.net/libraries/float.htm)) support writing floating point numbers in scientific notation.
 ```seed7
 $ include "seed7_05.s7i";
   include "float.s7i";

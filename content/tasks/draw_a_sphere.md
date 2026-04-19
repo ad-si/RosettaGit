@@ -482,7 +482,7 @@ function split0(str,array,fs,  arr,i,n) { # same as split except indices start a
 =
 ## BASIC256
 =
-This is modeled after the [Tcl](http://rosettacode.org/wiki/Draw_a_sphere#Tcl) implementation. Thus, the output of this is almost the same to the output of Tcl implementation below.
+This is modeled after the [Tcl](https://rosettacode.org/wiki/Draw_a_sphere#Tcl) implementation. Thus, the output of this is almost the same to the output of Tcl implementation below.
 
 ```basic256
 clg
@@ -1140,7 +1140,7 @@ render #g 		'show it
 =
 ## Sinclair ZX81 BASIC
 =
-Works with 1k of RAM. A screenshot of the output is [here](http://www.edmundgriffiths.com/zx81sphere.jpg).
+Works with 1k of RAM. A screenshot of the output is [here](https://www.edmundgriffiths.com/zx81sphere.jpg).
 
 ```basic
 10 LET I=21
@@ -1720,7 +1720,7 @@ namespace Sphere {
 ```
 
 
-<http://i.imgur.com/fkzH5wM.png>
+<https://i.imgur.com/fkzH5wM.png>
 
 
 ## D
@@ -2604,8 +2604,8 @@ The approach adopted here is to generate an SVG file, which may then be viewed, 
 ```jq
 def svg:
   "<svg width='100%' height='100%' version='1.1'
-    xmlns='http://www.w3.org/2000/svg'
-    xmlns:xlink='http://www.w3.org/1999/xlink'>" ;
+    xmlns='https://www.w3.org/2000/svg'
+    xmlns:xlink='https://www.w3.org/1999/xlink'>" ;
 
 # A radial gradient to make a circle look like a sphere.
 # "colors" should be [startColor, intermediateColor, endColor]
@@ -4584,7 +4584,7 @@ while True:
 ```python
 from visual import *
 scene.title = "VPython: Draw a sphere"
-sphere()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html
+sphere()    # using defaults, see https://www.vpython.org/contents/docs/defaults.html
 ```
 
 
@@ -5218,7 +5218,7 @@ end sub
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Sphere.zkl.jpg|200px|thumb|right]]
 
 ```zkl

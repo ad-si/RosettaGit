@@ -2308,7 +2308,7 @@ True
 ```
 
 
-Other (elegant) code can be found at Haskell wiki [Toy compression](http://www.haskell.org/haskellwiki/Toy_compression_implementations)
+Other (elegant) code can be found at Haskell wiki [Toy compression](https://www.haskell.org/haskellwiki/Toy_compression_implementations)
 
 
 ## J
@@ -5339,7 +5339,7 @@ TOBEORNOTTOBEORTOBEORNOT
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/string.htm#lzwCompress> and <http://seed7.sourceforge.net/algorith/string.htm#lzwDecompress>
+Original source: <https://seed7.sourceforge.net/algorith/string.htm#lzwCompress> and <https://seed7.sourceforge.net/algorith/string.htm#lzwDecompress>
 
 
 ## Sidef

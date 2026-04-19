@@ -11,7 +11,7 @@ tags = []
 +++
 The official implementation of Python, implemented in [C](https://rosettacode.org/wiki/C).
 
-From the official site<ref><http://www.python.org/about/></ref>:
+From the official site<ref><https://www.python.org/about/></ref>:
 * very clear, readable syntax
 * strong introspection capabilities
 * intuitive object orientation
@@ -25,7 +25,7 @@ From the official site<ref><http://www.python.org/about/></ref>:
 
 
 ## External Links
-* [CPython official site](http://www.python.org)
+* [CPython official site](https://www.python.org)
 
 ## References
 <references/>

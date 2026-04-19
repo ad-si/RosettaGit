@@ -993,9 +993,9 @@ object FTPconn extends App {
 
 ## Seed7
 
-The library [ftp.s7i](http://seed7.sourceforge.net/libraries/ftp.htm) contains functions to
-[open](http://seed7.sourceforge.net/libraries/ftp.htm#openFtp(in_string)) and handle an
-[ftpFileSys](http://seed7.sourceforge.net/libraries/ftp.htm#ftpFileSys).
+The library [ftp.s7i](https://seed7.sourceforge.net/libraries/ftp.htm) contains functions to
+[open](https://seed7.sourceforge.net/libraries/ftp.htm#openFtp(in_string)) and handle an
+[ftpFileSys](https://seed7.sourceforge.net/libraries/ftp.htm#ftpFileSys).
 
 ```seed7
 $ include "seed7_05.s7i";
@@ -1060,7 +1060,7 @@ foreach line [ftp::NList $conn] {
 
 ### Using a virtual file system
 
-An alternative approach that uses the package [TclVFS](http://sourceforge.net/projects/tclvfs/) to access ftp:// paths as a virtual file system.
+An alternative approach that uses the package [TclVFS](https://sourceforge.net/projects/tclvfs/) to access ftp:// paths as a virtual file system.
 
 
 ```tcl
@@ -1081,7 +1081,7 @@ file copy README [file join $dir README]
 ```
 
 
-The file <tt>vfsftpfix.tcl</tt> with the passive mode patch (see <http://wiki.tcl.tk/12837>):
+The file <tt>vfsftpfix.tcl</tt> with the passive mode patch (see <https://wiki.tcl-lang.org/12837>):
 
 ```tcl
 

@@ -2690,12 +2690,12 @@ hValueBox.ReadOnly = True                                     'Set ValueBox to R
 End
 ```
 
-'''[Click here for image of running code](http://www.cogier.com/gambas/Roman%20Numeral%20converter.png)'''
+'''[Click here for image of running code](https://www.cogier.com/gambas/Roman%20Numeral%20converter.png)'''
 
 
 ## Go
 
-For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
+For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](https://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
 
 ```go
 package main
@@ -3348,7 +3348,7 @@ every R := "MCMXC"|"MDCLXVI"|"MMVIII" do
 end
 ```
 
-[numbers.icn provides unroman](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[numbers.icn provides unroman](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 The code for this procedure is copied below:
 
@@ -6236,7 +6236,7 @@ const proc: main is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/puzzles.htm#decode_roman_numerals>
+Original source: <https://seed7.sourceforge.net/algorith/puzzles.htm#decode_roman_numerals>
 ```txt
 
 1990

@@ -1504,7 +1504,7 @@ end
 ```
 
 
-[strings.icn provides deletec](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides deletec](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 ```txt
 Key        = VIGENERECIPHER

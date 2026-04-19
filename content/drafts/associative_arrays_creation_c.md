@@ -247,7 +247,7 @@ main()
 
 	/*
 	 * Some colors from CSS2,
-	 * http://www.w3.org/TR/CSS2/syndata.html#value-def-color
+	 * https://www.w3.org/TR/CSS2/syndata.html#value-def-color
 	 */
 	store("red",	0xff0000);
 	store("orange",	0x123456);  /* Insert wrong value! */
@@ -467,7 +467,7 @@ Iterating the hash table:
 hdestroy() is almost impossible to use. With BSD libc, hdestroy() will call free() with each key in the table. With other systems, hdestroy() might leak memory, because the program has no way to iterate the keys to free them. Most programs keep the hash table and never call hdestroy().
 
 ===BSD dbopen()===
-[[BSD]] provides [dbopen()](http://www.openbsd.org/cgi-bin/man.cgi?query=dbopen&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html) in <db.h>. This is Berkeley DB 1.85. Because dbopen() often puts a database on disk, one easily forgets that dbopen(NULL, ...) can put a small database in memory. When the type is DB_BTREE or DB_HASH, then the database is an associative array.
+[[BSD]] provides [dbopen()](https://www.openbsd.org/cgi-bin/man.cgi?query=dbopen&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html) in <db.h>. This is Berkeley DB 1.85. Because dbopen() often puts a database on disk, one easily forgets that dbopen(NULL, ...) can put a small database in memory. When the type is DB_BTREE or DB_HASH, then the database is an associative array.
 
 * Warning: some GNU/Linux systems have a dbopen(3) manual page without a real dbopen() function. See [Debian bug #337581](http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=337581).
 

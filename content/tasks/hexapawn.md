@@ -17,7 +17,7 @@ languages = [
 ]
 +++
 
-{{draft task|Games}}Implement Martin Gardner’s game [Hexapawn](http://en.wikipedia.org/wiki/Hexapawn) so that one can play against the computer.
+{{draft task|Games}}Implement Martin Gardner’s game [Hexapawn](https://en.wikipedia.org/wiki/Hexapawn) so that one can play against the computer.
 Hexapawn is played on a 3 x 3 square board. The near rank contains your three pawns, and the far rank contains those of the computer.
 
 It should “memorize” good moves and discard bad ones, after enough rounds, it will have learned from its mistakes and will become unbeatable.

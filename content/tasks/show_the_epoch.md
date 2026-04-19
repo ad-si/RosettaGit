@@ -652,7 +652,7 @@ Date and Time can be accessed via a number of keywords and functions
 ** ctime(integer) takes the number of seconds since the epoch and returns the date and time as a string in the local timezone
 ** gtime(integer) takes the number of seconds since the epoch and returns the date and time as a string in UTC
 ** gettimeofday() returns a record with the current time since the epoch in seconds and microseconds
-* [datetime routines](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn) use a global variable 'DateBaseYear' which defaults to Jan 1, 1970 00:00:00 but can be set if desired.
+* [datetime routines](https://www.cs.arizona.edu/icon/library/src/procs/datetime.icn) use a global variable 'DateBaseYear' which defaults to Jan 1, 1970 00:00:00 but can be set if desired.
 * The example below uses only a couple of the datetime procedures
 
 ```Unicon
@@ -702,7 +702,7 @@ That said, the <code>'dates'</code> library does have an epoch:
 
 ## Java
 
-<code>DateFormat</code> is needed to set the timezone. Printing <code>date</code> alone would show this date in the timezone/locale of the machine that the program is running on. The epoch used in <code>java.util.Date</code> (as well as <code>java.sql.Date</code>, which can be subbed into this example) is actually in GMT, but there isn't a significant difference between that and UTC for lots of applications ([documentation for java.util.Date](http://download.oracle.com/javase/7/docs/api/java/util/Date.html#getTime())).
+<code>DateFormat</code> is needed to set the timezone. Printing <code>date</code> alone would show this date in the timezone/locale of the machine that the program is running on. The epoch used in <code>java.util.Date</code> (as well as <code>java.sql.Date</code>, which can be subbed into this example) is actually in GMT, but there isn't a significant difference between that and UTC for lots of applications ([documentation for java.util.Date](https://download.oracle.com/javase/7/docs/api/java/util/Date.html#getTime())).
 
 ```java
 import java.text.DateFormat;
@@ -1558,8 +1558,8 @@ January 1, 1970 12:00:00 AM UTC
 
 ## Seed7
 
-The Seed7 library [time.s7i](http://seed7.sourceforge.net/libraries/time.htm)
-defines the type [time](http://seed7.sourceforge.net/manual/types.htm#time),
+The Seed7 library [time.s7i](https://seed7.sourceforge.net/libraries/time.htm)
+defines the type [time](https://seed7.sourceforge.net/manual/types.htm#time),
 which describes times and dates. For dates the proleptic Gregorian calendar is used
 (which assumes that the Gregorian calendar was even in effect at dates preceding its official introduction).
 This convention is used according to ISO 8601, which also defines that positive and
@@ -1656,7 +1656,7 @@ today's date: 2011-12-14 (daynumber 734487)
 
 ## UNIX Shell
 
-The nonstandard option <code>date -r</code> takes seconds from the epoch, and prints date and time. See [date(1) manual](http://www.openbsd.org/cgi-bin/man.cgi?query=date&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html).
+The nonstandard option <code>date -r</code> takes seconds from the epoch, and prints date and time. See [date(1) manual](https://www.openbsd.org/cgi-bin/man.cgi?query=date&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html).
 ```bash
 $ date -ur 0
 Thu Jan  1 00:00:00 UTC 1970

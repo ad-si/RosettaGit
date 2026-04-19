@@ -3197,7 +3197,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 ```txt
 
 Matching:
@@ -8118,11 +8118,11 @@ jan  - abi
 Assume that the input is in XML form as listed [[Stable marriage problem/XSLT input|here]]. The following XSLT 2.0 style-sheet...
 
 <lang><xsl:stylesheet version="2.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:m="http://rosettacode.org/wiki/Stable_marriage_problem"
-  xmlns:t="http://rosettacode.org/wiki/Stable_marriage_problem/temp"
+  xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
+  xmlns:fn="https://www.w3.org/2005/xpath-functions"
+  xmlns:xs="https://www.w3.org/2001/XMLSchema"
+  xmlns:m="https://rosettacode.org/wiki/Stable_marriage_problem"
+  xmlns:t="https://rosettacode.org/wiki/Stable_marriage_problem/temp"
   exclude-result-prefixes="xsl xs fn t m">
 <xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />
 <xsl:strip-space elements="*" />
@@ -8259,7 +8259,7 @@ Assume that the input is in XML form as listed [[Stable marriage problem/XSLT in
 ...when applied to the said input document will yield...
 
 <lang><t>
-   <m:stable-marriage-problem-result xmlns:m="http://rosettacode.org/wiki/Stable_marriage_problem">
+   <m:stable-marriage-problem-result xmlns:m="https://rosettacode.org/wiki/Stable_marriage_problem">
       <m:solution is-stable="true">
          <m:engagement>
             <m:dude name="bob"/>

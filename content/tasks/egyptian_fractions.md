@@ -79,7 +79,7 @@ For improper fractions, the integer part of any improper fraction should be firs
 
 
 ;Also see:
-*   Wolfram MathWorld&trade; entry: [Egyptian fraction](http://mathworld.wolfram.com/EgyptianFraction.html)
+*   Wolfram MathWorld&trade; entry: [Egyptian fraction](https://mathworld.wolfram.com/EgyptianFraction.html)
 
 
 

@@ -1921,7 +1921,7 @@ object FileDeleteTest extends App {
 
 ## Seed7
 
-The library [osfiles.s7i](http://seed7.sourceforge.net/libraries/osfiles.htm) provides the functions [removeFile](http://seed7.sourceforge.net/libraries/osfiles.htm#removeFile%28in_string%29) and [removeTree](http://seed7.sourceforge.net/libraries/osfiles.htm#removeTree%28in_string%29). RemoveFile removes a file of any type unless it is a directory that is not empty. RemoveTree remove a file of any type inclusive a directory tree. Note that removeFile and removeTree fail with the exception [FILE_ERROR](http://seed7.sourceforge.net/manual/errors.htm#FILE_ERROR) when the file does not exist.
+The library [osfiles.s7i](https://seed7.sourceforge.net/libraries/osfiles.htm) provides the functions [removeFile](https://seed7.sourceforge.net/libraries/osfiles.htm#removeFile%28in_string%29) and [removeTree](https://seed7.sourceforge.net/libraries/osfiles.htm#removeTree%28in_string%29). RemoveFile removes a file of any type unless it is a directory that is not empty. RemoveTree remove a file of any type inclusive a directory tree. Note that removeFile and removeTree fail with the exception [FILE_ERROR](https://seed7.sourceforge.net/manual/errors.htm#FILE_ERROR) when the file does not exist.
 
 ```seed7
 $ include "seed7_05.s7i";

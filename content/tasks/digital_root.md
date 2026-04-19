@@ -210,7 +210,7 @@ number=2147483647  persistence=  3  root=1
 
 ## Ada
 
-We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots <http://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada>. Further note the tunable parameter for the number base (default 10).
+We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots <https://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada>. Further note the tunable parameter for the number base (default 10).
 
 
 ```Ada
@@ -965,7 +965,7 @@ class Program
 
 ## C++
 
-For details of SumDigits see: <http://rosettacode.org/wiki/Sum_digits_of_an_integer>
+For details of SumDigits see: <https://rosettacode.org/wiki/Sum_digits_of_an_integer>
 
 ```cpp
 // Calculate the Digital Root and Additive Persistance of an Integer - Compiles with gcc4.7
@@ -2255,7 +2255,7 @@ fun main(args: Array<String>) {
 
 ## Lua
 
-With function sum_digits from <http://rosettacode.org/wiki/Sum_digits_of_an_integer#Lua>
+With function sum_digits from <https://rosettacode.org/wiki/Sum_digits_of_an_integer#Lua>
 
 ```lua
 function digital_root(n, base)
@@ -3051,7 +3051,7 @@ DigitalRoot          9
 ; if you just want the DigitalRoot
 ; Procedure.q DigitalRoot(N.q) apparently will do
 ; i must have missed something because it seems too simple
-; http://en.wikipedia.org/wiki/Digital_root#Congruence_formula
+; https://en.wikipedia.org/wiki/Digital_root#Congruence_formula
 
 Procedure.q DigitalRoot(N.q)
 Protected M.q=N%9
@@ -3060,7 +3060,7 @@ Else  :ProcedureReturn M:EndIf
 EndProcedure
 
 ; there appears to be a proof guarantying that Len(N$)<=1 for some X
-; http://en.wikipedia.org/wiki/Digital_root#Proof_that_a_constant_value_exists
+; https://en.wikipedia.org/wiki/Digital_root#Proof_that_a_constant_value_exists
 
 Procedure.s DigitalRootandPersistance(N.q)
 Protected r.s,t.s,X.q,M.q,persistance,N$=Str(N)

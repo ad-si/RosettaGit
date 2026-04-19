@@ -1349,7 +1349,7 @@ Sleep
 
 ## Go
 
-An unbounded cascading filtering method using channels, adapted from the classic concurrent prime sieve example in the "Try Go" window at <http://golang.org/>, improved by postponing the initiation of the filtering by a prime until the prime's square is seen in the input.
+An unbounded cascading filtering method using channels, adapted from the classic concurrent prime sieve example in the "Try Go" window at <https://golang.org/>, improved by postponing the initiation of the filtering by a prime until the prime's square is seen in the input.
 
 ```go
 package main
@@ -1534,7 +1534,7 @@ primesT = sieve [2..]
 ```
 
 
-As shown in Melissa O'Neill's paper ["The Genuine Sieve of Eratosthenes"](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), its complexity is quadratic in number of primes produced whereas that of optimal trial division is <math>O(n^{1.5}/(\log n)^{0.5})</math>, and of true SoE it is <math>O(n\log n\log\log n)</math>, in ''n'' primes produced.
+As shown in Melissa O'Neill's paper ["The Genuine Sieve of Eratosthenes"](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), its complexity is quadratic in number of primes produced whereas that of optimal trial division is <math>O(n^{1.5}/(\log n)^{0.5})</math>, and of true SoE it is <math>O(n\log n\log\log n)</math>, in ''n'' primes produced.
 
 Indeed as Eratosthenes sieve works by counting, ''its'' removal step could be prototyped as <code>(\(p:xs)-> minus xs [p,p+p..])</code>, where <code>minus xs ys == xs Data.List.\\ ys</code> for any finite and increasing ''xs'' and ''ys''.
 
@@ -2218,7 +2218,7 @@ Primes= 106
 
 ## Python
 
-Using the basic ''prime()'' function from: ["Primality by trial division"](http://rosettacode.org/wiki/Primality_by_trial_division#Python)
+Using the basic ''prime()'' function from: ["Primality by trial division"](https://rosettacode.org/wiki/Primality_by_trial_division#Python)
 
 ```Python
 
@@ -2473,7 +2473,7 @@ p pg.next # => 31
 ## Scala
 
 ===Odds-Only "infinite" primes generator using Streams and Co-Inductive Streams===
-Using Streams, [the "unfaithful sieve"](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), i.e. '''sub-optimal trial division sieve'''.
+Using Streams, [the "unfaithful sieve"](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), i.e. '''sub-optimal trial division sieve'''.
 
 ```scala
 def sieve(nums: Stream[Int]): Stream[Int] =
@@ -2496,7 +2496,7 @@ The above code is extremely inefficient for larger ranges, both because it tests
 
 ## Sidef
 
-Using the ''is_prime()'' function from: ["Primality by trial division"](http://rosettacode.org/wiki/Primality_by_trial_division#Sidef)
+Using the ''is_prime()'' function from: ["Primality by trial division"](https://rosettacode.org/wiki/Primality_by_trial_division#Sidef)
 
 ```ruby
 func prime_seq(amount, callback) {

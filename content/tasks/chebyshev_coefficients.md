@@ -489,7 +489,7 @@ x     computed    approximated    computed-approx
 
 ## J
 
-From 'J for C Programmers: Calculating Chebyshev Coefficients <http://www.jsoftware.com/learning/a_first_look_at_j_programs.htm#_Toc191734318>
+From 'J for C Programmers: Calculating Chebyshev Coefficients <https://www.jsoftware.com/learning/a_first_look_at_j_programs.htm#_Toc191734318>
 
 ```J
 

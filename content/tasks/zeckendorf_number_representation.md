@@ -90,8 +90,8 @@ The intention in this task to find the Zeckendorf form of an arbitrary integer. 
 
 
 ;Also see:
-*   [OEIS A014417](http://oeis.org/A014417)   for the the sequence of required results.
-*   [Brown's Criterion - Numberphile](http://www.youtube.com/watch?v=kQZmZRE0cQY&list=UUoxcjq-8xIDTYp3uz647V5A&index=3&feature=plcp)
+*   [OEIS A014417](https://oeis.org/A014417)   for the the sequence of required results.
+*   [Brown's Criterion - Numberphile](https://www.youtube.com/watch?v=kQZmZRE0cQY&list=UUoxcjq-8xIDTYp3uz647V5A&index=3&feature=plcp)
 
 
 ## Related tasks
@@ -558,7 +558,7 @@ NStepSequence(v1, v2, n, k) {
 	return, a
 }
 ```
-[NStepSequence()](http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey)
+[NStepSequence()](https://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey)
 '''Output:'''
 
 ```txt
@@ -2017,7 +2017,7 @@ main = (putStrLn . unlines) $ zeckendorf <$> [0 .. 20]
 
 ## J
 
-Please enjoy our [Zeckendorf essay](http://www.jsoftware.com/jwiki/Essays/Fibonacci%20Sums).
+Please enjoy our [Zeckendorf essay](https://www.jsoftware.com/jwiki/Essays/Fibonacci%20Sums).
 
 ```J
 

@@ -1377,7 +1377,7 @@ Running a randomly picked function which is not the last one:
 
 
 ===Tacit (unorthodox) version===
-In J only adverbs and conjunctions (functionals) can produce verbs (functions)...  Unless they are forced to cloak  as verbs; in this instance, the rank conjunction (“) cloaks as a dyadic verb. (Note that this takes advantage of a bug/feature where the interpreter does not produce a result with [the correct shape](http://www.jsoftware.com/help/dictionary/dictb.htm)):
+In J only adverbs and conjunctions (functionals) can produce verbs (functions)...  Unless they are forced to cloak  as verbs; in this instance, the rank conjunction (“) cloaks as a dyadic verb. (Note that this takes advantage of a bug/feature where the interpreter does not produce a result with [the correct shape](https://www.jsoftware.com/help/dictionary/dictb.htm)):
 
 
 ```j
@@ -2314,7 +2314,7 @@ Function Sum
 
 Works with SWI-Prolog and module '''lambda.pl''' from '''Ulrich Neumerkel'''.
 
-'''lambda.pl''' can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+'''lambda.pl''' can be found there : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```Prolog
@@ -2700,7 +2700,7 @@ fn main() {
 
 ----
 
-Using Scheme [SRFI 1](http://srfi.schemers.org/srfi-1/srfi-1.html) ''iota'' procedure can be simplified to:
+Using Scheme [SRFI 1](https://srfi.schemers.org/srfi-1/srfi-1.html) ''iota'' procedure can be simplified to:
 
 ```scheme
 

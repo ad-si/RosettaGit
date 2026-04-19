@@ -634,7 +634,7 @@ g, HHH, 5, YY, ++, ///, \
 
 ```cpp
 
-// Solution for http://rosettacode.org/wiki/Split_a_character_string_based_on_change_of_character
+// Solution for https://rosettacode.org/wiki/Split_a_character_string_based_on_change_of_character
 #include<string>
 #include<iostream>
 

@@ -183,7 +183,7 @@ PR READ "postlude/exception.a68" PR
 
 ## AutoHotkey
 
-[Image](http://i.imgur.com/8LgE7FS.png) - Link, since uploads seem to be disabled currently.
+[Image](https://i.imgur.com/8LgE7FS.png) - Link, since uploads seem to be disabled currently.
 {{works with|AutoHotkey_L}}(AutoHotkey1.1+)
 ```AutoHotkey
 #SingleInstance, Force
@@ -811,12 +811,12 @@ int main( int argc, char* argv[] )
 ```
 
 
-<http://i.imgur.com/0RQaxNl.png>
+<https://i.imgur.com/0RQaxNl.png>
 
 
 ## EchoLisp
 
-Resulting image [here](http://www.echolalie.org/echolisp/images/plot-coordinates.png).
+Resulting image [here](https://www.echolalie.org/echolisp/images/plot-coordinates.png).
 
 ```scheme
 
@@ -1035,7 +1035,7 @@ new SwingBuilder().edt {
 
 ## Haskell
 
-gnuplot is a package from [HackageDB](http://hackage.haskell.org/packages/hackage.html).
+gnuplot is a package from [HackageDB](https://hackage.haskell.org/packages/hackage.html).
 
 ```haskell
 import Graphics.Gnuplot.Simple
@@ -1157,8 +1157,8 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[numbers.icn provides floor,ceil](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[numbers.icn provides floor,ceil](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## J
@@ -1170,7 +1170,7 @@ Y=: 2.7 2.8 31.4 38.1 58.0 76.2 100.5 130.0 149.3 180.0
 'dot; pensize 2.4' plot X;Y
 ```
 
-[Output of plot.](http://www.jsoftware.com/jwiki/RosettaCode/ExamplePlot1)
+[Output of plot.](https://www.jsoftware.com/jwiki/RosettaCode/ExamplePlot1)
 
 If you eliminate the left argument to plot,
 the dots will be connected instead of being isolated.
@@ -1674,7 +1674,7 @@ let () =
 ```
 
 
-Using the [Archimedes](http://forge.ocamlcore.org/projects/archimedes/) library,
+Using the [Archimedes](https://forge.ocamlcore.org/projects/archimedes/) library,
 one can write:
 [[Image:Archimedes.png|300px|thumb|right|Archimedes plot (graphics output).]]
 
@@ -2089,9 +2089,9 @@ Interactive session:
 ```
 
 See some other examples:
-* [simple plot](http://matplotlib.org/examples/pylab_examples/simple_plot.html)
-* [scatter demo](http://matplotlib.org/examples/shapes_and_collections/scatter_demo.html)
-* [rotated ticklabels demo](http://matplotlib.org/examples/ticks_and_spines/ticklabels_demo_rotation.html)
+* [simple plot](https://matplotlib.org/examples/pylab_examples/simple_plot.html)
+* [scatter demo](https://matplotlib.org/examples/shapes_and_collections/scatter_demo.html)
+* [rotated ticklabels demo](https://matplotlib.org/examples/ticks_and_spines/ticklabels_demo_rotation.html)
 
 ==={{libheader|VPython}}===
 

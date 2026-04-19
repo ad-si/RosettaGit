@@ -16,9 +16,9 @@ tags = []
 WinSock2.ahk // a rewrite by derRaphael (w) Sep, 9 2008 
 
 based on the WinLIRC Script from Chris 
-    <http://www.autohotkey.com/docs/scripts/WinLIRC.htm> 
+    <https://www.autohotkey.com/docs/scripts/WinLIRC.htm> 
 and on the WinLIRC Rewrite by ZedGecko 
-    <http://www.autohotkey.com/forum/viewtopic.php?t=13829> 
+    <https://www.autohotkey.com/forum/viewtopic.php?t=13829> 
     
 __WSA_GetHostByName - Parts based upon scripts from DarviK 
 and Tasman. Not much left of the origin source, but it was 
@@ -72,13 +72,13 @@ WS2_Connect(lpszUrl) {
     ; CONVERSIONS 
 
     ; The htons function returns the value in TCP/IP network byte order. 
-    ; http://msdn.microsoft.com/en-us/library/ms738557(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms738557(VS.85).aspx 
     __WSA_Port                := DllCall("Ws2_32\htons", "UShort", WS2_Port) 
 
     ; The inet_addr function converts a string containing an IPv4 dotted-decimal 
     ; address into a proper address for the IN_ADDR structure. 
-    ; inet_addr: http://msdn.microsoft.com/en-us/library/ms738563(VS.85).aspx 
-    ; IN_ADDR:   http://msdn.microsoft.com/en-us/library/ms738571(VS.85).aspx 
+    ; inet_addr: https://msdn.microsoft.com/en-us/library/ms738563(VS.85).aspx 
+    ; IN_ADDR:   https://msdn.microsoft.com/en-us/library/ms738571(VS.85).aspx 
     __WSA_InetAddr           := DllCall("Ws2_32\inet_addr", "Str", WS2_IPAddress) 
 
     If (     ( __WSA_Socket:=__WSA_Socket() ) 
@@ -142,7 +142,7 @@ __WSA_ScriptInit()
 
     ; We're working with version 2 of Winsock 
     Local VersionRequested    := 2 
-    ; from http://msdn.microsoft.com/en-us/library/ms742212(VS.85).aspx 
+    ; from https://msdn.microsoft.com/en-us/library/ms742212(VS.85).aspx 
     Local AF_INET             := 2 
     Local SOCK_STREAM         := 1 
     Local IPPROTO_TCP         := 6 
@@ -174,9 +174,9 @@ __WSA_Startup()
     __WSA_ErrMsg := "" 
 
     ; Generate Structure for the lpWSAData 
-    ; as stated on http://msdn.microsoft.com/en-us/library/ms742213.aspx 
+    ; as stated on https://msdn.microsoft.com/en-us/library/ms742213.aspx 
     ; More on WSADATA (structure) to be found here: 
-    ; http://msdn.microsoft.com/en-us/library/ms741563(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms741563(VS.85).aspx 
     VarSetCapacity(WSAData, 32) 
     result := DllCall("Ws2_32\WSAStartup", "UShort", __WSA_WSVersion, "UInt", &WSAData) 
 
@@ -199,7 +199,7 @@ __WSA_Socket()
     Global __WSA_ErrMsg, __WSA_SocketProtocol, __WSA_SocketType, __WSA_SocketAF 
 
     ; Supposed to return a descriptor referencing the new socket 
-    ; http://msdn.microsoft.com/en-us/library/ms742212(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms742212(VS.85).aspx 
     __WSA_Socket := DllCall("Ws2_32\socket" 
                             , "Int", __WSA_SocketAF 
                             , "Int", __WSA_SocketType 
@@ -221,7 +221,7 @@ __WSA_Connect()
     Global __WSA_ErrMsg, __WSA_Port, __WSA_Socket, __WSA_InetAddr, __WSA_SocketAF 
 
     ; Generate socketaddr structure for the connect() 
-    ; http://msdn.microsoft.com/en-us/library/ms740496(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms740496(VS.85).aspx 
     __WSA_SockAddrNameLen  := 16 
     VarSetCapacity(__WSA_SockAddr, __WSA_SockAddrNameLen) 
     NumPut(__WSA_SocketAF, __WSA_SockAddr, 0, "UShort") 
@@ -229,7 +229,7 @@ __WSA_Connect()
     NumPut(__WSA_InetAddr, __WSA_SockAddr, 4) 
 
     ; The connect function establishes a connection to a specified socket. 
-    ; http://msdn.microsoft.com/en-us/library/ms737625(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms737625(VS.85).aspx 
     result := DllCall("Ws2_32\connect" 
                         , "UInt", __WSA_Socket 
                         , "UInt", &__WSA_SockAddr 
@@ -246,16 +246,16 @@ __WSA_Connect()
 
 /* 
  This code based originally upon an example by DarviK 
-    <http://www.autohotkey.com/forum/topic8871.html> 
+    <https://www.autohotkey.com/forum/topic8871.html> 
  and on the modifcations by Tasman 
-    <http://www.autohotkey.com/forum/viewtopic.php?t=9937> 
+    <https://www.autohotkey.com/forum/viewtopic.php?t=9937> 
 */ 
 ; Resolves canonical domainname to IP 
 __WSA_GetHostByName(url) 
 { 
     Global __WSA_ErrMsg 
     ; gethostbyname returns information about a domainname into a Hostent Structure 
-    ; <http://msdn.microsoft.com/en-us/library/ms738524(VS.85).aspx> 
+    ; <https://msdn.microsoft.com/en-us/library/ms738524(VS.85).aspx> 
     IP := "" 
     if ((PtrHostent:=DllCall("Ws2_32\gethostbyname","str",url)) != 0) { 
         Loop, 1 ; 3 is max No of retrieved addresses 
@@ -305,7 +305,7 @@ __WSA_AsyncSelect(__WSA_Socket, UDF, __WSA_NotificationMsg=0x5000
     OnMessage(__WSA_NotificationMsg, __WSA_DataReceiver) 
     ; The WSAAsyncSelect function requests Windows message-based notification 
     ; of network events for a socket. 
-    ; http://msdn.microsoft.com/en-us/library/ms741540(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/ms741540(VS.85).aspx 
     Result := DllCall("Ws2_32\WSAAsyncSelect" 
                 , "UInt", __WSA_Socket 
                 , "UInt", __WSA_GetThisScriptHandle() 
@@ -480,14 +480,14 @@ Return ExNr " means " ExErr "`n"
 ; WinINet InternetCrackURL - for internal use only 
 ; v 0.1 / (w) 25.07.2008 by derRaphael / zLib-Style release 
 ; This routine was originally posted here: 
-; <http://www.autohotkey.com/forum/viewtopic.php?p=209957#209957> 
+; <https://www.autohotkey.com/forum/viewtopic.php?p=209957#209957> 
 __WinINet_InternetCrackURL(lpszUrl,arrayName="URL") 
 { 
     local hModule, offset_name_length 
     hModule := DllCall("LoadLibrary", "Str", "WinINet.Dll") 
 
     ; SetUpStructures for URL_COMPONENTS / needed for InternetCrackURL 
-    ; http://msdn.microsoft.com/en-us/library/aa385420(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/aa385420(VS.85).aspx 
     offset_name_length:= "4-lpszScheme-255|16-lpszHostName-1024|28-lpszUserName-1024|" 
                        . "36-lpszPassword-1024|44-lpszUrlPath-1024|52-lpszExtrainfo-1024" 
 
@@ -503,7 +503,7 @@ __WinINet_InternetCrackURL(lpszUrl,arrayName="URL")
     } 
 
     ; Split the given URL; extract scheme, user, pass, authotity (host), port, path, and query (extrainfo) 
-    ; http://msdn.microsoft.com/en-us/library/aa384376(VS.85).aspx 
+    ; https://msdn.microsoft.com/en-us/library/aa384376(VS.85).aspx 
     DllCall("WinINet\InternetCrackUrlA","Str",lpszUrl,"uInt",StrLen(lpszUrl),"uInt",0,"uInt",&URL_COMPONENTS) 
     ; Update variables to retrieve results 
     Loop,Parse,offset_name_length,| 

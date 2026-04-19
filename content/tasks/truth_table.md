@@ -59,7 +59,7 @@ A [[wp:Truth table|truth table]] is a display of the inputs to, and the output o
 
 ## See also
 
-*   [Wolfram MathWorld entry on truth tables](http://mathworld.wolfram.com/TruthTable.html).
+*   [Wolfram MathWorld entry on truth tables](https://mathworld.wolfram.com/TruthTable.html).
 *   [some "truth table" examples from Google](http://www.google.co.uk/search?q=truth+table&hl=en&client=firefox-a&hs=Om7&rls=org.mozilla:en-GB:official&prmd=imvns&tbm=isch&tbo=u&source=univ&sa=X&ei=C0uuTtjuH4Wt8gOF4dmYCw&ved=0CDUQsAQ&biw=941&bih=931&sei=%20Jk-uTuKKD4Sg8QOFkPGcCw).
 
 
@@ -3565,7 +3565,7 @@ false  true  true  true  ────►  true
 
 ## Ruby
 
-Uses <code>eval</code>, so blindly trusts the user's input. The core <code>true</code> and <code>false</code> objects understand the methods <code>&</code> (and), <code>|</code> (or), <code>!</code> (not) and <code>^</code> (xor) -- <http://www.ruby-doc.org/core-1.9.2/TrueClass.html>
+Uses <code>eval</code>, so blindly trusts the user's input. The core <code>true</code> and <code>false</code> objects understand the methods <code>&</code> (and), <code>|</code> (or), <code>!</code> (not) and <code>^</code> (xor) -- <https://www.ruby-doc.org/core-1.9.2/TrueClass.html>
 
 ```ruby
 loop do

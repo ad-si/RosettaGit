@@ -14,4 +14,4 @@ tags = []
 
 Does that mean the input is automatically flushed? Explanatory text or a real example is needed. --[[User:Mwn3d|Mwn3d]] 21:39, 28 November 2011 (UTC)
 
-: At 20 September, new user Chunyun [tried to fix the example](http://rosettacode.org/mw/index.php?title=Keyboard_input/Flush_the_keyboard_buffer&diff=120939&oldid=119280) but instead [blanked the code](http://rosettacode.org/mw/index.php?title=Keyboard_input/Flush_the_keyboard_buffer&diff=120946&oldid=120939). The previous code was entirely wrong, so the blank example was not any worse. --[[User:Kernigh|Kernigh]] 03:53, 29 November 2011 (UTC)
+: At 20 September, new user Chunyun [tried to fix the example](https://rosettacode.org/mw/index.php?title=Keyboard_input/Flush_the_keyboard_buffer&diff=120939&oldid=119280) but instead [blanked the code](https://rosettacode.org/mw/index.php?title=Keyboard_input/Flush_the_keyboard_buffer&diff=120946&oldid=120939). The previous code was entirely wrong, so the blank example was not any worse. --[[User:Kernigh|Kernigh]] 03:53, 29 November 2011 (UTC)

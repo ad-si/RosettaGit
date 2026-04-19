@@ -99,7 +99,7 @@ End
 
 A Pythagoras tree constructed from an initial square of side length L, fits exactly in a bounding box of length 6L and width 4L([Proof](http://ecademy.agnesscott.edu/~lriddle/ifs/pythagorean/pythSize.htm)). That's why the window dimensions are set to 6L x 4L, where L is entered by the user. The squares increase rapidly, an iteration value of 30 takes 'forever' for a single branch to complete. The colours are picked randomly thus producing the effect of a Pythagorean Christmas Tree. :)
 
-Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -2001,7 +2001,7 @@ pythagoras_tree(w2 - diff, h -10 , w2 + diff , h -10 , 1)
 ## zkl
 
 I added green crosses at three of the vertexes of the new square to simulate leaves on the tree.
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:PythagorasTreeWithLeafs.zkl.jpg|300px|thumb|right]]
 
 ```zkl

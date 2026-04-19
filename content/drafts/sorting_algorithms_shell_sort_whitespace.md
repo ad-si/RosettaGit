@@ -14,7 +14,7 @@ This solution was tested and found to work correctly with the canonical [Haskell
 
 It was observed early on that hard-coding the values to be sorted might rouse suspicion as to whether such an inscrutable program were really doing any sorting; thus it was decided that input would be provided at runtime. This led to the unfortunate discovery that not all of the aforementioned interpreters handle <tt>EOF</tt> in the same way; Haskell and Ruby error out where C++ returns a convenient -1. In the interest of compatibility, the program reads values until a literal -1 is provided; all other negative numbers are permissible and will be sorted appropriately.
 
-A demonstration of the program capable of receiving further test input is available on [Ideone](http://ideone.com/zVfzfy).
+A demonstration of the program capable of receiving further test input is available on [Ideone](https://ideone.com/zVfzfy).
 
 
 ```Whitespace
@@ -103,7 +103,7 @@ A demonstration of the program capable of receiving further test input is availa
 ```
 
 
-While [semantic highlighting](http://i.imgur.com/8LhJoDG.png) makes the code slightly less opaque (read: transparent), it's much easier to read the pseudo-Assembly from which it was generated.
+While [semantic highlighting](https://i.imgur.com/8LhJoDG.png) makes the code slightly less opaque (read: transparent), it's much easier to read the pseudo-Assembly from which it was generated.
 
 
 ```asm

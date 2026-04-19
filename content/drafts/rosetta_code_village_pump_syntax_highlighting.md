@@ -14,7 +14,7 @@ tags = []
 |topic=Syntax Highlighting
 |summary=Discuss issues related to the Syntax Highlighting system here.  The old page got huge, and it became hard to discern what problems were current.
 }}
-For a prompt reply, please report [AutoGeSHi](http://rosettacode.org/geshi/) issues at [[Rosetta Code:AutoGeSHi]], not here. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]])
+For a prompt reply, please report [AutoGeSHi](https://rosettacode.org/geshi/) issues at [[Rosetta Code:AutoGeSHi]], not here. —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]])
 
 
 
@@ -203,7 +203,7 @@ It seems like it would be nice to have the lang tag work like the pre tag, but i
 :* Find the code which changes newline characters to br tags and remove it (my guess is that it's also the reason why whitespace highlighting is broken; probably the GeSHi highlighting code looks for newline characters and doesn't find them because they are replaced by br tags).
 :* Find the code which adds the extra &amp;nbsp; at the beginning/end and remove it.
 : I cannot imagine that taking a lot of time. --[[User:Ce|Ce]] 20:21, 11 October 2009 (UTC)
-:: [Here's the hacked-up MediaWiki extension](http://rosettacode.org/resources/gct_rcode.phps) RC is currrently using.  It differs fairly significantly from the original version due to fixes and issues that were brought up since its initial use here.  RC is currently using GeSHi 1.0.8.2.  The latest in the 1.0.x branch is 1.0.8.4, but we encountered significant breakage when I upgraded to that months ago, I had to roll it back.  I joined the GeSHi project with commit access, with the intention of adding languages, and finding and fixing issues, as well as running SVN HEAD on RC, but between ImplSearchBot issues and the StumbleUpon flood, my server (and remote backup target) at home suffering a [catastrophic hardware failure, my ''other'' computer's [screen flaking out](http://www.youtube.com/watch?v=klwvstK6SPU), as well as time cramps relating to family, work emergencies running fairly continually since June, and personal health issues coming to a head in the past month, I ''really'' haven't had time.
+:: [Here's the hacked-up MediaWiki extension](https://rosettacode.org/resources/gct_rcode.phps) RC is currrently using.  It differs fairly significantly from the original version due to fixes and issues that were brought up since its initial use here.  RC is currently using GeSHi 1.0.8.2.  The latest in the 1.0.x branch is 1.0.8.4, but we encountered significant breakage when I upgraded to that months ago, I had to roll it back.  I joined the GeSHi project with commit access, with the intention of adding languages, and finding and fixing issues, as well as running SVN HEAD on RC, but between ImplSearchBot issues and the StumbleUpon flood, my server (and remote backup target) at home suffering a [catastrophic hardware failure, my ''other'' computer's [screen flaking out](https://www.youtube.com/watch?v=klwvstK6SPU), as well as time cramps relating to family, work emergencies running fairly continually since June, and personal health issues coming to a head in the past month, I ''really'' haven't had time.
 ::
 :: The 1.0.x GeSHi branch is no longer under active development, and I don't know how painful the transition to the 1.1.x branch is going to be.  1.1.x was supposed to be released in August when I last had the time to talk to the other members of that project, and I don't know why it's still in alpha.
 ::
@@ -211,7 +211,7 @@ It seems like it would be nice to have the lang tag work like the pre tag, but i
 ::
 :: As an aside, I don't think anything changed in the server software between when newlines were highlighted and when they weren't.  It may also be a bug brought on by a shift in browser usage. --[[User:Short Circuit|Michael Mol]] 01:31, 12 October 2009 (UTC)
 ::: I think that it's not a browser problem. Inspecting the generated HTML shows there's no span created around the line breaks.
-::: BTW, the changing of newlines to br tags is in the second-to-last line in the linked file, <http://rosettacode.org/resources/gct_rcode.phps><nowiki></nowiki> (i.e. in the return). Just replacing <code>str_replace("\n",'&lt;br />', $geshi->parse_code())</code> with <code>$geshi->parse_code()</code> should fix that part. However, that line also shows that my suspicion that this is responsible for the missing newline highlighting is wrong: It is only applied ''after'' highlighting.
+::: BTW, the changing of newlines to br tags is in the second-to-last line in the linked file, <https://rosettacode.org/resources/gct_rcode.phps><nowiki></nowiki> (i.e. in the return). Just replacing <code>str_replace("\n",'&lt;br />', $geshi->parse_code())</code> with <code>$geshi->parse_code()</code> should fix that part. However, that line also shows that my suspicion that this is responsible for the missing newline highlighting is wrong: It is only applied ''after'' highlighting.
 ::: I also see that you've added my previously suggested function prestyletrim; now it's also clear to me why it didn't work: You applied it after the parsing instead of before. But since I now recognized that the semantics would be wrong anyways, it should probably be removed. However, instead it may be modified to simply patch away the spurious &amp;nbsp; after the fact (the cleaner way would be not to generate it, but that seems to be in <code>$geshi->parse_code()</code>, which is not in the file you linked to).
 ::: I think changing prestyletrim to
 
@@ -352,7 +352,7 @@ Map < String, Integer >
 == OCaml syntax highlighting issues, '''bis''' ==
 
 * there is a problem with strings containing double quotes as we can see here [[JSON#OCaml]]
-* a similar problem occurs with a double quote inside single quotes (the char '"'): [S-Expressions#OCaml](http://rosettacode.org/mw/index.php?title=S-Expressions&oldid=123055#OCaml)
+* a similar problem occurs with a double quote inside single quotes (the char '"'): [S-Expressions#OCaml](https://rosettacode.org/mw/index.php?title=S-Expressions&oldid=123055#OCaml)
 * the same problem affects Pike, but it doesn't affect Python.
 ```ocaml
 '"' ocaml
@@ -371,12 +371,12 @@ Map < String, Integer >
 
 :* I've added some Modules for now. For the star-ed Modules I'd need to have the Parent Module name or the Doc-Link that I should be generating. As each Group requires some overhead I'd suggest linking only those with at least 2 or 3 Submodules in it (e.g. Array) and simply highlighting (without Link) the others. Could you compile me that list? --[[User:BenBE|BenBE]] 00:29, 18 February 2010 (UTC)
 :: Here are the full links of the star'ed modules:
- Array1   => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array1.html>
- Array2   => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array2.html>
- Array3   => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array3.html>
- Genarray => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Genarray.html>
- Scanning => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Scanf.Scanning.html>
- State    => <http://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.State.html>
+ Array1   => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array1.html>
+ Array2   => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array2.html>
+ Array3   => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Array3.html>
+ Genarray => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.Genarray.html>
+ Scanning => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Scanf.Scanning.html>
+ State    => <https://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.State.html>
 
 
 
@@ -384,8 +384,8 @@ Map < String, Integer >
 
 ```ocaml
 file_descr
-[1] http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#TYPEfile_descr
-[2] http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#TYPEfile_descr
+[1] https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#TYPEfile_descr
+[2] https://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#TYPEfile_descr
 
 ```
 
@@ -395,9 +395,9 @@ file_descr
 
 ```ocaml
 
- int32      => http://caml.inria.fr/pub/docs/manual-ocaml/libref/Int32.html
- int64      => http://caml.inria.fr/pub/docs/manual-ocaml/libref/Int64.html
- nativeint  => http://caml.inria.fr/pub/docs/manual-ocaml/libref/Nativeint.html
+ int32      => https://caml.inria.fr/pub/docs/manual-ocaml/libref/Int32.html
+ int64      => https://caml.inria.fr/pub/docs/manual-ocaml/libref/Int64.html
+ nativeint  => https://caml.inria.fr/pub/docs/manual-ocaml/libref/Nativeint.html
 
 ```
 
@@ -441,7 +441,7 @@ MATLAB has HTML leaking into its links. Take a look at [[Ethiopian_multiplicatio
 ::k, just applied the GeSHi SVN patches on RC. Should take effect soon. --[[User:BenBE|BenBE]] 21:42, 25 April 2010 (UTC)
 
 =ALGOL 68, AutoGeSHi=
-I ran <http://rosettacode.org/geshi/> and it generated a script: algol68.php-v1.0.8.8.4 is now in 1.0.8.9.
+I ran <https://rosettacode.org/geshi/> and it generated a script: algol68.php-v1.0.8.8.4 is now in 1.0.8.9.
 
 ```php
 <?php
@@ -458,7 +458,7 @@ I ran <http://rosettacode.org/geshi/> and it generated a script: algol68.php-v1.
  * CHANGES
  * -------
  * 2010/04/24 (1.0.8.8.0)
- *   - First Release - machine generated by http://rosettacode.org/geshi/
+ *   - First Release - machine generated by https://rosettacode.org/geshi/
  * 2010/05/24 (1.0.8.8.1)
  *   - #2324 - converted comment detection to RegEx
  * 2010/06/16 (1.0.8.8.2)
@@ -806,11 +806,11 @@ Maybe we could/should start a page: [[GeSHi#ALGOL_68]] etc (with the php for GeS
 
 BTW: The operators: '&amp;#8804;' and '&amp;#8805;' can be done in html as '&amp;le;' and '&amp;ge;' eg '&le;' and '&ge;';
 
-There are a few of others: ne: &ne;, cent: &cent; pound: &pound; deg: &deg;, and: &and;, or: &or;, not: &not;, lceil: &lceil;, lfloor: &lfloor;, times: &times;, divide: &divide; larr: &larr;, rarr: &rarr;, uarr: &uarr;, darr: &darr;, and perp: &perp;  <!-- The Algol 68 Report used alefsym: &alefsym;, "&#x226E;", "&#x226F;" and &#x2112; <http://en.wikipedia.org/wiki/Van_Wijngaarden_grammar> -->. But no HTML entities for □, ○, ⎩, ⎧ (Unicode 5.1) and "⏨" (decimal exponentiation - Unicode 5.2).
+There are a few of others: ne: &ne;, cent: &cent; pound: &pound; deg: &deg;, and: &and;, or: &or;, not: &not;, lceil: &lceil;, lfloor: &lfloor;, times: &times;, divide: &divide; larr: &larr;, rarr: &rarr;, uarr: &uarr;, darr: &darr;, and perp: &perp;  <!-- The Algol 68 Report used alefsym: &alefsym;, "&#x226E;", "&#x226F;" and &#x2112; <https://en.wikipedia.org/wiki/Van_Wijngaarden_grammar> -->. But no HTML entities for □, ○, ⎩, ⎧ (Unicode 5.1) and "⏨" (decimal exponentiation - Unicode 5.2).
 
-Detecting all the HTML entity defs (<http://php.net/manual/en/function.htmlentities.php>) is probably the easiest way of doing things.
+Detecting all the HTML entity defs (<https://php.net/manual/en/function.htmlentities.php>) is probably the easiest way of doing things.
 
-Trivia: Standard Algol 60 required sup: &sup;, equiv: &equiv;, "&#x2423;" and "&#x23E8;" (decimal exponentiation - Unicode 5.2); The Soviet Algol compiler - used for the Buran Space Shuttle reentry software - even had the character: loz: &loz;, together with support for &#xB0;, &#x2205;, &#xB1; and &#x2207; ... I could never figure out what this [diamond &loz;](http://en.wikipedia.org/wiki/Behenian_fixed_stars#Table_of_Behenian_Stars) character was used for!!!  The Germans also included the unusual "<font size=5>&#x16ED;</font>" (iron/runic cross), I'm not convinced it was used for multiplication.  Probably something used for something mundane like printing train time tables, you would have to be German to understand. :-)
+Trivia: Standard Algol 60 required sup: &sup;, equiv: &equiv;, "&#x2423;" and "&#x23E8;" (decimal exponentiation - Unicode 5.2); The Soviet Algol compiler - used for the Buran Space Shuttle reentry software - even had the character: loz: &loz;, together with support for &#xB0;, &#x2205;, &#xB1; and &#x2207; ... I could never figure out what this [diamond &loz;](https://en.wikipedia.org/wiki/Behenian_fixed_stars#Table_of_Behenian_Stars) character was used for!!!  The Germans also included the unusual "<font size=5>&#x16ED;</font>" (iron/runic cross), I'm not convinced it was used for multiplication.  Probably something used for something mundane like printing train time tables, you would have to be German to understand. :-)
 
 More Trivia: Most of the HTML entities appear to have arrived via Adobe fonts from an IBM Selectric typewriter font ball that was popular prior to ASCII 69 becoming a mandated US standard.  Some of the HTML entities are fairly weird.
 
@@ -835,7 +835,7 @@ Apostrophes (') have three different roles in F#:
 * they enclose character literals, like 'A',  '\065', '\n' or '\u0041'
 * type parameters always begin with an apostrophe
 * apostrophes can be part of a normal identifier (but not in the first position)
-At the moment, all apostrophes are interpreted as starting a character. See for example here: <http://rosettacode.org/wiki/Doubly-linked_list/Definition#F.23>
+At the moment, all apostrophes are interpreted as starting a character. See for example here: <https://rosettacode.org/wiki/Doubly-linked_list/Definition#F.23>
 
 Maybe a work-around could be: Ignore apostrophes except
 * if followed by exactly one arbitrary character and an additional apostrophe, like 'A'
@@ -844,7 +844,7 @@ Maybe a work-around could be: Ignore apostrophes except
 
 =PL/I, AutoGeSHi=
 
-I ran <http://rosettacode.org/geshi/autogeshi.pl?identifier=pli&LANG_NAME=Programming+Language+One&COMMENT_SINGLE=&COMMENT_MULTI=%2F*+*%2F&QUOTEMARKS=%22+%27&ESCAPE_CHAR=&KEYWORDS=abnormal+abs+acos+acosf+add+addbuff+addr+addrdata+alias+aligned+all+alloc+allocate+allocation+allocn+allocsize+any+anycondition+area+ascii+asin+asinf+asm+asmtdli+assembler+assignable+atan+atand+atanf+atanh+attach+attention+attn+auto+automatic+availablearea+backwards+based+begin+bigendian+bin+binary+binaryvalue+bind+binvalue+bit+bitloc+bitlocation+bkwd+blksize+bool+buf+buffered+buffers+bufnd+bufni+bufoff+bufsp+builtin+bx+by+byaddr+byte+byvalue+b4+call+cast+cds+ceil+center+centerleft+centerright+centre+centreleft+centreright+char+character+charg+chargraphic+charval+check+checkstg+close+cmpat+cobol+col+collate+column+comment+compare+compiledate+compiletime+completion+complex+cond+condition+conjg+conn+connected+consecutive+controlled+conv+conversion+copy+cos+cosd+cosf+cosh+count+counter+cpln+cplx+cs+cstg+ctl+ctlasa+ctl360+currentsize+currentstorage+data+datafield+date+datetime+days+daystodate+daystosecs+db+dcl+dec+decimal+declare+def+default+define+defined+delay+delete+descriptor+descriptors+detach+dft+dim+dimacross+dimension+direct+display+divide+do+downthru+edit+else+empty+end+endfile+endpage+entry+entryaddr+env+environment+epsilon+erf+erfc+error+event+excl+exclusive+exit+exp+expf+exponent+exports+ext+external+fb+fbs+fetch+file+fileddint+fileddtest+fileddword+fileid+fileopen+fileread+fileseek+filetell+filewrite+finish+first+fixed+fixedbin+fixeddec+fixedoverflow+float+floatbin+floatdec+floor+flush+fofl+format+fortran+free+from+fromalien+fs+gamma+generic+genkey+get+getenv+go+goto+graphic+gx+handle+hbound+hex+hexadec+heximage+high+huge+iand+ieee+ieor+if+ignore+imag+in+index+indexarea+indexed+init+initial+inline+inonly+inot+inout+input+int+inter+internal+into+invalidop+ior+irred+irreducible+isfinite+isigned+isinf+isll+ismain+isnan+isnormal+isrl+iszero+iunsigned+key+keyed+keyfrom+keylength+keyloc+keyto+label+last+lbound+leave+left+length+like+limited+line+lineno+linesize+linkage+list+littleendian+loc+locate+location+log+logf+loggamma+log10+log10f+log2+low+lowercase+lower2+maccol+maclmar+macname+macrmar+main+max+maxexp+maxlength+memconvert+memcu12+memcu14+memcu21+memcu24+memcu41+memcu42+memindex+memsearch+memsearchr+memverify+memverifyr+min+minexp+mod+mpstr+multiply+name+native+ncp+new+nocharg+nochargraphic+nocheck+nocmpat+noconv+noconversion+nodescriptor+noexecops+nofixedoverflow+nofofl+noinline+nolock+nomap+nomapin+nomapout+nonasgn+nonassignable+nonconnected+nonnative+noofl+nooverflow+norescan+normal+nosize+nostrg+nostringrange+nostringsize+nostrz+nosubrg+nosubscriptrange+noufl+nounderflow+nowrite+nozdiv+nozerodivide+null+offset+offsetadd+offsetdiff+offsetsubtract+offsetvalue+ofl+omitted+on+onarea+onchar+oncode+oncondcond+oncondid+oncount+onfile+ongsource+onkey+online+onloc+onoffset+onsource+onsubcode+onwchar+onwsource+open+optional+options+order+ordinal+ordinalname+ordinalpred+ordinalsucc+other+otherwise+outonly+output+overflow+package+packagename+page+pageno+pagesize+parameter+parmset+password+pending+pic+picspec+picture+places+pliascii+plicanc+plickpt+plidelete+plidump+pliebcdic+plifill+plifree+plimove+pliover+plirest+pliretc+pliretv+plisaxa+plisaxb+plisaxc+plisaxd+plisrta+plisrtb+plisrtc+plisrtd+plitdli+plitran11+plitran12+plitran21+plitran22+pointer+pointeradd+pointerdiff+pointersubtract+pointervalue+poly+pos+position+prec+precision+pred+present+print+priority+proc+procedure+procedurename+procname+prod+ptr+ptradd+ptrdiff+ptrsubtract+ptrvalue+put+putenv+quote+radix+raise2+random+range+rank+read+real+record+recsize+recursive+red+reducible+reentrant+refer+regional+reg12+release+rem+reorder+repattern+repeat+replaceby2+reply+reread+rescan+reserved+reserves+resignal+respec+retcode+return+returns+reuse+reverse+revert+rewrite+right+round+rounddec+samekey+scalarvarying+scale+search+searchr+secs+secstodate+secstodays+select+seql+sequential+serialize4+set+sign+signal+signed+sin+sind+sinf+sinh+sis+size+skip+snap+sourcefile+sourceline+sqrt+sqrtf+stackaddr+statement+static+status+stg+stmt+stop+storage+stream+strg+string+stringrange+stringsize+structure+strz+subrg+subscriptrange+substr+subtract+succ+sum+suppress+sysin+sysnull+sysparm+sysprint+system+sysversion+tally+tan+tand+tanf+tanh+task+then+thread+threadid+time+tiny+title+to+total+tpk+tpm+transient+translate+transmit+trim+trkofl+trunc+type+ufl+ulength+ulength16+ulength8+unal+unaligned+unallocated+unbuf+unbuffered+undefinedfile+underflow+undf+unlock+unsigned+unspec+until+update+upos+uppercase+upthru+usubstr+usurrogate+uvalid+uwidth+valid+validdate+value+var+varglist+vargsize+variable+varying+varyingz+vb+vbs+verify+verifyr+vs+vsam+wait+wchar+wcharval+weekday+when+whigh+while+widechar+wlow+write+xmlchar+y4date+y4julian+y4year+zdiv+zerodivide%0D%0A&SYMBOLS=%28%29%2B-*%2F%3D%3C%3E%26|%3A%3B%2C&OBJECT_SPLITTERS=.&author=Robert+AH+Prins&email=robert%40prino.org&url=http%3A%2F%2Fhitchwiki.org%2Fen%2FUser%3APrino>
+I ran <https://rosettacode.org/geshi/autogeshi.pl?identifier=pli&LANG_NAME=Programming+Language+One&COMMENT_SINGLE=&COMMENT_MULTI=%2F*+*%2F&QUOTEMARKS=%22+%27&ESCAPE_CHAR=&KEYWORDS=abnormal+abs+acos+acosf+add+addbuff+addr+addrdata+alias+aligned+all+alloc+allocate+allocation+allocn+allocsize+any+anycondition+area+ascii+asin+asinf+asm+asmtdli+assembler+assignable+atan+atand+atanf+atanh+attach+attention+attn+auto+automatic+availablearea+backwards+based+begin+bigendian+bin+binary+binaryvalue+bind+binvalue+bit+bitloc+bitlocation+bkwd+blksize+bool+buf+buffered+buffers+bufnd+bufni+bufoff+bufsp+builtin+bx+by+byaddr+byte+byvalue+b4+call+cast+cds+ceil+center+centerleft+centerright+centre+centreleft+centreright+char+character+charg+chargraphic+charval+check+checkstg+close+cmpat+cobol+col+collate+column+comment+compare+compiledate+compiletime+completion+complex+cond+condition+conjg+conn+connected+consecutive+controlled+conv+conversion+copy+cos+cosd+cosf+cosh+count+counter+cpln+cplx+cs+cstg+ctl+ctlasa+ctl360+currentsize+currentstorage+data+datafield+date+datetime+days+daystodate+daystosecs+db+dcl+dec+decimal+declare+def+default+define+defined+delay+delete+descriptor+descriptors+detach+dft+dim+dimacross+dimension+direct+display+divide+do+downthru+edit+else+empty+end+endfile+endpage+entry+entryaddr+env+environment+epsilon+erf+erfc+error+event+excl+exclusive+exit+exp+expf+exponent+exports+ext+external+fb+fbs+fetch+file+fileddint+fileddtest+fileddword+fileid+fileopen+fileread+fileseek+filetell+filewrite+finish+first+fixed+fixedbin+fixeddec+fixedoverflow+float+floatbin+floatdec+floor+flush+fofl+format+fortran+free+from+fromalien+fs+gamma+generic+genkey+get+getenv+go+goto+graphic+gx+handle+hbound+hex+hexadec+heximage+high+huge+iand+ieee+ieor+if+ignore+imag+in+index+indexarea+indexed+init+initial+inline+inonly+inot+inout+input+int+inter+internal+into+invalidop+ior+irred+irreducible+isfinite+isigned+isinf+isll+ismain+isnan+isnormal+isrl+iszero+iunsigned+key+keyed+keyfrom+keylength+keyloc+keyto+label+last+lbound+leave+left+length+like+limited+line+lineno+linesize+linkage+list+littleendian+loc+locate+location+log+logf+loggamma+log10+log10f+log2+low+lowercase+lower2+maccol+maclmar+macname+macrmar+main+max+maxexp+maxlength+memconvert+memcu12+memcu14+memcu21+memcu24+memcu41+memcu42+memindex+memsearch+memsearchr+memverify+memverifyr+min+minexp+mod+mpstr+multiply+name+native+ncp+new+nocharg+nochargraphic+nocheck+nocmpat+noconv+noconversion+nodescriptor+noexecops+nofixedoverflow+nofofl+noinline+nolock+nomap+nomapin+nomapout+nonasgn+nonassignable+nonconnected+nonnative+noofl+nooverflow+norescan+normal+nosize+nostrg+nostringrange+nostringsize+nostrz+nosubrg+nosubscriptrange+noufl+nounderflow+nowrite+nozdiv+nozerodivide+null+offset+offsetadd+offsetdiff+offsetsubtract+offsetvalue+ofl+omitted+on+onarea+onchar+oncode+oncondcond+oncondid+oncount+onfile+ongsource+onkey+online+onloc+onoffset+onsource+onsubcode+onwchar+onwsource+open+optional+options+order+ordinal+ordinalname+ordinalpred+ordinalsucc+other+otherwise+outonly+output+overflow+package+packagename+page+pageno+pagesize+parameter+parmset+password+pending+pic+picspec+picture+places+pliascii+plicanc+plickpt+plidelete+plidump+pliebcdic+plifill+plifree+plimove+pliover+plirest+pliretc+pliretv+plisaxa+plisaxb+plisaxc+plisaxd+plisrta+plisrtb+plisrtc+plisrtd+plitdli+plitran11+plitran12+plitran21+plitran22+pointer+pointeradd+pointerdiff+pointersubtract+pointervalue+poly+pos+position+prec+precision+pred+present+print+priority+proc+procedure+procedurename+procname+prod+ptr+ptradd+ptrdiff+ptrsubtract+ptrvalue+put+putenv+quote+radix+raise2+random+range+rank+read+real+record+recsize+recursive+red+reducible+reentrant+refer+regional+reg12+release+rem+reorder+repattern+repeat+replaceby2+reply+reread+rescan+reserved+reserves+resignal+respec+retcode+return+returns+reuse+reverse+revert+rewrite+right+round+rounddec+samekey+scalarvarying+scale+search+searchr+secs+secstodate+secstodays+select+seql+sequential+serialize4+set+sign+signal+signed+sin+sind+sinf+sinh+sis+size+skip+snap+sourcefile+sourceline+sqrt+sqrtf+stackaddr+statement+static+status+stg+stmt+stop+storage+stream+strg+string+stringrange+stringsize+structure+strz+subrg+subscriptrange+substr+subtract+succ+sum+suppress+sysin+sysnull+sysparm+sysprint+system+sysversion+tally+tan+tand+tanf+tanh+task+then+thread+threadid+time+tiny+title+to+total+tpk+tpm+transient+translate+transmit+trim+trkofl+trunc+type+ufl+ulength+ulength16+ulength8+unal+unaligned+unallocated+unbuf+unbuffered+undefinedfile+underflow+undf+unlock+unsigned+unspec+until+update+upos+uppercase+upthru+usubstr+usurrogate+uvalid+uwidth+valid+validdate+value+var+varglist+vargsize+variable+varying+varyingz+vb+vbs+verify+verifyr+vs+vsam+wait+wchar+wcharval+weekday+when+whigh+while+widechar+wlow+write+xmlchar+y4date+y4julian+y4year+zdiv+zerodivide%0D%0A&SYMBOLS=%28%29%2B-*%2F%3D%3C%3E%26|%3A%3B%2C&OBJECT_SPLITTERS=.&author=Robert+AH+Prins&email=robert%40prino.org&url=http%3A%2F%2Fhitchwiki.org%2Fen%2FUser%3APrino>
 
 And the result was rather sad, the age seems to have a problem with the rather large number of PL/I keywords...
 
@@ -854,7 +854,7 @@ Any suggestions on how to proceed? [[User:Prino|Prino]] 12:46, 8 February 2011 (
 : One possibility is to run it with a small number of keywords and edit the others in (not hard). [[User:CRGreathouse|CRGreathouse]] 18:37, 11 May 2011 (UTC)
 
 = PARI/GP =
-I created a GeSHi file for GP scripts (starting from an [AutoGeSHi](http://rosettacode.org/geshi/) skeleton and modifying as needed).  It is in the old 1.0 format rather than the new 1.1 format.  (If it's more convenient I can try to make a new format file, but I haven't found any documentation on it.)
+I created a GeSHi file for GP scripts (starting from an [AutoGeSHi](https://rosettacode.org/geshi/) skeleton and modifying as needed).  It is in the old 1.0 format rather than the new 1.1 format.  (If it's more convenient I can try to make a new format file, but I haven't found any documentation on it.)
 
 There are a few things I'd like to iron out, if possible.  First of all, \ is an escape character only in special cases: \n, \t, \e, and \", I think.  This is important because it must be an escape in \" (or else strings will be mis-terminated) and it must not be an escape outside of strings (or else 5\2 will be misinterpreted as an error or at least something other than a number).  In other cases it is integer division.
 
@@ -1054,7 +1054,7 @@ $language_data = array(
 ```
 </div>
 
-: Update: Submitted to the [GeSHi issue tracker](http://sourceforge.net/tracker/?func=detail&aid=3303485&group_id=114997&atid=670234). [[User:CRGreathouse|CRGreathouse]] 15:50, 18 May 2011 (UTC)
+: Update: Submitted to the [GeSHi issue tracker](https://sourceforge.net/tracker/?func=detail&aid=3303485&group_id=114997&atid=670234). [[User:CRGreathouse|CRGreathouse]] 15:50, 18 May 2011 (UTC)
 
 = GeShi power appears to be very limited =
 
@@ -1102,7 +1102,7 @@ Keywords are being highlighted inside a  here document, which is verbatim text. 
 
 Sorry, this is not a usable syntax coloring system.
 :Write a better one and come back then. --[[User:BenBE|BenBE]] 01:12, 28 January 2012 (UTC)
-:: If I write a better one, will Rosetta switch to it? I have absolutely no use for GeShi (and therefore not for any replacement for GeShi, either) except that it's the only system supported in Rosetta. Why would I waste my spare time hacking on this when I can, like, put my spare time programming cycles into something better, like my own project.  If we could use some HTML tags, the problem would be solved. Vim does the syntax highlighting perfectly, and can put out HTML that you can cut and paste into a web page or wiki. Say, maybe the HTML put out by Vim can be machine translated into colorized Wikimedia markup <http://en.wikipedia.org/wiki/Help:Wiki_markup#Coloring_text>. This may be the key to a GeShi-free solution, worth looking into.[[Special:Contributions/192.139.122.42|192.139.122.42]] 01:51, 28 January 2012 (UTC)
+:: If I write a better one, will Rosetta switch to it? I have absolutely no use for GeShi (and therefore not for any replacement for GeShi, either) except that it's the only system supported in Rosetta. Why would I waste my spare time hacking on this when I can, like, put my spare time programming cycles into something better, like my own project.  If we could use some HTML tags, the problem would be solved. Vim does the syntax highlighting perfectly, and can put out HTML that you can cut and paste into a web page or wiki. Say, maybe the HTML put out by Vim can be machine translated into colorized Wikimedia markup <https://en.wikipedia.org/wiki/Help:Wiki_markup#Coloring_text>. This may be the key to a GeShi-free solution, worth looking into.[[Special:Contributions/192.139.122.42|192.139.122.42]] 01:51, 28 January 2012 (UTC)
 ::: Well, let me thing about this for a moment ... No, you don't really want this. No. You don't! --[[User:BenBE|BenBE]] 02:25, 28 January 2012 (UTC)
 ::::: Proof of concept:
 <div class="text highlighted_source" style="border:1pt dashed black;white-space:pre;overflow:auto;background:white;color:black;padding:1em;border:1px dashed #2f6fab;color:black;background-color:#f9f9f9;line-height:1.3em"><code><span style="color: #800090; background-color: #f0f0f0">#include </span><span style="color: #077807; background-color: #f0f0f0">&lt;stdio.h&gt;</span>
@@ -1200,7 +1200,7 @@ I note that the wikipedia color schemes are different from rosettacode GeShi col
 [[User:NevilleDNZ|NevilleDNZ]] 07:03, 22 March 2013 (UTC)
 
 = Highlighting for MK-61 =
-I propose to install a syntax highlighting of MK-61/52: [file](http://pastebin.com/BNByHpac). [[User:Русский|Русский]] ([[User talk:Русский|talk]]) 16:02, 11 March 2014 (UTC)
+I propose to install a syntax highlighting of MK-61/52: [file](https://pastebin.com/BNByHpac). [[User:Русский|Русский]] ([[User talk:Русский|talk]]) 16:02, 11 March 2014 (UTC)
 : Or think the highlighting for it is not necessary and the code is clear so? [[User:Русский|Русский]] ([[User talk:Русский|talk]]) 16:09, 12 March 2014 (UTC)
 : Do not present the technical opportunities to add new lighting? 19:18, 20 April 2014 (UTC)
 :: I think you need to send a pull request if you want to add your language file to GeSHi. The repository is on [GitHub](https://github.com/GeSHi/geshi-1.0). --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 06:53, 23 April 2014 (UTC)

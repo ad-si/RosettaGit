@@ -24,7 +24,7 @@ The following text was deleted:
 ```txt
 
 Sort most popular programming languages based in number of members in Rosetta Code categories.
-(from http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+(from https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
 
 ```
 
@@ -57,7 +57,7 @@ Then check the gcmcontinue code at the top to cycle through each additional 500 
 
 -----
 
-:According to [its task page](http://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
+:According to [its task page](https://rosettacode.org/wiki/Category:A%2B) A+ has no tasks implemented. It seems as if a language with no tasks implemented is treated as if it has three
 :: rank: 441         (3 entries)  A+
 :--[[User:Nigel Galloway|Nigel Galloway]] 14:51, 26 January 2013 (UTC)
 
@@ -70,7 +70,7 @@ I took the task's requirements quite literally:
 
 ''Sort most popular programming languages based in number of '''members''' in Rosetta Code categories''
 
- (from <http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
+ (from <https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>)
 
 
 (The bold font was added by me.)   Note that it didn't say   '''implementations''',   but   '''members'''.
@@ -144,7 +144,7 @@ clearly the intention.
 The jq example uses limit=5000:
 
 ```sh
-'http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'
+'https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000'
 ```
 
 This (together with the single-page query Category:Programming_Languages) seems like the simplest approach.  Is there a problem with that?
@@ -198,8 +198,8 @@ If you meant   '''Mathematica''',   then yes, the   '''24 game'''   is included 
 '''RC_POP.REX'''   is the name of the REXX program. 
 
 The (or my) REXX program isn't making any decision.   It uses two files for input:
-::*   Categories     {http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)}
-::*   Category:Programming_Languages     {http://www.rosettacode.org/wiki/Category:Programming_Languages}
+::*   Categories     {https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)}
+::*   Category:Programming_Languages     {https://www.rosettacode.org/wiki/Category:Programming_Languages}
 
 
 It scans the 1<sup>st</sup> file for (any) categories, and each category is checked against the 2<sup>nd</sup> file to verify that it is a computer programming language known to Rosetta Code.   If it passes the verification,   then it's a computer language that is used on Rosetta Code,   and the number of entries (programming examples) is taken from the   '''members'''   keyword.   No distinction or decision was made on my part or the REXX program's part between the aforementioned computer programming languages. 
@@ -226,7 +226,7 @@ Also, as a by-product of having two computer programming languages specified in 
 ## Mathematica / Wolfram Language
  </nowiki> </big>   header,   it would appear like there was an entry for each of the two languages specified, thus my comment about double counting.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 00:04, 11 February 2019 (UTC)
 
-:See my musing on this subject (from last September) here: [Lies, damned lies, and statistics](http://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Whoa!_10000_examples!#Lies.2C_damned_lies_and_statistics)  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:23, 11 February 2019 (UTC)
+:See my musing on this subject (from last September) here: [Lies, damned lies, and statistics](https://rosettacode.org/wiki/Rosetta_Code:Village_Pump/Whoa!_10000_examples!#Lies.2C_damned_lies_and_statistics)  --[[User:Thundergnat|Thundergnat]] ([[User talk:Thundergnat|talk]]) 00:23, 11 February 2019 (UTC)
 
 
 == Category vs. solution ==

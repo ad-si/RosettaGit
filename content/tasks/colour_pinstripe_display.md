@@ -120,7 +120,7 @@ package  {
 ## AutoHotkey
 
 [[file:ahk_stripes.png|center|300px]]
-Requires the GDI+ standard library: <http://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
+Requires the GDI+ standard library: <https://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
 It is worth noting that this fills the whole screen; press Esc to exit.
 
 ```AHK
@@ -503,7 +503,7 @@ End
 
 ```
 
-'''[Click to see output image](http://www.cogier.com/gambas/colour_pinstripe.png)'''
+'''[Click to see output image](https://www.cogier.com/gambas/colour_pinstripe.png)'''
 
 
 ## Go
@@ -592,9 +592,9 @@ end
 
 [[File:Pinstripe_Colour_unicon.jpeg]]
 
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn) 
-[numbers.icn provides ceil](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) 
-[printf.icn provides sprintf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn) 
+[numbers.icn provides ceil](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) 
+[printf.icn provides sprintf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J

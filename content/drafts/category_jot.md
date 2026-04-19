@@ -32,4 +32,4 @@ All four arguments are optional. A hyphen <code>-</code> skips an argument. Here
 * <code>jot - 3 7 1</code> prints 3 4 5 6 7.
 * <code>jot - 7 3 -1</code> prints 7 6 5 4 3.
 
-It has a few other features, like random numbers. For a manual page, see [jot(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=jot&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html).
+It has a few other features, like random numbers. For a manual page, see [jot(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=jot&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html).

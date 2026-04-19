@@ -23,5 +23,5 @@ It should be noted that while the term "open source" has gained wide-spread acce
 
 * [The Open Source Definition](http://www.opensource.org/docs/osd)
 * [List of Open Source Licenses](http://www.opensource.org/licenses)
-* [The Free Software Definition](http://www.gnu.org/philosophy/free-sw.html)
-* [Why Open Source misses the point of Free Software](http://www.gnu.org/philosophy/open-source-misses-the-point.html)
+* [The Free Software Definition](https://www.gnu.org/philosophy/free-sw.html)
+* [Why Open Source misses the point of Free Software](https://www.gnu.org/philosophy/open-source-misses-the-point.html)

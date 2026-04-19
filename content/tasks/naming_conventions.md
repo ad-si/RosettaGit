@@ -1256,9 +1256,9 @@ File extensions generally imply the following:
 
 PicoLisp has not hard-coded naming rules, with the exception of symbols starting
 with an at-mark '@': They have special meaning as "pattern variables" for the
-'[match](http://software-lab.de/doc/refM.html#match)' and
-'[fill](http://software-lab.de/doc/refF.html#fill)' functions, and as
-'[Pilog](http://software-lab.de/doc/ref.html#pilog)' variables.
+'[match](https://software-lab.de/doc/refM.html#match)' and
+'[fill](https://software-lab.de/doc/refF.html#fill)' functions, and as
+'[Pilog](https://software-lab.de/doc/ref.html#pilog)' variables.
 
 Besides this, PicoLisp programs follow these naming conventions:
 
@@ -1302,7 +1302,7 @@ PowerShell, of course, offers the option of naming a variable "anything" if the 
 ## Racket
 
 
-For more details, read the explanation in the Name section of the Style Guide: <http://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29> .
+For more details, read the explanation in the Name section of the Style Guide: <https://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29> .
 
 The convention is to use full English lowercase words separated by dashes
 
@@ -1611,7 +1611,7 @@ An excellent documentation about naming is given in [the Scala Style Guide.](htt
 Tcl leaves nearly all matters of variable and procedure naming up to the programmer, so styles vary. Variables are not declared by type. However, each variable contains a scalar, list, or hash array. Once assigned a scalar, list, or array, a variable must be unset to be re-assigned a different kind (scalar, list or array).
 
 A few conventions are common:
-* Names typically use alphanumeric characters ('''a-zA-Z0-9_'''). Use of other characters are allowed, but may require extra quoting with curly braces ('''{}''') (See ref: [Rule #7](http://wiki.tcl.tk/10259))
+* Names typically use alphanumeric characters ('''a-zA-Z0-9_'''). Use of other characters are allowed, but may require extra quoting with curly braces ('''{}''') (See ref: [Rule #7](https://wiki.tcl-lang.org/10259))
 * Two naming styles dominate for variables: '''all_lower_case_with_words_separated_by_underscore''' or '''camelCase'''
 * Namespaces are usually named in lowercase, starting with a letter ('''{[a-z][a-z0-9_]*}''') and separated by double colons ('''::'''). For example space1::space2::space3
 * '''TitleCase''' names are typically used for private members.  TclOO's default export pattern '''{[a-z]*}''' supports this convention.

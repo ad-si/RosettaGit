@@ -18,5 +18,5 @@ I would really like to be able to search the wiki through the search box. Curren
 :If it is a matter of cost, then I'm all for keeping costs down. I do realize that at the moment, the originator pays the full cost of the site himself. 
 Thank you, thank you, '''Thank you'''! --[[User:Paddy3118|Paddy3118]] 06:41, 10 June 2009 (UTC)
 ::The default search that came with the Wiki was pretty bad. So we added this external search (try to search for something in the regular search and a box will come up so that you can use it), but that had its own set of problems (not live, logs you out). I think efforts were stopped out of frustration (and probably lack of time). --[[User:Mwn3d|Mwn3d]] 12:04, 10 June 2009 (UTC)
-:::On the [Tcler's Wiki](http://wiki.tcl.tk/) we use a search that is google-powered. We've found it gives pretty good results (except for the time-lag between updates and the indices getting rebuilt.) —[[User:Dkf|Donal Fellows]] 13:03, 10 June 2009 (UTC)
+:::On the [Tcler's Wiki](https://wiki.tcl-lang.org/) we use a search that is google-powered. We've found it gives pretty good results (except for the time-lag between updates and the indices getting rebuilt.) —[[User:Dkf|Donal Fellows]] 13:03, 10 June 2009 (UTC)
 ::How was the the defauld search bad? At least in Wikipedia, the search works just fine. --[[User:PauliKL|PauliKL]] 14:44, 30 June 2009 (UTC)

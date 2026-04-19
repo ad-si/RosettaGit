@@ -3266,7 +3266,7 @@ res1: java.lang.String = Sanji
 
 ## Seed7
 
-Seed7 allows the definition of statement [syntax](http://seed7.sourceforge.net/manual/syntax.htm) and semantic.
+Seed7 allows the definition of statement [syntax](https://seed7.sourceforge.net/manual/syntax.htm) and semantic.
 
 ```seed7
 $ include "seed7_05.s7i";

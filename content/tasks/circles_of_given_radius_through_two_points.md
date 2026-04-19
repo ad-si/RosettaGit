@@ -99,7 +99,7 @@ Given two points on a plane and a radius, usually two circles of given radius ca
 
 ## See also
 
-*   [Finding the Center of a Circle from 2 Points and Radius](http://mathforum.org/library/drmath/view/53027.html) from Math forum @ Drexel
+*   [Finding the Center of a Circle from 2 Points and Radius](https://mathforum.org/library/drmath/view/53027.html) from Math forum @ Drexel
 
 
 
@@ -673,7 +673,7 @@ struct V2 { double x, y; }
 struct Circle { double x, y, r; }
 
 /**Following explanation at:
-http://mathforum.org/library/drmath/view/53027.html
+https://mathforum.org/library/drmath/view/53027.html
 */
 Tuple!(Circle, Circle)
 circlesFromTwoPointsAndRadius(in V2 p1, in V2 p2, in double r)
@@ -2980,7 +2980,7 @@ Pt = namedtuple('Pt', 'x, y')
 Circle = Cir = namedtuple('Circle', 'x, y, r')
 
 def circles_from_p1p2r(p1, p2, r):
-    'Following explanation at http://mathforum.org/library/drmath/view/53027.html'
+    'Following explanation at https://mathforum.org/library/drmath/view/53027.html'
     if r == 0.0:
         raise ValueError('radius of zero')
     (x1, y1), (x2, y2) = p1, p2

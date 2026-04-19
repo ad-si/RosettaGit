@@ -12,4 +12,4 @@ tags = []
 
 [[Category:Graphics]] [[Category:Image processing]]
 
-Operations associated with raster graphics images ([definition on Wikipedia](http://en.wikipedia.org/wiki/Raster_graphics)).
+Operations associated with raster graphics images ([definition on Wikipedia](https://en.wikipedia.org/wiki/Raster_graphics)).

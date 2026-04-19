@@ -166,12 +166,12 @@ iAdrMessage: .int szMessage
 
 ## AutoHotkey
 
-The [Tutorial and Overview](http://ahkscript.org/docs/Tutorial.htm), which is part of the [AutoHotkey Documentation](http://ahkscript.org/docs/AutoHotkey.htm),
+The [Tutorial and Overview](https://www.autohotkey.com/docs/Tutorial.htm), which is part of the [AutoHotkey Documentation](https://www.autohotkey.com/docs/AutoHotkey.htm),
 covers the basics of AutoHotkey.
 The documentation is available online and is included as a .chm help file
 with installation. Installation and "Hello World" are summarized here.
 
-1) [Download](http://ahkscript.org/download/ahk-install.exe) and install AutoHotkey.
+1) [Download](https://www.autohotkey.com/download/ahk-install.exe) and install AutoHotkey.
 
 2) Download and install the [SciTE4AutoHotkey](http://fincs.ahk4.net/scite4ahk/) editor (recommended), or use your favorite [[Editor|texteditor]].
 
@@ -213,7 +213,7 @@ E.g. [gnuwin32.sourceforge.net](http://gnuwin32.sourceforge.net/packages.html) p
 
 The most current gawk is at [gnu.org](http://ftp.gnu.org/gnu/gawk), but only as source.
 
-To get a ready-made executable, look at [code.google.com](http://code.google.com/p/gnu-on-windows/downloads/list) - gawk v4.1.0 currently.
+To get a ready-made executable, look at [code.google.com](https://code.google.com/p/gnu-on-windows/downloads/list) - gawk v4.1.0 currently.
 
 Download, extract the executable file and "install" it.
 
@@ -262,7 +262,7 @@ BEGIN {
 
 To edit awk-scripts use a [[Editor|texteditor]].
 
-Now, look at some example-programs from category [AWK](http://rosettacode.org/wiki/Category:AWK), for example: [[Read a file line by line#AWK|Read a file line by line]]
+Now, look at some example-programs from category [AWK](https://rosettacode.org/wiki/Category:AWK), for example: [[Read a file line by line#AWK|Read a file line by line]]
 
 
 ## Axe
@@ -270,7 +270,7 @@ Now, look at some example-programs from category [AWK](http://rosettacode.org/wi
 
 Besides the built-in program editor on the TI-83/84, Axe requires a compiler app to be installed on the calculator. This is for development only, and is not required on user's calculators.
 
-To install Axe, [download the latest version](http://www.ticalc.org/archives/files/fileinfo/456/45659.html) and transfer it to the calculator.
+To install Axe, [download the latest version](https://www.ticalc.org/archives/files/fileinfo/456/45659.html) and transfer it to the calculator.
 
 Next, follow the instructions below in the [[#TI-83_BASIC|TI-83 BASIC]] section to create a sample program named MYPROGRM. The contents of the program should be:
 
@@ -292,7 +292,7 @@ Go to Compile, select MYPROGRM, and press Enter. Your program should compile wit
 ## BASIC256
 
 <h3>Installation</h3>
-Download BASIC256 here: [http://sourceforge.net/projects/kidbasic/](http://sourceforge.net/projects/kidbasic/)
+Download BASIC256 here: [https://sourceforge.net/projects/kidbasic/](https://sourceforge.net/projects/kidbasic/)
 
 <h3>Interface</h3>
 BASIC256 is an Integrated Development Environment (IDE). The code editor, the text output section, and the graphics output section are displayed at the same time.
@@ -325,7 +325,7 @@ Press F1 or click the ''Help'' menu for language help/documentations.
 
 ## Befunge
 
-Befunge is a two-dimensional fungeoidal (in fact, the original fungeoid) esoteric programming language invented in 1993 by Chris Pressey with the goal of being as difficult to compile as possible. A Befunge program consists of a two-dimensional playfield of fixed size. The playfield is initially loaded with the instructions of the program. It also doubles as an updateable storage unit. Execution proceeds by the means of a program counter (-93) or instruction pointer (-98). The instruction pointer begins at a set location (the upper-left corner of the playfield) and is initially travelling in a set direction (right). As it encounters instructions, they are executed. The instructions may have an effect on the instruction pointer's direction and position (-98 only). Instructions may also affect the contents of a stack. See [Befunge on Esolang](http://esolangs.org/wiki/Befunge) for more information and examples.
+Befunge is a two-dimensional fungeoidal (in fact, the original fungeoid) esoteric programming language invented in 1993 by Chris Pressey with the goal of being as difficult to compile as possible. A Befunge program consists of a two-dimensional playfield of fixed size. The playfield is initially loaded with the instructions of the program. It also doubles as an updateable storage unit. Execution proceeds by the means of a program counter (-93) or instruction pointer (-98). The instruction pointer begins at a set location (the upper-left corner of the playfield) and is initially travelling in a set direction (right). As it encounters instructions, they are executed. The instructions may have an effect on the instruction pointer's direction and position (-98 only). Instructions may also affect the contents of a stack. See [Befunge on Esolang](https://esolangs.org/wiki/Befunge) for more information and examples.
 
 To start, you will need a Befunge interpreter. You can find one online, or download one.
 
@@ -622,7 +622,7 @@ There is detailed information in [The Hello World Program chapter](http://ddili.
 
 Here is a summary:
 
-1) Download and install the latest dmd at [dmd download page](http://www.digitalmars.com/d/download.html).
+1) Download and install the latest dmd at [dmd download page](https://digitalmars.com/d/download.html).
 
 2) Open your favorite [[Editor|texteditor]], write the following source code
 
@@ -673,7 +673,7 @@ Hello world!
 ###  Requirements and installation
 
 You need a computer running an up-to-date browser, such as FireFox, Chrome, Opera, ...
-No installation needed. To run EchoLisp, follow this link : [EchoLisp](http://www.echolalie.org/echolisp).
+No installation needed. To run EchoLisp, follow this link : [EchoLisp](https://www.echolalie.org/echolisp).
 
 ###  Hello World
 
@@ -701,7 +701,7 @@ The first thing to know are the "apropos", "usage", and "help" functions. Exampl
 
 ;; help opens the reference manual at the right place, in a browser tab
 ;; "help" abbreviation is "?"
-(? display) → [http://www.echolalie.org/echolisp/help.html#display]
+(? display) → [https://www.echolalie.org/echolisp/help.html#display]
 
 ;;  searching
 ;; (apropos name) displays the list of functions about 'name'
@@ -797,7 +797,7 @@ Windows, Linux, Mac, and others.
 
 See [Eiffel-org](http://www.eiffel.org) for more information.
 <p>An example of "Hello World!" is on the home page. You can try Eiffel by clicking the "Play with Eiffel" button on the "Hello World!" example on the home page.</p>
-<p>You can find plenty of YouTube videos on the Eiffel Software [Eiffel Videos](https://www.eiffel.org/resources/videos|) channel or [Eiffel Videos](http://www.youtube.com/user/ljr1981yt/videos|) channel.</p>
+<p>You can find plenty of YouTube videos on the Eiffel Software [Eiffel Videos](https://www.eiffel.org/resources/videos|) channel or [Eiffel Videos](https://www.youtube.com/user/ljr1981yt/videos|) channel.</p>
 
 
 ## Erlang
@@ -997,9 +997,9 @@ Enjoy your first program!
 ## Go
 
 Currently supported platforms are FreeBSD, Linux, Mac OS X, and Windows.
-From the landing page <http://golang.org> click the blue box "Download Go"
+From the landing page <https://golang.org> click the blue box "Download Go"
 (under the big gopher drawing.)
-This takes you to [Getting Started](http://golang.org/doc/install),
+This takes you to [Getting Started](https://golang.org/doc/install),
 a fairly concise page that is very close to satisfying this task.
 
 The first section, Download, has a link to a downloads page
@@ -1123,7 +1123,7 @@ Hello, World!
 ===Non-Linux operating systems===
 
 If you are using another operating system (e. g. Mac OS X),
-the easiest way to get Haskell is to install the [Haskell Platform](http://www.haskell.org/platform/).
+the easiest way to get Haskell is to install the [Haskell Platform](https://www.haskell.org/platform/).
 
 
 ## Java
@@ -1175,7 +1175,7 @@ this will appear in the shape of a 'pop-up' in your browser.
 
 ## J
 
-Download J804 from http://jsoftware.com/stable.htm
+Download J804 from https://www.jsoftware.com/stable.htm
 
 Install it, using the defaults.
 
@@ -1383,7 +1383,7 @@ Hello, World!
 Either use a browser-based CPC emulator (<http://www.cpcbox.com/>) or download
 a binary for your platform.
 A list of emulators is available at <http://cpcwiki.eu/index.php/Emulators>.
-JavaCPC (<http://sourceforge.net/projects/javacpc/>) or WinAPE (<http://www.winape.net/>) are particularly recommended.
+JavaCPC (<https://sourceforge.net/projects/javacpc/>) or WinAPE (<http://www.winape.net/>) are particularly recommended.
 An advantage of native emulators is that they tend to have copy-and-paste functionality, so you can edit programs in external [[Editor|texteditor]]s.
 
 In the emulator, type
@@ -1398,7 +1398,7 @@ run
 
 ## Lua
 
-Without installing anything, lua-programs can be run online at the [live demo](http://www.lua.org/demo.html).
+Without installing anything, lua-programs can be run online at the [live demo](https://www.lua.org/demo.html).
 
 It includes some demo-programs, such as
 
@@ -1407,7 +1407,7 @@ io.write("Hello world, from ",_VERSION,"!\n")
 ```
 
 
-For installing Lua, there are extensive instructions for [getting started](http://www.lua.org/start.html) on Linux, MacOS and Windows.
+For installing Lua, there are extensive instructions for [getting started](https://www.lua.org/start.html) on Linux, MacOS and Windows.
 
 
 ## M2000 Interpreter
@@ -1751,7 +1751,7 @@ perl pare hello.l>
 
 ## PARI/GP
 
-PARI's official site is <http://pari.math.u-bordeaux.fr/> .
+PARI's official site is <https://pari.math.u-bordeaux.fr/> .
 
 
 ### PARI/GP on Windows
@@ -2016,7 +2016,7 @@ Fetch and unpack the tarball
 $ wget software-lab.de/picoLisp.tgz && tar xfz picoLisp.tgz
 ```
 
-then build the executable (see <http://software-lab.de/INSTALL> file for 64-bit systems)
+then build the executable (see <https://software-lab.de/INSTALL> file for 64-bit systems)
 
 ```txt
 $ cd picoLisp
@@ -2042,7 +2042,7 @@ $ ersatz/pil
 : (prinl "Goodbye, World!")
 ```
 
-(see also <http://software-lab.de/ersatz/README>).
+(see also <https://software-lab.de/ersatz/README>).
 
 If no Java is available, you can compile "software-lab.de/miniPicoLisp.tgz" and run it
 
@@ -2111,7 +2111,7 @@ To learn the basic syntaxes and details of PowerShell, Open the PowerShell ISE, 
 
 ## Python
 
-Pythons official home site is [http://www.python.org/](http://www.python.org/).
+Pythons official home site is [https://www.python.org/](https://www.python.org/).
 It will point you to everything Python.
 
 
@@ -2179,10 +2179,10 @@ or adding a shebang at the first line of the script:
 
 ==={{libheader|VPython}}===
 # install Python, as above
-# install VPython: at [vpython.org](http://vpython.org/index.html), select the download for your system:
-#* [Windows](http://vpython.org/contents/download_windows.html)
-#* [Linux](http://vpython.org/contents/download_linux.html)
-#* [Mac](http://vpython.org/contents/download_mac.html)
+# install VPython: at [vpython.org](https://vpython.org/index.html), select the download for your system:
+#* [Windows](https://vpython.org/contents/download_windows.html)
+#* [Linux](https://vpython.org/contents/download_linux.html)
+#* [Mac](https://vpython.org/contents/download_mac.html)
 # To edit/run programs from the IDE, instead of IDLE use VIDLE (it loads the vpython-extensions, and helptexts)
 #* Look at some example programs -- for example, bounce.py
 #* (on Windows, they should be located at C:\Python27\Lib\site-packages\visual\examples)
@@ -2278,7 +2278,7 @@ This choice makes it much easier to try Racket quickly -- you can just remove th
 
 Racket comes with DrRacket, an IDE that is specifically designed to make Racket work easy (and implemented in Racket).
 However, you can use your own [[Editor|text editor]] if you're used to one.
-See the [Racket Guide](http://docs.racket-lang.org/guide/other-editors.html) section
+See the [Racket Guide](https://docs.racket-lang.org/guide/other-editors.html) section
 on working with different editors, and running Racket from the command line.
 
 As with Common Lisp, EMACS is a good editor to use for Racket code. Its inferior-lisp mode allows you to evaluate Racket expressions from within EMACS, however it doesn't provide debugging, symbol lookup, or other features that are available when editing Common Lisp code with EMACS.
@@ -2286,7 +2286,7 @@ As with Common Lisp, EMACS is a good editor to use for Racket code. Its inferior
 
 ### Learning Racket
 
-One of Racket's main points is coming with thorough documentation, which you get with the installation and but you can also view it [on-line](http://docs.racket-lang.org/).  Specifically, pay attention to the [Getting Started](http://docs.racket-lang.org/getting-started/) page that will help with a few convenient entry points.
+One of Racket's main points is coming with thorough documentation, which you get with the installation and but you can also view it [on-line](https://docs.racket-lang.org/).  Specifically, pay attention to the [Getting Started](https://docs.racket-lang.org/getting-started/) page that will help with a few convenient entry points.
 
 ### Hello World
 
@@ -2522,7 +2522,7 @@ fn main() {
 
 ## Scala
 
-A complete and actual description can be found on the [Getting started guide](http://www.scala-lang.org/documentation/getting-started.html) on the [Scala site](http://www.scala-lang.org/).
+A complete and actual description can be found on the [Getting started guide](https://www.scala-lang.org/documentation/getting-started.html) on the [Scala site](https://www.scala-lang.org/).
 
 Run a program using '''Windows PowerShell''':
 
@@ -2819,9 +2819,9 @@ and Eclipse with the appropriate DLTK module (free to use).
 
 For a range of interesting Tcl programs and techniques
 beyond what is here on Rosetta Code,
-check out [The Tcler's Wiki](http://wiki.tcl.tk/).
+check out [The Tcler's Wiki](https://wiki.tcl-lang.org/).
 
-Documentation for many versions of Tcl is [also online](http://www.tcl.tk/man/),
+Documentation for many versions of Tcl is [also online](https://www.tcl-lang.org/man/),
 which can be a handy supplement to your system docs.
 
 =={{header|TI-83 Hex Assembly}}==

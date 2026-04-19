@@ -33,9 +33,9 @@ smart BASIC is very powerful. Some of its features include:
 
 The smart BASIC support forum is regularly administered by Mr. Kibernetik, who provides timely, professional support in addition to a lively group of forum members from around the world.
 
-<div style="text-align: right; direction: ltr; margin-left: 1em;"><small>'''smart BASIC''' initially introduced to Rosetta Code on December 16, 2016 by [Scott A. Rossell](http://rosettacode.org/wiki/User:Sarossell)</small>
+<div style="text-align: right; direction: ltr; margin-left: 1em;"><small>'''smart BASIC''' initially introduced to Rosetta Code on December 16, 2016 by [Scott A. Rossell](https://rosettacode.org/wiki/User:Sarossell)</small>
 <sub>smart BASIC and the smart BASIC logo are owned by Mr. Kibernetik.</sub>
 ----
 
 
-<big><div class="plainlinks">[Click <u>here</u> for a list of tasks not yet implemented in '''smart BASIC'''.](http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_smart_BASIC)</div></big>
+<big><div class="plainlinks">[Click <u>here</u> for a list of tasks not yet implemented in '''smart BASIC'''.](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_smart_BASIC)</div></big>

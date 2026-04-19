@@ -2511,7 +2511,7 @@ return
 ```NewLISP
 ; guess-number.lsp
 ; oofoe 2012-01-19
-; http://rosettacode.org/wiki/Guess_the_number
+; https://rosettacode.org/wiki/Guess_the_number
 
 (seed (time-of-day)) ; Initialize random number generator from clock.
 (setq number (+ 1 (rand 10)))
@@ -2859,8 +2859,8 @@ if(isset($_POST["guess"])){
 }
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Guess A Number</title>

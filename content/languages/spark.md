@@ -29,4 +29,4 @@ A description of the SPARK Proof process is [here](https://rosettacode.org/wiki/
 
 The SPARK tools are freely available under the GNU GPL.  The SPARK language definition is available from AdaCore at [SPARK 2014 Reference Manual](http://docs.adacore.com/spark2014-docs/html/lrm/).
 
-The [news:comp.lang.ada comp.lang.ada] [newsgroup](https://rosettacode.org/wiki/newsgroup) ([access via Google Groups](http://groups.google.com/group/comp.lang.ada/topics))is the main forum for discussing or asking questions about SPARK.
+The [news:comp.lang.ada comp.lang.ada] [newsgroup](https://rosettacode.org/wiki/newsgroup) ([access via Google Groups](https://groups.google.com/group/comp.lang.ada/topics))is the main forum for discussing or asking questions about SPARK.

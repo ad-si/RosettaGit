@@ -69,7 +69,7 @@ Show that the following remarkable formula gives the [sequence](http://www.resea
 * Show that no squares occur for   <big> n </big>   less than one million
 
 
-This sequence is also known as   [A000037](http://oeis.org/A000037)   in the '''OEIS''' database.
+This sequence is also known as   [A000037](https://oeis.org/A000037)   in the '''OEIS''' database.
 
 
 
@@ -207,7 +207,7 @@ Show there are no squares in the first million:
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276683.html#276683)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276683.html#276683)
 
 ```AutoHotkey
 Loop 22
@@ -1280,7 +1280,7 @@ return n + floor(0.5 + sqrt(n))
 end
 ```
 
-[numbers provides floor](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[numbers provides floor](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 
 ## IDL

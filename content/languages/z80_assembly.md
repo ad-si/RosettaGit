@@ -24,7 +24,7 @@ there is only one,<tt>LD</tt>, on the Z80.
 Therefore, on the assembly level, Z80 code is actually closer to 8086 code
 when <tt>MOV</tt> is changed to <tt>LD</tt>
 and the different register structure is taken into account.
-<ref><http://en.wikipedia.org/wiki/Z80#Z80_assembly_language></ref>
+<ref><https://en.wikipedia.org/wiki/Z80#Z80_assembly_language></ref>
 
 Today, the Z80 is still widely used in embedded systems
 and consumer electronics.

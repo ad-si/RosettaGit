@@ -84,9 +84,9 @@ The Akiyama–Tanigawa algorithm for the "second Bernoulli numbers" as taken fro
 
 ## See also
 
-* Sequence [A027641 Numerator of Bernoulli number B_n](http://oeis.org/A027641) on The On-Line Encyclopedia of Integer Sequences.
-* Sequence [A027642 Denominator of Bernoulli number B_n](http://oeis.org/A027642) on The On-Line Encyclopedia of Integer Sequences.
-* Entry [Bernoulli number](http://mathworld.wolfram.com/BernoulliNumber.html) on The Eric Weisstein's World of Mathematics (TM).
+* Sequence [A027641 Numerator of Bernoulli number B_n](https://oeis.org/A027641) on The On-Line Encyclopedia of Integer Sequences.
+* Sequence [A027642 Denominator of Bernoulli number B_n](https://oeis.org/A027642) on The On-Line Encyclopedia of Integer Sequences.
+* Entry [Bernoulli number](https://mathworld.wolfram.com/BernoulliNumber.html) on The Eric Weisstein's World of Mathematics (TM).
 * Luschny's [The Bernoulli Manifesto](http://luschny.de/math/zeta/The-Bernoulli-Manifesto.html) for a discussion on   <big> '''B<sub>1</sub>   =   -&frac12;'''   versus   '''+&frac12;'''. </big>
 
 
@@ -1058,7 +1058,7 @@ ns test-project-intellij.core
 
 An implementation of the simple algorithm.
 
-Be advised that the pseudocode algorithm specifies (j * (a[j-1] - a[j])) in the inner loop; implementing that as-is gives the wrong value (1/2) where n = 1, whereas subtracting a[j]-a[j-1] yields the correct value (B[1]=-1/2). See [the numerator list](http://oeis.org/A027641).
+Be advised that the pseudocode algorithm specifies (j * (a[j-1] - a[j])) in the inner loop; implementing that as-is gives the wrong value (1/2) where n = 1, whereas subtracting a[j]-a[j-1] yields the correct value (B[1]=-1/2). See [the numerator list](https://oeis.org/A027641).
 
 
 ```lisp
@@ -1331,7 +1331,7 @@ Only 'small' rationals are supported in EchoLisp, i.e numerator and demominator 
 ```lisp
 
 ;; Bernoulli numbers
-;; http://rosettacode.org/wiki/Bernoulli_numbers
+;; https://rosettacode.org/wiki/Bernoulli_numbers
 (define A (make-vector 100 0))
 
 (define (B n)
@@ -3439,7 +3439,7 @@ which uses the "double sum formula" listed under REXX. The number generators all
 use the same emmitter... it's just a matter of how long to wait for the emission.
 
 <lang>#lang racket
-;; For: <http://rosettacode.org/wiki/Bernoulli_numbers>
+;; For: <https://rosettacode.org/wiki/Bernoulli_numbers>
 
 ;; As described in task...
 (define (bernoulli.1 n)
@@ -3456,7 +3456,7 @@ use the same emmitter... it's just a matter of how long to wait for the emission
 (define (bernoulli_0..n B N)
   (for/list ((n (non-zero-bernoulli-indices (in-range (add1 N))))) (B n)))
 
-;; From REXX description / <http://mathworld.wolfram.com/BernoulliNumber.html> #33
+;; From REXX description / <https://mathworld.wolfram.com/BernoulliNumber.html> #33
 ;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ;; bernoulli.2 is for illustrative purposes, binomial is very costly if there is no memoisation
 ;; (which math/number-theory doesn't do)
@@ -3564,7 +3564,7 @@ B(60) = -1215233140483755572040304994079820246041491/56786730
 
 ## REXX
 
-The double sum formula used is number   '''(33)'''   from the entry [Bernoulli number](http://mathworld.wolfram.com/BernoulliNumber.html) on Wolfram MathWorld<sup>TM</sup>.
+The double sum formula used is number   '''(33)'''   from the entry [Bernoulli number](https://mathworld.wolfram.com/BernoulliNumber.html) on Wolfram MathWorld<sup>TM</sup>.
 
 
 
@@ -4028,10 +4028,10 @@ b(60)  -1215233140483755572040304994079820246041491 / 56786730
 
 ## Seed7
 
-The program below uses [bigRational](http://seed7.sourceforge.net/manual/types.htm#bigRational)
+The program below uses [bigRational](https://seed7.sourceforge.net/manual/types.htm#bigRational)
 numbers. The Bernoulli numbers are written as fraction and as decimal number, with possible repeating decimals.
-The conversion of a bigRational number to [string](http://seed7.sourceforge.net/manual/types.htm#string) is done
-with the function [str](http://seed7.sourceforge.net/libraries/bigrat.htm#str(in_bigRational)). This
+The conversion of a bigRational number to [string](https://seed7.sourceforge.net/manual/types.htm#string) is done
+with the function [str](https://seed7.sourceforge.net/libraries/bigrat.htm#str(in_bigRational)). This
 function automatically writes repeating decimals in parentheses, when necessary.
 
 
@@ -4208,7 +4208,7 @@ for n in 0..60 | (b:=bernoulli(n)$INTHEORY; b~=0) repeat print [n,b]
 
 ```
 
-Package:[IntegerNumberTheoryFunctions](http://fricas.github.io/api/IntegerNumberTheoryFunctions.html?highlight=bernoulli)
+Package:[IntegerNumberTheoryFunctions](https://fricas.github.io/api/IntegerNumberTheoryFunctions.html?highlight=bernoulli)
 
 ```txt
 

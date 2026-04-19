@@ -1732,7 +1732,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [Uses divisors from factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
+{{libheader|Icon Programming Library}} [Uses divisors from factors](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 ```txt
 Perfect numbers from 1 to 100000:
@@ -1774,7 +1774,7 @@ Examples of use, including extensions beyond those assumptions:
 ```
 
 
-More efficient version based on [comments](http://jsoftware.com/pipermail/programming/2014-June/037695.html) by Henry Rich and Roger Hui (comment train seeded by Jon Hough).
+More efficient version based on [comments](https://www.jsoftware.com/pipermail/programming/2014-June/037695.html) by Henry Rich and Roger Hui (comment train seeded by Jon Hough).
 
 
 ## Java
@@ -3158,7 +3158,7 @@ false.
 
 ### Functional approach
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

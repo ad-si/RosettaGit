@@ -527,8 +527,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -632,7 +632,7 @@ aArray[1] = 'Orange'
 
 ## AWK
 
-<!-- <http://ideone.com/qhJQ6g> -->
+<!-- <https://ideone.com/qhJQ6g> -->
 
 The main use of the length()-function is to determine the length of a string.
 
@@ -2943,7 +2943,7 @@ Using Scheme's vector type as an equivalent to an array:
 
 ## Seed7
 
-The function [length](http://seed7.sourceforge.net/libraries/array.htm#length(in_arrayType))
+The function [length](https://seed7.sourceforge.net/libraries/array.htm#length(in_arrayType))
 determines the length of an array.
 
 ```seed7
@@ -3153,7 +3153,7 @@ print(fruitsCount) //print array length to output window
 
 ## Tcl
 
-<!-- <http://ideone.com/uotEvm> -->
+<!-- <https://ideone.com/uotEvm> -->
 
 
 ```tcl

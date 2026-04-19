@@ -2209,7 +2209,7 @@ close(conn)
 ```REBOL
 REBOL [
    Title: "Notes"
-   URL: http://rosettacode.org/wiki/Take_notes_on_the_command_line
+   URL: https://rosettacode.org/wiki/Take_notes_on_the_command_line
 ]
 
 notes: %notes.txt

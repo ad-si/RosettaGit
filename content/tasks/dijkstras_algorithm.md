@@ -4090,7 +4090,7 @@ true.
 
 Starts from the [[wp:Dijkstra's_algorithm#Pseudocode]] recognising that their function <code>dist_between</code> is what this task calls ''cost''; and that their action <code>decrease-key v in Q</code> at their line 24 should be omitted if their Q is a set as stated in their line 9. The wp back-tracking pseudocode also misses a final insert of u at the beginning of S that must occur ''after'' exiting their while loop.
 
-Note: q could be changed to be a priority queue instead of a set as mentioned [here](http://docs.python.org/3.3/library/heapq.html#priority-queue-implementation-notes).
+Note: q could be changed to be a priority queue instead of a set as mentioned [here](https://docs.python.org/3.3/library/heapq.html#priority-queue-implementation-notes).
 
 ```python
 from collections import namedtuple, deque

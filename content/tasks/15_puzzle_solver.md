@@ -52,7 +52,7 @@ rrrulddluuuldrurdddrullulurrrddldluurddlulurruldrdrd
 
 rrruldluuldrurdddluulurrrdlddruldluurddlulurruldrrdd
 
-see: [Pretty Print of Optimal Solution](http://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution)
+see: [Pretty Print of Optimal Solution](https://www.rosettacode.org/wiki/15_puzzle_solver/Optimal_solution)
 
 Finding either one, or both is an acceptable result.
 
@@ -81,7 +81,7 @@ Solve the following problem:
 
 ## C++
 
-[see](http://www.rosettacode.org/wiki/15_puzzle_solver/20_Random) for an analysis of 20 randomly generated 15 puzzles solved with this solver.
+[see](https://www.rosettacode.org/wiki/15_puzzle_solver/20_Random) for an analysis of 20 randomly generated 15 puzzles solved with this solver.
 
 ### =The Solver=
 
@@ -2778,7 +2778,7 @@ Right, Right, Right, Up, Left, Down, Left, Up, Up, Left, Down, Right, Up, Right,
 
 Python example for this Rosetta Code task:
 
-http://rosettacode.org/wiki/15_puzzle_solver
+https://rosettacode.org/wiki/15_puzzle_solver
 
 Using A* Algorithm from Wikkipedia:
 
@@ -3702,7 +3702,7 @@ Run time in seconds: 56.601139201
 ;;; at https://de.wikipedia.org/wiki/A*-Algorithmus
 
 ;;; Inspired by the Python solution of the rosetta code:
-;;; http://rosettacode.org/wiki/15_puzzle_solver#Python
+;;; https://rosettacode.org/wiki/15_puzzle_solver#Python
 
 (require racket/set)
 (require data/heap)

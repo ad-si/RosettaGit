@@ -2367,7 +2367,7 @@ return (str == inv);
 ```
 
 
-Palindrome detection using a [Downward For-Loop](http://rosettacode.org/wiki/Loop/Downward_For#GML)
+Palindrome detection using a [Downward For-Loop](https://rosettacode.org/wiki/Loop/Downward_For#GML)
 
 
 ```go
@@ -2612,7 +2612,7 @@ return s == reverse(s)
 end
 ```
 
-Note: The IPL procedure [strings](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) contains a palindrome tester called '''ispal''' that uses reverse and is equivalent to the version of '''palindrome''' above.
+Note: The IPL procedure [strings](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn) contains a palindrome tester called '''ispal''' that uses reverse and is equivalent to the version of '''palindrome''' above.
 
 This version uses positive and negative sub-scripting and works not only on strings but lists of strings, such as ["ab","ab"] or ["ab","x"] the first list would pass the test but the second wouldn't.
 
@@ -2741,7 +2741,7 @@ public static boolean rPaliHelp(String testMe, int strLen, int testLen, int inde
 
 
 '''Regular Expression'''
-([source](http://stackoverflow.com/questions/3664881/how-does-this-java-regex-detect-palindromes))
+([source](https://stackoverflow.com/questions/3664881/how-does-this-java-regex-detect-palindromes))
 
 ```java
 public static boolean pali(String testMe){
@@ -4821,7 +4821,7 @@ bool: true
 ```REBOL
 REBOL [
     Title: "Palindrome Recognizer"
-    URL: http://rosettacode.org/wiki/Palindrome
+    URL: https://rosettacode.org/wiki/Palindrome
 ]
 
 ; In order to compete with all the one-liners, the operation is

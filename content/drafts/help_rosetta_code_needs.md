@@ -16,7 +16,7 @@ Rosetta Code has expand at a rate far exceeding my expectations.  Unfortunately,
 
 RC needs bots to perform two functions, at least.
 
-A bot is a piece of software that interacts with the MediaWiki engine through HTTP GET queries, much the same way as a user using a browser.  MediaWiki's index.php supports a [raw-access API](http://www.mediawiki.org/wiki/Manual:Parameters_to_index.php#Raw), specifically to aid in that.
+A bot is a piece of software that interacts with the MediaWiki engine through HTTP GET queries, much the same way as a user using a browser.  MediaWiki's index.php supports a [raw-access API](https://www.mediawiki.org/wiki/Manual:Parameters_to_index.php#Raw), specifically to aid in that.
 
 ==Tidying up==
 

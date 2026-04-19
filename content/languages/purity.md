@@ -11,5 +11,5 @@ tags = []
 +++
 '''Purity''' is a total functional programming language inspired conceptually and syntactically by languages like [Haskell](https://rosettacode.org/wiki/Haskell) and [Charity](https://rosettacode.org/wiki/Charity).
 ## Implementations
-* [Purity Compiler at GitHub](http://github.com/paf31/Purity)
+* [Purity Compiler at GitHub](https://github.com/paf31/Purity)
 * [Purity Silverlight REPL](http://apps.typesandotherdistractions.com/REPL/index.html)

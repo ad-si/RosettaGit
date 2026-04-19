@@ -649,7 +649,7 @@ int main()
 
 
 ## C#
-In C# it is possible to [overload operators](http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx) (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
+In C# it is possible to [overload operators](https://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx) (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
 
 What this means, is that if we have the class, A, to do an overload of + - we must set one of the arguments as the type "A".
 This is because in C#, overloads are defined on a class basis - so when doing an operator, .Net looks at the class to find the operators. In this manner, one of the arguments must be of the class, else .Net would be looking there in vain.
@@ -2381,7 +2381,7 @@ Array.init 32 (fun n -> (1 - pow 1 ( - ) 0 n) lsr 1);;
 (* [|0; 1; 1; 0; 1; 0; 0; 1; 1; 0; 0; 1; 0; 1; 1; 0;
      1; 0; 0; 1; 0; 1; 1; 0; 0; 1; 1; 0; 1; 0; 0; 1|]
 
-See http://en.wikipedia.org/wiki/Thue-Morse_sequence
+See https://en.wikipedia.org/wiki/Thue-Morse_sequence
 *)
 ```
 
@@ -3392,10 +3392,10 @@ This definition of the exponentiation procedure <code>^</code> operates on bases
 ## Seed7
 
 In Seed7 the ** operator is overloaded for both
-[integer<sup>integer</sup>](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29**%28in_integer%29)
-and [float<sup>integer</sup>](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29)
+[integer<sup>integer</sup>](https://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29**%28in_integer%29)
+and [float<sup>integer</sup>](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29)
 (additionally there is a ** operator
-for [float<sup>float</sup>](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29)).
+for [float<sup>float</sup>](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29)).
 The following re-implementation of both functions does not use another exponentiation
 function to do the computation.
 Instead the exponentiation-by-squaring algorithm is used.
@@ -3427,7 +3427,7 @@ const func integer: intPow (in var integer: base, in var integer: exponent) is f
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#intPow>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#intPow>
 
 
 ```seed7
@@ -3466,12 +3466,12 @@ const func float: fltIPow (in var float: base, in var integer: exponent) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#fltIPow>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#fltIPow>
 
 Since Seed7 supports operator and function overloading a new exponentiation
 operator like ^* can be defined for
-[integer](http://seed7.sourceforge.net/libraries/integer.htm)
-and [float](http://seed7.sourceforge.net/libraries/float.htm) bases:
+[integer](https://seed7.sourceforge.net/libraries/integer.htm)
+and [float](https://seed7.sourceforge.net/libraries/float.htm) bases:
 
 
 ```seed7

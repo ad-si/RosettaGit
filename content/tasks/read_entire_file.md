@@ -1651,7 +1651,7 @@ defn(`foo')
 contents := $(shell cat foo.txt)
 ```
 
-This is [from the GNU Make manual](http://www.gnu.org/software/make/manual/html_node/Shell-Function.html).  As noted there, newlines are converted to spaces in the <code>$(contents)</code> variable.  This might be acceptable for files which are a list of words anyway.
+This is [from the GNU Make manual](https://www.gnu.org/software/make/manual/html_node/Shell-Function.html).  As noted there, newlines are converted to spaces in the <code>$(contents)</code> variable.  This might be acceptable for files which are a list of words anyway.
 
 
 ## Maple
@@ -2241,7 +2241,7 @@ file($filename)
 
 ## PicoLisp
 
-Using '[till](http://software-lab.de/doc/refT.html#till)' is the shortest way:
+Using '[till](https://software-lab.de/doc/refT.html#till)' is the shortest way:
 
 ```PicoLisp
 (in "file" (till NIL T))
@@ -2679,8 +2679,8 @@ Works with Chicken Scheme:
 
 ## Seed7
 
-The library [getf.s7i](http://seed7.sourceforge.net/libraries/getf.htm)
-defines the function [getf](http://seed7.sourceforge.net/libraries/getf.htm#getf%28in_string%29),
+The library [getf.s7i](https://seed7.sourceforge.net/libraries/getf.htm)
+defines the function [getf](https://seed7.sourceforge.net/libraries/getf.htm#getf%28in_string%29),
 which reads a whole file into a string:
 
 ```seed7
@@ -2765,7 +2765,7 @@ text = #.readtext("filename.txt")
 
 ## Stata
 
-It's possible to get the entire content as an array of lines with '''[cat](http://www.stata.com/help.cgi?mf_cat)'''. However, here we want a single string. See '''[fopen](http://www.stata.com/help.cgi?mf_fopen)''' and related functions.
+It's possible to get the entire content as an array of lines with '''[cat](https://www.stata.com/help.cgi?mf_cat)'''. However, here we want a single string. See '''[fopen](https://www.stata.com/help.cgi?mf_fopen)''' and related functions.
 
 
 ```stata

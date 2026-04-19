@@ -91,7 +91,7 @@ Use the following two sets of integers as tests   and   show your program output
 ## See also
 
 *   [Algorithms: What is the most efficient way to arrange the given numbers to form the biggest number?](http://www.quora.com/Algorithms/What-is-the-most-efficient-way-to-arrange-the-given-numbers-to-form-the-biggest-number)
-*   [Constructing the largest number possible by rearranging a list](http://stackoverflow.com/questions/14532105/constructing-the-largest-number-possible-by-rearranging-a-list/14539943#14539943)
+*   [Constructing the largest number possible by rearranging a list](https://stackoverflow.com/questions/14532105/constructing-the-largest-number-possible-by-rearranging-a-list/14539943#14539943)
 
 
 
@@ -1948,7 +1948,7 @@ end.
 ### =Inspired by Haskell =
 
 generate the repetition by dividing /(10^CountDigits-1)
-<http://rosettacode.org/wiki/Largest_int_from_concatenated_ints#Compare_repeated_string_method>
+<https://rosettacode.org/wiki/Largest_int_from_concatenated_ints#Compare_repeated_string_method>
 
 
 ```pascal

@@ -1049,7 +1049,7 @@ hLabel.text = sString                             'Display the result
 End
 ```
 
-'''[Click here for image of running code](http://www.cogier.com/gambas/Animation.png)'''
+'''[Click here for image of running code](https://www.cogier.com/gambas/Animation.png)'''
 
 
 ## Go
@@ -1120,7 +1120,7 @@ func main() {
 
 ## Haskell
 
-Using simple graphics {{libheader|HGL}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+Using simple graphics {{libheader|HGL}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.HGL.Units (Time, Point, Size, )
@@ -1439,7 +1439,7 @@ public class Rotate {
 =={{header|JavaScript}} + {{header|SVG}}==
 
 ```javascript
-<svg xmlns="http://www.w3.org/2000/svg"
+<svg xmlns="https://www.w3.org/2000/svg"
      width="100" height="40">
     <script type="text/javascript">
         function animate(element) {
@@ -2744,7 +2744,7 @@ handle_change_direction_on_click(lab)
 ```REBOL
 REBOL [
 	Title: "Basic Animation"
-	URL: http://rosettacode.org/wiki/Basic_Animation
+	URL: https://rosettacode.org/wiki/Basic_Animation
 ]
 
 message: "Hello World! "  how: 1
@@ -3177,7 +3177,7 @@ This animation is defined as a smooth movement rather than by moving whole chara
 
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="30">
+<svg xmlns="https://www.w3.org/2000/svg" width="100" height="30">
     <g id="all">
         <rect width="100%" height="100%" fill="yellow"/>
         <g style="font: 18 'Times New Roman', serif;
@@ -3197,7 +3197,7 @@ This animation is defined as a smooth movement rather than by moving whole chara
 ```
 
 
-(Does not work in Safari 4.0.2 because it apparently does not implement toggled animations correctly ([see spec](http://www.w3.org/TR/2001/REC-smil-animation-20010904/#RestartAttribute)). Dreadful workaround: set the two animations to <code>id="a" begin="0s;all.click" end="all.mousedown"</code> and <code>begin="a.end" end="all.click"</code>, respectively.)
+(Does not work in Safari 4.0.2 because it apparently does not implement toggled animations correctly ([see spec](https://www.w3.org/TR/2001/REC-smil-animation-20010904/#RestartAttribute)). Dreadful workaround: set the two animations to <code>id="a" begin="0s;all.click" end="all.mousedown"</code> and <code>begin="a.end" end="all.click"</code>, respectively.)
 
 
 ## Tcl

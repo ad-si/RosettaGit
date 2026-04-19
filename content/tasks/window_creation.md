@@ -370,7 +370,7 @@ We ''are'' registering a keypress callback, which isn't strictly necessary; It s
 
 ```c
 // A C+GLUT implementation of the Creating a Window task at Rosetta Code
-// http://rosettacode.org/wiki/Creating_a_Window
+// https://rosettacode.org/wiki/Creating_a_Window
 #include <stdlib.h>
 #include <GL/glut.h>
 
@@ -1233,7 +1233,7 @@ Window:Notepad,Button:Close
 
 ## Haskell
 
-Using {{libheader|HGL}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html).
+Using {{libheader|HGL}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html).
 
 A simple graphics library, designed to give the programmer access to most interesting parts of the Win32 Graphics Device Interface and X11 library without exposing the programmer to the pain and anguish usually associated with using these interfaces.
 
@@ -1284,7 +1284,7 @@ end
 ```
 
 
-[graphics is required](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
+[graphics is required](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 =
 ## Unicon
@@ -1944,7 +1944,7 @@ let () =
 execute with:
  ocaml -I +labltk labltk.cma sample.ml
 
-with the [Graphics](http://caml.inria.fr/pub/docs/manual-ocaml/manual039.html) module:
+with the [Graphics](https://caml.inria.fr/pub/docs/manual-ocaml/manual039.html) module:
 
 ```ocaml
 open Graphics
@@ -2565,7 +2565,7 @@ object SimpleWindow extends SimpleSwingApplication {
 
 ## Seed7
 
-Seed7 has a graphics library ([draw.s7i](http://seed7.sourceforge.net/libraries/draw.htm)),
+Seed7 has a graphics library ([draw.s7i](https://seed7.sourceforge.net/libraries/draw.htm)),
 which is operating system independend.
 Seed7 programs run on all supported operating systems without a change.
 The program below opens a small window.
@@ -2644,7 +2644,7 @@ If you need an additional window:
 toplevel .top>
 ```
 
-If you are using the increasingly popular [tclkit](http://www.equi4.com/tclkit.html) under MS Windows, all you have to do is associate the tclkit with the extension “<tt>.tcl</tt>” and then create an <i>empty</i> file with, e.g., with the name <tt>nothing.tcl</tt>. Double-clicking that will “open a window” (an empty one).
+If you are using the increasingly popular [tclkit](https://www.equi4.com/tclkit.html) under MS Windows, all you have to do is associate the tclkit with the extension “<tt>.tcl</tt>” and then create an <i>empty</i> file with, e.g., with the name <tt>nothing.tcl</tt>. Double-clicking that will “open a window” (an empty one).
 
 =={{header|TI-89 BASIC}}==
 

@@ -830,7 +830,7 @@ link strings # for replace
 ```
 
 
-[strings.icn provides replace.](http://www.cs.arizona.edu/icon/library/fprocs.htm#strings.icn)
+[strings.icn provides replace.](https://www.cs.arizona.edu/icon/library/fprocs.htm#strings.icn)
 
 
 ## J
@@ -960,7 +960,7 @@ stdout:115 updated
 
 ## Julia
 
-We will use Julia's built-in Perl-compatible [regular-expressions](http://docs.julialang.org/en/latest/manual/strings/#regular-expressions).  Although we could read in the files line by line, it is simpler and probably faster to just read the whole file into memory (as text files are likely to fit into memory on modern computers).
+We will use Julia's built-in Perl-compatible [regular-expressions](https://docs.julialang.org/en/latest/manual/strings/#regular-expressions).  Although we could read in the files line by line, it is simpler and probably faster to just read the whole file into memory (as text files are likely to fit into memory on modern computers).
 
 ```julia
 filenames = ["f1.txt", "f2.txt"]
@@ -1374,7 +1374,7 @@ GRTISF(Xyz$(), "Goodbye London", "Hello New York")
 
 ## Python
 
-From [Python docs](http://docs.python.org/library/fileinput.html). (Note: in-place editing does not work for MS-DOS 8+3 filesystems.).
+From [Python docs](https://docs.python.org/library/fileinput.html). (Note: in-place editing does not work for MS-DOS 8+3 filesystems.).
 
 
 ```python

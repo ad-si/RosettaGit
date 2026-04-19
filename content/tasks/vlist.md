@@ -1133,7 +1133,7 @@ number of items in Vlist: 5
 
 ## Scala
 
-<blockquote cite="http://stackoverflow.com/questions/3107151/persistent-data-structures-in-scala">Two of Scala's 2.8 immutable data structures are vectors and hash tries, represented as 32-ary trees.
+<blockquote cite="https://stackoverflow.com/questions/3107151/persistent-data-structures-in-scala">Two of Scala's 2.8 immutable data structures are vectors and hash tries, represented as 32-ary trees.
 These were originally designed by '''Phil Bagwell''', who was working with my team at EPFL, then adopted for Clojure, and now finally adopted for Scala 2.8.
 The Scala implementation shares a common root with the Clojure implementation, but is certainly not a port of it.</blockquote>
 A quote of Martin Odersky, his co-worker Phil Bagwell† invented the VList.

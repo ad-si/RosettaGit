@@ -82,8 +82,8 @@ Show all output here.
 
 ;Also see:
 ::*   the Wikipedia entry for   [Euler's totient function](http://wikipedia.org/wiki/Euler's_totient_function).
-::*   the MathWorld entry for   [totient function](http://mathworld.wolfram.com/TotientFunction.html).
-::*   the OEIS      entry for   [Euler totient function phi(n)](http://oeis.org/A000010).
+::*   the MathWorld entry for   [totient function](https://mathworld.wolfram.com/TotientFunction.html).
+::*   the OEIS      entry for   [Euler totient function phi(n)](https://oeis.org/A000010).
 <br/>
 
 

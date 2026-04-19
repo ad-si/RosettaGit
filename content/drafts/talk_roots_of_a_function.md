@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-I think that traditionally root finding algorithms have a very small difference value defined (called "epsilon" when I learned it) where if abs(f(x)) < this difference, then x is considered "close enough to a root." This is usually related to some sort of [named root finding algorithm](http://en.wikipedia.org/wiki/Root_finding#Specific_algorithms) like bisection, regula falsi, or Newton's method (he has too many methods). Maybe this task could be edited (or other tasks made) to include those methods (I can give C code or at least pseudocode for some). --[[User:Mwn3d|Mwn3d]] 18:59, 21 February 2008 (MST)
+I think that traditionally root finding algorithms have a very small difference value defined (called "epsilon" when I learned it) where if abs(f(x)) < this difference, then x is considered "close enough to a root." This is usually related to some sort of [named root finding algorithm](https://en.wikipedia.org/wiki/Root_finding#Specific_algorithms) like bisection, regula falsi, or Newton's method (he has too many methods). Maybe this task could be edited (or other tasks made) to include those methods (I can give C code or at least pseudocode for some). --[[User:Mwn3d|Mwn3d]] 18:59, 21 February 2008 (MST)
 :Feel free to change it. :-) --[[User:Short Circuit|Short Circuit]] 21:30, 21 February 2008 (MST)
 
 It would also be interesting to include a symbolic math package which would use algebra to find the ''exact'' roots. --[[User:IanOsgood|IanOsgood]] 09:52, 22 February 2008 (MST)

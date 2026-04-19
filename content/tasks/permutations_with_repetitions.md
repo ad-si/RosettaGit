@@ -435,7 +435,7 @@ Nicole Kidman; Keith Urban; Chris Ciaffa; Chris Ciaffa;  => Sunday + Faith as ex
 
 ## AutoHotkey
 
-Use the function from <http://rosettacode.org/wiki/Permutations#Alternate_Version> with opt=1
+Use the function from <https://rosettacode.org/wiki/Permutations#Alternate_Version> with opt=1
 
 ```ahk
 P(n,k="",opt=0,delim="",str="") { ; generate all n choose k permutations lexicographically
@@ -1777,7 +1777,7 @@ Doing it by addig one to a number with k-positions to base n.
 ```pascal
 program PermuWithRep;
 //permutations with repetitions
-//http://rosettacode.org/wiki/Permutations_with_repetitions
+//https://rosettacode.org/wiki/Permutations_with_repetitions
 {$IFDEF FPC}
   {$Mode Delphi}{$Optimization ON}{$Align 16}{$Codealign proc=16,loop=4}
 {$ELSE}

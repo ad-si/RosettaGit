@@ -34,27 +34,27 @@ These are general language references.
 
 ### == Icon ==
 
-* [Book: The Icon Programming Language, 3rd Edition; Griswold and Griswold](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+* [Book: The Icon Programming Language, 3rd Edition; Griswold and Griswold](https://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
 * [Book: Icon Programming for Humanists; Corré](http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf)
 * [Book: Icon Programming Language Handbook by T.W. Christopher](http://www.tools-of-computing.com/tc/CS/iconprog.pdf)
 * [Presentation: Fundamentals of Icon Programming; Mitchell](http://www.mitchellsoftwareengineering.com/icon/icon.sli.pdf)
 
 ==== Articles, Newsletters ====
 Excellent sources of programming insight.
-* [Newsletter:  Table of Contents for the Icon Analyst from 1990-2001](http://www.cs.arizona.edu/icon/analyst/contents.htm) discussing advanced Icon programming and  [Archived issues](http://www.cs.arizona.edu/icon/analyst/ia.htm)
-* [Newsletter: Table of Contents for the Icon Newsletter from 1979-2000](http://www.cs.arizona.edu/icon/inl/inlx.txt) discussing Icon programming and [Archived issues](http://www.cs.arizona.edu/icon/inl/inl.htm)
+* [Newsletter:  Table of Contents for the Icon Analyst from 1990-2001](https://www.cs.arizona.edu/icon/analyst/contents.htm) discussing advanced Icon programming and  [Archived issues](https://www.cs.arizona.edu/icon/analyst/ia.htm)
+* [Newsletter: Table of Contents for the Icon Newsletter from 1979-2000](https://www.cs.arizona.edu/icon/inl/inlx.txt) discussing Icon programming and [Archived issues](https://www.cs.arizona.edu/icon/inl/inl.htm)
 * [Newsletter: Archived issues of the Generator from 2004-2005](http://unicon.org/generator/) discussing Unicon programming
 
 
 ### = Programming Libraries =
 
-* [Code: The Icon Programming Library and index](http://www.cs.arizona.edu/icon/library/ipl.htm)
+* [Code: The Icon Programming Library and index](https://www.cs.arizona.edu/icon/library/ipl.htm)
 * [Code: The Unicon Library](https://tapestry.tucson.az.us/twiki/bin/view/UniLib/WebHome)
 * [Code: The Tapestry TWiki examples of Icon and Unicon programs](https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome)
 
 ==== Graphics, Network Messaging, Threads, Patterns, etc. ====
 These represent extensions that have been integrated into the core langauge(s).
-* [Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend](http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
+* [Book: Graphics Programming in Icon; Griswold,Jeffery, and Townsend](https://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
 * [An IVIB Primer (Visual Interface Builder, UTR6b)](http://unicon.org/utr/utr6b.pdf)
 * [Unicon 3D Graphics User's Guide and Reference Manual (UTR9b superseding UTR9a)](http://unicon.org/utr/utr9b.pdf)
 * [Debugging with UDB (UTR10)](http://unicon.org/utr/utr10.pdf)
@@ -66,10 +66,10 @@ These represent extensions that have been integrated into the core langauge(s).
 
 ### = Implementation =
 
-* [The Implementation of the Icon Programming Language; Griswold and Griswold](http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
-** [Report: IPD112, Supplementary Information for Version 8](http://www.cs.arizona.edu/icon/docs/ipd112.htm)
-** [Report: IPD239, Supplementary Information for Version 9](http://www.cs.arizona.edu/icon/docs/ipd239.htm)
-** [Report: IPD261 Icon's run-time implementation language](http://www.cs.arizona.edu/icon/ftp/doc/ipd261.pdf)
+* [The Implementation of the Icon Programming Language; Griswold and Griswold](https://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
+** [Report: IPD112, Supplementary Information for Version 8](https://www.cs.arizona.edu/icon/docs/ipd112.htm)
+** [Report: IPD239, Supplementary Information for Version 9](https://www.cs.arizona.edu/icon/docs/ipd239.htm)
+** [Report: IPD261 Icon's run-time implementation language](https://www.cs.arizona.edu/icon/ftp/doc/ipd261.pdf)
 * [Book: The Implementation of Icon and Unicon: a Compendium; Jeffery](http://unicon.org/book/ib.pdf)
 * [The Implementation of Graphics in Unicon Version 12 (UTR5b)](http://unicon.org/utr/utr5b.pdf)
 

@@ -352,7 +352,7 @@ New random choice: 50.17%
 ```apl
      ∇ Run runs;doors;i;chosen;cars;goats;swap;stay;ix;prices
 [1]   ⍝0: Monthy Hall problem
-[2]   ⍝1: http://rosettacode.org/wiki/Monty_Hall_problem
+[2]   ⍝1: https://rosettacode.org/wiki/Monty_Hall_problem
 [3]
 [4]    (⎕IO ⎕ML)←0 1
 [5]    prices←0 0 1               ⍝ 0=Goat, 1=Car
@@ -3828,8 +3828,8 @@ but needed some more evidence
 
 References:
   http://www.bbc.co.uk/dna/h2g2/A1054306
-  http://en.wikipedia.org/wiki/Monty_Hall_problem especially:
-  http://en.wikipedia.org/wiki/Monty_Hall_problem#Increasing_the_number_of_doors
+  https://en.wikipedia.org/wiki/Monty_Hall_problem especially:
+  https://en.wikipedia.org/wiki/Monty_Hall_problem#Increasing_the_number_of_doors
 '''
 from random import randrange
 
@@ -4675,7 +4675,7 @@ montyHall(n) ==
 
 ```
 
-Domain:[Integer](http://fricas.github.io/api/Integer.html?highlight=random)
+Domain:[Integer](https://fricas.github.io/api/Integer.html?highlight=random)
 
 ```txt
 
@@ -4929,7 +4929,7 @@ from MONTY_HALL
 ```bash
 #!/bin/bash
 # Simulates the "monty hall" probability paradox and shows results.
-# http://en.wikipedia.org/wiki/Monty_Hall_problem
+# https://en.wikipedia.org/wiki/Monty_Hall_problem
 # (should rewrite this in C for faster calculating of huge number of rounds)
 # (Hacked up by Éric Tremblay, 07.dec.2010)
 

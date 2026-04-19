@@ -11,7 +11,7 @@ tags = []
 +++
 Scala is a hybrid [Functional](https://rosettacode.org/wiki/functional_programming)/[OO](https://rosettacode.org/wiki/object-oriented) language developed by Martin Odersky and his team at [LAMP](http://lamp.epfl.ch/). Scala compiles to [JVM](https://rosettacode.org/wiki/runs_on_vm::Java_Virtual_Machine) [bytecode](https://rosettacode.org/wiki/bytecode), and can inter-operate with [Java](https://rosettacode.org/wiki/Java) code.
 
-The language is most focused on the results of the program, therefor the [considered harmful](http://en.wikipedia.org/wiki/Considered_harmful) technical computer oriented concepts like threads, semaphore, pointers, coercion, casting, goto- and break statements to struggle with are not there. For parallel processing (that very simple can archived) these concept are present but not visible to the programmer.
+The language is most focused on the results of the program, therefor the [considered harmful](https://en.wikipedia.org/wiki/Considered_harmful) technical computer oriented concepts like threads, semaphore, pointers, coercion, casting, goto- and break statements to struggle with are not there. For parallel processing (that very simple can archived) these concept are present but not visible to the programmer.
 
 Lots of RC tasks addresses technical "features" of goto's, break, continue, side effects, pointers, type-casting, weak-typing and so on and are deliberately not Scala's cup of tea.
 

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-After finishing this task you can move on to [this](http://xkcd.com/730/). --[[User:Mwn3d|Mwn3d]] 15:59, 21 August 2011 (UTC)
+After finishing this task you can move on to [this](https://xkcd.com/730/). --[[User:Mwn3d|Mwn3d]] 15:59, 21 August 2011 (UTC)
 : Heh that would have been easy had it not included the squirrel. By the way, do you know what's up with the SVG display? I've been trying to get it to work with no success. --[[User:Ledrug|Ledrug]] 16:26, 21 August 2011 (UTC)
 :: FWIW I have had problems in the past with SVG files that contain text elements not displaying properly. A workaround is to convert the text to curves. It is apparently a problem with the sites SVG renderer. --[[User:Thundergnat|Thundergnat]] 19:58, 21 August 2011 (UTC)
 ::: Eh that worked, great. --[[User:Ledrug|Ledrug]] 22:51, 21 August 2011 (UTC)

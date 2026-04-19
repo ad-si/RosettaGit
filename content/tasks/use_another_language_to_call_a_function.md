@@ -382,7 +382,7 @@ int main() {
 ```
 
 
-Then you can compile and link all with the [DMC C compiler](http://www.digitalmars.com/download/freecompiler.html)(on Linux you can use GCC):
+Then you can compile and link all with the [DMC C compiler](https://digitalmars.com/download/freecompiler.html)(on Linux you can use GCC):
 
 
 ```txt
@@ -1660,7 +1660,7 @@ $
 ## Racket
 
 
-Since this problem is presented as the inverse to [[Call foreign language function]], I've focused on just demonstrating a callback from C into Racket, instead of showing how to [embed the whole Racket runtime into C](http://docs.racket-lang.org/inside/embedding.html).
+Since this problem is presented as the inverse to [[Call foreign language function]], I've focused on just demonstrating a callback from C into Racket, instead of showing how to [embed the whole Racket runtime into C](https://docs.racket-lang.org/inside/embedding.html).
 
 Starting with the given C code, modify it so that <tt>Query</tt> is a variable instead of an external:
 

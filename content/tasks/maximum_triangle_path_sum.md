@@ -106,7 +106,7 @@ Find the maximum total in the triangle below:
 
 Such numbers can be included in the solution code, or read from a "triangle.txt" file.
 
-This task is derived from the [Euler Problem #18](http://projecteuler.net/problem=18).
+This task is derived from the [Euler Problem #18](https://projecteuler.net/problem=18).
 
 
 
@@ -3022,7 +3022,7 @@ puts [maxTrianglePathSum {
 
 ```vb
 
-'Solution derived from http://stackoverflow.com/questions/8002252/euler-project-18-approach.
+'Solution derived from https://stackoverflow.com/questions/8002252/euler-project-18-approach.
 
 Set objfso = CreateObject("Scripting.FileSystemObject")
 Set objinfile = objfso.OpenTextFile(objfso.GetParentFolderName(WScript.ScriptFullName) &_

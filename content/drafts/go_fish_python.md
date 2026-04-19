@@ -171,7 +171,7 @@ if __name__=="__main__":
 """
 Plays a Go Fish game between a user and computer
 following the rules specified at
-http://www.rosettacode.org/wiki/Go_Fish
+https://www.rosettacode.org/wiki/Go_Fish
 """
 import itertools
 import random
@@ -220,7 +220,7 @@ def play(deck: Deck = DECK,
          lucky_fishing: bool = False) -> None:
     """
     Plays the Go Fish game according to
-    http://www.rosettacode.org/wiki/Go_Fish
+    https://www.rosettacode.org/wiki/Go_Fish
     :param deck: deck from where the cards are drawn
     :param first_hand_count: starting amount of cards for a player
     :param lucky_fishing: if True, continue playing

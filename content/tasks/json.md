@@ -817,7 +817,7 @@ Parsing numbers to long long or double...
 
 ## C#
 
-This uses the [JavaScriptSerializer](http://msdn.microsoft.com/en-us/library/system.web.script.serialization.javascriptserializer(v=VS.90).aspx) class which was shipped with .NET 3.5.
+This uses the [JavaScriptSerializer](https://msdn.microsoft.com/en-us/library/system.web.script.serialization.javascriptserializer(v=VS.90).aspx) class which was shipped with .NET 3.5.
 
 
 ```c#
@@ -1138,7 +1138,7 @@ void main() {
 
 ## EchoLisp
 
-The '''json''' library allows to import/export basic JSON types (string ,numbers, arrays) and to translate EchoLisp objects (lists, dates, ..) from/to JSON objects and types. See reference documentation <http://www.echolalie.org/echolisp/help.html#export-json>.
+The '''json''' library allows to import/export basic JSON types (string ,numbers, arrays) and to translate EchoLisp objects (lists, dates, ..) from/to JSON objects and types. See reference documentation <https://www.echolalie.org/echolisp/help.html#export-json>.
 
 ```lisp
 
@@ -1381,7 +1381,7 @@ json.bar=10,apples
 
 ## Erlang
 
-Use the JSON library for Erlang (mochijson) from [mochiweb](https://github.com/mochi/mochiweb/blob/master/src/mochijson.erl). The JSON code is extracted from [wikipedia](http://en.wikipedia.org/wiki/JSON#JSON_example)
+Use the JSON library for Erlang (mochijson) from [mochiweb](https://github.com/mochi/mochiweb/blob/master/src/mochijson.erl). The JSON code is extracted from [wikipedia](https://en.wikipedia.org/wiki/JSON#JSON_example)
 
 ```Erlang
 
@@ -1987,7 +1987,7 @@ var clone = eval( person.toGosu() )
 
 Solution requires Groovy 1.8 or later.
 
-Note that JsonSlurper accepts an extra comma such as [1,2,3,].  This is an extension to the [JSON grammar](http://www.json.org/fatfree.html).
+Note that JsonSlurper accepts an extra comma such as [1,2,3,].  This is an extension to the [JSON grammar](https://www.json.org/fatfree.html).
 
 
 ```groovy
@@ -2068,7 +2068,7 @@ LOCAL arr := { 101, { 18, "Test1" }, 18, .F. }
 ## Haskell
 
 
-Uses the Aeson library from hackage (<http://hackage.haskell.org/package/aeson>).
+Uses the Aeson library from hackage (<https://hackage.haskell.org/package/aeson>).
 
 
 ```Haskell
@@ -2188,7 +2188,7 @@ Usage: Put code in gen/json.hoon
 ## J
 
 
-Here is a minimal implementation based on [an old email message](http://www.jsoftware.com/pipermail/chat/2007-April/000462.html).
+Here is a minimal implementation based on [an old email message](https://www.jsoftware.com/pipermail/chat/2007-April/000462.html).
 
 
 ```j
@@ -2270,7 +2270,7 @@ Also, a different serializer will probably be necessary, if you are delivering j
 
 ## Java
 
-This uses [Gson](http://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
+This uses [Gson](https://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
 
 ```Java
 import com.google.gson.Gson;
@@ -2391,7 +2391,7 @@ variable
 ## Julia
 
 ```julia
-# Pkg.add("JSON") ... an external library http://docs.julialang.org/en/latest/packages/packagelist/
+# Pkg.add("JSON") ... an external library https://docs.julialang.org/en/latest/packages/packagelist/
 using JSON
 
 sample = Dict()
@@ -2935,7 +2935,7 @@ The toolbox [JSONlab](http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/
 
 ### json.org Library
 
-This uses a library provided by [json.org](http://www.json.org/java/index.html) to serialize/deserialize JSON objects.
+This uses a library provided by [json.org](https://www.json.org/java/index.html) to serialize/deserialize JSON objects.
 
 ```NetRexx
 /* NetRexx */
@@ -2950,7 +2950,7 @@ import org.json.JSONException
 /**
  * Using library from json.org
  *
- * @see http://www.json.org/java/index.html
+ * @see https://www.json.org/java/index.html
  */
 class RJson01 public
 
@@ -3127,7 +3127,7 @@ DwarfBean@39890510 [key=F2012_2, title=Snow White & the Huntsman, year=2012, med
 
 ### Google gson Library
 
-This uses [Gson](http://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
+This uses [Gson](https://code.google.com/p/google-gson/), a library to convert JSON to Java objects and vice-versa.
 
 ```NetRexx
 /* NetRexx */
@@ -3519,7 +3519,7 @@ OK
 
 ## Oz
 
-Using the [google.com/oz-code](http://code.google.com/p/oz-code/downloads/list) JSON library:
+Using the [google.com/oz-code](https://code.google.com/p/oz-code/downloads/list) JSON library:
 
 ```oz
 declare
@@ -3555,7 +3555,7 @@ my $json_string = encode_json($sample);
 ## Perl 6
 
 
-Using [JSON::Tiny](http://github.com/moritz/json/)
+Using [JSON::Tiny](https://github.com/moritz/json/)
 
 
 ```perl6
@@ -3999,7 +3999,7 @@ cat(toJSON(data))
 
 ## REBOL
 
-Using [json.org/json.r](http://www.json.org/json.r)
+Using [json.org/json.r](https://www.json.org/json.r)
 
 
 ```rebol
@@ -4360,7 +4360,7 @@ apples
 
 ## Tcl
 
-For parsing JSON, {{tcllib|json}} provides the capability (see [the Tcler's Wiki page on it](http://wiki.tcl.tk/13419) for more discussion):
+For parsing JSON, {{tcllib|json}} provides the capability (see [the Tcler's Wiki page on it](https://wiki.tcl-lang.org/13419) for more discussion):
 
 ```tcl
 package require json
@@ -4448,7 +4448,7 @@ Note that this is capable of correctly handling the round-trip of values parsed 
 ### Parsing
 
 
-The following implements the parsing half of the task. It is a parser closely based on the JSON grammar <http://www.json.org/fatfree.html>.
+The following implements the parsing half of the task. It is a parser closely based on the JSON grammar <https://www.json.org/fatfree.html>.
 
 It is implemented with recursive horizontal pattern matching functions, and so basically the definition resembles a grammar. Horizontal functions are a new feature in TXR, and basically allow the language to easily specify LL grammars with indefinite lookahead, not restricted to regular languages (thanks to TXR's backtracking).  The numerous occurences of @\ in the code are line continuations. Horizontal functions must be written on one logical line. @\ eats the whitespace at the start of the next physical line, to allow indentation.
 
@@ -4584,7 +4584,7 @@ Result:
 
 XPath fn:json-to-xml#1 function:
 
-<map xmlns="http://www.w3.org/2005/xpath-functions">
+<map xmlns="https://www.w3.org/2005/xpath-functions">
   <string key="Astring">string-value</string>
   <number key="Anumber">5.7</number>
   <null key="Anull"/>

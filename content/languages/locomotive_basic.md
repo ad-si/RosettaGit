@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 '''Locomotive BASIC''' is a variant of BASIC that is built into the ROM of the [Amstrad CPC](https://en.wikipedia.org/wiki/Amstrad_CPC) series of Z80-based home computers introduced in 1984. In the 1980s, CPCs were a popular, slightly more expensive alternative to the Commodore C64/C128 and were not just suited for games but also office work because of their high resolution displays and [CP/M](https://en.wikipedia.org/wiki/CP/M) support. They came with a built-in cassette deck (CPC 464) or 3" disk drive (CPC 664 and
-6128) as storage devices and a "green screen" or color monitor which also housed the power supply. Sales were particularly strong in the UK, Germany, France, and Spain. Today, Locomotive BASIC can be used via CPC emulators such as [WinAPE](http://www.winape.net/) or [JavaCPC](http://sourceforge.net/projects/javacpc/)—which is perfectly legal because Amstrad has given their permission for distributing CPC ROM images with emulators.
+6128) as storage devices and a "green screen" or color monitor which also housed the power supply. Sales were particularly strong in the UK, Germany, France, and Spain. Today, Locomotive BASIC can be used via CPC emulators such as [WinAPE](http://www.winape.net/) or [JavaCPC](https://sourceforge.net/projects/javacpc/)—which is perfectly legal because Amstrad has given their permission for distributing CPC ROM images with emulators.
 
 ## Features
 Locomotive BASIC was comparatively advanced for its time (with e.g. software interrupts and comprehensive graphics and audio commands) and is very cleanly implemented, just like the rest of the Amstrad CPC ROM. No doubt this was partly because the CPC debuted relatively late during the era of 8-bit machines, so Locomotive Software had more of an opportunity to consider the good and bad software design decisions in existing home computers. System calls are made with <tt>CALL</tt> via dedicated jump blocks in RAM, so they are unaffected by changes to the ROM between CPC models. This makes software very compatible between the original three CPC models and ''mostly'' compatible for the later, considerably less popular "Plus" models that came out in 1990. Together with AMSDOS, the '''Ams'''trad '''D'''isk '''O'''perating '''S'''ystem, Locomotive BASIC is also used for disk and tape operations. (Some commands however, e.g. <tt>disckit3</tt> for formatting disks, are only available under CP/M.)
@@ -35,7 +35,7 @@ Version 1.0 of Locomotive BASIC shipped with the CPC 464, later models included 
 The extensive CPC user manual features a finely written introduction to BASIC that does not feel as rushed or dumbed-down as in some other manuals of the time. Obviously Amstrad expected many customers would want to program their CPCs themselves, not just use them with off-the-shelf software. There are even some pretty decent BASIC type-in games in appendix 3, such as clones of the arcade classics ''[Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game))'' and ''[Pong](https://en.wikipedia.org/wiki/Pong)''.
 
 ## Getting started with Locomotive BASIC
-Either use a browser-based CPC emulator (<http://www.cpcbox.com/>) or download a binary for your platform. A list of emulators is available at <http://cpcwiki.eu/index.php/Emulators>. JavaCPC (<http://sourceforge.net/projects/javacpc/>) or WinAPE (<http://www.winape.net/>) are particularly recommended. An advantage of native emulators is that they tend to have copy-and-paste functionality, so you can edit programs in external editors.
+Either use a browser-based CPC emulator (<http://www.cpcbox.com/>) or download a binary for your platform. A list of emulators is available at <http://cpcwiki.eu/index.php/Emulators>. JavaCPC (<https://sourceforge.net/projects/javacpc/>) or WinAPE (<http://www.winape.net/>) are particularly recommended. An advantage of native emulators is that they tend to have copy-and-paste functionality, so you can edit programs in external editors.
 
 In the emulator, type
 
@@ -58,6 +58,6 @@ to run your first Locomotive BASIC program.
 ** [Scanned CPC user manuals](http://www.cpcwiki.eu/index.php/User_Manual)
 ** [Locomotive BASIC](http://www.cpcwiki.eu/index.php/Locomotive_BASIC) at the [Amstrad CPC Wiki](http://www.cpcwiki.eu/)
 * CPC emulators:
-** [JavaCPC emulator](http://sourceforge.net/projects/javacpc/)
+** [JavaCPC emulator](https://sourceforge.net/projects/javacpc/)
 ** [Online CPC emulator in JavaScript](http://cpcbox.com/) (best performance in Firefox, but also works in Chrome)
 ** [List of CPC emulators](http://www.cpcwiki.eu/index.php/Emulators)

@@ -2207,7 +2207,7 @@ there are 2 occurences of "abab" in "ababababab"
 
 ```NewLISP
 ; file:   stringcount.lsp
-; url:    http://rosettacode.org/wiki/Count_occurrences_of_a_substring
+; url:    https://rosettacode.org/wiki/Count_occurrences_of_a_substring
 ; author: oofoe 2012-01-29
 
 ; Obvious (and non-destructive...)

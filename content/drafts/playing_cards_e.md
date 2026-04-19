@@ -27,7 +27,7 @@ def makeStack(cardsIn) {
             out.print("<cards: ", cards, ">")
         }
         to shuffle() {
-            # Per http://rosettacode.org/wiki/Knuth_shuffle
+            # Per https://rosettacode.org/wiki/Knuth_shuffle
             for bound in (2..(cards.size())).descending() {
                 def i := entropy.nextInt(bound)
                 def swapTo := bound - 1

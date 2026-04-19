@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{np language}}[SVG](http://www.w3.org/TR/SVG/) is an [[XML]]-based vector graphics language intended for use on the Web.
+{{np language}}[SVG](https://www.w3.org/TR/SVG/) is an [[XML]]-based vector graphics language intended for use on the Web.

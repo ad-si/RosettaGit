@@ -72,10 +72,10 @@ Write a program to find all Smith numbers ''below'' 10000.
 ## See also
 
 * from Wikipedia:   [Smith number](https://en.wikipedia.org/wiki/Smith_number).
-* from MathWorld:   [Smith number](http://mathworld.wolfram.com/SmithNumber.html).
+* from MathWorld:   [Smith number](https://mathworld.wolfram.com/SmithNumber.html).
 * from OEIS A6753:   [OEIS sequence A6753](https://oeis.org/A006753).
 * from OEIS A104170:   [Number of Smith numbers below 10^n](https://oeis.org/A104170).
-* from The Prime pages:   [Smith numbers](http://primes.utm.edu/glossary/xpage/SmithNumber.html).
+* from The Prime pages:   [Smith numbers](https://primes.utm.edu/glossary/xpage/SmithNumber.html).
 
 
 

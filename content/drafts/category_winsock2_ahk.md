@@ -13,4 +13,4 @@ tags = []
 {{stub}}{{library}}A wrapper for [[Win32|Win32's]] Winsock.
 
 ==Links==
-* [Source](http://www.autohotkey.com/forum/topic35575.html)
+* [Source](https://www.autohotkey.com/forum/topic35575.html)

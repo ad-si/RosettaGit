@@ -16,7 +16,7 @@ Some of the distinguishing characteristics are:
 * replacement of the I/O support with a package
 * differences in keywords
 
-For more information refer to the wiki off the main site [ObjectIcon Wiki](http://code.google.com/p/objecticon/wiki/Introduction)
+For more information refer to the wiki off the main site [ObjectIcon Wiki](https://code.google.com/p/objecticon/wiki/Introduction)
 
 ## Related
 * [Icon](https://rosettacode.org/wiki/Icon)

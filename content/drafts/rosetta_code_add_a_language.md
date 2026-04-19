@@ -44,7 +44,7 @@ That will automatically give you a basic language page, and even a nice little s
 ### Redirect
 
 
-The next step is to create a redirect page.  This is important, because the ''actual'' page for your Ayrch language is at '''http://rosettacode.org/wiki/Category:Ayrch''', and we want people to be able to go to '''http://rosettacode.org/wiki/Ayrch''', and be able to use syntax like <nowiki>[[Ayrch]]</nowiki> within the wiki to refer to it.
+The next step is to create a redirect page.  This is important, because the ''actual'' page for your Ayrch language is at '''https://rosettacode.org/wiki/Category:Ayrch''', and we want people to be able to go to '''https://rosettacode.org/wiki/Ayrch''', and be able to use syntax like <nowiki>[[Ayrch]]</nowiki> within the wiki to refer to it.
 
 As before, click on the Search field on the left, but this time type '''Ayrch''', and click Go.  Again, click "create this page", and it will again give you an empty page to edit.
 

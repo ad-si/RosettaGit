@@ -12,4 +12,4 @@ tags = []
 
 {{library}}
 : Drakma is a fully-featured web client (implemented in Common Lisp) that knows how to handle HTTP/1.1 chunking, persistent connections, re-usable sockets, SSL, continuable uploads, file uploads, cookies, and other things.
-— <http://weitz.de/drakma/>.
+— <https://weitz.de/drakma/>.

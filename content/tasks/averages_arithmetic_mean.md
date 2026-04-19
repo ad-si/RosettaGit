@@ -3887,7 +3887,7 @@ EndProcedure
 {{works with|Python|3.0}}.
 {{works with|Python|2.6}}
 
-Uses [fsum](http://docs.python.org/3.3/library/math.html?highlight=fsum#math.fsum) which tracks multiple partial sums to avoid losing precision
+Uses [fsum](https://docs.python.org/3.3/library/math.html?highlight=fsum#math.fsum) which tracks multiple partial sums to avoid losing precision
 
 ```python
 from math import fsum
@@ -3947,7 +3947,7 @@ print avg([0,0,3,1,4,1,5,9,0,0])
 
 
 {{works with|Python|3.4}}
-Since 3.4, Python has a [[statistics](http://docs.python.org/3/library/statistics.html) library in the stdlib, which takes care of these precision overflow issues in a way that works for all standard types, not just float, even with values way too big or small to fit in a float. (For Python 2.6-2.7, there's a backport available on PyPI.)
+Since 3.4, Python has a [[statistics](https://docs.python.org/3/library/statistics.html) library in the stdlib, which takes care of these precision overflow issues in a way that works for all standard types, not just float, even with values way too big or small to fit in a float. (For Python 2.6-2.7, there's a backport available on PyPI.)
 
 ```python
 >>
@@ -4014,7 +4014,7 @@ Racket's math library (available in v5.3.2 and newer) comes with a <tt>mean</tt>
 ```REBOL
 rebol [
     Title: "Arithmetic Mean (Average)"
-    URL: http://rosettacode.org/wiki/Average/Arithmetic_mean
+    URL: https://rosettacode.org/wiki/Average/Arithmetic_mean
 ]
 
 average: func [v /local sum][
@@ -5114,7 +5114,7 @@ sum($values) div count($values)
 
 
 ```xml
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="text"/>
 
 	<xsl:template match="/">

@@ -21,7 +21,7 @@ Features of both forms of Emacs include syntax highlighting for a variety of [[p
 
 Plugins and [[libraries]] can be used in conjunction with emacs to make it do more interesting things like diffs, play text games, and view email.
 
-* [GNU Emacs](http://www.gnu.org/software/emacs/)
+* [GNU Emacs](https://www.gnu.org/software/emacs/)
 * [XEmacs](http://www.xemacs.org/)
 
 [[Category:Editor]]

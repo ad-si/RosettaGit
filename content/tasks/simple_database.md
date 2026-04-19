@@ -3346,7 +3346,7 @@ one,two,2016/07/25 12:33pm
 
 ## PicoLisp
 
-The '[rc](http://software-lab.de/doc/refR.html#rc)' resource file handling function is used typically for such tasks. It also takes care of proper locking and protection.
+The '[rc](https://software-lab.de/doc/refR.html#rc)' resource file handling function is used typically for such tasks. It also takes care of proper locking and protection.
 
 ```PicoLisp
 #!/usr/bin/pil
@@ -3751,7 +3751,7 @@ Bob   family   7/19/1987 12:00:00 AM
 #!/usr/bin/python3
 
 '''\
-Simple database for: http://rosettacode.org/wiki/Simple_database
+Simple database for: https://rosettacode.org/wiki/Simple_database
 
 '''
 
@@ -3880,7 +3880,7 @@ optional arguments:
   -f FIELD FIELD, --field FIELD FIELD
                         Other optional fields with value (can be repeated)
 
-Simple database for: http://rosettacode.org/wiki/Simple_database
+Simple database for: https://rosettacode.org/wiki/Simple_database
 paddy3118:~$ ./simple_db.py -d Book -f title 'Windy places' -f type hardback --tag DISCOUNT add
 Writing record to _simple_db_db.py
 paddy3118:~$ ./simple_db.py -d Book -f title 'RC spammers'  -f type paperback -t   DISCOUNT add

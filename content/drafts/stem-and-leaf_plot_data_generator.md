@@ -17,7 +17,7 @@ Written to generate data sets for the [[Stem-and-leaf plot]] task. Statistics ar
 #!/usr/bin/perl
 use strict;
 
-# The shuffle is taken from http://rosettacode.org/wiki/Knuth_shuffle
+# The shuffle is taken from https://rosettacode.org/wiki/Knuth_shuffle
 sub shuffle
  {my @a = @_;
   foreach my $n (1 .. $#a)

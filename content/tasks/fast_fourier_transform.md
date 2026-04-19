@@ -77,7 +77,7 @@ and results in a sequence of equal length, again of complex numbers.
 If you need to restrict yourself to real numbers, the output should
 be the magnitude (i.e. sqrt(re²+im²)) of the complex result.
 
-The classic version is the recursive Cooley–Tukey FFT. [Wikipedia](http://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm) has pseudo-code for that.
+The classic version is the recursive Cooley–Tukey FFT. [Wikipedia](https://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm) has pseudo-code for that.
 Further optimizations are possible but not required.
 
 
@@ -1539,7 +1539,7 @@ variants on this page.
 ```javascript
 /*
 complex fast fourier transform and inverse from
-http://rosettacode.org/wiki/Fast_Fourier_transform#C.2B.2B
+https://rosettacode.org/wiki/Fast_Fourier_transform#C.2B.2B
 */
 function icfft(amplitudes)
 {
@@ -1611,7 +1611,7 @@ required by the code above.
 ```javascript
 /*
 basic complex number arithmetic from
-http://rosettacode.org/wiki/Fast_Fourier_transform#Scala
+https://rosettacode.org/wiki/Fast_Fourier_transform#Scala
 */
 function Complex(re, im)
 {

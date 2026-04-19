@@ -22,5 +22,5 @@ A program, then, reads much like a cooking recipe.
 
 ## External links
 *[DM's Esoteric Programming Languages](http://www.dangermouse.net/esoteric/)
-*[An interpreter for Chef written in Perl](http://search.cpan.org/dist/Acme-Chef)
+*[An interpreter for Chef written in Perl](https://metacpan.org/dist/Acme-Chef)
 *[Chef on Esolangs](https://rosettacode.org/wiki/eso:Chef)

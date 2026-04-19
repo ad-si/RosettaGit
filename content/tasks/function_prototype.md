@@ -427,7 +427,7 @@ Caveat -- This works with specific implementations of CL. This was tested in SBC
 
 ## D
 
-Beside function prototypes similar to the ones available in C (plus templates, D-style varargs), you can define class method prototypes in abstract classes and interfaces. The exact rules for this are best explained by the [//http://dlang.org/interface.html documentation]
+Beside function prototypes similar to the ones available in C (plus templates, D-style varargs), you can define class method prototypes in abstract classes and interfaces. The exact rules for this are best explained by the [//https://dlang.org/interface.html documentation]
 
 ```d
 /// Declare a function with no arguments that returns an integer.
@@ -526,7 +526,7 @@ End Type
 
 
 =={{header|F Sharp|F#}}==
-In F#, prototypes are called signatures. Signature files are used to bulk annotate the accessibility of the things within them. If something is in an implementation file but not in the signature file, it is assumed to be private to that file. If it is in the signature file without the <code>internal</code> accessibility modifier, then it is assumed to public, otherwise it is internal to the assembly. For more details, see the [documentation](http://msdn.microsoft.com/en-us/library/dd233196.aspx). Below is an example of the signatures produced for the functions specified in the task (without any accessibility modifiers):
+In F#, prototypes are called signatures. Signature files are used to bulk annotate the accessibility of the things within them. If something is in an implementation file but not in the signature file, it is assumed to be private to that file. If it is in the signature file without the <code>internal</code> accessibility modifier, then it is assumed to public, otherwise it is internal to the assembly. For more details, see the [documentation](https://msdn.microsoft.com/en-us/library/dd233196.aspx). Below is an example of the signatures produced for the functions specified in the task (without any accessibility modifiers):
 
 ```fsharp
 // A function taking and returning nothing (unit).
@@ -1593,7 +1593,7 @@ In SNOBOL4, functions are actually a hack and are defined in an idiosyncratic wa
 
 ### Basics
 
-To begin with, we look at the definition provided [at the relevant task page](http://rosettacode.org/wiki/Function_definition#SNOBOL4):
+To begin with, we look at the definition provided [at the relevant task page](https://rosettacode.org/wiki/Function_definition#SNOBOL4):
 
 
 ```snobol4

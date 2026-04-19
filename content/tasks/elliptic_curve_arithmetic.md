@@ -365,7 +365,7 @@ multiplication a x 10       → #<pt> (0.3797 -2.6561)
 
 ### Plotting
 
-;; Result at <http://www.echolalie.org/echolisp/help.html#plot-xy>
+;; Result at <https://www.echolalie.org/echolisp/help.html#plot-xy>
 
 ```scheme
 

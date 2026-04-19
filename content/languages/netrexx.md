@@ -39,5 +39,5 @@ On the 8th of June 2011, IBM transferred ownership of the reference implementati
 ### = Useful Links =
 
 * [The NetRexx Programming Language - www.netrexx.org](http://www.netrexx.org)
-* [The Rexx Language Association - www.rexxla.org](http://www.rexxla.org)
+* [The Rexx Language Association - www.rexxla.org](https://www.rexxla.org)
 * [Open Object Rexx - www.oorexx.org](http://www.oorexx.org/)

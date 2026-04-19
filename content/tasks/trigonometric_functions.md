@@ -1785,7 +1785,7 @@ Tan(Deg(d));    Atan(last);
 
 ## Go
 
-The Go math package provides the constant pi and the six trigonometric functions called for by the task.  The functions all use the float64 type and work in radians.  It also provides a [Sincos](http://golang.org/pkg/math/#Sincos) function.
+The Go math package provides the constant pi and the six trigonometric functions called for by the task.  The functions all use the float64 type and work in radians.  It also provides a [Sincos](https://golang.org/pkg/math/#Sincos) function.
 
 ```go
 package main
@@ -2036,7 +2036,7 @@ The Icon solution works in Unicon.
 
 ## J
 
-The [circle functions](http://www.jsoftware.com/help/dictionary/dodot.htm) in J include trigonometric functions. Native operation is in radians, so values in degrees involve conversion.
+The [circle functions](https://www.jsoftware.com/help/dictionary/dodot.htm) in J include trigonometric functions. Native operation is in radians, so values in degrees involve conversion.
 
 Sine, cosine, and tangent of a single angle, indicated as pi-over-four radians and as 45 degrees:
 
@@ -2575,7 +2575,7 @@ Tan[90 Degree]
 
 ## MATLAB
 
-A full list of built-in trig functions can be found in the [MATLAB Documentation](http://www.mathworks.com/access/helpdesk/help/techdoc/ref/f16-5872.html#f16-6197).
+A full list of built-in trig functions can be found in the [MATLAB Documentation](https://www.mathworks.com/access/helpdesk/help/techdoc/ref/f16-5872.html#f16-6197).
 
 
 ```MATLAB
@@ -4843,7 +4843,7 @@ END 'MAIN
 ```REBOL
 REBOL [
 	Title: "Trigonometric Functions"
-	URL: http://rosettacode.org/wiki/Trigonometric_Functions
+	URL: https://rosettacode.org/wiki/Trigonometric_Functions
 ]
 
 radians: pi / 4  degrees: 45.0
@@ -5381,14 +5381,14 @@ object Gonio extends App {
 
 ## Seed7
 
-The example below uses the libaray [math.s7i](http://seed7.sourceforge.net/libraries/math.htm),
+The example below uses the libaray [math.s7i](https://seed7.sourceforge.net/libraries/math.htm),
 which defines, besides many other functions,
-[sin](http://seed7.sourceforge.net/libraries/math.htm#sin%28ref_float%29),
-[cos](http://seed7.sourceforge.net/libraries/math.htm#cos%28ref_float%29),
-[tan](http://seed7.sourceforge.net/libraries/math.htm#tan%28ref_float%29),
-[asin](http://seed7.sourceforge.net/libraries/math.htm#asin%28ref_float%29),
-[acos](http://seed7.sourceforge.net/libraries/math.htm#acos%28ref_float%29) and
-[atan](http://seed7.sourceforge.net/libraries/math.htm#atan%28ref_float%29).
+[sin](https://seed7.sourceforge.net/libraries/math.htm#sin%28ref_float%29),
+[cos](https://seed7.sourceforge.net/libraries/math.htm#cos%28ref_float%29),
+[tan](https://seed7.sourceforge.net/libraries/math.htm#tan%28ref_float%29),
+[asin](https://seed7.sourceforge.net/libraries/math.htm#asin%28ref_float%29),
+[acos](https://seed7.sourceforge.net/libraries/math.htm#acos%28ref_float%29) and
+[atan](https://seed7.sourceforge.net/libraries/math.htm#atan%28ref_float%29).
 
 
 ```seed7

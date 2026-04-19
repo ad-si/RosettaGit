@@ -607,7 +607,7 @@ void main() {
 
 ## Tcl
 
-Using the [Tcl3d](http://www.tcl3d.org) library and liberally borrowing from [this pixel shader demo on the wiki](http://wiki.tcl.tk/41477), here is a brute translation of the C implementation.
+Using the [Tcl3d](http://www.tcl3d.org) library and liberally borrowing from [this pixel shader demo on the wiki](https://wiki.tcl-lang.org/41477), here is a brute translation of the C implementation.
 
 
 ```Tcl

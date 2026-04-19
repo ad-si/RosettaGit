@@ -3736,7 +3736,7 @@ err: n too small
 
 ```MATLAB
 function s=middle_three_digits(a)
-% http://rosettacode.org/wiki/Middle_three_digits
+% https://rosettacode.org/wiki/Middle_three_digits
 
 s=num2str(abs(a));
 
@@ -5777,7 +5777,7 @@ End Function
 
 
 ```vb
-'http://rosettacode.org/wiki/Middle_three_digits
+'https://rosettacode.org/wiki/Middle_three_digits
 
 Function mid3n(n)
 	'Remove the number's sign.

@@ -218,7 +218,7 @@ DW       DS     D                  packed (PL8) 15num
 ## Ada
 
 
-The program from <http://rosettacode.org/wiki/Last_Friday_of_each_month#Ada> solves this task, as well.
+The program from <https://rosettacode.org/wiki/Last_Friday_of_each_month#Ada> solves this task, as well.
 
 ```txt
 >./last_weekday_in_month sunday 2013
@@ -4116,9 +4116,9 @@ object FindTheLastSundayOfEachMonth extends App {
 
 ## Seed7
 
-Uses the libraries [time.s7i](http://seed7.sourceforge.net/libraries/time.htm) and
-[duration.s7i](http://seed7.sourceforge.net/libraries/duration.htm).
-Applicable to any day of the week, cf. <http://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7>.
+Uses the libraries [time.s7i](https://seed7.sourceforge.net/libraries/time.htm) and
+[duration.s7i](https://seed7.sourceforge.net/libraries/duration.htm).
+Applicable to any day of the week, cf. <https://rosettacode.org/wiki/Last_Friday_of_each_month#Seed7>.
 
 
 ```seed7
@@ -4393,7 +4393,7 @@ Next
 ## zkl
 
 
-The program from <http://rosettacode.org/wiki/Last_Friday_of_each_month#zkl> solves this task, as well.
+The program from <https://rosettacode.org/wiki/Last_Friday_of_each_month#zkl> solves this task, as well.
 
 ```txt
 var [const] D=Time.Date;

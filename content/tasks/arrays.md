@@ -1047,8 +1047,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -3801,7 +3801,7 @@ a = ubound (b)
 
 This info only applies for the default setting '''fb'''.
 For the other modes '''[fblite, qb,  deprecated]''' other keywords and restrictions apply.
-Consult the [FreeBASIC manual](http://www.freebasic.net/wiki/wikka.php?wakka=DocToc) for those modes.
+Consult the [FreeBASIC manual](https://www.freebasic.net/wiki/wikka.php?wakka=DocToc) for those modes.
 
 Parts of the info was taken from the FreeBASIC manual.
 
@@ -4602,7 +4602,7 @@ There is a set of functions to manage arrays in Clipper, including the following
 
 ## Haskell
 
-You can read all about Haskell arrays [here](http://haskell.org/haskellwiki/Arrays). The following example is taken from that page:
+You can read all about Haskell arrays [here](https://haskell.org/haskellwiki/Arrays). The following example is taken from that page:
 
 ```haskell
 import Data.Array.IO
@@ -5153,7 +5153,7 @@ fun main(x: Array<String>) {
 ## Lasso
 
 
-Lasso Array <http://lassoguide.com/operations/containers.html?#array> objects store zero or more elements and provide random access to those elements by position. Positions are 1-based integers. Lasso Arrays will grow as needed to accommodate new elements. Elements can be inserted and removed from arrays at any position. However, inserting an element anywhere but at the end of an array results in all subsequent elements being moved down.
+Lasso Array <https://lassoguide.com/operations/containers.html?#array> objects store zero or more elements and provide random access to those elements by position. Positions are 1-based integers. Lasso Arrays will grow as needed to accommodate new elements. Elements can be inserted and removed from arrays at any position. However, inserting an element anywhere but at the end of an array results in all subsequent elements being moved down.
 
 
 ```Lasso
@@ -5196,7 +5196,7 @@ local(
 
 ###  Static Arrays
 
-Lasso also supports Static Arrays<http://lassoguide.com/operations/containers.html#staticarray>. A Lasso staticarray is a container object that is not resizable. Staticarrays are created with a fixed size. Objects can be reassigned within the staticarray, but new positions cannot be added or removed.
+Lasso also supports Static Arrays<https://lassoguide.com/operations/containers.html#staticarray>. A Lasso staticarray is a container object that is not resizable. Staticarrays are created with a fixed size. Objects can be reassigned within the staticarray, but new positions cannot be added or removed.
 
 
 ```Lasso
@@ -5506,7 +5506,7 @@ array 5 [] @     # contents of sixth cell in array
 
 ## LSL
 
-LSL does not have Arrays, but it does have [lists](http://wiki.secondlife.com/wiki/List) which can function similar to a one dimensional ArrayList in Java or C#.
+LSL does not have Arrays, but it does have [lists](https://wiki.secondlife.com/wiki/List) which can function similar to a one dimensional ArrayList in Java or C#.
 
 ```LSL
 
@@ -6100,7 +6100,7 @@ module ArrayOps
 
 ## NetRexx
 
-'''Note:''' Dynamic arrays can be simulated via the [[Java]] [Collections Framework](http://download.oracle.com/javase/6/docs/technotes/guides/collections/index.html) or by using [[NetRexx]] ''indexed strings'' (AKA:  [[Creating an Associative Array|associative arrays]]).
+'''Note:''' Dynamic arrays can be simulated via the [[Java]] [Collections Framework](https://download.oracle.com/javase/6/docs/technotes/guides/collections/index.html) or by using [[NetRexx]] ''indexed strings'' (AKA:  [[Creating an Associative Array|associative arrays]]).
 
 ```NetRexx
 /* NetRexx */
@@ -6217,7 +6217,7 @@ echo a
 
 {{libheader|NSISArray}}
 <div>
-NSIS does not have native support for arrays.  Array support is provided by the [NSISArray](http://nsis.sourceforge.net/Arrays_in_NSIS) plugin.
+NSIS does not have native support for arrays.  Array support is provided by the [NSISArray](https://nsis.sourceforge.net/Arrays_in_NSIS) plugin.
 </div>
 
 ```nsis
@@ -8724,14 +8724,14 @@ The program could easily be modified to work with arrays of unknown length, if r
 
 ## Stata
 
-In Stata, there are mainly two ways to work with arrays: the '''[matrix](http://www.stata.com/help.cgi?matrix)''' command can create and manipulate arrays, either elementwise or using matrix functions. And there is Mata, a matrix programming language similar to MATLAB, R or SAS/IML.
+In Stata, there are mainly two ways to work with arrays: the '''[matrix](https://www.stata.com/help.cgi?matrix)''' command can create and manipulate arrays, either elementwise or using matrix functions. And there is Mata, a matrix programming language similar to MATLAB, R or SAS/IML.
 
 There are ways to exchange data between Stata datasets, Stata matrices, and Mata matrices:
 
-* the Mata functions '''[st_data](http://www.stata.com/help.cgi?mf_st_data)''' and '''[st_view](http://www.stata.com/help.cgi?mf_st_view)''' are used to read data from the current Stata dataset to a Mata matrix (st_data copies data, while st_view creates a view, that can be used to modify the dataset in place).
-* The Mata function '''[st_store](http://www.stata.com/help.cgi?mf_st_store)''' is used to write a Mata matrix into the current dataset.
-* the Mata function '''[st_matrix](http://www.stata.com/help.cgi?mf_st_matrix)''' is used to read or write from/to a Stata matrix to a Mata matrix.
-* the '''[mkmat](http://www.stata.com/help.cgi?mkmat)''' and '''svmat''' commands are used to store data from a dataset to a Stata matric and vice versa.
+* the Mata functions '''[st_data](https://www.stata.com/help.cgi?mf_st_data)''' and '''[st_view](https://www.stata.com/help.cgi?mf_st_view)''' are used to read data from the current Stata dataset to a Mata matrix (st_data copies data, while st_view creates a view, that can be used to modify the dataset in place).
+* The Mata function '''[st_store](https://www.stata.com/help.cgi?mf_st_store)''' is used to write a Mata matrix into the current dataset.
+* the Mata function '''[st_matrix](https://www.stata.com/help.cgi?mf_st_matrix)''' is used to read or write from/to a Stata matrix to a Mata matrix.
+* the '''[mkmat](https://www.stata.com/help.cgi?mkmat)''' and '''svmat''' commands are used to store data from a dataset to a Stata matric and vice versa.
 
 Both Stata matrices and Mata matrices have either one or two dimensions. For both, functions are provided for the usual linear algebra functions (Cholesky and SVD decompositions, for instance). Stata matrices must contain real numbers (or missing values), while Mata matrices may contain complex numbers, or strings (but either a matrix contains only numeric values, either it contains only string values).
 

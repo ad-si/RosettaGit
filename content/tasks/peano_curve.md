@@ -31,7 +31,7 @@ Produce a graphical or ASCII-art representation of a [[wp:Peano curve|Peano curv
 
 ## C
 
-Adaptation of the C program in the  [Breinholt-Schierz paper](https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf) , requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Adaptation of the C program in the  [Breinholt-Schierz paper](https://www.researchgate.net/profile/Christoph_Schierz2/publication/228982573_A_recursive_algorithm_for_the_generation_of_space-filling_curves/links/0912f505c2f419782c000000/A-recursive-algorithm-for-the-generation-of-space-filling-curves.pdf) , requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -604,7 +604,7 @@ fcn lsystem(axiom,rules,consts,n){	// Lindenmayer system --> string
 ```
 
 Using Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn turtle(koch){

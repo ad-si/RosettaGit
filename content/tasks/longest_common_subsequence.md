@@ -79,7 +79,7 @@ languages = [
 ## Task
 
 {{task}}[[Category:Recursion]][[Category:Memoization]]
-The '''longest common subsequence''' (or ['''LCS'''](http://en.wikipedia.org/wiki/Longest_common_subsequence_problem)) of groups A and B is the longest group of elements from A and B that are common between the two groups and in the same order in each group. For example, the sequences "1234" and "1224533324" have an LCS of "1234":
+The '''longest common subsequence''' (or ['''LCS'''](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem)) of groups A and B is the longest group of elements from A and B that are common between the two groups and in the same order in each group. For example, the sequences "1234" and "1224533324" have an LCS of "1234":
  '''<u>1234</u>'''
  '''<u>12</u>'''245'''<u>3</u>'''332'''<u>4</u>'''
 For a string example, consider the sequences "thisisatest" and "testing123testing". An LCS would be "tsitest":
@@ -246,7 +246,7 @@ lcs←{
 
 {{trans|Java}} using dynamic programming
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&start=135)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&start=135)
 
 ```AutoHotkey
 lcs(a,b) { ; Longest Common Subsequence of strings, using Dynamic Programming
@@ -907,7 +907,7 @@ void main() {
 
 ### Hirschberg algorithm version
 
-See: <http://en.wikipedia.org/wiki/Hirschberg_algorithm>
+See: <https://en.wikipedia.org/wiki/Hirschberg_algorithm>
 
 This is currently a little slower than the classic dynamic programming version, but it uses a linear amount of memory, so it's usable for much larger inputs. To speed up this code on dmd remove the memory allocations from lensLCS, and do not use the retro range (replace it with foreach_reverse). The output is the same.
 
@@ -1641,7 +1641,7 @@ main = print $ lcs "thisisatest" "testing123testing"
 =={{header|Icon}} and {{header|Unicon}}==
 This solution is a modified variant of the recursive solution.  The modifications include (a) deleting all characters not common to both strings and (b) stripping off common prefixes and suffixes in a single step.
 
-{{libheader|Icon Programming Library}} [Uses deletec from strings](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+{{libheader|Icon Programming Library}} [Uses deletec from strings](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ```Icon

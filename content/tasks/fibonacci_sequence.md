@@ -306,7 +306,7 @@ support for negative     <big> n </big>     in the solution is optional.
 
 *   [[wp:Fibonacci number|Wikipedia, Fibonacci number]]
 *   [[wp:Lucas number|Wikipedia, Lucas number]]
-*   [MathWorld, Fibonacci Number](http://mathworld.wolfram.com/FibonacciNumber.html)
+*   [MathWorld, Fibonacci Number](https://mathworld.wolfram.com/FibonacciNumber.html)
 *   [Some identities for r-Fibonacci numbers](http://www.math-cs.ucmo.edu/~curtisc/articles/howardcooper/genfib4.pdf)
 *   [[oeis:A000045|OEIS Fibonacci numbers]]
 *   [[oeis:A000032|OEIS Lucas numbers]]
@@ -1682,7 +1682,7 @@ fib(n)
 
 ### Recursive and iterative
 
-Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
+Source: [AutoHotkey forum](https://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```AutoHotkey
 /*
@@ -6544,7 +6544,7 @@ So, for example, the hundred-thousandth Fibonacci number starts with the digits:
 
 ###  With recurrence relations
 
-Using <code>Fib[m=3n+r]</code> [recurrence identities](http://en.wikipedia.org/wiki/Fibonacci_number#Other_identities):
+Using <code>Fib[m=3n+r]</code> [recurrence identities](https://en.wikipedia.org/wiki/Fibonacci_number#Other_identities):
 
 ```haskell
 import Control.Arrow ((&&&))
@@ -6598,7 +6598,7 @@ main = print $ (length &&& take 20) . show . fst $ fibN2 (10 ^ 2)
 
 The above should take less than 0.1s to calculate on a modern box.
 
-Other identities that could also be used are [here](http://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form). In particular, for <i>(n-1,n) ---> (2n-1,2n)</i> transition which is equivalent to the matrix exponentiation scheme, we have
+Other identities that could also be used are [here](https://en.wikipedia.org/wiki/Fibonacci_number#Matrix_form). In particular, for <i>(n-1,n) ---> (2n-1,2n)</i> transition which is equivalent to the matrix exponentiation scheme, we have
 
 
 ```haskell
@@ -6761,7 +6761,7 @@ procedure fib(n)
 end
 ```
 
-The above solution is similar to the one provided [fib in memrfncs](http://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn)
+The above solution is similar to the one provided [fib in memrfncs](https://www.cs.arizona.edu/icon/library/src/procs/memrfncs.icn)
 
 Now, an O(logN) solution.
 For large N, it takes far longer to convert the result to a string for output
@@ -9899,7 +9899,7 @@ let rec fib = function
 
 ### Arbitrary Precision
 
-Using OCaml's [Num](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Num.html) module.
+Using OCaml's [Num](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Num.html) module.
 
 
 ```ocaml
@@ -11593,7 +11593,7 @@ All of the interim N/Value pairs have been asserted as facts for quicker future 
 
 ### Continuation passing style
 
-Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with <b>SWI-Prolog</b> and module lambda, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(lambda).
@@ -12784,7 +12784,7 @@ Usage:
 p fib.lazy.drop(8).next # => 21
 ```
 
-"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." <http://www.ruby-doc.org/ruby-1.9/classes/Fiber.html>
+"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." <https://www.ruby-doc.org/ruby-1.9/classes/Fiber.html>
 
 
 ```ruby
@@ -13404,7 +13404,7 @@ const func integer: fib (in integer: number) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#fib>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#fib>
 
 
 ### Iterative
@@ -13430,7 +13430,7 @@ const func bigInteger: fib (in integer: number) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#iterative_fib>
 
 
 ## SequenceL
@@ -13482,9 +13482,9 @@ fibonacciHelper(M(2), n) :=
 matmul(A(2), B(2)) [i,j] := sum( A[i,all] * B[all,j] );
 ```
 
-Based on the C# version: <http://rosettacode.org/wiki/Fibonacci_sequence#C.23>
+Based on the C# version: <https://rosettacode.org/wiki/Fibonacci_sequence#C.23>
 
-Using the SequenceL Matrix Multiply solution: <http://rosettacode.org/wiki/Matrix_multiplication#SequenceL>
+Using the SequenceL Matrix Multiply solution: <https://rosettacode.org/wiki/Matrix_multiplication#SequenceL>
 
 
 ## SETL
@@ -14537,7 +14537,7 @@ proc fib {n} {
 ```
 
 
-The following {{works with|Tcl|8.5}}: defining a procedure in the <code>::tcl::mathfunc</code> namespace allows that proc to be used as a function in <code>[expr](http://www.tcl.tk/man/tcl8.5/TclCmd/expr.htm)</code> expressions.
+The following {{works with|Tcl|8.5}}: defining a procedure in the <code>::tcl::mathfunc</code> namespace allows that proc to be used as a function in <code>[expr](https://www.tcl-lang.org/man/tcl8.5/TclCmd/expr.htm)</code> expressions.
 
 ```tcl
 proc tcl::mathfunc::fib {n} {
@@ -15459,7 +15459,7 @@ let fib n => (
 
 ### Iterative
 
-This program generates Fibonacci numbers until it is [forced to terminate](http://ideone.com/VBDLzk).
+This program generates Fibonacci numbers until it is [forced to terminate](https://ideone.com/VBDLzk).
 
 ```Whitespace
 

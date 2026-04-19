@@ -200,7 +200,7 @@ BEGIN {
 =
 ## Sinclair ZX81 BASIC
 =
-I don't know exactly how long this takes to run; but I left it for about three and a half hours and when I came back it had already finished. If you can't wait to see the results, I've posted a screenshot [here](http://edmundgriffiths.com/zxjulia.jpg). I also haven't tested it with only 1k of RAM—but I suspect it needs at least 2k.
+I don't know exactly how long this takes to run; but I left it for about three and a half hours and when I came back it had already finished. If you can't wait to see the results, I've posted a screenshot [here](https://edmundgriffiths.com/zxjulia.jpg). I also haven't tested it with only 1k of RAM—but I suspect it needs at least 2k.
 
 You can try changing lines 10 and 20 to run the program with different values of the complex constant <tt>C</tt>+<tt>D</tt><math>i</math>, or lines 50 and 60 to zoom in.
 
@@ -248,7 +248,7 @@ Higher resolution is obtainable, if you have the time to wait for it.
 160 NEXT v
 ```
 
-Screenshot [here](http://edmundgriffiths.com/spectrumjulia.jpg).
+Screenshot [here](https://edmundgriffiths.com/spectrumjulia.jpg).
 
 
 ## C
@@ -261,7 +261,7 @@ Interactive implementation which takes the following 6 parameters as input :
 
 ```
 
-Prints out usage on incorrect invocation. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Prints out usage on incorrect invocation. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -2572,7 +2572,7 @@ for y in ^h {
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:JuliaSet.zkl.jpg|250px|thumb|right]]
 
 ```zkl

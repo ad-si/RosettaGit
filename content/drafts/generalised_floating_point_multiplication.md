@@ -69,15 +69,15 @@ Note: The results will always be 1e144.
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
-{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: Template.Big_float.Multiplication.a68'''
 ```algol68
 ##########################################
 #               TASK CODE                #
 # Actual generic mulitplication operator #
 ##########################################
-# Alternatively use http://en.wikipedia.org/wiki/Karatsuba_algorithm #
+# Alternatively use https://en.wikipedia.org/wiki/Karatsuba_algorithm #
 
 OP * = (DIGITS a, b)DIGITS: (
   DIGITS minus one = -IDENTITY LOC DIGITS,

@@ -87,10 +87,10 @@ The Farey sequences of orders   '''1'''   to   '''5'''   are:
 
 ## See also
 
-*    OEIS sequence    [A006842 numerators   of Farey series of order 1, 2, ···](http://oeis.org/A006842)
-*    OEIS sequence    [A006843 denominators of Farey series of order 1, 2, ···](http://oeis.org/A006843)
-*    OEIS sequence    [A005728 number of fractions in Farey series of order n.](http://oeis.org/A005728)
-*   MathWorld entry   [Farey sequence](http://mathworld.wolfram.com/FareySequence.html)
+*    OEIS sequence    [A006842 numerators   of Farey series of order 1, 2, ···](https://oeis.org/A006842)
+*    OEIS sequence    [A006843 denominators of Farey series of order 1, 2, ···](https://oeis.org/A006843)
+*    OEIS sequence    [A005728 number of fractions in Farey series of order n.](https://oeis.org/A005728)
+*   MathWorld entry   [Farey sequence](https://mathworld.wolfram.com/FareySequence.html)
 
 
 
@@ -924,7 +924,7 @@ F1000 = 304193
 
 ## FunL
 
-Translation of Python code at <http://en.wikipedia.org/wiki/Farey_sequence#Next_term>.
+Translation of Python code at <https://en.wikipedia.org/wiki/Farey_sequence#Next_term>.
 
 ```funl
 def farey( n ) =
@@ -1759,7 +1759,7 @@ apply(countFarey, 100*[1..10])
  }}
 
 
-Using a function, to get next in Farey sequence. calculated as stated in wikipedia article, see Lua <http://rosettacode.org/wiki/Farey_sequence#Lua>.
+Using a function, to get next in Farey sequence. calculated as stated in wikipedia article, see Lua <https://rosettacode.org/wiki/Farey_sequence#Lua>.
 So there is no need to store them in a big array..
 
 ```pascal

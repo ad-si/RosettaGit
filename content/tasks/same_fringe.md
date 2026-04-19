@@ -1605,7 +1605,7 @@ true
 
 ## OCaml
 
-While we could use a lazy datatype such as [Stream](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stream.html) for this problem, this example implements the short-circuit behavior (returning on first mismatch) by tracking the parse state.
+While we could use a lazy datatype such as [Stream](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Stream.html) for this problem, this example implements the short-circuit behavior (returning on first mismatch) by tracking the parse state.
 
 ```OCaml
 type 'a btree = Leaf of 'a | BTree of ('a btree * 'a btree)
@@ -2158,7 +2158,7 @@ delimited continuation operator.
 *   7       8   9    G       H   I     G       *   I
 *
 * 23.08.2012 Walter Pachl derived from
-*                            http://rosettacode.org/wiki/Tree_traversal
+*                            https://rosettacode.org/wiki/Tree_traversal
 * Tree A: A B D G E C F H I
 * Tree B: A B D G E C F * I
 **********************************************************************/
@@ -2357,7 +2357,7 @@ Output:
 =   7       8   9    G       H   I     G       *   I
 =
 * 23.08.2012 Walter Pachl derived from
-*                            http://rosettacode.org/wiki/Tree_traversal
+*                            https://rosettacode.org/wiki/Tree_traversal
 * Tree A: A B D G E C F H I
 * Tree B: A B D G E C F * I
 **********************************************************************/

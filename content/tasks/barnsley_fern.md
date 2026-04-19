@@ -215,7 +215,7 @@ END
 
 ## C
 
-This implementation requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. Iteration starts from (0,0) as required by the task however before plotting the point is translated and scaled as negative co-ordinates are not supported by the graphics window, scaling is necessary as otherwise the fern is tiny even for large iterations ( > 1000000).
+This implementation requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library. Iteration starts from (0,0) as required by the task however before plotting the point is translated and scaled as negative co-ordinates are not supported by the graphics window, scaling is necessary as otherwise the fern is tiny even for large iterations ( > 1000000).
 
 ```C
 
@@ -2092,7 +2092,7 @@ return
 
 ```runbasic
 'Barnsley Fern - Run BASIC
-  'http://rosettacode.org/wiki/Barnsley_fern#Run_BASIC
+  'https://rosettacode.org/wiki/Barnsley_fern#Run_BASIC
   'copy code and run it at http://www.runbasic.com
   '
   ' -----------------------------------
@@ -2653,7 +2653,7 @@ next
 ## zkl
 
 [[File:BarnsleyFern.zkl.jpg|250px|thumb|right]]
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 {{trans|Java}}
 
 ```zkl

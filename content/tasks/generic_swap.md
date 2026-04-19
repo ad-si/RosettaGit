@@ -1771,7 +1771,7 @@ end
 
 ## J
 
-J is dynamically typed and J's cycle primitive (<code>C.</code>) will swap elements of an arbitrary list.  See also J's reference documentation on [<code>C.</code>](http://www.jsoftware.com/help/dictionary/dccapdot.htm)
+J is dynamically typed and J's cycle primitive (<code>C.</code>) will swap elements of an arbitrary list.  See also J's reference documentation on [<code>C.</code>](https://www.jsoftware.com/help/dictionary/dccapdot.htm)
 
 Shown here are a list of prime numbers and the result of J's parser on some random text (inverting the parsing process on the swapped result):
 
@@ -2932,7 +2932,7 @@ function swap(&$a, &$b) {
 
 ## PicoLisp
 
-[xchg](http://software-lab.de/doc/refX.html#xchg) works with any data type
+[xchg](https://software-lab.de/doc/refX.html#xchg) works with any data type
 
 ```PicoLisp
 (let (A 1  B 2)
@@ -3287,7 +3287,7 @@ A swap operation can be easily written as a macro in Racket. The macro will even
 ```REBOL
 REBOL [
 	Title: "Generic Swap"
-	URL: http://rosettacode.org/wiki/Generic_swap
+	URL: https://rosettacode.org/wiki/Generic_swap
 	Reference: [http://reboltutorial.com/blog/rebol-words/]
 ]
 
@@ -3747,7 +3747,7 @@ fun swapref (x, y) =
 
 ## Stata
 
-The Mata '''[swap](http://www.stata.com/help.cgi?mf_swap)''' function is built-in.
+The Mata '''[swap](https://www.stata.com/help.cgi?mf_swap)''' function is built-in.
 
 
 ```stata

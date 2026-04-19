@@ -271,7 +271,7 @@ Evaluated: 231
 
 
 External links
-* [Wikipedia: Operator-precedence parser](http://en.wikipedia.org/wiki/Operator-precedence_parser#Pseudo-code)
+* [Wikipedia: Operator-precedence parser](https://en.wikipedia.org/wiki/Operator-precedence_parser#Pseudo-code)
 =Library=
 Shown here is use of the package go/parser in the standard library.  For the Go 1 release, there is a parser in the standard library, but not an evaluator.  Evaluation is relatively easy though, once you have a parse tree.
 

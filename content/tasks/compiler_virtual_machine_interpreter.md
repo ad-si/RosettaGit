@@ -2457,7 +2457,7 @@ Tested with perl v5.26.1
 ```Perl
 #!/usr/bin/perl
 
-# http://www.rosettacode.org/wiki/Compiler/virtual_machine_interpreter
+# https://www.rosettacode.org/wiki/Compiler/virtual_machine_interpreter
 use strict; # vm.pl - run rosetta code
 use warnings;
 use integer;

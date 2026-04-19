@@ -18,7 +18,7 @@ package require Tk
 
 The minor differences have to do with how the program interacts with the user, especially on [[Windows]].
 
-Wish takes a number of arguments itself (in addition to the <code>-encoding</code> option that tclsh supports) which it uses as options when creating the initial <code>toplevel</code> window (<code>.</code>), which are described on the [wish](http://www.tcl.tk/man/tcl8.5/UserCmd/wish.htm#M4)(1) manual page. The most useful ones on modern [[:Category:Xlib|X11]]-based desktops are:
+Wish takes a number of arguments itself (in addition to the <code>-encoding</code> option that tclsh supports) which it uses as options when creating the initial <code>toplevel</code> window (<code>.</code>), which are described on the [wish](https://www.tcl-lang.org/man/tcl8.5/UserCmd/wish.htm#M4)(1) manual page. The most useful ones on modern [[:Category:Xlib|X11]]-based desktops are:
 
 ;-display ''display''
 :Display (and screen) on which to display window.

@@ -2905,8 +2905,8 @@ object AngleDifference extends App {
 
 ## Seed7
 
-The library [float.s7i](http://seed7.sourceforge.net/libraries/float.htm) supports the
-operator [mod](http://seed7.sourceforge.net/libraries/float.htm#(in_float)mod(in_float)),
+The library [float.s7i](https://seed7.sourceforge.net/libraries/float.htm) supports the
+operator [mod](https://seed7.sourceforge.net/libraries/float.htm#(in_float)mod(in_float)),
 which can be used to solve this task easily.
 
 

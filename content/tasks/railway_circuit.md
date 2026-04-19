@@ -32,7 +32,7 @@ Given n sections of curve tracks, each one being an arc of 30° of radius R, the
 * All tracks must be used.
 	
 
-'''Illustrations''' : <http://www.echolalie.org/echolisp/duplo.html>
+'''Illustrations''' : <https://www.echolalie.org/echolisp/duplo.html>
 	
 '''Task:'''
 

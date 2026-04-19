@@ -650,11 +650,11 @@ procedure VoronoiDiagram(width,height,siteL,metric)
 end
 ```
 
-[printf.icn provides the printf family](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides the printf family](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
-[graphics.icn provides graphics support](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics support](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
-[strings.icn provides cat](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides cat](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ## J
@@ -2860,7 +2860,7 @@ const proc: main is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#voronoi>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#voronoi>
 
 
 ## Sidef

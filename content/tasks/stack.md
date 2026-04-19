@@ -2552,7 +2552,7 @@ printfn "%A" (stack3.IsEmpty())
 ## Factor
 
 Factor is a stack based language, but also provides stack "objects", because
-all resizable sequences can be treated as stacks (see [docs](http://docs.factorcode.org/content/article-sequences-stacks.html)). Typically, a vector is used:
+all resizable sequences can be treated as stacks (see [docs](https://docs.factorcode.org/content/article-sequences-stacks.html)). Typically, a vector is used:
 
 ```factor
  V{ 1 2 3 } {
@@ -4714,7 +4714,7 @@ define
 end
 ```
 
-There is also a stack implementation in the [standard library](http://www.mozart-oz.org/home/doc/mozart-stdlib/adt/stack.html).
+There is also a stack implementation in the [standard library](https://www.mozart-oz.org/home/doc/mozart-stdlib/adt/stack.html).
 
 
 ## PARI/GP
@@ -4968,8 +4968,8 @@ echo array_pop( $stack ); // outputs "1"
 
 ## PicoLisp
 
-The built-in functions [push](http://software-lab.de/doc/refP.html#push) and
-[pop](http://software-lab.de/doc/refP.html#pop) are used to maintain a stack (of any type).
+The built-in functions [push](https://software-lab.de/doc/refP.html#push) and
+[pop](https://software-lab.de/doc/refP.html#pop) are used to maintain a stack (of any type).
 
 ```PicoLisp
 (push 'Stack 3)
@@ -5420,7 +5420,7 @@ s empty if 'stack is empty' print
 ```rebol
 REBOL [
 	Title: "Stack"
-	URL: http://rosettacode.org/wiki/Stack
+	URL: https://rosettacode.org/wiki/Stack
 ]
 
 stack: make object! [

@@ -486,9 +486,9 @@ main(void)
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 Flattening is built in to all of Algol68's ''transput'' routines.  The following example also uses ''widening'', where scalars are converted into arrays.
 
@@ -1823,7 +1823,7 @@ class Main
 {{works with|Forth}}
 Works with any ANS Forth.
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -2320,7 +2320,7 @@ end
 ```
 
 {{libheader|Icon Programming Library}}
-The solution uses several procedures from [strings in the IPL](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+The solution uses several procedures from [strings in the IPL](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 This procedure is more in the spirit of the task handling actual lists rather than representations.  It uses a recursive approach using some of the built-in list manipulation functions and operators.
 

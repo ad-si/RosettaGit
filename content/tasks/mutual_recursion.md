@@ -3275,8 +3275,8 @@ print.table(lapply(0:19, F))
 ```REBOL
 REBOL [
     Title: "Mutual Recursion"
-    URL: http://rosettacode.org/wiki/Mutual_Recursion
-	References: [http://en.wikipedia.org/wiki/Hofstadter_sequence#Hofstadter_Female_and_Male_sequences]
+    URL: https://rosettacode.org/wiki/Mutual_Recursion
+	References: [https://en.wikipedia.org/wiki/Hofstadter_sequence#Hofstadter_Female_and_Male_sequences]
 ]
 
 f: func [

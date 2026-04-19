@@ -45,7 +45,7 @@ Write a function to verify that a given distribution of values is uniform by usi
 
 
 ;Reference:
-:*   an entry at the MathWorld website:   [chi-squared distribution](http://mathworld.wolfram.com/Chi-SquaredDistribution.html).
+:*   an entry at the MathWorld website:   [chi-squared distribution](https://mathworld.wolfram.com/Chi-SquaredDistribution.html).
 
 
 
@@ -101,7 +101,7 @@ end Chi_Square;
 ```
 
 
-Finally, we actually implement the Chi-square test. We do not actually compute the Chi-square probability; rather we hardcode a table of values for 5% significance level, which has been picked from Wikipedia <http://en.wikipedia.org/wiki/Chi-squared_distribution>:
+Finally, we actually implement the Chi-square test. We do not actually compute the Chi-square probability; rather we hardcode a table of values for 5% significance level, which has been picked from Wikipedia <https://en.wikipedia.org/wiki/Chi-squared_distribution>:
 
 ```Ada
 with Ada.Text_IO, Ada.Command_Line, Chi_Square; use Ada.Text_IO;
@@ -115,7 +115,7 @@ procedure Test_Chi_Square is
    Bound_For_5_Per_Cent: constant array(Positive range <>) of Flt :=
      ( 1 => 3.84,   2 =>  5.99,  3 =>  7.82,  4 => 9.49,   5 =>  11.07,
        6 => 12.59,  7 => 14.07,  8 => 15.51,  9 => 16.92, 10 =>  18.31);
-     -- picked from http://en.wikipedia.org/wiki/Chi-squared_distribution
+     -- picked from https://en.wikipedia.org/wiki/Chi-squared_distribution
 
    Dist: Flt;
 
@@ -1088,7 +1088,7 @@ C2 = 790063.276, p-value = 0.000, uniform = False
 
 
 For the incomplete gamma function we use a series expansion related to Kummer's confluent hypergeometric function
-(see <http://en.wikipedia.org/wiki/Incomplete_gamma_function#Evaluation_formulae>). The gamma function is calculated
+(see <https://en.wikipedia.org/wiki/Incomplete_gamma_function#Evaluation_formulae>). The gamma function is calculated
 in closed form, as we only need its value at integers and half integers.
 
 

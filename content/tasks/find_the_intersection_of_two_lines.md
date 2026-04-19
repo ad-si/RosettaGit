@@ -48,7 +48,7 @@ languages = [
 ]
 +++
 
-{{task}}Finding the intersection of two lines that are in the same plane is an important topic in collision detection.<ref><http://mathworld.wolfram.com/Line-LineIntersection.html></ref>
+{{task}}Finding the intersection of two lines that are in the same plane is an important topic in collision detection.<ref><https://mathworld.wolfram.com/Line-LineIntersection.html></ref>
 
 
 ## Task

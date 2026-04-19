@@ -145,15 +145,15 @@ simulate bye
 {{out}}
 sandpile with 5000 grains of sand: 
 <tt>./sandpile.fs 61 5000</tt>:
-<http://commons.wikimedia.org/wiki/File:Sandpile-61-5000.png>
+<https://commons.wikimedia.org/wiki/File:Sandpile-61-5000.png>
 
 sandpile with 50000 grains of sand:
 <tt>./sandpile.fs 201 50000</tt>:
-<http://commons.wikimedia.org/wiki/File:Sandpile-201-50000.png>
+<https://commons.wikimedia.org/wiki/File:Sandpile-201-50000.png>
 
 sandpile with 500000 grains of sand:
 <tt>./sandpile.fs 601 500000</tt>:
-<http://commons.wikimedia.org/wiki/File:Sandpile-601-500000.png>
+<https://commons.wikimedia.org/wiki/File:Sandpile-601-500000.png>
 
 
 
@@ -434,13 +434,13 @@ test size height = do
 
 
 {{out}}
-sandpile with 1000 grains of sand: <tt>test 15 1000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_15_1000.jpg>
+sandpile with 1000 grains of sand: <tt>test 15 1000</tt>: <https://commons.wikimedia.org/wiki/File:Sandpile_15_1000.jpg>
 
-sandpile with 10000 grains of sand: <tt>test 40 10000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_40_10000.jpg>
+sandpile with 10000 grains of sand: <tt>test 40 10000</tt>: <https://commons.wikimedia.org/wiki/File:Sandpile_40_10000.jpg>
 
-sandpile with 100000 grains of sand: <tt>test 150 100000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_150_100000.jpg>
+sandpile with 100000 grains of sand: <tt>test 150 100000</tt>: <https://commons.wikimedia.org/wiki/File:Sandpile_150_100000.jpg>
 
-sandpile with 1000000 grains of sand: <tt>test 400 1000000</tt>: <http://commons.wikimedia.org/wiki/File:Sandpile_400_1000000.jpg>
+sandpile with 1000000 grains of sand: <tt>test 400 1000000</tt>: <https://commons.wikimedia.org/wiki/File:Sandpile_400_1000000.jpg>
 
 
 
@@ -737,7 +737,7 @@ Z_lat, Odometer = AbelSand.move(100000)
 ```Perl
 #!/usr/bin/perl
 
-use strict; # http://www.rosettacode.org/wiki/Abelian_sandpile_model
+use strict; # https://www.rosettacode.org/wiki/Abelian_sandpile_model
 use warnings;
 
 my ($high, $wide) = split ' ', qx(stty size);

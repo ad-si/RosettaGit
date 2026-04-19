@@ -87,8 +87,8 @@ Show all output on this page.
 
 ## References
 
-* [Multiplicative Digital Root](http://mathworld.wolfram.com/MultiplicativeDigitalRoot.html) on Wolfram Mathworld.
-* [Multiplicative digital root](http://oeis.org/A031347) on The On-Line Encyclopedia of Integer Sequences.
+* [Multiplicative Digital Root](https://mathworld.wolfram.com/MultiplicativeDigitalRoot.html) on Wolfram Mathworld.
+* [Multiplicative digital root](https://oeis.org/A031347) on The On-Line Encyclopedia of Integer Sequences.
 * [What's special about 277777788888899?](https://www.youtube.com/watch?v=Wim9WJeDTHQ) - Numberphile video
 
 
@@ -170,7 +170,7 @@ MP: [n0..n4]
 ## Ada
 
 
-The solution uses the Package "Generic_Root" from the additive digital roots <http://rosettacode.org/wiki/Digital_root#Ada>.
+The solution uses the Package "Generic_Root" from the additive digital roots <https://rosettacode.org/wiki/Digital_root#Ada>.
 
 
 ```Ada
@@ -1621,7 +1621,7 @@ func main() {
 	for _, n := range [...]uint64{
 		123321, 7739, 893, 899998,
 		18446743999999999999,
-		// From http://mathworld.wolfram.com/MultiplicativePersistence.html
+		// From https://mathworld.wolfram.com/MultiplicativePersistence.html
 		3778888999, 277777788888899,
 	} {
 		mp, mdr := MultDigitalRoot(n, base)

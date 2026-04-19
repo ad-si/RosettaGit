@@ -51,7 +51,7 @@ languages = [
 
 ## Task
 
-The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [MD5 definition in IETF RFC (1321)](http://www.ietf.org/rfc/rfc1321.txt).
+The purpose of this task to code and validate an implementation of the MD5 Message Digest Algorithm by coding the algorithm directly (not using a call to a built-in or external hashing library).  For details of the algorithm refer to [[wp:Md5#Algorithm|MD5 on Wikipedia]] or the [MD5 definition in IETF RFC (1321)](https://www.ietf.org/rfc/rfc1321.txt).
 
 * The implementation needs to implement the key functionality namely producing a correct message digest for an input string.  It is not necessary to mimic all of the calling modes such as adding to a digest one block at a time over subsequent calls.
 * In addition to coding and verifying your implementation, note any challenges your language presented implementing the solution, implementation choices made, or limitations of your solution.
@@ -2229,7 +2229,7 @@ link unsigned                                       # string to unsigned integer
 ```
 
 
-The {{libheader|Icon Programming Library}} provides [unsigned](http://www.cs.arizona.edu/icon/library/src/procs/unsigned.icn) and [hexcvt](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
+The {{libheader|Icon Programming Library}} provides [unsigned](https://www.cs.arizona.edu/icon/library/src/procs/unsigned.icn) and [hexcvt](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 Sample Output (abridged):
 ```txt
@@ -2252,7 +2252,7 @@ Digest = CC175B9C0F1B6A831C399E269772661 matches reference hash
 ## J
 
 
-Note: the following code was extracted from <http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs>
+Note: the following code was extracted from <https://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs>
 
 
 ```j
@@ -5361,7 +5361,7 @@ object MD5 extends App {
 
 ## Seed7
 
-The example below contains the implementation of the function [md5](http://seed7.sourceforge.net/libraries/msgdigest.htm#md5%28in_var_string%29) from the library [msgdigest.s7i](http://seed7.sourceforge.net/libraries/msgdigest.htm).
+The example below contains the implementation of the function [md5](https://seed7.sourceforge.net/libraries/msgdigest.htm#md5%28in_var_string%29) from the library [msgdigest.s7i](https://seed7.sourceforge.net/libraries/msgdigest.htm).
 
 
 ```seed7
@@ -5488,7 +5488,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/msgdigest.htm#md5>
+Original source: <https://seed7.sourceforge.net/algorith/msgdigest.htm#md5>
 
 ```txt
 

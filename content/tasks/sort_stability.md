@@ -244,7 +244,7 @@ There is no built-in function in C ''language''.  <code>stdlib</code> which come
 C++ standard library's [std::sort()](http://www.sgi.com/tech/stl/sort.html) function is not guaranteed stable. The stable analog of it is the [std::stable_sort()](http://www.sgi.com/tech/stl/stable_sort.html) function. In addition, [std::list](http://www.sgi.com/tech/stl/List.html)'s <tt>sort()</tt> method is guaranteed stable.
 
 ## C#
-The .NET library documentation for <tt>Array.Sort()</tt> says that it uses quicksort and is unstable.<http://msdn.microsoft.com/en-us/library/kwx6zbd4.aspx#remarksToggle>
+The .NET library documentation for <tt>Array.Sort()</tt> says that it uses quicksort and is unstable.<https://msdn.microsoft.com/en-us/library/kwx6zbd4.aspx#remarksToggle>
 
 
 ## Clojure
@@ -273,7 +273,7 @@ When the DUPLICATES phrase is used, the sort is stable.
 
 ## Common Lisp
 
-Common Lisp provides the two functions [<code>sort</code> and <code>stable-sort</code>](http://www.lispworks.com/documentation/HyperSpec/Body/f_sort_.htm).
+Common Lisp provides the two functions [<code>sort</code> and <code>stable-sort</code>](https://www.lispworks.com/documentation/HyperSpec/Body/f_sort_.htm).
 
 Each of these functions can sort arbitrary objects using a given predicate function, the input to which can be altered by the optional <code>key</code> parameter.
 
@@ -338,7 +338,7 @@ The function lists:sort/1 is not documented as stable. The function lists:keysor
 
 ## Factor
 
-The <code>sorting</code> vocabulary implements a stable sort. [<code>sorting</code> docs](http://docs.factorcode.org/content/article-sequences-sorting.html)
+The <code>sorting</code> vocabulary implements a stable sort. [<code>sorting</code> docs](https://docs.factorcode.org/content/article-sequences-sorting.html)
 
 
 ## Fortran
@@ -346,8 +346,8 @@ The <code>sorting</code> vocabulary implements a stable sort. [<code>sorting</co
 The language does not offer an in-built sort facility. Numerous libraries exist, which may or may not have documentation on their sort routine's stability.
 
 =={{header|F_Sharp|F#}}==
-[<code>Array.sort</code>](http://msdn.microsoft.com/en-us/library/ee370375.aspx) is not stable.
-[<code>List.sort</code>](http://msdn.microsoft.com/en-us/library/ee370323.aspx) and [<code>Seq.sort</code>](http://msdn.microsoft.com/en-us/library/ee353483.aspx) are stable.
+[<code>Array.sort</code>](https://msdn.microsoft.com/en-us/library/ee370375.aspx) is not stable.
+[<code>List.sort</code>](https://msdn.microsoft.com/en-us/library/ee370323.aspx) and [<code>Seq.sort</code>](https://msdn.microsoft.com/en-us/library/ee353483.aspx) are stable.
 
 
 ## GAP
@@ -432,7 +432,7 @@ US  Birmingham
 
 ## Haskell
 
-Haskell's <tt>sort</tt> and <tt>sortBy</tt> functions are guaranteed stable.<http://www.haskell.org/onlinereport/list.html#sect17.3>
+Haskell's <tt>sort</tt> and <tt>sortBy</tt> functions are guaranteed stable.<https://www.haskell.org/onlinereport/list.html#sect17.3>
 
 =={{header|Icon}} and {{header|Unicon}}==
 Icon and Unicon use Quick Sort internally. As described in [The Implementation of Icon and Unicon: a Compendium](http://unicon.sourceforge.net/book/ib.pdf)] sorting is done by the standard C library routine qsort which is not guaranteed to be stable.
@@ -444,12 +444,12 @@ Note(1): The built-in sort handles lists of mixed types by sorting first by type
 
 J's <i>grade</i> primitive <code>/:</code>, and therefore its sort (such as <code>/:~</code>), are guaranteed stable.
 
-From the [dictionary page](http://www.jsoftware.com/help/dictionary/d422.htm) for <code>/:</code> : "Elements of /:y that select equal elements of y are in ascending order."
+From the [dictionary page](https://www.jsoftware.com/help/dictionary/d422.htm) for <code>/:</code> : "Elements of /:y that select equal elements of y are in ascending order."
 
 
 ## Java
 
-Java's [Collections.sort()](http://java.sun.com/javase/6/docs/api/java/util/Collections.html#sort(java.util.List)) and [Arrays.sort()](http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#sort(java.lang.Object%5B%5D)) methods are guaranteed stable.
+Java's [Collections.sort()](https://docs.oracle.com/javase/6/docs/api/java/util/Collections.html#sort(java.util.List)) and [Arrays.sort()](https://docs.oracle.com/javase/6/docs/api/java/util/Arrays.html#sort(java.lang.Object%5B%5D)) methods are guaranteed stable.
 
 The following sample demonstrates Java's sort stability:
 
@@ -920,12 +920,12 @@ Showing that Sort is unstable, and that by using input[[Ordering[input]]] Orderi
 
 ## MATLAB
 
-MathWorks' policy seems to be that their built-in sorting algorithm will always be a stable sort across all versions ([reference](http://www.mathworks.com/company/newsletters/news_notes/dec04/adventure.html)). To check to see if your version of MATLAB provides a stable sort,check the output of command "help sort".
+MathWorks' policy seems to be that their built-in sorting algorithm will always be a stable sort across all versions ([reference](https://www.mathworks.com/company/newsletters/news_notes/dec04/adventure.html)). To check to see if your version of MATLAB provides a stable sort,check the output of command "help sort".
 
 
 ## NetRexx
 
-Java's [Collections.sort()](http://java.sun.com/javase/6/docs/api/java/util/Collections.html#sort(java.util.List)) and [Arrays.sort()](http://java.sun.com/javase/6/docs/api/java/util/Arrays.html#sort(java.lang.Object%5B%5D)) methods are guaranteed stable.  The following sample takes advantage of this to demonstrate sort stability.
+Java's [Collections.sort()](https://docs.oracle.com/javase/6/docs/api/java/util/Collections.html#sort(java.util.List)) and [Arrays.sort()](https://docs.oracle.com/javase/6/docs/api/java/util/Arrays.html#sort(java.lang.Object%5B%5D)) methods are guaranteed stable.  The following sample takes advantage of this to demonstrate sort stability.
 
 
 ```NetRexx
@@ -1026,7 +1026,7 @@ Default Nim sort in the algorithm module is stable.
 
 ## OCaml
 
-OCaml's [List.sort](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALsort) and [Array.sort](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALsort) functions are not guaranteed to be stable. The stable versions are [List.stable_sort](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALstable_sort) and [Array.stable_sort](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALstable_sort), respectively.
+OCaml's [List.sort](https://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALsort) and [Array.sort](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALsort) functions are not guaranteed to be stable. The stable versions are [List.stable_sort](https://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html#VALstable_sort) and [Array.stable_sort](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html#VALstable_sort), respectively.
 
 
 ## ooRexx
@@ -1185,7 +1185,7 @@ OK
 
 ## Oz
 
-Oz' [Sort](http://www.mozart-oz.org/home/doc/base/list.html#label295) function is not guaranteed to be stable in the documentation.
+Oz' [Sort](https://www.mozart-oz.org/home/doc/base/list.html#label295) function is not guaranteed to be stable in the documentation.
 
 However, internally it uses [[Merge sort]] and in practice ''is'' stable '''if''' a reflexive ordering is used, e.g. <code>Value.'=<'</code> or <code>Value.'>='</code>.
 
@@ -1219,7 +1219,7 @@ Standard Pascal has no built-in routine for sorting. The RTL of FreePascal uses 
 
 ## Perl
 
-The stability of Perl's in-built [sort](http://perldoc.perl.org/functions/sort.html) function is version-dependent. If you want to guarantee a stable sort from it, you should use the following [sort pragma](http://perldoc.perl.org/sort.html):
+The stability of Perl's in-built [sort](https://perldoc.perl.org/functions/sort.html) function is version-dependent. If you want to guarantee a stable sort from it, you should use the following [sort pragma](https://perldoc.perl.org/sort.html):
 
 ```perl
 use sort 'stable';
@@ -1229,7 +1229,7 @@ use sort 'stable';
 
 ## Perl 6
 
-The [sort](http://perlcabal.org/syn/S32/Containers.html#sort) built-in (available as sub and method) is stable.
+The [sort](https://perlcabal.org/syn/S32/Containers.html#sort) built-in (available as sub and method) is stable.
 
 Short demonstration for sorting only on the second item of each array:
 
@@ -1300,12 +1300,12 @@ Obviously, written the way it is above, the guaranteed part only guarantees not 
 
 ## PHP
 
-PHP uses QuickSort for most of its [sort functions](http://us2.php.net/manual/en/array.sorting.php) so it is unstable. <http://www.php.net/manual/en/function.sort.php>
+PHP uses QuickSort for most of its [sort functions](http://us2.php.net/manual/en/array.sorting.php) so it is unstable. <https://www.php.net/manual/en/function.sort.php>
 
 
 ## PicoLisp
 
-The [sort](http://software-lab.de/doc/refS.html#sort) function is unstable
+The [sort](https://software-lab.de/doc/refS.html#sort) function is unstable
 
 
 ## PureBasic
@@ -1315,7 +1315,7 @@ PureBasic's includes two built-in sort functions for arrays, <tt>SortArray()</tt
 
 ## Python
 
-Python's in-built [sorted](http://docs.python.org/library/functions.html#sorted) function as well as the [sort method of lists](http://docs.python.org/library/stdtypes.html#mutable-sequence-types) are guaranteed stable (since version 2.3). (For even more information on the underlying routine, [[wp:timsort]], see [this](http://svn.python.org/projects/python/trunk/Objects/listsort.txt)).
+Python's in-built [sorted](https://docs.python.org/library/functions.html#sorted) function as well as the [sort method of lists](https://docs.python.org/library/stdtypes.html#mutable-sequence-types) are guaranteed stable (since version 2.3). (For even more information on the underlying routine, [[wp:timsort]], see [this](http://svn.python.org/projects/python/trunk/Objects/listsort.txt)).
 
 
 ## R
@@ -1355,7 +1355,7 @@ sort(x, method="shell")
 ## Racket
 
 
-Racket comes with a standard <tt>sort</tt> function, which is documented [here](http://docs.racket-lang.org/reference/pairs.html#%28def._%28%28lib._racket%2Fprivate%2Flist..rkt%29._sort%29%29).  It is documented as stable.
+Racket comes with a standard <tt>sort</tt> function, which is documented [here](https://docs.racket-lang.org/reference/pairs.html#%28def._%28%28lib._racket%2Fprivate%2Flist..rkt%29._sort%29%29).  It is documented as stable.
 
 
 ```Racket
@@ -1474,7 +1474,7 @@ see sort(aList,2)
 
 ## Ruby
 
-Ruby's built-in sort methods (Array#sort, Array#sort!, Array#sort_by!, Enumerable#sort and Enumerable#sort_by) are not stable. [[MRI]] uses [[Sorting algorithms/Quicksort|quicksort]], which is not stable [(1)](http://groups.google.com/group/comp.lang.ruby/msg/2a6c50d173a902da). It seems that stable sorting is not worth the performance trade-off; MRI rejected a proposal to switch to a stable sort [(2)](http://redmine.ruby-lang.org/issues/show/1089).
+Ruby's built-in sort methods (Array#sort, Array#sort!, Array#sort_by!, Enumerable#sort and Enumerable#sort_by) are not stable. [[MRI]] uses [[Sorting algorithms/Quicksort|quicksort]], which is not stable [(1)](https://groups.google.com/group/comp.lang.ruby/msg/2a6c50d173a902da). It seems that stable sorting is not worth the performance trade-off; MRI rejected a proposal to switch to a stable sort [(2)](https://redmine.ruby-lang.org/issues/show/1089).
 
 ```ruby
 ary = [["UK", "London"],
@@ -1667,12 +1667,12 @@ US Birmingham
 
 ## Stata
 
-See '''[sort](http://www.stata.com/help.cgi?sort)''' in Stata help. The command has a ''stable'' option to ensure sort stability.
+See '''[sort](https://www.stata.com/help.cgi?sort)''' in Stata help. The command has a ''stable'' option to ensure sort stability.
 
 
 ## Tcl
 
-Tcl's built-in [<code>lsort</code>](http://www.tcl.tk/man/tcl8.4/TclCmd/lsort.htm) command implements a stable sort. It has been guaranteed to be stable since Tcl 8.0. Internally, it uses the mergesort algorithm.
+Tcl's built-in [<code>lsort</code>](https://www.tcl-lang.org/man/tcl8.4/TclCmd/lsort.htm) command implements a stable sort. It has been guaranteed to be stable since Tcl 8.0. Internally, it uses the mergesort algorithm.
 
 
 ## TXR

@@ -303,7 +303,7 @@ The GUI shows all values in the solved state.
 ; Pascal's triangle.ahk
 ; by wolf_II
 ;---------------------------------------------------------------------------
-; http://rosettacode.org/wiki/Pascal's_triangle/Puzzle
+; https://rosettacode.org/wiki/Pascal's_triangle/Puzzle
 ;---------------------------------------------------------------------------
 
 
@@ -1505,7 +1505,7 @@ equations puzzle = unzip eqs where
 ```
 
 
-To solve the system, any linear algebra library will do (e.g [hmatrix](http://hackage.haskell.org/cgi-bin/hackage-scripts/package/hmatrix-0.2.0.0)). For this example, we assume there are functions ''decompose'' for LR-decomposition, ''kernel'' to solve the homogenous system and ''solve'' to find a special solution for an imhomogenous system. Then
+To solve the system, any linear algebra library will do (e.g [hmatrix](https://hackage.haskell.org/cgi-bin/hackage-scripts/package/hmatrix-0.2.0.0)). For this example, we assume there are functions ''decompose'' for LR-decomposition, ''kernel'' to solve the homogenous system and ''solve'' to find a special solution for an imhomogenous system. Then
 
 
 ```haskell

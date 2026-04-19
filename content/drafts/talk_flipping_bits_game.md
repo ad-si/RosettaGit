@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-==[Reddit](http://www.reddit.com/r/programming/comments/1rpk3t/flipping_bits_game_is_it_original/) joins in!==
+==[Reddit](https://www.reddit.com/r/programming/comments/1rpk3t/flipping_bits_game_is_it_original/) joins in!==
 I asked Reddit if the game was original and they managed to find some similar games. User Strilanc went further and seems to have found an easy algorithm for solving it too. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:43, 30 November 2013 (UTC)
 
 ==References?==

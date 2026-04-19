@@ -759,7 +759,7 @@ method encodingDetails(str = String) public static
   return
 
 -- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
--- @see http://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html
+-- @see https://docs.oracle.com/javase/6/docs/technotes/guides/intl/encoding.doc.html
 -- @since Java 1.7
 method formatCodePoint(ix, cc, cp) private static
   scp = Rexx(Character.toChars(cp))
@@ -1244,7 +1244,7 @@ Output:
 ### ============================================
 
 The Ring Programming Language
-http://ring-lang.net/
+https://ring-lang.net/
 Version 1.0
 Release Date : January 25, 2016
 Update Date : March 27, 2016
@@ -1265,7 +1265,7 @@ https://groups.google.com/forum/#!forum/ring-lang
 Greetings,
 Mahmoud Fayed
 msfclipper@yahoo.com
-http://www.facebook.com/mahmoudfayed1986
+https://www.facebook.com/mahmoudfayed1986
 
 ```
 
@@ -1308,12 +1308,12 @@ close #f
 
 ## Seed7
 
-The library [utf8.s7i](http://seed7.sourceforge.net/libraries/utf8.htm)
-provides the functions [openUtf8](http://seed7.sourceforge.net/libraries/utf8.htm#openUtf8%28in_string,in_string%29)
-and [getc](http://seed7.sourceforge.net/libraries/utf8.htm#getc%28in_utf8_file%29).
+The library [utf8.s7i](https://seed7.sourceforge.net/libraries/utf8.htm)
+provides the functions [openUtf8](https://seed7.sourceforge.net/libraries/utf8.htm#openUtf8%28in_string,in_string%29)
+and [getc](https://seed7.sourceforge.net/libraries/utf8.htm#getc%28in_utf8_file%29).
 When a file has been opened with <code>openUtf8</code> fhe function <code>getc</code> reads UTF-8 characters from the file.
 To allow writing Unicode characters to standard output
-the file [STD_UTF8_OUT](http://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT) is used.
+the file [STD_UTF8_OUT](https://seed7.sourceforge.net/libraries/utf8.htm#STD_UTF8_OUT) is used.
 
 
 ```seed7

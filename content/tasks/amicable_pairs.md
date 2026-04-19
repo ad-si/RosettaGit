@@ -117,7 +117,7 @@ L(n) 1..20000
 
 
 This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
-<http://rosettacode.org/wiki/Proper_divisors#Ada>.
+<https://rosettacode.org/wiki/Proper_divisors#Ada>.
 
 
 ```Ada
@@ -728,7 +728,7 @@ v_@#-*8*:"2":$_:#!2#*8#g*#6:#0*#!:#-*#<v>*/.55+,
 ## C
 
 Remark:
-Look at Pascal Alternative <http://rosettacode.org/wiki/Amicable_pairs#Alternative>.You are using the same principle, so here too both numbers of the pair must be < top.
+Look at Pascal Alternative <https://rosettacode.org/wiki/Amicable_pairs#Alternative>.You are using the same principle, so here too both numbers of the pair must be < top.
 
 The program will overflow and error in all sorts of ways when given a commandline argument >= UINT_MAX/2 (generally 2^31)
 
@@ -5159,7 +5159,7 @@ Amicable pairs < 20000
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Amicable_pairs
+https://rosettacode.org/wiki/Amicable_pairs
 ···
 ■ AmicablePairs
   § static

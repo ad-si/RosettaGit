@@ -175,7 +175,7 @@ puts "Hello World"
 # brainfuck
 #helloworld = '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.'
 #
-# http://c2.com/cgi/wiki?SnuspLanguage -- "Is there a simple way to translate an arbitrary Brainfuck program into Core SNUSP?"
+# https://c2.com/cgi/wiki?SnuspLanguage -- "Is there a simple way to translate an arbitrary Brainfuck program into Core SNUSP?"
 #
 # a[bc]d
 #

@@ -78,7 +78,7 @@ For each task and contractor (row and column above) calculating the difference b
 
 
 Determine the largest difference (D or E above). In the case of ties I shall choose the one with the lowest price (in this case E because the lowest price for D is Z=15, whereas for E it is Z=11). For your choice determine the minimum cost (chosen E above so Z=11 is chosen now). Allocate as much as possible from Z to E (50 in this case limited by Z's supply).
-Adjust the supply and demand accordingly. If demand or supply becomes 0 for a given task or contractor it plays no further part. In this case Z is out of it. If you choose arbitrarily, and chose D see [here](http://rosettacode.org/mw/index.php?title=VAM&oldid=167195) for the working.
+Adjust the supply and demand accordingly. If demand or supply becomes 0 for a given task or contractor it plays no further part. In this case Z is out of it. If you choose arbitrarily, and chose D see [here](https://rosettacode.org/mw/index.php?title=VAM&oldid=167195) for the working.
 
 Repeat until all supply and demand is met:
 
@@ -808,7 +808,7 @@ Total cost: 3100
 
 ## Julia
 
-This solution is designed to scale well to large numbers of suppliers and customers.  The opportunity cost matrix is sorted only once, and penalties are recalculated only when the relevant resources are exhausted.  The solution is stored in a [sparse matrix](http://docs.julialang.org/en/release-0.3/manual/arrays/#sparse-matrices), because the number of components to a solution is less than s+c (suppliers + customers) but the size of the matrix is s*c.
+This solution is designed to scale well to large numbers of suppliers and customers.  The opportunity cost matrix is sorted only once, and penalties are recalculated only when the relevant resources are exhausted.  The solution is stored in a [sparse matrix](https://docs.julialang.org/en/release-0.3/manual/arrays/#sparse-matrices), because the number of components to a solution is less than s+c (suppliers + customers) but the size of the matrix is s*c.
 
 This solution does not impose the requirement that the problem be balanced.  <code>vogel</code> will iterate until either supply or demand is exhausted and provide a low-cost result even when the problem is unbalanced, whether this result is a good solution is left for the user to decide.  The function <code>isbalanced</code> can be used to test whether a given problem is balanced.
 

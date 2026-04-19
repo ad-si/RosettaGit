@@ -395,7 +395,7 @@ IPv6 address = 2001:200:DFF:FFF1:216:3EFF:FEB1:44D7
 
 
 == {{header|C}} ==
-This solution uses <code>getaddrinfo()</code>, a standard function from RFC 3493. This code resembles an example from [getaddrinfo(3)](http://www.openbsd.org/cgi-bin/man.cgi?query=getaddrinfo&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html), the [[BSD]] manual page. Whereas the man page code connects to <code>www.kame.net</code>, this code only prints the numeric addresses.
+This solution uses <code>getaddrinfo()</code>, a standard function from RFC 3493. This code resembles an example from [getaddrinfo(3)](https://www.openbsd.org/cgi-bin/man.cgi?query=getaddrinfo&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html), the [[BSD]] manual page. Whereas the man page code connects to <code>www.kame.net</code>, this code only prints the numeric addresses.
 
 
 ```c
@@ -723,7 +723,7 @@ In Allegro Common Lisp there's a nice standard library called [socket](http://fr
 ```
 
 
-In Lispworks the [COMM](http://www.lispworks.com/documentation/lw71/LW/html/lw-269.htm) package provides information about IP addresses.
+In Lispworks the [COMM](https://www.lispworks.com/documentation/lw71/LW/html/lw-269.htm) package provides information about IP addresses.
 
 ```lisp
 (require "comm")
@@ -1857,10 +1857,10 @@ Output:
 
 ## Seed7
 
-The library [socket.s7i](http://seed7.sourceforge.net/libraries/socket.htm) defines the function
-[inetSocketAddress](http://seed7.sourceforge.net/libraries/socket.htm#inetSocketAddress%28in_string,__in_integer%29), which
+The library [socket.s7i](https://seed7.sourceforge.net/libraries/socket.htm) defines the function
+[inetSocketAddress](https://seed7.sourceforge.net/libraries/socket.htm#inetSocketAddress%28in_string,__in_integer%29), which
 returns an IPv4 address. It only returns an IPv6 address, when a host has no IPv4 address and the operating system supports IPv6.
-The function [numericAddress](http://seed7.sourceforge.net/libraries/socket.htm#numericAddress%28in_socketAddress%29)
+The function [numericAddress](https://seed7.sourceforge.net/libraries/socket.htm#numericAddress%28in_socketAddress%29)
 is used to get the IP address of the specified host.
 
 ```seed7

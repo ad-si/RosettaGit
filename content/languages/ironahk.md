@@ -13,4 +13,4 @@ IronAHK is a port of AutoHotkey functionality to .NET and Mono in order to gain 
 
 [homepage](http://www.ironahk.net/)
 
-author: [Polyethene](http://www.autohotkey.com/forum/author-Polyethene.html)
+author: [Polyethene](https://www.autohotkey.com/forum/author-Polyethene.html)

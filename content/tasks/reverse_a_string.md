@@ -1346,7 +1346,7 @@ Due to using "~" this example needs GNU Dc or OpenBSD Dc.
 
 ## Dart
 
-Since Dart strings are sequences of [UTF-16](http://en.wikipedia.org/wiki/UTF-16) code units, it would not be sufficient to simply reverse the characters in strings, as this would not work with UTF-16 [surrogate pairs](http://en.wikipedia.org/wiki/UTF-16#Code_points_U.2B10000_to_U.2B10FFFF) (pairs of UTF-16 code units that represent single characters [outside the Unicode BMP](http://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane)). However, Dart provides a method to convert strings to sequences of unicode code points (called "runes" in Dart), and these sequences can easily be reversed and used to create new strings, so a string reversal function can be written with a single line of Dart code:
+Since Dart strings are sequences of [UTF-16](https://en.wikipedia.org/wiki/UTF-16) code units, it would not be sufficient to simply reverse the characters in strings, as this would not work with UTF-16 [surrogate pairs](https://en.wikipedia.org/wiki/UTF-16#Code_points_U.2B10000_to_U.2B10FFFF) (pairs of UTF-16 code units that represent single characters [outside the Unicode BMP](https://en.wikipedia.org/wiki/Plane_(Unicode)#Supplementary_Multilingual_Plane)). However, Dart provides a method to convert strings to sequences of unicode code points (called "runes" in Dart), and these sequences can easily be reversed and used to create new strings, so a string reversal function can be written with a single line of Dart code:
 
 
 ```dart
@@ -3281,7 +3281,7 @@ Reversed: gnirts a si sihT
 
 ## MIPS Assembly
 
-This is heavily based off of the [Copy String](http://rosettacode.org/wiki/Copy_a_string#MIPS_Assembly) solution. Only a few lines are changed. In the Copy String solution, the pointer at the source string starts at 0th then keeps adding until the loaded byte isn't 0. This instead when copying the string starts at the ''last'' index, then decrements the source pointer a number of times equal to the determined string length.
+This is heavily based off of the [Copy String](https://rosettacode.org/wiki/Copy_a_string#MIPS_Assembly) solution. Only a few lines are changed. In the Copy String solution, the pointer at the source string starts at 0th then keeps adding until the loaded byte isn't 0. This instead when copying the string starts at the ''last'' index, then decrements the source pointer a number of times equal to the determined string length.
 
 
 ```mips
@@ -3843,7 +3843,7 @@ int main()
 ## OCaml
 
 
-Since OCaml 4.02 we can use the handy [String.init](http://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html#VALinit) function.
+Since OCaml 4.02 we can use the handy [String.init](https://caml.inria.fr/pub/docs/manual-ocaml/libref/String.html#VALinit) function.
 
 Here a version that returns a new allocated string (preserving the original one):
 
@@ -4565,7 +4565,7 @@ or
 
 ### Python: Unicode reversal
 
-(See [this article](http://paddy3118.blogspot.com/2009/07/case-of-disappearing-over-bar.html) for more information from which this is improved)
+(See [this article](https://paddy3118.blogspot.com/2009/07/case-of-disappearing-over-bar.html) for more information from which this is improved)
 
 '''Note:''' How this looks may be subject to how the tool you are using to view this page can render Unicode.
 

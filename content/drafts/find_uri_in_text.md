@@ -30,8 +30,8 @@ Consider the following issues:
 sample text:
  <nowiki>
  this URI contains an illegal character, parentheses and a misplaced full stop:
- <http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer)>. (which is handled by <http://mediawiki.org/>).
- and another one just to confuse the parser: <http://en.wikipedia.org/wiki/->)
+ <https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer)>. (which is handled by <https://mediawiki.org/>).
+ and another one just to confuse the parser: <https://en.wikipedia.org/wiki/->)
  ")" is handled the wrong way by the mediawiki parser.
  ftp://domain.name/path(balanced_brackets)/foo.html
  ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -74,8 +74,8 @@ var pattern =
 func main() {
     text := `
 this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 ")" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -111,9 +111,9 @@ http://www.example.org/foo.html#enthält_Unicode-Fragment
 ```txt
 
 URIs:-
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -123,9 +123,9 @@ http://www.example.org/foo.html#includes_fragment
 http://www.example.org/foo.html#enth
 
 IRIs:-
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -148,10 +148,10 @@ Delimited examples of the form ''<URI>'' or ''"URI"'' will be correctly parse in
 procedure main()
    every write(findURItext("this URI contains an illegal character, parentheses_
                and a misplaced full stop:\n_
-               http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). _
-               which is handled by http://mediawiki.org/).\n_
+               https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). _
+               which is handled by https://mediawiki.org/).\n_
                and another one just to confuse the parser: _
-               http://en.wikipedia.org/wiki/-)\n_
+               https://en.wikipedia.org/wiki/-)\n_
                \")\" is handled the wrong way by the mediawiki parser.\n_
                ftp://domain.name/path(balanced_brackets)/foo.html\n_
                ftp://domain.name/path(balanced_brackets)/ending.in.dot.\n_
@@ -284,13 +284,13 @@ end
 Output:
 ```txt
 stop:
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
-http://mediawiki.org/)
-http://mediawiki.org/
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
+https://mediawiki.org/)
+https://mediawiki.org/
 parser:
-http://en.wikipedia.org/wiki/-)
-http://en.wikipedia.org/wiki/-
+https://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/-
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(balanced_brackets)/ending.in.dot
@@ -340,9 +340,9 @@ split("\n")[] | findURIs
 
 ```sh
 $ jq -R -r -f Find_URI_in_text.jq Find_URI_in_text.txt
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -371,8 +371,8 @@ val pattern =
 fun main(args: Array<String>) {
     val text = """
         |this URI contains an illegal character, parentheses and a misplaced full stop:
-        |http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-        |and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+        |https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+        |and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
         |")" is handled the wrong way by the mediawiki parser.
         |ftp://domain.name/path(balanced_brackets)/foo.html
         |ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -401,9 +401,9 @@ fun main(args: Array<String>) {
 ```txt
 
 URIs:-
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -413,9 +413,9 @@ http://www.example.org/foo.html#includes_fragment
 http://www.example.org/foo.html#enth
 
 IRIs:-
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -439,8 +439,8 @@ Used a regex instead of writing a parser.
 class FindUri {
   function : Main(args : String[]) ~ Nil {
     text := "this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 \")\" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -464,9 +464,9 @@ if you have other interesting URIs for testing, please add them here:";
 ```txt
 
 Count: 8
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -487,8 +487,8 @@ use IETF::RFC_Grammar::URI;
 
 say q:to/EOF/.match(/ <IETF::RFC_Grammar::URI::absolute-URI> /, :g).list.join("\n");
     this URI contains an illegal character, parentheses and a misplaced full stop:
-    http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-    and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+    https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+    and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
     ")" is handled the wrong way by the mediawiki parser.
     ftp://domain.name/path(balanced_brackets)/foo.html
     ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -508,10 +508,10 @@ Like most of the solutions here it does not comply to IRI but only to URI:
 
 ```txt
 stop:
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
 parser:
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -541,8 +541,8 @@ Trivial example using PHP's built-in filter_var() function (which does not suppo
 ```PHP
 $tests = array(
     'this URI contains an illegal character, parentheses and a misplaced full stop:',
-    'http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).',
-    'and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)',
+    'https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).',
+    'and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)',
     '")" is handled the wrong way by the mediawiki parser.',
     'ftp://domain.name/path(balanced_brackets)/foo.html',
     'ftp://domain.name/path(balanced_brackets)/ending.in.dot.',
@@ -570,8 +570,8 @@ foreach ( $tests as $test ) {
 
 ```txt
 
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -590,9 +590,9 @@ https://haxor.ur:4592/~mama/&####&?foo
 
 ```Pike
 string uritext = #"this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). 
-which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). 
+which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 \")\" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -624,10 +624,10 @@ array find_uris(string uritext)
 find_uris(uritext);
 Result: ({ /* 11 elements */
             "stop:",
-            "http://en.wikipedia.org/wiki/Erich_K\303\244stner_(camera_designer)",
-            "http://mediawiki.org/)",
+            "https://en.wikipedia.org/wiki/Erich_K\303\244stner_(camera_designer)",
+            "https://mediawiki.org/)",
             "parser:",
-            "http://en.wikipedia.org/wiki/-)",
+            "https://en.wikipedia.org/wiki/-)",
             "ftp://domain.name/path(balanced_brackets)/foo.html",
             "ftp://domain.name/path(balanced_brackets)/ending.in.dot",
             "ftp://domain.name/path(unbalanced_brackets/ending.in.dot",
@@ -651,8 +651,8 @@ Result: ({ /* 11 elements */
 (define sample
   #<<EOS
 this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 ")" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -677,7 +677,7 @@ EOS
 (regexp-match-positions* uri-re sample)
 
 (module+ test
-  ;; "ABNF for Syntax Specifications" http://tools.ietf.org/html/rfc2234
+  ;; "ABNF for Syntax Specifications" https://datatracker.ietf.org/html/rfc2234
   ;; defines ALPHA as:
   ;;   ALPHA = %x41-5A / %x61-7A   ; A-Z / a-z
   (unless (= 228 (char->integer #\ä))
@@ -695,9 +695,9 @@ Match positions differ from the [[#Tcl]] version because:
 
 
 ```txt
-"http://en.wikipedia.org/wiki/Erich_K"
-"http://mediawiki.org/)."
-"http://en.wikipedia.org/wiki/-)"
+"https://en.wikipedia.org/wiki/Erich_K"
+"https://mediawiki.org/)."
+"https://en.wikipedia.org/wiki/-)"
 "ftp://domain.name/path(balanced_brackets)/foo.html"
 "ftp://domain.name/path(balanced_brackets)/ending.in.dot."
 "ftp://domain.name/path(unbalanced_brackets/ending.in.dot."
@@ -714,8 +714,8 @@ Match positions differ from the [[#Tcl]] version because:
 ```rexx
 /*REXX program scans a text (contained within REXX pgm) to extract URIs.*/
 text='this URI contains an illegal character, parentheses and a misplaced full stop:',
-     'http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).',
-     'and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)',
+     'https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).',
+     'and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)',
      '")" is handled the wrong way by the mediawiki parser.',
      'ftp://domain.name/path(balanced_brackets)/foo.html',
      'ftp://domain.name/path(balanced_brackets)/ending.in.dot.',
@@ -758,10 +758,10 @@ t=space(text)' '                       /*variable  T  is a working copy.*/
 ```txt
 
 stop:
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
 parser:
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -781,8 +781,8 @@ here:
 require  'uri'
 
 str = 'this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 ")" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -805,10 +805,10 @@ puts "\nThis is the (extendible) list of supported schemes: #{URI.scheme_list.ke
 ```txt
 
 stop:
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
 parser:
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -817,9 +817,9 @@ ftp://domain.name/dangling_close_paren)
 here:
 
 Filtered for HTTP and HTTPS:
-http://en.wikipedia.org/wiki/Erich_K
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_K
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 
 This is the (extendible) list of supported schemes: ["FTP", "HTTP", "HTTPS", "LDAP", "LDAPS", "MAILTO"]
 
@@ -853,8 +853,8 @@ Note that the last line of output is showing that we haven't just extracted the 
 ```tcl
 set sample {
 this URI contains an illegal character, parentheses and a misplaced full stop:
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by http://mediawiki.org/).
-and another one just to confuse the parser: http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (which is handled by https://mediawiki.org/).
+and another one just to confuse the parser: https://en.wikipedia.org/wiki/-)
 ")" is handled the wrong way by the mediawiki parser.
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
@@ -871,9 +871,9 @@ puts [findURIs $sample -indices]
 
 ```txt
 
-http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
-http://mediawiki.org/).
-http://en.wikipedia.org/wiki/-)
+https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer).
+https://mediawiki.org/).
+https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -935,8 +935,8 @@ Test file:
 
 ```txt
 $ cat url-data 
-Blah blah http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (Handled by http://mediawiki.org/).
-Confuse the parser: http://en.wikipedia.org/wiki/-)
+Blah blah https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (Handled by https://mediawiki.org/).
+Confuse the parser: https://en.wikipedia.org/wiki/-)
 ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.
 ftp://domain.name/path(unbalanced_brackets/ending.in.dot.
@@ -953,11 +953,11 @@ $ txr url.txr url-data
 LINE 
     URLS
 ----------------------
-Blah blah http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (Handled by http://mediawiki.org/).
-    http://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer)
-    http://mediawiki.org/
-Confuse the parser: http://en.wikipedia.org/wiki/-)
-    http://en.wikipedia.org/wiki/-
+Blah blah https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer). (Handled by https://mediawiki.org/).
+    https://en.wikipedia.org/wiki/Erich_Kästner_(camera_designer)
+    https://mediawiki.org/
+Confuse the parser: https://en.wikipedia.org/wiki/-)
+    https://en.wikipedia.org/wiki/-
 ftp://domain.name/path(balanced_brackets)/foo.html
     ftp://domain.name/path(balanced_brackets)/foo.html
 ftp://domain.name/path(balanced_brackets)/ending.in.dot.

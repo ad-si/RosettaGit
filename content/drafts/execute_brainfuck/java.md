@@ -13,7 +13,7 @@ tags = []
 {{implementation|Brainfuck}}{{collection|RCBF}}
 In this implementation of [[Brainfuck]] in [[Java]], the code is read in all at once and checked for uneven brackets (unequal amounts of [ and ] commands). If that error occurs, the code will obviously not be run.
 
-Under the hood, the program memory is an <tt>ArrayList</tt> of Integers which expands "infinitely" (limited by your system's memory) to the right (still [Turing complete](http://en.wikipedia.org/wiki/Turing_completeness)). So, if the pointer moves past zero to the left, the program will exit and a "Pointer out of range" error message will be displayed.
+Under the hood, the program memory is an <tt>ArrayList</tt> of Integers which expands "infinitely" (limited by your system's memory) to the right (still [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness)). So, if the pointer moves past zero to the left, the program will exit and a "Pointer out of range" error message will be displayed.
 
 Due to the <tt>BufferedReader</tt> input class, return characters ([ASCII](http://www.asciitable.com) 10 and 13) are ignored on input (the , command), but are not ignored on output (the . command). In order to input anything, you'll need to append a new line.
 

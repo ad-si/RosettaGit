@@ -1813,7 +1813,7 @@ public static String repeat(String str, int times) {
 ```
 
 
-In Apache Commons Lang, there is a [StringUtils.repeat()](http://commons.apache.org/lang/api-2.6/org/apache/commons/lang/StringUtils.html#repeat%28java.lang.String,%20int%29) method.
+In Apache Commons Lang, there is a [StringUtils.repeat()](https://commons.apache.org/lang/api-2.6/org/apache/commons/lang/StringUtils.html#repeat%28java.lang.String,%20int%29) method.
 
 
 ## JavaScript
@@ -3575,7 +3575,7 @@ Note that using the String version on a string of 1 Character, or the repeat sin
 
 ###  Bitwise Iterative Version
 
-The following version is an enhanced version of the [recursive ActionScript](http://rosettacode.org/mw/index.php?title=Repeat_a_string#Recursive_version), where we're using bit operation along with iterative doubling of the string to get to the correctly repeated version of the text in the most effective manner without recursion.  When benchmarked against the plain iterative version in previous section, this version is marginally better, but only my a very small percentage. The critical factor for making the repeat function effective when using larger strings (1000 characters) and multiple repeats (1000 repeats :-) ) was to to exchange the '+=' with 'String.extend' method.
+The following version is an enhanced version of the [recursive ActionScript](https://rosettacode.org/mw/index.php?title=Repeat_a_string#Recursive_version), where we're using bit operation along with iterative doubling of the string to get to the correctly repeated version of the text in the most effective manner without recursion.  When benchmarked against the plain iterative version in previous section, this version is marginally better, but only my a very small percentage. The critical factor for making the repeat function effective when using larger strings (1000 characters) and multiple repeats (1000 repeats :-) ) was to to exchange the '+=' with 'String.extend' method.
 
 
 ```swift

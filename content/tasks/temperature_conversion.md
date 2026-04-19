@@ -4093,7 +4093,7 @@ This REXX version supports   '''58'''   temperature scales.
 Scientific note:   at temperatures above   '''1 Planck''',   quantum gravitational effects become relevant, and current physical theory breaks down because there is a lack of a theory of quantum gravity.
 
 
-See the Wikipedia article:     [Planck temperature](http://en.wikipedia.org/wiki/Planck_temperature).
+See the Wikipedia article:     [Planck temperature](https://en.wikipedia.org/wiki/Planck_temperature).
 
 
 

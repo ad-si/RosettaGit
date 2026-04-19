@@ -27,7 +27,7 @@ P.S. The error was:
 ```
 
 --[[User:Paddy3118|Paddy3118]] 22:10, 10 August 2008 (UTC)
-:My mistake. I wrote that program; the problem was that I used the Haskell implementation GHC, which allowed the literal "10000" to be an Int, and Codepad uses Hugs, which apparently interprets all literal integers as Integers by default. I believe the dreaded [monomorphism restriction](http://www.haskell.org/haskellwiki/Monomorphism_restriction) is to blame. Anyway, I added an explicit type signature, so [the program now works with Hugs](http://codepad.org/VNKGdwhi). [[User:Underscore|Underscore]] 15:24, 11 August 2008 (UTC)
+:My mistake. I wrote that program; the problem was that I used the Haskell implementation GHC, which allowed the literal "10000" to be an Int, and Codepad uses Hugs, which apparently interprets all literal integers as Integers by default. I believe the dreaded [monomorphism restriction](https://www.haskell.org/haskellwiki/Monomorphism_restriction) is to blame. Anyway, I added an explicit type signature, so [the program now works with Hugs](http://codepad.org/VNKGdwhi). [[User:Underscore|Underscore]] 15:24, 11 August 2008 (UTC)
 ::Thanks. I ran it on codepad and inserted some sample output. --[[User:Paddy3118|Paddy3118]] 15:59, 11 August 2008 (UTC)
 
 == ADA program problem ==

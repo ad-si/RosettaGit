@@ -107,7 +107,7 @@ This task is the problem n.98 of the "[99 Prolog Problems](https://sites.google.
 ## See also
 
 * [[wp:AC-3_algorithm|Arc Consistency Algorithm]]
-* <http://www.haskell.org/haskellwiki/99_questions/Solutions/98> (Haskell)
+* <https://www.haskell.org/haskellwiki/99_questions/Solutions/98> (Haskell)
 * <http://twanvl.nl/blog/haskell/Nonograms> (Haskell)
 * <http://picolisp.com/5000/!wiki?99p98> (PicoLisp)
 

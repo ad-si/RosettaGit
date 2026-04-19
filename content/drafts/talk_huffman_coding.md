@@ -257,7 +257,7 @@ In the C code, the <code>swap_</code> macro (defined for <code>_heap_sort</code>
 
 == Complaint about C++ example ==
 
-User 122.167.5.231 [added](http://rosettacode.org/mw/index.php?title=Huffman_coding&diff=129055&oldid=128618) a claim that the C++ code is incorrect. I have moved the note from the page to here:
+User 122.167.5.231 [added](https://rosettacode.org/mw/index.php?title=Huffman_coding&diff=129055&oldid=128618) a claim that the C++ code is incorrect. I have moved the note from the page to here:
 
 ''Important : This method does not generate the optimal Huffman tree for any given string; it suffers from a serious flaw because of the fact that elements in a c++ priority queue are ordered according to strict weak ordering. To see why, please check out [this example](http://cs.nyu.edu/~melamed/courses/102/lectures/huffman.ppt). It shows that the optimal huffman tree for the given line of text will have no code longer than 4 bits. This piece of code generates huffman codes which are 5 bits in size. Try running it with the same line of text as input and you can verify this.''
 

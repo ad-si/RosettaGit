@@ -5752,7 +5752,7 @@ delete_cs(fork5)
 ## PicoLisp
 
 This following solution uses the built-in fininte state machine function
-'[state](http://software-lab.de/doc/refS.html#state)'. Deadlocks are avoided, as
+'[state](https://software-lab.de/doc/refS.html#state)'. Deadlocks are avoided, as
 each philosopher releases the first fork if he doesn't succeed to obtain the
 second fork, and waits for a random time.
 

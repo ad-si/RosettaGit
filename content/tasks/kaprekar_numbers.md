@@ -1268,7 +1268,7 @@ Which produces:
 ```
 
 ===Casting Out Nines C++11 For Each Generator (v.fast)===
-For details of ran and co9 see: <http://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator>
+For details of ran and co9 see: <https://rosettacode.org/wiki/Casting_out_nines#C.2B.2B11_For_Each_Generator>
 
 ```cpp
 // Generate Kaprekar Numbers using Casting Out Nines Generator
@@ -2193,7 +2193,7 @@ let digits x =
 
 // Is n a Kaprekar number?
 let isKaprekar n =
-    // Reference: http://oeis.org/A006886
+    // Reference: https://oeis.org/A006886
     // Positive numbers n such that n=q+r
     // And n^2=q*10^m+r,
     //  for some m >= 1,
@@ -4437,7 +4437,7 @@ raw_input()
 
 ### Using Casting Out Nines Generator
 
-See: <http://rosettacode.org/wiki/Casting_out_nines#Python> for explanation and code for CastOut
+See: <https://rosettacode.org/wiki/Casting_out_nines#Python> for explanation and code for CastOut
 
 ```python
 

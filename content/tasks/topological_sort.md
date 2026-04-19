@@ -1647,7 +1647,7 @@ NIL
 ```
 
 
-Provided example with <code>dw04</code> added to the dependencies of <code>dw01</code>.  Some vertices are ordered, but the second return is <code>nil</code>, indicating that not all vertices could be sorted.  The third return value is the hash table containing entries for the four vertices that couldn't be sorted.  (The variable <code>[/](http://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm)</code> stores the list of values produced by the last form, and <code>[describe](http://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm)</code> prints information about an object.)
+Provided example with <code>dw04</code> added to the dependencies of <code>dw01</code>.  Some vertices are ordered, but the second return is <code>nil</code>, indicating that not all vertices could be sorted.  The third return value is the hash table containing entries for the four vertices that couldn't be sorted.  (The variable <code>[/](https://www.lispworks.com/documentation/HyperSpec/Body/v_sl_sls.htm)</code> stores the list of values produced by the last form, and <code>[describe](https://www.lispworks.com/documentation/HyperSpec/Body/f_descri.htm)</code> prints information about an object.)
 
 
 ```lisp
@@ -5417,7 +5417,7 @@ DES_SYSTEM_LIB
 
 ## Ruby
 
-Uses the [TSort](http://www.ruby-doc.org/stdlib/libdoc/tsort/rdoc/classes/TSort.html) module from the Ruby stdlib.
+Uses the [TSort](https://www.ruby-doc.org/stdlib/libdoc/tsort/rdoc/classes/TSort.html) module from the Ruby stdlib.
 
 ```ruby
 require 'tsort'
@@ -5622,7 +5622,7 @@ If the suggested extra arc is added, this is the error output:
 
 ## UNIX Shell
 
-The Unix [tsort(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=tsort&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) utility does a topological sort. Each line of input must have two items in order, like 'std des_system_lib'.<ref>
+The Unix [tsort(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=tsort&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) utility does a topological sort. Each line of input must have two items in order, like 'std des_system_lib'.<ref>
 [[wp: tsort]]
 </ref>
 

@@ -74,5 +74,5 @@ The help page says "Feel free to provide a GeSHi script file.". However, there i
 :This page was pretty useless, so I redirected it to [[Help:Syntax Highlighting]], which has the things you request (or at least links to them). —[[User:Underscore|Underscore]] ([[User talk:Underscore|Talk]]) 21:45, 7 December 2009 (UTC)
 
 ==AutoHotkey==
-Created a geshi lexer for autohotkey: [autohotkey.php](http://github.com/tinku99/ahklexers.git/autohotkey.php).  
+Created a geshi lexer for autohotkey: [autohotkey.php](https://github.com/tinku99/ahklexers.git/autohotkey.php).  
  Please add to rosettacode. Thanks, --[[User:Tinku99|Tinku99]] 16:49, 19 June 2009 (UTC)

@@ -258,7 +258,7 @@ Finally, our error handler calls the function we have defined, recursively, whic
 
 This writeup is at once too short, and too long.  For a novice to the language, I have brushed over a variety of issues which might be puzzling.  (Meanwhile, for both the uninterested reader and people with some familiarity with the language, I have probably provided far too much text.)
 
-If people have questions, I would encourage them to first try a few experiments with the language (it's a free download and runs on a variety of platforms), and perhaps read some [documentation](http://www.jsoftware.com/help/dictionary/intro.htm).  And, if some issue remains puzzling, I will try and answer them here.
+If people have questions, I would encourage them to first try a few experiments with the language (it's a free download and runs on a variety of platforms), and perhaps read some [documentation](https://www.jsoftware.com/help/dictionary/intro.htm).  And, if some issue remains puzzling, I will try and answer them here.
 
 Finally, hypothetically speaking, both this writeup and the original code might be changed.  For example, perhaps, instead of a single long line, a user would be more comfortable with a series of short definitions of (throwaway) words.    [In my experience, this sort of thing can be a handy learning tool.  But -- unless particularly relevant words are used -- it also introduces distracting complexities, instead of illuminating anything.]
 

@@ -995,7 +995,7 @@ For large numbers of rules and few actions, J's native support of sparse arrays 
 
 ### Interactive
 
-Since this is an interactive web page, results can't be listed. See <http://jsfiddle.net/rGP6C/1/> for a live demo.
+Since this is an interactive web page, results can't be listed. See <https://jsfiddle.net/rGP6C/1/> for a live demo.
 
 ```javascript
 <html
@@ -2235,7 +2235,7 @@ Printer does not print? ^C
 ```tcl
 package require TclOO
 
-#http://rosettacode.org/wiki/Keyboard_Input/Obtain_a_Y_or_N_response#Tcl
+#https://rosettacode.org/wiki/Keyboard_Input/Obtain_a_Y_or_N_response#Tcl
 proc yesno {{message "Press Y or N to continue"}} {
     fconfigure stdin -blocking 0
     exec stty raw

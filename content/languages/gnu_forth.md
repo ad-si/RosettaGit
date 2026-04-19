@@ -13,4 +13,4 @@ tags = []
 
 ## External links
 * [Free Software Directory entry](http://directory.fsf.org/project/gforth/)
-* [GNU Forth HTML manual](http://www.complang.tuwien.ac.at/forth/gforth/Docs-html/)
+* [GNU Forth HTML manual](https://www.complang.tuwien.ac.at/forth/gforth/Docs-html/)

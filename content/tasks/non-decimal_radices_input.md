@@ -454,7 +454,7 @@ Seq.zip fromBases (Seq.zip values fromBases |> Seq.map (System.Convert.ToInt32))
 
 ## Factor
 
-Bases from 2 to 16 are supported through the generic base> word (see online docs <http://docs.factorcode.org/content/word-base__gt__,math.parser.html>)
+Bases from 2 to 16 are supported through the generic base> word (see online docs <https://docs.factorcode.org/content/word-base__gt__,math.parser.html>)
 but 4 functions are defined for the most used cases:
     ( scratchpad ) "ff" hex> . ! base 16
     255
@@ -788,7 +788,7 @@ For base 10 and 16 ("0x"-prefixed), (but not 8), it is fastest to parse strings 
 
 See <http://www.jibbering.com/faq/notes/type-conversion/#tcNumber> for more information.
 
-The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [Mozilla's JavaScript 1.5 reference](http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/parseInt#Example.3a_Using_parseInt).
+The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [Mozilla's JavaScript 1.5 reference](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/parseInt#Example.3a_Using_parseInt).
 
 <div style='height:40ex; overflow:scroll'>The following examples all return 15:
 
@@ -1393,7 +1393,7 @@ Number String Base IsNumber InputString
 
 ## Python
 
-The [int](http://docs.python.org/library/functions.html#int) function will interpret strings as numbers expressed to some base:
+The [int](https://docs.python.org/library/functions.html#int) function will interpret strings as numbers expressed to some base:
 
 ```python
 >>>
@@ -1721,8 +1721,8 @@ object Main extends App {
 
 ## Seed7
 
-The function [integer(str, radix)](http://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29)
-converts a numeric string, with a specified radix, to an [integer](http://seed7.sourceforge.net/manual/types.htm#integer).
+The function [integer(str, radix)](https://seed7.sourceforge.net/libraries/integer.htm#integer%28in_string,in_integer%29)
+converts a numeric string, with a specified radix, to an [integer](https://seed7.sourceforge.net/manual/types.htm#integer).
 
 
 ```seed7

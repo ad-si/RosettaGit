@@ -1187,7 +1187,7 @@ int main( int argc, char** argv )
 ```
 
 
-[Output Screenshot](http://i.imgur.com/McCuZP3.png)
+[Output Screenshot](https://i.imgur.com/McCuZP3.png)
 
 
 ## Sidef
@@ -1240,7 +1240,7 @@ ht.write(file => 'Hough transform.png')
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 const WHITE=0xffFFff, X=0x010101;
 fcn houghTransform(image,hx=460,hy=360){

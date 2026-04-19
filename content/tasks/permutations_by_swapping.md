@@ -64,8 +64,8 @@ Note: The Steinhaus–Johnson–Trotter algorithm generates successive permutati
 
 * [[wp:Steinhaus–Johnson–Trotter algorithm|Steinhaus–Johnson–Trotter algorithm]]
 * [Johnson-Trotter Algorithm Listing All Permutations](http://www.cut-the-knot.org/Curriculum/Combinatorics/JohnsonTrotter.shtml)
-* [Correction to](http://stackoverflow.com/a/29044942/10562) Heap's algorithm as presented in Wikipedia and widely distributed.
-* <http://www.gutenberg.org/files/18567/18567-h/18567-h.htm#ch7> Tintinnalogia
+* [Correction to](https://stackoverflow.com/a/29044942/10562) Heap's algorithm as presented in Wikipedia and widely distributed.
+* <https://www.gutenberg.org/files/18567/18567-h/18567-h.htm#ch7> Tintinnalogia
 
 
 ## Related tasks
@@ -1041,7 +1041,7 @@ Perm: [2, 1, 3, 4]  Sign: -1
 ```
 
 =={{header|F_Sharp|F#}}==
-See <http://www.rosettacode.org/wiki/Zebra_puzzle#F.23> for an example using this module
+See <https://www.rosettacode.org/wiki/Zebra_puzzle#F.23> for an example using this module
 
 ```fsharp
 
@@ -1561,7 +1561,7 @@ _1 _2 _1  3
 ```
 
 
-Alternatively, J defines [C.!.2](http://www.jsoftware.com/help/dictionary/dccapdot.htm) as the parity of a permutation:
+Alternatively, J defines [C.!.2](https://www.jsoftware.com/help/dictionary/dccapdot.htm) as the parity of a permutation:
 
 
 ```J

@@ -16,4 +16,4 @@ From its [GitHub repo](https://github.com/tekknolagi/gecho):
 ## Merged content
 
 
-GitHub <http://github.com/tekknolagi/gecho>
+GitHub <https://github.com/tekknolagi/gecho>

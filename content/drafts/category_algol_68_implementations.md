@@ -39,13 +39,13 @@ A comprehensive list of implementations and a description of each implementation
 * Rutgers (DIMACS) Algol-68
 * S3 for ICL 2900
 == Recent Implementations ==
-=== 2002: Compiler / [MMIX](http://en.wikipedia.org/wiki/MMIX)  / NYU ===
-In 2002 a [[New York University|NYU]]'s Computer Science Ph.D. Candidate [Antonio R. Nicolosi](http://en.wikipedia.org/wiki/Antonio_R._Nicolosi) created a boot strap compiler for [[ALGOL 68|Algol68]]Nix.
+=== 2002: Compiler / [MMIX](https://en.wikipedia.org/wiki/MMIX)  / NYU ===
+In 2002 a [[New York University|NYU]]'s Computer Science Ph.D. Candidate [Antonio R. Nicolosi](https://en.wikipedia.org/wiki/Antonio_R._Nicolosi) created a boot strap compiler for [[ALGOL 68|Algol68]]Nix.
 * [Description of Algol68Nix](http://cs.nyu.edu/~nicolosi/projects/algol2MMIX/algol68Nix.html)
 * Version 2.0
 * <http://homepages.nyu.edu/~at570/compiler.html#code>
 
-=== 2000: Interpreter / Linux&DOS  / [Rutgers University](http://en.wikipedia.org/wiki/MMIX/Rutgers_University) ===
+=== 2000: Interpreter / Linux&DOS  / [Rutgers University](https://en.wikipedia.org/wiki/MMIX/Rutgers_University) ===
 
 Not all the exotic features are implemented. In particular there are no semaphores, formats and parallel-clauses. 
 * License => <http://www.renyi.hu/~csirmaz/algol-68/linux/readme> - noncommercial

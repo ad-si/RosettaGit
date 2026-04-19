@@ -49,7 +49,7 @@ Discuss and demonstrate its Unicode awareness and capabilities. Some suggested t
 
 We might want to give indication as to what Unicode is, (rather than saying it is our "best friend", link the word Unicode to the wikipedia article).
 
-FWIW, Unicode can also be our [worst enemy](http://rosettacode.org/wiki/Talk:Unicode_variable_names), so I would not agree with "best friend" as being an adequate description.
+FWIW, Unicode can also be our [worst enemy](https://rosettacode.org/wiki/Talk:Unicode_variable_names), so I would not agree with "best friend" as being an adequate description.
 
 [[User:Markhobley|Markhobley]] 07:38, 23 July 2011 (UTC)
 

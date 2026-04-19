@@ -456,7 +456,7 @@ o_newline();
 
 {{trans|python}}
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - missing transput function "read int"}}
 
 ### Console
@@ -3343,7 +3343,7 @@ document.getElementById('output').innerHTML = sum;
 ```
 
 
-Server side (with [node.js](http://nodejs.org)):
+Server side (with [node.js](https://nodejs.org)):
 
 
 ```javascript
@@ -5788,7 +5788,7 @@ One of several possibilities:
 ```
 
 
-Domain:[SExpression](http://fricas.github.io/api/SExpression.html?highlight=lisp)
+Domain:[SExpression](https://fricas.github.io/api/SExpression.html?highlight=lisp)
 
 
 ## SPARK
@@ -6668,8 +6668,8 @@ write, a + b;
 
 ## ZED
 
-Source -> <http://ideone.com/WLtEfe>
-Compiled -> <http://ideone.com/fMt6ST>
+Source -> <https://ideone.com/WLtEfe>
+Compiled -> <https://ideone.com/fMt6ST>
 
 ```zed
 (A+B)

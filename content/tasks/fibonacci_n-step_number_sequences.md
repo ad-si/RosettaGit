@@ -127,7 +127,7 @@ Allied sequences can be generated where the initial values are changed:
 ## Related tasks
 
 *   [[Fibonacci sequence]]
-*   [Wolfram Mathworld](http://mathworld.wolfram.com/Fibonaccin-StepNumber.html)
+*   [Wolfram Mathworld](https://mathworld.wolfram.com/Fibonaccin-StepNumber.html)
 *   [[Hofstadter Q sequence‎]]
 *   [[Leonardo numbers]]
 
@@ -2738,7 +2738,7 @@ end
 
 '''Specification of the MathWorld n-step Lucas Iterator'''
 
-This iterator produces the Mathworld version of the Lucas Sequence ([Lucas Number](http://mathworld.wolfram.com/LucasNumber.html) and [OEIS A000204](https://oeis.org/A000204)) and its generalization to n-steps according to Mathworld ([Lucas n-Step Number](http://mathworld.wolfram.com/Lucasn-StepNumber.html) and [Primes in Fibonacci n-step and Lucas n-step Sequences](https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html)).  The seeding for this series of sequences is <math>F_{0} = n</math> and <math>F_{1-n} \ldots F_{-1}=-1</math>.
+This iterator produces the Mathworld version of the Lucas Sequence ([Lucas Number](https://mathworld.wolfram.com/LucasNumber.html) and [OEIS A000204](https://oeis.org/A000204)) and its generalization to n-steps according to Mathworld ([Lucas n-Step Number](https://mathworld.wolfram.com/Lucasn-StepNumber.html) and [Primes in Fibonacci n-step and Lucas n-step Sequences](https://cs.uwaterloo.ca/journals/JIS/VOL8/Noe/noe5.html)).  The seeding for this series of sequences is <math>F_{0} = n</math> and <math>F_{1-n} \ldots F_{-1}=-1</math>.
 
 ```Julia
 

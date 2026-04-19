@@ -293,7 +293,7 @@ table.persondata {
 /* Class for links with loudspeaker icon next to them */
 
 .audiolink a{
-    background: url("http://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Loudspeaker.svg/11px-Loudspeaker.svg.png") center left no-repeat !important;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Loudspeaker.svg/11px-Loudspeaker.svg.png") center left no-repeat !important;
     padding-left: 16px !important;
     padding-right: 0 !important;
 }
@@ -301,12 +301,12 @@ table.persondata {
 /* Icons for medialist templates [[Template:Listen]], [[Template:Multi-listen_start]], [[Template:Video]], [[Template:Multi-video_start]] */
 
 div.listenlist {
-    background: url("http://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Gnome-speakernotes.png/30px-Gnome-speakernotes.png");
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Gnome-speakernotes.png/30px-Gnome-speakernotes.png");
     padding-left: 40px;
 }
 
 div.videolist, div.multivideolist {
-    background: url("http://upload.wikimedia.org/wikipedia/en/thumb/2/20/Tango-video-x-generic.png/40px-Tango-video-x-generic.png");
+    background: url("https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Tango-video-x-generic.png/40px-Tango-video-x-generic.png");
     padding-left: 50px;
 }
 
@@ -342,14 +342,14 @@ div.medialist ul li li {
 #bodyContent a[href$=".PDF"].external, 
 #bodyContent a[href*=".PDF?"].external, 
 #bodyContent a[href*=".PDF#"].external {
-    background: url(http://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif) center right no-repeat;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif) center right no-repeat;
     padding-right: 16px;
 }
 
 /* Change the external link icon to an Adobe icon anywhere the PDFlink class */
 /* is used (notably Template:PDFlink). This works in IE, unlike the above. */
 span.PDFlink a {
-    background: url(http://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif) center right no-repeat !important;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Icons-mini-file_acrobat.gif/15px-Icons-mini-file_acrobat.gif) center right no-repeat !important;
     padding-right: 17px !important;
 }
 
@@ -408,7 +408,7 @@ div.columns-5 div.column {
 /* With MediaWiki 1.5, the mechanism has changed: instead of a SPAN of class "urlexpansion"
    following the anchor A, the anchor itself now has class "external autonumber" and the
    expansion is inserted when printing (see the common printing style sheet at
-   http://en.wikipedia.org/skins-1.5/common/commonPrint.css) using the ":after" pseudo-
+   https://en.wikipedia.org/skins-1.5/common/commonPrint.css) using the ":after" pseudo-
    element of CSS. We have to switch this off for links due to Template:Ref!
    ~~~~
 */
@@ -454,7 +454,7 @@ div.columns-5 div.column {
 
 /* Put a checker background at the image description page only visible if the image has transparent background */
 
-#file img {background: url("http://upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png") repeat;}
+#file img {background: url("https://upload.wikimedia.org/wikipedia/commons/5/5d/Checker-16x16.png") repeat;}
 
 /* Support for Template:IPA, Template:Unicode and Template:Polytonic. The inherit declaration resets the font for all browsers except MSIE6.  The empty comment must remain. Please copy any changes to [[Template:IPA fonts]] and [[Template:Unicode fonts]]. */
 .IPA {
@@ -503,10 +503,10 @@ div.columns-5 div.column {
     #privacy, #about, #disclaimer {display:none;}
 }
 
-#EnWpMpBook { background-image: url(http://upload.wikimedia.org/wikipedia/en/7/7e/MP-open-book.png); }
-#EnWpMpSearch { background: url(http://upload.wikimedia.org/wikipedia/en/a/ae/MP-magnifying-glass.png) no-repeat top right; }
+#EnWpMpBook { background-image: url(https://upload.wikimedia.org/wikipedia/en/7/7e/MP-open-book.png); }
+#EnWpMpSearch { background: url(https://upload.wikimedia.org/wikipedia/en/a/ae/MP-magnifying-glass.png) no-repeat top right; }
 #EnWpMpSearchInner { float: right; width: 20em; text-align: center; }
-#EnWpMpBook2 { background-image: url(http://upload.wikimedia.org/wikipedia/commons/8/8e/MP-open-book2.png); }
+#EnWpMpBook2 { background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8e/MP-open-book2.png); }
 
 .messagebox.small-talk {
   width: 238px;

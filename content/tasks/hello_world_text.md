@@ -2664,7 +2664,7 @@ Explanation of the code:<br/>
 Then the characters <tt>Hello world!</tt> are added, and string mode is closed with <tt>"</tt>.<br/>
 The stack is reversed for printing (<tt>r</tt>), and a jump (<tt>!</tt>) is executed to jump over the <tt>!</tt> at the beginning of the line and execute the <tt>v</tt>. ([[Fish]] is torical)<br/>
 After going down by <tt>v</tt>, it goes rightwards again by <tt>></tt> and this line is being executed.<br/>
-This line pushes the stack size (<tt>l</tt>), and stops (<tt>;</tt>) if the top item on the stack is equal to 0 (<tt>?</tt>). Else it executes the <tt>!</tt> directly after it and jumps to the <tt>o</tt>, which outputs the top item in [ASCII](http://en.wikipedia.org/wiki/Ascii). Then the line is executed again. It effectively prints the stack until it's empty, then it terminates.
+This line pushes the stack size (<tt>l</tt>), and stops (<tt>;</tt>) if the top item on the stack is equal to 0 (<tt>?</tt>). Else it executes the <tt>!</tt> directly after it and jumps to the <tt>o</tt>, which outputs the top item in [ASCII](https://en.wikipedia.org/wiki/Ascii). Then the line is executed again. It effectively prints the stack until it's empty, then it terminates.
 
 
 ## FOCAL
@@ -5777,7 +5777,7 @@ end;
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script. Type this in a REPL session:
+Ad hoc solution as [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script. Type this in a REPL session:
 
 ```Scala
 println("Hello world!")

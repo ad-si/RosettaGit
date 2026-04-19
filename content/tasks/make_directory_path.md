@@ -432,7 +432,7 @@ End
 
 ## Go
 
-The standard packages include <tt>[os.MkdirAll](http://golang.org/pkg/os/#MkdirAll)</tt> which does exactly this
+The standard packages include <tt>[os.MkdirAll](https://golang.org/pkg/os/#MkdirAll)</tt> which does exactly this
 (and its source is also available via that link).
 
 ```go
@@ -461,7 +461,7 @@ main = do
 ## J
 
 
-The verb <code>pathcreate</code> in the addon package [general/dirutils](http://www.jsoftware.com/jwiki/Addons/general/dirutils) will create any non-existing directories in a path. It works on Windows, Linux and OS X.
+The verb <code>pathcreate</code> in the addon package [general/dirutils](https://www.jsoftware.com/jwiki/Addons/general/dirutils) will create any non-existing directories in a path. It works on Windows, Linux and OS X.
 
 
 ```J
@@ -833,7 +833,7 @@ def mkdirp(path):
 
 Uses <code>make-directory*</code> (NB the star &mdash; that causes the intermediate directories to be produced).
 
-Canonical documentation at [Racket Documentation for <var>Filesystem</var>](http://docs.racket-lang.org/reference/Filesystem.html#%28def._%28%28lib._racket%2Ffile..rkt%29._make-directory*%29%29)
+Canonical documentation at [Racket Documentation for <var>Filesystem</var>](https://docs.racket-lang.org/reference/Filesystem.html#%28def._%28%28lib._racket%2Ffile..rkt%29._make-directory*%29%29)
 
 <blockquote>Creates directory specified by <var>path</var>, creating intermediate
 directories as necessary, and never failing if <var>path</var> exists already.
@@ -1003,7 +1003,7 @@ mkdirs(List("/path", "to", "dir"))
 
 ## Seed7
 
-The library [cli_cmds.s7i](http://seed7.sourceforge.net/libraries/cli_cmds.htm)
+The library [cli_cmds.s7i](https://seed7.sourceforge.net/libraries/cli_cmds.htm)
 defines the function doMkdirCmd, which is used below.
 
 
@@ -1019,8 +1019,8 @@ const proc: main is func
 
 
 The library cli_cmds.s7i defines also
-[doMkdir](http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMkdir%28inout_string%29) (Make directories like the Unix mkdir command)
-and [doMd](http://seed7.sourceforge.net/libraries/cli_cmds.htm#doMd%28inout_string%29) (Make directories like the DOS md command).
+[doMkdir](https://seed7.sourceforge.net/libraries/cli_cmds.htm#doMkdir%28inout_string%29) (Make directories like the Unix mkdir command)
+and [doMd](https://seed7.sourceforge.net/libraries/cli_cmds.htm#doMd%28inout_string%29) (Make directories like the DOS md command).
 This functions read the parameters and options from a string.
 The reading is done according to Unix respectively DOS/Windows rules.
 The function doMkdir is used in the alternate solution below:

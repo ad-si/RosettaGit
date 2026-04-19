@@ -880,7 +880,7 @@ public class DeathStar extends Application {
 
 ## JavaScript
 
-Layer circles and gradients to achieve result similar to that of the Wikipedia page for the [Death Star](http://en.wikipedia.org/wiki/Death_Star).
+Layer circles and gradients to achieve result similar to that of the Wikipedia page for the [Death Star](https://en.wikipedia.org/wiki/Death_Star).
 
 ```JavaScript
 

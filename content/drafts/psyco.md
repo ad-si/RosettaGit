@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-From [Wikipedia](http://en.wikipedia.org/wiki/Psyco):
+From [Wikipedia](https://en.wikipedia.org/wiki/Psyco):
 
 Psyco is a specializing just-in-time compiler for [[Python]]. 
 

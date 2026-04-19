@@ -480,7 +480,7 @@ first 8 happy numbers:  1   7   10   13   19   23   28   31
 ```APL
      ∇ HappyNumbers arg;⎕IO;∆roof;∆first;bin;iroof
 [1]   ⍝0: Happy number
-[2]   ⍝1: http://rosettacode.org/wiki/Happy_numbers
+[2]   ⍝1: https://rosettacode.org/wiki/Happy_numbers
 [3]    ⎕IO←1                              ⍝ Index origin
 [4]    ∆roof ∆first←2↑arg,10              ⍝
 [5]

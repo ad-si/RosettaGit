@@ -1940,7 +1940,7 @@ END Menu.
 
 ```MUMPS
 MENU(STRINGS,SEP)
- ;http://rosettacode.org/wiki/Menu
+ ;https://rosettacode.org/wiki/Menu
  NEW I,A,MAX
  ;I is a loop variable
  ;A is the string read in from the user
@@ -2813,7 +2813,7 @@ Enter a number: 3
 ```REBOL
 REBOL [
 	Title: "Text Menu"
-	URL: http://rosettacode.org/wiki/Select
+	URL: https://rosettacode.org/wiki/Select
 ]
 
 choices: ["fee fie" "huff and puff" "mirror mirror" "tick tock"]

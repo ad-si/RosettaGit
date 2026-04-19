@@ -35,7 +35,7 @@ MultiCategory Search extension is likely broken in MW 1.20. --[[User:Short Circu
 
 ==Account Creation Not Fully Functional==
 
-Some attempts to create accounts (even by me, while logged in as an administrator account) fail with "Login error Incorrect or missing confirmation code <http://rosettacode.org> create account". Clearly, this doesn't happen to everybody; new accounts are created every day. --[[User:Short Circuit|Michael Mol]] ([[User talk:Short Circuit|talk]]) 13:45, 1 April 2013 (UTC)
+Some attempts to create accounts (even by me, while logged in as an administrator account) fail with "Login error Incorrect or missing confirmation code <https://rosettacode.org> create account". Clearly, this doesn't happen to everybody; new accounts are created every day. --[[User:Short Circuit|Michael Mol]] ([[User talk:Short Circuit|talk]]) 13:45, 1 April 2013 (UTC)
 
 
 ### Details
@@ -63,4 +63,4 @@ PHP-APC was utterly failing to allocate memory pools. Uninstalled. --[[User:Shor
 There is a problem on my home computer following upgrade, but I get an error to save or choose application to open "PHP" file when I attempt to edit. I read that this is due to Mime type not being given as Text/HTML on the server side. Saving the files gives zero length (empty) files on the Mediawiki upgrade. I'm not sure whether anyone else is seeing this. I am using old version of Debian. [[User:Markhobley|Markhobley]] ([[User talk:Markhobley|talk]]) 19:21, 15 April 2013 (UTC)
 
 ==Title image missing==
-Minor issue: The Rosetta Code title image (which is apparently supposed to be at <http://rosettacode.org/mw/title.png>) appears to be missing, leaving a blank in the corner of the page when using either the Vector or MonoBook styles. –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 08:40, 24 April 2013 (UTC)
+Minor issue: The Rosetta Code title image (which is apparently supposed to be at <https://rosettacode.org/mw/title.png>) appears to be missing, leaving a blank in the corner of the page when using either the Vector or MonoBook styles. –[[User:Dkf|Donal Fellows]] ([[User talk:Dkf|talk]]) 08:40, 24 April 2013 (UTC)

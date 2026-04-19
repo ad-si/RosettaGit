@@ -241,7 +241,7 @@ J is defined in terms of ascii, but that would not prevent it from being ported 
 ```
 
 
-Here, [a.](http://www.jsoftware.com/help/dictionary/dadot.htm) is the set of chararacters we are testing. We prefix each of these with an arbitrary letter, and suffix each with an arbitrary character and then try counting how many parsed tokens are formed by the result. If the token count is 1, then that character was a legal word-forming character.
+Here, [a.](https://www.jsoftware.com/help/dictionary/dadot.htm) is the set of chararacters we are testing. We prefix each of these with an arbitrary letter, and suffix each with an arbitrary character and then try counting how many parsed tokens are formed by the result. If the token count is 1, then that character was a legal word-forming character.
 
 Of course, we also only need to do this once. Once we have a set of these characters, it's faster and easier to use a set membership test on the characters themselves than on the expression which generates them.
 
@@ -685,16 +685,16 @@ See [[Idiomatically_determine_all_the_lowercase_and_uppercase_letters#Python|Str
 ## Racket
 
 
-[Symbols in the Racket Guide](http://docs.racket-lang.org/guide/symbols.html) states that:
+[Symbols in the Racket Guide](https://docs.racket-lang.org/guide/symbols.html) states that:
 
 <blockquote>Any string (i.e., any character sequence) can be supplied to <code>string->symbol</code> to obtain
 the corresponding symbol.</blockquote>
 
-[Reading Symbols](http://docs.racket-lang.org/reference/reader.html#%28part._parse-symbol%29) defines
+[Reading Symbols](https://docs.racket-lang.org/reference/reader.html#%28part._parse-symbol%29) defines
 what symbols can be "read" without needing quoting.
 
 The docuementation for
-[<code>integer->char</code>](http://docs.racket-lang.org/reference/characters.html#%28def._%28%28quote._~23~25kernel%29._integer-~3echar%29%29)
+[<code>integer->char</code>](https://docs.racket-lang.org/reference/characters.html#%28def._%28%28quote._~23~25kernel%29._integer-~3echar%29%29)
 says that a character must lie in the ranges: 0 to 55295, and 57344 to 1114111.
 
 That's too much to be printing out here... call <code>(main)</code> yourself, at home.

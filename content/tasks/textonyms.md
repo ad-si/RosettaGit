@@ -54,7 +54,7 @@ Assuming the digit keys are mapped to letters as follows:
 
 Write a program that finds textonyms in a list of words such as   
 [[Textonyms/wordlist]]   or   
-[unixdict.txt](http://www.puzzlers.org/pub/wordlists/unixdict.txt).
+[unixdict.txt](https://www.puzzlers.org/pub/wordlists/unixdict.txt).
 
 The task should produce a report:
 
@@ -408,7 +408,7 @@ examples, this considers a textonym to be a digit sequence which maps to more th
    \t 8 \u 8 \v 8       \T 8 \U 8 \V 8
    \w 9 \x 9 \y 9 \z 9  \W 9 \X 9 \Y 9 \Z 9})
 
-(def words-url "http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+(def words-url "https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 (def words (-> words-url slurp clojure.string/split-lines))
 
@@ -427,7 +427,7 @@ examples, this considers a textonym to be a digit sequence which maps to more th
 
 ```txt
 
-There are 24978 words in 'http://www.puzzlers.org/pub/wordlists/unixdict.txt' which can be represented by the digit key mapping. They require 22903 digit combinations to represent them. 1473 digit combinations represent Textonyms.
+There are 24978 words in 'https://www.puzzlers.org/pub/wordlists/unixdict.txt' which can be represented by the digit key mapping. They require 22903 digit combinations to represent them. 1473 digit combinations represent Textonyms.
 
 ```
 
@@ -940,8 +940,8 @@ Required example:
 
 
 ```J
-   keys textonymrpt 'http://rosettacode.org/wiki/Textonyms/wordlist'
-There are 13085 words in <http://rosettacode.org/wiki/Textonyms/wordlist> which can be represented by the digit key mapping.
+   keys textonymrpt 'https://rosettacode.org/wiki/Textonyms/wordlist'
+There are 13085 words in <https://rosettacode.org/wiki/Textonyms/wordlist> which can be represented by the digit key mapping.
 They require 11932 digit combinations to represent them.
 661 digit combinations represent Textonyms.
 ```
@@ -970,8 +970,8 @@ Here's another example:
 
 
 ```J
-   keys textonymrpt 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
-There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represnted by the digit key mapping.
+   keys textonymrpt 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
+There are 24978 words in <https://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represnted by the digit key mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 ```
@@ -1364,7 +1364,7 @@ Codes mapping to 10 or more words:
 import java.io.File
 
 val wordList = "unixdict.txt"
-val url = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
+val url = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 
 const val DIGITS = "22233344455566677778889999"
 
@@ -1431,7 +1431,7 @@ fun main(args: Array<String>) {
 
 ```txt
 
-There are 24978 words in 'http://www.puzzlers.org/pub/wordlists/unixdict.txt' which can be represented by the digit key mapping.
+There are 24978 words in 'https://www.puzzlers.org/pub/wordlists/unixdict.txt' which can be represented by the digit key mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 
@@ -1474,7 +1474,7 @@ Length  Textonym        Words
 -- Global variables
 http = require("socket.http")
 keys = {"VOICEMAIL", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
-dictFile = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
+dictFile = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 
 -- Return the sequence of keys required to type a given word
 function keySequence (str)
@@ -1529,7 +1529,7 @@ showReport(textonyms(http.request(dictFile)))
 ```
 
 ```txt
-There are 24983 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
+There are 24983 words in <https://www.puzzlers.org/pub/wordlists/unixdict.txt>
 which can be represented by the digit key mapping.
 They require 22908 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
@@ -1704,7 +1704,7 @@ The maximum number of textonyms for a particular digit key mapping is 9:
 
 ```PowerShell
 
-$url  = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
+$url  = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 $file = "$env:TEMP\unixdict.txt"
 (New-Object System.Net.WebClient).DownloadFile($url, $file)
 $unixdict = Get-Content -Path $file
@@ -1754,7 +1754,7 @@ Remove-Item -Path $file -Force -ErrorAction SilentlyContinue
 
 ```txt
 
-There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
+There are 24978 words in <https://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 
@@ -1791,7 +1791,7 @@ from collections import defaultdict
 import urllib.request
 
 CH2NUM = {ch: str(num) for num, chars in enumerate('abc def ghi jkl mno pqrs tuv wxyz'.split(), 2) for ch in chars}
-URL = 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+URL = 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 
 
 def getwords(url):
@@ -1853,9 +1853,9 @@ They require {2} digit combinations to represent them.
 
 
 ```txt
-Read 25104 words from 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+Read 25104 words from 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 
-There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the Textonyms mapping.
+There are 24978 words in <https://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the Textonyms mapping.
 They require 22903 digit combinations to represent them.
 1473 digit combinations represent Textonyms.
 
@@ -2275,7 +2275,7 @@ set keymap {
     9 -> WXYZ  
 }
 
-set url <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
+set url <https://www.puzzlers.org/pub/wordlists/unixdict.txt>
 
 set report {
 There are %1$s words in %2$s which can be represented by the digit key mapping.
@@ -2337,7 +2337,7 @@ puts [main $keymap $url]
 
 ```txt
 
-There are 24978 words in <http://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
+There are 24978 words in <https://www.puzzlers.org/pub/wordlists/unixdict.txt> which can be represented by the digit key mapping.
 They require 22903 digit combinations to represent them.
 3548 digit combinations represent Textonyms.
 
@@ -2354,7 +2354,7 @@ A 6-letter textonym which has 6 combinations is 2253:
 Like the Python example, this solution uses the Unix Dictionary, rather than the textonyms word list as I don't want to parse the HTML.
 
 ```zkl
-URL:="http://www.puzzlers.org/pub/wordlists/unixdict.txt";
+URL:="https://www.puzzlers.org/pub/wordlists/unixdict.txt";
 var ZC=Import("zklCurl");
 var keypad=Dictionary(
    "a",2,"b",2,"c",2,  "d",3,"e",3,"f",3,  "g",4,"h",4,"i",4,
@@ -2389,7 +2389,7 @@ foreach k,v in (wcnt.filter('wrap([(k,v)]){ v.len()==maxWordPerNum })){
 ```txt
 
 criticisms --> 2748424767
-Read 25104 words from <http://www.puzzlers.org/pub/wordlists/unixdict.txt>
+Read 25104 words from <https://www.puzzlers.org/pub/wordlists/unixdict.txt>
 There are 22903 words which can be represented by the Textonyms mapping.
 There are 1473 overlaps.
 Max collisions: 9 words:

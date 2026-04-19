@@ -74,9 +74,9 @@ The ''[[wp:Hamming weight|population count]]''   is the number of   <big>'''1'''
 : For example,   <big>'''5'''</big>   (which is   <big>'''101'''</big>   in binary)   has a population count of   <big>'''2'''</big>.
 
 
-''[Evil numbers](http://mathworld.wolfram.com/EvilNumber.html)''   are non-negative integers  that have an   ''even''   population count.
+''[Evil numbers](https://mathworld.wolfram.com/EvilNumber.html)''   are non-negative integers  that have an   ''even''   population count.
 
-''[Odious numbers](http://mathworld.wolfram.com/OdiousNumber.html)''      are  positive integers that have an    ''odd''   population count.
+''[Odious numbers](https://mathworld.wolfram.com/OdiousNumber.html)''      are  positive integers that have an    ''odd''   population count.
 
 
 ## Task
@@ -91,8 +91,8 @@ The ''[[wp:Hamming weight|population count]]''   is the number of   <big>'''1'''
 
 ## See also
 
-* The On-Line Encyclopedia of Integer Sequences:   [A000069 odious numbers](http://oeis.org/A000069).
-* The On-Line Encyclopedia of Integer Sequences:   [A001969 evil numbers](http://oeis.org/A001969).
+* The On-Line Encyclopedia of Integer Sequences:   [A000069 odious numbers](https://oeis.org/A000069).
+* The On-Line Encyclopedia of Integer Sequences:   [A001969 evil numbers](https://oeis.org/A001969).
 
 
 
@@ -2568,7 +2568,7 @@ First thirty 'odious' numbers:
 ;; Positive version from "popcount_4" in:
 ;;   https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementation
 ;; negative version follows R6RS definition documented in:
-;;   http://docs.racket-lang.org/r6rs/r6rs-lib-std/r6rs-lib-Z-H-12.html?q=bitwise-bit#node_idx_1074
+;;   https://docs.racket-lang.org/r6rs/r6rs-lib-std/r6rs-lib-Z-H-12.html?q=bitwise-bit#node_idx_1074
 (define (population-count n)
   (if (negative? n)
       (bitwise-not (population-count (bitwise-not n)))
@@ -2861,9 +2861,9 @@ object PopCount extends App {
 
 ## Seed7
 
-The function <code>popcount</code> below [converts](http://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer))
-the integer into a [bitset](http://seed7.sourceforge.net/libraries/bitset.htm).
-The function [card](http://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset))
+The function <code>popcount</code> below [converts](https://seed7.sourceforge.net/libraries/bitset.htm#bitset(in_integer))
+the integer into a [bitset](https://seed7.sourceforge.net/libraries/bitset.htm).
+The function [card](https://seed7.sourceforge.net/libraries/bitset.htm#card(in_bitset))
 is used to compute the population count of the bitset.
 
 

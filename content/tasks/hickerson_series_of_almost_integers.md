@@ -48,7 +48,7 @@ languages = [
 ]
 +++
 
-The following function, due to D Hickerson, is said to generate "Almost integers" by the ["Almost Integer" page of Wolfram Mathworld](http://mathworld.wolfram.com/AlmostInteger.html). (December 31 2013).
+The following function, due to D Hickerson, is said to generate "Almost integers" by the ["Almost Integer" page of Wolfram Mathworld](https://mathworld.wolfram.com/AlmostInteger.html). (December 31 2013).
 
 The function is:
 
@@ -1536,7 +1536,7 @@ h(17) = 130370767029135900.458 is NOT almost an integer.
 
 ## Perl 6
 
-We'll use [FatRat](http://doc.perl6.org/type/FatRat) values, and a series for an [approximation of ln(2)](http://mathworld.wolfram.com/NaturalLogarithmof2.html).
+We'll use [FatRat](http://doc.perl6.org/type/FatRat) values, and a series for an [approximation of ln(2)](https://mathworld.wolfram.com/NaturalLogarithmof2.html).
 
 
 ```perl6
@@ -1719,7 +1719,7 @@ do n = 1 to 18;
 
 ## Python
 
-This uses Pythons [decimal module](http://docs.python.org/2/library/decimal.html) of fixed precision decimal floating point calculations.
+This uses Pythons [decimal module](https://docs.python.org/2/library/decimal.html) of fixed precision decimal floating point calculations.
 
 
 ```python

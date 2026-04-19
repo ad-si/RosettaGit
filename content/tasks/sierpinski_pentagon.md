@@ -46,7 +46,7 @@ Produce a graphical or ASCII-art representation of a [[wp:N-flake#Pentaflake|Sie
 
 ## C
 
-The Sierpinski fractals can be generated via the [Chaos Game](http://mathworld.wolfram.com/ChaosGame.html). This implementation thus generalizes the [[Chaos game]] C implementation on Rosettacode. As the number of sides increases, the number of iterations must increase dramatically for a well pronounced fractal ( 30000 for a pentagon). This is in keeping with the requirements that the implementation should work for polygons with sides 1 to 4 as well. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+The Sierpinski fractals can be generated via the [Chaos Game](https://mathworld.wolfram.com/ChaosGame.html). This implementation thus generalizes the [[Chaos game]] C implementation on Rosettacode. As the number of sides increases, the number of iterations must increase dramatically for a well pronounced fractal ( 30000 for a pentagon). This is in keeping with the requirements that the implementation should work for polygons with sides 1 to 4 as well. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -265,9 +265,9 @@ int main() {
 
     std::cout << "<?xml version=\"1.0\" standalone=\"no\"?>\n";
     std::cout << "<!DOCTYPE svg PUBLIC \" -//W3C//DTD SVG 1.1//EN\"\n";
-    std::cout << "    \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
+    std::cout << "    \"https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n";
     std::cout << "<svg height=\"" << size << "\" width=\"" << size << "\" style=\"fill:blue\" transform=\"translate(" << size / 2 << ", " << size / 2 << ") rotate(-36)\"\n";
-    std::cout << "    version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n";
+    std::cout << "    version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\">\n";
 
     size *= part_ratio;
     sierpinski(order, turtle, size);
@@ -347,9 +347,9 @@ void main() {
     // Write the header to an SVG file for the image
     writeln(`<?xml version="1.0" standalone="no"?>`);
     writeln(`<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"`);
-    writeln(`    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`);
+    writeln(`    "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">`);
     writefln(`<svg height="%s" width="%s" style="fill:blue" transform="translate(%s,%s) rotate(-36)"`, size, size, size/2, size/2);
-    writeln(`    version="1.1" xmlns="http://www.w3.org/2000/svg">`);
+    writeln(`    version="1.1" xmlns="https://www.w3.org/2000/svg">`);
     // Write the close tag when the interior points have been written
     scope(success) writeln("</svg>");
 
@@ -808,7 +808,7 @@ const vertices = map(x -> cis(x * τ  / sides), 0:sides-1)
 
 fh = open("sierpinski_pentagon.svg", "w")
 print(fh, """<svg height=\"$(dim*2)\" width=\"$(dim*2)\" style=\"fill:blue\" """ *
-    """version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n""")
+    """version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\">\n""")
 
 for i in 1:sides^order
     varr = [vertices[parse(Int, ch) + 1] for ch in split(string(i, base=sides, pad=order), "")]
@@ -964,7 +964,7 @@ patch('Faces', reshape(1 : 5 * 5 ^ k, 5, '')', 'Vertices', [real(x(:)) imag(x(:)
 axis image off
 ```
 
-<http://i.imgur.com/8ht6HqG.png>
+<https://i.imgur.com/8ht6HqG.png>
 
 
 ## Perl
@@ -980,7 +980,7 @@ $scale = ( 3 - 5**.5 ) / 2;
 push @orders, ((1 - $scale) * $dim) * $scale ** $_ for 0..$order-1;
 
 open $fh, '>', 'sierpinski_pentagon.svg';
-print $fh qq|<svg height="@{[$dim*2]}" width="@{[$dim*2]}" style="fill:blue" version="1.1" xmlns="http://www.w3.org/2000/svg">\n|;
+print $fh qq|<svg height="@{[$dim*2]}" width="@{[$dim*2]}" style="fill:blue" version="1.1" xmlns="https://www.w3.org/2000/svg">\n|;
 
 $tau = 2 * 4*atan2(1, 1);
 push @vertices, cis( $_ * $tau / $sides ) for 0..$sides-1;
@@ -1021,7 +1021,7 @@ my @orders = ((1 - scaling-factor) * $dim) «*» scaling-factor «**» (^order);
 
 my $fh = open('sierpinski_pentagon.svg', :w);
 
-$fh.say: qq|<svg height="{$dim*2}" width="{$dim*2}" style="fill:blue" version="1.1" xmlns="http://www.w3.org/2000/svg">|;
+$fh.say: qq|<svg height="{$dim*2}" width="{$dim*2}" style="fill:blue" version="1.1" xmlns="https://www.w3.org/2000/svg">|;
 
 my @vertices = map { cis( $_ * τ / $sides ) }, ^$sides;
 
@@ -1037,7 +1037,7 @@ $fh.close;
 ```
 
 
-See [5th order pentaflake](http://rosettacode.org/mw/images/5/57/Perl6_pentaflake.svg)
+See [5th order pentaflake](https://rosettacode.org/mw/images/5/57/Perl6_pentaflake.svg)
 
 
 ## Python
@@ -1124,7 +1124,7 @@ main()
 ```
 
 
-See [online implementation](https://trinket.io/python/5137ae2b92). See [completed output](http://i.imgur.com/96D0c7i.png).
+See [online implementation](https://trinket.io/python/5137ae2b92). See [completed output](https://i.imgur.com/96D0c7i.png).
 
 
 ## Racket
@@ -1322,10 +1322,10 @@ var orders = order.of {|i| ((1-scaling_factor) * dim) * scaling_factor**i }
 say <<"STOP";
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg height="#{dim*2}" width="#{dim*2}"
     style="fill:blue" transform="translate(#{dim},#{dim}) rotate(-18)"
-    version="1.1" xmlns="http://www.w3.org/2000/svg">
+    version="1.1" xmlns="https://www.w3.org/2000/svg">
 STOP
 
 var vertices = sides.of {|i| Complex(0, i * Number.tau / sides).exp }
@@ -1408,9 +1408,9 @@ println(
 #<<<
 0'|<?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg height="%d" width="%d" style="fill:blue" transform="translate(%d,%d) rotate(-18)"
-    version="1.1" xmlns="http://www.w3.org/2000/svg">|
+    version="1.1" xmlns="https://www.w3.org/2000/svg">|
 #<<<
    .fmt(dim*2,dim*2,dim,dim));
 

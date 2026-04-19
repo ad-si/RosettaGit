@@ -73,15 +73,15 @@ Show all output here on this page.
 
 :*   Wikipedia entry:   [[wp:Hamming numbers|Hamming numbers]]     (this link is re-directed to   '''Regular number''').
 :*   Wikipedia entry:   [[wp:Smooth number|Smooth number]]
-:*   OEIS entry:        [A000079    2-smooth numbers or non-negative powers of two](http://oeis.org/A000079)
-:*   OEIS entry:        [A003586    3-smooth numbers](http://oeis.org/A003586)
-:*   OEIS entry:        [A051037    5-smooth numbers or Hamming numbers](http://oeis.org/A051037)
-:*   OEIS entry:        [A002473    7-smooth numbers or humble  numbers](http://oeis.org/A002473)
-:*   OEIS entry:        [A051038        11-smooth numbers](http://oeis.org/A051038)
-:*   OEIS entry:        [A080197        13-smooth numbers](http://oeis.org/A080197)
-:*   OEIS entry:        [A080681        17-smooth numbers](http://oeis.org/A080681)
-:*   OEIS entry:        [A080682        19-smooth numbers](http://oeis.org/A080682)
-:*   OEIS entry:        [A080683        23-smooth numbers](http://oeis.org/A080683)
+:*   OEIS entry:        [A000079    2-smooth numbers or non-negative powers of two](https://oeis.org/A000079)
+:*   OEIS entry:        [A003586    3-smooth numbers](https://oeis.org/A003586)
+:*   OEIS entry:        [A051037    5-smooth numbers or Hamming numbers](https://oeis.org/A051037)
+:*   OEIS entry:        [A002473    7-smooth numbers or humble  numbers](https://oeis.org/A002473)
+:*   OEIS entry:        [A051038        11-smooth numbers](https://oeis.org/A051038)
+:*   OEIS entry:        [A080197        13-smooth numbers](https://oeis.org/A080197)
+:*   OEIS entry:        [A080681        17-smooth numbers](https://oeis.org/A080681)
+:*   OEIS entry:        [A080682        19-smooth numbers](https://oeis.org/A080682)
+:*   OEIS entry:        [A080683        23-smooth numbers](https://oeis.org/A080683)
 
 
 

@@ -60,7 +60,7 @@ The task's text says that A and B are (must be? should be?) between -1000 and 10
 
 
 ==Fabula?==
-What is the meaning of [fabula](http://oxforddictionaries.com/noresults?dictionaryVersion=region-uk&isWritersAndEditors=true&noresults=true&page=1&pageSize=20&q=Fabula+&searchUri=All&sort=alpha&type=dictionarysearch)? --[[User:Paddy3118|Paddy3118]] 03:09, 26 September 2011 (UTC)
+What is the meaning of [fabula](https://oxforddictionaries.com/noresults?dictionaryVersion=region-uk&isWritersAndEditors=true&noresults=true&page=1&pageSize=20&q=Fabula+&searchUri=All&sort=alpha&type=dictionarysearch)? --[[User:Paddy3118|Paddy3118]] 03:09, 26 September 2011 (UTC)
 :I see I asked this a year ago without reply. Time to delete? --[[User:Paddy3118|Paddy3118]] 03:11, 26 September 2011 (UTC)
 ::Google hit #1 for me: [[wp:Fabula and syuzhet]]. Looks like it's just a fancy word. No real reason to keep it or delete it besides personal preference. If you want to change it or delete it I don't think we'll lose anything. --[[User:Mwn3d|Mwn3d]] 03:51, 26 September 2011 (UTC)
 :::[''Fabula''](http://en.wiktionary.org/wiki/fabula) is a Latin word for "story". Wikipedia's article "fabula and syuzhet" is not relevant. --[[User:Kernigh|Kernigh]] 17:47, 26 September 2011 (UTC)

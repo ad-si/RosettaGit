@@ -41,8 +41,8 @@ For instance, 753 is a super-3 number because 3 × 753^3 = 128087<u>333</u>1.
 
 ## See also
 
-:* '''[Wolfram MathWorld - Super-d Number](http://mathworld.wolfram.com/Super-dNumber.html)'''
-:* '''[OEIS: A014569 - Super-3 Numbers](http://oeis.org/A014569)'''
+:* '''[Wolfram MathWorld - Super-d Number](https://mathworld.wolfram.com/Super-dNumber.html)'''
+:* '''[OEIS: A014569 - Super-3 Numbers](https://oeis.org/A014569)'''
 
 
 =={{header|F_Sharp|F#}}==

@@ -1034,7 +1034,7 @@ test-data 5 cell-sort
 
 ### ANS/ISO Forth
 
-Uses quicksort <http://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Forth>
+Uses quicksort <https://rosettacode.org/wiki/Sorting_algorithms/Quicksort#Forth>
 
 Standard Forth does not have a library sort
 
@@ -2344,7 +2344,7 @@ sort($nums);
 
 ## PicoLisp
 
-The [sort](http://software-lab.de/doc/refS.html#sort) function in PicoLisp
+The [sort](https://software-lab.de/doc/refS.html#sort) function in PicoLisp
 returns already by default an ascending list (of any type, not only integers):
 
 ```PicoLisp
@@ -2470,7 +2470,7 @@ ARRAY SORT x()
 ```
 
 
-Options are available to limit sorting to only part of the array, collate string arrays, sort multiple arrays together, etc. (Details [here](http://www.powerbasic.com/support/help/pbwin/html/ARRAY_SORT_statement.htm).)
+Options are available to limit sorting to only part of the array, collate string arrays, sort multiple arrays together, etc. (Details [here](https://www.powerbasic.com/support/help/pbwin/html/ARRAY_SORT_statement.htm).)
 
 
 ## PowerShell
@@ -2490,7 +2490,7 @@ Options are available to limit sorting to only part of the array, collate string
 L = [1,3,3,5,10,13,85].
 ```
 
-Note that [sort/2](http://www.swi-prolog.org/pldoc/man?predicate=sort/2) removes duplicates.
+Note that [sort/2](https://www.swi-prolog.org/pldoc/man?predicate=sort/2) removes duplicates.
 
 
 ## PureBasic
@@ -2552,7 +2552,7 @@ sorted <- sort(nums)
 
 ## Rascal
 
-Rascal has a built-in sort function that sort the elements of a list. Additionally, one can give a LessThenOrEqual function to compare the elements (See [documentation](http://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/Prelude/List/sort/sort.html)).
+Rascal has a built-in sort function that sort the elements of a list. Additionally, one can give a LessThenOrEqual function to compare the elements (See [documentation](https://tutor.rascal-mpl.org/Courses/Rascal/Rascal.html#/Courses/Rascal/Libraries/Prelude/List/sort/sort.html)).
 
 ```rascal
 rascal>
@@ -3014,7 +3014,7 @@ See '''[macrolists](https://www.stata.com/help.cgi?macrolists)''' in Stata help 
 
 ###  Mata
 
-See Mata's '''[sort](http://www.stata.com/help.cgi?mf_sort)''' function.
+See Mata's '''[sort](https://www.stata.com/help.cgi?mf_sort)''' function.
 
 
 ```stata

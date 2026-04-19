@@ -74,7 +74,7 @@ languages = [
 
 The actual unbiasing should be done by generating two numbers at a time from randN and only returning a 1 or 0 if they are different. As long as you always return the first number or always return the second number, the probabilities discussed above should take over the biased probability of randN.
 
-This task is an implementation of [Von Neumann debiasing](http://en.wikipedia.org/wiki/Randomness_extractor#Von_Neumann_extractor), first described in a 1951 paper.
+This task is an implementation of [Von Neumann debiasing](https://en.wikipedia.org/wiki/Randomness_extractor#Von_Neumann_extractor), first described in a 1951 paper.
 
 
 

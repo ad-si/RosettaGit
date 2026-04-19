@@ -12,7 +12,7 @@ tags = []
 
 == "in the Gregorian calendar" ==
 
-During 2011 August 13, Markjreed [amended the task](http://rosettacode.org/mw/index.php?title=Leap_year&diff=117353&oldid=117345) to specify "in the Gregorian calendar". This contradicted the Ruby example, which already used the Julian calendar for years before 1583. I have now added an alternate Ruby example that uses proleptic Gregorian calendar. --[[User:Kernigh|Kernigh]] 18:52, 6 October 2011 (UTC)
+During 2011 August 13, Markjreed [amended the task](https://rosettacode.org/mw/index.php?title=Leap_year&diff=117353&oldid=117345) to specify "in the Gregorian calendar". This contradicted the Ruby example, which already used the Julian calendar for years before 1583. I have now added an alternate Ruby example that uses proleptic Gregorian calendar. --[[User:Kernigh|Kernigh]] 18:52, 6 October 2011 (UTC)
 : There used to be a lengthy discussion here about the leap year rules in effect that led to that change.  What happened to the history of the talk page? --[[User:Markjreed|Markjreed]] 19:11, 12 March 2012 (UTC)
 
 == Faster implementation ==

@@ -89,7 +89,7 @@ von Dracs (DE), today, 22:10  Spam?  ...
 
 ::: No, that's not quite true.   Andres Celsius invented/created/defined   ''a''   temperature scale; it was called centigrade (and other names) for two centuries or so.   For various reasons, around 1948 the name ''centigrade'' was replaced with ''Celsius'' by some international standards.   I know I was taught to use centigrade in grade school (USA), but by the time I went to college, Celsius was in use. -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 22:32, 13 August 2013 (UTC)
 
-Well, if the Oxford Dictionary [says it's a common misspelling](http://oxforddictionaries.com/spellcheck/english/?q=celcius) then that is good enough for me and we should correct it in the task description and urge others to use the correct spelling. (It even goes so far as to check the spelling in other languages). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 14 August 2013 (UTC)
+Well, if the Oxford Dictionary [says it's a common misspelling](https://oxforddictionaries.com/spellcheck/english/?q=celcius) then that is good enough for me and we should correct it in the task description and urge others to use the correct spelling. (It even goes so far as to check the spelling in other languages). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 05:20, 14 August 2013 (UTC)
 
 : Thanks Paddy. You mean 'computer languages' :-) and you know the answer to my wp question!?! (see above) --[[User:Walterpachl|Walterpachl]] ([[User talk:Walterpachl|talk]]) 05:28, 14 August 2013 (UTC)
 

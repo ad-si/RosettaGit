@@ -150,7 +150,7 @@ The official (Microsoft) VB.NET compiler became self-hosting in 2011 and can be 
 ## ZED
 
 Source ->
-Compiled -> <http://ideone.com/UHMQco>
+Compiled -> <https://ideone.com/UHMQco>
 
 ```zed
 (*) number1 number2

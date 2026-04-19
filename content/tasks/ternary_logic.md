@@ -1768,7 +1768,7 @@ For boolean logic, Factor uses ''t'' and ''f'' with the words ''>boolean'', ''no
 
 ```factor
 ! rosettacode/ternary/ternary.factor
-! http://rosettacode.org/wiki/Ternary_logic
+! https://rosettacode.org/wiki/Ternary_logic
 USING: combinators kernel ;
 IN: rosettacode.ternary
 
@@ -2528,7 +2528,7 @@ end
 ```
 
 
-[printf.icn provides support for the printf family of functions](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides support for the printf family of functions](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 unary function=not3:
@@ -5211,7 +5211,7 @@ We keep <code>!a</code>, <code>a & b</code> and so on for binary logic. We add <
 
 ```ruby
 # trit.rb - ternary logic
-# <http://rosettacode.org/wiki/Ternary_logic>
+# <https://rosettacode.org/wiki/Ternary_logic>
 
 require 'singleton'
 
@@ -5672,7 +5672,7 @@ TFalse : TFalse =>  TTrue
 
 ## Seed7
 
-The type [boolean](http://seed7.sourceforge.net/manual/types.htm#boolean) does not define
+The type [boolean](https://seed7.sourceforge.net/manual/types.htm#boolean) does not define
 separate '''xor''', '''implies''' and '''equiv''' operators. But there are replacements for them:
 {| border="1"
 ! Instead of !! Use

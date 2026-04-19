@@ -122,7 +122,7 @@ AAAAA   -2XXXXX
 
 ## AWK
 
-<!-- <http://ideone.com/oPMkNK> -->
+<!-- <https://ideone.com/oPMkNK> -->
 
 There is no delimiter between input-fields, so we extract the fields from the whole input-record $0 as substrings using substr(). 
 

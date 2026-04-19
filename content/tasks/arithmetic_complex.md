@@ -197,8 +197,8 @@ end Complex_Operations;
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 main:(
@@ -322,7 +322,7 @@ The linked image gives a few examples of complex arithmetic and a custom complex
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276431.html#276431)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276431.html#276431)
 
 ```AutoHotkey
 Cset(C,1,1)
@@ -552,7 +552,7 @@ sin$x minus conjugate sin$x = 0
 ## C
 
 {{works with|C99}}
-The more recent [[C99]] standard has built-in complex number primitive types, which can be declared with float, double, or long double precision. To use these types and their associated library functions, you must include the <complex.h> header. (Note: this is a ''different'' header than the <complex> templates that are defined by [[C++]].) <http://www.opengroup.org/onlinepubs/009695399/basedefs/complex.h.html> <http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.vacpp7a.doc/language/ref/clrc03complex_types.htm>
+The more recent [[C99]] standard has built-in complex number primitive types, which can be declared with float, double, or long double precision. To use these types and their associated library functions, you must include the <complex.h> header. (Note: this is a ''different'' header than the <complex> templates that are defined by [[C++]].) <https://www.opengroup.org/onlinepubs/009695399/basedefs/complex.h.html> <https://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.vacpp7a.doc/language/ref/clrc03complex_types.htm>
 
 ```c
 #include <complex.h>
@@ -2583,7 +2583,7 @@ end
 Icon doesn't allow for operator overloading but procedures can be overloaded as was done here to allow 'complex' to behave more robustly.
 
 {{libheader|Icon Programming Library}}
-[provides complex number support](http://www.cs.arizona.edu/icon/library/src/procs/complex.icn) supplemented by the code below.
+[provides complex number support](https://www.cs.arizona.edu/icon/library/src/procs/complex.icn) supplemented by the code below.
 
 ```Icon
 
@@ -3708,7 +3708,7 @@ x': (1.50000,-3.00000i)
 
 ## OCaml
 
-The [Complex](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Complex.html) module from the standard library provides the functionality of complex numbers:
+The [Complex](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Complex.html) module from the standard library provides the functionality of complex numbers:
 
 ```ocaml
 open Complex
@@ -3727,7 +3727,7 @@ let () =
 ```
 
 
-Using [Delimited Overloading](http://forge.ocamlcore.org/projects/pa-do/), the syntax can be made closer to the usual one:
+Using [Delimited Overloading](https://forge.ocamlcore.org/projects/pa-do/), the syntax can be made closer to the usual one:
 
 ```ocaml
 let () =
@@ -5109,7 +5109,7 @@ res7: org.rosettacode.ArithmeticComplex.Complex = -0.2 + 0.4i
 
 ## Scheme
 
-Scheme implementations are not required to support complex numbers, but if they do, they are required to support complex number literals in one of the following standard formats<http://people.csail.mit.edu/jaffer/r4rs_9.html#SEC67>:
+Scheme implementations are not required to support complex numbers, but if they do, they are required to support complex number literals in one of the following standard formats<https://people.csail.mit.edu/jaffer/r4rs_9.html#SEC67>:
 * rectangular coordinates: <code>''real''+''imag''i</code> (or <code>''real''-''imag''i</code>), where ''real'' is the real part and ''imag'' is the imaginary part. For a pure-imaginary number, the real part may be omitted but the sign of the imaginary part is mandatory (even if it is "+"): <code>+''imag''i</code> (or <code>-''imag''i</code>). If the imaginary part is 1 or -1, the imaginary part can be omitted, leaving only the  <code>+i</code> or <code>-i</code> at the end.
 * polar coordinates: <code>''r''@''theta''</code>, where ''r'' is the absolute value (magnitude) and ''theta'' is the angle
 

@@ -1391,7 +1391,7 @@ Enter some name: bleh
 ```REBOL
 REBOL [
 	Title: "Dynamic Variable Name"
-	URL: http://rosettacode.org/wiki/Dynamic_variable_names
+	URL: https://rosettacode.org/wiki/Dynamic_variable_names
 ]
 
 ; Here, I ask the user for a name, then convert it to a word and

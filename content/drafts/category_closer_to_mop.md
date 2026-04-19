@@ -14,4 +14,4 @@ tags = []
 
 For more info about MOP, read the book [[wp:The_Art_of_the_Metaobject_Protocol|AMOP]] which is the de-facto standard for the implementation of [[wp:Common_Lisp_Object_System CLOS]].
 
-The library can be found on [c-l.net](http://common-lisp.net/project/closer/closer-mop.html).
+The library can be found on [c-l.net](https://common-lisp.net/project/closer/closer-mop.html).

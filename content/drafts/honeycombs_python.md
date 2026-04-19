@@ -34,7 +34,7 @@ import string
 import tkinter
 import numbers
 
-Tau = 2*math.pi  # pi is wrong. http://www.youtube.com/watch?v=jG7vhMMXagQ
+Tau = 2*math.pi  # pi is wrong. https://www.youtube.com/watch?v=jG7vhMMXagQ
 
 cdr = lambda a: a[1:]
 car = lambda a: a[0]

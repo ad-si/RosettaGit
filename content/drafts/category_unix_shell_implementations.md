@@ -37,12 +37,12 @@ Common Bourne compatible shells include
 ! ''bash''
 |-
 ! Manual page
-| [Heirloom sh](http://heirloom.sourceforge.net/sh/sh.1.html)
+| [Heirloom sh](https://heirloom.sourceforge.net/sh/sh.1.html)
 |
 * [NetBSD sh](http://netbsd.gw.com/cgi-bin/man-cgi?sh++NetBSD-current)
 * [dash](http://man.cx/dash)
 |
-* [OpenBSD ksh](http://www.openbsd.org/cgi-bin/man.cgi?query=ksh&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html)
+* [OpenBSD ksh](https://www.openbsd.org/cgi-bin/man.cgi?query=ksh&apropos=0&sektion=0&manpath=OpenBSD+Current&arch=i386&format=html)
 * [mksh](http://www.mirbsd.org/htman/i386/man1/mksh.htm)
 | [bash](http://man.cx/bash)
 |-

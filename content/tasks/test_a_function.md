@@ -74,7 +74,7 @@ Using a well-known testing-specific library/module/suite for your language, writ
 ## ACL2
 
 
-Using [DoubleCheck](http://www.ccs.neu.edu/home/cce/acl2/doublecheck.html):
+Using [DoubleCheck](https://www.ccs.neu.edu/home/cce/acl2/doublecheck.html):
 
 
 ```Lisp
@@ -640,7 +640,7 @@ To run these tests from the listener:
 ```
 
 
-Factor's tutorial, [Your first program](http://docs.factorcode.org/content/article-first-program.html), uses ''palindrome?'' as its example. The tutorial shows how to create tests for ''palindrome?'' and how to fix a failing test.
+Factor's tutorial, [Your first program](https://docs.factorcode.org/content/article-first-program.html), uses ''palindrome?'' as its example. The tutorial shows how to create tests for ''palindrome?'' and how to fix a failing test.
 
 
 ## Fantom
@@ -1566,7 +1566,7 @@ Output:
 ## OCaml
 
 
-Using the library [OUnit](http://www.xs4all.nl/~mmzeeman/ocaml/).
+Using the library [OUnit](https://www.xs4all.nl/~mmzeeman/ocaml/).
 
 The module '''Palindrome''' is where are compiled the two functions ''is_palindrome'' and ''rem_space'' from [[Palindrome#OCaml|this page]]. We put these two functions in a file named ''palindrome.ml'' and compile it with ''ocamlc -c palindrome.ml -o palindrome.cmo'', then with the code below in the file ''palindrome_tests.ml'' we execute the tests with this command line:
  ocaml unix.cma -I +oUnit oUnit.cma  palindrome.cmo  palindrome_tests.ml
@@ -1791,7 +1791,7 @@ ok 6 - "In girum imus nocte et consumimur igni" is a palindrome.
 
 ## PicoLisp
 
-The '[test](http://software-lab.de/doc/refT.html#test)' function is
+The '[test](https://software-lab.de/doc/refT.html#test)' function is
 built into PicoLisp.
 
 ```PicoLisp

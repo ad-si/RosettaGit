@@ -20,7 +20,7 @@ XBase is the generic term for all programming languages that derive from the ori
 * [DBFView](http://www.dbfview.com/), DBF editor/viewer/converter
 * FlagShip from [multisoft GmbH](http://www.fship.com/)
 * Recital from [Recital Corp.](http://www.recital.com/)
-* [Visual FoxPro](http://msdn.microsoft.com/en-au/vfoxpro/default.aspx) is available from Microsoft
+* [Visual FoxPro](https://msdn.microsoft.com/en-au/vfoxpro/default.aspx) is available from Microsoft
 * [Vulcan.NET](http://www.govulcan.net/portal/)
 * XBase++ from [Alaska Software](http://www.alaska-software.com/products/xpp/xpp.shtm)
 * xHarbour Builder from [xHarbour.com Inc.](http://www.xharbour.com/)

@@ -2239,7 +2239,7 @@ Tested with perl v5.26.1
 #!/usr/bin/perl
 
 use strict;   # interpreter.pl - execute a flatAST
-use warnings; # http://www.rosettacode.org/wiki/Compiler/AST_interpreter
+use warnings; # https://www.rosettacode.org/wiki/Compiler/AST_interpreter
 use integer;
 
 my %variables;

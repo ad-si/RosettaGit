@@ -1567,7 +1567,7 @@ write("power: 3^3=",3^3)
 end
 ```
 
-[numbers provides floor and ceiling](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
+[numbers provides floor and ceiling](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 
 ```txt
 e=2.718281828459045
@@ -2791,7 +2791,7 @@ PicoLisp has only limited floating point support (scaled bignum arithmetics). It
 can handle real numbers with as many positions after the decimal point as
 desired, but is practically limited by the precision of the C-library functions
 (about 16 digits). The default precision is six, and can be changed with
-'[scl](http://software-lab.de/doc/refS.html#scl)':
+'[scl](https://software-lab.de/doc/refS.html#scl)':
 
 ```PicoLisp
 (scl 12)  # 12 places after decimal point
@@ -3192,7 +3192,7 @@ see "sqrt(16) = " + sqrt(16) + nl
 ###  Mathematical Constants
 
 
-RLaB has a number of mathematical constants built-in within the list ''const''. These facilities are provided through the Gnu Science Library <http://www.gnu.org/software/gsl>.
+RLaB has a number of mathematical constants built-in within the list ''const''. These facilities are provided through the Gnu Science Library <https://www.gnu.org/software/gsl>.
 
 ```RLaB
 >>
@@ -3387,30 +3387,30 @@ object RealConstantsFunctions extends App{
 
 ## Seed7
 
-The [math.s7i](http://seed7.sourceforge.net/libraries/math.htm) library defines:
+The [math.s7i](https://seed7.sourceforge.net/libraries/math.htm) library defines:
 {| class="wikitable" style="text-align:left"
-| [E](http://seed7.sourceforge.net/libraries/math.htm#E) || # e (Euler's number)
+| [E](https://seed7.sourceforge.net/libraries/math.htm#E) || # e (Euler's number)
 |-
-| [PI](http://seed7.sourceforge.net/libraries/math.htm#PI) || # Pi
+| [PI](https://seed7.sourceforge.net/libraries/math.htm#PI) || # Pi
 |-
-| [sqrt(x)](http://seed7.sourceforge.net/libraries/math.htm#sqrt%28ref_float%29) || # square root
+| [sqrt(x)](https://seed7.sourceforge.net/libraries/math.htm#sqrt%28ref_float%29) || # square root
 |-
-| [log(x)](http://seed7.sourceforge.net/libraries/math.htm#log%28ref_float%29) || # natural logarithm - log base 10 is also available: [log10(x)](http://seed7.sourceforge.net/libraries/math.htm#log10%28ref_float%29))
+| [log(x)](https://seed7.sourceforge.net/libraries/math.htm#log%28ref_float%29) || # natural logarithm - log base 10 is also available: [log10(x)](https://seed7.sourceforge.net/libraries/math.htm#log10%28ref_float%29))
 |-
-| [exp(x)](http://seed7.sourceforge.net/libraries/math.htm#exp%28ref_float%29) || # exponential
+| [exp(x)](https://seed7.sourceforge.net/libraries/math.htm#exp%28ref_float%29) || # exponential
 |-
-| [abs(x)](http://seed7.sourceforge.net/libraries/math.htm#abs%28ref_float%29) || # absolute value
+| [abs(x)](https://seed7.sourceforge.net/libraries/math.htm#abs%28ref_float%29) || # absolute value
 |-
-| [floor(x)](http://seed7.sourceforge.net/libraries/math.htm#floor%28ref_float%29) || # floor
+| [floor(x)](https://seed7.sourceforge.net/libraries/math.htm#floor%28ref_float%29) || # floor
 |-
-| [ceil(x)](http://seed7.sourceforge.net/libraries/math.htm#ceil%28ref_float%29) || # ceiling
+| [ceil(x)](https://seed7.sourceforge.net/libraries/math.htm#ceil%28ref_float%29) || # ceiling
 |}
 
-The [float.s7i](http://seed7.sourceforge.net/libraries/float.htm) library defines:
+The [float.s7i](https://seed7.sourceforge.net/libraries/float.htm) library defines:
 {| class="wikitable" style="text-align:left"
-| [x ** y](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29) || # power with [integer](http://seed7.sourceforge.net/libraries/integer.htm) exponent
+| [x ** y](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_integer%29) || # power with [integer](https://seed7.sourceforge.net/libraries/integer.htm) exponent
 |-
-| [x ** y](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29) || # power with float exponent
+| [x ** y](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29) || # power with float exponent
 |}
 
 

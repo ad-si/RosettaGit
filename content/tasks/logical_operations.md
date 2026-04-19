@@ -334,7 +334,7 @@ PROC print_logic = (BOOL a, b)VOID:
 
 # Alternatively ASCII #
   printf(($"a and b is "gl$, a & b);
-  printf(($"a and b is "gl$, a /\ b);  <!-- http://web.archive.org/web/20021207211127/http://www.bobbemer.com/BRACES.HTM -->
+  printf(($"a and b is "gl$, a /\ b);  <!-- https://web.archive.org/web/20021207211127/http://www.bobbemer.com/BRACES.HTM -->
   printf(($"a or b is "gl$, a \/ b);
   printf(($"a equivalent to b "gl$, a = b);
   printf(($"a not equivalent to b "gl$, a /= b);

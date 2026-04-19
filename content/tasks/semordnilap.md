@@ -666,7 +666,7 @@ using System.IO;
 public class Semordnilap
 {
     public static void Main() {
-        var results = FindSemordnilaps("http://www.puzzlers.org/pub/wordlists/unixdict.txt").ToList();
+        var results = FindSemordnilaps("https://www.puzzlers.org/pub/wordlists/unixdict.txt").ToList();
         Console.WriteLine(results.Count);
         var random = new Random();
         Console.WriteLine("5 random results:");
@@ -1641,7 +1641,7 @@ def semordnilapWords(source) {
 Test Code
 
 ```groovy
-def semordnilaps = semordnilapWords(new URL('http://www.puzzlers.org/pub/wordlists/unixdict.txt'))
+def semordnilaps = semordnilapWords(new URL('https://www.puzzlers.org/pub/wordlists/unixdict.txt'))
 println "Found ${semordnilaps.size()} semordnilap words"
 semordnilaps[0..<5].each { println "$it -> ${it.reverse()}" }
 ```
@@ -2075,7 +2075,7 @@ Found 158 semordnilap pairs
 
 ```Lasso
 local(
-	words		= string(include_url('http://www.puzzlers.org/pub/wordlists/unixdict.txt')) -> split('\n'),
+	words		= string(include_url('https://www.puzzlers.org/pub/wordlists/unixdict.txt')) -> split('\n'),
 	semordnilaps	= array,
 	found_size,
 	example,
@@ -2278,7 +2278,7 @@ way/yaw
 
 
 ```Mathematica
-data = Import["http://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"];
+data = Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"];
 result = DeleteDuplicates[ Select[data, MemberQ[data, StringReverse[#]]
   && # =!= StringReverse[#] &], (# ===StringReverse[#2]) &];
 Print[Length[result], Take[result, 5]]
@@ -2557,7 +2557,7 @@ drab - bard
 <?php
 // Read dictionary into array
 $dictionary = array_fill_keys(file(
-    'http://www.puzzlers.org/pub/wordlists/unixdict.txt',
+    'https://www.puzzlers.org/pub/wordlists/unixdict.txt',
     FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
 ), true);
 foreach (array_keys($dictionary) as $word) {
@@ -2683,7 +2683,7 @@ function Reverse-String ([string]$String)
     $output -join ""
 }
 
-[string]$url = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
+[string]$url = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 [string]$out = ".\unixdict.txt"
 
 (New-Object System.Net.WebClient).DownloadFile($url, $out)
@@ -3231,7 +3231,7 @@ output is the same above.
 
 
 ```scala
-val wordsAll = scala.io.Source.fromURL("http://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.map(_.toLowerCase).to[IndexedSeq]
+val wordsAll = scala.io.Source.fromURL("https://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.map(_.toLowerCase).to[IndexedSeq]
 
 /**
  * Given a sequence of lower-case words return a sub-sequence
@@ -3368,7 +3368,7 @@ drab bard
 
 ```stata
 set seed 17760704
-import delimited <http://www.puzzlers.org/pub/wordlists/unixdict.txt>, clear
+import delimited <https://www.puzzlers.org/pub/wordlists/unixdict.txt>, clear
 save temp, replace
 replace v1=strreverse(v1)
 merge 1:1 v1 using temp, nogen keep(3)
@@ -3432,7 +3432,7 @@ package require Tcl 8.5
 package require http
 
 # Fetch the words
-set t [http::geturl <http://www.puzzlers.org/pub/wordlists/unixdict.txt>]
+set t [http::geturl <https://www.puzzlers.org/pub/wordlists/unixdict.txt>]
 set wordlist [split [http::data $t] \n]
 http::cleanup $t
 
@@ -3479,7 +3479,7 @@ Example: bard/drab
 ```tuscript
 
 $$ MODE TUSCRIPT,{}
-requestdata = REQUEST ("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+requestdata = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 DICT semordnilap CREATE 99999
 COMPILE
 LOOP r=requestdata

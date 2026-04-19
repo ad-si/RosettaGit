@@ -107,7 +107,7 @@ languages = [
 
 ## Task
 
-Given non-negative integers   <big> '''m''' </big>   and   <big> '''n'''</big>,   generate all size   <big> '''m''' </big>   [combinations](http://mathworld.wolfram.com/Combination.html)   of the integers from   <big> '''0'''</big>   (zero)   to   <big> '''n-1''' </big>   in sorted order   (each combination is sorted and the entire table is sorted).
+Given non-negative integers   <big> '''m''' </big>   and   <big> '''n'''</big>,   generate all size   <big> '''m''' </big>   [combinations](https://mathworld.wolfram.com/Combination.html)   of the integers from   <big> '''0'''</big>   (zero)   to   <big> '''n-1''' </big>   in sorted order   (each combination is sorted and the entire table is sorted).
 
 
 ;Example:
@@ -599,7 +599,7 @@ end unwords
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276224.html#276224)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276224.html#276224)
 
 ```AutoHotkey
 MsgBox % Comb(1,1)
@@ -1470,7 +1470,7 @@ void main() {
 
 ### Lazy Lexicographical Combinations
 
-Includes an algorithm to find [mth Lexicographical Element of a Combination](http://msdn.microsoft.com/en-us/library/aa289166.aspx#mth_lexicograp_topic3).
+Includes an algorithm to find [mth Lexicographical Element of a Combination](https://msdn.microsoft.com/en-us/library/aa289166.aspx#mth_lexicograp_topic3).
 
 ```d
 module combinations4;
@@ -2656,7 +2656,7 @@ link lists
 ```
 
 
-The {{libheader|Icon Programming Library}} provides the core procedure [lcomb in lists](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn) written by Ralph E. Griswold and Richard L. Goerwitz.
+The {{libheader|Icon Programming Library}} provides the core procedure [lcomb in lists](https://www.cs.arizona.edu/icon/library/src/procs/lists.icn) written by Ralph E. Griswold and Richard L. Goerwitz.
 
 ```Icon
 procedure lcomb(L,i)			#: list combinations
@@ -5282,7 +5282,7 @@ forcomb({|c| say c }, 5, 3)
 ```
 
 
-[SGCF](http://fricas.github.io/api/SymmetricGroupCombinatoricFunctions.html?highlight=choose)
+[SGCF](https://fricas.github.io/api/SymmetricGroupCombinatoricFunctions.html?highlight=choose)
 ==> SymmetricGroupCombinatoricFunctions
 
 
@@ -5444,7 +5444,7 @@ println(combosOfLength(5, 3))
 
 ## Tcl
 
-ref<http://wiki.tcl.tk/2553>
+ref<https://wiki.tcl-lang.org/2553>
 
 ```tcl
 proc comb {m n} {

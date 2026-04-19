@@ -746,7 +746,7 @@ division:
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=133)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=133)
 
 ```AutoHotkey
 MsgBox % shuffle("1,2,3,4,5,6,7,8,9")
@@ -2589,7 +2589,7 @@ KS L
 ```
 
 In J the shuffling of an arbitrary array can easily be implemented by the phrase
-( ref <http://www.jsoftware.com/jwiki/JPhrases/RandomNumbers> ):
+( ref <https://www.jsoftware.com/jwiki/JPhrases/RandomNumbers> ):
 
 ```j
 ({~?~@#)
@@ -4061,7 +4061,7 @@ shuffled: 1,8,6,0,5,9,2,4,7,3
 
 ## Python
 
-Python's standard library function <code>[random.shuffle](http://docs.python.org/library/random.html#random.shuffle)</code> uses this algorithm and so should normally be used.
+Python's standard library function <code>[random.shuffle](https://docs.python.org/library/random.html#random.shuffle)</code> uses this algorithm and so should normally be used.
 The function below is very similar:
 
 ```python

@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{stub}}{{library}}
-The [Tk module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Tk.html) is part of the standard OCaml library.
+The [Tk module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Tk.html) is part of the standard OCaml library.
 
 To run some code in script mode or to compile it to bytecode, provide these parameters:
 : -I +labltk labltk.cma

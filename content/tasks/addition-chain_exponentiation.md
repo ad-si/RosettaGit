@@ -76,7 +76,7 @@ The number of multiplications required follows this sequence:
 8, 8, 8, 6, 7, 7, 8, 7, 8, 8,  9, 7, 8, 8, 8, 8, 8, 8, 9, 7,
 8, 8, 8, 8, 8, 8, 9, 8, 9, 8,  9, 8, 9, 9, 9, 7, 8, 8, 8, 8...
 
-This sequence can be found at: <http://oeis.org/A003313>
+This sequence can be found at: <https://oeis.org/A003313>
 
 '''Task requirements:'''
 
@@ -110,7 +110,7 @@ Note: Binary exponentiation does not usually produce the best solution.  Provide
 [[wp:Kudoc|Kudos]] (κῦδος) for providing a routine that generate sequence A003313 in the output.
 
 
-Also, see the Rosetta Code task:   [http://rosettacode.org/wiki/Knuth%27s_power_tree
+Also, see the Rosetta Code task:   [https://rosettacode.org/wiki/Knuth%27s_power_tree
 Knuth's power tree].
 
 

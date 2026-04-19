@@ -700,7 +700,7 @@ print mergesort arr
 == [[AutoHotkey_L]] ==
 AutoHotkey_L has true array support and can dynamically grow and shrink its arrays at run time.
 This version of Merge Sort only needs '''n''' locations to sort.
-[AHK forum post](http://www.autohotkey.com/forum/viewtopic.php?t=77693&highlight=|)
+[AHK forum post](https://www.autohotkey.com/forum/viewtopic.php?t=77693&highlight=|)
 
 ```AutoHotkey
 #NoEnv
@@ -772,7 +772,7 @@ MergeSort(Array)
 
 ## AutoHotkey
 
-Contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276483.html#276483)
+Contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276483.html#276483)
 
 ```AutoHotkey
 MsgBox % MSort("")
@@ -4382,7 +4382,7 @@ my @a = (4, 65, 2, -31, 0, 99, 83, 782, 1);
 print "@a\n";
 ```
 
-Also note, the built-in function [sort](http://perldoc.perl.org/functions/sort.html) uses mergesort.
+Also note, the built-in function [sort](https://perldoc.perl.org/functions/sort.html) uses mergesort.
 
 
 ## Perl 6
@@ -5307,7 +5307,7 @@ const proc: mergeSort2 (inout array elemType: arr) is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#mergeSort2>
+Original source: <https://seed7.sourceforge.net/algorith/sorting.htm#mergeSort2>
 
 
 ## Sidef
@@ -5687,8 +5687,8 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ## ZED
 
-Source -> <http://ideone.com/uZEPL4>
-Compiled -> <http://ideone.com/SJ5EGu>
+Source -> <https://ideone.com/uZEPL4>
+Compiled -> <https://ideone.com/SJ5EGu>
 
 This is a bottom up version of merge sort:
 

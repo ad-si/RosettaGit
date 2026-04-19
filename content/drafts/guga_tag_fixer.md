@@ -91,19 +91,19 @@ def convert(text):
 def get(task):
     """Get a wikisource from a article in mediawiki."""
     
-    return urllib.urlopen("http://www.rosettacode.org/w/index.php?title=%s&action=raw" % task).read()
+    return urllib.urlopen("https://www.rosettacode.org/w/index.php?title=%s&action=raw" % task).read()
 
 def get_token(user, password):
     """Get an edit token."""
     
     query = urllib.urlencode({'lgname':user,'lgpassword':password})
-    result = urllib.urlopen("http://www.rosettacode.org/w/api.php?action=login&format=xml",query).read()    
+    result = urllib.urlopen("https://www.rosettacode.org/w/api.php?action=login&format=xml",query).read()    
     parse = xml.dom.minidom.parseString(result)
     login = parse.getElementsByTagName("login")[0]
     global cookie
     cookie = login.getAttribute("cookieprefix")+"_session="+login.getAttribute("sessionid")
 
-    result = urllib2.Request("http://www.rosettacode.org/w/api.php?action=query&prop=info&intoken=edit&titles=Main%20Page&format=xml",headers={"Cookie":cookie})
+    result = urllib2.Request("https://www.rosettacode.org/w/api.php?action=query&prop=info&intoken=edit&titles=Main%20Page&format=xml",headers={"Cookie":cookie})
     result = urllib2.urlopen(result).read()    
     parse = xml.dom.minidom.parseString(result)
     token = parse.getElementsByTagName("page")[0].getAttribute("edittoken")
@@ -120,7 +120,7 @@ def edit(article, content, token):
     "bot":"yes"
     })
     
-    req = urllib2.Request("http://www.rosettacode.org/w/api.php?action=edit&format=xml",data=query, headers={"Cookie":cookie})
+    req = urllib2.Request("https://www.rosettacode.org/w/api.php?action=edit&format=xml",data=query, headers={"Cookie":cookie})
     req = urllib2.urlopen(req).read()
     
     return req
@@ -129,7 +129,7 @@ def allpages():
     """Return a list of all articles in a wikimedia project."""
     
     pages = []
-    query = urllib2.Request("http://www.rosettacode.org/w/api.php?action=query&list=allpages&aplimit=5000&format=xml",headers={"Cookie":cookie})
+    query = urllib2.Request("https://www.rosettacode.org/w/api.php?action=query&list=allpages&aplimit=5000&format=xml",headers={"Cookie":cookie})
     query = urllib2.urlopen(query).read()
                                    
     parse = xml.dom.minidom.parseString(query).getElementsByTagName("p")

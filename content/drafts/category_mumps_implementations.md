@@ -17,7 +17,7 @@ tags = []
 See <http://www.intersystems.com/>
 
 ==[[GT.M]]==
-See <http://en.wikipedia.org/wiki/GT.M>
+See <https://en.wikipedia.org/wiki/GT.M>
 
 ==[[M21]]==
 See <http://www.m21.uk.com/>

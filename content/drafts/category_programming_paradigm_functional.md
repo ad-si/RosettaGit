@@ -14,7 +14,7 @@ tags = []
 
 # State changes are encapsulated in function results, in this paradigm, rather than in side effects, as in [[imperative programming]]
 # This makes dependencies explicit.
-# This leads to [referential transparency](http://www.haskell.org/haskellwiki/Referential_transparency) -- given the same arguments, a piece of code will always behave identically.
+# This leads to [referential transparency](https://www.haskell.org/haskellwiki/Referential_transparency) -- given the same arguments, a piece of code will always behave identically.
 # Coding is '''compositional''' -- any two pieces of code with a matching 'interface', as specified by function domains, can be combined, because no hidden side-effects can intervene. (See [''Can Programming Be Liberated from the von Neumann Style? A Functional Style and Its Algebra of Programs''](https://www.thocp.net/biographies/papers/backus_turingaward_lecture.pdf) by John Backus, 1977 Turing Award Lecture).
 # It's easy to '''refactor''' similar pieces of code, because any subexpression can be replaced by a variable bound at the outside.
 

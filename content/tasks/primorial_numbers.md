@@ -90,11 +90,11 @@ By   ''length''   (above), it is meant the number of decimal digits in the numbe
 
 '''links:'''
 
-See the MathWorld webpage:   [primorial](http://mathworld.wolfram.com/Primorial.html)
+See the MathWorld webpage:   [primorial](https://mathworld.wolfram.com/Primorial.html)
 
-See the Wikipedia   webpage:   [primorial](http://en.wikipedia.org/wiki/Primorial).
+See the Wikipedia   webpage:   [primorial](https://en.wikipedia.org/wiki/Primorial).
 
-See the     OEIS     webpage:   [A2110](http://oeis.org/A002110).
+See the     OEIS     webpage:   [A2110](https://oeis.org/A002110).
 
 
 '''Related tasks:'''
@@ -602,7 +602,7 @@ Primorial 10000 has length: 45337
 Primorial 100000 has length: 563921
 
 =={{header|F_Sharp|F#}}==
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ### The function to generate a sequence of Primorial Numbers
 
@@ -2186,7 +2186,7 @@ Primorial(100000) has 563921 digits (4.2s)
 
 ## PicoLisp
 
-This code uses '''prime?''' and '''take''' functions from [Extensible Prime Generator(PicoLisp)](http://www.rosettacode.org/wiki/Extensible_prime_generator#PicoLisp)
+This code uses '''prime?''' and '''take''' functions from [Extensible Prime Generator(PicoLisp)](https://www.rosettacode.org/wiki/Extensible_prime_generator#PicoLisp)
 
 ```PicoLisp
 

@@ -15,4 +15,4 @@ DWScript (DelphiWebScript) is a strongly-typed [object-oriented](https://rosetta
 
 ## See Also
 * [Wikipedia: Object Pascal](https://en.wikipedia.org/wiki/Object_Pascal)
-* DWScript at Google Code: <http://code.google.com/p/dwscript/>
+* DWScript at Google Code: <https://code.google.com/p/dwscript/>

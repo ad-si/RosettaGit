@@ -822,8 +822,8 @@ end
 ```
 
 
-[printf.icn provides the printf family](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
-[hexcvt.icn provides hex and hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) 
+[printf.icn provides the printf family](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn) 
+[hexcvt.icn provides hex and hexstring](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn) 
 
 Output:
 ```txt

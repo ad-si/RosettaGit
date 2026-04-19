@@ -54,7 +54,7 @@ languages = [
 +++
 
 ## Task
-Convert an array of bytes or binary string to the [[wp:Base64|base64-encoding]] of that string and output that value. Use [the icon for Rosetta Code](http://rosettacode.org/favicon.ico) as the data to convert.
+Convert an array of bytes or binary string to the [[wp:Base64|base64-encoding]] of that string and output that value. Use [the icon for Rosetta Code](https://rosettacode.org/favicon.ico) as the data to convert.
 
 See also [[Base64 decode data]].
 
@@ -70,7 +70,7 @@ DATA: li_client  TYPE REF TO if_http_client,
 
 cl_http_client=>create_by_url(
   EXPORTING
-    url    = 'http://rosettacode.org/favicon.ico'
+    url    = 'https://rosettacode.org/favicon.ico'
   IMPORTING
     client = li_client ).
 
@@ -172,7 +172,7 @@ CHAR line feed = REPR 10, carriage return = REPR 13;
 STRING crlf = carriage return + line feed;
 STRING host = "rosettacode.org";
 
-STRING rosettacode icon = get web page (host, "http://rosettacode.org/favicon.ico");
+STRING rosettacode icon = get web page (host, "https://rosettacode.org/favicon.ico");
 STRING encoded icon = base64_encode (rosettacode icon);
 print ((encoded icon, new line))
 
@@ -552,7 +552,7 @@ namespace RosettaCode.Base64EncodeData
     {
         private static void Main()
         {
-            const string path = "http://rosettacode.org/favicon.ico";
+            const string path = "https://rosettacode.org/favicon.ico";
 
             byte[] input;
             using (var client = new WebClient())
@@ -582,7 +582,7 @@ AAABAAIAEBAAAAAAAABoBQAAJgAAACAg...AAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 void main() {
     import std.stdio, std.base64, std.net.curl, std.string;
 
-    const f = "http://rosettacode.org/favicon.ico".get.representation;
+    const f = "https://rosettacode.org/favicon.ico".get.representation;
     Base64.encode(f).writeln;
 }
 ```
@@ -610,7 +610,7 @@ var
 begin
   lHTTP := TIdHTTP.Create(nil);
   try
-    lSrcString := lHTTP.Get('http://rosettacode.org/favicon.ico');
+    lSrcString := lHTTP.Get('https://rosettacode.org/favicon.ico');
     Writeln(TIdEncoderMIME.EncodeString(lSrcString));
   finally
     lHTTP.Free;
@@ -674,7 +674,7 @@ AAABAAIAEBAAAAAAAABoBQAAJgAAACAgAAAAAAAAqAgAAI4F...AAAEAAAABAAAAAQAAAAEAAAABAAAA
 ```factor
 USING: base64 http.client io kernel strings ;
 
-"http://rosettacode.org/favicon.ico" http-get nip
+"https://rosettacode.org/favicon.ico" http-get nip
 >base64-lines >string print
 ```
 
@@ -784,7 +784,7 @@ import (
 )
 
 func main() {
-    r, err := http.Get("http://rosettacode.org/favicon.ico")
+    r, err := http.Get("https://rosettacode.org/favicon.ico")
     if err != nil {
         fmt.Println(err)
         return
@@ -814,7 +814,7 @@ AAABAAIAEBAAAAAAAABoBQAAJg ... AAAABAAAAAQAAAAE=
 ```go
 // base64 encoding
 // A port, with slight variations, of the C version found here:
-// http://rosettacode.org/wiki/Base64#C (manual implementation)
+// https://rosettacode.org/wiki/Base64#C (manual implementation)
 //
 // go build ; cat favicon.ico | ./base64
 
@@ -940,7 +940,7 @@ This Haskell code is ported from the C solution (manual implementation) with sli
 ```Haskell
 -- | Base 64 Encoding.
 -- A port, with slight variations, of the C version found here:
--- http://rosettacode.org/wiki/Base64#C (manual implementation)
+-- https://rosettacode.org/wiki/Base64#C (manual implementation)
 --
 -- ghc -Wall base64_encode.hs ; cat favicon.ico | ./base64_encode
 {-# LANGUAGE OverloadedStrings #-}
@@ -1023,7 +1023,7 @@ main = B.readFile "favicon.ico" >>= (B.putStrLn . Base64.encode)
 
 ## J
 
-'''Solution''' (''[standard library](http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/base64.ijs)''):
+'''Solution''' (''[standard library](https://www.jsoftware.com/wsvn/addons/trunk/convert/misc/base64.ijs)''):
 ```j
    load'convert/misc/base64'  NB. use 'tobase64'
 ```
@@ -1038,7 +1038,7 @@ main = B.readFile "favicon.ico" >>= (B.putStrLn . Base64.encode)
 '''Example''':
 ```j
    load'web/gethttp'
-   76 {. tobase64 gethttp 'http://rosettacode.org/favicon.ico'
+   76 {. tobase64 gethttp 'https://rosettacode.org/favicon.ico'
 AAABAAIAEBAAAAAAAABoBQAAJgAAACAgAAAAAAAAqAgAAI4FAAAoAAAAEAAAACAAAAABAAgAAAAA
 ```
 
@@ -1115,7 +1115,7 @@ public class Base64 {
     public static void main(String[] args) throws IOException {
         testBase64();
 
-        URLConnection conn = new URL("http://rosettacode.org/favicon.ico").openConnection();
+        URLConnection conn = new URL("https://rosettacode.org/favicon.ico").openConnection();
         conn.addRequestProperty("User-Agent", "Mozilla"); // To prevent an HTTP 403 error.
         try (InputStream is = conn.getInputStream()) {
             System.out.println(base64(is));
@@ -1277,7 +1277,7 @@ Using a contributed entry that is a small change of the Jsi ''lib/Jsi_Wget.jsi''
 ```javascript
 /* Base64, in Jsish */
 require('httpGet');
-var icon = httpGet('http://rosettacode.org/favicon.ico');
+var icon = httpGet('https://rosettacode.org/favicon.ico');
 printf("%s", Util.base64(icon, false))
 ```
 
@@ -1348,13 +1348,13 @@ AAABAAIAEBAAAAAAAABoBQ.....AAAAEAAAABAAAAAQAAAAE=
 
 ```Lasso
 local(
-	src = curl('http://rosettacode.org/favicon.ico'),
+	src = curl('https://rosettacode.org/favicon.ico'),
 	srcdata = #src->result
 )
 #srcdata->encodebase64
 
 // or, in one movement:
-curl('http://rosettacode.org/favicon.ico')->result->encodebase64
+curl('https://rosettacode.org/favicon.ico')->result->encodebase64
 ```
 
 
@@ -1363,7 +1363,7 @@ curl('http://rosettacode.org/favicon.ico')->result->encodebase64
 
 
 ```LiveCode
-put URL "http://rosettacode.org/favicon.ico" into rosettaico
+put URL "https://rosettacode.org/favicon.ico" into rosettaico
 put base64encode(rosettaico)
 
 Ouput
@@ -1428,7 +1428,7 @@ AAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 
 ```Mathematica
 Print[ExportString[
-   Import["http://rosettacode.org/favicon.ico", "Text"], "Base64"]];
+   Import["https://rosettacode.org/favicon.ico", "Text"], "Base64"]];
 ```
 
 Very interesting results.
@@ -1455,7 +1455,7 @@ AAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 
 int main(int argc, const char *argv[]) {
   @autoreleasepool {
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://rosettacode.org/favicon.ico"]];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://rosettacode.org/favicon.ico"]];
     NSLog(@"%@", [data base64Encoding]);
   }
   return 0;
@@ -1476,7 +1476,7 @@ $ opam install base64
 # Be sure to use the opam environment
 $ eval $(opam env)
 # Download the file to encode (there is no simple KISS way to do it in OCaml)
-$ wget http://rosettacode.org/favicon.ico
+$ wget https://rosettacode.org/favicon.ico
 # Starting the ocaml toplevel
 $ rlwrap ocaml -I $(ocamlfind query base64) base64.cma
         OCaml version 4.07.1
@@ -1599,7 +1599,7 @@ n the continued and indefatigable generation of knowledge, exceeds the short veh
 
 
 ```php
-<?php echo base64_encode(file_get_contents("http://rosettacode.org/favicon.ico"));/*1 liner*/  ?>
+<?php echo base64_encode(file_get_contents("https://rosettacode.org/favicon.ico"));/*1 liner*/  ?>
 ```
 
 
@@ -1662,7 +1662,7 @@ n the continued and indefatigable generation of knowledge, exceeds the short veh
 
 ```PowerShell
 $webClient = [Net.WebClient]::new()
-$bytes = $webClient.DownloadData('http://rosettacode.org/favicon.ico')
+$bytes = $webClient.DownloadData('https://rosettacode.org/favicon.ico')
 
 $output = [Convert]::ToBase64String($bytes)
 
@@ -1685,7 +1685,7 @@ AAABAAIAEBAAAAAAAABoBQAAJgAAACAg...AAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 ```purebasic
 InitNetwork()
 
-*BufferRaw = ReceiveHTTPMemory("http://rosettacode.org/favicon.ico")
+*BufferRaw = ReceiveHTTPMemory("https://rosettacode.org/favicon.ico")
 If *BufferRaw
 	Debug Base64Encoder(*BufferRaw, MemorySize(*BufferRaw))
 Else
@@ -1702,7 +1702,7 @@ EndIf
 import urllib
 import base64
 
-data = urllib.urlopen('http://rosettacode.org/favicon.ico').read()
+data = urllib.urlopen('https://rosettacode.org/favicon.ico').read()
 print base64.b64encode(data)
 ```
 
@@ -1716,7 +1716,7 @@ print base64.b64encode(data)
 
 #lang racket
 (require net/url net/base64)
-(base64-encode (call/input-url (string->url "http://rosettacode.org/favicon.ico")
+(base64-encode (call/input-url (string->url "https://rosettacode.org/favicon.ico")
                                get-pure-port port->bytes))
 
 ```
@@ -1772,7 +1772,7 @@ base64: procedure;  parse arg Q;   $=            /*obtain input string;  and nul
         return $ || copies('=', 2 * (L//6==2) + (L//6==4) )
 ```
 
-For the various outputs, several input texts from the Wikipedia article on   ''Base64''   <http://en.wikipedia.org/wiki/Base64>   were used to demonstrate how padding works.
+For the various outputs, several input texts from the Wikipedia article on   ''Base64''   <https://en.wikipedia.org/wiki/Base64>   were used to demonstrate how padding works.
 
 
 
@@ -1840,7 +1840,7 @@ YW55IGNhcm5hbCBwbGVhcw==
 require 'open-uri'
 require 'base64'
 
-puts Base64.encode64 open('http://rosettacode.org/favicon.ico') {|f| f.read}
+puts Base64.encode64 open('https://rosettacode.org/favicon.ico') {|f| f.read}
 ```
 
 
@@ -1853,7 +1853,7 @@ import java.net.URL
 import java.util.Base64
 
 object Base64S extends App {
-  val conn = new URL("http://rosettacode.org/favicon.ico").openConnection
+  val conn = new URL("https://rosettacode.org/favicon.ico").openConnection
   val bytes = conn.getInputStream.readAllBytes()
 
   val result = Base64.getEncoder.encodeToString(bytes)
@@ -1868,8 +1868,8 @@ object Base64S extends App {
 
 ## Seed7
 
-The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
-the function [toBase64](http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)),
+The Seed7 library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines
+the function [toBase64](https://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)),
 which encodes a string with the Base64 encoding.
 
 
@@ -1904,7 +1904,7 @@ print data.encode_base64                # print to STDOUT
 package require Tcl 8.6
 package require http
 
-set tok [http::geturl http://rosettacode.org/favicon.ico]
+set tok [http::geturl https://rosettacode.org/favicon.ico]
 set icondata [http::data $tok]
 http::cleanup $tok
 
@@ -1918,7 +1918,7 @@ With older versions of Tcl, the base64 encoding is best supported via an externa
 package require base64
 package require http
 
-set tok [http::geturl http://rosettacode.org/favicon.ico]
+set tok [http::geturl https://rosettacode.org/favicon.ico]
 set icondata [http::data $tok]
 http::cleanup $tok
 
@@ -2032,7 +2032,7 @@ Public Sub Task()
     Dim In_ As String, Out As String, bIn As String
     Dim filelength As Integer
     Dim i As Integer
-    In_ = ReadWebFile("http://rosettacode.org/favicon.ico")
+    In_ = ReadWebFile("https://rosettacode.org/favicon.ico")
     Out = Encode(In_)
     bIn = Decode(Out)
     Debug.Print "The first eighty and last eighty characters after encoding:"
@@ -2061,7 +2061,7 @@ Using shared libraries for cURL and message hashing:
 ```zkl
 var [const] MsgHash=Import("zklMsgHash"), Curl=Import("zklCurl");
 
-icon:=Curl().get("http://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
+icon:=Curl().get("https://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
 icon=icon[0][icon[1],*];	// remove header
 b64:=MsgHash.base64encode(icon);
 println("Is the Rosetta Code icon the same (byte for byte) encoded then decoded: ",

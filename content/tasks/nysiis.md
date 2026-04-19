@@ -258,7 +258,7 @@ ClassMethod EncodeName(pAlgorithm As %String = "", pName As %String = "", Output
 	Set pName=$ZStrip($ZConvert(pName, "U"), "<=>W")
 	
 	// remove suffixes (e.g. 'Jnr', 'OBE', 'DSC', etc), including roman numerals (e.g. 'II', 'VIII')
-	// - http://en.wikipedia.org/wiki/List_of_post-nominal_letters_(United_Kingdom)
+	// - https://en.wikipedia.org/wiki/List_of_post-nominal_letters_(United_Kingdom)
 	If pSuffixRem {
 		Set ords=$ListBuild("KG", "LG", "KT", "LT", "GCB", "KCB", "DCB", "CB", "GCMG", "KCMG", "DCMG", "CMG", "DSO", 
 			"GCVO", "KCVO", "DCVO", "CVO", "LVO", "MVO", "OM", "ISO", "GBE", "KBE", "DBE", "CBE", "OBE", "MBE", "CH")
@@ -292,7 +292,7 @@ ClassMethod ToNYSIIS(pName As %String) As %String
 {
 	/*
 		New York State Identification and Intelligence System (NYSIIS) Phonetic Encoder
-		- http://en.wikipedia.org/wiki/New_York_State_Identification_and_Intelligence_System
+		- https://en.wikipedia.org/wiki/New_York_State_Identification_and_Intelligence_System
 		- http://www.dropby.com/indexLF.html?content=/NYSIIS.html
 	*/
 	

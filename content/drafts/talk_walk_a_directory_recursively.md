@@ -29,7 +29,7 @@ Is the problem to just find filenames, excluding the path, that match the patter
 == symlinks? ==
 Just curious, how many of these hand rolled solutions can deal with a symlink (or hardlink) to a higher directory (i.e. cyclic graph)?  If encountering one, would it bail with "pathname too long", or loop until memory exausted? --[[User:Ledrug|Ledrug]] 04:56, 13 June 2011 (UTC)
 
-:'''In Python,''' the [full docs for os.walk](http://docs.python.org/library/os.html#os.walk) show that by default, symlinks are not followed. There is an optional parameter that allows symlinks to be followed and a banner note states:
+:'''In Python,''' the [full docs for os.walk](https://docs.python.org/library/os.html#os.walk) show that by default, symlinks are not followed. There is an optional parameter that allows symlinks to be followed and a banner note states:
 ::'''Note:''' Be aware that setting ''followlinks'' to True can lead to infinite recursion if a link points to a parent directory of itself. walk() does not keep track of the directories it visited already.
 :There is also a note and '''warning about using relative pathnames''' and the assumption that code will not change the current directory during calls to os.walk. --[[User:Paddy3118|Paddy3118]] 06:04, 13 June 2011 (UTC)
 

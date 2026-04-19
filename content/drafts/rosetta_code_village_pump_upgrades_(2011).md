@@ -35,5 +35,5 @@ Anyway, I can use assistance with testing, planning (i.e. checklist prep) and gu
 : Also, whaatever folks want added, infrastructure-wise, I'll add it if possible.--[[User:Short Circuit|Michael Mol]] 02:34, 7 October 2011 (UTC)
 
 '''Additional requests:'''
-*I'd like [Category Tree](http://www.mediawiki.org/wiki/Extension:CategoryTree) if you don't think it will break things. SMW may be able to replace most categories, but that has been going slow. Since we have categories inside categories inside categories right now, I think it would speed things up for new users. --[[User:Mwn3d|Mwn3d]] 00:48, 7 October 2011 (UTC)
+*I'd like [Category Tree](https://www.mediawiki.org/wiki/Extension:CategoryTree) if you don't think it will break things. SMW may be able to replace most categories, but that has been going slow. Since we have categories inside categories inside categories right now, I think it would speed things up for new users. --[[User:Mwn3d|Mwn3d]] 00:48, 7 October 2011 (UTC)
 ::I second this. -- [[User:Eriksiers|Erik Siers]] 03:12, 7 October 2011 (UTC)

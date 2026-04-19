@@ -13,7 +13,7 @@ tags = []
 
 If a script works with Almquist Shell, it will probably also work with [bash](https://rosettacode.org/wiki/bash), [pdksh](https://rosettacode.org/wiki/pdksh) and [zsh](https://rosettacode.org/wiki/zsh). Further, it will probably work with [ksh93](https://rosettacode.org/wiki/ksh93) ''unless'' it uses <code>local</code>, which ksh93 lacks.
 
-Almquist Shell filled the need for a free shell to replace Bourne Shell. Kenneth Almquist posted [the first version of Ash](http://groups.google.com/group/comp.sources.unix/msg/2774e7653a8e6274) to Usenet group comp.sources.unix at 30 May 1989. It was a clone of SVR3 Bourne Shell. [BSD](https://rosettacode.org/wiki/BSD) used Ash for <code>/bin/sh</code>, added features from POSIX, and put a Berkeley copyright on this shell.
+Almquist Shell filled the need for a free shell to replace Bourne Shell. Kenneth Almquist posted [the first version of Ash](https://groups.google.com/group/comp.sources.unix/msg/2774e7653a8e6274) to Usenet group comp.sources.unix at 30 May 1989. It was a clone of SVR3 Bourne Shell. [BSD](https://rosettacode.org/wiki/BSD) used Ash for <code>/bin/sh</code>, added features from POSIX, and put a Berkeley copyright on this shell.
 
 ## Almquist variants
 Ash has three major variants:

@@ -1777,7 +1777,7 @@ END MunchausenNumbers.
 ## Pascal
 
 tried to speed things up.Only checking one arrangement of 123456789 instead of all 9! = 362880 permutations.This ist possible, because summing up is commutative.
-So I only have to create [Combinations_with_repetitions](http://rosettacode.org/wiki/Combinations_with_repetitions) and need to check, that the number and the sum of power of digits have the same amount in every possible digit. This means, that a combination of the digits of number leads to the sum of power of digits. Therefore I need leading zero's.
+So I only have to create [Combinations_with_repetitions](https://rosettacode.org/wiki/Combinations_with_repetitions) and need to check, that the number and the sum of power of digits have the same amount in every possible digit. This means, that a combination of the digits of number leads to the sum of power of digits. Therefore I need leading zero's.
 
 ```pascal
 {$IFDEF FPC}{$MODE objFPC}{$ELSE}{$APPTYPE CONSOLE}{$ENDIF}

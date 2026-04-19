@@ -130,7 +130,7 @@ strptime(buf, "%Y-%m-%d %H:%M:%S", &tm);
  and see how it does? --unsigned
 :: I replaced the sprintf an strptime lines with these two lines and got the same result.  Note also that might results are consistent (but this does not prove that the issue is not uninitialized memory). --[[User:Rdm|Rdm]] 11:17, 9 November 2011 (UTC)
 
-:: I have a similar problem with [[OpenBSD]] 4.9. The output changes from run to run, and might show the last Mondays, Thursdays, Fridays or Saturdays. After the call to strptime(), <code>tm.tm_wday</code> contains junk values like 50237728 or 239567136. (Legal values are 0 to 6.) Change to "%d-01-01 09:01:01" and "%Y-%m-%d %H:%M:%S" is no help. Checking my manuals, [mktime(3)](http://www.openbsd.org/cgi-bin/man.cgi?query=mktime&sektion=3&arch=amd64&apropos=0&manpath=OpenBSD+4.9) describes the fields of ''struct tm'', but [strptime(3)](http://www.openbsd.org/cgi-bin/man.cgi?query=strptime&apropos=0&sektion=0&manpath=OpenBSD+4.9&arch=amd64&format=html) is vague; I assume that strptime() never fills ''tm_wday'' unless the string contains the weekday. --[[User:Kernigh|Kernigh]] 01:05, 9 November 2011 (UTC)
+:: I have a similar problem with [[OpenBSD]] 4.9. The output changes from run to run, and might show the last Mondays, Thursdays, Fridays or Saturdays. After the call to strptime(), <code>tm.tm_wday</code> contains junk values like 50237728 or 239567136. (Legal values are 0 to 6.) Change to "%d-01-01 09:01:01" and "%Y-%m-%d %H:%M:%S" is no help. Checking my manuals, [mktime(3)](https://www.openbsd.org/cgi-bin/man.cgi?query=mktime&sektion=3&arch=amd64&apropos=0&manpath=OpenBSD+4.9) describes the fields of ''struct tm'', but [strptime(3)](https://www.openbsd.org/cgi-bin/man.cgi?query=strptime&apropos=0&sektion=0&manpath=OpenBSD+4.9&arch=amd64&format=html) is vague; I assume that strptime() never fills ''tm_wday'' unless the string contains the weekday. --[[User:Kernigh|Kernigh]] 01:05, 9 November 2011 (UTC)
 
 == 1582 ==
 
@@ -198,13 +198,13 @@ October 4th, 1582, in the Julian calendar is followed by October 5th in the Juli
 
 It's like when someone leaves San Francisco, California and flies to New York, and adjusts (or adopts) their wristwatch to local time by jumping three hours ahead.  There's no missing three hours.  The traveler just adopted the "time" of a different time zone.    
 
-See:  <http://rosettacode.org/wiki/Talk:Calendar> 
+See:  <https://rosettacode.org/wiki/Talk:Calendar> 
 
 The only "missing days" are when one switches from one calendar to another.  The Gregorian calendar is proleptic.  October 5th follows 4 Oct in EVERY year in the Gregorian calendar (starting in January 1, year 1). -- [[User:Gerard Schildberger|Gerard Schildberger]] 06:18, 11 August 2012 (UTC)
 
 October 4th in year 1582 was the date in the Julian calendar (the day before the switchover in some countries).  The next day, the Gregorian calendar was adopted (or put into effect) in various countries, but not everywhere.  The new Gregorian calendar says it was October 15th.  If we switched to a Mayan calendar, would we be missing ''years'' (or whatever)?  Of course not.  Once the Gregorian calendar was adopted, it was like the calendar was in effect all along, with a continous calendar (proleptic) backward to January 1st, year 1.  No missing days.  That is why there are references to ''O.S.'' (''o''ld ''s''tyle) for years previous to the adoption of the new Gregorian calendar for those people who were born before the switchover.  If the Gregorian calendar wasn't proleptic, there would be no need for ''O.S.'' type of dates. 
 
-See: <http://en.wikipedia.org/wiki/George_Washington> 
+See: <https://en.wikipedia.org/wiki/George_Washington> 
 
 -- [[User:Gerard Schildberger|Gerard Schildberger]] 07:02, 11 August 2012 (UTC)
 
@@ -249,7 +249,7 @@ If we don't read and understand history, we're doomed to repeat it's mistakes. -
 -----
 
 :While I found this discussion of 1582 most enlightening I am thrilled by the 'real' calendar of 1582 shown under Calendar for Scala.
-:( <http://rosettacode.org/mw/index.php?title=Calendar&action=edit&section=17> )
+:( <https://rosettacode.org/mw/index.php?title=Calendar&action=edit&section=17> )
 :I wonder if such a calendar page was ever printed.
 
 ```txt
@@ -303,7 +303,7 @@ The problem would be solved if, when showing that "split" calendar, which dates 
 -----
 ::::: So this calender page was printed in February and everyone knew that there would not be these days. Fine with me. What's your point in misspelling ''proleptic''? --[[User:Walterpachl|Walterpachl]] 06:25, 23 August 2012 (UTC) And is it correct that 5 October 1582 was a Friday?
 
-:::::: I never said that any calendar was printed (in February or at any time).  Not ''everyone'' knew; the papal bull was issued primarily to the (Catholic) clergy (the bishops).  At the time of the issuance of the papal bull, it wasn't known when the reformed calendar would be adopted (or even ''if'' it would be adopted) by the various states/countries/principalities.  Because of the origin of the reformed calendar, there was great resistance to the new calendar.  Certainly the Catholic church knew that when the reformed calender would be adopted (the switchover), there would be a gap between the Julian calender date (O.S.) and the reformed calendar date (N.S.), later called the Gregorian calendar.  The Catholic Church didn't observe the gap between the two calendars (in October) since they were already using the reformed calendar much earlier that year.  Actually, according to the Julian calender, it was the "previous year" (due to the start of the new year in March 25th).  You can see a good explanation of this at the Wikipedia page of George Washington <http://en.wikipedia.org/wiki/George_Washington>, read '''Note 1'''.  Note that George Washington was born February 22nd, 1732 (N.S.), which was February 11th, 1731 (O.S.).  The year difference has caused so many incorrect "corrections" that the Wikipedia page has to be locked (put into semi-protected mode which can only be edited by established registered users) so misinformed people wouldn't "correct" the O.S. year. Also, read (view the source): <http://en.wikipedia.org/w/index.php?title=George_Washington&action=edit>, particurily the extra-large bold print. -- [[User:Gerard Schildberger|Gerard Schildberger]] 18:22, 23 August 2012 (UTC)
+:::::: I never said that any calendar was printed (in February or at any time).  Not ''everyone'' knew; the papal bull was issued primarily to the (Catholic) clergy (the bishops).  At the time of the issuance of the papal bull, it wasn't known when the reformed calendar would be adopted (or even ''if'' it would be adopted) by the various states/countries/principalities.  Because of the origin of the reformed calendar, there was great resistance to the new calendar.  Certainly the Catholic church knew that when the reformed calender would be adopted (the switchover), there would be a gap between the Julian calender date (O.S.) and the reformed calendar date (N.S.), later called the Gregorian calendar.  The Catholic Church didn't observe the gap between the two calendars (in October) since they were already using the reformed calendar much earlier that year.  Actually, according to the Julian calender, it was the "previous year" (due to the start of the new year in March 25th).  You can see a good explanation of this at the Wikipedia page of George Washington <https://en.wikipedia.org/wiki/George_Washington>, read '''Note 1'''.  Note that George Washington was born February 22nd, 1732 (N.S.), which was February 11th, 1731 (O.S.).  The year difference has caused so many incorrect "corrections" that the Wikipedia page has to be locked (put into semi-protected mode which can only be edited by established registered users) so misinformed people wouldn't "correct" the O.S. year. Also, read (view the source): <https://en.wikipedia.org/w/index.php?title=George_Washington&action=edit>, particurily the extra-large bold print. -- [[User:Gerard Schildberger|Gerard Schildberger]] 18:22, 23 August 2012 (UTC)
 
 :::::: As for your question about misspelling a word ... there was no point, it was a typo. -- [[User:Gerard Schildberger|Gerard Schildberger]] 18:22, 23 August 2012 (UTC)
 

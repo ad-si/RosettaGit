@@ -1060,14 +1060,14 @@ link graphics
 ```
 
 
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 Additionally, the '''WOpen''' procedure and Window.App methods are available.
 
 
 ## Haskell
 
-Using {{libheader|X11}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+Using {{libheader|X11}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.X11.Xlib
@@ -1629,7 +1629,7 @@ any simpleWin(any ex) {
 
 ###  Xlib
 
-Download Python X library from <http://sourceforge.net/projects/python-xlib/> .
+Download Python X library from <https://sourceforge.net/projects/python-xlib/> .
 python-xlib is a pure python library therefore the example should work anywhere where python does and where there is an X server.
 Run:
 * python xlib_hello_world.py

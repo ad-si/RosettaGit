@@ -22,7 +22,7 @@ Should the task define specific rules the birds follow, so implementations won't
 
 :: I agree the Task specification is incomplete and needs improvements. (I think a Boids task is good for RosettaCode because the code needed for such simulation is not too much long, and it's a kind of task not overrepresented in RC.) -[[User:Bearophile|bearophile]] 23:29, 7 January 2013 (UTC)
 
-::: This Python version is readable and it doesn't have obstacles. <http://code.activestate.com/recipes/502240-boids-version-11/>  Removing the GUI code it's about 120 lines of non-comment Python code. Is this too much for a RosettaCode Task?
+::: This Python version is readable and it doesn't have obstacles. <https://code.activestate.com/recipes/502240-boids-version-11/>  Removing the GUI code it's about 120 lines of non-comment Python code. Is this too much for a RosettaCode Task?
 ::::It's not very good practice to rely on code as an explanation for an entire task. Explaining things in English, pseudocode, or diagrams/tables is preferred. Not everybody can read Python (including me). --[[User:Mwn3d|Mwn3d]] 04:27, 8 January 2013 (UTC)
 
 ::: A few things would be helpful:

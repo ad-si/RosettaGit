@@ -51,7 +51,7 @@ The problem of generating the shortest superpermutation for each N ''might'' be 
 
 ;Reference:
 * [The Minimal Superpermutation Problem](http://www.njohnston.ca/2013/04/the-minimal-superpermutation-problem/). by Nathaniel Johnston.
-* [oeis A180632](http://oeis.org/A180632) gives 0-5 as 0, 1, 3, 9, 33, 153. 6 is thought to be 872.
+* [oeis A180632](https://oeis.org/A180632) gives 0-5 as 0, 1, 3, 9, 33, 153. 6 is thought to be 872.
 * [Superpermutations - Numberphile](https://www.youtube.com/watch?v=wJGE4aEWc28). A video
 * [Superpermutations: the maths problem solved by 4chan - Standupmaths](https://www.youtube.com/watch?v=OZzIvl1tbPo). A video of recent (2018) mathematical progress.
 * [New Superpermutations Discovered!](https://www.youtube.com/watch?v=_tpNuulTeSQ) Standupmaths & Numberphile.

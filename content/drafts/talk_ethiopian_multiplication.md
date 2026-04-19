@@ -63,7 +63,7 @@ Has anyone checked out the popularity of this page at [[Special:PopularPages]]? 
 :: It's finicky. They obviously don't like spamming submissions to a site, so people will thumb submissions down for that. Apart from that, it takes a novel page to catch the interest of CS-types on SU. --[[User:Short Circuit|Michael Mol]] 14:35, 22 July 2010 (UTC)
 :: Agreed. The occasional self submission is usually fine.  I should probably thumbs up the main page and then lay low for a while.  I'm not consistently on SU so it's time. --[[User:Dgamey|Dgamey]] 21:49, 22 July 2010 (UTC)
 
-::: Michael and I discussed it at the time [here](http://rosettacode.org/wiki/User_talk:Paddy3118#Ethiopian_Multiplication). --[[User:Paddy3118|Paddy3118]] 22:11, 22 July 2010 (UTC)
+::: Michael and I discussed it at the time [here](https://rosettacode.org/wiki/User_talk:Paddy3118#Ethiopian_Multiplication). --[[User:Paddy3118|Paddy3118]] 22:11, 22 July 2010 (UTC)
 
 ==Ethiopian??? My foot!==
 

@@ -1382,7 +1382,7 @@ ImageConvolve[img, BoxMatrix[1] ]
 
 ## MATLAB
 
-The built-in function [conv2](http://www.mathworks.com/help/matlab/ref/conv2.html) handles the basic convolution. Below is a program that has several more options that may be useful in different image processing applications (see comments under convImage for specifics).
+The built-in function [conv2](https://www.mathworks.com/help/matlab/ref/conv2.html) handles the basic convolution. Below is a program that has several more options that may be useful in different image processing applications (see comments under convImage for specifics).
 
 ```MATLAB
 function testConvImage
@@ -1713,7 +1713,7 @@ let box_blur img =
 ## Octave
 
 
-'''Use package''' [Image](http://octave.sourceforge.net/image/index.html)
+'''Use package''' [Image](https://octave.sourceforge.net/image/index.html)
 
 
 ```octave

@@ -1503,7 +1503,7 @@ end
 ```
 
 
-[datetime provides SecToDateLine, and DateLineToSec](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn) these convert between Icon's &dateline format and seconds from a configurable base date (which defaults to the normal 1970 epoch).
+[datetime provides SecToDateLine, and DateLineToSec](https://www.cs.arizona.edu/icon/library/src/procs/datetime.icn) these convert between Icon's &dateline format and seconds from a configurable base date (which defaults to the normal 1970 epoch).
 
 ```txt
 input      = March 7 2009 7:30pm EST
@@ -2818,7 +2818,7 @@ The solution below ignores the time zone.
 ```REBOL
 REBOL [
 	Title: "Date Manipulation"
-	URL: http://rosettacode.org/wiki/Date_Manipulation
+	URL: https://rosettacode.org/wiki/Date_Manipulation
 ]
 
 ; Only North American zones here -- feel free to extend for your area.

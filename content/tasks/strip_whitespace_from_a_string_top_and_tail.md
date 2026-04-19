@@ -745,7 +745,7 @@ DISPLAY "'" FUNCTION TRIM(str) "'"
 
 ; Whitespace characters defined by Unicode for
 ; implementations which support it (e.g. CLISP, SBCL).
-; (see http://www.unicode.org/Public/UCD/latest/ucd/PropList.txt)
+; (see https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt)
 (defvar *unicode-whitespace*
   '(#\u0009 #\u000a #\u000b #\u000c #\u000d
     #\u0020 #\u0085 #\u00a0 #\u1680 #\u2000
@@ -1265,7 +1265,7 @@ both removed: |simple| [115 105 109 112 108 101]
 
 ## Groovy
 
-Solution uses StringUtils class from [Apache Commons "Lang" library](http://commons.apache.org/lang/):
+Solution uses StringUtils class from [Apache Commons "Lang" library](https://commons.apache.org/lang/):
 
 ```groovy
 //Grape setup to get library

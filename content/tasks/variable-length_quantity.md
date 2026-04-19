@@ -376,7 +376,7 @@ seq from 3311a1234df31413: [ b3 88 e8 a4 b4 ef cc a8 13 ] back: 3311a1234df31413
 
 
 ## C#
-For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [this](http://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity) page.
+For methods involving a '''BinaryReader''' or '''BinaryWriter''' please refer to [this](https://rosettacode.org/wiki/User:Shimmy/Variable-length_quantity) page.
 
 ```c#
 namespace Vlq
@@ -1980,7 +1980,7 @@ Output:
 
 ## Seed7
 
-The example below uses [bigInteger](http://seed7.sourceforge.net/libraries/bigint.htm) numbers,
+The example below uses [bigInteger](https://seed7.sourceforge.net/libraries/bigint.htm) numbers,
 since variable-length quantities are able to represent integer numbers of unlimited size.
 
 ```seed7

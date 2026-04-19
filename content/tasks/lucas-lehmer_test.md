@@ -313,7 +313,7 @@ M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 
 
 ```
 
-See also: <http://www.xs4all.nl/~jmvdveer/mersenne.a68.html>
+See also: <https://www.xs4all.nl/~jmvdveer/mersenne.a68.html>
 
 
 ## ARM Assembly
@@ -3036,7 +3036,7 @@ The primes found are
 
 2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 23209, 44497, 86243
 
-Of course, they agree with [OEIS A000043](http://oeis.org/A000043).
+Of course, they agree with [OEIS A000043](https://oeis.org/A000043).
 
 
 ## R
@@ -3524,7 +3524,7 @@ M2 M3 M5 M7 M13 M17 M19
 
 ## Seed7
 
-To get maximum speed the program should be [compiled](http://seed7.sourceforge.net/scrshots/comp.htm) with -O2.
+To get maximum speed the program should be [compiled](https://seed7.sourceforge.net/scrshots/comp.htm) with -O2.
 
 
 ```seed7
@@ -3585,8 +3585,8 @@ const proc: main is func
 ```
 
 
-Original source: [lucasLehmerTest](http://seed7.sourceforge.net/algorith/math.htm#lucasLehmerTest),
-[isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime)
+Original source: [lucasLehmerTest](https://seed7.sourceforge.net/algorith/math.htm#lucasLehmerTest),
+[isPrime](https://seed7.sourceforge.net/algorith/math.htm#isPrime)
 
 ```txt
 

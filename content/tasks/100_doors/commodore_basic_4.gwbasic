@@ -2,7 +2,7 @@ REM "100 Doors" program for QB64 BASIC (http://www.qb64.net/), a QuickBASIC-like
 REM Author: G. A. Tippery
 REM Date: 12-Feb-2014
 REM
-REM   Unoptimized (naive) version, per specifications at http://rosettacode.org/wiki/100_doors
+REM   Unoptimized (naive) version, per specifications at https://rosettacode.org/wiki/100_doors
 
 DEFINT A-Z
 CONST N = 100

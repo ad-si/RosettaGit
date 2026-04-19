@@ -1495,7 +1495,7 @@ isSortedBy _ [] = True
 isSortedBy f xs = all (uncurry f) . (zip <*> tail) $ xs
 
 
--- from http://www.haskell.org/haskellwiki/Random_shuffle
+-- from https://www.haskell.org/haskellwiki/Random_shuffle
 shuffle :: [a] -> IO [a]
 shuffle xs = do
         ar <- newArray n xs

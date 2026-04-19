@@ -21,7 +21,7 @@ A version that adds the concept of types also exists to compile ZED into C funct
 Development of ZEDc is also happening on GitHub: <https://github.com/zelah/ZEDc>
 
 
-ZED can be seen compiling itself here: <http://ideone.com/ARpMCM>
+ZED can be seen compiling itself here: <https://ideone.com/ARpMCM>
 
 
 Language author on RC: [Zelah](https://rosettacode.org/wiki/User:Zelah) ([talk](https://rosettacode.org/wiki/User_talk:Zelah) | [contribs](https://rosettacode.org/wiki/Special:Contributions/Zelah))

@@ -482,8 +482,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -1471,7 +1471,7 @@ println writer.toString()
 
 ## Haskell
 
-This implementation uses the [<code>xml</code> package](http://hackage.haskell.org/package/xml).
+This implementation uses the [<code>xml</code> package](https://hackage.haskell.org/package/xml).
 
 
 ```haskell
@@ -1840,10 +1840,10 @@ define character2xml(names::array, remarks::array) => {
 		doctype = #domimpl -> createdocumenttype(
 			'svg:svg',
 			'-//W3C//DTD SVG 1.1//EN',
-			'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'
+			'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'
 		),
 		character_xml = #domimpl -> createdocument(
-			'http://www.w3.org/2000/svg',
+			'https://www.w3.org/2000/svg',
 			'svg:svg',
 			#docType
 		),
@@ -1872,8 +1872,8 @@ character2xml(
 ```xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg:svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:svg="http://www.w3.org/2000/svg"/>
+<!DOCTYPE svg:svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:svg="https://www.w3.org/2000/svg"/>
 <CharacterRemarks>
   <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
   <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>

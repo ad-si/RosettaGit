@@ -78,4 +78,4 @@ ozmake --install
 
 
 ==External Links==
-*[Ozsqlite site](http://www.mozart-oz.org/mogul/info/elansary/ozsqlite.html)
+*[Ozsqlite site](https://www.mozart-oz.org/mogul/info/elansary/ozsqlite.html)

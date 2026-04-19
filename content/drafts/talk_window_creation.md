@@ -44,7 +44,7 @@ These are perhaps out of order, but I think people will get the idea. This is a 
 
 :::I don't want to lose the functionality offered by the SDL example.  In systems like DirectX, OpenGL and SDL, there may not be a direct abstraction corresponding to things like Window Size and resizability.  Perhaps that could be split off into another task? --[[User:Short Circuit|Short Circuit]] 09:01, 1 February 2007 (EST)
 
-::: I made a task along the lines of something of a "[basic window that actually has a function](http://www.rosettacode.org/wiki/Simple_Windowed_Application)" and filled in the IDL and Tcl examples. Have a look at it ;-) [[User:Sgeier|Sgeier]] 23:05, 19 February 2007 (EST)
+::: I made a task along the lines of something of a "[basic window that actually has a function](https://www.rosettacode.org/wiki/Simple_Windowed_Application)" and filled in the IDL and Tcl examples. Have a look at it ;-) [[User:Sgeier|Sgeier]] 23:05, 19 February 2007 (EST)
 
 
 ### Hmm

@@ -127,10 +127,10 @@ Demonstrate the program by:
 ## See also
 
 * This task is related to the [[Sieve of Eratosthenes]] task.
-* OEIS Wiki [Lucky numbers](http://oeis.org/wiki/Lucky_numbers).
+* OEIS Wiki [Lucky numbers](https://oeis.org/wiki/Lucky_numbers).
 * Sequence [A000959 lucky numbers](https://oeis.org/A000959) on The On-Line Encyclopedia of Integer Sequences.
 * Sequence [A045954 even lucky numbers or ELN](https://oeis.org/A045954) on The On-Line Encyclopedia of Integer Sequences.
-* Entry [lucky numbers](http://mathworld.wolfram.com/LuckyNumber.html) on The Eric Weisstein's World of Mathematics.
+* Entry [lucky numbers](https://mathworld.wolfram.com/LuckyNumber.html) on The Eric Weisstein's World of Mathematics.
 
 
 

@@ -16,4 +16,4 @@ Latest in a campaign of junk task and spurious link creation from behind a login
 
 == draft task ==
 
-Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [home page](http://rosettacode.org). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 04:47, 10 October 2015 (UTC)
+Please see [[Rosetta_Code:Add_a_Task|Add a Task]] and if you are more generally interested, check out the "Ways to Contribute" column on the [home page](https://rosettacode.org). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 04:47, 10 October 2015 (UTC)

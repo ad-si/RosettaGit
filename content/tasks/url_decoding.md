@@ -819,7 +819,7 @@ end
 ```
 
 
-[hexcvt provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
+[hexcvt provides hexstring](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 ```txt
 encoded = "http%3A%2F%2Ffoo%20bar%2F"
@@ -850,7 +850,7 @@ http://foo bar/
 ```
 
 
-Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [RFC 3986](http://tools.ietf.org/html/rfc3986#section-2.1) regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
+Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [RFC 3986](https://datatracker.ietf.org/html/rfc3986#section-2.1) regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
 
 Example use:
 
@@ -1896,11 +1896,11 @@ object UrlCoded extends App {
 
 ## Seed7
 
-The library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines functions
+The library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines functions
 to handle URL respectively percent encoding.
-The function [fromPercentEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#fromPercentEncoded%28in_string%29)
+The function [fromPercentEncoded](https://seed7.sourceforge.net/libraries/encoding.htm#fromPercentEncoded%28in_string%29)
 decodes a percend-encoded string.
-The function [fromUrlEncoded](http://seed7.sourceforge.net/libraries/encoding.htm#fromUrlEncoded%28in_string%29)
+The function [fromUrlEncoded](https://seed7.sourceforge.net/libraries/encoding.htm#fromUrlEncoded%28in_string%29)
 works like ''fromPercentEncoded'' and additionally decodes '+' with a space.
 Both functions return byte sequences.
 To decode Unicode characters it is necessary to convert them from UTF-8 with ''utf8ToStri'' afterwards.

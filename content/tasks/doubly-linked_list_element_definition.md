@@ -415,7 +415,7 @@ type dlNode struct {
 }
 ```
 
-Or, using the [container/list](http://golang.org/pkg/container/list/#Element) package:
+Or, using the [container/list](https://golang.org/pkg/container/list/#Element) package:
 
 ```go
 import "container/list"

@@ -2320,7 +2320,7 @@ arctan: Procedure
 
 ## Ruby
 
-Using the methods at [angle](http://rosettacode.org/wiki/Averages/Mean_angle#Ruby|Averages/Mean)
+Using the methods at [angle](https://rosettacode.org/wiki/Averages/Mean_angle#Ruby|Averages/Mean)
 
 
 ```ruby
@@ -2517,7 +2517,7 @@ To be self-contained, this starts with the functions from [[Averages/Mean angle]
 ## Sidef
 
 {{trans|Ruby}}
-Using the '''mean_angle()''' function from: ["Averages/Mean angle"](http://rosettacode.org/wiki/Averages/Mean_angle#Sidef)
+Using the '''mean_angle()''' function from: ["Averages/Mean angle"](https://rosettacode.org/wiki/Averages/Mean_angle#Sidef)
 
 ```ruby
 func time2deg(t) {

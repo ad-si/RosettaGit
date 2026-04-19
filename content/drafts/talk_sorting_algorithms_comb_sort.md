@@ -13,7 +13,7 @@ tags = []
 
 ### Faulty Code
 
-After discussion on [AHK forum](http://www.autohotkey.com/forum/), and thoroughly checking the findings, I believe the published pseudocode is faulty, and so are the implementations that follow the pseudocode. I don't have the ability to check all languages, but these '''look suspicious''' to me: ActionScript, C#, Io, PL/I, PureBasic (2nd example), Python, Ruby, Tcl, TI-83 BASIC. I appologize for suspecting any code incorrectly, but I do have a point with python.
+After discussion on [AHK forum](https://www.autohotkey.com/forum/), and thoroughly checking the findings, I believe the published pseudocode is faulty, and so are the implementations that follow the pseudocode. I don't have the ability to check all languages, but these '''look suspicious''' to me: ActionScript, C#, Io, PL/I, PureBasic (2nd example), Python, Ruby, Tcl, TI-83 BASIC. I appologize for suspecting any code incorrectly, but I do have a point with python.
 
 This example for Python:
 ```txt

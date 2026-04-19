@@ -235,7 +235,7 @@ deficient=15043 perfect=    4 abundant= 4953
 ## Ada
 
 This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
-<http://rosettacode.org/wiki/Proper_divisors#Ada>.
+<https://rosettacode.org/wiki/Proper_divisors#Ada>.
 
 
 ```Ada
@@ -2693,7 +2693,7 @@ classify(20000)
 
 ## Pascal
 
-using the slightly modified <http://rosettacode.org/wiki/Amicable_pairs#Alternative>
+using the slightly modified <https://rosettacode.org/wiki/Amicable_pairs#Alternative>
 
 ```pascal
 program AmicablePairs;

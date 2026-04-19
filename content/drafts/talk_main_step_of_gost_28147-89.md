@@ -49,5 +49,5 @@ Is there a ''definitive'' link to the definition of the algorithm? It sounds lik
 :: Ah, cool! Wikipedia has some relevant links. (I didn't know it was a Feistel network…) –[[User:Dkf|Donal Fellows]] 13:16, 13 September 2012 (UTC)
 I attempted to follow the verification example above.  I started with the C code, made some modifications to get the intermediate results in the example, and was able to reproduce the the first 32 bit part of the result.  The instructions for producing the second part are obscure though, and I was unable to reproduce the rest of the result in the example.  Can these instructions be clarified?  &mdash;[[User:Sonia|Sonia]] 19:09, 20 September 2012 (UTC)
 
-Sonia, you are almost there. The second part of the output is actually just a copy of the other part of the input. See <http://en.wikipedia.org/wiki/Feistel_cipher> or my Perl 6 solution.
+Sonia, you are almost there. The second part of the output is actually just a copy of the other part of the input. See <https://en.wikipedia.org/wiki/Feistel_cipher> or my Perl 6 solution.
 &mdash;[[User:Edwin|Edwin]] 13:30, 6 October 2012

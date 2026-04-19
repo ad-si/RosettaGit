@@ -696,7 +696,7 @@ class Program {
 
 ## Common Lisp
 
-Uses [CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp](http://weitz.de/cl-ppcre/).
+Uses [CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp](https://weitz.de/cl-ppcre/).
 
 
 ```lisp
@@ -1344,7 +1344,7 @@ end
 link regexp   # link to IPL regexp
 ```
 
-[See regexp](http://www.cs.arizona.edu/icon/library/procs/regexp.htm).
+[See regexp](https://www.cs.arizona.edu/icon/library/procs/regexp.htm).
 
 ```txt
 "A simple string" matches "string$"
@@ -1547,7 +1547,7 @@ s = "I am a string"
 s = replace(s, r" (a|an) ", " another ")
 ```
 
-There are many [other features](http://docs.julialang.org/en/latest/manual/strings/#regular-expressions) of Julia's regular-expression support, too numerous to list here.
+There are many [other features](https://docs.julialang.org/en/latest/manual/strings/#regular-expressions) of Julia's regular-expression support, too numerous to list here.
 
 
 ## Kotlin
@@ -2744,7 +2744,7 @@ str s/ />
 ```REBOL
 REBOL [
 	Title: "Regular Expression Matching"
-	URL: http://rosettacode.org/wiki/Regular_expression_matching
+	URL: https://rosettacode.org/wiki/Regular_expression_matching
 ]
 
 string: "This is a string."
@@ -3304,7 +3304,7 @@ case StringCvt.scanString (RE.find re) string
 
 ## Stata
 
-See '''[regexm](http://www.stata.com/help.cgi?regexm)''', '''regexr''' and '''regexs''' in Stata help.
+See '''[regexm](https://www.stata.com/help.cgi?regexm)''', '''regexr''' and '''regexs''' in Stata help.
 
 
 ```stata

@@ -2490,7 +2490,7 @@ but an explicit <tt>continue</tt> construct is rarely used:
 ```REBOL
 REBOL [
 	Title: "Loop/Continue"
-	URL: http://rosettacode.org/wiki/Loop/Continue
+	URL: https://rosettacode.org/wiki/Loop/Continue
 ]
 
 ; REBOL does not provide a 'continue' word for loop constructs,

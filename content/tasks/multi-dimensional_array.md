@@ -1044,7 +1044,7 @@ and
 ```
 
 
-For more introductory material on multi-dimensional arrays, you might be interested in [chapter 5](http://www.jsoftware.com/help/learning/05.htm) and [chapter 7](http://www.jsoftware.com/help/learning/07.htm) of the Learning J book.
+For more introductory material on multi-dimensional arrays, you might be interested in [chapter 5](https://www.jsoftware.com/help/learning/05.htm) and [chapter 7](https://www.jsoftware.com/help/learning/07.htm) of the Learning J book.
 
 
 ## Java
@@ -1991,7 +1991,7 @@ array([[[[   0,    0,    0,    0,    0],
 ## Racket
 
 
-Racket has [multi-dimensional arrays](http://docs.racket-lang.org/math/array.html) as part of the standard <tt>math</tt> library.  Instead of repeating the whole thing here, see the [quick start](http://docs.racket-lang.org/math/array_quick.html) page of the documentation, which describes all of what's asked here.
+Racket has [multi-dimensional arrays](https://docs.racket-lang.org/math/array.html) as part of the standard <tt>math</tt> library.  Instead of repeating the whole thing here, see the [quick start](https://docs.racket-lang.org/math/array_quick.html) page of the documentation, which describes all of what's asked here.
 
 
 ## REXX
@@ -2181,7 +2181,7 @@ object MultiDimensionalArray extends App {
 
 ## Tcl
 
-In Tcl, [arrays](http://www.tcl.tk/man/tcl/TclCmd/array.htm) are associative maps and [lists](http://wiki.tcl.tk/440) are closer to what other languages name "arrays".
+In Tcl, [arrays](https://www.tcl-lang.org/man/tcl/TclCmd/array.htm) are associative maps and [lists](https://wiki.tcl-lang.org/440) are closer to what other languages name "arrays".
 Either can be used for multidimensional data, but the implementations (and implications!) are quite different.
 
 It's worth briefly discussing both here.  Since lists are closer to the theme of this page, they come first.
@@ -2218,7 +2218,7 @@ Both lset and lindex know how to access multi-dimensional lists:
 11
 ```
 
-[lsort](http://www.tcl.tk/man/tcl/TclCmd/lsort.htm) and [lsearch](http://www.tcl.tk/man/tcl/TclCmd/lsearch.htm) are among other useful commands that support nested lists.
+[lsort](https://www.tcl-lang.org/man/tcl/TclCmd/lsort.htm) and [lsearch](https://www.tcl-lang.org/man/tcl/TclCmd/lsearch.htm) are among other useful commands that support nested lists.
 
 ### arrays
 
@@ -2280,4 +2280,4 @@ Scratchy is pink and has 99 points
 %
 ```
 
-The interested reader should also be aware of the difference between arrays and [dict](http://www.tcl.tk/man/tcl/TclCmd/dict.htm)ionaries, and know that the latter are often preferred for record-like structures.
+The interested reader should also be aware of the difference between arrays and [dict](https://www.tcl-lang.org/man/tcl/TclCmd/dict.htm)ionaries, and know that the latter are often preferred for record-like structures.

@@ -948,7 +948,7 @@ func main() {
 
 ## Haskell
 
-This program uses the [diagrams](http://hackage.haskell.org/package/diagrams) package to produce the Sierpinski triangle.  The package implements an embedded [DSL](http://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.  Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
+This program uses the [diagrams](https://hackage.haskell.org/package/diagrams) package to produce the Sierpinski triangle.  The package implements an embedded [DSL](https://en.wikipedia.org/wiki/EDSL#Usage_patterns) for producing vector graphics.  Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
 
 For fun, we take advantage of Haskell's layout rules, and the operators provided by the diagrams package, to give the <tt>reduce</tt> function the shape of a triangle.  It could also be written as <tt>reduce t = t === (t ||| t)</tt>.
 
@@ -997,7 +997,7 @@ procedure main(A)
 end
 ```
 
-[Original source IPL Graphics/sier1.](http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
+[Original source IPL Graphics/sier1.](https://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Triangle.bas"
@@ -1655,7 +1655,7 @@ run with:
 
 \\ Sierpinski triangle fractal
 \\ Note: plotmat() can be found here on
-\\ http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP page.
+\\ https://rosettacode.org/wiki/Brownian_tree#PARI.2FGP page.
 \\ 6/3/16 aev
 pSierpinskiT(n)={
 my(sz=2^n,M=matrix(sz,sz),x,y);
@@ -1713,8 +1713,8 @@ sub fractal {
 open my $fh, '>', 'run/sierpinski_triangle.svg';
 print $fh <<'EOD',
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1" xmlns="https://www.w3.org/2000/svg">
 <defs>
   <radialGradient id="basegradient" cx="50%" cy="65%" r="50%" fx="50%" fy="65%">
     <stop offset="10%" stop-color="#ff0" />
@@ -1770,8 +1770,8 @@ sub fractal ( $x1, $y1, $x2, $y2, $x3, $y3, $r is copy ) {
 my $fh = open('sierpinski_triangle.svg', :w) orelse .die;
 $fh.print: qq:to/EOD/,
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" version="1.1" xmlns="https://www.w3.org/2000/svg">
 <defs>
   <radialGradient id="basegradient" cx="50%" cy="65%" r="50%" fx="50%" fy="65%">
     <stop offset="10%" stop-color="#ff0" />
@@ -2390,7 +2390,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#sierpinski>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#sierpinski>
 
 
 ## Sidef
@@ -2658,7 +2658,7 @@ SierpinskyTriangle(7, w*0.05, h*0.05, w*0.9, h*0.9)
 ## zkl
 
 [[File:SierpinskiTriangle.zkl.jpg|150px|thumb|right]]
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 ```zkl
 const Order=8, Size=(1).shiftLeft(Order);
 img:=PPM(300,300);

@@ -1563,7 +1563,7 @@ func main() {
 ## Haskell
 
 
-Example makes use of [<tt>JuicyPixels</tt>](http://hackage.haskell.org/package/JuicyPixels) for serialization to PNG format and and [<tt>primitive</tt>](http://hackage.haskell.org/package/primitive) to abstract away memory-related operations. This is a fairly close translation of the algorithm as described on [Wikipedia](https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm):
+Example makes use of [<tt>JuicyPixels</tt>](https://hackage.haskell.org/package/JuicyPixels) for serialization to PNG format and and [<tt>primitive</tt>](https://hackage.haskell.org/package/primitive) to abstract away memory-related operations. This is a fairly close translation of the algorithm as described on [Wikipedia](https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm):
 
 
 ```haskell
@@ -3007,7 +3007,7 @@ use of the   '''IPART'''   function should probably be   '''FLOOR'''.
 
 [See the   ''talk''   section on the Xiaolin Wu's line algorithm.]
 
-<http://en.wikipedia.org/wiki/Talk:Xiaolin_Wu%27s_line_algorithm>
+<https://en.wikipedia.org/wiki/Talk:Xiaolin_Wu%27s_line_algorithm>
 
 
 Also, it takes in account (that can easily be overlooked) of the note after the description of the algorithm:

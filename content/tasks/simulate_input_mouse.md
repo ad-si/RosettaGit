@@ -383,7 +383,7 @@ PicoLisp comes with a dedicated browser GUI. A library based on web scraping (in
 to read GUI pages, click on HTML links, enter text into forms, and press submit
 buttons. In that way one application can control another application.
 
-The documented [demo application](http://software-lab.de/doc/app.html#minApp),
+The documented [demo application](https://software-lab.de/doc/app.html#minApp),
 which is also available online at [app.7fach.de](http://7fach.de/8080), is used
 in the following example. Mouse input is simulated with the functions 'click'
 (click on a HTML link) and 'press' (press a submit button).

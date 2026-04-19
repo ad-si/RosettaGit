@@ -17,7 +17,7 @@ __TOC__
 
 
 (a URL reference):
-:*   author's  website:        [rare numbers](http://www.shyamsundergupta.com/rare.htm)    by Shyam Sunder Gupta.     (lots of hints and some observations).
+:*   author's  website:        [rare numbers](https://www.shyamsundergupta.com/rare.htm)    by Shyam Sunder Gupta.     (lots of hints and some observations).
 
 
 
@@ -78,7 +78,7 @@ x disappears leaving 99(111(e-n)+10(g-i))
 
 :: Rubbish or not, is there anything on the referenced (Gupta's) website that is incorrect?   The properties and observations is what the REXX solution used (and others have as well) to calculate   ''rare''   numbers,   albeit not as fast as your algorithm.   I have no idea how long Shyam Sunder Gupta's program(s) executed before it found eight rare numbers   (or how much virtual memory it needed).   Is the   '''F#'''   algorithm suitable in finding larger   ''rare''   numbers?   I suspect (not knowing '''F#''') that virtual memory may become a limitation.   Eight down, seventy-six more to go.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 18:18, 18 September 2019 (UTC)
 
-:::So is the task now to replicate <http://www.shyamsundergupta.com/R20.htm>? This may not be reasonable for a RC task as I now discuss.
+:::So is the task now to replicate <https://www.shyamsundergupta.com/R20.htm>? This may not be reasonable for a RC task as I now discuss.
  Why have you "no idea how long Shyam Sunder Gupta's program(s) executed before it found eight rare numbers"? On the webpage it says "the program has been made so powerful that all numbers up to 10^14 can be just checked for Rare numbers in less than a minute". This implies that it can search 10^13 in 5 secs. I believe this. The problem with the webpage is not that it is wrong, but that it is disingenuous. I estimate that the following is achievable:
 10^13 -> 5 secs;
 10^15 -> 60 secs;
@@ -89,7 +89,7 @@ x disappears leaving 99(111(e-n)+10(g-i))
 I would say that 10^17 is reasonable for a RC task and is in line with the timings given on the webpage. Those who have recently obtained an 8th. generation i7 might want to observe that there is an obvious multithreading strategy and might want to prove that Goroutines are more than a bad pun on coroutines, as a suitable punishment for making me envious. (Warning, from my experience of i7s it might be wise to take it back to the shop and have water cooling installed before attempting to run it for a day and a half on full throttle). I remain to be convinced that these benchmarks are achieved by the Fortran, Ubasic programs on the webpage, or can be achieved in this task using the methods described on the webpage.
 It is necessary to distinguish the algorithm I describe above from the F# implementation on the task page. The algorithm can be written to require very little memory. Obviously the F# as it stands calculates all candidates before checking them and this list grows with increasing number of digits. It is more than adequate for the current task, and I anticipate little difficulty in accommodating reasonable changes to make the task less trivial as layed out above--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 14:01, 20 September 2019 (UTC)
 
-:::: Obviously, this task's requirement is <u>not</u> to replicate the list of 84   ''rare''   numbers on  [Shyam Sunder Gupta's webpage: a list of 84 rare numbers](http://www.shyamsundergupta.com/R20.htm).   The task requirements have not changed:   find and show the first   '''5'''   ''rare''   numbers.   The last two requirements are optional.   Any hints and properties can be used as one sees fit.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:55, 20 September 2019 (UTC)
+:::: Obviously, this task's requirement is <u>not</u> to replicate the list of 84   ''rare''   numbers on  [Shyam Sunder Gupta's webpage: a list of 84 rare numbers](https://www.shyamsundergupta.com/R20.htm).   The task requirements have not changed:   find and show the first   '''5'''   ''rare''   numbers.   The last two requirements are optional.   Any hints and properties can be used as one sees fit.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 17:55, 20 September 2019 (UTC)
 
 ::::: Well, I have to admit that Nigel's (n-r) approach is considerably faster than what SSG has published as I've just added a second Go version which finds the first 25 Rare numbers (up to 15 digits) in about 42 seconds, albeit on my Core i7 which is kept cool when hitting turbo mode by a rather noisy fan.
 
@@ -139,7 +139,7 @@ Not ready for prime time.
 This is the 2<sup>nd</sup> REXX version,   after all of the hints   (properties
 of   ''rare''   numbers)   within Shyam Sunder Gupta's
 
-[<u>webpage</u>](http://www.shyamsundergupta.com/rare.htm)   have been incorporated in this REXX program.
+[<u>webpage</u>](https://www.shyamsundergupta.com/rare.htm)   have been incorporated in this REXX program.
 
 ```rexx
 /*REXX program to calculate and display an specified amount of   rare    numbers.       */

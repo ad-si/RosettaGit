@@ -3118,7 +3118,7 @@ You can use pattern matching to extract the components:
 val (sum, difference) = addsub(33, 12)
 ```
 
-Scala borrows this idea from ML, and generalizes it into [extractors](http://www.scala-lang.org/node/112).
+Scala borrows this idea from ML, and generalizes it into [extractors](https://www.scala-lang.org/node/112).
 
 
 ## Scheme
@@ -3162,7 +3162,7 @@ SRFI 11 introduces a <code>let-values</code> construct to make this simpler:
 
 ## Seed7
 
-Seed7 functions can only return one value. That value could be an array or record holding multiple values, but the usual method for returning several values is using a procedure with [inout](http://seed7.sourceforge.net/manual/params.htm#inout_parameter) parameters:
+Seed7 functions can only return one value. That value could be an array or record holding multiple values, but the usual method for returning several values is using a procedure with [inout](https://seed7.sourceforge.net/manual/params.htm#inout_parameter) parameters:
 
 ```Seed7
 $ include "seed7_05.s7i";

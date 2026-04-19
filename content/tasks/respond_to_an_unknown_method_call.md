@@ -75,7 +75,7 @@ This task is intended only for object systems that use a dynamic dispatch mechan
 
 ## AutoHotkey
 
-[Example by LinearSpoon](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&start=140#p14454)
+[Example by LinearSpoon](https://www.autohotkey.com/boards/viewtopic.php?f=17&t=1363&start=140#p14454)
 
 ```AutoHotkey
 class example
@@ -498,7 +498,7 @@ In trap, you called: methodName with args 1,2,3
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1476,7 +1476,7 @@ $example->ding("dong"); // prints "tried to handle unknown method ding"
 
 ## PicoLisp
 
-The function '[try](http://software-lab.de/doc/refT.html#try)' is used to send a message to an object for which it is not known whether it inherits a method for that message or not. As opposed to the syntacically equivalent '[send](http://software-lab.de/doc/refS.html#send)' function, 'try' does not give an error, but returns NIL. We might redefine 'send' to get an effect analog to CLOS.
+The function '[try](https://software-lab.de/doc/refT.html#try)' is used to send a message to an object for which it is not known whether it inherits a method for that message or not. As opposed to the syntacically equivalent '[send](https://software-lab.de/doc/refS.html#send)' function, 'try' does not give an error, but returns NIL. We might redefine 'send' to get an effect analog to CLOS.
 
 ```PicoLisp
 (redef send (Msg Obj . @)

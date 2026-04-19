@@ -36,7 +36,7 @@ If you have an innovative approach to solving the task as stated, then there can
  [[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 11:38, 4 November 2018 (UTC)
 
 
-Thanks for explanation! Unfortunately, I did a poor decision of not waiting for replies and blatantly replaced the code here: [http://www.rosettacode.org/wiki/Abbreviations,_automatic#Functional](http://www.rosettacode.org/wiki/Abbreviations,_automatic#Functional).  <br />
+Thanks for explanation! Unfortunately, I did a poor decision of not waiting for replies and blatantly replaced the code here: [https://www.rosettacode.org/wiki/Abbreviations,_automatic#Functional](https://www.rosettacode.org/wiki/Abbreviations,_automatic#Functional).  <br />
 Should I make a roll-back and start a discussion now?--[[User:Georgy|Georgy]] ([[User talk:Georgy|talk]]) 12:00, 4 November 2018 (UTC)
 
 : At least start a discussion pointing-out why. [[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 12:30, 4 November 2018 (UTC)

@@ -67,7 +67,7 @@ languages = [
 ]
 +++
 
-A   [Narcissistic decimal number](http://mathworld.wolfram.com/NarcissisticNumber.html)   is a non-negative integer,   <math>n</math>,   that is equal to the sum of the   <math>m</math>-th   powers of each of the digits in the decimal representation of   <math>n</math>,   where   <math>m</math>   is the number of digits in the decimal representation of   <math>n</math>.
+A   [Narcissistic decimal number](https://mathworld.wolfram.com/NarcissisticNumber.html)   is a non-negative integer,   <math>n</math>,   that is equal to the sum of the   <math>m</math>-th   powers of each of the digits in the decimal representation of   <math>n</math>,   where   <math>m</math>   is the number of digits in the decimal representation of   <math>n</math>.
 
 
 Narcissistic (decimal) numbers are sometimes called   '''Armstrong'''   numbers, named after Michael F. Armstrong.
@@ -93,8 +93,8 @@ Note:   <math>0^1 = 0</math>,   the first in the series.
 
 ## See also
 
-*   the  OEIS entry:     [Armstrong (or Plus Perfect, or narcissistic) numbers](http://oeis.org/A005188).
-*   MathWorld entry:   [Narcissistic Number](http://mathworld.wolfram.com/NarcissisticNumber.html).
+*   the  OEIS entry:     [Armstrong (or Plus Perfect, or narcissistic) numbers](https://oeis.org/A005188).
+*   MathWorld entry:   [Narcissistic Number](https://mathworld.wolfram.com/NarcissisticNumber.html).
 *   Wikipedia entry:     [Narcissistic number](https://en.wikipedia.org/wiki/Narcissistic_number).
 
 
@@ -3783,7 +3783,7 @@ length 14: 28116440335967
   ; example given at head of task
   (check-true (narcissitic? 153))
   ; rip off the first 12 (and 0, since Armstrong numbers seem to be postivie) from
-  ; <http://oeis.org/A005188> for testing
+  ; <https://oeis.org/A005188> for testing
   (check-equal?
    (for/list ((i (in-range 12))
               (n (sequence-filter narcissitic? (in-naturals 1)))) n)

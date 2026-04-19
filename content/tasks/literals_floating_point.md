@@ -750,7 +750,7 @@ Dim l As Double = 3.141592653589e3#
 
 ## Go
 
-See [relevant section](http://golang.org/doc/go_spec.html#Floating-point_literals) of language reference.  Basically they are base 10, need either a decimal point or an exponent, and specify no precision or representation.  The exponent can be signed, but the mantissa is not.  One of the integer part or the fractional part may be elided; one of the decimal point or the exponent may be elided.  A leading minus sign would be an operator and not part of the floating point literal.  Examples,
+See [relevant section](https://golang.org/doc/go_spec.html#Floating-point_literals) of language reference.  Basically they are base 10, need either a decimal point or an exponent, and specify no precision or representation.  The exponent can be signed, but the mantissa is not.  One of the integer part or the fractional part may be elided; one of the decimal point or the exponent may be elided.  A leading minus sign would be an operator and not part of the floating point literal.  Examples,
 
 ```txt
 0.
@@ -794,7 +794,7 @@ assert 1.00e0 instanceof BigDecimal
 
 ## Haskell
 
-Haskell supports decimal representation of float literals, with or without an exponent. For more information, see the [relevant portion](http://www.haskell.org/onlinereport/lexemes.html#sect2.5) of the Haskell 98 Report.
+Haskell supports decimal representation of float literals, with or without an exponent. For more information, see the [relevant portion](https://www.haskell.org/onlinereport/lexemes.html#sect2.5) of the Haskell 98 Report.
 
 
 ```haskell
@@ -823,7 +823,7 @@ end
 
 
 The function write will cause the real values to be coerced as string constants.  Icon/Unicon will format these as it sees fit resorting to exponent forms only where needed.
-[The IPL library routine printf provides a broader range of formatting choices.](http://www.cs.arizona.edu/icon/library/src/procs/printf)
+[The IPL library routine printf provides a broader range of formatting choices.](https://www.cs.arizona.edu/icon/library/src/procs/printf)
 
 
 ## J
@@ -833,7 +833,7 @@ This paragraph highlights current implementation specific details of internal ty
 
 J's numeric constant mini-language allows the specification of numbers which are not floating point, but as indicated above, numeric type in J is a semantic triviality and not a syntactic feature.  (And this pervades the language.  For example, 1+1 is 2, despite the result having a different type from both of the arguments.  Or, for example, if maxint is the largest value represented using an integer type, maxint+1 will produce a floating point result instead of an error or a wraparound.)
 
-Here is an informal bnf for J's numeric constant language.  Note, however, that the implementation may disallow some unusual cases -- cases which are not treated as exceptional here (for example, the [language specification](http://jsoftware.com/help/dictionary/dcons.htm) allows 1.2e3.4 but the current implementation does not support fractional powers of 10 in numeric constants):
+Here is an informal bnf for J's numeric constant language.  Note, however, that the implementation may disallow some unusual cases -- cases which are not treated as exceptional here (for example, the [language specification](https://www.jsoftware.com/help/dictionary/dcons.htm) allows 1.2e3.4 but the current implementation does not support fractional powers of 10 in numeric constants):
 
 
 ```bnf
@@ -1328,7 +1328,7 @@ var z = 2'f64 # Automatically a float64
 ## OCaml
 
 
-In the OCaml manual, the chapter '''lexical conventions''' describes [floating-point literals](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html#float-literal), which are:
+In the OCaml manual, the chapter '''lexical conventions''' describes [floating-point literals](https://caml.inria.fr/pub/docs/manual-ocaml/lex.html#float-literal), which are:
 
  float-literal  ::=   [-] (0…9) { 0…9∣ _ } [. { 0…9∣ _ }] [(e∣ E) [+∣ -] (0…9) { 0…9∣ _ }]
 
@@ -1487,7 +1487,7 @@ printf(1,"%g %G\n",1e-30)
 
 ## PHP
 
-More [information](http://php.net/manual/en/language.types.float.php) about floating point numbers in PHP.
+More [information](https://php.net/manual/en/language.types.float.php) about floating point numbers in PHP.
 
 ```PHP
 .12
@@ -1514,7 +1514,7 @@ EXPONENT_DNUM [+-]?(({LNUM} | {DNUM}) [eE][+-]? {LNUM})
 
 PicoLisp does not support floating point literals in the base language, only
 fixed point (scaled) decimal integers of unlimited size and precision. See
-[Numbers](http://software-lab.de/doc/ref.html#num-io) in the reference.
+[Numbers](https://software-lab.de/doc/ref.html#num-io) in the reference.
 
 
 ## PL/I
@@ -1742,7 +1742,7 @@ Values that are outside the bounds of a type will give compiler-time errors when
 
 ## Seed7
 
-The type [float](http://seed7.sourceforge.net/libraries/float.htm) consists of single precision floating point numbers. Float literals are base 10 and contain a decimal point. There must be at least one digit before and after the decimal point. An exponent part, which is introduced with E or e, is optional. The exponent can be signed, but the mantissa is not. A literal does not have a sign, + or - are unary operations. Examples of float literals are:
+The type [float](https://seed7.sourceforge.net/libraries/float.htm) consists of single precision floating point numbers. Float literals are base 10 and contain a decimal point. There must be at least one digit before and after the decimal point. An exponent part, which is introduced with E or e, is optional. The exponent can be signed, but the mantissa is not. A literal does not have a sign, + or - are unary operations. Examples of float literals are:
 
 ```seed7
 
@@ -1752,9 +1752,9 @@ The type [float](http://seed7.sourceforge.net/libraries/float.htm) consists of s
 
 ```
 
-The functions [str](http://seed7.sourceforge.net/libraries/float.htm#str%28ref_float%29) and the operators [digits](http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29digits%28ref_integer%29) and [parse](http://seed7.sourceforge.net/libraries/float.htm#%28attr_float%29parse%28in_string%29) create and accept float literals with sign.
+The functions [str](https://seed7.sourceforge.net/libraries/float.htm#str%28ref_float%29) and the operators [digits](https://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29digits%28ref_integer%29) and [parse](https://seed7.sourceforge.net/libraries/float.htm#%28attr_float%29parse%28in_string%29) create and accept float literals with sign.
 
-Original source: <http://seed7.sourceforge.net/manual/types.htm#float>
+Original source: <https://seed7.sourceforge.net/manual/types.htm#float>
 
 
 ## Sidef
@@ -1846,7 +1846,7 @@ Floating point literals in Tcl always contain either “<tt>.</tt>” or “<tt>
 :<code>[-+]?inf(inity)?</code>
 ;NaN values
 :<code>[-+]?nan(\([0-9a-f]+\))?</code>
-Note also that NaN values usually result in checked exceptions; they are supported mainly so that they can be handled when parsing and generating external binary data. All other floating-point literals are fully legal values. (Also note that this excludes the definition of integer literals; for details see [this TIP document](http://www.tcl.tk/cgi-bin/tct/tip/249.html), which explains the whole state machine.)
+Note also that NaN values usually result in checked exceptions; they are supported mainly so that they can be handled when parsing and generating external binary data. All other floating-point literals are fully legal values. (Also note that this excludes the definition of integer literals; for details see [this TIP document](https://www.tcl-lang.org/cgi-bin/tct/tip/249.html), which explains the whole state machine.)
 
 
 ## Ursa

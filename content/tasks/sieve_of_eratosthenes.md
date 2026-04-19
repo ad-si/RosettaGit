@@ -1228,7 +1228,7 @@ The optimizations are as follows:
 
 
 The last expression computes the number of primes < 1e0 1e1 ... 1e9.
-The last number 50847534 can perhaps be called the anti-Bertelsen's number (<http://mathworld.wolfram.com/BertelsensNumber.html>).
+The last number 50847534 can perhaps be called the anti-Bertelsen's number (<https://mathworld.wolfram.com/BertelsensNumber.html>).
 
 =={{Header|AppleScript}}==
 Note: This version of Trial Division has something like O(n^(3/2) asymptotic execution complexity rather than O(n log (log n)) for the true sieve.
@@ -1279,7 +1279,7 @@ sieve(1000)
 
 
 =={{Header|AutoHotkey}}==
-{{AutoHotkey case}}Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic44657.html) by Laszlo
+{{AutoHotkey case}}Source: [AutoHotkey forum](https://www.autohotkey.com/forum/topic44657.html) by Laszlo
 
 ```autohotkey
 MsgBox % "12345678901234567890`n" Sieve(20)
@@ -1967,7 +1967,7 @@ namespace SieveOfEratosthenes
 
 '''Richard Bird Sieve'''
 
-To show that C# code can be written in somewhat functional paradigms, the following in an implementation of the Richard Bird sieve from the Epilogue of [Melissa E. O'Neill's definitive article](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf) in Haskell:
+To show that C# code can be written in somewhat functional paradigms, the following in an implementation of the Richard Bird sieve from the Epilogue of [Melissa E. O'Neill's definitive article](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf) in Haskell:
 
 ```c#
 using System;
@@ -2075,7 +2075,7 @@ The above code runs over ten times faster than the original Richard Bird algorit
 
 '''Priority Queue Sieve'''
 
-First, an implementation of a Min Heap Priority Queue is provided as extracted from the entry at [RosettaCode](http://rosettacode.org/wiki/Priority_queue#C.23), with only the necessary methods duplicated here:
+First, an implementation of a Min Heap Priority Queue is provided as extracted from the entry at [RosettaCode](https://rosettacode.org/wiki/Priority_queue#C.23), with only the necessary methods duplicated here:
 
 ```c#
 namespace PriorityQ {
@@ -2627,7 +2627,7 @@ Before one considers that this code is suitable for larger ranges, it is still l
 
 For some types of problems such as finding the nth prime (rather than the sequence of primes up to m), a prime sieve with no upper bound is a better tool.
 
-The following variations on an incremental Sieve of Eratosthenes are based on or derived from the Richard Bird sieve as described in the Epilogue of [Melissa E. O'Neill's definitive paper](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf):
+The following variations on an incremental Sieve of Eratosthenes are based on or derived from the Richard Bird sieve as described in the Epilogue of [Melissa E. O'Neill's definitive paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf):
 
 '''A Clojure version of Richard Bird's Sieve using Lazy Sequences (sieves odds only)'''
 
@@ -4408,7 +4408,7 @@ It's output is identical to the previous version other than the time required is
 ```
 
 
-Straightforward implementation of [sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Implementation), 2 times faster:
+Straightforward implementation of [sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Implementation), 2 times faster:
 
 
 ```lisp
@@ -4607,7 +4607,7 @@ Primes: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
 ```
 
 
-Clearly not only more elegant, but faster :) Thanks to <http://stackoverflow.com/users/113644/g-b>
+Clearly not only more elegant, but faster :) Thanks to <https://stackoverflow.com/users/113644/g-b>
 
 
 ### Erlang ets + cpu distributed implementation
@@ -4842,7 +4842,7 @@ For practical use, one would be much better served by any of the other functiona
 
 '''Richard Bird Sieve'''
 
-This is the idea behind Richard Bird's unbounded code presented in the Epilogue of [M. O'Neill's article](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf) in Haskell.  It is about twice as much code as the Haskell code because F# does not have a built-in lazy list so that the effect must be constructed using a Co-Inductive Stream (CIS) type since no memoization is required, along with the use of recursive functions in combination with sequences.  The type inference needs some help with the new CIS type (including selecting the generic type for speed).  Note the use of recursive functions to implement multiple non-sharing delayed generating base primes streams, which along with these being non-memoizing means that the entire primes stream is not held in memory as for the original Bird code:
+This is the idea behind Richard Bird's unbounded code presented in the Epilogue of [M. O'Neill's article](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf) in Haskell.  It is about twice as much code as the Haskell code because F# does not have a built-in lazy list so that the effect must be constructed using a Co-Inductive Stream (CIS) type since no memoization is required, along with the use of recursive functions in combination with sequences.  The type inference needs some help with the new CIS type (including selecting the generic type for speed).  Note the use of recursive functions to implement multiple non-sharing delayed generating base primes streams, which along with these being non-memoizing means that the entire primes stream is not held in memory as for the original Bird code:
 
 ```fsharp
 type 'a CIS = CIS of 'a * (unit -> 'a CIS) //'Co Inductive Stream for laziness
@@ -4918,7 +4918,7 @@ The above code is over four times faster than the "BirdOdds" version (at least 1
 
 '''Priority Queue Sieve'''
 
-In order to investigate Priority Queue Sieves as espoused by O'Neill in the referenced article, one must find an equivalent implementation of a Min Heap Priority Queue as used by her.  There is such an purely functional implementation [in RosettaCode translated from the Haskell code she used](http://rosettacode.org/wiki/Priority_queue#Functional), from which the essential parts are duplicated here (Note that the key value is given an integer type in order to avoid the inefficiency of F# in generic comparison):
+In order to investigate Priority Queue Sieves as espoused by O'Neill in the referenced article, one must find an equivalent implementation of a Min Heap Priority Queue as used by her.  There is such an purely functional implementation [in RosettaCode translated from the Haskell code she used](https://rosettacode.org/wiki/Priority_queue#Functional), from which the essential parts are duplicated here (Note that the key value is given an integer type in order to avoid the inefficiency of F# in generic comparison):
 
 ```fsharp
 [<RequireQualifiedAccess>
@@ -6107,7 +6107,7 @@ func main() {
 
 
 ===Concurrent Daisy-chain sieve===
-A concurrent prime sieve adopted from the example in the "Go Playground" window at <http://golang.org/>
+A concurrent prime sieve adopted from the example in the "Go Playground" window at <https://golang.org/>
 
 ```go
 package main
@@ -6173,7 +6173,7 @@ The output:
 ```
 
 
-[Runs at ~ n^2.1](http://ideone.com/ixhHNO) empirically, producing up to n=3000 primes in under 5 seconds.
+[Runs at ~ n^2.1](https://ideone.com/ixhHNO) empirically, producing up to n=3000 primes in under 5 seconds.
 
 ===Postponed Concurrent Daisy-chain sieve===
 Here we postpone the ''creation'' of filters until the prime's square is seen in the input, to radically reduce the amount of filter channels in the sieve chain.
@@ -6259,7 +6259,7 @@ The output:
 ```
 
 
-[Runs at ~ n^1.2](http://ideone.com/I0AXf5) empirically, producing up to n=25,000 primes on ideone in under 5 seconds.
+[Runs at ~ n^1.2](https://ideone.com/I0AXf5) empirically, producing up to n=25,000 primes on ideone in under 5 seconds.
 ===Incremental Odds-only Sieve===
 Uses Go's built-in hash tables to store odd composites, and defers adding new known composites until the square is seen.
 
@@ -6419,7 +6419,7 @@ primesToUO top | top > 1   = 2 : [2*i + 1 | (i,True) <- assocs $ sieveUO top]
 ```
 
 
-This represents ''odds only'' in the array. [Empirical orders of growth](http://ideone.com/KwZNc) is ~ <i>n<sup>1.2</sup></i> in ''n'' primes produced, and improving for bigger ''n''&zwj;&thinsp;&zwj;s. Memory consumption is low (array seems to be packed) and growing about linearly with ''n''. Can further be [significantly sped up](http://ideone.com/j24jxV) by  re-writing the <code>forM_</code> loops with direct recursion, and using <code>unsafeRead</code> and <code>unsafeWrite</code> operations.
+This represents ''odds only'' in the array. [Empirical orders of growth](https://ideone.com/KwZNc) is ~ <i>n<sup>1.2</sup></i> in ''n'' primes produced, and improving for bigger ''n''&zwj;&thinsp;&zwj;s. Memory consumption is low (array seems to be packed) and growing about linearly with ''n''. Can further be [significantly sped up](https://ideone.com/j24jxV) by  re-writing the <code>forM_</code> loops with direct recursion, and using <code>unsafeRead</code> and <code>unsafeWrite</code> operations.
 
 
 ### Immutable arrays
@@ -6527,7 +6527,7 @@ primesSE = 2 : sieve 3 4 (tail primesSE) (inits primesSE)
 ```
 
 
-The basic gradually-deepening left-leaning <code>(((a-b)-c)- ... )</code> workflow of <code>foldl minus a bs</code> above can be rearranged into the right-leaning <code>(a-(b+(c+ ... )))</code> workflow of <code>minus a (foldr union [] bs)</code>. This is the idea behind Richard Bird's unbounded code presented in [M. O'Neill's article](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), equivalent to:
+The basic gradually-deepening left-leaning <code>(((a-b)-c)- ... )</code> workflow of <code>foldl minus a bs</code> above can be rearranged into the right-leaning <code>(a-(b+(c+ ... )))</code> workflow of <code>minus a (foldr union [] bs)</code>. This is the idea behind Richard Bird's unbounded code presented in [M. O'Neill's article](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), equivalent to:
 
 
 ```haskell
@@ -6570,7 +6570,7 @@ _U ((x:xs):t) = x : (union xs . _U . pairs) t       -- tree-shaped folding big u
 ```
 
 
-Works with odds only, the simplest kind of wheel. Here's the [test entry](http://ideone.com/qpnqe) on Ideone.com, and a [comparison with more versions](http://ideone.com/p0e81).
+Works with odds only, the simplest kind of wheel. Here's the [test entry](https://ideone.com/qpnqe) on Ideone.com, and a [comparison with more versions](https://ideone.com/p0e81).
 
 
 ### =With Wheel=
@@ -6601,7 +6601,7 @@ Used [[Emirp_primes#List-based|here]] and [[Extensible_prime_generator#List_base
 
 The above work is derived from the Epilogue of the Melissa E. O'Neill paper which is much referenced with respect to incremental functional sieves; however, that paper is now dated and her comments comparing list based sieves to her original work leading up to a Priority Queue based implementation is no longer current given more recent work such as the above Tree Merging version.  Accordingly, a modern "odd's-only" Priority Queue version is developed here for more current comparisons between the above list based incremental sieves and a continuation of O'Neill's work.
 
-In order to implement a Priority Queue version with Haskell, an efficient Priority Queue, which is not part of the standard Haskell libraries is required.  A Min Heap implementation is likely best suited for this task in providing the most efficient frequently used peeks of the next item in the queue and replacement of the first item in the queue (not using a "pop" followed by a "push) with "pop" operations then not used at all, and "push" operations used relatively infrequently.  Judging by O'Neill's use of an efficient "deleteMinAndInsert" operation which she states "(We provide deleteMinAndInsert becausea heap-based implementation can support this operation with considerably less rearrangement than a deleteMin followed by an insert.)", which statement is true for a Min Heap Priority Queue and not others, and her reference to a priority queue by (Paulson, 1996), the queue she used is likely the one as provided as a simple true functional [Min Heap implementation on RosettaCode](http://rosettacode.org/wiki/Priority_queue#Haskell), from which the essential functions are reproduced here:
+In order to implement a Priority Queue version with Haskell, an efficient Priority Queue, which is not part of the standard Haskell libraries is required.  A Min Heap implementation is likely best suited for this task in providing the most efficient frequently used peeks of the next item in the queue and replacement of the first item in the queue (not using a "pop" followed by a "push) with "pop" operations then not used at all, and "push" operations used relatively infrequently.  Judging by O'Neill's use of an efficient "deleteMinAndInsert" operation which she states "(We provide deleteMinAndInsert becausea heap-based implementation can support this operation with considerably less rearrangement than a deleteMin followed by an insert.)", which statement is true for a Min Heap Priority Queue and not others, and her reference to a priority queue by (Paulson, 1996), the queue she used is likely the one as provided as a simple true functional [Min Heap implementation on RosettaCode](https://rosettacode.org/wiki/Priority_queue#Haskell), from which the essential functions are reproduced here:
 
 ```haskell
 data PriorityQ k v = Mt
@@ -6897,7 +6897,7 @@ end
 
 This problem is a classic example of how J can be used to represent mathematical concepts.
 
-J uses x|y ([residue](http://www.jsoftware.com/help/dictionary/d230.htm)) to represent the operation of finding the remainder during integer division of y divided by x
+J uses x|y ([residue](https://www.jsoftware.com/help/dictionary/d230.htm)) to represent the operation of finding the remainder during integer division of y divided by x
 
 
 ```J
@@ -6906,7 +6906,7 @@ J uses x|y ([residue](http://www.jsoftware.com/help/dictionary/d230.htm)) to rep
 ```
 
 
-And x|/y gives us a [table](http://www.jsoftware.com/help/dictionary/d420.htm) with all possibilities from x and all possibilities from y.
+And x|/y gives us a [table](https://www.jsoftware.com/help/dictionary/d420.htm) with all possibilities from x and all possibilities from y.
 
 
 ```J
@@ -6917,7 +6917,7 @@ And x|/y gives us a [table](http://www.jsoftware.com/help/dictionary/d420.htm) w
 ```
 
 
-Meanwhile, |/~y ([reflex](http://www.jsoftware.com/help/dictionary/d220v.htm)) copies the right argument and uses it as the left argment.
+Meanwhile, |/~y ([reflex](https://www.jsoftware.com/help/dictionary/d220v.htm)) copies the right argument and uses it as the left argment.
 
 
 ```J
@@ -6932,7 +6932,7 @@ Meanwhile, |/~y ([reflex](http://www.jsoftware.com/help/dictionary/d220v.htm)) c
 
 (Bigger examples might make the patterns more obvious but they also take up more space.)
 
-By the way, we can ask J to count out the first N integers for us using i. ([integers](http://www.jsoftware.com/help/dictionary/didot.htm)):
+By the way, we can ask J to count out the first N integers for us using i. ([integers](https://www.jsoftware.com/help/dictionary/didot.htm)):
 
 
 ```J
@@ -6941,7 +6941,7 @@ By the way, we can ask J to count out the first N integers for us using i. ([int
 ```
 
 
-Anyways, the 0s in that last table represent the Sieve of Eratosthenes (in a symbolic or mathematical sense), and we can use = ([equal](http://www.jsoftware.com/help/dictionary/d000.htm)) to find them.
+Anyways, the 0s in that last table represent the Sieve of Eratosthenes (in a symbolic or mathematical sense), and we can use = ([equal](https://www.jsoftware.com/help/dictionary/d000.htm)) to find them.
 
 
 ```J
@@ -6954,7 +6954,7 @@ Anyways, the 0s in that last table represent the Sieve of Eratosthenes (in a sym
 ```
 
 
-Now all we need to do is add them up, using / ([insert](http://www.jsoftware.com/help/dictionary/d420.htm)) in its single argument role to insert + between each row of that last table.
+Now all we need to do is add them up, using / ([insert](https://www.jsoftware.com/help/dictionary/d420.htm)) in its single argument role to insert + between each row of that last table.
 
 
 ```J
@@ -6972,7 +6972,7 @@ The sieve wants the cases where we have two divisors:
 ```
 
 
-And we just want to know the positions of the 1s in that list, which we can find using I. ([indices](http://www.jsoftware.com/help/dictionary/dicapdot.htm)):
+And we just want to know the positions of the 1s in that list, which we can find using I. ([indices](https://www.jsoftware.com/help/dictionary/dicapdot.htm)):
 
 
 ```J
@@ -7279,7 +7279,7 @@ public class InfiniteSieve implements Iterator<BigInteger> {
 
 ```
 
-<!--This code has a very limited range using the int type for reasons given in the [Discussion Page](http://rosettacode.org/wiki/Talk:Sieve_of_Eratosthenes#Python_translated_to_Java)-->
+<!--This code has a very limited range using the int type for reasons given in the [Discussion Page](https://rosettacode.org/wiki/Talk:Sieve_of_Eratosthenes#Python_translated_to_Java)-->
 
 ===Infinite iterator with a faster algorithm (sieves odds-only)===
 The adding of each discovered prime's incremental step information to the mapping should be postponed until the candidate number reaches the primes square, as it is useless before that point. This drastically reduces the space complexity from O(n/log(n)) to O(sqrt(n/log(n))), in n primes produced, and also lowers the run time complexity due to the use of the hash table based HashMap, which is much more efficient for large ranges.
@@ -11757,7 +11757,7 @@ LP = 99991.
 
 ### = Optimized approach=
 
-[Works with SWI-Prolog](http://ideone.com/WDC7z).
+[Works with SWI-Prolog](https://ideone.com/WDC7z).
 
 
 ```Prolog
@@ -11808,7 +11808,7 @@ Running it produces
 ```
 
 
-which indicates <i>~ N<sup>1.1</sup></i> [empirical orders of growth](http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth), which is consistent with the ''O(N log log N)'' theoretical runtime complexity.
+which indicates <i>~ N<sup>1.1</sup></i> [empirical orders of growth](https://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth), which is consistent with the ''O(N log log N)'' theoretical runtime complexity.
 
 
 ###  Using a priority queue
@@ -11956,7 +11956,7 @@ print(list(eratosthenes2(100)))
 
 ### Using array lookup
 
-The version below uses array lookup to test for primality. The function <tt>primes_upto()</tt> is a straightforward implementation of [Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm)algorithm. It returns prime numbers less than or equal to <tt>limit</tt>.
+The version below uses array lookup to test for primality. The function <tt>primes_upto()</tt> is a straightforward implementation of [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm)algorithm. It returns prime numbers less than or equal to <tt>limit</tt>.
 
 ```python
 def primes_upto(limit):
@@ -12200,7 +12200,7 @@ Example:
 ### Infinite generator with a faster algorithm
 
 
-The adding of each discovered prime's incremental step info to the mapping should be '''''postponed''''' until the prime's ''square'' is seen amongst the candidate numbers, as it is useless before that point. This drastically reduces the space complexity from <i>O(n)</i> to <i>O(sqrt(n/log(n)))</i>, in ''<code>n</code>'' primes produced, and also lowers the run time complexity quite low ([this test entry in Python 2.7](http://ideone.com/VXep9F) and [this test entry in Python 3.x](http://ideone.com/muuS4H) shows about <i>~ n<sup>1.08</sup></i> [empirical order of growth](http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth) which is very close to the theoretical value of <i>O(n log(n) log(log(n)))</i>, in ''<code>n</code>'' primes produced):
+The adding of each discovered prime's incremental step info to the mapping should be '''''postponed''''' until the prime's ''square'' is seen amongst the candidate numbers, as it is useless before that point. This drastically reduces the space complexity from <i>O(n)</i> to <i>O(sqrt(n/log(n)))</i>, in ''<code>n</code>'' primes produced, and also lowers the run time complexity quite low ([this test entry in Python 2.7](https://ideone.com/VXep9F) and [this test entry in Python 3.x](https://ideone.com/muuS4H) shows about <i>~ n<sup>1.08</sup></i> [empirical order of growth](https://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth) which is very close to the theoretical value of <i>O(n log(n) log(log(n)))</i>, in ''<code>n</code>'' primes produced):
 ```python
 def primes():
     yield 2; yield 3; yield 5; yield 7;
@@ -12232,7 +12232,7 @@ def primes_up_to(limit):
 
 ### Fast infinite generator using a wheel
 
-Although theoretically over three times faster than odds-only, the following code using a 2/3/5/7 wheel is only about 1.5 times faster than the above odds-only code due to the extra overheads in code complexity.  The [test link for Python 2.7](http://ideone.com/LFaRnT) and [test link for Python 3.x](http://ideone.com/ZAY0T2) show about the same empirical order of growth as the odds-only implementation above once the range grows enough so the dict operations become amortized to a constant factor.
+Although theoretically over three times faster than odds-only, the following code using a 2/3/5/7 wheel is only about 1.5 times faster than the above odds-only code due to the extra overheads in code complexity.  The [test link for Python 2.7](https://ideone.com/LFaRnT) and [test link for Python 3.x](https://ideone.com/ZAY0T2) show about the same empirical order of growth as the odds-only implementation above once the range grows enough so the dict operations become amortized to a constant factor.
 ```python
 def primes():
     for p in [2,3,5,7]: yield p                 # base wheel primes
@@ -12267,7 +12267,7 @@ def primes():
 ```
 
 
-Further gains of about 1.5 times in speed can be made using the same code by only changing the tables and a few constants for a further constant factor gain of about 1.5 times in speed by using a 2/3/5/7/11/13/17 wheel (with the gaps list 92160 elements long) computed for a slight constant overhead time as per the [test link for Python 2.7](http://ideone.com/4Ld26g) and [test link for Python 3.x](http://ideone.com/72Dmyt).  Further wheel factorization will not really be worth it as the gains will be small (if any and not losses) and the gaps table huge - it is already too big for efficient use by 32-bit Python 3 and the wheel should likely be stopped at 13:
+Further gains of about 1.5 times in speed can be made using the same code by only changing the tables and a few constants for a further constant factor gain of about 1.5 times in speed by using a 2/3/5/7/11/13/17 wheel (with the gaps list 92160 elements long) computed for a slight constant overhead time as per the [test link for Python 2.7](https://ideone.com/4Ld26g) and [test link for Python 3.x](https://ideone.com/72Dmyt).  Further wheel factorization will not really be worth it as the gains will be small (if any and not losses) and the gaps table huge - it is already too big for efficient use by 32-bit Python 3 and the wheel should likely be stopped at 13:
 
 ```python
 def primes():
@@ -12445,7 +12445,7 @@ These examples use infinite lists (streams) to implement the sieve of Eratosthen
 ```
 
 
-Runs at ~ n^2.1 [empirically](http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth), for ''n <= 1500'' primes produced.
+Runs at ~ n^2.1 [empirically](https://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth), for ''n <= 1500'' primes produced.
 
 
 ### = With merged composites =
@@ -12500,7 +12500,7 @@ Since prime's multiples that matter start from its square, we should only add th
 
 ==== Implementation of Richard Bird's algorithm ====
 
-Appears in [M.O'Neill's paper](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf). Achieves on its own the proper postponement that is specifically arranged for in the version above (with <code>after</code>), and is yet more efficient, because it folds to the right and so builds the right-leaning structure of merges at run time, where the more frequently-producing streams of multiples appear <i>higher</i> in that structure, so the composite numbers produced by them have less <code>merge</code> nodes to percolate through:
+Appears in [M.O'Neill's paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf). Achieves on its own the proper postponement that is specifically arranged for in the version above (with <code>after</code>), and is yet more efficient, because it folds to the right and so builds the right-leaning structure of merges at run time, where the more frequently-producing streams of multiples appear <i>higher</i> in that structure, so the composite numbers produced by them have less <code>merge</code> nodes to percolate through:
 
 
 ```Racket
@@ -12971,7 +12971,7 @@ Benchmark.bmbm {|x|
 
 ###  With the standard library
 
-[[MRI]] 1.9.x implements the sieve of Eratosthenes at file [prime.rb](http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb), <code>class EratosthensesSeive</code> (around [line 421](http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb#L421)). This implementation optimizes for space, by packing the booleans into 16-bit integers. It also hardcodes all primes less than 256.
+[[MRI]] 1.9.x implements the sieve of Eratosthenes at file [prime.rb](https://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb), <code>class EratosthensesSeive</code> (around [line 421](https://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb#L421)). This implementation optimizes for space, by packing the booleans into 16-bit integers. It also hardcodes all primes less than 256.
 
 
 ```ruby
@@ -13695,7 +13695,7 @@ While the above code is reasonably fast, much of the execution time is consumed 
 This shows that it takes somewhat longer to enumerate the primes than it does to actually produce them; this could be improved with a "roll-your-own" enumeration Iterator implementation at considerable increased complexity, but enumeration time will still be a significant portion of the execution time.  Further improvements to the code using extreme wheel factorization and multi-processing will make enumeration time an even higher percentage of the total; this is why for large ranges one writes functions/methods similar to "countSoEPrimesTo" to (say) sum the primes, to find the nth prime, etc.
 
 ===Odds-Only "infinite" generator sieve using Streams and Co-Inductive Streams===
-The following code uses delayed recursion via Streams to implement the Richard Bird algorithm mentioned in the last part (the Epilogue) of [M.O'Neill's paper](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), which is '''a true incremental Sieve of Eratosthenes'''.  It is nowhere near as fast as the array based solutions due to the overhead of functionally chasing the merging of the prime multiple streams; this also means that the empirical performance is not according to the usual Sieve of Eratosthenes approximations due to this overhead increasing as the log of the sieved range, but it is much better than [[Primality_by_trial_division#Odds-Only_.22infinite.22_primes_generator_using_Streams_and_Co-Inductive_Streams|the "unfaithful" sieve]].
+The following code uses delayed recursion via Streams to implement the Richard Bird algorithm mentioned in the last part (the Epilogue) of [M.O'Neill's paper](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), which is '''a true incremental Sieve of Eratosthenes'''.  It is nowhere near as fast as the array based solutions due to the overhead of functionally chasing the merging of the prime multiple streams; this also means that the empirical performance is not according to the usual Sieve of Eratosthenes approximations due to this overhead increasing as the log of the sieved range, but it is much better than [[Primality_by_trial_division#Odds-Only_.22infinite.22_primes_generator_using_Streams_and_Co-Inductive_Streams|the "unfaithful" sieve]].
 
 
 ```Scala
@@ -13762,10 +13762,10 @@ Now this algorithm doesn't really need the memoization and full laziness as offe
 ```
 
 
-Further gains in performance for these last two implementations can be had by using further wheel factorization and "tree folding/merging" as per [this Haskell implementation](http://www.haskell.org/haskellwiki/Primes#Tree_merging_with_Wheel).
+Further gains in performance for these last two implementations can be had by using further wheel factorization and "tree folding/merging" as per [this Haskell implementation](https://www.haskell.org/haskellwiki/Primes#Tree_merging_with_Wheel).
 
 ===Odds-Only "infinite" generator sieve using a hash table (HashMap)===
-As per [the "unfaithful sieve" article linked above](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), the incremental "infinite" Sieve of Eratosthenes can be implemented using a hash table instead of a Priority Queue or Map (Binary Heap) as were used in that article.  The following implementation postpones the adding of base prime representations to the hash table until necessary to keep the hash table small:
+As per [the "unfaithful sieve" article linked above](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf), the incremental "infinite" Sieve of Eratosthenes can be implemented using a hash table instead of a Priority Queue or Map (Binary Heap) as were used in that article.  The following implementation postpones the adding of base prime representations to the hash table until necessary to keep the hash table small:
 
 
 ```scala
@@ -14007,7 +14007,7 @@ of numbers which is only valid up to ''m'', includes composites above it:
 
 ### =Combined multiples sieve=
 
-Archetypal, straightforward approach by Richard Bird, presented in [Melissa E. O'Neill article](http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf). Uses <code>s-linear-join</code>, i.e. right fold, which is less efficient and of worse time complexity than the ''tree''-folding that follows. Does not attempt to conserve space by arranging for the additional inner feedback loop, as is done in the tree-folding variant below.
+Archetypal, straightforward approach by Richard Bird, presented in [Melissa E. O'Neill article](https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf). Uses <code>s-linear-join</code>, i.e. right fold, which is less efficient and of worse time complexity than the ''tree''-folding that follows. Does not attempt to conserve space by arranging for the additional inner feedback loop, as is done in the tree-folding variant below.
 
 ```scheme
  (define (primes-stream-ala-Bird)
@@ -14101,7 +14101,7 @@ The most efficient. Finds composites as a tree of unions of each prime's multipl
 ```
 
 
-[Print 10 last primes](http://ideone.com/Uuil5M) of the first thousand primes:
+[Print 10 last primes](https://ideone.com/Uuil5M) of the first thousand primes:
 
  (display (take 10 (drop 990 (primes-stream))))
  ;
@@ -14236,7 +14236,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#sieve_of_eratosthenes>
 
 
 ## Sidef

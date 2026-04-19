@@ -685,7 +685,7 @@ for (x := SIZE-1; x >= 0; x := x-1)
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=150)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=150)
 
 ```autohotkey
 Loop 6
@@ -2300,7 +2300,7 @@ end
 ```
 
 
-Adapted from [graphics/sier1.icn](http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
+Adapted from [graphics/sier1.icn](https://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn)
 
 ```txt
 Triangle order = 2

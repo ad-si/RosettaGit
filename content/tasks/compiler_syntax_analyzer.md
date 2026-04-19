@@ -4611,7 +4611,7 @@ Tested on perl v5.26.1
 #!/usr/bin/perl
 
 use strict;   # parse.pl - inputs lex, outputs flattened ast
-use warnings; # http://www.rosettacode.org/wiki/Compiler/syntax_analyzer
+use warnings; # https://www.rosettacode.org/wiki/Compiler/syntax_analyzer
 
 my $h = qr/\G\s*\d+\s+\d+\s+/;  # header of each line
 

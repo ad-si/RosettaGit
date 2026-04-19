@@ -200,9 +200,9 @@ end Bulls_And_Cows;
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 ```algol68
 STRING digits = "123456789";
@@ -4942,7 +4942,7 @@ IntDict checkScore(StringList secret, StringList guess) {
 
 ## Prolog
 
-Works with SWI-Prolog 6.1.8 (for predicate '''foldl'''), module lambda, written by '''Ulrich Neumerkel''' found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> and module clpfd written by '''Markus Triska'''.
+Works with SWI-Prolog 6.1.8 (for predicate '''foldl'''), module lambda, written by '''Ulrich Neumerkel''' found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl> and module clpfd written by '''Markus Triska'''.
 
 ```Prolog
 :- use_module(library(lambda)).

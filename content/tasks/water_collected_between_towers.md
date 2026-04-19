@@ -89,7 +89,7 @@ Calculate the number of water units that could be collected by bar charts repres
 See, also:
 
 * [Four Solutions to a Trivial Problem](https://youtu.be/ftcIcn8AmSY?t=536) – a Google Tech Talk by Guy Steele
-* [Water collected between towers](http://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/) on Stack Overflow, from which the example above is taken)
+* [Water collected between towers](https://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/) on Stack Overflow, from which the example above is taken)
 * [An interesting Haskell solution](https://gist.github.com/paf31/9d84ecf6a6a9b69cdb597a390f25764d), using the Tardis monad, by [Phil Freeman](https://gist.github.com/paf31) in a [Github gist](https://gist.github.com/paf31/9d84ecf6a6a9b69cdb597a390f25764d).
 
 
@@ -801,7 +801,7 @@ ok
 
 
 =={{header|F_Sharp|F#}}==
-see <http://stackoverflow.com/questions/24414700/water-collected-between-towers/43779936#43779936> for an explanation of this code. It is proportional to the number of towers. Although the examples on stackoverflow claim this, the n they use is actually the distance between the two end towers and not the number of towers. Consider the case of a tower of height 5 at 1, a tower of height 10 at 39, and a tower of height 3 at 101.
+see <https://stackoverflow.com/questions/24414700/water-collected-between-towers/43779936#43779936> for an explanation of this code. It is proportional to the number of towers. Although the examples on stackoverflow claim this, the n they use is actually the distance between the two end towers and not the number of towers. Consider the case of a tower of height 5 at 1, a tower of height 10 at 39, and a tower of height 3 at 101.
 
 ```fsharp
 
@@ -1020,7 +1020,7 @@ tasks.each {
 ## Haskell
 
 
-Following the approach of slightly modified [cdk](http://stackoverflow.com/users/1416525/cdk)'s Haskell solution at [Stack Overflow](http://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/). As recommended in [Programming as if the Correct Data Structure (and Performance) Mattered](http://h2.jaguarpaw.co.uk/posts/data-structures-matter/) it uses [Vector](http://hackage.haskell.org/package/vector-0.12.0.1/docs/Data-Vector-Unboxed.html) instead of Array:
+Following the approach of slightly modified [cdk](https://stackoverflow.com/users/1416525/cdk)'s Haskell solution at [Stack Overflow](https://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/). As recommended in [Programming as if the Correct Data Structure (and Performance) Mattered](http://h2.jaguarpaw.co.uk/posts/data-structures-matter/) it uses [Vector](https://hackage.haskell.org/package/vector-0.12.0.1/docs/Data-Vector-Unboxed.html) instead of Array:
 
 
 ```haskell
@@ -1896,7 +1896,7 @@ collected:14
 
 ## Python
 
-Based on the algorithm explained at [Stack Overflow](http://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/32135773#32135773):
+Based on the algorithm explained at [Stack Overflow](https://stackoverflow.com/questions/24414700/amazon-water-collected-between-towers/32135773#32135773):
 
 
 ```python

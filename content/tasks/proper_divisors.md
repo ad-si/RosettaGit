@@ -272,11 +272,11 @@ XDEC     DS     CL12
 ## Ada
 
 The first part of the task is to ''create a routine to generate a list of the proper divisors''. To ease the re-use of this routine for other tasks, such as ''Abundant, Deficient and Perfect Number Classification''
-<http://rosettacode.org/wiki/Abundant,_deficient_and_perfect_number_classifications#Ada>,
+<https://rosettacode.org/wiki/Abundant,_deficient_and_perfect_number_classifications#Ada>,
 ''Abundant Odd Number''
-<http://rosettacode.org/wiki/Abundant_odd_numbers#Ada>,
+<https://rosettacode.org/wiki/Abundant_odd_numbers#Ada>,
 and ''Amicable Pairs''
-<http://rosettacode.org/wiki/Amicable_pairs#Ada>, we define this routine as a function of a generic package:
+<https://rosettacode.org/wiki/Amicable_pairs#Ada>, we define this routine as a function of a generic package:
 
 
 ```Ada
@@ -4143,7 +4143,7 @@ function proper-divisor ($n) {
 ## Prolog
 
 
-Taking a cue from [an SO answer](http://stackoverflow.com/a/171779):
+Taking a cue from [an SO answer](https://stackoverflow.com/a/171779):
 
 
 ```prolog
@@ -4335,7 +4335,7 @@ A very literal interpretation
 
 ### Python: From prime factors
 
-I found [a reference](http://stackoverflow.com/a/171784/10562) on how to generate factors from all the prime factors and the number of times each prime factor goes into N - its multiplicity.
+I found [a reference](https://stackoverflow.com/a/171784/10562) on how to generate factors from all the prime factors and the number of times each prime factor goes into N - its multiplicity.
 
 For example, given N having prime factors P(i) with associated multiplicity M(i}) then the factors are given by:
 

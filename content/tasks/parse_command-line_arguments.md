@@ -192,7 +192,7 @@ See [Parsing Command-Line Arguments](https://github.com/clojure-cookbook/clojure
 
 ## D
 
-The [getopt module](http://dlang.org/phobos/std_getopt.html) in D's standard library is inspired by Perl's Getopt::Long module. The syntax of Phobos getopt infers the expected parameter types from the static types of the passed-in pointers.
+The [getopt module](https://dlang.org/phobos/std_getopt.html) in D's standard library is inspired by Perl's Getopt::Long module. The syntax of Phobos getopt infers the expected parameter types from the static types of the passed-in pointers.
 
 ```d
 import std.stdio, std.getopt;
@@ -358,7 +358,7 @@ end
 ```
 
 
-[options.icn supports getting command-line options](http://www.cs.arizona.edu/icon/library/src/procs/options.icn)
+[options.icn supports getting command-line options](https://www.cs.arizona.edu/icon/library/src/procs/options.icn)
 
 
 ## J
@@ -797,7 +797,7 @@ has the effect that
 # (bye) is called, resulting in program termination
 Command line arguments like "-v", "-n" and "-z" can be implemented simply by defining three functions 'v', 'n' and 'z'.
 
-In addition to the above mechanism, the command line can also be handled "manually", by either processing the list of arguments returned by '[argv](http://software-lab.de/doc/refA.html#argv)', or by fetching arguments individually with '[opt](http://software-lab.de/doc/refO.html#opt)'.
+In addition to the above mechanism, the command line can also be handled "manually", by either processing the list of arguments returned by '[argv](https://software-lab.de/doc/refA.html#argv)', or by fetching arguments individually with '[opt](https://software-lab.de/doc/refO.html#opt)'.
 
 
 ## PowerShell
@@ -1372,7 +1372,7 @@ val _ = Test.main (CommandLine.name(), CommandLine.arguments())
 
 ###  SML/NJ
 
-[[SML/NJ]] can compile source code to a "heap file", witch can than be executed by the interpreter with arguments given (see [this entry on stackowerflow.com](http://stackoverflow.com/questions/5053149/sml-nj-how-to-compile-standalone-executable) for more information).
+[[SML/NJ]] can compile source code to a "heap file", witch can than be executed by the interpreter with arguments given (see [this entry on stackowerflow.com](https://stackoverflow.com/questions/5053149/sml-nj-how-to-compile-standalone-executable) for more information).
 The <code>source.cm</code> file should lock like this:
 <lang>Group
 is

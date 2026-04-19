@@ -681,7 +681,7 @@ int main() {
 
 ```c#
 
-    // Adapted from http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
+    // Adapted from https://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/
     class Program
     {
         static long Count(int[] C, int m, int n)
@@ -1587,7 +1587,7 @@ table coin-value 0 , 1 , 5 , 10 , 25 , 50 ,
 
 ## FreeBASIC
 
-Translation from "Dynamic Programming Solution: Python version" on this webside <http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/>
+Translation from "Dynamic Programming Solution: Python version" on this webside <https://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change/>
 
 ```freebasic
 ' version 09-10-2016
@@ -1994,7 +1994,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Output:
 ```txt
@@ -2766,7 +2766,7 @@ Recursive:
 
 ## Phix
 
-Very fast, from <http://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change>
+Very fast, from <https://www.geeksforgeeks.org/dynamic-programming-set-7-coin-change>
 
 ```Phix
 function coin_count(sequence coins, integer amount)

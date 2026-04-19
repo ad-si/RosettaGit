@@ -113,7 +113,7 @@ g = A \; h
 For this task, implement a function (or method, procedure, subroutine, etc.) <code>deconv</code> to perform ''deconvolution'' (i.e., the ''inverse'' of convolution) by constructing and solving such a system of equations represented by the above matrix <math>A</math> for <math>\mathit{h}</math> given <math>\mathit{f}</math> and <math>\mathit{g}</math>.
 
 * The function should work for <math>\mathit{G}</math> of arbitrary length (i.e., not hard coded or constant) and <math>\mathit{F}</math> of any length up to that of <math>\mathit{G}</math>. Note that <math>|\mathit{H}|</math> will be given by <math>|\mathit{G}| - |\mathit{F}| + 1</math>.
-* There may be more equations than unknowns. If convenient, use a function from a [library](http://www.netlib.org/lapack/lug/node27.html) that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
+* There may be more equations than unknowns. If convenient, use a function from a [library](https://www.netlib.org/lapack/lug/node27.html) that finds the best fitting solution to an overdetermined system of linear equations (as in the [[Multiple regression]] task).  Otherwise, prune the set of equations as needed and solve as in the [[Reduced row echelon form]] task.
 * Test your solution on the following data. Be sure to verify both that <code>deconv</code><math>(g,f) = h</math> and <code>deconv</code><math>(g,h) = f</math> and display the results in a human readable form.
 <code>
 h = [-8,-9,-3,-1,-6,7]
@@ -1627,7 +1627,7 @@ namespace eval 1D {
     namespace path {::tcl::mathfunc ::tcl::mathop}
 
     # Utility for converting a matrix to Reduced Row Echelon Form
-    # From http://rosettacode.org/wiki/Reduced_row_echelon_form#Tcl
+    # From https://rosettacode.org/wiki/Reduced_row_echelon_form#Tcl
     proc toRREF {m} {
 	set lead 0
 	set rows [llength $m]
@@ -1756,7 +1756,7 @@ deconv(g,h) = f = [-3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1]
 
 The user defined function <code>band</code> constructs the required
 matrix as a list of lists given the pair of sequences to be
-deconvolved, and the [<code>lapack..dgelsd</code>](http://www.netlib.org/lapack/lug/node27.html) function solves the system. Some other library functions used are <code>zipt</code> (zipping two unequal length
+deconvolved, and the [<code>lapack..dgelsd</code>](https://www.netlib.org/lapack/lug/node27.html) function solves the system. Some other library functions used are <code>zipt</code> (zipping two unequal length
 lists by truncating the longer one) <code>zipp0</code> (zipping unequal length lists by padding the
 shorter with zeros) and <code>pad0</code> (making a list of lists all
 the same length by appending zeros to the short ones).

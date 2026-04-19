@@ -75,7 +75,7 @@ Use the following tests on entries:
 ```txt
 
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -179,8 +179,8 @@ should generate the output:
 
 
 ;Ruleset 5:
-A simple [Turing machine](http://en.wikipedia.org/wiki/Turing_machine),
-implementing a three-state [busy beaver](http://en.wikipedia.org/wiki/Busy_beaver).
+A simple [Turing machine](https://en.wikipedia.org/wiki/Turing_machine),
+implementing a three-state [busy beaver](https://en.wikipedia.org/wiki/Busy_beaver).
 
 The tape consists of '''0'''s and '''1'''s,   the states are '''A''', '''B''', '''C''' and '''H''' (for '''H'''alt), and the head position is indicated by writing the state letter before the character where the head is.
 All parts of the initial tape the machine operates on have to be given in the input.
@@ -517,14 +517,14 @@ Return
 
 _
 ;---------------------------------------------------------------------------
-Button1: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_1
+Button1: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_1
 ;---------------------------------------------------------------------------
     GuiControl,, Output ; clear output
     GuiControl,, String, I bought a B of As from T S.
     GuiControl,, Ruleset,
     (LTrim
     # This rules file is extracted from Wikipedia:
-    # http://en.wikipedia.org/wiki/Markov_Algorithm
+    # https://en.wikipedia.org/wiki/Markov_Algorithm
     A -> apple
     B -> bag
     S -> shop
@@ -538,7 +538,7 @@ Return
 
 
 ;---------------------------------------------------------------------------
-Button2: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_2
+Button2: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_2
 ;---------------------------------------------------------------------------
     GuiControl,, Output ; clear output
     GuiControl,, String, I bought a B of As from T S.
@@ -558,7 +558,7 @@ Return
 
 
 ;---------------------------------------------------------------------------
-Button3: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_3
+Button3: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_3
 ;---------------------------------------------------------------------------
     GuiControl,, Output ; clear output
     GuiControl,, String, I bought a B of As W my Bgage from T S.
@@ -582,7 +582,7 @@ Return
 
 
 ;---------------------------------------------------------------------------
-Button4: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_4
+Button4: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_4
 ;---------------------------------------------------------------------------
     GuiControl,, Output ; clear output
     GuiControl,, String, _1111*11111_
@@ -623,7 +623,7 @@ Return
 
 
 ;---------------------------------------------------------------------------
-Button5: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_5
+Button5: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm#Ruleset_5
 ;---------------------------------------------------------------------------
     GuiControl,, Output ; clear output
     GuiControl,, String, 000000A000000
@@ -689,7 +689,7 @@ Return
 
 
 ;---------------------------------------------------------------------------
-Algorithm: ; http://rosettacode.org/wiki/Execute_a_Markov_algorithm
+Algorithm: ; https://rosettacode.org/wiki/Execute_a_Markov_algorithm
 ;---------------------------------------------------------------------------
     ; Parse the ruleset and apply each rule to the string. Whenever a rule
     ; has changed the string goto first rule. Continue until a encountering
@@ -947,7 +947,7 @@ Tests:
   &   out
     $ ( applyRules
       $ ( "# This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -1507,7 +1507,7 @@ Testing:
 <lang>(defparameter
     *rules1*
 "# This rules file is extracted from Wikipedia:
-# <http://en.wikipedia.org/wiki/Markov_Algorithm>
+# <https://en.wikipedia.org/wiki/Markov_Algorithm>
 A -> apple
 B -> bag
 S -> shop
@@ -1688,7 +1688,7 @@ markov rules:
 
 (define RS1 #<<
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 C -> chinchard
@@ -1886,7 +1886,7 @@ step1:
 // text all cut and paste from RC task page
 var testSet = []testCase{
     {`# This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -2035,7 +2035,7 @@ def verify = { ruleset ->
 
 def ruleset1 = markovInterpreterFor("""
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -2219,7 +2219,7 @@ markov      =:  dyad define
 ```j
    m1 =. noun define
 	# This rules file is extracted from Wikipedia:
-	# http://en.wikipedia.org/wiki/Markov_Algorithm
+	# https://en.wikipedia.org/wiki/Markov_Algorithm
 	A -> apple
 	B -> bag
 	S -> shop
@@ -2410,7 +2410,7 @@ const markov = ruleSet => {
 
 
 const ruleset1 = `# This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -2771,7 +2771,7 @@ end
 
 local grammar1 = [[
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -3192,7 +3192,7 @@ end procedure
 
 constant ruleset1 = """
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -3342,7 +3342,7 @@ Output:
 
 Works with SWI-Prolog and module(library(lambda)).
 
-Module lambda can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Module lambda can be found there : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```prolog
@@ -3448,7 +3448,7 @@ markov :-
 
 markov_1 :-
 	A = ['# This rules file is extracted from Wikipedia:',
-	     '# http://en.wikipedia.org/wiki/Markov_Algorithm',
+	     '# https://en.wikipedia.org/wiki/Markov_Algorithm',
 	     'A -> apple',
 	     'B -> bag',
 	     'S -> shop',
@@ -3715,7 +3715,7 @@ Sample output from loading Ruleset 1 and interpreting a symbol:
 
 ```txt
 Comment: "# This rules file is extracted from Wikipedia:"
-Comment: "# http://en.wikipedia.org/wiki/Markov_Algorithm"
+Comment: "# https://en.wikipedia.org/wiki/Markov_Algorithm"
 Added: "A -> apple"
 Added: "B -> bag"
 Added: "S -> shop"
@@ -3765,7 +3765,7 @@ syntaxre = r"""(?mx)
 
 grammar1 = """\
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -4173,7 +4173,7 @@ end
 ```Ruby
 ruleset1 = <<EOS
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -4371,7 +4371,7 @@ The script is called much in the same way, but with the ".scala" extension added
 ## Scheme
 
 
-The following implementation uses several string-related procedures provided by SRFI-13 <http://srfi.schemers.org/srfi-13/srfi-13.html>.
+The following implementation uses several string-related procedures provided by SRFI-13 <https://srfi.schemers.org/srfi-13/srfi-13.html>.
 
 
 ```scheme
@@ -4497,7 +4497,7 @@ The Markov rules are actually compiled into the program after parsing, and are t
 #!/bin/sh
          exec "snobol4" "-r" "$0" "$@"
 *
-* http://rosettacode.org/wiki/Execute_a_Markov_algorithm
+* https://rosettacode.org/wiki/Execute_a_Markov_algorithm
 *
          define('repl(s1,s2,s3)c,t,findc') :(repl_end)
 repl     s2 len(1) . c = :f(freturn)
@@ -4536,7 +4536,7 @@ go       s = input :f(end)
 done     output = s :(go)
 end
 # This rules file is extracted from Wikipedia:
-# http://en.wikipedia.org/wiki/Markov_Algorithm
+# https://en.wikipedia.org/wiki/Markov_Algorithm
 A -> apple
 B -> bag
 S -> shop
@@ -4665,7 +4665,7 @@ func markov(ruleset: String, var input: String) -> String {
 
 
 let tests: [(ruleset: String, input: String)] = [
-    ("# This rules file is extracted from Wikipedia:\n# http://en.wikipedia.org/wiki/Markov_Algorithm\nA -> apple\nB -> bag\nS -> shop\nT -> the\nthe shop -> my brother\na never used -> .terminating rule", "I bought a B of As from T S."),
+    ("# This rules file is extracted from Wikipedia:\n# https://en.wikipedia.org/wiki/Markov_Algorithm\nA -> apple\nB -> bag\nS -> shop\nT -> the\nthe shop -> my brother\na never used -> .terminating rule", "I bought a B of As from T S."),
     ("# Slightly modified from the rules on Wikipedia\nA -> apple\nB -> bag\nS -> .shop\nT -> the\nthe shop -> my brother\na never used -> .terminating rule", "I bought a B of As from T S."),
     ("# BNF Syntax testing rules\nA -> apple\nWWWW -> with\nBgage -> ->.*\nB -> bag\n->.* -> money\nW -> WW\nS -> .shop\nT -> the\nthe shop -> my brother\na never used -> .terminating rule", "I bought a B of As W my Bgage from T S."),
     ("### Unary Multiplication Engine, for testing Markov Algorithm implementations\n### By Donal Fellows.\n# Unary addition engine\n_+1 -> _1+\n1+1 -> 11+\n# Pass for converting from the splitting of multiplication into ordinary\n# addition\n1! -> !1\n,! -> !+\n_! -> _\n# Unary multiplication by duplicating left side, right side times\n1*1 -> x,@y\n1x -> xX\nX, -> 1,1\nX1 -> 1X\n_x -> _X\n,x -> ,X\ny1 -> 1y\ny_ -> _\n# Next phase of applying\n1@1 -> x,@y\n1@_ -> @_\n,@_ -> !_\n++ -> +\n# Termination cleanup for addition\n_1 -> 1\n1+_ -> 1\n_+_ ->", "_1111*11111_"),
@@ -4866,7 +4866,7 @@ end class
 dim m1
 set m1 = new markovparser
 m1.ruleset = "# This rules file is extracted from Wikipedia:" & vbNewLine & _
-"# http://en.wikipedia.org/wiki/Markov_Algorithm" & vbNewLine & _
+"# https://en.wikipedia.org/wiki/Markov_Algorithm" & vbNewLine & _
 "A -> apple" & vbNewLine & _
 "B -> bag" & vbNewLine & _
 "S -> shop" & vbNewLine & _
@@ -4978,7 +4978,7 @@ fcn markov(text,rules){
 
 ```zkl
 ruleSet:=parseRuleSet("# This rules file is extracted from Wikipedia:",
-   "# http://en.wikipedia.org/wiki/Markov_Algorithm",
+   "# https://en.wikipedia.org/wiki/Markov_Algorithm",
    "A\t->\tapple", "B -> bag", "S -> shop", "T -> the",
    "the shop -> my brother", "a never used -> .terminating rule");
 ruleSet.println();

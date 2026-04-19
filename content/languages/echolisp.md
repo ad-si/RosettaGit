@@ -13,5 +13,5 @@ EchoLisp is a javascript implementation of a Scheme-like [Lisp](https://rosettac
 
 EchoLisp runs in a browser window. Validated under FireFox, Chrome and Safari.
 
-The reference manual is here: <http://www.echolalie.org/echolisp/help.html>.
-To run EchoLisp: <http://www.echolalie.org/echolisp/>.
+The reference manual is here: <https://www.echolalie.org/echolisp/help.html>.
+To run EchoLisp: <https://www.echolalie.org/echolisp/>.

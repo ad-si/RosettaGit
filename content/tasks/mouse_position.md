@@ -1608,9 +1608,9 @@ x: 0, y: 0
 
 ## Seed7
 
-The functions [pointerXPos](http://seed7.sourceforge.net/libraries/graph.htm#pointerXPos%28in_PRIMITIVE_WINDOW%29)
-and [pointerYPos](http://seed7.sourceforge.net/libraries/graph.htm#pointerYPos%28in_PRIMITIVE_WINDOW%29) from the
-[graph.s7i](http://seed7.sourceforge.net/libraries/graph.htm) library determine the actual X and Y position of the mouse pointer, relative to the given window:
+The functions [pointerXPos](https://seed7.sourceforge.net/libraries/graph.htm#pointerXPos%28in_PRIMITIVE_WINDOW%29)
+and [pointerYPos](https://seed7.sourceforge.net/libraries/graph.htm#pointerYPos%28in_PRIMITIVE_WINDOW%29) from the
+[graph.s7i](https://seed7.sourceforge.net/libraries/graph.htm) library determine the actual X and Y position of the mouse pointer, relative to the given window:
 
 ```seed7
 xPos := pointerXPos(curr_win);

@@ -254,7 +254,7 @@ Output:
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276379.html#276379)
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276379.html#276379)
 
 ```AutoHotkey
 MsgBox % GnomeSort("")

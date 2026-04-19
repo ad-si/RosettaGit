@@ -14,7 +14,7 @@ tags = []
 |topic=Faulty Code
 |summary=Faulty pseudocode and uploads
 }}
-1.) I hope this is the right place to talk about this: [Task:Comb sort](http://rosettacode.org/wiki/Sorting_algorithms/Comb_sort) has a faulty pseudocode. Look for the discussion there.
+1.) I hope this is the right place to talk about this: [Task:Comb sort](https://rosettacode.org/wiki/Sorting_algorithms/Comb_sort) has a faulty pseudocode. Look for the discussion there.
 
 2.) I have recently uploaded a screenshot, which had unfortunately its name changed to GUI.png in the process. I can not find an option to delete that file, and turn here for help, please.
 

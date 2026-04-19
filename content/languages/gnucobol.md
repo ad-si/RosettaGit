@@ -15,8 +15,8 @@ GnuCOBOL was renamed to GNU Cobol as part of becoming of a GNU project, and then
 
 ## See Also
 * [GnuCOBOL on Savannah](https://savannah.gnu.org/projects/gnucobol)
-* [GnuCOBOL Project at SourceForge.net](http://sourceforge.net/projects/open-cobol/)
+* [GnuCOBOL Project at SourceForge.net](https://sourceforge.net/projects/open-cobol/)
 * [Manuals and Guides](http://open-cobol.sourceforge.net/)
 * [GnuCOBOL Programmer's Guide](http://open-cobol.sourceforge.net/guides/GNU%20COBOL%202.0%20Programmers%20Guide.pdf)
-* [GnuCOBOL FAQ](http://sourceforge.net/p/open-cobol/faq/)
+* [GnuCOBOL FAQ](https://sourceforge.net/p/open-cobol/faq/)
 * [GnuCOBOL on Wikipedia](https://en.wikipedia.org/wiki/GnuCOBOL)

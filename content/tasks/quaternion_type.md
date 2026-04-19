@@ -288,7 +288,7 @@ q2 * q1 = -5.60000E+01 + 1.80000E+01i + 2.00000E+01j + 2.80000E+01k
 
 ## ALGOL 68
 
-{{trans|python}} Note: This specimen retains the original [python](http://rosettacode.org/mw/index.php?title=Simple_Quaternion_type_and_operations&diff=87324&oldid=87321) coding style.
+{{trans|python}} Note: This specimen retains the original [python](https://rosettacode.org/mw/index.php?title=Simple_Quaternion_type_and_operations&diff=87324&oldid=87321) coding style.
 
 '''File: prelude/Quaternion.a68'''
 ```algol68
@@ -329,7 +329,7 @@ PROC quat fix type error = (QUAT quat, []STRING msg)BOOL: (
 
 COMMENT
 For a list of coercions expected in A68 c.f.
-* http://rosettacode.org/wiki/ALGOL_68#Coercion_.28casting.29 # ...
+* https://rosettacode.org/wiki/ALGOL_68#Coercion_.28casting.29 # ...
 
 Pre-Strong context: Deproceduring, dereferencing & uniting. e.g. OP arguments
   * soft(deproceduring for assignment),
@@ -4843,7 +4843,7 @@ val qstring : quaternion -> string = <fun>
 
 ## Octave
 
-There is an add-on package (toolbox) to Octave available from <http://octave.sourceforge.net/quaternion/>
+There is an add-on package (toolbox) to Octave available from <https://octave.sourceforge.net/quaternion/>
 
 Such a package can be install with the command:
 
@@ -6044,7 +6044,7 @@ Q1 * Q2 <> Q2 * Q1
 
 ## Python
 
-This example extends Pythons [namedtuples](http://docs.python.org/library/collections.html?highlight=namedtuple#collections.namedtuple) to add extra functionality.
+This example extends Pythons [namedtuples](https://docs.python.org/library/collections.html?highlight=namedtuple#collections.namedtuple) to add extra functionality.
 
 ```python
 from collections import namedtuple

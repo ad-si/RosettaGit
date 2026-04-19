@@ -13,4 +13,4 @@ tags = []
 
 NESL is a functional language with an ML-like syntax, type inference, and support for parallel programming based on the idea of nested data parallelism. It has been used to teach parallel algorithms.
 
-For more information see the [NESL language page](https://www.cs.cmu.edu/~scandal/nesl.html). You can also try evaluating some NESL expressions online, using the [Interactive NESL Interface](http://www.cs.cmu.edu/~scandal/nesl/nesl_form.html).
+For more information see the [NESL language page](https://www.cs.cmu.edu/~scandal/nesl.html). You can also try evaluating some NESL expressions online, using the [Interactive NESL Interface](https://www.cs.cmu.edu/~scandal/nesl/nesl_form.html).

@@ -1251,7 +1251,7 @@ minus=: -/@,:
 ```
 
 
-See also section 2 at <http://www.jsoftware.com/papers/tot1.htm>
+See also section 2 at <https://www.jsoftware.com/papers/tot1.htm>
 
 Note that this approach to division will not be accurate when exact division is not possible (a best fit polynomial will be used).  Note also that if extended precision results are expected the &.x: in the definition of divide should be replaced with &x: or removed entirely (which would then require extended precision arguments).
 
@@ -2256,7 +2256,7 @@ class ProFPS does FPS {
 class InvFPS does FPS {
     has FPS $.x;
     method coeffs {
-        # see http://en.wikipedia.org/wiki/Formal_power_series#Inverting_series
+        # see https://en.wikipedia.org/wiki/Formal_power_series#Inverting_series
         gather {
             my @a := $.x.coeffs;
             @a[0] != 0 or fail "Cannot invert power series with zero constant term.";
@@ -2430,7 +2430,7 @@ Exp: 1 1 0.5 0.166667 0.0416667 0.00833333 0.00138889 0.000198413 2.48016e-5 2.7
 
 ## PicoLisp
 
-With a 'lazy' function, as a frontend to '[cache](http://software-lab.de/doc/refC.html#cache)',
+With a 'lazy' function, as a frontend to '[cache](https://software-lab.de/doc/refC.html#cache)',
 
 ```PicoLisp
 (de lazy Args
@@ -2545,7 +2545,7 @@ EXP: 1.0000000 1.0000000 0.5000000 0.1666667 0.0416667 0.0083333 0.0013889
 ```python
 ''' \
 For a discussion on pipe() and head() see
-  http://paddy3118.blogspot.com/2009/05/pipe-fitting-with-python-generators.html
+  https://paddy3118.blogspot.com/2009/05/pipe-fitting-with-python-generators.html
 '''
 
 from itertools import islice
@@ -2601,7 +2601,7 @@ def minuspower(*powergenerators):
     for elements in zip(*powergenerators):
         yield elements[0] - sum(elements[1:])
 def mulpower(fgen,ggen):
-    'From: http://en.wikipedia.org/wiki/Power_series#Multiplication_and_division'
+    'From: https://en.wikipedia.org/wiki/Power_series#Multiplication_and_division'
     a,b = [],[]
     for f,g in zip(fgen, ggen):
         a.append(f)
@@ -2672,7 +2672,7 @@ def minuspower(*powergenerators):
     for elements in zip(*powergenerators):
         yield elements[0] - sum(elements[1:])
 def mulpower(fgen,ggen):
-    'From: http://en.wikipedia.org/wiki/Power_series#Multiplication_and_division'
+    'From: https://en.wikipedia.org/wiki/Power_series#Multiplication_and_division'
     a,b = [],[]
     for f,g in zip(fgen, ggen):
         a.append(f)

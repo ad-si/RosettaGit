@@ -2079,7 +2079,7 @@ FactorsInt(2^67-1);
 # [ 193707721, 761838257287 ]
 ```
 
-Or using the [FactInt](http://www.gap-system.org/Manuals/pkg/factint/doc/chap0.html) package :
+Or using the [FactInt](https://www.gap-system.org/Manuals/pkg/factint/doc/chap0.html) package :
 
 ```gap
 FactInt(2^67-1);
@@ -2340,7 +2340,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [Uses genfactors and prime from factors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
+{{libheader|Icon Programming Library}} [Uses genfactors and prime from factors](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 Sample Output showing factors of a large integer:
 
@@ -4074,7 +4074,7 @@ def croft():
     # Copied from:
     #   <https://code.google.com/p/pyprimes/source/browse/src/pyprimes.py>
     # Implementation is based on erat3 from here:
-    #   <http://stackoverflow.com/q/2211990>
+    #   <https://stackoverflow.com/q/2211990>
     # and this website:
     #   <http://www.primesdemystified.com/>
     # Memory usage increases roughly linearly with the number of primes seen.
@@ -5056,7 +5056,7 @@ const func array integer: factorise (in var integer: number) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#factorise>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#factorise>
 
 
 ## SequenceL
@@ -5309,7 +5309,7 @@ Integer extend [
 ```
 
 
-Domain:[Factored(R)](http://fricas.github.io/api/Factored.html?highlight=factor)
+Domain:[Factored(R)](https://fricas.github.io/api/Factored.html?highlight=factor)
 
 
 
@@ -5684,7 +5684,7 @@ C:\>cscript /nologo primefactors.vbs 50
 Let's assume that in XSLT the application of a template is similar to the invocation of a function. So when the following template
 
 ```xml
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 
     <xsl:template match="/numbers">
         <html>

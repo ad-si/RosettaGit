@@ -335,7 +335,7 @@ mode←{{s←⌈/⍵[;2]⋄⊃¨(↓⍵)∩{⍵,s}¨⍵[;1]}{⍺,≢⍵}⌸⍵}
 
 =={{Header|AutoHotkey}}==
 {{AutoHotkey case}}
-Source: [AutoHotkey forum](http://www.autohotkey.com/forum/post-276175.html#276175) by Laszlo
+Source: [AutoHotkey forum](https://www.autohotkey.com/forum/post-276175.html#276175) by Laszlo
 
 ```autohotkey
 MsgBox % Mode("1 2 3")
@@ -3559,8 +3559,8 @@ The example below defines the template function <code>createModeFunction</code>,
 The template <code>createModeFunction</code> is instantiated explicit with <code>createModeFunction(integer)</code>.
 Additionally to <code>mode</code> the function <code>str</code> is defined.
 The function <code>str</code> is used by the template function
-[enable_output](http://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29) to allow writing arrays.
-This way the <code>main</code> function can just [write](http://seed7.sourceforge.net/libraries/enable_output.htm#write%28in_aType%29) the mode.
+[enable_output](https://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29) to allow writing arrays.
+This way the <code>main</code> function can just [write](https://seed7.sourceforge.net/libraries/enable_output.htm#write%28in_aType%29) the mode.
 
 
 ```seed7

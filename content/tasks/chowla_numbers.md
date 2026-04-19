@@ -111,7 +111,7 @@ Chowla numbers can also be expressed as:
 
 ## See also
 
-:*   the OEIS entry for   [A48050 Chowla's function](http://oeis.org/A048050).
+:*   the OEIS entry for   [A48050 Chowla's function](https://oeis.org/A048050).
 
 
 

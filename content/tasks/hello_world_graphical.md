@@ -952,8 +952,8 @@ gui.xaml:
 
 ```xaml
 <Window x:Class="COBOL_WPF.Window1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns="https://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="https://schemas.microsoft.com/winfx/2006/xaml"
     Title="Hello world/Graphical">
     <TextBox>Goodbye, World!</TextBox>
 </Window>
@@ -1754,7 +1754,7 @@ PROCEDURE Main()
 
 ## Haskell
 
-Using {{libheader|gtk}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+Using {{libheader|gtk}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```haskell
 import Graphics.UI.Gtk
@@ -1841,7 +1841,7 @@ procedure main()
 end
 ```
 
-[graphics is required](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
+[graphics is required](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 =
 ## Unicon
@@ -2108,7 +2108,7 @@ def to_s:
 # Defaults: 100%, 100%
 def svg(width; height):
   "<svg width='\(width // "100%")' height='\(height // "100%")'
-           xmlns='http://www.w3.org/2000/svg'>";
+           xmlns='https://www.w3.org/2000/svg'>";
 
 # Defaults:
 #  id: "linearGradient"
@@ -2830,7 +2830,7 @@ MessageBox.Show("Goodbye, World!")
 
 ## NetRexx
 
-Using [[Java|Java's]] [Swing Foundation Classes](http://download.oracle.com/javase/6/docs/technotes/guides/swing/index.html).
+Using [[Java|Java's]] [Swing Foundation Classes](https://download.oracle.com/javase/6/docs/technotes/guides/swing/index.html).
 ```NetRexx
 /* NetRexx */
 options replace format comments java crossref symbols binary
@@ -2876,7 +2876,7 @@ method isFalse() public static returns boolean
 ```
 
 
-An example using [[Java|Java's]] [Abstract Window Toolkit (AWT)](http://download.oracle.com/javase/6/docs/technotes/guides/awt/index.html)
+An example using [[Java|Java's]] [Abstract Window Toolkit (AWT)](https://download.oracle.com/javase/6/docs/technotes/guides/awt/index.html)
 ```NetRexx
 /* NetRexx */
 options replace format comments java crossref symbols binary
@@ -4152,7 +4152,7 @@ fn main() {
 
 ### Ad hoc REPL solution
 
-Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script:
+Ad hoc solution as [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) script:
 
 ```scala
 swing.Dialog.showMessage(message = "Goodbye, World!")
@@ -4725,14 +4725,14 @@ The output is an SVG document. The idea is that it's straightforward to use XSLT
 
 
 ```xml
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="xml"/>
 	<xsl:template match="/*">
 		<!--
 			Use a template to insert some text into a simple SVG graphic
 			with hideous colors.
 		-->
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+		<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 400 200">
 			<rect x="0" y="0" width="400" height="200" fill="cyan"/>
 			<circle cx="200" cy="100" r="50" fill="yellow"/>
 			<text x="200" y="115"
@@ -4762,7 +4762,7 @@ Sample output (with formatting non-destructively adjusted):
 
 
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 400 200">
 	<rect x="0" y="0" width="400" height="200" fill="cyan"/>
 	<circle cx="200" cy="100" r="50" fill="yellow"/>
 	<text x="200" y="115" style="font-size: 40px;

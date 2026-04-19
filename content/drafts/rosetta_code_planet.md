@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[Planet Rosetta Code](http://rosettacode.org/planet/) is simply the aggregation of various blogs of members of the Rosetta Code community, with a content loosely focused on programming and/or Rosetta Code and similar concepts.
+[Planet Rosetta Code](https://rosettacode.org/planet/) is simply the aggregation of various blogs of members of the Rosetta Code community, with a content loosely focused on programming and/or Rosetta Code and similar concepts.
 
 If you're wondering if your blog should be part of the Rosetta Code planet, there are two simple questions you can ask:
 # Do I blog my own perspective on programming?

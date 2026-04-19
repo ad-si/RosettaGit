@@ -910,7 +910,7 @@ which suggests that -g influences the functionality of CBL_ERROR_PROC
 Thanks to Brian Tiffin for his [demo code on opencobol.org's forum](http://www.opencobol.org/modules/newbb/viewtopic.php?viewmode=thread&topic_id=254&forum=1&post_id=1312#1312)
 
 ===A more 'canonical' way of doing it===
-from Richard Plinston on [comp.lang.cobol](http://groups.google.com/group/comp.lang.cobol/browse_thread/thread/bc8574c6452a7da7#)
+from Richard Plinston on [comp.lang.cobol](https://groups.google.com/group/comp.lang.cobol/browse_thread/thread/bc8574c6452a7da7#)
 
 ```cobol
        IDENTIFICATION DIVISION.
@@ -977,7 +977,7 @@ console.log "Recursion depth on this system is #{ do recurse }"
 ```
 
 
-{{out}} Example on [Node.js](http://nodejs.org):
+{{out}} Example on [Node.js](https://nodejs.org):
 
 ```txt
 
@@ -1161,7 +1161,7 @@ per the default max-lisp-eval-depth 600 in Emacs 24.1
 ```
 
 
-Variable <code>max-lisp-eval-depth</code><http://www.gnu.org/software/emacs/manual/html_node/elisp/Eval.html#index-max_002dlisp_002deval_002ddepth-539> is the maximum depth of function calls and variable <code>max-specpdl-size</code><http://www.gnu.org/software/emacs/manual/html_node/elisp/Local-Variables.html#index-max_002dspecpdl_002dsize-614> is the maximum depth of nested <code>let</code> bindings.  A function call is a <code>let</code> of the parameters, even if there's no parameters, and so counts towards <code>max-specpdl-size</code> as well as <code>max-lisp-eval-depth</code>.
+Variable <code>max-lisp-eval-depth</code><https://www.gnu.org/software/emacs/manual/html_node/elisp/Eval.html#index-max_002dlisp_002deval_002ddepth-539> is the maximum depth of function calls and variable <code>max-specpdl-size</code><https://www.gnu.org/software/emacs/manual/html_node/elisp/Local-Variables.html#index-max_002dspecpdl_002dsize-614> is the maximum depth of nested <code>let</code> bindings.  A function call is a <code>let</code> of the parameters, even if there's no parameters, and so counts towards <code>max-specpdl-size</code> as well as <code>max-lisp-eval-depth</code>.
 
 The limits can be increased with <code>setq</code> etc globally, or <code>let</code> etc temporarily.  Lisp code which knows it needs deep recursion might temporarily increase the limits.  Eg. <code>regexp-opt.el</code>.  The ultimate limit is memory or C stack.
 
@@ -1327,7 +1327,7 @@ n;
 quit;
 ```
 
-This is the default GAP recursion trap, see [reference manual, section 7.10](http://www.gap-system.org/Manuals/doc/htm/ref/CHAP007.htm#SECT010). It enters "brk mode" after multiples of 5000 recursions levels. On can change this interval :
+This is the default GAP recursion trap, see [reference manual, section 7.10](https://www.gap-system.org/Manuals/doc/htm/ref/CHAP007.htm#SECT010). It enters "brk mode" after multiples of 5000 recursions levels. On can change this interval :
 
 ```gap
 SetRecursionTrapInterval(100000);
@@ -1371,7 +1371,7 @@ Gnuplot 4.4 and earlier has no limit except the C stack, giving a segv or whatev
 
 Go features stacks that grow as needed making the effective recursion limits relatively large.
 
-Pre-Go 1.2 this could be all of memory and the program would grow without bounds until the system swap space was exhausted and the program was killed (either by the a [run-time panic](http://golang.org/ref/spec#Run_time_panics) after an allocation failure or by the operating system killing the process).
+Pre-Go 1.2 this could be all of memory and the program would grow without bounds until the system swap space was exhausted and the program was killed (either by the a [run-time panic](https://golang.org/ref/spec#Run_time_panics) after an allocation failure or by the operating system killing the process).
 
 Go 1.2 set a limit to the maximum amount of memory that can be used by a ''single goroutine'' stack.
 The initial setting is 1 GB on 64-bit systems, 250 MB on 32-bit systems.
@@ -2803,7 +2803,7 @@ The 64-bit and the 32-bit version behave slightly different. While the 32-bit
 version imposes no limit on its own, and relies on the 'ulimit' setting of the
 caller, the 64-bit version segments the available stack (likewise depending on
 'ulimit') and allows each (co)routine a maximal stack size as configured by
-'[stack](http://software-lab.de/doc/refS.html#stack)'.
+'[stack](https://software-lab.de/doc/refS.html#stack)'.
 ===32-bit version===
 
 ```txt

@@ -285,7 +285,7 @@ lookup-word execute . ! 47
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -769,7 +769,7 @@ echo call_user_func(array($example, $name), 5), "\n";
 
 ## PicoLisp
 
-This can be done with the '[send](http://software-lab.de/doc/refS.html#send)' function.
+This can be done with the '[send](https://software-lab.de/doc/refS.html#send)' function.
 
 ```PicoLisp
 (send (expression) Obj arg1 arg2)

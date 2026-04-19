@@ -50,10 +50,10 @@ Source$ = GetTempFileName$("htm")
 'nomainwin
 
 '   Download main RC LB page which has current tasks on it. Save as 'source.html'
-'   run "C:\Program Files\Mozilla Firefox\firefox.exe http://rosettacode.org/wiki/Category:Liberty_BASIC"   'testing routine
+'   run "C:\Program Files\Mozilla Firefox\firefox.exe https://rosettacode.org/wiki/Category:Liberty_BASIC"   'testing routine
 print " Fetching current RC page of completed Liberty BASIC RC solutions."
-'result = DownloadToFile( "http://rosettacode.org/wiki/Category:Liberty_BASIC", "E:\source.html")
-result = DownloadToFile( "http://rosettacode.org/wiki/Category:Liberty_BASIC", Source$)
+'result = DownloadToFile( "https://rosettacode.org/wiki/Category:Liberty_BASIC", "E:\source.html")
+result = DownloadToFile( "https://rosettacode.org/wiki/Category:Liberty_BASIC", Source$)
 
 if result <>0 then  print "Error downloading LB solved tasks.": end else print: print " Displaying solved tasks.": print
 
@@ -80,7 +80,7 @@ do
     if r$ ="wiki/100_doors" then reading =1
 
     if reading =1 then   '   we can start recording path & name
-        solutions$( count, 1) ="http://rosettacode.org/" +r$ +"#Liberty_BASIC"
+        solutions$( count, 1) ="https://rosettacode.org/" +r$ +"#Liberty_BASIC"
 
         special =instr( r$, "%2B"):    if special <>0 then r$ =left$( r$, special -1) +"+" +mid$( r$, special +3)
         special =instr( r$, "%27"):    if special <>0 then r$ =left$( r$, special -1) +"'" +mid$( r$, special +3)
@@ -335,7 +335,7 @@ die 'You can select local or remote, but not both...' if $local && $remote;
 ## INITIALIZATION
 
 my $client   = HTTP::UserAgent.new;
-my $url      = 'http://rosettacode.org/mw';
+my $url      = 'https://rosettacode.org/mw';
 
 my %c = ( # text colors
     code  => "\e[0;92m", # green
@@ -405,7 +405,7 @@ for @tasks -> $title {
         my $page = $client.get("{ $url }/index.php?title={ uri-escape $title }&action=raw").content;
 
         uh-oh("Whoops, can't find page: $url/$title :check spelling.") and next if $page.elems == 0;
-        say "Getting code from: http://rosettacode.org/wiki/{ $title.subst(' ', '_', :g) }#%l<language>";
+        say "Getting code from: https://rosettacode.org/wiki/{ $title.subst(' ', '_', :g) }#%l<language>";
 
         $entry = $page.comb(/'=={{header|' $(%l<header>) '}}==' .+? [<?before \n'=='<-[={]>*'{{header'> || $] /).Str //
           uh-oh("No code found\nMay be bad markup");
@@ -596,7 +596,7 @@ multi load-resources ($unknown) { () };
 ```txt
 Retrieving tasks
 1 Determine if a string is numeric
-Getting code from: http://rosettacode.org/wiki/Determine_if_a_string_is_numeric#Perl_6
+Getting code from: https://rosettacode.org/wiki/Determine_if_a_string_is_numeric#Perl_6
 
 Testing Determine_if_a_string_is_numeric
 
@@ -637,7 +637,7 @@ Or, if the full %resource hash is loaded it will automatically feed input parame
 ```txt
 Retrieving tasks
 1 Lucky_and_even_lucky_numbers
-Getting code from: http://rosettacode.org/wiki/Lucky_and_even_lucky_numbers#Perl_6
+Getting code from: https://rosettacode.org/wiki/Lucky_and_even_lucky_numbers#Perl_6
 
 Testing Lucky_and_even_lucky_numbers
 
@@ -674,7 +674,7 @@ Done Lucky_and_even_lucky_numbers
 
 ```runbasic
 bf$	= "<SPAN STYLE='font-family:Arial; font-weight:700; font-size:12pt'>"
-a$	= httpGet$("http://rosettacode.org/wiki/Category:Run_BASIC") ' get RB tasks from [RC]
+a$	= httpGet$("https://rosettacode.org/wiki/Category:Run_BASIC") ' get RB tasks from [RC]
 a1$	= word$(a$,2,"Pages in category ""Run BASIC")
 a1$	= word$(a1$,1,"</tr></table>")
 i	= 2
@@ -707,7 +707,7 @@ wait
 [runProg]
 progName$	= #request get$("runProg")
 print progName$
-a$	= httpGet$("http://rosettacode.org/wiki/"+progName$)
+a$	= httpGet$("https://rosettacode.org/wiki/"+progName$)
 
 i	= instr(a$,"<a href=""#Run_BASIC"">")
 
@@ -717,7 +717,7 @@ a$	= word$(a$,1,"""")
 cls                            ' clear screen
 'print a$                      ' this is the program number used in the [RC] editor
 
-a$ = httpGet$("http://rosettacode.org/mw/index.php?title="+progName$+"&action=edit&section="+a$)
+a$ = httpGet$("https://rosettacode.org/mw/index.php?title="+progName$+"&action=edit&section="+a$)
 
 a$	= word$(a$,2,"{header|Run BASIC}")
 i	= instr(a$,">")
@@ -785,7 +785,7 @@ proc getUrlWithRedirect {base args} {
     }
 }
 proc getTaskContent {task} {
-    set token [getUrlWithRedirect http://rosettacode.org/mw/index.php \
+    set token [getUrlWithRedirect https://rosettacode.org/mw/index.php \
 	    title $task action raw]
     set content [http::data $token]
     http::cleanup $token

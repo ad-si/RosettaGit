@@ -1016,7 +1016,7 @@ fox
 ## Common Lisp
 
 
-The [<tt>&rest</tt>](http://www.lispworks.com/documentation/HyperSpec/Body/03_dac.htm) [lambda list keyword](http://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm) causes all remaining arguments to be bound to the following variable.
+The [<tt>&rest</tt>](https://www.lispworks.com/documentation/HyperSpec/Body/03_dac.htm) [lambda list keyword](https://www.lispworks.com/documentation/HyperSpec/Body/03_da.htm) causes all remaining arguments to be bound to the following variable.
 
 
 ```lisp
@@ -1208,7 +1208,7 @@ Being a system language, in D there are also:
 * D-style variadic functions with type info
 * Typesafe variadic function for class objects
 
-See for more info: <http://dlang.org/function.html>
+See for more info: <https://dlang.org/function.html>
 
 =={{header|Déjà Vu}}==
 
@@ -2825,10 +2825,10 @@ end s;
 
 The '@' operator causes a function to accept a variable number of arguments.
 These can be accesed with the
-'[args](http://software-lab.de/doc/refA.html#args)',
-'[next](http://software-lab.de/doc/refN.html#next)',
-'[arg](http://software-lab.de/doc/refA.html#arg)' and
-'[rest](http://software-lab.de/doc/refR.html#rest)' functions.
+'[args](https://software-lab.de/doc/refA.html#args)',
+'[next](https://software-lab.de/doc/refN.html#next)',
+'[arg](https://software-lab.de/doc/refA.html#arg)' and
+'[rest](https://software-lab.de/doc/refR.html#rest)' functions.
 
 ```PicoLisp
 (de varargs @

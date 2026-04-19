@@ -288,7 +288,7 @@ class Circle (radius, x, y) extends  Shape (x, y) implements Drawable {
 
 ## ALGOL 68
 
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - had to remove calls to ''space'' and even then code generates "Run time fault (aborting): attempt to jump to missing ELSE/OUT clause"
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - had to remove calls to ''space'' and even then code generates "Run time fault (aborting): attempt to jump to missing ELSE/OUT clause"
 }}
 The following code is experimental.  Basically ALGOL 68 is not object oriented, so the task to create (and use of) objects is tedious due to the lack of certain constructs, especially the lack of OO syntactic sugar.
 
@@ -1734,7 +1734,7 @@ Example of dynamic allocation and local variable use"
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -3602,7 +3602,7 @@ See [[Classes#Delphi | Delphi]]
 
 ## Perl
 
-The implementation (there are no declarations) of a class using the [standard](http://search.cpan.org/perldoc?perlobj) object system:
+The implementation (there are no declarations) of a class using the [standard](https://metacpan.org/perldoc?perlobj) object system:
 
 ```perl
 {
@@ -3627,7 +3627,7 @@ The implementation (there are no declarations) of a class using the [standard](h
 ```
 
 
-This is the same using the [Moose](http://search.cpan.org/perldoc?Moose) object system:
+This is the same using the [Moose](https://metacpan.org/perldoc?Moose) object system:
 
 ```perl
 {
@@ -3645,7 +3645,7 @@ This is the same using the [Moose](http://search.cpan.org/perldoc?Moose) object 
 ```
 
 
-This is the same class using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) extention:
+This is the same class using the [MooseX::Declare](https://metacpan.org/perldoc?MooseX::Declare) extention:
 
 ```perl
 use MooseX::Declare;
@@ -4170,7 +4170,7 @@ These "new-style" classes support some features which were unavailable in "class
 
 ## R
 
-R has (at least) 5 different object oriented systems.  S3 and S4 correspond to different versions of the S language, from which R was derived.  See, for example, [this presentation by Freidrich Leisch](http://www.r-project.org/conferences/useR-2004/Keynotes/Leisch.pdf) for a more thorough introduction to S3 and S4 classes.  Both these class systems are in use, and ship with the standard R distribution.  The [OOP](http://www.omegahat.org/RSOOP/), [R.oo](http://cran.r-project.org/web/packages/R.oo/index.html) and [proto](http://cran.r-project.org/web/packages/proto/index.html) packages provide other systems.
+R has (at least) 5 different object oriented systems.  S3 and S4 correspond to different versions of the S language, from which R was derived.  See, for example, [this presentation by Freidrich Leisch](http://www.r-project.org/conferences/useR-2004/Keynotes/Leisch.pdf) for a more thorough introduction to S3 and S4 classes.  Both these class systems are in use, and ship with the standard R distribution.  The [OOP](http://www.omegahat.org/RSOOP/), [R.oo](https://cran.r-project.org/web/packages/R.oo/index.html) and [proto](https://cran.r-project.org/web/packages/proto/index.html) packages provide other systems.
 
 
 ### S3
@@ -4362,7 +4362,7 @@ num.Number = num.Number + 5 ' call both Number methods
 ```REBOL
 rebol [
     Title: "Classes"
-    URL: http://rosettacode.org/wiki/Classes
+    URL: https://rosettacode.org/wiki/Classes
 ]
 
 ; Objects are derived from the base 'object!' type. REBOL uses a

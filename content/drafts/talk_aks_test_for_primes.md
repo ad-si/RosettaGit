@@ -33,7 +33,7 @@ This seems like a corollary to Fermat's Little Theorem, not the AKS test:
     (X-1)^N = X^N-1 mod N    [set A=-1]
     (X-1)^N - (X^n-1) = 0 mod N
 
-The youtube video calls this the AKS test, but it has little resemblance to the v6 AKS algorithm.  According to [Wikipedia's AKS page](http://en.wikipedia.org/wiki/Aks_primality_test#Concepts), this method is exponential time.  It is Lemma 2.1 from the v6 paper -- just the leading off point for starting the AKS theorems and algorithm.  Edit: This is theorems 75 and 76 of Hardy and Wright, which was in the 1975 version of the 4th edition, if not in earlier editions.  It appears on page 58 of "The Elements of the theory of algebraic numbers" by L.W. Reid, 1910.  Clearly it is not AKS.
+The youtube video calls this the AKS test, but it has little resemblance to the v6 AKS algorithm.  According to [Wikipedia's AKS page](https://en.wikipedia.org/wiki/Aks_primality_test#Concepts), this method is exponential time.  It is Lemma 2.1 from the v6 paper -- just the leading off point for starting the AKS theorems and algorithm.  Edit: This is theorems 75 and 76 of Hardy and Wright, which was in the 1975 version of the 4th edition, if not in earlier editions.  It appears on page 58 of "The Elements of the theory of algebraic numbers" by L.W. Reid, 1910.  Clearly it is not AKS.
 
 The time growth for an AKS implementation should be ~3-4x longer for each 10x input size increase.  Testing 99999989 should be somewhere in the range of 10 seconds for C code implementing the algorithm from the v6 paper.  This is of course all different by implementation, but this should give some clue.
 

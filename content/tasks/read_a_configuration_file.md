@@ -2423,7 +2423,7 @@ Note that <tt>seedsremoved</tt> doesn't exist.
 
 
 ## J
-<http://rosettacode.org/mw/skins/common/images/button_nowiki.png>
+<https://rosettacode.org/mw/skins/common/images/button_nowiki.png>
 
 
 ```j
@@ -4733,11 +4733,11 @@ otherfamily(2): Harry Barber
 
 ## Seed7
 
-The Seed7 library [scanfile.s7i](http://seed7.sourceforge.net/libraries/scanfile.htm),
-can be used to [scan a file](http://seed7.sourceforge.net/manual/file.htm#Scanning_a_file)
-with functions like [getWord](http://seed7.sourceforge.net/libraries/scanfile.htm#getWord%28inout_file%29),
-[skipSpace](http://seed7.sourceforge.net/libraries/scanfile.htm#skipSpace%28inout_file%29)
-and [getLine](http://seed7.sourceforge.net/libraries/scanfile.htm#getLine%28inout_file%29).
+The Seed7 library [scanfile.s7i](https://seed7.sourceforge.net/libraries/scanfile.htm),
+can be used to [scan a file](https://seed7.sourceforge.net/manual/file.htm#Scanning_a_file)
+with functions like [getWord](https://seed7.sourceforge.net/libraries/scanfile.htm#getWord%28inout_file%29),
+[skipSpace](https://seed7.sourceforge.net/libraries/scanfile.htm#skipSpace%28inout_file%29)
+and [getLine](https://seed7.sourceforge.net/libraries/scanfile.htm#getLine%28inout_file%29).
 
 
 ```seed7

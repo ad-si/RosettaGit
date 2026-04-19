@@ -107,7 +107,7 @@ for Response'Size use 1; -- Setting the size of Response to 1 bit, rather than t
 
 ## AutoHotkey
 
-The documentation explains how the built-in function [VarSetCapacity()](http://www.autohotkey.com/docs/commands/VarSetCapacity.htm) may be used to do so.
+The documentation explains how the built-in function [VarSetCapacity()](https://www.autohotkey.com/docs/commands/VarSetCapacity.htm) may be used to do so.
 
 
 ## BASIC
@@ -678,7 +678,7 @@ declare x float decimal (6),     /* occupies  4 bytes */
 
 In PicoLisp, all variables have the same size (a single cell). But it is
 possible to create a data structure of a given minimal size with the
-'[need](http://software-lab.de/doc/refN.html#need)' function.
+'[need](https://software-lab.de/doc/refN.html#need)' function.
 
 
 ## PureBasic
@@ -756,7 +756,7 @@ AllTypes  = 52
 
 ## Python
 
-For compatibility with the calling conventions of external C functions, the [ctypes module](http://docs.python.org/library/ctypes.html?highlight=ctypes#module-ctypes) has functions that map data types and sizes between Python and C:
+For compatibility with the calling conventions of external C functions, the [ctypes module](https://docs.python.org/library/ctypes.html?highlight=ctypes#module-ctypes) has functions that map data types and sizes between Python and C:
 <table class="docutils" border="1">
 <tr>
   <th class="head">ctypes type</th>
@@ -998,7 +998,7 @@ There is no way to set the minimum size of natural, integer, or
 rational numbers, but no need because they all have unlimited
 precision.
 
-For ([mpfr](http://www.mpfr.org) format) arbitrary precision floating point numbers, there are several
+For ([mpfr](https://www.mpfr.org) format) arbitrary precision floating point numbers, there are several
 mechanisms for setting the minimum precision, although not the exact amount of real memory used.
 * If it's initialized from a literal constant, the compiler infers the intended precision from the number of digits in the constant (or 160 bits, whichever is greater).
 * The library function <code>mpfr..grow(x,n)</code> returns a copy of <code>x</code> with its precision increased by <code>n</code> bits (padded with zeros).

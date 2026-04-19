@@ -101,7 +101,7 @@ Show all output here, on this page.
 ## References
 
 :*   Wikipedia           entry:   [de Bruijn sequence](https://en.wikipedia.org/wiki/De_Bruijn_sequence).
-:*   MathWorld           entry:   [de Bruijn sequence](http://mathworld.wolfram.com/deBruijnSequence.html).
+:*   MathWorld           entry:   [de Bruijn sequence](https://mathworld.wolfram.com/deBruijnSequence.html).
 :*   An  OEIS  entry:   [A166315 lexicographically earliest binary de Bruijn sequences, B(2,n)](https://oeis.org/A166315)     --- Not B(10,4),   but possibly relevant.
 
 

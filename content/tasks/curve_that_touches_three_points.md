@@ -425,7 +425,7 @@ main()
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 const X=0, Y=1;   // p.X == p[X]

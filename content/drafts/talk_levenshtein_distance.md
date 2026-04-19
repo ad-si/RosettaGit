@@ -160,9 +160,9 @@ Here, the rows correspond to suffixes of the string 'kitten' and the columns cor
 
 == Changed definition ==
 
-The [2015-09-15](http://rosettacode.org/mw/index.php?title=Levenshtein_distance&oldid=211835) edits to the task description change the task. Prior to those edits, substitutions cost the same as an insert or a delete. Those edits instead declare that a substitution should cost the same as an insert plus a delete. And, those edits include a reference to a paper which describes this same system.
+The [2015-09-15](https://rosettacode.org/mw/index.php?title=Levenshtein_distance&oldid=211835) edits to the task description change the task. Prior to those edits, substitutions cost the same as an insert or a delete. Those edits instead declare that a substitution should cost the same as an insert plus a delete. And, those edits include a reference to a paper which describes this same system.
 
-But that's a different task from what this was. A [entry](https://en.wikipedia.org/wiki/Edit_distance#Formal_definition_and_properties|wikipedia) currently seems to suggest that this would make the task equivalent to the [common subsequence](http://rosettacode.org/wiki/Longest_Common_Subsequence|longest) task. I don't think that's precise, but there is a pretty strong relationship there.
+But that's a different task from what this was. A [entry](https://en.wikipedia.org/wiki/Edit_distance#Formal_definition_and_properties|wikipedia) currently seems to suggest that this would make the task equivalent to the [common subsequence](https://rosettacode.org/wiki/Longest_Common_Subsequence|longest) task. I don't think that's precise, but there is a pretty strong relationship there.
 
 Anyways, I am reverting these edits, but did not want to lose track of them.
 

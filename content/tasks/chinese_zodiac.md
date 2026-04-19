@@ -2776,8 +2776,8 @@ object Zodiac extends App {
 
 The standard output file of Seed7 accepts only Latin-1 (byte) output.
 Therefore the output with the chinese characters is written to
-[STD_CONSOLE](http://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE).
-The library [console.s7i](http://seed7.sourceforge.net/libraries/console.htm) defines STD_CONSOLE.
+[STD_CONSOLE](https://seed7.sourceforge.net/libraries/console.htm#STD_CONSOLE).
+The library [console.s7i](https://seed7.sourceforge.net/libraries/console.htm) defines STD_CONSOLE.
 
 
 ```seed7
@@ -2999,7 +2999,7 @@ proc cn_zodiac year {
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Chinese_zodiac
+https://rosettacode.org/wiki/Chinese_zodiac
 ···
 ■ ChineseZodiac
   § static

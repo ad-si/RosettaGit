@@ -1437,7 +1437,7 @@ ccall( (:GetDoubleClickTime, "User32"), stdcall,
 ccall( (:clock, "libc"), Int32, ())
 ```
 
-For more information, see here <http://docs.julialang.org/en/latest/manual/calling-c-and-fortran-code.html>
+For more information, see here <https://docs.julialang.org/en/latest/manual/calling-c-and-fortran-code.html>
 
 
 ## Kotlin
@@ -1706,7 +1706,7 @@ FreeLibrary user32
 install("function_name","G","gp_name","./test.gp.so");
 ```
 
-where "G" is the parser code; see section 5.7.3 in the [User's Guide to the PARI library](http://pari.math.u-bordeaux.fr/pub/pari/manuals/2.4.4/libpari.pdf) for more information.
+where "G" is the parser code; see section 5.7.3 in the [User's Guide to the PARI library](https://pari.math.u-bordeaux.fr/pub/pari/manuals/2.4.4/libpari.pdf) for more information.
 
 
 ## Pascal
@@ -2232,7 +2232,7 @@ object GetDiskFreeSpace extends App with SNA {
   val GetDiskFreeSpaceA = SNA[String, IntByReference, IntByReference, IntByReference, IntByReference, Boolean]
 
   // This Windows function is described here:
-  //     http://msdn.microsoft.com/en-us/library/aa364935(v=vs.85).aspx
+  //     https://msdn.microsoft.com/en-us/library/aa364935(v=vs.85).aspx
   val (disk, spc, bps, fc, tc) = ("C:\\",
     new IntByReference, // Sectors per cluster
     new IntByReference, // Bytes per sector

@@ -187,7 +187,7 @@ test:(
 ## AutoHotkey
 
 contributed by Laszlo on the ahk
-[forum](http://www.autohotkey.com/forum/post-276261.html#276261)
+[forum](https://www.autohotkey.com/forum/post-276261.html#276261)
 
 ```AutoHotkey
 Loop 40

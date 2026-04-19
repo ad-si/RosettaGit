@@ -44,7 +44,7 @@ as possible (simple, obvious solutions allowed, too).
 
 **See also:**
 
-*   <http://99-bottles-of-beer.net>
+*   <https://99-bottles-of-beer.net>
 *   <https://en.wikipedia.org/wiki/99_Bottles_of_Beer>
 
 
@@ -1179,7 +1179,7 @@ quit
 ## Beeswax
 
 Straight forward implementation,
-displaying the full lyrics given on <http://99-bottles-of-beer.net>
+displaying the full lyrics given on <https://99-bottles-of-beer.net>
 
 ```Beeswax
 
@@ -1285,7 +1285,7 @@ Code to save to BottlesOfBeer.bra:
 ```bracmat
 {BottlesOfBeer.bra
 
-See http://99-bottles-of-beer.net/}
+See https://99-bottles-of-beer.net/}
 
 X=
   new
@@ -1330,7 +1330,7 @@ r=
 &   put
   $ ( "{BottlesOfBeer.bra
 
-See http://99-bottles-of-beer.net/}
+See https://99-bottles-of-beer.net/}
 
 "
     , "BottlesOfBeer.bra"
@@ -2184,7 +2184,7 @@ fn bottle n:
 
 ## Chapel
 
-Copied from <http://99-bottles-of-beer.net/language-chapel-1215.html>,
+Copied from <https://99-bottles-of-beer.net/language-chapel-1215.html>,
 with minor modifications for chapel 1.7
 
 Works with Chapel 1.7.0.
@@ -2794,7 +2794,7 @@ puts "No more bottles of beer on the wall"
 
 Works with D|2.
 
-Based on Steward Gordon's code at: <http://99-bottles-of-beer.net/language-d-721.html>.
+Based on Steward Gordon's code at: <https://99-bottles-of-beer.net/language-d-721.html>.
 
 ```d
 import std.stdio;
@@ -3542,7 +3542,7 @@ See [99 Bottles of Beer/EsoLang](esolang)
 
 ## ferite
 
-copied from <http://99-bottles-of-beer.net/language-ferite-1281.html?PHPSESSID=b563ec9a2791f6c3cc917c22b17dc542>.
+copied from <https://99-bottles-of-beer.net/language-ferite-1281.html?PHPSESSID=b563ec9a2791f6c3cc917c22b17dc542>.
 
 
 ```ferite
@@ -4324,7 +4324,7 @@ no bletts oof beloethw r ea nl
 
 ## Go!
 
-Copied from <http://99-bottles-of-beer.net/language-go!-289.html>
+Copied from <https://99-bottles-of-beer.net/language-go!-289.html>
 with a minor bug fix.
 
 ```go!
@@ -5111,7 +5111,7 @@ bottle = method(i,
 
 ## J
 
-As posted at the <http://www.jsoftware.com/jwiki/Essays/99_Bottles_of_Beer>
+As posted at the <https://www.jsoftware.com/jwiki/Essays/99_Bottles_of_Beer>
 
 ```j
 bob =: ": , ' bottle' , (1 = ]) }. 's of beer'"_
@@ -10031,7 +10031,7 @@ Take one down, pass it around,
 ```REBOL
 rebol [
     Title: "99 Bottles of Beer"
-    URL: http://rosettacode.org/wiki/99_Bottles_of_Beer
+    URL: https://rosettacode.org/wiki/99_Bottles_of_Beer
 ]
 
 ; The 'bottles' function maintains correct grammar.
@@ -11077,7 +11077,7 @@ END;
 '''Simpler:'''
 
 ```simula
-COMMENT http://99-bottles-of-beer.net
+COMMENT https://99-bottles-of-beer.net
         author: Jack Leunissen
         date: 03/10/07;
 BEGIN
@@ -11985,7 +11985,7 @@ main = whole_song 99
 
 ```UTFool
 ···
-http://rosettacode.org/wiki/99_Bottles_of_Beer
+https://rosettacode.org/wiki/99_Bottles_of_Beer
 ···
 ■ BottlesOfBeer
   § static
@@ -12205,7 +12205,7 @@ See [99 Bottles of Beer/Prolog](prolog)
 
 ```vox
 
-// translated from <http://rosettacode.org/wiki/99_Bottles_of_Beer#JavaScript>
+// translated from <https://rosettacode.org/wiki/99_Bottles_of_Beer#JavaScript>
 
 local beer;
 while((beer = typeof beer == "null" ? 99 : beer) > 0)
@@ -12338,7 +12338,7 @@ A solution written in pure XPath 3.0 (using XSLT as a host language).
 
 
 ```xml
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="3.0">
     <xsl:output method="text"/>
     <xsl:template match="/">
         <xsl:value-of
@@ -12368,7 +12368,7 @@ To run, transform any document with this stylesheet (the input document is ignor
 
 ```xml
 <?xml version="1.0" ?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="text" encoding="utf-8"/>
 
     <!-- Main procedure -->
@@ -12460,8 +12460,8 @@ produce output identical to that for the XSLT 1 code provided.
 
 ```xml
 <?xml version="1.0" ?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="3.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="https://www.w3.org/2001/XMLSchema" exclude-result-prefixes="xs" version="3.0">
 
   <xsl:output method="text"/>
 

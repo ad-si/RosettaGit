@@ -42,7 +42,7 @@ What is if a then b condition?  It's not a straightforward conditional like <cod
 
 I included the operator ⊃ and ≡ as (for some reason) they are part of the original [[wp:ALGOL 60|ALGOL 60]] specification. (Strange but true!) But in the case of binary the ⊃ operator does not seem so useful, AFAIK I have never used it (any got a nice/useful example of usage).  But in the case of Ternary logic ⊃ seems to be useful in tautologies so I included it.  Indeed @Kernigh is correct to say '''a ⊃ b''' is logically equivalent to '''(not a) or b'''.
 
-(Said with my tongue firmly in my cheek: Maybe binary is the reason the computers are so black and white, and (at least on Star Trek and Dr. Who) is it the reason that tautologies make the front panels of computers spout smoke. c.f. <http://www.youtube.com/watch?v=w3fyKChJrZw> LOL :-^ )
+(Said with my tongue firmly in my cheek: Maybe binary is the reason the computers are so black and white, and (at least on Star Trek and Dr. Who) is it the reason that tautologies make the front panels of computers spout smoke. c.f. <https://www.youtube.com/watch?v=w3fyKChJrZw> LOL :-^ )
 
 Note: ⊃ is the same as → and ⇒ operations. c.f. [[wp:List of logic symbols|List of logic symbols]]
 

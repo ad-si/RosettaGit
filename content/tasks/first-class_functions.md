@@ -481,7 +481,7 @@ end acos:
 
 ## AutoHotkey
 
-By '''just me'''. [Forum Post](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363&p=16454#p16454)
+By '''just me'''. [Forum Post](https://www.autohotkey.com/boards/viewtopic.php?f=17&t=1363&p=16454#p16454)
 
 ```AutoHotkey
 #NoEnv
@@ -784,7 +784,7 @@ int main(int argc, char *argv[])
 ```
 
 ===Non-portable function body duplication===
-Following code generates true functions at run time.  Extremely unportable, and [should be considered harmful](http://en.wikipedia.org/wiki/Considered_harmful) in general, but it's one (again, harmful) way for the truly desperate (or perhaps for people supporting only one platform -- and note that some other languages only work on one platform).
+Following code generates true functions at run time.  Extremely unportable, and [should be considered harmful](https://en.wikipedia.org/wiki/Considered_harmful) in general, but it's one (again, harmful) way for the truly desperate (or perhaps for people supporting only one platform -- and note that some other languages only work on one platform).
 
 ```c
 #include <stdio.h>
@@ -1883,7 +1883,7 @@ square=: *:
 
 
 ===Tacit (unorthodox) version===
-In J only adverbs and conjunctions (functionals) can produce verbs (functions)... Unless they are forced to cloak as verbs (functions). (Note that this takes advantage of a bug/feature of the interpreter ; see [unorthodox tacit](http://rosettacode.org/wiki/Closures/Value_capture#Tacit_.28unorthodox.29_version) .)  The resulting functions (which correspond to functionals) can take and produce functions:
+In J only adverbs and conjunctions (functionals) can produce verbs (functions)... Unless they are forced to cloak as verbs (functions). (Note that this takes advantage of a bug/feature of the interpreter ; see [unorthodox tacit](https://rosettacode.org/wiki/Closures/Value_capture#Tacit_.28unorthodox.29_version) .)  The resulting functions (which correspond to functionals) can take and produce functions:
 
 
 ```j
@@ -3006,7 +3006,7 @@ Output:
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found here: <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found here: <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 
 ```Prolog
@@ -3214,7 +3214,7 @@ sapply(mapply(compose,f1,f2),do.call,list(.5))
 ```REBOL
 REBOL [
 	Title: "First Class Functions"
-	URL: http://rosettacode.org/wiki/First-class_functions
+	URL: https://rosettacode.org/wiki/First-class_functions
 ]
 
 ; Functions "foo" and "bar" are used to prove that composition
@@ -3368,7 +3368,7 @@ Each of the trigonometric functions is periodic in the real part of its argument
 '''Cotangent'''   begins its period at   <big>2<big><math>\pi</math></big>k</big>,   finishes it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>,   and then repeats it (forward) over <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>   ───►   <big>2<big><math>\pi</math></big>k + 2<big><math>\pi</math></big></big>.
 
 
-The above text is from the Wikipedia webpage:   <http://en.wikipedia.org/wiki/Inverse_trigonometric_functions>
+The above text is from the Wikipedia webpage:   <https://en.wikipedia.org/wiki/Inverse_trigonometric_functions>
 
 
 

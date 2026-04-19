@@ -496,7 +496,7 @@ which are incorrect since the form <code>(make-the-distinct-thing)</code> is onl
 
 which evaluates <code>(make-the-distinct-thing)</code> <var>n</var> times and collects each result in a list.
 
-It is also possible to use <code>[map-into](http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm)</code>, the destructive map operation, to do this since it may take zero input sequences; this method can produce any sequence type, such as a vector (array) rather than a list, and takes a function rather than a form to specify the thing created:
+It is also possible to use <code>[map-into](https://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm)</code>, the destructive map operation, to do this since it may take zero input sequences; this method can produce any sequence type, such as a vector (array) rather than a list, and takes a function rather than a form to specify the thing created:
 
 
 ```lisp
@@ -637,7 +637,7 @@ clone is the important word here to have distinct objects. This creates an array
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1843,7 +1843,7 @@ sash[r7rs]> (map get-x l2)
 ## Seed7
 
 The example below defines the local array variable ''fileArray''.
-The [times](http://seed7.sourceforge.net/libraries/array.htm#%28in_integer%29times%28in_baseType%29) operator creates a new array value with a specified size.
+The [times](https://seed7.sourceforge.net/libraries/array.htm#%28in_integer%29times%28in_baseType%29) operator creates a new array value with a specified size.
 Finally multiple distinct objects are assigned to the array elements.
 
 ```seed7

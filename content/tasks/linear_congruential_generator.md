@@ -1820,7 +1820,7 @@ end
 ```
 
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -2310,7 +2310,7 @@ BitShiftRight[ NestList[MSrand, 0, 10], 16]
 ```maxima
 seed: 0$
 ms_rand() := quotient(seed: mod(214013 * seed + 2531011, 2147483648), 65536)$
-makelist(ms_rand(), 20); /* see http://oeis.org/A096558 */
+makelist(ms_rand(), 20); /* see https://oeis.org/A096558 */
 
 [38, 7719, 21238, 2437, 8855, 11797, 8365, 32285, 10450, 30612, 5853, 28100, 1142, 281,
 20537, 15921, 8945, 26285, 2997, 14680]
@@ -3285,11 +3285,11 @@ MS : 41, 18467, 6334, 26500, 19169, 15724, 11478, 29358, 26962, 24464, 5705, 281
 ## Seed7
 
 Seed7 provides also a random number generator.
-The random function is overloaded for many types. E.g.: The library [integer.s7i](http://seed7.sourceforge.net/libraries/integer.htm)
-defines [rand(lower, upper)](http://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29).
+The random function is overloaded for many types. E.g.: The library [integer.s7i](https://seed7.sourceforge.net/libraries/integer.htm)
+defines [rand(lower, upper)](https://seed7.sourceforge.net/libraries/integer.htm#rand%28in_integer,in_integer%29).
 The parameters specifiy the lower and upper bound of the desired random value.
-The library [array.s7i](http://seed7.sourceforge.net/libraries/array.htm) defines
-[rand(arr)](http://seed7.sourceforge.net/libraries/array.htm#rand%28in_arrayType%29). This function selects a random element from an array.
+The library [array.s7i](https://seed7.sourceforge.net/libraries/array.htm) defines
+[rand(arr)](https://seed7.sourceforge.net/libraries/array.htm#rand%28in_arrayType%29). This function selects a random element from an array.
 
 
 ```seed7
@@ -3528,7 +3528,7 @@ rand_seq(&rand_ms(),0,10)
 ```
 
 
-'''Output''': compare with OEIS '''[A096553](http://oeis.org/A096553)''' and '''[A096558](http://oeis.org/A096558)'''.
+'''Output''': compare with OEIS '''[A096553](https://oeis.org/A096553)''' and '''[A096558](https://oeis.org/A096558)'''.
 
 
 ```txt

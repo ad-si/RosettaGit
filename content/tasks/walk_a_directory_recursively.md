@@ -392,7 +392,7 @@ int main()
 ```
 
 ==={{libheader|BSD libc}}===
-With the [fts(3)](http://www.openbsd.org/cgi-bin/man.cgi?query=fts&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) functions from 4.4BSD, this program can sort the files, and can also detect cycles (when a link puts a directory inside itself). This program makes a ''logical traversal'' that follows symbolic links to directories.
+With the [fts(3)](https://www.openbsd.org/cgi-bin/man.cgi?query=fts&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html) functions from 4.4BSD, this program can sort the files, and can also detect cycles (when a link puts a directory inside itself). This program makes a ''logical traversal'' that follows symbolic links to directories.
 ```c
 #include <sys/types.h>
 #include <err.h>
@@ -1272,7 +1272,7 @@ Inputbox: filename>m*.txt,Button:Search
 ## Haskell
 
 
-Using the packages [directory](http://hackage.haskell.org/package/directory-1.2.5.0/docs/System-Directory.html#v:getCurrentDirectory) and [filemanip](https://hackage.haskell.org/package/filemanip-0.3.6.3/docs/System-FilePath-Find.html#v:find)
+Using the packages [directory](https://hackage.haskell.org/package/directory-1.2.5.0/docs/System-Directory.html#v:getCurrentDirectory) and [filemanip](https://hackage.haskell.org/package/filemanip-0.3.6.3/docs/System-FilePath-Find.html#v:find)
 
 
 ```haskell
@@ -2295,7 +2295,7 @@ FinishDirectory(1)
 
 ## Python
 
-This uses the standard [os.walk()](http://docs.python.org/py3k/library/os.html?highlight=os.walk#os.walk) module function to walk a directory tree, and the [fnmatch](http://docs.python.org/py3k/library/fnmatch.html) module for matching file names.
+This uses the standard [os.walk()](https://docs.python.org/py3k/library/os.html?highlight=os.walk#os.walk) module function to walk a directory tree, and the [fnmatch](https://docs.python.org/py3k/library/fnmatch.html) module for matching file names.
 
 ```python
 import fnmatch
@@ -2663,13 +2663,13 @@ See also: '''(find-files ...)''' function in the '''file''' module.
 
 ## Seed7
 
-Seed7 has a [standard path representation](http://seed7.sourceforge.net/manual/os.htm#Standard_path_representation),
-which is independent of the operating system. The function [readDir](http://seed7.sourceforge.net/manual/os.htm#readDir)
+Seed7 has a [standard path representation](https://seed7.sourceforge.net/manual/os.htm#Standard_path_representation),
+which is independent of the operating system. The function [readDir](https://seed7.sourceforge.net/manual/os.htm#readDir)
 reads the contents of a directory as array of strings. The files . and .. are left out, so it is not necessary to ignore them.
-The function [fileType](http://seed7.sourceforge.net/manual/os.htm#fileType) is used to determine, if a file is a directory.
+The function [fileType](https://seed7.sourceforge.net/manual/os.htm#fileType) is used to determine, if a file is a directory.
 The example below follows symbolic links. To ignore symbolic links use
-[fileTypeSL](http://seed7.sourceforge.net/libraries/osfiles.htm#fileTypeSL%28in_string%29) instead of
-[fileType](http://seed7.sourceforge.net/libraries/osfiles.htm#fileType%28in_string%29).
+[fileTypeSL](https://seed7.sourceforge.net/libraries/osfiles.htm#fileTypeSL%28in_string%29) instead of
+[fileType](https://seed7.sourceforge.net/libraries/osfiles.htm#fileType%28in_string%29).
 
 
 ```seed7

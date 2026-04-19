@@ -1932,7 +1932,7 @@ if problem:
     sys.exit(1)
 ```
 
-The [atexit](http://docs.python.org/library/atexit.html) module allows you to register functions to be run when the program exits.
+The [atexit](https://docs.python.org/library/atexit.html) module allows you to register functions to be run when the program exits.
 ;As soon as possible:
 (Signals the underlying OS to abort the program. No cleanup is performed)
 

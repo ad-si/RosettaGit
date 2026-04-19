@@ -3578,7 +3578,7 @@ Josephus is prisoner 30
 The main task (find one survivor) is a special case of the extra task (find m survivors).
 The function ''executeAllButM'' solves the extra task and is called with m=1 to solve the main task.
 The function ''str'' converts an array of integer elements to a string.
-The function [enable_output](http://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29)
+The function [enable_output](https://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29)
 uses ''str'' to define everything necessary to write an array of integers.
 This way the main program can write the survivor array.
 

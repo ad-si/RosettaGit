@@ -14,7 +14,7 @@ The OCaml Calendar Library is a library for handling dates and times in OCaml pr
 
 Homepage: <http://calendar.forge.ocamlcore.org/>
 
-Project page: <http://forge.ocamlcore.org/projects/calendar/>
+Project page: <https://forge.ocamlcore.org/projects/calendar/>
 
 Opam package: <http://opam.ocaml.org/packages/calendar/calendar.2.03.2/>
 

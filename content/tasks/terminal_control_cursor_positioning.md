@@ -599,7 +599,7 @@ Print["Hello"]
 ## OCaml
 
 
-Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/):
+Using the library [ANSITerminal](https://forge.ocamlcore.org/projects/ansiterminal/):
 
 
 ```ocaml
@@ -728,7 +728,7 @@ Using ANSI escape sequence, where ESC[y;xH moves curser to row y, col x:
 print("\033[6;3HHello")
 ```
 
-On Windows it needs to import and init the [colorama](http://code.google.com/p/colorama/) module first.
+On Windows it needs to import and init the [colorama](https://code.google.com/p/colorama/) module first.
 
 ANSI sequences are not recognized in Windows console, here is a program using Windows API:
 
@@ -856,8 +856,8 @@ object Main extends App {
 
 ## Seed7
 
-The function [setPos](http://seed7.sourceforge.net/libraries/console.htm#setPos%28ref_console_file,__ref_integer,ref_integer%29) is portable and
-positions the cursor on the [console window](http://seed7.sourceforge.net/libraries/console.htm).
+The function [setPos](https://seed7.sourceforge.net/libraries/console.htm#setPos%28ref_console_file,__ref_integer,ref_integer%29) is portable and
+positions the cursor on the [console window](https://seed7.sourceforge.net/libraries/console.htm).
 ''SetPos'' is based on terminfo respectively the Windows console API.
 
 

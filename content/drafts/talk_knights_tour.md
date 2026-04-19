@@ -20,7 +20,7 @@ Added my original perl solution and sample output; moved out of draft status.
 == References ==
 [[wp:Knight%27s_tour]]
 
-The following had more than I needed to know about the problem [A Simple Algorithm for Knight’s Tours](http://www.cs.cmu.edu/~sganzfri/REUPaper.pdf) by Sam Ganzfried. --[[User:Paddy3118|Paddy3118]] 07:22, 29 May 2011 (UTC)
+The following had more than I needed to know about the problem [A Simple Algorithm for Knight’s Tours](https://www.cs.cmu.edu/~sganzfri/REUPaper.pdf) by Sam Ganzfried. --[[User:Paddy3118|Paddy3118]] 07:22, 29 May 2011 (UTC)
 :::::::   (above) broken link.     -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 20:56, 22 July 2019 (UTC)
 :::::::   (above) referenced document can be found here: [A Simple Algorithm for Knight’s Tours by Sam Ganzfried](http://math.oregonstate.edu/~math_reu/proceedings/REU_Proceedings/Proceedings2004/2004Ganzfried.pdf) 
 
@@ -34,7 +34,7 @@ I found some additional references that may be of interest including a genetic a
 
 * <http://www.markkeen.com/knight/index.html> 
 * <http://www.cs.nott.ac.uk/~gxk/papers/phai04.pdf>  Ant Colony Algorithm 
-* <http://arxiv.org/abs/arXiv:0803.4321>
+* <https://arxiv.org/abs/arXiv:0803.4321>
 --[[User:Dgamey|Dgamey]] 10:10, 2 June 2011 (UTC)
 
 == Incomplete Tours and Warnsdorff ==

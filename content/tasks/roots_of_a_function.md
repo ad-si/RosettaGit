@@ -279,7 +279,7 @@ Poly(x) is a test function of one variable, here we are searching for its roots:
 * Having found such an interval, the root() function searches for a value where our function is 0, within a given tolerance.
 * It also sets ErrorLevel to info about the root found.
 
-[discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139)
+[discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=139)
 
 ```autohotkey
 MsgBox % roots("poly", -0.99, 2, 0.1, 1.0e-5)
@@ -1281,7 +1281,7 @@ Executed in GHCi:
 ```
 
 
-Or using package [hmatrix](http://hackage.haskell.org/package/hmatrix) from HackageDB.
+Or using package [hmatrix](https://hackage.haskell.org/package/hmatrix) from HackageDB.
 
 ```haskell
 import Numeric.GSL.Polynomials
@@ -1359,7 +1359,7 @@ To get rid of repeated roots use `Data.List.nub`
 
 ## HicEst
 
-HicEst's [SOLVE](http://www.HicEst.com/SOLVE.htm) function employs the Levenberg-Marquardt method:
+HicEst's [SOLVE](https://www.HicEst.com/SOLVE.htm) function employs the Levenberg-Marquardt method:
 
 ```HicEst
 OPEN(FIle='test.txt')

@@ -28,12 +28,12 @@ Anyone care to suggest a rework of the task that would be better. Or would a re-
 : The sequence should be specified as 1,2,3,5,8..., and a Zeckendorf representation of a non-negative integer n is n expressed as the sum of non-consecutive terms in that sequence.  This is sufficient and unambiguous: every n >= 0 has a unique such representation, and vice versa.  I don't think the task should specify ''how'' one derives such a summation from n; listing a method as a hint, fine, putting it in the spec as if it's required, no.  --[[User:Ledrug|Ledrug]] 23:47, 11 October 2012 (UTC)
 
 :: I agree with these points.  I'll add that it seems most sites say Zeckendorf representation only specifies a sum, and does not specify the binary place value coding that turns 3 + 1 into 101.  I kind of like the binary coding but I think it might be good to describe it as an additional encoding on top of Zeckendorf representation.  [Dr Ron Knott's site](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibrep.html#fibbase) calls this the "Fibonacci base system."  Other links:
-::* [Mathworld](http://mathworld.wolfram.com/ZeckendorfRepresentation.html) hints at the binary encoding by using 0 or 1 as a multiplier of Fibonacci terms.
-::* [Z's theorem at MathWorld](http://mathworld.wolfram.com/ZeckendorfsTheorem.html)
-::* [Wikipedia](http://en.wikipedia.org/wiki/Zeckendorf%27s_theorem) is careful to say the theorem applies to ''distinct'' Fibonacci numbers (my emphasis.)
-::* [OEIS A003714](http://oeis.org/A003714), "Fibbinary numbers".
+::* [Mathworld](https://mathworld.wolfram.com/ZeckendorfRepresentation.html) hints at the binary encoding by using 0 or 1 as a multiplier of Fibonacci terms.
+::* [Z's theorem at MathWorld](https://mathworld.wolfram.com/ZeckendorfsTheorem.html)
+::* [Wikipedia](https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem) is careful to say the theorem applies to ''distinct'' Fibonacci numbers (my emphasis.)
+::* [OEIS A003714](https://oeis.org/A003714), "Fibbinary numbers".
 :: &mdash;[[User:Sonia|Sonia]] 00:32, 12 October 2012 (UTC)
-:: Oh wait, there's [OEIS A014417](http://oeis.org/A014417) "Representation of n in base of Fibonacci numbers" which is even better.  &mdash;[[User:Sonia|Sonia]] 00:39, 12 October 2012 (UTC)
+:: Oh wait, there's [OEIS A014417](https://oeis.org/A014417) "Representation of n in base of Fibonacci numbers" which is even better.  &mdash;[[User:Sonia|Sonia]] 00:39, 12 October 2012 (UTC)
 :::I've rewritten the task to be based on distinct Fibonacci numbers, and the task now references the OEIS sequence as the desired result without specifying the algorithm.  I don't think it will be any great hardship to the current entries to switch to this approach, since it merely involves starting the Fibonacci sequence at a point where it leaves out the first 1.  --[[User:TimToady|TimToady]] 05:16, 12 October 2012 (UTC)
 ::::Okay, I think I've patched everything to be consistent with the new task description, but please double-check my work to see if I've done something stupid in your favorite language.  --[[User:TimToady|TimToady]] 06:27, 12 October 2012 (UTC)
 

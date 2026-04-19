@@ -721,8 +721,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -2362,7 +2362,7 @@ multiply=: dyad define
 )
 ```
 
-Here we use an [explicit](http://www.jsoftware.com/help/dictionary/intro18.htm) definition (where the arguments are named) rather than a [tacit](http://www.jsoftware.com/help/dictionary/intro19.htm) version (where the arguments are implied).  In explicit J verbs, x is the left argument and y is the right argument.
+Here we use an [explicit](https://www.jsoftware.com/help/dictionary/intro18.htm) definition (where the arguments are named) rather than a [tacit](https://www.jsoftware.com/help/dictionary/intro19.htm) version (where the arguments are implied).  In explicit J verbs, x is the left argument and y is the right argument.
 
 (Note, by the way, that explicit definitions are a subset of tacit definitions -- when the arguments are explicitly named they are still implied in the larger context containing the definition.)
 
@@ -3520,7 +3520,7 @@ sub multiply { $_[0] * $_[1] }
 
 Arguments in Perl subroutines are passed in the <code>@_</code> array, and they can be accessed directly, first one as <code>$_[0]</code>, second one as <code>$_[1]</code>, etc. When the above function is called with only one or no arguments then the missing ones have an undefined value which is converted to 0 in multiplication.
 
-This is an example using [subroutine prototypes](http://perldoc.perl.org/perlsub.html#Prototypes):
+This is an example using [subroutine prototypes](https://perldoc.perl.org/perlsub.html#Prototypes):
 
 ```perl
 sub multiply( $$ )
@@ -3530,7 +3530,7 @@ sub multiply( $$ )
 }
 ```
 
-The above subroutine can only be called with exactly two [scalar values](http://perldoc.perl.org/perldata.html#Scalar-values) (two dollar signs in the signature) but those values may be not numbers or not even defined. The <code>@_</code> array is unpacked into <code>$a</code> and <code>$b</code> lexical variables, which are used later.
+The above subroutine can only be called with exactly two [scalar values](https://perldoc.perl.org/perldata.html#Scalar-values) (two dollar signs in the signature) but those values may be not numbers or not even defined. The <code>@_</code> array is unpacked into <code>$a</code> and <code>$b</code> lexical variables, which are used later.
 
 The arguments can be automatically unpacked into lexical variables using the experimental signatures feature (in core as of 5.20):
 

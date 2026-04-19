@@ -711,7 +711,7 @@ namespace VanDerCorput
     /// base 4:  0  1/4  1/2  3/4  1/16  5/16  9/16  13/16  1/8  3/8
     /// base 5:  0  1/5  2/5  3/5  4/5  1/25  6/25  11/25  16/25  21/25
     /// </summary>
-    /// <see cref="http://rosettacode.org/wiki/Van_der_Corput_sequence"/>
+    /// <see cref="https://rosettacode.org/wiki/Van_der_Corput_sequence"/>
     public class VanDerCorputSequence: IEnumerable<Tuple<long,long>>
     {
         /// <summary>
@@ -3291,7 +3291,7 @@ Base  5 : 0 0.1 0.2 0.3 0.4 0.01 0.11 0.21 0.31 0.41
 
 
 ```VBScript
-'http://rosettacode.org/wiki/Van_der_Corput_sequence
+'https://rosettacode.org/wiki/Van_der_Corput_sequence
 'Van der Corput Sequence fucntion call = VanVanDerCorput(number,base)
 
 Base2 = "0" : Base3 = "0" : Base4 = "0" : Base5 = "0"

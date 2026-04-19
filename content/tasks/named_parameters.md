@@ -212,7 +212,7 @@ DOE, JOHN
 ## AutoHotkey
 
 AutoHotkey doesn't have named parameters, but they can be simulated as follows.
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=280499)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?p=280499)
 
 ```AutoHotkey
 MyFunc( "Val=0, w=1024, Text=The Quick Brown Fox, newVar=I'm New" )
@@ -884,7 +884,7 @@ No parameter i:=
 ## J
 
 
-J is similar to Perl in that all arguments to functions come in as separate elements in an array.  But it is possible to emulate more complex calling conventions.  For example, using the [calling convention J script](http://www.jsoftware.com/svn/DanBron/trunk/environment/calling_convention.ijs), one could write:
+J is similar to Perl in that all arguments to functions come in as separate elements in an array.  But it is possible to emulate more complex calling conventions.  For example, using the [calling convention J script](https://www.jsoftware.com/svn/DanBron/trunk/environment/calling_convention.ijs), one could write:
 
 
 ```j
@@ -917,7 +917,7 @@ myFunc<MAX=906, COLOR=blue fs>
 ```
 
 
-For further discussion, see the [corresponding thread in the J Forums](http://www.jsoftware.com/pipermail/programming/2009-July/015571.html).
+For further discussion, see the [corresponding thread in the J Forums](https://www.jsoftware.com/pipermail/programming/2009-July/015571.html).
 
 
 ## Java
@@ -1608,7 +1608,7 @@ Output:
 ## PicoLisp
 
 PicoLisp uses normally positional parameters, but
-'[bind](http://software-lab.de/doc/refB.html#bind)' can be used
+'[bind](https://software-lab.de/doc/refB.html#bind)' can be used
 to establish bindings to passed names.
 ===Passing symbol-value pairs===
 
@@ -2427,7 +2427,7 @@ example -help
 ```
 
 
-According to [wiki.tcl.tk discussions](http://wiki.tcl.tk/1730), '''::tcl::OptProc is deprecated.'''
+According to [wiki.tcl.tk discussions](https://wiki.tcl-lang.org/1730), '''::tcl::OptProc is deprecated.'''
 The recommended replacement is [cmdline](http://tcllib.sourceforge.net/doc/cmdline.html) in [tcllib](http://tcllib.sourceforge.net/doc/index.html). "This is probably the most standard and widely-used of these packages."
 
 

@@ -116,7 +116,7 @@ package  {
 
 ## AutoHotkey
 
-Requires the GDI+ standard library: <http://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
+Requires the GDI+ standard library: <https://www.autohotkey.com/forum/viewtopic.php?t=32238><br/>
 It is worth noting that this fills the whole screen; press Esc to exit.
 
 ```AHK
@@ -213,7 +213,7 @@ The dimensions of the image are specified by the first two values on the stack: 
 
 ## C
 
-This code is only a slight variation of my [Colour Pinstripe C code](http://rosettacode.org/wiki/Colour_pinstripe/Display#C). It also uses Borland's Turbo C graphics library.
+This code is only a slight variation of my [Colour Pinstripe C code](https://rosettacode.org/wiki/Colour_pinstripe/Display#C). It also uses Borland's Turbo C graphics library.
 
 
 ```C
@@ -489,7 +489,7 @@ End
 ```
 
 
-'''[Click here for an image of the output](http://www.cogier.com/gambas/Pinstripe.png)'''
+'''[Click here for an image of the output](https://www.cogier.com/gambas/Pinstripe.png)'''
 
 
 ## Go
@@ -564,7 +564,7 @@ end
 ```
 
 
-[graphics.icn supports graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn supports graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -875,7 +875,7 @@ $img.close;
 
 ## Phix
 
-Just change [Colour Pinstripe](http://rosettacode.org/wiki/Colour_pinstripe/Display#Phix) such that colours = {CD_BLACK, CD_WHITE}
+Just change [Colour Pinstripe](https://rosettacode.org/wiki/Colour_pinstripe/Display#Phix) such that colours = {CD_BLACK, CD_WHITE}
 
 
 ## PicoLisp
@@ -1183,7 +1183,7 @@ The ZX81's graphics resolution is only 64x44, so this is quite a blocky pinstrip
 90 NEXT W
 ```
 
-Screenshot [here](http://www.edmundgriffiths.com/zx81pinstripe.jpg).
+Screenshot [here](https://www.edmundgriffiths.com/zx81pinstripe.jpg).
 
 
 ## Tcl

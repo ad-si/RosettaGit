@@ -30,12 +30,12 @@ I calculated the number having the most words and got:
 
 Those 'words' seem random to me.
 
-I suggest we use the word list from task [[Ordered words]] i.e. this [dictionary](http://www.puzzlers.org/pub/wordlists/unixdict.txt) although words with non a-zA-Z chars in them such as 10th will have to be rejected. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 07:19, 6 February 2015 (UTC)
+I suggest we use the word list from task [[Ordered words]] i.e. this [dictionary](https://www.puzzlers.org/pub/wordlists/unixdict.txt) although words with non a-zA-Z chars in them such as 10th will have to be rejected. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 07:19, 6 February 2015 (UTC)
 
 :Changing the wordlist gives me these stats:
 
 ```txt
-Read 25104 words from 'http://www.puzzlers.org/pub/wordlists/unixdict.txt'
+Read 25104 words from 'https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 Number of words after rejecting those that have characters other than a-zA-Z in them is 24978
 Those words are represented by 22903 numbers
 

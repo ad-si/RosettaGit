@@ -108,7 +108,7 @@ Finally, we sum each row, and sort the names in order by their dependency count.
 ### alternate implementation
 
 
-The above implementation is a bit naive, since a connection matrix is O(n^2) in space and O(n^3) in time for n dependencies.  If this matters, I should probably rewrite the code (and these comments) to use the tree structure mentioned at <http://www.jsoftware.com/jwiki/Essays/Tree%20Sum#Descendants>
+The above implementation is a bit naive, since a connection matrix is O(n^2) in space and O(n^3) in time for n dependencies.  If this matters, I should probably rewrite the code (and these comments) to use the tree structure mentioned at <https://www.jsoftware.com/jwiki/Essays/Tree%20Sum#Descendants>
 
 : I look forward to when you distill this into the J solution. (Maybe provide it twice, once in expanded form with annotations?) —[[User:Dkf|Donal Fellows]] 22:18, 1 September 2009 (UTC)
 
@@ -151,7 +151,7 @@ If I have been too brief on some subject, please feel free to ask questions.  (I
 
 [[User:Rdm|Rdm]] 15:48, 2 September 2009 (UTC)
 
-: [J for a Py Guy](http://paddy3118.blogspot.com/2009/09/j-for-py-guy.html) --[[User:Paddy3118|Paddy3118]] 17:37, 2 September 2009 (UTC)
+: [J for a Py Guy](https://paddy3118.blogspot.com/2009/09/j-for-py-guy.html) --[[User:Paddy3118|Paddy3118]] 17:37, 2 September 2009 (UTC)
 
 Note: Roger Hui has pointed out that, in the version of J I am using (version 6.02a), the expression <code>;@:{L:0 1~</code> is slow on large data sets (for example: trees with 2e5 nodes).  For now, a faster (but more obscure) implementation of the same algorithm is <code>3 : '(*c) #^:_1 (I.c) <@;/. (;y){y [ c=. #&> y'</code>.  In both cases, we are finding the grandchildren which correspond to the current children. [[User:Rdm|Rdm]] 18:21, 2 September 2009 (UTC)
 

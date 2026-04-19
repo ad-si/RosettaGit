@@ -4069,7 +4069,7 @@ is.heronian <- function(a, b, c) {
     h > 0 && 0==h%%1
 }
 
-# borrowed from stackoverflow http://stackoverflow.com/questions/21502181/finding-the-gcd-without-looping-r
+# borrowed from stackoverflow https://stackoverflow.com/questions/21502181/finding-the-gcd-without-looping-r
 gcd <- function(x,y) {
   r <- x%%y;
   ifelse(r, gcd(y, r), y)
@@ -4823,7 +4823,7 @@ if {[info commands let] eq ""} {
     namespace import ::tcl::mathfunc::* ::tcl::mathop::*
     interp alias {} sum {} +
 
-    # a simple adaptation of gcd from http://wiki.tcl.tk/2891
+    # a simple adaptation of gcd from https://wiki.tcl-lang.org/2891
     proc coprime {a args} {
         set gcd $a
         foreach arg $args {

@@ -265,7 +265,7 @@ HOME:/home/suchrich USER:SuchRich
 Listing all the environment variables:
 
 ```awk
-# http://ideone.com/St5SHF
+# https://ideone.com/St5SHF
 BEGIN { print "# Environment:"
         for (e in ENVIRON) { printf( "%10s = %s\n", e, ENVIRON[e] ) }
 }
@@ -1395,7 +1395,7 @@ echo getEnv("HOME")
 
 ## NSIS
 
-While common environment variables exist as constants within the NSIS script compilation environment [(see NSIS documentation)](http://nsis.sourceforge.net/Docs/Chapter4.html#4.2.3), arbitrarily-named environment variables' values may be retrieved using ['''ExpandEnvStrings'''](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.2.7).
+While common environment variables exist as constants within the NSIS script compilation environment [(see NSIS documentation)](https://nsis.sourceforge.net/Docs/Chapter4.html#4.2.3), arbitrarily-named environment variables' values may be retrieved using ['''ExpandEnvStrings'''](https://nsis.sourceforge.net/Docs/Chapter4.html#4.9.2.7).
 
 ```nsis
 ExpandEnvStrings $0 "%PATH%" ; Retrieve PATH and place it in builtin register 0.
@@ -1791,11 +1791,11 @@ sys.env.get("HOME")
 
 ## Seed7
 
-Seed7 provides the function [getenv](http://seed7.sourceforge.net/manual/os.htm#getenv),
+Seed7 provides the function [getenv](https://seed7.sourceforge.net/manual/os.htm#getenv),
 to get the value of an environment variable. Environment variables are highly operating system
 dependent. Some variables such as HOME are not always defined and others like PATH use
 an operating system dependent format (different delimiters). Seed7 provides the functions
-[homeDir](http://seed7.sourceforge.net/libraries/osfiles.htm#homeDir) and [getSearchPath](http://seed7.sourceforge.net/libraries/process.htm#getSearchPath)
+[homeDir](https://seed7.sourceforge.net/libraries/osfiles.htm#homeDir) and [getSearchPath](https://seed7.sourceforge.net/libraries/process.htm#getSearchPath)
 to get the home directory and the search path in an operating system independent manner.
 
 
@@ -1868,7 +1868,7 @@ returns an option type which is either SOME value or NONE if variable doesn't ex
 
 ## Stata
 
-Use the '''env''' [extended macro function](http://www.stata.com/help.cgi?extended_fcn).
+Use the '''env''' [extended macro function](https://www.stata.com/help.cgi?extended_fcn).
 
 
 ```stata

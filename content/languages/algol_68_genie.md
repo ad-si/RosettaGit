@@ -14,9 +14,9 @@ tags = []
 
 After successful parsing of an entire source program, the syntax tree, that serves as an intermediate program representation, is interpreted. The interpreter performs many runtime checks.
 
-The author of Algol 68 Genie is Marcel van der Veer. Algol68G is released under the GNU GPL and runs on [Linux](https://rosettacode.org/wiki/Linux), [UNIX](https://rosettacode.org/wiki/UNIX), [BSD](https://rosettacode.org/wiki/BSD) [Mac OS](https://rosettacode.org/wiki/Mac_OS_X) and [Windows](https://rosettacode.org/wiki/Windows) XP, and is available [here](http://www.xs4all.nl/~jmvdveer/algol.html).
+The author of Algol 68 Genie is Marcel van der Veer. Algol68G is released under the GNU GPL and runs on [Linux](https://rosettacode.org/wiki/Linux), [UNIX](https://rosettacode.org/wiki/UNIX), [BSD](https://rosettacode.org/wiki/BSD) [Mac OS](https://rosettacode.org/wiki/Mac_OS_X) and [Windows](https://rosettacode.org/wiki/Windows) XP, and is available [here](https://www.xs4all.nl/~jmvdveer/algol.html).
 
-[ALGOL 68G](https://rosettacode.org/wiki/ALGOL_68G) is an interpretor that runs on Linux and a good way to get started with [ALGOL 68](https://rosettacode.org/wiki/ALGOL_68).  ''ALGOL 68G'' mk14.1 is now available for download for Fedora9 from Source Forge - [Download now](http://sourceforge.net/project/showfiles.php?group_id=114223&package_id=300114&release_id=642308). (This download RPM includes a 400 page [ALGOL 68](https://rosettacode.org/wiki/ALGOL_68) manual in printer ready pdf)
+[ALGOL 68G](https://rosettacode.org/wiki/ALGOL_68G) is an interpretor that runs on Linux and a good way to get started with [ALGOL 68](https://rosettacode.org/wiki/ALGOL_68).  ''ALGOL 68G'' mk14.1 is now available for download for Fedora9 from Source Forge - [Download now](https://sourceforge.net/project/showfiles.php?group_id=114223&package_id=300114&release_id=642308). (This download RPM includes a 400 page [ALGOL 68](https://rosettacode.org/wiki/ALGOL_68) manual in printer ready pdf)
 ## Features of Algol68G
 * The [interpreter](https://rosettacode.org/wiki/interpreter) performs checks on many events, for example: assigning to <tt>NIL</tt> or dereferencing of <tt>NIL</tt>, using uninitialised values, invalid operands to standard prelude operators and procedures, bounds check when manipulating arrays, overflow of arithmetic modes, "dangling references", that are names that refer to deallocated storage.
 * Precision of numeric modes: implementation of <tt>LONG INT, LONG REAL</tt> and <tt>LONG COMPLEX</tt> with roughly doubled precision with respect to <tt>INT, REAL, COMPLEX</tt> and implementation of multiprecision arithmetic through <tt>LONG LONG INT, LONG LONG REAL</tt> and <tt>LONG LONG COMPLEX</tt> which are modes with user defined precision which is set by an option.
@@ -45,5 +45,5 @@ The important deviations are:
 * When all arguments in a call of <tt>readf, printf, writef, getf</tt> or <tt>putf</tt> are processed, the format associated with the corresponding file is purged - that is, remaining insertions are processed and the format is discarded.
 
 ## Download
-* [Algol 68 Genie web page](http://www.xs4all.nl/~jmvdveer/algol.html)
-* [Fedora/Centos/RHEL/Win32: Sourceforge Algol 68 Compiler, Interpreter & Runtime](http://sourceforge.net/projects/algol68/)
+* [Algol 68 Genie web page](https://www.xs4all.nl/~jmvdveer/algol.html)
+* [Fedora/Centos/RHEL/Win32: Sourceforge Algol 68 Compiler, Interpreter & Runtime](https://sourceforge.net/projects/algol68/)

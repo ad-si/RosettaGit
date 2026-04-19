@@ -411,7 +411,7 @@ $ echo 1000 |awk -f sum_multiples_of3and5.awk
 
 ### Extra credit
 
-In Awk, all numbers are represented internally as double precision floating-point numbers. Thus the result for the extra credit is unprecise. Since version 4.1, GNU Awk supports high precision arithmetic (using [GNU MPFR](http://www.mpfr.org/) and [[GMP]]) which is turned on with the <code>-M / --bignum</code> option. The variable <code>PREC</code> sets the working precision for arithmetic operations (here 80 bits):
+In Awk, all numbers are represented internally as double precision floating-point numbers. Thus the result for the extra credit is unprecise. Since version 4.1, GNU Awk supports high precision arithmetic (using [GNU MPFR](https://www.mpfr.org/) and [[GMP]]) which is turned on with the <code>-M / --bignum</code> option. The variable <code>PREC</code> sets the working precision for arithmetic operations (here 80 bits):
 
 
 ```txt
@@ -2604,7 +2604,7 @@ Another alternative is
 n=1000; sum(0:3:n-1)+sum(0:5:n-1)-sum(0:15:n-1)
 ```
 
-Of course, it's more efficient to use [Gauss' approach](http://mathforum.org/library/drmath/view/57919.html) of adding subsequent integers:
+Of course, it's more efficient to use [Gauss' approach](https://mathforum.org/library/drmath/view/57919.html) of adding subsequent integers:
 
 ```MATLAB
 n=999;

@@ -55,7 +55,7 @@ Thanks!
 >>
 >>
 >>     -- Donald 'Paddy' McCarthy
->>     http://paddy3118.blogspot.com/
+>>     https://paddy3118.blogspot.com/
 ```
 </small>
 --[[User:Paddy3118|Paddy3118]] 04:28, 6 September 2010 (UTC)

@@ -122,8 +122,8 @@ Define the stateless Y combinator and use it to compute [[wp:Factorial|factorial
 {{wont work with|ALGOL 68|Revision 1 - scoping extensions to language used.}}
 {{works with|ALGOL 68S|from Amsterdam Compiler Kit ( [[wp:Guido van Rossum|Guido van Rossum]]'s teething ring) with runtime scope checking turned off.}}
 <!--
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - compile not currently available on my system.}}
-{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - correctly detects a scope violation}} -->
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - compile not currently available on my system.}}
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - correctly detects a scope violation}} -->
 
 ```algol68
 BEGIN
@@ -1054,7 +1054,7 @@ static class YCombinator
 
 To compare differences in language and runtime instead of in approaches to the task, the following are translations of solutions from other languages. Two versions of each translation are provided, one seeking to resemble the original as closely as possible, and another that is identical in program control flow but syntactically closer to idiomatic C#.
 
-====[C++](http://rosettacode.org/mw/index.php?oldid=287744#C++)====
+====[C++](https://rosettacode.org/mw/index.php?oldid=287744#C++)====
 <code>std::function<TResult(T)></code> in C++ corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -1137,7 +1137,7 @@ static class Program {
 ```
 
 
-====[Ceylon](http://rosettacode.org/mw/index.php?oldid=287744#Ceylon)====
+====[Ceylon](https://rosettacode.org/mw/index.php?oldid=287744#Ceylon)====
 <code>TResult(T)</code> in Ceylon corresponds to <code>Func<T, TResult></code> in C#.
 
 Since C# does not have local classes, <code>RecursiveFunc</code> and <code>y1</code> are declared in a class of their own. Moving the type parameters to the class also prevents type parameter inference.
@@ -1246,7 +1246,7 @@ static class Program {
 ```
 
 
-====[Go](http://rosettacode.org/mw/index.php?oldid=287744#Go)====
+====[Go](https://rosettacode.org/mw/index.php?oldid=287744#Go)====
 <code>func(T) TResult</code> in Go corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -1345,7 +1345,7 @@ Recursive:
 ```
 
 
-====[Java](http://rosettacode.org/mw/index.php?oldid=287744#Java)====
+====[Java](https://rosettacode.org/mw/index.php?oldid=287744#Java)====
 
 '''Verbatim'''
 
@@ -1746,7 +1746,7 @@ static class Program {
 ```
 
 
-====[Swift](http://rosettacode.org/mw/index.php?oldid=287744#Swift)====
+====[Swift](https://rosettacode.org/mw/index.php?oldid=287744#Swift)====
 <code>T -> TResult</code> in Swift corresponds to <code>Func<T, TResult></code> in C#.
 
 '''Verbatim'''
@@ -4711,9 +4711,9 @@ $Y.invoke($fib).invoke(5)
 
 ## Prolog
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>.
 
-The code is inspired from this page : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106).
+The code is inspired from this page : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord> (p 106).
 
 Original code is from <b>Hermenegildo</b> and al : <b>Hiord: A Type-Free Higher-Order Logic Programming Language with Predicate Abstraction</b>, pdf accessible here <http://www.stups.uni-duesseldorf.de/asap/?id=129>.
 
@@ -5585,7 +5585,7 @@ fibonacci 5: 5
 
 ## Tcl
 
-Y combinator is derived in great detail [here](http://wiki.tcl.tk/4833).
+Y combinator is derived in great detail [here](https://wiki.tcl-lang.org/4833).
 
 
 ## TXR
@@ -5893,7 +5893,7 @@ prn factorial.5
 ## XQuery
 
 
-Version 3.0 of the [XPath](http://www.w3.org/TR/xpath-30/) and [XQuery](http://www.w3.org/TR/xquery-30/) specifications added support for function items.
+Version 3.0 of the [XPath](https://www.w3.org/TR/xpath-30/) and [XQuery](https://www.w3.org/TR/xquery-30/) specifications added support for function items.
 
 
 ```XQuery

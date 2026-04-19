@@ -47,7 +47,7 @@ Strict ''Uniformity'' in the random generation is a hard problem and '''not''' a
 
 ;Reference:
 * [[wp:Latin_square|Latin square]]
-* [OEIS A002860](http://oeis.org/A002860)
+* [OEIS A002860](https://oeis.org/A002860)
 
 
 

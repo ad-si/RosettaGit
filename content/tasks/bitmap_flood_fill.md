@@ -479,7 +479,7 @@ int main(void)
 
 ```c
 
-// http://commons.wikimedia.org/wiki/File:Julia_immediate_basin_1_3.png
+// https://commons.wikimedia.org/wiki/File:Julia_immediate_basin_1_3.png
 
 unsigned int f(unsigned int _iX, unsigned int _iY)
 /*
@@ -1646,7 +1646,7 @@ floodFillScanlineStack b coords newC = do
 
 ## HicEst
 
-HicEst color fill is via the [decoration option of WRITE()](http://www.HicEst.com/DeCoRation.htm)
+HicEst color fill is via the [decoration option of WRITE()](https://www.HicEst.com/DeCoRation.htm)
 
 ```HicEst
 WINDOW(WINdowhandle=wh, BaCkcolor=0, TItle="Rosetta test image")
@@ -1669,7 +1669,7 @@ Uses <code>getPixels</code> and <code>setPixels</code> from [[Basic bitmap stora
 
 ```j
 NB. finds and labels contiguous areas with the same numbers
-NB. ref: http://www.jsoftware.com/pipermail/general/2005-August/023886.html
+NB. ref: https://www.jsoftware.com/pipermail/general/2005-August/023886.html
 findcontig=: (|."1@|:@:>. (* * 1&(|.!.0)))^:4^:_@(* >:@i.@$)
 
 NB.*getFloodpoints v Returns points to fill given starting point (x) and image (y)
@@ -1705,7 +1705,7 @@ viewRGB myimg
 The following alternative version of <code>findcontig</code> is less concise but is leaner, faster, works for n-dimensions and is not restricted to numerical arrays.
 
 ```j
-NB. ref: http://www.jsoftware.com/pipermail/general/2005-August/024174.html
+NB. ref: https://www.jsoftware.com/pipermail/general/2005-August/024174.html
 eq=:[:}:"1 [:($$[:([:+/\1:,}:~:}.),) ,&_"1                NB. equal numbers for atoms of y connected in first direction
 eq_nd=: i.@#@$(<"0@[([:, |:^:_1"0 _)&> [:EQ&.> <@|:"0 _)] NB. n-dimensional eq, gives an #@$,*/@$ shaped matrix
 repl=: (i.~{.){ {:@]                                      NB. replaces x by applying replace table y
@@ -2041,7 +2041,7 @@ floodFill[img_Image, pos_List, tol_Real, color_List] :=
 Import the test image and fill the region containing the pixel at coordinate 100,100 with red (RGB 100%,0%,0%) using a tolerance of 1%
 
 ```txt
-floodFill[Import["http://rosettacode.org/mw/images/0/0f/Unfilledcirc.png"], {100, 100}, 0.01, {1, 0, 0}]
+floodFill[Import["https://rosettacode.org/mw/images/0/0f/Unfilledcirc.png"], {100, 100}, 0.01, {1, 0, 0}]
 ```
 
 
@@ -2453,7 +2453,7 @@ image(M, col = c(1, 0, 2, 3))
 ;; to see that the byte approach works as well.
 (define (flood-fill bm start-x start-y target-color replacement-color)
   ;; The main loop.
-  ;; http://en.wikipedia.org/wiki/Flood_fill
+  ;; https://en.wikipedia.org/wiki/Flood_fill
   (define (iter x y)
     (when (and (in-bounds? x y) (target-color-at? x y))
       (replace-color-at! x y)
@@ -3010,7 +3010,7 @@ SetVid(3);                      \restore normal text mode
 
 [[file:Flood_before.zkl.jpg|right]][[file:Flood.zkl.jpg|right]]
 {{trans|D}}
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 
 ```zkl

@@ -44,7 +44,7 @@ def login(user, password):
 	global cookie
 	
 	query = urllib.urlencode({'lgname':user,'lgpassword':password})
-	result = urllib.urlopen("http://www.rosettacode.org/w/api.php?action=login&format=xml",query).read()    
+	result = urllib.urlopen("https://www.rosettacode.org/w/api.php?action=login&format=xml",query).read()    
 	parse = xml.dom.minidom.parseString(result)	
 	login = parse.getElementsByTagName("login")[0]	
 	cookie = login.getAttribute("cookieprefix")+"_session="+login.getAttribute("sessionid")
@@ -52,7 +52,7 @@ def login(user, password):
 def get_token():
 	global cookie
 
-	result = urllib2.Request("http://www.rosettacode.org/w/api.php?action=query&prop=info&intoken=edit&titles=Main%20Page&format=xml",headers={"Cookie":cookie})
+	result = urllib2.Request("https://www.rosettacode.org/w/api.php?action=query&prop=info&intoken=edit&titles=Main%20Page&format=xml",headers={"Cookie":cookie})
 	result = urllib2.urlopen(result).read()    
 	parse = xml.dom.minidom.parseString(result)
 	token = parse.getElementsByTagName("page")[0].getAttribute("edittoken")
@@ -64,11 +64,11 @@ def GetTimeStamp(x):
 def getsortedvp():		
 	edits = []
 
-	get1 = urllib.urlopen("http://www.rosettacode.org/wiki/Village_Pump:Home&action=raw").read()
+	get1 = urllib.urlopen("https://www.rosettacode.org/wiki/Village_Pump:Home&action=raw").read()
 	pumps = re.findall("\{\{vp\|(.+?)\}\}",get1)[1:] # ignore first (example)
 
 	for i in pumps:
-		get2 = urllib.urlopen("http://www.rosettacode.org/w/api.php?action=query&prop=revisions&format=xml&titles=Village_Pump:Home/%s" % i.replace(" ","_")).read()
+		get2 = urllib.urlopen("https://www.rosettacode.org/w/api.php?action=query&prop=revisions&format=xml&titles=Village_Pump:Home/%s" % i.replace(" ","_")).read()
 		x = xml.dom.minidom.parseString(get2)
 		edits.append(Page(i,GetTimeStamp(x)))
 
@@ -91,7 +91,7 @@ def edit(article, content, token):
     "bot":"yes"
     })
  
-    req = urllib2.Request("http://www.rosettacode.org/w/api.php?action=edit&format=xml",data=query, headers={"Cookie":cookie})
+    req = urllib2.Request("https://www.rosettacode.org/w/api.php?action=edit&format=xml",data=query, headers={"Cookie":cookie})
     req = urllib2.urlopen(req).read()
  
     return req	

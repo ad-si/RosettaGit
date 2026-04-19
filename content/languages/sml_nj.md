@@ -12,4 +12,4 @@ tags = []
 
 
 '''SML/NJ''' is a compiler and programming environment for Standard ML from Princeton University.
-* [Standard ML of New Jersey (wikipedia)](http://en.wikipedia.org/wiki/SML/NJ)
+* [Standard ML of New Jersey (wikipedia)](https://en.wikipedia.org/wiki/SML/NJ)

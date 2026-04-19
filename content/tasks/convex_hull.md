@@ -45,7 +45,7 @@ For example, given the points (16,3),  (12,17), (0,6),   (-4,-6), (16,6),  (16,-
 ## See also
 
 * [Convex Hull (youtube)](https://www.youtube.com/watch?v=wRTGDig3jx8)
-* <http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/>
+* <https://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/>
 
 
 
@@ -2689,7 +2689,7 @@ Convex Hull: [(-9, -3), (-3, -9), (19, -8), (17, 5), (12, 17), (5, 19), (-3, 15)
 ```zkl
 // Use Graham Scan to sort points into a convex hull
 // https://en.wikipedia.org/wiki/Graham_scan, O(n log n)
-// http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
+// https://www.geeksforgeeks.org/convex-hull-set-2-graham-scan/
 // http://geomalgorithms.com/a10-_hull-1.html
 fcn grahamScan(points){
    N:=points.len();

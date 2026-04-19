@@ -1122,7 +1122,7 @@ end.
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=149)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=149)
 
 ```autohotkey
 MsgBox % x := mul(256,256)
@@ -2929,7 +2929,7 @@ Or you could use the built-in language support for arbitrary precision multiplic
 1 2 3
 ```
 
-* <code>polymult</code> (multiplies polynomials): '''ref.''' <http://www.jsoftware.com/help/dictionary/samp23.htm>
+* <code>polymult</code> (multiplies polynomials): '''ref.''' <https://www.jsoftware.com/help/dictionary/samp23.htm>
 
 ```j
    1 2 3 (+//.@(*/)) 1 2 3
@@ -5569,11 +5569,11 @@ Since Scheme already supports arbitrary precision arithmetic, build it out of ch
 ## Seed7
 
 Seed7 supports arbitrary-precision arithmetic.
-The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm) defines
-the type [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger).
+The library [bigint.s7i](https://seed7.sourceforge.net/libraries/bigint.htm) defines
+the type [bigInteger](https://seed7.sourceforge.net/manual/types.htm#bigInteger).
 A bigInteger is a signed integer number of unlimited size.
 With library support the task can be solved by using the multiplication operator
-[*](http://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29*%28in_bigInteger%29):
+[*](https://seed7.sourceforge.net/libraries/bigint.htm#%28in_bigInteger%29*%28in_bigInteger%29):
 
 
 ```seed7

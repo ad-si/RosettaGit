@@ -2006,10 +2006,10 @@ and some control-flow scaffolding that is getting parallelised. I only got 4 cor
 
 ## PicoLisp
 
-The '[later](http://software-lab.de/doc/refL.html#later)' function is used in
+The '[later](https://software-lab.de/doc/refL.html#later)' function is used in
 PicoLisp to start parallel computations. The following solution calls 'later' on
 the 'factor' function from [[Prime decomposition#PicoLisp]], and then
-'[wait](http://software-lab.de/doc/refW.html#wait)'s until all results are
+'[wait](https://software-lab.de/doc/refW.html#wait)'s until all results are
 available:
 
 ```PicoLisp
@@ -2161,7 +2161,7 @@ Procedure Main()
 EndProcedure
 
 ProcedureDLL Factorize(*IO.IO_block) ; Fill list Factors() with the factor parts of Number
-  ;Based on http://rosettacode.org/wiki/Prime_decomposition#PureBasic
+  ;Based on https://rosettacode.org/wiki/Prime_decomposition#PureBasic
   With *IO
     Protected Value.q=\Value
     WaitSemaphore(\StartSeamaphore)
@@ -2202,7 +2202,7 @@ EndDataSection
 ## Python
 
 ===Python3 - concurrent===
-Python 3.2 has a new [concurrent.futures](http://www.python.org/dev/peps/pep-3148/) module that allows for the easy specification of thread-parallel or process-parallel processes. The following is modified from their example and will run, by default, with as many processes as there are available cores on your machine.
+Python 3.2 has a new [concurrent.futures](https://www.python.org/dev/peps/pep-3148/) module that allows for the easy specification of thread-parallel or process-parallel processes. The following is modified from their example and will run, by default, with as many processes as there are available cores on your machine.
 
 <small>Note that there is no need to calculate all prime factors of all <code>NUMBERS</code> when only the prime factors of the number with the lowest overall prime factor is needed.</small>
 
@@ -2398,7 +2398,7 @@ main(args(2)) :=
 ```
 
 
-Using the Trial Division version of primeFactorization here: <http://rosettacode.org/wiki/Prime_decomposition#SequenceL>
+Using the Trial Division version of primeFactorization here: <https://rosettacode.org/wiki/Prime_decomposition#SequenceL>
 
 The primary source of parallelization in the above code is from the line:
 
@@ -2447,7 +2447,7 @@ Total Time:3.01593
 
 ```
 
-[Performance Plot](http://i.imgur.com/UIO8X8U.png)
+[Performance Plot](https://i.imgur.com/UIO8X8U.png)
 
 The i7 has 4 physical cores with hyperthreading.
 You can see that nearly linear speedup is gained, automatically, while only using the physical cores. Once the hyperthreaded cores are used the performance suffers slightly.

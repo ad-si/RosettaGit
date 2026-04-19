@@ -789,7 +789,7 @@ void main() {
 
 ## EchoLisp
 
-The '''rationalize''' function uses a Stern-Brocot tree <http://en.wikipedia.org/wiki/Stern%E2%80%93Brocot_tree> to find the best rational approximation of an inexact (floating point) number, for a given precision. The '''inexact->exact''' function returns a rational approximation for the default precision 0.0001 .
+The '''rationalize''' function uses a Stern-Brocot tree <https://en.wikipedia.org/wiki/Stern%E2%80%93Brocot_tree> to find the best rational approximation of an inexact (floating point) number, for a given precision. The '''inexact->exact''' function returns a rational approximation for the default precision 0.0001 .
 
 ```scheme
 
@@ -1454,7 +1454,7 @@ Deriving an approximation within a specified tolerance:
 
 ## Julia
 
-Julia has a native Rational type, and provides [a convenience conversion function](http://docs.julialang.org/en/latest/manual/conversion-and-promotion/#case-study-rational-conversions) that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
+Julia has a native Rational type, and provides [a convenience conversion function](https://docs.julialang.org/en/latest/manual/conversion-and-promotion/#case-study-rational-conversions) that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
 
 
 ```Julia
@@ -2896,8 +2896,8 @@ object Number2Fraction extends App {
 
 ## Seed7
 
-The library [bigrat.s7i](http://seed7.sourceforge.net/libraries/bigrat.htm)
-defines the operator [parse](http://seed7.sourceforge.net/libraries/bigrat.htm#%28attr_bigRational%29parse%28in_var_string%29),
+The library [bigrat.s7i](https://seed7.sourceforge.net/libraries/bigrat.htm)
+defines the operator [parse](https://seed7.sourceforge.net/libraries/bigrat.htm#%28attr_bigRational%29parse%28in_var_string%29),
 which accepts, besides fractions, also a decimal number with repeating decimals.
 
 ```seed7
@@ -2972,7 +2972,7 @@ say 0.75.as_rat;
 
 ## Tcl
 
-Here is a complete script with the implemented function and a small test suite (which is executed when this script is called directly from a shell) - originally on <http://wiki.tcl.tk/752>:
+Here is a complete script with the implemented function and a small test suite (which is executed when this script is called directly from a shell) - originally on <https://wiki.tcl-lang.org/752>:
 
 ```Tcl
 #!/usr/bin/env tclsh

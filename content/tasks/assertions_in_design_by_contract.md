@@ -437,10 +437,10 @@ Type check failures can also be caught and processed just like any other excepti
 The function and it's contract are a "translation" of "D".
 
 The Racket Guide introduces contracts here
-<http://docs.racket-lang.org/guide/contracts.html?q=contracts>
+<https://docs.racket-lang.org/guide/contracts.html?q=contracts>
 
 The Racket Reference defines contracts here
-<http://docs.racket-lang.org/reference/contracts.html?q=contracts>
+<https://docs.racket-lang.org/reference/contracts.html?q=contracts>
 
 Note that the examples catch contract blame exceptions -- which, if uncaught are enough to halt a
 program; making them quite assertive.
@@ -674,7 +674,7 @@ puts double("oops")
 
 ## Scala
 
-Scala provides runtime assertions like Java: they are designed to be used by static analysis tools however the default compiler doesn’t perform such analyses by default. The Scala assertions (<tt>assume</tt>, <tt>require</tt>, <tt>assert</tt>, <tt>ensuring</tt>) are [Predef library](http://www.scala-lang.org/api/current/index.html#scala.Predef$) methods that are enabled by default and can be disabled using the <tt>-Xdisable-assertions</tt> runtime flag, unlike Java where assertions are disabled by default and enabled with a runtime flag. It is considered poor form to rely on assertions to validate arguments, because they can be disabled. An appropriate informative runtime exception (e.g. NullPointerException or IllegalArgumentException) should be thrown instead.
+Scala provides runtime assertions like Java: they are designed to be used by static analysis tools however the default compiler doesn’t perform such analyses by default. The Scala assertions (<tt>assume</tt>, <tt>require</tt>, <tt>assert</tt>, <tt>ensuring</tt>) are [Predef library](https://www.scala-lang.org/api/current/index.html#scala.Predef$) methods that are enabled by default and can be disabled using the <tt>-Xdisable-assertions</tt> runtime flag, unlike Java where assertions are disabled by default and enabled with a runtime flag. It is considered poor form to rely on assertions to validate arguments, because they can be disabled. An appropriate informative runtime exception (e.g. NullPointerException or IllegalArgumentException) should be thrown instead.
 
 ```Scala
 object AssertionsInDesignByContract extends App {

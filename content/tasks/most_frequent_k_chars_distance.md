@@ -37,7 +37,7 @@ In [[wp:information theory|information theory]], the '''MostFreqKDistance''' is 
  | pages = 177-183
  | publisher = [[wp:International Association of Computer Science and Information Technology Press (IACSIT Press)]]
  | title = [[wp:International Journal of Machine Learning and Computing (IJMLC)]]
- | url = <http://arxiv.org/abs/1401.6596>
+ | url = <https://arxiv.org/abs/1401.6596>
  | year = 2014}}.</ref>
 This method is originally based on a hashing function, MaxFreqKChars<ref name="hashfunc">{{citation
  | last1 = Seker | first1 = Sadi E. | author1-link = Sadi Evren SEKER

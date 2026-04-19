@@ -206,9 +206,9 @@ Note: '''short''' and '''shorten''' need to be tuned (added or removed)
 to match the underlying graphic hardware color depth.
 
 Works with ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive..
-Works with ALGOL 68G|Any - tested with release [algol68g-2.6](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6)..
+Works with ALGOL 68G|Any - tested with release [algol68g-2.6](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6)..
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release
-[1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) -
+[1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) -
 due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: prelude/Bitmap.a68'''
 
@@ -1604,7 +1604,7 @@ See [[Basic bitmap storage/Fortran]]
 ### Standard library
 
 Go's standard library include image, color, and drawing packages and the source for them is easy to read.
-There is also a [Go Blog article on the image package](http://blog.golang.org/go-image-package)
+There is also a [Go Blog article on the image package](https://blog.golang.org/go-image-package)
 The [<code>image.NRGBA</code>](https://golang.org/pkg/image/#NRGBA) type supports everything this task requires (the 'A' is for alpha channel, each are 8 bits, if 16 bits each of RGBA is desired there is also the <code>image.NRGBA64</code> type). The 'N' of NRGBA stands for Non-alpha-premultiplied, color values can trivially be converted to/from alpha-premultiplied RGBA values via a <code>color.Model</code>.
 
 Here's how to use the standard packages to do what this task requires:
@@ -3326,7 +3326,7 @@ Based on this, we create a functor "Bitmap.oz":
 
 ```oz
 %% For real task prefer QTk's images:
-%% http://www.mozart-oz.org/home/doc/mozart-stdlib/wp/qtk/html/node38.html
+%% https://www.mozart-oz.org/home/doc/mozart-stdlib/wp/qtk/html/node38.html
 
 functor
 import
@@ -3768,7 +3768,7 @@ getcol(p2, 3, 4)  #red
 #lang racket
 
 ;; The racket/draw libraries provide imperative drawing functions.
-;; http://docs.racket-lang.org/draw/index.html
+;; https://docs.racket-lang.org/draw/index.html
 (require racket/draw)
 
 ;; To create an image with width and height, use the make-bitmap
@@ -4351,18 +4351,18 @@ Output:
 ## Seed7
 
 The types and functions requested are predefined in the libraries
-[graph.s7i](http://seed7.sourceforge.net/libraries/graph.htm) and
-[draw.s7i](http://seed7.sourceforge.net/libraries/draw.htm):
+[graph.s7i](https://seed7.sourceforge.net/libraries/graph.htm) and
+[draw.s7i](https://seed7.sourceforge.net/libraries/draw.htm):
 
 - The type to handle an RGB raster graphics image is PRIMITIVE_WINDOW.
 - The function to create an image is
-  [newPixmap](http://seed7.sourceforge.net/libraries/draw.htm#newPixmap%28in_integer,in_integer%29).
+  [newPixmap](https://seed7.sourceforge.net/libraries/draw.htm#newPixmap%28in_integer,in_integer%29).
 - An imaged can be filled with a color with
-  [clear](http://seed7.sourceforge.net/libraries/draw.htm#clear%28inout_PRIMITIVE_WINDOW,in_color%29).
+  [clear](https://seed7.sourceforge.net/libraries/draw.htm#clear%28inout_PRIMITIVE_WINDOW,in_color%29).
 - A given pixel can be set with
-  [point](<http://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color)>.
+  [point](<https://seed7.sourceforge.net/libraries/draw.htm#point(inout_PRIMITIVE_WINDOW,in_integer,in_integer,in_color)>.
 - The color of a pixel can be retrieved with
-  [getPixelColor](<http://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer)>.
+  [getPixelColor](<https://seed7.sourceforge.net/libraries/draw.htm#getPixelColor(in_PRIMITIVE_WINDOW,in_integer,in_integer)>.
 
 
 ```seed7

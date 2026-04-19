@@ -130,7 +130,7 @@ i.text("hello socket world");
 ## AutoHotkey
 
 modified from
-[script](http://www.autohotkey.com/forum/topic13829.html) by zed gecko.
+[script](https://www.autohotkey.com/forum/topic13829.html) by zed gecko.
 
 ```autohotkey
 Network_Port = 256
@@ -1408,8 +1408,8 @@ object sendSocketData {
 
 ## Seed7
 
-The library [socket.s7i](http://seed7.sourceforge.net/libraries/socket.htm)
-defines the function [openInetSocket](http://seed7.sourceforge.net/libraries/socket.htm#openInetSocket%28in_integer%29),
+The library [socket.s7i](https://seed7.sourceforge.net/libraries/socket.htm)
+defines the function [openInetSocket](https://seed7.sourceforge.net/libraries/socket.htm#openInetSocket%28in_integer%29),
 which returns a connected internet socket file at a port at localhost.
 
 

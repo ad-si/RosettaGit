@@ -13,4 +13,4 @@ tags = []
 {{implementation cat|Brainfuck}}
 
 ==See also==
-* [Brainfuck](http://esolangs.org/wiki/Brainfuck) [Implementations](http://esolangs.org/wiki/Brainfuck_implementations) listed on [Esolangs](http://esolangs.org/) wiki.
+* [Brainfuck](https://esolangs.org/wiki/Brainfuck) [Implementations](https://esolangs.org/wiki/Brainfuck_implementations) listed on [Esolangs](https://esolangs.org/) wiki.

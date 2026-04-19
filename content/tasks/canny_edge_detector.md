@@ -60,7 +60,7 @@ The following program reads an 8 bits per pixel grayscale [[wp:BMP file format|B
  * Loading part taken from
  * http://www.vbforums.com/showthread.php?t=261522
  * BMP info:
- * http://en.wikipedia.org/wiki/BMP_file_format
+ * https://en.wikipedia.org/wiki/BMP_file_format
  *
  * Note: the magic number has been removed from the bmpfile_header_t
  * structure since it causes alignment problems
@@ -236,7 +236,7 @@ bool save_bmp(const char *filename, const bitmap_info_header_t *bmp_ih,
     // in 1 call any more.
     // fwrite(data, 1, bmp_ih->bmp_bytesz, filePtr);
 
-    // Padding: http://en.wikipedia.org/wiki/BMP_file_format#Pixel_storage
+    // Padding: https://en.wikipedia.org/wiki/BMP_file_format#Pixel_storage
     size_t pad = 4*ceil(bmp_ih->bitspp*bmp_ih->width/32.) - bmp_ih->width;
     unsigned char c;
     for(size_t i=0; i < bmp_ih->height; i++) {
@@ -336,7 +336,7 @@ void gaussian_filter(const pixel_t *in, pixel_t *out,
 
 /*
  * Links:
- * http://en.wikipedia.org/wiki/Canny_edge_detector
+ * https://en.wikipedia.org/wiki/Canny_edge_detector
  * http://www.tomgibara.com/computer-vision/CannyEdgeDetector.java
  * http://fourier.eng.hmc.edu/e161/lectures/canny/node1.html
  * http://www.songho.ca/dsp/cannyedge/cannyedge.html
@@ -940,7 +940,7 @@ Mathematica uses canny edge detection by default. This seems so cheaty next to a
 
 ## MATLAB
 
-There is a built-in function, [edge](http://www.mathworks.com/help/images/ref/edge.html), that has Canny Edge Detection as one of its options.
+There is a built-in function, [edge](https://www.mathworks.com/help/images/ref/edge.html), that has Canny Edge Detection as one of its options.
 
 ```MATLAB
 BWImage = edge(GrayscaleImage,'canny');

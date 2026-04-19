@@ -386,7 +386,7 @@ end Yuletide;
 ## ALGOL 68
 
 ```algol68
-# example from: http://www.xs4all.nl/~jmvdveer/algol.html - GPL #
+# example from: https://www.xs4all.nl/~jmvdveer/algol.html - GPL #
 INT sun=0 # , mon=1, tue=2, wed=3, thu=4, fri=5, sat=6 #;
 
 PROC day of week = (INT year, month, day) INT: (
@@ -1010,7 +1010,7 @@ Dec 25, 2118 is a Sunday.
 
 ## bc
 
-Because ''bc'' has no date library, this program uses [''Zeller's rule''](http://mathforum.org/library/drmath/view/62324.html), also known as [''Zeller's congruence''](http://www.merlyn.demon.co.uk/zel-like.htm), to calculate day of week.
+Because ''bc'' has no date library, this program uses [''Zeller's rule''](https://mathforum.org/library/drmath/view/62324.html), also known as [''Zeller's congruence''](http://www.merlyn.demon.co.uk/zel-like.htm), to calculate day of week.
 
 
 ```bc
@@ -1131,7 +1131,7 @@ Dec 25, 2118
 
 ## C
 
-Because of problems with various C libraries (such as ''time_t'' overflowing during 2038, or strptime() or mktime() not filling in ''tm_wday''), this program uses [Zeller's Rule](http://mathforum.org/library/drmath/view/62324.html) to calculate day of week.
+Because of problems with various C libraries (such as ''time_t'' overflowing during 2038, or strptime() or mktime() not filling in ''tm_wday''), this program uses [Zeller's Rule](https://mathforum.org/library/drmath/view/62324.html) to calculate day of week.
 
 
 ```c
@@ -2372,7 +2372,7 @@ end
 
 
 
-[datetime provides dayoweek](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
+[datetime provides dayoweek](https://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
 
 
 ```Icon
@@ -4555,7 +4555,7 @@ Sys.setlocale("LC_ALL", "English")
 ```REBOL
 REBOL [
 	Title: "Yuletide Holiday"
-	URL: http://rosettacode.org/wiki/Yuletide_Holiday
+	URL: https://rosettacode.org/wiki/Yuletide_Holiday
 ]
 
 for y 2008 2121 1 [
@@ -5137,8 +5137,8 @@ Years between 2008 and 2121 including when Christmas is observed on Sunday:
 
 ## Seed7
 
-The library [time.s7i](http://seed7.sourceforge.net/libraries/time.htm) defines
-the function [dayOfWeek](http://seed7.sourceforge.net/libraries/time.htm#dayOfWeek%28in_time%29),
+The library [time.s7i](https://seed7.sourceforge.net/libraries/time.htm) defines
+the function [dayOfWeek](https://seed7.sourceforge.net/libraries/time.htm#dayOfWeek%28in_time%29),
 which returns 1 for monday, 2 for tuesday, and so on up to 7 for sunday.
 
 ```seed7

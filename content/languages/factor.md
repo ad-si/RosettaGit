@@ -12,9 +12,9 @@ tags = []
 
 Factor is a stack-based, concatenative, general-purpose programming language with a focus on practicality.
 
-Initially developed by Slava Pestov, Factor began life in 2003 as a scripting language written for a game. The implementation was originally an interpreter written in [Java](https://rosettacode.org/wiki/Java), but has since gained an optimizing compiler and has been rewritten in Factor with a minimal [C](https://rosettacode.org/wiki/C) core. Read more about Factor's implementation history [here](http://concatenative.org/wiki/view/Factor/Implementation%20history). As of August 2019, Factor is still being developed by several contributors, with the latest [stable release](http://re-factor.blogspot.com/2018/07/factor-098-now-available.html) in July 2018.
+Initially developed by Slava Pestov, Factor began life in 2003 as a scripting language written for a game. The implementation was originally an interpreter written in [Java](https://rosettacode.org/wiki/Java), but has since gained an optimizing compiler and has been rewritten in Factor with a minimal [C](https://rosettacode.org/wiki/C) core. Read more about Factor's implementation history [here](https://concatenative.org/wiki/view/Factor/Implementation%20history). As of August 2019, Factor is still being developed by several contributors, with the latest [stable release](http://re-factor.blogspot.com/2018/07/factor-098-now-available.html) in July 2018.
 
-Factor is a stack language similar to, but of a higher level than, [Forth](https://rosettacode.org/wiki/Forth). Factor is a [concatenative language](http://concatenative.org/wiki/view/Concatenative%20language), meaning that rather than applying functions to arguments (applicative languages) to evaluate things, we compose functions to evaluate a single piece of data — the entire program up until that particular point. In Factor, the basic structure of data flow is function composition. That is, <code>foo bar baz</code> is equivalent to <code>baz(bar(foo()))</code> in an applicative language. This offers a nice left-to-right style of reading and data flow.
+Factor is a stack language similar to, but of a higher level than, [Forth](https://rosettacode.org/wiki/Forth). Factor is a [concatenative language](https://concatenative.org/wiki/view/Concatenative%20language), meaning that rather than applying functions to arguments (applicative languages) to evaluate things, we compose functions to evaluate a single piece of data — the entire program up until that particular point. In Factor, the basic structure of data flow is function composition. That is, <code>foo bar baz</code> is equivalent to <code>baz(bar(foo()))</code> in an applicative language. This offers a nice left-to-right style of reading and data flow.
 
 In Factor, we tend to name data flow operations rather than values. In an applicative language, you might write
 <lang>var x = ...;
@@ -39,5 +39,5 @@ One of Factor's greatest strengths is its ability to factor words into smaller w
 ## Links
 *[Factor programming language](http://factorcode.org)
 *[Planet Factor](http://planet.factorcode.org)
-*[Factor on concatenative.org](http://concatenative.org/wiki/view/Factor)
+*[Factor on concatenative.org](https://concatenative.org/wiki/view/Factor)
 *[Factor on Wikipedia](https://en.wikipedia.org/wiki/Factor_(programming_language))

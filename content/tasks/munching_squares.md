@@ -490,7 +490,7 @@ void main() {
 
 ## EchoLisp
 
-Use the '''plot''' library, hsv->rgb ((x xor y) modulo m) as color table, and see the nice results here : <http://www.echolalie.org/echolisp/help.html#bit-map> .
+Use the '''plot''' library, hsv->rgb ((x xor y) modulo m) as color table, and see the nice results here : <https://www.echolalie.org/echolisp/help.html#bit-map> .
 
 ```scheme
 
@@ -719,7 +719,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -818,7 +818,7 @@ def rgb2rgb:
 
 def svg(width; height):
   "<svg width='\(width // "100%")' height='\(height // "100%")'
-           xmlns='http://www.w3.org/2000/svg'>";
+           xmlns='https://www.w3.org/2000/svg'>";
 
 def pixel(x; y; color):
   (color | if type == "string" then . else rgb2rgb end) as $c
@@ -1908,7 +1908,7 @@ Next
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 For a kaleidoscopic image, play with coolness.
 
 ```zkl

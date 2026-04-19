@@ -816,7 +816,7 @@ Terms 91 to 100 of the Mian-Chowla series:
 
 ```j
 
-NB. http://rosettacode.org/wiki/Mian-Chowla_sequence
+NB. https://rosettacode.org/wiki/Mian-Chowla_sequence
 
 NB. Dreadfully inefficient implementation recomputes all the sums to n-1
 NB. and computes the full addition table rather than just a triangular region

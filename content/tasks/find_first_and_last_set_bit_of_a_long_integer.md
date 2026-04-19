@@ -749,8 +749,8 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[hexcvt.icn provides hexstring](http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[hexcvt.icn provides hexstring](https://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn)
 
 Output:
 ```txt
@@ -1637,9 +1637,9 @@ end
 
 ## Seed7
 
-The library [integer.s7i](http://seed7.sourceforge.net/libraries/integer.htm) defines the functions
-[bitLength](http://seed7.sourceforge.net/libraries/integer.htm#bitLength%28in_integer%29) and
-[lowestSetBit](http://seed7.sourceforge.net/libraries/integer.htm#lowestSetBit%28in_integer%29), which compute the
+The library [integer.s7i](https://seed7.sourceforge.net/libraries/integer.htm) defines the functions
+[bitLength](https://seed7.sourceforge.net/libraries/integer.htm#bitLength%28in_integer%29) and
+[lowestSetBit](https://seed7.sourceforge.net/libraries/integer.htm#lowestSetBit%28in_integer%29), which compute the
 most- and least-significant set bit in a binary value expressed in LSB 0 bit numbering.
 
 

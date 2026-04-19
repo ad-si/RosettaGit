@@ -990,7 +990,7 @@ last 40 digits = 1527229998585248450016808958343740453059
 1527229998585248450016808958343740453059
 ```
 
-'''Discussion''': The phrase <tt>a m&|@^ b</tt> is the natural expression of <tt>a^b mod m</tt> in J, and is recognized by the interpreter as an opportunity for optimization, by [avoiding the exponentiation](http://www.jsoftware.com/help/dictionary/special.htm#recognized%20phrase).
+'''Discussion''': The phrase <tt>a m&|@^ b</tt> is the natural expression of <tt>a^b mod m</tt> in J, and is recognized by the interpreter as an opportunity for optimization, by [avoiding the exponentiation](https://www.jsoftware.com/help/dictionary/special.htm#recognized%20phrase).
 
 
 ## Java
@@ -1762,8 +1762,8 @@ println(a.modPow(b, BigInt(10).pow(40)))
 
 ## Seed7
 
-The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm) defines the function
-[modPow](http://seed7.sourceforge.net/libraries/bigint.htm#modPow%28in_var_bigInteger,in_var_bigInteger,in_bigInteger%29),
+The library [bigint.s7i](https://seed7.sourceforge.net/libraries/bigint.htm) defines the function
+[modPow](https://seed7.sourceforge.net/libraries/bigint.htm#modPow%28in_var_bigInteger,in_var_bigInteger,in_bigInteger%29),
 which does modular exponentiation.
 
 ```seed7
@@ -1809,7 +1809,7 @@ const func bigInteger: modPow (in var bigInteger: base,
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#modPow>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#modPow>
 
 
 ## Sidef

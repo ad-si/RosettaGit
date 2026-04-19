@@ -20,5 +20,5 @@ Currently, software libraries like [GTK+](https://rosettacode.org/wiki/GTK+), [G
 The compiler, and its nearly 90,000 lines of code, was, and still is, compiled by itself (in other words, FreeBASIC is a [self-hosting compiler](https://en.wikipedia.org/wiki/Self-hosting)). The first version of FreeBASIC was written in [Visual Basic](https://rosettacode.org/wiki/:Category:Visual_Basic) for DOS for that purpose.
 
 ## See also
-* [FreeBASIC homepage](http://www.freebasic.net/)
+* [FreeBASIC homepage](https://www.freebasic.net/)
 * [FreeBASIC](https://en.wikipedia.org/wiki/FreeBASIC) on Wikipedia

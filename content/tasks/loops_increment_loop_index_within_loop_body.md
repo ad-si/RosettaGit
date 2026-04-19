@@ -1203,7 +1203,7 @@ n = 42  99504028301131
 
 
 =={{header|F_Sharp|F#}}==
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 
@@ -1805,7 +1805,7 @@ loop =: verb define@:x:
 ```
 
 By inspection the variable `i' doesn't contribute anything useful whatsoever.  The verb's argument, y, remains.
-Finally, implemented as an hook [verb trains](http://www.jsoftware.com/help/dictionary/dictf.htm) with 'y' and `i' as left ([) and right (]) arguments the complete definitions for tacit_loop are
+Finally, implemented as an hook [verb trains](https://www.jsoftware.com/help/dictionary/dictf.htm) with 'y' and `i' as left ([) and right (]) arguments the complete definitions for tacit_loop are
 
 ```J
 

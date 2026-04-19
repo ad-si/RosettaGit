@@ -757,7 +757,7 @@ viewRGB (randomctrlpts; 255 255 0) drawBezier myimg               NB. display im
 //    bezier3(0,149, 30,50, 120,130, 160,30, 0);
   }
 
-  // http://rosettacode.org/wiki/Cubic_bezier_curves#C
+  // https://rosettacode.org/wiki/Cubic_bezier_curves#C
   function bezier3(x1, y1, x2, y2, x3, y3, x4, y4) {
     var px = [], py = [];
     for (var i = 0; i <= b3Seg; i++) {
@@ -1646,7 +1646,7 @@ SetVid(3);              \restore normal text display
 [[File:CubicXPL0.png|right]]
 Image cribbed from XPL0
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 Add this to the PPM class:
 

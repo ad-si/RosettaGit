@@ -132,7 +132,7 @@ languages = [
 Generate and draw the [[wp:Mandelbrot set|Mandelbrot set]].
 
 
-Note that there are [many algorithms](http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set) to draw Mandelbrot set and there are [many functions](http://en.wikibooks.org/wiki/Pictures_of_Julia_and_Mandelbrot_sets) which generate it .
+Note that there are [many algorithms](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set) to draw Mandelbrot set and there are [many functions](https://en.wikibooks.org/wiki/Pictures_of_Julia_and_Mandelbrot_sets) which generate it .
 
 
 
@@ -1223,7 +1223,7 @@ Works under BASIC on a PDP-8 running OS/8. Various emulators exist including sim
 'Mandelbrot V4 for RunBasic
 'Based on LibertyBasic solution
 'copy the code and go to runbasic.com
-'http://rosettacode.org/wiki/Mandelbrot_set#Liberty_BASIC
+'https://rosettacode.org/wiki/Mandelbrot_set#Liberty_BASIC
 'May 2015 (updated 29 Apr 2018)
 '
 'Note - we only get so much processing time on the server, so the
@@ -1319,7 +1319,7 @@ end
 =
 Requires at least 2k of RAM.
 
-Glacially slow, but does eventually produce a tolerable low-resolution image (screenshot [here](http://edmundgriffiths.com/zxmandelbrot.jpg)). You can adjust the constants in lines 30 and 40 to zoom in on a particular area, if you like.
+Glacially slow, but does eventually produce a tolerable low-resolution image (screenshot [here](https://edmundgriffiths.com/zxmandelbrot.jpg)). You can adjust the constants in lines 30 and 40 to zoom in on a particular area, if you like.
 
 ```zxbasic
  10 FOR I=0 TO 63
@@ -1819,9 +1819,9 @@ Here is one file program. It directly creates ppm file.
   using Mandelbrot algorithm ( boolean escape time )
  -------------------------------
  2. technique of creating ppm file is  based on the code of Claudio Rocchini
- http://en.wikipedia.org/wiki/Image:Color_complex_plot.jpg
+ https://en.wikipedia.org/wiki/Image:Color_complex_plot.jpg
  create 24 bit color graphic file ,  portable pixmap file = PPM
- see http://en.wikipedia.org/wiki/Portable_pixmap
+ see https://en.wikipedia.org/wiki/Portable_pixmap
  to see the file use external application ( graphic viewer)
   */
  #include <stdio.h>
@@ -2357,7 +2357,7 @@ public class MandelbrotSetForm : Form
 
     static double CalcMandelbrotSetColor(ComplexNumber c)
     {
-        // from http://en.wikipedia.org/w/index.php?title=Mandelbrot_set
+        // from https://en.wikipedia.org/w/index.php?title=Mandelbrot_set
         const int MaxIterations = 1000;
         const double MaxNorm = MaxValueExtent * MaxValueExtent;
 
@@ -3316,7 +3316,7 @@ Mandelbrot mandelbrotForm {};
 ;; plot function argument inside square (-2 -2), (2,2)
 (plot-z-arg mset -2 -2)
 
-;; result here [http://www.echolalie.org/echolisp/help.html#fractal]
+;; result here [https://www.echolalie.org/echolisp/help.html#fractal]
 
 ```
 
@@ -4463,7 +4463,7 @@ end
 ```
 
 
-[graphics is required](http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
+[graphics is required](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 ## IDL
 
@@ -4949,7 +4949,7 @@ implementation but generates SVG.  The resulting picture is the same.
   def svg(id; width; height):
     "<svg width='\(width // "100%")' height='\(height // "100%") '
         id='\(id)'
-        xmlns='http://www.w3.org/2000/svg'>";
+        xmlns='https://www.w3.org/2000/svg'>";
 
   def pixel(x;y;r;g;b;a):
     "<circle cx='\(x)' cy='\(y)' r='1' fill='rgb(\(r|floor),\(g|floor),\(b|floor))' />";
@@ -7934,7 +7934,7 @@ const proc: main is func
 
 
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#mandelbr>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#mandelbr>
 
 
 ## SequenceL
@@ -8709,13 +8709,13 @@ However, it has been discussed extensively [on the internet](http://thedailywtf.
 ```xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
 
 <!-- XSLT Mandelbrot - written by Joel Yliluoma 2007, http://iki.fi/bisqwit/ -->
 
 <xsl:output method="html" indent="no"
   doctype-public="-//W3C//DTD HTML 4.01//EN"
-  doctype-system="http://www.w3.org/TR/REC-html40/strict.dtd"
+  doctype-system="https://www.w3.org/TR/REC-html40/strict.dtd"
  />
 
 <xsl:template match="/fractal">
@@ -9143,7 +9143,7 @@ Computation finished.
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:Mandelbrot.zkl.jpg|300px|thumb|right]]
 
 ```zkl

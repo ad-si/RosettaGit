@@ -53,4 +53,4 @@ It isn't particularly good (though perhaps a reasonable starting point for somet
 "Python Chess" is a chess game at the [PyGame-Website](http://www.pygame.org/project-Python+Chess-1099-.html) and [Homepage](http://uniformlyuninformative.wordpress.com/python-chess).
 
 ==={{libheader|VPython}}===
-There is a 3D-Chess-Board in the [VPython contributed section](http://vpython.org/contents/contributed/chessboard.py).
+There is a 3D-Chess-Board in the [VPython contributed section](https://vpython.org/contents/contributed/chessboard.py).

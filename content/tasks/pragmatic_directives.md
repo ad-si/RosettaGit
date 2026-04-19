@@ -60,8 +60,8 @@ Some common language defined pragmas:
 Some pragmas are also implementation defined, the commonly used GNAT provides many, such as:
 * pragma Unreferenced(name) suppresses warnings about unused entities, and raises warnings if they are in fact referenced.
 There are far too many pragmas to list here, but a standard informative list can be found in Annex L of the documentation if you have it installed. Or found at:
-* [Annex L - Language-Defined Pragmas](http://www.adaic.org/resources/add_content/standards/05rm/html/RM-L.html)
-* [GNAT Implementation Defined Pragmas](http://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-Defined-Pragmas.html)
+* [Annex L - Language-Defined Pragmas](https://www.adaic.org/resources/add_content/standards/05rm/html/RM-L.html)
+* [GNAT Implementation Defined Pragmas](https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-Defined-Pragmas.html)
 
 
 
@@ -238,7 +238,7 @@ More module attributes at <http://www.erlang.org/doc/reference_manual/modules.ht
 
 ## Go
 
-Go has a feature called [build constraints](http://golang.org/pkg/go/build/#overview) that work on the level of whole files.  A comment line reading
+Go has a feature called [build constraints](https://golang.org/pkg/go/build/#overview) that work on the level of whole files.  A comment line reading
 
 
 ```go
@@ -287,7 +287,7 @@ Additionally, tracing can be controlled via the environment variable 'TRACE'.
 ## J
 
 
-J's [foreign global parameters](http://www.jsoftware.com/help/dictionary/dx009.htm) possibly qualify as pragmatic directives.
+J's [foreign global parameters](https://www.jsoftware.com/help/dictionary/dx009.htm) possibly qualify as pragmatic directives.
 
 They are analogous to setting (or reading) variables.
 
@@ -572,7 +572,7 @@ Lastly note that an abort() statement at the top level will make the compiler ig
 
 ## PicoLisp
 
-PicoLisp makes no formal difference between any normal and "specific" operation of the language. Any possible desired effect can be achieved by calling a function or setting a variable. For example, function calls can be traced with the '[trace](http://software-lab.de/doc/refT.html#trace)' function.
+PicoLisp makes no formal difference between any normal and "specific" operation of the language. Any possible desired effect can be achieved by calling a function or setting a variable. For example, function calls can be traced with the '[trace](https://software-lab.de/doc/refT.html#trace)' function.
 
 /* {{header|PL/I}} */ Section added -- Superfluous blanks suppressed
 
@@ -669,7 +669,7 @@ Get-Help about_Requires
 
 ## Python
 
-Python has the [__future__](http://docs.python.org/py3k/library/__future__.html) module which controls certain features:
+Python has the [__future__](https://docs.python.org/py3k/library/__future__.html) module which controls certain features:
 
 ;Python 3.2:
 
@@ -683,7 +683,7 @@ Type "copyright", "credits" or "license()" for more information.
 ```
 
 
-('barry_as_FLUFL' is an April fools [joke](http://www.python.org/dev/peps/pep-0401/))
+('barry_as_FLUFL' is an April fools [joke](https://www.python.org/dev/peps/pep-0401/))
 
 ;Python 2.7:
 

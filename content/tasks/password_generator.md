@@ -4073,7 +4073,7 @@ Dim i&, t, r As String, d() As Long
     y = Left(r, Len(r) - 1)
 End Function
 Private Function z(l As Long) As Long()
-'http://rosettacode.org/wiki/Best_shuffle#VBA
+'https://rosettacode.org/wiki/Best_shuffle#VBA
 Dim i As Long, ou As Long, temp() As Long
 Dim c As New Collection
     ReDim temp(l)

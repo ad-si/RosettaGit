@@ -14,7 +14,7 @@ tags = []
 
 The information about MySQL ownership is outdated. 
 
-First Sun and now "owned" by Oracle. See at the end of section in [Product History at Wikipedia](http://en.wikipedia.org/wiki/MySQL#Product_History).
+First Sun and now "owned" by Oracle. See at the end of section in [Product History at Wikipedia](https://en.wikipedia.org/wiki/MySQL#Product_History).
 
 --[[User:Mortense|Mortense]] 19:39, 20 February 2010 (UTC)
 

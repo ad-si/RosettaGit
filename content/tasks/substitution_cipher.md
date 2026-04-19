@@ -192,7 +192,7 @@ int main(int argC,char* argV[]){
 
 ```
 
-A long, long time ago ( yes, [I have said it before](http://www.rosettacode.org/wiki/N-body_problem#C) ), I read Digital Fortress by Dan Brown. One thing which struck me was Ensei Tankado using the same algorithm to encrypt itself ( or it's human readable Unicode version, if you are a purist). I remembered the name : Bigelman's Safe, but I got the spelling wrong so I had to [read the copy on archive.org](https://archive.org/stream/LostSymbol/Dan%20Brown/Digital%20Fortress#page/n29/mode/2up/search/bigel), it's there on the last line of page 30/31, Biggleman's Safe.
+A long, long time ago ( yes, [I have said it before](https://www.rosettacode.org/wiki/N-body_problem#C) ), I read Digital Fortress by Dan Brown. One thing which struck me was Ensei Tankado using the same algorithm to encrypt itself ( or it's human readable Unicode version, if you are a purist). I remembered the name : Bigelman's Safe, but I got the spelling wrong so I had to [read the copy on archive.org](https://archive.org/stream/LostSymbol/Dan%20Brown/Digital%20Fortress#page/n29/mode/2up/search/bigel), it's there on the last line of page 30/31, Biggleman's Safe.
 
 ----
 So here it is, a program which encrypts itself, you saw the cleartext file above, now here's the invocation and ciphertext file.

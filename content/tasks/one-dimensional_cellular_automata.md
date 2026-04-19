@@ -437,7 +437,7 @@ Generation 8 __##________________
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=147)
 
 ```autohotkey
 n := 22, n1 := n+1, v0 := v%n1% := 0        ; set grid dimensions, and fixed cells
@@ -5528,7 +5528,7 @@ Output:
 
 ## Seed7
 
-A graphical cellular automaton can be found [here](http://seed7.sourceforge.net/algorith/graphic.htm#cellauto).
+A graphical cellular automaton can be found [here](https://seed7.sourceforge.net/algorith/graphic.htm#cellauto).
 
 
 ```seed7
@@ -6221,7 +6221,7 @@ __##________________
 
 ## Seed7
 
-A graphical cellular automaton can be found [here](http://seed7.sourceforge.net/algorith/graphic.htm#cellauto).
+A graphical cellular automaton can be found [here](https://seed7.sourceforge.net/algorith/graphic.htm#cellauto).
 
 > petriCache(i) Then stable = False
             If petriCache(i) Then dead = False

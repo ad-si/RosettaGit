@@ -250,7 +250,7 @@ PRINT FN f$("Rosetta", "Code", ":")
 
 ## Batch File
 
-CMD.EXE is the CLI for Batch Files. Batch Files do not have traditional functions and doing the [alternative](http://rosettacode.org/wiki/Call_a_function#Batch_File) will not work in interactive mode. So this example uses blocks of code.
+CMD.EXE is the CLI for Batch Files. Batch Files do not have traditional functions and doing the [alternative](https://rosettacode.org/wiki/Call_a_function#Batch_File) will not work in interactive mode. So this example uses blocks of code.
 ```dos>
 set r=Rosetta
 
@@ -459,7 +459,7 @@ user=>
 
 ## CoffeeScript
 
-With the [coffee-script](https://www.npmjs.com/package/coffee-script) package for [NPM](https://www.npmjs.org/) on [Node.js](http://nodejs.org/). The ''-n'' flag is '--node'.
+With the [coffee-script](https://www.npmjs.com/package/coffee-script) package for [NPM](https://www.npmjs.org/) on [Node.js](https://nodejs.org/). The ''-n'' flag is '--node'.
 
 ```CoffeeScript
 
@@ -538,7 +538,7 @@ If you type a definitely incomplete expression, such as "<code>def f() {</code>"
 
 ## EchoLisp
 
-EchoLisp runs in a browser window, and is -par essence - interactive. To start the REPL mode, type <http://www.echolalie.org/echolisp> in the browser URL address field.
+EchoLisp runs in a browser window, and is -par essence - interactive. To start the REPL mode, type <https://www.echolalie.org/echolisp> in the browser URL address field.
 
 ```scheme
 
@@ -793,7 +793,7 @@ val it : string = "Rosetta::Code"
          #############    #####        #####   #####                ####
           #########      #####          #####  #####                ####
 
-     Information at:  http://www.gap-system.org
+     Information at:  https://www.gap-system.org
      Try '?help' for help. See also  '?copyright' and  '?authors'
 
    Loading the library. Please be patient, this may take a while.
@@ -881,7 +881,7 @@ $ ghci
    ___         ___ _
   / _ \ /\  /\/ __(_)
  / /_\// /_/ / /  | |      GHC Interactive, version 6.4.2, for Haskell 98.
-/ /_\\/ __  / /___| |      http://www.haskell.org/ghc/
+/ /_\\/ __  / /___| |      https://www.haskell.org/ghc/
 \____/\/ /_/\____/|_|      Type :? for help.
 
 Loading package base-1.0 ... linking ... done.
@@ -1014,7 +1014,7 @@ warn: type mismatch for argument arg 3 's': expected "string" but got "number", 
 usr@host:~/rosetta/julia$ julia
                _
    _       _ _(_)_     |  A fresh approach to technical computing
-  (_)     | (_) (_)    |  Documentation: http://docs.julialang.org
+  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org
    _ _   _| |_  __ _   |  Type "help()" for help.
   | | | | | | |/ _` |  |
   | | |_| | | | (_| |  |  Version 0.3.7 (2015-03-23 21:36 UTC)

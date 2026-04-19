@@ -41,8 +41,8 @@ Such answer would help RC users.
 I have Win 10 with latest versions of Google Chrome and IE. Both not working.
 
 '''@Rdm:''' You just "imagine", guessing, but '''I've tested'''.
-In addition, RC has <http://rosettacode.org/wiki/Rosetta_Code>. NO https, no problem.
-Same <http://oeis.org/wiki/User:XXX> and hundreds of other sites. NO problem.
+In addition, RC has <https://rosettacode.org/wiki/Rosetta_Code>. NO https, no problem.
+Same <https://oeis.org/wiki/User:XXX> and hundreds of other sites. NO problem.
 
 '''@Hout''' If you have no problem, then contact webmaster and point him to our discussion, 
 but tell him OS/browser you are using.

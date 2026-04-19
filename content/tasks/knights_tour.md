@@ -70,7 +70,7 @@ languages = [
 
 [[wp:Knight%27s_tour|Problem]]: you have a standard 8x8 chessboard, empty but for a single knight on some square.   Your task is to emit a series of legal knight moves that result in the knight visiting every square on the chessboard exactly once. Note that it is ''not'' a requirement that the tour be "closed"; that is, the knight need not end within a single move of its start position.
 
-Input and output may be textual or graphical, according to the conventions of the programming environment.  If textual, squares should be indicated in [algebraic notation](http://en.wikipedia.org/wiki/Algebraic_chess_notation).  The output should indicate the order in which the knight visits the squares, starting with the initial position.  The form of the output may be a diagram of the board with the squares numbered according to visitation sequence, or a textual list of algebraic coordinates in order, or even an actual animation of the knight moving around the chessboard.
+Input and output may be textual or graphical, according to the conventions of the programming environment.  If textual, squares should be indicated in [algebraic notation](https://en.wikipedia.org/wiki/Algebraic_chess_notation).  The output should indicate the order in which the knight visits the squares, starting with the initial position.  The form of the output may be a diagram of the board with the squares numbered according to visitation sequence, or a textual list of algebraic coordinates in order, or even an actual animation of the knight moving around the chessboard.
 
 Input: starting square
 
@@ -2408,9 +2408,9 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 
 
 
-Closed path on a 12x12 board: <http://www.echolalie.org/echolisp/images/k-tour-12.png>
+Closed path on a 12x12 board: <https://www.echolalie.org/echolisp/images/k-tour-12.png>
 
-Open path on a 24x24 board: <http://www.echolalie.org/echolisp/images/k-tour-24.png>
+Open path on a 24x24 board: <https://www.echolalie.org/echolisp/images/k-tour-24.png>
 
 
 ## Elixir
@@ -5966,7 +5966,7 @@ main :- make_graph, hamiltonian(5*3,Pn), show_path(Pn), halt.
  50 39 42  9 28 47 44 1
 ```
 
-[20x20 board runs in: time: 0.91 memory: 68608.](http://ideone.com/jnFTT3)
+[20x20 board runs in: time: 0.91 memory: 68608.](https://ideone.com/jnFTT3)
 
 
 ## Python
@@ -7261,10 +7261,10 @@ This solution is for XSLT 3.0 Working Draft 10 (July 2012). This solution, origi
 First we build a generic package for solving any kind of tour over the chess board. Here it is…
 <lang>
 <xsl:package xsl:version="3.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions"
-  xmlns:tour="http://www.seanbdurkin.id.au/tour"
+  xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="https://www.w3.org/2001/XMLSchema"
+  xmlns:fn="https://www.w3.org/2005/xpath-functions"
+  xmlns:tour="https://www.seanbdurkin.id.au/tour"
   name="tour:tours">
 <xsl:stylesheet>
   <xsl:function name="tour:manufacture-square"
@@ -7324,10 +7324,10 @@ And now for the style-sheet to solve the Knight’s tour…
 
 <lang>
 <xsl:stylesheet version="3.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions"
-  xmlns:tour="http://www.seanbdurkin.id.au/tour"
+  xmlns:xsl="https://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="https://www.w3.org/2001/XMLSchema"
+  xmlns:fn="https://www.w3.org/2005/xpath-functions"
+  xmlns:tour="https://www.seanbdurkin.id.au/tour"
   exclude-result-prefixes="xsl fn xs tour">
 <xsl:use-package name="tour:tours" />
 <xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />

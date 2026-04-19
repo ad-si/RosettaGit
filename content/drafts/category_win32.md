@@ -15,4 +15,4 @@ With Microsoft [[Windows]], the Win32 [[API]] is the core interface to the opera
 
 [[C]] and [[C++]] programs can call every Win32 function. (You need the header files and import libraries for your C or C++ compiler.) Some other languages provide some way to make Win32 API calls.
 
-* [Windows Development](http://msdn.microsoft.com/en-us/library/ee663300%28v=VS.85%29.aspx) at MSDN
+* [Windows Development](https://msdn.microsoft.com/en-us/library/ee663300%28v=VS.85%29.aspx) at MSDN

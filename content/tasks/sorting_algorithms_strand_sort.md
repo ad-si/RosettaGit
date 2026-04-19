@@ -248,7 +248,7 @@ std::list<T> strandSort(std::list<T> lst) {
           (recur xs (conj u x) s e))))))
 
 (defn strand-sort
-  "http://en.wikipedia.org/wiki/Strand_sort"
+  "https://en.wikipedia.org/wiki/Strand_sort"
   [s]
   (loop [[s u] (unbraid s)
          m nil]

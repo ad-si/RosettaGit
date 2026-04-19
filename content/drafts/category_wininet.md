@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}wininet and urlgetcontents by [ahklerner](http://www.autohotkey.com/forum/topic33561.html)
+{{library}}wininet and urlgetcontents by [ahklerner](https://www.autohotkey.com/forum/topic33561.html)

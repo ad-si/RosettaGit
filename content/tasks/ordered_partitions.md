@@ -84,8 +84,8 @@ Example 2: <math>partitions(1,1,1)</math> would create:
 
 Note that the number of elements in the list is
 :<math>{\mathit{arg}_1+\mathit{arg}_2+...+\mathit{arg}_n \choose \mathit{arg}_1} \cdot {\mathit{arg}_2+\mathit{arg}_3+...+\mathit{arg}_n \choose \mathit{arg}_2} \cdot \ldots \cdot {\mathit{arg}_n \choose \mathit{arg}_n}</math>
-(see [the definition of the binomial coefficient](http://en.wikipedia.org/wiki/Binomial_coefficient) if you are not familiar with this notation) and the number of elements remains the same regardless of how the argument is permuted
-(i.e. the [multinomial coefficient](http://en.wikipedia.org/wiki/Multinomial_coefficient)).
+(see [the definition of the binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient) if you are not familiar with this notation) and the number of elements remains the same regardless of how the argument is permuted
+(i.e. the [multinomial coefficient](https://en.wikipedia.org/wiki/Multinomial_coefficient)).
 
 Also, <math>partitions(1,1,1)</math> creates the permutations of <math>\{1,2,3\}</math> and thus there would be <math>3! = 6</math> elements in the list.
 
@@ -97,7 +97,7 @@ Here are some explanatory remarks on the notation used in the task description:
 
 <math>\{1, \ldots, n\}</math> denotes the set of consecutive numbers from <math>1</math> to <math>n</math>, e.g. <math>\{1,2,3\}</math> if <math>n = 3</math>.
 
-<math>\Sigma</math> is the mathematical notation for summation, e.g. <math>\Sigma_{i=1}^3 i = 6</math> (see also <http://en.wikipedia.org/wiki/Summation#Capital-sigma_notation>).
+<math>\Sigma</math> is the mathematical notation for summation, e.g. <math>\Sigma_{i=1}^3 i = 6</math> (see also <https://en.wikipedia.org/wiki/Summation#Capital-sigma_notation>).
 
 <math>\mathit{arg}_1,\mathit{arg}_2,...,\mathit{arg}_n</math> are the arguments — natural numbers — that the sought function receives.
 
@@ -458,7 +458,7 @@ partitions(1,2,0,1):
 
 ## C
 
-Watch out for blank for loops.  Iterative permutation generation is described at <http://en.wikipedia.org/wiki/Permutation#Systematic_generation_of_all_permutations>; code messness is purely mine.
+Watch out for blank for loops.  Iterative permutation generation is described at <https://en.wikipedia.org/wiki/Permutation#Systematic_generation_of_all_permutations>; code messness is purely mine.
 
 ```c
 #include <stdio.h>

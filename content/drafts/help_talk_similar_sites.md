@@ -22,7 +22,7 @@ I don't like that some of the sites we're linking to are dropping offline withou
 
 == projecteuler.net ==
 
-What about <http://projecteuler.net/>? &mdash; [[User:Ht|Ht]] 04:36, 16 May 2012 (UTC)
+What about <https://projecteuler.net/>? &mdash; [[User:Ht|Ht]] 04:36, 16 May 2012 (UTC)
 
 == How to add to Online Execution table? ==
 

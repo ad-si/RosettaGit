@@ -70,7 +70,7 @@ languages = [
 
 ## Task
 
-{{task}}A number may be represented as a [[wp:Continued fraction|continued fraction]] (see [Mathworld](http://mathworld.wolfram.com/ContinuedFraction.html) for more information) as follows:
+{{task}}A number may be represented as a [[wp:Continued fraction|continued fraction]] (see [Mathworld](https://mathworld.wolfram.com/ContinuedFraction.html) for more information) as follows:
 
 :<math>a_0 + \cfrac{b_1}{a_1 + \cfrac{b_2}{a_2 + \cfrac{b_3}{a_3 + \ddots}}}</math>
 

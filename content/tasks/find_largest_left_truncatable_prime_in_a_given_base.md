@@ -902,7 +902,7 @@ func main() {
 
 ## Haskell
 
-Miller-Rabin test code from [HaskellWiki](http://www.haskell.org/haskellwiki/Testing_primality#Miller-Rabin_Primality_Test), with modifications.
+Miller-Rabin test code from [HaskellWiki](https://www.haskell.org/haskellwiki/Testing_primality#Miller-Rabin_Primality_Test), with modifications.
 
 ```haskell
 primesTo100 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]

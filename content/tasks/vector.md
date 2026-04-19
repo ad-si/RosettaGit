@@ -2382,7 +2382,7 @@ say u/2                                  #: vec[1.5, 2]
 ## Tcl
 
 
-Good artists steal .. code .. from the great RS on [Tcl'ers wiki](http://wiki.tcl.tk/14022|the).  Seriously, this is a neat little procedure:
+Good artists steal .. code .. from the great RS on [Tcl'ers wiki](https://wiki.tcl-lang.org/14022|the).  Seriously, this is a neat little procedure:
 
 
 ```Tcl

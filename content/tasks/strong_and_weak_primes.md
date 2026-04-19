@@ -60,8 +60,8 @@ Show all output here.
 
 
 ;Also see:
-::*   The OEIS article:   [strong   primes](http://oeis.org/A051634).
-::*   The OEIS article:   [weak    primes](http://oeis.org/A051635).
+::*   The OEIS article:   [strong   primes](https://oeis.org/A051634).
+::*   The OEIS article:   [weak    primes](https://oeis.org/A051635).
 
 
 

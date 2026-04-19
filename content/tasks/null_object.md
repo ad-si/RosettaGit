@@ -182,8 +182,8 @@ In ALGOL 68 the NIL yields a name that does not refer to any value. NIL can neve
 naturally coerced and can only appear where the context is [[ALGOL 68#strong|strong]].
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 ```algol68
 REF STRING no result = NIL;
@@ -741,7 +741,7 @@ The idea of making functions accept <code>nil</code> without failing did not app
 
 The defaulting behavior <code>(car nil)</code> which Common Lisp programmers take for granted was introduced in InterLisp, and then copied into MacLisp. (InterLisp had other liberties that do not survive into Common Lisp: it was possible to call a function with insufficient arguments, and the missing ones defaulted to <code>nil</code>. Likewise, excess arguments were ignored. CL has a disciplined syntax and semantics for default and variable arguments.)
 
-This <code>(car nil) -> nil</code> behavior shows <code>nil</code> in an kind of new role: the role of a null object which takes methods that apply to other objects and provides some default non-failing behavior. It is the beginnings of the [null object design pattern](http://en.wikipedia.org/wiki/Null_Object_pattern).
+This <code>(car nil) -> nil</code> behavior shows <code>nil</code> in an kind of new role: the role of a null object which takes methods that apply to other objects and provides some default non-failing behavior. It is the beginnings of the [null object design pattern](https://en.wikipedia.org/wiki/Null_Object_pattern).
 
 ====Object-Oriented Null Object====
 
@@ -2136,7 +2136,7 @@ in
   {Show X+2}  %% blocks
 ```
 
-If you later assign a value to X in another thread, the original thread will resume and print the result of the addition. This is the basic building block of Oz' [declarative concurrency](http://c2.com/cgi/wiki?DeclarativeConcurrency).
+If you later assign a value to X in another thread, the original thread will resume and print the result of the addition. This is the basic building block of Oz' [declarative concurrency](https://c2.com/cgi/wiki?DeclarativeConcurrency).
 
 ### Undefined values
 
@@ -2196,7 +2196,7 @@ print defined($x) ? 'Defined' : 'Undefined', ".\n";
 
 From the above discussion, it should be clear that if <code>defined</code> returns false, it does not mean that the variable has not been set; rather, it could be that it was explicitly set to <code>undef</code>.
 
-Starting in Perl 5.10, there is also a [defined-or](http://perldoc.perl.org/perlop.html#C-style-Logical-Defined-Or) operator in Perl. For example:
+Starting in Perl 5.10, there is also a [defined-or](https://perldoc.perl.org/perlop.html#C-style-Logical-Defined-Or) operator in Perl. For example:
 
 ```perl
 say $number // "unknown";
@@ -2325,7 +2325,7 @@ if (is_null($x))
 
 New internal symbols are initialized with the value NIL. NIL is also the value
 for "false", so there is never really an "undefined value".
-'[not](http://software-lab.de/doc/refN.html#not)' is the predicate to check for
+'[not](https://software-lab.de/doc/refN.html#not)' is the predicate to check for
 NIL, but many other (typically flow control) functions can be used.
 
 ```PicoLisp

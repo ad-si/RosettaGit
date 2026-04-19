@@ -34,7 +34,7 @@ I've taken the plunge and clarified and expanded the description of the task.[[U
 Can we assume, for the purposes of the task, that the pseudo-randomness of "random" numbers available on PCs without external assistance qualify as non-deterministic? --[[User:Short Circuit|Short Circuit]] 22:47, 22 March 2008 (MDT)
 :The non-determinism is a red herring. No implementation of Amb I've seen is actually random. The important feature of Amb is backtracking via capturing the continuation. The result is something closer to exception handling. (Can Amb be implemented using only exceptions?)
 ::non-determinism doesn't mean randomness in computer science. This is clarified in the new task description.[[User:Kazinator|Kazinator]] ([[User talk:Kazinator|talk]]) 15:14, 31 October 2015 (UTC)
-:This is an advanced (almost esoteric) concept covered in SICP among other places. See: <http://c2.com/cgi/wiki?AmbSpecialForm> [[wp:Continuation]]. --[[User:IanOsgood|IanOsgood]] 09:30, 24 March 2008 (MDT)
+:This is an advanced (almost esoteric) concept covered in SICP among other places. See: <https://c2.com/cgi/wiki?AmbSpecialForm> [[wp:Continuation]]. --[[User:IanOsgood|IanOsgood]] 09:30, 24 March 2008 (MDT)
 
 
 Nondeterminism has nothing to do with randomness.

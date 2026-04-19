@@ -71,7 +71,7 @@ languages = [
 ]
 +++
 
-From [Wikipedia](http://en.wikipedia.org/wiki/Modular_multiplicative_inverse):
+From [Wikipedia](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse):
 
 In [[wp:modular arithmetic|modular arithmetic]],   the '''modular multiplicative inverse''' of an [[integer]]   <big> ''a'' </big>   [[wp:modular arithmetic|modulo]]   <big> ''m'' </big>   is an integer   <big> ''x'' </big>   such that
 
@@ -214,7 +214,7 @@ END
 
 ## AutoHotkey
 
-Translation of [C](http://rosettacode.org/wiki/Modular_inverse#C).
+Translation of [C](https://rosettacode.org/wiki/Modular_inverse#C).
 
 ```AutoHotkey
 MsgBox, % ModInv(42, 2017)
@@ -599,7 +599,7 @@ No inverse since gcd is: 2
 ;; Calculates the GCD of a and b based on the Extended Euclidean Algorithm. The function also returns
 ;; the Bézout coefficients s and t, such that gcd(a, b) = as + bt.
 ;;
-;; The algorithm is described on page http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2
+;; The algorithm is described on page https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2
 ;;
 (defun egcd (a b)
   (do ((r (cons b a) (cons (- (cdr r) (* (car r) q)) (car r))) ; (r+1 r) i.e. the latest is first.
@@ -1919,7 +1919,7 @@ EndProcedure
 
 
 ===Iteration and error-handling===
-Implementation of this [pseudocode](http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2) with [this](https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse).
+Implementation of this [pseudocode](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2) with [this](https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse).
 
 ```python
 >>>
@@ -2140,7 +2140,7 @@ Output:
 
 
 ```ruby
-#based on pseudo code from http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2 and from translating the python implementation.
+#based on pseudo code from https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Iterative_method_2 and from translating the python implementation.
 def extended_gcd(a, b)
   last_remainder, remainder = a.abs, b.abs
   x, last_x, y, last_y = 0, 1, 1, 0
@@ -2345,9 +2345,9 @@ res2: Option[Int] = Some(1976)
 
 ## Seed7
 
-The library [bigint.s7i](http://seed7.sourceforge.net/libraries/bigint.htm)
-defines the [bigInteger](http://seed7.sourceforge.net/manual/types.htm#bigInteger)
-function [modInverse](http://seed7.sourceforge.net/libraries/bigint.htm#modInverse%28in_var_bigInteger,in_var_bigInteger%29).
+The library [bigint.s7i](https://seed7.sourceforge.net/libraries/bigint.htm)
+defines the [bigInteger](https://seed7.sourceforge.net/manual/types.htm#bigInteger)
+function [modInverse](https://seed7.sourceforge.net/libraries/bigint.htm#modInverse%28in_var_bigInteger,in_var_bigInteger%29).
 It returns the modular multiplicative inverse of a modulo b when a and b are coprime (gcd(a, b) = 1).
 If a and b are not coprime (gcd(a, b) <> 1) the exception RANGE_ERROR is raised.
 
@@ -2399,7 +2399,7 @@ const func bigInteger: modInverse (in var bigInteger: a,
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#modInverse>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#modInverse>
 
 
 ## Sidef

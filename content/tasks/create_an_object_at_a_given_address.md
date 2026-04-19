@@ -103,7 +103,7 @@ Finally, it can be stored via indexed indirect addressing (i.e. read the address
 It should be noted that on the 6502 processor hardware is normally memory mapped, so this is often used for manipulating hardware.
 
 =={{Header|Ada}}==
-In [[Ada]] object address can be specified using the address representation clause [RM 13.3](http://www.adaic.org/standards/05rm/html/RM-13-3.html):
+In [[Ada]] object address can be specified using the address representation clause [RM 13.3](https://www.adaic.org/standards/05rm/html/RM-13-3.html):
 
 ```ada
 
@@ -962,7 +962,7 @@ It is rather unprofessional to deliver this kind of error-prone software. And we
 
 ## Tcl
 
-As noted in the [[Address Operations]] task, it is highly unusual to work with low-level addresses in Tcl. However it is possible to use Tcl's [[C]] API (specifically <code>[Tcl_LinkVar](http://www.tcl.tk/man/tcl8.6/TclLib/LinkVar.htm)</code>) to couple Tcl variables to a particular address:
+As noted in the [[Address Operations]] task, it is highly unusual to work with low-level addresses in Tcl. However it is possible to use Tcl's [[C]] API (specifically <code>[Tcl_LinkVar](https://www.tcl-lang.org/man/tcl8.6/TclLib/LinkVar.htm)</code>) to couple Tcl variables to a particular address:
 
 ```tcl
 package require critcl

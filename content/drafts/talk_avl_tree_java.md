@@ -12,6 +12,6 @@ tags = []
 
 The Java version was ported from C# in 2016. The port of the full [Calculus](http://nncnannara.net/Html/English/Java/index.html) class library took only a week. [User:NNcNannara|NNcNannara]] ([[User talk:NNcNannara|talk]]) 10:20, 11 July 2016 (UTC)
 
-The abbreviated version of Java on the main page will suffer in performance just like the C++ version on the main page - see [C++ Talk](http://rosettacode.org/wiki/Talk:AVL_tree/C%2B%2B).
+The abbreviated version of Java on the main page will suffer in performance just like the C++ version on the main page - see [C++ Talk](https://rosettacode.org/wiki/Talk:AVL_tree/C%2B%2B).
 
 The Java implementation of AVL Trees is a bit different to the C# version in that references to references are not available. This means that functions like RotateLeft and RotateRight return the new node rather than the function updating the reference for you. It is only a cosmetic change to the code. [[User:NNcNannara|NNcNannara]] ([[User talk:NNcNannara|talk]]) 11:25, 16 July 2016 (UTC)

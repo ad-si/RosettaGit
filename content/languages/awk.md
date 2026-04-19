@@ -42,7 +42,7 @@ A few decades later, Kernighan continues to maintain the [reference implementati
 *[AWK Community Portal](http://awk.info)
 
 ## Online-Execution
-* [ideone.com](http://ideone.com) - gawk, mawk (both are kept up to date)
+* [ideone.com](https://ideone.com) - gawk, mawk (both are kept up to date)
 
 ## Todo
 [Reports:Tasks_not_implemented_in_AWK](https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_AWK)

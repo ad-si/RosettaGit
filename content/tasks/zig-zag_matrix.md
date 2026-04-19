@@ -973,7 +973,7 @@ main0() = () where
 
 ## AutoHotkey
 
-contributed by Laszlo on the ahk [forum](http://www.autohotkey.com/forum/post-276307.html#276307).
+contributed by Laszlo on the ahk [forum](https://www.autohotkey.com/forum/post-276307.html#276307).
 
 ```AutoHotkey
 n = 5                           ; size
@@ -5327,7 +5327,7 @@ Zig-zag matrix of size 6
 ### Python: By sorting indices
 
 There is a full explanation of the algorithm used
-by [paddy3118](http://paddy3118.blogspot.com/2008/08/zig-zag.html).
+by [paddy3118](https://paddy3118.blogspot.com/2008/08/zig-zag.html).
 ```python
 def zigzag(n):
     '''zigzag rows'''

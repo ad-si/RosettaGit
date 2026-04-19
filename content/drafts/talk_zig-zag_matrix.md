@@ -231,7 +231,7 @@ Which is exactly what it does.
 
 So now you can see why "J has no words".  It took me over '''2000 <u>words</u>''' to describe what the J expression did in less than '''40 <u>characters</u>''', and I left out much detail (both logical and technical; for example, all the edge cases are handled transparently).  That is a very good compression ratio; we get a lot for a little.  If you were as fluent in J as you are in English, you could've read and understood the J in maybe a tenth the time it took you to read this exposition.
 
-Didn't Paul Graham say "[succinctness is power](http://www.jsoftware.com/jwiki/Essays/Notation_as_a_Tool_of_Thought)"?
+Didn't Paul Graham say "[succinctness is power](https://www.jsoftware.com/jwiki/Essays/Notation_as_a_Tool_of_Thought)"?
 
 
 ###  epilogue 
@@ -450,14 +450,14 @@ function integerList(int-list INPUT) as int-list
 ```
 
 
-The uninmplemented functions (e.g. <tt>antibase</tt>) are primitives, or simple combinations of primitives, in J.  You can get the formal specifications at [The J Vocabulary](http://www.jsoftware.com/help/dictionary/vocabul.htm).  For example, see the [definition of antibase](http://www.jsoftware.com/help/dictionary/d402.htm).
+The uninmplemented functions (e.g. <tt>antibase</tt>) are primitives, or simple combinations of primitives, in J.  You can get the formal specifications at [The J Vocabulary](https://www.jsoftware.com/help/dictionary/vocabul.htm).  For example, see the [definition of antibase](https://www.jsoftware.com/help/dictionary/d402.htm).
 
 
 ==Reply ==
 
 Thanks for the info! I've updated the Haskell example with a better algorithm based on your techniques. (By the way, I think this explanation is worth keeping around; perhaps it should be moved to something like [[Zig Zag/J explanation]] and linked from the example?) --[[User:Kevin Reid|Kevin Reid]] 17:49, 4 August 2008 (UTC)
 
-:I took the fact that you sorted in the Haskel example and worked it out for myself for the Python example, before thinking of reading this talk page. So I have my own [explanation](http://paddy3118.blogspot.com/2008/08/zig-zag.html). --[[User:Paddy3118|Paddy3118]] 04:12, 5 August 2008 (UTC)
+:I took the fact that you sorted in the Haskel example and worked it out for myself for the Python example, before thinking of reading this talk page. So I have my own [explanation](https://paddy3118.blogspot.com/2008/08/zig-zag.html). --[[User:Paddy3118|Paddy3118]] 04:12, 5 August 2008 (UTC)
 
 Even though J looks so strange and hard to me, this algo so explained and encoded gave me the idea that J deserves a look and more:) --[[User:ShinTakezou|ShinTakezou]] 01:00, 16 December 2008 (UTC)
 

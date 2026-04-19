@@ -28,7 +28,7 @@ Why is it so difficult to write even couple of sentences to specify the task? Sp
 ::(Please sign your posts). Comments on the change in wording? --[[User:Paddy3118|Paddy3118]] 00:54, 20 September 2011 (UTC)
 :::Please confine your attention to what is said, not who. I see the text "Paddy3118, ...", but that means nothing to me and carries no authenticity (not that any is required: you're not writing me a check).
 :::: This is one example why you need to sign your posts.  You inserted a paragraph in front of someone else's comment without a sig, at the same indent level, now it's difficult to tell if the above utterance was from Kernigh or some impolite person.  If you are too good to register a user name, at least have the courtsey to sign it with your IP. --[[User:Ledrug|Ledrug]] 21:48, 20 September 2011 (UTC)
-:::If you fetch an HTML file, you get HTML source code. This is not true in the general case; <http://rosettacode.org/mw/title.png> is not the source code of anything. --[[User:Kernigh|Kernigh]] 01:08, 20 September 2011 (UTC)
+:::If you fetch an HTML file, you get HTML source code. This is not true in the general case; <https://rosettacode.org/mw/title.png> is not the source code of anything. --[[User:Kernigh|Kernigh]] 01:08, 20 September 2011 (UTC)
 ::::Yea, it locates a resource, the nature of the resource is carefully ''not'' defined. --[[User:Paddy3118|Paddy3118]] 01:25, 20 September 2011 (UTC)
 ::::If you fetch an HTML file, you get an HTTP response with headers, and a body which contains HTML code. Some of the progrmas in this page look like they  just dump the raw response, whereas others show the body.
 

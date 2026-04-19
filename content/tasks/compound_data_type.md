@@ -2673,7 +2673,7 @@ person_location(person(name(N), age(A)), point(X, Y)).
 ## PureBasic
 
 
-A basic [structure](http://www.purebasic.com/documentation/reference/structures.html) is implemented as;
+A basic [structure](https://www.purebasic.com/documentation/reference/structures.html) is implemented as;
 
 ```PureBasic
 Structure MyPoint
@@ -2964,7 +2964,7 @@ println(p.y)   //=> 2
 
 ## Scheme
 
-Using [SRFI 9](http://srfi.schemers.org/srfi-9/srfi-9.html):
+Using [SRFI 9](https://srfi.schemers.org/srfi-9/srfi-9.html):
 
 ```scheme
 (define-record-type point

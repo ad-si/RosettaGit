@@ -1071,11 +1071,11 @@ hello from f4
 ## Ruby
 
 Ruby has various properties that will return lists of methods:
-* [Object#methods](http://ruby-doc.org/core/Object.html#method-i-methods)
-* [Object#public_methods](http://ruby-doc.org/core/Object.html#method-i-public_methods)
-* [Object#private_methods](http://ruby-doc.org/core/Object.html#method-i-private_methods)
-* [Object#protected_methods](http://ruby-doc.org/core/Object.html#method-i-protected_methods)
-* [Object#singleton_methods](http://ruby-doc.org/core/Object.html#method-i-singleton_methods)
+* [Object#methods](https://ruby-doc.org/core/Object.html#method-i-methods)
+* [Object#public_methods](https://ruby-doc.org/core/Object.html#method-i-public_methods)
+* [Object#private_methods](https://ruby-doc.org/core/Object.html#method-i-private_methods)
+* [Object#protected_methods](https://ruby-doc.org/core/Object.html#method-i-protected_methods)
+* [Object#singleton_methods](https://ruby-doc.org/core/Object.html#method-i-singleton_methods)
 
 Dynamic methods can be listed by overriding these methods. Ancestor methods can be filtered out by subtracting a list of methods from the ancestor.
 

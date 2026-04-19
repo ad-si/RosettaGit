@@ -392,7 +392,7 @@ toBase(n,b) {  ; n >= 0, 1 < b < StrLen(t), t = digits
 	Return (n < b ? "" : ToBase(n//b,b)) . SubStr(t,mod(n,b)+1,1)
 }
 
-; Knuth shuffle from http://rosettacode.org/wiki/Knuth_Shuffle#AutoHotkey
+; Knuth shuffle from https://rosettacode.org/wiki/Knuth_Shuffle#AutoHotkey
 shuffle(list) {									; shuffle comma separated list, converted to array
 	StringSplit a, list, `,						; make array (length = a0)
 	Loop % a0-1 {
@@ -425,7 +425,7 @@ isValidSet(a, b, c) {
 	Return !((a1|b1|c1 ~= "[3,5,6]") + (a2|b2|c2 ~= "[3,5,6]") + (a3|b3|c3 ~= "[3,5,6]") + (a4|b4|c4 ~= "[3,5,6]"))
 }
 
-; Get all combinations, from http://rosettacode.org/wiki/Combinations#AutoHotkey
+; Get all combinations, from https://rosettacode.org/wiki/Combinations#AutoHotkey
 comb(n,t) { ; Generate all n choose t combinations of 1..n, lexicographically
 	IfLess n,%t%, Return
 	Loop %t%

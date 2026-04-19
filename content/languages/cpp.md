@@ -32,9 +32,9 @@ If you can't find an implementation for your task in the C++ category below, ple
     Many compilers support it, but put its headers in a different directory.
     - '''C++11''' (formerly called '''C++0x''' and sometimes '''C++1x''') is a significant improvement, adding many new language features and libraries.
     It was standardized by ISO in 2011.
-    Most of its features are available in [GCC](https://rosettacode.org/wiki/GCC) <http://gcc.gnu.org/projects/cxx0x.html> and [Clang](https://rosettacode.org/wiki/Clang) <http://clang.llvm.org/cxx_status.html>.
+    Most of its features are available in [GCC](https://rosettacode.org/wiki/GCC) <https://gcc.gnu.org/projects/cxx0x.html> and [Clang](https://rosettacode.org/wiki/Clang) <http://clang.llvm.org/cxx_status.html>.
 - '''C++14''' (formerly called '''C++1y''') is a minor improvement to C++11, standardized by ISO in 2014.
-    Most of its features are available in [Clang](https://rosettacode.org/wiki/Clang) <http://clang.llvm.org/cxx_status.html> and [GCC](https://rosettacode.org/wiki/GCC) <http://gcc.gnu.org/projects/cxx1y.html>.
+    Most of its features are available in [Clang](https://rosettacode.org/wiki/Clang) <http://clang.llvm.org/cxx_status.html> and [GCC](https://rosettacode.org/wiki/GCC) <https://gcc.gnu.org/projects/cxx1y.html>.
 - '''C++17''' (formerly called '''C++1z''') is a minor improvement to C++14, standardized by ISO in 2017.
     Most of its features are available in [Clang](https://rosettacode.org/wiki/Clang) <http://clang.llvm.org/cxx_status.html> and [GCC](https://rosettacode.org/wiki/GCC) <https://gcc.gnu.org/projects/cxx-status.html#cxx17>.
 - '''C++2a''' ('''C++20 ''' unofficially) is a major upcoming improvement to C++17 first drafted in July 2017.

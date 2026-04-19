@@ -30,7 +30,7 @@ In other words, can I state in my user page that all my contributions can be con
 : I don't think that GPL v3 qualifies as "more permissive" than the GFDL, in part due to the patent-related clauses, but I suppose I can re-word it as "dual-license", and strike the "less permissive" mention.
 : And, yes, GFDL is inappropriate for source code.  I very much wish I'd used a Creative Commons license for Rosetta Code when I created it, rather than GFDL, but I wasn't familiar with the incompatibilities of the GFDL and most uses of source code. I don't think I can switch the license now, unless I take advantage of the convert-to-CC window GNU added recently. --[[User:Short Circuit|Short Circuit]] 22:11, 8 May 2009 (UTC)
 :: You can't, because the licensing condition is explicitly GFDL 1.2 (without the "or, at your option, a later version" clause). Since the relicensing window only applies to 1.3, AFAIU relicensing the site is not possible (unless each and every author explicitly agrees to the relicensing, of course).
-:: Also note that the GFDL link at the end of the page is now wrong (it points to the current 1.3 license instead of the older 1.2 one). GFDL 1.2 is now at <http://www.gnu.org/licenses/old-licenses/fdl-1.2.html> --[[User:Ce|Ce]] 14:55, 10 May 2009 (UTC)
+:: Also note that the GFDL link at the end of the page is now wrong (it points to the current 1.3 license instead of the older 1.2 one). GFDL 1.2 is now at <https://www.gnu.org/licenses/old-licenses/fdl-1.2.html> --[[User:Ce|Ce]] 14:55, 10 May 2009 (UTC)
 
 == How to switch ==
 
@@ -84,7 +84,7 @@ Personally, If they had acknowledged that the task descriptions take time and ex
 
 P.S. Doesn't the license state that some attempt at stating authorship needs to be given? --[[User:Paddy3118|Paddy3118]] 10:53, 2 September 2012 (UTC)
 
-Here is how [contributors to the Python documentation](http://docs.python.org/py3k/about.html) are listed. It gives a list of around 230 names and allows for consideration of additions. Nothing like that is done in this PicoLisp book. It seems to belittle the contributors of around a quarter of the text of the book. --[[User:Paddy3118|Paddy3118]] 11:09, 2 September 2012 (UTC)
+Here is how [contributors to the Python documentation](https://docs.python.org/py3k/about.html) are listed. It gives a list of around 230 names and allows for consideration of additions. Nothing like that is done in this PicoLisp book. It seems to belittle the contributors of around a quarter of the text of the book. --[[User:Paddy3118|Paddy3118]] 11:09, 2 September 2012 (UTC)
 
 What a great idea. The task that I created when I first came to this wiki, best shuffle, is also in there. Cool! -- To have a long list of contributors and task authors in a book like this, I don't see what purpose that would serve. Nobody cares. [[User:Fwend|Fwend]] 17:53, 2 September 2012 (UTC)
 : The problem is that with who-knows-how-many authors in various bits throughout RC, someone ''might'' care. So it's generally best to act on a pessimistic reading. CYA sucks, but it is what it is.--[[User:Short Circuit|Michael Mol]] 23:04, 2 September 2012 (UTC)

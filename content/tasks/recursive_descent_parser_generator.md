@@ -463,4 +463,4 @@ z0004
 ```
 
 
-See also <http://www.jsoftware.com/svn/base/trunk/packages/misc/trace.ijs> for a model of the underlying parser being employed here.
+See also <https://www.jsoftware.com/svn/base/trunk/packages/misc/trace.ijs> for a model of the underlying parser being employed here.

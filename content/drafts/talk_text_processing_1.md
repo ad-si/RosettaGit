@@ -11,7 +11,7 @@ tags = []
 +++
 
 ==Why?==
-I was reading through [old blog entries](http://paddy3118.blogspot.com/2007/01/data-mining-in-three-language05.html) and thought it would be appropriate (minus the focus on speed).
+I was reading through [old blog entries](https://paddy3118.blogspot.com/2007/01/data-mining-in-three-language05.html) and thought it would be appropriate (minus the focus on speed).
 
 ==The Sample File Was Not Found==
 still missing [[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 06:16, 1 August 2016 (UTC)
@@ -37,7 +37,7 @@ Data format information might be [here](http://dataservice.eea.europa.eu/dataser
 ```txt
 2008/Mar/21    -1E-2 1
 ```
- On second thought I would suggest to replace it to something more general and better defined text processing task. Like parsing a [CSV file](http://en.wikipedia.org/wiki/Comma-separated_values), for example. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 18:37, 8 November 2008 (UTC)
+ On second thought I would suggest to replace it to something more general and better defined text processing task. Like parsing a [CSV file](https://en.wikipedia.org/wiki/Comma-separated_values), for example. --[[User:Dmitry-kazakov|Dmitry-kazakov]] 18:37, 8 November 2008 (UTC)
 
 ::How about we wait a week and see what others think? If no one else can figure it out then I will add further explanations.
 ::If you can find such malformed data in the readings.txt file then it becomes an issue. Asking such what-if questions seem to be finding ways to fail.

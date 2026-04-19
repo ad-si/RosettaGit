@@ -625,7 +625,7 @@ end Generic_Inverted_Index;
 ## AutoHotkey
 
 ```AutoHotkey
-; http://www.autohotkey.com/forum/viewtopic.php?t=41479
+; https://www.autohotkey.com/forum/viewtopic.php?t=41479
 inputbox, files, files, file pattern such as c:\files\*.txt
 
 word2docs := object() ; autohotkey_L is needed.
@@ -2812,7 +2812,7 @@ First the simple inverted index from [[wp:Inverted index|here]] together with an
 
 ```python
 '''
-This implements: http://en.wikipedia.org/wiki/Inverted_index of 28/07/10
+This implements: https://en.wikipedia.org/wiki/Inverted_index of 28/07/10
 '''
 
 from pprint import pprint as pp
@@ -3021,7 +3021,7 @@ Note: In this algorithm, word indices start at 1.
 
 Note:   the Burma Shave signs were created from 1930 ──► 1951   and were common among the rural byways of America.
 
-To see more about Burma Shave signs, see the Wikipedia entry:   [Burma Shave signs.](http://en.wikipedia.org/wiki/Burma-Shave)
+To see more about Burma Shave signs, see the Wikipedia entry:   [Burma Shave signs.](https://en.wikipedia.org/wiki/Burma-Shave)
 
 ```rexx
 /*REXX program illustrates building a simple inverted index  and  a method of word find.*/
@@ -3180,7 +3180,7 @@ word ───burma-shave─── found in:
 ## Ruby
 
 
-I broke this into two parts, storing the index as a file on disk to better represent how this might actually be used in practice.  The indexmerge part will create or update the index data file with any files given on the command line, and then indexsearch will use the data file to search for any terms listed on the command line.  The example is based on <http://en.wikipedia.org/wiki/Inverted_index> of 2010/09/10.
+I broke this into two parts, storing the index as a file on disk to better represent how this might actually be used in practice.  The indexmerge part will create or update the index data file with any files given on the command line, and then indexsearch will use the data file to search for any terms listed on the command line.  The example is based on <https://en.wikipedia.org/wiki/Inverted_index> of 2010/09/10.
 
 '''indexmerge.rb'''
 

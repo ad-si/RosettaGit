@@ -52,7 +52,7 @@ The newline character is number ''10'' and a end of file on input is signalled b
 The `,` command uses line editing and waits for for the return key to be pressed.
 
 Due to this minimal instruction set, Brainfuck is used as an introduction to compilers and has even been successfully implemented as a microprocessor core and the foundation to an operating system using a slightly extended syntax for output.
-BUT due to vehement opposition to the name [various](http://esolangs.org/wiki/Cupid) [equivalents](http://esolangs.org/wiki/Category:Brainfuck_equivalents) are frequently used.
+BUT due to vehement opposition to the name [various](https://esolangs.org/wiki/Cupid) [equivalents](https://esolangs.org/wiki/Category:Brainfuck_equivalents) are frequently used.
 
 
 ## Links

@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{implementation|Brainfuck}}{{collection|RCBF}}
-Presented here is the core of a Brainfuck interpreter/debugger written in [[JavaScript]] that is designed to run within a web page. The full source can be found at <http://www.quirkster.com/iano/js/bf.html> by viewing the page source.
+Presented here is the core of a Brainfuck interpreter/debugger written in [[JavaScript]] that is designed to run within a web page. The full source can be found at <https://www.quirkster.com/iano/js/bf.html> by viewing the page source.
 
 
 ```javascript

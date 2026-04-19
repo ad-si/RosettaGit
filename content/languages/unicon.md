@@ -30,7 +30,7 @@ The following are related:
 ###  Home Pages
 
 * [Unicon home page on Sourceforge](http://unicon.org/)
-* [The Icon home page at the University of Arizona](http://www.cs.arizona.edu/icon/)
+* [The Icon home page at the University of Arizona](https://www.cs.arizona.edu/icon/)
 
 
 ###  Books
@@ -39,8 +39,8 @@ The following are related:
 ### = General =
 
 * [Book: Programming with Unicon describing the language, the Icon Programming Library and Unicon extensions](http://unicon.org/book/ub.pdf)
-* [Book: The Icon Programming Language, 3rd Edition](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
-* [Book: Graphics Programming in Icon](http://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
+* [Book: The Icon Programming Language, 3rd Edition](https://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+* [Book: Graphics Programming in Icon](https://www.cs.arizona.edu/icon/ftp/doc/gb1up.pdf)
 * [Book: Icon Programming Language Handbook](http://www.tools-of-computing.com/tc/CS/iconprog.pdf)
 * [Book: Icon Programming for Humanists](http://www2.cs.uidaho.edu/~jeffery/icon/humanists/humanist.pdf)
 
@@ -49,22 +49,22 @@ The following are related:
 
 * [The Implementation of Icon and Unicon a Compendium](http://unicon.sourceforge.net/book/ib.pdf)]
 ** [Unicon Technical Reports and works in progress](http://unicon.sourceforge.net/reports.html)
-* [The Implementation of the Icon Programming Language](http://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
-** [IPD112 Supplement to Version 8](http://www.cs.arizona.edu/icon/docs/ipd112.htm)
-** [IPD239 Supplement to Version 9](http://www.cs.arizona.edu/icon/docs/ipd239.htm)
-** [Icon Technical Reports (TR) and Project Documents (IDP)](http://www.cs.arizona.edu/icon/docs/docs.htm)
+* [The Implementation of the Icon Programming Language](https://www.cs.arizona.edu/icon/ftp/doc/ib1up.pdf)
+** [IPD112 Supplement to Version 8](https://www.cs.arizona.edu/icon/docs/ipd112.htm)
+** [IPD239 Supplement to Version 9](https://www.cs.arizona.edu/icon/docs/ipd239.htm)
+** [Icon Technical Reports (TR) and Project Documents (IDP)](https://www.cs.arizona.edu/icon/docs/docs.htm)
 
 
 ###  Articles and Newsletters
 
 * [Archived issues of the Generator from 2004-2005 discussing Unicon programming](http://unicon.org/generator/)
-* [Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming](http://www.cs.arizona.edu/icon/inl/inl.htm)
-* [Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming](http://www.cs.arizona.edu/icon/analyst/ia.htm)
+* [Archived issues of the Icon Newsletter from 1979-2000 discussing Icon programming](https://www.cs.arizona.edu/icon/inl/inl.htm)
+* [Archived issues of the Icon Analysts from 1990-2001 discussing advanced Icon programming](https://www.cs.arizona.edu/icon/analyst/ia.htm)
 
 
 ###  Programming References
 
-* [The Icon Programming Library and index](http://www.cs.arizona.edu/icon/library/ipl.htm)
+* [The Icon Programming Library and index](https://www.cs.arizona.edu/icon/library/ipl.htm)
 * [Unicon Discussion Web/TWiki containing various programming examples, problems, and challenges](https://tapestry.tucson.az.us/twiki/bin/view/Main/WebHome)
 
 

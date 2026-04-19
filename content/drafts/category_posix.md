@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{library}}'''POSIX''' or "Portable Operating System Interface" is a standard for systems that resemble [[Unix]]. The current version, [POSIX.1-2008](http://pubs.opengroup.org/onlinepubs/9699919799/toc.htm), is a project of both the [[IEEE]] and the Open Group. More information is at [[wp:POSIX|POSIX at Wikipedia]].
+{{library}}'''POSIX''' or "Portable Operating System Interface" is a standard for systems that resemble [[Unix]]. The current version, [POSIX.1-2008](https://pubs.opengroup.org/onlinepubs/9699919799/toc.htm), is a project of both the [[IEEE]] and the Open Group. More information is at [[wp:POSIX|POSIX at Wikipedia]].
 
 * POSIX defines an [[API]] for [[C]] programs, with functions such as <tt>fork()</tt>, <tt>opendir()</tt>, <tt>regcomp()</tt>, <tt>wait()</tt> and <tt>unlink()</tt>.
 * POSIX also defines commands such as <tt>[[AWK|awk]]</tt>, <tt>[[bc]]</tt>, <tt>grep</tt>, <tt>ls</tt>, <tt>[[m4]]</tt>, <tt>rm</tt>, <tt>[[sed]]</tt> and <tt>[[UNIX Shell|sh]]</tt>.

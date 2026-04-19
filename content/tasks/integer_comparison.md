@@ -486,7 +486,7 @@ aime FILE integer a 33 integer b 133
 ## ALGOL 68
 
 Note: the standard includes the characters "&le;", "&ge;" and "&ne;".
-These appear in the character sets [[wp:GOST 10859|GOST 10859]], [ISOtech](http://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html) and
+These appear in the character sets [[wp:GOST 10859|GOST 10859]], [ISOtech](https://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html) and
 IBM's [[:wp:EBCDIC|EBCDIC]] e.g. code page [293](http://www.tachyonsoft.com/cp00293.htm),
 and in extended ASCII code pages [910](http://www.tachyonsoft.com/cp00907.htm) & [910](http://www.tachyonsoft.com/cp00907.htm)
 
@@ -3427,7 +3427,7 @@ elif a == b:
 
 ## NSIS
 
-===Pure NSIS (Using [IntCmp](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.4.13) directly)===
+===Pure NSIS (Using [IntCmp](https://nsis.sourceforge.net/Docs/Chapter4.html#4.9.4.13) directly)===
 
 ```nsis
 
@@ -3456,7 +3456,7 @@ FunctionEnd
 
 ```
 
-=== Using [LogicLib](http://nsis.sourceforge.net/LogicLib) (bundled library) ===
+=== Using [LogicLib](https://nsis.sourceforge.net/LogicLib) (bundled library) ===
 ```nsis
 
 Function IntegerComparison
@@ -3861,7 +3861,7 @@ if($int1 > $int2)
 ?>
 ```
 
-Note that this works from the command-line interface only, whereas [PHP](http://www.php.net) is usually executed as [[wp:Common_Gateway_Interface CGI]].
+Note that this works from the command-line interface only, whereas [PHP](https://www.php.net) is usually executed as [[wp:Common_Gateway_Interface CGI]].
 
 
 ## PicoLisp
@@ -4102,7 +4102,7 @@ $a $b = if  $b $a "%g is equal to %g\n" print
 
 REBOL [
 	Title: "Comparing Two Integers"
-	URL: http://rosettacode.org/wiki/Comparing_two_integers
+	URL: https://rosettacode.org/wiki/Comparing_two_integers
 ]
 
 a: ask "First integer? "  b: ask "Second integer? "

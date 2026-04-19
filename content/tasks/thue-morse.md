@@ -68,7 +68,7 @@ languages = [
 
 ## Task
 
-Create a [Thue-Morse sequence](http://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).
+Create a [Thue-Morse sequence](https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence).
 
 
 ## See also
@@ -1359,7 +1359,7 @@ let () =
 
 ## Pascal
 
-Like the C++ Version <http://rosettacode.org/wiki/Thue-Morse#C.2B.2B> the lenght of the sequence is given in advance.
+Like the C++ Version <https://rosettacode.org/wiki/Thue-Morse#C.2B.2B> the lenght of the sequence is given in advance.
 
 ```pascal
 Program ThueMorse;
@@ -1665,7 +1665,7 @@ for i in range(0,6):
 ```
 
 
-===Python: By [substitution system](http://mathworld.wolfram.com/SubstitutionSystem.html)===
+===Python: By [substitution system](https://mathworld.wolfram.com/SubstitutionSystem.html)===
 
 ```Python
 

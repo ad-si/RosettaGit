@@ -1607,7 +1607,7 @@ import std.array, std.string, std.ascii, std.algorithm, std.range;
 /**
 Soundex is a phonetic algorithm for indexing names by
 sound, as pronounced in English. See:
-http://en.wikipedia.org/wiki/Soundex
+https://en.wikipedia.org/wiki/Soundex
 */
 string soundex(in string name) pure /*nothrow*/
 out(result) {
@@ -1620,7 +1620,7 @@ out(result) {
     assert((charCount == 0) == (result == "0000"));
 } body {
     // Adapted from public domain Python code by Gregory Jorgensen:
-    // http://code.activestate.com/recipes/52213/
+    // https://code.activestate.com/recipes/52213/
     // digits holds the soundex values for the alphabet.
     static immutable digits = "01230120022455012623010202";
     string firstChar, result;
@@ -2469,7 +2469,7 @@ procedure soundex(name)
 end
 ```
 
-{{libheader|Icon Programming Library}} implements [soundex](http://www.cs.arizona.edu/icon/library/procs/soundex.htm).  The above version is an adaptation of that procedure
+{{libheader|Icon Programming Library}} implements [soundex](https://www.cs.arizona.edu/icon/library/procs/soundex.htm).  The above version is an adaptation of that procedure
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Soundex.bas"
@@ -4502,14 +4502,14 @@ E251
 
 ## Racket
 
-The [Scheme solution](http://rosettacode.org/wiki/Soundex#Scheme) runs as is in Racket.
+The [Scheme solution](https://rosettacode.org/wiki/Soundex#Scheme) runs as is in Racket.
 
 
 ## REXX
 
 Some assumptions made:
 :*   rules are from the algorithm for the '''American Soundex'''.
-:*   rules were taken from the Wikipedia article: <http://en.wikipedia.org/wiki/Soundex>
+:*   rules were taken from the Wikipedia article: <https://en.wikipedia.org/wiki/Soundex>
 :*   multiple words   (like ''Van de Graaff'')    are treated as one word.
 :*   anything that's not a letter of the Latin alphabet is ignored.
 :*   words starting with a non-letter are processed.
@@ -4759,7 +4759,7 @@ class String
   SoundexCharsEx = '^' + SoundexChars
   SoundexCharsDel = '^A-Z'
 
-  # desc: <http://en.wikipedia.org/wiki/Soundex>
+  # desc: <https://en.wikipedia.org/wiki/Soundex>
   def soundex(census = true)
     str = self.upcase.delete(SoundexCharsDel)
     str[0,1] + str[1..-1].delete(SoundexCharsEx).
@@ -5231,7 +5231,7 @@ val () = test "Pfister" "P236"
 
 ## Stata
 
-The soundex function is built-in. See [Stata help](http://www.stata.com/help.cgi?soundex).
+The soundex function is built-in. See [Stata help](https://www.stata.com/help.cgi?soundex).
 
 ```stata
 . display soundex_nara("Ashcraft")

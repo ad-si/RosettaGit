@@ -1463,7 +1463,7 @@ With higher-order functions:
 sum $ map (\x -> 1 / x ^ 2) [1..1000]
 ```
 
-In [point-free](http://haskell.org/haskellwiki/Pointfree) style:
+In [point-free](https://haskell.org/haskellwiki/Pointfree) style:
 
 ```haskell
 (sum . map (1/) . map (^2)) [1..1000]

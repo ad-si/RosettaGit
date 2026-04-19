@@ -495,7 +495,7 @@ C1,C2,C3,C4,C5,SUM
 
 
 #define TITLE "CSV data manipulation"
-#define URL "http://rosettacode.org/wiki/CSV_data_manipulation"
+#define URL "https://rosettacode.org/wiki/CSV_data_manipulation"
 
 #define _GNU_SOURCE
 #define bool int
@@ -2383,7 +2383,7 @@ Column0,C2,C3,C4,C5
 ```
 
 ===Apache commons-csv===
-Using the [Apache commons-csv](http://commons.apache.org/proper/commons-csv/) library.
+Using the [Apache commons-csv](https://commons.apache.org/proper/commons-csv/) library.
 
 ```java
 import java.io.*;
@@ -3233,7 +3233,7 @@ write
 
 ## NetRexx
 
-Using the [Apache commons-csv](http://commons.apache.org/proper/commons-csv/) library.
+Using the [Apache commons-csv](https://commons.apache.org/proper/commons-csv/) library.
 
 ```NetRexx
 /* NetRexx */
@@ -4098,7 +4098,7 @@ C1,C2,C3,C4,C5,SUM
 
 ###  Using <code>fileinput</code>
 
-Note that the [csv module](http://docs.python.org/3.3/library/csv.html) is not required for such a simple and regular CSV file. Here overwriting is done in place.
+Note that the [csv module](https://docs.python.org/3.3/library/csv.html) is not required for such a simple and regular CSV file. Here overwriting is done in place.
 
 ```python
 import fileinput
@@ -4126,7 +4126,7 @@ C1,C2,C3,C4,C5
 
 
 === Using <code>csv</code>, <code>pathlib</code> and <code>tempfile</code> ===
-In this example overwriting is performed ''not'' in place but by using [<code>tempfile</code> library](https://docs.python.org/library/tempfile.html) for creating a temporary file and [<code>pathlib</code> library](https://docs.python.org/library/pathlib.html) for overwriting the initial file. [<code>csv</code> module](http://docs.python.org/library/csv.html) is used to allow easier manipulation with delimiters.
+In this example overwriting is performed ''not'' in place but by using [<code>tempfile</code> library](https://docs.python.org/library/tempfile.html) for creating a temporary file and [<code>pathlib</code> library](https://docs.python.org/library/pathlib.html) for overwriting the initial file. [<code>csv</code> module](https://docs.python.org/library/csv.html) is used to allow easier manipulation with delimiters.
 
 ```python
 import csv

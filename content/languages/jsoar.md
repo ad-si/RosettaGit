@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-An alternative implementation of Soar in Java by Dave Ray: <http://code.google.com/p/jsoar/>
+An alternative implementation of Soar in Java by Dave Ray: <https://code.google.com/p/jsoar/>

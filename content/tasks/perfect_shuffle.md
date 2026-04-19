@@ -1927,7 +1927,7 @@ More functional version of the same code:
 
 """
 Brute force solution for the Perfect Shuffle problem.
-See http://oeis.org/A002326 for possible improvements
+See https://oeis.org/A002326 for possible improvements
 """
 from functools import partial
 from itertools import chain

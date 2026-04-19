@@ -171,12 +171,12 @@ Update:  Solution posted.  An anonymous comment on the ''Send'' an unknown metho
 
 ### Inverted syntax
 
-Go had this quirk at one point.  The language was changed before Go 1 and is now free of any inverted syntax.  [The removed solution](http://rosettacode.org/mw/index.php?title=Inverted_syntax&oldid=123161#Go)
+Go had this quirk at one point.  The language was changed before Go 1 and is now free of any inverted syntax.  [The removed solution](https://rosettacode.org/mw/index.php?title=Inverted_syntax&oldid=123161#Go)
 
 
 ### Partial function application
 
-Lots of good discussion on the talk page.  I had a closure-based solution submitted at one point that involved repeated type definitions, but in discussion it came out that the task author felt correct solutions  did type manipulation to derive one function type from another.  Go has no features for this, either at compile time or run time.  I happily retracted my submission.  [The removed solution](http://rosettacode.org/mw/index.php?title=Partial_function_application&oldid=104758#Go)
+Lots of good discussion on the talk page.  I had a closure-based solution submitted at one point that involved repeated type definitions, but in discussion it came out that the task author felt correct solutions  did type manipulation to derive one function type from another.  Go has no features for this, either at compile time or run time.  I happily retracted my submission.  [The removed solution](https://rosettacode.org/mw/index.php?title=Partial_function_application&oldid=104758#Go)
 
 
 ### Proof
@@ -193,7 +193,7 @@ Oh, and then I mixed up some variable names...
 
 Finally, at the time I posted my implementation, "dependent types" was not mentioned in the task description but only in a comment on the talk page.  I had read the comment, but being unfamiliar with the term, did not appreciate the meaning from the context.  Only later was the task description updated with a WP link, educating me that a ''dependent type'' is one where the type of an object is determined by its value.
 
-[The removed solution](http://rosettacode.org/mw/index.php?title=Proof&oldid=124926#Go)
+[The removed solution](https://rosettacode.org/mw/index.php?title=Proof&oldid=124926#Go)
 
 In retrospect, I still don't know if an acceptable solution can be written in Go.  The one mechanism it has that might be used as a dependent type is the interface type.  An interface type holds as its "value", both a concrete object and the type of the concrete object.  Thus the type stored inside can change depending on the value stored inside.  My solution used interface types, but did not mention dependent types.  I do think a valid solution to the would have to clearly point out how it was using interface types as dependent types.
 

@@ -3232,7 +3232,7 @@ Begin
 end;
 
 function gcd_iterative(u, v: NativeInt): NativeInt;
-//http://rosettacode.org/wiki/Greatest_common_divisor#Pascal_.2F_Delphi_.2F_Free_Pascal
+//https://rosettacode.org/wiki/Greatest_common_divisor#Pascal_.2F_Delphi_.2F_Free_Pascal
 var
   t: NativeInt;
 begin
@@ -4437,7 +4437,7 @@ namespace eval stern-brocot {
 
 interp alias {} sb {} stern-brocot
 
-# a simple adaptation of gcd from http://wiki.tcl.tk/2891
+# a simple adaptation of gcd from https://wiki.tcl-lang.org/2891
 proc coprime {a args} {
     set gcd $a
     foreach arg $args {

@@ -73,7 +73,7 @@ numbers,   and check the distribution for at least one million calls using the f
 combinations are given, otherwise split the other 21 combinations
 into 7 groups of three, and return the group index from the rolls.
 
-<small>(Task adapted from an answer [here](http://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across))</small>
+<small>(Task adapted from an answer [here](https://stackoverflow.com/questions/90715/what-are-the-best-programming-puzzles-you-came-across))</small>
 
 
 
@@ -1492,7 +1492,7 @@ if  not(check(n, 0.05)) then print "Test failed" else print "Test passed"
 end
 
 'function check(n, delta) is defined at
-'http://rosettacode.org/wiki/Verify_distribution_uniformity/Naive#Liberty_BASIC
+'https://rosettacode.org/wiki/Verify_distribution_uniformity/Naive#Liberty_BASIC
 
 function GENERATOR()
     'GENERATOR = int(rnd(0)*10) '0..9
@@ -2218,7 +2218,7 @@ Checking:
 
 ## VBA
 
-The original StackOverflow page doesn't exist any longer. Luckily [archive.org](https://web.archive.org/web/20100730055051/http://stackoverflow.com:80/questions/137783/given-a-function-which-produces-a-random-integer-in-the-range-1-to-5-write-a-fun) exists.
+The original StackOverflow page doesn't exist any longer. Luckily [archive.org](https://web.archive.org/web/20100730055051/https://stackoverflow.com:80/questions/137783/given-a-function-which-produces-a-random-integer-in-the-range-1-to-5-write-a-fun) exists.
 
 ```vb
 Private Function Test4DiscreteUniformDistribution(ObservationFrequencies() As Variant, Significance As Single) As Boolean

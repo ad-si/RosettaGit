@@ -2507,7 +2507,7 @@ end
 ```
 
 
-[numbers:spell](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) was used as a based for this procedure.
+[numbers:spell](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) was used as a based for this procedure.
 
 
 ```Icon
@@ -5822,7 +5822,7 @@ Examples
 
 ## Seed7
 
-The library [wrinum.s7i](http://seed7.sourceforge.net/libraries/wrinum.htm) contains the function [str(ENGLISH, ...)](http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ENGLISH,in_integer%29) which converts an integer to its written english equivalent.
+The library [wrinum.s7i](https://seed7.sourceforge.net/libraries/wrinum.htm) contains the function [str(ENGLISH, ...)](https://seed7.sourceforge.net/libraries/wrinum.htm#str%28ENGLISH,in_integer%29) which converts an integer to its written english equivalent.
 
 
 ```seed7
@@ -6207,7 +6207,7 @@ proc divmod {n d} {
 }
 
 proc get_groups {num} {
-    # from <http://wiki.tcl.tk/5000>
+    # from <https://wiki.tcl-lang.org/5000>
     while {[regsub {^([-+]?\d+)(\d\d\d)} $num {\1 \2} num]} {}
     return [split $num]
 }

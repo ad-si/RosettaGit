@@ -3552,7 +3552,7 @@ Sorted: red red red white blue blue blue blue blue blue
 
 ```vb
 
-'Solution derived from http://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/.
+'Solution derived from https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/.
 
 'build an unsorted array with n elements
 Function build_unsort(n)

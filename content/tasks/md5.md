@@ -96,7 +96,7 @@ languages = [
 Encode a string using an MD5 algorithm.   The algorithm can be found on   [[wp:Md5#Algorithm|Wikipedia]].
 
 
-Optionally, validate your implementation by running all of the test values in   [IETF RFC (1321)   for MD5](http://tools.ietf.org/html/rfc1321).
+Optionally, validate your implementation by running all of the test values in   [IETF RFC (1321)   for MD5](https://datatracker.ietf.org/html/rfc1321).
 
 Additionally,   RFC 1321   provides more precise information on the algorithm than the Wikipedia article.
 
@@ -298,7 +298,7 @@ FI
 =={{Header|AutoHotkey}}==
 ### Regular version
 
-Source: [AutoHotkey forum](http://www.autohotkey.com/forum/post-275910.html#275910) by SKAN
+Source: [AutoHotkey forum](https://www.autohotkey.com/forum/post-275910.html#275910) by SKAN
 
 ```autohotkey
 data := "abc"
@@ -319,7 +319,7 @@ Return MD5
 
 ### Native implementation
 
-Source: [AutoHotkey forum](http://www.autohotkey.com/forum/topic17853.html) by Laszlo
+Source: [AutoHotkey forum](https://www.autohotkey.com/forum/topic17853.html) by Laszlo
 
 ```autohotkey
 ; GLOBAL CONSTANTS r[64], k[64]
@@ -866,7 +866,7 @@ println()
 ## Emacs Lisp
 
 
-Emacs 23 and up includes <code>md5</code> giving the MD5 hash as a hexadecimal string.  (See [GNU Elisp manual on Checksum/Hash](http://www.gnu.org/software/emacs/manual/html_node/elisp/Checksum_002fHash.html)).
+Emacs 23 and up includes <code>md5</code> giving the MD5 hash as a hexadecimal string.  (See [GNU Elisp manual on Checksum/Hash](https://www.gnu.org/software/emacs/manual/html_node/elisp/Checksum_002fHash.html)).
 
 
 ```Lisp
@@ -1249,7 +1249,7 @@ assert 'The quick brown fox jumps over the lazy dog'.md5Checksum() == '9e107d9d3
 
 ## Haskell
 
-Use modules nano-MD5 and ByteString from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+Use modules nano-MD5 and ByteString from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 ```Haskell
 import Data.Digest.OpenSSL.MD5 (md5sum)
@@ -1341,7 +1341,7 @@ Digest = D41D8CD98F00B204E9800998ECF8427E matches reference hash
 
 ## J
 
-Using the <tt>[md5](http://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs)</tt> script from the <tt>convert/misc</tt> addon package:
+Using the <tt>[md5](https://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs)</tt> script from the <tt>convert/misc</tt> addon package:
 
 ```j
    require 'convert/misc/md5'
@@ -2155,8 +2155,8 @@ function digest = md5(message)
     %  Compute the MD5 digest of the message, as a hexadecimal digest.
 
     % Follow the MD5 algorithm from RFC 1321 [1] and Wikipedia [2].
-    %  [1] http://tools.ietf.org/html/rfc1321
-    %  [2] http://en.wikipedia.org/wiki/MD5
+    %  [1] https://datatracker.ietf.org/html/rfc1321
+    %  [2] https://en.wikipedia.org/wiki/MD5
 
     % m is the modulus for 32-bit unsigned arithmetic.
     m = 2 ^ 32;
@@ -2761,7 +2761,7 @@ print $md5->hexdigest, "\n";
 
 ## Perl 6
 
-Library [Digest::MD5](http://github.com/cosimo/perl6-digest-md5/)
+Library [Digest::MD5](https://github.com/cosimo/perl6-digest-md5/)
 
 ```perl6
 use Digest::MD5;
@@ -3494,4 +3494,4 @@ Utils.MD5.calc("abcdefghijklmnopqrstuvwxyz"); //-->"c3fcd3d76192e4007dfb496cca67
 
 
 
-[[Wikipedia::http://en.wikipedia.org/wiki/MD5]]
+[[Wikipedia::https://en.wikipedia.org/wiki/MD5]]

@@ -3594,7 +3594,7 @@ Verbose Code - With integrated Test & Demo
 ```python
 #!/usr/bin/env python
 
-"""     http://rosettacode.org/wiki/Four_bit_adder
+"""     https://rosettacode.org/wiki/Four_bit_adder
         Demonstrate theoretical four bit adder simulation
         using And, Or & Invert primitives
 

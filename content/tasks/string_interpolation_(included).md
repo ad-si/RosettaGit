@@ -203,7 +203,7 @@ MsgBox %string%
 ```
 
 
-Documentation: [Variables](http://www.autohotkey.com/docs/Variables.htm#Variables) (see '''Storing values in variables''' and '''Retrieving the contents of variables''')
+Documentation: [Variables](https://www.autohotkey.com/docs/Variables.htm#Variables) (see '''Storing values in variables''' and '''Retrieving the contents of variables''')
 
 ## AWK
 
@@ -344,7 +344,7 @@ string interpolate( const S& orig , const Args&... args)
 
 
 ## C#
-This is called ["composite formatting"](http://msdn.microsoft.com/en-us/library/txafckwd.aspx) in MSDN.
+This is called ["composite formatting"](https://msdn.microsoft.com/en-us/library/txafckwd.aspx) in MSDN.
 
 
 ```c#
@@ -431,7 +431,7 @@ console.log """
 ```
 
 
-More documentation on the [FORMAT](http://www.cs.cmu.edu/Groups/AI/html/hyperspec/HyperSpec/Body/fun_format.html) function.
+More documentation on the [FORMAT](https://www.cs.cmu.edu/Groups/AI/html/hyperspec/HyperSpec/Body/fun_format.html) function.
 
 
 ## D
@@ -451,7 +451,7 @@ Mary had a little lamb.
 Mary had a white little lamb.
 ```
 
-More documentation on the [format()](http://www.digitalmars.com/d/2.0/phobos/std_string.html#format) function.
+More documentation on the [format()](https://digitalmars.com/d/2.0/phobos/std_string.html#format) function.
 
 
 ## Delphi
@@ -557,7 +557,7 @@ If an identifier precedes the opening <code>`</code>, then it replaces <code>sim
 
 ## EchoLisp
 
-'''format''' and '''printf''' use replacement directives to perform interpolation. See [format specification](http://www.echolalie.org/echolisp/help.html#format) in EchoLisp documentatiuon.
+'''format''' and '''printf''' use replacement directives to perform interpolation. See [format specification](https://www.echolalie.org/echolisp/help.html#format) in EchoLisp documentatiuon.
 
 ```scheme
 
@@ -639,7 +639,7 @@ See
 [printf](http://openeuphoria.org/docs/std_io.html#_1488_printf)
 
 =={{header|F_Sharp|F#}}==
-[Documentation](http://msdn.microsoft.com/en-us/library/ee370560(VS.100).aspx)
+[Documentation](https://msdn.microsoft.com/en-us/library/ee370560(VS.100).aspx)
 
 ```fsharp
 let lambType = "little"
@@ -845,7 +845,7 @@ Mary has a little lamb
 
 ## Go
 
-Doc: [http://golang.org/pkg/fmt/](http://golang.org/pkg/fmt/)
+Doc: [https://golang.org/pkg/fmt/](https://golang.org/pkg/fmt/)
 
 ```go
 
@@ -879,7 +879,7 @@ assert 'Mary had a little lamb.' == "Mary had a ${adj} lamb."
 ## Haskell
 
 
-No such facilities are defined in Haskell 98, but the <code>base</code> package distributed with GHC provides a <code>[printf](http://hackage.haskell.org/packages/archive/base/latest/doc/html/Text-Printf.html#v:printf)</code> function.
+No such facilities are defined in Haskell 98, but the <code>base</code> package distributed with GHC provides a <code>[printf](https://hackage.haskell.org/packages/archive/base/latest/doc/html/Text-Printf.html#v:printf)</code> function.
 
 
 ```haskell
@@ -892,7 +892,7 @@ main = printf "Mary had a %s lamb\n" "little"
 
 ## HicEst
 
-[Further documentation on HicEst string interpolation function EDIT()](http://www.HicEst.com/EDIT)
+[Further documentation on HicEst string interpolation function EDIT()](https://www.HicEst.com/EDIT)
 
 ```hicest
 CHARACTER original="Mary had a X lamb", little = "little", output_string*100
@@ -903,7 +903,7 @@ EDIT(Text=output_string, Right='X', RePLaceby=little)
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon are descended from a line of languages with a wealth of string manipulation capabilities. [See The Icon Programming Language, 3rd Edition; Griswold and Griswold; Chapter 3 String Scanning](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
+Icon and Unicon are descended from a line of languages with a wealth of string manipulation capabilities. [See The Icon Programming Language, 3rd Edition; Griswold and Griswold; Chapter 3 String Scanning](https://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)
 
 ```Icon
   s2 := "humongous"
@@ -913,7 +913,7 @@ Icon and Unicon are descended from a line of languages with a wealth of string m
   while s1 ?:= tab(find(s2)) || (=s2,s3) || tab(0)    # replaces all instances of s2 with s3, equivalent to replace
 ```
 
-[Note the strings library includes convenient procedures for string replacement](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn) such as replace(s1,s2,s3) which replaces all occurrences of s2 in s1 with s3 and replacem(s1,s2,s3,...) which replaces multiple pairs.
+[Note the strings library includes convenient procedures for string replacement](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn) such as replace(s1,s2,s3) which replaces all occurrences of s2 in s1 with s3 and replacem(s1,s2,s3,...) which replaces multiple pairs.
 
 
 ## J
@@ -943,7 +943,7 @@ The comments in these library files give brief descriptions of their contents, a
 ```
 
 
-Alternatively, both [strings](http://www.jsoftware.com/docs/help602/user/script_strings.htm) and [printf](http://www.jsoftware.com/help/jforc/input_and_output.htm#_Toc191734427) have various web pages describing them, and printf has a lab demonstrating its use (from J's IDE's menu, go Studio -> Labs... and then look in the System category).
+Alternatively, both [strings](https://www.jsoftware.com/docs/help602/user/script_strings.htm) and [printf](https://www.jsoftware.com/help/jforc/input_and_output.htm#_Toc191734427) have various web pages describing them, and printf has a lab demonstrating its use (from J's IDE's menu, go Studio -> Labs... and then look in the System category).
 
 That said, note that in recent versions of J, ''strings'' is no longer a separate script but part of the core library.
 
@@ -1271,7 +1271,7 @@ echo &"Mary had a {str} lamb"
 
 ## OCaml
 
-The OCaml standard library provides the module [Printf](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Printf.html):
+The OCaml standard library provides the module [Printf](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Printf.html):
 
 
 ```ocaml
@@ -1298,7 +1298,7 @@ main: func {
 
 ## Oz
 
-String interpolation is unidiomatic in Oz. Instead, "virtual strings" are used. [Virtual strings](http://www.mozart-oz.org/documentation/op/node4.html) are tuples of printable values and are supported by many library functions.
+String interpolation is unidiomatic in Oz. Instead, "virtual strings" are used. [Virtual strings](https://www.mozart-oz.org/documentation/op/node4.html) are tuples of printable values and are supported by many library functions.
 
 
 ```oz
@@ -1484,7 +1484,7 @@ format(atom(Atom), 'Mary had a ~w lamb.', [Extra]).  % ... or store it a variabl
 ```
 
 
-Using [library(func)](http://www.swi-prolog.org/pack/list?p=func) for SWI-Prolog:
+Using [library(func)](https://www.swi-prolog.org/pack/list?p=func) for SWI-Prolog:
 
 
 ```Prolog
@@ -1493,7 +1493,7 @@ Atom = 'Mary had a ~w lamb' $ Extra.
 ```
 
 
-Using [library(interpolate)](http://www.swi-prolog.org/pack/list?p=interpolate) for SWI-Prolog:
+Using [library(interpolate)](https://www.swi-prolog.org/pack/list?p=interpolate) for SWI-Prolog:
 
 
 ```Prolog
@@ -1505,7 +1505,7 @@ Atom = 'Mary had a $Extra lamb'.
 
 ## PureBasic
 
-The function [ReplaceString()](http://www.purebasic.com/documentation/string/replacestring.html) is built-in and can have both constants and variables as parameters.
+The function [ReplaceString()](https://www.purebasic.com/documentation/string/replacestring.html) is built-in and can have both constants and variables as parameters.
 
 ```PureBasic
 ReplaceString("Mary had a X lamb.","X","little")
@@ -1538,7 +1538,7 @@ EndDataSection
 
 Python has more than one inbuilt way of accomplishing the task. The methods have different capabilities that are not stretched by this small task
 
-Using the % [string interpolation operator](http://docs.python.org/library/stdtypes.html#string-formatting-operations):
+Using the % [string interpolation operator](https://docs.python.org/library/stdtypes.html#string-formatting-operations):
 
 ```python
 >>>
@@ -1549,7 +1549,7 @@ Using the % [string interpolation operator](http://docs.python.org/library/stdty
 ```
 
 
-Using the [.format method of strings](http://docs.python.org/library/string.html#string-formatting):
+Using the [.format method of strings](https://docs.python.org/library/string.html#string-formatting):
 
 ```python
 >>>
@@ -1570,7 +1570,7 @@ Using the format method, but replace by an expressions position as an argument t
 ```
 
 
-Using the [Template](http://docs.python.org/library/string.html#template-strings) class of the string module:
+Using the [Template](https://docs.python.org/library/string.html#template-strings) class of the string module:
 
 ```python
 >>>
@@ -1597,7 +1597,7 @@ Using the new [f-strings](https://docs.python.org/3/whatsnew/3.6.html#whatsnew36
 ## Racket
 
 
-See the documentation on [fprintf](http://docs.racket-lang.org/reference/Writing.html?q=printf#%28def._%28%28quote._~23~25kernel%29._fprintf%29%29) for more information on string interpolation in Racket.
+See the documentation on [fprintf](https://docs.racket-lang.org/reference/Writing.html?q=printf#%28def._%28%28quote._~23~25kernel%29._fprintf%29%29) for more information on string interpolation in Racket.
 
 
 ```racket
@@ -1715,7 +1715,7 @@ irb(main):003:0> "Mary had a %s lamb." % extra
 Documentation:
 
 * [string_spec.rb](https://github.com/rubyspec/rubyspec/blob/master/language/string_spec.rb) describes interpolation using <tt>#{....}</tt> in double-quoted strings.
-* [Core API](http://www.ruby-doc.org/core/) describes printf-style interpolation by String#% and Kernel#sprintf.
+* [Core API](https://www.ruby-doc.org/core/) describes printf-style interpolation by String#% and Kernel#sprintf.
 
 
 ## Run BASIC
@@ -1981,9 +1981,9 @@ printf "Mary had a %s lamb.\n" $extra
 ```
 
 
-A ''parameter substitution'', like <code>$extra</code> or <code>${extra}</code>, interpolates its value into some string. This happens outside quotes or inside "double quotes". The other form of interpolation is [printf(1)](http://www.openbsd.org/cgi-bin/man.cgi?query=printf&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) with <code>%s</code>.
+A ''parameter substitution'', like <code>$extra</code> or <code>${extra}</code>, interpolates its value into some string. This happens outside quotes or inside "double quotes". The other form of interpolation is [printf(1)](https://www.openbsd.org/cgi-bin/man.cgi?query=printf&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) with <code>%s</code>.
 
-The shell has more forms of parameter substitution, like <code>${tea:?no tea}</code>. Your shell's manual explains those. For the original Bourne Shell, [sh(1) manual](http://heirloom.sourceforge.net/sh/sh.1.html) explains those.
+The shell has more forms of parameter substitution, like <code>${tea:?no tea}</code>. Your shell's manual explains those. For the original Bourne Shell, [sh(1) manual](https://heirloom.sourceforge.net/sh/sh.1.html) explains those.
 
 =
 ## C Shell
@@ -1997,7 +1997,7 @@ printf "Mary had a %s lamb.\n" $extra
 ```
 
 
-C Shell has <code>$extra</code> and <code>${extra}</code>. There are also modifiers, like <code>$file:t</code>; [csh(1) manual](http://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) explains those.
+C Shell has <code>$extra</code> and <code>${extra}</code>. There are also modifiers, like <code>$file:t</code>; [csh(1) manual](https://www.openbsd.org/cgi-bin/man.cgi?query=csh&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) explains those.
 
 
 ## Ursala

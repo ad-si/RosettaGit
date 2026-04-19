@@ -139,7 +139,7 @@ And of course use any symbols or notation that is supported in your computer pro
 
 * The Wiki entry: [[wp:Exponentiation#Zero_to_the_power_of_zero|Zero to the power of zero]].
 * The Wiki entry: [[wp:Exponentiation#History_of_differing_points_of_view|History of differing points of view]].
-* The MathWorld™ entry: [exponent laws](http://mathworld.wolfram.com/ExponentLaws.html).
+* The MathWorld™ entry: [exponent laws](https://mathworld.wolfram.com/ExponentLaws.html).
 ** Also, in the above MathWorld™ entry, see formula ('''9'''): <math>x^0=1</math>.
 * The OEIS entry: [The special case of zero to the zeroth power](https://oeis.org/wiki/The_special_case_of_zero_to_the_zeroth_power)
 

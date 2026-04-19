@@ -52,7 +52,7 @@ find the resistance between points   '''A'''   and   '''B'''.
 
 ## See also
 
-*   (humor, nerd sniping)   [xkcd.com cartoon](http://xkcd.com/356/)
+*   (humor, nerd sniping)   [xkcd.com cartoon](https://xkcd.com/356/)
 
 
 

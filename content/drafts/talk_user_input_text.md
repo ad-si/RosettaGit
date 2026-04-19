@@ -15,7 +15,7 @@ tags = []
 I can't find any information...
 
 :In Befunge, user input only works with single characters, not with strings.
-:More info: <http://esolangs.org/wiki/Befunge#Instructions>
+:More info: <https://esolangs.org/wiki/Befunge#Instructions>
 :[[User:Albedo|Albedo]] ([[User talk:Albedo|talk]]) 17:30, 29 October 2016 (UTC)
 
 == Unclear Task ==

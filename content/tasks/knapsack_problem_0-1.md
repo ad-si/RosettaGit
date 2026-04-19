@@ -3209,7 +3209,7 @@ Total weight of packed objects is 396 ounces.
 
 ## Go
 
-From WP, "0-1 knapsack problem" under [The Knapsack Problem](http://en.wikipedia.org/wiki/Knapsack_problem#Dynamic_Programming_Algorithm|Solving), although the solution here simply follows the recursive defintion and doesn't even use the array optimization.
+From WP, "0-1 knapsack problem" under [The Knapsack Problem](https://en.wikipedia.org/wiki/Knapsack_problem#Dynamic_Programming_Algorithm|Solving), although the solution here simply follows the recursive defintion and doesn't even use the array optimization.
 
 ```go
 package main
@@ -3586,7 +3586,7 @@ procedure get_wants()           #: setup list of wanted items
 end
 ```
 
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 ```txt
 
 Knapsack-0-1: with maximum weight allowed=400.
@@ -4044,7 +4044,7 @@ Also available at [gist](https://gist.github.com/truher/4715551|this).
  * credits:
  *
  * the Go implementation here:
- *   http://rosettacode.org/mw/index.php?title=Knapsack_problem/0-1
+ *   https://rosettacode.org/mw/index.php?title=Knapsack_problem/0-1
  *
  * approximation details here:
  *   http://math.mit.edu/~goemans/18434S06/knapsack-katherine.pdf
@@ -5525,7 +5525,7 @@ map, compass, water, sandwich, glucose, tin, banana, apple, cheese, beer, suntan
 <b>Chosen Items:</b>
 <table border cellspacing=0><tr><td>Item</td><td>Value</td><td>Weight</td></tr><tr><td>map</td><td>150</td><td>9</td></tr><tr><td>compass</td><td>35</td><td>13</td></tr><tr><td>water</td><td>200</td><td>153</td></tr><tr><td>sandwich</td><td>160</td><td>50</td></tr><tr><td>glucose</td><td>60</td><td>15</td></tr><tr><td>banana</td><td>60</td><td>27</td></tr><tr><td>suntan cream</td><td>70</td><td>11</td></tr><tr><td>waterproof trousers</td><td>70</td><td>42</td></tr><tr><td>waterproof overclothes</td><td>75</td><td>43</td></tr><tr><td>note-case</td><td>80</td><td>22</td></tr><tr><td>sunglasses</td><td>20</td><td>7</td></tr><tr><td>socks</td><td>50</td><td>4</td></tr><tr><td align=right><b>Totals</b></td><td>1030</td><td>396</td></tr></table><hr>
 </div>
-Minimal PHP Algorithm for totals only translated from Python version as discussed in the YouTube posted video at: <http://www.youtube.com/watch?v=ZKBUu_ahSR4>
+Minimal PHP Algorithm for totals only translated from Python version as discussed in the YouTube posted video at: <https://www.youtube.com/watch?v=ZKBUu_ahSR4>
 
 ```php
 #########################################################

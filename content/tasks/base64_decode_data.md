@@ -978,9 +978,9 @@ object Base64Decode extends App {
 
 ## Seed7
 
-The Seed7 library [encoding.s7i](http://seed7.sourceforge.net/libraries/encoding.htm) defines
-the functions [toBase64](http://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)) and
-[fromBase64](http://seed7.sourceforge.net/libraries/encoding.htm#fromBase64(in_string)).
+The Seed7 library [encoding.s7i](https://seed7.sourceforge.net/libraries/encoding.htm) defines
+the functions [toBase64](https://seed7.sourceforge.net/libraries/encoding.htm#toBase64(in_string)) and
+[fromBase64](https://seed7.sourceforge.net/libraries/encoding.htm#fromBase64(in_string)).
 
 
 ```seed7
@@ -1069,7 +1069,7 @@ Using shared libraries for cURL and message hashing:
 ```zkl
 var [const] MsgHash=Import("zklMsgHash"), Curl=Import("zklCurl");
 
-icon:=Curl().get("http://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
+icon:=Curl().get("https://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
 icon=icon[0][icon[1],*];	// remove header
 iconEncoded:=MsgHash.base64encode(icon);
 iconDecoded:=MsgHash.base64decode(iconEncoded);

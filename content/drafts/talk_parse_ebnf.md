@@ -35,7 +35,7 @@ None of the examples parses the EBNF grammar.
 
 : The task description links to at least two different EBNF formats. So I cannot know which format to use. I guess that all the solutions will use different formats? --[[User:Kernigh|Kernigh]] 01:02, 12 May 2011 (UTC)
 
-:: I think it should be plain text form, like <http://en.wikipedia.org/wiki/EBNF> --[[User:Oenone|Oenone]] 08:24, 12 May 2011 (UTC)
+:: I think it should be plain text form, like <https://en.wikipedia.org/wiki/EBNF> --[[User:Oenone|Oenone]] 08:24, 12 May 2011 (UTC)
 
 == Output form ==
 
@@ -62,7 +62,7 @@ PicoLisp seems to parse PicoLisp rather than EBNF. This makes for a shorter prog
 --[[User:Abu|Abu]] 07:20, 17 May 2011 (UTC)
 
 == ANTLR parser EBNF or ISO standard EBNF? ==
-There is a [difference](http://www.cl.cam.ac.uk/~mgk25/iso-14977.pdf). --[[User:Paddy3118|Paddy3118]] 05:43, 13 May 2011 (UTC)
+There is a [difference](https://www.cl.cam.ac.uk/~mgk25/iso-14977.pdf). --[[User:Paddy3118|Paddy3118]] 05:43, 13 May 2011 (UTC)
 
 : Oh, in that case: let's go for ISO EBNF (though perhaps without the rules on exceptions; they're non-trivial to implement and the standard actually says that no grammar may be written that ''requires'' them, making them a shorthand form only). –[[User:Dkf|Donal Fellows]] 09:47, 13 May 2011 (UTC)
 

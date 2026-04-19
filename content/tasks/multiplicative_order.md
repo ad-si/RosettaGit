@@ -169,7 +169,7 @@ package body Multiplicative_Order is
                N ;:= T mod N;
             end loop;
             return M;
-         end GCD; -- from http://rosettacode.org/wiki/Least_common_multiple#Ada
+         end GCD; -- from https://rosettacode.org/wiki/Least_common_multiple#Ada
 
          function LCM (A, B : Natural) return Integer is
          begin
@@ -177,7 +177,7 @@ package body Multiplicative_Order is
                return 0;
             end if;
             return abs (A * B) / Gcd (A, B);
-         end LCM; -- from http://rosettacode.org/wiki/Least_common_multiple#Ada
+         end LCM; -- from https://rosettacode.org/wiki/Least_common_multiple#Ada
 
          Result : Positive := 1;
 
@@ -2397,7 +2397,7 @@ proc ::tcl::mathfunc::pypow {x y {z ""}} {
 
 ####################################################
 # prime number generator
-# ref http://wiki.tcl.tk/5996
+# ref https://wiki.tcl-lang.org/5996
 ####################################################
 namespace eval primes {}
 

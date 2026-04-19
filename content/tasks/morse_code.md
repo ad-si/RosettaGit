@@ -505,7 +505,7 @@ BEGIN { FS="";
 
 This replaces all non-supported characters with a hash ('''#''') and plays the lowest supported note in their place.
 
-Note that this will ''only'' work as-is under [[DOS]] (and [[Windows]] 9x); under NT systems, the <code>player</code> routine must be changed to use the <code>Beep</code> API call. ([This forum post](http://www.freebasic.net/forum/viewtopic.php?p=20441#20441) details how to use the speaker under Linux, DOS, and Windows in FreeBASIC; the Linux & DOS code differs further from the below by require inline assembly.)
+Note that this will ''only'' work as-is under [[DOS]] (and [[Windows]] 9x); under NT systems, the <code>player</code> routine must be changed to use the <code>Beep</code> API call. ([This forum post](https://www.freebasic.net/forum/viewtopic.php?p=20441#20441) details how to use the speaker under Linux, DOS, and Windows in FreeBASIC; the Linux & DOS code differs further from the below by require inline assembly.)
 
 
 ```qbasic
@@ -1812,7 +1812,7 @@ type Morse = [MSym]
 data MSym = Dot | Dash | SGap | CGap | WGap deriving (Show)
 
 -- Based on the table of International Morse Code letters and numerals at
--- http://en.wikipedia.org/wiki/Morse_code.
+-- https://en.wikipedia.org/wiki/Morse_code.
 dict = M.fromList
        [('a', m ".-"   ), ('b', m "-..." ), ('c', m "-.-." ), ('d', m "-.."  ),
         ('e', m "."    ), ('f', m "..-." ), ('g', m "--."  ), ('h', m "...." ),
@@ -1874,7 +1874,7 @@ rep dur = take n . cycle
     where n = round (dur * fromIntegral rate)
 
 -- Convert Morse symbols to samples.  Durations are in seconds, based on
--- http://en.wikipedia.org/wiki/Morse_code#Representation.2C_timing_and_speeds.
+-- https://en.wikipedia.org/wiki/Morse_code#Representation.2C_timing_and_speeds.
 toSamples :: MSym -> Samples
 toSamples Dot  = rep 0.1 sine
 toSamples Dash = rep 0.3 sine

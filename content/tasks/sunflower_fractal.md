@@ -37,7 +37,7 @@ Draw a [Sunflower fractal](https://1drv.ms/u/s!AqDUIunCqVnIg1U89bApXAzPU9XH)
 
 ## C
 
-The colouring of the "fractal" is determined with every iteration to ensure that the resulting graphic looks similar to a real Sunflower, thus the parameter ''diskRatio'' determines the radius of the central disk as the maximum radius of the flower is known from the number of iterations. The scaling factor is currently hardcoded but can also be externalized. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+The colouring of the "fractal" is determined with every iteration to ensure that the resulting graphic looks similar to a real Sunflower, thus the parameter ''diskRatio'' determines the radius of the central disk as the maximum radius of the flower is known from the number of iterations. The scaling factor is currently hardcoded but can also be externalized. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -388,7 +388,7 @@ use constant φ => (1 + sqrt(5)) / 2;
 my $scale = 600;
 my $seeds = 5*$scale;
 
-print qq{<svg xmlns="http://www.w3.org/2000/svg" width="$scale" height="$scale" style="stroke:gold">
+print qq{<svg xmlns="https://www.w3.org/2000/svg" width="$scale" height="$scale" style="stroke:gold">
            <rect width="100%" height="100%" fill="black" />\n};
 
 for $i (1..$seeds) {
@@ -659,7 +659,7 @@ Output image: [Sunflower fractal](https://github.com/trizen/rc/blob/master/img/s
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn sunflower(seeds=3000){

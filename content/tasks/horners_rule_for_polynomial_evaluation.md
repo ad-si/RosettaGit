@@ -2180,7 +2180,7 @@ V = 128.
 
 ### Functional approach
 
-Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 :- use_module(library(lambda)).

@@ -18,7 +18,7 @@ It is a functional language; creation and composition of functions is emphasized
 
 Object-module and imperative techniques are supported, but not required.
 
-The J programming language was designed and developed by [Ken Iverson](http://en.wikipedia.org/wiki/Kenneth_E._Iverson) and Roger Hui. It is a closely related successor to [APL](https://rosettacode.org/wiki/APL), also by Iverson which itself was a successor to the notation Ken Iverson used to teach his classes about computers in the 1950s.
+The J programming language was designed and developed by [Ken Iverson](https://en.wikipedia.org/wiki/Kenneth_E._Iverson) and Roger Hui. It is a closely related successor to [APL](https://rosettacode.org/wiki/APL), also by Iverson which itself was a successor to the notation Ken Iverson used to teach his classes about computers in the 1950s.
 <br clear="all"/>
 
 The notation draws heavily from concepts of [Abstract algebra](https://en.wikipedia.org/wiki/Abstract_algebra) and [Tensor calculus](https://en.wikipedia.org/wiki/Tensor_calculus), simplified for describing computer architecture and design to a pragmatic business audience.  (The ideas themselves are simple, but for some reason the topics scare most teachers.)
@@ -64,7 +64,7 @@ To understand how this works, you might try working with simpler sentences and t
 By themselves, these experiments mean nothing, but if you know that +/ was finding the sum of a list and # was finding the length of a list and that % was dividing the two quantities (and looks almost like one of the old school division symbols) then these experiments might help confirm that you have understood things properly.
 
 ## Some Perspective
-If you wish to use J you will also have to learn a few grammatical rules (J's parser has [9 reduction rules](http://www.jsoftware.com/help/dictionary/dicte.htm) and "shift" and "accept" - the above examples use four of those rules). J verbs have two definitions - a single argument "monadic" definition and a two argument "dyadic" definition.
+If you wish to use J you will also have to learn a few grammatical rules (J's parser has [9 reduction rules](https://www.jsoftware.com/help/dictionary/dicte.htm) and "shift" and "accept" - the above examples use four of those rules). J verbs have two definitions - a single argument "monadic" definition and a two argument "dyadic" definition.
 These terms are borrowed from music and are distinct from Haskell's use of the word "monad".
 The dyadic definitions are in some sense related to LISP's "cons cell" but are implemented as grammar rather than data structure, and are a pervasive part of the language.
 
@@ -100,7 +100,7 @@ If you want to be a bit more interactive, and get some guidance from J gurus, yo
 If you don't have an IRC client you can try [freenode's web interface](http://webchat.freenode.net/?randomnick=1&channels=jsoftware) (or just [give it a quick spin](http://webchat.freenode.net/?channels=jsoftware&randomnick=1)).
 More [details about the J IRC community](https://rosettacode.org/wiki/j:Community/IRC) is available.
 
-If any of that piques your interest, and you want to explore a little more, you can [download J](http://www.jsoftware.com/) and [join the J forums](http://www.jsoftware.com/forums.htm).
+If any of that piques your interest, and you want to explore a little more, you can [download J](https://www.jsoftware.com/) and [join the J forums](https://www.jsoftware.com/forums.htm).
 
 If you have problems executing any of the J code here on Rosetta, please make a note of it either on the task page itself, on the talk page, or on the appropriate [J forum](http://forums.jsoftware.com), whichever is best.
 It might be that there's a version dependency that needs to be documented, or you might have found an actual bug.

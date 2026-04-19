@@ -646,7 +646,7 @@ frame =: frame_top@:frame_bot@:frame_lef@:frame_rig
 assert (-: frame) 1 1 $ 0
 assert (3 3 $ _5 {. 1) (-: frame) 1 1 $ 1
 
-odometer =: (4 $. $.)@:($&1) NB. http://www.jsoftware.com/jwiki/Essays/Odometer
+odometer =: (4 $. $.)@:($&1) NB. https://www.jsoftware.com/jwiki/Essays/Odometer
 index_matrix =: ($ <"1@:odometer)@:$ NB. the computations work with indexes
 assert (1 1 ($ <) 0 0) (-: index_matrix) (i. 1 1)
 

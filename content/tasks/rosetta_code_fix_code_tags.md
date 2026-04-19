@@ -864,7 +864,7 @@ could also be written like this:
 
 
 
-Here we implement the <code style='color:#151080; font-weight:bold;'>read_in</code> function to read all the content from an input channel because there is no such function in the standard library, but we can use the [extLib](http://code.google.com/p/ocaml-extlib/) which provides the function <code style='color:#151080; font-weight:bold;'>Std.input_all</code> (in its module [Std](http://ocaml-extlib.googlecode.com/svn/doc/apiref/Std.html)).
+Here we implement the <code style='color:#151080; font-weight:bold;'>read_in</code> function to read all the content from an input channel because there is no such function in the standard library, but we can use the [extLib](https://code.google.com/p/ocaml-extlib/) which provides the function <code style='color:#151080; font-weight:bold;'>Std.input_all</code> (in its module [Std](http://ocaml-extlib.googlecode.com/svn/doc/apiref/Std.html)).
 
 
 ## Perl

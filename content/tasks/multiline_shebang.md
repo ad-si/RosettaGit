@@ -48,7 +48,7 @@ Simple shebangs can help with scripting, e.g., <code>#!/usr/bin/env python</code
 
 Occasionally, a more complex shebang line is needed. For example, some languages do not include the program name in ARGV; a multiline shebang can reorder the arguments so that the program name is included in ARGV.
 
-The syntax for a multiline shebang is complicated. The shebang lines must be simultaneously commented away from the main language and revealed to some shell (perhaps [[Bash]]) so that they can be executed. In other words, [Polyglots](http://en.wikipedia.org/wiki/Polyglot_(computing)).
+The syntax for a multiline shebang is complicated. The shebang lines must be simultaneously commented away from the main language and revealed to some shell (perhaps [[Bash]]) so that they can be executed. In other words, [Polyglots](https://en.wikipedia.org/wiki/Polyglot_(computing)).
 
 Warning: Using a multiline shebang of the form <code>#!/bin/sh ... exec ... !#</code> will set the code's mimetype to <code>text/x-shellscript</code>, which creates problems such as Emacs treating the file as a shell script, no matter which language and file extension it really uses.
 
@@ -803,7 +803,7 @@ When running <code>ruby scratch.rb</code> (without -x option), Ruby notices that
 ## Scala
 
 
-The [scala(1)](http://www.scala-lang.org/files/archive/nightly/docs-master/manual/html/scala.html) interpreter parses a header section. 
+The [scala(1)](https://www.scala-lang.org/files/archive/nightly/docs-master/manual/html/scala.html) interpreter parses a header section. 
 The scalac compiler does not.
 
 

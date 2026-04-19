@@ -118,7 +118,7 @@ function permutationSort(array:Array):Array {
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276680.html#276680)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276680.html#276680)
 
 ```AutoHotkey
 MsgBox % PermSort("")

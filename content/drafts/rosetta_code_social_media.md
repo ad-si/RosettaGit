@@ -31,11 +31,11 @@ URL: [http://twitter.com/rosettacode](http://twitter.com/rosettacode)
 ==Facebook==
 Rosetta Code's page on Facebook usually has the same content as the Twitter account. On occasion, someone will write to the Facebook wall. The Facebook page is also managed via HootSuite, and the same invitation for participation applies as it does for Twitter.
 
-URL: [http://www.facebook.com/pages/RosettaCodeorg/199439093012](http://www.facebook.com/pages/RosettaCodeorg/199439093012)
+URL: [https://www.facebook.com/pages/RosettaCodeorg/199439093012](https://www.facebook.com/pages/RosettaCodeorg/199439093012)
 
 ==Reddit==
 Rosetta Code's subreddit isn't well-purposed, and was at one point being considered as a replacement for the Village Pump. At another point, it was being used as a replacement for the blog. However, it still exists, it gets pulled into the Rosetta Code planet, and it functions as any other Subreddit. It's followed by some Reddit users interested in Rosetta Code, and it can have links submitted by anyone who cares to.
 
 If you want to point out new and/or interesting things on, about or related to Rosetta Code, that's a reasonable place to do it.
 
-URL: [http://www.reddit.com/r/rosettacodeorg/](http://www.reddit.com/r/rosettacodeorg/)
+URL: [https://www.reddit.com/r/rosettacodeorg/](https://www.reddit.com/r/rosettacodeorg/)

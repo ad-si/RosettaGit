@@ -17,7 +17,7 @@ Without some additional actions this solution is exposed to livelock. That is fa
 
 '''Livelock''': all philosopher grab one fork. Then they see that another one is out of reach. They drop their forks one by one, and then start to grab other forks, in the same order. Under a scheduling policy that keeps philosophers to act in this order, this circle will repeat itself forever. Even if the circle gets actually broken, it is actually a sort of busy waiting, which is not good.
 
-One possible solution to this could be to introduce some policy that would prevent the same fork from being dropped when it was once acquired through waiting, like in the [dirty/clean forks solution](http://en.wikipedia.org/wiki/Dining_Philosophers) --[[User:Dmitry-kazakov|Dmitry-kazakov]] 13:07, 8 November 2008 (UTC)
+One possible solution to this could be to introduce some policy that would prevent the same fork from being dropped when it was once acquired through waiting, like in the [dirty/clean forks solution](https://en.wikipedia.org/wiki/Dining_Philosophers) --[[User:Dmitry-kazakov|Dmitry-kazakov]] 13:07, 8 November 2008 (UTC)
 
 : Yes, it is possible for this solution to experience livelock. However it can be shown that on a single processor system where threads are timesliced through the processor, that livelock can not occur if the locking loop can execute completely within one timeslice.  ( Try acquiring second lock, if fail release first lock, swap forks, loop, acquire first lock ). Since a timeslice is likely to be far longer than the time to execute this loop, you're probably OK. But you would indeed need to guarantee this in your real life system. --[[User:Rldrenth|Rldrenth]] 21:17, 12 May 2009 (UTC)
 

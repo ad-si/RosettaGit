@@ -40,9 +40,9 @@ Modula-2 was designed by Niklaus Wirth at ETH Zurich as a systems implementation
 
 * [GNU Modula-2](http://www.nongnu.org/gm2)
 * [Objective Modula-2](http://objective.modula2.net)
-* [Modula2JCC](http://code.google.com/p/modula2jcc)
-* [Modulipse](http://sourceforge.net/projects/modulipse)
-* [Schwarzer Kaffee](http://sourceforge.net/projects/schwarzerkaffee)
+* [Modula2JCC](https://code.google.com/p/modula2jcc)
+* [Modulipse](https://sourceforge.net/projects/modulipse)
+* [Schwarzer Kaffee](https://sourceforge.net/projects/schwarzerkaffee)
 
 
 ## Modula 2 on IRC

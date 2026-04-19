@@ -31,5 +31,5 @@ White space edits on the task page, including the injection of spaces around exp
 
 :: Sometimes there are useful textual edits mixed in with the under-tested cosmetic tweaks, so repair will, unfortunately, often need to be more partial and time-consuming than a full undo. 
 :: (Another hope is that a later version of the MediaWiki processor might acquire an expanded range of accepted input patterns, and stop choking on things like the redundant spaces around expressions in &lt;math&gt; tags).
-:: In the meanwhile, there is a list of the tasks that were still affected by this kind of issue as of Sep 21 2016, at:  <http://rosettacode.org/wiki/User_talk:Rdm#Names_of_tasks_still_affected>. 
+:: In the meanwhile, there is a list of the tasks that were still affected by this kind of issue as of Sep 21 2016, at:  <https://rosettacode.org/wiki/User_talk:Rdm#Names_of_tasks_still_affected>. 
 :: One or two of those listed have since been manually edited to restore lost visibility of formulae. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 08:06, 22 September 2016 (UTC)

@@ -10,5 +10,5 @@ categories = []
 tags = []
 +++
 
-{{library}}GtkAda is a set of thin [[Ada]] bindings to [[GTK]]. The bindings library is distributed under a [[GPL]] license and maintained by [AdaCore](http://www.adacore.com/home/).
+{{library}}GtkAda is a set of thin [[Ada]] bindings to [[GTK]]. The bindings library is distributed under a [[GPL]] license and maintained by [AdaCore](https://www.adacore.com/home/).
 [[Category:GTK]]

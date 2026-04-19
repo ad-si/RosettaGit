@@ -442,7 +442,7 @@ Sudoku( p ) { ;ErrorLevel contains the number of iterations
 }
 
 Sudoku_Solve( p, d = 0 ) { ;d is 0-based
-;   http://www.autohotkey.com/forum/topic46679.html
+;   https://www.autohotkey.com/forum/topic46679.html
 ;   p: 81 character puzzle string
 ;      (concat all 9 rows of 9 chars each)
 ;      givens represented as chars 1-9
@@ -2514,7 +2514,7 @@ void main() {
 
 ### Short Version
 
-Adapted from: <http://code.activestate.com/recipes/576725-brute-force-sudoku-solver/>
+Adapted from: <https://code.activestate.com/recipes/576725-brute-force-sudoku-solver/>
 
 ```d
 import std.stdio, std.algorithm, std.range;
@@ -4845,7 +4845,7 @@ solution: 6.956 ms
 
 ## Go
 
-Solution using [Knuth's DLX.](http://en.wikipedia.org/wiki/Dancing_Links)
+Solution using [Knuth's DLX.](https://en.wikipedia.org/wiki/Dancing_Links)
 This code follows his paper fairly closely.
 Input to function solve is an 81 character string.
 This seems to be a conventional computer representation for Sudoku puzzles.
@@ -5269,7 +5269,7 @@ ELAPSED: 28.978 seconds
 
 ## Haskell
 
-Visit the Haskell wiki [Sudoku](http://haskell.org/haskellwiki/Sudoku)
+Visit the Haskell wiki [Sudoku](https://haskell.org/haskellwiki/Sudoku)
 
 
 ## J
@@ -8442,7 +8442,7 @@ object set
 end function
 
 -- from [[Combinations#Phix|Combinations]]
--- from http://rosettacode.org/wiki/Combinations#Phix
+-- from https://rosettacode.org/wiki/Combinations#Phix
 function comb(sequence pool, valid, integer needed, done=0, sequence chosen={})
 -- (used by deep_logic()/set elimination)
     if needed=0 then    -- got a full set
@@ -9554,7 +9554,7 @@ show(X) :- write(X), nl.
 [7,8,2,6,9,3,5,4,1]
 ```
 
-[Runs in: time: 0.02 memory: 68352 (adapted for gprolog 1.3.1)](http://ideone.com/OCstmf)
+[Runs in: time: 0.02 memory: 68352 (adapted for gprolog 1.3.1)](https://ideone.com/OCstmf)
 
 
 ## PureBasic
@@ -11920,7 +11920,7 @@ Another solution:
 
 ## Tcl
 
-Adapted from [a page on the Tcler's Wiki](http://wiki.tcl.tk/19934) to use a standard object system.
+Adapted from [a page on the Tcler's Wiki](https://wiki.tcl-lang.org/19934) to use a standard object system.
 
 Note that you can implement more rules if you want. Just make another subclass of <code>Rule</code> and the solver will pick it up and use it automatically.
 ```tcl

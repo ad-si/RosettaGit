@@ -149,9 +149,9 @@ Of course, this is a far cry from being able to instrument multiple functions fr
 ## Common Lisp
 
 
-A library was developed by Pascal Costanza called [AspectL](http://common-lisp.net/project/closer/aspectl.html).
+A library was developed by Pascal Costanza called [AspectL](https://common-lisp.net/project/closer/aspectl.html).
 
-However, the claims that "[i]t turned out that the pointcut functionality of AspectL does not make a lot of sense in Common Lisp, and the support for dynamically scoped generic functions has been replaced with much better mechanisms in [ContextL](http://common-lisp.net/project/closer/contextl.html)."
+However, the claims that "[i]t turned out that the pointcut functionality of AspectL does not make a lot of sense in Common Lisp, and the support for dynamically scoped generic functions has been replaced with much better mechanisms in [ContextL](https://common-lisp.net/project/closer/contextl.html)."
 
 =={{header|F_Sharp|F#}}==
 
@@ -313,7 +313,7 @@ and manually edit every single call, again so that any future (/temporary) chang
 
 ## Python
 
-Python has special syntax for [decorators](http://legacy.python.org/dev/peps/pep-0318/) acting on functions and methods, as well as [metaclasses](http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python).
+Python has special syntax for [decorators](http://legacy.python.org/dev/peps/pep-0318/) acting on functions and methods, as well as [metaclasses](https://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python).
 
 
 ## Scala

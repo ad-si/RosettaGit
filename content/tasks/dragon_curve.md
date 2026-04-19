@@ -413,16 +413,16 @@ Example code using mutual recursion can be found in [Recursion Example](http://c
 
 ## Applesoft BASIC
 
-Apple IIe BASIC code can be found in Thomas Bannon, "Fractals and Transformations", Mathematics Teacher, March 1991, pages 178-185. ([At JSTOR](http://www.jstor.org/stable/27967087).)
+Apple IIe BASIC code can be found in Thomas Bannon, "Fractals and Transformations", Mathematics Teacher, March 1991, pages 178-185. ([At JSTOR](https://www.jstor.org/stable/27967087).)
 
 
 ## Asymptote
 
 The Asymptote source code includes an <code>examples/dragon.asy</code> which draws the dragon curve (four interlocking copies actually),
 
-: [http://asymptote.sourceforge.net/gallery/dragon.asy](http://asymptote.sourceforge.net/gallery/dragon.asy)
+: [https://asymptote.sourceforge.net/gallery/dragon.asy](https://asymptote.sourceforge.net/gallery/dragon.asy)
 
-: [http://asymptote.sourceforge.net/gallery/dragon.pdf](http://asymptote.sourceforge.net/gallery/dragon.pdf)
+: [https://asymptote.sourceforge.net/gallery/dragon.pdf](https://asymptote.sourceforge.net/gallery/dragon.pdf)
 
 As of its version 2.15 it uses the successive approximation method.  Vertices are represented as an array of "pairs" (complex numbers).  Between each two vertices a new vertex is is introduced so as to double the segments, repeated to a desired level.
 
@@ -1687,7 +1687,7 @@ Link to live demo: <http://dc25.github.io/dragonCurveElm>
 
 ## Emacs Lisp
 
-Drawing ascii art characters into a buffer using <code>[picture-mode](http://www.gnu.org/software/emacs/manual/html_node/emacs/Picture-Mode.html)</code>
+Drawing ascii art characters into a buffer using <code>[picture-mode](https://www.gnu.org/software/emacs/manual/html_node/emacs/Picture-Mode.html)</code>
 
 
 ```lisp
@@ -2391,7 +2391,7 @@ vmoot xs = (xs++).map (zipWith (+) lxs). flip matmul r_90.
 dragoncurve = iterate vmoot pl
 ```
 
-For plotting I use the gnuplot interface module from [hackageDB](http://hackage.haskell.org/packages/hackage.html)
+For plotting I use the gnuplot interface module from [hackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 Use:
  plotPath [] . map (\[x,y] -> (x,y)) $ dragoncurve!!13
@@ -2479,9 +2479,9 @@ end
 ```
 
 
-[linddraw](http://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn)
-[wopen](http://www.cs.arizona.edu/icon/library/src/procs/wopen.icn)
-[linden](http://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn)
+[linddraw](https://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn)
+[wopen](https://www.cs.arizona.edu/icon/library/src/procs/wopen.icn)
+[linden](https://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn)
 
 
 ## J
@@ -2637,7 +2637,7 @@ var DRAGON = (function () {
    var fractalMakeDragon = function (svgid, ptA, ptC, state, lr, interval) {
 
       // make a new <path>
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      var path = document.createElementNS('https://www.w3.org/2000/svg', 'path');
       path.setAttribute( "class",  "dragon");
       path.setAttribute( "d", toSVGpath(ptA, ptC) );
 
@@ -2708,7 +2708,7 @@ My current demo page includes the following to invoke this:
 <script src='./dragon.js'></script>
 ...
 <div>
-   <svg xmlns='http://www.w3.org/2000/svg' id='fractal'></svg>
+   <svg xmlns='https://www.w3.org/2000/svg' id='fractal'></svg>
 </div>
 <script>
    DRAGON.fractal('fractal', [100,300], [500,300], 15, false, 700);
@@ -2841,7 +2841,7 @@ where:
   def svg(id; width; height):
     "<svg width='\(width // "100%")' height='\(height // "100%") '
           id='\(id)'
-          xmlns='http://www.w3.org/2000/svg'>";
+          xmlns='https://www.w3.org/2000/svg'>";
 
   # Turn a pair of points into an SVG path like "M1 1L2 2" (M=move to; L=line to).
   def toSVGpath(a; b):
@@ -2893,7 +2893,7 @@ The command to generate the SVG and the first few lines of output are as follows
 $ jq -n -r -f dragon.jq
 <svg width='100%' height='100% '
           id='roar'
-          xmlns='http://www.w3.org/2000/svg'>
+          xmlns='https://www.w3.org/2000/svg'>
 <style type='text/css' media='all'>
        .dragon { stroke:rgb(255, 15, 131); stroke-width:2px; }
        </style>
@@ -4814,7 +4814,7 @@ See samples using the same algorithm in JavaScript version #2 (order is up to 25
 ```r
 
 # Generate and plot Dragon curve.
-# translation of JavaScript v.#2: http://rosettacode.org/wiki/Dragon_curve#JavaScript
+# translation of JavaScript v.#2: https://rosettacode.org/wiki/Dragon_curve#JavaScript
 # 2/27/16 aev
 # gpDragonCurve(ord, clr, fn, d, as, xsh, ysh)
 # Where: ord - order (defines the number of line segments);
@@ -5396,7 +5396,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#dragon_curve>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#dragon_curve>
 
 
 ## SequenceL
@@ -5551,9 +5551,9 @@ var r = 2
 print <<'EOT'
 <?xml version='1.0' encoding='utf-8' standalone='no'?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
-'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%' height='100%' version='1.1'
-xmlns='http://www.w3.org/2000/svg'>
+xmlns='https://www.w3.org/2000/svg'>
 EOT
 
 dragon.each { |c|
@@ -5648,9 +5648,9 @@ This version also places circles at the endpoints of each subdivision, size vary
 ```xml
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:l="http://www.w3.org/1999/xlink"
+ "https://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="https://www.w3.org/2000/svg"
+     xmlns:l="https://www.w3.org/1999/xlink"
      width="400" height="400">
   <style type="text/css"><![CDATA[
     line { stroke: black; stroke-width: .05; }
@@ -5758,7 +5758,7 @@ dragon 400 17
 ```
 
 
-See also the Tcl/Tk wiki [Dragon Curves](http://wiki.tcl.tk/3349) and [Recursive curves](http://wiki.tcl.tk/10745) pages.
+See also the Tcl/Tk wiki [Dragon Curves](https://wiki.tcl-lang.org/3349) and [Recursive curves](https://wiki.tcl-lang.org/10745) pages.
 
 
 ## TeX
@@ -5766,7 +5766,7 @@ See also the Tcl/Tk wiki [Dragon Curves](http://wiki.tcl.tk/3349) and [Recursive
 
 ### PGF
 
-The [PGF](http://sourceforge.net/projects/pgf/) package includes a "lindenmayersystems" library.  A dragon can be made with the "F-S" rule by defining S as a second drawing symbol.  So, for [[plainTeX]],
+The [PGF](https://sourceforge.net/projects/pgf/) package includes a "lindenmayersystems" library.  A dragon can be made with the "F-S" rule by defining S as a second drawing symbol.  So, for [[plainTeX]],
 
 
 ```TeX
@@ -6201,9 +6201,9 @@ Draw the curve in SVG to stdout.
 ```zkl
 println(0'|<?xml version='1.0' encoding='utf-8' standalone='no'?>|"\n"
    0'|<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'|"\n"
-   0'|'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>|"\n"
+   0'|'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>|"\n"
    0'|<svg width='100%' height='100%' version='1.1'|"\n"
-   0'|xmlns='http://www.w3.org/2000/svg'>|);
+   0'|xmlns='https://www.w3.org/2000/svg'>|);
 
 order:=13.0; # akin to number of recursion steps
 d_size:=1000.0; # size in pixels
@@ -6234,9 +6234,9 @@ $ls -l dragon.svg
 $less dragon.svg
 <?xml version='1.0' encoding='utf-8' standalone='no'?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
-'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%' height='100%' version='1.1'
-xmlns='http://www.w3.org/2000/svg'>
+xmlns='https://www.w3.org/2000/svg'>
 <line x1='833.333' y1='333.333' x2='838.542' y2='328.125' style='stroke:rgb(0,0,0);stroke-width:1'/>
 ....
 Visiting file:///home/craigd/Projects/ZKL/Tmp/dragon.svg shows a nice dragon curve

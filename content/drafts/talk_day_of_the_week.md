@@ -130,7 +130,7 @@ raised CONSTRAINT_ERROR : yuletide.adb:8 range check failed
 
 Anyway, at least I ''discovered'' how to ''arrange'' the code on my system with my poor GNAT :) --[[User:ShinTakezou|ShinTakezou]] 20:52, 12 December 2008 (UTC)
 
-: I see, now it seems to be clear. First of all, GNAT.Calendar is not a part of the standard. But that is not the problem, Ada.Calendar is. The standard ([[Ada 2005]]) requires Year_Number to be at least in the range 1901..2399. See [LRM 9.6 11/2](http://www.adaic.org/standards/1zrm/html/RM-9-6.html). So the code given in the Ada solution '''must''' work, or else your compiler is not Ada 2005. From your attempts I deduce that it is indeed not. You have an [[Ada 95]] compiler. In Ada 95 the range of Number was narrower, 1901 .. 2099. This is why your code produces an exception. You can slightly modify your code:
+: I see, now it seems to be clear. First of all, GNAT.Calendar is not a part of the standard. But that is not the problem, Ada.Calendar is. The standard ([[Ada 2005]]) requires Year_Number to be at least in the range 1901..2399. See [LRM 9.6 11/2](https://www.adaic.org/standards/1zrm/html/RM-9-6.html). So the code given in the Ada solution '''must''' work, or else your compiler is not Ada 2005. From your attempts I deduce that it is indeed not. You have an [[Ada 95]] compiler. In Ada 95 the range of Number was narrower, 1901 .. 2099. This is why your code produces an exception. You can slightly modify your code:
 <blockquote>
 
 ```ada

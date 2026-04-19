@@ -358,7 +358,7 @@ print(("Final state: ",final state, new line));
 
 
 ```algol68
-# example from: http://www.xs4all.nl/~jmvdveer/algol.html - GPL #
+# example from: https://www.xs4all.nl/~jmvdveer/algol.html - GPL #
 determine first generation;
 WHILE can represent next generation
 DO calculate next generation;
@@ -1358,7 +1358,7 @@ A complete program must have exactly one function named main, which is called on
 ## Haskell
 
 
-In the context of normal, functional-style code, there are no flow-control statements, because explicit flow control is imperative. A monad may offer flow control; what kinds are available depends on the monad. For example, the [<code>ExitT</code> monad transformer](http://haskell.org/haskellwiki/New_monads/MonadExit) lets you use the <code>exitWith</code> function to jump out a block of statements at will.
+In the context of normal, functional-style code, there are no flow-control statements, because explicit flow control is imperative. A monad may offer flow control; what kinds are available depends on the monad. For example, the [<code>ExitT</code> monad transformer](https://haskell.org/haskellwiki/New_monads/MonadExit) lets you use the <code>exitWith</code> function to jump out a block of statements at will.
 
 
 ```haskell
@@ -1380,7 +1380,7 @@ main = do
 
 ## HicEst
 
-[More on HicEst's ALARM function](http://www.HicEst.com)
+[More on HicEst's ALARM function](https://www.HicEst.com)
 
 ```hicest
 1 GOTO 2 ! branch to label
@@ -1577,7 +1577,7 @@ For example, here's an example of a program which loops over a sequence of integ
 ```
 
 
-That said, J's control structures are documented at <http://www.jsoftware.com/help/dictionary/ctrl.htm>  So, if you want to perform this same operation using a while loop, or a goto, you can do so.  It's just... often not a good idea (but sometimes they are indispensable).
+That said, J's control structures are documented at <https://www.jsoftware.com/help/dictionary/ctrl.htm>  So, if you want to perform this same operation using a while loop, or a goto, you can do so.  It's just... often not a good idea (but sometimes they are indispensable).
 
 
 ## Java
@@ -1667,12 +1667,12 @@ top: for (int 1 = 0; i < 10; ++i) {
 
 ## JavaScript
 
-* <code>'''return'''</code> from a function (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/return>)
+* <code>'''return'''</code> from a function (<https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/return>)
 * <code>'''yield'''</code> from a generator function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield>)
 * <code>'''yield*'''</code> from a generator function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*>)
 * <code>'''await'''</code> from an async function (<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await>)
-* loop control with <code>'''break''' [label]</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/break>) and <code>'''continue''' [label]</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/continue>)
-* exceptions with <code>'''throw'''</code> (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/throw>) and <code>'''try ... catch ... finally ...'''</code>  (<http://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/try...catch>)
+* loop control with <code>'''break''' [label]</code> (<https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/break>) and <code>'''continue''' [label]</code> (<https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/continue>)
+* exceptions with <code>'''throw'''</code> (<https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/throw>) and <code>'''try ... catch ... finally ...'''</code>  (<https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Statements/try...catch>)
 
 
 ## jq
@@ -2100,7 +2100,7 @@ end
 ```
 
 
-The Lisp-influenced [for-loop](http://www.mozart-oz.org/home/doc/loop/index.html) is very powerful and convenient to use.
+The Lisp-influenced [for-loop](https://www.mozart-oz.org/home/doc/loop/index.html) is very powerful and convenient to use.
 
 As a constraint programming language, Oz has a number of flow control structures which target logic programming. They are typically used to implement new constraint search engines. However, it is also possible to use them for general logic programming.
 
@@ -2230,11 +2230,11 @@ goto FORK;
 
 ### Control exceptions
 
-Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [S04/Control exceptions](http://perlcabal.org/syn/S04.html#Control_Exceptions) for more information.
+Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [S04/Control exceptions](https://perlcabal.org/syn/S04.html#Control_Exceptions) for more information.
 
 ### Phasers
 
-Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [S04/Phasers](http://perlcabal.org/syn/S04.html#Phasers).
+Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [S04/Phasers](https://perlcabal.org/syn/S04.html#Phasers).
 
 ### goto
 
@@ -2375,63 +2375,63 @@ Relevant functions are:
 
 ### fork
 
-[fork](http://software-lab.de/doc/refF.html#fork) creates a child process
+[fork](https://software-lab.de/doc/refF.html#fork) creates a child process
 
 ### task
 
-[task](http://software-lab.de/doc/refT.html#task) installs a background task
+[task](https://software-lab.de/doc/refT.html#task) installs a background task
 consisting of an environment and a list of executable expressions
 
 ### alarm
 
-[alarm](http://software-lab.de/doc/refA.html#alarm) schedules a timer, which
+[alarm](https://software-lab.de/doc/refA.html#alarm) schedules a timer, which
 runs a given list of executable expressions when it expires
 
 ### abort
 
-[abort](http://software-lab.de/doc/refA.html#abort) runs a given list of
+[abort](https://software-lab.de/doc/refA.html#abort) runs a given list of
 executable expressions, and aborts processing it if it takes longer than
 a given time
 
 ### quit
 
-[quit](http://software-lab.de/doc/refQ.html#quit) immediately stops all
+[quit](https://software-lab.de/doc/refQ.html#quit) immediately stops all
 execution and returns to the top level read-eval-print loop, optionally
 signaling an error
 
 ### wait
 
-[wait](http://software-lab.de/doc/refW.html#wait) delays current processing
+[wait](https://software-lab.de/doc/refW.html#wait) delays current processing
 (optionally to a maximal time) until an optionally given condition
 evaluates to non-NIL
 
 ### sync
 
-[sync](http://software-lab.de/doc/refS.html#sync) synchronizes with other
+[sync](https://software-lab.de/doc/refS.html#sync) synchronizes with other
 processes of the same family
 
 ### protect
 
-[protect](http://software-lab.de/doc/refP.html#protect) delays the processing
+[protect](https://software-lab.de/doc/refP.html#protect) delays the processing
 of signals while a given list of executable expressions is executed
 
 ### catch
 
-[catch](http://software-lab.de/doc/refC.html#catch) prepares for receiving a
+[catch](https://software-lab.de/doc/refC.html#catch) prepares for receiving a
 'throw' while running a given list of executable expressions
 
 ### throw
 
-[throw](http://software-lab.de/doc/refT.html#throw) causes a non-local jump
+[throw](https://software-lab.de/doc/refT.html#throw) causes a non-local jump
 to a specified 'catch' environment
 
 ### bye
 
-[bye](http://software-lab.de/doc/refB.html#bye) exits the interpreter
+[bye](https://software-lab.de/doc/refB.html#bye) exits the interpreter
 
 ### finally
 
-[finally](http://software-lab.de/doc/refF.html#finally) specifies a list of
+[finally](https://software-lab.de/doc/refF.html#finally) specifies a list of
 executable expressions, to be run when current processing is done, even if
 a 'throw' or 'bye' was executed, or an error occurred.
 
@@ -2916,7 +2916,7 @@ if(__name__ == "__main__"):
 
 
 ===The "with" statement===
-See [PEP 0343, The "with" statement](http://www.python.org/peps/pep-0343.html)
+See [PEP 0343, The "with" statement](https://www.python.org/peps/pep-0343.html)
 
 
 ```python
@@ -2939,7 +2939,7 @@ Use cases for ''with:'' enabled objects include automated/guaranteed closing of 
 
 ### Yield expressions
 
-See [PEP 0342, Coroutines via Enhanced Generators](http://www.python.org/peps/pep-0342.html)
+See [PEP 0342, Coroutines via Enhanced Generators](https://www.python.org/peps/pep-0342.html)
  >>> value = 1
  >>> echo = lambda: (yield value)
  >>> for i in echo():
@@ -3028,7 +3028,7 @@ new control flow expressions, so any list will not be exhaustive.
 ```REBOL
 REBOL [
 	Title: "Flow Control"
-	URL: http://rosettacode.org/wiki/Flow_Control_Structures
+	URL: https://rosettacode.org/wiki/Flow_Control_Structures
 ]
 
 ; return -- Return early from function (normally, functions return
@@ -3832,7 +3832,7 @@ try {
 
 ###  custom control structures
 
-A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at <http://wiki.tcl.tk/685>).
+A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at <https://wiki.tcl-lang.org/685>).
 For example, this example defines a command to perform some operation for each line of an input file:
 
 ```tcl

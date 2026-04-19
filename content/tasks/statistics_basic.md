@@ -1833,7 +1833,7 @@ Stddev: 0.289269693719711
 
 ```
 
-The usual approach to the extra problem is [sampling.](http://en.wikipedia.org/wiki/Sampling_%28statistics%29)  That is, to not do it.
+The usual approach to the extra problem is [sampling.](https://en.wikipedia.org/wiki/Sampling_%28statistics%29)  That is, to not do it.
 
 To show really show how computations could be done a trillion numbers however, here is an outline of a map reduce strategy.  The main task indicated that numbers should be generated before doing any computations on them.  Consistent with that, The function getSegment returns data based on a starting and ending index, as if it were accessing some large data store.
 

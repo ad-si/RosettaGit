@@ -101,9 +101,9 @@ The task implementer could at their option provide a solution that includes a jo
 
 ## AutoHotkey
 
-[Forum thread](http://ahkscript.org/boards/viewtopic.php?f=6&t=2347&p=12973#p12973)
+[Forum thread](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=2347&p=12973#p12973)
 
-[Image link](http://i.imgur.com/KsbrpK4.png)
+[Image link](https://i.imgur.com/KsbrpK4.png)
 
 ```AutoHotkey
 ; Uncomment if Gdip.ahk is not in your standard library

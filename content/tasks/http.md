@@ -130,7 +130,7 @@ There is a separate task for [[HTTPS Request]]s.
 
 ```forth
 
-"http://www.rosettacode.org" net:get drop >s .
+"https://www.rosettacode.org" net:get drop >s .
 
 ```
 
@@ -146,7 +146,7 @@ report z_http.
 
 cl_http_client=>create_by_url(
   exporting
-    url                = `http://rosettacode.org/robots.txt`
+    url                = `https://rosettacode.org/robots.txt`
   importing
     client             = data(http_client)
   exceptions
@@ -213,7 +213,7 @@ package
         {
             var loader:URLLoader = new URLLoader();
             loader.addEventListener(Event.COMPLETE, loadComplete);
-            loader.load(new URLRequest("http://www.rosettacode.org"));
+            loader.load(new URLRequest("https://www.rosettacode.org"));
         }
 
         private function loadComplete(evt:Event):void
@@ -238,7 +238,7 @@ with AWS.Response;
 
 procedure HTTP_Request is
 begin
-   Put_Line (AWS.Response.Message_Body (AWS.Client.Get (URL => "http://www.rosettacode.org")));
+   Put_Line (AWS.Response.Message_Body (AWS.Client.Get (URL => "https://www.rosettacode.org")));
 end HTTP_Request;
 
 ```
@@ -308,7 +308,7 @@ print $(download "http://google.com")
 
 ```AutoHotkey
 
-UrlDownloadToFile, http://rosettacode.org, url.html
+UrlDownloadToFile, https://rosettacode.org, url.html
 Run, cmd /k type url.html
 
 ```
@@ -373,7 +373,7 @@ PRINT total$
 
 ```batch
 
-curl.exe -s -L http://rosettacode.org/
+curl.exe -s -L https://rosettacode.org/
 
 ```
 
@@ -420,7 +420,7 @@ main(void)
         char buffer[CURL_ERROR_SIZE];
 
         if ((curl = curl_easy_init()) != NULL) {
-                curl_easy_setopt(curl, CURLOPT_URL, "http://www.rosettacode.org/");
+                curl_easy_setopt(curl, CURLOPT_URL, "https://www.rosettacode.org/");
                 curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1);
                 curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, buffer);
                 if (curl_easy_perform(curl) != CURLE_OK) {
@@ -457,7 +457,7 @@ int main() {
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = IPPROTO_TCP;
 
-	getaddrinfo( "74.125.45.100", "80", &hints, &result ); // http://www.google.com
+	getaddrinfo( "74.125.45.100", "80", &hints, &result ); // https://www.google.com
 
 	SOCKET s = socket( result->ai_family, result->ai_socktype, result->ai_protocol );
 
@@ -512,7 +512,7 @@ class Program
     static void Main(string[] args)
     {
         WebClient wc = new WebClient();
-        string content = wc.DownloadString("http://www.google.com");
+        string content = wc.DownloadString("https://www.google.com");
         Console.WriteLine(content);
     }
 }
@@ -546,7 +546,7 @@ Using the Java API:
 	    (.openStream (java.net.URL. url)))]
     (while (.hasNext sc)
       (println (.nextLine sc)))))
-(get-http "http://www.rosettacode.org")
+(get-http "https://www.rosettacode.org")
 
 ```
 
@@ -558,14 +558,14 @@ Using <code>clojure.contrib.http.agent</code>:
 (ns example
   (:use [clojure.contrib.http.agent :only (string http-agent)]))
 
-(println (string (http-agent "http://www.rosettacode.org/")))
+(println (string (http-agent "https://www.rosettacode.org/")))
 
 ```
 
 
 ```clojure
 
-(print (slurp "http://www.rosettacode.org/"))
+(print (slurp "https://www.rosettacode.org/"))
 
 ```
 
@@ -617,7 +617,7 @@ SOURCE FORMAT IS FIXED
       *> Pass URL and working-storage variable,
       *>   get back libcURL error code or 0 for success
 
-       move read-url("http://www.rosettacode.org", web-page)
+       move read-url("https://www.rosettacode.org", web-page)
          to curl-status
 
        perform check
@@ -1075,11 +1075,11 @@ and a copybook
 
 ```txt
 prompt$ ./curl-rosetta summary
-Read: http://www.rosettacode.org
+Read: https://www.rosettacode.org
 Length: 000024043
 
 prompt$ ./curl-rosetta display
-Read: http://www.rosettacode.org
+Read: https://www.rosettacode.org
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="client-nojs">
 <head>
@@ -1093,7 +1093,7 @@ Read: http://www.rosettacode.org
 
 ```coldfusion
 
-  <cfhttp url="http://www.rosettacode.org" result="result">
+  <cfhttp url="https://www.rosettacode.org" result="result">
   <cfoutput>#result.FileContent#</cfoutput>
 
 ```
@@ -1197,7 +1197,7 @@ Using the stand-alone VM:
 ```d
 import 'dart:io';
 void main(){
-  var url = 'http://rosettacode.org';
+  var url = 'https://rosettacode.org';
   var client = new HttpClient();
   client.getUrl(Uri.parse(url))
         .then((HttpClientRequest request)   => request.close())
@@ -1280,7 +1280,7 @@ begin
   lHTTP := TIdHTTP.Create(nil);
   try
     lHTTP.HandleRedirects := True;
-    s := lHTTP.Get('http://www.rosettacode.org');
+    s := lHTTP.Get('https://www.rosettacode.org');
     Writeln(s);
   finally
     lHTTP.Free;
@@ -1298,7 +1298,7 @@ end.
 select "http"
 select "std"
 
-http("http://www.rosettacode.org", ::echo)
+http("https://www.rosettacode.org", ::echo)
 
 
 ```
@@ -1311,7 +1311,7 @@ http("http://www.rosettacode.org", ::echo)
 
 ```e
 
-when (def t := <http://www.rosettacode.org> <- getText()) -> {
+when (def t := <https://www.rosettacode.org> <- getText()) -> {
     println(t)
 }
 
@@ -1328,7 +1328,7 @@ when (def t := <http://www.rosettacode.org> <- getText()) -> {
 ;; asynchronous call back definition
 (define (success name text) (writeln 'Loaded name) (writeln text))
 ;;
-(file->string success "http://www.google.com")
+(file->string success "https://www.google.com")
 
 ```
 
@@ -1341,7 +1341,7 @@ when (def t := <http://www.rosettacode.org> <- getText()) -> {
 
 ```Lisp
 (with-current-buffer
-    (url-retrieve-synchronously "http://www.rosettacode.org")
+    (url-retrieve-synchronously "https://www.rosettacode.org")
   (goto-char (point-min))
   (search-forward "\n\n" nil t)  ;; skip headers
   (prin1 (buffer-substring (point) (point-max)))
@@ -1396,7 +1396,7 @@ Using it
 
 ```erlang
 
-|escript ./req.erl http://www.rosettacode.org
+|escript ./req.erl https://www.rosettacode.org
 
 ```
 
@@ -1411,7 +1411,7 @@ let wget (url : string) =
     use c = new System.Net.WebClient()
     c.DownloadString(url)
 
-printfn "%s" (wget "http://www.rosettacode.org/")
+printfn "%s" (wget "https://www.rosettacode.org/")
 
 ```
 
@@ -1431,7 +1431,7 @@ let wgetAsync url =
             use reader = new StreamReader(responseStream)
             return reader.ReadToEnd() }
 
-let urls = ["http://www.rosettacode.org/"; "http://www.yahoo.com/"; "http://www.google.com/"]
+let urls = ["https://www.rosettacode.org/"; "http://www.yahoo.com/"; "https://www.google.com/"]
 let content = urls
               |> List.map wgetAsync
               |> Async.Parallel
@@ -1445,7 +1445,7 @@ let content = urls
 
 ```factor
 USE: http.client
-"http://www.rosettacode.org" http-get nip print
+"https://www.rosettacode.org" http-get nip print
 
 ```
 
@@ -1471,30 +1471,30 @@ close-socket
 ## friendly interactive shell
 
 ```fishshell
-curl -s -L http://rosettacode.org/
+curl -s -L https://rosettacode.org/
 ```
 
 
 
 ```fishshell
-lynx -source http://rosettacode.org/
+lynx -source https://rosettacode.org/
 ```
 
 
 
 ```fishshell
-wget -O - -q http://rosettacode.org/
+wget -O - -q https://rosettacode.org/
 ```
 
 
 
 ```fishshell
-lftp -c "cat http://rosettacode.org/"
+lftp -c "cat https://rosettacode.org/"
 ```
 
 
 ```fishshell
-ftp -o - http://rosettacode.org ^ /dev/null
+ftp -o - https://rosettacode.org ^ /dev/null
 ```
 
 
@@ -1518,7 +1518,7 @@ print[read["http://frinklang.org/"]]
 #listix#
 
    <main>
-      LOOP, TEXT FILE, http://www.rosettacode.org
+      LOOP, TEXT FILE, https://www.rosettacode.org
           , BODY, @<value>
 
 ```
@@ -1530,7 +1530,7 @@ print[read["http://frinklang.org/"]]
 '''Any Event'''
 
 ```gml
-get = http_get("http://www.rosettacode.org/");
+get = http_get("https://www.rosettacode.org/");
 ```
 
 
@@ -1560,7 +1560,7 @@ import (
 )
 
 func main() {
-    r, err := http.Get("http://rosettacode.org/robots.txt")
+    r, err := http.Get("https://rosettacode.org/robots.txt")
     if err != nil {
         log.Fatalln(err)
     }
@@ -1591,7 +1591,7 @@ Disallow: /wiki/Special:
 
 ```groovy
 
-new URL("http://www.rosettacode.org").eachLine { println it }
+new URL("https://www.rosettacode.org").eachLine { println it }
 
 ```
 
@@ -1615,14 +1615,14 @@ Menu:Edit,Paste
 
 
 ```halon
-echo http("http://www.rosettacode.org");
+echo http("https://www.rosettacode.org");
 ```
 
 
 
 ## Haskell
 
-Using {{libheader|HTTP}} from [HackageDB](http://hackage.haskell.org/packages/hackage.html)
+Using {{libheader|HTTP}} from [HackageDB](https://hackage.haskell.org/packages/hackage.html)
 
 
 ```haskell
@@ -1635,7 +1635,7 @@ main = do
     rsp <- Network.Browser.browse $ do
         setAllowRedirects True
         setOutHandler $ const (return ())
-        request $ getRequest "http://www.rosettacode.org/"
+        request $ getRequest "https://www.rosettacode.org/"
     putStrLn $ rspBody $ snd rsp
 
 ```
@@ -1675,7 +1675,7 @@ Using it
 
 ```icon
 
-|icon req.icn http://www.rosettacode.org
+|icon req.icn https://www.rosettacode.org
 
 ```
 
@@ -1703,7 +1703,7 @@ Using <tt>gethttp</tt> from [[Web Scraping#J|Web Scraping]]
 
 ```j
 require'web/gethttp'
-gethttp 'http://www.rosettacode.org'
+gethttp 'https://www.rosettacode.org'
 
 ```
 
@@ -1718,7 +1718,7 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(new URL("http://www.rosettacode.org").openStream());
+        Scanner sc = new Scanner(new URL("https://www.rosettacode.org").openStream());
         while (sc.hasNext())
             System.out.println(sc.nextLine());
     }
@@ -1734,7 +1734,7 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        IOUtils.copy(new URL("http://rosettacode.org").openStream(),System.out);
+        IOUtils.copy(new URL("https://rosettacode.org").openStream(),System.out);
     }
 }
 ```
@@ -1754,7 +1754,7 @@ req.onload = function() {
   console.log(this.responseText);
 };
 
-req.open('get', 'http://rosettacode.org', true);
+req.open('get', 'https://rosettacode.org', true);
 req.send()
 ```
 
@@ -1763,7 +1763,7 @@ Using fetch API:
 
 ```JavaScript
 
-fetch('http://rosettacode.org').then(function(response) {
+fetch('https://rosettacode.org').then(function(response) {
   return response.text();
 }).then(function(myText) {
   console.log(myText);
@@ -1848,7 +1848,7 @@ Using jQuery:
 
 
 ```JavaScript
-$.get('http://rosettacode.org', function(data) {
+$.get('https://rosettacode.org', function(data) {
   console.log(data);
 };
 ```
@@ -1864,7 +1864,7 @@ With Node.js, using only the included http module.
 ```javascript
 const http = require('http');
 
-http.get('http://rosettacode.org', (resp) => {
+http.get('https://rosettacode.org', (resp) => {
 
   let data = '';
 
@@ -2006,7 +2006,7 @@ if (isMain())
 prompt$ jsish
 # require('httpGet')
 0.6
-# var page = httpGet('http://rosettacode.org/robots.txt')
+# var page = httpGet('https://rosettacode.org/robots.txt')
 variable
 # page
 "User-agent: *
@@ -2029,7 +2029,7 @@ Disallow: /wiki/Special:
 ```Julia
 readurl(url) = open(readlines, download(url))
 
-readurl("http://rosettacode.org/index.html")
+readurl("https://rosettacode.org/index.html")
 ```
 
 
@@ -2045,7 +2045,7 @@ import java.io.InputStreamReader
 import java.util.Scanner
 
 fun main(args: Array<String>) {
-    val url = URL("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    val url = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     val isr = InputStreamReader(url.openStream())
     val sc = Scanner(isr)
     while (sc.hasNextLine()) println(sc.nextLine())
@@ -2061,13 +2061,13 @@ incude_url is a wrapper for Lasso's curl datatype, however it can be achieved in
 
 ```Lasso
 // using include_url wrapper:
-include_url('http://rosettacode.org/index.html')
+include_url('https://rosettacode.org/index.html')
 
 // one line curl
-curl('http://rosettacode.org/index')->result->asString
+curl('https://rosettacode.org/index')->result->asString
 
 // using curl for more complex operations and feedback
-local(x = curl('http://rosettacode.org/index'))
+local(x = curl('https://rosettacode.org/index'))
 local(y = #x->result)
 #y->asString
 ```
@@ -2121,7 +2121,7 @@ Uses a dll call and a timer to allow time to receive the file.
 
 ```lb
 
-result = DownloadToFile( "http://rosettacode.org/wiki/Main_Page", "in.html")
+result = DownloadToFile( "https://rosettacode.org/wiki/Main_Page", "in.html")
 timer 2000, [on]
 wait
 [on]
@@ -2285,8 +2285,8 @@ llList2String(lBody, 4)=<meta charset="UTF-8" />
 llList2String(lBody, 5)=<meta name="generator" content="MediaWiki 1.18.0" />
 llList2String(lBody, 6)=<link rel="shortcut icon" href="/favicon.ico" />
 llList2String(lBody, 7)=<link rel="search" type="application/opensearchdescription+xml" href="/mw/opensearch_desc.php" title="Rosetta Code (en)" />
-llList2String(lBody, 8)=<link rel="EditURI" type="application/rsd+xml" href="http://rosettacode.org/mw/api.php?action=rsd" />
-llList2String(lBody, 9)=<link rel="copyright" href="http://www.gnu.org/licenses/fdl-1.2.html" />
+llList2String(lBody, 8)=<link rel="EditURI" type="application/rsd+xml" href="https://rosettacode.org/mw/api.php?action=rsd" />
+llList2String(lBody, 9)=<link rel="copyright" href="https://www.gnu.org/licenses/fdl-1.2.html" />
 llList2String(lBody, 10)=<link rel="alternate" type="application/atom+xml" title="Rosetta Code Atom feed" href="/mw/index.php?title=Special:RecentChanges&amp;feed=atom" />
 llList2String(lBody, 11)=<link rel="stylesheet" href="/mw/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
 llList2String(lBody, 12)=<meta name="ResourceLoaderDynamicStyles" content="" />
@@ -2304,7 +2304,7 @@ llList2String(lBody, 14)=<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab
 
 local http = require("socket.http")
 local url = require("socket.url")
-local page = http.request('http://www.google.com/m/search?q=' .. url.escape("lua"))
+local page = http.request('https://www.google.com/m/search?q=' .. url.escape("lua"))
 print(page)
 
 ```
@@ -2324,7 +2324,7 @@ Using With statement we can make objects properties like ReadyState as variables
 
 Module CheckIt  {
       Declare  xml "Microsoft.XMLHTTP"
-      const testUrl$ = "http://www.rosettacode.org"
+      const testUrl$ = "https://www.rosettacode.org"
       With  xml, "readyState" as ReadyState
       Method xml "Open", "Get", testUrl$, True  ' True means Async
       Method xml "send"
@@ -2362,7 +2362,7 @@ In Maple 18 or later:
 
 ```Maple
 
-content := URL:-Get( "http://www.google.com/" );
+content := URL:-Get( "https://www.google.com/" );
 
 ```
 
@@ -2371,7 +2371,7 @@ In Maple 17 or earlier:
 
 ```Maple
 
-content := HTTP:-Get( "http://www.google.com/" );
+content := HTTP:-Get( "https://www.google.com/" );
 
 ```
 
@@ -2380,14 +2380,14 @@ content := HTTP:-Get( "http://www.google.com/" );
 
 ```Mathematica
 
-Print[Import["http://www.google.com/webhp?complete=1&hl=en", "Source"]]
+Print[Import["https://www.google.com/webhp?complete=1&hl=en", "Source"]]
 
 ```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-[urlread](http://www.mathworks.com/help/matlab/ref/urlread.html) is MATLAB's function for making URL requests.
-The documentation for Octave is available here [urlread](http://octave.sourceforge.net/octave/function/urlread.html).
+[urlread](https://www.mathworks.com/help/matlab/ref/urlread.html) is MATLAB's function for making URL requests.
+The documentation for Octave is available here [urlread](https://octave.sourceforge.net/octave/function/urlread.html).
 
 In this example we initiate an HTTP request for a single random number from [random.org](http://www.random.org):
 
@@ -2402,7 +2402,7 @@ random =
 ```
 
 
-It is possible to make more complicated requests, specifically "GET" and "POST," which is explained in the [documentation](http://www.mathworks.com/help/matlab/ref/urlread.html).
+It is possible to make more complicated requests, specifically "GET" and "POST," which is explained in the [documentation](https://www.mathworks.com/help/matlab/ref/urlread.html).
 
 
 ## MIRC Scripting Language
@@ -2424,7 +2424,7 @@ module HTTP
     Main() : void
     {
         def wc = WebClient();
-        def myStream = wc.OpenRead("http://rosettacode.org");
+        def myStream = wc.OpenRead("https://rosettacode.org");
         def sr = StreamReader(myStream);
 
         WriteLine(sr.ReadToEnd());
@@ -2448,7 +2448,7 @@ import java.util.Scanner
 import java.net.URL
 
 do
-  rosettaUrl = "http://www.rosettacode.org"
+  rosettaUrl = "https://www.rosettacode.org"
   sc = Scanner(URL(rosettaUrl).openStream)
   loop while sc.hasNext
     say sc.nextLine
@@ -2467,7 +2467,7 @@ return
 
 ```NewLisp
 
-(get-url "http://www.rosettacode.org")
+(get-url "https://www.rosettacode.org")
 
 ```
 
@@ -2480,7 +2480,7 @@ return
 import httpclient
 
 var client = newHttpClient()
-echo client.getContent "http://rosettacode.org"
+echo client.getContent "https://rosettacode.org"
 ```
 
 
@@ -2494,7 +2494,7 @@ use Collection;
 
 class HttpTest {
   function : Main(args : String[]) ~ Nil {
-    lines := HttpClient->New()->Get("http://rosettacode.org");
+    lines := HttpClient->New()->Get("https://rosettacode.org");
     each(i : lines) {
       lines->Get(i)->As(String)->PrintLine();
     };
@@ -2514,7 +2514,7 @@ int main (int argc, const char * argv[]) {
 
         NSError        *error;
         NSURLResponse *response;
-        NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://rosettacode.org"]]
+        NSData *data = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://rosettacode.org"]]
                                                 returningResponse:&response
                                                             error:&error];
 
@@ -2534,7 +2534,7 @@ int main (int argc, const char * argv[]) {
 ```ocaml
 
 let () =
-  let url = "http://www.rosettacode.org" in
+  let url = "https://www.rosettacode.org" in
   let _,_, page_content = make_request ~url ~kind:GET () in
   print_endline page_content;
 ;;
@@ -2585,7 +2585,7 @@ declare
      Contents
   end
 in
-  {System.showInfo {GetPage "http://www.rosettacode.org"}}
+  {System.showInfo {GetPage "https://www.rosettacode.org"}}
 
 ```
 
@@ -2610,7 +2610,7 @@ declare
      OutParams.sOut
   end
 in
-  {System.showInfo {GetPage "http://www.rosettacode.org"}}
+  {System.showInfo {GetPage "https://www.rosettacode.org"}}
 
 ```
 
@@ -2699,7 +2699,7 @@ English dialect, short form:
 
 ```sgml
 
-<@ SAYURLLIT>http://rosettacode.org/wiki/Main_Page</@>
+<@ SAYURLLIT>https://rosettacode.org/wiki/Main_Page</@>
 
 ```
 
@@ -2708,7 +2708,7 @@ English dialect, padded variable-length form:
 
 ```sgml
 
-<# SAY URLSOURCE LITERAL>http://rosettacode.org/wiki/Main_Page</#>
+<# SAY URLSOURCE LITERAL>https://rosettacode.org/wiki/Main_Page</#>
 
 ```
 
@@ -2728,7 +2728,7 @@ use strict; use warnings;
 require 5.014; # check HTTP::Tiny part of core
 use HTTP::Tiny;
 
-print( HTTP::Tiny->new()->get( 'http://rosettacode.org')->{content} );
+print( HTTP::Tiny->new()->get( 'https://rosettacode.org')->{content} );
 ```
 
 
@@ -2743,7 +2743,7 @@ Classic LWP sample.
 ```perl
 use LWP::Simple qw/get $ua/;
 $ua->agent(undef) ; # cloudflare blocks default LWP agent
-print( get("http://www.rosettacode.org") );
+print( get("https://www.rosettacode.org") );
 ```
 
 
@@ -2754,7 +2754,7 @@ or with more error-checking
 use strict;
 use LWP::UserAgent;
 
-my $url = 'http://www.rosettacode.org';
+my $url = 'https://www.rosettacode.org';
 my $response = LWP::UserAgent->new->get( $url );
 
 $response->is_success or die "Failed to GET '$url': ", $response->status_line;
@@ -2772,7 +2772,7 @@ use v6;
 # Using LWP::Simple from: git://github.com/cosimo/perl6-lwp-simple.git
 use LWP::Simple;
 
-print LWP::Simple.get("http://www.rosettacode.org");
+print LWP::Simple.get("https://www.rosettacode.org");
 
 ```
 
@@ -2802,7 +2802,7 @@ Note that curl_easy_get_file() is better suited to multi-megabyte downloads than
 include builtins\libcurl.e
 curl_global_init()
 atom curl = curl_easy_init()
-curl_easy_setopt(curl, CURLOPT_URL, "http://rosettacode.org/robots.txt")
+curl_easy_setopt(curl, CURLOPT_URL, "https://rosettacode.org/robots.txt")
 object res = curl_easy_perform_ex(curl)
 curl_easy_cleanup(curl)
 curl_global_cleanup()
@@ -2830,7 +2830,7 @@ Disallow: /wiki/Special:
 
 ```php
 
-readfile("http://www.rosettacode.org");
+readfile("https://www.rosettacode.org");
 
 ```
 
@@ -2855,7 +2855,7 @@ readfile("http://www.rosettacode.org");
 
 ```pike
 
-write("%s",Protocols.HTTP.get_url_data("http://www.rosettacode.org"));
+write("%s",Protocols.HTTP.get_url_data("https://www.rosettacode.org"));
 
 ```
 
@@ -2867,7 +2867,7 @@ write("%s",Protocols.HTTP.get_url_data("http://www.rosettacode.org"));
 ```powershell
 
 $wc = New-Object Net.WebClient
-$wc.DownloadString('http://www.rosettacode.org')
+$wc.DownloadString('https://www.rosettacode.org')
 
 ```
 
@@ -2883,7 +2883,7 @@ Works with SWI-Prolog and library http/http_open. (Extract from the doc).
 :- use_module(library( http/http_open )).
 
 http :-
-	http_open('http://www.rosettacode.org/',In, []),
+	http_open('https://www.rosettacode.org/',In, []),
 	copy_stream_data(In, user_output),
 	close(In).
 
@@ -2902,7 +2902,7 @@ OpenConsole()
 tmpdir$   = GetTemporaryDirectory()
 filename$ = tmpdir$ + "PB_tempfile" + Str(Random(200000)) + ".html"
 
-If ReceiveHTTPFile("http://rosettacode.org/wiki/Main_Page", filename$)
+If ReceiveHTTPFile("https://rosettacode.org/wiki/Main_Page", filename$)
   If ReadFile(1, filename$)
     Repeat
       PrintN(ReadString(1))
@@ -2946,12 +2946,12 @@ Of course you could use wget too.
 
 
 ;Python 3:
-Using the [urllib.request](http://docs.python.org/py3k/library/urllib.request.html) module.
+Using the [urllib.request](https://docs.python.org/py3k/library/urllib.request.html) module.
 
 ```python
 
 import urllib.request
-print(urllib.request.urlopen("http://rosettacode.org").read())
+print(urllib.request.urlopen("https://rosettacode.org").read())
 
 ```
 
@@ -2972,22 +2972,22 @@ r1 = result.read() # This retrieves the entire contents.
 
 
 ;Python 2:
-Using the [urllib](http://docs.python.org/library/urllib.html) library.
+Using the [urllib](https://docs.python.org/library/urllib.html) library.
 
 ```python
 
 import urllib
-print urllib.urlopen("http://rosettacode.org").read()
+print urllib.urlopen("https://rosettacode.org").read()
 
 ```
 
 
-Using the [urllib2](http://docs.python.org/library/urllib2.html) library.
+Using the [urllib2](https://docs.python.org/library/urllib2.html) library.
 
 ```python
 
 import urllib2
-print urllib2.urlopen("http://rosettacode.org").read()
+print urllib2.urlopen("https://rosettacode.org").read()
 
 ```
 
@@ -2996,7 +2996,7 @@ print urllib2.urlopen("http://rosettacode.org").read()
 ```Python
 
 import requests
-print(requests.get("http://rosettacode.org").text)
+print(requests.get("https://rosettacode.org").text)
 
 ```
 
@@ -3010,13 +3010,13 @@ First, retrieve the webpage.
 ```R
 
 library(RCurl)
-webpage <- getURL("http://rosettacode.org")
+webpage <- getURL("https://rosettacode.org")
 
 #If you are linking to a page that no longer exists and need to follow the redirect, use followlocation=TRUE
-webpage <- getURL("http://www.rosettacode.org", .opts=list(followlocation=TRUE))
+webpage <- getURL("https://www.rosettacode.org", .opts=list(followlocation=TRUE))
 
 #If you are behind a proxy server, you will need to use something like:
-webpage <- getURL("http://rosettacode.org",
+webpage <- getURL("https://rosettacode.org",
    .opts=list(proxy="123.123.123.123", proxyusername="domain\\username", proxypassword="mypassword", proxyport=8080))
 #Don't forget that backslashes in your username or password need to be escaped!
 
@@ -3043,7 +3043,7 @@ pagetree$children$html
 
 #lang racket
 (require net/url)
-(copy-port (get-pure-port (string->url "http://www.rosettacode.org")
+(copy-port (get-pure-port (string->url "https://www.rosettacode.org")
                           #:redirections 100)
            (current-output-port))
 
@@ -3058,7 +3058,7 @@ REALBasic provides an HTTPSocket class for handling HTTP connections. The 'Get' 
 ```REALbasic
 
   Dim sock As New HTTPSocket
-  Print(sock.Get("http://www.rosettacode.org", 10))  //set the timeout period to 10 seconds.
+  Print(sock.Get("https://www.rosettacode.org", 10))  //set the timeout period to 10 seconds.
 
 ```
 
@@ -3069,7 +3069,7 @@ REALBasic provides an HTTPSocket class for handling HTTP connections. The 'Get' 
 
 ```REBOL
 
-print read http://rosettacode.org
+print read https://rosettacode.org
 
 ```
 
@@ -3084,7 +3084,7 @@ This script takes an URL as an argument and displays the content on the terminal
 ```Rexx
 /* ft=rexx */
 /* GET2.RX - Display contents of an URL on the terminal. */
-/* Usage: rexx get.rx http://rosettacode.org             */
+/* Usage: rexx get.rx https://rosettacode.org             */
 parse arg url .
 'curl' url
 ```
@@ -3096,7 +3096,7 @@ A simple change to the script will redirect the output to an internal variable f
 ```Rexx
 /* ft=rexx */
 /* GET2.RX - Display contents of an URL on the terminal. */
-/* Usage: rexx get2.rx http://rosettacode.org            */
+/* Usage: rexx get2.rx https://rosettacode.org            */
 parse arg url .
 address system 'curl' url with output stem stuff.
 do i = 1 to stuff.0
@@ -3111,7 +3111,7 @@ Another simple change redirects the output to another external program like a sh
 ```Rexx
 /* ft=rexx */
 /* GET3.RX - Display contents of an URL on the terminal. */
-/* Usage: rexx get3.rx http://rosettacode.org            */
+/* Usage: rexx get3.rx https://rosettacode.org            */
 parse arg url .
 address system 'curl' url with output fifo ''
 address system 'more' with input fifo ''
@@ -3168,7 +3168,7 @@ close (url);
 
 ```ring
 
-See download("http://rosettacode.org")
+See download("https://rosettacode.org")
 
 ```
 
@@ -3183,7 +3183,7 @@ The simple way loads the entire content into memory, then prints it.
 
 require 'open-uri'
 
-print open("http://rosettacode.org") {|f| f.read}
+print open("https://rosettacode.org") {|f| f.read}
 
 ```
 
@@ -3196,7 +3196,7 @@ If the content might be large, the better way uses FileUtils.copy_stream.
 require 'fileutils'
 require 'open-uri'
 
-open("http://rosettacode.org/") {|f| FileUtils.copy_stream(f, $stdout)}
+open("https://rosettacode.org/") {|f| FileUtils.copy_stream(f, $stdout)}
 
 ```
 
@@ -3205,7 +3205,7 @@ open("http://rosettacode.org/") {|f| FileUtils.copy_stream(f, $stdout)}
 
 
 ```runbasic
-print httpget$("http://rosettacode.org/wiki/Main_Page")
+print httpget$("https://rosettacode.org/wiki/Main_Page")
 ```
 
 
@@ -3234,7 +3234,7 @@ use hyper::client::Client;
 
 fn main() {
     let client = Client::new();
-    let mut resp = client.get("http://rosettacode.org").send().unwrap();
+    let mut resp = client.get("https://rosettacode.org").send().unwrap();
     let mut body = String::new();
     resp.read_to_string(&mut body).unwrap();
     println!("{}", body);
@@ -3252,7 +3252,7 @@ import scala.io.Source
 object HttpTest extends App {
   System.setProperty("http.agent", "*")
 
-  Source.fromURL("http://www.rosettacode.org").getLines.foreach(println)
+  Source.fromURL("https://www.rosettacode.org").getLines.foreach(println)
 }
 ```
 
@@ -3266,7 +3266,7 @@ object HttpTest extends App {
 (use-modules (ice-9 regex))
 
 ; Set the url and parse the hostname, port, and path into variables
-(define url "http://www.rosettacode.org/wiki/HTTP")
+(define url "https://www.rosettacode.org/wiki/HTTP")
 (define r (make-regexp "^(http://)?([^:/]+)(:)?(([0-9])+)?(/.*)?" regexp/icase))
 (define host (match:substring (regexp-exec r url) 2))
 (define port (match:substring (regexp-exec r url) 4))
@@ -3306,8 +3306,8 @@ Using the [http-client](http://api.call-cc.org/doc/http-client) library, this is
 
 ## Seed7
 
-The [gethttp.s7i](http://seed7.sourceforge.net/libraries/gethttp.htm) library
-contains the function [getHttp](http://seed7.sourceforge.net/libraries/gethttp.htm#getHttp%28in_string%29),
+The [gethttp.s7i](https://seed7.sourceforge.net/libraries/gethttp.htm) library
+contains the function [getHttp](https://seed7.sourceforge.net/libraries/gethttp.htm#getHttp%28in_string%29),
 which gets data specified by an URL using the HTTP protocol.
 
 
@@ -3341,7 +3341,7 @@ func get(url) {
     return nil
 }
 
-print get("http://rosettacode.org")
+print get("https://rosettacode.org")
 ```
 
 
@@ -3352,7 +3352,7 @@ print get("http://rosettacode.org")
 -include "tcp.sno"
 	tcp.open(.conn,'www.rosettacode.org','http')	:s(cont1)
 	terminal = "cannot open"	:(end)
-cont1	conn = "GET http://rosettacode.org/wiki/Main_Page HTTP/1.0" char(10) char(10)
+cont1	conn = "GET https://rosettacode.org/wiki/Main_Page HTTP/1.0" char(10) char(10)
 while	output = conn	:s(while)
 	tcp.close(.conn)
 end
@@ -3365,7 +3365,7 @@ end
 
 ```smalltalk
 
-Transcript show: 'http://rosettacode.org' asUrl retrieveContents contentStream.
+Transcript show: 'https://rosettacode.org' asUrl retrieveContents contentStream.
 
 ```
 
@@ -3376,7 +3376,7 @@ Transcript show: 'http://rosettacode.org' asUrl retrieveContents contentStream.
 ```Swift
 import Foundation
 
-let request = NSURLRequest(URL: NSURL(string: "http://rosettacode.org/")!)
+let request = NSURLRequest(URL: NSURL(string: "https://rosettacode.org/")!)
 
 // Using trailing closure
 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {res, data, err in
@@ -3401,7 +3401,7 @@ Note that the <code>http</code> package is distributed as part of Tcl.
 ```tcl
 
 package require http
-set request [http::geturl "http://www.rosettacode.org"]
+set request [http::geturl "https://www.rosettacode.org"]
 puts [http::data $request]
 http::cleanup $request
 ```
@@ -3429,7 +3429,7 @@ PROC PROCUrlGetSource( STRING urlS, STRING filenameS )
 END
 
 PROC Main()
-STRING s1[255] = "http://www.google.com/index.html"
+STRING s1[255] = "https://www.google.com/index.html"
 STRING s2[255] = "c:\temp\ddd.txt"
 IF ( NOT ( Ask( "url: get: source: urlS = ", s1, _EDIT_HISTORY_ ) ) AND ( Length( s1 ) > 0 ) ) RETURN() ENDIF
 IF ( NOT ( AskFilename( "url: get: source: filenameS = ", s2, _DEFAULT_, _EDIT_HISTORY_ ) ) AND ( Length( s2 ) > 0 ) ) RETURN() ENDIF
@@ -3448,7 +3448,7 @@ END
 ```tuscript
 
 $$ MODE TUSCRIPT
-SET DATEN = REQUEST ("http://www.rosettacode.org")
+SET DATEN = REQUEST ("https://www.rosettacode.org")
 *{daten}
 
 ```
@@ -3459,30 +3459,30 @@ SET DATEN = REQUEST ("http://www.rosettacode.org")
 
 
 ```bash
-curl -s -L http://rosettacode.org/
+curl -s -L https://rosettacode.org/
 ```
 
 
 
 ```bash
-lynx -source http://rosettacode.org/
+lynx -source https://rosettacode.org/
 ```
 
 
 
 ```bash
-wget -O - -q http://rosettacode.org/
+wget -O - -q https://rosettacode.org/
 ```
 
 
 
 ```bash
-lftp -c "cat http://rosettacode.org/"
+lftp -c "cat https://rosettacode.org/"
 ```
 
 
 ```bash
-ftp -o - http://rosettacode.org 2>/dev/null
+ftp -o - https://rosettacode.org 2>/dev/null
 ```
 
 
@@ -3495,7 +3495,7 @@ Based on code at [How to retrieve HTML web pages with VBScript via the Microsoft
 
 Option Explicit
 
-Const sURL="http://rosettacode.org/"
+Const sURL="https://rosettacode.org/"
 
 Dim oHTTP
 Set oHTTP = CreateObject("Microsoft.XmlHTTP")
@@ -3525,7 +3525,7 @@ Dim HttpReq As WinHttp.WinHttpRequest
 Const HTTPREQUEST_PROXYSETTING_PROXY As Long = 2
 #Const USE_PROXY = 1
   Set HttpReq = New WinHttp.WinHttpRequest
-  HttpReq.Open "GET", "http://rosettacode.org/robots.txt"
+  HttpReq.Open "GET", "https://rosettacode.org/robots.txt"
 #If USE_PROXY Then
   HttpReq.SetProxy HTTPREQUEST_PROXYSETTING_PROXY, "my_proxy:80"
 #End If
@@ -3545,7 +3545,7 @@ End Sub
 Imports System.Net
 
 Dim client As WebClient = New WebClient()
-Dim content As String = client.DownloadString("http://www.google.com")
+Dim content As String = client.DownloadString("https://www.google.com")
 Console.WriteLine(content)
 
 ```

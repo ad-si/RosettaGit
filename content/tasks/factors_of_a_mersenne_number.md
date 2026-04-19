@@ -385,7 +385,7 @@ M       +929 has a factor:      +13007
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=144)
+ahk [discussion](https://www.autohotkey.com/forum/viewtopic.php?t=44657&postdays=0&postorder=asc&start=144)
 
 ```autohotkey
 MsgBox % MFact(27)  ;-1: 27 is not prime
@@ -3108,8 +3108,8 @@ const proc: main is func
 ```
 
 
-Original source: [isPrime](http://seed7.sourceforge.net/algorith/math.htm#isPrime),
-[modPow](http://seed7.sourceforge.net/algorith/math.htm#modPow) (modified to use integer instead of bigInteger).
+Original source: [isPrime](https://seed7.sourceforge.net/algorith/math.htm#isPrime),
+[modPow](https://seed7.sourceforge.net/algorith/math.htm#modPow) (modified to use integer instead of bigInteger).
 
 ```txt
 

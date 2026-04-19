@@ -213,7 +213,7 @@ only_one_instance(void)
 
 /*
  * Demo for Rosetta Code.
- * http://rosettacode.org/wiki/Determine_if_only_one_instance_is_running
+ * https://rosettacode.org/wiki/Determine_if_only_one_instance_is_running
  */
 int
 main()
@@ -241,7 +241,7 @@ This solution opens a file with <tt>O_CREAT|O_EXCL</tt>. If the file already exi
 
 The program, when terminating, must be sure to ''unlink()'' the file. This example has ''unlink()'' at two places: at the end of ''main()'', and at a SIGINT handler. If you interrupt the program, it will probably delete <tt>/tmp/MyUniqueName</tt>, but not if SIGINT wins a race before the program installs its handler. If you terminate the program with a different signal, then you will get stuck, because <tt>/tmp/MyUniqueName</tt> will still exist, preventing another execution of the program. One might add code to catch some other signals, but there is no way to catch SIGKILL!
 
-This program uses a regular file, with ''open()'' and ''unlink()''. There is [an older version that uses a semaphore](http://rosettacode.org/mw/index.php?title=Determine_if_only_one_instance_is_running&oldid=97253), with ''sem_open()'' and ''sem_unlink()''. The switch from a semaphore to a regular file was easy, because the program never used the semaphore as a semaphore; it only checked the existence of a semaphore. If you get stuck, <tt>rm /tmp/MyUniqueName</tt> might be easier than deleting a semaphore.
+This program uses a regular file, with ''open()'' and ''unlink()''. There is [an older version that uses a semaphore](https://rosettacode.org/mw/index.php?title=Determine_if_only_one_instance_is_running&oldid=97253), with ''sem_open()'' and ''sem_unlink()''. The switch from a semaphore to a regular file was easy, because the program never used the semaphore as a semaphore; it only checked the existence of a semaphore. If you get stuck, <tt>rm /tmp/MyUniqueName</tt> might be easier than deleting a semaphore.
 
 ```c
 #include <fcntl.h>
@@ -1048,7 +1048,7 @@ let () =
 ```
 
 
-The standard library of OCaml also provides a [Mutex](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html) module.
+The standard library of OCaml also provides a [Mutex](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Mutex.html) module.
 
 
 ## Oz
@@ -1083,7 +1083,7 @@ end
 
 ## Perl
 
-The INIT block is runned just before the Perl runtime begins execution. See [perlmod](http://perldoc.perl.org/perlmod.html)
+The INIT block is runned just before the Perl runtime begins execution. See [perlmod](https://perldoc.perl.org/perlmod.html)
 
 Then it tries to get a lock to its own file, from where the script was called.
 

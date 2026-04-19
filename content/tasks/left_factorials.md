@@ -97,15 +97,15 @@ Display the length (in decimal digits) of the left factorials for:
 
 
 ;Also see
-*   The OEIS entry: [A003422 left factorials](http://oeis.org/A003422)
-*   The MathWorld entry: [left factorial](http://mathworld.wolfram.com/LeftFactorial.html)
-*   The MathWorld entry: [factorial sums](http://mathworld.wolfram.com/FactorialSums.html)
-*   The MathWorld entry: [subfactorial](http://mathworld.wolfram.com/Subfactorial.html)
+*   The OEIS entry: [A003422 left factorials](https://oeis.org/A003422)
+*   The MathWorld entry: [left factorial](https://mathworld.wolfram.com/LeftFactorial.html)
+*   The MathWorld entry: [factorial sums](https://mathworld.wolfram.com/FactorialSums.html)
+*   The MathWorld entry: [subfactorial](https://mathworld.wolfram.com/Subfactorial.html)
 
 
 ## Related tasks
 
-*   [permutations/derangements (subfactorials)](http://rosettacode.org/wiki/Permutations/Derangements)
+*   [permutations/derangements (subfactorials)](https://rosettacode.org/wiki/Permutations/Derangements)
 
 
 

@@ -731,7 +731,7 @@ carpet(q, 5);
 
 ## AutoHotkey
 
-ahk [discussion](http://www.autohotkey.com/forum/topic44657-150.html)
+ahk [discussion](https://www.autohotkey.com/forum/topic44657-150.html)
 
 ```autohotkey
 Loop 4
@@ -2009,7 +2009,7 @@ end program Sierpinski_carpet
 ## SCff.gp 1/14/17 aev
 ## Plotting Sierpinski carpet fractal.
 ## dat-files are PARI/GP generated output files:
-## <http://rosettacode.org/wiki/Sierpinski_carpet#PARI.2FGP>
+## <https://rosettacode.org/wiki/Sierpinski_carpet#PARI.2FGP>
 #cd 'C:\gnupData'
 
 ##SC5
@@ -2862,7 +2862,7 @@ In-browser JavaScript (HTML output)
 This version also produces a "graphic" via HTML and CSS.
 
 ```html4strict
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "https://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -5228,7 +5228,7 @@ say c.join("\n")
 
 ## Sinclair ZX81 BASIC
 
-Works with the unexpanded (1k RAM) ZX81. A screenshot of the output is [here](http://www.edmundgriffiths.com/zx81sierpcarpet.jpg).
+Works with the unexpanded (1k RAM) ZX81. A screenshot of the output is [here](https://www.edmundgriffiths.com/zx81sierpcarpet.jpg).
 
 ```basic
  10 LET O=3
@@ -5345,7 +5345,7 @@ End
 
 Doesn't pretend to be efficient.
 
-Note that this code inserts a space between characters; some versions of  [paste(1)](http://en.wikipedia.org/wiki/Paste_(Unix)) (notably the one that ships with OS X) won't allow an empty delimiter.  If yours does, you can replace the <tt>-d ' '</tt> in the function body with <tt>-d </tt>' '<tt> </tt>for more compact output.
+Note that this code inserts a space between characters; some versions of  [paste(1)](https://en.wikipedia.org/wiki/Paste_(Unix)) (notably the one that ships with OS X) won't allow an empty delimiter.  If yours does, you can replace the <tt>-d ' '</tt> in the function body with <tt>-d </tt>' '<tt> </tt>for more compact output.
 
 ```bash
 #!/bin/bash
@@ -5962,7 +5962,7 @@ print replace$(sierpinskiCarpet$(3), ",", "\n")
 ## zkl
 
 [[File:Sierpinski carpet.zkl.gif|250px|thumb|right]]
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn drawPat(x0,y0,s,img){  // Draw 3x3 pattern with hole in middle

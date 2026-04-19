@@ -828,7 +828,7 @@ public class Immute{
 
 In the <code>Immute</code> class above, the object pointed to by "buff" is still technically mutable, since its internal values can still be changed. The <code>private</code> modifier ensures that no other classes can access that variable. Some trickery needed to be done to ensure that no pointers to the actual mutable objects are passed out. Programmers should be aware of which objects that they use are mutable (usually noted in javadocs).
 
-The [Collections class](http://download.oracle.com/javase/6/docs/api/java/util/Collections.html) also has methods that will create "unmodifiable" <code>Collection</code>s out of existing <code>Collection</code>s instances.
+The [Collections class](https://download.oracle.com/javase/6/docs/api/java/util/Collections.html) also has methods that will create "unmodifiable" <code>Collection</code>s out of existing <code>Collection</code>s instances.
 
 
 ## JavaScript

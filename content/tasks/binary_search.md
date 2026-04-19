@@ -604,8 +604,8 @@ Sample output:
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of FORMATted transput}}
 
 ```algol68
 MODE ELEMENT = STRING;
@@ -2073,7 +2073,7 @@ print r
 ## Eiffel
 
 
-The following solution is based on the one described in: C. A. Furia, B. Meyer, and S. Velder. ''Loop Invariants: Analysis, Classification, and Examples''. ACM Computing Surveys, 46(3), Article 34, January 2014. (Also available at http://arxiv.org/abs/1211.4470). It includes detailed loop invariants and pre- and postconditions, which make the running time linear (instead of logarithmic) when full contract checking is enabled.
+The following solution is based on the one described in: C. A. Furia, B. Meyer, and S. Velder. ''Loop Invariants: Analysis, Classification, and Examples''. ACM Computing Surveys, 46(3), Article 34, January 2014. (Also available at https://arxiv.org/abs/1211.4470). It includes detailed loop invariants and pre- and postconditions, which make the running time linear (instead of logarithmic) when full contract checking is enabled.
 
 
 ```Eiffel
@@ -2136,7 +2136,7 @@ feature -- Search
 		-- The index of an element `key' within `a[low..high]' if it exists.
 		-- Otherwise an integer outside `[low..high]'
 		note
-			source: "http://arxiv.org/abs/1211.4470"
+			source: "https://arxiv.org/abs/1211.4470"
 		require
 			is_sorted (a, low, high)
 		local
@@ -7232,7 +7232,7 @@ Output:
 
 ## Tcl
 
-ref: [Tcl wiki](http://wiki.tcl.tk/22796)
+ref: [Tcl wiki](https://wiki.tcl-lang.org/22796)
 
 ```tcl
 proc binSrch {lst x} {

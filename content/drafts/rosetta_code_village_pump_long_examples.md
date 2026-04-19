@@ -31,4 +31,4 @@ tags = []
 
 :: Does WP have this problem? What do they do? --[[User:Paddy3118|Paddy3118]] 23:04, 9 January 2010 (UTC)
 
-::: I don't know. I'd have to ask in #MediaWiki. I'm sure I'll get a "MediaWiki is the wrong tool for the job" response when I do. I've had that on past occasions. At least I'll have a [reply to that](http://rosettacode.org/blog/2009/12/why-and-why-not-mediawiki.html)... --[[User:Short Circuit|Michael Mol]] 03:07, 10 January 2010 (UTC)
+::: I don't know. I'd have to ask in #MediaWiki. I'm sure I'll get a "MediaWiki is the wrong tool for the job" response when I do. I've had that on past occasions. At least I'll have a [reply to that](https://rosettacode.org/blog/2009/12/why-and-why-not-mediawiki.html)... --[[User:Short Circuit|Michael Mol]] 03:07, 10 January 2010 (UTC)

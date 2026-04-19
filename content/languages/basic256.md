@@ -29,4 +29,4 @@ tags = []
 <br/>
 BASIC256 is open source and available for [Linux](https://rosettacode.org/wiki/Linux), [Windows](https://rosettacode.org/wiki/Windows) and [Mac](https://rosettacode.org/wiki/Mac).
 
-For more information see [basic256.org](http://www.basic256.org) or to download and install [sourceforge](http://sourceforge.net/projects/kidbasic/).
+For more information see [basic256.org](http://www.basic256.org) or to download and install [sourceforge](https://sourceforge.net/projects/kidbasic/).

@@ -246,7 +246,7 @@ WEnd
 With GNU AWK (gawk) a simple web server can be implemented.
 
 The example is taken from
-<http://www.gnu.org/software/gawk/manual/gawkinet/gawkinet.html#Primitive-Service>
+<https://www.gnu.org/software/gawk/manual/gawkinet/gawkinet.html#Primitive-Service>
 (Documentation is licensed under GNU Free Documentation License, Version 1.3)
 
 ```AWK
@@ -1125,7 +1125,7 @@ main = runTCPServer (ServerSettings 8080 "127.0.0.1") $ const (yield response $$
 ```
 
 
-Or using only "standard" features ([base](http://hackage.haskell.org/package/base), [bytestring](http://hackage.haskell.org/package/bytestring) and [network](http://hackage.haskell.org/package/network) from the [Haskell Platform](http://hackage.haskell.org/platform/)):
+Or using only "standard" features ([base](https://hackage.haskell.org/package/base), [bytestring](https://hackage.haskell.org/package/bytestring) and [network](https://hackage.haskell.org/package/network) from the [Haskell Platform](https://hackage.haskell.org/platform/)):
 
 
 ```haskell
@@ -1157,7 +1157,7 @@ Both works like this:
  Request rate: 8202.5 req/s (0.1 ms/req)
  Errors: total 10000 client-timo 0 socket-timo 0 connrefused 0 connreset 10000
 
-Or using warp ([warp](http://hackage.haskell.org/package/warp) [warp example](https://wiki.haskell.org/Web/Servers#Warp) [about warp](http://aosabook.org/en/posa/warp.html)):
+Or using warp ([warp](https://hackage.haskell.org/package/warp) [warp example](https://wiki.haskell.org/Web/Servers#Warp) [about warp](http://aosabook.org/en/posa/warp.html)):
 
 
 ```haskell
@@ -1235,7 +1235,7 @@ WebServer start
 ## J
 
 If the desire is to use the browser as a gui, the easiest thing to do
-would be to [download](http://www.jsoftware.com/stable.htm) [j7](http://www.jsoftware.com/docs/help701/user/relhigh.htm), edit the jhs script to start on port 8080,
+would be to [download](https://www.jsoftware.com/stable.htm) [j7](https://www.jsoftware.com/docs/help701/user/relhigh.htm), edit the jhs script to start on port 8080,
 start jhs, visit <http://127.0.0.1:8080/jijx> then enter the text:
 
 ```j
@@ -1498,8 +1498,8 @@ class RHelloWorldWebServer public
       || 'HTTP/1.1 200 OK\r\n' -
       || 'Content-Type: text/html; charset=UTF-8\r\n\r\n' -
       || '<?xml version="1.0" encoding="UTF-8"?>\r\n' -
-      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\r\n' -
-      || '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\r\n' -
+      || '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\r\n' -
+      || '<html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en">\r\n' -
       || '<header>\r\n' -
       || '<title>Hello</title>\r\n' -
       || '<style type="text/css">body {font-family: sans-serif;}</style>\r\n' -
@@ -2321,7 +2321,7 @@ simple_http_server(8080, procedure(header, connection)
 
 ## Seed7
 
-The code below was inspired by the example code for the function [openInetListener](http://seed7.sourceforge.net/libraries/listener.htm#openInetListener%28in_integer%29).
+The code below was inspired by the example code for the function [openInetListener](https://seed7.sourceforge.net/libraries/listener.htm#openInetListener%28in_integer%29).
 
 
 ```Seed7
@@ -2461,7 +2461,7 @@ ZnServer stopDefault.
 
 ### Tcl 8.x
 
-This version is adapted from [the Tcler's Wiki](http://wiki.tcl.tk/28414).
+This version is adapted from [the Tcler's Wiki](https://wiki.tcl-lang.org/28414).
 
 ```tcl
 proc accept {chan addr port} {

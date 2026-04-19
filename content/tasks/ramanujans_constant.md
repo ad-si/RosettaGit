@@ -19,7 +19,7 @@ languages = [
 ]
 +++
 
-Calculate Ramanujan's constant (as described on the [OEIS site](http://oeis.org/wiki/Ramanujan%27s_constant)) with at least
+Calculate Ramanujan's constant (as described on the [OEIS site](https://oeis.org/wiki/Ramanujan%27s_constant)) with at least
 32 digits of precision, by the method of your choice.  Optionally, if using the 𝑒**(π*√''x'') approach,
 show that when evaluated with the last four [Heegner numbers](https://en.wikipedia.org/wiki/Heegner_number)
 the result is ''almost'' an integer.
@@ -200,9 +200,9 @@ Ramanujan's constant
 
 To generate a high-precision value for Ramanujan's constant, code is borrowed from three other Rosettacode tasks 
 (with some modifications) for performing calculations of 
-[the value of π](http://rosettacode.org/wiki/Arithmetic-geometric_mean/Calculate_Pi),  
-[Euler's number](http://rosettacode.org/wiki/Calculating_the_value_of_e), and 
-[integer roots](http://rosettacode.org/wiki/Arithmetic-geometric_mean/Integer_roots). Additional custom routines for exponentiation are used to ensure all computations are done with rationals, specifically <tt>FatRat</tt>s (rational numbers stored with arbitrary size numerator and denominator). The module <tt>Rat::Precise</tt> makes it simple to display these to a configurable precision.
+[the value of π](https://rosettacode.org/wiki/Arithmetic-geometric_mean/Calculate_Pi),  
+[Euler's number](https://rosettacode.org/wiki/Calculating_the_value_of_e), and 
+[integer roots](https://rosettacode.org/wiki/Arithmetic-geometric_mean/Integer_roots). Additional custom routines for exponentiation are used to ensure all computations are done with rationals, specifically <tt>FatRat</tt>s (rational numbers stored with arbitrary size numerator and denominator). The module <tt>Rat::Precise</tt> makes it simple to display these to a configurable precision.
 
 ```perl6
 use Rat::Precise;

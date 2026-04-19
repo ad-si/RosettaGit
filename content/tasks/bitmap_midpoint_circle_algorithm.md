@@ -581,7 +581,7 @@ void raster_circle(
 
 == {{header|C sharp}} ==
 
-This extension method extends GenericImage which is very similar to [Bitmap](http://rosettacode.org/wiki/Bitmap#C.23) but instead of using a SetPixel method it uses a "Color this[int x, int y] { get; set; }" property to get and set pixels.
+This extension method extends GenericImage which is very similar to [Bitmap](https://rosettacode.org/wiki/Bitmap#C.23) but instead of using a SetPixel method it uses a "Color this[int x, int y] { get; set; }" property to get and set pixels.
 
 
 ```c#
@@ -2437,7 +2437,7 @@ SetVid(3);              \restore normal text mode
 ## zkl
 
 Image cribbed from the BBC BASIC entry. Algorithm from Wikipedia article.<br/>
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[Image:circle_bbc.gif|right]]
 This is the code from the PPM class:
 

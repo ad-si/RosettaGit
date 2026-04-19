@@ -12,7 +12,7 @@ tags = []
 
 ==Flag request==
 This task needs a picture of the Dutch national flag. --[[User:Paddy3118|Paddy3118]] 09:34, 1 July 2012 (UTC)
-:http://en.wikipedia.org/wiki/Netherlands [[User:Fwend|Fwend]] 06:04, 2 July 2012 (UTC)
+:https://en.wikipedia.org/wiki/Netherlands [[User:Fwend|Fwend]] 06:04, 2 July 2012 (UTC)
 
 :: I've added an HTML rendition of the Dutch flag (immediately before the '''Cf.''').   I tried to use   ''style=float''   with right justification, but couldn't make that work without HTML forcing some (unwanted) inter-line spacing.   -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 02:19, 9 June 2015 (UTC)
 

@@ -1559,7 +1559,7 @@ public class Dates
 }
 ```
 
-Better use a library, see <http://sourceforge.net/apps/mediawiki/threeten/index.php?title=ThreeTen>
+Better use a library, see <https://sourceforge.net/apps/mediawiki/threeten/index.php?title=ThreeTen>
 
 
 ### Java 8 Date Time API
@@ -1922,7 +1922,7 @@ Sonntag, Februar 10, 2019
 
 ```NewLISP
 ; file:   date-format.lsp
-; url:    http://rosettacode.org/wiki/Date_format
+; url:    https://rosettacode.org/wiki/Date_format
 ; author: oofoe 2012-02-01
 
 ; The "now" function returns the current time as a list. A time zone
@@ -2079,7 +2079,7 @@ let days = [| "Sunday"; "Monday"; "Tuesday";  (* Sunday is 0 *)
 
 extern lib "kernel32.dll"
 
-'http://msdn.microsoft.com/en-us/library/windows/desktop/ms724950(v=vs.85).aspx
+'https://msdn.microsoft.com/en-us/library/windows/desktop/ms724950(v=vs.85).aspx
 
 typedef struct _SYSTEMTIME {
   WORD wYear;
@@ -2296,7 +2296,7 @@ include builtins\timedate.e
 
 ## PHP
 
-Formatting rules: <http://www.php.net/date>
+Formatting rules: <https://www.php.net/date>
 
 ```php
 <?php
@@ -2483,7 +2483,7 @@ display_date :-
 
 ## Python
 
-Formatting rules: <http://docs.python.org/lib/module-time.html> (strftime)
+Formatting rules: <https://docs.python.org/lib/module-time.html> (strftime)
 
 
 ```python
@@ -2520,7 +2520,7 @@ that strictly provides "<Full day name>, <Full month name> ...".
 We therefore need to import SRFI/19 "SRFI 19: Time Data Types and Procedures"
 (it's a standard Racket package).
 
-See: <http://srfi.schemers.org/srfi-19/srfi-19.html>
+See: <https://srfi.schemers.org/srfi-19/srfi-19.html>
 
 
 ```racket
@@ -2580,7 +2580,7 @@ today '%A, %B %d, %Y' date
 ```REBOL
 REBOL [
 	Title: "Date Formatting"
-	URL: http://rosettacode.org/wiki/Date_format
+	URL: https://rosettacode.org/wiki/Date_format
 ]
 
 ; REBOL has no built-in pictured output.
@@ -3065,8 +3065,8 @@ date +"%F"
 
 
 <!-- ENHANCE-ME: what is new enough for %F ?  For example it doesn't appear in these bits of POSIX,
-       <http://pubs.opengroup.org/onlinepubs/009604599/utilities/date.html>
-       <http://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html>
+       <https://pubs.opengroup.org/onlinepubs/009604599/utilities/date.html>
+       <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/date.html>
 -->
 
 

@@ -24,7 +24,7 @@ See, for example:
 
 <http://sumon3get.hubpages.com/hub/Basic-Concept-And-History-Of-Boolean-Algebra>
 
-<http://mathworld.wolfram.com/BooleanAlgebra.html>
+<https://mathworld.wolfram.com/BooleanAlgebra.html>
 
 Remedies might include:
 

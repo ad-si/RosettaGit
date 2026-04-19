@@ -490,8 +490,8 @@ real: 5.6
 ## ALGOL 68
 
 {{trans|aikido}}{{wont work with|ALGOL 68|Revision 1 - scoping rules forbid exporting a procedure out of it's scope}}
-{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - scoping rules forbid exporting a procedure out of it's scope - detected at compile time and again at runtime}}
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{wont work with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download) - scoping rules forbid exporting a procedure out of it's scope - detected at compile time and again at runtime}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 Note: Standard ALGOL 68's scoping rules forbids exporting a '''procedure''' (or '''format''') out of it's scope (closure).  Hence this specimen will run on [[ELLA ALGOL 68]], but is non-standard.  For a discussion of first-class functions in ALGOL 68 consult ["The Making of Algol 68"](http://www.cs.ru.nl/~kees/home/papers/psi96.pdf) - [[wp:Cornelis_H.A._Koster|C.H.A. Koster]] (1993). <!-- Retrieved April 28, 2007 -->
 
 ```algol68
@@ -2016,7 +2016,7 @@ x(2.3) println  // --> 8.3000000000000007
 
 ## J
 
-See <http://www.jsoftware.com/jwiki/Guides/Lexical_Closure>, including the [[j:Guides/Lexical%20Closure#dissent|dissent]] section.
+See <https://www.jsoftware.com/jwiki/Guides/Lexical_Closure>, including the [[j:Guides/Lexical%20Closure#dissent|dissent]] section.
 
 ```J
 oleg=:1 :0

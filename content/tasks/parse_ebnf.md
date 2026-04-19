@@ -969,7 +969,7 @@ END EBNFScanner.
 ```perl
 #!/usr/bin/perl
 
-use strict;                        # http://www.rosettacode.org/wiki/Parse_EBNF
+use strict;                        # https://www.rosettacode.org/wiki/Parse_EBNF
 use warnings;
 $SIG{__WARN__} = sub { print "\nWARN: @_\n"; exit };
 
@@ -1125,7 +1125,7 @@ __DATA__
 
     number = digit { digit } .
     digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
-} 'http://www.rosettacode.org/wiki/Parse_EBNF'
+} 'https://www.rosettacode.org/wiki/Parse_EBNF'
 #tests
     2
     2*3 + 4/23 - 7
@@ -1202,10 +1202,10 @@ ERROR:     <**ERROR **>your ad here
 
     number = digit { digit } .
     digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
-} 'http://www.rosettacode.org/wiki/Parse_EBNF'
+} 'https://www.rosettacode.org/wiki/Parse_EBNF'
 
        title: Arithmetic expressions
-     comment: http://www.rosettacode.org/wiki/Parse_EBNF
+     comment: https://www.rosettacode.org/wiki/Parse_EBNF
 start symbol: expr
 
 try:     2

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-How about [imterpreters of Brainfuck on Brainfuck](http://esolangs.org/wiki/Brainfuck#Self-Interpreters) ?
+How about [imterpreters of Brainfuck on Brainfuck](https://esolangs.org/wiki/Brainfuck#Self-Interpreters) ?
 :You're welcome to bring examples in from there as long as you check for license compatibility and probably give credit. --[[User:Mwn3d|Mwn3d]] 13:21, 1 March 2011 (UTC)
 :: The place for something like that would be [[Execute Brainfuck/Brainfuck]]. I favor reimplementation over wholesale copying, and the copy case needs appropriate citation and license from the copyright holder. --[[User:Short Circuit|Michael Mol]] 13:47, 1 March 2011 (UTC)
 Hey, the author of the Potion example here. Sorry that my example was erroneous -- I had only tested it on a basic hello-world program (!). Anyways, Potion might have some bugs that affects the solution, but clearly a part of the error lies in the logic, as a Python translation also doesn't seem to work as desired. Here is the Python translation:

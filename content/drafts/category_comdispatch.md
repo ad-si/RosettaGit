@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-* [discussion](http://www.autohotkey.com/forum/topic66559.html)
+* [discussion](https://www.autohotkey.com/forum/topic66559.html)
 * [download v1.0](http://www.autohotkey.net/~fincs/ComDispatch_v1.0.zip)
-* author: [fincs](http://www.autohotkey.com/forum/author-fincs.html)
+* author: [fincs](https://www.autohotkey.com/forum/author-fincs.html)

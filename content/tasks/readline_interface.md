@@ -774,7 +774,7 @@ int main(int argc, char **argv)
 ```
 
 
-<small>Code thanks to [Bill Allombert](http://pari.math.u-bordeaux.fr/archives/pari-dev-1002/msg00023.html)</small>
+<small>Code thanks to [Bill Allombert](https://pari.math.u-bordeaux.fr/archives/pari-dev-1002/msg00023.html)</small>
 
 
 ## Perl
@@ -1007,7 +1007,7 @@ Sample session:
 
 ## Racket
 
-Racket's has a readline interface which is not used by default due to its license.  This includes the usual readline-style editing, and tab-completion for Racket bindings.  It is possible to use it as a library, or as a REPL convenience (both uses described [in the documentation](http://docs.racket-lang.org/readline/)) -- but it is better to use [xrepl](http://docs.racket-lang.org/xrepl/) which provides an enhanced command-line REPL and includes the readline interaction.
+Racket's has a readline interface which is not used by default due to its license.  This includes the usual readline-style editing, and tab-completion for Racket bindings.  It is possible to use it as a library, or as a REPL convenience (both uses described [in the documentation](https://docs.racket-lang.org/readline/)) -- but it is better to use [xrepl](https://docs.racket-lang.org/xrepl/) which provides an enhanced command-line REPL and includes the readline interaction.
 
 
 ## REXX

@@ -32,7 +32,7 @@ Probably needs more work. Feel free to massage! –[[User:Dkf|Donal Fellows]] 16
 
 == R- shows up under tasks not implemented ==
 
-<http://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_R> shows that this is not implemented in R, but it is.
+<https://rosettacode.org/wiki/Reports:Tasks_not_implemented_in_R> shows that this is not implemented in R, but it is.
 
 How can I fix this?
 : Seems you hit a caching issue. That page is updated on-demand, but only once every 15 minutes at most (Otherwise, the server wouldn't be able to handle the load). I just looked at it, and it looks fine. --[[User:Short Circuit|Michael Mol]] 14:45, 1 March 2010 (UTC)

@@ -723,7 +723,7 @@ d(a[], b[], 3)
 v Space for variables
 v Space for vector1
 v Space for vector2
-v http://rosettacode.org/wiki/Dot_product
+v https://rosettacode.org/wiki/Dot_product
                                             >00pv
 >>55+":htgneL",,,,,,,,&:0`                  |
 v,,,,,,,"Length can't be negative."+55<

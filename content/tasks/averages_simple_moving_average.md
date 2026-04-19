@@ -427,9 +427,9 @@ Inserting 1 into max-5:  3.00000E+00
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
+<!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8.8d.fc9.i386](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}} -->
 Note: This following code is a direct translation of the [[Average/Simple_moving_average#C|C]] code sample.  It mimics C's var_list implementation, and so it probably isn't the most natural way of dong this actual task in '''ALGOL 68'''.
 
 ```Algol68
@@ -544,7 +544,7 @@ next number 1.000000, SMA_3 = 2.000000, SMA_5 = 3.000000
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276695.html#276695)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276695.html#276695)
 For Integers:
 
 ```AutoHotkey
@@ -2420,7 +2420,7 @@ In that context, moving average is expressed very concisely in J as '''<code>(+/
 ```
 
 
-In the context of the task, we need to produce a stateful function to consume streams.  Since J does not have native lexical closure, we need to [implement it](http://www.jsoftware.com/jwiki/Guides/Lexical%20Closure).  Thus the [[Talk:Averages/Simple_moving_average#J_Implementation|streaming solution]] is more complex:
+In the context of the task, we need to produce a stateful function to consume streams.  Since J does not have native lexical closure, we need to [implement it](https://www.jsoftware.com/jwiki/Guides/Lexical%20Closure).  Thus the [[Talk:Averages/Simple_moving_average#J_Implementation|streaming solution]] is more complex:
 
 ```j
    lex =:  1 :'(a[n__a=.m#_.[a=.18!:3$~0)&(4 :''(+/%#)(#~1-128!:5)n__x=.1|.!.y n__x'')'
@@ -2579,7 +2579,7 @@ Next number = 1, SMA_3 = 2, SMA_5 = 3
 
 ### Using reduce/filter
 
-[JS Fiddle](http://jsfiddle.net/79xe381e/)
+[JS Fiddle](https://jsfiddle.net/79xe381e/)
 
 
 ```javascript

@@ -1,6 +1,6 @@
 ; 100 DOORS in  6502 assembly language for: http://www.6502asm.com/beta/index.html
 ; Written for the original MOS Technology, Inc. NMOS version of the 6502, but should work with any version.
-; Based on BASIC QB64 unoptimized version: http://rosettacode.org/wiki/100_doors#BASIC
+; Based on BASIC QB64 unoptimized version: https://rosettacode.org/wiki/100_doors#BASIC
 ;
 ; Notes:
 ;    Doors array[1..100] is at $0201..$0264. On the specified emulator, this is in video memory, so tbe results will

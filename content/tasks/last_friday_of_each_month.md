@@ -231,7 +231,7 @@ DW       DS     D                  packed (PL8) 15num
 ## Ada
 
 
-Uses GNAT. Applicable to any day of the week, cf. <http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Ada>.
+Uses GNAT. Applicable to any day of the week, cf. <https://rosettacode.org/wiki/Find_last_sunday_of_each_month#Ada>.
 
 
 ```Ada
@@ -1610,8 +1610,8 @@ link datetime, printf
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[datetime.icn provides julian and IsLeapYear](http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[datetime.icn provides julian and IsLeapYear](https://www.cs.arizona.edu/icon/library/src/procs/datetime.icn)
 
 ```txt
 last_fridays.exe 2012
@@ -2699,7 +2699,7 @@ Sample usage:
 ## OCaml
 
 
-Using the module [Unix](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html) from the standard OCaml library:
+Using the module [Unix](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html) from the standard OCaml library:
 
 
 ```ocaml
@@ -4048,9 +4048,9 @@ object Fridays {
 
 ## Seed7
 
-Uses the libraries [time.s7i](http://seed7.sourceforge.net/libraries/time.htm) and
-[duration.s7i](http://seed7.sourceforge.net/libraries/duration.htm).
-Applicable to any day of the week, cf. <http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Seed7>.
+Uses the libraries [time.s7i](https://seed7.sourceforge.net/libraries/time.htm) and
+[duration.s7i](https://seed7.sourceforge.net/libraries/duration.htm).
+Applicable to any day of the week, cf. <https://rosettacode.org/wiki/Find_last_sunday_of_each_month#Seed7>.
 
 
 ```seed7

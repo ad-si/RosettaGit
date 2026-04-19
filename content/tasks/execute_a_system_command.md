@@ -1262,7 +1262,7 @@ main = system "ls"
 ```
 
 
-See also: the [System.Process](http://www.haskell.org/ghc/docs/latest/html/libraries/process-1.2.0.0/System-Process.html) module
+See also: the [System.Process](https://www.haskell.org/ghc/docs/latest/html/libraries/process-1.2.0.0/System-Process.html) module
 
 
 ## HicEst
@@ -1371,7 +1371,7 @@ stdout   =:  stdin spawn 'grep blah'
 ```
 
 
-Note that on unix systems, you can also use the [2!:x family](http://www.jsoftware.com/help/dictionary/dx002.htm) of foreign verbs to execute system commands.
+Note that on unix systems, you can also use the [2!:x family](https://www.jsoftware.com/help/dictionary/dx002.htm) of foreign verbs to execute system commands.
 
 
 ## Java
@@ -1547,7 +1547,7 @@ print(options.output);
 
 ## Julia
 
-The Julia manual has an excellent [section](http://docs.julialang.org/en/release-0.3/manual/running-external-programs/) on this topic, which is worth a read.  The short answer on Linux is:
+The Julia manual has an excellent [section](https://docs.julialang.org/en/release-0.3/manual/running-external-programs/) on this topic, which is worth a read.  The short answer on Linux is:
 
 ```Julia
 run(`ls`)
@@ -2170,7 +2170,7 @@ System cmd("pause")
 ```
 
 
-A more sophisticated example can be found [here](http://www.mozart-oz.org/home/doc/op/node17.html).
+A more sophisticated example can be found [here](https://www.mozart-oz.org/home/doc/op/node17.html).
 
 
 ## PARI/GP
@@ -2215,8 +2215,8 @@ exec "ls";             # replace current process with another
 
 
 See also:
-<http://perldoc.perl.org/perlipc.html#Using-open()-for-IPC>
-<http://perldoc.perl.org/IPC/Open3.html>
+<https://perldoc.perl.org/perlipc.html#Using-open()-for-IPC>
+<https://perldoc.perl.org/IPC/Open3.html>
 
 
 ## Perl 6
@@ -2656,8 +2656,8 @@ Process("ls", Seq("-oa"))!
 System commands can make a program unportable.
 Unix, Linux and BSD use the command ''ls'', while Windows respectively DOS use the command ''dir''.
 The format written by ''ls'' respectively ''dir'' depends on operating system and locale.
-The library [osfiles.s7i](http://seed7.sourceforge.net/libraries/osfiles.htm) defines
-the function [readDir](http://seed7.sourceforge.net/libraries/osfiles.htm#readDir%28in_string%29),
+The library [osfiles.s7i](https://seed7.sourceforge.net/libraries/osfiles.htm) defines
+the function [readDir](https://seed7.sourceforge.net/libraries/osfiles.htm#readDir%28in_string%29),
 which reads the contents of a directory in a portable way. ''ReadDir'' works independend
 from operating system and locale and supports also Unicode filenames.
 Anyway, the task was to use a system command, so here is the example:
@@ -2783,7 +2783,7 @@ In Windows:
 
 ## Stata
 
-Stata has a built-in '''[dir](http://www.stata.com/help.cgi?dir)''' command. However, it's also possible to run arbitrary external programs using the '''[shell](http://www.stata.com/help.cgi?shell)''' or '''winexec''' commands.
+Stata has a built-in '''[dir](https://www.stata.com/help.cgi?dir)''' command. However, it's also possible to run arbitrary external programs using the '''[shell](https://www.stata.com/help.cgi?shell)''' or '''winexec''' commands.
 
 The command '''!''' (or equivalently '''shell'''), opens a Windows console to run the command, while '''winexec''' does not.
 

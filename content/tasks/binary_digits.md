@@ -329,7 +329,7 @@ strout      = $cb1e
 ```6502asm
 
 ; C64 - Binary digits
-;       http://rosettacode.org/wiki/Binary_digits
+;       https://rosettacode.org/wiki/Binary_digits
 
 ; *** labels ***
 
@@ -543,8 +543,8 @@ o_form("/x2/\n", 9000);
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1.}}
-{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.3.3](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.3).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to use of '''format'''[ted] ''transput''.}}
 '''File: Binary_digits.a68'''
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -890,8 +890,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -4367,7 +4367,7 @@ Examples:
     10001100101000
 
 
-Explanation of program flow and image download link on my user page: <http://rosettacode.org/wiki/User:Albedo#Binary_Digits>
+Explanation of program flow and image download link on my user page: <https://rosettacode.org/wiki/User:Albedo#Binary_Digits>
 
 
 ## PL/I
@@ -5242,7 +5242,7 @@ res2: String = 10001100101000
 
 ## Seed7
 
-This example uses the [radix](http://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29) operator to write a number in binary.
+This example uses the [radix](https://seed7.sourceforge.net/libraries/integer.htm#%28in_integer%29radix%28in_integer%29) operator to write a number in binary.
 
 
 ```seed7

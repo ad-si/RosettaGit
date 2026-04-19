@@ -15,5 +15,5 @@ tags = []
 IBM [Db2 LUW](https://rosettacode.org/wiki/SQL_PL) (for Linux, UNIX and Windows) from version 9.7 supports natively Oracle's PL/SQL. That means, you can create stored procedures in Db2 with PL/SQL language.
 
 ## Citations
-* [Wikipedia:PL/SQL](http://en.wikipedia.org/wiki/PL/SQL)
-* [Oracle 12.2 PL/SQL Manual](http://docs.oracle.com/database/122/LNPLS/toc.htm)
+* [Wikipedia:PL/SQL](https://en.wikipedia.org/wiki/PL/SQL)
+* [Oracle 12.2 PL/SQL Manual](https://docs.oracle.com/database/122/LNPLS/toc.htm)

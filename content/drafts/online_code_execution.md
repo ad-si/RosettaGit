@@ -22,12 +22,12 @@ without the need to install something on the own machine.
 
 This are some known websites that allow online code execution:
 
-* [Lua-demo](http://www.lua.org/demo.html) : just [[Lua]], with some canned demo-programs.
+* [Lua-demo](https://www.lua.org/demo.html) : just [[Lua]], with some canned demo-programs.
 * [CodePad.org](http://codepad.org/) : C C++ D Haskell Lua OCaml PHP Perl Python Ruby Scheme Tcl
-This can also be used to share/discuss code, much like [PasteBin.com](http://pastebin.com/).
+This can also be used to share/discuss code, much like [PasteBin.com](https://pastebin.com/).
 
-* [Go](http://golang.org) and  [Go-playground](http://play.golang.org) : can run only [[Go]]-programs, with some canned demo-programs.
-* [ideone.com](http://ideone.com) : Online-Compiler
+* [Go](https://golang.org) and  [Go-playground](https://play.golang.org) : can run only [[Go]]-programs, with some canned demo-programs.
+* [ideone.com](https://ideone.com) : Online-Compiler
 * [jsfiddle.net](https://jsfiddle.net) : JavaScript, Ajax  etc.
 * [tutorialspoint.com / codingground](http://www.tutorialspoint.com/codingground.htm)
 ...

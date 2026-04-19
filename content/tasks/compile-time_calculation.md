@@ -554,7 +554,7 @@ With that, here are ways to do compile-time evaluation:
 
 The <code>factorial</code> function must be defined before any use of the <code>ct-factorial</code> macro is evaluated or compiled.
 
-If the data resulting from the compile-time calculation is not necessarily a number or other [self-evaluating object](http://www.lispworks.com/documentation/HyperSpec/Body/03_abac.htm), as it is in the factorial case, then the macro must quote it to avoid it being interpreted as code (a form):
+If the data resulting from the compile-time calculation is not necessarily a number or other [self-evaluating object](https://www.lispworks.com/documentation/HyperSpec/Body/03_abac.htm), as it is in the factorial case, then the macro must quote it to avoid it being interpreted as code (a form):
 
 
 ```lisp
@@ -567,7 +567,7 @@ If the data resulting from the compile-time calculation is not necessarily a num
 ```
 
 
-It is also possible to have a value [computed at ''load time''](http://www.lispworks.com/documentation/HyperSpec/Body/s_ld_tim.htm), when the code is loaded into the process, rather than at compile time; this is useful if the value to be computed contains objects that do not yet exist at compile time, or the value might vary due to properties which might be different while yet using the same compiled program (e.g. pathnames), but it is still constant for one execution of the program:
+It is also possible to have a value [computed at ''load time''](https://www.lispworks.com/documentation/HyperSpec/Body/s_ld_tim.htm), when the code is loaded into the process, rather than at compile time; this is useful if the value to be computed contains objects that do not yet exist at compile time, or the value might vary due to properties which might be different while yet using the same compiled program (e.g. pathnames), but it is still constant for one execution of the program:
 
 
 ```lisp
@@ -638,7 +638,7 @@ NIL
 
 ## D
 
-The D compiler is able to run many functions at compile-time [Compile Time Function Execution (CTFE)](http://dlang.org/function.html#interpretation):
+The D compiler is able to run many functions at compile-time [Compile Time Function Execution (CTFE)](https://dlang.org/function.html#interpretation):
 
 ```d
 long fact(in long x) pure nothrow @nogc {
@@ -1349,7 +1349,7 @@ produces a listing file containing
 The PicoLisp "compiler" is the so-called "reader", which converts the
 human-readable source code into nested internal pointer structures. When it
 runs, arbitrary expressions can be executed with the backqoute and tilde
-operators ([read macros](http://software-lab.de/doc/ref.html#macro-io)).
+operators ([read macros](https://software-lab.de/doc/ref.html#macro-io)).
 
 ```PicoLisp
 (de fact (N)

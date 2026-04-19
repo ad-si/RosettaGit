@@ -6657,7 +6657,7 @@ given lc prompt("Done? ") {
 
 <tt>when</tt> blocks are allowed in any block that topicalizes <tt>$_</tt>, including a
 <tt>for</tt> loop (assuming one of its loop variables is bound to <tt>$_</tt>)
-or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [Synopsis 4](http://perlcabal.org/syn/S04.html#Switch_statements).
+or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [Synopsis 4](https://perlcabal.org/syn/S04.html#Switch_statements).
 
 There are also statement modifier forms of all of the above.
 
@@ -6878,8 +6878,8 @@ switch ($i)
 
 ### See Also
 
-* [php.net:Control Structures](http://www.php.net/manual/en/language.control-structures.php)
-* [php.net:Control Structures: Switch](http://www.php.net/manual/en/control-structures.switch.php)
+* [php.net:Control Structures](https://www.php.net/manual/en/language.control-structures.php)
+* [php.net:Control Structures: Switch](https://www.php.net/manual/en/control-structures.switch.php)
 
 
 ## PicoLisp
@@ -7542,7 +7542,7 @@ In general a dispatch table or class/object abstraction (using dynamic method ov
 ## Racket
 
 
-===[if](http://docs.racket-lang.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29)===
+===[if](https://docs.racket-lang.org/reference/if.html#%28form._%28%28quote._~23~25kernel%29._if%29%29)===
 If-expressions in Racket must have both branches
 
 ```racket
@@ -7554,7 +7554,7 @@ If-expressions in Racket must have both branches
 ```
 
 
-===[when/unless](http://docs.racket-lang.org/reference/when_unless.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._when%29%29)===
+===[when/unless](https://docs.racket-lang.org/reference/when_unless.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._when%29%29)===
 One-sided conditional expressions use "when" and "unless".  These are more convenient for side-effects since they have an implicit "begin" around their body, and you can also include new definitions
 
 ```racket
@@ -7566,7 +7566,7 @@ One-sided conditional expressions use "when" and "unless".  These are more conve
 ```
 
 
-===[cond](http://docs.racket-lang.org/reference/if.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._cond%29%29)===
+===[cond](https://docs.racket-lang.org/reference/if.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._cond%29%29)===
 Used for multiple conditions:
 
 ```racket
@@ -7582,7 +7582,7 @@ Used for multiple conditions:
 ```
 
 
-===[case](http://docs.racket-lang.org/reference/case.html#%28form._%28%28lib._racket%2Fprivate%2Fmore-scheme..rkt%29._case%29%29)===
+===[case](https://docs.racket-lang.org/reference/case.html#%28form._%28%28lib._racket%2Fprivate%2Fmore-scheme..rkt%29._case%29%29)===
 Similar to a "switch" statement in other languages
 
 ```racket
@@ -10086,7 +10086,7 @@ The <xsl:choose>, <xsl:when>, and <xsl:otherwise> elements allow more general co
 ```
 
 
-The XPath expressions in the <code>test</code> attribute are evaluated in boolean context (converted as if by [the boolean function](http://www.w3.org/TR/xpath/#function-boolean) if necessary).
+The XPath expressions in the <code>test</code> attribute are evaluated in boolean context (converted as if by [the boolean function](https://www.w3.org/TR/xpath/#function-boolean) if necessary).
 
 
 ```xml

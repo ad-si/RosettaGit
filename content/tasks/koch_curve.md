@@ -96,7 +96,7 @@ end
 
 ## C
 
-Interactive program which takes the width, height (of the Graphics window) and recursion level of the Koch curve as inputs, prints out usage on incorrect invocation. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Interactive program which takes the width, height (of the Graphics window) and recursion level of the Koch curve as inputs, prints out usage on incorrect invocation. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -385,7 +385,7 @@ svgFromPoints w xys =
       points =
         (unwords . fmap (((++) . showN . fst) <*> ((' ' :) . showN . snd))) xys
   in unlines
-       [ "<svg xmlns=\"http://www.w3.org/2000/svg\""
+       [ "<svg xmlns=\"https://www.w3.org/2000/svg\""
        , unwords ["width=\"512\" height=\"512\" viewBox=\"5 5", sw, sw, "\"> "]
        , "<path d=\"M" ++ points ++ "\" "
        , "stroke-width=\"2\" stroke=\"red\" fill=\"transparent\"/>"
@@ -521,7 +521,7 @@ Generates SVG. To view, save to a file with the extension '.svg', and open in a 
 
     // svgFromPoints :: Int -> [(Int, Int)] -> String
     const svgFromPoints = w => ps => [
-        '<svg xmlns="http://www.w3.org/2000/svg"',
+        '<svg xmlns="https://www.w3.org/2000/svg"',
         `width="500" height="500" viewBox="5 5 ${w} ${w}">`,
         `<path d="M${
         ps.flatMap(p => p.map(n => n.toFixed(2))).join(' ')
@@ -1223,7 +1223,7 @@ def svgFromPoints(w):
             xys
         ))
         return '\n'.join(
-            ['<svg xmlns="http://www.w3.org/2000/svg"',
+            ['<svg xmlns="https://www.w3.org/2000/svg"',
              f'width="512" height="512" viewBox="5 5 {w} {w}">',
              f'<path d="M{xs}" ',
              'stroke-width="2" stroke="red" fill="transparent"/>',
@@ -1638,7 +1638,7 @@ Output image: [Koch snowflake](https://github.com/trizen/rc/blob/master/img/koch
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var width=512, height=512, img=PPM(width,height,0xFfffFF);   // white canvas

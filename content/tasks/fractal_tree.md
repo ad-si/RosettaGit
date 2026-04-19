@@ -89,7 +89,7 @@ Generate and draw a fractal tree.
 
 ## AutoHotkey
 
-[Image](http://i.imgur.com/H7iJOde.png) - Link, since uploads seem to be disabled currently.
+[Image](https://i.imgur.com/H7iJOde.png) - Link, since uploads seem to be disabled currently.
 ```AutoHotkey
 #SingleInstance, Force
 #NoEnv
@@ -224,7 +224,7 @@ putline:
 
 ```Run BASIC
  'Fractal Tree - for Run Basic - 29 Apr 2018
- 'from BASIC256 - http://rosettacode.org/wiki/Fractal_tree#BASIC256
+ 'from BASIC256 - https://rosettacode.org/wiki/Fractal_tree#BASIC256
  'copy this text and go to http://www.runbasic.com
 
 WindowWidth  = 500  'Run Basic max size 800 x 600
@@ -821,7 +821,7 @@ void tree(in double x, in double y, in double length, in double angle) {
 
 void main() {
     "<svg width='100%' height='100%' version='1.1'
-     xmlns='http://www.w3.org/2000/svg'>".writeln;
+     xmlns='https://www.w3.org/2000/svg'>".writeln;
     tree(width / 2.0, height, length, 3 * PI / 2);
     "</svg>".writeln;
 }
@@ -947,9 +947,9 @@ let rec tree x y length angle =
 
 printfn "<?xml version='1.0' encoding='utf-8' standalone='no'?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
-'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%%' height='100%%' version='1.1'
-xmlns='http://www.w3.org/2000/svg'>"
+xmlns='https://www.w3.org/2000/svg'>"
 tree (width/2.) height length (3.*pi/2.)
 printfn "</svg>"
 ```
@@ -1294,7 +1294,7 @@ end
 ```
 
 
-[WOpen provides graphics I/O](http://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn)
+[WOpen provides graphics I/O](https://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn)
 
 ## J
 
@@ -1454,7 +1454,7 @@ def main(width; height; len; scale):
   ;
 
   "<svg width='100%' height='100%' version='1.1'
-        xmlns='http://www.w3.org/2000/svg'>",
+        xmlns='https://www.w3.org/2000/svg'>",
         tree(width / 2; height; len; 3 * PI / 2),
   "</svg>"
 ;
@@ -1491,9 +1491,9 @@ outsvg = open("tree.svg", "w")
 write(outsvg,
     """<?xml version='1.0' encoding='utf-8' standalone='no'?>
     <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
-    'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+    'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
     <svg width='100%%' height='100%%' version='1.1'
-    xmlns='http://www.w3.org/2000/svg'>\n""")
+    xmlns='https://www.w3.org/2000/svg'>\n""")
 
 tree(outsvg, 0.5 * width, height, trunklength, startingangle)
 
@@ -1925,7 +1925,7 @@ FractalTree(15,1500);   \\FracTree3.png
 
 ## Perl
 
-using the [GD::Simple](http://search.cpan.org/~lds/GD-2.45/GD/Simple.pm) module.
+using the [GD::Simple](https://metacpan.org/~lds/GD-2.45/GD/Simple.pm) module.
 
 ```perl
 use GD::Simple;
@@ -1974,9 +1974,9 @@ my $length = 400; # trunk size
 
 say "<?xml version='1.0' encoding='utf-8' standalone='no'?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
-'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+'https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%' height='100%' version='1.1'
-xmlns='http://www.w3.org/2000/svg'>";
+xmlns='https://www.w3.org/2000/svg'>";
 
 tree($width/2, $height, $length, 3*pi/2);
 
@@ -2846,7 +2846,7 @@ const proc: main is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/graphic.htm#fractree>
+Original source: <https://seed7.sourceforge.net/algorith/graphic.htm#fractree>
 
 
 ## Sidef
@@ -2953,9 +2953,9 @@ In the same style as [[Dragon curve#SVG]]. SVG has no parameterized definitions,
 ```xml
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
+ "https://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="https://www.w3.org/2000/svg"
+     xmlns:xlink="https://www.w3.org/1999/xlink"
      width="400" height="320">
   <style type="text/css"><![CDATA[
     line { stroke: black; stroke-width: .05; }
@@ -3006,7 +3006,7 @@ In the same style as [[Dragon curve#SVG]]. SVG has no parameterized definitions,
 
 ## Swift
 
-[Image](http://i.imgur.com/F8Fyn1i.png) - Link, since uploads seem to be disabled currently.
+[Image](https://i.imgur.com/F8Fyn1i.png) - Link, since uploads seem to be disabled currently.
 In a playground:
 
 ```swift
@@ -3119,9 +3119,9 @@ MODE DATA
 $$ header=*
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
+ "https://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="https://www.w3.org/2000/svg"
+ xmlns:xlink="https://www.w3.org/1999/xlink"
  width="400" height="320">
   <style type="text/css"><![CDATA[
   line { stroke: brown; stroke-width: .05; }
@@ -3229,7 +3229,7 @@ SetVid(3);                      \restore normal text mode
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:FractalTree.zkl.jpg|250px|thumb|right]]
 
 ```zkl

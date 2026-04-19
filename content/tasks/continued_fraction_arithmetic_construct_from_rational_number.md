@@ -1288,7 +1288,7 @@ Note that the continued fractions shown in this task differ from those in the [[
 ### Tacit version 1
 
 
-This version is a modification of an explicit version shown in <http://www.jsoftware.com/jwiki/Essays/Continued%20Fractions> to comply with the task specifications.
+This version is a modification of an explicit version shown in <https://www.jsoftware.com/jwiki/Essays/Continued%20Fractions> to comply with the task specifications.
 
 ```j
 cf=: _1 1 ,@}. (, <.)@%@-/ ::]^:a:@(, <.)@(%&x:/)

@@ -1221,7 +1221,7 @@ END FUNCTION
 
 ## Batch File
 
-Had trouble with this, so called in the gurus at [StackOverflow](http://stackoverflow.com/questions/2680668/what-is-wrong-with-this-recursive-windows-cmd-script-it-wont-do-ackermann-prope). Thanks to Patrick Cuff for pointing out where I was going wrong.
+Had trouble with this, so called in the gurus at [StackOverflow](https://stackoverflow.com/questions/2680668/what-is-wrong-with-this-recursive-windows-cmd-script-it-wont-do-ackermann-prope). Thanks to Patrick Cuff for pointing out where I was going wrong.
 
 ```dos
 ::Ackermann.cmd
@@ -2717,7 +2717,7 @@ note
 		second EIS for more information.
 		]"
 	EIS: "name=Ackermann_function", "protocol=URI", "tag=rosetta_code",
-		"src=http://rosettacode.org/wiki/Ackermann_function"
+		"src=https://rosettacode.org/wiki/Ackermann_function"
 	EIS: "name=eis_protocols", "protocol=URI", "tag=eiffel_docs",
 		"src=https://docs.eiffel.com/book/eiffelstudio/protocols"
 
@@ -4030,7 +4030,7 @@ class RosettaDemo
 
 =={{header|Icon}} and {{header|Unicon}}==
 {{libheader|Icon Programming Library}}
-Taken from the public domain Icon Programming Library's [acker in memrfncs](http://www.cs.arizona.edu/icon/library/procs/memrfncs.htm),
+Taken from the public domain Icon Programming Library's [acker in memrfncs](https://www.cs.arizona.edu/icon/library/procs/memrfncs.htm),
 written by Ralph E. Griswold.
 
 ```Icon
@@ -6308,7 +6308,7 @@ let a m n =
 
 ###  Arbitrary precision
 
-With arbitrary-precision integers ([Big_int module](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html)):
+With arbitrary-precision integers ([Big_int module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html)):
 
 ```ocaml
 open Big_int
@@ -7421,7 +7421,7 @@ Rendered as wikitable:
 
 |}
 
-This is a naive implementation that does not use any optimization. Find the explanation at <http://rosettacode.org/wiki/User:Albedo>. Computing the Ackermann function for (4,1) is possible, but takes quite a while because the stack grows very fast to large dimensions.
+This is a naive implementation that does not use any optimization. Find the explanation at <https://rosettacode.org/wiki/User:Albedo>. Computing the Ackermann function for (4,1) is possible, but takes quite a while because the stack grows very fast to large dimensions.
 
 Example output:
 
@@ -8679,7 +8679,7 @@ const func integer: ackermann (in integer: m, in integer: n) is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#ackermann>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#ackermann>
 
 
 ## SETL
@@ -9121,7 +9121,7 @@ If we want to explore the higher reaches of the world of Ackermann's function, w
 ```tcl
 package require Tcl 8.6
 
-# A memoization engine, from http://wiki.tcl.tk/18152
+# A memoization engine, from https://wiki.tcl-lang.org/18152
 oo::class create cache {
     filter Memoize
     variable ValueCache
@@ -9801,7 +9801,7 @@ Here it is as part of a template
 ```xml
 
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:template match="arguments">
       <xsl:for-each select="args">
@@ -10142,8 +10142,8 @@ for(m = 0; m <= 3; m++) {
 
 ## ZED
 
-Source -> <http://ideone.com/53FzPA>
-Compiled -> <http://ideone.com/OlS7zL>
+Source -> <https://ideone.com/53FzPA>
+Compiled -> <https://ideone.com/OlS7zL>
 
 ```zed
 (A) m n

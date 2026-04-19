@@ -18,7 +18,7 @@ I added some C/C++ code for the Win32 API.  My reasoning is that--parallelizatio
 :::* DeleteCriticalSection destroys it,
 :::* EnterCriticalSection acquires it,
 :::* LeaveCriticalSection releases it.
-:::Source: [MSN](http://msdn.microsoft.com/en-us/library/ms682530(VS.85).aspx) --[[User:Dmitry-kazakov|Dmitry-kazakov]] 08:59, 4 November 2008 (UTC)
+:::Source: [MSN](https://msdn.microsoft.com/en-us/library/ms682530(VS.85).aspx) --[[User:Dmitry-kazakov|Dmitry-kazakov]] 08:59, 4 November 2008 (UTC)
 
 ==Is this a Task?==
 Then it should follow the format of the other tasks (headings). If it is an encyclopaedic entry then it should loose the task box? --[[User:Paddy3118|Paddy3118]] 05:57, 14 July 2009 (UTC)

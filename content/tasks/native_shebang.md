@@ -767,7 +767,7 @@ Hello, world!
 
 ## Racket
 
-Racket has [<tt>raco: Racket Command Line Tools</tt>](http://docs.racket-lang.org/raco/index.html?q=raco)
+Racket has [<tt>raco: Racket Command Line Tools</tt>](https://docs.racket-lang.org/raco/index.html?q=raco)
 which can be used to compile to bytecode or compile to standalone executables (along with a whole load of
 other fun stuff to do with packages, unit testing and the likes).
 

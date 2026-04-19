@@ -64,7 +64,7 @@ is language-dependent and left to the programmer, but the code should be clear e
 Extra credit is given for clear error diagnostics.
 
 *   Here is the official standard:     <https://tools.ietf.org/html/rfc3986>,
-*   and here is a simpler   BNF:     <http://www.w3.org/Addressing/URL/5_URI_BNF.html>.
+*   and here is a simpler   BNF:     <https://www.w3.org/Addressing/URL/5_URI_BNF.html>.
 
 
 ;Test cases:
@@ -87,7 +87,7 @@ According to T. Berners-Lee
 '''other URLs that must be parsed include:'''
 :*   <nowiki> jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true </nowiki>
 :*   <nowiki> ftp://ftp.is.co.za/rfc/rfc1808.txt                                      </nowiki>
-:*   <nowiki> <http://www.ietf.org/rfc/rfc2396.txt#header1>                             </nowiki>
+:*   <nowiki> <https://www.ietf.org/rfc/rfc2396.txt#header1>                             </nowiki>
 :*   <nowiki> ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two               </nowiki>
 :*   <nowiki> mailto:John.Doe@example.com                                             </nowiki>
 :*   <nowiki> news:comp.infosystems.www.servers.unix                                  </nowiki>
@@ -132,7 +132,7 @@ BEGIN test uri parser( "foo://example.com:8042/over/there?name=ferret#nose"     
     ; test uri parser( "urn:example:animal:ferret:nose"                                          )
     ; test uri parser( "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true" )
     ; test uri parser( "ftp://ftp.is.co.za/rfc/rfc1808.txt"                                      )
-    ; test uri parser( "http://www.ietf.org/rfc/rfc2396.txt#header1"                             )
+    ; test uri parser( "https://www.ietf.org/rfc/rfc2396.txt#header1"                             )
     ; test uri parser( "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two"               )
     ; test uri parser( "mailto:John.Doe@example.com"                                             )
     ; test uri parser( "news:comp.infosystems.www.servers.unix"                                  )
@@ -169,7 +169,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt:
         host: ftp.is.co.za
         path: /rfc/rfc1808.txt
 
-http://www.ietf.org/rfc/rfc2396.txt#header1:
+https://www.ietf.org/rfc/rfc2396.txt#header1:
       scheme: http
         host: www.ietf.org
         path: /rfc/rfc2396.txt
@@ -280,7 +280,7 @@ namespace RosettaUrlParse
             ParseUrl("urn:example:animal:ferret:nose");
             ParseUrl("jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true");
             ParseUrl("ftp://ftp.is.co.za/rfc/rfc1808.txt");
-            ParseUrl("http://www.ietf.org/rfc/rfc2396.txt#header1");
+            ParseUrl("https://www.ietf.org/rfc/rfc2396.txt#header1");
             ParseUrl("ldap://[2001:db8::7]/c=GB?objectClass?one");
             ParseUrl("mailto:John.Doe@example.com");
             ParseUrl("news:comp.infosystems.www.servers.unix");
@@ -304,7 +304,7 @@ test_cases = [
   "urn:example:animal:ferret:nose",
   "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
   "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-  "http://www.ietf.org/rfc/rfc2396.txt#header1",
+  "https://www.ietf.org/rfc/rfc2396.txt#header1",
   "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
   "mailto:John.Doe@example.com",
   "news:comp.infosystems.www.servers.unix",
@@ -344,7 +344,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
 %URI{authority: "ftp.is.co.za", fragment: nil, host: "ftp.is.co.za",
  path: "/rfc/rfc1808.txt", port: 21, query: nil, scheme: "ftp", userinfo: nil}
 
-http://www.ietf.org/rfc/rfc2396.txt#header1
+https://www.ietf.org/rfc/rfc2396.txt#header1
 %URI{authority: "www.ietf.org", fragment: "header1", host: "www.ietf.org",
  path: "/rfc/rfc2396.txt", port: 80, query: nil, scheme: "http", userinfo: nil}
 
@@ -416,7 +416,7 @@ urisFromString """
     urn:example:animal:ferret:nose
     jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
     ftp://ftp.is.co.za/rfc/rfc1808.txt
-    http://www.ietf.org/rfc/rfc2396.txt#header1
+    https://www.ietf.org/rfc/rfc2396.txt#header1
     ldap://[2001:db8::7]/c=GB?objectClass?one
     mailto:John.Doe@example.com
     news:comp.infosystems.www.servers.unix
@@ -459,7 +459,7 @@ URI:           ftp://ftp.is.co.za/rfc/rfc1808.txt
      port:      21
      path:      /rfc/rfc1808.txt
 
-URI:           <http://www.ietf.org/rfc/rfc2396.txt#header1>
+URI:           <https://www.ietf.org/rfc/rfc2396.txt#header1>
      scheme:    http
      host:      www.ietf.org
      port:      80
@@ -520,7 +520,7 @@ func main() {
 		"urn:example:animal:ferret:nose",
 		"jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
 		"ftp://ftp.is.co.za/rfc/rfc1808.txt",
-		"http://www.ietf.org/rfc/rfc2396.txt#header1",
+		"https://www.ietf.org/rfc/rfc2396.txt#header1",
 		"ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
 		"mailto:John.Doe@example.com",
 		"news:comp.infosystems.www.servers.unix",
@@ -604,7 +604,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
     Scheme: ftp
     Host: ftp.is.co.za
     Path: /rfc/rfc1808.txt
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
     Scheme: http
     Host: www.ietf.org
     Path: /rfc/rfc2396.txt
@@ -668,7 +668,7 @@ import java.net.URI
     "urn:example:animal:ferret:nose",
     "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
     "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-    "http://www.ietf.org/rfc/rfc2396.txt#header1",
+    "https://www.ietf.org/rfc/rfc2396.txt#header1",
     "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
     "mailto:John.Doe@example.com",
     "news:comp.infosystems.www.servers.unix",
@@ -727,7 +727,7 @@ Parsing ftp://ftp.is.co.za/rfc/rfc1808.txt
     query    = null
     fragment = null
 
-Parsing <http://www.ietf.org/rfc/rfc2396.txt#header1>
+Parsing <https://www.ietf.org/rfc/rfc2396.txt#header1>
     scheme   = http
     domain   = www.ietf.org
     port     = default
@@ -817,7 +817,7 @@ uriStrings =
     , "urn:example:animal:ferret:nose"
     , "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true"
     , "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-    , "http://www.ietf.org/rfc/rfc2396.txt#header1"
+    , "https://www.ietf.org/rfc/rfc2396.txt#header1"
     , "ldap://[2001:db8::7]/c=GB?objectClass?one"
     , "mailto:John.Doe@example.com"
     , "news:comp.infosystems.www.servers.unix"
@@ -902,7 +902,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
   port =
   path = rfc/rfc1808.txt
 
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
   scheme = http
   domain = www.ietf.org
   port =
@@ -1047,7 +1047,7 @@ Task examples:
 ├──────┼────────────────┤
 │path  │/rfc/rfc1808.txt│
 └──────┴────────────────┘
-   taskparts 'http://www.ietf.org/rfc/rfc2396.txt#header1'
+   taskparts 'https://www.ietf.org/rfc/rfc2396.txt#header1'
 ┌────────┬────────────────┐
 │scheme  │http            │
 ├────────┼────────────────┤
@@ -1270,7 +1270,7 @@ Here is an example, tested against the JavaScript engines of current versions of
   "urn:example:animal:ferret:nose",
   "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
   "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-  "http://www.ietf.org/rfc/rfc2396.txt#header1",
+  "https://www.ietf.org/rfc/rfc2396.txt#header1",
   "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
   "mailto:John.Doe@example.com",
   "news:comp.infosystems.www.servers.unix",
@@ -1332,7 +1332,7 @@ Results of applying this approach in the JavaScript of Safari 8
     "hash": "#header1",
     "host": "www.ietf.org",
     "hostname": "www.ietf.org",
-    "origin": "http://www.ietf.org",
+    "origin": "https://www.ietf.org",
     "pathname": "/rfc/rfc2396.txt",
     "port": "",
     "protocol": "http:",
@@ -1458,7 +1458,7 @@ test = ["foo://example.com:8042/over/there?name=ferret#nose",
         "urn:example:animal:ferret:nose",
         "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
         "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-        "http://www.ietf.org/rfc/rfc2396.txt#header1",
+        "https://www.ietf.org/rfc/rfc2396.txt#header1",
         "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
         "mailto:John.Doe@example.com",
         "news:comp.infosystems.www.servers.unix",
@@ -1533,7 +1533,7 @@ This URI is parsable and appears to be valid.
     specifies_authority:  true
 
 Attempting to parse
-  "http://www.ietf.org/rfc/rfc2396.txt#header1" as a URI:
+  "https://www.ietf.org/rfc/rfc2396.txt#header1" as a URI:
 This URI is parsable and appears to be valid.
     schema:  http
     host:  www.ietf.org
@@ -1663,7 +1663,7 @@ fun main(args: Array<String>){
         "urn:example:animal:ferret:nose",
         "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
         "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-        "http://www.ietf.org/rfc/rfc2396.txt#header1",
+        "https://www.ietf.org/rfc/rfc2396.txt#header1",
         "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
         "mailto:John.Doe@example.com",
         "news:comp.infosystems.www.servers.unix",
@@ -1703,7 +1703,7 @@ Parsing ftp://ftp.is.co.za/rfc/rfc1808.txt
   domain   =  ftp.is.co.za
   path     =  /rfc/rfc1808.txt
 
-Parsing <http://www.ietf.org/rfc/rfc2396.txt#header1>
+Parsing <https://www.ietf.org/rfc/rfc2396.txt#header1>
   scheme   =  http
   domain   =  www.ietf.org
   path     =  /rfc/rfc2396.txt
@@ -1768,7 +1768,7 @@ local tests = {
   'urn:example:animal:ferret:nose',
   'jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true',
   'ftp://ftp.is.co.za/rfc/rfc1808.txt',
-  'http://www.ietf.org/rfc/rfc2396.txt#header1',
+  'https://www.ietf.org/rfc/rfc2396.txt#header1',
   'ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two',
   'mailto:John.Doe@example.com',
   'news:comp.infosystems.www.servers.unix',
@@ -1817,7 +1817,7 @@ URI: ftp://ftp.is.co.za/rfc/rfc1808.txt
   authority: ftp.is.co.za
   scheme: ftp
 
-URI: <http://www.ietf.org/rfc/rfc2396.txt#header1>
+URI: <https://www.ietf.org/rfc/rfc2396.txt#header1>
   fragment: header1
   authority: www.ietf.org
   host: www.ietf.org
@@ -1975,7 +1975,7 @@ Module checkit {
       data "urn:example:animal:ferret:nose"
       data "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true "
       data "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-      data "http://www.ietf.org/rfc/rfc2396.txt#header1"
+      data "https://www.ietf.org/rfc/rfc2396.txt#header1"
       data "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two"
       data "mailto:John.Doe@example.com"
       data "tel:+1-816-555-1212"
@@ -2052,7 +2052,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
 Scheme=ftp
 Domain:ftp.is.co.za
 Path:rfc/rfc1808.txt
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
 Scheme=http
 Domain:www.ietf.org
 Path:rfc/rfc2396.txt
@@ -2083,7 +2083,7 @@ module Checkit {
       Stack New {
             Data "foo://example.com:8042/over/there?name=ferret#nose", "urn:example:animal:ferret:nose"
             Data "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true", "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-            Data "http://www.ietf.org/rfc/rfc2396.txt#header1", "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two"
+            Data "https://www.ietf.org/rfc/rfc2396.txt#header1", "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two"
             Data "mailto:John.Doe@example.com", "news:comp.infosystems.www.servers.unix", "tel:+1-816-555-1212"
             Data "telnet://192.0.2.16:80/", "urn:oasis:names:specification:docbook:dtd:xml:4.1.2", "ssh://alice@example.com"
             Data "https://bob:pass@example.com/place", "http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64"
@@ -2170,7 +2170,7 @@ Checkit
                  "hash": ""
      } ,
      {
-           "uri": "http://www.ietf.org/rfc/rfc2396.txt#header1",
+           "uri": "https://www.ietf.org/rfc/rfc2396.txt#header1",
                  "authority": "www.ietf.org",
                  "userInfo": "",
                  "scheme": "http",
@@ -2332,7 +2332,7 @@ let urls = @["foo://example.com:8042/over/there?name=ferret#nose",
             "urn:example:animal:ferret:nose",
             "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
             "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-            "http://www.ietf.org/rfc/rfc2396.txt#header1",
+            "https://www.ietf.org/rfc/rfc2396.txt#header1",
             "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
             "mailto:John.Doe@example.com",
             "news:comp.infosystems.www.servers.unix",
@@ -2368,7 +2368,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
           Scheme: ftp
         Hostname: ftp.is.co.za
             Path: /rfc/rfc1808.txt
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
           Scheme: http
         Hostname: www.ietf.org
             Path: /rfc/rfc2396.txt
@@ -2433,7 +2433,7 @@ class Test {
       "urn:example:animal:ferret:nose",
       "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
       "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-      "http://www.ietf.org/rfc/rfc2396.txt#header1",
+      "https://www.ietf.org/rfc/rfc2396.txt#header1",
       "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
       "mailto:John.Doe@example.com",
       "news:comp.infosystems.www.servers.unix",
@@ -2475,7 +2475,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
         host='ftp.is.co.za'
         path='/rfc/rfc1808.txt'
 
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
         scheme='http'
         host='www.ietf.org'
         path='/rfc/rfc2396.txt'
@@ -2534,7 +2534,7 @@ for my $uri (do { no warnings 'qw';
                       urn:example:animal:ferret:nose
                       jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
                       ftp://ftp.is.co.za/rfc/rfc1808.txt
-                      <http://www.ietf.org/rfc/rfc2396.txt#header1>
+                      <https://www.ietf.org/rfc/rfc2396.txt#header1>
                       ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
                       mailto:John.Doe@example.com
                       news:comp.infosystems.www.servers.unix
@@ -2573,7 +2573,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
         authority       ftp.is.co.za
         host    ftp.is.co.za
         port    21
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
         scheme  http
         path    /rfc/rfc2396.txt
         fragment        header1
@@ -2622,7 +2622,7 @@ my @test-uris = <
     urn:example:animal:ferret:nose
     jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
     ftp://ftp.is.co.za/rfc/rfc1808.txt
-    <http://www.ietf.org/rfc/rfc2396.txt#header1>
+    <https://www.ietf.org/rfc/rfc2396.txt#header1>
     ldap://[2001:db8::7]/c=GB?objectClass?one
     mailto:John.Doe@example.com
     news:comp.infosystems.www.servers.unix
@@ -2668,7 +2668,7 @@ host:	ftp.is.co.za
 port:	21
 path:	/rfc/rfc1808.txt
 
-URI:	<http://www.ietf.org/rfc/rfc2396.txt#header1>
+URI:	<https://www.ietf.org/rfc/rfc2396.txt#header1>
 scheme:	http
 host:	www.ietf.org
 port:	80
@@ -2742,7 +2742,7 @@ constant tests = {
     "urn:example:animal:ferret:nose",
     "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
     "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-    "http://www.ietf.org/rfc/rfc2396.txt#header1",
+    "https://www.ietf.org/rfc/rfc2396.txt#header1",
     "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
     "mailto:John.Doe@example.com",
     "news:comp.infosystems.www.servers.unix",
@@ -2783,7 +2783,7 @@ scheme : "ftp"
 domain : "ftp.is.co.za"
 path : "/rfc/rfc1808.txt"
 
-"http://www.ietf.org/rfc/rfc2396.txt#header1"
+"https://www.ietf.org/rfc/rfc2396.txt#header1"
 scheme : "http"
 domain : "www.ietf.org"
 path : "/rfc/rfc2396.txt"
@@ -2899,7 +2899,7 @@ foo://example.com:8042/over/there?name=ferret#nose
 urn:example:animal:ferret:nose
 jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
 ftp://ftp.is.co.za/rfc/rfc1808.txt
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
 ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
 mailto:John.Doe@example.com
 news:comp.infosystems.www.servers.unix
@@ -2984,7 +2984,7 @@ urls <- c("foo://example.com:8042/over/there?name=ferret#nose",
           "urn:example:animal:ferret:nose",
           "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
           "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-          "http://www.ietf.org/rfc/rfc2396.txt#header1",
+          "https://www.ietf.org/rfc/rfc2396.txt#header1",
           "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
           "mailto:John.Doe@example.com",
           "news:comp.infosystems.www.servers.unix",
@@ -3034,7 +3034,7 @@ scheme 	: ftp
 domain 	: ftp.is.co.za
 path 	: rfc/rfc1808.txt
 
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
 scheme 	: http
 domain 	: www.ietf.org
 path 	: rfc/rfc2396.txt
@@ -3085,7 +3085,7 @@ parameter 	: a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64
 
 ## Racket
 
-Links: [<code>url</code> structure in Racket documentation](http://docs.racket-lang.org/net/url.html?q=url#%28def._%28%28lib._net%2Furl-structs..rkt%29._url%29%29).
+Links: [<code>url</code> structure in Racket documentation](https://docs.racket-lang.org/net/url.html?q=url#%28def._%28%28lib._net%2Furl-structs..rkt%29._url%29%29).
 
 
 ```racket
@@ -3118,7 +3118,7 @@ Links: [<code>url</code> structure in Racket documentation](http://docs.racket-l
    "urn:example:animal:ferret:nose"
    "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true"
    "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-   "http://www.ietf.org/rfc/rfc2396.txt#header1"
+   "https://www.ietf.org/rfc/rfc2396.txt#header1"
    "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two"
    "mailto:John.Doe@example.com"
    "news:comp.infosystems.www.servers.unix"
@@ -3159,7 +3159,7 @@ host:           "ftp.is.co.za"
 path-absolute?: #t
 path  bits:     ("rfc" "rfc1808.txt")
 
-URL: "http://www.ietf.org/rfc/rfc2396.txt#header1"
+URL: "https://www.ietf.org/rfc/rfc2396.txt#header1"
 --------------------------------------------------
 scheme:         "http"
 host:           "www.ietf.org"
@@ -3217,7 +3217,7 @@ path  bits:     ("oasis:names:specification:docbook:dtd:xml:4.1.2")
 
 ## Ruby
 
-Link to [Ruby Documentation](http://ruby-doc.org/stdlib/libdoc/uri/rdoc/URI.html).
+Link to [Ruby Documentation](https://ruby-doc.org/stdlib/libdoc/uri/rdoc/URI.html).
 
 As you can see in the output below, the URI library doesn't parse all of these as recommended.
 
@@ -3229,7 +3229,7 @@ test_cases = [
   "urn:example:animal:ferret:nose",
   "jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true",
   "ftp://ftp.is.co.za/rfc/rfc1808.txt",
-  "http://www.ietf.org/rfc/rfc2396.txt#header1",
+  "https://www.ietf.org/rfc/rfc2396.txt#header1",
   "ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two",
   "mailto:John.Doe@example.com",
   "news:comp.infosystems.www.servers.unix",
@@ -3269,7 +3269,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
     domain = ftp.is.co.za
       port = 21
       path = rfc/rfc1808.txt
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
     scheme = http
     domain = www.ietf.org
       port = 80
@@ -3327,7 +3327,7 @@ object WebAddressParser extends App {
   parseAddress("foo://example.com:8042/over/there?name=ferret#nose")
   parseAddress("ftp://ftp.is.co.za/rfc/rfc1808.txt")
   parseAddress("http://example.com/?a=1&b=2+2&c=3&c=4&d=%65%6e%63%6F%64%65%64")
-  parseAddress("http://www.ietf.org/rfc/rfc2396.txt#header1")
+  parseAddress("https://www.ietf.org/rfc/rfc2396.txt#header1")
   parseAddress("https://bob:pass@example.com/place")
   parseAddress("jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true")
   parseAddress("ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two")
@@ -3398,7 +3398,7 @@ set tests {
     urn:example:animal:ferret:nose
     jdbc:mysql://test_user:ouupppssss@localhost:3306/sakila?profileSQL=true
     ftp://ftp.is.co.za/rfc/rfc1808.txt
-    <http://www.ietf.org/rfc/rfc2396.txt#header1>
+    <https://www.ietf.org/rfc/rfc2396.txt#header1>
     ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two
     mailto:John.Doe@example.com
     news:comp.infosystems.www.servers.unix
@@ -3439,7 +3439,7 @@ ftp://ftp.is.co.za/rfc/rfc1808.txt
 	(path)   = rfc/rfc1808.txt
 	(scheme) = ftp
 
-<http://www.ietf.org/rfc/rfc2396.txt#header1>
+<https://www.ietf.org/rfc/rfc2396.txt#header1>
 	(fragment) = header1
 	(host)     = www.ietf.org
 	(path)     = rfc/rfc2396.txt
@@ -3561,7 +3561,7 @@ WScript.StdOut.WriteLine parse_url("jdbc:mysql://test_user:ouupppssss@localhost:
 WScript.StdOut.WriteLine "-------------------------------"
 WScript.StdOut.WriteLine parse_url("ftp://ftp.is.co.za/rfc/rfc1808.txt")
 WScript.StdOut.WriteLine "-------------------------------"
-WScript.StdOut.WriteLine parse_url("http://www.ietf.org/rfc/rfc2396.txt#header1")
+WScript.StdOut.WriteLine parse_url("https://www.ietf.org/rfc/rfc2396.txt#header1")
 WScript.StdOut.WriteLine "-------------------------------"
 WScript.StdOut.WriteLine parse_url("ldap://[2001:db8::7]/c=GB?objectClass=one&objectClass=two")
 WScript.StdOut.WriteLine "-------------------------------"
@@ -3604,7 +3604,7 @@ Scheme: ftp
 Domain: ftp.is.co.za
 Path: rfc/rfc1808.txt
 -------------------------------
-URL: <http://www.ietf.org/rfc/rfc2396.txt#header1>
+URL: <https://www.ietf.org/rfc/rfc2396.txt#header1>
 Scheme: http
 Domain: www.ietf.org
 Path: rfc/rfc2396.txt

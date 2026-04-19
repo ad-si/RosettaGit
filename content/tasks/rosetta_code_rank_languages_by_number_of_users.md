@@ -25,7 +25,7 @@ Sort most popular programming languages based on the number of users on Rosetta 
 
 A way to solve the task:
 
-Users of a language X are those referenced in the page <https://rosettacode.org/wiki/Category:X_User>, or preferably <https://rosettacode.org/mw/index.php?title=Category:X_User&redirect=no> to avoid redirections. In order to find the list of such categories, it's possible to first parse the entries of <http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>. Then download and parse each language users category to count the users.
+Users of a language X are those referenced in the page <https://rosettacode.org/wiki/Category:X_User>, or preferably <https://rosettacode.org/mw/index.php?title=Category:X_User&redirect=no> to avoid redirections. In order to find the list of such categories, it's possible to first parse the entries of <https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000>. Then download and parse each language users category to count the users.
 
 Sample output on 18 february 2019:
 
@@ -78,7 +78,7 @@ func main() {
     const minimum = 25
     ex := `"Category:(.+?)( User)?"(\}|,"categoryinfo":\{"size":(\d+),)`
     re := regexp.MustCompile(ex)
-    page := "http://rosettacode.org/mw/api.php?"
+    page := "https://rosettacode.org/mw/api.php?"
     action := "action=query"
     format := "format=json"
     fversion := "formatversion=2"
@@ -195,7 +195,7 @@ use LWP::UserAgent;
 
 my $client = LWP::UserAgent->new;
 $client->agent("Rosettacode Perl task solver");
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 my $minimum = 100;
 
 sub uri_query_string {
@@ -269,7 +269,7 @@ use JSON::Fast;
 
 my $client = HTTP::UserAgent.new;
 
-my $url = 'http://rosettacode.org/mw';
+my $url = 'https://rosettacode.org/mw';
 
 my $start-time = now;
 
@@ -438,7 +438,7 @@ Note: the implementation is very similar to [[Rosetta_Code/Rank_languages_by_pop
 (define category "Category:Language users")
 (define entries "users")
 
-(define api-url (string->url "http://rosettacode.org/mw/api.php"))
+(define api-url (string->url "https://rosettacode.org/mw/api.php"))
 (define (make-complete-url gcmcontinue)
   (struct-copy url api-url
                [query `([format . "json"]
@@ -549,7 +549,7 @@ Rank: 64     (16 users) PL/I
 
 
 ```stata
-copy "http://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" categ.html, replace
+copy "https://rosettacode.org/mw/index.php?title=Special:Categories&limit=5000" categ.html, replace
 import delimited categ.html, delim("@") enc("utf-8") clear
 keep if ustrpos(v1,"/wiki/Category:") & ustrpos(v1,"_User")
 gen i = ustrpos(v1,"href=")
@@ -666,7 +666,7 @@ var [const] CURL=Import("zklCurl"), YAJL=Import("zklYAJL")[0];
 fcn rsGet{
    continueValue,r,curl := "",List, CURL();
    do{	// eg 5 times
-      page:=("http://rosettacode.org/mw/api.php?action=query"
+      page:=("https://rosettacode.org/mw/api.php?action=query"
         "&generator=categorymembers&prop=categoryinfo"
 	"&gcmtitle=Category%%3ALanguage%%20users"
 	"&rawcontinue=&format=json&gcmlimit=350"

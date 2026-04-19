@@ -236,7 +236,7 @@ struct GOST(s...) if (s.length == 1 && s[0]._validateSBox) {
 
 void main() {
     // S-boxes used by the Central Bank of Russian Federation:
-    // http://en.wikipedia.org/wiki/GOST_28147-89
+    // https://en.wikipedia.org/wiki/GOST_28147-89
     // (This is a matrix of nibbles).
     enum SBox cbrf = [
       [ 4, 10,  9,  2, 13,  8,  0, 14,  6, 11,  1, 12,  7, 15,  5,  3],
@@ -669,7 +669,7 @@ use strict;
 use warnings;
 use ntheory 'fromdigits';
 
-# sboxes from http://en.wikipedia.org/wiki/GOST_(block_cipher)
+# sboxes from https://en.wikipedia.org/wiki/GOST_(block_cipher)
 my @sbox = (
     [4, 10, 9, 2, 13, 8, 0, 14, 6, 11, 1, 12, 7, 15, 5, 3],
     [14, 11, 4, 12, 6, 13, 15, 10, 2, 3, 8, 1, 0, 7, 5, 9],
@@ -723,7 +723,7 @@ Implemented to match explanation on Discussion page:
 
 
 ```perl6
-# sboxes from http://en.wikipedia.org/wiki/GOST_(block_cipher)
+# sboxes from https://en.wikipedia.org/wiki/GOST_(block_cipher)
 constant sbox =
     [4, 10, 9, 2, 13, 8, 0, 14, 6, 11, 1, 12, 7, 15, 5, 3],
     [14, 11, 4, 12, 6, 13, 15, 10, 2, 3, 8, 1, 0, 7, 5, 9],

@@ -2264,9 +2264,9 @@ Obviously there are also several hll keywords such as <code>exit</code> and <cod
 
 ## PicoLisp
 
-PicoLisp supports non-local jumps to a previously setup environment (see [[Exceptions#PicoLisp|exceptions]]) via '[catch](http://software-lab.de/doc/refC.html#catch)' and '[throw](http://software-lab.de/doc/refT.html#throw)', or to some location in another coroutine with '[yield](http://software-lab.de/doc/refY.html#yield)' (see [[Generator#PicoLisp|generator]]).
+PicoLisp supports non-local jumps to a previously setup environment (see [[Exceptions#PicoLisp|exceptions]]) via '[catch](https://software-lab.de/doc/refC.html#catch)' and '[throw](https://software-lab.de/doc/refT.html#throw)', or to some location in another coroutine with '[yield](https://software-lab.de/doc/refY.html#yield)' (see [[Generator#PicoLisp|generator]]).
 
-'[quit](http://software-lab.de/doc/refQ.html#quit)' is similar to 'throw', but doesn't require a corresponding 'catch', as it directly jumps to the error handler (where the program may catch that error again).
+'[quit](https://software-lab.de/doc/refQ.html#quit)' is similar to 'throw', but doesn't require a corresponding 'catch', as it directly jumps to the error handler (where the program may catch that error again).
 
 There is no 'go' or 'goto' function in PicoLisp, but it can be emulated with normal list processing functions. This allows "jumps" to arbitrary locations within (the same or other) functions. The following example implements a "loop":
 
@@ -2856,7 +2856,7 @@ This code uses the Continuation object <code>c</code> to jump to the top of the 
 
 ## Scala
 
-Goto's are in the European programmer community [considered harmful](http://en.wikipedia.org/wiki/Considered_harmful). They are error-prune and not essential. A good programmer would stay away from that. Scala is not equipped with goto's.
+Goto's are in the European programmer community [considered harmful](https://en.wikipedia.org/wiki/Considered_harmful). They are error-prune and not essential. A good programmer would stay away from that. Scala is not equipped with goto's.
 
 
 ## SPL
@@ -2920,7 +2920,7 @@ and this accomplishes a relative jump forward by five words:
 
 ## Tcl
 
-Tcl has both [[Exceptions#Tcl|exceptions]] and (from 8.6 onwards) [[Generator#Tcl|generators/coroutines]] but no unstructured goto ability. However, the main case where it might be desired, coding a general state machine, can be handled through metaprogramming (as discussed at some length on [the Tcler's Wiki](http://wiki.tcl.tk/8363)) so the absence is not strongly felt in practice.
+Tcl has both [[Exceptions#Tcl|exceptions]] and (from 8.6 onwards) [[Generator#Tcl|generators/coroutines]] but no unstructured goto ability. However, the main case where it might be desired, coding a general state machine, can be handled through metaprogramming (as discussed at some length on [the Tcler's Wiki](https://wiki.tcl-lang.org/8363)) so the absence is not strongly felt in practice.
 
 
 ## VBA

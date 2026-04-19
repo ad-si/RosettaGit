@@ -436,7 +436,7 @@ ExecuteHQ9:
 
 
 ```AutoHotkey
-; http://www.autohotkey.com/forum/viewtopic.php?p=356268#356268
+; https://www.autohotkey.com/forum/viewtopic.php?p=356268#356268
 
 testCode := "hq9+HqQ+Qq"
 
@@ -1165,7 +1165,7 @@ Take one down, pass it around
 variable accumulator
 : H cr ." Hello, world!" ;
 : Q cr 2dup type ;
-: 9 99 verses ;  \ http://rosettacode.org/wiki/99_Bottles_of_Beer#Forth
+: 9 99 verses ;  \ https://rosettacode.org/wiki/99_Bottles_of_Beer#Forth
 : + 1 accumulator +! ;
 
 : hq9+ ( "code" -- )
@@ -2298,7 +2298,7 @@ strictly case-sensitive.
        ((#\H) (display "hello, world") A)
        ((#\Q) (display the-program) A)
        ;; official esolang version of 99-BoB at:
-       ;;  http://esolangs.org/wiki/99_bottles_of_beer
+       ;;  https://esolangs.org/wiki/99_bottles_of_beer
        ((#\9)
         (displayln
         (let ((BoB (lambda (n)
@@ -2687,7 +2687,7 @@ Requires <code>bottles.xsl</code> (below).
 
 ```xml
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- bottles.xsl defines $entire-bottles-song -->
 	<xsl:import href="bottles.xsl"/>
 
@@ -2769,7 +2769,7 @@ Requires <code>bottles.xsl</code> (below)
 
 ```xml
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- bottles.xsl defines $entire-bottles-song -->
 	<xsl:import href="bottles.xsl"/>
 
@@ -2929,7 +2929,7 @@ This sheet defines a value for the variable <code>$entire-bottles-song</code> (s
 
 ```xml
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:lo="urn:uuid:59afd337-03a8-49d9-a7a8-8e2cbc4ef9cc">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:lo="urn:uuid:59afd337-03a8-49d9-a7a8-8e2cbc4ef9cc">
 	<!-- Note: xmlns:lo is defined as a sort of pseudo-private namespace -->
 
 	<!-- Given a count and a suffix (default " on the wall"), renders one number-containing line of the bottles song -->

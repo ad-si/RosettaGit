@@ -42,7 +42,7 @@ Note: A [[Category:Unicon]] specific example has not been provided.    <=== SIDE
 I diagnosed the side effect - Tree Traversal shows up as a completed task under Unicon.
 * There is no <nowiki>{{header|Unicon}}</nowiki> tag anywhere on the page. 
 * The <nowiki>[[Category:Unicon link]]</nowiki>produces nothing visible unlike other <nowiki>[[..]]</nowiki> tags.  This also causes the problem.
-* Replacing the reference above with <nowiki>[Unicon](http://rosettacode.org/wiki/Category:Unicon)</nowiki> doesn't cause the problem.
+* Replacing the reference above with <nowiki>[Unicon](https://rosettacode.org/wiki/Category:Unicon)</nowiki> doesn't cause the problem.
 :When you want to make a visible link to a category you need to put a : in front like this: <nowiki>[[:Category:Icon]] or [[:Category:Icon|custom text]]</nowiki>. These will show this: [[:Category:Icon]] or [[:Category:Icon|custom text]]. Is that what you were trying to do? --[[User:Mwn3d|Mwn3d]] 02:51, 13 April 2010 (UTC)
 :: Yes I was but that what's odd is that [[Template:Example-needs-review]] and [[Category_talk:Icon]] w/o the :
 :: Also, thanks with the : the Side effect above seems to be gone  --[[User:Dgamey|Dgamey]] 03:48, 13 April 2010 (UTC)

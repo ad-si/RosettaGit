@@ -270,7 +270,7 @@ affichageMess:
 
 ## AutoHotkey
 
-Reference: <http://www.autohotkey.com/forum/topic76532.html>
+Reference: <https://www.autohotkey.com/forum/topic76532.html>
 
 ```AHK
 RunWait %comspec% /c cls
@@ -1168,7 +1168,7 @@ discard execCmd "clear"
 ## OCaml
 
 
-Using the library [ANSITerminal](http://forge.ocamlcore.org/projects/ansiterminal/):
+Using the library [ANSITerminal](https://forge.ocamlcore.org/projects/ansiterminal/):
 
 
 ```ocaml
@@ -1488,8 +1488,8 @@ print!("{}[2J", 27 as char);
 
 ## Seed7
 
-The function [clear](http://seed7.sourceforge.net/libraries/console.htm#clear(in_console_file)) is portable and
-clears the [console window](http://seed7.sourceforge.net/libraries/console.htm).
+The function [clear](https://seed7.sourceforge.net/libraries/console.htm#clear(in_console_file)) is portable and
+clears the [console window](https://seed7.sourceforge.net/libraries/console.htm).
 ''Clear'' is based on terminfo respectively the Windows console API.
 A portable function to clear cannot rely on shell respectively cmd.exe commands,
 because Windows uses ''CLS'' and Unix shells use ''CLEAR'', to clear a screen.

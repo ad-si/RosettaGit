@@ -12,4 +12,4 @@ tags = []
 
 {{stub}}{{library}}
 The '''tcom''' package is a library for [[Tcl]] that allows it to work with COM services on [[Windows]]. It is supplied as part of ActiveTcl, the predominant distribution of Tcl on Windows.
-The [tcom page](http://wiki.tcl.tk/1821) on the Tcler's Wiki has many examples of use, and links to more.
+The [tcom page](https://wiki.tcl-lang.org/1821) on the Tcler's Wiki has many examples of use, and links to more.

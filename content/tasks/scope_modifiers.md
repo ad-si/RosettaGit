@@ -1484,14 +1484,14 @@ External symbols are surrounded by braces.
 
 Regardless of the scope, the binding of symbols to values is always dynamic.
 This happens implicitly for function parameters, or explicitly with functions
-like [let](http://software-lab.de/doc/refL.html#let),
-[use](http://software-lab.de/doc/refU.html#use),
-[bind](http://software-lab.de/doc/refB.html#bind),
-[job](http://software-lab.de/doc/refJ.html#job) and others.
+like [let](https://software-lab.de/doc/refL.html#let),
+[use](https://software-lab.de/doc/refU.html#use),
+[bind](https://software-lab.de/doc/refB.html#bind),
+[job](https://software-lab.de/doc/refJ.html#job) and others.
 This means that the current value of a symbol is saved locally, then set to the
 new value. When done, the old value is restored. Closures are created by
 maintaining an explicit environment. More about that
-[here](http://software-lab.de/doc/faq.html#dynamic).
+[here](https://software-lab.de/doc/faq.html#dynamic).
 
 
 ## PowerShell
@@ -1606,7 +1606,7 @@ scoped_notdefinedlocally scope gives x = From global scope
 >>>
 ```
 
-More information on the scope modifiers can be found [here](http://docs.python.org/3.0/reference/simple_stmts.html#grammar-token-global_stmt).
+More information on the scope modifiers can be found [here](https://docs.python.org/3.0/reference/simple_stmts.html#grammar-token-global_stmt).
 
 
 ## R

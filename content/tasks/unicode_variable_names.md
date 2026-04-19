@@ -288,7 +288,7 @@ Output:
 
 
 ## C#
-Section 2.4.2 of the [C# Language Specification](http://go.microsoft.com/fwlink/?LinkId=199552) gives rules for identifiers. They correspond exactly to those recommended by the [Unicode Standard Annex 31](http://unicode.org/reports/tr31/), except that underscore is allowed as an initial character (as is traditional in the C programming language), Unicode escape sequences are permitted in identifiers, and the "@" character is allowed as a prefix to enable keywords to be used as identifiers.
+Section 2.4.2 of the [C# Language Specification](http://go.microsoft.com/fwlink/?LinkId=199552) gives rules for identifiers. They correspond exactly to those recommended by the [Unicode Standard Annex 31](https://unicode.org/reports/tr31/), except that underscore is allowed as an initial character (as is traditional in the C programming language), Unicode escape sequences are permitted in identifiers, and the "@" character is allowed as a prefix to enable keywords to be used as identifiers.
 
 ```c#
 class Program
@@ -422,7 +422,7 @@ PrintLn(Δ);
 
 ## EchoLisp
 
-Symbol names can be any string including unicode characters. See the EchoLisp [reference](http://www.echolalie.org/echolisp/help.html#language) documentation.
+Symbol names can be any string including unicode characters. See the EchoLisp [reference](https://www.echolalie.org/echolisp/help.html#language) documentation.
 
 ```lisp
 
@@ -465,7 +465,7 @@ Variables are symbols and symbol names can be any string.  Source code <code>.el
 The byte compiler writes <code>utf-8</code> (or past versions wrote <code>emacs-mule</code>) into <code>.elc</code> so that any mixture of non-ASCII is preserved.
 
 =={{header|F_Sharp|F#}}==
-As with C# the [F# Language Specification](http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/manual/spec.html#_Toc207705761) refers to [Unicode Standard Annex #31](http://www.unicode.org/reports/tr31/#Default_Identifier_Syntax) for identifier syntax, allowing Unicode letter characters.
+As with C# the [F# Language Specification](http://research.microsoft.com/en-us/um/cambridge/projects/fsharp/manual/spec.html#_Toc207705761) refers to [Unicode Standard Annex #31](https://www.unicode.org/reports/tr31/#Default_Identifier_Syntax) for identifier syntax, allowing Unicode letter characters.
 
 ```fsharp
 let mutable Δ = 1
@@ -541,7 +541,7 @@ println[Δ]
 
 ## Go
 
-Go source encoding is [specified](http://golang.org/doc/go_spec.html#Source_code_representation) to be UTF-8.  Allowable variable names are specified in the sections [identifiers](http://golang.org/doc/go_spec.html#Identifiers) and [Exported identifiers](http://golang.org/doc/go_spec.html#Exported_identifiers).
+Go source encoding is [specified](https://golang.org/doc/go_spec.html#Source_code_representation) to be UTF-8.  Allowable variable names are specified in the sections [identifiers](https://golang.org/doc/go_spec.html#Identifiers) and [Exported identifiers](https://golang.org/doc/go_spec.html#Exported_identifiers).
 
 ```go
 package main
@@ -586,7 +586,7 @@ main = print ψ
 
 Variable names must be comprised of ASCII characters.
 
-From the Dictionary page [Alphabet and Words](http://www.jsoftware.com/help/dictionary/dict1.htm):
+From the Dictionary page [Alphabet and Words](https://www.jsoftware.com/help/dictionary/dict1.htm):
 
 :"The alphabet is standard ASCII, comprising digits, letters (of the English alphabet), the underline (used in names and numbers), ..."
 
@@ -668,7 +668,7 @@ Strictly speaking, variables in jq cannot be incremented (in fact, strictly spea
 ## Julia
 
 The Julia documentation on
-[allowed variable names](http://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names) explicitly describes the wide variety of Unicode codepoints that are allowed:
+[allowed variable names](https://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names) explicitly describes the wide variety of Unicode codepoints that are allowed:
 
 ```julia
 julia>
@@ -945,7 +945,7 @@ Using what Google Translate says is the Traditional Chinese for 'delta'
 
 ## Perl
 
-Requires Perl 5.8.1 at the minimum. See <http://perldoc.perl.org/utf8.html>
+Requires Perl 5.8.1 at the minimum. See <https://perldoc.perl.org/utf8.html>
 
 
 ```perl
@@ -957,7 +957,7 @@ print $Δ, "\n";
 ```
 
 
-<code>$</code> sigil can be omitted by using [lvalue](http://perldoc.perl.org/perlsub.html#Lvalue-subroutines) subroutine:
+<code>$</code> sigil can be omitted by using [lvalue](https://perldoc.perl.org/perlsub.html#Lvalue-subroutines) subroutine:
 
 
 ```perl
@@ -976,7 +976,7 @@ print Δ, "\n";
 ```
 
 
-or with Perl 5.10 and [state](http://perldoc.perl.org/functions/state.html) modifier:
+or with Perl 5.10 and [state](https://perldoc.perl.org/functions/state.html) modifier:
 
 
 ```perl
@@ -1000,7 +1000,7 @@ One can have Unicode in identifier or subroutine names and also in package or cl
 
 Perl 6 is written in Unicode so, with narrow restrictions, nearly any Unicode letter can be used in identifiers.
 
-See Perl 6 Synopsis 02. - <http://perlcabal.org/syn/S02.html#Names>
+See Perl 6 Synopsis 02. - <https://perlcabal.org/syn/S02.html#Names>
 
 ```perl6
 my $Δ = 1;
@@ -1054,7 +1054,7 @@ PHP is not made to support Unicode. UTF-16 (UCS-2) will not work because it adds
 
 UTF-8 uses ASCII values for bytes which can be represented as ASCII and as result it's possible to insert <code>&lt;?php</code> mark at beginning. PHP sees your document as some 8-bit encoding (like ISO-8859-1), but it doesn't matter because UTF-8 doesn't use ASCII ranges for its values and calls to the variable are consistent.
 
-Documentation: [mbstring.php4.req](http://php.net/manual/en/mbstring.php4.req.php), [language.variables.basics](http://php.net/manual/en/language.variables.basics.php)
+Documentation: [mbstring.php4.req](https://php.net/manual/en/mbstring.php4.req.php), [language.variables.basics](https://php.net/manual/en/language.variables.basics.php)
 
 ```php
 <?php
@@ -1067,7 +1067,7 @@ echo $Δ;
 
 ## PicoLisp
 
-Variables are usually [Internal Symbols](http://software-lab.de/doc/ref.html#internal-io), and their names may contain any UTF-8 character except null-bytes. White space, and 11 special characters (see the reference) must be escaped with a backslash. [Transient Symbols](http://software-lab.de/doc/ref.html#transient-io) are often used as variables too, they follow the syntax of strings in other languages.
+Variables are usually [Internal Symbols](https://software-lab.de/doc/ref.html#internal-io), and their names may contain any UTF-8 character except null-bytes. White space, and 11 special characters (see the reference) must be escaped with a backslash. [Transient Symbols](https://software-lab.de/doc/ref.html#transient-io) are often used as variables too, they follow the syntax of strings in other languages.
 
 ```PicoLisp
 : (setq Δ 1)
@@ -1144,7 +1144,7 @@ Result = 2.
 
 Within the ASCII range (U+0001..U+007F), the valid characters for identifiers are the same as in Python 2.x: the uppercase and lowercase letters A through Z, the underscore _ and, except for the first character, the digits 0 through 9.
 
-Python 3.0 introduces additional characters from outside the ASCII range (see [PEP 3131](http://www.python.org/dev/peps/pep-3131)). For these characters, the classification uses the version of the Unicode Character Database as included in the unicodedata module.
+Python 3.0 introduces additional characters from outside the ASCII range (see [PEP 3131](https://www.python.org/dev/peps/pep-3131)). For these characters, the classification uses the version of the Unicode Character Database as included in the unicodedata module.
 
 Identifiers are unlimited in length. Case is significant.
 

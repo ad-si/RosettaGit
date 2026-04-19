@@ -4256,7 +4256,7 @@ As an appetizer this runs in Racket as is:
 
 ## REXX
 
-The REXX code is original, but the BRAINF░CK program was modified from the example given in Wikipedia:   <http://en.wikipedia.org/wiki/Brainfuck>
+The REXX code is original, but the BRAINF░CK program was modified from the example given in Wikipedia:   <https://en.wikipedia.org/wiki/Brainfuck>
 
 ```rexx
 /*REXX program implements the   Brainf*ck   (self─censored)  language.                  */
@@ -4514,7 +4514,7 @@ Hello World!
 ```
 
 
-Original source <http://seed7.sourceforge.net/algorith/puzzles.htm#brainf7>.
+Original source <https://seed7.sourceforge.net/algorith/puzzles.htm#brainf7>.
 
 
 ## Sidef

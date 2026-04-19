@@ -1016,7 +1016,7 @@ include 4pp/lib/foos.4pp
 Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
-<http://soton.mpeforth.com/flag/fms/index.html>
+<https://vfxforth.com/flag/fms/index.html>
 
 ```forth
 include FMS-SI.f
@@ -1337,7 +1337,7 @@ coinsert 'Dog'
 
 <code>coclass</code> specifies that following definitions will be within the named class, and <code>coinsert</code> specifies that the current class will inherit from the named classes (or object -- in J the only difference between a class and an object is its name and how you can create them -- this motivates the "co" prefix on operations which manipulate '''c'''lasses and '''o'''bjects).
 
-See <http://www.jsoftware.com/help/jforc/modular_code.htm>
+See <https://www.jsoftware.com/help/jforc/modular_code.htm>
 
 That said, some operations in J -- including <code>coinsert</code> -- will create classes if they did not already exist.  So the above may be simplified to:
 
@@ -2254,7 +2254,7 @@ use Dog;
 ```
 
 
-The same using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) module:
+The same using the [MooseX::Declare](https://metacpan.org/perldoc?MooseX::Declare) module:
 
 
 ```perl
@@ -2577,7 +2577,7 @@ setClass("Lab", representation(), prototype(), contains="Dog")
 ```REBOL
 REBOL [
 	Title: "Inheritance"
-	URL: http://rosettacode.org/wiki/Inheritance
+	URL: https://rosettacode.org/wiki/Inheritance
 ]
 
 ; REBOL provides subclassing through its prototype mechanism:
@@ -2702,7 +2702,7 @@ class Collie extends Dog
 
 ## Seed7
 
-[Seed7 object orientation](http://seed7.sourceforge.net/manual/objects.htm) is based on interface types and implementation types.
+[Seed7 object orientation](https://seed7.sourceforge.net/manual/objects.htm) is based on interface types and implementation types.
 The example below defines a hierarchy of implementation types.
 
 

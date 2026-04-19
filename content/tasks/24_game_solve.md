@@ -3850,7 +3850,7 @@ end
 
 
 *Library: Icon Programming Library*
-[strings.icn provides deletec and permutes](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[strings.icn provides deletec and permutes](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ## J

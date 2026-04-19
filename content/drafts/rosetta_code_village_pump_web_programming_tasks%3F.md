@@ -14,7 +14,7 @@ tags = []
 |topic=Web programming tasks
 |summary=Web programming task category
 }}
-Should we have a new category of tasks about Web Programming? I'm thinking of stuff like "Generate a Hello World page", "Setting and Getting Cookies", "[The Arc Challenge](http://www.paulgraham.com/arcchallenge.html)", "Basic User Authentication"...
+Should we have a new category of tasks about Web Programming? I'm thinking of stuff like "Generate a Hello World page", "Setting and Getting Cookies", "[The Arc Challenge](https://www.paulgraham.com/arcchallenge.html)", "Basic User Authentication"...
 
 Or would you consider tasks like these as too-narrow / too specialized? -- [[User:Wmeyer|Wmeyer]] 20:11, 13 January 2010 (UTC)
 : For most of the tasks, the output medium is independent of what the task accomplishes. For example, one of the [[User Output]] should cover the web case of "Hello World" (with the minor exception that the string name is "Goodbye, World!").  Particular types of authentication, such as [[HTTP Authentication]] would be a worthwhile tasks, but that's from the client perspective.

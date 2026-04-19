@@ -11,4 +11,4 @@ tags = []
 +++
 '''NQP''', or "Not Quite Perl", is a simplified form of [derived from::Perl 6](https://rosettacode.org/wiki/derived_from::Perl_6).
 
-An introduction is at <http://en.wikibooks.org/wiki/Parrot_Virtual_Machine/Not_Quite_Perl>
+An introduction is at <https://en.wikibooks.org/wiki/Parrot_Virtual_Machine/Not_Quite_Perl>

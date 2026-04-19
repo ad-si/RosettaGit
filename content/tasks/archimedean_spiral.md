@@ -382,12 +382,12 @@ Works with the unexpanded (1k RAM) ZX81. The output is quite blocky, but identif
 ```
 
 {{out}}
-Screenshot [here](http://edmundgriffiths.com/zx81archspiral.jpg).
+Screenshot [here](https://edmundgriffiths.com/zx81archspiral.jpg).
 
 
 ## C
 
-Interactive code which asks the parameters a and b as inputs, the number of cycles and the division steps. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Interactive code which asks the parameters a and b as inputs, the number of cycles and the division steps. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -1238,7 +1238,7 @@ Note: cartes2() can be found here on [[Polyspiral#PARI.2FGP| PARI/GP]] page.
 \\ ArchiSpiral() - Where: lps is a number of loops, c is a direction 0/1
 \\ (counter-clockwise/clockwise). 6/6/16 aev
 \\ Note: cartes2() can be found here on
-\\ http://rosettacode.org/wiki/Polyspiral#PARI.2FGP page.
+\\ https://rosettacode.org/wiki/Polyspiral#PARI.2FGP page.
 ArchiSpiral(size,lps,c=0)={
 my(a=.0,ai=.1,r=.0,ri=.1,as=lps*2*Pi,n=as/ai,x,y,vc,vx=List(.0),vy=vx);
 if(c<0||c>1, c=0); if(c, ai*=-1);
@@ -2279,7 +2279,7 @@ End Sub
 ## zkl
 
 [[File:ArchimedeanSpiral.zk.jpg|250px|thumb|right]]
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn archimedeanSpiral(a,b,circles){

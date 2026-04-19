@@ -788,7 +788,7 @@ toBW=: 255 * medianHist@getImgHist < toGray
 
 '''Example Usage:'''
 
-Use [Lenna100.jpg](http://rosettacode.org/mw/images/b/b6/Lenna100.jpg) for testing (read using the [[j:Addons/media/platimg|media/platimg]] addon and convert to ppm file).
+Use [Lenna100.jpg](https://rosettacode.org/mw/images/b/b6/Lenna100.jpg) for testing (read using the [[j:Addons/media/platimg|media/platimg]] addon and convert to ppm file).
 
 
 ```j
@@ -1119,7 +1119,7 @@ let () =
 
 ## Octave
 
-'''Using package''' [Image](http://octave.sourceforge.net/image/index.html)
+'''Using package''' [Image](https://octave.sourceforge.net/image/index.html)
 
 ```octave
 function h = imagehistogram(imago)
@@ -1786,7 +1786,7 @@ Return
 ## zkl
 
 {{trans|C}}
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 fcn histogram(image){

@@ -1467,7 +1467,7 @@ Same as Version 1.
 
 ### version 1
 
-Brute froce, but not as brute as [Ring](http://rosettacode.org/mw/index.php?title=Pythagorean_quadruples#Ring).Did it ever run?<BR>
+Brute froce, but not as brute as [Ring](https://rosettacode.org/mw/index.php?title=Pythagorean_quadruples#Ring).Did it ever run?<BR>
 Stopping search if limit is reached<BR>
 
 ```pascal
@@ -1554,8 +1554,8 @@ real    0m2.323s -> 9 cpu-cycles per check on Ryzen 5 1600 3,7 Ghz ( Turbo )
 
 ### version 2
 
-Using a variant of [REXX optimized](http://rosettacode.org/wiki/Pythagorean_quadruples#optimized) optimized<BR>
-As I now see the same as [Algol68](http://rosettacode.org/wiki/Pythagorean_quadruples#ALGOL_68)<BR>
+Using a variant of [REXX optimized](https://rosettacode.org/wiki/Pythagorean_quadruples#optimized) optimized<BR>
+As I now see the same as [Algol68](https://rosettacode.org/wiki/Pythagorean_quadruples#ALGOL_68)<BR>
 Quite fast.
 
 ```pascal

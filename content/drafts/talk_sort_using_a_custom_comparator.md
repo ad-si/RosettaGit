@@ -65,7 +65,7 @@ For the record, I'm not sure I understand the final sentence of the task. ('Use 
 Finally, many of the examples use test data that do not effectively test the requirements.
 
 --[[User:TBH|TBH]] 22:39, 8 February 2008 (MST)
-:My previously mentioned uncertainty is largely relieved by the replacement J code posted by [Dan Bron](http://www.jsoftware.com/jwiki/DanBron), which clearly uses the primary sorting facility of the language. Whether the customizing aspect counts as a callback should not actually matter. --[[User:TBH|TBH]] 23:06, 16 March 2008 (MDT)
+:My previously mentioned uncertainty is largely relieved by the replacement J code posted by [Dan Bron](https://www.jsoftware.com/jwiki/DanBron), which clearly uses the primary sorting facility of the language. Whether the customizing aspect counts as a callback should not actually matter. --[[User:TBH|TBH]] 23:06, 16 March 2008 (MDT)
 ::I studied callbacks enough to identify that the adverb technique Dan used definitely counts as such. --[[User:TBH|TBH]] 20:26, 4 April 2008 (MDT)
 
 

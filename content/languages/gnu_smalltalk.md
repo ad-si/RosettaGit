@@ -205,5 +205,5 @@ It is possible to use the exception object, which is made available to the handl
          printNl ] on: Warning do: [ :ex | ex resume: 5 ]    "=> 5"
 
 ## External links
-* [GNU](http://www.gnu.org)
+* [GNU](https://www.gnu.org)
 * [GNU Smalltalk](http://smalltalk.gnu.org/)

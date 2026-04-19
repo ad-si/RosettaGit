@@ -3271,7 +3271,7 @@ even
 
 ## PicoLisp
 
-PicoLisp doesn't have a built-in predicate for that. Using '[bit?](http://software-lab.de/doc/refB.html#bit?)' is the easiest and most efficient. The bit test with 1 will return NIL if the number is even.
+PicoLisp doesn't have a built-in predicate for that. Using '[bit?](https://software-lab.de/doc/refB.html#bit?)' is the easiest and most efficient. The bit test with 1 will return NIL if the number is even.
 
 ```PicoLisp
 : (bit? 1 3)

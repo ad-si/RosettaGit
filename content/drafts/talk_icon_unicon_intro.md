@@ -47,7 +47,7 @@ I'm thinking the best approach is to go with test 2 and dispense with the heavy 
 ###  Test Refs 
 
 * Blah blah blah <ref>{{cite book |last=Loewe |first=Michael |chapter=Chapter 26: Japanese Naval Codes |editor=F. H. Hinsley and Alan Stripp |title=Codebreakers: The Inside Story of Bletchley Park |year=1993 |publisher=[[Oxford University Press]] |isbn=0-19-285304-X}}</ref>
-* Fee Fie Foe Fum<ref>[The Icon Programming Language, 3rd Edition; Ralph E. Griswold, Madge T. Griswold;Peer-to-Peer Communications;ISBN 1-57398-001-3; Public Domain](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)</ref>
+* Fee Fie Foe Fum<ref>[The Icon Programming Language, 3rd Edition; Ralph E. Griswold, Madge T. Griswold;Peer-to-Peer Communications;ISBN 1-57398-001-3; Public Domain](https://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)</ref>
 
 ###  Test Reflist 
 
@@ -57,7 +57,7 @@ I'm thinking the best approach is to go with test 2 and dispense with the heavy 
 
 ###  Test Refs 
 
-* Fee Fie Foe Fum<ref>[The Icon Programming Language, 3rd Edition; Ralph E. Griswold, Madge T. Griswold;Peer-to-Peer Communications;ISBN 1-57398-001-3; Public Domain](http://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)</ref>
+* Fee Fie Foe Fum<ref>[The Icon Programming Language, 3rd Edition; Ralph E. Griswold, Madge T. Griswold;Peer-to-Peer Communications;ISBN 1-57398-001-3; Public Domain](https://www.cs.arizona.edu/icon/ftp/doc/lb1up.pdf)</ref>
 
 ###  Test Reflist 
 

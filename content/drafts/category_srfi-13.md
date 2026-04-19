@@ -13,4 +13,4 @@ tags = []
 {{library}}'''SRFI-13''' is a Scheme Request For Implementation, or [[SRFI]].  SRFI-13 is a library of operations on strings.
 
 ==External Links==
-* [SRFI-13](http://srfi.schemers.org/srfi-13/srfi-13.html)
+* [SRFI-13](https://srfi.schemers.org/srfi-13/srfi-13.html)

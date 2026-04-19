@@ -963,7 +963,7 @@ main = walk "." ".\\.hs$"
 
 ## HicEst
 
-More on [SYSTEM](http://www.HicEst.com/SYSTEM.htm), [OPEN](http://www.HicEst.com/OPEN.htm), [INDEX](http://www.HicEst.com/indexfnc.htm)
+More on [SYSTEM](https://www.HicEst.com/SYSTEM.htm), [OPEN](https://www.HicEst.com/OPEN.htm), [INDEX](https://www.HicEst.com/indexfnc.htm)
 
 ```hicest
 CHARACTER dirtxt='dir.txt', filename*80

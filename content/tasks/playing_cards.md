@@ -1434,7 +1434,7 @@ public class Deck : IEnumerable<Card>
     public int Count => cards.Count;
 
     public void Shuffle() {
-        // using Knuth Shuffle (see at http://rosettacode.org/wiki/Knuth_shuffle)
+        // using Knuth Shuffle (see at https://rosettacode.org/wiki/Knuth_shuffle)
         var random = new Random();
         for (int i = 0; i < cards.Count; i++) {
             int r = random.Next(i, cards.Count);
@@ -1470,7 +1470,7 @@ public class Deck : IEnumerable<Card>
 ```ceylon
 import com.vasileff.ceylon.random.api { ... }
 
-"""Run the example code for Rosetta Code ["Playing cards" task] (http://rosettacode.org/wiki/Playing_cards)."""
+"""Run the example code for Rosetta Code ["Playing cards" task] (https://rosettacode.org/wiki/Playing_cards)."""
 shared void run() {
     variable value deck = Deck();
     print("New deck (``deck.size`` cards): ``deck``
@@ -4454,7 +4454,7 @@ sub deal
 sub shuffle
 # Randomly permutes the cards in the deck. It uses the algorithm
 # described at:
-# http://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm
+# https://en.wikipedia.org/wiki/Fisher-Yates_shuffle#The_modern_algorithm
  {our @deck; local *deck = shift;
     # @deck is now an alias of the invocant's referent.
   for (my $n = $#deck ; $n ; --$n)
@@ -6350,7 +6350,7 @@ Enter this into a playground to see results
 
 import Foundation
 
-// extend any Indexed collection to be able to shuffle (see http://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift)
+// extend any Indexed collection to be able to shuffle (see https://stackoverflow.com/questions/24026510/how-do-i-shuffle-an-array-in-swift)
 extension CollectionType where Index == Int {
     /// Return a copy of `self` with its elements shuffled
     func shuffle() -> [Generator.Element] {

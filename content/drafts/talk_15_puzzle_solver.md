@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Mathematical meaning of minimum ==
-The meaning of minimum has been discussed see: [Minimum](http://www.rosettacode.org/wiki/Talk:Superpermutation_minimisation#Ambiguous). It means 52 not 58, assuming fewest is a synonym for minimum. I think the task description should call for 'minimum solutions to random 15 puzzles' (see below)--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:28, 6 October 2017 (UTC)
+The meaning of minimum has been discussed see: [Minimum](https://www.rosettacode.org/wiki/Talk:Superpermutation_minimisation#Ambiguous). It means 52 not 58, assuming fewest is a synonym for minimum. I think the task description should call for 'minimum solutions to random 15 puzzles' (see below)--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:28, 6 October 2017 (UTC)
 :I am surprised that anyone thinks that 52 < 31. Optimal solution improved and now linked from the task description. [[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 05:11, 24 October 2017 (UTC)
 :A fair point, but one that could have been made with less damage to the tasks structure I'm sure. I've clarified that only single moves are allowed in this task and created a draft task for multimoves, which are interesting in their own right but comparing them to single moves is silly--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:04, 24 October 2017 (UTC)
 :Which may not be what you want. In the output you have "stm-optimal solution of 38(52) moves found in 1 minute and 54s: r3uldlu2ldrurd3lu2lur3dld2ruldlu2rd2lulur2uldr2d2" which is the second of the acceptable solutions in the task description before you changed it (only written not quite as specified in the task description). So with a little change of emphasis, and without marking other solutions as incorrect this could return.--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:40, 24 October 2017 (UTC)
@@ -20,7 +20,7 @@ The meaning of minimum has been discussed see: [Minimum](http://www.rosettacode.
 
 == Mathematical meaning of random ==
 Unlike minimum, which I am surprised that anyone thinks means anything other than 'reduced to the least possible amount or degree', random means easy mathematically. There are 16!/2 15 puzzles, a little over 10 trillion, of which the number that are hard to solve is counted in the hundred thousands. Therefore a randomly chosen puzzle is easy. --[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 10:36, 6 October 2017 (UTC)
-:[see](http://www.rosettacode.org/wiki/15_puzzle_solver/20_Random) for an analysis of 20 randomly generated 15 puzzles--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 13:00, 20 October 2017 (UTC)
+:[see](https://www.rosettacode.org/wiki/15_puzzle_solver/20_Random) for an analysis of 20 randomly generated 15 puzzles--[[User:Nigel Galloway|Nigel Galloway]] ([[User talk:Nigel Galloway|talk]]) 13:00, 20 October 2017 (UTC)
 ::that page updated with a multimove solution [[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]]) 05:10, 24 October 2017 (UTC)
 
 == Extra credit for non-random puzzles ==

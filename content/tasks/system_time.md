@@ -300,7 +300,7 @@ BEGIN {
 ```
 
 
-See also: [[System_time#Batch]], [Discordian_date](http://rosettacode.org/wiki/Discordian_date#AWK)
+See also: [[System_time#Batch]], [Discordian_date](https://rosettacode.org/wiki/Discordian_date#AWK)
 
 
 ## BaCon
@@ -1719,7 +1719,7 @@ Output (with cs_CZ.UTF-8 locale):
 ```txt
 Čt led 24 11:23:30 2008
 ```
-Using the [DateTime](http://search.cpan.org/perldoc?DateTime) module:
+Using the [DateTime](https://metacpan.org/perldoc?DateTime) module:
 ```perl
 use DateTime;
 my $dt = DateTime->now;
@@ -1785,11 +1785,11 @@ echo microtime(), "\n";
 Formatted time:
 ```php
 echo date('D M j H:i:s Y'), "\n";  // custom format; see format characters here:
-                                   // <http://us3.php.net/manual/en/function.date.php>
+                                   // <https://us3.php.net/manual/en/function.date.php>
 echo date('c'), "\n";  // ISO 8601 format
 echo date('r'), "\n";  // RFC 2822 format
 echo date(DATE_RSS), "\n";  // can also use one of the predefined formats here:
-                            // <http://us3.php.net/manual/en/class.datetime.php#datetime.constants.types>
+                            // <https://us3.php.net/manual/en/class.datetime.php#datetime.constants.types>
 ```
 
 
@@ -2087,7 +2087,7 @@ puts Time.now.to_r  # 1424900671883862959/1000000000
 
 ## Scala
 
-{{libheader|Scala}}Ad hoc solution as [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) scripts:
+{{libheader|Scala}}Ad hoc solution as [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) scripts:
 
 ### JDK < 8
 

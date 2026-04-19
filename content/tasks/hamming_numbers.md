@@ -115,7 +115,7 @@ Generate the sequence of Hamming numbers, ''in increasing order''.   In particul
 * Wikipedia entry:   [[wp:Hamming numbers|Hamming numbers]]     (this link is re-directed to   '''Regular number''').
 * Wikipedia entry:   [[wp:Smooth number|Smooth number]]
 * OEIS entry:   [[oeis:A051037|A051037   5-smooth   or   Hamming numbers]]
-* [Hamming problem](http://dobbscodetalk.com/index.php?option=com_content&task=view&id=913&Itemid=85) from Dr. Dobb's CodeTalk (dead link as of Sep 2011; parts of the thread [here](http://drdobbs.com/blogs/architecture-and-design/228700538) and [here](http://www.jsoftware.com/jwiki/Essays/Hamming%20Number)).
+* [Hamming problem](http://dobbscodetalk.com/index.php?option=com_content&task=view&id=913&Itemid=85) from Dr. Dobb's CodeTalk (dead link as of Sep 2011; parts of the thread [here](http://drdobbs.com/blogs/architecture-and-design/228700538) and [here](https://www.jsoftware.com/jwiki/Essays/Hamming%20Number)).
 
 
 
@@ -4557,20 +4557,20 @@ main = do
 -- 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 ```
 
-Runs in about a second on [Ideone.com](http://ideone.com/q3fma).
+Runs in about a second on [Ideone.com](https://ideone.com/q3fma).
 The nested <code>union</code>s' effect is to produce the minimal value at each step,
 with duplicates removed. As Haskell evaluation model is ''on-demand'',
 the three <code>map</code> expressions are in effect iterators, maintaining hidden pointers back into the shared named storage with which they were each created ''(a name is a pointer/handle in Haskell; to name is to point at, to refer to, to take a handle on)''.
 
-The amount of operations is constant for each number produced, so the time complexity should be <math>O(n)</math>. [Empirically](http://ideone.com/k8PU3), it is slightly above that and worsening, suggestive of extra cost of bignum arithmetics. [Using triples representation](http://ideone.com/k8PU3) with logarithm values for comparisons amends this problem, but runs ~ 1.2x slower for the 1,000,000.
+The amount of operations is constant for each number produced, so the time complexity should be <math>O(n)</math>. [Empirically](https://ideone.com/k8PU3), it is slightly above that and worsening, suggestive of extra cost of bignum arithmetics. [Using triples representation](https://ideone.com/k8PU3) with logarithm values for comparisons amends this problem, but runs ~ 1.2x slower for the 1,000,000.
 
-This is what that [DDJ blog](http://drdobbs.com/blogs/architecture-and-design/228700538) "pseudo-C" code was transcribing, mentioned at [[#Python|the Python entry]] that started this task (<small> curiously, it is in almost word-for-word correspondence with Edsger Dijkstra's code from his book A Discipline of Programming, [p. 132](http://web.cecs.pdx.edu/~cs410aph/Lectures/Smalltalk%20II/Dijkstra%20on%20Hamming's%20Problem.pdf) </small>). [[#D|D]], [[#Go|Go]], [[#PARI/GP|PARI/GP]], [[#Prolog|Prolog]] all implement the same idea of back-pointers into shared storage. A Haskell run-time system can actually [free up the storage](http://ideone.com/q3fma) automatically at the start of the shared list and only keep the needed portion of it, from the <code>(5*)</code> back-pointer, &ndash; which is about <math>O(n^{2/3})</math> in length &ndash; behind the scenes, as long as there's no re-use evident in the code.
+This is what that [DDJ blog](http://drdobbs.com/blogs/architecture-and-design/228700538) "pseudo-C" code was transcribing, mentioned at [[#Python|the Python entry]] that started this task (<small> curiously, it is in almost word-for-word correspondence with Edsger Dijkstra's code from his book A Discipline of Programming, [p. 132](http://web.cecs.pdx.edu/~cs410aph/Lectures/Smalltalk%20II/Dijkstra%20on%20Hamming's%20Problem.pdf) </small>). [[#D|D]], [[#Go|Go]], [[#PARI/GP|PARI/GP]], [[#Prolog|Prolog]] all implement the same idea of back-pointers into shared storage. A Haskell run-time system can actually [free up the storage](https://ideone.com/q3fma) automatically at the start of the shared list and only keep the needed portion of it, from the <code>(5*)</code> back-pointer, &ndash; which is about <math>O(n^{2/3})</math> in length &ndash; behind the scenes, as long as there's no re-use evident in the code.
 
 
 ### Avoiding generation of duplicates
 
 
-The classic version can be sped up quite a bit (about twice, with roughly the same  [empirical orders of growth](http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth)) by avoiding generation of duplicate values:
+The classic version can be sped up quite a bit (about twice, with roughly the same  [empirical orders of growth](https://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth)) by avoiding generation of duplicate values:
 
 ```haskell
 hamming = 1 : foldr u [] [2,3,5] where
@@ -4652,7 +4652,7 @@ Can be ''significantly'' improved, both in time complexity and absolute run time
 
 ### Direct calculation through triples enumeration
 
-It is also possible to more or less directly calculate the n-th Hamming number by enumerating (and counting) all the <code>(i,j,k)</code> triples below its [estimated value](http://en.wikipedia.org/wiki/Regular_number#Number_theory) &ndash; with ordering according to their exponents, <code>i*ln2 + j*ln3 + k*ln5</code> &ndash; while storing only the "band" of topmost triples close enough to the target value (more in the [original post on DDJ](http://drdobbs.com/blogs/architecture-and-design/228700538)). The savings come from enumerating only pairs of indices, and finding the corresponding third index by a direct calculation, thus achieving the O(n^(2/3)) time complexity. Space complexity, with constant empirical estimation correction, is ~n^(2/3); but is further tweaked to ~n^(1/3) (following the idea from the entry below).
+It is also possible to more or less directly calculate the n-th Hamming number by enumerating (and counting) all the <code>(i,j,k)</code> triples below its [estimated value](https://en.wikipedia.org/wiki/Regular_number#Number_theory) &ndash; with ordering according to their exponents, <code>i*ln2 + j*ln3 + k*ln5</code> &ndash; while storing only the "band" of topmost triples close enough to the target value (more in the [original post on DDJ](http://drdobbs.com/blogs/architecture-and-design/228700538)). The savings come from enumerating only pairs of indices, and finding the corresponding third index by a direct calculation, thus achieving the O(n^(2/3)) time complexity. Space complexity, with constant empirical estimation correction, is ~n^(2/3); but is further tweaked to ~n^(1/3) (following the idea from the entry below).
 
 The total count of thus produced triples is then the band's topmost value's index in the Hamming sequence, 1-based. The ''n''th number in the sequence is then found by a simple lookup in the sorted band, provided it was wide enough. This produces the 1,000,000-th value   instantaneously. Following the 2017-10 IDEOne update to a faster 64-bit system, the 1 trillionth number [is found in 0.78s](https://ideone.com/GfMUOT) on Ideone.com:
 
@@ -4916,7 +4916,7 @@ I'll explain this J-sentence by dividing it in three parts from left to right om
  2 3 5 * {
 ```
 
-note that LHA (2 3 5 * {) RHA [is equivalent](http://www.jsoftware.com/help/dictionary/intro05.htm) to
+note that LHA (2 3 5 * {) RHA [is equivalent](https://www.jsoftware.com/help/dictionary/intro05.htm) to
 
 ```j
  2 3 5 * LHA { RHA
@@ -5332,7 +5332,7 @@ print(i + " => " + ham.next());
 
 ===Fast & complete version===
 
-A translation of my fast C# version. I was curious to see how much slower JavaScript is. The result: it runs about 5x times slower than C#, though YMMV. You can try it yourself here: <http://jsfiddle.net/N7AFN/>
+A translation of my fast C# version. I was curious to see how much slower JavaScript is. The result: it runs about 5x times slower than C#, though YMMV. You can try it yourself here: <https://jsfiddle.net/N7AFN/>
 
 --Mike Lorenz
 
@@ -7214,7 +7214,7 @@ end
 
 local
 
-	% Sieve of erasthothenes, adapted from <http://rosettacode.org/wiki/Sieve_of_Eratosthenes#Oz>
+	% Sieve of erasthothenes, adapted from <https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Oz>
 	fun {Sieve N}
 		 S = {Array.new 2 N true}
 		 M = {Float.toInt {Sqrt {Int.toFloat N}}}
@@ -7417,7 +7417,7 @@ The Pascal code above is by far slower.Easily to use for smooth-3 .. smooth-37.
 Big(O) is nearly linear to sub-linear . 1E7-> 0.028s => x10 =>1e8 ->0.273s => x1000 => 100'200'300'400 ~ 1e11 35.907s // estimated 270 s!
 This depends extreme on sorting speed.
 
-<http://rosettacode.org/wiki/Hamming_numbers#Direct_calculation_through_triples_enumeration> is head to head, but still faster for very big numbers  >1e8 (10^8: 4 MB 0.27 sec)
+<https://rosettacode.org/wiki/Hamming_numbers#Direct_calculation_through_triples_enumeration> is head to head, but still faster for very big numbers  >1e8 (10^8: 4 MB 0.27 sec)
 
 100'200'300'400 calculates in 8.33 s
 
@@ -7793,7 +7793,7 @@ ln   192.7618989  2^55  3^47  5^64  0^0
 ln   417.2530468  2^80  3^92  5^162  0^0
 00:00:00.028
 
-Actual Index 10201068944--> hamming Nr: 100200300400 see <http://ideone.com/q3fma>
+Actual Index 10201068944--> hamming Nr: 100200300400 see <https://ideone.com/q3fma>
 ln  4215.6152353  2^942  3^2276  5^660  0^0
 2 elemcount  5028911 out of 5841156
 3 elemcount    2620 out of     3165
@@ -8513,7 +8513,7 @@ print list(islice(h(), 999999, 1000000)) # runtime 9.5 sec on i5-3570S
 
 
 ==="Cyclical Iterators"===
-The original author is Raymond Hettinger and the code was first published [here](http://code.activestate.com/recipes/576961/) under the MIT license. Uses iterators dubbed "cyclical" in a sense that they are referring back (explicitly, with <code>p2, p3, p5</code> iterators) to the previously produced values, same as the above versions (through indecies into shared storage) and the classic [[#Haskell|Haskell]] version (implicitly timed by lazy evaluation).
+The original author is Raymond Hettinger and the code was first published [here](https://code.activestate.com/recipes/576961/) under the MIT license. Uses iterators dubbed "cyclical" in a sense that they are referring back (explicitly, with <code>p2, p3, p5</code> iterators) to the previously produced values, same as the above versions (through indecies into shared storage) and the classic [[#Haskell|Haskell]] version (implicitly timed by lazy evaluation).
 
 Memory is efficiently maintained automatically by the <code>tee</code> function for each of the three generator expressions, i.e. only that much is maintained as needed to produce the next value (although it looks like the storage is not shared so three copies are maintained implicitly there).
 
@@ -8523,7 +8523,7 @@ from heapq import merge
 
 def raymonds_hamming():
     # Generate "5-smooth" numbers, also called "Hamming numbers"
-    # or "Regular numbers".  See: <http://en.wikipedia.org/wiki/Regular_number>
+    # or "Regular numbers".  See: <https://en.wikipedia.org/wiki/Regular_number>
     # Finds solutions to 2**i * 3**j * 5**k  for some integers i, j, and k.
 
     def deferred_output():
@@ -8550,7 +8550,7 @@ Results are the same as before.
 ====Non-sharing recursive generator====
 Another formulation along the same lines, but greatly simplified, found [here](http://programmingpraxis.com/2011/08/30/hamming-numbers/#comment-3486).
 Lacks data sharing, i.e. calls self recursively thus creating a separate copy of the data stream fed to the tee() call, again and again, instead of using its own output.
-This [gravely impacts the efficiency](http://ideone.com/PIkWEN). Not to be used.
+This [gravely impacts the efficiency](https://ideone.com/PIkWEN). Not to be used.
 
 
 ```python

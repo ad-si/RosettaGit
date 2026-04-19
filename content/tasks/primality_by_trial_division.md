@@ -518,7 +518,7 @@ else (
 
 
 =={{Header|AutoHotkey}}==
-[Discussion](http://www.autohotkey.com/forum/topic44657.html)
+[Discussion](https://www.autohotkey.com/forum/topic44657.html)
 
 ```autohotkey
 MsgBox % IsPrime(1995937)
@@ -3338,7 +3338,7 @@ def prime3(a):
 
 Regular expression by "Abigail".
 
-(An explanation is given in "[The Story of the Regexp and the Primes](http://paddy3118.blogspot.com/2009/08/story-of-regexp-and-primes.html)").
+(An explanation is given in "[The Story of the Regexp and the Primes](https://paddy3118.blogspot.com/2009/08/story-of-regexp-and-primes.html)").
 
 ```python
 >>>
@@ -3926,7 +3926,7 @@ const func boolean: isPrime (in integer: number) is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#is_prime>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#is_prime>
 
 
 ## Sidef

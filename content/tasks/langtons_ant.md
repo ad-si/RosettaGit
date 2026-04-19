@@ -426,7 +426,7 @@ After 11655 moves. Showing rows 28 to 78 columns 1 to 79
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://ahkscript.org/boards/viewtopic.php?f=17&t=1363)
+ahk forum: [discussion](https://www.autohotkey.com/boards/viewtopic.php?f=17&t=1363)
 {{works with|AutoHotkey 1.1}} (Fixed by just me)
 
 ```AutoHotkey
@@ -485,7 +485,7 @@ CreateDIB(PixelArray, PAW, PAH, BMW := 0, BMH := 0, Gradient := 1) { ; SKAN, 01-
     if (!Gradient)
         HBM := DllCall("User32.dll\CopyImage", "Ptr", HBM, "UInt", 0, "Int", 0, "Int", 0, "Int", 8, "UPtr")
     return DllCall("User32.dll\CopyImage", "Ptr", HBM, "UInt", 0, "Int", BMW, "Int", BMH, "UInt", 0x200C, "UPtr")
-} ; <http://ahkscript.org/boards/viewtopic.php?f=6&t=3203>
+} ; <https://www.autohotkey.com/boards/viewtopic.php?f=6&t=3203>
 ```
 
 
@@ -586,7 +586,7 @@ EndFunc  ;==>_SetAnt
 # usage: awk  -v debug=0  -f langton.awk
 
 # Simulates the cellular automaton "Langton's ant",
-# see <http://en.wikipedia.org/wiki/Langton%27s_ant>
+# see <https://en.wikipedia.org/wiki/Langton%27s_ant>
 
 function turnRight() {
 	dir++
@@ -2172,7 +2172,7 @@ call show
 
 ## EchoLisp
 
-We implement multi-colored ants, as depicted in the article. An ant is described using L(eft)R(ight) patterns. LR is the basic black and white ant, other are  RRLLLRRL or  RRLLLRLLLRRR. See results for s [black-and-white](http://www.echolalie.org/echolisp/images/ant-1.png) or [colored](http://www.echolalie.org/echolisp/images/ant-2.png) ants.
+We implement multi-colored ants, as depicted in the article. An ant is described using L(eft)R(ight) patterns. LR is the basic black and white ant, other are  RRLLLRRL or  RRLLLRLLLRRR. See results for s [black-and-white](https://www.echolalie.org/echolisp/images/ant-1.png) or [colored](https://www.echolalie.org/echolisp/images/ant-2.png) ants.
 
 ```scheme
 
@@ -3716,7 +3716,7 @@ End With
 End
 ```
 
-'''[Click here for an image of the result](http://www.cogier.com/gambas/Langton's%20ant.png)'''
+'''[Click here for an image of the result](https://www.cogier.com/gambas/Langton's%20ant.png)'''
 
 
 ## GFA Basic
@@ -4038,8 +4038,8 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[graphics.icn provides graphics support (WDone)](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics support (WDone)](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
 
 
 ## J
@@ -8183,7 +8183,7 @@ SetVid(3);                      \restore normal text mode
 ## zkl
 
 [[File:AntXPL0.gif|right]]
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 white:=0xff|ff|ff; black:=0;

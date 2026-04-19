@@ -3776,7 +3776,7 @@ Inform 6 has no xor or rotate operators.  It also has no shift operators, althou
 ## J
 
 
-Here are the "[bitwise operators](http://www.jsoftware.com/help/dictionary/dbdotn.htm)":
+Here are the "[bitwise operators](https://www.jsoftware.com/help/dictionary/dbdotn.htm)":
 
 
 ```j
@@ -3784,7 +3784,7 @@ bAND=:  17 b.  NB. 16+#.0 0 0 1
 bOR=:   23 b.  NB. 16+#.0 1 1 1
 bXOR=:  22 b.  NB. 16+#.0 1 1 0
 b1NOT=: 28 b.  NB. 16+#.1 1 0 0
-bLshift=:  33 b.~ NB. see http://www.jsoftware.com/help/release/bdot.htm
+bLshift=:  33 b.~ NB. see https://www.jsoftware.com/help/release/bdot.htm
 bRshift=:  33 b.~ -
 bRAshift=: 34 b.~ -
 bLrot=:    32 b.~
@@ -4385,7 +4385,7 @@ gives back:
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Newer versions of MATLAB have even more bitwise operations than those demonstrated here. A complete list of bitwise operations for the newest version of MATLAB can be found at [MathWorks](http://www.mathworks.com/help/toolbox/fixedpoint/ref/f20333.html#bp7caxc-42)
+Newer versions of MATLAB have even more bitwise operations than those demonstrated here. A complete list of bitwise operations for the newest version of MATLAB can be found at [MathWorks](https://www.mathworks.com/help/toolbox/fixedpoint/ref/f20333.html#bp7caxc-42)
 
 
 ```MATLAB
@@ -4672,7 +4672,7 @@ proc bitwise(a, b) =
 
 ## NSIS
 
-All bitwise operations in NSIS are handled by the [IntOp](http://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2) instruction.
+All bitwise operations in NSIS are handled by the [IntOp](https://nsis.sourceforge.net/Docs/Chapter4.html#4.9.10.2) instruction.
 
 ```nsis
 Function Bitwise
@@ -5436,7 +5436,7 @@ bitwNot(a)
 bitwShiftL(a, 2)
 bitwShiftR(a, 2)
 
-# See also http://cran.r-project.org/src/base/NEWS.html
+# See also https://cran.r-project.org/src/base/NEWS.html
 ```
 
 
@@ -5832,14 +5832,14 @@ Output:
 ```
 
 
-''Note: bitwise operations were also described in [SRFI-60](http://srfi.schemers.org/srfi-60/), with additional aliases (and previously discussed in [SRFI-33](http://srfi.schemers.org/srfi-33/) which remained draft).''
+''Note: bitwise operations were also described in [SRFI-60](https://srfi.schemers.org/srfi-60/), with additional aliases (and previously discussed in [SRFI-33](https://srfi.schemers.org/srfi-33/) which remained draft).''
 
 
 ## Seed7
 
-The type [integer](http://seed7.sourceforge.net/manual/types.htm#integer) is intended for arithmetic operations.
+The type [integer](https://seed7.sourceforge.net/manual/types.htm#integer) is intended for arithmetic operations.
 Besides arithmetic shifts, which are seen as multiplication and division by powers of two, no bitwise operations are supported.
-The type [bin32](http://seed7.sourceforge.net/libraries/bin32.htm) is intended for bit-pattern operations.
+The type [bin32](https://seed7.sourceforge.net/libraries/bin32.htm) is intended for bit-pattern operations.
 Bin32 has the same internal representation as integer.
 That way conversions between them don't cause an overhead.
 Right shifting of bin32 values is done with logical shifts.

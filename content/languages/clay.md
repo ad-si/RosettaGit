@@ -14,4 +14,4 @@ It supports Multiple dispatch and compile time meta-programming. It does not hav
 
 There is little documentation, but the following discussions may be of help:
 * [Discussion of Clay on Lambda the Ultimate](http://lambda-the-ultimate.org/node/4023)
-* [Discussion of Clay on  on Reddit](http://www.reddit.com/r/programming/comments/ctmxx/the_clay_programming_language/)
+* [Discussion of Clay on  on Reddit](https://www.reddit.com/r/programming/comments/ctmxx/the_clay_programming_language/)

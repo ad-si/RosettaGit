@@ -2261,7 +2261,7 @@ Array.prototype.unique = function() {
 ```
 
 
-If, however, the array is homogenous, or we wish to interpret it as such by using JavaScript's Abstract Equality comparison (as in '==', see <http://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3>) then it proves significantly faster to use a hash table.
+If, however, the array is homogenous, or we wish to interpret it as such by using JavaScript's Abstract Equality comparison (as in '==', see <https://www.ecma-international.org/ecma-262/5.1/#sec-11.9.3>) then it proves significantly faster to use a hash table.
 
 For example, in ES 5:
 
@@ -4404,7 +4404,7 @@ function undupe(arr) {
 
 ### Duplicates in a dataset
 
-Stata can report duplicate lines, or remove them. See '''[duplicates](http://www.stata.com/help.cgi?duplicates)''' in Stata help.
+Stata can report duplicate lines, or remove them. See '''[duplicates](https://www.stata.com/help.cgi?duplicates)''' in Stata help.
 
 
 ```stata
@@ -4440,7 +4440,7 @@ end
 ### Mata
 
 
-The '''[uniqrows](http://www.stata.com/help.cgi?mf_uniqrows)''' function removes duplicate rows from a matrix.
+The '''[uniqrows](https://www.stata.com/help.cgi?mf_uniqrows)''' function removes duplicate rows from a matrix.
 
 
 ```stata

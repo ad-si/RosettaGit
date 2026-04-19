@@ -346,8 +346,8 @@ Does not quite perform the task quite as specified since the node count, N, is s
 namespace Rosetta {
 
     /*! Implementation of Gauss-Legendre quadrature
-    *  http://en.wikipedia.org/wiki/Gaussian_quadrature
-    *  http://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature
+    *  https://en.wikipedia.org/wiki/Gaussian_quadrature
+    *  https://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature
     *
     */
     template <int N>

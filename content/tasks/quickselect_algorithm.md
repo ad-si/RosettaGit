@@ -1732,7 +1732,7 @@ print(quickselect(demo,14)):
 ```NetRexx
 /* NetRexx */
 options replace format comments java crossref symbols nobinary
-/** @see <a href="http://en.wikipedia.org/wiki/Quickselect">http://en.wikipedia.org/wiki/Quickselect</a> */
+/** @see <a href="https://en.wikipedia.org/wiki/Quickselect">https://en.wikipedia.org/wiki/Quickselect</a> */
 
 runSample(arg)
 return

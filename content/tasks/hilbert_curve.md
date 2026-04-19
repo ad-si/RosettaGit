@@ -767,7 +767,7 @@ svgFromPoints w xys =
       points =
         (unwords . fmap (((++) . show . fst) <*> ((' ' :) . show . snd))) xys
   in unlines
-       [ "<svg xmlns=\"http://www.w3.org/2000/svg\""
+       [ "<svg xmlns=\"https://www.w3.org/2000/svg\""
        , unwords ["width=\"512\" height=\"512\" viewBox=\"5 5", sw, sw, "\"> "]
        , "<path d=\"M" ++ points ++ "\" "
        , "stroke-width=\"2\" stroke=\"red\" fill=\"transparent\"/>"
@@ -1068,7 +1068,7 @@ const drawHilbert = order => {
     const path = points.join(' ');
 
     console.log(
-        `<svg xmlns="http://www.w3.org/2000/svg"
+        `<svg xmlns="https://www.w3.org/2000/svg"
     width="${size}"
     height="${size}"
     viewBox="${space / 2} ${space / 2} ${width * space} ${width * space}">
@@ -1181,7 +1181,7 @@ Like the version above, generates an SVG string for display in a browser.
 
         // svgFromPoints :: Int -> [(Int, Int)] -> String
         const svgFromPoints = w => xys =>
-            ['<svg xmlns="http://www.w3.org/2000/svg"',
+            ['<svg xmlns="https://www.w3.org/2000/svg"',
                 `width="500" height="500" viewBox="5 5 ${w} ${w}">`,
                 `<path d="M${concat(xys).join(' ')}" `,
                 'stroke-width="2" stroke="red" fill="transparent"/>',
@@ -1982,7 +1982,7 @@ def svgFromPoints(w):
             xys
         ))
         return '\n'.join(
-            ['<svg xmlns="http://www.w3.org/2000/svg"',
+            ['<svg xmlns="https://www.w3.org/2000/svg"',
              f'width="512" height="512" viewBox="5 5 {w} {w}">',
              f'<path d="M{xs}" ',
              'stroke-width="2" stroke="red" fill="transparent"/>',
@@ -2812,7 +2812,7 @@ hilbert(0, 0, width, 0, 0)
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 hilbert(6) : turtle(_);

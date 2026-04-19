@@ -24,7 +24,7 @@ Google for +"inverted syntax" +programming
 
 :I do not find the google results very convincing.  Most of the ones I looked at were synthetic text and the one that I found that did not relate to perl/python if statements used it apologetically, for an issue related to grammatical awkwardness in english.  That said, I do not think we need any sort of "absolute correctness", and I have no personal objection to this task being called whatever people think is right.  And if perl jargon is the way to go, so be it.  --[[User:Rdm|Rdm]] 14:56, 1 June 2011 (UTC)
 
-:'''"Postfix flow control"'''?  Or "postfix control structures", or whatever.  Here's one relevant usage:  <http://search.cpan.org/~elliotjs/Perl-Critic-1.116/lib/Perl/Critic/Policy/ControlStructures/ProhibitPostfixControls.pm> .<BR> --[[User:DanBron|DanBron]] 18:58, 1 June 2011 (UTC)
+:'''"Postfix flow control"'''?  Or "postfix control structures", or whatever.  Here's one relevant usage:  <https://metacpan.org/~elliotjs/Perl-Critic-1.116/lib/Perl/Critic/Policy/ControlStructures/ProhibitPostfixControls.pm> .<BR> --[[User:DanBron|DanBron]] 18:58, 1 June 2011 (UTC)
 
 
 We have suggestions. maybe people could argue for/against until we come to some conclusion? (P.S. what does the original task creator think)? --[[User:Paddy3118|Paddy3118]] 20:53, 1 June 2011 (UTC)

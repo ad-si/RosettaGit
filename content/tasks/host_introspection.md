@@ -302,7 +302,7 @@ Endianness: Little
 
 Common Lisp doesn't provide a native way to reliably determine this (though some unlike other languages, you rarely, if ever, need this information).
 
-The [Environment](http://www.lispworks.com/documentation/HyperSpec/Body/c_enviro.htm) has some implementation-specific functions that might provide a good hint, e.g.,
+The [Environment](https://www.lispworks.com/documentation/HyperSpec/Body/c_enviro.htm) has some implementation-specific functions that might provide a good hint, e.g.,
 
 ```lisp
 (machine-type) ;; => "X86-64" on SBCL here
@@ -667,7 +667,7 @@ endianness: little
 
 ```haskell
 import Data.Bits
-import ADNS.Endian -- http://hackage.haskell.org/package/hsdns
+import ADNS.Endian -- https://hackage.haskell.org/package/hsdns
 
 main = do
   putStrLn $ "Word size: " ++ bitsize
@@ -1583,7 +1583,7 @@ object ShowByteOrder extends App {
 
 ## Seed7
 
-The library [cc_conf.s7i](http://seed7.sourceforge.net/libraries/cc_conf.htm) provides values that describe C compiler and runtime library.
+The library [cc_conf.s7i](https://seed7.sourceforge.net/libraries/cc_conf.htm) provides values that describe C compiler and runtime library.
 The example below assumes that the word size is the size of a pointer.
 
 

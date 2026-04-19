@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-<!-- page extracted from wikipedia: <http://en.wikipedia.org/wiki/RTL/2> -->
+<!-- page extracted from wikipedia: <https://en.wikipedia.org/wiki/RTL/2> -->
 RTL/2 was a high-level programming language developed at [Imperial Chemical Industries Ltd](https://en.wikipedia.org/wiki/Imperial_Chemical_Industries) by [J.G.P. Barnes](https://en.wikipedia.org/wiki/John_Barnes_(computer_scientist)). It was originally used internally within ICI but was distributed by SPL International in 1974<ref>Barnes J.G.P., The Standardisation of RTL/2, Software Practice and Experience, Volume 10 Issue 9, pp 707 - 719, Wyley, September 1980</ref>
 It was designed for use in real-time computing (hence the acronym RTL = real-time language). Based on concepts from [Algol 68](https://rosettacode.org/wiki/Algol_68), it was intended to be a small, simple language.<ref>RTL/2 Language Specification</ref><ref><http://hopl.murdoch.edu.au/showlanguage2.prx?exp=596#_jmp0_></ref> RTL/2 was standardised in 1980 by the [British Standards Institution](https://en.wikipedia.org/wiki/British_Standards_Institution)<ref><http://shop.bsigroup.com/en/ProductDetail/?pid=000000000000133906></ref>.
 

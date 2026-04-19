@@ -1121,7 +1121,7 @@ Variable type is defined in a <code>PICTURE</code> clause and/or a <code>USAGE</
 ```
 
 
-The <code>USAGE</code> clause is used to define pointers, floating-point numbers, binary numbers, [packed decimals](http://en.wikipedia.org/wiki/Binary-coded_decimal#Packed_BCD) and object references amongst others.
+The <code>USAGE</code> clause is used to define pointers, floating-point numbers, binary numbers, [packed decimals](https://en.wikipedia.org/wiki/Binary-coded_decimal#Packed_BCD) and object references amongst others.
 
 Each variable has a ''level-number'', which is a number from 1 to 49, or 77, which goes before the variable name. Level-numbers indicate how data is grouped together.
 Variables with higher level-numbers are subordinate to variables with lower level-numbers.
@@ -1188,7 +1188,7 @@ Variables by default are local to the subprogram/class/etc. (''source element'')
 
 ### Declaration
 
-'''Special''' variables are more or less like globals in other languages: <http://www.lispworks.com/documentation/HyperSpec/Body/d_specia.htm>
+'''Special''' variables are more or less like globals in other languages: <https://www.lispworks.com/documentation/HyperSpec/Body/d_specia.htm>
 
 Special variables may be defined with '''defparameter'''.
 
@@ -2305,7 +2305,7 @@ now = new Date(1234567890); //not legal
 
 ## JavaScript
 
-Information lifted from [Stack Overflow](http://stackoverflow.com/questions/500431/javascript-variable-scope) (credit to [krosenvold](http://stackoverflow.com/users/23691/krosenvold) and [triptych](http://stackoverflow.com/users/43089/triptych))
+Information lifted from [Stack Overflow](https://stackoverflow.com/questions/500431/javascript-variable-scope) (credit to [krosenvold](https://stackoverflow.com/users/23691/krosenvold) and [triptych](https://stackoverflow.com/users/43089/triptych))
 
 Javascript uses scope chains to establish the scope for a given function. There is typically one global scope, and each function defined has its own nested scope. Any function defined within another function has a local scope which is linked to the outer function. It's always the position in the source that defines the scope.
 
@@ -3669,7 +3669,7 @@ my ($x, $y, @b, @c, $z) = @a; # Same thing, and also @c becomes empty
 ```
 
 
-The kind of value a variable can hold depends on its sigil, "sigil" being a slang term for "funny character in front of a variable name". <code>$dollarsigns</code> can hold scalars: the undefined value, numbers, strings, or [references](http://perldoc.perl.org/perlref.html). <code>@atsigns</code> can hold arrays of scalars, and <code>%percentsigns</code> can hold hashes of scalars (associative arrays mapping strings to scalars); nested data structures are constructed by making arrays or hashes of references to arrays or hashes.
+The kind of value a variable can hold depends on its sigil, "sigil" being a slang term for "funny character in front of a variable name". <code>$dollarsigns</code> can hold scalars: the undefined value, numbers, strings, or [references](https://perldoc.perl.org/perlref.html). <code>@atsigns</code> can hold arrays of scalars, and <code>%percentsigns</code> can hold hashes of scalars (associative arrays mapping strings to scalars); nested data structures are constructed by making arrays or hashes of references to arrays or hashes.
 
 There are two other sigils, but they behave quite unlike the others. A token of the form <code>&foo</code> refers to a subroutine named <code>foo</code>. In older versions of Perl, ampersands were necessary for calling user-defined subroutines, but since they no longer are, they have only a handful of obscure uses, like making references to named subroutines. Note that you can't assign to an ampersand-marked name. But you can assign to a typeglob, a kind of object represented with the notation <code>*var</code>. A typeglob <code>*foo</code> represents the symbol-table entry for all of the otherwise independent variables <code>$foo</code>, <code>@foo</code>, <code>%foo</code>, and <code>&foo</code>. Assigning a string <code>"bar"</code> to <code>*foo</code> makes these variables aliases for <code>$bar</code>, <code>@bar</code>, <code>%bar</code>, and <code>&bar</code> respectively. Alternatively, you can assign a reference to a typeglob, which creates an alias only for the variable of the appropriate type. In particular, you can say <code>*twiddle = sub {...}</code> to change the definition of the subroutine <code>&twiddle</code> without affecting <code>$twiddle</code> and friends.
 
@@ -3996,8 +3996,8 @@ a_function();
 /**
  * there is another special type of variable called (Resource).
  * for more info regarding Resources:
- * @url http://php.net/manual/en/language.types.resource.php
- * @url http://php.net/manual/en/resource.php
+ * @url https://php.net/manual/en/language.types.resource.php
+ * @url https://php.net/manual/en/resource.php
  */
 
 ```
@@ -4007,8 +4007,8 @@ a_function();
 ## PicoLisp
 
 You can control the local bindings of symbols with functions like
-'[use](http://software-lab.de/doc/refU.html#use)' or
-'[let](http://software-lab.de/doc/refL.html#let)':
+'[use](https://software-lab.de/doc/refU.html#use)' or
+'[let](https://software-lab.de/doc/refL.html#let)':
 
 ```PicoLisp
 (use (A B C)
@@ -4035,11 +4035,11 @@ The parentheses can be omitted if there is only a single variable
 ```
 
 Other functions that handle local bindings are
-'[let?](http://software-lab.de/doc/refL.html#let?)',
-'[bind](http://software-lab.de/doc/refB.html#bind)',
-'[job](http://software-lab.de/doc/refJ.html#job)',
-'[with](http://software-lab.de/doc/refW.html#with)' or
-'[for](http://software-lab.de/doc/refF.html#for)'.
+'[let?](https://software-lab.de/doc/refL.html#let?)',
+'[bind](https://software-lab.de/doc/refB.html#bind)',
+'[job](https://software-lab.de/doc/refJ.html#job)',
+'[with](https://software-lab.de/doc/refW.html#with)' or
+'[for](https://software-lab.de/doc/refF.html#for)'.
 
 
 ## PL/I
@@ -4808,7 +4808,7 @@ see Msg + nl
 
 ## Ruby
 
-Information taken from [Variables](http://www.rubyist.net/~slagell/ruby/variables.html) page at the [Ruby User's Guide](http://www.rubyist.net/~slagell/ruby/)
+Information taken from [Variables](https://www.rubyist.net/~slagell/ruby/variables.html) page at the [Ruby User's Guide](https://www.rubyist.net/~slagell/ruby/)
 
 <blockquote>Ruby has three kinds of variables, one kind of constant and exactly two pseudo-variables. The variables and the constants have no type. While untyped variables have some drawbacks, they have many more advantages and fit well with ruby's quick and easy philosophy.
 
@@ -4817,10 +4817,10 @@ Variables must be declared in most languages in order to specify their type, mod
 The first character of an identifier categorizes it at a glance:
 
 <table border>
-<tr><td> $          </td><td> [global variable](http://www.rubyist.net/~slagell/ruby/globalvars.html) </td></tr>
-<tr><td> @          </td><td> [instance variable](http://www.rubyist.net/~slagell/ruby/instancevars.html) </td></tr>
-<tr><td> [a-z] or _ </td><td> [local variable](http://www.rubyist.net/~slagell/ruby/localvars.html) </td></tr>
-<tr><td> [A-Z]      </td><td> [constant](http://www.rubyist.net/~slagell/ruby/constants.html) </td></tr>
+<tr><td> $          </td><td> [global variable](https://www.rubyist.net/~slagell/ruby/globalvars.html) </td></tr>
+<tr><td> @          </td><td> [instance variable](https://www.rubyist.net/~slagell/ruby/instancevars.html) </td></tr>
+<tr><td> [a-z] or _ </td><td> [local variable](https://www.rubyist.net/~slagell/ruby/localvars.html) </td></tr>
+<tr><td> [A-Z]      </td><td> [constant](https://www.rubyist.net/~slagell/ruby/constants.html) </td></tr>
 </table>
 
 The only exceptions to the above are ruby's pseudo-variables: <code>self</code>, which always refers to the currently executing object, and <code>nil</code>, which is the meaningless value assigned to uninitialized variables. Both are named as if they are local variables, but <code>self</code> is a global variable maintained by the interpreter, and <code>nil</code> is really a constant. As these are the only two exceptions, they don't confuse things too much.

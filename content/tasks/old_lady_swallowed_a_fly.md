@@ -1609,7 +1609,7 @@ link printf
 
 Sample output omitted.
 
-[printf.icn provides printf formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides printf formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1774,7 +1774,7 @@ fun main(args: Array<String>) {
 ```lb
 
 '[RC] Old lady swallowed a fly
-'http://rosettacode.org/wiki/Old_lady_swallowed_a_fly
+'https://rosettacode.org/wiki/Old_lady_swallowed_a_fly
 'lyrics
 'http://www.timmyabell.com/music/lyrics/ol/oldlady.htm
 
@@ -2269,7 +2269,7 @@ List.iter (fun i -> print_string d.(i)) s
 
 ### Using dictionary based decompression
 
-Here we use the function <code ocaml>String.fold_left</code> [1](http://ocaml-extlib.googlecode.com/svn/doc/apiref/ExtString.String.html#VALfold_left) which is not available in the standard library but in the [extlib](http://code.google.com/p/ocaml-extlib/):
+Here we use the function <code ocaml>String.fold_left</code> [1](http://ocaml-extlib.googlecode.com/svn/doc/apiref/ExtString.String.html#VALfold_left) which is not available in the standard library but in the [extlib](https://code.google.com/p/ocaml-extlib/):
 
 ```ocaml
 let dict = [|

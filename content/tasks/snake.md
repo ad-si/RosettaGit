@@ -39,7 +39,7 @@ Implement a variant of the Snake game, in any interactive environment, in which 
 =
 By ancient tradition, the controls are Q for up, A for down, O for left, and P for right.
 
-A screenshot is [here](http://www.edmundgriffiths.com/spectrumsnake.jpg).
+A screenshot is [here](https://www.edmundgriffiths.com/spectrumsnake.jpg).
 
 Note that lines <code>10</code> to <code>210</code> and <code>580</code> to <code>890</code>—more than half the program—define graphics characters for the snake's head (facing in different directions) and for its food. If you're happy to make do with characters from the standard character set, you can easily adapt lines <code>220</code> to <code>570</code> to work on their own. The things the snake eats are supposed to be apples, although they don't look too much like them.
 

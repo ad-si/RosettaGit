@@ -72,6 +72,6 @@ Compilation with clang version 3.2-7ubuntu1 (tags/RELEASE_32/final) (based on LL
             ^
  1 error generated.
 
-:Should be fixed. The [last editor](http://rosettacode.org/mw/index.php?title=Simple_database&diff=155789&oldid=153280) forgot to change the parameter types for the function at the bottom.
-:Valgrind reports an invalid read (also if I run the [original code](http://rosettacode.org/mw/index.php?title=Simple_database&oldid=133351#C)) but I'm not in the mood tonight to investigate further :-). --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 21:07, 26 March 2014 (UTC)
+:Should be fixed. The [last editor](https://rosettacode.org/mw/index.php?title=Simple_database&diff=155789&oldid=153280) forgot to change the parameter types for the function at the bottom.
+:Valgrind reports an invalid read (also if I run the [original code](https://rosettacode.org/mw/index.php?title=Simple_database&oldid=133351#C)) but I'm not in the mood tonight to investigate further :-). --[[User:AndiPersti|Andreas Perstinger]] ([[User talk:AndiPersti|talk]]) 21:07, 26 March 2014 (UTC)
 :: I've made some changes. Now code compiles and runs without segmentation fault. Please check consistency of code style. Unfortunately that "simple DB" not usable for me, because keeps all data in memory and consumes five times more memory compared to the size of the file. --[[User:Yamiyam|Yamiyam]] ([[User talk:Yamiyam|talk]]) 15:47, 29 March 2014 (UTC)

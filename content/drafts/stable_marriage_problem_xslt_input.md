@@ -13,7 +13,7 @@ tags = []
 The following document is the input to the XSLT 2.0 style-sheet for the [[Stable_marriage_problem#XSLT_2.0|Stable marriage problem]] problem.
 
 <lang><t>
- <m:stable-marriage-problem xmlns:m="http://rosettacode.org/wiki/Stable_marriage_problem">
+ <m:stable-marriage-problem xmlns:m="https://rosettacode.org/wiki/Stable_marriage_problem">
    <m:dude name="abe">
      <m:interest>abi</m:interest>
      <m:interest>eve</m:interest>

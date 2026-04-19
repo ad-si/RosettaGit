@@ -439,7 +439,7 @@ MsgBox, % nthRoot( 10, 7131.5**10, p) "`n"
 
 
 ;---------------------------------------------------------------------------
-nthRoot(n, A, p) { ; http://en.wikipedia.org/wiki/Nth_root_algorithm
+nthRoot(n, A, p) { ; https://en.wikipedia.org/wiki/Nth_root_algorithm
 ;---------------------------------------------------------------------------
     x1 := A
     x2 := A / n
@@ -3170,7 +3170,7 @@ const func float: nthRoot (in integer: n, in float: a) is func
 ```
 
 
-Original source: <http://seed7.sourceforge.net/algorith/math.htm#nthRoot>
+Original source: <https://seed7.sourceforge.net/algorith/math.htm#nthRoot>
 
 
 ## Sidef

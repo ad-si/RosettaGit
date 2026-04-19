@@ -157,4 +157,4 @@ produced by my   $CALC   (REXX) program by specifying:
 
 -- [[User:Gerard Schildberger|Gerard Schildberger]] ([[User talk:Gerard Schildberger|talk]]) 02:50, 8 March 2014 (UTC)
 
-:Well, apart from the little matter of sero, your table matches the one on [OEIS](http://oeis.org/A005188/b005188.txt). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:05, 8 March 2014 (UTC)
+:Well, apart from the little matter of sero, your table matches the one on [OEIS](https://oeis.org/A005188/b005188.txt). --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 08:05, 8 March 2014 (UTC)

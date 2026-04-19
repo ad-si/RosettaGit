@@ -122,7 +122,7 @@ package Instrument is
 end Instrument;
 ```
 
-There is also a tool called [AdaDoc](http://sourceforge.net/projects/adadoc/).  This can be used to generate documentation of an Ada module (or modules?) for a variety of different formats: HTML, LaTeX, plain text and more.
+There is also a tool called [AdaDoc](https://sourceforge.net/projects/adadoc/).  This can be used to generate documentation of an Ada module (or modules?) for a variety of different formats: HTML, LaTeX, plain text and more.
 
 
 ## Arturo
@@ -151,18 +151,18 @@ someFunc {
 
 ## AutoHotkey
 
-You can use the [GenDocs library](http://www.autohotkey.com/forum/viewtopic.php?t=22548).
+You can use the [GenDocs library](https://www.autohotkey.com/forum/viewtopic.php?t=22548).
 
-It generates html documentation in the style of the canonical ahk [documentation](http://www.autohotkey.com/docs/commands/MsgBox.htm).
+It generates html documentation in the style of the canonical ahk [documentation](https://www.autohotkey.com/docs/commands/MsgBox.htm).
 
-[BBCode](http://en.wikipedia.org/wiki/BBCode) is supported for markup.
+[BBCode](https://en.wikipedia.org/wiki/BBCode) is supported for markup.
 
 Example from the library distribution:
 ```AutoHotkey
 ;
 ; Function: example_add
 ; Description:
-;     Adds two or three numbers (see [url=http://en.wikipedia.org/Number]Number [/url])
+;     Adds two or three numbers (see [url=https://en.wikipedia.org/Number]Number [/url])
 ; Syntax: example_add(number1, number2[, number3=0])
 ; Parameters:
 ;		number1 - First number to add.
@@ -747,7 +747,7 @@ It is also possible to document functions and their arguments with type informat
 
 ## Factor
 
-Factor has an extensive documentation system built in. See docs.factorcode.org : <http://docs.factorcode.org/content/article-writing-help.html>
+Factor has an extensive documentation system built in. See docs.factorcode.org : <https://docs.factorcode.org/content/article-writing-help.html>
 
 
 ## Fancy
@@ -943,7 +943,7 @@ help My Hello Message>
 
 ## Haskell
 
-[Haddock](http://haskell.org/haddock/) is a popular documentation generator for the Haskell language.
+[Haddock](https://haskell.org/haddock/) is a popular documentation generator for the Haskell language.
 
 
 ```haskell
@@ -976,7 +976,7 @@ class Foo a where
 ```
 
 
-See [this chapter](http://haskell.org/haddock/doc/html/markup.html) for more information about the markup.
+See [this chapter](https://haskell.org/haddock/doc/html/markup.html) for more information about the markup.
 
 == Icon and Unicon ==
 =
@@ -1014,8 +1014,8 @@ procedure x1()    #: short description of procedure
 ```
 
 
-*  [ipldoc.icn](http://www.cs.arizona.edu/icon/library/src/progs/ipldoc.icn) Program to collect library documentation.<br/>
-*  [iplindex.icn](http://www.cs.arizona.edu/icon/library/src/progs/iplindex.icn) Program to produce indexed listing of the program library.
+*  [ipldoc.icn](https://www.cs.arizona.edu/icon/library/src/progs/ipldoc.icn) Program to collect library documentation.<br/>
+*  [iplindex.icn](https://www.cs.arizona.edu/icon/library/src/progs/iplindex.icn) Program to produce indexed listing of the program library.
 
 
 =
@@ -1031,7 +1031,7 @@ TBD
 
 ## J
 
-Use [scripdoc](http://www.jsoftware.com/trac/base/browser/trunk/main/script/doc.ijs?rev=1):
+Use [scripdoc](https://www.jsoftware.com/trac/base/browser/trunk/main/script/doc.ijs?rev=1):
 
 ```j
 NB.
@@ -1301,7 +1301,7 @@ proc helloWorld*(times: int) =
 
 
 =={{header|Objective-C}}==
-Common tools include [Doxygen <http://doxygen.org>], [HeaderDoc <http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html>] and [GSDoc](http://www.gnustep.org/resources/documentation/Developer/Base/ProgrammingManual/manual_9.html). The use of doxygen is much like in [[C]].
+Common tools include [Doxygen <http://doxygen.org>], [HeaderDoc <https://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html>] and [GSDoc](http://www.gnustep.org/resources/documentation/Developer/Base/ProgrammingManual/manual_9.html). The use of doxygen is much like in [[C]].
 
 
 ### HeaderDoc
@@ -1345,7 +1345,7 @@ method : public : Set(name : String, value : String) ~ Bool {
 
 ## OCaml
 
-[OCamldoc](http://caml.inria.fr/pub/docs/manual-ocaml/manual029.html) is a documentation generator that is included with OCaml. Documentation comments all start with <code>(**</code> (but no more than two asterisks) and end with <code>*)</code>. Like Javadoc, "tags" can be embedded starting with <code>@</code>.
+[OCamldoc](https://caml.inria.fr/pub/docs/manual-ocaml/manual029.html) is a documentation generator that is included with OCaml. Documentation comments all start with <code>(**</code> (but no more than two asterisks) and end with <code>*)</code>. Like Javadoc, "tags" can be embedded starting with <code>@</code>.
 
 
 ## PARI/GP
@@ -1361,12 +1361,12 @@ PARI documentation is done as for [[#C|C]].
 
 ## Perl
 
-Perl's documentation mechanism is called [POD (Plain Old Documentation)](http://perldoc.perl.org/perlpod.html). Basically, any line that starts with an equal sign followed by a word (e.g. <tt>=head1</tt>) starts a documentation comment; and it lasts until a line that begins with <tt>=cut</tt>. Many formatting commands are recognized; for example, a line beginning with <tt>=item</tt> starts a section for an item, text wrapped in <tt>I< ... ></tt> is italicized, text wrapped in <tt>C< ... ></tt> is formatted as code, etc. See the [perlpod](http://perldoc.perl.org/perlpod.html) and [perlpodspec](http://perldoc.perl.org/perlpodspec.html) manuals for more details about the format.
+Perl's documentation mechanism is called [POD (Plain Old Documentation)](https://perldoc.perl.org/perlpod.html). Basically, any line that starts with an equal sign followed by a word (e.g. <tt>=head1</tt>) starts a documentation comment; and it lasts until a line that begins with <tt>=cut</tt>. Many formatting commands are recognized; for example, a line beginning with <tt>=item</tt> starts a section for an item, text wrapped in <tt>I< ... ></tt> is italicized, text wrapped in <tt>C< ... ></tt> is formatted as code, etc. See the [perlpod](https://perldoc.perl.org/perlpod.html) and [perlpodspec](https://perldoc.perl.org/perlpodspec.html) manuals for more details about the format.
 
 
 ## Perl 6
 
-Similarly to Perl 5, Perl 6 is documented using [Pod](http://perlcabal.org/syn/S26.html) (a redesigned version of POD). However, it's not simply ignored by the parser as in Perl 5, it's an internal part of the language spec and can be used to attach documentation objects to almost any part of the code.
+Similarly to Perl 5, Perl 6 is documented using [Pod](https://perlcabal.org/syn/S26.html) (a redesigned version of POD). However, it's not simply ignored by the parser as in Perl 5, it's an internal part of the language spec and can be used to attach documentation objects to almost any part of the code.
 
 
 ```perl6
@@ -1394,7 +1394,7 @@ A compiler has a built-in <code>--doc</code> switch that will generate documenta
 
 ## PicoLisp
 
-PicoLisp doesn't yet support inline documentation directly in the code. However, it has built-in runtime documentation via the '[doc](http://software-lab.de/doc/refD.html#doc)' function. This requires no external tools, except that the interpreter must have been started in debug mode.
+PicoLisp doesn't yet support inline documentation directly in the code. However, it has built-in runtime documentation via the '[doc](https://software-lab.de/doc/refD.html#doc)' function. This requires no external tools, except that the interpreter must have been started in debug mode.
 
 ```PicoLisp
 : (doc 'car)         # View documentation of a function
@@ -1473,7 +1473,7 @@ This would as an example be shown in the code over view as the picture below.
 
 ## Python
 
-A string literal which is the first expression in a class, function, or module definition is called a [docstring](http://docs.python.org/glossary.html#term-docstring). It can be subsequently accessed at runtime using the <code>.__doc__</code> attribute of the class, function, or module.
+A string literal which is the first expression in a class, function, or module definition is called a [docstring](https://docs.python.org/glossary.html#term-docstring). It can be subsequently accessed at runtime using the <code>.__doc__</code> attribute of the class, function, or module.
 
 
 ```python
@@ -1488,7 +1488,7 @@ class Doc(object):
 ```
 
 
-'''[pydoc](http://docs.python.org/library/pydoc.html)''', a module of the Python standard library, can automatically generate documentation gleaned from docstrings of modules. The documentation can be presented as pages of text on a terminal; automatically served to a Web Browser; or saved as HTML. The command line pydoc command , in addition, can display docstring information in a TK based GUI browser.
+'''[pydoc](https://docs.python.org/library/pydoc.html)''', a module of the Python standard library, can automatically generate documentation gleaned from docstrings of modules. The documentation can be presented as pages of text on a terminal; automatically served to a Web Browser; or saved as HTML. The command line pydoc command , in addition, can display docstring information in a TK based GUI browser.
 
 The built-in help() function uses the pydoc module to display docstring information at the command prompt of the Python interactive shell.
 
@@ -1511,12 +1511,12 @@ somefunction()
 
 ### Sphinx
 
-The [Sphinx](http://sphinx.pocoo.org/) Documentation generator suite is used to generate the [new Python documentation](http://docs.python.org/whatsnew/2.6.html#new-documentation-format-restructuredtext-using-sphinx).
+The [Sphinx](http://sphinx.pocoo.org/) Documentation generator suite is used to generate the [new Python documentation](https://docs.python.org/whatsnew/2.6.html#new-documentation-format-restructuredtext-using-sphinx).
 
 
 ## R
 
-R objects are documented in files written in "R documentation" (Rd) format, which is similar to LaTeX markup.  See Chapter 2 of [Writing R Extensions](http://cran.r-project.org/doc/manuals/R-exts.pdf) for the full details.  Example function document files can be created using
+R objects are documented in files written in "R documentation" (Rd) format, which is similar to LaTeX markup.  See Chapter 2 of [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.pdf) for the full details.  Example function document files can be created using
 
 ```r
 example(package.skeleton)
@@ -1619,7 +1619,7 @@ libraries.
 ```REBOL
 REBOL [
     Title: "Documentation"
-    URL: http://rosettacode.org/wiki/Documentation
+    URL: https://rosettacode.org/wiki/Documentation
 	Purpose: {To demonstrate documentation of REBOL pograms.}
 ]
 
@@ -1867,17 +1867,17 @@ func mult n1, n2
 
 ## Ruby
 
-[RDoc](http://www.ruby-doc.org/core/classes/RDoc.html) is the de-facto documentation tool that's bundled with Ruby distributions. From it's documentation:
+[RDoc](https://www.ruby-doc.org/core/classes/RDoc.html) is the de-facto documentation tool that's bundled with Ruby distributions. From it's documentation:
 
 :Rdoc is an application that produces documentation for one or more Ruby source files. We work similarly to JavaDoc, parsing the source, and extracting the definition for classes, modules, and methods (along with includes and requires). We associate with these optional documentation contained in the immediately preceding comment block, and then render the result using a pluggable output formatter.
 
-RDoc produces output that looks like [this](http://www.ruby-doc.org/core-1.8.7/index.html).
+RDoc produces output that looks like [this](https://www.ruby-doc.org/core-1.8.7/index.html).
 
 Ruby's documentation comments look like Perl's PODs. Translating Java's example:
 
 ```ruby
 =begin rdoc
-RDoc is documented here[http://www.ruby-doc.org/core/classes/RDoc.html].
+RDoc is documented here[https://www.ruby-doc.org/core/classes/RDoc.html].
 
 This is a class documentation comment.  This text shows at the top of the page
 for the class.
@@ -2223,7 +2223,7 @@ func add(a: Int, b: Int) -> Int {
 
 ## Tcl
 
-Documentation for Tcl code is usually prepared in separate files using a tool like [doctools](http://wiki.tcl.tk/3054), but inline docs (with all their inherent limitations) can be done with the likes of [Robodoc](http://www.xs4all.nl/~rfsber/Robo/index.html). For example:
+Documentation for Tcl code is usually prepared in separate files using a tool like [doctools](https://wiki.tcl-lang.org/3054), but inline docs (with all their inherent limitations) can be done with the likes of [Robodoc](https://www.xs4all.nl/~rfsber/Robo/index.html). For example:
 
 ```tcl
 #****f* RosettaCode/TclDocDemo

@@ -901,11 +901,11 @@ tax on 300 is 15
 
 See:
 
-* <http://www.haskell.org/haskellwiki/HaXR#Server>
-* <http://www.haskell.org/haskellwiki/HaXR#Client>
+* <https://www.haskell.org/haskellwiki/HaXR#Server>
+* <https://www.haskell.org/haskellwiki/HaXR#Client>
 
 Check license:
-<http://www.haskell.org/haskellwiki/HaskellWiki:Copyrights>
+<https://www.haskell.org/haskellwiki/HaskellWiki:Copyrights>
 
 
 ## JavaScript
@@ -1753,7 +1753,7 @@ HOST = "localhost"
 PORT = 8000
 
 # we just want to write own class, we replace do_GET method. This could be extended, I just added basics
-# see; http://docs.python.org/lib/module-BaseHTTPServer.html
+# see; https://docs.python.org/lib/module-BaseHTTPServer.html
 class MyHTTPHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
         # send 200 (OK) message
@@ -1804,7 +1804,7 @@ print 'Server Message: %s' % response.read()
 
 '''Protocol:''' raw socket / pickle format
 
-This example builds a very basic RPC mechanism on top of sockets and the [pickle module](http://docs.python.org/library/pickle.html#module-pickle). Please note that the pickle module is not secure - a malicious client can build malformed data to execute arbitrary code on the server. If untrusted clients can access the server, the [json module](http://docs.python.org/library/json.html) could be used as a substitute, but we lose the ability to transfer arbitrary Python objects that way.
+This example builds a very basic RPC mechanism on top of sockets and the [pickle module](https://docs.python.org/library/pickle.html#module-pickle). Please note that the pickle module is not secure - a malicious client can build malformed data to execute arbitrary code on the server. If untrusted clients can access the server, the [json module](https://docs.python.org/library/json.html) could be used as a substitute, but we lose the ability to transfer arbitrary Python objects that way.
 
 
 ### = Server =
@@ -2002,7 +2002,7 @@ print 'Server responded the result: %s' % math.div(NUM1, NUM2)
 
 ###  Spread
 
-'''Note:''' You should install Spread (<http://www.spread.org>) and its python bindings (<http://www.python.org/other/spread/>)
+'''Note:''' You should install Spread (<http://www.spread.org>) and its python bindings (<https://www.python.org/other/spread/>)
 
 
 ### = Server =

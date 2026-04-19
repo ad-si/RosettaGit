@@ -331,7 +331,7 @@ main: (
         FOR j FROM LWB a[i] TO UPB a[i] DO
             print(whole(a[i][j], -3));
             IF a[i][j] = 20 THEN
-                GO TO xkcd com 292 # http://xkcd.com/292/ #
+                GO TO xkcd com 292 # https://xkcd.com/292/ #
             FI
         OD;
         print(new line)
@@ -778,7 +778,7 @@ quit
 
 ## C
 
-Using goto (note: gotos are [considered harmful](http://en.wikipedia.org/wiki/Considered_harmful)):
+Using goto (note: gotos are [considered harmful](https://en.wikipedia.org/wiki/Considered_harmful)):
 
 ```cpp
 #include <iostream>
@@ -3571,7 +3571,7 @@ for(i in mat[x[1,1],1:x[1,2]]) print(i)
 ```REBOL
 REBOL [
 	Title: "Loop/Nested"
-	URL: http://rosettacode.org/wiki/Loop/Nested
+	URL: https://rosettacode.org/wiki/Loop/Nested
 ]
 
 ; Number formatting.

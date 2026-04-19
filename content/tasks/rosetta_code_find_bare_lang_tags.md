@@ -91,7 +91,7 @@ Allow multiple files to be read.   Summarize all results by language:
 
 
 ;Extra extra credit:
-Use the   [Media Wiki API](http://rosettacode.org/mw/api.php)   to test actual RC tasks.
+Use the   [Media Wiki API](https://rosettacode.org/mw/api.php)   to test actual RC tasks.
 
 
 
@@ -465,7 +465,7 @@ getPageContent :: String -> IO String
 getPageContent title  =  do
     response  <-  simpleHTTP.getRequest$ url
     getResponseBody response
-        where url  =  "http://rosettacode.org/mw/index.php?action=raw&title="++title
+        where url  =  "https://rosettacode.org/mw/index.php?action=raw&title="++title
 ```
 
 
@@ -620,10 +620,10 @@ Sample run using example given in problem statement:
 ```julia
 using Gumbo, AbstractTrees, HTTP, JSON, Dates
 
-rosorg = "http://rosettacode.org"
+rosorg = "https://rosettacode.org"
 qURI = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=500&format=json"
 qdURI = "/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Draft_Programming_Tasks&cmlimit=500&format=json"
-sqURI = "http://www.rosettacode.org/mw/index.php?title="
+sqURI = "https://www.rosettacode.org/mw/index.php?title="
 
 function topages(js, v)
     for d in js["query"]["categorymembers"]
@@ -861,7 +861,7 @@ count_tags := proc(tasks, pos)
 	local task, url, txt, header_tags, close_tags, close_len, header_len, occurence, i, pos_copy;
 	pos_copy := pos:
 	for task in tasks do
-		url := cat("http://www.rosettacode.org/mw/index.php?title=", StringTools:-Encode(StringTools:-SubstituteAll(task["title"], " ", "_"), 'percent'), "&action=raw"):
+		url := cat("https://www.rosettacode.org/mw/index.php?title=", StringTools:-Encode(StringTools:-SubstituteAll(task["title"], " ", "_"), 'percent'), "&action=raw"):
 		txt := URL:-Get(url):
 		header_tags := [StringTools:-SearchAll("=={{header|", txt)]:
 		close_tags := [StringTools:-SearchAll("}}==",txt)]:
@@ -898,11 +898,11 @@ existence := table():
 languages := Array():
 pos := 1:
 #go through every task
-x := JSON:-ParseFile("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json"):
+x := JSON:-ParseFile("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json"):
 pos := count_tags(x["query"]["categorymembers"], pos):
 while(assigned(x["continue"]["cmcontinue"])) do
 	continue := x["continue"]["cmcontinue"]:
-	more_tasks:= cat("http://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json", "&continue=", x["continue"]["continue"], "&cmcontinue=", x["continue"]["cmcontinue"]):
+	more_tasks:= cat("https://rosettacode.org/mw/api.php?action=query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=10&format=json", "&continue=", x["continue"]["continue"], "&cmcontinue=", x["continue"]["cmcontinue"]):
 	x := JSON:-ParseFile(more_tasks):
 	pos := count_tags(x["query"]["categorymembers"], pos):
 end do:
@@ -1033,7 +1033,7 @@ Total number 416
 ```Mathematica
 tasks[page_: ""] :=
   Module[{res =
-     Import["http://rosettacode.org/mw/api.php?format=xml&action=\
+     Import["https://rosettacode.org/mw/api.php?format=xml&action=\
 query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=\
 500" <> page, "XML"]},
    If[MemberQ[res[[2, 3]], XMLElement["query-continue", __]],
@@ -1043,7 +1043,7 @@ query&list=categorymembers&cmtitle=Category:Programming_Tasks&cmlimit=\
 bareTags = # -> (# -> StringCount[#2, "<lang>"] &) @@@
       Partition[
        Prepend[StringSplit[
-          Import["http://rosettacode.org/wiki?action=raw&title=" <>
+          Import["https://rosettacode.org/wiki?action=raw&title=" <>
             URLEncode[#], "Text"],
           Shortest["=={{header|" ~~ x__ ~~ "}}=="] :> x],
          "no language"] //. {a___,
@@ -1345,7 +1345,7 @@ function open_download(string filename, url)
 end function
 
 function open_category(string filename)
-    return open_download(filename&".htm","http://rosettacode.org/wiki/Category:"&filename)
+    return open_download(filename&".htm","https://rosettacode.org/wiki/Category:"&filename)
 end function
 
 function dewiki(string s)
@@ -1444,7 +1444,7 @@ function find_bare_lang_tags()
              task_things = iff(sort_by_task?repeat({},lt):{})
     for i=1 to length(tasks) do
         string ti = tasks[i],
-               url = sprintf("http://rosettacode.org/mw/index.php?title=%s&action=raw",{ti}),
+               url = sprintf("https://rosettacode.org/mw/index.php?title=%s&action=raw",{ti}),
                contents = open_download(ti&".raw",url),
                this
         integer count = 0, start = 1, header
@@ -1564,7 +1564,7 @@ Note that this follows the task, but the output is completely bogus since the ac
   (define ((get k) x) (dict-ref x k))
   ((compose1 (get '*) car (get 'revisions) cdar hash->list (get 'pages)
              (get 'query) read-json get-pure-port string->url format)
-   "http://rosettacode.org/mw/api.php?~a"
+   "https://rosettacode.org/mw/api.php?~a"
    (alist->form-urlencoded
     `([titles . ,page] [prop . "revisions"] [rvprop . "content"]
       [format . "json"] [action . "query"]))))
@@ -1607,7 +1607,7 @@ Add the following code at the bottom, run, watch results.
   (let loop ([c #f])
     (define t
       ((compose1 read-json get-pure-port string->url format)
-       "http://rosettacode.org/mw/api.php?~a"
+       "https://rosettacode.org/mw/api.php?~a"
        (alist->form-urlencoded
         `([list . "categorymembers"] [cmtitle . ,(format "Category:~a" cat)]
           [cmcontinue . ,(and c (dict-ref c 'cmcontinue))]
@@ -1633,7 +1633,7 @@ require "open-uri"
 require "cgi"
 
 tasks  = ["Greatest_common_divisor", "Greatest_element_of_a_list", "Greatest_subsequential_sum"]
-part_uri  = "http://rosettacode.org/wiki?action=raw&title="
+part_uri  = "https://rosettacode.org/wiki?action=raw&title="
 Report = Struct.new(:count, :tasks)
 result = Hash.new{|h,k| h[k] = Report.new(0, [])}
 
@@ -1744,7 +1744,7 @@ println(BareLangFinder(scala.io.Source.fromString(test)).summary)
 
 //  System.setProperty("http.agent", "RosettaCode/1.0")
 val tasks = List("Greatest_common_divisor", "Greatest_element_of_a_list", "Greatest_subsequential_sum")
-val inputs = for (task <- tasks; url = "http://rosettacode.org/wiki?action=raw&title=" + task)
+val inputs = for (task <- tasks; url = "https://rosettacode.org/wiki?action=raw&title=" + task)
 yield BareLangFinder(scala.io.Source.fromURL(url), task)
 val bare = mapReduce(inputs)
 println
@@ -1803,7 +1803,7 @@ proc get_tasks {category} {
     set tasks [list]
 
     while {1} {
-	set response [getUrlWithRedirect http://rosettacode.org/mw/api.php \
+	set response [getUrlWithRedirect https://rosettacode.org/mw/api.php \
 		action query list categorymembers format json cmlimit 500 {*}$query]
 
 	# Get the data out of the message
@@ -1826,7 +1826,7 @@ proc get_tasks {category} {
     return [set cache($category) $tasks]
 }
 proc getTaskContent task {
-    set token [getUrlWithRedirect http://rosettacode.org/mw/index.php \
+    set token [getUrlWithRedirect https://rosettacode.org/mw/index.php \
 	    title $task action raw]
     set content [http::data $token]
     http::cleanup $token
@@ -1887,7 +1887,7 @@ Uses shared library cURL.
 
 ```zkl
 var [const] CURL=Import("zklCurl"),
-   partURI="http://rosettacode.org/wiki?action=raw&title=%s",
+   partURI="https://rosettacode.org/wiki?action=raw&title=%s",
    langRE=RegExp(0'!\s*==\s*{{\s*header\s*|(.+)}}!),  // == {{ header | zkl }}
    emptyRE=RegExp(0'!<lang\s*>!);
 

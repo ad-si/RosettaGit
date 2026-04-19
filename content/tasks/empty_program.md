@@ -1356,7 +1356,7 @@ HTML 5, [section 12.1.2.4 Optional tags](http://www.whatwg.org/specs/web-apps/cu
 The shortest correct XHTML document is:
 
 ```html5
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title /></head><body /></html>
+<html xmlns="https://www.w3.org/1999/xhtml"><head><title /></head><body /></html>
 ```
 
 
@@ -2745,7 +2745,7 @@ Actually, the smallest possible correct program in Standard ML is an empty sourc
 
 ## Stata
 
-Stata does not accept an empty program, so we have to do something. Here we only declare the minimum [version](http://www.stata.com/help.cgi?version) of the interpreter for the program.
+Stata does not accept an empty program, so we have to do something. Here we only declare the minimum [version](https://www.stata.com/help.cgi?version) of the interpreter for the program.
 
 
 ```stata
@@ -3044,25 +3044,25 @@ The dot selects the current context node and returns it unchanged.
 
 ```xslt
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="https://www.w3.org/1999/XSL/Transform" version="1.0">
    <!-- code goes here -->
 </xsl:stylesheet>
 ```
 
 
-Add other namespaces to the stylesheet attributes (like xmlns:fo="http://www.w3.org/1999/XSL/Format") if you use them.
+Add other namespaces to the stylesheet attributes (like xmlns:fo="https://www.w3.org/1999/XSL/Format") if you use them.
 
 Since XSLT is XML, and <code>transform</code> is a synonym for <code>stylesheet</code>, the example above can be minified to:
 
 ```xslt
-<transform xmlns="http://www.w3.org/1999/XSL/Transform" version="1.0"/>
+<transform xmlns="https://www.w3.org/1999/XSL/Transform" version="1.0"/>
 ```
 
 
 This stylesheet echoes the text content of an XML file. The shortest stylesheet without any output would be
 
 ```xslt
-<transform xmlns="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<transform xmlns="https://www.w3.org/1999/XSL/Transform" version="1.0">
    <template match="/" />
 </transform>
 ```

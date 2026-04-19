@@ -218,7 +218,7 @@ and then call it as
 [[Special:Contributions/93.144.202.116|93.144.202.116]]
 
 ==Is the C++ a combinator or just recursion "macro"?==
-I was concerned as the definition of Y explicitely depends on Y, which I thought is the kind of thing the Y combinator was trying to dodge! Mind you, my knowledge of this C++ esoteria comes down to reading [this](http://msdn.microsoft.com/en-us/library/bb982702.aspx). --[[User:Paddy3118|Paddy3118]] 06:48, 10 April 2011 (UTC)
+I was concerned as the definition of Y explicitely depends on Y, which I thought is the kind of thing the Y combinator was trying to dodge! Mind you, my knowledge of this C++ esoteria comes down to reading [this](https://msdn.microsoft.com/en-us/library/bb982702.aspx). --[[User:Paddy3118|Paddy3118]] 06:48, 10 April 2011 (UTC)
 
 Isn't the operator() defined within the const struct : RecursiveFunc calling itself in the line
 return (s->operator()(f, s))(x);

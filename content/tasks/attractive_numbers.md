@@ -56,7 +56,7 @@ Show sequence items up to   '''120'''.
 
 
 ;Reference:
-:*   The OEIS entry:   [A063989 attractive numbers](http://oeis.org/A063989).
+:*   The OEIS entry:   [A063989 attractive numbers](https://oeis.org/A063989).
 
 
 

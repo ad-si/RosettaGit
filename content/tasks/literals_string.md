@@ -1546,7 +1546,7 @@ Print "Tom said," + "'The fox ran away.'"
 
 ## Go
 
-See the language specification sections on [rune literals](http://golang.org/ref/spec#Rune_literals) and [string literals](http://golang.org/ref/spec#String_literals).
+See the language specification sections on [rune literals](https://golang.org/ref/spec#Rune_literals) and [string literals](https://golang.org/ref/spec#String_literals).
 
 In Go, character literals are called "rune literals" and can be any single valid Unicode code point.
 They are written as an integer value or as text within single quotes.
@@ -1766,11 +1766,11 @@ Strings may be split across lines, even indented, using the 'gap' syntax:
 
 You can also use <tt>\&amp;</tt> which expands into nothing (but can be useful to interrupt another escape sequence).
 
-The [Haskell 98 Report section Character and String Literals](http://www.haskell.org/onlinereport/lexemes.html#sect2.6) has more information.
+The [Haskell 98 Report section Character and String Literals](https://www.haskell.org/onlinereport/lexemes.html#sect2.6) has more information.
 
 === using raw-strings-qq package ===
 
-using [raw-strings-qq](http://hackage.haskell.org/package/raw-strings-qq-1.0.2/docs/Text-RawString-QQ.html) package:
+using [raw-strings-qq](https://hackage.haskell.org/package/raw-strings-qq-1.0.2/docs/Text-RawString-QQ.html) package:
 
 
 ```haskell
@@ -2230,7 +2230,7 @@ in combination with the trimMargin function.
 
 ## Lasso
 
-All strings in Lasso are Unicode strings. This means that a string can contain any of the characters available in Unicode. Lasso supports two kinds of string literals: quoted and ticked. Quoted strings can contain escape sequences, while ticked strings cannot. Both quoted and ticked string literals can contain line breaks and they both return same type of string object. <http://lassoguide.com/language/literals.html>
+All strings in Lasso are Unicode strings. This means that a string can contain any of the characters available in Unicode. Lasso supports two kinds of string literals: quoted and ticked. Quoted strings can contain escape sequences, while ticked strings cannot. Both quoted and ticked string literals can contain line breaks and they both return same type of string object. <https://lassoguide.com/language/literals.html>
 
 ==Quoted Strings==
 
@@ -3080,7 +3080,7 @@ END;
 ## PicoLisp
 
 PicoLisp doesn't have a string data type. Instead, symbols are used.
-Certain uninterned symbols, called ["transient symbols"](http://software-lab.de/doc/ref.html#transient), however, look and behave like strings on other languages.
+Certain uninterned symbols, called ["transient symbols"](https://software-lab.de/doc/ref.html#transient), however, look and behave like strings on other languages.
 
 Syntactically, transient symbols (called "strings" in the following) are surrounded by double quotes.
 
@@ -3107,7 +3107,7 @@ There is no special character type or representation. Individual characters are 
 -> "cba"
 ```
 
-A limited handling of here-strings is available with the '[here](http://software-lab.de/doc/refH.html#here)' function.
+A limited handling of here-strings is available with the '[here](https://software-lab.de/doc/refH.html#here)' function.
 
 
 ## Pike
@@ -3438,10 +3438,10 @@ regexp fun).
 Racket source code is read as UTF-8 text so strings can include Unicode
 characters -- but the internal representation is UCS-4.
 This includes "\NNN" for octals and "\xHH" for hex and "\uHHHH" for higher characters.
-See the [docs](http://docs.racket-lang.org/reference/reader.html#%28part._parse-string%29) for a complete specification.
+See the [docs](https://docs.racket-lang.org/reference/reader.html#%28part._parse-string%29) for a complete specification.
 
 Racket also has here strings, and a more sophisticated facility for text
-that includes interpolation-like features, which is described in the [Here Document](http://rosettacode.org/wiki/Here_document#Racket) entry
+that includes interpolation-like features, which is described in the [Here Document](https://rosettacode.org/wiki/Here_document#Racket) entry
 
 
 ## Retro
@@ -3674,8 +3674,8 @@ Literal symbols, lists, pairs, etc. can be quoted using the quote syntax:
 ## Seed7
 
 
-The type [char](http://seed7.sourceforge.net/manual/types.htm#char) describes Unicode characters encoded with UTF-32.
-A [character literal](http://seed7.sourceforge.net/manual/tokens.htm#Character_literals) is written as UTF-8 encoded Unicode character enclosed in single quotes.
+The type [char](https://seed7.sourceforge.net/manual/types.htm#char) describes Unicode characters encoded with UTF-32.
+A [character literal](https://seed7.sourceforge.net/manual/tokens.htm#Character_literals) is written as UTF-8 encoded Unicode character enclosed in single quotes.
 
 
 ```seed7
@@ -3683,9 +3683,9 @@ var char: ch is 'z';
 ```
 
 
-The type [string](http://seed7.sourceforge.net/manual/types.htm#string) describes sequences of Unicode characters.
+The type [string](https://seed7.sourceforge.net/manual/types.htm#string) describes sequences of Unicode characters.
 The characters in the string use the UTF-32 encoding.
-A [string literal](http://seed7.sourceforge.net/manual/tokens.htm#String_literals) is a sequence of UTF-8 encoded Unicode characters surrounded by double quotes.
+A [string literal](https://seed7.sourceforge.net/manual/tokens.htm#String_literals) is a sequence of UTF-8 encoded Unicode characters surrounded by double quotes.
 
 
 ```seed7
@@ -3730,7 +3730,7 @@ Empty strings are also allowed. In order to represent non-printable characters a
 |}
 
 A backslash followed by an integer literal and a semicolon is interpreted as character with the specified ordinal number.
-Note that the integer literal is interpreted decimal unless it is written as [based integer](http://seed7.sourceforge.net/manual/types.htm#based_integer).
+Note that the integer literal is interpreted decimal unless it is written as [based integer](https://seed7.sourceforge.net/manual/types.htm#based_integer).
 
 
 ```seed7

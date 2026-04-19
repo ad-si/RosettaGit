@@ -234,7 +234,7 @@ COMPL x1,x2 = -.66666667+/-1.10554160; COMPL y1 = .00000000+.00000000i, y2 = .00
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
+ahk forum: [discussion](https://www.autohotkey.com/forum/viewtopic.php?p=276617#276617)
 
 ```AutoHotkey
 MsgBox % quadratic(u,v, 1,-3,2) ", " u ", " v
@@ -1971,7 +1971,7 @@ x1:  1.00000000E+010, x2:  1.00000000E-010
 
 ## Perl
 
-When using [Math::Complex](http://perldoc.perl.org/Math/Complex.html) perl automatically convert numbers when necessary.
+When using [Math::Complex](https://perldoc.perl.org/Math/Complex.html) perl automatically convert numbers when necessary.
 
 ```perl
 use Math::Complex;
@@ -2849,7 +2849,7 @@ report_quad 3 2 -1    ;# {1/3, -1}
 report_quad 3 2  1    ;# {(-1/3 + sqrt(2/9)i), (-1/3 - sqrt(2/9)i)}
 report_quad 1 0  1    ;# {(0+i), (0-i)}
 report_quad 1 -1e6 1  ;# {1e6, 1e-6}
-# examples from http://en.wikipedia.org/wiki/Quadratic_equation
+# examples from https://en.wikipedia.org/wiki/Quadratic_equation
 report_quad -2  7 15  ;# {5, -3/2}
 report_quad  1 -2  1  ;# {1}
 report_quad  1  3  3  ;# {(-3 - sqrt(3)i)/2), (-3 + sqrt(3)i)/2)}

@@ -28,7 +28,7 @@ Below I think we show that there is a difference between finding factors for a s
 
 == Definition ==
 
-I don't believe the definition used is correct.  In particular "always includes 1" doesn't follow from the definition given at the linked site, or [MathWorld](http://mathworld.wolfram.com/ProperDivisor.html) or [OEIS](http://oeis.org/A032741).
+I don't believe the definition used is correct.  In particular "always includes 1" doesn't follow from the definition given at the linked site, or [MathWorld](https://mathworld.wolfram.com/ProperDivisor.html) or [OEIS](https://oeis.org/A032741).
 
 A simple definition from Mathworld:  "A positive proper divisor is a positive divisor of a number n, excluding n itself." [[User:Danaj|Danaj]] ([[User talk:Danaj|talk]]) 21:09, 16 December 2014 (UTC)
 : From which we see that 1 will always divide an integer without remainder. I make a point about mentioning 1 as a reference stated that sometimes the same term "proper divisors" is used when 1 is excluded. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 18:25, 16 December 2014 (UTC)

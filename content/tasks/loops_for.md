@@ -429,9 +429,9 @@ END
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
+{{works with|ALGOL 68G|Any - tested with release [1.18.0-9h.tiny](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download)}}
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download)}}
 
 ```algol68
 FOR i TO 5 DO
@@ -4838,7 +4838,7 @@ done
 
 
 The [[Bourne Shell]] has a for loop, but it requires a list of words to iterate.
-The [<tt>jot(1)</tt>](http://www.openbsd.org/cgi-bin/man.cgi?query=jot&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) command from [[BSD]] can output an appropriate list of numbers.
+The [<tt>jot(1)</tt>](https://www.openbsd.org/cgi-bin/man.cgi?query=jot&apropos=0&sektion=1&manpath=OpenBSD+Current&arch=i386&format=html) command from [[BSD]] can output an appropriate list of numbers.
 
 {{works with|Bourne Shell}}
 {{libheader|jot}}

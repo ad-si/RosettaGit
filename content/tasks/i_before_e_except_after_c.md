@@ -81,7 +81,7 @@ Something is plausible if the number of words having the feature is more than tw
 
 
 ;Stretch goal:
-As a stretch goal use the entries from the table of [Word Frequencies in Written and Spoken English: based on the British National Corpus](http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt), (selecting those rows with three space or tab separated words only), to see if the phrase is plausible when word frequencies are taken into account.
+As a stretch goal use the entries from the table of [Word Frequencies in Written and Spoken English: based on the British National Corpus](https://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt), (selecting those rows with three space or tab separated words only), to see if the phrase is plausible when word frequencies are taken into account.
 
 
 ''Show your output here as well as your program.''
@@ -89,8 +89,8 @@ As a stretch goal use the entries from the table of [Word Frequencies in Written
 
 ;cf.:
 * [Schools to rethink 'i before e'](http://news.bbc.co.uk/1/hi/education/8110573.stm) - BBC news, 20 June 2009
-* [I Before E Except After C](http://www.youtube.com/watch?v=duqlZXiIZqA) - [[wp:QI|QI]] Series 8 Ep 14, (humorous)
-* [Companion website](http://ucrel.lancs.ac.uk/bncfreq/) for the book: "Word Frequencies in Written and Spoken English: based on the British National Corpus".
+* [I Before E Except After C](https://www.youtube.com/watch?v=duqlZXiIZqA) - [[wp:QI|QI]] Series 8 Ep 14, (humorous)
+* [Companion website](https://ucrel.lancs.ac.uk/bncfreq/) for the book: "Word Frequencies in Written and Spoken English: based on the British National Corpus".
 
 
 
@@ -699,7 +699,7 @@ The output here was generated with the files as of 21st June 2016.
 (defn -main []
   (with-open [rdr (clojure.java.io/reader "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")]
    (i-before-e-except-after-c-plausible? "Check unixdist list" (apply-freq-1 (line-seq rdr))))
-  (with-open [rdr (clojure.java.io/reader "http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")]
+  (with-open [rdr (clojure.java.io/reader "https://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")]
    (i-before-e-except-after-c-plausible? "Word frequencies (stretch goal)" (map format-freq-line (drop 1 (line-seq rdr))))))
 
 ```
@@ -1327,7 +1327,7 @@ One or both implausable.
 
 ## Haskell
 
-Using Regular Expressions, you can quickly count all occurrences of words that follow this rule and words that don't. In this solution, TDFA -- a fast, POSIX ERE engine -- was used. However, substituting any other regex engine for TDFA should only require changing the import statement. See [this page](http://www.haskell.org/haskellwiki/Regular_expressions) for a list of the most common regex engines available in Haskell.
+Using Regular Expressions, you can quickly count all occurrences of words that follow this rule and words that don't. In this solution, TDFA -- a fast, POSIX ERE engine -- was used. However, substituting any other regex engine for TDFA should only require changing the import statement. See [this page](https://www.haskell.org/haskellwiki/Regular_expressions) for a list of the most common regex engines available in Haskell.
 
 This solution does not attempt the stretch goal.
 
@@ -1677,7 +1677,7 @@ def assess:
 "Using the problematic criterion specified in the task requirements:", assess
 ```
 
-Using <http://www.puzzlers.org/pub/wordlists/unixdict.txt> as of June 2015:
+Using <https://www.puzzlers.org/pub/wordlists/unixdict.txt> as of June 2015:
 
 ```sh
 $ jq -s -R -r -f I_before_E_except_after_C.jq unixdict.txt
@@ -1779,7 +1779,7 @@ fun main(args: Array<String>) {
     reader.close()
     printResults("unixdict.txt", counts)
 
-    val url2 = URL("http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")
+    val url2 = URL("https://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")
     val isr2 = InputStreamReader(url2.openStream())
     val reader2 = BufferedReader(isr2)
     val counts2 = IntArray(4)
@@ -2742,7 +2742,7 @@ OVERALL IT IS IMPLAUSIBLE!
 Add the following to the bottom of the previous program:
 
 ```python
-def stretch_stats(url='http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt'):
+def stretch_stats(url='https://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt'):
     freq = [line.strip().lower().split()
             for line in urllib.request.urlopen(url)
             if len(line.strip().split()) == 3]

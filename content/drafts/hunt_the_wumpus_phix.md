@@ -19,7 +19,7 @@ tags = []
 
 --Hunt the Wumpus
 --the classic 70's game
---converted from the BASIC http://www.atariarchives.org/morebasicgames/showpage.php?page=179
+--converted from the BASIC https://www.atariarchives.org/morebasicgames/showpage.php?page=179
 
 --/*
 include std/console.e

@@ -2554,7 +2554,7 @@ Output:
 
 ## Go
 
-For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](http://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
+For fluff, the unicode overbar is recognized as a factor of 1000, [as described in WP](https://en.wikipedia.org/wiki/Roman_numerals#Large_numbers).
 
 If you see boxes in the code below, those are supposed to be the Unicode combining overline (U+0305) and look like {{overline|IVXLCDM}}.  Or, if you see overstruck combinations of letters, that's a different font rendering problem.  (If you need roman numerals > 3999 reliably, it might best to stick to chiseling them in stone...)
 
@@ -2903,7 +2903,7 @@ end
 ```
 
 
-[numbers.icn provides roman](http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) as seen below and is based upon a James Gimple SNOBOL4 function.
+[numbers.icn provides roman](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) as seen below and is based upon a James Gimple SNOBOL4 function.
 
 
 ```Icon
@@ -6145,8 +6145,8 @@ This is a general example using Chicken Scheme.
 ## Seed7
 
 The following program writes the numbers between 1 and 3999 as roman numerals.
-The [wrinum.s7i](http://seed7.sourceforge.net/libraries/wrinum.htm) library contains the
-function [str(ROMAN,)](http://seed7.sourceforge.net/libraries/wrinum.htm#str%28ROMAN,in_integer%29),
+The [wrinum.s7i](https://seed7.sourceforge.net/libraries/wrinum.htm) library contains the
+function [str(ROMAN,)](https://seed7.sourceforge.net/libraries/wrinum.htm#str%28ROMAN,in_integer%29),
 which writes a roman numeral to a string.
 
 
@@ -6166,7 +6166,7 @@ const proc: main is func
 ```
 
 
-Original source <http://seed7.sourceforge.net/algorith/puzzles.htm#roman_numerals>.
+Original source <https://seed7.sourceforge.net/algorith/puzzles.htm#roman_numerals>.
 
 
 ## SETL
@@ -6994,7 +6994,7 @@ MMMDCCCLXXXVIII
 
 ```xslt
 
-<xsl:stylesheet  version="1.0"    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet  version="1.0"    xmlns:xsl="https://www.w3.org/1999/XSL/Transform">
     <xsl:template match="/data/number">
         <xsl:call-template name="for">
                <xsl:with-param name="stop">13</xsl:with-param>

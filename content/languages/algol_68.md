@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-[[File:Algol68.png|64px|left|alt=Language|link=http://sourceforge.net/projects/algol68]]
+[[File:Algol68.png|64px|left|alt=Language|link=https://sourceforge.net/projects/algol68]]
 ALGOL 68 (short for ALGOrithmic Language 1968) is an [imperative](https://rosettacode.org/wiki/imperative_programming) computer programming language that was conceived as a successor to the ALGOL 60 programming language, designed with the goal of a much wider scope of application and more rigorously defined syntax and semantics.
 
 The main aims and principles of design of ALGOL 68:
@@ -49,17 +49,17 @@ IItA68 is a beautiful book, and makes great "bedtime" reading... Highly recommen
 
 Editor modes:
 * [Emacs mode](http://www.jemarch.net/a68-mode) for Algol 68  supporting syntax highlighting and context-sensitive indentation.
-* [Vim script](http://www.vim.org/scripts/script.php?script_id=1927) providing support for syntax highlighting.
+* [Vim script](https://www.vim.org/scripts/script.php?script_id=1927) providing support for syntax highlighting.
 * '''NEW:''' [GeSHi syntax highlighting](http://qbnz.com/highlighter/demo.php)
 
 ## Status
-* 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [UNESCO's](http://en.wikipedia.org/wiki/UNESCO) [IFIP](http://en.wikipedia.org/wiki/IFIP) working group 2.1 in Munich.
+* 20th December 1968 - '''ALGOL 68's''' Final Report was ratified by [UNESCO's](https://en.wikipedia.org/wiki/UNESCO) [IFIP](https://en.wikipedia.org/wiki/IFIP) working group 2.1 in Munich.
 * 20th December 2008 - [Zig Zag](https://rosettacode.org/wiki/Zig_Zag#ALGOL_68) - the 100th '''ALGOL 68''' code contribution on rosettacode.org!
 ** Happy 40th Birthday '''ALGOL 68''',
 ** AND 50th Birthday '''ALGOL 58'''.
-* 23rd August 2009 - [algol68g-1.18.0-9h](http://sourceforge.net/projects/algol68/files/) released
+* 23rd August 2009 - [algol68g-1.18.0-9h](https://sourceforge.net/projects/algol68/files/) released
 * 20th December 2009 - Happy 51st/41st Birthdays with [Hamming numbers](https://rosettacode.org/wiki/Hamming_numbers#ALGOL_68) - the 200th '''ALGOL 68''' code contribution on rosettacode.org!
-** This time code was by [Marcel van der Veer](https://rosettacode.org/wiki/User:Algol68g), author of [Algol 68 Genie](http://www.xs4all.nl/~jmvdveer/algol.html)
+** This time code was by [Marcel van der Veer](https://rosettacode.org/wiki/User:Algol68g), author of [Algol 68 Genie](https://www.xs4all.nl/~jmvdveer/algol.html)
 * 25th October 2011 - [Jejones3141](https://rosettacode.org/wiki/User:Jejones3141) added [Soundex](https://rosettacode.org/wiki/Soundex#ALGOL_68) - the 300th '''ALGOL 68''' code specimen.
 
 ## Revisions

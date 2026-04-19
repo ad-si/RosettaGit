@@ -17,7 +17,7 @@ The idea is to provide an alternative syntax to Erlang that is most suitable for
 
 The language is almost 100% compatible with Erlang (and will be); the compiler allows to translate an efene source file into a readable Erlang one. It also adds some syntactic sugar in some places to make some tasks easier.
 
-To see how it looks you can go to the [examples directory](http://github.com/marianoguerra/efene/tree/master/examples/).
+To see how it looks you can go to the [examples directory](https://github.com/marianoguerra/efene/tree/master/examples/).
 
 ## Participate
 A mailing list is available at librelist: just send a mail to [mailto:efene@librelist.com efene@librelist.com] to subscribe.
@@ -26,5 +26,5 @@ As first email you may send a hello world program in efene and present yourself 
 
 ## Useful links
 * [Blog](http://efene.tumblr.com/)
-* [Central repo (fork this one)](http://github.com/marianoguerra/efene)
-* [Issue tracker](http://github.com/marianoguerra/efene/issues)
+* [Central repo (fork this one)](https://github.com/marianoguerra/efene)
+* [Issue tracker](https://github.com/marianoguerra/efene/issues)

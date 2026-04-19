@@ -9,4 +9,4 @@ id = 9968
 categories = []
 tags = []
 +++
-'''Thyrd-tcl''' is an interpreter for [Thyrd](https://rosettacode.org/wiki/Thyrd) implemented in [Tcl](https://rosettacode.org/wiki/Tcl) and [Poet](http://poet.sourceforge.net). It is released under the GPL at [SourceForge](http://sourceforge.net/projects/thyrd).
+'''Thyrd-tcl''' is an interpreter for [Thyrd](https://rosettacode.org/wiki/Thyrd) implemented in [Tcl](https://rosettacode.org/wiki/Tcl) and [Poet](http://poet.sourceforge.net). It is released under the GPL at [SourceForge](https://sourceforge.net/projects/thyrd).

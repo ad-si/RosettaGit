@@ -16,7 +16,7 @@ tags = []
 #include <stdlib.h>
 
 /*  adapted from
-        http://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w
+        https://www-cs-faculty.stanford.edu/~knuth/programs/achain4.w
     with some severe loss of efficiency
  */
 #define ASK_KNUTH 0

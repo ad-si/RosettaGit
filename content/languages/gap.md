@@ -10,6 +10,6 @@ categories = []
 tags = []
 +++
 
-GAP is the language used in the computer algebra system of the same name.  See <http://www.gap-system.org/> for more information.
+GAP is the language used in the computer algebra system of the same name.  See <https://www.gap-system.org/> for more information.
 
 [Category:Mathematical programming languages](https://rosettacode.org/wiki/Category:Mathematical_programming_languages)

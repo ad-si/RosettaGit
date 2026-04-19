@@ -65,7 +65,7 @@ to think of the language at a higher level where these differences don't show.
               '''|''' “''\\''” escapeSequence charSubsts''?''
               '''|''' ordinaryChar charSubsts''?''
 
-The syntax of the language is defined more exactly in the [Tcl(n)](http://www.tcl.tk/man/tcl8.5/TclCmd/Tcl.htm) manual page.
+The syntax of the language is defined more exactly in the [Tcl(n)](https://www.tcl-lang.org/man/tcl8.5/TclCmd/Tcl.htm) manual page.
 
 
 ### Conceptual Command Syntax
@@ -171,5 +171,5 @@ Note that all variables can hold values of ''any'' type; the language does not i
 
 * [Tcl Documentation](http://www.tcl-lang.org/man/)
 * [Tcl Wiki](http://wiki.tcl-lang.org)
-* [Wikipedia article](http://en.wikipedia.org/wiki/Tcl)
-* [Tcl Wikibook](http://en.wikibooks.org/wiki/Programming:Tcl Wikibook)
+* [Wikipedia article](https://en.wikipedia.org/wiki/Tcl)
+* [Tcl Wikibook](https://en.wikibooks.org/wiki/Programming:Tcl Wikibook)

@@ -28,7 +28,7 @@ var gadgetsAvailable = [
 					{
 						id: "LanguageComparison",
 						name: "Language comparison",
-						url: "http://rosettacode.org/mw/index.php" +
+						url: "https://rosettacode.org/mw/index.php" +
 							"?title=Rosetta_Code:Language_comparison_script" + 
 							"&action=raw&ctype=text/javascript",
 						prefix: "Compare"
@@ -36,7 +36,7 @@ var gadgetsAvailable = [
 					{
 						id: "Highlight",
 						name: "Syntax Highlight Color Picker",
-						url: "http://rosettacode.org/mw/index.php" +
+						url: "https://rosettacode.org/mw/index.php" +
 							"?title=Rosetta_Code:Syntax_Highlight_Color_Picker" +
 							"&action=raw&ctype=text/javascript",
 						prefix: "Highlight"
@@ -44,7 +44,7 @@ var gadgetsAvailable = [
 					{
 						id: "UtilityButtonBar",
 						name: "Utility button bar",
-						url: "http://rosettacode.org/mw/index.php" +
+						url: "https://rosettacode.org/mw/index.php" +
 							"?title=Rosetta_Code:Per-Code_Example_Buttonbar" +
 							"&action=raw&ctype=text/javascript",
 						prefix: "ButtonBar"

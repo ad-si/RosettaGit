@@ -98,7 +98,7 @@ function is_prime(x,  i) {
 ```
 
 =={{header|F_Sharp|F#}}==
-This task uses [Extensible Prime Generator (F#)](http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
+This task uses [Extensible Prime Generator (F#)](https://www.rosettacode.org/wiki/Extensible_prime_generator#The_function)
 
 ```fsharp
 

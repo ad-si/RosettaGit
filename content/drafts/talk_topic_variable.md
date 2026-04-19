@@ -31,7 +31,7 @@ Can someone give a better definition for "topic variable" than the current task 
 :This question inspired the Pyuthon entry, and I see you have followed :-)
 :I guess if someone thinks it's wrong, they'll flag it. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 14:20, 11 April 2014 (UTC)
 
-::I've read the [Perl](http://perldoc.perl.org/perlvar.html#General-Variables) and [Perl 6](http://doc.perl6.org/language/variables#%24_) documentation about <code>$_</code> (the languages which started this task) and thus I would say at least Erlang, PARI/GP, Python, Standard ML and Unix Shell don't show topic variables (i.e. should be flagged as incorrect/omitted). AIUI <code>$_</code> is used as the default value for functions/language constructs if no argument is provided. But the mentioned languages show variables/consructs that store the most recent result.
+::I've read the [Perl](https://perldoc.perl.org/perlvar.html#General-Variables) and [Perl 6](http://doc.perl6.org/language/variables#%24_) documentation about <code>$_</code> (the languages which started this task) and thus I would say at least Erlang, PARI/GP, Python, Standard ML and Unix Shell don't show topic variables (i.e. should be flagged as incorrect/omitted). AIUI <code>$_</code> is used as the default value for functions/language constructs if no argument is provided. But the mentioned languages show variables/consructs that store the most recent result.
 ::For example compare this Python session
 
 ```txt

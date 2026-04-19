@@ -43,6 +43,6 @@ It seems odd to me that [[Stack]]s need only 1 page, but Queues need 2.
 
 I think this should be merged with [[Queue/Usage]] -- after all, ''just'' defining the queue doesn't necessarily illustrate how to use it, and Queue/Usage includes creating the queue as part of its description. The final merged page could then be located at [[Queue]], overwriting the current redirect. -- [[User:Eriksiers|Erik Siers]] 19:43, 2 February 2011 (UTC)
 
-: [[Queue/Usage]] was ''split'' from this task at [5 January 2009](http://rosettacode.org/mw/index.php?title=Queue/Usage&oldid=20617). This split was a bad idea. Queue/Definition and Queue/Usage should be one task. --[[User:Kernigh|Kernigh]] 01:07, 16 September 2011 (UTC)
+: [[Queue/Usage]] was ''split'' from this task at [5 January 2009](https://rosettacode.org/mw/index.php?title=Queue/Usage&oldid=20617). This split was a bad idea. Queue/Definition and Queue/Usage should be one task. --[[User:Kernigh|Kernigh]] 01:07, 16 September 2011 (UTC)
 
 The descriptions for these tasks are identical. They should be merged. [[User: crossrodas1112|crossrodas1112]] 16:28, 21 November 2015 (EST)

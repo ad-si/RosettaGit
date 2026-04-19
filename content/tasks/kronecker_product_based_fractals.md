@@ -104,7 +104,7 @@ Although this task is related to [[Kronecker product]], this is computationally 
 
 However, if half of the elements of the initial matrix A are zeroes, computations and storage for such elements are wasted as they will never be plotted. The only relevant elements are the 1s.
 
-Thus this implementation treats the initial matrix as a [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix). Doing so cuts down drastically on the required storage and number of operations. The graphical part needs the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library. 
+Thus this implementation treats the initial matrix as a [Sparse matrix](https://en.wikipedia.org/wiki/Sparse_matrix). Doing so cuts down drastically on the required storage and number of operations. The graphical part needs the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library. 
 
 ```C
 
@@ -627,7 +627,7 @@ import Data.List (transpose)
 main :: IO ()
 main = mainWidget $ do 
   elAttr "h1" ("style" =: "color:black") $ text "Kroneker Product Based Fractals" 
-  elAttr "a" ("href" =: "http://rosettacode.org/wiki/Kronecker_product_based_fractals#Haskell") $ text "Rosetta Code / Kroneker product based fractals / Haskell"
+  elAttr "a" ("href" =: "https://rosettacode.org/wiki/Kronecker_product_based_fractals#Haskell") $ text "Rosetta Code / Kroneker product based fractals / Haskell"
 
   -- Show a Vicsek fractal
   el "br" $ return ()
@@ -698,7 +698,7 @@ showCell x (y,on) =
 -- Wrapper around elDynAttrNS'
 elSvgns :: MonadWidget t m => Text -> Dynamic t (Map Text Text) -> m a -> m a
 elSvgns t m ma = do
-    (el, val) <- elDynAttrNS' (Just "http://www.w3.org/2000/svg") t m ma
+    (el, val) <- elDynAttrNS' (Just "https://www.w3.org/2000/svg") t m ma
     return val
 ```
 
@@ -2488,7 +2488,7 @@ Output images: [Kronecker Carpet](https://github.com/trizen/rc/blob/master/img/k
 ## zkl
 
 Uses Image Magick and
-the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 var [const] GSL=Import.lib("zklGSL");    // libGSL (GNU Scientific Library)

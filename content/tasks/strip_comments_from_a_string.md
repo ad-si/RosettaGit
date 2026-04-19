@@ -90,13 +90,13 @@ The task is to remove text that follow any of a set of comment markers, (in thes
 
 '''Whitespace debacle:'''   There is some confusion about whether to remove any whitespace from the input line.
 
-As of [2 September 2011](http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409), at least 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, out of 36 total languages, because they did not trim whitespace by 29 March 2011 rules. Some other languages might be incorrect for the same reason.
+As of [2 September 2011](https://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409), at least 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, out of 36 total languages, because they did not trim whitespace by 29 March 2011 rules. Some other languages might be incorrect for the same reason.
 
 '''Please discuss this issue at [[{{TALKPAGENAME}}]].'''
 
-* From [29 March 2011](http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=103978), this task required that: ''"The comment marker and any whitespace at the beginning or ends of the resultant line should be removed. A line without comments should be trimmed of any leading or trailing whitespace before being produced as a result."'' The task had 28 languages, which did not all meet this new requirement.
-* From [28 March 2011](http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=103978), this task required that: ''"Whitespace before the comment marker should be removed."''
-* From [30 October 2010](http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&offset=20101206204307&action=history), this task did not specify whether or not to remove whitespace.
+* From [29 March 2011](https://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=103978), this task required that: ''"The comment marker and any whitespace at the beginning or ends of the resultant line should be removed. A line without comments should be trimmed of any leading or trailing whitespace before being produced as a result."'' The task had 28 languages, which did not all meet this new requirement.
+* From [28 March 2011](https://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=103978), this task required that: ''"Whitespace before the comment marker should be removed."''
+* From [30 October 2010](https://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&offset=20101206204307&action=history), this task did not specify whether or not to remove whitespace.
 
 
 

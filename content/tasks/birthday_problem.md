@@ -171,8 +171,8 @@ The probability for groups of 313 persons having 5 persons sharing a common birt
 ## ALGOL 68
 
 {{works with|ALGOL 68|Revision 1}}
-{{works with|ALGOL 68G|Any - tested with release [algol68g-2.6](http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6).}}
-{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
+{{works with|ALGOL 68G|Any - tested with release [algol68g-2.6](https://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.6).}}
+{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [1.8-8d](https://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download) - due to extensive use of '''format'''[ted] ''transput''.}}
 '''File: Birthday_problem.a68'''
 ```algol68
 #!/usr/bin/a68g --script #

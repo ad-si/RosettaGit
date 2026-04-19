@@ -176,7 +176,7 @@ Job # 2 is finished. It took  61.12 seconds.
 
 ### Built in variable
 
-The built in variable [A_TickCount](http://ahkscript.org/docs/Variables.htm#TickCount) contains the number of milliseconds since the computer was rebooted. Storing this variable and later comparing it to the current value will measure the time elapsed. A_TickCount has a precision of approximately 10ms.
+The built in variable [A_TickCount](https://www.autohotkey.com/docs/Variables.htm#TickCount) contains the number of milliseconds since the computer was rebooted. Storing this variable and later comparing it to the current value will measure the time elapsed. A_TickCount has a precision of approximately 10ms.
 
 ```AutoHotkey
 SetBatchLines, -1
@@ -207,7 +207,7 @@ gcd(a, b) {    ; Euclidean GCD
 
 ### Query Performance Counter
 
-The [QPX function](http://www.autohotkey.com/board/topic/48063-qpx-delay-based-on-queryperformancecounter/) by SKAN wraps the [QueryPerformanceCounter](http://msdn.microsoft.com/en-us/library/windows/desktop/ms644904%28v=vs.85%29.aspx) DLL, and is precise to one thousandth of a millisecond.
+The [QPX function](https://www.autohotkey.com/board/topic/48063-qpx-delay-based-on-queryperformancecounter/) by SKAN wraps the [QueryPerformanceCounter](https://msdn.microsoft.com/en-us/library/windows/desktop/ms644904%28v=vs.85%29.aspx) DLL, and is precise to one thousandth of a millisecond.
 
 ```AutoHotkey
 SetBatchLines, -1
@@ -1289,7 +1289,7 @@ Rate Counter Deluxe, giving start and finish times + duration. The duration is m
 ### ==
 
 
-'http://msdn.microsoft.com/en-us/library/windows/desktop/ms724950(v=vs.85).aspx
+'https://msdn.microsoft.com/en-us/library/windows/desktop/ms724950(v=vs.85).aspx
 
 extern lib "kernel32.dll"
 
@@ -1445,7 +1445,7 @@ for(n=1,20000000,
 
 ## Perl
 
-The [Benchmark](http://perldoc.perl.org/Benchmark.html) module can rate code per time, or per loops executed:
+The [Benchmark](https://perldoc.perl.org/Benchmark.html) module can rate code per time, or per loops executed:
 
 ```perl
 use Benchmark;
@@ -1557,7 +1557,7 @@ rate = 9 per second
 
 ## PicoLisp
 
-[usec](http://software-lab.de/doc/refU.html#usec) returns a relative time in
+[usec](https://software-lab.de/doc/refU.html#usec) returns a relative time in
 microseconds. This can be used, for example, to measure the time between two key
 strokes
 
@@ -1580,7 +1580,7 @@ Hit another key ...
 This took 3.132058 seconds
 ```
 
-The [bench](http://software-lab.de/doc/refB.html#bench) benchmark function could
+The [bench](https://software-lab.de/doc/refB.html#bench) benchmark function could
 also be used. Here we measure the time until a key is pressed
 
 ```PicoLisp

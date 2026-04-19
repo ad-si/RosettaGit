@@ -3237,7 +3237,7 @@ EndIf
 
 ## Python
 
-Using the [bisect](http://docs.python.org/library/bisect.html) standard module to reduce the comparisons with members of the cin array.
+Using the [bisect](https://docs.python.org/library/bisect.html) standard module to reduce the comparisons with members of the cin array.
 
 
 ```python

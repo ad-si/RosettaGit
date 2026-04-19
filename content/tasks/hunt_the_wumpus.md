@@ -28,7 +28,7 @@ languages = [
 
 ## Task
 
-Create a simple implementation of the classic textual game [Hunt The Wumpus](http://en.wikipedia.org/wiki/Hunt_the_Wumpus).
+Create a simple implementation of the classic textual game [Hunt The Wumpus](https://en.wikipedia.org/wiki/Hunt_the_Wumpus).
 
 The rules are:
 

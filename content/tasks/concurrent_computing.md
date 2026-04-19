@@ -115,7 +115,7 @@ end Concurrent_Hello;
 ```
 
 
-Note that random generator object is local to each task. It cannot be accessed concurrently without mutual exclusion. In order to get different initial states of local generators Reset is called (see [ARM A.5.2](http://www.adaic.org/resources/add_content/standards/05rm/html/RM-A-5-2.html)).
+Note that random generator object is local to each task. It cannot be accessed concurrently without mutual exclusion. In order to get different initial states of local generators Reset is called (see [ARM A.5.2](https://www.adaic.org/resources/add_content/standards/05rm/html/RM-A-5-2.html)).
 
 
 ## ALGOL 68
@@ -523,7 +523,7 @@ on a single thread. The ''timeout'' call is there just to shuffle things up: not
 
 
 ===Using Bash (or an equivalent shell)===
-JavaScript, which CoffeeScript compiles to, is single-threaded. This approach launches multiple process to achieve concurrency on [Node.js](http://nodejs.org):
+JavaScript, which CoffeeScript compiles to, is single-threaded. This approach launches multiple process to achieve concurrency on [Node.js](https://nodejs.org):
 
 
 ```coffeescript
@@ -538,7 +538,7 @@ for word in [ 'Enjoy', 'Rosetta', 'Code' ]
 
 ### Using Node.js
 
-As stated above, CoffeeScript is single-threaded. This approach launches multiple [Node.js](http://nodejs.org) processes to achieve concurrency.
+As stated above, CoffeeScript is single-threaded. This approach launches multiple [Node.js](https://nodejs.org) processes to achieve concurrency.
 
 
 ```coffeescript
@@ -565,7 +565,7 @@ console.log process.argv[ 2 ]
 ## Common Lisp
 
 
-Concurrency and threads are not part of the Common Lisp standard.  However, most implementations provide some interface for concurrency.  [Bordeaux Threads](http://common-lisp.net/project/bordeaux-threads/), used here, provides a compatibility layer for many implementations.  (Binding <var>out</var> to <code>*standard-output*</code> before threads are created is needed as each thread gets its own binding for <code>*standard-output*</code>.)
+Concurrency and threads are not part of the Common Lisp standard.  However, most implementations provide some interface for concurrency.  [Bordeaux Threads](https://common-lisp.net/project/bordeaux-threads/), used here, provides a compatibility layer for many implementations.  (Binding <var>out</var> to <code>*standard-output*</code> before threads are created is needed as each thread gets its own binding for <code>*standard-output*</code>.)
 
 
 ```lisp
@@ -1275,7 +1275,7 @@ public class Threads
 ## JavaScript
 
 
-JavaScript now enjoys access to a concurrency library thanks to [Web Workers](http://en.wikipedia.org/wiki/Web_worker). The Web Workers specification defines an API for spawning background scripts. This first code is the background script and should be in the concurrent_worker.js file.
+JavaScript now enjoys access to a concurrency library thanks to [Web Workers](https://en.wikipedia.org/wiki/Web_worker). The Web Workers specification defines an API for spawning background scripts. This first code is the background script and should be in the concurrent_worker.js file.
 
 ```javascript
 self.addEventListener('message', function (event) {
@@ -1785,7 +1785,7 @@ end
 
 ## PARI/GP
 
-Here is a GP implementation using the [bill-mt](http://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi?p=pari.git;a=tree;h=refs/heads/bill-mt;hb=refs/heads/bill-mt) branch:
+Here is a GP implementation using the [bill-mt](https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi?p=pari.git;a=tree;h=refs/heads/bill-mt;hb=refs/heads/bill-mt) branch:
 
 ```parigp
 inline(func);
@@ -2090,7 +2090,7 @@ if __name__ == '__main__':
 ```
 
 
-Using the new to Python 3.2 [concurrent.futures library](http://docs.python.org/release/3.2/library/concurrent.futures.html) and choosing to use processes over threads; the example will use up to as many processes as your machine has cores. This doesn't however guarantee an order of sub-process results.
+Using the new to Python 3.2 [concurrent.futures library](https://docs.python.org/release/3.2/library/concurrent.futures.html) and choosing to use processes over threads; the example will use up to as many processes as your machine has cores. This doesn't however guarantee an order of sub-process results.
 
 ```python
 Python 3.2 (r32:88445, Feb 20 2011, 21:30:00) [MSC v.1500 64 bit (AMD64)] on win 32

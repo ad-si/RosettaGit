@@ -12,7 +12,7 @@ tags = []
 
 ==BigNum==
 
-Wouldn't it be appropriate to replace this task with [arbitrary-precision arithmetic](http://en.wikipedia.org/wiki/Bignum) implementation? I.e. long to long +, -, *, /, and long to short +, -, *, /. The divisions are to be implemented in a complete form (result + remainder).
+Wouldn't it be appropriate to replace this task with [arbitrary-precision arithmetic](https://en.wikipedia.org/wiki/Bignum) implementation? I.e. long to long +, -, *, /, and long to short +, -, *, /. The divisions are to be implemented in a complete form (result + remainder).
 
 Hi [[User_talk:Dmitry-kazakov]].  Yes that makes sense.  
 For the moment I'll switch this task to be a member of [[:Category:Arbitrary precision]].

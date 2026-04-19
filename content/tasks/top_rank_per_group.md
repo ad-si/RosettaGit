@@ -836,7 +836,7 @@ Timothy Grove            	E16398	29900
 ```
 
 
-Online demo: <http://ideone.com/95TxAV>
+Online demo: <https://ideone.com/95TxAV>
 
 
 ## Ceylon
@@ -2421,8 +2421,8 @@ Claire Buckman      E39876   27800  D202
 David Motsinger     E27002   19250  D202
 ```
 
-Note: In place of writing the sorted result to file outP, [DLG](http://www.HicEst.com/DLG.htm) allows the direct export of the formatted and sorted result.
-Use of the CLUSter= and Groups= options of [SORT](http://www.HicEst.com/SORT.htm) performs a variance controlled cluster sort of up to 8 columns instead of the department step sort in this example.
+Note: In place of writing the sorted result to file outP, [DLG](https://www.HicEst.com/DLG.htm) allows the direct export of the formatted and sorted result.
+Use of the CLUSter= and Groups= options of [SORT](https://www.HicEst.com/SORT.htm) performs a variance controlled cluster sort of up to 8 columns instead of the department step sort in this example.
 
 =={{header|Icon}} and {{header|Unicon}}==
 

@@ -11,7 +11,7 @@ tags = []
 +++
 
 == Java entry ==
-The Java entry is kind of funny because it requires you to type the name of the class in order to print it. Then you might as well print it directly. It really should be using reflection. I've never used reflection in Java, but a after a glance at the [documentation](http://download.oracle.com/javase/tutorial/reflect/class/classNew.html), I came up with this. [[User:Fwend|Fwend]] 03:26, 6 August 2011 (UTC)
+The Java entry is kind of funny because it requires you to type the name of the class in order to print it. Then you might as well print it directly. It really should be using reflection. I've never used reflection in Java, but a after a glance at the [documentation](https://download.oracle.com/javase/tutorial/reflect/class/classNew.html), I came up with this. [[User:Fwend|Fwend]] 03:26, 6 August 2011 (UTC)
 
 
 ```java

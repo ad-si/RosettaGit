@@ -698,7 +698,7 @@ end unwords
 
 ## AutoHotkey
 
-ahk forum: [discussion](http://www.autohotkey.com/forum/post-276718.html#276718)
+ahk forum: [discussion](https://www.autohotkey.com/forum/post-276718.html#276718)
 
 ```AutoHotkey
 n := 5, dx := x := y := v := 1, dy := 0
@@ -1719,7 +1719,7 @@ end function
 
 ## Factor
 
-This is an implementation of Joey Tuttle's method for computing a spiral directly as a list and then reshaping it into a matrix, as described in the [J entry](http://rosettacode.org/wiki/Spiral_matrix#J). To summarize, we construct a list with <code>n*n</code> elements by following some simple rules, then take its cumulative sum, and finally its inverse permutation (or grade in J parlance). This gives us a list which can be reshaped to the final matrix.
+This is an implementation of Joey Tuttle's method for computing a spiral directly as a list and then reshaping it into a matrix, as described in the [J entry](https://rosettacode.org/wiki/Spiral_matrix#J). To summarize, we construct a list with <code>n*n</code> elements by following some simple rules, then take its cumulative sum, and finally its inverse permutation (or grade in J parlance). This gives us a list which can be reshaped to the final matrix.
 
 ```factor
 USING: arrays grouping io kernel math math.combinatorics
@@ -2390,7 +2390,7 @@ end
 ## J
 
 This function is the result of
-some [beautiful insights](http://www.jsoftware.com/papers/play132.htm):
+some [beautiful insights](https://www.jsoftware.com/papers/play132.htm):
 
 ```j
 spiral =: ,~ $ [: /: }.@(2 # >:@i.@-) +/\@# <:@+: $ (, -)@(1&,)

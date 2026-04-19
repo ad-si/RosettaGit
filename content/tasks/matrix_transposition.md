@@ -3038,7 +3038,7 @@ bundle Default {
 
 ## OCaml
 
-Matrices can be represented in OCaml as a type <tt>'a array array</tt>, or using the module [Bigarray](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html).
+Matrices can be represented in OCaml as a type <tt>'a array array</tt>, or using the module [Bigarray](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Bigarray.html).
 The implementation below uses a bigarray:
 
 
@@ -4618,7 +4618,7 @@ transpose(m).each { |row|
 ```
 
 
-Domain:[Matrix(R)](http://fricas.github.io/api/Matrix.html?highlight=matrix)
+Domain:[Matrix(R)](https://fricas.github.io/api/Matrix.html?highlight=matrix)
 
 
 ## Sparkling

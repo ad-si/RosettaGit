@@ -12,7 +12,7 @@ tags = []
 
 =="Break" vs. "return" bug==
 
-The original author of the Python example mistakenly translated the keyword <code>stop</code> that appears in the [Wikipedia pseudocode](http://en.wikipedia.org/wiki/Row_echelon_form#Pseudocode) as <code>break</code> rather than the correct <code>return</code>. This created a control-flow bug that didn't manifest itself when the program was run on the example matrix given in the task description, but did cause an exception if the program was run on, e.g.,
+The original author of the Python example mistakenly translated the keyword <code>stop</code> that appears in the [Wikipedia pseudocode](https://en.wikipedia.org/wiki/Row_echelon_form#Pseudocode) as <code>break</code> rather than the correct <code>return</code>. This created a control-flow bug that didn't manifest itself when the program was run on the example matrix given in the task description, but did cause an exception if the program was run on, e.g.,
 
 ```txt
 

@@ -2573,8 +2573,8 @@ object CalculateE extends App {
 
 ## Seed7
 
-The Seed7 library [math.s7i](http://seed7.sourceforge.net/libraries/math.htm) defines
-the constant [E](http://seed7.sourceforge.net/libraries/math.htm#E).
+The Seed7 library [math.s7i](https://seed7.sourceforge.net/libraries/math.htm) defines
+the constant [E](https://seed7.sourceforge.net/libraries/math.htm#E).
 The program below computes e:
 
 

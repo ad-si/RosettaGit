@@ -11,7 +11,7 @@ tags = []
 +++
 
 The Python part is badly formatted and does not show up in the index, someone who knows wiki-formatting should fix it --[[User:Zorro1024|Zorro1024]] ([[User talk:Zorro1024|talk]]) 14:21, 22 March 2015 (UTC)
-:Fixed. The problem was [Smoe's R entry](http://rosettacode.org/mw/index.php?title=Heronian_triangles&oldid=200549) which was not terminated properly (and which should have gone after the python entry rather than before it). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 16:27, 22 March 2015 (UTC)
+:Fixed. The problem was [Smoe's R entry](https://rosettacode.org/mw/index.php?title=Heronian_triangles&oldid=200549) which was not terminated properly (and which should have gone after the python entry rather than before it). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 16:27, 22 March 2015 (UTC)
 
 ::I wonder if a spark of static or noise entered the Python version at some point in its editing history ? On my system the current draft overgenerates triangles, giving  a different output from that shown. (It seems to find 1383 rather than 517 triangles). If not an editing glitch then possibly an artefact of changing Python versions ? I am running Python 2.7.10 on OS X 10.11. [[User:Hout|Hout]] ([[User talk:Hout|talk]]) 00:12, 25 October 2015 (UTC)
 

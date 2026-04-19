@@ -21,5 +21,5 @@ tags = []
 *"Structured Basic" commenting style.
 
 ==See also:==
-* [uBasic and Tiny BASIC](http://sourceforge.net/p/forth-4th/wiki/uBasic%20and%20Tiny%20BASIC/)
-* [Basically a touch of Forth](http://sourceforge.net/p/forth-4th/wiki/Basically%20a%20touch%20of%20Forth/)
+* [uBasic and Tiny BASIC](https://sourceforge.net/p/forth-4th/wiki/uBasic%20and%20Tiny%20BASIC/)
+* [Basically a touch of Forth](https://sourceforge.net/p/forth-4th/wiki/Basically%20a%20touch%20of%20Forth/)

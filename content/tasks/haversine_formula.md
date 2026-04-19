@@ -1540,7 +1540,7 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 ```txt
 BNA to LAX is 2886 km (1793 miles)
@@ -4029,8 +4029,8 @@ RlOut(0, Dist(36.12*D2R, 33.94*D2R, -86.67*D2R, -118.40*D2R ));
 
 
 ```XQuery
-declare namespace xsd = "http://www.w3.org/2001/XMLSchema";
-declare namespace math = "http://www.w3.org/2005/xpath-functions/math";
+declare namespace xsd = "https://www.w3.org/2001/XMLSchema";
+declare namespace math = "https://www.w3.org/2005/xpath-functions/math";
 
 declare function local:haversine($lat1 as xsd:float, $lon1 as xsd:float, $lat2 as xsd:float, $lon2 as xsd:float)
     as xsd:float

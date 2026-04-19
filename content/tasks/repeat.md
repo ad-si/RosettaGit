@@ -1419,7 +1419,7 @@ f2(f1,4)
 
 ## Racket
 
-The racket guide has a section called ["Iterators and Comprehensions"](http://docs.racket-lang.org/guide/for.html?q=iterators), which shows that ''for'' isn't just for repeating n times!
+The racket guide has a section called ["Iterators and Comprehensions"](https://docs.racket-lang.org/guide/for.html?q=iterators), which shows that ''for'' isn't just for repeating n times!
 
 
 ```Racket

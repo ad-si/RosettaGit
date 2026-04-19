@@ -58,7 +58,7 @@ Do the same thing for hexadecimal.
 
 
 ;Also see:
-*   The OEIS sequence:   [A115569: Lynch-Bell numbers](http://oeis.org/A115569).
+*   The OEIS sequence:   [A115569: Lynch-Bell numbers](https://oeis.org/A115569).
 
 
 

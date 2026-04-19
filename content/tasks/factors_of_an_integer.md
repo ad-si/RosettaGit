@@ -820,8 +820,8 @@ conversion10S:
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
 /* r0 retourne le quotient */
@@ -2662,7 +2662,7 @@ primePowerFactors = map (\x-> (head x, length x)) . group . factorize
 ```
 
 
-The above function can also be found in the package [<code>arithmoi</code>](http://hackage.haskell.org/package/arithmoi), as <code>Math.NumberTheory.Primes.factorise :: Integer -> [(Integer, Int)]</code>, [which performs](http://hackage.haskell.org/package/arithmoi-0.4.2.0/docs/Math-NumberTheory-Primes-Factorisation.html) "factorisation of Integers by the elliptic curve algorithm after Montgomery" and "is best suited for numbers of up to 50-60 digits".
+The above function can also be found in the package [<code>arithmoi</code>](https://hackage.haskell.org/package/arithmoi), as <code>Math.NumberTheory.Primes.factorise :: Integer -> [(Integer, Int)]</code>, [which performs](https://hackage.haskell.org/package/arithmoi-0.4.2.0/docs/Math-NumberTheory-Primes-Factorisation.html) "factorisation of Integers by the elliptic curve algorithm after Montgomery" and "is best suited for numbers of up to 50-60 digits".
 
 Or, deriving cofactors from factors up to the square root:
 
@@ -2799,7 +2799,7 @@ factors of 100=1 2 4 5 10 20 25 50 100
 ```
 
 
-{{libheader|Icon Programming Library}} [divisors](http://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
+{{libheader|Icon Programming Library}} [divisors](https://www.cs.arizona.edu/icon/library/src/procs/factors.icn)
 
 
 ## J
@@ -2925,7 +2925,7 @@ factors=: (*/@:^"1 odometer@:>:)/@q:~&__
 ```
 
 
-See <http://www.jsoftware.com/jwiki/Essays/Odometer>
+See <https://www.jsoftware.com/jwiki/Essays/Odometer>
 
 
 ## Java

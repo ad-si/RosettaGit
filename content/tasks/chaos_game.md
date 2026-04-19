@@ -195,7 +195,7 @@ Note that ZX81 BASIC does not have an explicit computed <code>GOTO</code>; we ca
 ```
 
 {{out}}
-Screenshot [here](http://www.edmundgriffiths.com/zx81chaosgame.jpg). As with most ZX81 graphics, you can obtain the very best results by making it quite small and looking at it from a long way away.
+Screenshot [here](https://www.edmundgriffiths.com/zx81chaosgame.jpg). As with most ZX81 graphics, you can obtain the very best results by making it quite small and looking at it from a long way away.
 
 =
 ## ZX Spectrum Basic
@@ -228,7 +228,7 @@ The final <code>INK</code> statement sets the foreground colour back to black.
 ## C
 
 
-Interactive code which asks the side length of the starting triangle and number of iterations as inputs, a larger number of iterations produces a more accurate approximation of the Sierpinski fractal. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Interactive code which asks the side length of the starting triangle and number of iterations as inputs, a larger number of iterations produces a more accurate approximation of the Sierpinski fractal. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -2692,7 +2692,7 @@ next
 
 This is a half assed animated process - a bunch of pixels are drawn every couple of seconds and the pixmap written [to the file system]. So, if you open the output file ("chaosGame.jpg") it will [auto] update and show the progression of the image.
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 {{trans|Java}}
 [[File:ChaosGame.zkl.jpg|240px|thumb|right]]
 

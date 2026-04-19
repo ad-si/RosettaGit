@@ -15,7 +15,7 @@ unexpanded `{{{var}}}` placeholders):
 
 ```mediawiki
 {| align=center border=0 cellpadding=3 cellspacing=3 style="border: 1px solid #E0E0E0; background-color: #F8F8F8; color:black;"
-| style="font-size: 90%" | This page uses content from '''[Wikipedia](http://{{{2|en}}}.wikipedia.org)'''. The original article was at [}} {{{1|{{PAGENAME}}}}}](http://{{{2|en}}}.wikipedia.org/wiki/{{PAGENAMEE:{{{1|{{PAGENAMEE}}}}}). The list of authors can be seen in the [}}&action=history '''page history'''](http://{{{2|en}}}.wikipedia.org/w/index.php?title={{urlencode:{{{1|{{PAGENAMEE}}}}}). [[Project:Copyrights|As with {{SITENAME}}]], the text of Wikipedia [[wp:Project:Copyrights|is available]] under the [GNU FDL](http://www.gnu.org/licenses/fdl.html). (See links for details on variance)
+| style="font-size: 90%" | This page uses content from '''[Wikipedia](http://{{{2|en}}}.wikipedia.org)'''. The original article was at [}} {{{1|{{PAGENAME}}}}}](http://{{{2|en}}}.wikipedia.org/wiki/{{PAGENAMEE:{{{1|{{PAGENAMEE}}}}}). The list of authors can be seen in the [}}&action=history '''page history'''](http://{{{2|en}}}.wikipedia.org/w/index.php?title={{urlencode:{{{1|{{PAGENAMEE}}}}}). [[Project:Copyrights|As with {{SITENAME}}]], the text of Wikipedia [[wp:Project:Copyrights|is available]] under the [GNU FDL](https://www.gnu.org/licenses/fdl.html). (See links for details on variance)
 |}<includeonly>[[Category:WikipediaSourced]]</includeonly><noinclude>
 ```
 

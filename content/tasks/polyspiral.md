@@ -77,7 +77,7 @@ If animation is not practical in your programming environment, you may show a si
 
 ## C
 
-Straightforward implementation of the pseudocode, incr and angle are integers and incr is incremented by 5 instead of 0.05 as the % operation in C is not defined for non-integers. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Straightforward implementation of the pseudocode, incr and angle are integers and incr is incremented by 5 instead of 0.05 as the % operation in C is not defined for non-integers. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -960,7 +960,7 @@ main = mainWidget $ do
                   ]
 
   elAttr "h1" ("style" =: "color:black") $ text "Polyspiral"
-  elAttr "a" ("href" =: "http://rosettacode.org/wiki/Polyspiral#Haskell") $ text "Rosetta Code / Polyspiral / Haskell"
+  elAttr "a" ("href" =: "https://rosettacode.org/wiki/Polyspiral#Haskell") $ text "Rosetta Code / Polyspiral / Haskell"
 
   el "br" $ return ()
   elSvgns "svg" (constDyn boardAttrs) (listWithKey dSpiralMap showLine)
@@ -1003,7 +1003,7 @@ toSpiralMap angle =
 -- Display an element in svg namespace
 elSvgns :: MonadWidget t m => Text -> Dynamic t (Map Text Text) -> m a -> m a
 elSvgns t m ma = do
-    (el, val) <- elDynAttrNS' (Just "http://www.w3.org/2000/svg") t m ma
+    (el, val) <- elDynAttrNS' (Just "https://www.w3.org/2000/svg") t m ma
     return val
 ```
 
@@ -1518,7 +1518,7 @@ end
 ### Plotting helper functions
 
 Both versions #1 and #2 are based on using my own small plotting helper functions.
-You can find a few others on [OEIS Wiki](http://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions) and here on RC Wiki.
+You can find a few others on [OEIS Wiki](https://oeis.org/wiki/User:Anatoly_E._Voevudko/VoeLib.gp#Plotting_helper_functions) and here on RC Wiki.
 
 
 ```parigp
@@ -2204,7 +2204,7 @@ incr = 0
 [[File:PolySprial.zkl.gif|250px|thumb|right]]
 If you click on the image, it is animated.
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 
 ```zkl
 w,h:=640,640;

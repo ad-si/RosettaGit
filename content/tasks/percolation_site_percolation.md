@@ -1825,7 +1825,7 @@ Sample percolating 15 x 15, p =  0.40 grid
  1.0: 1.0}
 ```
 
-Note the abrupt change in percolation at around p = 0.6. These abrupt changes are [expected](http://mathworld.wolfram.com/PercolationThreshold.html).
+Note the abrupt change in percolation at around p = 0.6. These abrupt changes are [expected](https://mathworld.wolfram.com/PercolationThreshold.html).
 
 
 ## Racket

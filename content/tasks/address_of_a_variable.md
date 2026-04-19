@@ -182,7 +182,7 @@ To quote the ALGOL 68 Revised Report: <i>A "channel" corresponds to one
 or more physical devices (e.g., a card reader, a card punch or
 a line printer, or even to a set up in nuclear physics
 the results of which are collected by the computer),
-or to a filestore maintained by the operating system</i><http://www.xs4all.nl/~jmvdveer/report_5.html#A312aa>.
+or to a filestore maintained by the operating system</i><https://www.xs4all.nl/~jmvdveer/report_5.html#A312aa>.
 
 To establish a channel with such a device there is a special standard procedure:
 ```algol68
@@ -745,7 +745,7 @@ SUB MainHandler
 
 RETURN
 
-Note: The Windows Dev Center (http://msdn.microsoft.com/en-us/library/windows/desktop/ms647490%28v=vs.85%29.aspx) says
+Note: The Windows Dev Center (https://msdn.microsoft.com/en-us/library/windows/desktop/ms647490%28v=vs.85%29.aspx) says
 improper use of the Lstrcpy function may compromise security. A person is advised to see the Windows Dev site before using
 the Lstrcopy function.
 
@@ -1148,7 +1148,7 @@ J hides the details of pointers and memory allocation from the programmer, so it
 ## Java
 
 
-There is no way to access addresses of variables in Java. However, the [default hashCode()](http://download.oracle.com/javase/6/docs/api/java/lang/Object.html#hashCode%28%29) method defined in the Object class, "is typically implemented by converting the internal address of the object into an integer". Therefore, in some Java implementations at least, the hash code returned by <code>Object.hashCode()</code> reflects at least part of the address of an object. For objects whose classes have overridden the <code>hashCode()</code> method, you can still access the original hash code through the [System.identityHashCode()](http://download.oracle.com/javase/6/docs/api/java/lang/System.html#identityHashCode%28java.lang.Object%29) function.
+There is no way to access addresses of variables in Java. However, the [default hashCode()](https://download.oracle.com/javase/6/docs/api/java/lang/Object.html#hashCode%28%29) method defined in the Object class, "is typically implemented by converting the internal address of the object into an integer". Therefore, in some Java implementations at least, the hash code returned by <code>Object.hashCode()</code> reflects at least part of the address of an object. For objects whose classes have overridden the <code>hashCode()</code> method, you can still access the original hash code through the [System.identityHashCode()](https://download.oracle.com/javase/6/docs/api/java/lang/System.html#identityHashCode%28java.lang.Object%29) function.
 
 
 ## Julia
@@ -1666,7 +1666,7 @@ address()
 
 ## PicoLisp
 
-The PicoLisp function '[adr](http://software-lab.de/doc/refA.html#adr)' returns
+The PicoLisp function '[adr](https://software-lab.de/doc/refA.html#adr)' returns
 the address of a variable. A variable may be either a symbol or a cons pair in
 PicoLisp.
 
@@ -1791,9 +1791,9 @@ MessageRequester("Value",Str(*b\i)) ;de-reference the pointer *b to display the 
 ## Python
 
 
-Python traditionally doesn't support low-level operations on memory addresses, except in the limited sense that one can use the ''mmap'' module where it's available, and manipulate offsets into memory map objects...including serializing other objects into and out of the memory mapping. New versions of Python support a ''ctypes'' module which permits some low level address operations on C-type objects (see [C-types Reference](http://docs.python.org/lib/ctypes-ctypes-reference.html) for details).
+Python traditionally doesn't support low-level operations on memory addresses, except in the limited sense that one can use the ''mmap'' module where it's available, and manipulate offsets into memory map objects...including serializing other objects into and out of the memory mapping. New versions of Python support a ''ctypes'' module which permits some low level address operations on C-type objects (see [C-types Reference](https://docs.python.org/lib/ctypes-ctypes-reference.html) for details).
 
-The Python ''id()'' function returns a unique ID for any object. This just happens to be implemented as the base address of the object in C Python<http://docs.python.org/library/functions.html#id>; but that is not guaranteed by the semantics of the language and should not be considered a standard, nor used as such. But for comparison purposes the ID can be used as an address, since different extant objects will have different IDs.
+The Python ''id()'' function returns a unique ID for any object. This just happens to be implemented as the base address of the object in C Python<https://docs.python.org/library/functions.html#id>; but that is not guaranteed by the semantics of the language and should not be considered a standard, nor used as such. But for comparison purposes the ID can be used as an address, since different extant objects will have different IDs.
 
 
 ```python
@@ -1948,7 +1948,7 @@ heart.
 You can't access the address of a "variable" in Ruby.
 However, it may be possible to get the address of an object.
 
-The Ruby <code>object_id</code> method returns an object ID that is unique among active objects. It turns out that for the official Ruby implementation, the object ID is based on the address. For non-immediate objects (i.e. anything other than a <code>Fixnum</code>, <code>Symbol</code>, <code>true</code>, <code>false</code>, or <code>nil</code>), the address can be obtained by shifting the object ID one to the left. For more information, see the source code for the <code>object_id</code> method:<http://www.ruby-doc.org/core/Object.html#method-i-object_id>.
+The Ruby <code>object_id</code> method returns an object ID that is unique among active objects. It turns out that for the official Ruby implementation, the object ID is based on the address. For non-immediate objects (i.e. anything other than a <code>Fixnum</code>, <code>Symbol</code>, <code>true</code>, <code>false</code>, or <code>nil</code>), the address can be obtained by shifting the object ID one to the left. For more information, see the source code for the <code>object_id</code> method:<https://www.ruby-doc.org/core/Object.html#method-i-object_id>.
 
 For classes that do not override the <code>to_s</code> method, the <code>to_s</code> method also shows the address.
 
@@ -2156,7 +2156,7 @@ test()
 
 ## Tcl
 
-It is highly unusual to want to directly manipulate the address of a variable in Tcl, as it is a thoroughly unsafe operation. Indeed, Tcl does not expose any mechanism to do so at the script level. However, Tcl does contain a C-level API function, <tt>[Tcl_LinkVar](http://www.tcl.tk/man/tcl8.6/TclLib/LinkVar.htm)</tt>, to arrange for a variable's value to always reflect the contents of a particular address in memory. (See [[Machine Address#Tcl|Machine Address]] for an example of how to do that.)
+It is highly unusual to want to directly manipulate the address of a variable in Tcl, as it is a thoroughly unsafe operation. Indeed, Tcl does not expose any mechanism to do so at the script level. However, Tcl does contain a C-level API function, <tt>[Tcl_LinkVar](https://www.tcl-lang.org/man/tcl8.6/TclLib/LinkVar.htm)</tt>, to arrange for a variable's value to always reflect the contents of a particular address in memory. (See [[Machine Address#Tcl|Machine Address]] for an example of how to do that.)
 
 However, that's not the only way of doing it. You can also use the '''critcl''' library to put [[C]] code directly inside a Tcl script and so work with addresses directly that way.
 

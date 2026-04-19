@@ -54,7 +54,7 @@ Draw a superellipse with n = 2.5, and a = b = 200
 
 ## C
 
-Interactive program to draw a SuperEllipse.  Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Interactive program to draw a SuperEllipse.  Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 ```C
 
@@ -92,7 +92,7 @@ int main(){
 
 ## EchoLisp
 
-Link to the super-ellipse [image](http://www.echolalie.org/echolisp/images/super-ellipse.png).
+Link to the super-ellipse [image](https://www.echolalie.org/echolisp/images/super-ellipse.png).
 
 ```scheme
 
@@ -333,7 +333,7 @@ main = mainWidget $ do
 
 -- At end to avoid Rosetta Code unmatched quotes problem.
 elSvgns :: forall t m a. MonadWidget t m => Text -> Dynamic t (Map Text Text) -> m a -> m (El t, a)
-elSvgns = elDynAttrNS' (Just "http://www.w3.org/2000/svg")
+elSvgns = elDynAttrNS' (Just "https://www.w3.org/2000/svg")
 ```
 
 
@@ -783,7 +783,7 @@ push @q, $_, y_from_x($_) for 0..200;
 # Generate an SVG image
 open  $fh, '>', 'superellipse.svg';
 print $fh
-  qq|<svg height="@{[2*$b]}" width="@{[2*$a]}" xmlns="http://www.w3.org/2000/svg">\n|,
+  qq|<svg height="@{[2*$b]}" width="@{[2*$a]}" xmlns="https://www.w3.org/2000/svg">\n|,
   pline( 1, 1, @q ),
   pline( 1,-1, @q ), # flip and mirror
   pline(-1,-1, @q ), # for the other
@@ -825,8 +825,8 @@ my @q = flat map -> \x { x, y(x) }, (0, 1 ... 200);
 # Generate an SVG image
 INIT say qq:to/STOP/;
     <?xml version="1.0" standalone="no"?>
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg height="{b*2}" width="{a*2}" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg height="{b*2}" width="{a*2}" version="1.1" xmlns="https://www.w3.org/2000/svg">
     STOP
 END say '</svg>';
 
@@ -1289,8 +1289,8 @@ func pline(q) {
 # Generate an SVG image
 say <<-"EOT"
     <?xml version="1.0" standalone="no"?>
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg height="#{b*2}" width="#{a*2}" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "https://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg height="#{b*2}" width="#{a*2}" version="1.1" xmlns="https://www.w3.org/2000/svg">
     EOT
 
 # find point pairs for one quadrant
@@ -1323,7 +1323,7 @@ twoway function y=b*(1-(abs(x/a))^n)^(1/n), range(-200 200) || function y=-b*(1-
 
 ## zkl
 
-Uses the PPM class from <http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
+Uses the PPM class from <https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#zkl>
 [[File:SuperEllipse.zkl.jpg|250px|thumb|right]]
 
 ```zkl

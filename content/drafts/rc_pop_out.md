@@ -32,7 +32,7 @@ shown below)   of all   '''727'''   computer programming languages used on   ''R
 [<u>Category:Programming Languages</u>](https://www.rosettacode.org/wiki/Category:Programming_Languages)   page,
 and only computer programming languages that have at
 
-least one     ''member''     mentioned for the programming language entry in the   [<u>Special:Categories</u>](http://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
+least one     ''member''     mentioned for the programming language entry in the   [<u>Special:Categories</u>](https://www.rosettacode.org/mw/index.php?title=Special:Categories&limit=5000)
 
 page are included here.
 

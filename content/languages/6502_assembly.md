@@ -20,6 +20,6 @@ One of the first "public" uses for the design was the Apple I computer, introduc
 #[Wikipedia: MOS Technology 6502](https://en.wikipedia.org/wiki/MOS_Technology_6502)
 
 ## See Also
-*[6502 Assembly From Wikibooks](http://en.wikibooks.org/wiki/6502_Assembly)
+*[6502 Assembly From Wikibooks](https://en.wikibooks.org/wiki/6502_Assembly)
 *[6502 compatible assembler and emulator in javascript](http://www.6502asm.com/)
 *[6502 assembler and debugger in JavaScript](http://e-tradition.net/bytes/6502/)

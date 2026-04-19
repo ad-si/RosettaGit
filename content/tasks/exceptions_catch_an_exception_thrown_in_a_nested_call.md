@@ -127,7 +127,7 @@ Function foo caught exception U0
 
 ```
 
-The exact [behavior](http://rosettacode.org/wiki/Talk:Exceptions/Catch_an_exception_thrown_in_a_nested_call#11l_swallows_U1.3F) for an uncaught exception is implementation-defined [as in C++].
+The exact [behavior](https://rosettacode.org/wiki/Talk:Exceptions/Catch_an_exception_thrown_in_a_nested_call#11l_swallows_U1.3F) for an uncaught exception is implementation-defined [as in C++].
 
 
 ## Ada
@@ -1548,7 +1548,7 @@ Function foo calls bar indirectly through try.
 //
 // As all Go programmers should know, the Go authors are sharply critical of
 // the try/catch idiom and consider it bad practice in general.
-// See http://golang.org/doc/go_faq.html#exceptions
+// See https://golang.org/doc/go_faq.html#exceptions
 
 package main
 
@@ -1751,7 +1751,7 @@ func main() {
 }
 ```
 
-[Run in Go Playground](http://play.golang.org/p/X2pa8zE1Ce).
+[Run in Go Playground](https://play.golang.org/p/X2pa8zE1Ce).
 ```txt
 Recovered U0: a message
 passing on: 42
@@ -3339,9 +3339,9 @@ when thrown the second time.
 
 ## Seed7
 
-When an [exception](http://seed7.sourceforge.net/manual/errors.htm#Exceptions)
-is not [handled](http://seed7.sourceforge.net/manual/errors.htm#Handlers)
-the program is terminated and a [stack trace](http://seed7.sourceforge.net/manual/errors.htm#Stack_trace) is written.
+When an [exception](https://seed7.sourceforge.net/manual/errors.htm#Exceptions)
+is not [handled](https://seed7.sourceforge.net/manual/errors.htm#Handlers)
+the program is terminated and a [stack trace](https://seed7.sourceforge.net/manual/errors.htm#Stack_trace) is written.
 
 ```seed7
 $ include "seed7_05.s7i";

@@ -75,7 +75,7 @@ For a function, ''lcp'', accepting a list of strings, the following should hold 
  lcp("prefix","suffix") = <math>\varepsilon</math>
  lcp("foo","foobar") = "foo"
 
-''Task inspired by this stackoverflow question'': [Find the longest common starting substring in a set of strings](http://stackoverflow.com/questions/1916218/find-the-longest-common-starting-substring-in-a-set-of-strings)
+''Task inspired by this stackoverflow question'': [Find the longest common starting substring in a set of strings](https://stackoverflow.com/questions/1916218/find-the-longest-common-starting-substring-in-a-set-of-strings)
 
 
 ## Related tasks
@@ -3005,7 +3005,7 @@ Test case 5 prefix,suffix = No Matching Prefix
 ## Tcl
 
 
-Since [TIP#195](http://www.tcl.tk/cgi-bin/tct/tip/195.html) this has been present as a core command:
+Since [TIP#195](https://www.tcl-lang.org/cgi-bin/tct/tip/195.html) this has been present as a core command:
 
 
 ```Tcl

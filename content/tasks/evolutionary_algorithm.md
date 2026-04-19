@@ -146,7 +146,7 @@ To ensure that the new parent is never less fit than the prior parent, both the 
 
 ```forth
 
-\ RosettaCode challenge http://rosettacode.org/wiki/Evolutionary_algorithm
+\ RosettaCode challenge https://rosettacode.org/wiki/Evolutionary_algorithm
 \ Responding to the criticism that the implementation was too directed, this
 \ version does a completely random selection of chars to mutate
 
@@ -8176,7 +8176,7 @@ output:
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Evolutionary_algorithm
+https://rosettacode.org/wiki/Evolutionary_algorithm
 ···
 ■ Evolutionary
   § static

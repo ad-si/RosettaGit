@@ -165,7 +165,7 @@ beep>
 beep()
 ```
 
-See [beep() in the Asymptote manual](http://asymptote.sourceforge.net/doc/Data-types.html#index-g_t_0040code_007bbeep_007d-287).
+See [beep() in the Asymptote manual](https://asymptote.sourceforge.net/doc/Data-types.html#index-g_t_0040code_007bbeep_007d-287).
 
 
 ## AutoHotkey

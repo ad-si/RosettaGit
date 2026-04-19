@@ -10,4 +10,4 @@ categories = []
 tags = []
 +++
 
-{{library}}[CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp](http://weitz.de/cl-ppcre/#create-scanner) is a regular expression library by Edi Weitz.
+{{library}}[CL-PPCRE - Portable Perl-compatible regular expressions for Common Lisp](https://weitz.de/cl-ppcre/#create-scanner) is a regular expression library by Edi Weitz.

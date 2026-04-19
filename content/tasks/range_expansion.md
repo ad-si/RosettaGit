@@ -4267,8 +4267,8 @@ ArraySeq(-6, -3, -2, -1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20)
 
 ## Seed7
 
-The library [scanstri.s7i](http://seed7.sourceforge.net/libraries/scanstri.htm) defines the function [getInteger](http://seed7.sourceforge.net/libraries/scanstri.htm#getInteger%28inout_string%29) to extract substrings with integer literals (optional sign followed by a sequence of digits) from a string.
-The integer literals are converted to the type [integer](http://seed7.sourceforge.net/libraries/integer.htm) with the [parse](http://seed7.sourceforge.net/libraries/integer.htm#%28attr_integer%29parse%28in_string%29) operator.
+The library [scanstri.s7i](https://seed7.sourceforge.net/libraries/scanstri.htm) defines the function [getInteger](https://seed7.sourceforge.net/libraries/scanstri.htm#getInteger%28inout_string%29) to extract substrings with integer literals (optional sign followed by a sequence of digits) from a string.
+The integer literals are converted to the type [integer](https://seed7.sourceforge.net/libraries/integer.htm) with the [parse](https://seed7.sourceforge.net/libraries/integer.htm#%28attr_integer%29parse%28in_string%29) operator.
 
 ```seed7
 $ include "seed7_05.s7i";

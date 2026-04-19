@@ -13,9 +13,9 @@ tags = []
 ==Motivation, Links, etc. ==
 Part of my motivation for making this task is frustration that I can't enter the original challenge! On the other hand, it also illustrates a number of interesting techniques (closures, stateful functions) that aren't well-demonstrated on RC yet so it's still useful. And I'm pretty pleased with how well I managed to distill my Tcl solution too.
 
-There are existing solutions at <http://www.paulgraham.com/accgen.html> and the original essay is at <http://www.paulgraham.com/icad.html>; overall, this should help people get started with producing implementations. However I also think that this page needs more editing of the heading material so that we're less reliant on Paul's content and instead better linked in with everything else. That's why this is still a draft task.
+There are existing solutions at <https://www.paulgraham.com/accgen.html> and the original essay is at <https://www.paulgraham.com/icad.html>; overall, this should help people get started with producing implementations. However I also think that this page needs more editing of the heading material so that we're less reliant on Paul's content and instead better linked in with everything else. That's why this is still a draft task.
 
-My thanks to my fellow Tclers (especially those who have worked on <http://wiki.tcl.tk/25449>) for bringing this to my attention. –[[User:Dkf|Donal Fellows]] 23:34, 28 December 2009 (UTC)
+My thanks to my fellow Tclers (especially those who have worked on <https://wiki.tcl-lang.org/25449>) for bringing this to my attention. –[[User:Dkf|Donal Fellows]] 23:34, 28 December 2009 (UTC)
 
 == Nit-Picks ==
 

@@ -2916,7 +2916,7 @@ The display here turns out to be less rectangular than that of the "console" scr
 ```gambas
 'Charlie Ogier (C) 15PuzzleGame 24/04/2017 V0.1.0 Licenced under MIT
 'Inspiration came from: -
-''http://rosettacode.org/wiki/15_Puzzle_Game
+''https://rosettacode.org/wiki/15_Puzzle_Game
 ''Bugs or comments to bugs@cogier.com
 'Written in Gambas 3.9.2 - Updated on the Gambas Farm 01/05/2017
 'Updated so that the message and the Title show the same amount of moves 01/06/2017
@@ -3216,7 +3216,7 @@ End
 ```
 
 
-[Click here for image of game in play](http://www.cogier.com/gambas/Copuzzle.png)
+[Click here for image of game in play](https://www.cogier.com/gambas/Copuzzle.png)
 
 
 ## Go
@@ -6938,7 +6938,7 @@ quit                         ◄■■■■■■■■■■ user input.
 ## Ring
 
 
-CalmoSoft [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle) written in Ring Programming Language (<http://ring-lang.net>)
+CalmoSoft [Fifteen Puzzle Game](https://en.wikipedia.org/wiki/15_puzzle) written in Ring Programming Language (<https://ring-lang.net>)
 
 Video:
 [CalmoSoft Fifteen Puzzle Game Video](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0J6sL9df0JcV2TY&sa=D&sntz=1&usg=AFQjCNEFaWD8AqElMZK3KGnRKDhKxCO1Sw)
@@ -9048,7 +9048,7 @@ The window-title is used to show messages.
 
 ```tcl
  # 15puzzle_21.tcl - HaJo Gurt -  2016-02-16
- # http://wiki.tcl.tk/14403
+ # https://wiki.tcl-lang.org/14403
 
  #: 15-Puzzle - with grid, buttons and colors
 
@@ -9183,7 +9183,7 @@ The window-title is used to show messages.
   focus -force .
   wm resizable . 0 0
 
-# For some more versions, see:  http://wiki.tcl.tk/15067 : Classic 15 Puzzle and http://wiki.tcl.tk/15085 : N-Puzzle
+# For some more versions, see:  https://wiki.tcl-lang.org/15067 : Classic 15 Puzzle and https://wiki.tcl-lang.org/15085 : N-Puzzle
 
 ```
 

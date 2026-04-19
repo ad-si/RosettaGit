@@ -509,8 +509,8 @@ conversion10:
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
-/* and   http://www.hackersdelight.org/            */
+/* Thanks to https://thinkingeek.com/arm-assembler-raspberry-pi/*
+/* and   https://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
 /* r0 quotient */
@@ -3000,7 +3000,7 @@ Gives the desired output.
 ```REBOL
 REBOL [
     Title: "Loop Plus Half"
-    URL: http://rosettacode.org/wiki/Loop/n_plus_one_half
+    URL: https://rosettacode.org/wiki/Loop/n_plus_one_half
 ]
 
 repeat i 10 [

@@ -592,7 +592,7 @@ main = mainWidget $ do
 
 -- At end because of Rosetta Code handling of unmatched quotes.
 elDynAttrSVG a2 a3 a4 = do
-    elDynAttrNS' (Just "http://www.w3.org/2000/svg") a2 a3 a4
+    elDynAttrNS' (Just "https://www.w3.org/2000/svg") a2 a3 a4
     return ()
 ```
 
@@ -963,7 +963,7 @@ Dynamic[
 ```perl
 #!/usr/bin/perl
 
-use strict;              # http://www.rosettacode.org/wiki/Draw_a_rotating_cube
+use strict;              # https://www.rosettacode.org/wiki/Draw_a_rotating_cube
 use warnings;
 use Tk;
 use Time::HiRes qw( time );
@@ -1370,7 +1370,7 @@ print "Drag up+down with middle mousebutton to zoom."
 
 deg45 = math.radians(45.0)  # 0.785398163397
 
-cube = box()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html
+cube = box()    # using defaults, see https://www.vpython.org/contents/docs/defaults.html
 cube.rotate( angle=deg45, axis=(1,0,0) )
 cube.rotate( angle=deg45, axis=(0,0,1) )
 
@@ -1570,7 +1570,7 @@ The *Matrix* procedure is something unique to Tcl:  it's essentially a control c
 
 There is a bit of wander in the top and bottom points, which might just be due to rounding error in the cube's initial "rotation into position".
 
-See [this wiki page](http://wiki.tcl.tk/14283) (and others linked from it) for many similar examples.
+See [this wiki page](https://wiki.tcl-lang.org/14283) (and others linked from it) for many similar examples.
 
 
 ```Tcl

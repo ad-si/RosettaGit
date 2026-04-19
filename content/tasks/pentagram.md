@@ -132,7 +132,7 @@ Return
 
 ## C
 
-Interactive program which takes the side lengths of the pentagram's core, it's arms and the colours for filling the background, drawing the figure and then filling it in. Requires the [WinBGIm](http://www.cs.colorado.edu/~main/bgi/cs1300/) library.
+Interactive program which takes the side lengths of the pentagram's core, it's arms and the colours for filling the background, drawing the figure and then filling it in. Requires the [WinBGIm](https://www.cs.colorado.edu/~main/bgi/cs1300/) library.
 
 
 ```C
@@ -839,8 +839,8 @@ And a quick svg version
 constant HDR = """
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
-"http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg height="%d" width="%d" style="" xmlns="http://www.w3.org/2000/svg">
+"https://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg height="%d" width="%d" style="" xmlns="https://www.w3.org/2000/svg">
 <rect height="100%%" width="100%%" style="fill:black;" />
 """
 constant LINE = """
@@ -1297,8 +1297,8 @@ func pentagram(dim=200, sides=5) {
     var pentagram = <<-EOT
     <?xml version="1.0" standalone="no" ?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
-    "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-    <svg height="#{dim*2}" width="#{dim*2}" style="" xmlns="http://www.w3.org/2000/svg">
+    "https://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+    <svg height="#{dim*2}" width="#{dim*2}" style="" xmlns="https://www.w3.org/2000/svg">
     <rect height="100%" width="100%" style="fill:black;" />
     EOT
 
@@ -1327,8 +1327,8 @@ say pentagram()
 ```txt
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
-"http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg height="400" width="400" style="" xmlns="http://www.w3.org/2000/svg">
+"https://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg height="400" width="400" style="" xmlns="https://www.w3.org/2000/svg">
 <rect height="100%" width="100%" style="fill:black;" />
 <polyline points="180.000 0.000 -145.623 105.801 55.623 -171.190 55.623 171.190 -145.623 -105.801 180.000 0.000"
 style="fill:blue; stroke:white; stroke-width:3;"
@@ -1363,7 +1363,7 @@ mr = #.min(mx,my)/3
 
 ## Tcl
 
-This implementation draws a simple pentagram on a [Canvas](http://wiki.tcl.tk/1415) widget.
+This implementation draws a simple pentagram on a [Canvas](https://wiki.tcl-lang.org/1415) widget.
 ```Tcl
 
 package require Tk 8.6   	;# lmap is new in Tcl/Tk 8.6
@@ -1419,8 +1419,8 @@ vs:=[0.0..360-A,A].apply("toRad");  // angles of vertices
 #<<<
 0'|<?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
-"http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg height="%d" width="%d" style="" xmlns="http://www.w3.org/2000/svg">
+"https://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg height="%d" width="%d" style="" xmlns="https://www.w3.org/2000/svg">
 <rect height="100%" width="100%" style="fill:bisque;" />|
 #<<<
 .fmt(DIM*2, DIM*2).println();
@@ -1447,8 +1447,8 @@ $ zkl bbb > pentagram.svg
 $ cat pentagram.svg 
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
-"http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg height="400" width="400" style="" xmlns="http://www.w3.org/2000/svg">
+"https://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg height="400" width="400" style="" xmlns="https://www.w3.org/2000/svg">
 <rect height="100%" width="100%" style="fill:bisque;" />
 <polyline points=" 200.000, 0.000 -161.803, 117.557 " style="fill:seashell; stroke:blue; stroke-width:3;" transform="translate(200,200) rotate(-18)" />
 <polyline points=" 61.803, 190.211 -161.803,-117.557 " style="fill:seashell; stroke:blue; stroke-width:3;" transform="translate(200,200) rotate(-18)" />

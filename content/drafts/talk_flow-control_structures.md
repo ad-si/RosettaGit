@@ -14,7 +14,7 @@ I'm not sure why there is talk about Exceptions in the C++ section of this artic
 : You know, looking at this page and the [[Exceptions]] page, I'm beginning to think they ought to be merged.  Exceptions are a form of flow control, and the Flow Control article is pretty empty without them. --[[User:Short Circuit|Short Circuit]] 13:22, 4 November 2007 (MST)
 :: Though many languages lump them together, ''Exceptions'' (signalling errors) and ''Non-local Jumps'' (for flow control) are actually different things. And some languages have different features for them, or have different costs associated with those features. So maybe it makes more sense to have a [[Non-Local Jumps]] page in the Flow Control Category, describe the similarities there, and possibly link to [[Exceptions]]. OTOH, one then needs a good example for this page. [[User:DirkT|Dirk Thierbach]] 11 November 2007
 
-[What happens when you use a goto](http://xkcd.com/292/)
+[What happens when you use a goto](https://xkcd.com/292/)
 
 Should break and continue be in the IDL example here? I thought they were for loops. --[[User:Mwn3d|Mwn3d]] 13:16, 15 December 2007 (MST)
 :'break' at least works for any "innermost structure" -- it'll break out of the 'current loop' but also out of the 'current if-branch' or the 'current switch-branch' etc. [[User:Sgeier|Sgeier]] 22:36, 12 June 2009 (UTC)

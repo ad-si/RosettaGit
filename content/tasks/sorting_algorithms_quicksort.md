@@ -194,7 +194,7 @@ A better quicksort algorithm works in place, by swapping elements within the arr
 
 Quicksort has a reputation as the fastest sort. Optimized variants of quicksort are common features of many languages and libraries. One often contrasts quicksort with   [[../Merge sort|merge sort]],   because both sorts have an average time of   <big> ''[[O]](n ''log'' n)''. </big>
 
-: ''"On average, mergesort does fewer comparisons than quicksort, so it may be better when complicated comparison routines are used. Mergesort also takes advantage of pre-existing order, so it would be favored for using sort() to merge several sorted arrays. On the other hand, quicksort is often faster for small arrays, and on arrays of a few distinct values, repeated many times."'' — <http://perldoc.perl.org/sort.html>
+: ''"On average, mergesort does fewer comparisons than quicksort, so it may be better when complicated comparison routines are used. Mergesort also takes advantage of pre-existing order, so it would be favored for using sort() to merge several sorted arrays. On the other hand, quicksort is often faster for small arrays, and on arrays of a few distinct values, repeated many times."'' — <https://perldoc.perl.org/sort.html>
 
 Quicksort is at one end of the spectrum of divide-and-conquer algorithms, with merge sort at the opposite end.
 
@@ -2313,7 +2313,7 @@ void main() {
 
 
 Often short functional sieves are not a true implementations of the Sieve of Eratosthenes:
-<http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf>
+<https://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf>
 
 Similarly, one could argue that a true QuickSort is in-place,
 as this more efficient version (same output):
@@ -3319,7 +3319,7 @@ Old school, following [Hoare's 1962 paper](http://comjnl.oxfordjournals.org/cgi/
 
 As a nod to the task request to work for all types with weak strict ordering, code below uses the < operator when comparing key values.  The three points are noted in the code below.
 
-Actually supporting arbitrary types would then require at a minimum a user supplied less-than function, and values referenced from an array of interface{} types.  More efficient and flexible though is the [sort interface](http://golang.org/pkg/sort/#Interface) of the Go sort package.  Replicating that here seemed beyond the scope of the task so code was left written to sort an array of ints.
+Actually supporting arbitrary types would then require at a minimum a user supplied less-than function, and values referenced from an array of interface{} types.  More efficient and flexible though is the [sort interface](https://golang.org/pkg/sort/#Interface) of the Go sort package.  Replicating that here seemed beyond the scope of the task so code was left written to sort an array of ints.
 
 Go has no language support for indexing with discrete types other than integer types, so this was not coded.
 
@@ -3636,7 +3636,7 @@ lst quickSort println # ==> list(-4, -1, 2, 5, 9)
 lst quickSortInPlace println # ==> list(-4, -1, 2, 5, 9)
 ```
 
-Another more low-level Quicksort implementation can be found in Io's [github](http://github.com/stevedekorte/io/blob/master/samples/misc/qsort.io) repository.
+Another more low-level Quicksort implementation can be found in Io's [github](https://github.com/stevedekorte/io/blob/master/samples/misc/qsort.io) repository.
 
 
 ## J
@@ -5521,7 +5521,7 @@ class QuickSort {
 
 
 =={{header|Objective-C}}==
-The [latest XCode compiler](http://weblog.bignerdranch.com/398-objective-c-literals-part-1/) is assumed with [ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting) enabled.
+The [latest XCode compiler](http://weblog.bignerdranch.com/398-objective-c-literals-part-1/) is assumed with [ARC](https://en.wikipedia.org/wiki/Automatic_Reference_Counting) enabled.
 
 ```objc
 void quicksortInPlace(NSMutableArray *array, NSInteger first, NSInteger last, NSComparator comparator) {
@@ -7225,7 +7225,7 @@ const proc: quickSort (inout array elemType: arr) is func
   end func;
 ```
 
-Original source: <http://seed7.sourceforge.net/algorith/sorting.htm#quickSort>
+Original source: <https://seed7.sourceforge.net/algorith/sorting.htm#quickSort>
 
 
 ## SETL

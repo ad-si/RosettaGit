@@ -494,7 +494,7 @@ No solutions for abcdd : No fitting matches found.
 
 ## Kotlin
 
-I've downloaded the free dictionary at <http://www.puzzlers.org/pub/wordlists/unixdict.txt> for this task. All single letters from 'a' to 'z' are considered to be words by this dictionary but 'bc' and 'cd' which I'd have expected to be present are not.
+I've downloaded the free dictionary at <https://www.puzzlers.org/pub/wordlists/unixdict.txt> for this task. All single letters from 'a' to 'z' are considered to be words by this dictionary but 'bc' and 'cd' which I'd have expected to be present are not.
 
 ```scala
 // version 1.1.3

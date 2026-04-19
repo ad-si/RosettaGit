@@ -137,7 +137,7 @@ WAITKEY
 =
 ## Applesoft BASIC
 =
-[Low-Resolution (Lo-Res) graphics](http://en.wikipedia.org/wiki/Apple_II_graphics#Low-Resolution_.28Lo-Res.29_graphics) 40x48, 16 colors, page 1
+[Low-Resolution (Lo-Res) graphics](https://en.wikipedia.org/wiki/Apple_II_graphics#Low-Resolution_.28Lo-Res.29_graphics) 40x48, 16 colors, page 1
 
 
 ```Applesoft BASIC
@@ -146,9 +146,9 @@ Y =  PDL (1) * 3 / 16
  COLOR=  SCRN( X,Y)
 ```
 
-[Hi-Resolution (Hi-Res) graphics](http://en.wikipedia.org/wiki/Apple_II_graphics#High-Resolution_.28Hi-Res.29_graphics) 280x192, 6 colors
+[Hi-Resolution (Hi-Res) graphics](https://en.wikipedia.org/wiki/Apple_II_graphics#High-Resolution_.28Hi-Res.29_graphics) 280x192, 6 colors
 
-There is no HSCRN( X,Y) function in Applesoft.  What follows is an elaborate subroutine that determines the hi-res color at the location given by variables X and Y on the current hi-res page.  A color value in the range from 0 to 7 is returned in the variable C.  The color is determined by peeking at adjacent pixels and the Most Significant Bit [MSB](http://en.wikipedia.org/wiki/Most_significant_bit).  The VTAB routine is used as an aid to calculate the address of pixels.  Other colors beyond the 6 hi-res colors can be displayed by positioning pixels at byte boundaries using the MSB.  This routine is limited to the eight hi-res colors.
+There is no HSCRN( X,Y) function in Applesoft.  What follows is an elaborate subroutine that determines the hi-res color at the location given by variables X and Y on the current hi-res page.  A color value in the range from 0 to 7 is returned in the variable C.  The color is determined by peeking at adjacent pixels and the Most Significant Bit [MSB](https://en.wikipedia.org/wiki/Most_significant_bit).  The VTAB routine is used as an aid to calculate the address of pixels.  Other colors beyond the 6 hi-res colors can be displayed by positioning pixels at byte boundaries using the MSB.  This routine is limited to the eight hi-res colors.
 
 
 ```Applesoft BASIC
@@ -852,8 +852,8 @@ end
 ```
 
 
-[graphics.icn provides graphics](http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
-[printf.icn provides printf](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Sample Output:
 ```txt

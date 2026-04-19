@@ -3580,7 +3580,7 @@ justified,  right       justified,  or      center  justified  within      its  
 
 ## HicEst
 
-A file opened with a Format option describing the column format(s) can be addressed like a standard in-memory array. In addition the DLG function ([MatrixExplorer](http://www.HicEst.com/MatrixExplorer.htm)) allows this text/numeric file to be edited or visualized in many ways, but string columns are always left adjusted while numeric columns are right adjusted. Export is possible.
+A file opened with a Format option describing the column format(s) can be addressed like a standard in-memory array. In addition the DLG function ([MatrixExplorer](https://www.HicEst.com/MatrixExplorer.htm)) allows this text/numeric file to be edited or visualized in many ways, but string columns are always left adjusted while numeric columns are right adjusted. Export is possible.
 
 ```HicEst
 
@@ -7030,7 +7030,7 @@ TextCenter contains:
 ```rebol
 REBOL [
 	Title: "Align Columns"
-	URL: http://rosettacode.org/wiki/Align_columns
+	URL: https://rosettacode.org/wiki/Align_columns
 ]
 
 specimen: {Given$a$text$file$of$many$lines,$where$fields$within$a$line$

@@ -2949,7 +2949,7 @@ Ways to select 3 items from 10 types: 220
 
 
 '''References:'''
-* [Python documentation](http://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement)
+* [Python documentation](https://docs.python.org/py3k/library/itertools.html#itertools.combinations_with_replacement)
 
 
 Or, assembling our own '''combsWithRep''', by composition of functional primitives:

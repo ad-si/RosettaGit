@@ -549,8 +549,8 @@ main = do
 ## J
 
 Relevant J essays:
-[precision functions](http://www.jsoftware.com/jwiki/Essays/Extended%20Precision%20Functions|Extended)
-and <http://www.jsoftware.com/jwiki/Essays/Chudnovsky%20Algorithm|Pi>
+[precision functions](https://www.jsoftware.com/jwiki/Essays/Extended%20Precision%20Functions|Extended)
+and <https://www.jsoftware.com/jwiki/Essays/Chudnovsky%20Algorithm|Pi>
 
 Translated from Python:
 

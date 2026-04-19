@@ -14,4 +14,4 @@ JoCaml is OCaml plus the join calculus, that is, OCaml extended for concurrent a
 
 Website of JoCaml: <http://moscova.inria.fr/jocaml/>
 
-Wikipedia article: <http://en.wikipedia.org/wiki/JoCaml>
+Wikipedia article: <https://en.wikipedia.org/wiki/JoCaml>

@@ -558,7 +558,7 @@ MsgBox Missing Permutation(s):%Missing%
 ;-------------------------------------------------
 
 ; Shortened version of [VxE]'s permutation function
-; http://www.autohotkey.com/forum/post-322251.html#322251
+; https://www.autohotkey.com/forum/post-322251.html#322251
 Perm( s , dL="" , t="" , p="") {
    StringSplit, m, s, % d := SubStr(dL,1,1) , %t%
    IfEqual, m0, 1, return m1 d p
@@ -1623,7 +1623,7 @@ end
 ```
 
 
-[member 'strings' provides permutes(s) which generates all permutations of a string](http://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
+[member 'strings' provides permutes(s) which generates all permutations of a string](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 
 
 ## J
@@ -1679,7 +1679,7 @@ DBAC
 
 Here, <code>'ABCD'</code> represents the values being permuted (their order does not matter), and <code>4</code> is how many of them we have.
 
-Yet another alternative expression, which uses parentheses instead of the [passive operator](http://www.jsoftware.com/help/dictionary/d220v.htm) (<code>~</code>), would be:
+Yet another alternative expression, which uses parentheses instead of the [passive operator](https://www.jsoftware.com/help/dictionary/d220v.htm) (<code>~</code>), would be:
 
 
 ```J

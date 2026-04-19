@@ -2819,7 +2819,7 @@ main :-  bagof( X, dinesmans(X), L )
 ```
 
 
-Ease of change (flexibility) is arguably evident in the code. [The output](http://ideone.com/8n9IQ):
+Ease of change (flexibility) is arguably evident in the code. [The output](https://ideone.com/8n9IQ):
 
 ```txt
 
@@ -2865,7 +2865,7 @@ dinesmans(X) :-
 ```
 
 
-[Running it](http://ideone.com/1vYTV) produces the same output, but more efficiently. Separate testing in SWI shows 1,328 inferences for the former, 379 inferences for the latter version. Moving rule 7. up below rule 4. brings it down to 295 inferences.
+[Running it](https://ideone.com/1vYTV) produces the same output, but more efficiently. Separate testing in SWI shows 1,328 inferences for the former, 379 inferences for the latter version. Moving rule 7. up below rule 4. brings it down to 295 inferences.
 
 
 ## PureBasic
@@ -2983,7 +2983,7 @@ Miller=5
 Smith=1
 ```
 
-===Port of [C code solution](http://rosettacode.org/wiki/Dinesman%27s_multiple-dwelling_problem#C)===
+===Port of [C code solution](https://rosettacode.org/wiki/Dinesman%27s_multiple-dwelling_problem#C)===
 
 ```PureBasic
 
@@ -4496,7 +4496,7 @@ From bottom to top: Smith Cooper Baker Fletcher Miller
 ```UTFool
 
 ···
-http://rosettacode.org/wiki/Dinesman's_multiple-dwelling_problem
+https://rosettacode.org/wiki/Dinesman's_multiple-dwelling_problem
 ···
 import java.util.HashSet
 

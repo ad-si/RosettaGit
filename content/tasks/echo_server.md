@@ -326,7 +326,7 @@ main(void)
 ## AutoHotkey
 
 <tt>echoserver.ahk</tt>, modified from
-[script](http://www.autohotkey.com/forum/topic13829.html) by zed gecko.
+[script](https://www.autohotkey.com/forum/topic13829.html) by zed gecko.
 
 ```AutoHotkey
 #SingleInstance Force
@@ -853,7 +853,7 @@ server.listen 12321, "localhost"
 ## Common Lisp
 
 
-Here is a basic [:usocket](http://common-lisp.net/project/usocket/) example (it should work with any Common Lisp):
+Here is a basic [:usocket](https://common-lisp.net/project/usocket/) example (it should work with any Common Lisp):
 
 
 ```lisp
@@ -1861,9 +1861,9 @@ Connection lost: localhost:2048.
 
 ## Perl
 
-This server will run indefinitely listening in the port 12321 and [forking](http://perldoc.perl.org/functions/fork.html) every time a client connects, the childs listen to the client and write back.
+This server will run indefinitely listening in the port 12321 and [forking](https://perldoc.perl.org/functions/fork.html) every time a client connects, the childs listen to the client and write back.
 
-This is an example using the [IO::Socket](http://search.cpan.org/perldoc?IO::Socket) module:
+This is an example using the [IO::Socket](https://metacpan.org/perldoc?IO::Socket) module:
 
 ```perl
 use IO::Socket;
@@ -1898,7 +1898,7 @@ while (1) {
 ```
 
 
-This is an equivalent program using the [Net::Server](http://search.cpan.org/perldoc?Net::Server) module:
+This is an equivalent program using the [Net::Server](https://metacpan.org/perldoc?Net::Server) module:
 
 ```perl
 package Echo;
@@ -2423,7 +2423,7 @@ object EchoServer extends App {
 
 ## Scheme
 
-Based on the [[Guile]] [Internet Socket Server Example](http://www.gnu.org/software/guile/manual/html_node/Internet-Socket-Examples.html).
+Based on the [[Guile]] [Internet Socket Server Example](https://www.gnu.org/software/guile/manual/html_node/Internet-Socket-Examples.html).
 
 ```scheme
 ; Needed in Guile for read-line
@@ -2473,8 +2473,8 @@ Based on the [[Guile]] [Internet Socket Server Example](http://www.gnu.org/softw
 
 ## Seed7
 
-The code below uses the library [listener.s7i](http://seed7.sourceforge.net/libraries/listener.htm).
-The function [waitForRequest](http://seed7.sourceforge.net/libraries/listener.htm#waitForRequest%28inout_listener,inout_file,inout_file%29) returns
+The code below uses the library [listener.s7i](https://seed7.sourceforge.net/libraries/listener.htm).
+The function [waitForRequest](https://seed7.sourceforge.net/libraries/listener.htm#waitForRequest%28inout_listener,inout_file,inout_file%29) returns
 requests from new and existing connections.
 
 

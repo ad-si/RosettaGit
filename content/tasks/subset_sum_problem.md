@@ -1070,8 +1070,8 @@ end
 ```
 
 
-[printf.icn provides formatting](http://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[lists.icn provides lcomb for list combinations](http://www.cs.arizona.edu/icon/library/src/procs/lists.icn)
+[printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
+[lists.icn provides lcomb for list combinations](https://www.cs.arizona.edu/icon/library/src/procs/lists.icn)
 
 ```txt
 No zero-sum subsets of length 1

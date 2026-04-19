@@ -1406,7 +1406,7 @@ in
 
 ## Perl
 
-See [Coro::Semaphore](http://search.cpan.org/dist/Coro/Coro/Semaphore.pm).
+See [Coro::Semaphore](https://metacpan.org/dist/Coro/Coro/Semaphore.pm).
 
 ## Perl 6
 

@@ -3242,7 +3242,7 @@ E = [2, 4, 6, 8, 10]
 
 ### Anonymous functions
 
-Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```Prolog
 ?- use_module(library(lambda)).
@@ -3256,7 +3256,7 @@ L = [2,4,6,8].
 
 ### filter and anonymous functions
 
-Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
+Works with SWI-Prolog and <b>module(lambda)</b> written by <b>Ulrich Neumerkel</b>, "lambda.pl" can be found there : <https://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl>
 
 ```prolog
 :- use_module(lambda).

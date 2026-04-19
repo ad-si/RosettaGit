@@ -138,7 +138,7 @@ PROC VOID raise index error := VOID: (
   stop
 );
 
-COMMENT from http://rosettacode.org/wiki/Matrix_Transpose#ALGOL_68 END COMMENT
+COMMENT from https://rosettacode.org/wiki/Matrix_Transpose#ALGOL_68 END COMMENT
 OP ZIP = ([,]FIELD in)[,]FIELD:(
   [2 LWB in:2 UPB in,1 LWB in:1UPB in]FIELD out;
   FOR i FROM LWB in TO UPB in DO
@@ -147,7 +147,7 @@ OP ZIP = ([,]FIELD in)[,]FIELD:(
   out
 );
 
-COMMENT from http://rosettacode.org/wiki/Matrix_multiplication#ALGOL_68 END COMMENT
+COMMENT from https://rosettacode.org/wiki/Matrix_multiplication#ALGOL_68 END COMMENT
 OP * = (VEC a,b)FIELD: ( # basically the dot product #
     FIELD result:=0;
     IF LWB a/=LWB b OR UPB a/=UPB b THEN raise index error FI;
@@ -169,7 +169,7 @@ OP * = (MAT a, b)MAT: ( # overload matrix times matrix #
      result
    );
 
-COMMENT from http://rosettacode.org/wiki/Pyramid_of_numbers#ALGOL_68 END COMMENT
+COMMENT from https://rosettacode.org/wiki/Pyramid_of_numbers#ALGOL_68 END COMMENT
 OP / = (VEC a, MAT b)VEC: ( # vector division #
   [LWB a:UPB a,1]FIELD transpose a;
   transpose a[,1]:=a;
@@ -339,7 +339,7 @@ bool polynomialfit(int obs, int degree,
 #endif
 ```
 
-'''Implementation''' (the examples [here](http://www.gnu.org/software/gsl/manual/html_node/Fitting-Examples.html) helped alot to code this quickly):
+'''Implementation''' (the examples [here](https://www.gnu.org/software/gsl/manual/html_node/Fitting-Examples.html) helped alot to code this quickly):
 
 ```c
 #include "polifitgsl.h"
@@ -993,7 +993,7 @@ func Vandermonde(a []float64, degree int) *mat64.Dense {
 
 ### Library go.matrix
 
-Least squares solution using QR decomposition and package [go.matrix](http://github.com/skelterjohn/go.matrix).
+Least squares solution using QR decomposition and package [go.matrix](https://github.com/skelterjohn/go.matrix).
 
 ```go
 package main
@@ -1051,7 +1051,7 @@ func main() {
 
 ## Haskell
 
-Uses module Matrix.LU from [hackageDB DSP](http://hackage.haskell.org/package/dsp)
+Uses module Matrix.LU from [hackageDB DSP](https://hackage.haskell.org/package/dsp)
 
 ```haskell
 import Data.List
@@ -1601,7 +1601,7 @@ V=[1,6,17,34,57,86,121,162,209,262,321]~;
 M=matrix(#V,3,i,j,(i-1)^(j-1));Polrev(matsolve(M~*M,M~*V))
 ```
 
-<small>Code thanks to [Bill Allombert](http://pari.math.u-bordeaux.fr/archives/pari-users-1105/msg00006.html)</small>
+<small>Code thanks to [Bill Allombert](https://pari.math.u-bordeaux.fr/archives/pari-users-1105/msg00006.html)</small>
 ```txt
 3*x^2 + 2*x + 1
 ```
@@ -2294,7 +2294,7 @@ say coeff
 
 ## Stata
 
-See '''[Factor variables](http://www.stata.com/help.cgi?fvvarlist)''' in Stata help for explanations on the ''c.x##c.x'' syntax.
+See '''[Factor variables](https://www.stata.com/help.cgi?fvvarlist)''' in Stata help for explanations on the ''c.x##c.x'' syntax.
 
 ```stata
 . clear

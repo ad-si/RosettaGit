@@ -567,7 +567,7 @@ BigAdd(a, b) {
 	return, (Carry ? Carry : "") . Result
 }
 ```
-NStepSequence() is available [here](http://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey).
+NStepSequence() is available [here](https://rosettacode.org/wiki/Fibonacci_n-step_number_sequences#AutoHotkey).
 '''Output:'''
 
 ```txt
@@ -2111,7 +2111,7 @@ fun main(a: Array<String>) = println(Benford(FibonacciGenerator))
 ## Liberty BASIC
 
 Using function from
-<http://rosettacode.org/wiki/Fibonacci_sequence#Liberty_BASIC>
+<https://rosettacode.org/wiki/Fibonacci_sequence#Liberty_BASIC>
 
 ```lb
 

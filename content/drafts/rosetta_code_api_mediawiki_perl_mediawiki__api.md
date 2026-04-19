@@ -11,7 +11,7 @@ tags = []
 +++
 
 =Official Resources=
-[MediaWiki::API](http://search.cpan.org/dist/MediaWiki-API/lib/MediaWiki/API.pm) on CPAN.
+[MediaWiki::API](https://metacpan.org/dist/MediaWiki-API/lib/MediaWiki/API.pm) on CPAN.
 =Usage=
 All of the methods take [[Associative Array|hashrefs]], which provides a named parameter approach to function arguments.  MediaWiki::API uses [[object-oriented principles]], which means you need to [[instanciate an object]].  Using MediaWiki::API involves four stages.
 ==Construction==
@@ -26,7 +26,7 @@ my $mw = MediaWiki::API->new( \%options ); #Construct the object
 Some configuration options will be specific to Rosetta Code, though this currently only applies to the api_url.
 
 ```perl
-my %rcopts = ( 'api_url' => 'http://rosettacode.org/mw/api.php' );
+my %rcopts = ( 'api_url' => 'https://rosettacode.org/mw/api.php' );
 ```
 
 

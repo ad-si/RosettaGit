@@ -1022,7 +1022,7 @@ TwinLensCamera(numberOfLenses=2)
 Lasso only allow single inheritance.
 But it supports the use of multiple traits
 and trays hand down the methods it has implemented provided that the type
-fulfills the requirements for the trait. [http://lassoguide.com/language/traits.html](http://lassoguide.com/language/traits.html)
+fulfills the requirements for the trait. [https://lassoguide.com/language/traits.html](https://lassoguide.com/language/traits.html)
 
 ```Lasso
 define trait_camera => trait {
@@ -1566,7 +1566,7 @@ use base qw/Camera MobilePhone/;
 ```
 
 
-The same using the [MooseX::Declare](http://search.cpan.org/perldoc?MooseX::Declare) extention:
+The same using the [MooseX::Declare](https://metacpan.org/perldoc?MooseX::Declare) extention:
 
 ```perl
 use MooseX::Declare;

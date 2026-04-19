@@ -484,7 +484,7 @@ test({"d","c","e","b","a"})
 
 ## Racket
 
-{{trans|Scheme}} -- this implementation illustrates differences in identifiers and syntaxes of Scheme and Racket's <code>match-lambda</code> family. [<code>racket/match</code> documented here](http://docs.racket-lang.org/reference/match.html).
+{{trans|Scheme}} -- this implementation illustrates differences in identifiers and syntaxes of Scheme and Racket's <code>match-lambda</code> family. [<code>racket/match</code> documented here](https://docs.racket-lang.org/reference/match.html).
 
 
 ```racket
