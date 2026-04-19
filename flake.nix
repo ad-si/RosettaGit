@@ -21,6 +21,7 @@
             bash
             coreutils
             gnumake
+            lychee
             netlify-cli
             zola
           ];

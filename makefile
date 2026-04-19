@@ -7,6 +7,11 @@ public: static templates content config.toml
 	zola build
 
 
+.PHONY: test
+test:
+	zola check
+
+
 .PHONY: format
 format:
 	echo "TODO"
@@ -37,6 +42,11 @@ deploy: public prune-public
 		--dir=public \
 		--site=5984a2df-f835-4e6c-87cd-12aa26ec33f3 \
 		--prod
+
+
+.PHONY: check-links  # Check links with Lychee (https://github.com/lycheeverse/lychee)
+check-links: public
+	lychee --no-progress public
 
 
 .PHONY: clean
