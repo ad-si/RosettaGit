@@ -116,7 +116,6 @@ Sometimes a [[multiline shebang]] is necessary in order to provide the script na
 
 See also [[Command-line arguments]]
 
-Examples from [GitHub](https://github.com/mcandre/scriptname).
 
 
 ## AArch64 Assembly

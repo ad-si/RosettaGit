@@ -2150,7 +2150,7 @@ $index1 = first_index { $_->{name} eq 'Dar Es Salaam' } @cities;
 
 The built-in method <tt>.first</tt> fulfills the requirements of this task.
 
-It takes any [smart-matcher](https://docs.perl6.org/language/operators#infix_~~) as a predicate. The <tt>:k</tt> adverb makes it return the key (i.e. numerical index) instead of the value of the element.
+It takes any [smart-matcher](https://docs.raku.org/language/operators#infix_~~) as a predicate. The <tt>:k</tt> adverb makes it return the key (i.e. numerical index) instead of the value of the element.
 
 ```perl6
 my @cities =

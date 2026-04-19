@@ -806,7 +806,7 @@ DOES
 ## Perl 6
 
 
-You can get a list of an object's methods using <tt>.^methods</tt>, which is part of the [Meta Object Protocol](https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW).
+You can get a list of an object's methods using <tt>.^methods</tt>, which is part of the [Meta Object Protocol](https://docs.raku.org/type/Metamodel::ClassHOW).
 
 Each is represented as a <tt>Method</tt> object that contains a bunch of info:
 

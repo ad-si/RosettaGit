@@ -3928,7 +3928,7 @@ in
 ```
 
 
-There is also a [queue datatype](https://www.mozart-oz.org/home/doc/mozart-stdlib/adt/queue.html) in the Mozart standard library.
+There is also a [queue datatype](https://mozart.github.io/mozart-v1/doc-1.4.0/mozart-stdlib/adt/queue.html) in the Mozart standard library.
 
 
 ## Pascal

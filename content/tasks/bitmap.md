@@ -3326,7 +3326,7 @@ Based on this, we create a functor "Bitmap.oz":
 
 ```oz
 %% For real task prefer QTk's images:
-%% https://www.mozart-oz.org/home/doc/mozart-stdlib/wp/qtk/html/node38.html
+%% https://mozart.github.io/mozart-v1/doc-1.4.0/mozart-stdlib/wp/qtk/html/node38.html
 
 functor
 import

@@ -9,6 +9,10 @@ timeout = 15
 max_concurrency = 32
 retry_wait_time = 2
 
+# Tasks such as "Hello world/Web server" use localhost/127.0.0.1 URLs
+# as example demo addresses. These have no public target so skip them.
+exclude_loopback = true
+
 # Status codes to accept. 4xx auth/throttling responses prove the resource
 # exists; the failure is an access restriction we cannot work around.
 accept = [
@@ -66,4 +70,47 @@ exclude = [
   'gfycat\.com',
   'blog\.newsystemsthinking\.com',
   'git\.chise\.org',
+
+  # Unreachable domains used by many language-specific task entries.
+  # Fōrmulæ programs live on the project wiki; the Gambas playground
+  # hosts runnable gists. Both sites currently time out for lychee and
+  # curl alike, but the links exist on every task page for those langs.
+  'wiki\.formulae\.org',
+  'gambas-playground\.proko\.eu',
+
+  # Defunct user directories from the retired AutoHotkey community
+  # hosting at www.autohotkey.net (lychee reports them as broken but
+  # the shared hosting never returned). No wayback captures exist.
+  'www\.autohotkey\.net',
+
+  # Former AutoHotkey link shortener domain, now dead.
+  'l\.autohotkey\.com',
+
+  # CLiki (Common Lisp wiki) and the Tapestry Unicon/Icon TWiki are both
+  # unreachable and have no wayback captures for the linked pages.
+  'www\.cliki\.net',
+  'tapestry\.tucson\.az\.us',
+
+  # German AHK community forum, defunct since at least 2022.
+  'www\.development-lounge\.de',
+
+  # HicEst redesigned their site; the old documentation .htm pages
+  # (MatrixExplorer, OPEN, SOLVE, etc.) are gone with no replacement
+  # and no usable wayback captures for most.
+  '(?i)www\.hicest\.com/[A-Za-z$]+',
+
+  # RubyForge shut down in 2014; Google Code shut down in 2016.
+  # Many projects migrated to GitHub under different paths.
+  'rubyforge\.org',
+  'googlecode\.com',
+
+  # Dr. Dobb's Journal (drdobbs.com) shut down in 2014 and the site
+  # went offline in 2023. Cited articles have no wayback replacements.
+  '(?:www\.)?drdobbs\.com',
+
+  # LOLCODE specs site is currently unreachable.
+  '(?:www\.)?lolcode\.com',
+
+  # Wikispaces shut down in 2018; the basic.wikispaces.com pages are gone.
+  'basic\.wikispaces\.com',
 ]

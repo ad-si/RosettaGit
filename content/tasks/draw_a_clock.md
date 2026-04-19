@@ -1197,7 +1197,7 @@ public class Clock : Form
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/analog-clock.html)
+[Run it](https://easylang.dev/apps/analog-clock.html)
 
 <lang>func draw hour min sec . .
   # dial
@@ -3179,7 +3179,7 @@ while true:
 ## OCaml
 
 
-Using only the standard library of OCaml with its [Graphics](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html) module:
+Using only the standard library of OCaml with its [Graphics](https://ocaml.org/p/graphics/latest/doc/Graphics/index.html) module:
 
 
 ```ocaml

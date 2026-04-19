@@ -384,7 +384,7 @@ Map < String, Integer >
 
 ```ocaml
 file_descr
-[1] https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#TYPEfile_descr
+[1] https://v2.ocaml.org/api/Stdlib.html#TYPEfile_descr
 [2] https://caml.inria.fr/pub/docs/manual-ocaml/libref/Unix.html#TYPEfile_descr
 
 ```

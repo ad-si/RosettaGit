@@ -1175,7 +1175,7 @@ this will appear in the shape of a 'pop-up' in your browser.
 
 ## J
 
-Download J804 from https://www.jsoftware.com/stable.htm
+Download J from https://www.jsoftware.com/
 
 Install it, using the defaults.
 
@@ -1418,9 +1418,7 @@ M2000 Interpreter run on M2000 Environment, a Windows 32bit application. Interpr
 
 We have to download run-time for Access 2007.
 
-We can use <https://github.com/M2000Interpreter/Version9/blob/master/m2000.cer> as a certificate as Trusted Root Certification Authorities, Or we have to block Defender or something like this, because they are suspicious for virus, and they predict whatever they figure from the code.
-
-So now we can install the code downloading the setup executable from this link: <https://github.com/M2000Interpreter/Version9/blob/master/M2000language.exe>
+We can install the M2000 Interpreter from the [M2000Interpreter/Version9 repository](https://github.com/M2000Interpreter/Version9).
 
 This is the Wiki page on github
 <https://github.com/M2000Interpreter/Version9/wiki/New-Installation-for-Binaries-(from-Revision-46,-Version-9.0)>
@@ -2200,7 +2198,7 @@ or adding a shebang at the first line of the script:
 
 ### Download
 
-Download the latest version of Ra from [GitHub](https://github.com/oahmad04/ra/releases)
+Download the latest version of Ra from GitHub.
 
 
 ### Installation for Windows
@@ -2252,11 +2250,6 @@ You can optionally include the file extension when running Ra code:
 ra HelloWorld.racode
 
 
-### Links
-
-[Installation instructions](https://github.com/oahmad04/ra/blob/master/README.md)
-
-[Learn Ra](http://oahmad04.github.io/ra/learn.html)
 
 
 ## Racket
@@ -2572,7 +2565,7 @@ In order to make a Hello World! example run in Db2, you need:
 
 The easies way is to install all of this in a Linux environment (Red Hat, Suse, Ubuntu).
 
-You can download the Express-c edition of the most recent Db2 version at: <https://www.ibm.com/developerworks/downloads/im/db2express/>.
+You can download the Community edition of the most recent Db2 version at: <https://www.ibm.com/products/db2/community>.
 
 Once you get the binaries in the server, you can extract them by issuing
 

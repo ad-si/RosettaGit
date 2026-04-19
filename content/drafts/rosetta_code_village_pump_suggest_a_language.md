@@ -59,7 +59,7 @@ please consider adding examples.
 * [[PIR]], the Parrot intermediate representation.
 * [[Processing]]
 * [[Qi]]
-* [[Ra]] Lets you program in your native tongue (<http://oahmad04.github.io/ra/>)
+* [[Ra]] Lets you program in your native tongue
 * [[RPG]] (Report Program Generator)
 * [[Self]]
 * [[SQL]] and derivatives

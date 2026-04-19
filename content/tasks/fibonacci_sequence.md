@@ -9899,7 +9899,7 @@ let rec fib = function
 
 ### Arbitrary Precision
 
-Using OCaml's [Num](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Num.html) module.
+Using OCaml's [Num](https://ocaml.org/p/num/latest/doc/Num/index.html) module.
 
 
 ```ocaml
@@ -12784,7 +12784,7 @@ Usage:
 p fib.lazy.drop(8).next # => 21
 ```
 
-"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." <https://www.ruby-doc.org/ruby-1.9/classes/Fiber.html>
+"Fibers are primitives for implementing light weight cooperative concurrency in Ruby. Basically they are a means of creating code blocks that can be paused and resumed, much like threads. The main difference is that they are never preempted and that the scheduling must be done by the programmer and not the VM." <https://docs.ruby-lang.org/en/3.0/Fiber.html>
 
 
 ```ruby

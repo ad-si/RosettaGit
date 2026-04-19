@@ -52,7 +52,7 @@ languages = [
 
 ## Task
 
-Show   [ASCII character set](http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg)   from values   '''32'''   to   '''127'''   (decimal)   in a table format.
+Show the ASCII character set from values   '''32'''   to   '''127'''   (decimal)   in a table format.
 
 
 
@@ -3389,10 +3389,6 @@ new qapp
         exec()
         }
 ```
-
-Output:
-
-[Show Ascii table](http://kepkezelo.com/images/anuscoqy8ejyr5bnhvnu.jpg)
 
 =={{Header|Rust}}==
 ```Rust

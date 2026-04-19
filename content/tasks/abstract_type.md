@@ -1690,7 +1690,7 @@ abstract type Unsigned      <: Integer end
 ```
 
 
-See more <https://docs.julialang.org/en/latest/manual/types/#abstract-types>
+See more <https://docs.julialang.org/en/v1/manual/types/#abstract-types>
 
 
 ## Kotlin

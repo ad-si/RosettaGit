@@ -4714,7 +4714,7 @@ define
 end
 ```
 
-There is also a stack implementation in the [standard library](https://www.mozart-oz.org/home/doc/mozart-stdlib/adt/stack.html).
+There is also a stack implementation in the [standard library](https://mozart.github.io/mozart-v1/doc-1.4.0/mozart-stdlib/adt/stack.html).
 
 
 ## PARI/GP

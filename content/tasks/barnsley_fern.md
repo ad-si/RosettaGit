@@ -613,7 +613,7 @@ end.
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/barnsley-fern.html)
+[Run it](https://easylang.dev/apps/barnsley-fern.html)
 
 <lang>floatvars
 color 060

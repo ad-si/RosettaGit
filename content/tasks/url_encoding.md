@@ -1937,7 +1937,7 @@ http%3A%2F%2Ffoo+bar%2F
 
 ```tcl
 # Encode all except "unreserved" characters; use UTF-8 for extended chars.
-# See <https://datatracker.ietf.org/html/rfc3986> §2.4 and §2.5
+# See <https://datatracker.ietf.org/doc/html/rfc3986> §2.4 and §2.5
 proc urlEncode {str} {
     set uStr [encoding convertto utf-8 $str]
     set chRE {[^-A-Za-z0-9._~\n]};		# Newline is special case!

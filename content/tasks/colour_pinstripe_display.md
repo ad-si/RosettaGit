@@ -592,7 +592,7 @@ end
 
 [[File:Pinstripe_Colour_unicon.jpeg]]
 
-[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn) 
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn) 
 [numbers.icn provides ceil](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn) 
 [printf.icn provides sprintf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 

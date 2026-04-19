@@ -954,10 +954,6 @@ orginal R package : <https://github.com/ThinkRstat/r2048>
 
 ## Racket
 
-Original repo: <https://github.com/danprager/2048>
-Play the RacketScript fork online here: <http://rapture.twistedplane.com:8080/#example/2048-game>
-
-
 
 {{ code(src="content/tasks/2048/racket.rkt", lang="Racket") }}
 

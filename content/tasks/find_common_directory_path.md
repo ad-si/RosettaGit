@@ -2710,7 +2710,7 @@ Output:
 
 ## Ruby
 
-Uses the standard library <code>[abbrev](https://www.ruby-doc.org/stdlib/libdoc/abbrev/rdoc/index.html)</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
+Uses the standard library <code>[abbrev](https://docs.ruby-lang.org/en/3.0/Abbrev.html)</code> module: Given a set of strings, calculate the set of unambiguous abbreviations for those strings, and return a hash where the keys are all the possible abbreviations and the values are the full strings.
 
 
 ```ruby

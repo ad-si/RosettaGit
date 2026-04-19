@@ -11,4 +11,4 @@ tags = []
 +++
 '''SPARK GPL''' is the version of the [SPARK](https://rosettacode.org/wiki/SPARK) toolset licensed under the GNU Public License (GPL).
 
-It is distributed by [AdaCore](http://libre.adacore.com/libre).
+It is distributed by [AdaCore](https://www.adacore.com/community).

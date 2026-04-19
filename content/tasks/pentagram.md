@@ -207,7 +207,7 @@ int main(){
 
 ## EasyLang
 
-[Run it](https://easylang.online/apps/run.html?code=floatvars%0Axp%20%3D%2010%0Ayp%20%3D%2040%0Alinewidth%202%0Amove%20xp%20yp%0Awhile%20angle%20%3E%20-720%0Ax%20%3D%20xp%20%2B%20cos%20angle%20%2A%2080%0Ay%20%3D%20yp%20%2B%20sin%20-angle%20%2A%2080%0Aline%20x%20y%0Af%5B%5D%20%26%3D%20x%0Af%5B%5D%20%26%3D%20y%0Axp%20%3D%20x%0Ayp%20%3D%20y%0Aangle%20-%3D%20144%0A.%0Acolor%20900%0Afill%20f%5B%5D)
+[Run it](https://easylang.dev/apps/run.html?code=floatvars%0Axp%20%3D%2010%0Ayp%20%3D%2040%0Alinewidth%202%0Amove%20xp%20yp%0Awhile%20angle%20%3E%20-720%0Ax%20%3D%20xp%20%2B%20cos%20angle%20%2A%2080%0Ay%20%3D%20yp%20%2B%20sin%20-angle%20%2A%2080%0Aline%20x%20y%0Af%5B%5D%20%26%3D%20x%0Af%5B%5D%20%26%3D%20y%0Axp%20%3D%20x%0Ayp%20%3D%20y%0Aangle%20-%3D%20144%0A.%0Acolor%20900%0Afill%20f%5B%5D)
 <lang>floatvars
 xp = 10
 yp = 40

@@ -1390,7 +1390,7 @@ Example use:
 
 
 
-Solution invoking the sequential machine primitive verb.[this thread.](https://www.jsoftware.com/pipermail/programming/2014-December/040658.html|See)
+Solution invoking the sequential machine primitive verb. See [this thread](https://www.jsoftware.com/pipermail/programming/2014-December/040658.html).
 ```J
 charTokens =: (0;(3 2 2$(2 1 1 1 2 2 1 2 1 0 1 0));<<'^')&;:  NB. sequential machine
 splitTokens =: ((<,'|')&= <;._1 ])@:((<,'|'),])

@@ -1298,7 +1298,7 @@ main: func {
 
 ## Oz
 
-String interpolation is unidiomatic in Oz. Instead, "virtual strings" are used. [Virtual strings](https://www.mozart-oz.org/documentation/op/node4.html) are tuples of printable values and are supported by many library functions.
+String interpolation is unidiomatic in Oz. Instead, "virtual strings" are used. [Virtual strings](https://mozart.github.io/mozart-v1/doc-1.4.0/op/node4.html) are tuples of printable values and are supported by many library functions.
 
 
 ```oz

@@ -298,7 +298,7 @@ func dt(hs []byte) []byte {
 }
 ```
 
-(in a format that gets put into the [generated documentation](https://godoc.org/github.com/dchapes/onetime))
+(in a format that gets put into the [generated documentation](https://pkg.go.dev/github.com/dchapes/onetime))
 
 ```go
 package onetime
@@ -477,7 +477,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
 (define H  (make-parameter (lambda (k d) (HMAC-SHA1 k d))))
 (define N  (make-parameter 6))
 
-;; https://datatracker.ietf.org/html/rfc4226#section-5.3
+;; https://datatracker.ietf.org/doc/html/rfc4226#section-5.3
 (define (HOTP sha1-bytes (Digit (N)))
   (define (DT b)
     (define offset (&& #b1111 (bytes-ref b 19)))
@@ -490,7 +490,7 @@ This includes BASE32 encoding, token based authentication and other such stuff.
 (define (Generate-HOTP K C (Digit (N)))
   (HOTP ((H) K (integer->integer-bytes C 8 #t)) Digit))
 
-;; https://datatracker.ietf.org/html/rfc6238
+;; https://datatracker.ietf.org/doc/html/rfc6238
 (define (T #:previous-timeframe (T- 0))
   (- (quotient ((T0)) (X)) T-))
 

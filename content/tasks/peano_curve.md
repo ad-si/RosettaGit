@@ -496,7 +496,7 @@ var lsys = LSystem(
 lsys.execute('L', 4, "peano_curve.png", rules)
 ```
 
-Output image: [Peano curve](https://github.com/trizen/rc/blob/master/img/peano_curve.png)
+Output image: [Peano curve](https://github.com/trizen/rc/blob/master/img/peano_curve-sidef.png)
 
 ## VBA
 

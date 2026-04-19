@@ -504,7 +504,7 @@ You found the code: HBDA
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/mastermind.html)
+[Run it](https://easylang.dev/apps/mastermind.html)
 
 <lang>col[] = [ 902 990 171 229 960 808 ]
 len code[] 4

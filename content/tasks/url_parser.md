@@ -3176,7 +3176,7 @@ path  bits:     ("db8::7]" "c=GB")
 query:          ((objectClass . "one") (objectClass . "two"))
 ```
 
-IPv6 URL address parses incorrectly. See issue <https://github.com/plt/racket/issues/980>
+IPv6 URL address parses incorrectly. See issue <https://github.com/racket/racket/issues/980>
 
 ```txt
 URL: "mailto:John.Doe@example.com"

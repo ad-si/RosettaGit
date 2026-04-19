@@ -526,7 +526,7 @@ namespace RosettaChaosGame
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=x%5B%5D%20%3D%20%5B%200%20100%2050%20%5D%0Ay%5B%5D%20%3D%20%5B%2093%2093%207%20%5D%0Ac%5B%5D%20%3D%20%5B%20900%20090%20009%20%5D%0Afor%20i%20range%20100000%0Ah%20%3D%20random%203%0Ax%23%20%3D%20%28x%23%20%2B%20x%5Bh%5D%29%20/%202%0Ay%23%20%3D%20%28y%23%20%2B%20y%5Bh%5D%29%20/%202%0Acolor%20c%5Bh%5D%0Amove%20x%23%20y%23%0Arect%200.3%200.3%0A.)
+[Run it](https://easylang.dev/apps/run.html?code=x%5B%5D%20%3D%20%5B%200%20100%2050%20%5D%0Ay%5B%5D%20%3D%20%5B%2093%2093%207%20%5D%0Ac%5B%5D%20%3D%20%5B%20900%20090%20009%20%5D%0Afor%20i%20range%20100000%0Ah%20%3D%20random%203%0Ax%23%20%3D%20%28x%23%20%2B%20x%5Bh%5D%29%20/%202%0Ay%23%20%3D%20%28y%23%20%2B%20y%5Bh%5D%29%20/%202%0Acolor%20c%5Bh%5D%0Amove%20x%23%20y%23%0Arect%200.3%200.3%0A.)
 
 <lang>x[] = [ 0 100 50 ]
 y[] = [ 93 93 7 ]

@@ -116,7 +116,7 @@ languages = [
 
 When two or more words are composed of the same characters, but in a different order, they are called [anagrams](https://en.wikipedia.org/wiki/Anagram).
 
-Using the word list at   <http://wiki.puzzlers.org/pub/wordlists/unixdict.txt>,
+Using the word list at   <https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt>,
 
 find the sets of words that share the same characters that contain the most words in them.
 
@@ -167,7 +167,7 @@ L(ana) anagram.values()
 \ anagrams.8th
 \ Rosetta Code - Anagrams problem
 \ Using the word list at:
-\   https://www.puzzlers.org/pub/wordlists/unixdict.txt,
+\   https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt,
 \ find the sets of words that share the same characters
 \ that contain the most words in them.
 \
@@ -656,7 +656,7 @@ The ]display command formats the output with boxes.
 
 ```APL
 
-⎕SH'wget https://www.puzzlers.org/pub/wordlists/unixdict.txt'
+⎕SH'wget https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 ]display anagrams 'unixdict.txt'
 
 ```
@@ -1354,7 +1354,7 @@ namespace Anagram
 {
     class Program
     {
-        const string DICO_URL = "https://www.puzzlers.org/pub/wordlists/unixdict.txt";
+        const string DICO_URL = "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt";
 
         static void Main( string[] args )
         {
@@ -1412,7 +1412,7 @@ Assume ''wordfile'' is the path of the local file containing the words. This cod
 
 ```clojure
 
-(->> (slurp "https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+(->> (slurp "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
      clojure.string/split-lines
      (group-by sort)
      vals
@@ -1438,7 +1438,7 @@ Tested with GnuCOBOL 2.0.  ALLWORDS output display trimmed for width.
 
 ```COBOL
       *> TECTONICS
-      *>   wget https://www.puzzlers.org/pub/wordlists/unixdict.txt
+      *>   wget https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
       *>   or visit https://sourceforge.net/projects/souptonuts/files
       *>   or snag ftp://ftp.openwall.com/pub/wordlists/all.gz
       *>      for a 5 million all language word file (a few phrases)
@@ -1773,7 +1773,7 @@ get_word_list show_large_anagram_sets
 {{libheader|DRAKMA}} to retrieve the wordlist.
 
 ```lisp
-(defun anagrams (&optional (url "https://www.puzzlers.org/pub/wordlists/unixdict.txt"))
+(defun anagrams (&optional (url "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"))
   (let ((words (drakma:http-request url :want-stream t))
         (wordsets (make-hash-table :test 'equalp)))
     ;; populate the wordsets and close stream
@@ -2115,7 +2115,7 @@ Runtime: about 0.06 seconds.
 
 ```e
 println("Downloading...")
-when (def wordText := <https://www.puzzlers.org/pub/wordlists/unixdict.txt> <- getText()) -> {
+when (def wordText := <https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt> <- getText()) -> {
     def words := wordText.split("\n")
 
     def storage := [].asMap().diverge()
@@ -3277,7 +3277,7 @@ Took 0.103 seconds on i3 @ 2.13 GHz
 ```frink
 
 d = new dict
-for w = lines["https://www.puzzlers.org/pub/wordlists/unixdict.txt"]
+for w = lines["https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"]
 {
    sorted = sort[charList[w]]
    curr = d@sorted
@@ -3698,7 +3698,7 @@ import (
 )
 
 func main() {
-    r, err := http.Get("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    r, err := http.Get("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     if err != nil {
         fmt.Println(err)
         return
@@ -3754,7 +3754,7 @@ func (b byteSlice) Less(i, j int) bool { return b[i] < b[j] }
 This program:
 
 ```groovy
-def words = new URL('https://www.puzzlers.org/pub/wordlists/unixdict.txt').text.readLines()
+def words = new URL('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt').text.readLines()
 def groups = words.groupBy{ it.toList().sort() }
 def bigGroupSize = groups.collect{ it.value.size() }.max()
 def isBigAnagram = { it.value.size() == bigGroupSize }
@@ -3941,7 +3941,7 @@ import java.util.*;
 
 public class WordsOfEqChars {
     public static void main(String[] args) throws IOException {
-        URL url = new URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt");
+        URL url = new URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt");
         InputStreamReader isr = new InputStreamReader(url.openStream());
         BufferedReader reader = new BufferedReader(isr);
 
@@ -3997,7 +3997,7 @@ public interface Anagram {
       () -> new BufferedReader(
         new InputStreamReader(
           new URL(
-            "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
+            "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
           ).openStream()
         )
       ),
@@ -4205,7 +4205,7 @@ To update the script to pass with a site local words file, just '''jsish -u -upd
 {{works with|Julia|0.6}}
 
 ```julia
-url = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
+url = "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 wordlist = open(readlines, download(url))
 
 wsort(word::AbstractString) = join(sort(collect(word)))
@@ -4256,7 +4256,7 @@ import java.io.InputStreamReader
 import java.net.URL
 
 fun main(args: Array<String>) {
-    val url = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    val url = URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     val isr = InputStreamReader(url.openStream())
     val reader = BufferedReader(isr)
     val anagrams = mutableMapOf<String, MutableList<String>>()
@@ -4300,7 +4300,7 @@ fun main(args: Array<String>) {
 ```lasso
 local(
 	anagrams	= map,
-	words		= include_url('https://www.puzzlers.org/pub/wordlists/unixdict.txt')->split('\n'),
+	words		= include_url('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt')->split('\n'),
 	key,
 	max		= 0,
 	findings	= array
@@ -4427,7 +4427,7 @@ LiveCode could definitely use a sort characters command. As it is this code conv
 
 ```LiveCode
 on mouseUp
-   put mostCommonAnagrams(url "https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+   put mostCommonAnagrams(url "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 end mouseUp
 
 function mostCommonAnagrams X
@@ -4602,7 +4602,7 @@ Finally, we just note the size of the largest sets of anagrams, and pick those o
 
 ```Maple
 
-words := HTTP:-Get( "https://www.puzzlers.org/pub/wordlists/unixdict.txt" )[2]: # ignore errors
+words := HTTP:-Get( "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt" )[2]: # ignore errors
 use StringTools, ListTools in
   T := Classify( Sort, map( Trim, Split( words ) ) )
 end use:
@@ -4630,7 +4630,7 @@ A := [{"abel", "able", "bale", "bela", "elba"}, {"angel", "angle", "galen",
 Download the dictionary, split the lines, split the word in characters and sort them. Now sort by those words, and find sequences of equal 'letter-hashes'. Return the longest sequences:
 
 ```Mathematica
-list=Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
+list=Import["https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
 text={#,StringJoin@@Sort[Characters[#]]}&/@list;
 text=SortBy[text,#[[2]]&];
 splits=Split[text,#1[[2]]==#2[[2]]&][[All,All,1]];
@@ -4683,7 +4683,7 @@ Also, Mathematica's own word list is available; replacing the list definition wi
 Also if using Mathematica 10 it gets really concise:
 
 ```Mathematica
-list=Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
+list=Import["https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
 MaximalBy[GatherBy[list, Sort@*Characters], Length]
 ```
 
@@ -4810,7 +4810,7 @@ class RAnagramsV01 public
     parse arg localFile .
     isr = Reader
     if localFile = '' then do
-      durl = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+      durl = URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
       dictFrom = durl.toString()
       isr = InputStreamReader(durl.openStream())
       end
@@ -4867,7 +4867,7 @@ class RAnagramsV01 public
 
 ```txt
 
-Searching https://www.puzzlers.org/pub/wordlists/unixdict.txt for anagrams
+Searching https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt for anagrams
 [abel, able, bale, bela, elba]
 [elan, lane, lean, lena, neal]
 [evil, levi, live, veil, vile]
@@ -4893,7 +4893,7 @@ method findMostAnagrams(arg) public static signals MalformedURLException, IOExce
   parse arg localFile .
   isr = Reader
   if localFile = '' then do
-    durl = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    durl = URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     dictFrom = durl.toString()
     isr = InputStreamReader(durl.openStream())
     end
@@ -4946,7 +4946,7 @@ method runSample(arg) public static
 
 ```txt
 
-Searching https://www.puzzlers.org/pub/wordlists/unixdict.txt for anagrams
+Searching https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt for anagrams
 abel able bale bela elba
 elan lane lean lena neal
 evil levi live veil vile
@@ -5186,7 +5186,7 @@ use Collection;
 
 class Anagrams {
   function : Main(args : String[]) ~ Nil {
-    lines := HttpClient->New()->Get("https://www.puzzlers.org/pub/wordlists/unixdict.txt");
+    lines := HttpClient->New()->Get("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt");
     anagrams := StringMap->New();
     count := 0;
     if(lines->Size() = 1) {
@@ -5323,7 +5323,7 @@ Two versions of this, using different collection classes.
 ```ooRexx
 
 -- This assumes you've already downloaded the following file and placed it
--- in the current directory: https://www.puzzlers.org/pub/wordlists/unixdict.txt
+-- in the current directory: https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
 
 -- There are several different ways of reading the file.  I chose the
 -- supplier method just because I haven't used it yet in any other examples.
@@ -5368,7 +5368,7 @@ This version appears to be the fastest.
 ```ooRexx
 
 -- This assumes you've already downloaded the following file and placed it
--- in the current directory: https://www.puzzlers.org/pub/wordlists/unixdict.txt
+-- in the current directory: https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
 
 -- There are several different ways of reading the file.  I chose the
 -- supplier method just because I haven't used it yet in any other examples.
@@ -5734,7 +5734,7 @@ evil, levi, live, veil, vile
 
 ```php
 <?php
-$words = explode("\n", file_get_contents('https://www.puzzlers.org/pub/wordlists/unixdict.txt'));
+$words = explode("\n", file_get_contents('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'));
 foreach ($words as $word) {
     $chars = str_split($word);
     sort($chars);
@@ -5876,7 +5876,7 @@ The following word(s) have 5 anagrams:
 
 ```powershell
 $c = New-Object Net.WebClient
-$words = -split ($c.DownloadString('http://wiki.puzzlers.org/pub/wordlists/unixdict.txt'))
+$words = -split ($c.DownloadString('https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'))
 $top_anagrams = $words `
     | ForEach-Object {
           $_ | Add-Member -PassThru NoteProperty Characters `
@@ -5906,7 +5906,7 @@ Another way with more .Net methods is quite a different style, but drops the run
 ```powershell
 $Timer = [System.Diagnostics.Stopwatch]::StartNew()
 
-$uri = 'http://wiki.puzzlers.org/pub/wordlists/unixdict.txt'
+$uri = 'https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 $words = -split [Net.WebClient]::new().DownloadString($uri)
 
 $anagrams = @{}
@@ -5958,7 +5958,7 @@ foreach ($entry in $anagrams.GetEnumerator())
 import java.util.Map;
 
 void setup() {
-  String[] words = loadStrings("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt");
+  String[] words = loadStrings("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt");
   topAnagrams(words);
 }
 
@@ -6007,7 +6007,7 @@ StringList size=5 [ "caret", "carte", "cater", "crate", "trace" ]
 
 anagrams:-
         % we read the URL of the words
-	http_open('https://www.puzzlers.org/pub/wordlists/unixdict.txt',	In, []),
+	http_open('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt',	In, []),
 	read_file(In, [], Out),
 	close(In),
 
@@ -6114,7 +6114,7 @@ EndStructure
 
 NewMap anaMap.ana()
 
-If ReceiveHTTPFile("https://www.puzzlers.org/pub/wordlists/unixdict.txt", filename$)
+If ReceiveHTTPFile("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt", filename$)
   If ReadFile(1, filename$)
     Repeat
       word$ = (ReadString(1))             ; Reading a word from a file.
@@ -6175,7 +6175,7 @@ Python 3.2 shell input (IDLE)
 >>
  import urllib.request
 >>> from collections import defaultdict
->>> words = urllib.request.urlopen('https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
+>>> words = urllib.request.urlopen('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
 >>> anagram = defaultdict(list) # map sorted chars to anagrams
 >>> for word in words:
 	anagram[tuple(sorted(word))].append( word )
@@ -6197,7 +6197,7 @@ Python 2.7 shell input (IDLE)
 >>
  import urllib
 >>> from collections import defaultdict
->>> words = urllib.urlopen('https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
+>>> words = urllib.urlopen('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
 >>> len(words)
 25104
 >>> anagram = defaultdict(list) # map sorted chars to anagrams
@@ -6232,7 +6232,7 @@ Python 2.7 shell input (IDLE)
 ```python
 >>
  import urllib, itertools
->>> words = urllib.urlopen('https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
+>>> words = urllib.urlopen('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt').read().split()
 >>> len(words)
 25104
 >>> anagrams = [list(g) for k,g in itertools.groupby(sorted(words, key=sorted), key=sorted)]
@@ -6451,7 +6451,7 @@ FOR test = 1 TO loops
 
     'get the file data loaded in one pop, disk access is slow!
     OPEN "unixdict.txt" FOR BINARY AS #1
-    ' https://www.puzzlers.org/pub/wordlists/unixdict.txt
+    ' https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
     ' note: when I downloaded this file line breaks were by chr$(10) only.
     ' Steve had coded for either chr$(13) + chr$(10) or just chr$(10)
 
@@ -6719,7 +6719,7 @@ bale, abel, able, elba, bela
 
 
 ```R
-words <- readLines("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+words <- readLines("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 word_group <- sapply(
     strsplit(words, split=""), # this will split all words to single letters...
     function(x) paste(sort(x), collapse="") # ...which we sort and paste again
@@ -6770,7 +6770,7 @@ anagrams[counts == max(counts)]
   (define max-keys (filter (λ (k) (= (length (hash-ref h k)) max-ws)) (hash-keys h)))
   (map (λ (k) (hash-ref h k)) max-keys))
 
-(get-maxes (hash-words (get-lines "https://www.puzzlers.org/pub/wordlists/unixdict.txt")))
+(get-maxes (hash-words (get-lines "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")))
 
 ```
 
@@ -6887,7 +6887,7 @@ list[str] OrderedRep(str word){
 	return sort([word[i] | i <- [0..size(word)-1]]);
 }
 public list[set[str]] anagram(){
-	allwords = readFileLines(|https://www.puzzlers.org/pub/wordlists/unixdict.txt|);
+	allwords = readFileLines(|https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt|);
 	AnagramMap = invert((word : OrderedRep(word) | word <- allwords));
 	longest = max([size(group) | group <- range(AnagramMap)]);
 	return [AnagramMap[rep]| rep <- AnagramMap, size(AnagramMap[rep]) == longest];
@@ -6917,7 +6917,7 @@ Red []
 m: make map! [] 25000
 
 maxx: 0
-foreach word  read/lines https://www.puzzlers.org/pub/wordlists/unixdict.txt [
+foreach word  read/lines https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt [
 sword:  sort copy word ;; sorted characters of word
 
 either find m sword [
@@ -7337,7 +7337,7 @@ require 'open-uri'
 
 anagram = Hash.new {|hash, key| hash[key] = []} # map sorted chars to anagrams
 
-open('https://www.puzzlers.org/pub/wordlists/unixdict.txt') do |f|
+open('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt') do |f|
   words = f.read.split
   for word in words
     anagram[word.split('').sort] << word
@@ -7371,7 +7371,7 @@ Short version (with lexical ordered result).
 ```ruby
 require 'open-uri'
 
-anagrams = open('https://www.puzzlers.org/pub/wordlists/unixdict.txt'){|f| f.read.split.group_by{|w| w.each_char.sort} }
+anagrams = open('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'){|f| f.read.split.group_by{|w| w.each_char.sort} }
 anagrams.values.group_by(&:size).max.last.each{|group| puts group.join(", ") }
 
 ```
@@ -7399,7 +7399,7 @@ mem$ = "CREATE TABLE anti(gram,ordr);
 CREATE INDEX ord ON anti(ordr)"
 #mem execute(mem$)
 ' read the file
-a$ = httpGet$("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+a$ = httpGet$("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 ' break the file words apart
 i = 1
@@ -7584,7 +7584,7 @@ fn find_anagrams<P: AsRef<Path>>(file: P) -> io::Result<Vec<Vec<String>>> {
 
 
 ```scala
-val src = io.Source fromURL "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
+val src = io.Source fromURL "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 val vls = src.getLines.toList.groupBy(_.sorted).values
 val max = vls.map(_.size).max
 vls filter (_.size == max) map (_ mkString " ") mkString "\n"
@@ -7608,7 +7608,7 @@ Another take:
 
 ```scala
 Source
-  .fromURL("https://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.toList
+  .fromURL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.toList
   .groupBy(_.sorted).values
   .groupBy(_.size).maxBy(_._1)._2
   .map(_.mkString("\t"))
@@ -8223,7 +8223,7 @@ OrderedCollection('mate' 'meat' 'tame' 'team')
 not sure if getting the dictionary via http is part of the task; if so, replace the file-reading with:
 
 ```smalltalk
-'https://www.puzzlers.org/pub/wordlists/unixdict.txt' asURI contents asCollectionOfLines do:[:eachWord | ...
+'https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt' asURI contents asCollectionOfLines do:[:eachWord | ...
 ```
 
 
@@ -8276,7 +8276,7 @@ eilv: evil levi live veil vile
 
 
 ```stata
-import delimited https://www.puzzlers.org/pub/wordlists/unixdict.txt, clear
+import delimited https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt, clear
 mata
 a=st_sdata(.,.)
 n=rows(a)
@@ -8353,7 +8353,7 @@ Answers:
 ```swift
 import Foundation
 
-let wordsURL = NSURL(string: "https://www.puzzlers.org/pub/wordlists/unixdict.txt")!
+let wordsURL = NSURL(string: "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")!
 
 let wordsstring = try NSString(contentsOfURL:wordsURL , encoding: NSUTF8StringEncoding)
 let allwords = wordsstring.componentsSeparatedByString("\n")
@@ -8420,7 +8420,7 @@ Program ended with exit code: 0
 package require Tcl 8.5
 package require http
 
-set url https://www.puzzlers.org/pub/wordlists/unixdict.txt
+set url https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
 set response [http::geturl $url]
 set data [http::data $response]
 http::cleanup $response
@@ -8461,7 +8461,7 @@ alger glare lager large regal
 
 ```tuscript
 $$ MODE TUSCRIPT,{}
-requestdata = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+requestdata = REQUEST ("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 DICT anagramm CREATE 99999
 
@@ -9091,7 +9091,7 @@ d.filter(fcn([(k,v)]){ v.len()>3 })  // prune to list of # words > 3
 In the case where it is desirable to get the dictionary from the web, use this code:
 
 ```zkl
-URL:="https://www.puzzlers.org/pub/wordlists/unixdict.txt";
+URL:="https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt";
 var ZC=Import("zklCurl");
 unixdict:=ZC().get(URL); //--> T(Data,bytes of header, bytes of trailer)
 unixdict=unixdict[0].del(0,unixdict[1]);  // remove HTTP header

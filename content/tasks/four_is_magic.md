@@ -829,7 +829,7 @@ Nine billion eight hundred seventy-six million five hundred forty-three thousand
 
 ## Perl 6
 
-Lingua::EN::Numbers module available from the [Perl 6 ecosystem](https://modules.perl6.org/search/?q=Lingua%3A%3AEN%3A%3ANumbers).
+Lingua::EN::Numbers module available from the [Perl 6 ecosystem](https://modules.raku.org/search/?q=Lingua%3A%3AEN%3A%3ANumbers).
 
 
 ```perl6

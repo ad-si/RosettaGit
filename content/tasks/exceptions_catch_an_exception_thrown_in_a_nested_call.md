@@ -327,7 +327,7 @@ program continues in the parent thread. <!-- example needed -->
 
 ###  True exceptions
 
-In [[AutoHotkey_L]], [Try](http://l.autohotkey.net/docs/commands/Try.htm), [Catch](http://l.autohotkey.net/docs/commands/Catch.htm), and [Throw](http://l.autohotkey.net/docs/commands/Throw.htm) are available to handle exceptions.<br/>
+In [[AutoHotkey_L]], [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm), [Catch](https://www.autohotkey.com/docs/v1/lib/Catch.htm), and [Throw](https://www.autohotkey.com/docs/v1/lib/Throw.htm) are available to handle exceptions.<br/>
 When this program is run, the first exception (U0) is raised, and caught by the try-catch section. This causes a Message Box containing the text "An exception was raised: First Exception" to be displayed by the script. The second exception is not caught, generating a runtime error.
 
 ```AHK

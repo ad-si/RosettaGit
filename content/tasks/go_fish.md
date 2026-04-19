@@ -367,7 +367,6 @@ See [[Go Fish/Python]]
 
 ## Racket
 
-See [gofish.rkt](https://github.com/plt/racket/blob/master/pkgs/games/gofish/gofish.rkt).
 Documentation: [Go Fish](https://docs.racket-lang.org/games/gofish.html?q=fish).
 [[File:go-fish-racket.png|thumb|right]]
 

@@ -1118,7 +1118,7 @@ Hello World!
 
 Portability is possible, but often irrelevant for a task of this sort.  To make this work with a different OS, you would need to use the appropriate file name for libc for the os in question.  For example, on linux, replace msvcrt.dll with /lib/libc.so.6 (or whichever version of libc you are using).
 
-See also: [J's documentation](https://www.jsoftware.com/help/user/call_procedure.htm)
+See also: J's documentation
 
 
 ## Java
@@ -2764,7 +2764,7 @@ puts RosettaCode.strdup('This string gets duplicated.')
 ###  FFI
 
 
-A recent effort to make it easier to write libraries, portable across platforms and interpreters, led to the creation of a [libffi](http://sourceware.org/libffi/) binding simply called [ffi](http://wiki.github.com/ffi/ffi/) for completely dynamic calls.
+A recent effort to make it easier to write libraries, portable across platforms and interpreters, led to the creation of a [libffi](http://sourceware.org/libffi/) binding simply called [ffi](https://github.com/ffi/ffi/wiki) for completely dynamic calls.
 
 
 ```ruby

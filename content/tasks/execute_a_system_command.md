@@ -1547,7 +1547,7 @@ print(options.output);
 
 ## Julia
 
-The Julia manual has an excellent [section](https://docs.julialang.org/en/release-0.3/manual/running-external-programs/) on this topic, which is worth a read.  The short answer on Linux is:
+The Julia manual has an excellent [section](https://docs.julialang.org/en/v0.3/manual/running-external-programs/) on this topic, which is worth a read.  The short answer on Linux is:
 
 ```Julia
 run(`ls`)
@@ -2170,7 +2170,7 @@ System cmd("pause")
 ```
 
 
-A more sophisticated example can be found [here](https://www.mozart-oz.org/home/doc/op/node17.html).
+A more sophisticated example can be found [here](https://mozart.github.io/mozart-v1/doc-1.4.0/op/node17.html).
 
 
 ## PARI/GP

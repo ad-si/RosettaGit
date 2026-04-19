@@ -123,7 +123,7 @@ Using [DoubleCheck](https://www.ccs.neu.edu/home/cce/acl2/doublecheck.html):
 
 For normal use there is pragma Assert, functioning the same as many other languages.
 
-For larger testing frameworks, there are packages like [Aunit](http://libre.adacore.com/libre/tools/aunit/)
+For larger testing frameworks, there are packages like [Aunit](https://github.com/AdaCore/aunit)
 
 
 ```Ada

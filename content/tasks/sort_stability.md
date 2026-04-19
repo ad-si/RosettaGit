@@ -382,7 +382,7 @@ New to Go 1.2 is the function Stable() in the sort package and is documented to 
 
 ## Groovy
 
-Groovy's [Collection.sort()](http://groovy.codehaus.org/groovy-jdk/java/util/Collection.html#sort()), Object[].[sort()](http://groovy.codehaus.org/groovy-jdk/java/lang/Object%5b%5d.html#sort()), [Map.sort()](http://groovy.codehaus.org/groovy-jdk/java/util/Map.html#sort()), and their various and sundry overloads all use the same stable sort algorithm.
+Groovy's [Collection.sort()](https://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Collection.html#sort()), Object[].[sort()](https://docs.groovy-lang.org/latest/html/groovy-jdk/java/lang/Object%5b%5d.html#sort()), [Map.sort()](https://docs.groovy-lang.org/latest/html/groovy-jdk/java/util/Map.html#sort()), and their various and sundry overloads all use the same stable sort algorithm.
 
 Example:
 ```groovy
@@ -1185,7 +1185,7 @@ OK
 
 ## Oz
 
-Oz' [Sort](https://www.mozart-oz.org/home/doc/base/list.html#label295) function is not guaranteed to be stable in the documentation.
+Oz' [Sort](https://mozart.github.io/mozart-v1/doc-1.4.0/base/list.html#label295) function is not guaranteed to be stable in the documentation.
 
 However, internally it uses [[Merge sort]] and in practice ''is'' stable '''if''' a reflexive ordering is used, e.g. <code>Value.'=<'</code> or <code>Value.'>='</code>.
 
@@ -1229,7 +1229,7 @@ use sort 'stable';
 
 ## Perl 6
 
-The [sort](https://perlcabal.org/syn/S32/Containers.html#sort) built-in (available as sub and method) is stable.
+The [sort](https://design.raku.org/S32/Containers.html#sort) built-in (available as sub and method) is stable.
 
 Short demonstration for sorting only on the second item of each array:
 

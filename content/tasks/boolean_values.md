@@ -2389,7 +2389,7 @@ my $val = 0 but True;
 ```
 
 
-For a discussion of Boolean context (i.e. how Perl decides whether something is true or false), see [Synopsis 2](https://perlcabal.org/syn/S02.html#Context).
+For a discussion of Boolean context (i.e. how Perl decides whether something is true or false), see [Synopsis 2](https://design.raku.org/S02.html#Context).
 
 
 ## Phix
@@ -2760,7 +2760,6 @@ The only values in Ruby that are false are: <code>false</code> and <code>nil</co
 Everything else is true.  Constants <code>true</code> (and <code>TRUE</code>) exist.  Note for Python and Perl users: unlike Python, in Ruby, the number <code>0</code>, the empty string, the empty array, and the empty hash, etc. are all true; you can instead use the <code>zero?</code> method to test for 0, and the <code>.empty?</code> method to test for an empty sequence.
 
 <code>false</code>, <code>nil</code> and <code>true</code> are singleton instances of classes <code>FalseClass</code>, <code>NilClass</code> and <code>TrueClass</code> respectively.
-<https://www.ruby-doc.org/docs/ProgrammingRuby/html/tut_expressions.html#UF>
 
 
 ## Run BASIC

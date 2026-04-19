@@ -850,7 +850,7 @@ http://foo bar/
 ```
 
 
-Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [RFC 3986](https://datatracker.ietf.org/html/rfc3986#section-2.1) regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
+Note that an earlier implementation assumed the j6 implementation of <code>hfd</code> which where hexadecimal letters resulting from <code>hfd</code> were upper case. J8, in contrast, provides a lower case result from hfd. The addition of <code>toupper</code> guarantees the case insensitivity required by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-2.1) regardless of which version of J you are using. As the parenthesized expression containing <code>hfd</code> is only evaluated at definition time, there's no performance penalty from the use of <code>toupper</code>.
 
 Example use:
 

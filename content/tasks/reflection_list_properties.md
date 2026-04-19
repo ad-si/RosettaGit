@@ -697,7 +697,7 @@ $VAR1 = bless( {
 ## Perl 6
 
 
-You can get a list of an object's attributes (instance variables) using <tt>.^attributes</tt>, which is part of the [Meta Object Protocol](https://docs.perl6.org/type/Metamodel$COLON$COLONClassHOW)..
+You can get a list of an object's attributes (instance variables) using <tt>.^attributes</tt>, which is part of the [Meta Object Protocol](https://docs.raku.org/type/Metamodel::ClassHOW)..
 
 Each is represented as an <tt>Attribute</tt> object that contains a bunch of info:
 

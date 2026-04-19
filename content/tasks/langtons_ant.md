@@ -2140,7 +2140,7 @@ Empty lines are omitted.
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=len%20f%5B%5D%20100%20%2A%20100%0Afunc%20show%20.%20.%0Afor%20y%20range%20100%0Afor%20x%20range%20100%0Aif%20f%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%0Amove%20x%20y%0Arect%201%201%0A.%0A.%0A.%0A.%0Afunc%20run%20x%20y%20dir%20.%20.%0Adx%5B%5D%20%3D%20%5B%200%201%200%20-1%20%5D%0Ady%5B%5D%20%3D%20%5B%20-1%200%201%200%20%5D%0Awhile%20x%20%3E%3D%200%20and%20x%20%3C%20100%20and%20y%20%3E%3D%200%20and%20y%20%3C%20100%0Av%20%3D%20f%5By%20%2A%20100%20%2B%20x%5D%0Af%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%20-%20v%0Adir%20%3D%20%28dir%20%2B%201%20%2B%202%20%2A%20v%29%20mod%204%0Ax%20%2B%3D%20dx%5Bdir%5D%0Ay%20%2B%3D%20dy%5Bdir%5D%0A.%0A.%0Acall%20run%2070%2040%200%0Acall%20show)
+[Run it](https://easylang.dev/apps/run.html?code=len%20f%5B%5D%20100%20%2A%20100%0Afunc%20show%20.%20.%0Afor%20y%20range%20100%0Afor%20x%20range%20100%0Aif%20f%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%0Amove%20x%20y%0Arect%201%201%0A.%0A.%0A.%0A.%0Afunc%20run%20x%20y%20dir%20.%20.%0Adx%5B%5D%20%3D%20%5B%200%201%200%20-1%20%5D%0Ady%5B%5D%20%3D%20%5B%20-1%200%201%200%20%5D%0Awhile%20x%20%3E%3D%200%20and%20x%20%3C%20100%20and%20y%20%3E%3D%200%20and%20y%20%3C%20100%0Av%20%3D%20f%5By%20%2A%20100%20%2B%20x%5D%0Af%5By%20%2A%20100%20%2B%20x%5D%20%3D%201%20-%20v%0Adir%20%3D%20%28dir%20%2B%201%20%2B%202%20%2A%20v%29%20mod%204%0Ax%20%2B%3D%20dx%5Bdir%5D%0Ay%20%2B%3D%20dy%5Bdir%5D%0A.%0A.%0Acall%20run%2070%2040%200%0Acall%20show)
 
 <lang>len f[] 100 * 100
 func show . .
@@ -4039,7 +4039,7 @@ end
 
 
 [printf.icn provides formatting](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
-[graphics.icn provides graphics support (WDone)](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics support (WDone)](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 
 ## J

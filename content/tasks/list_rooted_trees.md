@@ -988,7 +988,7 @@ Number of 5-trees: 9
 
 ## Perl 6
 
-Bags are represented by Perl 6 type [<code>Bag</code>](http://doc.perl6.org/type/Bag).
+Bags are represented by Perl 6 type [<code>Bag</code>](https://docs.raku.org/type/Bag).
 
 
 ```perl6

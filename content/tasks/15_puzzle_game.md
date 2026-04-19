@@ -2360,7 +2360,7 @@ start fifteen puzzle
 ## Common Lisp
 
 
-Credit to this post for help with the inversions-counting function: <http://www.lispforum.com/viewtopic.php?f=2&t=3422>
+Credit to this post for help with the inversions-counting function: <https://web.archive.org/web/20220323071400/http://www.lispforum.com/viewtopic.php?f=2&t=3422>
 
 Run it (after loading the file) with
 ```lisp
@@ -2476,7 +2476,7 @@ Run it (after loading the file) with
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/15-puzzle.html)
+[Run it](https://easylang.dev/apps/15-puzzle.html)
 
 <lang>len f[] 16
 subr initvars
@@ -4692,9 +4692,6 @@ function checkDistance i
 end checkDistance
 
 ```
-
-Screenshot:
-<https://s24.postimg.org/uc6fx7kph/Livecode15_Puzzle_Game.png>
 
 
 ## Lua

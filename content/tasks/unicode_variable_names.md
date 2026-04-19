@@ -196,7 +196,7 @@ The great majority of implementations have used EBCDIC, ASCII and an encoding of
 ## AutoHotkey
 
 The earlier version of AutoHotkey (AutoHotkey Basic) will produce an error since it doesn't support Unicode. It is perfectly working in AutoHotkey_L Unicode (Lexikos Custom Build).
-Documentation: <http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/Variables.htm>
+Documentation: <https://www.autohotkey.com/docs/v1/Variables.htm>
 ```ahk
 Δ = 1
 Δ++
@@ -668,7 +668,7 @@ Strictly speaking, variables in jq cannot be incremented (in fact, strictly spea
 ## Julia
 
 The Julia documentation on
-[allowed variable names](https://docs.julialang.org/en/latest/manual/variables/#allowed-variable-names) explicitly describes the wide variety of Unicode codepoints that are allowed:
+[allowed variable names](https://docs.julialang.org/en/v1/manual/variables/#allowed-variable-names) explicitly describes the wide variety of Unicode codepoints that are allowed:
 
 ```julia
 julia>
@@ -804,7 +804,7 @@ Print[Δ]
 
 ## Nemerle
 
-From the Nemerle [Reference Manual](http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29): "Programs are written using the Unicode character set, using the UTF-8 encoding."
+From the Nemerle [Reference Manual](https://web.archive.org/web/20131031181321/http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29): "Programs are written using the Unicode character set, using the UTF-8 encoding."
 
 ```Nemerle
 using System.Console;
@@ -1000,7 +1000,7 @@ One can have Unicode in identifier or subroutine names and also in package or cl
 
 Perl 6 is written in Unicode so, with narrow restrictions, nearly any Unicode letter can be used in identifiers.
 
-See Perl 6 Synopsis 02. - <https://perlcabal.org/syn/S02.html#Names>
+See Perl 6 Synopsis 02. - <https://design.raku.org/S02.html#Names>
 
 ```perl6
 my $Δ = 1;
@@ -1278,9 +1278,9 @@ puts Δ  # => 2
 
 ## Rust
 
-Rust source encoding is [specified](https://doc.rust-lang.org/reference.html#input-format) to be UTF-8. [Identifiers](https://doc.rust-lang.org/reference.html#identifiers) must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [╯°□°╯︵┻━┻](https://github.com/mozilla/rust/issues/7048#issuecomment-19254166) is not permitted under current specification)
+Rust source encoding is [specified](https://doc.rust-lang.org/reference.html#input-format) to be UTF-8. [Identifiers](https://doc.rust-lang.org/reference.html#identifiers) must begin with a character that has Unicode XID_start property and remaining characters must have the XID_Continue property. (Which means that [╯°□°╯︵┻━┻](https://github.com/rust-lang/rust/issues/7048#issuecomment-19254166) is not permitted under current specification)
 
-<b>Non-ASCII identifiers are [feature gated](https://github.com/mozilla/rust/pull/10605) since version 0.9</b>
+<b>Non-ASCII identifiers are [feature gated](https://github.com/rust-lang/rust/pull/10605) since version 0.9</b>
 
 
 ```rust

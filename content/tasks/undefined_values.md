@@ -1373,7 +1373,7 @@ my Str $z; say $z.WHAT; # Str()
 ```
 
 
-The user-interface for definedness are [type smilies](http://design.perl6.org/S12.html#Abstract_vs_Concrete_types) and the <tt>with</tt>-statement.
+The user-interface for definedness are [type smilies](https://design.raku.org/S12.html#Abstract_vs_Concrete_types) and the <tt>with</tt>-statement.
 
 
 ```perl6
@@ -1387,7 +1387,7 @@ with 0 { say '0 may not divide but it is defined' }
 ```
 
 
-There are further some [operators](http://design.perl6.org/S03.html) for your convenience.
+There are further some [operators](https://design.raku.org/S03.html) for your convenience.
 
 
 ```perl6

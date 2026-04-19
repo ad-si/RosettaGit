@@ -928,7 +928,7 @@ end;
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=color%20999%0Alen%20f%5B%5D%20200%20%2A%20200%0Amove%20100%20100%0Arect%200.5%200.5%0Af%5B100%20%2A%20200%20%2B%20100%5D%20%3D%201%0An%20%3D%209000%0Awhile%20i%20%3C%20n%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0Awhile%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0A.%0Awhile%20x%20%3C%3E%20-1%0Axo%20%3D%20x%0Ayo%20%3D%20y%0Ax%20%2B%3D%20random%203%20-%201%0Ay%20%2B%3D%20random%203%20-%201%0Aif%20x%20%3C%200%20or%20y%20%3C%200%20or%20x%20%3E%3D%20200%20or%20y%20%3E%3D%20200%0Ax%20%3D%20-1%0Aelse%0Aif%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Amove%20xo%20/%202%20yo%20/%202%0Arect%200.5%200.5%0Af%5Byo%20%2A%20200%20%2B%20xo%5D%20%3D%201%0Ai%20%2B%3D%201%0Aif%20i%20mod%2016%20%3D%200%0Acolor_red%200.2%20%2B%20i%20/%20n%0Asleep%200%0A.%0Ax%20%3D%20-1%0A.%0A.%0A.%0A.)
+[Run it](https://easylang.dev/apps/run.html?code=color%20999%0Alen%20f%5B%5D%20200%20%2A%20200%0Amove%20100%20100%0Arect%200.5%200.5%0Af%5B100%20%2A%20200%20%2B%20100%5D%20%3D%201%0An%20%3D%209000%0Awhile%20i%20%3C%20n%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0Awhile%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Ax%20%3D%20random%20200%0Ay%20%3D%20random%20200%0A.%0Awhile%20x%20%3C%3E%20-1%0Axo%20%3D%20x%0Ayo%20%3D%20y%0Ax%20%2B%3D%20random%203%20-%201%0Ay%20%2B%3D%20random%203%20-%201%0Aif%20x%20%3C%200%20or%20y%20%3C%200%20or%20x%20%3E%3D%20200%20or%20y%20%3E%3D%20200%0Ax%20%3D%20-1%0Aelse%0Aif%20f%5By%20%2A%20200%20%2B%20x%5D%20%3D%201%0Amove%20xo%20/%202%20yo%20/%202%0Arect%200.5%200.5%0Af%5Byo%20%2A%20200%20%2B%20xo%5D%20%3D%201%0Ai%20%2B%3D%201%0Aif%20i%20mod%2016%20%3D%200%0Acolor_red%200.2%20%2B%20i%20/%20n%0Asleep%200%0A.%0Ax%20%3D%20-1%0A.%0A.%0A.%0A.)
 
 ```easylang
 color 999
@@ -1747,7 +1747,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 [printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 

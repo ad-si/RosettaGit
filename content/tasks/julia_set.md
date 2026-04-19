@@ -796,7 +796,7 @@ julia(-0.8, 0.156)
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/julia-set.html)
+[Run it](https://easylang.dev/apps/julia-set.html)
 
 <lang>floatvars
 cx = -0.7

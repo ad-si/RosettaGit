@@ -630,7 +630,7 @@ $subref     is type:  CODE
 
 Perl 6 is a dynamic language that has gradual, duck typing. It provides introspection methods through its comprehensive MOP (Meta Object Protocol) making it easy to do type detection, subroutine signatures and multi-dispatch. Perl 6 types have two general flavors: content types and container types. Different container types have varying restrictions on what sort of content they can contain and in return provide specialized methods to operate on those contents. Content types give the compiler hints on how to best handle the information, what storage requirements it may have, what operators will work with it, etc.
 
-This is really a very broad and kind of hand-wavey overview of Perl 6 types. For much more indepth coverage see [Perl 6 Synopsis S02: Bits and Pieces: Built-In Data Types](http://design.perl6.org/S02.html#Built-In_Data_Types|)
+This is really a very broad and kind of hand-wavey overview of Perl 6 types. For much more indepth coverage see [Perl 6 Synopsis S02: Bits and Pieces: Built-In Data Types](https://design.raku.org/S02.html#Built-In_Data_Types|)
 
 
 ```perl6

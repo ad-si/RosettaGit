@@ -1544,7 +1544,7 @@ my @filenames = glob($pattern);
 
 ## Perl 6
 
-The <code>dir</code> function takes the directory to traverse, and optionally a named parameter <code>test</code>, which is [smart-matched](https://docs.perl6.org/routine/$TILDE$TILDE) against the basename of each file (so for example we can use a regex):
+The <code>dir</code> function takes the directory to traverse, and optionally a named parameter <code>test</code>, which is [smart-matched](https://docs.raku.org/routine/~~) against the basename of each file (so for example we can use a regex):
 
 ```perl6
 .say for dir ".", :test(/foo/);

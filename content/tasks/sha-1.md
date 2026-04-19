@@ -622,7 +622,7 @@ Factor provides ''sha1'' in the ''checksums.sha'' vocabulary. In Factor, ''check
  IN: scratchpad '''"Rosetta Code" sha1 checksum-bytes hex-string .'''
  "48c98f7e5a6e736d790ab740dfc3f51a61abe2b5"
 
-The implementation is at [basis/checksums/sha/sha.factor](https://github.com/slavapestov/factor/blob/master/basis/checksums/sha/sha.factor).
+The implementation is at [basis/checksums/sha/sha.factor](https://github.com/factor/factor/blob/master/basis/checksums/sha/sha.factor).
 
 Note: In recent factor builds (after June 2017, ie factor 0.98), checksums:hex-string has been moved to math.parser:hex-string>bytes
 

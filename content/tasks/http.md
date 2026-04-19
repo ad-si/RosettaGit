@@ -2045,7 +2045,7 @@ import java.io.InputStreamReader
 import java.util.Scanner
 
 fun main(args: Array<String>) {
-    val url = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    val url = URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     val isr = InputStreamReader(url.openStream())
     val sc = Scanner(isr)
     while (sc.hasNextLine()) println(sc.nextLine())

@@ -696,7 +696,7 @@ void main() {
 
 ## Factor
 
-Before the fix to [Factor bug #484](https://github.com/slavapestov/factor/issues/484), <code>m.</code> gave the wrong answer and this code failed. Factor 0.94 is too old to work.
+Before the fix to [Factor bug #484](https://github.com/factor/factor/issues/484), <code>m.</code> gave the wrong answer and this code failed. Factor 0.94 is too old to work.
 
 ```factor
 USING: kernel math.functions math.matrices sequences ;

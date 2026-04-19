@@ -808,7 +808,7 @@ Total cost: 3100
 
 ## Julia
 
-This solution is designed to scale well to large numbers of suppliers and customers.  The opportunity cost matrix is sorted only once, and penalties are recalculated only when the relevant resources are exhausted.  The solution is stored in a [sparse matrix](https://docs.julialang.org/en/release-0.3/manual/arrays/#sparse-matrices), because the number of components to a solution is less than s+c (suppliers + customers) but the size of the matrix is s*c.
+This solution is designed to scale well to large numbers of suppliers and customers.  The opportunity cost matrix is sorted only once, and penalties are recalculated only when the relevant resources are exhausted.  The solution is stored in a [sparse matrix](https://docs.julialang.org/en/v0.3/manual/arrays/#sparse-matrices), because the number of components to a solution is less than s+c (suppliers + customers) but the size of the matrix is s*c.
 
 This solution does not impose the requirement that the problem be balanced.  <code>vogel</code> will iterate until either supply or demand is exhausted and provide a low-cost result even when the problem is unbalanced, whether this result is a good solution is left for the user to decide.  The function <code>isbalanced</code> can be used to test whether a given problem is balanced.
 

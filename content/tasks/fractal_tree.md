@@ -911,7 +911,7 @@ int main() {
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/fractal-tree.html)
+[Run it](https://easylang.dev/apps/fractal-tree.html)
 
 <lang>floatvars
 func tree x y angle depth . .
@@ -1294,7 +1294,7 @@ end
 ```
 
 
-[WOpen provides graphics I/O](https://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn)
+[WOpen provides graphics I/O](https://www.cs.arizona.edu/icon/library/src/gprocs/wopen.icn)
 
 ## J
 

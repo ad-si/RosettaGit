@@ -175,7 +175,7 @@ Using package [cl-ftp](http://code.kepibu.org/cl-ftp/).
 
 ## Go
 
-Using the FTP package from [github.com/stacktic/ftp](https://godoc.org/github.com/stacktic/ftp).
+Using the FTP package (this originated as `github.com/stacktic/ftp`; see the maintained fork at [github.com/jlaffaye/ftp](https://pkg.go.dev/github.com/jlaffaye/ftp)).
 
 ```go
 package main

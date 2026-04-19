@@ -511,7 +511,7 @@ value = john
 ## AutoHotkey
 
 {{works with|AutoHotkey_L}}
-From the [documentation](http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/objects/Enumerator.htm)
+From the [documentation](https://www.autohotkey.com/docs/v1/objects/Enumerator.htm)
 ```AutoHotkey
 ; Create an associative array
 obj := Object("red", 0xFF0000, "blue", 0x0000FF, "green", 0x00FF00)
@@ -647,7 +647,7 @@ Lincoln 1809
 ```
 
 
-For more information on maps in Babel, view [std.sp](https://github.com/claytonkb/clean_babel/blob/master/std.sp) (see the section titled "map utilities").
+For more information on maps in Babel, view [std.sp](https://github.com/claytonkb/babel/blob/master/std.sp) (see the section titled "map utilities").
 
 
 ## BaCon
@@ -2427,7 +2427,7 @@ value = 3
 
 ## Liberty BASIC
 
-Needs the sublist library from <http://basic.wikispaces.com/SubList+Library> since LB does not have built-in associative arrays.
+Needs the sublist library since LB does not have built-in associative arrays.
 
 ```lb
 

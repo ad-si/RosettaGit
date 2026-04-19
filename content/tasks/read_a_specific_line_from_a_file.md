@@ -1556,7 +1556,7 @@ for x in 0 .. 6:
 ## OCaml
 
 
-OCaml does not provide built-in facilities to obtain a particular line from a file. It only provides a function to read one line from a file from the current position in the input channel [input_line](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALinput_line). We can use this function to get the seventh line from a file, for example as follows:
+OCaml does not provide built-in facilities to obtain a particular line from a file. It only provides a function to read one line from a file from the current position in the input channel [input_line](https://v2.ocaml.org/api/Stdlib.html#VALinput_line). We can use this function to get the seventh line from a file, for example as follows:
 
 
 ```ocaml

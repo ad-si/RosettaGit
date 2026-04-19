@@ -5866,10 +5866,6 @@ new qapp
 
 ```
 
-Output:
-
-[Zig-Zag matrix](http://kepkezelo.com/images/kk86ng7p4gcl7z3p7vo1.jpg)
-
 
 ## Ruby
 

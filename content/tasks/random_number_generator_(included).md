@@ -727,7 +727,7 @@ Go has two random number packages in the standard library and another package in
 
 # [math/rand](https://golang.org/pkg/math/rand/) in the standard library provides general purpose random number support, implementing some sort of feedback shift register.  (It uses a large array commented "feeback register" and has variables named "tap" and "feed.")  Comments in the code attribute the algorithm to DP Mitchell and JA Reeds.  A little more insight is in [this issue](https://github.com/golang/go/issues/21835) in the Go issue tracker.
 # [crypto/rand](https://golang.org/pkg/crypto/rand/), also in the standard library, says it "implements a cryptographically secure pseudorandom number generator."  I think though it should say that it ''accesses'' a cryptographically secure pseudorandom number generator.  It uses <tt>/dev/urandom</tt> on Unix-like systems and the CryptGenRandom API on Windows.
-# [x/exp/rand](https://godoc.org/golang.org/x/exp/rand) implements the Permuted Congruential Generator which is also described in the issue linked above.
+# [x/exp/rand](https://pkg.go.dev/golang.org/x/exp/rand) implements the Permuted Congruential Generator which is also described in the issue linked above.
 
 
 ## Golfscript
@@ -781,7 +781,7 @@ The only built-in random number generation facility is <code>Math.random()</code
 
 ## Julia
 
-Julia's [built-in random-number generation functions](https://docs.julialang.org/en/latest/stdlib/base/#random-numbers), <code>rand()</code> etcetera, use the Mersenne Twister algorithm.
+Julia's [built-in random-number generation functions](https://docs.julialang.org/en/v1/stdlib/base/#random-numbers), <code>rand()</code> etcetera, use the Mersenne Twister algorithm.
 
 
 ## Kotlin
@@ -872,7 +872,7 @@ As explained [here](https://www.gnu.org/software/octave/doc/interpreter/Special-
 
 ## Oz
 
-Oz provides a binding to the C <code>[rand](https://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> function as <code>[OS.rand](https://www.mozart-oz.org/home/doc/system/node56.html#label719)</code>.
+Oz provides a binding to the C <code>[rand](https://www.opengroup.org/onlinepubs/000095399/functions/rand.html)</code> function as <code>[OS.rand](https://mozart.github.io/mozart-v1/doc-1.4.0/system/node56.html#label719)</code>.
 
 
 ## PARI/GP

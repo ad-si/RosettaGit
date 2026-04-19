@@ -67,7 +67,7 @@ widely known mnemonic which is supposed to help when spelling English words.
 
 ## Task
 
-Using the word list from   [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt),
+Using the word list from   [https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt](https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt),
 
 check if the two sub-clauses of the phrase are plausible individually:
 :::#   ''"I before E when not preceded by C"''
@@ -204,7 +204,7 @@ e before i     in general is not plausible
 
 
 ```AutoHotkey
-WordList := URL_ToVar("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")
+WordList := URL_ToVar("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 WordList := RegExReplace(WordList, "i)cie", "", cieN)
 WordList := RegExReplace(WordList, "i)cei", "", ceiN)
 RegExReplace(WordList, "i)ie", "", ieN)
@@ -697,7 +697,7 @@ The output here was generated with the files as of 21st June 2016.
                                            format-line)))
 
 (defn -main []
-  (with-open [rdr (clojure.java.io/reader "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")]
+  (with-open [rdr (clojure.java.io/reader "https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")]
    (i-before-e-except-after-c-plausible? "Check unixdist list" (apply-freq-1 (line-seq rdr))))
   (with-open [rdr (clojure.java.io/reader "https://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")]
    (i-before-e-except-after-c-plausible? "Word frequencies (stretch goal)" (map format-freq-line (drop 1 (line-seq rdr))))))
@@ -1341,7 +1341,7 @@ getWordList :: IO String
 getWordList  =  do
     response  <-  simpleHTTP.getRequest$ url
     getResponseBody response
-        where url = "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
+        where url = "https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 
 main = do
     words <- getWordList
@@ -1677,7 +1677,7 @@ def assess:
 "Using the problematic criterion specified in the task requirements:", assess
 ```
 
-Using <https://www.puzzlers.org/pub/wordlists/unixdict.txt> as of June 2015:
+Using <https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt> as of June 2015:
 
 ```sh
 $ jq -s -R -r -f I_before_E_except_after_C.jq unixdict.txt
@@ -1761,7 +1761,7 @@ fun printResults(source: String, counts: IntArray) {
 }
 
 fun main(args: Array<String>) {
-    val url = URL("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")
+    val url = URL("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     val isr = InputStreamReader(url.openStream())
     val reader = BufferedReader(isr)
     val regexes = arrayOf(
@@ -1842,7 +1842,7 @@ local(cie,cei,ie,ei) = (:0,0,0,0)
 local(match_ie) = regExp(`[^c]ie`)
 local(match_ei) = regExp(`[^c]ei`)
 
-with word in include_url(`http://wiki.puzzlers.org/pub/wordlists/unixdict.txt`)->asString->split("\n")
+with word in include_url(`https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt`)->asString->split("\n")
 where #word >> `ie` or #word >> `ei`
 do {
     #word >> `cie`
@@ -1911,7 +1911,7 @@ function plaus (case, opposite, words)
 end
 
 -- Main procedure
-local page = http.request("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")
+local page = http.request("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 io.write("I before E when not preceded by C: ")
 local sub1 = plaus("[^c]ie", "cie", page)
 io.write("E before I when preceded by C: ")
@@ -1933,7 +1933,7 @@ Overall the phrase is not plausible.
 
 
 ```Maple
-words:= HTTP:-Get("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"):
+words:= HTTP:-Get("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"):
 lst := StringTools:-Split(words[2],"\n"):
 xie, cie, cei, xei := 0, 0, 0, 0:
 for item in lst do
@@ -1969,7 +1969,7 @@ The overall phrase is not plausible
 
 ```mathematica
 wordlist =
-  Import["http://wiki.puzzlers.org/pub/wordlists/unixdict.txt",
+  Import["https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt",
    "Words"];
 Print["The number of words in unixdict.txt = " <>
   ToString[Length[wordlist]]]
@@ -2076,7 +2076,7 @@ use Collection;
 
 class HttpTest {
   function : Main(args : String[]) ~ Nil {
-    IsPlausibleRule("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt");
+    IsPlausibleRule("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt");
   }
 
   function : PlausibilityCheck(comment : String, x : Int, y : Int) ~ Bool {
@@ -2417,7 +2417,7 @@ Kept dirt simple, difficult to imagine anything being much faster than this.
 
 --
 procedure fatal(string msg)
-    printf(1,"unixdict.txt %s. download it from http://wiki.puzzlers.org/pub/wordlists/unixdict.txt\n",{msg})
+    printf(1,"unixdict.txt %s. download it from https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt\n",{msg})
     if getc(0) then end if
     abort(1)
 end procedure
@@ -2548,7 +2548,7 @@ Overall rule is not plausible
 
 ```Powershell
 $Web = New-Object -TypeName Net.Webclient
-$Words = $web.DownloadString('http://wiki.puzzlers.org/pub/wordlists/unixdict.txt')
+$Words = $web.DownloadString('https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt')
 
 $IE = $EI = $CIE = $CEI = @()
 
@@ -2593,7 +2593,7 @@ The plausibility of the phrase 'I before E except after C' is False
 
 ```Powershell
 $Web = New-Object -TypeName Net.Webclient
-$Words = $web.DownloadString('http://wiki.puzzlers.org/pub/wordlists/unixdict.txt')
+$Words = $web.DownloadString('https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt')
 
 $IE = $EI = $CIE = $CEI = @()
 
@@ -2701,7 +2701,7 @@ def plausibility_check(comment, x, y):
                   % (x, y, x / y))
     return x > PLAUSIBILITY_RATIO * y
 
-def simple_stats(url='http://wiki.puzzlers.org/pub/wordlists/unixdict.txt'):
+def simple_stats(url='https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'):
     words = urllib.request.urlopen(url).read().decode().lower().split()
     cie = len({word for word in words if 'cie' in word})
     cei = len({word for word in words if 'cei' in word})
@@ -2781,7 +2781,7 @@ OVERALL IT IS IMPLAUSIBLE!
 
 
 ```rsplus
-words = tolower(readLines("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"))
+words = tolower(readLines("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"))
 ie.npc = sum(grepl("(?<!c)ie", words, perl = T))
 ei.npc = sum(grepl("(?<!c)ei", words, perl = T))
 ie.pc = sum(grepl("cie", words, fixed = T))
@@ -3110,7 +3110,7 @@ require 'open-uri'
 
 plausibility_ratio = 2
 counter = Hash.new(0)
-path = 'http://wiki.puzzlers.org/pub/wordlists/unixdict.txt'
+path = 'https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'
 rules = [['I before E when not preceded by C:', 'ie', 'ei'],
          ['E before I when preceded by C:', 'cei', 'cie']]
 
@@ -3200,7 +3200,7 @@ fn print_feature_plausibility(feature_plausibility: Option<bool>, feature_name: 
 }
 
 fn main() {
-    let mut res = get(" http://wiki.puzzlers.org/pub/wordlists/unixdict.txt").unwrap();
+    let mut res = get(" https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt").unwrap();
     let texts = res.text().unwrap();
 
     let mut feature_count: Feature<u64> = Default::default();
@@ -3257,7 +3257,7 @@ object I_before_E_except_after_C extends App {
   val testCEI2 = "(^|[^c])ei".r // e before i when not preceded by c
   var countsCEI = (0,0)
 
-  scala.io.Source.fromURL("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt").getLines.map(_.toLowerCase).foreach{word =>
+  scala.io.Source.fromURL("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.map(_.toLowerCase).foreach{word =>
     if (testIE1.findFirstIn(word).isDefined) countsIE = (countsIE._1 + 1, countsIE._2)
     if (testIE2.findFirstIn(word).isDefined) countsIE = (countsIE._1, countsIE._2 + 1)
     if (testCEI1.findFirstIn(word).isDefined) countsCEI = (countsCEI._1 + 1, countsCEI._2)
@@ -3367,7 +3367,7 @@ Using [SwiftRegex](https://github.com/johnno1962/SwiftRegex/blob/master/SwiftReg
 ```Swift
 import Foundation
 
-let request = NSURLRequest(URL: NSURL(string: "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")!)
+let request = NSURLRequest(URL: NSURL(string: "https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")!)
 
 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {res, data, err in
     if (data != nil) {
@@ -3460,7 +3460,7 @@ proc plausible {description x y} {
     return $result
 }
 
-set t [http::geturl http://wiki.puzzlers.org/pub/wordlists/unixdict.txt]
+set t [http::geturl https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt]
 set words [split [http::data $t] "\n"]
 http::cleanup $t
 foreach {name pattern} {ie (?:^|[^c])ie ei (?:^|[^c])ei cie cie cei cei} {
@@ -3506,7 +3506,7 @@ OVERALL IT IS IMPLAUSIBLE!
 ```tuscript
 
 $$ MODE TUSCRIPT,{}
-words=REQUEST("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt")
+words=REQUEST("https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 size=SIZE(words)
 ieei=cie=xie=cei=xei=0
 
@@ -3720,7 +3720,7 @@ Imports System.Text.RegularExpressions
 
 Module Program
     ' Supports both local and remote files
-    Const WORDLIST_URI = "http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"
+    Const WORDLIST_URI = "https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 
 
     ' The support factor of a word for EI or IE is the number of occurrences that support the rule minus the number that oppose it.

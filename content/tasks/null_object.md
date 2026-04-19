@@ -1357,7 +1357,7 @@ undefined
 
 ## Julia
 
-See language reference: <https://docs.julialang.org/en/stable/manual/faq/#Nothingness-and-missing-values-1>
+See language reference: <https://docs.julialang.org/en/v1/manual/faq/#Nothingness-and-missing-values-1>
 
 
 ## K

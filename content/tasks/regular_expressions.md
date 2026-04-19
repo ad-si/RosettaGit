@@ -1547,7 +1547,7 @@ s = "I am a string"
 s = replace(s, r" (a|an) ", " another ")
 ```
 
-There are many [other features](https://docs.julialang.org/en/latest/manual/strings/#regular-expressions) of Julia's regular-expression support, too numerous to list here.
+There are many [other features](https://docs.julialang.org/en/v1/manual/strings/#regular-expressions) of Julia's regular-expression support, too numerous to list here.
 
 
 ## Kotlin

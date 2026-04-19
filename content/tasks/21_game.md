@@ -902,6 +902,3 @@ func msgBox(text) {
 
 ```
 
-Output:
-
-[21 Game](http://kepkezelo.com/images/1hyutakip6vo1t1rpypy.jpg)

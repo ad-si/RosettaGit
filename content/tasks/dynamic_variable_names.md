@@ -1212,7 +1212,7 @@ print "$foo\n"; # prints "42"
 
 ## Perl 6
 
-You can [interpolate strings as variable names](https://docs.perl6.org/language/packages#Interpolating_into_names):
+You can [interpolate strings as variable names](https://docs.raku.org/language/packages#Interpolating_into_names):
 
 
 ```perl6

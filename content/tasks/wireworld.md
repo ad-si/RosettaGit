@@ -3088,7 +3088,7 @@ end
 ```
 
 
-[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 
 ## J

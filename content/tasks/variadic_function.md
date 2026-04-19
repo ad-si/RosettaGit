@@ -1867,7 +1867,7 @@ printAll((Object)args);
 
 ### ES5
 
-The [<code>arguments</code>](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Functions/arguments) special variable, when used inside a function, contains an array of all the arguments passed to that function.
+The [<code>arguments</code>](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) special variable, when used inside a function, contains an array of all the arguments passed to that function.
 
 ```javascript
 function printAll() {

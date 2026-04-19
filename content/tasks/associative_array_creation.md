@@ -2557,7 +2557,7 @@ with v in #mymap do {^
 
 ## Liberty BASIC
 
-Needs the sublist library from <http://basic.wikispaces.com/SubList+Library> since LB does not have built-in associative arrays.
+Needs the sublist library since LB does not have built-in associative arrays.
 
 ```lb
 

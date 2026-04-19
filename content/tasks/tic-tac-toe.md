@@ -2620,7 +2620,7 @@ You win!
 
 It uses minimax with alpha-beta pruning. Therefore, the computer never loses.
 
-[Run it](https://easylang.online/apps/tictactoe.html)
+[Run it](https://easylang.dev/apps/tictactoe.html)
 
 <lang>len f[] 9
 state = 0

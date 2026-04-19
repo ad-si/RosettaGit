@@ -3394,7 +3394,7 @@ sub median {
 Notes:
 
 * The <tt>div</tt> operator does integer division. The <tt>/</tt> operator (rational number division) would work too, since the array subscript automatically coerces to <tt>Int</tt>, but using <tt>div</tt> is more explicit (i.e. clearer to readers) as well as faster, and thus recommended in cases like this.
-* The <tt>*</tt> inside the subscript stands for the array's length ([see documentation](https://docs.perl6.org/language/subscripts.html#From_the_end)).
+* The <tt>*</tt> inside the subscript stands for the array's length ([see documentation](https://docs.raku.org/language/subscripts.html#From_the_end)).
 
 
 

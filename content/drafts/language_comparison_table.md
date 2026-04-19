@@ -1096,7 +1096,7 @@ tags = []
 
 ! {{anchor|Perl 6|[[Perl 6]]}}
 |[[imperative programming|imperative]], [[procedural programming|procedural]], [[reflective programming|reflective]], [[functional programming|functional]], [[object-oriented]], [[generic programming|generic]], [[lazy evaluation]], multiple dispatch, metaprogramming
-|{{yes|Yes, [Perl 6 Synopses](https://perlcabal.org/syn/#doctable)}}
+|{{yes|Yes, [Perl 6 Synopses](https://design.raku.org/#doctable)}}
 |strong
 |safe, unsafe
 |optional explicit

@@ -1437,7 +1437,7 @@ ccall( (:GetDoubleClickTime, "User32"), stdcall,
 ccall( (:clock, "libc"), Int32, ())
 ```
 
-For more information, see here <https://docs.julialang.org/en/latest/manual/calling-c-and-fortran-code.html>
+For more information, see here <https://docs.julialang.org/en/v1/manual/calling-c-and-fortran-code/>
 
 
 ## Kotlin
@@ -2078,7 +2078,7 @@ puts "opened with handle #{handle}"
 ```
 
 
-The next script tries to use ImageMagick. First, it tries [rmagick](https://rmagick.github.io/) from RubyGems. If that library is missing, it tries to use [ffi](http://wiki.github.com/ffi/ffi) from RubyGems to call C functions in ImageMagick. (FFI is an alternative to Fiddle). If that doesn't work, it falls back to code that only handles PNG images.
+The next script tries to use ImageMagick. First, it tries [rmagick](https://rmagick.github.io/) from RubyGems. If that library is missing, it tries to use [ffi](https://github.com/ffi/ffi/wiki) from RubyGems to call C functions in ImageMagick. (FFI is an alternative to Fiddle). If that doesn't work, it falls back to code that only handles PNG images.
 
 ```ruby
 # This script shows the width x height of some images.

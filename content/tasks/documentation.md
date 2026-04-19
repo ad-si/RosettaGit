@@ -1031,7 +1031,7 @@ TBD
 
 ## J
 
-Use [scripdoc](https://www.jsoftware.com/trac/base/browser/trunk/main/script/doc.ijs?rev=1):
+Use `scripdoc`:
 
 ```j
 NB.
@@ -1366,7 +1366,7 @@ Perl's documentation mechanism is called [POD (Plain Old Documentation)](https:/
 
 ## Perl 6
 
-Similarly to Perl 5, Perl 6 is documented using [Pod](https://perlcabal.org/syn/S26.html) (a redesigned version of POD). However, it's not simply ignored by the parser as in Perl 5, it's an internal part of the language spec and can be used to attach documentation objects to almost any part of the code.
+Similarly to Perl 5, Perl 6 is documented using [Pod](https://design.raku.org/S26.html) (a redesigned version of POD). However, it's not simply ignored by the parser as in Perl 5, it's an internal part of the language spec and can be used to attach documentation objects to almost any part of the code.
 
 
 ```perl6

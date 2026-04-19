@@ -1057,7 +1057,7 @@ Active object are not a predefined abstraction in Oz. But due to Oz' first-class
   end
 ```
 
-This functions takes a class and an initialization message and returns a procedure. When called, this procedure will send messages to the new object in a new thread and then wait for the <code>Sync</code> variable to become bound. Exceptions are propagated using [failed values](https://www.mozart-oz.org/home/doc/base/node13.html#label696).
+This functions takes a class and an initialization message and returns a procedure. When called, this procedure will send messages to the new object in a new thread and then wait for the <code>Sync</code> variable to become bound. Exceptions are propagated using [failed values](https://mozart.github.io/mozart-v1/doc-1.4.0/base/node13.html#label696).
 
 This works because a unary procedure is syntactically indistinguishable from an object in Oz.
 

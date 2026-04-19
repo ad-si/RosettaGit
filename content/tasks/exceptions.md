@@ -597,8 +597,8 @@ error "Error message." number 2000
 
 ###  True exceptions
 
-In [[AutoHotkey_L]] [Try](http://l.autohotkey.net/docs/commands/Try.htm), [Catch](http://l.autohotkey.net/docs/commands/Catch.htm), and [Throw](http://l.autohotkey.net/docs/commands/Throw.htm) are available to handle exceptions.<br/>
-From the [Throw documentation](http://l.autohotkey.net/docs/commands/Throw.htm):
+In [[AutoHotkey_L]] [Try](https://www.autohotkey.com/docs/v1/lib/Try.htm), [Catch](https://www.autohotkey.com/docs/v1/lib/Catch.htm), and [Throw](https://www.autohotkey.com/docs/v1/lib/Throw.htm) are available to handle exceptions.<br/>
+From the [Throw documentation](https://www.autohotkey.com/docs/v1/lib/Throw.htm):
 
 ```AHK
 try
@@ -2774,7 +2774,7 @@ end
 ```
 
 
-See also: [Exceptions](https://www.mozart-oz.org/documentation/base/exception.html) in the Oz documentation.
+See also: [Exceptions](https://mozart.github.io/mozart-v1/doc-1.4.0/base/exception.html) in the Oz documentation.
 
 '''Catching exceptions'''
 
@@ -3067,7 +3067,7 @@ I'm dead.
 ```
 
 
-Perl 6 comes with [phasers](http://design.perl6.org/S04.html#Phasers), that are called when certain conditions in the life of a program, routine or block are met. <tt>CATCH</tt> is one of them and works nicely together with <tt>LEAVE</tt> that is called even if an exception would force the current block to be left immediately. It's a nice place to put your cleanup code.
+Perl 6 comes with [phasers](https://design.raku.org/S04.html#Phasers), that are called when certain conditions in the life of a program, routine or block are met. <tt>CATCH</tt> is one of them and works nicely together with <tt>LEAVE</tt> that is called even if an exception would force the current block to be left immediately. It's a nice place to put your cleanup code.
 
 
 ```perl6

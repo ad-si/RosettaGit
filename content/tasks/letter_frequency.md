@@ -4574,7 +4574,7 @@ letterHistogram the/sample.txt
 ```tuscript
 
 $$ MODE TUSCRIPT
-words = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+words = REQUEST ("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 DICT letters create
 MODE {}

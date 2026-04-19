@@ -5957,7 +5957,7 @@ With input document ...
 
 You may try in your browser: <http://www.stamm-wilbrandt.de/en/blog/matmul.templ.xml>
 
-A slightly smaller version of above stylesheet making use of (Non-"XSLT 1.0") EXSLT functions can be founde here: <https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/matrix_multiplication30>
+A slightly smaller version of above stylesheet making use of (Non-"XSLT 1.0") EXSLT functions is also available.
 
 
 ## zkl

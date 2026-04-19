@@ -2100,7 +2100,7 @@ end
 ```
 
 
-The Lisp-influenced [for-loop](https://www.mozart-oz.org/home/doc/loop/index.html) is very powerful and convenient to use.
+The Lisp-influenced [for-loop](https://mozart.github.io/mozart-v1/doc-1.4.0/loop/index.html) is very powerful and convenient to use.
 
 As a constraint programming language, Oz has a number of flow control structures which target logic programming. They are typically used to implement new constraint search engines. However, it is also possible to use them for general logic programming.
 
@@ -2230,11 +2230,11 @@ goto FORK;
 
 ### Control exceptions
 
-Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [S04/Control exceptions](https://perlcabal.org/syn/S04.html#Control_Exceptions) for more information.
+Control flow is extensible in Perl 6; most abnormal control flow (including the standard loop and switch exits) is managed by throwing control exceptions that are caught by the code implementing the construct in question.  Warnings are also handled via control exceptions, and turn into control flow if the dynamic context chooses not to resume after the warning.  See [S04/Control exceptions](https://design.raku.org/S04.html#Control_Exceptions) for more information.
 
 ### Phasers
 
-Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [S04/Phasers](https://perlcabal.org/syn/S04.html#Phasers).
+Phasers are blocks that are transparent to the normal control flow but that are automatically called at an appropriate phase of compilation or execution.  The current list of phasers may be found in [S04/Phasers](https://design.raku.org/S04.html#Phasers).
 
 ### goto
 

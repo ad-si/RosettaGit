@@ -2647,7 +2647,7 @@ shared void run() {
 
 ## EasyLang
 
-[Run it](https://easylang.online/apps/minesweeper.html)
+[Run it](https://easylang.dev/apps/minesweeper.html)
 <lang>len cell[] 56
 len cnt[] 56
 len flag[] 56

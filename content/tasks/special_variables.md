@@ -1724,7 +1724,7 @@ val ocaml_version : string
 ```
 
 
-Some predefined variables from the <code>[Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)</code> module:
+Some predefined variables from the <code>[Pervasives](https://v2.ocaml.org/api/Stdlib.html)</code> module:
 
 
 ```ocaml
@@ -1925,7 +1925,7 @@ Also, not really a variable but...
 ```perl6
  *  # A standalone term that has no fixed value, instead it captures the notion of "Whatever",
     # the meaning of which is decided lazily by whatever it is an argument to.
-    # See the "*" section of <https://perlcabal.org/syn/S02.html#Built-In_Data_Types>
+    # See the "*" section of <https://design.raku.org/S02.html#Built-In_Data_Types>
 ```
 
 

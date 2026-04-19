@@ -4277,7 +4277,7 @@ Since jq's <tt>and</tt> and <tt>or</tt> are short-circuiting, they can also be u
 
 ## Julia
 
-Note: this documentation is mostly copied from the Julia 0.6.0 documentation at: <https://docs.julialang.org/en/stable/manual/control-flow/#man-conditional-evaluation-1>
+Note: this documentation is mostly copied from the Julia 0.6.0 documentation at: <https://docs.julialang.org/en/v1/manual/control-flow/#man-conditional-evaluation-1>
 <h3>Conditional Evaluation</h3>
 
 ```Julia
@@ -5763,7 +5763,7 @@ unless (text < "") Write(text);
 
 ### match
 
-Much cleaner than stacked if-else's, similar in some ways to switch-case (but more flexible). See [here](http://nemerle.org/wiki/index.php?title=Quick_Guide#Pattern_Matching), [here](http://nemerle.org/wiki/index.php?title=Grok_Variants_and_matching#Matching), or, for extra detail, [the reference](http://nemerle.org/wiki/index.php?title=Patterns_%28ref%29).
+Much cleaner than stacked if-else's, similar in some ways to switch-case (but more flexible). See [here](https://web.archive.org/web/20131031051949/http://nemerle.org/wiki/index.php?title=Quick_Guide#Pattern_Matching) or [here](https://web.archive.org/web/20131031233724/http://nemerle.org/wiki/index.php?title=Grok_Variants_and_matching#Matching).
 
 ```Nemerle
 match(x)
@@ -6657,7 +6657,7 @@ given lc prompt("Done? ") {
 
 <tt>when</tt> blocks are allowed in any block that topicalizes <tt>$_</tt>, including a
 <tt>for</tt> loop (assuming one of its loop variables is bound to <tt>$_</tt>)
-or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [Synopsis 4](https://perlcabal.org/syn/S04.html#Switch_statements).
+or the body of a method (if you have declared the invocant as <tt>$_</tt>)." See [Synopsis 4](https://design.raku.org/S04.html#Switch_statements).
 
 There are also statement modifier forms of all of the above.
 

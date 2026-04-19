@@ -112,7 +112,7 @@ Output:
 
 ## Ada
 
-Uses [XML/Ada](http://libre.adacore.com/libre/tools/xmlada/) from AdaCore.
+Uses [XML/Ada](https://github.com/AdaCore/xmlada) from AdaCore.
 
 
 ```Ada

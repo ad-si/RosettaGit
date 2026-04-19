@@ -15,5 +15,4 @@ Features that come from the functional land are variants, pattern matching, type
 
 ## See Also
 * [Wikipedia: Nemerle](https://en.wikipedia.org/wiki/Nemerle)
-* [Grokking Nemerle](http://nemerle.org/wiki/index.php?title=Grokking_Nemerle)
-* [Nemerle Quick Guide](http://nemerle.org/wiki/index.php?title=Quick_Guide)
+* [Nemerle Quick Guide](https://web.archive.org/web/20131031051949/http://nemerle.org/wiki/index.php?title=Quick_Guide)

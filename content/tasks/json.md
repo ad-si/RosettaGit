@@ -2391,7 +2391,7 @@ variable
 ## Julia
 
 ```julia
-# Pkg.add("JSON") ... an external library https://docs.julialang.org/en/latest/packages/packagelist/
+# Pkg.add("JSON") ... an external library https://docs.julialang.org/en/v1/packages/packagelist/
 using JSON
 
 sample = Dict()
@@ -2935,7 +2935,7 @@ The toolbox [JSONlab](http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/
 
 ### json.org Library
 
-This uses a library provided by [json.org](https://www.json.org/java/index.html) to serialize/deserialize JSON objects.
+This uses a library provided by [json.org](https://www.json.org/) to serialize/deserialize JSON objects.
 
 ```NetRexx
 /* NetRexx */
@@ -4151,7 +4151,7 @@ res1: String = {"foo" : "bar"}
 
 ## Scheme
 
-Using the [json](http://api.call-cc.org/doc/json) egg:
+Using the [json](https://wiki.call-cc.org/eggref/5/json) egg:
 ```scheme
 
 (use json)

@@ -2002,7 +2002,7 @@ join("\0", @strings) =~ /^ ( [^\0]*+ ) (?: \0 \1 )* $/x  # All equal
 ## Perl 6
 
 
-In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [associativity](https://perlcabal.org/syn/S03.html#line_62) and identity value)'':
+In Perl 6, putting square brackets around an [[wp:Infix_notation|infix]] operator turns it into a listop that effectively works as if the operator had been but in between all of the elements of the argument list ''(or in technical terms, it [[wp:Fold_(higher-order_function)|folds/reduces]] the list using that operator, while taking into account the operator's inherent [associativity](https://design.raku.org/S03.html#line_62) and identity value)'':
 
 
 ```perl6

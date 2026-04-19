@@ -1583,7 +1583,6 @@ class SampleClass
 ```
 
 The design by contract macros throw <tt>Nemerle.AssertionException</tt>'s unless another Exception is specified using the <tt>otherwise</tt> keyword after the <tt>requires/ensures</tt> statement.
-For further details on design by contract macros, see [here](http://nemerle.org/wiki/index.php?title=Design_by_contract_macros).
 
 
 ## Nim

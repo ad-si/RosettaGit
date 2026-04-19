@@ -2426,7 +2426,7 @@ let () =
  (100, 250)
 ```
 
-We can display the result in a window using the <code>[Graphics](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Graphics.html)</code> module:
+We can display the result in a window using the <code>[Graphics](https://ocaml.org/p/graphics/latest/doc/Graphics/index.html)</code> module:
 
 ```ocaml
 let subject_polygon =

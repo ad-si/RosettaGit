@@ -1260,7 +1260,7 @@ My measured time is slower than that posted for the original C code, but on my m
 === "Manual" solution (Norvig-style) ===
 {{works with|C sharp|C#|7+ (but easy to adapt to lower versions)}}
 <!-- By Martin Freedman, 17/01/2018 -->
-This is adapted from a solution to a similar problem by Peter Norvig in his [Udacity course CS212](https://www.udacity.com/course/design-of-computer-programs--cs212), originally written in Python. This is translated from [example python solution on exercism](https://github.com/exercism/python/blob/master/exercises/zebra-puzzle/example.py). This is a Generate-and-Prune Constraint Programming algorithm written with Linq. (See Benchmarks below)
+This is adapted from a solution to a similar problem by Peter Norvig in his [Udacity course CS212](https://www.udacity.com/course/design-of-computer-programs--cs212), originally written in Python. This is translated from [example python solution on exercism](https://github.com/exercism/python/blob/main/exercises/practice/zebra-puzzle/zebra_puzzle.py). This is a Generate-and-Prune Constraint Programming algorithm written with Linq. (See Benchmarks below)
 
 ```c#
 using System;

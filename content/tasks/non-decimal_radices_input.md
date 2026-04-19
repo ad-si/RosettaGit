@@ -788,7 +788,7 @@ For base 10 and 16 ("0x"-prefixed), (but not 8), it is fastest to parse strings 
 
 See <http://www.jibbering.com/faq/notes/type-conversion/#tcNumber> for more information.
 
-The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [Mozilla's JavaScript 1.5 reference](https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Functions/parseInt#Example.3a_Using_parseInt).
+The <code>parseInt(''string'',''radix'')</code> core function is the reverse of the <code>''number''.toString(''radix'')</code> method.  The following is taken from [Mozilla's JavaScript 1.5 reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt).
 
 <div style='height:40ex; overflow:scroll'>The following examples all return 15:
 

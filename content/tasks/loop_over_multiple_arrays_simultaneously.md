@@ -557,8 +557,8 @@ e
 ###  Real arrays
 
 In [[AutoHotkey_L]], we can use true arrays
-([Objects](http://l.autohotkey.com/docs/Objects.htm)) and the
-[For loop](http://l.autohotkey.net/docs/commands/For.htm).
+([Objects](https://www.autohotkey.com/docs/v1/Objects.htm)) and the
+[For loop](https://www.autohotkey.com/docs/v1/lib/For.htm).
 
 ```AHK
 List1 := ["a", "b", "c"]

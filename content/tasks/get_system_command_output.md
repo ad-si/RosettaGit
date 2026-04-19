@@ -1193,9 +1193,9 @@ my $p2 = run 'cat', '-n', :in($p1.out), :out;
 say $p2.out.slurp-rest;
 ```
 
-See [docs](http://doc.perl6.org/type/Proc) for more info.
+See [docs](https://docs.raku.org/type/Proc) for more info.
 
-If you really want to run something in shell and you understand potential security problems, then you can use <code>qx//</code> (interpolates environment variables) or <code>qqx//</code> (interpolates normally). See [the docs for more info](http://doc.perl6.org/language/quoting).
+If you really want to run something in shell and you understand potential security problems, then you can use <code>qx//</code> (interpolates environment variables) or <code>qqx//</code> (interpolates normally). See [the docs for more info](https://docs.raku.org/language/quoting).
 
 
 ```perl6

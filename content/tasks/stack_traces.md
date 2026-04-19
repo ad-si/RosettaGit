@@ -1775,7 +1775,7 @@ in
 Output:
 [[File:Oz_stacktrace1.png|center|Stack trace of a system exception in Oz.]]
 
-To have such a stack trace in custom exceptions, either indicate this by throwing a record value with a <code>debug:unit</code> feature or use the [Exception](https://www.mozart-oz.org/documentation/base/exception.html) module to create exceptions.
+To have such a stack trace in custom exceptions, either indicate this by throwing a record value with a <code>debug:unit</code> feature or use the [Exception](https://mozart.github.io/mozart-v1/doc-1.4.0/base/exception.html) module to create exceptions.
 
 To access the stack trace directly, you can use the undocumented internal Debug module. Its <code>getTaskStack</code> function takes a thread, a depth value and a boolean "verbose" flag. It returns a list of stack frames. Example:
 

@@ -96,7 +96,7 @@ languages = [
 Encode a string using an MD5 algorithm.   The algorithm can be found on   [[wp:Md5#Algorithm|Wikipedia]].
 
 
-Optionally, validate your implementation by running all of the test values in   [IETF RFC (1321)   for MD5](https://datatracker.ietf.org/html/rfc1321).
+Optionally, validate your implementation by running all of the test values in   [IETF RFC (1321)   for MD5](https://datatracker.ietf.org/doc/html/rfc1321).
 
 Additionally,   RFC 1321   provides more precise information on the algorithm than the Wikipedia article.
 
@@ -1341,7 +1341,7 @@ Digest = D41D8CD98F00B204E9800998ECF8427E matches reference hash
 
 ## J
 
-Using the <tt>[md5](https://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs)</tt> script from the <tt>convert/misc</tt> addon package:
+Using the <tt>[md5](https://github.com/jsoftware/convert_misc/blob/master/md5.ijs)</tt> script from the <tt>convert/misc</tt> addon package:
 
 ```j
    require 'convert/misc/md5'
@@ -2155,7 +2155,7 @@ function digest = md5(message)
     %  Compute the MD5 digest of the message, as a hexadecimal digest.
 
     % Follow the MD5 algorithm from RFC 1321 [1] and Wikipedia [2].
-    %  [1] https://datatracker.ietf.org/html/rfc1321
+    %  [1] https://datatracker.ietf.org/doc/html/rfc1321
     %  [2] https://en.wikipedia.org/wiki/MD5
 
     % m is the modulus for 32-bit unsigned arithmetic.

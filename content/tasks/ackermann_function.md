@@ -6308,7 +6308,7 @@ let a m n =
 
 ###  Arbitrary precision
 
-With arbitrary-precision integers ([Big_int module](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html)):
+With arbitrary-precision integers ([Big_int module](https://ocaml.org/p/num/latest/doc/Big_int/index.html)):
 
 ```ocaml
 open Big_int

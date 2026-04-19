@@ -25,9 +25,6 @@ languages = [
 Create 16 Puzzle Game. 
 
 
-See details: [16 Puzzle Game](http://www.bsswebsite.me.uk/Puzzlewebsite/Fifteenpuzzle/sixteen.htm)
-
-
 Video: [16 Puzzle Game](https://www.google.com/url?q=https%3A%2F%2F1drv.ms%2Fv%2Fs!AqDUIunCqVnIg0bsohQX8b5_dc5G&sa=D&sntz=1&usg=AFQjCNH_eKBfk_1m88kte3Wo7MIii8hn1A)
 
 

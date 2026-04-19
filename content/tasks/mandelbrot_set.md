@@ -3068,7 +3068,7 @@ end;
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/mandelbrot.html)
+[Run it](https://easylang.dev/apps/mandelbrot.html)
 
 <lang>floatvars
 for y% range 300
@@ -6375,7 +6375,7 @@ for (my $y = 1; $y >= -1; $y -= 0.05) {
 ## Perl 6
 
 [[File:Mandel-perl6.png|thumb]]
-Variant of a Mandelbrot script from the [Perl 6 ecosystem](http://modules.perl6.org/). Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT.
+Variant of a Mandelbrot script from the [Perl 6 ecosystem](https://modules.raku.org/). Produces a [[Write ppm file|Portable Pixel Map]] to STDOUT.
 Redirect into a file to save it.
 Converted to a .png file for display here.
 

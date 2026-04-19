@@ -753,7 +753,7 @@ main = do
 
 ## J
 
-See the [dir.ijs script](https://www.jsoftware.com/wsvn/base8/trunk/main/main/dir.ijs) for a full description of the interface for <code>dir</code>:
+See the `dir.ijs` script for a full description of the interface for <code>dir</code>:
 
 ```J
    dir ''       NB. includes properties

@@ -8116,7 +8116,7 @@ in
 ```
 
 
-There is a more concise and much more efficient [solution](https://www.mozart-oz.org/documentation/fdt/node25.html#section.scripts.queens) in the Mozart documentation.
+There is a more concise and much more efficient [solution](https://mozart.github.io/mozart-v1/doc-1.4.0/fdt/node25.html#section.scripts.queens) in the Mozart documentation.
 
 
 
@@ -12982,7 +12982,7 @@ You can view the results directly in your browser (Chrome/FF/IE/Opera/Safari) he
 
 This stylesheet is in category XSLT because it makes use or EXSLT [http://exslt.org/](http://exslt.org/) exslt:node-set() extension function not available in XSLT 1.0
 
-It is extracted from a bigger solution described in this blog posting: [https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14](https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14)
+It is extracted from a bigger solution described in this blog posting: [https://web.archive.org/web/20150503062703/https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14](https://web.archive.org/web/20150503062703/https://www.ibm.com/developerworks/mydeveloperworks/blogs/HermannSW/entry/n_queens_xsl_xml14)
 * determine all 500 n-queens solutions for 4<=n<=9
 * determine distict solutions and totals
 * display solutions graphically nicely

@@ -1031,7 +1031,7 @@ func stripCtlAndExtFromUTF8(str string) string {
 
 // Advanced Unicode normalization and filtering,
 // see https://blog.golang.org/normalization and
-// http://godoc.org/golang.org/x/text/unicode/norm for more
+// https://pkg.go.dev/golang.org/x/text/unicode/norm for more
 // details.
 func stripCtlAndExtFromUnicode(str string) string {
 	isOk := func(r rune) bool {

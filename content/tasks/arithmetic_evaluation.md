@@ -4706,7 +4706,7 @@ in
 
 
 To improve performance, the number of choice points should be limited, for example by reading numbers deterministically instead.
-For real parsing with possible large input, it is however recommended to use [Gump](https://www.mozart-oz.org/home/doc/gump/node5.html), Mozart's parser generator.
+For real parsing with possible large input, it is however recommended to use [Gump](https://mozart.github.io/mozart-v1/doc-1.4.0/gump/node5.html), Mozart's parser generator.
 
 
 ## Pascal

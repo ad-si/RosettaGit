@@ -652,7 +652,7 @@ end
 
 [printf.icn provides the printf family](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
-[graphics.icn provides graphics support](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics support](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 [strings.icn provides cat](https://www.cs.arizona.edu/icon/library/src/procs/strings.icn)
 

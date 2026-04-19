@@ -2085,7 +2085,7 @@ This time the objects were serialized to the [JSON](https://www.json.org/) forma
 #!/usr/bin/env perl6
 
 # Reference:
-# https://docs.perl6.org/language/classtut
+# https://docs.raku.org/language/classtut
 # https://github.com/teodozjan/perl-store
 
 use v6;

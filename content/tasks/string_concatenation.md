@@ -2091,7 +2091,7 @@ echo (c);
 
 ## Oz
 
-Strings are lists and are concatenated with the "Append" function. However, often "virtual strings" are used instead. ["Virtual string are designed as a convenient way to combine strings, byte strings, atoms, integers and floats to compound strings without explicit concatenation and conversion"](https://www.mozart-oz.org/home/doc/base/virtualstring.html).
+Strings are lists and are concatenated with the "Append" function. However, often "virtual strings" are used instead. ["Virtual string are designed as a convenient way to combine strings, byte strings, atoms, integers and floats to compound strings without explicit concatenation and conversion"](https://mozart.github.io/mozart-v1/doc-1.4.0/base/virtualstring.html).
 
 ```oz
 declare

@@ -1028,7 +1028,7 @@ You may print out the address of a pointer, either using the Print function
 on the pointer, or using the <code>%p</code> format specifier
 in formatted output (just like in C).
 
-When rarely required, you can convert a pointer to an integer using the [unsafe package](https://godoc.org/pkg/unsafe).
+When rarely required, you can convert a pointer to an integer using the [unsafe package](https://pkg.go.dev/unsafe).
 
 It is not possible in Go to set the address of a variable,
 however you can assign an arbitrary value to a pointer and

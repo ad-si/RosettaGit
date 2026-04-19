@@ -574,7 +574,7 @@ END RosettaGreys.
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?bg=eee&code=n%20%3D%208%0Afor%20row%20range%204%0Asz%23%20%3D%20100%20/%20n%0Afor%20i%20range%20n%0Ac%23%20%3D%20i%20/%20%28n%20-%201%29%0Aif%20row%20mod%202%20%3D%201%0Ac%23%20%3D%201%20-%20c%23%0A.%0Acolor_red%20c%23%0Acolor_green%20c%23%0Acolor_blue%20c%23%0Amove%20sz%23%20%2A%20i%20row%20%2A%2025%0Arect%20sz%23%20%2B%201%2025%0A.%0An%20%3D%20n%20%2A%202%0A.)
+[Run it](https://easylang.dev/apps/run.html?bg=eee&code=n%20%3D%208%0Afor%20row%20range%204%0Asz%23%20%3D%20100%20/%20n%0Afor%20i%20range%20n%0Ac%23%20%3D%20i%20/%20%28n%20-%201%29%0Aif%20row%20mod%202%20%3D%201%0Ac%23%20%3D%201%20-%20c%23%0A.%0Acolor_red%20c%23%0Acolor_green%20c%23%0Acolor_blue%20c%23%0Amove%20sz%23%20%2A%20i%20row%20%2A%2025%0Arect%20sz%23%20%2B%201%2025%0A.%0An%20%3D%20n%20%2A%202%0A.)
 
 
 ```easyprog.online
@@ -902,7 +902,7 @@ end
 ```
 
 
-[graphics.icn supports graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn supports graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 [printf.icn provides sprintf, etc.](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 [numbers.icn provides round](https://www.cs.arizona.edu/icon/library/src/procs/numbers.icn)
 

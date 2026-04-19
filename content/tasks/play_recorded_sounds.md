@@ -861,10 +861,9 @@ cat $1 >> /dev/audio # Write file $1 to the speaker's Character Special (/dev/au
 
 ## VBA
 
-Visual Basic for Applications can play sounds in the .WAV format by calling the multimedia library winmm.dll.
-See [https://support.microsoft.com/kb/158140/en-us](https://support.microsoft.com/kb/158140/en-us). The "Flags" parameter can be used e.g. to play a sound continuously (that is, until the function is called again to stop playing).
+Visual Basic for Applications can play sounds in the .WAV format by calling the multimedia library winmm.dll. See the `sndPlaySound` API for details. The "Flags" parameter can be used e.g. to play a sound continuously (that is, until the function is called again to stop playing).
 
-Volume can be set using the function waveOutSetVolume, see [https://support.microsoft.com/kb/118377/en-us](https://support.microsoft.com/kb/118377/en-us).
+Volume can be set using the function `waveOutSetVolume`.
 
 
 ```vb

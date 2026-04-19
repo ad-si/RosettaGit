@@ -3329,7 +3329,7 @@ Bush -- first at 4, last at 7
 ```
 
 
-The built-in method <code>.first</code> takes a [smart-matcher](https://docs.perl6.org/language/operators#infix_~~), and returns the first matching list element.
+The built-in method <code>.first</code> takes a [smart-matcher](https://docs.raku.org/language/operators#infix_~~), and returns the first matching list element.
 
 The <code>:k</code> adverb tells it to return the key (a.k.a. list index) instead of the value of the matching element.
 

@@ -677,7 +677,7 @@ EOS
 (regexp-match-positions* uri-re sample)
 
 (module+ test
-  ;; "ABNF for Syntax Specifications" https://datatracker.ietf.org/html/rfc2234
+  ;; "ABNF for Syntax Specifications" https://datatracker.ietf.org/doc/html/rfc2234
   ;; defines ALPHA as:
   ;;   ALPHA = %x41-5A / %x61-7A   ; A-Z / a-z
   (unless (= 228 (char->integer #\ä))

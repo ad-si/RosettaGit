@@ -1611,7 +1611,7 @@ in
 ```
 
 
-To add a variable number of features and attributes, you can use [Class.new](https://www.mozart-oz.org/documentation/base/class.html).
+To add a variable number of features and attributes, you can use [Class.new](https://mozart.github.io/mozart-v1/doc-1.4.0/base/class.html).
 
 
 ## Perl

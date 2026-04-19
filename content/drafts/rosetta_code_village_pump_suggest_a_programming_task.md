@@ -1031,7 +1031,7 @@ If a task has been completed, move the request to this category.  Add a link to 
 ** [[Serialize Data/JSON]]
 ** [[Deserialize Data/JSON]]
 : Serialization and deserialization are extremely common programming tasks, and there are a fair number of open formats for the purpose.  [[wp:Serialization|Serialization]] and deserialization should probably get their own category under [[:Category:Solutions by Programming Task]].  Additionally, json.org has [a list of existing JSON implementations](https://www.json.org/index.html), sorted by language, to refer to.  This should be a very quick thing to implement for JSON.  Other formats that should be considered are XML and binary (packed) formats. --[[User:Short Circuit|Short Circuit]] 04:38, 20 June 2009 (UTC)
-* Parsing [RFC 4180 compliant](https://datatracker.ietf.org/html/rfc4180) CSV
+* Parsing [RFC 4180 compliant](https://datatracker.ietf.org/doc/html/rfc4180) CSV
 ** Should take into account escaping of commas, quotes and newline characters
 
 * Dynamic Object Oriented tasks

@@ -4608,7 +4608,7 @@ say 'exponentiation:   ', $a**$b;
 
 
 Note that <code>div</code> doesn't always do integer division; it performs the operation "most appropriate to the
-operand types". [Synopsis 3](https://perlcabal.org/syn/S03.html#line_729) guarantees that <code>div</code> "on built-in integer types is equivalent to taking the floor of a real division". If you want integer division with other types, say <code>floor($a/$b)</code>.
+operand types". [Synopsis 3](https://design.raku.org/S03.html#line_729) guarantees that <code>div</code> "on built-in integer types is equivalent to taking the floor of a real division". If you want integer division with other types, say <code>floor($a/$b)</code>.
 
 
 ## Phix

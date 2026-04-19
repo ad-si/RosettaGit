@@ -311,7 +311,7 @@ int main( int argc, char* argv[] ) {
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=floatvars%0Afunc%20tree%20x1%20y1%20x2%20y2%20depth%20.%20.%0Aif%20depth%20%3C%208%0Adx%20%3D%20x2%20-%20x1%0Ady%20%3D%20y1%20-%20y2%0Ax3%20%3D%20x2%20-%20dy%0Ay3%20%3D%20y2%20-%20dx%0Ax4%20%3D%20x1%20-%20dy%0Ay4%20%3D%20y1%20-%20dx%0Ax5%20%3D%20x4%20%2B%200.5%20%2A%20%28dx%20-%20dy%29%0Ay5%20%3D%20y4%20-%200.5%20%2A%20%28dx%20%2B%20dy%29%0Acolor_green%200.2%20%2B%20depth%20/%2018%0Afill%20%5B%20x1%20y1%20x2%20y2%20x3%20y3%20x4%20y4%20%5D%0Afill%20%5B%20x3%20y3%20x4%20y4%20x5%20y5%20%5D%0Acall%20tree%20x4%20y4%20x5%20y5%20depth%20%2B%201%0Acall%20tree%20x5%20y5%20x3%20y3%20depth%20%2B%201%0A.%0A.%0Acolor_red%200.3%0Acolor_blue%200.1%0Acall%20tree%2041%2090%2059%2090%200)
+[Run it](https://easylang.dev/apps/run.html?code=floatvars%0Afunc%20tree%20x1%20y1%20x2%20y2%20depth%20.%20.%0Aif%20depth%20%3C%208%0Adx%20%3D%20x2%20-%20x1%0Ady%20%3D%20y1%20-%20y2%0Ax3%20%3D%20x2%20-%20dy%0Ay3%20%3D%20y2%20-%20dx%0Ax4%20%3D%20x1%20-%20dy%0Ay4%20%3D%20y1%20-%20dx%0Ax5%20%3D%20x4%20%2B%200.5%20%2A%20%28dx%20-%20dy%29%0Ay5%20%3D%20y4%20-%200.5%20%2A%20%28dx%20%2B%20dy%29%0Acolor_green%200.2%20%2B%20depth%20/%2018%0Afill%20%5B%20x1%20y1%20x2%20y2%20x3%20y3%20x4%20y4%20%5D%0Afill%20%5B%20x3%20y3%20x4%20y4%20x5%20y5%20%5D%0Acall%20tree%20x4%20y4%20x5%20y5%20depth%20%2B%201%0Acall%20tree%20x5%20y5%20x3%20y3%20depth%20%2B%201%0A.%0A.%0Acolor_red%200.3%0Acolor_blue%200.1%0Acall%20tree%2041%2090%2059%2090%200)
 
 <lang>floatvars
 func tree x1 y1 x2 y2 depth . .

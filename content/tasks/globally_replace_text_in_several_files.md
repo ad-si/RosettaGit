@@ -960,7 +960,7 @@ stdout:115 updated
 
 ## Julia
 
-We will use Julia's built-in Perl-compatible [regular-expressions](https://docs.julialang.org/en/latest/manual/strings/#regular-expressions).  Although we could read in the files line by line, it is simpler and probably faster to just read the whole file into memory (as text files are likely to fit into memory on modern computers).
+We will use Julia's built-in Perl-compatible [regular-expressions](https://docs.julialang.org/en/v1/manual/strings/#regular-expressions).  Although we could read in the files line by line, it is simpler and probably faster to just read the whole file into memory (as text files are likely to fit into memory on modern computers).
 
 ```julia
 filenames = ["f1.txt", "f2.txt"]

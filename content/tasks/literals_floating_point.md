@@ -823,7 +823,7 @@ end
 
 
 The function write will cause the real values to be coerced as string constants.  Icon/Unicon will format these as it sees fit resorting to exponent forms only where needed.
-[The IPL library routine printf provides a broader range of formatting choices.](https://www.cs.arizona.edu/icon/library/src/procs/printf)
+[The IPL library routine printf provides a broader range of formatting choices.](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 
 ## J
@@ -1161,7 +1161,7 @@ bfloat(%pi);
 ```
 
 
-Formally (from the [Reference Manual](http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29)):
+Formally (from the [Reference Manual](https://web.archive.org/web/20131031181321/http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29)):
 
 ```txt
 <floating_point_literal> ::=

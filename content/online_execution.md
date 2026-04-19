@@ -30,7 +30,7 @@ Site                 | Languages | Notes
 [TIO]                | > 500 languages | Only supports static input - no interactivity
 
 [code.world]: https://code.world/
-[easylang.online]: https://easylang.online/ide/
+[easylang.online]: https://easylang.dev/ide/
 [The Go Playground]: https://play.golang.org/
 [Groovy web console]: https://groovyconsole.appspot.com/
 [Replit]: https://replit.com/

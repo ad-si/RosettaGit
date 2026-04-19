@@ -1885,7 +1885,7 @@ end
 
 ## J
 
-The reduced row echelon form of a matrix can be obtained using the <code>gauss_jordan</code> verb from the [linear.ijs script](https://www.jsoftware.com/wsvn/addons/trunk/math/misc/linear.ijs), available as part of the <code>math/misc</code> addon. <code>gauss_jordan</code> and the verb <code>pivot</code> are shown below for completeness:
+The reduced row echelon form of a matrix can be obtained using the <code>gauss_jordan</code> verb from the [linear.ijs script](https://github.com/jsoftware/math_misc/blob/master/linear.ijs), available as part of the <code>math/misc</code> addon. <code>gauss_jordan</code> and the verb <code>pivot</code> are shown below for completeness:
 
 '''Solution:'''
 

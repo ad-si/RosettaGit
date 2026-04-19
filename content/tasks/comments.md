@@ -3397,7 +3397,7 @@ Using more than one bracketing character lets you include an unmatched close bra
 =begin comment
 
 Pod is the successor to Perl 5's POD. This is the simplest way to use it for multi-line comments.
-For more about Pod, see Pod: https://docs.perl6.org/language/pod
+For more about Pod, see Pod: https://docs.raku.org/language/pod
 
 =end comment
 ```
@@ -4133,7 +4133,7 @@ print "Also notice this comment at the end of the line." : REM This is a comment
 
     /*
         containing nested multi-line comment
-        (nesting supported since 0.9-pre https://github.com/mozilla/rust/issues/9468)
+        (nesting supported since 0.9-pre https://github.com/rust-lang/rust/issues/9468)
     */
 */
 
@@ -4154,7 +4154,7 @@ fn example() {
 
     /*!
         Inner multi-line Rustdoc comments.
-        See also https://github.com/mozilla/rust/wiki/Doc-using-rustdoc
+        See also https://github.com/rust-lang/rust/wiki/Doc-using-rustdoc
     */
 }
 
@@ -4163,7 +4163,7 @@ fn example() {
 fn example() {
     #[doc = "Unsugared inner Rustdoc comments.
             (inner attributes are terminated by a semi-colon)
-            See also https://github.com/mozilla/rust/blob/master/doc/rust.md#attributes"];
+            See also https://github.com/rust-lang/rust/blob/master/doc/rust.md#attributes"];
 }
 ```
 

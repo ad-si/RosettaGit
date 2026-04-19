@@ -388,7 +388,7 @@ end
 
 ```
 
-Another dll has been posted to do the same job, at [LB Community Wiki](http://basic.wikispaces.com/SpeechLibrary)
+Another dll has been posted to do the same job, at LB Community Wiki
 
 
 ## Locomotive Basic

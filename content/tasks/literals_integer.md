@@ -1989,7 +1989,7 @@ if (num == 0xAAA) $print("base 16, with leading 0x or 0X\n")
 ```
 
 
-Formally (adapted from [Reference Manual](http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29)):
+Formally (adapted from [Reference Manual](https://web.archive.org/web/20131031181321/http://nemerle.org/wiki/index.php?title=Lexical_structure_%28ref%29)):
 
 ```txt
 <decimal_literal> ::=

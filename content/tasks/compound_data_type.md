@@ -2468,7 +2468,7 @@ my Point $point .= new(x => 3, y => 8);
 ```
 
 
-===[Set](http://design.perl6.org/S32/Containers.html#Set)===
+===[Set](https://design.raku.org/S32/Containers.html#Set)===
 
 ```perl6
 my $s1 = set <a b c d>; # order is not preserved

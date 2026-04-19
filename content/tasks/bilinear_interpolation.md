@@ -259,7 +259,7 @@ let main _ =
 ## Go
 
 (and also just using
-<code>[draw.BiLinear](https://godoc.org/golang.org/x/image/draw#BiLinear)</code>
+<code>[draw.BiLinear](https://pkg.go.dev/golang.org/x/image/draw#BiLinear)</code>
 from the <code>golang.org/x/image/draw</code> pacakge).
 
 ```Go

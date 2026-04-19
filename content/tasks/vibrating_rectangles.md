@@ -79,7 +79,7 @@ int main()
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=on%20timer%0Asz%20-%3D%202%0Aif%20sz%20%3C%200%0Asz%20%3D%2049%0Acolor%20random%201000%0A.%0Amove%2050%20-%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20-%20sz%0Atimer%200.2%0A.%0Atimer%200.2)
+[Run it](https://easylang.dev/apps/run.html?code=on%20timer%0Asz%20-%3D%202%0Aif%20sz%20%3C%200%0Asz%20%3D%2049%0Acolor%20random%201000%0A.%0Amove%2050%20-%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20-%20sz%0Aline%2050%20%2B%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20%2B%20sz%0Aline%2050%20-%20sz%2050%20-%20sz%0Atimer%200.2%0A.%0Atimer%200.2)
 
 <lang>on timer
   sz -= 2

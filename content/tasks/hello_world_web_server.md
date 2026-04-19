@@ -1235,7 +1235,7 @@ WebServer start
 ## J
 
 If the desire is to use the browser as a gui, the easiest thing to do
-would be to [download](https://www.jsoftware.com/stable.htm) [j7](https://www.jsoftware.com/docs/help701/user/relhigh.htm), edit the jhs script to start on port 8080,
+would be to [download](https://www.jsoftware.com/) j7, edit the jhs script to start on port 8080,
 start jhs, visit <http://127.0.0.1:8080/jijx> then enter the text:
 
 ```j

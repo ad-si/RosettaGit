@@ -2730,7 +2730,7 @@ func octal m
 
 ## Ruby
 
-From the [documentation](https://www.ruby-doc.org/core/Fixnum.html): "A Fixnum holds Integer values that can be represented in a native machine word (minus 1 bit). If any operation on a Fixnum exceeds this range, the value is automatically converted to a Bignum."
+From the [documentation](https://www.ruby-doc.org/core/Integer.html): "A Fixnum holds Integer values that can be represented in a native machine word (minus 1 bit). If any operation on a Fixnum exceeds this range, the value is automatically converted to a Bignum."
 
 
 ```ruby

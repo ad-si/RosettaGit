@@ -2122,7 +2122,7 @@ for (var a in o) {
 
 
 ;Deprecated
-There is also a <tt>[for each in](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for_each...in)</tt> construct that iterates over the values of an object:
+There is also a <tt>for each in</tt> construct (deprecated, removed from modern JavaScript) that iterates over the values of an object:
 
 ```JavaScript
 h = {"one":1, "two":2, "three":3}

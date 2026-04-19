@@ -1604,7 +1604,7 @@ yes
 
 ## NetRexx
 
-Uses a static field to avoid synchronization problems and the ''flawed'' &quot;double-checked locking&quot; idiom in JVMs.  See [www.ibm.com/developerworks/java/library/j-dcl/index.html](http://www.ibm.com/developerworks/java/library/j-dcl/index.html) for a detailed explanation.
+Uses a static field to avoid synchronization problems and the ''flawed'' &quot;double-checked locking&quot; idiom in JVMs.  See [www.ibm.com/developerworks/java/library/j-dcl/index.html](https://web.archive.org/web/20210126145626/http://www.ibm.com/developerworks/java/library/j-dcl/index.html) for a detailed explanation.
 
 ```NetRexx
 /* NetRexx */

@@ -1697,7 +1697,7 @@ public class CreditCardLogic
 ```
 
 
-Extremely compact version uses Europa rtl library <https://github.com/CodeAlkemist/Europa-rtl>
+Extremely compact version uses the Europa rtl library.
 
 ```c#
 

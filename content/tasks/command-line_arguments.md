@@ -2335,7 +2335,7 @@ GetOptions (
 
 ## Perl 6
 
-Perl 5's <code>@ARGV</code> is available as <code>@*ARGS</code>. Alternatively, if you define a subroutine named <code>MAIN</code>, Perl will automatically process <code>@*ARGS</code> according to Unix conventions and <code>MAIN</code>'s signature (or signatures, if your <code>MAIN</code> is a multi sub) and then call <code>MAIN</code> with appropriate arguments; see [Synopsis 6](https://perlcabal.org/syn/S06.html#Declaring_a_MAIN_subroutine) or <http://perlgeek.de/en/article/5-to-6#post_14|5-to-6>.
+Perl 5's <code>@ARGV</code> is available as <code>@*ARGS</code>. Alternatively, if you define a subroutine named <code>MAIN</code>, Perl will automatically process <code>@*ARGS</code> according to Unix conventions and <code>MAIN</code>'s signature (or signatures, if your <code>MAIN</code> is a multi sub) and then call <code>MAIN</code> with appropriate arguments; see [Synopsis 6](https://design.raku.org/S06.html#Declaring_a_MAIN_subroutine) or <http://perlgeek.de/en/article/5-to-6#post_14|5-to-6>.
 
 
 ```perl6

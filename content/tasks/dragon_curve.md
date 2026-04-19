@@ -1555,7 +1555,7 @@ See: [[Dragon curve/D/DFL]]
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=floatvars%0Acolor%20955%0Alinewidth%200.5%0Ax%20%3D%2025%0Ay%20%3D%2060%0Amove%20x%20y%0Aangle%20%3D%200%0A%23%20%0Afunc%20dragon%20size%20lev%25%20d%20.%20.%0Aif%20lev%25%20%3D%200%0Ax%20-%3D%20cos%20angle%20%2A%20size%0Ay%20%2B%3D%20sin%20angle%20%2A%20size%0Aline%20x%20y%0Aelse%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%201%0Aangle%20-%3D%20d%20%2A%2090%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%20-1%0A.%0A.%0Acall%20dragon%2060%2012%201)
+[Run it](https://easylang.dev/apps/run.html?code=floatvars%0Acolor%20955%0Alinewidth%200.5%0Ax%20%3D%2025%0Ay%20%3D%2060%0Amove%20x%20y%0Aangle%20%3D%200%0A%23%20%0Afunc%20dragon%20size%20lev%25%20d%20.%20.%0Aif%20lev%25%20%3D%200%0Ax%20-%3D%20cos%20angle%20%2A%20size%0Ay%20%2B%3D%20sin%20angle%20%2A%20size%0Aline%20x%20y%0Aelse%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%201%0Aangle%20-%3D%20d%20%2A%2090%0Acall%20dragon%20size%20/%20sqrt%202%20lev%25%20-%201%20-1%0A.%0A.%0Acall%20dragon%2060%2012%201)
 
 <lang>floatvars
 color 955
@@ -2479,8 +2479,8 @@ end
 ```
 
 
-[linddraw](https://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn)
-[wopen](https://www.cs.arizona.edu/icon/library/src/procs/wopen.icn)
+[linddraw](https://www.cs.arizona.edu/icon/library/src/gprocs/linddraw.icn)
+[wopen](https://www.cs.arizona.edu/icon/library/src/gprocs/wopen.icn)
 [linden](https://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn)
 
 

@@ -1069,7 +1069,7 @@ The actual reclamation of unreferenced structures takes place when garbage colle
 ## J
 
 
-Example of explicit [memory allocation](https://www.jsoftware.com/help/user/memory_management.htm):
+Example of explicit [memory allocation](https://web.archive.org/web/20190925171338/https://www.jsoftware.com/help/user/memory_management.htm):
 
 
 ```J

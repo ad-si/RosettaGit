@@ -670,9 +670,7 @@ See [[Hunt_The_Wumpus/Phix]].
 ## Prolog
 
 
-Prolog package available here:
-
-<https://github.com/jburse/jekejeke-samples/raw/master/pack/games/wumpus-1.0.0.zip>
+Prolog package available in the Jekejeke samples collection.
 
 
 ```prolog

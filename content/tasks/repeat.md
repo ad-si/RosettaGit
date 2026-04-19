@@ -1134,7 +1134,7 @@ Of course, we could have just written <pre style="display:inline; padding:0.3em"
 ```
  directly &ndash; the custom <code>repeat</code> subroutine is just here to satisfy the task description.
 
-Notes on the [<code>xx</code>](http://doc.perl6.org/language/operators#infix_xx) operator:
+Notes on the [<code>xx</code>](https://docs.raku.org/language/operators#infix_xx) operator:
 
 * Unlike other operators, it evaluates its left-hand-side argument lazily - that's why we can simply call <code>f()</code> there rather than passing it as a function object.
 * The operator has a return value: A list consisting of the return values of the left-hand-side ''(and building lists is in fact what <code>xx</code> is usually used for)''.

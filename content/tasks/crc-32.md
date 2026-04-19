@@ -80,7 +80,7 @@ languages = [
 Demonstrate a method of deriving the [[wp:Computation of cyclic redundancy checks|Cyclic Redundancy Check]] from within the language.
 
 
-The result should be in accordance with ISO 3309, [ITU-T V.42](http://www.itu.int/rec/T-REC-V.42-200203-I/en), [Gzip](https://datatracker.ietf.org/html/rfc1952) and [PNG](https://www.w3.org/TR/2003/REC-PNG-20031110/).
+The result should be in accordance with ISO 3309, [ITU-T V.42](http://www.itu.int/rec/T-REC-V.42-200203-I/en), [Gzip](https://datatracker.ietf.org/doc/html/rfc1952) and [PNG](https://www.w3.org/TR/2003/REC-PNG-20031110/).
 
 Algorithms are described on [[wp:Cyclic redundancy check|Computation of CRC]] in Wikipedia.
 This variant of CRC-32 uses LSB-first order, sets the initial CRC to FFFFFFFF<sub>16</sub>, and complements the final CRC.
@@ -295,7 +295,7 @@ int main()
 
 ### Implementation
 
-This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [RFC 1952 section 8](https://datatracker.ietf.org/html/rfc1952#section-8) and from [PNG annex D](https://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix), because those examples use an identical table.
+This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [RFC 1952 section 8](https://datatracker.ietf.org/doc/html/rfc1952#section-8) and from [PNG annex D](https://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix), because those examples use an identical table.
 
 
 ```c
@@ -781,7 +781,7 @@ Like [[SHA-1#Factor]], but with crc32.
                 '''checksum-bytes hex-string .'''
  "414fa339"
 
-The implementation is at [core/checksums/crc32/crc32.factor](https://github.com/slavapestov/factor/blob/master/core/checksums/crc32/crc32.factor).
+The implementation is at [core/checksums/crc32/crc32.factor](https://github.com/factor/factor/blob/master/core/checksums/crc32/crc32.factor).
 
 
 ## FBSL

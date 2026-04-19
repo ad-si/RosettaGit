@@ -323,7 +323,7 @@ FileAppend, Goodbye`, World!, stderr   ; requires AutoHotkey_N
 
 
 Or with the current AutoHotkey_L:
-(documentation on this behavior: <http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/FileAppend.htm>)
+(documentation on this behavior: <https://www.autohotkey.com/docs/v1/lib/FileAppend.htm>)
 
 ```AutoHotkey
 FileAppend, Goodbye`, World!, *

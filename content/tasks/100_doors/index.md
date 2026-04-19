@@ -4521,7 +4521,6 @@ Door #100 is open.
 
 ## PHP
 
-See: [Demo](http://www.thomporter.com/100doors.php)
 **optimized**
 
 

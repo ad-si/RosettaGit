@@ -2252,7 +2252,7 @@ Digest = CC175B9C0F1B6A831C399E269772661 matches reference hash
 ## J
 
 
-Note: the following code was extracted from <https://www.jsoftware.com/wsvn/addons/trunk/convert/misc/md5.ijs>
+Note: the following code was extracted from <https://github.com/jsoftware/convert_misc/blob/master/md5.ijs>
 
 
 ```j

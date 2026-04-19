@@ -1041,7 +1041,7 @@ interp.blockAtTop()
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/pendulum.html)
+[Run it](https://easylang.dev/apps/pendulum.html)
 
 <lang>floatvars
 on animate

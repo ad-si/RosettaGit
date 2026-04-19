@@ -1536,7 +1536,7 @@ h(17) = 130370767029135900.458 is NOT almost an integer.
 
 ## Perl 6
 
-We'll use [FatRat](http://doc.perl6.org/type/FatRat) values, and a series for an [approximation of ln(2)](https://mathworld.wolfram.com/NaturalLogarithmof2.html).
+We'll use [FatRat](https://docs.raku.org/type/FatRat) values, and a series for an [approximation of ln(2)](https://mathworld.wolfram.com/NaturalLogarithmof2.html).
 
 
 ```perl6

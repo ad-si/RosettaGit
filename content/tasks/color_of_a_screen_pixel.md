@@ -852,7 +852,7 @@ end
 ```
 
 
-[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 [printf.icn provides printf](https://www.cs.arizona.edu/icon/library/src/procs/printf.icn)
 
 Sample Output:

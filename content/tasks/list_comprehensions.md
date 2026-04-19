@@ -1472,7 +1472,7 @@ Output:
 
 ### ES6
 
-See [here](https://developer.mozilla.org/en/New_in_JavaScript_1.7#Array_comprehensions) for more details
+Array comprehensions were a proposed feature that was eventually dropped before ES6 was finalized.
 
 
 ```javascript

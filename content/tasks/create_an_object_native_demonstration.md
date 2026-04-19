@@ -627,7 +627,7 @@ Actually thrown at:
 ```
 
 
-By defining [FALLBACK](http://design.perl6.org/S12.html#FALLBACK_methods) any class can handle undefined method calls. Since any class inherits plenty of methods from <tt>Any</tt> our magic object will be more of a novice conjurer then a master wizard proper.
+By defining [FALLBACK](https://design.raku.org/S12.html#FALLBACK_methods) any class can handle undefined method calls. Since any class inherits plenty of methods from <tt>Any</tt> our magic object will be more of a novice conjurer then a master wizard proper.
 
 
 ```perl6

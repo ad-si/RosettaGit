@@ -966,9 +966,9 @@ For more info see: [Operators in Mathematica](https://reference.wolfram.com/math
 
 ## Nemerle
 
-Nemerle provides support for macros, which range from defining new infix operators (in fact many 'built-in' operators are [macros](http://nemerle.org/wiki/index.php?title=Macro_operators)) to new keywords or control structures.
+Nemerle provides support for macros, which range from defining new infix operators (in fact many 'built-in' operators are macros) to new keywords or control structures.
 
-See [here](http://nemerle.org/wiki/index.php?title=Macros), [here](http://nemerle.org/wiki/index.php?title=Macros_tutorial), and [here](http://nemerle.org/wiki/index.php?title=Category:Macro_packages) on the Nemerle wiki for more information.
+See the [Nemerle macros tutorial](https://web.archive.org/web/20131031003518/http://nemerle.org/wiki/index.php?title=Macros_tutorial) for more information.
 
 
 ## Nim

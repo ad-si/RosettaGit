@@ -1060,7 +1060,7 @@ link graphics
 ```
 
 
-[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/procs/graphics.icn)
+[graphics.icn provides graphics](https://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn)
 
 Additionally, the '''WOpen''' procedure and Window.App methods are available.
 

@@ -3559,8 +3559,8 @@ The example below defines the template function <code>createModeFunction</code>,
 The template <code>createModeFunction</code> is instantiated explicit with <code>createModeFunction(integer)</code>.
 Additionally to <code>mode</code> the function <code>str</code> is defined.
 The function <code>str</code> is used by the template function
-[enable_output](https://seed7.sourceforge.net/libraries/enable_output.htm#enable_output%28in_type%29) to allow writing arrays.
-This way the <code>main</code> function can just [write](https://seed7.sourceforge.net/libraries/enable_output.htm#write%28in_aType%29) the mode.
+[enable_output](https://seed7.sourceforge.net/libraries/enable_io.htm#enable_output%28in_type%29) to allow writing arrays.
+This way the <code>main</code> function can just [write](https://seed7.sourceforge.net/libraries/enable_io.htm#write%28in_aType%29) the mode.
 
 
 ```seed7

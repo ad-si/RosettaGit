@@ -1454,7 +1454,7 @@ Deriving an approximation within a specified tolerance:
 
 ## Julia
 
-Julia has a native Rational type, and provides [a convenience conversion function](https://docs.julialang.org/en/latest/manual/conversion-and-promotion/#case-study-rational-conversions) that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
+Julia has a native Rational type, and provides [a convenience conversion function](https://docs.julialang.org/en/v1/manual/conversion-and-promotion/#case-study-rational-conversions) that implements a standard algorithm for approximating a floating-point number by a ratio of integers to within a given tolerance, which defaults to machine epsilon.
 
 
 ```Julia

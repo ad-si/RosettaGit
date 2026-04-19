@@ -417,7 +417,7 @@ end.
 ## EasyLang
 
 
-[Run it](https://easylang.online/apps/run.html?code=on%20mouse_move%0Acolor%20889%0Arect%20100%20100%0Acolor%20000%0Atext%20mouse_x%20%26%20%22%20%22%20%26%20mouse_y%0A.)
+[Run it](https://easylang.dev/apps/run.html?code=on%20mouse_move%0Acolor%20889%0Arect%20100%20100%0Acolor%20000%0Atext%20mouse_x%20%26%20%22%20%22%20%26%20mouse_y%0A.)
 
 <lang>on mouse_move
   color 889

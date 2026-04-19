@@ -57,7 +57,7 @@ ok  	rosetta/kp_bounded	2.507s
 
 If you're unfamiliar with using benchmarks within go tests:
 * Put the above into a <tt>*_test.go</tt> file in the same directory as the <tt>*.go</tt> file from [[Knapsack_problem/Bounded#Go]] (and with no other Go source files)
-* Get and build [benchcmp](http://godoc.org/golang.org/x/tools/cmd/benchcmp) if you don't already have it: "<code>go get -v golang.org/x/tools/cmd/benchcmp</code>"
+* Get and build [benchcmp](https://pkg.go.dev/golang.org/x/tools/cmd/benchcmp) if you don't already have it: "<code>go get -v golang.org/x/tools/cmd/benchcmp</code>"
 * Run <code>go test -v -bench=. > bench.out.orig</code> (or <code>go test -bench=. | tee bench.out.orig</code> or some such)
 * Make changes as desired
 * Re-run the benchmark this time saving the output to a different file, e.g. <tt>bench.out</tt>

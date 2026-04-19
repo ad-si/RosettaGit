@@ -386,7 +386,7 @@ end regexTest
 
 ## AutoHotkey
 
-AutoHotkey_L and v2 contain a [Trim function](http://www.autohotkey.net/~Lexikos/AutoHotkey_L/docs/commands/Trim.htm)
+AutoHotkey_L and v2 contain a [Trim function](https://www.autohotkey.com/docs/v1/lib/Trim.htm)
 
 ```AutoHotkey
 string := "   abc   "

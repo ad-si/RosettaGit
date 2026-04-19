@@ -35,7 +35,7 @@ The words may overlap but are not allowed to zigzag, or wrap around.
 
 ## Task
 
-Create a 10 by 10 word search and fill it using words from the [unixdict](https://www.puzzlers.org/pub/wordlists/unixdict.txt). Use only words that are longer than 2, and contain no non-alphabetic characters.
+Create a 10 by 10 word search and fill it using words from the [unixdict](https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt). Use only words that are longer than 2, and contain no non-alphabetic characters.
 
 The cells not used by the hidden words should contain the message: ''Rosetta Code'', read from left to right, top to bottom. These letters should be somewhat evenly distributed over the grid, not clumped together. The message should be in upper case, the hidden words in lower case. All cells should either contain letters from the hidden words or from the message.
 
@@ -1036,7 +1036,7 @@ require'web/gethttp'
 
 unixdict=:verb define
   if. _1 -: fread 'unixdict.txt' do.
-    (gethttp 'https://www.puzzlers.org/pub/wordlists/unixdict.txt') fwrite 'unixdict.txt'
+    (gethttp 'https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt') fwrite 'unixdict.txt'
   end.
   fread 'unixdict.txt'
 )

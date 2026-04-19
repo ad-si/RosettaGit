@@ -1834,7 +1834,7 @@ Number beween 7,700 and 8,000: 30
 
 
 An alternative showing how to use a good and ''very'' fast open source Sieve of Atkin implementation
-via [github.com/jbarham/primegen.go](https://godoc.org/github.com/jbarham/primegen.go).
+via [github.com/jbarham/primegen.go](https://pkg.go.dev/github.com/jbarham/primegen.go).
 Due to how Go's imports work, the bellow can be given directly to "<code>go run</code>" or "<code>go build</code>" and the latest version of the primegen package will be fetched and built if it's not already present on the system.
 (This example may not be exactly within the scope of this task, but it's a trivial to use and extremely fast prime generator probably worth considering whenever primes are needed in Go.)
 

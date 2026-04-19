@@ -15,7 +15,7 @@ tags = []
 * Db2 for i - For the mainframes previously called AS/400.
 * Db2 for z - For z/OS mainframes.
 
-The differences between these three implementations are described here: <https://www.ibm.com/developerworks/data/library/techarticle/db2common/>
+The differences between these three implementations are described here: <https://web.archive.org/web/20201026170456/https://www.ibm.com/developerworks/data/library/techarticle/db2common/>
 
 Previosly, Db2 was called DB2 UDB for Universal Database.
 

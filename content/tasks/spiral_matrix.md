@@ -4912,10 +4912,6 @@ new qapp
 
 ```
 
-Output:
-
-[Spiral matrix](http://kepkezelo.com/images/qyooy2wqd8s502ul977v.jpg)
-
 
 ## Ruby
 

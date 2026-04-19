@@ -572,7 +572,7 @@ Hello John!
 
 ### Objects
 
-[Documentation](http://l.autohotkey.net/docs/Objects.htm)
+[Documentation](https://www.autohotkey.com/docs/v1/Objects.htm)
 
 ```AutoHotkey
 myCol := Object()
@@ -3480,7 +3480,7 @@ declare
 ```
 
 
-There are also [tuples](https://www.mozart-oz.org/home/doc/base/tuple.html) (records with consecutive integer keys starting with 1), [weak dictionaries](https://www.mozart-oz.org/documentation/base/weakdictionary.html), [queues](https://www.mozart-oz.org/documentation/mozart-stdlib/adt/queue.html) and [stacks](https://www.mozart-oz.org/documentation/mozart-stdlib/adt/stack.html).
+There are also [tuples](https://mozart.github.io/mozart-v1/doc-1.4.0/base/tuple.html) (records with consecutive integer keys starting with 1), [weak dictionaries](https://mozart.github.io/mozart-v1/doc-1.4.0/base/weakdictionary.html), [queues](https://mozart.github.io/mozart-v1/doc-1.4.0/mozart-stdlib/adt/queue.html) and [stacks](https://mozart.github.io/mozart-v1/doc-1.4.0/mozart-stdlib/adt/stack.html).
 
 
 ## PARI/GP

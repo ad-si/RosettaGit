@@ -1651,7 +1651,7 @@ bundle Default {
 ## OCaml
 
 
-In OCaml, the function <code>[print_endline](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_endline)</code> prints a string followed by a newline character on the standard output and flush the standard output. And the function <code>[print_string](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html#VALprint_string)</code> just prints a string with nothing additional.
+In OCaml, the function <code>[print_endline](https://v2.ocaml.org/api/Stdlib.html#VALprint_endline)</code> prints a string followed by a newline character on the standard output and flush the standard output. And the function <code>[print_string](https://v2.ocaml.org/api/Stdlib.html#VALprint_string)</code> just prints a string with nothing additional.
 
 
 ```ocaml

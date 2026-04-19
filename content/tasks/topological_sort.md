@@ -5417,7 +5417,7 @@ DES_SYSTEM_LIB
 
 ## Ruby
 
-Uses the [TSort](https://www.ruby-doc.org/stdlib/libdoc/tsort/rdoc/classes/TSort.html) module from the Ruby stdlib.
+Uses the [TSort](https://docs.ruby-lang.org/en/3.0/TSort.html) module from the Ruby stdlib.
 
 ```ruby
 require 'tsort'

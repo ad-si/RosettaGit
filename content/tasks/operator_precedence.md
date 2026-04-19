@@ -1703,7 +1703,7 @@ See [the relevant documentation](https://perldoc.perl.org/perlop.html#Operator-P
 
 ## Perl 6
 
-See [this table](https://perlcabal.org/syn/S03.html#Operator_precedence) for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
+See [this table](https://design.raku.org/S03.html#Operator_precedence) for a list of the precedence levels.  Perl 6 is an operator-rich language (and users may define more operators at will), so instead of listing all the operators in the table, representative operators are listed for some of the precedence levels; see later in the same file for a more complete list of predefined operators at each precedence level.
 
 
 ## Phix
@@ -2320,7 +2320,7 @@ The symbol <code>()</code> is a nonterminal symbol and <code>+</code> is a termi
 The S7SSD does not distinguish between different nonterminal symbols.
 Instead it only knows one nonterminal symbol: <code>()</code>.
 
-The include file [syntax.s7i](https://seed7.sourceforge.net/prg/syntax.htm) contains the syntax of the predefined operators.
+The include file [syntax.s7i](https://seed7.sourceforge.net/manual/syntax.htm) contains the syntax of the predefined operators.
 The table below is extracted from syntax.s7i:
 
 {| class="wikitable"

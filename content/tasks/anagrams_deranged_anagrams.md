@@ -83,7 +83,7 @@ By analogy with [[Permutations/Derangements|derangements]] we define a  ''derang
 
 {{task heading}}
 
-Use the word list at [unixdict](http://wiki.puzzlers.org/pub/wordlists/unixdict.txt) to find and display the longest deranged anagram.
+Use the word list at [unixdict](https://web.archive.org/web/20180611003215/https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt) to find and display the longest deranged anagram.
 
 {{task heading|Related tasks}}
 
@@ -1428,7 +1428,7 @@ Using anagrams:fetch/2 from [[Anagrams]] and init_http/0 from [[Rosetta_Code/Fin
 
 task() ->
        find_unimplemented_tasks:init_http(),
-       Words = words_from_url( "https://www.puzzlers.org/pub/wordlists/unixdict.txt" ),
+       Words = words_from_url( "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt" ),
        Anagram_dict = anagrams:fetch( Words, dict:new() ),
        Deranged_anagrams = deranged_anagrams( Anagram_dict ),
        {_Length, Longest_anagrams} = dict:fold( fun keep_longest/3, {0, []}, Deranged_anagrams ),
@@ -1822,7 +1822,7 @@ Solution:
 ```groovy
 def map = new TreeMap<Integer,Map<String,List<String>>>()
 
-new URL('https://www.puzzlers.org/pub/wordlists/unixdict.txt').eachLine { word ->
+new URL('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt').eachLine { word ->
     def size = - word.size()
     map[size] = map[size] ?: new TreeMap<String,List<String>>()
     def norm = word.toList().sort().sum()
@@ -1955,7 +1955,7 @@ excitation intoxicate
 
 ## J
 
-This assumes that [unixdict.txt](https://www.puzzlers.org/pub/wordlists/unixdict.txt) has been saved in the current directory.
+This assumes that [unixdict.txt](https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt) has been saved in the current directory.
 
 ```j
    #words=: 'b' freads 'unixdict.txt'
@@ -2343,7 +2343,7 @@ fun isDeranged(s1: String, s2: String): Boolean {
 }
 
 fun main(args: Array<String>) {
-    val url = URL("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+    val url = URL("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
     val isr = InputStreamReader(url.openStream())
     val reader = BufferedReader(isr)
     val anagrams = mutableMapOf<String, MutableList<String>>()
@@ -2390,7 +2390,7 @@ fun main(args: Array<String>) {
 ```Lasso
 local(
 	anagrams	= map,
-	words		= include_url('https://www.puzzlers.org/pub/wordlists/unixdict.txt') -> split('\n'),
+	words		= include_url('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt') -> split('\n'),
 	key,
 	max		= 0,
 	wordsize,
@@ -2536,7 +2536,7 @@ select(w->length(w)=len,L)[];
 
 ```Mathematica
 
-words=First/@Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt","Table"];
+words=First/@Import["https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt","Table"];
 anagramDegrangement=Function[{w1,w2},
 	Module[{c1=ToCharacterCode@w1,c2=ToCharacterCode@w2},
 	Sort@c1==Sort@c2&&Select[c1-c2,#==0&,1]==={}]];
@@ -2558,7 +2558,7 @@ A similar approach using Mathematica 10:
 
 ```Mathematica
 
-list = Import["https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
+list = Import["https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
 MaximalBy[
  Select[GatherBy[list, Sort@*Characters],
   Length@# > 1 && And @@ MapThread[UnsameQ, Characters /@ #] &],
@@ -2663,7 +2663,7 @@ intoxicate, excitation
 ```ooRexx
 
 -- This assumes you've already downloaded the following file and placed it
--- in the current directory: https://www.puzzlers.org/pub/wordlists/unixdict.txt
+-- in the current directory: https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt
 
 -- There are several different ways of reading the file.  I chose the
 -- supplier method just because I haven't used it yet in any other examples.
@@ -2920,7 +2920,7 @@ excitation, intoxicate
 ```PHP
 <?php
 $words = file(
-    'https://www.puzzlers.org/pub/wordlists/unixdict.txt',
+    'https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt',
     FILE_IGNORE_NEW_LINES
 );
 $length = 0;
@@ -3073,7 +3073,7 @@ Length Words
 
 ```Prolog
 longest_deranged_anagram :-
-	http_open('https://www.puzzlers.org/pub/wordlists/unixdict.txt',In,[]),
+	http_open('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt',In,[]),
 	read_file(In, [], Out),
 	close(In),
 	msort(Out, MOut),
@@ -3303,7 +3303,7 @@ import urllib.request
 from collections import defaultdict
 from itertools import combinations
 
-def getwords(url='https://www.puzzlers.org/pub/wordlists/unixdict.txt'):
+def getwords(url='https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt'):
     return list(set(urllib.request.urlopen(url).read().decode().split()))
 
 def find_anagrams(words):
@@ -3329,7 +3329,7 @@ def largest_deranged_ana(anagrams):
     return []
 
 if __name__ == '__main__':
-    words = getwords('https://www.puzzlers.org/pub/wordlists/unixdict.txt')
+    words = getwords('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt')
     print("Word count:", len(words))
 
     anagrams = find_anagrams(words)
@@ -3457,7 +3457,7 @@ The longest anagram is: excitation, intoxicate
 
 
 ```R
-puzzlers.dict <- readLines("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+puzzlers.dict <- readLines("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 longest.deranged.anagram <- function(dict=puzzlers.dict) {
   anagram.groups <- function(word.group) {
@@ -3723,7 +3723,7 @@ def find_derangements(list)
 end
 
 require 'open-uri'
-anagram = open('https://www.puzzlers.org/pub/wordlists/unixdict.txt') do |f|
+anagram = open('https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt') do |f|
   f.read.split.group_by {|s| s.each_char.sort}
 end
 
@@ -3751,7 +3751,7 @@ Longest derangement anagram: ["excitation", "intoxicate"]
 
 
 ```runbasic
-a$ = httpGet$("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+a$ = httpGet$("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 dim theWord$(30000)
 dim ssWord$(30000)
 
@@ -3928,7 +3928,7 @@ object DerangedAnagrams {
   def readLines(url: String): Iterable[String] =
     io.Source.fromURL(url).getLines().toIterable
 
-  val wordsURL = "https://www.puzzlers.org/pub/wordlists/unixdict.txt"
+  val wordsURL = "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"
 
   def main(args: Array[String]): Unit = {
     val anagramMap = groupAnagrams(readLines(wordsURL))
@@ -4223,7 +4223,7 @@ package require Tcl 8.5
 package require http
 
 # Fetch the words
-set t [http::geturl "https://www.puzzlers.org/pub/wordlists/unixdict.txt"]
+set t [http::geturl "https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt"]
 set wordlist [split [http::data $t] \n]
 http::cleanup $t
 
@@ -4301,7 +4301,7 @@ MAXIMAL DERANGED ANAGRAM: LENGTH 10
 
 ```tuscript
 $$ MODE TUSCRIPT,{}
-requestdata = REQUEST ("https://www.puzzlers.org/pub/wordlists/unixdict.txt")
+requestdata = REQUEST ("https://web.archive.org/web/20180611003215/https://www.puzzlers.org/pub/wordlists/unixdict.txt")
 
 DICT anagramm CREATE 99999
 

@@ -3743,7 +3743,7 @@ say "this is quite {bad}" # becomes more wordy
 ```
 
 
-Laziness is a big topic in Perl 6. Sometimes Perl programmers are so lazy, they can't even be bothered with giving [variables names](http://design.perl6.org/S02.html#Names_and_Variables).
+Laziness is a big topic in Perl 6. Sometimes Perl programmers are so lazy, they can't even be bothered with giving [variables names](https://design.raku.org/S02.html#Names_and_Variables).
 
 
 ```perl6
@@ -3766,7 +3766,7 @@ say foo 3, 4;
 ```
 
 
-(Includes code modified from <http://design.perl6.org/S02.html#Built-In_Data_Types>. See this reference for more details.)
+(Includes code modified from <https://design.raku.org/S02.html#Built-In_Data_Types>. See this reference for more details.)
 
 
 ## Phix

@@ -1605,7 +1605,7 @@ true
 
 ## OCaml
 
-While we could use a lazy datatype such as [Stream](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Stream.html) for this problem, this example implements the short-circuit behavior (returning on first mismatch) by tracking the parse state.
+While we could use a lazy datatype such as [Stream](https://ocaml.org/p/camlp-streams/latest/doc/Stream/index.html) for this problem, this example implements the short-circuit behavior (returning on first mismatch) by tracking the parse state.
 
 ```OCaml
 type 'a btree = Leaf of 'a | BTree of ('a btree * 'a btree)
