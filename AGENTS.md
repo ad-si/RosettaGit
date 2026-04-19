@@ -16,6 +16,13 @@
 - `sass/` - SCSS stylesheets
 
 
+# Environment
+
+Nix Flake is used to manage system dependencies.
+Therefore, some tools in the path are the GNU versions.
+E.g. GNU sed, GNU make, GNU coreutils, and GNU bash.
+
+
 # Style Guidelines
 
 - Markdown should follow structure of existing tasks
