@@ -42,7 +42,7 @@ print pr
 
 ```txt
 
-function cube(double n) as double
+function cube(double d) as double
   return d*d*d
 end function
 
@@ -59,17 +59,19 @@ class MemoryBank
   '
   string buf
   '
-  method store(string s)
-    buf += " " s chr(13)
+  method store(string key,text)
+    buf += chr(1) + key + chr(2) + text + chr(3) + chr(13)
   end method
   '
-  method find(string s) as string
-    sys a,b
-    a=instr buf,s
+  method find(string key) as string
+    int a,b,c
+    a=instr 1,buf,chr(1) + key '+ chr(2)
     if a then
-      b=instr a,s,chr(13)
-      return mid buf,a,b-a
+      b=instr a, buf, chr(2)
+      c=instr a, buf, chr(3)
+      return mid buf, b+1, c-b-1
     end if
+    return "( "+key+ " not found )"
   end method
   '
   method clear()
@@ -79,15 +81,11 @@ class MemoryBank
 end class
 
 MemoryBank b
-b.store ("
-shoes LC1
-ships LC2
-sealing wax LC3
-cabbages LC4
-kings LC5
-")
+b.store "shoes","500 pairs"
+b.store "ships","10 galleons"
+b.store "sealing wax","5 lbs"
 
-print b.find "ships"
+string f=b.find("ships")
 
 ```
 
