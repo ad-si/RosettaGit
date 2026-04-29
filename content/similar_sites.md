@@ -72,6 +72,8 @@ Feel free to update and add to it.
 
 ## Specific Tasks
 
+- [0.1 + 0.2 — Floating Point Math](https://0.30000000000000004.com/) —
+  how `0.1 + 0.2` is evaluated across many languages
 - [Fibonacci Sequence](http://cubbi.com/fibonacci.html)
 - [FizzBuzz](https://github.com/qjcg/CO2Aldrin)
 - [Is a Cow an
