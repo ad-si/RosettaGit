@@ -107,6 +107,7 @@ languages = [
   "crack",
   "creative_basic",
   "crystal",
+  "css",
   "d",
   "d_j_vu",
   "dafny",
@@ -1559,6 +1560,16 @@ Run command ''Hello.Do'' by commander.
 
 
 {{ code(src="content/tasks/hello_world/crystal.cr", lang="ruby") }}
+
+
+
+
+## CSS
+
+Using a pseudo-element to inject the text on top of the page.
+
+
+{{ code(src="content/tasks/hello_world/css.css", lang="css") }}
 
 
 
