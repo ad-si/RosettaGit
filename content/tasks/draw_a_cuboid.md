@@ -400,12 +400,11 @@ Depth:  4
 
 ## C
 
-Code works fine but only '.' and ':' characters show up on the cuboid.
-
 ```c
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 const char *shades = ".:!*oe&#%@";
@@ -533,7 +532,7 @@ int main()
 			b += .2;
 			if (b > 1) b = 0;
 			else b = 1 - b;
-			putchar(shades[(int)(b * (sizeof(shades) - 2))]);
+			putchar(shades[(int)(b * (strlen(shades) - 1))]);
 		}
 		putchar('\n');
 	}
