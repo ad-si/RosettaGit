@@ -164,6 +164,7 @@ languages = [
   "scheme",
   "scilab",
   "seed7",
+  "semaprax",
   "simpol",
   "simula",
   "slate",
@@ -8344,6 +8345,32 @@ case i of
   otherwise:
     statement4;
 end case;
+```
+
+
+
+## SEMAPRAX
+
+SEMAPRAX currently provides `if`/`else` expressions. Each branch is a block,
+and its final expression supplies the branch value. This example is adapted
+from the project's [checked control-flow example](https://github.com/wavect/semaprax/blob/ca339feffcadf77a679abe2f159376287cf2e22c/examples/control_flow.spx).
+
+```semaprax
+module examples.control_flow;
+
+@id("flow.choose")
+fn choose(flag: bool, base: i64) -> i64
+{
+    let first = base + 1;
+    if flag { let second = first + 1; second } else { 0 }
+}
+
+@id("app.main")
+fn main() -> i64
+{
+    let answer = choose(true, 40);
+    answer
+}
 ```
 
 
